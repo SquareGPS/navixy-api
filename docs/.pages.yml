@@ -1,0 +1,6 @@
+arrange:
+    - general
+    - backend-api
+    - panel-api
+    - self-hosted
+    - frontend

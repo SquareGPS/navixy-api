@@ -1,0 +1,37 @@
+.md-footer-nav {
+    background-color: #525d77;
+}
+
+/* background gradient in header tab bar */
+.md-tabs {
+    color: #ddd;
+    background: #4b6cb7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.md-tabs a:hover {
+    color: white;
+}
+
+/* pdf link in header  */
+.navixy-pdf-link-div {
+    font-size: 1.3em;
+    color: #ccc;
+    margin: 0.85rem 1.5rem 0 28px;
+}
+.navixy-pdf-link-div a {
+    background-image: url(../images/pdf-icon.png);
+    background-size: 22px;
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding: 2px 28px 2px 2px;
+
+    filter: grayscale(50%);
+    -webkit-filter: grayscale(50%);
+}
+.navixy-pdf-link-div a:hover {
+    color: white;
+
+    filter: none;
+    -webkit-filter: none;
+}
