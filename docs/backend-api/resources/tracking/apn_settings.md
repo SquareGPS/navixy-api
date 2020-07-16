@@ -1,11 +1,13 @@
 ---
-title: /apn_settings
-description: /apn_settings
+title: APN settings of tracker
+description: APN settings of tracker
 ---
 
-## read(…)
+## Get APN settings of tracker
 
-Gets APN, user, password, operatorName by phone number
+### read(...)
+
+Gets APN, APN user, APN password, Operator Name for registered device by phone number
 
 #### structure:
 
@@ -37,4 +39,4 @@ Gets APN, user, password, operatorName by phone number
 
 #### errors:
 
-*   201 – Not found in database
+*   201 – The phone number not found in database
