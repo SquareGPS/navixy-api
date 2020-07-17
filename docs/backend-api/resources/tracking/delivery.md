@@ -14,7 +14,7 @@ If multiple tasks or checkpoints were found, then return first task, otherwise c
 
 #### session types:
 
-in addition to standard user session, this call supports special *DELIVERY* session type
+in addition to standard user session, this call supports special **delivery** session type
 
 #### structure:
 
@@ -50,15 +50,17 @@ in addition to standard user session, this call supports special *DELIVERY* sess
 
 *   201 – Not found in database (when there is no task or checkpoint with specified conditions)
 
-## list(…)
+## Get info for all deliveries with such id
 
-Returns info sufficient for tracking certain task state and the tracker assigned to it.
+### list(...)
+
+External_id can be repeated, so this request will return all matching delivery. Returns info sufficient for tracking certain task state and the tracker assigned to it. 
 Search is conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:
-arrived, assigned or delayed.
+arrived, assigned or delayed. 
 
 #### session types:
 
-in addition to standard user session, this call supports special DELIVERY session type
+in addition to standard user session, this call supports special **delivery** session type
 
 #### structure:
 
