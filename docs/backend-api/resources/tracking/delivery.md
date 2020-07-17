@@ -1,9 +1,11 @@
 ---
-title: /delivery
-description: /delivery
+title: Delivery info
+description: Delivery info
 ---
 
-## read(…)
+## Get info for specified delivery
+
+### read(...)
 
 Returns info sufficient for tracking certain task state and the tracker assigned to it.
 Search is conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:
@@ -42,8 +44,8 @@ in addition to standard user session, this call supports special *DELIVERY* sess
         "vehicle_label": "Service car 002", //label of the vehicle assigned to the task, or null if missing
         "estimated_time": 1122 //estimated time of arrival in seconds, or null if unavailable
     }
- ```  
-
+ ```
+ 
 #### errors:
 
 *   201 – Not found in database (when there is no task or checkpoint with specified conditions)
@@ -70,7 +72,7 @@ in addition to standard user session, this call supports special DELIVERY sessio
 
 #### example:
 
-    [api_base_url]/delivery/read?hash=22eac1c27af4be7b9d04da2ce1af111b&external_id=259876
+    [api_base_url]/delivery/list?hash=22eac1c27af4be7b9d04da2ce1af111b&external_id=259876
 
 #### response:
 
