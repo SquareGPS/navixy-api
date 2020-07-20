@@ -1,37 +1,37 @@
-How to get track points for trips
+---
+title: Get session hash
+description: About session hash key
+---
+
+# How to get track points for trips
 
 Sometimes necessary to get all points of a trip with more info about the device's moves.
 How to get them?
 
-Firstly you need to [get hash](http://not-doing.ru/tmp/mkdocs/backend-api/how-to/get-session-hash/)
+Firstly you need to [get hash](../get-session-hash.md).
 
-Once you get the hash, you need to [get your tracker_id](http://not-doing.ru/tmp/mkdocs/backend-api/how-to/get-tracker-list/). The platform must know points for what device must be in reply.
+Once you get the hash, you need to [get your tracker_id](../get-tracker-list/). The platform must know points for what device must be in reply.
 
 Now you can get all points for the interesting period using track/read API call:
 
-    https://api.navixy.com/api-v2/track/read?hash=your_hash&tracker_id=device's_id&from=yyyy-MM-dd HH:mm:ss&to=yyyy-MM-dd HH:mm:ss
+    [api_base_url]/track/read?hash=your_hash&tracker_id=device's_id&from=yyyy-MM-dd HH:mm:ss&to=yyyy-MM-dd HH:mm:ss
 
 Parameters that necessary for this call:
 
-* Tracker_id - we got them in tracker/list call. Use only one tracker_id per call. It should be an integer
-
-* From - A string containing start date/time in "yyyy-MM-dd HH:mm:ss" format (in user's timezone)
-
-* To - A string containing end date/time in "yyyy-MM-dd HH:mm:ss" format (in user's timezone)
+* tracker_id - we got them in [tracker/list](../tracker.md#list) call. Use only one tracker_id per call. It should be an integer.
+* from - a string containing start date/time in "yyyy-MM-dd HH:mm:ss" format (in user's timezone).
+* to - a string containing end [date/time](../getting-started.md#data-types) in "yyyy-MM-dd HH:mm:ss" format (in user's timezone).
 
 Optional parameters:
 
-* Track_id - we can get them using track/list(ссылка на трек лист) API call. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned.
-
-* Include_gsm_lbs – boolean parameter. It may contain true or false. If false && track_id not specified, GSM LBS points will be filtered out. It is true by default.
-
-* Point_limit – integer. If it specified, the returned track would be simplified to contain this number of points. Min=2, Max=3000
-
-* Filter – boolean. If true, the returned track will be filtered, applicable only for LBS tracks. It is false by default
+* track_id - we can get them using track/list(../track#list) API call. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned. All requested track ids must be unique and not null.
+* tnclude_gsm_lbs – boolean parameter. It may contain true or false. If false && track_id not specified, GSM LBS points will be filtered out. It is true by default.
+* point_limit – integer. If it specified, the returned track would be simplified to contain this number of points. Min=2, Max=3000.
+* filter – boolean. If true, the returned track will be filtered, applicable only for LBS tracks. It is false by default.
 
 The platform will reply:
 
-```
+```json
 {
 "success": true,
 "limit_exceeded": true, // boolean. true if requested time period exceeds limit specified in tracker's tariff
@@ -54,22 +54,9 @@ The platform will reply:
 ```
 You can also download a KML file. You could use this file with map services. It is useful if you need to see all points on the map:
 
-    https://api.navixy.com/api-v2/track/read?hash=your_hash&tracker_id=device's_id&from=yyyy-MM-dd HH:mm:ss&to=yyyy-MM-dd HH:mm:ss&format=kml/kmz&split=true/false
+    [api_base_url]/track/download?hash=your_hash&tracker_id=device's_id&from=yyyy-MM-dd HH:mm:ss&to=yyyy-MM-dd HH:mm:ss&format=kml/kmz&split=true/false
 
-Parameters that necessary for this call:
+All parameters are identical with track/read with the exception of two new optional parameters:
 
-* Tracker_id - we got them in tracker/list call. Use only one tracker_id per call. It should be an integer
-
-* From - A string containing start date/time in "yyyy-MM-dd HH:mm:ss" format (in user's timezone)
-
-* To - A string containing end date/time in "yyyy-MM-dd HH:mm:ss" format (in user's timezone)
-
-Optional parameters:
-
-* Track_ids – an array of integers. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned.
-
-* Include_gsm_lbs – boolean parameter. It may contain true or false. If false && track_id not specified, GSM LBS points will be filtered out. It is true by default.
-
-* Point_limit – integer. If it specified, the returned track would be simplified to contain this number of points. Min=2, Max=3000
-
-* Filter – boolean. If true, the returned track will be filtered, applicable only for LBS tracks. It is false by default.
+* format – string. File format, "kml" or "kmz". Default is "kml".
+* split – boolean. If true, split tracks by folders with start/end placemarks and track line. Default "false".
