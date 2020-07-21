@@ -1,6 +1,6 @@
 ---
-title: Get session hash
-description: About session hash key
+title: Get track points for trips
+description: About getting all points for trips
 ---
 
 # How to get track points for trips
@@ -18,14 +18,14 @@ Now you can get all points for the interesting period using track/read API call:
 
 Parameters that necessary for this call:
 
-* tracker_id - we got them in [tracker/list](../tracker.md#list) call. Use only one tracker_id per call. It should be an integer.
-* from - a string containing start date/time in "yyyy-MM-dd HH:mm:ss" format (in user's timezone).
-* to - a string containing end [date/time](../getting-started.md#data-types) in "yyyy-MM-dd HH:mm:ss" format (in user's timezone).
+* tracker_id - we got them in [tracker/list](..resources/tracking/tracker/tracker.md#list) call. Use only one tracker_id per call. It should be an integer.
+* from - a string containing start [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
+* to - a string containing end [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
 
 Optional parameters:
 
-* track_id - we can get them using track/list(../track#list) API call. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned. All requested track ids must be unique and not null.
-* tnclude_gsm_lbs – boolean parameter. It may contain true or false. If false && track_id not specified, GSM LBS points will be filtered out. It is true by default.
+* track_id - we can get them using [track/list](../resources/tracking/track/track.md#list) API call. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned. All requested track ids must be unique and not null.
+* include_gsm_lbs – boolean parameter. It may contain true or false. If false && track_id not specified, GSM LBS points will be filtered out. It is true by default.
 * point_limit – integer. If it specified, the returned track would be simplified to contain this number of points. Min=2, Max=3000.
 * filter – boolean. If true, the returned track will be filtered, applicable only for LBS tracks. It is false by default.
 
