@@ -3,7 +3,7 @@ title: Search address and location using geocoder
 description: Search address and location using geocoder
 ---
 
-#### Geocoder types:
+## Geocoder types:
 
 Geocoder types:
 
@@ -13,15 +13,9 @@ Geocoder types:
 *   osm
 *   locationiq
 
-## Search address
-
-### search_address(...)
+## search_address(...)
 
 Performs a forward geocoding. Returns a list of locations matching the given address. Items in the list are sorted by relevance.
-
-#### structure:
-
-    [api_base_url]/geocoder/search_address?hash=your_hash&q=address&lang=en&geocoder=geocoder_type
 
 #### parameters:
 
@@ -30,17 +24,21 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 | q | address (or place) or coordinates to geocode | string/location | 750 Avenue E,San Francisco,CA 94130,USA./60.0, 61.0 |
 | lang | language in which results should be | string (enum) | en |
 | geocoder | geocoder type that will be used for searching | string (enum) | google |
-| bounds | optional, JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included.| string | {"nw":{"lat":60.0,"lng":61.0},"se":{"lat":55.0,"lng":60.0}} |
+| bounds | optional. JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included.| string | `{"nw":{"lat":60.0,"lng":61.0},"se":{"lat":55.0,"lng":60.0}}` |
 | lang | optional. ISO 639 [language code](../../getting-started.md#data-types) | locale | en_US |
 | with_details | optional. If true then the response will contain details | boolean | true/false |
 
 #### example:
 
-    [api_base_url]/geocoder/search_address?hash=22eac1c27af4be7b9d04da2ce1af111b&q=750 Avenue E,San Francisco,CA 94130,USA&lang=en&geocoder=google
-    
+```abap
+    $ curl -X POST '[api_base_url]/geocoder/search_address' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}' 
+```
+
 #### return:
 
-```javascript
+```json
     {
         "success": true,
         "locations": [
@@ -57,7 +55,7 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 
 where **details_object** is:
 
-```javascript
+```json
 {
     "country": <string>, // optional
     "province": <string>, // optional
@@ -68,21 +66,16 @@ where **details_object** is:
 }
 ```
 ---
-## Search location
 
-### search_location(…)
+## search_location(…)
 
 Search address by location using geocoder
-
-#### structure:
-
-    [api_base_url]/geocoder/search_location?hash=your_hash&location={"lat": , "lng": }
 
 #### parameters:
 
 | name | description | type | format |
 | :------: | :------: | :-----:| :-----:|
-| location | location coordinates (see: [data types description section](../../getting-started.md#data-types) section) | location | {"lat": , "lng": } |
+| location | location coordinates (see: [data types description section](../../getting-started.md#data-types) section) | location | `{"lat": , "lng": }` |
 | geocoder | optional, geocoder type that will be used for searching | string (enum) | google |
 | lang | optional. ISO 639 [language code](../../getting-started.md#data-types) | locale | en_US |
 | with_details | optional. If true then the response will contain details | boolean | true/false |
@@ -90,11 +83,14 @@ Search address by location using geocoder
 
 #### example:
 
-    [api_base_url]/geocoder/search_location?hash=your_hash&location={"lat": 56.827001, "lng": 60.594296}
-
+```abap
+    $ curl -X POST '[api_base_url]/geocoder/search_location' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 56.827001, "lng": 60.594296}"}' 
+```
 #### return:
 
-```javascript
+```json
     {
         "success": true,
         "value": <address>, // string
