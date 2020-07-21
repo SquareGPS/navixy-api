@@ -3,9 +3,7 @@ title: Delivery info
 description: Delivery info
 ---
 
-## Get info for specified delivery
-
-### read(...)
+## read(...)
 
 Returns info sufficient for tracking certain task state and the tracker assigned to it.
 Search is conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:
@@ -14,11 +12,7 @@ If multiple tasks or checkpoints were found, then return first task, otherwise c
 
 #### session types:
 
-in addition to standard user session, this call supports special **delivery** session type
-
-#### structure:
-
-    [api_base_url]/delivery/read?hash=your_hash&external_id=123456
+in addition to standard user session, this call supports special *DELIVERY* session type
 
 #### parameters:
 
@@ -28,10 +22,15 @@ in addition to standard user session, this call supports special **delivery** se
 
 #### example:
 
-    [api_base_url]/delivery/read?hash=22eac1c27af4be7b9d04da2ce1af111b&external_id=259876
+```abap
+    $ curl -X POST '[api_base_url]/delivery/read' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": "259876"}' 
+```
 
 #### response:
-```javascript
+
+```json
     {
         "success": true,
         "user_id": 3, // master id of the user to which the task belongs to
@@ -50,9 +49,7 @@ in addition to standard user session, this call supports special **delivery** se
 
 *   201 – Not found in database (when there is no task or checkpoint with specified conditions)
 
-## Get info for all deliveries with such id
-
-### list(...)
+## list(...)
 
 External_id can be repeated, so this request will return all matching delivery. Returns info sufficient for tracking certain task state and the tracker assigned to it. 
 Search is conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:
@@ -60,11 +57,7 @@ arrived, assigned or delayed.
 
 #### session types:
 
-in addition to standard user session, this call supports special **delivery** session type
-
-#### structure:
-
-    [api_base_url]/delivery/list?hash=your_hash&external_id=123456
+in addition to standard user session, this call supports special *DELIVERY* session type
 
 #### parameters:
 
@@ -74,11 +67,15 @@ in addition to standard user session, this call supports special **delivery** se
 
 #### example:
 
-    [api_base_url]/delivery/list?hash=22eac1c27af4be7b9d04da2ce1af111b&external_id=259876
+```abap
+    $ curl -X POST '[api_base_url]/delivery/list' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": "259876"}' 
+```
 
 #### response:
 
-```javascript
+```json
     {
         "success": true,
         "list": [{
