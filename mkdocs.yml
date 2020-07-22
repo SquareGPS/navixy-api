@@ -39,7 +39,7 @@ theme:
     repo: fontawesome/brands/github
   palette:
     scheme: default
-    primary: black
+    primary: white
     accent: blue
   font:
     text: Roboto
@@ -130,6 +130,6 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-#google_analytics:
-#  - UA-XXXXXXXX-X todo
-#  - auto
+google_analytics:
+  - UA-XXXXXXXX-X todo
+  - auto
