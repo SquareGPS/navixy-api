@@ -350,16 +350,6 @@ body
     font-size: 100%;
 }
 
-/* Icon comment */
-.md-content__button.md-icon {
-    display: none;
-}
-
-.md-content__button.md-icon.md-icon--comment {
-    display: block;
-    margin: 0;
-}
-
 .md-footer-nav {
     background-color: #4a525d;
 }
