@@ -1,62 +1,77 @@
 ---
-title: /tracker
-description: /tracker
+title: Tracker
+description: Tracker information
 ---
 
 Tracker is one of the key entities in our API. It represents tracking device registered in our GPS monitoring system. Lots of API calls are created for manipulation of tracker and/or its properties.
+
 ## Tracker object structure
-```javascript
+```json
 {
-    "id": ${int},                          // tracker id aka object_id
-    "label": ${string},                    // tracker label
-    "clone": ${boolean},                   // true if this tracker is clone
-    "group_id": ${int},                    // tracker group id, 0 if no group
-    "avatar_file_name" : ${string},        // optional. passed only if present
+    "id": {int},                          // tracker id aka object_id
+    "label": {string},                    // tracker label
+    "clone": {boolean},                   // true if this tracker is clone
+    "group_id": {int},                    // tracker group id, 0 if no group
+    "avatar_file_name" : {string},        // optional. passed only if present
     "source": {
-        "id": ${int},                      // source id
-        "device_id": ${string},            // aka source_imei
-        "model": ${string},                // tracker model name from "models" table
-        "blocked": ${boolean},             // true if tracker was blocked due to tariff end, etc.
-        "tariff_id": ${int},               // id of tracker's tariff from "main_tariffs" table
-        "status_listing_id": 102,          //id of the status listing associated with this tracker, or null
-        "creation_date": "2011-09-21",
+        "id": {int},                      // source id
+        "device_id": {string},            // device id aka source_imei
+        "model": {string},                // tracker model name from "models" table
+        "blocked": {boolean},             // true if tracker was blocked due to tariff end
+        "tariff_id": {int},               // id of tracker's tariff from "main_tariffs" table
+        "status_listing_id": {int},       // id of the status listing associated with this tracker, or null
+        "creation_date": "2011-09-21",     // date when the tracker registered
         "tariff_end_date": "2016-03-24",   // date of next tariff prolongation or null
-        "phone" : ${string}                // phone of the device. can be null or empty if device has no GSM module
+        "phone" : {string}                // phone of the device. can be null or empty if device has no GSM module
                                            // or uses bundled SIM which number is hidden from the user
     }
-    "tag_bindings": [${tag_binding}, ...}  // list of attached tags. only for “tracker/list()“. 
+    "tag_bindings": [${tag_binding}, ...}  // list of attached tags. appears only for “tracker/list()“. 
 }
 ```
 
-where **tag\_binding** is:
+where **tag_binding** is:
 
-```javascript
+```json
     {
-        "tag_id": ${int},     // id of tag. must be unique for tracker
-        "ordinal": ${int}        // number that can be used as ordinal or kind of tag. must be unique for tracker. max value is 5
+        "tag_id": ${int},   // id of tag. must be unique for tracker
+        "ordinal": ${int}   // number that can be used as ordinal or kind of tag. must be unique for tracker. max value is 5
     }
 ```
 
 ## change_phone()
-Change tracker’s phone and setup new apn.
+
+Changes tracker’s phone and setup new apn.
 
 **required subuser rights:** tracker_configure
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
-* **phone** - **string**. The phone number of the sim card inserted into device in international format wihtout “+”, e.g. “6156680000”
-* **apn_name** - **string**. The name of GPRS APN of thes sim card inserted into device, e.g. “fast.tmobile.com”
-* **apn_user** - **string**. The user of GPRS APN of thes sim card inserted into device, e.g. “tmobile”
-* **apn_pasword** - **string**. The password of GPRS APN of thes sim card inserted into device, e.g. “tmobile”
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
+| phone | The phone number of the sim card inserted into device in international format wihtout “+” sign | string| 6156680000 |
+| apn_name | The name of GPRS APN of the sim card inserted into device | string | fast.tmobile.com |
+| apn_ user | The user of GPRS APN of the sim card inserted into device | string | tmobile |
+| apn_password | The password of GPRS APN of the sim card inserted into device | sting | tmobile |
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/change_phone' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"tracker_id": "265489", "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true
 }
 ```
 
 #### errors:
+
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   219 – Not allowed for clones of the device (if specified tracker is a clone)
@@ -65,21 +80,35 @@ Change tracker’s phone and setup new apn.
 *   241 – Cannot change phone to bundled sim. Contact tech support. (if specified phone number belongs tp sim card bundled with the device)
 
 ## corrupt()
-Mark never connect tracker as deleted and corrupt its source device_id and phone.
+
+Marks tracker as deleted and corrupt its source, device_id and phone.
 
 **required subuser rights**: tracker_register
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/corrupt' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true
 }
 ```
 
 #### errors:
+
 *   13 – Operation not permitted – if tracker already connected to server, or if user has insufficient rights
 *   243 – Device already connected
 *   201 – Not found in database (if tracker was not found)
@@ -88,25 +117,40 @@ Mark never connect tracker as deleted and corrupt its source device_id and phone
 *   208 – Device blocked
 
 ## delete()
-Delete tracker if it is “clone”.
+
+Deletes tracker if it is “clone”. Will not work if specified id of the original tracker
 
 **required subuser rights**: admin (available only to master users)
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/delete' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true
 }
 ```
 
 #### errors:
+
 *   201 (Not found in database) – if tracker not found
 *   249 (Operation available for clones only) – if tracker is not clone
 *   203 (Delete entity associated with) – if there are some rules or vehicles associated with tracker
-```javascript
+
+```json
 {
     "success": false,
     "status": {
@@ -117,7 +161,7 @@ Delete tracker if it is “clone”.
 }
 ```
 or
-```javascript
+```json
 {
     "success": false,
     "status": {
@@ -129,37 +173,50 @@ or
 ```
 
 ## get_diagnostics()
-Get last sensor and state values.
+
+Gets last sensors and states values received from the device.
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### returns:
-```javascript
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/get_diagnostics' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true,
-    "user_time": <current time in user's timezone, e.g. "2014-07-09 07:50:58"?>,
-    "inputs": <list of last sensor values}>, // list of last sensor values object (see below)
-    "states": <map of last state values}>, //map of last state values {"obd_vin": "123", "obd_mil_status":"false"} or null
-    "update_time": <when the data was updated, e.g. "2014-03-06 13:57:00">  //date/time
+    "user_time": "2014-07-09 07:50:58",     // current time in user's timezone 
+    "inputs": {list of last sensor values}, // list of last sensor values object (see below)
+    "states": {"obd_vin": "123", "obd_mil_status":"false"},   // map of last state values or null (see below)
+    "update_time": "2014-03-06 13:57:00"  // date/time when the data was updated
 }
 ```
 
-Sensor value structure:
-```javascript
+Where **Sensor value object** is:
+```json
 {
-  "label": <string>,					 // Sensor's label. E.g." Sensor #1",
-  "name": <string of enum>,				 // Name of sensor's raw input. E.g. "can_fuel" ( see below list of values)
-  "type": <string of enum>,				 // Type of quantity, measured by sensor. E.g. "fuel",
-  "value": <number>,					 // Reading's value, measured in units from eponymous field. E.g. 100.0
-  "units_type": <string of enum>,		 // Unit of measurement of input to the sensor. E.g."litre"
-  "units": <string>,					 // User's label for sensor's
-  "converted_units_type": <string of enum> // Unit of measurement system prefered by current user (according to /user/settings/), suitable for this sensor. Can be null, if there is no need in conversion (unit of sensor's input (field `unbits_type`) belongs to user's measurement system).
-  "converted_value": <number>			 // Reading's value in units from field `converted_units_type`. Can be null if there is no need in conversion.
+  "label": {string},					 // Sensor's label. E.g. "Sensor #1",
+  "name": {string of enum},				 // Name of sensor's raw input. E.g. "can_fuel" ( see below list of values)
+  "type": {string of enum},				 // Type of quantity, measured by sensor. E.g. "fuel",
+  "value": {float},					 // Reading's value, measured in units from eponymous field. E.g. 100.0
+  "units_type": {string of enum},		 // Unit of measurement of input to the sensor. E.g."litre"
+  "units": {string},					 // User's label for sensor's
+  "converted_units_type": {string of enum} // Unit of measurement system prefered by current user (according to user/settings), suitable for this sensor. Can be null, if there is no need in conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
+  "converted_value": {float}			 // Reading's value in units from field `converted_units_type`. Can be null if there is no need in conversion.
 }
 ```
 
-Sensor's input names for field "inputs":
+List of available sensor's input names for field **inputs**:
 
 * **composite**,
 * **input_status**,
@@ -193,7 +250,7 @@ Sensor's input names for field "inputs":
 * **can_fuel** (fuel level in percents or in unknown units),
 * **can_fuel_litres** (fuel level in litres),
 * **can_fuel_economy** (fuel economy in km/litres),
-* **can_consumption** (),
+* **can_consumption**,
 * **can_rpm**,
 * **can_speed**,
 * **can_r_prefix**,
@@ -205,9 +262,9 @@ Sensor's input names for field "inputs":
 * **raw_can_x** (range for x: [1 – 16]),
 * **can_axle_load_x** (range for x: [1 – 15]),
 * **temp_sensor**,
-* **ext_temp_sensor_x** (range for x: [1 – 10])
+* **ext_temp_sensor_x** (range for x: [1 – 10]).
 
-state names for field “states”:
+List of state names for field **states**:
 
 * **obd_vin** (value type: string),
 * **obd_mil_status** (value type: boolean),
@@ -235,76 +292,119 @@ state names for field “states”:
 * **can_seat_belt_passenger_state** (value type: boolean, ‘true’ means ‘untied’),
 * **can_door_state** (value type: boolean),
 * **can_door_driver_state** (value type: boolean, ‘true’ means ‘open’),
-* **can_door_passenger_state** (value type: boolean, ‘true’ means ‘open’)
+* **can_door_passenger_state** (value type: boolean, ‘true’ means ‘open’).
 
 ## get_fuel()
-Get current fuel level (in liters) of tracker’s fuel tanks.
+
+Gets current fuel level (in liters) of tracker’s fuel tanks.
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/get_fuel' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true,
-    "user_time": <current time in user's timezone, e.g. "2014-07-09 07:50:58"?>,
-    "inputs": <array of last readings of fuel-related sensors. Items are objects of same type as used in get_diagnostics(),
-    "update_time": <when the data was updated, e.g. "2014-03-06 13:57:00">  //date/time
+    "user_time": "2014-07-09 07:50:58", // current time in user's timezone
+    "inputs": [array]  //array of last readings of fuel-related sensors. Items are objects of the same type as used in tracker/get_diagnostics,
+    "update_time": "2014-03-06 13:57:00"  // date/time when the data was updated
 }
 ```
 
 #### errors:
+
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
 ## get_inputs()
-Get current state of tracker’s digital inputs and “semantic” inputs (ignition, buttons, car alarms, etc.) bound to them (if any).
+
+Gets current state of tracker’s digital inputs and “semantic” inputs (ignition, buttons, car alarms, etc.) bound to them (if any).
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
+
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/get_inputs' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true,
-    "user_time": <current time in user's timezone, e.g. "2014-07-09 07:50:58"?>,
-    "inputs": <array of states of all digital inputs, e.g. [true, true, false] means input 1 is on, input 2 is on, input 3 is off >, //array[boolean]
+    "user_time": "2014-07-09 07:50:58", // current time in user's timezone
+    "inputs": [true, true, false] means input 1 is on, input 2 is on, input 3 is off, //array[boolean] of states of all digital inputs
     "states": [
         {
-            "type": <one of predefined semantic input types (see table below)>, //string
-            "name": <user-defined name for semantic input, or null if not specified>, //string
-            "status": <true if input is active, false otherwise>, //boolean
-            "input_number": <number of the associated discrete input, e.g. 3> //int
+            "type": {string}, // one of predefined semantic input types (see below)
+            "name": {string}, // user-defined name for semantic input, or null if not specified
+            "status": {boolean}, // true if input is active, false otherwise
+            "input_number": {int} // number of the associated discrete input
         },
         ...
     ],
-    "update_time": <when the data was updated, e.g. "2014-03-06 13:57:00">  //date/time
+    "update_time": "2014-03-06 13:57:00"  // date/time when the data was updated
 }
 ```
-input types:
-* **ignition** - Car’s ignition. There can be only one sensor of this type.
-* **engine** - Engine’s working status.
-* **mass** - Car’s “ground” (hell if I know how it’s supposed to work).
-* **car_alarm** - Expected to be “on” when car alarm is triggered.
-* **sos_button** - An emergency “red” button.
-* **hood** - “on” if engine’s hood is open
-* **door** - “on” if car’s door is open
-* **car_lock** - “on” if car’s central lock is open
+
+List of **input types**:
+
+* **ignition** - Car’s ignition. There can be only one sensor of this type,
+* **engine** - Engine’s working status,
+* **mass** - Car’s “ground”,
+* **car_alarm** - Expected to be “on” when car alarm is triggered,
+* **sos_button** - An emergency “red” button,
+* **hood** - “on” if engine’s hood is open,
+* **door** - “on” if car’s door is open,
+* **car_lock** - “on” if car’s central lock is open,
 * **custom** - user-defined type. In general, should have non empty “name” field.
 
 #### errors:
+
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
 ## get\_last\_gps\_point()
 
-Get last point of the tracker located by GPS (or other GNSS). Points located by GSM LBS are excluded from consideration.
+Gets last point of the tracker located by GPS. Points located by GSM LBS are excluded from consideration.
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/get_last_gps_point' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true,
     "value": <see TrackPoint in tracker/track/read>
@@ -312,78 +412,102 @@ Get last point of the tracker located by GPS (or other GNSS). Points located by 
 ```
 
 #### errors:
+
 *   201 (Not found in database) – if there is no tracker with such id belonging to authorized user
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 
-## get_readings()
+## get_readings(...)
 
-Get last sensor values for sensors which are:
-*   metering
-*   not can- or obd-based
-*   not “fuel” sensors
+Gets last sensor values for sensors that are:
+* **metering**
+* **not can- or obd-based**
+* **not “fuel” sensors**
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/get_readings' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true,
-    "user_time": <current time in user's timezone, e.g. "2014-07-09 07:50:58"?>,
-    "inputs": <list of last sensor values}> //list of  last sensor values {name:"analog_1", type:"fuel", value:123, ...} (see get_diagnostics())
+    "user_time": "2014-07-09 07:50:58", // current time in user's timezone
+    "inputs": {list of last sensor values} //list of  last sensor values {name:"analog_1", type:"fuel", value:123, ...} (see tracker/get_diagnostics())
 }
 ```
 
 #### errors:
+
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
-## get_state()
+## get_state(...)
 
-Get current tracker state (gps, gsm, outputs, etc.).
+Gets current tracker state (gps, gsm, outputs, etc.).
 
-#### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 
-#### return:
-```javascript
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/get_state' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true,
-    "user_time": <current time in user's timezone, e.g. "2014-07-09 07:50:58"?>,
+    "user_time":"2014-07-09 07:50:58", //current time in user's timezone
     "state": {
-        "source_id": <tracker data source id (from table "sources")>, //int
+        "source_id": {int}, // tracker data source id (from table "sources")
         "gps": {
-            "updated": <date of last gps coordinates update in timezone of the user, e.g. "2013-02-19 10:48:08", or null if there was no updates>, //string
-            "signal_level": <gps signal level in percent, e.g. 25, or null if device cannot provide such info>, //int
+            "updated": "2013-02-19 10:48:08", // string date of last gps coordinates update in timezone of the user or null if there was no updates
+            "signal_level": {int}, // gps signal level in percent, e.g. 25, or null if device cannot provide such info
             "location": {
-                "lat": <latitude, e.g. 56.826068>, //float
-                "lng": <longitude, e.g. 60.594338> //float
+                "lat": {float}, // latitude, e.g. 56.826068
+                "lng": {float} // longitude, e.g. 60.594338
             },
-            "heading": <heading in degrees, e.g. 3>, //int
-            "speed": <speed in km/h, e.g. 20> //int,
-            "alt": <altitude in meters, e.g. 10> //int,
-            "precision": <precision in meters, optional>,  //int
-            "gsm_lbs": <true if location is detected by GSM LBS, optional>,  //boolean
+            "heading": {int}, // heading in degrees, e.g. 3
+            "speed": {int}, // speed in km/h, e.g. 20
+            "alt": {int}, // altitude in meters, e.g. 10
+            "precision": {int},  // precision in meters, optional
+            "gsm_lbs": {boolean},  // true if location is detected by GSM LBS, optional
         },
-        "connection_status": <device connection status, possible values: "signal_lost", "just_registered", "offline", "idle", "active">, //string
-        "movement_status": <movement status, possible values: "moving", "stopped", "parked">,
-        "gsm": {  //can be null if device does not support transmission of gsm info
-            "updated": <date of last gsm status update in timezone of the user, e.g. "2013-02-19 10:48:08", or null if there was no updates>, //string
-            "signal_level": <gsm signal level in percent, e.g. 25, or null if device cannot provide such info>, //int
-            "network_name": <gsm network name, e.g. "T-MOBILE", or null if device cannot provide such info>, //string
-            "roaming": <roaming state, or null if device cannot provide such info> //boolean
+        "connection_status": {enum}, // device connection status, possible values: "signal_lost", "just_registered", "offline", "idle", "active"
+        "movement_status": {enum}, // movement status, possible values: "moving", "stopped", "parked"
+        "gsm": {string} //can be null if device does not support transmission of gsm info
+            "updated": "2013-02-19 10:48:08", //string date of last gsm status update in timezone of the user or null if there was no updates
+            "signal_level": {int}, // gsm signal level in percent, e.g. 25, or null if device cannot provide such info
+            "network_name": {string}, // gsm network name, e.g. "T-MOBILE", or null if device cannot provide such info
+            "roaming": {boolean} // roaming state, or null if device cannot provide such info
         },
-        "last_update": <date of last device state update in timezone of the user, e.g. "2013-02-19 10:48:08", or null if there was no updates>, //string
-        "battery_level": <battery level in percent, e.g. 25, or null if device cannot provide such info>, //int,
-        "battery_update": <date of last battery update in timezone of the user, e.g. "2013-02-19 10:48:08", or null if there was no updates>, //string
-        "inputs": <array of states of all digital inputs, e.g. [true, true, false] means input 1 is on, input 2 is on, input 3 is off >, //array[boolean]
-        "inputs_update": <date of last inputs update in timezone of the user, e.g. "2013-02-19 10:48:08", or null if there was no updates>, //string
-        "outputs": <array of states of all digital outputs, e.g. [true, true, false] means output 1 is on, output 2 is on, output 3 is off >, //array[boolean]
-        "ouputs_update": <date of last outputs update in timezone of the user, e.g. "2013-02-19 10:48:08", or null if there was no updates>, //string
+        "last_update": "2013-02-19 10:48:08", // date of last device state update in timezone of the user or null if there was no updates
+        "battery_level": {int}, // battery level in percent, e.g. 25, or null if device cannot provide such info
+        "battery_update": "2013-02-19 10:48:08", // date of last battery update in timezone of the user or null if there was no updates
+        "inputs": [true, true, false], means input 1 is on, input 2 is on, input 3 is off // array of states of all digital inputs 
+        "inputs_update": "2013-02-19 10:48:08", // date of last inputs update in timezone of the user or null if there was no updates
+        "outputs": [true, true, false], means output 1 is on, output 2 is on, output 3 is off // array of states of all digital outputs
+        "ouputs_update": "2013-02-19 10:48:08", // date of last outputs update in timezone of the user or null if there was no updates
         "additional": { //map of additional states, keys depends on tracker model
-            "hardware_key": { <last scanned hardware key object>
-                "value": < value >,
-                "updated": < update time >
+            "hardware_key": { // last scanned hardware key object
+                "value": {int}, // hardware key
+                "updated": "2013-02-19 10:48:08" // date of last hardware key update in timezone of the user or null if there was no updates
             }
         }
     }
@@ -391,78 +515,105 @@ Get current tracker state (gps, gsm, outputs, etc.).
 ```
 
 #### errors:
+
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
 ## get_states()
 
-Get current trackers state (gps, gsm, outputs, etc.).
+Gets current states (gps, gsm, outputs, etc.) for several trackers.
 
 #### parameters:
-* **trackers** - **array of int**. array of tracker ids. All trackers must not be deleted or blocked.
-* **list_blocked** - **boolean**. default is false. If true call returns list of blocked tracker IDs instead of error 208.
-* **allow_not_exist** - **boolean**. default is false. If true call returns list of nonexistent tracker IDs instead of error 217 or 201.
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| trackers | id of trackers (aka “object_id”). Trackers must belong to authorized user and not be blocked | array of int | [999119, 999199, ...] |
+| list_blocked | optional. If true call returns list of blocked tracker IDs instead of error 208. Default is false | boolean | true/false |
+| allow_not_exist | optional. If true call returns list of nonexistent tracker IDs instead of error 217 or 201. Default is false | boolean | true/false |
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/get_states' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"trackers": "[999119, 999199, ...]", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true,
-    "user_time": <current time in user's timezone, e.g. "2014-07-09 07:50:58"?>,
+    "user_time":"2014-07-09 07:50:58", //current time in user's timezone
     "states": { //a map containing requested states
-        <tracker_id, e.g. "1234"> : <state object from get_state(..) response>,
+        <tracker_id, e.g. "1234"> : // state object from tracker/get_state response,
         ...
     },
-    "blocked": [array of IDs] //returned only if list_blocked=true,
-    "not_exist": [array of IDs] //returned only if allow_not_exist=true
+    "blocked": [array of IDs]  //returned only if list_blocked=true,
+    "not_exist": [array of IDs]  //returned only if allow_not_exist=true
 }
 ```
 
 #### errors:
+
 *   201 – Not found in database (if tracker was corrupted and allow_not_exist = false)
 *   208 – Device blocked (if list_blocked = false and tracker exists but was blocked due to tariff restrictions or some other reason)
 *   217 – List contains nonexistent entities (if allow_not_exist = false and there are nonexistent trackers belonging to an authorized user)
 
 ## list_models()
 
-Get all tracker models (from “models” table).
-#### parameters:
-* **compact_view** - **boolean**. Optional. true to compact view, default is false.
-* **codes** - **array of string**. Optional array of model codes. If passed only given models will be returned.
+Gets all integrated tracker models (from “models" table).
 
-#### return:
-```javascript
+#### parameters:
+
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| compact_view | optional. True to compact view. Default is false | boolean | true/false |
+| codes | optional. Array of model codes. If passed only given models will be returned | array of string | [model_1, model_2, ...] |
+
+#### example:
+
+```abap
+    $ curl -X POST '[api_base_url]/tracker/list_models' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {
     "success": true,
     "list": [
         {
-            "id": ${int},
-            "vendor": ${string},
-            "code": ${string},
-            "parent_code": ${string} or null,
-            "type": ${string}, // <logger, portable, vehicle, or personal>
-            "name": ${string},
-            "id_type": ${string},
-            "has_phone": ${boolean},
-            "has_apn_settings": ${boolean},
-            "register": ${boolean},
-            "check_bundle": ${boolean},
-            "has_auto_registration": ${boolean},
-            "port": ${int},
-            "battery": (see below) > , //json object
-            "altitude": ${boolean},
-            "satellites": ${boolean},
-            "gsm_level": ${boolean},
-            "gsm_network": ${boolean},
-            "gsm_roaming": ${boolean},
-            "has_detach_button": ${boolean},
-            "has_fuel_input": ${boolean},
-            "analog_inputs": ${int},
-            "digital_inputs": ${int},
-            "digital_outputs": ${int},
-            "rs232_inputs": ${int},        
-            "track_control": ${string},
-            "output_control": ${string},
-            "special_control": ${string},
+            "id": {int}, // model id
+            "vendor": {string}, // vendor name
+            "code": {string}, 
+            "parent_code": {string} or null,
+            "type": {string}, // <logger, portable, vehicle, or personal>
+            "name": {string}, // model name
+            "id_type": {string},
+            "has_phone": {boolean},
+            "has_apn_settings": {boolean},
+            "register": {boolean},
+            "check_bundle": {boolean},
+            "has_auto_registration": {boolean}, // if true device may be registered by automatic commands from platform
+            "port": {int},
+            "battery": (see below) > , // internal device's battery. json object
+            "altitude": {boolean},
+            "satellites": {boolean},
+            "gsm_level": {boolean},
+            "gsm_network": {boolean},
+            "gsm_roaming": {boolean},
+            "has_detach_button": {boolean},
+            "has_fuel_input": {boolean},
+            "analog_inputs": {int}, // number of analog inputs
+            "digital_inputs": {int}, // number of digital inputs
+            "digital_outputs": {int}, // number of digital outputs
+            "rs232_inputs": {int},  // number of RS232 inputs
+            "track_control": {string},
+            "output_control": {string},
+            "special_control": {string},
             "inputs": [list of available inputs] // array of strings, 
             "rules": [list of available rules] // array of strings, ids of supported rules
             "state_fields": [],
@@ -483,19 +634,19 @@ Get all tracker models (from “models” table).
 ```
 
 where **battery** is:
-```javascript
+```json
 {
     "min_charge": ${float},
-    "low_charge": ${float},
-    "max_charge": ${float},
+    "low_charge": ${float}, // charge level for the "low battery" rule triggering 
+    "max_charge": ${float}, 
 },
 ```
 where **additional_fields** is:
-```javascript
+```json
 {
-    "type": ${string},
-    "default_value": ${string},
-    "name": ${string}
+    "type": {string},
+    "default_value": {string},
+    "name": {string}
 },
 ```
 
@@ -504,17 +655,17 @@ where **additional_fields** is:
 Id type is used to determine the information needed to register device in our system (see [tracker/register(..)](#register)).
 
 Possible values are:
-*   “imei” – means device uses IMEI as its identifier, e. g. “356938035643809”. See Wikipedia article. When needed, you should pass only digits of IMEI, no spaces, minus signs, etc.
-*   “meid” means device uses MEID consisting of 14 HEX digits as its identifier, e. g. “A10000009296F2”. See [Wikipedia article](https://en.wikipedia.org/wiki/Mobile_equipment_identifier).
-*   “id,n” – means device uses n-digit identifier (factory id with length n), for example, “id,7” means that you must pass 7-digit number, for example “1234567”
-*   “n,m” – n-digit generated id starting with m. This means that device has configurable ID and our platform generates and configures it automatically. You don’t need to pass any identifier during device registration in this case.
-
+* **imei** – means device uses IMEI as its identifier, e. g. “356938035643809”. See [Wikipedia article](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity). When needed, you should pass only digits of IMEI, no spaces, minus signs, etc.
+* **meid** means device uses MEID consisting of 14 HEX digits as its identifier, e. g. “A10000009296F2”. See [Wikipedia article](https://en.wikipedia.org/wiki/Mobile_equipment_identifier).
+* **id,n** – means device uses n-digit identifier (factory id with length n), for example, “id,7” means that you must pass 7-digit number, for example “1234567”
+* **n,m** – n-digit generated id starting with m. This means that device has configurable ID and our platform generates and configures it automatically. You don’t need to pass any identifier during device registration in this case.
 
 #### errors:
+
 general types only
 
-#### Example
-```javascript
+#### example
+```json
 {
     "id": 166,
     "code": "tt1_wp",
@@ -568,20 +719,27 @@ general types only
 }
 ```
 
-## list(...)
+## list()
 
-Get user’s trackers with optional filtering by labels.
+Gets user’s trackers with optional filtering by labels.
 
 ### parameters:
-* **labels** – **array of string**. optional, list of tracker label filters. If specified, only trackers that labels contains any of the given filter will be returned.
+
+
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| labels | optional. List of tracker label filters. If specified, only trackers that labels contains any of the given filter will be returned | array of string | ["aa", "b"] |
     
-    Constraints:
+Constraints for labels:
     * labels array size: minimum 1, maximum 1024
     * no null items
     * no duplicate items
     * item length: minimum 1, maximum 60
     
-For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `labels=["aa","b"]` only trackers "aa1" and "bb2" will be returned.
+For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `labels=["aa","b"]` only trackers containing "aa1" and "bb2" will be returned.
+
+#### example:
+
 
 
 #### return:
