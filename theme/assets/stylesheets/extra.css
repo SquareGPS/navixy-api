@@ -29,16 +29,8 @@ body
     color: #212529;
 
     margin: 0;
-    overflow-x: hidden;
 }
 
-main
-{
-    z-index: inherit;
-    display: block;
-    position: relative;
-    height: 100%;
-}
 
 .header {
   position: fixed;
@@ -321,7 +313,51 @@ main
 }
 
 .md-sidebar {
-    width: 10.1rem;
+    width: 11rem;
+    top: 2.4rem !important;
+    padding: 0;
+}
+
+.md-sidebar.md-sidebar--secondary {
+    direction: rtl;
+    text-align: left;
+}
+
+.md-sidebar.md-sidebar .md-sidebar__scrollwrap {
+    height: 100%;
+    padding: 1.2rem 0;
+}
+
+.md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap {
+    box-shadow: inset -1px 0px 0px 0 rgba(0, 0, 0, 0.07), 1px 0px 0px 0 rgba(0, 0, 0, 0.07);
+}
+
+.md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap:hover {
+    box-shadow: inset -3px 0px 0px 0 rgba(0, 0, 0, 0.07), 1px 0px 0px 0 rgba(0, 0, 0, 0.07);
+}
+
+.md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap {
+    padding: 1.2rem 0;
+    box-shadow: inset 2px 0px 0px 0 rgba(0, 0, 0, 0.07), 0px 0px 0px 0 rgba(0, 0, 0, 0.07);
+}
+
+.md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap:hover {
+    box-shadow: inset 4px 0px 0px 0 rgba(0, 0, 0, 0.07), 0px 0px 0px 0 rgba(0, 0, 0, 0.07);
+}
+
+/* Update date */
+.md-source-date small {
+    font-size: 100%;
+}
+
+/* Icon comment */
+.md-content__button.md-icon {
+    display: none;
+}
+
+.md-content__button.md-icon.md-icon--comment {
+    display: block;
+    margin: 0;
 }
 
 .md-footer-nav {
@@ -352,6 +388,7 @@ main
 
 .md-tabs__link {
     color: #ffffff;
+    opacity: 1;
     margin: 0;
     height: 100%;
     display: flex;
@@ -397,22 +434,32 @@ main
 }
 .navixy-pdf-link-div a {
     background-image: url(../images/pdf-icon.png);
-    background-size: 22px;
+    background-size: 29px;
     background-position: right center;
     background-repeat: no-repeat;
-    padding: 2px 28px 2px 2px;
+    padding: 2px 27px 6px 2px;
+    top: -1px;
+    position: relative;
+    opacity: 0.7;
 
-    filter: grayscale(50%);
-    -webkit-filter: grayscale(50%);
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
 }
 .navixy-pdf-link-div a:hover {
+    filter: grayscale(50%);
+    -webkit-filter: grayscale(50%);
     color: white;
-
-    filter: none;
-    -webkit-filter: none;
+    opacity: 1;
 }
 
 /* repositary link */
+
+.md-source {
+    opacity: .7;
+}
+.md-source:hover {
+    opacity: 1;
+}
 .md-source__repository {
     display: none;
 }
