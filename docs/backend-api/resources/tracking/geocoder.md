@@ -1,11 +1,11 @@
 ---
-title: /geocoder
-description: /geocoder
+title: Search address and location using geocoder
+description: Search address and location using geocoder
 ---
 
-# geocoder/ actions:
+## Geocoder types:
 
-Geocoders:
+Geocoder types:
 
 *   google
 *   yandex
@@ -13,36 +13,32 @@ Geocoders:
 *   osm
 *   locationiq
 
-**details_object** is:
-```javascript
-{
-    "country": <string>, // optional
-    "province": <string>, // optional
-    "locality": <string>, // optional
-    "street": <string>, // optional
-    "house": <string>, // optional
-    "postcode": <string> // optional
-}
-```
-
-## search_address(…)
+## search_address(...)
 
 Performs a forward geocoding. Returns a list of locations matching the given address. Items in the list are sorted by relevance.
 
 #### parameters:
 
-*   q – address (or place) or coordinates (comma separated decimal degrees e.g. _60.0,-61.0_) to geocode
-*   lang – language in which results should be. E.g. “en”
-*   geocoder – geocoder type
-*   bounds – optional, JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included.
-*   lang – optional, string, ISO 639 language code
-*   with_details – optional, boolean. If true then the response will contain details
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| q | address (or place) or coordinates to geocode | string/location | 750 Avenue E,San Francisco,CA 94130,USA./60.0, 61.0 |
+| lang | language in which results should be | string (enum) | en |
+| geocoder | geocoder type that will be used for searching | string (enum) | google |
+| bounds | optional. JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included.| string | `{"nw":{"lat":60.0,"lng":61.0},"se":{"lat":55.0,"lng":60.0}}` |
+| lang | optional. ISO 639 [language code](../../getting-started.md#data-types) | locale | en_US |
+| with_details | optional. If true then the response will contain details | boolean | true/false |
 
+#### example:
 
-    bounds={"nw":{"lat":60.0,"lng":61.0},"se":{"lat":55.0,"lng":60.0}}
+```abap
+    $ curl -X POST '[api_base_url]/geocoder/search_address' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}' 
+```
 
 #### return:
 
+```json
     {
         "success": true,
         "locations": [
@@ -55,26 +51,50 @@ Performs a forward geocoding. Returns a list of locations matching the given add
             ...
         ]
     }
+```
 
+where **details_object** is:
+
+```json
+{
+    "country": <string>, // optional
+    "province": <string>, // optional
+    "locality": <string>, // optional
+    "street": <string>, // optional
+    "house": <string>, // optional
+    "postcode": <string> // optional
+}
+```
 ---
+
 ## search_location(…)
+
+Search address by location using geocoder
 
 #### parameters:
 
-*   location – not null, **location** (see: [data types description section](../../getting-started.md#data-types) section)
-*   geocoder – optional, string (enum). Now supported `google`, `osm`, `yandex`, `locationiq` geocoders.
-*   lang – optional, string, ISO 639 language code
-*   with_details – optional, boolean. If true then the response will contain details
-*   goal - optional, string (enum). Now supported `ui`, `ui_user_action`. Helps to choose the target geocoder. 
-Use `ui_user_action` for requests initiated by user, otherwise `ui`.
+| name | description | type | format |
+| :------: | :------: | :-----:| :-----:|
+| location | location coordinates (see: [data types description section](../../getting-started.md#data-types) section) | location | `{"lat": , "lng": }` |
+| geocoder | optional, geocoder type that will be used for searching | string (enum) | google |
+| lang | optional. ISO 639 [language code](../../getting-started.md#data-types) | locale | en_US |
+| with_details | optional. If true then the response will contain details | boolean | true/false |
+| goal | Helps to choose the target geocoder. Now supported `ui`, `ui_user_action`. Use `ui_user_action` for requests initiated by user, otherwise `ui` | string (enum) | ui | 
 
-Search address by location.
-User language wil be used If `lang` is omitted.
+#### example:
 
+```abap
+    $ curl -X POST '[api_base_url]/geocoder/search_location' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 56.827001, "lng": 60.594296}"}' 
+```
 #### return:
 
+```json
     {
         "success": true,
         "value": <address>, // string
         "details": <details_object> // optional
     }
+```
+ 

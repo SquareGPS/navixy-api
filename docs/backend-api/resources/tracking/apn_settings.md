@@ -1,15 +1,11 @@
 ---
-title: /apn_settings
-description: /apn_settings
+title: APN settings of tracker
+description: APN settings of tracker
 ---
 
-## read(…)
+## read(...)
 
-Gets APN, user, password, operatorName by phone number
-
-#### structure:
-
-    [api_base_url]/apn_settings/read?hash=your_hash&phone=phone_number
+Gets the APN name/user/password and mobile operator for registered device by phone number.
 
 #### parameters:
 
@@ -19,11 +15,15 @@ Gets APN, user, password, operatorName by phone number
 
 #### example:
 
-    [api_base_url]/apn_settings/read?hash=22eac1c27af4be7b9d04da2ce1af111b&phone=3389665944572
+```abap
+    $ curl -X POST '[api_base_url]/apn_settings/read' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "phone": "3389665944572"}' 
+```
 
 #### response:
 
-```javascript
+```json
     {
         "success": true,
         "value": {
@@ -37,4 +37,4 @@ Gets APN, user, password, operatorName by phone number
 
 #### errors:
 
-*   201 – Not found in database
+*   201 – The phone number not found in database
