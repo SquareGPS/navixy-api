@@ -326,6 +326,7 @@ body
 .md-sidebar.md-sidebar .md-sidebar__scrollwrap {
     height: 100%;
     padding: 1.2rem 0;
+    direction: ltr;
 }
 
 .md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap {
