@@ -346,6 +346,10 @@ body
     box-shadow: inset 4px 0px 0px 0 rgba(0, 0, 0, 0.07), 0px 0px 0px 0 rgba(0, 0, 0, 0.07);
 }
 
+.md-sidebar.md-sidebar .md-sidebar__inner {
+    direction: ltr;
+}
+
 /* Update date */
 .md-source-date small {
     font-size: 100%;
