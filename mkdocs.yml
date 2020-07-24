@@ -14,22 +14,6 @@ docs_dir: docs
 
 repo_name: SquareGPS/navixy-api
 repo_url: https://github.com/SquareGPS/navixy-api
-#edit_uri: ""
-
-# now using awesome-pages plugin
-#nav:
-#  - General:
-#      - Overview: general/index.md
-#      - Getting Started: general/getting-started.md
-#  - Backend API:
-#      - Backend API: backend-api/index.md
-#      - Resources: backend-api/resources/index.md
-#  - Panel API:
-#      - Panel API: panel-api/index.md
-#  - Self-hosted:
-#      - Self-hosted: self-hosted/index.md
-#  - Localizations:
-#      - Localizations: localizations/index.md
 
 theme:
   name: material
@@ -117,9 +101,11 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink
-#      repo_url_shorthand: true
-#      user: SquareGPS
-#      repo: todo
+      repo_url_shortener: true
+      repo_url_shorthand: true
+      social_url_shorthand: true
+      user: SquareGPS
+      repo: navixy-api
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets:
@@ -130,6 +116,7 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
+# Enable analytics block to include scripts from /partial/integrations/analytics.html
 google_analytics:
-  - UA-XXXXXXXX-X todo
+  - UA-XXXXXXXX-X
   - auto
