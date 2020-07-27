@@ -1,5 +1,5 @@
 ---
-title: Search address and location using geocoder
+title: Geocoding
 description: Search address and location using geocoder
 ---
 
@@ -19,8 +19,8 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 
 #### parameters:
 
-| name | description | type | format |
-| :------: | :------: | :-----:| :-----:|
+|name|description|type|format|
+|--- |--- |--- |--- |
 | q | address (or place) or coordinates to geocode | string/location | 750 Avenue E,San Francisco,CA 94130,USA./60.0, 61.0 |
 | lang | language in which results should be | string (enum) | en |
 | geocoder | geocoder type that will be used for searching | string (enum) | google |
@@ -31,31 +31,31 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 #### example:
 
 ```abap
-    $ curl -X POST '[api_base_url]/geocoder/search_address' \
-      -H 'Content-Type: application/json' \ 
-      -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}' 
+$ curl -X POST '[api_base_url]/geocoder/search_address' \
+  -H 'Content-Type: application/json' \ 
+  -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}' 
 ```
 
 #### return:
 
 ```json
-    {
-        "success": true,
-        "locations": [
-            {
-                "lat": <lat>,        // double
-                "lng": <lng>,        // double
-                "address": <address>, // string
-                "details": <details_object> // optional
-            },
-            ...
-        ]
-    }
+{
+    "success": true,
+    "locations": [
+        {
+            "lat": <lat>,        // double
+            "lng": <lng>,        // double
+            "address": <address>, // string
+            "details": <details_object> // optional
+        },
+        ...
+    ]
+}
 ```
 
 where **details_object** is:
 
-```json
+```js
 {
     "country": <string>, // optional
     "province": <string>, // optional
@@ -65,7 +65,6 @@ where **details_object** is:
     "postcode": <string> // optional
 }
 ```
----
 
 ## search_location(…)
 
@@ -73,8 +72,8 @@ Search address by location using geocoder
 
 #### parameters:
 
-| name | description | type | format |
-| :------: | :------: | :-----:| :-----:|
+|name|description|type|format|
+|--- |--- |--- |--- |
 | location | location coordinates (see: [data types description section](../../getting-started.md#data-types) section) | location | `{"lat": , "lng": }` |
 | geocoder | optional, geocoder type that will be used for searching | string (enum) | google |
 | lang | optional. ISO 639 [language code](../../getting-started.md#data-types) | locale | en_US |
@@ -84,17 +83,17 @@ Search address by location using geocoder
 #### example:
 
 ```abap
-    $ curl -X POST '[api_base_url]/geocoder/search_location' \
-      -H 'Content-Type: application/json' \ 
-      -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 56.827001, "lng": 60.594296}"}' 
+$ curl -X POST '[api_base_url]/geocoder/search_location' \
+  -H 'Content-Type: application/json' \ 
+  -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 56.827001, "lng": 60.594296}"}' 
 ```
 #### return:
 
 ```json
-    {
-        "success": true,
-        "value": <address>, // string
-        "details": <details_object> // optional
-    }
+{
+    "success": true,
+    "value": <address>, // string
+    "details": <details_object> // optional
+}
 ```
  
