@@ -1,26 +1,32 @@
 ---
-title: /contact
-description: /contact
+title: Contact
+description: Contact
 ---
 
 ## list()
 
-Get all user’s trackers with special grouping by “contacts”.
+Gets all user’s trackers with special grouping by “contacts”.
 
 #### example:
 
-    [api_base_url]/contact/list?hash=22eac1c27af4be7b9d04da2ce1af111b
+```abap
+    $ curl -X POST 'api.navixy.com/v2/tracker/contact' \
+      -H 'Content-Type: application/json' \ 
+      -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
 
 #### response:
-```javascript
+
+```json
     {
         "success": true,
         "contacts": [ <contact>, ... ] // all established contacts
         "trackers": [ <tracker>, ... ] // normal trackers belonging to current user
     }
 ```
-where **contact** is:
-```javascript
+where **contact** object is:
+
+```json
     {
         "user_id": 12059,  //id of the user with which "contact" is established
         "first_name": "Adam",
