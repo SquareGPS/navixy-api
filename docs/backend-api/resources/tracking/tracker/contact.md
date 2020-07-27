@@ -10,7 +10,7 @@ Gets all user’s trackers with special grouping by “contacts”.
 #### example:
 
 ```abap
-    $ curl -X POST 'api.navixy.com/v2/tracker/contact' \
+    $ curl -X POST 'https://api.navixy.com/v2/tracker/contact' \
       -H 'Content-Type: application/json' \ 
       -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
