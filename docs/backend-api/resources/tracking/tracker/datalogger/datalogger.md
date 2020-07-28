@@ -13,10 +13,9 @@ Uploads track data for specified tracker. Tracker must be a datalogger.
 * **file** - **File to upload**. A CSV file upload containing datalogger track data
 
 #### return:
-```javascript
-{
-    "success": true
-}
+
+```json
+{ "success": true }
 ```
 
 #### errors:

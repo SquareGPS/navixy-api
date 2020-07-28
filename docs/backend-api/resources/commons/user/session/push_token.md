@@ -15,8 +15,9 @@ Binds Push token with current session.
 
 #### return:
 
-    { "success": true }
-
+```json
+{ "success": true }
+```
 
 Using `category_filter` you can filter out unwanted notifications categories.
 
@@ -44,9 +45,9 @@ Deletes push token that bound with the session.
 
 #### return:
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
 
 
 #### errors:

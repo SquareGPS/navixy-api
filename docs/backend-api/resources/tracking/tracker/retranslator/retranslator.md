@@ -61,7 +61,7 @@ Unbind tracker from retranslator.
 * **retranslator_id** – **int**. retranslator ID
 
 #### return:
-```js
+```json
 { "success": true }
 ```
 

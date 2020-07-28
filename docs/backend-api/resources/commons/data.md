@@ -7,12 +7,13 @@ description: /data
 
 Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 
-       {
-            "file_id": <string, unique file id>,
-            "header": <optional, array of string>,
-            "preview":<array of array of string, first N rows of file>
-        }
-    
+```js
+{
+    "file_id": <string, unique file id>,
+    "header": <optional, array of string>,
+    "preview":<array of array of string, first N rows of file>
+}
+```
 
 #### parameters:
 
@@ -27,14 +28,14 @@ If `parse_header` is set to true, first row of the uploaded file will be treat a
 
 #### return:
 
-       {
-            "file_id": <string, unique file id>,
-            "header": <optional, array of string>,
-            "preview":<array of array of string, first N rows of file>
-        }
-    
+```js
+{
+    "file_id": <string, unique file id>,
+    "header": <optional, array of string>,
+    "preview":<array of array of string, first N rows of file>
+}
+```
 
 #### errors:
 
-general types  
-234 – “Invalid data format”
+234 – Invalid data format.

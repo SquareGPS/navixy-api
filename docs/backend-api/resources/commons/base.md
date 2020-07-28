@@ -9,11 +9,11 @@ The report for health-check. It will do nothing.
 
 #### example:
 
-    [api_base_url]/base/nothing?hash=22eac1c27af4be7b9d04da2ce1af111b
+    https://api.navixy.com/v2/base/nothing?hash=22eac1c27af4be7b9d04da2ce1af111b
 
 #### response:
 
-```js
+```json
 { "success": true }
 ```
 
@@ -24,7 +24,7 @@ Sends email from the platform to any email address with specified title and text
 
 #### structure:
 
-    [api_base_url]/base/send_email?hash=your_hash&from=sender_mail&to=recipient_mail&title=text_title&message=text_message&service_id=1&service_pass=1
+    https://api.navixy.com/v2/base/send_email?hash=your_hash&from=sender_mail&to=recipient_mail&title=text_title&message=text_message&service_id=1&service_pass=1
 
 #### parameters:
 
@@ -39,10 +39,10 @@ Sends email from the platform to any email address with specified title and text
 
 #### example:
 
-    [api_base_url]/base/send_email?hash=22eac1c27af4be7b9d04da2ce1af111b&from=navixy@mail.com&to=user@mail.com&title=text+of+email+title&message=text+of+the+message&service_id=1&service_pass=1
+    https://api.navixy.com/v2/base/send_email?hash=22eac1c27af4be7b9d04da2ce1af111b&from=navixy@mail.com&to=user@mail.com&title=text+of+email+title&message=text+of+the+message&service_id=1&service_pass=1
 
 #### response:
 
-```js
+```json
 { "success": true }
 ```

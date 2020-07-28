@@ -10,7 +10,8 @@ Get LBS for the specified tracker.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
 #### return:
-```javascript
+
+```js
 {
     "success": true,
     "max_radius": <int>  //max allowed radius for LBS points
@@ -29,8 +30,9 @@ Update LBS settings for the specified tracker.
 * **max_radius** - **int**. See read(…). min=0, max=10000
 
 #### return:
-```javascript
-{"success": true}
+
+```json
+{ "success": true }
 ```
 
 #### errors:

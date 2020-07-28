@@ -13,10 +13,8 @@ Request to change the states of all digital outputs of the device. The device mu
 * **outputs** - **array of boolean**. Array of desired states of all digital outputs, e.g. [true, true, false] means output 1 is on, output 2 is on, output 3 is off
 
 #### return:
-```javascript
-{
-    "success": true
-}
+```json
+{ "success": true }
 ```
 
 #### errors:
@@ -37,10 +35,8 @@ Request to change the state of the specified digital output of the device. The d
 * **enable** - **boolean**. True if the requested output should be enabled, or false if it should be disabled..
 
 #### return:
-```javascript
-{
-    "success": true
-}
+```json
+{ "success": true }
 ```
 
 #### errors:

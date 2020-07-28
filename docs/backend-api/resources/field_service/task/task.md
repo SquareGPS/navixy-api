@@ -52,10 +52,8 @@ description: /task
 
 #### return:
 
-```js
-{
-    "success": true
-}
+```json
+{ "success": true }
 ```
 
 #### errors:
@@ -68,7 +66,6 @@ description: /task
 
 
 
----
 ## batch_convert(…)
 
 Convert batch of tab-delimited tasks and return list of checked tasks with errors.
@@ -113,7 +110,6 @@ general types only
 
 
 
----
 ## count()
 
 Return total number of tasks belonging to current user.
@@ -202,10 +198,8 @@ Delete task with the specified id.
 
 #### return:
 
-```js
-{
-    "success": true
-}
+```json
+{ "success": true }
 ```
 
 #### errors:
@@ -292,7 +286,6 @@ general types only
 
 
 
----
 ## read(…)
 
 Get task, checkpoint, or route with checkpoints by id.
@@ -323,7 +316,6 @@ where **task** described [here](#task).
 
 
 
----
 ## transmute(…)
 
 Convert task into a route checkpoint.
@@ -338,10 +330,8 @@ Convert task into a route checkpoint.
 
 #### return:
 
-```js
-{
-    "success": true
-}
+```json
+{ "success": true }
 ```
 
 #### errors:
@@ -351,7 +341,6 @@ Convert task into a route checkpoint.
 
 
 
----
 ## update(…)
 
 Update existing task. Note that you cannot change task owner using this method.

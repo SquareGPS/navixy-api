@@ -34,31 +34,31 @@ Optional parameters:
 
 The platform will reply:
 
-```json
+```js
 {
-"success": true,
-"limit_exceeded": true, // boolean. true if requested time period exceeds limit specified in tracker's tariff
-"list": [
-  {
-    "lat": 53.445181, // latitude
-    "lng": -2.276432, // longitude
-    "alt": 10, // int. altitude in meters
-    "satellites": 8, // number of satellites used in fix for this point
-    "get_time": "2011-06-18 03:39:44", // GPS timestamp of the point, in user's timezone
-    "address": "4B Albany Road, Manchester, Great Britain", // string. point address. "" if no addresss was recorded
-    "heading": 298, // int. bearing in degrees (0..360)
-    "speed": 70, // int. speed in km/h
-    "precision": 100, // int. precision in meters, optional
-    "gsm_lbs": true, // boolean. true if location is detected by GSM LBS, optional
-    "parking": true, // boolean. true if point does not belongs to track, optional
-  }, ...
-]}
+    "success": true,
+    "limit_exceeded": true, // boolean. true if requested time period exceeds limit specified in tracker's tariff
+    "list": [
+      {
+        "lat": 53.445181, // latitude
+        "lng": -2.276432, // longitude
+        "alt": 10, // int. altitude in meters
+        "satellites": 8, // number of satellites used in fix for this point
+        "get_time": "2011-06-18 03:39:44", // GPS timestamp of the point, in user's timezone
+        "address": "4B Albany Road, Manchester, Great Britain", // string. point address. "" if no addresss was recorded
+        "heading": 298, // int. bearing in degrees (0..360)
+        "speed": 70, // int. speed in km/h
+        "precision": 100, // int. precision in meters, optional
+        "gsm_lbs": true, // boolean. true if location is detected by GSM LBS, optional
+        "parking": true, // boolean. true if point does not belongs to track, optional
+      }, ...
+    ]}
 ```
 You can also [download](../resources/tracking/track/track.md#download) a KML file. 
 You could use this file with map services. 
 It is useful if you need to see all points on the map:
 
-    [api_base_url]/track/download
+    https://api.navixy.com/v2/track/download
 
 All parameters are identical with track/read with the except of two new optional parameters:
 

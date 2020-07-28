@@ -7,28 +7,29 @@ description: /driver/journal/entry
 
 **driver\_journal\_entry** type is JSON object:
 
-    {
-        "tracker_id": 1,  // Id of the tracker
-        "start_date": "2018-08-28 07:03:39",  // Start date
-        "end_date": "2018-08-28 08:05:02",  // End date
-        "employee_id": 1,  // nullable. Driver
-        "type": "work",  // Type ('work', 'personal', 'other')
-        "comment": "comment string",  // nullable
-        "start_location": {
-            "lat": 11.0, // latitude
-            "lng": 22.0, // longitude
-            "address": "address value" // address
-        },
-        "end_location": {
-            "lat": 11.0, // latitude
-            "lng": 22.0, // longitude
-            "address": "address value" // address
-        },
-        "length": 1.44,  // length
-        "start_odometer": 1.34,  // nullable. Odometer's value at the start
-        "end_odometer": 5.34,  // nullable. Odometer's value at the end
-    }
-
+```js
+{
+    "tracker_id": 1,  // Id of the tracker
+    "start_date": "2018-08-28 07:03:39",  // Start date
+    "end_date": "2018-08-28 08:05:02",  // End date
+    "employee_id": 1,  // nullable. Driver
+    "type": "work",  // Type ('work', 'personal', 'other')
+    "comment": "comment string",  // nullable
+    "start_location": {
+        "lat": 11.0, // latitude
+        "lng": 22.0, // longitude
+        "address": "address value" // address
+    },
+    "end_location": {
+        "lat": 11.0, // latitude
+        "lng": 22.0, // longitude
+        "address": "address value" // address
+    },
+    "length": 1.44,  // length
+    "start_odometer": 1.34,  // nullable. Odometer's value at the start
+    "end_odometer": 5.34,  // nullable. Odometer's value at the end
+}
+```
 
 ## list(…)
 
@@ -56,12 +57,13 @@ If there no **entry_ids** in request, entries are selected by intersecting their
 
 #### return:
 
-    {
-        "success": true,
-        "list": [ <driver_journal_entry>, ... ]
-    }
+```js
+{
+    "success": true,
+    "list": [ <driver_journal_entry>, ... ]
+}
+```
 
-----
 ## create(…)
 
 Create driver journal entries.
@@ -72,11 +74,10 @@ Create driver journal entries.
 
 #### return:
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
 
-----
 ## update(…)
 
 Update driver journal entry. Only two fields (**type** and **comment**) are available for update.
@@ -87,20 +88,20 @@ Update driver journal entry. Only two fields (**type** and **comment**) are avai
 
 #### return:
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
 
 
-**driver\_journal\_entry\_update\_request** type is JSON object:
+`driver_journal_entry_update_request` type is JSON object:
 
-    {
-          "id": 1, // id of the driver journal entry
-          "type": 1, // new type of the driver journal entry
-          "comment": "new comment" // new comment of the the driver journal entry
-    }
-
----
+```js
+{
+    "id": 1, // id of the driver journal entry
+    "type": 1, // new type of the driver journal entry
+    "comment": "new comment" // new comment of the the driver journal entry
+}
+```
 
 ## delete(…)
 
@@ -112,11 +113,9 @@ Delete driver journal entries.
 
 #### return:
 
-    {
-        "success": true
-    }
-
----
+```json
+{ "success": true }
+```
 
 ## download(…)
 
@@ -131,9 +130,9 @@ same as in list(...) method plus:
 *   **format** – **string**. File format: ‘pdf’, ‘xls’ and ‘xlsx’
 *   **group_by** – **string**. (optional) If specified, grouped entries will be in different sections of the table.
     Possible values:
-    — type (group entries by entry type)
-    — date (group entries by start_date per day)
+    — `type` (group entries by entry type)
+    — `date` (group entries by start_date per day)
 
 #### return:
 
-    A driver journal report file (standard file download).
+A driver journal report file (standard file download).

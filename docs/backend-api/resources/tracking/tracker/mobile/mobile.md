@@ -16,12 +16,13 @@ Register new mobile client application.
 Part of parameters are registration plugin-specific. See “Registration plugins” section.
 
 Common parameters are:
+
 * **label** - **string**. User-defined label for this tracker, e.g. “Сourier”. Must consist of prontable characters and have length between 1 and 60.
 * **group_id** - **int**. Tracker group id, 0 if tracker does not belong to any group. The specified group must exist.
 * **device_id** - **string**. Device IMEI.
 
 #### return:
-```javascript
+```js
 {
     "success": true,
     "value": <tracker> //a newly created tracker

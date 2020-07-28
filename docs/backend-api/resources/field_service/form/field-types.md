@@ -14,16 +14,16 @@ Field values for submitted form are stored separately as JSON objects. The conte
 
 ##### common field parameters:
 
-     {
-       "id": "111-aaa-whatever", //arbitrary alphanumeric string (1 to 19 characters), unique across current form’s fields, used to link with values and its "parent" in template form
-       "label": "Name", //user-defined label, shown as field header, 1 to 100 printable characters
-       "description": "Your full name", //field description, shown in smaller text under the header, 1 to 512 printable characters
-       "required": true, //if true, form cannot be submitted without filling this field with valid value
-       "type": "text", //determines field type
-       //type-specific parameters go here...
-     }
-
----
+```js
+{
+   "id": "111-aaa-whatever", //arbitrary alphanumeric string (1 to 19 characters), unique across current form’s fields, used to link with values and its "parent" in template form
+   "label": "Name", //user-defined label, shown as field header, 1 to 100 printable characters
+   "description": "Your full name", //field description, shown in smaller text under the header, 1 to 512 printable characters
+   "required": true, //if true, form cannot be submitted without filling this field with valid value
+   "type": "text", //determines field type
+   //type-specific parameters go here...
+}
+```
 
 ### Text field
 
@@ -42,11 +42,12 @@ Multiline auto-expanding text field
 
 ##### value object:
 
-    {
-        "type": "text",
-        "value": "text field value" //What was entered in the text field
-    }
-    
+```js
+{
+    "type": "text",
+    "value": "text field value" //What was entered in the text field
+}
+```
 
 ### Checkbox group
 
@@ -70,11 +71,12 @@ Group of checkboxes.
 
 ##### value object:
 
-    {
-        "type": "checkbox_group",
-        "values": [true] //booleans in the same order as fields in "group"
-    }
-    
+```js
+{
+    "type": "checkbox_group",
+    "values": [true] //booleans in the same order as fields in "group"
+}
+```
 
 ### Dropdown field
 
@@ -96,11 +98,12 @@ Dropdown menu for choosing one option.
 
 ##### value object:
 
-    {
-        "type": "dropdown",
-        "value_index": 1 //zero-based index of value from "options"
-    }
-    
+```js
+{
+    "type": "dropdown",
+    "value_index": 1 //zero-based index of value from "options"
+}
+```
 
 ### Radio button group
 

@@ -22,7 +22,7 @@ Get special settings for the specified tracker.
 If parameter type is present:
 
 #### return:
-```json
+```js
 {
     "success": true,
     "value": <settings object> //[Settings object]
@@ -31,7 +31,7 @@ If parameter type is present:
 If parameter type is omitted:
 
 #### return:
-```json
+```js
 {
     "success": true,
     "list": [<settings object>] //[Settings objects array]
@@ -41,7 +41,7 @@ If parameter type is omitted:
 ###### Settings object structures by type:
 
 **electronic_lock_password**
-```json
+```js
 {
     "type": "electronic_lock_password",
     "password": <string, nullable>,
@@ -50,7 +50,7 @@ If parameter type is omitted:
 ```
 
 **hhd_lock_password**
-```json
+```js
 {
     "type": "hhd_lock_password",
     "password": <string, nullable>, // 8 digits
@@ -59,7 +59,7 @@ If parameter type is omitted:
 ```
 
 **jointech_lock_password**
-```json
+```js
 {
     "type": "jointech_lock_password",
     "password": <string, nullable>, // 6 non-space, non-comma symbols
@@ -68,7 +68,7 @@ If parameter type is omitted:
 ```
 
 **vg_lock_password**
-```json
+```js
 {
     "type": "vg_lock_password",
     "password": <string, nullable>, // 6 digits
@@ -79,7 +79,7 @@ If parameter type is omitted:
 
 
 **autofon_sms_alerts**
-```json
+```js
 {
     "type": "autofon_sms_alerts",
     "low_battery_mode": <string, enable | disable>,
@@ -89,7 +89,7 @@ If parameter type is omitted:
 ```
 
 **auto_geofence_telfm**
-```json
+```js
 {
     "type": "auto_geofence_telfm",
     "mode": <string, enable | disable>,
@@ -99,7 +99,7 @@ If parameter type is omitted:
 ```
 
 **bce_tacho_control**
-```json
+```js
 {
     "type": "bce_tacho_control",
     "function": <string, slot1 | slot2 | vu_activities | vu_no_activities>,
@@ -107,7 +107,7 @@ If parameter type is omitted:
 ```
 
 **call_button**
-```json
+```js
 {
     "type": "call_button",
     "capacity": 1,
@@ -116,7 +116,7 @@ If parameter type is omitted:
 ```
 
 **call_buttons_v40**
-```json
+```js
 {
     "type": "call_buttons_v40",
     "capacity": 4,
@@ -125,7 +125,7 @@ If parameter type is omitted:
 ```
 
 **careu_psm**
-```json
+```js
 {
     "type": "careu_psm",
     "sleep_when_ignition_off": <boolean>,
@@ -137,6 +137,7 @@ If parameter type is omitted:
     "wake_up_from_dsm_interval": <int, 0-255> 
 }
 ```
+
 - `sleep_conditions_duration` – delay between the moment when conditions are met and sleep mode activation in minutes.
 - `deep_sleep_conditions_duration` – delay between sleep mode activation and deep sleep mode activation in minutes.
 - `wake_up_interval` – delay before waking up from sleep mode in minutes.
@@ -145,7 +146,8 @@ If parameter type is omitted:
 `0` in these fields means don't switch.
 
 **castel_alarms**
-```json
+
+```js
 {
     "type": "castel_alarms",
     "acceleration": {
@@ -170,12 +172,14 @@ If parameter type is omitted:
     }
 }
 ```
+
 - `report` - if true will send notification to server upon event
 - `beep` - if true will sound upon event
 - `threshold` - normal values range where event does not occur. Each unit equals 1 g.
 
 **castel_obd**
-```json
+
+```js
 {
     "type": "castel_obd",
     "enable_pid_reports": <boolean>,
@@ -185,7 +189,8 @@ If parameter type is omitted:
 ```
 
 **charging_gmt100**
-```json
+
+```js
 {
     "type": "charging_gmt100",
     "mode": <string, on_need | ign_on_only | ign_on_|_low_charge>
@@ -193,7 +198,8 @@ If parameter type is omitted:
 ```
 
 **ddd_emails**
-```json
+
+```js
 {
     "type": "ddd_emails",
     "emails": <array of strings, valid emails, max size 5>
@@ -201,7 +207,8 @@ If parameter type is omitted:
 ```
 
 **digital_password**
-```json
+
+```js
 {
     "type": "digital_password",
     "password": <string> // 6 digits
@@ -209,7 +216,8 @@ If parameter type is omitted:
 ```
 
 **fcc_telfm**
-```json
+
+```js
 {
     "type": "fcc_telfm",
     "fuel_type": <string, gasoline | diesel | lpg>,
@@ -219,7 +227,7 @@ If parameter type is omitted:
 ```
 
 **galileo_tacho_control**
-```json
+```js
 {
     "type": "galileo_tacho_control",
     "function": "download"
@@ -229,7 +237,7 @@ If parameter type is omitted:
 
 
 **galileo_hds**
-```json
+```js
 {
     "type": "galileo_hds",
     "mode": <string, disable | enable>,
@@ -240,7 +248,7 @@ If parameter type is omitted:
 ```
 
 **harsh_behavior_hua_sheng**
-```json
+```js
 {
     "type": "harsh_behavior_hua_sheng",
     "mode": <string, disable | enable>,
@@ -251,7 +259,7 @@ If parameter type is omitted:
 ```
 
 **hbm_telfm**
-```json
+```js
 {
     "type": "hbm_telfm",
     "mode": <string, disable | enable>,
@@ -262,7 +270,7 @@ If parameter type is omitted:
 ```
 
 **hbm_telfm5x**
-```json
+```js
 {
     "type": "hbm_telfm5x",
     "mode": <string, disable | enable>,
@@ -271,15 +279,16 @@ If parameter type is omitted:
     "max_angular_velocity": <double, 0.5-10> //rad/s
 }
 ```
+
 - `max_acceleration_force` – It is max allowed acceleration force which can be reached while accelerating without
-triggering harsh acceleration event.
+  triggering harsh acceleration event.
 - `max_braking_force` – It is max allowed braking force which can be reached while braking without triggering
-harsh braking event.
+  harsh braking event.
 - `max_angular_velocity` – It is max allowed cornering angle which can be reached while cornering without triggering
-harsh cornering event.
+  harsh cornering event.
 
 **hbm_ql**
-```json
+```js
 {
     "type": "hbm_ql",
     "mode": <string, disable | enable>,
@@ -295,7 +304,7 @@ harsh cornering event.
 ```
 
 **hbm_ms_ql**
-```json
+```js
 {
     "type": "hbm_ms_ql",
     "mode": <string, disable | gps_only | motion_sensor_only | gps_and_motion_sensor>,
@@ -316,7 +325,7 @@ harsh cornering event.
 ```
 
 **harsh_behavior_bce**
-```json
+```js
 {
     "type": "harsh_behavior_bce",
     "is_switched_off": <boolean>,
@@ -327,7 +336,7 @@ harsh cornering event.
 ```
 
 **harsh_behavior_concox_x1**
-```json
+```js
 {
     "type": "harsh_behavior_concox_x1",
     "acc_speed": <int, 0 - 100>,
@@ -338,7 +347,7 @@ harsh cornering event.
 ```
 
 **harsh_behavior_tramigo**
-```json
+```js
 {
     "type": "harsh_behavior_tramigo",
     "mode": <string, disable | enable>,
@@ -348,7 +357,7 @@ harsh cornering event.
 ```
 
 **harsh_behavior_ruptela**
-```json
+```js
 {
     "type": "harsh_behavior_ruptela",
     "braking_limit": <int, 0 - 100>,
@@ -357,7 +366,7 @@ harsh cornering event.
 ```
 
 **nimbelink_accel**
-```json
+```js
 {
     "type": "nimbelink_accel",
     "mode": <string, disable | enable>,
@@ -370,7 +379,7 @@ harsh cornering event.
 
 
 **hua_sheng_vibration_sensitivity**
-```json
+```js
 {
     "type": "hua_sheng_vibration_sensitivity",
     "sensitivity": <string, easy | normal | hard | hardest>
@@ -378,7 +387,7 @@ harsh cornering event.
 ```
 
 **ign_src_suntech**
-```json
+```js
 {
     "type": "ign_src_suntech",
     "mode": <string, power_voltage | din1 | movement>,
@@ -388,7 +397,7 @@ harsh cornering event.
 ```
 
 **ign_src_telfm**
-```json
+```js
 {
     "type": "ign_src_telfm",
     "mode": <string, power_voltage | din1 | movement>,
@@ -398,7 +407,7 @@ harsh cornering event.
 ```
 
 **locus_sec**
-```json
+```js
 {
     "type": "locus_sec",
     "signature": <string, length = 1 - 32>,
@@ -408,7 +417,7 @@ harsh cornering event.
 ```
 
 **phonebook_gt300**
-```json
+```js
 {
     "type": "phonebook_gt300",
     "capacity": 20,
@@ -417,7 +426,7 @@ harsh cornering event.
 ```
 
 **phonebook_pt100**
-```json
+```js
 {
     "type": "phonebook_pt100",
     "capacity": 3,
@@ -426,7 +435,7 @@ harsh cornering event.
 ```
 
 **pwr_off_key**
-```json
+```js
 {
     "type": "pwr_off_key",
     "mode": <string, enable | disable>
@@ -434,7 +443,7 @@ harsh cornering event.
 ```
 
 **scat_mayak_bt_control**
-```json
+```js
 {
     "type": "scat_mayak_bt_control",
     "function": <string, bt_disable | bt_enable | bt_clear | bt_write>,
@@ -443,7 +452,7 @@ harsh cornering event.
 ```
 
 **sos_key**
-```json
+```js
 {
     "type": "sos_key",
     "mode": <string, report | call_report>,
@@ -452,7 +461,7 @@ harsh cornering event.
 ```
 
 **starcom_impact**
-```json
+```js
 {
     "type": "starcom_impact",
     "strong_duration": <int, 0 - 14>,
@@ -469,7 +478,7 @@ harsh cornering event.
 - `weak_force` - required impact force to trigger weak impact event. Each unit equals about 1.1g. 
 
 **tacho_company_card**
-```json
+```js
 {
     "type": "tacho_company_card",
     "company_card_number": <string> // 16 HEX digits (0-9A-F)
@@ -477,7 +486,7 @@ harsh cornering event.
 ```
 
 **tacho_remote_download**
-```json
+```js
 {
     "type": "tacho_remote_download",
     "company_card_number": <string>, // 16 HEX digits (0-9A-F)
@@ -487,7 +496,7 @@ harsh cornering event.
 ```
 
 **teltonika_tacho_request**
-```json
+```js
 {
     "type": "teltonika_tacho_request",
     "data_type": <string, overview | activities | eventsAndFaults | detailedSpeed | technicalData | card1Download | card2Download>,
@@ -497,7 +506,7 @@ harsh cornering event.
 ```
 
 **temporary_digital_password**
-```json
+```js
 {
     "type": "temporary_digital_password",
     "password": <string>, // 6 digits
@@ -506,7 +515,7 @@ harsh cornering event.
 ```
 
 **time_shift**
-```json
+```js
 {
     "type": "time_shift",
     "offset": <double, -24.0 - 24.0> //hours
@@ -514,7 +523,7 @@ harsh cornering event.
 ```
 
 **tow_detection_ql**
-```json
+```js
 {
     "type": "tow_detection_ql",
     "mode": <string, disable | enable>,
@@ -528,7 +537,7 @@ harsh cornering event.
 ```
 
 **tow_detection_ql2**
-```json
+```js
 {
     "type": "tow_detection_ql2",
     "mode": <string, disable | enable>,
@@ -542,7 +551,7 @@ harsh cornering event.
 ```
 
 **tow_detection_telfm**
-```json
+```js
 {
     "type": "tow_detection_telfm",
     "mode": <string, disable | enable>,
@@ -559,7 +568,7 @@ harsh cornering event.
 ```
 
 **virtual_ign_ql**
-```json
+```js
 {
     "type": "virtual_ign_ql",
     "mode": <string, disabled | power_voltage | motion_sensor>,
@@ -568,6 +577,7 @@ harsh cornering event.
     "motion_duration_to_on": <int, 1 - 255>,
 }
 ```
+
 - `engine_off_to_tow` – A time parameter to judge whether the device is considered towed after the engine off. If the motion sensor doesn’t detect stillness within the specified time after engine off the device is being towed.
 - `fake_tow_delay` – After engine off and stillness detected, if motion sensor detects moving again, the device turns into a state called fake tow. If the device keeps in fake tow after a period of time defined by this parameter, it is considered towed.
 - `tow_interval` – The period to send alarm messages.
@@ -590,10 +600,9 @@ Set special settings for a specified tracker with the new one.
 * **value** - **JSON object**. Settings object, see above
 
 #### return:
+
 ```json
-{
-    "success": true
-}
+{ "success": true }
 ```
 
 #### errors:

@@ -172,15 +172,10 @@ Returns descriptions of forms, created on the basis of specified form template. 
 ```
 
 *   **submit_period** (*&lt;period_object&gt;, optional*).
-
 *   **task_creation_period** (*&lt;period_object&gt;, optional*).
-
 *   **task_from_period** (*&lt;period_object&gt;, optional*).
-
 *   **task_to_period** (*&lt;period_object&gt;, optional*).
-
 *   **task_arrival_period** (*&lt;period_object&gt;, optional*).
-
 *   **task_completion_period** (*&lt;period_object&gt;, optional*).
 
 ```js

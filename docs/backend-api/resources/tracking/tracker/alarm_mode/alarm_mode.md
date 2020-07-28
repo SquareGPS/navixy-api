@@ -58,7 +58,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/set' \
 #### response:
 
 ```json
-{"success": true}
+{ "success": true }
 ```
 
 #### errors:

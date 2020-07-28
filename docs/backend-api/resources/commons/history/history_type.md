@@ -17,7 +17,7 @@ Returns available history types with localized descriptions.
 
 #### return:
 
-```json
+```js
 {
     "success": true, 
     "list": [<history_type>, ...]
@@ -26,7 +26,7 @@ Returns available history types with localized descriptions.
 
 where **history_type** is
 
-```json
+```js
 {
     "type": <string>,       // history type, e.g. "alarmcontrol"
     "description": <string> // localized description, e.g. "Car alarm"

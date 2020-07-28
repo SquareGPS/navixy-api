@@ -82,10 +82,8 @@ Delete checkpoint with the specified id.
 
 #### return:
 
-```js
-{
-    "success": true
-}
+```json
+{ "success": true }
 ```
 
 #### errors:

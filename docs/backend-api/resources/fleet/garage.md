@@ -26,10 +26,12 @@ Get all garages belonging to user.
 
 #### return:
 
-    {
-        "success": true,
-        "list": [ <garage>, ... ]
-    }
+```js
+{
+    "success": true,
+    "list": [ <garage>, ... ]
+}
+```
     
 
 #### errors:
@@ -50,11 +52,12 @@ Create new garage.
 
 #### return:
 
-    {
-        "success": true,
-        "id": 111 //id of the created garage
-    }
-
+```js
+{
+    "success": true,
+    "id": 111 //id of the created garage
+}
+```
 
 #### errors:
 
@@ -74,9 +77,9 @@ Update existing garage.
 
 #### return:
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
 
 
 #### errors:
@@ -97,9 +100,9 @@ Delete garage with the specified id.
 
 #### return:
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
     
 
 #### errors:

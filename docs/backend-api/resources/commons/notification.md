@@ -7,7 +7,7 @@ description: /notification
 List user notifications.
 
 #### return:
-```javascript
+```js
 {
     "success": true,
     "list": [<notification>, ...]
@@ -15,7 +15,8 @@ List user notifications.
 ```
 
 where
-```javascript
+
+```js
 <notification> =
     {
         "id": <int>,

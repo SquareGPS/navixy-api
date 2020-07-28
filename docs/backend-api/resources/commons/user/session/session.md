@@ -9,4 +9,6 @@ Prolongs current user session.
 
 #### return:
 
-    { "success": true }
+```json
+{ "success": true }
+```

@@ -8,7 +8,8 @@ description: /subuser/security_group
 Contains API calls related to security groups, that is, groups of sub-users with the specified set of rights and privileges.
 
 ## Security group object structure
-```javascript
+
+```js
 ${security_group} = {
       "id": 103, //group id, can be null (when creating new security group)
       "label": "Managers", //group label
@@ -35,6 +36,7 @@ Absolute majority of read operations does not require any rights (that is, they 
 Most f data-modifying operations, on the contrary, require some rights to be present.
 
 Possible rights are:
+
 *   admin, – master user-only, can't be assigned to security groups
 *   tracker_update,
 *   tracker_register,
@@ -59,10 +61,12 @@ Create new security group.
 **required subuser rights:** admin (available only to master users)
 
 #### parameters:
+
 * **group** - **JSON object**. ${security_group} without “id” field
 
 #### return:
-```javascript
+
+```js
 {
     "success": true,
     "id": ${id of the created security group}
@@ -86,7 +90,8 @@ All sub-users belonging to this group will be assigned to default (null) securit
 * **security_group_id** - **int**. id of security group, which must be deleted.
 
 #### return:
-```javascript
+
+```json
 {
     "success": true,
 }
@@ -108,7 +113,8 @@ List all security groups belonging to current user.
 none.
 
 #### return:
-```javascript
+
+```js
 {
     "success": true,
     "list": [${security_group}, ... ] //list of all sub-users belonging to this master account
@@ -117,6 +123,7 @@ none.
 Security group object is described [here](#security-group-object-structure).
 
 #### errors:
+
 *   13 – Operation not permitted – if user has insufficient rights
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 
@@ -131,9 +138,10 @@ Update existing security group.
 * **group** - **JSON object**. ${security_group} with “id” field
 
 #### return:
-```javascript
+
+```json
 {
-    "success": true,
+    "success": true
 }
 ```
 

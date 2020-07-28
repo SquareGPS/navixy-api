@@ -7,7 +7,8 @@ description: /user/audit
 This method is called when user has opened UI.
 
 #### return:
-```javascript
+
+```json
 {
     "success": true
 }

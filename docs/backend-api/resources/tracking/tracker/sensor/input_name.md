@@ -17,7 +17,8 @@ For every input following properties are returned: *input_name* and *description
 *description* is made in current user's language (according to [locale settings](../../../commons/user/settings/settings.md)).
 
 Example:
-```javascript
+
+```js
 {
   "success": true,
   "list": [

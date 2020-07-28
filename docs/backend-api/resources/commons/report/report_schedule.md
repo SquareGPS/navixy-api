@@ -53,11 +53,13 @@ name | description | type
 schedule|<schedule_entry> object without fields which are _IGNORED_| JSON object
 
 #### return:
-    {
-        "success": true,
-        "id": 111 //id of the created schedule entry
-    }
-    
+
+```ja
+{
+    "success": true,
+    "id": 111 //id of the created schedule entry
+}
+```
 
 #### errors:
 * 217 - List contains nonexistent entities (if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user))
@@ -77,11 +79,15 @@ name | description | type
 schedule_id | Id of the report schedule to delete | int
 
 #### return:
-    {
-        "success": true
-    }
+
+```json
+{
+    "success": true
+}
+```
   
 #### errors:
+
 *   201 - Not 
 
 
@@ -94,11 +100,12 @@ Get all report schedules belonging to user.
 
 #### return:
 
-    {
-        "success": true,
-        "list": [ <schedule_entry>, ... ]
-    }
-    
+```js
+{
+    "success": true,
+    "list": [ <schedule_entry>, ... ]
+}
+```
 
 #### errors:
 
@@ -115,9 +122,12 @@ name | description | type
 schedule | <schedule> object without fields which are _IGNORED_| JSON object
 
 #### return:
-    {
-        "success": true
-    }
+
+```json
+{
+    "success": true
+}
+```
     
 #### errors:
 

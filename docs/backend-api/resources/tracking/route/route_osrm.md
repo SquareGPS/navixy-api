@@ -37,24 +37,25 @@ Where **location** described in [data types description section](../../../gettin
 #### errors:
 *   215 (External service error)
 *   218 (Malformed external service parameters)
-```js
-{
-    "success": false,
-    "status": {
-        "code": 218,
-        "description": "Malformed external service parameters"
-    },
-    "errors": [
-        {
-            "status": "NOT_FOUND", // NOT_FOUND or UNKNOWN_ERROR
-            "status_code": 207,    // OSRM status code (don't rely on it)
-            "message": "Cannot find route between points" // OSRM error message (don't rely on it)
-        }
-    ]
-}
-```
-where status is one of:
-    *   **NOT_FOUND** – indicates at least one of the locations specified in the request's origin, destination, or waypoints could not be geocoded, or OSRM cannot find route.
-    *   **UNKNOWN_ERROR** – unexpected OSRM error code
+    ```js
+    {
+        "success": false,
+        "status": {
+            "code": 218,
+            "description": "Malformed external service parameters"
+        },
+        "errors": [
+            {
+                "status": "NOT_FOUND", // NOT_FOUND or UNKNOWN_ERROR
+                "status_code": 207,    // OSRM status code (don't rely on it)
+                "message": "Cannot find route between points" // OSRM error message (don't rely on it)
+            }
+        ]
+    }
+    ```
+    where status is one of:
+
+    *   `NOT_FOUND` – indicates at least one of the locations specified in the request's origin, destination, or waypoints could not be geocoded, or OSRM cannot find route.
+    *   `UNKNOWN_ERROR` – unexpected OSRM error code.
 
 *   236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without “routing” tariff feature

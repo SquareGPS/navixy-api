@@ -8,7 +8,7 @@ Get proposal objects that could be used for driver journal entry creation. Propo
 
 #### structure:
 
-    [api_base_url]/driver/journal/proposal/list?hash=your_hash&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS&tracker_id=123456
+    https://api.navixy.com/v2/driver/journal/proposal/list?hash=your_hash&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS&tracker_id=123456
 
 #### parameters:
 
@@ -20,21 +20,22 @@ Get proposal objects that could be used for driver journal entry creation. Propo
 
 #### example:
 
-    [api_base_url]/driver/journal/proposal/list?hash=22eac1c27af4be7b9d04da2ce1af111b&from=2020-05-01 00:00:00&to=2020-05-15 23:59:59&tracker_id=518076
+    https://api.navixy.com/v2/driver/journal/proposal/list?hash=22eac1c27af4be7b9d04da2ce1af111b&from=2020-05-01 00:00:00&to=2020-05-15 23:59:59&tracker_id=518076
 
 #### response:
 
-```javascript
-    {
-        "success": true,
-        "list": [ <proposal_object>, ... ]
-    }
+```js
+{
+    "success": true,
+    "list": [ <proposal_object>, ... ]
+}
 ```
+
 #### where
 
 **proposal_object** is:
 
-```json
+```js
 {
       "tracker_id": 1, // id of the tracker
       "employee_id": 1, // nullable. Driver's id on the current "subtrack"

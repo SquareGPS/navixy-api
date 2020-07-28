@@ -30,7 +30,8 @@ Switch LED state for a specified tracker.
 * **value** - **boolean**. new LED state, true – ON, false – OFF
 
 #### return:
-```javascript
+
+```json
 { "success": true }
 ```
 

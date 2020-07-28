@@ -7,7 +7,8 @@ description: /timezone
 Information about all supported timezones for the specified locale. Does not require user authorization.
 
 #### return:
-```javascript
+
+```js
 {
     "success": true,
     "list": [

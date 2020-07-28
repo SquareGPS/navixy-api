@@ -14,10 +14,9 @@ Assign another employee (“driver”) to this tracker
 * **new_employee_id** - **int**. Id of the new employee.
 
 #### return:
-```javascript
-{
-    "success": true
-}
+
+```json
+{ "success": true }
 ```
 
 #### errors:
@@ -32,7 +31,7 @@ Request to read the current employee assigned to tracker, and when it was assign
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
 #### return:
-```javascript
+```js
 {
   "success": true,
   "current": { //current employee info, standard employee object, CAN BE NULL

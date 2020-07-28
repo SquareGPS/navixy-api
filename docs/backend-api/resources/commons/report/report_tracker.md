@@ -17,9 +17,11 @@ Delete report from db.
 
 #### return:
 
-    {
-        "success": true
-    }
+```json
+{
+    "success": true
+}
+```
 
 #### errors:
 
@@ -95,11 +97,13 @@ show_seconds|Flag to define whether time values in report should have format wit
 
 #### return:
 
-    {
-        "success": true,
-        "id": 222 // (int) id of the report queued for generation. 
-                  // Can be used to request report generation status and to retrieve generated report
-    }
+```js
+{
+    "success": true,
+    "id": 222 // (int) id of the report queued for generation. 
+              // Can be used to request report generation status and to retrieve generated report
+}
+```
 
 #### errors:
 *   15 (Too many requests / rate limit exceeded) - the number of reports created by one user in parallel is limited.
@@ -127,31 +131,33 @@ Returns info about all available generated or in-progress reports.
 **required subuser rights**: reports
 
 #### return:
+
+```js
+{
+    "success": true,"list": [
     {
-        "success": true,"list": [
-        {
-            "from": <"from" parameter from generate(..)>, //string
-            "to": <"to" parameter from generate(..)>, //string
-            "created": <date when report was created, e.g. "2013-08-08 19:00:00">, //string
-            "time_filter": <"time_filter" parameter from generate(..)>,
-            "title": <report title, e.g. "Trip report">,
-            "parameters": { 
-                "geocoder": <geocoder which was used for report, e.g. "google">, //string
-                "trackers": <list of tracker ids used for report, e.g. [3029]>,  //int[]
-                "plugins": [ //list of parameters for all plugins which were used to generate report
-                    {
-                        "plugin_id": <plugin id>, //int
-                        <plugin-specific parameters>
-                    }, 
-                    ...
-                ]
-            }, 
-            "percent": <report readiness in percent, e.g. 75>,   //int
-            "id": <report id which can be used to retrieve or download report> //int
-        },
-        ...
-    ]}
-    
+        "from": <"from" parameter from generate(..)>, //string
+        "to": <"to" parameter from generate(..)>, //string
+        "created": <date when report was created, e.g. "2013-08-08 19:00:00">, //string
+        "time_filter": <"time_filter" parameter from generate(..)>,
+        "title": <report title, e.g. "Trip report">,
+        "parameters": { 
+            "geocoder": <geocoder which was used for report, e.g. "google">, //string
+            "trackers": <list of tracker ids used for report, e.g. [3029]>,  //int[]
+            "plugins": [ //list of parameters for all plugins which were used to generate report
+                {
+                    "plugin_id": <plugin id>, //int
+                    <plugin-specific parameters>
+                }, 
+                ...
+            ]
+        }, 
+        "percent": <report readiness in percent, e.g. 75>,   //int
+        "id": <report id which can be used to retrieve or download report> //int
+    },
+    ...
+]}
+```
 
 #### errors:
 
@@ -170,11 +176,12 @@ Retrieve generated report as JSON.
 
 #### return:
 
-    {
-        "success": true,
-        "report": <body of the generated report. Its contents are plugin-dependent>   //Object
-    }
-    
+```js
+{
+    "success": true,
+    "report": <body of the generated report. Its contents are plugin-dependent>   //Object
+}
+```
 
 #### errors:
 
@@ -191,11 +198,13 @@ Returns a report generation status for the specified report id. **required subus
 
 #### return:
 
-    {
-        "success": true,
-        "percent_ready": <report readiness in percent, e.g. 75>   //int
-    }
-    
+```js
+{
+    "success": true,
+    "percent_ready": <report readiness in percent, e.g. 75>   //int
+}
+```
 
 #### errors:
+
 *   204 - Entity not found (if report with the specified id was not found)

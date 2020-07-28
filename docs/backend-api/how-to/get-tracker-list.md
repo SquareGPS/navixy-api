@@ -10,13 +10,13 @@ Now that we [have a hash](./get-session-hash.md) — let's start with essential 
 Navixy has tracking device as a main unit, so most requests would require you to specify one or several tracker ids. 
 You can receive a list of all trackers in user's account with [tracker/list](../resources/tracking/tracker/tracker.md#list) API request:
 
-    [api_base_url]/tracker/list?hash=your_hash
+    https://api.navixy.com/v2/tracker/list?hash=your_hash
 
 It will return to you
 ```json
 {
-  "success": true,
-  "list": [ ${tracker}, ... ] // list of JSON-objects
+    "success": true,
+    "list": [ ${tracker}, ... ] // list of JSON-objects
 }
 ```
 
@@ -31,7 +31,7 @@ This parameter has following constraints:
 
 To get a list of trackers with labels matching the filter use this API call:
 
-    [api_base_url]/tracker/list?hash=your_hash&label=[“tracker’s_name_contains”,…]
+    https://api.navixy.com/v2/tracker/list?hash=your_hash&label=[“tracker’s_name_contains”,…]
 
 Tracker object structure is next:
 ```json

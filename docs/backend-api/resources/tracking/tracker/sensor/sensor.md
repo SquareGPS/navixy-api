@@ -7,7 +7,8 @@ description: /sensor
 Data types
 Sensor sub-types
 Metering sensor
-```javascript
+
+```js
 {
     "type": "metering",
     "id": <int>,
@@ -20,8 +21,10 @@ Metering sensor
     "parameters": <parameters object>
 }
 ```
+
 where **parameters** is
-```javascript
+
+```js
 {
     "parent_ids": <array>, //optional, array of parent_ids for composite sensor
     "volume": <double>,    //optional, volume for composite sensor
@@ -31,8 +34,10 @@ where **parameters** is
     "max_lowering_by_mileage": <double>,    //optional, max legal value lowering per 100km
 }
 ```
+
 Discrete input
-```javascript
+
+```js
 {
     "type": "discrete",
     "id": <int>,
@@ -51,7 +56,8 @@ Create sensor.
 * **sensor** - [JSON object](#sensor). Sensor object.
 
 #### return:
-```javascript
+
+```js
 {
     "success": true,
     "id": 937 // int. id of created sensor
@@ -74,7 +80,8 @@ Delete sensor with **sensor_id** from the database.
 * **sensor_id** - **int**. Sensor id.
 
 #### return:
-```javascript
+
+```json
 { "success": true }
 ```
 
@@ -90,7 +97,7 @@ List tracker sensors binded to tracker with specified id (**tracker_id** paramet
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
 #### return:
-```javascript
+```js
 {
    "success": true,
    "list": [ <sensor>, ... ] // list of sensors
@@ -111,7 +118,8 @@ Update sensor.
 * **sensor** - [JSON object](#sensor). Sensor object.
 
 #### return:
-```javascript
+
+```json
 { "success": true }
 ```
 

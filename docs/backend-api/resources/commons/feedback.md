@@ -25,6 +25,6 @@ Screenshot and log will be added to email as attachments.
 
 #### return
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```

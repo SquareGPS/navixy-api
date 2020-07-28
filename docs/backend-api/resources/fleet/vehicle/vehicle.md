@@ -7,46 +7,47 @@ description: /vehicle
 
 **vehicle** type is JSON object:
 
-    {
-        "id": 222,//int
-        "tracker_id": 1, //int
-        "label": "AGV",//string
-        "max_speed": 90,// int
-        "model": "Renault KERAX",//string
-        "type": "truck",//string,  truck | car
-        "subtype": "tractor",//optional, string depends on type, null means undefined
-        "garage_id": null, // int
-        "trailer" : "trailer1", // string, optional
-        "manufacture_year" : 2001, // int, optional
-        "color" : "some color", // string (not RGB!), optional
-        "additional_info" : "additional info", // string, optional
-        "reg_number": "А001АА96", //string
-        "vin": "TMBJF25LXC6080000",//string
-        "chassis_number": "",//string
-        "frame_number" : "", // string, optional
-        "payload_weight": 32000, //int, kilograms
-        "payload_height": 1.2,//decimal
-        "payload_length": 1.0,//decimal
-        "payload_width": 1.0,//decimal
-        "passengers": 4,//int
-        "gross_weight" : null, // int, kilograms, optional
-        "fuel_type": "petrol",//string petrol | diesel | gas
-        "fuel_grade": "А-80",//string
-        "norm_avg_fuel_consumption": 9.0,//decimal, liters
-        "fuel_tank_volume": 50,//int
-        "fuel_cost" : 100.3, decimal (per liter), optional
-        "wheel_arrangement": "4x2", //string
-        "tyre_size": "255/65 R16",//string
-        "tyres_number": 4,//int
-        "liability_insurance_policy_number": "12345",//string
-        "liability_insurance_valid_till": "2015-03-01",//date
-        "free_insurance_policy_number": "",//string
-        "free_insurance_valid_till": null,//date
-        "icon_id" : 55, // int, can be null, can only be updated via avatar/assign(...)
-        "avatar_file_name": null,//<string>,
-        "tags": [1,2] //array of tag ids
-    }
-
+```js
+{
+    "id": 222,//int
+    "tracker_id": 1, //int
+    "label": "AGV",//string
+    "max_speed": 90,// int
+    "model": "Renault KERAX",//string
+    "type": "truck",//string,  truck | car
+    "subtype": "tractor",//optional, string depends on type, null means undefined
+    "garage_id": null, // int
+    "trailer" : "trailer1", // string, optional
+    "manufacture_year" : 2001, // int, optional
+    "color" : "some color", // string (not RGB!), optional
+    "additional_info" : "additional info", // string, optional
+    "reg_number": "А001АА96", //string
+    "vin": "TMBJF25LXC6080000",//string
+    "chassis_number": "",//string
+    "frame_number" : "", // string, optional
+    "payload_weight": 32000, //int, kilograms
+    "payload_height": 1.2,//decimal
+    "payload_length": 1.0,//decimal
+    "payload_width": 1.0,//decimal
+    "passengers": 4,//int
+    "gross_weight" : null, // int, kilograms, optional
+    "fuel_type": "petrol",//string petrol | diesel | gas
+    "fuel_grade": "А-80",//string
+    "norm_avg_fuel_consumption": 9.0,//decimal, liters
+    "fuel_tank_volume": 50,//int
+    "fuel_cost" : 100.3, decimal (per liter), optional
+    "wheel_arrangement": "4x2", //string
+    "tyre_size": "255/65 R16",//string
+    "tyres_number": 4,//int
+    "liability_insurance_policy_number": "12345",//string
+    "liability_insurance_valid_till": "2015-03-01",//date
+    "free_insurance_policy_number": "",//string
+    "free_insurance_valid_till": null,//date
+    "icon_id" : 55, // int, can be null, can only be updated via avatar/assign(...)
+    "avatar_file_name": null,//<string>,
+    "tags": [1,2] //array of tag ids
+}
+```
 
 Subtypes:
 null means undefined
@@ -107,9 +108,9 @@ Delete vehicle with the specified id.
 
 #### return:
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
 
 
 #### errors:
@@ -122,10 +123,12 @@ Get all vehicles belonging to user.
 
 #### return:
 
-    {
-        "success": true,
-        "list": [ ${vehicle}, ... ] // list of JSON objects
-    }
+```js
+{
+    "success": true,
+    "list": [ ${vehicle}, ... ] // list of JSON objects
+}
+```
 
 
 where **vehicle** described [here](#vehicle).
@@ -145,11 +148,12 @@ Get vehicle by id.
 
 #### return:
 
-    {
-        "success": true,
-        "value": <vehicle>
-    }
-
+```
+{
+    "success": true,
+    "value": <vehicle>
+}
+```
 
 #### errors:
 
@@ -168,7 +172,9 @@ Update existing vehicle.
 
 #### return:
 
-    { "success": true }
+```json
+{ "success": true }
+```
 
 
 #### errors:

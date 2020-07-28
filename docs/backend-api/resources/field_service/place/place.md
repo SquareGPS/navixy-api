@@ -34,9 +34,9 @@ description: /place
 Get place by ID.
 
 #### parameters:
-name | description | type
---- | --- | ---
-place_id | ID of the place | int
+|name |description |type |
+|:--- |:--- |:--- |
+|place_id |ID of the place |int |
 
 #### return:
 ```js
@@ -107,7 +107,7 @@ name | description | type
 place | &lt;place&gt; | JSON object
 
 #### return:
-```js
+```json
 { "success": true }
 ```
 
@@ -125,7 +125,7 @@ name | description | type
 place_id | ID of the place to delete | int
 
 #### return:
-```js
+```json
 { "success": true }
 ```
 
@@ -149,13 +149,16 @@ default_radius | Optional, radius for point, meters, default is 100 | Integer
 *If **file_id** is set – **batch** parameter will be ignored.*
 
 return:
+
 ```js
 {
     "success": true,
     "list": [ <checked_place>, ... ]
 }
 ```
-where **checked_place** is:
+
+where `checked_place` is:
+
 ```js
 {
     ... // all fields from <place>

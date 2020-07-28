@@ -19,7 +19,8 @@ Give access for sub-user to the specified trackers.
 * **trackers** - **array of int**. array of tracker id-s to associate with the specified sub-user. All trackers must belong to current master user.
 
 #### return:
-```javascript
+
+```json
 {
     "success": true
 }
@@ -42,7 +43,8 @@ Get a list of tracker ids to which this sub-user has access.
 * **subuser_id** - **int**. id of the sub-user belonging to current account.
 
 #### return:
-```javascript
+
+```js
 {
     "success": true,
     "list" : [${tracker_id1}, ...] //list of tracker ids to which this sub-user has acccess
@@ -66,7 +68,8 @@ Disable access for sub-user to the specified trackers.
 * **trackers** - **array of int**. array of tracker id-s to associate with the specified sub-user. All trackers must belong to current master user.
 
 #### return:
-```javascript
+
+```json
 {
     "success": true
 }

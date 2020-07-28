@@ -26,8 +26,6 @@ description: /route
 ```
 
 
-
----
 ## assign(…)
 
 (Re)assign route to new tracker (or make it unassigned).
@@ -57,7 +55,6 @@ description: /route
 
 
 
----
 ## create(…)
 
 Create new route. One of checkpoints can have id (in this case it must be a task) - it will be transmuted from
@@ -133,7 +130,6 @@ If there nothing to return, then parameter "external_id_counts" will not be pres
 
 
 
----
 ## delete(…)
 
 Delete route (and its checkpoints) with the specified id.
@@ -158,7 +154,6 @@ Delete route (and its checkpoints) with the specified id.
 
 
 
----
 ## list(…)
 
 Get all routes belonging to user with optional filtering.
@@ -187,7 +182,6 @@ general types only
 
 
 
----
 ## read(…)
 
 Get route by id.
@@ -213,7 +207,6 @@ where **route** described [here](#route).
 
 
 
----
 ## update(…)
 
 Update existing route. Note that you cannot change task owner using this method.<br>
