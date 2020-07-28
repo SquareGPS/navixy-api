@@ -21,7 +21,7 @@ Type of **from** is [date/time](../../../getting-started.md#data-types). Default
 
 #### return:
 
-```json
+```js
 {
     "success": true,
     "list": [${history_entry}, ... ] //list of zero or more JSON objects
@@ -49,7 +49,7 @@ Type of **from** is [date/time](../../../getting-started.md#data-types). Default
 
 #### return:
 
-```json
+```js
 {
     "success": true,
     "count": <count> // int

@@ -23,7 +23,7 @@ in addition to standard user session, this call supports special *DELIVERY* sess
 #### example:
 
 ```abap
-$ curl -X POST '[api_base_url]/delivery/read' \
+$ curl -X POST 'https://api.navixy.com/v2/delivery/read' \
   -H 'Content-Type: application/json' \ 
   -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": "259876"}' 
 ```
@@ -68,7 +68,7 @@ in addition to standard user session, this call supports special *DELIVERY* sess
 #### example:
 
 ```abap
-$ curl -X POST '[api_base_url]/delivery/list' \
+$ curl -X POST 'https://api.navixy.com/v2/delivery/list' \
   -H 'Content-Type: application/json' \ 
   -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": "259876"}' 
 ```

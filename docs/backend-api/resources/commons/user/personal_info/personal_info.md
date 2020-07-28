@@ -22,10 +22,10 @@ Require plugin with **id=45**.
 *   **post_city** – optional. string. City from post address.
 *   **post\_street\_address** – optional. string. User’s post address,
 
-and for “legal\_entity” or “sole\_trader”:
+and for `legal_entity` or `sole_trader`:
 
-*   **iec** – string. Industrial Enterprises Classifier aka “KPP”. Used in Russia. For “legal_entity” only.
-*   **legal_name** – string. User legal (juridical) name. For “legal_entity” only.
+*   **iec** – string. Industrial Enterprises Classifier aka “KPP”. Used in Russia. For `legal_entity` only.
+*   **legal_name** – string. User legal (juridical) name. For `legal_entity` only.
 *   **okpo_code** - string, optional, 8 or 10 characters maximum. All-Russian Classifier of Enterprises and Organizations. Used in Russia.
 *   **registered_country** – string. Country part of user’s registered address.
 *   **registered_index** – string. Index part of user’s registered address.
@@ -38,8 +38,9 @@ and for “legal\_entity” or “sole\_trader”:
 
 #### return:
 
-    { "success": true }
-
+```json
+{ "success": true }
+```
 
 #### errors:
 

@@ -24,7 +24,7 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 * **redirect_target** - (optional) URL to redirect If redirect_target passed return redirect to ?response=
 
 #### return:
-```javascript
+```js
 {
     "success": true,
     "value": <string> // avatar file name

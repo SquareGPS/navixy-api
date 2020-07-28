@@ -11,11 +11,13 @@ One can imagine that this works similarly to the browser cache / local storage m
 Read setting value by key.
 
 #### parameters:
+
 **key** - string. Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, '_' and '-'.
 
 
 #### returns:
-```
+
+```json
 {
   "success": true,
   "value": "previously saved value"
@@ -23,7 +25,8 @@ Read setting value by key.
 ```
 
 When nonexistent key is provided:
-```
+
+```json
 {
   "success": false,
   "status": {
@@ -48,10 +51,9 @@ Set setting value.
 **value** - string. Length should be between 0 and 8192 symbols. 
 
 #### returns:
-```
-{
-  "success": true
-}
+
+```json
+{ "success": true }
 ```
 
 #### errors:

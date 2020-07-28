@@ -33,7 +33,8 @@ Replaces the calibration data for sensor.
 * **data** - **array of JSON object**. Array of calibration data objects, e.g. [{“in”:0.0,”out”:0.0},{“in”:0.7,”out”:60.0}]
 
 #### return:
-```javascript
+
+```json
 { "success": true }
 ```
 
@@ -57,7 +58,8 @@ If XML file contains information about multiple sensors, user must specify which
 * **file** - **file upload**. A file upload containing LLSmonitor XML file
 
 #### return:
-```javascript
+
+```json
 { "success": true }
 ```
 

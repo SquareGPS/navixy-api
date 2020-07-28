@@ -17,10 +17,9 @@ at least two checkpoints.
 * **checkpoint_id** – **int**. Checkpoint ID.
 
 #### return:
-```javascript
-    {
-        "success": true
-    }
+
+```json
+{ "success": true }
 ```
 
 ## transmute(...)
@@ -33,8 +32,6 @@ Transmute checkpoint to task and delete its route and other checkpoints in the r
 
 #### return:
 
-```javascript
-    {
-        "success": true
-    }
+```json
+{ "success": true }
 ```

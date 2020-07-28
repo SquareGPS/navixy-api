@@ -15,8 +15,9 @@ Changes password of user with the provided session hash (it is contained in pass
 
 #### return:
 
-    { "success": true }
-
+```json
+{ "success": true }
+```
 
 #### errors:
 
@@ -33,8 +34,9 @@ Changes password for logined user.
 
 #### return:
 
-    { "success": true }
-
+```json
+{ "success": true }
+```
 
 #### errors:
 

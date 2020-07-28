@@ -9,7 +9,7 @@ Creates new bill for the user. Required subuser rights: `payment_create`.
 
 #### structure:
 
-    [api_base_url]/bill/create?hash=your_hash&payer=payer_name&sum=sum_of_bill
+    https://api.navixy.com/v2/bill/create?hash=your_hash&payer=payer_name&sum=sum_of_bill
 
 #### parameters:
 
@@ -20,15 +20,15 @@ Creates new bill for the user. Required subuser rights: `payment_create`.
 
 #### example:
 
-    [api_base_url]/bill/create?hash=22eac1c27af4be7b9d04da2ce1af111b&payer=John Doe&sum=500
+    https://api.navixy.com/v2/bill/create?hash=22eac1c27af4be7b9d04da2ce1af111b&payer=John Doe&sum=500
 
 #### response:
 
-```javascipt
-    {
-        "success": true,
-        "value": 6421     // created bill id
-    }
+```js
+{
+    "success": true,
+    "value": 6421     // created bill id
+}
 ```
 
 #### errors:
@@ -43,7 +43,7 @@ Shows list of bills with their parameters in array. Required subuser rights: pay
 
 #### structure:
 
-    [api_base_url]/bill/list?hash=your_hash&limit=number_of_bills&offset=start_from
+    https://api.navixy.com/v2/bill/list?hash=your_hash&limit=number_of_bills&offset=start_from
 
 #### parameters:
 
@@ -55,30 +55,30 @@ Shows list of bills with their parameters in array. Required subuser rights: pay
 
 #### example:
 
-    [api_base_url]/bill/list?hash=22eac1c27af4be7b9d04da2ce1af111b&limit=9500&offset=0
+    https://api.navixy.com/v2/bill/list?hash=22eac1c27af4be7b9d04da2ce1af111b&limit=9500&offset=0
 
 #### response:
 
-```javascript
-    {
-        "success": true,
-        "count": 7,      // total number of bills
-        "bills": [${bill}, ...]
-    }
+```js
+{
+    "success": true,
+    "count": 7,      // total number of bills
+    "bills": [${bill}, ...]
+}
 ```
 
 where **bill** is
 
-```javascript
-    {
-        "order_id": 63602,                 // unique id
-        "created": "2012-03-05 11:55:03",  // creation date/time
-        "sum": 150.0,                      // bill sum in rubbles
-        "status": "created",               // bill order status
-        "positions": ["The subscription fee for the services of Gdemoi Account W3"],  // list of position names.
-                                           // usually contains one element for bill
-        "link": "http://bill.navixy.com/xK1QEYK" // url to order
-    }
+```js
+{
+    "order_id": 63602,                 // unique id
+    "created": "2012-03-05 11:55:03",  // creation date/time
+    "sum": 150.0,                      // bill sum in rubbles
+    "status": "created",               // bill order status
+    "positions": ["The subscription fee for the services of Gdemoi Account W3"],  // list of position names.
+                                       // usually contains one element for bill
+    "link": "http://bill.navixy.com/xK1QEYK" // url to order
+}
 ```
 
 If bill created using [/bill/create()](#create) call then **positions** will contains exactly one element.

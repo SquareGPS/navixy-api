@@ -10,7 +10,7 @@ Get last values for all metering sensors and state values
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
 #### return:
-```javascript
+```js
 {
   "success": true,
   "inputs": [

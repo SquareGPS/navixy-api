@@ -9,7 +9,7 @@ Gets marker on map for the checkin_id. Required tariff features: `checkin`.
 
 #### structure:
 
-    [api_base_url]/checkin/read?hash=your_hash&checkin_id=123456
+    https://api.navixy.com/v2/checkin/read?hash=your_hash&checkin_id=123456
 
 #### parameters:
 
@@ -19,10 +19,11 @@ Gets marker on map for the checkin_id. Required tariff features: `checkin`.
 
 #### example:
 
-    [api_base_url]/checkin/read?hash=22eac1c27af4be7b9d04da2ce1af111b&checkin_id=132215
+    https://api.navixy.com/v2/checkin/read?hash=22eac1c27af4be7b9d04da2ce1af111b&checkin_id=132215
 
 #### response:
-```javascript
+
+```js
 {
     "success": true,
     "value": <checkin_marker> // marker on map (see below)
@@ -30,6 +31,7 @@ Gets marker on map for the checkin_id. Required tariff features: `checkin`.
 ```
 
 #### errors
+
 *   7 – Invalid parameters
 *   204 – Entity not found – when the marker entry is not exists
 
@@ -39,9 +41,10 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 
 ####structure:
 
-    [api_base_url]/checkin/list?hash=your_hash&trackers=[tracker_id_n]&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS
+    https://api.navixy.com/v2/checkin/list?hash=your_hash&trackers=[tracker_id_n]&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS
 
 #### parameters:
+
 | name | description | type | format |
 | :---: | :---: | :---: | :---: |
 | trackers | array of tracker ids. all trackers must not be deleted or blocked (if list_blocked=false) | array of ints | [123456,223456,...] |
@@ -50,18 +53,20 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 
 #### example:
 
-    [api_base_url]/checkin/list?hash=22eac1c27af4be7b9d04da2ce1af111b&trackers=[616384,345623]&from=2020-08-05 03:06:00&to=2020-09-05 03:00:00
+    https://api.navixy.com/v2/checkin/list?hash=22eac1c27af4be7b9d04da2ce1af111b&trackers=[616384,345623]&from=2020-08-05 03:06:00&to=2020-09-05 03:00:00
 
 #### response:
-```javascript
+
+```js
 {
     "success": true,
     "list": [<checkin_marker>, ... ] // list of markers on map
 }
 ```
 
-where **checkin_marker** is:
-```javascript
+where `checkin_marker` is:
+
+```js
 {
     "id": 1,
     "marker_time": "2017-03-15 12:36:27", // required, time of marker creation
@@ -79,8 +84,9 @@ where **checkin_marker** is:
 }
 ```
 
-where **checkin_file** is:
-```javascript
+where `checkin_file` is:
+
+```js
 {
     "id": 16, // file id
     "storage_id": 1,

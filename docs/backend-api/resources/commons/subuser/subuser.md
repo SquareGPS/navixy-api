@@ -59,7 +59,8 @@ Delete sub-user. This operation cannot be reversed.
 * **subuser_id** - **int**. id of the sub-user belonging to current account
 
 #### return:
-```javascript
+
+```json
 {
     "success": true
 }
@@ -78,18 +79,22 @@ List all subusers belonging to current user.
 **required subuser rights:** admin (available only to master users)
 
 #### parameters:
+
 none
 
 #### return:
-```javascript
+
+```js
 {
     "success": true,
     "list": [<subuser>, ... ] //list of all sub-users belonging to this master account
 }
 ```
+
 Subuser object is described [here](#sub-user-object-structure).
 
 #### errors
+
 *   13 – Operation not permitted – if user has insufficient rights
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 
@@ -101,16 +106,19 @@ Allows you to create sub-users associated to your master account.
 **required subuser rights:** admin (available only to master users)
 
 #### parameters:
+
 * **user** - **JSON object**. <subuser> object without “id” field
 * **password** - **printable string**. 6 to 20 characters. New sub-user’s password.
 
 #### return:
-```javascript
+
+```js
 {
     "success": true,
     "id": <id of the created sub-user>
 }
 ```
+
 Subuser object is described [here](#sub-user-object-structure).
 
 #### errors
@@ -130,11 +138,13 @@ Update subuser data.
 * **user** - **JSON object**. <subuser> object with “id” field
 
 #### return:
-```javascript
+
+```json
 {
-    "success": true,
+    "success": true
 }
 ```
+
 Subuser object is described [here](#sub-user-object-structure).
 
 #### errors

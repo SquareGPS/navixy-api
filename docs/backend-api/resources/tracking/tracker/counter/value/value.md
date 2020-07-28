@@ -10,7 +10,7 @@ description: /value
 * **type** - **string**. counter type. one of ["odometer", "fuel_consumed", "engine_hours"].
 
 #### return:
-```javascript
+```js
 {
     "success": true,
     "value": 18.9  // float. last value of counter
@@ -29,7 +29,7 @@ Get values for counters of passed **type** and **trackers**
 * **type** - **string**. counter type, one of ["odometer", "fuel_consumed", "engine_hours"].
 
 #### return:
-```javascript
+```js
 {
   "success": true,
   "value": { // Map with tracker's ids as keys
@@ -51,7 +51,8 @@ Creates new counter of passed **type** (if not) and update its **value**.
 * **value** - **float**. A new value of counter.
 
 #### return:
-```javascript
+
+```json
 { "success": true }
 ```
 

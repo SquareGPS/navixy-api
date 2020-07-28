@@ -9,16 +9,16 @@ description: /avatar
 
 #### parameters:
 
-*   vehicle_id
-*   icon_id
+*   `vehicle_id`
+*   `icon_id`
 
 Assign icon\_id (from standard icon set) to this vehicle. Icon\_id can be null – this means that uploaded avatar should be used instead of icon.
 
 ##### return:
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
 
 
 ##### errors:
@@ -53,11 +53,12 @@ File part **mime** type must be one of :
 
 #### return:
 
-    {
-        "success": true,
-        "value": <string> // avatar file name
-    }
-
+```js
+{
+    "success": true,
+    "value": <string> // avatar file name
+}
+```
 
 #### errors:
 

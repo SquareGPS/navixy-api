@@ -103,7 +103,6 @@ Create new task schedule entry.
 
 
 
----
 ## delete(…)
 
 Delete task schedule with the specified id.
@@ -116,10 +115,8 @@ Delete task schedule with the specified id.
 
 #### return:
 
-```js
-{
-    "success": true
-}
+```json
+{ "success": true }
 ```
 
 #### errors:
@@ -128,7 +125,6 @@ Delete task schedule with the specified id.
 
 
 
----
 ## list(…)
 
 Get all task or route schedules belonging to user with optional filtering.<br>

@@ -12,11 +12,12 @@ In demo session allowed to create a new session only if it not already exists.
 
 #### return:
 
-    {
-        "success": true,
-        "value": "42fc7d3068cb98d233c3af749dee4a8d" // created session hash key
-    }
-
+```js
+{
+    "success": true,
+    "value": "42fc7d3068cb98d233c3af749dee4a8d" // created session hash key
+}
+```
 
 #### errors:
 
@@ -30,12 +31,13 @@ Return current user weblocator session key.
 
 #### return:
 
-    {
-        "success": true,
-        "value": <string> // session hash key
-    }
-
+```js
+{
+    "success": true,
+    "value": <string> // session hash key
+}
+```
 
 #### errors:
 
-*   201 – Not found in database (if there is no weblocator session)
+*   201 – Not found in database (if there is no weblocator session).

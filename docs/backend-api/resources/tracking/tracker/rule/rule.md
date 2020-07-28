@@ -5,7 +5,8 @@ description: /rule
 
 ## rule
 A rule element consists of following fields:
-```javascript
+
+```js
 {
     "id": ${int},
     "name": ${string},
@@ -28,7 +29,9 @@ A rule element consists of following fields:
     "auto_created": ${boolean} // optional
 }
 ```
+
 where
+
 * **type** is one of pre-defined types of rules
     * **alarmcontrol** - Car alarm triggered
     * **antenna_disconnect** - GPS antenna cut
@@ -182,7 +185,7 @@ where
     }
     ```
     * **type**=”**driver_assistance**”
-    ```javascript
+    ```js
     {
         "forward_collision_enable" : ${boolean}, // enable/disable notifications about forward collision warnings
         "headway_warning_enabled" :  ${boolean}, // notifications about headway warnings
@@ -190,13 +193,13 @@ where
     }
     ```
     * **type**=”**fuel_level_leap**”
-    ```javascript
+    ```json
     {
        "sensor_id": 123
     }
     ```
     * **type**=”**sensor_range**”
-    ```javascript
+    ```js
     {
         "sensor_id": 123,
         "min": 1.0, // (double) optional. null means negative infinity
@@ -205,7 +208,7 @@ where
     }
     ```
     * **type**=”**route**”
-    ```javascript
+    ```js
     {
        "allow_exit_at_endpoints": ${boolean} // optional, disable notifications for deviations at start and end points
     }
@@ -259,7 +262,8 @@ Delete rule with rule_id and all related objects from the database.
 * **rule_id** - **int**.
 
 #### return:
-```javascript
+
+```json
 { "success": true }
 ```
 
@@ -270,7 +274,8 @@ Delete rule with rule_id and all related objects from the database.
 List tracker rules binded to tracker with id=**tracker_id** or all user’s tracker rules if **tracker_id** not passed.
 
 #### return:
-```javascript
+
+```js
 {
    "success": true,
    "list": [ <rule>, ... ] // list of rules
@@ -287,7 +292,8 @@ Unbind trackers from rule with **rule_id**.
 * **trackers** - **array of int**. ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors.
 
 #### return:
-```javascript
+
+```json
 { "success": true }
 ```
 
@@ -303,7 +309,8 @@ Update rule and scheduled intervals.
 * **rule** - [JSON object](#rule).
 
 #### return:
-```javascript
+
+```json
 { "success": true }
 ```
 

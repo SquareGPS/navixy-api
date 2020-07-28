@@ -50,8 +50,6 @@ is will be deleted.
 * **checkpoints** - **checkpoint_schedule_entry\[\]**. Array of route's checkpoints.
 
 #### return:
-```js
-{
-    "success": true
-}
+```json
+{ "success": true }
 ```

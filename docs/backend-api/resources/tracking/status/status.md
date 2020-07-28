@@ -56,7 +56,7 @@ Delete status entry.
 * **status_id** – **int**. ID of the status belonging to authorized user.
 
 #### return:
-```js
+```json
 { "success": true }
 ```
 
@@ -91,7 +91,7 @@ Update status properties.
 * **status** – **JSON object**. <status> object with ID field
 
 #### return:
-```js
+```json
 { "success": true }
 ```
 

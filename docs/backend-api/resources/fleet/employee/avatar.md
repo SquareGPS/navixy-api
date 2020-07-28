@@ -7,27 +7,28 @@ description: /employee/avatar
 
 ## assign(…)
 
-Assign icon\_id (from standard icon set) to this employee. Icon\_id can be null – this means that uploaded avatar should be used instead of icon.
+Assign `icon_id` (from standard icon set) to this employee. 
+The `icon_id` can be `null` – this means that uploaded avatar should be used instead of icon.
 
 **required subuser rights**: employee_update
 
 #### parameters
 
-*   employee_id
-*   icon_id
+*   `employee_id`
+*   `icon_id`
 
 #### return:
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
     
 
 #### errors:
 
 *   201 – Not found in database (when employee with **employee_id** not found in db)
 
-----
+
 ## upload(…)
 
 Upload avatar image for specified employee.
@@ -56,11 +57,12 @@ File part **mime** type must be one of (see: \[source:api-server/src/main/java/c
 
 #### return:
 
-    {
-        "success": true,
-        "value": <string> // avatar file name
-    }
-
+```js
+{
+    "success": true,
+    "value": <string> // avatar file name
+}
+```
 
 #### errors:
 

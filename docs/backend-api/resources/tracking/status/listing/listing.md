@@ -21,18 +21,23 @@ Create new empty status listing.
 ```
 
 #### errors:
+
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 *   268 (Over quota) – if the user's quota for listings is exceeded
 
 ## delete(…)
+
 Delete status listing.
 
 **required subuser rights:** tracker_update
+
 #### parameters:
+
 * **listing_id** – **int**. ID of the status listing belonging to authorized user.
 
 #### return:
-```js
+
+```json
 { "success": true }
 ```
 
@@ -65,8 +70,9 @@ Update status listing properties.
 * **listing** – **JSON object**. <status_list> object with “id” and “entries” fields
 
 #### return:
-```js
-{ "success": true, }
+
+```json
+{ "success": true }
 ```
 
 #### errors:

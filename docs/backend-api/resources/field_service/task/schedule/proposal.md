@@ -7,7 +7,6 @@ description: /proposal
 
 
 
----
 ## list(…)
 
 Get all tasks and routes that will be created by schedule.
