@@ -32,10 +32,10 @@ Tracker is one of the key entities in our API. It represents tracking device reg
 where **tag_binding** is:
 
 ```js
-    {
-        "tag_id": {int}, // id of tag. must be unique for tracker
-        "ordinal": {int} // number that can be used as ordinal or kind of tag. must be unique for tracker. max value is 5
-    }
+{
+  "tag_id": {int}, // id of tag. must be unique for tracker
+  "ordinal": {int} // number that can be used as ordinal or kind of tag. must be unique for tracker. max value is 5
+}
 ```
 
 ## change_phone()
@@ -639,7 +639,7 @@ where **battery** is:
     "min_charge": {float},
     "low_charge": {float}, // charge level for the "low battery" rule triggering 
     "max_charge": {float}
-},
+}
 ```
 where **additional_fields** is:
 
@@ -648,7 +648,7 @@ where **additional_fields** is:
     "type": {string},
     "default_value": {string},
     "name": {string}
-},
+}
 ```
 
 #### Id type:
