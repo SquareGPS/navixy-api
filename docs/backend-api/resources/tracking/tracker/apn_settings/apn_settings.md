@@ -1,27 +1,40 @@
 ---
-title: /apn_settings
-description: /apn_settings
+title: APN settings by tracker ID
+description: APN settings by tracker ID
 ---
 
 ## read()
-Returns APN settings for the tracker.
+
+Gets the APN name/user/password and mobile operator of device by tracker_id.
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
+
+#### example:
+
+```abap
+$ curl -X POST 'https://api.navixy.com/v2/tracker/apn_settings/read' \
+-H 'Content-Type: application/json' \ 
+-d '{"tracker_id": "999199", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+#### response:
+
 ```json
 {
     "success": true,
     "value": {
-        "name":"internet",
-        "user":"",
-        "password":""
+        "name":"fast.tmobile.com",
+        "user":"tmobile",
+        "password":"tmobile"
     }
 }
 ```
 
 #### errors:
-*   201 – Not found in database (if tracker or APN settings are not found)
-*   208 – Device blocked
-*   214 – Requested operation not supported by the device (if the tracker does not have a GSM module or uses a bundled SIM card, the number of which is hidden from the user)
+
+* 201 – Not found in database (if tracker or APN settings are not found)
+* 208 – Device blocked
+* 214 – Requested operation not supported by the device (if the tracker does not have a GSM module or uses a bundled SIM card, the number of which is hidden from the user)

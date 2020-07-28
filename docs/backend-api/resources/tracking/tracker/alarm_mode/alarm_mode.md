@@ -1,42 +1,70 @@
 ---
-title: /alarm_mode
-description: /alarm_mode
+title: Alarm mode
+description: Alarm mode for tracker
 ---
 
 ## read()
-Request to read the state alarm mode of the device.
+
+Gets the state of alarm mode of device.
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
+
+#### example:
+
+```abap
+$ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/read' \
+-H 'Content-Type: application/json' \ 
+-d '{"tracker_id": "999199", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```js
 {
-   "success": true,
-   "enabled": <true if alarm mode is enabled> //boolean
+ "success": true,
+ "enabled": {boolean} // true if alarm mode is enabled
 }
 ```
 
 #### errors:
-*   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
-*   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
-*   214 – Requested operation or parameters are not supported by the device (if device does not support alarm mode)
+
+* 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
+* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
+* 214 – Requested operation or parameters are not supported by the device (if device does not support alarm mode)
 
 ## set()
-Request to change the state alarm mode of the device. The device must be online.
+
+Changes the state of alarm mode of device. The device must be online.
 
 #### parameters:
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
-* **enabled** - **boolean**. True if alarm mode shpuld be enabled.
 
-#### return:
-```javascript
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
+| enabled | True if alarm mode should be enabled | boolean | true/false |
+
+#### example:
+
+```abap
+$ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/set' \
+-H 'Content-Type: application/json' \ 
+-d '{"tracker_id": "999199", "enabled": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+#### response:
+
+```json
 {"success": true}
 ```
 
 #### errors:
-*   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
-*   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
-*   213 – Cannot perform action: the device is offline (if corresponding tracker is not connected to the server)
-*   214 – Requested operation or parameters are not supported by the device (if device does not support alarm mode)
-*   219 – Not allowed for clones of the device (if tracker is clone)
+
+* 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
+* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
+* 213 – Cannot perform action: the device is offline (if corresponding tracker is not connected to the server)
+* 214 – Requested operation or parameters are not supported by the device (if device does not support alarm mode)
+* 219 – Not allowed for clones of the device (if tracker is clone)
