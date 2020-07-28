@@ -49,7 +49,7 @@ Changes tracker’s phone and setup new apn.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
-| phone | The phone number of the sim card inserted into device in international format wihtout “+” sign | string| 6156680000 |
+| phone | The phone number of the sim card inserted into device in international format without “+” sign | string| 6156680000 |
 | apn_name | The name of GPRS APN of the sim card inserted into device | string | fast.tmobile.com |
 | apn_ user | The user of GPRS APN of the sim card inserted into device | string | tmobile |
 | apn_password | The password of GPRS APN of the sim card inserted into device | sting | tmobile |
@@ -118,7 +118,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/corrupt' \
 
 ## delete()
 
-Deletes tracker if it is “clone”. Will not work if specified id of the original tracker
+Deletes tracker if it is “clone”. Will not work if specified id of the original tracker.
 
 **required subuser rights**: admin (available only to master users)
 
@@ -442,7 +442,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_readings' \
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone
-    "inputs": {list of last sensor values} //list of  last sensor values {name:"analog_1", type:"fuel", value:123, ...} (see tracker/get_diagnostics())
+    "inputs": {list of last sensor values} //list of last sensor values {name:"analog_1", type:"fuel", value:123, ...} (see tracker/get_diagnostics())
 }
 ```
 
@@ -638,7 +638,7 @@ where **battery** is:
 {
     "min_charge": {float},
     "low_charge": {float}, // charge level for the "low battery" rule triggering 
-    "max_charge": {float}, 
+    "max_charge": {float}
 },
 ```
 where **additional_fields** is:
@@ -731,13 +731,13 @@ Gets user’s trackers with optional filtering by labels.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | labels | optional. List of tracker label filters. If specified, only trackers that labels contains any of the given filter will be returned | array of string | ["aa", "b"] |
-    
+
 Constraints for labels:
 * labels array size: minimum 1, maximum 1024
 * no null items
 * no duplicate items
 * item length: minimum 1, maximum 60
-    
+
 For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `labels=["aa","b"]` only trackers containing "aa1" and "bb2" will be returned.
 
 #### example:
@@ -764,7 +764,7 @@ general types only
 
 ## tags/set()
 
-Sets tags for tracker. Tags must be created 
+Sets tags for tracker. Tags must be created.
 
 #### parameters:
 
@@ -833,7 +833,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/location_request' \
 
 ## register_quick()
 
-Registers a new tracker using only IMEI. Automatic SMS commands will not be sent for register. The device must be preconfigured
+Registers a new tracker using only IMEI. Automatic SMS commands will not be sent for register. The device must be preconfigured.
 
 **required subuser rights:** tracker_register
 
@@ -871,7 +871,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 204 – Entity not found (if specified group does not exist)
 * 220 – Unknown device model (if specified device model does not exist)
 * 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
-* 222 – Plugin not found (if specified plugin is not foun or is not supported by device model)
+* 222 – Plugin not found (if specified plugin is not found or is not supported by device model)
 * 223 – Phone number already in use (if specified phone number already used in another device)
 * 224 – Device ID already in use (if specified device ID already registered in the system)
 * 225 – Not allowed for this legal type (if tariff of the new device is not compatible with user’s legal type)
@@ -880,7 +880,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 ## register_retry()
 
-Resends registration commands to the device. The panel must have installed SMS gateway
+Resends registration commands to the device. The panel must have installed SMS gateway.
 
 **required subuser rights:** tracker_register
 
@@ -923,7 +923,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 ## register()
 
-Registers a new tracker device. During registration, device is linked with current API user’s account and automatically configured to send data to our servers (if device model supports it). The panel must have installed SMS gateway
+Registers a new tracker device. During registration, device is linked with current API user’s account and automatically configured to send data to our servers (if device model supports it). The panel must have installed SMS gateway.
 
 **required subuser rights:** tracker_register
 
@@ -978,7 +978,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 204 – Entity not found (if specified group does not exist. See group/list() )
 * 220 – Unknown device model (if specified device model does not exist)
 * 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
-* 222 – Plugin not found (if specified plugin is not foun or is not supported by device model)
+* 222 – Plugin not found (if specified plugin is not found or is not supported by device model)
 * 223 – Phone number already in use (if specified phone number already used in another device)
 * 224 – Device ID already in use (if specified device ID already registered in the system)
 * 225 – Not allowed for this legal type (if tariff of the new device is not compatible with user’s legal type)
@@ -1022,7 +1022,7 @@ Certain commands which can be used is defined with `special_control` field of **
 
 **electronic_lock_command**
 
-This command is used to seal/unseal electronic lock
+This command is used to seal/unseal electronic lock.
 
 ```js
 command {
@@ -1049,7 +1049,7 @@ See [special settings JSON object](./settings/special/special.md#read)
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
-| command | Command that will be sent to device. Not Null.  | JSON object | See format above |
+| command | Command that will be sent to device. Not Null| JSON object | See format above |
 
 #### example:
 
