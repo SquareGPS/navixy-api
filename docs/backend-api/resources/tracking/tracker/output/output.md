@@ -8,16 +8,16 @@ Request to change the states of all digital outputs of the device. The device mu
 
 **required subuser rights:** tracker_set_output
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **outputs** - **array of boolean**. Array of desired states of all digital outputs, e.g. [true, true, false] means output 1 is on, output 2 is on, output 3 is off
 
-#### return:
+#### return
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   213 – Cannot perform action: the device is offline (if corresponding tracker is not connected to the server)
@@ -29,17 +29,17 @@ Request to change the state of the specified digital output of the device. The d
 
 **required subuser rights:** tracker_set_output
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **output** - **int**. The number of the output to control, starting from 1.
 * **enable** - **boolean**. True if the requested output should be enabled, or false if it should be disabled..
 
-#### return:
+#### return
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   213 – Cannot perform action: the device is offline (if corresponding tracker is not connected to the server)

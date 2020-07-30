@@ -1,13 +1,17 @@
 ---
-title: /file
-description: /file
+title: File
+description: File
 ---
+
+# File
+
+API path: `/file`.
 
 ## stats/read
 
 Get user’s files statistic.
 
-#### return:
+#### return
 
 ```js
 {

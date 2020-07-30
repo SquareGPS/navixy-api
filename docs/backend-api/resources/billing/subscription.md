@@ -1,9 +1,11 @@
 ---
-title: /subscription
-description: /subscription
+title: Subscription
+description: Subscription
 ---
 
-# subscription/
+# Subscription
+
+API path: `/subscription`.
 
 Payment subscriptions
 
@@ -12,37 +14,37 @@ Payment subscriptions
 
 Working with [2Checkout](https://www.2checkout.com) (formerly [Avangate](http://www.avangate.com)) subscriptions (renewals).
 
-### cancel(..)
+### cancel()
 
 Unsubscribe from auto-renewal by reference.
 
 **required subuser rights:** payment_create
 
-#### parameters:
+#### parameters
 
 * **reference** - **string**. internal 2Checkout (formerly Avangate) subscription code. Get it from [list()](#list) call.
 
-#### return:
+#### return
 ```javascript
 {
     "success": true
 }
 ```
 
-#### errors:
+#### errors
 *   215 – External service error
 
-### list(..)
+### list()
 
 List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://www.avangate.com) subscriptions (renewals).
 
 **required subuser rights:** payment_create
 
-#### parameters:
+#### parameters
 no parameters
 
 
-#### return:
+#### return
 ```javascript
 {
     "success": true,
@@ -58,6 +60,6 @@ no parameters
 }
 ```
 
-#### errors:
+#### errors
 
  *   215 – External service error

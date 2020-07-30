@@ -1,9 +1,11 @@
 ---
-title: /subuser/security_group
-description: /subuser/security_group
+title: Subuser security group
+description: Subuser security group
 ---
 
-# /subuser/security_group/
+# Subuser security group
+
+API path: `/subuser/security_group/`.
 
 Contains API calls related to security groups, that is, groups of sub-users with the specified set of rights and privileges.
 
@@ -53,18 +55,18 @@ Possible rights are:
 *   form_template_update,
 *   reports;
 
-## create(..)
+## create()
 
 Create new security group.
 
 **required tariff features:** multilevel_access – for ALL trackers
 **required subuser rights:** admin (available only to master users)
 
-#### parameters:
+#### parameters
 
 * **group** - **JSON object**. ${security_group} without “id” field
 
-#### return:
+#### return
 
 ```js
 {
@@ -73,12 +75,12 @@ Create new security group.
 }
 ```
 
-#### errors:
+#### errors
 *   13 – Operation not permitted – if user has insufficient rights
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 
 
-## delete(..)
+## delete()
 
 Delete existing security group.
 All sub-users belonging to this group will be assigned to default (null) security group.
@@ -86,10 +88,10 @@ All sub-users belonging to this group will be assigned to default (null) securit
 **required tariff features:** multilevel_access – for ALL trackers
 **required subuser rights:** admin (available only to master users)
 
-#### parameters:
+#### parameters
 * **security_group_id** - **int**. id of security group, which must be deleted.
 
-#### return:
+#### return
 
 ```json
 {
@@ -97,22 +99,22 @@ All sub-users belonging to this group will be assigned to default (null) securit
 }
 ```
 
-#### errors:
+#### errors
 *   13 – Operation not permitted – if user has insufficient rights
 *   201 – Not found in database – when group with the specified security_group_id does not exist
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 
-## list(..)
+## list()
 
 List all security groups belonging to current user.
 
 **required tariff features:** multilevel_access – for ALL trackers
 **required subuser rights:** admin (available only to master users)
 
-#### parameters:
+#### parameters
 none.
 
-#### return:
+#### return
 
 ```js
 {
@@ -122,22 +124,22 @@ none.
 ```
 Security group object is described [here](#security-group-object-structure).
 
-#### errors:
+#### errors
 
 *   13 – Operation not permitted – if user has insufficient rights
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 
-## update(..)
+## update()
 
 Update existing security group.
 
 **required tariff features:** multilevel_access – for ALL trackers
 **required subuser rights:** admin (available only to master users)
 
-#### parameters:
+#### parameters
 * **group** - **JSON object**. ${security_group} with “id” field
 
-#### return:
+#### return
 
 ```json
 {
@@ -145,7 +147,7 @@ Update existing security group.
 }
 ```
 
-#### errors:
+#### errors
 *   13 – Operation not permitted – if user has insufficient rights
 *   201 – Not found in database – when security group with the specified id does not exist
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)

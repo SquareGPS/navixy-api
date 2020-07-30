@@ -1,21 +1,22 @@
 ---
-title: /history/type
-description: /history/type
+title: History type
+description: History type
 ---
 
-# /history/type/
+# History type
 
-## list(…)
-=======
+API path: `/history/type`.
+
+## list()
 
 Returns available history types with localized descriptions.
 
-#### parameters:
+#### parameters
 
 *   **locale** – locale code
 *   **only_tracker_events** – boolean (optional). Default - true.
 
-#### return:
+#### return
 
 ```js
 {

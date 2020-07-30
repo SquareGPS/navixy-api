@@ -6,10 +6,10 @@ description: /lbs
 ## read()
 Get LBS for the specified tracker.
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
+#### return
 
 ```js
 {
@@ -18,23 +18,23 @@ Get LBS for the specified tracker.
 }
 ```
 
-#### errors:
+#### errors
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
 ## update()
 Update LBS settings for the specified tracker.
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
-* **max_radius** - **int**. See read(…). min=0, max=10000
+* **max_radius** - **int**. See read(). min=0, max=10000
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)

@@ -1,20 +1,20 @@
 ---
-title: /values
-description: /values
+title: Task form values
+description: Task form values
 ---
 
-# values/
+# Task form values
+
+API path: `/task/form/values`.
 
 
-
----
-## update(…)
+## update()
 
 Update existing form values of given task.
 
 **required subuser rights**: task_update
 
-##### parameters:
+##### parameters
 
 * **task_id** - (int) task id
 * **values** - (JSON object) map of field_id-value object
@@ -32,7 +32,7 @@ values object example
 
 For **value** object description, see [form/form-fields-and-values/](../../form/field-types.md#form-fields-and-values).
 
-#### return:
+#### return
 
 ```js
 {
@@ -40,7 +40,7 @@ For **value** object description, see [form/form-fields-and-values/](../../form/
 }
 ```
 
-#### errors:
+#### errors
 
 *   101 – In demo mode this function is disabled (if current user has “demo” flag)
 *   201 – Not found in database (if task with the specified id does not exist)

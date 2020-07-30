@@ -1,7 +1,11 @@
 ---
-title: /settings
-description: /settings
+title: User settings 
+description: User settings
 ---
+
+# User settings
+
+API path: `/user/settings`.
 
 CRUD actions for user settings.
 
@@ -39,7 +43,7 @@ CRUD actions for user settings.
 
 Read current user’s settings.
 
-#### return:
+#### return
 
 ```js
 {
@@ -57,11 +61,11 @@ Where `settings`, `balance_alert_settings` and `file_storage_settings` described
 **required subuser rights** for **balance\_alert\_settings** and **file\_storage\_settings** fields: admin (available only to master users)
 
 
-## update(…)
+## update()
 
 Update current user’s settings.
 
-#### parameters:
+#### parameters
 
 *   **time_zone** – ISO timezone id
 *   **locale** – locale code
@@ -76,22 +80,22 @@ Update current user’s settings.
 
 See examples above.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-## file_storage/update(…)
+## file_storage/update()
 
 Update current user’s file storage settings
 
 **required subuser rights:** admin (available only to master users)
 
-#### parameters:
+#### parameters
 
 *    `file_storage_settings` – JSON object.
 
-#### errors:
+#### errors
 
 *    13 – Operation not permitted – if user has insufficient rights

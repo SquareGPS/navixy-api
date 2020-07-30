@@ -1,9 +1,11 @@
 ---
-title: /template
-description: /template
+title: Template
+description: Template
 ---
 
-# form/template/ actions
+# Template
+
+API path: `/form/template`.
 
 To make forms reusable, they are created on the basis of form templates. 
 User can assign form to the task by choosing template without the need to create all form fields every time.
@@ -27,57 +29,11 @@ User can assign form to the task by choosing template without the need to create
 
 Get all form templates belonging to current master user.
 
-#### parameters:
+#### parameters
 
 none
 
-#### return:
-
-```json
-{
-    "success": true,
-    "list":[...] //ordered array of <form_template> objects
-}
-```
-
-#### errors:
-
-no specific errors
-
----
-## create
-
-Create new form template.
-
-**required subuser rights**: form\_template\_update
-
-#### parameters:
-
-*   **form_template** – Non-null.
-
-#### return:
-
-```json
-{
-    "success": true,
-    "id": 111 //id of the created form template
-}
-```
-
-#### errors:
-
-*   101 – In demo mode this function is disabled (if current user has “demo” flag)
-
-
-## read
-
-Get form template belonging to current master user by id.
-
-#### parameters:
-
-*   **template_id** – Id of the form template, int.
-
-#### return:
+#### return
 
 ```js
 {
@@ -86,7 +42,52 @@ Get form template belonging to current master user by id.
 }
 ```
 
-#### errors:
+#### errors
+
+no specific errors
+
+## create
+
+Create new form template.
+
+**required subuser rights**: form\_template\_update
+
+#### parameters
+
+*   **form_template** – Non-null.
+
+#### return
+
+```js
+{
+    "success": true,
+    "id": 111 //id of the created form template
+}
+```
+
+#### errors
+
+*   101 – In demo mode this function is disabled (if current user has “demo” flag)
+
+
+## read
+
+Get form template belonging to current master user by id.
+
+#### parameters
+
+*   **template_id** – Id of the form template, int.
+
+#### return
+
+```js
+{
+    "success": true,
+    "list":[...] //ordered array of <form_template> objects
+}
+```
+
+#### errors
 
 *   201 – Not found in database (if there is no template with such id)
 
@@ -97,17 +98,17 @@ Update existing form template.
 
 **required subuser rights**: form\_template\_update
 
-#### parameters:
+#### parameters
 
 *   **form_template** – Non-null.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if template with the specified id does not exist)
 *   101 – In demo mode this function is disabled (if current user has “demo” flag)
@@ -119,17 +120,17 @@ Delete form template.
 
 **required subuser rights**: form\_template\_update
 
-#### parameters:
+#### parameters
 
 *   **template_id** – Id of the form template, int.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if template with the specified id does not exist)
 *   101 – In demo mode this function is disabled (if current user has “demo” flag)
@@ -141,11 +142,11 @@ Return template usage statistics
 
 **required subuser rights**: –
 
-#### parameters:
+#### parameters
 
 *   **template_id** – Id of the form template, int.
 
-#### return:
+#### return
 
 ```js
 {
@@ -163,6 +164,6 @@ Return template usage statistics
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if template with the specified id does not exist)

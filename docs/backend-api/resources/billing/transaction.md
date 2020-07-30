@@ -1,21 +1,23 @@
 ---
-title: /transaction
-description: /transaction
+title: Transaction
+description: Transaction
 ---
 
-## list(...)
+# Transaction
+
+## list()
 
 Get list of user’s billing transactions for the specified period.
 
 **required subuser rights**: payment_create
 
-#### parameters:
+#### parameters
 
 * **from** – date/time. Start date/time for searching.
 * **to** – date/time. End date/time for searching. must be after “from” date.
 * **limit** – int (optional). Maximum number of returned transactions.
 
-#### return:
+#### return
 
 ```js
 {
@@ -40,6 +42,6 @@ Get list of user’s billing transactions for the specified period.
 }
 ```
 
-#### errors:
+#### errors
 
 * 211 – Requested time span is too big (more than **maxReportTimeSpan** config option)

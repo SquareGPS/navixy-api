@@ -1,11 +1,13 @@
 ---
-title: /entity/fields
-description: /entity/fields
+title: Entity fields
+description: Entity fields
 ---
 
-#/entity/fields
+# Entity fields
 
-## fields actions:
+API path: `/entity/fields`.
+
+## Fields actions
 
 Field allows to add custom information to a customizable entity. Each field belongs to one entity.
 
@@ -54,12 +56,12 @@ Field allows to add custom information to a customizable entity. Each field belo
 Get a set of custom fields associated with the specified entity. Note that you must know entity id, which can be 
 obtained from [entity/list](./entity.md#list)
 
-#### parameters:
+#### parameters
 name      | description     | type
 ---       | ---             | ---
 entity_id | ID of an entity | int
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -67,7 +69,7 @@ entity_id | ID of an entity | int
 }
 ```
 
-#### errors:
+#### errors
 * 201 (Not found in database) – if there is no entity with such ID
 
 ## update(entity_id, fields, delete_missing)
@@ -86,18 +88,18 @@ Passing fields with `id` from non-existent fields or fields bound to another ent
 **WARNING** If `delete_missing` is `true`, all existing fields which are missing from the `fields` list will be 
 permanently deleted! Otherwise they are unaffected.
 
-#### parameters:
+#### parameters
 name           | description                                                             | type
 ---            | ---                                                                     | ---
 entity_id      | ID of an entity                                                         | int
 fields         | List of new/existing fields to be created/updated                       | \<field\>[]
 delete_missing | (optional, default is false) delete fields not present in `fields` list | boolean
 
-#### errors:
+#### errors
 * 201 (Not found in database) – if there is no entity with such ID
 * 7 (Invalid parameters) - if fields violate restrictions described above
 
-#### return:
+#### return
 A list of **all** fields associated with the specified entity. Newly created fields will have their IDs filled.
 ```js
 {

@@ -6,10 +6,10 @@ description: /input_name
 ## list()
 Returns descriptions of all sensor inputs existing in the system. 
 
-#### parameters:
+#### parameters
 No parameters.
 
-#### return:
+#### return
 For every input following properties are returned: *input_name* and *description*.
 
 *input_name* is an enum member, same as in [sensor object](./sensor.md).
@@ -36,5 +36,5 @@ Example:
 }
 ```
 
-#### errors:
+#### errors
 No specific errors

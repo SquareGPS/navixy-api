@@ -1,10 +1,11 @@
 ---
-title: /garage
-description: /garage
+title: Garage
+description: Garage
 ---
 
-garage/ actions:
-=======
+# Garage
+
+API path: `/garage`.
 
     <garage> =
        {
@@ -24,7 +25,7 @@ garage/ actions:
 
 Get all garages belonging to user.
 
-#### return:
+#### return
 
 ```js
 {
@@ -34,23 +35,23 @@ Get all garages belonging to user.
 ```
     
 
-#### errors:
+#### errors
 
 general types only
 
 
 
-## create(…)
+## create()
 
 Create new garage.
 
 **required subuser rights**: vehicle_update
 
-#### parameters:
+#### parameters
 
-*   **garage** – an [garage object](#garage-actions) Non-null.
+*   **garage** – an [garage object](#garage) Non-null.
 
-#### return:
+#### return
 
 ```js
 {
@@ -59,52 +60,52 @@ Create new garage.
 }
 ```
 
-#### errors:
+#### errors
 
 general types only
 
 
 
-## update(…)
+## update()
 
 Update existing garage.
 
 **required subuser rights**: vehicle_update
 
-#### parameters:
+#### parameters
 
-*   **garage** – an [garage object](#garage-actions) Non-null.
+*   **garage** – an [garage object](#garage) Non-null.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no garage with such id)
 
 
-## delete(…)
+## delete()
 Delete garage with the specified id.
 
 **required subuser rights**: vehicle_update
 
-#### parameters:
+#### parameters
 
 | name | description | type |
 |------|-------------|------|
 | garage_id | Id of the garage to delete | int
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
     
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no garage with such id)

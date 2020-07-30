@@ -26,15 +26,15 @@ Statuses are used to track current activity for employees (in fact, of tracking 
     "entries": [ 5, 2, 1, 4, 6] // list of IDs of statuses which belong to this listing. Order matters, and is preserved.
 }
 ```
-## create(…)
+## create()
 Create new possible status for the specified status listing.
 
 **required subuser rights:** tracker_update
-#### parameters:
+#### parameters
 * **listing_id** – **int**. ID of the listing for this status to attach to.
 * **status** – **JSON object**. <status> object without ID field.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -42,35 +42,35 @@ Create new possible status for the specified status listing.
 }
 ```
 
-#### errors:
+#### errors
 *    201 (Not found in database) – if listing with the specified ID does not exist
 *    236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 *    268 (Over quota) – if the user's quota for statuses is exceeded
 
-## delete(…)
+## delete()
 Delete status entry.
 
 **required subuser rights:** tracker_update
 
-#### parameters:
+#### parameters
 * **status_id** – **int**. ID of the status belonging to authorized user.
 
-#### return:
+#### return
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if status with the specified ID does not exist
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 
-## list(…)
+## list()
 Get statuses belonging to the specified status listing.
 
-#### parameters:
+#### parameters
 * **listing_id** – **int**. ID of the status listing belonging to authorized user.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -78,23 +78,23 @@ Get statuses belonging to the specified status listing.
 }
 ```
 
-#### errors:
+#### errors
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 
 
-## update(…)
+## update()
 
 Update status properties.
 
 **required subuser rights:** tracker_update
-#### parameters:
+#### parameters
 * **status** – **JSON object**. <status> object with ID field
 
-#### return:
+#### return
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if status with the specified ID does not exist
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available

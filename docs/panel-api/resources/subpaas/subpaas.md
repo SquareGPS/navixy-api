@@ -12,11 +12,11 @@ description: /subpaas
 * CLIENTS_BLOCKED
 * DELETED
 
-## create(...)
+## create()
 
 Create subpaas. After creation its dealer_block_type will be in INITIAL_BLOCK status
 
-#### parameters:
+#### parameters
 
 *   **password** – **string**. Subpaas's password
 *   **title** – **string**. Subpaas's name
@@ -33,19 +33,17 @@ Create subpaas. After creation its dealer_block_type will be in INITIAL_BLOCK st
     * his tariff doesn't allow subpaases
 
 
-#### return:
+#### return
 
-```javascript
-    {
-        "success": true
-    }
+```json
+{ "success": true }
 ```
 
-## list(...)
+## list()
 
 Get list of all subpaases for dealer. Dealer id will be taken from the session.
 
-#### parameters:
+#### parameters
 
 *   **order_by** – **string** (default: **subpaas_id**). Sort option. Possible values:
     <br> — subpaas_id
@@ -65,68 +63,68 @@ Get list of all subpaases for dealer. Dealer id will be taken from the session.
     * has different status than NOT_BLOCKED
     * his tariff doesn't allow subpaases
 
-#### return:
+#### return
 
-```javascript
+```js
+{
+  "success": true,
+  "list": [
     {
-      "success": true,
-      "list": [
-        {
-          "subpaas_id": 18,
-          "title": "SubppaasTitle",
-          "jur_name": "SubppaasJurName",
-          "login": "subpaaslogin",
-          "creation_date": "2018-11-15",
-          "block_type": "NOT_BLOCKED", // <dealer_block_type>
-          "users_count": 2,
-          "active_users_count": 1,
-          "trackers_count": 0,
-          "active_trackers_count": 0
-        }
-      ]
+      "subpaas_id": 18,
+      "title": "SubppaasTitle",
+      "jur_name": "SubppaasJurName",
+      "login": "subpaaslogin",
+      "creation_date": "2018-11-15",
+      "block_type": "NOT_BLOCKED", // <dealer_block_type>
+      "users_count": 2,
+      "active_users_count": 1,
+      "trackers_count": 0,
+      "active_trackers_count": 0
     }
+  ]
+}
 ```
 
-## read(...)
+## read()
 
 Get subpaas info by its id.
 
-#### parameters:
+#### parameters
 
 *   **subpaas_id** – **int**. Subpaas id
 
-#### errors:
+#### errors
 
 * 13 – If the dealer
     * is not paas
     * has different status than NOT_BLOCKED
     * his tariff doesn't allow subpaases
 
-#### return:
+#### return
 
-```javascript
-    {
-      "success": true,
-      "value": {
-        "subpaas_id": 18,
-        "block_type": "NOT_BLOCKED", // <dealer_block_type>
-        "title": "Rus Sub-PaaS",
-        "jur_name": "OOO Sub-PaaS",
-        "email": "sub-dealer@email.com",
-        "jur_country": "country",
-        "link_monitoring": "link",
-        "contact_fio": "fio", // The contact person
-        "contact_post": "post", // The contact post (position)
-        "contact_phone": "phone" // The contact phone
-      }
-    }
+```js
+{
+  "success": true,
+  "value": {
+    "subpaas_id": 18,
+    "block_type": "NOT_BLOCKED", // <dealer_block_type>
+    "title": "Rus Sub-PaaS",
+    "jur_name": "OOO Sub-PaaS",
+    "email": "sub-dealer@email.com",
+    "jur_country": "country",
+    "link_monitoring": "link",
+    "contact_fio": "fio", // The contact person
+    "contact_post": "post", // The contact post (position)
+    "contact_phone": "phone" // The contact phone
+  }
+}
 ```
 
-## update(...)
+## update()
 
 Update subpaas.
 
-#### parameters:
+#### parameters
 
 *   **subpaas_id** – **id**. Subpaas's id
 *   **password** – **string**. Subpaas's password
@@ -151,10 +149,8 @@ Update subpaas.
     * Found subpaas is not in INITIAL_BLOCK status and block_type is INITIAL_BLOCK
     * Found subpaas is in INITIAL_BLOCK status and block_type is not INITIAL_BLOCK
 
-#### return:
+#### return
 
-```javascript
-    {
-        "success": true
-    }
+```json
+{ "success": true }
 ```

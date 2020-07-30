@@ -1,9 +1,14 @@
 ---
-title: /delivery
-description: /delivery
+title: Delivery
+description: Delivery
 ---
 
-Calls to work with “delivery” type sessions. Those are special sessions to integrate order (task) tracking functionality into external systems.
+# Delivery
+
+API path: `/user/session/delivery`.
+
+Calls to work with “delivery” type sessions. Those are special sessions to integrate order (task) 
+tracking functionality into external systems.
 
 ## create()
 
@@ -12,7 +17,7 @@ In demo session allowed to create a new session only if it not already exists.
 
 **required subuser rights**: admin (available only to master users)
 
-#### return:
+#### return
 
 ```js
 {
@@ -21,7 +26,7 @@ In demo session allowed to create a new session only if it not already exists.
 }
 ```
 
-#### errors:
+#### errors
 
 *   101 (In demo mode this function is disabled) – current session is demo but weblocator session already exists.
 *   236 – Feature unavailable due to tariff restrictions
@@ -30,7 +35,7 @@ In demo session allowed to create a new session only if it not already exists.
 
 Return current user delivery session key.
 
-#### return:
+#### return
 
 ```js
 {
@@ -39,6 +44,6 @@ Return current user delivery session key.
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no delivery session)

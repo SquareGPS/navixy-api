@@ -1,12 +1,17 @@
 ---
-title: /osrm
-description: /osrm
+title: Tracking route OSRM
+description: Tracking route OSRM
 ---
 
-## get(…)
+# Tracking route OSRM
+
+API path: `/tracking/route/osrm`.
+
+## get()
+
 Get route points via [OSRM API](https://github.com/Project-OSRM/osrm-backend/wiki/Server-api#requesting-routes).
 
-#### parameters:
+#### parameters
 *   **start** – (location JSON object) start of route
 *   **end** – (location JSON object) end of route
 *   **waypoints** = \[ ${location}, ... \] – (optional) list of transitional points.
@@ -14,7 +19,7 @@ Get route points via [OSRM API](https://github.com/Project-OSRM/osrm-backend/wik
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -34,7 +39,7 @@ Where **location** described in [data types description section](../../../gettin
 }
 ```
 
-#### errors:
+#### errors
 *   215 (External service error)
 *   218 (Malformed external service parameters)
     ```js

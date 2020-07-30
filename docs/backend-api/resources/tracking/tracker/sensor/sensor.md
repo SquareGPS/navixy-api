@@ -51,11 +51,11 @@ Discrete input
 Create sensor.
 
 **required subuser rights:** tracker_update
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor** - [JSON object](#sensor). Sensor object.
 
-#### return:
+#### return
 
 ```js
 {
@@ -64,7 +64,7 @@ Create sensor.
 }
 ```
 
-#### errors:
+#### errors
 *   232 (Input already in use) – if given input number (for discrete input) or input name (for metering sensor) already in use
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 *   219 (Not allowed for clones of the device) – if tracker is clone
@@ -75,17 +75,17 @@ Delete sensor with **sensor_id** from the database.
 
 **required subuser rights:** tracker_update
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor_id** - **int**. Sensor id.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if sensor with sensor_id is not exists or owned by other user
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   219 – Not allowed for clones of the device (if tracker is clone)
@@ -93,10 +93,10 @@ Delete sensor with **sensor_id** from the database.
 ## list()
 List tracker sensors binded to tracker with specified id (**tracker_id** parameter).
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
+#### return
 ```js
 {
    "success": true,
@@ -105,7 +105,7 @@ List tracker sensors binded to tracker with specified id (**tracker_id** paramet
 ```
 See [sensor](#sensor) type description.
 
-#### errors:
+#### errors
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 
 ## update()
@@ -113,17 +113,17 @@ Update sensor.
 
 **required subuser rights:** tracker_update
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor** - [JSON object](#sensor). Sensor object.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if sensor not exists or owned by other user
 *   232 (Input already in use) – if given input number (for discrete input) or input name (for metering sensor) already in use
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason

@@ -1,11 +1,13 @@
 ---
-title: /employee/avatar
-description: /employee/avatar
+title: Employee avatar
+description: Employee avatar
 ---
 
-# /employee/avatar
+# Employee avatar
 
-## assign(…)
+API path: `/employee/avatar`.
+
+## assign()
 
 Assign `icon_id` (from standard icon set) to this employee. 
 The `icon_id` can be `null` – this means that uploaded avatar should be used instead of icon.
@@ -17,19 +19,19 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 *   `employee_id`
 *   `icon_id`
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
     
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (when employee with **employee_id** not found in db)
 
 
-## upload(…)
+## upload()
 
 Upload avatar image for specified employee.
 Then it will be available from //employee/avatars/
@@ -48,14 +50,14 @@ File part **mime** type must be one of (see: \[source:api-server/src/main/java/c
 *   **image/png**
 *   **image/gif**
 
-#### parameters:
+#### parameters
 
 *   **employee_id** – employee id
 *   **file** – image file
 *   **redirect_target** – (optional) URL to redirect
     If **redirect_target** passed return redirect to `?response=`
 
-#### return:
+#### return
 
 ```js
 {
@@ -64,7 +66,7 @@ File part **mime** type must be one of (see: \[source:api-server/src/main/java/c
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (when employee with **employee_id** not found in db)
 *   233 – No data file (if **file** part not passed)

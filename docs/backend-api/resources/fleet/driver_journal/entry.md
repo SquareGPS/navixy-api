@@ -1,11 +1,13 @@
 ---
-title: /driver/journal/entry
-description: /driver/journal/entry
+title: Driver journal entry
+description: Driver journal entry
 ---
 
-# entry/
+# Driver journal entry
 
-**driver\_journal\_entry** type is JSON object:
+API path: `/driver/journal/entry`.
+
+`driver_journal_entry` type is JSON object:
 
 ```js
 {
@@ -31,13 +33,13 @@ description: /driver/journal/entry
 }
 ```
 
-## list(…)
+## list()
 
 Get driver journal entries. 
 There are two ways to get entries: by their ids or by specifying date range.
-If there no **entry_ids** in request, entries are selected by intersecting their date range with date range from request (**from** and **to** parameters).
+If there no `entry_ids` in request, entries are selected by intersecting their date range with date range from request (`from` and `to` parameters).
 
-#### parameters:
+#### parameters
 
 *   **tracker_id** – **int**. Id of the tracker
 *   **entry_ids** – **int\[\]**. (optional) Ids of the entries.
@@ -55,7 +57,7 @@ If there no **entry_ids** in request, entries are selected by intersecting their
     <br> — type
     <br> If no sort param is specified, then sort option will be “start_date=acs”
 
-#### return:
+#### return
 
 ```js
 {
@@ -64,29 +66,29 @@ If there no **entry_ids** in request, entries are selected by intersecting their
 }
 ```
 
-## create(…)
+## create()
 
 Create driver journal entries.
 
-#### parameters:
+#### parameters
 
 *   **entries** – **driver\_journal\_entry\[\]**. Array of **driver\_journal\_entry** objects without id.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-## update(…)
+## update()
 
 Update driver journal entry. Only two fields (**type** and **comment**) are available for update.
 
-#### parameters:
+#### parameters
 
 *   **entry** – **driver\_journal\_entry\_update\_request** type. See below.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
@@ -103,28 +105,28 @@ Update driver journal entry. Only two fields (**type** and **comment**) are avai
 }
 ```
 
-## delete(…)
+## delete()
 
 Delete driver journal entries.
 
-#### parameters:
+#### parameters
 
 *   **entry_ids** – **int\[\]**. Array of driver journal entries’ ids.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-## download(…)
+## download()
 
 Get driver journal entries. Entries are selected by intersecting their date range with date range from request (**from** and **to** parameters).
 
 
-#### parameters:
+#### parameters
 
-same as in list(...) method plus:
+same as in list() method plus:
 
 *   **add_filename_header** – **boolean**. Default value is true. If true then Content-Disposition header will be appended to the response.
 *   **format** – **string**. File format: ‘pdf’, ‘xls’ and ‘xlsx’
@@ -133,6 +135,6 @@ same as in list(...) method plus:
     — `type` (group entries by entry type)
     — `date` (group entries by start_date per day)
 
-#### return:
+#### return
 
 A driver journal report file (standard file download).

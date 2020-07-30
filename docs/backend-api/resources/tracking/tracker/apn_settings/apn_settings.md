@@ -7,20 +7,20 @@ description: APN settings by tracker ID
 
 Gets the APN name/user/password and mobile operator of device by tracker_id.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/apn_settings/read' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999199", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
-#### response:
+#### response
 
 ```json
 {
@@ -33,7 +33,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/apn_settings/read' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 201 – Not found in database (if tracker or APN settings are not found)
 * 208 – Device blocked

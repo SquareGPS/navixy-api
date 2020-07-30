@@ -1,9 +1,11 @@
 ---
-title: /feedback
-description: /feedback
+title: Feedback
+description: Feedback
 ---
 
-# feedback/
+# Feedback
+
+API path: `/feedback`.
 
     <feedback> = {
       "text": <feedback text, string, may not be null>,
@@ -13,14 +15,15 @@ description: /feedback
       "log": <optional, log file>
     }
 
-## send_email(…)
+## send_email()
 
 #### parameters
 
 *   feedback
 *   type – optional
 
-Send email with feedback message on feedback.toEmail Where **type** is one of strings: **support_request**(default), **feature_request** and **review**.  
+Send email with feedback message on feedback.toEmail Where `type` is 
+one of strings: `support_request` (default), `feature_request` and `review`.  
 Screenshot and log will be added to email as attachments.
 
 #### return

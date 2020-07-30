@@ -44,7 +44,7 @@ Changes tracker’s phone and setup new apn.
 
 **required subuser rights:** tracker_configure
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
@@ -54,7 +54,7 @@ Changes tracker’s phone and setup new apn.
 | apn_ user | The user of GPRS APN of the sim card inserted into device | string | tmobile |
 | apn_password | The password of GPRS APN of the sim card inserted into device | sting | tmobile |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/change_phone' \
@@ -62,7 +62,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/change_phone' \
 -d '{"tracker_id": "265489", "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```json
 {
@@ -70,7 +70,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/change_phone' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
@@ -85,13 +85,13 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
 
 **required subuser rights**: tracker_register
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/corrupt' \
@@ -99,7 +99,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/corrupt' \
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```json
 {
@@ -107,7 +107,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/corrupt' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 13 – Operation not permitted – if tracker already connected to server, or if user has insufficient rights
 * 243 – Device already connected
@@ -122,13 +122,13 @@ Deletes tracker if it is “clone”. Will not work if specified id of the origi
 
 **required subuser rights**: admin (available only to master users)
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/delete' \
@@ -136,7 +136,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/delete' \
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```json
 {
@@ -144,7 +144,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/delete' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 201 (Not found in database) – if tracker not found
 * 249 (Operation available for clones only) – if tracker is not clone
@@ -176,13 +176,13 @@ or
 
 Gets last sensors and states values received from the device.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/get_diagnostics' \
@@ -190,7 +190,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_diagnostics' \
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -298,13 +298,13 @@ List of state names for field **states**:
 
 Gets current fuel level (in liters) of tracker’s fuel tanks.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/get_fuel' \
@@ -312,7 +312,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_fuel' \
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -323,7 +323,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_fuel' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
@@ -332,13 +332,13 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_fuel' \
 
 Gets current state of tracker’s digital inputs and “semantic” inputs (ignition, buttons, car alarms, etc.) bound to them (if any).
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/get_inputs' \
@@ -346,7 +346,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_inputs' \
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -378,7 +378,7 @@ List of **input types**:
 * **car_lock** - “on” if car’s central lock is open,
 * **custom** - user-defined type. In general, should have non empty “name” field.
 
-#### errors:
+#### errors
 
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
@@ -387,13 +387,13 @@ List of **input types**:
 
 Gets last point of the tracker located by GPS. Points located by GSM LBS are excluded from consideration.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/get_last_gps_point' \
@@ -401,7 +401,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_last_gps_point' \
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```json
 {
@@ -410,25 +410,25 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_last_gps_point' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 201 (Not found in database) – if there is no tracker with such id belonging to authorized user
 * 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 
-## get_readings(...)
+## get_readings()
 
 Gets last sensor values for sensors that are:
 - **metering**
 - **not can- or obd-based**
 - **not “fuel” sensors**
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/get_readings' \
@@ -436,7 +436,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_readings' \
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -446,12 +446,12 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_readings' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
-## get_state(...)
+## get_state()
 
 Gets current tracker state (gps, gsm, outputs, etc.).
 
@@ -459,7 +459,7 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/get_state' \
@@ -467,7 +467,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_state' \
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -513,7 +513,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_state' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
@@ -522,7 +522,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_state' \
 
 Gets current states (gps, gsm, outputs, etc.) for several trackers.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
@@ -530,7 +530,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 | list_blocked | optional. If true call returns list of blocked tracker IDs instead of error 208. Default is false | boolean | true/false |
 | allow_not_exist | optional. If true call returns list of nonexistent tracker IDs instead of error 217 or 201. Default is false | boolean | true/false |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/get_states' \
@@ -538,7 +538,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_states' \
 -d '{"trackers": "[999119, 999199, ...]", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -553,7 +553,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_states' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 201 – Not found in database (if tracker was corrupted and allow_not_exist = false)
 * 208 – Device blocked (if list_blocked = false and tracker exists but was blocked due to tariff restrictions or some other reason)
@@ -563,14 +563,14 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_states' \
 
 Gets all integrated tracker models (from “models" table).
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | compact_view | optional. True to compact view. Default is false | boolean | true/false |
 | codes | optional. Array of model codes. If passed only given models will be returned | array of string | [model_1, model_2, ...] |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/list_models' \
@@ -578,7 +578,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/list_models' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -653,7 +653,7 @@ where **additional_fields** is:
 
 #### Id type:
 
-Id type is used to determine the information needed to register device in our system (see [tracker/register(..)](#register)).
+Id type is used to determine the information needed to register device in our system (see [tracker/register()](#register)).
 
 Possible values are:
 - **imei** – means device uses IMEI as its identifier, e. g. “356938035643809”. See [Wikipedia article](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity). When needed, you should pass only digits of IMEI, no spaces, minus signs, etc.
@@ -661,7 +661,7 @@ Possible values are:
 - **id,n** – means device uses n-digit identifier (factory id with length n), for example, “id,7” means that you must pass 7-digit number, for example “1234567”
 - **n,m** – n-digit generated id starting with m. This means that device has configurable ID and our platform generates and configures it automatically. You don’t need to pass any identifier during device registration in this case.
 
-#### errors:
+#### errors
 
 general types only
 
@@ -725,7 +725,7 @@ general types only
 
 Gets user’s trackers with optional filtering by labels.
 
-### parameters:
+### parameters
 
 
 | name | description | type | format |
@@ -740,7 +740,7 @@ Constraints for labels:
 
 For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `labels=["aa","b"]` only trackers containing "aa1" and "bb2" will be returned.
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/list' \
@@ -748,7 +748,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/list' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -758,7 +758,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/list' \
 ```
 See tracker object structure description [here](#tracker-object-structure).
 
-#### errors:
+#### errors
 
 general types only
 
@@ -766,14 +766,14 @@ general types only
 
 Sets tags for tracker. Tags must be created.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 99119 |
 | tag_bindings | list of **tag_binding** objects | array of Json objects | [{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}] |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/tags/set' \
@@ -781,7 +781,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/tags/set' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "99119"}'
 ```
 
-#### response:
+#### response
 
 ```json
 {
@@ -789,7 +789,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/tags/set' \
 }
 ```
 
-#### errors:
+#### errors
 
 general types only
 
@@ -797,7 +797,7 @@ general types only
 
 Execute this command to get current position of the device. The device must support requesting function. 
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
@@ -809,7 +809,7 @@ Request types:
 **gsm** – GSM LBS data via GPRS. Device must have `online` or `GPS not updated` status
 **gprs** – GNSS data via GPRS. Device must have `online` or `GPS not updated` status
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/location_request' \
@@ -817,13 +817,13 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/location_request' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "99119"}'
 ```
 
-#### response:
+#### response
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
@@ -837,7 +837,7 @@ Registers a new tracker using only IMEI. Automatic SMS commands will not be sent
 
 **required subuser rights:** tracker_register
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
@@ -845,7 +845,7 @@ Registers a new tracker using only IMEI. Automatic SMS commands will not be sent
 | group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list()](./group/group.md#list) | int | 0 |
 | imei | tracker's IMEI | string | 35645587458999 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/register_quick' \
@@ -853,7 +853,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/register_quick' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": "0", "imei": "35645587458999"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -864,7 +864,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/register_quick' \
 
 For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
-#### errors:
+#### errors
 
 * 13 – Operation not permitted – if user has insufficient rights
 * 201 – Not found in database (if there is no bundle with such IMEI)
@@ -884,7 +884,7 @@ Resends registration commands to the device. The panel must have installed SMS g
 
 **required subuser rights:** tracker_register
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
@@ -894,7 +894,7 @@ Resends registration commands to the device. The panel must have installed SMS g
 | apn_user | The user of GPRS APN of this sim card inserted into device | string | tmobile |
 | apn_password | The password of GPRS APN of thes sim card inserted into device | string | tmobile |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/register_retry' \
@@ -902,7 +902,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/register_retry' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999119", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -912,7 +912,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/register_retry' \
 ```
 For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
-#### errors:
+#### errors
 
 * 13 – Operation not permitted – if user has insufficient rights
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
@@ -927,7 +927,7 @@ Registers a new tracker device. During registration, device is linked with curre
 
 **required subuser rights:** tracker_register
 
-#### parameters:
+#### parameters
 
 **IMPORTANT**
 Because of the variety of tracker models and business applications, there are many different ways to register tracker in our system. They are called [Registration plugins](../../commons/plugin/plugin.md). Each of registration plugins has its own set of additional parameters.
@@ -944,7 +944,7 @@ Common parameters are:
 | device_id | **Must** be specified if device model uses fixed device id. See [tracker/list_models()](#list_models) | string | 4568005588562 |
 | send_register_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals  `null` will be used the platform settings. Default: `null` | boolean | true/false |
 
-#### example:
+#### example
 
 In this example we use plugin id = 37 (see [Plugin description](../../commons/plugin/plugin.md)) 
 to register Queclink GV55Lite. We chose to include the device to default group, so group ID is 0. 
@@ -954,7 +954,7 @@ Also we include **phone**, **apn_name**, **apn_user**, **apn_password** of the s
 device and **activation_code** since this parameters are required by plugin.
 
 You can try to “auto-detect” APN settings by phone number 
-using [apn_settings/read(..)](./apn_settings/apn_settings.md#read) API call.
+using [apn_settings/read()](./apn_settings/apn_settings.md#read) API call.
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/register' \
@@ -962,7 +962,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/register' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": "0", "plugin_id": "37", "model": "qlgv55lite", "phone": "79123122312", "activation_code": "123123123", "device_id": "123451234512346", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -972,7 +972,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/register' \
 ```
 For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
-#### errors:
+#### errors
 
 * 13 – Operation not permitted – if user has insufficient rights
 * 204 – Entity not found (if specified group does not exist. See group/list() )
@@ -1044,14 +1044,14 @@ command {
 ```
 See [special settings JSON object](./settings/special/special.md#read)
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999119 |
 | command | Command that will be sent to device. Not Null| JSON object | See format above |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/send_command' \
@@ -1059,7 +1059,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/send_command' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999119", "command": {name: "electronic_lock_command", command_code: "unseal", special_settings:{"type":"electronic_lock_password", "password": "345892", "remember_password": "true"}}}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -1069,7 +1069,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/send_command' \
 ```
 For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
-#### errors:
+#### errors
 
 general types only
 

@@ -1,7 +1,11 @@
 ---
-title: /user/audit/log
-description: /user/audit/log
+title: User audit log 
+description: User audit log
 ---
+
+# User audit log
+
+API path: `/user/audit/log`.
 
 **audit_object** type is JSON object:
 
@@ -20,13 +24,13 @@ description: /user/audit/log
 }
 ```
 
-## list(…)
+## list()
 
 Gets list of audit records available for current user.
 
 **required subuser rights**: admin (available only to master users)
 
-#### parameters:
+#### parameters
 
 *   **from** – **string**. Include audit objects recorded after this date, e.g. `2014-07-01 00:00:00`.
 *   **to** – **string**. Include audits before this date, e.g. `2014-07-01 00:00:00`.
@@ -42,7 +46,7 @@ Gets list of audit records available for current user.
     <br> — *host*
     <br> If no sort param is specified, then sorting equivalent to option `["action_date=asc"]` will be applied.
 
-#### return:
+#### return
 
 ```js
 {

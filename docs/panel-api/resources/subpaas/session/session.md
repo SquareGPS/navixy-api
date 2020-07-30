@@ -3,11 +3,11 @@ title: /session
 description: /session
 ---
 
-## create(...)
+## create()
 
 Create subpaas session
 
-#### parameters:
+#### parameters
 
 *   **subpaas_id** – **int**. Subpaas's id
 
@@ -19,11 +19,11 @@ Create subpaas session
     * The dealer's tariff doesn't allow subpaases
     * Found subpaas is not in NOT_BLOCKED status
 
-#### return:
+#### return
 
-```javascript
-    {
-        "success": true,
-        "hash": "600d4a5400000000600d4a5400000000"
-    }
+```json
+{
+    "success": true,
+    "hash": "600d4a5400000000600d4a5400000000"
+}
 ```

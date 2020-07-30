@@ -1,9 +1,13 @@
 ---
-title: /dealer
-description: /dealer
+title: Dealer
+description: Dealer
 ---
 
-## get\_ui\_config(…)
+# Dealer
+
+API path: `/dealer`.
+
+## get_ui_config()
 
 Gets dealer info and dealer-specific UI settings by domain.
 
@@ -13,17 +17,17 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
     https://api.navixy.com/v2/dealer/get_ui_config?domain=your_domain
 
-#### parameters:
+#### parameters
 
 | name | description | type| format|
 | :------: | :------: | :-----:| :------:|
 | domain | dealer’s monitoring interface domain, e.g. “navixy.com“ | string | panel.navixy.com |
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/dealer/get_ui_config?domain=panel.navixy.com
 
-#### response:
+#### response
 
 ```js
 {
@@ -103,13 +107,13 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 #### Dealer features
 
 | name | description |
-| :------: | :------: |
+| :------ | :------ |
 | branding_web | allow to use custom logos, color theme, domain and favicon in UI for web version |
 | branding_mobile | allow to use custom icon, logo, color theme in the mobile applications |
 | subpaas | allow to use Sub-Dealers (can be used only together with navixy_label) |
 | navixy_label | show "Powered by Navixy" in UI (required for subpaas feature) |
 
-#### errors:
+#### errors
 
 *   12 – Dealer not found (if corresponding PaaS was not found in database)
 *   201 – Not found in database (if there is no Ui settings data for corresponding PaaS)

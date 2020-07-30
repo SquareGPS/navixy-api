@@ -1,9 +1,11 @@
 ---
-title: /vehicle/status/listing
-description: /vehicle/status/listing
+title: Vehicle status listing
+description: Vehicle status listing
 ---
 
-# status/listing
+# Vehicle status listing
+
+API path: `/vehicle/status/listing`.
 
 `vehicle_status_entry` type is JSON object:
 
@@ -20,7 +22,7 @@ description: /vehicle/status/listing
 
 Gets all of user's vehicle statuses.
 
-#### return:
+#### return
 
 ```js
 {
@@ -29,16 +31,16 @@ Gets all of user's vehicle statuses.
 }
 ```
 
-## update(...)
+## update()
 
 Update user's vehicle statuses.
 
-#### parameters:
+#### parameters
 
 *   **statuses** – **vehicle\_status\_entry**[]. If status's id is not null, then update, else create new vehicle status.
 Old vehicle statuses, which are not present is this array, will be deleted.
 
-#### return:
+#### return
 
 ```json
 { "success": true }

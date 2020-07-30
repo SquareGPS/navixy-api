@@ -1,14 +1,18 @@
 ---
-title: /history
-description: /history
+title: History
+description: History
 ---
 
-# history/ entries
+# History
+
+API path: `/history`.
 
 **history entry** is one of:
 
+# History entries
+
 *   **common\_history\_entry**
-```json
+```js
 {
     "id": ,
     "type": "common",
@@ -21,7 +25,7 @@ description: /history
 
 *   **tracker\_history\_entry**
 
-```json
+```js
 {
     "id": ,
     "type": "tracker"
@@ -56,7 +60,7 @@ description: /history
 ## Deprecated event types
 
 *   **camera\_history\_entry**
-```json
+```js
 {
     "id": ,
     "type": "camera"
@@ -72,7 +76,7 @@ description: /history
 
 *   **socket\_history\_entry**
 
-```json
+```js
 {
     "id": ,
     "type": "camera"
@@ -89,18 +93,18 @@ description: /history
 Date/time type described in [data types description section](../../../getting-started.md#data-types).
 
 
-## read(…)
+## read()
 
 Returns history entry with the specified id.
 
-#### parameters:
+#### parameters
 
 *   id – **int**. [history entry](#history-entries) ID
 *   add\_tracker\_label – **boolean**. optional, if true tracker label will be added to message
 
-#### return:
+#### return
 
-```json
+```js
 {
     "success": true,
     "value": ${history_entry}
@@ -109,27 +113,27 @@ Returns history entry with the specified id.
 
 where `_history_entry` described in [History entries](#history-entries).
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (when there are no history entries with that id)
 
 
 
-## mark_read(…)
+## mark_read()
 
 Mark history entry as read by **id** (see: [History entries](#history-entries)).
 
-#### parameters:
+#### parameters
 
 *   id – **int**. [history entry](#history-entries) ID
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (when there are no history entries with that id)
 
@@ -140,7 +144,7 @@ Mark history entry as read by **id** (see: [History entries](#history-entries)).
 
 Mark all user’s history entries read.
 
-#### return:
+#### return
 
 ```json
 { "success": true }

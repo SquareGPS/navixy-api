@@ -1,27 +1,31 @@
 ---
-title: /checkin
-description: /checkin
+title: Checkin
+description: Checkin
 ---
+
+# Checkin
+
+API path: `/checkin`.
 
 ## read()
 
-Gets marker on map for the checkin_id. Required tariff features: `checkin`.
+Gets marker on map for the `checkin_id`. Required tariff features: `checkin`.
 
 #### structure:
 
     https://api.navixy.com/v2/checkin/read?hash=your_hash&checkin_id=123456
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
-| :---: | :---: | :---: | :---: |
+| :--- | :--- | :--- | :--- |
 | checkin_id | id of the marker entry | int | 123456 | 
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/checkin/read?hash=22eac1c27af4be7b9d04da2ce1af111b&checkin_id=132215
 
-#### response:
+#### response
 
 ```js
 {
@@ -43,19 +47,19 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 
     https://api.navixy.com/v2/checkin/list?hash=your_hash&trackers=[tracker_id_n]&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
-| :---: | :---: | :---: | :---: |
+| :--- | :--- | :--- | :--- |
 | trackers | array of tracker ids. all trackers must not be deleted or blocked (if list_blocked=false) | array of ints | [123456,223456,...] |
 | from | start date/time for searching | date/time | 2020-01-01 00:00:00 |
 | to | end date/time for searching. must be after “from” date  | date/time | 2020-02-02 00:00:00 |
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/checkin/list?hash=22eac1c27af4be7b9d04da2ce1af111b&trackers=[616384,345623]&from=2020-08-05 03:06:00&to=2020-09-05 03:00:00
 
-#### response:
+#### response
 
 ```js
 {

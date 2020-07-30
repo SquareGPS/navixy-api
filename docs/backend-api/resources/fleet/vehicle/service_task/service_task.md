@@ -1,7 +1,11 @@
 ---
-title: /service_task
-description: /service_task
+title: Vehicle service task
+description: Vehicle service task
 ---
+
+# Vehicle service task
+
+API path: `/vehicle/service_task`.
 
 #### Status
 
@@ -12,11 +16,11 @@ Task **status** may be one of:
 *   **expired** – one of conditions exceeded.
 *   **done** – user [set](#set_status) task as “done”.
 
-## batch_create(…)
+## batch_create()
 
 Create multiple service tasks.
 
-#### parameters:
+#### parameters
 
 *   **vehicle_ids** – vehicle ids. Task will be created for every vehicle. 
 *   **task** – service task to create. vehicle_id field in this objects should not be specified. JSON object:
@@ -46,11 +50,11 @@ Create multiple service tasks.
 ```
 
 
-## create(…)
+## create()
 
 Create new vehicle service task. For vehicles with associated tracker only.
 
-#### parameters:
+#### parameters
 
 *   **task** – service task to create. JSON object:
 
@@ -91,39 +95,39 @@ Create new vehicle service task. For vehicles with associated tracker only.
 }
 ```
 
-#### return:
+#### return
 
     { "success": true }
 
 
-#### errors:
+#### errors
 
 *   201 (Not found in database) – vehicle or tracker not found
 *   214 (Requested operation or parameters are not supported by the device) – engine hours condition passed but tracker hasn’t ignition sensor
 
 
-## delete(…)
+## delete()
 
 Delete vehicle service task.
 
-#### parameters:
+#### parameters
 
 Either **task_id** or **task_ids** should be specified
 *   **task_id** – **int**. (optional) id of service task
 *   **task_ids** – **int\[\]**. (optional) ids of service tasks
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
 
-## download(...)
+## download()
 
 Create pdf report of service tasks
 
-#### parameters:
+#### parameters
 
 *   **order_by** - **string**. Sort option. Possible values:
     <br> — vehicle
@@ -135,7 +139,7 @@ Create pdf report of service tasks
     <br> — vehicle
     <br> — status
 
-#### return:
+#### return
 
 Report file.
 
@@ -144,11 +148,11 @@ Report file.
 
 List all service tasks of all user vehicles.
 
-#### parameters:
+#### parameters
 
 *   **return_prediction** – **boolean**. include legacy **prediction** field or not
 
-#### return:
+#### return
 
 ```js
 {
@@ -205,21 +209,21 @@ List all service tasks of all user vehicles.
 
 About task **status** property see above.
 
-#### errors:
+#### errors
 
 *   201 (Not found in database) – vehicle or tracker not found
 
 
-## read(…)
+## read()
 
 Get service task info by it’s id.
 
-#### parameters:
+#### parameters
 
 *   **task_id** – **int**. task id
 *   **return_prediction** – **boolean**. include legacy **prediction** field or not
 
-#### return:
+#### return
 
 ```js
 {
@@ -281,36 +285,36 @@ Get service task info by it’s id.
 
 About task **status** property see above.
 
-#### errors:
+#### errors
 
 *   201 (Not found in database) – does not exists one of tracker’s counters which required to determine status
 *   204 (Entity not found) – when vehicle or service task not found
 
-## set_status(…)
+## set_status()
 
 Update task status. And save (on **done** **status**) current date and values of used (in condition) counters for “freeze” wearing percent.
 
-#### parameters:
+#### parameters
 
 *   **task_id** – **int**, task id.
 *   **status** – new task. Only `done` status allowed for now.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 (Not found in database) – does not exists one of tracker’s counters which required to determine status
 *   204 (Entity not found) – when vehicle or service task not found
 
-## update(…)
+## update()
 
 Update information fields and notification settings of vehicle service task.
 
-#### parameters:
+#### parameters
 
 *   **task** – JSON object:
 
@@ -348,16 +352,16 @@ Update information fields and notification settings of vehicle service task.
 }
 ```
 
-See [create(…)](#create).
+See [create()](#create).
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
 
-#### errors:
+#### errors
 
 *   204 (Entity not found) – when vehicle or service task not found.
 *   214 (Requested operation or parameters are not supported by the device) – engine hours condition passed but tracker hasn’t ignition sensor.

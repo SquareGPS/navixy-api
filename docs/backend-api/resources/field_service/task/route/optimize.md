@@ -1,9 +1,13 @@
 ---
-title: /optimize
-description: /optimize
+title: Task rout optimize
+description: Task rout optimize
 ---
 
-## optimize(…)
+# Task rout optimize
+
+API path: `/task/rout/points/optimize`.
+
+## optimize()
 
 Suggest optimal order for given route points. Suggested order will correspond to route points time windows:
 points with earlier time windows will have lower ordinal numbers. If time windows overlaps each other, such
@@ -11,7 +15,7 @@ points can have any order due to maximizing summary efficiency of the route.
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **start_point** - (object) coordinates of location, from where performer will come
 ```js
@@ -28,7 +32,7 @@ points can have any order due to maximizing summary efficiency of the route.
 ]
 ```
 
-#### return:
+#### return
 
 ```js
 {
@@ -55,7 +59,7 @@ point at index 0 move to index 1,
 point at index 1 move to index 0"
 ```
 
-#### errors:
+#### errors
 
 *   6 - Invalid parameters
 *   79 - Timeout not reached (too high api call rate)

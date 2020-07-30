@@ -1,15 +1,19 @@
 ---
-title: /personal_info
-description: /personal_info
+title: User personal info
+description: User personal info
 ---
 
-## update(…)
+# User personal info
+
+API path: `/user/personal_info`.
+
+## update()
 
 Update user personal info.
 
 Require plugin with **id=45**.
 
-#### parameters:
+#### parameters
 
 *   **legal_type** – string. Either “legal\_entity”, “sole\_trader” or “individual”.
 *   **first_name** – string. Contact person first name.
@@ -36,12 +40,12 @@ and for `legal_entity` or `sole_trader`:
 *   **tin** – string. Taxpayer identification number.
 
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   222 (Plugin not found) – when plugin 45 not available for user

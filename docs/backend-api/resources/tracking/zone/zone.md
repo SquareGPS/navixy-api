@@ -1,9 +1,11 @@
 ---
-title: /zone
-description: /zone
+title: Zone
+description: Zone
 ---
 
-# zone/
+# Zone
+
+API path: `/zone`.
 
 CRUD actions for zones. Note that zone points are handled separately because they are represented by big arrays of data.
 
@@ -52,7 +54,7 @@ represents all points within certain distance to the specified polyline
 }
 ```
 
-## batch_convert(…)
+## batch_convert()
 Convert batch of tab-delimited circle zones and return list of checked zones with errors.
 
 **required subuser rights**: zone_update
@@ -64,7 +66,7 @@ Convert batch of tab-delimited circle zones and return list of checked zones wit
     }
 ```
 
-#### parameters:
+#### parameters
 *   **batch** (string) – batch of tab-delimited places.
 *   **file_id** (string) – ID of file preloaded with [/data/spreadsheet/parse](../../commons/data.md#dataspreadsheetparse) method.
 *   **fields** (array of String) – Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "tags"]`.
@@ -73,7 +75,7 @@ Convert batch of tab-delimited circle zones and return list of checked zones wit
 
 If ‘file_id’ is set – ‘batch’ parameter will be ignored.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -81,22 +83,22 @@ If ‘file_id’ is set – ‘batch’ parameter will be ignored.
 }
 ```
 
-#### errors:
+#### errors
 * 234 (Invalid data format)
 
 
-## create(…)
+## create()
 Create new zone.
 
 **required subuser rights**: zone_update
 
-#### parameters:
+#### parameters
 * **zone** – zone JSON-object without “id” field
 * **points** (point[]) – Array of new points for this zone. Must contain at least 3 elements. MUST be omitted if zone does not support points (e.g. circle)
 
 **zone.color** is optional here.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -104,33 +106,33 @@ Create new zone.
 }
 ```
 
-#### errors:
+#### errors
 *   202 (Too many points in zone) – max allowed points count for zone is 100 for polygon or 1024 for sausage
 *   230 (Not supported for this entity type) – if “points” were specified, but zone cannot have any points associated with it (e.g. if zone is circle)
 *   268 (Over quota) –  if the user's quota for zones is exceeded
 
-## delete(…)
+## delete()
 Delete user’s zone by **zone_id** or array of **zone_ids**.
 
 **required subuser rights**: zone_update
 
-#### parameters:
+#### parameters
 *   zone_id – int
 
 OR
 
 *   zone_ids – array of int
 
-#### return:
+#### return
 ```js
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database)
 *   203 (Delete entity associated with)
 
-#### return:
+#### return
 ```js
 {
     "success": false,
@@ -152,50 +154,50 @@ where `<rule_id>` is ID of the rule which uses the specified zone.
 ## list()
 Get all user’s zones.
 
-#### return:
+#### return
 ```js
-    {
-        "success": true,
-        "list": [ <zone>, ... ]
-    }
+{
+    "success": true,
+    "list": [ <zone>, ... ]
+}
 ```
 
 with `<zone>` without points field.
 
-## update(…)
+## update()
 Update zone parameters for the specified zone. Note that zone must exist, must belong to the current user, and its type cannot be changed, e.g. if you already have zone with ID=1 which type is “circle”, you cannot submit a zone which type is “polygon”.
 
 **required subuser rights**: zone_update
 
-#### parameters:
+#### parameters
 *   **zone** – [JSON-object](#zone)
 
 **zone.color** is optional. If it not passed then color will not be changed.
 
-#### return:
+#### return
 ```js
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if zone with the specified ID cannot be found or belongs to another user
 *   231 (Entity type mismatch) – if type of the submitted zone differs from type of the zone currently stored in database.
 
 
-## upload(…)
+## upload()
 Import geofences from KML file.
 
 **required subuser rights**: zone_update
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload (with the name “file”).
 
-#### parameters:
+#### parameters
 *   **file** – (File upload) A KML file upload containing geofences data
 *   **default_radius** – (Int) default radius for circle and route geofences, meters, min 20, default 150
 *   **dry_run** – (Boolean) if true returns ready to create geofences or creates it and returns list of IDs otherwise, default true
 *   **redirect_target** – (String, optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;*
 
-#### return:
+#### return
 if `dry_run=true`:
 ```js
 {
@@ -243,7 +245,7 @@ if `dry_run=false`:
 }
 ```
 
-#### errors:
+#### errors
 *   202 (Too many points in zone) – max allowed points count for zone is 100 for polygon or 1024 for sausage.
 *   233 (No data file) – if file part is missing
 *   234 (Invalid data format)

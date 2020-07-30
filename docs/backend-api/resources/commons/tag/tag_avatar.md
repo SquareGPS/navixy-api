@@ -1,36 +1,40 @@
 ---
-title: /tag/avatar
-description: /tag/avatar
+title: Tag avatar
+description: Tag avatar
 ---
 
-# /tag/avatar/
+# Tag avatar
+
+API path: `/tag/avatar`.
 
 
+## assign()
 
-## assign(…)
 **required subuser rights**: tag_update
 
-#### parameters:
+#### parameters
 
 * **tag_id**
 * **icon_id**
 
 Assign icon_id (from standard icon set) to this tag. Icon_id can be null – this means that uploaded avatar should be used instead of icon.
 
-#### return:
+#### return
+
 ```js
 {
     "success": true
 }
 ```
 
-#### errors:
+#### errors
+
 * 201 – Not found in database (when vehicle with **tag_id** not found in db)
 
 
 
----
-## upload(…)
+## upload()
+
 Upload avatar image for specified tag.<br>
 Then it will be available from `<api_url>/<api.static.uri>/tag/avatars/<file_name>`<br>
 e.g. `http://saas.navixy.com/api-v2/static/tag/avatars/abcdef123456789.png`.
@@ -47,13 +51,14 @@ File part **mime** type must be one of:
 *   **image/png**
 *   **image/gif**
 
-#### parameters:
+#### parameters
 
 *   **tag_id** – tag id
 *   **file** – image file
 *   **redirect_target** – (optional) URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded response json>`
 
-#### return:
+#### return
+
 ```js
 {
     "success": true,
@@ -61,7 +66,8 @@ File part **mime** type must be one of:
 }
 ```
 
-#### errors:
+#### errors
+
 Here is the list of errors that might occurred:
 
 *   201 – Not found in database (when tag with **tag_id** not found in db)

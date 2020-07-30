@@ -1,18 +1,22 @@
 ---
-title: /route
-description: /route
+title: Task schedule route
+description: Task schedule route
 ---
 
-## create(...)
+# Task schedule route
+
+API path: `/task/schedule/route`.
+
+## create()
 
 Create route schedule with checkpoints
 
-#### parameters:
+#### parameters
 
 * **route** - **route_schedule_entry**. Route schedule entry
 * **checkpoints** - **checkpoint_schedule_entry\[\]**. Array of route's checkpoints.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -21,15 +25,15 @@ Create route schedule with checkpoints
 ```
 
 
-## delete(...)
+## delete()
 
 Delete route schedule with checkpoints
 
-#### parameters:
+#### parameters
 
 * **id** - **int**. Route schedule ID.
 
-#### return:
+#### return
 ```js
 {
     "success": true
@@ -38,18 +42,18 @@ Delete route schedule with checkpoints
 
 
 
-## update(...)
+## update()
 
 Update route schedule with checkpoints. If checkpoint is being created, then it should have no id.
 If checkpoint is being updated, then it should have an id. If old checkpoint is not present in request, then
 is will be deleted.
 
-#### parameters:
+#### parameters
 
 * **route** - **route_schedule_entry**. Route schedule entry
 * **checkpoints** - **checkpoint_schedule_entry\[\]**. Array of route's checkpoints.
 
-#### return:
+#### return
 ```json
 { "success": true }
 ```

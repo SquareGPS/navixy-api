@@ -1,9 +1,11 @@
 ---
-title: /tariff/tracker
-description: /tariff/tracker
+title: Tariff tracker
+description: Tariff tracker
 ---
 
-# /tariff/tracker/
+# Tariff tracker
+
+API path: `/tariff/tracker/`.
 
 User of **dealer** can switch tracker from tariff **t1** to tariff **t2** if:
 
@@ -21,28 +23,25 @@ User’s **effective dealer** is
 1.  user’s dealer if its **dealer_id** = **defaultDealerId** (config option) or **dogovor_type** = ‘paas’
 2.  parent of user’s dealer elsewise
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if user doesn’t have trackers with given **tracker_id**)
 *   219 – Not allowed for clones of the device
 *   237 – Invalid tariff (if there are no tariff with tracker.tariff_id and belongs to user’s **effective dealer**)
 
-
-
----
-## change(…)
+## change()
 
 Change tariff of tracker (with **tracker_id**) to new tariff (with **tariff_id**).
 
 **required subuser rights**: admin (available only to master users)
 
-#### return:
+#### return
 
 ```js
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   221 (Device limit exceeded) – when new tariff device limit is less then count of trackers in cabinet.
 *   238 (Changing tariff is not allowed) – user can’t switch tracker to that tariff.
@@ -50,17 +49,15 @@ Change tariff of tracker (with **tracker_id**) to new tariff (with **tariff_id**
 *   240 (Not allowed to change tariff too frequently) – tariff last changed less or equal to 30 days (**tariff.freeze.period** config option).
 
 
-
----
-## list(…)
+## list()
 
 List tariffs on which user can switch passed tracker (even when tariff last changed less or equal than **tariff.freeze.period** time ago).
 
-#### parameters:
+#### parameters
 
 *   tracker_id
 
-#### return:
+#### return
 
 ```js
 {

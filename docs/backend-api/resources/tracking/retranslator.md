@@ -1,9 +1,11 @@
 ---
-title: /retranslator
-description: /retranslator
+title: Retranslator
+description: Retranslator
 ---
 
-#/retranslator
+# Retranslator
+
+API path: `/retranslator`.
 
 CRUD actions for retranslators.
 
@@ -36,19 +38,19 @@ CRUD actions for retranslators.
 ```
 
 
-## create(…)
+## create()
 
 Create new retranslator.
 
 **required subuser rights**: admin (available only to master users)
 
-#### parameters:
+#### parameters
 
 name|description|type
 ---|---|---
 retranslator|<retranslator> without "id" field|<retranslator>
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -56,28 +58,28 @@ retranslator|<retranslator> without "id" field|<retranslator>
 }
 ```
 
-#### errors:
+#### errors
 
 *   247 (Entity already exists) - if retranslator with this address, port and login already exists
 *   7 (Invalid parameters) - if retranslator have required fields (login or password), but was send empty
 *   268 (Over quota) – if the user's quota for retranslators is exceeded
 
 
-## delete(…)
+## delete()
 
 Delete user's retranslator with ID = **retranslator_id**.
 
 **required subuser rights**: admin (available only to master users)
 
-#### parameters:
+#### parameters
 *   retranslator_id
 
-#### return:
+#### return
 ```js
 { "success": true }
 ```
 
-#### errors:
+#### errors
 * 201 (Not found in database).
 
 
@@ -86,7 +88,7 @@ Delete user's retranslator with ID = **retranslator_id**.
 
 Get all user's [retranslators](#objects).
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -95,21 +97,21 @@ Get all user's [retranslators](#objects).
 ```
 
 
-## update(…)
+## update()
 
 Update retranslator parameters for the specified retranslator. Note that retranslator must exist, must belong to the current user.
 
 **required subuser rights**: admin (available only to master users)
 
-#### parameters:
+#### parameters
 *   `retranslator`
 
-#### return:
+#### return
 ```js
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 (Not found in database) – if retranslator with the specified ID cannot be found or belongs to another user.
 *   247 (Entity already exists) – if retranslator with this address, port and login already exists.
@@ -122,7 +124,7 @@ Update retranslator parameters for the specified retranslator. Note that retrans
 ## list()
 Return all available retranslator protocols.
 
-#### return:
+#### return
 ```js
 {
     "success": true,

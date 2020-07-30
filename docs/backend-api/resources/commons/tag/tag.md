@@ -1,9 +1,10 @@
 ---
-title: /tag
-description: /tag
+description: Tag
 ---
 
-# tag/
+# Tag
+
+API path: `/tag`.
 
 #### tag object
 
@@ -24,16 +25,15 @@ description: /tag
 
 
 
----
-## create(…)
+## create()
 Create new tag.
 
 **required subuser rights**: tag_update
 
-#### parameters:
+#### parameters
 * **tag** - JSON object.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -41,40 +41,38 @@ Create new tag.
 }
 ```
 
-#### errors:
+#### errors
 general types only
 
 
 
----
-## delete(…)
+## delete()
 Delete tag with the specified id.
 
 **required subuser rights**: tag_update
 
-#### parameters:
+#### parameters
 * **tag_id** - (int) id of the tag to delete.
 
-#### return:
+#### return
 ```js
 {
     "success": true
 }
 ```
 
-#### errors:
+#### errors
 * 201 – Not found in database (if there is no tag with such id)
 
 
 
----
-## list(…)
+## list()
 Get all tags belonging to user with optional filtering.
 
-#### parameters:
+#### parameters
 * **filter** - (string) optional filter for tag name, 3-60 characters or null.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -82,20 +80,19 @@ Get all tags belonging to user with optional filtering.
 }
 ```
 
-#### errors:
+#### errors
 general types only
 
 
 
----
-## search(…)
+## search()
 Search entities that bound with specified tags.
 
-#### parameters:
+#### parameters
 * **tag_ids** - (Array or int) tag IDs.
 * **entity_types** - (Array of [tagged entity types](#tag)) optional, filter for entity types.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -109,26 +106,25 @@ Search entities that bound with specified tags.
 }
 ```
 
-#### errors:
+#### errors
 general types only
 
 
 
----
-## update(…)
+## update()
 Update existing tag.
 
 **required subuser rights**: tag_update
 
-#### parameters:
+#### parameters
 * **tag** - JSON object.
 
-#### return:
+#### return
 ```js
 {
     "success": true
 }
 ```
 
-#### errors:
+#### errors
 * 201 – Not found in database (if there is no tag with such id)

@@ -1,13 +1,13 @@
 # App: Delivery
 
-**Delivery** is a special plugin which can be embedded to any other application or website and
+**Delivery** is a special plugin which can be embedded to any other application or website and
  allow to track user’s task by external ID and bounded tracker in the real time.
 
 ##Usage
 
     http://saas.navixy.com/pro/applications/delivery/?key=GENERATED_KEY
 
-where key – is a session key generated with API call `/user/session/delivery/create`.
+where key – is a session key generated with API call `/user/session/delivery/create`.
 
 ### Parameters
 
@@ -73,7 +73,7 @@ is described according to the link: [API authorization][1]
 
 ### Creating a key
 
-Use the following API call to create a new key
+Use the following API call to create a new key
 
     http://api.domain.com/user/session/delivery/create/?hash=USER\_HASH
 
@@ -87,17 +87,17 @@ answer example if the key is successfully generated:
 ```
 
 !!! warning "Important"
-    Previous key (if you already have got one), will be replaced with the new one. 
-    All the links like http://ui.domain.com/pro/applications/locator/?key= <old key> 
-    will not work anymore.
+    Previous key (if you already have got one), will be replaced with the new one. 
+    All the links like http://ui.domain.com/pro/applications/locator/?key= <old key> 
+    will not work anymore.
 
 ### Retrieving a key
 
-To acquire the key you have created earlier, please use the method 
+To acquire the key you have created earlier, please use the method
 
     http://api.domain.com/user/session/delivery/read/?hash=USER_HASH
 
-The reply will look like as follows:
+The reply will look like as follows:
 
 ```json
 {

@@ -1,7 +1,11 @@
 ---
-title: Geocoding
+title: Geocoder
 description: Search address and location using geocoder
 ---
+
+# Geocoder
+
+API path: `/geocoder`.
 
 ## Geocoder types:
 
@@ -13,11 +17,11 @@ Geocoder types:
 *   osm
 *   locationiq
 
-## search_address(...)
+## search_address()
 
 Performs a forward geocoding. Returns a list of locations matching the given address. Items in the list are sorted by relevance.
 
-#### parameters:
+#### parameters
 
 |name|description|type|format|
 |--- |--- |--- |--- |
@@ -28,7 +32,7 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 | lang | optional. ISO 639 [language code](../../getting-started.md#data-types) | locale | en_US |
 | with_details | optional. If true then the response will contain details | boolean | true/false |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/geocoder/search_address' \
@@ -36,9 +40,9 @@ $ curl -X POST 'https://api.navixy.com/v2/geocoder/search_address' \
   -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}' 
 ```
 
-#### return:
+#### return
 
-```json
+```js
 {
     "success": true,
     "locations": [
@@ -66,11 +70,11 @@ where **details_object** is:
 }
 ```
 
-## search_location(…)
+## search_location()
 
 Search address by location using geocoder
 
-#### parameters:
+#### parameters
 
 |name|description|type|format|
 |--- |--- |--- |--- |
@@ -80,16 +84,16 @@ Search address by location using geocoder
 | with_details | optional. If true then the response will contain details | boolean | true/false |
 | goal | Helps to choose the target geocoder. Now supported `ui`, `ui_user_action`. Use `ui_user_action` for requests initiated by user, otherwise `ui` | string (enum) | ui | 
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/geocoder/search_location' \
   -H 'Content-Type: application/json' \ 
   -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 56.827001, "lng": 60.594296}"}' 
 ```
-#### return:
+#### return
 
-```json
+```js
 {
     "success": true,
     "value": <address>, // string

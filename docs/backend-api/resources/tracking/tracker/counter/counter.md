@@ -6,11 +6,11 @@ description: /counter
 ## read()
 Read counter of passed **type**.
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. id of the tracker
 * **type** - **string**. counter type. one of ["odometer", "fuel_consumed", "engine_hours"]
 
-#### return:
+#### return
 ```js
 {
   "success": true,
@@ -22,7 +22,7 @@ Read counter of passed **type**.
 }
 ```
 
-#### errors:
+#### errors
 *   204 (Entity not found) – if there is no tracker with such id belonging to authorized user.
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 *   219 (Not allowed for clones of the device) – if specified tracker is a clon.
@@ -32,19 +32,19 @@ Updates counter of passed **type**.
 
 **required subuser rights:** tracker_update
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. id of the tracker.
 * **type** - **string**. counter type. one of ["odometer", "fuel_consumed", "engine_hours"].
 * **multiplier** - **float**. new value of counter multiplier.
 * **sensor_id** - **int**. id of the sensor, which must be used as the source of odometer data (in case when parameter “type” equals “odometer”). if “type” is not “odometer”, “sensor_id” must be null.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   8 (Queue service error, try again later) – can not set counter value, try later
 *   204 (Entity not found) – if there is no tracker with such id belonging to authorized user
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason

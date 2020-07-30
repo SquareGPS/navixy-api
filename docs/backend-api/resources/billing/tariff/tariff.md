@@ -1,9 +1,11 @@
 ---
-title: /tariff
-description: /tariff
+title: Tariff
+description: Tariff
 ---
 
-# /tariff/
+# Tariff
+
+API path: `/tariff`.
 
 #### Tariff JSON object structure:
 
@@ -34,19 +36,18 @@ description: /tariff
 
 
 
----
-## list(…)
+## list()
 
 Get list of device’s tariffs available to user.<br>
 If user’s dealer if **default dealer** or **paas** then listed tariffs of that dealer<br>
 else listed tariffs of parent dealer.<br>
 Listed only tariffs [available for user’s legal type](#tariff).
 
-#### parameters:
+#### parameters
 
 * **device_type** – (string) one of ‘tracker’, ‘camera’ or ‘socket’.
 
-#### return:
+#### return
 ```js
 {
   "success": true,
