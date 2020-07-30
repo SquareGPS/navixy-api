@@ -1,13 +1,17 @@
 ---
-title: /google
-description: /google
+title: Tracking route google
+description: Tracking route google
 ---
 
-## get(…)
+# Tracking route google
+
+API path: `/tracking/route/google`.
+
+## get()
 
 Get route points using [Google Directions API](https://developers.google.com/maps/documentation/directions/intro).
 
-#### parameters:
+#### parameters
 
 *   **start** – (location JSON object) start of route
 *   **end** – (location JSON object) end of route
@@ -16,7 +20,7 @@ Get route points using [Google Directions API](https://developers.google.com/map
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -38,7 +42,7 @@ Where **location** described in [data types description section](../../../gettin
 }
 ```
 
-#### errors:
+#### errors
 *   215 (External service error)
     ```js
     {

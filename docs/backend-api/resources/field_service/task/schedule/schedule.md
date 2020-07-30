@@ -1,16 +1,16 @@
 ---
-title: /schedule
-description: /schedule
+title: Task schedule
+description: Task schedule
 ---
 
-# schedule/
+# Task schedule
 
-#### task/schedule actions:
+API path: `task/schedule`.
 
 ```js
 <task_schedule_entry> = {
-    "id": 111,   //primary key. used in update(...), *IGNORED* in create(...)
-    "user_id": 3,   //user id. *IGNORED* in create(...)/update(...)
+    "id": 111,   //primary key. used in update(), *IGNORED* in create()
+    "user_id": 3,   //user id. *IGNORED* in create()/update()
     "tracker_id": 22, //id of the tracker to which all generated tasks are assigned. nullable.
     "location": {   //location associated with this task. cannot be null
         "lat": 56.5,
@@ -31,8 +31,8 @@ description: /schedule
 }
 
 <route_schedule_entry> = {
-    "id": 111,   //primary key. used in update(...), *IGNORED* in create(...)
-    "user_id": 3,   //user id. *IGNORED* in create(...)/update(...)
+    "id": 111,   //primary key. used in update(), *IGNORED* in create()
+    "user_id": 3,   //user id. *IGNORED* in create()/update()
     "tracker_id": 22, //id of the tracker to which all generated tasks are assigned. nullable.
     "label": "Shop",
     "description": "Buy things",
@@ -40,8 +40,8 @@ description: /schedule
 }
 
 <checkpoint_schedule_entry> = {
-    "id": 111,   //primary key. used in update(...), *IGNORED* in create(...)
-    "user_id": 3,   //user id. *IGNORED* in create(...)/update(...)
+    "id": 111,   //primary key. used in update(), *IGNORED* in create()
+    "user_id": 3,   //user id. *IGNORED* in create()/update()
     "tracker_id": 22, //id of the tracker to which all generated tasks are assigned. nullable.
     "label": "Shop",
     "description": "Buy things",
@@ -74,18 +74,17 @@ description: /schedule
 ```
 
 
----
-## create(…)
+## create()
 
 Create new task schedule entry.
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **schedule** - (JSON object) <schedule_entry> object without fields which are *IGNORED*
 
-#### return:
+#### return
 
 ```js
 {
@@ -94,7 +93,7 @@ Create new task schedule entry.
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if schedule.tracker_id belongs to nonexistent tracker)
 *   204 – Entity not found (if schedule.form_template_id belongs to nonexistent form template)
@@ -103,39 +102,39 @@ Create new task schedule entry.
 
 
 
-## delete(…)
+## delete()
 
 Delete task schedule with the specified id.
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **schedule_id** - (int) Id of the task schedule to delete
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no task schedule with such id)
 
 
 
-## list(…)
+## list()
 
 Get all task or route schedules belonging to user with optional filtering.<br>
 Also this call returns all unassigned task schedules.
 
-#### parameters:
+#### parameters
 
 * **trackers** - (array of Integer) Optional. Ids of the trackers to which task schedule is assigned
 * **filter** - (String) Optional. Filter for task schedule label and description
 
-#### return:
+#### return
 
 ```js
 {
@@ -144,19 +143,19 @@ Also this call returns all unassigned task schedules.
 }
 ```
 
-#### errors:
+#### errors
 
 general types only
 
-## read(...)
+## read()
 
 Get task, route or checkpoint schedule by id
 
-#### parameters:
+#### parameters
 
 * **id** - **int**. . Id of task, route or checkpoint schedule
 
-#### return:
+#### return
 
 ```js
 {
@@ -166,22 +165,21 @@ Get task, route or checkpoint schedule by id
 }
 ```
 
-#### errors:
+#### errors
 
 general types only
 
----
-## update(…)
+## update()
 
 Update existing task schedule.
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **schedule** - (JSON object) <schedule> object without fields which are *IGNORED*
 
-#### return:
+#### return
 
 ```js
 {
@@ -189,7 +187,7 @@ Update existing task schedule.
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if schedule.tracker_id belongs to nonexistent tracker)
 *   204 – Entity not found (if there is no task schedule with specified id)

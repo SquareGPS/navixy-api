@@ -1,16 +1,23 @@
 ---
-title: /driver/journal/proposal
-description: /driver/journal/proposal
+title: Driver journal proposal
+description: Driver journal proposal
 ---
 
-## list(…)
-Get proposal objects that could be used for driver journal entry creation. Proposal objects are created by track’s division by driver changes. If there was no driver change on the track, then the track will be returned entirely. Tracks are selected by intersecting their date range with date range from request (**from** and **to** parameters).
+# Driver journal proposal
+
+API path: `/driver/journal/proposal`.
+
+## list()
+Get proposal objects that could be used for driver journal entry creation. 
+Proposal objects are created by track’s division by driver changes. 
+If there was no driver change on the track, then the track will be returned entirely. 
+Tracks are selected by intersecting their date range with date range from request (`from` and `to` parameters).
 
 #### structure:
 
     https://api.navixy.com/v2/driver/journal/proposal/list?hash=your_hash&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS&tracker_id=123456
 
-#### parameters:
+#### parameters
 
 | name | description | type| format|
 | :------: | :------: | :-----:| :------:|
@@ -18,11 +25,11 @@ Get proposal objects that could be used for driver journal entry creation. Propo
 | to | Include tracks which start before this date | string | YYYY-MM-DD HH:MM:SS |
 | tracker_id | Id of the tracker | int | 123456 |
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/driver/journal/proposal/list?hash=22eac1c27af4be7b9d04da2ce1af111b&from=2020-05-01 00:00:00&to=2020-05-15 23:59:59&tracker_id=518076
 
-#### response:
+#### response
 
 ```js
 {
@@ -33,7 +40,7 @@ Get proposal objects that could be used for driver journal entry creation. Propo
 
 #### where
 
-**proposal_object** is:
+`proposal_object` is:
 
 ```js
 {

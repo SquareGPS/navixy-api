@@ -1,13 +1,17 @@
 ---
-title: /session
-description: /session
+title: User session
+description: User session
 ---
+
+# User session
+
+API path: `/user/session`.
 
 ## renew()
 
 Prolongs current user session.
 
-#### return:
+#### return
 
 ```json
 { "success": true }

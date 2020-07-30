@@ -53,15 +53,130 @@ This method allows you to make several edits on different pages before proposing
 1.  Edit other files of interest to you in the same way.
 1.  Go to the start page of the fork and click on the "Pull request" button.
 
+After review and pull request will be merged, and you can drop a fork.
+
 ### Hard way
 
 This method involves installing the Git, IDE, Python and 
-[Material for MkDocs](https://squidfunk.github.io/mkdocs-material) on a local computer.
+[Material for MkDocs](https://squidfunk.github.io/mkdocs-material) on yours PC.
 
-TODO fill me
+1. Install [Python 3](https://www.python.org/downloads/).
+1. Install [Git client](https://git-scm.com/downloads).
+1. Install IDE, for example [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community edition would be enough).
+1. Create a fork [of the repository]({{ config.repo_url }}) and cloning it to local project. 
+   In IDEA: `File` -> `New` -> `Project from version control`;
+1. Install [mkdocs-material](https://squidfunk.github.io/mkdocs-material) and other dependencies. In console:
+   ```sh
+   cd /path/to/project
+   mkdir venv
+   python -m venv ./venv
+   pip3 install -r requirements.txt
+   ```
+1. Start the documentation server locally. In console:
+   ```sh
+   cd /path/to/project
+   mkdocs serve
+   ```
+1. To check that the server has started, open in a browser: http://localhost:8000
+1. Create a local git branch in project.
+1. Make changes in documentation and test it in browser. 
+   Read the [introduction](#introduction-into-mkdocs).
+1. Commit and push changes. Please, use English in commit message.
+1. Create a Pull Request (PR) on Github from your fork. Please, use English in PR description.
+1. After the PR has been reviewed and merged to upstream you can remove
+   branch and rebase a fork to the upstream.
 
 ## Introduction into Mkdocs
 
-TODO fill me
+This documentation built on [mkdocs engine](https://mkdocs.org) and [mkdocs-material theme](https://squidfunk.github.io/mkdocs-material).
+Firstly, read [how to layout and write your Markdown source files](https://mkdocs.org/user-guide/writing-your-docs)
+for an overview of how to write docs.
 
-For full documentation visit https://mkdocs.org and https://squidfunk.github.io/mkdocs-material.
+### Menu
+
+The menu is formed using the plugin [awesome-pages](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) automatically.
+To set the desired page order in the menu, use the file `.pages.yml` in directory.
+For example:
+
+```yaml
+title: Backend API
+arrange:
+    - getting-started.md
+    - how-to
+    - resources
+    - websocket
+```
+
+`Title` sets name for menu section. `Arrange` sets the sub-items order.
+
+### Meta information
+
+Each page must have meta information section at the beginning. Required fields: `title` and `description`. 
+For example:
+
+```yaml
+---
+title: Get involved
+description: Get involved into improving documentation and translations of the Navixy Platform
+---
+```
+
+Title will be displayed in menu and in browser title.
+
+### Headers
+
+The information on each page should be structured. On pages of the same type, 
+the structure should be uniform.
+
+### Example
+
+API resource page structure:
+
+````markdown
+# Resource name
+
+Path: `/path/to/resource\`.
+
+Resource description.
+
+Resource specific actions:
+
+* [/path/to/resource/method1](#method1)
+* [/path/to/resource/method2](#method2)
+
+## method1()
+
+Method description.
+
+### Parameters
+
+| name  | description | type  | restrictions |
+| :---- | :----       | :---- | :----        |
+|param1 | description | int   | [1..100], not null |
+
+### Example
+
+```abap
+$ curl -X POST 'https://api.navixy.com/v2/path/to/resource/method1' \
+-H 'Content-Type: application/json' \ 
+-d '{ "hash": "a6aa75587e5c59c32d347da438505fc3", "param1": "value" }'
+```
+
+### Return
+
+```json
+{ "success": true }
+```
+
+### Errors
+
+Special error codes.
+
+## method2()
+
+...
+
+````
+
+For real example see [/user](../backend-api/resources/commons/user/user.md) and
+[:octicons-file-code-24: source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/user.md).

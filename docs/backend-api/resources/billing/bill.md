@@ -1,28 +1,28 @@
 ---
-title: /bill
-description: /bill
+title: Bill
+description: Bill
 ---
 
-## create(…)
+# Bill
+
+API path: `/bill`.
+
+## create()
 
 Creates new bill for the user. Required subuser rights: `payment_create`.
 
-#### structure:
+#### parameters
 
-    https://api.navixy.com/v2/bill/create?hash=your_hash&payer=payer_name&sum=sum_of_bill
-
-#### parameters:
-
-| name | description | type| format|
-| :------: | :------: | :-----:| :------:|
+| name | description | type| restrictions|
+| :------ | :------ | :-----| :------|
 | payer | some payer description | string| Payer Name |
 | sum |bill sum in default currency of the panel | int | 1000 |
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/bill/create?hash=22eac1c27af4be7b9d04da2ce1af111b&payer=John Doe&sum=500
 
-#### response:
+#### response
 
 ```js
 {
@@ -31,13 +31,11 @@ Creates new bill for the user. Required subuser rights: `payment_create`.
 }
 ```
 
-#### errors:
+#### errors
 
 *   222 – Plugin not found (when plugin **29** not available for user)
 
----
-
-## list(…)
+## list()
 
 Shows list of bills with their parameters in array. Required subuser rights: payment_create
 
@@ -45,19 +43,19 @@ Shows list of bills with their parameters in array. Required subuser rights: pay
 
     https://api.navixy.com/v2/bill/list?hash=your_hash&limit=number_of_bills&offset=start_from
 
-#### parameters:
+#### parameters
 
 
 | name | description | type| format|
-| :------: | :------: | :-----:| :------:|
+| :------ | :------ | :----- | :------ |
 | limit | maximum number of bills in list (maximum and default **10 000**) - optional | int | 10000 |
 | offset | get bills starting from **offset** (default **0**) - optional | int | 0 |
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/bill/list?hash=22eac1c27af4be7b9d04da2ce1af111b&limit=9500&offset=0
 
-#### response:
+#### response
 
 ```js
 {
@@ -91,6 +89,6 @@ If bill created using [/bill/create()](#create) call then **positions** will con
 
 _Note for Standalone version_: Base part of **link** may be changed by **billing.orders.baseUrl** config option.
 
-#### errors:
+#### errors
 
 *   222 – Plugin not found (when plugin **29** not available for user)

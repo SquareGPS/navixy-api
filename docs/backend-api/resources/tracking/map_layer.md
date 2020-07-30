@@ -1,11 +1,13 @@
 ---
-title: /map_layer
-description: /map_layer
+title: Map layer
+description: Map layer
 ---
 
-# map_layer actions:
+# Map layer
 
-**map_layer_object** is:
+API path: `/map_layer`.
+
+`map_layer_object` is:
 ```js
 {
     "id": <int>,      // map layer entity ID
@@ -13,24 +15,24 @@ description: /map_layer
 }
 ```
 
-## read(…)
+## read()
 Read the body of the specified layer.
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 id | ID of the map layer | Int
 
-#### return:
-Layer body with content-type: _application/vnd.google-earth.kml+xml; charset=utf-8_
+#### return
+Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf-8`.
 
-#### errors:
+#### errors
 * 201 (Not found in database) – if there is no map layer with such ID belonging to current user
 
 ## list()
 Returns metadata for all map layers for the user.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -38,7 +40,7 @@ Returns metadata for all map layers for the user.
 }
 ```
 
-#### errors:
+#### errors
 No specific errors.
 
 ## upload()
@@ -46,7 +48,7 @@ Uploads new map layer.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload (with the name “file”).
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 label | Label for a new map layer | string
@@ -54,7 +56,7 @@ file | A KML file upload containing map_layer data | File upload
 redirect_target | (optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;* | String
 
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -62,40 +64,40 @@ redirect_target | (optional) URL to redirect. If **redirect_target** passed retu
 }
 ```
 
-#### errors:
+#### errors
 * 233 (No data file – if file part is missing
 * 234 (Invalid data format – if file has wrong mime type
 * 242 (Validation error – if uploaded file is not valid KML
 * 268 (Over quota – if the user's quota for map layers is exceeded
 
-## update(…)
+## update()
 Update metadata for the specified map layer.
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 layer | &lt;map_layer_object&gt; | JSON object
 
-#### return:
+#### return
 ```js
 { "success": true }
 ```
 
-#### errors:
+#### errors
 * 201 (Not found in database) – if there is no map layer with such ID belonging to current user
 
-## delete(…)
+## delete()
 Delete specified layer.
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 id | ID of the map layer | Int
 
-#### return:
+#### return
 ```js
 { "success": true }
 ```
 
-#### errors:
+#### errors
 * 201 (Not found in database) – if there is no map layer with such ID belonging to current user

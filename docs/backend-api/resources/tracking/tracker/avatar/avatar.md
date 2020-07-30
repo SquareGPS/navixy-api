@@ -18,12 +18,12 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 *    **image/png**
 *    **image/gif**
 
-#### parameters:
+#### parameters
 * **tracker_id** - tracker id
 * **file** - image file
 * **redirect_target** - (optional) URL to redirect If redirect_target passed return redirect to ?response=
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -31,7 +31,7 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 }
 ```
 
-#### errors:
+#### errors
 *   201 – Not found in database (when tracker with tracker_id not found in db)
 *   208 – Device blocked
 *   233 – No data file (if file part not passed)

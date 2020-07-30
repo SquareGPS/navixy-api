@@ -3,7 +3,11 @@ title: Delivery info
 description: Delivery info
 ---
 
-## read(...)
+# Delivery info
+
+API path: `/delivery`.
+
+## read()
 
 Returns info sufficient for tracking certain task state and the tracker assigned to it.
 Search is conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:
@@ -14,13 +18,13 @@ If multiple tasks or checkpoints were found, then return first task, otherwise c
 
 in addition to standard user session, this call supports special *DELIVERY* session type
 
-#### parameters:
+#### parameters
 
 |name |description |type |format |
 |--- |--- |--- |--- |
 | external_id | an external id of task | int | 259876 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/delivery/read' \
@@ -28,7 +32,7 @@ $ curl -X POST 'https://api.navixy.com/v2/delivery/read' \
   -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": "259876"}' 
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -45,11 +49,11 @@ $ curl -X POST 'https://api.navixy.com/v2/delivery/read' \
 }
 ```
  
-#### errors:
+#### errors
 
 *   201 – Not found in database (when there is no task or checkpoint with specified conditions)
 
-## list(...)
+## list()
 
 External_id can be repeated, so this request will return all matching delivery. Returns info sufficient for tracking certain task state and the tracker assigned to it. 
 Search is conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:
@@ -59,13 +63,13 @@ arrived, assigned or delayed.
 
 in addition to standard user session, this call supports special *DELIVERY* session type
 
-#### parameters:
+#### parameters
 
 |name|description|type|format|
 |--- |--- |--- |--- |
 | external_id | an external id of task | int | 259876 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/delivery/list' \
@@ -73,7 +77,7 @@ $ curl -X POST 'https://api.navixy.com/v2/delivery/list' \
   -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": "259876"}' 
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -92,6 +96,6 @@ $ curl -X POST 'https://api.navixy.com/v2/delivery/list' \
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (when there is no task or checkpoint with specified conditions)

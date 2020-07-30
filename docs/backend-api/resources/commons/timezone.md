@@ -1,12 +1,16 @@
 ---
-title: /timezone
-description: /timezone
+title: Timezone
+description: Timezone
 ---
+
+# Timezone
+
+API path: `/timezone`.
 
 ## list()
 Information about all supported timezones for the specified locale. Does not require user authorization.
 
-#### return:
+#### return
 
 ```js
 {
@@ -25,5 +29,5 @@ Information about all supported timezones for the specified locale. Does not req
 }
 ```
 
-#### errors:
+#### errors
 *   only standard errors

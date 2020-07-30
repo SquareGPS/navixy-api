@@ -11,4 +11,4 @@ All translations are done through the online translation service, developed
 specifically for team-based translation projects.
 
 
-TODO
+Coming soon.

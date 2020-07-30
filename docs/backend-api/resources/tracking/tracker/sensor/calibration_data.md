@@ -6,11 +6,11 @@ description: /calibration_data
 ## read()
 Get calibration data for sensor.
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor_id** - **int**. Id of the sensor.
 
-#### return:
+#### return
 ```javascript
 {
     "success": true,
@@ -18,7 +18,7 @@ Get calibration data for sensor.
 }
 ```
 
-#### errors:
+#### errors
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   228 – Not supported by the sensor (if sensor doesn’t support calibration)
 
@@ -27,18 +27,18 @@ Replaces the calibration data for sensor.
 
 **required subuser rights:** tracker_update
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor_id** - **int**. Id of the sensor.
 * **data** - **array of JSON object**. Array of calibration data objects, e.g. [{“in”:0.0,”out”:0.0},{“in”:0.7,”out”:60.0}]
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   228 – Not supported by the sensor (if sensor doesn’t support calibration)
 *   219 – Not allowed for clones of the device (if tracker is clone)
@@ -51,19 +51,19 @@ If XML file contains information about multiple sensors, user must specify which
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being an XML file upload (with the name “file”).
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor_id** - **int**. Id of the sensor.
 * **sensor_number** - **int**. Optional. A number of the sensor in XML file (starting at 1).
 * **file** - **file upload**. A file upload containing LLSmonitor XML file
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   228 – Not supported by the sensor (if sensor doesn’t support calibration)
 *   219 – Not allowed for clones of the device (if tracker is clone)

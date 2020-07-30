@@ -7,13 +7,13 @@ description: Alarm mode for tracker
 
 Gets the state of alarm mode of device.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/read' \
@@ -21,7 +21,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/read' \
 -d '{"tracker_id": "999199", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -30,7 +30,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/read' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
@@ -40,14 +40,14 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/read' \
 
 Changes the state of alarm mode of device. The device must be online.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
 | enabled | True if alarm mode should be enabled | boolean | true/false |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/set' \
@@ -55,13 +55,13 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/set' \
 -d '{"tracker_id": "999199", "enabled": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)

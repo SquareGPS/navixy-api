@@ -15,7 +15,7 @@ Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 }
 ```
 
-#### parameters:
+#### parameters
 
 | name | description | type
 |------|-------------|-----
@@ -26,7 +26,7 @@ Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 
 If `parse_header` is set to true, first row of the uploaded file will be treat as header corresponding to given `header_map`.
 
-#### return:
+#### return
 
 ```js
 {
@@ -36,6 +36,6 @@ If `parse_header` is set to true, first row of the uploaded file will be treat a
 }
 ```
 
-#### errors:
+#### errors
 
 234 – Invalid data format.

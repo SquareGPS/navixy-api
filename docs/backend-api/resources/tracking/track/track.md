@@ -1,12 +1,16 @@
 ---
-title: /track
-description: /track
+title: Track
+description: Track
 ---
 
-## download(…)
+# Track
+
+API path: `/track`.
+
+## download()
 Download track points as KML/KMZ file for the specified track ID, tracker and time period.
 
-#### parameters:
+#### parameters
 * **tracker_id** – **int**. ID of the tracker (aka "object_id"). Tracker must belong to authorized user and must not be blocked.
 * **from** – **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
 * **to** – **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date.
@@ -17,7 +21,7 @@ Download track points as KML/KMZ file for the specified track ID, tracker and ti
 * **format** – **string**. file format, "kml" or "kmz", default is "kml".
 * **split** – **boolean**. If true, split tracks by folders with start/end placemarks and track line. default "false".
 
-#### return:
+#### return
 _KML/KMZ file_ or _JSON response_ if requested time period exceeds limit specified in tracker's tariff:
 ```js
 { 
@@ -27,15 +31,15 @@ _KML/KMZ file_ or _JSON response_ if requested time period exceeds limit specifi
 }
 ```
 
-#### errors:
+#### errors
 *   204 (Entity not found) – if there is no tracker with such ID belonging to authorized user.
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 *   211 (Requested time span is too big) – if interval between "from" and "to" is too big (maximum value is specified in API config.
 
-## list(…)
+## list()
 Get a list of track descriptions for the specified tracker and time period.
 
-#### parameters:
+#### parameters
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and must not be blocked.
 * **from** – **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user’s timezone)
 * **to** – **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user’s timezone). Specified date must be after “from” date.
@@ -45,7 +49,7 @@ Get a list of track descriptions for the specified tracker and time period.
 * **cluster_single_reports** – **boolean**. (optional, default=false) If true, single point reports will be clustered by its coordinates.
 * **count_events** – **boolean**. (optional, default=false) If true, number of events occurred during each non-singlepoint track will be returned.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -111,15 +115,15 @@ where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
 }
 ```
 
-#### errors:
+#### errors
 *   204 (Entity not found) – if there is no tracker with such ID belonging to authorized user.
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 *   211 (Requested time span is too big) – if interval between "from" and "to" is too big (maximum value is specified in API config.
 
-## read(…)
+## read()
 Get track points for the specified track ID, tracker and time period.
 
-#### parameters:
+#### parameters
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and must not be blocked.
 * **from** – **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user’s timezone).
 * **to** – **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user’s timezone). Specified date must be after “from” date.
@@ -128,7 +132,7 @@ Get track points for the specified track ID, tracker and time period.
 * **point_limit** – **int**. (optional) If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000
 * **filter** – **boolean**. (optional) If specified, the returned track will be filtered, applicable only for LBS tracks now.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -151,7 +155,7 @@ Get track points for the specified track ID, tracker and time period.
 }
 ```
 
-#### errors:
+#### errors
 *   204 (Entity not found) – if there is no tracker with such ID belonging to authorized user.
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 *   211 (Requested time span is too big) – if interval between “from” and “to” is too big (maximum value is specified in API config).

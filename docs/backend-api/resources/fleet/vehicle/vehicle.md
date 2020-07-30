@@ -1,9 +1,11 @@
 ---
-title: /vehicle
-description: /vehicle
+title: Vehicle
+description: Vehicle  
 ---
 
-# /vehicle
+# Vehicle
+
+API path: `/vehicle`.
 
 **vehicle** type is JSON object:
 
@@ -43,7 +45,7 @@ description: /vehicle
     "liability_insurance_valid_till": "2015-03-01",//date
     "free_insurance_policy_number": "",//string
     "free_insurance_valid_till": null,//date
-    "icon_id" : 55, // int, can be null, can only be updated via avatar/assign(...)
+    "icon_id" : 55, // int, can be null, can only be updated via avatar/assign()
     "avatar_file_name": null,//<string>,
     "tags": [1,2] //array of tag ids
 }
@@ -72,17 +74,17 @@ null means undefined
     Subtypes: "mobile_crane", "racing", "buggy", "ambulance", "firefighter", "hearse", "shop", "harvester", "snowplow", "tractor", "grader", "excavator", "bulldozer", "armored", "amphibian"
 ```
 
-## create(…)
+## create()
 
 Create new vehicle.
 
 **required subuser rights**: vehicle_update
 
-##### parameters:
+##### parameters
 
 *   **vehicle** (JSON object) – object
 
-#### return:
+#### return
 
     {
         "success": true,
@@ -90,30 +92,30 @@ Create new vehicle.
     }
 
 
-#### errors:
+#### errors
 
 *   247 – Entity already exists, if tracker\_id!=null and exists vehicle that already binded to this tracker\_id
 
 
-## delete(…)
+## delete()
 
 Delete vehicle with the specified id.
 
 **required subuser rights**: vehicle_update
 
-#### parameters:
+#### parameters
 
 
 *   **vehicle_id** (int) – Id of the vehicle to delete
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no vehicle with such id)
 
@@ -121,7 +123,7 @@ Delete vehicle with the specified id.
 
 Get all vehicles belonging to user.
 
-#### return:
+#### return
 
 ```js
 {
@@ -133,20 +135,20 @@ Get all vehicles belonging to user.
 
 where **vehicle** described [here](#vehicle).
 
-#### errors:
+#### errors
 
 general types only
 
 
-## read(…)
+## read()
 
 Get vehicle by id.
 
-#### parameters:
+#### parameters
 
 *   **vehicle_id** (int) – Id of the vehicle
 
-#### return:
+#### return
 
 ```
 {
@@ -155,29 +157,29 @@ Get vehicle by id.
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no vehicle with such id)
 
 
-## update(…)
+## update()
 
 Update existing vehicle.
 
 **required subuser rights**: vehicle_update
 
-#### parameters:
+#### parameters
 
 *   **vehicle** – JSON object described [above](#vehicle).
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
 
-#### errors:
+#### errors
 
 *   201 – (Not found in database) If there is no vehicle with such id
 *   247 – (Entity already exists) If **tracker_id** != **null** and exists vehicle that already binded to this **tracker_id**

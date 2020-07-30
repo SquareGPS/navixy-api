@@ -1,9 +1,11 @@
 ---
-title: /task/form
-description: /task/form
+title: Task form
+description: Task form
 ---
 
-# /task/form/
+# Task form
+
+API path: `/task/form`.
 
 Contains API calls related to forms associated with tasks.
 
@@ -50,19 +52,18 @@ For **form_field** and **form_value** object description, see [form fields and v
 
 
 
----
-## create(…)
+## create()
 
 Attach new form to the existing task or checkpoint. Form is always created on the basis of form template.
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **task_id** - (int) Id of the task to assign
 * **template_id** - (int) Id of the form template
 
-#### return:
+#### return
 
 ```js
 {
@@ -70,7 +71,7 @@ Attach new form to the existing task or checkpoint. Form is always created on th
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no task or template with such id, or task has the “route” type)
 *   247 – Entity already exists (if task already has form attached to it)
@@ -78,19 +79,18 @@ Attach new form to the existing task or checkpoint. Form is always created on th
 
 
 
----
-## delete(…)
+## delete()
 
 Delete form (detach it from the task).<br>
 All form data will be lost!
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **task_id** - (int) Id of the task to which form is attached
 
-#### return:
+#### return
 
 ```js
 {
@@ -98,44 +98,42 @@ All form data will be lost!
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no task with such id, or task has the “route” type, or it has no form attached)
 *   255 – Invalid task state (if current task state is not “unassigned”, “assigned” or “arrived”)
 
 
 
----
-## download(…)
+## download()
 
 Retrieve attached form as file.
 
-#### parameters:
+#### parameters
 
 * **task_id**
 * **format**
 
-#### return:
+#### return
 
     A form rendered to file (standard file download).
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if task does not exist or does not have attached form)
 
 
 
----
-## list(…)
+## list()
 
 Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, the list contains data on the objects related to each form – tracker / vehicle / employee, task.
 
-#### parameters:
+#### parameters
 
 *   **form_template_id** (*integer, optional*). The returned list will contain forms, related to that template.<br>
-    **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
+    **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
 *   **task_ids** (*list of integers, optional*). Maximum size of list is 500 elements. List of task ids. The returned list will contain forms, related to tasks, which ids are specified in this parameter.<br>
-    **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
+    **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
 *   **order_by** (*optional, default = submitted*). Data field for list sorting. Available values:
     *   *task_id*
     *   *created*
@@ -188,7 +186,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
 
 *   **offset, limit** (*integers, optional*). Specify which subset of elements from all matching results will be included in the returned list.
 
-#### return:
+#### return
 
 ```js
 {
@@ -254,23 +252,22 @@ Returns descriptions of forms, created on the basis of specified form template. 
 ]}
 ```
 
-#### errors:
+#### errors
 
 *   204 – Not found (if there is no form template with such id belonging to authorized user)
 *   General types of errors.
 
 
 
----
-## read(…)
+## read()
 
 Get form associated with the specified task.
 
-#### parameters:
+#### parameters
 
 * **task_id** - (int) Id of the task
 
-#### return:
+#### return
 
 ```js
 {
@@ -319,6 +316,6 @@ metadata object:
 
 For **form** object description, see [task/form/](#form-object-structure).
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no task with such id, or task is assigned to tracker unavailable to current subuser)

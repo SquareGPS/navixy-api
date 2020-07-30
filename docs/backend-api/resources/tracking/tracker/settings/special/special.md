@@ -21,7 +21,7 @@ Get special settings for the specified tracker.
 
 If parameter type is present:
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -30,7 +30,7 @@ If parameter type is present:
 ```
 If parameter type is omitted:
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -585,7 +585,7 @@ If parameter type is omitted:
 - `motion_duration` – A time parameter to make sure that the device enters motion status.
 - `motion_threshold` – The threshold for the motion sensor to measure whether the device is moving.
 
-#### errors:
+#### errors
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   214 – Requested operation or parameters are not supported by the device
@@ -595,17 +595,17 @@ Set special settings for a specified tracker with the new one.
 
 **required subuser rights:** tracker_configure
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **value** - **JSON object**. Settings object, see above
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   214 – Requested operation or parameters are not supported by the device

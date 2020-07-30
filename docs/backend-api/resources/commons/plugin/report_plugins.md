@@ -9,7 +9,7 @@ description: Report plugins
 
 A report on markers for Check-in function.
 
-#### Parameters:
+#### parameters
 default **plugin_id**: 80
 
 Plugin-specific parameters:
@@ -24,7 +24,7 @@ Plugin-specific parameters:
 
 A report on fuel consumption counted by flow meter sensors.
 
-#### Parameters:
+#### parameters
 default **plugin_id**: 78
 
 Plugin-specific parameters:
@@ -40,7 +40,7 @@ Plugin-specific parameters:
 
 Custom report for AO NIPIGAZ
 
-#### Parameters:
+#### parameters
 default **plugin_id**: 84
 
 plugin-specific parameters:

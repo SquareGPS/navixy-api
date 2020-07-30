@@ -1,16 +1,18 @@
 ---
-title: /task
-description: /task
+title: Task
+description: Task
 ---
 
-# task/
+# Task
+
+API path: `/task`.
 
 ```js
 <task> =
    {
-        "id": 111,   //primary key. used in update(...), *IGNORED* in create(...)
-        "user_id": 3,   //user id. *IGNORED* in create(...)/update(...)
-        "tracker_id": 22, //id of the tracker to which task is assigned. can be null.  *IGNORED* in update(...)
+        "id": 111,   //primary key. used in update(), *IGNORED* in create()
+        "user_id": 3,   //user id. *IGNORED* in create()/update()
+        "tracker_id": 22, //id of the tracker to which task is assigned. can be null.  *IGNORED* in update()
         "location": {   //location associated with this task. cannot be null
             "lat": 56.5,
             "lng": 60.5,
@@ -19,17 +21,17 @@ description: /task
         },
         "label": "Deliver parcels",
         "description": "Quickly",
-        "creation_date": "2014-01-02 03:04:05", //when task was created. *IGNORED* in create(...)/update(...)
+        "creation_date": "2014-01-02 03:04:05", //when task was created. *IGNORED* in create()/update()
         "from": "2014-02-03 04:05:06", //date AFTER which task zone must be visited
         "to": "2014-03-04 05:06:07", //date BEFORE which task zone must be visited
         "external_id": null,  //used if task was imported from external system. arbitrary text string. can be null
-        "status": "assigned", //task status. *IGNORED* in create(...)/update(...). Can have "unassigned" value (unassigned to any executor), "assigned", "done", "failed", "delayed", "arrived" (arrived to geofence but haven't done the task), "faulty" (with problems)
-        "status_change_date": "2014-01-02 03:04:05", //when task status was changed. *IGNORED* in create(...)/update(...)
+        "status": "assigned", //task status. *IGNORED* in create()/update(). Can have "unassigned" value (unassigned to any executor), "assigned", "done", "failed", "delayed", "arrived" (arrived to geofence but haven't done the task), "faulty" (with problems)
+        "status_change_date": "2014-01-02 03:04:05", //when task status was changed. *IGNORED* in create()/update()
         "max_delay" : 5, //maximum allowed task completion delay in minutes,
         "min_stay_duration": 0, //minumum duration of stay in task zone for task completion, minutes
-        "arrival_date": "2014-01-02 03:04:05", //when tracker has arrived to the task zone. *IGNORED* in create(...)/update(...)
+        "arrival_date": "2014-01-02 03:04:05", //when tracker has arrived to the task zone. *IGNORED* in create()/update()
         "stay_duration": 0, //duration of stay in the task zone, seconds
-        "origin": "imported",  //task origin. *IGNORED* in create(...)/update(...)
+        "origin": "imported",  //task origin. *IGNORED* in create()/update()
         "tags": [1, 2] //array of tag ids,
         "type": "task",
         "form": <form_object> // if present
@@ -38,25 +40,24 @@ description: /task
 
 
 
----
-## assign(…)
+## assign()
 
 (Re)assign task to new tracker (or make it unassigned).
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **task_id** - (int) Id of the task to assign.
 * **tracker_id** - (int) Id of the tracker. Tracker must belong to authorized user and not be blocked. If null, task will be assigned to noone.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no task with such id)
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
@@ -66,7 +67,7 @@ description: /task
 
 
 
-## batch_convert(…)
+## batch_convert()
 
 Convert batch of tab-delimited tasks and return list of checked tasks with errors.
 
@@ -80,7 +81,7 @@ Convert batch of tab-delimited tasks and return list of checked tasks with error
     }
 ```
 
-#### parameters:
+#### parameters
 
 * **batch** - (String) batch of tab-delimited tasks.
 * **fields** - (Array of String) Optional, array of field names, default is [“label”, “from”, “to”, “address”, “lat”, “lng”, “description”]
@@ -95,7 +96,7 @@ Convert batch of tab-delimited tasks and return list of checked tasks with error
 
 In case of location_check_mode==entity_location – vehicle_ids will be ignored.
 
-#### return:
+#### return
 
 ```js
 {
@@ -104,7 +105,7 @@ In case of location_check_mode==entity_location – vehicle_ids will be ignored.
 }
 ```
 
-#### errors:
+#### errors
 
 general types only
 
@@ -114,7 +115,7 @@ general types only
 
 Return total number of tasks belonging to current user.
 
-#### return:
+#### return
 
 ```js
 {
@@ -125,20 +126,19 @@ Return total number of tasks belonging to current user.
 
 
 
----
-## create(…)
+## create()
 
 Create new task.
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **task** - (JSON object) <task> object without fields which are IGNORED
 * **create_form** - **boolean**. If true then check additional form_template_id field in **task** object and create form
 if it is not null. Default value is false for backward compatibility.
 
-Minimal JSON object to create a new task must contain:
+Minimal JSON object to create a new task must contain:
 
 ```js
 {
@@ -155,7 +155,7 @@ Minimal JSON object to create a new task must contain:
 }
 ```
 
-task/create(..) call returns the identifier of the created task.
+task/create() call returns the identifier of the created task.
 Returned object also can include "external_id_counts" field see task/route/create [method description](./route/route.md#create)
 
 ```js
@@ -166,7 +166,7 @@ Returned object also can include "external_id_counts" field see task/route/creat
 }
 ```
 
-#### return:
+#### return
 
 ```js
 {
@@ -176,44 +176,42 @@ Returned object also can include "external_id_counts" field see task/route/creat
 }
 ```
 
-**Note:** The “id” parameter is unique, it is automatically generated by the server when you create a task. Therefore, if you call task/create (..) two times with the same parameters, every time the new task will be created. These two tasks will differ only by id. Respectively, if the created task has to be connected to a certain record in external system, you have to remember the id of this record to use it in future when you want to change/delete the associated task in our system.
+**Note:** The “id” parameter is unique, it is automatically generated by the server when you create a task. Therefore, if you call task/create () two times with the same parameters, every time the new task will be created. These two tasks will differ only by id. Respectively, if the created task has to be connected to a certain record in external system, you have to remember the id of this record to use it in future when you want to change/delete the associated task in our system.
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if task.tracker_id is not null and belongs to nonexistent tracker)
 *   236 – Feature unavailable due to tariff restrictions (if device’s tariff does not allow usage of tasks)
 
 
 
----
-## delete(…)
+## delete()
 
 Delete task with the specified id.
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **task_id** - (int) Id of the task to delete
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no task with such id)
 
 
 
----
-## list(…)
+## list()
 
 Get all task belonging to user with optional filtering.
 
-#### parameters:
+#### parameters
 
 *   **external_id** – **string**. (optional) external task ID for search
 *   **statuses** – **string[]**. (optional. default all) list of task statuses, e.g. [“unassigned”,”failed”]
@@ -240,7 +238,7 @@ If **offset** or **limit** is null then restrictions for paginations will not be
     — _employee_ (employee.last_name, employee.first_name, employee.middle_name, tracker.label)<br>
     — *arrival_date*
 
-#### return:
+#### return
 
 ```js
 {
@@ -280,21 +278,21 @@ If **offset** or **limit** is null then restrictions for paginations will not be
 }
 ```
 
-#### errors:
+#### errors
 
 general types only
 
 
 
-## read(…)
+## read()
 
 Get task, checkpoint, or route with checkpoints by id.
 
-#### parameters:
+#### parameters
 
 * **task_id** - (int) Id of the task, route or checkpoint
 
-#### return:
+#### return
 
 ```js
 {
@@ -310,50 +308,50 @@ Get task, checkpoint, or route with checkpoints by id.
 
 where **task** described [here](#task).
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no task with such id)
 
 
 
-## transmute(…)
+## transmute()
 
 Convert task into a route checkpoint.
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **task_id** - (int) Id of the task to convert
 * **route_id** - (int) Id of the route to attach to
 * **order** - (int) zero-based index at which checkpoint should be inserted into route
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no task or route with such id, or tracker to which checkpoint is assigned is unavailable to current subuser)
 *   255 – Invalid task state (if task or any of the checkpoints are not in unassigned or assigned state)
 
 
 
-## update(…)
+## update()
 
 Update existing task. Note that you cannot change task owner using this method.
 
 **required subuser rights**: task_update
 
-#### parameters:
+#### parameters
 
 * **task** - (JSON object) <task> object without fields which are *IGNORED*
 * **create_form** - **boolean**. If true then check additional form_template_id field in **task** object and create, 
 replace or delete task's form. Default value is false for backward compatibility.
 
-#### return:
+#### return
 
 Returned object also can include "external_id_counts" field see task/route/create [method description](./route/route.md#create)
 
@@ -364,7 +362,7 @@ Returned object also can include "external_id_counts" field see task/route/creat
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no task with such id)
 *   255 – Invalid task state (if current task state is not “unassigned” or “assigned”)

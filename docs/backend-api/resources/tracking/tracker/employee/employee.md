@@ -9,17 +9,17 @@ Assign another employee (“driver”) to this tracker
 **required subuser rights:** employee_update
 **required tariff feature:** app_fleet
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **new_employee_id** - **int**. Id of the new employee.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 – Not found in database (if there is no tracker or employee with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   263 – No change needed, old and new values are the same (if new employee matches currently assigned employee)
@@ -27,10 +27,10 @@ Assign another employee (“driver”) to this tracker
 ## read()
 Request to read the current employee assigned to tracker, and when it was assigned.
 
-#### parameters:
+#### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
+#### return
 ```js
 {
   "success": true,
@@ -70,7 +70,7 @@ Request to read the current employee assigned to tracker, and when it was assign
 }
 ```
 
-#### errors:
+#### errors
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 

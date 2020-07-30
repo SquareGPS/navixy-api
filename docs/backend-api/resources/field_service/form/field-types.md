@@ -1,10 +1,11 @@
 ---
-title: /field-types
-description: /field-types
+title: Form field types
+description: Form field types
 ---
 
-Form fields and values
-======================
+API path: `/form/field-types`.
+
+# Form fields and values
 
 Every form (and form template) contains an ordered list of fields of various types. Field type defines how user input elements will look like, and how user input will be validated.
 

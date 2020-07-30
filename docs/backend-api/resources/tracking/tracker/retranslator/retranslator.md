@@ -13,34 +13,34 @@ description: /retranslator
 }
 ```
 
-## bind(…)
+## bind()
 Create or update binding.
 
 **required subuser rights:** admin (available only to master users)
 
-#### parameters:
+#### parameters
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **retranslator_id** – **int**. retranslator ID
 * **fake_device_id** – **string**. if this field is set retranslator use it instead of real device ID to retranslate data.
 
-#### return:
+#### return
 ```js
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 *   219 (Not allowed for clones of the device) – if tracker is clone
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “retranslation” tariff feature available
 *   242 (There were errors during content validation) – if **fake_device_id** is invalid for the protocol
 
-## list(…)
+## list()
 List tracker retranslators binded to tracker with ID=**tracker_id**.
 
-#### parameters:
+#### parameters
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
+#### return
 ```js
 {
    "success": true,
@@ -48,23 +48,23 @@ List tracker retranslators binded to tracker with ID=**tracker_id**.
 }
 ```
 
-#### errors:
+#### errors
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 
-## unbind(…)
+## unbind()
 Unbind tracker from retranslator.
 
 **required subuser rights:** admin (available only to master users)
 
-#### parameters:
+#### parameters
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **retranslator_id** – **int**. retranslator ID
 
-#### return:
+#### return
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 *   219 (Not allowed for clones of the device) – if tracker is clone

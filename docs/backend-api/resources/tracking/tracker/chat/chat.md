@@ -7,7 +7,7 @@ description: Сhat with tracker
 
 Gets a list of chat messages.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
@@ -17,7 +17,7 @@ Gets a list of chat messages.
 | limit | optional. Limit of messages in list. Default and max limit is 1024 | int | 1024 |
 | ascending | optional. Ascending order direction from the first message to last. Default value is true | boolean | true/false |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/list/' \
@@ -25,7 +25,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/list/' \
 -d '{"tracker_id": "999199", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -48,7 +48,7 @@ Where **message** object is:
 }
 ```
 
-#### errors:
+#### errors
 
 * 201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
@@ -59,13 +59,13 @@ Where **message** object is:
 
 Marks all incoming chat messages as read for all or for given user trackers.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | trackers | Optional array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | array of int | [999199, 999919,...] |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/mark_read_all/' \
@@ -73,13 +73,13 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/mark_read_all/' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 * 201 – Not found in database
 
@@ -87,7 +87,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/mark_read_all/' \
 
 Marks incoming chat message as read by **message_id** or array of **message_ids**.
 
-#### parameters:
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
@@ -96,7 +96,7 @@ Marks incoming chat message as read by **message_id** or array of **message_ids*
 
 Use only one parameter.
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/mark_read/' \
@@ -104,13 +104,13 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/mark_read/' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "message_id": "123"}'
 ```
 
-#### response:
+#### response
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 * 201 – Not found in database
 
@@ -125,7 +125,7 @@ Sends chat message to specified tracker
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
 | message | message text, not null, max size - 20000 | string | Hello World |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/send/' \
@@ -133,7 +133,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/send/' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999199", "message": "Hello World"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -142,7 +142,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/send/' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
@@ -160,7 +160,7 @@ Sends chat message to specified trackers
 | trackers | array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300 | array of int | [999199, 999919,...] |
 | message | message text, not null, max size - 20000 | string | Hello World |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/broadcast/' \
@@ -168,7 +168,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/broadcast/' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]", "message": "Hello World"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -178,7 +178,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/broadcast/' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
 * 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
@@ -193,7 +193,7 @@ Gets date-times of last messages in chat of trackers
 | :------ | :------ | :----- | :----- |
 | trackers | array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300 | array of int | [999199, 999919,...] |
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/updated/list/' \
@@ -201,7 +201,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/updated/list/' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -214,7 +214,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/updated/list/' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
 * 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
@@ -223,7 +223,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/updated/list/' \
 
 Gets count of user’s unread chat messages grouped by tracker id.
 
-#### example:
+#### example
 
 ```abap
 $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/unread/count/' \
@@ -231,7 +231,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/unread/count/' \
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-#### response:
+#### response
 
 ```js
 {
@@ -243,6 +243,6 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/chat/unread/count/' \
 }
 ```
 
-#### errors:
+#### errors
 
 * 236 – Feature unavailable due to tariff restrictions (if there is no tracker which has tariff with “chat” feature)

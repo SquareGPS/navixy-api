@@ -1,20 +1,21 @@
 ---
-title: /department
-description: /department
+title: Department
+description: Department
 ---
 
-# department/
+# Department
 
+API path: `/department`.
   
-## list(…)
+## list()
 
 Gets all departments belonging to user.
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/department/list?hash=your_hash
 
-#### response:
+#### response
 
 ```js
 {
@@ -40,7 +41,7 @@ Gets all departments belonging to user.
 }
 ```
 
-#### errors:
+#### errors
 
 *   7 – Invalid parameters
 *   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
@@ -48,7 +49,7 @@ Gets all departments belonging to user.
 *   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
 
-## create(…)
+## create()
 
 Creates a new department with specified parameters. Required subuser rights: `employee_update`.
 
@@ -56,17 +57,17 @@ Creates a new department with specified parameters. Required subuser rights: `em
 
     https://api.navixy.com/v2/department/create?hash=your_hash&department={"label":"drivers","location":{"lat": "latitude","lng": "longitude","address": "full address", "radius": "radius_in_meters"}}
 
-#### parameters:
+#### parameters
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
 | department | an [department object](#where) | object | `{"label":"Name","location":{"lat": 1.12345,"lng": 2.67890, "address": "address of the department", "radius": "123"}` |
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/department/create?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
 
-#### response:
+#### response
 
 ```js
 {
@@ -75,7 +76,7 @@ Creates a new department with specified parameters. Required subuser rights: `em
 }
 ```
 
-#### errors:
+#### errors
 
 *   7 – Invalid parameters
 *   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
@@ -83,7 +84,7 @@ Creates a new department with specified parameters. Required subuser rights: `em
 *   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
 
-## update(…)
+## update()
 
 Updates existing department with a new specified parameters. Required subuser rights: `employee_update`.
 
@@ -91,28 +92,28 @@ Updates existing department with a new specified parameters. Required subuser ri
 
     https://api.navixy.com/v2/department/update?hash=your_hash&department={"label":"new name","location":{"lat": "new latitude","lng": "new longitude","address": "new full address", "radius": "new radius_in_meters"}}
 
-#### parameters:
+#### parameters
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
 | department | an [department object](#where) | object | `{"label":"Name","location":{"lat": 1.12345,"lng": 2.67890, "address": "address of the department", "radius": "123"}` |
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/department/update?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
 
-#### response:
+#### response
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no department with such id)
 
 
-## delete(…)
+## delete()
 
 Deletes department with the specified id. Required subuser rights: `employee_update`.
 
@@ -120,22 +121,22 @@ Deletes department with the specified id. Required subuser rights: `employee_upd
 
     https://api.navixy.com/v2/department/delete?hash=your_hash&department_id=3254
 
-#### parameters:
+#### parameters
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
 | department_id | Id of the department | int | 12345 |
 
-#### example:
+#### example
 
     https://api.navixy.com/v2/department/delete?hash=22eac1c27af4be7b9d04da2ce1af111b&department_id=65878
 
-#### response:
+#### response
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no department with such id).

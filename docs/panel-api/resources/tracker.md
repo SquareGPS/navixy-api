@@ -1,11 +1,13 @@
 ---
-title: /tracker
-description: /tracker
+title: Tracker
+description: Tracker
 ---
 
-# Tracker data structure
+# Tracker
 
-```json
+## Tracker data structure
+
+```js
 {
     "id": ${int},                   // tracker id aka object_id
     "label": ${string},             // tracker label
@@ -103,7 +105,7 @@ Assign bundle to specified ICCID
 | `bundle_id` | Id of the bundle. | Int |
 | `iccid` | Must consist of printable characters and have length between 3 and 20. | String |
 
-----------
+**Return**
 
 ```json
 { "success": true }
@@ -382,7 +384,7 @@ Mark tracker as deleted and corrupt its source device_id and phone. Rename track
 ```
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## batch_delete_clones(...)
+## batch_delete_clones()
 
 Deletes the specified set of trackers that are clones of other trackers. 
 The action is considered completed successfully, even if some of the trackers could not be deleted. Then for the rest response will contain a description of the reasons why the deletion failed.
@@ -791,12 +793,12 @@ All dates according to UTC time.
 
 ## raw_command/
 
-### send(…)
+### send()
 Sends the command to the device, processing it in a protocol-dependent manner beforehand.
 
 **required subuser rights:** tracker_update
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 device_id | Fixed device ID, e.g. IMEI | String
@@ -804,12 +806,12 @@ command | Text or hexadecimal representation of the command | String
 type | **text** or **hex**. Optional, default is **text** | String
 reliable | **false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **true** | Boolean
 
-#### return:
+#### return
 ```js
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   7 (Invalid parameters)
 *   201 (Not found in database) – if there is no tracker with such device ID belonging to authorized user
 *   252 (Device already corrupted) – if tracker’s source is corrupted

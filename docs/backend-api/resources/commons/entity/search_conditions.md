@@ -1,9 +1,11 @@
 ---
-title: /entity/search_conditions
-description: /entity/search_conditions
+title: Entity search conditions
+description: Entity search conditions
 ---
 
 # Entity search Conditions
+
+API path: `/entity/search_conditions`.
 
 Search conditions are used to search and filter list of certain entities by built-in and/or custom fields.
 

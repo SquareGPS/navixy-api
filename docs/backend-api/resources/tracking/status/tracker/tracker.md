@@ -6,14 +6,14 @@ description: /tracker
 # tracker/
 This resource contains methods to read and assign status of a particular tracker.
 
-## assign(…)
+## assign()
 Assign a status to the tracker.
 
-#### parameters:
+#### parameters
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **new_status_id** – **int**. ID of the status. Must belong to status listing assigned to this tracker.
 
-#### return:
+#### return
 ```js
 {
   "success": true,
@@ -32,7 +32,7 @@ Assign a status to the tracker.
 }
 ```
 
-#### errors:
+#### errors
 *   13 (Operation not permitted) – if status listing does not allow for supervisor to change status
 *   201 (Not found in database) – if there is no tracker with such ID belonging to authorized user
 *   204 (Entity not found) – if there is no listing assigned to this tracker containing with such ID
@@ -41,13 +41,13 @@ Assign a status to the tracker.
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 *   263 (No change needed, old and new values are the same) – if new status is equal to current status of tracker
 
-## list(…)
+## list()
 Get current assigned statuses for the specified trackers.
 
-#### parameters:
+#### parameters
 * **trackers** – **array of int**. List of the tracker’s IDs belonging to authorized user.
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -90,19 +90,19 @@ Get current assigned statuses for the specified trackers.
 }
 ```
 
-#### errors:
+#### errors
 *   217 (Requested limit is too big) – limit is more than [maxHistoryLimit](../../../../getting-started.md#constants)
 *   221 (Device limit exceeded) – if device limit set for the user’s dealer has been exceeded
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 
-## read(…)
+## read()
 
 Get current assigned status of the tracker.
 
-#### parameters:
+#### parameters
 * **tracker_id** – **int**. ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.
 
-#### return:
+#### return
 ```js
 {
   "success": true,
@@ -126,7 +126,7 @@ Get current assigned status of the tracker.
 }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if there is no tracker with such ID belonging to authorized user
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 *   219 (Not allowed for clones of the device) – if specified tracker is a clone

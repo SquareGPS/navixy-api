@@ -9,7 +9,7 @@ description: /dealer
 
 *   **base**: "get\_dealer\_info"
 
-#### return:
+#### return
 
     {
         "success": true,
@@ -63,6 +63,6 @@ description: /dealer
     
 where **features** is a set of allowed [Dealer features](../../../backend-api/resources/commons/dealer.md#dealer-features).
 
-#### errors:
+#### errors
 
 *   201 - Not found in database

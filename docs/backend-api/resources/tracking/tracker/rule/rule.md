@@ -221,17 +221,17 @@ Bind rule with **rule_id** to trackers list.
 
 **required subuser rights:** tracker_rule_update
 
-#### parameters:
+#### parameters
 * **rule_id** - **int**.
 * **trackers** - **array of int**. ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors.
 * **tracker_id** - **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return:
+#### return
 ```javascript
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if rule with **rule_id** does not exist or owned by other user
 
 ## create()
@@ -239,10 +239,10 @@ Create rule and scheduled intervals.
 
 **required subuser rights:** tracker_rule_update
 
-#### parameters:
+#### parameters
 * **rule** - [JSON object](#rule).
 
-#### return:
+#### return
 ```javascript
 {
     "success": true,
@@ -250,7 +250,7 @@ Create rule and scheduled intervals.
 }
 ```
 
-#### errors:
+#### errors
 *   204 (Entity not found) – when associated zone is not exists
 
 ## delete()
@@ -258,22 +258,22 @@ Delete rule with rule_id and all related objects from the database.
 
 **required subuser rights:** tracker_rule_update
 
-#### parameters:
+#### parameters
 * **rule_id** - **int**.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if rule with **rule_id** does not exist or owned by other user
 
 ## list()
 List tracker rules binded to tracker with id=**tracker_id** or all user’s tracker rules if **tracker_id** not passed.
 
-#### return:
+#### return
 
 ```js
 {
@@ -287,17 +287,17 @@ Unbind trackers from rule with **rule_id**.
 
 **required subuser rights:** tracker_rule_update
 
-#### parameters:
+#### parameters
 * **rule_id** - **int**.
 * **trackers** - **array of int**. ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors.
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if rule with **rule_id** does not exist or owned by other user
 
 ## update()
@@ -305,15 +305,15 @@ Update rule and scheduled intervals.
 
 **required subuser rights:** tracker_rule_update
 
-#### parameters:
+#### parameters
 * **rule** - [JSON object](#rule).
 
-#### return:
+#### return
 
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if rule is not exists or owned by other user
 *   204 (Entity not found) – when new associated zone is not exists

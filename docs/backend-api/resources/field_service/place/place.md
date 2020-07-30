@@ -1,9 +1,11 @@
 ---
-title: /place
-description: /place
+title: Place
+description: Place
 ---
 
-# place actions:
+# Place
+
+API path: `/place`.
 
 **place** is:
 ```js
@@ -30,28 +32,28 @@ description: /place
 }
 ```
 
-## read(…)
+## read()
 Get place by ID.
 
-#### parameters:
+#### parameters
 |name |description |type |
 |:--- |:--- |:--- |
 |place_id |ID of the place |int |
 
-#### return:
+#### return
 ```js
 {
     "success": true,
     "value": <place>
 }
 ```
-#### errors:
+#### errors
 * 201 (Not found in database) – if there is no place with such ID
 
-## list(…)
+## list()
 Get places belonging to user.
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 place_ids | optional, list of place IDs | array of ints
@@ -62,7 +64,7 @@ ascending | optional, if false – descending order | boolean
 limit | optional, limit | int
 offset | optional, offset, default is 0 | int
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -71,21 +73,21 @@ offset | optional, offset, default is 0 | int
 }
 ```
 
-#### errors:
+#### errors
 general types only
 
-## create(…)
+## create()
 Create new place.
 
 **required subuser rights:** place_update
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 place | &lt;place&gt; | JSON object
 ignore_missing_fields | Optional (default is false). If set to true, place can be created even without all required custom fields.| boolean 
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -93,51 +95,51 @@ ignore_missing_fields | Optional (default is false). If set to true, place can b
 }
 ```
 
-#### errors:
+#### errors
 * 268 (Over quota) – if the user's quota for places is exceeded
 
-## update(…)
+## update()
 Update existing place.
 
 **required subuser rights:** place_update
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 place | &lt;place&gt; | JSON object
 
-#### return:
+#### return
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 * 201 (Not found in database) – if there is no place with such ID
 
-## delete(…)
+## delete()
 Delete place with the specified ID.
 
 **required subuser rights:** place_update
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 place_id | ID of the place to delete | int
 
-#### return:
+#### return
 ```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 * 201 (Not found in database) – if there is no place with such ID
 
-## batch_convert(…)
+## batch_convert()
 Convert batch of tab-delimited places and return list of checked places with errors.
 
 **required subuser rights:** place_update
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 batch | batch of tab-delimited places. | String
@@ -167,10 +169,10 @@ where `checked_place` is:
 }
 ```
 
-#### errors:
+#### errors
 * 234 (Invalid data format)
 
-## upload(…)
+## upload()
 Upload places.
 
 **required subuser rights:** place_update
@@ -179,7 +181,7 @@ Upload places.
 
 CSV column separator is ‘;’, columns order – `label;tags;address;lat;lng;radius;external_id;description`
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 file | A CSV file upload containing places data | File upload
@@ -189,7 +191,7 @@ default_radius | Optional, radius for point, meters, default is 100 | Int
 geocoder | Geocoder type | String
 redirect_target | (optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;* | String
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -198,7 +200,7 @@ redirect_target | (optional) URL to redirect. If **redirect_target** passed retu
 }
 ```
 
-#### errors:
+#### errors
 * 233 (No data file) – if file part is missing
 * 234 (Invalid data format)
 * 247 (Entity already exists) – if uploaded place contains external_id and place with this ID already exists and duplicate_policy=fail

@@ -1,11 +1,13 @@
 ---
-title: /employee/report
-description: /employee/report
+title: Employee report
+description: Employee report
 ---
 
-# /employee/report
+# Employee report
 
-## generate(...)
+API path: `/employee/report`.
+
+## generate()
 
 Generate report based on employees
 

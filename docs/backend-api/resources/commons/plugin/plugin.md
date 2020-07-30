@@ -1,9 +1,11 @@
 ---
-title: /plugin
-description: /plugin
+title: Plugin
+description: Plugin
 ---
 
-# /plugin
+# Plugin
+
+API path: `/plugin`.
 
 Plugins are special software modules which modify the behavior of various API calls.
 
@@ -38,11 +40,11 @@ Plugins are special software modules which modify the behavior of various API ca
 }
 ```
 
-## list(…)
+## list()
 
 Get all plugins available to the user. List of available plugins may vary from user to user depending on platform settings and purchased features. Only these plugins can be used to register trackers, generate reports, etc.
 
-#### return:
+#### return
 
 ```js
 {
@@ -53,7 +55,7 @@ Get all plugins available to the user. List of available plugins may vary from u
 
 For "plugin" object structure, see [plugin/](#plugin).
 
-#### errors:
+#### errors
 
 * general types only
 

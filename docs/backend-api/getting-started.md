@@ -19,10 +19,11 @@ common example — requesting the track points data:
 
 1.  Determine [URL to API calls](#api-base-url).
 1.  Authorize with [`user/auth`](./resources/commons/user/user.md#auth). 
-    This API method [will return the hash](./how-to/get-session-hash.md) you should use for all your next API calls.
-1.  Get objects lists with [`tracker/list`](./how-to/get-tracker-list.md).
+    This API method [will return the hash](./how-to/get-session-hash.md) 
+    you should use for all your next API calls.
+1.  Get objects lists with [`tracker/list`](./how-to/get-tracker-list.md).
 1.  Get track lists with [`track/list`](./resources/tracking/track/track.md#list).
-1.  Get the track itself: [`track/read`](./resources/tracking/track/track.md#read).
+1.  Get the track itself: [`track/read`](./resources/tracking/track/track.md#read).
 
 In other words, to start working with API, the developers should have API call 
 description (as provided herein), and know user login and password.

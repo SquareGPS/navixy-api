@@ -1,12 +1,16 @@
 ---
-title: /notification
-description: /notification
+title: Notification
+description: Notification
 ---
+
+# Notification
+
+API path: `/notification`.
 
 ## list()
 List user notifications.
 
-#### return:
+#### return
 ```js
 {
     "success": true,

@@ -1,31 +1,35 @@
 ---
-title: /avatar
-description: /avatar
+title: Vehicle avatar
+description: Vehicle avatar
 ---
 
-## assign(…)
+# Vehicle avatar
+
+API path: `/vehicle/avatar`.
+
+## assign()
 
 **required subuser rights**: vehicle_update
 
-#### parameters:
+#### parameters
 
 *   `vehicle_id`
 *   `icon_id`
 
 Assign icon\_id (from standard icon set) to this vehicle. Icon\_id can be null – this means that uploaded avatar should be used instead of icon.
 
-##### return:
+##### return
 
 ```json
 { "success": true }
 ```
 
 
-##### errors:
+##### errors
 
 *   201 – Not found in database (when vehicle with **vehicle_id** not found in db)
 
-## upload(…)
+## upload()
 
 Upload avatar image for specified vehicle.
 Then it will be available from `<api_url>/<api.static.uri>/vehicle/avatars/<file_name>`
@@ -44,14 +48,14 @@ File part **mime** type must be one of :
 *   **image/png**
 *   **image/gif**
 
-#### parameters:
+#### parameters
 
 *   **tag_id** – tag id
 *   **file** – image file
 *   **redirect_target** – (optional) URL to redirect
     If **redirect_target** passed return redirect to <redirect_target>?response=<urlencoded response json>
 
-#### return:
+#### return
 
 ```js
 {
@@ -60,7 +64,7 @@ File part **mime** type must be one of :
 }
 ```
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (when vehicle with **tag_id** not found in db)
 *   233 – No data file (if **file** part not passed)

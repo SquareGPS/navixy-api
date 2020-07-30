@@ -1,11 +1,11 @@
 ---
-title: /history
-description: /history
+title: Task history
+description: Task history
 ---
 
-# history/
+# Task history
 
-#### task/history actions:
+API path: `task/history`.
 
 ```js
 <history_entry> =
@@ -23,16 +23,15 @@ description: /history
 
 
 
----
-## list(…)
+## list()
 
 Return history for the task with the specified id.
 
-#### parameters:
+#### parameters
 
 * **task_id** - (int) Id of the task
 
-#### return:
+#### return
 
 ```js
 {
@@ -41,6 +40,6 @@ Return history for the task with the specified id.
 }
 ```
 
-#### errors:
+#### errors
 
 No specific errors.

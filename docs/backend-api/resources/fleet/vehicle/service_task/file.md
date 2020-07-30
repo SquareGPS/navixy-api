@@ -1,20 +1,24 @@
 ---
-title: /file
-description: /file
+title: Vehicle service task file
+description: Vehicle service task file
 ---
 
-## create(…)
+# Vehicle service task file
+
+API path: `/vehicle/service_task/file`.
+
+## create()
 
 Create file to specify its id in service task later
 
-#### parameters:
+#### parameters
 
 *   **filename** – (String?) Optional. If specified, uploaded file will have the specified name. If not, name will be taken from actual file upload form.
 *   **size** - (int) Maximum size in bytes for the file which will be uploaded. This is needed to “reserve” the space for file in user’s disk space quota. 
 *   **metadata** - (JSON object?) Optional.metadata object. see [task/form](../../../field_service/task/form/form.md#read).
 *   **type** - "image" or "file". Default is "file".
 
-#### return:
+#### return
 ```js
 {
   "success": true,

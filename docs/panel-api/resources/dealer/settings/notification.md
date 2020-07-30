@@ -11,7 +11,7 @@ Get current monitoring notification settings.
 
 *   **notification_settings**: "read"
 
-#### return:
+#### return
 
     {
         "success": true, 
@@ -27,13 +27,11 @@ Get current monitoring notification settings.
     }
     
 
-#### errors:
+#### errors
 
 No specific errors.
 
-----
-
-## update(...)
+## update()
 
 Update notification settings for the current dealer. 
 
@@ -41,15 +39,15 @@ Update notification settings for the current dealer.
 
 *   **notification_settings**: "update"
 
-#### parameters:
+#### parameters
  
 all fields from the dealer/settings/notification/read() response 
 
-#### return:
+#### return
 
     {"success": true}
     
 
-#### errors:
+#### errors
  
 No specific errors.

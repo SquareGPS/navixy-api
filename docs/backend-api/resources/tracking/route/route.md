@@ -1,12 +1,16 @@
 ---
-title: /route
-description: /route
+title: Tracking route
+description: Tracking route
 ---
 
-## get(…)
+# Tracking route
+
+API path: `/tracking/route`.
+
+## get()
 Get route points via specified route provider.
 
-#### parameters:
+#### parameters
 
 *   **start** – (location JSON object) start of route
 *   **end** – (location JSON object) end of route
@@ -16,7 +20,7 @@ Get route points via specified route provider.
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
-#### return:
+#### return
 ```js
 {
     "success": true,
@@ -36,7 +40,7 @@ Where **location** described in [data types description section](../../../gettin
 }
 ```
 
-#### errors:
+#### errors
 *   215 (External service error)
 *   218 (Malformed external service parameters)
 *   236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without “routing” tariff feature
