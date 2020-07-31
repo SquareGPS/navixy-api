@@ -418,6 +418,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/get_last_gps_point' \
 ## get_readings()
 
 Gets last sensor values for sensors that are:
+
 - **metering**
 - **not can- or obd-based**
 - **not “fuel” sensors**
@@ -656,6 +657,7 @@ where **additional_fields** is:
 Id type is used to determine the information needed to register device in our system (see [tracker/register()](#register)).
 
 Possible values are:
+
 - **imei** – means device uses IMEI as its identifier, e. g. “356938035643809”. See [Wikipedia article](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity). When needed, you should pass only digits of IMEI, no spaces, minus signs, etc.
 - **meid** means device uses MEID consisting of 14 HEX digits as its identifier, e. g. “A10000009296F2”. See [Wikipedia article](https://en.wikipedia.org/wiki/Mobile_equipment_identifier).
 - **id,n** – means device uses n-digit identifier (factory id with length n), for example, “id,7” means that you must pass 7-digit number, for example “1234567”
@@ -935,6 +937,7 @@ Because of the variety of tracker models and business applications, there are ma
 In addition to parameters specified in this section, you **must** pass all parameters which are required by the plugin you have chosen. See example below.
 
 Common parameters are:
+
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | label | User-defined label for this tracker. Must consist of printable characters and have length between 1 and 60 | string | Courier |
