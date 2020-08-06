@@ -27,8 +27,8 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 |--- |--- |--- |--- |
 | q | address (or place) or coordinates to geocode | string/location | 750 Avenue E,San Francisco,CA 94130,USA./60.0, 61.0 |
 | lang | language in which results should be | string (enum) | en |
-| geocoder | geocoder type that will be used for searching | string (enum) | google |
-| bounds | optional. JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included.| string | `{"nw":{"lat":60.0,"lng":61.0},"se":{"lat":55.0,"lng":60.0}}` |
+| geocoder | optional, geocoder type that will be preferably used for searching | string (enum) | google |
+| bounds | optional. JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included.| bounds_object | `{"nw":{"lat":60.0,"lng":61.0},"se":{"lat":55.0,"lng":60.0}}` |
 | lang | optional. ISO 639 [language code](../../getting-started.md#data-types) | locale | en_US |
 | with_details | optional. If true then the response will contain details | boolean | true/false |
 
@@ -66,7 +66,23 @@ where **details_object** is:
     "locality": <string>, // optional
     "street": <string>, // optional
     "house": <string>, // optional
-    "postcode": <string> // optional
+    "postcode": <string>, // optional
+    "bounds": <bounds_object> //optional, the bounding box which can fully contain the returned result
+}
+```
+
+**bounds_object** is:
+
+```json
+{
+  "nw":{ //northwest corner
+    "lat":<double>,
+    "lng":<double>
+  },
+  "se":{ //southeast corner
+    "lat":<double>,
+    "lng":<double>
+  }
 }
 ```
 
@@ -79,7 +95,7 @@ Search address by location using geocoder
 |name|description|type|format|
 |--- |--- |--- |--- |
 | location | location coordinates (see: [data types description section](../../getting-started.md#data-types) section) | location | `{"lat": , "lng": }` |
-| geocoder | optional, geocoder type that will be used for searching | string (enum) | google |
+| geocoder | optional, geocoder type that will be preferably used for searching | string (enum) | google |
 | lang | optional. ISO 639 [language code](../../getting-started.md#data-types) | locale | en_US |
 | with_details | optional. If true then the response will contain details | boolean | true/false |
 | goal | Helps to choose the target geocoder. Now supported `ui`, `ui_user_action`. Use `ui_user_action` for requests initiated by user, otherwise `ui` | string (enum) | ui | 
