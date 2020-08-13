@@ -58,8 +58,11 @@ with named parameters:
 *   parameter2
 *   parameter3 is optional
 
-Parameters can be passed in the `HTTP POST` with JSON content (recommended),
-`HTTP POST` with parameters and `HTTP GET` (not recommended):
+Parameters can be passed in the: 
+
+* `HTTP POST application/json` with JSON content, **recommended**
+* `HTTP POST application/x-www-form-urlencoded` with parameters in the request body 
+* `HTTP GET` - **not recommended**, should be used only for idempotent requests with small parameters size
 
 === "HTTP POST `application/json`"
     ```abap
