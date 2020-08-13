@@ -39,7 +39,7 @@ e.g. `http://saas.navixy.com/api-v2/static/employee/avatars/abcdef123456789.png`
 
 **required subuser rights**: employee_update
 
-**avatar\_file\_name** returned in response and will be returned from [/employee/list()](./employee.md#list).
+**avatar\_file\_name** returned in response and will be returned from [/employee/list()](employee.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data),
 with one of the parts being an image file upload (with the name “file”).
