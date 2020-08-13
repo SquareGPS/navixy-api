@@ -31,8 +31,8 @@ This can be especially handy when working with large requests.
 1. Enter base request URL with the resource and sub-resource. In our example we will
    use user/auth and  tracker/list requests. Base request URLs are:
 
-    *	For EU server - `https://api.navixy.com/v2/user/auth`
-    *	For US server - `https://api.us.navixy.com/api-v2/tracker/list`
+    *	For EU server - `https://api.navixy.com/v2/fsm/user/auth`
+    *	For US server - `https://api.us.navixy.com/api-v2/fsm/tracker/list`
 
     ![Enter URL](./assets/enter-url.png)
 

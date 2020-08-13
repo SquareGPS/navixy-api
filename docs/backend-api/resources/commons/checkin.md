@@ -13,7 +13,7 @@ Gets marker on map for the `checkin_id`. Required tariff features: `checkin`.
 
 #### structure:
 
-    https://api.navixy.com/v2/checkin/read?hash=your_hash&checkin_id=123456
+    https://api.navixy.com/v2/fsm/checkin/read?hash=your_hash&checkin_id=123456
 
 #### parameters
 
@@ -23,7 +23,7 @@ Gets marker on map for the `checkin_id`. Required tariff features: `checkin`.
 
 #### example
 
-    https://api.navixy.com/v2/checkin/read?hash=22eac1c27af4be7b9d04da2ce1af111b&checkin_id=132215
+    https://api.navixy.com/v2/fsm/checkin/read?hash=22eac1c27af4be7b9d04da2ce1af111b&checkin_id=132215
 
 #### response
 
@@ -45,7 +45,7 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 
 ####structure:
 
-    https://api.navixy.com/v2/checkin/list?hash=your_hash&trackers=[tracker_id_n]&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS
+    https://api.navixy.com/v2/fsm/checkin/list?hash=your_hash&trackers=[tracker_id_n]&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS
 
 #### parameters
 
@@ -57,7 +57,7 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 
 #### example
 
-    https://api.navixy.com/v2/checkin/list?hash=22eac1c27af4be7b9d04da2ce1af111b&trackers=[616384,345623]&from=2020-08-05 03:06:00&to=2020-09-05 03:00:00
+    https://api.navixy.com/v2/fsm/checkin/list?hash=22eac1c27af4be7b9d04da2ce1af111b&trackers=[616384,345623]&from=2020-08-05 03:06:00&to=2020-09-05 03:00:00
 
 #### response
 

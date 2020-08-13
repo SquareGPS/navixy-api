@@ -16,7 +16,7 @@ Gets the APN name/user/password and mobile operator of device by tracker_id.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/apn_settings/read' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/apn_settings/read' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999199", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```

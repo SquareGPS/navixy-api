@@ -20,7 +20,7 @@ Gets a list of chat messages.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/chat/list/' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/list/' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999199", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -68,7 +68,7 @@ Marks all incoming chat messages as read for all or for given user trackers.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/chat/mark_read_all/' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/mark_read_all/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -99,7 +99,7 @@ Use only one parameter.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/chat/mark_read/' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/mark_read/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "message_id": "123"}'
 ```
@@ -128,7 +128,7 @@ Sends chat message to specified tracker
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/chat/send/' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/send/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999199", "message": "Hello World"}'
 ```
@@ -163,7 +163,7 @@ Sends chat message to specified trackers
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/chat/broadcast/' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/broadcast/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]", "message": "Hello World"}'
 ```
@@ -196,7 +196,7 @@ Gets date-times of last messages in chat of trackers
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/chat/updated/list/' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/updated/list/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]"}'
 ```
@@ -226,7 +226,7 @@ Gets count of user’s unread chat messages grouped by tracker id.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/chat/unread/count/' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/unread/count/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```

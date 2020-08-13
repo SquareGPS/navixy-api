@@ -157,7 +157,7 @@ Method description.
 ### Example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/path/to/resource/method1' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/path/to/resource/method1' \
 -H 'Content-Type: application/json' \ 
 -d '{ "hash": "a6aa75587e5c59c32d347da438505fc3", "param1": "value" }'
 ```

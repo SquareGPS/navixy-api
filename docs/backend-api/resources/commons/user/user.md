@@ -50,7 +50,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 ### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/user/auth' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/user/auth' \
 -H 'Content-Type: application/json' \ 
 -d '{ "login": "test@email.com", "password": "password123456" }'
 ```
@@ -84,7 +84,7 @@ Only session `hash`.
 ### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/user/get_info' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/user/get_info' \
 -H 'Content-Type: application/json' \ 
 -d '{ "hash": "a6aa75587e5c59c32d347da438505fc3" }'
 ```
@@ -174,7 +174,7 @@ Only session `hash`.
 ### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/user/get_tariff_restrictions' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/user/get_tariff_restrictions' \
 -H 'Content-Type: application/json' \ 
 -d '{ "hash": "a6aa75587e5c59c32d347da438505fc3" }'
 ```
@@ -207,7 +207,7 @@ Only session `hash`.
 ### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/user/logout' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/user/logout' \
 -H 'Content-Type: application/json' \ 
 -d '{ "hash": "a6aa75587e5c59c32d347da438505fc3" }'
 ```
@@ -234,7 +234,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 ### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/user/logout' \
+$ curl -X POST 'https://api.navixy.com/v2/fsm/user/logout' \
 -H 'Content-Type: application/json' \ 
 -d '{ "login": "users_login" }'
 ```

@@ -58,7 +58,7 @@ You can also [download](../resources/tracking/track/track.md#download) a KML fil
 You could use this file with map services. 
 It is useful if you need to see all points on the map:
 
-    https://api.navixy.com/v2/track/download
+    https://api.navixy.com/v2/fsm/track/download
 
 All parameters are identical with track/read with the except of two new optional parameters:
 

@@ -13,7 +13,7 @@ Gets all departments belonging to user.
 
 #### example
 
-    https://api.navixy.com/v2/department/list?hash=your_hash
+    https://api.navixy.com/v2/fsm/department/list?hash=your_hash
 
 #### response
 
@@ -55,7 +55,7 @@ Creates a new department with specified parameters. Required subuser rights: `em
 
 #### structure:
 
-    https://api.navixy.com/v2/department/create?hash=your_hash&department={"label":"drivers","location":{"lat": "latitude","lng": "longitude","address": "full address", "radius": "radius_in_meters"}}
+    https://api.navixy.com/v2/fsm/department/create?hash=your_hash&department={"label":"drivers","location":{"lat": "latitude","lng": "longitude","address": "full address", "radius": "radius_in_meters"}}
 
 #### parameters
 
@@ -65,7 +65,7 @@ Creates a new department with specified parameters. Required subuser rights: `em
 
 #### example
 
-    https://api.navixy.com/v2/department/create?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
+    https://api.navixy.com/v2/fsm/department/create?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
 
 #### response
 
@@ -90,7 +90,7 @@ Updates existing department with a new specified parameters. Required subuser ri
 
 #### structure:
 
-    https://api.navixy.com/v2/department/update?hash=your_hash&department={"label":"new name","location":{"lat": "new latitude","lng": "new longitude","address": "new full address", "radius": "new radius_in_meters"}}
+    https://api.navixy.com/v2/fsm/department/update?hash=your_hash&department={"label":"new name","location":{"lat": "new latitude","lng": "new longitude","address": "new full address", "radius": "new radius_in_meters"}}
 
 #### parameters
 
@@ -100,7 +100,7 @@ Updates existing department with a new specified parameters. Required subuser ri
 
 #### example
 
-    https://api.navixy.com/v2/department/update?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
+    https://api.navixy.com/v2/fsm/department/update?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
 
 #### response
 
@@ -119,7 +119,7 @@ Deletes department with the specified id. Required subuser rights: `employee_upd
 
 #### structure:
 
-    https://api.navixy.com/v2/department/delete?hash=your_hash&department_id=3254
+    https://api.navixy.com/v2/fsm/department/delete?hash=your_hash&department_id=3254
 
 #### parameters
 
@@ -129,7 +129,7 @@ Deletes department with the specified id. Required subuser rights: `employee_upd
 
 #### example
 
-    https://api.navixy.com/v2/department/delete?hash=22eac1c27af4be7b9d04da2ce1af111b&department_id=65878
+    https://api.navixy.com/v2/fsm/department/delete?hash=22eac1c27af4be7b9d04da2ce1af111b&department_id=65878
 
 #### response
 
