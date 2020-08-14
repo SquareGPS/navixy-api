@@ -1,11 +1,11 @@
 ---
-title: Task rout optimize
-description: Task rout optimize
+title: Task route optimize
+description: Task route optimize
 ---
 
-# Task rout optimize
+# Task route optimize
 
-API path: `/task/rout/points/optimize`.
+API path: `/task/route/points/optimize`.
 
 ## optimize()
 
