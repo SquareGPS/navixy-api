@@ -6,7 +6,7 @@ description: Changing avatar
 Avatars are not changed through `/employee/update`, you must use either `assign` (to set avatar to one of preset icons),
 or `upload` (to upload your own image). 
 
-# API actions:
+# API actions
 
 API base path: `/employee/avatar`.
 

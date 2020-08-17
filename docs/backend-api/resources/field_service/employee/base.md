@@ -35,7 +35,7 @@ trackers, vehicles, places, etc.
 }
 ```
 
-# API actions:
+# API actions
 
 API base path: `/employee`.
 

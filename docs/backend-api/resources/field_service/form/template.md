@@ -1,16 +1,20 @@
 ---
-title: Template
-description: Template
+title: Form templates
+description: Form templates
 ---
 
-# Template
+Form is a "one-shot" entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields 
+for future reference. Usually people need to fill forms with the same fields over an over again, so forms are created on
+ the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an 
+ electronic document, a template, on basis of which all paper forms are printed.  
+ 
+ The reason for such API design is that template fields can be changed over time (deleted, removed, reordered, etc)  
+ and it should not affect already filled forms. By separating filled forms and templates, one can always view filled form 
+ in exactly same state regardless of how template changed.
+ 
+User can assign form to the task or checkin by choosing template without the need to create all form fields every time.
 
-API path: `/form/template`.
-
-To make forms reusable, they are created on the basis of form templates. 
-User can assign form to the task by choosing template without the need to create all form fields every time.
-
-**form_template** is:
+`<form_template>` is:
 ```js
 {
   "id": 1,
@@ -24,6 +28,10 @@ User can assign form to the task by choosing template without the need to create
   "default": false //if true,
 }
 ```
+
+# API actions
+
+API base path: `/form/template`.
 
 ## list
 
@@ -54,7 +62,7 @@ Create new form template.
 
 #### parameters
 
-*   **form_template** – Non-null.
+*   **template** – Non-null <form_template>.
 
 #### return
 
@@ -100,7 +108,7 @@ Update existing form template.
 
 #### parameters
 
-*   **form_template** – Non-null.
+*   **template** – Non-null.
 
 #### return
 
@@ -136,7 +144,7 @@ Delete form template.
 *   101 – In demo mode this function is disabled (if current user has “demo” flag)
 
 
-## stats/read/
+## stats/read
 
 Return template usage statistics
 
