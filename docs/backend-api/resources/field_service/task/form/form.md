@@ -1,58 +1,19 @@
 ---
-title: Task form
-description: Task form
+title: Task form actions
+description: Task form actions
 ---
 
-# Task form
+For `<form_field>` and `<form_value>` object description, see [form fields and values](../../form/field-types.md#form-fields-and-values).
+
+For `<form>` object description, see [forms](../../form/form.md).
+
+# Task form API actions
 
 API path: `/task/form`.
 
 Contains API calls related to forms associated with tasks.
 
-See [forms](../../form/form.md).
-
-#### Form object structure
-
-```js
-<form> =
-{
-    "id": 2, //form unique id
-    "label": "Order form", //user-defined form label, from 1 to 100 characters
-    "fields": [  //multiple <form_field> objects can be here
-      {
-        "id": "111-aaa-whatever", //id must be unique across form fields
-        "label": "Name",
-        "description": "Your full name",
-        "required": true,
-        "min_length": 5,
-        "max_length": 255,
-        "type": "text"
-      }
-    ],
-    "created": "2017-03-15 12:36:27", //date when this form was created (attached to the task). Read-only field
-    "submit_in_zone": true, //if true, form can be submitted only in task zone
-    "task_id": 1, //id of the task to which this form is attached
-    "template_id": 1, //id of the form template on which this form is based. Can be null if template was deleted.
-    "values": { //A map with field ids as keys and <field_value> objects as values
-      "111-aaa-whatever": { //key is used to link field and its corresponding value
-        "type": "text", //value type and field type must match
-        "value": "John Doe" //the rest of value object is field type-specific
-      }
-    },
-    "submitted": "2017-03-21 18:40:54", //date when form values were last submitted
-    "submit_location": { //location at which form values were last submitted
-      "lat": 11.0,
-      "lng": 22.0,
-      "address": "Wall Street, NY"
-    }
-}
-```
-
-For **form_field** and **form_value** object description, see [form fields and values](../../form/field-types.md#form-fields-and-values).
-
-
-
-## create()
+## create
 
 Attach new form to the existing task or checkpoint. Form is always created on the basis of form template.
 
@@ -79,7 +40,7 @@ Attach new form to the existing task or checkpoint. Form is always created on th
 
 
 
-## delete()
+## delete
 
 Delete form (detach it from the task).<br>
 All form data will be lost!
@@ -105,7 +66,7 @@ All form data will be lost!
 
 
 
-## download()
+## download
 
 Retrieve attached form as file.
 
@@ -123,8 +84,7 @@ Retrieve attached form as file.
 *   201 – Not found in database (if task does not exist or does not have attached form)
 
 
-
-## list()
+## list
 
 Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, the list contains data on the objects related to each form – tracker / vehicle / employee, task.
 
@@ -191,7 +151,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
 ```js
 {
     "success": true,
-    "count": N,
+    "count": N, //total number of forms matching the query
     "list": [{
         "employee": {
             "id": 13,
@@ -216,7 +176,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
             "label": "Navixy A6"
         },
         "vehicle": null,
-        "form": {
+        "form": { //<form> object, non-null
             "id": 1012,
             "label": "A form",
             "description": "",
@@ -259,7 +219,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
 
 
 
-## read()
+## read
 
 Get form associated with the specified task.
 

@@ -1,32 +1,13 @@
 ---
-title: Department
-description: Department
+title: Departments
+description: Departments
 ---
 
-# Department
+Department is essentially just a group of [employees](./employee/base.md). They can be assigned to departments by specifying 
+non-null `department_id`.
 
-API path: `/department`.
-  
-## list()
-
-Gets all departments belonging to user.
-
-#### example
-
-    https://api.navixy.com/v2/department/list?hash=your_hash
-
-#### response
-
-```js
-{
-    "success": true,
-    "list": [ department, ... ]
-}
-```
-
-#### where
-
-**department** is:
+<a name="structure"></a>
+`<department>` is:
 
 ```js
 {
@@ -41,6 +22,27 @@ Gets all departments belonging to user.
 }
 ```
 
+
+# API actions
+
+API base path: `/department`.
+  
+## list
+
+Gets all departments belonging to user.
+
+#### example
+
+    https://api.navixy.com/v2/department/list?hash=your_hash
+
+#### response
+
+```js
+{
+    "success": true,
+    "list": [ <department>, ... ]
+}
+```
 #### errors
 
 *   7 – Invalid parameters
@@ -49,19 +51,15 @@ Gets all departments belonging to user.
 *   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
 
-## create()
+## create
 
 Creates a new department with specified parameters. Required subuser rights: `employee_update`.
-
-#### structure:
-
-    https://api.navixy.com/v2/department/create?hash=your_hash&department={"label":"drivers","location":{"lat": "latitude","lng": "longitude","address": "full address", "radius": "radius_in_meters"}}
 
 #### parameters
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| department | an [department object](#where) | object | `{"label":"Name","location":{"lat": 1.12345,"lng": 2.67890, "address": "address of the department", "radius": "123"}` |
+| department | an [department object](#structure) | object | `{"label":"Name","location":{"lat": 1.12345,"lng": 2.67890, "address": "address of the department", "radius": "123"}` |
 
 #### example
 
@@ -84,19 +82,15 @@ Creates a new department with specified parameters. Required subuser rights: `em
 *   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
 
-## update()
+## update
 
 Updates existing department with a new specified parameters. Required subuser rights: `employee_update`.
-
-#### structure:
-
-    https://api.navixy.com/v2/department/update?hash=your_hash&department={"label":"new name","location":{"lat": "new latitude","lng": "new longitude","address": "new full address", "radius": "new radius_in_meters"}}
 
 #### parameters
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| department | an [department object](#where) | object | `{"label":"Name","location":{"lat": 1.12345,"lng": 2.67890, "address": "address of the department", "radius": "123"}` |
+| department | an [department object](#structure) | object | `{"label":"Name","location":{"lat": 1.12345,"lng": 2.67890, "address": "address of the department", "radius": "123"}` |
 
 #### example
 
@@ -113,13 +107,9 @@ Updates existing department with a new specified parameters. Required subuser ri
 *   201 – Not found in database (if there is no department with such id)
 
 
-## delete()
+## delete
 
 Deletes department with the specified id. Required subuser rights: `employee_update`.
-
-#### structure:
-
-    https://api.navixy.com/v2/department/delete?hash=your_hash&department_id=3254
 
 #### parameters
 
