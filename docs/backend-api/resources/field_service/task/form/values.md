@@ -1,14 +1,13 @@
 ---
-title: Task form values
-description: Task form values
+title: Updating task form values
+description: Updating task form values
 ---
 
-# Task form values
+# Updating task form values
 
 API path: `/task/form/values`.
 
-
-## update()
+## update
 
 Update existing form values of given task.
 
