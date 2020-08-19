@@ -3,6 +3,8 @@ title: Form templates
 description: Form templates
 ---
 
+# Form templates
+
 Form is a "one-shot" entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields 
 for future reference. Usually people need to fill forms with the same fields over an over again, so forms are created on
  the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an 
@@ -29,11 +31,11 @@ User can assign form to the task or checkin by choosing template without the nee
 }
 ```
 
-# API actions
+## API actions
 
 API base path: `/form/template`.
 
-## list
+### list
 
 Get all form templates belonging to current master user.
 
@@ -41,7 +43,7 @@ Get all form templates belonging to current master user.
 
 none
 
-#### return
+#### response
 
 ```js
 {
@@ -54,7 +56,7 @@ none
 
 no specific errors
 
-## create
+### create
 
 Create new form template.
 
@@ -64,7 +66,7 @@ Create new form template.
 
 *   **template** – Non-null <form_template>.
 
-#### return
+#### response
 
 ```js
 {
@@ -78,7 +80,7 @@ Create new form template.
 *   101 – In demo mode this function is disabled (if current user has “demo” flag)
 
 
-## read
+### read
 
 Get form template belonging to current master user by id.
 
@@ -86,7 +88,7 @@ Get form template belonging to current master user by id.
 
 *   **template_id** – Id of the form template, int.
 
-#### return
+#### response
 
 ```js
 {
@@ -100,7 +102,7 @@ Get form template belonging to current master user by id.
 *   201 – Not found in database (if there is no template with such id)
 
 
-## update
+### update
 
 Update existing form template.
 
@@ -110,7 +112,7 @@ Update existing form template.
 
 *   **template** – Non-null.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -122,7 +124,7 @@ Update existing form template.
 *   101 – In demo mode this function is disabled (if current user has “demo” flag)
 
 
-## delete
+### delete
 
 Delete form template.
 
@@ -132,7 +134,7 @@ Delete form template.
 
 *   **template_id** – Id of the form template, int.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -144,7 +146,7 @@ Delete form template.
 *   101 – In demo mode this function is disabled (if current user has “demo” flag)
 
 
-## stats/read
+### stats/read
 
 Return template usage statistics
 
@@ -154,7 +156,7 @@ Return template usage statistics
 
 *   **template_id** – Id of the form template, int.
 
-#### return
+#### response
 
 ```js
 {

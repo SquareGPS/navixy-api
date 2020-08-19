@@ -1,11 +1,15 @@
 ---
-title: Task route
-description: Task route
+title: Routes
+description: Routes
 ---
 
-# Task route
+# Routes
 
-API path: `/task/route`.
+Routes are basically named and ordered set of checkpoints. Each checkpoint is essentially a task with an additional link to
+the parent route.
+
+Route is completed if all the checkpoints are completed and visited in the specified order. Otherwise it is considered
+completed with warnings or failed.
 
 ```js
 <route> = {
@@ -28,7 +32,11 @@ API path: `/task/route`.
 ```
 
 
-## assign
+## API actions
+
+API base path: `/task/route`
+
+### assign
 
 (Re)assign route to new tracker (or make it unassigned).
 
@@ -39,7 +47,7 @@ API path: `/task/route`.
 * **route_id** - (int) ID of the route to assign
 * **tracker_id** - (int) ID of the tracker. Tracker must belong to authorized user and not be blocked. If null, task will be assigned to none.
 
-#### return
+#### response
 
 ```js
 {
@@ -57,7 +65,7 @@ API path: `/task/route`.
 
 
 
-## create
+### create
 
 Create new route. One of checkpoints can have id (in this case it must be a task) - it will be transmuted from
 task to checkpoint.
@@ -132,7 +140,7 @@ If there nothing to return, then parameter "external_id_counts" will not be pres
 
 
 
-## delete
+### delete
 
 Delete route (and its checkpoints) with the specified id.
 
@@ -142,7 +150,7 @@ Delete route (and its checkpoints) with the specified id.
 
 * **route_id** - (int) ID of the route to delete.
 
-#### return
+#### response
 
 ```js
 {
@@ -156,7 +164,7 @@ Delete route (and its checkpoints) with the specified id.
 
 
 
-## list
+### list
 
 Get all routes belonging to user with optional filtering.
 
@@ -169,7 +177,7 @@ Get all routes belonging to user with optional filtering.
 *   **filter** – **string**. (optional) filter for task label and description<br>
     If **trackers**, **filter**, **from** or **to** is not passed or _null_ then appropriate condition not used to filter results.
 
-#### return
+#### response
 
 ```js
 {
@@ -184,7 +192,7 @@ general types only
 
 
 
-## read
+### read
 
 Get route by id.
 
@@ -192,7 +200,7 @@ Get route by id.
 
 * **route_id** - (int) ID of the route.
 
-#### return
+#### response
 
 ```js
 {
@@ -209,7 +217,7 @@ where **route** described [here](#task-route).
 
 
 
-## update
+### update
 
 Update existing route. Note that you cannot change task owner using this method.<br>
 Reordering checkpoint IDs in the `checkpoint_ids` array changes order of execution.
@@ -225,7 +233,7 @@ Reordering checkpoint IDs in the `checkpoint_ids` array changes order of executi
 * **create_form** - **boolean**. If true then check additional form_template_id field in every **checkpoint** object 
   and create, replace or delete checkpoint's form. Default value is false for backward compatibility.
 
-#### return
+#### response
 JSON object of the updated route with checkpoint_ids
 ```js
 {

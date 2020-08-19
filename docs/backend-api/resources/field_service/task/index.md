@@ -3,6 +3,17 @@ title: Working with tasks
 description: Working with tasks
 ---
 
+# Working with tasks
+
+You can assign task to any tracked device. If specified tracker visits task checkpoint at the specified time and meets other
+conditions such as filling form or staying in the task zone for the specified time, the task is completed. Otherwise
+the task is either failed completely or completed with warnings.
+
+If task is assigned to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),
+it's available for viewing by app user. User will also receive notifications of newly assigned tasks, task changes, etc.
+
+## Data structure
+
 ```js
 <task> =
    {
@@ -35,11 +46,11 @@ description: Working with tasks
 ```
 
 
-# API actions
+## API actions
 
 API base path: `/task`.
 
-## assign
+### assign
 
 (Re)assign task to new tracker (or make it unassigned).
 
@@ -66,7 +77,7 @@ API base path: `/task`.
 
 
 
-## batch_convert
+### batch_convert
 
 Convert batch of tab-delimited tasks and return list of checked tasks with errors.
 
@@ -110,7 +121,7 @@ general types only
 
 
 
-## count
+### count
 
 Return total number of tasks belonging to current user.
 
@@ -125,7 +136,7 @@ Return total number of tasks belonging to current user.
 
 
 
-## create
+### create
 
 Create new task.
 
@@ -184,7 +195,7 @@ Returned object also can include "external_id_counts" field see task/route/creat
 
 
 
-## delete
+### delete
 
 Delete task with the specified id.
 
@@ -206,7 +217,7 @@ Delete task with the specified id.
 
 
 
-## list
+### list
 
 Get all task belonging to user with optional filtering.
 
@@ -283,7 +294,7 @@ general types only
 
 
 
-## read
+### read
 
 Get task, checkpoint, or route with checkpoints by id.
 
@@ -313,7 +324,7 @@ where **task** described [here](#task).
 
 
 
-## transmute
+### transmute
 
 Convert task into a route checkpoint.
 
@@ -338,7 +349,7 @@ Convert task into a route checkpoint.
 
 
 
-## update
+### update
 
 Update existing task. Note that you cannot change task owner using this method.
 

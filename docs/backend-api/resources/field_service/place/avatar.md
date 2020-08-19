@@ -39,7 +39,7 @@ place_id | ID of the place | int
 file | image file | File upload
 redirect_target | (optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;* | String
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -65,7 +65,7 @@ name | description | type
 place_id | ID of the place | int
 icon_id | optional, ID of the icon from standard icon set | int
 
-#### return
+#### response
 ```js
 { "success": true }
 ```
