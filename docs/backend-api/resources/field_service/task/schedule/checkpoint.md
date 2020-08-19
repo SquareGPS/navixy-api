@@ -8,10 +8,10 @@ description: Task schedule checkpoint
 API path: `/task/schedule/checkpoint`.
 
 
-## delete()
+## delete
 
 Delete checkpoint from route and reorder others. 
-If route has two checkpoints then use transmute() on the other checkpoint, because route must have
+If route has two checkpoints then use transmute on the other checkpoint, because route must have
 at least two checkpoints.
 
 #### parameters
@@ -24,7 +24,7 @@ at least two checkpoints.
 { "success": true }
 ```
 
-## transmute()
+## transmute
 
 Transmute checkpoint to task and delete its route and other checkpoints in the route.
 

@@ -12,9 +12,9 @@ API path: `/task/checkpoint`.
 ```js
 <checkpoint> =
     {
-        "id": 111,   //primary key. used in checkpoint/update(), *IGNORED* in checkpoint/create()
-        "user_id": 3,   //user id. *IGNORED* in checkpoint/create(), checkpoint/update()
-        "tracker_id": 22, //id of the tracker to which task is assigned. can be null.  *IGNORED* in checkpoint/update()
+        "id": 111,   //primary key. used in checkpoint/update, *IGNORED* in checkpoint/create
+        "user_id": 3,   //user id. *IGNORED* in checkpoint/create, checkpoint/update
+        "tracker_id": 22, //id of the tracker to which task is assigned. can be null.  *IGNORED* in checkpoint/update
         "location": {   //location associated with this checkpoint. cannot be null
             "lat": 56.5,
             "lng": 60.5,
@@ -23,17 +23,17 @@ API path: `/task/checkpoint`.
         },
         "label": "Deliver parcels",
         "description": "Quickly",
-        "creation_date": "2014-01-02 03:04:05", //when checkpoint was created. *IGNORED* in checkpoint/create(), checkpoint/update()
+        "creation_date": "2014-01-02 03:04:05", //when checkpoint was created. *IGNORED* in checkpoint/create, checkpoint/update
         "from": "2014-02-03 04:05:06", //date AFTER which checkpoint zone must be visited
         "to": "2014-03-04 05:06:07", //date BEFORE which checkpoint zone must be visited
         "external_id": null,  //used if task was imported from external system. arbitrary text string. can be null
-        "status": "assigned", //checkpoint status. *IGNORED* in checkpoint/create(), checkpoint/update()
-        "status_change_date": "2014-01-02 03:04:05", //when checkpoint status was changed. *IGNORED* in checkpoint/create() and checkpoint/update()
+        "status": "assigned", //checkpoint status. *IGNORED* in checkpoint/create, checkpoint/update
+        "status_change_date": "2014-01-02 03:04:05", //when checkpoint status was changed. *IGNORED* in checkpoint/create and checkpoint/update
         "max_delay" : 5, //maximum allowed checkpoint completion delay in minutes,
         "min_stay_duration": 0, //minumum duration of stay in checkpoint zone for checkpoint completion, minutes
-        "arrival_date": "2014-01-02 03:04:05", //when tracker has arrived to the checkpoint zone. *IGNORED* in checkpoint/create(), checkpoint/update()
+        "arrival_date": "2014-01-02 03:04:05", //when tracker has arrived to the checkpoint zone. *IGNORED* in checkpoint/create, checkpoint/update
         "stay_duration": 0, //duration of stay in the checkpoint zone, seconds
-        "origin": "imported",  //checkpoint origin. *IGNORED* in checkpoint/create(), checkpoint/update()
+        "origin": "imported",  //checkpoint origin. *IGNORED* in checkpoint/create, checkpoint/update
         "tags": [1, 2] //array of tag ids,
         "type": "checkpoint",
         "form": <form_object> // if present
@@ -42,7 +42,7 @@ API path: `/task/checkpoint`.
 
 
 
-## create()
+## create
 
 Create new checkpoint.
 
@@ -55,7 +55,7 @@ Create new checkpoint.
 Inserts the specified checkpoint at the specified position (`order`) in the parent route checkpoints list. Shifts the checkpoint currently at that position (if any) and any subsequent checkpoints to the right (adds one to their orders).
 
 Call returns the identifier of the created task in the form of JSON.
-Returned object also can include "external_id_counts" field see `task/route/create` [method description](../route/route.md#create).
+Returned object also can include "external_id_counts" field see `task/route/create` [method description](route/index.md#create).
 
 ```js
 {
@@ -72,7 +72,7 @@ Returned object also can include "external_id_counts" field see `task/route/crea
 
 
 
-## delete()
+## delete
 
 Delete checkpoint with the specified id.
 
@@ -94,7 +94,7 @@ Delete checkpoint with the specified id.
 
 
 
-## list()
+## list
 
 Get checkpoints belonging to user with given ids
 
@@ -117,7 +117,7 @@ general types only
 
 
 
-## read()
+## read
 
 Get route checkpoint by id.
 
@@ -142,7 +142,7 @@ where **checkpoint** described [here](#checkpoint).
 
 
 
-## transmute()
+## transmute
 
 Convert route checkpoint into a standalone task. If it’s the only checkpoint in the route, the route is deleted.
 
@@ -167,7 +167,7 @@ Convert route checkpoint into a standalone task. If it’s the only checkpoint i
 
 
 
-## update()
+## update
 
 Update existing checkpoint.
 
@@ -181,7 +181,7 @@ Changing `order` reorders all other checkpoints.
 
 #### return
 
-Returned object also can include "external_id_counts" field see task/route/create [method description](../route/route.md#create)
+Returned object also can include "external_id_counts" field see task/route/create [method description](route/index.md#create)
 
 
 ```js

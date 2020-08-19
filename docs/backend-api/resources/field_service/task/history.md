@@ -23,7 +23,7 @@ API path: `task/history`.
 
 
 
-## list()
+## list
 
 Return history for the task with the specified id.
 

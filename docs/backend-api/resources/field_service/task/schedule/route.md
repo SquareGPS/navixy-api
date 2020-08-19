@@ -7,7 +7,7 @@ description: Task schedule route
 
 API path: `/task/schedule/route`.
 
-## create()
+## create
 
 Create route schedule with checkpoints
 
@@ -25,7 +25,7 @@ Create route schedule with checkpoints
 ```
 
 
-## delete()
+## delete
 
 Delete route schedule with checkpoints
 
@@ -42,7 +42,7 @@ Delete route schedule with checkpoints
 
 
 
-## update()
+## update
 
 Update route schedule with checkpoints. If checkpoint is being created, then it should have no id.
 If checkpoint is being updated, then it should have an id. If old checkpoint is not present in request, then

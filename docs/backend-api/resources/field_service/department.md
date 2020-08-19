@@ -3,7 +3,7 @@ title: Departments
 description: Departments
 ---
 
-Department is essentially just a group of [employees](./employee/base.md). They can be assigned to departments by specifying 
+Department is essentially just a group of [employees](employee/index.md). They can be assigned to departments by specifying 
 non-null `department_id`.
 
 <a name="structure"></a>
