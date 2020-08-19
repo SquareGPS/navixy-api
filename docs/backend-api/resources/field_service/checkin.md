@@ -3,7 +3,7 @@ title: Check-ins
 description: Check-ins
 ---
 
-Check-ins are created using Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru)/[iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)).
+Check-ins are created using Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)).
 They contain date/time, address, coordinates and additional information (comment, photo, filled form) which is provided by app
 user after pressing the "Check-in" in the tracker app.
 Using check-ins field personnel can provide information to their HQ while on site. For example, provide photo proof of the 
@@ -58,11 +58,11 @@ Check-ins cannot be created using web API, so all actions are read-only.
 }
 ```
 
-# API actions
+## API actions
 
 API path: `/checkin`.
 
-## read
+### read
 
 Get check-in which id is equal to `checkin_id`. Required tariff features: `checkin`.
 
@@ -90,7 +90,7 @@ Get check-in which id is equal to `checkin_id`. Required tariff features: `check
 *   7 – Invalid parameters
 *   204 – Entity not found – when the marker entry is not exists
 
-## list
+### list
 
 Gets marker entries on map for trackers and for the specified time interval. Required tariff features: `checkin`.
 

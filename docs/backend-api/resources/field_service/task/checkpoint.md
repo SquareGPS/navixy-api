@@ -1,13 +1,17 @@
 ---
-title: Checkpoint
-description: Checkpoint
+title: Checkpoints
+description: Checkpoints
 ---
 
-# Checkpoint
+# Checkpoints
 
-API path: `/task/checkpoint`.
+Every route consists of checkpoints. Using these actions, you can manipulate checkpoints individually.
 
-## Checkpoint object structure
+## API actions
+
+API base path: `/task/checkpoint`.
+
+### Checkpoint object structure
 
 ```js
 <checkpoint> =
@@ -42,7 +46,7 @@ API path: `/task/checkpoint`.
 
 
 
-## create
+### create
 
 Create new checkpoint.
 
@@ -72,7 +76,7 @@ Returned object also can include "external_id_counts" field see `task/route/crea
 
 
 
-## delete
+### delete
 
 Delete checkpoint with the specified id.
 
@@ -82,7 +86,7 @@ Delete checkpoint with the specified id.
 
 * **task_id** - (int) ID of the checkpoint to delete
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -94,7 +98,7 @@ Delete checkpoint with the specified id.
 
 
 
-## list
+### list
 
 Get checkpoints belonging to user with given ids
 
@@ -102,7 +106,7 @@ Get checkpoints belonging to user with given ids
 
 * **checkpoint_ids** – (array of int) IDs of checkpoints, e.g. [1,2]
 
-#### return
+#### response
 
 ```js
 {
@@ -117,7 +121,7 @@ general types only
 
 
 
-## read
+### read
 
 Get route checkpoint by id.
 
@@ -125,7 +129,7 @@ Get route checkpoint by id.
 
 * **checkpoint_id** - (int) ID of the checkpoint
 
-#### return
+#### response
 
 ```js
 {
@@ -142,7 +146,7 @@ where **checkpoint** described [here](#checkpoint).
 
 
 
-## transmute
+### transmute
 
 Convert route checkpoint into a standalone task. If it’s the only checkpoint in the route, the route is deleted.
 
@@ -152,7 +156,7 @@ Convert route checkpoint into a standalone task. If it’s the only checkpoint i
 
 * **checkpoint_id** - (int) ID of the checkpoint
 
-#### return
+#### response
 
 ```js
 {
@@ -167,7 +171,7 @@ Convert route checkpoint into a standalone task. If it’s the only checkpoint i
 
 
 
-## update
+### update
 
 Update existing checkpoint.
 
@@ -179,7 +183,7 @@ Update existing checkpoint.
 
 Changing `order` reorders all other checkpoints.
 
-#### return
+#### response
 
 Returned object also can include "external_id_counts" field see task/route/create [method description](route/index.md#create)
 

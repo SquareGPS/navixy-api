@@ -3,17 +3,23 @@ title: Task form actions
 description: Task form actions
 ---
 
+# Working with task forms
+
+Forms can be attached to tasks to be filled by field employees using Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)).
+This document describes API actions specific to working with task forms (except `task/form/list` which can return all 
+kinds of forms).
+
 For `<form_field>` and `<form_value>` object description, see [form fields and values](../../form/field-types.md#form-fields-and-values).
 
 For `<form>` object description, see [forms](../../form/index.md).
 
-# Task form API actions
+## API actions
 
 API path: `/task/form`.
 
 Contains API calls related to forms associated with tasks.
 
-## create
+### create
 
 Attach new form to the existing task or checkpoint. Form is always created on the basis of form template.
 
@@ -24,7 +30,7 @@ Attach new form to the existing task or checkpoint. Form is always created on th
 * **task_id** - (int) Id of the task to assign
 * **template_id** - (int) Id of the form template
 
-#### return
+#### response
 
 ```js
 {
@@ -40,7 +46,7 @@ Attach new form to the existing task or checkpoint. Form is always created on th
 
 
 
-## delete
+### delete
 
 Delete form (detach it from the task).<br>
 All form data will be lost!
@@ -51,7 +57,7 @@ All form data will be lost!
 
 * **task_id** - (int) Id of the task to which form is attached
 
-#### return
+#### response
 
 ```js
 {
@@ -66,7 +72,7 @@ All form data will be lost!
 
 
 
-## download
+### download
 
 Retrieve attached form as file.
 
@@ -75,7 +81,7 @@ Retrieve attached form as file.
 * **task_id**
 * **format**
 
-#### return
+#### response
 
     A form rendered to file (standard file download).
 
@@ -84,7 +90,7 @@ Retrieve attached form as file.
 *   201 – Not found in database (if task does not exist or does not have attached form)
 
 
-## list
+### list
 
 Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, the list contains data on the objects related to each form – tracker / vehicle / employee, task.
 
@@ -146,7 +152,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
 
 *   **offset, limit** (*integers, optional*). Specify which subset of elements from all matching results will be included in the returned list.
 
-#### return
+#### response
 
 ```js
 {
@@ -219,7 +225,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
 
 
 
-## read
+### read
 
 Get form associated with the specified task.
 
@@ -227,7 +233,7 @@ Get form associated with the specified task.
 
 * **task_id** - (int) Id of the task
 
-#### return
+#### response
 
 ```js
 {

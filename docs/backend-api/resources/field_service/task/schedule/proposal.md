@@ -1,14 +1,18 @@
 ---
-title: Task schedule proposal
-description: Task schedule proposal
+title: Schedule proposals
+description: Schedule proposals
 ---
 
-# Task schedule proposal
+# Schedule proposals
 
-API path: `/task/schedule/proposal`.
+Schedule proposals are "preview" of what tasks and routes will be created at the specified date range.
+
+## API actions
+
+API base path: `/task/schedule/proposal`.
 
 
-## list
+### list
 
 Get all tasks and routes that will be created by schedule.
 
@@ -21,7 +25,7 @@ Get all tasks and routes that will be created by schedule.
     If **trackers**, **filter**, **from** or **to** is not passed or _null_ then appropriate condition not used to filter results.
 *   **types** – **string\[\]**. Tasks or routes. For example: \["task", "route"\]
 
-#### return
+#### response
 
 ```js
 {

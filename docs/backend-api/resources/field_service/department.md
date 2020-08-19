@@ -23,11 +23,11 @@ non-null `department_id`.
 ```
 
 
-# API actions
+## API actions
 
 API base path: `/department`.
   
-## list
+### list
 
 Gets all departments belonging to user.
 
@@ -51,7 +51,7 @@ Gets all departments belonging to user.
 *   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
 
-## create
+### create
 
 Creates a new department with specified parameters. Required subuser rights: `employee_update`.
 
@@ -82,7 +82,7 @@ Creates a new department with specified parameters. Required subuser rights: `em
 *   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
 
-## update
+### update
 
 Updates existing department with a new specified parameters. Required subuser rights: `employee_update`.
 
@@ -107,7 +107,7 @@ Updates existing department with a new specified parameters. Required subuser ri
 *   201 – Not found in database (if there is no department with such id)
 
 
-## delete
+### delete
 
 Deletes department with the specified id. Required subuser rights: `employee_update`.
 
