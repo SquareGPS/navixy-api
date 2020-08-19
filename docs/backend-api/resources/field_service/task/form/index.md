@@ -5,7 +5,7 @@ description: Task form actions
 
 For `<form_field>` and `<form_value>` object description, see [form fields and values](../../form/field-types.md#form-fields-and-values).
 
-For `<form>` object description, see [forms](../../form/form.md).
+For `<form>` object description, see [forms](../../form/index.md).
 
 # Task form API actions
 

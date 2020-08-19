@@ -7,7 +7,7 @@ description: Task route optimize
 
 API path: `/task/route/points/optimize`.
 
-## optimize()
+## optimize
 
 Suggest optimal order for given route points. Suggested order will correspond to route points time windows:
 points with earlier time windows will have lower ordinal numbers. If time windows overlaps each other, such

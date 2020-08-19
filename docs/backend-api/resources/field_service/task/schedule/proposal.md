@@ -8,7 +8,7 @@ description: Task schedule proposal
 API path: `/task/schedule/proposal`.
 
 
-## list()
+## list
 
 Get all tasks and routes that will be created by schedule.
 

@@ -9,8 +9,8 @@ API path: `task/schedule`.
 
 ```js
 <task_schedule_entry> = {
-    "id": 111,   //primary key. used in update(), *IGNORED* in create()
-    "user_id": 3,   //user id. *IGNORED* in create()/update()
+    "id": 111,   //primary key. used in update, *IGNORED* in create
+    "user_id": 3,   //user id. *IGNORED* in create/update
     "tracker_id": 22, //id of the tracker to which all generated tasks are assigned. nullable.
     "location": {   //location associated with this task. cannot be null
         "lat": 56.5,
@@ -31,8 +31,8 @@ API path: `task/schedule`.
 }
 
 <route_schedule_entry> = {
-    "id": 111,   //primary key. used in update(), *IGNORED* in create()
-    "user_id": 3,   //user id. *IGNORED* in create()/update()
+    "id": 111,   //primary key. used in update, *IGNORED* in create
+    "user_id": 3,   //user id. *IGNORED* in create/update
     "tracker_id": 22, //id of the tracker to which all generated tasks are assigned. nullable.
     "label": "Shop",
     "description": "Buy things",
@@ -40,8 +40,8 @@ API path: `task/schedule`.
 }
 
 <checkpoint_schedule_entry> = {
-    "id": 111,   //primary key. used in update(), *IGNORED* in create()
-    "user_id": 3,   //user id. *IGNORED* in create()/update()
+    "id": 111,   //primary key. used in update, *IGNORED* in create
+    "user_id": 3,   //user id. *IGNORED* in create/update
     "tracker_id": 22, //id of the tracker to which all generated tasks are assigned. nullable.
     "label": "Shop",
     "description": "Buy things",
@@ -74,7 +74,7 @@ API path: `task/schedule`.
 ```
 
 
-## create()
+## create
 
 Create new task schedule entry.
 
@@ -102,7 +102,7 @@ Create new task schedule entry.
 
 
 
-## delete()
+## delete
 
 Delete task schedule with the specified id.
 
@@ -124,7 +124,7 @@ Delete task schedule with the specified id.
 
 
 
-## list()
+## list
 
 Get all task or route schedules belonging to user with optional filtering.<br>
 Also this call returns all unassigned task schedules.
@@ -147,7 +147,7 @@ Also this call returns all unassigned task schedules.
 
 general types only
 
-## read()
+## read
 
 Get task, route or checkpoint schedule by id
 
@@ -169,7 +169,7 @@ Get task, route or checkpoint schedule by id
 
 general types only
 
-## update()
+## update
 
 Update existing task schedule.
 

@@ -10,7 +10,7 @@ Forms are attached to tasks. If form is attached to task, this task cannot be co
 * Each form must be created from template, read more at [Templates](./template.md)
 * For description of `<form_field>` and `<field_value>`, see [Form fields and values](./field-types.md)
 * Using web API, it's now possible to only attach/fill forms with tasks (checkin forms are created through 
-Android/iOS tracker applications). See [Task form actions](../task/form/form.md) to use forms with tasks.
+Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
 
 <b>Form object structure</b>
 ```js
