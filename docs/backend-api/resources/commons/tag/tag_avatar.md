@@ -8,7 +8,7 @@ description: Tag avatar
 API path: `/tag/avatar`.
 
 
-## assign()
+### assign
 
 **required subuser rights**: tag_update
 
@@ -33,7 +33,7 @@ Assign icon_id (from standard icon set) to this tag. Icon_id can be null – thi
 
 
 
-## upload()
+### upload
 
 Upload avatar image for specified tag.<br>
 Then it will be available from `<api_url>/<api.static.uri>/tag/avatars/<file_name>`<br>
@@ -41,7 +41,7 @@ e.g. `http://saas.navixy.com/api-v2/static/tag/avatars/abcdef123456789.png`.
 
 **required subuser rights**: tag_update
 
-**avatar_file_name** returned in response and will be returned from [/tag/list()](./tag.md#list).
+**avatar_file_name** returned in response and will be returned from [/tag/list](index.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being an image file upload (with the name 'file').
 

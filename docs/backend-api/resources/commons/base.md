@@ -7,13 +7,13 @@ description: Base
 
 API path: `/base`.
 
-## nothing()
+### nothing
 
 The report for health-check. It will do nothing.
 
 #### example
 
-    https://api.navixy.com/v2/fsm/base/nothing?hash=22eac1c27af4be7b9d04da2ce1af111b
+    {{ extra.api_example_url }}/base/nothing?hash=22eac1c27af4be7b9d04da2ce1af111b
 
 #### response
 
@@ -22,13 +22,13 @@ The report for health-check. It will do nothing.
 ```
 
 
-## send_email()
+### send_email
 
 Sends email from the platform to any email address with specified title and text. Needs ROOT access level.
 
 #### structure:
 
-    https://api.navixy.com/v2/fsm/base/send_email?hash=your_hash&from=sender_mail&to=recipient_mail&title=text_title&message=text_message&service_id=1&service_pass=1
+    {{ extra.api_example_url }}/base/send_email?hash=your_hash&from=sender_mail&to=recipient_mail&title=text_title&message=text_message&service_id=1&service_pass=1
 
 #### parameters
 
@@ -43,7 +43,7 @@ Sends email from the platform to any email address with specified title and text
 
 #### example
 
-    https://api.navixy.com/v2/fsm/base/send_email?hash=22eac1c27af4be7b9d04da2ce1af111b&from=navixy@mail.com&to=user@mail.com&title=text+of+email+title&message=text+of+the+message&service_id=1&service_pass=1
+    {{ extra.api_example_url }}/base/send_email?hash=22eac1c27af4be7b9d04da2ce1af111b&from=navixy@mail.com&to=user@mail.com&title=text+of+email+title&message=text+of+the+message&service_id=1&service_pass=1
 
 #### response
 

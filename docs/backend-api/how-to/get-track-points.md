@@ -12,16 +12,16 @@ Firstly you need to [get hash](./get-session-hash.md).
 
 Once you get the hash, you need to [get your tracker_id](./get-tracker-list.md). The platform must know points for what device must be in reply.
 
-Now you can get all points for the interesting period using [`/track/read` API call](../resources/tracking/track/track.md#read).  
+Now you can get all points for the interesting period using [`/track/read` API call](../resources/tracking/track/index.md#read).  
 Parameters that necessary for this call:
 
-* `tracker_id` - we got them in [tracker/list](../resources/tracking/tracker/tracker.md#list) call. Use only one tracker_id per call. It should be an integer.
+* `tracker_id` - we got them in [tracker/list](../resources/tracking/tracker/index.md#list) call. Use only one tracker_id per call. It should be an integer.
 * `from` - a string containing start [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
 * `to` - a string containing end [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
 
 Optional parameters:
 
-* `track_id` - we can get them using [track/list](../resources/tracking/track/track.md#list) API call.
+* `track_id` - we can get them using [track/list](../resources/tracking/track/index.md#list) API call.
   If specified, only points belonging to the specified track will be returned. If not, 
   any valid track points between `from` and `to` will be returned. 
   All requested track ids must be unique and not null.
@@ -54,11 +54,11 @@ The platform will reply:
       }, ...
     ]}
 ```
-You can also [download](../resources/tracking/track/track.md#download) a KML file. 
+You can also [download](../resources/tracking/track/index.md#download) a KML file. 
 You could use this file with map services. 
 It is useful if you need to see all points on the map:
 
-    https://api.navixy.com/v2/fsm/track/download
+    {{ extra.api_example_url }}/track/download
 
 All parameters are identical with track/read with the except of two new optional parameters:
 

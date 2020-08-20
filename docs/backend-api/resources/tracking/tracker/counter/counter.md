@@ -3,7 +3,7 @@ title: /counter
 description: /counter
 ---
 
-## read()
+### read
 Read counter of passed **type**.
 
 #### parameters
@@ -27,7 +27,7 @@ Read counter of passed **type**.
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 *   219 (Not allowed for clones of the device) – if specified tracker is a clon.
 
-## update()
+### update
 Updates counter of passed **type**.
 
 **required subuser rights:** tracker_update

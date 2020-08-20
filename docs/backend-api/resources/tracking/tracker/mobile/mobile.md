@@ -3,10 +3,10 @@ title: /mobile
 description: /mobile
 ---
 
-## register()
+### register
 **IMPORTANT**
 
-**This call is deprecated!** Use tracker/register()
+**This call is deprecated!** Use tracker/register
 
 Register new mobile client application.
 

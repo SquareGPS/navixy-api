@@ -7,7 +7,7 @@ description: History type
 
 API path: `/history/type`.
 
-## list()
+### list
 
 Returns available history types with localized descriptions.
 

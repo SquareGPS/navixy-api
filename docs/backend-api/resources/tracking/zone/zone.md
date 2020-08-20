@@ -54,7 +54,7 @@ represents all points within certain distance to the specified polyline
 }
 ```
 
-## batch_convert()
+### batch_convert
 Convert batch of tab-delimited circle zones and return list of checked zones with errors.
 
 **required subuser rights**: zone_update
@@ -87,7 +87,7 @@ If ‘file_id’ is set – ‘batch’ parameter will be ignored.
 * 234 (Invalid data format)
 
 
-## create()
+### create
 Create new zone.
 
 **required subuser rights**: zone_update
@@ -111,7 +111,7 @@ Create new zone.
 *   230 (Not supported for this entity type) – if “points” were specified, but zone cannot have any points associated with it (e.g. if zone is circle)
 *   268 (Over quota) –  if the user's quota for zones is exceeded
 
-## delete()
+### delete
 Delete user’s zone by **zone_id** or array of **zone_ids**.
 
 **required subuser rights**: zone_update
@@ -151,7 +151,7 @@ OR
 
 where `<rule_id>` is ID of the rule which uses the specified zone.
 
-## list()
+### list
 Get all user’s zones.
 
 #### return
@@ -164,7 +164,7 @@ Get all user’s zones.
 
 with `<zone>` without points field.
 
-## update()
+### update
 Update zone parameters for the specified zone. Note that zone must exist, must belong to the current user, and its type cannot be changed, e.g. if you already have zone with ID=1 which type is “circle”, you cannot submit a zone which type is “polygon”.
 
 **required subuser rights**: zone_update
@@ -184,7 +184,7 @@ Update zone parameters for the specified zone. Note that zone must exist, must b
 *   231 (Entity type mismatch) – if type of the submitted zone differs from type of the zone currently stored in database.
 
 
-## upload()
+### upload
 Import geofences from KML file.
 
 **required subuser rights**: zone_update

@@ -3,20 +3,20 @@ title: /special
 description: /special
 ---
 
-## About special settings
+### About special settings
 Some trackers provides additional specific kind of control which is defined with "special_control" field of tracker model.
 This field contains "type", which identifies certain kind of settings. (For example "pwr_off_key" or "sos_key", which you can see below)
 "special_control" = "none" means that tracker have no specific kind of control. In other cases you can:
 
-*  **read** special settings with [api/tracker/settings/special/read()](#read),
-*  **update** special settings with [api/tracker/settings/special/update()](#update),
-*  **perform special control** with [api/tracker/send_command()](../../tracker.md#send_command).
+*  **read** special settings with [api/tracker/settings/special/read](#read),
+*  **update** special settings with [api/tracker/settings/special/update](#update),
+*  **perform special control** with [api/tracker/send_command](../../index.md#send_command).
 
 Such control assumes
 
 Tracker special settings
 
-## read()
+### read
 Get special settings for the specified tracker.
 
 If parameter type is present:
@@ -590,7 +590,7 @@ If parameter type is omitted:
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   214 – Requested operation or parameters are not supported by the device
 
-## update()
+### update
 Set special settings for a specified tracker with the new one.
 
 **required subuser rights:** tracker_configure

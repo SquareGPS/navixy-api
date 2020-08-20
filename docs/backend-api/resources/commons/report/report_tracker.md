@@ -7,7 +7,7 @@ description: Report tracker
 
 API path: `/report/tracker`.
 
-## delete()
+### delete
 
 Delete report from db.
 
@@ -30,7 +30,7 @@ Delete report from db.
 * 101 – In demo mode this function is disabled
 
 
-## download()
+### download
 
 Retrieve generated report as a file.
 
@@ -55,7 +55,7 @@ A report rendered to file (standard file download).
 
 
 
-## generate()
+### generate
 
 Requests a report generation with the specified parameters. **required subuser rights**: reports
 
@@ -126,7 +126,7 @@ show_seconds|Flag to define whether time values in report should have format wit
 
 
 
-## list()
+### list
 
 Returns info about all available generated or in-progress reports.
 
@@ -138,10 +138,10 @@ Returns info about all available generated or in-progress reports.
 {
     "success": true,"list": [
     {
-        "from": <"from" parameter from generate()>, //string
-        "to": <"to" parameter from generate()>, //string
+        "from": <"from" parameter from generate>, //string
+        "to": <"to" parameter from generate>, //string
         "created": <date when report was created, e.g. "2013-08-08 19:00:00">, //string
-        "time_filter": <"time_filter" parameter from generate()>,
+        "time_filter": <"time_filter" parameter from generate>,
         "title": <report title, e.g. "Trip report">,
         "parameters": { 
             "geocoder": <geocoder which was used for report, e.g. "google">, //string
@@ -166,7 +166,7 @@ Returns info about all available generated or in-progress reports.
 *   No specific errors.
 
 
-## retrieve()
+### retrieve
 
 Retrieve generated report as JSON. 
 
@@ -191,7 +191,7 @@ Retrieve generated report as JSON.
 *   229 - Requested data is not ready yet (if report exists, but its generation is still in progress)
 
 
-## status()
+### status
 Returns a report generation status for the specified report id. **required subuser rights**: reports
 
 #### parameters

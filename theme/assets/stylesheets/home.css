@@ -130,7 +130,7 @@ main
             justify-content: flex-start;
 }
 
-.header__logo .developer-hub:after {
+.header__logo .developer-hub::after {
     font-size: 14px;
     font-weight: 400;
     margin-top: 5px;
@@ -141,6 +141,33 @@ main
     white-space: nowrap;
 }
 
+@media (max-width:480px) {
+    .header__logo {
+        min-width: auto;
+    }
+    .header__logo .navixy,
+    .header__logo .b2field {
+        background-size: 76px;
+        padding-left: 80px;
+    }
+    .header__logo .developer-hub::after {
+        font-size: 14px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width:320px) {
+    .header__logo .developer-hub::after {
+        font-size: 13px;
+    }
+    .md-header-nav__button[for=__drawer] {
+        margin-left: 0;
+    }
+    .md-header-nav__button[for=__search] {
+        margin-right: 0;
+    }
+}
 
 .main-navigation .menu-toggle {
     display: none
@@ -245,86 +272,6 @@ main
         padding: 7px 5px
     }
 }
-
-
-.mobile-control {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 13px;
-    z-index: 100;
-    width: 45px;
-    height: 35px;
-    color: #1e96dc;
-    text-align: center;
-    font-size: 28px;
-    line-height: 80px;
-    cursor: pointer;
-    box-sizing: border-box;
-    padding: 7px 9px 9px;
-    z-index: 999;
-}
-
-@media (max-width:992px) {
-
-    .mobile-control {
-        display: block;
-    }
-}
-
-.mobile-control__wrapper {
-    position: relative;
-    min-width: 45px;
-    width: 45px;
-    margin-left: 10px
-}
-
-.mobile-control--hidden {
-    display: none
-}
-
-.mobile-control .mobile-control__line {
-    position: relative;
-    height: 3px;
-    transition: transform .4s, opacity .4s, background-color .75s ease-in-out;
-    border-radius: 2px
-}
-
-.mobile-control .mobile-control__line:not(:last-child) {
-    margin-bottom: 5px
-}
-
-.mobile-control .mobile-control__line span {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #1e96dc;
-}
-
-.mobile-control.open .mobile-control__line {
-    height: 3px
-}
-
-.mobile-control.open .mobile-control__line--1 {
-    transform: rotate(-45deg) translate(-8px, 5px)
-}
-
-.mobile-control.open .mobile-control__line--1 span,
-.mobile-control.open .mobile-control__line--3 span {
-    background-color: #1e96dc
-}
-
-.mobile-control.open .mobile-control__line--2 {
-    opacity: 0
-}
-
-.mobile-control.open .mobile-control__line--3 {
-    transform: rotate(45deg) translate(-6px, -3px)
-}
-
 
  .app-nav.no-badge,
  .header:after {

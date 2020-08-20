@@ -3,7 +3,7 @@ title: Сhat
 description: Сhat with tracker
 ---
 
-## list()
+### list
 
 Gets a list of chat messages.
 
@@ -20,7 +20,7 @@ Gets a list of chat messages.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/list/' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/list/' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999199", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -55,7 +55,7 @@ Where **message** object is:
 * 214 – Requested operation or parameters are not supported by the device
 * 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff without “chat” feature)
 
-## mark_read_all()
+### mark_read_all
 
 Marks all incoming chat messages as read for all or for given user trackers.
 
@@ -68,7 +68,7 @@ Marks all incoming chat messages as read for all or for given user trackers.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/mark_read_all/' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read_all/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -83,7 +83,7 @@ $ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/mark_read_all/' \
 
 * 201 – Not found in database
 
-## mark_read()
+### mark_read
 
 Marks incoming chat message as read by **message_id** or array of **message_ids**.
 
@@ -99,7 +99,7 @@ Use only one parameter.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/mark_read/' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "message_id": "123"}'
 ```
@@ -114,7 +114,7 @@ $ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/mark_read/' \
 
 * 201 – Not found in database
 
-## send()
+### send
 
 Sends chat message to specified tracker
 
@@ -128,7 +128,7 @@ Sends chat message to specified tracker
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/send/' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/send/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999199", "message": "Hello World"}'
 ```
@@ -149,7 +149,7 @@ $ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/send/' \
 * 214 – Requested operation or parameters are not supported by the device
 * 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff with disabled reports – (“has_reports” is false))
 
-## broadcast()
+### broadcast
 
 Sends chat message to specified trackers
 
@@ -163,7 +163,7 @@ Sends chat message to specified trackers
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/broadcast/' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]", "message": "Hello World"}'
 ```
@@ -183,7 +183,7 @@ $ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/broadcast/' \
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
 * 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
-## updated/list()
+### updated/list
 
 Gets date-times of last messages in chat of trackers
 
@@ -196,7 +196,7 @@ Gets date-times of last messages in chat of trackers
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/updated/list/' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]"}'
 ```
@@ -219,14 +219,14 @@ $ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/updated/list/' \
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
 * 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
-## unread/count()
+### unread/count
 
 Gets count of user’s unread chat messages grouped by tracker id.
 
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/chat/unread/count/' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count/' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```

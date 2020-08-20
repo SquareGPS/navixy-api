@@ -7,7 +7,7 @@ description: Timezone
 
 API path: `/timezone`.
 
-## list()
+### list
 Information about all supported timezones for the specified locale. Does not require user authorization.
 
 #### return

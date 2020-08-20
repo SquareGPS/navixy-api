@@ -7,7 +7,7 @@ description: APN settings of tracker
 
 API path: `/apn_settings`.
 
-## read()
+### read
 
 Gets the APN name/user/password and mobile operator for registered device by phone number.
 
@@ -20,7 +20,7 @@ Gets the APN name/user/password and mobile operator for registered device by pho
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/apn_settings/read' \
+$ curl -X POST '{{ extra.api_example_url }}/apn_settings/read' \
   -H 'Content-Type: application/json' \ 
   -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "phone": "3389665944572"}' 
 ```

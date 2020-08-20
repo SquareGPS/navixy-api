@@ -15,7 +15,7 @@ API path: `/map_layer`.
 }
 ```
 
-## read()
+### read
 Read the body of the specified layer.
 
 #### parameters
@@ -29,7 +29,7 @@ Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf
 #### errors
 * 201 (Not found in database) – if there is no map layer with such ID belonging to current user
 
-## list()
+### list
 Returns metadata for all map layers for the user.
 
 #### return
@@ -43,7 +43,7 @@ Returns metadata for all map layers for the user.
 #### errors
 No specific errors.
 
-## upload()
+### upload
 Uploads new map layer.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload (with the name “file”).
@@ -70,7 +70,7 @@ redirect_target | (optional) URL to redirect. If **redirect_target** passed retu
 * 242 (Validation error – if uploaded file is not valid KML
 * 268 (Over quota – if the user's quota for map layers is exceeded
 
-## update()
+### update
 Update metadata for the specified map layer.
 
 #### parameters
@@ -86,7 +86,7 @@ layer | &lt;map_layer_object&gt; | JSON object
 #### errors
 * 201 (Not found in database) – if there is no map layer with such ID belonging to current user
 
-## delete()
+### delete
 Delete specified layer.
 
 #### parameters

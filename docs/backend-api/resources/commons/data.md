@@ -3,7 +3,7 @@ title: /data
 description: /data
 ---
 
-## /data/spreadsheet/parse
+### /data/spreadsheet/parse
 
 Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 

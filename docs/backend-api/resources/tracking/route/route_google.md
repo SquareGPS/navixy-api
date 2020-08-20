@@ -7,7 +7,7 @@ description: Tracking route google
 
 API path: `/tracking/route/google`.
 
-## get()
+### get
 
 Get route points using [Google Directions API](https://developers.google.com/maps/documentation/directions/intro).
 

@@ -38,7 +38,7 @@ CRUD actions for retranslators.
 ```
 
 
-## create()
+### create
 
 Create new retranslator.
 
@@ -65,7 +65,7 @@ retranslator|<retranslator> without "id" field|<retranslator>
 *   268 (Over quota) – if the user's quota for retranslators is exceeded
 
 
-## delete()
+### delete
 
 Delete user's retranslator with ID = **retranslator_id**.
 
@@ -84,7 +84,7 @@ Delete user's retranslator with ID = **retranslator_id**.
 
 
 
-## list()
+### list
 
 Get all user's [retranslators](#objects).
 
@@ -97,7 +97,7 @@ Get all user's [retranslators](#objects).
 ```
 
 
-## update()
+### update
 
 Update retranslator parameters for the specified retranslator. Note that retranslator must exist, must belong to the current user.
 
@@ -119,9 +119,9 @@ Update retranslator parameters for the specified retranslator. Note that retrans
 
 
 
-## /retranslator/protocols/
+### /retranslator/protocols/
 
-## list()
+### list
 Return all available retranslator protocols.
 
 #### return

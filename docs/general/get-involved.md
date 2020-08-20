@@ -157,7 +157,7 @@ Method description.
 ### Example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/path/to/resource/method1' \
+$ curl -X POST '{{ extra.api_example_url }}/path/to/resource/method1' \
 -H 'Content-Type: application/json' \ 
 -d '{ "hash": "a6aa75587e5c59c32d347da438505fc3", "param1": "value" }'
 ```
@@ -178,5 +178,5 @@ Special error codes.
 
 ````
 
-For real example see [/user](../backend-api/resources/commons/user/user.md) and
+For real example see [/user](../backend-api/resources/commons/user/index.md) and
 [:octicons-file-code-24: source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/user.md).

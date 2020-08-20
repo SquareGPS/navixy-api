@@ -7,7 +7,7 @@ description: Notification
 
 API path: `/notification`.
 
-## list()
+### list
 List user notifications.
 
 #### return

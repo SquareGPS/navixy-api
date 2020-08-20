@@ -3,14 +3,14 @@ title: Contact
 description: Contact
 ---
 
-## list()
+### list
 
 Gets all user’s trackers with special grouping by “contacts”.
 
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/fsm/tracker/contact/list' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -36,7 +36,7 @@ where **contact** object is:
 }
 ```
 
-Click to see descriptions of type [tracker](tracker.md#tracker-object-structure).
+Click to see descriptions of type [tracker](index.md#tracker-object-structure).
 
 #### errors
 

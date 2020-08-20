@@ -18,7 +18,7 @@ All actions to retrieve and manipulate points of the zone. Note that “circle�
     }
 ```
 
-## list()
+### list
 
 Get points of user’s zone with ID = `<zone_id>`
 
@@ -38,7 +38,7 @@ Get points of user’s zone with ID = `<zone_id>`
 *   201 (Not found in database) – if zone with the specified ID cannot be found or belongs to another user
 *   230 (Not supported for this entity type) – if zone cannot have any points associated with it (e.g. if zone is circle)
 
-## update()
+### update
 Update points for user’s zone with ID = `<zone_id>`.
 
 **required subuser rights**: zone_update

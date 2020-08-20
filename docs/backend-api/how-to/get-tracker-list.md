@@ -8,9 +8,9 @@ description: Sample for get tracker list
 Now that we [have a hash](./get-session-hash.md) — let's start with essential basics. 
 
 Navixy has tracking device as a main unit, so most requests would require you to specify one or several tracker ids. 
-You can receive a list of all trackers in user's account with [tracker/list](../resources/tracking/tracker/tracker.md#list) API request:
+You can receive a list of all trackers in user's account with [tracker/list](../resources/tracking/tracker/index.md#list) API request:
 
-    https://api.navixy.com/v2/fsm/tracker/list?hash=your_hash
+    {{ extra.api_example_url }}/tracker/list?hash=your_hash
 
 It will return to you
 ```json
@@ -31,7 +31,7 @@ This parameter has following constraints:
 
 To get a list of trackers with labels matching the filter use this API call:
 
-    https://api.navixy.com/v2/fsm/tracker/list?hash=your_hash&label=[“tracker’s_name_contains”,…]
+    {{ extra.api_example_url }}/tracker/list?hash=your_hash&label=[“tracker’s_name_contains”,…]
 
 Tracker object structure is next:
 ```json

@@ -59,7 +59,7 @@ This can be especially handy when working with large requests.
 
     In this case, we have received a hash that should be copied and user for future requests. 
 
-    Example: [tracker/list request](../backend-api/resources/tracking/tracker/tracker.md#list)
+    Example: [tracker/list request](../backend-api/resources/tracking/tracker/index.md#list)
 
     ![Enter params](./assets/postman_tracker_list.png)
     

@@ -3,7 +3,7 @@ title: /unconfirmed
 description: /unconfirmed
 ---
 
-## count()
+### count
 Get number of commands in queue for the specified tracker.
 
 #### parameters
@@ -21,7 +21,7 @@ Get number of commands in queue for the specified tracker.
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
-## reset()
+### reset
 Remove all pending SMS commands from the queue for the specified tracker.
 
 **required subuser rights:** tracker_update

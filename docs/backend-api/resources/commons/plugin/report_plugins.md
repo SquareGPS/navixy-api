@@ -5,7 +5,7 @@ description: Report plugins
 
 # Report plugins
 
-## Check-in report
+### Check-in report
 
 A report on markers for Check-in function.
 
@@ -20,7 +20,7 @@ Plugin-specific parameters:
 
 
 
-## Flow meter report
+### Flow meter report
 
 A report on fuel consumption counted by flow meter sensors.
 
@@ -36,7 +36,7 @@ Plugin-specific parameters:
 
 
 
-## Stay in zones report
+### Stay in zones report
 
 Custom report for AO NIPIGAZ
 

@@ -45,7 +45,7 @@ API path: `/report/schedule`.
             }
         }
 
-## create()
+### create
 Create new report schedule entry. 
 **required subuser rights**: reports
 
@@ -69,7 +69,7 @@ schedule|<schedule_entry> object without fields which are _IGNORED_| JSON object
 * 236 - Feature unavailable due to 
 
 
-## delete()
+### delete
 
 Delete report schedule with the specified id.
 
@@ -94,7 +94,7 @@ schedule_id | Id of the report schedule to delete | int
 
 
 
-## list()
+### list
 
 Get all report schedules belonging to user.
 
@@ -114,7 +114,7 @@ Get all report schedules belonging to user.
 general types only
 
 
-## update()
+### update
 
 Update existing report schedule. **required subuser rights**: reports
 
