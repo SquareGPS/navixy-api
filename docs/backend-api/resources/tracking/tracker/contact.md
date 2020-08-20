@@ -36,7 +36,7 @@ where **contact** object is:
 }
 ```
 
-Click to see descriptions of type [tracker](tracker.md#tracker-object-structure).
+Click to see descriptions of type [tracker](index.md#tracker-object-structure).
 
 #### errors
 

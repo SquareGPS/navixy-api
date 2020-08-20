@@ -73,7 +73,7 @@ name | description | type
 place_ids | optional, list of place IDs | array of ints
 filter | optional, filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned place. | string
 conditions | optional, search conditions to apply to list. | Array of search conditions, see [Search conditions](../../commons/entity/search_conditions.md)
-order_by | built-in or custom field according to which output should be sorted | entity field name, e.g "label" (builtin) or "123" (field id as string, see [entity/](../../commons/entity/entity.md)
+order_by | built-in or custom field according to which output should be sorted | entity field name, e.g "label" (builtin) or "123" (field id as string, see [entity/](../../commons/entity/index.md)
 ascending | optional, if false – descending order | boolean
 limit | optional, limit | int
 offset | optional, offset, default is 0 | int

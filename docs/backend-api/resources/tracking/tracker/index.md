@@ -932,7 +932,7 @@ Registers a new tracker device. During registration, device is linked with curre
 #### parameters
 
 **IMPORTANT**
-Because of the variety of tracker models and business applications, there are many different ways to register tracker in our system. They are called [Registration plugins](../../commons/plugin/plugin.md). Each of registration plugins has its own set of additional parameters.
+Because of the variety of tracker models and business applications, there are many different ways to register tracker in our system. They are called [Registration plugins](../../commons/plugin/index.md). Each of registration plugins has its own set of additional parameters.
 
 In addition to parameters specified in this section, you **must** pass all parameters which are required by the plugin you have chosen. See example below.
 
@@ -943,13 +943,13 @@ Common parameters are:
 | label | User-defined label for this tracker. Must consist of printable characters and have length between 1 and 60 | string | Courier |
 | group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](./group/group.md#list) | int | 0 |
 | model | A code of one of the supported models. See [tracker/list_models](#list_models) | string | pt10 |
-| plugin_id | An id of a registration plugin which will be used to register the device. See [Registration plugins](../../commons/plugin/plugin.md) | int | 37 |
+| plugin_id | An id of a registration plugin which will be used to register the device. See [Registration plugins](../../commons/plugin/index.md) | int | 37 |
 | device_id | **Must** be specified if device model uses fixed device id. See [tracker/list_models](#list_models) | string | 4568005588562 |
 | send_register_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals  `null` will be used the platform settings. Default: `null` | boolean | true/false |
 
 #### example
 
-In this example we use plugin id = 37 (see [Plugin description](../../commons/plugin/plugin.md)) 
+In this example we use plugin id = 37 (see [Plugin description](../../commons/plugin/index.md)) 
 to register Queclink GV55Lite. We chose to include the device to default group, so group ID is 0. 
 As this device is identified by IMEI, we include it as device ID (123451234512346).
 

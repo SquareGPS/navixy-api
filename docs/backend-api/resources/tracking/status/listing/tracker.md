@@ -3,7 +3,7 @@ title: /tracker
 description: /tracker
 ---
 
-# tracker/
+# /status/listing/tracker/
 Contains api calls which link together trackers and status listings.
 
 ### assign

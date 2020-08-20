@@ -64,7 +64,7 @@ Field allows to add custom information to a customizable entity. Each field belo
 
 ### read(entity_id)
 Get a set of custom fields associated with the specified entity. Note that you must know entity id, which can be 
-obtained from [entity/list](./entity.md#list)
+obtained from [entity/list](index.md#list)
 
 #### parameters
 name      | description     | type

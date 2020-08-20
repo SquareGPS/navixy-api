@@ -3,7 +3,7 @@ title: /tracker
 description: /tracker
 ---
 
-# tracker/
+# /status/tracker/
 This resource contains methods to read and assign status of a particular tracker.
 
 ### assign
@@ -91,7 +91,7 @@ Get current assigned statuses for the specified trackers.
 ```
 
 #### errors
-*   217 (Requested limit is too big) – limit is more than [maxHistoryLimit](../../../../getting-started.md#constants)
+*   217 (Requested limit is too big) – limit is more than [maxHistoryLimit](../../../getting-started.md#constants)
 *   221 (Device limit exceeded) – if device limit set for the user’s dealer has been exceeded
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 

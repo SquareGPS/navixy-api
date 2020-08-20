@@ -10,7 +10,7 @@ This field contains "type", which identifies certain kind of settings. (For exam
 
 *  **read** special settings with [api/tracker/settings/special/read](#read),
 *  **update** special settings with [api/tracker/settings/special/update](#update),
-*  **perform special control** with [api/tracker/send_command](../../tracker.md#send_command).
+*  **perform special control** with [api/tracker/send_command](../../index.md#send_command).
 
 Such control assumes
 
