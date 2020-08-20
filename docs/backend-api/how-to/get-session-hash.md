@@ -10,7 +10,7 @@ Nearly all API calls require a session key to operate.
 
 To get hash use the [user/auth](../resources/commons/user/index.md#auth) call with credentials of a user:
 
-    https://api.navixy.com/v2/user/auth?login=user_login&password=user_password
+    {{ extra.api_example_url }}/user/auth?login=user_login&password=user_password
 
 The response will be like this:
 
@@ -34,11 +34,11 @@ prolong the session.
 
 To prolong the session, use the [following API call](../resources/commons/user/session/session.md#renew):
 
-    https://api.navixy.com/v2/user/session/renew?hash=you_hash
+    {{ extra.api_example_url }}/user/session/renew?hash=you_hash
 
 You can disable the current hash with the [following call](../resources/commons/user/index.md#logout):
 
-    https://api.navixy.com/v2/user/user/logout?hash=your_hash
+    {{ extra.api_example_url }}/user/logout?hash=your_hash
     
 ## Using hash
 

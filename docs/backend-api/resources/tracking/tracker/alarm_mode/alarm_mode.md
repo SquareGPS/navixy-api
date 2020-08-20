@@ -16,7 +16,7 @@ Gets the state of alarm mode of device.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/read' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999199", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -50,7 +50,7 @@ Changes the state of alarm mode of device. The device must be online.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/alarm_mode/set' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/set' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999199", "enabled": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```

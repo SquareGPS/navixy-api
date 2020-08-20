@@ -15,7 +15,7 @@ Tracks are selected by intersecting their date range with date range from reques
 
 #### structure:
 
-    https://api.navixy.com/v2/driver/journal/proposal/list?hash=your_hash&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS&tracker_id=123456
+    {{ extra.api_example_url }}/driver/journal/proposal/list?hash=your_hash&from=YYYY-MM-DD HH:MM:SS&to=YYYY-MM-DD HH:MM:SS&tracker_id=123456
 
 #### parameters
 
@@ -27,7 +27,7 @@ Tracks are selected by intersecting their date range with date range from reques
 
 #### example
 
-    https://api.navixy.com/v2/driver/journal/proposal/list?hash=22eac1c27af4be7b9d04da2ce1af111b&from=2020-05-01 00:00:00&to=2020-05-15 23:59:59&tracker_id=518076
+    {{ extra.api_example_url }}/driver/journal/proposal/list?hash=22eac1c27af4be7b9d04da2ce1af111b&from=2020-05-01 00:00:00&to=2020-05-15 23:59:59&tracker_id=518076
 
 #### response
 

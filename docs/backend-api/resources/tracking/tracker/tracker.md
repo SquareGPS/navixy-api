@@ -57,7 +57,7 @@ Changes tracker’s phone and setup new apn.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/change_phone' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/change_phone' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "265489", "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -94,7 +94,7 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/corrupt' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/corrupt' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -131,7 +131,7 @@ Deletes tracker if it is “clone”. Will not work if specified id of the origi
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/delete' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/delete' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -185,7 +185,7 @@ Gets last sensors and states values received from the device.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/get_diagnostics' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/get_diagnostics' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -307,7 +307,7 @@ Gets current fuel level (in liters) of tracker’s fuel tanks.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/get_fuel' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/get_fuel' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -341,7 +341,7 @@ Gets current state of tracker’s digital inputs and “semantic” inputs (igni
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/get_inputs' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/get_inputs' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -396,7 +396,7 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/get_last_gps_point' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/get_last_gps_point' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -432,7 +432,7 @@ Gets last sensor values for sensors that are:
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/get_readings' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/get_readings' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -463,7 +463,7 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/get_state' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/get_state' \
 -H 'Content-Type: application/json' \ 
 -d '{"tracker_id": "999119", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -534,7 +534,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/get_states' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
 -H 'Content-Type: application/json' \ 
 -d '{"trackers": "[999119, 999199, ...]", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -574,7 +574,7 @@ Gets all integrated tracker models (from “models" table).
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/list_models' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -745,7 +745,7 @@ For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `label
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/list' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/list' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -778,7 +778,7 @@ Sets tags for tracker. Tags must be created.
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/tags/set' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/tags/set' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "99119"}'
 ```
@@ -814,7 +814,7 @@ Request types:
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/location_request' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/location_request' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "99119"}'
 ```
@@ -850,7 +850,7 @@ Registers a new tracker using only IMEI. Automatic SMS commands will not be sent
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/register_quick' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": "0", "imei": "35645587458999"}'
 ```
@@ -899,7 +899,7 @@ Resends registration commands to the device. The panel must have installed SMS g
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/register_retry' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999119", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
 ```
@@ -960,7 +960,7 @@ You can try to “auto-detect” APN settings by phone number
 using [apn_settings/read()](./apn_settings/apn_settings.md#read) API call.
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/register' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": "0", "plugin_id": "37", "model": "qlgv55lite", "phone": "79123122312", "activation_code": "123123123", "device_id": "123451234512346", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
 ```
@@ -1057,7 +1057,7 @@ See [special settings JSON object](./settings/special/special.md#read)
 #### example
 
 ```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/send_command' \
+$ curl -X POST '{{ extra.api_example_url }}/tracker/send_command' \
 -H 'Content-Type: application/json' \ 
 -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999119", "command": {name: "electronic_lock_command", command_code: "unseal", special_settings:{"type":"electronic_lock_password", "password": "345892", "remember_password": "true"}}}'
 ```
