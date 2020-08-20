@@ -7,7 +7,7 @@ description: File
 
 API path: `/file`.
 
-## stats/read
+### stats/read
 
 Get user’s files statistic.
 

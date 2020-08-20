@@ -3,7 +3,7 @@ title: Сhat
 description: Сhat with tracker
 ---
 
-## list()
+### list
 
 Gets a list of chat messages.
 
@@ -55,7 +55,7 @@ Where **message** object is:
 * 214 – Requested operation or parameters are not supported by the device
 * 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff without “chat” feature)
 
-## mark_read_all()
+### mark_read_all
 
 Marks all incoming chat messages as read for all or for given user trackers.
 
@@ -83,7 +83,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read_all/' \
 
 * 201 – Not found in database
 
-## mark_read()
+### mark_read
 
 Marks incoming chat message as read by **message_id** or array of **message_ids**.
 
@@ -114,7 +114,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read/' \
 
 * 201 – Not found in database
 
-## send()
+### send
 
 Sends chat message to specified tracker
 
@@ -149,7 +149,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/send/' \
 * 214 – Requested operation or parameters are not supported by the device
 * 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff with disabled reports – (“has_reports” is false))
 
-## broadcast()
+### broadcast
 
 Sends chat message to specified trackers
 
@@ -183,7 +183,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast/' \
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
 * 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
-## updated/list()
+### updated/list
 
 Gets date-times of last messages in chat of trackers
 
@@ -219,7 +219,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list/' \
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
 * 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 
-## unread/count()
+### unread/count
 
 Gets count of user’s unread chat messages grouped by tracker id.
 

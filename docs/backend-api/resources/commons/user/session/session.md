@@ -7,7 +7,7 @@ description: User session
 
 API path: `/user/session`.
 
-## renew()
+### renew
 
 Prolongs current user session.
 

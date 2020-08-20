@@ -5,7 +5,7 @@ description: Transaction
 
 # Transaction
 
-## list()
+### list
 
 Get list of user’s billing transactions for the specified period.
 

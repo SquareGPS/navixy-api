@@ -3,7 +3,7 @@ title: /led
 description: /led
 ---
 
-## read()
+### read
 Get LED status for the specified tracker.
 
 #### parameters
@@ -22,7 +22,7 @@ Get LED status for the specified tracker.
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   214 – Requested operation or parameters are not supported by the device
 
-## update()
+### update
 Switch LED state for a specified tracker.
 
 #### parameters

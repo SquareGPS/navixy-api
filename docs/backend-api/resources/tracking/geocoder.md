@@ -7,7 +7,7 @@ description: Search address and location using geocoder
 
 API path: `/geocoder`.
 
-## Geocoder types:
+### Geocoder types:
 
 Geocoder types:
 
@@ -17,7 +17,7 @@ Geocoder types:
 *   osm
 *   locationiq
 
-## search_address()
+### search_address
 
 Performs a forward geocoding. Returns a list of locations matching the given address. Items in the list are sorted by relevance.
 
@@ -86,7 +86,7 @@ where **details_object** is:
 }
 ```
 
-## search_location()
+### search_location
 
 Search address by location using geocoder
 

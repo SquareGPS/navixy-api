@@ -42,7 +42,7 @@ Thus, field employee can view all places assigned to him to visit them, etc.
 }
 ```   
 
-### API actions
+## API actions
 
 API base path: `/place`.
 

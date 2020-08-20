@@ -10,7 +10,7 @@ API path: `/user/session/delivery`.
 Calls to work with “delivery” type sessions. Those are special sessions to integrate order (task) 
 tracking functionality into external systems.
 
-## create()
+### create
 
 Create new user delivery session.
 In demo session allowed to create a new session only if it not already exists.
@@ -31,7 +31,7 @@ In demo session allowed to create a new session only if it not already exists.
 *   101 (In demo mode this function is disabled) – current session is demo but weblocator session already exists.
 *   236 – Feature unavailable due to tariff restrictions
 
-## read()
+### read
 
 Return current user delivery session key.
 

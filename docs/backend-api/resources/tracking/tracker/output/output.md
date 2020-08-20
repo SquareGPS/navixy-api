@@ -3,7 +3,7 @@ title: /output
 description: /output
 ---
 
-## set_all()
+### set_all
 Request to change the states of all digital outputs of the device. The device must be online.
 
 **required subuser rights:** tracker_set_output
@@ -24,7 +24,7 @@ Request to change the states of all digital outputs of the device. The device mu
 *   214 – Requested operation or parameters are not supported by the device (if device does not support batch mode, or has a different number of outputs)
 *   219 – Not allowed for clones of the device (if tracker is clone)
 
-## set()
+### set
 Request to change the state of the specified digital output of the device. The device must be online.
 
 **required subuser rights:** tracker_set_output

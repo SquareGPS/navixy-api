@@ -7,7 +7,7 @@ description: Driver journal proposal
 
 API path: `/driver/journal/proposal`.
 
-## list()
+### list
 Get proposal objects that could be used for driver journal entry creation. 
 Proposal objects are created by track’s division by driver changes. 
 If there was no driver change on the track, then the track will be returned entirely. 

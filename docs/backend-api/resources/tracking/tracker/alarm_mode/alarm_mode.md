@@ -3,7 +3,7 @@ title: Alarm mode
 description: Alarm mode for tracker
 ---
 
-## read()
+### read
 
 Gets the state of alarm mode of device.
 
@@ -36,7 +36,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 * 214 – Requested operation or parameters are not supported by the device (if device does not support alarm mode)
 
-## set()
+### set
 
 Changes the state of alarm mode of device. The device must be online.
 

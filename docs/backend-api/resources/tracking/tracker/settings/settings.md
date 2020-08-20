@@ -3,7 +3,7 @@ title: /settings
 description: /settings
 ---
 
-## read()
+### read
 Get base settings for the specified tracker.
 
 #### parameters
@@ -25,7 +25,7 @@ Get base settings for the specified tracker.
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
 
-## update()
+### update
 Update the settings of the specified tracker.
 
 **required subuser rights:** tracker_update

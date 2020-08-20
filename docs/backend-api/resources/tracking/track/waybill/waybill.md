@@ -3,7 +3,7 @@ title: /waybill
 description: /waybill
 ---
 
-## download()
+### download
 Download a waybill report DOCX file for tracks of the specified tracker and time period.
 
 #### parameters

@@ -6,7 +6,7 @@ description: /tracker
 # tracker/
 Contains api calls which link together trackers and status listings.
 
-## assign()
+### assign
 Assign a status listing (or remove assignment) to the tracker.
 
 **required subuser rights:** tracker_update

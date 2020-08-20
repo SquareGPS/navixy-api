@@ -7,7 +7,7 @@ description: Tracking route OSRM
 
 API path: `/tracking/route/osrm`.
 
-## get()
+### get
 
 Get route points via [OSRM API](https://github.com/Project-OSRM/osrm-backend/wiki/Server-api#requesting-routes).
 

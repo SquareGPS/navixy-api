@@ -7,7 +7,7 @@ description: Base
 
 API path: `/base`.
 
-## nothing()
+### nothing
 
 The report for health-check. It will do nothing.
 
@@ -22,7 +22,7 @@ The report for health-check. It will do nothing.
 ```
 
 
-## send_email()
+### send_email
 
 Sends email from the platform to any email address with specified title and text. Needs ROOT access level.
 

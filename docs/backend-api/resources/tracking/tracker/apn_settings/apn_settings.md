@@ -3,7 +3,7 @@ title: APN settings by tracker ID
 description: APN settings by tracker ID
 ---
 
-## read()
+### read
 
 Gets the APN name/user/password and mobile operator of device by tracker_id.
 

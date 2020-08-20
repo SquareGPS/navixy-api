@@ -7,7 +7,7 @@ description: Track
 
 API path: `/track`.
 
-## download()
+### download
 Download track points as KML/KMZ file for the specified track ID, tracker and time period.
 
 #### parameters
@@ -36,7 +36,7 @@ _KML/KMZ file_ or _JSON response_ if requested time period exceeds limit specifi
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 *   211 (Requested time span is too big) – if interval between "from" and "to" is too big (maximum value is specified in API config.
 
-## list()
+### list
 Get a list of track descriptions for the specified tracker and time period.
 
 #### parameters
@@ -120,7 +120,7 @@ where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 *   211 (Requested time span is too big) – if interval between "from" and "to" is too big (maximum value is specified in API config.
 
-## read()
+### read
 Get track points for the specified track ID, tracker and time period.
 
 #### parameters

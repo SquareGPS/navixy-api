@@ -24,7 +24,7 @@ API path: `/user/audit/log`.
 }
 ```
 
-## list()
+### list
 
 Gets list of audit records available for current user.
 

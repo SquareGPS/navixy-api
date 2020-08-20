@@ -44,7 +44,7 @@ For example, you can add your own custom fields to **places** entity or rearrang
   
 
 
-## list()
+### list
 
 Get list of entities which are available for customization.
 
@@ -67,7 +67,7 @@ Standard errors only.
 
 
 
-## read()
+### read
 Get entity by id or by type
 
 #### parameters
@@ -94,7 +94,7 @@ type      | type of an entity | entity type string, see above
 * 201 (Not found in database) – if there is no entity with such ID
 
 
-## update(entity)
+### update(entity)
 Updates settings of customizable entity. Entity must have a valid id.
 
 **required subuser rights**: places_custom_fields_update for entities with type `place`

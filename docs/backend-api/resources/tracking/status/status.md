@@ -26,7 +26,7 @@ Statuses are used to track current activity for employees (in fact, of tracking 
     "entries": [ 5, 2, 1, 4, 6] // list of IDs of statuses which belong to this listing. Order matters, and is preserved.
 }
 ```
-## create()
+### create
 Create new possible status for the specified status listing.
 
 **required subuser rights:** tracker_update
@@ -47,7 +47,7 @@ Create new possible status for the specified status listing.
 *    236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 *    268 (Over quota) – if the user's quota for statuses is exceeded
 
-## delete()
+### delete
 Delete status entry.
 
 **required subuser rights:** tracker_update
@@ -64,7 +64,7 @@ Delete status entry.
 *   201 (Not found in database) – if status with the specified ID does not exist
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 
-## list()
+### list
 Get statuses belonging to the specified status listing.
 
 #### parameters
@@ -82,7 +82,7 @@ Get statuses belonging to the specified status listing.
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 
 
-## update()
+### update
 
 Update status properties.
 

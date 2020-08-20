@@ -3,7 +3,7 @@ title: /sensor
 description: /sensor
 ---
 
-## sensor
+### sensor
 Data types
 Sensor sub-types
 Metering sensor
@@ -47,7 +47,7 @@ Discrete input
 }
 ```
 
-## create()
+### create
 Create sensor.
 
 **required subuser rights:** tracker_update
@@ -70,7 +70,7 @@ Create sensor.
 *   219 (Not allowed for clones of the device) – if tracker is clone
 *   270 (Too many sensors of same type) - the number of tracker's sensors, having same `sensor_type` is limited
 
-## delete()
+### delete
 Delete sensor with **sensor_id** from the database.
 
 **required subuser rights:** tracker_update
@@ -90,7 +90,7 @@ Delete sensor with **sensor_id** from the database.
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   219 – Not allowed for clones of the device (if tracker is clone)
 
-## list()
+### list
 List tracker sensors binded to tracker with specified id (**tracker_id** parameter).
 
 #### parameters
@@ -108,7 +108,7 @@ See [sensor](#sensor) type description.
 #### errors
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 
-## update()
+### update
 Update sensor.
 
 **required subuser rights:** tracker_update

@@ -7,7 +7,7 @@ description: Delivery info
 
 API path: `/delivery`.
 
-## read()
+### read
 
 Returns info sufficient for tracking certain task state and the tracker assigned to it.
 Search is conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:
@@ -53,7 +53,7 @@ $ curl -X POST '{{ extra.api_example_url }}/delivery/read' \
 
 *   201 – Not found in database (when there is no task or checkpoint with specified conditions)
 
-## list()
+### list
 
 External_id can be repeated, so this request will return all matching delivery. Returns info sufficient for tracking certain task state and the tracker assigned to it. 
 Search is conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:

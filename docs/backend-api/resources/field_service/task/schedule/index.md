@@ -12,7 +12,7 @@ schedule is checked and if there are tasks which start at this day, they are cre
 Schedule entries are very similar to tasks, main difference is that `from` and `to` containing specific date and time are
 replaced with `from_time`, `duration` and `parameters`.
 
-## Data structures
+### Data structures
 
 ```js
 <task_schedule_entry> = {

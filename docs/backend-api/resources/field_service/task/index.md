@@ -12,7 +12,7 @@ the task is either failed completely or completed with warnings.
 If task is assigned to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),
 it's available for viewing by app user. User will also receive notifications of newly assigned tasks, task changes, etc.
 
-## Data structure
+### Data structure
 
 ```js
 <task> =

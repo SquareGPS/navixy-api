@@ -7,7 +7,7 @@ description: User password
 
 API path: `/user/password`.
 
-## change()
+### change
 
 Changes password of user with the provided session hash (it is contained in password restore link from email sent to user by “user/restore_password”.
 
@@ -27,7 +27,7 @@ Changes password of user with the provided session hash (it is contained in pass
 
 *   101 – In demo mode this function is disabled (if specified session hash belongs to demo user)
 
-## set()
+### set
 
 Changes password for logined user.
 

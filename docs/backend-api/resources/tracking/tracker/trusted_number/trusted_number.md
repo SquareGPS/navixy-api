@@ -3,7 +3,7 @@ title: /trusted_number
 description: /trusted_number
 ---
 
-## list()
+### list
 Get list of trusted numbers for the specified tracker.
 
 #### parameters
@@ -21,7 +21,7 @@ Get list of trusted numbers for the specified tracker.
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
-## update()
+### update
 Replaces the list of trusted numbers for a specified tracker with the new one.
 
 **required subuser rights:** tracker_update

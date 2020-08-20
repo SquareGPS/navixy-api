@@ -3,7 +3,7 @@ title: /value
 description: /value
 ---
 
-## get()
+### get
 
 #### parameters
 * **tracker_id** - **int**. id of the tracker.
@@ -18,10 +18,10 @@ description: /value
 ```
 
 #### errors
-*   204 (Entity not found) – if there is no tracker with such id belonging to authorized user, counter does not exist or there are no values yet. use /tracker/counter/set() to create new counter (if not exist) and save some value.
+*   204 (Entity not found) – if there is no tracker with such id belonging to authorized user, counter does not exist or there are no values yet. use /tracker/counter/set to create new counter (if not exist) and save some value.
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-## list()
+### list
 Get values for counters of passed **type** and **trackers**
 
 #### parameters
@@ -39,10 +39,10 @@ Get values for counters of passed **type** and **trackers**
 }
 ```
 #### errors
-*   204 (Entity not found) – if one of the specified counter does not exist or there are no values yet. use /tracker/counter/set() to create new counter (if not exist) and save some value.
+*   204 (Entity not found) – if one of the specified counter does not exist or there are no values yet. use /tracker/counter/set to create new counter (if not exist) and save some value.
 *   217 (List contains nonexistent entities) – if one of the specified trackers does not exist or is blocked
 
-## set()
+### set
 Creates new counter of passed **type** (if not) and update its **value**.
 
 #### parameters

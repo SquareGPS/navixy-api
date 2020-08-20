@@ -25,7 +25,7 @@ API path: `/tag`.
 
 
 
-## create()
+### create
 Create new tag.
 
 **required subuser rights**: tag_update
@@ -46,7 +46,7 @@ general types only
 
 
 
-## delete()
+### delete
 Delete tag with the specified id.
 
 **required subuser rights**: tag_update
@@ -66,7 +66,7 @@ Delete tag with the specified id.
 
 
 
-## list()
+### list
 Get all tags belonging to user with optional filtering.
 
 #### parameters
@@ -85,7 +85,7 @@ general types only
 
 
 
-## search()
+### search
 Search entities that bound with specified tags.
 
 #### parameters
@@ -111,7 +111,7 @@ general types only
 
 
 
-## update()
+### update
 Update existing tag.
 
 **required subuser rights**: tag_update

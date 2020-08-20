@@ -6,7 +6,7 @@ description: /tracker
 # tracker/
 This resource contains methods to read and assign status of a particular tracker.
 
-## assign()
+### assign
 Assign a status to the tracker.
 
 #### parameters
@@ -41,7 +41,7 @@ Assign a status to the tracker.
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 *   263 (No change needed, old and new values are the same) – if new status is equal to current status of tracker
 
-## list()
+### list
 Get current assigned statuses for the specified trackers.
 
 #### parameters
@@ -95,7 +95,7 @@ Get current assigned statuses for the specified trackers.
 *   221 (Device limit exceeded) – if device limit set for the user’s dealer has been exceeded
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 
-## read()
+### read
 
 Get current assigned status of the tracker.
 

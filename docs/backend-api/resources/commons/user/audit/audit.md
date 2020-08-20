@@ -7,7 +7,7 @@ description: User audit
 
 API path: `/user/audit`.
 
-## checkin()
+### checkin
 This method is called when user has opened UI.
 
 #### return

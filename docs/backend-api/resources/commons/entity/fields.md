@@ -62,7 +62,7 @@ Field allows to add custom information to a customizable entity. Each field belo
   and a [place](../../field_service/place/index.md) has a custom field of type "responsible employee", such place will be available in mobile app to view.
   Thus, field employee can view all places assigned to him to visit them, etc.
 
-## read(entity_id)
+### read(entity_id)
 Get a set of custom fields associated with the specified entity. Note that you must know entity id, which can be 
 obtained from [entity/list](./entity.md#list)
 
@@ -82,7 +82,7 @@ entity_id | ID of an entity | int
 #### errors
 * 201 (Not found in database) – if there is no entity with such ID
 
-## update(entity_id, fields, delete_missing)
+### update(entity_id, fields, delete_missing)
 
 Update a set of custom fields associated with the specified entity.
 

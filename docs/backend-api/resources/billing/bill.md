@@ -7,7 +7,7 @@ description: Bill
 
 API path: `/bill`.
 
-## create()
+### create
 
 Creates new bill for the user. Required subuser rights: `payment_create`.
 
@@ -35,7 +35,7 @@ Creates new bill for the user. Required subuser rights: `payment_create`.
 
 *   222 – Plugin not found (when plugin **29** not available for user)
 
-## list()
+### list
 
 Shows list of bills with their parameters in array. Required subuser rights: payment_create
 
@@ -79,7 +79,7 @@ where **bill** is
 }
 ```
 
-If bill created using [/bill/create()](#create) call then **positions** will contains exactly one element.
+If bill created using [/bill/create](#create) call then **positions** will contains exactly one element.
 
 **status** may be one of:
 

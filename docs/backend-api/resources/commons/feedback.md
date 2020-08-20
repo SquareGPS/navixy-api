@@ -15,7 +15,7 @@ API path: `/feedback`.
       "log": <optional, log file>
     }
 
-## send_email()
+### send_email
 
 #### parameters
 

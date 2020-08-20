@@ -7,7 +7,7 @@ description: Subuser session
 
 API path: `/subuser/session/`.
 
-## create()
+### create
 
 Create new session for the specified sub-user and obtain its hash. Can be used to log in to sub-user’s accounts.
 

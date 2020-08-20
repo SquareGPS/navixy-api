@@ -39,7 +39,7 @@ CRUD actions for user settings.
 }
 ```
 
-## read()
+### read
 
 Read current user’s settings.
 
@@ -61,7 +61,7 @@ Where `settings`, `balance_alert_settings` and `file_storage_settings` described
 **required subuser rights** for **balance\_alert\_settings** and **file\_storage\_settings** fields: admin (available only to master users)
 
 
-## update()
+### update
 
 Update current user’s settings.
 
@@ -86,7 +86,7 @@ See examples above.
 { "success": true }
 ```
 
-## file_storage/update()
+### file_storage/update
 
 Update current user’s file storage settings
 
