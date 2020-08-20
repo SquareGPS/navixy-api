@@ -86,7 +86,7 @@ Get form by an id.
 
 #### example
 
-    https://api.navixy.com/v2/form/read?hash=22eac1c27af4be7b9d04da2ce1af111b&id=132215
+    {{ extra.api_example_url }}/form/read?hash=22eac1c27af4be7b9d04da2ce1af111b&id=132215
 
 #### response
 ```js
@@ -113,7 +113,7 @@ Download form as a file by an id.
 
 #### example
 
-    https://api.navixy.com/v2/form/download?hash=22eac1c27af4be7b9d04da2ce1af111b&id=132215&format=pdf
+    {{ extra.api_example_url }}/form/download?hash=22eac1c27af4be7b9d04da2ce1af111b&id=132215&format=pdf
 
 #### response
 Regular file download, or JSON with an error.    

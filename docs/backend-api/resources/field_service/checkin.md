@@ -76,7 +76,7 @@ Get check-in which id is equal to `checkin_id`. Required tariff features: `check
 
 #### example
 
-    https://api.navixy.com/v2/checkin/read?hash=22eac1c27af4be7b9d04da2ce1af111b&checkin_id=132215
+    {{ extra.api_example_url }}/checkin/read?hash=22eac1c27af4be7b9d04da2ce1af111b&checkin_id=132215
 
 #### response
 
@@ -106,7 +106,7 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 
 #### example
 
-    https://api.navixy.com/v2/checkin/list?hash=22eac1c27af4be7b9d04da2ce1af111b&trackers=[616384,345623]&from=2020-08-05 03:06:00&to=2020-09-05 03:00:00
+    {{ extra.api_example_url }}/checkin/list?hash=22eac1c27af4be7b9d04da2ce1af111b&trackers=[616384,345623]&from=2020-08-05 03:06:00&to=2020-09-05 03:00:00
 
 #### response
 

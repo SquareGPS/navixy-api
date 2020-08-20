@@ -35,7 +35,7 @@ Gets all departments belonging to user.
 
 #### example
 
-    https://api.navixy.com/v2/department/list?hash=your_hash
+    {{ extra.api_example_url }}/department/list?hash=your_hash
 
 #### response
 
@@ -65,7 +65,7 @@ Creates a new department with specified parameters. Required subuser rights: `em
 
 #### example
 
-    https://api.navixy.com/v2/department/create?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
+    {{ extra.api_example_url }}/department/create?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
 
 #### response
 
@@ -96,7 +96,7 @@ Updates existing department with a new specified parameters. Required subuser ri
 
 #### example
 
-    https://api.navixy.com/v2/department/update?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
+    {{ extra.api_example_url }}/department/update?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
 
 #### response
 
@@ -121,7 +121,7 @@ Deletes department with the specified id. Required subuser rights: `employee_upd
 
 #### example
 
-    https://api.navixy.com/v2/department/delete?hash=22eac1c27af4be7b9d04da2ce1af111b&department_id=65878
+    {{ extra.api_example_url }}/department/delete?hash=22eac1c27af4be7b9d04da2ce1af111b&department_id=65878
 
 #### response
 

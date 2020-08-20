@@ -33,7 +33,7 @@ Default and max limit is 1000 by default. (Note for StandAlone: this value confi
 
 #### example
 
-    https://api.navixy.com/v2/history/tracker/list?hash=user_hash&trackers=[tracker_id]&from=2018-02-19 10:29:00&to=2018-02-19 11:30:00&events=["event_type"]
+    {{ extra.api_example_url }}/history/tracker/list?hash=user_hash&trackers=[tracker_id]&from=2018-02-19 10:29:00&to=2018-02-19 11:30:00&events=["event_type"]
 
 
 

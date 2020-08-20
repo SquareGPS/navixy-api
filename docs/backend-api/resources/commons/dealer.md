@@ -15,7 +15,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
 #### structure:
 
-    https://api.navixy.com/v2/dealer/get_ui_config?domain=your_domain
+    {{ extra.api_example_url }}/dealer/get_ui_config?domain=your_domain
 
 #### parameters
 
@@ -25,7 +25,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
 #### example
 
-    https://api.navixy.com/v2/dealer/get_ui_config?domain=panel.navixy.com
+    {{ extra.api_example_url }}/dealer/get_ui_config?domain=panel.navixy.com
 
 #### response
 

@@ -20,7 +20,7 @@ Creates new bill for the user. Required subuser rights: `payment_create`.
 
 #### example
 
-    https://api.navixy.com/v2/bill/create?hash=22eac1c27af4be7b9d04da2ce1af111b&payer=John Doe&sum=500
+    {{ extra.api_example_url }}/bill/create?hash=22eac1c27af4be7b9d04da2ce1af111b&payer=John Doe&sum=500
 
 #### response
 
@@ -41,7 +41,7 @@ Shows list of bills with their parameters in array. Required subuser rights: pay
 
 #### structure:
 
-    https://api.navixy.com/v2/bill/list?hash=your_hash&limit=number_of_bills&offset=start_from
+    {{ extra.api_example_url }}/bill/list?hash=your_hash&limit=number_of_bills&offset=start_from
 
 #### parameters
 
@@ -53,7 +53,7 @@ Shows list of bills with their parameters in array. Required subuser rights: pay
 
 #### example
 
-    https://api.navixy.com/v2/bill/list?hash=22eac1c27af4be7b9d04da2ce1af111b&limit=9500&offset=0
+    {{ extra.api_example_url }}/bill/list?hash=22eac1c27af4be7b9d04da2ce1af111b&limit=9500&offset=0
 
 #### response
 
