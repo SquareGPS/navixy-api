@@ -20,7 +20,7 @@ Message fields:
 
 *   `type` - "event".
 *   `event` - "state".
-*   `data` - [source state](../resources/tracking/tracker/tracker.md#get_state).
+*   `data` - [source state](../resources/tracking/tracker/index.md#get_state).
 *   `user_time` - current time in user's timezone.
 
 Message sample:

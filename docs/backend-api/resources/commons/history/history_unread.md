@@ -30,7 +30,7 @@ Type of **from** is [date/time](../../../getting-started.md#data-types). Default
 }
 ```
 
-where **history_entry** described in [History entries](./history.md#history-entries)
+where **history_entry** described in [History entries](index.md#history-entries)
 
 #### errors
 

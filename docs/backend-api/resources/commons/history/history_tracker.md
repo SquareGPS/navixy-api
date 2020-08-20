@@ -48,7 +48,7 @@ Default and max limit is 1000 by default. (Note for StandAlone: this value confi
 }
 ```
 
-where `tracker_history_entry` described in [History entries](./history.md#history-entries).
+where `tracker_history_entry` described in [History entries](index.md#history-entries).
 
 #### errors
 
