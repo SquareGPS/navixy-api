@@ -7,7 +7,7 @@ description: Tracker history
 
 API path: `/history/tracker/`.
 
-## list()
+### list
 
 List less then or equal to **limit** of tracker events filtered by event types (**events**) between **from** date/time and **to** date/time sorted by **time** field.
 

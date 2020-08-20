@@ -3,7 +3,7 @@ title: /tracking
 description: /tracking
 ---
 
-## read()
+### read
 Get tracking settings for the specified tracker.
 
 #### parameters
@@ -23,7 +23,7 @@ Returned fields may differ from model to model. See tracking profiles for more i
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   214 – Requested operation or parameters are not supported by the device (if device model has no tracking settings at all)
 
-## update()
+### update
 Send new tracking settings to the specified tracker.
 
 **required subuser rights:** tracker_configure

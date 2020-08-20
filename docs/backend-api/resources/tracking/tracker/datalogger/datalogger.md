@@ -3,7 +3,7 @@ title: /datalogger
 description: /datalogger
 ---
 
-## upload()
+### upload
 Uploads track data for specified tracker. Tracker must be a datalogger.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV file upload (with the name “file”).

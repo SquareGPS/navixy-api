@@ -4,7 +4,7 @@ description: /listing
 ---
 
 # listing/
-## create()
+### create
 Create new empty status listing.
 
 **required subuser rights:** tracker_update
@@ -25,7 +25,7 @@ Create new empty status listing.
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 *   268 (Over quota) – if the user's quota for listings is exceeded
 
-## delete()
+### delete
 
 Delete status listing.
 
@@ -45,7 +45,7 @@ Delete status listing.
 *   201 (Not found in database) – if listing with the specified ID does not exist
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 
-## list()
+### list
 Get status listings belonging to authorized user.
 
 #### return
@@ -59,7 +59,7 @@ Get status listings belonging to authorized user.
 #### errors
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
 
-## update()
+### update
 Update status listing properties.
 
 **required subuser rights:** tracker_update

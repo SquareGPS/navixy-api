@@ -7,7 +7,7 @@ description: Vehicle avatar
 
 API path: `/vehicle/avatar`.
 
-## assign()
+### assign
 
 **required subuser rights**: vehicle_update
 
@@ -29,7 +29,7 @@ Assign icon\_id (from standard icon set) to this vehicle. Icon\_id can be null �
 
 *   201 – Not found in database (when vehicle with **vehicle_id** not found in db)
 
-## upload()
+### upload
 
 Upload avatar image for specified vehicle.
 Then it will be available from `<api_url>/<api.static.uri>/vehicle/avatars/<file_name>`
@@ -37,7 +37,7 @@ e.g. `http://saas.navixy.com/api-v2/static/vehicle/avatars/abcdef123456789.png`.
 
 **required subuser rights**: vehicle_update
 
-**avatar\_file\_name** returned in response and will be returned from [/vehicle/list()](../vehicle.md#list).
+**avatar\_file\_name** returned in response and will be returned from [/vehicle/list](../vehicle.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data),
 with one of the parts being an image file upload (with the name “file”).

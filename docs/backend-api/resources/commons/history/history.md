@@ -57,7 +57,7 @@ API path: `/history`.
 ```
 
 
-## Deprecated event types
+### Deprecated event types
 
 *   **camera\_history\_entry**
 ```js
@@ -93,7 +93,7 @@ API path: `/history`.
 Date/time type described in [data types description section](../../../getting-started.md#data-types).
 
 
-## read()
+### read
 
 Returns history entry with the specified id.
 
@@ -119,7 +119,7 @@ where `_history_entry` described in [History entries](#history-entries).
 
 
 
-## mark_read()
+### mark_read
 
 Mark history entry as read by **id** (see: [History entries](#history-entries)).
 
@@ -140,7 +140,7 @@ Mark history entry as read by **id** (see: [History entries](#history-entries)).
 
 
 
-## mark_read_all()
+### mark_read_all
 
 Mark all user’s history entries read.
 

@@ -7,7 +7,7 @@ description: Payment system
 
 API path: `/payment_system`.
 
-## list()
+### list
 Return list of payment systems available for user.
 
 **required subuser rights:** payment_create
@@ -43,7 +43,7 @@ where **payment_system_settings** is:
 #### errors
 * 201 – Not found in database.
 
-## estimate/get()
+### estimate/get
 Returns the estimate of the monthly payment amount
 
 **required subuser rights:** payment_create
@@ -56,7 +56,7 @@ Returns the estimate of the monthly payment amount
 }
 ```
 
-## mobile/pay()
+### mobile/pay
 Create bill using ‘mobile’ payment system (AKA Qiwi Bank)
 
 **required subuser rights:** payment_create

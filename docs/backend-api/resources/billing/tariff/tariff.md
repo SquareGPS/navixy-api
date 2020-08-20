@@ -36,7 +36,7 @@ API path: `/tariff`.
 
 
 
-## list()
+### list
 
 Get list of device’s tariffs available to user.<br>
 If user’s dealer if **default dealer** or **paas** then listed tariffs of that dealer<br>

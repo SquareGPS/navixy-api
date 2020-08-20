@@ -7,7 +7,7 @@ description: Tracking route
 
 API path: `/tracking/route`.
 
-## get()
+### get
 Get route points via specified route provider.
 
 #### parameters

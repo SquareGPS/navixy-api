@@ -10,7 +10,7 @@ API path: `/user/settings/ui`
 The user interface settings are intended for storing settings of client applications that use the API. 
 One can imagine that this works similarly to the browser cache / local storage mechanism. The feature is that long-term storage of these settings is provided but not guaranteed - when the quota is exceeded, data could be deleted. 
 
-## read()
+### read
 
 Read setting value by key.
 
@@ -45,7 +45,7 @@ When nonexistent key is provided:
 Standard errors
 
 
-## update()
+### update
 
 Set setting value. 
 

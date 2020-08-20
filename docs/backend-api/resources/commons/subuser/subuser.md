@@ -45,12 +45,12 @@ Sub-user object is almost identical to usual user.
       "legal_name": "E. Biasi GmbH",    // user legal name (for "legal_entity" only)
       "iec": ${string},                 // Industrial Enterprises Classifier aka "KPP" (used in Russia. for "legal_entity" only)
       "security_group_id": 333,         // Id of the security group to whic sub-user belongs to. Can be null, which means default group with no privileges
-      //this fields are read-only, they should not be used in user/update()
+      //this fields are read-only, they should not be used in user/update
       "creation_date": "2016-05-20 00:00:00" // date/time when user was created
     }
 ```
 
-## delete()
+### delete
 
 Delete sub-user. This operation cannot be reversed.
 
@@ -73,7 +73,7 @@ Delete sub-user. This operation cannot be reversed.
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 *   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user.
 
-## list()
+### list
 
 List all subusers belonging to current user.
 
@@ -100,7 +100,7 @@ Subuser object is described [here](#sub-user-object-structure).
 *   13 – Operation not permitted – if user has insufficient rights
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 
-## register()
+### register
 
 Allows you to create sub-users associated to your master account.
 
@@ -129,7 +129,7 @@ Subuser object is described [here](#sub-user-object-structure).
 *   201 – Not found in database – when specified security_group_id does not exist
 *   206 – login already in use (if this login email already registered)
 
-## update()
+### update
 
 Update subuser data.
 

@@ -18,7 +18,7 @@ API path: `/vehicle/status/listing`.
 }
 ```
 
-## read()
+### read
 
 Gets all of user's vehicle statuses.
 
@@ -31,7 +31,7 @@ Gets all of user's vehicle statuses.
 }
 ```
 
-## update()
+### update
 
 Update user's vehicle statuses.
 

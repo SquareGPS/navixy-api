@@ -5,7 +5,7 @@ description: Tracker information
 
 Tracker is one of the key entities in our API. It represents tracking device registered in our GPS monitoring system. Lots of API calls are created for manipulation of tracker and/or its properties.
 
-## Tracker object structure
+### Tracker object structure
 
 ```js
 {
@@ -25,7 +25,7 @@ Tracker is one of the key entities in our API. It represents tracking device reg
         "tariff_end_date": "2016-03-24", // date of next tariff prolongation or null
         "phone" : {string} // phone of the device. can be null or empty if device has no GSM module or uses bundled SIM which number is hidden from the user
     }
-    "tag_bindings": [{tag_binding}, ...} // list of attached tags. appears only for “tracker/list()“. 
+    "tag_bindings": [{tag_binding}, ...} // list of attached tags. appears only for “tracker/list“. 
 }
 ```
 
@@ -38,7 +38,7 @@ where **tag_binding** is:
 }
 ```
 
-## change_phone()
+### change_phone
 
 Changes tracker’s phone and setup new apn.
 
@@ -79,7 +79,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/change_phone' \
 * 223 – Phone number already in use (if specified phone number already used in another device)
 * 241 – Cannot change phone to bundled sim. Contact tech support. (if specified phone number belongs tp sim card bundled with the device)
 
-## corrupt()
+### corrupt
 
 Marks tracker as deleted and corrupt its source, device_id and phone.
 
@@ -116,7 +116,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/corrupt' \
 * 252 – Device already corrupted
 * 208 – Device blocked
 
-## delete()
+### delete
 
 Deletes tracker if it is “clone”. Will not work if specified id of the original tracker.
 
@@ -172,7 +172,7 @@ or
 }
 ```
 
-## get_diagnostics()
+### get_diagnostics
 
 Gets last sensors and states values received from the device.
 
@@ -294,7 +294,7 @@ List of state names for field **states**:
 * **can_door_driver_state** (value type: boolean, ‘true’ means ‘open’),
 * **can_door_passenger_state** (value type: boolean, ‘true’ means ‘open’).
 
-## get_fuel()
+### get_fuel
 
 Gets current fuel level (in liters) of tracker’s fuel tanks.
 
@@ -328,7 +328,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_fuel' \
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
-## get_inputs()
+### get_inputs
 
 Gets current state of tracker’s digital inputs and “semantic” inputs (ignition, buttons, car alarms, etc.) bound to them (if any).
 
@@ -383,7 +383,7 @@ List of **input types**:
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
-## get_last_gps_point()
+### get_last_gps_point
 
 Gets last point of the tracker located by GPS. Points located by GSM LBS are excluded from consideration.
 
@@ -415,7 +415,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_last_gps_point' \
 * 201 (Not found in database) – if there is no tracker with such id belonging to authorized user
 * 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 
-## get_readings()
+### get_readings
 
 Gets last sensor values for sensors that are:
 
@@ -443,7 +443,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_readings' \
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone
-    "inputs": {list of last sensor values} //list of last sensor values {name:"analog_1", type:"fuel", value:123, ...} (see tracker/get_diagnostics())
+    "inputs": {list of last sensor values} //list of last sensor values {name:"analog_1", type:"fuel", value:123, ...} (see tracker/get_diagnostics)
 }
 ```
 
@@ -452,7 +452,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_readings' \
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
-## get_state()
+### get_state
 
 Gets current tracker state (gps, gsm, outputs, etc.).
 
@@ -519,7 +519,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_state' \
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 
-## get_states()
+### get_states
 
 Gets current states (gps, gsm, outputs, etc.) for several trackers.
 
@@ -560,7 +560,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
 * 208 – Device blocked (if list_blocked = false and tracker exists but was blocked due to tariff restrictions or some other reason)
 * 217 – List contains nonexistent entities (if allow_not_exist = false and there are nonexistent trackers belonging to an authorized user)
 
-## list_models()
+### list_models
 
 Gets all integrated tracker models (from “models" table).
 
@@ -654,7 +654,7 @@ where **additional_fields** is:
 
 #### Id type:
 
-Id type is used to determine the information needed to register device in our system (see [tracker/register()](#register)).
+Id type is used to determine the information needed to register device in our system (see [tracker/register](#register)).
 
 Possible values are:
 
@@ -723,7 +723,7 @@ general types only
 }
 ```
 
-## list()
+### list
 
 Gets user’s trackers with optional filtering by labels.
 
@@ -764,7 +764,7 @@ See tracker object structure description [here](#tracker-object-structure).
 
 general types only
 
-## tags/set()
+### tags/set
 
 Sets tags for tracker. Tags must be created.
 
@@ -795,7 +795,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/tags/set' \
 
 general types only
 
-## location_request()
+### location_request
 
 Execute this command to get current position of the device. The device must support requesting function. 
 
@@ -833,7 +833,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/location_request' \
 * 214 – Requested operation or parameters are not supported by the device
 * 256 – Location already actual
 
-## register_quick()
+### register_quick
 
 Registers a new tracker using only IMEI. Automatic SMS commands will not be sent for register. The device must be preconfigured.
 
@@ -844,7 +844,7 @@ Registers a new tracker using only IMEI. Automatic SMS commands will not be sent
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | label | User-defined label for this tracker. Must consist of prontable characters and have length between 1 and 60 | string | Courier |
-| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list()](./group/group.md#list) | int | 0 |
+| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](./group/group.md#list) | int | 0 |
 | imei | tracker's IMEI | string | 35645587458999 |
 
 #### example
@@ -880,7 +880,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 226 – Wrong ICCID (if specified ICCID was not found)
 * 227 – Wrong activation code (if specified activation code was not found or is already activated)
 
-## register_retry()
+### register_retry
 
 Resends registration commands to the device. The panel must have installed SMS gateway.
 
@@ -923,7 +923,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 214 – Requested operation or parameters are not supported by the device (if device does not have GSM module)
 * 242 – Device already connected. (if tracker was connected to the server)
 
-## register()
+### register
 
 Registers a new tracker device. During registration, device is linked with current API user’s account and automatically configured to send data to our servers (if device model supports it). The panel must have installed SMS gateway.
 
@@ -941,10 +941,10 @@ Common parameters are:
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | label | User-defined label for this tracker. Must consist of printable characters and have length between 1 and 60 | string | Courier |
-| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list()](./group/group.md#list) | int | 0 |
-| model | A code of one of the supported models. See [tracker/list_models()](#list_models) | string | pt10 |
+| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](./group/group.md#list) | int | 0 |
+| model | A code of one of the supported models. See [tracker/list_models](#list_models) | string | pt10 |
 | plugin_id | An id of a registration plugin which will be used to register the device. See [Registration plugins](../../commons/plugin/plugin.md) | int | 37 |
-| device_id | **Must** be specified if device model uses fixed device id. See [tracker/list_models()](#list_models) | string | 4568005588562 |
+| device_id | **Must** be specified if device model uses fixed device id. See [tracker/list_models](#list_models) | string | 4568005588562 |
 | send_register_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals  `null` will be used the platform settings. Default: `null` | boolean | true/false |
 
 #### example
@@ -957,7 +957,7 @@ Also we include **phone**, **apn_name**, **apn_user**, **apn_password** of the s
 device and **activation_code** since this parameters are required by plugin.
 
 You can try to “auto-detect” APN settings by phone number 
-using [apn_settings/read()](./apn_settings/apn_settings.md#read) API call.
+using [apn_settings/read](./apn_settings/apn_settings.md#read) API call.
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
@@ -978,7 +978,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 #### errors
 
 * 13 – Operation not permitted – if user has insufficient rights
-* 204 – Entity not found (if specified group does not exist. See group/list() )
+* 204 – Entity not found (if specified group does not exist. See group/list )
 * 220 – Unknown device model (if specified device model does not exist)
 * 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
 * 222 – Plugin not found (if specified plugin is not found or is not supported by device model)
@@ -989,7 +989,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 227 – Wrong activation code (Plugin specific: if specified activation code was not found or is already activated)
 * 258 – Bundle not found (Plugin specific: if bundle not found for specified device ID)
 
-## send_command()
+### send_command
 
 Sends command to tracker for performing special control, determined with "special_control" field of tracker model.
 
@@ -1037,7 +1037,7 @@ command {
 
 **set_special_settings_command**
 
-This command is equivalent to API call [tracker/settings/special/update()](./settings/special/special.md#update).
+This command is equivalent to API call [tracker/settings/special/update](./settings/special/special.md#update).
 
 ```json
 command {

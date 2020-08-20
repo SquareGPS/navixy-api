@@ -33,7 +33,7 @@ API path: `/driver/journal/entry`.
 }
 ```
 
-## list()
+### list
 
 Get driver journal entries. 
 There are two ways to get entries: by their ids or by specifying date range.
@@ -66,7 +66,7 @@ If there no `entry_ids` in request, entries are selected by intersecting their d
 }
 ```
 
-## create()
+### create
 
 Create driver journal entries.
 
@@ -80,7 +80,7 @@ Create driver journal entries.
 { "success": true }
 ```
 
-## update()
+### update
 
 Update driver journal entry. Only two fields (**type** and **comment**) are available for update.
 
@@ -105,7 +105,7 @@ Update driver journal entry. Only two fields (**type** and **comment**) are avai
 }
 ```
 
-## delete()
+### delete
 
 Delete driver journal entries.
 
@@ -119,14 +119,14 @@ Delete driver journal entries.
 { "success": true }
 ```
 
-## download()
+### download
 
 Get driver journal entries. Entries are selected by intersecting their date range with date range from request (**from** and **to** parameters).
 
 
 #### parameters
 
-same as in list() method plus:
+same as in list method plus:
 
 *   **add_filename_header** – **boolean**. Default value is true. If true then Content-Disposition header will be appended to the response.
 *   **format** – **string**. File format: ‘pdf’, ‘xls’ and ‘xlsx’

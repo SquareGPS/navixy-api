@@ -3,7 +3,7 @@ title: /avatar
 description: /avatar
 ---
 
-## upload()
+### upload
 Upload avatar image for specified tracker.
 Then it will be available from `<api_url>/<api.static.uri>/tracker/avatars/<file_name>`
 e.g. `http://saas.navixy.com/api-v2/static/tracker/avatars/abcdef123456789.png`.

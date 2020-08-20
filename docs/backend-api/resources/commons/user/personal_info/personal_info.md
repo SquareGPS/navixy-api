@@ -7,7 +7,7 @@ description: User personal info
 
 API path: `/user/personal_info`.
 
-## update()
+### update
 
 Update user personal info.
 

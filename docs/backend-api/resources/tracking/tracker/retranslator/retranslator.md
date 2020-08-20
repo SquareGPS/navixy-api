@@ -3,7 +3,7 @@ title: /retranslator
 description: /retranslator
 ---
 
-## retranslator
+### retranslator
 
 **tracker_retranslator_binding** is:
 ```js
@@ -13,7 +13,7 @@ description: /retranslator
 }
 ```
 
-## bind()
+### bind
 Create or update binding.
 
 **required subuser rights:** admin (available only to master users)
@@ -34,7 +34,7 @@ Create or update binding.
 *   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “retranslation” tariff feature available
 *   242 (There were errors during content validation) – if **fake_device_id** is invalid for the protocol
 
-## list()
+### list
 List tracker retranslators binded to tracker with ID=**tracker_id**.
 
 #### parameters
@@ -51,7 +51,7 @@ List tracker retranslators binded to tracker with ID=**tracker_id**.
 #### errors
 *   208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason
 
-## unbind()
+### unbind
 Unbind tracker from retranslator.
 
 **required subuser rights:** admin (available only to master users)

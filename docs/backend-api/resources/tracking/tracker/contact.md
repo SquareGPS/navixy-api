@@ -3,7 +3,7 @@ title: Contact
 description: Contact
 ---
 
-## list()
+### list
 
 Gets all user’s trackers with special grouping by “contacts”.
 

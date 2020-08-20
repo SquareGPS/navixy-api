@@ -29,7 +29,7 @@ User’s **effective dealer** is
 *   219 – Not allowed for clones of the device
 *   237 – Invalid tariff (if there are no tariff with tracker.tariff_id and belongs to user’s **effective dealer**)
 
-## change()
+### change
 
 Change tariff of tracker (with **tracker_id**) to new tariff (with **tariff_id**).
 
@@ -49,7 +49,7 @@ Change tariff of tracker (with **tracker_id**) to new tariff (with **tariff_id**
 *   240 (Not allowed to change tariff too frequently) – tariff last changed less or equal to 30 days (**tariff.freeze.period** config option).
 
 
-## list()
+### list
 
 List tariffs on which user can switch passed tracker (even when tariff last changed less or equal than **tariff.freeze.period** time ago).
 

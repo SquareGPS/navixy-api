@@ -3,7 +3,7 @@ title: /readings
 description: /readings
 ---
 
-## list()
+### list
 Get last values for all metering sensors and state values
 
 #### parameters

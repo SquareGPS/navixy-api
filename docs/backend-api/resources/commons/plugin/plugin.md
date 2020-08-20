@@ -40,7 +40,7 @@ Plugins are special software modules which modify the behavior of various API ca
 }
 ```
 
-## list()
+### list
 
 Get all plugins available to the user. List of available plugins may vary from user to user depending on platform settings and purchased features. Only these plugins can be used to register trackers, generate reports, etc.
 

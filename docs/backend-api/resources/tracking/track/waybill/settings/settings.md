@@ -3,7 +3,7 @@ title: /settings
 description: /settings
 ---
 
-## read()
+### read
 Get last waybill number. Waybill number is saved when new waybill had downloaded. If it had only digits, then it was incremented before saving.
 
 #### return

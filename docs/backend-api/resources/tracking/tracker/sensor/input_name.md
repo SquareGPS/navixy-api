@@ -3,7 +3,7 @@ title: /input_name
 description: /input_name
 ---
 
-## list()
+### list
 Returns descriptions of all sensor inputs existing in the system. 
 
 #### parameters

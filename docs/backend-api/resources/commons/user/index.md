@@ -15,7 +15,7 @@ User specific actions:
 * [/user/get_tariff_restrictions](#get_tariff_restrictions)
 * [/user/resend_activation](#resend_activation)
 
-## activate()
+### activate
 
 Activates previously registered user with the provided session hash 
 (it is contained in activation link from email sent to user).
@@ -32,7 +32,7 @@ Available only to master users.
 { "success": true }
 ```
 
-## auth()
+### auth
 
 Try to authenticate user.
 
@@ -73,7 +73,7 @@ $ curl -X POST '{{ extra.api_example_url }}/user/auth' \
 *   105 – Login attempts limit exceeded, try again later
 
 
-## get_info()
+### get_info
 
 Gets user information and some settings.
 
@@ -158,12 +158,12 @@ Get basic user info.
 
 where
 
-* `paas_settings` same as `settings` in [/dealer/get_ui_config() response](../dealer.md#get_ui_config),
-* `tariff_restrictions` is JSON object same as in [/user/get_tariff_restrictions()](#get_tariff_restrictions) response,
+* `paas_settings` same as `settings` in [/dealer/get_ui_config response](../dealer.md#get_ui_config),
+* `tariff_restrictions` is JSON object same as in [/user/get_tariff_restrictions](#get_tariff_restrictions) response,
 * `features` is a set of allowed [Dealer features](../dealer.md#dealer-features).
 
 
-## get_tariff_restrictions()
+### get_tariff_restrictions
 
 Gets user tariff restrictions.
 
@@ -196,7 +196,7 @@ where `tariff_restrictions` is JSON object:
 }
 ```
 
-## logout()
+### logout
 
 Destroys current user session.
 
@@ -219,7 +219,7 @@ $ curl -X POST '{{ extra.api_example_url }}/user/logout' \
 ```
 
 
-## resend_activation()
+### resend_activation
 
 Send new activation link to user.
 

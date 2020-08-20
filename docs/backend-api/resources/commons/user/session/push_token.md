@@ -7,7 +7,7 @@ description: Push token
 
 API path: `/user/session/push_token`.
 
-## bind()
+### bind
 
 Binds Push token with current session.
 
@@ -42,7 +42,7 @@ Prepended with minus and delimited with comma list means that all categories are
 * `history_work_status` – work status notifications
 
 
-## delete
+### delete
 
 
 Deletes push token that bound with the session.

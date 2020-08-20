@@ -3,7 +3,7 @@ title: /rule
 description: /rule
 ---
 
-## rule
+### rule
 A rule element consists of following fields:
 
 ```js
@@ -216,7 +216,7 @@ where
 * **date/time** and **local_time** types are described at 
   the [data types description section](../../../../getting-started.md#data-types).
 
-## bind()
+### bind
 Bind rule with **rule_id** to trackers list.
 
 **required subuser rights:** tracker_rule_update
@@ -234,7 +234,7 @@ Bind rule with **rule_id** to trackers list.
 #### errors
 *   201 (Not found in database) – if rule with **rule_id** does not exist or owned by other user
 
-## create()
+### create
 Create rule and scheduled intervals.
 
 **required subuser rights:** tracker_rule_update
@@ -253,7 +253,7 @@ Create rule and scheduled intervals.
 #### errors
 *   204 (Entity not found) – when associated zone is not exists
 
-## delete()
+### delete
 Delete rule with rule_id and all related objects from the database.
 
 **required subuser rights:** tracker_rule_update
@@ -270,7 +270,7 @@ Delete rule with rule_id and all related objects from the database.
 #### errors
 *   201 (Not found in database) – if rule with **rule_id** does not exist or owned by other user
 
-## list()
+### list
 List tracker rules binded to tracker with id=**tracker_id** or all user’s tracker rules if **tracker_id** not passed.
 
 #### return
@@ -282,7 +282,7 @@ List tracker rules binded to tracker with id=**tracker_id** or all user’s trac
 }
 ```
 
-## unbind()
+### unbind
 Unbind trackers from rule with **rule_id**.
 
 **required subuser rights:** tracker_rule_update
@@ -300,7 +300,7 @@ Unbind trackers from rule with **rule_id**.
 #### errors
 *   201 (Not found in database) – if rule with **rule_id** does not exist or owned by other user
 
-## update()
+### update
 Update rule and scheduled intervals.
 
 **required subuser rights:** tracker_rule_update

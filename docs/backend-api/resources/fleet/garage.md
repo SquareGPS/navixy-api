@@ -21,7 +21,7 @@ API path: `/garage`.
             "organization_name": "Bankia"
         }
 
-## list()
+### list
 
 Get all garages belonging to user.
 
@@ -41,7 +41,7 @@ general types only
 
 
 
-## create()
+### create
 
 Create new garage.
 
@@ -66,7 +66,7 @@ general types only
 
 
 
-## update()
+### update
 
 Update existing garage.
 
@@ -88,7 +88,7 @@ Update existing garage.
 *   201 – Not found in database (if there is no garage with such id)
 
 
-## delete()
+### delete
 Delete garage with the specified id.
 
 **required subuser rights**: vehicle_update

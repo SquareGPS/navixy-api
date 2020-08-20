@@ -16,7 +16,7 @@ Task **status** may be one of:
 *   **expired** – one of conditions exceeded.
 *   **done** – user [set](#set_status) task as “done”.
 
-## batch_create()
+### batch_create
 
 Create multiple service tasks.
 
@@ -50,7 +50,7 @@ Create multiple service tasks.
 ```
 
 
-## create()
+### create
 
 Create new vehicle service task. For vehicles with associated tracker only.
 
@@ -106,7 +106,7 @@ Create new vehicle service task. For vehicles with associated tracker only.
 *   214 (Requested operation or parameters are not supported by the device) – engine hours condition passed but tracker hasn’t ignition sensor
 
 
-## delete()
+### delete
 
 Delete vehicle service task.
 
@@ -123,7 +123,7 @@ Either **task_id** or **task_ids** should be specified
 ```
 
 
-## download()
+### download
 
 Create pdf report of service tasks
 
@@ -144,7 +144,7 @@ Create pdf report of service tasks
 Report file.
 
 
-## list()
+### list
 
 List all service tasks of all user vehicles.
 
@@ -214,7 +214,7 @@ About task **status** property see above.
 *   201 (Not found in database) – vehicle or tracker not found
 
 
-## read()
+### read
 
 Get service task info by it’s id.
 
@@ -290,7 +290,7 @@ About task **status** property see above.
 *   201 (Not found in database) – does not exists one of tracker’s counters which required to determine status
 *   204 (Entity not found) – when vehicle or service task not found
 
-## set_status()
+### set_status
 
 Update task status. And save (on **done** **status**) current date and values of used (in condition) counters for “freeze” wearing percent.
 
@@ -310,7 +310,7 @@ Update task status. And save (on **done** **status**) current date and values of
 *   201 (Not found in database) – does not exists one of tracker’s counters which required to determine status
 *   204 (Entity not found) – when vehicle or service task not found
 
-## update()
+### update
 
 Update information fields and notification settings of vehicle service task.
 
@@ -352,7 +352,7 @@ Update information fields and notification settings of vehicle service task.
 }
 ```
 
-See [create()](#create).
+See [create](#create).
 
 #### return
 

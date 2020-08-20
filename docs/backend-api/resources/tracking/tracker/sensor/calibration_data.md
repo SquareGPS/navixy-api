@@ -3,7 +3,7 @@ title: /calibration_data
 description: /calibration_data
 ---
 
-## read()
+### read
 Get calibration data for sensor.
 
 #### parameters
@@ -22,7 +22,7 @@ Get calibration data for sensor.
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   228 – Not supported by the sensor (if sensor doesn’t support calibration)
 
-## update()
+### update
 Replaces the calibration data for sensor.
 
 **required subuser rights:** tracker_update
@@ -43,7 +43,7 @@ Replaces the calibration data for sensor.
 *   228 – Not supported by the sensor (if sensor doesn’t support calibration)
 *   219 – Not allowed for clones of the device (if tracker is clone)
 
-## upload_omnicomm()
+### upload_omnicomm
 Replaces the calibration data for sensor from Omnicomm LLSmonitor’s XML configuration file.
 If XML file contains information about multiple sensors, user must specify which sensor number to use.
 

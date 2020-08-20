@@ -9,7 +9,7 @@ API path: `/subuser/security_group/`.
 
 Contains API calls related to security groups, that is, groups of sub-users with the specified set of rights and privileges.
 
-## Security group object structure
+### Security group object structure
 
 ```js
 ${security_group} = {
@@ -24,15 +24,15 @@ ${security_group} = {
     }
 ```
 
-## Default security group
+### Default security group
 
 Default (or empty) security group is the group which is effective when sub-users’ “security_group_id” is null. It has empty “rights” array.
 
-## Master user’s rights
+### Master user’s rights
 
 Master user always has all rights, including exclusive “admin” right.
 
-## Security group rights
+### Security group rights
 
 Absolute majority of read operations does not require any rights (that is, they are available to all sub-users, even with “null” security group). However, some entities may be hidden because they are associated with the trackers unavailable to sub-user.
 Most f data-modifying operations, on the contrary, require some rights to be present.
@@ -55,7 +55,7 @@ Possible rights are:
 *   form_template_update,
 *   reports;
 
-## create()
+### create
 
 Create new security group.
 
@@ -80,7 +80,7 @@ Create new security group.
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 
 
-## delete()
+### delete
 
 Delete existing security group.
 All sub-users belonging to this group will be assigned to default (null) security group.
@@ -104,7 +104,7 @@ All sub-users belonging to this group will be assigned to default (null) securit
 *   201 – Not found in database – when group with the specified security_group_id does not exist
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 
-## list()
+### list
 
 List all security groups belonging to current user.
 
@@ -129,7 +129,7 @@ Security group object is described [here](#security-group-object-structure).
 *   13 – Operation not permitted – if user has insufficient rights
 *   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
 
-## update()
+### update
 
 Update existing security group.
 

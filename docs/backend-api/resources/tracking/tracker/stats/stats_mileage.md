@@ -5,7 +5,7 @@ description: /stats/mileage
 
 # /tracker/stats/mileage
 
-## read()
+### read
 Returns mileage in kilometers in specified period grouped by tracker and day.
 
 #### parameters

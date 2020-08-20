@@ -7,7 +7,7 @@ description: History unread
 
 API path: `/history/unread`.
 
-## list()
+### list
 
 List less then or equal to **limit** of latest user’s unread history entries with optional **type** (tracker|camera|socket).
 
@@ -37,7 +37,7 @@ where **history_entry** described in [History entries](./history.md#history-entr
 *   212 – Requested limit is too big (more [maxHistoryLimit](../../../getting-started.md#constants) config option)
 
 
-## count()
+### count
 
 Get count of user’s unread history messages from **from** date with optional **type** (tracker|camera|socket).
 
