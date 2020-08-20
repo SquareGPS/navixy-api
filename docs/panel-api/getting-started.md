@@ -51,7 +51,7 @@ For example, in on-premise installations, there is a default user with login
     ```
 
 === "GET"
-    GET method is not recommended. Just for example:
+    This method is not recommended. Just for example:
     ```abap
     $ curl http://api.domain.com/panel/account/auth/?login=admin&password=admin
     ```

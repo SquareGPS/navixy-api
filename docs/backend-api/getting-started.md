@@ -213,9 +213,9 @@ Session hash can be obtained via `user/auth` API call:
 
 === "GET"
     This method is not recommended. Just for example:
-
+    ```abap
     [api_base_url]/user/auth?login=demo&password=demo
-
+    ```
 ### Data types
 
 *   `bool`, boolean - logical type: `true` of `false`. 
