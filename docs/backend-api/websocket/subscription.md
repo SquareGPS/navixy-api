@@ -13,7 +13,7 @@ messages between client and server.
 Request parameters:
 
 * __action__ (text: _"subscribe"_).
-* __hash__ (required, string, length=32): session hash code gotten by [user/auth](../resources/commons/user/user.md#auth) action.
+* __hash__ (required, string, length=32): session hash code gotten by [user/auth](../resources/commons/user/index.md#auth) action.
 * __trackers__ (required, int[], without nulls) - list of tracker ids for the events that require a subscription.
 * __events__ (required, enum[], without nulls) - list of events to subscribe. Event can be one of: `state`.
 
@@ -83,7 +83,7 @@ send a new state in [event message](./events.md#state-event).
 Request parameters:
 
 * __action__ (text: _"unsubscribe"_).
-* __hash__ (required, string, length=32): session hash code gotten by [user/auth](../resources/commons/user/user.md#auth) action.
+* __hash__ (required, string, length=32): session hash code gotten by [user/auth](../resources/commons/user/index.md#auth) action.
 * __trackers__ (required, int[], without nulls) - list of tracker ids for the events that require an unsubscription.
 * __events__ (required, enum[], without nulls) - list of events to unsubscribe. Event can be one of: `state`.
 
