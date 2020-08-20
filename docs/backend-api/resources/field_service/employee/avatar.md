@@ -3,14 +3,16 @@ title: Changing avatar
 description: Changing avatar
 ---
 
+# Changing avatar
+
 Avatars are not changed through `/employee/update`, you must use either `assign` (to set avatar to one of preset icons),
 or `upload` (to upload your own image). 
 
-# API actions
+## API actions
 
 API base path: `/employee/avatar`.
 
-## assign
+### assign
 
 Assign `icon_id` (from standard icon set) to this employee. 
 The `icon_id` can be `null` – this means that uploaded avatar should be used instead of icon.
@@ -22,7 +24,7 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 *   `employee_id`
 *   `icon_id`
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -34,7 +36,7 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 *   201 – Not found in database (when employee with **employee_id** not found in db)
 
 
-## upload
+### upload
 
 Upload avatar image for specified employee.
 Then it will be available from /employee/avatars/
@@ -42,7 +44,7 @@ e.g. `http://saas.navixy.com/api-v2/static/employee/avatars/abcdef123456789.png`
 
 **required subuser rights**: employee_update
 
-**avatar\_file\_name** returned in response and will be returned from [/employee/list](base.md#list).
+**avatar\_file\_name** returned in response and will be returned from [/employee/list](index.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data),
 with one of the parts being an image file upload (with the name `file`).
@@ -60,7 +62,7 @@ File part **mime** type must be one of:
 *   **redirect_target** – (optional) URL to redirect
     If **redirect_target** passed return redirect to `?response=`
 
-#### return
+#### response
 
 ```js
 {

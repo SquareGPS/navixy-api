@@ -1,16 +1,23 @@
 ---
-title: Task schedule
-description: Task schedule
+title: Scheduling tasks
+description: Scheduling tasks
 ---
 
-# Task schedule
+# Scheduling tasks
 
-API path: `task/schedule`.
+Some tasks happen on regular basis, and it's tedious to create them by hand every time. Task schedules is the way to automate
+this process. At the beginning of each day (moments after 00:00 AM according to [user's timezone setting](../../../commons/user/settings/index.md)),
+schedule is checked and if there are tasks which start at this day, they are created and assigned to employees (if assignee is specified).
+
+Schedule entries are very similar to tasks, main difference is that `from` and `to` containing specific date and time are
+replaced with `from_time`, `duration` and `parameters`.
+
+## Data structures
 
 ```js
 <task_schedule_entry> = {
-    "id": 111,   //primary key. used in update(), *IGNORED* in create()
-    "user_id": 3,   //user id. *IGNORED* in create()/update()
+    "id": 111,   //primary key. used in update, *IGNORED* in create
+    "user_id": 3,   //user id. *IGNORED* in create/update
     "tracker_id": 22, //id of the tracker to which all generated tasks are assigned. nullable.
     "location": {   //location associated with this task. cannot be null
         "lat": 56.5,
@@ -25,23 +32,23 @@ API path: `task/schedule`.
     "max_delay" : 5, //maximum allowed task completion delay in minutes
     "min_stay_duration": 0, //minumum duration of stay in task zone for task completion, minutes
     "min_arrival_duration": 0, // visits less than this values will be ignored, minutes
-    "parameters": <schedule_aparmeters>, // can be "weekdays" or "month_days"
+    "parameters": <schedule_parameters>, // can be "weekdays" or "month_days"
     "tags": [1, 2], //array of tag ids
     "form_template_id": 1 //int, form template id, nullable
 }
 
 <route_schedule_entry> = {
-    "id": 111,   //primary key. used in update(), *IGNORED* in create()
-    "user_id": 3,   //user id. *IGNORED* in create()/update()
+    "id": 111,   //primary key. used in update, *IGNORED* in create
+    "user_id": 3,   //user id. *IGNORED* in create/update
     "tracker_id": 22, //id of the tracker to which all generated tasks are assigned. nullable.
     "label": "Shop",
     "description": "Buy things",
-    "parameters": <schedule_aparmeters>, // can be "weekdays" or "month_days"
+    "parameters": <schedule_parameters>, // can be "weekdays" or "month_days"
 }
 
 <checkpoint_schedule_entry> = {
-    "id": 111,   //primary key. used in update(), *IGNORED* in create()
-    "user_id": 3,   //user id. *IGNORED* in create()/update()
+    "id": 111,   //primary key. used in update, *IGNORED* in create
+    "user_id": 3,   //user id. *IGNORED* in create/update
     "tracker_id": 22, //id of the tracker to which all generated tasks are assigned. nullable.
     "label": "Shop",
     "description": "Buy things",
@@ -61,7 +68,10 @@ API path: `task/schedule`.
     "tags": [1, 2], //array of tag ids,
     "form_template_id": 1 //int, form template id, nullable
 }
+```
 
+`<schedule_parameters>` can be one of the following:
+```js
 <weekdays> = { //task creation based on week day
     "type": "weekdays",
     "weekdays": [1, 5, 6] //week days on which tasks will be created (1 = Monday, ... 7 = Sunday)
@@ -71,10 +81,13 @@ API path: `task/schedule`.
     "type": "month_days",
     "month_days": [1, 10, 31] //days of month on which tasks will be created (1..31)
 }
-```
+```                            
 
+## API actions
 
-## create()
+API base path: `task/schedule`.
+
+### create
 
 Create new task schedule entry.
 
@@ -84,7 +97,7 @@ Create new task schedule entry.
 
 * **schedule** - (JSON object) <schedule_entry> object without fields which are *IGNORED*
 
-#### return
+#### response
 
 ```js
 {
@@ -102,7 +115,7 @@ Create new task schedule entry.
 
 
 
-## delete()
+### delete
 
 Delete task schedule with the specified id.
 
@@ -112,7 +125,7 @@ Delete task schedule with the specified id.
 
 * **schedule_id** - (int) Id of the task schedule to delete
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -124,7 +137,7 @@ Delete task schedule with the specified id.
 
 
 
-## list()
+### list
 
 Get all task or route schedules belonging to user with optional filtering.<br>
 Also this call returns all unassigned task schedules.
@@ -134,7 +147,7 @@ Also this call returns all unassigned task schedules.
 * **trackers** - (array of Integer) Optional. Ids of the trackers to which task schedule is assigned
 * **filter** - (String) Optional. Filter for task schedule label and description
 
-#### return
+#### response
 
 ```js
 {
@@ -147,7 +160,7 @@ Also this call returns all unassigned task schedules.
 
 general types only
 
-## read()
+### read
 
 Get task, route or checkpoint schedule by id
 
@@ -155,7 +168,7 @@ Get task, route or checkpoint schedule by id
 
 * **id** - **int**. . Id of task, route or checkpoint schedule
 
-#### return
+#### response
 
 ```js
 {
@@ -169,7 +182,7 @@ Get task, route or checkpoint schedule by id
 
 general types only
 
-## update()
+### update
 
 Update existing task schedule.
 
@@ -179,7 +192,7 @@ Update existing task schedule.
 
 * **schedule** - (JSON object) <schedule> object without fields which are *IGNORED*
 
-#### return
+#### response
 
 ```js
 {

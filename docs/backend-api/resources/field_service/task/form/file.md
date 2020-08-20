@@ -3,18 +3,20 @@ title: Attaching files
 description: Attaching files
 ---
 
+# Attaching files
+
 When submitting form values of type [file](../../form/field-types.md#file), [photo](../../form/field-types.md#photo) or
 [signature](../../form/field-types.md#signature), you need to provide file id. To obtain it, first you [create](#create) 
 a file entry, then upload a file using provided credentials. File must adhere to limitations specified in the form field.
 Note that each file consumes space and contributes to file storage limit associated with user's account.
 
-# API actions
+## API actions
 
 API path: `/task/form/file`.
 
 Contains API calls which manipulate files attached to form’s fields.
 
-## create
+### create
 
 Create a new file entry associated with form’s field. By making this call you basically “request permission” to upload a file. In return you are provided with upload credentials (url, form fields, etc.).<br>
 Note that in order to actually “include” file as form field’s value, creating and uploading file is not enough. You must then submit a form with file id as a value of corresponding form field.
@@ -31,7 +33,7 @@ If file was created but was not uploaded, it will be deleted after date/time spe
 * **filename** - (String?) Optional. If specified, uploaded file will have the specified name. If not, name will be taken from actual file upload form.
 * **metadata** - (JSON object?) Optional. Metadata object (for images only).
 
-#### return
+#### response
 
 ```js
 {

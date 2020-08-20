@@ -5,7 +5,11 @@ description: Task history
 
 # Task history
 
-API path: `task/history`.
+Our platform tracks changes to task fields and state for your convenience.
+
+## API actions
+
+API base path: `task/history`.
 
 ```js
 <history_entry> =
@@ -23,7 +27,7 @@ API path: `task/history`.
 
 
 
-## list()
+### list
 
 Return history for the task with the specified id.
 
@@ -31,7 +35,7 @@ Return history for the task with the specified id.
 
 * **task_id** - (int) Id of the task
 
-#### return
+#### response
 
 ```js
 {

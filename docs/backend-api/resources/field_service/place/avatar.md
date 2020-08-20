@@ -1,13 +1,18 @@
 ---
-title: Place avatar
-description: Place avatar
+title: Changing avatar
+description: Changing avatar
 ---
 
-# Place avatar
+# Changing place avatar
+
+Avatars are not changed through `/place/update`, you must use either `assign` (to set avatar to one of preset icons),
+or `upload` (to upload your own image). 
+
+## API actions
 
 API path: `/place/avatar`.
 
-## upload()
+### upload
 
 Upload avatar image for specified place.
 
@@ -16,7 +21,7 @@ Upload avatar image for specified place.
 Then it will be available from `<api_url>/<api_static_uri>/place/avatars/<file_name>`
 e.g. `http://saas.navixy.com/api-v2/static/place/avatars/abcdef123456789.png`.
 
-**avatar_file_name** returned in response and will be returned from [place/list()](./place.md#list).
+**avatar_file_name** returned in response and will be returned from [place/list](index.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data),
 with one of the parts being an image file upload (with the name “file”).
@@ -34,7 +39,7 @@ place_id | ID of the place | int
 file | image file | File upload
 redirect_target | (optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;* | String
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -49,7 +54,7 @@ redirect_target | (optional) URL to redirect. If **redirect_target** passed retu
 * 234 (Invalid data format) – if passed file with unexpected mime type
 * 254 (Cannot save file) – on some file system errors
 
-## assign()
+### assign
 Assign icon_id (from standard icon set) to this place. Icon_id can be null – this means that uploaded avatar should be used instead of icon.
 
 **required subuser rights:** place_update
@@ -60,7 +65,7 @@ name | description | type
 place_id | ID of the place | int
 icon_id | optional, ID of the icon from standard icon set | int
 
-#### return
+#### response
 ```js
 { "success": true }
 ```
