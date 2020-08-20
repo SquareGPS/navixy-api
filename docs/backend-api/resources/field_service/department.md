@@ -3,6 +3,8 @@ title: Departments
 description: Departments
 ---
 
+# Departments
+
 Department is essentially just a group of [employees](employee/index.md). They can be assigned to departments by specifying 
 non-null `department_id`.
 
