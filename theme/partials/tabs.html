@@ -21,7 +21,7 @@
     <div class="md-container__pdf-source">
       <!-- custom: link to pdf -->
       {% if config['plugins']['pdf-export'] %}
-      <div class="navixy-pdf-link-div">
+      <div class="md-source__icon md-icon navixy-pdf-link-div">
           <a href="{{ config['plugins']['pdf-export'].config.combined_output_path | url }}" download="" title="Download all pages in PDF"></a>
       </div>
       {% endif %}
