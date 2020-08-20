@@ -1,9 +1,15 @@
 ---
-title: /employee
-description: /employee
+title: Assigning employee to tracker
+description: Assigning employee to tracker
 ---
 
-## assign()
+# Assigning employee to tracker
+
+## API actions
+
+API base path: `/tracker/employee`
+
+### assign
 Assign another employee (“driver”) to this tracker
 
 **required subuser rights:** employee_update
@@ -13,7 +19,7 @@ Assign another employee (“driver”) to this tracker
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **new_employee_id** - **int**. Id of the new employee.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -24,13 +30,13 @@ Assign another employee (“driver”) to this tracker
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
 *   263 – No change needed, old and new values are the same (if new employee matches currently assigned employee)
 
-## read()
+### read
 Request to read the current employee assigned to tracker, and when it was assigned.
 
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 ```js
 {
   "success": true,

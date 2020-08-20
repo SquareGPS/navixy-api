@@ -33,7 +33,7 @@ For example, you can add your own custom fields to **places** entity or rearrang
 ```
 
 **entity types**:
-* **place** - a place object, the same that is available through [place/](../../field_service/place/place.md) API
+* **place** - a place object, the same that is available through [place/](../../field_service/place/index.md) API
 
   Builtin fields:
 

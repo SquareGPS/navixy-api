@@ -3,6 +3,8 @@ title: Working with employees
 description: Working with employees
 ---
 
+# Working with employees
+
 Employees are used to represent people working at one's organization. They can be linked with other entities such as 
 trackers, vehicles, places, etc.
 
@@ -35,15 +37,15 @@ trackers, vehicles, places, etc.
 }
 ```
 
-# API actions
+## API actions
 
 API base path: `/employee`.
 
-## list
+### list
 
 Get all employees belonging to user.
 
-#### return
+#### response
 
 ```js
 {
@@ -56,7 +58,7 @@ Get all employees belonging to user.
 
 general types only
 
-## create
+### create
 
 Create new employee.
 
@@ -66,7 +68,7 @@ Create new employee.
 
 *   **employee** – an [employee object](#structure) Non-null.
 
-#### return
+#### response
 
 ```js
 {
@@ -80,7 +82,7 @@ Create new employee.
 *   247 – Entity already exists, if tracker\_id!=null and exists employee that already binded to this tracker\_id
 
 
-## read
+### read
 
 Get employee by id.
 
@@ -88,7 +90,7 @@ Get employee by id.
 
 *   **employee_id** – Id of the employee, int.
 
-#### return
+#### response
 
 ```js
 {
@@ -102,7 +104,7 @@ Get employee by id.
 *   201 – Not found in database (if there is no employee with such id)
 
 
-## update
+### update
 
 Update existing employee.
 
@@ -112,7 +114,7 @@ Update existing employee.
 
 *   **employee** – an [employee object](#structure) Non-null.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -123,7 +125,7 @@ Update existing employee.
 *   201 – Not found in database (if there is no employee with such id)
 *   247 – Entity already exists, if tracker\_id!=null and exists employee that already binded to this tracker\_id
 
-## delete
+### delete
 
 Delete employee with the specified id.
 
@@ -133,7 +135,7 @@ Delete employee with the specified id.
 
 *   **employee_id** – Id of the employee, int.
 
-#### return
+#### response
 
 ```json
 { "success": true }

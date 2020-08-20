@@ -12,10 +12,9 @@ Forms are attached to tasks. If form is attached to task, this task cannot be co
 * Each form must be created from template, read more at [Templates](./template.md)
 * For description of `<form_field>` and `<field_value>`, see [Form fields and values](./field-types.md)
 * Using web API, it's now possible to only attach/fill forms with tasks (checkin forms are created through 
-Android/iOS tracker applications). See [Task form actions](../task/form/form.md) to use forms with tasks.
+Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
 
-#### Form object structure
-
+<b>Form object structure</b>
 ```js
 <form> =
 {
@@ -50,4 +49,74 @@ Android/iOS tracker applications). See [Task form actions](../task/form/form.md)
       "address": "Wall Street, NY"
     }
 }
+```    
+
+`<form_file>` is:
+
+```js
+{
+    "id": 16, // file id
+    "storage_id": 1,
+    "user_id": 12203,
+    "type": "image", // "image" or "file"
+    "created": "2017-09-06 11:54:28", // date when file was created
+    "uploaded": "2017-09-06 11:55:14", // date when file was uploaded, can be null if file is not yet uploaded
+    "name": "lala.jpg", // filename
+    "size": 72594, // in bytes. If file not uploaded, show maximum allowed size for upload
+    "mime_type": "image/png",
+    "metadata": nullable, <metadata_object>,
+    "state": "uploaded", // can be "created", "in_progress", "uploaded", "deleted"
+    "download_url": "https://static.navixy.com/file/dl/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg", // actual url at which file is available. Can be null if file is not yet uploaded
+}
 ```
+
+## API actions
+
+API path: `/form`.
+
+### read
+
+Get form by an id.
+
+#### parameters
+
+| name | description | type | 
+| :--- | :--- | :--- | 
+| id | id of the form | int | 
+
+#### example
+
+    https://api.navixy.com/v2/form/read?hash=22eac1c27af4be7b9d04da2ce1af111b&id=132215
+
+#### response
+```js
+{
+    "success": true,
+    "value": <form>, // marker on map (see below)
+    "files": [<form_file>, ... ] //files used in values of this form. Can be null or empty.
+}
+```    
+
+#### errors
+* 201 – Not found in database (if there is no form with such an id)
+
+### download
+
+Download form as a file by an id.
+
+#### parameters
+
+| name | description | type | 
+| :--- | :--- | :--- | 
+| id | id of the form | int | 
+| format | file format | "pdf" or "xlsx" | 
+
+#### example
+
+    https://api.navixy.com/v2/form/download?hash=22eac1c27af4be7b9d04da2ce1af111b&id=132215&format=pdf
+
+#### response
+Regular file download, or JSON with an error.    
+
+#### errors
+* 201 – Not found in database (if there is no form with such an id)

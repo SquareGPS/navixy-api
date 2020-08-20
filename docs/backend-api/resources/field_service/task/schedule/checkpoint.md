@@ -1,30 +1,34 @@
 ---
-title: Task schedule checkpoint
-description: Task schedule checkpoint
+title: Checkpoints
+description: Checkpoints
 ---
 
-# Task schedule checkpoint
+# Task schedule checkpoints
+
+These actions allow manipulating schedule checkpoint entries similarly to regular route checkpoints.
+
+## API actions
 
 API path: `/task/schedule/checkpoint`.
 
 
-## delete()
+### delete
 
 Delete checkpoint from route and reorder others. 
-If route has two checkpoints then use transmute() on the other checkpoint, because route must have
+If route has two checkpoints then use transmute on the other checkpoint, because route must have
 at least two checkpoints.
 
 #### parameters
 
 * **checkpoint_id** – **int**. Checkpoint ID.
 
-#### return
+#### response
 
 ```json
 { "success": true }
 ```
 
-## transmute()
+### transmute
 
 Transmute checkpoint to task and delete its route and other checkpoints in the route.
 
@@ -32,7 +36,7 @@ Transmute checkpoint to task and delete its route and other checkpoints in the r
 
 * **checkpoint_id** – **int**. Checkpoint ID.
 
-#### return
+#### response
 
 ```json
 { "success": true }

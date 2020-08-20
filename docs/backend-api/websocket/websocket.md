@@ -8,7 +8,7 @@ Currently, the [Atmosphere Framework](https://github.com/Atmosphere) used as an 
 
 ## Standard workflow
 
-Let's describe standard workflow for WebSocket API:
+Let's describe a standard workflow for WebSocket API:
 
 1.  Determine [API base URL](../../backend-api/getting-started.md#api-base-url). 
 2.  Authorize with [user/auth()](../resources/commons/user/user.md#auth). This API method will return the hash you should use for all your next API calls.
@@ -21,7 +21,7 @@ Let's describe standard workflow for WebSocket API:
 
 Note what:
 * The [subscription requests](./subscription.md) must contain the 
-  `hash` parameter gotten by [user/auth](../resources/commons/user/user.md#auth) action.
+  `hash` parameter obtained through [user/auth](../resources/commons/user/user.md#auth) action.
 * Responses and errors for the [subscribe](./subscription.md#subscribe-action) 
   and [unsubscribe](./subscription.md#unsubscribe-action) actions are similar 
   with common [API](../getting-started.md) format.
