@@ -24,6 +24,6 @@ Change subpaas's password
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```

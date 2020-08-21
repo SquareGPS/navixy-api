@@ -58,7 +58,7 @@ Create new vehicle service task. For vehicles with associated tracker only.
 
 *   **task** – service task to create. JSON object:
 
-```js
+```json5
 {
     "vehicle_id": 222, // id of associated vehicle
     "description": "Service task", // max 255 characters
@@ -95,7 +95,7 @@ Create new vehicle service task. For vehicles with associated tracker only.
 }
 ```
 
-#### return
+#### response
 
     { "success": true }
 
@@ -116,9 +116,9 @@ Either **task_id** or **task_ids** should be specified
 *   **task_id** – **int**. (optional) id of service task
 *   **task_ids** – **int\[\]**. (optional) ids of service tasks
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -139,7 +139,7 @@ Create pdf report of service tasks
     <br> — vehicle
     <br> — status
 
-#### return
+#### response
 
 Report file.
 
@@ -152,9 +152,9 @@ List all service tasks of all user vehicles.
 
 *   **return_prediction** – **boolean**. include legacy **prediction** field or not
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "list": [ // list of JSON objects:
@@ -223,9 +223,9 @@ Get service task info by it’s id.
 *   **task_id** – **int**. task id
 *   **return_prediction** – **boolean**. include legacy **prediction** field or not
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "value": {
@@ -299,9 +299,9 @@ Update task status. And save (on **done** **status**) current date and values of
 *   **task_id** – **int**, task id.
 *   **status** – new task. Only `done` status allowed for now.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -318,7 +318,7 @@ Update information fields and notification settings of vehicle service task.
 
 *   **task** – JSON object:
 
-```js
+```json5
 {
     "id": 4,  // id of service task to update
     "description": "service", // new description (max 255 characters)
@@ -354,9 +354,9 @@ Update information fields and notification settings of vehicle service task.
 
 See [create](#create).
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 

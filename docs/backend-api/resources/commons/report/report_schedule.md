@@ -54,7 +54,7 @@ name | description | type
 --- | --- | ---
 schedule|<schedule_entry> object without fields which are _IGNORED_| JSON object
 
-#### return
+#### response
 
 ```ja
 {
@@ -80,9 +80,9 @@ name | description | type
 --- | --- | ---
 schedule_id | Id of the report schedule to delete | int
 
-#### return
+#### response
 
-```json
+```json5
 {
     "success": true
 }
@@ -100,9 +100,9 @@ Get all report schedules belonging to user.
 
 **required subuser rights**: reports
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "list": [ <schedule_entry>, ... ]
@@ -123,9 +123,9 @@ name | description | type
 --- | --- | ---
 schedule | <schedule> object without fields which are _IGNORED_| JSON object
 
-#### return
+#### response
 
-```json
+```json5
 {
     "success": true
 }

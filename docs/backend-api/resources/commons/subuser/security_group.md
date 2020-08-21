@@ -11,7 +11,7 @@ Contains API calls related to security groups, that is, groups of sub-users with
 
 ### Security group object structure
 
-```js
+```json5
 ${security_group} = {
       "id": 103, //group id, can be null (when creating new security group)
       "label": "Managers", //group label
@@ -66,9 +66,9 @@ Create new security group.
 
 * **group** - **JSON object**. ${security_group} without “id” field
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "id": ${id of the created security group}
@@ -91,9 +91,9 @@ All sub-users belonging to this group will be assigned to default (null) securit
 #### parameters
 * **security_group_id** - **int**. id of security group, which must be deleted.
 
-#### return
+#### response
 
-```json
+```json5
 {
     "success": true,
 }
@@ -114,9 +114,9 @@ List all security groups belonging to current user.
 #### parameters
 none.
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "list": [${security_group}, ... ] //list of all sub-users belonging to this master account
@@ -139,9 +139,9 @@ Update existing security group.
 #### parameters
 * **group** - **JSON object**. ${security_group} with “id” field
 
-#### return
+#### response
 
-```json
+```json5
 {
     "success": true
 }

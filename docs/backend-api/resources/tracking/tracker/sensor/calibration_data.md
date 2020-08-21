@@ -3,6 +3,8 @@ title: /calibration_data
 description: /calibration_data
 ---
 
+API base path: `/tracker/sensor/calibration_data`
+
 ### read
 Get calibration data for sensor.
 
@@ -10,7 +12,7 @@ Get calibration data for sensor.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor_id** - **int**. Id of the sensor.
 
-#### return
+#### response
 ```javascript
 {
     "success": true,
@@ -32,9 +34,9 @@ Replaces the calibration data for sensor.
 * **sensor_id** - **int**. Id of the sensor.
 * **data** - **array of JSON object**. Array of calibration data objects, e.g. [{“in”:0.0,”out”:0.0},{“in”:0.7,”out”:60.0}]
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -57,9 +59,9 @@ If XML file contains information about multiple sensors, user must specify which
 * **sensor_number** - **int**. Optional. A number of the sensor in XML file (starting at 1).
 * **file** - **file upload**. A file upload containing LLSmonitor XML file
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 

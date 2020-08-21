@@ -9,7 +9,7 @@ API path: `/driver/journal/entry`.
 
 `driver_journal_entry` type is JSON object:
 
-```js
+```json5
 {
     "tracker_id": 1,  // Id of the tracker
     "start_date": "2018-08-28 07:03:39",  // Start date
@@ -57,9 +57,9 @@ If there no `entry_ids` in request, entries are selected by intersecting their d
     <br> — type
     <br> If no sort param is specified, then sort option will be “start_date=acs”
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "list": [ <driver_journal_entry>, ... ]
@@ -74,9 +74,9 @@ Create driver journal entries.
 
 *   **entries** – **driver\_journal\_entry\[\]**. Array of **driver\_journal\_entry** objects without id.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -88,16 +88,16 @@ Update driver journal entry. Only two fields (**type** and **comment**) are avai
 
 *   **entry** – **driver\_journal\_entry\_update\_request** type. See below.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
 
 `driver_journal_entry_update_request` type is JSON object:
 
-```js
+```json5
 {
     "id": 1, // id of the driver journal entry
     "type": 1, // new type of the driver journal entry
@@ -113,9 +113,9 @@ Delete driver journal entries.
 
 *   **entry_ids** – **int\[\]**. Array of driver journal entries’ ids.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -135,6 +135,6 @@ same as in list method plus:
     — `type` (group entries by entry type)
     — `date` (group entries by start_date per day)
 
-#### return
+#### response
 
 A driver journal report file (standard file download).

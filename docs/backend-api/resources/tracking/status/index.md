@@ -8,7 +8,7 @@ Statuses are used to track current activity for employees (in fact, of tracking 
 
 #### objects
 **status** is:
-```js
+```json5
 {
     "id": 5, // unique identifier of this status. Read-only.
     "label": "Busy", // human-readable label for this status
@@ -17,7 +17,7 @@ Statuses are used to track current activity for employees (in fact, of tracking 
 ```
 
 **status_listing** is:
-```js
+```json5
 {
     "id": 1, // unique identifier of this status listing. Read-only.
     "label": "Taxi driver statuses", // human-readable label for this status listing
@@ -34,8 +34,8 @@ Create new possible status for the specified status listing.
 * **listing_id** – **int**. ID of the listing for this status to attach to.
 * **status** – **JSON object**. <status> object without ID field.
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "id": 111 // ID of the created status
@@ -55,8 +55,8 @@ Delete status entry.
 #### parameters
 * **status_id** – **int**. ID of the status belonging to authorized user.
 
-#### return
-```json
+#### response
+```json5
 { "success": true }
 ```
 
@@ -70,8 +70,8 @@ Get statuses belonging to the specified status listing.
 #### parameters
 * **listing_id** – **int**. ID of the status listing belonging to authorized user.
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "list":[…] // ordered array of <status> objects
@@ -90,8 +90,8 @@ Update status properties.
 #### parameters
 * **status** – **JSON object**. <status> object with ID field
 
-#### return
-```json
+#### response
+```json5
 { "success": true }
 ```
 

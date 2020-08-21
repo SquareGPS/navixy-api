@@ -26,8 +26,8 @@ Send email with feedback message on feedback.toEmail Where `type` is
 one of strings: `support_request` (default), `feature_request` and `review`.  
 Screenshot and log will be added to email as attachments.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```

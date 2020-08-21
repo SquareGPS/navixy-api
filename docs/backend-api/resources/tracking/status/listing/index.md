@@ -12,8 +12,8 @@ Create new empty status listing.
 #### parameters
 * **listing** – **JSON object**. <status_listing> object without “id” and “entries” fields
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "id": 111 //ID of the created status listing
@@ -35,9 +35,9 @@ Delete status listing.
 
 * **listing_id** – **int**. ID of the status listing belonging to authorized user.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -48,8 +48,8 @@ Delete status listing.
 ### list
 Get status listings belonging to authorized user.
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "list":[...] //ordered array of <status_listing> objects
@@ -69,9 +69,9 @@ Update status listing properties.
 #### parameters
 * **listing** – **JSON object**. <status_list> object with “id” and “entries” fields
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 

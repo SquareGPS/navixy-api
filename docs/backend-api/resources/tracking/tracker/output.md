@@ -3,6 +3,8 @@ title: /output
 description: /output
 ---
 
+API base path: `/tracker/output`
+
 ### set_all
 Request to change the states of all digital outputs of the device. The device must be online.
 
@@ -12,8 +14,8 @@ Request to change the states of all digital outputs of the device. The device mu
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **outputs** - **array of boolean**. Array of desired states of all digital outputs, e.g. [true, true, false] means output 1 is on, output 2 is on, output 3 is off
 
-#### return
-```json
+#### response
+```json5
 { "success": true }
 ```
 
@@ -34,8 +36,8 @@ Request to change the state of the specified digital output of the device. The d
 * **output** - **int**. The number of the output to control, starting from 1.
 * **enable** - **boolean**. True if the requested output should be enabled, or false if it should be disabled..
 
-#### return
-```json
+#### response
+```json5
 { "success": true }
 ```
 

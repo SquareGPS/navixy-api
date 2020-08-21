@@ -10,8 +10,8 @@ API path: `/notification`.
 ### list
 List user notifications.
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "list": [<notification>, ...]
@@ -20,7 +20,7 @@ List user notifications.
 
 where
 
-```js
+```json5
 <notification> =
     {
         "id": <int>,

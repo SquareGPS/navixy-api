@@ -10,9 +10,9 @@ API path: `/user/audit`.
 ### checkin
 This method is called when user has opened UI.
 
-#### return
+#### response
 
-```json
+```json5
 {
     "success": true
 }

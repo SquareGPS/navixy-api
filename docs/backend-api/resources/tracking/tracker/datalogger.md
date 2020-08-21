@@ -3,6 +3,8 @@ title: /datalogger
 description: /datalogger
 ---
 
+API base path: `/tracker/datalogger`
+
 ### upload
 Uploads track data for specified tracker. Tracker must be a datalogger.
 
@@ -12,9 +14,9 @@ Uploads track data for specified tracker. Tracker must be a datalogger.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and must not be blocked.
 * **file** - **File to upload**. A CSV file upload containing datalogger track data
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 

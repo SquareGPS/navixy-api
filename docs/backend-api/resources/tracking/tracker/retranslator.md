@@ -3,15 +3,19 @@ title: /retranslator
 description: /retranslator
 ---
 
-### retranslator
+# Retranslator
 
 **tracker_retranslator_binding** is:
-```js
+```json5
 {
     "retranslator_id": <retranslator id>, //int
     "fake_device_id": <optional, if this field is set retranslator use it instead of real device id to retranslate data> //string
 }
 ```
+
+## API actions
+
+API base path: `/tracker/retranslator`
 
 ### bind
 Create or update binding.
@@ -23,8 +27,8 @@ Create or update binding.
 * **retranslator_id** – **int**. retranslator ID
 * **fake_device_id** – **string**. if this field is set retranslator use it instead of real device ID to retranslate data.
 
-#### return
-```js
+#### response
+```json5
 { "success": true }
 ```
 
@@ -40,8 +44,8 @@ List tracker retranslators binded to tracker with ID=**tracker_id**.
 #### parameters
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
-```js
+#### response
+```json5
 {
    "success": true,
    "list": [ <tracker_retranslator_binding>, ... ] // list of bindings
@@ -60,8 +64,8 @@ Unbind tracker from retranslator.
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **retranslator_id** – **int**. retranslator ID
 
-#### return
-```json
+#### response
+```json5
 { "success": true }
 ```
 

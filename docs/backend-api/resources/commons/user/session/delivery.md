@@ -17,9 +17,9 @@ In demo session allowed to create a new session only if it not already exists.
 
 **required subuser rights**: admin (available only to master users)
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "value": "42fc7d3068cb98d233c3af749dee4a8d" // created session hash key
@@ -35,9 +35,9 @@ In demo session allowed to create a new session only if it not already exists.
 
 Return current user delivery session key.
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "value": <string> // session hash key

@@ -20,7 +20,7 @@ Download a waybill report DOCX file for tracks of the specified tracker and time
 * **series** - **string**. (optional) Waybill series.
 * **number** - **string**. Waybill number.
 
-#### return
+#### response
 A docx file with the waybill.
 
 #### errors

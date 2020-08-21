@@ -3,14 +3,16 @@ title: /value
 description: /value
 ---
 
+API base path: `/tracker/counter/value`
+
 ### get
 
 #### parameters
 * **tracker_id** - **int**. id of the tracker.
 * **type** - **string**. counter type. one of ["odometer", "fuel_consumed", "engine_hours"].
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "value": 18.9  // float. last value of counter
@@ -28,8 +30,8 @@ Get values for counters of passed **type** and **trackers**
 * **trackers** - **array of int**. List of the tracker’s Ids belonging to authorized user.
 * **type** - **string**. counter type, one of ["odometer", "fuel_consumed", "engine_hours"].
 
-#### return
-```js
+#### response
+```json5
 {
   "success": true,
   "value": { // Map with tracker's ids as keys
@@ -50,9 +52,9 @@ Creates new counter of passed **type** (if not) and update its **value**.
 * **type** - **string**. Counter type, one of ["odometer", "fuel_consumed", "engine_hours"].
 * **value** - **float**. A new value of counter.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 

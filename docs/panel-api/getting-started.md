@@ -60,7 +60,7 @@ For example, in on-premise installations, there is a default user with login
 
 And you’ll get answer like this:
 
-```json
+```json5
 {
   "hash": "1dc2b813769d846c2c15030884948117",
   "success": true,
@@ -80,7 +80,7 @@ field contains the description of the error.
 
 For example:
 
-```json
+```json5
 {
   "success": false,
   "status": {
@@ -117,7 +117,7 @@ lifetime (30 days by default). So you should obtain new hash key periodically.
 If you will try to make a Panel API call with expired session hash, you’ll 
 get the following error:
 
-```json
+```json5
 {
   "success": false,
   "status": {

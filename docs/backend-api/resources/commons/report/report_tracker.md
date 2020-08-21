@@ -17,9 +17,9 @@ Delete report from db.
 
 `report_id`
 
-#### return
+#### response
 
-```json
+```json5
 {
     "success": true
 }
@@ -43,7 +43,7 @@ Retrieve generated report as a file.
 
 (also, there is hidden boolean parameter named "headless". If you, for some reason, need report without title page and TOC, set it to "true", otherwise - don't). Currently, 'pdf', 'xls' and 'xlsx' formats is supported.
 
-#### return
+#### response
 
 A report rendered to file (standard file download).
 
@@ -97,9 +97,9 @@ show_seconds|Flag to define whether time values in report should have format wit
         ]
     }
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "id": 222 // (int) id of the report queued for generation. 
@@ -110,7 +110,7 @@ show_seconds|Flag to define whether time values in report should have format wit
 #### errors
 *   15 (Too many requests / rate limit exceeded) - the number of reports created by one user in parallel is limited.
 *   211 (Requested time span is too big) - interval from 'from' to 'to' is bigger then max allowed time span (see response)
-    ```js
+    ```json5
     {
         "success": false,
         "status": {
@@ -132,9 +132,9 @@ Returns info about all available generated or in-progress reports.
 
 **required subuser rights**: reports
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,"list": [
     {
@@ -176,9 +176,9 @@ Retrieve generated report as JSON.
 
 *   report_id
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "report": <body of the generated report. Its contents are plugin-dependent>   //Object
@@ -198,9 +198,9 @@ Returns a report generation status for the specified report id. **required subus
 
 *   report_id
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "percent_ready": <report readiness in percent, e.g. 75>   //int

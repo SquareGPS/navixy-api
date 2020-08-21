@@ -5,7 +5,7 @@ description: APN settings of tracker
 
 # APN settings
 
-API path: `/apn_settings`.
+API base path: `/apn_settings`.
 
 ### read
 
@@ -27,7 +27,7 @@ $ curl -X POST '{{ extra.api_example_url }}/apn_settings/read' \
 
 #### response
 
-```json
+```json5
     {
         "success": true,
         "value": {

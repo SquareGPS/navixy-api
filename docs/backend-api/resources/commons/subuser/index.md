@@ -60,9 +60,9 @@ Delete sub-user. This operation cannot be reversed.
 #### parameters
 * **subuser_id** - **int**. id of the sub-user belonging to current account
 
-#### return
+#### response
 
-```json
+```json5
 {
     "success": true
 }
@@ -84,9 +84,9 @@ List all subusers belonging to current user.
 
 none
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "list": [<subuser>, ... ] //list of all sub-users belonging to this master account
@@ -112,9 +112,9 @@ Allows you to create sub-users associated to your master account.
 * **user** - **JSON object**. <subuser> object without “id” field
 * **password** - **printable string**. 6 to 20 characters. New sub-user’s password.
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "id": <id of the created sub-user>
@@ -139,9 +139,9 @@ Update subuser data.
 #### parameters
 * **user** - **JSON object**. <subuser> object with “id” field
 
-#### return
+#### response
 
-```json
+```json5
 {
     "success": true
 }

@@ -12,7 +12,7 @@ Return list of payment systems available for user.
 
 **required subuser rights:** payment_create
 
-#### return
+#### response
 ```javascript
 {
     "success": true,
@@ -48,7 +48,7 @@ Returns the estimate of the monthly payment amount
 
 **required subuser rights:** payment_create
 
-#### return
+#### response
 ```javascript
 {
     "success": true,
@@ -67,7 +67,7 @@ name | description | type
 phone | 10-digit phone number without country code (e.g. 6156680000) | String
 sum | amount of money to pay, e.g. 100.50 . minimum is 1.00, maximum is 99999.00 | double
 
-#### return
+#### response
 ```javascript
 {
     "success": true

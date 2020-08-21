@@ -16,7 +16,7 @@ field type-specific.
 
 ##### common field parameters:
 
-```js
+```json5
 {
    "id": "111-aaa-whatever", //arbitrary alphanumeric string (1 to 19 characters), unique across current form’s fields, used to link with values and its "parent" in template form
    "label": "Name", //user-defined label, shown as field header, 1 to 100 printable characters
@@ -44,7 +44,7 @@ Multiline auto-expanding text field
 
 ##### value object:
 
-```js
+```json5
 {
     "type": "text",
     "value": "text field value" //What was entered in the text field
@@ -73,7 +73,7 @@ Group of checkboxes.
 
 ##### value object:
 
-```js
+```json5
 {
     "type": "checkbox_group",
     "values": [true] //booleans in the same order as fields in "group"
@@ -100,7 +100,7 @@ Dropdown menu for choosing one option.
 
 ##### value object:
 
-```js
+```json5
 {
     "type": "dropdown",
     "value_index": 1 //zero-based index of value from "options"

@@ -21,9 +21,9 @@ Default and max limit is [maxHistoryLimit](../../../getting-started.md#constants
 
 Type of **from** is [date/time](../../../getting-started.md#data-types). Default **from** is **now** minus one year.
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "list": [${history_entry}, ... ] //list of zero or more JSON objects
@@ -48,9 +48,9 @@ Get count of user’s unread history messages from **from** date with optional *
 
 Type of **from** is [date/time](../../../getting-started.md#data-types). Default **from** is **now** minus one year.
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "count": <count> // int

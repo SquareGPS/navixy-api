@@ -1,12 +1,12 @@
 ---
-title: /portlets
-description: /portlets
+title: Portlets
+description: Portlets
 ---
 
 ### engine_control_atrack
 Special settings to set the engine event behavior for ATrack.
 
-```js
+```json5
 {
     "power_voltage_high_level": <int, mV, min=0, max=30000, default=13800> (required),
     "on_duration_seconds": <int, second, min=0, max=600, default=1> (required),
@@ -24,7 +24,7 @@ Special settings to set the engine event behavior for ATrack.
 
 Guard special settings for “Я ТУТ ПОИСК”.
 
-```js
+```json5
 {
     "motion_sensor_mode": <string, off|permanent|single_period|double_period, default=off> (required),
     "motion_sensor_first_period": <string, format='HH:mm-HH:mm', default='23:00-07:00'> (required for motion_sensor_mode in [single_period, double_period]),
@@ -67,7 +67,7 @@ value must be always “harsh_behavior_suntech”
 
 settings object example:
 
-```json
+```json5
 {
     "mode": "enable",
     "max_acceleration_force": 1.5,

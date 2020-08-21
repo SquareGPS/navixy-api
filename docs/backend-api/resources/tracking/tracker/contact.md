@@ -3,6 +3,11 @@ title: Contact
 description: Contact
 ---
 
+!!! warning "Deprecated"
+    This API action is deprecated and should not be used.
+
+API base path: `/tracker/contact`
+
 ### list
 
 Gets all user’s trackers with special grouping by “contacts”.
@@ -17,7 +22,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "contacts": [ <contact>, ... ] // all established contacts
@@ -26,7 +31,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
 ```
 where **contact** object is:
 
-```js
+```json5
 {
     "user_id": 12059, //id of the user with which "contact" is established
     "first_name": "Adam",

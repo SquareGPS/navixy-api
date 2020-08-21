@@ -18,8 +18,8 @@ Create file to specify its id in service task later
 *   **metadata** - (JSON object?) Optional.metadata object. see [task/form](../../../field_service/task/form/index.md#read).
 *   **type** - "image" or "file". Default is "file".
 
-#### return
-```js
+#### response
+```json5
 {
   "success": true,
   "value": {

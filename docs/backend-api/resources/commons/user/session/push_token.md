@@ -17,9 +17,9 @@ Binds Push token with current session.
 *   **token** (string) – Push token
 *   **category_filter** (string) – Push notifications category filter, default is *
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -47,9 +47,9 @@ Prepended with minus and delimited with comma list means that all categories are
 
 Deletes push token that bound with the session.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 

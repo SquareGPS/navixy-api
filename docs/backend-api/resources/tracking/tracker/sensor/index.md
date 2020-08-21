@@ -1,14 +1,16 @@
 ---
-title: /sensor
-description: /sensor
+title: Sensor actions
+description: Sensor actions
 ---
+
+API base path: `/tracker/sensor`
 
 ### sensor
 Data types
 Sensor sub-types
 Metering sensor
 
-```js
+```json5
 {
     "type": "metering",
     "id": <int>,
@@ -24,7 +26,7 @@ Metering sensor
 
 where **parameters** is
 
-```js
+```json5
 {
     "parent_ids": <array>, //optional, array of parent_ids for composite sensor
     "volume": <double>,    //optional, volume for composite sensor
@@ -37,7 +39,7 @@ where **parameters** is
 
 Discrete input
 
-```js
+```json5
 {
     "type": "discrete",
     "id": <int>,
@@ -55,9 +57,9 @@ Create sensor.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor** - [JSON object](#sensor). Sensor object.
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "id": 937 // int. id of created sensor
@@ -79,9 +81,9 @@ Delete sensor with **sensor_id** from the database.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor_id** - **int**. Sensor id.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -96,8 +98,8 @@ List tracker sensors binded to tracker with specified id (**tracker_id** paramet
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
-```js
+#### response
+```json5
 {
    "success": true,
    "list": [ <sensor>, ... ] // list of sensors
@@ -117,9 +119,9 @@ Update sensor.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor** - [JSON object](#sensor). Sensor object.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 

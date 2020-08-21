@@ -3,14 +3,16 @@ title: /engine_immobilizer
 description: /engine_immobilizer
 ---
 
+API base path: `/tracker/engine_immobilizer`
+
 ### read
 Request to read the state of engine immobilizer.
 
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
-```js
+#### response
+```json5
 {
    "success": true,
    "enabled": <true if engine immobilizer is enabled> //boolean
@@ -31,9 +33,9 @@ Request to change the engine immobilizer state of the device. The device must be
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **enabled** - **boolean**. True if immobilizer should be enabled.
 
-#### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 

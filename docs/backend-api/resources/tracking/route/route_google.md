@@ -20,8 +20,8 @@ Get route points using [Google Directions API](https://developers.google.com/map
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "distance": 13482, // (int) length in meters
@@ -32,7 +32,7 @@ Where **location** described in [data types description section](../../../gettin
 ```
 
 **key_points** is list of points corresponding to **start** point, **waypoints** and **end** point (in that sequence). Where **key_point** is JSON object:
-```js
+```json5
 {
     "id": 123,        // (int) index in points 'list'
     "lat": 56.827,    // latitude
@@ -44,7 +44,7 @@ Where **location** described in [data types description section](../../../gettin
 
 #### errors
 *   215 (External service error)
-    ```js
+    ```json5
     {
         "success": false,
         "status": {
@@ -61,7 +61,7 @@ Where **location** described in [data types description section](../../../gettin
     *   `UNKNOWN_ERROR` – indicates directions request could not be processed due to a server error. The request may succeed if you try again.
 
 *   218 (Malformed external service parameters)
-    ```js
+    ```json5
     {
         "success": false,
         "status": {

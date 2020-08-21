@@ -24,11 +24,11 @@ points can have any order due to maximizing summary efficiency of the route.
 #### parameters
 
 * **start_point** - (object) coordinates of location, from where performer will come, example:
-```js
+```json5
 { "lat": 15.233, "lng": -5.554 }
 ```
 * **route_points** - (array of objects) points, which performer must visit, example:
-```js
+```json5
 [
   {"location": {"lat": 11.111, "lng": 11.111}, "from": "2019-04-05 13:45:00", "to": "2019-04-05 14:00:00"},
   {"location": {"lat": 22.222, "lng": -2.222}, "from": "2019-04-05 13:45:00", "to": "2019-04-05 14:00:00"},
@@ -40,7 +40,7 @@ points can have any order due to maximizing summary efficiency of the route.
 
 #### response
 
-```js
+```json5
 {
   "success": true,
   "result": [2, 0, 1] //order in which points shoud be visited
@@ -48,7 +48,7 @@ points can have any order due to maximizing summary efficiency of the route.
 ```
 
 If for route points:
-```js
+```json5
 [
    {route_point_0}, // index in list = 0
    {route_point_1}, // index in list = 1
@@ -59,7 +59,7 @@ this action returns:
 ``[2, 0, 1]``
 
 it means "change points order as following":
-```js
+```json5
 point at index 2 move to index 0,
 point at index 0 move to index 1,
 point at index 1 move to index 0"

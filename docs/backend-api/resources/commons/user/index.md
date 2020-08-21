@@ -1,6 +1,6 @@
 ---
-title: User
-description: User
+title: User actions
+description: User actions
 ---
 
 # User
@@ -26,9 +26,9 @@ Available only to master users.
     Any other hash will result in result error code 4 (user not found or session ended).
 
 
-### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -38,7 +38,7 @@ Try to authenticate user.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
-### parameters
+#### parameters
 
 | name  | description | type  | restrictions |
 | :---- | :----       | :---- | :----        |
@@ -47,7 +47,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 |dealer_id | If specified, API will check that user belongs to this dealer, and if not, error 102 will be returned. | int | optional |
 
 
-### example
+#### example
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/user/auth' \
@@ -55,16 +55,16 @@ $ curl -X POST '{{ extra.api_example_url }}/user/auth' \
 -d '{ "login": "test@email.com", "password": "password123456" }'
 ```
 
-### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "hash": <string> // session hash
 }
 ```
 
-### errors
+#### errors
 
 *   11 – Access denied (if dealer blocked)
 *   102 – Wrong login or password
@@ -77,11 +77,11 @@ $ curl -X POST '{{ extra.api_example_url }}/user/auth' \
 
 Gets user information and some settings.
 
-### parameters
+#### parameters
 
 Only session `hash`.
 
-### example
+#### example
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/user/get_info' \
@@ -91,9 +91,9 @@ $ curl -X POST '{{ extra.api_example_url }}/user/get_info' \
 
 Get basic user info.
 
-### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "paas_id": 7,
@@ -167,11 +167,11 @@ where
 
 Gets user tariff restrictions.
 
-### parameters
+#### parameters
 
 Only session `hash`.
 
-### example
+#### example
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
@@ -179,9 +179,9 @@ $ curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
 -d '{ "hash": "a6aa75587e5c59c32d347da438505fc3" }'
 ```
 
-### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "value": ${tariff_restrictions}
@@ -190,7 +190,7 @@ $ curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
 
 where `tariff_restrictions` is JSON object:
 
-```js
+```json5
 {
     "allowed_maps": [${map_name}, ...] // [string]. list of allowed maps, e.g. ["roadmap","osm"]
 }
@@ -200,11 +200,11 @@ where `tariff_restrictions` is JSON object:
 
 Destroys current user session.
 
-### parameters
+#### parameters
 
 Only session `hash`.
 
-### example
+#### example
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/user/logout' \
@@ -212,9 +212,9 @@ $ curl -X POST '{{ extra.api_example_url }}/user/logout' \
 -d '{ "hash": "a6aa75587e5c59c32d347da438505fc3" }'
 ```
 
-### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -225,13 +225,13 @@ Send new activation link to user.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
-### parameters
+#### parameters
 
 | name  | description | type  | restrictions |
 | :---- | :----       | :---- | :----        |
 |login | user login (email) | string | not null |
 
-### example
+#### example
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/user/logout' \
@@ -239,18 +239,18 @@ $ curl -X POST '{{ extra.api_example_url }}/user/logout' \
 -d '{ "login": "users_login" }'
 ```
 
-### return
+#### response
 
-```json
+```json5
 { "success": true }
 ```
 
-### errors
+#### errors
 
 *   201 (Not found in database) – user with passed login not found.
 *   209 (Failed sending email) – can't send email.
 *   264 (Timeout not reached) – previous activation link generated less than 5 minutes ago (or other configured on server timeout).
-    ```js
+    ```json5
     {
         "success": false,
         "status": {

@@ -11,7 +11,7 @@ Our platform tracks changes to task fields and state for your convenience.
 
 API base path: `task/history`.
 
-```js
+```json5
 <history_entry> =
     {
         "id": 22, //PK
@@ -37,7 +37,7 @@ Return history for the task with the specified id.
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "list": [ <history_entry>, ... ]

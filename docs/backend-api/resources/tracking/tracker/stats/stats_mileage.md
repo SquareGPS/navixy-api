@@ -3,7 +3,7 @@ title: /stats/mileage
 description: /stats/mileage
 ---
 
-# /tracker/stats/mileage
+API base path: `/tracker/stats/mileage`
 
 ### read
 Returns mileage in kilometers in specified period grouped by tracker and day.
@@ -13,8 +13,8 @@ Returns mileage in kilometers in specified period grouped by tracker and day.
 *   **from** - **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
 *   **to** - **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date.
 
-#### return
-```json
+#### response
+```json5
 {
   "success": true,
   "result": {

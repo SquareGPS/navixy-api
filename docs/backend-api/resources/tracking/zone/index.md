@@ -1,18 +1,22 @@
 ---
-title: Zone
-description: Zone
+title: Working with zones
+description: Working with zones
 ---
 
-# Zone
+# Working with zones
 
-API path: `/zone`.
+Zones are used in rules to limit rule area of activity. Also zone names are shown in reports after the address, if 
+an event happened inside the zone.
 
-CRUD actions for zones. Note that zone points are handled separately because they are represented by big arrays of data.
+This document describes CRUD actions for zones. Note that zone points are handled separately because they are 
+represented by big arrays of data.
+
+## Entity description
 
 **zone** is JSON object with one of types: **sausage**, **circle** or **polygon**.
 
 #### circle:
-```js
+```json5
 {
     "id": 1,                    // (int) zone ID
     "type": "circle",
@@ -29,7 +33,7 @@ CRUD actions for zones. Note that zone points are handled separately because the
 ```
 
 #### polygon:
-```js
+```json5
 {
     "id": 1,                    // (int) zone ID
     "type": "polygon",
@@ -42,7 +46,7 @@ CRUD actions for zones. Note that zone points are handled separately because the
 
 #### sausage:
 represents all points within certain distance to the specified polyline
-```js
+```json5
 {
     "id": 1,                    // (int) zone ID
     "type": "sausage",
@@ -52,13 +56,17 @@ represents all points within certain distance to the specified polyline
     "radius": 150,              // (int) polyline radius in meters
     "tags": [289]               // ([int]) array of tag IDs
 }
-```
+```                   
+
+## API actions
+
+API base path: `/zone`
 
 ### batch_convert
 Convert batch of tab-delimited circle zones and return list of checked zones with errors.
 
 **required subuser rights**: zone_update
-```js
+```json5
 <checked_task> =
    {
         ... //all fields from zones
@@ -75,8 +83,8 @@ Convert batch of tab-delimited circle zones and return list of checked zones wit
 
 If ‘file_id’ is set – ‘batch’ parameter will be ignored.
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "list": [ <checked_zone>, ... ]
@@ -98,8 +106,8 @@ Create new zone.
 
 **zone.color** is optional here.
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "id": ${int} // ID of the created zone
@@ -123,8 +131,8 @@ OR
 
 *   zone_ids – array of int
 
-#### return
-```js
+#### response
+```json5
 { "success": true }
 ```
 
@@ -132,8 +140,8 @@ OR
 *   201 (Not found in database)
 *   203 (Delete entity associated with)
 
-#### return
-```js
+#### response
+```json5
 {
     "success": false,
     "status": {
@@ -154,8 +162,8 @@ where `<rule_id>` is ID of the rule which uses the specified zone.
 ### list
 Get all user’s zones.
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "list": [ <zone>, ... ]
@@ -174,8 +182,8 @@ Update zone parameters for the specified zone. Note that zone must exist, must b
 
 **zone.color** is optional. If it not passed then color will not be changed.
 
-#### return
-```js
+#### response
+```json5
 { "success": true }
 ```
 
@@ -197,9 +205,9 @@ Import geofences from KML file.
 *   **dry_run** – (Boolean) if true returns ready to create geofences or creates it and returns list of IDs otherwise, default true
 *   **redirect_target** – (String, optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;*
 
-#### return
+#### response
 if `dry_run=true`:
-```js
+```json5
 {
   "success": true,
   "list": [
@@ -238,7 +246,7 @@ if `dry_run=true`:
 ```
 
 if `dry_run=false`:
-```js
+```json5
 {
     "success": true,
     "list": [ 1, 2 ]

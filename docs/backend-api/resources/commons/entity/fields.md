@@ -12,7 +12,7 @@ API path: `/entity/fields`.
 Field allows to add custom information to a customizable entity. Each field belongs to one entity.
 
 **field** is:
-```js
+```json5
 <field> = {
     "id": 131312, //identifier, null when new object
     "label": "Additional info", 
@@ -52,7 +52,7 @@ Field allows to add custom information to a customizable entity. Each field belo
 * `employee` - link to employee
 
   *Special params:* 
-  ```js
+  ```json5
   {
     "responsible": true //entities with this set to "true" can be shown to the employee in the mobile app.
                       //Only one employee field can have this value set to "true" 
@@ -71,8 +71,8 @@ name      | description     | type
 ---       | ---             | ---
 entity_id | ID of an entity | int
 
-#### return
-```js
+#### response
+```json5
 {
     "success": true,
     "list": [ <field>, ... ]
@@ -109,9 +109,9 @@ delete_missing | (optional, default is false) delete fields not present in `fiel
 * 201 (Not found in database) – if there is no entity with such ID
 * 7 (Invalid parameters) - if fields violate restrictions described above
 
-#### return
+#### response
 A list of **all** fields associated with the specified entity. Newly created fields will have their IDs filled.
-```js
+```json5
 {
     "success": true,
     "list": [ <field>, ... ]

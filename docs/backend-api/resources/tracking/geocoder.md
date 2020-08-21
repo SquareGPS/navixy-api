@@ -40,9 +40,9 @@ $ curl -X POST '{{ extra.api_example_url }}/geocoder/search_address' \
   -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}' 
 ```
 
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "locations": [
@@ -59,7 +59,7 @@ $ curl -X POST '{{ extra.api_example_url }}/geocoder/search_address' \
 
 where **details_object** is:
 
-```js
+```json5
 {
     "country": <string>, // optional
     "province": <string>, // optional
@@ -73,7 +73,7 @@ where **details_object** is:
 
 **bounds_object** is:
 
-```json
+```json5
 {
   "nw":{ //northwest corner
     "lat":<double>,
@@ -107,9 +107,9 @@ $ curl -X POST '{{ extra.api_example_url }}/geocoder/search_location' \
   -H 'Content-Type: application/json' \ 
   -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 56.827001, "lng": 60.594296}"}' 
 ```
-#### return
+#### response
 
-```js
+```json5
 {
     "success": true,
     "value": <address>, // string
