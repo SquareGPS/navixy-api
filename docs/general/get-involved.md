@@ -144,7 +144,7 @@ Resource specific actions:
 * [/path/to/resource/method1](#method1)
 * [/path/to/resource/method2](#method2)
 
-## method1()
+## method1
 
 Method description.
 
@@ -172,7 +172,7 @@ $ curl -X POST '{{ extra.api_example_url }}/path/to/resource/method1' \
 
 Special error codes.
 
-## method2()
+## method2
 
 ...
 
