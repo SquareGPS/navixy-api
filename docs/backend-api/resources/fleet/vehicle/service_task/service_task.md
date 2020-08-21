@@ -58,7 +58,7 @@ Create new vehicle service task. For vehicles with associated tracker only.
 
 *   **task** – service task to create. JSON object:
 
-```js
+```json
 {
     "vehicle_id": 222, // id of associated vehicle
     "description": "Service task", // max 255 characters
@@ -154,7 +154,7 @@ List all service tasks of all user vehicles.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ // list of JSON objects:
@@ -225,7 +225,7 @@ Get service task info by it’s id.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": {
@@ -318,7 +318,7 @@ Update information fields and notification settings of vehicle service task.
 
 *   **task** – JSON object:
 
-```js
+```json
 {
     "id": 4,  // id of service task to update
     "description": "service", // new description (max 255 characters)

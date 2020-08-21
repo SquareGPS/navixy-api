@@ -102,7 +102,7 @@ Get all report schedules belonging to user.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <schedule_entry>, ... ]

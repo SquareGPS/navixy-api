@@ -46,7 +46,7 @@ Get a list of tracker ids to which this sub-user has access.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list" : [${tracker_id1}, ...] //list of tracker ids to which this sub-user has acccess

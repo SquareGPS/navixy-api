@@ -11,7 +11,7 @@ Contains API calls related to security groups, that is, groups of sub-users with
 
 ### Security group object structure
 
-```js
+```json
 ${security_group} = {
       "id": 103, //group id, can be null (when creating new security group)
       "label": "Managers", //group label
@@ -68,7 +68,7 @@ Create new security group.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "id": ${id of the created security group}
@@ -116,7 +116,7 @@ none.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [${security_group}, ... ] //list of all sub-users belonging to this master account

@@ -12,7 +12,7 @@ Request to read the state of engine immobilizer.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
 #### response
-```js
+```json
 {
    "success": true,
    "enabled": <true if engine immobilizer is enabled> //boolean

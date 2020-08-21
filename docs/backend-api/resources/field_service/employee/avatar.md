@@ -64,7 +64,7 @@ File part **mime** type must be one of:
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": <string> // avatar file name

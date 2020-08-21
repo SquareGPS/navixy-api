@@ -13,7 +13,7 @@ Get LBS for the specified tracker.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "max_radius": <int>  //max allowed radius for LBS points

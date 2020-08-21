@@ -9,7 +9,7 @@ API path: `/vehicle`.
 
 **vehicle** type is JSON object:
 
-```js
+```json
 {
     "id": 222,//int
     "tracker_id": 1, //int
@@ -125,7 +125,7 @@ Get all vehicles belonging to user.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ ${vehicle}, ... ] // list of JSON objects

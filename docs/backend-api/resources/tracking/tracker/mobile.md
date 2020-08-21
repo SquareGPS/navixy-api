@@ -24,7 +24,7 @@ Common parameters are:
 * **device_id** - **string**. Device IMEI.
 
 #### response
-```js
+```json
 {
     "success": true,
     "value": <tracker> //a newly created tracker

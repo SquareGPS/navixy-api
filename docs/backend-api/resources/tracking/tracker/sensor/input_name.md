@@ -20,7 +20,7 @@ For every input following properties are returned: *input_name* and *description
 
 Example:
 
-```js
+```json
 {
   "success": true,
   "list": [

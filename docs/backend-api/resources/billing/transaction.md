@@ -19,7 +19,7 @@ Get list of user’s billing transactions for the specified period.
 
 #### response
 
-```js
+```json
 {
   "success": true,
   "list": [

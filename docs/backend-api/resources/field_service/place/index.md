@@ -18,7 +18,7 @@ Thus, field employee can view all places assigned to him to visit them, etc.
 ### Structure
 
 `<place>` is:
-```js
+```json
 {
     "id": 1, // int
     "icon_id" : 55, // int, optional, [1..255], can only be updated via avatar/assign
@@ -55,7 +55,7 @@ Get place by ID.
 |place_id |ID of the place |int |
 
 #### response
-```js
+```json
 {
     "success": true,
     "value": <place>
@@ -79,7 +79,7 @@ limit | optional, limit | int
 offset | optional, offset, default is 0 | int
 
 #### response
-```js
+```json
 {
     "success": true,
     "list": [ <place>, ... ],
@@ -102,7 +102,7 @@ place | &lt;place&gt; | JSON object
 ignore_missing_fields | Optional (default is false). If set to true, place can be created even without all required custom fields.| boolean 
 
 #### response
-```js
+```json
 {
     "success": true,
     "id": 111 // ID of the created place
@@ -166,7 +166,7 @@ If `file_id` is set – `batch` parameter will be ignored.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <checked_place>, ... ]
@@ -175,7 +175,7 @@ If `file_id` is set – `batch` parameter will be ignored.
 
 where `checked_place` is:
 
-```js
+```json
 {
     ... // all fields from <place>
     "errors": <array_of_objects>, // optional

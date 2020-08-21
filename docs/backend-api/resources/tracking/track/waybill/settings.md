@@ -9,7 +9,7 @@ API base path: `/waybill/settings/`
 Get last waybill number. Waybill number is saved when new waybill had downloaded. If it had only digits, then it was incremented before saving.
 
 #### response
-```js
+```json
 {
     "success": true,
     "value": {

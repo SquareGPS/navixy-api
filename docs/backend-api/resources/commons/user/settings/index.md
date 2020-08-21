@@ -11,7 +11,7 @@ CRUD actions for user settings.
 
 `settings` type is JSON object:
 
-```js
+```json
 {
     "time_zone": "Europe/Amsterdam",  // ISO timezone id
     "locale": "nl_NL",                // locale code
@@ -24,7 +24,7 @@ CRUD actions for user settings.
 
 `balance_alert_settings` type is JSON object:
 
-```js
+```json
 {
     "emails": ["email1@example.com", "email2@example.com"]  // array of emails to send alert message about balance
                                                             // empty array means disclaimer of notifications
@@ -33,7 +33,7 @@ CRUD actions for user settings.
 
 `file_storage_settings` type is JSON object:
 
-```js
+```json
 {
     "auto_overwrite": <true|false> // default - false,
 }
@@ -45,7 +45,7 @@ Read current user’s settings.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "settings": ${settings},                             // JSON object

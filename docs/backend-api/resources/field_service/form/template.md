@@ -17,7 +17,7 @@ for future reference. Usually people need to fill forms with the same fields ove
 User can assign form to the task or checkin by choosing template without the need to create all form fields every time.
 
 `<form_template>` is:
-```js
+```json
 {
   "id": 1,
   "label": "Order form", //user-defined form label, from 1 to 100 characters
@@ -45,7 +45,7 @@ none
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list":[...] //ordered array of <form_template> objects
@@ -68,7 +68,7 @@ Create new form template.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "id": 111 //id of the created form template
@@ -90,7 +90,7 @@ Get form template belonging to current master user by id.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list":[...] //ordered array of <form_template> objects
@@ -158,7 +158,7 @@ Return template usage statistics
 
 #### response
 
-```js
+```json
 {
   "success": true,
   "tasks": { // maps task status to number of tasks with this status which use specified template

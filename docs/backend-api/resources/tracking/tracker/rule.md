@@ -7,7 +7,7 @@ description: /rule
 
 A rule element consists of following fields:
 
-```js
+```json
 {
     "id": ${int},
     "name": ${string},
@@ -186,7 +186,7 @@ where
     }
     ```
     * **type**=”**driver_assistance**”
-    ```js
+    ```json
     {
         "forward_collision_enable" : ${boolean}, // enable/disable notifications about forward collision warnings
         "headway_warning_enabled" :  ${boolean}, // notifications about headway warnings
@@ -200,7 +200,7 @@ where
     }
     ```
     * **type**=”**sensor_range**”
-    ```js
+    ```json
     {
         "sensor_id": 123,
         "min": 1.0, // (double) optional. null means negative infinity
@@ -209,7 +209,7 @@ where
     }
     ```
     * **type**=”**route**”
-    ```js
+    ```json
     {
        "allow_exit_at_endpoints": ${boolean} // optional, disable notifications for deviations at start and end points
     }
@@ -280,7 +280,7 @@ List tracker rules binded to tracker with id=**tracker_id** or all user’s trac
 
 #### response
 
-```js
+```json
 {
    "success": true,
    "list": [ <rule>, ... ] // list of rules

@@ -13,7 +13,7 @@ Create new empty status listing.
 * **listing** – **JSON object**. <status_listing> object without “id” and “entries” fields
 
 #### response
-```js
+```json
 {
     "success": true,
     "id": 111 //ID of the created status listing
@@ -49,7 +49,7 @@ Delete status listing.
 Get status listings belonging to authorized user.
 
 #### response
-```js
+```json
 {
     "success": true,
     "list":[...] //ordered array of <status_listing> objects

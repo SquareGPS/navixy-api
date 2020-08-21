@@ -34,7 +34,7 @@ $ curl -X POST '{{ extra.api_example_url }}/delivery/read' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "user_id": 3, // master id of the user to which the task belongs to
@@ -79,7 +79,7 @@ $ curl -X POST '{{ extra.api_example_url }}/delivery/list' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [{

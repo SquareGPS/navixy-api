@@ -14,7 +14,7 @@ it's available for viewing by app user. User will also receive notifications of 
 
 ### Data structure
 
-```js
+```json
 <task> =
    {
         "id": 111,   //primary key. used in update, *IGNORED* in create
@@ -83,7 +83,7 @@ Convert batch of tab-delimited tasks and return list of checked tasks with error
 
 **required subuser rights**: task_update
 
-```js
+```json
 <checked_task> =
     {
         ... //all fields from task
@@ -108,7 +108,7 @@ In case of location_check_mode==entity_location – vehicle_ids will be ignored.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <checked_task>, ... ]
@@ -127,7 +127,7 @@ Return total number of tasks belonging to current user.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "count": 111 //number of tasks
@@ -150,7 +150,7 @@ if it is not null. Default value is false for backward compatibility.
 
 Minimal JSON object to create a new task must contain:
 
-```js
+```json
 {
     "tracker_id": 22, //optional, if the field is specified then the task will be assigned to the employee associated with the tracker, otherwise it won't be assigned to anybody
     "location": { //area (circle geofence), entering and leaving of geofence will be controlled
@@ -168,7 +168,7 @@ Minimal JSON object to create a new task must contain:
 task/create call returns the identifier of the created task.
 Returned object also can include "external_id_counts" field see task/route/create [method description](route/index.md#create)
 
-```js
+```json
 {
     "success": true,
     "id": 222,
@@ -178,7 +178,7 @@ Returned object also can include "external_id_counts" field see task/route/creat
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "id": 111, //id of the created task
@@ -250,7 +250,7 @@ If **offset** or **limit** is null then restrictions for paginations will not be
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <task>, ... ],
@@ -260,7 +260,7 @@ If **offset** or **limit** is null then restrictions for paginations will not be
 
 #### Full JSON returned to the task/list
 
-```js
+```json
 {
    "id": 111, //task id
    "user_id": 3, //user id (office). Unchangeable parameter.
@@ -304,7 +304,7 @@ Get task, checkpoint, or route with checkpoints by id.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value":  ${task, checkpoint or route}, // JSON object
@@ -365,7 +365,7 @@ replace or delete task's form. Default value is false for backward compatibility
 
 Returned object also can include "external_id_counts" field see task/route/create [method description](route/index.md#create)
 
-```js
+```json
 {
     "success": true,
     "external_id_counts": [{external_id: "456", count: 2}] // optional

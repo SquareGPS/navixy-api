@@ -42,7 +42,7 @@ $ curl -X POST '{{ extra.api_example_url }}/geocoder/search_address' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "locations": [
@@ -59,7 +59,7 @@ $ curl -X POST '{{ extra.api_example_url }}/geocoder/search_address' \
 
 where **details_object** is:
 
-```js
+```json
 {
     "country": <string>, // optional
     "province": <string>, // optional
@@ -109,7 +109,7 @@ $ curl -X POST '{{ extra.api_example_url }}/geocoder/search_location' \
 ```
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": <address>, // string

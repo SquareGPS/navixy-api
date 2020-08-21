@@ -86,7 +86,7 @@ none
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [<subuser>, ... ] //list of all sub-users belonging to this master account
@@ -114,7 +114,7 @@ Allows you to create sub-users associated to your master account.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "id": <id of the created sub-user>

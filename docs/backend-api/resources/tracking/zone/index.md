@@ -16,7 +16,7 @@ represented by big arrays of data.
 **zone** is JSON object with one of types: **sausage**, **circle** or **polygon**.
 
 #### circle:
-```js
+```json
 {
     "id": 1,                    // (int) zone ID
     "type": "circle",
@@ -33,7 +33,7 @@ represented by big arrays of data.
 ```
 
 #### polygon:
-```js
+```json
 {
     "id": 1,                    // (int) zone ID
     "type": "polygon",
@@ -46,7 +46,7 @@ represented by big arrays of data.
 
 #### sausage:
 represents all points within certain distance to the specified polyline
-```js
+```json
 {
     "id": 1,                    // (int) zone ID
     "type": "sausage",
@@ -66,7 +66,7 @@ API base path: `/zone`
 Convert batch of tab-delimited circle zones and return list of checked zones with errors.
 
 **required subuser rights**: zone_update
-```js
+```json
 <checked_task> =
    {
         ... //all fields from zones
@@ -84,7 +84,7 @@ Convert batch of tab-delimited circle zones and return list of checked zones wit
 If ‘file_id’ is set – ‘batch’ parameter will be ignored.
 
 #### response
-```js
+```json
 {
     "success": true,
     "list": [ <checked_zone>, ... ]
@@ -107,7 +107,7 @@ Create new zone.
 **zone.color** is optional here.
 
 #### response
-```js
+```json
 {
     "success": true,
     "id": ${int} // ID of the created zone
@@ -132,7 +132,7 @@ OR
 *   zone_ids – array of int
 
 #### response
-```js
+```json
 { "success": true }
 ```
 
@@ -141,7 +141,7 @@ OR
 *   203 (Delete entity associated with)
 
 #### response
-```js
+```json
 {
     "success": false,
     "status": {
@@ -163,7 +163,7 @@ where `<rule_id>` is ID of the rule which uses the specified zone.
 Get all user’s zones.
 
 #### response
-```js
+```json
 {
     "success": true,
     "list": [ <zone>, ... ]
@@ -183,7 +183,7 @@ Update zone parameters for the specified zone. Note that zone must exist, must b
 **zone.color** is optional. If it not passed then color will not be changed.
 
 #### response
-```js
+```json
 { "success": true }
 ```
 
@@ -207,7 +207,7 @@ Import geofences from KML file.
 
 #### response
 if `dry_run=true`:
-```js
+```json
 {
   "success": true,
   "list": [
@@ -246,7 +246,7 @@ if `dry_run=true`:
 ```
 
 if `dry_run=false`:
-```js
+```json
 {
     "success": true,
     "list": [ 1, 2 ]

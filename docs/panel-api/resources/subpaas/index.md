@@ -68,7 +68,7 @@ Get list of all subpaases for dealer. Dealer id will be taken from the session.
 
 #### response
 
-```js
+```json
 {
   "success": true,
   "list": [
@@ -105,7 +105,7 @@ Get subpaas info by its id.
 
 #### response
 
-```js
+```json
 {
   "success": true,
   "value": {

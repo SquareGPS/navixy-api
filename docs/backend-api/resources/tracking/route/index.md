@@ -21,7 +21,7 @@ Get route points via specified route provider.
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
 #### response
-```js
+```json
 {
     "success": true,
     "distance": 2546, // (int) length in meters
@@ -32,7 +32,7 @@ Where **location** described in [data types description section](../../../gettin
 ```
 
 **key_points** is list of points corresponding to **start** point, **waypoints** and **end** point (in that sequence). Where **key_point** is JSON object:
-```js
+```json
 {
     "id": 123,        // (int) index in points 'list'
     "lat": 56.827,    // latitude

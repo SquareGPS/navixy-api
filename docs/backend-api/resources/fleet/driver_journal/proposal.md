@@ -31,7 +31,7 @@ Tracks are selected by intersecting their date range with date range from reques
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <proposal_object>, ... ]
@@ -42,7 +42,7 @@ Tracks are selected by intersecting their date range with date range from reques
 
 `proposal_object` is:
 
-```js
+```json
 {
       "tracker_id": 1, // id of the tracker
       "employee_id": 1, // nullable. Driver's id on the current "subtrack"

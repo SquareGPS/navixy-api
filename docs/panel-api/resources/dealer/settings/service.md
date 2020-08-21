@@ -13,7 +13,7 @@ Get current monitoring service settings.
 
 #### response
 
-```js
+```json
 {
   "success": true,
   "value": {
