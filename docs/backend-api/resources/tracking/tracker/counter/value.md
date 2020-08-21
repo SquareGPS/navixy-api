@@ -24,7 +24,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/counter/value/read' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": 18.9  //float. last value of counter
@@ -56,7 +56,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/counter/value/list' \
 
 #### response
 
-```js
+```json
 {
   "success": true,
   "value": { //map with tracker's ids as keys
