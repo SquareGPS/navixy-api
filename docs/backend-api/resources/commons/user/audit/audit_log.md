@@ -9,7 +9,7 @@ API path: `/user/audit/log`.
 
 **audit_object** type is JSON object:
 
-```json5
+```json
 {
     "id": 1, // ID of the audit record
     "user_id": 3, // Master user's ID
@@ -48,7 +48,7 @@ Gets list of audit records available for current user.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [ <audit_object>, ... ]

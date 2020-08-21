@@ -7,7 +7,7 @@ description: Tracker
 
 ## Tracker data structure
 
-```json5
+```json
 {
     "id": ${int},                   // tracker id aka object_id
     "label": ${string},             // tracker label
@@ -57,7 +57,7 @@ Provides information about trackers which were considered “active” by our Pa
 
 **Return**
 
-```json5
+```json
 {
   "success": true,
   "list": [
@@ -107,7 +107,7 @@ Assign bundle to specified ICCID
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -144,7 +144,7 @@ Assign bundle to specified order ID.
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -174,7 +174,7 @@ Add multiple bundles at once.
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -209,7 +209,7 @@ If `filter` is used, entities will be returned only if filter string is containe
 
 **Return**
 
-```json5
+```json
 {
     "success": true,
     "list" : [ <bundle> , ... ],
@@ -241,7 +241,7 @@ Returns the bundle object with the specified imei.
 
 **Return**
 
-```json5
+```json
 {
     "success": true,
     "value" : <bundle>
@@ -272,7 +272,7 @@ Assign specified equipment to bundle
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -300,7 +300,7 @@ Creates a clone of the existing non-clone tracker.
 
 **Return**
 
-```json5
+```json
 {
     "success": true,
     "id": 3947 // id of the created clone
@@ -335,7 +335,7 @@ Returns auth token to connect to tracker command console.
 
 **Return**
 
-```json5
+```json
 {
     "success": true,
     "key": "6ad7490d4ec7f600ef10d4db41584980cd3ac230", // a key which is used to connect to console
@@ -362,7 +362,7 @@ Mark tracker as deleted and corrupt its source device_id and phone. Rename track
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -372,7 +372,7 @@ Mark tracker as deleted and corrupt its source device_id and phone. Rename track
 * 219 – Not allowed for clones of the device (if source tracker is clone itself)
 * 252 – Device already corrupted
 * 253 – Device has clones
-```json5
+```json
 {
     "success": false,
     "status": {
@@ -409,7 +409,7 @@ The action is considered completed successfully, even if some of the trackers co
 | `not_deleted_trackers` (optional)| Description of failed deletion operations |array of objects `{"id":integer, "error":string}` |
 
 Example:
-```json5
+```json
 {
   "success": true,
   "deleted_count": 2,
@@ -451,7 +451,7 @@ Deletes a clone of the existing tracker.
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -460,7 +460,7 @@ Deletes a clone of the existing tracker.
 * 201 (Not found in database) – if tracker was not found
 * 249 (Operation available for clones only) – if source tracker is not a clone
 * 203 (Delete entity associated with) – if there are some rules or vehicles associated with tracker
-```json5
+```json
 {
     "success": false,
     "status": {
@@ -471,7 +471,7 @@ Deletes a clone of the existing tracker.
 }
 ```
 or
-```json5
+```json
 {
     "success": false,
     "status": {
@@ -510,7 +510,7 @@ If `filter` is used, entities will be returned only if filter string is containe
 
 **Return**
 
-```json5
+```json
 {
     "success": true,
     "list" : [ <tracker> , ... ],
@@ -542,7 +542,7 @@ Moves the existing non-clone tracker to another user belonging to same dealer.
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -572,7 +572,7 @@ Returns the tracker object with the specified id.
 
 **Return**
 
-```json5
+```json
 {
     "success": true,
     "value" : ${tracker}
@@ -606,7 +606,7 @@ Device models navixymobile*, mobile_unknown*, iosnavixytracker* are not supporte
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -642,7 +642,7 @@ Updates tracker settings.
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -672,7 +672,7 @@ Updates tracker settings.
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -688,7 +688,7 @@ Updates tracker settings.
 
 **Required permissions**
 
-```json5
+```json
 trackers: "update"
 transactions: "create"
 tariffs: "read"
@@ -705,7 +705,7 @@ tariffs: "read"
 
 **Return**
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -807,7 +807,7 @@ type | **text** or **hex**. Optional, default is **text** | String
 reliable | **false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **true** | Boolean
 
 #### response
-```json5
+```json
 { "success": true }
 ```
 
@@ -817,7 +817,7 @@ reliable | **false** if the command does not need to be resent when the device i
 *   252 (Device already corrupted) – if tracker’s source is corrupted
 
 #### example response with an error:
-```json5
+```json
 {
   "success": false,
   "status": {

@@ -29,7 +29,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "dealer": {

@@ -20,7 +20,7 @@ Get route points via [OSRM API](https://github.com/Project-OSRM/osrm-backend/wik
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
 #### response
-```json5
+```json
 {
     "success": true,
     "distance": 2546, // (int) length in meters
@@ -31,7 +31,7 @@ Where **location** described in [data types description section](../../../gettin
 ```
 
 **key_points** is list of points corresponding to **start** point, **waypoints** and **end** point (in that sequence). Where **key_point** is JSON object:
-```json5
+```json
 {
     "id": 123,        // (int) index in points 'list'
     "lat": 56.827,    // latitude
@@ -42,7 +42,7 @@ Where **location** described in [data types description section](../../../gettin
 #### errors
 *   215 (External service error)
 *   218 (Malformed external service parameters)
-    ```json5
+    ```json
     {
         "success": false,
         "status": {

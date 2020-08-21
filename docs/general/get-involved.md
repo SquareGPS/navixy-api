@@ -164,7 +164,7 @@ $ curl -X POST '{{ extra.api_example_url }}/path/to/resource/method1' \
 
 ### Return
 
-```json5
+```json
 { "success": true }
 ```
 

@@ -19,7 +19,7 @@ Delete report from db.
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -99,7 +99,7 @@ show_seconds|Flag to define whether time values in report should have format wit
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "id": 222 // (int) id of the report queued for generation. 
@@ -110,7 +110,7 @@ show_seconds|Flag to define whether time values in report should have format wit
 #### errors
 *   15 (Too many requests / rate limit exceeded) - the number of reports created by one user in parallel is limited.
 *   211 (Requested time span is too big) - interval from 'from' to 'to' is bigger then max allowed time span (see response)
-    ```json5
+    ```json
     {
         "success": false,
         "status": {
@@ -134,7 +134,7 @@ Returns info about all available generated or in-progress reports.
 
 #### response
 
-```json5
+```json
 {
     "success": true,"list": [
     {
@@ -178,7 +178,7 @@ Retrieve generated report as JSON.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "report": <body of the generated report. Its contents are plugin-dependent>   //Object
@@ -200,7 +200,7 @@ Returns a report generation status for the specified report id. **required subus
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "percent_ready": <report readiness in percent, e.g. 75>   //int

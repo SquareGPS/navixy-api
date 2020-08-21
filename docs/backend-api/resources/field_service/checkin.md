@@ -14,7 +14,7 @@ work done, or notify about a malfunction along with filled form describing the p
 Check-ins cannot be created using web API, so all actions are read-only.
 
 `<checkin>` is:
-```json5
+```json
 {
     "id": 1, //identifier
     "marker_time": "2017-03-15 12:36:27", // non-null, time of check-in creation
@@ -36,7 +36,7 @@ Check-ins cannot be created using web API, so all actions are read-only.
 
 `<checkin_file>` is:
 
-```json5
+```json
 {
     "id": 16, // file id
     "storage_id": 1,
@@ -54,7 +54,7 @@ Check-ins cannot be created using web API, so all actions are read-only.
 ```
 
 `<metadata_object>` is:
-```json5
+```json
 {
  "orientation":  <int, image exif orientation>,
 }
@@ -80,7 +80,7 @@ Get check-in which id is equal to `checkin_id`. Required tariff features: `check
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "value": <checkin>
@@ -110,7 +110,7 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [<checkin>, ... ] // list of check-ins

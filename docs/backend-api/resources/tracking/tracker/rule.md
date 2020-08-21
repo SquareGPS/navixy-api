@@ -7,7 +7,7 @@ description: /rule
 
 A rule element consists of following fields:
 
-```json5
+```json
 {
     "id": ${int},
     "name": ${string},
@@ -186,7 +186,7 @@ where
     }
     ```
     * **type**=”**driver_assistance**”
-    ```json5
+    ```json
     {
         "forward_collision_enable" : ${boolean}, // enable/disable notifications about forward collision warnings
         "headway_warning_enabled" :  ${boolean}, // notifications about headway warnings
@@ -194,13 +194,13 @@ where
     }
     ```
     * **type**=”**fuel_level_leap**”
-    ```json5
+    ```json
     {
        "sensor_id": 123
     }
     ```
     * **type**=”**sensor_range**”
-    ```json5
+    ```json
     {
         "sensor_id": 123,
         "min": 1.0, // (double) optional. null means negative infinity
@@ -209,7 +209,7 @@ where
     }
     ```
     * **type**=”**route**”
-    ```json5
+    ```json
     {
        "allow_exit_at_endpoints": ${boolean} // optional, disable notifications for deviations at start and end points
     }
@@ -268,7 +268,7 @@ Delete rule with rule_id and all related objects from the database.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -280,7 +280,7 @@ List tracker rules binded to tracker with id=**tracker_id** or all user’s trac
 
 #### response
 
-```json5
+```json
 {
    "success": true,
    "list": [ <rule>, ... ] // list of rules
@@ -298,7 +298,7 @@ Unbind trackers from rule with **rule_id**.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -315,7 +315,7 @@ Update rule and scheduled intervals.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 

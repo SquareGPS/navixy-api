@@ -20,7 +20,7 @@ Assign icon\_id (from standard icon set) to this vehicle. Icon\_id can be null â
 
 ##### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -57,7 +57,7 @@ File part **mime** type must be one of :
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "value": <string> // avatar file name

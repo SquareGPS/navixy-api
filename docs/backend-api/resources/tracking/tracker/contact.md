@@ -22,7 +22,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "contacts": [ <contact>, ... ] // all established contacts
@@ -31,7 +31,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
 ```
 where **contact** object is:
 
-```json5
+```json
 {
     "user_id": 12059, //id of the user with which "contact" is established
     "first_name": "Adam",

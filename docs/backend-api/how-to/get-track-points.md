@@ -34,7 +34,7 @@ Optional parameters:
 
 The platform will reply:
 
-```json5
+```json
 {
     "success": true,
     "limit_exceeded": true, // boolean. true if requested time period exceeds limit specified in tracker's tariff

@@ -9,7 +9,7 @@ API path: `/tariff`.
 
 #### Tariff JSON object structure:
 
-```json5
+```json
 {
     "id": 10, // (int) unique id
     "name": "Business", // (string) tariff description
@@ -48,7 +48,7 @@ Listed only tariffs [available for user’s legal type](#tariff).
 * **device_type** – (string) one of ‘tracker’, ‘camera’ or ‘socket’.
 
 #### response
-```json5
+```json
 {
   "success": true,
   "list": [${tariff}, ...] // list of JSON objects

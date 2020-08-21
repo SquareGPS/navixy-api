@@ -28,6 +28,6 @@ Screenshot and log will be added to email as attachments.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```

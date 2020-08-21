@@ -13,7 +13,7 @@ API base path: `/task/checkpoint`.
 
 ### Checkpoint object structure
 
-```json5
+```json
 <checkpoint> =
     {
         "id": 111,   //primary key. used in checkpoint/update, *IGNORED* in checkpoint/create
@@ -61,7 +61,7 @@ Inserts the specified checkpoint at the specified position (`order`) in the pare
 Call returns the identifier of the created task in the form of JSON.
 Returned object also can include "external_id_counts" field see `task/route/create` [method description](route/index.md#create).
 
-```json5
+```json
 {
     "success": true,
     "id": 222,
@@ -88,7 +88,7 @@ Delete checkpoint with the specified id.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -108,7 +108,7 @@ Get checkpoints belonging to user with given ids
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [ <checkpoint>, ... ]
@@ -131,7 +131,7 @@ Get route checkpoint by id.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "value":  ${checkpoint} // JSON object
@@ -158,7 +158,7 @@ Convert route checkpoint into a standalone task. If it’s the only checkpoint i
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -188,7 +188,7 @@ Changing `order` reorders all other checkpoints.
 Returned object also can include "external_id_counts" field see task/route/create [method description](route/index.md#create)
 
 
-```json5
+```json
 {
     "success": true,
     "external_id_counts": [{external_id: "456", count: 2}] // optional

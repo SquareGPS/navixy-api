@@ -9,7 +9,7 @@ Entity describes a class of objects for which representation and editable fields
 For example, you can add your own custom fields to **places** entity or rearrange existing fields.
 
 **entity** is:
-```json5
+```json
 <entity> = {
     "id": 123, //identifier
     "type": "place", //currently, only "place" is supported
@@ -54,7 +54,7 @@ none
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [ <entity>, ... ]
@@ -80,7 +80,7 @@ type      | type of an entity | entity type string, see above
 **Exactly one of these parameters must be specified. They can't be both null or both non-null.**
 
 #### response
-```json5
+```json
 {
     "success": true,
     "entity": <entity>, 
@@ -113,7 +113,7 @@ entity    | Entity object with valid id and settings | \<entity\> object
 * 7 (Invalid parameters) - if entity object violates restrictions described above
 
 #### response
-```json5
+```json
 {
     "success": true
 }

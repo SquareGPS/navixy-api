@@ -16,7 +16,7 @@ Assign a status listing (or remove assignment) to the tracker.
 * **listing_id** – **int**. ID of the status listing. Omit this parameter completely, if you want remove the assignment.
 
 #### response
-```json5
+```json
 { "success": true }
 ```
 

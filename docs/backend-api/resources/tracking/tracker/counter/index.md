@@ -13,7 +13,7 @@ Read counter of passed **type**.
 * **type** - **string**. counter type. one of ["odometer", "fuel_consumed", "engine_hours"]
 
 #### response
-```json5
+```json
 {
   "success": true,
   "value": {
@@ -42,7 +42,7 @@ Updates counter of passed **type**.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 

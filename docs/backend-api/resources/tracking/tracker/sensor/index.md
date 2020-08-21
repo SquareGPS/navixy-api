@@ -10,7 +10,7 @@ Data types
 Sensor sub-types
 Metering sensor
 
-```json5
+```json
 {
     "type": "metering",
     "id": <int>,
@@ -26,7 +26,7 @@ Metering sensor
 
 where **parameters** is
 
-```json5
+```json
 {
     "parent_ids": <array>, //optional, array of parent_ids for composite sensor
     "volume": <double>,    //optional, volume for composite sensor
@@ -39,7 +39,7 @@ where **parameters** is
 
 Discrete input
 
-```json5
+```json
 {
     "type": "discrete",
     "id": <int>,
@@ -59,7 +59,7 @@ Create sensor.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "id": 937 // int. id of created sensor
@@ -83,7 +83,7 @@ Delete sensor with **sensor_id** from the database.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -99,7 +99,7 @@ List tracker sensors binded to tracker with specified id (**tracker_id** paramet
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
 #### response
-```json5
+```json
 {
    "success": true,
    "list": [ <sensor>, ... ] // list of sensors
@@ -121,7 +121,7 @@ Update sensor.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 

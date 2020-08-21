@@ -18,7 +18,7 @@ Request parameters:
 * __events__ (required, enum[], without nulls) - list of events to subscribe. Event can be one of: `state`.
 
 Request sample: 
-```json5
+```json
 {
   "action": "subscribe",
   "hash": "f4bf1b75403d851653dad99c78c4b237",
@@ -51,7 +51,7 @@ current tracker state will be sent automatically.
    
 
 Response sample:
-```json5
+```json
 {
   "type": "response",
   "action": "subscription/subscribe",
@@ -88,7 +88,7 @@ Request parameters:
 * __events__ (required, enum[], without nulls) - list of events to unsubscribe. Event can be one of: `state`.
 
 Request sample:
-```json5
+```json
 {
   "action": "unsubscribe",
   "hash": "f4bf1b75403d851653dad99c78c4b237",
@@ -107,7 +107,7 @@ Response parameters:
 * __data__ (required, int[], without nulls) - list of the tracker ids from request.
 
 Response sample:
-```json5
+```json
 {
   "type": "response",
   "action": "subscription/unsubscribe",
@@ -132,7 +132,7 @@ Error response parameters:
 * __data__ (optional, string) - part of parameters from request or some info for unexpected errors.
 
 Error response sample:
-```json5
+```json
 {
     "type": "error",
     "action": "subscription/subscribe",

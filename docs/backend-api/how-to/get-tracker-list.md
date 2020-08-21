@@ -13,7 +13,7 @@ You can receive a list of all trackers in user's account with [tracker/list](../
     {{ extra.api_example_url }}/tracker/list?hash=your_hash
 
 It will return to you
-```json5
+```json
 {
     "success": true,
     "list": [ ${tracker}, ... ] // list of JSON-objects
@@ -34,7 +34,7 @@ To get a list of trackers with labels matching the filter use this API call:
     {{ extra.api_example_url }}/tracker/list?hash=your_hash&label=[“tracker’s_name_contains”,…]
 
 Tracker object structure is next:
-```json5
+```json
 {
     "id": ${int},                          // tracker id aka object_id
     "label": ${string},                    // tracker label

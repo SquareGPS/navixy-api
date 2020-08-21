@@ -19,7 +19,7 @@ Binds Push token with current session.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -49,7 +49,7 @@ Deletes push token that bound with the session.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 

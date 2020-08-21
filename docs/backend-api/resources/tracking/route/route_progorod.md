@@ -22,7 +22,7 @@ Get route points using [Progorod router](https://giswiki.tmcrussia.com/index.php
 Where **location** described in [data types description section](../../../getting-started.md#data-types). Order of waypoints may be changed.
 
 #### response
-```json5
+```json
 {
     "success": true,
     "distance": 2546, // (int) length in meters
@@ -33,7 +33,7 @@ Where **location** described in [data types description section](../../../gettin
 ```
 
 **key_points** is list of points corresponding to **start** point, **waypoints** and **end** point (in that sequence). If some of key points not found then they don't listed there. Where **key_point** is JSON object:
-```json5
+```json
 {
     "id": 123,        // (int) index in points 'list'
     "lat": 56.827,    // latitude
@@ -45,7 +45,7 @@ Where **location** described in [data types description section](../../../gettin
 
 *   215 (External service error)
 *   218 (Malformed external service parameters) – Contains info about error:
-```json5
+```json
 {
     "success": false,
     "status": {

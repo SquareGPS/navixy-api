@@ -25,7 +25,7 @@ Update existing form values of given task.
 
 values object example
 
-```json5
+```json
 {
     "111-aaa-whatever": {
       "type": "text",
@@ -38,7 +38,7 @@ For **value** object description, see [form/form-fields-and-values/](../../form/
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -51,7 +51,7 @@ For **value** object description, see [form/form-fields-and-values/](../../form/
 *   255 – Invalid task state (if task has already done or failed or no values was submitted)
 *   242 – There were errors during content validation (if given values are invalid for the form). Example:
 
-```json5
+```json
 {
     "success": false,
     "status": {

@@ -13,6 +13,6 @@ Prolongs current user session.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```

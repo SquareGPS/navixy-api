@@ -11,7 +11,7 @@ Plugins are special software modules which modify the behavior of various API ca
 
 #### Plugin object structure
 
-```json5
+```json
 {
     "id": <plugin id, e.g. 1>, //int
     "type": <plugin type, e.g. "tracker_register">, //String
@@ -27,7 +27,7 @@ Plugins are special software modules which modify the behavior of various API ca
 
 #### Example
 
-```json5
+```json
 {
     "id": 4,
     "type": "tracker_report",
@@ -46,7 +46,7 @@ Get all plugins available to the user. List of available plugins may vary from u
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [ <plugin>, … ]

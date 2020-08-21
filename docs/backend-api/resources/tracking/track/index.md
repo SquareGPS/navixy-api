@@ -23,7 +23,7 @@ Download track points as KML/KMZ file for the specified track ID, tracker and ti
 
 #### response
 _KML/KMZ file_ or _JSON response_ if requested time period exceeds limit specified in tracker's tariff:
-```json5
+```json
 { 
     "success": true, 
     "list": [], 
@@ -50,7 +50,7 @@ Get a list of track descriptions for the specified tracker and time period.
 * **count_events** – **boolean**. (optional, default=false) If true, number of events occurred during each non-singlepoint track will be returned.
 
 #### response
-```json5
+```json
 {
     "success": true,
     "limit_exceeded": <true if requested time period exceeds limit specified in tracker's tariff>, //boolean
@@ -58,7 +58,7 @@ Get a list of track descriptions for the specified tracker and time period.
 }
 ```
 where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
-```json5
+```json
 <regular> =
 {
     "id": <track id>, //int
@@ -133,7 +133,7 @@ Get track points for the specified track ID, tracker and time period.
 * **filter** – **boolean**. (optional) If specified, the returned track will be filtered, applicable only for LBS tracks now.
 
 #### response
-```json5
+```json
 {
     "success": true,
     "limit_exceeded": true,   // boolean. true if requested time period exceeds limit specified in tracker's tariff

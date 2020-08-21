@@ -7,7 +7,7 @@ description: /equipment
 
 ## equipment data structure:
 
-```json5
+```json
 {
   equip_id: 33, 
   model_name: "SPT10 SB", 
@@ -27,7 +27,7 @@ Returns list of all equipment which can be assigned to tracker bundles.
 
 ### return
 
-```json5
+```json
 {
     "success": true,
     "list" : [ <equipment> , ... ] 

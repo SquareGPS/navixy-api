@@ -13,7 +13,7 @@ Get user’s files statistic.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "value": {

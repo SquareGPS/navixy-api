@@ -32,7 +32,7 @@ Attach new form to the existing task or checkpoint. Form is always created on th
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -59,7 +59,7 @@ All form data will be lost!
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -121,7 +121,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
 *   **include_unsubmitted** (_boolean, required_). If true, unsubmitted forms shall be included in the list.
 *   **filters** (_object, optional_). Specifies the criteria for filtering the list based on the values of the data fields. Conditions are combined by logical AND.\ Filters object contains following optional elements:
 
-```json5
+```json
 {
     "employee_full_name": , // a sequence of characters for partial matching (against the name of the associated employee)
     "form_description": ,
@@ -142,7 +142,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
 *   **task_arrival_period** (*&lt;period_object&gt;, optional*).
 *   **task_completion_period** (*&lt;period_object&gt;, optional*).
 
-```json5
+```json
 <period_object>=
     {
         "from": <date/time>,
@@ -154,7 +154,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "count": N, //total number of forms matching the query
@@ -235,7 +235,7 @@ Get form associated with the specified task.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "value" : <form>, //form object, or null if no form is attached
@@ -274,7 +274,7 @@ Get form associated with the specified task.
 
 metadata object:
 
-```json5
+```json
 {
  "orientation":  <int, image exif orientation>,
 }

@@ -9,7 +9,7 @@ API path: `/driver/journal/entry`.
 
 `driver_journal_entry` type is JSON object:
 
-```json5
+```json
 {
     "tracker_id": 1,  // Id of the tracker
     "start_date": "2018-08-28 07:03:39",  // Start date
@@ -59,7 +59,7 @@ If there no `entry_ids` in request, entries are selected by intersecting their d
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [ <driver_journal_entry>, ... ]
@@ -76,7 +76,7 @@ Create driver journal entries.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -90,14 +90,14 @@ Update driver journal entry. Only two fields (**type** and **comment**) are avai
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
 
 `driver_journal_entry_update_request` type is JSON object:
 
-```json5
+```json
 {
     "id": 1, // id of the driver journal entry
     "type": 1, // new type of the driver journal entry
@@ -115,7 +115,7 @@ Delete driver journal entries.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 

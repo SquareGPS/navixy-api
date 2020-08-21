@@ -22,7 +22,7 @@ Give access for sub-user to the specified trackers.
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -46,7 +46,7 @@ Get a list of tracker ids to which this sub-user has access.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list" : [${tracker_id1}, ...] //list of tracker ids to which this sub-user has acccess
@@ -71,7 +71,7 @@ Disable access for sub-user to the specified trackers.
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }

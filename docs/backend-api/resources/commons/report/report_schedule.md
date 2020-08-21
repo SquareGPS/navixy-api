@@ -82,7 +82,7 @@ schedule_id | Id of the report schedule to delete | int
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -102,7 +102,7 @@ Get all report schedules belonging to user.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [ <schedule_entry>, ... ]
@@ -125,7 +125,7 @@ schedule | <schedule> object without fields which are _IGNORED_| JSON object
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
