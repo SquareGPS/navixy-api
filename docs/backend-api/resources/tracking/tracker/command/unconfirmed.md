@@ -23,10 +23,10 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/command/unconfirmed/count' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
-    "count": <number of commands, e.g. 0> //int
+    "count": <number of commands, e.g. 0>
 }
 ```
 
