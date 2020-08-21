@@ -1,6 +1,6 @@
 ---
-title: /portlets
-description: /portlets
+title: Portlets
+description: Portlets
 ---
 
 ### engine_control_atrack

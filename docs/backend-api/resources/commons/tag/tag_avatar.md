@@ -19,7 +19,7 @@ API path: `/tag/avatar`.
 
 Assign icon_id (from standard icon set) to this tag. Icon_id can be null – this means that uploaded avatar should be used instead of icon.
 
-#### return
+#### response
 
 ```js
 {
@@ -57,7 +57,7 @@ File part **mime** type must be one of:
 *   **file** – image file
 *   **redirect_target** – (optional) URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded response json>`
 
-#### return
+#### response
 
 ```js
 {

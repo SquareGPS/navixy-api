@@ -17,7 +17,7 @@ Get list of user’s billing transactions for the specified period.
 * **to** – date/time. End date/time for searching. must be after “from” date.
 * **limit** – int (optional). Maximum number of returned transactions.
 
-#### return
+#### response
 
 ```js
 {

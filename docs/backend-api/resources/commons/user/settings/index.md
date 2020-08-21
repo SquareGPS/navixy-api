@@ -43,7 +43,7 @@ CRUD actions for user settings.
 
 Read current user’s settings.
 
-#### return
+#### response
 
 ```js
 {
@@ -80,7 +80,7 @@ Update current user’s settings.
 
 See examples above.
 
-#### return
+#### response
 
 ```json
 { "success": true }

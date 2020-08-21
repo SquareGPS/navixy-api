@@ -17,7 +17,7 @@ Delete report from db.
 
 `report_id`
 
-#### return
+#### response
 
 ```json
 {
@@ -43,7 +43,7 @@ Retrieve generated report as a file.
 
 (also, there is hidden boolean parameter named "headless". If you, for some reason, need report without title page and TOC, set it to "true", otherwise - don't). Currently, 'pdf', 'xls' and 'xlsx' formats is supported.
 
-#### return
+#### response
 
 A report rendered to file (standard file download).
 
@@ -97,7 +97,7 @@ show_seconds|Flag to define whether time values in report should have format wit
         ]
     }
 
-#### return
+#### response
 
 ```js
 {
@@ -132,7 +132,7 @@ Returns info about all available generated or in-progress reports.
 
 **required subuser rights**: reports
 
-#### return
+#### response
 
 ```js
 {
@@ -176,7 +176,7 @@ Retrieve generated report as JSON.
 
 *   report_id
 
-#### return
+#### response
 
 ```js
 {
@@ -198,7 +198,7 @@ Returns a report generation status for the specified report id. **required subus
 
 *   report_id
 
-#### return
+#### response
 
 ```js
 {

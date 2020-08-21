@@ -1,7 +1,9 @@
 ---
-title: /sensor
-description: /sensor
+title: Sensor actions
+description: Sensor actions
 ---
+
+API base path: `/tracker/sensor`
 
 ### sensor
 Data types
@@ -55,7 +57,7 @@ Create sensor.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor** - [JSON object](#sensor). Sensor object.
 
-#### return
+#### response
 
 ```js
 {
@@ -79,7 +81,7 @@ Delete sensor with **sensor_id** from the database.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor_id** - **int**. Sensor id.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -96,7 +98,7 @@ List tracker sensors binded to tracker with specified id (**tracker_id** paramet
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 ```js
 {
    "success": true,
@@ -117,7 +119,7 @@ Update sensor.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor** - [JSON object](#sensor). Sensor object.
 
-#### return
+#### response
 
 ```json
 { "success": true }

@@ -102,7 +102,7 @@ Returns history entry with the specified id.
 *   id – **int**. [history entry](#history-entries) ID
 *   add\_tracker\_label – **boolean**. optional, if true tracker label will be added to message
 
-#### return
+#### response
 
 ```js
 {
@@ -127,7 +127,7 @@ Mark history entry as read by **id** (see: [History entries](#history-entries)).
 
 *   id – **int**. [history entry](#history-entries) ID
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -144,7 +144,7 @@ Mark history entry as read by **id** (see: [History entries](#history-entries)).
 
 Mark all user’s history entries read.
 
-#### return
+#### response
 
 ```json
 { "success": true }

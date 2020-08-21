@@ -19,7 +19,7 @@ Read setting value by key.
 **key** - string. Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, '_' and '-'.
 
 
-#### returns:
+#### responses:
 
 ```json
 {
@@ -54,7 +54,7 @@ Set setting value.
 **key** - string. Length should be between 1 and 50 symbols. Should only contain English letters, digits, '_' and '-'.
 **value** - string. Length should be between 0 and 8192 symbols. 
 
-#### returns:
+#### responses:
 
 ```json
 { "success": true }

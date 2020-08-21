@@ -3,13 +3,15 @@ title: /readings
 description: /readings
 ---
 
+API base path: `/tracker/readings`
+
 ### list
 Get last values for all metering sensors and state values
 
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 ```js
 {
   "success": true,

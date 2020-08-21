@@ -16,7 +16,7 @@ Returns available history types with localized descriptions.
 *   **locale** – locale code
 *   **only_tracker_events** – boolean (optional). Default - true.
 
-#### return
+#### response
 
 ```js
 {

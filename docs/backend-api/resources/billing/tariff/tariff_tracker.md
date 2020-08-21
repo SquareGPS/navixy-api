@@ -35,7 +35,7 @@ Change tariff of tracker (with **tracker_id**) to new tariff (with **tariff_id**
 
 **required subuser rights**: admin (available only to master users)
 
-#### return
+#### response
 
 ```js
 { "success": true }
@@ -57,7 +57,7 @@ List tariffs on which user can switch passed tracker (even when tariff last chan
 
 *   tracker_id
 
-#### return
+#### response
 
 ```js
 {

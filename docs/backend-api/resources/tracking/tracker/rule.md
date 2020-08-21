@@ -3,7 +3,8 @@ title: /rule
 description: /rule
 ---
 
-### rule
+# Rule
+
 A rule element consists of following fields:
 
 ```js
@@ -214,7 +215,11 @@ where
     }
     ```
 * **date/time** and **local_time** types are described at 
-  the [data types description section](../../../../getting-started.md#data-types).
+  the [data types description section](../../../getting-started.md#data-types).
+
+## API actions
+
+API base path: `/tracker/rule`
 
 ### bind
 Bind rule with **rule_id** to trackers list.
@@ -226,7 +231,7 @@ Bind rule with **rule_id** to trackers list.
 * **trackers** - **array of int**. ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors.
 * **tracker_id** - **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 ```javascript
 { "success": true }
 ```
@@ -242,7 +247,7 @@ Create rule and scheduled intervals.
 #### parameters
 * **rule** - [JSON object](#rule).
 
-#### return
+#### response
 ```javascript
 {
     "success": true,
@@ -261,7 +266,7 @@ Delete rule with rule_id and all related objects from the database.
 #### parameters
 * **rule_id** - **int**.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -273,7 +278,7 @@ Delete rule with rule_id and all related objects from the database.
 ### list
 List tracker rules binded to tracker with id=**tracker_id** or all user’s tracker rules if **tracker_id** not passed.
 
-#### return
+#### response
 
 ```js
 {
@@ -291,7 +296,7 @@ Unbind trackers from rule with **rule_id**.
 * **rule_id** - **int**.
 * **trackers** - **array of int**. ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -308,7 +313,7 @@ Update rule and scheduled intervals.
 #### parameters
 * **rule** - [JSON object](#rule).
 
-#### return
+#### response
 
 ```json
 { "success": true }

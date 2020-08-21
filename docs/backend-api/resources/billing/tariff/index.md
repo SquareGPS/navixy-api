@@ -47,7 +47,7 @@ Listed only tariffs [available for user’s legal type](#tariff).
 
 * **device_type** – (string) one of ‘tracker’, ‘camera’ or ‘socket’.
 
-#### return
+#### response
 ```js
 {
   "success": true,

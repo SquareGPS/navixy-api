@@ -1,7 +1,9 @@
 ---
-title: /counter
-description: /counter
+title: Counter actions
+description: Counter actions
 ---
+
+API base path: `/tracker/counter`
 
 ### read
 Read counter of passed **type**.
@@ -10,7 +12,7 @@ Read counter of passed **type**.
 * **tracker_id** - **int**. id of the tracker
 * **type** - **string**. counter type. one of ["odometer", "fuel_consumed", "engine_hours"]
 
-#### return
+#### response
 ```js
 {
   "success": true,
@@ -38,7 +40,7 @@ Updates counter of passed **type**.
 * **multiplier** - **float**. new value of counter multiplier.
 * **sensor_id** - **int**. id of the sensor, which must be used as the source of odometer data (in case when parameter “type” equals “odometer”). if “type” is not “odometer”, “sensor_id” must be null.
 
-#### return
+#### response
 
 ```json
 { "success": true }

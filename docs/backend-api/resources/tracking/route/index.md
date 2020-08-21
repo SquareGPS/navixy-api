@@ -20,7 +20,7 @@ Get route points via specified route provider.
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
-#### return
+#### response
 ```js
 {
     "success": true,

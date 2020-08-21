@@ -14,7 +14,7 @@ In demo session allowed to create a new session only if it not already exists.
 
 **required subuser rights**: admin (available only to master users)
 
-#### return
+#### response
 
 ```js
 {
@@ -33,7 +33,7 @@ In demo session allowed to create a new session only if it not already exists.
 
 Return current user weblocator session key.
 
-#### return
+#### response
 
 ```js
 {

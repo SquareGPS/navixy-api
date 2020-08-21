@@ -52,7 +52,7 @@ Get list of entities which are available for customization.
 
 none
 
-#### return
+#### response
 
 ```js
 {
@@ -79,7 +79,7 @@ type      | type of an entity | entity type string, see above
 
 **Exactly one of these parameters must be specified. They can't be both null or both non-null.**
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -112,7 +112,7 @@ entity    | Entity object with valid id and settings | \<entity\> object
 * 201 (Not found in database) – if there is no entity with such ID
 * 7 (Invalid parameters) - if entity object violates restrictions described above
 
-#### return
+#### response
 ```js
 {
     "success": true

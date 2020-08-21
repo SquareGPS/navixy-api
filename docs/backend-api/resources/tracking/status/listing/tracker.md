@@ -15,7 +15,7 @@ Assign a status listing (or remove assignment) to the tracker.
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **listing_id** – **int**. ID of the status listing. Omit this parameter completely, if you want remove the assignment.
 
-#### return
+#### response
 ```json
 { "success": true }
 ```

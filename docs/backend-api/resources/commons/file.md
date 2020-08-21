@@ -11,7 +11,7 @@ API path: `/file`.
 
 Get user’s files statistic.
 
-#### return
+#### response
 
 ```js
 {

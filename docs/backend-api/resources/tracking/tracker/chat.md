@@ -3,6 +3,8 @@ title: Сhat
 description: Сhat with tracker
 ---
 
+API base path: `/tracker/chat`
+
 ### list
 
 Gets a list of chat messages.

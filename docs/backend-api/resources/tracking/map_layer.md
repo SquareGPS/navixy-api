@@ -23,7 +23,7 @@ name | description | type
 --- | --- | ---
 id | ID of the map layer | Int
 
-#### return
+#### response
 Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf-8`.
 
 #### errors
@@ -32,7 +32,7 @@ Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf
 ### list
 Returns metadata for all map layers for the user.
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -56,7 +56,7 @@ file | A KML file upload containing map_layer data | File upload
 redirect_target | (optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;* | String
 
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -78,7 +78,7 @@ name | description | type
 --- | --- | ---
 layer | &lt;map_layer_object&gt; | JSON object
 
-#### return
+#### response
 ```js
 { "success": true }
 ```
@@ -94,7 +94,7 @@ name | description | type
 --- | --- | ---
 id | ID of the map layer | Int
 
-#### return
+#### response
 ```js
 { "success": true }
 ```

@@ -19,7 +19,7 @@ Get route points via [OSRM API](https://github.com/Project-OSRM/osrm-backend/wik
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
-#### return
+#### response
 ```js
 {
     "success": true,

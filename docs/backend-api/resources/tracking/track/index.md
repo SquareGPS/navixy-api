@@ -21,7 +21,7 @@ Download track points as KML/KMZ file for the specified track ID, tracker and ti
 * **format** – **string**. file format, "kml" or "kmz", default is "kml".
 * **split** – **boolean**. If true, split tracks by folders with start/end placemarks and track line. default "false".
 
-#### return
+#### response
 _KML/KMZ file_ or _JSON response_ if requested time period exceeds limit specified in tracker's tariff:
 ```js
 { 
@@ -49,7 +49,7 @@ Get a list of track descriptions for the specified tracker and time period.
 * **cluster_single_reports** – **boolean**. (optional, default=false) If true, single point reports will be clustered by its coordinates.
 * **count_events** – **boolean**. (optional, default=false) If true, number of events occurred during each non-singlepoint track will be returned.
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -132,7 +132,7 @@ Get track points for the specified track ID, tracker and time period.
 * **point_limit** – **int**. (optional) If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000
 * **filter** – **boolean**. (optional) If specified, the returned track will be filtered, applicable only for LBS tracks now.
 
-#### return
+#### response
 ```js
 {
     "success": true,

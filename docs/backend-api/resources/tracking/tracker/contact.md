@@ -3,6 +3,11 @@ title: Contact
 description: Contact
 ---
 
+!!! warning "Deprecated"
+    This API action is deprecated and should not be used.
+
+API base path: `/tracker/contact`
+
 ### list
 
 Gets all user’s trackers with special grouping by “contacts”.

@@ -22,7 +22,7 @@ API path: `/vehicle/status/listing`.
 
 Gets all of user's vehicle statuses.
 
-#### return
+#### response
 
 ```js
 {
@@ -40,7 +40,7 @@ Update user's vehicle statuses.
 *   **statuses** – **vehicle\_status\_entry**[]. If status's id is not null, then update, else create new vehicle status.
 Old vehicle statuses, which are not present is this array, will be deleted.
 
-#### return
+#### response
 
 ```json
 { "success": true }

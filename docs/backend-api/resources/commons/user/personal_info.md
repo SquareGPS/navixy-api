@@ -40,7 +40,7 @@ and for `legal_entity` or `sole_trader`:
 *   **tin** – string. Taxpayer identification number.
 
 
-#### return
+#### response
 
 ```json
 { "success": true }

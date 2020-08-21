@@ -3,13 +3,15 @@ title: /unconfirmed
 description: /unconfirmed
 ---
 
+API base path: `/tracker/command/unconfirmed`
+
 ### count
 Get number of commands in queue for the specified tracker.
 
 #### parameters
 * **tracker_id** - **int**.  Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -29,7 +31,7 @@ Remove all pending SMS commands from the queue for the specified tracker.
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 
 ```json
 { "success": true }

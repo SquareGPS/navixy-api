@@ -1,13 +1,17 @@
 ---
-title: Zone
-description: Zone
+title: Working with zones
+description: Working with zones
 ---
 
-# Zone
+# Working with zones
 
-API path: `/zone`.
+Zones are used in rules to limit rule area of activity. Also zone names are shown in reports after the address, if 
+an event happened inside the zone.
 
-CRUD actions for zones. Note that zone points are handled separately because they are represented by big arrays of data.
+This document describes CRUD actions for zones. Note that zone points are handled separately because they are 
+represented by big arrays of data.
+
+## Entity description
 
 **zone** is JSON object with one of types: **sausage**, **circle** or **polygon**.
 
@@ -52,7 +56,11 @@ represents all points within certain distance to the specified polyline
     "radius": 150,              // (int) polyline radius in meters
     "tags": [289]               // ([int]) array of tag IDs
 }
-```
+```                   
+
+## API actions
+
+API base path: `/zone`
 
 ### batch_convert
 Convert batch of tab-delimited circle zones and return list of checked zones with errors.
@@ -75,7 +83,7 @@ Convert batch of tab-delimited circle zones and return list of checked zones wit
 
 If ‘file_id’ is set – ‘batch’ parameter will be ignored.
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -98,7 +106,7 @@ Create new zone.
 
 **zone.color** is optional here.
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -123,7 +131,7 @@ OR
 
 *   zone_ids – array of int
 
-#### return
+#### response
 ```js
 { "success": true }
 ```
@@ -132,7 +140,7 @@ OR
 *   201 (Not found in database)
 *   203 (Delete entity associated with)
 
-#### return
+#### response
 ```js
 {
     "success": false,
@@ -154,7 +162,7 @@ where `<rule_id>` is ID of the rule which uses the specified zone.
 ### list
 Get all user’s zones.
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -174,7 +182,7 @@ Update zone parameters for the specified zone. Note that zone must exist, must b
 
 **zone.color** is optional. If it not passed then color will not be changed.
 
-#### return
+#### response
 ```js
 { "success": true }
 ```
@@ -197,7 +205,7 @@ Import geofences from KML file.
 *   **dry_run** – (Boolean) if true returns ready to create geofences or creates it and returns list of IDs otherwise, default true
 *   **redirect_target** – (String, optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;*
 
-#### return
+#### response
 if `dry_run=true`:
 ```js
 {

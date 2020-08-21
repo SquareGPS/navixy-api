@@ -10,7 +10,7 @@ API path: `/notification`.
 ### list
 List user notifications.
 
-#### return
+#### response
 ```js
 {
     "success": true,

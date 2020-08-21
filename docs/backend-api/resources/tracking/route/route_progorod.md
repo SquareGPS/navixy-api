@@ -21,7 +21,7 @@ Get route points using [Progorod router](https://giswiki.tmcrussia.com/index.php
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types). Order of waypoints may be changed.
 
-#### return
+#### response
 ```js
 {
     "success": true,

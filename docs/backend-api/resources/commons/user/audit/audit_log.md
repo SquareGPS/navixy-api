@@ -46,7 +46,7 @@ Gets list of audit records available for current user.
     <br> — *host*
     <br> If no sort param is specified, then sorting equivalent to option `["action_date=asc"]` will be applied.
 
-#### return
+#### response
 
 ```js
 {

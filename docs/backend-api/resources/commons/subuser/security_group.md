@@ -66,7 +66,7 @@ Create new security group.
 
 * **group** - **JSON object**. ${security_group} without “id” field
 
-#### return
+#### response
 
 ```js
 {
@@ -91,7 +91,7 @@ All sub-users belonging to this group will be assigned to default (null) securit
 #### parameters
 * **security_group_id** - **int**. id of security group, which must be deleted.
 
-#### return
+#### response
 
 ```json
 {
@@ -114,7 +114,7 @@ List all security groups belonging to current user.
 #### parameters
 none.
 
-#### return
+#### response
 
 ```js
 {
@@ -139,7 +139,7 @@ Update existing security group.
 #### parameters
 * **group** - **JSON object**. ${security_group} with “id” field
 
-#### return
+#### response
 
 ```json
 {

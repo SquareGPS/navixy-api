@@ -13,7 +13,7 @@ Assign a status to the tracker.
 * **tracker_id** – **int**. ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **new_status_id** – **int**. ID of the status. Must belong to status listing assigned to this tracker.
 
-#### return
+#### response
 ```js
 {
   "success": true,
@@ -47,7 +47,7 @@ Get current assigned statuses for the specified trackers.
 #### parameters
 * **trackers** – **array of int**. List of the tracker’s IDs belonging to authorized user.
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -102,7 +102,7 @@ Get current assigned status of the tracker.
 #### parameters
 * **tracker_id** – **int**. ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 ```js
 {
   "success": true,

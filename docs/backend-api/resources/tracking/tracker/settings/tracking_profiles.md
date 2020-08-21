@@ -1,6 +1,6 @@
 ---
-title: /tracking_profiles
-description: /tracking_profiles
+title: Tracking profiles
+description: Tracking profiles
 ---
 
 ### albatross_s6

@@ -57,7 +57,7 @@ If there no `entry_ids` in request, entries are selected by intersecting their d
     <br> — type
     <br> If no sort param is specified, then sort option will be “start_date=acs”
 
-#### return
+#### response
 
 ```js
 {
@@ -74,7 +74,7 @@ Create driver journal entries.
 
 *   **entries** – **driver\_journal\_entry\[\]**. Array of **driver\_journal\_entry** objects without id.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -88,7 +88,7 @@ Update driver journal entry. Only two fields (**type** and **comment**) are avai
 
 *   **entry** – **driver\_journal\_entry\_update\_request** type. See below.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -113,7 +113,7 @@ Delete driver journal entries.
 
 *   **entry_ids** – **int\[\]**. Array of driver journal entries’ ids.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -135,6 +135,6 @@ same as in list method plus:
     — `type` (group entries by entry type)
     — `date` (group entries by start_date per day)
 
-#### return
+#### response
 
 A driver journal report file (standard file download).

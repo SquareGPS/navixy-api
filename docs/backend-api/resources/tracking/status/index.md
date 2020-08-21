@@ -34,7 +34,7 @@ Create new possible status for the specified status listing.
 * **listing_id** – **int**. ID of the listing for this status to attach to.
 * **status** – **JSON object**. <status> object without ID field.
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -55,7 +55,7 @@ Delete status entry.
 #### parameters
 * **status_id** – **int**. ID of the status belonging to authorized user.
 
-#### return
+#### response
 ```json
 { "success": true }
 ```
@@ -70,7 +70,7 @@ Get statuses belonging to the specified status listing.
 #### parameters
 * **listing_id** – **int**. ID of the status listing belonging to authorized user.
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -90,7 +90,7 @@ Update status properties.
 #### parameters
 * **status** – **JSON object**. <status> object with ID field
 
-#### return
+#### response
 ```json
 { "success": true }
 ```

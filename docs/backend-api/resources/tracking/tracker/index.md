@@ -1,11 +1,11 @@
 ---
-title: Tracker
+title: Working with trackers
 description: Tracker information
 ---
 
 Tracker is one of the key entities in our API. It represents tracking device registered in our GPS monitoring system. Lots of API calls are created for manipulation of tracker and/or its properties.
 
-### Tracker object structure
+## Tracker object structure
 
 ```js
 {
@@ -37,6 +37,10 @@ where **tag_binding** is:
   "ordinal": {int} // number that can be used as ordinal or kind of tag. must be unique for tracker. max value is 5
 }
 ```
+
+## API actions
+
+API base path: `/tracker`
 
 ### change_phone
 
@@ -844,7 +848,7 @@ Registers a new tracker using only IMEI. Automatic SMS commands will not be sent
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | label | User-defined label for this tracker. Must consist of prontable characters and have length between 1 and 60 | string | Courier |
-| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](./group/group.md#list) | int | 0 |
+| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](group.md#list) | int | 0 |
 | imei | tracker's IMEI | string | 35645587458999 |
 
 #### example
@@ -941,7 +945,7 @@ Common parameters are:
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | label | User-defined label for this tracker. Must consist of printable characters and have length between 1 and 60 | string | Courier |
-| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](./group/group.md#list) | int | 0 |
+| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](group.md#list) | int | 0 |
 | model | A code of one of the supported models. See [tracker/list_models](#list_models) | string | pt10 |
 | plugin_id | An id of a registration plugin which will be used to register the device. See [Registration plugins](../../commons/plugin/index.md) | int | 37 |
 | device_id | **Must** be specified if device model uses fixed device id. See [tracker/list_models](#list_models) | string | 4568005588562 |
@@ -957,7 +961,7 @@ Also we include **phone**, **apn_name**, **apn_user**, **apn_password** of the s
 device and **activation_code** since this parameters are required by plugin.
 
 You can try to “auto-detect” APN settings by phone number 
-using [apn_settings/read](./apn_settings/apn_settings.md#read) API call.
+using [apn_settings/read](apn_settings.md#read) API call.
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
@@ -1037,7 +1041,7 @@ command {
 
 **set_special_settings_command**
 
-This command is equivalent to API call [tracker/settings/special/update](./settings/special/special.md#update).
+This command is equivalent to API call [tracker/settings/special/update](settings/special/index.md#update).
 
 ```json
 command {
@@ -1045,7 +1049,7 @@ command {
   special_settings: <special settings JSON object>
 }
 ```
-See [special settings JSON object](./settings/special/special.md#read)
+See [special settings JSON object](settings/special/index.md#read)
 
 #### parameters
 

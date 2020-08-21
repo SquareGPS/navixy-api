@@ -25,7 +25,7 @@ API path: `/garage`.
 
 Get all garages belonging to user.
 
-#### return
+#### response
 
 ```js
 {
@@ -51,7 +51,7 @@ Create new garage.
 
 *   **garage** – an [garage object](#garage) Non-null.
 
-#### return
+#### response
 
 ```js
 {
@@ -76,7 +76,7 @@ Update existing garage.
 
 *   **garage** – an [garage object](#garage) Non-null.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -99,7 +99,7 @@ Delete garage with the specified id.
 |------|-------------|------|
 | garage_id | Id of the garage to delete | int
 
-#### return
+#### response
 
 ```json
 { "success": true }

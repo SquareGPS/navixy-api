@@ -1,9 +1,9 @@
 ---
-title: /special
-description: /special
+title: About special settings
+description: About special settings
 ---
 
-### About special settings
+## About special settings
 Some trackers provides additional specific kind of control which is defined with "special_control" field of tracker model.
 This field contains "type", which identifies certain kind of settings. (For example "pwr_off_key" or "sos_key", which you can see below)
 "special_control" = "none" means that tracker have no specific kind of control. In other cases you can:
@@ -16,12 +16,16 @@ Such control assumes
 
 Tracker special settings
 
+## API actions
+
+API base path: `/tracker/settings/special`
+
 ### read
 Get special settings for the specified tracker.
 
 If parameter type is present:
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -30,7 +34,7 @@ If parameter type is present:
 ```
 If parameter type is omitted:
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -599,7 +603,7 @@ Set special settings for a specified tracker with the new one.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **value** - **JSON object**. Settings object, see above
 
-#### return
+#### response
 
 ```json
 { "success": true }

@@ -3,6 +3,8 @@ title: Alarm mode
 description: Alarm mode for tracker
 ---
 
+API base path: `/tracker/alarm_mode`
+
 ### read
 
 Gets the state of alarm mode of device.

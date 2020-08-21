@@ -84,7 +84,7 @@ Create new vehicle.
 
 *   **vehicle** (JSON object) – object
 
-#### return
+#### response
 
     {
         "success": true,
@@ -108,7 +108,7 @@ Delete vehicle with the specified id.
 
 *   **vehicle_id** (int) – Id of the vehicle to delete
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -123,7 +123,7 @@ Delete vehicle with the specified id.
 
 Get all vehicles belonging to user.
 
-#### return
+#### response
 
 ```js
 {
@@ -148,7 +148,7 @@ Get vehicle by id.
 
 *   **vehicle_id** (int) – Id of the vehicle
 
-#### return
+#### response
 
 ```
 {
@@ -172,7 +172,7 @@ Update existing vehicle.
 
 *   **vehicle** – JSON object described [above](#vehicle).
 
-#### return
+#### response
 
 ```json
 { "success": true }

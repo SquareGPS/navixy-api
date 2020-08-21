@@ -50,7 +50,7 @@ name|description|type
 ---|---|---
 retranslator|<retranslator> without "id" field|<retranslator>
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -74,7 +74,7 @@ Delete user's retranslator with ID = **retranslator_id**.
 #### parameters
 *   retranslator_id
 
-#### return
+#### response
 ```js
 { "success": true }
 ```
@@ -88,7 +88,7 @@ Delete user's retranslator with ID = **retranslator_id**.
 
 Get all user's [retranslators](#objects).
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -106,7 +106,7 @@ Update retranslator parameters for the specified retranslator. Note that retrans
 #### parameters
 *   `retranslator`
 
-#### return
+#### response
 ```js
 { "success": true }
 ```
@@ -124,7 +124,7 @@ Update retranslator parameters for the specified retranslator. Note that retrans
 ### list
 Return all available retranslator protocols.
 
-#### return
+#### response
 ```js
 {
     "success": true,

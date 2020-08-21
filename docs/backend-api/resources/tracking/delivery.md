@@ -5,7 +5,7 @@ description: Delivery info
 
 # Delivery info
 
-API path: `/delivery`.
+API base path: `/delivery`.
 
 ### read
 

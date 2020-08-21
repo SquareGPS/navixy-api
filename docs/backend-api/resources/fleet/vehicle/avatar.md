@@ -18,7 +18,7 @@ API path: `/vehicle/avatar`.
 
 Assign icon\_id (from standard icon set) to this vehicle. Icon\_id can be null – this means that uploaded avatar should be used instead of icon.
 
-##### return
+##### response
 
 ```json
 { "success": true }
@@ -55,7 +55,7 @@ File part **mime** type must be one of :
 *   **redirect_target** – (optional) URL to redirect
     If **redirect_target** passed return redirect to <redirect_target>?response=<urlencoded response json>
 
-#### return
+#### response
 
 ```js
 {

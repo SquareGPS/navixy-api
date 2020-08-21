@@ -3,6 +3,8 @@ title: /group
 description: /group
 ---
 
+API base path: `/tracker/group`
+
 ### group
 Tracker group is used to organize trackers in user interface. Currently, its function is purely visual.
 
@@ -48,7 +50,7 @@ Create a new empty group.
 * **title** - **string**. user-specified group title, 1 to 60 printable characters
 * **color** - **string**. group color, e.g. “FF6DDC”
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -67,7 +69,7 @@ Delete group with the specified Id. The group must belong to authorized user. Al
 #### parameters
 * **id** - **int**. id of group to delete
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -81,7 +83,7 @@ Get all user’s tracker groups.
 
 There is always “default” unnamed group with id = 0. It cannot be modified, deleted, and is not returned by this API call.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -98,7 +100,7 @@ required subuser rights: admin (available only to master users)
 #### parameters
 * `<group>`
 
-#### return
+#### response
 
 ```json
 { "success": true }

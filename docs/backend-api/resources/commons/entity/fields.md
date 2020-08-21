@@ -71,7 +71,7 @@ name      | description     | type
 ---       | ---             | ---
 entity_id | ID of an entity | int
 
-#### return
+#### response
 ```js
 {
     "success": true,
@@ -109,7 +109,7 @@ delete_missing | (optional, default is false) delete fields not present in `fiel
 * 201 (Not found in database) – if there is no entity with such ID
 * 7 (Invalid parameters) - if fields violate restrictions described above
 
-#### return
+#### response
 A list of **all** fields associated with the specified entity. Newly created fields will have their IDs filled.
 ```js
 {

@@ -3,6 +3,8 @@ title: APN settings by tracker ID
 description: APN settings by tracker ID
 ---
 
+API base path: `/tracker/apn_settings`
+
 ### read
 
 Gets the APN name/user/password and mobile operator of device by tracker_id.
