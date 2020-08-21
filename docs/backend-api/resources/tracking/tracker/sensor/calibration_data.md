@@ -24,7 +24,7 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/sensor/calibration_data/read' 
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": [<object>, ...] //list of objects containing calibration data, e.g. [{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]
