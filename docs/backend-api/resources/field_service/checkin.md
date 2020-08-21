@@ -83,7 +83,7 @@ Get check-in which id is equal to `checkin_id`. Required tariff features: `check
 ```js
 {
     "success": true,
-    "value": <checkin_marker> // marker on map (see below)
+    "value": <checkin>
 }
 ```
 
@@ -113,7 +113,7 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 ```js
 {
     "success": true,
-    "list": [<checkin_marker>, ... ] // list of markers on map
+    "list": [<checkin>, ... ] // list of check-ins
 }
 ```
 

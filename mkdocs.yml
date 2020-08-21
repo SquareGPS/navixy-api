@@ -34,7 +34,7 @@ theme:
 
 plugins:
   - search:
-      separator: '[\s\_\.]+'
+      separator: '[\s\.]+'
   - macros
   - minify:
       minify_html: true

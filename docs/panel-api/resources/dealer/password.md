@@ -3,7 +3,9 @@ title: /password
 description: /password
 ---
 
-## update()
+API base path: `/dealer/password`
+
+## update
 
 Changes password for logined dealer. 
 
@@ -16,7 +18,7 @@ Changes password for logined dealer.
 *   **old_password** \- **string**. Current password of the user 
 *   **new_password** \- **string**. New password for the user, 6 to 20 printable characters
 
-#### return
+#### response
 
     { "success": true }
     

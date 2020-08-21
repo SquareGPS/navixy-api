@@ -1,16 +1,17 @@
 ---
-title: /password
-description: /password
+title: /session
+description: /session
 ---
 
-## change ()
+API base path: `/subpaas/session`
 
-Change subpaas's password
+## create
+
+Create subpaas session
 
 #### parameters
 
 *   **subpaas_id** – **int**. Subpaas's id
-*   **new_password** – **string**. New subpaas's password
 
 #### errors
 
@@ -18,10 +19,13 @@ Change subpaas's password
     * The dealer is not paas
     * The dealer has different status than NOT_BLOCKED
     * The dealer's tariff doesn't allow subpaases
-    * Found subpaas is in DELETED status
+    * Found subpaas is not in NOT_BLOCKED status
 
-#### return
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true,
+    "hash": "600d4a5400000000600d4a5400000000"
+}
 ```
