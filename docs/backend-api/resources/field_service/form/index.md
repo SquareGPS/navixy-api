@@ -15,7 +15,7 @@ Forms are attached to tasks. If form is attached to task, this task cannot be co
 Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
 
 <b>Form object structure</b>
-```json5
+```json
 <form> =
 {
     "id": 2, //form unique id
@@ -53,7 +53,7 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
 
 `<form_file>` is:
 
-```json5
+```json
 {
     "id": 16, // file id
     "storage_id": 1,
@@ -89,7 +89,7 @@ Get form by an id.
     {{ extra.api_example_url }}/form/read?hash=22eac1c27af4be7b9d04da2ce1af111b&id=132215
 
 #### response
-```json5
+```json
 {
     "success": true,
     "value": <form>, // marker on map (see below)

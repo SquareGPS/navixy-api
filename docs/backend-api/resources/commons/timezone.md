@@ -12,7 +12,7 @@ Information about all supported timezones for the specified locale. Does not req
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [

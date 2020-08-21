@@ -35,7 +35,7 @@ If file was created but was not uploaded, it will be deleted after date/time spe
 
 #### response
 
-```json5
+```json
 {
   "success": true,
   "value": {

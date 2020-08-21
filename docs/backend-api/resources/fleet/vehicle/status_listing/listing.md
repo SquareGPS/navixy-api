@@ -9,7 +9,7 @@ API path: `/vehicle/status/listing`.
 
 `vehicle_status_entry` type is JSON object:
 
-```json5
+```json
 {
     "id": 1, // int, id of the status
     "order": 0, // int, position of the status. ignored when update because statuses already have position in array 
@@ -24,7 +24,7 @@ Gets all of user's vehicle statuses.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [ <vehicle_status_entry>, ... ]
@@ -42,6 +42,6 @@ Old vehicle statuses, which are not present is this array, will be deleted.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```

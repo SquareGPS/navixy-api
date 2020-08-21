@@ -42,7 +42,7 @@ and for `legal_entity` or `sole_trader`:
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 

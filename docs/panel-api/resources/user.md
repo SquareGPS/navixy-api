@@ -7,7 +7,7 @@ description: /user
 # Data structures
  
 ** User object structure **
-```json5
+```json
 { 
     "dealer_id": 5001,                // dealer id
     "activated": true,                // true if user is activated (allowed to login)
@@ -44,7 +44,7 @@ description: /user
 
 ** Discount object structure **
 
-```json5
+```json
 {
     "value": 5.5, //personal discount percent, min 0 max 100
     "min_trackers": 10, //min active trackers to apply discount, min 0
@@ -72,7 +72,7 @@ Change password of the user.
 
 ** Return **
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -102,7 +102,7 @@ login parameter must match user login.
 * 252 – Device already corrupted (if some of user tracker already corrupted)
 * 253 – Device has clones (if some of user tracker has clone)
 
-```json5
+```json
 {
     "success": false,
     "status": {
@@ -116,7 +116,7 @@ login parameter must match user login.
 
 ** Required permissions **
 
-```json5
+```json
 users: "create"
 users: "global" // optional. allow to create users of users, not only owned 
                 // by current dealer (use user.dealer_id parameter for other owners).
@@ -136,7 +136,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 ** Return **
 
-```json5
+```json
 {
     "success": true, 
     "id" : 15534 // id of the created user
@@ -215,7 +215,7 @@ entities will be returned only if filter string is contained within one of the f
 
 ** Return **
 
-```json5
+```json
 {
     "success": true,
     "list" : [ ${user} , ... ], // list of JSON-objects
@@ -245,7 +245,7 @@ Returns user info by it’s id.
 
 ** Return **
 
-```json5
+```json
 {
     "success": true,
     "value" : ${user},
@@ -283,7 +283,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 ** Return **
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -315,7 +315,7 @@ user_sessions: "global" // optional. allow to create sessions of users, not only
 
 ** Return **
 
-```json5
+```json
 {
     "success": true,
     "hash" : "a2caa32267f028bd41b982980467132c" // hash of the created session
@@ -353,7 +353,7 @@ transactions: "create"
 
 ** Return **
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -385,7 +385,7 @@ transactions: "read"
 
 ** Return **
 
-```json5
+```json
 {
   "success": true, 
   "list": [

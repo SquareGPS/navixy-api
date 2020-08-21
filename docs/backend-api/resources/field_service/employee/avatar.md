@@ -26,7 +26,7 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
     
@@ -64,7 +64,7 @@ File part **mime** type must be one of:
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "value": <string> // avatar file name

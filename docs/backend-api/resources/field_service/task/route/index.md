@@ -11,7 +11,7 @@ the parent route.
 Route is completed if all the checkpoints are completed and visited in the specified order. Otherwise it is considered
 completed with warnings or failed.
 
-```json5
+```json
 <route> = {
     "id": 111,   //primary key. used in route/update, *IGNORED* in route/create
     "user_id": 3,   //user id. *IGNORED* in route/create and route/update
@@ -49,7 +49,7 @@ API base path: `/task/route`
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -81,7 +81,7 @@ and create form if it is not null. Default value is false for backward compatibi
 
 Minimal route object to create a new route must contain:
 
-```json5
+```json
 {
 "tracker_id": 22, //optional, if the field is specified then the task will be assigned to the employee associated with the tracker, otherwise it won't be assigned to anybody
 "label": "Name", //task name, length 1-200 characters
@@ -91,7 +91,7 @@ Minimal route object to create a new route must contain:
 
 Also need checkpoints list in order of execution, checkpoints `from` and `to` must be agreed with each other i.e. checkpoint `to` cannot be before ‘from’ of preceding items.
 
-```json5
+```json
 {
     "tracker_id": 22, //optional, if the field is specified then the task will be assigned to the employee associated with the tracker, otherwise it won't be assigned to anybody
     "location": { //area (circle geofence), entering and leaving of geofence will be controlled
@@ -111,7 +111,7 @@ In response there will be external ids which have count greater than zero.
 There can be multiple external ids in response because you can specify different external ids in task's checkpoint.
 If there nothing to return, then parameter "external_id_counts" will not be present in response.
 
-```json5
+```json
     "success": true,
     "result": {
         "id": 111,
@@ -152,7 +152,7 @@ Delete route (and its checkpoints) with the specified id.
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -179,7 +179,7 @@ Get all routes belonging to user with optional filtering.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [ <route>, ... ]
@@ -202,7 +202,7 @@ Get route by id.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "value":  ${route} // JSON object
@@ -235,7 +235,7 @@ Reordering checkpoint IDs in the `checkpoint_ids` array changes order of executi
 
 #### response
 JSON object of the updated route with checkpoint_ids
-```json5
+```json
 {
         "success": true,
         "result": {

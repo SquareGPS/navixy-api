@@ -24,7 +24,7 @@ Message fields:
 *   `user_time` - current time in user's timezone.
 
 Message sample:
-```json5
+```json
 {
   "type": "event",
   "event": "state",
@@ -77,7 +77,7 @@ Message fields:
     *   `lifecycle_event` - lifecycle event type. One of the items: "block", "unblock", "corrupt".
 
 Message sample:
-```json5
+```json
 {
   "type": "event",
   "event": "lifecycle",
@@ -108,7 +108,7 @@ Message fields:
 *   `data` - "session closed".
 
 Message sample:
-```json5
+```json
 {
   "type": "event",
   "event": "logout",

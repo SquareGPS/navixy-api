@@ -33,7 +33,7 @@ Switch LED state for a specified tracker.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 

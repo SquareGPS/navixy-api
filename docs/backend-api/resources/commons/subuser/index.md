@@ -62,7 +62,7 @@ Delete sub-user. This operation cannot be reversed.
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
@@ -86,7 +86,7 @@ none
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "list": [<subuser>, ... ] //list of all sub-users belonging to this master account
@@ -114,7 +114,7 @@ Allows you to create sub-users associated to your master account.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "id": <id of the created sub-user>
@@ -141,7 +141,7 @@ Update subuser data.
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }

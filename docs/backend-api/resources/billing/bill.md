@@ -24,7 +24,7 @@ Creates new bill for the user. Required subuser rights: `payment_create`.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "value": 6421     // created bill id
@@ -57,7 +57,7 @@ Shows list of bills with their parameters in array. Required subuser rights: pay
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "count": 7,      // total number of bills
@@ -67,7 +67,7 @@ Shows list of bills with their parameters in array. Required subuser rights: pay
 
 where **bill** is
 
-```json5
+```json
 {
     "order_id": 63602,                 // unique id
     "created": "2012-03-05 11:55:03",  // creation date/time

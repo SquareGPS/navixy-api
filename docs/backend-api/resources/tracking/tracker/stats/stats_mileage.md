@@ -14,7 +14,7 @@ Returns mileage in kilometers in specified period grouped by tracker and day.
 *   **to** - **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date.
 
 #### response
-```json5
+```json
 {
   "success": true,
   "result": {

@@ -10,7 +10,7 @@ Tracker group is used to organize trackers in user interface. Currently, its fun
 
 #### Group structure:
 
-```json5
+```json
 <group> = {
     "id": <int>,       // group id. used to reference group in objects and API calls. Read-only, assigned automatically by the server.
     "title": <string>, // user-specified group title, 1 to 60 printable characters, e. g. "Employees"
@@ -20,7 +20,7 @@ Tracker group is used to organize trackers in user interface. Currently, its fun
 
 #### example
 
-```json5
+```json
 {
     "id": 167,
     "title": "Main office",
@@ -51,7 +51,7 @@ Create a new empty group.
 * **color** - **string**. group color, e.g. “FF6DDC”
 
 #### response
-```json5
+```json
 {
     "success": true,
     "id": <int> // id of the group that was created, e.g. 222
@@ -71,7 +71,7 @@ Delete group with the specified Id. The group must belong to authorized user. Al
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -85,7 +85,7 @@ There is always “default” unnamed group with id = 0. It cannot be modified, 
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -102,7 +102,7 @@ required subuser rights: admin (available only to master users)
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 

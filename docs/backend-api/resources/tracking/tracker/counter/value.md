@@ -12,7 +12,7 @@ API base path: `/tracker/counter/value`
 * **type** - **string**. counter type. one of ["odometer", "fuel_consumed", "engine_hours"].
 
 #### response
-```json5
+```json
 {
     "success": true,
     "value": 18.9  // float. last value of counter
@@ -31,7 +31,7 @@ Get values for counters of passed **type** and **trackers**
 * **type** - **string**. counter type, one of ["odometer", "fuel_consumed", "engine_hours"].
 
 #### response
-```json5
+```json
 {
   "success": true,
   "value": { // Map with tracker's ids as keys
@@ -54,7 +54,7 @@ Creates new counter of passed **type** (if not) and update its **value**.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 

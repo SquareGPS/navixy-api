@@ -79,7 +79,7 @@ Use the following API call to create a new key
 
 answer example if the key is successfully generated:
 
-```json5
+```json
 {
   "success": true,
   "value": "206831ba32ec9d2a6f7b91b033a48912"
@@ -99,7 +99,7 @@ To acquire the key you have created earlier, please use the method
 
 The reply will look like as follows:
 
-```json5
+```json
 {
   "success": true,
   "value": "206831ba32ec9d2a6f7b91b033a48912"

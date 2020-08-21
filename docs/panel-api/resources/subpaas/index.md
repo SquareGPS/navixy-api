@@ -38,7 +38,7 @@ Create subpaas. After creation its dealer_block_type will be in INITIAL_BLOCK st
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -68,7 +68,7 @@ Get list of all subpaases for dealer. Dealer id will be taken from the session.
 
 #### response
 
-```json5
+```json
 {
   "success": true,
   "list": [
@@ -105,7 +105,7 @@ Get subpaas info by its id.
 
 #### response
 
-```json5
+```json
 {
   "success": true,
   "value": {
@@ -154,6 +154,6 @@ Update subpaas.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```

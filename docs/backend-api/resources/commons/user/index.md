@@ -28,7 +28,7 @@ Available only to master users.
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -57,7 +57,7 @@ $ curl -X POST '{{ extra.api_example_url }}/user/auth' \
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "hash": <string> // session hash
@@ -93,7 +93,7 @@ Get basic user info.
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "paas_id": 7,
@@ -181,7 +181,7 @@ $ curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "value": ${tariff_restrictions}
@@ -190,7 +190,7 @@ $ curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
 
 where `tariff_restrictions` is JSON object:
 
-```json5
+```json
 {
     "allowed_maps": [${map_name}, ...] // [string]. list of allowed maps, e.g. ["roadmap","osm"]
 }
@@ -214,7 +214,7 @@ $ curl -X POST '{{ extra.api_example_url }}/user/logout' \
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -241,7 +241,7 @@ $ curl -X POST '{{ extra.api_example_url }}/user/logout' \
 
 #### response
 
-```json5
+```json
 { "success": true }
 ```
 
@@ -250,7 +250,7 @@ $ curl -X POST '{{ extra.api_example_url }}/user/logout' \
 *   201 (Not found in database) – user with passed login not found.
 *   209 (Failed sending email) – can't send email.
 *   264 (Timeout not reached) – previous activation link generated less than 5 minutes ago (or other configured on server timeout).
-    ```json5
+    ```json
     {
         "success": false,
         "status": {

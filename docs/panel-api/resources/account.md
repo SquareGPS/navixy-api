@@ -14,7 +14,7 @@ Does not require session hash and does not need any permissions. Auth dealer in 
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "hash": <string>,       // session key
@@ -36,7 +36,7 @@ Does not need any permissions. Returns permissions for current panel session
 
 #### response
 
-```json5
+```json
 {
     "success": true,
     "permissions": <object> // account permissions, e.g. { "base": ["get_dealer_info"] }
@@ -53,7 +53,7 @@ Ends the current session.
 
 #### response
 
-```json5
+```json
 {
     "success": true
 }
