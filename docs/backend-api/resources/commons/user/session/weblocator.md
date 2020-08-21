@@ -16,7 +16,7 @@ In demo session allowed to create a new session only if it not already exists.
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "value": "42fc7d3068cb98d233c3af749dee4a8d" // created session hash key
@@ -35,7 +35,7 @@ Return current user weblocator session key.
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "value": <string> // session hash key

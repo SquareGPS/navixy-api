@@ -20,7 +20,7 @@ Create new session for the specified sub-user and obtain its hash. Can be used t
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "hash" : ${hash of the created subuser session}

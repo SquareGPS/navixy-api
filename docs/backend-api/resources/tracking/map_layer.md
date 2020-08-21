@@ -8,7 +8,7 @@ description: Map layer
 API path: `/map_layer`.
 
 `map_layer_object` is:
-```js
+```json5
 {
     "id": <int>,      // map layer entity ID
     "label": <string> // map layer name, e.g. "test"
@@ -33,7 +33,7 @@ Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf
 Returns metadata for all map layers for the user.
 
 #### response
-```js
+```json5
 {
     "success": true,
     "list": [<map_layer_object>, ... ]
@@ -57,7 +57,7 @@ redirect_target | (optional) URL to redirect. If **redirect_target** passed retu
 
 
 #### response
-```js
+```json5
 {
     "success": true,
     "id": 163 // int. ID of the created layer
@@ -79,7 +79,7 @@ name | description | type
 layer | &lt;map_layer_object&gt; | JSON object
 
 #### response
-```js
+```json5
 { "success": true }
 ```
 
@@ -95,7 +95,7 @@ name | description | type
 id | ID of the map layer | Int
 
 #### response
-```js
+```json5
 { "success": true }
 ```
 

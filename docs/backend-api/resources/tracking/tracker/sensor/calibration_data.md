@@ -36,7 +36,7 @@ Replaces the calibration data for sensor.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -61,7 +61,7 @@ If XML file contains information about multiple sensors, user must specify which
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 

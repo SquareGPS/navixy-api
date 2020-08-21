@@ -12,7 +12,7 @@ Get number of commands in queue for the specified tracker.
 * **tracker_id** - **int**.  Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
 #### response
-```js
+```json5
 {
     "success": true,
     "count": <number of commands, e.g. 0> //int
@@ -33,7 +33,7 @@ Remove all pending SMS commands from the queue for the specified tracker.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 

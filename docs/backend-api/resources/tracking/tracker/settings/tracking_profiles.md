@@ -6,7 +6,7 @@ description: Tracking profiles
 ### albatross_s6
 
 Tracking profile for Albatross S6.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=65535>,
     "tracking_distance": <int, meter, min=50, max=65535>
@@ -16,7 +16,7 @@ Tracking profile for Albatross S6.
 ### albatross_s8_5
 
 Tracking profile for Albatross S8.5.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=65535>,
     "psm_interval": <int, second, min=600, max=65535> [optional],
@@ -27,7 +27,7 @@ Tracking profile for Albatross S8.5.
 ### apkcom
 
 Tracking profile for АПК КОМ ASC-2 GLONASS/GPS, АПК КОМ ASC-6 GLONASS/GPS, АПК КОМ ASC-7, АПК КОМ ASC-8.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=5, max=180>,
     "tracking_interval": <int, second, min=10, max=300>,
@@ -38,7 +38,7 @@ Tracking profile for АПК КОМ ASC-2 GLONASS/GPS, АПК КОМ ASC-6 GLONAS
 ### arknav_x8
 
 Tracking profile for Arknav RX8.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=10, max=180>,
     "tracking_interval": <int, second, min=10, max=65534>,
@@ -49,7 +49,7 @@ Tracking profile for Arknav RX8.
 ### arnavi2
 
 Arnavi 2 tracking profile.
-```json
+```json5
 {
   "tracking_angle": 30,
   "tracking_distance": 100,
@@ -74,7 +74,7 @@ Arnavi 2 tracking profile.
 ### arnavi4
 
 Tracking profile for Arnavi 4, Arnavi 5, Arnavi Integral, Arnavi Integral-2, Arnavi Integral-3.
-```json
+```json5
 {
     "max_tracking_interval": <int, second, min=30, max=65535>,
     "min_tracking_interval": <int, second, min=5, max=255>,
@@ -87,7 +87,7 @@ Tracking profile for Arnavi 4, Arnavi 5, Arnavi Integral, Arnavi Integral-2, Arn
 ### atlanta
 
 Tracking profile for Atlanta L-100, Atlanta O-300, Atlanta PT-100, Atlanta W-track, Atlanta WP-30C.
-```json
+```json5
 {
     "tracking_distance": <int, meter, min=100, max=10000>,
     "tracking_interval": <int, second, min=30, max=18000>
@@ -97,7 +97,7 @@ Tracking profile for Atlanta L-100, Atlanta O-300, Atlanta PT-100, Atlanta W-tra
 ### atlanta_pt100
 
 Tracking profile for Atlanta PT-100.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=300, max=18000>
 }
@@ -105,7 +105,7 @@ Tracking profile for Atlanta PT-100.
 
 ### atrack
 ATrack tracking profile.
-```json
+```json5
 {
     "control_mode": <string, acc | engine_status> [optional],
     "tracking_interval": <int, second, min=30, max=65535*10, default=300> [optional],
@@ -126,7 +126,7 @@ ATrack tracking profile.
 
 ### autofon
 Autofon profile.
-```json
+```json5
 {
     "type": <string>,                 // tracking type "interval" or "power_save"
     "tracking_interval": <int>,       // interval in seconds, min=30, max=240
@@ -141,7 +141,7 @@ Autofon profile.
 ### autoleaders_st901
 
 Tracking profile for Auto Leaders ST-901, Auto Leaders ST-901M.
-```json
+```json5
 {
     "psm_interval": <int, second, min=30, max=18000>,
     "psm_mode": <int, min=0, max=1>,
@@ -152,7 +152,7 @@ Tracking profile for Auto Leaders ST-901, Auto Leaders ST-901M.
 ### autoseeker_at17
 
 Tracking profile for Autoseeker AT-17.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=1, max=18000>
 }
@@ -161,7 +161,7 @@ Tracking profile for Autoseeker AT-17.
 ### avlsat_neos
 
 Tracking profile for AVLSAT NEO-S.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=60, max=599940>
 }
@@ -170,7 +170,7 @@ Tracking profile for AVLSAT NEO-S.
 ### bitrek310
 
 Tracking profile for BI 310 CICADA, NaviTrek 310 Cicada.
-```json
+```json5
 {
     "psm_interval": <int, second, min=300, max=86400>,
     "psm_mode": <int, min=0, max=1>,
@@ -181,7 +181,7 @@ Tracking profile for BI 310 CICADA, NaviTrek 310 Cicada.
 ### bofan_pt521
 
 Tracking profile for Bofan PT502, Bofan PT521.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=10, max=90>,
     "tracking_distance": <int, meter, min=50, max=5000>,
@@ -193,7 +193,7 @@ Tracking profile for Bofan PT502, Bofan PT521.
 ### box
 
 Tracking profile for BOX-tracker, BOXtracker 2, Galileosky Boxfinder v1.0.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=10, max=359>,
     "tracking_interval": <int, second, min=30, max=4294968>
@@ -203,7 +203,7 @@ Tracking profile for BOX-tracker, BOXtracker 2, Galileosky Boxfinder v1.0.
 ### boxfinder
 
 Tracking profile for Galileosky Boxfinder v1.0.
-```json
+```json5
 {
     "shock_value": <double, g, min=0.5, max=4>,
     "sleep_timeout": <int, minute, min=1, max=1440>
@@ -213,7 +213,7 @@ Tracking profile for Galileosky Boxfinder v1.0.
 ### bsj
 
 Tracking profile for BSJ KM-01/02, Gosafe G1C.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=5, max=180>,
     "tracking_interval": <int, second, min=30, max=86400>
@@ -223,7 +223,7 @@ Tracking profile for BSJ KM-01/02, Gosafe G1C.
 ### c2stek_fl
 
 Tracking profile for C2STEK FL10, C2STEK FL2000G.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=0, max=360>,
     "tracking_distance": <int, meter, min=0, max=9999>,
@@ -234,7 +234,7 @@ Tracking profile for C2STEK FL10, C2STEK FL2000G.
 ### calamp
 
 Tracking profile for CalAmp ATU-620, CalAmp LMU-1100, CalAmp LMU-1200, CalAmp LMU-200, CalAmp LMU-2030, CalAmp LMU-2600, CalAmp LMU-2630, CalAmp LMU-2720, CalAmp LMU-300, CalAmp LMU-3030, CalAmp LMU-3640, CalAmp LMU-400, CalAmp LMU-4200, CalAmp LMU-4230, CalAmp LMU-4520, CalAmp LMU-5530, CalAmp LMU-700, CalAmp LMU-800, CalAmp LMU-900, CalAmp TTU-1200, CalAmp TTU-2830, CalAmp TTU-700.
-```json
+```json5
 {
     "psm_interval": <int, second, min=30, max=86400>,
     "tracking_angle": <int, degree, min=5, max=180>,
@@ -246,7 +246,7 @@ Tracking profile for CalAmp ATU-620, CalAmp LMU-1100, CalAmp LMU-1200, CalAmp LM
 ### cantrack_t80
 
 Tracking profile for Cantrack T80.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=1000>
 }
@@ -255,7 +255,7 @@ Tracking profile for Cantrack T80.
 ### careu
 
 Tracking profile for CAREU U1 Lite Plus, CAREU U1 Plus, CAREU UT1, CAREU UW1, CAREU Ucan, CAREU Ueco, CAREU Ugo, IntelliTrac A1, Intellitrac S1.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=5, max=180>,
     "tracking_distance": <int, meter, min=25, max=50000>,
@@ -266,7 +266,7 @@ Tracking profile for CAREU U1 Lite Plus, CAREU U1 Plus, CAREU UT1, CAREU UW1, CA
 ### cargo
 
 Tracking profile for Cargo Light 2, Cargo Mini 2, Cargo Pro 2.
-```json
+```json5
 {
     "psm_interval": <int, second, min=30, max=86400>,
     "tracking_angle": <int, degree, min=10, max=359>,
@@ -278,7 +278,7 @@ Tracking profile for Cargo Light 2, Cargo Mini 2, Cargo Pro 2.
 ### carscop_cctr800
 
 Tracking profile for Carscop CCTR-808S, Carscop CCTR-809.
-```json
+```json5
 {
     "psm_interval": <int, second, min=3600, max=432000>,
     "psm_mode": <int, min=0, max=1>,
@@ -289,7 +289,7 @@ Tracking profile for Carscop CCTR-808S, Carscop CCTR-809.
 ### carscop_cctr830
 
 Tracking profile for Carscop CCTR-830, Toptracking CCTR-830G.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=999>
 }
@@ -298,7 +298,7 @@ Tracking profile for Carscop CCTR-830, Toptracking CCTR-830G.
 ### castel_idd
 
 Tracking profile for Castel IDD-213.
-```json
+```json5
 {
     "sleep_report_interval": <int, minute, min=10, max=1440>,
     "tracking_angle": <int, degree, min=10, max=90>,
@@ -311,7 +311,7 @@ Tracking profile for Castel IDD-213.
 ### castel_interval
 
 Tracking profile for Castel MPIP-620, Castel PT-690, Castel PT-718S.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=18000>
 }
@@ -321,7 +321,7 @@ Tracking profile for Castel MPIP-620, Castel PT-690, Castel PT-718S.
 cGuard tracking profile.
 
 name: ‘cguard’
-```json
+```json5
 {
     "tracking_interval": <int, second, min=0, max=65535, default=60> [required],
     "tracking_distance": <int, meter, min=0, max=65535, default=100> [required],
@@ -339,7 +339,7 @@ name: ‘cguard’
 cGuard tracking profile for asset trackers.
 
 name: ‘cguard_asset’
-```json
+```json5
 {
     "tracking_interval": <int, second, min=0, max=65535, default=60> [required],
     "tracking_distance": <int, meter, min=0, max=65535, default=100> [required],
@@ -366,7 +366,7 @@ name: ‘cguard_asset’
 ### concox_distance_interval
 
 Tracking profile for Concox X3.
-```json
+```json5
 {
     "tracking_distance": <int, meter, min=100, max=10000>,
     "tracking_interval": <int, second, min=30, max=18000>
@@ -376,7 +376,7 @@ Tracking profile for Concox X3.
 ### concox_gt350
 
 Tracking profile for Concox GT350.
-```json
+```json5
 {
     "psm_interval": <int, second, min=600, max=432000>,
     "psm_mode": <int, min=0, max=1>,
@@ -387,7 +387,7 @@ Tracking profile for Concox GT350.
 ### concox_gt700
 
 Tracking profile for Concox AT3, Concox AT4, Concox GT710.
-```json
+```json5
 {
     "psm_interval": <int, min=1, max=24, valid_values=[1, 2, 3, 4, 6, 8, 12, 24]>,
     "tracking_interval": <int, min=1, max=30>,
@@ -399,7 +399,7 @@ Tracking profile for Concox AT3, Concox AT4, Concox GT710.
 ### concox_interval
 
 Tracking profile for Concox GK309 , Concox GS503, Concox GT03A, Concox GT03C, Concox WeTrack Lite, Concox WeTrack2, Jimi JI09.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=18000>
 }
@@ -408,7 +408,7 @@ Tracking profile for Concox GK309 , Concox GS503, Concox GT03A, Concox GT03C, Co
 ### concox_jv200
 
 Tracking profile for Concox JV200.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=18000>
 }
@@ -417,7 +417,7 @@ Tracking profile for Concox JV200.
 ### concox_qbit
 
 Tracking profile for Concox QBIT.
-```json
+```json5
 {
     "gps_tracking_interval": <int, second, min=10, max=18000>,
     "lbs_tracking_interval": <int, second, min=10, max=86400>,
@@ -428,7 +428,7 @@ Tracking profile for Concox QBIT.
 ### concoxgt02
 
 Tracking profile for Concox GT02 / TR02.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30>
 }
@@ -437,7 +437,7 @@ Tracking profile for Concox GT02 / TR02.
 ### concoxgt06
 
 Tracking profile for Concox GV20, Concox X1, Protrack VT05.
-```json
+```json5
 {
     "psm_interval": <int, second, min=30, max=65535>,
     "tracking_angle": <int, degree, min=0, max=180>,
@@ -450,7 +450,7 @@ Tracking profile for Concox GV20, Concox X1, Protrack VT05.
 ### default
 
 Default tracking profile.
-```json
+```json5
 {
     "type": <string>,           // can be "interval" (send tracking data based on time intervals) or "distance" (send tracking data after passing specified distance)
     "tracking_interval": <int>, // interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds
@@ -461,7 +461,7 @@ Default tracking profile.
 ### default_angle
 
 Default profile with optional angle-based tracking.
-```json
+```json5
 {
     "type": <string>,           // can be "interval" (send tracking data based on time intervals) or "distance" (send tracking data after passing specified distance)
     "tracking_interval": <int>, // interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds
@@ -473,7 +473,7 @@ Default profile with optional angle-based tracking.
 ### default_powersave
 
 Default powersave profile with optional angle-based tracking.
-```json
+```json5
 {
     "type": <string>,           // can be "interval" (send tracking data based on time intervals), "distance" (send tracking data after passing specified distance) or "power_save"
     "tracking_interval": <int>, // optional, interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds, can be absent if type=power_save
@@ -488,7 +488,7 @@ Default powersave profile with optional angle-based tracking.
 ### defenstar_007
 
 Tracking profile for Defenstar DS007.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=60, max=65534>
 }
@@ -497,7 +497,7 @@ Tracking profile for Defenstar DS007.
 ### defenstar_008
 
 Tracking profile for Defenstar DS008, Gubloos GPS-S1.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=9999>
 }
@@ -506,7 +506,7 @@ Tracking profile for Defenstar DS008, Gubloos GPS-S1.
 ### digitalsystems_dsf22
 
 Tracking profile for DigitalSystems DSF22.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=10, max=359>,
     "tracking_interval": <int, second, min=30, max=86400>
@@ -516,7 +516,7 @@ Tracking profile for DigitalSystems DSF22.
 ### distance_interval
 
 Tracking profile with distance and interval.
-```json
+```json5
 {
     "tracking_distance": <int, meter, min=50, max=100000>,
     "tracking_interval": <int, second, min=30, max=86400>
@@ -526,7 +526,7 @@ Tracking profile with distance and interval.
 ### distance_interval_angle_ps
 
 Tracking profile with distance, interval, angle and powersave mode.
-```json
+```json5
 {
     "psm_interval": <int, second, min=30, max=86400>,
     "tracking_angle": <int, degree, min=10, max=359>,
@@ -538,7 +538,7 @@ Tracking profile with distance, interval, angle and powersave mode.
 ### distance_interval_angle
 
 Tracking profile with distance, interval and angle.
-```json
+```json5
 {
     "tracking_interval": <int>, // interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds
     "tracking_distance": <int>, // distance in meters, e.g. 100 means that the device will send data every 100 meters
@@ -549,7 +549,7 @@ Tracking profile with distance, interval and angle.
 ### eelink
 
 Tracking profile for Eelink GOT08, Eelink GOT10, Eelink GPT18, Eelink TK-319, Eelink TK116, Eelink TK119.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=18000>
 }
@@ -558,7 +558,7 @@ Tracking profile for Eelink GOT08, Eelink GOT10, Eelink GPT18, Eelink TK-319, Ee
 ### eelink_tk116
 
 Tracking profile for Eelink TK116.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=3600>
 }
@@ -567,7 +567,7 @@ Tracking profile for Eelink TK116.
 ### eelink_v2
 
 Tracking profile for Eelink GPT18, Eelink TK-319.
-```json
+```json5
 {
     "active_tracking_interval": <int, second, min=30, max=65535>,
     "gps_working_mode": <string, always_on | auto>,
@@ -581,7 +581,7 @@ Tracking profile for Eelink GPT18, Eelink TK-319.
 ### enfora
 
 Tracking profile for Enfora MT-GL (GSM2218), Enfora MT-Gu (GSM2338), Novatel MT4100, SkyPatrol TT8740, SkyPatrol TT8750.
-```json
+```json5
 {
     "tracking_distance": <int, meter, min=100, max=10000>,
     "tracking_interval": <int, second, min=30, max=18000>
@@ -591,7 +591,7 @@ Tracking profile for Enfora MT-GL (GSM2218), Enfora MT-Gu (GSM2338), Novatel MT4
 ### esino
 
 Tracking profile for Esino ES-GP34, Esino ES-GT23.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=20, max=3600>
 }
@@ -600,7 +600,7 @@ Tracking profile for Esino ES-GP34, Esino ES-GT23.
 ### etrack_tlt2h
 
 Tracking profile for E-Track TLT-2H.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=59999>
 }
@@ -609,7 +609,7 @@ Tracking profile for E-Track TLT-2H.
 ### fifotrack
 
 Tracking profile for fifotrack A100, fifotrack A100 FW1.15+, fifotrack A300, fifotrack A300 FW1.23+, fifotrack A600 (FW before V1.07), fifotrack A600 FW1.07+.
-```json
+```json5
 {
     "psm_interval": <int, second, min=0, max=3932100>,
     "psm_mode": <int, min=0, max=2>,
@@ -622,7 +622,7 @@ Tracking profile for fifotrack A100, fifotrack A100 FW1.15+, fifotrack A300, fif
 ### genesis_g36
 
 Tracking profile for Castel HT-770, Ezlink T28, G36, Orion 7, XiLi Technologies PT100.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=1>
 }
@@ -631,7 +631,7 @@ Tracking profile for Castel HT-770, Ezlink T28, G36, Orion 7, XiLi Technologies 
 ### gl200
 
 Queclink/Ruslink GL200/GL300 profile
-```json
+```json5
 {
     "type": <string>,               // tracking type "distance" or "interval" or "power_save"
     "tracking_interval": <int>,     // interval in seconds, e.g. 30 means that the device will send traсking data every 30 seconds
@@ -646,7 +646,7 @@ Queclink/Ruslink GL200/GL300 profile
 ### gl500
 
 Queclink/Ruslink GL500 profile.
-```json
+```json5
 {
     "type": <string>,           // interval or power_save
     "tracking_interval": <int>, // interval in minutes
@@ -658,7 +658,7 @@ Queclink/Ruslink GL500 profile.
 ### gt300
 
 Queclink/Ruslink GT300 profile.
-```json
+```json5
 {
     "tracking_interval": <int>,      // tracking interval in seconds, 5-86400 seconds
     "start_time": <string>,          // start time of scheduled fix timing report. The valid format is "HHMM" 0000-2359
@@ -672,7 +672,7 @@ Queclink/Ruslink GT300 profile.
 ### gotoptk206_amgps_freko
 
 Tracking profile for AMGPS Freko.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=3600>
 }
@@ -681,7 +681,7 @@ Tracking profile for AMGPS Freko.
 ### gv500
 
 Queclink/Ruslink GV500 profile.
-```json
+```json5
 {
     "type": <string>,           // tracking type when ignition is ON, "distance" or "interval"
     "tracking_interval": <int>, // interval in seconds, e.g. 30 means that the device will send traсking data every 30 seconds
@@ -696,7 +696,7 @@ Queclink/Ruslink GV500 profile.
 
 ### gv55lite
 Queclink/Ruslink GV55Lite profile.
-```json
+```json5
 {
     "type": <string>,           // tracking type when ignition is ON, "distance" or "interval"
     "tracking_interval": <int>, // interval in seconds, e.g. 30 means that the device will send traсking data every 30 seconds
@@ -712,7 +712,7 @@ Queclink/Ruslink GV55Lite profile.
 ### gubloost1
 
 Tracking profile for Defenstar GPS668, Gubloos GPS-T1, MiniFinder Pico.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=9999>
 }
@@ -721,7 +721,7 @@ Tracking profile for Defenstar GPS668, Gubloos GPS-T1, MiniFinder Pico.
 ### haicom_hi603x
 
 Tracking profile for Haicom HI-603X.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=2592000>
 }
@@ -730,7 +730,7 @@ Tracking profile for Haicom HI-603X.
 ### helioversal_m1
 
 Tracking profile for Helioversal M1.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=86400>
 }
@@ -739,7 +739,7 @@ Tracking profile for Helioversal M1.
 ### hhd_g
 
 Tracking profile for HHD G-400, HHD G-600.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=20>
 }
@@ -748,7 +748,7 @@ Tracking profile for HHD G-400, HHD G-600.
 ### howen_herome
 
 Tracking profile for Hero-ME31-08, Hero-ME32-04, Hero-ME41-04.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=86400>
 }
@@ -757,7 +757,7 @@ Tracking profile for Hero-ME31-08, Hero-ME32-04, Hero-ME41-04.
 ### hua_sheng_hs3000g
 
 Tracking profile for Hua Sheng HS 3000G.
-```json
+```json5
 {
     "psm_interval": <int, second, min=60, max=86400>,
     "tracking_angle": <int, degree, min=5, max=250>,
@@ -768,7 +768,7 @@ Tracking profile for Hua Sheng HS 3000G.
 ### huabao
 
 Tracking profile for Huabao HB-T10.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=9999>
 }
@@ -777,7 +777,7 @@ Tracking profile for Huabao HB-T10.
 ### intellitrac_x1
 
 Tracking profile for IntelliTrac X1, IntelliTrac X1+.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=5, max=358>,
     "tracking_distance": <int, meter, min=100, max=65534>,
@@ -789,7 +789,7 @@ Tracking profile for IntelliTrac X1, IntelliTrac X1+.
 ### interval
 
 Tracking profile with interval only.
-```json
+```json5
 {
     "tracking_interval": <int> // interval in seconds, min 30
 }
@@ -798,7 +798,7 @@ Tracking profile with interval only.
 ### interval_angle
 
 Tracking profile with interval and angle.
-```json
+```json5
 {
     "tracking_interval": <int>, // interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds
     "tracking_angle" : <int>    // device will additionally send data when it changes direction to specified angle, e.g. 30 degrees
@@ -808,7 +808,7 @@ Tracking profile with interval and angle.
 ### interval_angle_powersave
 
 Tracking profile with interval, angle and powersave mode.
-```json
+```json5
 {
     "psm_interval": <int, second, min=60, max=86400>,
     "tracking_angle": <int, degree, min=5, max=355>,
@@ -819,7 +819,7 @@ Tracking profile with interval, angle and powersave mode.
 ### interval_powersave
 
 Tracking profile with interval and powersave mode.
-```json
+```json5
 {
     "psm_interval": <int, second, min=300, max=86400>,
     "psm_mode": <int, min=0, max=1>,
@@ -830,7 +830,7 @@ Tracking profile with interval and powersave mode.
 ### jimi_jc100
 
 Tracking profile for Jimi JC100.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=18000>
 }
@@ -839,7 +839,7 @@ Tracking profile for Jimi JC100.
 ### jinsheng_js810
 
 Tracking profile for Jin Sheng JS810, Jin Sheng JS810S.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=65534>
 }
@@ -848,7 +848,7 @@ Tracking profile for Jin Sheng JS810, Jin Sheng JS810S.
 ### jointech_gp
 
 Tracking profile for Jointech GP4000, Jointech GP6000, Jointech GP6000F.
-```json
+```json5
 {
     "psm_interval": <int, second, min=300, max=65535>,
     "psm_mode": <int, min=1, max=3>,
@@ -862,7 +862,7 @@ Tracking profile for Jointech GP4000, Jointech GP6000, Jointech GP6000F.
 ### jointech_jt701
 
 Tracking profile for Jointech JT701.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=60000>
 }
@@ -870,7 +870,7 @@ Tracking profile for Jointech JT701.
 
 ### jointech_jt703
 Profile for Jointech JT703B
-```json
+```json5
 {
     "tracking_interval": <int, 10-60000>, // interval in seconds
     "sleep_mode": "enabled" | "disabled",
@@ -882,7 +882,7 @@ Profile for Jointech JT703B
 ### jointech_jt707
 
 Tracking profile for Jointech JT707.
-```json
+```json5
 {
     "psm_interval": <int, minute, min=10, max=1440>,
     "psm_mode": <int, min=0, max=1>,
@@ -893,7 +893,7 @@ Tracking profile for Jointech JT707.
 ### keson_ks168
 
 Tracking profile for Keson KS168.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=65535>
 }
@@ -902,7 +902,7 @@ Tracking profile for Keson KS168.
 ### laipacs911
 
 Tracking profile for Laipac S911 Lola, Laipac-911BL.
-```json
+```json5
 {
     "tracking_distance": <int, meter, min=50, max=100000>,
     "tracking_interval": <int, second, min=30, max=86400>,
@@ -913,7 +913,7 @@ Tracking profile for Laipac S911 Lola, Laipac-911BL.
 ### lk200
 
 Tracking profile for LKGPS LK209A, LKGPS LK209B, LKGPS LK210.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=65535>
 }
@@ -922,7 +922,7 @@ Tracking profile for LKGPS LK209A, LKGPS LK209B, LKGPS LK210.
 ### logosoft
 
 Tracking profile for Logosoft Log-101.
-```json
+```json5
 {
     "type": <string>,           // tracking type "interval" or "distance" or "intelligent"
     "tracking_interval": <int>, // interval in seconds, min 30
@@ -934,7 +934,7 @@ Tracking profile for Logosoft Log-101.
 ### m7
 
 Profile for Navixy M7.
-```json
+```json5
 {
     "type": <string>,           // can be "interval" (send tracking data based on time intervals), "distance" (send tracking data after passing specified distance)
     "psm_mode": <int>,          // power save mode, 0 - disable, 1 - powersave without timers, 2 - powersave with timers
@@ -951,7 +951,7 @@ Profile for Navixy M7.
 ### maxtrack_140
 
 Tracking profile for Maxtrack MXT-140.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=10, max=180>,
     "tracking_distance": <int, meter, min=0, max=25500>,
@@ -962,7 +962,7 @@ Tracking profile for Maxtrack MXT-140.
 ### megastek_gvt430
 
 Tracking profile for Megastek GVT-430.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=10, max=60>,
     "tracking_distance": <int, meter, min=100, max=1000>,
@@ -973,7 +973,7 @@ Tracking profile for Megastek GVT-430.
 ### megastek_mt
 
 Tracking profile for Megastek MT-300, Megastek MT-90s, Megastek MT100.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=86400>
 }
@@ -982,7 +982,7 @@ Tracking profile for Megastek MT-300, Megastek MT-90s, Megastek MT100.
 ### megastek_mt100
 
 Tracking profile for Megastek MT100.
-```json
+```json5
 {
     "tracking_distance": <int, meter, min=50, max=100000>,
     "tracking_interval": <int, second, min=30, max=65535>,
@@ -993,7 +993,7 @@ Tracking profile for Megastek MT100.
 ### meiligaovt
 
 Tracking profile for GoTop VT360, GoTop VT380, Meiligao VT310, Meitrack VT310, RedView VT310.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=0, max=359>,
     "tracking_distance": <int, meter, min=50, max=5000>,
@@ -1004,7 +1004,7 @@ Tracking profile for GoTop VT360, GoTop VT380, Meiligao VT310, Meitrack VT310, R
 ### meitrack
 
 Meitrack profile.
-```json
+```json5
 {
     "tracking_interval": <int>, // interval in seconds, e.g. 30 means that the device will send traсking data every 30 seconds
     "tracking_distance": <int>, // distance in meters, e.g. 100 means that the device will send data every 100 meters
@@ -1018,7 +1018,7 @@ Meitrack profile.
 ### meitrack_asset
 
 Tracking profile for Meitrack T355v2.
-```json
+```json5
 {
     "psm_interval": <int, second, min=0, max=3932100>,
     "psm_mode": <int, min=0, max=2>,
@@ -1031,7 +1031,7 @@ Tracking profile for Meitrack T355v2.
 ### meitrack_vehicle
 
 Tracking profile for Meitrack MVT100, Meitrack MVT340, Meitrack MVT380, Meitrack MVT600, Meitrack T1, Meitrack T3, Meitrack T333, Meitrack T366G, Meitrack T366L, Meitrack T622G, Meitrack TC68S, Meitrack TC68SG.
-```json
+```json5
 {
     "on_stop_tracking_interval": <int, second, min=0, max=655350>,
     "psm_interval": <int, second, min=0, max=3932100>,
@@ -1045,7 +1045,7 @@ Tracking profile for Meitrack MVT100, Meitrack MVT340, Meitrack MVT380, Meitrack
 ### meitrack_without_ps
 
 Tracking profile for Meitrack P66.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=10, max=359>,
     "tracking_distance": <int, meter, min=50, max=65535>,
@@ -1056,7 +1056,7 @@ Tracking profile for Meitrack P66.
 ### mictrack_mp90
 
 Tracking profile for MicTrack MP-90.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=20, max=180>,
     "tracking_interval": <int, second, min=10, max=65535>
@@ -1066,7 +1066,7 @@ Tracking profile for MicTrack MP-90.
 ### mika_g1
 
 Tracking profile for MIKA G1.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=10000>
 }
@@ -1075,7 +1075,7 @@ Tracking profile for MIKA G1.
 ### mrd_100
 
 Tracking profile for MRD-100.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=20, max=65535>
 }
@@ -1084,7 +1084,7 @@ Tracking profile for MRD-100.
 ### mwp008_a
 
 Tracking profile for Diwei TK116, Moralwinhk P008A, Moralwinhk P168.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=10, max=655350>
 }
@@ -1093,7 +1093,7 @@ Tracking profile for Diwei TK116, Moralwinhk P008A, Moralwinhk P168.
 ### myrope_m500
 
 Tracking profile for MyRope M528, MyRope M588.
-```json
+```json5
 {
     "psm_interval": <int, second, min=60, max=65535>,
     "tracking_distance": <int, meter, min=1, max=65535>,
@@ -1104,7 +1104,7 @@ Tracking profile for MyRope M528, MyRope M588.
 ### navisetgt
 
 Tracking profile for Naviset GT-10, Naviset GT-20.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=5, max=180>,
     "tracking_distance": <int, meter, min=50, max=255>,
@@ -1115,7 +1115,7 @@ Tracking profile for Naviset GT-10, Naviset GT-20.
 ### noran
 
 Tracking profile for Noran NR008, Noran NR024, Noran NR100.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=15, max=64800>
 }
@@ -1124,7 +1124,7 @@ Tracking profile for Noran NR008, Noran NR024, Noran NR100.
 ### oigo_ar2
 
 Tracking profile for Oigo AR-2GM, Oigo AR-3HU.
-```json
+```json5
 {
     "psm_interval": <int, second, min=15, max=604800>,
     "tracking_angle": <int, degree, min=0, max=180>,
@@ -1136,7 +1136,7 @@ Tracking profile for Oigo AR-2GM, Oigo AR-3HU.
 ### orange_tk103
 
 Tracking profile for Orange TK-103.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=990>
 }
@@ -1145,7 +1145,7 @@ Tracking profile for Orange TK-103.
 ### piccolo_atx
 
 Tracking profile for Piccolo ATX.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=300, max=86400>
 }
@@ -1154,7 +1154,7 @@ Tracking profile for Piccolo ATX.
 ### piccolo_distance_interval_angle
 
 Tracking profile for Piccolo ATX2S, Piccolo Hybrid+, Piccolo STX, Piccolo TMX+.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=30, max=150>,
     "tracking_distance": <int, meter, min=100, max=10000>,
@@ -1165,7 +1165,7 @@ Tracking profile for Piccolo ATX2S, Piccolo Hybrid+, Piccolo STX, Piccolo TMX+.
 ### piccolo_plus
 
 Profile Wireless Links for Piccolo Plus
-```json
+```json5
 {
     "sleep_mode": "disabled" | "engine" | "asset" | "hybrid",
     "track_by": "interval" | "distance", // optional, need for disabled, engine, hybrid modes
@@ -1181,7 +1181,7 @@ Profile Wireless Links for Piccolo Plus
 ### redview_vt680
 
 Tracking profile for RedView VT680.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=30, max=270>,
     "tracking_interval": <int, second, min=10, max=655350>
@@ -1191,7 +1191,7 @@ Tracking profile for RedView VT680.
 ### sanfone
 
 Tracking profile for Sanfone SF100, Sanfone SF700.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=10, max=360>,
     "tracking_distance": <int, meter, min=30, max=60000>,
@@ -1202,7 +1202,7 @@ Tracking profile for Sanfone SF100, Sanfone SF700.
 ### satsol
 
 Tracking profile for SAT-LITE 3, SAT-LITE 4, Sat Lite 2, Sat Pro, Super Lite.
-```json
+```json5
 {
     "psm_interval": <int, second, min=30, max=86400>,
     "tracking_angle": <int, degree, min=10, max=359>,
@@ -1212,7 +1212,7 @@ Tracking profile for SAT-LITE 3, SAT-LITE 4, Sat Lite 2, Sat Pro, Super Lite.
 ```
 
 ### senseitp211
-```json
+```json5
 {
     "tracking_interval": <int>, // interval in seconds, min 30
     "gps_enabled": <boolean>
@@ -1222,7 +1222,7 @@ Tracking profile for SAT-LITE 3, SAT-LITE 4, Sat Lite 2, Sat Pro, Super Lite.
 ### sheriff_awax12
 
 Tracking profile for Sheriff AWAX12.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=900, max=86400>
 }
@@ -1231,7 +1231,7 @@ Tracking profile for Sheriff AWAX12.
 ### sinowell_g102
 
 Tracking profile for Sinowell G102.
-```json
+```json5
 {
     "psm_interval": <int, second, min=10, max=65000>,
     "tracking_angle": <int, degree, min=5, max=180>,
@@ -1243,7 +1243,7 @@ Tracking profile for Sinowell G102.
 ### skypatrol_tt8750plus
 
 Tracking profile for SkyPatrol TT8750+.
-```json
+```json5
 {
     "psm_interval": <int, second, min=30, max=18000>,
     "tracking_angle": <int, degree, min=10, max=359>,
@@ -1255,7 +1255,7 @@ Tracking profile for SkyPatrol TT8750+.
 ### sleep_active
 
 Tracking profile for СКАТ-Маяк.
-```json
+```json5
 {
     "active_time": <int, second, min=300, max=599940>,
     "sleep_time": <int, second, min=300, max=599940>
@@ -1265,7 +1265,7 @@ Tracking profile for СКАТ-Маяк.
 ### spetrotec_iwatcher
 
 Tracking profile for Spetrotec i-WATCHER AVL.
-```json
+```json5
 {
     "tracking_distance": <int, meter, min=100, max=100000>,
     "tracking_interval": <int, second, min=60, max=86400>,
@@ -1276,7 +1276,7 @@ Tracking profile for Spetrotec i-WATCHER AVL.
 ### stab_liner
 
 Tracking profile for M2M-Cyber GLX, STAB Liner 102.
-```json
+```json5
 {
     "psm_interval": <int, second, min=0, max=3600>,
     "tracking_angle": <int, degree, min=0, max=180>,
@@ -1288,7 +1288,7 @@ Tracking profile for M2M-Cyber GLX, STAB Liner 102.
 ### starcom_helios
 
 Tracking profile for Starcom Helios Advanced, Starcom Helios Hybrid, Starcom Helios TT.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=0, max=432000>
 }
@@ -1297,7 +1297,7 @@ Tracking profile for Starcom Helios Advanced, Starcom Helios Hybrid, Starcom Hel
 ### starline_m17
 
 Tracking profile for Starline M17.
-```json
+```json5
 {
     "psm_interval": <int, second, min=60, max=3540>,
     "psm_mode": <int, min=0, max=1>,
@@ -1308,7 +1308,7 @@ Tracking profile for Starline M17.
 ### suntech_distance_interval_angle
 
 Tracking profile for Suntech ST200, Suntech ST215, Suntech ST300, Suntech ST310U, Suntech ST340LC, Suntech ST600R, Suntech ST600V, Suntech ST650.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=0, max=180>,
     "tracking_distance": <int, meter, min=50, max=60000>,
@@ -1319,7 +1319,7 @@ Tracking profile for Suntech ST200, Suntech ST215, Suntech ST300, Suntech ST310U
 ### suntech_interval
 
 Tracking profile for Suntech ST940.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=20, max=60000>
 }
@@ -1328,7 +1328,7 @@ Tracking profile for Suntech ST940.
 ### syrus
 
 Tracking profile for Syrus 2G.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=5, max=90>,
     "tracking_distance": <int, meter, min=100, max=5000>,
@@ -1339,7 +1339,7 @@ Tracking profile for Syrus 2G.
 ### telfm
 
 Teltonika FM tracking profile.
-```json
+```json5
 {
   "tracking_angle": 30,
   "tracking_distance": 100,
@@ -1359,7 +1359,7 @@ Teltonika FM tracking profile.
 ### telfm5x
 
 Tracking profile for Teltonika FM5500, Teltonika FM6320, Teltonika FMB630, Teltonika FMB640.
-```json
+```json5
 {
     "sleep_mode": <string, disabled | soft_sleep>,
     "sleep_timeout": <int, second, min=300, max=2592000>,
@@ -1372,7 +1372,7 @@ Tracking profile for Teltonika FM5500, Teltonika FM6320, Teltonika FMB630, Telto
 ### topfly
 
 Tracking profile for TopFlyTech T8603, TopFlyTech T8608, TopFlyTech T8803, TopFlyTech T8803 Pro, TopFlyTech T8803+, TopFlyTech T8806, TopFlyTech T8806+, TopFlyTech T8806+R, TopFlyTech T8808A, TopFlyTech T8808A+, TopFlyTech T8808B, TopFlyTech T8808B+.
-```json
+```json5
 {
     "psm_interval": <int, second, min=0, max=65535>,
     "tracking_angle": <int, degree, min=0, max=90>,
@@ -1384,7 +1384,7 @@ Tracking profile for TopFlyTech T8603, TopFlyTech T8608, TopFlyTech T8803, TopFl
 ### topshine_distance_interval
 
 Tracking profile for TopShine MT02, TopShine MT08, TopShine OGT100, TopShine VT1000, TopShine VT200W, TopShine VT900.
-```json
+```json5
 {
     "tracking_distance": <int, meter, min=50, max=65535>,
     "tracking_interval": <int, second, min=10, max=655350>
@@ -1394,7 +1394,7 @@ Tracking profile for TopShine MT02, TopShine MT08, TopShine OGT100, TopShine VT1
 ### topshine_distance_interval_angle
 
 Tracking profile for TopShine MT08, TopShine OGT100, TopShine VT1000.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=0, max=359>,
     "tracking_distance": <int, meter, min=50, max=65535>,
@@ -1405,7 +1405,7 @@ Tracking profile for TopShine MT08, TopShine OGT100, TopShine VT1000.
 ### topten
 
 Tracking profile for TopTen GT08, TopTen TK-510, TopTen TK228.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=0, max=359>,
     "tracking_interval": <int, second, min=10, max=655350>
@@ -1415,7 +1415,7 @@ Tracking profile for TopTen GT08, TopTen TK-510, TopTen TK228.
 ### totarget
 
 Tracking profile for TT-08, VG-eLock7A.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=300>
 }
@@ -1424,7 +1424,7 @@ Tracking profile for TT-08, VG-eLock7A.
 ### totem
 
 Tracking profile for TotemTech AT05, TotemTech AT07.
-```json
+```json5
 {
     "psm_interval": <int, second, min=10, max=18000>,
     "tracking_angle": <int, degree, min=10, max=180>,
@@ -1436,7 +1436,7 @@ Tracking profile for TotemTech AT05, TotemTech AT07.
 ### trackertech_msp320
 
 Tracking profile for Tracker Technology MSP320.
-```json
+```json5
 {
     "tracking_interval": <int, second, min=30, max=86400>
 }
@@ -1445,7 +1445,7 @@ Tracking profile for Tracker Technology MSP320.
 ### trackertech_msp340
 
 Tracking profile for Tracker Technology MSP340.
-```json
+```json5
 {
     "psm_interval": <int, second, min=180, max=86400>,
     "tracking_interval": <int, second, min=30, max=86400>
@@ -1455,7 +1455,7 @@ Tracking profile for Tracker Technology MSP340.
 ### trackertech_msp350
 
 Tracking profile for Tracker Technology MSP350.
-```json
+```json5
 {
     "psm_interval": <int, second, min=60, max=2147483647>,
     "psm_mode": <int, min=0, max=3>,
@@ -1467,7 +1467,7 @@ Tracking profile for Tracker Technology MSP350.
 ### tramigo
 
 Profile for Tramigo models that do not support the interval in seconds
-```json
+```json5
 {
     "tracking_interval": <int, 1-10080>, // interval in minutes
     "tracking_distance": <float, 0.5-20>, // distance in kilometers
@@ -1479,7 +1479,7 @@ Profile for Tramigo models that do not support the interval in seconds
 
 ### tramigo_with_seconds
 Profile for Tramigo models that do support the interval in seconds
-```json
+```json5
 {
     "tracking_interval": <int, 30-604800>, // interval in seconds
     "tracking_distance": <float, 0.5-20>, // distance in kilometers
@@ -1492,7 +1492,7 @@ Profile for Tramigo models that do support the interval in seconds
 ### tt1
 
 Profile for Navixy TT-1.
-```json
+```json5
 {
     "type": <string>,           // can be "interval" (send tracking data based on time intervals), "distance" (send tracking data after passing specified distance)
     "psm_mode": <int>,          // power save mode, 0 - disable, 1 - powersave mode, 2 - Back-up Battery Power Saving Mode
@@ -1508,7 +1508,7 @@ Profile for Navixy TT-1.
 ### ulbotech_t300
 
 Tracking profile for IMTSA TR2-OBD, Ulbotech T361, Ulbotech T381.
-```json
+```json5
 {
     "tracking_angle": <int, degree, min=3, max=20>,
     "tracking_distance": <int, meter, min=0, max=25500>,
@@ -1519,7 +1519,7 @@ Tracking profile for IMTSA TR2-OBD, Ulbotech T361, Ulbotech T381.
 ### vjoy
 
 Tracking profile for Kingneed C30, Kingneed T0024 / T4024, Kingneed T0026, Kingneed T1124, Kingneed T12, Kingneed T16/T18/T19, Kingneed T300, Kingneed T3124 / T5124, Kingneed T500, Kingneed T6024, Kingneed T6124, Kingneed T630, Kingneed T8124, Kingneed TK10, Kingneed TK101, Kingneed TK20, Kingneed TK5, VJOYCAR T0026G, VJOYCAR T13G, VJOYCAR T13GSE, VJOYCAR T633G, VJOYCAR TK10SDC, VJoy T12, VJoy TK05, VJoy TK10GSE, VJoy TK10GSE Solar, VJoy TK20SE.
-```json
+```json5
 {
     "continuous_report_interval": <int, second, min=10, max=5940>,
     "motion_interval": <int, second, min=30, max=999>,
@@ -1531,7 +1531,7 @@ Tracking profile for Kingneed C30, Kingneed T0024 / T4024, Kingneed T0026, Kingn
 ### xirgo
 
 Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2150C, Xirgo XT-2160G, Xirgo XT-2450V, Xirgo XT-2460G, Xirgo XT-4750C, Xirgo XT-4760G, Xirgo XT-4850C.
-```json
+```json5
 {
     "psm_interval": <int, second, min=60, max=2592000>,
     "tracking_angle": <int, degree, min=10, max=180>,
@@ -1543,7 +1543,7 @@ Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2150C, Xirgo XT-21
 ### xirgo_48
 
 Tracking profile for Xirgo XT-4850C.
-```json
+```json5
 {
     "psm_interval": <int, second, min=600, min=60, max=2592000>,
     "tracking_angle": <int, degree, min=10, max=180>,
@@ -1555,7 +1555,7 @@ Tracking profile for Xirgo XT-4850C.
 ### xirgo_dist
 
 Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2450V, Xirgo XT-2460G, Xirgo XT-4750C, Xirgo XT-4760G.
-```json
+```json5
 {
     "psm_interval": <int, second, min=60, max=2592000>,
     "tracking_angle": <int, degree, min=10, max=180>,
@@ -1569,7 +1569,7 @@ Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2450V, Xirgo XT-24
 "Я ТУТ ПОИСК" tracking profile.
 
 name: ‘yatut_poisk’
-```json
+```json5
 {
     "mode": <string, DAILY|TEST|SEARCH, default=DAILY> [required],
     "main_wakeup_time": <string, format 'HH:mm', default='12:00'> [required if mode == 'DAILY'],

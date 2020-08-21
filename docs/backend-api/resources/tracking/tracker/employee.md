@@ -21,7 +21,7 @@ Assign another employee (“driver”) to this tracker
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -37,7 +37,7 @@ Request to read the current employee assigned to tracker, and when it was assign
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
 #### response
-```js
+```json5
 {
   "success": true,
   "current": { //current employee info, standard employee object, CAN BE NULL

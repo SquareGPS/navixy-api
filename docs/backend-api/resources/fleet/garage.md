@@ -27,7 +27,7 @@ Get all garages belonging to user.
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "list": [ <garage>, ... ]
@@ -53,7 +53,7 @@ Create new garage.
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "id": 111 //id of the created garage
@@ -78,7 +78,7 @@ Update existing garage.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -101,7 +101,7 @@ Delete garage with the specified id.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
     

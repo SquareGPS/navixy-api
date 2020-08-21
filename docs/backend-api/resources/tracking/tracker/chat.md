@@ -29,7 +29,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/list/' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "list":[...] // [array of messages]
@@ -38,7 +38,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/list/' \
 
 Where **message** object is:
 
-```js
+```json5
 {
   "id": 1,
   "submit_time": "2014-04-15 09:02:24", //submit time
@@ -77,7 +77,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read_all/' \
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -108,7 +108,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read/' \
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -137,7 +137,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/send/' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "id": 222 //id of the submitted message
@@ -172,7 +172,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast/' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "sent_to": [14], // list of trackers' IDs to whom the message was sent
@@ -205,7 +205,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list/' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "value": { // map of trackers` IDs to date-times
@@ -235,7 +235,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count/' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "value": { // map of trackers` IDs to counts

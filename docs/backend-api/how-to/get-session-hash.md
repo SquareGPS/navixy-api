@@ -14,7 +14,7 @@ To get hash use the [user/auth](../resources/commons/user/index.md#auth) call wi
 
 The response will be like this:
 
-```json
+```json5
 { "success": true, "hash": "882fb333405d006df0d5a3f410115e92" }
 ```                                                             
 
@@ -49,7 +49,7 @@ For example, if you want to make a call with the single parameter `id` equal to 
 `id=1&hash=882fb333405d006df0d5a3f410115e92` (example is for POST/`x-www-form-urlencoded` or GET requests)
 
 Otherwise, you will get an error response:
-```json
+```json5
 {
     "success": false,
     "status": {
@@ -61,7 +61,7 @@ Otherwise, you will get an error response:
 Whenever you see such response, it means that you did not pass hash value properly.
 
 If session is expired or was logged out, you will receive the following response:
-```json
+```json5
 {
     "success": false,
     "status": {

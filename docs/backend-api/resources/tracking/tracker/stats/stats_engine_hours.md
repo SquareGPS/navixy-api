@@ -14,7 +14,7 @@ Returns engine hours (time when engine is on) count in specified period.
 *   **to** - **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date.
 
 #### response
-```json
+```json5
 {
     "success": true,
     "value": 42.0

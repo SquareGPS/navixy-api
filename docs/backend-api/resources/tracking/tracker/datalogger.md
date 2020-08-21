@@ -16,7 +16,7 @@ Uploads track data for specified tracker. Tracker must be a datalogger.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 

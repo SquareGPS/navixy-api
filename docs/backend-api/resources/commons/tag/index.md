@@ -34,7 +34,7 @@ Create new tag.
 * **tag** - JSON object.
 
 #### response
-```js
+```json5
 {
     "success": true,
     "id": 111 //id of the created tag
@@ -55,7 +55,7 @@ Delete tag with the specified id.
 * **tag_id** - (int) id of the tag to delete.
 
 #### response
-```js
+```json5
 {
     "success": true
 }
@@ -73,7 +73,7 @@ Get all tags belonging to user with optional filtering.
 * **filter** - (string) optional filter for tag name, 3-60 characters or null.
 
 #### response
-```js
+```json5
 {
     "success": true,
     "list": [ <tag>, ... ]
@@ -93,7 +93,7 @@ Search entities that bound with specified tags.
 * **entity_types** - (Array of [tagged entity types](#tag)) optional, filter for entity types.
 
 #### response
-```js
+```json5
 {
     "success": true,
     "result": {
@@ -120,7 +120,7 @@ Update existing tag.
 * **tag** - JSON object.
 
 #### response
-```js
+```json5
 {
     "success": true
 }

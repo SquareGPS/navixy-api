@@ -14,7 +14,7 @@ Assign a status to the tracker.
 * **new_status_id** – **int**. ID of the status. Must belong to status listing assigned to this tracker.
 
 #### response
-```js
+```json5
 {
   "success": true,
   "last_change": { //object describing last change of the status. May be null
@@ -48,7 +48,7 @@ Get current assigned statuses for the specified trackers.
 * **trackers** – **array of int**. List of the tracker’s IDs belonging to authorized user.
 
 #### response
-```js
+```json5
 {
     "success": true,
     "value": {                       // Map with tracker's IDs as keys.
@@ -103,7 +103,7 @@ Get current assigned status of the tracker.
 * **tracker_id** – **int**. ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.
 
 #### response
-```js
+```json5
 {
   "success": true,
   "current_status": { //status object showing current status of tracker. May be null

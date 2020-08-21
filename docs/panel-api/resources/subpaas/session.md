@@ -23,7 +23,7 @@ Create subpaas session
 
 #### response
 
-```json
+```json5
 {
     "success": true,
     "hash": "600d4a5400000000600d4a5400000000"

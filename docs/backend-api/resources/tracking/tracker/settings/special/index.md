@@ -26,7 +26,7 @@ Get special settings for the specified tracker.
 If parameter type is present:
 
 #### response
-```js
+```json5
 {
     "success": true,
     "value": <settings object> //[Settings object]
@@ -35,7 +35,7 @@ If parameter type is present:
 If parameter type is omitted:
 
 #### response
-```js
+```json5
 {
     "success": true,
     "list": [<settings object>] //[Settings objects array]
@@ -45,7 +45,7 @@ If parameter type is omitted:
 ###### Settings object structures by type:
 
 **electronic_lock_password**
-```js
+```json5
 {
     "type": "electronic_lock_password",
     "password": <string, nullable>,
@@ -54,7 +54,7 @@ If parameter type is omitted:
 ```
 
 **hhd_lock_password**
-```js
+```json5
 {
     "type": "hhd_lock_password",
     "password": <string, nullable>, // 8 digits
@@ -63,7 +63,7 @@ If parameter type is omitted:
 ```
 
 **jointech_lock_password**
-```js
+```json5
 {
     "type": "jointech_lock_password",
     "password": <string, nullable>, // 6 non-space, non-comma symbols
@@ -72,7 +72,7 @@ If parameter type is omitted:
 ```
 
 **vg_lock_password**
-```js
+```json5
 {
     "type": "vg_lock_password",
     "password": <string, nullable>, // 6 digits
@@ -83,7 +83,7 @@ If parameter type is omitted:
 
 
 **autofon_sms_alerts**
-```js
+```json5
 {
     "type": "autofon_sms_alerts",
     "low_battery_mode": <string, enable | disable>,
@@ -93,7 +93,7 @@ If parameter type is omitted:
 ```
 
 **auto_geofence_telfm**
-```js
+```json5
 {
     "type": "auto_geofence_telfm",
     "mode": <string, enable | disable>,
@@ -103,7 +103,7 @@ If parameter type is omitted:
 ```
 
 **bce_tacho_control**
-```js
+```json5
 {
     "type": "bce_tacho_control",
     "function": <string, slot1 | slot2 | vu_activities | vu_no_activities>,
@@ -111,7 +111,7 @@ If parameter type is omitted:
 ```
 
 **call_button**
-```js
+```json5
 {
     "type": "call_button",
     "capacity": 1,
@@ -120,7 +120,7 @@ If parameter type is omitted:
 ```
 
 **call_buttons_v40**
-```js
+```json5
 {
     "type": "call_buttons_v40",
     "capacity": 4,
@@ -129,7 +129,7 @@ If parameter type is omitted:
 ```
 
 **careu_psm**
-```js
+```json5
 {
     "type": "careu_psm",
     "sleep_when_ignition_off": <boolean>,
@@ -151,7 +151,7 @@ If parameter type is omitted:
 
 **castel_alarms**
 
-```js
+```json5
 {
     "type": "castel_alarms",
     "acceleration": {
@@ -183,7 +183,7 @@ If parameter type is omitted:
 
 **castel_obd**
 
-```js
+```json5
 {
     "type": "castel_obd",
     "enable_pid_reports": <boolean>,
@@ -194,7 +194,7 @@ If parameter type is omitted:
 
 **charging_gmt100**
 
-```js
+```json5
 {
     "type": "charging_gmt100",
     "mode": <string, on_need | ign_on_only | ign_on_|_low_charge>
@@ -203,7 +203,7 @@ If parameter type is omitted:
 
 **ddd_emails**
 
-```js
+```json5
 {
     "type": "ddd_emails",
     "emails": <array of strings, valid emails, max size 5>
@@ -212,7 +212,7 @@ If parameter type is omitted:
 
 **digital_password**
 
-```js
+```json5
 {
     "type": "digital_password",
     "password": <string> // 6 digits
@@ -221,7 +221,7 @@ If parameter type is omitted:
 
 **fcc_telfm**
 
-```js
+```json5
 {
     "type": "fcc_telfm",
     "fuel_type": <string, gasoline | diesel | lpg>,
@@ -231,7 +231,7 @@ If parameter type is omitted:
 ```
 
 **galileo_tacho_control**
-```js
+```json5
 {
     "type": "galileo_tacho_control",
     "function": "download"
@@ -241,7 +241,7 @@ If parameter type is omitted:
 
 
 **galileo_hds**
-```js
+```json5
 {
     "type": "galileo_hds",
     "mode": <string, disable | enable>,
@@ -252,7 +252,7 @@ If parameter type is omitted:
 ```
 
 **harsh_behavior_hua_sheng**
-```js
+```json5
 {
     "type": "harsh_behavior_hua_sheng",
     "mode": <string, disable | enable>,
@@ -263,7 +263,7 @@ If parameter type is omitted:
 ```
 
 **hbm_telfm**
-```js
+```json5
 {
     "type": "hbm_telfm",
     "mode": <string, disable | enable>,
@@ -274,7 +274,7 @@ If parameter type is omitted:
 ```
 
 **hbm_telfm5x**
-```js
+```json5
 {
     "type": "hbm_telfm5x",
     "mode": <string, disable | enable>,
@@ -292,7 +292,7 @@ If parameter type is omitted:
   harsh cornering event.
 
 **hbm_ql**
-```js
+```json5
 {
     "type": "hbm_ql",
     "mode": <string, disable | enable>,
@@ -308,7 +308,7 @@ If parameter type is omitted:
 ```
 
 **hbm_ms_ql**
-```js
+```json5
 {
     "type": "hbm_ms_ql",
     "mode": <string, disable | gps_only | motion_sensor_only | gps_and_motion_sensor>,
@@ -329,7 +329,7 @@ If parameter type is omitted:
 ```
 
 **harsh_behavior_bce**
-```js
+```json5
 {
     "type": "harsh_behavior_bce",
     "is_switched_off": <boolean>,
@@ -340,7 +340,7 @@ If parameter type is omitted:
 ```
 
 **harsh_behavior_concox_x1**
-```js
+```json5
 {
     "type": "harsh_behavior_concox_x1",
     "acc_speed": <int, 0 - 100>,
@@ -351,7 +351,7 @@ If parameter type is omitted:
 ```
 
 **harsh_behavior_tramigo**
-```js
+```json5
 {
     "type": "harsh_behavior_tramigo",
     "mode": <string, disable | enable>,
@@ -361,7 +361,7 @@ If parameter type is omitted:
 ```
 
 **harsh_behavior_ruptela**
-```js
+```json5
 {
     "type": "harsh_behavior_ruptela",
     "braking_limit": <int, 0 - 100>,
@@ -370,7 +370,7 @@ If parameter type is omitted:
 ```
 
 **nimbelink_accel**
-```js
+```json5
 {
     "type": "nimbelink_accel",
     "mode": <string, disable | enable>,
@@ -383,7 +383,7 @@ If parameter type is omitted:
 
 
 **hua_sheng_vibration_sensitivity**
-```js
+```json5
 {
     "type": "hua_sheng_vibration_sensitivity",
     "sensitivity": <string, easy | normal | hard | hardest>
@@ -391,7 +391,7 @@ If parameter type is omitted:
 ```
 
 **ign_src_suntech**
-```js
+```json5
 {
     "type": "ign_src_suntech",
     "mode": <string, power_voltage | din1 | movement>,
@@ -401,7 +401,7 @@ If parameter type is omitted:
 ```
 
 **ign_src_telfm**
-```js
+```json5
 {
     "type": "ign_src_telfm",
     "mode": <string, power_voltage | din1 | movement>,
@@ -411,7 +411,7 @@ If parameter type is omitted:
 ```
 
 **locus_sec**
-```js
+```json5
 {
     "type": "locus_sec",
     "signature": <string, length = 1 - 32>,
@@ -421,7 +421,7 @@ If parameter type is omitted:
 ```
 
 **phonebook_gt300**
-```js
+```json5
 {
     "type": "phonebook_gt300",
     "capacity": 20,
@@ -430,7 +430,7 @@ If parameter type is omitted:
 ```
 
 **phonebook_pt100**
-```js
+```json5
 {
     "type": "phonebook_pt100",
     "capacity": 3,
@@ -439,7 +439,7 @@ If parameter type is omitted:
 ```
 
 **pwr_off_key**
-```js
+```json5
 {
     "type": "pwr_off_key",
     "mode": <string, enable | disable>
@@ -447,7 +447,7 @@ If parameter type is omitted:
 ```
 
 **scat_mayak_bt_control**
-```js
+```json5
 {
     "type": "scat_mayak_bt_control",
     "function": <string, bt_disable | bt_enable | bt_clear | bt_write>,
@@ -456,7 +456,7 @@ If parameter type is omitted:
 ```
 
 **sos_key**
-```js
+```json5
 {
     "type": "sos_key",
     "mode": <string, report | call_report>,
@@ -465,7 +465,7 @@ If parameter type is omitted:
 ```
 
 **starcom_impact**
-```js
+```json5
 {
     "type": "starcom_impact",
     "strong_duration": <int, 0 - 14>,
@@ -482,7 +482,7 @@ If parameter type is omitted:
 - `weak_force` - required impact force to trigger weak impact event. Each unit equals about 1.1g. 
 
 **tacho_company_card**
-```js
+```json5
 {
     "type": "tacho_company_card",
     "company_card_number": <string> // 16 HEX digits (0-9A-F)
@@ -490,7 +490,7 @@ If parameter type is omitted:
 ```
 
 **tacho_remote_download**
-```js
+```json5
 {
     "type": "tacho_remote_download",
     "company_card_number": <string>, // 16 HEX digits (0-9A-F)
@@ -500,7 +500,7 @@ If parameter type is omitted:
 ```
 
 **teltonika_tacho_request**
-```js
+```json5
 {
     "type": "teltonika_tacho_request",
     "data_type": <string, overview | activities | eventsAndFaults | detailedSpeed | technicalData | card1Download | card2Download>,
@@ -510,7 +510,7 @@ If parameter type is omitted:
 ```
 
 **temporary_digital_password**
-```js
+```json5
 {
     "type": "temporary_digital_password",
     "password": <string>, // 6 digits
@@ -519,7 +519,7 @@ If parameter type is omitted:
 ```
 
 **time_shift**
-```js
+```json5
 {
     "type": "time_shift",
     "offset": <double, -24.0 - 24.0> //hours
@@ -527,7 +527,7 @@ If parameter type is omitted:
 ```
 
 **tow_detection_ql**
-```js
+```json5
 {
     "type": "tow_detection_ql",
     "mode": <string, disable | enable>,
@@ -541,7 +541,7 @@ If parameter type is omitted:
 ```
 
 **tow_detection_ql2**
-```js
+```json5
 {
     "type": "tow_detection_ql2",
     "mode": <string, disable | enable>,
@@ -555,7 +555,7 @@ If parameter type is omitted:
 ```
 
 **tow_detection_telfm**
-```js
+```json5
 {
     "type": "tow_detection_telfm",
     "mode": <string, disable | enable>,
@@ -565,14 +565,14 @@ If parameter type is omitted:
 ```
 
 **video_stream_howen**
-```json
+```json5
 {
     "type": "video_stream_howen"
 }
 ```
 
 **virtual_ign_ql**
-```js
+```json5
 {
     "type": "virtual_ign_ql",
     "mode": <string, disabled | power_voltage | motion_sensor>,
@@ -605,7 +605,7 @@ Set special settings for a specified tracker with the new one.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 

@@ -7,7 +7,7 @@ description: /data
 
 Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 
-```js
+```json5
 {
     "file_id": <string, unique file id>,
     "header": <optional, array of string>,
@@ -28,7 +28,7 @@ If `parse_header` is set to true, first row of the uploaded file will be treat a
 
 #### response
 
-```js
+```json5
 {
     "file_id": <string, unique file id>,
     "header": <optional, array of string>,

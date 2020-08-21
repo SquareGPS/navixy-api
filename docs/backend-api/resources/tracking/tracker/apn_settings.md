@@ -24,7 +24,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/apn_settings/read' \
 ```
 #### response
 
-```json
+```json5
 {
     "success": true,
     "value": {

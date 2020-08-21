@@ -114,7 +114,7 @@ is specific to API call.
 !!! note "For example"
     To read [user's tracker list](./how-to/get-tracker-list.md) 
     use `[api_base_url]/tracker/list/?hash=a6aa75587e5c59c32d347da438505fc3` and get response:
-    ```json
+    ```json5
     {
       "success": true,
       "list": [
@@ -168,7 +168,7 @@ is specific to API call.
     ```
 
 Or error if hash is wrong:
-```json
+```json5
 {
   "success": false,
   "status": {
@@ -232,7 +232,7 @@ Session hash can be obtained via `user/auth` API call:
 *   `date/time` – is a string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user’s timezone).
 *   `local_time` – is a string containing local time in `HH:mm:ss` format.
 *   `location` – is json object contains geographical coordinates, e.g.
-```json
+```json5
 {"lat": 56.827001, "lng": 60.594296}
 ```
 *   `locale` – string in format `language\[_country\]`, where `language` is 
@@ -252,7 +252,7 @@ Session hash can be obtained via `user/auth` API call:
 If an error occurs, API returns special error response. You can also detect error by checking 
 HTTP response code. If it’s not `200 OK`, you should parse and handle response body as an error response.
 In the event of error occurs, the response will be in the following format:
-```json
+```json5
 {
   "success": false,
   "status": {

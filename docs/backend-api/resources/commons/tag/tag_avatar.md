@@ -21,7 +21,7 @@ Assign icon_id (from standard icon set) to this tag. Icon_id can be null – thi
 
 #### response
 
-```js
+```json5
 {
     "success": true
 }
@@ -59,7 +59,7 @@ File part **mime** type must be one of:
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "value": <string> // avatar file name

@@ -11,7 +11,7 @@ non-null `department_id`.
 <a name="structure"></a>
 `<department>` is:
 
-```js
+```json5
 {
     "id": 222, <int>
     "label": "Drivers",
@@ -39,7 +39,7 @@ Gets all departments belonging to user.
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "list": [ <department>, ... ]
@@ -69,7 +69,7 @@ Creates a new department with specified parameters. Required subuser rights: `em
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "id": 111 //id of the created department
@@ -100,7 +100,7 @@ Updates existing department with a new specified parameters. Required subuser ri
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -125,7 +125,7 @@ Deletes department with the specified id. Required subuser rights: `employee_upd
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 

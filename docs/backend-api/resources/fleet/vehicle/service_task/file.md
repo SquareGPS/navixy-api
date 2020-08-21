@@ -19,7 +19,7 @@ Create file to specify its id in service task later
 *   **type** - "image" or "file". Default is "file".
 
 #### response
-```js
+```json5
 {
   "success": true,
   "value": {

@@ -21,7 +21,7 @@ Create route schedule with checkpoints
 * **checkpoints** - **checkpoint_schedule_entry\[\]**. Array of route's checkpoints.
 
 #### response
-```js
+```json5
 {
     "success": true,
     "id": 111 //id of the created route schedule entry
@@ -38,7 +38,7 @@ Delete route schedule with checkpoints
 * **id** - **int**. Route schedule ID.
 
 #### response
-```js
+```json5
 {
     "success": true
 }
@@ -58,6 +58,6 @@ is will be deleted.
 * **checkpoints** - **checkpoint_schedule_entry\[\]**. Array of route's checkpoints.
 
 #### response
-```json
+```json5
 { "success": true }
 ```

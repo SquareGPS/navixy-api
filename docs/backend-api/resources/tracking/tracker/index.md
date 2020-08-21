@@ -7,7 +7,7 @@ Tracker is one of the key entities in our API. It represents tracking device reg
 
 ## Tracker object structure
 
-```js
+```json5
 {
     "id": {int}, // tracker id aka object_id
     "label": {string}, // tracker label
@@ -31,7 +31,7 @@ Tracker is one of the key entities in our API. It represents tracking device reg
 
 where **tag_binding** is:
 
-```js
+```json5
 {
   "tag_id": {int}, // id of tag. must be unique for tracker
   "ordinal": {int} // number that can be used as ordinal or kind of tag. must be unique for tracker. max value is 5
@@ -68,7 +68,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/change_phone' \
 
 #### response
 
-```json
+```json5
 {
     "success": true
 }
@@ -105,7 +105,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/corrupt' \
 
 #### response
 
-```json
+```json5
 {
     "success": true
 }
@@ -142,7 +142,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/delete' \
 
 #### response
 
-```json
+```json5
 {
     "success": true
 }
@@ -154,7 +154,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/delete' \
 * 249 (Operation available for clones only) – if tracker is not clone
 * 203 (Delete entity associated with) – if there are some rules or vehicles associated with tracker
 
-```js
+```json5
 {
     "success": false,
     "status": {
@@ -165,7 +165,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/delete' \
 }
 ```
 or
-```js
+```json5
 {
     "success": false,
     "status": {
@@ -196,7 +196,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_diagnostics' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone 
@@ -207,7 +207,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_diagnostics' \
 ```
 
 Where **Sensor value object** is:
-```js
+```json5
 {
   "label": {string}, // Sensor's label. E.g. "Sensor #1",
   "name": {string of enum}, // Name of sensor's raw input. E.g. "can_fuel" ( see below list of values)
@@ -318,7 +318,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_fuel' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone
@@ -352,7 +352,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_inputs' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone
@@ -407,7 +407,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_last_gps_point' \
 
 #### response
 
-```json
+```json5
 {
     "success": true,
     "value": <see TrackPoint in tracker/track/read>
@@ -443,7 +443,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_readings' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone
@@ -474,7 +474,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_state' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "user_time":"2014-07-09 07:50:58", //current time in user's timezone
@@ -545,7 +545,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "user_time":"2014-07-09 07:50:58", //current time in user's timezone
@@ -585,7 +585,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "list": [
@@ -639,7 +639,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
 
 where **battery** is:
 
-```js
+```json5
 {
     "min_charge": {float},
     "low_charge": {float}, // charge level for the "low battery" rule triggering 
@@ -648,7 +648,7 @@ where **battery** is:
 ```
 where **additional_fields** is:
 
-```json
+```json5
 {
     "type": {string},
     "default_value": {string},
@@ -673,7 +673,7 @@ general types only
 
 #### example
 
-```json
+```json5
 {
     "id": 166,
     "code": "tt1_wp",
@@ -756,7 +756,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/list' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "list": [ ${tracker}, ... ] // list of JSON-objects
@@ -789,7 +789,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/tags/set' \
 
 #### response
 
-```json
+```json5
 {
     "success": true
 }
@@ -825,7 +825,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/location_request' \
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -861,7 +861,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "value": <tracker> //a newly created tracker
@@ -910,7 +910,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "value": <tracker> // a newly created tracker
@@ -971,7 +971,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "value": <tracker> //a newly created tracker
@@ -1001,7 +1001,7 @@ Sends command to tracker for performing special control, determined with "specia
 
 common command format is:
 
-```js
+```json5
 "command":{
   "name": "command name", // required field
   "some_parameter1": <parameter value>, // parameters depends on certain command
@@ -1031,7 +1031,7 @@ Certain commands which can be used is defined with `special_control` field of **
 
 This command is used to seal/unseal electronic lock.
 
-```js
+```json5
 command {
   name: "electronic_lock_command",
   command_code: "unseal", // "seal"/"unseal"
@@ -1043,7 +1043,7 @@ command {
 
 This command is equivalent to API call [tracker/settings/special/update](settings/special/index.md#update).
 
-```json
+```json5
 command {
   name: "set_special_settings_command"
   special_settings: <special settings JSON object>
@@ -1068,7 +1068,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/send_command' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "list": [ {tracker}, ... ] // list of JSON-objects

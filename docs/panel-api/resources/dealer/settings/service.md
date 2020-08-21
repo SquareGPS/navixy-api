@@ -13,7 +13,7 @@ Get current monitoring service settings.
 
 #### response
 
-```js
+```json5
 {
   "success": true,
   "value": {
@@ -80,7 +80,7 @@ All fields from the [/dealer/service/settings/read](#read) response.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 

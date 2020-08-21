@@ -25,7 +25,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
 
 #### response
 
-```js
+```json5
 {
  "success": true,
  "enabled": {boolean} // true if alarm mode is enabled
@@ -59,7 +59,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/set' \
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 

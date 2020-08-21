@@ -12,7 +12,7 @@ This method is called when user has opened UI.
 
 #### response
 
-```json
+```json5
 {
     "success": true
 }

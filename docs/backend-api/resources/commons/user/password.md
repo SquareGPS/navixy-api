@@ -19,7 +19,7 @@ Changes password of user with the provided session hash (it is contained in pass
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -38,7 +38,7 @@ Changes password for logined user.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 

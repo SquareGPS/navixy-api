@@ -24,7 +24,7 @@ at least two checkpoints.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -38,6 +38,6 @@ Transmute checkpoint to task and delete its route and other checkpoints in the r
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```

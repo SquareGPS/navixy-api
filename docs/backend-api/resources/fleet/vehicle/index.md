@@ -9,7 +9,7 @@ API path: `/vehicle`.
 
 **vehicle** type is JSON object:
 
-```js
+```json5
 {
     "id": 222,//int
     "tracker_id": 1, //int
@@ -110,7 +110,7 @@ Delete vehicle with the specified id.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -125,7 +125,7 @@ Get all vehicles belonging to user.
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "list": [ ${vehicle}, ... ] // list of JSON objects
@@ -174,7 +174,7 @@ Update existing vehicle.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 

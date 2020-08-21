@@ -21,7 +21,7 @@ Read setting value by key.
 
 #### responses:
 
-```json
+```json5
 {
   "success": true,
   "value": "previously saved value"
@@ -30,7 +30,7 @@ Read setting value by key.
 
 When nonexistent key is provided:
 
-```json
+```json5
 {
   "success": false,
   "status": {
@@ -56,7 +56,7 @@ Set setting value.
 
 #### responses:
 
-```json
+```json5
 { "success": true }
 ```
 

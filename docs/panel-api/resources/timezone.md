@@ -13,7 +13,7 @@ Does not require user authorization.
 
 ### Return value
 
-```json
+```json5
 {
     "success": true,
     "list": [ {

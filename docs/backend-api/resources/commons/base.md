@@ -17,7 +17,7 @@ The report for health-check. It will do nothing.
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```
 
@@ -47,6 +47,6 @@ Sends email from the platform to any email address with specified title and text
 
 #### response
 
-```json
+```json5
 { "success": true }
 ```

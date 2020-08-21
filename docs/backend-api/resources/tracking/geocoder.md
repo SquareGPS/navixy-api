@@ -42,7 +42,7 @@ $ curl -X POST '{{ extra.api_example_url }}/geocoder/search_address' \
 
 #### response
 
-```js
+```json5
 {
     "success": true,
     "locations": [
@@ -59,7 +59,7 @@ $ curl -X POST '{{ extra.api_example_url }}/geocoder/search_address' \
 
 where **details_object** is:
 
-```js
+```json5
 {
     "country": <string>, // optional
     "province": <string>, // optional
@@ -73,7 +73,7 @@ where **details_object** is:
 
 **bounds_object** is:
 
-```json
+```json5
 {
   "nw":{ //northwest corner
     "lat":<double>,
@@ -109,7 +109,7 @@ $ curl -X POST '{{ extra.api_example_url }}/geocoder/search_location' \
 ```
 #### response
 
-```js
+```json5
 {
     "success": true,
     "value": <address>, // string
