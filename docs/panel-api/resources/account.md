@@ -3,7 +3,7 @@ title: /account
 description: /account
 ---
 
-## auth()
+## auth
 
 #### parameters
 
@@ -12,7 +12,7 @@ description: /account
 
 Does not require session hash and does not need any permissions. Auth dealer in panel (planned also for dealer's "sub-users") 
 
-#### return
+#### response
 
 ```json
 {
@@ -30,11 +30,11 @@ See: panel account [permissions](../getting-started.md#panel-api-permissions).
 *   12 - Dealer not found
 
 
-## get_permissions()
+## get_permissions
 
 Does not need any permissions. Returns permissions for current panel session 
 
-#### return
+#### response
 
 ```json
 {
@@ -47,11 +47,11 @@ Does not need any permissions. Returns permissions for current panel session
 
 Only standard errors.
 
-## logout()
+## logout
 
 Ends the current session.
 
-#### return
+#### response
 
 ```json
 {

@@ -3,7 +3,7 @@ title: /service
 description: /service
 ---
 
-## read()
+## read
 
 Get current monitoring service settings.
 
@@ -11,7 +11,7 @@ Get current monitoring service settings.
 
 *   **service_settings**: "read"
 
-#### return
+#### response
 
 ```js
 {
@@ -66,7 +66,7 @@ Get current monitoring service settings.
 
 where **location** described in [data types description section](../../../../backend-api/getting-started.md#data-types).
 
-## update()
+## update
 
 Update monitoring service settings for the current dealer. Note: wallpapers, logos and favicons cannot be edited here. 
 
@@ -76,9 +76,9 @@ Update monitoring service settings for the current dealer. Note: wallpapers, log
 
 #### parameters
 
-All fields from the [/dealer/service/settings/read()](#read) response.
+All fields from the [/dealer/service/settings/read](#read) response.
 
-#### return
+#### response
 
 ```json
 { "success": true }

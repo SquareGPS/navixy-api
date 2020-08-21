@@ -3,7 +3,7 @@ title: /order
 description: /order
 ---
 
-## read()
+## read
 
 Read order by ID
 
@@ -15,7 +15,7 @@ Read order by ID
 
 *   **tracker_bundles**: "read"
 
-#### return
+#### response
 
     {
       "success": true,

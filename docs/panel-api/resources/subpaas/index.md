@@ -1,18 +1,21 @@
 ---
-title: /subpaas
-description: /subpaas
+title: Subpaas actions
+description: Subpaas actions
 ---
 
 **Dealer** means parent of subpaas.
 
 **dealer\_block\_type** type is enum object:
-* NOT_BLOCKED
-* INITIAL_BLOCK
-* BLOCK_LOGIN
-* CLIENTS_BLOCKED
-* DELETED
 
-## create()
+ * NOT_BLOCKED
+ * INITIAL_BLOCK
+ * BLOCK_LOGIN
+ * CLIENTS_BLOCKED
+ * DELETED
+
+API base path: `/subpaas`
+
+## create
 
 Create subpaas. After creation its dealer_block_type will be in INITIAL_BLOCK status
 
@@ -33,13 +36,13 @@ Create subpaas. After creation its dealer_block_type will be in INITIAL_BLOCK st
     * his tariff doesn't allow subpaases
 
 
-#### return
+#### response
 
 ```json
 { "success": true }
 ```
 
-## list()
+## list
 
 Get list of all subpaases for dealer. Dealer id will be taken from the session.
 
@@ -63,7 +66,7 @@ Get list of all subpaases for dealer. Dealer id will be taken from the session.
     * has different status than NOT_BLOCKED
     * his tariff doesn't allow subpaases
 
-#### return
+#### response
 
 ```js
 {
@@ -85,7 +88,7 @@ Get list of all subpaases for dealer. Dealer id will be taken from the session.
 }
 ```
 
-## read()
+## read
 
 Get subpaas info by its id.
 
@@ -100,7 +103,7 @@ Get subpaas info by its id.
     * has different status than NOT_BLOCKED
     * his tariff doesn't allow subpaases
 
-#### return
+#### response
 
 ```js
 {
@@ -120,7 +123,7 @@ Get subpaas info by its id.
 }
 ```
 
-## update()
+## update
 
 Update subpaas.
 
@@ -149,7 +152,7 @@ Update subpaas.
     * Found subpaas is not in INITIAL_BLOCK status and block_type is INITIAL_BLOCK
     * Found subpaas is in INITIAL_BLOCK status and block_type is not INITIAL_BLOCK
 
-#### return
+#### response
 
 ```json
 { "success": true }

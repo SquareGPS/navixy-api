@@ -53,7 +53,7 @@ description: /user
   }
 ```
   
-## change_password()
+## change_password
 
 `change_password(user_id, password)`
 
@@ -81,7 +81,7 @@ Change password of the user.
 * 201 – Not found in database (if specified user does not exist or belongs to different dealer)
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## corrupt()
+## corrupt
 
 `corrupt(user_id, login)`
 
@@ -112,7 +112,7 @@ login parameter must match user login.
 }
 ```
 
-## create()
+## create
 
 ** Required permissions **
 
@@ -148,7 +148,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 * 206 (Login already in use) – if this email already registered
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## export()
+## export
 
 Returns list of all users belonging to dealer as file.
 
@@ -187,7 +187,7 @@ XLSX or CSV file
 * Only [standard errors](../../backend-api/getting-started.md#error-codes)
 
 
-# list()
+# list
 
 Returns list of all users belonging to dealer.
 
@@ -229,7 +229,7 @@ About user object structure see [above](#data-structures).
 
 * Only [standard errors](../../backend-api/getting-started.md#error-codes)
 
-## read()
+## read
 
 Returns user info by it’s id.
 
@@ -260,7 +260,7 @@ About user object structure see [above](#data-structures).
 * 201 (Not found in database) – when user with specified id not found or belongs to other dealer.
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## update()
+## update
 
 Updates existing user with new field values (see user [above](#data-structures)). User must 
 exist and must belong to authorized dealer. Changing of legal_type do not permitted, i.e. 
@@ -295,7 +295,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 ## session/
 
-### create()
+### create
 
 Creates an interface session for specified user and returns the hash for the created session.
 
@@ -329,7 +329,7 @@ user_sessions: "global" // optional. allow to create sessions of users, not only
 
 ## transaction/
 
-### change_balance()
+### change_balance
 
 Change user balance (increase or decrease) or bonus and write this change in transactions (type = payment, subtype = partner).
 
@@ -363,9 +363,9 @@ transactions: "create"
 * 251 – Insufficient funds(403) – If user have not enough funds to withdraw passed (negative) amount.
 * [Standard errors](../../backend-api/getting-started.md#error-codes).
 
-### list()
+### list
 
-Same as [/transaction/list()](../../backend-api/resources/billing/transaction.md#list) from main api.
+Same as [/transaction/list](../../backend-api/resources/billing/transaction.md#list) from main api.
 
 ** Required permissions **
 
