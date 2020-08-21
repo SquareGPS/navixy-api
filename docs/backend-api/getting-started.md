@@ -30,7 +30,7 @@ description (as provided herein), and know user login and password.
 
 ## API base URL
 
-In the all examples used placeholder `[api_url]`. 
+In the all examples used placeholder `[api_base_url]`. 
 Depending on the physical location of the platform it will be:
 
 *  `https://api.eu.navixy.com/v2` for European Navixy ServerMate platform.

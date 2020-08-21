@@ -18,8 +18,8 @@ Upload avatar image for specified place.
 
 **required subuser rights:** place_update
 
-Then it will be available from `<api_url>/<api_static_uri>/place/avatars/<file_name>`
-e.g. `http://saas.navixy.com/api-v2/static/place/avatars/abcdef123456789.png`.
+Then it will be available from `[api_base_url]/<api_static_uri>/place/avatars/<file_name>`
+e.g. `{{ extra.api_example_url }}/static/place/avatars/abcdef123456789.png`.
 
 **avatar_file_name** returned in response and will be returned from [place/list](index.md#list).
 

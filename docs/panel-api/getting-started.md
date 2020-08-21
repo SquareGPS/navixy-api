@@ -17,13 +17,14 @@ Two main differences are _authorization system_ and _request paths_.
 
 Panel API resides in `panel/` subsection of API url. So you can determine URL to API calls like this:
 
-1.  For NAVIXY ServerMate it will be `https://saas.navixy.com/api-v2/panel/`
-2.  For On-Premise instances it will be `https://api.your_domain/panel/`
+*  `https://api.eu.navixy.com/v2/panel/` for European Navixy ServerMate platform.
+*  `https://api.us.navixy.com/v2/panel/` for American Navixy ServerMate platform.
+*  `https://api.your_domain/panel/` for the self-hosted (On-Premise) installations.
 
 For example, to make `account/auth` 
 API call in Navixy ServerMate, you should use the URL: 
 
-    https://saas.navixy.com/api-v2/panel/account/auth
+    {{ extra.api_example_url }}/panel/account/auth
 
 ### Authorization
 
