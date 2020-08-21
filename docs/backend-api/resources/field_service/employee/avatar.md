@@ -40,7 +40,7 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 
 Upload avatar image for specified employee.
 Then it will be available from /employee/avatars/
-e.g. `http://saas.navixy.com/api-v2/static/employee/avatars/abcdef123456789.png`.
+e.g. `{{ extra.api_example_url }}/static/employee/avatars/abcdef123456789.png`.
 
 **required subuser rights**: employee_update
 

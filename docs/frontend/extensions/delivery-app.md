@@ -5,7 +5,7 @@
 
 ##Usage
 
-    http://saas.navixy.com/pro/applications/delivery/?key=GENERATED_KEY
+    https://saas.navixy.com/pro/applications/delivery/?key=GENERATED_KEY
 
 where key – is a session key generated with API call `/user/session/delivery/create`.
 

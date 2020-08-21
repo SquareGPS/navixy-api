@@ -36,8 +36,8 @@ Assign icon_id (from standard icon set) to this tag. Icon_id can be null – thi
 ### upload
 
 Upload avatar image for specified tag.<br>
-Then it will be available from `<api_url>/<api.static.uri>/tag/avatars/<file_name>`<br>
-e.g. `http://saas.navixy.com/api-v2/static/tag/avatars/abcdef123456789.png`.
+Then it will be available from `[api_base_url]/[api_static_path]/tag/avatars/<file_name>`<br>
+e.g. `{{ extra.api_example_url }}/static/tag/avatars/abcdef123456789.png`.
 
 **required subuser rights**: tag_update
 

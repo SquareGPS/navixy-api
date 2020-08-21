@@ -32,8 +32,8 @@ Assign icon\_id (from standard icon set) to this vehicle. Icon\_id can be null â
 ### upload
 
 Upload avatar image for specified vehicle.
-Then it will be available from `<api_url>/<api.static.uri>/vehicle/avatars/<file_name>`
-e.g. `http://saas.navixy.com/api-v2/static/vehicle/avatars/abcdef123456789.png`.
+Then it will be available from `[api_base_url]/<api_static_path>/vehicle/avatars/<file_name>`
+e.g. `{{ extra.api_example_url }}/static/vehicle/avatars/abcdef123456789.png`.
 
 **required subuser rights**: vehicle_update
 
