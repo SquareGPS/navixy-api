@@ -1,15 +1,15 @@
 ---
-title: /dealer
-description: /dealer
+title: Dealer actions
+description: Dealer actions
 ---
 
-## get_info()
+## get_info
 
 #### required permissions:
 
 *   **base**: "get\_dealer\_info"
 
-#### return
+#### response
 
     {
         "success": true,

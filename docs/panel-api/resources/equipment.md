@@ -17,7 +17,7 @@ description: /equipment
 }
 ```
     
-## list()
+## list
 
 Returns list of all equipment which can be assigned to tracker bundles. 
 

@@ -3,7 +3,9 @@ title: /activation_code
 description: /activation_code
 ---
 
-## create()
+API base path: `/dealer/activation_code`
+
+## create
 
 Create **count** activation codes with passed **tariff_id**, **bonus_amount** and **free_days**. And return count of created codes.
 
@@ -18,7 +20,7 @@ Create **count** activation codes with passed **tariff_id**, **bonus_amount** an
 *   **bonus_amount** \- new bonus
 *   **free_days** \- new free period
 
-#### return
+#### response
 
     {
         "success": true,
@@ -31,7 +33,7 @@ Create **count** activation codes with passed **tariff_id**, **bonus_amount** an
 *   201 - Not found in database (when tariff with **tariff_id** not found for current dealer)
 
 
-## list()
+## list
 
 List all dealer's activation codes. If "filter" is used, entities will be returned only if filter string is contained within one of the following fields: code, tariff\_id, device\_id, device_type 
 
@@ -47,7 +49,7 @@ List all dealer's activation codes. If "filter" is used, entities will be return
 *   **offset** – **int** (optional). Starting offset, used for pagination. Default is 0.
 *   **limit** – **int** (optional). Max number of records to return, used for pagination.
 
-#### return
+#### response
 
     {
         "success": true,
@@ -55,7 +57,7 @@ List all dealer's activation codes. If "filter" is used, entities will be return
         "count" : <int> // total number of records (ignoring offset and limit), e.g. 42
     }
     
-## update()
+## update
 
 Change **tariff_id**, **bonus_amount** and **free_days** for all activation codes which: 
 1. has **code** listed in **codes** parameter 
@@ -74,7 +76,7 @@ Change **tariff_id**, **bonus_amount** and **free_days** for all activation code
 *   **bonus_amount** \- new bonus
 *   **free_days** \- new free period
 
-#### return
+#### response
 
     {
         "success": true,
