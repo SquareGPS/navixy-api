@@ -50,9 +50,10 @@ Discrete input
 ```
 
 ### create
-Create sensor.
 
-**required subuser rights:** tracker_update
+Create a sensor.
+
+**required sub-user rights:** tracker_update
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **sensor** - [JSON object](#sensor). Sensor object.
