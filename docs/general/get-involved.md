@@ -16,7 +16,7 @@ There are several ways:
 1.  [Manually creating a fork](#second-way) and doing multiply commits before creating a pull request.
 1.  [Installing and editing](#hard-way) documentation locally on yours PC.
 
-In each of these cases, a GitHub account is required.
+In each of these cases, a GitHub account required.
 If you don't want to register on GitHub, you can just [contact us](contacts.md) with any convenient way.
 
 ### Easy way
@@ -27,7 +27,7 @@ not done this before).
 
 ![Create your fork](./assets/fork-proposal.png)
 
-Creating a fork is done with one green button. After that, the edit form with page source code will open.
+Creating a fork done with one green button. After that, the edit form with page source code will open.
 
 !!! note "For correct edit of page, please read the [introduction into Mkdocs](#introduction-into-mkdocs)."
 
@@ -62,7 +62,7 @@ This method involves installing the Git, IDE, Python and
 
 1. Install [Python 3](https://www.python.org/downloads/).
 1. Install [Git client](https://git-scm.com/downloads).
-1. Install IDE, for example [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community edition would be enough).
+1. Install an IDE, for example [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community edition would be enough).
 1. Create a fork [of the repository]({{ config.repo_url }}) and cloning it to local project. 
    In IDEA: `File` -> `New` -> `Project from version control`;
 1. Install [mkdocs-material](https://squidfunk.github.io/mkdocs-material) and other dependencies. In console:
@@ -94,7 +94,7 @@ for an overview of how to write docs.
 
 ### Menu
 
-The menu is formed using the plugin [awesome-pages](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) automatically.
+The menu formed using the plugin [awesome-pages](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) automatically.
 To set the desired page order in the menu, use the file `.pages.yml` in directory.
 For example:
 
@@ -154,19 +154,38 @@ Method description.
 | :---- | :----       | :---- | :----        |
 |param1 | description | int   | [1..100], not null |
 
-### Example
+### Examples
+
+=== "HTTP POST application/json
 
 ```abap
-$ curl -X POST '{{ extra.api_example_url }}/path/to/resource/method1' \
--H 'Content-Type: application/json' \ 
--d '{ "hash": "a6aa75587e5c59c32d347da438505fc3", "param1": "value" }'
+$ curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
+    -H 'Content-Type: application/json' \ 
+    -d '{"param1": "value1", "param2": "value2", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-### Return
+=== "HTTP POST application/x-www-form-urlencoded"
+
+```abap
+$ curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
+    -d 'param1=value1' \
+    -d 'param2=value2' \
+    -d 'hash=a6aa75587e5c59c32d347da438505fc3' 
+```
+
+=== "For Postman"
+
+```abap
+{{ extra.api_example_url }}/resource/sub_resource/action?param1=value1&hash=a6aa75587e5c59c32d347da438505fc3
+```
+
+### Response
 
 ```json
 { "success": true }
 ```
+
+!!! If the response or structure has comments it is necessary to write these comments separately in the form of a list below
 
 ### Errors
 
