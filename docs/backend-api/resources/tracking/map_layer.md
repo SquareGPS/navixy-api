@@ -8,7 +8,7 @@ description: Map layer
 API path: `/map_layer`.
 
 `map_layer_object` is:
-```js
+```json
 {
     "id": <int>,      // map layer entity ID
     "label": <string> // map layer name, e.g. "test"
@@ -23,7 +23,7 @@ name | description | type
 --- | --- | ---
 id | ID of the map layer | Int
 
-#### return
+#### response
 Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf-8`.
 
 #### errors
@@ -32,8 +32,8 @@ Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf
 ### list
 Returns metadata for all map layers for the user.
 
-#### return
-```js
+#### response
+```json
 {
     "success": true,
     "list": [<map_layer_object>, ... ]
@@ -56,8 +56,8 @@ file | A KML file upload containing map_layer data | File upload
 redirect_target | (optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;* | String
 
 
-#### return
-```js
+#### response
+```json
 {
     "success": true,
     "id": 163 // int. ID of the created layer
@@ -78,8 +78,8 @@ name | description | type
 --- | --- | ---
 layer | &lt;map_layer_object&gt; | JSON object
 
-#### return
-```js
+#### response
+```json
 { "success": true }
 ```
 
@@ -94,8 +94,8 @@ name | description | type
 --- | --- | ---
 id | ID of the map layer | Int
 
-#### return
-```js
+#### response
+```json
 { "success": true }
 ```
 

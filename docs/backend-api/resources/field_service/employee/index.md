@@ -11,7 +11,7 @@ trackers, vehicles, places, etc.
 <a name="structure"></a>
 `<employee>` is:
 
-```js
+```json
 {
     "id": 222, //internal ID. Can be passed as null only for "create" action. 
     "tracker_id": null, //id of the tracker currently assigned to this employee. null means no tracker assigned
@@ -47,7 +47,7 @@ Get all employees belonging to user.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <employee>, ... ]
@@ -70,7 +70,7 @@ Create new employee.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "id": 111 //id of the created employee
@@ -92,7 +92,7 @@ Get employee by id.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": <employee>

@@ -1,7 +1,9 @@
 ---
-title: /settings
-description: /settings
+title: Settings actions
+description: Settings actions
 ---
+
+API base path: `/tracker/settings`
 
 ### read
 Get base settings for the specified tracker.
@@ -9,7 +11,7 @@ Get base settings for the specified tracker.
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 ```javascript
 {
     "success": true,
@@ -35,7 +37,7 @@ Update the settings of the specified tracker.
 * **group_id** - **int**. Tracker group id, 0 if tracker does not belong to any group. The specified group must exist.
 * **label** - **string**. User-defined label for this tracker, e.g. “Courier”. Must consist of prontable characters and have length between 1 and 60. Cannot contain ‘<‘ and ‘>’ symbols.
 
-#### return
+#### response
 ```javascript
 { "success": true }
 ```

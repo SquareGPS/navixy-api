@@ -10,9 +10,9 @@ API path: `/timezone`.
 ### list
 Information about all supported timezones for the specified locale. Does not require user authorization.
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "list": [

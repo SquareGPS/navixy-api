@@ -11,7 +11,7 @@ Search conditions are used to search and filter list of certain entities by buil
 
 Example: 
 
-```js
+```json
 <search_conditions> = [
     {"type":"and", "conditions":[
         {"type":"or", "conditions":[
@@ -45,7 +45,7 @@ Thus, boolean operations such as `AND` or `OR` can be applied to them. All condi
 ### Condition types
 
 ##### And
-```js
+```json
 <and_condition> = {
     "type":"and", 
     "conditions":[
@@ -57,7 +57,7 @@ Thus, boolean operations such as `AND` or `OR` can be applied to them. All condi
 Evaluates all specified conditions and joins them using `AND` boolean operator.
 
 ##### Or
-```js
+```json
 <or_condition> = {
     "type":"or", 
     "conditions":[
@@ -69,7 +69,7 @@ Evaluates all specified conditions and joins them using `AND` boolean operator.
 Evaluates all specified conditions and joins them using `OR` boolean operator.
 
 ##### Number equals
-```js
+```json
 <eq_condition> = {
       "type": "eq",
       "field":"18", //built-in field or field id
@@ -83,7 +83,7 @@ Checks if specified field is equal to provided number value. Works for text fiel
 
 ##### Contains string
 
-```js
+```json
 <contains_condition> = {
     "type": "contains",
     "field":"label", //built-in field or field id

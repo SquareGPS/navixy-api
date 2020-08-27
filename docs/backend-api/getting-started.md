@@ -30,7 +30,7 @@ description (as provided herein), and know user login and password.
 
 ## API base URL
 
-In the all examples used placeholder `[api_url]`. 
+In the all examples used placeholder `[api_base_url]`. 
 Depending on the physical location of the platform it will be:
 
 *  `https://api.eu.navixy.com/v2/fsm` for European Navixy ServerMate platform.
@@ -213,9 +213,9 @@ Session hash can be obtained via `user/auth` API call:
 
 === "GET"
     This method is not recommended. Just for example:
-
+    ```abap
     [api_base_url]/user/auth?login=demo&password=demo
-
+    ```
 ### Data types
 
 *   `bool`, boolean - logical type: `true` of `false`. 

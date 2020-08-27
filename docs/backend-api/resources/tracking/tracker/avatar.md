@@ -3,10 +3,12 @@ title: /avatar
 description: /avatar
 ---
 
+API base path: `/tracker/avatar`
+
 ### upload
 Upload avatar image for specified tracker.
-Then it will be available from `<api_url>/<api.static.uri>/tracker/avatars/<file_name>`
-e.g. `http://saas.navixy.com/api-v2/static/tracker/avatars/abcdef123456789.png`.
+Then it will be available from `[api_base_url]/[api_static_path]/tracker/avatars/<file_name>`
+e.g. `{{ extra.api_example_url }}/static/tracker/avatars/abcdef123456789.png`.
 
 **required subuser rights:** tracker_update
 
@@ -23,8 +25,8 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 * **file** - image file
 * **redirect_target** - (optional) URL to redirect If redirect_target passed return redirect to ?response=
 
-#### return
-```js
+#### response
+```json
 {
     "success": true,
     "value": <string> // avatar file name

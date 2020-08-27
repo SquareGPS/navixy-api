@@ -9,7 +9,7 @@ API path: `/user/audit/log`.
 
 **audit_object** type is JSON object:
 
-```js
+```json
 {
     "id": 1, // ID of the audit record
     "user_id": 3, // Master user's ID
@@ -46,9 +46,9 @@ Gets list of audit records available for current user.
     <br> — *host*
     <br> If no sort param is specified, then sorting equivalent to option `["action_date=asc"]` will be applied.
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <audit_object>, ... ]

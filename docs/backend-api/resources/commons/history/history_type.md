@@ -16,9 +16,9 @@ Returns available history types with localized descriptions.
 *   **locale** – locale code
 *   **only_tracker_events** – boolean (optional). Default - true.
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true, 
     "list": [<history_type>, ...]
@@ -27,7 +27,7 @@ Returns available history types with localized descriptions.
 
 where **history_type** is
 
-```js
+```json
 {
     "type": <string>,       // history type, e.g. "alarmcontrol"
     "description": <string> // localized description, e.g. "Car alarm"

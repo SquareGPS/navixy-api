@@ -1,13 +1,13 @@
 ---
-title: Tracker
+title: Working with trackers
 description: Tracker information
 ---
 
 Tracker is one of the key entities in our API. It represents tracking device registered in our GPS monitoring system. Lots of API calls are created for manipulation of tracker and/or its properties.
 
-### Tracker object structure
+## Tracker object structure
 
-```js
+```json
 {
     "id": {int}, // tracker id aka object_id
     "label": {string}, // tracker label
@@ -31,12 +31,16 @@ Tracker is one of the key entities in our API. It represents tracking device reg
 
 where **tag_binding** is:
 
-```js
+```json
 {
   "tag_id": {int}, // id of tag. must be unique for tracker
   "ordinal": {int} // number that can be used as ordinal or kind of tag. must be unique for tracker. max value is 5
 }
 ```
+
+## API actions
+
+API base path: `/tracker`
 
 ### change_phone
 
@@ -150,7 +154,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/delete' \
 * 249 (Operation available for clones only) – if tracker is not clone
 * 203 (Delete entity associated with) – if there are some rules or vehicles associated with tracker
 
-```js
+```json
 {
     "success": false,
     "status": {
@@ -161,7 +165,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/delete' \
 }
 ```
 or
-```js
+```json
 {
     "success": false,
     "status": {
@@ -192,7 +196,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_diagnostics' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone 
@@ -203,7 +207,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_diagnostics' \
 ```
 
 Where **Sensor value object** is:
-```js
+```json
 {
   "label": {string}, // Sensor's label. E.g. "Sensor #1",
   "name": {string of enum}, // Name of sensor's raw input. E.g. "can_fuel" ( see below list of values)
@@ -314,7 +318,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_fuel' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone
@@ -348,7 +352,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_inputs' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone
@@ -439,7 +443,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_readings' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58", // current time in user's timezone
@@ -470,7 +474,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_state' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "user_time":"2014-07-09 07:50:58", //current time in user's timezone
@@ -541,7 +545,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "user_time":"2014-07-09 07:50:58", //current time in user's timezone
@@ -581,7 +585,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [
@@ -635,7 +639,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
 
 where **battery** is:
 
-```js
+```json
 {
     "min_charge": {float},
     "low_charge": {float}, // charge level for the "low battery" rule triggering 
@@ -752,7 +756,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/list' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ ${tracker}, ... ] // list of JSON-objects
@@ -844,7 +848,7 @@ Registers a new tracker using only IMEI. Automatic SMS commands will not be sent
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | label | User-defined label for this tracker. Must consist of prontable characters and have length between 1 and 60 | string | Courier |
-| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](./group/group.md#list) | int | 0 |
+| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](group.md#list) | int | 0 |
 | imei | tracker's IMEI | string | 35645587458999 |
 
 #### example
@@ -857,7 +861,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": <tracker> //a newly created tracker
@@ -906,7 +910,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": <tracker> // a newly created tracker
@@ -941,7 +945,7 @@ Common parameters are:
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | label | User-defined label for this tracker. Must consist of printable characters and have length between 1 and 60 | string | Courier |
-| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](./group/group.md#list) | int | 0 |
+| group_id | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](group.md#list) | int | 0 |
 | model | A code of one of the supported models. See [tracker/list_models](#list_models) | string | pt10 |
 | plugin_id | An id of a registration plugin which will be used to register the device. See [Registration plugins](../../commons/plugin/index.md) | int | 37 |
 | device_id | **Must** be specified if device model uses fixed device id. See [tracker/list_models](#list_models) | string | 4568005588562 |
@@ -957,7 +961,7 @@ Also we include **phone**, **apn_name**, **apn_user**, **apn_password** of the s
 device and **activation_code** since this parameters are required by plugin.
 
 You can try to “auto-detect” APN settings by phone number 
-using [apn_settings/read](./apn_settings/apn_settings.md#read) API call.
+using [apn_settings/read](apn_settings.md#read) API call.
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
@@ -967,7 +971,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": <tracker> //a newly created tracker
@@ -997,7 +1001,7 @@ Sends command to tracker for performing special control, determined with "specia
 
 common command format is:
 
-```js
+```json
 "command":{
   "name": "command name", // required field
   "some_parameter1": <parameter value>, // parameters depends on certain command
@@ -1027,7 +1031,7 @@ Certain commands which can be used is defined with `special_control` field of **
 
 This command is used to seal/unseal electronic lock.
 
-```js
+```json
 command {
   name: "electronic_lock_command",
   command_code: "unseal", // "seal"/"unseal"
@@ -1037,7 +1041,7 @@ command {
 
 **set_special_settings_command**
 
-This command is equivalent to API call [tracker/settings/special/update](./settings/special/special.md#update).
+This command is equivalent to API call [tracker/settings/special/update](settings/special/index.md#update).
 
 ```json
 command {
@@ -1045,7 +1049,7 @@ command {
   special_settings: <special settings JSON object>
 }
 ```
-See [special settings JSON object](./settings/special/special.md#read)
+See [special settings JSON object](settings/special/index.md#read)
 
 #### parameters
 
@@ -1064,7 +1068,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/send_command' \
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ {tracker}, ... ] // list of JSON-objects

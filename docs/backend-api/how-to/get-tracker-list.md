@@ -53,7 +53,7 @@ Tracker object structure is next:
         "phone" : ${string}                // phone of the device. can be null or empty if device has no GSM module
                                            // or uses bundled SIM which number is hidden from the user
     }
-    "tag_bindings": [${tag_binding}, ...}  // list of attached tags. only for “tracker/list()“. 
+    "tag_bindings": [${tag_binding}, ...}  // list of attached tags. only for “tracker/list“. 
 }
 ```
 

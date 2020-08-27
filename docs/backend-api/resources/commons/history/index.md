@@ -12,7 +12,7 @@ API path: `/history`.
 # History entries
 
 *   **common\_history\_entry**
-```js
+```json
 {
     "id": ,
     "type": "common",
@@ -25,7 +25,7 @@ API path: `/history`.
 
 *   **tracker\_history\_entry**
 
-```js
+```json
 {
     "id": ,
     "type": "tracker"
@@ -60,7 +60,7 @@ API path: `/history`.
 ### Deprecated event types
 
 *   **camera\_history\_entry**
-```js
+```json
 {
     "id": ,
     "type": "camera"
@@ -76,7 +76,7 @@ API path: `/history`.
 
 *   **socket\_history\_entry**
 
-```js
+```json
 {
     "id": ,
     "type": "camera"
@@ -102,9 +102,9 @@ Returns history entry with the specified id.
 *   id – **int**. [history entry](#history-entries) ID
 *   add\_tracker\_label – **boolean**. optional, if true tracker label will be added to message
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "value": ${history_entry}
@@ -127,7 +127,7 @@ Mark history entry as read by **id** (see: [History entries](#history-entries)).
 
 *   id – **int**. [history entry](#history-entries) ID
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -144,7 +144,7 @@ Mark history entry as read by **id** (see: [History entries](#history-entries)).
 
 Mark all user’s history entries read.
 
-#### return
+#### response
 
 ```json
 { "success": true }

@@ -3,7 +3,7 @@ title: /stats/engine_hours
 description: /stats/engine_hours
 ---
 
-# /tracker/stats/engine_hours
+API base path: `/tracker/stats/engine_hours`
 
 ### read
 Returns engine hours (time when engine is on) count in specified period.
@@ -13,7 +13,7 @@ Returns engine hours (time when engine is on) count in specified period.
 *   **from** - **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
 *   **to** - **string**. A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date.
 
-#### return
+#### response
 ```json
 {
     "success": true,

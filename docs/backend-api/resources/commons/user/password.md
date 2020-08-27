@@ -17,7 +17,7 @@ Changes password of user with the provided session hash (it is contained in pass
 
 *   **password** (string) – New password for the user, 6 to 20 printable characters
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -36,7 +36,7 @@ Changes password for logined user.
 *   **old_password** (string) – Current password of the user
 *   **new_password** (string) – New password for the user, 6 to 20 printable characters
 
-#### return
+#### response
 
 ```json
 { "success": true }

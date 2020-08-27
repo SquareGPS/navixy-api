@@ -3,6 +3,8 @@ title: Alarm mode
 description: Alarm mode for tracker
 ---
 
+API base path: `/tracker/alarm_mode`
+
 ### read
 
 Gets the state of alarm mode of device.
@@ -23,7 +25,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
 
 #### response
 
-```js
+```json
 {
  "success": true,
  "enabled": {boolean} // true if alarm mode is enabled

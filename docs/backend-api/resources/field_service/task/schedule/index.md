@@ -14,7 +14,7 @@ replaced with `from_time`, `duration` and `parameters`.
 
 ### Data structures
 
-```js
+```json
 <task_schedule_entry> = {
     "id": 111,   //primary key. used in update, *IGNORED* in create
     "user_id": 3,   //user id. *IGNORED* in create/update
@@ -71,7 +71,7 @@ replaced with `from_time`, `duration` and `parameters`.
 ```
 
 `<schedule_parameters>` can be one of the following:
-```js
+```json
 <weekdays> = { //task creation based on week day
     "type": "weekdays",
     "weekdays": [1, 5, 6] //week days on which tasks will be created (1 = Monday, ... 7 = Sunday)
@@ -99,7 +99,7 @@ Create new task schedule entry.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "id": 111 //id of the created schedule entry
@@ -149,7 +149,7 @@ Also this call returns all unassigned task schedules.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <task_schedule_entry> or <route_schedule_entry> with its checkpoints, ... ]
@@ -170,7 +170,7 @@ Get task, route or checkpoint schedule by id
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": <task_schedule_entry> or <route_schedule_entry> or <checkpoint_schedule_entry>,
@@ -194,7 +194,7 @@ Update existing task schedule.
 
 #### response
 
-```js
+```json
 {
     "success": true
 }

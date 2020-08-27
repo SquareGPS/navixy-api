@@ -3,13 +3,15 @@ title: /tracking
 description: /tracking
 ---
 
+API base path: `/tracker/settings/tracking`
+
 ### read
 Get tracking settings for the specified tracker.
 
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 Returned fields may differ from model to model. See tracking profiles for more information.
 ```javascript
 {
@@ -33,7 +35,7 @@ Send new tracking settings to the specified tracker.
 * **tracking_settings** - **JSON object**. [tracking profiles](./tracking_profiles.md).
 `<tracking settings>` is a set of fields which differ from model to model. See tracking profiles for more information.
 
-#### return
+#### response
 Returned fields may differ from model to model. See tracking profiles for more information.
 ```javascript
 { "success": true }

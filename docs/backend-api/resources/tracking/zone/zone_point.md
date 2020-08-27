@@ -5,11 +5,11 @@ description: Zone point
 
 # Zone point
 
-API path: `/zone/point`.
+API base path: `/zone/point`.
 
 All actions to retrieve and manipulate points of the zone. Note that “circle” zone type cannot have points.
 
-```js
+```json
 <point> =
     {
         "lat": <point latitude, e.g. 11.0>, //float
@@ -26,8 +26,8 @@ Get points of user’s zone with ID = `<zone_id>`
 
 *   zone_id
 
-#### return
-```js
+#### response
+```json
 {
     "success": true,
     "list": [ <point>, ... ]
@@ -48,8 +48,8 @@ Update points for user’s zone with ID = `<zone_id>`.
 *   **zone_id** (Int) – ID of the zone. Specified zone must support points. (e.g. it cannot be circle)
 *   **points** (<point>[]) – Array of new points for this zone. Must contain at least 3 elements. Maximum number of points depends on zone type.
 
-#### return
-```js
+#### response
+```json
 { "success": true }
 ```
 

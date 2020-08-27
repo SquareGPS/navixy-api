@@ -3,6 +3,8 @@ title: /mobile
 description: /mobile
 ---
 
+API base path: `/tracker/mobile`
+
 ### register
 **IMPORTANT**
 
@@ -21,8 +23,8 @@ Common parameters are:
 * **group_id** - **int**. Tracker group id, 0 if tracker does not belong to any group. The specified group must exist.
 * **device_id** - **string**. Device IMEI.
 
-#### return
-```js
+#### response
+```json
 {
     "success": true,
     "value": <tracker> //a newly created tracker

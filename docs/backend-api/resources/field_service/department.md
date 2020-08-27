@@ -11,7 +11,7 @@ non-null `department_id`.
 <a name="structure"></a>
 `<department>` is:
 
-```js
+```json
 {
     "id": 222, <int>
     "label": "Drivers",
@@ -39,7 +39,7 @@ Gets all departments belonging to user.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <department>, ... ]
@@ -69,7 +69,7 @@ Creates a new department with specified parameters. Required subuser rights: `em
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "id": 111 //id of the created department

@@ -37,9 +37,9 @@ Default and max limit is 1000 by default. (Note for StandAlone: this value confi
 
 
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "list": [ ${tracker_history_entry}, ... ], // list of zero or more JSON objects

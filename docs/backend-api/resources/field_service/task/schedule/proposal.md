@@ -27,7 +27,7 @@ Get all tasks and routes that will be created by schedule.
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "list": [ <task> or <route>, ... ]

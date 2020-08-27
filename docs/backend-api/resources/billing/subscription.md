@@ -24,7 +24,7 @@ Unsubscribe from auto-renewal by reference.
 
 * **reference** - **string**. internal 2Checkout (formerly Avangate) subscription code. Get it from [list](#list) call.
 
-#### return
+#### response
 ```javascript
 {
     "success": true
@@ -44,7 +44,7 @@ List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://ww
 no parameters
 
 
-#### return
+#### response
 ```javascript
 {
     "success": true,

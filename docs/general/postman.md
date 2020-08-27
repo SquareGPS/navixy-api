@@ -29,10 +29,11 @@ This can be especially handy when working with large requests.
     GET methods retrieve data from an API. POST sends new data to an API.
 
 1. Enter base request URL with the resource and sub-resource. In our example we will
-   use user/auth and  tracker/list requests. Base request URLs are:
+   use [user/auth](../backend-api/resources/commons/user/index.md#auth) and 
+   [tracker/list](../backend-api/resources/tracking/tracker/index.md#list) requests. Base request URLs are:
 
-    *	For EU server - `https://api.navixy.com/v2/fsm/user/auth`
-    *	For US server - `https://api.us.navixy.com/api-v2/fsm/tracker/list`
+    *	For EU server - `https://api.eu.navixy.com/v2/fsm/`
+    *	For US server - `https://api.us.navixy.com/v2/fsm/`
 
     ![Enter URL](./assets/enter-url.png)
 

@@ -11,7 +11,7 @@ API path: `/user/session`.
 
 Prolongs current user session.
 
-#### return
+#### response
 
 ```json
 { "success": true }

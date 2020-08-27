@@ -5,7 +5,7 @@ description: APN settings of tracker
 
 # APN settings
 
-API path: `/apn_settings`.
+API base path: `/apn_settings`.
 
 ### read
 

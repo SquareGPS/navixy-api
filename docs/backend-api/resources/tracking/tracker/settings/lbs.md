@@ -3,15 +3,17 @@ title: /lbs
 description: /lbs
 ---
 
+API base path: `/tracker/settings/lbs`
+
 ### read
 Get LBS for the specified tracker.
 
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "max_radius": <int>  //max allowed radius for LBS points
@@ -29,7 +31,7 @@ Update LBS settings for the specified tracker.
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 * **max_radius** - **int**. See read. min=0, max=10000
 
-#### return
+#### response
 
 ```json
 { "success": true }

@@ -11,7 +11,7 @@ CRUD actions for retranslators.
 
 #### objects
 **retranslator_protocol** is: 
-```js
+```json
 {
     "id": <int>,                       // protocol ID
     "name": <string>,                  // protocol name
@@ -24,7 +24,7 @@ CRUD actions for retranslators.
 ```
 
 **retranslator** is:
-```js
+```json
 {
     "id": <int>,          // retranslator ID, e.g. 1
     "name": <string>,     // zone label, e.g. "Some Wialon server"
@@ -50,8 +50,8 @@ name|description|type
 ---|---|---
 retranslator|<retranslator> without "id" field|<retranslator>
 
-#### return
-```js
+#### response
+```json
 {
     "success": true,
     "id": <int> // ID of the created retranslator
@@ -74,8 +74,8 @@ Delete user's retranslator with ID = **retranslator_id**.
 #### parameters
 *   retranslator_id
 
-#### return
-```js
+#### response
+```json
 { "success": true }
 ```
 
@@ -88,8 +88,8 @@ Delete user's retranslator with ID = **retranslator_id**.
 
 Get all user's [retranslators](#objects).
 
-#### return
-```js
+#### response
+```json
 {
     "success": true,
     "list": [ <retranslator>, ... ]
@@ -106,8 +106,8 @@ Update retranslator parameters for the specified retranslator. Note that retrans
 #### parameters
 *   `retranslator`
 
-#### return
-```js
+#### response
+```json
 { "success": true }
 ```
 
@@ -124,8 +124,8 @@ Update retranslator parameters for the specified retranslator. Note that retrans
 ### list
 Return all available retranslator protocols.
 
-#### return
-```js
+#### response
+```json
 {
     "success": true,
     "list": [ <retranslator_protocol>, ... ]

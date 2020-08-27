@@ -18,9 +18,9 @@ Create new session for the specified sub-user and obtain its hash. Can be used t
 
 * **subuser_id** - **int**. id of the sub-user belonging to current account
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "hash" : ${hash of the created subuser session}

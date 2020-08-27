@@ -1,41 +1,44 @@
 ---
-title: /trusted_number
-description: /trusted_number
+title: /led
+description: /led
 ---
 
-### list
-Get list of trusted numbers for the specified tracker.
+API base path: `/tracker/led`
+
+### read
+Get LED status for the specified tracker.
 
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 ```javascript
 {
     "success": true,
-    "list": [<string>, ...] // List of strings containing trusted phone numbers in international format without "+", e.g. ["496156680000", "496156680001"]
+    "value": true    // LED status, true - ON, false - OFF
 }
 ```
 
 #### errors
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
+*   214 – Requested operation or parameters are not supported by the device
 
 ### update
-Replaces the list of trusted numbers for a specified tracker with the new one.
-
-**required subuser rights:** tracker_update
+Switch LED state for a specified tracker.
 
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
-* **list** - **array of string**. Array of phone numbers (10-15 digits) represented as strings, e.g. [“496156680001″,”496156680000”].
+* **value** - **boolean**. new LED state, true – ON, false – OFF
 
-#### return
-```javascript
+#### response
+
+```json
 { "success": true }
 ```
 
 #### errors
 *   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
+*   214 – Requested operation or parameters are not supported by the device
 

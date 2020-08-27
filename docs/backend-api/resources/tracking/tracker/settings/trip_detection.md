@@ -3,13 +3,15 @@ title: /trip_detection
 description: /trip_detection
 ---
 
+API base path: `/tracker/settings/trip_detection`
+
 ### read
 Get trip detection settings for the specified tracker.
 
 #### parameters
 * **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
 
-#### return
+#### response
 ```javascript
 {
     "success": true,
@@ -36,7 +38,7 @@ Get trip detection settings for the specified tracker.
 * **ignition_aware** - **boolean**. see read.
 * **motion_sensor_aware** - **boolean**. see read.
 
-#### return
+#### response
 ```javascript
 {"success": true}
 ```
