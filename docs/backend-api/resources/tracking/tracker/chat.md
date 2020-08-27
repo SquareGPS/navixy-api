@@ -30,15 +30,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/list' \
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/list' \
-    -d 'tracker_id=123456' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/chat/list?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
@@ -102,14 +94,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read_all' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read_all' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/chat/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3
@@ -148,15 +133,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "message_id": "123"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read' \
-    -d 'message_id=123' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/chat/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&message_id=123
@@ -193,16 +170,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/send' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "123456", "message": "Hello World"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/send' \
-    -d 'tracker_id=123456' \
-    -d 'message=Hello World' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/chat/send?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&message=Hello World
@@ -247,16 +215,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]", "message": "Hello World"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast' \
-    -d 'trackers=[999199, 991999,...]' \
-    -d 'message=Hello World' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/chat/broadcast?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999,...]&message=Hello World
@@ -300,15 +259,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list' \
-    -d 'trackers=[999199, 991999,...]' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/chat/updated/list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999,...]
@@ -347,14 +298,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/chat/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
