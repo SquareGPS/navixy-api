@@ -15,7 +15,7 @@ Gets all user’s trackers with special grouping by “contacts”.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "HTTP POST application/json"
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
@@ -23,14 +23,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/contact/list?hash=a6aa75587e5c59c32d347da438505fc3
