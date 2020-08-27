@@ -12,7 +12,7 @@ Uploads avatar image for specified tracker.
 Then it will be available from `{{ extra.api_example_url }}/[api_static_path]/tracker/avatars/<file_name>`
 e.g. `{{ extra.api_example_url }}/static/tracker/avatars/abcdef123456789.png`.
 
-*required sub-user rights:* `tracker_update`
+**required sub-user rights:** `tracker_update`
 
 **MUST** be a POST multipart request (multipart/form-data),
 with one of the parts being an image file upload (with the name “file”).
