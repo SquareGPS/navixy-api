@@ -18,7 +18,7 @@ Gets the state of alarm mode of device.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "HTTP POST application/json"
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
@@ -26,15 +26,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}tracker/alarm_mode/read' \
-    -d 'tracker_id=123456' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/alarm_mode/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
@@ -70,7 +62,7 @@ Changes the state of alarm mode of device. The device must be online.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "HTTP POST application/json"
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/set' \
@@ -78,16 +70,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/set' \
     -d '{"tracker_id": "123456", "enabled": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}tracker/alarm_mode/set' \
-    -d 'tracker_id=123456' \
-    -d 'enabled=true'
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/alarm_mode/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
