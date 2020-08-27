@@ -28,15 +28,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/read' \
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/read' \
-    -d 'tracker_id=123456' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/engine_immobilizer/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
@@ -82,16 +74,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
     -d '{"tracker_id": "123456", "enabled": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
-    -d 'tracker_id=123456' \
-    -d 'enabled=true' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/engine_immobilizer/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
