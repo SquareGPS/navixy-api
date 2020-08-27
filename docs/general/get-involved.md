@@ -185,7 +185,8 @@ $ curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
 { "success": true }
 ```
 
-!!! If the response or structure has comments it is necessary to write these comments separately in the form of a list below
+!!! warning "Please note"
+    If the response or structure has comments it is necessary to write these comments separately in the form of a list below
 
 ### Errors
 
