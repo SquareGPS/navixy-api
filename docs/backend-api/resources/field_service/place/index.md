@@ -11,7 +11,7 @@ even more useful.
 
 In case an event happened at the place, in various reports name of the place will be specified after the address.
 
-If there's an [employee](../employee) [assigned](../../tracking/tracker/employee.md#assign) to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),
+If there's an [employee](../employee) assigned to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),
 and a place has a custom field of type "responsible employee", such place will be available in mobile app to view.
 Thus, field employee can view all places assigned to him to visit them, etc.
 

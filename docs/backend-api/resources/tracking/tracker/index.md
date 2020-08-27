@@ -12,7 +12,7 @@ Tracker is one of the key entities in our API. It represents tracking device reg
     "id": {int}, // tracker id aka object_id
     "label": {string}, // tracker label
     "clone": {boolean}, // true if this tracker is clone
-    "group_id": {int}, // tracker group id, 0 if no group
+    "group_id": {int}, // tracker employee's department id, 0 if no department, -1 if no employee assigned. Read only
     "avatar_file_name" : {string}, // optional. passed only if present
     "source": {
         "id": {int}, // source id
@@ -729,7 +729,7 @@ general types only
 
 ### list
 
-Gets user’s trackers with optional filtering by labels.
+Return user’s trackers with optional filtering by labels.
 
 ### parameters
 
@@ -950,6 +950,7 @@ Common parameters are:
 | plugin_id | An id of a registration plugin which will be used to register the device. See [Registration plugins](../../commons/plugin/index.md) | int | 37 |
 | device_id | **Must** be specified if device model uses fixed device id. See [tracker/list_models](#list_models) | string | 4568005588562 |
 | send_register_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals  `null` will be used the platform settings. Default: `null` | boolean | true/false |
+| create_employee | If true, an employee will be created with name equal to label, phone number equal to `notification_phone`, and email equal to `notification_email`. If parameter is not specified or equals  `null`, it is treated as false | boolean | true/false |
 
 #### example
 

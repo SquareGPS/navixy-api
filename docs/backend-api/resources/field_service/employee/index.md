@@ -60,13 +60,14 @@ general types only
 
 ### create
 
-Create new employee.
+Create new employee. If tracker id is specified, tracker's label will be changed to employee full name.
 
 **required subuser rights**: employee_update
 
 #### parameters
 
 *   **employee** – an [employee object](#structure) Non-null.
+*   **force_reassign** – if true, specified tracker will be assigned to employee even if it already assigned to another
 
 #### response
 
@@ -106,13 +107,15 @@ Get employee by id.
 
 ### update
 
-Update existing employee.
+Update existing employee. If it had tracker assigned and tracker id had changed, tracker label will be prepended with "Deleted ".
+New tracker's label will be changed to employee full name.
 
 **required subuser rights**: employee_update
 
 #### parameters
 
 *   **employee** – an [employee object](#structure) Non-null.
+*   **force_reassign** – if true, specified tracker will be assigned to employee even if it already assigned to another
 
 #### response
 
@@ -127,7 +130,7 @@ Update existing employee.
 
 ### delete
 
-Delete employee with the specified id.
+Delete employee with the specified id. If it had tracker assigned, tracker label will be prepended with "Deleted "
 
 **required subuser rights**: employee_update
 
