@@ -6,7 +6,7 @@ description: APN settings by tracker ID
 
 API base path: `/tracker/apn_settings`
 
-APN is short of Access Point Name and provides a device with the information needed to connect to wireless service. Using this call you can get APN settings using tracker ID.
+APN is short of Access Point Name and provides a device with the information needed to connect to wireless service. Using this call you can get APN settings by a tracker ID.
 
 ### read
 
@@ -28,15 +28,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/apn_settings/read' \
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}tracker/apn_settings/read' \
-    -d 'tracker_id=123456' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/apn_settings/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
