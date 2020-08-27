@@ -2,6 +2,7 @@
 title: Alarm mode
 description: Alarm mode for tracker
 ---
+# Alarm mode for tracker
 
 API base path: `/tracker/alarm_mode`
 
@@ -48,7 +49,7 @@ $ curl -X POST '{{ extra.api_example_url }}tracker/alarm_mode/read' \
 }
 ```
 
-* enabled - true if alarm mode enabled
+* enabled - true if alarm mode enabled.
 
 #### errors
 

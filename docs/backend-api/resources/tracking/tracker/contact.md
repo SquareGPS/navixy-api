@@ -2,9 +2,10 @@
 title: Contact
 description: Contact
 ---
+# Contact 
 
 !!! warning "Deprecated"
-    This API action is deprecated and should not be used.
+    This API action deprecated and should not be used.
 
 API base path: `/tracker/contact`
 
@@ -12,12 +13,27 @@ API base path: `/tracker/contact`
 
 Gets all user’s trackers with special grouping by “contacts”.
 
-#### example
+#### examples
+
+=== "HTTP POST application/json
 
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
--H 'Content-Type: application/json' \ 
--d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+    -H 'Content-Type: application/json' \ 
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+=== "HTTP POST application/x-www-form-urlencoded"
+
+```abap
+$ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
+    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
+```
+
+=== "For Postman"
+
+```abap
+{{ extra.api_example_url }}/tracker/contact/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 
 #### response
@@ -25,24 +41,30 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
 ```json
 {
     "success": true,
-    "contacts": [ <contact>, ... ] // all established contacts
-    "trackers": [ <tracker>, ... ] // normal trackers belonging to current user
+    "contacts": ["contact1","contact n"],
+    "trackers": ["tracker1","tracker n"]
 }
 ```
+
+* contacts - all established contacts.
+* trackers - normal trackers belonging to current user.
+
 where **contact** object is:
 
 ```json
 {
-    "user_id": 12059, //id of the user with which "contact" is established
+    "user_id": 12059,
     "first_name": "Adam",
     "middle_name": "James",
     "last_name": "Williams",
-    "trackers": [ <tracker>, ... ] //trackers belonging to "contact" which locations were shared with current user
+    "trackers": ["tracker1", "tracker n"]
 }
 ```
 
+* user_id - id of the user with which "contact" is established.
+* trackers - trackers belonging to "contact" which locations shared with current user.
 Click to see descriptions of type [tracker](index.md#tracker-object-structure).
 
 #### errors
 
-* 201 – Not found in database
+* 201 – Not found in the database.
