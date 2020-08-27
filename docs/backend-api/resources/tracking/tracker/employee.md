@@ -33,16 +33,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/employee/assign' \
     -d '{"tracker_id": "123456", "new_employee_id": "12345", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/employee/assign' \
-    -d 'tracker_id=123456' \
-    -d 'new_employee_id=12345' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/employee/assign?tracker_id=123456&new_employee_id=12345&hash=a6aa75587e5c59c32d347da438505fc3
@@ -80,15 +71,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/employee/read' \
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP POST application/x-www-form-urlencoded"
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/employee/read' \
-    -d 'tracker_id=123456' \
-    -d 'hash=a6aa75587e5c59c32d347da438505fc3' \
-```
-
-=== "For Postman"
+=== "GET"
 
 ```abap
 {{ extra.api_example_url }}/tracker/employee/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
