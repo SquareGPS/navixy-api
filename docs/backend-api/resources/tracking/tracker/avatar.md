@@ -27,9 +27,9 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 123456 |
-| file | image file | string | name |
-| redirect_target | (optional) URL to redirect If redirect_target passed return redirect to ?response= | URL | https:\\... |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| file | image file. | string | name |
+| redirect_target | (optional) URL to redirect If redirect_target passed return redirect to ?response=. | URL | https:\\... |
 
 #### response
 
@@ -40,7 +40,7 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 }
 ```
 
-* value - avatar file name.
+* `value` - avatar file name.
 
 #### errors
 
