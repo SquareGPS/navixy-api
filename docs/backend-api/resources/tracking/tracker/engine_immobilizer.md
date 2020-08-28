@@ -20,7 +20,7 @@ Request to read the state of engine immobilizer.
 
 #### examples
 
-=== "cURL"
+=== cURL
 
 ```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/read' \
@@ -28,7 +28,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/read' \
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP GET"
+=== HTTP GET
 
 `{{ extra.api_example_url }}/tracker/engine_immobilizer/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3`
 
@@ -64,7 +64,7 @@ Request to change the engine immobilizer state of the device. The device must be
 
 #### examples
 
-=== "cURL"
+=== cURL
 
 ```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
@@ -72,7 +72,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
     -d '{"tracker_id": "123456", "enabled": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "HTTP GET"
+=== HTTP GET
 
 `{{ extra.api_example_url }}/tracker/engine_immobilizer/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3`
 
