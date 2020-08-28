@@ -34,13 +34,13 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
 ```json
 {
     "success": true,
-    "contacts": ["contact1","contact n"],
-    "trackers": ["tracker1","tracker n"]
+    "contacts": ["contact1", "contact n"],
+    "trackers": ["tracker1", "tracker n"]
 }
 ```
 
-* contacts - all established contacts.
-* trackers - normal trackers belonging to current user.
+* `contacts` - all established contacts.
+* `trackers` - normal trackers belonging to current user.
 
 where **contact** object is:
 
@@ -54,8 +54,8 @@ where **contact** object is:
 }
 ```
 
-* user_id - id of the user with which "contact" is established.
-* trackers - trackers belonging to "contact" which locations shared with current user.
+* `user_id` - id of the user with which "contact" is established.
+* `trackers` - trackers belonging to "contact" which locations shared with current user.
 Click to see descriptions of type [tracker](index.md#tracker-object-structure).
 
 #### errors
