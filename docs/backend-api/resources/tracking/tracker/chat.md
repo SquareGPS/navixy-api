@@ -22,19 +22,17 @@ Gets a list of chat messages.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/list' \
     -H 'Content-Type: application/json' \ 
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/chat/list?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
-```
+`{{ extra.api_example_url }}/tracker/chat/list?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3`
 
 #### response
 
@@ -86,19 +84,17 @@ Marks all incoming chat messages as read for all or for given user trackers.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read_all' \
     -H 'Content-Type: application/json' \ 
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/chat/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3
-```
+`{{ extra.api_example_url }}/tracker/chat/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3`
 
 #### response
 
@@ -125,19 +121,17 @@ Use only one parameter.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read' \
     -H 'Content-Type: application/json' \ 
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "message_id": "123"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/chat/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&message_id=123
-```
+`{{ extra.api_example_url }}/tracker/chat/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&message_id=123`
 
 #### response
 
@@ -162,19 +156,17 @@ Sends chat message to a specified tracker.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/send' \
     -H 'Content-Type: application/json' \ 
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "123456", "message": "Hello World"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/chat/send?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&message=Hello World
-```
+`{{ extra.api_example_url }}/tracker/chat/send?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&message=Hello World`
 
 #### response
 
@@ -207,19 +199,17 @@ Sends chat message to specified trackers.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast' \
     -H 'Content-Type: application/json' \ 
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]", "message": "Hello World"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/chat/broadcast?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]&message=Hello World
-```
+`{{ extra.api_example_url }}/tracker/chat/broadcast?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]&message=Hello World`
 
 #### response
 
@@ -251,19 +241,17 @@ Gets date-times of last messages in chat of trackers.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list' \
     -H 'Content-Type: application/json' \ 
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/chat/updated/list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]
-```
+`{{ extra.api_example_url }}/tracker/chat/updated/list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]`
 
 #### response
 
@@ -290,7 +278,7 @@ Gets count of user’s unread chat messages grouped by `tracker id`.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
 ```abap
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count' \
@@ -298,11 +286,9 @@ curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/chat/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
-```
+`{{ extra.api_example_url }}/tracker/chat/unread/count?hash=a6aa75587e5c59c32d347da438505fc3`
 
 #### response
 
