@@ -14,11 +14,11 @@ Gets a list of chat messages.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
-| from | optional. Start date/time of searching. Default value is now minus 7 days | date/time | `yyyy-MM-dd HH:mm:ss` |
-| to | optional. End date/time for searching. Default value is now | date/time | `yyyy-MM-dd HH:mm:ss` |
-| limit | optional. Limit of messages in list. Default and max limit is 1024 | int | 1024 |
-| ascending | optional. Ascending order direction from the first message to last. Default value is true | boolean | true/false |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| from | optional. Start date/time of searching. Default value is now minus 7 days. | date/time | `yyyy-MM-dd HH:mm:ss` |
+| to | optional. End date/time for searching. Default value is now. | date/time | `yyyy-MM-dd HH:mm:ss` |
+| limit | optional. Limit of messages in list. Default and max limit is 1024. | int | 1024 |
+| ascending | optional. Ascending order direction from the first message to last. Default value is true. | boolean | true/false |
 
 #### examples
 
@@ -45,7 +45,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/list' \
 }
 ```
 
-* list - array of messages.
+* `list` - `array` of messages.
 
 Where **message** object is:
 
@@ -61,11 +61,11 @@ Where **message** object is:
 }
 ```
 
-* submit_time - time when the message submitted.
-* update_time - delivering time for outgoing messages.
-* type - INCOMING or OUTGOING.
-* status - PENDING or DELIVERED.
-* employee_id - optional, nullable employee identifier.
+* `submit_time` - time when the message submitted.
+* `update_time` - delivering time for outgoing messages.
+* `type` - `INCOMING` or `OUTGOING`.
+* `status` - `PENDING` or `DELIVERED`.
+* `employee_id` - optional, nullable employee identifier.
 
 #### errors
 
@@ -82,7 +82,7 @@ Marks all incoming chat messages as read for all or for given user trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Optional array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | array of int | [999199, 999919,...] |
+| trackers | Optional array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | array of int | [999199, 999919,...] |
 
 #### examples
 
@@ -118,8 +118,8 @@ Marks incoming chat message as read by **message_id** or array of **message_ids*
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| message_id | Id of incoming message | int | 123 |
-| message_ids | Ids of incoming messages | array og int | [123,213,...] |
+| message_id | Id of incoming message. | int | 123 |
+| message_ids | Ids of incoming messages. | array og int | [123,213] |
 
 Use only one parameter.
 
@@ -157,8 +157,8 @@ Sends chat message to a specified tracker.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 123456 |
-| message | message text, not null, max size - 20000 | string | Hello World |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| message | message text, not null, max size - 20000. | string | Hello World |
 
 #### examples
 
@@ -185,7 +185,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/send' \
 }
 ```
 
-* id - id of the submitted message.
+* `id` - id of the submitted message.
 
 #### errors
 
@@ -202,8 +202,8 @@ Sends chat message to specified trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300 | array of int | [999199, 999919,...] |
-| message | message text, not null, max size - 20000 | string | Hello World |
+| trackers | array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | [999199, 999919,...] |
+| message | message text, not null, max size - 20000. | string | Hello World |
 
 #### examples
 
@@ -212,13 +212,13 @@ Sends chat message to specified trackers.
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast' \
     -H 'Content-Type: application/json' \ 
-    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]", "message": "Hello World"}'
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]", "message": "Hello World"}'
 ```
 
 === "GET"
 
 ```abap
-{{ extra.api_example_url }}/tracker/chat/broadcast?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999,...]&message=Hello World
+{{ extra.api_example_url }}/tracker/chat/broadcast?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]&message=Hello World
 ```
 
 #### response
@@ -231,8 +231,8 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast' \
 }
 ```
 
-* sent_to - list of trackers' IDs to whom the message sent.
-* not_sent_to - list of trackers' IDs, who failed to send the message.
+* `sent_to` - list of `trackers' IDs` to whom the message sent.
+* `not_sent_to` - list of `trackers' IDs`, who failed to send the message.
 
 #### errors
 
@@ -247,7 +247,7 @@ Gets date-times of last messages in chat of trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300 | array of int | [999199, 999919,...] |
+| trackers | array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | [999199, 999919] |
 
 #### examples
 
@@ -256,13 +256,13 @@ Gets date-times of last messages in chat of trackers.
 ```abap
 $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list' \
     -H 'Content-Type: application/json' \ 
-    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999,...]"}'
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]"}'
 ```
 
 === "GET"
 
 ```abap
-{{ extra.api_example_url }}/tracker/chat/updated/list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999,...]
+{{ extra.api_example_url }}/tracker/chat/updated/list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]
 ```
 
 #### response
@@ -277,7 +277,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list' \
 }
 ```
 
-* value - map of trackers` IDs to date-times.
+* `value` - map of `trackers' IDs` to date-times.
 
 #### errors
 
@@ -286,7 +286,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list' \
 
 ### unread/count
 
-Gets count of user’s unread chat messages grouped by tracker id.
+Gets count of user’s unread chat messages grouped by `tracker id`.
 
 #### examples
 
@@ -316,7 +316,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count' \
 }
 ```
 
-* value - map of trackers` IDs to counts.
+* `value` - map of `trackers' IDs` to counts.
 
 #### errors
 
