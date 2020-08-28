@@ -81,42 +81,21 @@ extra_css:
 
 markdown_extensions:
   - markdown.extensions.admonition
-  - markdown.extensions.attr_list
   - markdown.extensions.codehilite:
       guess_lang: false
-  - markdown.extensions.def_list
-  - markdown.extensions.footnotes
   - markdown.extensions.meta
   - markdown.extensions.toc:
       permalink: true
-  - pymdownx.striphtml:
-      strip_comments: true
   - pymdownx.betterem:
       smart_enable: all
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
-#  don't use "pymdownx.emoji": it's greatly slows down the building
-#  - pymdownx.emoji:
-#      emoji_index: !!python/name:materialx.emoji.twemoji
-#      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.inlinehilite
-  - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shortener: true
       repo_url_shorthand: true
       social_url_shorthand: true
       user: SquareGPS
       repo: navixy-api
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.snippets:
-      check_paths: true
   - pymdownx.superfences
   - pymdownx.tabbed
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
 
 # Enable analytics block to include scripts from /partial/integrations/analytics.html
 google_analytics:
