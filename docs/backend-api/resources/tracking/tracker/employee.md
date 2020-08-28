@@ -25,19 +25,17 @@ Assigns another employee (“driver”) to the tracker.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/employee/assign' \
     -H 'Content-Type: application/json' \ 
     -d '{"tracker_id": "123456", "new_employee_id": "12345", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/employee/assign?tracker_id=123456&new_employee_id=12345&hash=a6aa75587e5c59c32d347da438505fc3
-```
+`{{ extra.api_example_url }}/tracker/employee/assign?tracker_id=123456&new_employee_id=12345&hash=a6aa75587e5c59c32d347da438505fc3`
 
 #### response
 
@@ -63,19 +61,17 @@ Requests to read the current employee assigned to tracker, and when it was assig
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/employee/read' \
     -H 'Content-Type: application/json' \ 
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/employee/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
-```
+`{{ extra.api_example_url }}/tracker/employee/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3`
 
 #### response
 
