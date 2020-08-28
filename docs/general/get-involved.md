@@ -159,7 +159,7 @@ Method description.
 === "HTTP POST application/json
 
 ```abap
-$ curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
+curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
     -H 'Content-Type: application/json' \ 
     -d '{"param1": "value1", "param2": "value2", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -167,7 +167,7 @@ $ curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
 === "HTTP POST application/x-www-form-urlencoded"
 
 ```abap
-$ curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
+curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
     -d 'param1=value1' \
     -d 'param2=value2' \
     -d 'hash=a6aa75587e5c59c32d347da438505fc3' 
