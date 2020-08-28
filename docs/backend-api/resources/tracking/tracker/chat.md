@@ -280,7 +280,7 @@ Gets count of user’s unread chat messages grouped by `tracker id`.
 
 === "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
