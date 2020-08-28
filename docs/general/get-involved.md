@@ -199,4 +199,4 @@ Special error codes.
 ````
 
 For real example see [/user](../backend-api/resources/commons/user/index.md) and
-[:octicons-file-code-24: source](..commons/user/index.md).
+[:octicons-file-code-24: source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).
