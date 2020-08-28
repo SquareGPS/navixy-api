@@ -23,7 +23,7 @@ Request to read the state of engine immobilizer.
 === "HTTP POST application/json
 
 ```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/read' \
+curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/read' \
     -H 'Content-Type: application/json' \ 
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -69,7 +69,7 @@ Request to change the engine immobilizer state of the device. The device must be
 === "HTTP POST application/json
 
 ```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
+curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
     -H 'Content-Type: application/json' \ 
     -d '{"tracker_id": "123456", "enabled": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -93,4 +93,3 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
 * 213 – Cannot perform action: the device is offline (if corresponding tracker is not connected to the server).
 * 214 – Requested operation or parameters are not supported by the device (if device does not support alarm mode).
 * 219 – Not allowed for clones of the device (if tracker is clone).
-
