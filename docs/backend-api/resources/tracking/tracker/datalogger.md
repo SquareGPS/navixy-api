@@ -16,8 +16,8 @@ Uploads track data for specified tracker. Tracker must be a datalogger.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 123456 |
-| file | A CSV file upload containing datalogger track data | file | name.csv |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| file | A CSV file upload containing datalogger track data. | file | name.csv |
 
 #### response
 
