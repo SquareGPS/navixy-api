@@ -20,19 +20,17 @@ Gets the APN name/user/password and mobile operator of device by a tracker_id.
 
 #### examples
 
-=== "HTTP POST application/json
+=== "cURL"
 
-```abap
+```shell
 curl -X POST '{{ extra.api_example_url }}/tracker/apn_settings/read' \
     -H 'Content-Type: application/json' \ 
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-=== "GET"
+=== "HTTP GET"
 
-```abap
-{{ extra.api_example_url }}/tracker/apn_settings/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
-```
+`{{ extra.api_example_url }}/tracker/apn_settings/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3`
 
 #### response
 
