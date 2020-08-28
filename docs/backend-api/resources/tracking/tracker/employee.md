@@ -28,7 +28,7 @@ Assigns another employee (“driver”) to the tracker.
 === "HTTP POST application/json
 
 ```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/employee/assign' \
+curl -X POST '{{ extra.api_example_url }}/tracker/employee/assign' \
     -H 'Content-Type: application/json' \ 
     -d '{"tracker_id": "123456", "new_employee_id": "12345", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -66,7 +66,7 @@ Requests to read the current employee assigned to tracker, and when it was assig
 === "HTTP POST application/json
 
 ```abap
-$ curl -X POST '{{ extra.api_example_url }}/tracker/employee/read' \
+curl -X POST '{{ extra.api_example_url }}/tracker/employee/read' \
     -H 'Content-Type: application/json' \ 
     -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
