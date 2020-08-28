@@ -164,6 +164,8 @@ default_radius | Optional, radius for point, meters, default is 100 | Integer
 
 If `file_id` is set – `batch` parameter will be ignored.
 
+Note that employees created this way must have either phone or email specified.
+
 #### response
 
 ```json
