@@ -14,7 +14,7 @@ Gets the state of alarm mode of device.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
 
 #### examples
 
@@ -41,7 +41,7 @@ $ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
 }
 ```
 
-* enabled - true if alarm mode enabled.
+* `enabled` - `true` if alarm mode enabled.
 
 #### errors
 
@@ -57,8 +57,8 @@ Changes the state of alarm mode of device. The device must be online.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 999199 |
-| enabled | True if alarm mode should be enabled | boolean | true/false |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| enabled | True if alarm mode should be enabled. | boolean | true/false |
 
 #### examples
 
