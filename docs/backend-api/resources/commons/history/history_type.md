@@ -29,7 +29,7 @@ where **history_type** is
 
 ```json
 {
-    "type": <string>,       // history type, e.g. "alarmcontrol"
-    "description": <string> // localized description, e.g. "Car alarm"
+    "type": "alarmcontrol",       // history type, e.g. "alarmcontrol"
+    "description": "Car alarm" // localized description, e.g. "Car alarm"
 }
 ```
