@@ -156,7 +156,7 @@ Method description.
 
 ### Examples
 
-=== cURL
+=== "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
@@ -164,7 +164,7 @@ Method description.
         -d '{"param1": "value1", "param2": "value2", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
-=== HTTP GET
+=== "HTTP GET"
 
     ```
     {{ extra.api_example_url }}/resource/sub_resource/action?param1=value1&hash=a6aa75587e5c59c32d347da438505fc3
