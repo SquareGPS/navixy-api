@@ -18,7 +18,7 @@ Gets the state of alarm mode of device.
 
 #### examples
 
-=== cURL
+=== "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
@@ -26,7 +26,7 @@ Gets the state of alarm mode of device.
         -d '{"tracker_id": "123456", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
-=== HTTP GET
+=== "HTTP GET"
 
     ```
     {{ extra.api_example_url }}/tracker/alarm_mode/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
@@ -62,7 +62,7 @@ Changes the state of alarm mode of device. The device must be online.
 
 #### examples
 
-=== cURL
+=== "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/set' \
@@ -70,7 +70,7 @@ Changes the state of alarm mode of device. The device must be online.
         -d '{"tracker_id": "123456", "enabled": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
-=== HTTP GET
+=== "HTTP GET"
 
     ```
     {{ extra.api_example_url }}/tracker/alarm_mode/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
