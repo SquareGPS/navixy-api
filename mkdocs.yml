@@ -9,7 +9,7 @@ site_description: >-
 copyright: Copyright &copy; 2020 Navixy
 
 use_directory_urls: true
-strict: true
+#strict: true - disabled to use --dirtyreload option. Enabled in build script.
 docs_dir: docs
 
 repo_name: SquareGPS/navixy-api
