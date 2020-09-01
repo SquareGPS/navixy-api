@@ -50,7 +50,7 @@ where **contact** object is:
     "first_name": "Adam",
     "middle_name": "James",
     "last_name": "Williams",
-    "trackers": ["tracker1", "tracker n"]
+    "trackers": [{tracker1}, {tracker n}]
 }
 ```
 
