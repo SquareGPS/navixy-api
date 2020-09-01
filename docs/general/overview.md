@@ -1,18 +1,19 @@
 ---
-description: Overview of Navixy developers public documentation
+description: Overview of B2Field developers public documentation
 ---
 <!-- drop the spaces between { { and } } -->
 <!-- Get involved: [github]({ { config.repo_url } }) -->
 <!-- { { macros_info() } } -->
 
-# Welcome to Navixy Developer Documentation
+# Welcome to B2Field Developer Documentation
 
-![Navixy](./assets/navixy-iot.jpg)
+![Navixy](./assets/b2field-iot.png)
 
-[Navixy][1] is a GPS tracking platform developed by [SquareGPS][2] company. 
-Here you can find information about integration of 3rd party solutions with the Navixy platform,
-API and technical documentation for developers and partners.
+[B2Field][1] is a Feld Service Management software developed by [SquareGPS][2] company.
+Here you can find information about the integration of 3rd party solutions with the B2Field platform, 
+API, and technical documentation for developers and partners.
 
-  [1]: https://navixy.com/
+
+  [1]: https://b2field.com/
   [2]: https://squaregps.com/
 
