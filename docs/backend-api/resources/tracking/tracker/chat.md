@@ -15,10 +15,10 @@ Gets a list of chat messages.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| from | optional. Start date/time of searching. Default value is now minus 7 days. | date/time | `yyyy-MM-dd HH:mm:ss` |
-| to | optional. End date/time for searching. Default value is now. | date/time | `yyyy-MM-dd HH:mm:ss` |
-| limit | optional. Limit of messages in list. Default and max limit is 1024. | int | 1024 |
-| ascending | optional. Ascending order direction from the first message to last. Default value is true. | boolean | true/false |
+| from | Optional. Start date/time of searching. Default value is now minus 7 days. | date/time | `yyyy-MM-dd HH:mm:ss` |
+| to | Optional. End date/time for searching. Default value is now. | date/time | `yyyy-MM-dd HH:mm:ss` |
+| limit | Optional. Limit of messages in list. Default and max limit is 1024. | int | 1024 |
+| ascending | Optional. Ascending order direction from the first message to last. Default value is true. | boolean | true/false |
 
 #### examples
 
@@ -41,7 +41,7 @@ Gets a list of chat messages.
 ```json
 {
     "success": true,
-    "list": ["message1", "message2"]
+    "list": [{message1}, {message2}]
 }
 ```
 
@@ -158,7 +158,7 @@ Sends chat message to a specified tracker.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| message | message text, not null, max size - 20000. | string | Hello World |
+| message | Message text, not null, max size - 20000. | string | Hello World |
 
 #### examples
 
@@ -202,8 +202,8 @@ Sends chat message to specified trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | [999199, 999919,...] |
-| message | message text, not null, max size - 20000. | string | Hello World |
+| trackers | Array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | [999199, 999919,...] |
+| message | Message text, not null, max size - 20000. | string | Hello World |
 
 #### examples
 
@@ -231,8 +231,8 @@ Sends chat message to specified trackers.
 }
 ```
 
-* `sent_to` - list of `trackers' IDs` to whom the message sent.
-* `not_sent_to` - list of `trackers' IDs`, who failed to send the message.
+* `sent_to` - list of tracker IDs to whom the message sent.
+* `not_sent_to` - list of tracker IDs, who failed to send the message.
 
 #### errors
 
@@ -247,7 +247,7 @@ Gets date-times of last messages in chat of trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | [999199, 999919] |
+| trackers | Array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | [999199, 999919] |
 
 #### examples
 
@@ -277,7 +277,7 @@ Gets date-times of last messages in chat of trackers.
 }
 ```
 
-* `value` - map of `trackers' IDs` to date-times.
+* `value` - map of tracker IDs to date-times.
 
 #### errors
 
@@ -286,7 +286,7 @@ Gets date-times of last messages in chat of trackers.
 
 ### unread/count
 
-Gets count of user’s unread chat messages grouped by `tracker id`.
+Gets count of user’s unread chat messages grouped by tracker id.
 
 #### examples
 
@@ -316,7 +316,7 @@ Gets count of user’s unread chat messages grouped by `tracker id`.
 }
 ```
 
-* `value` - map of `trackers' IDs` to counts.
+* `value` - map of tracker IDs to counts.
 
 #### errors
 
