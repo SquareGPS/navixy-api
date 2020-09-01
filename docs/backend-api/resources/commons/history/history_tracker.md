@@ -22,12 +22,7 @@ List less then or equal to **limit** of tracker events filtered by event types (
 
 If **events** (event types) not passed then list all event types.
 
-Available event types: `alarmcontrol, battery_off, bracelet_close, bracelet_open, crash_alarm, detach, door_alarm, 
- driver_changed, force_location_request, g_sensor, gps_lost, gps_recover, gsm_damp, harsh_driving, hood_alarm, 
- idle_end, idle_start, ignition, info, input_change, inroute, outroute, inzone, outzone, lowpower, 
- obd_plug_in, obd_unplug, obj_control, offline, online, parking, poweroff, poweron, 
- security_control, sos, speedup, track_end, track_start, sensor_inrange, sensor_outrange, 
- strap_bolt_cut, strap_bolt_ins, vibration_start, vibration_end, light_sensor_bright, light_sensor_dark`
+Available event types can be obtained by [/history/type](history_type.md) action.
 
 Default and max limit is 1000 by default. (Note for StandAlone: this value configured by maxHistoryLimit config option).
 
@@ -42,13 +37,13 @@ Default and max limit is 1000 by default. (Note for StandAlone: this value confi
 ```json
 {
     "success": true,
-    "list": [ ${tracker_history_entry}, ... ], // list of zero or more JSON objects
+    "list": [ ${history_entry}, ... ], // list of zero or more JSON objects
     "limit_exceeded": false // boolean. false when listed all history entries satisfied to conditions
     // and true otherwise
 }
 ```
 
-where `tracker_history_entry` described in [History entries](index.md#history-entries).
+where `history_entry` described in [Tracker history entry](index.md#tracker-history-entry).
 
 #### errors
 

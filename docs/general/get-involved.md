@@ -75,7 +75,7 @@ This method involves installing the Git, IDE, Python and
 1. Start the documentation server locally. In console:
    ```sh
    cd /path/to/project
-   mkdocs serve
+   mkdocs serve --dirtyreload
    ```
 1. To check that the server has started, open in a browser: http://localhost:8000
 1. Create a local git branch in project.
@@ -190,4 +190,4 @@ Special error codes.
 ````
 
 For real example see [/user](../backend-api/resources/commons/user/index.md) and
-[:octicons-file-code-24: source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).
+[source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).

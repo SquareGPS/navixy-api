@@ -7,85 +7,36 @@ description: History
 
 API path: `/history`.
 
-**history entry** is one of:
-
-# History entries
-
-*   **common\_history\_entry**
-```json
-{
-    "id": ,
-    "type": "common",
-    "is_read": ,
-    "message": ,
-    "time": ,
-    "event":            // type of history event
-}
-```    
-
-*   **tracker\_history\_entry**
+## Tracker history entry
 
 ```json
 {
-    "id": ,
-    "type": "tracker"
-    "is_read": ,
-    "message": ,
-    "time": ,
-    "event": ,          // type of history event extension
-    "tracker_id": ,     // column object_id
-    "rule_id": ,        // column event_id 
-    "track_id": ,
+    "id": 1,
+    "type": "tracker",
+    "is_read": false,
+    "message": "Alarm",
+    "time": "2020-01-01 00:00:00",
+    "event": "offline",          // type of history event extension
+    "tracker_id": 2,     // column object_id
+    "rule_id": 3,        // column event_id 
+    "track_id": 4,
     "location":{ 
-        "lat": ,
-        "lng": ,
-        "precision": 
+        "lat": 50.0,
+        "lng": 60.0,
+        "precision": 50
     },
     "address": "address",        // string. address of location or "" (empty string)
     "extra": {
-        "task_id": , //related task identifier 
-        "parent_task_id": , //related parent task identifier (for task checkpoint related history entries)
-        "counter_id": , //related counter identifier
-        "service_task_id": , //related service task id
-        "checkin_id": , //related check-in marker
-        "place_ids": , //related place identifiers,
-        "last_known_location": , //true if location may be outdated,
-        "tracker_label": ,//tracker label
-        "emergency": ${boolean} //true for events with a same flag, optional
+        "task_id": null , //related task identifier 
+        "parent_task_id": null, //related parent task identifier (for task checkpoint related history entries)
+        "counter_id": null, //related counter identifier
+        "service_task_id": null, //related service task id
+        "checkin_id": null, //related check-in marker
+        "place_ids": null, //related place identifiers,
+        "last_known_location": false, //true if location may be outdated,
+        "tracker_label": "Tracker label",//tracker label
+        "emergency": false //true for events with a same flag, optional
     }
-}
-```
-
-
-### Deprecated event types
-
-*   **camera\_history\_entry**
-```json
-{
-    "id": ,
-    "type": "camera"
-    "is_read": ,
-    "message": ,
-    "time": ,
-    "event": ,          // type of history event
-    // extension
-    "camera_id": ,
-    "pack_id":     // photos pack id
-}
-```
-
-*   **socket\_history\_entry**
-
-```json
-{
-    "id": ,
-    "type": "camera"
-    "is_read": ,
-    "message": ,
-    "time": ,
-    "event": ,          // type of history event
-    // extension
-    "socket_id":
 }
 ```
 
@@ -99,7 +50,7 @@ Returns history entry with the specified id.
 
 #### parameters
 
-*   id – **int**. [history entry](#history-entries) ID
+*   id – **int**. [history entry](#tracker-history-entry) ID
 *   add\_tracker\_label – **boolean**. optional, if true tracker label will be added to message
 
 #### response
@@ -111,7 +62,7 @@ Returns history entry with the specified id.
 }
 ```
 
-where `_history_entry` described in [History entries](#history-entries).
+where `history_entry` described in [Tracker history entry](#tracker-history-entry).
 
 #### errors
 
@@ -121,11 +72,11 @@ where `_history_entry` described in [History entries](#history-entries).
 
 ### mark_read
 
-Mark history entry as read by **id** (see: [History entries](#history-entries)).
+Mark history entry as read by **id** (see: [Tracker history entry](#tracker-history-entry)).
 
 #### parameters
 
-*   id – **int**. [history entry](#history-entries) ID
+*   id – **int**. [Tracker history entry](#tracker-history-entry) ID
 
 #### response
 
