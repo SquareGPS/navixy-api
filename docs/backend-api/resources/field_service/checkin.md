@@ -122,3 +122,33 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 *   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
 *   217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
 *   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
+
+### delete
+
+Delete checkins with the specified id-s.
+
+**required subuser rights:** checkin_update
+
+#### parameters
+
+| name | description | type | format |
+| :--- | :--- | :--- | :--- |
+| checkin_ids | array of checkin ids.  | array of ints | [123456,223456,...] |
+
+
+#### example
+
+    {{ extra.api_example_url }}/checkin/delete?hash=22eac1c27af4be7b9d04da2ce1af111b&checkin_ids=[213,4533]
+
+#### response
+
+```json
+{
+    "success": true
+}
+```
+
+#### errors
+*   7 – Invalid parameters
+*   201 - Not found in database - checkins with the specified ids don't exist or their corresponding trackers are not
+    available to current subuser
