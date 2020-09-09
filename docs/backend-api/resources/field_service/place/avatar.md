@@ -21,7 +21,7 @@ Upload avatar image for specified place.
 Then it will be available from `[api_base_url]/<api_static_uri>/place/avatars/<file_name>`
 e.g. `{{ extra.api_example_url }}/static/place/avatars/abcdef123456789.png`.
 
-**avatar_file_name** returned in response and will be returned from [place/list](index.md#list).
+**avatar_file_name** returned in response and will be returned from [place/list](./index.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data),
 with one of the parts being an image file upload (with the name “file”).
@@ -37,7 +37,7 @@ name | description | type
 --- | --- | ---
 place_id | ID of the place | int
 file | image file | File upload
-redirect_target | (optional) URL to redirect. If **redirect_target** passed return redirect to *&lt;redirect_target&gt;?response=&lt;urlencoded_response_json&gt;* | String
+redirect_target | (optional) URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>` | String
 
 #### response
 ```json

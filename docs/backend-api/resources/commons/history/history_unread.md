@@ -29,7 +29,7 @@ Type of **from** is [date/time](../../../getting-started.md#data-types). Default
 }
 ```
 
-where **history_entry** described in [Tracker history entry](index.md#tracker-history-entry)
+where **history_entry** described in [Tracker history entry](./index.md#tracker-history-entry)
 
 #### errors
 

@@ -14,7 +14,7 @@ No parameters.
 #### response
 For every input following properties are returned: *input_name* and *description*.
 
-*input_name* is an enum member, same as in [sensor object](index.md).
+*input_name* is an enum member, same as in [sensor object](./index.md).
 
 *description* is made in current user's language (according to [locale settings](../../../commons/user/settings/index.md)).
 

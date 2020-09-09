@@ -53,7 +53,8 @@ Possible rights are:
 *   vehicle_update,
 *   payment_create
 *   form_template_update,
-*   reports;
+*   reports
+*   checkin_update
 
 ### create
 

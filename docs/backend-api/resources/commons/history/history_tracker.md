@@ -22,7 +22,7 @@ List less then or equal to **limit** of tracker events filtered by event types (
 
 If **events** (event types) not passed then list all event types.
 
-Available event types can be obtained by [/history/type](history_type.md) action.
+Available event types can be obtained by [/history/type/list](./history_type.md#list) action.
 
 Default and max limit is 1000 by default. (Note for StandAlone: this value configured by maxHistoryLimit config option).
 
@@ -43,7 +43,7 @@ Default and max limit is 1000 by default. (Note for StandAlone: this value confi
 }
 ```
 
-where `history_entry` described in [Tracker history entry](index.md#tracker-history-entry).
+where `history_entry` described in [Tracker history entry](./index.md#tracker-history-entry).
 
 #### errors
 
