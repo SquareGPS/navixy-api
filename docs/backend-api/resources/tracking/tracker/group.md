@@ -74,8 +74,8 @@ Creates a new empty group.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| title | Ser-specified group title, 1 to 60 printable characters. | string | Employees |
-| color | Group color. | string | FF6DDC |
+| title | Ser-specified group title, 1 to 60 printable characters. | string | "Employees" |
+| color | Group color. | string | "FF6DDC" |
 
 #### examples
 
@@ -102,7 +102,7 @@ Creates a new empty group.
 }
 ```
 
-* `id` - int. An id of created group, e.g. 222
+* `id` - int. An id of created group, e.g. 222.
 
 #### errors
 
@@ -148,7 +148,7 @@ Deletes group with the specified id. The group must belong to authorized user. A
 
 ### list
 
-Gets all users' tracker groups. There is always “default” unnamed group with id = 0. It cannot be modified, deleted, and is not returned by this API call.
+Gets all user tracker groups. There is always “default” unnamed group with id = 0. It cannot be modified, deleted, and is not returned by this API call.
 
 #### examples
 
@@ -183,7 +183,7 @@ Gets all users' tracker groups. There is always “default” unnamed group with
 
 #### errors
 
-General types only.
+[General](../../../getting-started.md#error-codes) types only.
 
 ### update
 
@@ -196,8 +196,8 @@ Updates specified tracker group. Group must belong to the authorized user.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | id | Id of group to update. | int | 167 |
-| title | Ser-specified group title, 1 to 60 printable characters. | string | Employees |
-| color | Group color. | string | FF6DDC | 
+| title | Ser-specified group title, 1 to 60 printable characters. | string | "Employees" |
+| color | Group color. | string | "FF6DDC" | 
 
 #### examples
 

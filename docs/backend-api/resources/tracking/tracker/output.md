@@ -17,7 +17,7 @@ Request to change the states of all digital outputs of the device. The device mu
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| outputs | Array of desired states of all digital outputs, e.g. [true, true, false] means output 1 is on, output 2 is on, output 3 is off. | array of boolean | [true, true, false] |
+| outputs | Array of desired states of all digital outputs, e.g. [true, true, false] means output 1 is on, output 2 is on, output 3 is off. | array of boolean | `[true, true, false]` |
 
 #### examples
 

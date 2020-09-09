@@ -42,9 +42,9 @@ Upload avatar image for specified employee.
 Then it will be available from /employee/avatars/
 e.g. `{{ extra.api_example_url }}/static/employee/avatars/abcdef123456789.png`.
 
-**required subuser rights**: employee_update
+**required subuser rights**: `employee_update`
 
-**avatar\_file\_name** returned in response and will be returned from [/employee/list](index.md#list).
+**avatar_file_name** returned in response and will be returned from [/employee/list](./index.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data),
 with one of the parts being an image file upload (with the name `file`).

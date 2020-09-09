@@ -17,7 +17,7 @@ There are several ways:
 1.  [Installing and editing](#hard-way) documentation locally on yours PC.
 
 In each of these cases, a GitHub account required.
-If you don't want to register on GitHub, you can just [contact us](contacts.md) with any convenient way.
+If you don't want to register on GitHub, you can just [contact us](./contacts.md) with any convenient way.
 
 ### Easy way
 

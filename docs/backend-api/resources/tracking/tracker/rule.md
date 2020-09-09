@@ -130,8 +130,8 @@ Where
     ```json
     {
       "type": "fixed",
-      "from": "date/time",
-      "to": "date/time",
+      "from": "2014-07-09 07:50:58",
+      "to": "2014-07-10 07:50:58",
       "interval_id": 3
     }
     ```
@@ -273,7 +273,7 @@ Binds rule with **rule_id** to trackers list.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | rule_id | Id of a rule. | int | 10 |
-| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | [999199, 999119] |
+| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | `[999199, 999119]` |
 
 #### examples
 
@@ -413,7 +413,7 @@ List tracker rules binded to tracker with id=**tracker_id** or all users' tracke
 
 ### unbind
 
-Unbinds trackers from rule with **rule_id**.
+Unbinds trackers from rule with `rule_id`.
 
 **required sub-user rights:** `tracker_rule_update`
 
@@ -422,7 +422,7 @@ Unbinds trackers from rule with **rule_id**.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | rule_id | Id of a rule. | int | 10 |
-| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | [999199, 999119] |
+| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | `[999199, 999119]` |
 
 #### examples
 
@@ -448,7 +448,7 @@ Unbinds trackers from rule with **rule_id**.
 
 #### errors
 
-* 201 (Not found in the database) – if rule with **rule_id** does not exist or owned by other user.
+* 201 (Not found in the database) – if rule with `rule_id` does not exist or owned by other user.
 
 ### update
 
