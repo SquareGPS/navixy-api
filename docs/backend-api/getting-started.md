@@ -1,9 +1,9 @@
 ---
 title: Getting Started
-description: Overview of Navixy Backend API
+description: Overview of B2Field Backend API
 ---
 
-# Navixy Backend API
+# B2Field Backend API
 
 
 ## General
@@ -33,12 +33,12 @@ description (as provided herein), and know user login and password.
 In the all examples used placeholder `[api_base_url]`. 
 Depending on the physical location of the platform it will be:
 
-*  `https://api.eu.navixy.com/v2/fsm` for European Navixy ServerMate platform.
-*  `https://api.us.navixy.com/v2/fsm` for American Navixy ServerMate platform.
+*  `https://api.eu.navixy.com/v2/fsm` for European B2Field ServerMate platform.
+*  `https://api.us.navixy.com/v2/fsm` for American B2Field ServerMate platform.
 *  `https://api.your_domain/fsm` for the self-hosted (On-Premise) installations.
 
 For example, to make [`user/auth`](./resources/commons/user/index.md#auth) 
-API call on the European Navixy ServerMate, you should use the URL: 
+API call on the European B2Field ServerMate, you should use the URL: 
 
     https://api.eu.navixy.com/v2/fsm/user/auth
 
