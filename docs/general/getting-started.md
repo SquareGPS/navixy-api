@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: Getting started with Navixy API
+description: Getting started with B2Field API
 ---
 
 # Getting started
@@ -12,7 +12,7 @@ Coming soon.
 ## Get involved
 
 You can really help to improve [this documentation](./get-involved.md) o
- [localizations](./localizations/localizations.md) of Navixy Platform.
+ [localizations](./localizations/localizations.md) of B2Field Platform.
 
 If the translation of the user interface into your language is missing or contains errors, 
 you can make or fix the localization on the [CrowdIn platform](https://crowdin.com/) yourself. 
