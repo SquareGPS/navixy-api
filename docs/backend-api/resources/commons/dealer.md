@@ -21,11 +21,11 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
 | name | description | type| format|
 | :------: | :------: | :-----:| :------:|
-| domain | dealer’s monitoring interface domain, e.g. “navixy.com“ | string | panel.navixy.com |
+| domain | dealer’s monitoring interface domain, e.g. “b2field.com“ | string | panel.b2field.com |
 
 #### example
 
-    {{ extra.api_example_url }}/dealer/get_ui_config?domain=panel.navixy.com
+    {{ extra.api_example_url }}/dealer/get_ui_config?domain=panel.b2field.com
 
 #### response
 
@@ -33,14 +33,14 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 {
     "success": true,
     "dealer": {
-        "id": 5001,                     // int. dealer id
-        "ui_domain": "demo.navixy.com", // Dealer's UI domain
-        "company_url": "navixy.com"     // Dealer's promo site URL
-                                        // e.g. "http://www.navixy.com" or "demo.navixy.com"
+        "id": 21505,                     // int. dealer id
+        "ui_domain": "demo.b2field.com", // Dealer's UI domain
+        "company_url": "b2field.com"     // Dealer's promo site URL
+                                        // e.g. "http://www.b2field.com" or "demo.b2field.com"
     },
     "settings": {         //may be null if dealer has not set any custom settings
-        "domain" : "demo.navixy.com",   // same as dealer.ui_domain
-        "service_title": "Navixy Demo", // Title of the service
+        "domain" : "demo.b2field.com",   // same as dealer.ui_domain
+        "service_title": "B2Field Demo", // Title of the service
         "locale": "at_AT",              // default locale of the dealer
         "demo_login": "demo",           // dealer's login for demo user 
                                         // (or empty string if no demo user available)
@@ -61,10 +61,10 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
                                        // to refill user's account. Can be null or empty. 
         "promo_url": "http://site.de/about/",            // customizable "About company" url
         "google_client_id": "clientID", // client id which which must be used to work with google API or null
-        "favicon": "paas/5001/custom.ico", // path or url to dealer's interface favicon
-        "logo": "paas/5001/logo.png",   // path or url to dealer's logotype
-        "app_logo": "paas/5001/app_logo.png",       //nullable, path or url to dealer's mobile app logotype, 
-        "login_wallpaper": "paas/5001/login.png", // path or url to dealer's interface login wallpaper
+        "favicon": "paas/21505/custom.ico", // path or url to dealer's interface favicon
+        "logo": "paas/21505/logo.png",   // path or url to dealer's logotype
+        "app_logo": "paas/21505/app_logo.png",       //nullable, path or url to dealer's mobile app logotype, 
+        "login_wallpaper": "paas/21505/login.png", // path or url to dealer's interface login wallpaper
         "desktop_wallpaper": "http://test.com/test.jpg", // path to dealer's interface wallpaper or null
         "monitoring_logo": "http://test.com/test.jpg", // path to dealer's interface monitoring logo or null
         "login_footer": "All rights reserved.", // footer which will be included in login page. 
