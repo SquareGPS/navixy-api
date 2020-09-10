@@ -43,7 +43,7 @@ Sends email from the platform to any email address with specified title and text
 
 #### example
 
-    {{ extra.api_example_url }}/base/send_email?hash=22eac1c27af4be7b9d04da2ce1af111b&from=navixy@mail.com&to=user@mail.com&title=text+of+email+title&message=text+of+the+message&service_id=1&service_pass=1
+    {{ extra.api_example_url }}/base/send_email?hash=22eac1c27af4be7b9d04da2ce1af111b&from=b2field@mail.com&to=user@mail.com&title=text+of+email+title&message=text+of+the+message&service_id=1&service_pass=1
 
 #### response
 
