@@ -21,11 +21,11 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
 | name | description | type| format|
 | :------: | :------: | :-----:| :------:|
-| domain | dealer’s monitoring interface domain, e.g. “navixy.com“ | string | panel.navixy.com |
+| domain | dealer’s monitoring interface domain, e.g. “b2field.com“ | string | b2field.com |
 
 #### example
 
-    {{ extra.api_example_url }}/dealer/get_ui_config?domain=panel.navixy.com
+    {{ extra.api_example_url }}/dealer/get_ui_config?domain=b2field.com
 
 #### response
 
@@ -34,9 +34,9 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     "success": true,
     "dealer": {
         "id": 5001,                     // int. dealer id
-        "ui_domain": "demo.navixy.com", // Dealer's UI domain
-        "company_url": "navixy.com"     // Dealer's promo site URL
-                                        // e.g. "http://www.navixy.com" or "demo.navixy.com"
+        "ui_domain": "demo.b2field.com", // Dealer's UI domain
+        "company_url": "b2field.com"     // Dealer's promo site URL
+                                        // e.g. "http://www.b2field.com" or "demo.b2field.com"
     },
     "settings": {         //may be null if dealer has not set any custom settings
         "domain" : "demo.navixy.com",   // same as dealer.ui_domain
