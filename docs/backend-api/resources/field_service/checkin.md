@@ -98,22 +98,32 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 
 #### parameters
 
-| name | description | type | format |
+| name | description | type | example |
 | :--- | :--- | :--- | :--- |
-| trackers | array of tracker ids. all trackers must not be deleted or blocked (if list_blocked=false) | array of ints | [123456,223456,...] |
-| from | start date/time for searching | date/time | 2020-01-01 00:00:00 |
-| to | end date/time for searching. must be after “from” date  | date/time | 2020-02-02 00:00:00 |
+| trackers | array of tracker ids. all trackers must not be deleted or blocked (if list_blocked=false). Optional. If not specified, all available trackers will be used as value.| array of ints | `[123456,223456,...]` |
+| from | start date/time for searching. Optional. | date/time | `2020-01-01 00:00:00` |
+| to | end date/time for searching. must be after “from” date. Optional.  | date/time | `2020-02-02 00:00:00` |
+| conditions | optional, search conditions to apply to list. | Array of search conditions, see [Search conditions](../../commons/entity/search_conditions/). Allowed fields are `employee`, `location`, `marker_time`, `comment` | |
+| sort | optional, offset, default is 0 | string[], list of sort expressions. See below. | `["location=asc", "marker_time=desc"]`  |
+| limit | optional, max number of records to return | int | |
+| offset | optional, offset (starting index of first returned record), default is 0.  | int | |
+| format | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx" | string | `pdf` |
+
+##### sort 
+It's a set of sort options. Each option is a pair of field name and sorting direction, e.g. `["location=asc", "employee=desc", "marker_time=desc"]`. 
+Possible fields: `employee`, `location`, `marker_time`, `comment`.
 
 #### example
 
-    {{ extra.api_example_url }}/checkin/list?hash=22eac1c27af4be7b9d04da2ce1af111b&trackers=[616384,345623]&from=2020-08-05 03:06:00&to=2020-09-05 03:00:00
+    {{ extra.api_example_url }}/checkin/list?hash=22eac1c27af4be7b9d04da2ce1af111b&trackers=[616384,345623]&from=2020-08-05 03:06:00&to=2020-09-05 03:00:00&offset=20&limit=100&format=xlsx
 
 #### response
 
 ```json
 {
     "success": true,
-    "list": [<checkin>, ... ] // list of check-ins
+    "list": [<checkin>, ... ], // list of check-ins
+    "count": 22 //total number of checkins (ignoring offset and limit)
 }
 ```
 
@@ -122,3 +132,33 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 *   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
 *   217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
 *   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
+
+### delete
+
+Delete checkins with the specified id-s.
+
+**required subuser rights:** checkin_update
+
+#### parameters
+
+| name | description | type | format |
+| :--- | :--- | :--- | :--- |
+| checkin_ids | array of checkin ids.  | array of ints | [123456,223456,...] |
+
+
+#### example
+
+    {{ extra.api_example_url }}/checkin/delete?hash=22eac1c27af4be7b9d04da2ce1af111b&checkin_ids=[213,4533]
+
+#### response
+
+```json
+{
+    "success": true
+}
+```
+
+#### errors
+*   7 – Invalid parameters
+*   201 - Not found in database - checkins with the specified ids don't exist or their corresponding trackers are not
+    available to current subuser
