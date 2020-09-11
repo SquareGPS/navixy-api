@@ -75,7 +75,7 @@ where **bill** is
     "status": "created",               // bill order status
     "positions": ["The subscription fee for the services of Gdemoi Account W3"],  // list of position names.
                                        // usually contains one element for bill
-    "link": "http://bill.navixy.com/xK1QEYK" // url to order
+    "link": "http://bill.b2field.com/xK1QEYK" // url to order
 }
 ```
 
