@@ -1,6 +1,6 @@
 ---
 title: Get involved
-description: Get involved into improving documentation and translations of the Navixy Platform
+description: Get involved into improving documentation and translations of the B2Field Platform
 ---
 
 # Get involved
@@ -117,7 +117,7 @@ For example:
 ```yaml
 ---
 title: Get involved
-description: Get involved into improving documentation and translations of the Navixy Platform
+description: Get involved into improving documentation and translations of the B2Field Platform
 ---
 ```
 
