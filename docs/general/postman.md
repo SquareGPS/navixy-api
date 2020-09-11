@@ -25,7 +25,7 @@ This can be especially handy when working with large requests.
 
     ![Select request method in Postman](./assets/postman_select.png)
 
-    Each API request uses an HTTP method. The most common methods for Navixy API are GET and POST. 
+    Each API request uses an HTTP method. The most common methods for B2Field API are GET and POST. 
     GET methods retrieve data from an API. POST sends new data to an API.
 
 1. Enter base request URL with the resource and sub-resource. In our example we will
