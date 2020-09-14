@@ -68,6 +68,6 @@ point at index 1 move to index 0"
 #### errors
 
 *   6 - Invalid parameters
-*   79 - Timeout not reached (too high api call rate)
+*   264 - Timeout not reached (too high api call rate)
 *   general types of errors
 
