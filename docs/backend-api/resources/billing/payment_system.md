@@ -27,7 +27,7 @@ where **payment_system_settings** is:
     "url": "https:_rbkmoney.com/acceptpurchase.aspx", // URL to send payment info,
     "account": <string>, // (optional) dealer account in payment system (eshopId for RBK)
     "currency": "EUR", // 3-letter ISO 4217 currency code
-    "payment_code": "Navixy Demo", // (optional) code for payments
+    "payment_code": "B2Field Demo", // (optional) code for payments
     "subscription_code": "4671292", // (string) subscription code. same as "payment_code" for 2Checkout (formerly Avangate) but for subscriptions
     "methods": [<string>, ...] // (optional) list of available payment methods (may be empty)
     // for type == "ios_inapp" only:

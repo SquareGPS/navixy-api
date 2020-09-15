@@ -1,15 +1,15 @@
-site_name: Navixy Developer Documentation
-site_url: https://developers.navixy.com
-site_author: Navixy Team
+site_name: B2Field Developer Documentation
+site_url: https://b2field.com/support/api/
+site_author: B2Field Team
 site_description: >-
   API and technical documentation for developers and partners.
-  Feel free to use our comprehensive REST API to integrate Navixy with CRMs,
+  Feel free to use our comprehensive REST API to integrate B2Field with CRMs,
   ERPs or any other 3rd party tools. You can also use it to build your custom web applications.
 
-copyright: Copyright &copy; 2020 Navixy
+copyright: Copyright &copy; 2020 B2Field
 
 use_directory_urls: true
-strict: true
+#strict: true - disabled to use --dirtyreload option. Enabled in build script.
 docs_dir: docs
 
 repo_name: SquareGPS/navixy-api
@@ -61,18 +61,12 @@ extra:
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/SquareGPS
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/Navixy
-    - icon: fontawesome/brands/linkedin
-      link: https://linkedin.com/company/navixy/
     - icon: fontawesome/brands/facebook
-      link: https://facebook.com/NavixyGPS
+      link: https://www.facebook.com/B2Field/
     - icon: fontawesome/brands/instagram
       link: https://instagram.com/squaregps
-    - icon: fontawesome/brands/youtube
-      link: https://youtube.com/channel/UCL0u39pv4NlECAmFOZCZ-nw
     - icon: fontawesome/regular/address-card
-      link: https://navixy.com/contact/
+      link: https://b2field.com/contacts/
       name: Contacts
   api_example_url: https://api.navixy.com/v2/fsm
 
@@ -81,41 +75,21 @@ extra_css:
 
 markdown_extensions:
   - markdown.extensions.admonition
-  - markdown.extensions.attr_list
   - markdown.extensions.codehilite:
       guess_lang: false
-  - markdown.extensions.def_list
-  - markdown.extensions.footnotes
   - markdown.extensions.meta
   - markdown.extensions.toc:
       permalink: true
-  - pymdownx.striphtml:
-      strip_comments: true
   - pymdownx.betterem:
       smart_enable: all
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.inlinehilite
-  - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shortener: true
       repo_url_shorthand: true
       social_url_shorthand: true
       user: SquareGPS
       repo: navixy-api
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.snippets:
-      check_paths: true
   - pymdownx.superfences
   - pymdownx.tabbed
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
 
 # Enable analytics block to include scripts from /partial/integrations/analytics.html
 google_analytics:

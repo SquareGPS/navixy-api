@@ -1,10 +1,10 @@
 ---
-description: Language support on Navixy Platform
+description: Language support on B2Field Platform
 ---
 
 # Languages
 
-Navixy already supports many languages and provides an easy way to 
+B2Field already supports many languages and provides an easy way to 
 [add a new language](contributing.md):
 
 ```
@@ -33,8 +33,8 @@ Ukrainian
 and others...
 ```
     
-In all Navixy products both left-to-right and right-to-left languages are supported. 
-The following Navixy projects are maintained currently:
+In all B2Field products both left-to-right and right-to-left languages are supported. 
+The following B2Field projects are maintained currently:
 
 *    Desktop web interface
 *    Mobile web interface
@@ -42,5 +42,5 @@ The following Navixy projects are maintained currently:
 *    Tracker mobile app for iOS /Android
 *    Viewer mobile app for iOS / Android
 
-[Become a contributor](contributing.md) and help us to translate Navixy
+[Become a contributor](contributing.md) and help us to translate B2Field
 products to a new language or improve the existing language packs.

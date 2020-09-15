@@ -147,3 +147,43 @@ Delete employee with the specified id. If it had tracker assigned, tracker label
 #### errors
 
 *   201 – Not found in database (if there is no employee with such id)
+
+### batch_convert
+Convert batch of tab-delimited employees and return list of checked employees with errors.
+
+**Required subuser rights:** `employee_update`.
+
+#### parameters
+name | description | type
+--- | --- | ---
+batch | batch of tab-delimited places. | String
+file_id | preloaded file ID | String
+fields | Optional, array of field names, default is `[“first_name”, “middle_name”, “last_name”, “email”, “phone”]` | array of strings
+geocoder | geocoder type | String
+default_radius | Optional, radius for point, meters, default is 100 | Integer
+
+If `file_id` is set – `batch` parameter will be ignored.
+
+Note that employees created this way must have either phone or email specified.
+
+#### response
+
+```json
+{
+    "success": true,
+    "list": [ <checked_employee>, ... ]
+}
+```
+
+where `checked_employee` is:
+
+```json
+{
+    ... // all fields from <employee>
+    "errors": <array_of_objects>, // optional
+    "tag_names": <array_of_strings> // optional
+}
+```
+
+#### errors
+* 234 (Invalid data format)

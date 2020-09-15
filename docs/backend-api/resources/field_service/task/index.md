@@ -166,7 +166,7 @@ Minimal JSON object to create a new task must contain:
 ```
 
 task/create call returns the identifier of the created task.
-Returned object also can include "external_id_counts" field see task/route/create [method description](route/index.md#create)
+Returned object also can include "external_id_counts" field see task/route/create [method description](./route/index.md#create)
 
 ```json
 {
@@ -363,7 +363,7 @@ replace or delete task's form. Default value is false for backward compatibility
 
 #### response
 
-Returned object also can include "external_id_counts" field see task/route/create [method description](route/index.md#create)
+Returned object also can include "external_id_counts" field see task/route/create [method description](./route/index.md#create)
 
 ```json
 {

@@ -1,9 +1,9 @@
 ---
 title: Getting Started
-description: Overview of Navixy Backend API
+description: Overview of B2Field Backend API
 ---
 
-# Navixy Backend API
+# B2Field Backend API
 
 
 ## General
@@ -18,12 +18,12 @@ Let's describe standard workflow for API developer using very simple and most
 common example — requesting the track points data:
 
 1.  Determine [URL to API calls](#api-base-url).
-1.  Authorize with [`user/auth`](resources/commons/user/index.md#auth). 
+1.  Authorize with [`user/auth`](./resources/commons/user/index.md#auth). 
     This API method [will return the hash](./how-to/get-session-hash.md) 
     you should use for all your next API calls.
 1.  Get objects lists with [`tracker/list`](./how-to/get-tracker-list.md).
-1.  Get track lists with [`track/list`](resources/tracking/track/index.md#list).
-1.  Get the track itself: [`track/read`](resources/tracking/track/index.md#read).
+1.  Get track lists with [`track/list`](./resources/tracking/track/index.md#list).
+1.  Get the track itself: [`track/read`](./resources/tracking/track/index.md#read).
 
 In other words, to start working with API, the developers should have API call 
 description (as provided herein), and know user login and password.
@@ -33,12 +33,12 @@ description (as provided herein), and know user login and password.
 In the all examples used placeholder `[api_base_url]`. 
 Depending on the physical location of the platform it will be:
 
-*  `https://api.eu.navixy.com/v2/fsm` for European Navixy ServerMate platform.
-*  `https://api.us.navixy.com/v2/fsm` for American Navixy ServerMate platform.
+*  `https://api.eu.navixy.com/v2/fsm` for European B2Field ServerMate platform.
+*  `https://api.us.navixy.com/v2/fsm` for American B2Field ServerMate platform.
 *  `https://api.your_domain/fsm` for the self-hosted (On-Premise) installations.
 
-For example, to make [`user/auth`](resources/commons/user/index.md#auth) 
-API call on the European Navixy ServerMate, you should use the URL: 
+For example, to make [`user/auth`](./resources/commons/user/index.md#auth) 
+API call on the European B2Field ServerMate, you should use the URL: 
 
     https://api.eu.navixy.com/v2/fsm/user/auth
 
