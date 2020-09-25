@@ -1,6 +1,6 @@
 # App: Web Locator
 
-“Web Locator” is a special plugin which can be embedded to any other application or website 
+“Web Locator” is a special plugin which can be embedded to any other application or website 
 and allow to track user’s objects on the map in real-time.
 
 ## Example
@@ -15,10 +15,10 @@ The following HTML texts is used to show on the map the objects from
 
 ## Usage
 
-To start using the Weblocator user needs to acquire the GENERATED\_KEY value. 
-He or she can copy this value from their private user area in the Web-interface 
-or use [appropriate API call](../../backend-api/resources/commons/user/session/weblocator.md#create). 
-Once user generates the key value, it won’t expire and can be used till user generates the newer key.
+To start using the Weblocator user needs to acquire the GENERATED\_KEY value. 
+He or she can copy this value from their private user area in the Web-interface 
+or use [appropriate API call](../../backend-api/resources/commons/user/session/weblocator.md#create). 
+Once user generates the key value, it won’t expire and can be used till user generates the newer key.
 
 Insert the following HTML text on any web-page you require using the GENERATED\_KEY value.
 ```html
@@ -29,7 +29,7 @@ Insert the following HTML text on any web-page you require using the GENERATED\_
 
 ### Parameters
 
-You can define window size, choose the background map layer, list the objects to show, 
+You can define window size, choose the background map layer, list the objects to show, 
 use autoscaling to track multiple objects.
 
 All parameters are transferred to the Web locator application by the GET method. For example:
@@ -97,12 +97,12 @@ described according to the link: [API authorization][1]
 
 ### Keys Generation
 
-Use the following API call to generate a new key 
+Use the following API call to generate a new key 
 
     http://api.domain.com/user/session/weblocator/create/?hash=USER_HASH
 
-Important notice: previous key (if you already have got one), will be replaced with the new one. 
-All the links like `http://ui.domain.com/pro/applications/locator/?key=<old key>` will not work anymore.
+Important notice: previous key (if you already have got one), will be replaced with the new one. 
+All the links like `http://ui.domain.com/pro/applications/locator/?key=<old key>` will not work anymore.
 
 Answer example if the key is successfully generated:
 ```json
@@ -114,11 +114,11 @@ Answer example if the key is successfully generated:
 
 ### Acquiring key
 
-To acquire the key generated earlier use the call 
+To acquire the key generated earlier use the call 
 
     http://api.domain.com/user/session/weblocator/read/?hash=USER_HASH
 
-The reply will look like as follows:
+The reply will look like as follows:
 ```json
 {
   "success": true,

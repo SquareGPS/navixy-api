@@ -1,15 +1,17 @@
 ---
-title: /retranslator
-description: /retranslator
+title: Retranslator
+description: Retranslator
 ---
 
-#/retranslator
+# Retranslator
+
+API path: `/retranslator`.
 
 CRUD actions for retranslators.
 
 #### objects
 **retranslator_protocol** is: 
-```js
+```json
 {
     "id": <int>,                       // protocol ID
     "name": <string>,                  // protocol name
@@ -22,7 +24,7 @@ CRUD actions for retranslators.
 ```
 
 **retranslator** is:
-```js
+```json
 {
     "id": <int>,          // retranslator ID, e.g. 1
     "name": <string>,     // zone label, e.g. "Some Wialon server"
@@ -36,58 +38,58 @@ CRUD actions for retranslators.
 ```
 
 
-## create(…)
+### create
 
 Create new retranslator.
 
 **required subuser rights**: admin (available only to master users)
 
-#### parameters:
+#### parameters
 
 name|description|type
 ---|---|---
 retranslator|<retranslator> without "id" field|<retranslator>
 
-#### return:
-```js
+#### response
+```json
 {
     "success": true,
     "id": <int> // ID of the created retranslator
 }
 ```
 
-#### errors:
+#### errors
 
 *   247 (Entity already exists) - if retranslator with this address, port and login already exists
 *   7 (Invalid parameters) - if retranslator have required fields (login or password), but was send empty
 *   268 (Over quota) – if the user's quota for retranslators is exceeded
 
 
-## delete(…)
+### delete
 
 Delete user's retranslator with ID = **retranslator_id**.
 
 **required subuser rights**: admin (available only to master users)
 
-#### parameters:
+#### parameters
 *   retranslator_id
 
-#### return:
-```js
+#### response
+```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 * 201 (Not found in database).
 
 
 
-## list()
+### list
 
 Get all user's [retranslators](#objects).
 
-#### return:
-```js
+#### response
+```json
 {
     "success": true,
     "list": [ <retranslator>, ... ]
@@ -95,21 +97,21 @@ Get all user's [retranslators](#objects).
 ```
 
 
-## update(…)
+### update
 
 Update retranslator parameters for the specified retranslator. Note that retranslator must exist, must belong to the current user.
 
 **required subuser rights**: admin (available only to master users)
 
-#### parameters:
+#### parameters
 *   `retranslator`
 
-#### return:
-```js
+#### response
+```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 (Not found in database) – if retranslator with the specified ID cannot be found or belongs to another user.
 *   247 (Entity already exists) – if retranslator with this address, port and login already exists.
@@ -117,13 +119,13 @@ Update retranslator parameters for the specified retranslator. Note that retrans
 
 
 
-## /retranslator/protocols/
+### /retranslator/protocols/
 
-## list()
+### list
 Return all available retranslator protocols.
 
-#### return:
-```js
+#### response
+```json
 {
     "success": true,
     "list": [ <retranslator_protocol>, ... ]

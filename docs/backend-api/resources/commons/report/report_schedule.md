@@ -1,9 +1,11 @@
 ---
-title: /report/schedule
-description: /report/schedule
+title: Report schedule
+description: Report schedule
 ---
 
-# /report/schedule
+# Report schedule
+
+API path: `/report/schedule`.
 
 #### report/schedule object:
 
@@ -43,83 +45,93 @@ description: /report/schedule
             }
         }
 
-## create(…)
+### create
 Create new report schedule entry. 
 **required subuser rights**: reports
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 schedule|<schedule_entry> object without fields which are _IGNORED_| JSON object
 
-#### return:
-    {
-        "success": true,
-        "id": 111 //id of the created schedule entry
-    }
-    
+#### response
 
-#### errors:
+```ja
+{
+    "success": true,
+    "id": 111 //id of the created schedule entry
+}
+```
+
+#### errors
 * 217 - List contains nonexistent entities (if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user))
 * 222 - Plugin not found (if specified report plugin is not found)
 * 236 - Feature unavailable due to 
 
 
-## delete(…)
+### delete
 
 Delete report schedule with the specified id.
 
 **required subuser rights**: reports
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 schedule_id | Id of the report schedule to delete | int
 
-#### return:
-    {
-        "success": true
-    }
+#### response
+
+```json
+{
+    "success": true
+}
+```
   
-#### errors:
+#### errors
+
 *   201 - Not 
 
 
 
-## list(…)
+### list
 
 Get all report schedules belonging to user.
 
 **required subuser rights**: reports
 
-#### return:
+#### response
 
-    {
-        "success": true,
-        "list": [ <schedule_entry>, ... ]
-    }
-    
+```json
+{
+    "success": true,
+    "list": [ <schedule_entry>, ... ]
+}
+```
 
-#### errors:
+#### errors
 
 general types only
 
 
-## update(…)
+### update
 
 Update existing report schedule. **required subuser rights**: reports
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 schedule | <schedule> object without fields which are _IGNORED_| JSON object
 
-#### return:
-    {
-        "success": true
-    }
+#### response
+
+```json
+{
+    "success": true
+}
+```
     
-#### errors:
+#### errors
 
 *   217 - List contains nonexistent entities (if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user))
 *   222 - Plugin not found (if specified report plugin is not found)

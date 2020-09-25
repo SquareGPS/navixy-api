@@ -1,61 +1,65 @@
 ---
-title: /report/tracker
-description: /report/tracker
+title: Report tracker
+description: Report tracker
 ---
 
-# /report/tracker
+# Report tracker
 
-## delete(…)
+API path: `/report/tracker`.
+
+### delete
 
 Delete report from db.
 
 *required subuser rights*: reports
 
-#### parameters:
+#### parameters
 
 `report_id`
 
-#### return:
+#### response
 
-    {
-        "success": true
-    }
+```json
+{
+    "success": true
+}
+```
 
-#### errors:
+#### errors
 
 * 101 – In demo mode this function is disabled
 
 
-## download(…)
+### download
 
 Retrieve generated report as a file.
 
 **required subuser rights**: reports
 
-#### parameters:
+#### parameters
 
 *   report_id
 *   format
 
 (also, there is hidden boolean parameter named "headless". If you, for some reason, need report without title page and TOC, set it to "true", otherwise - don't). Currently, 'pdf', 'xls' and 'xlsx' formats is supported.
 
-#### return:
+#### response
 
 A report rendered to file (standard file download).
 
 
-#### errors:
+#### errors
 
 *   204 - Entity not found (if report with the specified id was not found)
 *   229 - Requested data is not ready yet (if report exists, but its generation is still in progress)
 
 
 
-## generate(…)
+### generate
 
 Requests a report generation with the specified parameters. **required subuser rights**: reports
 
-#### parameters:
+#### parameters
 
 name|description|type
 ---|---|---
@@ -93,18 +97,20 @@ show_seconds|Flag to define whether time values in report should have format wit
         ]
     }
 
-#### return:
+#### response
 
-    {
-        "success": true,
-        "id": 222 // (int) id of the report queued for generation. 
-                  // Can be used to request report generation status and to retrieve generated report
-    }
+```json
+{
+    "success": true,
+    "id": 222 // (int) id of the report queued for generation. 
+              // Can be used to request report generation status and to retrieve generated report
+}
+```
 
-#### errors:
+#### errors
 *   15 (Too many requests / rate limit exceeded) - the number of reports created by one user in parallel is limited.
 *   211 (Requested time span is too big) - interval from 'from' to 'to' is bigger then max allowed time span (see response)
-    ```js
+    ```json
     {
         "success": false,
         "status": {
@@ -120,82 +126,87 @@ show_seconds|Flag to define whether time values in report should have format wit
 
 
 
-## list(…)
+### list
 
 Returns info about all available generated or in-progress reports.
 
 **required subuser rights**: reports
 
-#### return:
-    {
-        "success": true,"list": [
-        {
-            "from": <"from" parameter from generate(..)>, //string
-            "to": <"to" parameter from generate(..)>, //string
-            "created": <date when report was created, e.g. "2013-08-08 19:00:00">, //string
-            "time_filter": <"time_filter" parameter from generate(..)>,
-            "title": <report title, e.g. "Trip report">,
-            "parameters": { 
-                "geocoder": <geocoder which was used for report, e.g. "google">, //string
-                "trackers": <list of tracker ids used for report, e.g. [3029]>,  //int[]
-                "plugins": [ //list of parameters for all plugins which were used to generate report
-                    {
-                        "plugin_id": <plugin id>, //int
-                        <plugin-specific parameters>
-                    }, 
-                    ...
-                ]
-            }, 
-            "percent": <report readiness in percent, e.g. 75>,   //int
-            "id": <report id which can be used to retrieve or download report> //int
-        },
-        ...
-    ]}
-    
+#### response
 
-#### errors:
+```json
+{
+    "success": true,"list": [
+    {
+        "from": <"from" parameter from generate>, //string
+        "to": <"to" parameter from generate>, //string
+        "created": <date when report was created, e.g. "2013-08-08 19:00:00">, //string
+        "time_filter": <"time_filter" parameter from generate>,
+        "title": <report title, e.g. "Trip report">,
+        "parameters": { 
+            "geocoder": <geocoder which was used for report, e.g. "google">, //string
+            "trackers": <list of tracker ids used for report, e.g. [3029]>,  //int[]
+            "plugins": [ //list of parameters for all plugins which were used to generate report
+                {
+                    "plugin_id": <plugin id>, //int
+                    <plugin-specific parameters>
+                }, 
+                ...
+            ]
+        }, 
+        "percent": <report readiness in percent, e.g. 75>,   //int
+        "id": <report id which can be used to retrieve or download report> //int
+    },
+    ...
+]}
+```
+
+#### errors
 
 *   No specific errors.
 
 
-## retrieve(…)
+### retrieve
 
 Retrieve generated report as JSON. 
 
 **required subuser rights**: reports
 
-#### parameters:
+#### parameters
 
 *   report_id
 
-#### return:
+#### response
 
-    {
-        "success": true,
-        "report": <body of the generated report. Its contents are plugin-dependent>   //Object
-    }
-    
+```json
+{
+    "success": true,
+    "report": <body of the generated report. Its contents are plugin-dependent>   //Object
+}
+```
 
-#### errors:
+#### errors
 
 *   204 - Entity not found (if report with the specified id was not found)
 *   229 - Requested data is not ready yet (if report exists, but its generation is still in progress)
 
 
-## status(…)
+### status
 Returns a report generation status for the specified report id. **required subuser rights**: reports
 
-#### parameters:
+#### parameters
 
 *   report_id
 
-#### return:
+#### response
 
-    {
-        "success": true,
-        "percent_ready": <report readiness in percent, e.g. 75>   //int
-    }
-    
+```json
+{
+    "success": true,
+    "percent_ready": <report readiness in percent, e.g. 75>   //int
+}
+```
 
-#### errors:
+#### errors
+
 *   204 - Entity not found (if report with the specified id was not found)

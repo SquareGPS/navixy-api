@@ -7,7 +7,7 @@ description: Getting started with Navixy API
 
 ## How to read this documentation
 
-TODO: fill me
+Coming soon.
 
 ## Get involved
 

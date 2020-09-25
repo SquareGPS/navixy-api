@@ -1,37 +1,63 @@
 ---
-title: /contact
-description: /contact
+title: Contact
+description: Contact
 ---
+# Contact 
 
-## list()
+!!! warning "Deprecated"
+    This API action deprecated and should not be used.
 
-Get all user’s trackers with special grouping by “contacts”.
+API base path: `/tracker/contact`
 
-#### example:
+### list
 
-    [api_base_url]/contact/list?hash=22eac1c27af4be7b9d04da2ce1af111b
+Gets all user’s trackers with special grouping by “contacts”.
 
-#### response:
-```javascript
-    {
-        "success": true,
-        "contacts": [ <contact>, ... ] // all established contacts
-        "trackers": [ <tracker>, ... ] // normal trackers belonging to current user
-    }
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/contact/list?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "contacts": [{contact1}, {contact n}],
+    "trackers": [{tracker1}, {tracker n}]
+}
 ```
-where **contact** is:
-```javascript
-    {
-        "user_id": 12059,  //id of the user with which "contact" is established
-        "first_name": "Adam",
-        "middle_name": "James",
-        "last_name": "Williams",
-        "trackers": [ <tracker>, ... ] //trackers belonging to "contact" which locations were shared with current user
-    }
+
+* `contacts` - all established contacts.
+* `trackers` - normal trackers belonging to current user.
+
+where **contact** object is:
+
+```json
+{
+    "user_id": 12059,
+    "first_name": "Adam",
+    "middle_name": "James",
+    "last_name": "Williams",
+    "trackers": [{tracker1}, {tracker n}]
+}
 ```
 
-Click to see descriptions of type [tracker](tracker.md#tracker-object-structure).
+* `user_id` - id of the user with which "contact" is established.
+* `trackers` - trackers belonging to "contact" which locations shared with current user.
+Click to see descriptions of type [tracker](./index.md#tracker-object-structure).
 
-#### errors:
+#### errors
 
-201 – Not found in database
+* 201 – Not found in the database.

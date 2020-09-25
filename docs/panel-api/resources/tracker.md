@@ -1,9 +1,11 @@
 ---
-title: /tracker
-description: /tracker
+title: Tracker
+description: Tracker
 ---
 
-# Tracker data structure
+# Tracker
+
+## Tracker data structure
 
 ```json
 {
@@ -27,7 +29,7 @@ description: /tracker
         "connection_status": "idle",    // current connection status
         "phone": ${string}       // phone of the device. can be null or empty if device has no GSM module
                                  // or uses bundled SIM which number is hidden from the user
-        "corrupted": true        // true when tracker is corrupted using /tracker/corrupt(),
+        "corrupted": true        // true when tracker is corrupted using /tracker/corrupt,
                                  // and not passed when it is not corrupted
     }
 }
@@ -38,7 +40,7 @@ description: /tracker
 ### history/
 
 
-#### list()
+#### list
 
 Provides information about trackers which were considered “active” by our PaaS billing system, on a month-by-month basis.
 
@@ -55,7 +57,7 @@ Provides information about trackers which were considered “active” by our Pa
 
 **Return**
 
-```js
+```json
 {
   "success": true,
   "list": [
@@ -86,7 +88,7 @@ Provides information about trackers which were considered “active” by our Pa
 ## bundle/
 
 
-### assign()
+### assign
 
 `assign(bundle_id, iccid)`
 
@@ -103,7 +105,7 @@ Assign bundle to specified ICCID
 | `bundle_id` | Id of the bundle. | Int |
 | `iccid` | Must consist of printable characters and have length between 3 and 20. | String |
 
-----------
+**Return**
 
 ```json
 { "success": true }
@@ -123,7 +125,7 @@ Assign bundle to specified ICCID
 ### order/
 
 
-#### assign()
+#### assign
 
 `order/assign(bundle_id, order_id)`
 
@@ -152,7 +154,7 @@ Assign bundle to specified order ID.
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
-### import()
+### import
 
 `import(imeis, equip_id, factory_preset)`
 
@@ -172,7 +174,7 @@ Add multiple bundles at once.
 
 **Return**
 
-```js
+```json
 { "success": true }
 ```
 
@@ -183,7 +185,7 @@ Add multiple bundles at once.
 * 204 – Entity not found (if there is no equipment with specified equip_id)
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-### list()
+### list
 
 
 If `filter` is used, entities will be returned only if filter string is contained within one of the following fields:
@@ -207,7 +209,7 @@ If `filter` is used, entities will be returned only if filter string is containe
 
 **Return**
 
-```js
+```json
 {
     "success": true,
     "list" : [ <bundle> , ... ],
@@ -221,7 +223,7 @@ If `filter` is used, entities will be returned only if filter string is containe
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
-### read()
+### read
 
 `read(imei)`
 
@@ -251,7 +253,7 @@ Returns the bundle object with the specified imei.
 * 201 – Not found in database (if bundle was not found)
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-### update()
+### update
 
 `update(bundle_id, equip_id)`
 
@@ -280,7 +282,7 @@ Assign specified equipment to bundle
 * 204 – Entity not found (if there is no equipment with specified equip_id)
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## clone()
+## clone
 
 Creates a clone of the existing non-clone tracker.
 
@@ -298,7 +300,7 @@ Creates a clone of the existing non-clone tracker.
 
 **Return**
 
-```js
+```json
 {
     "success": true,
     "id": 3947 // id of the created clone
@@ -317,7 +319,7 @@ Creates a clone of the existing non-clone tracker.
 
 ## console/
 
-### connect()
+### connect
 
 Returns auth token to connect to tracker command console.
 
@@ -348,7 +350,7 @@ Returns auth token to connect to tracker command console.
 * 252 (Device already corrupted) – when tracker’s source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## corrupt()
+## corrupt
 
 `corrupt(tracker_id)`
 
@@ -382,7 +384,7 @@ Mark tracker as deleted and corrupt its source device_id and phone. Rename track
 ```
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## batch_delete_clones(...)
+## batch_delete_clones
 
 Deletes the specified set of trackers that are clones of other trackers. 
 The action is considered completed successfully, even if some of the trackers could not be deleted. Then for the rest response will contain a description of the reasons why the deletion failed.
@@ -407,7 +409,7 @@ The action is considered completed successfully, even if some of the trackers co
 | `not_deleted_trackers` (optional)| Description of failed deletion operations |array of objects `{"id":integer, "error":string}` |
 
 Example:
-```js
+```json
 {
   "success": true,
   "deleted_count": 2,
@@ -433,7 +435,7 @@ Example:
 
 [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## delete_clone()
+## delete_clone
 
 Deletes a clone of the existing tracker.
 
@@ -449,7 +451,7 @@ Deletes a clone of the existing tracker.
 
 **Return**
 
-```js
+```json
 { "success": true }
 ```
 
@@ -458,7 +460,7 @@ Deletes a clone of the existing tracker.
 * 201 (Not found in database) – if tracker was not found
 * 249 (Operation available for clones only) – if source tracker is not a clone
 * 203 (Delete entity associated with) – if there are some rules or vehicles associated with tracker
-```js
+```json
 {
     "success": false,
     "status": {
@@ -469,7 +471,7 @@ Deletes a clone of the existing tracker.
 }
 ```
 or
-```js
+```json
 {
     "success": false,
     "status": {
@@ -483,7 +485,7 @@ or
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
-## list()
+## list
 
 Returns list of all trackers belonging to dealer (with optional filtering by filter string, user id and/or tariff id).
 
@@ -508,7 +510,7 @@ If `filter` is used, entities will be returned only if filter string is containe
 
 **Return**
 
-```js
+```json
 {
     "success": true,
     "list" : [ <tracker> , ... ],
@@ -521,7 +523,7 @@ If `filter` is used, entities will be returned only if filter string is containe
 * 201 – Not found in database (if user_id or tariff_id was specified but was not found)
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## move()
+## move
 
 Moves the existing non-clone tracker to another user belonging to same dealer.
 
@@ -540,7 +542,7 @@ Moves the existing non-clone tracker to another user belonging to same dealer.
 
 **Return**
 
-```js
+```json
 { "success": true }
 ```
 
@@ -554,7 +556,7 @@ Moves the existing non-clone tracker to another user belonging to same dealer.
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
-## read()
+## read
 
 Returns the tracker object with the specified id.
 
@@ -570,7 +572,7 @@ Returns the tracker object with the specified id.
 
 **Return**
 
-```js
+```json
 {
     "success": true,
     "value" : ${tracker}
@@ -586,7 +588,7 @@ where `value` is JSON object tracker.
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
-## register_entry()
+## register_entry
 
 Sends tracker registration commands and resets all tracking settings. Can be executed once in 120 seconds for every tracker.
 
@@ -604,7 +606,7 @@ Device models navixymobile*, mobile_unknown*, iosnavixytracker* are not supporte
 
 **Return**
 
-```js
+```json
 { "success": true }
 ```
 
@@ -622,7 +624,7 @@ Device models navixymobile*, mobile_unknown*, iosnavixytracker* are not supporte
 
 ## settings/
 
-### update()
+### update
 
 Updates tracker settings.
 
@@ -640,7 +642,7 @@ Updates tracker settings.
 
 **Return**
 
-```js
+```json
 { "success": true }
 ```
 
@@ -653,7 +655,7 @@ Updates tracker settings.
 
 ## source/
 
-### update()
+### update
 
 Updates tracker settings.
 
@@ -670,7 +672,7 @@ Updates tracker settings.
 
 **Return**
 
-```js
+```json
 { "success": true }
 ```
 
@@ -682,11 +684,11 @@ Updates tracker settings.
 
 ## tariff/
 
-### change()
+### change
 
 **Required permissions**
 
-```js
+```json
 trackers: "update"
 transactions: "create"
 tariffs: "read"
@@ -703,7 +705,7 @@ tariffs: "read"
 
 **Return**
 
-```js
+```json
 { "success": true }
 ```
 
@@ -791,12 +793,12 @@ All dates according to UTC time.
 
 ## raw_command/
 
-### send(…)
+### send
 Sends the command to the device, processing it in a protocol-dependent manner beforehand.
 
 **required subuser rights:** tracker_update
 
-#### parameters:
+#### parameters
 name | description | type
 --- | --- | ---
 device_id | Fixed device ID, e.g. IMEI | String
@@ -804,18 +806,18 @@ command | Text or hexadecimal representation of the command | String
 type | **text** or **hex**. Optional, default is **text** | String
 reliable | **false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **true** | Boolean
 
-#### return:
-```js
+#### response
+```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 *   7 (Invalid parameters)
 *   201 (Not found in database) – if there is no tracker with such device ID belonging to authorized user
 *   252 (Device already corrupted) – if tracker’s source is corrupted
 
 #### example response with an error:
-```js
+```json
 {
   "success": false,
   "status": {

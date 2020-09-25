@@ -1,45 +1,47 @@
 ---
-title: /vehicle/status/listing
-description: /vehicle/status/listing
+title: Vehicle status listing
+description: Vehicle status listing
 ---
 
-# status/listing
+# Vehicle status listing
 
-**vehicle\_status\_entry** type is JSON object:
+API path: `/vehicle/status/listing`.
 
-```javascript
+`vehicle_status_entry` type is JSON object:
+
+```json
+{
     "id": 1, // int, id of the status
     "order": 0, // int, position of the status. ignored when update because statuses already have position in array 
     "label": "label123", // string, status's description 
     "color": "FFFFFF" // string, RGB-color
+}
 ```
 
-## read()
+### read
 
-Get all user's vehicle statuses
+Gets all of user's vehicle statuses.
 
-#### return:
+#### response
 
-```javascript
-    {
-        "success": true,
-        "list": [ <vehicle_status_entry>, ... ]
-    }
+```json
+{
+    "success": true,
+    "list": [ <vehicle_status_entry>, ... ]
+}
 ```
 
-## update(...)
+### update
 
 Update user's vehicle statuses.
 
-#### parameters:
+#### parameters
 
 *   **statuses** – **vehicle\_status\_entry**[]. If status's id is not null, then update, else create new vehicle status.
 Old vehicle statuses, which are not present is this array, will be deleted.
 
-#### return:
+#### response
 
-```js
-{
-    "success": true
-}
+```json
+{ "success": true }
 ```

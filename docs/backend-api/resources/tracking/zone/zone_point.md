@@ -1,13 +1,15 @@
 ---
-title: /zone/point
-description: /zone/point
+title: Zone point
+description: Zone point
 ---
 
-# /zone/point/
+# Zone point
+
+API base path: `/zone/point`.
 
 All actions to retrieve and manipulate points of the zone. Note that “circle” zone type cannot have points.
 
-```js
+```json
 <point> =
     {
         "lat": <point latitude, e.g. 11.0>, //float
@@ -16,42 +18,42 @@ All actions to retrieve and manipulate points of the zone. Note that “circle�
     }
 ```
 
-## list(…)
+### list
 
 Get points of user’s zone with ID = `<zone_id>`
 
-#### parameters:
+#### parameters
 
 *   zone_id
 
-#### return:
-```js
+#### response
+```json
 {
     "success": true,
     "list": [ <point>, ... ]
 }
 ```
 
-#### errors:
+#### errors
 *   201 (Not found in database) – if zone with the specified ID cannot be found or belongs to another user
 *   230 (Not supported for this entity type) – if zone cannot have any points associated with it (e.g. if zone is circle)
 
-## update(…)
+### update
 Update points for user’s zone with ID = `<zone_id>`.
 
 **required subuser rights**: zone_update
 
-#### parameters:
+#### parameters
 
 *   **zone_id** (Int) – ID of the zone. Specified zone must support points. (e.g. it cannot be circle)
 *   **points** (<point>[]) – Array of new points for this zone. Must contain at least 3 elements. Maximum number of points depends on zone type.
 
-#### return:
-```js
+#### response
+```json
 { "success": true }
 ```
 
-#### errors:
+#### errors
 
 *   201 (Not found in database) – if zone with the specified ID cannot be found or belongs to another user
 *   202 (Too many points in zone) – if “points” array size exceeds limit for this zone type. Max allowed points count for zone is 100 for polygon or 1024 for sausage

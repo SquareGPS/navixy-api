@@ -29,10 +29,11 @@ This can be especially handy when working with large requests.
     GET methods retrieve data from an API. POST sends new data to an API.
 
 1. Enter base request URL with the resource and sub-resource. In our example we will
-   use user/auth and  tracker/list requests. Base request URLs are:
+   use [user/auth](../backend-api/resources/commons/user/index.md#auth) and 
+   [tracker/list](../backend-api/resources/tracking/tracker/index.md#list) requests. Base request URLs are:
 
-    *	For EU server - `https://api.navixy.com/v2/user/auth`
-    *	For US server - `https://api.us.navixy.com/api-v2/tracker/list`
+    *	For EU server - `https://api.eu.navixy.com/v2/`
+    *	For US server - `https://api.us.navixy.com/v2/`
 
     ![Enter URL](./assets/enter-url.png)
 
@@ -59,7 +60,7 @@ This can be especially handy when working with large requests.
 
     In this case, we have received a hash that should be copied and user for future requests. 
 
-    Example: [tracker/list request](../backend-api/resources/tracking/tracker/tracker.md#list)
+    Example: [tracker/list request](../backend-api/resources/tracking/tracker/index.md#list)
 
     ![Enter params](./assets/postman_tracker_list.png)
     
@@ -80,11 +81,14 @@ or re-execute the request made in the past - a simple double-click will open a r
 
 ## Examples in documentation
 
-You could see that our API documentation has both structure of the request and examples. You can copy them and paste in postman. In this case all parameters will be automatically separated to strings for more convenient editing
+You could see that our API documentation has both structure of the request and examples. 
+You can copy them and paste in postman. 
+In this case all parameters will be automatically separated to strings for more convenient edit.
 
 ![Enter params](./assets/postman_apn.png)
 
 ## How to install
 
-To get the latest version of the [Postman app](https://postman.com), visit the download page and click "Download" for your platform.
+To get the latest version of the [Postman app](https://postman.com), visit the download 
+page and click "Download" for your platform.
 

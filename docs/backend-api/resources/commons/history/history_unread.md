@@ -1,25 +1,26 @@
 ---
-title: /history/unread
-description: /history/unread
+title: History unread
+description: History unread
 ---
 
-# /history/unread/
+# History unread
 
-## list(…)
+API path: `/history/unread`.
 
-List less then or equal to **limit** of latest user’s unread history entries with optional **type** (tracker|camera|socket).
+### list
 
-#### parameters:
+List less than or equal to **limit** of the latest user’s unread history entries.
+
+#### parameters
 
 *   limit, int, optional
 *   from, date/time, optional
-*   type, string one of tracker,camera,socket, optional
 
 Default and max limit is [maxHistoryLimit](../../../getting-started.md#constants).
 
 Type of **from** is [date/time](../../../getting-started.md#data-types). Default **from** is **now** minus one year.
 
-#### return:
+#### response
 
 ```json
 {
@@ -28,30 +29,29 @@ Type of **from** is [date/time](../../../getting-started.md#data-types). Default
 }
 ```
 
-where **history_entry** described in [History entries](./history.md#history-entries)
+where **history_entry** described in [Tracker history entry](./index.md#tracker-history-entry)
 
-#### errors:
+#### errors
 
 *   212 – Requested limit is too big (more [maxHistoryLimit](../../../getting-started.md#constants) config option)
 
----
 
-## count(…)
+### count
 
-Get count of user’s unread history messages from **from** date with optional **type** (tracker|camera|socket).
+Get count of user’s unread history messages from **from** date.
 
-#### parameters:
+#### parameters
 
 *   from – optional
 *   type – optional
 
 Type of **from** is [date/time](../../../getting-started.md#data-types). Default **from** is **now** minus one year.
 
-#### return:
+#### response
 
 ```json
 {
     "success": true,
-    "count": <count> // int
+    "count": 1
 }
 ```

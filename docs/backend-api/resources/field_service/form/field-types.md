@@ -1,29 +1,31 @@
 ---
-title: /field-types
-description: /field-types
+title: Form field types
+description: Form field types
 ---
 
-Form fields and values
-======================
+# Form fields and values
 
-Every form (and form template) contains an ordered list of fields of various types. Field type defines how user input elements will look like, and how user input will be validated.
+Every form (and form template) contains an ordered list of fields of various types. 
+Field type defines how user input elements will look like, and how user input will be validated.
 
-Every field has a set of common parameters, which are the same for all field types, and type-specific parameters, which define specific style and validation constraints. Both common and type-specific parameters are contained as fields in the JSON object.
+Every field has a set of common parameters, which are the same for all field types, and type-specific parameters, 
+which define specific style and validation constraints. Both common and type-specific parameters are contained as fields in the JSON object.
 
-Field values for submitted form are stored separately as JSON objects. The contents of value JSON objects are entirely field type-specific.
+Field values for submitted form are stored separately as JSON objects. The contents of value JSON objects are entirely 
+field type-specific.
 
 ##### common field parameters:
 
-     {
-       "id": "111-aaa-whatever", //arbitrary alphanumeric string (1 to 19 characters), unique across current form’s fields, used to link with values and its "parent" in template form
-       "label": "Name", //user-defined label, shown as field header, 1 to 100 printable characters
-       "description": "Your full name", //field description, shown in smaller text under the header, 1 to 512 printable characters
-       "required": true, //if true, form cannot be submitted without filling this field with valid value
-       "type": "text", //determines field type
-       //type-specific parameters go here...
-     }
-
----
+```json
+{
+   "id": "111-aaa-whatever", //arbitrary alphanumeric string (1 to 19 characters), unique across current form’s fields, used to link with values and its "parent" in template form
+   "label": "Name", //user-defined label, shown as field header, 1 to 100 printable characters
+   "description": "Your full name", //field description, shown in smaller text under the header, 1 to 512 printable characters
+   "required": true, //if true, form cannot be submitted without filling this field with valid value
+   "type": "text", //determines field type
+   //type-specific parameters go here...
+}
+```
 
 ### Text field
 
@@ -42,11 +44,12 @@ Multiline auto-expanding text field
 
 ##### value object:
 
-    {
-        "type": "text",
-        "value": "text field value" //What was entered in the text field
-    }
-    
+```json
+{
+    "type": "text",
+    "value": "text field value" //What was entered in the text field
+}
+```
 
 ### Checkbox group
 
@@ -70,11 +73,12 @@ Group of checkboxes.
 
 ##### value object:
 
-    {
-        "type": "checkbox_group",
-        "values": [true] //booleans in the same order as fields in "group"
-    }
-    
+```json
+{
+    "type": "checkbox_group",
+    "values": [true] //booleans in the same order as fields in "group"
+}
+```
 
 ### Dropdown field
 
@@ -96,11 +100,12 @@ Dropdown menu for choosing one option.
 
 ##### value object:
 
-    {
-        "type": "dropdown",
-        "value_index": 1 //zero-based index of value from "options"
-    }
-    
+```json
+{
+    "type": "dropdown",
+    "value_index": 1 //zero-based index of value from "options"
+}
+```
 
 ### Radio button group
 

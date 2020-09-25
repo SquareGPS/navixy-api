@@ -1,21 +1,22 @@
 ---
-title: /history/type
-description: /history/type
+title: History type
+description: History type
 ---
 
-# /history/type/
+# History type
 
-## list(…)
-=======
+API path: `/history/type`.
+
+### list
 
 Returns available history types with localized descriptions.
 
-#### parameters:
+#### parameters
 
 *   **locale** – locale code
 *   **only_tracker_events** – boolean (optional). Default - true.
 
-#### return:
+#### response
 
 ```json
 {
@@ -28,7 +29,7 @@ where **history_type** is
 
 ```json
 {
-    "type": <string>,       // history type, e.g. "alarmcontrol"
-    "description": <string> // localized description, e.g. "Car alarm"
+    "type": "alarmcontrol",       // history type, e.g. "alarmcontrol"
+    "description": "Car alarm" // localized description, e.g. "Car alarm"
 }
 ```

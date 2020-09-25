@@ -1,22 +1,27 @@
 ---
-title: /push_token
-description: /push_token
+title: Push token
+description: Push token
 ---
 
-## bind(…)
+# Push token
+
+API path: `/user/session/push_token`.
+
+### bind
 
 Binds Push token with current session.
 
-#### parameters:
+#### parameters
 
 *   **application** (string) – Application ID, for now it’s “navixy_iphone_viewer” or “navixy_android_viewer”
 *   **token** (string) – Push token
 *   **category_filter** (string) – Push notifications category filter, default is *
 
-#### return:
+#### response
 
-    { "success": true }
-
+```json
+{ "success": true }
+```
 
 Using `category_filter` you can filter out unwanted notifications categories.
 
@@ -37,18 +42,18 @@ Prepended with minus and delimited with comma list means that all categories are
 * `history_work_status` – work status notifications
 
 
-## delete
+### delete
 
 
 Deletes push token that bound with the session.
 
-#### return:
+#### response
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
 
 
-#### errors:
+#### errors
 
 General types only.

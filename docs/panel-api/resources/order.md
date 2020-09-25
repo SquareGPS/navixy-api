@@ -3,11 +3,11 @@ title: /order
 description: /order
 ---
 
-## read(...)
+## read
 
 Read order by ID
 
-#### parameters:
+#### parameters
 
 *   **order_id** – **int**. Order ID
 
@@ -15,7 +15,7 @@ Read order by ID
 
 *   **tracker_bundles**: "read"
 
-#### return:
+#### response
 
     {
       "success": true,
@@ -51,6 +51,6 @@ Read order by ID
     }
 
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if specified order does not exist)

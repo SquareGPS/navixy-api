@@ -4,14 +4,14 @@
 
 __WebSocket__ is the alternate transport to getting data from the server. The process of notification about events occurs from the server to the client through a constantly open connection. This allows you to display changes in real time.
 
-Currently the [Atmosphere Framework](https://github.com/Atmosphere) used as an application layer library and protocol.
+Currently, the [Atmosphere Framework](https://github.com/Atmosphere) used as an application layer library and protocol.
 
 ## Standard workflow
 
-Let's describe standard workflow for WebSocket API:
+Let's describe a standard workflow for WebSocket API:
 
 1.  Determine [API base URL](../../backend-api/getting-started.md#api-base-url). 
-2.  Authorize with [user/auth(...)](../resources/commons/user/user.md#auth). This API method will return the hash you should use for all your next API calls.
+2.  Authorize with [user/auth](../resources/commons/user/index.md#auth). This API method will return the hash you should use for all your next API calls.
 3.  Open WebSocket connection by the path [/event/subscription/](./subscription.md) with `Atmosphere` protocol parameters.
 4.  Subscribe on events using [subscribe action](./subscription.md#subscribe-action).
 5.  Listen and process the [incoming events](./events.md).
@@ -21,7 +21,7 @@ Let's describe standard workflow for WebSocket API:
 
 Note what:
 * The [subscription requests](./subscription.md) must contain the 
-  `hash` parameter gotten by [user/auth](../resources/commons/user/user.md#auth) action.
+  `hash` parameter obtained through [user/auth](../resources/commons/user/index.md#auth) action.
 * Responses and errors for the [subscribe](./subscription.md#subscribe-action) 
   and [unsubscribe](./subscription.md#unsubscribe-action) actions are similar 
   with common [API](../getting-started.md) format.
@@ -54,7 +54,7 @@ Now everything is ready to [subscribe on events](./subscription.md#subscribe-act
 
 ## Common fields
 
-All of messages from client side contain field _'action'_ with action name (e.g. "subscribe" or "unsubscribe").
+All messages from client side contain field _'action'_ with action name (e.g. "subscribe" or "unsubscribe").
 
-All of messages from server side contain field _'type'_ with message type ("event", "response" or "error") and _data_ with a payload.
+All messages from server side contain field _'type'_ with message type ("event", "response" or "error") and _data_ with a payload.
 

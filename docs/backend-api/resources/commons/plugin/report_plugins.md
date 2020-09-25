@@ -5,11 +5,11 @@ description: Report plugins
 
 # Report plugins
 
-## Check-in report
+### Check-in report
 
 A report on markers for Check-in function.
 
-#### Parameters:
+#### parameters
 default **plugin_id**: 80
 
 Plugin-specific parameters:
@@ -20,11 +20,11 @@ Plugin-specific parameters:
 
 
 
-## Flow meter report
+### Flow meter report
 
 A report on fuel consumption counted by flow meter sensors.
 
-#### Parameters:
+#### parameters
 default **plugin_id**: 78
 
 Plugin-specific parameters:
@@ -36,11 +36,11 @@ Plugin-specific parameters:
 
 
 
-## Stay in zones report
+### Stay in zones report
 
 Custom report for AO NIPIGAZ
 
-#### Parameters:
+#### parameters
 default **plugin_id**: 84
 
 plugin-specific parameters:

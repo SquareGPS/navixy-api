@@ -1,12 +1,17 @@
 ---
-title: /osrm
-description: /osrm
+title: Tracking route OSRM
+description: Tracking route OSRM
 ---
 
-## get(…)
+# Tracking route OSRM
+
+API path: `/tracking/route/osrm`.
+
+### get
+
 Get route points via [OSRM API](https://github.com/Project-OSRM/osrm-backend/wiki/Server-api#requesting-routes).
 
-#### parameters:
+#### parameters
 *   **start** – (location JSON object) start of route
 *   **end** – (location JSON object) end of route
 *   **waypoints** = \[ ${location}, ... \] – (optional) list of transitional points.
@@ -14,8 +19,8 @@ Get route points via [OSRM API](https://github.com/Project-OSRM/osrm-backend/wik
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
-#### return:
-```js
+#### response
+```json
 {
     "success": true,
     "distance": 2546, // (int) length in meters
@@ -26,7 +31,7 @@ Where **location** described in [data types description section](../../../gettin
 ```
 
 **key_points** is list of points corresponding to **start** point, **waypoints** and **end** point (in that sequence). Where **key_point** is JSON object:
-```js
+```json
 {
     "id": 123,        // (int) index in points 'list'
     "lat": 56.827,    // latitude
@@ -34,27 +39,28 @@ Where **location** described in [data types description section](../../../gettin
 }
 ```
 
-#### errors:
+#### errors
 *   215 (External service error)
 *   218 (Malformed external service parameters)
-```js
-{
-    "success": false,
-    "status": {
-        "code": 218,
-        "description": "Malformed external service parameters"
-    },
-    "errors": [
-        {
-            "status": "NOT_FOUND", // NOT_FOUND or UNKNOWN_ERROR
-            "status_code": 207,    // OSRM status code (don't rely on it)
-            "message": "Cannot find route between points" // OSRM error message (don't rely on it)
-        }
-    ]
-}
-```
-where status is one of:
-    *   **NOT_FOUND** – indicates at least one of the locations specified in the request's origin, destination, or waypoints could not be geocoded, or OSRM cannot find route.
-    *   **UNKNOWN_ERROR** – unexpected OSRM error code
+    ```json
+    {
+        "success": false,
+        "status": {
+            "code": 218,
+            "description": "Malformed external service parameters"
+        },
+        "errors": [
+            {
+                "status": "NOT_FOUND", // NOT_FOUND or UNKNOWN_ERROR
+                "status_code": 207,    // OSRM status code (don't rely on it)
+                "message": "Cannot find route between points" // OSRM error message (don't rely on it)
+            }
+        ]
+    }
+    ```
+    where status is one of:
+
+    *   `NOT_FOUND` – indicates at least one of the locations specified in the request's origin, destination, or waypoints could not be geocoded, or OSRM cannot find route.
+    *   `UNKNOWN_ERROR` – unexpected OSRM error code.
 
 *   236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without “routing” tariff feature

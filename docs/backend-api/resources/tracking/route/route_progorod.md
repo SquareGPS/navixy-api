@@ -1,12 +1,17 @@
 ---
-title: /progorod
-description: /progorod
+title: Tracking route progorod
+description: Tracking route progorod
 ---
 
-## get(…)
+# Tracking route progorod
+
+API path: `/tracking/route/progorod`.
+
+
+### get
 Get route points using [Progorod router](https://giswiki.tmcrussia.com/index.php?title=%D0%9C%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F).
 
-#### parameters:
+#### parameters
 *   **start** – (location JSON object) start of route
 *   **end** – (location JSON object) end of route
 *   **waypoints** = \[ ${location}, ... \] – (optional) list of transitional points.
@@ -16,8 +21,8 @@ Get route points using [Progorod router](https://giswiki.tmcrussia.com/index.php
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types). Order of waypoints may be changed.
 
-#### return:
-```js
+#### response
+```json
 {
     "success": true,
     "distance": 2546, // (int) length in meters
@@ -28,7 +33,7 @@ Where **location** described in [data types description section](../../../gettin
 ```
 
 **key_points** is list of points corresponding to **start** point, **waypoints** and **end** point (in that sequence). If some of key points not found then they don't listed there. Where **key_point** is JSON object:
-```js
+```json
 {
     "id": 123,        // (int) index in points 'list'
     "lat": 56.827,    // latitude
@@ -36,11 +41,11 @@ Where **location** described in [data types description section](../../../gettin
 }
 ```
 
-#### errors:
+#### errors
 
 *   215 (External service error)
 *   218 (Malformed external service parameters) – Contains info about error:
-```js
+```json
 {
     "success": false,
     "status": {

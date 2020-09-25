@@ -1,20 +1,23 @@
 ---
-title: /data
-description: /data
+title: Data
+description: Parse the spreadsheet data
 ---
 
-## /data/spreadsheet/parse
+# Data
+
+### /data/spreadsheet/parse
 
 Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 
-       {
-            "file_id": <string, unique file id>,
-            "header": <optional, array of string>,
-            "preview":<array of array of string, first N rows of file>
-        }
-    
+```json
+{
+    "file_id": <string, unique file id>,
+    "header": <optional, array of string>,
+    "preview":<array of array of string, first N rows of file>
+}
+```
 
-#### parameters:
+#### parameters
 
 | name | description | type
 |------|-------------|-----
@@ -25,16 +28,16 @@ Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 
 If `parse_header` is set to true, first row of the uploaded file will be treat as header corresponding to given `header_map`.
 
-#### return:
+#### response
 
-       {
-            "file_id": <string, unique file id>,
-            "header": <optional, array of string>,
-            "preview":<array of array of string, first N rows of file>
-        }
-    
+```json
+{
+    "file_id": <string, unique file id>,
+    "header": <optional, array of string>,
+    "preview": <array of array of string, first N rows of file>
+}
+```
 
-#### errors:
+#### errors
 
-general types  
-234 – “Invalid data format”
+234 – Invalid data format.

@@ -3,7 +3,7 @@ title: /timezone
 description: /timezone
 ---
 
-## list()
+## list
 
 `list(locale)`
 

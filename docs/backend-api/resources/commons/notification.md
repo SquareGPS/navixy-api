@@ -1,13 +1,17 @@
 ---
-title: /notification
-description: /notification
+title: Notification
+description: Notification
 ---
 
-## list()
+# Notification
+
+API path: `/notification`.
+
+### list
 List user notifications.
 
-#### return:
-```javascript
+#### response
+```json
 {
     "success": true,
     "list": [<notification>, ...]
@@ -15,7 +19,8 @@ List user notifications.
 ```
 
 where
-```javascript
+
+```json
 <notification> =
     {
         "id": <int>,

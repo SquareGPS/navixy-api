@@ -35,14 +35,13 @@ description: /tariff
         "traffic": ${double}       // traffic price per megabyte
     }
     
-## create(...)
+## create
 
 #### create(tariff)
---------------
 
 Creates new tariff.
 
-#### parameters:
+#### parameters
 
 *   **tariff** – (see above) without **id**.
 
@@ -50,7 +49,7 @@ Creates new tariff.
 
 *   **tariffs**: "create"
 
-#### return:
+#### response
 
     {
         "success": true,
@@ -58,7 +57,7 @@ Creates new tariff.
     }
 
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if specified tariff does not exist or belongs to different dealer)
 *   214 – Requested operation or parameters are not supported by the device (when **device_type** does not support specified tariff **type**)
@@ -75,7 +74,7 @@ Creates new tariff.
         "free_days_device_limit": 3  // maximum number of activated user's devices with free period (null means no limit)
     }
 
-### read()
+### read
 
 Returns current tariff defaults for trackers and cameras.
 
@@ -83,7 +82,7 @@ Returns current tariff defaults for trackers and cameras.
 
 * `tariffs: "read"`
 
-#### return:
+#### response
 
     {
         "success": true,
@@ -91,7 +90,7 @@ Returns current tariff defaults for trackers and cameras.
         "camera": ${defaults}
     }
 
-### update(...)
+### update
 
 `update(tracker,camera)`
 
@@ -102,17 +101,17 @@ Updates current tariff defaults for trackers and cameras. tracker, camera are ob
 
 *   `tariffs: "update"`
 
-#### return:
+#### response
 
     { "success": true }
 
 
-#### errors:
+#### errors
 
 *   239 – New tariff doesn’t exist (if tariff with such id does not exist).
 *   237 – Invalid tariff (if new tariff has incompatible device type).
 
-## list(...)
+## list
 
 Returns list of all tariffs belonging to dealer.
 
@@ -123,7 +122,7 @@ id, name, price, device_type
 
 *   `tariffs: "read"`
 
-#### parameters:
+#### parameters
 
 *   **device_type** – (optional). Filter by device type. One of “tracker”, “camera” or “socket”;
 *   **filter** – **string** (optional). Text filter string.
@@ -133,7 +132,7 @@ id, name, price, device_type
 *   **offset** – **int** (optional. default: **0**). Starting offset, used for pagination.
 *   **limit** – **int** (optional). Max number of records to return, used for pagination.
 
-#### return:
+#### response
 
     {
         "success": true,
@@ -145,7 +144,7 @@ id, name, price, device_type
 
 See **tariff** object structure [here](#tariff-data-structure).
 
-## read(...)
+## read
 
 Returns tariff with the specified id.
 
@@ -153,11 +152,11 @@ Returns tariff with the specified id.
 
 *   `tariffs: "read"`
 
-#### parameters:
+#### parameters
 
 *   **tariff_id**
 
-#### return:
+#### response
 
     {
         "success": true,
@@ -167,11 +166,11 @@ Returns tariff with the specified id.
 
 See **tariff** object structure [here](#tariff-data-structure).
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if specified tariff does not exist or belongs to different dealer)
 
-## update(...)
+## update
 
 update(tariff)
 
@@ -181,12 +180,12 @@ Updates existing tariff. See above. Warning: “device_type” field is ignored,
 
 *   `tariffs: "update"`
 
-#### return:
+#### response
 
     { "success": true }
 
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if specified tariff does not exist or belongs to different dealer)
 *   214 – Requested operation or parameters are not supported by the device (when **device_type** does not support specified tariff **type**)

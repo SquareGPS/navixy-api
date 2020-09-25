@@ -3,21 +3,24 @@ title: /input_name
 description: /input_name
 ---
 
-## list()
+API base path: `/tracker/sensor/input_name`
+
+### list
 Returns descriptions of all sensor inputs existing in the system. 
 
-#### parameters:
+#### parameters
 No parameters.
 
-#### return:
+#### response
 For every input following properties are returned: *input_name* and *description*.
 
-*input_name* is an enum member, same as in [sensor object](./sensor.md).
+*input_name* is an enum member, same as in [sensor object](./index.md).
 
-*description* is made in current user's language (according to [locale settings](../../../commons/user/settings/settings.md)).
+*description* is made in current user's language (according to [locale settings](../../../commons/user/settings/index.md)).
 
 Example:
-```javascript
+
+```json
 {
   "success": true,
   "list": [
@@ -35,5 +38,5 @@ Example:
 }
 ```
 
-#### errors:
+#### errors
 No specific errors

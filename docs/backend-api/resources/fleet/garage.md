@@ -1,10 +1,11 @@
 ---
-title: /garage
-description: /garage
+title: Garage
+description: Garage
 ---
 
-garage/ actions:
-=======
+# Garage
+
+API path: `/garage`.
 
     <garage> =
        {
@@ -20,88 +21,91 @@ garage/ actions:
             "organization_name": "Bankia"
         }
 
-## list()
+### list
 
 Get all garages belonging to user.
 
-#### return:
+#### response
 
-    {
-        "success": true,
-        "list": [ <garage>, ... ]
-    }
+```json
+{
+    "success": true,
+    "list": [ <garage>, ... ]
+}
+```
     
 
-#### errors:
+#### errors
 
 general types only
 
 
 
-## create(…)
+### create
 
 Create new garage.
 
 **required subuser rights**: vehicle_update
 
-#### parameters:
+#### parameters
 
-*   **garage** – an [garage object](#garage-actions) Non-null.
+*   **garage** – an [garage object](#garage) Non-null.
 
-#### return:
+#### response
 
-    {
-        "success": true,
-        "id": 111 //id of the created garage
-    }
+```json
+{
+    "success": true,
+    "id": 111 //id of the created garage
+}
+```
 
-
-#### errors:
+#### errors
 
 general types only
 
 
 
-## update(…)
+### update
 
 Update existing garage.
 
 **required subuser rights**: vehicle_update
 
-#### parameters:
+#### parameters
 
-*   **garage** – an [garage object](#garage-actions) Non-null.
+*   **garage** – an [garage object](#garage) Non-null.
 
-#### return:
+#### response
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
 
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no garage with such id)
 
 
-## delete(…)
+### delete
 Delete garage with the specified id.
 
 **required subuser rights**: vehicle_update
 
-#### parameters:
+#### parameters
 
 | name | description | type |
 |------|-------------|------|
 | garage_id | Id of the garage to delete | int
 
-#### return:
+#### response
 
-    {
-        "success": true
-    }
+```json
+{ "success": true }
+```
     
 
-#### errors:
+#### errors
 
 *   201 – Not found in database (if there is no garage with such id)
