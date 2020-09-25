@@ -10,14 +10,15 @@ description: Tracker
 ```json
 {
     "id": ${int},                   // tracker id aka object_id
-    "label": ${string},             // tracker label
-    "clone": ${boolean},            // true if this tracker is clone
-    "group_id": ${int},             // tracker group id, 0 if no group
-    "user_id": 3,                   // id of the user to which this tracker (or clone) belongs to
-    "dealer_id": 5001,              // id of the dealer to which this tracker (or clone) belongs to
-    "deleted": ${boolean},          // true if tracker or clone has been marked as deleted
-    "creation_date": "2013-02-02",  // tracker or clone creation date
     "avatar_file_name" : ${string}, // optional. passed only if present
+    "clone": ${boolean},            // true if this tracker is clone
+    "comment": ${string},           // comment (description) related to the tracker
+    "creation_date": "2013-02-02",  // tracker or clone creation date
+    "group_id": ${int},             // tracker group id, 0 if no group
+    "dealer_id": ${int},            // id of the dealer to which this tracker (or clone) belongs to
+    "deleted": ${boolean},          // true if tracker or clone has been marked as deleted
+    "label": ${string},             // tracker label
+    "user_id": ${int},              // id of the user to which this tracker (or clone) belongs to
     "source": {
         "id": ${int},            // source id
         "device_id": ${string},  // aka source_imei
@@ -639,6 +640,7 @@ Updates tracker settings.
 | tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
 | label | User-defined label for this tracker, e.g. “Courier”. Must consist of printable characters and have length between 1 and 60. Cannot contain ‘<‘ and ‘>’ symbols. | string |
 | deleted | If true, tracker is marked as deleted an will not be shown in user’s interface. | boolean |
+| comment | A comment (description) related to the tracker. Up to 3000 symbols. | string |
 
 **Return**
 
