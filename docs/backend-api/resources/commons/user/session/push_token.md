@@ -56,4 +56,4 @@ Deletes push token that bound with the session.
 
 #### errors
 
-General types only.
+[General](../../../getting-started.md#error-codes) types only.

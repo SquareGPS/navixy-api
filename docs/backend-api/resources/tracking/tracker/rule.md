@@ -55,11 +55,11 @@ A rule element consists of following fields:
     * `sms_phones` - array of string. Phones for SMS notifications.
     * `phones` - array of string. Phones for voice calls.
     * `emails` - array of string. Emails for notifications.
-    * `push_enabled` - boolean. If true push notifications available.
-* `suspended` - boolean. True if the rule suspended.
+    * `push_enabled` - boolean. If `true` push notifications available.
+* `suspended` - boolean. `True` if the rule suspended.
 * `shedule` - optional. 
 * `extended_params` - optional. An object specified for concrete rule type. See below.
-* `auto_created` - optional, boolean. True means that the rule created automatically.
+* `auto_created` - optional, boolean. `True` means that the rule created automatically.
 
 Where 
 
@@ -130,8 +130,8 @@ Where
     ```json
     {
       "type": "fixed",
-      "from": "date/time",
-      "to": "date/time",
+      "from": "2014-07-09 07:50:58",
+      "to": "2014-07-10 07:50:58",
       "interval_id": 3
     }
     ```
@@ -255,7 +255,7 @@ Where
        "allow_exit_at_endpoints": {boolean} // optional, disable notifications for deviations at start and end points
     }
     ```
-* **date/time** and **local_time** types described at 
+* `date/time` and `local_time` types described at 
 the [data types description section](../../../getting-started.md#data-types).
 
 ## API actions
@@ -264,7 +264,7 @@ API base path: `/tracker/rule`
 
 ### bind
 
-Binds rule with **rule_id** to trackers list.
+Binds rule with `rule_id` to trackers list.
 
 **required sub-user rights:** `tracker_rule_update`
 
@@ -273,7 +273,7 @@ Binds rule with **rule_id** to trackers list.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | rule_id | Id of a rule. | int | 10 |
-| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | [999199, 999119] |
+| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | `[999199, 999119]` |
 
 #### examples
 
@@ -299,7 +299,7 @@ Binds rule with **rule_id** to trackers list.
 
 #### errors
 
-* 201 (Not found in the database) – if rule with **rule_id** does not exist or owned by other user.
+* 201 (Not found in the database) – if rule with `rule_id` does not exist or owned by other user.
 
 ### create
 
@@ -378,11 +378,11 @@ Deletes rule with rule_id and all related objects from the database.
 
 #### errors
 
-* 201 (Not found in the database) – if rule with **rule_id** does not exist or owned by other user.
+* 201 (Not found in the database) – if rule with `rule_id` does not exist or owned by other user.
 
 ### list
 
-List tracker rules binded to tracker with id=**tracker_id** or all users' tracker rules if **tracker_id** not passed.
+List tracker rules binded to tracker with id=`tracker_id` or all users' tracker rules if `tracker_id` not passed.
 
 #### examples
 
@@ -405,7 +405,7 @@ List tracker rules binded to tracker with id=**tracker_id** or all users' tracke
 ```json
 {
    "success": true,
-   "list": [{rule}]
+   "list": [{<rule>}]
 }
 ```
 
@@ -413,7 +413,7 @@ List tracker rules binded to tracker with id=**tracker_id** or all users' tracke
 
 ### unbind
 
-Unbinds trackers from rule with **rule_id**.
+Unbinds trackers from rule with `rule_id`.
 
 **required sub-user rights:** `tracker_rule_update`
 
@@ -422,7 +422,7 @@ Unbinds trackers from rule with **rule_id**.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | rule_id | Id of a rule. | int | 10 |
-| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | [999199, 999119] |
+| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | `[999199, 999119]` |
 
 #### examples
 
@@ -448,7 +448,7 @@ Unbinds trackers from rule with **rule_id**.
 
 #### errors
 
-* 201 (Not found in the database) – if rule with **rule_id** does not exist or owned by other user.
+* 201 (Not found in the database) – if rule with `rule_id` does not exist or owned by other user.
 
 ### update
 

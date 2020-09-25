@@ -1,100 +1,221 @@
 ---
-title: /status
-description: /status
+title: Status
+description: Status
 ---
 
-# status/
-Statuses are used to track current activity for employees (in fact, of tracking devices owned by employees). Simplest example is “busy” / “not busy”. This is a status listing consisting of two elements. Different trackers can be assigned different status lists.
+# Status
 
-#### objects
-**status** is:
+Statuses used to track current activity for employees (in fact, of tracking devices owned by employees). 
+The simplest example is “busy” | “not busy”. This is a status listing consisting of two elements. Different trackers 
+can be assigned different status lists.
+
+API base path: `/status/`
+
+## Status object structure
+
 ```json
 {
-    "id": 5, // unique identifier of this status. Read-only.
-    "label": "Busy", // human-readable label for this status
-    "color": "E57373" // hex-representation of RGB color used to display this status
+    "id": 5,
+    "label": "Busy",
+    "color": "E57373"
 }
 ```
 
-**status_listing** is:
+* `id` - int. A unique identifier of the status. Read-only.
+* `label` - string. Human-readable label for the status.
+* `color` - string. Hex-representation of RGB color used to display this status.
+
+## Status_listing object structure
+
 ```json
 {
-    "id": 1, // unique identifier of this status listing. Read-only.
-    "label": "Taxi driver statuses", // human-readable label for this status listing
-    "employee_controlled": true, // if true, employees can change their own status, e.g. using mobile tracking app
-    "supervisor_controlled": false, // if true,
-    "entries": [ 5, 2, 1, 4, 6] // list of IDs of statuses which belong to this listing. Order matters, and is preserved.
+    "id": 1,
+    "label": "Taxi driver statuses",
+    "employee_controlled": true,
+    "supervisor_controlled": false,
+    "entries": [ 5, 2, 1, 4, 6]
 }
 ```
+
+* `id` - int. A unique identifier of this status listing. Read-only.
+* `label` - string. Human-readable label for the status listing.
+* `employee_controlled` - boolean. If `true` employees can change their own status, e.g. using mobile tracking app.
+* `supervisor_controlled` - boolean. If `true` supervisors can change status, e.g. using mobile monitoring app.
+* `entries` - array of int. List of IDs of statuses which belong to this listing. Order matters, and is preserved.
+
 ### create
-Create new possible status for the specified status listing.
 
-**required subuser rights:** tracker_update
+Creates new possible status for the specified status listing.
+
+**required sub-user rights:** `tracker_update`
+
 #### parameters
-* **listing_id** – **int**. ID of the listing for this status to attach to.
-* **status** – **JSON object**. <status> object without ID field.
+
+| name | description | type|
+| :------ | :------ | :----- |
+| listing_id | ID of the listing for this status to attach to. | int |
+| status | Status object without ID field. | JSON object |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/status/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": "12345", "status": {"label": "Busy", "color": "E57373"}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/status/create?hash=a6aa75587e5c59c32d347da438505fc3&listing_id=12345&status={"label": "Busy", "color": "E57373"}
+    ```
 
 #### response
+
 ```json
 {
     "success": true,
-    "id": 111 // ID of the created status
+    "id": 111
 }
 ```
 
+* `id` - int. ID of the created status.
+
 #### errors
-*    201 (Not found in database) – if listing with the specified ID does not exist
-*    236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
-*    268 (Over quota) – if the user's quota for statuses is exceeded
+
+* 201 (Not found in the database) – if listing with the specified ID does not exist.
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature 
+available.
+* 268 (Over quota) – if the user's quota for statuses exceeded.
 
 ### delete
-Delete status entry.
 
-**required subuser rights:** tracker_update
+Deletes status entry.
+
+**required sub-user rights:** `tracker_update`
 
 #### parameters
-* **status_id** – **int**. ID of the status belonging to authorized user.
+
+| name | description | type|
+| :------ | :------ | :----- |
+| status_id | ID of the status belonging to authorized user. | int |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/status/delete' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status_id": "123"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/status/delete?hash=a6aa75587e5c59c32d347da438505fc3&status_id=123
+    ```
 
 #### response
+
 ```json
 { "success": true }
 ```
 
 #### errors
-*   201 (Not found in database) – if status with the specified ID does not exist
-*   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
+
+* 201 (Not found in the database) – if status with the specified ID does not exist.
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature 
+available.
 
 ### list
-Get statuses belonging to the specified status listing.
+
+Gets statuses belonging to the specified status listing.
 
 #### parameters
-* **listing_id** – **int**. ID of the status listing belonging to authorized user.
+
+| name | description | type|
+| :------ | :------ | :----- |
+| listing_id | ID of the listing for this status to attach to. | int |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/status/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": "12345"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/status/list?hash=a6aa75587e5c59c32d347da438505fc3&listing_id=12345
+    ```
 
 #### response
+
 ```json
 {
     "success": true,
-    "list":[…] // ordered array of <status> objects
+    "list":[{
+      "id": 5,
+      "label": "Busy",
+      "color": "E57373"
+    },{
+      "id": 6,
+      "label": "Free",
+      "color": "A27373"
+    }]
 }
 ```
 
-#### errors
-*   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
+* `list` - ordered array of <status> objects.
 
+#### errors
+
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff 
+feature available.
 
 ### update
 
-Update status properties.
+Updates status properties.
 
-**required subuser rights:** tracker_update
+**required sub-user rights:** `tracker_update`
+
 #### parameters
-* **status** – **JSON object**. <status> object with ID field
+
+| name | description | type|
+| :------ | :------ | :----- |
+| status | Status object with ID field. | JSON object |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/status/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status": {"id": "5", "label": "Busy", "color": "E57373"}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/status/update?hash=a6aa75587e5c59c32d347da438505fc3&status={"id": "5", "label": "Busy", "color": "E57373"}
+    ```
 
 #### response
+
 ```json
 { "success": true }
 ```
 
 #### errors
-*   201 (Not found in database) – if status with the specified ID does not exist
-*   236 (Feature unavailable due to tariff restrictions) – if there is no trackers with “statuses” tariff feature available
+
+* 201 (Not found in the database) – if status with the specified ID does not exist.
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” 
+tariff feature available.

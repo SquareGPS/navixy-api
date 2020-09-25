@@ -32,7 +32,7 @@ Creates or updates binding.
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
 | retranslator_id | Retranslator ID. | int | 123 |
-| fake_device_id | Optional. If this field is set retranslator use it instead of real device ID to forward data. | string | AI568T |
+| fake_device_id | Optional. If this field is set retranslator use it instead of real device ID to forward data. | string | "AI568T" |
 
 #### examples
 
@@ -61,11 +61,11 @@ Creates or updates binding.
 * 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 (Not allowed for clones of the device) – if tracker is clone.
 * 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “retranslation” tariff feature available.
-* 242 (There were errors during content validation) – if **fake_device_id** is invalid for the protocol.
+* 242 (There were errors during content validation) – if `fake_device_id` is invalid for the protocol.
 
 ### list
 
-List tracker retranslators binded to tracker with ID=**tracker_id**.
+List tracker retranslators binded to tracker with ID=`tracker_id`.
 
 #### parameters
 

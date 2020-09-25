@@ -41,7 +41,7 @@ Gets LED status for the specified tracker.
 }
 ```
 
-* `value` - boolean. LED status, true - ON, false - OFF.
+* `value` - boolean. LED status, `true` - ON, `false` - OFF.
 
 #### errors
 
@@ -58,7 +58,7 @@ Switches LED state for a specified tracker.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| value | The new LED state, true – ON, false – OFF. | boolean | true |
+| value | The new LED state, `true` – ON, `false` – OFF. | boolean | true |
 
 #### examples
 
