@@ -35,14 +35,14 @@ GPS monitoring system. Lots of API calls created for manipulation of tracker and
 }
 ```
 
-* `id` - int. Tracker id aka "object_id".
+* `id` - int. Tracker id aka object_id.
 * `label` - string. Tracker label.
 * `clone` - boolean. True if this tracker is clone.
 * `group_id` - int. Tracker group id, 0 when no group.
 * `avatar_file_name` - string. Optional. Passed only if present.
 * `source` - object.
     * `id` - int. Source id.
-    * `device_id` - string. Device id aka `source_imei`.
+    * `device_id` - string. Device id aka source_imei.
     * `model` - string. Tracker model name from "models" table.
     * `blocked` - boolean. True if tracker blocked due to tariff end.
     * `tariff_id` - int. An id of tracker tariff from "main_tariffs" table.
@@ -547,7 +547,7 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
     * `precision` - int. Optional. Precision in meters.
     * `gsm_lbs` - boolean. Optional. `True` if location detected by GSM LBS, optional.
     * `parking` - boolean. Optional. `True` if point does not belong to track.
-    
+
 #### errors
 
 * 201 (Not found in the database) – if there is no tracker with such id belonging to authorized user.
@@ -1283,8 +1283,8 @@ In this example we use plugin id = 37 (see [Plugin description](../../commons/pl
 to register Queclink GV55Lite. We chose to include the device to default group, so group ID is 0. 
 As this device identified by IMEI, we include it as device ID (123451234512346).
 
-Also, we include `phone`, `apn_name`, `apn_user`, `apn_password` of the sim card installed in 
-device and `activation_code` since these parameters required by the plugin.
+Also, we include **phone**, **apn_name**, **apn_user**, **apn_password** of the sim card installed in 
+device and **activation_code** since these parameters required by the plugin.
 
 You can try to “auto-detect” APN settings by phone number 
 using [apn_settings/read](apn_settings.md#read) API call.
@@ -1373,7 +1373,7 @@ common command format is:
 
 * `name` - Command name.
 * `some_parameter` - Parameters depend on certain command.
-* `special_settings` - optional field. Its structure defined with `special_control` field of tracker model.
+* `special_settings` - optional field. Its structure defined with "special_control" field of tracker model.
 
 Certain commands which can be used is defined with `special_control` field of **tracker model** and corresponds the table below:
 
@@ -1467,4 +1467,5 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 #### errors
 
 [General](../../../getting-started.md#error-codes) types only.
+
 

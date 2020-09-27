@@ -255,6 +255,7 @@ Where
        "allow_exit_at_endpoints": {boolean} // optional, disable notifications for deviations at start and end points
     }
     ```
+    
 * `date/time` and `local_time` types described at 
 the [data types description section](../../../getting-started.md#data-types).
 
