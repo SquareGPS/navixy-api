@@ -16,7 +16,7 @@ User of **dealer** can switch tracker from tariff **t1** to tariff **t2** if:
 5.  **t2.active** = **1**, i.e. new tariff is _active_ (tariff’s option “Allow users to switch to this tariff independently” in **panel** is set **on**)
 6.  **t1.grouping** = **t2.grouping**, i.e. user can change tariff only within one group of tariffs
 7.  **t2.device** = **tracker**, i.e. new tariff must be for trackers
-8.  new tariff is [available to user’s legal type](index.md#tariff)
+8.  new tariff is [available to user’s legal type](./index.md#tariff)
 
 User’s **effective dealer** is
 
@@ -67,4 +67,4 @@ List tariffs on which user can switch passed tracker (even when tariff last chan
 }
 ```
 
-See **tariff** object structure [here](index.md#tariff).
+See **tariff** object structure [here](./index.md#tariff).

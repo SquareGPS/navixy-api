@@ -1,7 +1,9 @@
 ---
-title: /data
-description: /data
+title: Data
+description: Parse the spreadsheet data
 ---
+
+# Data
 
 ### /data/spreadsheet/parse
 
@@ -32,7 +34,7 @@ If `parse_header` is set to true, first row of the uploaded file will be treat a
 {
     "file_id": <string, unique file id>,
     "header": <optional, array of string>,
-    "preview":<array of array of string, first N rows of file>
+    "preview": <array of array of string, first N rows of file>
 }
 ```
 

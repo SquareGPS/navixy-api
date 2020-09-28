@@ -59,7 +59,7 @@ Create new checkpoint.
 Inserts the specified checkpoint at the specified position (`order`) in the parent route checkpoints list. Shifts the checkpoint currently at that position (if any) and any subsequent checkpoints to the right (adds one to their orders).
 
 Call returns the identifier of the created task in the form of JSON.
-Returned object also can include "external_id_counts" field see `task/route/create` [method description](route/index.md#create).
+Returned object also can include "external_id_counts" field see `task/route/create` [method description](./route/index.md#create).
 
 ```json
 {
@@ -185,7 +185,7 @@ Changing `order` reorders all other checkpoints.
 
 #### response
 
-Returned object also can include "external_id_counts" field see task/route/create [method description](route/index.md#create)
+Returned object also can include "external_id_counts" field see task/route/create [method description](./route/index.md#create)
 
 
 ```json
