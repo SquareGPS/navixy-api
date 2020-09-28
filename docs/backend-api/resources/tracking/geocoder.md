@@ -7,9 +7,7 @@ description: Search address and location using geocoder
 
 API path: `/geocoder`.
 
-## Geocoder types:
-
-Geocoder types:
+## Geocoder types
 
 * google.
 * yandex.

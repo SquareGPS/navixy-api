@@ -49,7 +49,7 @@ CRUD actions for retranslators.
 * `id` - int. Retranslator ID.
 * `name` - string. Zone label.
 * `protocol_id` - int. Protocol ID.
-* `address` - string. Network address, e.g. "127.0.0.1 or localhost".
+* `address` - string. Network address, e.g. `127.0.0.1` or `localhost`.
 * `port` - int. Port number.
 * `login` - optional string.
 * `password` - optional string.
@@ -182,7 +182,7 @@ Get all users' retranslators.
 * `id` - int. Retranslator ID.
 * `name` - string. Zone label.
 * `protocol_id` - int. Protocol ID.
-* `address` - string. Network address, e.g. "127.0.0.1 or localhost".
+* `address` - string. Network address, e.g. `127.0.0.1` or `localhost`.
 * `port` - int. Port number.
 * `login` - optional string.
 * `password` - optional string.
