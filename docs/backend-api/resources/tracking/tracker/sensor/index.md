@@ -94,12 +94,6 @@ Creates a sensor.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "sensor": {"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0, "units": "", "units_type": "celsius"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/sensor/create?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&sensor={"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0, "units": "", "units_type": "celsius"}
-    ```
-
 #### response
 
 ```json
@@ -232,12 +226,6 @@ Updates sensor.
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "sensor": {"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0, "units": "", "units_type": "celsius"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/sensor/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&sensor={"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0, "units": "", "units_type": "celsius"}
     ```
 
 #### response

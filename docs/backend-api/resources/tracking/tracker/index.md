@@ -84,12 +84,6 @@ Changes tracker's phone and setup new apn.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/change_phone?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&phone=6156680000&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
-    ```
-
 #### response
 
 ```json
@@ -545,8 +539,8 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
     * `heading` - int. Direction bearing in degrees (0-360).
     * `speed` - int. Speed in km/h.
     * `precision` - int. Optional. Precision in meters.
-    * `gsm_lbs` - boolean. Optional. `True` if location detected by GSM LBS, optional.
-    * `parking` - boolean. Optional. `True` if point does not belong to track.
+    * `gsm_lbs` - boolean. Optional. `true` if location detected by GSM LBS, optional.
+    * `parking` - boolean. Optional. `true` if point does not belong to track.
 
 #### errors
 
@@ -743,12 +737,6 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999119, 999199]"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/get_states?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999119, 999199]
-    ```
-
 #### response
 
 ```json
@@ -819,7 +807,7 @@ Gets all integrated tracker models (from “models" table).
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| compact_view | Optional. `True` to compact view. Default is `false`. | boolean | true/false |
+| compact_view | Optional. `true` to compact view. Default is `false`. | boolean | true/false |
 | codes | Optional. Array of model codes. If passed only given models will be returned. | array of string | `[model_1, model_2, ...]` |
 
 #### examples
@@ -1033,12 +1021,6 @@ Set tags for a tracker. Tags must be created.
     curl -X POST '{{ extra.api_example_url }}/tracker/tags/set' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "123456", "tag_bindings": "[{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}]"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/tags/set?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&tag_bindings=[{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}]
     ```
 
 #### response
@@ -1425,12 +1407,6 @@ See [special settings JSON object](./settings/special/index.md#read)
     curl -X POST '{{ extra.api_example_url }}/tracker/send_command' \
         -H 'Content-Type: application/json' \
         -d '"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999119", "command": {name: "electronic_lock_command", command_code: "unseal", special_settings:{"type":"electronic_lock_password", "password": "345892", "remember_password": "true"}}}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/send_command?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=999119&command={name: "electronic_lock_command", command_code: "unseal", special_settings:{"type":"electronic_lock_password", "password": "345892", "remember_password": "true"}}
     ```
 
 #### response

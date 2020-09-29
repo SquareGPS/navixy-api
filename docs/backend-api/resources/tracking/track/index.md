@@ -18,12 +18,12 @@ Downloads track points as KML/KMZ file for the specified track ID, tracker and t
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | string date/time | "2020-09-23 03:24:00" |
 | to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | string date/time | "2020-09-23 06:24:00" |
-| track_ids | (optional) If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned. | array of int | `[123456, 234567]` | 
-| include_gsm_lbs | (optional, default=true) If false && track_ids not specified, GSM LBS points will be filtered out. | boolean | true |
-| point_limit | (optional) If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000. | int | 3000 |
-| filter | (optional) If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | true |
+| track_ids | Optional. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned. | array of int | `[123456, 234567]` | 
+| include_gsm_lbs | Optional. If `false` && track_ids not specified, GSM LBS points will be filtered out. Default=`true`. | boolean | true |
+| point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000. | int | 3000 |
+| filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | true |
 | format | File format, "kml" or "kmz", default is "kml". | string enum | "kml" |
-| split | If true, split tracks by folders with start/end placemarks and track line. default "false". | boolean | false |
+| split | If `true`, split tracks by folders with start/end placemarks and track line. Default=`false`. | boolean | false |
 
 #### examples
 
@@ -33,12 +33,6 @@ Downloads track points as KML/KMZ file for the specified track ID, tracker and t
     curl -X POST '{{ extra.api_example_url }}/track/download' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "format": "kml", "split": "false"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/track/download?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&from=2020-09-23 03:24:00&to=2020-09-23 06:24:00&format=kml&split=false
     ```
 
 #### response
@@ -75,7 +69,7 @@ Gets a list of track descriptions for the specified tracker and time period.
 | split | Optional, default=`true`. If `false`, all tracks will be merged into single one. | boolean | true |
 | include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | true |
 | cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates. | boolean | false | 
-| count_events | Optional, default=`fals`e. If `true`, number of events occurred during each non-singlepoint track will be returned. | true |
+| count_events | Optional, default=`false`. If `true`, number of events occurred during each non-singlepoint track will be returned. | true |
 
 #### examples
 
@@ -85,12 +79,6 @@ Gets a list of track descriptions for the specified tracker and time period.
     curl -X POST '{{ extra.api_example_url }}/track/list' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/track/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&from=2020-09-23 03:24:00&to=2020-09-23 06:24:00
     ```
 
 #### response
@@ -103,7 +91,7 @@ Gets a list of track descriptions for the specified tracker and time period.
 }
 ```
 
-* `limit_exceeded` - boolean. `True` if requested time period exceeds limit specified in a tracker's tariff.
+* `limit_exceeded` - boolean. `true` if the requested time period exceeds limit specified in a tracker's tariff.
 * `list` - array of JSON objects. List of zero or more JSON objects.
 
 where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
@@ -254,12 +242,6 @@ Gets track points for the specified track ID, tracker and time period.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/track/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&from=2020-09-23 03:24:00&to=2020-09-23 06:24:00
-    ```
-
 #### response
 
 ```json
@@ -284,7 +266,7 @@ Gets track points for the specified track ID, tracker and time period.
 }
 ```
 
-* `limit_exceeded` - boolean. `True` if requested time period exceeds limit specified in a tracker's tariff.
+* `limit_exceeded` - boolean. `true` if requested time period exceeds limit specified in a tracker's tariff.
 * `lat` - float.  Latitude.
 * `lng` - float.  Longitude.
 * `alt` - int. Altitude in meters. 
@@ -294,8 +276,8 @@ Gets track points for the specified track ID, tracker and time period.
 * `heading` - int. Bearing in degrees (0..360).
 * `speed` - int. Speed in km/h.
 * `precision` - optional int. Precision in meters.
-* `gsm_lbs` - optional boolean. `True` if location detected by GSM LBS.
-* `parking` - optional boolean. `True` if point does not belong to track.
+* `gsm_lbs` - optional boolean. `true` if location detected by GSM LBS.
+* `parking` - optional boolean. `true` if point does not belong to track.
 
 #### errors
 

@@ -22,6 +22,7 @@ API path: `/map_layer`.
 ## API actions
 
 ### read
+
 Reads the body of the specified layer.
 
 #### parameters
@@ -129,6 +130,7 @@ Uploads new map layer.
 Updates metadata for the specified map layer.
 
 #### parameters
+
 | name | description | type |
 | :------ | :------ | :----- |
 | layer | <map_layer_object> | JSON object |

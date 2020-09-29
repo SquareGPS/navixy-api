@@ -29,12 +29,6 @@ Returns mileage in kilometers in specified period grouped by trackers and day.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "from": "2020-09-24 03:24:00", "to": "2020-09-24 06:24:00"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/stats/mileage/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&from=2020-09-24 03:24:00&to=2020-09-24 06:24:00
-    ```
-
 #### response
 
 ```json

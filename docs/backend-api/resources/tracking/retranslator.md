@@ -79,12 +79,6 @@ Creates new retranslator.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": "123456", "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/retranslator/create?hash=a6aa75587e5c59c32d347da438505fc3&retranslator={"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}
-    ```
-
 #### response
 
 ```json
@@ -211,12 +205,6 @@ the current user.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": "123456", "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/retranslator/update?hash=a6aa75587e5c59c32d347da438505fc3&retranslator={"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}
-    ```
-
 #### response
 
 ```json
@@ -265,8 +253,8 @@ Returns all available retranslator protocols.
 
 * `id` - int. Protocol ID.
 * `name` - string. Protocol name.
-* `has_login` - boolean. `True` if this protocol use login.
-* `has_password` - boolean. `True` if this protocol use password.
+* `has_login` - boolean. `true` if this protocol use login.
+* `has_password` - boolean. `true` if this protocol use password.
 * `fake_device_id_pattern` - optional string. Regex pattern for fake_device_id validation.
-* `required_login` - boolean. `True` if for this protocol login required.
-* `required_password` - boolean. `True` if for this protocol password required.
+* `required_login` - boolean. `true` if for this protocol login required.
+* `required_password` - boolean. `true` if for this protocol password required.

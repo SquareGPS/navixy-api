@@ -42,12 +42,6 @@ Performs a forward geocoding. Returns a list of locations matching the given add
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/geocoder/search_address?hash=a6aa75587e5c59c32d347da438505fc3&q=750 Avenue E,San Francisco,CA 94130,USA&lang=en&geocoder=google
-    ```
-
 #### response
 
 ```json
@@ -116,12 +110,6 @@ Search address by location using geocoder.
     curl -X POST '{{ extra.api_example_url }}/geocoder/search_location' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 56.827001, "lng": 60.594296}}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/geocoder/search_location?hash=a6aa75587e5c59c32d347da438505fc3&location={"lat": 56.827001, "lng": 60.594296}
     ```
 
 #### response

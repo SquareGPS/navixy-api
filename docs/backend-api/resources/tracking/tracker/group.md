@@ -48,12 +48,6 @@ Assigns multiple trackers to the specified group.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]", "id": "167"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/group/assign?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]&id=167
-    ```
-
 #### response
 
 ```json

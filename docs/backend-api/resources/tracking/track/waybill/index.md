@@ -38,12 +38,6 @@ Downloads a waybill report DOCX file for tracks of the specified tracker and tim
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "type": "form3", "fill_history": "false", "number": "1234567"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/track/waybill/download?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&from=2020-09-23 03:24:00&to=2020-09-23 06:24:00&type=form3&fill_history=false&number=1234567
-    ```
-
 #### response
 
 A docx file with the waybill.

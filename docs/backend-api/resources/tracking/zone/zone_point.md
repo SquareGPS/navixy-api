@@ -90,12 +90,6 @@ Update points for user’s zone with `zone_id`.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": "1234567", "points": [{"lat": 11.0, "lng": 22.0, "node": true},{"lat": 11.2, "lng": 22.2, "node": true},{"lat": 11.4, "lng": 22.4, "node": true}]}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/zone/point/update?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=1234567&points=[{"lat": 11.0, "lng": 22.0, "node": true},{"lat": 11.2, "lng": 22.2, "node": true},{"lat": 11.4, "lng": 22.4, "node": true}]
-    ```
-
 #### response
 ```json
 { "success": true }

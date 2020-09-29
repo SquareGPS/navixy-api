@@ -170,12 +170,6 @@ Sends chat message to a specified tracker.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "123456", "message": "Hello World"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/chat/send?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&message=Hello World
-    ```
-
 #### response
 
 ```json
@@ -216,12 +210,6 @@ Sends chat message to specified trackers.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]", "message": "Hello World"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/chat/broadcast?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]&message=Hello World
-    ```
-
 #### response
 
 ```json
@@ -258,12 +246,6 @@ Gets date-times of last messages in chat of trackers.
     curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/chat/updated/list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]
     ```
 
 #### response

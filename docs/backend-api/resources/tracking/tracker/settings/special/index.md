@@ -894,12 +894,6 @@ Sets special settings for a specified tracker with the new one.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456" "value": {"type": "time_shift", "offset": 3.0}}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/settings/special/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&value={"type": "time_shift", "offset": 3.0}
-    ```
-
 #### response
 
 ```json

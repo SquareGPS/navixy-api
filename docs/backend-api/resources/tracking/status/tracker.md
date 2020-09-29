@@ -97,12 +97,6 @@ Gets current assigned statuses for the specified trackers.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456,234567]}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/status/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[123456,234567]
-    ```
-
 #### response
 
 ```json

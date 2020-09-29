@@ -29,12 +29,6 @@ Request to change the states of all digital outputs of the device. The device mu
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "outputs": [true, true, false]}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/output/set_all?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&outputs=[true, true, false]
-    ```
-
 #### response
 ```json
 { "success": true }
@@ -61,7 +55,7 @@ Request to change the state of the specified digital output of the device. The d
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
 | output | The number of the output to control, starting from 1. | int | 1 |
-| enable | `True` if the requested output should be enabled, or `false` if it should be disabled. | boolean | true |
+| enable | `true` if the requested output should be enabled, or `false` if it should be disabled. | boolean | true |
 
 #### examples
 

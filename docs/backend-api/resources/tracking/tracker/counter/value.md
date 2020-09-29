@@ -72,12 +72,6 @@ Get values for counters of passed `type` and `trackers`.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456, 234567], "type": "odometer"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}tracker/counter/value/list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[123456, 234567]&type=odometer
-    ```
-
 #### response
 
 ```json
@@ -117,12 +111,6 @@ Creates new counter of passed `type` (if not) and update its `value`.
     curl -X POST '{{ extra.api_example_url }}tracker/counter/value/set' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "value": "233.21"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}tracker/counter/value/set?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer&value=233.21
     ```
 
 #### response

@@ -119,11 +119,6 @@ For `batch` parameter:
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "batch": "Geofence for test	Karlsplatz, 2"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/zone/batch_convert?hash=a6aa75587e5c59c32d347da438505fc3&batch=Geofence for test	Karlsplatz, 2
-    ```
 #### response
 
 ```json
@@ -208,12 +203,6 @@ Creates a new zone.
     curl -X POST '{{ extra.api_example_url }}/zone/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Zone name", "address": "zone address", "radius": 100, "center": {"lat": 56.827001, "lng": 60.594296}}}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/zone/create?hash=a6aa75587e5c59c32d347da438505fc3&zone={"label": "Zone name", "address": "zone address", "radius": 100, "center": {"lat": 56.827001, "lng": 60.594296}}
     ```
 
 #### response
@@ -358,12 +347,6 @@ which type is “polygon”.
     curl -X POST '{{ extra.api_example_url }}/zone/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Zone name", "address": "zone address", "radius": 100, "center": {"lat": 56.827001, "lng": 60.594296}}}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/zone/update?hash=a6aa75587e5c59c32d347da438505fc3&zone={"label": "Zone name", "address": "zone address", "radius": 100, "center": {"lat": 56.827001, "lng": 60.594296}}
     ```
 
 #### response

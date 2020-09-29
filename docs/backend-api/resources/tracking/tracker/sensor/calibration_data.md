@@ -74,12 +74,6 @@ Replaces the calibration data for a sensor.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "sensor_id": "12345", "data": [{“in”:0.0,”out”:0.0},{“in”:0.7,”out”:60.0}]}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/sensor/calibration_data/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&sensor_id=12345&data=[{“in”:0.0,”out”:0.0},{“in”:0.7,”out”:60.0}]
-    ```
-
 #### response
 
 ```json

@@ -58,7 +58,7 @@ Changes the state of alarm mode of device. The device must be online.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| enabled | `True` if alarm mode should be enabled. | boolean | true/false |
+| enabled | `true` if alarm mode should be enabled. | boolean | true/false |
 
 #### examples
 

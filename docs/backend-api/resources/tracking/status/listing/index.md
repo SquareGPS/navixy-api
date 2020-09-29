@@ -29,12 +29,6 @@ Creates new empty status listing.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"label": "Taxi driver statuses", "employee_controlled": "false", "supervisor_controlled": "true"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/status/listing/create?hash=a6aa75587e5c59c32d347da438505fc3&listing={"label": "Taxi driver statuses", "employee_controlled": "false", "supervisor_controlled": "true"}
-    ```
-
 #### response
 
 ```json
@@ -156,12 +150,6 @@ Updates status listing properties.
     curl -X POST '{{ extra.api_example_url }}/status/listing/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"id": "12345", "label": "Taxi driver statuses", "employee_controlled": "false", "supervisor_controlled": "true", "entries": [ 5, 2, 1, 4, 6]}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/status/listing/update?hash=a6aa75587e5c59c32d347da438505fc3&listing={"id": "12345", "label": "Taxi driver statuses", "employee_controlled": "false", "supervisor_controlled": "true", "entries": [ 5, 2, 1, 4, 6]}
     ```
 
 #### response
