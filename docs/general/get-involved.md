@@ -68,6 +68,8 @@ This method involves installing the Git, IDE, Python and
 1. Install [mkdocs-material](https://squidfunk.github.io/mkdocs-material) and other dependencies. In console:
    ```sh
    cd /path/to/project
+   source venv/bin/activate
+   # Windows: \venv\Scripts\activate.bat
    mkdir venv
    python -m venv ./venv
    pip3 install -r requirements.txt
