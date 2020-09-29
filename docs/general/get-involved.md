@@ -75,6 +75,8 @@ This method involves installing the Git, IDE, Python and
 1. Start the documentation server locally. In console:
    ```sh
    cd /path/to/project
+   source venv/bin/activate
+   # Windows: \venv\Scripts\activate.bat
    mkdocs serve --dirtyreload
    ```
 1. To check that the server has started, open in a browser: http://localhost:8000
