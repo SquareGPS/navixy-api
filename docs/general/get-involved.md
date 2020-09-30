@@ -102,14 +102,15 @@ For example:
 
 ```yaml
 title: Backend API
-arrange:
+nav:
     - getting-started.md
     - how-to
     - resources
     - websocket
 ```
 
-`Title` sets name for menu section. `Arrange` sets the sub-items order.
+`title` sets the name for menu section. 
+`nav:` sets the sub-items order.
 
 ### Meta information
 
