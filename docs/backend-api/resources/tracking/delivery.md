@@ -46,9 +46,9 @@ In addition to standard user session, this call supports special *DELIVERY* sess
 {
     "success": true,
     "user_id": 3,
-    "task" : {"task_object":},
-    "tracker" : {"tracker_object":},
-    "restrictions": {"restrictions_object":},
+    "task" : {<task_object>},
+    "tracker" : {<tracker_object>},
+    "restrictions": {<restrictions_object>},
     "first_name": "John",
     "middle_name": "Micheel",
     "last_name": "Johnson",
