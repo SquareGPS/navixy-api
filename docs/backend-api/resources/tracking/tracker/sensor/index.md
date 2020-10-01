@@ -71,6 +71,45 @@ Discrete input
 * `name` - string.
 * `input_number` - int. Assigned input number.
 
+### batch_list
+
+List tracker sensors binded to trackers with specified identificators (parameter `trackers`).
+
+There exist a similar method for working with a single tracker - [list](#list).
+
+#### parameters
+| Name | Description | Type |
+| --- | --- | --- |
+| trackers | Set of tracker identificators. Each of the relevant trackers must be accessible to the authorized user and not be blocked. Number of trackers (length of array) is limited to a maximum of 500 (this number may be changed in future). | array of ints |
+
+#### response
+Contains a map, where keys are IDs from **trackers** parameter and values are lists of [sensor](#sensor) objects.
+```json
+{
+  "success": true,
+  "result": {
+    "11": [
+      {
+        "id": 1,
+        "type": "discrete",
+        "sensor_type": "fuel",
+        "name": "Main tank",
+        "input_name": "fuel_level",
+        "group_type": null,
+        "divider": 1,
+        "accuracy": 0,
+        "units": null,
+        "units_type": "litre"
+      }
+    ]
+  }
+}
+```
+
+#### errors
+* 217 (List contains nonexistent entities) -  if one of `trackers` either does not exist or is blocked.
+* 221 (Device limit exceeded) - if too many ids were passed in `trackers` parameter.
+
 ### create
 
 Creates a sensor.
