@@ -25,42 +25,61 @@ Optional parameters:
   If specified, only points belonging to the specified track will be returned. If not, 
   any valid track points between `from` and `to` will be returned. 
   All requested track ids must be unique and not null.
-* `include_gsm_lbs` – boolean parameter. It may contain true or false. 
-  If false && track_id not specified, GSM LBS points will be filtered out. It is true by default.
-* `point_limit` – integer. If it specified, the returned track would be simplified to contain
+* `include_gsm_lbs` – boolean. It may contain `true` or `false`. 
+  If `false` && `track_id` not specified, GSM LBS points will be filtered out. It is `true` by default.
+* `point_limit` – int. If it specified, the returned track would be simplified to contain
   this number of points. Min=2, Max=3000.
-* `filter` – boolean. If true, the returned track will be filtered, applicable only for LBS tracks. 
-  It is false by default.
+* `filter` – boolean. If `true`, the returned track will be filtered, applicable only for LBS tracks. It is `false` 
+by default.
 
 The platform will reply:
 
 ```json
 {
     "success": true,
-    "limit_exceeded": true, // boolean. true if requested time period exceeds limit specified in tracker's tariff
+    "limit_exceeded": true,
     "list": [
-      {
-        "lat": 53.445181, // latitude
-        "lng": -2.276432, // longitude
-        "alt": 10, // int. altitude in meters
-        "satellites": 8, // number of satellites used in fix for this point
-        "get_time": "2011-06-18 03:39:44", // GPS timestamp of the point, in user's timezone
-        "address": "4B Albany Road, Manchester, Great Britain", // string. point address. "" if no addresss was recorded
-        "heading": 298, // int. bearing in degrees (0..360)
-        "speed": 70, // int. speed in km/h
-        "precision": 100, // int. precision in meters, optional
-        "gsm_lbs": true, // boolean. true if location is detected by GSM LBS, optional
-        "parking": true, // boolean. true if point does not belongs to track, optional
-      }, ...
-    ]}
+        {
+            "lat": 53.445181,
+            "lng": -2.276432,
+            "alt": 10,
+            "satellites": 8,
+            "get_time": "2011-06-18 03:39:44",
+            "address": "4B Albany Road, Manchester, Great Britain",
+            "heading": 298,
+            "speed": 70,
+            "precision": 100,
+            "gsm_lbs": true,
+            "parking": true
+        }
+    ]
+}
 ```
+
+* `limit_exceeded` - boolean. `true` if the requested time period exceeds limit specified in a tracker's tariff.
+* `lat` - float.  Latitude.
+* `lng` - float.  Longitude.
+* `alt` - int. Altitude in meters. 
+* `satellites` - int. Number of satellites used in fix for this point.
+* `get_time` - string date/time. GPS timestamp of the point, in user's timezone.
+* `address` - string. Point address. Will be "" if no address recorded.
+* `heading` - int. Bearing in degrees (0..360).
+* `speed` - int. Speed in km/h.
+* `precision` - optional int. Precision in meters.
+* `gsm_lbs` - optional boolean. `true` if location detected by GSM LBS.
+* `parking` - optional boolean. `true` if point does not belong to track.
+
 You can also [download](../resources/tracking/track/index.md#download) a KML file. 
 You could use this file with map services. 
 It is useful if you need to see all points on the map:
 
-    {{ extra.api_example_url }}/track/download
+```shell
+curl -X POST '{{ extra.api_example_url }}/track/download' \
+    -H 'Content-Type: application/json' \ 
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "format": "kml", "split": "false"}'
+```
 
 All parameters are identical with track/read with the except of two new optional parameters:
 
 * `format` – string. File format, "kml" or "kmz". Default is "kml".
-* `split` – boolean. If true, split tracks by folders with start/end placemarks and track line. Default "false".
+* `split` – boolean. If `true`, split tracks by folders with start/end placemarks and track line. Default `false`.

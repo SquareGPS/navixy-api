@@ -4,150 +4,225 @@ description: About special settings
 ---
 
 ## About special settings
-Some trackers provides additional specific kind of control which is defined with "special_control" field of tracker model.
-This field contains "type", which identifies certain kind of settings. (For example "pwr_off_key" or "sos_key", which you can see below)
-"special_control" = "none" means that tracker have no specific kind of control. In other cases you can:
+
+Some trackers provide additional specific kind of control which is defined with `special_control` field of tracker model.
+This field contains `type`, which identifies a certain kind of settings. (For example "pwr_off_key" or "sos_key", which
+ you can see below)
+`special_control` = "none" means that tracker doesn't have specific kind of control. In other cases you can:
 
 *  **read** special settings with [api/tracker/settings/special/read](#read),
 *  **update** special settings with [api/tracker/settings/special/update](#update),
-*  **perform special control** with [api/tracker/send_command](../../index.md#send_command).
+*  **perform special control** with [api/tracker/send_command](./resources/tracking/tracker/index.md#send_command).
 
-Such control assumes
-
-Tracker special settings
+Such control assumes tracker special settings
 
 ## API actions
 
 API base path: `/tracker/settings/special`
 
 ### read
-Get special settings for the specified tracker.
+
+Gets special settings for the specified tracker.
+
+#### parameters
+
+| name | description | type| format|
+| :------ | :------ | :----- | :------ |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| type | Optional. Type of special object | string enum | "electronic_lock_password" |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/settings/special/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/settings/special/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+    ```
+
+#### responses
 
 If parameter type is present:
 
-#### response
 ```json
 {
     "success": true,
-    "value": <settings object> //[Settings object]
+    "value": {
+      "type": "electronic_lock_password",
+      "password": "4567879",
+      "remember_password": false
+    }
 }
 ```
-If parameter type is omitted:
 
-#### response
+* `value` - settings object.
+
+If parameter type omitted:
+
 ```json
 {
     "success": true,
-    "list": [<settings object>] //[Settings objects array]
+    "list": [{
+      "type": "electronic_lock_password",
+      "password": "4567879",
+      "remember_password": false
+    },{
+      "type": "hhd_lock_password",
+      "password": "25698545",
+      "remember_password": true
+    }]
 }
 ```
+
+* `list` - array of objects. Settings object array.
 
 ###### Settings object structures by type:
 
 **electronic_lock_password**
+
 ```json
 {
     "type": "electronic_lock_password",
-    "password": <string, nullable>,
-    "remember_password": <boolean>
+    "password": "password",
+    "remember_password": false
 }
 ```
 
+* `password` - string. Nullable.
+
 **hhd_lock_password**
+
 ```json
 {
     "type": "hhd_lock_password",
-    "password": <string, nullable>, // 8 digits
-    "remember_password": <boolean>
+    "password": "56894567",
+    "remember_password": true
 }
 ```
 
+* `password` - string. Nullable. 8 digits.
+
 **jointech_lock_password**
+
 ```json
 {
     "type": "jointech_lock_password",
-    "password": <string, nullable>, // 6 non-space, non-comma symbols
-    "remember_password": <boolean>
+    "password": "d45s6w",
+    "remember_password": false
 }
 ```
 
+* `password` - string. Nullable. 6 non-space, non-comma symbols.
+
 **vg_lock_password**
+
 ```json
 {
     "type": "vg_lock_password",
-    "password": <string, nullable>, // 6 digits
-    "remember_password": <boolean>
+    "password": "123456",
+    "remember_password": true
 }
 ```
 
-
+* `password` - string. Nullable. 6 digits.
 
 **autofon_sms_alerts**
+
 ```json
 {
     "type": "autofon_sms_alerts",
-    "low_battery_mode": <string, enable | disable>,
-    "ext_input_mode": <string, enable | disable>,
-    "sos_button_mode": <string, enable | disable>
+    "low_battery_mode": "enable",
+    "ext_input_mode": "disable",
+    "sos_button_mode": "enable"
 }
 ```
 
+* `low_battery_mode` - string enum. Can be "enable" | "disable".
+* `ext_input_mode` - string enum. Can be "enable" | "disable".
+* `sos_button_mode` - string enum. Can be "enable" | "disable".
+
 **auto_geofence_telfm**
+
 ```json
 {
     "type": "auto_geofence_telfm",
-    "mode": <string, enable | disable>,
-    "activation_timeout": <int, 0 - 65535>, // seconds
-    "radius": <int, 50 - 10000> // meters
+    "mode": "enable",
+    "activation_timeout": 300,
+    "radius": 50
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+* `activation_timeout` - int. 0-65535 seconds.
+* `radius` - int. 50 - 10000 meters.
+ 
 **bce_tacho_control**
+
 ```json
 {
     "type": "bce_tacho_control",
-    "function": <string, slot1 | slot2 | vu_activities | vu_no_activities>,
+    "function": "slot1"
 }
 ```
 
+* `function` - string enum. Can be "slot1" | "slot2" | "vu_activities" | "vu_no_activities"
+
 **call_button**
+
 ```json
 {
     "type": "call_button",
     "capacity": 1,
-    "items": [{ "phone": <string> }]
+    "items": [{ "phone": "45641784111"}]
 }
 ```
 
+* `items` - Array of phone numbers (10-15 digits) represented as strings.
+    * `phone` - string. Phone number in the international format without "+" sign.
+
 **call_buttons_v40**
+
 ```json
 {
     "type": "call_buttons_v40",
     "capacity": 4,
-    "items": [{ "phone": <string> }]
+    "items": [{ "phone": "45641784111"}]
 }
 ```
 
+* `items` - Array of phone numbers (10-15 digits) represented as strings.
+    * `phone` - string. Phone number in the international format without "+" sign.
+
 **careu_psm**
+
 ```json
 {
     "type": "careu_psm",
-    "sleep_when_ignition_off": <boolean>,
-    "sleep_when_no_motion": <boolean>,
-    "sleep_when_no_communication": <boolean>,
-    "sleep_conditions_duration": <int, 1-255>,
-    "deep_sleep_conditions_duration": <int, 0-65535>,
-    "wake_up_interval": <int, 0-65535>,
-    "wake_up_from_dsm_interval": <int, 0-255> 
+    "sleep_when_ignition_off": true,
+    "sleep_when_no_motion": true,
+    "sleep_when_no_communication": true,
+    "sleep_conditions_duration": 1,
+    "deep_sleep_conditions_duration": 300,
+    "wake_up_interval": 30,
+    "wake_up_from_dsm_interval": 2
 }
 ```
 
-- `sleep_conditions_duration` – delay between the moment when conditions are met and sleep mode activation in minutes.
-- `deep_sleep_conditions_duration` – delay between sleep mode activation and deep sleep mode activation in minutes.
-- `wake_up_interval` – delay before waking up from sleep mode in minutes.
-- `wake_up_from_dsm_interval` – delay before waking up from deep sleep mode in hours.
-
-`0` in these fields means don't switch.
+* `sleep_when_ignition_off` - boolean.
+* `sleep_when_no_motion` - boolean.
+* `sleep_when_no_communication` - boolean.
+* `sleep_conditions_duration` – int. Delay between the moment when conditions met and sleep mode activation in minutes. Can be 1-255.
+* `deep_sleep_conditions_duration` – int. Delay between sleep mode activation and deep sleep mode activation in minutes. Can be 0-65535.
+* `wake_up_interval` – int. Delay before waking up from sleep mode in minutes. Can be 0-65535.
+* `wake_up_from_dsm_interval` – int. Delay before waking up from deep sleep mode in hours. Can be 0-255.
+* `0` in these fields means don't switch.
 
 **castel_alarms**
 
@@ -155,82 +230,101 @@ If parameter type is omitted:
 {
     "type": "castel_alarms",
     "acceleration": {
-        "report": <boolean>,
-        "beep": <boolean>,
-        "threshold": <double, 0.2 - 0.8>
+        "report": true,
+        "beep": true,
+        "threshold": 0.4
     },
     "deceleration": {
-        "report": <boolean>, 
-        "beep": <boolean>, 
-        "threshold": <double, 0.3 - 1.0>
+        "report": false, 
+        "beep": false, 
+        "threshold": 0.7
     },
     "crash": {
-        "report": <boolean>, 
-        "beep": <boolean>, 
-        "threshold": <double, 1.0 - 2.0> 
+        "report": true, 
+        "beep": true, 
+        "threshold": 1.0 
     },
     "sharp_turn": {
-        "report": <boolean>, 
-        "beep": <boolean>, 
-        "threshold": <double, 0.3 - 0.9>
+        "report": true, 
+        "beep": true, 
+        "threshold": 0.3
     }
 }
 ```
 
-- `report` - if true will send notification to server upon event
-- `beep` - if true will sound upon event
-- `threshold` - normal values range where event does not occur. Each unit equals 1 g.
+* `report` - boolean. If `true` will send notification to server upon an event.
+* `beep` - boolean. If `true` will sound upon an event.
+* `threshold` - double. Normal values range where event does not occur. Each unit equals 1 g.
+    * `acceleration` - 0.2 - 0.8.
+    * `deceleration` - 0.3 - 1.0.
+    * `crash` - 1.0 - 2.0.
+    * `sharp_turn` - 0.3 - 0.9.
 
 **castel_obd**
 
 ```json
 {
     "type": "castel_obd",
-    "enable_pid_reports": <boolean>,
-    "pid_data_records_per_message": <int, 1 - 20>
-    "pid_data_collect_interval": <int, 30 - 600> // seconds
+    "enable_pid_reports": true,
+    "pid_data_records_per_message": 1,
+    "pid_data_collect_interval": 30
 }
 ```
+
+* `enable_pid_reports` - boolean.
+* `pid_data_records_per_message` - int. Count of records per one message. Can be 1 - 20.
+* `pid_data_collect_interval` - int. Data collect interval in seconds. Can be 30 - 600.
 
 **charging_gmt100**
 
 ```json
 {
     "type": "charging_gmt100",
-    "mode": <string, on_need | ign_on_only | ign_on_|_low_charge>
+    "mode": "on_need"
 }
 ```
+
+* `mode` - string enum. Can be "on_need" | "ign_on_only" | "ign_on" | "low_charge".
 
 **ddd_emails**
 
 ```json
 {
     "type": "ddd_emails",
-    "emails": <array of strings, valid emails, max size 5>
+    "emails": ["test@email.com", "example@email.com"]
 }
 ```
+
+* `emails` - array of strings. Valid emails. Maximum size 5.
 
 **digital_password**
 
 ```json
 {
     "type": "digital_password",
-    "password": <string> // 6 digits
+    "password": "123456"
 }
 ```
+
+* `password` - string. 6 digits.
 
 **fcc_telfm**
 
 ```json
 {
     "type": "fcc_telfm",
-    "fuel_type": <string, gasoline | diesel | lpg>,
-    "engine_volume": <double, 0.0 - 10.0>,
-    "multiplier": <double, 0.0 - 10.0>
+    "fuel_type": "gasoline",
+    "engine_volume": 10.0,
+    "multiplier": 0.0
 }
 ```
 
+* `fuel_type` - string enum. Can be "gasoline" | "diesel" | "lpg".
+* `engine_volume` - double. Can be 0.0 - 10.0.
+* `multiplier` - double. Can be 0.0 - 10.0.
+
 **galileo_tacho_control**
+
 ```json
 {
     "type": "galileo_tacho_control",
@@ -238,333 +332,514 @@ If parameter type is omitted:
 }
 ```
 
-
-
 **galileo_hds**
+
 ```json
 {
     "type": "galileo_hds",
-    "mode": <string, disable | enable>,
-    "max_acceleration_force": <double, 0 - 2.55>,
-    "max_braking_force": <double, 0 - 2.55>,
-    "max_cornering_force": <double, 0 - 2.55>
+    "mode": "enable",
+    "max_acceleration_force": 1.26,
+    "max_braking_force": 1.59,
+    "max_cornering_force": 0.75
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+* `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without 
+triggering harsh acceleration event.Can be 0 - 2.55.
+* `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering
+harsh braking event. Can be 0 - 2.55.
+* `max_cornering_force` - double. It is a max allowed cornering angle which can be reached while cornering without triggering
+harsh cornering event. Can be 0 - 2.55.
+
 **harsh_behavior_hua_sheng**
+
 ```json
 {
     "type": "harsh_behavior_hua_sheng",
-    "mode": <string, disable | enable>,
-    "max_acceleration_force": <double, 0.1 - 1>,
-    "max_braking_force": <double, 0.1 - 1>,
-    "max_cornering_force": <double, 0.1 - 1>
+    "mode": "enable",
+    "max_acceleration_force": 1.0,
+    "max_braking_force": 0.5,
+    "max_cornering_force": 0.1
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+* `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without 
+triggering harsh acceleration event.Can be 0.1 - 1.0.
+* `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering
+harsh braking event. Can be 0.1 - 1.0.
+* `max_cornering_force` - double. It is a max allowed cornering angle which can be reached while cornering without triggering
+harsh cornering event. Can be 0.1 - 1.0.
+
 **hbm_telfm**
+
 ```json
 {
     "type": "hbm_telfm",
-    "mode": <string, disable | enable>,
-    "max_acceleration_force": <double, 0.25-0.85>, //g
-    "max_braking_force": <double, 0.25-0.85>, //g
-    "max_angular_velocity": <double, 0.1-1.0> //rad/s
+    "mode": "enable",
+    "max_acceleration_force": 0.3,
+    "max_braking_force": 0.85,
+    "max_angular_velocity": 0.1
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+* `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without 
+triggering harsh acceleration event. Can be 0.25 - 0.85 g.
+* `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering 
+harsh braking event. Can be 0.25 - 0.85 g.
+* `max_cornering_force` - double. It is a max allowed cornering angle which can be reached while cornering without triggering 
+harsh cornering event. Can be 0.1 - 1.0 rad/s.
+
 **hbm_telfm5x**
+
 ```json
 {
     "type": "hbm_telfm5x",
-    "mode": <string, disable | enable>,
-    "max_acceleration_force": <double, 0.5-10>, //g
-    "max_braking_force": <double, 0.5-10>, //g
-    "max_angular_velocity": <double, 0.5-10> //rad/s
+    "mode": "enable",
+    "max_acceleration_force": 0.5,
+    "max_braking_force": 3.0,
+    "max_angular_velocity": 10.0
 }
 ```
 
-- `max_acceleration_force` – It is max allowed acceleration force which can be reached while accelerating without
-  triggering harsh acceleration event.
-- `max_braking_force` – It is max allowed braking force which can be reached while braking without triggering
-  harsh braking event.
-- `max_angular_velocity` – It is max allowed cornering angle which can be reached while cornering without triggering
-  harsh cornering event.
+* `max_acceleration_force` – double. It is a max allowed acceleration force which can be reached while accelerating without
+  triggering harsh acceleration event. Can be 0.5 - 10.0 g.
+* `max_braking_force` – double. It is a max allowed braking force which can be reached while braking without triggering
+  harsh braking event. Can be 0.5 - 10.0 g.
+* `max_angular_velocity` – double. It is a max allowed cornering angle which can be reached while cornering without triggering
+  harsh cornering event. Can be  0.5 - 10.0 rad/s.
 
 **hbm_ql**
+
 ```json
 {
     "type": "hbm_ql",
-    "mode": <string, disable | enable>,
-    "high_speed": <int, 100 - 400>,
-    "high_speed_braking_delta": <int, 0 - 100>,
-    "high_speed_acceleration_delta": <int, 0 - 100>,
-    "medium_speed": <int, 60 - 100>,
-    "medium_speed_braking_delta": <int, 0 - 100>,
-    "medium_speed_acceleration_delta": <int, 0 - 100>,
-    "low_speed_braking_delta": <int, 0 - 100>,
-    "low_speed_acceleration_delta": <int, 0 - 100>
+    "mode": "enable",
+    "high_speed": 100,
+    "high_speed_braking_delta": 50,
+    "high_speed_acceleration_delta": 50,
+    "medium_speed": 70,
+    "medium_speed_braking_delta": 50,
+    "medium_speed_acceleration_delta": 50,
+    "low_speed_braking_delta": 50,
+    "low_speed_acceleration_delta": 50
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+* `high_speed` - int. Can be 100 - 400.
+* `high_speed_braking_delta` - int. Can be 0 - 100.
+* `high_speed_acceleration_delta` - int. Can be 0 - 100.
+* `medium_speed` - int. Can be 60 - 100.
+* `medium_speed_braking_delta` - int. Can be 0 - 100.
+* `medium_speed_acceleration_delta` - int. Can be 0 - 100.
+* `low_speed_braking_delta` - int. Can be 0 - 100.
+* `low_speed_acceleration_delta` - int. Can be 0 - 100.
+
 **hbm_ms_ql**
+
 ```json
 {
     "type": "hbm_ms_ql",
-    "mode": <string, disable | gps_only | motion_sensor_only | gps_and_motion_sensor>,
-    "high_speed": <int, 100 - 400>,
-    "high_speed_braking_delta": <int, 0 - 100>,
-    "high_speed_acceleration_delta": <int, 0 - 100>,
-    "medium_speed": <int, 60 - 100>,
-    "medium_speed_braking_delta": <int, 0 - 100>,
-    "medium_speed_acceleration_delta": <int, 0 - 100>,
-    "low_speed_braking_delta": <int, 0 - 100>,
-    "low_speed_acceleration_delta": <int, 0 - 100>,
-    "turn_brake_threshold": <int, 30 - 70>,
-    "turn_brake_duration": <int, 320 - 800>, //milliseconds
-    "acceleration_threshold": <int, 15 - 50>,
-    "acceleration_duration": <int, 400 - 2000> //milliseconds
+    "mode": "gps_only",
+    "high_speed": 100,
+    "high_speed_braking_delta": 50,
+    "high_speed_acceleration_delta": 50,
+    "medium_speed": 60,
+    "medium_speed_braking_delta": 50,
+    "medium_speed_acceleration_delta": 50,
+    "low_speed_braking_delta": 50,
+    "low_speed_acceleration_delta": 50,
+    "turn_brake_threshold": 30,
+    "turn_brake_duration": 320,
+    "acceleration_threshold": 15,
+    "acceleration_duration": 1200
 
 }
 ```
 
+* `mode` - string enum. Can be "disable" | "gps_only" | "motion_sensor_only" | "gps_and_motion_sensor".
+* `high_speed` - int. Can be 100 - 400.
+* `high_speed_braking_delta` - int. Can be 0 - 100.
+* `high_speed_acceleration_delta` - int. Can be 0 - 100.
+* `medium_speed` - int. Can be 60 - 100.
+* `medium_speed_braking_delta` - int. Can be 0 - 100.
+* `medium_speed_acceleration_delta` - int. Can be 0 - 100.
+* `low_speed_braking_delta` - int. Can be 0 - 100.
+* `low_speed_acceleration_delta` - int. Can be 0 - 100.
+* `turn_brake_threshold` - int. Can be 30 - 70.
+* `turn_brake_duration` - int. Can be 320 - 800 milliseconds.
+* `acceleration_threshold` - int. Can be 15 - 50.
+* `acceleration_duration` - int. Can be 400 - 2000 milliseconds.
+
 **harsh_behavior_bce**
+
 ```json
 {
     "type": "harsh_behavior_bce",
-    "is_switched_off": <boolean>,
-    "acceleration_limit": <double, 0.04 - 3>,
-    "braking_limit": <double, 0.04 - 3>,
-    "cornering_limit": <double, 0.04 - 3>
+    "is_switched_off": false,
+    "acceleration_limit": 0.04,
+    "braking_limit": 1.21,
+    "cornering_limit": 2.38
 }
 ```
 
+* `is_switched_off` - boolean.
+* `acceleration_limit` - double. Can be 0.04 - 3.
+* `braking_limit` - double. Can be 0.04 - 3.
+* `cornering_limit` - double. Can be 0.04 - 3.
+
 **harsh_behavior_concox_x1**
+
 ```json
 {
     "type": "harsh_behavior_concox_x1",
-    "acc_speed": <int, 0 - 100>,
-    "acc_detection_time": <int, 0 - 10>,
-    "braking_speed": <int, 0 - 100>,
-    "braking_detection_time": <int, 0 - 10>
+    "acc_speed": 40,
+    "acc_detection_time": 4,
+    "braking_speed": 60,
+    "braking_detection_time": 2
 }
 ```
 
+* `acc_speed` - int. Can be 0 - 100.
+* `acc_detection_time` - int. Can be 0 - 10.
+* `braking_speed` - int. Can be 0 - 100.
+* `braking_detection_time` - int. Can be 0 - 10.
+
 **harsh_behavior_tramigo**
+
 ```json
 {
     "type": "harsh_behavior_tramigo",
-    "mode": <string, disable | enable>,
-    "max_acceleration_force": <double, 0.1-8>,
-    "max_braking_force": <double, 0.1-8>
+    "mode": "enable",
+    "max_acceleration_force": 0.5,
+    "max_braking_force": 1.3
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+* `max_acceleration_force` - double. Can be 0.1 - 8.
+* `max_braking_force` - double. Can be 0.1 - 8.
+
 **harsh_behavior_ruptela**
+
 ```json
 {
     "type": "harsh_behavior_ruptela",
-    "braking_limit": <int, 0 - 100>,
-    "acceleration_limit": <int, 0 - 100>
+    "braking_limit": 30,
+    "acceleration_limit": 60
 }
 ```
 
+* `braking_limit` - int. Can be 0 - 100.
+* `acceleration_limit` - int. Can be 0 - 100.
+
 **nimbelink_accel**
+
 ```json
 {
     "type": "nimbelink_accel",
-    "mode": <string, disable | enable>,
-    "x": <double, 0 - 2.55>,
-    "y": <double, 0 - 2.55>,
-    "z": <double, 0 - 2.55>
+    "mode": "enable",
+    "x": 1.12,
+    "y": 0.8,
+    "z": 2.33
 }
 ```
 
-
+* `mode` - string enum. Can be "enable" | "disable".
+* `x` - double. Can be 0 - 2.55.
+* `y` - double. Can be 0 - 2.55.
+* `z` - double. Can be 0 - 2.55.
 
 **hua_sheng_vibration_sensitivity**
+
 ```json
 {
     "type": "hua_sheng_vibration_sensitivity",
-    "sensitivity": <string, easy | normal | hard | hardest>
+    "sensitivity": "easy"
 }
 ```
 
+* `sensitivity` - string enum. Can be "easy" | "normal" | "hard" | "hardest".
+
 **ign_src_suntech**
+
 ```json
 {
     "type": "ign_src_suntech",
-    "mode": <string, power_voltage | din1 | movement>,
-    "power_voltage_low_level": <int, 0 - 30000>,
-    "power_voltage_high_level": <int, 0 - 30000>
+    "mode": "power_voltage",
+    "power_voltage_low_level": 12000,
+    "power_voltage_high_level": 19000
 }
 ```
 
+* `mode` - string enum. Can be "power_voltage" | "din1" | "movement".
+* `power_voltage_low_level` - int. Can be 0 - 30000.
+* `power_voltage_high_level` - int. Can be 0 - 30000.
+
 **ign_src_telfm**
+
 ```json
 {
     "type": "ign_src_telfm",
-    "mode": <string, power_voltage | din1 | movement>,
-    "power_voltage_low_level": <int, 0 - 30000>,
-    "power_voltage_high_level": <int, 0 - 30000>
+    "mode": "power_voltage",
+    "power_voltage_low_level": 12000,
+    "power_voltage_high_level": 24000
 }
 ```
 
+* `mode` - string enum. Can be "power_voltage" | "din1" | "movement".
+* `power_voltage_low_level` - int. Can be 0 - 30000.
+* `power_voltage_high_level` - int. Can be 0 - 30000.
+
 **locus_sec**
+
 ```json
 {
     "type": "locus_sec",
-    "signature": <string, length = 1 - 32>,
-    "sms_password": <string, length = 1 - 32>,
-    "reset": <boolean>
+    "signature": "signature",
+    "sms_password": "23145",
+    "reset": false
 }
 ```
 
+* `signature` - string. Length 1 - 32.
+* `sms_password` - string. Length 1 - 32.
+* `reset` - boolean.
+
 **phonebook_gt300**
+
 ```json
 {
     "type": "phonebook_gt300",
     "capacity": 20,
-    "items": [{ "name": <string>, "phone": <string> }]
+    "items": [{ "name": "Karl", "phone": "555469874" }]
 }
 ```
 
+* `items` - array of contacts.
+    * `name` - string. Contact name.
+    * `phone` - string. Phone number in the international format without "+" sign.
+
 **phonebook_pt100**
+
 ```json
 {
     "type": "phonebook_pt100",
     "capacity": 3,
-    "items": [{ "name": <string>, "phone": <string> }]
+    "items": [{ "name": "Karl", "phone": "555469874" }]
 }
 ```
 
+* `items` - array of contacts.
+    * `name` - string. Contact name.
+    * `phone` - string. Phone number in the international format without "+" sign.
+
 **pwr_off_key**
+
 ```json
 {
     "type": "pwr_off_key",
-    "mode": <string, enable | disable>
+    "mode": "enable"
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+
 **scat_mayak_bt_control**
+
 ```json
 {
     "type": "scat_mayak_bt_control",
-    "function": <string, bt_disable | bt_enable | bt_clear | bt_write>,
-    "bt_state": <boolean>
+    "function": "bt_disable",
+    "bt_state": true
 }
 ```
 
+* `function` - string enum. Can be "bt_disable" | "bt_enable" | "bt_clear" | "bt_write".
+* `bt_state` - boolean.
+
 **sos_key**
+
 ```json
 {
     "type": "sos_key",
-    "mode": <string, report | call_report>,
-    "phone": <string> // SOS phone to call
+    "mode": "report",
+    "phone": "55548875236"
 }
 ```
 
+* `mode` - string enum. Can be "report" | "call_report".
+* `phone` - string. SOS phone to call. Phone number in the international format without "+" sign. 
+
 **starcom_impact**
+
 ```json
 {
     "type": "starcom_impact",
-    "strong_duration": <int, 0 - 14>,
-    "strong_force": <int, 1 - 7>,
-    "strong_impact_enabled": <boolean>,
-    "weak_duration": <int, 0 - 14>,
-    "weak_force": <int, 1 - 7>,
-    "weak_impact_enabled": <boolean>
+    "strong_duration": 12,
+    "strong_force": 4,
+    "strong_impact_enabled": true,
+    "weak_duration": 9,
+    "weak_force": 6,
+    "weak_impact_enabled": true
 }
 ```
-- `strong_duration` - required impact duration to trigger strong impact event. Each unit equals 2.5 milliseconds.
-- `strong_force` - required impact force to trigger strong impact event. Each unit equals about 1.1g.
-- `weak_duration` - required impact duration to trigger weak impact event. Each unit equals 2.5 milliseconds.
-- `weak_force` - required impact force to trigger weak impact event. Each unit equals about 1.1g. 
+
+* `strong_duration` - int. Required impact duration to trigger strong impact event. Each unit equals 2.5 milliseconds. 
+Can be 0 - 14.
+* `strong_force` - int. Required impact force triggering strong impact event. Each unit equals about 1.1g. Can be 1 - 7.
+* `strong_impact_enabled` - boolean.
+* `weak_duration` - int. Required impact duration to trigger weak impact event. Each unit equals 2.5 milliseconds. 
+Can be 0 - 14.
+* `weak_force` - int. Required impact force triggering weak impact event. Each unit equals about 1.1g. Can be 1 - 7.
+* `weak_impact_enabled` - boolean.
 
 **tacho_company_card**
+
 ```json
 {
     "type": "tacho_company_card",
-    "company_card_number": <string> // 16 HEX digits (0-9A-F)
+    "company_card_number": "A2332BF23EC3245A"
 }
 ```
 
+* `company_card_number` - string. 16 HEX digits (0-9A-F).
+
 **tacho_remote_download**
+
 ```json
 {
     "type": "tacho_remote_download",
-    "company_card_number": <string>, // 16 HEX digits (0-9A-F)
-    "vu_download_interval": <int, min = 0>,
-    "card_download_interval": <int, min = 0>
+    "company_card_number": "A2332BF23EC3245A",
+    "vu_download_interval": 10,
+    "card_download_interval": 2
 }
 ```
 
+* `company_card_number` - string. 16 HEX digits (0-9A-F).
+* `vu_download_interval` - int. Min = 0.
+* `card_download_interval` - int. Min = 0.
+
 **teltonika_tacho_request**
+
 ```json
 {
     "type": "teltonika_tacho_request",
-    "data_type": <string, overview | activities | eventsAndFaults | detailedSpeed | technicalData | card1Download | card2Download>,
-    "activities_start_time": <date, format = "YYYY-MM-DD", not null only if data_type = "activities">,
-    "activities_end_time": <date, format = "YYYY-MM-DD", not null only if data_type = "activities">
+    "data_type": "activities",
+    "activities_start_time": "2020-09-01",
+    "activities_end_time": "2020-09-16"
 }
 ```
 
+* `data_type` - string enum. Can be "overview" | "activities" | "eventsAndFaults" | "detailedSpeed" | "technicalData" | 
+"card1Download" | "card2Download".
+* `activities_start_time` - string date. Format = "YYYY-MM-DD", not null only if data_type = "activities".
+* `activities_end_time` - string date. Format = "YYYY-MM-DD", not null only if data_type = "activities".
+
 **temporary_digital_password**
+
 ```json
 {
     "type": "temporary_digital_password",
-    "password": <string>, // 6 digits
-    "duration_in_min": <int, 10 - 255>
+    "password": "231578",
+    "duration_in_min": 17
 }
 ```
 
+* `password` - string. 6 digits.
+* `duration_in_min` - int. Can be 10 - 255. 
+
 **time_shift**
+
 ```json
 {
     "type": "time_shift",
-    "offset": <double, -24.0 - 24.0> //hours
+    "offset": 3.0
 }
 ```
 
+* `offset` - double. Can be -24.0 - 24.0 hours.
+
 **tow_detection_ql**
+
 ```json
 {
     "type": "tow_detection_ql",
-    "mode": <string, disable | enable>,
-    "engine_off_to_tow": <int, 0 - 900>, //seconds
-    "fake_tow_delay": <int, 0 - 600>, //seconds
-    "tow_interval": <int, 30 - 86400> //seconds
-    "rest_duration": <int, 15 - 3825>, //seconds, step 15
-    "motion_duration": <int, 100 - 9900>, //milliseconds, step 100
-    "motion_threshold": <int, 2 - 9>
+    "mode": "enable",
+    "engine_off_to_tow": 300,
+    "fake_tow_delay": 300,
+    "tow_interval": 12000,
+    "rest_duration": 90,
+    "motion_duration": 8300,
+    "motion_threshold": 3
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+* `engine_off_to_tow` - int. A time parameter to judge whether the device considered towed after the engine off. 
+If the motion sensor doesn't detect stillness within the specified time after the engine off the device is being towed. 
+Can be 0 - 900 seconds.
+* `fake_tow_delay` - int. After the engine off and stillness detected, if motion sensor detects moving again, the 
+device turns into a state called fake tow. If the device keeps in fake tow after a period defined by this parameter, 
+it is considered towed. Can be 0 - 600 seconds.
+* `tow_interval` - int. The period to send alarm messages. Can be 0 - 86400 seconds.
+* `rest_duration` - int. A time parameter to make sure the device enters stillness status, i.e. the status of the 
+device will be changed to stillness if the motion sensor detects stillness and maintains for a period defined by 
+this parameter. Can be 0 - 3825 seconds, step 15.
+* `motion_duration` - int. A time parameter to make sure the device enters motion status. Can be 0 - 9900 milliseconds, 
+step 100.
+* `motion_threshold` - int. The threshold for the motion sensor to measure whether the device is moving. Can be 2 - 9.
+
 **tow_detection_ql2**
+
 ```json
 {
     "type": "tow_detection_ql2",
-    "mode": <string, disable | enable>,
-    "engine_off_to_tow": <int, 300 - 900>, //seconds
-    "fake_tow_delay": <int, 0 - 600>, //seconds
-    "tow_interval": <int, 30 - 86400> //seconds
-    "rest_duration": <int, 15 - 3825>, //seconds, step 15
-    "motion_duration": <int, 100 - 1000>, //milliseconds, step 100
-    "motion_threshold": <int, 2 - 9>
+    "mode": "enable",
+    "engine_off_to_tow": 300,
+    "fake_tow_delay": 300,
+    "tow_interval": 12000,
+    "rest_duration": 90,
+    "motion_duration": 400,
+    "motion_threshold": 3
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+* `engine_off_to_tow` - int. A time parameter to judge whether the device considered towed after the engine off. 
+If the motion sensor doesn't detect stillness within the specified time after the engine off the device is being towed. 
+Can be 0 - 900 seconds.
+* `fake_tow_delay` - int. After the engine off and stillness detected, if motion sensor detects moving again, the 
+device turns into a state called fake tow. If the device keeps in fake tow after a period defined by this parameter, 
+it is considered towed. Can be 0 - 600 seconds.
+* `tow_interval` - int. The period to send alarm messages. Can be 0 - 86400 seconds.
+* `rest_duration` - int. A time parameter to make sure the device enters stillness status, i.e. the status of the 
+device will be changed to stillness if the motion sensor detects stillness and maintains for a period defined by this 
+parameter. Can be 0 - 3825 seconds, step 15.
+* `motion_duration` - int. A time parameter to make sure the device enters motion status. Can be 100 - 1000 
+milliseconds, step 100.
+* `motion_threshold` - int. The threshold for the motion sensor to measure whether the device is moving. Can be 2 - 9.
+
 **tow_detection_telfm**
+
 ```json
 {
     "type": "tow_detection_telfm",
-    "mode": <string, disable | enable>,
-    "activation_timeout": <int, 0 - 65535>, //minutes
-    "threshold": <double, 0.10 - 5.00>
+    "mode": "enable",
+    "activation_timeout": 5,
+    "threshold": 0.30
 }
 ```
 
+* `mode` - string enum. Can be "enable" | "disable".
+* `activation_timeout` - int. Can be 0 - 65535 minutes.
+* `threshold` - double. Can be 0.10 - 5.00.
+
 **video_stream_howen**
+
 ```json
 {
     "type": "video_stream_howen"
@@ -572,36 +847,52 @@ If parameter type is omitted:
 ```
 
 **virtual_ign_ql**
+
 ```json
 {
     "type": "virtual_ign_ql",
-    "mode": <string, disabled | power_voltage | motion_sensor>,
-    "ign_on_voltage": <int, 250 - 28000>,
-    "rest_duration_to_off": <int, 1 - 255>,
-    "motion_duration_to_on": <int, 1 - 255>,
+    "mode": "motion_sensor",
+    "ign_on_voltage": 12000,
+    "rest_duration_to_off": 120,
+    "motion_duration_to_on": 75
 }
 ```
 
-- `engine_off_to_tow` – A time parameter to judge whether the device is considered towed after the engine off. If the motion sensor doesn’t detect stillness within the specified time after engine off the device is being towed.
-- `fake_tow_delay` – After engine off and stillness detected, if motion sensor detects moving again, the device turns into a state called fake tow. If the device keeps in fake tow after a period of time defined by this parameter, it is considered towed.
-- `tow_interval` – The period to send alarm messages.
-- `rest_duration` – A time parameter to make sure that the device enters stillness status, i.e. the status of the device will be changed to stillness if the motion sensor detects stillness and maintains for a period of time defined by this parameter.
-- `motion_duration` – A time parameter to make sure that the device enters motion status.
-- `motion_threshold` – The threshold for the motion sensor to measure whether the device is moving.
+* `mode` - string enum. Can be "disabled" | "power_voltage" | "motion_sensor".
+* `ign_on_voltage` - int. Can be 250 - 28000.
+* `rest_duration_to_off` – int. A time parameter to make sure the device enters stillness status, i.e. the status of 
+the device will be changed to stillness if the motion sensor detects stillness and maintains for a period of time 
+defined by this parameter. Can be 1 - 255.
+* `motion_duration_to_on` – A time parameter to make sure the device enters motion status. Can be 1 - 255.
 
 #### errors
-*   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
-*   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
-*   214 – Requested operation or parameters are not supported by the device
+
+* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
+* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 214 – Requested operation or parameters are not supported by the device.
 
 ### update
-Set special settings for a specified tracker with the new one.
 
-**required subuser rights:** tracker_configure
+Sets special settings for a specified tracker with the new one.
+
+**required sub-user rights:** `tracker_configure`
 
 #### parameters
-* **tracker_id** - **int**. Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked.
-* **value** - **JSON object**. Settings object, see above
+
+| name | description | type|
+| :------ | :------ | :----- |
+| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int |
+| value | Settings object, see above | JSON object |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/settings/special/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456" "value": {"type": "time_shift", "offset": 3.0}}'
+    ```
 
 #### response
 
@@ -610,7 +901,8 @@ Set special settings for a specified tracker with the new one.
 ```
 
 #### errors
-*   201 – Not found in database (if there is no tracker with such id belonging to authorized user)
-*   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
-*   214 – Requested operation or parameters are not supported by the device
+
+* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
+* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 214 – Requested operation or parameters are not supported by the device.
 
