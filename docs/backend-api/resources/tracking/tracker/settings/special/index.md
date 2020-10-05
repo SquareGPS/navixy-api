@@ -12,7 +12,7 @@ This field contains `type`, which identifies a certain kind of settings. (For ex
 
 *  **read** special settings with [api/tracker/settings/special/read](#read),
 *  **update** special settings with [api/tracker/settings/special/update](#update),
-*  **perform special control** with [api/tracker/send_command](./resources/tracking/tracker/index.md#send_command).
+*  **perform special control** with [api/tracker/send_command](../../index.md#send_command).
 
 Such control assumes tracker special settings
 
