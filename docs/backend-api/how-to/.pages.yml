@@ -1,5 +1,5 @@
 title: How To
-arrange:
+nav:
     - how-to.md
     - get-session-hash.md
     - get-tracker-list.md

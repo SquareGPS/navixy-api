@@ -7,7 +7,8 @@ description: Assigning employee to tracker
 
 API base path: `/tracker/employee`
 
-Allows to assign employee ("driver") to a device. Also, read who is on a vehicle now, hardware key and when, where was assigned. 
+Allows assigning employee ("driver") to a device. Also, read who is on a vehicle now, hardware key and when, where was 
+assigned. 
 
 ### assign
 
@@ -118,8 +119,8 @@ Requests to read the current employee assigned to tracker, and when it was assig
 }
 ```
 
-* `current` - current employee info, standard employee object, CAN BE NULL.
-* `last_change` - information about when did last change occur, MAY BE NULL.
+* `current` - current employee info, standard employee object, can be null.
+* `last_change` - information about when did last change occur, can be null.
 * `old_employee_id` - can be null.
 * `new_employee_id` - can be null.
 * `location` - where it was.

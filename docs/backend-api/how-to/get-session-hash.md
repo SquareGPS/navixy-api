@@ -23,10 +23,10 @@ Where resulting hash is `882fb333405d006df0d5a3f410115e92` (just an example, you
 Received hash should be saved and used in API calls. For security reasons, 
 hash has a lifetime of 30 days and will expire in certain situations:
 
-*	after 30 days
-*	user has changed their password
-*	user logged out and ended the session
-*	user was deleted
+* After 30 days.
+* User has changed their password.
+* User logged out and ended the session.
+* User was deleted.
 
 Correct work with hash is crucial. There is no need to receive a new hash before each request, 
 instead, your hash should be stored and reused. To prevent expiration, in most cases you just need to
@@ -46,9 +46,10 @@ You must pass session hash with most API calls along other parameters required t
 
 For example, if you want to make a call with the single parameter `id` equal to 1, and you obtained hash equal to
 `882fb333405d006df0d5a3f410115e92` (fake hash, just for example) you must pass the following parameters in HTTP request:
-`id=1&hash=882fb333405d006df0d5a3f410115e92` (example is for POST/`x-www-form-urlencoded` or GET requests)
+`id=1&hash=882fb333405d006df0d5a3f410115e92` (example is for POST/`x-www-form-urlencoded` or GET requests).
 
 Otherwise, you will get an error response:
+
 ```json
 {
     "success": false,
@@ -58,9 +59,11 @@ Otherwise, you will get an error response:
     }
 }
 ``` 
+
 Whenever you see such response, it means that you did not pass hash value properly.
 
-If session is expired or was logged out, you will receive the following response:
+If session expired or was logged out, you will receive the following response:
+
 ```json
 {
     "success": false,
@@ -70,4 +73,5 @@ If session is expired or was logged out, you will receive the following response
     }
 }
 ```
+
 It means that you need to obtain new user hash through [user/auth](../resources/commons/user/index.md#auth) API action. 
