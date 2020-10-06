@@ -199,10 +199,10 @@ If `filter` is used, entities will be returned only if filter string is containe
 **Parameters**
 
 | Name | Description  | Type |
-| --- | --- | --- |
-| clones_filter | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) | Enum |
+| :--- | :--- | :--- |
+| clones_filter | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set` | Enum |
 | filter |	Optional. Text filter string. |	String |
-| order_by |	Optional. Specify list ordering. Can be one of `id`, `model_code`, `imei`, `iccid`, `assign_time`, `order_id` |	Enum |
+| order_by | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`. | Enum |
 | ascending |	If true, ordering will be ascending, descending otherwise. Default is true. |	Boolean |
 | offset |	Optional. Starting offset, used for pagination. Default is 0. |	Int |
 | limit |	Optional. Max number of records to return, used for pagination. | Int |
