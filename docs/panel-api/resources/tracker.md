@@ -344,6 +344,39 @@ Returns auth token to connect to tracker command console.
 }
 ```
 
+Establish WS connection with a URL:
+
+`wss://ws.navixy.com/console?device=<tracker_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`
+
+JSON objects come in the next text frames:
+```json
+{
+  "data":
+  [
+    ["Time","2017-11-16 10:02:37.0"],
+    ["Location valid","yes"],
+    ["Latitude","-33.4595716"],
+    ["Longitude","-70.7805233"],
+    ["Speed","0"],
+    ["Heading","229"],
+    ["Moving","false"],
+    ["Satellites","7"],
+    ["Hardware mileage","3707.85"],
+    ["Mileage","3853.16"],
+    ["Digital input status","8"],
+    ["Analog input 1","0.004"],
+    ["Analog input 2","0.02"],
+    ["Digital output status","3"],
+    ["board_voltage","11.619"],
+    ["temp_sensor","23.0"],
+    ["GSM Level","13"],
+    ["GSM Operator code","73002"],
+    ["Battery level","3.827"]
+  ],
+  "type": "status"
+}
+```
+
 **Errors**
 
 * 230 (Not supported for this entity type) – when tracker is deleted or blocked
