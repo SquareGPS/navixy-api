@@ -286,6 +286,7 @@ Retrieve generated report as JSON.
 
 #### response
 
+???+ response
 ```json
 {
 "success": true,
