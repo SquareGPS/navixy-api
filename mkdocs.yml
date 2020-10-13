@@ -96,6 +96,7 @@ markdown_extensions:
       repo: navixy-api
   - pymdownx.superfences
   - pymdownx.tabbed
+  - pymdownx.details
 
 # Enable analytics block to include scripts from /partial/integrations/analytics.html
 google_analytics:
