@@ -42,7 +42,7 @@ Create new tag.
 ```
 
 #### errors
-general types only
+[General](../../../getting-started.md#error-codes) types only.
 
 
 
@@ -81,7 +81,7 @@ Get all tags belonging to user with optional filtering.
 ```
 
 #### errors
-general types only
+[General](../../../getting-started.md#error-codes) types only.
 
 
 
@@ -107,7 +107,7 @@ Search entities that bound with specified tags.
 ```
 
 #### errors
-general types only
+[General](../../../getting-started.md#error-codes) types only.
 
 
 

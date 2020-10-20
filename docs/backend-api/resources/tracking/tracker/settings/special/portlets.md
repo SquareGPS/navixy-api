@@ -27,7 +27,7 @@ Min=0, max=600, default=5 seconds.
 
 ### guard_mode_yatut
 
-Guard special settings for “Я ТУТ ПОИСК”.
+Guard special settings for "Я ТУТ ПОИСК".
 
 ```json
 {

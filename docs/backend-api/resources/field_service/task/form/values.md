@@ -46,7 +46,7 @@ For **value** object description, see [form/form-fields-and-values/](../../form/
 
 #### errors
 
-*   101 – In demo mode this function is disabled (if current user has “demo” flag)
+*   101 – In demo mode this function is disabled (if current user has "demo" flag)
 *   201 – Not found in database (if task with the specified id does not exist)
 *   255 – Invalid task state (if task has already done or failed or no values was submitted)
 *   242 – There were errors during content validation (if given values are invalid for the form). Example:
@@ -71,7 +71,7 @@ For **value** object description, see [form/form-fields-and-values/](../../form/
 Validation error codes:
 
 *   1 – field is required but has no value
-*   2 – field value type doesn’t match field type
+*   2 – field value type doesn't match field type
 *   3 – field value is null
 *   4 – value index out of bounds
 *   5 – invalid value size

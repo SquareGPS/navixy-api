@@ -15,7 +15,7 @@ Downloads track points as KML/KMZ file for the specified track ID, tracker and t
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | string date/time | "2020-09-23 03:24:00" |
 | to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | string date/time | "2020-09-23 06:24:00" |
 | track_ids | Optional. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned. | array of int | `[123456, 234567]` | 
@@ -62,7 +62,7 @@ Gets a list of track descriptions for the specified tracker and time period.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | from | From time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. | string date/time | "2020-09-23 03:24:00" |
 | to | To time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. Specified date must be after "from" date. | string date/time | "2020-09-23 06:24:00" |
 | filter | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean | true |
@@ -224,10 +224,10 @@ Gets track points for the specified track ID, tracker and time period.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | string date/time | "2020-09-23 03:24:00" |
 | to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | string date/time | "2020-09-23 06:24:00" |
-| track_id | Optional. If specified, only points belonging to the specified track will be returned. If not, any valid track points between “from” and “to” will be returned. | int | 234567 |
+| track_id | Optional. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned. | int | 234567 |
 | include_gsm_lbs | Optional, default=`true`. If `false` && track_id not specified, GSM LBS points will be filtered out. | boolean | true |
 | point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000 | int | 3000 |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | false |
@@ -283,5 +283,5 @@ Gets track points for the specified track ID, tracker and time period.
 
 * 204 (Entity not found) – if there is no tracker with such ID belonging to authorized user.
 * 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
-* 211 (Requested time span is too big) – if interval between “from” and “to” is too big (maximum value specified in 
+* 211 (Requested time span is too big) – if interval between "from" and "to" is too big (maximum value specified in 
 API config).

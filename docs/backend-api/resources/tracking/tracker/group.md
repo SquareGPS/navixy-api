@@ -36,7 +36,7 @@ Assigns multiple trackers to the specified group.
 | :------ | :------ | :----- | :----- |
 | id | Group id, or 0 if trackers should be removed from any group. | int | 167 |
 
-| trackers | Array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | array of int | `[999199, 999919]` |
+| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | array of int | `[999199, 999919]` |
 
 #### examples
 
@@ -145,7 +145,7 @@ assigned to default group (0).
 
 ### list
 
-Gets all user tracker groups. There is always “default” unnamed group with id = 0. It cannot be modified, deleted, 
+Gets all user tracker groups. There is always "default" unnamed group with id = 0. It cannot be modified, deleted, 
 and is not returned by this API call.
 
 #### examples

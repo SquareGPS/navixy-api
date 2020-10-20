@@ -163,7 +163,7 @@ Where
         "append_zone_title":  {boolean} // optional, using only for a rule "inoutzone". Show or not a label of zone in a notification.
     }
     ```
-    * **type**=”**autocontrol**”
+    * **type**="**autocontrol**"
     Map of sub-rules settings.
     ```json
     {
@@ -226,7 +226,7 @@ Where
     }
     }
     ```
-    * **type**=”**driver_assistance**”
+    * **type**="**driver_assistance**"
     ```json
     {
         "forward_collision_enable" : {boolean}, // enable/disable notifications about forward collision warnings
@@ -234,13 +234,13 @@ Where
         "lane_departure_enabled" : ${boolean} // notifications about lane departures
     }
     ```
-    * **type**=”**fuel_level_leap**”
+    * **type**="**fuel_level_leap**"
     ```json
     {
        "sensor_id": 123
     }
     ```
-    * **type**=”**sensor_range**”
+    * **type**="**sensor_range**"
     ```json
     {
         "sensor_id": 123,
@@ -249,7 +249,7 @@ Where
         "threshold": 0.03 // (double) optional
     }
     ```
-    * **type**=”**route**”
+    * **type**="**route**"
     ```json
     {
        "allow_exit_at_endpoints": {boolean} // optional, disable notifications for deviations at start and end points

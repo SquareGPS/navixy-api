@@ -21,7 +21,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
 | name | description | type| format|
 | :------: | :------: | :-----:| :------:|
-| domain | dealer’s monitoring interface domain, e.g. “navixy.com“ | string | panel.navixy.com |
+| domain | dealer's monitoring interface domain, e.g. "navixy.com" | string | panel.navixy.com |
 
 #### example
 

@@ -120,7 +120,7 @@ Creates a sensor.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | sensor | [Sensor object](#sensor). | JSON object |
 
 #### examples
@@ -162,7 +162,7 @@ Deletes a sensor with `sensor_id` from the database.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | sensor_id | Sensor id. | int | 234567 |
 
 #### examples
@@ -201,7 +201,7 @@ List tracker sensors binded to tracker with specified id (`tracker_id` parameter
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 
@@ -254,7 +254,7 @@ Updates sensor.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | sensor | [Sensor object](#sensor). | JSON object |
 
 #### examples

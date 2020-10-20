@@ -84,5 +84,5 @@ Where **location** described in [data types description section](../../../gettin
     * `status_code` - int. OSRM status code (don't rely on it).
     * `message` - string. OSRM error message (don't rely on it).
     
-* 236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without “routing” tariff 
+* 236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without "routing" tariff 
 feature.

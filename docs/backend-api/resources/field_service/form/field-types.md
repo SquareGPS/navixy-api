@@ -18,7 +18,7 @@ field type-specific.
 
 ```json
 {
-   "id": "111-aaa-whatever", //arbitrary alphanumeric string (1 to 19 characters), unique across current form’s fields, used to link with values and its "parent" in template form
+   "id": "111-aaa-whatever", //arbitrary alphanumeric string (1 to 19 characters), unique across current form's fields, used to link with values and its "parent" in template form
    "label": "Name", //user-defined label, shown as field header, 1 to 100 printable characters
    "description": "Your full name", //field description, shown in smaller text under the header, 1 to 512 printable characters
    "required": true, //if true, form cannot be submitted without filling this field with valid value
@@ -33,7 +33,7 @@ field type-specific.
 
 Multiline auto-expanding text field
 
-**Note 1:** when value contains empty string, it’s considered empty, and thus valid when `required: false, min_length != 0`  
+**Note 1:** when value contains empty string, it's considered empty, and thus valid when `required: false, min_length != 0`  
 **Note 2:** combination `required: true, min_length: 0` is not allowed
 
 ##### type-specific parameters:
@@ -157,7 +157,7 @@ A date picker
 
 **type**: rating
 
-Rating with “stars”. Zero stars are not allowed.
+Rating with "stars". Zero stars are not allowed.
 
 ##### type-specific parameters:
 
@@ -216,7 +216,7 @@ Photograph attachment.
 
 **type**: signature
 
-A small image of customer’s signature (usually obtained via writing on screen with stylus)
+A small image of customer's signature (usually obtained via writing on screen with stylus)
 
 ##### type-specific parameters:
 
@@ -235,4 +235,4 @@ A small image of customer’s signature (usually obtained via writing on screen 
 
 **type**: separator
 
-Cosmetic, just to show header. Doesn’t contain any actual value. Always filled and valid. Cannot be required.
+Cosmetic, just to show header. Doesn't contain any actual value. Always filled and valid. Cannot be required.

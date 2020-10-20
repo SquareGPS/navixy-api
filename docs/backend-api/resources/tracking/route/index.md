@@ -61,4 +61,4 @@ Gets route points via specified route provider.
 
 * 215 (External service error).
 * 218 (Malformed external service parameters).
-* 236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without “routing” tariff feature.
+* 236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without "routing" tariff feature.

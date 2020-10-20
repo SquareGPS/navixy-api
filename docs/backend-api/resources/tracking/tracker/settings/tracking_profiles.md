@@ -160,7 +160,7 @@ ATrack tracking profile.
 * `tracking_angle` - optional int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=80, default=10.
 * `psm_mode` - optional int. Define the sleep level, 0 – no sleeping, 1- light sleep (GPS Off, GPRS On, G-sensor On), 2- deep sleep (GPS Off, GPRS Off, G-sensor On). Min=0, max=2, default=0.
 * `psm_interval` - optional int. Duration in seconds for the device to stay in the deep sleep mode. Min=30, max=65535x60, default=90x60.
-* `on_stop_tracking_interval` - int. Minimum time in seconds that must elapse before reporting next position while the ACC is in Off status. “acc” in control_mode must be set in order to use this time interval. Min=1, max=65535x10, default=15x60.
+* `on_stop_tracking_interval` - int. Minimum time in seconds that must elapse before reporting next position while the ACC is in Off status. "acc" in control_mode must be set in order to use this time interval. Min=1, max=65535x10, default=15x60.
 
 ### autofon
 
@@ -462,7 +462,7 @@ cGuard tracking profile.
 ### cguard_asset
 
 cGuard tracking profile for asset trackers.
-name: ‘cguard_asset’
+name: 'cguard_asset'
 
 ```json
 {
@@ -2228,7 +2228,7 @@ Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2450V, Xirgo XT-24
 ### yatut_poisk
 
 "Я ТУТ ПОИСК" tracking profile.
-name: ‘yatut_poisk’
+name: 'yatut_poisk'
 
 ```json
 {

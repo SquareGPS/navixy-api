@@ -103,6 +103,7 @@ Delete report schedule with the specified id.
 **required sub-user rights**: `reports`
 
 #### parameters
+
 | name | description | type |
 | :------ | :------ | :----- |
 | schedule_id | Id of the report schedule to delete. | int |

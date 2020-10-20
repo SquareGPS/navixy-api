@@ -50,7 +50,7 @@ GPS monitoring system. Lots of API calls created for manipulation of tracker and
     * `creation_date` - date/time. Date when the tracker registered.
     * `tariff_end_date` - date/time. Date of next tariff prolongation, or null.
     * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
-* `tag_binding` - object. List of attached tags. Appears only for “tracker/list“ call.
+* `tag_binding` - object. List of attached tags. Appears only for "tracker/list" call.
     * `tag_id` - int. An id of tag. Must be unique for a tracker.
     * `ordinal` - int. Number that can be used as ordinal or kind of tag. Must be unique for a tracker. Max value is 5.
 
@@ -68,8 +68,8 @@ Changes tracker's phone and setup new apn.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| phone | The phone number of the sim card inserted into device in international format without “+” sign. | string| "6156680000" |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| phone | The phone number of the sim card inserted into device in international format without "+" sign. | string| "6156680000" |
 | apn_name | The name of GPRS APN of the sim card inserted into device. | string | "fast.tmobile.com" |
 | apn_ user | The user of GPRS APN of the sim card inserted into device. | string | "tmobile" |
 | apn_password | The password of GPRS APN of the sim card inserted into device. | sting | "tmobile" |
@@ -110,7 +110,7 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -145,7 +145,7 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
 
 ### delete
 
-Deletes a tracker if it is “clone”. Will not work if specified id of the original tracker.
+Deletes a tracker if it is "clone". Will not work if specified id of the original tracker.
 
 **required sub-user rights**: `admin` (available only to master users).
 
@@ -153,7 +153,7 @@ Deletes a tracker if it is “clone”. Will not work if specified id of the ori
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -216,7 +216,7 @@ Gets last sensors and states values received from the device.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -361,7 +361,7 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -411,14 +411,14 @@ tracker/get_diagnostics.
 
 ### get_inputs
 
-Gets current state of tracker's digital inputs and “semantic” inputs (ignition, buttons, car alarms, etc.) 
+Gets current state of tracker's digital inputs and "semantic" inputs (ignition, buttons, car alarms, etc.) 
 binded to them (if any).
 
 #### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -469,13 +469,13 @@ List of `input types`:
 
 * **ignition** - Car's ignition. There can be only one sensor of this type.
 * **engine** - Engine's working status.
-* **mass** - Car's “ground”.
-* **car_alarm** - Expected to be “on” when car alarm triggered.
-* **sos_button** - An emergency “red” button.
-* **hood** - “on” if engine's hood is open.
-* **door** - “on” if car's door is open.
-* **car_lock** - “on” if car's central lock is open.
-* **custom** - user-defined type. In general, should have non-empty “name” field.
+* **mass** - Car's "ground".
+* **car_alarm** - Expected to be "on" when car alarm triggered.
+* **sos_button** - An emergency "red" button.
+* **hood** - "on" if engine's hood is open.
+* **door** - "on" if car's door is open.
+* **car_lock** - "on" if car's central lock is open.
+* **custom** - user-defined type. In general, should have non-empty "name" field.
 
 #### errors
 
@@ -490,7 +490,7 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -553,13 +553,13 @@ Gets last sensor values for sensors that are:
 
 - **metering**.
 - **not can- or obd-based**.
-- **not “fuel” sensors**.
+- **not "fuel" sensors**.
 
 #### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -610,7 +610,7 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -723,7 +723,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Id of trackers (aka “object_id”). Trackers must belong to authorized user and not be blocked. | array of int | `[999119, 999199]` |
+| trackers | Id of trackers (aka "object_id"). Trackers must belong to authorized user and not be blocked. | array of int | `[999119, 999199]` |
 | list_blocked | Optional. If `true` call returns list of blocked tracker IDs instead of error 208. Default is `false`. | boolean | true/false |
 | allow_not_exist | Optional. If `true` call returns list of nonexistent tracker IDs instead of error 217 or 201. Default is `false`. | boolean | true/false |
 
@@ -801,7 +801,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 
 ### list_models
 
-Gets all integrated tracker models (from “models" table).
+Gets all integrated tracker models (from "models" table).
 
 #### parameters
 
@@ -916,13 +916,13 @@ An id type used to determine the information needed to register device in our sy
 
 Possible values are:
 
-- **imei** – means device uses IMEI as its identifier, e.g. “356938035643809”. 
+- **imei** – means device uses IMEI as its identifier, e.g. "356938035643809". 
 See [Wikipedia article](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity). When needed, you should 
 pass only digits of IMEI, no spaces, minus signs, etc.
-- **meid** means device uses MEID consisting of 14 HEX digits as its identifier, e.g. “A10000009296F2”. 
+- **meid** means device uses MEID consisting of 14 HEX digits as its identifier, e.g. "A10000009296F2". 
 See [Wikipedia article](https://en.wikipedia.org/wiki/Mobile_equipment_identifier).
-- **id,n** – means device uses n-digit identifier (factory id with length n), for example, “id,7” means that you must 
-pass 7-digit number, for example “1234567”.
+- **id,n** – means device uses n-digit identifier (factory id with length n), for example, "id,7" means that you must 
+pass 7-digit number, for example "1234567".
 - **n,m** – n-digit generated id starting with m. This means that device has configurable ID and our platform generates 
 and configures it automatically. You don't need to pass any identifier during device registration in this case.
 
@@ -1010,7 +1010,7 @@ Set tags for a tracker. Tags must be created.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 | tag_bindings | List of **tag_binding** objects. | array of Json objects | `[{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}]` |
 
 #### examples
@@ -1041,7 +1041,7 @@ Execute this command to get current position of the device. The device must supp
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 | type | Optional. Default type sms. | string | "sms" |
 
 Request types:
@@ -1100,7 +1100,7 @@ The device must be preconfigured.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/location_request' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": "0", "imei": "35645587458999"}'
     ```
@@ -1108,7 +1108,7 @@ The device must be preconfigured.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tracker/location_request?hash=a6aa75587e5c59c32d347da438505fc3&label=Courier&group_id=0&imei=35645587458999
+    {{ extra.api_example_url }}/tracker/register_quick?hash=a6aa75587e5c59c32d347da438505fc3&label=Courier&group_id=0&imei=35645587458999
     ```
 
 #### response
@@ -1167,7 +1167,7 @@ Resends registration commands to the device. The panel must have installed SMS g
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 | device_id | Device ID that was used to register, e.g. IMEI. It can be used instead of `tracker_id` for models with a fixed ID.| string | "4568005588562" |
 | apn_name | The name of GPRS APN of this sim card inserted into device. | string | "fast.tmobile.com" |
 | apn_user | The user of GPRS APN of this sim card inserted into device. | string | "tmobile" |
@@ -1268,7 +1268,7 @@ As this device identified by IMEI, we include it as device ID (123451234512346).
 Also, we include **phone**, **apn_name**, **apn_user**, **apn_password** of the sim card installed in 
 device and **activation_code** since these parameters required by the plugin.
 
-You can try to “auto-detect” APN settings by phone number 
+You can try to "auto-detect" APN settings by phone number 
 using [apn_settings/read](apn_settings.md#read) API call.
 
 === "cURL"
@@ -1396,7 +1396,7 @@ See [special settings JSON object](./settings/special/index.md#read)
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 | command | Command that will be sent to device. Not Null. | JSON object | See format above |
 
 #### examples

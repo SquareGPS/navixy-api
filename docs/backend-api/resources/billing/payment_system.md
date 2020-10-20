@@ -57,7 +57,7 @@ Returns the estimate of the monthly payment amount
 ```
 
 ### mobile/pay
-Create bill using ‘mobile’ payment system (AKA Qiwi Bank)
+Create bill using 'mobile' payment system (AKA Qiwi Bank)
 
 **required subuser rights:** payment_create
 

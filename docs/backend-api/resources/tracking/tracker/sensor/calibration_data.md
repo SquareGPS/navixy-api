@@ -15,7 +15,7 @@ Gets calibration data for sensor.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | sensor_id | Id of the sensor. | int | 12345 |
 
 #### examples
@@ -60,9 +60,9 @@ Replaces the calibration data for a sensor.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | sensor_id | Id of the sensor. | int | 12345 |
-| data | Array of calibration data objects. | array of JSON object  | `[{“in”:0.0,”out”:0.0},{“in”:0.7,”out”:60.0}]` |
+| data | Array of calibration data objects. | array of JSON object  | `[{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]` |
 
 #### examples
 
@@ -71,7 +71,7 @@ Replaces the calibration data for a sensor.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/calibration_data/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "sensor_id": "12345", "data": [{“in”:0.0,”out”:0.0},{“in”:0.7,”out”:60.0}]}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "sensor_id": "12345", "data": [{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]}'
     ```
 
 #### response
@@ -95,13 +95,13 @@ If XML file contains information about multiple sensors, user must specify which
 **required sub-user rights:** `tracker_update`
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being an XML file upload 
-(with the name “file”).
+(with the name "file").
 
 #### parameters
 
 | name | description | type|
 | :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | sensor_id | Id of the sensor. | int |
 | file | A file upload containing LLSmonitor XML file. | file upload |
 
