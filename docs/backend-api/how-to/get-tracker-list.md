@@ -68,7 +68,7 @@ It will return to you
     * `creation_date` - date/time. Date when the tracker registered.
     * `tariff_end_date` - date/time. Date of next tariff prolongation, or null.
     * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
-* `tag_binding` - object. List of attached tags. Appears only for “tracker/list“ call.
+* `tag_binding` - object. List of attached tags. Appears only for "tracker/list" call.
     * `tag_id` - int. An id of tag. Must be unique for a tracker.
     * `ordinal` - int. Number that can be used as ordinal or kind of tag. Must be unique for a tracker. Max value is 5.
 

@@ -15,7 +15,7 @@ Gets tracking settings for the specified tracker.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 
@@ -60,7 +60,7 @@ Sends new tracking settings to the specified tracker.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | tracking_settings | Set of fields which differ from model to model. See [tracking profiles](./tracking_profiles.md)  for more information. | JSON object |
 
 #### examples

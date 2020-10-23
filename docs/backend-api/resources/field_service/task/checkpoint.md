@@ -72,7 +72,7 @@ Returned object also can include "external_id_counts" field see `task/route/crea
 #### errors
 
 *   201 – Not found in database (if task.tracker_id is not null and belongs to nonexistent tracker)
-*   236 – Feature unavailable due to tariff restrictions (if device’s tariff does not allow usage of tasks)
+*   236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks)
 
 
 
@@ -117,7 +117,7 @@ Get checkpoints belonging to user with given ids
 
 #### errors
 
-general types only
+[General](../../../getting-started.md#error-codes) types only.
 
 
 
@@ -148,7 +148,7 @@ where **checkpoint** described [here](#checkpoint).
 
 ### transmute
 
-Convert route checkpoint into a standalone task. If it’s the only checkpoint in the route, the route is deleted.
+Convert route checkpoint into a standalone task. If it's the only checkpoint in the route, the route is deleted.
 
 **required subuser rights**: task_update
 
@@ -198,4 +198,4 @@ Returned object also can include "external_id_counts" field see task/route/creat
 #### errors
 
 *   201 – Not found in database (if there is no task with such id)
-*   255 – Invalid task state (if current task state is not “unassigned” or “assigned”)
+*   255 – Invalid task state (if current task state is not "unassigned" or "assigned")

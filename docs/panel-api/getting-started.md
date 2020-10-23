@@ -58,7 +58,7 @@ For example, in on-premise installations, there is a default user with login
     ```
 
 
-And you’ll get answer like this:
+And you'll get answer like this:
 
 ```json
 {
@@ -90,7 +90,7 @@ For example:
 }
 ```
 
-The “description” field is just a human-readable hint, you should not check 
+The "description" field is just a human-readable hint, you should not check 
 its contents programmatically as it may change in the future.
 
 For more info, please see `account/auth`.
@@ -114,7 +114,7 @@ $ curl -X POST 'http://api.domain.com/panel/user/list/' \
 Every session (and thus, a hash key associated with it) has a limited 
 lifetime (30 days by default). So you should obtain new hash key periodically.
 
-If you will try to make a Panel API call with expired session hash, you’ll 
+If you will try to make a Panel API call with expired session hash, you'll 
 get the following error:
 
 ```json
@@ -132,9 +132,9 @@ In this case, just obtain new hash using `account/auth`.
 ### Panel API Permissions
 
 Every call to panel api requires a set (possibly empty) of permissions. 
-To determine if user is allowed to execute api call, user’s permissions 
-is compared with call’s required permissions. If user does not have at least 
-one required permission, the call is not executed and error “Operation not permitted” is returned.
+To determine if user is allowed to execute api call, user's permissions 
+is compared with call's required permissions. If user does not have at least 
+one required permission, the call is not executed and error "Operation not permitted" is returned.
 
 Each permission is defined as a pair of category (e.g. `trackers`) and operation (e.g. `read`).
 A set of permissions within one category is often grouped as in the following example:

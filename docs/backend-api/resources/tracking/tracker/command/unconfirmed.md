@@ -15,7 +15,7 @@ Gets number of commands in queue for the specified tracker.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 
@@ -59,7 +59,7 @@ Removes all pending SMS commands from the queue for the specified tracker.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 

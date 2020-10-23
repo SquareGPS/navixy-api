@@ -15,7 +15,7 @@ Gets trip detection settings for the specified tracker.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 
@@ -65,7 +65,7 @@ Updates trip detection settings for the specified tracker.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | min_idle_duration_minutes | Number of minutes the device must be idle before a trip considered finished. Min=1, max=1440. | int | 5 |
 | idle_speed_threshold | Speed (km/h) below which the device marked as being idle. Min=0, max=200. If 0 - will never idle. | int | 3 |
 | ignition_aware | Check ignition state to detect a trip. | boolean | false |

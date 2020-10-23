@@ -228,7 +228,7 @@ Session hash can be obtained via `user/auth` API call:
     `[1.7976931348623157 x 10^308, 4.9406564584124654 x 10^-324]`.
 *   `string` - string literals.
 *   `enum` - string literals from predefined set.
-*   `date/time` – is a string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user’s timezone).
+*   `date/time` – is a string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
 *   `local_time` – is a string containing local time in `HH:mm:ss` format.
 *   `location` – is json object contains geographical coordinates, e.g.
 ```json
@@ -249,7 +249,7 @@ Session hash can be obtained via `user/auth` API call:
 ### Error handling
 
 If an error occurs, API returns special error response. You can also detect error by checking 
-HTTP response code. If it’s not `200 OK`, you should parse and handle response body as an error response.
+HTTP response code. If it's not `200 OK`, you should parse and handle response body as an error response.
 In the event of error occurs, the response will be in the following format:
 ```json
 {

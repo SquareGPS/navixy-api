@@ -15,7 +15,7 @@ Gets LBS settings for the specified tracker.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 
@@ -57,7 +57,7 @@ Updates LBS settings for the specified tracker.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | max_radius | Max allowed radius for LBS points in meters. Min=0, max=10000. | int | 1000 |
 
 #### examples

@@ -60,8 +60,8 @@ API base path: `/task/route`
 *   201 – Not found in database (if there is no task with such id)
 *   204 – Entity not found (if there is no tracker with such id belonging to authorized user)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
-*   255 – Invalid task state (if current task state is not “unassigned” or “assigned”)
-*   236 – Feature unavailable due to tariff restrictions (if device’s tariff does not allow usage of tasks)
+*   255 – Invalid task state (if current task state is not "unassigned" or "assigned")
+*   236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks)
 
 
 
@@ -89,7 +89,7 @@ Minimal route object to create a new route must contain:
 }
 ```
 
-Also need checkpoints list in order of execution, checkpoints `from` and `to` must be agreed with each other i.e. checkpoint `to` cannot be before ‘from’ of preceding items.
+Also need checkpoints list in order of execution, checkpoints `from` and `to` must be agreed with each other i.e. checkpoint `to` cannot be before 'from' of preceding items.
 
 ```json
 {
@@ -136,7 +136,7 @@ If there nothing to return, then parameter "external_id_counts" will not be pres
 #### errors
 
 *   201 – Not found in database (if task.tracker_id is not null and belongs to nonexistent tracker)
-*   236 – Feature unavailable due to tariff restrictions (if device’s tariff does not allow usage of tasks)
+*   236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks)
 
 
 
@@ -170,10 +170,10 @@ Get all routes belonging to user with optional filtering.
 
 #### parameters
 
-*   **statuses** – **string[]**. (optional. default all) list of task statuses, e.g. [“unassigned”,”failed”]
+*   **statuses** – **string[]**. (optional. default all) list of task statuses, e.g. ["unassigned","failed"]
 *   **trackers** – **array of int**. (optional) ids of the trackers to which task is assigned
-*   **from** – **string**. (optional) show tasks which are actual AFTER this date, e.g. “2014-07-01 00:00:00”
-*   **to** – **string**. (optional) show tasks which are actual BEFORE this date, e.g. “2014-07-01 00:00:00”
+*   **from** – **string**. (optional) show tasks which are actual AFTER this date, e.g. "2014-07-01 00:00:00"
+*   **to** – **string**. (optional) show tasks which are actual BEFORE this date, e.g. "2014-07-01 00:00:00"
 *   **filter** – **string**. (optional) filter for task label and description<br>
     If **trackers**, **filter**, **from** or **to** is not passed or _null_ then appropriate condition not used to filter results.
 
@@ -188,7 +188,7 @@ Get all routes belonging to user with optional filtering.
 
 #### errors
 
-general types only
+[General](../../../../getting-started.md#error-codes) types only.
 
 
 
@@ -260,4 +260,4 @@ JSON object of the updated route with checkpoint_ids
 #### errors
 
 *   201 – Not found in database (if there is no task with such id)
-*   255 – Invalid task state (if current task state is not “unassigned” or “assigned”)
+*   255 – Invalid task state (if current task state is not "unassigned" or "assigned")

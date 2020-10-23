@@ -15,7 +15,7 @@ Reads counter of passed `type`.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | string enum | "odometer" |
 
 #### examples
@@ -63,10 +63,10 @@ Updates counter of passed `type`.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | string enum | "odometer"|
 | multiplier | A new value of counter multiplier. | float | 1.34 |
-| sensor_id | Id of the sensor, which must be used as the source of odometer data (in case when parameter “type” equals “odometer”). If “type” is not “odometer”, “sensor_id” must be null. | int | 123 |
+| sensor_id | Id of the sensor, which must be used as the source of odometer data (in case when parameter "type" equals "odometer"). If "type" is not "odometer", "sensor_id" must be null. | int | 123 |
 
 #### examples
 
@@ -97,7 +97,7 @@ Updates counter of passed `type`.
 * 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 * 219 (Not allowed for clones of the device) – if specified tracker is a clone.
 * 7 (Invalid parameters) –
- * if type is not “odometer”  and `sensor_id` is not null.
+ * if type is not "odometer"  and `sensor_id` is not null.
  * if sensor with specified `sensor_id` is not a metering sensor.
  * if sensor with specified `sensor_id` belongs to another tracker.
  * if `sensor_id` is negative.

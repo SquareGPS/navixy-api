@@ -40,9 +40,9 @@ Attach new form to the existing task or checkpoint. Form is always created on th
 
 #### errors
 
-*   201 – Not found in database (if there is no task or template with such id, or task has the “route” type)
+*   201 – Not found in database (if there is no task or template with such id, or task has the "route" type)
 *   247 – Entity already exists (if task already has form attached to it)
-*   255 – Invalid task state (if current task state is not “unassigned”, “assigned” or “arrived”)
+*   255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived")
 
 
 
@@ -67,8 +67,8 @@ All form data will be lost!
 
 #### errors
 
-*   201 – Not found in database (if there is no task with such id, or task has the “route” type, or it has no form attached)
-*   255 – Invalid task state (if current task state is not “unassigned”, “assigned” or “arrived”)
+*   201 – Not found in database (if there is no task with such id, or task has the "route" type, or it has no form attached)
+*   255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived")
 
 
 

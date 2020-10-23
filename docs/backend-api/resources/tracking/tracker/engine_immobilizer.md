@@ -18,7 +18,7 @@ Request to read the state of engine immobilizer.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 
@@ -63,7 +63,7 @@ Request to change the engine immobilizer state of the device. The device must be
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | enabled | `true` if immobilizer should be enabled. | boolean | true/false |
 
 #### examples

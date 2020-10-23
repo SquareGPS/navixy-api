@@ -15,7 +15,7 @@ Gets base settings for the specified tracker.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 
@@ -63,9 +63,9 @@ Updates the settings of the specified tracker.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | group_id | Tracker group id. 0 if tracker does not belong to any group. The specified group must exist. | int | 1 |
-| label | User-defined label for this tracker, e.g. “Courier”. Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string | “Courier” |
+| label | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string | "Courier" |
 
 #### examples
 

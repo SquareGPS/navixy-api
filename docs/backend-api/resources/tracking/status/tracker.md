@@ -17,7 +17,7 @@ Assign a status to the tracker.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | new_status_id | ID of the status. Must belong to status listing assigned to this tracker. | int | 5 |
 
 #### examples
@@ -73,7 +73,7 @@ Assign a status to the tracker.
 * 204 (Entity not found) – if there is no listing assigned to this tracker containing with such ID.
 * 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 (Not allowed for clones of the device) – if specified tracker is a clone.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature 
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
 available.
 * 263 (No change needed, old and new values are the same) – if new status is equal to current status of tracker.
 
@@ -85,7 +85,7 @@ Gets current assigned statuses for the specified trackers.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| trackers | List of the tracker’s IDs belonging to authorized user. | array of int | `[123456, 234567]` |
+| trackers | List of the tracker's IDs belonging to authorized user. | array of int | `[123456, 234567]` |
 
 #### examples
 
@@ -153,8 +153,8 @@ Gets current assigned statuses for the specified trackers.
 #### errors
 
 * 217 (Requested limit is too big) – limit is more than [maxHistoryLimit](../../../getting-started.md#constants).
-* 221 (Device limit exceeded) – if device limit set for the user’s dealer has been exceeded.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature
+* 221 (Device limit exceeded) – if device limit set for the user's dealer has been exceeded.
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature
  available.
 
 ### read
@@ -165,7 +165,7 @@ Gets current assigned status of the tracker.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 

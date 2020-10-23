@@ -14,7 +14,7 @@ Gets a list of chat messages.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
 | from | Optional. Start date/time of searching. Default value is now minus 7 days. | date/time | `yyyy-MM-dd HH:mm:ss` |
 | to | Optional. End date/time for searching. Default value is now. | date/time | `yyyy-MM-dd HH:mm:ss` |
 | limit | Optional. Limit of messages in list. Default and max limit is 1024. | int | 1024 |
@@ -72,7 +72,7 @@ Where **message** object is:
 * 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 * 214 – Requested operation or parameters are not supported by the device.
-* 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff without “chat” feature).
+* 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff without "chat" feature).
 
 ### mark_read_all
 
@@ -82,7 +82,7 @@ Marks all incoming chat messages as read for all or for given user trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Optional array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | array of int | `[999199, 999919]` |
+| trackers | Optional array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | array of int | `[999199, 999919]` |
 
 #### examples
 
@@ -157,7 +157,7 @@ Sends chat message to a specified tracker.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | message | Message text, not null, max size - 20000. | string | "Hello World" |
 
 #### examples
@@ -187,7 +187,7 @@ Sends chat message to a specified tracker.
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 * 214 – Requested operation or parameters are not supported by the device.
 * 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff with disabled reports – 
-(“has_reports” is false)).
+("has_reports" is false)).
 
 ### broadcast
 
@@ -197,7 +197,7 @@ Sends chat message to specified trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | `[999199, 999919]` |
+| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | `[999199, 999919]` |
 | message | Message text, not null, max size - 20000. | string | "Hello World" |
 
 #### examples
@@ -226,7 +226,7 @@ Sends chat message to specified trackers.
 #### errors
 
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features.
-* 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded).
+* 221 – Device limit exceeded (if device limit set for the user's dealer has been exceeded).
 
 ### updated/list
 
@@ -236,7 +236,7 @@ Gets date-times of last messages in chat of trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | [999199, 999919] |
+| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | [999199, 999919] |
 
 #### examples
 
@@ -266,11 +266,11 @@ Gets date-times of last messages in chat of trackers.
 
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or 
 doesn't have required tariff features.
-* 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded).
+* 221 – Device limit exceeded (if device limit set for the user's dealer has been exceeded).
 
 ### unread/count
 
-Gets count of user’s unread chat messages grouped by tracker id.
+Gets count of user's unread chat messages grouped by tracker id.
 
 #### examples
 
@@ -304,4 +304,4 @@ Gets count of user’s unread chat messages grouped by tracker id.
 
 #### errors
 
-* 236 – Feature unavailable due to tariff restrictions (if there is no tracker which has a tariff with “chat” feature).
+* 236 – Feature unavailable due to tariff restrictions (if there is no tracker which has a tariff with "chat" feature).

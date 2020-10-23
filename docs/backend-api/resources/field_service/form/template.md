@@ -77,7 +77,7 @@ Create new form template.
 
 #### errors
 
-*   101 – In demo mode this function is disabled (if current user has “demo” flag)
+*   101 – In demo mode this function is disabled (if current user has "demo" flag)
 
 
 ### read
@@ -121,7 +121,7 @@ Update existing form template.
 #### errors
 
 *   201 – Not found in database (if template with the specified id does not exist)
-*   101 – In demo mode this function is disabled (if current user has “demo” flag)
+*   101 – In demo mode this function is disabled (if current user has "demo" flag)
 
 
 ### delete
@@ -143,7 +143,7 @@ Delete form template.
 #### errors
 
 *   201 – Not found in database (if template with the specified id does not exist)
-*   101 – In demo mode this function is disabled (if current user has “demo” flag)
+*   101 – In demo mode this function is disabled (if current user has "demo" flag)
 
 
 ### stats/read

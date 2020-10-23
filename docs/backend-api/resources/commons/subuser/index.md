@@ -9,12 +9,12 @@ API path: `/subuser`.
 
 Contains API calls related to sub-users, that is, additional users who have access to your account and monitoring assets. Sub-users is convenient way for corporate clients to provide multiple employees, who have different roles and priveleges, with access to the monitoring system.
 
-“Usual” user account is called “master account” in relation to sub-users.
+"Usual" user account is called "master account" in relation to sub-users.
 
-Every sub-user can operate on a subset of trackers from your “master account”. Every entity, which is associated with unavailable trackers, also becomes hidden from sub-user. This is called “scoping”.
-Sub-users’s rights can also be limited to prevent unauthorized changes to your data and application setting.
+Every sub-user can operate on a subset of trackers from your "master account". Every entity, which is associated with unavailable trackers, also becomes hidden from sub-user. This is called "scoping".
+Sub-users's rights can also be limited to prevent unauthorized changes to your data and application setting.
 
-NOTE: Sub-users cannot have any “exclusive” objects. Every tracker, rule, task, etc., even created or edited by sub-user, still belongs to your account.
+NOTE: Sub-users cannot have any "exclusive" objects. Every tracker, rule, task, etc., even created or edited by sub-user, still belongs to your account.
 The only exception is reporting system: every sub-user has its own reports pool and reports schedule.
 
 # Sub-user object structure
@@ -70,7 +70,7 @@ Delete sub-user. This operation cannot be reversed.
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 *   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user.
 
 ### list
@@ -98,7 +98,7 @@ Subuser object is described [here](#sub-user-object-structure).
 #### errors
 
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 
 ### register
 
@@ -109,8 +109,8 @@ Allows you to create sub-users associated to your master account.
 
 #### parameters
 
-* **user** - **JSON object**. <subuser> object without “id” field
-* **password** - **printable string**. 6 to 20 characters. New sub-user’s password.
+* **user** - **JSON object**. <subuser> object without "id" field
+* **password** - **printable string**. 6 to 20 characters. New sub-user's password.
 
 #### response
 
@@ -125,7 +125,7 @@ Subuser object is described [here](#sub-user-object-structure).
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 *   201 – Not found in database – when specified security_group_id does not exist
 *   206 – login already in use (if this login email already registered)
 
@@ -137,7 +137,7 @@ Update subuser data.
 **required subuser rights:** admin (available only to master users)
 
 #### parameters
-* **user** - **JSON object**. <subuser> object with “id” field
+* **user** - **JSON object**. <subuser> object with "id" field
 
 #### response
 
@@ -151,6 +151,6 @@ Subuser object is described [here](#sub-user-object-structure).
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 *   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user. Also when specified security_group_id does not exist
 
