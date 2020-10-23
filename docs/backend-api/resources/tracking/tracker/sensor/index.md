@@ -73,7 +73,7 @@ Discrete input
 
 ### batch_list
 
-List tracker sensors binded to trackers with specified identificators (parameter `trackers`).
+List tracker sensors bound to trackers with specified identificators (parameter `trackers`).
 
 There exist a similar method for working with a single tracker - [list](#list).
 
@@ -195,7 +195,7 @@ Deletes a sensor with `sensor_id` from the database.
 
 ### list
 
-List tracker sensors binded to tracker with specified id (`tracker_id` parameter).
+List tracker sensors bound to tracker with specified id (`tracker_id` parameter).
 
 #### parameters
 

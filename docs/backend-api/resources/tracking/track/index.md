@@ -126,7 +126,7 @@ where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
 * `points` - int. Total number of points in a track, e.g. 724.
 * `avg_speed` - int. Average speed in km/h, e.g. 70.
 * `event_count` - int. Number of events on this track. Field will be omitted if "count_events" is `false`.
-* `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle binded to tracker 
+* `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle bound to tracker 
 or no normAvgFuelConsumption defined in a vehicle.
 * `type` - string enum. Used to distinguish this track type from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
@@ -182,7 +182,7 @@ or no normAvgFuelConsumption defined in a vehicle.
 * `points` - int. Total number of points in a track, e.g. 724.
 * `avg_speed` - int. Average speed in km/h, e.g. 70.
 * `event_count` - int. Number of events on this track. Field will be omitted if "count_events" is `false`.
-* `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle binded to tracker 
+* `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle bound to tracker 
 or no normAvgFuelConsumption defined in a vehicle.
 * `type` - string enum. Used to distinguish this track type from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS flag.

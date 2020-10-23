@@ -143,7 +143,7 @@ Creates a new vehicle.
 
 #### errors
 
-* 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already binded to this tracker_id.
+* 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 
 ### delete
 
@@ -365,5 +365,5 @@ Updates existing vehicle.
 #### errors
 
 * 201 – (Not found in the database) If there is no vehicle with such an id.
-* 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already binded to this tracker_id.
+* 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 * 261 – (Entity has external links) When `tracker_id` changes and there are some service tasks associated with this vehicle.

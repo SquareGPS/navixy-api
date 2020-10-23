@@ -79,7 +79,7 @@ Create new employee.
 
 #### errors
 
-*   247 – Entity already exists, if tracker\_id!=null and exists employee that already binded to this tracker\_id
+*   247 – Entity already exists, if tracker\_id!=null and exists employee that already bound to this tracker\_id
 
 
 ### read
@@ -123,7 +123,7 @@ Update existing employee.
 #### errors
 
 *   201 – Not found in database (if there is no employee with such id)
-*   247 – Entity already exists, if tracker\_id!=null and exists employee that already binded to this tracker\_id
+*   247 – Entity already exists, if tracker\_id!=null and exists employee that already bound to this tracker\_id
 
 ### delete
 

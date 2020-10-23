@@ -412,7 +412,7 @@ tracker/get_diagnostics.
 ### get_inputs
 
 Gets current state of tracker's digital inputs and "semantic" inputs (ignition, buttons, car alarms, etc.) 
-binded to them (if any).
+bound to them (if any).
 
 #### parameters
 

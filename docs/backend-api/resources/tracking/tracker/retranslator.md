@@ -65,7 +65,7 @@ Creates or updates binding.
 
 ### list
 
-List tracker retranslators binded to tracker with ID=`tracker_id`.
+List tracker retranslators bound to tracker with ID=`tracker_id`.
 
 #### parameters
 
