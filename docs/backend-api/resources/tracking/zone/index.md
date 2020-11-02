@@ -136,7 +136,8 @@ For `batch` parameter:
         "lng": 16.3699642
       },
       "tags": []
-    }]
+    }],
+    "limit_exceeded": false 
 }
 ```
 
@@ -147,6 +148,7 @@ For `batch` parameter:
 * `radius` - int. Circle radius in meters.
 * `center` - location object. Location of circle center.
 * `tags` - Array of int. Array of tag IDs.
+* `limit_exceeded` - boolean, true if given batch constrained by limit 
 
 #### response with errors object
 
@@ -168,7 +170,8 @@ For `batch` parameter:
         "error": "Location should be correct with 'lat' and 'lng' not null"
       }],
       "tags" : []
-    }]
+    }],
+    "limit_exceeded": false  
 }
 ```
 

@@ -367,3 +367,41 @@ Updates existing vehicle.
 * 201 – (Not found in the database) If there is no vehicle with such an id.
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 * 261 – (Entity has external links) When `tracker_id` changes and there are some service tasks associated with this vehicle.
+
+### batch_convert
+Convert batch of tab-delimited vehicles and return list of checked vehicles with errors.
+
+**Required subuser rights:** `vehicle_update`.
+
+#### parameters
+name | description | type
+--- | --- | ---
+batch | batch of tab-delimited vehicles. | String
+file_id | preloaded file ID | String
+fields | Optional, array of field names, default is `["label", "model", "reg_number", "fuel_grade"]` | array of strings
+geocoder | geocoder type | String
+
+
+If `file_id` is set – `batch` parameter will be ignored.
+
+#### response
+
+```json
+{
+    "success": true,
+    "list": [ <checked_vehicle>, ... ],
+    "limit_exceeded": false // true if given batch constrained by limit      
+}
+```
+
+where `checked_vehicle` is:
+
+```json
+{
+    ... // all fields from <vehicle>
+    "errors": <array_of_objects> // optional
+}
+```
+
+#### errors
+* 234 (Invalid data format)

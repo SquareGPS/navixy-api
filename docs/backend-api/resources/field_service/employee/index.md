@@ -153,7 +153,7 @@ Convert batch of tab-delimited employees and return list of checked employees wi
 #### parameters
 name | description | type
 --- | --- | ---
-batch | batch of tab-delimited places. | String
+batch | batch of tab-delimited employees. | String
 file_id | preloaded file ID | String
 fields | Optional, array of field names, default is `["first_name", "middle_name", "last_name", "email", "phone"]` | array of strings
 geocoder | geocoder type | String
@@ -166,7 +166,8 @@ If `file_id` is set – `batch` parameter will be ignored.
 ```json
 {
     "success": true,
-    "list": [ <checked_employee>, ... ]
+    "list": [ <checked_employee>, ... ],
+    "limit_exceeded": false // true if given batch constrained by limit      
 }
 ```
 
@@ -175,8 +176,7 @@ where `checked_employee` is:
 ```json
 {
     ... // all fields from <employee>
-    "errors": <array_of_objects>, // optional
-    "tag_names": <array_of_strings> // optional
+    "errors": <array_of_objects> // optional
 }
 ```
 

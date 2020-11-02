@@ -111,7 +111,8 @@ In case of location_check_mode==entity_location – vehicle_ids will be ignored.
 ```json
 {
     "success": true,
-    "list": [ <checked_task>, ... ]
+    "list": [ <checked_task>, ... ],
+    "limit_exceeded": false // true if given batch constrained by limit
 }
 ```
 

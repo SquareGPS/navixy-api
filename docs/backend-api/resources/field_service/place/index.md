@@ -169,7 +169,8 @@ If `file_id` is set – `batch` parameter will be ignored.
 ```json
 {
     "success": true,
-    "list": [ <checked_place>, ... ]
+    "list": [ <checked_place>, ... ],
+    "limit_exceeded": false // true if given batch constrained by limit
 }
 ```
 
