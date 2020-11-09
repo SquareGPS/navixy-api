@@ -86,7 +86,7 @@ Get all tags belonging to user with optional filtering.
 
 
 ### search
-Search entities that bound with specified tags.
+Search entities that bound with all of specified tags.
 
 #### parameters
 * **tag_ids** - (Array or int) tag IDs.
