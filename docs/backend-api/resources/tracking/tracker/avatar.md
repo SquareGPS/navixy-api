@@ -15,7 +15,7 @@ e.g. `{{ extra.api_example_url }}/static/tracker/avatars/abcdef123456789.png`.
 **required sub-user rights:** `tracker_update`
 
 **MUST** be a POST multipart request (multipart/form-data),
-with one of the parts being an image file upload (with the name “file”).
+with one of the parts being an image file upload (with the name "file").
 
 File part **mime** type must be one of (see: [source:api-server/src/main/java/com/navixy/common/util/ImageFormats.java ImageFormats.IMAGE_FORMATS]):
 
@@ -27,7 +27,7 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 
 | name | description | type|
 | :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | file | image file. | string |
 | redirect_target | (optional) URL to redirect If redirect_target passed return redirect to ?response=. | URL |
 

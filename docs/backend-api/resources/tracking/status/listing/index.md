@@ -17,7 +17,7 @@ Creates new empty status listing.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| listing | [status_listing](../../status/index.md#Status_listing object structure) object without “id” and “entries” fields. | JSON object |
+| listing | [status_listing](../../status/index.md#Status_listing object structure) object without "id" and "entries" fields. | JSON object |
 
 #### examples
 
@@ -42,7 +42,7 @@ Creates new empty status listing.
 
 #### errors
 
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature 
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
 available.
 * 268 (Over quota) – if the user's quota for listings exceeded.
 
@@ -83,7 +83,7 @@ Deletes status listing.
 #### errors
 
 * 201 (Not found in the database) – if listing with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature 
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
 available.
 
 ### list
@@ -125,7 +125,7 @@ Gets status listings belonging to authorized user.
 
 #### errors
 
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature 
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
 available.
 
 ### update
@@ -140,7 +140,7 @@ Updates status listing properties.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| listing | [status_listing](../../status/index.md#Status_listing object structure) object with “id” and “entries” fields. | JSON object |
+| listing | [status_listing](../../status/index.md#Status_listing object structure) object with "id" and "entries" fields. | JSON object |
 
 #### examples
 
@@ -161,7 +161,7 @@ Updates status listing properties.
 #### errors
 
 * 201 (Not found in the database) – if status listing with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature
  available.
 * 262 (Entries list is missing some entries or contains nonexistent entries) – if entries does not contain full set of
  status IDs associated with this status listing, or if it contains nonexistent status IDs.

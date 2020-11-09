@@ -57,7 +57,7 @@ For "plugin" object structure, see [plugin/](#plugin).
 
 #### errors
 
-* general types only
+* [General](../../../getting-started.md#error-codes) types only.
 
 #### Standalone-specific:
 

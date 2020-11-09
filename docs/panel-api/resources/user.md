@@ -1,12 +1,29 @@
 ---
-title: /user
-description: /user
+title: User
+description: User
 ---
 
+# User
 
-# Data structures
+Base path: `/user`.
+
+Resource specific actions:
+
+* [/user/change_password](#change_password)
+* [/user/corrupt](#corrupt)
+* [/user/create](#create)
+* [/user/export](#export)
+* [/user/list](#list)
+* [/user/update](#update)
+* [/user/read](#read)
+* [/user/session/create](#session-create)
+* [/user/transactions/list](#transactions-list)
+* [/user/transactions/change_balance](#transactions-change_balance)
+
+
+## Data structures
  
-** User object structure **
+User object structure:
 ```json
 { 
     "dealer_id": 5001,                // dealer id
@@ -33,74 +50,85 @@ description: /user
     "tin": ${string},                 // Taxpayer identification number aka "VATIN"
  	"okpo_code": ${string},           // All-Russian Classifier of Enterprises and Organizations, used in Russia for "legal_entity" / "sole_trader"
     "iec": ${string},                 // Industrial Enterprises Classifier aka "KPP" (used in Russia. for "legal_entity" only)
+
+    // Next fields are read-only, they should not be used in user/create(..) or user/update(..):
     "id": 38935,                      // user id
-    //this fields are read-only, they should not be used in user/update(..)
     "balance" : 10.01,                // user balance
     "bonus": 0,                       // user bonus balance
     "creation_date" : "2014-03-01 13:00:00", // date/time when user was created, in UTC
-	"trackers_count": 10 //user trackers count
+	"trackers_count": 10,             // user trackers count
+    "comment": "blah"                 // comment about user (when creating and editing, the field must be separate from this object)
 }
 ```
 
-** Discount object structure **
+Discount object structure:
 
 ```json
 {
-    "value": 5.5, //personal discount percent, min 0 max 100
-    "min_trackers": 10, //min active trackers to apply discount, min 0
-    "end_date": "2017-03-01", //discount end date, null means open date, nullable
-    "strategy": "sum_with_progressive" // one of no_summing, sum_with_progressive
-  }
+    "value": 5.5,
+    "min_trackers": 10, 
+    "end_date": "2017-03-01",
+    "strategy": "sum_with_progressive"
+}
 ```
-  
-## change_password
 
-`change_password(user_id, password)`
+where
+
+* `value` - personal discount percent, min 0 max 100.
+* `min_trackers` - min active trackers to apply discount, min 0.
+* `end_date` - discount end date, `null` means open date, nullable.
+* `strategy` - one of "no_summing", "sum_with_progressive".
+
+## API methods
+
+### change_password
+
+Path: `/user/change_password` 
 
 Change password of the user.
 
-** Parameters **
+#### Parameters
 
 | Name | Description  | Type |
 | --- | --- | --- |
 | user_id |	id of the user | Int |
 | password |	User password, 6 to 20 printable characters | String |
 
-** Required permissions **
+#### Permissions
 
 * `users: "update"`
 
-** Return **
+#### Response
 
 ```json
 { "success": true }
 ```
 
-** Errors **
+#### Errors
 
 * 201 – Not found in database (if specified user does not exist or belongs to different dealer)
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## corrupt
+### corrupt
 
-`corrupt(user_id, login)`
+Path: `/user/corrupt`
 
 Mark user and its sub users and trackers as deleted and corrupt all user trackers.
 login parameter must match user login.
 
-** Required permissions **
+#### Permissions
 
 * `users: "corrupt"`
 
-** Return **
+#### Response
 
 * `{"success": true}`
 
-** Errors **
+#### Errors
 
 * 201 – Not found in database (if user was not found)
-* 252 – Device already corrupted (if some of user tracker already corrupted)
-* 253 – Device has clones (if some of user tracker has clone)
+* 252 – Device already corrupted (if some of user's tracker already corrupted)
+* 253 – Device has clones (if some of user's tracker has a clone)
 
 ```json
 {
@@ -112,43 +140,49 @@ login parameter must match user login.
 }
 ```
 
-## create
+### create
 
-** Required permissions **
+Path: `/user/create`
 
-```json
+#### Permissions 
+
+```
 users: "create"
-users: "global" // optional. allow to create users of users, not only owned 
-                // by current dealer (use user.dealer_id parameter for other owners).
+users: "global" // optional. allow to create users of users, not only owned by current dealer (use user.dealer_id parameter for other owners).
 ```
 
-** Parameters **
+#### Parameters
 
 | Name | Description  | Type |
 | --- | --- | --- |
-| `user` |	user object without the "id" and "dealer_id" fields	| JSON object |
+| `user` | user object without the `id`, `dealer_id` and `comment` fields | JSON object |
 | `time_zone` |	User timezone (e.g. "Europe/Moscow" ) | String |
 | `locale` |	User locale (e.g. "en_US") | String |
 | `password` |	User password, 6 to 20 printable characters | String |
-| `discount` |	discount object | JSON object |
+| `discount` |	Discount object | JSON object |
+| `comment` |	Comment | String, max length 255, only printable characters |
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
-** Return **
+#### Response
 
 ```json
 {
     "success": true, 
-    "id" : 15534 // id of the created user
+    "id" : 15534
 }
 ```
 
-** Errors **
+where `id` -  ID of the created user.
+
+#### Errors
 
 * 206 (Login already in use) – if this email already registered
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## export
+### export
+
+Path: `/user/export`
 
 Returns list of all users belonging to dealer as file.
 
@@ -159,11 +193,11 @@ entities will be returned only if filter string is contained within one of the f
 `registered_country`, `registered_index`, `registered_region`, `registered_city`, `registered_street_address`,
 `tin`, `iec`, `legal_name`.
 
-** Required permissions **
+#### Permissions
 
 * `users: "read"`
 
-** Parameters **
+#### Parameters
 
 | Name | Description  | Type |
 | --- | --- | --- |
@@ -178,16 +212,18 @@ entities will be returned only if filter string is contained within one of the f
 
 About user object structure see [above](#data-structures).
 
-** Return **
+#### Response
 
 XLSX or CSV file
 
-** Errors **
+#### Errors
 
 * Only [standard errors](../../backend-api/getting-started.md#error-codes)
 
 
-# list
+### list
+
+Path: `/user/list`
 
 Returns list of all users belonging to dealer.
 
@@ -198,11 +234,11 @@ entities will be returned only if filter string is contained within one of the f
 `registered_country`, `registered_index`, `registered_region`, `registered_city`, `registered_street_address`,
 `tin`, `iec`, `legal_name`.
 
-** Required permissions **
+#### Permissions
 
 * `users: "read"`
 
-** Parameters **
+#### Parameters
 
 | Name | Description  | Type |
 | --- | --- | --- |
@@ -213,7 +249,7 @@ entities will be returned only if filter string is contained within one of the f
 | `offset` | Starting offset, used for pagination | int, optional (default: 0) |
 | `hide_inactive` | If true only activated users will be returned |  boolean, optional (default: false) |
 
-** Return **
+#### Response
 
 ```json
 {
@@ -225,25 +261,27 @@ entities will be returned only if filter string is contained within one of the f
 
 About user object structure see [above](#data-structures).
 
-** Errors **
+#### Errors
 
 * Only [standard errors](../../backend-api/getting-started.md#error-codes)
 
-## read
+### read
 
-Returns user info by it’s id.
+Path: `/user/read`
 
-** Required permissions **
+Returns user info by user ID.
+
+#### Permissions
 
 * `users: "read"`
 
-** Parameters **
+#### Parameters
 
 | Name | Description  | Type |
 | --- | --- | --- |
 | `user_id` | | int |
 
-** Return **
+#### Response
 
 ```json
 {
@@ -255,51 +293,54 @@ Returns user info by it’s id.
 
 About user object structure see [above](#data-structures).
 
-** Errors **
+#### Errors
 
 * 201 (Not found in database) – when user with specified id not found or belongs to other dealer.
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## update
+### update
+
+Path: `/user/update`
 
 Updates existing user with new field values (see user [above](#data-structures)). User must 
 exist and must belong to authorized dealer. Changing of legal_type do not permitted, i.e. 
 this field will not be changed.
 
-** Required permissions **
+#### Permissions
 
 * `users: "update"`
 
-** Parameters **
+#### Parameters
 
 | Name | Description  | Type |
 | --- | --- | --- |
-| user | user |  JSON object
-| discount | discount |  JSON object
+| `user` | User object without a `comment` field | JSON object |
+| `discount` | Discount |  JSON object
+| `comment` | Comment | String, max length 255, only printable characters |
 
 About user and discount object structure see [above](#data-structures).
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
-** Return **
+#### Response
 
 ```json
 { "success": true }
 ```
 
-** Errors **
+#### Errors
 
 * 201 (Not found in database) – if specified user does not exist or belongs to different dealer.
-* 206 (Login already in use) – if specified “login” is used by another user.
+* 206 (Login already in use) – if specified "login" is used by another user.
 * [Standard errors](../../backend-api/getting-started.md#error-codes).
 
-## session/
+### Session create
 
-### create
+Path: `/user/session/create`
 
 Creates an interface session for specified user and returns the hash for the created session.
 
-** Required permissions **
+#### Permissions
 
 ```
 users: "read"
@@ -307,42 +348,44 @@ user_sessions: "create"
 user_sessions: "global" // optional. allow to create sessions of users, not only owned by current dealer.
 ```
 
-** Parameters **
+#### Parameters
 
 | Name | Description  | Type |
 | --- | --- | --- |
 | `user_id` | ID of monitoring user | int |
 
-** Return **
+#### Return
 
 ```json
 {
     "success": true,
-    "hash" : "a2caa32267f028bd41b982980467132c" // hash of the created session
+    "hash" : "a2caa32267f028bd41b982980467132c"
 }
 ```
 
-** Errors **
+where `hash` - hash of the created session.
+
+#### Errors
 
 * 201 (Not found in database) – if specified user does not exist or belongs to different dealer.
 * [Standard errors](../../backend-api/getting-started.md#error-codes).
 
-## transaction/
+### Transactions change_balance
 
-### change_balance
+Path: `/user/transaction/change_balance`
 
 Change user balance (increase or decrease) or bonus and write this change in transactions (type = payment, subtype = partner).
 
 New balance (bonus) must be not negative.
 
-** Required permissions **
+#### Permissions
 
 ```
 users: "update"
 transactions: "create"
 ```
 
-** Parameters **
+#### Parameters
 
 | Name | Description  | Type |
 | --- | --- | --- |
@@ -351,39 +394,41 @@ transactions: "create"
 | type | Type of balance to change ("balance" or "bonus") | string |
 | text | description of transaction | string(min length is 5 chars) |
 
-** Return **
+#### Response
 
 ```json
 { "success": true }
 ```
 
-** Errors **
+#### Errors
 
 * 201 – Not found in database – If user not found or not owned by current dealer.
 * 251 – Insufficient funds(403) – If user have not enough funds to withdraw passed (negative) amount.
 * [Standard errors](../../backend-api/getting-started.md#error-codes).
 
-### list
+### Transactions list
+
+Path: `/user/transaction/list`
 
 Same as [/transaction/list](../../backend-api/resources/billing/transaction.md#list) from main api.
 
-** Required permissions **
+#### Permissions
 
 ```
 users: "read"
 transactions: "read"
 ```
 
-** Parameters **
+#### Parameters
 
 | Name | Description  | Type |
 | --- | --- | --- |
 | `user_id` | id of user whom transactions listed. must be owned by current dealer | int
 | `from` | start date/time for searching | date/time
-| `to` | end date/time for searching. must be after “from” date  | date/time
-| `limit` | maxumum number of returned transactions (optional) | int
+| `to` | end date/time for searching. must be after "from" date  | date/time
+| `limit` | maximum number of returned transactions (optional) | int
 
-** Return **
+#### Return
 
 ```json
 {
@@ -393,10 +438,10 @@ transactions: "read"
         "description": ,  // transaction description, e.g. "Recharge bonus balance during tracker registration"
         "type": ,         // type, e.g. "bonus_charge"
         "subtype": ,      // subtype, e.g. "register"
-        "timestamp": , // date/time at which transaction was created, e.g. "2013-08-02 08:16:40"
-        "user_id": ,         // user Id, e.g. 12203
-        "dealer_id": ,       // dealer Id, e.g. 5001
-        "tracker_id": ,      // tracker id, e.g., 3036, or 0 if transaction is not associated with tracker
+        "timestamp": ,    // date/time at which transaction was created, e.g. "2013-08-02 08:16:40"
+        "user_id": ,      // user Id, e.g. 12203
+        "dealer_id": ,    // dealer Id, e.g. 5001
+        "tracker_id": ,   // tracker id, e.g., 3036, or 0 if transaction is not associated with tracker
         "amount": ,       // amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units were removed from user`s balance
         "new_balance": ,  // user`s money balance after transaction, e.g. 800.0000
         "old_balance": ,  // user`s money balance before transaction, e.g. 810.0000
@@ -408,7 +453,7 @@ transactions: "read"
 }
 ```
 
-** Errors **
+#### Errors
 
 * 201 – Not found in database (if user not found or not owned by current dealer)
 * [Standard errors](../../backend-api/getting-started.md#error-codes).

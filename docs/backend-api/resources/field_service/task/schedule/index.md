@@ -111,7 +111,7 @@ Create new task schedule entry.
 *   201 – Not found in database (if schedule.tracker_id belongs to nonexistent tracker)
 *   204 – Entity not found (if schedule.form_template_id belongs to nonexistent form template)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
-*   236 – Feature unavailable due to tariff restrictions (if device’s tariff does not allow usage of tasks)
+*   236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks)
 
 
 
@@ -158,7 +158,7 @@ Also this call returns all unassigned task schedules.
 
 #### errors
 
-general types only
+[General](../../../../getting-started.md#error-codes) types only.
 
 ### read
 
@@ -180,7 +180,7 @@ Get task, route or checkpoint schedule by id
 
 #### errors
 
-general types only
+[General](../../../../getting-started.md#error-codes) types only.
 
 ### update
 
@@ -205,4 +205,4 @@ Update existing task schedule.
 *   201 – Not found in database (if schedule.tracker_id belongs to nonexistent tracker)
 *   204 – Entity not found (if there is no task schedule with specified id)
 *   208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason)
-*   236 – Feature unavailable due to tariff restrictions (if device’s tariff does not allow usage of tasks)
+*   236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks)

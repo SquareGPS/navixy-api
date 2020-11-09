@@ -50,7 +50,7 @@ Gets all departments belonging to user.
 *   7 – Invalid parameters
 *   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
 *   217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
-*   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
+*   221 – Device limit exceeded (if device limit set for the user's dealer has been exceeded)
 
 
 ### create
@@ -81,7 +81,7 @@ Creates a new department with specified parameters. Required subuser rights: `em
 *   7 – Invalid parameters
 *   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
 *   217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
-*   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
+*   221 – Device limit exceeded (if device limit set for the user's dealer has been exceeded)
 
 
 ### update

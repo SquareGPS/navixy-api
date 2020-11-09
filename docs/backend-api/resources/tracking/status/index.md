@@ -6,7 +6,7 @@ description: Status
 # Status
 
 Statuses used to track current activity for employees (in fact, of tracking devices owned by employees). 
-The simplest example is “busy” | “not busy”. This is a status listing consisting of two elements. Different trackers 
+The simplest example is "busy" | "not busy". This is a status listing consisting of two elements. Different trackers 
 can be assigned different status lists.
 
 API base path: `/status/`
@@ -80,7 +80,7 @@ Creates new possible status for the specified status listing.
 #### errors
 
 * 201 (Not found in the database) – if listing with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature 
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
 available.
 * 268 (Over quota) – if the user's quota for statuses exceeded.
 
@@ -121,7 +121,7 @@ Deletes status entry.
 #### errors
 
 * 201 (Not found in the database) – if status with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff feature 
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
 available.
 
 ### list
@@ -171,7 +171,7 @@ Gets statuses belonging to the specified status listing.
 
 #### errors
 
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” tariff 
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff 
 feature available.
 
 ### update
@@ -205,5 +205,5 @@ Updates status properties.
 #### errors
 
 * 201 (Not found in the database) – if status with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with “statuses” 
+* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" 
 tariff feature available.

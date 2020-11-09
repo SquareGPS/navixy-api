@@ -103,7 +103,7 @@ Convert batch of tab-delimited circle zones and return list of checked zones wit
 | geocoder | Optional. Geocoder type. | string enum |
 | default_radius | Optional. Radius for point, default is 100. | int |
 
-If ‘file_id’ is set – ‘batch’ parameter will be ignored.
+If 'file_id' is set – 'batch' parameter will be ignored.
 For `batch` parameter:
     address - required if no coordinates specified.
     lat - required if no address specified.
@@ -136,7 +136,8 @@ For `batch` parameter:
         "lng": 16.3699642
       },
       "tags": []
-    }]
+    }],
+    "limit_exceeded": false 
 }
 ```
 
@@ -147,6 +148,7 @@ For `batch` parameter:
 * `radius` - int. Circle radius in meters.
 * `center` - location object. Location of circle center.
 * `tags` - Array of int. Array of tag IDs.
+* `limit_exceeded` - boolean, true if given batch constrained by limit 
 
 #### response with errors object
 
@@ -168,7 +170,8 @@ For `batch` parameter:
         "error": "Location should be correct with 'lat' and 'lng' not null"
       }],
       "tags" : []
-    }]
+    }],
+    "limit_exceeded": false  
 }
 ```
 
@@ -190,7 +193,7 @@ Creates a new zone.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| zone | zone JSON-object without “id” and "color" fields. | JSON object |
+| zone | zone JSON-object without "id" and "color" fields. | JSON object |
 | points | Array of new [points](../../../resources/tracking/zone/zone_point.md) for this zone. Must contain at least 3 elements. MUST be omitted if zone does not support points (e.g. circle) | array of `zone point` objects |
 | zone.color | Optional. Zone color in 3-byte RGB hex format. Default is "27A9E3". | string |
 
@@ -219,13 +222,13 @@ Creates a new zone.
 #### errors
 
 * 202 (Too many points in a zone) – max allowed points count for a zone is 100 for a polygon or 1024 for sausage.
-* 230 (Not supported for this entity type) – if “points” were specified, but zone cannot have any points associated with
+* 230 (Not supported for this entity type) – if "points" were specified, but zone cannot have any points associated with
  it (e.g. if zone is circle).
 * 268 (Over quota) –  if the user's quota for zones exceeded.
 
 ### delete
 
-Deletes user’s zone by `zone_id` or array of `zone_ids`.
+Deletes user's zone by `zone_id` or array of `zone_ids`.
 
 **required sub-user rights**: `zone_update`
 
@@ -327,8 +330,8 @@ Gets all user zones.
 ### update
 
 Update zone parameters for the specified zone. Note that zone must exist, must belong to the current user, and its 
-type cannot be changed, e.g. if you already have a zone with ID=1 which type is “circle”, you cannot submit a zone 
-which type is “polygon”.
+type cannot be changed, e.g. if you already have a zone with ID=1 which type is "circle", you cannot submit a zone 
+which type is "polygon".
 
 **required sub-user rights**: `zone_update`
 
@@ -336,7 +339,7 @@ which type is “polygon”.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| zone | zone JSON-object without “id” and "color" fields. | JSON object |
+| zone | zone JSON-object without "id" and "color" fields. | JSON object |
 | zone.color | Optional. Zone color in 3-byte RGB hex format. Default is "27A9E3". | string |
 
 #### examples
@@ -369,7 +372,7 @@ Import geofences from KML file.
 **required sub-user rights**: `zone_update`
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload 
-(with the name “file”).
+(with the name "file").
 
 #### parameters
 

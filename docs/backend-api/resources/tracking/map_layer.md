@@ -97,7 +97,7 @@ No specific errors.
 Uploads new map layer.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload 
-(with the name “file”).
+(with the name "file").
 
 #### parameters
 

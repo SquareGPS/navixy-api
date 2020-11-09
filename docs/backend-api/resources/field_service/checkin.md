@@ -102,7 +102,7 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 | :--- | :--- | :--- | :--- |
 | trackers | array of tracker ids. all trackers must not be deleted or blocked (if list_blocked=false). Optional. If not specified, all available trackers will be used as value.| array of ints | `[123456,223456,...]` |
 | from | start date/time for searching. Optional. | date/time | `2020-01-01 00:00:00` |
-| to | end date/time for searching. must be after “from” date. Optional.  | date/time | `2020-02-02 00:00:00` |
+| to | end date/time for searching. must be after "from" date. Optional.  | date/time | `2020-02-02 00:00:00` |
 | conditions | optional, search conditions to apply to list. | Array of search conditions, see [Search conditions](../../commons/entity/search_conditions/). Allowed fields are `employee`, `location`, `marker_time`, `comment` | |
 | sort | optional, offset, default is 0 | string[], list of sort expressions. See below. | `["location=asc", "marker_time=desc"]`  |
 | limit | optional, max number of records to return | int | |
@@ -131,7 +131,7 @@ Possible fields: `employee`, `location`, `marker_time`, `comment`.
 *   7 – Invalid parameters
 *   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
 *   217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
-*   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
+*   221 – Device limit exceeded (if device limit set for the user's dealer has been exceeded)
 
 ### delete
 

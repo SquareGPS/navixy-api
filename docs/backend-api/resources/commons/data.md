@@ -24,7 +24,7 @@ Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 | file | File to upload | File
 | preview_count | size of preview, min=1, max=20 | Integer
 | parse_header | parse first row as header? | Boolean
-| header_map | if parse_header is true should contains map of matching column name to field identifier, `{“Label”: “label”, “Latitude”: “lat”}` | Object
+| header_map | if parse_header is true should contains map of matching column name to field identifier, `{"Label": "label", "Latitude": "lat"}` | Object
 
 If `parse_header` is set to true, first row of the uploaded file will be treat as header corresponding to given `header_map`.
 

@@ -7,14 +7,14 @@ description: Transaction
 
 ### list
 
-Get list of user’s billing transactions for the specified period.
+Get list of user's billing transactions for the specified period.
 
 **required subuser rights**: payment_create
 
 #### parameters
 
 * **from** – date/time. Start date/time for searching.
-* **to** – date/time. End date/time for searching. must be after “from” date.
+* **to** – date/time. End date/time for searching. must be after "from" date.
 * **limit** – int (optional). Maximum number of returned transactions.
 
 #### response

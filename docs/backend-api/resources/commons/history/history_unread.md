@@ -9,7 +9,7 @@ API path: `/history/unread`.
 
 ### list
 
-List less than or equal to **limit** of the latest user’s unread history entries.
+List less than or equal to **limit** of the latest user's unread history entries.
 
 #### parameters
 
@@ -38,7 +38,7 @@ where **history_entry** described in [Tracker history entry](./index.md#tracker-
 
 ### count
 
-Get count of user’s unread history messages from **from** date.
+Get count of user's unread history messages from **from** date.
 
 #### parameters
 

@@ -7,7 +7,7 @@ description: Zone point
 
 API base path: `/zone/point`.
 
-All actions to retrieve and manipulate points of the zone. Note that “circle” zone type cannot have points.
+All actions to retrieve and manipulate points of the zone. Note that "circle" zone type cannot have points.
 
 ## Point object structure
 
@@ -25,7 +25,7 @@ All actions to retrieve and manipulate points of the zone. Note that “circle�
 
 ### list
 
-Get points of user’s zone with `zone_id`.
+Get points of user's zone with `zone_id`.
 
 #### parameters
 
@@ -69,7 +69,7 @@ Get points of user’s zone with `zone_id`.
 
 ### update
 
-Update points for user’s zone with `zone_id`.
+Update points for user's zone with `zone_id`.
 
 **required sub-user rights**: `zone_update`
 
@@ -98,6 +98,6 @@ Update points for user’s zone with `zone_id`.
 #### errors
 
 * 201 (Not found in the database) – if zone with the specified ID cannot be found or belongs to another user.
-* 202 (Too many points in a zone) – if “points” array size exceeds limit for this zone type. Max allowed points count 
+* 202 (Too many points in a zone) – if "points" array size exceeds limit for this zone type. Max allowed points count 
 for a zone is 100 for a polygon or 1024 for sausage.
 * 230 (Not supported for this entity type) – if zone cannot have any points associated with it (e.g. if zone is circle).

@@ -11,13 +11,13 @@ API base path: `/tracker/datalogger`
 Uploads track data for specified tracker. Tracker must be a datalogger.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV file upload 
-(with the name “file”).
+(with the name "file").
 
 #### parameters
 
 | name | description | type|
 | :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | file | A CSV file upload containing datalogger track data. | file |
 
 #### response

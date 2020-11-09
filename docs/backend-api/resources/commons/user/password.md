@@ -9,7 +9,7 @@ API path: `/user/password`.
 
 ### change
 
-Changes password of user with the provided session hash (it is contained in password restore link from email sent to user by “user/restore_password”.
+Changes password of user with the provided session hash (it is contained in password restore link from email sent to user by "user/restore_password".
 
 **NOTE:** this call will receive only session hash from password restore email. Any other hash will result in result error code 4 (user not found or session ended)
 

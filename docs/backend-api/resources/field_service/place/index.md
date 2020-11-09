@@ -88,7 +88,7 @@ offset | optional, offset, default is 0 | int
 ```
 
 #### errors
-general types only
+[General](../../../getting-started.md#error-codes) types only.
 
 ### create
 Create new place.
@@ -158,7 +158,7 @@ name | description | type
 --- | --- | ---
 batch | batch of tab-delimited places. | String
 file_id | preloaded file ID | String
-fields | Optional, array of field names, default is `[“label”, “address”, “lat”, “lng”, “radius”, "description", "tags"]` | array of strings
+fields | Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "description", "tags"]` | array of strings
 geocoder | geocoder type | String
 default_radius | Optional, radius for point, meters, default is 100 | Integer
 
@@ -169,7 +169,8 @@ If `file_id` is set – `batch` parameter will be ignored.
 ```json
 {
     "success": true,
-    "list": [ <checked_place>, ... ]
+    "list": [ <checked_place>, ... ],
+    "limit_exceeded": false // true if given batch constrained by limit
 }
 ```
 
@@ -191,7 +192,7 @@ Upload places.
 
 **Required subuser rights**: `place_update`.
 
-**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV file upload (with the name “file”).
+**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV file upload (with the name "file").
 
 CSV column separator is `;`, columns order – `label;tags;address;lat;lng;radius;external_id;description`
 

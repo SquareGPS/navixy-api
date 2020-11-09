@@ -26,15 +26,15 @@ ${security_group} = {
 
 ### Default security group
 
-Default (or empty) security group is the group which is effective when sub-users’ “security_group_id” is null. It has empty “rights” array.
+Default (or empty) security group is the group which is effective when sub-users' "security_group_id" is null. It has empty "rights" array.
 
-### Master user’s rights
+### Master user's rights
 
-Master user always has all rights, including exclusive “admin” right.
+Master user always has all rights, including exclusive "admin" right.
 
 ### Security group rights
 
-Absolute majority of read operations does not require any rights (that is, they are available to all sub-users, even with “null” security group). However, some entities may be hidden because they are associated with the trackers unavailable to sub-user.
+Absolute majority of read operations does not require any rights (that is, they are available to all sub-users, even with "null" security group). However, some entities may be hidden because they are associated with the trackers unavailable to sub-user.
 Most f data-modifying operations, on the contrary, require some rights to be present.
 
 Possible rights are:
@@ -65,7 +65,7 @@ Create new security group.
 
 #### parameters
 
-* **group** - **JSON object**. ${security_group} without “id” field
+* **group** - **JSON object**. ${security_group} without "id" field
 
 #### response
 
@@ -78,7 +78,7 @@ Create new security group.
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 
 
 ### delete
@@ -103,7 +103,7 @@ All sub-users belonging to this group will be assigned to default (null) securit
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
 *   201 – Not found in database – when group with the specified security_group_id does not exist
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 
 ### list
 
@@ -128,7 +128,7 @@ Security group object is described [here](#security-group-object-structure).
 #### errors
 
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 
 ### update
 
@@ -138,7 +138,7 @@ Update existing security group.
 **required subuser rights:** admin (available only to master users)
 
 #### parameters
-* **group** - **JSON object**. ${security_group} with “id” field
+* **group** - **JSON object**. ${security_group} with "id" field
 
 #### response
 
@@ -151,5 +151,5 @@ Update existing security group.
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
 *   201 – Not found in database – when security group with the specified id does not exist
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 

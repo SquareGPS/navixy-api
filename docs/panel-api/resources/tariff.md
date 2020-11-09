@@ -61,7 +61,7 @@ Creates new tariff.
 
 *   201 – Not found in database (if specified tariff does not exist or belongs to different dealer)
 *   214 – Requested operation or parameters are not supported by the device (when **device_type** does not support specified tariff **type**)
-*   244 – Duplicate entity label (if there’s another dealer’s tariff with the same “name”)
+*   244 – Duplicate entity label (if there's another dealer's tariff with the same "name")
 
 ## defaults/
 
@@ -108,7 +108,7 @@ Updates current tariff defaults for trackers and cameras. tracker, camera are ob
 
 #### errors
 
-*   239 – New tariff doesn’t exist (if tariff with such id does not exist).
+*   239 – New tariff doesn't exist (if tariff with such id does not exist).
 *   237 – Invalid tariff (if new tariff has incompatible device type).
 
 ## list
@@ -124,7 +124,7 @@ id, name, price, device_type
 
 #### parameters
 
-*   **device_type** – (optional). Filter by device type. One of “tracker”, “camera” or “socket”;
+*   **device_type** – (optional). Filter by device type. One of "tracker", "camera" or "socket";
 *   **filter** – **string** (optional). Text filter string.
 *   **order_by** – **string** (optional). Specify list ordering.
     One of: **id**, **name**, **device_type**, **group_id**, **price**
@@ -174,7 +174,7 @@ See **tariff** object structure [here](#tariff-data-structure).
 
 update(tariff)
 
-Updates existing tariff. See above. Warning: “device_type” field is ignored, it can only be specified during tariff creation.
+Updates existing tariff. See above. Warning: "device_type" field is ignored, it can only be specified during tariff creation.
 
 **required permissions:**
 
@@ -189,4 +189,4 @@ Updates existing tariff. See above. Warning: “device_type” field is ignored,
 
 *   201 – Not found in database (if specified tariff does not exist or belongs to different dealer)
 *   214 – Requested operation or parameters are not supported by the device (when **device_type** does not support specified tariff **type**)
-*   244 – Duplicate entity label (if there’s another dealer’s tariff with the same “name”)
+*   244 – Duplicate entity label (if there's another dealer's tariff with the same "name")

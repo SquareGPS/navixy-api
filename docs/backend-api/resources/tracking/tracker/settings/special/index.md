@@ -28,7 +28,7 @@ Gets special settings for the specified tracker.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | type | Optional. Type of special object | string enum | "electronic_lock_password" |
 
 #### examples
@@ -881,7 +881,7 @@ Sets special settings for a specified tracker with the new one.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | value | Settings object, see above | JSON object |
 
 #### examples

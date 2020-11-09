@@ -15,7 +15,7 @@ Gets value of specified `type` of sensor.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | string enum | "odometer" |
 
 #### examples
@@ -59,7 +59,7 @@ Get values for counters of passed `type` and `trackers`.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| trackers | List of the tracker’s Ids belonging to authorized user. | array of int | `[123456, 234567]` |
+| trackers | List of the tracker's Ids belonging to authorized user. | array of int | `[123456, 234567]` |
 | type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | string enum | "odometer" |
 
 #### examples
@@ -99,7 +99,7 @@ Creates new counter of passed `type` (if not) and update its `value`.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | string enum | "odometer" |
 | value | A new value of counter. | float | 233.21 |
 

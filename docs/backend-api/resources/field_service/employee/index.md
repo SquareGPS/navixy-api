@@ -56,7 +56,7 @@ Get all employees belonging to user.
 
 #### errors
 
-general types only
+[General](../../../getting-started.md#error-codes) types only.
 
 ### create
 
@@ -79,7 +79,7 @@ Create new employee.
 
 #### errors
 
-*   247 – Entity already exists, if tracker\_id!=null and exists employee that already binded to this tracker\_id
+*   247 – Entity already exists, if tracker\_id!=null and exists employee that already bound to this tracker\_id
 
 
 ### read
@@ -123,7 +123,7 @@ Update existing employee.
 #### errors
 
 *   201 – Not found in database (if there is no employee with such id)
-*   247 – Entity already exists, if tracker\_id!=null and exists employee that already binded to this tracker\_id
+*   247 – Entity already exists, if tracker\_id!=null and exists employee that already bound to this tracker\_id
 
 ### delete
 
@@ -153,9 +153,9 @@ Convert batch of tab-delimited employees and return list of checked employees wi
 #### parameters
 name | description | type
 --- | --- | ---
-batch | batch of tab-delimited places. | String
+batch | batch of tab-delimited employees. | String
 file_id | preloaded file ID | String
-fields | Optional, array of field names, default is `[“first_name”, “middle_name”, “last_name”, “email”, “phone”]` | array of strings
+fields | Optional, array of field names, default is `["first_name", "middle_name", "last_name", "email", "phone"]` | array of strings
 geocoder | geocoder type | String
 default_radius | Optional, radius for point, meters, default is 100 | Integer
 
@@ -166,7 +166,8 @@ If `file_id` is set – `batch` parameter will be ignored.
 ```json
 {
     "success": true,
-    "list": [ <checked_employee>, ... ]
+    "list": [ <checked_employee>, ... ],
+    "limit_exceeded": false // true if given batch constrained by limit      
 }
 ```
 
@@ -175,8 +176,7 @@ where `checked_employee` is:
 ```json
 {
     ... // all fields from <employee>
-    "errors": <array_of_objects>, // optional
-    "tag_names": <array_of_strings> // optional
+    "errors": <array_of_objects> // optional
 }
 ```
 

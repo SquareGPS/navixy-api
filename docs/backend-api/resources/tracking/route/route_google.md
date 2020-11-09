@@ -106,5 +106,5 @@ Where **location** described in [data types description section](../../../gettin
     *   `INVALID_REQUEST` – indicates that the provided request was invalid. Common causes of this status include 
     an invalid parameter or parameter value.
 
-236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without “routing” tariff 
+236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without "routing" tariff 
 feature.

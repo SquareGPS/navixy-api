@@ -138,7 +138,7 @@ API resource page structure:
 ````markdown
 # Resource name
 
-Path: `/path/to/resource\`.
+Path: `/path/to/resource\`
 
 Resource description.
 
@@ -148,6 +148,8 @@ Resource specific actions:
 * [/path/to/resource/method2](#method2)
 
 ## method1
+
+Path: `/path/to/resource/method1`
 
 Method description.
 

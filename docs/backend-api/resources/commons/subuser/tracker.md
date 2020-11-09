@@ -30,9 +30,9 @@ Give access for sub-user to the specified trackers.
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 *   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user.
-*   262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don’t exist.
+*   262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don't exist.
 
 ### list
 
@@ -55,7 +55,7 @@ Get a list of tracker ids to which this sub-user has access.
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 *   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user.
 
 ### unbind
@@ -79,7 +79,7 @@ Disable access for sub-user to the specified trackers.
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 *   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user.
-*   262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don’t exist.
+*   262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don't exist.
 
