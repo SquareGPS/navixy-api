@@ -525,7 +525,7 @@ You will get the report in a JSON format:
 
 ## Deleting reports
 
-When the information has been received and processed, there is no need to leave the generated report. it can be removed.
+When the information has been received and processed, there is no need to leave the generated report. It can be removed.
 Use [report/tracker/delete](../resources/commons/report/report_tracker.md#delete).
 
 Use the report_id from `generate` call response.
