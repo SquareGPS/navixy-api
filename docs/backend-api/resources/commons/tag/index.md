@@ -22,6 +22,8 @@ API path: `/tag`.
 *   task_schedule
 *   employee
 *   vehicle
+*   zone
+*   tracker
 
 
 
@@ -101,7 +103,9 @@ Search entities that bound with all of specified tags.
       "task": [...], //array of task objects
       "task_schedule": [...], //array of task schedule objects
       "employee": [...], //array of employee objects
-      "vehicle": [...] //array of vehicle objects
+      "vehicle": [...], //array of vehicle objects
+      "zone": [...], //array of zone objects
+      "tracker": [...] //array of tracker objects
     }
 }
 ```
