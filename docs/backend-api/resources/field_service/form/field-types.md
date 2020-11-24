@@ -9,230 +9,303 @@ Every form (and form template) contains an ordered list of fields of various typ
 Field type defines how user input elements will look like, and how user input will be validated.
 
 Every field has a set of common parameters, which are the same for all field types, and type-specific parameters, 
-which define specific style and validation constraints. Both common and type-specific parameters are contained as fields in the JSON object.
+which define specific style and validation constraints. Both common and type-specific parameters contained as fields in
+ the JSON object.
 
-Field values for submitted form are stored separately as JSON objects. The contents of value JSON objects are entirely 
+Field values for submitted form stored separately as JSON objects. The contents of value JSON objects are entirely 
 field type-specific.
 
 ##### common field parameters:
 
 ```json
 {
-   "id": "111-aaa-whatever", //arbitrary alphanumeric string (1 to 19 characters), unique across current form's fields, used to link with values and its "parent" in template form
-   "label": "Name", //user-defined label, shown as field header, 1 to 100 printable characters
-   "description": "Your full name", //field description, shown in smaller text under the header, 1 to 512 printable characters
-   "required": true, //if true, form cannot be submitted without filling this field with valid value
-   "type": "text", //determines field type
-   //type-specific parameters go here...
+   "id": "Text-1",
+   "label": "Name",
+   "description": "Your full name",
+   "required": true,
+   "type": "text"
 }
 ```
 
+* `id` - arbitrary alphanumeric string (1 to 19 characters). Unique across current form's fields, used to link with 
+values and its "parent" in template form.
+* `label` - string. User-defined label, shown as field header, 1 to 100 printable characters.
+* `description` - string. Field description, shown in smaller text under the header, 1 to 512 printable characters.
+* `required` - boolean. If `true`, form cannot be submitted without filling this field with valid value.
+* `type` - string. Determines field type.
+
 ### Text field
 
-**type**: text
+**type**: `text`.
 
-Multiline auto-expanding text field
+Multiline auto-expanding text field.
 
-**Note 1:** when value contains empty string, it's considered empty, and thus valid when `required: false, min_length != 0`  
-**Note 2:** combination `required: true, min_length: 0` is not allowed
+**Note 1:** when value contains empty string, it's considered empty, and thus valid when `required: false, min_length != 0`.  
+**Note 2:** combination `required: true, min_length: 0` is not allowed.
 
-##### type-specific parameters:
+#### type-specific parameters:
 
-         "min_length": 5, //minimum allowed length, from 0 to 1024
-         "max_length": 255 //maximum allowed length 1 to 1024
-    
+```json
+{
+    "min_length": 5,
+    "max_length": 255
+}
+```
 
-##### value object:
+* `min_length` - int. Minimum allowed length, from 0 to 1024.
+* `max_length` - int. Maximum allowed length 1 to 1024.
+
+#### value object:
 
 ```json
 {
     "type": "text",
-    "value": "text field value" //What was entered in the text field
+    "value": "text field value"
 }
 ```
 
+* `value` - string. What was entered the text field.
+
 ### Checkbox group
 
-**type**: checkbox_group
+**type**: `checkbox_group`.
 
 Group of checkboxes.
 
-**Note 1:** when zero checkboxes are selected, values is considered empty, and thus valid when `required: false, min_checked != 0`  
-**Note 2:** combination `required: true, min_checked: 0` is not allowed
+**Note 1:** when zero checkboxes selected, values considered empty, and thus valid when `required: false, min_checked != 0`.  
+**Note 2:** combination `required: true, min_checked: 0` is not allowed.
 
 ##### type-specific parameters:
 
-        "min_checked": 0, //minimum allowed checked positions, 0 to "group".size - 1
-        "max_checked": 3, //maximum allowed checled positions. 1 to "group".size - 1
-        "group": [
-            {
-               "label" : "I agree to TOS"
-            }
-         ]
+```json
+{
+    "min_checked": 0,
+    "max_checked": 3,
+    "group": [{
+           "label" : "I agree to TOS"
+    }]
+}
+```
     
+* `min_checked` - int. Minimum allowed checked positions, 0 to "group".size - 1.
+* `max_checked` - int. Maximum allowed checked positions, 1 to "group".size - 1.
 
 ##### value object:
 
 ```json
 {
     "type": "checkbox_group",
-    "values": [true] //booleans in the same order as fields in "group"
+    "values": [true]
 }
 ```
 
+* `values` - array of boolean. They are in the same order as fields in `group`.
+
 ### Dropdown field
 
-**type**: dropdown
+**type**: `dropdown`.
 
 Dropdown menu for choosing one option.
 
 ##### type-specific parameters:
 
-        "options": [
-            {
-               "label" : "John"
-            },
-            {
-               "label" : "Alice"
-            }
-         ]
-    
+```json
+{
+    "options": [
+        {
+           "label" : "John"
+        },
+        {
+           "label" : "Alice"
+        }
+    ]
+}
+```
 
 ##### value object:
 
 ```json
 {
     "type": "dropdown",
-    "value_index": 1 //zero-based index of value from "options"
+    "value_index": 1
 }
 ```
 
+* `value_index` - int. Zero-based index of value from "options".
+
 ### Radio button group
 
-**type**: radio_group
+**type**: `radio_group`.
 
 A group of radio buttons. Only one option is selectable.
 
 ##### type-specific parameters:
 
-        "options": [
-            {
-               "label" : "John"
-            },
-            {
-               "label" : "Alice"
-            }
-         ]
-    
+```json
+{
+    "options": [
+        {
+           "label" : "John"
+        },
+        {
+           "label" : "Alice"
+        }
+    ]
+}
+```
 
 ##### value object:
 
-    {
-        "type": "radio_group",
-        "value_index": 1 //zero-based index of value from "options"
-    }
-    
+```json
+{
+    "type": "radio_group",
+    "value_index": 1
+}  
+```
+
+* `value_index` - int. Zero-based index of value from "options".
 
 ### Date picker
 
-**type**: date
+**type**: `date`.
 
-A date picker
+A date picker.
 
 ##### type-specific parameters:
 
-        "disable_future": false,  //if true, date from the future cannot be selected
-        "disable_past": true,  //if true, date from the past cannot be selected
-    
+```json
+{
+    "disable_future": false,
+    "disable_past": true
+}
+```
+
+* `disable_future` - boolean. If `true`, date from the future cannot be selected.
+* `disable_past` - boolean. If `true`, date from the past cannot be selected.
 
 ##### value object:
 
-    {
-        "type": "date",
-        "value": "2017-03-14"  //date string
-    }
-    
+```json
+{
+    "type": "date",
+    "value": "2017-03-14"
+}
+```
+
+* `value` - string date/time.
 
 ### Rating
 
-**type**: rating
+**type**: `rating`.
 
-Rating with "stars". Zero stars are not allowed.
+Rating with "stars". Zero stars not allowed.
 
 ##### type-specific parameters:
 
-        "max_stars": 5  //max number of stars to select from
-    
+```json
+{
+  "max_stars": 5
+}
+```
+
+* `max_stars` - int. Max number of stars to select from.
 
 ##### value object:
 
-    {
-        "type": "rating",
-        "value": 3  //number of stars selected. Cannot be more than "max_stars"
-    }
-    
+```json
+{
+    "type": "rating",
+    "value": 3
+}
+```
+
+* `value` - int. Number of stars selected. Cannot be more than `max_stars`.
 
 ### File
 
-**type**: file
+**type**: `file`.
 
-File attachment, for example document or spreadsheet.
+File attachment. For example, document or spreadsheet.
 
 ##### type-specific parameters:
 
-        "max_file_size": 65536,  //max file size, bytes, no more than 16 mbytes
-        "min_file_size": 128,  //minimum file size, bytes
-        "allowed_extensions": ["xls", "doc"] //list of allowed file extensions, up to 16 items, cannot be empty, but can be null, which means "no extension limits"
-    
+```json
+{
+    "max_file_size": 65536,
+    "min_file_size": 128,
+    "allowed_extensions": ["xls", "doc"]
+}
+```
+
+* `max_file_size` - int. Max file size, bytes, no more than 16 Mb.
+* `min_file_size` - int. Minimum file size, bytes.
+* `allowed_extensions` - array of string enum. List of allowed file extensions, up to 16 items, cannot be empty, but can
+ be null, which means "no extension limits".
 
 ##### value object:
 
-    {
-        "type": "file",
-        "file_ids": [3345345]  //ids of the file which should be attahced to this form field as value. Files must be uploaded before form submission
-    }
-    
+```json
+{
+    "type": "file",
+    "file_ids": [3345345]
+}
+```
+
+* `file_ids` - array of int. Ids of the file which should be attached to this form field as value. Files must be 
+uploaded before form submission.
 
 ### Photo
 
-**type**: photo
+**type**: `photo`.
 
 Photograph attachment.
 
 ##### type-specific parameters:
 
-        "max_files": 2 //maxumum number of photos to attach, up to 6 
-    
+```json
+{
+  "max_files": 2
+}
+```
+
+* `max_files` - int. Maximum number of photos to attach, up to 6.
 
 ##### value object:
 
-    {
-        "type": "photo",
-        "file_ids": [3345345, 534534534]  //ids of the files which should be attahced to this form field as value. Files must be uploaded befre form submission. Only image files are allowed.
-    }
-    
+```json
+{
+    "type": "photo",
+    "file_ids": [3345345, 534534534]
+}
+```
+
+* `file_ids` - array of int. Ids of the files which should be attached to this form field as value. Files must be
+ uploaded before form submission. Only image files allowed.
 
 ### Signature
 
-**type**: signature
+**type**: `signature`.
 
-A small image of customer's signature (usually obtained via writing on screen with stylus)
+A small image of customer's signature (usually obtained via writing on screen with a stylus).
 
 ##### type-specific parameters:
 
-        //none
-    
+* there are no type-specific parameters.
 
 ##### value object:
 
-    {
-        "type": "file",
-        "file_id": 3345345  //id of the file which should be attached to this form field as value. File must be uploaded befre form submission
-    }
-    
+```json
+{
+    "type": "file",
+    "file_id": 3345345
+}
+```
 
+* `file_id` - int. An id of the file which should be attached to this form field as value. File must be uploaded
+ before form submission.
+ 
 ### Separator
 
-**type**: separator
+**type**: `separator`.
 
 Cosmetic, just to show header. Doesn't contain any actual value. Always filled and valid. Cannot be required.
