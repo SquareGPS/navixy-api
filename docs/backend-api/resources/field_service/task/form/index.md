@@ -287,7 +287,7 @@ where period_object is:
 ```
 
 * `count` - int. Total number of forms matching the query.
-* `form` - [form object](../../form/index.md#form object), non-null.
+* `form` - [form object](../../form/index.md#form-object), non-null.
 * `submit_places` - additional info about places/zones related to form submission, can be null.
     * `places` - list of places associated with zone submission location. Can be empty.
     * `zones` - list of zones associated with zone submission location. Can be empty.
@@ -362,7 +362,7 @@ Gets form associated with the specified task.
 }
 ```
 
-* `value` - [form object](../../form/index.md#form object), or null if no form attached.
+* `value` - [form object](../../form/index.md#form-object), or null if no form attached.
 * `files` - list of files, both submitted and unsibmitted, associated with this form's fields.
     * `id` - int. File id.
     * `type` - string enum. Can be "image" or "file".
