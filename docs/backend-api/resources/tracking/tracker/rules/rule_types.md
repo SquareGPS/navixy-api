@@ -15,12 +15,12 @@ Common parameters exist in all rule types.
 | ------ | ------------- | ------ |
 | description | Rule's description. | string |
 | primary_text | Primary text of rule notification. | string |
-| alerts | Alerts object with destinations for notifications. Described in [rule_object](./rule.md#rule object). | JSON object |
+| alerts | Alerts object with destinations for notifications. Described in [rule_object](./rule.md#rule-object). | JSON object |
 | suspended | `true` if the rule suspended. | boolean |
 | name | Name of a rule. | string |
 | trackers | List of bound tracker ids. | array of int |
 | extended_params | Extended parameters for the rule. Described below. | JSON object |
-| schedule | The rule will work in specified period. Described in [rule_object](./rule.md#rule object). | JSON object |
+| schedule | The rule will work in specified period. Described in [rule_object](./rule.md#rule-object). | JSON object |
 | zone_ids | List of bound zones. | array of int |
 
 #### Common extended parameters

@@ -19,8 +19,8 @@ Creates route schedule with checkpoints.
 
 | name | description | type | 
 | :--- | :--- | :--- |
-| route | [Route schedule entry](./index.md#route schedule entry) without fields which are *IGNORED*. | JSON object |
-| checkpoints | Array of route's [checkpoints](./index.md#checkpoint schedule entry) without fields which are *IGNORED*. | JSON object |
+| route | [Route schedule entry](./index.md#route-schedule-entry) without fields which are *IGNORED*. | JSON object |
+| checkpoints | Array of route's [checkpoints](./index.md#checkpoint-schedule-entry) without fields which are *IGNORED*. | JSON object |
 
 #### example
 
@@ -85,8 +85,8 @@ If checkpoint is being updated, then it should have an id. If old checkpoint is 
 
 | name | description | type | 
 | :--- | :--- | :--- |
-| route | [Route schedule entry](./index.md#route schedule entry) without fields which are *IGNORED*. | JSON object |
-| checkpoints | Array of route's [checkpoints](./index.md#checkpoint schedule entry) without fields which are *IGNORED*. | JSON object |
+| route | [Route schedule entry](./index.md#route-schedule-entry) without fields which are *IGNORED*. | JSON object |
+| checkpoints | Array of route's [checkpoints](./index.md#checkpoint-schedule-entry) without fields which are *IGNORED*. | JSON object |
 
 #### example
 

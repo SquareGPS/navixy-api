@@ -17,7 +17,7 @@ Creates new empty status listing.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| listing | [status_listing](../../status/index.md#Status_listing object structure) object without "id" and "entries" fields. | JSON object |
+| listing | [status_listing](../../status/index.md#Status_listing-object-structure) object without "id" and "entries" fields. | JSON object |
 
 #### examples
 
@@ -121,7 +121,7 @@ Gets status listings belonging to authorized user.
 }
 ```
 
-* `list` - ordered array of [status_listing](../../status/index.md#Status_listing object structure) objects.
+* `list` - ordered array of [status_listing](../../status/index.md#Status_listing-object-structure) objects.
 
 #### errors
 
@@ -140,7 +140,7 @@ Updates status listing properties.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| listing | [status_listing](../../status/index.md#Status_listing object structure) object with "id" and "entries" fields. | JSON object |
+| listing | [status_listing](../../status/index.md#Status_listing-object-structure) object with "id" and "entries" fields. | JSON object |
 
 #### examples
 
