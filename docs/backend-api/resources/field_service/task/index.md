@@ -63,7 +63,7 @@ it's available for viewing by app user. User will also receive notifications of 
 * `stay_duration` - int. Duration of stay in the task zone, seconds.
 * `origin` - string. Task origin. *IGNORED* in create/update.
 * `tags` - array of int. List of tag ids.
-* `form` - [form object](../form/index.md#form object). If present.
+* `form` - [form object](../form/index.md#form-object). If present.
 
 ## API actions
 
@@ -480,9 +480,9 @@ Gets task, checkpoint, or route with checkpoints by specified id.
 }
 ```
 
-* `value` - JSON object. `task` described [here](#task object).
+* `value` - JSON object. `task` described [here](#task-object).
 * `checkpoints` - only returned if entity with specified id is a route. Contains all checkpoints of this route. `checkpoint`
-object described [here](./checkpoint.md#checkpoint object).
+object described [here](./checkpoint.md#checkpoint-object).
 
 #### errors
 

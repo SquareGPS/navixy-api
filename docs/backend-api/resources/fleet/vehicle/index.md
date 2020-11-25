@@ -117,7 +117,7 @@ Creates a new vehicle.
 
 | name | description | type |
 | :------ | :------ | :----- |
-| vehicle | A [vehicle object](#vehicle object) without `id` field. | JSON object |
+| vehicle | A [vehicle object](#vehicle-object) without `id` field. | JSON object |
 | force_reassign | Optional. Default is `true`. Will reassign the device to created vehicle even if it was assign to another one. | boolean |
 
 #### example
@@ -327,7 +327,7 @@ Gets vehicle by specified id.
 }
 ```
 
-A [vehicle object](#vehicle object).
+A [vehicle object](#vehicle-object).
 
 #### errors
 
@@ -343,7 +343,7 @@ Updates existing vehicle.
 
 | name | description | type |
 | :------ | :------ | :----- |
-| vehicle | A [vehicle object](#vehicle object). | JSON object |
+| vehicle | A [vehicle object](#vehicle-object). | JSON object |
 | force_reassign | Optional. Default is `true`. Will reassign the device to created vehicle even if it was assign to another one. | boolean |
 
 #### example

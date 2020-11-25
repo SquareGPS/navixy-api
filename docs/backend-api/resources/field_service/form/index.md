@@ -176,8 +176,8 @@ Gets form by an id.
 }
 ``` 
 
-* `value` - A [form object](#form object).
-* `files` - list of [form_file objects](#form file object). Files used in values of this form. Can be null or empty.
+* `value` - A [form object](#form-object).
+* `files` - list of [form_file objects](#form-file-object). Files used in values of this form. Can be null or empty.
 
 #### errors
 

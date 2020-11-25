@@ -89,7 +89,7 @@ Creates a new department with specified parameters.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| department | An [department object](#department object) without `id` field. | JSON object |
+| department | An [department object](#department-object) without `id` field. | JSON object |
 
 #### example
 
@@ -130,7 +130,7 @@ Updates existing department with a new specified parameters.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| department | An [department object](#department object). | JSON object |
+| department | An [department object](#department-object). | JSON object |
 
 #### example
 

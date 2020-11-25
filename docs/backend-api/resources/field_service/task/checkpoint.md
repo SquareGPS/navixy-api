@@ -57,7 +57,7 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 * `stay_duration` - int. Duration of stay in the checkpoint zone, seconds.
 * `origin` - string. Checkpoint origin. *IGNORED* in checkpoint/create, checkpoint/update.
 * `tags` - array of int. List of tag ids.
-* `form` - [form object](../form/index.md#form object). If present.
+* `form` - [form object](../form/index.md#form-object). If present.
 
 ## API actions
 
@@ -271,7 +271,7 @@ Gets route checkpoint by specified id.
 }
 ```
 
-* `value` - `checkpoint` object described [here](#checkpoint object).
+* `value` - `checkpoint` object described [here](#checkpoint-object).
 
 #### errors
 

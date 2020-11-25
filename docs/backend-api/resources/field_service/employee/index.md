@@ -105,7 +105,7 @@ Creates a new employee.
 
 | name | description | type |
 | :--- | :--- | :--- |
-| employee | An [employee object](#employee object) without `id` field. Non-null. | JSON object |
+| employee | An [employee object](#employee-object) without `id` field. Non-null. | JSON object |
 
 #### example
 
@@ -205,7 +205,7 @@ Updates existing employee.
 
 | name | description | type |
 | :--- | :--- | :--- |
-| employee | An [employee object](#employee object) with `id` field. Non-null. | JSON object |
+| employee | An [employee object](#employee-object) with `id` field. Non-null. | JSON object |
 
 #### example
 

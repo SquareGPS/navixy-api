@@ -361,7 +361,7 @@ List all service tasks of all user vehicles.
 
 * `id` - int. An id of created task.
 * `vehicle_label` - string. Vehicle label.
-* `status` - string enum. [Status](#task status).
+* `status` - string enum. [Status](#task-status).
 * `prediction` - optional object. Legacy field, is not used anymore. check return_prediction parameter.
     * `end_date` - string date/time. Predicted end date.
     * `wear_percentage` - int. Wear percentage.
@@ -399,7 +399,7 @@ List all service tasks of all user vehicles.
 * `file_ids` - array of int. One file will be specified in many service tasks. If one of the tasks will be deleted, 
 then file will remain in others. File will be deleted only when the last task with it will be deleted.
 
-About [task status](#task status) property.
+About [task status](#task-status) property.
 
 #### errors
 
