@@ -58,10 +58,10 @@ In addition to standard user session, this call supports special *DELIVERY* sess
 ```
 
 * `user_id` - master id of the user to which the task belongs to.
-* `task` - a task object, for more info see [/task](../../resources/field_service/task/index.md#Data structure) 
+* `task` - a task object, for more info see [/task](../../resources/field_service/task/index.md#task-object) 
 object structure.
 * `tracker` - corresponding tracker object, for more info see
- [tracker/](../../resources/tracking/tracker/index.md#Tracker object structure) object structure.
+ [tracker/](../../resources/tracking/tracker/index.md#tracker-object-structure) object structure.
 * `restrictions` - tariff restrictions object, for more info see
  [user/get_tariff_restrictions](../../resources/commons/user/index.md#get_tariff_restrictions).
 * `first_name` - string. The first name of employee assigned to the task, or null if missing.
@@ -172,10 +172,10 @@ in addition to standard user session, this call supports special *DELIVERY* sess
 }
 ```
 
-* `task` - a task object, for more info see [/task](../../resources/field_service/task/index.md#Data structure) object 
+* `task` - a task object, for more info see [/task](../../resources/field_service/task/index.md#task-object) object 
 structure.
 * `tracker` - corresponding tracker object, for more info see 
-[tracker/](../../resources/tracking/tracker/index.md#Tracker object structure) object structure.
+[tracker/](../../resources/tracking/tracker/index.md#tracker-object-structure) object structure.
 * `first_name` - string. The first name of employee assigned to the task, or null if missing.
 * `middle_name` - string. The middle name of employee assigned to the task, or null if missing.
 * `last_name` - string. The last name of employee assigned to the task, or null if missing.

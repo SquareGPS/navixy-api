@@ -95,7 +95,7 @@ Gets all form templates belonging to current master user.
 }
 ```
 
-* `list` - ordered array of [form_template objects](#form template object).
+* `list` - ordered array of [form_template objects](#form-template-object).
 
 #### errors
 
@@ -190,7 +190,7 @@ Gets form template belonging to current master user by specified id.
 }
 ```
 
-* `list` - ordered array of [form_template objects](#form template object).
+* `list` - ordered array of [form_template objects](#form-template-object).
 
 #### errors
 

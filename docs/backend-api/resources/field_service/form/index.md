@@ -167,15 +167,17 @@ Gets form by an id.
       "name": "lala.jpg",
       "size": 72594,
       "mime_type": "image/png",
-      "metadata": <metadata_object>,
+      "metadata": {
+       "orientation":  1
+      },
       "state": "uploaded",
       "download_url": "https://static.navixy.com/file/dl/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg"
     }]
 }
 ``` 
 
-* `value` - A [form object](#form object).
-* `files` - list of [form_file objects](#form_file object). Files used in values of this form. Can be null or empty.
+* `value` - A [form object](#form-object).
+* `files` - list of [form_file objects](#form-file-object). Files used in values of this form. Can be null or empty.
 
 #### errors
 
