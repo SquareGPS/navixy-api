@@ -172,10 +172,31 @@ Gets marker entries on a map for trackers and for the specified time interval.
 | offset | Optional, offset (starting index of first returned record), default is 0. | int |
 | format | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx" | string |
 
+##### condition fields
+
+| Name | Type | Comment |
+| :---: | :---: | :---: |
+| employee | number? | id |
+| tracker_id | number |  |
+| marker_time | DateTime |  |
+| location | string | address |
+| comment | string |  |
+| form | number | template's id |
+
 ##### sort 
 
 It's a set of sort options. Each option is a pair of field name and sorting direction, e.g. `["location=asc", "employee=desc", "marker_time=desc"]`. 
-Possible fields: `employee`, `location`, `marker_time`, `comment`.
+
+##### sort fields
+
+| Name | Type | Comment |
+| :---: | :---: | :---: |
+| employee | string? | full name |
+| tracker_id | number |  |
+| marker_time | DateTime |  |
+| location | string | address |
+| comment | string |  |
+| form | string | label |
 
 #### example
 
