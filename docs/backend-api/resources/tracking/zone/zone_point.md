@@ -32,6 +32,7 @@ Get points of user's zone with `zone_id`.
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
 | zone_id | Id of a zone. | int | 1234567 |
+| count | Optional. If specified, the returned list will be simplified to contain this number of points. | int | 300 |
 
 #### examples
 

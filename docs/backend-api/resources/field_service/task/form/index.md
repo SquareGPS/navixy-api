@@ -21,14 +21,32 @@ Contains API calls related to forms associated with tasks.
 
 ### create
 
-Attach new form to the existing task or checkpoint. Form is always created on the basis of form template.
+Attaches new form to the existing task or checkpoint. Form always created on the basis of form template.
 
-**required subuser rights**: task_update
+**required sub-user rights**: `task_update`.
 
 #### parameters
 
-* **task_id** - (int) Id of the task to assign
-* **template_id** - (int) Id of the form template
+| name | description | type |
+| :--- | :--- | :--- |
+| task_id | An id of the task to assign. | int |
+| template_id | An id of the form template. | int |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/task/form/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "template_id": 12548}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/form/create?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&template_id=12548
+    ```
 
 #### response
 
@@ -40,22 +58,38 @@ Attach new form to the existing task or checkpoint. Form is always created on th
 
 #### errors
 
-*   201 – Not found in database (if there is no task or template with such id, or task has the "route" type)
-*   247 – Entity already exists (if task already has form attached to it)
-*   255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived")
-
-
+* 201 – Not found in the database (if there is no task or template with such an id, or task has the "route" type).
+* 247 – Entity already exists (if task already has form attached to it).
+* 255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived").
 
 ### delete
 
-Delete form (detach it from the task).<br>
+Deletes a form (detach it from the task).<br>
 All form data will be lost!
 
-**required subuser rights**: task_update
+**required sub-user rights**: `task_update`.
 
 #### parameters
 
-* **task_id** - (int) Id of the task to which form is attached
+| name | description | type |
+| :--- | :--- | :--- |
+| task_id | An id of the task to which form is attached. | int |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/task/form/delete' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/form/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231
+    ```
 
 #### response
 
@@ -67,38 +101,55 @@ All form data will be lost!
 
 #### errors
 
-*   201 – Not found in database (if there is no task with such id, or task has the "route" type, or it has no form attached)
-*   255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived")
-
-
+* 201 – Not found in the database (if there is no task with such an id, or task has the "route" type, or it has no form
+ attached).
+* 255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived").
 
 ### download
 
-Retrieve attached form as file.
+Retrieves attached form as file.
 
 #### parameters
 
-* **task_id**
-* **format**
+| name | description | type |
+| :--- | :--- | :--- |
+| task_id | An id of the task. | int |
+| format | Format of the download file. Can be "xls", "csv" or "pdf". | string enum |
 
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/task/form/download' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "format": "pdf"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/form/download?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&format=pdf
+    ```
+    
 #### response
 
-    A form rendered to file (standard file download).
+A form rendered to file (standard file download).
 
 #### errors
 
-*   201 – Not found in database (if task does not exist or does not have attached form)
-
+* 201 – Not found in the database (if task does not exist or does not have attached form).
 
 ### list
 
-Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, the list contains data on the objects related to each form – tracker / vehicle / employee, task.
+Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, 
+the list contains data on the objects related to each form – tracker / vehicle / employee, task.
 
 #### parameters
 
 *   **form_template_id** (*integer, optional*). The returned list will contain forms, related to that template.<br>
     **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
-*   **task_ids** (*list of integers, optional*). Maximum size of list is 500 elements. List of task ids. The returned list will contain forms, related to tasks, which ids are specified in this parameter.<br>
+*   **task_ids** (*list of integers, optional*). Maximum size of list is 500 elements. List of task ids. The returned list will contain forms, related to tasks, which ids specified in this parameter.<br>
     **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
 *   **order_by** (*optional, default = submitted*). Data field for list sorting. Available values:
     *   *task_id*
@@ -135,29 +186,46 @@ Returns descriptions of forms, created on the basis of specified form template. 
 }
 ```
 
-*   **submit_period** (*&lt;period_object&gt;, optional*).
-*   **task_creation_period** (*&lt;period_object&gt;, optional*).
-*   **task_from_period** (*&lt;period_object&gt;, optional*).
-*   **task_to_period** (*&lt;period_object&gt;, optional*).
-*   **task_arrival_period** (*&lt;period_object&gt;, optional*).
-*   **task_completion_period** (*&lt;period_object&gt;, optional*).
+*   **submit_period** (*period_object, optional*).
+*   **task_creation_period** (*period_object, optional*).
+*   **task_from_period** (*period_object, optional*).
+*   **task_to_period** (*period_object, optional*).
+*   **task_arrival_period** (*period_object, optional*).
+*   **task_completion_period** (*period_object, optional*).
+
+where period_object is:
 
 ```json
-<period_object>=
     {
-        "from": <date/time>,
-        "to": <date/time>
+        "from": "2020-02-03 03:00:00", // string <date/time>
+        "to": "2020-02-03 08:00:00" // string <date/time>
     }
 ```
 
 *   **offset, limit** (*integers, optional*). Specify which subset of elements from all matching results will be included in the returned list.
 
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/task/form/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "ascending": "true", "include_unsubmitted": "true"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/form/list?hash=a6aa75587e5c59c32d347da438505fc3&ascending=true&include_unsubmitted=true
+    ```
+    
 #### response
 
 ```json
 {
     "success": true,
-    "count": N, //total number of forms matching the query
+    "count": 2,
     "list": [{
         "employee": {
             "id": 13,
@@ -182,7 +250,7 @@ Returns descriptions of forms, created on the basis of specified form template. 
             "label": "Navixy A6"
         },
         "vehicle": null,
-        "form": { //<form> object, non-null
+        "form": {
             "id": 1012,
             "label": "A form",
             "description": "",
@@ -199,89 +267,117 @@ Returns descriptions of forms, created on the basis of specified form template. 
             	"address": "Partizan st., 4"
             }
         },
-        "submit_places": { //additional info about places/zones related to form submission, can be null
+        "submit_places": {
 			"location": {
 				"lat": 26.826762,
 				"lng": 20.5947311,
 				"address": "Partizan st., 4"
 			},
-			"places": [{ //list of places associated with zone submission location. Can be empty
+			"places": [{
 				"id": 38,
 				"label": "Office sweet office"
 			}],
-			"zones": [{ //list of zones associated with zone submission location. Can be empty
+			"zones": [{
 				"id": 18404,
 				"label": "Zone 51"
 			}]
         }
-    },…
+    }
 ]}
 ```
 
+* `count` - int. Total number of forms matching the query.
+* `form` - [form object](../../form/index.md#form-object), non-null.
+* `submit_places` - additional info about places/zones related to form submission, can be null.
+    * `places` - list of places associated with zone submission location. Can be empty.
+    * `zones` - list of zones associated with zone submission location. Can be empty.
+
 #### errors
 
-*   204 – Not found (if there is no form template with such id belonging to authorized user)
-*   General types of errors.
-
-
+* 204 – Not found (if there is no form template with such id belonging to authorized user).
+* [General](../../../../getting-started.md#error-codes) types of errors.
 
 ### read
 
-Get form associated with the specified task.
+Gets form associated with the specified task.
 
 #### parameters
 
-* **task_id** - (int) Id of the task
+| name | description | type |
+| :--- | :--- | :--- |
+| task_id | An id of the task. | int |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/task/form/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": "12546"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/form/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=12546
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "value" : <form>, //form object, or null if no form is attached
-    "files" : [ //list of files, both submitted and unsibmitted, associated with this form's fields
+    "value" : <form>,
+    "files" : [
         {
-            "id": 16, //file id
+            "id": 16,
             "storage_id": 1,
             "user_id": 12203,
-            "type": "image", //"image" or "file"
-            "created": "2017-09-06 11:54:28", //date when file was created
-            "uploaded": "2017-09-06 11:55:14", //date when file was uploaded, can be null if file is not yet uploaded
-            "name": "lala.jpg", //filename
-            "size": 72594, //in bytes. If file not uploaded, show maximum allowed size for upload
+            "type": "image",
+            "created": "2020-09-06 11:54:28",
+            "uploaded": "2020-09-06 11:55:14",
+            "name": "lala.jpg",
+            "size": 72594,
             "mime_type": "image/png",
-            "metadata": <nullable, metadata object>,
-            "state": "uploaded", //can be "created", "in_progress", "uploaded", "deleted"
-            //actual url at which file is available. Can be null if file is not yet uploaded
+            "metadata": {
+                         "orientation":  1
+                        },
+            "state": "uploaded",
             "download_url": "https://static.navixy.com/file/dl/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg",
-            "bindings": { //all entities to which this file is linked
+            "bindings": {
                 "form_field": {
                     "form_id": 40,
                     "field_id": "2222",
                     "submitted": false
                 }
             },
-            "previews": [ //available preview images for file. Can be null or empty for any file in any state.
+            "previews": [
                 {
                     "download_url": "https://localhost:8084/file/preview/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg"
                 }
             ]
-        },
-        ...
+        }
    ]
 }
 ```
 
-metadata object:
-
-```json
-{
- "orientation":  <int, image exif orientation>,
-}
-```
-
-For **form** object description, see [task/form/](#form-object-structure).
+* `value` - [form object](../../form/index.md#form-object), or null if no form attached.
+* `files` - list of files, both submitted and unsibmitted, associated with this form's fields.
+    * `id` - int. File id.
+    * `type` - string enum. Can be "image" or "file".
+    * `created` - string date/time. Date when file created.
+    * `uploaded` - string date/time. Date when file uploaded, can be null if file not yet uploaded.
+    * `name` - string. Filename.
+    * `size` - int. Size in bytes. If file not uploaded, show maximum allowed size for the upload.
+    * `metadata` - metadata object.
+    * `orientation` - int. Image exif orientation.
+    * `state` - string enum. Can be "created", "in_progress", "uploaded", "deleted".
+    * `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
+    * `bindings` - all entities to which this file linked.
+    * `previews` - available preview images for the file. Can be null or empty for any file in any state.
 
 #### errors
 
-*   201 – Not found in database (if there is no task with such id, or task is assigned to tracker unavailable to current subuser)
+* 201 – Not found in the database (if there is no task with such an id, or task assigned to tracker unavailable to 
+current sub-user).
