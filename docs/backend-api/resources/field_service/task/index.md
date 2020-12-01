@@ -38,9 +38,15 @@ it's available for viewing by app user. User will also receive notifications of 
     "arrival_date": "2014-01-02 03:04:05",
     "stay_duration": 0,
     "origin": "imported",
-    "tags": [1, 2]
+    "tags": [1, 2],
     "type": "task",
-    "form": <form_object>
+    "form": <form_object>,
+    "fields": {
+        "131312" : {
+             "type": "text",
+             "value":  "I love text!"
+        }
+   },
 }
 ```
 
@@ -64,6 +70,7 @@ it's available for viewing by app user. User will also receive notifications of 
 * `origin` - string. Task origin. *IGNORED* in create/update.
 * `tags` - array of int. List of tag ids.
 * `form` - [form object](../form/index.md#form-object). If present.
+* `fields` - optional object. A map, each key of which is a custom field id *as a string*. See [entity/fields](../../commons/entity/fields.md)
 
 ## API actions
 
@@ -341,25 +348,56 @@ Gets all task belonging to user with optional filtering.
 | trackers | Optional. Ids of the trackers to which task assigned. | array of int |
 | from | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00". | string date/time |
 | to | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00". | string date/time |
+| conditions | Optional. Search conditions to apply to list. Array of search conditions. | array of [SearchCondition](../../commons/entity/search_conditions.md) |
+| filter | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task. | string |
 | filters | Optional. Filters for task label, description or address. | array of string |
 | tag_ids | Optional. Tag IDs assigned to the task. | array of int |
 | offset | Optional. Offset from start of the found tasks for pagination. | int |
 | limit | Optional. Limit of the found tasks for pagination. | int |
+
+##### condition fields
+
+| Name | Type | Comment |
+| :---: | :---: | :---: |
+| id | number |  |
+| employee | number | id |
+| status | string |  |
+| label | string |  |
+| location | string | address |
+| from | string date/time? |  |
+| to | string date/time? |  |
+| status_change_date | string date/time? |  |
+| arrival_date | string date/time? |  |
+| stay_duration | Seconds |  |
+| description | string |  |
+| external_id | string? |  |
+| form | number | template's id |
 
 If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** is not passed or _null_ then appropriate 
 condition not used to filter results.
 
 If **offset** or **limit** is null then restrictions for pagination will not be applied.
 
-*   **sort** – **string[]**. Optional. Set of sort options. Each option is a pair of column name and sorting direction, e.g. ["label=acs", "address=desc", "employee=desc"]. Possible columns:<br>
-    — _id_<br>
-    — _address_ (location.address)<br>
-    — _label_<br>
-    — _from_<br>
-    — _to_<br>
-    — _status_<br>
-    — _employee_ (employee.last_name, employee.first_name, employee.middle_name, tracker.label)<br>
-    — _arrival_date_
+##### sort: string[]?
+set of sort options. Each option is a pair of column name and sorting direction, e.g. ["label=acs", "address=desc", "employee=desc"].
+
+##### sort fields
+
+| Name | Type | Comment |
+| :---: | :---: | :---: |
+| id | number |  |
+| employee | string | full name or tracker label |
+| status | string |  |
+| label | string |  |
+| location | string | address |
+| from | string date/time? |  |
+| to | string date/time? |  |
+| status_change_date | string date/time? |  |
+| arrival_date | string date/time? |  |
+| stay_duration | Seconds |  |
+| description | string |  |
+| external_id | string? |  |
+| form | string | label |
 
 #### examples
 

@@ -33,7 +33,7 @@ Thus, field employee can view all places assigned to him to visit them, etc.
              "type": "text",
              "value":  "I love text!"
         }
-   }
+   },
     "label": "Crown Building",
     "description": "Here we buy our goods",
     "tags": [ 1, 2 ],
@@ -164,7 +164,7 @@ Get places belonging to user.
                    "type": "text",
                    "value":  "I love text!"
               }
-         }
+         },
           "label": "Crown Building",
           "description": "Here we buy our goods",
           "tags": [ 1, 2 ],
