@@ -7,7 +7,7 @@ description: Overview of Navixy developers public documentation
 
 # Welcome to Navixy Developer Documentation
 
-![Navixy](./assets/navixy-iot.jpg)
+![Navixy](./assets/navixy-api.png)
 
 [Navixy][1] is a GPS tracking platform developed by [SquareGPS][2] company. 
 Here you can find information about integration of 3rd party solutions with the Navixy platform,
