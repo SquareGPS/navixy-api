@@ -7,7 +7,7 @@ description: Dealer
 
 API path: `/dealer`.
 
-## get_ui_config()
+### get_ui_config
 
 Gets dealer info and dealer-specific UI settings by domain.
 
@@ -15,21 +15,21 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
 #### structure:
 
-    https://api.navixy.com/v2/dealer/get_ui_config?domain=your_domain
+    {{ extra.api_example_url }}/dealer/get_ui_config?domain=your_domain
 
 #### parameters
 
 | name | description | type| format|
 | :------: | :------: | :-----:| :------:|
-| domain | dealer’s monitoring interface domain, e.g. “navixy.com“ | string | panel.navixy.com |
+| domain | dealer's monitoring interface domain, e.g. "navixy.com" | string | panel.navixy.com |
 
 #### example
 
-    https://api.navixy.com/v2/dealer/get_ui_config?domain=panel.navixy.com
+    {{ extra.api_example_url }}/dealer/get_ui_config?domain=panel.navixy.com
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "dealer": {

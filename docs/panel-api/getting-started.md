@@ -17,13 +17,14 @@ Two main differences are _authorization system_ and _request paths_.
 
 Panel API resides in `panel/` subsection of API url. So you can determine URL to API calls like this:
 
-1.  For NAVIXY ServerMate it will be `https://saas.navixy.com/api-v2/panel/`
-2.  For On-Premise instances it will be `https://api.your_domain/panel/`
+*  `https://api.eu.navixy.com/v2/panel/` for European Navixy ServerMate platform.
+*  `https://api.us.navixy.com/v2/panel/` for American Navixy ServerMate platform.
+*  `https://api.your_domain/panel/` for the self-hosted (On-Premise) installations.
 
 For example, to make `account/auth` 
 API call in Navixy ServerMate, you should use the URL: 
 
-    https://saas.navixy.com/api-v2/panel/account/auth
+    {{ extra.api_example_url }}/panel/account/auth
 
 ### Authorization
 
@@ -51,13 +52,13 @@ For example, in on-premise installations, there is a default user with login
     ```
 
 === "GET"
-    GET method is not recommended. Just for example:
+    This method is not recommended. Just for example:
     ```abap
     $ curl http://api.domain.com/panel/account/auth/?login=admin&password=admin
     ```
 
 
-And you’ll get answer like this:
+And you'll get answer like this:
 
 ```json
 {
@@ -89,7 +90,7 @@ For example:
 }
 ```
 
-The “description” field is just a human-readable hint, you should not check 
+The "description" field is just a human-readable hint, you should not check 
 its contents programmatically as it may change in the future.
 
 For more info, please see `account/auth`.
@@ -113,7 +114,7 @@ $ curl -X POST 'http://api.domain.com/panel/user/list/' \
 Every session (and thus, a hash key associated with it) has a limited 
 lifetime (30 days by default). So you should obtain new hash key periodically.
 
-If you will try to make a Panel API call with expired session hash, you’ll 
+If you will try to make a Panel API call with expired session hash, you'll 
 get the following error:
 
 ```json
@@ -131,9 +132,9 @@ In this case, just obtain new hash using `account/auth`.
 ### Panel API Permissions
 
 Every call to panel api requires a set (possibly empty) of permissions. 
-To determine if user is allowed to execute api call, user’s permissions 
-is compared with call’s required permissions. If user does not have at least 
-one required permission, the call is not executed and error “Operation not permitted” is returned.
+To determine if user is allowed to execute api call, user's permissions 
+is compared with call's required permissions. If user does not have at least 
+one required permission, the call is not executed and error "Operation not permitted" is returned.
 
 Each permission is defined as a pair of category (e.g. `trackers`) and operation (e.g. `read`).
 A set of permissions within one category is often grouped as in the following example:

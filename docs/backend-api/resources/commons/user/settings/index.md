@@ -11,7 +11,7 @@ CRUD actions for user settings.
 
 `settings` type is JSON object:
 
-```js
+```json
 {
     "time_zone": "Europe/Amsterdam",  // ISO timezone id
     "locale": "nl_NL",                // locale code
@@ -24,7 +24,7 @@ CRUD actions for user settings.
 
 `balance_alert_settings` type is JSON object:
 
-```js
+```json
 {
     "emails": ["email1@example.com", "email2@example.com"]  // array of emails to send alert message about balance
                                                             // empty array means disclaimer of notifications
@@ -33,19 +33,19 @@ CRUD actions for user settings.
 
 `file_storage_settings` type is JSON object:
 
-```js
+```json
 {
     "auto_overwrite": <true|false> // default - false,
 }
 ```
 
-## read()
+### read
 
-Read current user’s settings.
+Read current user's settings.
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "settings": ${settings},                             // JSON object
@@ -61,17 +61,17 @@ Where `settings`, `balance_alert_settings` and `file_storage_settings` described
 **required subuser rights** for **balance\_alert\_settings** and **file\_storage\_settings** fields: admin (available only to master users)
 
 
-## update()
+### update
 
-Update current user’s settings.
+Update current user's settings.
 
 #### parameters
 
 *   **time_zone** – ISO timezone id
 *   **locale** – locale code
-*   **measurement_system** – measurement system (“metric”, “imperial”, “us” or "metric_gal_us"). If field is not passed then default (**metric**) system will be used.
-*   **geocoder** – preferred geocoder type (“google”, “yandex”, “progorod”, “osm” or "locationiq")
-*   **route_provider** – preferred route finding provider (“google”, “progorod” or “osrm”)
+*   **measurement_system** – measurement system ("metric", "imperial", "us" or "metric_gal_us"). If field is not passed then default (**metric**) system will be used.
+*   **geocoder** – preferred geocoder type ("google", "yandex", "progorod", "osm" or "locationiq")
+*   **route_provider** – preferred route finding provider ("google", "progorod" or "osrm")
 *   **translit** – true if sms notification should be transliterated, false otherwise
 *   **balance\_alert\_settings** – JSON object containing array of emails
 *   **file\_storage\_settings** – JSON object
@@ -80,15 +80,15 @@ Update current user’s settings.
 
 See examples above.
 
-#### return
+#### response
 
 ```json
 { "success": true }
 ```
 
-## file_storage/update()
+### file_storage/update
 
-Update current user’s file storage settings
+Update current user's file storage settings
 
 **required subuser rights:** admin (available only to master users)
 

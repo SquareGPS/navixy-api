@@ -7,11 +7,11 @@ description: Notification
 
 API path: `/notification`.
 
-## list()
+### list
 List user notifications.
 
-#### return
-```js
+#### response
+```json
 {
     "success": true,
     "list": [<notification>, ...]
@@ -20,7 +20,7 @@ List user notifications.
 
 where
 
-```js
+```json
 <notification> =
     {
         "id": <int>,

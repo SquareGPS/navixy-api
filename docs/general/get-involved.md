@@ -16,8 +16,8 @@ There are several ways:
 1.  [Manually creating a fork](#second-way) and doing multiply commits before creating a pull request.
 1.  [Installing and editing](#hard-way) documentation locally on yours PC.
 
-In each of these cases, a GitHub account is required.
-If you don't want to register on GitHub, you can just [contact us](contacts.md) with any convenient way.
+In each of these cases, a GitHub account required.
+If you don't want to register on GitHub, you can just [contact us](./contacts.md) with any convenient way.
 
 ### Easy way
 
@@ -27,7 +27,7 @@ not done this before).
 
 ![Create your fork](./assets/fork-proposal.png)
 
-Creating a fork is done with one green button. After that, the edit form with page source code will open.
+Creating a fork done with one green button. After that, the edit form with page source code will open.
 
 !!! note "For correct edit of page, please read the [introduction into Mkdocs](#introduction-into-mkdocs)."
 
@@ -62,7 +62,7 @@ This method involves installing the Git, IDE, Python and
 
 1. Install [Python 3](https://www.python.org/downloads/).
 1. Install [Git client](https://git-scm.com/downloads).
-1. Install IDE, for example [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community edition would be enough).
+1. Install an IDE, for example [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community edition would be enough).
 1. Create a fork [of the repository]({{ config.repo_url }}) and cloning it to local project. 
    In IDEA: `File` -> `New` -> `Project from version control`;
 1. Install [mkdocs-material](https://squidfunk.github.io/mkdocs-material) and other dependencies. In console:
@@ -75,7 +75,9 @@ This method involves installing the Git, IDE, Python and
 1. Start the documentation server locally. In console:
    ```sh
    cd /path/to/project
-   mkdocs serve
+   source venv/bin/activate
+   # Windows: \venv\Scripts\activate.bat
+   mkdocs serve --dirtyreload
    ```
 1. To check that the server has started, open in a browser: http://localhost:8000
 1. Create a local git branch in project.
@@ -94,20 +96,21 @@ for an overview of how to write docs.
 
 ### Menu
 
-The menu is formed using the plugin [awesome-pages](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) automatically.
+The menu formed using the plugin [awesome-pages](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) automatically.
 To set the desired page order in the menu, use the file `.pages.yml` in directory.
 For example:
 
 ```yaml
 title: Backend API
-arrange:
+nav:
     - getting-started.md
     - how-to
     - resources
     - websocket
 ```
 
-`Title` sets name for menu section. `Arrange` sets the sub-items order.
+`title` sets the name for menu section. 
+`nav:` sets the sub-items order.
 
 ### Meta information
 
@@ -144,7 +147,7 @@ Resource specific actions:
 * [/path/to/resource/method1](#method1)
 * [/path/to/resource/method2](#method2)
 
-## method1()
+## method1
 
 Method description.
 
@@ -154,29 +157,40 @@ Method description.
 | :---- | :----       | :---- | :----        |
 |param1 | description | int   | [1..100], not null |
 
-### Example
+### Examples
 
-```abap
-$ curl -X POST 'https://api.navixy.com/v2/path/to/resource/method1' \
--H 'Content-Type: application/json' \ 
--d '{ "hash": "a6aa75587e5c59c32d347da438505fc3", "param1": "value" }'
-```
+=== "cURL"
 
-### Return
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"param1": "value1", "param2": "value2", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/resource/sub_resource/action?param1=value1&hash=a6aa75587e5c59c32d347da438505fc3
+    ```
+
+### Response
 
 ```json
 { "success": true }
 ```
 
+!!! warning "Please note"
+    If the response or structure has comments it is necessary to write these comments separately in the form of a list below.
+
 ### Errors
 
 Special error codes.
 
-## method2()
+## method2
 
 ...
 
 ````
 
-For real example see [/user](../backend-api/resources/commons/user/user.md) and
-[:octicons-file-code-24: source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/user.md).
+For real example see [/user](../backend-api/resources/commons/user/index.md) and
+[source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).

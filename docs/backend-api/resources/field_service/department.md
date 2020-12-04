@@ -3,25 +3,31 @@ title: Departments
 description: Departments
 ---
 
-Department is essentially just a group of [employees](employee/index.md). They can be assigned to departments by specifying 
-non-null `department_id`.
+# Departments
 
-<a name="structure"></a>
-`<department>` is:
+Department is essentially just a group of [employees](employee/index.md). They can be assigned to departments by
+ specifying non-null `department_id`.
 
-```js
+## Department object
+
+```json
 {
-    "id": 222, <int>
+    "id": 222,
     "label": "Drivers",
-    "location": {   //optional, location associated with this departments. should be valid or null
+    "location": {
         "lat": 46.9,
         "lng": 7.4,
-        "address": "Rosenweg 3", //address of the location
-        "radius": 150  //radius of location zone in meters
-    },
+        "address": "Rosenweg 3",
+        "radius": 150
+    }
 }
 ```
 
+* `id` - int. An id of department.
+* `label` - string. Name of department.
+* `location` - optional object. Location associated with these departments. Should be valid or null.
+    * `address` - string. Address of the location.
+    * `radius` - int. Radius of location zone in meters.
 
 ## API actions
 
@@ -31,70 +37,110 @@ API base path: `/department`.
 
 Gets all departments belonging to user.
 
-#### example
+#### examples
 
-    https://api.navixy.com/v2/department/list?hash=your_hash
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/department/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/department/list?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
-```js
+```json
 {
     "success": true,
-    "list": [ <department>, ... ]
+    "list": [{
+         "id": 222,
+         "label": "Drivers",
+         "location": {
+             "lat": 46.9,
+             "lng": 7.4,
+             "address": "Rosenweg 3",
+             "radius": 150
+         }
+    }]
 }
 ```
+
 #### errors
 
-*   7 – Invalid parameters
-*   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
-*   217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
-*   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
-
+* 7 – Invalid parameters.
+* 211 – Requested time span is too big (more than **maxReportTimeSpan** config option).
+* 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or 
+doesn't have required tariff features.
+* 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded).
 
 ### create
 
-Creates a new department with specified parameters. Required subuser rights: `employee_update`.
+Creates a new department with specified parameters.
+
+**required sub-user rights:** `employee_update`.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| department | an [department object](#structure) | object | `{"label":"Name","location":{"lat": 1.12345,"lng": 2.67890, "address": "address of the department", "radius": "123"}` |
+| name | description | type|
+| :------ | :------ | :----- |
+| department | An [department object](#department-object) without `id` field. | JSON object |
 
 #### example
 
-    https://api.navixy.com/v2/department/create?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/department/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department": {"label": "My Department", "location": {"lat": 46.9, "lng": 7.4, "address": "Rosenweg 3", "radius": 50}}'
+    ```
 
 #### response
 
-```js
+```json
 {
     "success": true,
-    "id": 111 //id of the created department
+    "id": 111
 }
 ```
 
+* `id` - int. An id of the created department.
+
 #### errors
 
-*   7 – Invalid parameters
-*   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
-*   217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features
-*   221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded)
-
+* 7 – Invalid parameters.
+* 211 – Requested time span is too big (more than **maxReportTimeSpan** config option).
+* 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or 
+doesn't have required tariff features.
+* 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded).
 
 ### update
 
-Updates existing department with a new specified parameters. Required subuser rights: `employee_update`.
+Updates existing department with a new specified parameters. 
+
+**required sub-user rights:** `employee_update`.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| department | an [department object](#structure) | object | `{"label":"Name","location":{"lat": 1.12345,"lng": 2.67890, "address": "address of the department", "radius": "123"}` |
+| name | description | type|
+| :------ | :------ | :----- |
+| department | An [department object](#department-object). | JSON object |
 
 #### example
 
-    https://api.navixy.com/v2/department/update?hash=22eac1c27af4be7b9d04da2ce1af111b&department={"label":"My Department","location":{"lat": 46.9,"lng": 7.4,"address": "Rosenweg 3", "radius": "50"}}
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/department/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department": {"id": 111, "label": "My Department", "location": {"lat": 46.9, "lng": 7.4, "address": "Rosenweg 3", "radius": 50}}'
+    ```
 
 #### response
 
@@ -104,22 +150,35 @@ Updates existing department with a new specified parameters. Required subuser ri
 
 #### errors
 
-*   201 – Not found in database (if there is no department with such id)
-
+* 201 – Not found in the database (if there is no department with specified id).
 
 ### delete
 
-Deletes department with the specified id. Required subuser rights: `employee_update`.
+Deletes department with the specified id.
+
+**required sub-user rights:** `employee_update`.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| department_id | Id of the department | int | 12345 |
+| name | description | type| 
+| :------ | :------ | :----- |
+| department_id | An id of the department. | int |
 
-#### example
+#### examples
 
-    https://api.navixy.com/v2/department/delete?hash=22eac1c27af4be7b9d04da2ce1af111b&department_id=65878
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/department/delete' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department_id": 111}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/department/delete?hash=a6aa75587e5c59c32d347da438505fc3&department_id=111
+    ```
 
 #### response
 
@@ -129,4 +188,4 @@ Deletes department with the specified id. Required subuser rights: `employee_upd
 
 #### errors
 
-*   201 – Not found in database (if there is no department with such id).
+* 201 – Not found in the database (if there is no department with specified id).

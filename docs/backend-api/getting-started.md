@@ -18,26 +18,25 @@ Let's describe standard workflow for API developer using very simple and most
 common example — requesting the track points data:
 
 1.  Determine [URL to API calls](#api-base-url).
-1.  Authorize with [`user/auth`](./resources/commons/user/user.md#auth). 
+1.  Authorize with [`user/auth`](./resources/commons/user/index.md#auth). 
     This API method [will return the hash](./how-to/get-session-hash.md) 
     you should use for all your next API calls.
 1.  Get objects lists with [`tracker/list`](./how-to/get-tracker-list.md).
-1.  Get track lists with [`track/list`](./resources/tracking/track/track.md#list).
-1.  Get the track itself: [`track/read`](./resources/tracking/track/track.md#read).
+1.  Get track lists with [`track/list`](./resources/tracking/track/index.md#list).
+1.  Get the track itself: [`track/read`](./resources/tracking/track/index.md#read).
 
 In other words, to start working with API, the developers should have API call 
 description (as provided herein), and know user login and password.
 
 ## API base URL
 
-In the all examples used placeholder `[api_url]`. 
 Depending on the physical location of the platform it will be:
 
 *  `https://api.eu.navixy.com/v2` for European Navixy ServerMate platform.
 *  `https://api.us.navixy.com/v2` for American Navixy ServerMate platform.
 *  `https://api.your_domain` for the self-hosted (On-Premise) installations.
 
-For example, to make [`user/auth`](./resources/commons/user/user.md#auth) 
+For example, to make [`user/auth`](./resources/commons/user/index.md#auth) 
 API call on the European Navixy ServerMate, you should use the URL: 
 
     https://api.eu.navixy.com/v2/user/auth
@@ -83,7 +82,7 @@ Parameters can be passed in the:
     $ curl '[api_base_url]/resource/sub_resource/action?param1=value1&hash=a6aa75587e5c59c32d347da438505fc3'
     ```
 
-!!! warning "[Hash](./how-to/get-session-hash.md) is required for most API calls to user identification."
+!!! warning "[Hash](./how-to/get-session-hash.md) is required for most API calls to identify user."
 
 Typical actions:
 
@@ -213,9 +212,9 @@ Session hash can be obtained via `user/auth` API call:
 
 === "GET"
     This method is not recommended. Just for example:
-
+    ```abap
     [api_base_url]/user/auth?login=demo&password=demo
-
+    ```
 ### Data types
 
 *   `bool`, boolean - logical type: `true` of `false`. 
@@ -229,7 +228,7 @@ Session hash can be obtained via `user/auth` API call:
     `[1.7976931348623157 x 10^308, 4.9406564584124654 x 10^-324]`.
 *   `string` - string literals.
 *   `enum` - string literals from predefined set.
-*   `date/time` – is a string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user’s timezone).
+*   `date/time` – is a string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
 *   `local_time` – is a string containing local time in `HH:mm:ss` format.
 *   `location` – is json object contains geographical coordinates, e.g.
 ```json
@@ -250,7 +249,7 @@ Session hash can be obtained via `user/auth` API call:
 ### Error handling
 
 If an error occurs, API returns special error response. You can also detect error by checking 
-HTTP response code. If it’s not `200 OK`, you should parse and handle response body as an error response.
+HTTP response code. If it's not `200 OK`, you should parse and handle response body as an error response.
 In the event of error occurs, the response will be in the following format:
 ```json
 {

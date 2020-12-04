@@ -5,22 +5,74 @@ description: Sample for get tracker list
 
 # How to get tracker list
 
-Now that we [have a hash](./get-session-hash.md) — let's start with essential basics. 
+Now we [have a hash](./get-session-hash.md) — let's start with essential basics. 
 
 Navixy has tracking device as a main unit, so most requests would require you to specify one or several tracker ids. 
-You can receive a list of all trackers in user's account with [tracker/list](../resources/tracking/tracker/tracker.md#list) API request:
+You can receive a list of all trackers in user's account with [tracker/list](../resources/tracking/tracker/index.md#list) 
+API request:
 
-    https://api.navixy.com/v2/tracker/list?hash=your_hash
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/list' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 It will return to you
+
 ```json
 {
     "success": true,
-    "list": [ ${tracker}, ... ] // list of JSON-objects
-}
-```
+    "list": [{
+      "id": 123456,
+      "label": "tracker label",
+      "clone": false,
+      "group_id": 167,
+      "avatar_file_name" : "file name",
+      "source": {
+        "id": 234567,
+        "device_id": 9999999988888,
+        "model": "telfmb920",
+        "blocked": false,
+        "tariff_id": 345678,
+        "status_listing_id": null,
+        "creation_date": "2011-09-21",
+        "tariff_end_date": "2016-03-24",
+        "phone" : "+71234567890"
+      }
+      "tag_bindings": [{
+      "tag_id": 456789,
+      "ordinal": 4
+    }]
+```  
+        
+* `id` - int. Tracker id aka object_id.
+* `label` - string. Tracker label.
+* `clone` - boolean. True if this tracker is clone.
+* `group_id` - int. Tracker group id, 0 when no group.
+* `avatar_file_name` - string. Optional. Passed only if present.
+* `source` - object.
+    * `id` - int. Source id.
+    * `device_id` - string. Device id aka source_imei.
+    * `model` - string. Tracker model name from "models" table.
+    * `blocked` - boolean. True if tracker blocked due to tariff end.
+    * `tariff_id` - int. An id of tracker tariff from "main_tariffs" table.
+    * `status_listing_id` - int. An id of the status listing associated with this tracker, or null.
+    * `creation_date` - date/time. Date when the tracker registered.
+    * `tariff_end_date` - date/time. Date of next tariff prolongation, or null.
+    * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
+* `tag_binding` - object. List of attached tags. Appears only for "tracker/list" call.
+    * `tag_id` - int. An id of tag. Must be unique for a tracker.
+    * `ordinal` - int. Number that can be used as ordinal or kind of tag. Must be unique for a tracker. Max value is 5.
 
-If account has a large amount of trackers and you only need certain ones, 
+If account has a large amount of trackers, and you only need certain ones, 
 you can add an optional filter parameter to the request that will only return matching records. 
 
 This parameter has following constraints:
@@ -31,31 +83,13 @@ This parameter has following constraints:
 
 To get a list of trackers with labels matching the filter use this API call:
 
-    https://api.navixy.com/v2/tracker/list?hash=your_hash&label=[“tracker’s_name_contains”,…]
-
-Tracker object structure is next:
-```json
-{
-    "id": ${int},                          // tracker id aka object_id
-    "label": ${string},                    // tracker label
-    "clone": ${boolean},                   // true if this tracker is clone
-    "group_id": ${int},                    // tracker group id, 0 if no group
-    "avatar_file_name" : ${string},        // optional. passed only if present
-    "source": {
-        "id": ${int},                      // source id
-        "device_id": ${string},            // aka source_imei
-        "model": ${string},                // tracker model name from "models" table
-        "blocked": ${boolean},             // true if tracker was blocked due to tariff end, etc.
-        "tariff_id": ${int},               // id of tracker's tariff from "main_tariffs" table
-        "status_listing_id": 102,          //id of the status listing associated with this tracker, or null
-        "creation_date": "2011-09-21",
-        "tariff_end_date": "2016-03-24",   // date of next tariff prolongation or null
-        "phone" : ${string}                // phone of the device. can be null or empty if device has no GSM module
-                                           // or uses bundled SIM which number is hidden from the user
-    }
-    "tag_bindings": [${tag_binding}, ...}  // list of attached tags. only for “tracker/list()“. 
-}
+```shell
+curl -X POST '{{ extra.api_example_url }}/tracker/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "labels": ["aa", "b"]}'
 ```
+
+
 
 
 

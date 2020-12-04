@@ -9,7 +9,7 @@ API path: `/subuser/tracker`.
 
 Contains API calls to control which tracker is available to which sub-user.
 
-## bind()
+### bind
 
 Give access for sub-user to the specified trackers.
 
@@ -20,7 +20,7 @@ Give access for sub-user to the specified trackers.
 * **subuser_id** - **int**. id of the sub-user belonging to current account.
 * **trackers** - **array of int**. array of tracker id-s to associate with the specified sub-user. All trackers must belong to current master user.
 
-#### return
+#### response
 
 ```json
 {
@@ -30,11 +30,11 @@ Give access for sub-user to the specified trackers.
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 *   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user.
-*   262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don’t exist.
+*   262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don't exist.
 
-## list()
+### list
 
 Get a list of tracker ids to which this sub-user has access.
 
@@ -44,9 +44,9 @@ Get a list of tracker ids to which this sub-user has access.
 #### parameters
 * **subuser_id** - **int**. id of the sub-user belonging to current account.
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "list" : [${tracker_id1}, ...] //list of tracker ids to which this sub-user has acccess
@@ -55,10 +55,10 @@ Get a list of tracker ids to which this sub-user has access.
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 *   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user.
 
-## unbind()
+### unbind
 
 Disable access for sub-user to the specified trackers.
 
@@ -69,7 +69,7 @@ Disable access for sub-user to the specified trackers.
 * **subuser_id** - **int**. id of the sub-user belonging to current account.
 * **trackers** - **array of int**. array of tracker id-s to associate with the specified sub-user. All trackers must belong to current master user.
 
-#### return
+#### response
 
 ```json
 {
@@ -79,7 +79,7 @@ Disable access for sub-user to the specified trackers.
 
 #### errors
 *   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without “multilevel_access” tariff feature)
+*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
 *   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user.
-*   262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don’t exist.
+*   262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don't exist.
 

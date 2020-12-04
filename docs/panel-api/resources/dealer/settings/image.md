@@ -3,7 +3,7 @@ title: /image
 description: /image
 ---
 
-## delete ()
+## delete 
 
 Delete image of specified **type**. 
 
@@ -13,7 +13,7 @@ Delete image of specified **type**.
 #### parameters
 * **type** - **string**. image type. one of: **logo**, **favicon**, **login_wallpaper**, **desktop_wallpaper**, **document_logo**
 
-#### return
+#### response
 
     { "success": true }
     
@@ -21,7 +21,7 @@ Delete image of specified **type**.
 #### errors
 * 201 - Not found in database (when there are no settings for dealer in db)
 
-## upload()
+## upload
 
 Upload image of specified **type**. 
 
@@ -37,7 +37,7 @@ File part **mime** type must be one of :
 
 #### required permissions:
 
-* **service_settings**: “update”
+* **service_settings**: "update"
 
 #### parameters
 
@@ -47,7 +47,7 @@ File part **mime** type must be one of :
 
 If **redirect_target** passed return redirect to ?response=
 
-#### return
+#### response
 
     { "success": true }
     

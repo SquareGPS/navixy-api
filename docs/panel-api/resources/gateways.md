@@ -3,7 +3,7 @@ title: /gateways
 description: /gateways
 ---
 
-## email()
+## email
 
 Email gateway can be owned by dealer or leased from platform owner.
 

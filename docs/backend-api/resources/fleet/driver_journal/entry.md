@@ -7,134 +7,245 @@ description: Driver journal entry
 
 API path: `/driver/journal/entry`.
 
-`driver_journal_entry` type is JSON object:
+## Driver journal entry object
 
-```js
+```json
 {
-    "tracker_id": 1,  // Id of the tracker
-    "start_date": "2018-08-28 07:03:39",  // Start date
-    "end_date": "2018-08-28 08:05:02",  // End date
-    "employee_id": 1,  // nullable. Driver
-    "type": "work",  // Type ('work', 'personal', 'other')
-    "comment": "comment string",  // nullable
+    "id":127722,
+    "tracker_id": 1,
+    "start_date": "2020-10-13 07:03:39",
+    "end_date": "2020-10-14 08:05:02",
+    "employee_id": 1,
+    "type": "work",
+    "comment": "comment string",
     "start_location": {
-        "lat": 11.0, // latitude
-        "lng": 22.0, // longitude
-        "address": "address value" // address
-    },
+        "lat": 11.0,
+        "lng": 22.0,
+        "address": "address value"
     "end_location": {
-        "lat": 11.0, // latitude
-        "lng": 22.0, // longitude
-        "address": "address value" // address
+        "lat": 11.0,
+        "lng": 22.0,
+        "address": "address value"
     },
-    "length": 1.44,  // length
-    "start_odometer": 1.34,  // nullable. Odometer's value at the start
-    "end_odometer": 5.34,  // nullable. Odometer's value at the end
+    "length": 1.44,
+    "start_odometer": 1.34,
+    "end_odometer": 5.34
 }
 ```
 
-## list()
+* `id` - int. An id of an entry.
+* `tracker_id` - int. An id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. 
+* `start_date` - string date/time. Start date of a journal entry.
+* `end_date` - string date/time. End date of a journal entry.
+* `employee_id` - nullable int. An id of employee (driver).
+* `type` - string enum. Type of journal entry. Can be "work", "personal", "other".
+* `comment` - nullable string. Comment for entry.
+* `start_location` - location object. Where entry starts.
+* `end_location` - location object. Where entry ends.
+* `length` - float. Length of the trip km.
+* `start_odometer` - nullable float. Odometer's value at the start.
+* `end_odometer` - nullable float. Odometer's value at the end.
 
-Get driver journal entries. 
+### list
+
+Gets driver journal entries. 
 There are two ways to get entries: by their ids or by specifying date range.
-If there no `entry_ids` in request, entries are selected by intersecting their date range with date range from request (`from` and `to` parameters).
+If there are no `entry_ids` in request, entries will be selected by intersecting their date range with date range from
+ request (`from` and `to` parameters).
 
 #### parameters
 
-*   **tracker_id** – **int**. Id of the tracker
-*   **entry_ids** – **int\[\]**. (optional) Ids of the entries.
-*   **from** – **string**. (optional) Include tracks which end after this date, e.g. “2014-07-01 00:00:00”
-*   **to** – **string**. (optional) Include tracks which start before this date, e.g. “2014-07-01 00:00:00”
-*   **types** – **string[\]**. (optional) Types of the driver journal entry, e.g. \[\"work\", \"personal\"\]
-*   **sort** – **string\[\]**. (optional) Set of sort options. Each option is a pair of column name and sorting direction, e.g. \[“start_date=acs”, “type=desc”\]. Possible columns:
-    <br> — start_date (sort only by date, not considering time part)
-    <br> — start_datetime (just raw column value)
-    <br> — end_date (sort only by date, not considering time part)
-    <br> — end_datetime (just raw column value)
-    <br> — start_address
-    <br> — end_address
-    <br> — driver (sort by last+first+middle driver name, not by driver id)
-    <br> — type
-    <br> If no sort param is specified, then sort option will be “start_date=acs”
+| name | description | type |
+| :------ | :------ | :----- |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
+| entry_ids | Optional. Array of entry ids. | array of int |
+| from | Optional. Include tracks which end after this date, e.g. "2020-10-13 00:00:00". | string date/time |
+| to | Optional. Include tracks which end after this date, e.g. "2020-10-14 00:00:00". | string date/time |
+| types | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`. | array of string |
+| sort | Optional. Set of sort options. Each option is a pair of column name and sorting direction, e.g. `["start_date=acs", "type=desc"]`. | array of string |
 
-#### return
+* Possible columns of `sort` parameter:
 
-```js
+    * `start_date` - Sort only by date, not considering time part.
+    * `start_datetime` - Just raw column value.
+    * `end_date` - Sort only by date, not considering time part.
+    * `end_datetime` - Just raw column value.
+    * `start_address` - Sort only by start address.
+    * `end_address` - Sort only by the end address.
+    * `driver` - Sort by last+first+middle driver name, not by driver id. 
+    * `type` - Sort by type. 
+    * If no `sort` param is specified, then `sort` option will be "start_date=acs".
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "from": "2020-10-13 00:00:00", "to": "2020-10-14 00:00:00"}'
+    ```
+
+#### response
+
+```json
 {
     "success": true,
-    "list": [ <driver_journal_entry>, ... ]
+    "list": [{
+        "id":127722,
+        "tracker_id": 1,
+        "start_date": "2020-10-13 07:03:39",
+        "end_date": "2020-10-14 08:05:02",
+        "employee_id": 1,
+        "type": "work",
+        "comment": null,
+        "start_location": {
+         "lat": 23.25658,
+         "lng": 21.89892,
+         "address": "address"
+        "end_location": {
+         "lat": 23.26227,
+         "lng": 21.59321,
+         "address": "address"
+        },
+        "length": 1.44,
+        "start_odometer": 1.34,
+        "end_odometer": 5.34
+    }]
 }
 ```
 
-## create()
+### create
 
-Create driver journal entries.
-
-#### parameters
-
-*   **entries** – **driver\_journal\_entry\[\]**. Array of **driver\_journal\_entry** objects without id.
-
-#### return
-
-```json
-{ "success": true }
-```
-
-## update()
-
-Update driver journal entry. Only two fields (**type** and **comment**) are available for update.
+Creates driver journal entries.
 
 #### parameters
 
-*   **entry** – **driver\_journal\_entry\_update\_request** type. See below.
+| name | description | type |
+| :------ | :------ | :----- |
+| entries | Array of `driver_journal_entry` objects without `id` field. | array of objects |
 
-#### return
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "entries": [{"tracker_id": 1, "start_date": "2020-10-13 07:03:39", "end_date": "2020-10-14 08:05:02", "employee_id": 1, "type": "work", "comment": "comment string", "start_location": {"lat": 11.0, "lng": 22.0, "address": "address value"}, "end_location": {"lat": 11.0, "lng": 22.0, "address": "address value"}, "length": 1.44, "start_odometer": 1.34, "end_odometer": 5.34}]}'
+    ```
+
+#### response
 
 ```json
-{ "success": true }
+{ "success": true}
 ```
 
+### update
 
-`driver_journal_entry_update_request` type is JSON object:
+Updates driver journal entry. Only two fields `type` and `comment` are available to update.
 
-```js
+#### parameters
+
+| name | description | type |
+| :------ | :------ | :----- |
+| entry | `driver_journal_entry_update_request` type. See below. | object |
+
+* `driver_journal_entry_update_request` object:
+  
+```json
 {
-    "id": 1, // id of the driver journal entry
-    "type": 1, // new type of the driver journal entry
-    "comment": "new comment" // new comment of the the driver journal entry
+  "id": 1,
+  "type": "work",
+  "comment": "new comment"
 }
 ```
 
-## delete()
+* `id` - int. An id of the driver journal entry.
+* `type` - string enum. Type of journal entry. Can be "work", "personal", "other".
+* `comment` - string. New comment of the driver journal entry.
 
-Delete driver journal entries.
+#### example
 
-#### parameters
+=== "cURL"
 
-*   **entry_ids** – **int\[\]**. Array of driver journal entries’ ids.
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "entry": {"id": 1, "type": "work", "comment": "new comment"}}'
+    ```
 
-#### return
+#### response
 
 ```json
 { "success": true }
 ```
 
-## download()
+### delete
 
-Get driver journal entries. Entries are selected by intersecting their date range with date range from request (**from** and **to** parameters).
-
+Deletes driver journal entries.
 
 #### parameters
 
-same as in list() method plus:
+| name | description | type |
+| :------ | :------ | :----- |
+| entry_ids | Array of driver journal entries' ids. | array of int |
 
-*   **add_filename_header** – **boolean**. Default value is true. If true then Content-Disposition header will be appended to the response.
-*   **format** – **string**. File format: ‘pdf’, ‘xls’ and ‘xlsx’
-*   **group_by** – **string**. (optional) If specified, grouped entries will be in different sections of the table.
-    Possible values:
-    — `type` (group entries by entry type)
-    — `date` (group entries by start_date per day)
+#### examples
 
-#### return
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/delete' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "entry_ids": [127722, 127724]}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/driver/journal/entry/delete?hash=a6aa75587e5c59c32d347da438505fc3&entry_id=[127722, 127724]
+    ```
+
+#### response
+
+```json
+{ "success": true }
+```
+
+### download
+
+Gets driver journal entries. Entries selected by intersecting their date range with date range from request (`from` 
+and `to` parameters).
+
+#### parameters
+
+| name | description | type |
+| :------ | :------ | :----- |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
+| entry_ids | Optional. Array of entry ids. | array of int |
+| from | Optional. Include tracks which end after this date, e.g. "2020-10-13 00:00:00". | string date/time |
+| to | Optional. Include tracks which end after this date, e.g. "2020-10-14 00:00:00". | string date/time |
+| types | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`. | array of string |
+| sort | Optional. Set of [sort options](#list). Each option is a pair of column name and sorting direction, e.g. `["start_date=acs", "type=desc"]`. | array of string |
+| add_filename_header | If `true` then Content-Disposition header will be appended to the response. Default value is `true`. | boolean |
+| format | File format: "pdf", "xls" and "xlsx" | string |
+| group_by | Optional. If specified, grouped entries will be in different sections of the table. | string |
+
+* Possible values of `group_by` parameter:
+    * `type` - group entries by entry type.
+    * `date` - group entries by start_date per day.
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/download' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "from": "2020-10-13 00:00:00", "to": "2020-10-14 00:00:00", "add_filename_header": true, "format": "pdf"}'
+    ```
+
+#### response
 
 A driver journal report file (standard file download).

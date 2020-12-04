@@ -7,7 +7,7 @@ description: Bill
 
 API path: `/bill`.
 
-## create()
+### create
 
 Creates new bill for the user. Required subuser rights: `payment_create`.
 
@@ -20,11 +20,11 @@ Creates new bill for the user. Required subuser rights: `payment_create`.
 
 #### example
 
-    https://api.navixy.com/v2/bill/create?hash=22eac1c27af4be7b9d04da2ce1af111b&payer=John Doe&sum=500
+    {{ extra.api_example_url }}/bill/create?hash=22eac1c27af4be7b9d04da2ce1af111b&payer=John Doe&sum=500
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "value": 6421     // created bill id
@@ -35,13 +35,13 @@ Creates new bill for the user. Required subuser rights: `payment_create`.
 
 *   222 – Plugin not found (when plugin **29** not available for user)
 
-## list()
+### list
 
 Shows list of bills with their parameters in array. Required subuser rights: payment_create
 
 #### structure:
 
-    https://api.navixy.com/v2/bill/list?hash=your_hash&limit=number_of_bills&offset=start_from
+    {{ extra.api_example_url }}/bill/list?hash=your_hash&limit=number_of_bills&offset=start_from
 
 #### parameters
 
@@ -53,11 +53,11 @@ Shows list of bills with their parameters in array. Required subuser rights: pay
 
 #### example
 
-    https://api.navixy.com/v2/bill/list?hash=22eac1c27af4be7b9d04da2ce1af111b&limit=9500&offset=0
+    {{ extra.api_example_url }}/bill/list?hash=22eac1c27af4be7b9d04da2ce1af111b&limit=9500&offset=0
 
 #### response
 
-```js
+```json
 {
     "success": true,
     "count": 7,      // total number of bills
@@ -67,7 +67,7 @@ Shows list of bills with their parameters in array. Required subuser rights: pay
 
 where **bill** is
 
-```js
+```json
 {
     "order_id": 63602,                 // unique id
     "created": "2012-03-05 11:55:03",  // creation date/time
@@ -79,7 +79,7 @@ where **bill** is
 }
 ```
 
-If bill created using [/bill/create()](#create) call then **positions** will contains exactly one element.
+If bill created using [/bill/create](#create) call then **positions** will contains exactly one element.
 
 **status** may be one of:
 

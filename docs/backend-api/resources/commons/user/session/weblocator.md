@@ -7,16 +7,16 @@ description: Weblocator
 
 API path: `/user/sessions/weblocator`.
 
-## create()
+### create
 
 Create new user weblocator session.
 In demo session allowed to create a new session only if it not already exists.
 
 **required subuser rights**: admin (available only to master users)
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "value": "42fc7d3068cb98d233c3af749dee4a8d" // created session hash key
@@ -29,13 +29,13 @@ In demo session allowed to create a new session only if it not already exists.
 *   236 – Feature unavailable due to tariff restrictions
 
 
-## read()
+### read
 
 Return current user weblocator session key.
 
-#### return
+#### response
 
-```js
+```json
 {
     "success": true,
     "value": <string> // session hash key

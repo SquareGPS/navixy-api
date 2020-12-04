@@ -7,7 +7,7 @@ description: /user
 # Data structures
  
 ** User object structure **
-```js
+```json
 { 
     "dealer_id": 5001,                // dealer id
     "activated": true,                // true if user is activated (allowed to login)
@@ -44,7 +44,7 @@ description: /user
 
 ** Discount object structure **
 
-```js
+```json
 {
     "value": 5.5, //personal discount percent, min 0 max 100
     "min_trackers": 10, //min active trackers to apply discount, min 0
@@ -53,7 +53,7 @@ description: /user
   }
 ```
   
-## change_password()
+## change_password
 
 `change_password(user_id, password)`
 
@@ -81,7 +81,7 @@ Change password of the user.
 * 201 – Not found in database (if specified user does not exist or belongs to different dealer)
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## corrupt()
+## corrupt
 
 `corrupt(user_id, login)`
 
@@ -102,7 +102,7 @@ login parameter must match user login.
 * 252 – Device already corrupted (if some of user tracker already corrupted)
 * 253 – Device has clones (if some of user tracker has clone)
 
-```js
+```json
 {
     "success": false,
     "status": {
@@ -112,7 +112,7 @@ login parameter must match user login.
 }
 ```
 
-## create()
+## create
 
 ** Required permissions **
 
@@ -136,7 +136,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 ** Return **
 
-```js
+```json
 {
     "success": true, 
     "id" : 15534 // id of the created user
@@ -148,7 +148,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 * 206 (Login already in use) – if this email already registered
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## export()
+## export
 
 Returns list of all users belonging to dealer as file.
 
@@ -187,7 +187,7 @@ XLSX or CSV file
 * Only [standard errors](../../backend-api/getting-started.md#error-codes)
 
 
-# list()
+# list
 
 Returns list of all users belonging to dealer.
 
@@ -215,7 +215,7 @@ entities will be returned only if filter string is contained within one of the f
 
 ** Return **
 
-```js
+```json
 {
     "success": true,
     "list" : [ ${user} , ... ], // list of JSON-objects
@@ -229,9 +229,9 @@ About user object structure see [above](#data-structures).
 
 * Only [standard errors](../../backend-api/getting-started.md#error-codes)
 
-## read()
+## read
 
-Returns user info by it’s id.
+Returns user info by it's id.
 
 ** Required permissions **
 
@@ -245,7 +245,7 @@ Returns user info by it’s id.
 
 ** Return **
 
-```js
+```json
 {
     "success": true,
     "value" : ${user},
@@ -260,7 +260,7 @@ About user object structure see [above](#data-structures).
 * 201 (Not found in database) – when user with specified id not found or belongs to other dealer.
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## update()
+## update
 
 Updates existing user with new field values (see user [above](#data-structures)). User must 
 exist and must belong to authorized dealer. Changing of legal_type do not permitted, i.e. 
@@ -283,19 +283,19 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 ** Return **
 
-```js
+```json
 { "success": true }
 ```
 
 ** Errors **
 
 * 201 (Not found in database) – if specified user does not exist or belongs to different dealer.
-* 206 (Login already in use) – if specified “login” is used by another user.
+* 206 (Login already in use) – if specified "login" is used by another user.
 * [Standard errors](../../backend-api/getting-started.md#error-codes).
 
 ## session/
 
-### create()
+### create
 
 Creates an interface session for specified user and returns the hash for the created session.
 
@@ -315,7 +315,7 @@ user_sessions: "global" // optional. allow to create sessions of users, not only
 
 ** Return **
 
-```js
+```json
 {
     "success": true,
     "hash" : "a2caa32267f028bd41b982980467132c" // hash of the created session
@@ -329,7 +329,7 @@ user_sessions: "global" // optional. allow to create sessions of users, not only
 
 ## transaction/
 
-### change_balance()
+### change_balance
 
 Change user balance (increase or decrease) or bonus and write this change in transactions (type = payment, subtype = partner).
 
@@ -353,7 +353,7 @@ transactions: "create"
 
 ** Return **
 
-```js
+```json
 { "success": true }
 ```
 
@@ -363,9 +363,9 @@ transactions: "create"
 * 251 – Insufficient funds(403) – If user have not enough funds to withdraw passed (negative) amount.
 * [Standard errors](../../backend-api/getting-started.md#error-codes).
 
-### list()
+### list
 
-Same as [/transaction/list()](../../backend-api/resources/billing/transaction.md#list) from main api.
+Same as [/transaction/list](../../backend-api/resources/billing/transaction.md#list) from main api.
 
 ** Required permissions **
 
@@ -380,12 +380,12 @@ transactions: "read"
 | --- | --- | --- |
 | `user_id` | id of user whom transactions listed. must be owned by current dealer | int
 | `from` | start date/time for searching | date/time
-| `to` | end date/time for searching. must be after “from” date  | date/time
+| `to` | end date/time for searching. must be after "from" date  | date/time
 | `limit` | maxumum number of returned transactions (optional) | int
 
 ** Return **
 
-```js
+```json
 {
   "success": true, 
   "list": [

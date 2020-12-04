@@ -7,197 +7,349 @@ description: Vehicle service task
 
 API path: `/vehicle/service_task`.
 
-#### Status
+#### Task status
 
 Task **status** may be one of:
 
-*   **created** – initial state of task.
-*   **notified** – one of conditions exceed notification limit.
-*   **expired** – one of conditions exceeded.
-*   **done** – user [set](#set_status) task as “done”.
+* `created` – initial state of task.
+* `notified` – one of conditions exceed notification limit.
+* `expired` – one of conditions exceeded.
+* `done` – user [set](#set_status) task as "done".
 
-## batch_create()
+### batch_create
 
-Create multiple service tasks.
+Creates multiple service tasks.
 
 #### parameters
 
-*   **vehicle_ids** – vehicle ids. Task will be created for every vehicle. 
-*   **task** – service task to create. vehicle_id field in this objects should not be specified. JSON object:
 
-```
+| name | description | type |
+| :------ | :------ | :----- |
+| vehicle_ids | List of vehicle ids. Task will be created for every vehicle.  | array of int |
+| task | Service task to create. `vehicle_id` field in these objects should not be specified. | JSON object |
+
+A `task` object is:
+
+```json
 {
-    "description": "desc123",
-    "cost": 100,
-    "comment": "cccc",
+    "description": "Service task",
+    "comment": "",
+    "cost": 10050.0000,
     "conditions": {
-      "mileage": {
+        "mileage": {
             "limit": 100,
+            "notification_interval": 10
+        },
+        "date": {
+            "end": "2015-05-08 09:35:00",
             "notification_interval": 3
-          }
-      },
-    "notifications": {
-      "sms_phones": ["88000000000"],
-      "phones": [],
-      "emails": []
-      }
-    ),
-    "repeat": false,
-    "unplanned": false,
-    "file_ids": [1] // one file will be specified in many service tasks. If one of the tasks will be deleted, then file
-                    // will remain in others. File will be deleted only when the last task will be deleted
-}
-```
-
-
-## create()
-
-Create new vehicle service task. For vehicles with associated tracker only.
-
-#### parameters
-
-*   **task** – service task to create. JSON object:
-
-```js
-{
-    "vehicle_id": 222, // id of associated vehicle
-    "description": "Service task", // max 255 characters
-    "comment": "", // max 255 characters
-    "cost": 10050.0000, // for information only
-    "conditions": { // task end conditions. at least one of fields (mileage or date or engine hours) must be passed.
-        "mileage": { // optional
-            "limit": 100, // task limit in kilometers
-            "notification_interval": 10 // notify about task in specified number of kilometers
         },
-        "date": { // optional
-            "end": "2015-05-08 09:35:00", // task end date
-            "notification_interval": 3 // notify about task in specified number of days
-        },
-        "engine_hours": { // optional
-            "limit": 100, // task limit in hours
-            "notification_interval": 10 // notify about task in specified number of hours
-        },
+        "engine_hours": {
+            "limit": 100,
+            "notification_interval": 10
+        }
     },
     "notifications": {
-        "sms_phones": [ //array of phones in international format wo + sign
+        "sms_phones": [
             "79221234567",
             "79227654321"
         ],
-        "emails": [//array of email addresses
+        "emails": [
             "email@domain.tld",
             "email@mail.com"
         ],
-        "push_enabled": true // enable/disable push notifications
+        "push_enabled": true
     },
-    "repeat": false, // if true then new task will be created when current task is done
-    "unplanned": false, // boolean flag
-    "file_ids": [1, 2] // file ids
+    "repeat": false,
+    "unplanned": false,
+    "file_ids": [1, 2]
 }
 ```
 
-#### return
+* `description` - string. Name of a service task. Max 255 characters.
+* `comment` - string. Comment for a task. Max 255 characters.
+* `cost` - float. Cost in the currency of the user. For information only.
+* `conditions` - task end conditions. At least one of fields ("mileage" or "date" or "engine_hours") must be passed.
+    * `mileage` - optional object. Mileage condition.
+        * `limit` - int. Task limit in kilometers.
+        * `notification_interval` - int. Notify about task in specified number of kilometers.
+    * `date` - optional date condition object. 
+        * `end` - string date/time. Task end date.
+        * `notification_interval` - int. Notify about task in specified number of days.
+    * `engine_hours` - optional engine hours condition object.
+        * `limit` - int. Task limit in hours.
+        * `notification_interval` - int. Notify about task in specified number of hours.
+* `notifications` - notifications object.
+    * `sms_phones` - array of string. Phones where sms notifications should be sent. In the international format without
+     `+` sign.
+    * `emails` - array of string. Email addresses where sms notifications should be sent.
+    * `push_enabled` - boolean. If `true` push notifications enabled.
+* `repeat` - boolean. If `true` then new task will be created when current task done.
+* `unplanned` - boolean. If `true` service task is unplanned. For information only.
+* `file_ids` - array of int. One file will be specified in many service tasks. If one of the tasks will be deleted, 
+then file will remain in others. File will be deleted only when the last task with it will be deleted.
 
-    { "success": true }
+#### example
 
+=== "cURL"
 
-#### errors
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/batch/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_ids": [76801, 76449], "task": {"comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
+    ```
 
-*   201 (Not found in database) – vehicle or tracker not found
-*   214 (Requested operation or parameters are not supported by the device) – engine hours condition passed but tracker hasn’t ignition sensor
+#### response
 
+```json
+{"success":true}
+```
 
-## delete()
+### create
 
-Delete vehicle service task.
+Creates a new vehicle service task. For vehicles with associated tracker only.
 
 #### parameters
 
-Either **task_id** or **task_ids** should be specified
-*   **task_id** – **int**. (optional) id of service task
-*   **task_ids** – **int\[\]**. (optional) ids of service tasks
+| name | description | type |
+| :------ | :------ | :----- |
+| task | Service task to create. | JSON object |
 
-#### return
+A `task` object is:
+
+```json
+{
+    "vehicle_id": 222,
+    "description": "Service task",
+    "comment": "",
+    "cost": 10050.0000,
+    "conditions": {
+        "mileage": {
+            "limit": 100,
+            "notification_interval": 10
+        },
+        "date": {
+            "end": "2015-05-08 09:35:00",
+            "notification_interval": 3
+        },
+        "engine_hours": {
+            "limit": 100,
+            "notification_interval": 10
+        }
+    },
+    "notifications": {
+        "sms_phones": [
+            "79221234567",
+            "79227654321"
+        ],
+        "emails": [
+            "email@domain.tld",
+            "email@mail.com"
+        ],
+        "push_enabled": true
+    },
+    "repeat": false,
+    "unplanned": false,
+    "file_ids": [1, 2]
+}
+```
+
+* `vehicle_id` - int. An id of associated vehicle.
+* `description` - string. Name of a service task. Max 255 characters.
+* `comment` - string. Comment for a task. Max 255 characters.
+* `cost` - float. Cost in the currency of the user. For information only.
+* `conditions` - task end conditions. At least one of fields ("mileage" or "date" or "engine_hours") must be passed.
+    * `mileage` - optional object. Mileage condition.
+        * `limit` - int. Task limit in kilometers.
+        * `notification_interval` - int. Notify about task in specified number of kilometers.
+    * `date` - optional date condition object. 
+        * `end` - string date/time. Task end date.
+        * `notification_interval` - int. Notify about task in specified number of days.
+    * `engine_hours` - optional engine hours condition object.
+        * `limit` - int. Task limit in hours.
+        * `notification_interval` - int. Notify about task in specified number of hours.
+* `notifications` - notifications object.
+    * `sms_phones` - array of string. Phones where sms notifications should be sent. In the international format without
+     `+` sign.
+    * `emails` - array of string. Email addresses where sms notifications should be sent.
+    * `push_enabled` - boolean. If `true` push notifications enabled.
+* `repeat` - boolean. If `true` then new task will be created when current task done.
+* `unplanned` - boolean. If `true` service task is unplanned. For information only.
+* `file_ids` - array of int. One file will be specified in many service tasks. If one of the tasks will be deleted, 
+then file will remain in others. File will be deleted only when the last task with it will be deleted.
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task": {"vehicle_id": 76801, "comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
+    ```
+
+#### response
+
+```json
+{
+  "success":true,
+  "id": 33777
+}
+```
+
+* `id` - int. An id of created task.
+
+#### errors
+
+* 201 (Not found in the database) – vehicle or tracker not found.
+* 214 (Requested operation or parameters are not supported by the device) – engine hours condition passed but tracker hasn't ignition sensor.
+
+### delete
+
+Deletes a vehicle service task.
+
+#### parameters
+
+| name | description | type |
+| :------ | :------ | :----- |
+| task_id | Optional. Id of service task. | int |
+| task_ids |  Optional. Ids of service tasks. | array of int |
+
+Either **task_id** or **task_ids** should be specified
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/delete' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 33777}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}vehicle/service_task/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=33777
+    ```
+
+#### response
 
 ```json
 { "success": true }
 ```
 
+### download
 
-## download()
-
-Create pdf report of service tasks
+Creates pdf report of service tasks.
 
 #### parameters
 
-*   **order_by** - **string**. Sort option. Possible values:
-    <br> — vehicle
-    <br> — description
-    <br> — status
-    <br> — cost
-*   **ascending** - **boolean** (optional, default **true**). Sort direction.
-*   **group_by** - **string** (optional). Group by option. Possible values:
-    <br> — vehicle
-    <br> — status
+| name | description | type |
+| :------ | :------ | :----- |
+| order_by | Sort option. Possible values listed below | string enum |
+| ascending | Optional. Default is `true`. Sort direction. | boolean |
+| group_by | Optional. Group by option. Can be "vehicle" or "status" | string enum |
 
-#### return
+* `order_by` possible values:
+    * "vehicle" - order by `vehicle_id`.
+    * "description" - order by `description`.
+    * "status" - order by `status`.
+    * "cost" - order by `cost`.
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/download' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "order_by": "vehicle", "group_by": "status"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}vehicle/service_task/download?hash=a6aa75587e5c59c32d347da438505fc3&order_by=vehicle&group_by=status
+    ```
+
+#### response
 
 Report file.
 
 
-## list()
+### list
 
 List all service tasks of all user vehicles.
 
 #### parameters
 
-*   **return_prediction** – **boolean**. include legacy **prediction** field or not
+| name | description | type |
+| :------ | :------ | :----- |
+| return_prediction | Include legacy **prediction** field or not | boolean |
 
-#### return
+#### examples
 
-```js
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "return_prediction": "false"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}vehicle/service_task/list?hash=a6aa75587e5c59c32d347da438505fc3&return_prediction=false
+    ```
+
+#### response
+
+```json
 {
     "success": true,
-    "list": [ // list of JSON objects:
+    "list": [
         {
-            "id": 725, // id of service task
-            "vehicle_id": 222, // id of associated vehicle
-            "vehicle_label": "AGV", // label of associated vehicle
-            "status": "created", // task status
-            "prediction": { // optional. legacy field, is not used anymore. check return_prediction parameter
-                "end_date": "2015-05-03 09:35:00", // predicted end date
-                "wear_percentage": 40 // wear percentage
+            "id": 725,
+            "vehicle_id": 222,
+            "vehicle_label": "AGV",
+            "status": "created",
+            "prediction": {
+                "end_date": "2015-05-03 09:35:00",
+                "wear_percentage": 40
             },
-            "description": "Service task", // task description
-            "cost": 10050.0, // task cost
-            "completion": { // date and counter's values when the task was marked as done. Non-editable.
+            "description": "Service task",
+            "cost": 10050.0,
+            "completion": {
                 "mileage": 31,
                 "date": "2014-03-16 00:00:00",
                 "engine_hours": 140
             },
-            "completion_date" : "2014-03-16 00:00:00", // deprecated. use completion.date instead
-            "conditions": { // task end conditions. at least one of fields (mileage or date) must be passed.
-                "mileage": { // optional
-                    "limit": 100, // task limit in kilometers. task end mileage = start.mileage + this limit
-                    "notification_interval": 10 // notify about task in specified number of kilometers
+            "completion_date" : "2014-03-16 00:00:00",
+            "conditions": { 
+                "mileage": {
+                    "limit": 100,
+                    "notification_interval": 10
                 },
-                "date": { // optional
-                    "end": "2015-05-08 09:35:00", // task end date
-                    "notification_interval": 3    // notify about task in specified number of days
+                "date": {
+                    "end": "2015-05-08 09:35:00",
+                    "notification_interval": 3
                 },
-                "engine_hours": { // optional
-                    "limit": 100, // task limit in hours. task end engine hours = start.engine_hours + this limit
-                    "notification_interval": 10 // notify about task in specified number of hours
-                },
+                "engine_hours": {
+                    "limit": 100,
+                    "notification_interval": 10
+                }
             },
-            "current_position": { // current position values
-                "mileage": 11, // optional
-                "date": "2012-03-06 15:55:03", // optional
-                "engine_hours": 100 // optional
+            "current_position": {
+                "mileage": 11,
+                "date": "2012-03-06 15:55:03",
+                "engine_hours": 100
             },
             "start": {
-                "mileage": 1230,              // initial odometer value. for tasks with mileage condition
-                "date": "2015-05-01 17:46:44", // task creation date. for tasks with date condition
-                "engine_hours": 50 // initial engine hours value. for tasks with engine hours condition
+                "mileage": 1230,
+                "date": "2015-05-01 17:46:44",
+                "engine_hours": 50
             },
             "repeat": false,
             "unplanned": false,
@@ -207,99 +359,175 @@ List all service tasks of all user vehicles.
 }
 ```
 
-About task **status** property see above.
+* `id` - int. An id of created task.
+* `vehicle_label` - string. Vehicle label.
+* `status` - string enum. [Status](#task-status).
+* `prediction` - optional object. Legacy field, is not used anymore. check return_prediction parameter.
+    * `end_date` - string date/time. Predicted end date.
+    * `wear_percentage` - int. Wear percentage.
+* `completion` - object. Date and counter's values when the task marked as done. Non-editable.
+* `completion_date` - string date/time. Date when a service task completed.
+* `current_position` - object. Current position values.
+    * `mileage` - int. Current mileage.
+    * `date` - string date/time. Current date.
+    * `engine_hours` - int. Current engine hours.
+* `start` - object. Consists initial values.
+    * `mileage` - int. Initial odometer value for tasks with mileage condition.
+    * `date` - string date/time. Task creation date for tasks with date condition.
+    * `engine_hours` - int. Initial engine hours value for tasks with engine hours condition.
+* `vehicle_id` - int. An id of associated vehicle.
+* `description` - string. Name of a service task. Max 255 characters.
+* `comment` - string. Comment for a task. Max 255 characters.
+* `cost` - float. Cost in the currency of the user. For information only.
+* `conditions` - task end conditions. At least one of fields ("mileage" or "date" or "engine_hours") must be passed.
+    * `mileage` - optional object. Mileage condition.
+        * `limit` - int. Task limit in kilometers.
+        * `notification_interval` - int. Notify about task in specified number of kilometers.
+    * `date` - optional date condition object. 
+        * `end` - string date/time. Task end date.
+        * `notification_interval` - int. Notify about task in specified number of days.
+    * `engine_hours` - optional engine hours condition object.
+        * `limit` - int. Task limit in hours.
+        * `notification_interval` - int. Notify about task in specified number of hours.
+* `notifications` - notifications object.
+    * `sms_phones` - array of string. Phones where sms notifications should be sent. In the international format wo
+     `+` sign.
+    * `emails` - array of string. Email addresses where sms notifications should be sent.
+    * `push_enabled` - boolean. If `true` push notifications enabled.
+* `repeat` - boolean. If `true` then new task will be created when current task done.
+* `unplanned` - boolean. If `true` service task is unplanned. For information only.
+* `file_ids` - array of int. One file will be specified in many service tasks. If one of the tasks will be deleted, 
+then file will remain in others. File will be deleted only when the last task with it will be deleted.
+
+About [task status](#task-status) property.
 
 #### errors
 
-*   201 (Not found in database) – vehicle or tracker not found
+* 201 (Not found in the database) – vehicle or tracker not found.
 
+### read
 
-## read()
-
-Get service task info by it’s id.
+Get service task info by its id.
 
 #### parameters
 
-*   **task_id** – **int**. task id
-*   **return_prediction** – **boolean**. include legacy **prediction** field or not
+| name | description | type |
+| :------ | :------ | :----- |
+| task_id | Id of service task. | int |
+| return_prediction | Include legacy **prediction** field or not | boolean |
 
-#### return
+#### examples
 
-```js
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "return_prediction": "false"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}vehicle/service_task/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&return_prediction=false
+    ```
+
+#### response
+
+```json
 {
     "success": true,
     "value": {
-        "id": 725, // task id
-        "vehicle_id": 222, // id of associated vehicle
-        "status": "created", // task status
-        "prediction": { // optional. legacy field, is not used anymore. check return_prediction parameter
-            "end_date": "2015-05-03 09:35:00", // predicted end date
-            "wear_percentage": 40 // wear percentage
+        "id": 725,
+        "vehicle_id": 222,
+        "status": "created",
+        "prediction": {
+            "end_date": "2015-05-03 09:35:00",
+            "wear_percentage": 40
         },
         "description": "Service task",
         "comment": "",
         "cost": 100500.0,
-        "completion": { // date and counter's values when the task was marked as done. Non-editable.
+        "completion": {
             "mileage": 31,
             "date": "2014-03-16 00:00:00",
             "engine_hours": 140
         },
-        "conditions": { // task end conditions. at least one of fields (mileage or date) must be passed.
-            "mileage": { // optional
-                "limit": 100, // task limit in kilometers. task end mileage = start.mileage + this limit
-                "notification_interval": 10 // notify about task in specified number of kilometers
+        "conditions": {
+            "mileage": {
+                "limit": 100,
+                "notification_interval": 10
             },
-            "date": { // optional
-                "end": "2015-05-08 09:35:00", // task end date
-                "notification_interval": 3    // notify about task in specified number of days
+            "date": {
+                "end": "2015-05-08 09:35:00",
+                "notification_interval": 3
             },
-            "engine_hours": { // optional
-                "limit": 100, // task limit in hours. task end engine hours = start.engine_hours + this limit
-                "notification_interval": 10 // notify about task in specified number of hours
-            },
+            "engine_hours": {
+                "limit": 100,
+                "notification_interval": 10
+            }
         },
         "start": {
-            "mileage": 1230,              // initial odometer value. for tasks with mileage condition
-            "date": "2015-05-01 17:46:44", // task creation date. for tasks with date condition
-            "engine_hours": 50 // initial engine hours value. for tasks with engine hours condition
+            "mileage": 1230,
+            "date": "2015-05-01 17:46:44",
+            "engine_hours": 50
         },
         "notifications": {
-            "sms_phones": [ //array of phones in international format wo + sign
+            "sms_phones": [
                 "79221234567",
                 "79227654321"
             ],
-            "emails": [//array of email addresses
+            "emails": [
                 "email@domain.tld",
                 "email@mail.com"
             ],
-            "push_enabled": true // enable/disable push notifications
+            "push_enabled": true
         },
-        "completion_date" : "2014-03-16 00:00:00", // deprecated. use completion.date instead
+        "completion_date" : "2014-03-16 00:00:00",
         "repeat": false,
         "unplanned": false,
         "file_ids": [1, 2]
     },
-    "files": [ <file_object> ]
+    "files": [<file_object>]
 }
 ```
 
-About task **status** property see above.
+All parameters described in a [list method](#list).
 
 #### errors
 
-*   201 (Not found in database) – does not exists one of tracker’s counters which required to determine status
-*   204 (Entity not found) – when vehicle or service task not found
+* 201 (Not found in the database) – does not exist one of tracker's counters which required to determine status.
+* 204 (Entity not found) – when vehicle or service task not found.
 
-## set_status()
+### set_status
 
-Update task status. And save (on **done** **status**) current date and values of used (in condition) counters for “freeze” wearing percent.
+Updates task status, snd saved (on `done` **status**) current date and values of used (in condition) counters for 
+"freeze" wearing percent.
 
 #### parameters
 
-*   **task_id** – **int**, task id.
-*   **status** – new task. Only `done` status allowed for now.
+| name | description | type |
+| :------ | :------ | :----- |
+| task_id | Id of service task. | int |
+| status | A new task status. Only `done` status allowed for now. | string enum |
 
-#### return
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/set_status' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "status": "done"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}vehicle/service_task/set_status?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&status=done
+    ```
+
+#### response
 
 ```json
 { "success": true }
@@ -307,54 +535,32 @@ Update task status. And save (on **done** **status**) current date and values of
 
 #### errors
 
-*   201 (Not found in database) – does not exists one of tracker’s counters which required to determine status
-*   204 (Entity not found) – when vehicle or service task not found
+* 201 (Not found in the database) – does not exist one of tracker's counters which required to determine status.
+* 204 (Entity not found) – when vehicle or service task not found.
 
-## update()
+### update
 
-Update information fields and notification settings of vehicle service task.
+Updates information fields and notification settings of vehicle service task.
 
 #### parameters
 
-*   **task** – JSON object:
+| name | description | type |
+| :------ | :------ | :----- |
+| task | Service task to create. | JSON object |
 
-```js
-{
-    "id": 4,  // id of service task to update
-    "description": "service", // new description (max 255 characters)
-    "comment": "comment", // new comment (max 255 characters)
-    "cost": 99.95,  // new cost
-    "conditions": { // task end conditions. at least one of fields (mileage or date) must be passed.
-        "mileage": { // optional
-            "limit": 100, // task limit in kilometers
-            "notification_interval": 10 // notify about task in specified number of kilometers
-        },
-        "date": { // optional
-            "end": "2015-05-08 09:35:00", // task end date
-            "notification_interval": 3    // notify about task in specified number of days
-        },
-        "engine_hours": { // optional
-            "limit": 100, // task limit in hours
-            "notification_interval": 10 // notify about task in specified number of hours
-        },
-    },
-    "notifications": {
-        "sms_phones": [ //array of phones in international format wo + sign
-            "79221234567",
-            "79227654321"
-        ],
-        "emails": [],
-        "push_enabled": true // enable/disable push notifications
-    },
-    "repeat": false,
-    "unplanned": false,
-    "file_ids": [3] // empty array means delete all files, null means do nothing with files (backward compatibility)
-}
-```
+A [task object](#create) described in a task create. 
 
-See [create()](#create).
+#### example
 
-#### return
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task": {"vehicle_id": 76801, "comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
+    ```
+
+#### response
 
 ```json
 { "success": true }
@@ -363,5 +569,6 @@ See [create()](#create).
 
 #### errors
 
-*   204 (Entity not found) – when vehicle or service task not found.
-*   214 (Requested operation or parameters are not supported by the device) – engine hours condition passed but tracker hasn’t ignition sensor.
+* 204 (Entity not found) – when vehicle or service task not found.
+* 214 (Requested operation or parameters are not supported by the device) – engine hours condition passed but tracker
+ hasn't ignition sensor.

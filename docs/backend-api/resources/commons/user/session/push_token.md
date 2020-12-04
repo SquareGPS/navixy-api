@@ -7,17 +7,17 @@ description: Push token
 
 API path: `/user/session/push_token`.
 
-## bind()
+### bind
 
 Binds Push token with current session.
 
 #### parameters
 
-*   **application** (string) – Application ID, for now it’s “navixy_iphone_viewer” or “navixy_android_viewer”
+*   **application** (string) – Application ID, for now it's "navixy_iphone_viewer" or "navixy_android_viewer"
 *   **token** (string) – Push token
 *   **category_filter** (string) – Push notifications category filter, default is *
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -42,12 +42,12 @@ Prepended with minus and delimited with comma list means that all categories are
 * `history_work_status` – work status notifications
 
 
-## delete
+### delete
 
 
 Deletes push token that bound with the session.
 
-#### return
+#### response
 
 ```json
 { "success": true }
@@ -56,4 +56,4 @@ Deletes push token that bound with the session.
 
 #### errors
 
-General types only.
+[General](../../../../getting-started.md#error-codes) types only.
