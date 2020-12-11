@@ -6,7 +6,7 @@ and allow to track user's objects on the map in real-time.
 ## Example
 
 The following HTML texts is used to show on the map the objects from
-[demo account](https://navixy.com/demo):
+[demo account](https://www.navixy.com/demo/):
 ```html
 <iframe src="https://saas.navixy.com/pro/applications/locator/?key=14084cd4a31f702341afb3fd6f81e475" 
         width="900" height="400">

@@ -238,9 +238,10 @@ Gets last sensors and states values received from the device.
 
 ```json
 {
-    "success": true,
-    "user_time": "2014-07-09 07:50:58",
-    "inputs": [{
+  "success": true,
+  "user_time": "2014-07-09 07:50:58",
+  "inputs": [
+    {
       "label": "Sensor #1",
       "name": "can_fuel",
       "type": "fuel",
@@ -249,9 +250,14 @@ Gets last sensors and states values received from the device.
       "units": "litres",
       "converted_units_type": null,
       "converted_value": null
-      }],
-    "states": {"obd_vin": "123", "obd_mil_status":"false"},
-    "update_time": "2014-03-06 13:57:00"
+    }
+  ],
+  "states": {
+    "obd_vin": "123",
+    "obd_mil_status": "false"
+  },
+  "update_time": "2014-03-06 13:57:00"
+}
 ```
 
 * `user_time` - date/time. Current time in user's timezone.
@@ -302,6 +308,7 @@ List of available sensor's input names for the object `sensor value`:
 * **can_mileage**.
 * **can_throttle**.
 * **can_fuel** (fuel level in percents or in unknown units).
+* **can_fuel_2** (fuel level in percents or in unknown units).
 * **can_fuel_litres** (fuel level in litres).
 * **can_fuel_economy** (fuel economy in km/litres).
 * **can_consumption**.
@@ -394,7 +401,7 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
       "units": "litres",
       "converted_units_type": null,
       "converted_value": null
-    }]
+    }],
     "update_time": "2014-03-06 13:57:00"
 }
 ```
@@ -1048,7 +1055,7 @@ containing "aa1" and "bb2" will be returned.
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
@@ -1193,11 +1200,11 @@ The device must be preconfigured.
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
-      }
+      }]
     }
 }
 ```
@@ -1271,11 +1278,11 @@ Resends registration commands to the device. The panel must have installed SMS g
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
-      }
+      }]
     }
 }
 ```
@@ -1367,11 +1374,11 @@ using [apn_settings/read](apn_settings.md#read) API call.
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
-      }
+      }]
     }
 }
 ```
@@ -1402,14 +1409,15 @@ common command format is:
 
 ```json
 {
-"command": {
-  "name": "command name",
-  "some_parameter1": 12,
-  "some_parameter2": "parameter",
-  "special_settings": {
-    "type": "settings type",
-    "some_field1": 10,
-    "some_field2": 32
+  "command": {
+    "name": "command name",
+    "some_parameter1": 12,
+    "some_parameter2": "parameter",
+    "special_settings": {
+      "type": "settings type",
+      "some_field1": 10,
+      "some_field2": 32
+    }
   }
 }
 ```
@@ -1437,7 +1445,7 @@ This command used to seal/unseal electronic lock.
 {
   "name": "electronic_lock_command",
   "command_code": "unseal",
-  "special_settings": {"special settings JSON object"}
+  "special_settings": {<special settings JSON object>}
 }
 ```
 
@@ -1446,8 +1454,8 @@ This command used to seal/unseal electronic lock.
 
 ```json
 {
-  "name": "set_special_settings_command"
-  "special_settings": {"special settings JSON object"}
+  "name": "set_special_settings_command",
+  "special_settings": {<special settings JSON object>}
 }
 ```
 
@@ -1491,11 +1499,11 @@ See [special settings JSON object](./settings/special/index.md#read)
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
-      }
+      }]
     }]
 }
 ```
