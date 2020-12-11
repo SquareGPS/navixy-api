@@ -72,7 +72,7 @@ extra:
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/channel/UCL0u39pv4NlECAmFOZCZ-nw
     - icon: fontawesome/regular/address-card
-      link: https://navixy.com/contact/
+      link: https://www.navixy.com/contact/
       name: Contacts
   api_example_url: https://api.navixy.com/v2
 

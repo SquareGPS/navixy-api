@@ -13,6 +13,6 @@ description: Overview of Navixy developers public documentation
 Here you can find information about integration of 3rd party solutions with the Navixy platform,
 API and technical documentation for developers and partners.
 
-  [1]: https://navixy.com/
+  [1]: https://www.navixy.com/
   [2]: https://squaregps.com/
 
