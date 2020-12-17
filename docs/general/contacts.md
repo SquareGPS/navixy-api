@@ -5,7 +5,7 @@ description: Contact with Navixy Team
 
 If you have questions, write to us in any way convenient for you.
 
-You can call us or send email: [navixy.com/contact](https://navixy.com/contact/).
+You can call us or send email: [navixy.com/contact](https://www.navixy.com/contact/).
 
 Follow us in the social networks:
 

@@ -29,7 +29,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
-    - tabs
+    - navigation.tabs
   language: en
 
 plugins:
@@ -72,7 +72,7 @@ extra:
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/channel/UCL0u39pv4NlECAmFOZCZ-nw
     - icon: fontawesome/regular/address-card
-      link: https://navixy.com/contact/
+      link: https://www.navixy.com/contact/
       name: Contacts
   api_example_url: https://api.navixy.com/v2
 
@@ -96,6 +96,7 @@ markdown_extensions:
       repo: navixy-api
   - pymdownx.superfences
   - pymdownx.tabbed
+  - pymdownx.details
 
 # Enable analytics block to include scripts from /partial/integrations/analytics.html
 google_analytics:

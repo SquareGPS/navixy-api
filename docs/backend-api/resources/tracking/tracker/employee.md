@@ -7,11 +7,12 @@ description: Assigning employee to tracker
 
 API base path: `/tracker/employee`
 
-Allows to assign employee ("driver") to a device. Also, read who is on a vehicle now, hardware key and when, where was assigned. 
+Allows assigning employee ("driver") to a device. Also, read who is on a vehicle now, hardware key and when, where was 
+assigned. 
 
 ### assign
 
-Assigns another employee (“driver”) to the tracker.
+Assigns another employee ("driver") to the tracker.
 
 **required sub-user rights:** `employee_update`
 **required tariff feature:** `app_fleet`
@@ -20,7 +21,7 @@ Assigns another employee (“driver”) to the tracker.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 | new_employee_id | Id of the new employee. | int | 12345 |
 
 #### examples
@@ -59,7 +60,7 @@ Requests to read the current employee assigned to tracker, and when it was assig
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
 #### examples
 
@@ -118,8 +119,8 @@ Requests to read the current employee assigned to tracker, and when it was assig
 }
 ```
 
-* `current` - current employee info, standard employee object, CAN BE NULL.
-* `last_change` - information about when did last change occur, MAY BE NULL.
+* `current` - current employee info, standard employee object, can be null.
+* `last_change` - information about when did last change occur, can be null.
 * `old_employee_id` - can be null.
 * `new_employee_id` - can be null.
 * `location` - where it was.

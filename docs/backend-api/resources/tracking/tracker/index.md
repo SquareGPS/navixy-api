@@ -50,7 +50,7 @@ GPS monitoring system. Lots of API calls created for manipulation of tracker and
     * `creation_date` - date/time. Date when the tracker registered.
     * `tariff_end_date` - date/time. Date of next tariff prolongation, or null.
     * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
-* `tag_binding` - object. List of attached tags. Appears only for “tracker/list“ call.
+* `tag_binding` - object. List of attached tags. Appears only for "tracker/list" call.
     * `tag_id` - int. An id of tag. Must be unique for a tracker.
     * `ordinal` - int. Number that can be used as ordinal or kind of tag. Must be unique for a tracker. Max value is 5.
 
@@ -68,8 +68,8 @@ Changes tracker's phone and setup new apn.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| phone | The phone number of the sim card inserted into device in international format without “+” sign. | string| "6156680000" |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| phone | The phone number of the sim card inserted into device in international format without "+" sign. | string| "6156680000" |
 | apn_name | The name of GPRS APN of the sim card inserted into device. | string | "fast.tmobile.com" |
 | apn_ user | The user of GPRS APN of the sim card inserted into device. | string | "tmobile" |
 | apn_password | The password of GPRS APN of the sim card inserted into device. | sting | "tmobile" |
@@ -82,12 +82,6 @@ Changes tracker's phone and setup new apn.
     curl -X POST '{{ extra.api_example_url }}/tracker/change_phone' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/change_phone?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&phone=6156680000&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
     ```
 
 #### response
@@ -103,7 +97,8 @@ Changes tracker's phone and setup new apn.
 * 219 – Not allowed for clones of the device (if specified tracker is a clone).
 * 214 – Requested operation or parameters are not supported by the device (if device does not have GSM module).
 * 223 – Phone number already in use (if specified phone number already used in another device).
-* 241 – Cannot change phone to bundled sim. Contact tech support. (if specified phone number belongs tp sim card bundled with the device).
+* 241 – Cannot change phone to bundled sim. Contact tech support. (if specified phone number belongs tp sim card bundled
+ with the device).
 
 ### corrupt
 
@@ -115,7 +110,7 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -150,7 +145,7 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
 
 ### delete
 
-Deletes a tracker if it is “clone”. Will not work if specified id of the original tracker.
+Deletes a tracker if it is "clone". Will not work if specified id of the original tracker.
 
 **required sub-user rights**: `admin` (available only to master users).
 
@@ -158,7 +153,7 @@ Deletes a tracker if it is “clone”. Will not work if specified id of the ori
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -221,7 +216,7 @@ Gets last sensors and states values received from the device.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -243,9 +238,10 @@ Gets last sensors and states values received from the device.
 
 ```json
 {
-    "success": true,
-    "user_time": "2014-07-09 07:50:58",
-    "inputs": [{
+  "success": true,
+  "user_time": "2014-07-09 07:50:58",
+  "inputs": [
+    {
       "label": "Sensor #1",
       "name": "can_fuel",
       "type": "fuel",
@@ -254,9 +250,14 @@ Gets last sensors and states values received from the device.
       "units": "litres",
       "converted_units_type": null,
       "converted_value": null
-      }],
-    "states": {"obd_vin": "123", "obd_mil_status":"false"},
-    "update_time": "2014-03-06 13:57:00"
+    }
+  ],
+  "states": {
+    "obd_vin": "123",
+    "obd_mil_status": "false"
+  },
+  "update_time": "2014-03-06 13:57:00"
+}
 ```
 
 * `user_time` - date/time. Current time in user's timezone.
@@ -268,14 +269,14 @@ Gets last sensors and states values received from the device.
     * `units_type` - string of enum. Unit of measurement of input to the sensor. E.g."litre".
     * `units` - string. User label for sensor's units.
     * `converted_units_type` - string of enum. Unit of measurement system preferred by current user
-       (according to user/settings), suitable for this sensor. Can be null, if there is no need in 
-       conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
+        (according to user/settings), suitable for this sensor. Can be null, if there is no need in 
+        conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
     * `converted_value` - float. Reading's value in units from field `converted_units_type`. 
-       Can be null if there is no need in conversion.
+        Can be null if there is no need in conversion.
 * `states` - map of last state values or null (see below).
 * `update_time` - date/time. Date and time when the data updated.
 
-List of available sensor's input names for the object **sensor value**:
+List of available sensor's input names for the object `sensor value`:
 
 * **composite**.
 * **input_status**.
@@ -307,6 +308,7 @@ List of available sensor's input names for the object **sensor value**:
 * **can_mileage**.
 * **can_throttle**.
 * **can_fuel** (fuel level in percents or in unknown units).
+* **can_fuel_2** (fuel level in percents or in unknown units).
 * **can_fuel_litres** (fuel level in litres).
 * **can_fuel_economy** (fuel economy in km/litres).
 * **can_consumption**.
@@ -323,7 +325,7 @@ List of available sensor's input names for the object **sensor value**:
 * **temp_sensor**.
 * **ext_temp_sensor_x** (range for x: [1 – 10]).
 
-List of state names for the field **states**:
+List of state names for the field `states`:
 
 * **obd_vin** (value type: string).
 * **obd_mil_status** (value type: boolean).
@@ -344,14 +346,14 @@ List of state names for the field **states**:
 * **tacho_card1_last_download** (value type: string).
 * **tacho_card2_last_download** (value type: string).
 * **can_hand_brake_state** (value type: boolean).
-* **can_hood_state** (value type: boolean, "true means "open").
-* **can_airbag_state** (value type: boolean, "true" means "malfunction").
-* **can_trunk_state** (value type: boolean, "true" means "open").
-* **can_seat_belt_driver_state** (value type: boolean, "true" means "untied").
-* **can_seat_belt_passenger_state** (value type: boolean, "true" means "untied").
+* **can_hood_state** (value type: boolean, `true` means "open").
+* **can_airbag_state** (value type: boolean, `true` means "malfunction").
+* **can_trunk_state** (value type: boolean, `true` means "open").
+* **can_seat_belt_driver_state** (value type: boolean, `true` means "untied").
+* **can_seat_belt_passenger_state** (value type: boolean, `true` means "untied").
 * **can_door_state** (value type: boolean).
-* **can_door_driver_state** (value type: boolean, "true" means "open").
-* **can_door_passenger_state** (value type: boolean, "true" means "open").
+* **can_door_driver_state** (value type: boolean, `true` means "open").
+* **can_door_passenger_state** (value type: boolean, `true` means "open").
 
 #### errors
 
@@ -366,7 +368,7 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -399,13 +401,14 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
       "units": "litres",
       "converted_units_type": null,
       "converted_value": null
-    }]
+    }],
     "update_time": "2014-03-06 13:57:00"
 }
 ```
 
 * `user_time` - date/time. Current time in user's timezone.
-* `inputs` - array of last readings of fuel-related sensors. Items are objects of the same type as used in tracker/get_diagnostics.
+* `inputs` - array of last readings of fuel-related sensors. Items are objects of the same type as used in 
+tracker/get_diagnostics.
 * `update_time` - date/time. Date and time when the data updated.
 
 #### errors
@@ -415,13 +418,14 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
 
 ### get_inputs
 
-Gets current state of tracker's digital inputs and “semantic” inputs (ignition, buttons, car alarms, etc.) binded to them (if any).
+Gets current state of tracker's digital inputs and "semantic" inputs (ignition, buttons, car alarms, etc.) 
+bound to them (if any).
 
 #### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -459,7 +463,8 @@ Gets current state of tracker's digital inputs and “semantic” inputs (igniti
 ```
 
 * `user_time` - date/time. Current time in user's timezone.
-* `inputs` - array (boolean) of states of all digital inputs. `[true, true, false]` means input 1 is on, input 2 is on, input 3 is off.
+* `inputs` - array (boolean) of states of all digital inputs. `[true, true, false]` means input 1 is on, 
+input 2 is on, input 3 is off.
 * `states` - array of state objects.
     * `type` - string of enum. One of predefined semantic input types (see below).
     * `name` - string. User-defined name for semantic input, or null if not specified.
@@ -467,22 +472,83 @@ Gets current state of tracker's digital inputs and “semantic” inputs (igniti
     * `input_number` - int. Number of the associated discrete input.
 * `update_time` - date/time. Date and time when the data updated.
 
-List of **input types**:
+List of `input types`:
 
 * **ignition** - Car's ignition. There can be only one sensor of this type.
 * **engine** - Engine's working status.
-* **mass** - Car's “ground”.
-* **car_alarm** - Expected to be “on” when car alarm triggered.
-* **sos_button** - An emergency “red” button.
-* **hood** - “on” if engine's hood is open.
-* **door** - “on” if car's door is open.
-* **car_lock** - “on” if car's central lock is open.
-* **custom** - user-defined type. In general, should have non-empty “name” field.
+* **mass** - Car's "ground".
+* **car_alarm** - Expected to be "on" when car alarm triggered.
+* **sos_button** - An emergency "red" button.
+* **hood** - "on" if engine's hood is open.
+* **door** - "on" if car's door is open.
+* **car_lock** - "on" if car's central lock is open.
+* **custom** - user-defined type. In general, should have non-empty "name" field.
 
 #### errors
 
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+
+### get_counters
+
+Gets last values of the tracker's counters.
+
+#### parameters
+
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/get_counters' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/get_counters?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "user_time": "2014-07-09 07:50:58",
+    "list": [
+        {
+            "type": "odometer",
+            "value": 100500.1,
+            "update_time": "2014-03-06 13:57:00"
+        }
+    ]
+    
+}
+```
+
+* `user_time` - date/time. Current time in user's timezone.
+* `list` - array of counter value objects.
+    * `type` - string of enum. One of predefined semantic counter types (see below).
+    * `value` - double. Counter value.
+    * `update_time` - date/time. Date and time when the data updated.
+
+List of `counter types`:
+
+* **odometer** - Odometer.
+* **fuel_consumed** - Total fuel consumed.
+* **engine_hours** - Engine hours.
+
+#### errors
+
+* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
+* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+
 
 ### get_last_gps_point
 
@@ -492,7 +558,7 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -541,9 +607,9 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
     * `heading` - int. Direction bearing in degrees (0-360).
     * `speed` - int. Speed in km/h.
     * `precision` - int. Optional. Precision in meters.
-    * `gsm_lbs` - boolean. Optional. True if location detected by GSM LBS, optional.
-    * `parking` - boolean. Optional. true if point does not belong to track.
-    
+    * `gsm_lbs` - boolean. Optional. `true` if location detected by GSM LBS, optional.
+    * `parking` - boolean. Optional. `true` if point does not belong to track.
+
 #### errors
 
 * 201 (Not found in the database) – if there is no tracker with such id belonging to authorized user.
@@ -555,13 +621,13 @@ Gets last sensor values for sensors that are:
 
 - **metering**.
 - **not can- or obd-based**.
-- **not “fuel” sensors**.
+- **not "fuel" sensors**.
 
 #### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -612,7 +678,7 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 
 #### examples
 
@@ -679,7 +745,8 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 * `user_time` - date/time. Current time in user's timezone.
 * `source_id` - int. Tracker data source id (from "sources" table).
 * `gps` - gps object.
-    * `updated` - date/time. Date of last gps coordinates update in a timezone of the user or null if there are no updates.
+    * `updated` - date/time. Date of last gps coordinates update in a timezone of the user or null if there are 
+    no updates.
     * `signal_level` - int. GPS signal level in percent, e.g. 25, or null if device cannot provide such info.
     * `lat` - float. Latitude.
     * `lng` - float. Longitude.
@@ -688,7 +755,8 @@ Gets current tracker state (gps, gsm, outputs, etc.).
     * `alt` - int. Altitude in meters, e.g. 10.
     * `precision` - int. Optional. Precision in meters.
     * `gsm_lbs` - boolean. Optional. True if location detected by GSM LBS.
-* `connection_status` - enum. Device connection status, possible values: "signal_lost", "just_registered", "offline", "idle", "active".
+* `connection_status` - enum. Device connection status, possible values: "signal_lost", 
+"just_registered", "offline", "idle", "active".
 * `movement_status` - enum. Movement status, possible values: "moving", "stopped", "parked".
 * `gsm` - object. Can be null if device does not support transmission of gsm info.
     * `updated` - date/time. Date of last gsm status update in a timezone of the user or null if there are no updates.
@@ -698,14 +766,17 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 * `last_update` - date/time. Date of last device state update in a timezone of the user or null if there are no updates.
 * `battery_level` - int. Battery level in percent, e.g. 25, or null if device cannot provide such info.
 * `battery_update` - date/time. Date of last battery update in a timezone of the user or null if there are no updates.
-* `inputs` - array of boolean. States of all digital inputs. `[true, true, false]` means input 1 is on, input 2 is on, input 3 is off.
+* `inputs` - array of boolean. States of all digital inputs. `[true, true, false]` means input 1 is on, input 2 is on,
+ input 3 is off.
 * `inputs_update` - date/time. Date of last inputs update in a timezone of the user or null if there are no updates.
-* `outputs` - array of boolean. States of all digital outputs. `[true, true, false]` means output 1 is on, output 2 is on, output 3 is off.
+* `outputs` - array of boolean. States of all digital outputs. `[true, true, false]` means output 1 is on, 
+output 2 is on, output 3 is off.
 * `outputs_update` - date/time. Date of last outputs update in a timezone of the user or null if there are no updates.
 * `additional` - object. map of additional states, keys depends on tracker model.
     * `hardware_key` - last scanned hardware key object.
         * `value` - int. Hardware key.
-        * `updated` - date/time. Date of last hardware key update in a timezone of the user or null if there are no updates.
+        * `updated` - date/time. Date of last hardware key update in a timezone of the user or null if 
+        there are no updates.
     
 #### errors
 
@@ -720,9 +791,9 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Id of trackers (aka “object_id”). Trackers must belong to authorized user and not be blocked. | array of int | `[999119, 999199]` |
-| list_blocked | Optional. If true call returns list of blocked tracker IDs instead of error 208. Default is false. | boolean | true/false |
-| allow_not_exist | Optional. If true call returns list of nonexistent tracker IDs instead of error 217 or 201. Default is false. | boolean | true/false |
+| trackers | Id of trackers (aka "object_id"). Trackers must belong to authorized user and not be blocked. | array of int | `[999119, 999199]` |
+| list_blocked | Optional. If `true` call returns list of blocked tracker IDs instead of error 208. Default is `false`. | boolean | true/false |
+| allow_not_exist | Optional. If `true` call returns list of nonexistent tracker IDs instead of error 217 or 201. Default is `false`. | boolean | true/false |
 
 #### examples
 
@@ -732,12 +803,6 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
     curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999119, 999199]"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/get_states?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999119, 999199]
     ```
 
 #### response
@@ -791,27 +856,27 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 * `user_time` - date/time. Current time in user's timezone.
 * `states` - object. A map containing state object for requested trackers. See state object description in 
    tracker/get_state response.
-* `blocked` - array of tracker IDs. Returned only if list_blocked=true.
-* `not_exist` - array of tracker IDs. Returned only if allow_not_exist=true.
+* `blocked` - array of tracker IDs. Returned only if list_blocked=`true`.
+* `not_exist` - array of tracker IDs. Returned only if allow_not_exist=`true`.
 
 #### errors
 
-* 201 – Not found in the database (if tracker corrupted and allow_not_exist = false).
-* 208 – Device blocked (if list_blocked = false and tracker exists but was blocked due to tariff restrictions 
+* 201 – Not found in the database (if tracker corrupted and allow_not_exist = `false`).
+* 208 – Device blocked (if list_blocked = `false` and tracker exists but was blocked due to tariff restrictions 
   or some other reason).
-* 217 – List contains nonexistent entities (if allow_not_exist = false and there are nonexistent trackers 
+* 217 – List contains nonexistent entities (if allow_not_exist = `false` and there are nonexistent trackers 
   belonging to an authorized user).
 
 ### list_models
 
-Gets all integrated tracker models (from “models" table).
+Gets all integrated tracker models (from "models" table).
 
 #### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| compact_view | Optional. True to compact view. Default is false. | boolean | true/false |
-| codes | Optional. Array of model codes. If passed only given models will be returned. | array of string | `["model_1", "model_2", ...]` |
+| compact_view | Optional. `true` to compact view. Default is `false`. | boolean | true/false |
+| codes | Optional. Array of model codes. If passed only given models will be returned. | array of string | `[model_1, model_2, ...]` |
 
 #### examples
 
@@ -890,7 +955,7 @@ Gets all integrated tracker models (from “models" table).
 * `parent_code` - string. Can be null.
 * `type` - enum. Can be "logger", "portable", "vehicle", or "personal".
 * `name` - string. Model name.
-* `has_auto_registration` - boolean. If true device may register by automatic commands from the platform.
+* `has_auto_registration` - boolean. If `true` device may register by automatic commands from the platform.
 * `battery` - object. An internal device's battery.
     * `low_charge` - float. Charge level for the "low battery" rule triggers.
 * `analog_inputs` - int. Number of analog inputs.
@@ -901,14 +966,17 @@ Gets all integrated tracker models (from “models" table).
 * `rules` - array of enum. Supported rules.
 * `has_led_control` - boolean. Does a switching LED supported by this tracker.
 * `has_location_request` - boolean. Does the tracker have an opportunity to request a location with a command by SMS.
-* `has_gprs_location_request` - boolean. Does the tracker have an opportunity to request a location with a command over a GPRS connection.
-* `has_gsm_lbs_location_request` - boolean. Does the tracker have an opportunity to request a location by LBS with a command over a GPRS connection.
+* `has_gprs_location_request` - boolean. Does the tracker have an opportunity to request a location with a command 
+over a GPRS connection.
+* `has_gsm_lbs_location_request` - boolean. Does the tracker have an opportunity to request a location by LBS 
+with a command over a GPRS connection.
 * `has_chat` - boolean. Does chat available for the device.
 * `has_odometer` - boolean. Does the tracker have an integrated odometer.
 * `has_lbs` - boolean. Does the tracker send information about cell info.
 * `has_motion_sensor` - boolean. Does the tracker have an integrated motion sensor.
 * `has_hardware_key` - boolean. Does the tracker have an opportunity for identification of a driver by a hardware key.
-* `additional_fields` - optional. list of descriptions of special fields using for control trackers that users fill on time of registration.
+* `additional_fields` - optional. list of descriptions of special fields using for control trackers that 
+users fill on time of registration.
 
 #### Id type:
 
@@ -916,14 +984,19 @@ An id type used to determine the information needed to register device in our sy
 
 Possible values are:
 
-- **imei** – means device uses IMEI as its identifier, e.g. “356938035643809”. See [Wikipedia article](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity). When needed, you should pass only digits of IMEI, no spaces, minus signs, etc.
-- **meid** means device uses MEID consisting of 14 HEX digits as its identifier, e.g. “A10000009296F2”. See [Wikipedia article](https://en.wikipedia.org/wiki/Mobile_equipment_identifier).
-- **id,n** – means device uses n-digit identifier (factory id with length n), for example, “id,7” means that you must pass 7-digit number, for example “1234567”.
-- **n,m** – n-digit generated id starting with m. This means that device has configurable ID and our platform generates and configures it automatically. You don't need to pass any identifier during device registration in this case.
+- **imei** – means device uses IMEI as its identifier, e.g. "356938035643809". 
+See [Wikipedia article](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity). When needed, you should 
+pass only digits of IMEI, no spaces, minus signs, etc.
+- **meid** means device uses MEID consisting of 14 HEX digits as its identifier, e.g. "A10000009296F2". 
+See [Wikipedia article](https://en.wikipedia.org/wiki/Mobile_equipment_identifier).
+- **id,n** – means device uses n-digit identifier (factory id with length n), for example, "id,7" means that you must 
+pass 7-digit number, for example "1234567".
+- **n,m** – n-digit generated id starting with m. This means that device has configurable ID and our platform generates 
+and configures it automatically. You don't need to pass any identifier during device registration in this case.
 
 #### errors
 
-General types only.
+[General](../../../getting-started.md#error-codes) types only.
 
 ### list
 
@@ -942,7 +1015,8 @@ Constraints for labels:
 * No duplicate items.
 * Item length: minimum 1, maximum 60.
 
-For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `labels=["aa","b"]` only trackers containing "aa1" and "bb2" will be returned.
+For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `labels=["aa","b"]` only trackers 
+containing "aa1" and "bb2" will be returned.
 
 #### examples
 
@@ -981,7 +1055,7 @@ For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `label
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
@@ -994,7 +1068,7 @@ See tracker object structure description [here](#tracker-object-structure).
 
 #### errors
 
-General types only.
+[General](../../../getting-started.md#error-codes) types only.
 
 ### tags/set
 
@@ -1004,7 +1078,7 @@ Set tags for a tracker. Tags must be created.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 99119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 | tag_bindings | List of **tag_binding** objects. | array of Json objects | `[{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}]` |
 
 #### examples
@@ -1017,12 +1091,6 @@ Set tags for a tracker. Tags must be created.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "123456", "tag_bindings": "[{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}]"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/tags/set?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&tag_bindings=[{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}]
-    ```
-
 #### response
 
 ```json
@@ -1031,7 +1099,7 @@ Set tags for a tracker. Tags must be created.
 
 #### errors
 
-General types only.
+[General](../../../getting-started.md#error-codes) types only.
 
 ### location_request
 
@@ -1041,7 +1109,7 @@ Execute this command to get current position of the device. The device must supp
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 99119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 | type | Optional. Default type sms. | string | "sms" |
 
 Request types:
@@ -1100,7 +1168,7 @@ The device must be preconfigured.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/location_request' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": "0", "imei": "35645587458999"}'
     ```
@@ -1108,7 +1176,7 @@ The device must be preconfigured.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tracker/location_request?hash=a6aa75587e5c59c32d347da438505fc3&label=Courier&group_id=0&imei=35645587458999
+    {{ extra.api_example_url }}/tracker/register_quick?hash=a6aa75587e5c59c32d347da438505fc3&label=Courier&group_id=0&imei=35645587458999
     ```
 
 #### response
@@ -1132,11 +1200,11 @@ The device must be preconfigured.
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
-      }
+      }]
     }
 }
 ```
@@ -1167,8 +1235,8 @@ Resends registration commands to the device. The panel must have installed SMS g
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | ID of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
-| device_id | Device ID that was used to register, e.g. IMEI. It can be used instead of **tracker_id** for models with a fixed ID.| string | "4568005588562" |
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| device_id | Device ID that was used to register, e.g. IMEI. It can be used instead of `tracker_id` for models with a fixed ID.| string | "4568005588562" |
 | apn_name | The name of GPRS APN of this sim card inserted into device. | string | "fast.tmobile.com" |
 | apn_user | The user of GPRS APN of this sim card inserted into device. | string | "tmobile" |
 | apn_password | The password of GPRS APN of the sim card inserted into device. | string | "tmobile" |
@@ -1210,11 +1278,11 @@ Resends registration commands to the device. The panel must have installed SMS g
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
-      }
+      }]
     }
 }
 ```
@@ -1268,7 +1336,7 @@ As this device identified by IMEI, we include it as device ID (123451234512346).
 Also, we include **phone**, **apn_name**, **apn_user**, **apn_password** of the sim card installed in 
 device and **activation_code** since these parameters required by the plugin.
 
-You can try to “auto-detect” APN settings by phone number 
+You can try to "auto-detect" APN settings by phone number 
 using [apn_settings/read](apn_settings.md#read) API call.
 
 === "cURL"
@@ -1306,11 +1374,11 @@ using [apn_settings/read](apn_settings.md#read) API call.
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
-      }
+      }]
     }
 }
 ```
@@ -1341,14 +1409,15 @@ common command format is:
 
 ```json
 {
-"command": {
-  "name": "command name",
-  "some_parameter1": 12,
-  "some_parameter2": "parameter",
-  "special_settings": {
-    "type": "settings type",
-    "some_field1": 10,
-    "some_field2": 32
+  "command": {
+    "name": "command name",
+    "some_parameter1": 12,
+    "some_parameter2": "parameter",
+    "special_settings": {
+      "type": "settings type",
+      "some_field1": 10,
+      "some_field2": 32
+    }
   }
 }
 ```
@@ -1376,7 +1445,7 @@ This command used to seal/unseal electronic lock.
 {
   "name": "electronic_lock_command",
   "command_code": "unseal",
-  "special_settings": {"special settings JSON object"}
+  "special_settings": {<special settings JSON object>}
 }
 ```
 
@@ -1385,8 +1454,8 @@ This command used to seal/unseal electronic lock.
 
 ```json
 {
-  "name": "set_special_settings_command"
-  "special_settings": {"special settings JSON object"}
+  "name": "set_special_settings_command",
+  "special_settings": {<special settings JSON object>}
 }
 ```
 
@@ -1396,7 +1465,7 @@ See [special settings JSON object](./settings/special/index.md#read)
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 | command | Command that will be sent to device. Not Null. | JSON object | See format above |
 
 #### examples
@@ -1407,12 +1476,6 @@ See [special settings JSON object](./settings/special/index.md#read)
     curl -X POST '{{ extra.api_example_url }}/tracker/send_command' \
         -H 'Content-Type: application/json' \
         -d '"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999119", "command": {name: "electronic_lock_command", command_code: "unseal", special_settings:{"type":"electronic_lock_password", "password": "345892", "remember_password": "true"}}}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/send_command?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=999119&command={name: "electronic_lock_command", command_code: "unseal", special_settings:{"type":"electronic_lock_password", "password": "345892", "remember_password": "true"}}
     ```
 
 #### response
@@ -1428,7 +1491,7 @@ See [special settings JSON object](./settings/special/index.md#read)
       "avatar_file_name" : "file name",
       "source": {
         "id": 234567,
-        "device_id": 9999999988888,
+        "device_id": 1234567890,
         "model": "telfmb920",
         "blocked": false,
         "tariff_id": 345678,
@@ -1436,11 +1499,11 @@ See [special settings JSON object](./settings/special/index.md#read)
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
         "phone" : "+71234567890"
-      }
+      },
       "tag_bindings": [{
         "tag_id": 456789,
         "ordinal": 4
-      }
+      }]
     }]
 }
 ```
@@ -1448,5 +1511,6 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 #### errors
 
-General types only.
+[General](../../../getting-started.md#error-codes) types only.
+
 

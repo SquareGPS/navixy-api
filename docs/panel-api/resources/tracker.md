@@ -10,14 +10,15 @@ description: Tracker
 ```json
 {
     "id": ${int},                   // tracker id aka object_id
-    "label": ${string},             // tracker label
-    "clone": ${boolean},            // true if this tracker is clone
-    "group_id": ${int},             // tracker group id, 0 if no group
-    "user_id": 3,                   // id of the user to which this tracker (or clone) belongs to
-    "dealer_id": 5001,              // id of the dealer to which this tracker (or clone) belongs to
-    "deleted": ${boolean},          // true if tracker or clone has been marked as deleted
-    "creation_date": "2013-02-02",  // tracker or clone creation date
     "avatar_file_name" : ${string}, // optional. passed only if present
+    "clone": ${boolean},            // true if this tracker is clone
+    "comment": ${string},           // comment (description) related to the tracker
+    "creation_date": "2013-02-02",  // tracker or clone creation date
+    "group_id": ${int},             // tracker group id, 0 if no group
+    "dealer_id": ${int},            // id of the dealer to which this tracker (or clone) belongs to
+    "deleted": ${boolean},          // true if tracker or clone has been marked as deleted
+    "label": ${string},             // tracker label
+    "user_id": ${int},              // id of the user to which this tracker (or clone) belongs to
     "source": {
         "id": ${int},            // source id
         "device_id": ${string},  // aka source_imei
@@ -42,7 +43,7 @@ description: Tracker
 
 #### list
 
-Provides information about trackers which were considered “active” by our PaaS billing system, on a month-by-month basis.
+Provides information about trackers which were considered "active" by our PaaS billing system, on a month-by-month basis.
 
 **Required permissions**
 
@@ -198,10 +199,10 @@ If `filter` is used, entities will be returned only if filter string is containe
 **Parameters**
 
 | Name | Description  | Type |
-| --- | --- | --- |
-| clones_filter | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) | Enum |
+| :--- | :--- | :--- |
+| clones_filter | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set` | Enum |
 | filter |	Optional. Text filter string. |	String |
-| order_by |	Optional. Specify list ordering. Can be one of `id`, `model_code`, `imei`, `iccid`, `assign_time`, `order_id` |	Enum |
+| order_by | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`. | Enum |
 | ascending |	If true, ordering will be ascending, descending otherwise. Default is true. |	Boolean |
 | offset |	Optional. Starting offset, used for pagination. Default is 0. |	Int |
 | limit |	Optional. Max number of records to return, used for pagination. | Int |
@@ -295,7 +296,7 @@ Creates a clone of the existing non-clone tracker.
 | Name | Description  | Type |
 | --- | --- | --- |
 | tracker_id | (int) Id of the tracker. Tracker must belong to authorized dealer. | int |
-| label | User-defined label for clone, e.g. “Courier”. Must consist of printable characters and have length between 1 and 60. | string |
+| label | User-defined label for clone, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. | string |
 | user_id | Id of the user who will become the owner of the clone. | int |
 
 **Return**
@@ -311,9 +312,9 @@ Creates a clone of the existing non-clone tracker.
 
 * 219 (Not allowed for clones of the device) – when source tracker is clone itself
 * 201 (Not found in database) – when tracker was not found
-* 246 (Invalid user ID) – when user id is same as source tracker’s owner id or it does not exist/belong to authorized dealer
+* 246 (Invalid user ID) – when user id is same as source tracker's owner id or it does not exist/belong to authorized dealer
 * 247 (Entity already exists) – if destination user already has clone of this tracker
-* 252 (Device already corrupted) – when tracker’s source is corrupted
+* 252 (Device already corrupted) – when tracker's source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
@@ -343,11 +344,44 @@ Returns auth token to connect to tracker command console.
 }
 ```
 
+Establish WS connection with a URL:
+
+`wss://ws.navixy.com/console?device=<tracker_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`
+
+JSON objects come in the next text frames:
+```json
+{
+  "data":
+  [
+    ["Time","2017-11-16 10:02:37.0"],
+    ["Location valid","yes"],
+    ["Latitude","-33.4595716"],
+    ["Longitude","-70.7805233"],
+    ["Speed","0"],
+    ["Heading","229"],
+    ["Moving","false"],
+    ["Satellites","7"],
+    ["Hardware mileage","3707.85"],
+    ["Mileage","3853.16"],
+    ["Digital input status","8"],
+    ["Analog input 1","0.004"],
+    ["Analog input 2","0.02"],
+    ["Digital output status","3"],
+    ["board_voltage","11.619"],
+    ["temp_sensor","23.0"],
+    ["GSM Level","13"],
+    ["GSM Operator code","73002"],
+    ["Battery level","3.827"]
+  ],
+  "type": "status"
+}
+```
+
 **Errors**
 
 * 230 (Not supported for this entity type) – when tracker is deleted or blocked
 * 201 (Not found in database) – when tracker was not found
-* 252 (Device already corrupted) – when tracker’s source is corrupted
+* 252 (Device already corrupted) – when tracker's source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 ## corrupt
@@ -481,7 +515,7 @@ or
     "vehicles": [11] // list of associated vehicle ids
 }
 ```
-* 252 (Device already corrupted) – when tracker’s source is corrupted
+* 252 (Device already corrupted) – when tracker's source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
@@ -550,9 +584,9 @@ Moves the existing non-clone tracker to another user belonging to same dealer.
 
 * 219 (Not allowed for clones of the device) – when source tracker is clone
 * 201 (Not found in database) – when tracker is not found
-* 246 (Invalid user ID) – when user id is same as source tracker’s owner id or it does not exist/belong to authorized dealer
+* 246 (Invalid user ID) – when user id is same as source tracker's owner id or it does not exist/belong to authorized dealer
 * 247 (Entity already exists) – when destination user already has clone of this tracker
-* 252 (Device already corrupted) – when tracker’s source is corrupted
+* 252 (Device already corrupted) – when tracker's source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
@@ -584,7 +618,7 @@ where `value` is JSON object tracker.
 **Errors**
 
 * 201 (Not found in database) – when tracker not found
-* 252 (Device already corrupted) – when tracker’s source is corrupted
+* 252 (Device already corrupted) – when tracker's source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
@@ -618,7 +652,7 @@ Device models navixymobile*, mobile_unknown*, iosnavixytracker* are not supporte
 * 208 (Device blocked) – when tracker exists but was blocked due to tariff restrictions or some other reason
 * 219 (Not allowed for clones of the device) – when specified tracker is a clone
 * 214 (Requested operation or parameters are not supported by the device) – when device does not have GSM module
-* 252 (Device already corrupted) – when tracker’s source is corrupted
+* 252 (Device already corrupted) – when tracker's source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
@@ -637,8 +671,9 @@ Updates tracker settings.
 | Name | Description  | Type |
 | --- | --- | --- |
 | tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
-| label | User-defined label for this tracker, e.g. “Courier”. Must consist of printable characters and have length between 1 and 60. Cannot contain ‘<‘ and ‘>’ symbols. | string |
-| deleted | If true, tracker is marked as deleted an will not be shown in user’s interface. | boolean |
+| label | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain '<' and '>' symbols. | string |
+| deleted | If true, tracker is marked as deleted an will not be shown in user's interface. | boolean |
+| comment | A comment (description) related to the tracker. Up to 3000 symbols. | string |
 
 **Return**
 
@@ -649,7 +684,7 @@ Updates tracker settings.
 **Errors**
 
 * 201 (Not found in database) – when tracker not found
-* 252 (Device already corrupted) – when tracker’s source is corrupted
+* 252 (Device already corrupted) – when tracker's source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 
@@ -679,7 +714,7 @@ Updates tracker settings.
 **Errors**
 
 * 201 (Not found in database) – when tracker is not found
-* 252 (Device already corrupted) – when tracker’s source is corrupted
+* 252 (Device already corrupted) – when tracker's source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 ## tariff/
@@ -713,12 +748,12 @@ tariffs: "read"
 
 * 201 – Not found in database
 * 219 – Not allowed for clones of the device
-* 221 (Device limit exceeded) – when new tariff device limit is less then count of user’s trackers.
+* 221 (Device limit exceeded) – when new tariff device limit is less then count of user's trackers.
 * 237 – Invalid tariff (if there are no tariff with tracker.tariff_id and belongs to dealer)
 * 238 – Changing tariff is not allowed
-* 239 – New tariff doesn’t exist
+* 239 – New tariff doesn't exist
 * 250 – Not allowed for deleted devices
-* 252 (Device already corrupted) – when tracker’s source is corrupted
+* 252 (Device already corrupted) – when tracker's source is corrupted
 * [Standard errors](../../backend-api/getting-started.md#error-codes)
 
 **Conditions of the change**
@@ -727,7 +762,7 @@ The current dealer can change tracker tariff from `t1` to `t2`, if:
 
 1. Tracker:
     1. is not removed
-    1. belongs to the dealer’s user
+    1. belongs to the dealer's user
     1. is not a clone
 1. `t1.tariff_id != t2.tariff_id`, i.e. it is impossible to change for the same tariff
 1. `t1.dealer_id = t2.dealer_id = dealer.effectiveDealerId`, i.e. both tariffs belong to the current dealer
@@ -737,16 +772,16 @@ The current dealer can change tracker tariff from `t1` to `t2`, if:
     * doc_type=1 (for the physical persons) – user.face=1 (physical person)
     * doc_type=2 (for legal entities) – user.face=2 (legal entity) or user.face=3 (SP)
     * doc_type=3 (paas) – without conditions
-1. `t2.device_limit >= count` of trackers in user’s cabinet.
+1. `t2.device_limit >= count` of trackers in user's cabinet.
 
 **Repayment**
 
 Repayment is carried out if the following conditions are met:
 
-1. the “repay” flag is set (repay)
+1. the "repay" flag is set (repay)
 2. current tariff – monthly: t1.type = monthly
 3. tariff – paid: tariff.price > 0
-4. that the current tariff didn’t end (tariff_end != 1)
+4. that the current tariff didn't end (tariff_end != 1)
 5. the tariff expiration date is defined: tariff_end_date != 0 (for monthly tariffs it has to be carried out always)
 6. the free period expired: created_date + free_period <= current date,
 where free_period obtained from the hardcodes table or from default_model_settings
@@ -764,21 +799,21 @@ tariff_change = current date
 if tariff is active (tariff_end = false) then
     tariff_end = false
     last_charged_date = current date
-    if new tariff is monthly and the flag “to charge” is not set (charge) then
+    if new tariff is monthly and the flag "to charge" is not set (charge) then
         tariff_end_date = the first day of the next month from the current date
     else
         tariff_end_date = tomorrow date
 else (tariff is not active: tariff_end = true)
     last_charged_date = yesterday date
     if new tariff is monthly then
-        if the flag “to charge” is set (charge) then
+        if the flag "to charge" is set (charge) then
             tariff_end_date = current date
             tariff_end = true
         else
             tariff_end_date = the first day of the next month from the current date
             tariff_end = false
     if the new tariff is everyday then
-        if the flag “to charge” is set(charge) then
+        if the flag "to charge" is set(charge) then
             tariff_end_date = current date
             tariff_end = true
         else
@@ -814,7 +849,7 @@ reliable | **false** if the command does not need to be resent when the device i
 #### errors
 *   7 (Invalid parameters)
 *   201 (Not found in database) – if there is no tracker with such device ID belonging to authorized user
-*   252 (Device already corrupted) – if tracker’s source is corrupted
+*   252 (Device already corrupted) – if tracker's source is corrupted
 
 #### example response with an error:
 ```json

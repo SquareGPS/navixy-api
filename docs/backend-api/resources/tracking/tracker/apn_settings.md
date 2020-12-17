@@ -6,7 +6,8 @@ description: APN settings by tracker ID
 
 API base path: `/tracker/apn_settings`
 
-APN is short of Access Point Name and provides a device with the information needed to connect to wireless service. Using this call you can get APN settings by a tracker ID.
+APN is short of Access Point Name and provides a device with the information needed to connect to wireless service. 
+Using this call you can get APN settings by a tracker ID.
 
 ### read
 
@@ -16,7 +17,7 @@ Gets the APN name/user/password and mobile operator of device by a tracker_id.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
 
 #### examples
 
@@ -51,4 +52,5 @@ Gets the APN name/user/password and mobile operator of device by a tracker_id.
 
 * 201 – Not found in the database (if tracker or APN settings not found).
 * 208 – Device blocked.
-* 214 – Requested operation not supported by the device (if the tracker does not have a GSM module or uses a bundled SIM card, the number of which is hidden from the user).
+* 214 – Requested operation not supported by the device (if the tracker does not have a GSM module or uses a bundled SIM
+ card, the number of which is hidden from the user).

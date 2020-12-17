@@ -35,7 +35,7 @@ Assigns multiple trackers to the specified group.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | id | Group id, or 0 if trackers should be removed from any group. | int | 167 |
-| trackers | Array of Ids of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked. | array of int | [999199, 999919] |
+| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | array of int | `[999199, 999919]` |
 
 #### examples
 
@@ -47,12 +47,6 @@ Assigns multiple trackers to the specified group.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]", "id": "167"}'
     ```
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/group/assign?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[999199, 991999]&id=167
-    ```
-
 #### response
 
 ```json
@@ -62,7 +56,8 @@ Assigns multiple trackers to the specified group.
 #### errors
 
 * 201 (Not found in the database) – if no group found with the specified id (or group belongs to another user).
-* 217 (List contains nonexistent entities) – if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user).
+* 217 (List contains nonexistent entities) – if one or more of tracker ids belong to nonexistent tracker 
+(or to a tracker belonging to different user).
 
 ### create
 
@@ -106,11 +101,12 @@ Creates a new empty group.
 
 #### errors
 
-General types only.
+[General](../../../getting-started.md#error-codes) types only.
 
 ### delete
 
-Deletes group with the specified id. The group must belong to authorized user. All trackers from this group will be assigned to default group (0).
+Deletes group with the specified id. The group must belong to authorized user. All trackers from this group will be 
+assigned to default group (0).
 
 **required sub-user rights:** `admin` (available only to master users).
 
@@ -148,7 +144,8 @@ Deletes group with the specified id. The group must belong to authorized user. A
 
 ### list
 
-Gets all user tracker groups. There is always “default” unnamed group with id = 0. It cannot be modified, deleted, and is not returned by this API call.
+Gets all user tracker groups. There is always "default" unnamed group with id = 0. It cannot be modified, deleted, 
+and is not returned by this API call.
 
 #### examples
 

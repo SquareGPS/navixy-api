@@ -5,42 +5,60 @@ description: Tracking route
 
 # Tracking route
 
-API path: `/tracking/route`.
+API path: `/route`.
 
 ### get
-Get route points via specified route provider.
+
+Gets route points via specified route provider.
 
 #### parameters
 
-*   **start** – (location JSON object) start of route
-*   **end** – (location JSON object) end of route
-*   **waypoints** = \[ ${location}, ... \] – (optional) list of transitional points.
-*   **point_limit** – (optional. int. min=2) If specified, the returned route will be simplified to contain this number of points (or less).
-*   **provider_type** – (optional, string, one of `progorod|google|osrm`) If not specified, the default user provider is used.
+| name | description | type|
+| :------ | :------ | :----- |
+| start | Location JSON object. Start of route. | JSON object |
+| end | Location JSON object. End of route. | JSON object |
+| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]` | array of JSON objects |
+| point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int |
+| provider_type | Optional. If not specified, the default user provider is used. One of "progorod", or "google", "osrm". | string enum |
 
-Where **location** described in [data types description section](../../../getting-started.md#data-types).
+* `location` object described in [data types description section](../../../getting-started.md#data-types).
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/route/get' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start": {"lat": 56.827001, "lng": 60.594296}, "end": {"lat": 52.835601, "lng": 60.514721}}'
+    ```
 
 #### response
+
 ```json
 {
     "success": true,
-    "distance": 2546, // (int) length in meters
-    "time": 194,      // (int) duration in seconds
-    "list": [ ${location}, ... ], // list of route points
-    "key_points": [ ${key_point}, ... ] 
+    "distance": 2546,
+    "time": 194,
+    "list": [{"lat": 56.827001, "lng": 60.594296}, {"lat": 52.835601, "lng": 60.514721}],
+    "key_points": [{
+      "id": 123,
+      "lat": 56.827,
+      "lng": 60.594296
+    }] 
 }
 ```
 
-**key_points** is list of points corresponding to **start** point, **waypoints** and **end** point (in that sequence). Where **key_point** is JSON object:
-```json
-{
-    "id": 123,        // (int) index in points 'list'
-    "lat": 56.827,    // latitude
-    "lng": 60.594296  // longitude
-}
-```
+* `distance` - int. Length in meters.
+* `time` - int. Duration in seconds.
+* `list` - list of route points. Location objects.
+* `key_points` - list of points corresponding to `start` point, `waypoints` and `end` point (in that sequence).
+    * `id` - int. index in points `list`.
+    * `lat` - float. Latitude.
+    * `lng` - float. Longitude.
 
 #### errors
-*   215 (External service error)
-*   218 (Malformed external service parameters)
-*   236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without “routing” tariff feature
+
+* 215 (External service error).
+* 218 (Malformed external service parameters).
+* 236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without "routing" tariff feature.

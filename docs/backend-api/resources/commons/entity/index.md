@@ -106,7 +106,7 @@ in different sections.
 #### parameters
 name      | description                              | type
 ---       | ---                                      | ---
-entity    | Entity object with valid id and settings | \<entity\> object 
+entity    | Entity object with valid id and settings | <entity> object 
 
 #### errors
 * 201 (Not found in database) – if there is no entity with such ID

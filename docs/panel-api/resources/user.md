@@ -231,7 +231,7 @@ About user object structure see [above](#data-structures).
 
 ## read
 
-Returns user info by it’s id.
+Returns user info by it's id.
 
 ** Required permissions **
 
@@ -290,7 +290,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 ** Errors **
 
 * 201 (Not found in database) – if specified user does not exist or belongs to different dealer.
-* 206 (Login already in use) – if specified “login” is used by another user.
+* 206 (Login already in use) – if specified "login" is used by another user.
 * [Standard errors](../../backend-api/getting-started.md#error-codes).
 
 ## session/
@@ -380,7 +380,7 @@ transactions: "read"
 | --- | --- | --- |
 | `user_id` | id of user whom transactions listed. must be owned by current dealer | int
 | `from` | start date/time for searching | date/time
-| `to` | end date/time for searching. must be after “from” date  | date/time
+| `to` | end date/time for searching. must be after "from" date  | date/time
 | `limit` | maxumum number of returned transactions (optional) | int
 
 ** Return **

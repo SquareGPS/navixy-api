@@ -1,12 +1,12 @@
 # App: Web Locator
 
-“Web Locator” is a special plugin which can be embedded to any other application or website 
-and allow to track user’s objects on the map in real-time.
+"Web Locator" is a special plugin which can be embedded to any other application or website 
+and allow to track user's objects on the map in real-time.
 
 ## Example
 
 The following HTML texts is used to show on the map the objects from
-[demo account](https://navixy.com/demo):
+[demo account](https://www.navixy.com/demo/):
 ```html
 <iframe src="https://saas.navixy.com/pro/applications/locator/?key=14084cd4a31f702341afb3fd6f81e475" 
         width="900" height="400">
@@ -18,7 +18,7 @@ The following HTML texts is used to show on the map the objects from
 To start using the Weblocator user needs to acquire the GENERATED\_KEY value. 
 He or she can copy this value from their private user area in the Web-interface 
 or use [appropriate API call](../../backend-api/resources/commons/user/session/weblocator.md#create). 
-Once user generates the key value, it won’t expire and can be used till user generates the newer key.
+Once user generates the key value, it won't expire and can be used till user generates the newer key.
 
 Insert the following HTML text on any web-page you require using the GENERATED\_KEY value.
 ```html
@@ -41,7 +41,7 @@ Width and height of area are set in pixels.
 ### Objects list
 
 You can limit the list of objects which will be displayed in the Web locator window. 
-All user’s account objects are displayed by default.
+All user's account objects are displayed by default.
 
 `names` - names of objects are listed through a comma
 

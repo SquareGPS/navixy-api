@@ -1,5 +1,5 @@
 title: Extensions
-arrange:
+nav:
   - delivery-app.md
   - weblocator-app.md
   - login-redirect.md

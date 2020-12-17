@@ -13,10 +13,10 @@ List less then or equal to **limit** of tracker events filtered by event types (
 
 #### parameters
 
-*   **trackers** – **\[int\]**. list of tracker’s ids
+*   **trackers** – **\[int\]**. list of tracker's ids
 *   **from** – [date/time](../../../getting-started.md#data-types). start date/time for searching
-*   **to** – [date/time](../../../getting-started.md#data-types). end date/time for searching. must be after “from” date
-*   **events** – **\[“string”\]** (optional, default: all). list of history types
+*   **to** – [date/time](../../../getting-started.md#data-types). end date/time for searching. must be after "from" date
+*   **events** – **`["string"]`** (optional, default: all). list of history types
 *   **limit** – **int** (optional, default: [maxHistoryLimit](../../../getting-started.md#constants). max count of entries in result
 *   **ascending** – **boolean** (optional, default: **true**). Sort ascending by time when it is **true** and descending when **false**.
 

@@ -37,7 +37,7 @@ File part **mime** type must be one of :
 
 #### required permissions:
 
-* **service_settings**: “update”
+* **service_settings**: "update"
 
 #### parameters
 
