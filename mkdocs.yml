@@ -29,7 +29,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
-    - tabs
+    - navigation.tabs
   language: en
 
 plugins:
@@ -90,6 +90,7 @@ markdown_extensions:
       repo: navixy-api
   - pymdownx.superfences
   - pymdownx.tabbed
+  - pymdownx.details
 
 # Enable analytics block to include scripts from /partial/integrations/analytics.html
 google_analytics:

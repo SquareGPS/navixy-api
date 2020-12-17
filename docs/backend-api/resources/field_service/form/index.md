@@ -5,24 +5,24 @@ description: About forms
 
 # About forms
 
-Forms are used to provide additional information, such as user name, phone, delivery date, etc. upon task completion
+Forms used to provide additional information, such as user name, phone, delivery date, etc. upon task completion
 or check-in from iOS/Android mobile tracker app.
-Forms are attached to tasks. If form is attached to task, this task cannot be completed without form submission.
+Forms can be attached to tasks. If form attached to task, this task cannot be completed without form submission.
 
 * Each form must be created from template, read more at [Templates](./template.md)
 * For description of `<form_field>` and `<field_value>`, see [Form fields and values](./field-types.md)
 * Using web API, it's now possible to only attach/fill forms with tasks (checkin forms are created through 
 Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
 
-<b>Form object structure</b>
+## Form object
+
 ```json
-<form> =
 {
-    "id": 2, //form unique id
-    "label": "Order form", //user-defined form label, from 1 to 100 characters
-    "fields": [  //multiple <form_field> objects can be here
+    "id": 2,
+    "label": "Order form",
+    "fields": [
       {
-        "id": "111-aaa-whatever", //id must be unique across form fields
+        "id": "111-aaa-whatever",
         "label": "Name",
         "description": "Your full name",
         "required": true,
@@ -31,19 +31,18 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
         "type": "text"
       }
     ],
-    "created": "2017-03-15 12:36:27", //date when this form was created (or attached to the task). Read-only field
-    "submit_in_zone": true, //if true, form can be submitted only in task zone
-    "task_id": 1, //id of the task to which this form is attached
-    "template_id": 1, //id of the form template on which this form is based. Can be null if template was deleted.
-    "values": { //A map with field ids as keys and <field_value> objects as values. Can be null if form is not filled.
-      "111-aaa-whatever": { //key is used to link field and its corresponding value
-        "type": "text", //value type and field type must match
-        "value": "John Doe" //the rest of value object is field type-specific
-      },
-      ...
+    "created": "2017-03-15 12:36:27",
+    "submit_in_zone": true,
+    "task_id": 1,
+    "template_id": 1,
+    "values": {
+      "111-aaa-whatever": {
+        "type": "text",
+        "value": "John Doe"
+      }
     },
-    "submitted": "2017-03-21 18:40:54", //date when form values were last submitted
-    "submit_location": { //location at which form values were last submitted
+    "submitted": "2017-03-21 18:40:54",
+    "submit_location": {
       "lat": 11.0,
       "lng": 22.0,
       "address": "Wall Street, NY"
@@ -51,24 +50,46 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
 }
 ```    
 
-`<form_file>` is:
+* `id` - int. Form unique id.
+* `label` - string. User-defined form label, from 1 to 100 characters.
+* `fields` - array of multiple [form_field](./field-types.md) objects. 
+* `created` - string date/time. Date when this form created (or attached to the task). The read-only field.
+* `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
+* `task_id` - int. An id of the task to which this form attached.
+* `template_id` - int. An id of the form template on which this form based. Can be null if template deleted.
+* `values` - a map with field ids as keys and [field_value](./field-types.md) objects as values. Can be null if form not filled.
+    * `key` - string. Key used to link field and its corresponding value.
+* `submitted` - string date/time. Date when form values last submitted.
+* `submit_location` - location at which form values last submitted.
+
+## Form file object
 
 ```json
 {
-    "id": 16, // file id
+    "id": 16,
     "storage_id": 1,
     "user_id": 12203,
-    "type": "image", // "image" or "file"
-    "created": "2017-09-06 11:54:28", // date when file was created
-    "uploaded": "2017-09-06 11:55:14", // date when file was uploaded, can be null if file is not yet uploaded
-    "name": "lala.jpg", // filename
-    "size": 72594, // in bytes. If file not uploaded, show maximum allowed size for upload
+    "type": "image",
+    "created": "2017-09-06 11:54:28",
+    "uploaded": "2017-09-06 11:55:14",
+    "name": "lala.jpg",
+    "size": 72594,
     "mime_type": "image/png",
-    "metadata": nullable, <metadata_object>,
-    "state": "uploaded", // can be "created", "in_progress", "uploaded", "deleted"
-    "download_url": "https://static.navixy.com/file/dl/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg", // actual url at which file is available. Can be null if file is not yet uploaded
+    "metadata": <metadata_object>,
+    "state": "uploaded",
+    "download_url": "https://static.navixy.com/file/dl/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg"
 }
 ```
+
+* `id` - int. File id.
+* `type` - string enum. Can be "image" or "file".
+* `created` - string date/time. Date when file created.
+* `uploaded` - string date/time. Date when file uploaded. Can be null if file not yet uploaded.
+* `name` - string. A filename.
+* `size` - int. Size in bytes. If file not uploaded, show maximum allowed size for the upload.
+* `metadata` - nullable metadata object.
+* `state` - string enum. Can be "created" | "in_progress" | "uploaded" | "deleted".
+* `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
 
 ## API actions
 
@@ -76,47 +97,123 @@ API path: `/form`.
 
 ### read
 
-Get form by an id.
+Gets form by an id.
 
 #### parameters
 
 | name | description | type | 
 | :--- | :--- | :--- | 
-| id | id of the form | int | 
+| id | Id of the form. | int |
 
-#### example
+#### examples
 
-    {{ extra.api_example_url }}/form/read?hash=22eac1c27af4be7b9d04da2ce1af111b&id=132215
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/form/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/form/read?hash=a6aa75587e5c59c32d347da438505fc3&id=2
+    ```
 
 #### response
+
 ```json
 {
     "success": true,
-    "value": <form>, // marker on map (see below)
-    "files": [<form_file>, ... ] //files used in values of this form. Can be null or empty.
+    "value": {
+         "id": 2,
+         "label": "Order form",
+         "fields": [
+           {
+             "id": "111-aaa-whatever",
+             "label": "Name",
+             "description": "Your full name",
+             "required": true,
+             "min_length": 5,
+             "max_length": 255,
+             "type": "text"
+           }
+         ],
+         "created": "2017-03-15 12:36:27",
+         "submit_in_zone": true,
+         "task_id": 1,
+         "template_id": 1,
+         "values": {
+           "111-aaa-whatever": {
+             "type": "text",
+             "value": "John Doe"
+           }
+         },
+         "submitted": "2017-03-21 18:40:54",
+         "submit_location": {
+           "lat": 11.0,
+           "lng": 22.0,
+           "address": "Wall Street, NY"
+         }
+    }
+    "files": [{
+      "id": 16,
+      "storage_id": 1,
+      "user_id": 12203,
+      "type": "image",
+      "created": "2017-09-06 11:54:28",
+      "uploaded": "2017-09-06 11:55:14",
+      "name": "lala.jpg",
+      "size": 72594,
+      "mime_type": "image/png",
+      "metadata": {
+       "orientation":  1
+      },
+      "state": "uploaded",
+      "download_url": "https://static.navixy.com/file/dl/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg"
+    }]
 }
-```    
+``` 
+
+* `value` - A [form object](#form-object).
+* `files` - list of [form_file objects](#form-file-object). Files used in values of this form. Can be null or empty.
 
 #### errors
-* 201 – Not found in database (if there is no form with such an id)
+
+* 201 – Not found in the database (if there is no form with such an id).
 
 ### download
 
-Download form as a file by an id.
+Downloads form as a file by an id.
 
 #### parameters
 
 | name | description | type | 
 | :--- | :--- | :--- | 
-| id | id of the form | int | 
-| format | file format | "pdf" or "xlsx" | 
+| id | Id of the form. | int | 
+| format | File format. Can be "pdf" or "xlsx". | string enum |
 
-#### example
+#### examples
 
-    {{ extra.api_example_url }}/form/download?hash=22eac1c27af4be7b9d04da2ce1af111b&id=132215&format=pdf
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/form/download' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2, "format": "pdf"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/form/download?hash=a6aa75587e5c59c32d347da438505fc3&id=2&format=pdf
+    ```
 
 #### response
+
 Regular file download, or JSON with an error.    
 
 #### errors
-* 201 – Not found in database (if there is no form with such an id)
+
+* 201 – Not found in the database (if there is no form with such an id).

@@ -93,7 +93,7 @@ Mark history entry as read by **id** (see: [Tracker history entry](#tracker-hist
 
 ### mark_read_all
 
-Mark all user’s history entries read.
+Mark all user's history entries read.
 
 #### response
 

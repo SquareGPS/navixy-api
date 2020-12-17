@@ -17,7 +17,7 @@ Registers new mobile client application.
 
 #### parameters
 
-Part of parameters are registration plugin-specific. See “Registration plugins” section.
+Part of parameters are registration plugin-specific. See "Registration plugins" section.
 
 Common parameters are:
 
@@ -43,6 +43,6 @@ For `tracker` object structure, see [tracker/](./index.md#tracker-object-structu
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 204 – Entity not found (if specified group does not exist).
-* 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded).
+* 221 – Device limit exceeded (if device limit set for the user's dealer has been exceeded).
 * 224 – Device ID already in use (if specified device ID already registered in the system).
-* 225 – Not allowed for this legal type (if tariff of the new device is not compatible with user’s legal type).
+* 225 – Not allowed for this legal type (if tariff of the new device is not compatible with user's legal type).

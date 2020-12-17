@@ -22,6 +22,8 @@ API path: `/tag`.
 *   task_schedule
 *   employee
 *   vehicle
+*   zone
+*   tracker
 
 
 
@@ -42,7 +44,7 @@ Create new tag.
 ```
 
 #### errors
-general types only
+[General](../../../getting-started.md#error-codes) types only.
 
 
 
@@ -81,12 +83,12 @@ Get all tags belonging to user with optional filtering.
 ```
 
 #### errors
-general types only
+[General](../../../getting-started.md#error-codes) types only.
 
 
 
 ### search
-Search entities that bound with specified tags.
+Search entities that bound with all of specified tags.
 
 #### parameters
 * **tag_ids** - (Array or int) tag IDs.
@@ -101,13 +103,15 @@ Search entities that bound with specified tags.
       "task": [...], //array of task objects
       "task_schedule": [...], //array of task schedule objects
       "employee": [...], //array of employee objects
-      "vehicle": [...] //array of vehicle objects
+      "vehicle": [...], //array of vehicle objects
+      "zone": [...], //array of zone objects
+      "tracker": [...] //array of tracker objects
     }
 }
 ```
 
 #### errors
-general types only
+[General](../../../getting-started.md#error-codes) types only.
 
 
 

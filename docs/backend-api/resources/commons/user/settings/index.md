@@ -41,7 +41,7 @@ CRUD actions for user settings.
 
 ### read
 
-Read current user’s settings.
+Read current user's settings.
 
 #### response
 
@@ -63,15 +63,15 @@ Where `settings`, `balance_alert_settings` and `file_storage_settings` described
 
 ### update
 
-Update current user’s settings.
+Update current user's settings.
 
 #### parameters
 
 *   **time_zone** – ISO timezone id
 *   **locale** – locale code
-*   **measurement_system** – measurement system (“metric”, “imperial”, “us” or "metric_gal_us"). If field is not passed then default (**metric**) system will be used.
-*   **geocoder** – preferred geocoder type (“google”, “yandex”, “progorod”, “osm” or "locationiq")
-*   **route_provider** – preferred route finding provider (“google”, “progorod” or “osrm”)
+*   **measurement_system** – measurement system ("metric", "imperial", "us" or "metric_gal_us"). If field is not passed then default (**metric**) system will be used.
+*   **geocoder** – preferred geocoder type ("google", "yandex", "progorod", "osm" or "locationiq")
+*   **route_provider** – preferred route finding provider ("google", "progorod" or "osrm")
 *   **translit** – true if sms notification should be transliterated, false otherwise
 *   **balance\_alert\_settings** – JSON object containing array of emails
 *   **file\_storage\_settings** – JSON object
@@ -88,7 +88,7 @@ See examples above.
 
 ### file_storage/update
 
-Update current user’s file storage settings
+Update current user's file storage settings
 
 **required subuser rights:** admin (available only to master users)
 

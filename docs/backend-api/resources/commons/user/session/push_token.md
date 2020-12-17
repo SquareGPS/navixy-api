@@ -13,7 +13,7 @@ Binds Push token with current session.
 
 #### parameters
 
-*   **application** (string) – Application ID, for now it’s “navixy_iphone_viewer” or “navixy_android_viewer”
+*   **application** (string) – Application ID, for now it's "navixy_iphone_viewer" or "navixy_android_viewer"
 *   **token** (string) – Push token
 *   **category_filter** (string) – Push notifications category filter, default is *
 
@@ -56,4 +56,4 @@ Deletes push token that bound with the session.
 
 #### errors
 
-General types only.
+[General](../../../../getting-started.md#error-codes) types only.

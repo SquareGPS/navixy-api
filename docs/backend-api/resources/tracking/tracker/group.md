@@ -29,7 +29,8 @@ API base path: `/tracker/group`
 
 ### list
 
-Gets all user tracker groups. There is always “default” unnamed group with id = 0. It cannot be modified, deleted, and is not returned by this API call.
+Gets all user tracker groups. There is always "default" unnamed group with id = 0. It cannot be modified, deleted, 
+and is not returned by this API call.
 
 #### examples
 

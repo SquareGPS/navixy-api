@@ -6,7 +6,7 @@ description: Testing API with Postman
 # Postman
  
 There are many tools that could be used to work with API requests. 
-From simple input to browser’s address line or cmd tool to more complex software. 
+From simple input to browser's address line or cmd tool to more complex software. 
 One of our personal favorites is Postman application. 
 [Postman](https://www.postman.com/) is a collaboration platform for API development. 
 It can be used for a variety of purposes ranging from simple request 

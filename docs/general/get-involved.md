@@ -75,6 +75,8 @@ This method involves installing the Git, IDE, Python and
 1. Start the documentation server locally. In console:
    ```sh
    cd /path/to/project
+   source venv/bin/activate
+   # Windows: \venv\Scripts\activate.bat
    mkdocs serve --dirtyreload
    ```
 1. To check that the server has started, open in a browser: http://localhost:8000
@@ -100,14 +102,15 @@ For example:
 
 ```yaml
 title: Backend API
-arrange:
+nav:
     - getting-started.md
     - how-to
     - resources
     - websocket
 ```
 
-`Title` sets name for menu section. `Arrange` sets the sub-items order.
+`title` sets the name for menu section. 
+`nav:` sets the sub-items order.
 
 ### Meta information
 

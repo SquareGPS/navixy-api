@@ -7,7 +7,7 @@ description: Delivery
 
 API path: `/user/session/delivery`.
 
-Calls to work with “delivery” type sessions. Those are special sessions to integrate order (task) 
+Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
 tracking functionality into external systems.
 
 ### create

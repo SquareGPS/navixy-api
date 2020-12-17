@@ -3,6 +3,10 @@ title: Unconfirmed commands
 description: Unconfirmed commands
 ---
 
+# Unconfirmed commands
+
+API path: `/tracker/command/unconfirmed`.
+
 ### count
 
 Gets number of commands in queue for the specified tracker.
@@ -11,24 +15,34 @@ Gets number of commands in queue for the specified tracker.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
-#### example
+#### examples
 
-```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/command/unconfirmed/count' \
-    -H 'Content-Type: application/json' \ 
-    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
-```
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/command/unconfirmed/count' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/command/unconfirmed/count?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "count": <number of commands, e.g. 0>
+    "count": 0
 }
 ```
+
+* `count` - int. Number of unconfirmed commands in a queue.
 
 #### errors
 
@@ -39,21 +53,29 @@ $ curl -X POST 'https://api.navixy.com/v2/tracker/command/unconfirmed/count' \
 
 Removes all pending SMS commands from the queue for the specified tracker.
 
-**required sub-user rights:** tracker_update
+**required sub-user rights:** `tracker_update`
 
 #### parameters
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| tracker_id | id of the tracker (aka “object_id”). Tracker must belong to authorized user and not be blocked | int | 123456 |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
 
-#### example
+#### examples
 
-```abap
-$ curl -X POST 'https://api.navixy.com/v2/tracker/command/unconfirmed/reset' \
-    -H 'Content-Type: application/json' \ 
-    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
-```
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/command/unconfirmed/reset' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/command/unconfirmed/reset?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+    ```
 
 #### response
 

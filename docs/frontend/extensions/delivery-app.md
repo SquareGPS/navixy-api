@@ -1,7 +1,7 @@
 # App: Delivery
 
 **Delivery** is a special plugin which can be embedded to any other application or website and
- allow to track user’s task by external ID and bounded tracker in the real time.
+ allow to track user's task by external ID and bounded tracker in the real time.
 
 ##Usage
 
@@ -20,7 +20,7 @@ The plugin can be easily customized with the following parameters provided as GE
 *   `hide\_task`(1,0) – Hides task. In this mode you can track only the tracker(courier).
 *   `display\_fields` – You can show only important information in the task info panel. 
     Names of fields are listed through a comma. Fields: label, description, address, period.
-*   `prompt\_placeholder`– The task external ID prompt placeholder e.g “Order ID”
+*   `prompt\_placeholder`– The task external ID prompt placeholder e.g "Order ID"
 *   `panel\_align` – Specifies the task info panel align. Values: `tl` – Top-Left corner, 
     tr – Top-Right corner, bl – Bottom-Left corner, br – Bottom-Right corner.
 *   `panel\_scale` – Specifies the task info panel size. Values: `small`, `medium`, `big` – 
