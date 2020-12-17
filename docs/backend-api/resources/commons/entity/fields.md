@@ -58,7 +58,7 @@ Field allows to add custom information to a customizable entity. Each field belo
                       //Only one employee field can have this value set to "true" 
   }
   ```    
-  If there's an [employee](../employee) assigned to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),
+  If there's an [employee](../../field_service/employee/index.md) assigned to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),
   and a [place](../../field_service/place/index.md) has a custom field of type "responsible employee", such place will be available in mobile app to view.
   Thus, field employee can view all places assigned to him to visit them, etc.
 
