@@ -105,6 +105,7 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 | to | end date/time for searching. must be after “from” date. Optional.  | date/time | `2020-02-02 00:00:00` |
 | conditions | optional, search conditions to apply to list. | Array of search conditions, see [Search conditions](../../commons/entity/search_conditions/). Allowed fields are `employee`, `location`, `marker_time`, `comment` | |
 | sort | optional, offset, default is 0 | string[], list of sort expressions. See below. | `["location=asc", "marker_time=desc"]`  |
+| location | optional, location with radius, inside which check-ins must reside | Location JSON | ```{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }```  |
 | limit | optional, max number of records to return | int | |
 | offset | optional, offset (starting index of first returned record), default is 0.  | int | |
 | format | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx" | string | `pdf` |

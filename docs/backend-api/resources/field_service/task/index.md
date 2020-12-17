@@ -224,21 +224,23 @@ Get all task belonging to user with optional filtering.
 #### parameters
 
 *   **external_id** – **string**. (optional) external task ID for search
-*   **statuses** – **string[]**. (optional. default all) list of task statuses, e.g. [“unassigned”,”failed”]
+*   **statuses** – **string[]**. (optional. default all) list of task statuses, e.g. ```[“unassigned”,”failed”]```
 *   **trackers** – **int[]**. (optional) ids of the trackers to which task is assigned
 *   **from** – **string**. (optional) show tasks which are actual AFTER this date, e.g. “2014-07-01 00:00:00”
 *   **to** – **string**. (optional) show tasks which are actual BEFORE this date, e.g. “2014-07-01 00:00:00”
 *   **filters** – **string[]**. (optional) filters for task label, description or address
 *   **tag_ids** – **int[]**. (optional) tag IDs assigned to the task
+*   **location** - **json**. (optional) location with radius, inside which task zone centers must reside. Example: ```{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }```
 
-If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** is not passed or _null_ then appropriate condition not used to filter results.
+If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids**, **location** are not passed or _null_ then appropriate condition not used to filter results.
 
 *   **offset** – **int**. (optional) offset from start of the found tasks for pagination
 *   **limit** – **int**. (optional) limit of the found tasks for pagination
 
 If **offset** or **limit** is null then restrictions for paginations will not be applied.
 
-*   **sort** – **string[]**. (optional) set of sort options. Each option is a pair of column name and sorting direction, e.g. [“label=acs”, “address=desc”, “employee=desc”]. Possible columns:<br>
+*   **sort** – **string[]**. (optional) set of sort options. Each option is a pair of column name and sorting direction, 
+    e.g. ```[“label=asc”, “address=desc”, “employee=desc”]```. Possible columns:<br>
     — _id_<br>
     — _address_ (location.address)<br>
     — _label_<br>
@@ -254,11 +256,11 @@ If **offset** or **limit** is null then restrictions for paginations will not be
 {
     "success": true,
     "list": [ <task>, ... ],
-    "count: 1" // count of the all found tasks
+    "count: 1" // count of the all found tasks (not depending on limit)
 }
 ```
 
-#### Full JSON returned to the task/list
+#### Full JSON returned by the task/list
 
 ```json
 {
