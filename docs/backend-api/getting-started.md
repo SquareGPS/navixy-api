@@ -191,15 +191,17 @@ Unless otherwise noted, every API call requires a valid user session hash
 1. As `hash` parameter of the request body (root-level property for `application/json`).
 2. As `hash` parameter of the HTTP query string.
 3. As value of the HTTP header `Authorization` in the following form:
+
 ```
 Authorization: NVX SessionHashValue
 ```
-Following is pseudogrammar that illustrates the construction of the `Authorization` request header:
+
+Following is pseudo-grammar that illustrates the construction of the `Authorization` request header:
+
 ```
 Authorization = "NVX" + " " + SessionHashValue ;
 SessionHashValue = 32 hexademical characters;
 ```
-
 
 Session hash can be obtained via `user/auth` API call:
 
@@ -215,6 +217,7 @@ Session hash can be obtained via `user/auth` API call:
     ```abap
     [api_base_url]/user/auth?login=demo&password=demo
     ```
+
 ### Data types
 
 *   `bool`, boolean - logical type: `true` of `false`. 

@@ -48,8 +48,15 @@ Get a list of tracker ids to which this sub-user has access.
 
 ```json
 {
-    "success": true,
-    "list" : [${tracker_id1}, ...] //list of tracker ids to which this sub-user has acccess
+  "success": true,
+  "list": [
+    $
+    {
+      tracker_id1
+    },
+    ...
+  ]
+  //list of tracker ids to which this sub-user has access
 }
 ```
 

@@ -381,7 +381,7 @@ transactions: "read"
 | `user_id` | id of user whom transactions listed. must be owned by current dealer | int
 | `from` | start date/time for searching | date/time
 | `to` | end date/time for searching. must be after "from" date  | date/time
-| `limit` | maxumum number of returned transactions (optional) | int
+| `limit` | maximum number of the returned transactions (optional) | int
 
 ** Return **
 

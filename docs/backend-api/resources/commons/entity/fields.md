@@ -90,32 +90,36 @@ Update a set of custom fields associated with the specified entity.
 
 **required subuser rights**: places_custom_fields_update for fields associated with `place` entity
 
-Fields passed with `id` equal to `null` will be created. If field already exists, its `type` must be equal to type of 
-already stored field (i. e. you cannot change type of a field).
+Fields passed with `id` equal to `null` will be created. If field already exists, its `type` must be equal to type of
+already stored field (i.e. you can't change a type of field).
 
 All fields associated with the same entity must have different `label`s.
 
 Passing fields with `id` from non-existent fields or fields bound to another entity will result in an error.
 
-**WARNING** If `delete_missing` is `true`, all existing fields which are missing from the `fields` list will be 
-permanently deleted! Otherwise they are unaffected.
+**WARNING** If `delete_missing` is `true`, all existing fields which are missing from the `fields` list will be
+permanently deleted! Otherwise, they are unaffected.
 
 #### parameters
-name           | description                                                             | type
----            | ---                                                                     | ---
-entity_id      | ID of an entity                                                         | int
-fields         | List of new/existing fields to be created/updated                       | \<field\>[]
-delete_missing | (optional, default is false) delete fields not present in `fields` list | boolean
+
+|name           | description                                                             | type |
+| :---          | :---                                                                    | :--- |
+|entity_id      | ID of an entity                                                         | int |
+|fields         | List of new/existing fields to be created/updated                       | \<field\>[] |
+|delete_missing | (optional, default is false) delete fields not present in `fields` list | boolean |
 
 #### errors
+
 * 201 (Not found in database) – if there is no entity with such ID
 * 7 (Invalid parameters) - if fields violate restrictions described above
 
 #### response
+
 A list of **all** fields associated with the specified entity. Newly created fields will have their IDs filled.
+
 ```json
 {
-    "success": true,
+  "success": true,
     "list": [ <field>, ... ]
 }
 ```

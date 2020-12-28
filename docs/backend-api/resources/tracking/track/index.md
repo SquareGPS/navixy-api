@@ -69,7 +69,7 @@ Gets a list of track descriptions for the specified tracker and time period.
 | split | Optional, default=`true`. If `false`, all tracks will be merged into single one. | boolean | true |
 | include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | true |
 | cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates. | boolean | false | 
-| count_events | Optional, default=`false`. If `true`, number of events occurred during each non-singlepoint track will be returned. | true |
+| count_events | Optional, default=`false`. If `true`, number of events occurred during each non-single point track will be returned. | true |
 
 #### examples
 
