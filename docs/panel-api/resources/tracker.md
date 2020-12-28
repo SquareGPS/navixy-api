@@ -823,23 +823,27 @@ else (tariff is not active: tariff_end = true)
         tariff_end_date = 0
         tariff_end = false
 ```
-   
+
 All dates according to UTC time.
 
 ## raw_command/
 
 ### send
-Sends the command to the device, processing it in a protocol-dependent manner beforehand.
+
+Sends the GPRS command to the device, processing it in a protocol-dependent manner beforehand.
 
 **required subuser rights:** tracker_update
 
 #### parameters
+
 name | description | type
 --- | --- | ---
 device_id | Fixed device ID, e.g. IMEI | String
 command | Text or hexadecimal representation of the command | String
 type | **text** or **hex**. Optional, default is **text** | String
-reliable | **false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **true** | Boolean
+reliable | **
+false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **
+true** | Boolean
 
 #### response
 ```json
