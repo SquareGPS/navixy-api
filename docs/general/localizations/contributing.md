@@ -34,7 +34,8 @@ You should see crowdin authorization dialog.
 
 ![Authorization dialog](../assets/crowdin-auth-dialog.png)
 
-After authorization standard Navixy UI will appear in a special translation mode. Click on a little icon near each text item
+After uthorization standard Navixy UI will appear in a special translation mode. Click on a little icon near each text
+item
 
 ![Translation icon](../assets/little-icon.png)
 
@@ -44,8 +45,8 @@ opens translation dialog
 
 ## Translate via Crowdin UI
 
-Crowdin UI is a most powerfull way to work with translations in Navixy and the only way if you
-want to translate not Backend and Mobile apps.
+Crowdin UI is a most powerfull way to work with translations in Navixy, and the only way if you want to translate not
+Backend and Mobile apps.
 
 ![Crowdin UI directory](../assets/crowdin-ui-directory.png)
 
@@ -63,7 +64,7 @@ If you have some problems with translation feel free to ask questions in comment
 
 ## Translations delivery
 
-Usally it takes about a week to deploy translations to production environment.
+Usually it takes about a week to deploy translations to production environment.
 
 In case of standalone installations and mobile apps this time is linked to standalone/mobile app release schedule.
 

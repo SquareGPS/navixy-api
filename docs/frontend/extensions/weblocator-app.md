@@ -51,8 +51,8 @@ or
 
 ### Autoscaling
 
-Autoscaling means that the scale of the map and the center of the area 
-are automatically selected so that all displayed objects are visible.
+Autoscaling means that the scale of the map, and the center of the area are automatically selected so that all displayed
+objects are visible.
 
 `autoscale` - 0: do not scale, 1: scale (by default).
 

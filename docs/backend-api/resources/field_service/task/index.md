@@ -354,6 +354,7 @@ Gets all task belonging to user with optional filtering.
 | filter | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task. | string |
 | filters | Optional. Filters for task label, description or address. | array of string |
 | tag_ids | Optional. Tag IDs assigned to the task. | array of int |
+| location | Optional. Location with radius, inside which task zone centers must reside. Example: ```{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }``` | Location JSON |
 | offset | Optional. Offset from start of the found tasks for pagination. | int |
 | limit | Optional. Limit of the found tasks for pagination. | int |
 
@@ -401,7 +402,7 @@ set of sort options. Each option is a pair of column name and sorting direction,
 | external_id | string |  |
 | form | string | label |
 
-#### examples
+If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** is not passed or _null_ then appropriate condition not used to filter results.
 
 === "cURL"
 

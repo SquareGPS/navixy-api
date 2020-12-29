@@ -117,8 +117,8 @@ Updates a set of custom fields associated with the specified entity.
 
 **required sub-user rights**: `places_custom_fields_update` for fields associated with `place` entity.
 
-Fields passed with `id` equal to `null` will be created. If field already exists, its `type` must be equal to type of the 
-already stored field (i.e. you cannot change type of field).
+Fields passed with `id` equal to `null` will be created. If field already exists, its `type` must be equal to type of
+already stored field (i.e. you can't change a type of field).
 
 All fields associated with the same entity must have different `label`s.
 
