@@ -26,9 +26,10 @@ GPS monitoring system. Lots of API calls created for manipulation of tracker and
         "status_listing_id": null,
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
-        "phone" : "+71234567890"
-    }
-    "tag_bindings": [{
+      "phone": "+71234567890"
+    },
+  "tag_bindings": [
+    {
     "tag_id": 456789,
     "ordinal": 4
     }]
@@ -1504,13 +1505,71 @@ See [special settings JSON object](./settings/special/index.md#read)
         "tag_id": 456789,
         "ordinal": 4
       }]
-    }]
+    }
+    ]
 }
 ```
+
 For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 #### errors
 
 [General](../../../getting-started.md#error-codes) types only.
 
+### raw_command/send
 
+Sends the GPRS command to the device, processing it in a protocol-dependent manner beforehand.
+
+**required sub-user rights:** `tracker_configure`, `tracker_set_output`.
+
+#### parameters
+
+| name | description | type |
+| :--- | :--- | :--- |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
+| command | Text or hexadecimal representation of the command | String |
+| type | **text** or **hex**. Optional, default is **text** | String |
+| reliable | **
+false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **
+true** | Boolean |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/raw_command/send' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "command": "AT+GTRTO=gv200,A,,,,,,0001$", "type": "text"}'
+    ```
+
+#### response
+
+```json
+{
+  "success": true
+}
+```
+
+#### errors
+
+* 7 (Invalid parameters)
+* 201 (Not found in database) – if there is no tracker with such device ID belonging to authorized user
+
+#### example response with an error:
+
+```json
+{
+  "success": false,
+  "status": {
+    "code": 7,
+    "description": "Invalid parameters"
+  },
+  "errors": [
+    {
+      "parameter": "command",
+      "error": "Non-hex string"
+    }
+  ]
+}
+```

@@ -28,8 +28,8 @@ hash has a lifetime of 30 days and will expire in certain situations:
 * User logged out and ended the session.
 * User was deleted.
 
-Correct work with hash is crucial. There is no need to receive a new hash before each request, 
-instead, your hash should be stored and reused. To prevent expiration, in most cases you just need to
+**Correct work with hash is crucial.** There is **no need to receive a new hash before each request**, 
+instead, your hash should be **stored and reused**. To prevent expiration, in most cases you just need to
 prolong the session.
 
 To prolong the session, use the [following API call](../resources/commons/user/session/index.md#renew):

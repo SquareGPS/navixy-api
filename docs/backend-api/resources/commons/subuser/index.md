@@ -1,64 +1,116 @@
 ---
 title: Subuser
-description: Subuser
+description: API calls related to sub-users, that is, additional users who have access to your account and monitoring assets.
+              Sub-users is a convenient way for corporate clients to provide multiple employees, who have different roles and privileges,
+              with access to the monitoring system.
 ---
 
 # Subuser
 
-API path: `/subuser`.
+Contains API calls related to sub-users, that is, additional users who have access to your account and monitoring assets.
+ Sub-users is a convenient way for corporate clients to provide multiple employees, who have different roles and privileges,
+ with access to the monitoring system.
 
-Contains API calls related to sub-users, that is, additional users who have access to your account and monitoring assets. Sub-users is convenient way for corporate clients to provide multiple employees, who have different roles and priveleges, with access to the monitoring system.
+"Usual" user account called "master account" in relation to sub-users.
 
-"Usual" user account is called "master account" in relation to sub-users.
+Every sub-user can operate on a subset of trackers from your "master account". Every entity, which is associated with
+ unavailable trackers, also becomes hidden from sub-user. This is called "scoping".
+Sub-users' rights can also be limited to prevent unauthorized changes to your data and application setting.
 
-Every sub-user can operate on a subset of trackers from your "master account". Every entity, which is associated with unavailable trackers, also becomes hidden from sub-user. This is called "scoping".
-Sub-users's rights can also be limited to prevent unauthorized changes to your data and application setting.
-
-NOTE: Sub-users cannot have any "exclusive" objects. Every tracker, rule, task, etc., even created or edited by sub-user, still belongs to your account.
+NOTE: Sub-users cannot have any "exclusive" objects. Every tracker, rule, task, etc., even created or edited by sub-user,
+ still belongs to your account.
 The only exception is reporting system: every sub-user has its own reports pool and reports schedule.
 
-# Sub-user object structure
+API path: `/subuser`.
+
+## Sub-user object structure
 
 Sub-user object is almost identical to usual user.
-```javascript
-<subuser> = {
-      "id": 103, //sunuser id, can be null (when creating new sub-user)
-      "activated": true,                // true if user is activated (allowed to login)
-      "login": "user@test.com",         // User email as login. Must be valid unique email address
-      "first_name": ${string},          // User's or contact person first name
-      "middle_name": ${string},         // User's or contact person middle name
-      "last_name": ${string},           // User's or contact person last name
-      "legal_type": "legal_entity",     // either "legal_entity", "individual" or "sole_trader"
-      "phone": "491761234567",          // User's or contact phone (10-15 digits)
-      "post_country": "Germany",        // country part of user's post address
-      "post_index": "61169",            // index part of user's post address
-      "post_region": "Hessen",          // region part of user's post address
-      "post_city": "Wiesbaden",         // city from postal address
-      "post_street_address": "Marienplatz 2", // street address
-      "registered_country": "Germany",  // country part of user's registered address
-      "registered_index": "61169",      // index part of user's registered address
-      "registered_region": "Hessen",    // region part of user's registered address
-      "registered_city": "Wiesbaden",   // city from registered address
-      "registered_street_address": "Marienplatz 2", // User's registered address
-      "state_reg_num": ${string},       // State registration number. E.g. EIN in USA, OGRN in Russia. 15 characters max.
-      "tin": ${string},                 // Taxpayer identification number aka "VATIN"
-      "legal_name": "E. Biasi GmbH",    // user legal name (for "legal_entity" only)
-      "iec": ${string},                 // Industrial Enterprises Classifier aka "KPP" (used in Russia. for "legal_entity" only)
-      "security_group_id": 333,         // Id of the security group to whic sub-user belongs to. Can be null, which means default group with no privileges
-      //this fields are read-only, they should not be used in user/update
-      "creation_date": "2016-05-20 00:00:00" // date/time when user was created
+
+```json
+{
+      "id": 103,
+      "activated": true,
+      "login": "user@test.com",
+      "first_name": "Charles",
+      "middle_name": "Henry",
+      "last_name": "Pearson",
+      "legal_type": "legal_entity",
+      "phone": "491761234567",
+      "post_country": "Germany",
+      "post_index": "61169",
+      "post_region": "Hessen",
+      "post_city": "Wiesbaden",
+      "post_street_address": "Marienplatz 2",
+      "registered_country": "Germany",
+      "registered_index": "61169",
+      "registered_region": "Hessen",
+      "registered_city": "Wiesbaden",
+      "registered_street_address": "Marienplatz 2",
+      "state_reg_num": "12-3456789",
+      "tin": "1131145180",
+      "legal_name": "E. Biasi GmbH",
+      "iec": "",
+      "security_group_id": 333,
+      "creation_date": "2016-05-20 00:00:00"
     }
 ```
 
+* `id` - int. Sub-user id, can be null (when creating new sub-user).
+* `activated` - boolean. `true` if sub-user activated (allowed to login)
+* `login` - string. Sub-user email as login. Must be valid unique email address.
+* `first_name` - string. Sub-user's or contact person first name.
+* `middle_name` - string. Sub-user's or contact person middle name.
+* `last_name` - string. Sub-user's or contact person last name.
+* `legal_type` - string enum. Can bed "legal_entity", "individual" or "sole_trader".
+* `phone` - string. Sub-user's or contact phone (10-15 digits).
+* `post_country` - string. Country part of sub-user's post address.
+* `post_index` - string. Index part of sub-user's post address.
+* `post_region` - string. Region part of sub-user's post address.
+* `post_city` - string. City from postal address.
+* `post_street_address` - string. Street address.
+* `registered_country` - string. Country part of sub-user's registered address.
+* `registered_index` - string. Index part of sub-user's registered address.
+* `registered_region` - string. Region part of sub-user's registered address.
+* `registered_city` - string. City from registered address.
+* `registered_street_address` - string. Sub-user's registered address.
+* `state_reg_num` - string. State registration number. E.g. EIN in USA, OGRN in Russia. 15 characters max.
+* `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
+* `legal_name` - string. Sub-user's legal name (for "legal_entity" only).
+* `iec` - optional string. Industrial Enterprises Classifier aka "KPP" (used in Russia. For "legal_entity" only).
+* `security_group_id` - int. An id of the security group to which sub-user belongs to. Can be null, which means default 
+group with no privileges.
+* `creation_date` - string date/time. Date and time when sub-user was created. This field is read-only, it should not be
+ used in subuser/update.
+
 ### delete
 
-Delete sub-user. This operation cannot be reversed.
+Deletes sub-user. This operation cannot be reversed.
 
-**required tariff features:** multilevel_access – for ALL trackers
-**required subuser rights:** admin (available only to master users)
+**required tariff features:** `multilevel_access` – for ALL trackers.
+**required sub-user rights:** `admin` (available only to master users).
 
 #### parameters
-* **subuser_id** - **int**. id of the sub-user belonging to current account
+
+| name | description | type |
+| :----- | :-----  | :----- |
+| subuser_id | Id of the sub-user belonging to current account. | int |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/subuser/delete' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 123567}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/subuser/delete?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=123567
+    ```
 
 #### response
 
@@ -69,75 +121,145 @@ Delete sub-user. This operation cannot be reversed.
 ```
 
 #### errors
-*   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
-*   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user.
+
+* 13 – Operation not permitted – if user has insufficient rights.
+* 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
+* 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
 
 ### list
 
-List all subusers belonging to current user.
+List all sub-users belonging to current user.
 
-**required tariff features:** multilevel_access – for ALL trackers
-**required subuser rights:** admin (available only to master users)
+**required tariff features:** `multilevel_access` – for ALL trackers.
+**required sub-user rights:** `admin` (available only to master users).
 
 #### parameters
 
-none
+Only session `hash`.
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/subuser/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/subuser/list?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "list": [<subuser>, ... ] //list of all sub-users belonging to this master account
+    "list": [{
+       "id": 103,
+       "activated": true,
+       "login": "user@test.com",
+       "first_name": "Charles",
+       "middle_name": "Henry",
+       "last_name": "Pearson",
+       "legal_type": "legal_entity",
+       "phone": "491761234567",
+       "post_country": "Germany",
+       "post_index": "61169",
+       "post_region": "Hessen",
+       "post_city": "Wiesbaden",
+       "post_street_address": "Marienplatz 2",
+       "registered_country": "Germany",
+       "registered_index": "61169",
+       "registered_region": "Hessen",
+       "registered_city": "Wiesbaden",
+       "registered_street_address": "Marienplatz 2",
+       "state_reg_num": "12-3456789",
+       "tin": "1131145180",
+       "legal_name": "E. Biasi GmbH",
+       "iec": "",
+       "security_group_id": 333,
+       "creation_date": "2016-05-20 00:00:00"
+    }]
 }
 ```
 
-Subuser object is described [here](#sub-user-object-structure).
+* `list` -  array of objects. List of all sub-users belonging to this master account.
+
+Sub-user object described [here](#sub-user-object-structure).
 
 #### errors
 
-*   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
+* 13 – Operation not permitted – if user has insufficient rights.
+* 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 
 ### register
 
 Allows you to create sub-users associated to your master account.
 
-**required tariff features:** multilevel_access – for ALL trackers
-**required subuser rights:** admin (available only to master users)
+**required tariff features:** `multilevel_access` – for ALL trackers.
+**required sub-user rights:** `admin` (available only to master users).
 
 #### parameters
 
-* **user** - **JSON object**. <subuser> object without "id" field
-* **password** - **printable string**. 6 to 20 characters. New sub-user's password.
+| name | description | type |
+| :----- | :-----  | :----- |
+| user | `subuser object` without `id` field. | JSON object |
+| password | New sub-user's password. 6 to 20 characters. | string |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/subuser/register' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "id": <id of the created sub-user>
+    "id": 121458
 }
 ```
 
-Subuser object is described [here](#sub-user-object-structure).
+* `id` - int. An id of the created sub-user.
 
 #### errors
-*   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
-*   201 – Not found in database – when specified security_group_id does not exist
-*   206 – login already in use (if this login email already registered)
+
+* 13 – Operation not permitted – if user has insufficient rights.
+* 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
+* 201 – Not found in the database – when specified security_group_id does not exist.
+* 206 – login already in use - if this login email already registered.
 
 ### update
 
-Update subuser data.
+Update sub-user data.
 
-**required tariff features:** multilevel_access – for ALL trackers
-**required subuser rights:** admin (available only to master users)
+**required tariff features:** `multilevel_access` – for ALL trackers.
+**required sub-user rights:** `admin` (available only to master users).
 
 #### parameters
-* **user** - **JSON object**. <subuser> object with "id" field
+
+| name | description | type |
+| :----- | :-----  | :----- |
+| user | `subuser object` with `id` field. | JSON object |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/subuser/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"id": 123451, "activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
+    ```
 
 #### response
 
@@ -147,10 +269,10 @@ Update subuser data.
 }
 ```
 
-Subuser object is described [here](#sub-user-object-structure).
-
 #### errors
-*   13 – Operation not permitted – if user has insufficient rights
-*   236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without "multilevel_access" tariff feature)
-*   201 – Not found in database – if sub-user with such id does not exist or does not belong to current master user. Also when specified security_group_id does not exist
+
+* 13 – Operation not permitted – if user has insufficient rights.
+* 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
+* 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
+ Also, when specified `security_group_id` does not exist.
 

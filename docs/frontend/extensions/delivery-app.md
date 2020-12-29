@@ -21,12 +21,12 @@ The plugin can be easily customized with the following parameters provided as GE
 *   `display\_fields` – You can show only important information in the task info panel. 
     Names of fields are listed through a comma. Fields: label, description, address, period.
 *   `prompt\_placeholder`– The task external ID prompt placeholder e.g "Order ID"
-*   `panel\_align` – Specifies the task info panel align. Values: `tl` – Top-Left corner, 
-    tr – Top-Right corner, bl – Bottom-Left corner, br – Bottom-Right corner.
-*   `panel\_scale` – Specifies the task info panel size. Values: `small`, `medium`, `big` – 
-    `medium` is the default value.
-*   `color` – Specifies the task marker and the tracker marker color. 
-    Values: `FF0000` (red), `FF9900` (orange), `339966` (green), `3366FF` (blue). `FF9900` (orange) by default.
+* `panel\_align` – Specifies the task info panel align. Values: `tl` – Top-Left corner,
+  `tr` – Top-Right corner, `bl` – Bottom-Left corner, `br` – Bottom-Right corner.
+* `panel\_scale` – Specifies the task info panel size. Values: `small`, `medium`, `big` –
+  `medium` is the default value.
+* `color` – Specifies the task marker and tracker marker color. Values: `FF0000` (red), `FF9900` (orange), `339966` (
+  green), `3366FF` (blue). `FF9900` (orange) by default.
 
 Available colors: `000000, 993300, 333300, 003300, 003366, 000080, 
 333399, 333333, 800000, FF6600, 808000, 008000, 008080, 0000FF, 
@@ -37,8 +37,8 @@ CC99FF, FFFFFF`.
 
 ### Autoscaling
 
-Autoscaling means that the scale of the map and the center of the area are automatically
-selected so that all displayed objects are visible.
+Autoscaling means that the scale of the map, and the center of the area are automatically selected so that all displayed
+objects are visible.
 
 `autoscale`:
 
@@ -69,7 +69,7 @@ ignored with switched on autoscaling.
 To use the calls described further you have to be authorized in system as it 
 is described according to the link: [API authorization][1]
 
-  [1]: ./../../backend-api/getting-started.md#authorization_and_access_levels
+[1]: ./../../backend-api/getting-started.md#authorization-and-access-levels
 
 ### Creating a key
 

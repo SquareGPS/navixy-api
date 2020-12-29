@@ -5,8 +5,8 @@ description: Routes
 
 # Routes
 
-Routes basically named and ordered set of checkpoints. Each checkpoint is essentially a task with an additional link to
-the parent route.
+Routes basically named and ordered set of checkpoints. Each [checkpoint](../checkpoint.md#checkpoint-object) is 
+essentially a task with an additional link to the parent route.
 
 Route completed if all the checkpoints completed and visited in the specified order. Otherwise, it is considered
 completed with warnings or failed.
@@ -107,7 +107,7 @@ task to checkpoint.
 | name | description | type | 
 | :--- | :--- | :--- |
 | route | Route object without fields which are *IGNORED*. | JSON object |
-| checkpoints | Checkpoints array of checkpoints object without fields which are *IGNORED*. | array of JSON objects |
+| checkpoints | Checkpoints array of [checkpoint objects](../checkpoint.md#checkpoint-object) without fields which are *IGNORED*. | array of JSON objects |
 | create_form | If true then check additional `form_template_id` field in every **checkpoint** object and create form if it is not null. Default value is `false` for backward compatibility. | boolean |
 
 Minimal route object to create a new route must contain:
@@ -165,6 +165,7 @@ There can be multiple external ids in response because you can specify different
 If there is nothing to return, then parameter "external_id_counts" will not be present in response.
 
 ```json
+{
     "success": true,
     "result": {
         "id": 111,
@@ -346,7 +347,7 @@ Reordering checkpoint IDs in the `checkpoint_ids` array changes order of executi
 | name | description | type | 
 | :--- | :--- | :--- |
 | route | Route object without fields which are *IGNORED*. | JSON object |
-| checkpoints | List of [checkpoint\_entry](../checkpoint.md#checkpoint-object) objects. Should be null if **route**'s field **checkpoint_ids** is null, otherwise should be not null. If entry contains id, then update existing checkpoint, else create a new one. Present route's checkpoints, which are not included in this array, will be deleted. | array of objects |
+| checkpoints | List of [checkpoint objects](../checkpoint.md#checkpoint-object) objects. Should be null if **route**'s field **checkpoint_ids** is null, otherwise should be not null. If entry contains id, then update existing checkpoint, else create a new one. Present route's checkpoints, which are not included in this array, will be deleted. | array of objects |
 | create_form | If `true` then check additional `form_template_id` field in every **checkpoint** object and create, replace or delete checkpoint's form. Default value is `false` for backward compatibility. | boolean |
 
 #### response

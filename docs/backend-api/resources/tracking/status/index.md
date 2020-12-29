@@ -25,7 +25,7 @@ API base path: `/status/`
 * `label` - string. Human-readable label for the status.
 * `color` - string. Hex-representation of RGB color used to display this status.
 
-## Status_listing object structure
+## Status listing object structure
 
 ```json
 {

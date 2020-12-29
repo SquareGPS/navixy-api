@@ -314,8 +314,8 @@ body
 }
 
 .md-search__icon[for=__search] {
-    top: 9px;
-    left: 7px;
+    top: 11px;
+    left: 9px;
 }
 .md-search__icon.md-icon svg {
     width: 20px;
@@ -431,22 +431,14 @@ body
     background-color: #4a525d;
 }
 
-.md-tabs__wrapper {
-    max-width: 61rem;
-    width: 100%;
-    display: flex;
-}
-
 .md-tabs__inner.md-grid {
-    margin-left: 0;
+    display: flex;
+    font-size: 0;
 }
 
 .md-container__pdf-source {
     display: flex;
-}
-
-.md-tabs__list {
-    display: flex;
+    margin: 0 0 0 auto;
 }
 
 .md-tabs__item {
@@ -458,9 +450,7 @@ body
     opacity: 1;
     margin: 0;
     height: 100%;
-    display: flex;
-    padding: .6rem;
-    padding-top: 18px;
+    padding: 16px .6rem;
 }
 
 .md-tabs__link:hover {
@@ -519,7 +509,7 @@ body
     opacity: 1;
 }
 
-/* repositary link */
+/* repository link */
 
 .md-source {
     opacity: .7;

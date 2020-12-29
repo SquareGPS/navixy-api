@@ -1,35 +1,50 @@
 ---
 title: History type
-description: History type
+description: Contains list method to get history types available to user with localized descriptions.
 ---
 
 # History type
+
+Contains list method to get history types available to user with localized descriptions.
 
 API path: `/history/type`.
 
 ### list
 
-Returns available history types with localized descriptions.
+Returns available history event types with localized descriptions.
 
 #### parameters
 
-*   **locale** – locale code
-*   **only_tracker_events** – boolean (optional). Default - true.
+| name | description | type |
+| :----- | :-----  | :----- |
+| locale | Locale code to set language of descriptions. | string enum |
+| only_tracker_events | Optional. Default is `true`. Will return only tracker type events if `true`. | boolean |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/history/type/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "locale": "En-en"}'
+    ```
 
 #### response
 
 ```json
 {
     "success": true, 
-    "list": [<history_type>, ...]
-}
-```   
-
-where **history_type** is
-
-```json
-{
-    "type": "alarmcontrol",       // history type, e.g. "alarmcontrol"
-    "description": "Car alarm" // localized description, e.g. "Car alarm"
+    "list": [{
+         "type": "alarmcontrol",
+         "description": "Car alarm" 
+    }]
 }
 ```
+
+* `type` - string. History event type.
+* `description` - string. Localized description.
+
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.

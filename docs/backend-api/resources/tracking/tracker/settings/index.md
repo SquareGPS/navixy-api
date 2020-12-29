@@ -1,9 +1,8 @@
 ---
-title: Settings actions
-description: Settings actions
+title: Tracker settings actions description: Tracker settings actions
 ---
 
-# Settings actions
+# Tracker settings actions
 
 API base path: `/tracker/settings`
 

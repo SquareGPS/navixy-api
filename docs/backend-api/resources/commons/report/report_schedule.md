@@ -1,9 +1,11 @@
 ---
 title: Report schedule
-description: Report schedule
+description: Contains report schedule object description and API calls to interact with it.
 ---
 
 # Report schedule
+
+Contains report schedule object description and API calls to interact with it.
 
 API path: `/report/schedule`.
 
@@ -91,8 +93,8 @@ Create new report schedule entry.
 
 #### errors
 
-* 217 - List contains nonexistent entities (if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user)).
-* 222 - Plugin not found (if specified report plugin not found).
+* 217 - List contains nonexistent entities - if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user).
+* 222 - Plugin not found - if specified report plugin not found.
 * 236 - Feature unavailable due to.
 
 
@@ -134,13 +136,17 @@ Delete report schedule with the specified id.
   
 #### errors
 
-* 201 - Not found in the database (if there is no schedule with specified id).
+* 201 - Not found in the database - if there is no schedule with specified id.
 
 ### list
 
 Get all report schedules belonging to user.
 
 **required sub-user rights**: `reports`
+
+#### parameters
+
+Only session `hash`.
 
 #### examples
 
@@ -236,6 +242,6 @@ Update existing report schedule.
 
 #### errors
 
-* 217 - List contains nonexistent entities (if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user)).
-* 222 - Plugin not found (if specified report plugin not found).
-* 236 - Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of reports).
+* 217 - List contains nonexistent entities - if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user).
+* 222 - Plugin not found - if specified report plugin not found.
+* 236 - Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of reports.

@@ -1,6 +1,5 @@
 ---
-title: Сhat
-description: Сhat with tracker
+title: Chat description: Chat with tracker
 ---
 # Chat
 

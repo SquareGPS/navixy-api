@@ -1,19 +1,120 @@
 ---
 title: User actions
-description: User actions
+description: Contains API calls to interact with users.
 ---
 
 # User
 
+Contains API calls to interact with users.
+
 API path: `/user`.
 
-User specific actions:
+## User object structure
 
-* [/user/activate](#activate)
-* [/user/auth](#auth)
-* [/user/get_info](#get_info)
-* [/user/get_tariff_restrictions](#get_tariff_restrictions)
-* [/user/resend_activation](#resend_activation)
+```json
+{
+    "success": true,
+    "paas_id": 7,
+    "paas_settings": <paas_settings>,
+    "user_info": {
+        "id": 43568,
+        "login": "demo@navixy.com",
+        "title": "John Smith",
+        "phone": "79123456789",
+        "creation_date": "2016-05-20 01:10:34",
+        "balance": 74.31,
+        "bonus": 0,
+        "locale": "en_US",
+        "demo": true,
+        "verified" : true,
+        "legal_type" : "individual",
+        "default_geocoder": "google",
+        "route_provider": "google",
+        "time_zone": "America/New_York",
+        "measurement_system" : "metric",
+        "tin": "2345678239",
+        "iec": "",
+        "post_country": "USA",
+        "post_region": "NY",
+        "post_index": "10120",
+        "post_city": "New York",
+        "post_street_address": "1556 Broadway, suite 416",
+        "registered_country": "USA",
+        "registered_region": "NY",
+        "registered_index": "10120",
+        "registered_city": "New York",
+        "registered_street_address": "1556 Broadway, suite 416",
+        "first_name": "John",
+        "middle_name": "Walker",
+        "last_name": "Smith",
+        "legal_name": "QWER Inc."
+    },
+    "master": {
+        "id": 1234,
+        "demo": false,
+        "legal_type": "individual",
+        "first_name": "David",
+        "middle_name": "Middle",
+        "last_name": "Blane",
+        "legal_name": "Blah LLC",
+        "title": "David Blane",
+        "balance": 0.0,
+        "bonus": 89.78
+    },
+    "tariff_restrictions": {
+        "allowed_maps": ["roadmap","osm"]
+    },
+    "premium_gis": true,
+    "features": ["branding_web"],
+    "privileges": {
+        "rights": ["tag_update"]
+    }
+}
+```
+
+* `paas_id` - int. Dealer id.
+* `paas_settings` - object. The same as `settings` in [/dealer/get_ui_config response](../dealer.md#get_ui_config).
+* `user_info` - object. Info about user.
+    * `id` - int. User id.
+    * `login` - string. User's login (in most cases it's an email address).
+    * `title` - string. User first and last name or organization title.
+    * `phone` - string. User phone (if not empty).
+    * `creation_date` - string date/time. User registration date/time.
+    * `balance` - float. User balance, max. 2 digits after dot. For sub-users, this field should be ignored.
+    * `bonus` - float. User bonus, max. 2 digits after dot. For sub-users, this field should be ignored.
+    * `locale` - string enum. User locale, for example "en_EN".
+    * `demo` - boolean. `true` if this is a demo user, `false` otherwise.
+    * `verified` - boolean. `true` if user email already verified.
+    * `legal_type` - string enum. Can bed "legal_entity", "individual" or "sole_trader".
+    * `default_geocoder` - string enum. User's default geocoder. Can be "google", "yandex",
+     "progorod", "osm", or "locationiq".
+    * `route_provider` - string enum. User's route provider. Can be "progorod", "google" or "osrm".
+    * `time_zone` - string enum. User timezone name.
+    * `measurement_system` - string enum. User's measurement system "metric", "imperial" or "us".
+    * `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
+    * `iec` - optional string. Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities.
+    * `post_country` - string. Country part of user's post address.
+    * `post_index` - string. Post index or ZIP code.
+    * `post_region` - string. Region part of post address (oblast, state, etc.).
+    * `post_city` - string. City from postal address.
+    * `post_street_address` - string. Street address.
+    * `registered_country` - string. Country part of user's registered address.
+    * `registered_index` - string. Index part of user's registered address.
+    * `registered_region` - string. Region part of user's registered address.
+    * `registered_city` - string. City from registered address.
+    * `registered_street_address` - string. User's registered address.
+    * `first_name` - string. User's or contact person first name.
+    * `middle_name` - string. User's or contact person middle name.
+    * `last_name` - string. User's or contact person last name.
+    * `legal_name` - optional string. A juridical name.
+    * `master` - object. Returned only if current user is sub-user. All fields have same meaning as in "user_info", but for 
+    master user's account.
+    * `tariff_restrictions` - tariff restrictions object, for more info see [user/get_tariff_restrictions](#get_tariff_restrictions).
+        * `allowed_maps` - array of string. List of allowed maps.
+    * `premium_gis` - boolean. `true` if a dealer has premium GIS tariff.
+    * `features` - array of string. Set of allowed [Dealer features](../dealer.md#dealer-features).
+    * `privileges` - object only returned for sub-users. Describes effective sub-user privileges. 
+    * `rights` - array of string. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
 
 ### activate
 
@@ -25,7 +126,6 @@ Available only to master users.
     This call will receive only session hash from registration email.
     Any other hash will result in result error code 4 (user not found or session ended).
 
-
 #### response
 
 ```json
@@ -34,7 +134,7 @@ Available only to master users.
 
 ### auth
 
-Try to authenticate user.
+Tries to authenticate user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
@@ -42,36 +142,38 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
 | name  | description | type  | restrictions |
 | :---- | :----       | :---- | :----        |
-|login | User email as login (or demo login) | string | not null |
-|password | User password | string | not null, 1 to 40 printable characters |
-|dealer_id | If specified, API will check that user belongs to this dealer, and if not, error 102 will be returned. | int | optional |
-
+|login | User email as login (or demo login). | string | not null. |
+|password | User password. | string | not null, 1 to 40 printable characters. |
+|dealer_id | If specified, API will check that user belongs to this dealer, and if not, error 102 will be returned. | int | optional. |
 
 #### example
 
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/user/auth' \
--H 'Content-Type: application/json' \ 
--d '{ "login": "test@email.com", "password": "password123456" }'
-```
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/user/auth' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"login": "user@email.com", "password": "12@14Y$"}'
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "hash": <string> // session hash
+    "hash": "22eac1c27af4be7b9d04da2ce1af111b"
 }
 ```
 
+* `hash` - string. Session hash.
+
 #### errors
 
-*   11 – Access denied (if dealer blocked)
-*   102 – Wrong login or password
-*   103 – User not activated
-*   104 – Logins limit exceeded, please reuse existing sessions instead (see also user/session/renew)
-*   105 – Login attempts limit exceeded, try again later
-
+* 11 – Access denied - if dealer blocked.
+* 102 – Wrong login or password.
+* 103 – User not activated.
+* 104 – Logins limit exceeded, please reuse existing sessions instead (see also user/session/renew).
+* 105 – Login attempts limit exceeded, try again later.
 
 ### get_info
 
@@ -81,15 +183,21 @@ Gets user information and some settings.
 
 Only session `hash`.
 
-#### example
+#### examples
 
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/user/get_info' \
--H 'Content-Type: application/json' \ 
--d '{ "hash": "a6aa75587e5c59c32d347da438505fc3" }'
-```
+=== "cURL"
 
-Get basic user info.
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/user/get_info' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/get_info?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
@@ -97,71 +205,68 @@ Get basic user info.
 {
     "success": true,
     "paas_id": 7,
-    "paas_settings": ${pass_settings},
+    "paas_settings": <paas_settings>,
     "user_info": {
-        "id": 43568,                     // user id
-        "login": "demo@navixy.com",      // user's login (in most cases it's an email address)
-        "title": "John Smith",           // user first and last name or organization title
-        "phone": "79123456789",          // user phone (if not empty)
-        "creation_date": "2016-05-20 01:10:34", // user registration date/time
-        "balance": 74.31,                // user balance, max. 2 digits after dot. For subusers, this field should be ignored
-        "bonus": 0,                      // user bonus, max. 2 digits after dot. For subusers, this field should be ignored
-        "locale": "en_US",               // user locale, for example "en_EN"
-        "demo": true,                    // true if this is a demo user, false otherwise
-        "verified" : true,               // true if user email already verified
-        "legal_type" : "individual",     // string. "individual", "legal_entity" or "sole_trader"
-        "default_geocoder": "google",    // user's default geocoder ("google", "yandex", "progorod", "osm", or "locationiq")
-        "route_provider": "google",      // user's route provider ("progorod", "google" or "osrm")
-        "time_zone": "America/New_York", // user timezone name
-        "measurement_system" : "metric", // user's measurement system ("metric", "imperial" or "us")
-        "tin": "2345678239",             // Taxpayer identification number aka "VATIN" or "INN"
-        "iec": ${string},                // Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities. Optional.
-        // postal address
-        "post_country": "USA",           // country
-        "post_region": "NY",             // region part of post address (oblast, state, etc.)
-        "post_index": "10120",           // post index or ZIP code
-        "post_city": "New York",         // city part of post address
-        "post_street_address": "1556 Broadway, suite 416" // tail part of post address
-        // legal (juridical) address
-        "registered_country": "USA",           // country
-        "registered_region": "NY",             // region part of post address (oblast, state, etc.)
-        "registered_index": "10120",           // post index or ZIP code
-        "registered_city": "New York",         // city part of post address
-        "registered_street_address": "1556 Broadway, suite 416" // tail part of post address
+        "id": 43568,
+        "login": "demo@navixy.com",
+        "title": "John Smith",
+        "phone": "79123456789",
+        "creation_date": "2016-05-20 01:10:34",
+        "balance": 74.31,
+        "bonus": 0,
+        "locale": "en_US",
+        "demo": true,
+        "verified" : true,
+        "legal_type" : "individual",
+        "default_geocoder": "google",
+        "route_provider": "google",
+        "time_zone": "America/New_York",
+        "measurement_system" : "metric",
+        "tin": "2345678239",
+        "iec": "",
+        "post_country": "USA",
+        "post_region": "NY",
+        "post_index": "10120",
+        "post_city": "New York",
+        "post_street_address": "1556 Broadway, suite 416",
+        "registered_country": "USA",
+        "registered_region": "NY",
+        "registered_index": "10120",
+        "registered_city": "New York",
+        "registered_street_address": "1556 Broadway, suite 416",
         "first_name": "John",
         "middle_name": "Walker",
         "last_name": "Smith",
-        "legal_name": "QWER Inc." // juridical name (optional)
+        "legal_name": "QWER Inc."
     },
-    "master": { // returned only if current user is sub-user. All fields have same meaning as in "user_info", but for master user's account
-    "id": 1234, // same as in "user_info"
-    "demo": false, // same as in "user_info"
-    "legal_type": "individual", // same as in "user_info"
-    "first_name": "David", // same as in "user_info"
-    "middle_name": "Middle", // same as in "user_info"
-    "last_name": "Blane", // same as in "user_info"
-    "legal_name": "Blah LLC", // same as in "user_info"
-    "title": "David Blane", // same as in "user_info"
-        "balance": 0.0, // master user balance, max. 2 digits after dot. Only returned if subuser has "payment_create" right
-        "bonus": 89.78, // master user bonus, max. 2 digits after dot. Only returned if subuser has "payment_create" right
+    "master": {
+        "id": 1234,
+        "demo": false,
+        "legal_type": "individual",
+        "first_name": "David",
+        "middle_name": "Middle",
+        "last_name": "Blane",
+        "legal_name": "Blah LLC",
+        "title": "David Blane",
+        "balance": 0.0,
+        "bonus": 89.78
     },
-    "tariff_restrictions": ${tariff_restrictions},
+    "tariff_restrictions": {
+        "allowed_maps": ["roadmap","osm"]
+    },
     "premium_gis": true,
     "features": ["branding_web"],
-    "privileges": { // only returned for subusers. Describes effective subuser privileges
-        "rights": [
-            "tag_update"
-        ]
+    "privileges": {
+        "rights": ["tag_update"]
     }
 }
 ```
 
-where
+* `user_object` - for more info see [user object structure](#user-object-structure).
 
-* `paas_settings` same as `settings` in [/dealer/get_ui_config response](../dealer.md#get_ui_config),
-* `tariff_restrictions` is JSON object same as in [/user/get_tariff_restrictions](#get_tariff_restrictions) response,
-* `features` is a set of allowed [Dealer features](../dealer.md#dealer-features).
+#### errors
 
+* [General](../../../getting-started.md#error-codes) types only.
 
 ### get_tariff_restrictions
 
@@ -171,30 +276,38 @@ Gets user tariff restrictions.
 
 Only session `hash`.
 
-#### example
+#### examples
 
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
--H 'Content-Type: application/json' \ 
--d '{ "hash": "a6aa75587e5c59c32d347da438505fc3" }'
-```
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/get_tariff_restrictions?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "value": ${tariff_restrictions}
+    "value": {
+         "allowed_maps": ["roadmap","osm"]
+    }
 }
 ```
 
-where `tariff_restrictions` is JSON object:
+* `allowed_maps` - array of string. List of allowed maps.
 
-```json
-{
-    "allowed_maps": [${map_name}, ...] // [string]. list of allowed maps, e.g. ["roadmap","osm"]
-}
-```
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.
 
 ### logout
 
@@ -204,40 +317,21 @@ Destroys current user session.
 
 Only session `hash`.
 
-#### example
+#### examples
 
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/user/logout' \
--H 'Content-Type: application/json' \ 
--d '{ "hash": "a6aa75587e5c59c32d347da438505fc3" }'
-```
+=== "cURL"
 
-#### response
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/user/logout' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+    
+=== "HTTP GET"
 
-```json
-{ "success": true }
-```
-
-
-### resend_activation
-
-Send new activation link to user.
-
-It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
-
-#### parameters
-
-| name  | description | type  | restrictions |
-| :---- | :----       | :---- | :----        |
-|login | user login (email) | string | not null |
-
-#### example
-
-```abap
-$ curl -X POST '{{ extra.api_example_url }}/user/logout' \
--H 'Content-Type: application/json' \ 
--d '{ "login": "users_login" }'
-```
+    ```
+    {{ extra.api_example_url }}/user/logout?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
@@ -247,18 +341,58 @@ $ curl -X POST '{{ extra.api_example_url }}/user/logout' \
 
 #### errors
 
-*   201 (Not found in database) – user with passed login not found.
-*   209 (Failed sending email) – can't send email.
-*   264 (Timeout not reached) – previous activation link generated less than 5 minutes ago (or other configured on server timeout).
-    ```json
-    {
-        "success": false,
-        "status": {
-            "code": 264,
-            "description": "Timeout not reached"
-        },
-        "timeout": "PT5M", // timeout between sending activation links in ISO-8601 duration format
-        "remainder": "PT4M31.575S" // remaining time to next try in ISO-8601 duration format
-    }
+* [General](../../../getting-started.md#error-codes) types only.
+
+### resend_activation
+
+Sends a new activation link to user.
+
+It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
+
+#### parameters
+
+| name  | description | type  | restrictions |
+| :---- | :----  | :---- | :---- |
+| login | User login (email). | string | not null |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/user/resend_activation' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"login": "user@login.com"}'
     ```
-*   265 (Already done) – user already activated and verified
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/resend_activation?login=user@login.com
+    ```
+
+#### response
+
+```json
+{ "success": true }
+```
+
+#### errors
+
+* 201 - Not found in the database – user with a passed login not found.
+* 209 - Failed sending email – can't send email.
+* 264 - Timeout not reached – previous activation link generated less than 5 minutes ago (or other configured on server timeout).
+```json
+{
+    "success": false,
+    "status": {
+        "code": 264,
+        "description": "Timeout not reached"
+    },
+    "timeout": "PT5M",
+    "remainder": "PT4M31.575S"
+}
+```
+    * `timeout` - string. timeout between sending activation links in ISO-8601 duration format.
+    * `remainder` - string. remaining time to next try in ISO-8601 duration format
+* 265 - Already done – user already activated and verified.

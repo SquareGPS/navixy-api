@@ -1,51 +1,111 @@
 ---
 title: History unread
-description: History unread
+description: Contains API calls to interact with unread history entries.
 ---
 
 # History unread
+
+Contains API calls to interact with unread history entries.
 
 API path: `/history/unread`.
 
 ### list
 
-List less than or equal to **limit** of the latest user's unread history entries.
+List less than or equal to `limit` of the latest user's unread history entries.
 
 #### parameters
 
-*   limit, int, optional
-*   from, date/time, optional
+| name | description | type |
+| :----- | :-----  | :----- |
+| limit | Optional. Limit of entries in response. | int |
+| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching. Default `from` is **now** minus one year. | string date/time |
 
 Default and max limit is [maxHistoryLimit](../../../getting-started.md#constants).
 
-Type of **from** is [date/time](../../../getting-started.md#data-types). Default **from** is **now** minus one year.
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/history/unread/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/history/unread/list?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "list": [${history_entry}, ... ] //list of zero or more JSON objects
+    "list": [{
+         "id": 1,
+         "type": "tracker",
+         "is_read": false,
+         "message": "Alarm",
+         "time": "2020-01-01 00:00:00",
+         "event": "offline",
+         "tracker_id": 2,
+         "rule_id": 3,
+         "track_id": 4,
+         "location":{ 
+             "lat": 50.0,
+             "lng": 60.0,
+             "precision": 50
+         },
+         "address": "address",
+         "extra": {
+             "task_id": null , 
+             "parent_task_id": null,
+             "counter_id": null,
+             "service_task_id": null,
+             "checkin_id": null,
+             "place_ids": null,
+             "last_known_location": false,
+             "tracker_label": "Tracker label",
+             "emergency": false
+         }
+    }]
 }
 ```
 
-where **history_entry** described in [Tracker history entry](./index.md#tracker-history-entry)
+* `list` - array of objects. list of zero or more [Tracker history entry](./index.md#tracker-history-entry) objects.
 
 #### errors
 
-*   212 – Requested limit is too big (more [maxHistoryLimit](../../../getting-started.md#constants) config option)
-
+* 212 – Requested limit is too big (more [maxHistoryLimit](../../../getting-started.md#constants) config option).
 
 ### count
 
-Get count of user's unread history messages from **from** date.
+Get count of user's unread history messages starting `from` date.
 
 #### parameters
 
-*   from – optional
-*   type – optional
+| name | description | type |
+| :----- | :-----  | :----- |
+| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching.  Default `from` is **now** minus one year. | string date/time |
+| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera". | string enum |
 
-Type of **from** is [date/time](../../../getting-started.md#data-types). Default **from** is **now** minus one year.
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/history/unread/count' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/history/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
@@ -55,3 +115,7 @@ Type of **from** is [date/time](../../../getting-started.md#data-types). Default
     "count": 1
 }
 ```
+
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.
