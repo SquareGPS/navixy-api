@@ -1,23 +1,37 @@
 ---
 title: User UI settings
-description: User UI settings
+description: The user interface settings intended for storing settings of client applications that use the API. 
+             One can imagine that this works similarly to the browser cache/local storage mechanism. The feature is that long-term 
+             storage of these settings provided but not guaranteed - when the quota exceeded, data could be deleted. 
 ---
 
 # User UI settings
 
-API path: `/user/settings/ui`
+The user interface settings intended for storing settings of client applications that use the API. 
+One can imagine that this works similarly to the browser cache/local storage mechanism. The feature is that long-term 
+storage of these settings provided but not guaranteed - when the quota exceeded, data could be deleted. 
 
-The user interface settings are intended for storing settings of client applications that use the API. 
-One can imagine that this works similarly to the browser cache / local storage mechanism. The feature is that long-term storage of these settings is provided but not guaranteed - when the quota is exceeded, data could be deleted. 
+API path: `/user/settings/ui`
 
 ### read
 
-Read setting value by key.
+Reads setting value by key.
 
 #### parameters
 
-**key** - string. Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, '_' and '-'.
+| name | description | type |
+| :----- | :-----  | :----- |
+| key | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, '_' and '-'. | string |
 
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/user/settings/ui/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "key": "tracker-icons"}'
+    ```
 
 #### responses:
 
@@ -28,7 +42,7 @@ Read setting value by key.
 }
 ```
 
-When nonexistent key is provided:
+When nonexistent key provided:
 
 ```json
 {
@@ -42,17 +56,18 @@ When nonexistent key is provided:
 
 #### errors
 
-Standard errors
-
+* [General](../../../../getting-started.md#error-codes) types only.
 
 ### update
 
-Set setting value. 
+Sets setting value.
 
 #### parameters
 
-**key** - string. Length should be between 1 and 50 symbols. Should only contain English letters, digits, '_' and '-'.
-**value** - string. Length should be between 0 and 8192 symbols. 
+| name | description | type |
+| :----- | :-----  | :----- |
+| key | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, '_' and '-'. | string |
+| value | A new UI config value. Length should be between 0 and 8192 symbols. | string |
 
 #### responses:
 
@@ -61,5 +76,7 @@ Set setting value.
 ```
 
 #### errors
-* Standard errors
-* 268 - over quota. The amount of storage available for the user for these settings has been exhausted. New settings cannot be added until the amount of stored data has been reduced.
+
+* [General](../../../../getting-started.md#error-codes) types.
+* 268 - over quota. The amount of storage available for the user for these settings has been exhausted. New settings 
+cannot be added until the amount of stored data has been reduced.

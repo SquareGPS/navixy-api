@@ -1,29 +1,39 @@
 ---
 title: Plugin
-description: Plugin
+description: Contains plugin object description and API calls to interact with it. Plugins are special software modules which modify the behavior of various API calls.
 ---
 
 # Plugin
 
-API path: `/plugin`.
-
+Contains plugin object description and API calls to interact with it.<br>
 Plugins are special software modules which modify the behavior of various API calls.
 
-#### Plugin object structure
+API path: `/plugin`.
+
+## Plugin object structure
 
 ```json
 {
-    "id": <plugin id, e.g. 1>, //int
-    "type": <plugin type, e.g. "tracker_register">, //String
-    "ui_module": <plugin ui module name, e.g. "Registration.appPlugins.BundledSim">, //String
-    "module": <plugin module name, e.g. "com.navixy.plugin.tracker.register.bundled_sim">, //String
-    "filter": { //a model filter which describes to which device models this plugin is applicable
-        "exclusion": true, //if true, "models" lists models NOT supported by this plugin, if false, "models" contains all supported models
-        "values": <list of the regexes for models which are (not) supported by this plugin, e.g. ["navixymobile", "mobile_unknown.*"]> //string[]
+    "id": 1,
+    "type":"tracker_register",
+    "ui_module": "Registration.appPlugins.BundledSim",
+    "module": "com.navixy.plugin.tracker.register.bundled_sim",
+    "filter": {
+        "exclusion": true,
+        "values": ["navixymobile", "mobile_unknown.*"]
     },
-    "parameters" : { ... } //Plugin-specific parameters as JSON object. This field is omitted if it's null (and it is null most of the time)
-}
+    "parameters" : {<parameter1>}
 ```
+
+* `id` - int. An id of plugin.
+* `type` - string. Plugin type.
+* `ui_module` - string. Plugin UI module name.
+* `module` - string. Plugin module name.
+* `filter` - object. A model filter which describes to which device models this plugin is applicable.
+    * `exclusion` - boolean. If `true`, "models" lists models NOT supported by this plugin, if `false`, "models" 
+    contains all supported models.
+    * `values` - array of string. List of the regexes for models which are (not) supported by this plugin.
+* `parameters` - plugin-specific parameters as JSON object. This field omitted if it's `null` (and it is `null` most of the time).
 
 #### Example
 
@@ -42,18 +52,44 @@ Plugins are special software modules which modify the behavior of various API ca
 
 ### list
 
-Get all plugins available to the user. List of available plugins may vary from user to user depending on platform settings and purchased features. Only these plugins can be used to register trackers, generate reports, etc.
+Get all plugins available to the user. List of available plugins may vary from user to user depending on platform 
+settings and purchased features. Only these plugins can be used to register trackers, generate reports, etc.
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/plugin/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/plugin/list?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "list": [ <plugin>, … ]
+    "list": [{
+         "id": 4,
+         "type": "tracker_report",
+         "module": "com.navixy.plugin.tracker.report.trip",
+         "ui_module": "Trip",
+         "filter": {
+             "exclusion": true,
+             "values": []
+         }
+    }]
 }
 ```
 
-For "plugin" object structure, see [plugin/](#plugin).
+* `list` - array of objects. List of available plugins.
 
 #### errors
 
@@ -61,4 +97,5 @@ For "plugin" object structure, see [plugin/](#plugin).
 
 #### Standalone-specific:
 
-If no plugins enabled for user and his dealer then available plugins enabled by default (config options **plugin.tracker.register.defaultIds** and **plugin.tracker.report.defaultIds**).
+If no plugins enabled for user and his dealer then available plugins enabled by default 
+(config options **plugin.tracker.register.defaultIds** and **plugin.tracker.report.defaultIds**).

@@ -35,7 +35,8 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
     "origin": "imported",
     "tags": [1, 2],
     "type": "checkpoint",
-    "form": <form_object>
+    "form": <form_object>,
+    "form_template_id": 13245
 }
 ```
 
@@ -58,6 +59,7 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 * `origin` - string. Checkpoint origin. *IGNORED* in checkpoint/create, checkpoint/update.
 * `tags` - array of int. List of tag ids.
 * `form` - [form object](../form/index.md#form-object). If present.
+* `form_template_id` - int. An id of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
 
 ## API actions
 

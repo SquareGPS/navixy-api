@@ -1,56 +1,100 @@
 ---
 title: User audit log 
-description: User audit log
+description: Contains audit object and list method to get the audit log.
 ---
 
 # User audit log
 
+Contains audit object and list method to get the audit log.
+
 API path: `/user/audit/log`.
 
-**audit_object** type is JSON object:
+## Audit object
 
 ```json
 {
-    "id": 1, // ID of the audit record
-    "user_id": 3, // Master user's ID
-    "subuser_id": 3, // ID of the subuser who made an action
-    "entry_category": "user", // Category of the entry on which an action was made
-    "entry_id": null, // Nullable. ID of the entry on which an action was made
-    "action": "login", // Action on entry
-    "payload": null, // Nullable json-object. Additional information about action 
-    "host": "192.168.88.1", // Host from which an action was made. IPv4 or IPv6
-    "user_agent": "Apache-HttpClient/4.1.1 (java 1.5)", // User agent
-    "action_date": "2018-09-03 11:32:34" // Date and time of the action
+  "id":44504790,
+  "user_id": 3,
+  "subuser_id":184541,
+  "entry_category":"custom_field",
+  "entry_id": null,
+  "action":"create",
+  "payload":{"name":"Decimal number"},
+  "host":"94.140.138.215",
+  "user_agent": "Apache-HttpClient/4.1.1 (java 1.5)",
+  "action_date":"2020-12-21 17:54:01"}
 }
 ```
+
+* `id` - int. An ID of the audit record.
+* `user_id` - int. Master user's ID.
+* `subuser_id` - int. ID of the sub-user who made an action.
+* `entry_category` - string. Category of the entry on which an action made.
+* `entry_id` - int. ID of the entry on which an action made. Nullable.
+* `action` - string. Action on entry.
+* `payload` - Nullable JSON object. Additional information about action.
+* `host` - string. Host from which an action made. IPv4 or IPv6.
+* `user_agent` - string. User agent.
+* `action_date` - string date/time. Date and time of the action.
 
 ### list
 
 Gets list of audit records available for current user.
 
-**required subuser rights**: admin (available only to master users)
+**required sub-user rights**: `admin` (available only to master users).
 
 #### parameters
 
-*   **from** – **string**. Include audit objects recorded after this date, e.g. `2014-07-01 00:00:00`.
-*   **to** – **string**. Include audits before this date, e.g. `2014-07-01 00:00:00`.
-*   **subuser_ids** – **int[]**. (optional) Include audits for specific subusers, e.g. `[2, 3]`.
-*   **actions** – **string\[\]**. (optional) Include audits for specific actions only, e.g. `["user_checkin"]`. Set of valid values is formed by combinations of entry categories and actions.
-*   **limit** – **int**. Pagination. Maximum number of audit records to return, e.g. `10`.
-*   **offset** – **int**. Pagination. Get audits starting from, e.g. `0`.
-*   **sort** – **string\[\]**. (optional) Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["action_date=acs", "user=desc"]`. Properties available for sorting by:
-    <br> — *action*
-    <br> — *action_date* (sort only by date, not considering time part)
-    <br> — *action_datetime* (sort by date including time)
-    <br> — *user* (sort by user's (subuser) last+first+middle name, not by ID)
-    <br> — *host*
-    <br> If no sort param is specified, then sorting equivalent to option `["action_date=asc"]` will be applied.
+| name | description | type |
+| :----- | :-----  | :----- |
+| from | Include audit objects recorded after this date. | string date/time |
+| to | Include audits before this date. | string date/time |
+| subuser_ids | Optional. Include audits for specific sub-users. | array of int |
+| actions | Optional. Include audits for specific actions only. | array of string |
+| limit | Pagination. Maximum number of audit records to return. | int |
+| offset | Pagination. Get audits starting from. | int |
+| sort | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["action_date=acs", "user=desc"]`. | array of string |
+| grouping | Optional. Group log by "user", "action_date", "action" or don't group "default". | string enum |
+ 
+Properties available for sorting by:
+
+* `action`.
+* `action_date` - sort only by date, not considering time part.
+* `action_datetime` - sort by date including time.
+* `user` - sort by user's (sub-user) last+first+middle name, not by ID.
+* `host`.
+If no sort param is specified, then sorting equivalent to option `["action_date=asc"]` will be applied.
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/user/audit/log/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2020-12-25 03:24:00", "to": "2020-12-28 06:24:00", "limit": 50, "offset": 0}'
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "list": [ <audit_object>, ... ]
+    "list": [{
+       "id":44504790,
+       "user_id": 3,
+       "subuser_id":184541,
+       "entry_category":"custom_field",
+       "entry_id": null,
+       "action":"create",
+       "payload":{"name":"Decimal number"},
+       "host":"94.140.138.215",
+       "user_agent": "Apache-HttpClient/4.1.1 (java 1.5)",
+       "action_date":"2020-12-21 17:54:01"}
+    }]
 }
 ```
+
+#### errors
+
+* [General](../../../../getting-started.md#error-codes) types only.

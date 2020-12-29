@@ -1,49 +1,94 @@
 ---
 title: Delivery
-description: Delivery
+description: Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
+             tracking functionality into external systems.
 ---
 
 # Delivery
 
-API path: `/user/session/delivery`.
-
 Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
 tracking functionality into external systems.
 
+API path: `/user/session/delivery`.
+
 ### create
 
-Create new user delivery session.
+Creates new user delivery session.
 In demo session allowed to create a new session only if it not already exists.
 
-**required subuser rights**: admin (available only to master users)
+**required sub-user rights**: `admin` (available only to master users).
+
+#### parameters
+
+Only session `hash`.
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/user/session/delivery/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/session/delivery/create?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "value": "42fc7d3068cb98d233c3af749dee4a8d" // created session hash key
+    "value": "42fc7d3068cb98d233c3af749dee4a8d"
 }
 ```
 
+* `value` - string. Created session hash key.
+
 #### errors
 
-*   101 (In demo mode this function is disabled) – current session is demo but weblocator session already exists.
-*   236 – Feature unavailable due to tariff restrictions
+* 101 - In demo mode this function disabled – current session is demo but weblocator session already exists.
+* 236 – Feature unavailable due to tariff restrictions.
 
 ### read
 
-Return current user delivery session key.
+Returns current user delivery session key.
+
+#### parameters
+
+Only session `hash`.
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/user/session/delivery/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/session/delivery/read?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "value": <string> // session hash key
+    "value": "42fc7d3068cb98d233c3af749dee4a8d"
 }
 ```
 
+* `value` - string. Session hash key.
+
 #### errors
 
-*   201 – Not found in database (if there is no delivery session)
+* 201 – Not found in the database - if there is no delivery session.

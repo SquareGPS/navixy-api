@@ -41,6 +41,7 @@ it's available for viewing by app user. User will also receive notifications of 
     "tags": [1, 2],
     "type": "task",
     "form": <form_object>,
+    "form_template_id": 13245
     "fields": {
         "131312" : {
              "type": "text",
@@ -70,6 +71,7 @@ it's available for viewing by app user. User will also receive notifications of 
 * `origin` - string. Task origin. *IGNORED* in create/update.
 * `tags` - array of int. List of tag ids.
 * `form` - [form object](../form/index.md#form-object). If present.
+* `form_template_id` - int. An id of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
 * `fields` - optional object. A map, each key of which is a custom field id *as a string*. See [entity/fields](../../commons/entity/fields.md)
 
 ## API actions
@@ -391,13 +393,13 @@ set of sort options. Each option is a pair of column name and sorting direction,
 | status | string |  |
 | label | string |  |
 | location | string | address |
-| from | string date/time? |  |
-| to | string date/time? |  |
-| status_change_date | string date/time? |  |
-| arrival_date | string date/time? |  |
+| from | string date/time |  |
+| to | string date/time |  |
+| status_change_date | string date/time |  |
+| arrival_date | string date/time |  |
 | stay_duration | Seconds |  |
 | description | string |  |
-| external_id | string? |  |
+| external_id | string |  |
 | form | string | label |
 
 If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** is not passed or _null_ then appropriate condition not used to filter results.
