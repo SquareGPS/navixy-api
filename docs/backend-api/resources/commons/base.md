@@ -1,9 +1,11 @@
 ---
 title: Base
-description: Base
+description: Contains API calls to health-check and send email.
 ---
 
 # Base
+
+Contains API calls to health-check and send email.
 
 API path: `/base`.
 
@@ -11,42 +13,65 @@ API path: `/base`.
 
 The report for health-check. It will do nothing.
 
-#### example
+#### parameters
 
-    {{ extra.api_example_url }}/base/nothing?hash=22eac1c27af4be7b9d04da2ce1af111b
+Only session `hash`.
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/base/nothing' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/base/nothing?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
 ```json
 { "success": true }
 ```
+#### errors
 
+* [General](../../getting-started.md#error-codes) types only.
 
 ### send_email
 
 Sends email from the platform to any email address with specified title and text. Needs ROOT access level.
 
-#### structure:
-
-    {{ extra.api_example_url }}/base/send_email?hash=your_hash&from=sender_mail&to=recipient_mail&title=text_title&message=text_message&service_id=1&service_pass=1
-
 #### parameters
 
-| name | description | type| format|
-| :------: | :------: | :-----:| :------:|
-| from | from email address | string| from@mail.com |
-| to | to email address | string | to@mail.com|
-| title | title of the email | string | example title|
-| message | text of the email | string | example message |
-| service_id | service parameter | int | 1 |
-| service_pass | service parameter | int | 1 |
+| name | description | type|
+| :------ | :------ | :----- |
+| from | From email address. | string|
+| to | To email address. | string |
+| title | Title of the email. | string |
+| message | Text of the email. | string |
+| service_id | Service parameter. | int |
+| service_pass | Service parameter. | int |
 
 #### example
 
-    {{ extra.api_example_url }}/base/send_email?hash=22eac1c27af4be7b9d04da2ce1af111b&from=navixy@mail.com&to=user@mail.com&title=text+of+email+title&message=text+of+the+message&service_id=1&service_pass=1
+=== "cURL"
 
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/base/send_email' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "gps@navixy.com", "to" : "customer@email.com", "title": "test email", "message": "this email for test", "service_id": 1, "service_pass": 28}'
+    ```
 #### response
 
 ```json
 { "success": true }
 ```
+
+#### errors
+
+* [General](../../getting-started.md#error-codes) types only.

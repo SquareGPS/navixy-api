@@ -1,52 +1,88 @@
 ---
 title: Tracker history
-description: Tracker history
+description: Contains list method to get tracker history.
 ---
 
 # Tracker history
+
+Contains list method to get tracker history.
 
 API path: `/history/tracker/`.
 
 ### list
 
-List less then or equal to **limit** of tracker events filtered by event types (**events**) between **from** date/time and **to** date/time sorted by **time** field.
+List less than or equal to `limit` of tracker events filtered by event types (`events`) between `from` date/time 
+and `to` date/time sorted by **time** field.
 
 #### parameters
 
-*   **trackers** – **\[int\]**. list of tracker's ids
-*   **from** – [date/time](../../../getting-started.md#data-types). start date/time for searching
-*   **to** – [date/time](../../../getting-started.md#data-types). end date/time for searching. must be after "from" date
-*   **events** – **`["string"]`** (optional, default: all). list of history types
-*   **limit** – **int** (optional, default: [maxHistoryLimit](../../../getting-started.md#constants). max count of entries in result
-*   **ascending** – **boolean** (optional, default: **true**). Sort ascending by time when it is **true** and descending when **false**.
+| name | description | type |
+| :----- | :-----  | :----- |
+| trackers | List of tracker's ids. | array of int |
+| from | Start date/time for searching. | string [date/time](../../../getting-started.md#data-types) |
+| to | End date/time for searching. Must be after "from" date. | string [date/time](../../../getting-started.md#data-types) |
+| events | Optional. Default: all. List of history types. | array of string |
+| limit | Optional. Default: [maxHistoryLimit](../../../getting-started.md#constants). Max count of entries in result. | int |
+| ascending | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`. | boolean |
 
-If **events** (event types) not passed then list all event types.
+If `events` (event types) not passed then list all event types.
 
 Available event types can be obtained by [/history/type/list](./history_type.md#list) action.
 
-Default and max limit is 1000 by default. (Note for StandAlone: this value configured by maxHistoryLimit config option).
+Default and max limit is 1000. (Note for StandAlone: this value configured by maxHistoryLimit config option).
 
 #### example
 
-    {{ extra.api_example_url }}/history/tracker/list?hash=user_hash&trackers=[tracker_id]&from=2018-02-19 10:29:00&to=2018-02-19 11:30:00&events=["event_type"]
+=== "cURL"
 
-
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/history/tracker/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [131312, 123985], "from": "2020-12-10 16:44:00", "to": "2020-12-22 16:44:00"}'
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "list": [ ${history_entry}, ... ], // list of zero or more JSON objects
-    "limit_exceeded": false // boolean. false when listed all history entries satisfied to conditions
-    // and true otherwise
+    "list": [{
+         "id": 1,
+         "type": "tracker",
+         "is_read": false,
+         "message": "Alarm",
+         "time": "2020-01-01 00:00:00",
+         "event": "offline",
+         "tracker_id": 2,
+         "rule_id": 3,
+         "track_id": 4,
+         "location":{ 
+             "lat": 50.0,
+             "lng": 60.0,
+             "precision": 50
+         },
+         "address": "address",
+         "extra": {
+             "task_id": null ,
+             "parent_task_id": null,
+             "counter_id": null,
+             "service_task_id": null,
+             "checkin_id": null,
+             "place_ids": null,
+             "last_known_location": false,
+             "tracker_label": "Tracker label",
+             "emergency": false
+         }
+    }],
+    "limit_exceeded": false
 }
 ```
 
-where `history_entry` described in [Tracker history entry](./index.md#tracker-history-entry).
+* `list` - list of zero or more history_entry` objects which described in [Tracker history entry](./index.md#tracker-history-entry). 
+* `limit_exceeded` - boolean. `false` when listed all history entries satisfied to conditions and `true` otherwise.
 
 #### errors
 
-*   211 – Requested time span is too big (time span between **from** and **to** is more than [maxReportTimeSpan](../../../getting-started.md#constants) days).
-*   212 – Requested **limit** is too big (**limit** is more than [maxHistoryLimit](../../../getting-started.md#constants)).
-*   217 – List contains nonexistent entities – if one of the specified trackers does not exist or is blocked.
+* 211 – Requested time span is too big - time span between `from` and `to` is more than [maxReportTimeSpan](../../../getting-started.md#constants) days.
+* 212 – Requested `limit` is too big - `limit` is more than [maxHistoryLimit](../../../getting-started.md#constants).
+* 217 – List contains nonexistent entities – if one of the specified trackers does not exist or is blocked.

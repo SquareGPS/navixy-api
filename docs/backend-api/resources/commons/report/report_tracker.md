@@ -1,9 +1,11 @@
 ---
 title: Report tracker
-description: Report tracker
+description: Contains API calls to interact with tracker reports.
 ---
 
 # Report tracker
+
+Contains API calls to interact with tracker reports.
 
 API path: `/report/tracker`.
 
@@ -83,8 +85,8 @@ A report rendered to file (standard file download).
 
 #### errors
 
-*   204 - Entity not found (if report with the specified id not found).
-*   229 - Requested data is not ready yet (if report exists, but its generation is still in progress).
+* 204 - Entity not found - if report with the specified id not found.
+* 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
 ### generate
 
@@ -153,8 +155,8 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 
 #### errors
 
-* 15 (Too many requests / rate limit exceeded) - the number of reports created by one user in parallel limited.
-* 211 (Requested time span is too big) - interval from `from` to `to` is bigger then max allowed time span (see response).
+* 15 - Too many requests / rate limit exceeded - the number of reports created by one user in parallel limited.
+* 211 - Requested time span is too big - interval from `from` to `to` is bigger then max allowed time span (see response).
    
 ```json
 {
@@ -169,9 +171,9 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 
 * `max_time_span` - string. ISO-8601 interval.
   
-* 217 (List contains nonexistent entities) - when one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user).
-* 222 (Plugin not found) - when specified report plugin not found.
-* 236 (Feature unavailable due to tariff restrictions) - when one of the trackers has tariff with disabled reports - ("has_reports" is false).
+* 217 - List contains nonexistent entities - when one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user).
+* 222 - Plugin not found - when specified report plugin not found.
+* 236 - Feature unavailable due to tariff restrictions - when one of the trackers has tariff with disabled reports ("has_reports" is false).
 
 ### list
 
@@ -254,7 +256,7 @@ Returns info about all available generated or in-progress reports.
 
 #### errors
 
-* No specific errors.
+* [General](../../../getting-started.md#error-codes) types only.
 
 ### retrieve
 
@@ -740,8 +742,8 @@ Retrieve generated report as JSON.
 
 #### errors
 
-* 204 - Entity not found (if report with the specified id not found).
-* 229 - Requested data is not ready yet (if report exists, but its generation is still in progress).
+* 204 - Entity not found - if report with the specified id not found.
+* 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
 ### status
 
@@ -784,4 +786,4 @@ Returns a report generation status for the specified report id.
 
 #### errors
 
-* 204 - Entity not found (if report with the specified id not found).
+* 204 - Entity not found - if report with the specified id not found.

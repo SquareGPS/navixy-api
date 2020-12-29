@@ -1,31 +1,35 @@
 ---
 title: Dealer
-description: Dealer
+description: Contains API call to get dealer info and dealer-specific UI settings.
 ---
 
 # Dealer
+
+Contains API call to get dealer info and dealer-specific UI settings.
 
 API path: `/dealer`.
 
 ### get_ui_config
 
-Gets dealer info and dealer-specific UI settings by domain.
+Gets dealer info and dealer-specific UI settings by a domain.
 
 It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
-#### structure:
-
-    {{ extra.api_example_url }}/dealer/get_ui_config?domain=your_domain
-
 #### parameters
 
-| name | description | type| format|
-| :------: | :------: | :-----:| :------:|
-| domain | dealer's monitoring interface domain, e.g. "navixy.com" | string | panel.navixy.com |
+| name | description | type|
+| :------ | :------ | :----- |
+| domain | Dealer's monitoring interface domain, e.g. "panel.navixy.com". | string |
 
 #### example
 
-    {{ extra.api_example_url }}/dealer/get_ui_config?domain=panel.navixy.com
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/dealer/get_ui_config' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "domain": "panel.navixy.com"}'
+    ```
 
 #### response
 
@@ -33,87 +37,132 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 {
     "success": true,
     "dealer": {
-        "id": 5001,                     // int. dealer id
-        "ui_domain": "demo.navixy.com", // Dealer's UI domain
-        "company_url": "navixy.com"     // Dealer's promo site URL
-                                        // e.g. "http://www.navixy.com" or "demo.navixy.com"
+        "id": 5001,
+        "ui_domain": "demo.navixy.com",
+        "company_url": "navixy.com"
     },
-    "settings": {         //may be null if dealer has not set any custom settings
-        "domain" : "demo.navixy.com",   // same as dealer.ui_domain
-        "service_title": "Navixy Demo", // Title of the service
-        "locale": "at_AT",              // default locale of the dealer
-        "demo_login": "demo",           // dealer's login for demo user 
-                                        // (or empty string if no demo user available)
-        "demo_password": "demo",        // dealer's password for demo user 
-                                        // (or empty string if no demo user available)
-        "maps": ["roadmap", "osm"],     // list of available  maps, 
-                // e.g. ["roadmap", "cdcom", "osm", "wikimapia", "yandexpublic", "hybrid", "satellite"]
-        "default_map": {  //default map settings
-            "type": "roadmap",          // default map type
-            "location": { //default map center location
-                "lat": 57.0,            // latitude
-                "lng": 61.0             // longitude
+    "settings": {
+        "domain" : "demo.navixy.com",
+        "service_title": "Navixy Demo",
+        "locale": "at_AT",
+        "demo_login": "demo",
+        "demo_password": "demo",
+        "maps": ["roadmap", "osm"],
+        "default_map": {
+            "type": "roadmap",
+            "location": {
+                "lat": 57.0,
+                "lng": 61.0
             },
-            "zoom": 10                  // default map zoom level
+            "zoom": 10
         },
-        "currency": "EUR",              // dealer's currency ISO 4217 code
-        "payment_link": "http://site.de/pay.php", // PaaS-dependent link that can be used 
-                                       // to refill user's account. Can be null or empty. 
-        "promo_url": "http://site.de/about/",            // customizable "About company" url
-        "google_client_id": "clientID", // client id which which must be used to work with google API or null
-        "favicon": "paas/5001/custom.ico", // path or url to dealer's interface favicon
-        "logo": "paas/5001/logo.png",   // path or url to dealer's logotype
-        "app_logo": "paas/5001/app_logo.png",       //nullable, path or url to dealer's mobile app logotype, 
-        "login_wallpaper": "paas/5001/login.png", // path or url to dealer's interface login wallpaper
-        "desktop_wallpaper": "http://test.com/test.jpg", // path to dealer's interface wallpaper or null
-        "monitoring_logo": "http://test.com/test.jpg", // path to dealer's interface monitoring logo or null
-        "login_footer": "All rights reserved.", // footer which will be included in login page. 
-        "allow_registration": true,     // if true then registration is available for dealer's users 
-                                        // all html special chars escaped using HTML entities.
-        "show_mobile_apps" : true,      // if true then mobile applications are available for dealer's users 
-        "show_call_notifications" : true,      // if true then call notifications are available for dealer's users 
+        "currency": "EUR",
+        "payment_link": "http://site.de/pay.php", 
+        "promo_url": "http://site.de/about/",
+        "google_client_id": "clientID",
+        "favicon": "paas/5001/custom.ico",
+        "logo": "paas/5001/logo.png",
+        "app_logo": "paas/5001/app_logo.png",
+        "login_wallpaper": "paas/5001/login.png",
+        "desktop_wallpaper": "http://test.com/test.jpg",
+        "monitoring_logo": "http://test.com/test.jpg",
+        "login_footer": "All rights reserved.",
+        "allow_registration": true,
+        "show_mobile_apps" : true,
+        "show_call_notifications" : true,
         "default_user_settings": {
-            "geocoder": "google",            // default geocoder
-            "route_provider": "progorod",    // default router
-            "measurement_system": "metric",  // measurement system
+            "geocoder": "google",
+            "route_provider": "progorod",
+            "measurement_system": "metric",
             "translit": false
         },
-        "display_model_features_link" : true, // when true show in model info link to squaregps.com (UI option)
-        "color_theme": "aqua",          // (string) color theme code or empty string (for default theme)
-        "app_color_theme": "blue_1",    // (string. 128 chars max) mobile app color theme code or empty string (for default theme)
+        "display_model_features_link" : true,
+        "color_theme": "aqua",
+        "app_color_theme": "blue_1",
         "privacy_policy_link": "http://privacy-policy-url",
         "tos": "Terms Of Service text",
-        "enable_trackers": true,        // if true, GPS monitoring interface is available for dealer's users
-        "enable_cameras": false,        // if true, camera monitoring interface is available for dealer's users
-        "tracker_model_filter": {       // a filter which describes tracker models available for registration
-            "exclusion": true,          // in this example all models available
+        "enable_trackers": true,
+        "enable_cameras": false,
+        "tracker_model_filter": {
+            "exclusion": true,
             "values": []
         },
-        "internal": {  // additional options
-            "light_registration": true,           // use "very simple" registration with demo tracker
-            "demo_tracker_source_id": 14,         // id of tracker created on 'light_registration'
-            "demo_tracker_label": "Demo tracker", // label of of tracker created on 'light_registration'
-            ...
+        "internal": {
+            "light_registration": true,
+            "demo_tracker_source_id": 14,
+            "demo_tracker_label": "Demo tracker"
         },
-        "no_register_commands": false // if true then do not send commands to devices on activation
+        "no_register_commands": false
     },
-    "demo_ends": "2014-01-01",          // a date when demo for this PaaS ends. 
-                                        // Is null when PaaS is not on demo tariff
-    "premium_gis": true,                // true, if dealer has Premium GIS package
-    "features": ["branding_web"]        // set of the allowed features for dealer (all list see below in "Dealer features")
+    "demo_ends": "2014-01-01",
+    "premium_gis": true,
+    "features": ["branding_web"]
 }
 ```
+
+* `id` - int. Dealer's ID.
+* `ui_domain` - string. Dealer's UI domain.
+* `company_url` - string. Dealer's promo site URL.
+* `settings` - object. Custom settings. May be null if dealer has not set any custom settings.
+    * `domain` - string. The same as dealer.ui_domain.
+    * `service_title` - string. Title of the service.
+    * `locale` - string enum. Default locale of the dealer.
+    * `demo_login` - string. Dealer's login for demo user or empty string if no demo user available.
+    * `demo_password` - string. Dealer's password for demo user or empty string if no demo user available.
+    * `maps` - array of string. List of available maps, 
+    e.g. `["roadmap", "cdcom", "osm", "wikimapia", "yandexpublic", "hybrid", "satellite"]`.
+    * `default_map` - object. Default map settings.
+    * `type` - string enum. Default map type.
+    * `location` - object. Default map center location.
+    * `lat` - float. Latitude.
+    * `long` - float. Longitude.
+    * `zoom` - int. Default map zoom level.
+    * `currency` - string enum. Dealer's currency ISO 4217 code.
+    * `payment_link` - string. PaaS-dependent link that can be used to refill user's account. Can be null or empty.
+    * `promo_url` - string. Customizable "About company" url.
+    * `google_client_id` - string. Client id which must be used to work with google API or null.
+    * `favicon` - string. Path or url to dealer's interface favicon.
+    * `logo` - string. Path or url to dealer's logotype.
+    * `app_logo` - string. Nullable, path or url to dealer's mobile app logotype.
+    * `login_wallpaper` - string. Path or url to dealer's interface login wallpaper.
+    * `desktop_wallpaper` - string. Path to dealer's interface wallpaper or null.
+    * `monitoring_logo` - string. Path to dealer's interface monitoring logo or null.
+    * `login_footer` - string. Footer which will be included in login page.
+    * `allow_registration` - boolean. If `true` then registration is available for dealer's users. All HTML 
+    special chars escaped using HTML entities.
+    * `show_mobile_apps` - boolean. If `true` then mobile applications are available for dealer's users.
+    * `show_call_notifications` - boolean. If `true` then call notifications are available for dealer's users.
+    * `geocoder` - string enum. Default geocoder.
+    * `route_provider` - string enum. Default router.
+    * `measurement_system` - string enum. Measurement system.
+    * `display_model_features_link` - boolean. When `true` show in model info link to squaregps.com (UI option).
+    * `color_theme` - string enum. Color theme code or empty string (for default theme).
+    * `app_color_theme` - string enum. Mobile app color theme code or empty string (for default theme).
+    * `tos` - string. Terms of service text.
+    * `enable_trackers` - boolean. If `true`, GPS monitoring interface is available for dealer's users.
+    * `enable_cameras` - boolean. If `true`, camera monitoring interface is available for dealer's users.
+    * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
+    * `exclusion` - boolean. If `true` models in the `values` will be excluded.
+    * `values` - array of string. If it is empty - all models available.
+    * `internal` - object with additional options.
+    * `light_registration` - boolean. If `true` use "very simple" registration with demo tracker.
+    * `demo_tracker_source_id` - int. An id of tracker created on `light_registration`.
+    * `demo_tracker_label` - string. Label of tracker created on `light_registration`.
+    * `no_register_commands` - boolean. If `true` then do not send commands to devices on activation.
+* `demo_ends` - string. A date when demo for this dealer ends. Is null when dealer is not on Trial tariff.
+* `premium_gis` - boolean. If `true` dealer has Premium GIS package.
+* `features` - array of string. Set of the allowed features for a dealer (all list see below in "Dealer features").
 
 #### Dealer features
 
 | name | description |
 | :------ | :------ |
-| branding_web | allow to use custom logos, color theme, domain and favicon in UI for web version |
-| branding_mobile | allow to use custom icon, logo, color theme in the mobile applications |
-| subpaas | allow to use Sub-Dealers (can be used only together with navixy_label) |
-| navixy_label | show "Powered by Navixy" in UI (required for subpaas feature) |
+| branding_web | Allow to use custom logos, color theme, domain and favicon in UI for web version. |
+| branding_mobile | Allow to use custom icon, logo, color theme in the mobile applications. |
+| subpaas | Allow to use Sub-Dealers (can be used only together with `navixy_label`). |
+| navixy_label | Show "Powered by Navixy" in UI (required for subpaas feature). |
 
 #### errors
 
-*   12 – Dealer not found (if corresponding PaaS was not found in database)
-*   201 – Not found in database (if there is no Ui settings data for corresponding PaaS)
+* 12 – Dealer not found (if corresponding dealer not found in the database).
+* 201 – Not found in the database (if there is no Ui settings data for corresponding dealer).
