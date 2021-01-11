@@ -865,6 +865,19 @@ the device will be changed to stillness if the motion sensor detects stillness a
 defined by this parameter. Can be 1 - 255.
 * `motion_duration_to_on` – A time parameter to make sure the device enters motion status. Can be 1 - 255.
 
+**no_movement_alarm**
+```json
+{
+   "type":"no_movement_alarm",
+   "enabled":true,
+   "timeout":300,
+   "pre_alarm_duration":120
+}
+```
+
+* `timeout` - int. Can be 30 - 65500. A time parameter when the device doesn't move.
+* `pre_alarm_duration` - int. Can be 0 - 65500. A time parameter when the device continues not to move after timeout.
+
 #### errors
 
 * 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
