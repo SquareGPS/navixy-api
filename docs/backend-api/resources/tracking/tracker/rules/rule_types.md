@@ -652,3 +652,13 @@ A rule that triggers on a parameter in range.
 | sensor_id | Id of a tracked sensor. | int |
 | min | A minimum range value. | int |
 | max | A maximum range value. | int |
+
+### No movement
+
+A rule that triggers when the device is stationary.
+
+#### parameters
+
+| name | description | type |
+| ------ | ------------- | ------ |
+| type | Default `type`: "no_movement". | string enum |
