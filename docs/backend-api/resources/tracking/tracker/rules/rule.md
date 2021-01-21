@@ -11,48 +11,46 @@ A rule element consists of following fields:
 
 ```json
 {
-  "id": 668054,
-  "name": "Lock is opened/closed",
-  "type": "locking_unlocking",
-  "description": "This rule was created automatically",
-  "zone_ids": [ 18928 ],
-  "trackers": [ 10029750, 10030168, 10031971 ],
-  "primary_text": "Lock is opened",
-  "secondary_text": "Lock is closed",
-  "param": 0,
-  "alerts": {
-    "sms_phones": [],
-    "phones": [],
-    "emails": [],
-    "push_enabled": true
-  },
-  "suspended": false,
-  "auto_created": true,
-  "schedule": [{
-    "type": "weekly",
-    "from": {
-      "weekday": 1,
-      "time": "00:00:00"
+    "id": 1,
+    "name": "rule",
+    "description": "description",
+    "zone_ids": [12, 15],
+    "trackers": [123456, 234567],
+    "type": "alarmcontrol",
+    "primary_text": "ON",
+    "secondary_text": "OFF",
+    "param": 1,
+    "alerts": {
+      "sms_phones": ["98829991"],
+      "phones": ["98829991"],
+      "emails": ["example@test.com"],
+      "push_enabled": true,
+      "emergency": false
     },
-    "to": {
-      "weekday": 7,
-      "time": "23:59:59"
+    "suspended": false,
+    "schedule": [{
+      "type":"weekly",
+      "from":{"weekday":1,"time":"00:00:00"},
+      "to":{"weekday":7,"time":"23:59:59"}],
+    "extended_params": {
+      "alarmcontrol": {
+      "enabled": true,
+      "sms": false,
+      "call": false,
+      "email": true,
+      "push": true,
+      "always_notify": false
     },
-    "interval_id": 48732
-  }],
-  "extended_params": {
-    "emergency": false,
-    "zone_limit_inverted": false
-  }
+    "auto_created": true
 }
 ```
 
 * `id` - int. An id of a rule.
 * `name` - string. Name of a rule.
-* `type` - enum. One of pre-defined types of rules. See [rule types](./rule_types.md).
 * `description` - string. Rule's description.
 * `zone_ids` - array of int. List of geofence ids.
 * `trackers` - array of int. List of bound tracker ids.
+* `type` - enum. One of pre-defined types of rules. See [rule types](./rule_types.md).
 * `primary_text` - string. Primary text of rule notification.
 * `secondary_text` - string. Secondary text of rule notification.
 * `param` - int. A common parameter. See [rule types](./rule_types.md).
@@ -63,9 +61,9 @@ A rule element consists of following fields:
     * `push_enabled` - boolean. If `true` push notifications available.
     * `emergency` - boolean. If `true` notifications will be marked as emergency with color and sound.
 * `suspended` - boolean. `true` if the rule suspended.
-* `auto_created` - optional, boolean. `true` means that the rule created automatically.
 * `shedule` - optional object. The rule will work in specified period. 
 * `extended_params` - optional. An object specified for concrete rule type. See [rule types](./rule_types.md).
+* `auto_created` - optional, boolean. `true` means that the rule created automatically.
 
 * **schedule_interval** is one of:
 
@@ -75,12 +73,12 @@ A rule element consists of following fields:
     {
       "type": "weekly",
       "from": {
-        "weekday": 1,
-        "time": "00:00:00"
+        "weekday":1,
+        "time":"00:00:00"
       },
       "to": {
-        "weekday": 7,
-        "time": "23:59:59"
+        "weekday":7,
+        "time":"23:59:59"
       },
       "interval_id": 1
     }
@@ -144,20 +142,7 @@ Creates rule and scheduled intervals.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| name | The name of created rule. | string |
-| description | Rule's description. | string |
-| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types.s. | array of int |
-| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
-| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | [enum](../../../../getting-started.md#data-types) |
-| primary_text | Primary text of rule notification when condition is true. | string |
-| secondary_text | Secondary text of rule notification when condition is false. | string |
-| param | A common parameter that responsible for integer conditions. See [rule types](./rule_types.md). | int |
-| alerts | An object with destinations for notifications. Described [above](#rule-object). | JSON object |
-| suspended | Starts and stops the rule. `true` if the rule suspended. | boolean |
-| schedule | An optional object. Configures the time - when the rule works. Described [above](#rule-object). | JSON object |
-| extended_params | An optional object. Specified for concrete rule type. See [rule types](./rule_types.md). | JSON object |
+* **rule** - [JSON object](#rule).
 
 #### example
 
@@ -248,35 +233,36 @@ List tracker rules bound to tracker with an id=`tracker_id` or all users' tracke
 {
    "success": true,
    "list": [{
-     "id": 667281,
-     "name": "Case intrusion",
-     "type": "case_intrusion",
-     "description": "This rule was created automatically",
-     "zone_id": 0,
-     "trackers": [10029448, 10030168],
-     "primary_text": "Case is opened",
-     "secondary_text": "Case is closed",
-     "param": 0,
-     "alerts": {
-       "sms_phones": [],
-       "phones": [],
-       "emails": [],
-       "push_enabled": true
-     },
-     "suspended": false,
-     "auto_created": true,
-     "schedule": [{
-       "type": "weekly",
-       "from": {
-         "weekday": 1,
-         "time": "00:00:00"
-       },
-       "to": {
-         "weekday": 7,
-         "time": "23:59:59"
-       },
-       "interval_id": 46892
-     }]
+        "id": 1,
+        "name": "rule",
+        "description": "description",
+        "zone_ids": [12, 15],
+        "trackers": [123456, 234567],
+        "type": "alarmcontrol",
+        "primary_text": "ON",
+        "secondary_text": "OFF",
+        "param": 1,
+        "alerts": {
+          "sms_phones": ["98829991"],
+          "phones": ["98829991"],
+          "emails": ["example@test.com"],
+          "push_enabled": true
+        },
+        "suspended": false,
+        "schedule": [{
+          "type":"weekly",
+          "from":{"weekday":1,"time":"00:00:00"},
+          "to":{"weekday":7,"time":"23:59:59"}],
+        "extended_params": {
+          "alarmcontrol": {
+          "enabled": true,
+          "sms": false,
+          "call": false,
+          "email": true,
+          "push": true,
+          "always_notify": false
+        },
+        "auto_created": true
    }]
 }
 ```
@@ -324,21 +310,7 @@ Updates rule and scheduled intervals.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| id | Id of a rule. You can get ids using the [rule/list](#list) call. | int |
-| name | The name of created rule. | string |
-| description | Rule's description. | string |
-| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types. | array of int |
-| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
-| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | [enum](../../../../getting-started.md#data-types) |
-| primary_text | Primary text of rule notification when condition is true. | string |
-| secondary_text | Secondary text of rule notification when condition is false. | string |
-| param | A common parameter that responsible for integer conditions. See [rule types](./rule_types.md). | int |
-| alerts | An object with destinations for notifications. Described [above](#rule-object). | JSON object |
-| suspended | Starts and stops the rule. `true` if the rule suspended. | boolean |
-| schedule | An optional object. Configures the time - when the rule works. Described [above](#rule-object). | JSON object |
-| extended_params | An optional object. Specified for concrete rule type. See [rule types](./rule_types.md). | JSON object |
+* **rule** - [JSON object](#rule).
 
 #### example
 
