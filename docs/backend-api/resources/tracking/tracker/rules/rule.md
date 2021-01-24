@@ -142,7 +142,20 @@ Creates rule and scheduled intervals.
 
 #### parameters
 
-* **rule** - [JSON object](#rule).
+| name | description | type |
+| :------ | :------ | :----- |
+| name | The name of created rule. | string |
+| description | Rule's description. | string |
+| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types.s. | array of int |
+| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
+| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | string enum |
+| primary_text | Primary text of rule notification when condition is true. | string |
+| secondary_text | Secondary text of rule notification when condition is false. | string |
+| param | A common parameter that responsible for integer conditions. See [rule types](./rule_types.md). | int |
+| alerts | An object with destinations for notifications. Described [above](#rule-object). | JSON object |
+| suspended | Starts and stops the rule. `true` if the rule suspended. | boolean |
+| schedule | An optional object. Configures the time - when the rule works. Described [above](#rule-object). | JSON object |
+| extended_params | An optional object. Specified for concrete rule type. See [rule types](./rule_types.md). | JSON object |
 
 #### example
 
@@ -310,7 +323,21 @@ Updates rule and scheduled intervals.
 
 #### parameters
 
-* **rule** - [JSON object](#rule).
+| name | description | type |
+| :------ | :------ | :----- |
+| id | Id of a rule. You can get ids using the [rule/list](#list) call. | int |
+| name | The name of created rule. | string |
+| description | Rule's description. | string |
+| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types. | array of int |
+| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
+| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | string enum |
+| primary_text | Primary text of rule notification when condition is true. | string |
+| secondary_text | Secondary text of rule notification when condition is false. | string |
+| param | A common parameter that responsible for integer conditions. See [rule types](./rule_types.md). | int |
+| alerts | An object with destinations for notifications. Described [above](#rule-object). | JSON object |
+| suspended | Starts and stops the rule. `true` if the rule suspended. | boolean |
+| schedule | An optional object. Configures the time - when the rule works. Described [above](#rule-object). | JSON object |
+| extended_params | An optional object. Specified for concrete rule type. See [rule types](./rule_types.md). | JSON object |
 
 #### example
 

@@ -1,6 +1,6 @@
 ---
 title: How to use rules
-description: Rules used to set up conditions according to which the system logs the events and sends notifications to user.
+description: How to work with rules that used to set up conditions according to which the system logs the events and sends notifications to user.
 ---
 
 # How to use rules
@@ -8,82 +8,33 @@ description: Rules used to set up conditions according to which the system logs 
 Rules used to set up conditions according to which the system logs the events and sends notifications to user.
 
 When a server receives a new portion of data from the device, it checks whether the conditions set are true 
-or false for this data. If they are true, the server generates an event in history, logs it and immediately sends SMS or
- Email, as specified.
+or false for this data. If they are true, the server generates an event in history, logs it and immediately sends SMS,
+push message or email and saves event in history.
  
 ### Create
 
-Let's create a rule with conditions according to which the platform will generate events and schedule intervals when this
- rule should work. The user must have access to rule update.
+To start work the rule must be created. Let's create a rule with conditions according to which the platform will generate events and schedule intervals when this
+ rule should work using the [rule/create](../resources/tracking/tracker/rules/rule.md#create). The user must have access to rule update.
 
-#### parameters
+Necessary parameters for this call. Availability of some parameters depends on used rule type:
 
-| name | description | type |
-| :------ | :------ | :----- |
-| name | The name of created rule. | string |
-| description | Rule's description. | string |
-| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. | array of int |
-| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
-| type | One of pre-defined types of rules. See [rule types](../resources/tracking/tracker/rules/rule_types.md). | string enum |
-| primary_text | Primary text of rule notification when condition is true. | string |
-| secondary_text | Secondary text of rule notification when condition is false. | string |
-| param | A common parameter that responsible for integer conditions. See [rule types](../resources/tracking/tracker/rules/rule_types.md). | int |
-| alerts | An object with destinations for notifications. Described below. | JSON object |
-| suspended | Starts and stops the rule. `true` if the rule suspended. | boolean |
-| schedule | An optional object. Configures the time - when the rule works. Described below. | JSON object |
-| extended_params | An optional object. Specified for concrete rule type. See [rule types](../resources/tracking/tracker/rules/rule_types.md). | JSON object |
+* `name` - A string containing a name of created rule.
+* `description` - A string containing rule's description.
+* `zone_ids` - An array of int. A list of zones to bind where the rule will work. Leave it empty if rule should work 
+everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types.
+* `trackers` - An array of int. A list of tracker ids belong to user for which the rule will work.
+* `type` - A string containing one of pre-defined types of rules. See [rule types](../resources/tracking/tracker/rules/rule_types.md).
+* `primary_text` - A string with primary text of rule notification when condition is `true`.
+* `secondary_text` - An optional string with secondary text of rule notification when condition is `false`. The availability of 
+this parameter depends on rule type. Not every rule has the `secondary_text`.
+* `param` - An optional integer. A common parameter that responsible for integer conditions. 
+The availability of this parameter depends on rule type. See [rule types](../resources/tracking/tracker/rules/rule_types.md). 
+* `alerts` - An object with destinations for notifications. Answers the question - who and how will receive notifications. Described in [rule object](../resources/tracking/tracker/rules/rule.md).
+* `suspended` - A boolean which starts and stops the rule. `true` if the rule suspended.
+* `schedule` - An optional object which configures the time - when the rule works. Described in [rule object](../resources/tracking/tracker/rules/rule.md).
+* `extended_params` - An optional object. Specified for concrete rule type. See [rule types](../resources/tracking/tracker/rules/rule_types.md).
 
-Alerts object:
-
-```json
-{
-  "sms_phones": ["98829991"],
-  "phones": ["98829991"],
-  "emails": ["example@test.com"],
-  "push_enabled": true,
-  "emergency": false
-}
-```
-
-* `sms_phones` - array of int. Phone numbers with country code and without "+" sign for SMS notifications.
-* `phones` - array of string. Phone numbers with country code and without "+" sign for voice calls.
-* `emails` - array of string. Emails for notifications.
-* `push_enabled` - boolean. If `true` push notifications available.
-* `emergency` - boolean. If `true` notifications will be marked as emergency with color and sound.
-
-Schedule object can be:
-
-* **weekly_schedule_interval**
-
-```json
-{
-  "type": "weekly",
-  "from": {
-    "weekday":1,
-    "time":"00:00:00"
-  },
-  "to": {
-    "weekday":7,
-    "time":"23:59:59"
-  },
-  "interval_id": 1
-}
-```
-
-* **fixed_schedule_interval**
-
-```json
-{
-  "type": "fixed",
-  "from": "2014-07-09 07:50:58",
-  "to": "2014-07-10 07:50:58",
-  "interval_id": 3
-}
-```
-
-* `date/time` and `local_time` types described at the [data types description section](../getting-started.md#data-types).
-
-#### example
+API request:
 
 === "cURL"
 
@@ -93,9 +44,7 @@ Schedule object can be:
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"description": "", "type": "work_status_change", "primary_text": "status changed", "secondary_text": "", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": "false", "append_zone_title": "", "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "param": "", "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7,"time": "23:59:59"}, "type": "weekly"}], "zone_ids": [], "group_id": 1}}'
     ```
 
-#### response
-
-You will get created rule ID.
+You will get ID of created rule in response. 
 
 ```json
 {
@@ -104,24 +53,18 @@ You will get created rule ID.
 }
 ```
 
-#### errors
-
-* 204 - Entity not found – when associated zone is not exist.
-
 ### Bind/Unbind
 
-When a rule created, bind devices to it. For example, a newly registered device must have the same rule. Unnecessary
+When a rule created, [bind](../resources/tracking/tracker/rules/rule.md#bind) devices to it. For example, a newly registered device must have the same rule. Unnecessary
 to create another rule. Bind this device to an already existing rule.
-Unbinding works similarly. When a rule is not necessary for some devices, unbind them without deleting rules.
+Unbinding works similarly. When a rule is not necessary for some devices, [unbind](../resources/tracking/tracker/rules/rule.md#unbind) them without deleting rules.
 
-#### parameters
+Necessary parameters for both calls the same.
  
-| name | description | type |
-| :------ | :------ | :----- |
-| rule_id | Id of a rule. You can get ids using the [rule/list](../resources/tracking/tracker/rules/rule.md#list) call. | int |
-| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | array of int |
+* `rule_id` - An id of a rule. You can get ids using the [rule/list](../resources/tracking/tracker/rules/rule.md#list) call.
+* `trackers` - An array of int. List trackers' IDs. Trackers which do not exist, owned by other user or deleted ignored without errors.
  
-#### examples
+API requests:
  
 === "Bind"
 
@@ -138,43 +81,17 @@ Unbinding works similarly. When a rule is not necessary for some devices, unbind
      -H 'Content-Type: application/json' \
      -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": "123", "trackers": [265489]}'
  ```
- 
-#### response
-
-You will get status of request.
-
-```json
-{
-    "success": true
-}
-```
 
 ### Update
 
 If the rule must be updated, for example, one more phone number must be added for SMS notifications, you can use the 
-rule/update call. It is much better than deleting an existing rule and creating a new one.
+[rule/update](../resources/tracking/tracker/rules/rule.md#update) call. It is much better than deleting an existing rule and creating a new one.
 
-#### parameters
+List of necessary parameters is the same as in [rule/create](#create) call plus `id` parameter.
 
-All parameters must be in the request.
+* `id` - An integer with id of the updating rule. You can get ids using the [rule/list](../resources/tracking/tracker/rules/rule.md#list) call.
 
-| name | description | type |
-| :------ | :------ | :----- |
-| id | Id of a rule. You can get ids using the [rule/list](../resources/tracking/tracker/rules/rule.md#list) call. | int |
-| name | The name of created rule. | string |
-| description | Rule's description. | string |
-| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. | array of int |
-| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
-| type | One of pre-defined types of rules. See [rule types](../resources/tracking/tracker/rules/rule_types.md). | string enum |
-| primary_text | Primary text of rule notification when condition is true. | string |
-| secondary_text | Secondary text of rule notification when condition is false. | string |
-| param | A common parameter that responsible for integer conditions. See [rule types](../resources/tracking/tracker/rules/rule_types.md). | int |
-| alerts | An object with destinations for notifications. Described [above](#create). | JSON object |
-| suspended | Starts and stops the rule. `true` if the rule suspended. | boolean |
-| schedule | An optional object. Configures the time - when the rule works. Described [above](#create). | JSON object |
-| extended_params | An optional object. Specified for concrete rule type. See [rule types](../resources/tracking/tracker/rules/rule_types.md). | JSON object |
-
-#### example
+API request:
 
 === "cURL"
 
@@ -186,10 +103,10 @@ All parameters must be in the request.
  
 ### Suspend
 
-To suspend the rule use the rule/update call and change only one parameter `suspended` to `true`. All other parameters 
-should be in the call without changes.
+To suspend the rule use the [rule/update](../resources/tracking/tracker/rules/rule.md#update) call and change only one parameter `suspended` to `true`. All other parameters 
+should present in the call without changes.
  
-#### example
+API request:
 
 === "cURL"
 
