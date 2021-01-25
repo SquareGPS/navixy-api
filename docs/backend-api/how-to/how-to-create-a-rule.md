@@ -71,7 +71,7 @@ API requests:
  ```shell
  curl -X POST '{{ extra.api_example_url }}/tracker/rule/bind' \
      -H 'Content-Type: application/json' \
-     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": "123", "trackers": [265489]}'
+     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123, "trackers": [265489]}'
  ```
 
 === "Unbind"
@@ -79,7 +79,7 @@ API requests:
  ```shell
  curl -X POST '{{ extra.api_example_url }}/tracker/rule/unbind' \
      -H 'Content-Type: application/json' \
-     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": "123", "trackers": [265489]}'
+     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123, "trackers": [265489]}'
  ```
 
 ### Update
