@@ -24,7 +24,8 @@ A rule element consists of following fields:
       "sms_phones": ["98829991"],
       "phones": ["98829991"],
       "emails": ["example@test.com"],
-      "push_enabled": true
+      "push_enabled": true,
+      "emergency": false
     },
     "suspended": false,
     "schedule": [{
@@ -58,6 +59,7 @@ A rule element consists of following fields:
     * `phones` - array of string. Phones for voice calls.
     * `emails` - array of string. Emails for notifications.
     * `push_enabled` - boolean. If `true` push notifications available.
+    * `emergency` - boolean. If `true` notifications will be marked as emergency with color and sound.
 * `suspended` - boolean. `true` if the rule suspended.
 * `shedule` - optional object. The rule will work in specified period. 
 * `extended_params` - optional. An object specified for concrete rule type. See [rule types](./rule_types.md).
@@ -70,8 +72,14 @@ A rule element consists of following fields:
     ```json
     {
       "type": "weekly",
-      "from": <weekday_time>,
-      "to": <weekday_time>,
+      "from": {
+        "weekday":1,
+        "time":"00:00:00"
+      },
+      "to": {
+        "weekday":7,
+        "time":"23:59:59"
+      },
       "interval_id": 1
     }
     ```
@@ -83,15 +91,6 @@ A rule element consists of following fields:
       "from": "2014-07-09 07:50:58",
       "to": "2014-07-10 07:50:58",
       "interval_id": 3
-    }
-    ```
-  
-    where **weekday_time** is:
-    
-    ```json
-    {
-        "weekday": 1,
-        "time": "01:00:00"
     }
     ```
 
@@ -110,19 +109,19 @@ Binds rule with `rule_id` to trackers list.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| rule_id | Id of a rule. | int | 10 |
-| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | `[999199, 999119]` |
+| name | description | type |
+| :------ | :------ | :----- |
+| rule_id | Id of a rule. | int |
+| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | array of int |
 
-#### examples
+#### example
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/rule/bind' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": "123", "trackers":[265489]}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123, "trackers": [265489]}'
     ```
 
 #### response
@@ -133,7 +132,7 @@ Binds rule with `rule_id` to trackers list.
 
 #### errors
 
-* 201 (Not found in the database) – if rule with `rule_id` does not exist or owned by other user.
+* 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
 
 ### create
 
@@ -143,16 +142,29 @@ Creates rule and scheduled intervals.
 
 #### parameters
 
-* **rule** - [JSON object](#rule).
+| name | description | type |
+| :------ | :------ | :----- |
+| name | The name of created rule. | string |
+| description | Rule's description. | string |
+| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types.s. | array of int |
+| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
+| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | string enum |
+| primary_text | Primary text of rule notification when condition is true. | string |
+| secondary_text | Secondary text of rule notification when condition is false. | string |
+| param | A common parameter that responsible for integer conditions. See [rule types](./rule_types.md). | int |
+| alerts | An object with destinations for notifications. Described [above](#rule-object). | JSON object |
+| suspended | Starts and stops the rule. `true` if the rule suspended. | boolean |
+| schedule | An optional object. Configures the time - when the rule works. Described [above](#rule-object). | JSON object |
+| extended_params | An optional object. Specified for concrete rule type. See [rule types](./rule_types.md). | JSON object |
 
-#### examples
+#### example
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/rule/create' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"description":"","type":"work_status_change","primary_text":"status changed","secondary_text":"","alerts":{"push_enabled":true,"emails":["example@gmail.com"],"emergency":false,"sms_phones":["745494878945"],"phones":[]},"suspended":"","append_zone_title":"","name":"Status changing","trackers":[123456],"extended_params":{"emergency":false,"zone_limit_inverted":false,"status_ids":[319281,319282,319283]},"param":"","schedule":[{"from":{"weekday":1,"time":"00:00:00"},"to":{"weekday":7,"time":"23:59:59"},"type":"weekly"}],"zone_ids":[],"group_id":1}}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"description": "", "type": "work_status_change", "primary_text": "status changed", "secondary_text": "", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": "", "append_zone_title": "", "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "param": "", "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7, "time": "23:59:59"}, "type": "weekly"}], "zone_ids": [], "group_id": 1}}'
     ```
 
 #### response
@@ -168,7 +180,7 @@ Creates rule and scheduled intervals.
 
 #### errors
 
-* 204 (Entity not found) – when associated zone is not exists.
+* 204 - Entity not found – when associated zone is not exist.
 
 ### delete
 
@@ -178,9 +190,9 @@ Deletes rule with rule_id and all related objects from the database.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| rule_id | Id of a rule. | int | 10 |
+| name | description | type |
+| :------ | :------ | :----- |
+| rule_id | Id of a rule. | int |
 
 #### examples
 
@@ -189,7 +201,7 @@ Deletes rule with rule_id and all related objects from the database.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/rule/delete' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": "123"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123}'
     ```
 
 === "HTTP GET"
@@ -278,10 +290,10 @@ Unbinds trackers from rule with `rule_id`.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| rule_id | Id of a rule. | int | 10 |
-| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | `[999199, 999119]` |
+| name | description | type |
+| :------ | :------ | :----- |
+| rule_id | Id of a rule. | int |
+| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. |
 
 #### examples
 
@@ -290,7 +302,7 @@ Unbinds trackers from rule with `rule_id`.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/rule/unbind' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": "123", "trackers":[265489]}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123, "trackers": [265489]}'
     ```
 
 #### response
@@ -311,16 +323,30 @@ Updates rule and scheduled intervals.
 
 #### parameters
 
-* **rule** - [JSON object](#rule).
+| name | description | type |
+| :------ | :------ | :----- |
+| id | Id of a rule. You can get ids using the [rule/list](#list) call. | int |
+| name | The name of created rule. | string |
+| description | Rule's description. | string |
+| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types. | array of int |
+| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
+| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | string enum |
+| primary_text | Primary text of rule notification when condition is true. | string |
+| secondary_text | Secondary text of rule notification when condition is false. | string |
+| param | A common parameter that responsible for integer conditions. See [rule types](./rule_types.md). | int |
+| alerts | An object with destinations for notifications. Described [above](#rule-object). | JSON object |
+| suspended | Starts and stops the rule. `true` if the rule suspended. | boolean |
+| schedule | An optional object. Configures the time - when the rule works. Described [above](#rule-object). | JSON object |
+| extended_params | An optional object. Specified for concrete rule type. See [rule types](./rule_types.md). | JSON object |
 
-#### examples
+#### example
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/rule/update' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"description":"","type":"work_status_change","primary_text":"status changed","secondary_text":"","alerts":{"push_enabled":true,"emails":["example@gmail.com"],"emergency":false,"sms_phones":["745494878945"],"phones":[]},"suspended":"","append_zone_title":"","name":"Status changing","trackers":[123456],"extended_params":{"emergency":false,"zone_limit_inverted":false,"status_ids":[319281,319282,319283]},"param":"","schedule":[{"from":{"weekday":1,"time":"00:00:00"},"to":{"weekday":7,"time":"23:59:59"},"type":"weekly"}],"zone_ids":[],"group_id":1}}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"id": 123, "description": "", "type": "work_status_change", "primary_text": "status changed", "secondary_text": "", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": "", "append_zone_title": "", "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "param": "", "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7, "time": "23:59:59"}, "type": "weekly"}], "zone_ids": [], "group_id": 1}}'
     ```
 
 #### response
