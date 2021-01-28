@@ -108,7 +108,7 @@ List tariffs on which user can switch the passed tracker (even when tariff last 
        "price": 13.0,
        "early_change_price": 23.0,
        "device_limit": 1000,
-       "has_reports" : true,
+       "has_reports" : true
        "paas_free": false,
        "store_period": "12m",
        "features": [

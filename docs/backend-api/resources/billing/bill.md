@@ -23,9 +23,9 @@ API path: `/bill`.
 ```
 
 * `order_id` - int. Unique bill id.
-* `created` - [date/time](../../getting-started.md#data-types). When the bill created.
+* `created` - string date/time. When the bill created.
 * `sum` - float. A bill sum in default currency of the panel.
-* `status` - [enum](../../getting-started.md#data-types). Bill order status. Can be one of:
+* `status` - string enum. Bill order status. Can be one of:
     * `created` – but not settled.
     * `settled`.
     * `canceled`.

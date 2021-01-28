@@ -92,7 +92,7 @@ List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://ww
 * `reference` - string. Internal 2Checkout (formerly Avangate) subscription code. Pass it to /subscription/avangate/cancel.
 * `code` - string. 2Checkout (formerly Avangate) product code.
 * `quantity` - int. Count.
-* `expiration_date` - [date/time](../../getting-started.md#data-types). Next renew date/time.
+* `expiration_date` - string date/time. Next renew date/time.
 
 #### errors
 
