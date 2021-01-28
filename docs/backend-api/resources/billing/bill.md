@@ -1,94 +1,128 @@
 ---
 title: Bill
-description: Bill
+description: API calls for work with user's bills.
 ---
 
 # Bill
 
+API calls for work with user's bills.
+
 API path: `/bill`.
+
+## Bill object
+
+```json
+{
+    "order_id": 63602,
+    "created": "2012-03-05 11:55:03",
+    "sum": 150.0,
+    "status": "created",
+    "positions": ["The subscription fee for the services of Account W3"],
+    "link": "http://bill.navixy.com/xK1QEYK"
+}
+```
+
+* `order_id` - int. Unique bill id.
+* `created` - string date/time. When the bill created.
+* `sum` - float. A bill sum in default currency of the panel.
+* `status` - string enum. Bill order status. Can be one of:
+    * `created` – but not settled.
+    * `settled`.
+    * `canceled`.
+* `positions` - array of string. List of position names. Usually contains one element for a bill.
+* `link` - string. URL to order.
 
 ### create
 
-Creates new bill for the user. Required subuser rights: `payment_create`.
+Creates a new bill for the user. 
+
+**required sub-user rights**: `payment_create`.
 
 #### parameters
 
-| name | description | type| restrictions|
-| :------ | :------ | :-----| :------|
-| payer | some payer description | string| Payer Name |
-| sum |bill sum in default currency of the panel | int | 1000 |
+| name | description | type|
+| :------ | :------ | :-----|
+| payer | Some payer description. | string |
+| sum | A bill sum in default currency of the panel. | double |
 
 #### example
 
-    {{ extra.api_example_url }}/bill/create?hash=22eac1c27af4be7b9d04da2ce1af111b&payer=John Doe&sum=500
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/bill/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "payer": "Jon Doe", "sum": 100.0}'
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "value": 6421     // created bill id
+    "value": 6421
 }
 ```
 
+* `value` - int. Created bill id.
+
 #### errors
 
-*   222 – Plugin not found (when plugin **29** not available for user)
+* 222 – Plugin not found - when plugin **29** not available for user.
 
 ### list
 
-Shows list of bills with their parameters in array. Required subuser rights: payment_create
+Shows list of bills with their parameters in array. 
 
-#### structure:
-
-    {{ extra.api_example_url }}/bill/list?hash=your_hash&limit=number_of_bills&offset=start_from
+**required sub-user rights**: `payment_create`.
 
 #### parameters
 
+| name | description | type|
+| :------ | :------ | :----- |
+| limit | Optional. A maximum number of bills in list. Maximum and default is 10 000. | int |
+| offset | Optional. Get bills starting from `offset`. Default 0. | int |
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| limit | maximum number of bills in list (maximum and default **10 000**) - optional | int | 10000 |
-| offset | get bills starting from **offset** (default **0**) - optional | int | 0 |
+#### examples
 
-#### example
+=== "cURL"
 
-    {{ extra.api_example_url }}/bill/list?hash=22eac1c27af4be7b9d04da2ce1af111b&limit=9500&offset=0
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/bill/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/bill/list?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
 
 #### response
 
 ```json
 {
     "success": true,
-    "count": 7,      // total number of bills
-    "bills": [${bill}, ...]
+    "count": 7,
+    "bills": [{
+      "order_id": 63602,
+      "created": "2012-03-05 11:55:03",
+      "sum": 150.0,
+      "status": "created",
+      "positions": ["The subscription fee for the services of Account W3"],
+      "link": "http://bill.navixy.com/xK1QEYK"
+    }]
 }
 ```
 
-where **bill** is
+* `count` - int. Total number of bills.
+* `bills` - array of objects. A list of [bill objects](#bill-object).
 
-```json
-{
-    "order_id": 63602,                 // unique id
-    "created": "2012-03-05 11:55:03",  // creation date/time
-    "sum": 150.0,                      // bill sum in rubbles
-    "status": "created",               // bill order status
-    "positions": ["The subscription fee for the services of Gdemoi Account W3"],  // list of position names.
-                                       // usually contains one element for bill
-    "link": "http://bill.navixy.com/xK1QEYK" // url to order
-}
-```
+If bill created using [/bill/create](#create) call then **positions** will contain exactly one element.
 
-If bill created using [/bill/create](#create) call then **positions** will contains exactly one element.
-
-**status** may be one of:
-
-* created – but not settled
-* settled
-* canceled 
-
-_Note for Standalone version_: Base part of **link** may be changed by **billing.orders.baseUrl** config option.
+!!! note "For Standalone version base part of **link** may be changed by **billing.orders.baseUrl** config option."
 
 #### errors
 
-*   222 – Plugin not found (when plugin **29** not available for user)
+* 222 – Plugin not found - when plugin **29** not available for user.
