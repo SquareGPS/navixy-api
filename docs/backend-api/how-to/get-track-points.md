@@ -68,6 +68,7 @@ The platform will reply:
 * `precision` - optional int. Precision in meters.
 * `gsm_lbs` - optional boolean. `true` if location detected by GSM LBS.
 * `parking` - optional boolean. `true` if point does not belong to track.
+* `split` – boolean. If `true`, split tracks by folders with start/end placemarks and track line. Default `false`.
 
 You can also [download](../resources/tracking/track/index.md#download) a KML file. 
 You could use this file with map services. 
@@ -79,7 +80,6 @@ curl -X POST '{{ extra.api_example_url }}/track/download' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "format": "kml", "split": "false"}'
 ```
 
-All parameters are identical with track/read with the except of two new optional parameters:
+All parameters are identical with track/read with the except of one new optional parameters:
 
 * `format` – string. File format, "kml" or "kmz". Default is "kml".
-* `split` – boolean. If `true`, split tracks by folders with start/end placemarks and track line. Default `false`.

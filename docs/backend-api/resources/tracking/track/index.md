@@ -231,6 +231,7 @@ Gets track points for the specified track ID, tracker and time period.
 | include_gsm_lbs | Optional, default=`true`. If `false` && track_id not specified, GSM LBS points will be filtered out. | boolean | true |
 | point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000 | int | 3000 |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | false |
+| split | Optional, default=`true`. If `false`, all tracks will be merged into single one. | boolean | true |
 
 #### examples
 
