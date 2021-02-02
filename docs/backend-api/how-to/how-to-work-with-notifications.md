@@ -1,5 +1,5 @@
 ---
-title: How to work with notifications
+title: How to use rules
 description: How to work with notifications that can be received by triggering alerts.
 ---
 
@@ -8,7 +8,7 @@ description: How to work with notifications that can be received by triggering a
 Notifications important part of the tracking. A [created a rule](./how-to-create-a-rule.md) will track triggering of 
 specified conditions and send events to emails and phones. It sends notifications to know that a condition triggered. 
 Sometimes, necessary to store those notifications and history entries to use them in special reports, or they can be 
-used for scripts build on APIs. Let's see how to work with them.
+used for scripts build on APIs. Lets ses how to work with them.
 
 ## Obtain a list of history entries
 
@@ -20,7 +20,7 @@ The call contains only two optional parameters:
 
 * `limit` - int with a maximum count of entries in response
 * `from` - a string containing the start date/time for searching. Without this parameter you will get all unread entries
- for the last 30 days.
+ for last year.
 
 In our example we need to obtain no more than 100 entries for last month. If today is 26-01-2021 then API request will be:
 
