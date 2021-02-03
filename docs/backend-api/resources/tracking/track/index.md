@@ -66,7 +66,7 @@ Gets a list of track descriptions for the specified tracker and time period.
 | from | From time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. | string date/time | "2020-09-23 03:24:00" |
 | to | To time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. Specified date must be after "from" date. | string date/time | "2020-09-23 06:24:00" |
 | filter | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean | true |
-| split | Optional, default=`true`. If `false`, all tracks will be merged into single one. | boolean | true |
+| split | Optional, default=`true`. If `false`, all tracks will be merged into single one, and response will contain parking points. | boolean | true |
 | include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | true |
 | cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates. | boolean | false | 
 | count_events | Optional, default=`false`. If `true`, number of events occurred during each non-single point track will be returned. | true |
@@ -231,7 +231,7 @@ Gets track points for the specified track ID, tracker and time period.
 | include_gsm_lbs | Optional, default=`true`. If `false` && track_id not specified, GSM LBS points will be filtered out. | boolean | true |
 | point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000 | int | 3000 |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | false |
-| split | Optional, default=`true`. If `false`, all tracks will be merged into single one. | boolean | true |
+| split | Optional, default=`true`. If `false`, all tracks will be merged into single one, and response will contain parking points. | boolean | true |
 
 #### examples
 
