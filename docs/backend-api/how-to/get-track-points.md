@@ -31,6 +31,7 @@ Optional parameters:
   this number of points. Min=2, Max=3000.
 * `filter` – boolean. If `true`, the returned track will be filtered, applicable only for LBS tracks. It is `false` 
 by default.
+* `split` – boolean. Default=`true`. If `false`, all tracks will be merged into single one, and response will contain parking points.
 
 The platform will reply:
 
@@ -68,7 +69,6 @@ The platform will reply:
 * `precision` - optional int. Precision in meters.
 * `gsm_lbs` - optional boolean. `true` if location detected by GSM LBS.
 * `parking` - optional boolean. `true` if point does not belong to track.
-* `split` – boolean. If `true`, split tracks by folders with start/end placemarks and track line. Default `false`.
 
 You can also [download](../resources/tracking/track/index.md#download) a KML file. 
 You could use this file with map services. 
@@ -83,3 +83,4 @@ curl -X POST '{{ extra.api_example_url }}/track/download' \
 All parameters are identical with track/read with the except of one new optional parameters:
 
 * `format` – string. File format, "kml" or "kmz". Default is "kml".
+* `split` – boolean. If `true`, split tracks by folders with start/end placemarks and track line. Default `false`.
