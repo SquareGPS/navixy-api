@@ -361,8 +361,8 @@ CSV column separator is `;`, columns header required – `label;address;lat;lng;
 | name | description | type |
 | :--- | :--- | :--- |
 | file | A CSV file upload containing places data. | File upload |
-| error_policy| ignore or fail | string |
-| duplicate_policy | skip or update or fail, **belongs only to external_id duplicates** | string |
+| error_policy| `ignore` or `fail` | string |
+| duplicate_policy | `skip` or `update` or `fail`, **belongs only to external_id duplicates** | string |
 | default_radius | Optional, radius for point, meters, default is 100. | int |
 | geocoder | Geocoder type. | string |
 | redirect_target | Optional URL to redirect. If `redirect_target` passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string |
