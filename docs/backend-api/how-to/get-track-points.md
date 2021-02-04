@@ -31,7 +31,7 @@ Optional parameters:
   this number of points. Min=2, Max=3000.
 * `filter` – boolean. If `true`, the returned track will be filtered, applicable only for LBS tracks. It is `false` 
 by default.
-* `split` – boolean. Default=`true`. If `false`, all tracks will be merged into single one, and response will contain parking points.
+* `split` – boolean. Default=`true`. If `false`, all tracks will be merged into single one.
 
 The platform will reply:
 
