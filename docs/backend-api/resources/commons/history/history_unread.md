@@ -18,7 +18,7 @@ List less than or equal to `limit` of the latest user's unread history entries.
 | name | description | type |
 | :----- | :-----  | :----- |
 | limit | Optional. Limit of entries in response. | int |
-| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching. Default `from` is **now** minus one year. | string date/time |
+| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching. Default `from` is **now** minus one year. | date/time |
 
 Default and max limit is [maxHistoryLimit](../../../getting-started.md#constants).
 
@@ -88,8 +88,8 @@ Get count of user's unread history messages starting `from` date.
 
 | name | description | type |
 | :----- | :-----  | :----- |
-| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching.  Default `from` is **now** minus one year. | string date/time |
-| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera". | string enum |
+| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching.  Default `from` is **now** minus one year. | date/time |
+| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera". | [enum](../../../getting-started.md#data-types) |
 
 #### examples
 

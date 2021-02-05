@@ -37,13 +37,13 @@ Metering sensor
 ```
 
 * `id` - int. Sensor's id.
-* `sensor_type` - string enum.
+* `sensor_type` - [enum](../../../../getting-started.md#data-types)
 * `name` - string. A name of sensor.
 * `input_name` - string. 
 * `divider` - double. 
 * `accuracy` - int.
 * `units` - string.
-* `units_type` - string enum. Units type for a sensor.
+* `units_type` - [enum](../../../../getting-started.md#data-types). Units type for a sensor.
 * `parameters` - optional object with additional parameters.
     * `parent_ids` - optional array of parent_ids for composite sensor.
     * `volume` - double. Optional. Volume for composite sensor.
@@ -67,7 +67,7 @@ Discrete input
 ```
 
 * `id` - int. An id of a sensor.
-* `sensor_type` - string enum. Type of the sensor.
+* `sensor_type` - [enum](../../../../getting-started.md#data-types). Type of the sensor.
 * `name` - string.
 * `input_number` - int. Assigned input number.
 

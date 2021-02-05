@@ -16,7 +16,7 @@ Reads counter of passed `type`.
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | string enum | "odometer" |
+| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../../getting-started.md#data-types) | "odometer" |
 
 #### examples
 
@@ -64,7 +64,7 @@ Updates counter of passed `type`.
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | string enum | "odometer"|
+| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../../getting-started.md#data-types) | "odometer"|
 | multiplier | A new value of counter multiplier. | float | 1.34 |
 | sensor_id | Id of the sensor, which must be used as the source of odometer data (in case when parameter "type" equals "odometer"). If "type" is not "odometer", "sensor_id" must be null. | int | 123 |
 

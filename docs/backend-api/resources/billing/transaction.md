@@ -13,26 +13,26 @@ API call to get user's billing transactions.
 
 ```json
 {
-"description": "Recharge bonus balance during tracker registration",
-"type": "bonus_charge",
-"subtype": "register",
-"timestamp": "2021-01-28 08:16:40",
-"user_id": 12203,
-"dealer_id": 5001,
-"tracker_id": 303126,
-"amount": -10.0000,
-"new_balance": 800.0000,
-"old_balance": 810.0000,
-"bonus_amount": 10.0000,
-"new_bonus": 10.0000,
-"old_bonus": 0.0000
+    "description": "Recharge bonus balance during tracker registration",
+    "type": "bonus_charge",
+    "subtype": "register",
+    "timestamp": "2021-01-28 08:16:40",
+    "user_id": 12203,
+    "dealer_id": 5001,
+    "tracker_id": 303126,
+    "amount": -10.0000,
+    "new_balance": 800.0000,
+    "old_balance": 810.0000,
+    "bonus_amount": 10.0000,
+    "new_bonus": 10.0000,
+    "old_bonus": 0.0000
 }
 ```
 
 * `description` - string. Transaction description.
-* `type` - string enum. Type of transaction.
-* `subtype` - string enum. Subtype of transaction.
-* `timestamp` - string date/time. When transaction created.
+* `type` - [enum](../../getting-started.md#data-types). Type of transaction.
+* `subtype` - [enum](../../getting-started.md#data-types). Subtype of transaction.
+* `timestamp` - [date/time](../../getting-started.md#data-types). When transaction created.
 * `user_id` - int. ID of a user which made a transaction.
 * `dealer_id` - int. ID of a dealer.
 * `tracker_id` - int. Tracker id. 0 if transaction not associated with tracker.
@@ -53,8 +53,8 @@ Gets list of user's billing transactions for the specified period.
 
 | name | description | type|
 | :------ | :------ | :-----|
-| from | Start date/time for searching. | string date/time |
-| to | End date/time for searching. Must be after `from` date. | string date/time |
+| from | Start date/time for searching. | [date/time](../../getting-started.md#data-types) |
+| to | End date/time for searching. Must be after `from` date. | [date/time](../../getting-started.md#data-types) |
 | limit | Optional. Maximum number of returned transactions. | int |
 
 #### example

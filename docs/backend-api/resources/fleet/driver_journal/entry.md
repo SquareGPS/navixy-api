@@ -35,10 +35,10 @@ API path: `/driver/journal/entry`.
 
 * `id` - int. An id of an entry.
 * `tracker_id` - int. An id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. 
-* `start_date` - string date/time. Start date of a journal entry.
-* `end_date` - string date/time. End date of a journal entry.
+* `start_date` - [date/time](../../../getting-started.md#data-types). Start date of a journal entry.
+* `end_date` - [date/time](../../../getting-started.md#data-types). End date of a journal entry.
 * `employee_id` - nullable int. An id of employee (driver).
-* `type` - string enum. Type of journal entry. Can be "work", "personal", "other".
+* `type` - [enum](../../../getting-started.md#data-types). Type of journal entry. Can be "work", "personal", "other".
 * `comment` - nullable string. Comment for entry.
 * `start_location` - location object. Where entry starts.
 * `end_location` - location object. Where entry ends.
@@ -59,8 +59,8 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
 | :------ | :------ | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | entry_ids | Optional. Array of entry ids. | array of int |
-| from | Optional. Include tracks which end after this date, e.g. "2020-10-13 00:00:00". | string date/time |
-| to | Optional. Include tracks which end after this date, e.g. "2020-10-14 00:00:00". | string date/time |
+| from | Optional. Include tracks which end after this date, e.g. "2020-10-13 00:00:00". | [date/time](../../../getting-started.md#data-types) |
+| to | Optional. Include tracks which end after this date, e.g. "2020-10-14 00:00:00". | [date/time](../../../getting-started.md#data-types) |
 | types | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`. | array of string |
 | sort | Optional. Set of sort options. Each option is a pair of column name and sorting direction, e.g. `["start_date=acs", "type=desc"]`. | array of string |
 
@@ -162,7 +162,7 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 ```
 
 * `id` - int. An id of the driver journal entry.
-* `type` - string enum. Type of journal entry. Can be "work", "personal", "other".
+* `type` - [enum](../../../getting-started.md#data-types). Type of journal entry. Can be "work", "personal", "other".
 * `comment` - string. New comment of the driver journal entry.
 
 #### example
@@ -224,8 +224,8 @@ and `to` parameters).
 | :------ | :------ | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | entry_ids | Optional. Array of entry ids. | array of int |
-| from | Optional. Include tracks which end after this date, e.g. "2020-10-13 00:00:00". | string date/time |
-| to | Optional. Include tracks which end after this date, e.g. "2020-10-14 00:00:00". | string date/time |
+| from | Optional. Include tracks which end after this date, e.g. "2020-10-13 00:00:00". | [date/time](../../../getting-started.md#data-types) |
+| to | Optional. Include tracks which end after this date, e.g. "2020-10-14 00:00:00". | [date/time](../../../getting-started.md#data-types) |
 | types | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`. | array of string |
 | sort | Optional. Set of [sort options](#list). Each option is a pair of column name and sorting direction, e.g. `["start_date=acs", "type=desc"]`. | array of string |
 | add_filename_header | If `true` then Content-Disposition header will be appended to the response. Default value is `true`. | boolean |

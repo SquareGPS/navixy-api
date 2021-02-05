@@ -41,9 +41,9 @@ User can assign form to the task or checkin by choosing template without the nee
 * `id` - int. An id of a template.
 * `label` - string. User-defined template label, from 1 to 100 characters.
 * `fields` - array of multiple [form_field](./field-types.md) objects.
-* `created` - string date/time. Date when this template created. The read-only field.
+* `created` - [date/time](../../../getting-started.md#data-types). Date when this template created. The read-only field.
 * `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
-* `updated` - string date/time. Date when this template last modified. The read-only field.
+* `updated` - [date/time](../../../getting-started.md#data-types). Date when this template last modified. The read-only field.
 * `default` - boolean. This form will be chosen default for all new tasks with form if `true`.
 
 ## API actions

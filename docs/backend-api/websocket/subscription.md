@@ -18,8 +18,8 @@ Request parameters:
 
 * `action` (text: "subscribe").
 * `hash` - required, string, length=32. Session hash code obtained by [user/auth](../resources/commons/user/index.md#auth) action.
-* `trackers` - required, array of int, can't be null. List of tracker ids for the events that require a subscription.
-* `events` - required, array of string enum, can't be null. List of events to subscribe. Event can be one of: `state`.
+* `trackers` - required, array of int, without nulls. List of tracker ids for the events that require a subscription.
+* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
 
 Request sample:
 
@@ -38,8 +38,8 @@ Response parameters:
 
 * `type` - required, text: _"response"_.
 * `action` - required, text: _"subscription/subscribe"_.
-* `events` - required, array of string enum, can't be null. List of the subscribed events. Event can be `state`.
-* `data` - required, map <string, object>, can't be null. Map with events subscription result. One key per subscribed event.
+* `events` - required, array of [enum](../getting-started.md#data-types), without nulls. List of the subscribed events. Event can be `state`.
+* `data` - required, map <string, object>. Map with events subscription result. One key per subscribed event.
   * `state` - presented if the "state" subscription requested, map <string, enum> - the current status of requested trackers.
 
 Keys is a tracker ids, values - one of the item:
@@ -93,7 +93,7 @@ Request parameters:
 * `action` - text: _"unsubscribe"_.
 * `hash` - required, string, length=32. Session hash code gotten by [user/auth](../resources/commons/user/index.md#auth) action.
 * `trackers` - required, array of int, without nulls. List of tracker ids for events that require an unsubscription.
-* `events` - required, array of string enum, without nulls. List of events to unsubscribe. Event can be `state`.
+* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to unsubscribe. Event can be `state`.
 
 Request sample:
 
@@ -112,7 +112,7 @@ Response parameters:
 
 * `type` - required, text: _"response"_.
 * `action` - required, text: _"subscription/unsubscribe"_.
-* `events` - required, array of string enum, without nulls. List of unsubscribed events. Event can be `state`.
+* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of unsubscribed events. Event can be `state`.
 * `data` - required, array of int, without nulls. List of tracker ids from request.
 
 Response sample:

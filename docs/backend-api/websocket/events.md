@@ -8,8 +8,8 @@ description: Information about WebSocket events with conditions for obtaining an
 The server sends an `event message` through the WebSocket channel when an event occurs and client has subscription on this. 
 All event messages contain the next fields:
 
-* `type` - string enum. "event".
-* `event` - string enum. Can be "state", "lifecycle", or "logout".
+* `type` - [enum](../getting-started.md#data-types). "event".
+* `event` - [enum](../getting-started.md#data-types). Can be "state", "lifecycle", or "logout".
 * `data` - optional object. Specific event payload. 
 
 ## State event

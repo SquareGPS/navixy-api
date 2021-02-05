@@ -53,7 +53,7 @@ Check-ins cannot be created using web API, so all actions are read-only.
 ```    
 
 * `id` - int. An id of a check-in.
-* `marker_time` - string date/time. Non-null. The time of check-in creation.
+* `marker_time` - [date/time](../../getting-started.md#data-types). Non-null. The time of check-in creation.
 * `user_id` - int. Non-null. An id of the master user.
 * `tracker_id` - int. Non-null. An id of the tracker which created this check-in.
 * `employee_id` - optional int. An id of the employee assigned to the tracker.
@@ -64,14 +64,14 @@ Check-ins cannot be created using web API, so all actions are read-only.
     * `id` - int. File id.
     * `storage_id` - int. Storage id.
     * `user_id` - int. An id of the user.
-    * `type` - string enum. Can be "image" | "file".
-    * `created` - string date/time. Date when file created.
-    * `uploaded` - string date/time. Date when file uploaded, can be null if file not yet uploaded.
+    * `type` - [enum](../../getting-started.md#data-types). Can be "image" | "file".
+    * `created` - [date/time](../../getting-started.md#data-types). Date when file created.
+    * `uploaded` - [date/time](../../getting-started.md#data-types). Date when file uploaded, can be null if file not yet uploaded.
     * `name` - string. A name of the file.
     * `size` int. File size in bytes. If file not uploaded, show maximum allowed size for an upload.
     * `metadata` - metadata object. 
         * `orientation` - int. Image exif orientation.
-    * `state` - string enum. Can be "created" | "in_progress" | "uploaded" | "deleted".
+    * `state` - [enum](../../getting-started.md#data-types). Can be "created" | "in_progress" | "uploaded" | "deleted".
     * `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
 * `form_id` - int. An id of the form which was sent along with a check-in, can be null.
 * `form_label` - string. Label of the form which was sent along with a check-in, can be null.

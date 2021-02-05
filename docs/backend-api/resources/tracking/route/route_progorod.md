@@ -70,6 +70,6 @@ waypoints may be changed.
 }
 ```
 
-* `type` - string enum. Type of error. One of: "not_set", "malformed" and "isolated".
-* `point` - string enum. Error point. One of: "start", "end", "waypoint" and "all".
+* `type` - [enum](../../../getting-started.md#data-types). Type of error. One of: "not_set", "malformed" and "isolated".
+* `point` - [enum](../../../getting-started.md#data-types). Error point. One of: "start", "end", "waypoint" and "all".
 * `index` - int. Passed only for a waypoint. Index of bad point in waypoints array.

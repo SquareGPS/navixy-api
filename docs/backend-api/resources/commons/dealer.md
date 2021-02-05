@@ -106,18 +106,18 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 * `settings` - object. Custom settings. May be null if dealer has not set any custom settings.
     * `domain` - string. The same as dealer.ui_domain.
     * `service_title` - string. Title of the service.
-    * `locale` - string enum. Default locale of the dealer.
+    * `locale` - [enum](../../getting-started.md#data-types). Default locale of the dealer.
     * `demo_login` - string. Dealer's login for demo user or empty string if no demo user available.
     * `demo_password` - string. Dealer's password for demo user or empty string if no demo user available.
     * `maps` - array of string. List of available maps, 
     e.g. `["roadmap", "cdcom", "osm", "wikimapia", "yandexpublic", "hybrid", "satellite"]`.
     * `default_map` - object. Default map settings.
-    * `type` - string enum. Default map type.
+    * `type` - [enum](../../getting-started.md#data-types). Default map type.
     * `location` - object. Default map center location.
     * `lat` - float. Latitude.
     * `long` - float. Longitude.
     * `zoom` - int. Default map zoom level.
-    * `currency` - string enum. Dealer's currency ISO 4217 code.
+    * `currency` - [enum](../../getting-started.md#data-types). Dealer's currency ISO 4217 code.
     * `payment_link` - string. PaaS-dependent link that can be used to refill user's account. Can be null or empty.
     * `promo_url` - string. Customizable "About company" url.
     * `google_client_id` - string. Client id which must be used to work with google API or null.
@@ -132,12 +132,12 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     special chars escaped using HTML entities.
     * `show_mobile_apps` - boolean. If `true` then mobile applications are available for dealer's users.
     * `show_call_notifications` - boolean. If `true` then call notifications are available for dealer's users.
-    * `geocoder` - string enum. Default geocoder.
-    * `route_provider` - string enum. Default router.
-    * `measurement_system` - string enum. Measurement system.
+    * `geocoder` - [enum](../../getting-started.md#data-types). Default geocoder.
+    * `route_provider` - [enum](../../getting-started.md#data-types). Default router.
+    * `measurement_system` - [enum](../../getting-started.md#data-types). Measurement system.
     * `display_model_features_link` - boolean. When `true` show in model info link to squaregps.com (UI option).
-    * `color_theme` - string enum. Color theme code or empty string (for default theme).
-    * `app_color_theme` - string enum. Mobile app color theme code or empty string (for default theme).
+    * `color_theme` - [enum](../../getting-started.md#data-types). Color theme code or empty string (for default theme).
+    * `app_color_theme` - [enum](../../getting-started.md#data-types). Mobile app color theme code or empty string (for default theme).
     * `tos` - string. Terms of service text.
     * `enable_trackers` - boolean. If `true`, GPS monitoring interface is available for dealer's users.
     * `enable_cameras` - boolean. If `true`, camera monitoring interface is available for dealer's users.

@@ -38,7 +38,7 @@ API call to get device's tariffs available to user.
 * `name` - string. Tariff's label.
 * `group_id` - int. Group of tariffs. User can change the tariff only on the tariff in the same group.
 * `active` - boolean. Tariff is active if `true`. User can change the tariff only on the active tariff.
-* `type` - string enum. Tariff type. Can be "monthly", "everyday", "activeday".
+* `type` - [enum](../../../getting-started.md#data-types). Tariff type. Can be "monthly", "everyday", "activeday".
 * `price` - double. Price per month for "monthly" and "everyday" tariff or price per "active" day for "activeday" tariff.
 * `early_change_price` - double. Price of change tariff from current to other. With the last change in less than 
 30 days (**tariff.freeze.period** config option). When not passed or "null" user cannot change tariff frequently.
@@ -60,7 +60,7 @@ Listed only tariffs [available for user's legal type](#tariff).
 
 | name | description | type|
 | :------ | :------ | :-----|
-| device_type | Type of devices. Can be `tracker`, `camera` or `socket`. | string enum |
+| device_type | Type of devices. Can be `tracker`, `camera` or `socket`. | [enum](../../../getting-started.md#data-types) |
 
 #### examples
 

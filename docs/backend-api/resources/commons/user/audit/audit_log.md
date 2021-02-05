@@ -35,7 +35,7 @@ API path: `/user/audit/log`.
 * `payload` - Nullable JSON object. Additional information about action.
 * `host` - string. Host from which an action made. IPv4 or IPv6.
 * `user_agent` - string. User agent.
-* `action_date` - string date/time. Date and time of the action.
+* `action_date` - [date/time](../../../../getting-started.md#data-types). Date and time of the action.
 
 ### list
 
@@ -47,14 +47,14 @@ Gets list of audit records available for current user.
 
 | name | description | type |
 | :----- | :-----  | :----- |
-| from | Include audit objects recorded after this date. | string date/time |
-| to | Include audits before this date. | string date/time |
+| from | Include audit objects recorded after this date. | [date/time](../../../../getting-started.md#data-types) |
+| to | Include audits before this date. | [date/time](../../../../getting-started.md#data-types) |
 | subuser_ids | Optional. Include audits for specific sub-users. | array of int |
 | actions | Optional. Include audits for specific actions only. | array of string |
 | limit | Pagination. Maximum number of audit records to return. | int |
 | offset | Pagination. Get audits starting from. | int |
 | sort | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["action_date=acs", "user=desc"]`. | array of string |
-| grouping | Optional. Group log by "user", "action_date", "action" or don't group "default". | string enum |
+| grouping | Optional. Group log by "user", "action_date", "action" or don't group "default". | [enum](../../../../getting-started.md#data-types) |
  
 Properties available for sorting by:
 
