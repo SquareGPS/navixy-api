@@ -43,11 +43,11 @@ API path: `/history`.
 ```
 
 * `id` - int. An id of event.
-* `type` - string enum. Type of device. Can be "socket", "tracker", or "camera".
+* `type` - [enum](../../../getting-started.md#data-types). Type of device. Can be "socket", "tracker", or "camera".
 * `is_read` - boolean. If `true` the notification seen by user and marked as read.
 * `message` - string. Notification message.
-* `time` - string date/time. When this notification received.
-* `event` - string enum. Type of history event extension. Available event types can be obtained by [/history/type/list](./history_type.md#list) action.
+* `time` - [date/time](../../../getting-started.md#data-types). When this notification received.
+* `event` - [enum](../../../getting-started.md#data-types). Type of history event extension. Available event types can be obtained by [/history/type/list](./history_type.md#list) action.
 * `tracker_id` - int. An id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.
 * `rule_id` - int. An id of assigned rule.
 * `track_id` - int. An id of a track on which the event happened.

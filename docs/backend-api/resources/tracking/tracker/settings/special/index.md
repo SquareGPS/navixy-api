@@ -29,7 +29,7 @@ Gets special settings for the specified tracker.
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| type | Optional. Type of special object | string enum | "electronic_lock_password" |
+| type | Optional. Type of special object | [enum](../../../../../getting-started.md#data-types) | "electronic_lock_password" |
 
 #### examples
 
@@ -144,9 +144,9 @@ If parameter type omitted:
 }
 ```
 
-* `low_battery_mode` - string enum. Can be "enable" | "disable".
-* `ext_input_mode` - string enum. Can be "enable" | "disable".
-* `sos_button_mode` - string enum. Can be "enable" | "disable".
+* `low_battery_mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `ext_input_mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `sos_button_mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 
 **auto_geofence_telfm**
 
@@ -159,7 +159,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `activation_timeout` - int. 0-65535 seconds.
 * `radius` - int. 50 - 10000 meters.
  
@@ -172,7 +172,7 @@ If parameter type omitted:
 }
 ```
 
-* `function` - string enum. Can be "slot1" | "slot2" | "vu_activities" | "vu_no_activities"
+* `function` - [enum](../../../../../getting-started.md#data-types). Can be "slot1" | "slot2" | "vu_activities" | "vu_no_activities"
 
 **call_button**
 
@@ -284,7 +284,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - string enum. Can be "on_need" | "ign_on_only" | "ign_on" | "low_charge".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "on_need" | "ign_on_only" | "ign_on" | "low_charge".
 
 **ddd_emails**
 
@@ -319,7 +319,7 @@ If parameter type omitted:
 }
 ```
 
-* `fuel_type` - string enum. Can be "gasoline" | "diesel" | "lpg".
+* `fuel_type` - [enum](../../../../../getting-started.md#data-types). Can be "gasoline" | "diesel" | "lpg".
 * `engine_volume` - double. Can be 0.0 - 10.0.
 * `multiplier` - double. Can be 0.0 - 10.0.
 
@@ -344,7 +344,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without 
 triggering harsh acceleration event.Can be 0 - 2.55.
 * `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering
@@ -364,7 +364,7 @@ harsh cornering event. Can be 0 - 2.55.
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without 
 triggering harsh acceleration event.Can be 0.1 - 1.0.
 * `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering
@@ -384,7 +384,7 @@ harsh cornering event. Can be 0.1 - 1.0.
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without 
 triggering harsh acceleration event. Can be 0.25 - 0.85 g.
 * `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering 
@@ -428,7 +428,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `high_speed` - int. Can be 100 - 400.
 * `high_speed_braking_delta` - int. Can be 0 - 100.
 * `high_speed_acceleration_delta` - int. Can be 0 - 100.
@@ -460,7 +460,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - string enum. Can be "disable" | "gps_only" | "motion_sensor_only" | "gps_and_motion_sensor".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "disable" | "gps_only" | "motion_sensor_only" | "gps_and_motion_sensor".
 * `high_speed` - int. Can be 100 - 400.
 * `high_speed_braking_delta` - int. Can be 0 - 100.
 * `high_speed_acceleration_delta` - int. Can be 0 - 100.
@@ -519,7 +519,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. Can be 0.1 - 8.
 * `max_braking_force` - double. Can be 0.1 - 8.
 
@@ -548,7 +548,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `x` - double. Can be 0 - 2.55.
 * `y` - double. Can be 0 - 2.55.
 * `z` - double. Can be 0 - 2.55.
@@ -562,7 +562,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `sensitivity` - string enum. Can be "easy" | "normal" | "hard" | "hardest".
+* `sensitivity` - [enum](../../../../../getting-started.md#data-types). Can be "easy" | "normal" | "hard" | "hardest".
 
 **ign_src_suntech**
 
@@ -575,7 +575,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - string enum. Can be "power_voltage" | "din1" | "movement".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "power_voltage" | "din1" | "movement".
 * `power_voltage_low_level` - int. Can be 0 - 30000.
 * `power_voltage_high_level` - int. Can be 0 - 30000.
 
@@ -590,7 +590,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - string enum. Can be "power_voltage" | "din1" | "movement".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "power_voltage" | "din1" | "movement".
 * `power_voltage_low_level` - int. Can be 0 - 30000.
 * `power_voltage_high_level` - int. Can be 0 - 30000.
 
@@ -646,7 +646,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 
 **scat_mayak_bt_control**
 
@@ -658,7 +658,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `function` - string enum. Can be "bt_disable" | "bt_enable" | "bt_clear" | "bt_write".
+* `function` - [enum](../../../../../getting-started.md#data-types). Can be "bt_disable" | "bt_enable" | "bt_clear" | "bt_write".
 * `bt_state` - boolean.
 
 **sos_key**
@@ -671,7 +671,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - string enum. Can be "report" | "call_report".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "report" | "call_report".
 * `phone` - string. SOS phone to call. Phone number in the international format without "+" sign. 
 
 **starcom_impact**
@@ -734,7 +734,7 @@ Can be 0 - 14.
 }
 ```
 
-* `data_type` - string enum. Can be "overview" | "activities" | "eventsAndFaults" | "detailedSpeed" | "technicalData" | 
+* `data_type` - [enum](../../../../../getting-started.md#data-types). Can be "overview" | "activities" | "eventsAndFaults" | "detailedSpeed" | "technicalData" | 
 "card1Download" | "card2Download".
 * `activities_start_time` - string date. Format = "YYYY-MM-DD", not null only if data_type = "activities".
 * `activities_end_time` - string date. Format = "YYYY-MM-DD", not null only if data_type = "activities".
@@ -778,7 +778,7 @@ Can be 0 - 14.
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `engine_off_to_tow` - int. A time parameter to judge whether the device considered towed after the engine off. 
 If the motion sensor doesn't detect stillness within the specified time after the engine off the device is being towed. 
 Can be 0 - 900 seconds.
@@ -808,7 +808,7 @@ step 100.
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `engine_off_to_tow` - int. A time parameter to judge whether the device considered towed after the engine off. 
 If the motion sensor doesn't detect stillness within the specified time after the engine off the device is being towed. 
 Can be 0 - 900 seconds.
@@ -834,7 +834,7 @@ milliseconds, step 100.
 }
 ```
 
-* `mode` - string enum. Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
 * `activation_timeout` - int. Can be 0 - 65535 minutes.
 * `threshold` - double. Can be 0.10 - 5.00.
 
@@ -858,7 +858,7 @@ milliseconds, step 100.
 }
 ```
 
-* `mode` - string enum. Can be "disabled" | "power_voltage" | "motion_sensor".
+* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "disabled" | "power_voltage" | "motion_sensor".
 * `ign_on_voltage` - int. Can be 250 - 28000.
 * `rest_duration_to_off` – int. A time parameter to make sure the device enters stillness status, i.e. the status of 
 the device will be changed to stillness if the motion sensor detects stillness and maintains for a period of time 

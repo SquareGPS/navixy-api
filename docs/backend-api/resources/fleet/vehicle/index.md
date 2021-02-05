@@ -56,8 +56,8 @@ API path: `/vehicle`.
 * `label` - string. Vehicle's label.
 * `max_speed` - int. Maximum speed of a vehicle.
 * `model` - string. Vehicle's model.
-* `type`  string enum. Vehicle's type. Can be "truck" | "car" | "bus" | "special".
-* `subtype` - optional string enum. Depends on type, null means undefined. Possible subtypes listed below.
+* `type`  [enum](../../../getting-started.md#data-types). Vehicle's type. Can be "truck" | "car" | "bus" | "special".
+* `subtype` - optional [enum](../../../getting-started.md#data-types). Depends on type, null means undefined. Possible subtypes listed below.
 * `garage_id` - nullable int. An id of a garage.
 * `trailer` - optional string. Information about a trailer.
 * `manufacture_year` - optional int. Manufacture year of a vehicle.
@@ -73,7 +73,7 @@ API path: `/vehicle`.
 * `payload_width` - decimal. Payload width in millimeters.
 * `passengers` - int. A maximum count of passengers.
 * `gross_weight` - optional int. Gross weight in kilograms.
-* `fuel_type` - string enum. Can be "petrol" | "diesel" | "gas". 
+* `fuel_type` - [enum](../../../getting-started.md#data-types). Can be "petrol" | "diesel" | "gas". 
 * `fuel_grade` - string. Grade of fuel used in a vehicle.
 * `norm_avg_fuel_consumption` - decimal. Normal average fuel consumption in liters per 100 km.
 * `fuel_tank_volume` - int. Fuel tank capacity in liters.

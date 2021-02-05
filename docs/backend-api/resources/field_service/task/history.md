@@ -25,8 +25,8 @@ Our platform tracks changes to task fields and state for your convenience.
 * `id` - int. Entry id.
 * `user_id` - int. User id.
 * `task_id` - int. An id of the task with which this entry associated.
-* `event_date` - string date/time. Date when history event happened.
-* `operation` - string enum. Operation which happened. Can be "create", "update", "assign" or "status_change".
+* `event_date` - [date/time](../../../getting-started.md#data-types). Date when history event happened.
+* `operation` - [enum](../../../getting-started.md#data-types). Operation which happened. Can be "create", "update", "assign" or "status_change".
 * `payload` - depends on operation. Typically, contains fields which were changed during operation.
 
 ## API actions

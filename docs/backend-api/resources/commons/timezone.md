@@ -17,7 +17,7 @@ Information about all supported timezones for the specified locale. Does not req
 
 | name | description | type |
 | :--- | :--- | :--- |
-| locale | Name of locale. | string enum |
+| locale | Name of locale. | [enum](../../getting-started.md#data-types) |
 
 #### example
 

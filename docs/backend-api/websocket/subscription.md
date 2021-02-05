@@ -1,10 +1,14 @@
+---
+title: WebSocket Subscription
+description: Information about WebSocket subscription and how to subscribe to every type of event.
+---
+
 # WebSocket Subscription
 
-The _subscribe_ and _unsubscribe_ actions are used by client-side to subscribe on server 
+The `subscribe` and `unsubscribe` actions used by the client's side to subscribe on server 
 events and unsubscribe from them. 
-This actions are similar with any other [API REST actions](../getting-started.md), 
-but must be sending inside an open _WebSocket_ channel and use only JSON format for the 
-messages between client and server.
+These actions are similar with any other [API REST actions](../getting-started.md) 
+but must be sent inside open `WebSocket` channel and use only JSON format for messages between the client and server.
 
 ## Subscribe Action
 
@@ -12,12 +16,13 @@ messages between client and server.
 
 Request parameters:
 
-* __action__ (text: _"subscribe"_).
-* __hash__ (required, string, length=32): session hash code gotten by [user/auth](../resources/commons/user/index.md#auth) action.
-* __trackers__ (required, int[], without nulls) - list of tracker ids for the events that require a subscription.
-* __events__ (required, enum[], without nulls) - list of events to subscribe. Event can be one of: `state`.
+* `action` (text: "subscribe").
+* `hash` - required, string, length=32. Session hash code obtained by [user/auth](../resources/commons/user/index.md#auth) action.
+* `trackers` - required, array of int, without nulls. List of tracker ids for the events that require a subscription.
+* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
 
-Request sample: 
+Request sample:
+
 ```json
 {
   "action": "subscribe",
@@ -28,29 +33,30 @@ Request sample:
 ```
 
 ### Response
+
 Response parameters:
 
-* __type__ (required, text: _"response"_).
-* __action__ (required, text: _"subscription/subscribe"_).
-* __events__ (required, enum[], without nulls) - list of the subscribed events. Event can be one of: `state`.
-* __data__ (required, map<string, object>, without nulls) - map with the events subscription result. One key on each subscribed event.
-  * __state__ (presents if the "state" subscription requested, map<string, enum>) - the current status of requested trackers.
+* `type` - required, text: _"response"_.
+* `action` - required, text: _"subscription/subscribe"_.
+* `events` - required, array of [enum](../getting-started.md#data-types), without nulls. List of the subscribed events. Event can be `state`.
+* `data` - required, map <string, object>. Map with events subscription result. One key per subscribed event.
+  * `state` - presented if the "state" subscription requested, map <string, enum> - the current status of requested trackers.
 
 Keys is a tracker ids, values - one of the item:
 
-* __normal__ - non-blocked, normal status. The [state events](./events.md#state-event) for this
+* `normal` - non-blocked, normal status. [State events](./events.md#state-event) for this
   tracker will be delivered to client.
-* __blocked__ - tracker is blocked. The [state events](./events.md#state-event) for this tracker 
+* `blocked` - tracker blocked. [State events](./events.md#state-event) for this tracker 
   will *not* be delivered to client. 
 
-The [lifecycle events](./events.md#lifecycle-event) will be delivered. After unblocking, 
+[Lifecycle events](./events.md#lifecycle-event) will be delivered. After unblocking, 
 current tracker state will be sent automatically.
 
-* __unknown__ - tracker id is missed in database or not belong to current user.  
-* __disallowed__ - subscription for this tracker is not allowed by current session.
-   
+* `unknown` - tracker id missed in the database or not belong to current user.  
+* `disallowed` - subscription for this tracker not allowed by the current session.
 
 Response sample:
+
 ```json
 {
   "type": "response",
@@ -69,25 +75,28 @@ Response sample:
 ### The "state" event subscription
 
 After subscribe on the "state", server will send the current states of all non-blocked trackers to 
-which the subscription was made.
-When changing the state of any tracker to which a subscription is made, the server will 
-send a new state in [event message](./events.md#state-event).
+which the subscription made.
+When changing the state of any tracker to which a subscription made, the server will 
+send a new state in the [event message](./events.md#state-event).
 
 ### Automatic subscriptions
 
-- Subscribing to a _state_ automatically creates a subscription to the [lifecycle events](./events.md#state-event).
-- Subscribing to any event automatically creates a subscription to the [logout events](./events.md#logout-event).
+- Subscribing to a `state` automatically creates a subscription to [lifecycle events](./events.md#state-event).
+- Subscribing to any event automatically creates a subscription to [logout events](./events.md#logout-event).
 
 ## Unsubscribe Action
+
 ### Request
+
 Request parameters:
 
-* __action__ (text: _"unsubscribe"_).
-* __hash__ (required, string, length=32): session hash code gotten by [user/auth](../resources/commons/user/index.md#auth) action.
-* __trackers__ (required, int[], without nulls) - list of tracker ids for the events that require an unsubscription.
-* __events__ (required, enum[], without nulls) - list of events to unsubscribe. Event can be one of: `state`.
+* `action` - text: _"unsubscribe"_.
+* `hash` - required, string, length=32. Session hash code gotten by [user/auth](../resources/commons/user/index.md#auth) action.
+* `trackers` - required, array of int, without nulls. List of tracker ids for events that require an unsubscription.
+* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to unsubscribe. Event can be `state`.
 
 Request sample:
+
 ```json
 {
   "action": "unsubscribe",
@@ -101,12 +110,13 @@ Request sample:
 
 Response parameters:
 
-* __type__ (required, text: _"response"_).
-* __action__ (required, text: _"subscription/unsubscribe"_).
-* __events__ (required, enum[], without nulls) - list of the unsubscribed events. Event can be one of: `state`.
-* __data__ (required, int[], without nulls) - list of the tracker ids from request.
+* `type` - required, text: _"response"_.
+* `action` - required, text: _"subscription/unsubscribe"_.
+* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of unsubscribed events. Event can be `state`.
+* `data` - required, array of int, without nulls. List of tracker ids from request.
 
 Response sample:
+
 ```json
 {
   "type": "response",
@@ -116,7 +126,6 @@ Response sample:
 }
 ```
 
-
 ## Error Response
 
 If something goes wrong, the server may respond with an error.
@@ -124,14 +133,15 @@ Error codes are similar to the [API errors codes](../getting-started.md#error-co
 
 Error response parameters:
 
-* __type__ (required, text: _"error"_).
-* __action__ (required, string) - action from request (e.g. "subscription/subscribe") or "null" for some unexpected errors.
-* __status__ (required) - error code and description:
-  * __code__ (required) - error code (see [API errors codes](../getting-started.md#error-codes)).
-  * __description__ (required, string) - error description.
-* __data__ (optional, string) - part of parameters from request or some info for unexpected errors.
+* `type` - required, text: _"error"_.
+* `action` - required, string - action from request (e.g. "subscription/subscribe") or "null" for some unexpected errors.
+* `status` - required - error code and description:
+  * `code` - required - error code (see [API errors codes](../getting-started.md#error-codes)).
+  * `description` - required, string - error description.
+* `data` - optional string - part of parameters from request or some info for unexpected errors.
 
 Error response sample:
+
 ```json
 {
     "type": "error",
@@ -146,4 +156,3 @@ Error response sample:
     }
 }
 ```
-

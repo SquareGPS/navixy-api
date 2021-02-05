@@ -24,7 +24,7 @@ API path: `/entity/fields`.
 
 `id` - int. Field identifier. Null for the new object.
 `label` -  string. Name of the field.
-`type` - string enum. Type of field, see below.
+`type` - [enum](../../../getting-started.md#data-types). Type of field, see below.
 `required` - boolean. Whether field required to be filled or not.
 `description` - string. Additional info about the field, max 250 characters.
 `params` - object. Type-specific parameters. If no specific params, this field should be omitted.

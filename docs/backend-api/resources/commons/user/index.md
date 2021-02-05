@@ -79,18 +79,18 @@ API path: `/user`.
     * `login` - string. User's login (in most cases it's an email address).
     * `title` - string. User first and last name or organization title.
     * `phone` - string. User phone (if not empty).
-    * `creation_date` - string date/time. User registration date/time.
+    * `creation_date` - [date/time](../../../getting-started.md#data-types). User registration date/time.
     * `balance` - float. User balance, max. 2 digits after dot. For sub-users, this field should be ignored.
     * `bonus` - float. User bonus, max. 2 digits after dot. For sub-users, this field should be ignored.
-    * `locale` - string enum. User locale, for example "en_EN".
+    * `locale` - [enum](../../../getting-started.md#data-types). User locale, for example "en_EN".
     * `demo` - boolean. `true` if this is a demo user, `false` otherwise.
     * `verified` - boolean. `true` if user email already verified.
-    * `legal_type` - string enum. Can bed "legal_entity", "individual" or "sole_trader".
-    * `default_geocoder` - string enum. User's default geocoder. Can be "google", "yandex",
+    * `legal_type` - [enum](../../../getting-started.md#data-types). Can bed "legal_entity", "individual" or "sole_trader".
+    * `default_geocoder` - [enum](../../../getting-started.md#data-types). User's default geocoder. Can be "google", "yandex",
      "progorod", "osm", or "locationiq".
-    * `route_provider` - string enum. User's route provider. Can be "progorod", "google" or "osrm".
-    * `time_zone` - string enum. User timezone name.
-    * `measurement_system` - string enum. User's measurement system "metric", "imperial" or "us".
+    * `route_provider` - [enum](../../../getting-started.md#data-types). User's route provider. Can be "progorod", "google" or "osrm".
+    * `time_zone` - [enum](../../../getting-started.md#data-types). User timezone name.
+    * `measurement_system` - [enum](../../../getting-started.md#data-types). User's measurement system "metric", "imperial" or "us".
     * `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
     * `iec` - optional string. Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities.
     * `post_country` - string. Country part of user's post address.

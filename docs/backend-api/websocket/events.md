@@ -1,29 +1,35 @@
+---
+title: WebSocket Events
+description: Information about WebSocket events with conditions for obtaining and message samples.
+---
+
 # WebSocket Events
 
-The server sends an _event message_ through the WebSocket channel when an event occurs and client has subscription on this. 
-All of the event messages contains the fields:
+The server sends an `event message` through the WebSocket channel when an event occurs and client has subscription on this. 
+All event messages contain the next fields:
 
-*   `type` - "event".
-*   `event` - one of the items: "state", "lifecycle", "logout"
-*   `data` (optional, object) - specific event payload. 
+* `type` - [enum](../getting-started.md#data-types). "event".
+* `event` - [enum](../getting-started.md#data-types). Can be "state", "lifecycle", or "logout".
+* `data` - optional object. Specific event payload. 
 
 ## State event
 
-This messages are coming from server if client is [subscribed](./subscription.md). 
-to the `state` events of the specific tracker and this tracker is not blocked. It's occur in the cases:
+These messages are coming from server if client [subscribed](./subscription.md)
+to the `state` events of the specific tracker that not blocked. It occurs in the next cases:
 
-*   Tracker stated is changed.
-*   Immediately after subscription.
-*   Immediately after unblocking.
+* Tracker state changed.
+* Immediately after subscription.
+* Immediately after unblocking.
 
 Message fields:
 
-*   `type` - "event".
-*   `event` - "state".
-*   `data` - [source state](../resources/tracking/tracker/index.md#get_state).
-*   `user_time` - current time in user's timezone.
+* `type` - "event".
+* `event` - "state".
+* `data` - [source state](../resources/tracking/tracker/index.md#get_state).
+* `user_time` - current time in user's timezone.
 
 Message sample:
+
 ```json
 {
   "type": "event",
@@ -57,26 +63,27 @@ Message sample:
 }
 ```
 
-Note: `source_id` is not a `tracker_id`.
+!!! note "`source_id` is not a `tracker_id`."
 
 ## Lifecycle event
 
-This messages are coming from server if client is [subscribed](./subscription.md). 
-to the `state` events of the specific tracker. It's occur in the cases:
+These messages are coming from the server if client [subscribed](./subscription.md)
+to the `state` events of the specific tracker. It occurs in the next cases:
 
-*   Tracker is blocked.
-*   Tracker is unblocked.
-*   Tracker is corrupted (removed).
+* Tracker blocked.
+* Tracker unblocked.
+* Tracker corrupted (removed).
 
 Message fields:
 
-*   `type` - "event".
-*   `event` - "lifecycle".
-*   `data` (required, object):
-    *   `source_id` - source id.
-    *   `lifecycle_event` - lifecycle event type. One of the items: "block", "unblock", "corrupt".
+* `type` - "event".
+* `event` - "lifecycle".
+* `data` - required object.
+    * `source_id` - source id.
+    * `lifecycle_event` - lifecycle event type. Can be "block", "unblock", or "corrupt".
 
 Message sample:
+
 ```json
 {
   "type": "event",
@@ -90,22 +97,21 @@ Message sample:
 
 ## Logout event
 
-These messages are coming from server if client is [subscribed](./subscription.md). 
-to the any event. It's occur in cases:
+These messages are coming from server if client [subscribed](./subscription.md) to the any event. It occurs in the next cases:
 
-*   User logged out.
-*   User session expired (did not renew during one month).
-*   Sub-user is blocked by master-user.
-*   User has restored his password.
-*   User has changed his password.
-*   User blocked from admin panel.
-*   User was corrupted (removed).
+* User logged out.
+* User session expired (did not renew during one month).
+* Sub-user is blocked by master-user.
+* User has restored his password.
+* User has changed his password.
+* User blocked from admin panel.
+* User was corrupted (removed).
 
 Message fields:
 
-*   `type` - "event".
-*   `event` - "logout".
-*   `data` - "session closed".
+* `type` - "event".
+* `event` - "logout".
+* `data` - "session closed".
 
 Message sample:
 ```json

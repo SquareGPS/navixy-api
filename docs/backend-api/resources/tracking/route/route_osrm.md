@@ -77,7 +77,7 @@ Where **location** described in [data types description section](../../../gettin
     }
     ```
   
-    * `status` - string enum.
+    * `status` - [enum](../../../getting-started.md#data-types).
         * `NOT_FOUND` – indicates at least one of the locations specified in the request's origin, destination, or 
         waypoints could not be geocoded, or OSRM cannot find route.
         * `UNKNOWN_ERROR` – unexpected OSRM error code.

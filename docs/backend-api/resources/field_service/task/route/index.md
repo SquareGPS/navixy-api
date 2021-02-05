@@ -36,12 +36,12 @@ completed with warnings or failed.
 * `id` - int. Primary key used in route/update, *IGNORED* in route/create.
 * `user_id` - int. User id. *IGNORED* in route/create and route/update.
 * `tracker_id` - int. An id of the tracker to which route assigned. Can be null. *IGNORED* in route/update.
-* `creation_date` - string date/time. When route created. *IGNORED* in route/create, route/update.
-* `from` - string date/time. Date AFTER which first checkpoint zone must be visited, depends on first checkpoint `from`, *IGNORED* in route/create, route/update.
-* `to` - string date/time. Date BEFORE which last checkpoint zone must be visited, depends on last checkpoint `to`, *IGNORED* in route/create, route/update.
+* `creation_date` - [date/time](../../../../getting-started.md#data-types). When route created. *IGNORED* in route/create, route/update.
+* `from` - [date/time](../../../../getting-started.md#data-types). Date AFTER which first checkpoint zone must be visited, depends on first checkpoint `from`, *IGNORED* in route/create, route/update.
+* `to` - [date/time](../../../../getting-started.md#data-types). Date BEFORE which last checkpoint zone must be visited, depends on last checkpoint `to`, *IGNORED* in route/create, route/update.
 * `external_id` - string. Used if route imported from external system. arbitrary text string. Can be null.
 * `status` - string. A route status. *IGNORED* in route/create, route/update.
-* `status_change_date` - string date/time. When route status changed. *IGNORED* in route/create, route/update.
+* `status_change_date` - [date/time](../../../../getting-started.md#data-types). When route status changed. *IGNORED* in route/create, route/update.
 * `origin` - string. A route origin. *IGNORED* in route/create, route/update.
 * `tags` - array of int. List of tag ids.
 * `checkpoint_ids` - array of int. List of route checkpoint ids in order of execution. *IGNORED* in route/create.
@@ -144,8 +144,8 @@ Also, need checkpoints list in order of execution, checkpoints `from` and `to` m
     * `radius` - int. Radius in meters.
 * `label` - string. Task name, length 1-200 characters.
 * `description` - string. Task description, length 0-1024 characters.
-* `from` - string date/time. Start date of the interval - when the specified location has to be visited (in the user's time zone).
-* `to` - string date/time. End date of the interval - when the specified location has to be visited (in the user's time zone).
+* `from` - [date/time](../../../../getting-started.md#data-types). Start date of the interval - when the specified location has to be visited (in the user's time zone).
+* `to` - [date/time](../../../../getting-started.md#data-types). End date of the interval - when the specified location has to be visited (in the user's time zone).
 
 #### example
 
@@ -243,10 +243,10 @@ Get all routes belonging to user with optional filtering.
 
 | name | description | type | 
 | :--- | :--- | :--- |
-| statuses | Optional. List of task statuses, e.g. `["unassigned","failed"]`. Default all. | array of string enum |
+| statuses | Optional. List of task statuses, e.g. `["unassigned","failed"]`. Default all. | [enum](../../../../getting-started.md#data-types) array |
 | trackers | Optional. List of `tracker_id` to which task assigned. | array of int |
-| from | Optional. Show tasks which are actual AFTER this date, e.g. "2020-06-01 00:00:00". | string date/time |
-| to | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00". | string date/time |
+| from | Optional. Show tasks which are actual AFTER this date, e.g. "2020-06-01 00:00:00". | [date/time](../../../../getting-started.md#data-types) |
+| to | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00". | [date/time](../../../../getting-started.md#data-types) |
 | filter | Optional. Filter for task label and description. If **trackers**, **filter**, **from** or **to** is not passed or _null_ then appropriate condition not used to filter results. | string |
 
 #### examples

@@ -53,13 +53,13 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
 * `id` - int. Form unique id.
 * `label` - string. User-defined form label, from 1 to 100 characters.
 * `fields` - array of multiple [form_field](./field-types.md) objects. 
-* `created` - string date/time. Date when this form created (or attached to the task). The read-only field.
+* `created` - [date/time](../../../getting-started.md#data-types). Date when this form created (or attached to the task). The read-only field.
 * `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
 * `task_id` - int. An id of the task to which this form attached.
 * `template_id` - int. An id of the form template on which this form based. Can be null if template deleted.
 * `values` - a map with field ids as keys and [field_value](./field-types.md) objects as values. Can be null if form not filled.
     * `key` - string. Key used to link field and its corresponding value.
-* `submitted` - string date/time. Date when form values last submitted.
+* `submitted` - [date/time](../../../getting-started.md#data-types). Date when form values last submitted.
 * `submit_location` - location at which form values last submitted.
 
 ## Form file object
@@ -82,13 +82,13 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
 ```
 
 * `id` - int. File id.
-* `type` - string enum. Can be "image" or "file".
-* `created` - string date/time. Date when file created.
-* `uploaded` - string date/time. Date when file uploaded. Can be null if file not yet uploaded.
+* `type` - [enum](../../../getting-started.md#data-types). Can be "image" or "file".
+* `created` - [date/time](../../../getting-started.md#data-types). Date when file created.
+* `uploaded` - [date/time](../../../getting-started.md#data-types). Date when file uploaded. Can be null if file not yet uploaded.
 * `name` - string. A filename.
 * `size` - int. Size in bytes. If file not uploaded, show maximum allowed size for the upload.
 * `metadata` - nullable metadata object.
-* `state` - string enum. Can be "created" | "in_progress" | "uploaded" | "deleted".
+* `state` - [enum](../../../getting-started.md#data-types). Can be "created" | "in_progress" | "uploaded" | "deleted".
 * `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
 
 ## API actions
@@ -192,7 +192,7 @@ Downloads form as a file by an id.
 | name | description | type | 
 | :--- | :--- | :--- | 
 | id | Id of the form. | int | 
-| format | File format. Can be "pdf" or "xlsx". | string enum |
+| format | File format. Can be "pdf" or "xlsx". | [enum](../../../getting-started.md#data-types) |
 
 #### examples
 

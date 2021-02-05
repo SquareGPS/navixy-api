@@ -20,10 +20,10 @@ Get all tasks and routes that will be created by schedule.
 | name | description | type | 
 | :--- | :--- | :--- |
 | trackers | Optional. Ids of the trackers to which task is assigned. | array of int |
-| from | Show tasks that will be created AFTER this date, e.g. "2014-07-01 00:00:00", should not before now | string date/time |
-| to | Show tasks will be created BEFORE this date, e.g. "2014-07-01 00:00:00", should not before `from` | string date/time |
+| from | Show tasks that will be created AFTER this date, e.g. "2014-07-01 00:00:00", should not before now | [date/time](../../../../getting-started.md#data-types) |
+| to | Show tasks will be created BEFORE this date, e.g. "2014-07-01 00:00:00", should not before `from` | [date/time](../../../../getting-started.md#data-types) |
 | filter | Optional. Filter for task schedule label and description. | string |
-| types | Optional. Tasks or routes. For example: `["task", "route"]` | array of string enum |
+| types | Optional. Tasks or routes. For example: `["task", "route"]` | [enum](../../../../getting-started.md#data-types) array |
 
 * If `trackers`, `filter`, `from` or `to` is not passed or _null_ then appropriate condition not used to filter results.
 

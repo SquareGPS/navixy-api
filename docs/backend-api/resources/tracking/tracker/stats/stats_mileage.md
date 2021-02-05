@@ -15,9 +15,9 @@ Returns mileage in kilometers in specified period grouped by trackers and day.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | string date/time | "2020-09-24 03:24:00" |
-| to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | string date/time | "2020-09-24 06:24:00" |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
+| from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | [date/time](../../../../getting-started.md#data-types) |
+| to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | [date/time](../../../../getting-started.md#data-types) |
 
 #### examples
 

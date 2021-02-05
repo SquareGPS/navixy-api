@@ -16,13 +16,13 @@ Downloads track points as KML/KMZ file for the specified track ID, tracker and t
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | `123456` |
-| from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | string date/time | `"2020-09-23 03:24:00"` |
-| to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | string date/time | `"2020-09-23 06:24:00"` |
+| from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | [date/time](../../../getting-started.md#data-types) | `"2020-09-23 03:24:00"` |
+| to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | [date/time](../../../getting-started.md#data-types) | `"2020-09-23 06:24:00"` |
 | track_ids | Optional. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned. | array of int | `[123456, 234567]` | 
 | include_gsm_lbs | Optional. If `false` && track_ids not specified, GSM LBS points will be filtered out. Default=`true`. | boolean | `true` |
 | point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. | int | `300` |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | `true` |
-| format | File format, "kml" or "kmz", default is "kml". | string enum | `"kml"` |
+| format | File format, "kml" or "kmz", default is "kml". | [enum](../../../getting-started.md#data-types) | `"kml"` |
 | split | If `true`, split tracks by folders with start/end placemarks and track line. Default=`false`. | boolean | `false` |
 
 #### examples
@@ -63,10 +63,10 @@ Gets a list of track descriptions for the specified tracker and time period.
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| from | From time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. | string date/time | "2020-09-23 03:24:00" |
-| to | To time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. Specified date must be after "from" date. | string date/time | "2020-09-23 06:24:00" |
+| from | From time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. | [date/time](../../../getting-started.md#data-types) | "2020-09-23 03:24:00" |
+| to | To time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. Specified date must be after "from" date. | [date/time](../../../getting-started.md#data-types) | "2020-09-23 06:24:00" |
 | filter | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean | true |
-| split | Optional, default=`true`. If `false`, all tracks will be merged into single one. | boolean | true |
+| split | Optional, default=`true`. If `false`, all tracks will be merged into single one.| boolean | true |
 | include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | true |
 | cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates. | boolean | false | 
 | count_events | Optional, default=`false`. If `true`, number of events occurred during each non-single point track will be returned. | true |
@@ -117,10 +117,10 @@ where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
 ```
 
 * `id` - int. Track id.
-* `start_date` - string date/time. Track start date, in user's timezone e.g. "2011-06-18 03:39:44".
+* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone e.g. "2011-06-18 03:39:44".
 * `start_address` - string. Track start address.
 * `max_speed` - int. Maximum speed in km/h, e.g. 96.
-* `end_date` - string date/time. Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
+* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
 * `end_address` - string. Track end address.
 * `length` - float. Track length in kilometers, e.g. 85.5.
 * `points` - int. Total number of points in a track, e.g. 724.
@@ -128,7 +128,7 @@ where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
 * `event_count` - int. Number of events on this track. Field will be omitted if "count_events" is `false`.
 * `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle bound to tracker 
 or no normAvgFuelConsumption defined in a vehicle.
-* `type` - string enum. Used to distinguish this track type from the others. 
+* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
 
 `single_report` object. Returned if device was creating reports in "interval" mode (e.g. M7 tracker in interval mode):
@@ -146,8 +146,8 @@ or no normAvgFuelConsumption defined in a vehicle.
 ```
 
 * `id` - int. Track id.
-* `type` - string enum. Used to distinguish this track type from the others. 
-* `start_date` - string date/time. Point creation date, in user's timezone e.g. "2011-06-18 03:39:44".
+* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
+* `start_date` - [date/time](../../../getting-started.md#data-types). Point creation date, in user's timezone e.g. "2011-06-18 03:39:44".
 * `start_address` - string. Point address.
 * `avg_speed` - int. Average speed in km/h, e.g. 70.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
@@ -173,10 +173,10 @@ or no normAvgFuelConsumption defined in a vehicle.
 }
 ```
 
-* `start_date` - string date/time. Track start date, in user's timezone e.g. "2011-06-18 03:39:44".
+* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone e.g. "2011-06-18 03:39:44".
 * `start_address` - string. Track start address.
 * `max_speed` - int. Maximum speed in km/h, e.g. 96.
-* `end_date` - string date/time. Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
+* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
 * `end_address` - string. Track end address.
 * `length` - float. Track length in kilometers, e.g. 85.5.
 * `points` - int. Total number of points in a track, e.g. 724.
@@ -184,7 +184,7 @@ or no normAvgFuelConsumption defined in a vehicle.
 * `event_count` - int. Number of events on this track. Field will be omitted if "count_events" is `false`.
 * `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle bound to tracker 
 or no normAvgFuelConsumption defined in a vehicle.
-* `type` - string enum. Used to distinguish this track type from the others. 
+* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS flag.
 
 `cluster` object. Only returned if "split" is set to `true`:
@@ -201,12 +201,12 @@ or no normAvgFuelConsumption defined in a vehicle.
 }
 ```
 
-* `start_date` - string date/time. Track start date, in user's timezone e.g. "2011-06-18 03:39:44".
+* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone e.g. "2011-06-18 03:39:44".
 * `start_address` - string. Track start address.
-* `end_date` - string date/time. Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
+* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
 * `precision` - optional int. Location precision, meters.
 * `points` - array of points in a cluster.
-* `type` - string enum. Used to distinguish this track type from the others. 
+* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS flag, true if cluster contains only GSM LBS points.
 
 #### errors
@@ -225,12 +225,12 @@ Gets track points for the specified track ID, tracker and time period.
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | string date/time | "2020-09-23 03:24:00" |
-| to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | string date/time | "2020-09-23 06:24:00" |
+| from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | [date/time](../../../getting-started.md#data-types) | "2020-09-23 03:24:00" |
+| to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | [date/time](../../../getting-started.md#data-types) | "2020-09-23 06:24:00" |
 | track_id | Optional. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned. | int | 234567 |
 | include_gsm_lbs | Optional, default=`true`. If `false` && track_id not specified, GSM LBS points will be filtered out. | boolean | true |
 | point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000 | int | 3000 |
-| filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | false |
+| filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. If `false` a response will contain parking points. | boolean | false |
 
 #### examples
 
@@ -271,7 +271,7 @@ Gets track points for the specified track ID, tracker and time period.
 * `lng` - float.  Longitude.
 * `alt` - int. Altitude in meters. 
 * `satellites` - int. Number of satellites used in fix for this point.
-* `get_time` - string date/time. GPS timestamp of the point, in user's timezone.
+* `get_time` - [date/time](../../../getting-started.md#data-types). GPS timestamp of the point, in user's timezone.
 * `address` - string. Point address. Will be "" if no address recorded.
 * `heading` - int. Bearing in degrees (0..360).
 * `speed` - int. Speed in km/h.

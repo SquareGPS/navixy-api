@@ -222,7 +222,7 @@ Plugin-specific parameters:
 | name | description | type |
 | ------ | ------------- | ------ |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
-| graph_type | The type of X-axis. Can be "time" or "mileage". | string enum |
+| graph_type | The type of X-axis. Can be "time" or "mileage". | [enum](../../../getting-started.md#data-types) |
 | detailed_by_dates | If `true` show final data on fuel traffic for each day in the period. | boolean |
 | include_summary_sheet_only | If `true` the report will contain only a summary sheet for all chosen devices. | boolean |
 | use_ignition_data_for_consumption | Calculate consumption only when the ignition was on if `true`. | boolean |
@@ -265,7 +265,7 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | details_interval_minutes | The interval in minutes. Can be `[30, 60, 180, 360]`. | int |
-| graph_type | The type of X-axis. Can be "time" or "mileage". | string enum |
+| graph_type | The type of X-axis. Can be "time" or "mileage". | [enum](../../../getting-started.md#data-types) |
 | smoothing | Smooth data if `true`. | boolean |
 | sensors | List of objects containing tracker_id and sensor_id. | array of objects |
 
@@ -343,7 +343,7 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | details_interval_minutes | The interval in minutes. Can be `[5, 30, 60, 180, 360]`. | int |
-| graph_type | The type of X-axis. Can be "time" or "mileage". | string enum |
+| graph_type | The type of X-axis. Can be "time" or "mileage". | [enum](../../../getting-started.md#data-types) |
 | smoothing | Smooth data if `true`. | boolean |
 | show_address | Address of each reading appears in report if `true`. | boolean |
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
@@ -475,7 +475,7 @@ Plugin-specific parameters:
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 | include_summary_sheet_only | If `true` the report will contain only a summary sheet for all chosen devices. | boolean |
-| group_type | A group type. Can be "province" or "country". | string enum |
+| group_type | A group type. Can be "province" or "country". | [enum](../../../getting-started.md#data-types) |
 
 ### Report on all events
 

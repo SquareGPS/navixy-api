@@ -22,11 +22,11 @@ API path: `/user/settings`.
 }
 ```
 
-* `time_zone` - string enum. ISO timezone id.
-* `locale` - string enum. Locale code.
-* `measurement_system` - string enum. Measurement system. Can be "metric", "imperial", "us" or "metric_gal_us".
-* `geocoder` - string enum. Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq".
-* `route_provider` - string enum. Preferred route finding provider. Can be "google", "progorod" or "osrm".
+* `time_zone` - [enum](../../../../getting-started.md#data-types). ISO timezone id.
+* `locale` - [enum](../../../../getting-started.md#data-types). Locale code.
+* `measurement_system` - [enum](../../../../getting-started.md#data-types). Measurement system. Can be "metric", "imperial", "us" or "metric_gal_us".
+* `geocoder` - [enum](../../../../getting-started.md#data-types). Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq".
+* `route_provider` - [enum](../../../../getting-started.md#data-types). Preferred route finding provider. Can be "google", "progorod" or "osrm".
 * `translit` - boolean. `true` if sms notification should be transliterated, `false` otherwise.
 
 `balance_alert_settings` type is JSON object:
@@ -111,11 +111,11 @@ Update current user's settings.
 
 | name | description | type |
 | :----- | :-----  | :----- |
-| time_zone | ISO timezone id. | string enum |
-| locale | Locale code. | string enum |
-| measurement_system | Measurement system. Can be "metric", "imperial", "us" or "metric_gal_us". | string enum |
-| geocoder | Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq". | string enum |
-| route_provider | Preferred route finding provider. Can be "google", "progorod" or "osrm". | string enum |
+| time_zone | ISO timezone id. | [enum](../../../../getting-started.md#data-types) |
+| locale | Locale code. | [enum](../../../../getting-started.md#data-types) |
+| measurement_system | Measurement system. Can be "metric", "imperial", "us" or "metric_gal_us". | [enum](../../../../getting-started.md#data-types) |
+| geocoder | Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq". | [enum](../../../../getting-started.md#data-types) |
+| route_provider | Preferred route finding provider. Can be "google", "progorod" or "osrm". | [enum](../../../../getting-started.md#data-types) |
 | translit | `true` if sms notification should be transliterated, `false` otherwise. | boolean |
 | balance_alert_settings | Object containing array of emails. | JSON object |
 | file_storage_settings | Object containing file storage settings. | JSON object |

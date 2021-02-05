@@ -57,16 +57,16 @@ it's available for viewing by app user. User will also receive notifications of 
 * `location` - location associated with this task. Cannot be null.
     * `address` - string. Address of the location.
     * `radius`- int. Radius of location zone in meters.
-* `creation_date` - string date/time. When task created. *IGNORED* in create/update.
-* `from` - string date/time. Date AFTER which task zone must be visited.
-* `to` - string date/time. Date BEFORE which task zone must be visited.
+* `creation_date` - [date/time](../../../getting-started.md#data-types). When task created. *IGNORED* in create/update.
+* `from` - [date/time](../../../getting-started.md#data-types). Date AFTER which task zone must be visited.
+* `to` - [date/time](../../../getting-started.md#data-types). Date BEFORE which task zone must be visited.
 * `external_id` - string. Used if task imported from external system. Arbitrary text string. Can be null.
-* `status` - string enum. Task status. *IGNORED* in create/update. Can have "unassigned" value (unassigned to any executor),
+* `status` - [enum](../../../getting-started.md#data-types). Task status. *IGNORED* in create/update. Can have "unassigned" value (unassigned to any executor),
  "assigned", "done", "failed", "delayed", "arrived" (arrived to geofence but haven't done the task), "faulty" (with problems).
-* `status_change_date` - string date/time. When task status changed. *IGNORED* in create/update.
+* `status_change_date` - [date/time](../../../getting-started.md#data-types). When task status changed. *IGNORED* in create/update.
 * `max_delay` - int. Maximum allowed task completion delay in minutes.
 * `min_stay_duration` - int. Minimum duration of stay in task zone for task completion, minutes.
-* `arrival_date` - string date/time. When tracker has arrived to the task zone. *IGNORED* in create/update.
+* `arrival_date` - [date/time](../../../getting-started.md#data-types). When tracker has arrived to the task zone. *IGNORED* in create/update.
 * `stay_duration` - int. Duration of stay in the task zone, seconds.
 * `origin` - string. Task origin. *IGNORED* in create/update.
 * `tags` - array of int. List of tag ids.
@@ -133,12 +133,12 @@ Converts batch of tab-delimited tasks and return list of checked tasks with erro
 | :--- | :--- | :--- |
 | batch | Batch of tab-delimited tasks. | string |
 | fields | Optional. Array of field names, default is `["label", "from", "to", "address", "lat", "lng", "description"]`. | array of string |
-| geocoder | Geocoder type. | string enum |
+| geocoder | Geocoder type. | [enum](../../../getting-started.md#data-types) |
 | default_radius | Optional. Radius for point, default is 100. | int |
 | default_max_delay | Optional. Max delay for tasks, default is 0. | int |
 | default_duration | Optional. Duration for task in minutes, default is 60. | int
 | default_min_stay_duration | Optional. Minimal stay duration for task in minutes, default is 0. | int |
-| location_check_mode | Optional. One of "no_check", "entity_location", "parent_location" | string enum |
+| location_check_mode | Optional. One of "no_check", "entity_location", "parent_location" | [enum](../../../getting-started.md#data-types) |
 | employee_ids | Optional. List of employee Ids to automatic assign | array of int |
 | vehicle_ids | Optional. List of vehicle Ids to automatic assign | array of int |
 
@@ -258,8 +258,8 @@ Minimal JSON object to create a new task must contain:
     * `radius` - int. Radius in meters.
 * `label` - string. Task name, length 1-200 characters.
 * `description` - string. Task description, length 0-1024 characters.
-* `from` - string date/time. Start date of the interval - when the specified location has to be visited (in the user's time zone).
-* `to` - string date/time. End date of the interval - when the specified location has to be visited (in the user's time zone).
+* `from` - [date/time](../../../getting-started.md#data-types). Start date of the interval - when the specified location has to be visited (in the user's time zone).
+* `to` - [date/time](../../../getting-started.md#data-types). End date of the interval - when the specified location has to be visited (in the user's time zone).
 
 #### example
 
@@ -348,8 +348,8 @@ Gets all task belonging to user with optional filtering.
 | external_id | Optional. External task ID for search. | string |
 | statuses | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`. | array of string |
 | trackers | Optional. Ids of the trackers to which task assigned. | array of int |
-| from | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00". | string date/time |
-| to | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00". | string date/time |
+| from | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00". | [date/time](../../../getting-started.md#data-types) |
+| to | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00". | [date/time](../../../getting-started.md#data-types) |
 | conditions | Optional. Search conditions to apply to list. Array of search conditions. | array of [SearchCondition](../../commons/entity/search_conditions.md) |
 | filter | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task. | string |
 | filters | Optional. Filters for task label, description or address. | array of string |
@@ -367,13 +367,13 @@ Gets all task belonging to user with optional filtering.
 | status | string |  |
 | label | string |  |
 | location | string | address |
-| from | string date/time? |  |
-| to | string date/time? |  |
-| status_change_date | string date/time? |  |
-| arrival_date | string date/time? |  |
+| from | [date/time](../../../getting-started.md#data-types) |  |
+| to | [date/time](../../../getting-started.md#data-types) |  |
+| status_change_date | [date/time](../../../getting-started.md#data-types) |  |
+| arrival_date | [date/time](../../../getting-started.md#data-types) |  |
 | stay_duration | Seconds |  |
 | description | string |  |
-| external_id | string? |  |
+| external_id | string |  |
 | form | number | template's id |
 
 If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** is not passed or _null_ then appropriate 
@@ -393,10 +393,10 @@ set of sort options. Each option is a pair of column name and sorting direction,
 | status | string |  |
 | label | string |  |
 | location | string | address |
-| from | string date/time |  |
-| to | string date/time |  |
-| status_change_date | string date/time |  |
-| arrival_date | string date/time |  |
+| from | [date/time](../../../getting-started.md#data-types) |  |
+| to | [date/time](../../../getting-started.md#data-types) |  |
+| status_change_date | [date/time](../../../getting-started.md#data-types) |  |
+| arrival_date | [date/time](../../../getting-started.md#data-types) |  |
 | stay_duration | Seconds |  |
 | description | string |  |
 | external_id | string |  |
@@ -459,19 +459,19 @@ If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** i
     * `location` - area (circle geofence), entering and leaving of geofence will be controlled.
     * `label` - string. Task name, length 1-200 characters.
     * `description` - string. Task description, length 0-1024 characters.
-    * `creation_date` - string date/time. Date of creation of a task, unchangeable field.
-    * `from` - string date/time. Start date of the interval - when the specified location has to be visited (in the user's time zone).
-    * `to` - string date/time. End date of the interval - when the specified location has to be visited (in the user's time zone).
+    * `creation_date` - [date/time](../../../getting-started.md#data-types). Date of creation of a task, unchangeable field.
+    * `from` - [date/time](../../../getting-started.md#data-types). Start date of the interval - when the specified location has to be visited (in the user's time zone).
+    * `to` - [date/time](../../../getting-started.md#data-types). End date of the interval - when the specified location has to be visited (in the user's time zone).
     * `external_id` - string. Text field for tracking of communication of the task with certain external systems 
     (for example, number of the order). Is for reference only.
-    * `status` - string enum. Current status of a task, can have "unassigned" value (unassigned to any executor), 
+    * `status` - [enum](../../../getting-started.md#data-types). Current status of a task, can have "unassigned" value (unassigned to any executor), 
     "assigned", "done", "failed", "delayed", "arrived" (arrived to geofence but haven't done the task), "faulty" (with problems).
-    * `status_change_date` - string date/time. Date of the last change of the status of a task.
+    * `status_change_date` - [date/time](../../../getting-started.md#data-types). Date of the last change of the status of a task.
     * `max_delay` - int. The maximum time delay of the execution of the task, in minutes.
     * `min_stay_duration` - int. The minimum stay time in the area of the task in which the task has to be done, in minutes.
-    * `arrival_date` - string date/time. Date and time of arrival in the area of the task. Can be null. If the executor has not visited it yet.
+    * `arrival_date` - [date/time](../../../getting-started.md#data-types). Date and time of arrival in the area of the task. Can be null. If the executor has not visited it yet.
     * `stay_duration` - int. Number of seconds spent inside task zone.
-    * `origin` - string enum. The way of creation of a task. Can be "manual", "scheduled" or "imported" (from excel).
+    * `origin` - [enum](../../../getting-started.md#data-types). The way of creation of a task. Can be "manual", "scheduled" or "imported" (from excel).
     * `type` - string. Reserved.
 * `count` - int. count of the all found tasks.
 

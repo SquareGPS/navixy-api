@@ -148,7 +148,7 @@ Creates rule and scheduled intervals.
 | description | Rule's description. | string |
 | zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types.s. | array of int |
 | trackers | List of tracker ids belong to user for which the rule will work. | array of int |
-| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | string enum |
+| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | [enum](../../../../getting-started.md#data-types) |
 | primary_text | Primary text of rule notification when condition is true. | string |
 | secondary_text | Secondary text of rule notification when condition is false. | string |
 | param | A common parameter that responsible for integer conditions. See [rule types](./rule_types.md). | int |
@@ -330,7 +330,7 @@ Updates rule and scheduled intervals.
 | description | Rule's description. | string |
 | zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types. | array of int |
 | trackers | List of tracker ids belong to user for which the rule will work. | array of int |
-| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | string enum |
+| type | One of pre-defined types of rules. See [rule types](./rule_types.md). | [enum](../../../../getting-started.md#data-types) |
 | primary_text | Primary text of rule notification when condition is true. | string |
 | secondary_text | Secondary text of rule notification when condition is false. | string |
 | param | A common parameter that responsible for integer conditions. See [rule types](./rule_types.md). | int |

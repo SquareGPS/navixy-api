@@ -1,47 +1,97 @@
 ---
 title: Transaction
-description: Transaction
+description: API call to get list of user's billing transactions for the specified period.
 ---
 
 # Transaction
 
+API path: `/transaction`.
+
+API call to get user's billing transactions.
+
+## Transaction object
+
+```json
+{
+    "description": "Recharge bonus balance during tracker registration",
+    "type": "bonus_charge",
+    "subtype": "register",
+    "timestamp": "2021-01-28 08:16:40",
+    "user_id": 12203,
+    "dealer_id": 5001,
+    "tracker_id": 303126,
+    "amount": -10.0000,
+    "new_balance": 800.0000,
+    "old_balance": 810.0000,
+    "bonus_amount": 10.0000,
+    "new_bonus": 10.0000,
+    "old_bonus": 0.0000
+}
+```
+
+* `description` - string. Transaction description.
+* `type` - [enum](../../getting-started.md#data-types). Type of transaction.
+* `subtype` - [enum](../../getting-started.md#data-types). Subtype of transaction.
+* `timestamp` - [date/time](../../getting-started.md#data-types). When transaction created.
+* `user_id` - int. ID of a user which made a transaction.
+* `dealer_id` - int. ID of a dealer.
+* `tracker_id` - int. Tracker id. 0 if transaction not associated with tracker.
+* `amount` - double. Amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units removed from user`s balance.
+* `new_balance` - double. User`s money balance after transaction.
+* `old_balance` - double. User`s money balance before transaction.
+* `bonus_amount` - double. Amount of bonus used in transaction, can be negative. e.g. 10.0000 means 10 bonuses units added to user`s bonus balance.
+* `new_bonus` - double. User`s bonus balance after transaction.
+* `old_bonus` - double. User`s bonus balance before transaction.
+
 ### list
 
-Get list of user's billing transactions for the specified period.
+Gets list of user's billing transactions for the specified period.
 
-**required subuser rights**: payment_create
+**required sub-user rights**: `payment_create`.
 
 #### parameters
 
-* **from** – date/time. Start date/time for searching.
-* **to** – date/time. End date/time for searching. must be after "from" date.
-* **limit** – int (optional). Maximum number of returned transactions.
+| name | description | type|
+| :------ | :------ | :-----|
+| from | Start date/time for searching. | [date/time](../../getting-started.md#data-types) |
+| to | End date/time for searching. Must be after `from` date. | [date/time](../../getting-started.md#data-types) |
+| limit | Optional. Maximum number of returned transactions. | int |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/transaction/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2021-01-20 08:16:40", "to": "2021-01-28 08:16:40"}'
+    ```
 
 #### response
 
 ```json
 {
   "success": true,
-  "list": [
-     {
-        "description": ,  // transaction description, e.g. "Recharge bonus balance during tracker registration"
-        "type": ,         // type, e.g. "bonus_charge"
-        "subtype": ,      // subtype, e.g. "register"
-        "timestamp": , // date/time at which transaction was created, e.g. "2013-08-02 08:16:40"
-        "user_id": ,         // user Id, e.g. 12203
-        "dealer_id": ,       // dealer Id, e.g. 5001
-        "tracker_id": ,      // tracker id, e.g., 3036, or 0 if transaction is not associated with tracker
-        "amount": ,       // amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units were removed from user`s balance
-        "new_balance": ,  // user`s money balance after transaction, e.g. 800.0000
-        "old_balance": ,  // user`s money balance before transaction, e.g. 810.0000
-        "bonus_amount": , // amount of bonus used in transaction, can be negative. e.g. 10.0000 means 10 bonuses units were added to user`s bonus balance
-        "new_bonus": ,    // user`s bonus balance after transaction, e.g. 10.0000
-        "old_bonus":      // user`s bonus balance before transaction, e.g. 0.0000
-     }, ...
-  ]
+  "list": [{
+     "description": "Recharge bonus balance during tracker registration",
+     "type": "bonus_charge",
+     "subtype": "register",
+     "timestamp": "2021-01-28 08:16:40",
+     "user_id": 12203,
+     "dealer_id": 5001,
+     "tracker_id": 303126,
+     "amount": -10.0000,
+     "new_balance": 800.0000,
+     "old_balance": 810.0000,
+     "bonus_amount": 10.0000,
+     "new_bonus": 10.0000,
+     "old_bonus": 0.0000
+     }]
 }
 ```
 
+* `list` - array of objects. List of [transactions objects](#transaction-object).
+
 #### errors
 
-* 211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
+* 211 – Requested time span is too big - more than **maxReportTimeSpan** config option.

@@ -76,7 +76,7 @@ Where **location** described in [data types description section](../../../gettin
     }
 ```
 
-* `errors` - array of string enum. Status. 
+* `errors` - [enum](../../../getting-started.md#data-types) array. Status. 
     *   `OVER_QUERY_LIMIT` – indicates the service has received too many requests from your application within the 
     allowed time period.
     *   `REQUEST_DENIED` – indicates that the service denied use of the directions service by your application.
@@ -96,7 +96,7 @@ Where **location** described in [data types description section](../../../gettin
     }
 ```
 
-* `errors` - array of string enum. Status.
+* `errors` - [enum](../../../getting-started.md#data-types) array. Status.
     *   `NOT_FOUND` – indicates at least one of the locations specified in the request's origin, destination, or 
     waypoints could not be geocoded.
     *   `ZERO_RESULTS` – indicates no route could be found between the origin and destination.

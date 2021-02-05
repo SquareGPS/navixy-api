@@ -17,7 +17,7 @@ Binds Push token with a current session.
 
 | name | description | type |
 | :----- | :-----  | :----- |
-| application | Application ID, for now it's "navixy_iphone_viewer" or "navixy_android_viewer". | string enum |
+| application | Application ID, for now it's "navixy_iphone_viewer" or "navixy_android_viewer". | [enum](../../../../getting-started.md#data-types) |
 | token | Push token. | string |
 | category_filter | Optional. Push notifications category filter, default is `*`. | string |
 
