@@ -183,7 +183,7 @@ If there is nothing to return, then parameter "external_id_counts" will not be p
         "checkpoint_ids": [2977,2978],
         "type": "route"
     },
-    "external_id_counts": [{external_id: "456", count: 2}]
+    "external_id_counts": [{"external_id": "456", "count": 2}]
 }
 ```
 

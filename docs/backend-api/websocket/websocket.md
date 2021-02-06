@@ -39,13 +39,13 @@ Note what:
 
 In a simplified form, opening the WebSocket using [atmosphere-javascript](https://github.com/Atmosphere/atmosphere-javascript) looks like this:
 
-```json
+```js
 var request = {
     url: 'https://domain.com/event/subscription',
     contentType: "application/json",
     transport: 'websocket'
 };
-atmosphere.subscribe(request)
+atmosphere.subscribe(request);
 ```
 
 Executing this code will lead to send a request

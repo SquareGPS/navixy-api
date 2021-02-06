@@ -24,13 +24,13 @@ Metering sensor
     "divider": 1.0,
     "accuracy": 0,
     "units": "",
-    "units_type": "celsius"
+    "units_type": "celsius",
     "parameters": {
-      "parent_ids": [123042, 123566]
+      "parent_ids": [123042, 123566],
       "volume": 0.7,
       "min": 0.0,
       "max": 12.0,
-      "max_lowering_by_time": 120.0
+      "max_lowering_by_time": 120.0,
       "max_lowering_by_mileage": 120.0
     }
 }

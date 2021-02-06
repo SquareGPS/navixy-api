@@ -41,7 +41,7 @@ it's available for viewing by app user. User will also receive notifications of 
     "tags": [1, 2],
     "type": "task",
     "form": <form_object>,
-    "form_template_id": 13245
+    "form_template_id": 13245,
     "fields": {
         "131312" : {
              "type": "text",
@@ -172,7 +172,7 @@ In case of location_check_mode==entity_location – vehicle_ids will be ignored.
          "arrival_date": "2014-01-02 03:04:05",
          "stay_duration": 0,
          "origin": "imported",
-         "tags": [1, 2]
+         "tags": [1, 2],
          "type": "task",
          "form": <form_object>,
          "errors": [<error_object>]

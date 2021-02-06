@@ -209,7 +209,7 @@ Returns info about all available generated or in-progress reports.
           "to":"23:59:59",
           "weekdays":[1,2,3,4,5,6,7]},
         "title": "Trip report",
-        "id": 5601797
+        "id": 5601797,
         "parameters": { 
           "geocoder": "google",
           "trackers": [669673],

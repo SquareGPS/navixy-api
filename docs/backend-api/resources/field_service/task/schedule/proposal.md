@@ -65,7 +65,7 @@ Get all tasks and routes that will be created by schedule.
          "arrival_date": "2014-01-02 03:04:05",
          "stay_duration": 0,
          "origin": "imported",
-         "tags": [1, 2]
+         "tags": [1, 2],
          "type": "task",
          "form": <form_object>
     }]

@@ -50,7 +50,7 @@ description: /user
     "min_trackers": 10, //min active trackers to apply discount, min 0
     "end_date": "2017-03-01", //discount end date, null means open date, nullable
     "strategy": "sum_with_progressive" // one of no_summing, sum_with_progressive
-  }
+}
 ```
   
 ## change_password

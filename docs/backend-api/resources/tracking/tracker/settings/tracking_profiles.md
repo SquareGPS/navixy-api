@@ -173,7 +173,7 @@ Autofon profile.
     "online_on_ext_power": true,
     "timer1_time" : "2020-09-16 03:17:26",
     "timer1_interval": 15,
-    "timer2_time" : "2020-09-18 03:17:26"
+    "timer2_time" : "2020-09-18 03:17:26",
     "timer2_interval": 30
 }
 ```
@@ -881,10 +881,10 @@ Queclink/Ruslink GL200/GL300 profile
 ```json
 {
     "type": "distance",
-    "tracking_interval": 30
-    "tracking_distance": 100
-    "tracking_angle" : 30
-    "psm_interval": 600
+    "tracking_interval": 30,
+    "tracking_distance": 100,
+    "tracking_angle" : 30,
+    "psm_interval": 600,
     "movement_detection": true,
     "non_movement_duration": 420
 }
@@ -904,9 +904,9 @@ Queclink/Ruslink GL500 profile.
 
 ```json
 {
-    "type": "interval"
-    "tracking_interval": 1
-    "wakeup_time": "10:00"
+    "type": "interval",
+    "tracking_interval": 1,
+    "wakeup_time": "10:00",
     "psm_interval": 8
 }
 ```
@@ -1117,7 +1117,7 @@ Tracking profile with an interval and angle.
 
 ```json
 {
-    "tracking_interval": 30
+    "tracking_interval": 30,
     "tracking_angle" : 30
 }
 ```
@@ -1223,7 +1223,7 @@ Profile for Jointech JT703B
 {
     "tracking_interval": 10,
     "sleep_mode": "enabled",
-    "wakeup_timers": ["10:00:00", "16:00:00"]
+    "wakeup_timers": ["10:00:00", "16:00:00"],
     "sleep_time_in_minutes": 60
 }
 ```
@@ -1316,11 +1316,11 @@ Profile for Navixy M7.
     "type": "interval",
     "psm_mode": 1,
     "tracking_interval": 30,
-    "tracking_distance": 100
+    "tracking_distance": 100,
     "tracking_angle" : 30,
     "psm_interval": 600,
-    "wakeup_timer1": "10:00"
-    "wakeup_timer2": "16:00"
+    "wakeup_timer1": "10:00",
+    "wakeup_timer2": "16:00",
     "wakeup_timer3": "22:00"
 }
 ```
@@ -1647,7 +1647,7 @@ Profile Wireless Links for Piccolo Plus
     "sleep_mode": "disabled",
     "track_by": "interval",
     "tracking_interval": 60,
-    "tracking_distance": 100
+    "tracking_distance": 100,
     "track_by_angle": true,
     "tracking_angle": 30,
     "asset_moving_interval": 300,
@@ -2122,7 +2122,7 @@ Profile for Navixy TT-1.
     "tracking_distance": 100,
     "tracking_angle" : 30,
     "psm_interval": 60,
-    "bat_voltage": "1.5"
+    "bat_voltage": "1.5",
     "bat_psm_interval": 600
 }
 ```

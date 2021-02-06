@@ -100,7 +100,7 @@ where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
 
 ```json
 {
-    "id": 123456
+    "id": 123456,
     "start_date": "2020-09-23 03:39:44",
     "start_address": "1255 6th Ave, New York, NY 10020, USA",
     "max_speed": 62,
@@ -160,7 +160,7 @@ or no normAvgFuelConsumption defined in a vehicle.
 {
     "start_date": "2020-09-24 03:39:44",
     "start_address": "1255 6th Ave, New York, NY 10020, USA",
-    "max_speed": 62
+    "max_speed": 62,
     "end_date": "2020-09-24 06:39:44",
     "end_address": "888 5th Ave, New York, NY 10021, USA",
     "length": 5.5,

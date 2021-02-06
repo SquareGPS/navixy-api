@@ -363,7 +363,7 @@ Gets form associated with the specified task.
 ```
 
 * `value` - [form object](../../form/index.md#form-object), or null if no form attached.
-* `files` - list of files, both submitted and unsibmitted, associated with this form's fields.
+* `files` - list of files, both submitted and unsubmitted, associated with this form's fields.
     * `id` - int. File id.
     * `type` - [enum](../../../../getting-started.md#data-types). Can be "image" or "file".
     * `created` - [date/time](../../../../getting-started.md#data-types). Date when file created.

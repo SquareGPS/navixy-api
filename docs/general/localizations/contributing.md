@@ -34,7 +34,7 @@ You should see crowdin authorization dialog.
 
 ![Authorization dialog](../assets/crowdin-auth-dialog.png)
 
-After uthorization standard Navixy UI will appear in a special translation mode. Click on a little icon near each text
+After authorization standard Navixy UI will appear in a special translation mode. Click on a little icon near each text
 item
 
 ![Translation icon](../assets/little-icon.png)
@@ -54,7 +54,7 @@ Translations in crowdin organized into several directories:
 
 1. Common Server properties, API server properties, Tracking server properties, SMS server properties - translation strings for backend (Mainly for Reports, SMS and Email notifications)
 2. Future Web UI, Legacy Web UI - translation strings for Navixy Web UI.
-3. android-client, android-tracker, navixy-retracker-ios, navixy-viewer-ios - translation strings for mobile apps.
+3. android-client, android-tracker, navixy-tracker-ios, navixy-viewer-ios - translation strings for mobile apps.
 
 Each entry in each directory contains strings for translation, displayed in translation screen
 

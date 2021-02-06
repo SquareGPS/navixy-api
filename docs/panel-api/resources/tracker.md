@@ -431,7 +431,7 @@ The action is considered completed successfully, even if some of the trackers co
 
 | Name | Description  | Type |
 | --- | --- | --- |
-| `trackers` | List of identificators of trackers. Each of these trackers must be a clone and be accessible for current user. |array of integers |
+| `trackers` | Tracker ID list. Each of these trackers must be a clone and be accessible for current user. |array of integers |
 
 **Return**
 
@@ -626,7 +626,7 @@ where `value` is JSON object tracker.
 
 Sends tracker registration commands and resets all tracking settings. Can be executed once in 120 seconds for every tracker.
 
-Device models navixymobile*, mobile_unknown*, iosnavixytracker* are not supported
+Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not supported.
 
 **Required permissions**
 

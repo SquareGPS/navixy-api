@@ -156,7 +156,7 @@ Gets form by an id.
            "lng": 22.0,
            "address": "Wall Street, NY"
          }
-    }
+    },
     "files": [{
       "id": 16,
       "storage_id": 1,

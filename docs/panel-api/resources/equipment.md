@@ -9,11 +9,11 @@ description: /equipment
 
 ```json
 {
-  equip_id: 33, 
-  model_name: "SPT10 SB", 
-  model_code: "pt10", //model code which should be inserted to tracker bundles
-  vendor: "3. NAVIXY S Series (personal)",
-  name: "NAVIXY S10"
+  "equip_id": 33, 
+  "model_name": "SPT10 SB", 
+  "model_code": "pt10", //model code which should be inserted to tracker bundles
+  "vendor": "3. NAVIXY S Series (personal)",
+  "name": "NAVIXY S10"
 }
 ```
     

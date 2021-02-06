@@ -22,7 +22,7 @@ API path: `/user/audit/log`.
   "payload":{"name":"Decimal number"},
   "host":"94.140.138.215",
   "user_agent": "Apache-HttpClient/4.1.1 (java 1.5)",
-  "action_date":"2020-12-21 17:54:01"}
+  "action_date":"2020-12-21 17:54:01"
 }
 ```
 
@@ -90,7 +90,7 @@ If no sort param is specified, then sorting equivalent to option `["action_date=
        "payload":{"name":"Decimal number"},
        "host":"94.140.138.215",
        "user_agent": "Apache-HttpClient/4.1.1 (java 1.5)",
-       "action_date":"2020-12-21 17:54:01"}
+       "action_date":"2020-12-21 17:54:01"
     }]
 }
 ```

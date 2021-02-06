@@ -29,13 +29,14 @@ It will return to you
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": 123456,
       "label": "tracker label",
       "clone": false,
       "group_id": 167,
-      "avatar_file_name" : "file name",
+      "avatar_file_name": "file name",
       "source": {
         "id": 234567,
         "device_id": 9999999988888,
@@ -45,12 +46,14 @@ It will return to you
         "status_listing_id": null,
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
-        "phone" : "+71234567890"
-      }
+        "phone": "+71234567890"
+      },
       "tag_bindings": [{
-      "tag_id": 456789,
-      "ordinal": 4
+          "tag_id": 456789,
+          "ordinal": 4
+       }]
     }]
+}
 ```  
         
 * `id` - int. Tracker id aka object_id.

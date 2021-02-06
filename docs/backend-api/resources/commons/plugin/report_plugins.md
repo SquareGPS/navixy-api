@@ -58,7 +58,7 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
-| shifts | List of shifts with names, start and end time. e.g. `[{"name":"Shift1","start_time":"00:00","end_time":"23:59"}]` | array of objects |
+| shifts | List of shifts with names, start and end time. e.g. `[{"name":"Shift1", "start_time":"00:00", "end_time":"23:59"}]` | array of objects |
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 | show_coordinates | Every address will contain longitude and latitude if `true`. | boolean |
 | split_at_midnight | Split shifts at midnight if `true`. | boolean |
@@ -498,7 +498,22 @@ Plugin-specific parameters:
 
 ```json
 {
-  "event_types":["auto_geofence_in","auto_geofence_out","door_alarm","forward_collision_warning","gps_lost","gps_recover","gsm_damp","harsh_driving","headway_warning","hood_alarm","idle_end","idle_start","ignition","inroute","outroute","lane_departure","obd_plug_in","obd_unplug","peds_collision_warning","peds_in_danger_zone","odometer_set","online","output_change","security_control","tracker_rename","track_end","track_start","tsr_warning","sensor_inrange","sensor_outrange","work_status_change","call_button_pressed","driver_changed","driver_identified","driver_not_identified","fueling","drain","checkin_creation","tacho","antenna_disconnect","check_engine_light","location_response","backup_battery_low","fatigue_driving","inzone","outzone","speedup","alarmcontrol","battery_off","bracelet_close","bracelet_open","case_closed","case_opened","crash_alarm","detach","g_sensor","input_change","light_sensor_bright","light_sensor_dark","lock_closed","lock_opened","lowpower","offline","parking","poweroff","poweron","sos","strap_bolt_cut","strap_bolt_ins","vibration_start","vibration_end","proximity_violation_start","proximity_violation_end","force_location_request","info"]}
+  "event_types":["auto_geofence_in", "auto_geofence_out", "door_alarm",
+    "forward_collision_warning", "gps_lost", "gps_recover", "gsm_damp",
+    "harsh_driving", "headway_warning", "hood_alarm", "idle_end", "idle_start",
+    "ignition", "inroute", "outroute", "lane_departure", "obd_plug_in", "obd_unplug",
+    "peds_collision_warning", "peds_in_danger_zone", "odometer_set", "online",
+    "output_change", "security_control", "tracker_rename", "track_end", "track_start",
+    "tsr_warning", "sensor_inrange", "sensor_outrange", "work_status_change",
+    "call_button_pressed", "driver_changed", "driver_identified", "driver_not_identified",
+    "fueling", "drain", "checkin_creation", "tacho", "antenna_disconnect",
+    "check_engine_light", "location_response", "backup_battery_low", "fatigue_driving",
+    "inzone", "outzone", "speedup", "alarmcontrol", "battery_off", "bracelet_close",
+    "bracelet_open", "case_closed", "case_opened", "crash_alarm", "detach", "g_sensor",
+    "input_change", "light_sensor_bright", "light_sensor_dark", "lock_closed",
+    "lock_opened", "lowpower", "offline", "parking", "poweroff", "poweron", "sos",
+    "strap_bolt_cut", "strap_bolt_ins", "vibration_start", "vibration_end", "proximity_violation_start",
+    "proximity_violation_end", "force_location_request", "info"]
 }
 ```
 

@@ -22,6 +22,7 @@ API path: `/driver/journal/entry`.
         "lat": 11.0,
         "lng": 22.0,
         "address": "address value"
+    },
     "end_location": {
         "lat": 11.0,
         "lng": 22.0,
@@ -92,7 +93,7 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
 {
     "success": true,
     "list": [{
-        "id":127722,
+        "id": 127722,
         "tracker_id": 1,
         "start_date": "2020-10-13 07:03:39",
         "end_date": "2020-10-14 08:05:02",
@@ -100,13 +101,14 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
         "type": "work",
         "comment": null,
         "start_location": {
-         "lat": 23.25658,
-         "lng": 21.89892,
-         "address": "address"
+            "lat": 23.25658,
+            "lng": 21.89892,
+            "address": "address"
+        },
         "end_location": {
-         "lat": 23.26227,
-         "lng": 21.59321,
-         "address": "address"
+            "lat": 23.26227,
+            "lng": 21.59321,
+            "address": "address"
         },
         "length": 1.44,
         "start_odometer": 1.34,

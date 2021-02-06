@@ -101,6 +101,6 @@ Updates counter of passed `type`.
  * if sensor with specified `sensor_id` is not a metering sensor.
  * if sensor with specified `sensor_id` belongs to another tracker.
  * if `sensor_id` is negative.
- * if sensor with such a `sensor_id` is not exist.
+ * if sensor with such a `sensor_id` is not exists.
  * if type value is not one of list above.
 

@@ -43,7 +43,7 @@ Check-ins cannot be created using web API, so all actions are read-only.
         "mime_type": "image/png",
         "metadata": {
           "orientation": 1
-        }
+        },
         "state": "uploaded",
         "download_url": "https://static.navixy.com/file/dl/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg"
     }],
@@ -138,7 +138,7 @@ Get check-in which id is equal to `checkin_id`.
          "mime_type": "image/png",
          "metadata": {
            "orientation": 1
-         }
+         },
          "state": "uploaded",
          "download_url": "https://static.navixy.com/file/dl/1/0/1g/01gw2j5q7nm4r92dytolzd6koxy9e38v.png/lala.jpg"
         }],

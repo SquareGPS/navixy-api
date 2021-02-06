@@ -8,7 +8,7 @@ description: Retranslator
 
 ```json
 {
-    "retranslator_id": 4548
+    "retranslator_id": 4548,
     "fake_device_id": "AI568T"
 }
 ```
@@ -95,8 +95,8 @@ List tracker retranslators bound to tracker with ID=`tracker_id`.
 {
    "success": true,
    "list": [{
-    "retranslator_id": 4548
-      "fake_device_id": "AI568T"
+     "retranslator_id": 4548,
+     "fake_device_id": "AI568T"
    }]
 }
 ```

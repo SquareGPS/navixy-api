@@ -247,62 +247,63 @@ Autocontrol related tracked rules.
 ???+ example "Map of sub-rules settings"
 ```json
 {
-"alarmcontrol": {
+  "alarmcontrol": {
     "enabled": true,
     "sms": false,
     "call": false,
     "email": true,
     "push": true,
     "always_notify": false
-},
-"battery_off": {
+  },
+  "battery_off": {
     "enabled": true,
     "sms": true,
     "call": false,
     "email": true,
     "push": true
-},
-"door_alarm": {
+  },
+  "door_alarm": {
     "enabled": true,
     "sms": false,
     "call": false,
     "email": true,
     "push": true
-},
-"hood_alarm": {
+  },
+  "hood_alarm": {
     "enabled": true,
     "sms": false,
     "call": false,
     "email": true,
     "push": true
-},
-"ignition": {
+  },
+  "ignition": {
     "enabled": true,
     "sms": false,
     "call": false,
     "email": true,
     "push": true
-},
-"parking": {
+  },
+  "parking": {
     "enabled": true,
     "sms": false,
     "call": false,
     "email": true,
     "push": true
-},
-"gsm_damp": {
+  },
+  "gsm_damp": {
     "enabled": true,
     "sms": false,
     "call": false,
     "email": true,
     "push": true
-},
-"security_control": {
+  },
+  "security_control": {
     "enabled": true,
     "sms": false,
     "call": false,
     "email": true,
     "push": true
+  }
 }
 ```
 

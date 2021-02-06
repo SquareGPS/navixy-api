@@ -100,7 +100,7 @@ Gets place by ID.
                   "type": "text",
                   "value":  "I love text!"
              }
-        }
+        },
          "label": "Crown Building",
          "description": "Here we buy our goods",
          "tags": [ 1, 2 ],
@@ -325,11 +325,11 @@ If `file_id` is set – `batch` parameter will be ignored.
                     "type": "text",
                     "value":  "I love text!"
                }
-          }
+           },
            "label": "Crown Building",
            "description": "Here we buy our goods",
            "tags": [ 1, 2 ],
-           "external_id": "1"
+           "external_id": "1",
            "errors": <array_of_objects>,
            "tag_names": <array_of_strings>
     }],

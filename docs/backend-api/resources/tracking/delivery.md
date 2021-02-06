@@ -136,7 +136,7 @@ in addition to standard user session, this call supports special *DELIVERY* sess
           "arrival_date": "2014-01-02 03:04:05",
           "stay_duration": 0,
           "origin": "imported",
-          "tags": [1, 2]
+          "tags": [1, 2],
           "type": "task",
         },
         "tracker" : {
@@ -155,10 +155,10 @@ in addition to standard user session, this call supports special *DELIVERY* sess
             "creation_date": "2011-09-21",
             "tariff_end_date": "2016-03-24",
             "phone" : "+71234567890"
-          }
+          },
           "tag_bindings": [{
-          "tag_id": 456789,
-          "ordinal": 4
+            "tag_id": 456789,
+            "ordinal": 4
           }]
         },
         "first_name": "John",
