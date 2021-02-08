@@ -48,7 +48,7 @@ Only session `hash`.
 
 * `id` - int. An id of notification.
 * `message` - string. Message of notification.
-* `show_till` - string date/time. Date until notification should be showed.
+* `show_till` - date/time. Date until notification should be showed.
 
 #### errors
 

@@ -73,7 +73,7 @@ If file created but not uploaded, it will be deleted after date/time specified i
 
 * `file_id` - int. This value will be submitted as form's field value.
 * `url` - string. An url to which POST form-data with file contents should be executed.
-* `expires` - string date/time. After this date file record wil expire and upload requests will be rejected.
+* `expires` - date/time. After this date file record wil expire and upload requests will be rejected.
 * `file_field_name` - string. Name for file field in POST upload request.
 * `fields` - these fields should be passed as additional fields in POST multipart upload request, field with a file 
 must be the last one.

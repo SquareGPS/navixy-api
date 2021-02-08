@@ -17,7 +17,7 @@ Returns available history event types with localized descriptions.
 
 | name | description | type |
 | :----- | :-----  | :----- |
-| locale | Locale code to set language of descriptions. | string enum |
+| locale | Locale code to set language of descriptions. | [enum](../../../getting-started.md#data-types) |
 | only_tracker_events | Optional. Default is `true`. Will return only tracker type events if `true`. | boolean |
 
 #### example

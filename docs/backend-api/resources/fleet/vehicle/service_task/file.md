@@ -18,7 +18,7 @@ Creates a file to specify its id in service task later.
 | filename | Optional. If specified, uploaded file will have the specified name. If not, name will be taken from actual file upload form. | string |
 | size | Maximum size in bytes for the file which will be uploaded. This is needed to "reserve" the space for file in user's disk space quota. | int |
 | metadata | Optional. Metadata object. See [task/form](../../../field_service/task/form/index.md#read). | JSON object |
-| type | Can be "image" or "file". Default is "file". | string enum |
+| type | Can be "image" or "file". Default is "file". | [enum](../../../../getting-started.md#data-types) |
 
 #### response
 

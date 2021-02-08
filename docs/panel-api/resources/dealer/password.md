@@ -7,7 +7,7 @@ API base path: `/dealer/password`
 
 ## update
 
-Changes password for logined dealer. 
+Changes password for authorized dealer. 
 
 #### required permissions:
 

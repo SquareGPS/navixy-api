@@ -60,7 +60,7 @@ Retrieve generated report as a file.
 | name | description | type |
 | :------ | :------ | :----- |
 | report_id | Id of a report that should be deleted. | int |
-| format | A format of report that should be downloaded. Can be "xls", xlsx" or "pdf". | string enum | 
+| format | A format of report that should be downloaded. Can be "xls", xlsx" or "pdf". | [enum](../../../getting-started.md#data-types) | 
 | headless | Optional parameter. Default=`false`. If need report without title page and TOC, set it to `true`. | boolean |
 
 #### examples
@@ -209,7 +209,7 @@ Returns info about all available generated or in-progress reports.
           "to":"23:59:59",
           "weekdays":[1,2,3,4,5,6,7]},
         "title": "Trip report",
-        "id": 5601797
+        "id": 5601797,
         "parameters": { 
           "geocoder": "google",
           "trackers": [669673],
@@ -250,7 +250,7 @@ Returns info about all available generated or in-progress reports.
     * `plugins` - array of objects. List of parameters for all plugins which were used to generate report.
     * `locale_info` - object with information about the locale, timezone, and measurement system used for the report.
 * `percent` - int. Report readiness in percent.
-* `type` - string enum. Type of created report.
+* `type` - [enum](../../../getting-started.md#data-types). Type of created report.
 * `from` - string. "from" parameter from generate.
 * `to` - string. "to" parameter from generate.
 

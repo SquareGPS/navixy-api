@@ -99,8 +99,8 @@ Convert batch of tab-delimited circle zones and return list of checked zones wit
 | :------ | :------ | :----- |
 | batch | Batch of tab-delimited places. | string |
 | file_id | ID of file preloaded with [/data/spreadsheet/parse](../../commons/data.md#dataspreadsheetparse) method. | string |
-| fields | Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "tags"]`. | array of string enum |
-| geocoder | Optional. Geocoder type. | string enum |
+| fields | Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "tags"]`. | [enum](../../../getting-started.md#data-types) array |
+| geocoder | Optional. Geocoder type. | [enum](../../../getting-started.md#data-types) |
 | default_radius | Optional. Radius for point, default is 100. | int |
 
 If 'file_id' is set – 'batch' parameter will be ignored.

@@ -18,3 +18,5 @@ needs but also help you make your business more profitable.
 * [How to get tracker list](./get-tracker-list.md)
 * [How to get track points](./get-track-points.md)
 * [How to obtain report's information](./how-to-obtain-information-from-report.md)
+* [How to use rules](./how-to-create-a-rule.md)
+* [How to work with notifications](./how-to-work-with-notifications.md)

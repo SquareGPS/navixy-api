@@ -1,7 +1,7 @@
 # App: Delivery
 
 **Delivery** is a special plugin which can be embedded to any other application or website and
- allow to track user's task by external ID and bounded tracker in the real time.
+ allows track user's task by external ID and bounded tracker in the real time.
 
 ##Usage
 

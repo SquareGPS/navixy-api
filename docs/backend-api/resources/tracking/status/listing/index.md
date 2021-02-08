@@ -140,7 +140,7 @@ Updates status listing properties.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| listing | [status_listing](../../status/index.md#Status_listing-object-structure) object with "id" and "entries" fields. | JSON object |
+| listing | [status_listing](../../status/index.md#status-listing-object-structure) object with "id" and "entries" fields. | JSON object |
 
 #### examples
 

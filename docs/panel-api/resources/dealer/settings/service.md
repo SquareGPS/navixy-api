@@ -37,7 +37,7 @@ Get current monitoring service settings.
     "favicon": "paas/5001/custom.ico",  //nullable, path or url to dealer's interface favicon, 
                                         // e.g. "http://test.com/favicon.ico"
     "app_logo": "paas/5001/app_logo.png",       //nullable, path or url to dealer's mobile app logotype, 
-    "logo": "paas/5001/logo.png",       /nullable,/ path or url to dealer's logotype, 
+    "logo": "paas/5001/logo.png",       //nullable, path or url to dealer's logotype, 
                                         // e.g. "http://test.com/logo.png"
     "document_logo": "paas/5001/document_logo.png",       //nullable, path or url to dealer's logotype for documents, 
     "login_wallpaper": "paas/5001/login.png", //nullable, path or url to dealer's interface login wallpaper, 

@@ -1,7 +1,7 @@
 # App: Web Locator
 
 "Web Locator" is a special plugin which can be embedded to any other application or website 
-and allow to track user's objects on the map in real-time.
+and allows track user's objects on the map in real-time.
 
 ## Example
 
@@ -72,7 +72,7 @@ with switched on autoscaling.
 
 ### Map choice
 
-You can define a cartographical substrate
+You can define a cartographic substrate
 
 `map`:
 

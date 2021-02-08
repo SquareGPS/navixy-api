@@ -100,7 +100,7 @@ Gets place by ID.
                   "type": "text",
                   "value":  "I love text!"
              }
-        }
+        },
          "label": "Crown Building",
          "description": "Here we buy our goods",
          "tags": [ 1, 2 ],
@@ -325,11 +325,11 @@ If `file_id` is set – `batch` parameter will be ignored.
                     "type": "text",
                     "value":  "I love text!"
                }
-          }
+           },
            "label": "Crown Building",
            "description": "Here we buy our goods",
            "tags": [ 1, 2 ],
-           "external_id": "1"
+           "external_id": "1",
            "errors": <array_of_objects>,
            "tag_names": <array_of_strings>
     }],
@@ -354,15 +354,15 @@ Upload places.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV file upload (with the name "file").
 
-CSV column separator is `;`, columns order – `label;tags;address;lat;lng;radius;external_id;description`
+CSV column separator is `;`, columns header required – `label;address;lat;lng;radius;external_id;description`
 
 #### parameters
 
 | name | description | type |
 | :--- | :--- | :--- |
 | file | A CSV file upload containing places data. | File upload |
-| error_policy| Error policy. | string |
-| duplicate_policy | Duplicate policy. | string |
+| error_policy| `ignore` or `fail` | string |
+| duplicate_policy | `skip` or `update` or `fail`, **belongs only to external_id duplicates** | string |
 | default_radius | Optional, radius for point, meters, default is 100. | int |
 | geocoder | Geocoder type. | string |
 | redirect_target | Optional URL to redirect. If `redirect_target` passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string |

@@ -74,7 +74,7 @@ A `task` object is:
         * `limit` - int. Task limit in kilometers.
         * `notification_interval` - int. Notify about task in specified number of kilometers.
     * `date` - optional date condition object. 
-        * `end` - string date/time. Task end date.
+        * `end` - [date/time](../../../../getting-started.md#data-types). Task end date.
         * `notification_interval` - int. Notify about task in specified number of days.
     * `engine_hours` - optional engine hours condition object.
         * `limit` - int. Task limit in hours.
@@ -163,7 +163,7 @@ A `task` object is:
         * `limit` - int. Task limit in kilometers.
         * `notification_interval` - int. Notify about task in specified number of kilometers.
     * `date` - optional date condition object. 
-        * `end` - string date/time. Task end date.
+        * `end` - [date/time](../../../../getting-started.md#data-types). Task end date.
         * `notification_interval` - int. Notify about task in specified number of days.
     * `engine_hours` - optional engine hours condition object.
         * `limit` - int. Task limit in hours.
@@ -247,9 +247,9 @@ Creates pdf report of service tasks.
 
 | name | description | type |
 | :------ | :------ | :----- |
-| order_by | Sort option. Possible values listed below | string enum |
+| order_by | Sort option. Possible values listed below | [enum](../../../../getting-started.md#data-types) |
 | ascending | Optional. Default is `true`. Sort direction. | boolean |
-| group_by | Optional. Group by option. Can be "vehicle" or "status" | string enum |
+| group_by | Optional. Group by option. Can be "vehicle" or "status" | [enum](../../../../getting-started.md#data-types) |
 
 * `order_by` possible values:
     * "vehicle" - order by `vehicle_id`.
@@ -361,19 +361,19 @@ List all service tasks of all user vehicles.
 
 * `id` - int. An id of created task.
 * `vehicle_label` - string. Vehicle label.
-* `status` - string enum. [Status](#task-status).
+* `status` - [enum](../../../../getting-started.md#data-types). [Status](#task-status).
 * `prediction` - optional object. Legacy field, is not used anymore. check return_prediction parameter.
-    * `end_date` - string date/time. Predicted end date.
+    * `end_date` - [date/time](../../../../getting-started.md#data-types). Predicted end date.
     * `wear_percentage` - int. Wear percentage.
 * `completion` - object. Date and counter's values when the task marked as done. Non-editable.
-* `completion_date` - string date/time. Date when a service task completed.
+* `completion_date` - [date/time](../../../../getting-started.md#data-types). Date when a service task completed.
 * `current_position` - object. Current position values.
     * `mileage` - int. Current mileage.
-    * `date` - string date/time. Current date.
+    * `date` - [date/time](../../../../getting-started.md#data-types). Current date.
     * `engine_hours` - int. Current engine hours.
 * `start` - object. Consists initial values.
     * `mileage` - int. Initial odometer value for tasks with mileage condition.
-    * `date` - string date/time. Task creation date for tasks with date condition.
+    * `date` - [date/time](../../../../getting-started.md#data-types). Task creation date for tasks with date condition.
     * `engine_hours` - int. Initial engine hours value for tasks with engine hours condition.
 * `vehicle_id` - int. An id of associated vehicle.
 * `description` - string. Name of a service task. Max 255 characters.
@@ -384,7 +384,7 @@ List all service tasks of all user vehicles.
         * `limit` - int. Task limit in kilometers.
         * `notification_interval` - int. Notify about task in specified number of kilometers.
     * `date` - optional date condition object. 
-        * `end` - string date/time. Task end date.
+        * `end` - [date/time](../../../../getting-started.md#data-types). Task end date.
         * `notification_interval` - int. Notify about task in specified number of days.
     * `engine_hours` - optional engine hours condition object.
         * `limit` - int. Task limit in hours.
@@ -509,7 +509,7 @@ Updates task status, snd saved (on `done` **status**) current date and values of
 | name | description | type |
 | :------ | :------ | :----- |
 | task_id | Id of service task. | int |
-| status | A new task status. Only `done` status allowed for now. | string enum |
+| status | A new task status. Only `done` status allowed for now. | [enum](../../../../getting-started.md#data-types) |
 
 #### examples
 

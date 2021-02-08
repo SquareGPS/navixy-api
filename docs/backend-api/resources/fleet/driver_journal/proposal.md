@@ -62,8 +62,8 @@ Tracks selected by intersecting their date range with date range from request (`
 
 * `tracker_id` - int. An id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. 
 * `employee_id` - nullable int. An id of employee (driver).
-* `start_date` - string date/time. Start date of a journal entry.
-* `end_date` - string date/time. End date of a journal entry.
+* `start_date` - [date/time](../../../getting-started.md#data-types). Start date of a journal entry.
+* `end_date` - [date/time](../../../getting-started.md#data-types). End date of a journal entry.
 * `start_location` - location object. Where entry starts.
 * `end_location` - location object. Where entry ends.
 * `length` - float. Length of the trip km.

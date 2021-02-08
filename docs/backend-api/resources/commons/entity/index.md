@@ -35,7 +35,7 @@ API path: `/entity`.
 ```
 
 `id` - int. Entity identifier.
-`type` - string enum. Currently, only "place" is supported.
+`type` - [enum](../../../getting-started.md#data-types). Currently, only "place" is supported.
 `layout` - object describes layout of fields for entity.
     `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
     `label` - string. Name of section.

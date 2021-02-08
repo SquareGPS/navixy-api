@@ -58,7 +58,7 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
-| shifts | List of shifts with names, start and end time. e.g. `[{"name":"Shift1","start_time":"00:00","end_time":"23:59"}]` | array of objects |
+| shifts | List of shifts with names, start and end time. e.g. `[{"name":"Shift1", "start_time":"00:00", "end_time":"23:59"}]` | array of objects |
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 | show_coordinates | Every address will contain longitude and latitude if `true`. | boolean |
 | split_at_midnight | Split shifts at midnight if `true`. | boolean |
@@ -222,7 +222,7 @@ Plugin-specific parameters:
 | name | description | type |
 | ------ | ------------- | ------ |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
-| graph_type | The type of X-axis. Can be "time" or "mileage". | string enum |
+| graph_type | The type of X-axis. Can be "time" or "mileage". | [enum](../../../getting-started.md#data-types) |
 | detailed_by_dates | If `true` show final data on fuel traffic for each day in the period. | boolean |
 | include_summary_sheet_only | If `true` the report will contain only a summary sheet for all chosen devices. | boolean |
 | use_ignition_data_for_consumption | Calculate consumption only when the ignition was on if `true`. | boolean |
@@ -265,7 +265,7 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | details_interval_minutes | The interval in minutes. Can be `[30, 60, 180, 360]`. | int |
-| graph_type | The type of X-axis. Can be "time" or "mileage". | string enum |
+| graph_type | The type of X-axis. Can be "time" or "mileage". | [enum](../../../getting-started.md#data-types) |
 | smoothing | Smooth data if `true`. | boolean |
 | sensors | List of objects containing tracker_id and sensor_id. | array of objects |
 
@@ -343,7 +343,7 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | details_interval_minutes | The interval in minutes. Can be `[5, 30, 60, 180, 360]`. | int |
-| graph_type | The type of X-axis. Can be "time" or "mileage". | string enum |
+| graph_type | The type of X-axis. Can be "time" or "mileage". | [enum](../../../getting-started.md#data-types) |
 | smoothing | Smooth data if `true`. | boolean |
 | show_address | Address of each reading appears in report if `true`. | boolean |
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
@@ -475,7 +475,7 @@ Plugin-specific parameters:
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 | include_summary_sheet_only | If `true` the report will contain only a summary sheet for all chosen devices. | boolean |
-| group_type | A group type. Can be "province" or "country". | string enum |
+| group_type | A group type. Can be "province" or "country". | [enum](../../../getting-started.md#data-types) |
 
 ### Report on all events
 
@@ -498,7 +498,22 @@ Plugin-specific parameters:
 
 ```json
 {
-  "event_types":["auto_geofence_in","auto_geofence_out","door_alarm","forward_collision_warning","gps_lost","gps_recover","gsm_damp","harsh_driving","headway_warning","hood_alarm","idle_end","idle_start","ignition","inroute","outroute","lane_departure","obd_plug_in","obd_unplug","peds_collision_warning","peds_in_danger_zone","odometer_set","online","output_change","security_control","tracker_rename","track_end","track_start","tsr_warning","sensor_inrange","sensor_outrange","work_status_change","call_button_pressed","driver_changed","driver_identified","driver_not_identified","fueling","drain","checkin_creation","tacho","antenna_disconnect","check_engine_light","location_response","backup_battery_low","fatigue_driving","inzone","outzone","speedup","alarmcontrol","battery_off","bracelet_close","bracelet_open","case_closed","case_opened","crash_alarm","detach","g_sensor","input_change","light_sensor_bright","light_sensor_dark","lock_closed","lock_opened","lowpower","offline","parking","poweroff","poweron","sos","strap_bolt_cut","strap_bolt_ins","vibration_start","vibration_end","proximity_violation_start","proximity_violation_end","force_location_request","info"]}
+  "event_types":["auto_geofence_in", "auto_geofence_out", "door_alarm",
+    "forward_collision_warning", "gps_lost", "gps_recover", "gsm_damp",
+    "harsh_driving", "headway_warning", "hood_alarm", "idle_end", "idle_start",
+    "ignition", "inroute", "outroute", "lane_departure", "obd_plug_in", "obd_unplug",
+    "peds_collision_warning", "peds_in_danger_zone", "odometer_set", "online",
+    "output_change", "security_control", "tracker_rename", "track_end", "track_start",
+    "tsr_warning", "sensor_inrange", "sensor_outrange", "work_status_change",
+    "call_button_pressed", "driver_changed", "driver_identified", "driver_not_identified",
+    "fueling", "drain", "checkin_creation", "tacho", "antenna_disconnect",
+    "check_engine_light", "location_response", "backup_battery_low", "fatigue_driving",
+    "inzone", "outzone", "speedup", "alarmcontrol", "battery_off", "bracelet_close",
+    "bracelet_open", "case_closed", "case_opened", "crash_alarm", "detach", "g_sensor",
+    "input_change", "light_sensor_bright", "light_sensor_dark", "lock_closed",
+    "lock_opened", "lowpower", "offline", "parking", "poweroff", "poweron", "sos",
+    "strap_bolt_cut", "strap_bolt_ins", "vibration_start", "vibration_end", "proximity_violation_start",
+    "proximity_violation_end", "force_location_request", "info"]
 }
 ```
 
