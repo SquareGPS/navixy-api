@@ -431,7 +431,7 @@ The action is considered completed successfully, even if some of the trackers co
 
 | Name | Description  | Type |
 | --- | --- | --- |
-| `trackers` | Tracker ID list. Each of these trackers must be a clone and be accessible for current user. |array of integers |
+| `trackers` | Tracker ID list. Each of these trackers must be a clone and be accessible for current user. | int array |
 
 **Return**
 

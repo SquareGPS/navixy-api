@@ -77,13 +77,13 @@ sorting by time if necessary.
 
 The necessary parameters for the call:
 
-* `trackers` - an array of int. A list of tracker ids belong to user for which events will be searched.
+* `trackers` - an int array. A list of tracker ids belong to user for which events will be searched.
 * `from` - a string containing the start date/time for searching.
 * `to` - a string containing the end date/time of searching. Must be after "from" date.
 
 Optional parameters that could be used to get more specific information:
 
-* `events` - an array of string with necessary event types. All other events will be ignored. Default: all. To get the 
+* `events` - a string array with necessary event types. All other events will be ignored. Default: all. To get the 
 list of events use [tracker/history/type](../resources/commons/history/history_type.md#list) call. 
 * `limit` - integer with a maximum count of entries in result.
 * `ascending` - a boolean where sort ascending by time when it is `true` and descending when `false`.

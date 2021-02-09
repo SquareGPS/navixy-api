@@ -18,7 +18,7 @@ Downloads track points as KML/KMZ file for the specified track ID, tracker and t
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | `123456` |
 | from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | [date/time](../../../getting-started.md#data-types) | `"2020-09-23 03:24:00"` |
 | to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | [date/time](../../../getting-started.md#data-types) | `"2020-09-23 06:24:00"` |
-| track_ids | Optional. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned. | array of int | `[123456, 234567]` | 
+| track_ids | Optional. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned. | int array | `[123456, 234567]` | 
 | include_gsm_lbs | Optional. If `false` && track_ids not specified, GSM LBS points will be filtered out. Default=`true`. | boolean | `true` |
 | point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. | int | `300` |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | `true` |

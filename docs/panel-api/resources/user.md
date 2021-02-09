@@ -174,7 +174,7 @@ entities will be returned only if filter string is contained within one of the f
 | `offset` | Starting offset, used for pagination | int, optional (default: 0) |
 | `hide_inactive` | If true only activated users will be returned |  boolean, optional (default: false) |
 | `format` | xlsx or csv | string, optional (default: xlsx) |
-| `columns` | list of columns to export | array of string, (default: ["id", "login", "first_name", "middle_name", "last_name", "phone"]) |
+| `columns` | list of columns to export | string array, (default: ["id", "login", "first_name", "middle_name", "last_name", "phone"]) |
 
 About user object structure see [above](#data-structures).
 

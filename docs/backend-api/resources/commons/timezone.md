@@ -50,7 +50,7 @@ Information about all supported timezones for the specified locale. Does not req
 * `base_offset` - double. Base timezone offset in hours, e.g. 10 means UTC +10. May be negative or fractional!
 * `dst_offset` - int. DST offset in hours (0 if no DST rules for this timezone).
 * `country_code` - string. ISO country code for the timezone.
-* `alt_ids` - array of string. List of strings, optional, alternative timezone IDs.
+* `alt_ids` - string array. List of strings, optional, alternative timezone IDs.
 
 #### errors
 

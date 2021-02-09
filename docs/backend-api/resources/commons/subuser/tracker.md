@@ -21,7 +21,7 @@ Gives access for sub-user to the specified trackers.
 | name | description | type |
 | :----- | :-----  | :----- |
 | subuser_id | Id of the sub-user belonging to current account. | int |
-| trackers | List of tracker ids to associate with the specified sub-user. All trackers must belong to current master user. | array of int |
+| trackers | List of tracker ids to associate with the specified sub-user. All trackers must belong to current master user. | int array |
 
 #### examples
 
@@ -92,7 +92,7 @@ Gets a list of tracker ids to which this sub-user has access.
 }
 ```
 
-* `list` - array of int. List of tracker ids to which this sub-user has access.
+* `list` - int array. List of tracker ids to which this sub-user has access.
 
 #### errors
 
@@ -112,7 +112,7 @@ Disables access for sub-user to the specified trackers.
 | name | description | type |
 | :----- | :-----  | :----- |
 | subuser_id | Id of the sub-user belonging to current account. | int |
-| trackers | List of tracker ids to associate with the specified sub-user. All trackers must belong to current master user. | array of int |
+| trackers | List of tracker ids to associate with the specified sub-user. All trackers must belong to current master user. | int array |
 
 #### examples
 

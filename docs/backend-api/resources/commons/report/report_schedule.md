@@ -51,7 +51,7 @@ API path: `/report/schedule`.
 * `id` - int. Schedule id, ignored on create.
 * `enabled` - boolean. `true` if the scheduled report enabled.
 * `period` - string. Report period, "Xm" | "w" | "d" | "y".
-* `emails` - optional array of string. List of emails.
+* `emails` - optional string array. List of emails.
 * `email_format` - [enum](../../../getting-started.md#data-types). Can be "pdf" | "xls".
 * `sending_time` - optional string. Local time for sending reports, default "00:00:00", hourly granularity.
 * `fire_time` - optional string. Last schedule fire time, ignored on create/update.

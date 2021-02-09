@@ -45,9 +45,9 @@ Metering sensor
 * `units` - string.
 * `units_type` - [enum](../../../../getting-started.md#data-types). Units type for a sensor.
 * `parameters` - optional object with additional parameters.
-    * `parent_ids` - optional array of parent_ids for composite sensor.
+    * `parent_ids` - optional parent_ids array for composite sensor.
     * `volume` - double. Optional. Volume for composite sensor.
-    * `parent_ids` - optional. Array of int. Array of `parent_ids` for composite sensor.
+    * `parent_ids` - optional int array. Array of `parent_ids` for composite sensor.
     * `volume` - optional. Double. Volume for composite sensor.
     * `min` - optional. Double. Min acceptable raw value for a sensor.
     * `max` - optional. Double. Max acceptable raw value for a sensor.
@@ -80,7 +80,7 @@ There exist a similar method for working with a single tracker - [list](#list).
 #### parameters
 | Name | Description | Type |
 | --- | --- | --- |
-| trackers | Set of tracker identificators. Each of the relevant trackers must be accessible to the authorized user and not be blocked. Number of trackers (length of array) is limited to a maximum of 500 (this number may be changed in future). | array of ints |
+| trackers | Set of tracker identificators. Each of the relevant trackers must be accessible to the authorized user and not be blocked. Number of trackers (length of array) is limited to a maximum of 500 (this number may be changed in future). | int array |
 
 #### response
 Contains a map, where keys are IDs from **trackers** parameter and values are lists of [sensor](#sensor) objects.

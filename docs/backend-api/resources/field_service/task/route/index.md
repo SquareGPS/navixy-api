@@ -43,8 +43,8 @@ completed with warnings or failed.
 * `status` - string. A route status. *IGNORED* in route/create, route/update.
 * `status_change_date` - [date/time](../../../../getting-started.md#data-types). When route status changed. *IGNORED* in route/create, route/update.
 * `origin` - string. A route origin. *IGNORED* in route/create, route/update.
-* `tags` - array of int. List of tag ids.
-* `checkpoint_ids` - array of int. List of route checkpoint ids in order of execution. *IGNORED* in route/create.
+* `tags` - int array. List of tag ids.
+* `checkpoint_ids` - int array. List of route checkpoint ids in order of execution. *IGNORED* in route/create.
 
 ## API actions
 
@@ -187,7 +187,7 @@ If there is nothing to return, then parameter "external_id_counts" will not be p
 }
 ```
 
-* `checkpoint_ids` - array of int. A list of route checkpoint ids in order of execution.
+* `checkpoint_ids` - int array. A list of route checkpoint ids in order of execution.
 * `external_id_counts` - optional object. Count of external ids.
  
 #### errors
@@ -244,7 +244,7 @@ Get all routes belonging to user with optional filtering.
 | name | description | type | 
 | :--- | :--- | :--- |
 | statuses | Optional. List of task statuses, e.g. `["unassigned","failed"]`. Default all. | [enum](../../../../getting-started.md#data-types) array |
-| trackers | Optional. List of `tracker_id` to which task assigned. | array of int |
+| trackers | Optional. List of `tracker_id` to which task assigned. | int array |
 | from | Optional. Show tasks which are actual AFTER this date, e.g. "2020-06-01 00:00:00". | [date/time](../../../../getting-started.md#data-types) |
 | to | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00". | [date/time](../../../../getting-started.md#data-types) |
 | filter | Optional. Filter for task label and description. If **trackers**, **filter**, **from** or **to** is not passed or _null_ then appropriate condition not used to filter results. | string |

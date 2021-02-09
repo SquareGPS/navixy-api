@@ -81,7 +81,7 @@ Marks all incoming chat messages as read for all or for given user trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Optional array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | array of int | `[999199, 999919]` |
+| trackers | Optional array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
 
 #### examples
 
@@ -118,7 +118,7 @@ Marks incoming chat message as read by `message_id` or array of `message_ids`.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | message_id | Id of incoming message. | int | 123 |
-| message_ids | Ids of incoming messages. | array of int | `[123,213]` |
+| message_ids | Ids of incoming messages. | int array | `[123,213]` |
 
 Use only one parameter.
 
@@ -196,7 +196,7 @@ Sends chat message to specified trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | `[999199, 999919]` |
+| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
 | message | Message text, not null, max size - 20000. | string | "Hello World" |
 
 #### examples
@@ -235,7 +235,7 @@ Gets date-times of last messages in chat of trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | array of int | [999199, 999919] |
+| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
 
 #### examples
 

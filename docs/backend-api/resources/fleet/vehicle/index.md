@@ -87,7 +87,7 @@ API path: `/vehicle`.
 * `free_insurance_valid_till` - string date. The date till free insurance valid.
 * `icon_id` - nullable int. Can only be updated via [avatar/assign](../vehicle/avatar.md#assign).
 * `avatar_file_name` - string. File name.
-* `tags` - array of int. List of tag ids.
+* `tags` - int array. List of tag ids.
 
 ???+ example "Subtypes:"
     ```
@@ -378,7 +378,7 @@ name | description | type
 --- | --- | ---
 batch | batch of tab-delimited vehicles. | String
 file_id | preloaded file ID | String
-fields | Optional, array of field names, default is `["label", "model", "reg_number", "fuel_grade"]` | array of strings
+fields | Optional, array of field names, default is `["label", "model", "reg_number", "fuel_grade"]` | string array
 geocoder | geocoder type | String
 
 
