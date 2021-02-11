@@ -25,7 +25,7 @@ Creates multiple service tasks.
 
 | name | description | type |
 | :------ | :------ | :----- |
-| vehicle_ids | List of vehicle ids. Task will be created for every vehicle.  | array of int |
+| vehicle_ids | List of vehicle ids. Task will be created for every vehicle.  | int array |
 | task | Service task to create. `vehicle_id` field in these objects should not be specified. | JSON object |
 
 A `task` object is:
@@ -80,13 +80,13 @@ A `task` object is:
         * `limit` - int. Task limit in hours.
         * `notification_interval` - int. Notify about task in specified number of hours.
 * `notifications` - notifications object.
-    * `sms_phones` - array of string. Phones where sms notifications should be sent. In the international format without
+    * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format without
      `+` sign.
-    * `emails` - array of string. Email addresses where sms notifications should be sent.
+    * `emails` - string array. Email addresses where sms notifications should be sent.
     * `push_enabled` - boolean. If `true` push notifications enabled.
 * `repeat` - boolean. If `true` then new task will be created when current task done.
 * `unplanned` - boolean. If `true` service task is unplanned. For information only.
-* `file_ids` - array of int. One file will be specified in many service tasks. If one of the tasks will be deleted, 
+* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted, 
 then file will remain in others. File will be deleted only when the last task with it will be deleted.
 
 #### example
@@ -169,13 +169,13 @@ A `task` object is:
         * `limit` - int. Task limit in hours.
         * `notification_interval` - int. Notify about task in specified number of hours.
 * `notifications` - notifications object.
-    * `sms_phones` - array of string. Phones where sms notifications should be sent. In the international format without
+    * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format without
      `+` sign.
-    * `emails` - array of string. Email addresses where sms notifications should be sent.
+    * `emails` - string array. Email addresses where sms notifications should be sent.
     * `push_enabled` - boolean. If `true` push notifications enabled.
 * `repeat` - boolean. If `true` then new task will be created when current task done.
 * `unplanned` - boolean. If `true` service task is unplanned. For information only.
-* `file_ids` - array of int. One file will be specified in many service tasks. If one of the tasks will be deleted, 
+* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted, 
 then file will remain in others. File will be deleted only when the last task with it will be deleted.
 
 #### example
@@ -213,7 +213,7 @@ Deletes a vehicle service task.
 | name | description | type |
 | :------ | :------ | :----- |
 | task_id | Optional. Id of service task. | int |
-| task_ids |  Optional. Ids of service tasks. | array of int |
+| task_ids |  Optional. Ids of service tasks. | int array |
 
 Either **task_id** or **task_ids** should be specified
 
@@ -390,13 +390,13 @@ List all service tasks of all user vehicles.
         * `limit` - int. Task limit in hours.
         * `notification_interval` - int. Notify about task in specified number of hours.
 * `notifications` - notifications object.
-    * `sms_phones` - array of string. Phones where sms notifications should be sent. In the international format wo
+    * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format wo
      `+` sign.
-    * `emails` - array of string. Email addresses where sms notifications should be sent.
+    * `emails` - string array. Email addresses where sms notifications should be sent.
     * `push_enabled` - boolean. If `true` push notifications enabled.
 * `repeat` - boolean. If `true` then new task will be created when current task done.
 * `unplanned` - boolean. If `true` service task is unplanned. For information only.
-* `file_ids` - array of int. One file will be specified in many service tasks. If one of the tasks will be deleted, 
+* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted, 
 then file will remain in others. File will be deleted only when the last task with it will be deleted.
 
 About [task status](#task-status) property.

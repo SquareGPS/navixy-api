@@ -41,7 +41,7 @@ API base path: `/status/`
 * `label` - string. Human-readable label for the status listing.
 * `employee_controlled` - boolean. If `true` employees can change their own status, e.g. using mobile tracking app.
 * `supervisor_controlled` - boolean. If `true` supervisors can change status, e.g. using mobile monitoring app.
-* `entries` - array of int. List of IDs of statuses which belong to this listing. Order matters, and is preserved.
+* `entries` - int array. List of IDs of statuses which belong to this listing. Order matters, and is preserved.
 
 ### create
 

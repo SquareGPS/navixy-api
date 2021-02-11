@@ -53,7 +53,7 @@ replaced with `from_time`, `duration` and `parameters`.
 * `min_stay_duration` - int. Minimum duration of stay in task zone for task completion, minutes.
 * `min_arrival_duration` - int. Visits less than these values will be ignored, minutes.
 * `parameters` - schedule parameters can be "weekdays" or "month_days". Described below.
-* `tags` - array of int. List of tag ids.
+* `tags` - int array. List of tag ids.
 * `form_template_id` - int. Form template id. Nullable.
 
 ## Route schedule entry
@@ -115,7 +115,7 @@ replaced with `from_time`, `duration` and `parameters`.
 * `min_arrival_duration` - int. Visits less than these values will be ignored, minutes.
 * `from_time` - string time. Time of day which defines start of the task within the days.
 * `duration` - int. Total duration in minutes between "from" and "to" for generated tasks.
-* `tags` - array of int. List of tag ids.
+* `tags` - int array. List of tag ids.
 * `form_template_id` - int. Form template id. Nullable.
 
 `<schedule_parameters>` can be one of the following:
@@ -129,7 +129,7 @@ replaced with `from_time`, `duration` and `parameters`.
 }
 ```
 
-    * `weekdays` - array of int. Week days on which tasks will be created (1 = Monday, ... 7 = Sunday)
+    * `weekdays` - int array. Week days on which tasks will be created (1 = Monday, ... 7 = Sunday)
     
 * month_days - task creation based on day of month.
 
@@ -140,7 +140,7 @@ replaced with `from_time`, `duration` and `parameters`.
 }
 ```
 
-    * `month_days` - array of int. Days of month on which tasks will be created (1..31).
+    * `month_days` - int array. Days of month on which tasks will be created (1..31).
 
 
 ## API actions
@@ -234,7 +234,7 @@ Also this call returns all unassigned task schedules.
 
 | name | description | type | 
 | :--- | :--- | :--- |
-| trackers | Optional. Ids of the trackers to which task schedule is assigned. | array of int |
+| trackers | Optional. Ids of the trackers to which task schedule is assigned. | int array |
 | filter | Optional. Filter for task schedule label and description. | string |
 
 #### examples

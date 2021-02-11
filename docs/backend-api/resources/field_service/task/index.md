@@ -69,7 +69,7 @@ it's available for viewing by app user. User will also receive notifications of 
 * `arrival_date` - [date/time](../../../getting-started.md#data-types). When tracker has arrived to the task zone. *IGNORED* in create/update.
 * `stay_duration` - int. Duration of stay in the task zone, seconds.
 * `origin` - string. Task origin. *IGNORED* in create/update.
-* `tags` - array of int. List of tag ids.
+* `tags` - int array. List of tag ids.
 * `form` - [form object](../form/index.md#form-object). If present.
 * `form_template_id` - int. An id of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
 * `fields` - optional object. A map, each key of which is a custom field id *as a string*. See [entity/fields](../../commons/entity/fields.md)
@@ -132,15 +132,15 @@ Converts batch of tab-delimited tasks and return list of checked tasks with erro
 | name | description | type | 
 | :--- | :--- | :--- |
 | batch | Batch of tab-delimited tasks. | string |
-| fields | Optional. Array of field names, default is `["label", "from", "to", "address", "lat", "lng", "description"]`. | array of string |
+| fields | Optional. Array of field names, default is `["label", "from", "to", "address", "lat", "lng", "description"]`. | string array |
 | geocoder | Geocoder type. | [enum](../../../getting-started.md#data-types) |
 | default_radius | Optional. Radius for point, default is 100. | int |
 | default_max_delay | Optional. Max delay for tasks, default is 0. | int |
 | default_duration | Optional. Duration for task in minutes, default is 60. | int
 | default_min_stay_duration | Optional. Minimal stay duration for task in minutes, default is 0. | int |
 | location_check_mode | Optional. One of "no_check", "entity_location", "parent_location" | [enum](../../../getting-started.md#data-types) |
-| employee_ids | Optional. List of employee Ids to automatic assign | array of int |
-| vehicle_ids | Optional. List of vehicle Ids to automatic assign | array of int |
+| employee_ids | Optional. List of employee Ids to automatic assign | int array |
+| vehicle_ids | Optional. List of vehicle Ids to automatic assign | int array |
 
 In case of location_check_mode==entity_location – vehicle_ids will be ignored.
 
@@ -346,14 +346,14 @@ Gets all task belonging to user with optional filtering.
 | name | description | type | 
 | :--- | :--- | :--- |
 | external_id | Optional. External task ID for search. | string |
-| statuses | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`. | array of string |
-| trackers | Optional. Ids of the trackers to which task assigned. | array of int |
+| statuses | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`. | string array |
+| trackers | Optional. Ids of the trackers to which task assigned. | int array |
 | from | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00". | [date/time](../../../getting-started.md#data-types) |
 | to | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00". | [date/time](../../../getting-started.md#data-types) |
 | conditions | Optional. Search conditions to apply to list. Array of search conditions. | array of [SearchCondition](../../commons/entity/search_conditions.md) |
 | filter | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task. | string |
-| filters | Optional. Filters for task label, description or address. | array of string |
-| tag_ids | Optional. Tag IDs assigned to the task. | array of int |
+| filters | Optional. Filters for task label, description or address. | string array |
+| tag_ids | Optional. Tag IDs assigned to the task. | int array |
 | location | Optional. Location with radius, inside which task zone centers must reside. Example: ```{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }``` | Location JSON |
 | offset | Optional. Offset from start of the found tasks for pagination. | int |
 | limit | Optional. Limit of the found tasks for pagination. | int |

@@ -40,17 +40,59 @@ Note what:
 In a simplified form, opening the WebSocket using [atmosphere-javascript](https://github.com/Atmosphere/atmosphere-javascript) looks like this:
 
 ```js
-var request = {
-    url: 'https://domain.com/event/subscription',
-    contentType: "application/json",
-    transport: 'websocket'
-};
-atmosphere.subscribe(request);
+  var subSocket;
+  
+  function sendSubsrcibeRequest() {
+      console.log('sending subsrcibe action to websocket');
+      subSocket.push(JSON.stringify({
+          action: 'subscribe',
+          hash: 'e4c24xxx4a08e9xxxc337xxxx5ca04e1',
+          events: ['state'],
+          trackers: [123, 321, 322, 233]
+      }));
+  }
+  
+  var request = {
+      url: '{{ extra.api_example_url }}/event/subscription',
+      contentType : "application/json",
+      logLevel : 'debug',
+      transport : 'websocket',
+      trackMessageLength : false,
+      reconnectInterval: 2000,
+      onOpen: function(r) {
+          console.log('onOpen', r);
+          sendSubsrcibeRequest();
+      },
+      onReopen: function(r) {
+          console.log('onReopen', r);
+          sendSubsrcibeRequest();
+      },
+      onMessage: function (msg) {
+          console.log('onMessage', msg);
+      },
+      onClientTimeout: function(r) {
+          console.log('onClientTimeout', r);
+      },
+      onTransportFailure: function(errorMsg, request) {
+          console.log('onTransportFailure', errorMsg);
+      },
+      onClose: function(r) {
+          console.log('onClose', r);
+      },
+      onError: function(r) {
+          console.log('onError', r);
+      },
+      onReconnect: function(request, response) {
+          console.log('onReconnect', response);
+      }
+  };
+  
+  subSocket = atmosphere.subscribe(request);
 ```
 
 Executing this code will lead to send a request
 
-    ws://domain.com/event/subscription?X-Atmosphere-tracking-id=0&X-Atmosphere-Framework=2.3.6-javascript&X-Atmosphere-Transport=websocket&Content-Type=application/json&X-atmo-protocol=true
+    wss://domain.com/event/subscription?X-Atmosphere-tracking-id=0&X-Atmosphere-Framework=2.3.6-javascript&X-Atmosphere-Transport=websocket&Content-Type=application/json&X-atmo-protocol=true
 
 and upgrade the connection to the WebSocket.
 After that, will be sent a first frame through the opened WebSocket channel:

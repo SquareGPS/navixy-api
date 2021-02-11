@@ -163,11 +163,11 @@ Gets marker entries on a map for trackers and for the specified time interval.
 
 | name | description | type |
 | :--- | :--- | :--- |
-| trackers | Optional. Array of tracker ids. All trackers must not be deleted or blocked (if list_blocked=false). If not specified, all available trackers will be used as value. | array of int |
+| trackers | Optional. Array of tracker ids. All trackers must not be deleted or blocked (if list_blocked=false). If not specified, all available trackers will be used as value. | int array |
 | from | Optional. Start date/time for searching. | date/time |
 | to | Optional. End date/time for searching. Must be after "from" date. | date/time |
-| conditions | Optional. Search conditions to apply to list. See [Search conditions](../commons/entity/search_conditions.md). Allowed fields are `employee`, `location`, `marker_time`, `comment`. | array of string |
-| sort | Optional, offset, default is 0. List of sort expressions. See below. | array of string |
+| conditions | Optional. Search conditions to apply to list. See [Search conditions](../commons/entity/search_conditions.md). Allowed fields are `employee`, `location`, `marker_time`, `comment`. | string array |
+| sort | Optional, offset, default is 0. List of sort expressions. See below. | string array |
 | location | Optional, location with radius, inside which check-ins must reside | Location JSON. For example, ```{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }``` | 
 | limit | Optional. Max number of records to return | int |
 | offset | Optional, offset (starting index of first returned record), default is 0. | int |
@@ -240,7 +240,7 @@ Deletes check-ins with the specified id-s.
 
 | name | description | type |
 | :--- | :--- | :--- |
-| checkin_ids | List of check-in ids.  | array of int |
+| checkin_ids | List of check-in ids.  | int array |
 
 #### examples
 

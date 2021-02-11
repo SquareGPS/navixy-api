@@ -170,8 +170,8 @@ Search entities that bound with all of specified tags.
 
 | name | description | type |
 | :----- | :-----  | :----- |
-| tag_ids | List of tag IDs to search. | array of int |
-| entity_types | Optional. List of [tagged entity types](#tag) to filter. | array of string |
+| tag_ids | List of tag IDs to search. | int array |
+| entity_types | Optional. List of [tagged entity types](#tag) to filter. | string array |
 
 #### examples
 

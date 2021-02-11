@@ -295,7 +295,7 @@ If parameter type omitted:
 }
 ```
 
-* `emails` - array of strings. Valid emails. Maximum size 5.
+* `emails` - string array. Valid emails. Maximum size 5.
 
 **digital_password**
 
