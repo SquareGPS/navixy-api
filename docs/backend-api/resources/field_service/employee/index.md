@@ -32,7 +32,9 @@ trackers, vehicles, places, etc.
         "address": "Engeldamm 18"
     },
     "personnel_number": "1059236",
-    "tags": [1,2]
+    "tags": [1,2],
+    "fuel_consumption": 8.2,
+    "fuel_cost": 27.1
 }
 ```
 
@@ -55,6 +57,8 @@ via [avatar/upload](./avatar.md#upload).
     * `address` - string. Address of the location.
 * `personnel_number` - optional string. Max length is 15.
 * `tags` - array of int. List of tag ids.
+* `fuel_consumption` - decimal. Fuel consumption rate of employee's vehicle, measured in liters per 100 km.
+* `fuel_cost` - decimal. The cost of a liter of fuel used by employee's vehicle.
 
 ## API actions
 
@@ -185,7 +189,9 @@ Gets employee by its id.
          "address": "Engeldamm 18"
      },
      "personnel_number": "1059236",
-     "tags": [1,2]
+     "tags": [1,2],
+     "fuel_consumption": 14.2,
+     "fuel_cost": 9.99
  }
 }
 ```
@@ -319,7 +325,9 @@ Note that employees created this way must have either phone or email specified.
            "address": "Engeldamm 18"
        },
        "personnel_number": "1059236",
-       "tags": [1,2],
+       "tags": [1,2], 
+       "fuel_consumption": 10.0,
+       "fuel_cost": 0.94,
        "errors": <array_of_objects>
     }],
     "limit_exceeded": false    
