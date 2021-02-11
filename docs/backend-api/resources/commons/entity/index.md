@@ -39,7 +39,7 @@ API path: `/entity`.
 `layout` - object describes layout of fields for entity.
     `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
     `label` - string. Name of section.
-    `field_order` - array of string. Built-in fields and ids of custom fields (as strings).
+    `field_order` - string array. Built-in fields and ids of custom fields (as strings).
 
 **entity types**:
 

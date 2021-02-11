@@ -31,8 +31,8 @@ If `parse_header` is set to `true`, first row of the uploaded file will be treat
 ```
 
 * `file_id` - string. Unique file id.
-* `header` - optional array of string. List of files' headers.
-* `preview` - array of string. First N rows of file.
+* `header` - optional string array. List of files' headers.
+* `preview` - string array. First N rows of file.
 
 #### errors
 

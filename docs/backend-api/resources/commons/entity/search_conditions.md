@@ -116,4 +116,4 @@ For linked entity fields, it matches value against linked entity label or other 
 ```
 
 * `field` - string. A built-in field or field id.
-* `value` - int. String value to which field matched against. Cannot  be null or empty, max length is 760.
+* `value` - int. string value to which field matched against. Cannot  be null or empty, max length is 760.

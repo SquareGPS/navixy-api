@@ -92,7 +92,7 @@ Plugin-specific parameters:
 | show_mileage | Adds mileage to the report if `true`. | boolean |
 | show_not_visited_zones | Will show non visited zones if `true`. | boolean |
 | min_minutes_in_zone | Minimum minutes in a zone to start determining visit. If the device was in a zone less than a specified time - the visit not count. | int |
-| zone_ids | List of zone ids. | array of int |
+| zone_ids | List of zone ids. | int array |
 | hide_charts| If `true`, charts will be hidden. | boolean |
 
 ### POI visits report
@@ -112,7 +112,7 @@ Plugin-specific parameters:
 | show_mileage | Adds mileage to the report if `true`. | boolean |
 | show_not_visited_places | Will show non visited POIs if `true`. | boolean |
 | min_minutes_in_place | Minimum minutes in a place to start determining visit. If the device was in a place less than a specified time - the visit not count. | int |
-| place_ids | List of place ids. | array of int |
+| place_ids | List of place ids. | int array |
 | hide_charts| If `true`, charts will be hidden. | boolean |
 
 ### Car security report
@@ -492,7 +492,7 @@ Plugin-specific parameters:
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
 | group_by_type | Groups events by type if `true`. | boolean |
-| event_types | A list of event types that will be considered. | array of string |
+| event_types | A list of event types that will be considered. | string array |
 
 * the object with all `event_types` is:
 

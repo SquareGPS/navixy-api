@@ -59,7 +59,7 @@ Get values for counters of passed `type` and `trackers`.
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
-| trackers | List of the tracker's Ids belonging to authorized user. | array of int | `[123456, 234567]` |
+| trackers | List of the tracker's Ids belonging to authorized user. | int array | `[123456, 234567]` |
 | type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../../getting-started.md#data-types) | "odometer" |
 
 #### examples

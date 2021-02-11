@@ -184,7 +184,7 @@ If there is an error, HTTP code is `400 BAD REQUEST` (may vary depending on erro
 ### Authorization and access levels
 
 Unless otherwise noted, every API call requires a valid user session hash
-(A String containing 32 hexademical characters) that can be passed (in order of lookup priority):
+(A string containing 32 hexademical characters) that can be passed (in order of lookup priority):
 
 1. As `hash` parameter of the request body (root-level property for `application/json`).
 2. As `hash` parameter of the HTTP query string.

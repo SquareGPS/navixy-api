@@ -110,11 +110,11 @@ API path: `/user`.
     * `master` - object. Returned only if current user is sub-user. All fields have same meaning as in "user_info", but for 
     master user's account.
     * `tariff_restrictions` - tariff restrictions object, for more info see [user/get_tariff_restrictions](#get_tariff_restrictions).
-        * `allowed_maps` - array of string. List of allowed maps.
+        * `allowed_maps` - string array. List of allowed maps.
     * `premium_gis` - boolean. `true` if a dealer has premium GIS tariff.
-    * `features` - array of string. Set of allowed [Dealer features](../dealer.md#dealer-features).
+    * `features` - string array. Set of allowed [Dealer features](../dealer.md#dealer-features).
     * `privileges` - object only returned for sub-users. Describes effective sub-user privileges. 
-    * `rights` - array of string. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
+    * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
 
 ### activate
 
@@ -303,7 +303,7 @@ Only session `hash`.
 }
 ```
 
-* `allowed_maps` - array of string. List of allowed maps.
+* `allowed_maps` - string array. List of allowed maps.
 
 #### errors
 

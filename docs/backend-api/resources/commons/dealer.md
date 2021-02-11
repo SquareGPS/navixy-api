@@ -109,7 +109,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `locale` - [enum](../../getting-started.md#data-types). Default locale of the dealer.
     * `demo_login` - string. Dealer's login for demo user or empty string if no demo user available.
     * `demo_password` - string. Dealer's password for demo user or empty string if no demo user available.
-    * `maps` - array of string. List of available maps, 
+    * `maps` - string array. List of available maps, 
     e.g. `["roadmap", "cdcom", "osm", "wikimapia", "yandexpublic", "hybrid", "satellite"]`.
     * `default_map` - object. Default map settings.
     * `type` - [enum](../../getting-started.md#data-types). Default map type.
@@ -143,7 +143,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `enable_cameras` - boolean. If `true`, camera monitoring interface is available for dealer's users.
     * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
     * `exclusion` - boolean. If `true` models in the `values` will be excluded.
-    * `values` - array of string. If it is empty - all models available.
+    * `values` - string array. If it is empty - all models available.
     * `internal` - object with additional options.
     * `light_registration` - boolean. If `true` use "very simple" registration with demo tracker.
     * `demo_tracker_source_id` - int. An id of tracker created on `light_registration`.
@@ -151,7 +151,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `no_register_commands` - boolean. If `true` then do not send commands to devices on activation.
 * `demo_ends` - string. A date when demo for this dealer ends. Is null when dealer is not on Trial tariff.
 * `premium_gis` - boolean. If `true` dealer has Premium GIS package.
-* `features` - array of string. Set of the allowed features for a dealer (all list see below in "Dealer features").
+* `features` - string array. Set of the allowed features for a dealer (all list see below in "Dealer features").
 
 #### Dealer features
 

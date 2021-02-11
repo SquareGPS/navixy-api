@@ -35,7 +35,7 @@ API path: `/payment_system`.
 * `currency` - string. 3-letter ISO 4217 currency code.
 * `payment_code` - optional string. Code for payments.
 * `subscription_code` - string. Subscription code. The same as "payment_code" for 2Checkout (formerly Avangate) but for subscriptions.
-* `methods` - optional array of string. List of available payment methods (it may be empty).
+* `methods` - optional string array. List of available payment methods (it may be empty).
 * `prices` - optional object with prices. For type == `ios_inapp` only.
 
 ### list

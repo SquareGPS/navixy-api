@@ -59,7 +59,7 @@ Replaces the list of trusted numbers for a specified tracker with the new one.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| list | Array of phone numbers (10-15 digits) represented as strings. | array of string | `["496156680001", "496156680000"]` |
+| list | Array of phone numbers (10-15 digits) represented as strings. | string array | `["496156680001", "496156680000"]` |
 
 #### examples
 

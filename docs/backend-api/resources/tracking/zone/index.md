@@ -39,7 +39,7 @@ represented by big arrays of data.
 * `color` - string. Zone color in 3-byte RGB hex format.
 * `radius` - int. Circle radius in meters.
 * `center` - location object. Location of circle center.
-* `tags` - Array of int. Array of tag IDs.
+* `tags` - int array. Array of tag IDs.
 
 #### polygon:
 
@@ -58,7 +58,7 @@ represented by big arrays of data.
 * `label` - string. Zone label.
 * `address` - string. Zone address.
 * `color` - string. Zone color in 3-byte RGB hex format.
-* `tags` - Array of int. Array of tag IDs.
+* `tags` - int array. Array of tag IDs.
 
 #### sausage:
 
@@ -81,7 +81,7 @@ Represents all points within certain distance to the specified polyline.
 * `address` - string. Zone address.
 * `color` - string. Zone color in 3-byte RGB hex format.
 * `radius` - int. Polyline radius in meters.
-* `tags` - Array of int. Array of tag IDs.                 
+* `tags` - int array. Array of tag IDs.                 
 
 ## API actions
 
@@ -147,7 +147,7 @@ For `batch` parameter:
 * `color` - string. Zone color in 3-byte RGB hex format.
 * `radius` - int. Circle radius in meters.
 * `center` - location object. Location of circle center.
-* `tags` - Array of int. Array of tag IDs.
+* `tags` - int array. Array of tag IDs.
 * `limit_exceeded` - boolean, true if given batch constrained by limit 
 
 #### response with errors object
@@ -237,7 +237,7 @@ Deletes user's zone by `zone_id` or array of `zone_ids`.
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
 | zone_id | Id of a zone. | int | 1234567 |
-| zone_ids | Array of zone ids. | array of int | `[1234567, 2345678]` |
+| zone_ids | Array of zone ids. | int array | `[1234567, 2345678]` |
 
 * Use only one parameter `zone_id` or `zone_ids`.
 
@@ -286,7 +286,7 @@ Deletes user's zone by `zone_id` or array of `zone_ids`.
 }
 ```
 
-* `ids` - array of int. List IDs of the rules which uses the specified zone.
+* `ids` - int array. List IDs of the rules which uses the specified zone.
 
 ### list
 
