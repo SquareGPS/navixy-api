@@ -54,7 +54,7 @@ via [avatar/upload](./avatar.md#upload).
 * `location` - optional object. Location associated with this employee, should be valid or null.
     * `address` - string. Address of the location.
 * `personnel_number` - optional string. Max length is 15.
-* `tags` - array of int. List of tag ids.
+* `tags` - int array. List of tag ids.
 
 ## API actions
 
@@ -278,7 +278,7 @@ Convert batch of tab-delimited employees and return list of checked employees wi
 | :--- | :--- | :--- |
 | batch | Batch of tab-delimited employees. | string |
 | file_id | Preloaded file ID. | string |
-| fields | Optional. Array of field names. Default is `["first_name", "middle_name", "last_name", "email", "phone"]`. | array of string |
+| fields | Optional. Array of field names. Default is `["first_name", "middle_name", "last_name", "email", "phone"]`. | string array |
 | geocoder | Geocoder type. | string |
 | default_radius | Optional. Radius for point in meters. Default is 100. | int |
 

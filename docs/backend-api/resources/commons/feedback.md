@@ -24,7 +24,7 @@ API path: `/feedback`.
 * `text` - string. Feedback text. May not be null.
 * `useragent` - optional string. Information about the browser of user.
 * `platform` - optional string. Information about the platform of user.
-* `screenshots` - optional array of string. base64-encoded data:url image, example: data:image/jpeg;base64,`[encoded image]`.
+* `screenshots` - optional string array. base64-encoded data:url image, example: data:image/jpeg;base64,`[encoded image]`.
 * `log` - optional log file. Contains log of the browser.
 
 ### send_email

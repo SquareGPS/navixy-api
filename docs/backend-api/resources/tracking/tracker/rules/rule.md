@@ -51,15 +51,15 @@ A rule element consists of following fields:
 * `name` - string. Name of a rule.
 * `type` - enum. One of pre-defined types of rules. See [rule types](./rule_types.md).
 * `description` - string. Rule's description.
-* `zone_ids` - array of int. List of geofence ids.
-* `trackers` - array of int. List of bound tracker ids.
+* `zone_ids` - int array. List of geofence ids.
+* `trackers` - int array. List of bound tracker ids.
 * `primary_text` - string. Primary text of rule notification.
 * `secondary_text` - string. Secondary text of rule notification.
 * `param` - int. A common parameter. See [rule types](./rule_types.md).
 * `alerts` - object with destinations for notifications. 
-    * `sms_phones` - array of string. Phones for SMS notifications.
-    * `phones` - array of string. Phones for voice calls.
-    * `emails` - array of string. Emails for notifications.
+    * `sms_phones` - string array. Phones for SMS notifications.
+    * `phones` - string array. Phones for voice calls.
+    * `emails` - string array. Emails for notifications.
     * `push_enabled` - boolean. If `true` push notifications available.
     * `emergency` - boolean. If `true` notifications will be marked as emergency with color and sound.
 * `suspended` - boolean. `true` if the rule suspended.
@@ -114,7 +114,7 @@ Binds rule with `rule_id` to trackers list.
 | name | description | type |
 | :------ | :------ | :----- |
 | rule_id | Id of a rule. | int |
-| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | array of int |
+| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | int array |
 
 #### example
 
@@ -148,8 +148,8 @@ Creates rule and scheduled intervals.
 | :------ | :------ | :----- |
 | name | The name of created rule. | string |
 | description | Rule's description. | string |
-| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types.s. | array of int |
-| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
+| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types.s. | int array |
+| trackers | List of tracker ids belong to user for which the rule will work. | int array |
 | type | One of pre-defined types of rules. See [rule types](./rule_types.md). | [enum](../../../../getting-started.md#data-types) |
 | primary_text | Primary text of rule notification when condition is true. | string |
 | secondary_text | Secondary text of rule notification when condition is false. | string |
@@ -329,8 +329,8 @@ Updates rule and scheduled intervals.
 | id | Id of a rule. You can get ids using the [rule/list](#list) call. | int |
 | name | The name of created rule. | string |
 | description | Rule's description. | string |
-| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types. | array of int |
-| trackers | List of tracker ids belong to user for which the rule will work. | array of int |
+| zone_ids | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types. | int array |
+| trackers | List of tracker ids belong to user for which the rule will work. | int array |
 | type | One of pre-defined types of rules. See [rule types](./rule_types.md). | [enum](../../../../getting-started.md#data-types) |
 | primary_text | Primary text of rule notification when condition is true. | string |
 | secondary_text | Secondary text of rule notification when condition is false. | string |

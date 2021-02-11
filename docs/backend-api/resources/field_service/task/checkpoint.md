@@ -57,7 +57,7 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 * `arrival_date` - [date/time](../../../getting-started.md#data-types). Wen tracker has arrived to the checkpoint zone. *IGNORED* in checkpoint/create, checkpoint/update.
 * `stay_duration` - int. Duration of stay in the checkpoint zone, seconds.
 * `origin` - string. Checkpoint origin. *IGNORED* in checkpoint/create, checkpoint/update.
-* `tags` - array of int. List of tag ids.
+* `tags` - int array. List of tag ids.
 * `form` - [form object](../form/index.md#form-object). If present.
 * `form_template_id` - int. An id of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
 
@@ -156,7 +156,7 @@ Get checkpoints belonging to user with given ids
 
 | name | description | type | 
 | :--- | :--- | :--- |
-| checkpoint_ids | IDs of checkpoints, e.g. `[1,2]`. | array of int |
+| checkpoint_ids | IDs of checkpoints, e.g. `[1,2]`. | int array |
 
 #### examples
 

@@ -85,7 +85,7 @@ Gets current assigned statuses for the specified trackers.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| trackers | List of the tracker's IDs belonging to authorized user. | array of int | `[123456, 234567]` |
+| trackers | List of the tracker's IDs belonging to authorized user. | int array | `[123456, 234567]` |
 
 #### examples
 

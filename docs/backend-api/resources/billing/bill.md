@@ -29,7 +29,7 @@ API path: `/bill`.
     * `created` – but not settled.
     * `settled`.
     * `canceled`.
-* `positions` - array of string. List of position names. Usually contains one element for a bill.
+* `positions` - string array. List of position names. Usually contains one element for a bill.
 * `link` - string. URL to order.
 
 ### create

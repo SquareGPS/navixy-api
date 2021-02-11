@@ -26,7 +26,7 @@ API path: `/subuser/security_group/`.
 * `id` - int. Group id, can be null (when creating new security group).
 * `label` - string. Group label.
 * `privileges` - object containing privileges of group.
-    * `rights` - array of string. A set of rights granted to security group (see below).
+    * `rights` - string array. A set of rights granted to security group (see below).
     * `store_period` - optional string. Period of viewing history in legacy duration format, e.g. "2h" (2 hours), 
     "3d" (3 days), "5m" (5 months), "1y" (one year).
 

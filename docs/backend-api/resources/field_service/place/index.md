@@ -47,7 +47,7 @@ Thus, field employee can view all places assigned to him to visit them, etc.
 * `fields` - optional object. A map, each key of which is a custom field id *as a string*. See [entity/fields](../../commons/entity/fields.md)
 * `label` - string. The name of the place.
 * `description` - optional string. Description of the place.
-* `tags` - optional array of int. A list of tag_ids. Non-empty.
+* `tags` - optional int array. A list of tag_ids. Non-empty.
 * `external_id` - optional string. Max length 32.
 
 ## API actions
@@ -121,7 +121,7 @@ Get places belonging to user.
 
 |name |description |type |
 |:--- |:--- |:--- |
-| place_ids | Optional. List of place IDs. | array of int |
+| place_ids | Optional. List of place IDs. | int array |
 | filter | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned place. | string |
 | conditions | Optional. Search conditions to apply to list. Array of search conditions, see [Search conditions](../../commons/entity/search_conditions.md). | array of objects |
 | order_by | Optional. Built-in or custom field according to which output should be sorted. Entity field name, e.g "label" (builtin) or "123" (field id as string, see [entity/](../../commons/entity/index.md). | string |
@@ -299,7 +299,7 @@ Converts batch of tab-delimited places and return list of checked places with er
 | :--- | :--- | :--- |
 | batch | Batch of tab-delimited places. | string |
 | file_id | Preloaded file ID. | string |
-| fields | Optional. Array of field names, default is `["label", "address", "lat", "lng", "radius", "description", "tags"]`. | array of strings |
+| fields | Optional. Array of field names, default is `["label", "address", "lat", "lng", "radius", "description", "tags"]`. | string array |
 | geocoder | Geocoder type. | string |
 | default_radius | Optional. Radius for point in meters. Default is 100. | int |
 
@@ -339,7 +339,7 @@ If `file_id` is set – `batch` parameter will be ignored.
 
 * `list` - a list of <checked_place> objects.
     * `errors` - optional array of objects. Errors found during check.
-    * `tag_names` - optional array of strings. Tag names of the place.
+    * `tag_names` - optional string array. Tag names of the place.
 * `limit_exceeded` - boolean. `true` if given batch constrained by a limit.
 
 #### errors

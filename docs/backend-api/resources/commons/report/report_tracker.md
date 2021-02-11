@@ -102,8 +102,8 @@ Requests a report generation with the specified parameters.
 | to | A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | string |
 | title | Report title. Default title will be used if null. | string |
 | geocoder | Which geocoder to use. See [geocoder/](../../tracking/geocoder.md). | string |
-| trackers | List of trackers' ids to be included in report (if report is by trackers). | array of int |
-| employees | List of employees' ids to be included in report (if report is by employees). | array of int |
+| trackers | List of trackers' ids to be included in report (if report is by trackers). | int array |
+| employees | List of employees' ids to be included in report (if report is by employees). | int array |
 | time_filter | An object which contains everyday time and weekday limits for processed data, e.g. `{"to":"18:00", "from":"12:00", "weekdays":[1,2,3,4,5]}`. | JSON object |
 | plugin | A plugin object (see below). | JSON object |
 
@@ -242,11 +242,11 @@ Returns info about all available generated or in-progress reports.
 * `time_filter` - object.
     * `from` - string. Control time "from" of day.
     * `to` - string. Control time "to" of day.
-    * `weekdays` - array of int. Control "weekdays" of the report. Can be 1 - 7.
+    * `weekdays` - int array. Control "weekdays" of the report. Can be 1 - 7.
 * `title` - string. Report title.
 * `id` - int. Report id which can be used to retrieve or download report.
 * `parameters` - object with report parameters.
-    * `trackers` - array of int. List of tracker ids used for report.
+    * `trackers` - int array. List of tracker ids used for report.
     * `plugins` - array of objects. List of parameters for all plugins which were used to generate report.
     * `locale_info` - object with information about the locale, timezone, and measurement system used for the report.
 * `percent` - int. Report readiness in percent.

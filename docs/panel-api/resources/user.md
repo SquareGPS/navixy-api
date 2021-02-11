@@ -64,7 +64,7 @@ Change password of the user.
 | Name | Description  | Type |
 | --- | --- | --- |
 | user_id |	id of the user | Int |
-| password |	User password, 6 to 20 printable characters | String |
+| password |	User password, 6 to 20 printable characters | string |
 
 ** Required permissions **
 
@@ -127,9 +127,9 @@ users: "global" // optional. allow to create users of users, not only owned
 | Name | Description  | Type |
 | --- | --- | --- |
 | `user` |	user object without the "id" and "dealer_id" fields	| JSON object |
-| `time_zone` |	User timezone (e.g. "Europe/Moscow" ) | String |
-| `locale` |	User locale (e.g. "en_US") | String |
-| `password` |	User password, 6 to 20 printable characters | String |
+| `time_zone` |	User timezone (e.g. "Europe/Moscow" ) | string |
+| `locale` |	User locale (e.g. "en_US") | string |
+| `password` |	User password, 6 to 20 printable characters | string |
 | `discount` |	discount object | JSON object |
 
 If `user.verified` not passed then it set equal to `user.activated`.
@@ -174,7 +174,7 @@ entities will be returned only if filter string is contained within one of the f
 | `offset` | Starting offset, used for pagination | int, optional (default: 0) |
 | `hide_inactive` | If true only activated users will be returned |  boolean, optional (default: false) |
 | `format` | xlsx or csv | string, optional (default: xlsx) |
-| `columns` | list of columns to export | array of string, (default: ["id", "login", "first_name", "middle_name", "last_name", "phone"]) |
+| `columns` | list of columns to export | string array, (default: ["id", "login", "first_name", "middle_name", "last_name", "phone"]) |
 
 About user object structure see [above](#data-structures).
 

@@ -104,7 +104,7 @@ Assign bundle to specified ICCID
 | Name | Description | Type |
 | --- | --- | --- |
 | `bundle_id` | Id of the bundle. | Int |
-| `iccid` | Must consist of printable characters and have length between 3 and 20. | String |
+| `iccid` | Must consist of printable characters and have length between 3 and 20. | string |
 
 **Return**
 
@@ -169,7 +169,7 @@ Add multiple bundles at once.
 
 | Name | Description  | Type |
 | --- | --- | --- |
-| `imeis` |	array of IMEI numbers |	String[] |
+| `imeis` |	array of IMEI numbers |	string array |
 | `equip_id` |	Id of equipment to associate with all specified IMEIs |	Int |
 | `factory_preset` |	Whether this device was preconfigured on factory or not |	Boolean |
 
@@ -201,7 +201,7 @@ If `filter` is used, entities will be returned only if filter string is containe
 | Name | Description  | Type |
 | :--- | :--- | :--- |
 | clones_filter | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set` | Enum |
-| filter |	Optional. Text filter string. |	String |
+| filter |	Optional. Text filter string. |	string |
 | order_by | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`. | Enum |
 | ascending |	If true, ordering will be ascending, descending otherwise. Default is true. |	Boolean |
 | offset |	Optional. Starting offset, used for pagination. Default is 0. |	Int |
@@ -431,7 +431,7 @@ The action is considered completed successfully, even if some of the trackers co
 
 | Name | Description  | Type |
 | --- | --- | --- |
-| `trackers` | Tracker ID list. Each of these trackers must be a clone and be accessible for current user. |array of integers |
+| `trackers` | Tracker ID list. Each of these trackers must be a clone and be accessible for current user. |int arrayegers |
 
 **Return**
 
@@ -536,8 +536,8 @@ If `filter` is used, entities will be returned only if filter string is containe
 | --- | --- | --- |
 | `user_id` | Optional. Id of the user. User must belong to authorized dealer. |	Int |
 | `tariff_id` | Optional. Id of the tariff. Tariff must belong to authorized dealer. |	Int |
-| `filter` | 	Optional. Text filter string. |	String |
-| `order_by` | 	Optional. Specify list ordering. Can be one of id, label, status, model, device_id, phone, creation_date |	String |
+| `filter` | 	Optional. Text filter string. |	string |
+| `order_by` | 	Optional. Specify list ordering. Can be one of id, label, status, model, device_id, phone, creation_date |	string |
 | `ascending` | 	If true, ordering will be ascending, descending otherwise. Default is true. |	Boolean |
 | `offset` | 	Optional. Starting offset, used for pagination. Default is 0. |	Int |
 | `limit` | 	Optional. Max number of records to return, used for pagination. |	Int |
@@ -838,9 +838,9 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 
 name | description | type
 --- | --- | ---
-device_id | Fixed device ID, e.g. IMEI | String
-command | Text or hexadecimal representation of the command | String
-type | **text** or **hex**. Optional, default is **text** | String
+device_id | Fixed device ID, e.g. IMEI | string
+command | Text or hexadecimal representation of the command | string
+type | **text** or **hex**. Optional, default is **text** | string
 reliable | **
 false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **
 true** | Boolean

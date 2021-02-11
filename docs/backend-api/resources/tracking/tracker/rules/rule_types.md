@@ -18,10 +18,10 @@ Common parameters exist in all rule types.
 | alerts | Alerts object with destinations for notifications. Described in [rule_object](./rule.md#rule-object). | JSON object |
 | suspended | `true` if the rule suspended. | boolean |
 | name | Name of a rule. | string |
-| trackers | List of bound tracker ids. | array of int |
+| trackers | List of bound tracker ids. | int array |
 | extended_params | Extended parameters for the rule. Described below. | JSON object |
 | schedule | The rule will work in specified period. Described in [rule_object](./rule.md#rule-object). | JSON object |
-| zone_ids | List of bound zones. | array of int |
+| zone_ids | List of bound zones. | int array |
 
 #### Common extended parameters
 
@@ -101,7 +101,7 @@ A rule that triggers on status changing.
 
 | name | description | type |
 | ------ | ------------- | ------ |
-| status_ids | List of tracked status ids. | array of int |
+| status_ids | List of tracked status ids. | int array |
 
 ### Task performance
 
@@ -117,7 +117,7 @@ A rule that triggers on task status changes.
 
 | name | description | type |
 | ------ | ------------- | ------ |
-| statuses | List of tracked statuses. Possible statuses are "arrived", "done","delayed", "failed". | array of string |
+| statuses | List of tracked statuses. Possible statuses are "arrived", "done","delayed", "failed". | string array |
 | on_form_submission | If `true` form submission will track. | boolean |
 | on_repeated_form_submission | If `true` form resubmission will track. | boolean |
 

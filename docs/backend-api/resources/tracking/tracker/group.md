@@ -35,7 +35,7 @@ Assigns multiple trackers to the specified group.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | id | Group id, or 0 if trackers should be removed from any group. | int | 167 |
-| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | array of int | `[999199, 999919]` |
+| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
 
 #### examples
 

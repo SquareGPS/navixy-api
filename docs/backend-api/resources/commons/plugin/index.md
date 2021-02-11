@@ -32,7 +32,7 @@ API path: `/plugin`.
 * `filter` - object. A model filter which describes to which device models this plugin is applicable.
     * `exclusion` - boolean. If `true`, "models" lists models NOT supported by this plugin, if `false`, "models" 
     contains all supported models.
-    * `values` - array of string. List of the regexes for models which are (not) supported by this plugin.
+    * `values` - string array. List of the regexes for models which are (not) supported by this plugin.
 * `parameters` - plugin-specific parameters as JSON object. This field omitted if it's `null` (and it is `null` most of the time).
 
 #### Example

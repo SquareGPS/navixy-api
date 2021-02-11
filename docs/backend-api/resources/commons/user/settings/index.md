@@ -37,7 +37,7 @@ API path: `/user/settings`.
 }
 ```
 
-* `emails` - array of string. List of emails to send alert message about balance. Empty array means disclaimer of notifications.
+* `emails` - string array. List of emails to send alert message about balance. Empty array means disclaimer of notifications.
 
 `file_storage_settings` type is JSON object:
 

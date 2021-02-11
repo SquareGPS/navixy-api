@@ -792,7 +792,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| trackers | Id of trackers (aka "object_id"). Trackers must belong to authorized user and not be blocked. | array of int | `[999119, 999199]` |
+| trackers | Id of trackers (aka "object_id"). Trackers must belong to authorized user and not be blocked. | int array | `[999119, 999199]` |
 | list_blocked | Optional. If `true` call returns list of blocked tracker IDs instead of error 208. Default is `false`. | boolean | true/false |
 | allow_not_exist | Optional. If `true` call returns list of nonexistent tracker IDs instead of error 217 or 201. Default is `false`. | boolean | true/false |
 
@@ -877,7 +877,7 @@ Gets all integrated tracker models (from "models" table).
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | compact_view | Optional. `true` to compact view. Default is `false`. | boolean | true/false |
-| codes | Optional. Array of model codes. If passed only given models will be returned. | array of string | `[model_1, model_2, ...]` |
+| codes | Optional. Array of model codes. If passed only given models will be returned. | string array | `[model_1, model_2, ...]` |
 
 #### examples
 
@@ -1007,7 +1007,7 @@ Gets user's trackers with optional filtering by labels.
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| labels | Optional. List of tracker label filters. If specified, only trackers that labels contains any of the given filter will be returned. | array of string | `["aa", "b"]` |
+| labels | Optional. List of tracker label filters. If specified, only trackers that labels contains any of the given filter will be returned. | string array | `["aa", "b"]` |
 
 Constraints for labels:
 
@@ -1527,8 +1527,8 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 | name | description | type |
 | :--- | :--- | :--- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| command | Text or hexadecimal representation of the command | String |
-| type | **text** or **hex**. Optional, default is **text** | String |
+| command | Text or hexadecimal representation of the command | string |
+| type | **text** or **hex**. Optional, default is **text** | string |
 | reliable | **
 false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **
 true** | Boolean |
