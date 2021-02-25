@@ -23,11 +23,11 @@ points can have any order due to maximize summary efficiency of the route.
 
 #### parameters
 
-* **start_point** - (object) coordinates of location, from where performer will come. 
+* **start_point** - (object) coordinates of location, from where performer will come and departure time. 
   Count of points must be in the range [2..15], example:
   
 ```json
-{ "lat": 15.233, "lng": -5.554 }
+{ "lat": 15.233, "lng": -5.554, "departure": "2019-04-05 13:30:00" }
 ```
 * **route_points** - (array of objects) points, which performer must visit, example:
 
