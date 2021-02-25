@@ -62,6 +62,19 @@ Field allows to add custom information to a customizable entity. Each field belo
   and a [place](../../field_service/place/index.md) has a custom field of type "responsible employee", such place will be available in mobile app to view.
   Thus, field employee can view all places assigned to him to visit them, etc.
 
+* `file` - link to file
+
+  *Special params:* 
+  ```json
+  {
+    "allowed_extensions": ["docx", "pdf"]
+  }
+  ```
+
+* `image` - link to image file
+
+  *Special params:* none
+
 ### read(entity_id)
 Get a set of custom fields associated with the specified entity. Note that you must know entity id, which can be 
 obtained from [entity/list](./index.md#list).
