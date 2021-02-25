@@ -32,15 +32,32 @@ For example, you can add your own custom fields to **places** entity or rearrang
 }
 ```
 
-**entity types**:
-* **place** - a place object, the same that is available through [place/](../../field_service/place/index.md) API
+**Entity Types**:
+* **place** - a place object, the same that is available through [place](../../field_service/place/index.md) API
 
   Builtin fields:
 
   * label
   * location
   * tags
-  * description  
+  * description
+
+* **task** - a task object, the same that is available through [task](../../field_service/task/index.md) API
+
+  Builtin fields:
+
+    * employee
+    * status
+    * label
+    * location
+    * period
+    * status_change_date
+    * arrival_date
+    * tags
+    * stay_duration
+    * description
+    * external_id
+    * form
   
 
 
