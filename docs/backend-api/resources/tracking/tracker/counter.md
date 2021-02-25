@@ -1,0 +1,288 @@
+---
+title: Counter actions
+description: Counter actions
+---
+
+# Counter actions
+
+Base path: `/tracker/counter`.
+
+## Resource specific actions
+
+Counter actions:
+
+* [/tracker/counter/read](#read) 
+* [/tracker/counter/update](#update)
+  
+Counter values action:
+
+* [/tracker/counter/value/get](#valueget)
+* [/tracker/counter/value/list](#valuelist)
+* [/tracker/counter/value/set](#valueset)
+* [/tracker/counter/data/list](#datalist)
+  
+
+### read
+
+Reads counter of passed `type`.
+
+#### parameters
+
+| name | description | type| format |
+| :------ | :------ | :----- | :------ |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}tracker/counter/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}tracker/counter/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
+    ```
+
+#### response
+
+```json
+{
+  "success": true,
+  "value": {
+    "id": 111,
+    "type": "odometer",
+    "multiplier": 1.0
+  }
+}
+```
+
+#### errors
+
+* 204 (Entity not found) – if there is no tracker with such id belonging to authorized user.
+* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 (Not allowed for clones of the device) – if specified tracker is a clone.
+
+### update
+
+Updates counter of passed `type`.
+
+**required sub-user rights:** `tracker_update`
+
+#### parameters
+
+| name | description | type| format |
+| :------ | :------ | :----- | :------ |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer"|
+| multiplier | A new value of counter multiplier. | float | 1.34 |
+| sensor_id | Id of the sensor, which must be used as the source of odometer data (in case when parameter "type" equals "odometer"). If "type" is not "odometer", "sensor_id" must be null. | int | 123 |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}tracker/counter/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "multiplier": "3.14", "sensor_id": "1234"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}tracker/counter/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer&multiplier=3.14&sensor_id=1234
+    ```
+
+#### response
+
+```json
+{ "success": true }
+```
+
+#### errors
+
+* 8 (Queue service error, try again later) – cannot set counter value, try later.
+* 204 (Entity not found) – if there is no tracker with such id belonging to authorized user.
+* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions, or some other reason.
+* 219 (Not allowed for clones of the device) – if specified tracker is a clone.
+* 7 (Invalid parameters) –
+ * if type is not "odometer"  and `sensor_id` is not null.
+ * if sensor with specified `sensor_id` is not a metering sensor.
+ * if sensor with specified `sensor_id` belongs to another tracker.
+ * if `sensor_id` is negative.
+ * if sensor with such a `sensor_id` is not exists.
+ * if type value is not one of list above.
+
+
+### value/get
+
+Gets actual value of specified `type` of sensor.
+
+#### parameters
+
+| name | description | type| format |
+| :------ | :------ | :----- | :------ |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}tracker/counter/value/get' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}tracker/counter/value/get?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "value": 18.9
+}
+```
+
+* `value` - float. The last valuer of counter.
+
+#### errors
+
+* 204 (Entity not found) – if there is no tracker with such id belonging to authorized user, counter does not exist or
+  there are no values yet. use /tracker/counter/set to create new counter (if not exist) and save some value.
+* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+### value/list
+
+Get actual values for counters of passed `type` and `trackers`.
+
+#### parameters
+
+| name | description | type| format |
+| :------ | :------ | :----- | :------ |
+| trackers | List of the tracker's Ids belonging to authorized user. | int array | `[123456, 234567]` |
+| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}tracker/counter/value/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456, 234567], "type": "odometer"}'
+    ```
+
+#### response
+
+```json
+{
+  "success": true,
+  "value": {
+    "14": 18.9
+  }
+}
+```
+
+* `value` - a map with tracker's ids as keys.
+
+#### errors
+
+* 204 (Entity not found) – if one of the specified counter does not exist or there are no values yet. use
+  /tracker/counter/set to create new counter (if not exist) and save some value.
+* 217 (List contains nonexistent entities) – if one of the specified trackers does not exist or is blocked.
+
+### value/set
+
+Creates new counter of passed `type` (if not) and update its `value`.
+
+#### parameters
+
+| name | description | type| format|
+| :------ | :------ | :----- | :------ |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
+| value | A new value of counter. | float | 233.21 |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}tracker/counter/value/set' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "value": "233.21"}'
+    ```
+
+#### response
+
+```json
+{ "success": true }
+```
+
+#### errors
+
+* 8 (Queue service error, try again later) - can't set counter value, try later.
+* 204 (Entity not found) – if there is no tracker with such id belonging to authorized user.
+* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 (Not allowed for clones of the device) – if specified tracker is a clone.
+
+
+### data/list
+
+Returns counter values for a period. 
+
+#### parameters
+
+| name | description | type| format |
+| :------ | :------ | :----- | :------ |
+| tracker_id | Tracker ID (aka "object_id") | int | 123456 |
+| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
+| from | Requested period start | date/time | `"2021-02-25 12:21:17"` |
+| to | Requested period end | date/time | `"2021-03-25 12:21:17"` |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}tracker/counter/data/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "from": "2021-02-01 00:00:00", "to": "2021-02-01 03:00:00"}'
+    ```
+
+#### response
+
+```json
+{
+  "success": true,
+  "list": [{
+      "value": 3835.52,
+      "update_time": "2021-02-01 02:52:55"
+  }, {
+      "value": 3835.7,
+      "update_time": "2021-02-01 02:57:18"
+  }]
+}
+```
+
+#### errors
+
+* 204 (Entity not found) – if there is no tracker or counter belonging to authorized user.
+* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 7 (Invalid parameters) –
+    * if `from` is after `to`;
+    * if between `from` and `to` more than 31 days.
+

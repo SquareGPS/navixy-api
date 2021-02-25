@@ -492,13 +492,13 @@ List of `input types`:
 
 ### get_counters
 
-Gets last values of the tracker's counters.
+Gets last values of the tracker's [counters](./counter.md).
 
 #### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| tracker_id | Tracker ID (aka "object_id") | int | 999119 |
 
 #### examples
 
@@ -522,28 +522,27 @@ Gets last values of the tracker's counters.
 {
     "success": true,
     "user_time": "2014-07-09 07:50:58",
-    "list": [
-        {
-            "type": "odometer",
-            "value": 100500.1,
-            "update_time": "2014-03-06 13:57:00"
-        }
-    ]
-    
+    "list": [{
+        "type": "odometer",
+        "value": 100500.1,
+        "update_time": "2014-03-06 13:57:00"
+    }]
 }
 ```
 
+where
+
 * `user_time` - date/time. Current time in user's timezone.
 * `list` - array of counter value objects.
-    * `type` - string of enum. One of predefined semantic counter types (see below).
+    * `type` - enum. One of predefined semantic counter types (see below).
     * `value` - double. Counter value.
     * `update_time` - date/time. Date and time when the data updated.
 
-List of `counter types`:
+List of counter types:
 
-* **odometer** - Odometer.
-* **fuel_consumed** - Total fuel consumed.
-* **engine_hours** - Engine hours.
+* `odometer` - odometer.
+* `fuel_consumed` - total fuel consumed.
+* `engine_hours` - engine hours.
 
 #### errors
 
