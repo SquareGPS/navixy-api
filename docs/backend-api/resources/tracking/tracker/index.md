@@ -490,66 +490,6 @@ List of `input types`:
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 
-### get_counters
-
-Gets last values of the tracker's [counters](./counter.md).
-
-#### parameters
-
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Tracker ID (aka "object_id") | int | 999119 |
-
-#### examples
-
-=== "cURL"
-
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/get_counters' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/get_counters?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
-    ```
-
-#### response
-
-```json
-{
-    "success": true,
-    "user_time": "2014-07-09 07:50:58",
-    "list": [{
-        "type": "odometer",
-        "value": 100500.1,
-        "update_time": "2014-03-06 13:57:00"
-    }]
-}
-```
-
-where
-
-* `user_time` - date/time. Current time in user's timezone.
-* `list` - array of counter value objects.
-    * `type` - enum. One of predefined semantic counter types (see below).
-    * `value` - double. Counter value.
-    * `update_time` - date/time. Date and time when the data updated.
-
-List of counter types:
-
-* `odometer` - odometer.
-* `fuel_consumed` - total fuel consumed.
-* `engine_hours` - engine hours.
-
-#### errors
-
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-
-
 ### get_last_gps_point
 
 Gets last point of the tracker located by GPS. Points located by GSM LBS are excluded from consideration.
