@@ -82,7 +82,6 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
         "privacy_policy_link": "http://privacy-policy-url",
         "tos": "Terms Of Service text",
         "enable_trackers": true,
-        "enable_cameras": false,
         "tracker_model_filter": {
             "exclusion": true,
             "values": []
@@ -140,7 +139,6 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `app_color_theme` - [enum](../../getting-started.md#data-types). Mobile app color theme code or empty string (for default theme).
     * `tos` - string. Terms of service text.
     * `enable_trackers` - boolean. If `true`, GPS monitoring interface is available for dealer's users.
-    * `enable_cameras` - boolean. If `true`, camera monitoring interface is available for dealer's users.
     * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
     * `exclusion` - boolean. If `true` models in the `values` will be excluded.
     * `values` - string array. If it is empty - all models available.
