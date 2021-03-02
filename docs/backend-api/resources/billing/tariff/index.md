@@ -53,29 +53,24 @@ API call to get device's tariffs available to user.
 ### list
 
 Gets list of device's tariffs available to user.<br>
-If user's dealer is **default dealer** or **paas** then listed tariffs of that deale, else listed tariffs of parent dealer.<br>
+If user's dealer is **default dealer** or **paas** then listed tariffs of that dealer, else listed tariffs of parent dealer.<br>
 Listed only tariffs [available for user's legal type](#tariff).
 
-#### parameters
-
-| name | description | type|
-| :------ | :------ | :-----|
-| device_type | Type of devices. Can be `tracker`, `camera` or `socket`. | [enum](../../../getting-started.md#data-types) |
 
 #### examples
 
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/subscription/avangate/list' \
+    curl -X POST '{{ extra.api_example_url }}/tariff/list' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "device_type": "tracker"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subscription/avangate/list?hash=a6aa75587e5c59c32d347da438505fc3&device_type=tracker
+    {{ extra.api_example_url }}/tariff/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
 #### response
