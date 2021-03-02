@@ -172,6 +172,7 @@ Gets marker entries on a map for trackers and for the specified time interval.
 | limit | Optional. Max number of records to return | int |
 | offset | Optional, offset (starting index of first returned record), default is 0. | int |
 | format | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx" | string |
+| show_nearby_geo_entities | Optional. If true, the call will search for places and zones where the location of the check-in falls and add their description to the response. | boolean |
 
 ##### condition fields
 
@@ -221,6 +222,19 @@ It's a set of sort options. Each option is a pair of field name and sorting dire
 
 * `list` - list of check-in objects.
 * `count` - int. Total number of check-ins (ignoring offset and limit).
+
+When parameter `show_nearby_geo_entities` is set, `<checkin>` will contain additional fields `places` and `zones`.
+```json
+ "places": [{
+      "id": integer,
+      "label": string
+  }, …],
+  "zones": [{
+      "id": integer,
+      "label": string
+  }, …]
+```
+
 
 #### errors
 
