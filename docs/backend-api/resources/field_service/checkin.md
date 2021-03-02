@@ -107,7 +107,8 @@ Gets marker entries on map for trackers and for the specified time interval. Req
 | sort | optional, offset, default is 0 | string[], list of sort expressions. See below. | `["location=asc", "marker_time=desc"]`  |
 | limit | optional, max number of records to return | int | |
 | offset | optional, offset (starting index of first returned record), default is 0.  | int | |
-| format | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx" | string | `pdf` |
+| format | optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx" | string | `pdf` |
+| show_nearby_geo_entities | optional. If true, the call will search for places and zones where the location of the check-in falls and add their description to the response. | boolean | |
 
 ##### sort 
 It's a set of sort options. Each option is a pair of field name and sorting direction, e.g. `["location=asc", "employee=desc", "marker_time=desc"]`. 
@@ -127,6 +128,17 @@ Possible fields: `employee`, `location`, `marker_time`, `comment`.
 }
 ```
 
+When parameter `show_nearby_geo_entities` is set, `<checkin>` will contain additional fields `places` and `zones`.
+```json
+ "places": [{
+      "id": integer,
+      "label": string
+  }, …],
+  "zones": [{
+      "id": integer,
+      "label": string
+  }, …]
+```
 #### errors
 *   7 – Invalid parameters
 *   211 – Requested time span is too big (more than **maxReportTimeSpan** config option)
