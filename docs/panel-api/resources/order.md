@@ -1,22 +1,45 @@
 ---
-title: /order
-description: /order
+title: Order
+description: Contains API call to read the order by its ID.
 ---
 
-## read
+# Order
 
-Read order by ID
+API call to read the order by its ID.
+
+API path: `/order`.
+
+### read
+
+Reads order by specified ID.
+
+*required permissions*: `tracker_bundles: "read"`.
 
 #### parameters
 
-*   **order_id** – **int**. Order ID
+| name | description | type|
+| :------ | :------ | :----- |
+| order_id | Order ID. | int |
 
-#### required permissions:
+#### examples
 
-*   **tracker_bundles**: "read"
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/order/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "order_id": 12341}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/order/read?hash=fa7bf873fab9333144e171372a321b06&order_id=12341
+    ```
 
 #### response
 
+```json
     {
       "success": true,
       "value": {
@@ -49,8 +72,8 @@ Read order by ID
         ]
       }
     }
-
+```
 
 #### errors
 
-*   201 – Not found in database (if specified order does not exist)
+* 201 – Not found in the database - if specified order does not exist.

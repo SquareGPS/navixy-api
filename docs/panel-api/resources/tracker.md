@@ -1,246 +1,329 @@
 ---
 title: Tracker
-description: Tracker
+description: API calls to interact with trackers in the admin panel.
 ---
 
 # Tracker
 
-## Tracker data structure
+API calls to interact with trackers in the admin panel.
+
+API path: `/tracker`.
+
+## Tracker object
 
 ```json
 {
-    "id": ${int},                   // tracker id aka object_id
-    "avatar_file_name" : ${string}, // optional. passed only if present
-    "clone": ${boolean},            // true if this tracker is clone
-    "comment": ${string},           // comment (description) related to the tracker
-    "creation_date": "2013-02-02",  // tracker or clone creation date
-    "group_id": ${int},             // tracker group id, 0 if no group
-    "dealer_id": ${int},            // id of the dealer to which this tracker (or clone) belongs to
-    "deleted": ${boolean},          // true if tracker or clone has been marked as deleted
-    "label": ${string},             // tracker label
-    "user_id": ${int},              // id of the user to which this tracker (or clone) belongs to
+    "id": 111231,
+    "avatar_file_name" : "avatar",
+    "clone": true,
+    "comment": "Need to change SIM till next month",
+    "creation_date": "2020-02-02",
+    "group_id": 0,
+    "dealer_id": 20410,
+    "deleted": false,
+    "label": "Truck",
+    "user_id": 183654,
     "source": {
-        "id": ${int},            // source id
-        "device_id": ${string},  // aka source_imei
-        "model": ${string},      // tracker model name from "models" table
-        "blocked": ${boolean},   // true if tracker was blocked due to tariff end, etc.
-        "tariff_id": ${int},     // id of tracker's tariff from "main_tariffs" table
-        "creation_date": "2013-01-01",  // date when this tracker was first registered in the system
-        "tariff_end_date": "2016-03-24",// date of next tariff prolongation or null
-        "connection_status": "idle",    // current connection status
-        "phone": ${string}       // phone of the device. can be null or empty if device has no GSM module
-                                 // or uses bundled SIM which number is hidden from the user
-        "corrupted": true        // true when tracker is corrupted using /tracker/corrupt,
-                                 // and not passed when it is not corrupted
+        "id": 456751,
+        "device_id": "8624369656654",
+        "model": "telfmb120",
+        "blocked": false,
+        "tariff_id": 13457,
+        "creation_date": "2020-02-02",
+        "tariff_end_date": "2021-02-02",
+        "connection_status": "idle",
+        "phone": "79995693344",
+        "corrupted": true
     }
 }
 ```
 
-## active/
+* `id` - int. Tracker id aka object_id.
+* `avatar_file_name` - optional string. Passed only if present.
+* `clone` - boolean. `true` if this tracker is clone.
+* `comment` - string. Comment (description) related to the tracker.
+* `creation_date` - [date/time](../../backend-api/getting-started.md#data-types). Tracker or clone creation date.
+* `group_id` - int. Tracker group id. `0` if no group.
+* `dealer_id` - int. An id of a dealer to which this tracker (or clone) belongs to.
+* `deleted` - boolean. True if tracker or clone has been marked as deleted.
+* `label` - string. Tracker label.
+* `user_id` - int. An id of the user to which this tracker (or clone) belongs to.
+* `source` - source JSON object. 
+    * `id` - int. Source id.
+    * `device_id` - string. Source_imei.
+    * `model` - string. Tracker model name from "models" table.
+    * `blocked` - boolean. `true` if tracker has been blocked due to tariff end, etc.
+    * `tariff_id` - int. An id of tracker's tariff from "main_tariffs" table.
+    * `creation_date` - [date/time](../../backend-api/getting-started.md#data-types). Date when this tracker first registered in the system.
+    * `tariff_end_date` - [date/time](../../backend-api/getting-started.md#data-types). Date of next tariff prolongation or null.
+    * `connection_status` - [enum](../../backend-api/getting-started.md#data-types). Current connection status.
+    * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
+    * `corrupted` - boolean. `true` when tracker has been corrupted using /tracker/corrupt, and not passed when it is not corrupted.
 
-### history/
-
-
-#### list
+### active/history/list
 
 Provides information about trackers which were considered "active" by our PaaS billing system, on a month-by-month basis.
 
-**Required permissions**
+*required permissions*: `trackers: "read"`.
 
-* `trackers: "read"`
+#### parameters
 
-**Parameters**
+| name | description | type|
+| :------ | :------ | :----- |
+| from | Start year and month for searching, e. g. "2021-02". | year-month string |
+| to | End year and month for searching. e. g. "2021-03". | year-month string |
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `from` | start year and month for searching, e. g. "2016-02" | year-month string |
-| `to`   | end year and month for searching. for example "2016-05" | year-month string |
+#### example
 
-**Return**
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/active/history/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "from": "2021-02", "to": "2021-03"}'
+    ```
+
+#### response
 
 ```json
 {
   "success": true,
   "list": [
     {
-      "month": "2016-07", //year and month of the stats entry
-      "amount": 2, //overall number of active trackers during month
+      "month": "2021-02",
+      "amount": 1,
       "trackers": [
-        { //basic info about active tracker
+        {
           "tracker_id": 14,
           "user_id": 3,
           "label": "test",
           "device_id": "123321"
-        },
-        ...
+        }
       ]
-    },
-    ...
+    }
   ]
 }
 ```
 
-**Errors**
+* `month` - string. Year and month of stats entry.
+* `amount` - int. overall number of active trackers during a month.
+* `trackers` - A basic info about active trackers
 
-* 211 – Requested time span is too big
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+#### errors
 
+* 211 – Requested time span is too big.
 
-## bundle/
+### bundle/assign
 
+Assign bundle to specified ICCID.
 
-### assign
+*required permissions*: `tracker_bundles: "update"`.
 
-`assign(bundle_id, iccid)`
+#### parameters
 
-Assign bundle to specified ICCID
+| name | description | type|
+| :------ | :------ | :----- |
+| bundle_id | Id of the bundle. | int |
+| iccid | Must consist of printable characters and have length between 3 and 20. | string |
 
-**Required permissions**
+#### examples
 
-* `tracker_bundles: "update"`
+=== "cURL"
 
-**Parameters**
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/assign' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": 78974217758}'
+    ```
 
-| Name | Description | Type |
-| --- | --- | --- |
-| `bundle_id` | Id of the bundle. | Int |
-| `iccid` | Must consist of printable characters and have length between 3 and 20. | string |
+=== "HTTP GET"
 
-**Return**
+    ```
+    {{ extra.api_example_url }}/panel/tracker/bundle/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&iccid=78974217758
+    ```
 
-```json
-{ "success": true }
-```
-
-**Errors**
-
-* 201 – Not found in database (if bundle was not found)
-* 208 – Device blocked (if SIM card was blocked)
-* 223 – Phone number already in use (if SIM card already in use)
-* 226 – Wrong ICCID (if SIM card was not found)
-* 247 – Entity already exists (if ICCID is already exist)
-* 250 – Not allowed for deleted devices (if SIM card was deleted)
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
-
-
-### order/
-
-
-#### assign
-
-`order/assign(bundle_id, order_id)`
-
-Assign bundle to specified order ID.
-
-**Required permissions**
-
-* `tracker_bundles: "update"`
-
-**Parameters**
-
-| Name | Description  | Type |
-| --- | --- | --- |
-| `bundle_id` |	Id of the bundle. |	Int |
-| `order_id` |	Id of the bundle. | Nullable	Int |
-
-**Return**
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-**Errors**
+#### errors
 
-* 201 – Not found in database (if bundle was not found)
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 201 – Not found in the database - if bundle not found.
+* 208 – Device blocked - if SIM card blocked.
+* 223 – Phone number already in use - if SIM card already in use.
+* 226 – Wrong ICCID - if SIM card not found.
+* 247 – Entity already exists - if ICCID is already exist.
+* 250 – Not allowed for deleted devices - if SIM card deleted.
 
+### bundle/order/assign
 
-### import
+Assigns bundle to specified order ID.
 
-`import(imeis, equip_id, factory_preset)`
+*required permissions*: `tracker_bundles: "update"`.
 
-Add multiple bundles at once.
+#### parameters
 
-**Required permissions**
+| name | description | type|
+| :------ | :------ | :----- |
+| bundle_id |	Id of a bundle. | int |
+| order_id |	Id of a bundle. Nullable. | int |
 
-* `tracker_bundles: "create"`
+#### examples
 
-**Parameters**
+=== "cURL"
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `imeis` |	array of IMEI numbers |	string array |
-| `equip_id` |	Id of equipment to associate with all specified IMEIs |	Int |
-| `factory_preset` |	Whether this device was preconfigured on factory or not |	Boolean |
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/order/assign' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "order_id": 78974217758}'
+    ```
 
-**Return**
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/bundle/order/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758
+    ```
+
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-**Error**
+#### errors
 
-* 201 – Not found in database (if bundle was not found)
-* 247 – Entity already exists (if one of IMEIs is already exist)
-* 204 – Entity not found (if there is no equipment with specified equip_id)
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 201 – Not found in the database if bundle not found.
 
-### list
+### bundle/import
 
+Adds multiple bundles at once.
 
-If `filter` is used, entities will be returned only if filter string is contained within one of the following fields:
- `id`, `imei`, `model_code`, `iccid`, `assign_time`.
+*required permissions*: `tracker_bundles: "create"`.
 
-**Required permissions**
+#### parameters
 
-* `tracker_bundles: "read"`
+| name | description | type|
+| :------ | :------ | :----- |
+| imeis | Array of IMEI numbers. | string array |
+| equip_id | Id of equipment to associate with all specified IMEIs. | int |
+| factory_preset | Whether this device was preconfigured on factory or not. | boolean |
 
-**Parameters**
+#### examples
 
-| Name | Description  | Type |
-| :--- | :--- | :--- |
-| clones_filter | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set` | Enum |
-| filter |	Optional. Text filter string. |	string |
-| order_by | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`. | Enum |
-| ascending |	If true, ordering will be ascending, descending otherwise. Default is true. |	Boolean |
-| offset |	Optional. Starting offset, used for pagination. Default is 0. |	Int |
-| limit |	Optional. Max number of records to return, used for pagination. | Int |
+=== "cURL"
 
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/import' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imeis": ["896654523569742", "754854"], "equip_id": 13785, "factory_preset": false}'
+    ```
 
-**Return**
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/bundle/import?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758&factory_preset=false
+    ```
+
+#### response
+
+```json
+{
+    "success": true
+}
+```
+
+#### errors
+
+* 201 – Not found in the database - if bundle not found.
+* 247 – Entity already exists - if one of IMEIs is already exist.
+* 204 – Entity not found - if there is no equipment with specified equip_id.
+
+### bundle/list
+
+Gets list of all bundles. If `filter` is used, entities will be returned only if filter string contained within one of 
+the following fields: `id`, `imei`, `model_code`, `iccid`, `assign_time`.
+
+*required permissions*: `tracker_bundles: "read"`.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| clones_filter | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../backend-api/getting-started.md#data-types) |
+| filter  Optional. Text filter string. | string |
+| order_by | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`. | [enum](../../backend-api/getting-started.md#data-types) |
+| ascending | If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
+| offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
+| limit | Optional. Max number of records to return, used for pagination. | int |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/bundle/list?hash=fa7bf873fab9333144e171372a321b06
+    ```
+
+#### response
 
 ```json
 {
     "success": true,
-    "list" : [ <bundle> , ... ],
-    "count" : <int> // total number of records (ignoring offset and limit), e.g. 42
+    "list" : [<bundle>],
+    "count" : 42
 }
 ```
 
-**Errors**
+* `list` - array of bundle objects.
+* `count` - int. Total number of records (ignoring offset and limit).
 
-* 201 – Not found in database (if user_id or tariff_id was specified but was not found)
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+#### errors
 
+* 201 – Not found in the database - if `user_id` or `tariff_id` specified but was not found.
 
-### read
-
-`read(imei)`
+### bundle/read
 
 Returns the bundle object with the specified imei.
 
-**Required permissions**
+*required permissions*: `tracker_bundles: "read"`.
 
-* `tracker_bundles: "read"`
+#### parameters
 
-**Parameters**
+| name | description | type|
+| :------ | :------ | :----- |
+| imei | Device's IMEI. | string |
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| imei | IMEI | Int |
+#### examples
 
-**Return**
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imei": "835664527777452"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/bundle/read?hash=fa7bf873fab9333144e171372a321b06&imei=835664527777452
+    ```
+    
+#### response
 
 ```json
 {
@@ -249,106 +332,148 @@ Returns the bundle object with the specified imei.
 }
 ```
 
-**Errors**
+#### errors
 
-* 201 – Not found in database (if bundle was not found)
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 201 – Not found in the database - if bundle not found.
 
-### update
+### bundle/update
 
-`update(bundle_id, equip_id)`
+Assign specified equipment to bundle.
 
-Assign specified equipment to bundle
+*required permissions*: `tracker_bundles: "update"`.
 
-**Required permissions**
+#### parameters
 
-* `tracker_bundles: "update"`
+| name | description | type|
+| :------ | :------ | :----- |
+| bundle_id | Id of the bundle. | int | 
+| equip_id | Valid equipment id. | int | 
 
-**Parameters**
+#### examples
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `bundle_id` | 	Id of the bundle. | 	Int | 
-| `equip_id` | 	Valid equipment id | 	Int | 
+=== "cURL"
 
-**Return**
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 13457, "equip_id": 35468}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/bundle/update?hash=fa7bf873fab9333144e171372a321b06&bundle_id=13457&equip_id=35468
+    ```
+
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-**Errors**
+#### errors
 
-* 201 – Not found in database (if bundle was not found)
-* 204 – Entity not found (if there is no equipment with specified equip_id)
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 201 – Not found in the database - if bundle not found.
+* 204 – Entity not found - if there is no equipment with specified `equip_id`.
 
-## clone
+### clone
 
 Creates a clone of the existing non-clone tracker.
 
-**Required permissions**
+*required permissions*: `trackers: "create"`.
 
-* `trackers: "create"`
+#### parameters
 
-**Parameters**
-
-| Name | Description  | Type |
-| --- | --- | --- |
-| tracker_id | (int) Id of the tracker. Tracker must belong to authorized dealer. | int |
+| name | description | type|
+| :------ | :------ | :----- |
+| tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
 | label | User-defined label for clone, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. | string |
 | user_id | Id of the user who will become the owner of the clone. | int |
 
-**Return**
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/clone' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537, "user_id": 354468, "label": "Courier"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537&user_id=354468&label=Courier
+    ```
+
+#### response
 
 ```json
 {
     "success": true,
-    "id": 3947 // id of the created clone
+    "id": 3947
 }
 ```
 
-**Errors**
+* `id` - int. An id of the created clone.
 
-* 219 (Not allowed for clones of the device) – when source tracker is clone itself
-* 201 (Not found in database) – when tracker was not found
-* 246 (Invalid user ID) – when user id is same as source tracker's owner id or it does not exist/belong to authorized dealer
-* 247 (Entity already exists) – if destination user already has clone of this tracker
-* 252 (Device already corrupted) – when tracker's source is corrupted
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+#### errors
 
+* 219 - Not allowed for clones of the device – when source tracker is clone itself.
+* 201 - Not found in the database – when specified `tracker_id` not found.
+* 246 - Invalid user ID – when user id is same as source tracker's owner id, or it does not exist/belong to authorized dealer.
+* 247 - Entity already exists – if destination user already has a clone of this tracker.
+* 252 - Device already corrupted – when tracker's source corrupted.
 
-## console/
+### console/connect
 
-### connect
+Returns auth token for connection to tracker command console.
 
-Returns auth token to connect to tracker command console.
+*required permissions*: `trackers: "update"`.
 
-**Required permissions**
+#### parameters
 
-* `trackers: "update"`
+| name | description | type|
+| :------ | :------ | :----- |
+| tracker_id | Id of a tracker. Tracker must belong to authorized dealer. | int |
 
-**Parameters**
+#### examples
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `tracker_id` | Id of the tracker. Tracker must belong to authorized dealer. | int |
+=== "cURL"
 
-**Return**
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/console/connect' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/console/connect?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
+    ```
+
+#### response
 
 ```json
 {
     "success": true,
-    "key": "6ad7490d4ec7f600ef10d4db41584980cd3ac230", // a key which is used to connect to console
-    "timestamp": 1399957326 // a (int) timestamp which is used to connect to console
+    "key": "6ad7490d4ec7f600ef10d4db41584980cd3ac230",
+    "timestamp": 1399957326
 }
 ```
+
+* `key` - string. A key which is used to connect to console.
+* `timestamp` - int. A timestamp which is used to connect to console.
 
 Establish WS connection with a URL:
 
 `wss://ws.navixy.com/console?device=<tracker_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`
 
 JSON objects come in the next text frames:
+
 ```json
 {
   "data":
@@ -377,35 +502,55 @@ JSON objects come in the next text frames:
 }
 ```
 
-**Errors**
+#### errors
 
-* 230 (Not supported for this entity type) – when tracker is deleted or blocked
-* 201 (Not found in database) – when tracker was not found
-* 252 (Device already corrupted) – when tracker's source is corrupted
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 230 - Not supported for this entity type – when tracker deleted or blocked.
+* 201 - Not found in the database – when tracker not found.
+* 252 - Device already corrupted – when tracker's source corrupted.
 
-## corrupt
+### corrupt
 
-`corrupt(tracker_id)`
+Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename tracking table.
 
-Mark tracker as deleted and corrupt its source device_id and phone. Rename tracking table.
+*required permissions*: `trackers: "corrupt"`.
 
-**Required permissions**
+#### parameters
 
-* `trackers: "corrupt"`
+| name | description | type|
+| :------ | :------ | :----- |
+| tracker_id | Id of a tracker. Tracker must belong to authorized dealer. | int |
 
-**Return**
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/corrupt' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/corrupt?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
+    ```
+    
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-**Errors**
+#### errors
 
-* 201 – Not found in database (if tracker was not found)
-* 219 – Not allowed for clones of the device (if source tracker is clone itself)
-* 252 – Device already corrupted
-* 253 – Device has clones
+* 201 – Not found in the database - if tracker not found.
+* 219 – Not allowed for clones of the device - if source tracker is clone itself.
+* 252 – Device already corrupted.
+* 253 – Device has clones.
+
 ```json
 {
     "success": false,
@@ -413,36 +558,51 @@ Mark tracker as deleted and corrupt its source device_id and phone. Rename track
         "code": 253,
         "description": "Device has clones"
     },
-    "list": [<int>, ...] //clones tracker_ids list
+    "list": [234651]
 }
 ```
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## batch_delete_clones
+* `list` - int array. Clones tracker_ids list.
+
+### batch_delete_clones
 
 Deletes the specified set of trackers that are clones of other trackers. 
-The action is considered completed successfully, even if some of the trackers could not be deleted. Then for the rest response will contain a description of the reasons why the deletion failed.
+The action will be considered as completed successfully, even if some trackers could not be deleted. Then for the rest 
+response will contain a description of the reasons why the deletion failed.
  
-**Required permissions**
+*required permissions*: `trackers: "delete"`.
 
-* `trackers: "delete"`
+| name | description | type|
+| :------ | :------ | :----- |
+| trackers | Tracker ID list. Each of these trackers must be a clone and be accessible for current user. | int array |
 
-**Parameters**
+#### examples
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `trackers` | Tracker ID list. Each of these trackers must be a clone and be accessible for current user. |int arrayegers |
+=== "cURL"
 
-**Return**
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_delete_clones' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "trackers": [134537, 458412]}'
+    ```
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `success` | Action's execution status  | boolean |
-| `deleted_count` | Number of successfully deleted clones from `trackers` | int |
-| `not_deleted_count` | Number of not deleted clones | int |
-| `not_deleted_trackers` (optional)| Description of failed deletion operations |array of objects `{"id":integer, "error":string}` |
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/batch_delete_clones?hash=fa7bf873fab9333144e171372a321b06&trackers=[134537, 458412]
+    ```
+
+#### response
+
+| name | description | type|
+| :------ | :------ | :----- |
+| success | Action's execution status.  | boolean |
+| deleted_count | Number of successfully deleted clones from `trackers`. | int |
+| not_deleted_count | Number of not deleted clones. | int |
+| not_deleted_trackers | Optional. Description of failed deletion operations. `{"id": integer, "error": string}` | array of objects |
 
 Example:
+
 ```json
 {
   "success": true,
@@ -465,35 +625,52 @@ Example:
 }
 ```
 
-**Errors**
+#### errors
 
 [Standard errors](../../backend-api/getting-started.md#error-codes)
 
-## delete_clone
+### delete_clone
 
 Deletes a clone of the existing tracker.
 
-**Required permissions**
+*required permissions*: `trackers: "delete"`.
 
-* `trackers: "delete"`
+#### parameters
 
-**Parameters**
+| name | description | type|
+| :------ | :------ | :----- |
+| tracker_id | Id of a tracker. Tracker must belong to authorized dealer and must be a clone. | int |
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `tracker_id` | Id of the tracker. Tracker must belong to authorized dealer and must be a clone. | int |
+#### examples
 
-**Return**
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/delete_clone' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/delete_clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
+    ```
+
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-**Errors**
+#### errors
 
-* 201 (Not found in database) – if tracker was not found
-* 249 (Operation available for clones only) – if source tracker is not a clone
-* 203 (Delete entity associated with) – if there are some rules or vehicles associated with tracker
+* 201 - Not found in the database – if tracker not found.
+* 249 - Operation available for clones only – if source tracker is not a clone.
+* 203 - Delete entity associated with – if there are some rules or vehicles associated with tracker.
+
 ```json
 {
     "success": false,
@@ -501,10 +678,14 @@ Deletes a clone of the existing tracker.
         "code": 203,
         "description": "Delete entity associated with"
     },
-    "rules": [10] // list of associated rule ids
+    "rules": [10]
 }
 ```
+
+* `rules` - int array. A list of associated rule ids.
+
 or
+
 ```json
 {
     "success": false,
@@ -512,288 +693,425 @@ or
         "code": 203,
         "description": "Delete entity associated with"
     },
-    "vehicles": [11] // list of associated vehicle ids
+    "vehicles": [11]
 }
 ```
-* 252 (Device already corrupted) – when tracker's source is corrupted
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
 
+* `vehicles` - int array. A list of associated vehicle ids.
 
-## list
+* 252 - Device already corrupted – when tracker's source corrupted.
 
-Returns list of all trackers belonging to dealer (with optional filtering by filter string, user id and/or tariff id).
+### list
 
-If `filter` is used, entities will be returned only if filter string is contained within one of the following fields:
-`id`, `label`, `source.id`, `source.device_id`, `source.model`, `source.phone`, `user_id`
+Returns list of all trackers belonging to dealer (with optional filtering by `filter` string, `user_id` and/or `tariff_id`).
 
-**Required permissions**
+If `filter` is used, entities will be returned only if filter string contain one of the following fields:
+`id`, `label`, `source.id`, `source.device_id`, `source.model`, `source.phone`, `user_id`.
 
-* `trackers: "read"`
+*required permissions*: `trackers: "read"`.
 
-**Parameters**
+#### parameters
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `user_id` | Optional. Id of the user. User must belong to authorized dealer. |	Int |
-| `tariff_id` | Optional. Id of the tariff. Tariff must belong to authorized dealer. |	Int |
-| `filter` | 	Optional. Text filter string. |	string |
-| `order_by` | 	Optional. Specify list ordering. Can be one of id, label, status, model, device_id, phone, creation_date |	string |
-| `ascending` | 	If true, ordering will be ascending, descending otherwise. Default is true. |	Boolean |
-| `offset` | 	Optional. Starting offset, used for pagination. Default is 0. |	Int |
-| `limit` | 	Optional. Max number of records to return, used for pagination. |	Int |
+| name | description | type|
+| :------ | :------ | :----- |
+| user_id | Optional. Id of the user. User must belong to authorized dealer. | int |
+| tariff_id | Optional. Id of the tariff. Tariff must belong to authorized dealer. | int |
+| filter | Optional. Text filter string. | string |
+| order_by | Optional. List ordering. Can be one of "id", "label", "status", "model", "device_id", "phone", "creation_date". |	string |
+| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
+| offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
+| limit | Optional. Max number of records to return, used for pagination. | int |
 
-**Return**
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/list?hash=fa7bf873fab9333144e171372a321b06
+    ```
+
+#### response
 
 ```json
 {
     "success": true,
-    "list" : [ <tracker> , ... ],
-    "count" : <int> // total number of records (ignoring offset and limit), e.g. 42
+    "list" : [{
+      "id": 111231,
+      "avatar_file_name" : "avatar",
+      "clone": true,
+      "comment": "Need to change SIM till next month",
+      "creation_date": "2020-02-02",
+      "group_id": 0,
+      "dealer_id": 20410,
+      "deleted": false,
+      "label": "Truck",
+      "user_id": 183654,
+      "source": {
+          "id": 456751,
+          "device_id": "8624369656654",
+          "model": "telfmb120",
+          "blocked": false,
+          "tariff_id": 13457,
+          "creation_date": "2020-02-02",
+          "tariff_end_date": "2021-02-02",
+          "connection_status": "idle",
+          "phone": "79995693344",
+          "corrupted": true
+      }
+    }],
+    "count" : 42
 }
 ```
 
-**Errors**
+* `list` - array of objects. Tracker object described [above](#tracker-object).
+* `count` - int. Total number of records ignoring `offset` and `limit`.
 
-* 201 – Not found in database (if user_id or tariff_id was specified but was not found)
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+#### errors
 
-## move
+* 201 – Not found in the database - if specified `user_id` or `tariff_id` not found.
 
-Moves the existing non-clone tracker to another user belonging to same dealer.
+### move
+
+Moves the existing non-clone tracker to another user belonging to the same dealer.
 
 **Tracker will be unbound from any rules associated with it.**
 
-**Required permissions**
+*required permissions*: `trackers: "create", "delete"`.
 
-* `trackers: "create", "delete"`
+#### parameters
 
-**Parameters**
-
-| Name | Description  | Type |
-| --- | --- | --- |
+| name | description | type|
+| :------ | :------ | :----- |
 | tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
-| user_id | Id of the user who will become the owner of the tracker | int |
+| user_id | Id of the user who will become the owner of the tracker. | int |
 
-**Return**
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/move' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "user_id": 214034}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/move?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&user_id=214034
+    ```
+
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-**Errors**
+#### errors
 
-* 219 (Not allowed for clones of the device) – when source tracker is clone
-* 201 (Not found in database) – when tracker is not found
-* 246 (Invalid user ID) – when user id is same as source tracker's owner id or it does not exist/belong to authorized dealer
-* 247 (Entity already exists) – when destination user already has clone of this tracker
-* 252 (Device already corrupted) – when tracker's source is corrupted
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 219 - Not allowed for clones of the device – when source tracker is clone.
+* 201 - Not found in the database – when tracker not found.
+* 246 - Invalid user ID – when `user_id` is the same as source tracker's owner id, or it does not exist/belong to authorized dealer.
+* 247 - Entity already exists – when destination user already has a clone of this tracker.
+* 252 - Device already corrupted – when tracker's source corrupted.
 
-
-## read
+### read
 
 Returns the tracker object with the specified id.
 
-**Required permissions**
+*required permissions*: `trackers: "read"`.
 
-* `trackers: "read"`
+#### parameters
 
-**Parameters**
-
-| Name | Description  | Type |
-| --- | --- | --- |
+| name | description | type|
+| :------ | :------ | :----- |
 | tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
 
-**Return**
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/read?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
+    ```
+
+#### response
 
 ```json
 {
     "success": true,
-    "value" : ${tracker}
+    "value" : {
+        "id": 111231,
+        "avatar_file_name" : "avatar",
+        "clone": true,
+        "comment": "Need to change SIM till next month",
+        "creation_date": "2020-02-02",
+        "group_id": 0,
+        "dealer_id": 20410,
+        "deleted": false,
+        "label": "Truck",
+        "user_id": 183654,
+        "source": {
+            "id": 456751,
+            "device_id": "8624369656654",
+            "model": "telfmb120",
+            "blocked": false,
+            "tariff_id": 13457,
+            "creation_date": "2020-02-02",
+            "tariff_end_date": "2021-02-02",
+            "connection_status": "idle",
+            "phone": "79995693344",
+            "corrupted": true
+        }
+    }
 }
 ```
 
-where `value` is JSON object tracker.
+* `value` - JSON object. Tracker object described [above](#tracker-object).
 
-**Errors**
+#### errors
 
-* 201 (Not found in database) – when tracker not found
-* 252 (Device already corrupted) – when tracker's source is corrupted
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 201 - Not found in the database – when tracker not found.
+* 252 - Device already corrupted – when tracker's source corrupted.
 
-
-## register_entry
+### register_entry
 
 Sends tracker registration commands and resets all tracking settings. Can be executed once in 120 seconds for every tracker.
 
 Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not supported.
 
-**Required permissions**
+*required permissions*: `trackers: "update"`.
 
-* `trackers: "update"`
+#### parameters
 
-**Parameters**
+| name | description | type|
+| :------ | :------ | :----- |
+| tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `tracker_id` | Id of the tracker. Tracker must belong to authorized dealer. | int |
+#### examples
 
-**Return**
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/register_entry' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/register_entry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
+    ```
+
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-**Errors**
+#### errors
 
-* 201 (Not found in database) – when tracker not found
-* 252 (Device already corrupted) – if tracker was corrupted
-* 264 (Timeout not reached) – if another register retry request for this tracker was done in last 120 seconds
-* 208 (Device blocked) – when tracker exists but was blocked due to tariff restrictions or some other reason
-* 219 (Not allowed for clones of the device) – when specified tracker is a clone
-* 214 (Requested operation or parameters are not supported by the device) – when device does not have GSM module
-* 252 (Device already corrupted) – when tracker's source is corrupted
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 201 - Not found in the database – when tracker not found.
+* 252 - Device already corrupted – if tracker corrupted.
+* 264 - Timeout not reached – if another register retry request for this tracker done in last 120 seconds.
+* 208 - Device blocked – when tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 - Not allowed for clones of the device – when specified tracker is a clone.
+* 214 - Requested operation or parameters are not supported by the device – when device does not have GSM module.
+* 252 - Device already corrupted – when tracker's source corrupted.
 
-
-## settings/
-
-### update
+### settings/update
 
 Updates tracker settings.
 
-**Required permissions**
+*required permissions*: `trackers: "update"`.
 
-* `trackers: "update"`
+#### parameters
 
-**Parameters**
-
-| Name | Description  | Type |
-| --- | --- | --- |
+| name | description | type|
+| :------ | :------ | :----- |
 | tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
 | label | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain '<' and '>' symbols. | string |
-| deleted | If true, tracker is marked as deleted an will not be shown in user's interface. | boolean |
-| comment | A comment (description) related to the tracker. Up to 3000 symbols. | string |
+| deleted | If `true`, tracker will be marked as deleted and will not be shown in user's interface. | boolean |
+| comment | Optional. A comment (description) related to the tracker. Up to 3000 symbols. | string |
 
-**Return**
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/settings/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "label": "Courier", "deleted": false}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/settings/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&label=Courier&deleted=false
+    ```
+
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-**Errors**
+#### errors
 
-* 201 (Not found in database) – when tracker not found
-* 252 (Device already corrupted) – when tracker's source is corrupted
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 201 - Not found in the database – when tracker not found.
+* 252 - Device already corrupted – when tracker's source corrupted.
 
+### source/update
 
-## source/
+Updates source settings. Can block and unblock a device.
 
-### update
+*required permissions*: `trackers: "update"`.
 
-Updates tracker settings.
+#### parameters
 
-**Required permissions**
-
-* `trackers: "update"`
-
-**Parameters**
-
-| Name | Description  | Type |
-| --- | --- | --- |
+| name | description | type|
+| :------ | :------ | :----- |
 | tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int | 
-| blocked | If true, tracker is marked as blocked. | boolean | 
+| blocked | If `true`, tracker will be marked as blocked. | boolean | 
 
-**Return**
+#### examples
 
-```json
-{ "success": true }
-```
+=== "cURL"
 
-**Errors**
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/source/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "blocked": false}'
+    ```
+    
+=== "HTTP GET"
 
-* 201 (Not found in database) – when tracker is not found
-* 252 (Device already corrupted) – when tracker's source is corrupted
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+    ```
+    {{ extra.api_example_url }}/panel/tracker/source/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&blocked=false
+    ```
 
-## tariff/
-
-### change
-
-**Required permissions**
-
-```json
-trackers: "update"
-transactions: "create"
-tariffs: "read"
-```
-
-**Params**
-
-| Name | Description  | Type |
-| --- | --- | --- |
-| tracker_id | id of tracker | int |
-| tariff_id | new tariff id | int |
-| repay | repay remainder of current tariff payment? | boolean |
-| charge | charge payment for new tariff? (for monthly and everyday tariffs) | boolean |
-
-**Return**
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-**Errors**
+#### errors
 
-* 201 – Not found in database
-* 219 – Not allowed for clones of the device
-* 221 (Device limit exceeded) – when new tariff device limit is less then count of user's trackers.
-* 237 – Invalid tariff (if there are no tariff with tracker.tariff_id and belongs to dealer)
-* 238 – Changing tariff is not allowed
-* 239 – New tariff doesn't exist
-* 250 – Not allowed for deleted devices
-* 252 (Device already corrupted) – when tracker's source is corrupted
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 201 - Not found in the database – when tracker not found.
+* 252 - Device already corrupted – when tracker's source corrupted.
+
+### tariff/change
+
+*required permissions*: `[trackers: "update", "transactions": "create", "tariffs": "read"]`.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| tracker_id | Id of tracker. Tracker must belong to authorized dealer. | int |
+| tariff_id | New tariff id. | int |
+| repay | Repay remainder of current tariff payment. | boolean |
+| charge | Charge payment for new tariff. For monthly and everyday tariffs. | boolean |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/tariff/change' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "tariff_id": 15843, "repay": false, "charge": true}'
+    ```
+    
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/tariff/change?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&tariff_id=15843&repay=false&charge=true
+    ```
+    
+#### response
+
+```json
+{
+    "success": true
+}
+```
+
+#### errors
+
+* 201 – Not found in the database.
+* 219 – Not allowed for clones of the device.
+* 221 - Device limit exceeded – when new tariff device limit is less than count of user's trackers.
+* 237 – Invalid tariff - if there are no tariff with tracker.tariff_id and belongs to dealer.
+* 238 – Changing tariff not allowed.
+* 239 – New tariff doesn't exist.
+* 250 – Not allowed for deleted devices.
+* 252 - Device already corrupted – when tracker's source corrupted.
 
 **Conditions of the change**
 
 The current dealer can change tracker tariff from `t1` to `t2`, if:
 
 1. Tracker:
-    1. is not removed
-    1. belongs to the dealer's user
-    1. is not a clone
-1. `t1.tariff_id != t2.tariff_id`, i.e. it is impossible to change for the same tariff
-1. `t1.dealer_id = t2.dealer_id = dealer.effectiveDealerId`, i.e. both tariffs belong to the current dealer
-1. `t2.device = tracker`, i.e. only tracker tariffs are available
-1. depending on `t2.doc_type`
-    * doc_type=0 (for all) – without conditions
-    * doc_type=1 (for the physical persons) – user.face=1 (physical person)
-    * doc_type=2 (for legal entities) – user.face=2 (legal entity) or user.face=3 (SP)
-    * doc_type=3 (paas) – without conditions
-1. `t2.device_limit >= count` of trackers in user's cabinet.
+    * is not removed.
+    * belongs to the dealer's user.
+    * is not a clone.
+2. `t1.tariff_id != t2.tariff_id`, i.e. it is impossible to change to the same tariff.
+3. `t1.dealer_id = t2.dealer_id = dealer.effectiveDealerId`, i.e. both tariffs belong to the current dealer.
+4. `t2.device = tracker`, i.e. only tracker tariffs are available.
+5. depending on `t2.doc_type`:
+    * doc_type=0 (for all) – without conditions.
+    * doc_type=1 (for physical persons) – user.face=1 (physical person).
+    * doc_type=2 (for legal entities) – user.face=2 (legal entity) or user.face=3 (SP).
+    * doc_type=3 (paas) – without conditions.
+6. `t2.device_limit >= count` of trackers in user's cabinet.
 
 **Repayment**
 
-Repayment is carried out if the following conditions are met:
+Repayment will be carried out if the following conditions met:
 
-1. the "repay" flag is set (repay)
-2. current tariff – monthly: t1.type = monthly
-3. tariff – paid: tariff.price > 0
-4. that the current tariff didn't end (tariff_end != 1)
-5. the tariff expiration date is defined: tariff_end_date != 0 (for monthly tariffs it has to be carried out always)
-6. the free period expired: created_date + free_period <= current date,
-where free_period obtained from the hardcodes table or from default_model_settings
-7. there is still at least one paid day on a tariff: reminder > 0
+1. The "repay" flag set (repay).
+2. A current tariff – monthly: `t1.type = monthly`.
+3. Tariff – paid: tariff.price > 0.
+4. That the current tariff didn't end (`tariff_end != 1`)
+5. The tariff expiration date defined: tariff_end_date != 0 (for monthly tariffs it has to be carried out always).
+6. The free period expired: created_date + free_period <= current date
+where free_period obtained from the hardcodes table or from default_model_settings.
+7. There is still at least one paid day on a tariff: reminder > 0
 The rest of days on a tariff: remainder = the number of whole days before the end of the current tariff.
 
 amount to be repaid = `ceil(tariff.price * remainder / amt)`,
-where `amt` – the number of days in the current month, а ceil – the operation of taking the integer part
+where `amt` – the number of days in the current month, а ceil – the operation of taking the integer part.
 
 **Change**
 
-```abap
+```shell
 tariff_id = next_tariff = new tariff id
 tariff_change = current date
 if tariff is active (tariff_end = false) then
@@ -826,36 +1144,47 @@ else (tariff is not active: tariff_end = true)
 
 All dates according to UTC time.
 
-## raw_command/
-
-### send
+### raw_command/send
 
 Sends the GPRS command to the device, processing it in a protocol-dependent manner beforehand.
 
-**required subuser rights:** tracker_update
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
-name | description | type
---- | --- | ---
-device_id | Fixed device ID, e.g. IMEI | string
-command | Text or hexadecimal representation of the command | string
-type | **text** or **hex**. Optional, default is **text** | string
-reliable | **
-false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **
-true** | Boolean
+| name | description | type|
+| :------ | :------ | :----- |
+| device_id | Fixed device ID, e.g. IMEI | string |
+| command | Text or hexadecimal representation of the command | string |
+| type | Optional. Default is `text` . Can be "text" or "hex". | string |
+| reliable | Optional. default is `true`. If `false` the command doesn't need to be resent when the device is disconnected or if no acknowledgment is received. | boolean |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}panel/tracker/raw_command/send' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": 889654248978, "command": "setparam 101:4"}'
+    ```
 
 #### response
+
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
 #### errors
-*   7 (Invalid parameters)
-*   201 (Not found in database) – if there is no tracker with such device ID belonging to authorized user
-*   252 (Device already corrupted) – if tracker's source is corrupted
+
+* 7 - Invalid parameters.
+* 201 - Not found in the database – if there is no tracker with such device ID belonging to authorized user.
+* 252 - Device already corrupted – if tracker's source corrupted.
 
 #### example response with an error:
+
 ```json
 {
   "success": false,
