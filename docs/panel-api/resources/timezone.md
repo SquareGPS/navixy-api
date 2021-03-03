@@ -7,7 +7,7 @@ description: API call to get information about all supported timezones for the s
 
 API call to get information about all supported timezones for the specified locale.
 
-API path: `panel/timezone`.
+API path: `/timezone`.
 
 ### list
 

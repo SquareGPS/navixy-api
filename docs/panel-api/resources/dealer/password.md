@@ -7,7 +7,7 @@ description: API call to update dealer's password.
 
 API call to update dealer's password.
 
-API base path: `panel/dealer/password`
+API base path: `/dealer/password`
 
 ### update
 
@@ -30,7 +30,6 @@ Changes password for the authorized dealer.
     curl -X POST '{{ extra.api_example_url }}/panel/dealer/password/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "old_password": "qwerty", "new_password": "B1r7d@Y"}'
-    ```
 
 #### response
 

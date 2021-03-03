@@ -7,7 +7,7 @@ description: API calls on work with users in the admin panel.
 
 API calls on work with users in the admin panel.
 
-API path: `panel/user`.
+API path: `/user`.
 
 ## User object structure
 

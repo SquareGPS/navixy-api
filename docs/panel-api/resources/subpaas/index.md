@@ -7,7 +7,7 @@ description: API calls to interact with Subpaases.
 
 API calls to interact with Subpaases.
 
-API base path: `panel/subpaas`.
+API base path: `/subpaas`.
 
 ## Subpaas object
 
@@ -65,7 +65,7 @@ Creates subpaas. After creation its `dealer_block_type` will be in `INITIAL_BLOC
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com"}'
-    ```
+
 #### response
 
 ```json
@@ -102,13 +102,12 @@ Gets a list of all subpaases for a dealer. Dealer id will be taken from the sess
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/list' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
-    ```
+        
+    === "HTTP GET"
     
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/subpaas/list?hash=fa7bf873fab9333144e171372a321b06
-    ```
+        ```
+        {{ extra.api_example_url }}/panel/subpaas/list?hash=fa7bf873fab9333144e171372a321b06
+        ```
 
 #### response
 
@@ -159,13 +158,12 @@ Gets subpaas info by its id.
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/read' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 97834}'
-    ```
         
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/subpaas/read?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
-    ```
+    === "HTTP GET"
+    
+        ```
+        {{ extra.api_example_url }}/panel/subpaas/read?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
+        ```
 
 #### response
 
@@ -224,7 +222,6 @@ Updates a subpaas with specified id.
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com", "contact_fio": "fio", "contact_post": "CEO", "contact_phone": "79999902190", "block_type": "NOT_BLOCKED"}'
-    ```
 
 #### response
 

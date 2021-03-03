@@ -7,7 +7,7 @@ description: API calls to read and update notification settings.
 
 API calls to read and update notification settings.
 
-API path: `panel/dealer/settings/notification`.
+API path: `/dealer/settings/notification`.
 
 ## Notification settings object
 
@@ -25,7 +25,7 @@ API path: `panel/dealer/settings/notification`.
 * `email_footer` - string. Footer which is added to all notification emails. Arbitrary text up to 600 characters.
 * `email_special` - string. Special email address for PaaS reports.
 * `sms_originator` - string. Max length is 20, must match `(p{L}|d|[-'" .,:/])*`. E.g. "demo.navixy.com" or "491761234567".
-* `caller_id` - string. Voice messages originator. Max length is 20, must match `(p{L}|d|[-'" .,:/])*`. E.g. "491761234543".
+* `caller_id` - string. Voice messages originator. Max length is 20, must match (p{L}|d|[-'" .,:/])* . E.g. "491761234543".
 
 ### read
 

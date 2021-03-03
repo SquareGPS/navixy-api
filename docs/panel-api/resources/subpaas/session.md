@@ -7,7 +7,7 @@ description: API call to create a subpaas session.
 
 API call to create a subpaas's session key.
 
-API base path: `panel/subpaas/session`.
+API base path: `/subpaas/session`.
 
 ### create
 
@@ -27,13 +27,12 @@ Creates a subpaas session.
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/session/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 97834}'
-    ```
-       
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/subpaas/session/create?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
-    ```
+        
+    === "HTTP GET"
+    
+        ```
+        {{ extra.api_example_url }}/panel/subpaas/session/create?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
+        ```
 
 
 #### response

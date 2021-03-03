@@ -7,7 +7,7 @@ description: API calls on getting the panel's hash, getting permissions and logo
 
 API calls on getting the panel's hash, getting permissions and logout.
 
-API path: `panel/account`.
+API path: `/account`.
 
 ### auth
 
