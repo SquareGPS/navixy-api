@@ -1,26 +1,24 @@
 ---
-title: Counter actions
-description: Counter actions
+title: Counters
+description: Counter specific actions
 ---
 
-# Counter actions
-
-Base path: `/tracker/counter`.
+# Counters
 
 ## Resource specific actions
 
-Counter actions:
+Actions with counter entities:
 
-* [/tracker/counter/read](#read) 
+* [/tracker/counter/read](#read)
 * [/tracker/counter/update](#update)
-  
-Counter values action:
 
+Actions with counter values:
+
+* [/tracker/get_counters](#get_counters)
 * [/tracker/counter/value/get](#valueget)
 * [/tracker/counter/value/list](#valuelist)
 * [/tracker/counter/value/set](#valueset)
 * [/tracker/counter/data/list](#datalist)
-  
 
 ### read
 
@@ -38,7 +36,7 @@ Reads counter of passed `type`.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}tracker/counter/read' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/counter/read' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer"}'
     ```
@@ -46,7 +44,7 @@ Reads counter of passed `type`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}tracker/counter/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
+    {{ extra.api_example_url }}/tracker/counter/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
     ```
 
 #### response
@@ -88,7 +86,7 @@ Updates counter of passed `type`.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}tracker/counter/update' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/counter/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "multiplier": "3.14", "sensor_id": "1234"}'
     ```
@@ -96,7 +94,7 @@ Updates counter of passed `type`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}tracker/counter/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer&multiplier=3.14&sensor_id=1234
+    {{ extra.api_example_url }}/tracker/counter/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer&multiplier=3.14&sensor_id=1234
     ```
 
 #### response
@@ -112,13 +110,73 @@ Updates counter of passed `type`.
 * 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 * 219 (Not allowed for clones of the device) – if specified tracker is a clone.
 * 7 (Invalid parameters) –
- * if type is not "odometer"  and `sensor_id` is not null.
- * if sensor with specified `sensor_id` is not a metering sensor.
- * if sensor with specified `sensor_id` belongs to another tracker.
- * if `sensor_id` is negative.
- * if sensor with such a `sensor_id` is not exists.
- * if type value is not one of list above.
+    * if type is not "odometer"  and `sensor_id` is not null.
+    * if sensor with specified `sensor_id` is not a metering sensor.
+    * if sensor with specified `sensor_id` belongs to another tracker.
+    * if `sensor_id` is negative.
+    * if sensor with such a `sensor_id` is not exists.
+    * if type value is not one of list above.
 
+### get_counters
+
+Gets last values of the tracker's counters.
+
+#### parameters
+
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| tracker_id | Tracker ID (aka "object_id") | int | 999119 |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/get_counters' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/get_counters?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+    ```
+
+#### response
+
+```json
+{
+  "success": true,
+  "user_time": "2014-07-09 07:50:58",
+  "list": [
+    {
+      "type": "odometer",
+      "value": 100500.1,
+      "update_time": "2014-03-06 13:57:00"
+    }
+  ]
+}
+```
+
+where
+
+* `user_time` - date/time. Current time in user's timezone.
+* `list` - array of counter value objects.
+    * `type` - enum. One of predefined semantic counter types (see below).
+    * `value` - double. Counter value.
+    * `update_time` - date/time. Date and time when the data updated.
+
+List of counter types:
+
+* `odometer` - odometer.
+* `fuel_consumed` - total fuel consumed.
+* `engine_hours` - engine hours.
+
+#### errors
+
+* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
+* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 
 ### value/get
 
@@ -136,7 +194,7 @@ Gets actual value of specified `type` of sensor.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}tracker/counter/value/get' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/get' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer"}'
     ```
@@ -144,7 +202,7 @@ Gets actual value of specified `type` of sensor.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}tracker/counter/value/get?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
+    {{ extra.api_example_url }}/tracker/counter/value/get?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
     ```
 
 #### response
@@ -180,7 +238,7 @@ Get actual values for counters of passed `type` and `trackers`.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}tracker/counter/value/list' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/list' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456, 234567], "type": "odometer"}'
     ```
@@ -200,8 +258,8 @@ Get actual values for counters of passed `type` and `trackers`.
 
 #### errors
 
-* 204 (Entity not found) – if one of the specified counter does not exist or there are no values yet. use
-  /tracker/counter/set to create new counter (if not exist) and save some value.
+* 204 (Entity not found) – if one of the specified counter does not exist or there are no values yet. Use
+  [`/tracker/counter/set`](#valueset) to create new counter (if not exist) and save some value.
 * 217 (List contains nonexistent entities) – if one of the specified trackers does not exist or is blocked.
 
 ### value/set
@@ -221,7 +279,7 @@ Creates new counter of passed `type` (if not) and update its `value`.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}tracker/counter/value/set' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/set' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "value": "233.21"}'
     ```
@@ -239,10 +297,9 @@ Creates new counter of passed `type` (if not) and update its `value`.
 * 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 (Not allowed for clones of the device) – if specified tracker is a clone.
 
-
 ### data/list
 
-Returns counter values for a period. 
+Returns counter values for a period.
 
 #### parameters
 
@@ -258,7 +315,7 @@ Returns counter values for a period.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}tracker/counter/data/list' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/counter/data/list' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "from": "2021-02-01 00:00:00", "to": "2021-02-01 03:00:00"}'
     ```

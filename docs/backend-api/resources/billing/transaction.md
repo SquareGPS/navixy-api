@@ -94,4 +94,4 @@ Gets list of user's billing transactions for the specified period.
 
 #### errors
 
-* 211 – Requested time span is too big - more than **maxReportTimeSpan** config option.
+* 211 – Requested time span is too big - more than 20000.

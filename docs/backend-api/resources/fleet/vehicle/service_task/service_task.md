@@ -94,7 +94,7 @@ then file will remain in others. File will be deleted only when the last task wi
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/batch/create' \
+    curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/batch/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_ids": [76801, 76449], "task": {"comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
     ```
@@ -183,7 +183,7 @@ then file will remain in others. File will be deleted only when the last task wi
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/create' \
+    curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task": {"vehicle_id": 76801, "comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
     ```
@@ -222,7 +222,7 @@ Either **task_id** or **task_ids** should be specified
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/delete' \
+    curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/delete' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 33777}'
     ```
@@ -230,7 +230,7 @@ Either **task_id** or **task_ids** should be specified
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}vehicle/service_task/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=33777
+    {{ extra.api_example_url }}/vehicle/service_task/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=33777
     ```
 
 #### response
@@ -262,7 +262,7 @@ Creates pdf report of service tasks.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/download' \
+    curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/download' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "order_by": "vehicle", "group_by": "status"}'
     ```
@@ -270,7 +270,7 @@ Creates pdf report of service tasks.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}vehicle/service_task/download?hash=a6aa75587e5c59c32d347da438505fc3&order_by=vehicle&group_by=status
+    {{ extra.api_example_url }}/vehicle/service_task/download?hash=a6aa75587e5c59c32d347da438505fc3&order_by=vehicle&group_by=status
     ```
 
 #### response
@@ -293,7 +293,7 @@ List all service tasks of all user vehicles.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/list' \
+    curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/list' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "return_prediction": "false"}'
     ```
@@ -301,7 +301,7 @@ List all service tasks of all user vehicles.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}vehicle/service_task/list?hash=a6aa75587e5c59c32d347da438505fc3&return_prediction=false
+    {{ extra.api_example_url }}/vehicle/service_task/list?hash=a6aa75587e5c59c32d347da438505fc3&return_prediction=false
     ```
 
 #### response
@@ -421,7 +421,7 @@ Get service task info by its id.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/read' \
+    curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/read' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "return_prediction": "false"}'
     ```
@@ -429,7 +429,7 @@ Get service task info by its id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}vehicle/service_task/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&return_prediction=false
+    {{ extra.api_example_url }}/vehicle/service_task/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&return_prediction=false
     ```
 
 #### response
@@ -516,7 +516,7 @@ Updates task status, snd saved (on `done` **status**) current date and values of
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/set_status' \
+    curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/set_status' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "status": "done"}'
     ```
@@ -524,7 +524,7 @@ Updates task status, snd saved (on `done` **status**) current date and values of
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}vehicle/service_task/set_status?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&status=done
+    {{ extra.api_example_url }}/vehicle/service_task/set_status?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&status=done
     ```
 
 #### response
@@ -555,7 +555,7 @@ A [task object](#create) described in a task create.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}vehicle/service_task/update' \
+    curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task": {"vehicle_id": 76801, "comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
     ```

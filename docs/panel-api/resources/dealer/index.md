@@ -53,8 +53,6 @@ description: Dealer actions
         "domain" : "demo.navixy.com", // dealer's domain
         "favicon": "paas/5001/custom.ico", // path or URL to dealer's interface favicon or null
         "logo": "paas/5001/logo.png", // path or URL to dealer's logotype or null
-        "enable_trackers": true,
-        "enable_cameras": false,
         "paas_activation_date": "2015-03-01", // date of activation pay
         "license_balance": 0.0,
         "seller_currency": "USD",

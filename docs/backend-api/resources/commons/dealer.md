@@ -81,8 +81,6 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
         "app_color_theme": "blue_1",
         "privacy_policy_link": "http://privacy-policy-url",
         "tos": "Terms Of Service text",
-        "enable_trackers": true,
-        "enable_cameras": false,
         "tracker_model_filter": {
             "exclusion": true,
             "values": []
@@ -96,7 +94,16 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     },
     "demo_ends": "2014-01-01",
     "premium_gis": true,
-    "features": ["branding_web"]
+    "features": ["branding_web"],
+    "platform" : {
+        "history.maxLimit" : 10,
+        "report.maxTimeSpan" : "P90D",
+        "stats.maxAllowedTrackers" : 128,
+        "stats.maxTimeSpan" : "P31D",
+        "fileStorage.hardMaxFileSize" : 16777216,
+        "form.fileField.maxFileSize" : 16777216,
+        "form.fileField.maxFilesPerField" : 6
+    }
 }
 ```
 
@@ -139,8 +146,6 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `color_theme` - [enum](../../getting-started.md#data-types). Color theme code or empty string (for default theme).
     * `app_color_theme` - [enum](../../getting-started.md#data-types). Mobile app color theme code or empty string (for default theme).
     * `tos` - string. Terms of service text.
-    * `enable_trackers` - boolean. If `true`, GPS monitoring interface is available for dealer's users.
-    * `enable_cameras` - boolean. If `true`, camera monitoring interface is available for dealer's users.
     * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
     * `exclusion` - boolean. If `true` models in the `values` will be excluded.
     * `values` - string array. If it is empty - all models available.
@@ -152,6 +157,14 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 * `demo_ends` - string. A date when demo for this dealer ends. Is null when dealer is not on Trial tariff.
 * `premium_gis` - boolean. If `true` dealer has Premium GIS package.
 * `features` - string array. Set of the allowed features for a dealer (all list see below in "Dealer features").
+* `platform` - key-value object. Global platform settings.
+    * `history.maxLimit` - int, max limit for [history](history/index.md) list actions.
+    * `report.maxTimeSpan` - ISO8601 period, max timespan for [reports generation](report/report_tracker.md#generate).
+    * `stats.maxAllowedTrackers` - int, max allowed trackers for [stats actions](../tracking/tracker/stats/stats_mileage.md).
+    * `stats.maxTimeSpan` - ISO8601 period,max timespan for [stats actions](../tracking/tracker/stats/stats_mileage.md).
+    * `fileStorage.hardMaxFileSize` - long, hard max file size in bytes for uploading files to the file storage.
+    * `form.fileField.maxFileSize` - long, max file size in bytes for the form file.
+    * `form.fileField.maxFilesPerField` - integer, max files per form field.
 
 #### Dealer features
 

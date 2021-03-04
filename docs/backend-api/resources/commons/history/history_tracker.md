@@ -22,7 +22,7 @@ and `to` date/time sorted by **time** field.
 | from | Start date/time for searching. | string [date/time](../../../getting-started.md#data-types) |
 | to | End date/time for searching. Must be after "from" date. | string [date/time](../../../getting-started.md#data-types) |
 | events | Optional. Default: all. List of history types. | string array |
-| limit | Optional. Default: [maxHistoryLimit](../../../getting-started.md#constants). Max count of entries in result. | int |
+| limit | Optional. Default: [history.maxLimit](../dealer.md). Max count of entries in result. | int |
 | ascending | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`. | boolean |
 
 If `events` (event types) not passed then list all event types.
@@ -83,6 +83,6 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
 
 #### errors
 
-* 211 – Requested time span is too big - time span between `from` and `to` is more than [maxReportTimeSpan](../../../getting-started.md#constants) days.
-* 212 – Requested `limit` is too big - `limit` is more than [maxHistoryLimit](../../../getting-started.md#constants).
+* 211 – Requested time span is too big - time span between `from` and `to` is more than [report.maxTimeSpan](../dealer.md) days.
+* 212 – Requested `limit` is too big - `limit` is more than [history.maxLimit](../dealer.md).
 * 217 – List contains nonexistent entities – if one of the specified trackers does not exist or is blocked.
