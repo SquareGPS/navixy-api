@@ -102,7 +102,8 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
         "stats.maxTimeSpan" : "P31D",
         "fileStorage.hardMaxFileSize" : 16777216,
         "form.fileField.maxFileSize" : 16777216,
-        "form.fileField.maxFilesPerField" : 6
+        "form.fileField.maxFilesPerField" : 6,
+        "form.fileField.maxCount": 16
     }
 }
 ```
@@ -165,6 +166,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `fileStorage.hardMaxFileSize` - long, hard max file size in bytes for uploading files to the file storage.
     * `form.fileField.maxFileSize` - long, max file size in bytes for the form file.
     * `form.fileField.maxFilesPerField` - integer, max files per form field.
+    * `form.fileField.maxCount` - integer, max file fields per form.
 
 #### Dealer features
 
