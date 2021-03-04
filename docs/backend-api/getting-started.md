@@ -240,12 +240,7 @@ Session hash can be obtained via `user/auth` API call:
     and `country` is [ISO 3166 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-2#Current_codes) 
     country code, e.g. `en_US` or `ru`. User interface support only language codes: 
     `ru, en, es, ar, de, pt, ro and uk`.
-
-### Constants
-
-*   **maxHistoryLimit** = 1000 – maximum count of history entries from [listing requests](./resources/commons/history/history_tracker.md)
-*   **maxReportTimeSpan** = 120 days – maximum interval in for most requests
-
+    
 
 ### Error handling
 

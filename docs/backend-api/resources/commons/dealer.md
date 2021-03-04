@@ -94,7 +94,16 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     },
     "demo_ends": "2014-01-01",
     "premium_gis": true,
-    "features": ["branding_web"]
+    "features": ["branding_web"],
+    "platform" : {
+        "history.maxLimit" : 10,
+        "report.maxTimeSpan" : "P90D",
+        "stats.maxAllowedTrackers" : 128,
+        "stats.maxTimeSpan" : "P31D",
+        "fileStorage.hardMaxFileSize" : 16777216,
+        "form.fileField.maxFileSize" : 16777216,
+        "form.fileField.maxFilesPerField" : 6
+    }
 }
 ```
 
@@ -148,6 +157,14 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 * `demo_ends` - string. A date when demo for this dealer ends. Is null when dealer is not on Trial tariff.
 * `premium_gis` - boolean. If `true` dealer has Premium GIS package.
 * `features` - string array. Set of the allowed features for a dealer (all list see below in "Dealer features").
+* `platform` - key-value object. Global platform settings.
+    * `history.maxLimit` - int, max limit for [history](history/index.md) list actions.
+    * `report.maxTimeSpan` - ISO8601 period, max timespan for [reports generation](report/report_tracker.md#generate).
+    * `stats.maxAllowedTrackers` - int, max allowed trackers for [stats actions](../tracking/tracker/stats/stats_mileage.md).
+    * `stats.maxTimeSpan` - ISO8601 period,max timespan for [stats actions](../tracking/tracker/stats/stats_mileage.md).
+    * `fileStorage.hardMaxFileSize` - long, hard max file size in bytes for uploading files to the file storage.
+    * `form.fileField.maxFileSize` - long, max file size in bytes for the form file.
+    * `form.fileField.maxFilesPerField` - integer, max files per form field.
 
 #### Dealer features
 

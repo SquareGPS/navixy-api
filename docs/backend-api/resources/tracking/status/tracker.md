@@ -152,7 +152,7 @@ Gets current assigned statuses for the specified trackers.
 
 #### errors
 
-* 217 (Requested limit is too big) – limit is more than [maxHistoryLimit](../../../getting-started.md#constants).
+* 217 (Requested limit is too big) – limit is more than [history.maxLimit](../../commons/dealer.md).
 * 221 (Device limit exceeded) – if device limit set for the user's dealer has been exceeded.
 * 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature
  available.

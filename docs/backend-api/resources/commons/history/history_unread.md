@@ -20,7 +20,7 @@ List less than or equal to `limit` of the latest user's unread history entries.
 | limit | Optional. Limit of entries in response. | int |
 | from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching. Default `from` is **now** minus one year. | date/time |
 
-Default and max limit is [maxHistoryLimit](../../../getting-started.md#constants).
+Default and max limit is [history.maxLimit](../dealer.md).
 
 #### examples
 
@@ -78,7 +78,7 @@ Default and max limit is [maxHistoryLimit](../../../getting-started.md#constants
 
 #### errors
 
-* 212 – Requested limit is too big (more [maxHistoryLimit](../../../getting-started.md#constants) config option).
+* 212 – Requested limit is too big (more [history.maxLimit](../dealer.md) config option).
 
 ### count
 
