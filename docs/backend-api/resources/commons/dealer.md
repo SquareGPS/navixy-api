@@ -95,15 +95,15 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     "demo_ends": "2014-01-01",
     "premium_gis": true,
     "features": ["branding_web"],
-    "platform" : {
-        "history.maxLimit" : 10,
-        "report.maxTimeSpan" : "P90D",
-        "stats.maxAllowedTrackers" : 128,
-        "stats.maxTimeSpan" : "P31D",
-        "fileStorage.hardMaxFileSize" : 16777216,
-        "form.fileField.maxFileSize" : 16777216,
-        "form.fileField.maxFilesPerField" : 6,
-        "form.fileField.maxCount": 16
+    "platform": {
+        "history.max_limit": 10,
+        "report.max_time_span": "P90D",
+        "stats.max_allowed_trackers": 128,
+        "stats.max_time_span": "P31D",
+        "file_storage.hard_max_file_size": 16777216,
+        "form.file_field.max_file_size": 16777216,
+        "form.file_field.max_files_per_field": 6,
+        "form.file_field.max_count": 16
     }
 }
 ```
@@ -159,14 +159,14 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 * `premium_gis` - boolean. If `true` dealer has Premium GIS package.
 * `features` - string array. Set of the allowed features for a dealer (all list see below in "Dealer features").
 * `platform` - key-value object. Global platform settings.
-    * `history.maxLimit` - int, max limit for [history](history/index.md) list actions.
-    * `report.maxTimeSpan` - ISO8601 period, max timespan for [reports generation](report/report_tracker.md#generate).
-    * `stats.maxAllowedTrackers` - int, max allowed trackers for [stats actions](../tracking/tracker/stats/stats_mileage.md).
-    * `stats.maxTimeSpan` - ISO8601 period,max timespan for [stats actions](../tracking/tracker/stats/stats_mileage.md).
-    * `fileStorage.hardMaxFileSize` - long, hard max file size in bytes for uploading files to the file storage.
-    * `form.fileField.maxFileSize` - long, max file size in bytes for the form file.
-    * `form.fileField.maxFilesPerField` - integer, max files per form field.
-    * `form.fileField.maxCount` - integer, max file fields per form.
+    * `history.max_limit` - int, max limit for [history](history/index.md) list actions.
+    * `report.max_time_span` - ISO8601 period, max timespan for [reports generation](report/report_tracker.md#generate).
+    * `stats.max_allowed_trackers` - int, max allowed trackers for [stats actions](../tracking/tracker/stats/stats_mileage.md).
+    * `stats.max_time_span` - ISO8601 period,max timespan for [stats actions](../tracking/tracker/stats/stats_mileage.md).
+    * `file_storage.hard_max_file_size` - long, hard max file size in bytes for uploading files to the file storage.
+    * `form.file_field.max_file_size` - long, max file size in bytes for the form file.
+    * `form.file_field.max_files_per_field` - integer, max files per form field.
+    * `form.file_field.max_count` - integer, max file fields per form.
 
 #### Dealer features
 
