@@ -5,7 +5,7 @@ description: API calls for interacting with activation codes used for device reg
 
 # Activation code
 
-API base path: `/dealer/activation_code`
+API base path: `panel/dealer/activation_code`
 
 ## Activation code object
 

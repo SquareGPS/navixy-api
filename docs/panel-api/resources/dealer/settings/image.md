@@ -7,7 +7,7 @@ description: API calls for interaction with images that used for branding of the
 
 API calls for interaction with images that used for branding of the panel.
 
-API path: `/dealer/settings/image`
+API path: `panel/dealer/settings/image`
 
 ### delete 
 
