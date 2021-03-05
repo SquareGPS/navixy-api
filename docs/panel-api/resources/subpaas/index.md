@@ -7,7 +7,7 @@ description: API calls to interact with Subpaases.
 
 API calls to interact with Subpaases.
 
-API base path: `/subpaas`.
+API base path: `panel/subpaas`.
 
 ## Subpaas object
 

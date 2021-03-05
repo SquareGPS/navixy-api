@@ -5,7 +5,7 @@ description: API call to change subpaas's password.
 
 # Change password
 
-API base path: `/subpaas/password`.
+API base path: `panel/subpaas/password`.
 
 ### change 
 

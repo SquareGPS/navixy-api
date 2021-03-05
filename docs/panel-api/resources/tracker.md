@@ -7,7 +7,7 @@ description: API calls to interact with trackers in the admin panel.
 
 API calls to interact with trackers in the admin panel.
 
-API path: `/tracker`.
+API path: `panel/tracker`.
 
 ## Tracker object
 
