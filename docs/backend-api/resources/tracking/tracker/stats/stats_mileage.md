@@ -13,8 +13,8 @@ Returns mileage in kilometers in specified period grouped by trackers and day.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
+| name | description | type|
+| :------ | :------ | :----- |
 | trackers | Array of tracker IDs (aka "object_id"). Trackers must belong to authorized user and not be blocked. | int array |
 | from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | [date/time](../../../../getting-started.md#data-types) |
 | to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | [date/time](../../../../getting-started.md#data-types) |
