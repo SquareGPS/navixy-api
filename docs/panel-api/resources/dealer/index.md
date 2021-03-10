@@ -27,12 +27,13 @@ Only session `hash`.
     curl -X POST '{{ extra.api_example_url }}/panel/dealer/get_info' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
-        
-    === "HTTP GET"
-    
-        ```
-        {{ extra.api_example_url }}/panel/dealer/get_info?hash=fa7bf873fab9333144e171372a321b06
-        ```
+    ```    
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/dealer/get_info?hash=fa7bf873fab9333144e171372a321b06
+    ```
 
 #### response
 
