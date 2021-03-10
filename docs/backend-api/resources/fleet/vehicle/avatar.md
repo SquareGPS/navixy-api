@@ -72,10 +72,10 @@ File part **mime** type must be one of :
 | name | description | type |
 | :------ | :------ | :----- |
 | tag_id | Tag id. | int |
-| file | Image file | string |
-| redirect_target | Optional. URL to redirect | string |
+| file | Image file. | string |
+| redirect_target | Optional. URL to redirect. | string |
 
-If `redirect_target` passed a return redirect to <redirect_target>?response=<urlencoded response json>.
+If `redirect_target` passed a return redirect to response=<urlencoded response json>.
 
 #### response
 
