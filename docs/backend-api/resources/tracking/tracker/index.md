@@ -1466,13 +1466,11 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 | name | description | type |
 | :--- | :--- | :--- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| command | Text or hexadecimal representation of the command | string |
-| type | **text** or **hex**. Optional, default is **text** | string |
-| reliable | **
-false** if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Optional, default is **
-true** | Boolean |
+| command | Text or hexadecimal representation of the command. | string |
+| type | Optional. `text` or `hex` format. Default is `text`. | string |
+| reliable | Optional. `false` if the command does not need to be resent when the device is disconnected or if no acknowledgment is received. Default is `true`. | boolean |
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -1492,8 +1490,8 @@ true** | Boolean |
 
 #### errors
 
-* 7 (Invalid parameters)
-* 201 (Not found in database) – if there is no tracker with such device ID belonging to authorized user
+* 7 - Invalid parameters.
+* 201 - Not found in the database – if there is no tracker with such device ID belonging to authorized user.
 
 #### example response with an error:
 

@@ -20,3 +20,6 @@ needs but also help you make your business more profitable.
 * [How to obtain report's information](./how-to-obtain-information-from-report.md)
 * [How to use rules](./how-to-create-a-rule.md)
 * [How to work with notifications](./how-to-work-with-notifications.md)
+* [How to create, assign and read status of tasks](./how-to-work-with-tasks.md)
+* [How to work with statuses](./how-to-work-with-statuses.md)
+* [How to send commands to device via GPRS](./how-to-send-commands-to-device.md)
