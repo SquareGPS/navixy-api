@@ -24,14 +24,14 @@ its IP address to a new one 52.57.1.136. According to the protocol the command s
 
 `setparam 2004:52.57.1.136`
 
-API request:
+[API request](../resources/tracking/tracker/index.md#raw_commandsend):
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/raw_command/send' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "231402", "command": "setparam 2004:52.57.1.136"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 231402, "command": "setparam 2004:52.57.1.136"}'
     ```
 
 The platform will notify you about success in reply.

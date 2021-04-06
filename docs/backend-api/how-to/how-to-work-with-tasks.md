@@ -37,7 +37,7 @@ In this case, the `task` object will have the next parameters:
 * `max_delay` - the employee may be late with the execution for a maximum of this time in minutes.
 * `min_stay_duration` - the task will not be considered completed if the employee spends less than this time in the task's zone.
 
-API request:
+[API request](../resources/field_service/task/index.md#create):
 
 === "cURL"
 
@@ -69,7 +69,7 @@ The list of necessary parameters is next:
 For example, we need to create the next route:
 
 John needs to deliver our products to three customers on 18th of March, from 10 AM to 4 PM. His car has a tracker with
-id 120945. He can't get late because our customers will wait for production at the exact time and if he is late - the checkpoint
+id 669673. He can't get late because our customers will wait for production at the exact time and if he is late - the checkpoint
 will be considered failed. This is how we know about the quality of delivery. Also, I know that he needs a minimum of 10 minutes
 to hand over the goods to the client and fill out the documents.
 
@@ -80,7 +80,7 @@ In this case, every `checkpoint` object will have the next parameters:
 * `label` - the name of the checkpoint.
 * `description` - a note about the checkpoint.
 * `from` and `to` - the time when this checkpoint should be completed.
-* `external_id` - this is a delivery code. It is necessary for a checkpoint because I have the plugin "Courier on the map."
+* `external_id` - this is a delivery code. It is necessary for a checkpoint because I have the plugin "Courier on the map".
   Customers can specify this id to the plugin and see - where the driver at the moment.
 * `max_delay` - the employee may be late with the execution for a maximum of this time in minutes. In our case, it is 0 minutes.
 * `min_stay_duration` - the task will not be considered completed if the employee spends less than this time in the task's zone.
@@ -96,7 +96,7 @@ The route object will have its own parameters too:
 * `description` - additional information about the whole route.
 * `from` and `to` - the time when this route should be completed.
 
-API request:
+[API request](../resources/field_service/task/route/index.md#create):
 
 === "cURL"
 
@@ -146,7 +146,7 @@ Necessary parameters:
 * `start_point` - JSON object with the point and time from that our driver will start the move.
 * `route_points` - an array of JSON objects with points and time that driver should visit.
 
-API request:
+[API request](../resources/field_service/task/route/optimize.md#optimize):
 
 === "cURL"
 

@@ -1477,7 +1477,7 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/raw_command/send' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "command": "AT+GTRTO=gv200,A,,,,,,0001$", "type": "text"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "command": "AT+GTRTO=gv200,A,,,,,,0001$", "type": "text"}'
     ```
 
 #### response
