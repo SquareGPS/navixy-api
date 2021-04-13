@@ -220,7 +220,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 * 206 - Login already in use – if this email already registered.
 
-## export
+### export
 
 Returns list of all users belonging to dealer as file.
 
@@ -272,7 +272,7 @@ About user object structure see [above](#user-object-structure).
 
 * [Genreal](../../backend-api/getting-started.md#error-codes) types only.
 
-# list
+### list
 
 Returns a list of all users belonging to dealer.
 
@@ -359,7 +359,7 @@ entities will be returned only if filter string is contained within one of the f
 
 * [Genreal](../../backend-api/getting-started.md#error-codes) types only.
 
-## read
+### read
 
 Returns user info by its id.
 
@@ -439,7 +439,7 @@ Returns user info by its id.
 
 * 201 - Not found in the database – when user with specified id not found or belongs to other dealer.
 
-## update
+### update
 
 Updates existing user with new field values (see [user object](#user-object-structure)). User must 
 exist and must belong to authorized dealer. Changing of `legal_type` is not permitted, i.e. 
@@ -564,7 +564,7 @@ New balance (bonus) must be not negative.
 * 201 – Not found in the database – if user not found or not owned by a current dealer.
 * 251 – Insufficient funds(403) – if user have not enough funds to withdraw passed (negative) amount.
 
-### list
+### transaction/list
 
 Gets list of user's billing transactions for the specified period. Same as [/transaction/list](../../backend-api/resources/billing/transaction.md#list) from main api.
 
