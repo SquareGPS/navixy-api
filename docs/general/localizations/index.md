@@ -1,4 +1,5 @@
 ---
+title: Localizations
 description: Language support on Navixy Platform
 ---
 

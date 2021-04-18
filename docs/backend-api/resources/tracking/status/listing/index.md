@@ -26,7 +26,7 @@ Creates new empty status listing.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/listing/create' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"label": "Taxi driver statuses", "employee_controlled": "false", "supervisor_controlled": "true"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true}'
     ```
 
 #### response
@@ -65,7 +65,7 @@ Deletes status listing.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/listing/delete' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": "12345"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345}'
     ```
 
 === "HTTP GET"
@@ -149,7 +149,7 @@ Updates status listing properties.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/listing/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"id": "12345", "label": "Taxi driver statuses", "employee_controlled": "false", "supervisor_controlled": "true", "entries": [ 5, 2, 1, 4, 6]}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"id": 12345, "label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true, "entries": [ 5, 2, 1, 4, 6]}'
     ```
 
 #### response

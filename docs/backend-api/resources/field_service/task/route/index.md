@@ -107,8 +107,8 @@ task to checkpoint.
 | name | description | type | 
 | :--- | :--- | :--- |
 | route | Route object without fields which are *IGNORED*. | JSON object |
-| checkpoints | Checkpoints array of [checkpoint objects](../checkpoint.md#checkpoint-object) without fields which are *IGNORED*. | array of JSON objects |
-| create_form | If true then check additional `form_template_id` field in every **checkpoint** object and create form if it is not null. Default value is `false` for backward compatibility. | boolean |
+| checkpoints | Array of [checkpoint objects](../checkpoint.md#checkpoint-object) without fields which are *IGNORED*. | array of JSON objects |
+| create_form | If `true` then check additional `form_template_id` field in every **checkpoint** object and create form if it is not null. Default value is `false` for backward compatibility. | boolean |
 
 Minimal route object to create a new route must contain:
 

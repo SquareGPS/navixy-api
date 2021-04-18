@@ -1,106 +1,169 @@
 ---
-title: /user
-description: /user
+title: User
+description: API calls on work with users in the admin panel.
 ---
 
+# User
 
-# Data structures
- 
-** User object structure **
+API calls on work with users in the admin panel.
+
+API path: `panel/user`.
+
+## User object structure
+
 ```json
 { 
-    "dealer_id": 5001,                // dealer id
-    "activated": true,                // true if user is activated (allowed to login)
-    "verified": true,                 // true if user's email is verified
-    "login": "user@test.com",         // User email as login. Must be valid unique email address
-    "first_name": ${string},          // Contact person first name
-    "middle_name": ${string},         // Contact person middle name
-    "last_name": ${string},           // Contact person last name
-	"legal_name": "E. Biasi GmbH",    // user legal name (for "legal_entity" only)
-    "legal_type": "legal_entity",     // either "legal_entity", "individual" or "sole_trader"
-    "phone": "491761234567",          // Contact phone (10-15 digits)
-    "post_country": "Germany",        // country part of user's post address
-    "post_index": "61169",            // index part of user's post address
-    "post_region": "Hessen",          // region part of user's post address
-    "post_city": "Wiesbaden",         // city from postal address
-    "post_street_address": "Marienplatz 2", // street address
-    "registered_country": "Germany",  // country part of user's registered address
-    "registered_index": "61169",      // index part of user's registered address
-    "registered_region": "Hessen",    // region part of user's registered address
-    "registered_city": "Wiesbaden",   // city from registered address
-    "registered_street_address": "Marienplatz 2", // User's registered address
-    "state_reg_num": ${string},       // State registration number. E.g. EIN in USA, OGRN in Russia. 15 characters max.
-    "tin": ${string},                 // Taxpayer identification number aka "VATIN"
- 	"okpo_code": ${string},           // All-Russian Classifier of Enterprises and Organizations, used in Russia for "legal_entity" / "sole_trader"
-    "iec": ${string},                 // Industrial Enterprises Classifier aka "KPP" (used in Russia. for "legal_entity" only)
-    "id": 38935,                      // user id
-    //this fields are read-only, they should not be used in user/update(..)
-    "balance" : 10.01,                // user balance
-    "bonus": 0,                       // user bonus balance
-    "creation_date" : "2014-03-01 13:00:00", // date/time when user was created, in UTC
-	"trackers_count": 10 //user trackers count
+    "dealer_id": 5001,
+    "activated": true,
+    "verified": true,
+    "login": "user@test.com",
+    "first_name": "John",
+    "middle_name": "William",
+    "last_name": "Smith",
+	"legal_name": "E. Biasi GmbH",
+    "legal_type": "legal_entity",
+    "phone": "491761234567",
+    "post_country": "Germany",
+    "post_index": "61169",
+    "post_region": "Hessen",
+    "post_city": "Wiesbaden", 
+    "post_street_address": "Marienplatz 2",
+    "registered_country": "Germany",
+    "registered_index": "61169",
+    "registered_region": "Hessen",
+    "registered_city": "Wiesbaden",
+    "registered_street_address": "Marienplatz 2",
+    "state_reg_num": "12-3456789",
+    "tin": "1131145180",
+ 	"okpo_code": "93281776",
+    "iec": "773101001",
+    "id": 38935,
+    "balance" : 10.01,
+    "bonus": 0,
+    "creation_date" : "2021-03-01 13:00:00",
+	"trackers_count": 10
 }
 ```
 
-** Discount object structure **
+* `dealer_id` - int. Dealer ID.
+* `activated` - boolean. `true` if user activated (allowed to login).
+* `verified` - boolean. `true` if user's email verified.
+* `login` - string. User email as login. Must be valid unique email address.
+* `first_name` - string. Contact person first name.
+* `middle_name` - string. Contact person middle name.
+* `last_name` - string. Contact person last name.
+* `legal_name` - string. User legal name (for "legal_entity" only).
+* `legal_type` - [enum](../../backend-api/getting-started.md#data-types). Can be "legal_entity", "individual" or "sole_trader".
+* `phone` - string. Contact phone 10-15 digits without "+" sign.
+* `post_country` - string. Country part of user's post address.
+* `post_index` - string. Index part of user's post address.
+* `post_region` - string. Region part of user's post address.
+* `post_city` - string. City from postal address.
+* `post_street_address` - string. Street address.
+* `registered_country` - string. Country part of user's registered address.
+* `registered_index` - string. Index part of user's registered address.
+* `registered_region` - string. Region part of user's registered address.
+* `registered_city` - string. City from registered address.
+* `registered_street_address` - string. User's registered address.
+* `state_reg_num` - string. State registration number. E.g. EIN in USA, OGRN in Russia. 15 characters max.
+* `tin` - string. Taxpayer identification number aka "VATIN".
+* `okpo_code` - string, optional. All-Russian Classifier of Enterprises and Organizations, used in Russia for "legal_entity" or "sole_trader".
+* `iec` - string, optional. Industrial Enterprises Classifier aka "KPP" (used in Russia. for "legal_entity" only).
+* `id` - int. User id.
+Next fields are read-only, they should not be used in `user/update` and `user/create`.
+* `balance` - double. User balance.
+* `bonus` - double. User bonus balance.
+* `creation_date` - [date/time](../../backend-api/getting-started.md#data-types). Date and time when user created, in UTC.
+* `trackers_count` - user trackers count.
+
+## Discount object structure
 
 ```json
 {
-    "value": 5.5, //personal discount percent, min 0 max 100
-    "min_trackers": 10, //min active trackers to apply discount, min 0
-    "end_date": "2017-03-01", //discount end date, null means open date, nullable
-    "strategy": "sum_with_progressive" // one of no_summing, sum_with_progressive
+    "value": 5.5,
+    "min_trackers": 10,
+    "end_date": "2021-03-01",
+    "strategy": "sum_with_progressive"
 }
 ```
-  
-## change_password
 
-`change_password(user_id, password)`
+* `value` - double. Personal discount percent, min 0 max 100.
+* `min_trackers` - int. Minimum active trackers to apply discount, min 0.
+* `end_date` - [date/time](../../backend-api/getting-started.md#data-types). Discount end date, null means open date, nullable.
+* `strategy` - [enum](../../backend-api/getting-started.md#data-types). One of "no_summing", "sum_with_progressive".\
 
-Change password of the user.
+### change_password
 
-** Parameters **
+Changes password of a user.
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| user_id |	id of the user | Int |
-| password |	User password, 6 to 20 printable characters | string |
+*required permissions*: `users: "update"`.
 
-** Required permissions **
+#### parameters
 
-* `users: "update"`
+| name | description | type|
+| :------ | :------ | :----- |
+| user_id |	Id of a user. | int |
+| password | User's new password, 6 to 20 printable characters. | string |
 
-** Return **
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}panel/user/change_password' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432 "password": "12@14Y$"}'
+    ```
+
+#### response
 
 ```json
-{ "success": true }
+{
+    "success": true
+}
 ```
 
-** Errors **
+#### errors
 
-* 201 – Not found in database (if specified user does not exist or belongs to different dealer)
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+* 201 – Not found in the database - if specified user does not exist or belongs to different dealer.
 
-## corrupt
+### corrupt
 
-`corrupt(user_id, login)`
+Marks user and its sub users and trackers as deleted and corrupt all user trackers.
 
-Mark user and its sub users and trackers as deleted and corrupt all user trackers.
-login parameter must match user login.
 
-** Required permissions **
+*required permissions*: `users: "corrupt"`.
 
-* `users: "corrupt"`
+#### parameters
 
-** Return **
+| name | description | type|
+| :------ | :------ | :----- |
+| user_id | User id. | int |
+| login | Login of a user. Login parameter must match user login. | string |
 
-* `{"success": true}`
+#### example
 
-** Errors **
+=== "cURL"
 
-* 201 – Not found in database (if user was not found)
-* 252 – Device already corrupted (if some of user tracker already corrupted)
-* 253 – Device has clones (if some of user tracker has clone)
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}panel/user/corrupt' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432 "login": "user@login.com"}'
+    ```
+
+#### response
+
+```json
+{
+    "success": true
+}
+```
+
+#### errors
+
+* 201 – Not found in the database - if a user not found.
+* 252 – Device already corrupted - if some of user's tracker already corrupted.
+* 253 – Device has clones - if some of user's tracker has a clone.
 
 ```json
 {
@@ -112,303 +175,458 @@ login parameter must match user login.
 }
 ```
 
-## create
+### create
 
-** Required permissions **
+Creates a new user.
 
-```json
-users: "create"
-users: "global" // optional. allow to create users of users, not only owned 
-                // by current dealer (use user.dealer_id parameter for other owners).
-```
+*required permissions*: `[users: "corrupt", "global"]`.
 
-** Parameters **
+* `users: "global"` - Optional. Allows creating users of users, not only owned by a current dealer (use `user.dealer_id` parameter for other owners).
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `user` |	user object without the "id" and "dealer_id" fields	| JSON object |
-| `time_zone` |	User timezone (e.g. "Europe/Moscow" ) | string |
-| `locale` |	User locale (e.g. "en_US") | string |
-| `password` |	User password, 6 to 20 printable characters | string |
-| `discount` |	discount object | JSON object |
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| user | [User object](#user-object-structure) without the "id", "dealer_id" and read-only fields. | JSON object |
+| time_zone |	User timezone. | string |
+| locale | User locale. | string |
+| password | User password, 6 to 20 printable characters. | string |
+| discount | [Discount object](#discount-object-structure). | JSON object |
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
-** Return **
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}panel/user/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"activated": true, "verified": true, "login": "user@test.com", "first_name": "John", "middle_name": "William", "last_name": "Smith", "legal_name": "E. Biasi GmbH", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "okpo_code": "93281776", "iec": "773101001"}, "time_zone": "Europe/Moscow", "locale": "en_US", "password": "12@14Y$", "discount": {"value": 5.5, "min_trackers": 10, "end_date": null, "strategy": "sum_with_progressive"}}'
+    ```
+
+#### response
 
 ```json
 {
     "success": true, 
-    "id" : 15534 // id of the created user
+    "id" : 15534
 }
 ```
 
-** Errors **
+* `id` - int. An id of the created user.
 
-* 206 (Login already in use) – if this email already registered
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
+#### errors
 
-## export
+* 206 - Login already in use – if this email already registered.
+
+### export
 
 Returns list of all users belonging to dealer as file.
 
-If `filter` is used (parameter `filter` is passed, it is not empty and do not consist only of space characters),
+If `filter` is used (parameter `filter` is passed, it isn't empty and does not consist only of space characters),
 entities will be returned only if filter string is contained within one of the following fields:
 `id`, `login`, `last_name`, `first_name`, `middle_name`, `phone`,
 `post_city`, `post_region`, `post_country`, `post_index`, `post_street_address`,
 `registered_country`, `registered_index`, `registered_region`, `registered_city`, `registered_street_address`,
 `tin`, `iec`, `legal_name`.
 
-** Required permissions **
+*required permissions*: `users: "read"`.
 
-* `users: "read"`
+#### parameters
 
-** Parameters **
+| name | description | type|
+| :------ | :------ | :----- |
+| filter | Optional. Text filter string. | string |
+| order_by | Optional. Specify list ordering. May be one of: `id`, `login`, `last_name`, `balance`, `bonus`, `phone`, `post_city`. Default is `id`. | string |
+| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
+| limit |  Optional. Max number of records to return, used for pagination. | int |
+| offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
+| hide_inactive | Optional. If `true` only activated users will be returned. Default is `false`. |  boolean |
+| format | Optional. Format of exported list. Can be `xlsx` or `csv`. Default is `xlsx`.  | string |
+| columns | Optional. A list of columns to export. Default is `["id", "login", "first_name", "middle_name", "last_name", "phone"]` | string array |
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `filter` | Text filter string | string, optional |
-| `order_by` | Specify list ordering. May be one of: id, login, last_name, balance, bonus, phone, post_city | string, optional (default: id) |
-| `ascending` | If true, ordering will be ascending, descending otherwise. | boolean, optional (default: true) |
-| `limit` |  Max number of records to return, used for pagination. | int, optional |
-| `offset` | Starting offset, used for pagination | int, optional (default: 0) |
-| `hide_inactive` | If true only activated users will be returned |  boolean, optional (default: false) |
-| `format` | xlsx or csv | string, optional (default: xlsx) |
-| `columns` | list of columns to export | string array, (default: ["id", "login", "first_name", "middle_name", "last_name", "phone"]) |
+About user object structure see [above](#user-object-structure).
 
-About user object structure see [above](#data-structures).
+#### examples
 
-** Return **
+=== "cURL"
 
-XLSX or CSV file
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/user/export' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
+    ```
 
-** Errors **
+=== "HTTP GET"
 
-* Only [standard errors](../../backend-api/getting-started.md#error-codes)
+    ```
+    {{ extra.api_example_url }}/panel/user/export?hash=fa7bf873fab9333144e171372a321b06
+    ```
 
+#### response
 
-# list
+`XLSX` or `CSV` file download starts.
 
-Returns list of all users belonging to dealer.
+#### errors
 
-If `filter` is used (parameter `filter` is passed, it is not empty and do not consist only of space characters),
-entities will be returned only if filter string is contained within one of the following fields:
-`id`, `login`, `last_name`, `first_name`, `middle_name`, `phone`,
-`post_city`, `post_region`, `post_country`, `post_index`, `post_street_address`,
-`registered_country`, `registered_index`, `registered_region`, `registered_city`, `registered_street_address`,
-`tin`, `iec`, `legal_name`.
-
-** Required permissions **
-
-* `users: "read"`
-
-** Parameters **
-
-| Name | Description  | Type |
-| --- | --- | --- |
-| `filter` | Text filter string | string, optional |
-| `order_by` | Specify list ordering. May be one of: id, login, last_name, balance, bonus, phone, post_city | string, optional (default: id) |
-| `ascending` | If true, ordering will be ascending, descending otherwise. | boolean, optional (default: true) |
-| `limit` |  Max number of records to return, used for pagination. | int, optional |
-| `offset` | Starting offset, used for pagination | int, optional (default: 0) |
-| `hide_inactive` | If true only activated users will be returned |  boolean, optional (default: false) |
-
-** Return **
-
-```json
-{
-    "success": true,
-    "list" : [ ${user} , ... ], // list of JSON-objects
-    "count" : 42 // total number of records (ignoring offset and limit)
-}
-```
-
-About user object structure see [above](#data-structures).
-
-** Errors **
-
-* Only [standard errors](../../backend-api/getting-started.md#error-codes)
-
-## read
-
-Returns user info by it's id.
-
-** Required permissions **
-
-* `users: "read"`
-
-** Parameters **
-
-| Name | Description  | Type |
-| --- | --- | --- |
-| `user_id` | | int |
-
-** Return **
-
-```json
-{
-    "success": true,
-    "value" : ${user},
-    "discount": ${discount}
-}
-```
-
-About user object structure see [above](#data-structures).
-
-** Errors **
-
-* 201 (Not found in database) – when user with specified id not found or belongs to other dealer.
-* [Standard errors](../../backend-api/getting-started.md#error-codes)
-
-## update
-
-Updates existing user with new field values (see user [above](#data-structures)). User must 
-exist and must belong to authorized dealer. Changing of legal_type do not permitted, i.e. 
-this field will not be changed.
-
-** Required permissions **
-
-* `users: "update"`
-
-** Parameters **
-
-| Name | Description  | Type |
-| --- | --- | --- |
-| user | user |  JSON object
-| discount | discount |  JSON object
-
-About user and discount object structure see [above](#data-structures).
-
-If `user.verified` not passed then it set equal to `user.activated`.
-
-** Return **
-
-```json
-{ "success": true }
-```
-
-** Errors **
-
-* 201 (Not found in database) – if specified user does not exist or belongs to different dealer.
-* 206 (Login already in use) – if specified "login" is used by another user.
-* [Standard errors](../../backend-api/getting-started.md#error-codes).
-
-## session/
-
-### create
-
-Creates an interface session for specified user and returns the hash for the created session.
-
-** Required permissions **
-
-```
-users: "read"
-user_sessions: "create"
-user_sessions: "global" // optional. allow to create sessions of users, not only owned by current dealer.
-```
-
-** Parameters **
-
-| Name | Description  | Type |
-| --- | --- | --- |
-| `user_id` | ID of monitoring user | int |
-
-** Return **
-
-```json
-{
-    "success": true,
-    "hash" : "a2caa32267f028bd41b982980467132c" // hash of the created session
-}
-```
-
-** Errors **
-
-* 201 (Not found in database) – if specified user does not exist or belongs to different dealer.
-* [Standard errors](../../backend-api/getting-started.md#error-codes).
-
-## transaction/
-
-### change_balance
-
-Change user balance (increase or decrease) or bonus and write this change in transactions (type = payment, subtype = partner).
-
-New balance (bonus) must be not negative.
-
-** Required permissions **
-
-```
-users: "update"
-transactions: "create"
-```
-
-** Parameters **
-
-| Name | Description  | Type |
-| --- | --- | --- |
-| user_id | id of user whom balance changed | int |
-| amount | add it to passed type of balance | double (2 digits after decimal mark) |
-| type | Type of balance to change ("balance" or "bonus") | string |
-| text | description of transaction | string(min length is 5 chars) |
-
-** Return **
-
-```json
-{ "success": true }
-```
-
-** Errors **
-
-* 201 – Not found in database – If user not found or not owned by current dealer.
-* 251 – Insufficient funds(403) – If user have not enough funds to withdraw passed (negative) amount.
-* [Standard errors](../../backend-api/getting-started.md#error-codes).
+* [Genreal](../../backend-api/getting-started.md#error-codes) types only.
 
 ### list
 
-Same as [/transaction/list](../../backend-api/resources/billing/transaction.md#list) from main api.
+Returns a list of all users belonging to dealer.
 
-** Required permissions **
+If `filter` is used (parameter `filter` is passed, it is not empty and does not consist only of space characters),
+entities will be returned only if filter string is contained within one of the following fields:
+`id`, `login`, `last_name`, `first_name`, `middle_name`, `phone`,
+`post_city`, `post_region`, `post_country`, `post_index`, `post_street_address`,
+`registered_country`, `registered_index`, `registered_region`, `registered_city`, `registered_street_address`,
+`tin`, `iec`, `legal_name`.
 
+*required permissions*: `users: "read"`.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| filter | Optional. Text filter string. | string |
+| order_by | Optional. Specify list ordering. May be one of: `id`, `login`, `last_name`, `balance`, `bonus`, `phone`, `post_city`. Default is `id`. | string |
+| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
+| limit |  Optional. Max number of records to return, used for pagination. | int |
+| offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
+| hide_inactive | Optional. If `true` only activated users will be returned. Default is `false`. |  boolean |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/user/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/user/list?hash=fa7bf873fab9333144e171372a321b06
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "list" : [{ 
+      "dealer_id": 5001,
+      "activated": true,
+      "verified": true,
+      "login": "user@test.com",
+      "first_name": "John",
+      "middle_name": "William",
+      "last_name": "Smith",
+      "legal_name": "E. Biasi GmbH",
+      "legal_type": "legal_entity",
+      "phone": "491761234567",
+      "post_country": "Germany",
+      "post_index": "61169",
+      "post_region": "Hessen",
+      "post_city": "Wiesbaden", 
+      "post_street_address": "Marienplatz 2",
+      "registered_country": "Germany",
+      "registered_index": "61169",
+      "registered_region": "Hessen",
+      "registered_city": "Wiesbaden",
+      "registered_street_address": "Marienplatz 2",
+      "state_reg_num": "12-3456789",
+      "tin": "1131145180",
+      "okpo_code": "93281776",
+      "iec": "773101001",
+      "id": 38935,
+      "balance" : 10.01,
+      "bonus": 0,
+      "creation_date" : "2021-03-01 13:00:00",
+      "trackers_count": 10
+    }],
+    "count" : 1
+}
 ```
-users: "read"
-transactions: "read"
+
+* `list` - array of JSON objects. A list of [user objects](#user-object-structure).
+* `count` - int. Total number of records (ignoring offset and limit).
+
+#### errors
+
+* [Genreal](../../backend-api/getting-started.md#error-codes) types only.
+
+### read
+
+Returns user info by its id.
+
+*required permissions*: `users: "read"`.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| user_id | An id of a user to read. | int |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/user/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 231485}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/user/read?hash=fa7bf873fab9333144e171372a321b06&user_id=231485
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "value" : { 
+        "dealer_id": 5001,
+        "activated": true,
+        "verified": true,
+        "login": "user@test.com",
+        "first_name": "John",
+        "middle_name": "William",
+        "last_name": "Smith",
+        "legal_name": "E. Biasi GmbH",
+        "legal_type": "legal_entity",
+        "phone": "491761234567",
+        "post_country": "Germany",
+        "post_index": "61169",
+        "post_region": "Hessen",
+        "post_city": "Wiesbaden", 
+        "post_street_address": "Marienplatz 2",
+        "registered_country": "Germany",
+        "registered_index": "61169",
+        "registered_region": "Hessen",
+        "registered_city": "Wiesbaden",
+        "registered_street_address": "Marienplatz 2",
+        "state_reg_num": "12-3456789",
+        "tin": "1131145180",
+        "okpo_code": "93281776",
+        "iec": "773101001",
+        "id": 38935,
+        "balance" : 10.01,
+        "bonus": 0,
+        "creation_date" : "2021-03-01 13:00:00",
+        "trackers_count": 10
+    },
+    "discount": {
+        "value": 5.5,
+        "min_trackers": 10,
+        "end_date": "2021-03-01",
+        "strategy": "sum_with_progressive"
+    }
+}
 ```
 
-** Parameters **
+* `value` - JSON object. [User object](#user-object-structure) described above.
+* `discount` - JSON object. [Discount object](#discount-object-structure) described above.
 
-| Name | Description  | Type |
-| --- | --- | --- |
-| `user_id` | id of user whom transactions listed. must be owned by current dealer | int
-| `from` | start date/time for searching | date/time
-| `to` | end date/time for searching. must be after "from" date  | date/time
-| `limit` | maximum number of the returned transactions (optional) | int
+#### errors
 
-** Return **
+* 201 - Not found in the database – when user with specified id not found or belongs to other dealer.
+
+### update
+
+Updates existing user with new field values (see [user object](#user-object-structure)). User must 
+exist and must belong to authorized dealer. Changing of `legal_type` is not permitted, i.e. 
+this field will not be changed.
+
+*required permissions*: `users: "update"`.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| user | [User object](#user-object-structure) without read-only fields. | JSON object |
+| discount | [Discount object](#discount-object-structure). | JSON object |
+
+If `user.verified` not passed then it set equal to `user.activated`.
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}panel/user/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"dealer_id": 5001, "activated": true, "verified": true, "login": "user@test.com", "first_name": "John", "middle_name": "William", "last_name": "Smith", "legal_name": "E. Biasi GmbH", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "okpo_code": "93281776", "iec": "773101001", "id": 38935}, "discount": {"value": 5.5, "min_trackers": 10, "end_date": null, "strategy": "sum_with_progressive"}}'
+    ```
+
+#### response
+
+```json
+{
+    "success": true
+}
+```
+
+#### errors
+
+* 201 - Not found in the database – if specified user does not exist or belongs to different dealer.
+* 206 - Login already in use – if specified "login" is used by another user.
+
+### session/create
+
+Creates an interface session for specified user and returns the hash for the created session.
+
+*required permissions*: `[users: "update", user_sessions: ["create", "global"]`.
+
+user_sessions: "global" - Optional. Allows sessions of users creation, not only owned by a current dealer.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| user_id | An id of a user to create session. | int |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/user/session/create' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 231485}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/user/session/create?hash=fa7bf873fab9333144e171372a321b06&user_id=231485
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "hash" : "a2caa32267f028bd41b982980467132c"
+}
+```
+
+* `hash` - string. Hash of the created session.
+
+#### errors
+
+* 201 - Not found in the database – if specified user does not exist or belongs to different dealer.
+
+### transaction/change_balance
+
+Changes user balance (increase or decrease) or bonus and write this change in transactions (type = `payment`, subtype = `partner`).
+
+New balance (bonus) must be not negative.
+
+*required permissions*: `[users: "update", transactions: "create"]`.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| user_id | An id of user whom balance changed. | int |
+| amount | Amount to change. Can be negative. | double (2 digits after decimal mark) |
+| type | Type of balance to change. Can be "balance" or "bonus". | [enum](../../backend-api/getting-started.md#data-types) |
+| text | Description of transaction. | string (min length is 5 chars) |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/user/transaction/change_balance' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 231485, "amount": 2.05, "type": "balance", "text": "additional payment"}'
+    ```
+
+#### response
+
+```json
+{
+    "success": true
+}
+```
+
+#### errors
+
+* 201 – Not found in the database – if user not found or not owned by a current dealer.
+* 251 – Insufficient funds(403) – if user have not enough funds to withdraw passed (negative) amount.
+
+### transaction/list
+
+Gets list of user's billing transactions for the specified period. Same as [/transaction/list](../../backend-api/resources/billing/transaction.md#list) from main api.
+
+*required permissions*: `[users: "read", transactions: "read"]`.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| user_id | An id of user whom transactions listed. must be owned by a current dealer. | int |
+| from | Start date/time for searching. | [date/time](../../backend-api/getting-started.md#data-types) |
+| to | End date/time for searching. Must be after "from" date.  | [date/time](../../backend-api/getting-started.md#data-types) |
+| limit | Optional. A maximum number of the returned transactions. | int |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/user/transaction/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 231485, "from": "2020-02-03 03:04:00", "to": "2021-02-03 03:04:00"}'
+    ```
+
+#### response
 
 ```json
 {
   "success": true, 
-  "list": [
-     {
-        "description": ,  // transaction description, e.g. "Recharge bonus balance during tracker registration"
-        "type": ,         // type, e.g. "bonus_charge"
-        "subtype": ,      // subtype, e.g. "register"
-        "timestamp": , // date/time at which transaction was created, e.g. "2013-08-02 08:16:40"
-        "user_id": ,         // user Id, e.g. 12203
-        "dealer_id": ,       // dealer Id, e.g. 5001
-        "tracker_id": ,      // tracker id, e.g., 3036, or 0 if transaction is not associated with tracker
-        "amount": ,       // amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units were removed from user`s balance
-        "new_balance": ,  // user`s money balance after transaction, e.g. 800.0000
-        "old_balance": ,  // user`s money balance before transaction, e.g. 810.0000
-        "bonus_amount": , // amount of bonus used in transaction, can be negative. e.g. 10.0000 means 10 bonuses units were added to user`s bonus balance
-        "new_bonus": ,    // user`s bonus balance after transaction, e.g. 10.0000
-        "old_bonus":      // user`s bonus balance before transaction, e.g. 0.0000
-     }, ...
-  ]
+  "list": [{
+    "description": "Recharge bonus balance during tracker registration",
+    "type": "bonus_charge",
+    "subtype": "register",
+    "timestamp": "2021-01-28 08:16:40",
+    "user_id": 12203,
+    "dealer_id": 5001,
+    "tracker_id": 303126,
+    "amount": -10.0000,
+    "new_balance": 800.0000,
+    "old_balance": 810.0000,
+    "bonus_amount": 10.0000,
+    "new_bonus": 10.0000,
+    "old_bonus": 0.0000
+  }]
 }
 ```
 
-** Errors **
+* `list` - array of objects. List of transaction objects.
+    * `description` - string. Transaction description.
+    * `type` - [enum](../../backend-api/getting-started.md#data-types). Type of transaction.
+    * `subtype` - [enum](../../backend-api/getting-started.md#data-types). Subtype of transaction.
+    * `timestamp` - [date/time](../../backend-api/getting-started.md#data-types). When transaction created.
+    * `user_id` - int. ID of a user which made a transaction.
+    * `dealer_id` - int. ID of a dealer.
+    * `tracker_id` - int. Tracker id. 0 if transaction not associated with tracker.
+    * `amount` - double. Amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units removed from user`s balance.
+    * `new_balance` - double. User`s money balance after transaction.
+    * `old_balance` - double. User`s money balance before transaction.
+    * `bonus_amount` - double. Amount of bonus used in transaction, can be negative. e.g. 10.0000 means 10 bonuses units added to user`s bonus balance.
+    * `new_bonus` - double. User`s bonus balance after transaction.
+    * `old_bonus` - double. User`s bonus balance before transaction.
 
-* 201 – Not found in database (if user not found or not owned by current dealer)
-* [Standard errors](../../backend-api/getting-started.md#error-codes).
+#### errors
+
+* 201 – Not found in the database - if user not found or not owned by a current dealer.

@@ -30,6 +30,8 @@ theme:
     code: Roboto Mono
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
   language: en
 
 plugins:
@@ -58,6 +60,7 @@ plugins:
 extra:
   #manifest: manifest.webmanifest todo
   repo_icon: github
+  homepage: https://developers.navixy.com
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/SquareGPS

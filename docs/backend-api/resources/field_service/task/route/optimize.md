@@ -6,7 +6,7 @@ description: Optimizing routes
 # Optimizing routes
 
 To minimize transit time and costs, it may be beneficial to reorder route checkpoints so total travel time between them
-is minimal. Our platform provides a way to perform such optimisation. You don't even need to create route and checkpoints,
+is minimal. Our platform provides a way to perform such optimization. You don't even need to create route and checkpoints,
 you just provide data required to optimize and algorithm returns order in which points should be visited.
 
 ## API actions
@@ -24,12 +24,16 @@ points can have any order due to maximize summary efficiency of the route.
 #### parameters
 
 * **start_point** - (object) coordinates of location, from where performer will come and departure time. 
-  Count of points must be in the range [2..15], example:
+  Count of points must be in the range [2..24], example:
   
 ```json
-{ "lat": 15.233, "lng": -5.554, "departure": "2019-04-05 13:30:00" }
+{
+  "lat": 15.233,
+  "lng": -5.554,
+  "departure": "2019-04-05 13:30:00"
+}
 ```
-* **route_points** - (array of objects) points, which performer must visit, example:
+* **route_points** - (array of objects) points, that performer must visit, example:
 
 ```json
 [

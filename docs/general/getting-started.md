@@ -46,10 +46,10 @@ API calls have the following structure:
 ## Get involved
 
 You can really help to improve [this documentation](./get-involved.md) or
- [localizations](./localizations/localizations.md) of Navixy Platform.
+ [localizations](./localizations) of Navixy Platform.
 
 If the translation of the user interface into your language is missing or contains errors, you can make or fix the
-localization on the [CrowdIn platform](https://crowdin.com/) yourself. Read [here](./localizations/localizations.md) how
+localization on the [CrowdIn platform](https://crowdin.com/) yourself. Read [here](./localizations) how
 to do it.
 
 Current documentation may also contain errors or white spots. All of it is available in the public domain on [GitHub]({{

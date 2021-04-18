@@ -1,31 +1,66 @@
 ---
-title: /timezone
-description: /timezone
+title: Timezone
+description: API call to get information about all supported timezones for the specified locale.
 ---
 
-## list
+# Timezone
 
-`list(locale)`
+API call to get information about all supported timezones for the specified locale.
 
-Information about all supported timezones for the specified locale.
+API path: `panel/timezone`.
 
-Does not require user authorization.
+### list
 
-### Return value
+Gets information about all supported timezones for the specified locale. Does not require authorization.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| locale | Locale code to set language of descriptions. | [enum](../../backend-api/getting-started.md#data-types) |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/timezone/list' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"locale": "en"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/timezone/list?locale=en
+    ```
+
+#### response
 
 ```json
 {
     "success": true,
-    "list": [ {
-        "zone_id": <string>,     // timezone ID, which is used throughout the API, e.g. "Africa/Dar_es_Salaam"
-        "description": <string>, // Localized description of the timezone, e.g. "Hamburg"
-        "base_offset": <int>,    // base timezone offset in hours, e.g. 1 for London. May be negative!
-        "dst_offset": <int>,     // DST offset in hours (0 if no DST rules for this timezone).
-        "country_code": <string> // ISO country code for timezone, e.g. "DE"
+    "list": [{
+      "zone_id": "America/Tijuana",
+      "description": "Tijuana",
+      "base_offset": -8.0,
+      "dst_offset": 1,
+      "country_code": "MX",
+      "alt_ids": [
+          "America/Ensenada",
+          "America/Santa_Isabel"
+      ]
     }]
 }
 ```
 
-### Errors
+* `zone_id` - string. Timezone ID, which is used throughout the API.
+* `description` - string. Localized description of the timezone.
+* `description` - int. Base timezone offset in hours, e.g. 1 for London. May be negative.
+* `description` - int. DST offset in hours. `0` if no DST rules for this timezone.
+* `description` - string. ISO country code for the timezone.
+* `alt_ids` - string array. List of string, optional, alternative timezone IDs.
 
-Only [standard errors](../../backend-api/getting-started.md#error-codes).
+#### errors
+
+[General](../../backend-api/getting-started.md#error-codes) types only.

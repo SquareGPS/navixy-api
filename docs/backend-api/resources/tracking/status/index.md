@@ -63,7 +63,7 @@ Creates new possible status for the specified status listing.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/create' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": "12345", "status": {"label": "Busy", "color": "E57373"}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345, "status": {"label": "Busy", "color": "E57373"}}'
     ```
 
 #### response
@@ -103,7 +103,7 @@ Deletes status entry.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/delete' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status_id": "123"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status_id": 123}'
     ```
 
 === "HTTP GET"
@@ -141,7 +141,7 @@ Gets statuses belonging to the specified status listing.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/list' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": "12345"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345}'
     ```
 
 === "HTTP GET"
@@ -193,7 +193,7 @@ Updates status properties.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status": {"id": "5", "label": "Busy", "color": "E57373"}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status": {"id": 5, "label": "Busy", "color": "E57373"}}'
     ```
 
 #### response
