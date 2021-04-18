@@ -1,7 +1,8 @@
 <header class="md-header header" data-md-component="header">
+    <!-- partially copy-pasted to home.html -->
     <div id="header-navixy" class="container header__top show">
       <div class="row">
-        <label class="md-header-nav__button md-icon" for="__drawer">
+        <label class="md-header__button md-icon" for="__drawer">
           {% include ".icons/material/menu" ~ ".svg" %}
         </label>
         <div class="header__left">
@@ -20,9 +21,9 @@
               </ul>
             </div>
           </div>
-        {% if "search" in config["plugins"] %}
-            {% include "partials/search.html" %}
-        {% endif %}
+          {% if "search" in config["plugins"] %}
+              {% include "partials/search.html" %}
+          {% endif %}
         </div>
       </div>
     </div>

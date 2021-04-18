@@ -1,5 +1,8 @@
 ---
+title: Overview
 description: Overview of Navixy developers public documentation
+hide:
+  - toc        # Hide table of contents
 ---
 <!-- drop the spaces between { { and } } -->
 <!-- Get involved: [github]({ { config.repo_url } }) -->
