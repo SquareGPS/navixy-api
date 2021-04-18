@@ -5,7 +5,7 @@ description: How to work with notifications that can be received by triggering a
 
 # How to work with notifications
 
-Notifications important part of the tracking. A [created a rule](./how-to-create-a-rule.md) will track triggering of 
+Notifications important part of the tracking. A [created a rule](./use-rules.md#create) will track triggering of 
 specified conditions and send events to emails and phones. It sends notifications to know that a condition triggered. 
 Sometimes, necessary to store those notifications and history entries to use them in special reports, or they can be 
 used for scripts build on APIs. Let's see how to work with them.

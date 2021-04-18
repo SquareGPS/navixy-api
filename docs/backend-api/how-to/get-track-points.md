@@ -1,5 +1,5 @@
 ---
-title: Get track points for trips
+title: How to get track points for trips
 description: About getting all points for trips
 ---
 
