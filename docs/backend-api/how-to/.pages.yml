@@ -1,12 +1,12 @@
 title: How To
 nav:
     - index.md
-    - get-session-hash.md
-    - get-tracker-list.md
-    - get-track-points.md
-    - Obtain information from report: 'how-to-obtain-information-from-report.md'
-    - use-rules.md
+    - Get session hash: 'get-session-hash.md'
+    - Get tracker list: 'get-tracker-list.md'
+    - Get track points: 'get-track-points.md'
+    - Use rules: 'use-rules.md'
     - Work with notifications: 'how-to-work-with-notifications.md'
     - Work with tasks: 'how-to-work-with-tasks.md'
     - Work with statuses: 'how-to-work-with-statuses.md'
     - Send commands to device: 'how-to-send-commands-to-device.md'
+    - Obtain information from report: 'how-to-obtain-information-from-report.md'
