@@ -1,5 +1,5 @@
 ---
-title: How to get tracker list
+title: Get tracker list
 description: Sample for get tracker list
 ---
 

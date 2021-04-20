@@ -1,9 +1,11 @@
 ---
 title: Working with places
-description: Working with places
+description: Place object and API calls to work with places. "Places" are business-specific points of interest like shops, delivery points, warehouses, etc - which are visited by user's employees.
 ---
 
 # Working with places
+
+API path: `/place`.
 
 "Places" are business-specific points of interest like shops, delivery points, warehouses, etc - which are visited 
 by user's employees. Place entities can be extended with [custom fields](../../commons/entity/fields.md) to make them 
@@ -50,10 +52,6 @@ Thus, field employee can view all places assigned to him to visit them, etc.
 * `tags` - optional int array. A list of tag_ids. Non-empty.
 * `external_id` - optional string. Max length 32.
 
-## API actions
-
-API base path: `/place`.
-
 ### read
 
 Gets place by ID.
@@ -62,7 +60,7 @@ Gets place by ID.
 
 |name |description |type |
 |:--- |:--- |:--- |
-|place_id |ID of the place. |int |
+| place_id | ID of the place. | int |
 
 #### examples
 
@@ -111,7 +109,7 @@ Gets place by ID.
 
 #### errors
 
-* 201 (Not found in the database) – if there is no place with such ID.
+* 201 - Not found in the database – if there is no place with such ID.
 
 ### list
 
@@ -144,6 +142,7 @@ Get places belonging to user.
     ```
     {{ extra.api_example_url }}/place/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
+
 #### response
 
 ```json
@@ -182,7 +181,7 @@ Get places belonging to user.
 
 ### create
 
-Creates new place.
+Creates a new place.
 
 **required sub-user rights:** `place_update`.
 
@@ -216,7 +215,7 @@ Creates new place.
 
 #### errors
 
-* 268 (Over quota) – if the user's quota for places exceeded.
+* 268 - Over quota – if the user's quota for places exceeded.
 
 ### update
 
@@ -248,7 +247,7 @@ Updates existing place.
 
 #### errors
 
-* 201 (Not found in the database) – if there is no place with such ID.
+* 201 - Not found in the database – if there is no place with such ID.
 
 ### delete
 
@@ -285,7 +284,7 @@ Deletes place with the specified ID.
 
 #### errors
 
-* 201 (Not found in the database) – if there is no place with such ID.
+* 201 - Not found in the database – if there is no place with such ID.
 
 ### batch_convert
 
@@ -344,7 +343,7 @@ If `file_id` is set – `batch` parameter will be ignored.
 
 #### errors
 
-* 234 (Invalid data format).
+* 234 - Invalid data format.
 
 ### upload
 
@@ -361,8 +360,8 @@ CSV column separator is `;`, columns header required – `label;address;lat;lng;
 | name | description | type |
 | :--- | :--- | :--- |
 | file | A CSV file upload containing places data. | File upload |
-| error_policy| `ignore` or `fail` | string |
-| duplicate_policy | `skip` or `update` or `fail`, **belongs only to external_id duplicates** | string |
+| error_policy| `ignore` or `fail`. | string |
+| duplicate_policy | `skip` or `update` or `fail`, **belongs only to external_id duplicates**. | string |
 | default_radius | Optional, radius for point, meters, default is 100. | int |
 | geocoder | Geocoder type. | string |
 | redirect_target | Optional URL to redirect. If `redirect_target` passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string |
@@ -379,7 +378,7 @@ CSV column separator is `;`, columns header required – `label;address;lat;lng;
 
 #### errors
 
-* 233 (No data file) – if file part is missing.
-* 234 (Invalid data format).
-* 247 (Entity already exists) – if uploaded place contains external_id and place with this ID already exists and duplicate_policy=fail.
-* 268 (Over quota) – if the user's quota for places exceeded.
+* 233 - No data file – if file part is missing.
+* 234 - Invalid data format.
+* 247 - Entity already exists – if uploaded place contains `external_id` and place with this ID already exists and `duplicate_policy=fail`.
+* 268 - Over quota – if the user's quota for places exceeded.

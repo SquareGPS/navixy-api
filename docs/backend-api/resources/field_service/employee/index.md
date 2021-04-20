@@ -1,9 +1,11 @@
 ---
 title: Working with employees
-description: Working with employees
+description: Employee object and API calls to work with. Employees used to represent people working at one's organization. They can be linked with other entities such as trackers, vehicles, places, etc.
 ---
 
 # Working with employees
+
+API base path: `/employee`.
 
 Employees used to represent people working at one's organization. They can be linked with other entities such as 
 trackers, vehicles, places, etc.
@@ -56,13 +58,13 @@ via [avatar/upload](./avatar.md#upload).
 * `personnel_number` - optional string. Max length is 15.
 * `tags` - int array. List of tag ids.
 
-## API actions
-
-API base path: `/employee`.
-
 ### list
 
 Gets all employees belonging to user.
+
+#### parameters
+
+Only session `hash`.
 
 #### response
 
@@ -193,7 +195,7 @@ Gets employee by its id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no employee with such an id).
+* 201 – Not found in the database - if there is no employee with such an id.
 
 ### update
 
@@ -225,7 +227,7 @@ Updates existing employee.
 
 #### errors
 
-* 201 – Not found in the database (if there is no employee with such an id).
+* 201 – Not found in the database - if there is no employee with such an id.
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
 
 ### delete
@@ -264,7 +266,7 @@ Deletes an employee with the specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no employee with such an id).
+* 201 – Not found in the database - if there is no employee with such an id.
 
 ### batch_convert
 
@@ -329,4 +331,4 @@ Convert batch of tab-delimited employees and return list of checked employees wi
 
 #### errors
 
-* 234 - (Invalid data format).
+* 234 - Invalid data format.

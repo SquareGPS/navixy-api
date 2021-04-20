@@ -5,9 +5,9 @@ description: Contains list method to get tracker history.
 
 # Tracker history
 
-Contains list method to get tracker history.
-
 API path: `/history/tracker/`.
+
+Contains list method to get tracker history.
 
 ### list
 
@@ -79,7 +79,7 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
 ```
 
 * `list` - list of zero or more history_entry` objects which described in [Tracker history entry](./index.md#tracker-history-entry). 
-* `limit_exceeded` - boolean. `false` when listed all history entries satisfied to conditions and `true` otherwise.
+* `limit_exceeded` - boolean. `false` when listed all history entries satisfied with conditions and `true` otherwise.
 
 #### errors
 

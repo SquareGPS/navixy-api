@@ -6,10 +6,10 @@ description: Calls to work with "delivery" type sessions. Those are special sess
 
 # Delivery
 
+API path: `/user/session/delivery`.
+
 Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
 tracking functionality into external systems.
-
-API path: `/user/session/delivery`.
 
 ### create
 

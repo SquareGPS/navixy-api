@@ -5,9 +5,9 @@ description: Contains field object description and API calls to interact with it
 
 # Entity fields
 
-Contains field object description and API calls to interact with it.
-
 API path: `/entity/fields`.
+
+Contains field object description and API calls to interact with it.
 
 ## Field object
 
@@ -22,12 +22,12 @@ API path: `/entity/fields`.
 }
 ```
 
-`id` - int. Field identifier. Null for the new object.
-`label` -  string. Name of the field.
-`type` - [enum](../../../getting-started.md#data-types). Type of field, see below.
-`required` - boolean. Whether field required to be filled or not.
-`description` - string. Additional info about the field, max 250 characters.
-`params` - object. Type-specific parameters. If no specific params, this field should be omitted.
+* `id` - int. Field identifier. Null for the new object.
+* `label` -  string. Name of the field.
+* `type` - [enum](../../../getting-started.md#data-types). Type of field, see below.
+* `required` - boolean. Whether field required to be filled or not.
+* `description` - string. Additional info about the field, max 250 characters.
+* `params` - object. Type-specific parameters. If no specific params, this field should be omitted.
 
 **field types**:
 
@@ -82,7 +82,7 @@ obtained from [entity/list](./index.md#list).
     ```shell
     curl -X POST '{{ extra.api_example_url }}/entity/fields/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": "131312"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": 131312}'
     ```
 
 === "HTTP GET"
@@ -124,8 +124,8 @@ All fields associated with the same entity must have different `label`s.
 
 Passing fields with `id` from non-existent fields or fields bound to another entity will result in an error.
 
-**WARNING** If `delete_missing` is `true`, all existing fields which are missing from the `fields` list will be 
-permanently deleted! Otherwise, they are unaffected.
+!!! warning "If `delete_missing` is `true`, all existing fields which are missing from the `fields` list will be 
+permanently deleted! Otherwise, they are unaffected."
 
 #### parameters
 
@@ -142,7 +142,7 @@ permanently deleted! Otherwise, they are unaffected.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/entity/fields/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": "131312", "fields": {"label": "Additional info", "type":  "employee", "required": false, "description": "Responsibility","params": {"responsible": true}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": 131312, "fields": {"label": "Additional info", "type":  "employee", "required": false, "description": "Responsibility", "params": {"responsible": true}}'
     ```
 
 #### response

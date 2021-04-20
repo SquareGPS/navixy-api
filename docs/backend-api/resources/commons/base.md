@@ -5,9 +5,9 @@ description: Contains API calls to health-check and send email.
 
 # Base
 
-Contains API calls to health-check and send email.
-
 API path: `/base`.
+
+Contains API calls to health-check and send email.
 
 ### nothing
 
@@ -38,6 +38,7 @@ Only session `hash`.
 ```json
 { "success": true }
 ```
+
 #### errors
 
 * [General](../../getting-started.md#error-codes) types only.

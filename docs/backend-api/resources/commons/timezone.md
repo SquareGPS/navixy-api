@@ -5,9 +5,9 @@ description: Contains an API call to get information about all supported timezon
 
 # Timezone
 
-Contains an API call to get information about all supported timezones.
-
 API path: `/timezone`.
+
+Contains an API call to get information about all supported timezones.
 
 ### list
 

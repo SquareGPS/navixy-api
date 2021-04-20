@@ -5,9 +5,9 @@ description: CRUD actions for user settings.
 
 # User settings
 
-CRUD actions for user settings.
-
 API path: `/user/settings`.
+
+CRUD actions for user settings.
 
 `settings` type is JSON object:
 
@@ -107,6 +107,8 @@ Only session `hash`.
 
 Update current user's settings.
 
+**required sub-user rights** for `balance_alert_settings` and `file_storage_settings`: `admin` (available only to master users).
+
 #### parameters
 
 | name | description | type |
@@ -119,8 +121,6 @@ Update current user's settings.
 | translit | `true` if sms notification should be transliterated, `false` otherwise. | boolean |
 | balance_alert_settings | Object containing array of emails. | JSON object |
 | file_storage_settings | Object containing file storage settings. | JSON object |
-
-**required sub-user rights** for `balance_alert_settings` and `file_storage_settings`: `admin` (available only to master users).
 
 #### example
 

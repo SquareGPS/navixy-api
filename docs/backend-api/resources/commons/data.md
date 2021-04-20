@@ -18,7 +18,7 @@ Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 | parse_header | Parse first row as header. | boolean |
 | header_map | If `parse_header` is `true` should contains map of matching column name to field identifier, `{"Label": "label", "Latitude": "lat"}`. | JSON object |
 
-If `parse_header` is set to `true`, first row of the uploaded file will be treat as header corresponding to given `header_map`.
+If `parse_header` is set to `true`, first row of the uploaded file will be treated as header corresponding to given `header_map`.
 
 #### response
 

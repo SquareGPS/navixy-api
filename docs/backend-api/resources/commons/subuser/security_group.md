@@ -1,14 +1,14 @@
 ---
 title: Sub-user security group
-description: Contains API calls related to security groups, that is, groups of sub-users with the specified set of rights
+description: Contains security group object structure and API calls related to security groups, that is, groups of sub-users with the specified set of rights
  and privileges.
 ---
 
 # Subuser security group
 
-Contains API calls related to security groups, that is, groups of sub-users with the specified set of rights and privileges.
-
 API path: `/subuser/security_group/`.
+
+Contains security group object structure and API calls related to security groups, that is, groups of sub-users with the specified set of rights and privileges.
 
 ### Security group object structure
 
@@ -200,7 +200,7 @@ Only session `hash`.
 
 ### update
 
-Update existing security group.
+Updates existing security group.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
