@@ -1,6 +1,6 @@
 ---
-title: Obtain session hash
-description: How to obtain a session hash key
+title: How to obtain session hash
+description: About session hash key
 ---
 
 # Obtaining session hash
@@ -18,7 +18,7 @@ The response will be like this:
 { "success": true, "hash": "882fb333405d006df0d5a3f410115e92" }
 ```                                                             
 
-Where resulting hash is `882fb333405d006df0d5a3f410115e92` (just an example, you will get a different hex string).
+Where resulting hash is `882fb333405d006df0d5a3f410115e92` (just an example, you will get a different hex string)
 
 Received hash should be saved and used in API calls. For security reasons, 
 hash has a lifetime of 30 days and will expire in certain situations:
