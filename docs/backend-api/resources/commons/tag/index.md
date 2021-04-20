@@ -1,13 +1,14 @@
 ---
 title: Tag
-description: Contains tag object and API calls to interact with it.
+description: Tag is a label, or a key word that is used for a quick and easy search. They help find the needed places, geofences, employees, tasks, trackers, and vehicles. Contains tag object and API calls to interact with it.
 ---
 
 # Tag
 
-Contains tag object and API calls to interact with it.
-
 API path: `/tag`.
+
+Tag is a label, or a key word that is used for a quick and easy search. They help find the needed places, geofences, 
+employees, tasks, trackers, and vehicles. Contains tag object and API calls to interact with it.
 
 #### tag object
 

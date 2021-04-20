@@ -5,9 +5,9 @@ description: Contains user personal info update API call.
 
 # User personal info
 
-Contains user personal info update API call.
-
 API path: `/user/personal_info`.
+
+Contains user personal info update API call.
 
 ### update
 
@@ -61,4 +61,4 @@ and for `legal_entity` or `sole_trader`:
 
 #### errors
 
-* 222 - Plugin not found – when plugin 45 not available for user.
+* 222 - Plugin not found – when plugin **45** not available for user.

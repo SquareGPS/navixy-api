@@ -1,13 +1,13 @@
 ---
 title: Feedback
-description: Contains API call to send a feedback email, ask for help or suggest a new feature.
+description: Contains feedback object and API call to send a feedback email, ask for help or suggest a new feature.
 ---
 
 # Feedback
 
-Contains API call to send a feedback email, ask for help or suggest a new feature.
-
 API path: `/feedback`.
+
+Contains feedback object API call to send a feedback email, ask for help or suggest a new feature.
 
 ## Feedback object
 

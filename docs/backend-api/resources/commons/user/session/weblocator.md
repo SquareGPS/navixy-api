@@ -5,14 +5,14 @@ description: Calls to work with "weblocator" type sessions. Those are special se
 
 # User sessions weblocator
 
+API path: `/user/sessions/weblocator`.
+
 Calls to work with "weblocator" type sessions. Those are special sessions to integrate tracking 
 device functionality into external systems.
 
-API path: `/user/sessions/weblocator`.
-
 ### create
 
-Creates new user weblocator session.
+Creates a new user weblocator session.
 In demo session allowed to create a new session only if it not already exists.
 
 **required sub-user rights**: `admin` (available only to master users).

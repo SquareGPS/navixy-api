@@ -5,9 +5,9 @@ description: Contains user audit checkin method that calls when user opens UI.
 
 # User audit
 
-Contains user audit checkin method that calls when user opens UI.
-
 API path: `/user/audit`.
+
+Contains user audit checkin method that calls when user opens UI.
 
 ### checkin
 

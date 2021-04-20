@@ -1,9 +1,11 @@
 ---
 title: Form templates
-description: Form templates
+description: Form is a "one-shot" entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields for future reference. Usually people need to fill forms with the same fields over an over again, so forms created on the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an electronic document, a template, on basis of which all paper forms printed.
 ---
 
 # Form templates
+
+API path: `/form/template`.
 
 Form is a "one-shot" entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields 
 for future reference. Usually people need to fill forms with the same fields over an over again, so forms created on 
@@ -45,10 +47,6 @@ User can assign form to the task or checkin by choosing template without the nee
 * `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
 * `updated` - [date/time](../../../getting-started.md#data-types). Date when this template last modified. The read-only field.
 * `default` - boolean. This form will be chosen default for all new tasks with form if `true`.
-
-## API actions
-
-API base path: `/form/template`.
 
 ### list
 
@@ -136,7 +134,7 @@ Creates new form template.
 
 #### errors
 
-* 101 – In demo mode this function disabled (if current user has "demo" flag).
+* 101 – In demo mode this function disabled - if current user has "demo" flag.
 
 ### read
 
@@ -194,7 +192,7 @@ Gets form template belonging to current master user by specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no template with such an id).
+* 201 – Not found in the database - if there is no template with such an id.
 
 ### update
 
@@ -226,8 +224,8 @@ Updates existing form template.
 
 #### errors
 
-* 201 – Not found in the database (if template with the specified id does not exist).
-* 101 – In demo mode this function disabled (if current user has "demo" flag).
+* 201 – Not found in the database - if template with the specified id does not exist.
+* 101 – In demo mode this function disabled - if current user has "demo" flag.
 
 ### delete
 
@@ -265,15 +263,15 @@ Deletes form template.
 
 #### errors
 
-* 201 – Not found in the database (if template with the specified id does not exist).
-* 101 – In demo mode this function disabled (if current user has "demo" flag).
+* 201 – Not found in the database - if template with the specified id does not exist.
+* 101 – In demo mode this function disabled - if current user has "demo" flag.
 
 
 ### stats/read
 
 Returns template usage statistics.
 
-**required sub-user rights**: none
+**required sub-user rights**: none.
 
 #### parameters
 
@@ -320,4 +318,4 @@ Returns template usage statistics.
 
 #### errors
 
-* 201 – Not found in the database (if template with the specified id does not exist).
+* 201 – Not found in the database - if template with the specified id does not exist.

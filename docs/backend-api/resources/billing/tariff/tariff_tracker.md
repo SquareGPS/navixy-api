@@ -13,7 +13,7 @@ User of **dealer** can switch tracker from the tariff **t1** to tariff **t2** if
 
 1. Tracker belongs to user and isn't a **clone**.
 2. Tracker's tariff last changed more than **tariff.freeze.period** (config option. default 30 days) ago.
-3. **t1.tariff_id** != **t2.tariff_id**, i.e. the new tariff must be differ from the current.
+3. **t1.tariff_id** != **t2.tariff_id**, i.e. the new tariff must be different from the current.
 4. **t1.dealer_id** = **t2.dealer_id** = **dealer.effectiveDealerId**, i.e. current and new tariffs must belong to user's effective dealer.
 5. **t2.active** = **1**, i.e. new tariff is **active** (tariff's option "Allow users to switch to this tariff independently" in **panel** is set **on**).
 6. **t1.grouping** = **t2.grouping**, i.e. user can change tariff only within one group of tariffs.
@@ -23,7 +23,7 @@ User of **dealer** can switch tracker from the tariff **t1** to tariff **t2** if
 User's **effective dealer** is
 
 1. User's dealer if its **dealer_id** = **defaultDealerId** (config option) or **dogovor_type** = 'paas'.
-2. Parent of user's dealer elsewise.
+2. Parent of user's dealer otherwise.
 
 ### change
 
@@ -34,7 +34,7 @@ Changes tariff of tracker (with `tracker_id`) to new tariff (with `tariff_id`).
 | name | description | type|
 | :------ | :------ | :-----|
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user. | int |
-| tariff_id | If of the new tariff | int |
+| tariff_id | If of the new tariff. | int |
 
 #### examples
 
@@ -66,7 +66,7 @@ Changes tariff of tracker (with `tracker_id`) to new tariff (with `tariff_id`).
 * 221 - Device limit exceeded – when new tariff device limit is less than count of trackers in cabinet.
 * 238 - Changing tariff is not allowed – user can't switch tracker to that tariff.
 * 239 – New tariff doesn't exist.
-* 240 - Not allowed to change tariff too frequently – tariff last changed less or equal to 30 days (**tariff.freeze.period** config option).
+* 240 - Not allowed changing tariff too frequently – tariff last changed less or equal to 30 days (**tariff.freeze.period** config option).
 
 ### list
 
@@ -125,3 +125,7 @@ List tariffs on which user can switch the passed tracker (even when tariff last 
 
 * `list` - array of objects. List of [tariff objects](./index.md#tariff-object).
 * `days_to_next_change` - int. Days to the next free change, or 0 if free change available.
+
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.

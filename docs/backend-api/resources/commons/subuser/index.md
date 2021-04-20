@@ -7,6 +7,8 @@ description: API calls related to sub-users, that is, additional users who have 
 
 # Subuser
 
+API path: `/subuser`.
+
 Contains API calls related to sub-users, that is, additional users who have access to your account and monitoring assets.
  Sub-users is a convenient way for corporate clients to provide multiple employees, who have different roles and privileges,
  with access to the monitoring system.
@@ -20,8 +22,6 @@ Sub-users' rights can also be limited to prevent unauthorized changes to your da
 NOTE: Sub-users cannot have any "exclusive" objects. Every tracker, rule, task, etc., even created or edited by sub-user,
  still belongs to your account.
 The only exception is reporting system: every sub-user has its own reports pool and reports schedule.
-
-API path: `/subuser`.
 
 ## Sub-user object structure
 
@@ -240,7 +240,7 @@ Allows you to create sub-users associated to your master account.
 
 ### update
 
-Update sub-user data.
+Updates sub-user data.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).

@@ -1,13 +1,13 @@
 ---
 title: Notification
-description: Contains an API call to get user notifications.
+description: Contains an API call to get list of user notifications.
 ---
 
 # Notification
 
-Contains an API call to get user notifications.
-
 API path: `/notification`.
+
+Contains an API call to get list of user notifications.
 
 ### list
 
@@ -48,7 +48,7 @@ Only session `hash`.
 
 * `id` - int. An id of notification.
 * `message` - string. Message of notification.
-* `show_till` - date/time. Date until notification should be showed.
+* `show_till` - date/time. Date until notification should be shown.
 
 #### errors
 
