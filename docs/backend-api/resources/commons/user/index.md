@@ -1,13 +1,14 @@
 ---
 title: User actions
-description: Contains API calls to interact with users.
+description: A user account lets you start working with the platform as well as customize your experience within it. Contains user object structure and API calls to interact with users.
 ---
 
 # User
 
-Contains API calls to interact with users.
-
 API path: `/user`.
+
+A user account lets you start working with the platform as well as customize your experience within it. Contains user 
+object structure and API calls to interact with users.
 
 ## User object structure
 
@@ -353,7 +354,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
 | name  | description | type  | restrictions |
 | :---- | :----  | :---- | :---- |
-| login | User login (email). | string | not null |
+| login | User login (email). | string | not null. |
 
 #### examples
 

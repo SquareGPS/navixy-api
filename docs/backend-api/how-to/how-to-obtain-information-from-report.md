@@ -1,6 +1,6 @@
 ---
 title: How to obtain report's information
-description: How to obtain report's information
+description: How to generate reports and obtain information from them in retrieved format
 ---
 
 # How to obtain report's information
@@ -17,10 +17,10 @@ To receive data for processing, it must be generated. This can be done using a c
 
 Parameters that necessary for this call:
 
-* `from` - A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Data in a report will be 
+* `from` - A string containing [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Data in a report will be 
 from that moment.
-* `to` - A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be 
-after "from" date. Data in a report will be till specified moment.
+* `to` - A string containing [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be 
+after `from` date. Data in a report will be till specified moment.
 * `title` - Report title. Default title will be used if null.
 * `trackers` - List of [trackers' ids](./get-tracker-list.md) to be included in report (if report is by trackers).
 * `employees` - List of [employees' ids](../resources/field_service/employee/index.md#list) to be included in report 
@@ -62,7 +62,7 @@ API request:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/report/tracker/retrieve' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": "1234567"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
     ```
 
 === "HTTP GET"
@@ -537,7 +537,7 @@ API request:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/report/tracker/delete' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": "1234567"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
     ```
 
 === "HTTP GET"

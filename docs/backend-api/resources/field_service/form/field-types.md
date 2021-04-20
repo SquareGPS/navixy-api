@@ -1,6 +1,6 @@
 ---
 title: Form field types
-description: Form field types
+description: Form field types. Every form (and form template) contains an ordered list of fields of various types. Field type defines how user input elements will look like, and how user input will be validated.
 ---
 
 # Form fields and values

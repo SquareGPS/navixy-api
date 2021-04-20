@@ -5,9 +5,9 @@ description: Contains an API call to get user's file statistic.
 
 # File
 
-Contains an API call to get user's file statistic.
-
 API path: `/file`.
+
+Contains an API call to get user's file statistic.
 
 ### stats/read
 

@@ -89,7 +89,7 @@ File part **mime** type must be one of:
 
 #### errors
 
-* 201 – Not found in the database - when tag with specified `tag_id` not found).
+* 201 – Not found in the database - when tag with specified `tag_id` not found.
 * 233 – No data file - if `file` part not passed.
 * 234 – Invalid data format - if passed `file` with unexpected `mime` type.
 * 254 – Cannot save file - on some file system errors.

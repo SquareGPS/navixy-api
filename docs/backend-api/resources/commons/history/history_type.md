@@ -5,9 +5,9 @@ description: Contains list method to get history types available to user with lo
 
 # History type
 
-Contains list method to get history types available to user with localized descriptions.
-
 API path: `/history/type`.
+
+Contains list method to get history types available to user with localized descriptions.
 
 ### list
 

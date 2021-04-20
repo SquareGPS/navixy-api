@@ -1,13 +1,13 @@
 ---
 title: Subscription
-description: API calls for payment subscriptions
+description: API calls to interact with payment subscriptions
 ---
 
 # Subscription
 
-API calls for payment subscriptions.
-
 API path: `/subscription`.
+
+API calls to interact with payment subscriptions
 
 ### /subscription/avangate/
 
@@ -51,13 +51,17 @@ Unsubscribe from auto-renewal by reference.
 
 #### errors
 
-*   215 – External service error
+* 215 – External service error.
 
 ### list
 
 List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://www.avangate.com) subscriptions (renewals).
 
 **required sub-user rights:** `payment_create`.
+
+#### parameters
+
+Only session `hash`.
 
 #### examples
 
@@ -96,4 +100,4 @@ List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://ww
 
 #### errors
 
- * 215 – External service error.
+* 215 – External service error.

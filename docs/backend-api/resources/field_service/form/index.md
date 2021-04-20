@@ -1,6 +1,6 @@
 ---
 title: About forms
-description: About forms
+description: Forms used to provide additional information, such as user name, phone, delivery date, etc. upon task completion or check-in from iOS/Android mobile tracker app. Forms can be attached to tasks. If form attached to task, this task cannot be completed without form submission.
 ---
 
 # About forms
@@ -181,7 +181,7 @@ Gets form by an id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no form with such an id).
+* 201 – Not found in the database - if there is no form with such an id.
 
 ### download
 
@@ -216,4 +216,4 @@ Regular file download, or JSON with an error.
 
 #### errors
 
-* 201 – Not found in the database (if there is no form with such an id).
+* 201 – Not found in the database - if there is no form with such an id.

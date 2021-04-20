@@ -7,11 +7,11 @@ description: The user interface settings intended for storing settings of client
 
 # User UI settings
 
+API path: `/user/settings/ui`.
+
 The user interface settings intended for storing settings of client applications that use the API. 
 One can imagine that this works similarly to the browser cache/local storage mechanism. The feature is that long-term 
-storage of these settings provided but not guaranteed - when the quota exceeded, data could be deleted. 
-
-API path: `/user/settings/ui`
+storage of these settings provided but not guaranteed - when the quota exceeded, data could be deleted.
 
 ### read
 
@@ -21,7 +21,7 @@ Reads setting value by key.
 
 | name | description | type |
 | :----- | :-----  | :----- |
-| key | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, '_' and '-'. | string |
+| key | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, `_` and `-`. | string |
 
 #### examples
 
@@ -66,7 +66,7 @@ Sets setting value.
 
 | name | description | type |
 | :----- | :-----  | :----- |
-| key | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, '_' and '-'. | string |
+| key | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, `_` and `-`. | string |
 | value | A new UI config value. Length should be between 0 and 8192 symbols. | string |
 
 #### responses:

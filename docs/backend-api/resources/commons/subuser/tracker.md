@@ -5,9 +5,9 @@ description: Contains API calls to control which tracker is available to which s
 
 # Subuser tracker
 
-Contains API calls to control which tracker is available to which sub-user.
-
 API path: `/subuser/tracker`.
+
+Contains API calls to control which tracker is available to which sub-user.
 
 ### bind
 

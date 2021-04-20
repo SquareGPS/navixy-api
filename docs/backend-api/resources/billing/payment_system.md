@@ -1,13 +1,13 @@
 ---
 title: Payment system
-description: API calls for working with payment systems and make payments.
+description: Payment system settings object and API calls for working with payment systems and make payments.
 ---
 
 # Payment system
 
-API calls for working with payment systems and make payments.
-
 API path: `/payment_system`.
+
+Payment system settings object and API calls for working with payment systems and make payments.
 
 ## Payment system settings object
 

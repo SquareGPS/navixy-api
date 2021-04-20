@@ -5,9 +5,9 @@ description: Contains history entry object description and API calls to interact
 
 # History
 
-Contains history entry object description and API calls to interact with it.
-
 API path: `/history`.
+
+Contains history entry object description and API calls to interact with it.
 
 ## Tracker history entry
 
