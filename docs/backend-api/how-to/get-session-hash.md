@@ -1,5 +1,5 @@
 ---
-title: How to obtain session hash
+title: Obtain session hash
 description: About session hash key
 ---
 
