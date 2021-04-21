@@ -1,6 +1,6 @@
 ---
-title: How to get track points for trips
-description: About getting all points for trips
+title: Get track points for trips
+description: How to get track points for trips
 ---
 
 # How to get track points for trips
@@ -77,7 +77,7 @@ It is useful if you need to see all points on the map:
 ```shell
 curl -X POST '{{ extra.api_example_url }}/track/download' \
     -H 'Content-Type: application/json' \ 
-    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "format": "kml", "split": "false"}'
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "format": "kml", "split": false}'
 ```
 
 
