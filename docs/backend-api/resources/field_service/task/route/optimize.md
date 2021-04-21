@@ -1,17 +1,15 @@
 ---
 title: Optimizing routes
-description: Optimizing routes
+description: API call to get optimized order of route checkpoints. To minimize transit time and costs, it may be beneficial to reorder route checkpoints so total travel time between them  is minimal. Our platform provides a way to perform such optimization. You don't even need to create route and checkpoints, you just provide data required to optimize and algorithm returns order in which points should be visited.
 ---
 
 # Optimizing routes
 
+API path: `/task/route/points/optimize`.
+
 To minimize transit time and costs, it may be beneficial to reorder route checkpoints so total travel time between them
 is minimal. Our platform provides a way to perform such optimization. You don't even need to create route and checkpoints,
 you just provide data required to optimize and algorithm returns order in which points should be visited.
-
-## API actions
-
-API path: `/task/route/points/optimize`.
 
 ### optimize
 
@@ -33,6 +31,7 @@ points can have any order due to maximize summary efficiency of the route.
   "departure": "2019-04-05 13:30:00"
 }
 ```
+
 * **route_points** - (array of objects) points, that performer must visit, example:
 
 ```json
@@ -73,12 +72,11 @@ it means "change points order as following":
 ```
 point at index 2 move to index 0,
 point at index 0 move to index 1,
-point at index 1 move to index 0"
+point at index 1 move to index 0
 ```
 
 #### errors
 
 * 7 - Invalid parameters.
-* 264 - Timeout not reached (too high api call rate).
-* [General](../../../../getting-started.md#error-codes) types only.
+* 264 - Timeout not reached - too high api call rate.
 
