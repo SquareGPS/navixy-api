@@ -5,9 +5,9 @@ description: Contains API calls to interact with push token.
 
 # Push token
 
-Contains API calls to interact with push token.
-
 API path: `/user/session/push_token`.
+
+Contains API calls to interact with push token.
 
 ### bind
 

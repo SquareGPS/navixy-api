@@ -19,7 +19,7 @@ Here can be used the call [history/unread/list](../resources/commons/history/his
 The call contains only two optional parameters:
 
 * `limit` - int with a maximum count of entries in response
-* `from` - a string containing the start date/time for searching. Without this parameter you will get all unread entries
+* `from` - a string containing the start [date/time](../getting-started.md#data-types) for searching. Without this parameter you will get all unread entries
  for the last 30 days.
 
 In our example we need to obtain no more than 100 entries for last month. If today is 26-01-2021 then API request will be:
@@ -77,13 +77,13 @@ sorting by time if necessary.
 
 The necessary parameters for the call:
 
-* `trackers` - an int array. A list of tracker ids belong to user for which events will be searched.
-* `from` - a string containing the start date/time for searching.
-* `to` - a string containing the end date/time of searching. Must be after "from" date.
+* `trackers` - an int array. A list of [tracker ids](../resources/tracking/tracker/index.md#list) belong to user for which events will be searched.
+* `from` - a string containing the start [date/time](../getting-started.md#data-types) for searching.
+* `to` - a string containing the end [date/time](../getting-started.md#data-types) of searching. Must be after `from` date.
 
 Optional parameters that could be used to get more specific information:
 
-* `events` - an string array with necessary event types. All other events will be ignored. Default: all. To get the 
+* `events` - a string array with necessary event types. All other events will be ignored. Default: all. To get the 
 list of events use [tracker/history/type](../resources/commons/history/history_type.md#list) call. 
 * `limit` - integer with a maximum count of entries in result.
 * `ascending` - a boolean where sort ascending by time when it is `true` and descending when `false`.

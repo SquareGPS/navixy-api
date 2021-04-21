@@ -1,13 +1,13 @@
 ---
 title: Tariff
-description: API call to get the list of device's tariffs available to user.
+description: Tariff object description and API call to get the list of device's tariffs available to user.
 ---
 
 # Tariff
 
 API path: `/tariff`.
 
-API call to get device's tariffs available to user.
+Tariff object description and API call to get the list of device's tariffs available to user.
 
 ## Tariff object
 
@@ -56,6 +56,9 @@ Gets list of device's tariffs available to user.<br>
 If user's dealer is **default dealer** or **paas** then listed tariffs of that dealer, else listed tariffs of parent dealer.<br>
 Listed only tariffs [available for user's legal type](#tariff).
 
+#### parameters
+
+Only session `hash`.
 
 #### examples
 
@@ -102,3 +105,8 @@ Listed only tariffs [available for user's legal type](#tariff).
 ```
 
 * `list` - array of objects. List of [tariff objects](#tariff-object).
+
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.
+

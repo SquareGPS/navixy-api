@@ -5,9 +5,9 @@ description: Contains API call to get dealer info and dealer-specific UI setting
 
 # Dealer
 
-Contains API call to get dealer info and dealer-specific UI settings.
-
 API path: `/dealer`.
+
+Contains API call to get dealer info and dealer-specific UI settings.
 
 ### get_ui_config
 
@@ -167,7 +167,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `form.file_field.max_file_size` - long, max file size in bytes for the form file.
     * `form.file_field.max_files_per_field` - integer, max files per form field.
     * `form.file_field.max_count` - integer, max file fields per form.
-
+  
 #### Dealer features
 
 | name | description |

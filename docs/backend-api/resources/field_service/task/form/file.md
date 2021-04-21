@@ -1,20 +1,17 @@
 ---
 title: Attaching files
-description: Attaching files
+description: Contains API calls which manipulate files attached to form's fields.
 ---
 
 # Attaching files
+
+API path: `/task/form/file`.
+
 
 When submitting form values of type [file](../../form/field-types.md#file), [photo](../../form/field-types.md#photo) or
 [signature](../../form/field-types.md#signature), you need to provide file id. To obtain it, first you [create](#create) 
 a file entry, then upload a file using provided credentials. File must adhere to limitations specified in the form field.
 Note that each file consumes space and contributes to file storage limit associated with user's account.
-
-## API actions
-
-API path: `/task/form/file`.
-
-Contains API calls which manipulate files attached to form's fields.
 
 ### create
 
@@ -103,11 +100,11 @@ Content-Type: image/png
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id, or task doesn't have form, or form has no
- field with such a field_id).
-* 231 – Entity type mismatch (if form field is not file-based, i.e. doesn't use file id as its value).
-* 255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived", or if task's form 
-not submitted at least once).
-* 267 – Too many entities (if there 6 or more unsubmitted files already associated with this form's field).
+* 201 – Not found in the database - if there is no task with such an id, or task doesn't have form, or form has no
+ field with such a field_id.
+* 231 – Entity type mismatch - if form field is not file-based, i.e. doesn't use file id as its value.
+* 255 – Invalid task state - if current task state is not "unassigned", "assigned" or "arrived", or if task's form 
+not submitted at least once.
+* 267 – Too many entities - if there 6 or more unsubmitted files already associated with this form's field.
 * 268 – File cannot be created due to quota violation.
 * 271 - File size is larger than the maximum allowed (by default 16 MB).

@@ -1,13 +1,13 @@
 ---
 title: Transaction
-description: API call to get list of user's billing transactions for the specified period.
+description: Transaction object description and API call to get list of user's billing transactions for the specified period.
 ---
 
 # Transaction
 
 API path: `/transaction`.
 
-API call to get user's billing transactions.
+Transaction object description and API call to get list of user's billing transactions for the specified period.
 
 ## Transaction object
 

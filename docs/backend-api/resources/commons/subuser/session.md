@@ -5,13 +5,13 @@ description: Sub-user session actions to obtain its hash
 
 # Subuser session
 
-Sub-user session actions to obtain its hash
-
 API path: `/subuser/session/`.
+
+Sub-user session actions to obtain its hash.
 
 ### create
 
-Create a new session for the specified sub-user and obtain its hash. Can be used to log in to sub-user's accounts.
+Creates a new session for the specified sub-user and obtain its hash. Can be used to log in to sub-user's accounts.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
@@ -52,6 +52,6 @@ Create a new session for the specified sub-user and obtain its hash. Can be used
 #### errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
-* 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.~~~~~~~~
+* 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 * 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
 
