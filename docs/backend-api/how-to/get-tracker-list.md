@@ -79,10 +79,10 @@ If account has a large amount of trackers, and you only need certain ones,
 you can add an optional filter parameter to the request that will only return matching records. 
 
 This parameter has following constraints:
-*   labels array size: minimum 1, maximum 1024
-*   no null items
-*   no duplicate items
-*   item length: minimum 1, maximum 60
+* labels array size: minimum 1, maximum 1024.
+* no null items.
+* no duplicate items.
+* item length: minimum 1, maximum 60.
 
 To get a list of trackers with labels matching the filter use this API call:
 
