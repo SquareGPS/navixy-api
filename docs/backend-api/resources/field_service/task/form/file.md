@@ -103,11 +103,11 @@ Content-Type: image/png
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id, or task doesn't have form, or form has no
- field with such a field_id).
-* 231 – Entity type mismatch (if form field is not file-based, i.e. doesn't use file id as its value).
-* 255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived", or if task's form 
-not submitted at least once).
-* 267 – Too many entities (if there 6 or more unsubmitted files already associated with this form's field).
+* 201 – Not found in the database - if there is no task with such an id, or task doesn't have form, or form has no
+ field with such a field_id.
+* 231 – Entity type mismatch - if form field is not file-based, i.e. doesn't use file id as its value.
+* 255 – Invalid task state - if current task state is not "unassigned", "assigned" or "arrived", or if task's form 
+not submitted at least once.
+* 267 – Too many entities - if there 6 or more unsubmitted files already associated with this form's field.
 * 268 – File cannot be created due to quota violation.
 * 271 - File size is larger than the maximum allowed (by default 16 MB).
