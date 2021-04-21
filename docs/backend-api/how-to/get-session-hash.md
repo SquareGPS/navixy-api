@@ -1,6 +1,6 @@
 ---
-title: Obtain session hash
-description: About session hash key
+title: How to get session hash
+description: Obtaining the session hash key
 ---
 
 # Obtaining session hash

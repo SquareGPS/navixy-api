@@ -1,6 +1,6 @@
 ---
 title: How to obtain report's information
-description: How to generate reports and obtain information from them in retrieved format
+description: How to generate reports and obtain information from them in retrieved format.
 ---
 
 # How to obtain report's information
