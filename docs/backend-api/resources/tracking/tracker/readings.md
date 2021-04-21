@@ -23,7 +23,7 @@ Gets last values for all metering sensors and state values. Includes CAN, OBD, a
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/readings/list' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"

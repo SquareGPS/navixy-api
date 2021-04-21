@@ -82,7 +82,7 @@ Changes tracker's phone and setup new apn.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/change_phone' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
     ```
 
 #### response
@@ -120,7 +120,7 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/corrupt' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -163,7 +163,7 @@ Deletes a tracker if it is "clone". Will not work if specified id of the origina
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/delete' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -226,7 +226,7 @@ Gets last sensors and states values received from the device.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_diagnostics' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -378,7 +378,7 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_fuel' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -435,7 +435,7 @@ bound to them (if any).
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_inputs' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -507,7 +507,7 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_last_gps_point' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -576,7 +576,7 @@ Gets last sensor values for sensors that are:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_readings' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -627,7 +627,7 @@ Gets current tracker state (gps, gsm, outputs, etc.).
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_state' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -1028,7 +1028,7 @@ Set tags for a tracker. Tags must be created.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/tags/set' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "123456", "tag_bindings": "[{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}]"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "tag_bindings": "[{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}]"}'
     ```
 
 #### response
@@ -1065,7 +1065,7 @@ Request types:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/location_request' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "123456"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456}'
     ```
 
 === "HTTP GET"
@@ -1110,7 +1110,7 @@ The device must be preconfigured.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": "0", "imei": "35645587458999"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": 0, "imei": "35645587458999"}'
     ```
 
 === "HTTP GET"
@@ -1188,7 +1188,7 @@ Resends registration commands to the device. The panel must have installed SMS g
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999119", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 999119, "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
     ```
 
 === "HTTP GET"
@@ -1284,7 +1284,7 @@ using [apn_settings/read](apn_settings.md#read) API call.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/register' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": "0", "plugin_id": "37", "model": "qlgv55lite", "phone": "79123122312", "activation_code": "123123123", "device_id": "123451234512346", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": 0, "plugin_id": "37", "model": "qlgv55lite", "phone": "79123122312", "activation_code": "123123123", "device_id": "123451234512346", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
     ```
 
 === "HTTP GET"
@@ -1415,7 +1415,7 @@ See [special settings JSON object](./settings/special/index.md#read)
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/send_command' \
         -H 'Content-Type: application/json' \
-        -d '"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "999119", "command": {name: "electronic_lock_command", command_code: "unseal", special_settings:{"type":"electronic_lock_password", "password": "345892", "remember_password": "true"}}}'
+        -d '"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 999119, "command": {name: "electronic_lock_command", command_code: "unseal", special_settings:{"type":"electronic_lock_password", "password": "345892", "remember_password": true}}}'
     ```
 
 #### response

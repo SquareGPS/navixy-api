@@ -306,7 +306,7 @@ Gets task, route or checkpoint schedule by specified id.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": "12314"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 12314}'
     ```
 
 === "HTTP GET"

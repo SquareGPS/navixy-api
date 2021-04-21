@@ -41,7 +41,7 @@ Creates or updates binding.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/retranslator/bind' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "retranslator_id": "123"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "retranslator_id": 123}'
     ```
 
 === "HTTP GET"
@@ -80,7 +80,7 @@ List tracker retranslators bound to tracker with ID=`tracker_id`.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/retranslator/list' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -125,7 +125,7 @@ Unbinds a tracker from retranslator.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/retranslator/unbind' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "retranslator_id": "123"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "retranslator_id": 123}'
     ```
 
 === "HTTP GET"

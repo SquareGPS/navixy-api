@@ -25,7 +25,7 @@ Gets calibration data for sensor.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/calibration_data/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "sensor_id": "12345"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 12345}'
     ```
 
 === "HTTP GET"
@@ -71,7 +71,7 @@ Replaces the calibration data for a sensor.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/calibration_data/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "sensor_id": "12345", "data": [{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 12345, "data": [{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]}'
     ```
 
 #### response

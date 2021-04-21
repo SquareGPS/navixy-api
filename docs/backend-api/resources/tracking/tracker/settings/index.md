@@ -23,7 +23,7 @@ Gets base settings for the specified tracker.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/settings' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
     ```
 
 === "HTTP GET"
@@ -73,7 +73,7 @@ Updates the settings of the specified tracker.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "group_id": "1", "label": "Courier"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "group_id": "1", "label": "Courier"}'
     ```
 
 === "HTTP GET"

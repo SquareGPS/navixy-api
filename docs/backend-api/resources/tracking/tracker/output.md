@@ -26,7 +26,7 @@ Request to change the states of all digital outputs of the device. The device mu
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/output/set_all' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "outputs": [true, true, false]}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "outputs": [true, true, false]}'
     ```
 
 #### response
@@ -64,7 +64,7 @@ Request to change the state of the specified digital output of the device. The d
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/output/set' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "output": "1", "enable": "true"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", tracker_id: 265489, "output": "1", "enable": true}'
     ```
 
 === "HTTP GET"
