@@ -1,19 +1,20 @@
 ---
 title: Report tracker
-description: Contains API calls to interact with tracker reports.
+description: User reports allow acquiring all-round statistics and analytics. The summary data can be shown in various perspectives, in tables and graphs.Contains API calls to interact with tracker reports.
 ---
 
 # Report tracker
 
-Contains API calls to interact with tracker reports.
-
 API path: `/report/tracker`.
+
+User reports allow acquiring all-round statistics and analytics. The summary data can be shown in various perspectives,
+in tables and graphs.Contains API calls to interact with tracker reports.
 
 ### delete
 
-Delete report from the database.
+Deletes a report from the database.
 
-*required sub-user rights*: `reports`
+*required sub-user rights*: `reports`.
 
 #### parameters
 
@@ -28,7 +29,7 @@ Delete report from the database.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/report/tracker/delete' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": "1234567"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
     ```
 
 === "HTTP GET"
@@ -70,7 +71,7 @@ Retrieve generated report as a file.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/report/tracker/download' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": "1234567", "format": "pdf"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567, "format": "pdf"}'
     ```
 
 === "HTTP GET"
@@ -92,7 +93,7 @@ A report rendered to file (standard file download).
 
 Requests a report generation with the specified parameters. 
 
-**required sub-user rights**: `reports`
+**required sub-user rights**: `reports`.
 
 #### parameters
 
@@ -179,7 +180,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 
 Returns info about all available generated or in-progress reports.
 
-**required sub-user rights**: `reports`
+**required sub-user rights**: `reports`.
 
 #### examples
 
@@ -260,9 +261,9 @@ Returns info about all available generated or in-progress reports.
 
 ### retrieve
 
-Retrieve generated report as JSON. 
+Retrieves a generated report as JSON. 
 
-**required sub-user rights**: `reports`
+**required sub-user rights**: `reports`.
 
 #### parameters
 
@@ -277,7 +278,7 @@ Retrieve generated report as JSON.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/report/tracker/retrieve' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": "1234567"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
     ```
 
 === "HTTP GET"
@@ -749,7 +750,7 @@ Retrieve generated report as JSON.
 
 Returns a report generation status for the specified report id.
 
-**required sub-user rights**: `reports`
+**required sub-user rights**: `reports`.
 
 #### parameters
 
@@ -764,7 +765,7 @@ Returns a report generation status for the specified report id.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/report/tracker/status' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": "1234567"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
     ```
 
 === "HTTP GET"

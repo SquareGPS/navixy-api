@@ -5,10 +5,10 @@ description: Contains search conditions object description and API calls to inte
 
 # Entity search Conditions
 
+API path: `/entity/search_conditions`.
+
 Contains search conditions object description and API calls to interact with it.<br> 
 Search conditions used to search and filter list of certain entities by built-in and/or custom fields.
-
-API path: `/entity/search_conditions`.
 
 ## Search conditions object
 
@@ -41,7 +41,7 @@ API path: `/entity/search_conditions`.
 Conditions represented by an array, each condition during search evaluated, and the result is either `true` or `false`.
 Thus, boolean operations such as `AND` or `OR` can be applied to them. All conditions in a top-level array joined using `AND` operator.
 
-**WARNING**: A maximum of 72 conditions can be used at once, including nested conditions.
+!!!warning "A maximum of 72 conditions can be used at once, including nested conditions."
 
 ### Condition types
 

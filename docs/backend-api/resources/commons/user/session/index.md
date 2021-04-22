@@ -5,9 +5,9 @@ description: Contains a call to prolong user session.
 
 # User session
 
-Contains a call to prolong user session.
-
 API path: `/user/session`.
+
+Contains a call to prolong user session.
 
 ### renew
 

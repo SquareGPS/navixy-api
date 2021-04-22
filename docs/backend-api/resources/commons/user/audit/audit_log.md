@@ -1,13 +1,14 @@
 ---
 title: User audit log 
-description: Contains audit object and list method to get the audit log.
+description: Using the audit log, account owner can track the activity of all users added through the "Access rights" section.Contains audit object and list method to get the audit log.
 ---
 
 # User audit log
 
-Contains audit object and list method to get the audit log.
-
 API path: `/user/audit/log`.
+
+Using the audit log, account owner can track the activity of all users added through the "Access rights" section. Contains
+audit object and list method to get the audit log.
 
 ## Audit object
 

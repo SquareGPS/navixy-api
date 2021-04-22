@@ -27,7 +27,7 @@ Assign a status to the tracker.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/tracker/assign' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "new_status_id": "5"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "new_status_id": 5}'
     ```
 
 === "HTTP GET"
@@ -174,7 +174,7 @@ Gets current assigned status of the tracker.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/tracker/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
     ```
 
 === "HTTP GET"

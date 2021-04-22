@@ -1,9 +1,11 @@
 ---
 title: Task form actions
-description: Task form actions
+description: This document describes API actions specific to working with task forms (except task/form/list which can return all kinds of forms).
 ---
 
 # Working with task forms
+
+API path: `/task/form`.
 
 Forms can be attached to tasks to be filled by field employees using Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)).
 This document describes API actions specific to working with task forms (except `task/form/list` which can return all 
@@ -12,10 +14,6 @@ kinds of forms).
 For `<form_field>` and `<form_value>` object description, see [form fields and values](../../form/field-types.md#form-fields-and-values).
 
 For `<form>` object description, see [forms](../../form/index.md).
-
-## API actions
-
-API path: `/task/form`.
 
 Contains API calls related to forms associated with tasks.
 
@@ -58,9 +56,9 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 
 #### errors
 
-* 201 – Not found in the database (if there is no task or template with such an id, or task has the "route" type).
-* 247 – Entity already exists (if task already has form attached to it).
-* 255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived").
+* 201 – Not found in the database - if there is no task or template with such an id, or task has the "route" type.
+* 247 – Entity already exists - if task already has form attached to it.
+* 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
 ### delete
 
@@ -101,9 +99,9 @@ All form data will be lost!
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id, or task has the "route" type, or it has no form
- attached).
-* 255 – Invalid task state (if current task state is not "unassigned", "assigned" or "arrived").
+* 201 – Not found in the database - if there is no task with such an id, or task has the "route" type, or it has no form
+ attached.
+* 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
 ### download
 
@@ -138,7 +136,7 @@ A form rendered to file (standard file download).
 
 #### errors
 
-* 201 – Not found in the database (if task does not exist or does not have attached form).
+* 201 – Not found in the database - if task does not exist or does not have attached form.
 
 ### list
 
@@ -211,7 +209,7 @@ where period_object is:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/form/list' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "ascending": "true", "include_unsubmitted": "true"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "ascending": true, "include_unsubmitted": true}'
     ```
 
 === "HTTP GET"
@@ -294,7 +292,7 @@ where period_object is:
 
 #### errors
 
-* 204 – Not found (if there is no form template with such id belonging to authorized user).
+* 204 – Not found - if there is no form template with such id belonging to authorized user.
 * [General](../../../../getting-started.md#error-codes) types of errors.
 
 ### read
@@ -314,7 +312,7 @@ Gets form associated with the specified task.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/form/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": "12546"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546}'
     ```
 
 === "HTTP GET"
@@ -379,5 +377,5 @@ Gets form associated with the specified task.
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id, or task assigned to tracker unavailable to 
-current sub-user).
+* 201 – Not found in the database - if there is no task with such an id, or task assigned to tracker unavailable to 
+current sub-user.

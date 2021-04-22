@@ -1,6 +1,6 @@
 ---
-title: How to get tracker list
-description: Sample for get tracker list
+title: Get tracker list
+description: How to get tracker list and filter results.
 ---
 
 # How to get tracker list
@@ -79,20 +79,17 @@ If account has a large amount of trackers, and you only need certain ones,
 you can add an optional filter parameter to the request that will only return matching records. 
 
 This parameter has following constraints:
-*   labels array size: minimum 1, maximum 1024
-*   no null items
-*   no duplicate items
-*   item length: minimum 1, maximum 60
+* labels array size: minimum 1, maximum 1024.
+* no null items.
+* no duplicate items.
+* item length: minimum 1, maximum 60.
 
 To get a list of trackers with labels matching the filter use this API call:
 
-```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/list' \
-    -H 'Content-Type: application/json' \
-    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "labels": ["aa", "b"]}'
-```
+=== "cURL"
 
-
-
-
-
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/list' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "labels": ["aa", "b"]}'
+    ```

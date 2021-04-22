@@ -248,7 +248,7 @@ Deletes user's zone by `zone_id` or array of `zone_ids`.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/delete' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": "1234567"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 1234567}'
     ```
 
 === "HTTP GET"

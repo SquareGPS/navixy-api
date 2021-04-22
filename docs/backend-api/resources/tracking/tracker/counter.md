@@ -38,7 +38,7 @@ Reads counter of passed `type`.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
     ```
 
 === "HTTP GET"
@@ -88,7 +88,7 @@ Updates counter of passed `type`.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "multiplier": "3.14", "sensor_id": "1234"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456 "type": "odometer", "multiplier": "3.14", "sensor_id": "1234"}'
     ```
 
 === "HTTP GET"
@@ -134,7 +134,7 @@ Gets last values of the tracker's counters.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_counters' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -196,7 +196,7 @@ Gets actual value of specified `type` of sensor.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/get' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
     ```
 
 === "HTTP GET"
@@ -281,7 +281,7 @@ Creates new counter of passed `type` (if not) and update its `value`.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/set' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "value": "233.21"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "value": "233.21"}'
     ```
 
 #### response
@@ -317,7 +317,7 @@ Returns counter values for a period.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/data/list' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": "123456", "type": "odometer", "from": "2021-02-01 00:00:00", "to": "2021-02-01 03:00:00"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "from": "2021-02-01 00:00:00", "to": "2021-02-01 03:00:00"}'
     ```
 
 #### response

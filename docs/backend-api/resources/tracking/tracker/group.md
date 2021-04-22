@@ -44,7 +44,7 @@ Assigns multiple trackers to the specified group.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/group/assign' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]", "id": "167"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]", "id": 167}'
     ```
 
 #### response
@@ -123,7 +123,7 @@ assigned to default group (0).
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/group/delete' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "id": "167"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "id": 167}'
     ```
 
 === "HTTP GET"
@@ -203,7 +203,7 @@ Updates specified tracker group. Group must belong to the authorized user.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/group/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "id": "167", "title": "Employees", "color": "FF6DDC"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "id": 167, "title": "Employees", "color": "FF6DDC"}'
     ```
 
 === "HTTP GET"

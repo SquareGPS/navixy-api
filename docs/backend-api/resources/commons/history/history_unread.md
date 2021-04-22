@@ -5,9 +5,9 @@ description: Contains API calls to interact with unread history entries.
 
 # History unread
 
-Contains API calls to interact with unread history entries.
-
 API path: `/history/unread`.
+
+Contains API calls to interact with unread history entries.
 
 ### list
 

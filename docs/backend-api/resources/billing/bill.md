@@ -1,13 +1,13 @@
 ---
 title: Bill
-description: API calls for work with user's bills.
+description: Bill object description and API calls for work with user's bills.
 ---
 
 # Bill
 
-API calls for work with user's bills.
-
 API path: `/bill`.
+
+Bill object description and API calls for work with user's bills.
 
 ## Bill object
 

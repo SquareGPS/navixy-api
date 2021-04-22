@@ -38,7 +38,7 @@ Reads the body of the specified layer.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/map_layer/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": "123456"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 123456}'
     ```
 
 === "HTTP GET"
@@ -162,7 +162,7 @@ Deletes specified layer.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/map_layer/delete' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": "123456"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 123456}'
     ```
 
 === "HTTP GET"

@@ -5,10 +5,10 @@ description: Contains plugin object description and API calls to interact with i
 
 # Plugin
 
+API path: `/plugin`.
+
 Contains plugin object description and API calls to interact with it.<br>
 Plugins are special software modules which modify the behavior of various API calls.
-
-API path: `/plugin`.
 
 ## Plugin object structure
 
@@ -35,7 +35,7 @@ API path: `/plugin`.
     * `values` - string array. List of the regexes for models which are (not) supported by this plugin.
 * `parameters` - plugin-specific parameters as JSON object. This field omitted if it's `null` (and it is `null` most of the time).
 
-#### Example
+#### object example
 
 ```json
 {
@@ -54,6 +54,10 @@ API path: `/plugin`.
 
 Get all plugins available to the user. List of available plugins may vary from user to user depending on platform 
 settings and purchased features. Only these plugins can be used to register trackers, generate reports, etc.
+
+#### parameters
+
+Only session `hash`.
 
 #### examples
 

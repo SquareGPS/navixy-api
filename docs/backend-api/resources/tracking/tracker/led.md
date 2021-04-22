@@ -23,7 +23,7 @@ Gets LED status for the specified tracker.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/led/read' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
     ```
 
 === "HTTP GET"
@@ -67,7 +67,7 @@ Switches LED state for a specified tracker.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/led/update' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "value": "true"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "value": true}'
     ```
 
 === "HTTP GET"

@@ -68,7 +68,7 @@ Replaces the list of trusted numbers for a specified tracker with the new one.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/trusted_number/update' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": "265489", "list": ["496156680001", "496156680000"]}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "list": ["496156680001", "496156680000"]}'
     ```
 
 #### response

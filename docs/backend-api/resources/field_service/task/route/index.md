@@ -1,9 +1,11 @@
 ---
 title: Routes
-description: Routes
+description: Routes basically named and ordered set of checkpoints. Each is essentially a task with an additional link to the parent route. Route completed if all the checkpoints completed and visited in the specified order. Otherwise, it is considered completed with warnings or failed.
 ---
 
 # Routes
+
+API base path: `/task/route`
 
 Routes basically named and ordered set of checkpoints. Each [checkpoint](../checkpoint.md#checkpoint-object) is 
 essentially a task with an additional link to the parent route.
@@ -46,13 +48,9 @@ completed with warnings or failed.
 * `tags` - int array. List of tag ids.
 * `checkpoint_ids` - int array. List of route checkpoint ids in order of execution. *IGNORED* in route/create.
 
-## API actions
-
-API base path: `/task/route`
-
 ### assign
 
-(Re)assign route to new tracker (or make it unassigned).
+(Re)assigns route to a new tracker (or make it unassigned).
 
 **required sub-user rights**: `task_update`.
 
@@ -89,15 +87,15 @@ API base path: `/task/route`
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id).
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 255 – Invalid task state (if current task state is not "unassigned" or "assigned").
-* 236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks).
+* 201 – Not found in the database - if there is no task with such an id.
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 255 – Invalid task state - if current task state is not "unassigned" or "assigned".
+* 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
 ### create
 
-Creates new route. One of checkpoints can have id (in this case it must be a task) - it will be transmuted from
+Creates a new route. One of checkpoints can have id (in this case it must be a task) - it will be transmuted from
 task to checkpoint.
 
 **required sub-user rights**: `task_update`.
@@ -192,8 +190,8 @@ If there is nothing to return, then parameter "external_id_counts" will not be p
  
 #### errors
 
-* 201 – Not found in the database (if task.tracker_id is not null and belongs to nonexistent tracker).
-* 236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks).
+* 201 – Not found in the database - if task.tracker_id is not null and belongs to nonexistent tracker.
+* 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
 ### delete
 
@@ -233,7 +231,7 @@ Deletes route (and its checkpoints) with the specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no route with such an id).
+* 201 – Not found in the database - if there is no route with such an id.
 
 ### list
 
@@ -333,7 +331,7 @@ Gets route by specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no route with such an id).
+* 201 – Not found in the database - if there is no route with such an id.
 
 ### update
 
@@ -378,5 +376,5 @@ JSON object of the updated route with `checkpoint_id`s
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id).
-* 255 – Invalid task state (if current task state is not "unassigned" or "assigned").
+* 201 – Not found in the database - if there is no task with such an id.
+* 255 – Invalid task state - if current task state is not "unassigned" or "assigned".
