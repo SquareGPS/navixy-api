@@ -88,7 +88,7 @@ Updates counter of passed `type`.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456 "type": "odometer", "multiplier": "3.14", "sensor_id": "1234"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "multiplier": "3.14", "sensor_id": "1234"}'
     ```
 
 === "HTTP GET"
