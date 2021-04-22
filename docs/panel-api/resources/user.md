@@ -112,7 +112,7 @@ Changes password of a user.
     ```shell
     curl -X POST '{{ extra.api_example_url }}panel/user/change_password' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432 "password": "12@14Y$"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432, "password": "12@14Y$"}'
     ```
 
 #### response
@@ -148,7 +148,7 @@ Marks user and its sub users and trackers as deleted and corrupt all user tracke
     ```shell
     curl -X POST '{{ extra.api_example_url }}panel/user/corrupt' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432 "login": "user@login.com"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432, "login": "user@login.com"}'
     ```
 
 #### response

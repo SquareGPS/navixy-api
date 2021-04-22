@@ -166,7 +166,7 @@ Sends chat message to a specified tracker.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/chat/send' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456 "message": "Hello World"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "message": "Hello World"}'
     ```
 
 #### response
