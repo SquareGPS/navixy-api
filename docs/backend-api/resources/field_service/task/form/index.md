@@ -147,7 +147,7 @@ the list contains data on the objects related to each form – tracker / vehicle
 
 *   **form_template_id** (*integer, optional*). The returned list will contain forms, related to that template.<br>
     **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
-*   **task_ids** (*list of integers, optional*). Maximum size of list is 500 elements. List of task ids. The returned list will contain forms, related to tasks, which ids specified in this parameter.<br>
+*   **task_ids** (*list of integers, optional*). Maximum size of list is 5000 elements. List of task ids. The returned list will contain forms, related to tasks, which ids specified in this parameter.<br>
     **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
 *   **order_by** (*optional, default = submitted*). Data field for list sorting. Available values:
     *   *task_id*
