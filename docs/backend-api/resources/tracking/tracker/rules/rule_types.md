@@ -31,6 +31,7 @@ Common parameters exist in all rule types.
 | ------ | ------------- | ------ |
 | emergency | If `true` enables emergency notification. | boolean |
 | zone_limit_inverted | The rule tracked inside or outside zones. Default is: `false`. | boolean |
+| user_id | Subuser ID. If specified, then the rule and notifications are visible only to him. | int |
 
 ### Geofence entrance or exit
 

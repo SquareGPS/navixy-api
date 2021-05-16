@@ -742,7 +742,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999119, 999199]"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999119, 999199, 9991911]"}'
     ```
 
 #### response
@@ -751,51 +751,61 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 {
     "success": true,
     "user_time":"2014-07-09 07:50:58",
-    "states": [{
-      "source_id": 65894,
-      "gps": {
-        "updated": "2013-02-19 10:48:08",
-        "signal_level": 25,
-        "location": {
-          "lat": 56.826068,
-          "lng": 60.594338
+    "states": {
+      "999119": {
+        "source_id": 65894,
+        "gps": {
+          "updated": "2013-02-19 10:48:08",
+          "signal_level": 25,
+          "location": {
+            "lat": 56.826068,
+            "lng": 60.594338
+          },
+          "heading": 45,
+          "speed": 20,
+          "alt": 10,
+          "precision": 50,
+          "gsm_lbs": false
         },
-        "heading": 45,
-        "speed": 20,
-        "alt": 10,
-        "precision": 50,
-        "gsm_lbs": false
-      },
-      "connection_status": "active",
-      "movement_status": "moving",
-      "gsm": {
-        "updated": "2013-02-19 10:48:08",
-        "signal_level": 70,
-        "network_name": "T-MOBILE",
-        "roaming": false
-      },
-      "last_update": "2013-02-19 10:48:08",
-      "battery_level": 100,
-      "battery_update": "2013-02-19 10:48:08",
-      "inputs": [true, true, false],
-      "inputs_update": "2013-02-19 10:48:08",
-      "outputs": [true, true, false],
-      "outputs_update": "2013-02-19 10:48:08",
-      "additional": {
-        "hardware_key": {
-          "value": 564648745158875,
-          "updated": "2013-02-19 10:48:08"
+        "connection_status": "active",
+        "movement_status": "moving",
+        "gsm": {
+          "updated": "2013-02-19 10:48:08",
+          "signal_level": 70,
+          "network_name": "T-MOBILE",
+          "roaming": false
+        },
+        "last_update": "2013-02-19 10:48:08",
+        "battery_level": 100,
+        "battery_update": "2013-02-19 10:48:08",
+        "inputs": [
+          true,
+          true,
+          false
+        ],
+        "inputs_update": "2013-02-19 10:48:08",
+        "outputs": [
+          true,
+          true,
+          false
+        ],
+        "outputs_update": "2013-02-19 10:48:08",
+        "additional": {
+          "hardware_key": {
+            "value": 564648745158875,
+            "updated": "2013-02-19 10:48:08"
+          }
         }
       }
-    }],
-    "blocked": [123456],
-    "not_exist": [234567]
+    },
+    "blocked": [999199],
+    "not_exist": [9991911]
 }
 ```
 
 * `user_time` - date/time. Current time in user's timezone.
-* `states` - object. A map containing state object for requested trackers. See state object description in 
-   tracker/get_state response.
+* `states` - object. A map containing state objects for requested trackers, where the key is the tracker ID 
+  and the value is the state (see state object description in [tracker/get_state](#get_state) response).
 * `blocked` - array of tracker IDs. Returned only if list_blocked=`true`.
 * `not_exist` - array of tracker IDs. Returned only if allow_not_exist=`true`.
 

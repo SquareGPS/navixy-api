@@ -192,6 +192,7 @@ Creates a new user.
 | locale | User locale. | string |
 | password | User password, 6 to 20 printable characters. | string |
 | discount | [Discount object](#discount-object-structure). | JSON object |
+| default_tariff_id | Optional. ID of a default tariff plan for user's trackers |  int |
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
@@ -428,12 +429,14 @@ Returns user info by its id.
         "min_trackers": 10,
         "end_date": "2021-03-01",
         "strategy": "sum_with_progressive"
-    }
+    },
+    "default_tariff_id": 123
 }
 ```
 
 * `value` - JSON object. [User object](#user-object-structure) described above.
 * `discount` - JSON object. [Discount object](#discount-object-structure) described above.
+* `default_tariff_id` - integer number, nullable. ID of a tariff plan which will be applied to user's trackers by default.
 
 #### errors
 
@@ -453,6 +456,7 @@ this field will not be changed.
 | :------ | :------ | :----- |
 | user | [User object](#user-object-structure) without read-only fields. | JSON object |
 | discount | [Discount object](#discount-object-structure). | JSON object |
+| default_tariff_id | Optional. ID of a default tariff plan for user's trackers | int |
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
