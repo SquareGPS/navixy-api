@@ -42,7 +42,8 @@ A rule element consists of following fields:
   }],
   "extended_params": {
     "emergency": false,
-    "zone_limit_inverted": false
+    "zone_limit_inverted": false,
+    "user_id": 123383
   }
 }
 ```
