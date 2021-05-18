@@ -286,6 +286,8 @@ in use.
 
 Copy sensors
 
+**required sub-user rights:** `tracker_update`
+
 #### parameters
 
 | name | description | type| format|
