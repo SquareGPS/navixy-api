@@ -23,6 +23,8 @@ API path: `panel/tracker`.
     "deleted": false,
     "label": "Truck",
     "user_id": 183654,
+    "model_name": "Teltonika FMB120",
+    "last_connection": "2020-02-02 12:44",
     "source": {
         "id": 456751,
         "device_id": "8624369656654",
@@ -48,6 +50,8 @@ API path: `panel/tracker`.
 * `deleted` - boolean. True if tracker or clone has been marked as deleted.
 * `label` - string. Tracker label.
 * `user_id` - int. An id of the user to which this tracker (or clone) belongs to.
+* `model_name` - string. Human-readable tracker model name.
+* `last_connection` - [date/time](../../backend-api/getting-started.md#data-types). Time when this tracker last connected to the server (in UTC+0 timezone).
 * `source` - source JSON object. 
     * `id` - int. Source id.
     * `device_id` - string. Source_imei.
@@ -717,7 +721,7 @@ If `filter` is used, entities will be returned only if filter string contain one
 | user_id | Optional. Id of the user. User must belong to authorized dealer. | int |
 | tariff_id | Optional. Id of the tariff. Tariff must belong to authorized dealer. | int |
 | filter | Optional. Text filter string. | string |
-| order_by | Optional. List ordering. Can be one of "id", "label", "status", "model", "device_id", "phone", "creation_date". |	string |
+| order_by | Optional. List ordering. Can be one of "id", "label", "status", "model", "device_id", "phone", "creation_date", "last_connection". |	string |
 | ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
 | offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
 | limit | Optional. Max number of records to return, used for pagination. | int |
@@ -754,6 +758,8 @@ If `filter` is used, entities will be returned only if filter string contain one
       "deleted": false,
       "label": "Truck",
       "user_id": 183654,
+      "model_name": "Teltonika FMB120",
+      "last_connection": "2020-02-02 12:44",
       "source": {
           "id": 456751,
           "device_id": "8624369656654",
@@ -869,6 +875,8 @@ Returns the tracker object with the specified id.
         "deleted": false,
         "label": "Truck",
         "user_id": 183654,
+        "model_name": "Teltonika FMB120",
+        "last_connection": "2020-02-02 12:44",
         "source": {
             "id": 456751,
             "device_id": "8624369656654",
