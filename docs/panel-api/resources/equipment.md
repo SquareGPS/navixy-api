@@ -5,9 +5,9 @@ description: An API call to get the list of available equipment.
 
 # Equipment
 
-API call to get the list of all available equipment.
-
 API path: `panel/equipment`.
+
+API call to get the list of all available equipment.
 
 ## Equipment object
 

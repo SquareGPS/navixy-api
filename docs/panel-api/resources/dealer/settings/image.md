@@ -5,9 +5,9 @@ description: API calls for interaction with images that used for branding of the
 
 # Image
 
-API calls for interaction with images that used for branding of the panel.
+API path: `panel/dealer/settings/image`.
 
-API path: `panel/dealer/settings/image`
+API calls for interaction with images that used for branding of the panel.
 
 ### delete 
 
@@ -56,7 +56,7 @@ Uploads image of specified `type`.
 **MUST** be a POST multipart request (multipart/form-data), 
 with one of the parts being an image file upload (with the name "file"). 
 
-File part **mime** type must be one of :
+File part **mime** type must be one of:
 
 * **image/jpeg** or **image/pjpeg**
 * **image/png**
@@ -74,7 +74,7 @@ File part **mime** type must be one of :
 | file | Image file. | string |
 | redirect_target | Optional. An URL to redirect. | string | 
 
-If `redirect_target` passed a return redirect to response=<urlencoded response json>.
+If `redirect_target` passed a return redirect to `response=<urlencoded response json>`.
 
 #### response
 

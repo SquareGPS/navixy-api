@@ -1,11 +1,14 @@
 ---
 title: Driver journal proposal
-description: Driver journal proposal
+description: Contains API call to get the list of driver journal proposal. 
 ---
 
 # Driver journal proposal
 
 API path: `/driver/journal/proposal`.
+
+Contains API call to get the list of driver journal proposal. Proposal objects - trips per specified period that could be
+used for driver journal entry creation.
 
 ### list
 
@@ -18,9 +21,9 @@ Tracks selected by intersecting their date range with date range from request (`
 
 | name | description | type|
 | :------ | :------ | :----- |
-| from | Include tracks which end after this date | string |
-| to | Include tracks which start before this date | string |
-| tracker_id | Id of the tracker | int |
+| from | Include tracks which end after this date. | string |
+| to | Include tracks which start before this date. | string |
+| tracker_id | Id of the tracker. | int |
 
 #### example
 
@@ -70,3 +73,7 @@ Tracks selected by intersecting their date range with date range from request (`
 * `start_odometer` - nullable float. Odometer's value at the start.
 * `end_odometer` - nullable float. Odometer's value at the end.
 * `overlapped` - boolean. `true` if there is already driver journal entry with date range which is intersecting this proposal object's date range.
+
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.

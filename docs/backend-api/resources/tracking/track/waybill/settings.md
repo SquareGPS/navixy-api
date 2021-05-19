@@ -1,16 +1,18 @@
 ---
 title: Waybill settings
-description: Waybill settings
+description: Contains API call to get the last waybill number.
 ---
 
 # Waybill settings
 
-API base path: `track/waybill/settings/`
+API base path: `track/waybill/settings/`.
+
+Contains API call to get the last waybill number. Waybill number saved when new waybill had downloaded. If it had only digits, 
+then it was incremented before saving.
 
 ### read
 
-Get last waybill number. Waybill number saved when new waybill had downloaded. If it had only digits, then it was 
-incremented before saving.
+Gets last waybill number. 
 
 #### examples
 
@@ -41,4 +43,4 @@ incremented before saving.
 
 #### errors
 
-* 201 (Not found in the database) – if user have never downloaded a waybill.
+* 201 - Not found in the database – if user have never downloaded a waybill.

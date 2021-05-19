@@ -1,13 +1,15 @@
 ---
 title: Contact
-description: Contact
+description: API call to get user's trackers with special grouping by "contacts"
 ---
 # Contact 
 
 !!! warning "Deprecated"
     This API action deprecated and should not be used.
 
-API base path: `/tracker/contact`
+API base path: `/tracker/contact`.
+
+API call to get user's trackers with special grouping by "contacts"
 
 ### list
 

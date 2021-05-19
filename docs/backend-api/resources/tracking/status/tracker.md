@@ -1,13 +1,13 @@
 ---
 title: Tracker status
-description: Tracker status
+description: This resource contains methods to read and assign status of a particular tracker.
 ---
 
 # Tracker status
 
-This resource contains methods to read and assign status of a particular tracker.
+API base path: `/status/tracker/`.
 
-API base path: `/status/tracker/`
+This resource contains methods to read and assign status of a particular tracker.
 
 ### assign
 
@@ -68,14 +68,14 @@ Assign a status to the tracker.
 
 #### errors
 
-* 13 (Operation not permitted) – if status listing does not allow for a supervisor to change status.
-* 201 (Not found in the database) – if there is no tracker with such ID belonging to authorized user.
-* 204 (Entity not found) – if there is no listing assigned to this tracker containing with such ID.
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
-* 219 (Not allowed for clones of the device) – if specified tracker is a clone.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
+* 13 Operation not permitted – if status listing does not allow for a supervisor to change status.
+* 201 Not found in the database – if there is no tracker with such ID belonging to authorized user.
+* 204 Entity not found – if there is no listing assigned to this tracker containing with such ID.
+* 208 Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 Not allowed for clones of the device – if specified tracker is a clone.
+* 236 Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
-* 263 (No change needed, old and new values are the same) – if new status is equal to current status of tracker.
+* 263 No change needed, old and new values are the same – if new status is equal to current status of tracker.
 
 ### list
 
@@ -152,9 +152,9 @@ Gets current assigned statuses for the specified trackers.
 
 #### errors
 
-* 217 (Requested limit is too big) – limit is more than [history.maxLimit](../../commons/dealer.md).
-* 221 (Device limit exceeded) – if device limit set for the user's dealer has been exceeded.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature
+* 217 Requested limit is too big – limit is more than [history.maxLimit](../../commons/dealer.md).
+* 221 Device limit exceeded – if device limit set for the user's dealer has been exceeded.
+* 236 Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature
  available.
 
 ### read
@@ -218,8 +218,8 @@ Gets current assigned status of the tracker.
 
 #### errors
 
-* 201 (Not found in the database) – if there is no tracker with such ID belonging to authorized user.
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions, or some other reason.
-* 219 (Not allowed for clones of the device) – if specified tracker is a clone.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
+* 201 - Not found in the database – if there is no tracker with such ID belonging to authorized user.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
+* 219 - Not allowed for clones of the device – if specified tracker is a clone.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.

@@ -5,9 +5,9 @@ description: API calls to read and update notification settings.
 
 # Notification
 
-API calls to read and update notification settings.
-
 API path: `panel/dealer/settings/notification`.
+
+API calls to read and update notification settings.
 
 ## Notification settings object
 

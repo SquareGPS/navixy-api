@@ -1,10 +1,12 @@
 ---
 title: Alarm mode
-description: Alarm mode for tracker
+description: Contains API calls to read and set alarm mode of device.
 ---
 # Alarm mode for tracker
 
-API base path: `/tracker/alarm_mode`
+API base path: `/tracker/alarm_mode`.
+
+Contains API calls to read and set alarm mode of device.
 
 ### read
 
@@ -45,9 +47,9 @@ Gets the state of alarm mode of device.
 
 #### errors
 
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 214 – Requested operation or parameters are not supported by the device (if device does not support alarm mode).
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
 
 ### set
 
@@ -84,8 +86,8 @@ Changes the state of alarm mode of device. The device must be online.
 
 #### errors
 
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 213 – Cannot perform action: the device is offline (if corresponding tracker is not connected to the server).
-* 214 – Requested operation or parameters are not supported by the device (if device does not support alarm mode).
-* 219 – Not allowed for clones of the device (if tracker is clone).
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 213 – Cannot perform action: the device is offline - if corresponding tracker is not connected to the server.
+* 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
+* 219 – Not allowed for clones of the device - if tracker is clone.

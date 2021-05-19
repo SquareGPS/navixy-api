@@ -1,11 +1,13 @@
 ---
 title: Vehicle avatar
-description: Vehicle avatar
+description: API calls to upload and assign avatar to the vehicle.
 ---
 
 # Vehicle avatar
 
 API path: `/vehicle/avatar`.
+
+API calls to upload and assign avatar to the vehicle.
 
 ### assign
 
@@ -46,7 +48,7 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 
 ##### errors
 
-* 201 – Not found in the database (when vehicle with `vehicle_id` not found).
+* 201 – Not found in the database - when vehicle with `vehicle_id` not found.
 
 ### upload
 
@@ -75,7 +77,7 @@ File part **mime** type must be one of :
 | file | Image file. | string |
 | redirect_target | Optional. URL to redirect. | string |
 
-If `redirect_target` passed a return redirect to response=<urlencoded response json>.
+If `redirect_target` passed a return redirect to `response=<urlencoded response json>`.
 
 #### response
 
@@ -90,7 +92,7 @@ If `redirect_target` passed a return redirect to response=<urlencoded response j
 
 #### errors
 
-* 201 – Not found in the database (when vehicle with `tag_id` not found).
-* 233 – No data file (if `file` part not passed).
-* 234 – Invalid data format (if passed `file` with unexpected **mime** type).
-* 254 – Cannot save file (on some file system errors).
+* 201 – Not found in the database - when vehicle with `tag_id` not found.
+* 233 – No data file - if `file` part not passed.
+* 234 – Invalid data format - if passed `file` with unexpected **mime** type.
+* 254 – Cannot save file - on some file system errors.

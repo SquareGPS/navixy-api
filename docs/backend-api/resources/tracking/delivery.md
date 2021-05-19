@@ -1,11 +1,13 @@
 ---
 title: Delivery info
-description: Delivery info
+description: API calls to get delivery states and tasks by ids.  
 ---
 
 # Delivery info
 
 API base path: `/delivery`.
+
+API calls to get delivery states and tasks by ids.
 
 ### read
 
@@ -31,7 +33,7 @@ In addition to standard user session, this call supports special *DELIVERY* sess
     ```shell
     curl -X POST '{{ extra.api_example_url }}/delivery/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": "259876"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": 259876}'
     ```
 
 === "HTTP GET"
@@ -72,7 +74,7 @@ object structure.
 
 #### errors
 
-* 201 – Not found in the database (when there is no task or checkpoint with specified conditions).
+* 201 – Not found in the database - when there is no task or checkpoint with specified conditions.
 
 ### list
 
@@ -98,7 +100,7 @@ in addition to standard user session, this call supports special *DELIVERY* sess
     ```shell
     curl -X POST '{{ extra.api_example_url }}/delivery/list' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": "259876"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": 259876}'
     ```
 
 === "HTTP GET"
@@ -187,4 +189,4 @@ structure.
 
 #### errors
 
-* 201 – Not found in the database (when there is no task or checkpoint with specified conditions).
+* 201 – Not found in the database - when there is no task or checkpoint with specified conditions.

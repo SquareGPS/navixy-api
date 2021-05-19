@@ -5,9 +5,9 @@ description: Contains API call to read the order by its ID.
 
 # Order
 
-API call to read the order by its ID.
-
 API path: `panel/order`.
+
+API call to read the order by its ID.
 
 ### read
 

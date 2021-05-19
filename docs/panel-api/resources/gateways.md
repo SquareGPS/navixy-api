@@ -5,9 +5,9 @@ description: Information about email gateways objects. Email gateway can be owne
 
 # Gateways
 
-Information about email gateway objects. Email gateway can be owned by a dealer or leased from platform owner.
-
 API path: `panel/gateways/email`.
+
+Information about email gateway objects. Email gateway can be owned by a dealer or leased from platform owner.
 
 ## Email gateway object
 

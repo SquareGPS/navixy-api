@@ -1,9 +1,11 @@
 ---
 title: Working with zones
-description: Working with zones
+description: This document contains zone object description and CRUD actions for zones.
 ---
 
 # Working with zones
+
+API base path: `/zone`.
 
 Zones used in rules to limit rule area of activity. Also, zone names shown in reports after the address, if 
 an event happened inside the zone.
@@ -83,15 +85,11 @@ Represents all points within certain distance to the specified polyline.
 * `radius` - int. Polyline radius in meters.
 * `tags` - int array. Array of tag IDs.                 
 
-## API actions
-
-API base path: `/zone`
-
 ### batch_convert
 
 Convert batch of tab-delimited circle zones and return list of checked zones with errors.
 
-**required sub-user rights**: `zone_update`
+**required sub-user rights**: `zone_update`.
 
 #### parameters
 
@@ -104,19 +102,20 @@ Convert batch of tab-delimited circle zones and return list of checked zones wit
 | default_radius | Optional. Radius for point, default is 100. | int |
 
 If 'file_id' is set – 'batch' parameter will be ignored.
-For `batch` parameter:
-    address - required if no coordinates specified.
-    lat - required if no address specified.
-    long - required if no address specified.
 
-#### examples
+For `batch` parameter:
+* address - required if no coordinates specified.
+* lat - required if no address specified.
+* long - required if no address specified.
+
+#### example
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/batch_convert' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "batch": "Geofence for test	Karlsplatz, 2"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "batch": "Geofence for test Karlsplatz, 2"}'
     ```
 
 #### response
@@ -148,7 +147,7 @@ For `batch` parameter:
 * `radius` - int. Circle radius in meters.
 * `center` - location object. Location of circle center.
 * `tags` - int array. Array of tag IDs.
-* `limit_exceeded` - boolean, true if given batch constrained by limit 
+* `limit_exceeded` - boolean. `true` if given batch constrained by limit.
 
 #### response with errors object
 
@@ -177,7 +176,7 @@ For `batch` parameter:
 
 * `errors` - optional object. It appears if parameters incorrect.
     * `parameter` - string. Parameter name.
-    * `error` - string. Error description
+    * `error` - string. Error description.
 
 #### errors
 
@@ -187,18 +186,18 @@ For `batch` parameter:
 
 Creates a new zone.
 
-**required sub-user rights**: `zone_update`
+**required sub-user rights**: `zone_update`.
 
 #### parameters
 
 | name | description | type|
 | :------ | :------ | :----- |
-| zone | zone JSON-object without "id" and "color" fields. | JSON object |
-| points | Array of new [points](../../../resources/tracking/zone/zone_point.md) for this zone. Must contain at least 3 elements. MUST be omitted if zone does not support points (e.g. circle) | array of `zone point` objects |
+| zone | zone JSON-object without `id` and `color` fields. | JSON object |
+| points | Array of new [points](../../../resources/tracking/zone/zone_point.md) for this zone. Must contain at least 3 elements. MUST be omitted if zone does not support points (e.g. circle). | array of `zone point` objects |
 | zone.color | Optional. Zone color in 3-byte RGB hex format. Default is "27A9E3". | string |
 
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -221,16 +220,16 @@ Creates a new zone.
 
 #### errors
 
-* 202 (Too many points in a zone) – max allowed points count for a zone is 100 for a polygon or 1024 for sausage.
-* 230 (Not supported for this entity type) – if "points" were specified, but zone cannot have any points associated with
+* 202 - Too many points in a zone – max allowed points count for a zone is 100 for a polygon or 1024 for sausage.
+* 230 - Not supported for this entity type – if "points" were specified, but zone cannot have any points associated with
  it (e.g. if zone is circle).
-* 268 (Over quota) –  if the user's quota for zones exceeded.
+* 268 - Over quota –  if the user's quota for zones exceeded.
 
 ### delete
 
 Deletes user's zone by `zone_id` or array of `zone_ids`.
 
-**required sub-user rights**: `zone_update`
+**required sub-user rights**: `zone_update`.
 
 #### parameters
 
@@ -265,8 +264,8 @@ Deletes user's zone by `zone_id` or array of `zone_ids`.
 
 #### errors
 
-* 201 (Not found in the database).
-* 203 (Delete entity associated with).
+* 201 - Not found in the database.
+* 203 - Delete entity associated with.
 
 #### response
 
@@ -333,16 +332,16 @@ Update zone parameters for the specified zone. Note that zone must exist, must b
 type cannot be changed, e.g. if you already have a zone with ID=1 which type is "circle", you cannot submit a zone 
 which type is "polygon".
 
-**required sub-user rights**: `zone_update`
+**required sub-user rights**: `zone_update`.
 
 #### parameters
 
 | name | description | type|
 | :------ | :------ | :----- |
-| zone | zone JSON-object without "id" and "color" fields. | JSON object |
+| zone | zone JSON-object without `id` and `color` fields. | JSON object |
 | zone.color | Optional. Zone color in 3-byte RGB hex format. Default is "27A9E3". | string |
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -360,8 +359,8 @@ which type is "polygon".
 
 #### errors
 
-* 201 (Not found in the database) – if zone with the specified ID cannot be found or belongs to another user.
-* 231 (Entity type mismatch) – if type of the submitted zone differs from type of the zone currently stored in the 
+* 201 - Not found in the database – if zone with the specified ID cannot be found or belongs to another user.
+* 231 - Entity type mismatch – if type of the submitted zone differs from type of the zone currently stored in the 
 database.
 
 
@@ -369,7 +368,7 @@ database.
 
 Import geofences from KML file.
 
-**required sub-user rights**: `zone_update`
+**required sub-user rights**: `zone_update`.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload 
 (with the name "file").
@@ -435,12 +434,13 @@ if `dry_run=false`:
 
 #### errors
 
-* 202 (Too many points in a zone) – max allowed points count for a zone is 100 for a polygon or 1024 for sausage.
-* 233 (No data file) – if file part is missing.
-* 234 (Invalid data format).
-* 268 (Over quota) – if the user's quota for zones exceeded.
+* 202 - Too many points in a zone – max allowed points count for a zone is 100 for a polygon or 1024 for sausage.
+* 233 - No data file – if file part is missing.
+* 234 - Invalid data format.
+* 268 - Over quota – if the user's quota for zones exceeded.
 
 From `Placemark` with `Point` geometry will be created circle geofence with a radius=default_radius.
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
@@ -459,6 +459,7 @@ From `Placemark` with `Point` geometry will be created circle geofence with a ra
 ```
 
 From `Placemark` with `LineString` geometry will be created route geofence with a radius=default_radius.
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
@@ -481,6 +482,7 @@ From `Placemark` with `LineString` geometry will be created route geofence with 
 From `Placemark` with `Polygon` geometry will be created polygon geofence.
 Polygons with holes not supported. In that case only the outer boundary will be imported and the inner boundary, holes, 
 ignored.
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">

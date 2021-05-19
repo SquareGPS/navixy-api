@@ -1,11 +1,14 @@
 ---
 title: Garage
-description: Garage
+description: Contains garage object and API calls to interact with it.
 ---
 
 # Garage
 
 API path: `/garage`.
+
+Contains garage object and API calls to interact with it. Garage object contains name, address, name of the mechanic, name
+of the dispatcher and others. This data can be used for more convenient and efficient maintenance and task management.
 
 ## Garage object
 
@@ -25,11 +28,11 @@ API path: `/garage`.
 ```
 
 * `id` - int. Garage id.
-* `location` - valid location or null.
+* `location` - location object. Valid location or null.
 
 ### list
 
-Get all garages belonging to user.
+Gets all garages belonging to user.
 
 #### examples
 
@@ -75,7 +78,7 @@ Get all garages belonging to user.
 
 Creates a new garage.
 
-**required sub-user rights**: `vehicle_update`
+**required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
@@ -112,7 +115,7 @@ Creates a new garage.
 
 Updates existing garage with the specified id.
 
-**required sub-user rights**: `vehicle_update`
+**required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
@@ -138,14 +141,14 @@ Updates existing garage with the specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no garage with such an id).
+* 201 – Not found in the database - if there is no garage with such an id.
 
 
 ### delete
 
 Deletes a garage with the specified id.
 
-**required sub-user rights**: `vehicle_update`
+**required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
@@ -177,4 +180,4 @@ Deletes a garage with the specified id.
     
 #### errors
 
-* 201 – Not found in the database (if there is no garage with such an id).
+* 201 – Not found in the database - if there is no garage with such an id.

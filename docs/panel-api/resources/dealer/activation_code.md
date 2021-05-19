@@ -5,7 +5,9 @@ description: API calls for interacting with activation codes used for device reg
 
 # Activation code
 
-API base path: `panel/dealer/activation_code`
+API base path: `panel/dealer/activation_code`.
+
+API calls for interacting with activation codes used for device registration.
 
 ## Activation code object
 
@@ -154,7 +156,7 @@ Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes whi
 | codes | Codes to update. | string array |
 | tariff_id | An id of a new tariff. Have to belong to a current dealer. | int |
 | bonus_amount | A new bonus. | int |
-| free_days | A new free period | int |
+| free_days | A new free period. | int |
 
 #### examples
 

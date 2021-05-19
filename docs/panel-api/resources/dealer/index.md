@@ -5,9 +5,9 @@ description: API call to get information about a dealer.
 
 # Dealer get info
 
-API call to get information about a dealer.
-
 API path: `panel/dealer/`.
+
+API call to get information about a dealer.
 
 ### get_info
 

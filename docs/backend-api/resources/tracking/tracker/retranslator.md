@@ -1,10 +1,14 @@
 ---
 title: Retranslator
-description: Retranslator
+description: Contains tracker retranslator binding object and API calls to bind/unbind it to tracker or get already binded one.
 ---
 # Retranslator
 
-**tracker_retranslator_binding** is:
+API base path: `/tracker/retranslator`.
+
+Contains tracker retranslator binding object and API calls to bind/unbind it to tracker or get already binded one.
+
+## Tracker retranslator binding object
 
 ```json
 {
@@ -14,11 +18,7 @@ description: Retranslator
 ```
 
 * `retranslator_id` - int. An id of the retranslator.
-* `fake_device_id` - string. Optional. If this field set retranslator use it instead of real device id to forward data.
-
-## API actions
-
-API base path: `/tracker/retranslator`
+* `fake_device_id` - string. Optional. If this field is set retranslator use it instead of real device id to forward data.
 
 ### bind
 
@@ -58,10 +58,10 @@ Creates or updates binding.
 
 #### errors
 
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
-* 219 (Not allowed for clones of the device) – if tracker is clone.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "retranslation" tariff feature available.
-* 242 (There were errors during content validation) – if `fake_device_id` is invalid for the protocol.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 - Not allowed for clones of the device – if tracker is clone.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "retranslation" tariff feature available.
+* 242 - There were errors during content validation – if `fake_device_id` is invalid for the protocol.
 
 ### list
 
@@ -103,7 +103,7 @@ List tracker retranslators bound to tracker with ID=`tracker_id`.
 
 #### errors
 
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions, or some other reason.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 
 ### unbind
 
@@ -142,5 +142,5 @@ Unbinds a tracker from retranslator.
 
 #### errors
 
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions, or some other reason.
-* 219 (Not allowed for clones of the device) – if tracker is clone.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
+* 219 - Not allowed for clones of the device – if tracker is clone.
