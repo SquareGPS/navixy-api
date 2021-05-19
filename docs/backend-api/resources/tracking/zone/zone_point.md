@@ -1,13 +1,13 @@
 ---
 title: Zone point
-description: Zone point
+description: All actions to retrieve and manipulate points of the zone.
 ---
 
 # Zone point
 
 API base path: `/zone/point`.
 
-All actions to retrieve and manipulate points of the zone. Note that "circle" zone type cannot have points.
+All actions to retrieve and manipulate points of the zone. Note that `circle` zone type can't have points.
 
 ## Point object structure
 
@@ -51,6 +51,7 @@ Get points of user's zone with `zone_id`.
     ```
 
 #### response
+
 ```json
 {
     "success": true,
@@ -65,14 +66,15 @@ Get points of user's zone with `zone_id`.
 * `list` - array of objects. List of point objects. 
 
 #### errors
-* 201 (Not found in the database) – if zone with the specified ID cannot be found or belongs to another user.
-* 230 (Not supported for this entity type) – if zone cannot have any points associated with it (e.g. if zone is circle).
+
+* 201 - Not found in the database – if zone with the specified ID cannot be found or belongs to another user.
+* 230 - Not supported for this entity type – if zone cannot have any points associated with it (e.g. if zone is circle).
 
 ### update
 
 Update points for user's zone with `zone_id`.
 
-**required sub-user rights**: `zone_update`
+**required sub-user rights**: `zone_update`.
 
 #### parameters
 
@@ -81,7 +83,7 @@ Update points for user's zone with `zone_id`.
 | zone_id | Id of a zone. | int |
 | points | Array of new points for this zone. Must contain at least 3 elements. Maximum number of points depends on zone type. | array of JSON objects |
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -92,13 +94,14 @@ Update points for user's zone with `zone_id`.
     ```
 
 #### response
+
 ```json
 { "success": true }
 ```
 
 #### errors
 
-* 201 (Not found in the database) – if zone with the specified ID cannot be found or belongs to another user.
-* 202 (Too many points in a zone) – if "points" array size exceeds limit for this zone type. Max allowed points count 
+* 201 - Not found in the database – if zone with the specified ID cannot be found or belongs to another user.
+* 202 - Too many points in a zone – if "points" array size exceeds limit for this zone type. Max allowed points count 
 for a zone is 100 for a polygon or 1024 for sausage.
-* 230 (Not supported for this entity type) – if zone cannot have any points associated with it (e.g. if zone is circle).
+* 230 - Not supported for this entity type – if zone cannot have any points associated with it (e.g. if zone is circle).

@@ -5,9 +5,9 @@ description: API calls on getting the panel's hash, getting permissions and logo
 
 # Account
 
-API calls on getting the panel's hash, getting permissions and logout.
-
 API path: `panel/account`.
+
+API calls on getting the panel's hash, getting permissions and logout.
 
 ### auth
 

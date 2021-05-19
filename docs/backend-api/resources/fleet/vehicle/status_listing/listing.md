@@ -1,13 +1,18 @@
 ---
-title: Vehicle status listing
-description: Vehicle status listing
+title: Status listing
+description: Contains vehicle status listing object and API calls to interact with it.
 ---
 
 # Vehicle status listing
 
+!!! warning "Deprecated"
+    This API action deprecated and should not be used.
+
 API path: `/vehicle/status/listing`.
 
-## Vehicle status listing
+Contains vehicle status listing object and API calls to interact with it.
+
+## Vehicle status listing object
 
 ```json
 {

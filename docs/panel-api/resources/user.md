@@ -5,9 +5,9 @@ description: API calls on work with users in the admin panel.
 
 # User
 
-API calls on work with users in the admin panel.
-
 API path: `panel/user`.
+
+API calls on work with users in the admin panel.
 
 ## User object structure
 
@@ -245,7 +245,7 @@ entities will be returned only if filter string is contained within one of the f
 | offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
 | hide_inactive | Optional. If `true` only activated users will be returned. Default is `false`. |  boolean |
 | format | Optional. Format of exported list. Can be `xlsx` or `csv`. Default is `xlsx`.  | string |
-| columns | Optional. A list of columns to export. Default is `["id", "login", "first_name", "middle_name", "last_name", "phone"]` | string array |
+| columns | Optional. A list of columns to export. Default is `["id", "login", "first_name", "middle_name", "last_name", "phone"]`. | string array |
 
 About user object structure see [above](#user-object-structure).
 
@@ -566,7 +566,7 @@ New balance (bonus) must be not negative.
 #### errors
 
 * 201 – Not found in the database – if user not found or not owned by a current dealer.
-* 251 – Insufficient funds(403) – if user have not enough funds to withdraw passed (negative) amount.
+* 251 – Insufficient funds (403) – if user have not enough funds to withdraw passed (negative) amount.
 
 ### transaction/list
 

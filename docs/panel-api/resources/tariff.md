@@ -5,9 +5,9 @@ description: API calls for interaction with tariff plans.
 
 # Tariff
 
-API calls for interaction with tariff plans.
+API path: `panel/tariff`.
 
-API path: `panel/tariff`
+API calls for interaction with tariff plans.
 
 ## Tariff object
 

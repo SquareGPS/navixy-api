@@ -1,11 +1,13 @@
 ---
-title: Vehicle service task file
-description: Vehicle service task file
+title: Service task file
+description: Service task file creation API call.
 ---
 
 # Vehicle service task file
 
 API path: `/vehicle/service_task/file`.
+
+Contains call for creation the service task file.
 
 ### create
 

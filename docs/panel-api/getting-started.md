@@ -48,13 +48,13 @@ For example, in on-premise installations, there is a default user with login
 === "POST"
     ```abap
     $ curl -d 'login=admin&password=admin' \
-           -X POST http://api.domain.com/panel/account/auth/
+           -X POST http://api.domain.com/v2/panel/account/auth/
     ```
 
 === "GET"
     This method is not recommended. Just for example:
     ```abap
-    $ curl http://api.domain.com/panel/account/auth/?login=admin&password=admin
+    $ curl http://api.domain.com/panel/v2/account/auth/?login=admin&password=admin
     ```
 
 
@@ -105,7 +105,7 @@ For example, to list first ten users belonging to your system account,
 you can use the following Panel API call (the hash is from previous example):
 
 ```abap
-$ curl -X POST 'http://api.domain.com/panel/user/list/' \
+$ curl -X POST 'http://api.domain.com/v2/panel/user/list/' \
        -d 'hash=1dc2b813769d846c2c15030884948117&limit=10'
 ```
 

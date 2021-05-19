@@ -1,10 +1,13 @@
 ---
 title: Group
-description: Group
+description: Contains group object structure and API calls to interact with them. 
 ---
 # Group
 
-Tracker group used to organize trackers in user interface. Currently, its function is purely visual.
+API base path: `/tracker/group`.
+
+Contains group object structure and API calls to interact with them. Tracker group used to organize trackers in user 
+interface. Currently, its function is purely visual.
 
 ## Group object structure:
 
@@ -20,10 +23,6 @@ Tracker group used to organize trackers in user interface. Currently, its functi
 * `title` - string. User-specified group title, 1 to 60 printable characters, e.g. "Employees".
 * `color` - string. Group color in web format (without #), e.g. "FF6DDC". Determines the color of tracker markers on the map.
 
-## API actions
-
-API base path: `/tracker/group`
-
 ### assign
 
 Assigns multiple trackers to the specified group.
@@ -37,14 +36,14 @@ Assigns multiple trackers to the specified group.
 | id | Group id, or 0 if trackers should be removed from any group. | int | 167 |
 | trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
 
-#### examples
+#### example
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/group/assign' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999199, 991999]", "id": 167}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999199, 991999], "id": 167}'
     ```
 
 #### response
@@ -55,8 +54,8 @@ Assigns multiple trackers to the specified group.
 
 #### errors
 
-* 201 (Not found in the database) – if no group found with the specified id (or group belongs to another user).
-* 217 (List contains nonexistent entities) – if one or more of tracker ids belong to nonexistent tracker 
+* 201 - Not found in the database – if no group found with the specified id (or group belongs to another user).
+* 217 - List contains nonexistent entities – if one or more of tracker ids belong to nonexistent tracker 
 (or to a tracker belonging to different user).
 
 ### create
@@ -140,7 +139,7 @@ assigned to default group (0).
 
 #### errors
 
-* 201 (Not found in the database) – if no group found with the specified id (or group belongs to another user).
+* 201 - Not found in the database – if no group found with the specified id (or group belongs to another user).
 
 ### list
 
@@ -220,4 +219,4 @@ Updates specified tracker group. Group must belong to the authorized user.
 
 #### errors
 
-* 201 (Not found in the database) – if no group found with the specified id (or group belongs to another user).
+* 201 - Not found in the database – if no group found with the specified id (or group belongs to another user).

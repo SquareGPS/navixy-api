@@ -1,23 +1,44 @@
 ---
 title: Listing
-description: Listing
+description: Contains status listing object and API calls to interact with status listings.
 ---
 
 # Listing
 
-API base path: `/status/listing/`
+API base path: `/status/listing/`.
+
+Contains status listing object and API calls to interact with status listings.. Status listings are lists of possible statuses that can be assigned 
+to trackers.
+
+## Status listing object structure
+
+```json
+{
+    "id": 1,
+    "label": "Taxi driver statuses",
+    "employee_controlled": true,
+    "supervisor_controlled": false,
+    "entries": [ 5, 2, 1, 4, 6]
+}
+```
+
+* `id` - int. A unique identifier of this status listing. Read-only.
+* `label` - string. Human-readable label for the status listing.
+* `employee_controlled` - boolean. If `true` employees can change their own status, e.g. using mobile tracking app.
+* `supervisor_controlled` - boolean. If `true` supervisors can change status, e.g. using mobile monitoring app.
+* `entries` - int array. List of IDs of statuses which belong to this listing. Order matters, and is preserved.
 
 ### create
 
 Creates new empty status listing.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
 | name | description | type|
 | :------ | :------ | :----- |
-| listing | [status_listing](../../status/index.md#status-listing-object-structure) object without "id" and "entries" fields. | JSON object |
+| listing | [status_listing](../../status/listing/index.md#status-listing-object-structure) object without "id" and "entries" fields. | JSON object |
 
 #### examples
 
@@ -42,15 +63,15 @@ Creates new empty status listing.
 
 #### errors
 
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
-* 268 (Over quota) – if the user's quota for listings exceeded.
+* 268 Over quota – if the user's quota for listings exceeded.
 
 ### delete
 
 Deletes status listing.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -82,13 +103,17 @@ Deletes status listing.
 
 #### errors
 
-* 201 (Not found in the database) – if listing with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
+* 201 - Not found in the database – if listing with the specified ID does not exist.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
 
 ### list
 
 Gets status listings belonging to authorized user.
+
+#### parameters
+
+Only session `hash`.
 
 #### examples
 
@@ -121,18 +146,18 @@ Gets status listings belonging to authorized user.
 }
 ```
 
-* `list` - ordered array of [status_listing](../../status/index.md#status-listing-object-structure) objects.
+* `list` - ordered array of [status_listing](../../status/listing/index.md#status-listing-object-structure) objects.
 
 #### errors
 
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
 
 ### update
 
 Updates status listing properties.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 `entries` field allows changing order of statuses attached to this listing.
 
@@ -140,7 +165,7 @@ Updates status listing properties.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| listing | [status_listing](../../status/index.md#status-listing-object-structure) object with "id" and "entries" fields. | JSON object |
+| listing | [status_listing](../../status/listing/index.md#status-listing-object-structure) object with "id" and "entries" fields. | JSON object |
 
 #### examples
 
@@ -160,8 +185,8 @@ Updates status listing properties.
 
 #### errors
 
-* 201 (Not found in the database) – if status listing with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature
+* 201 - Not found in the database – if status listing with the specified ID does not exist.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature
  available.
-* 262 (Entries list is missing some entries or contains nonexistent entries) – if entries does not contain full set of
+* 262 - Entries list is missing some entries or contains nonexistent entries – if entries does not contain full set of
  status IDs associated with this status listing, or if it contains nonexistent status IDs.

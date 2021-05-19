@@ -5,9 +5,9 @@ description: API calls to interact with trackers in the admin panel.
 
 # Tracker
 
-API calls to interact with trackers in the admin panel.
-
 API path: `panel/tracker`.
+
+API calls to interact with trackers in the admin panel.
 
 ## Tracker object
 
@@ -137,7 +137,7 @@ Assign bundle to specified ICCID.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/assign' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": 78974217758}'
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": "78974217758"}'
     ```
 
 === "HTTP GET"
@@ -173,8 +173,8 @@ Assigns bundle to specified order ID.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| bundle_id |	Id of a bundle. | int |
-| order_id |	Id of a bundle. Nullable. | int |
+| bundle_id | Id of a bundle. | int |
+| order_id | Id of a bundle. Nullable. | int |
 
 #### examples
 
@@ -603,7 +603,7 @@ response will contain a description of the reasons why the deletion failed.
 | success | Action's execution status.  | boolean |
 | deleted_count | Number of successfully deleted clones from `trackers`. | int |
 | not_deleted_count | Number of not deleted clones. | int |
-| not_deleted_trackers | Optional. Description of failed deletion operations. `{"id": integer, "error": string}` | array of objects |
+| not_deleted_trackers | Optional. Description of failed deletion operations. `{"id": integer, "error": string}`. | array of objects |
 
 Example:
 
@@ -1162,8 +1162,8 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 
 | name | description | type|
 | :------ | :------ | :----- |
-| device_id | Fixed device ID, e.g. IMEI | string |
-| command | Text or hexadecimal representation of the command | string |
+| device_id | Fixed device ID, e.g. IMEI. | string |
+| command | Text or hexadecimal representation of the command. | string |
 | type | Optional. Default is `text` . Can be "text" or "hex". | string |
 | reliable | Optional. default is `true`. If `false` the command doesn't need to be resent when the device is disconnected or if no acknowledgment is received. | boolean |
 
@@ -1174,7 +1174,7 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
     ```shell
     curl -X POST '{{ extra.api_example_url }}panel/tracker/raw_command/send' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": 889654248978, "command": "setparam 101:4"}'
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": "889654248978", "command": "setparam 101:4"}'
     ```
 
 #### response

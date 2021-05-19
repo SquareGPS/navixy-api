@@ -5,9 +5,9 @@ description: API call to update dealer's password.
 
 # Password
 
-API call to update dealer's password.
+API base path: `panel/dealer/password`.
 
-API base path: `panel/dealer/password`
+API call to update dealer's password.
 
 ### update
 

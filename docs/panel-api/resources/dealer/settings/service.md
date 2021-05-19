@@ -5,9 +5,9 @@ description: API calls to read and update panel's service settings.
 
 # Service
 
-API calls to read and update panel's service settings.
-
 API path: `panel/dealer/settings/service`.
+
+API calls to read and update panel's service settings.
 
 ## Service settings object
 

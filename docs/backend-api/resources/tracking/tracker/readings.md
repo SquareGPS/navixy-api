@@ -1,14 +1,16 @@
 ---
 title: Sensor readings
-description: Sensor readings
+description: API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel.
 ---
 # Sensor readings
 
-API base path: `/tracker/readings`
+API base path: `/tracker/readings`.
+
+API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel.
 
 ### list
 
-Gets last values for all metering sensors and state values. Includes CAN, OBD, and fuel.
+Gets last values for all metering sensors and state values.
 
 #### parameters
 
@@ -62,6 +64,6 @@ Gets last values for all metering sensors and state values. Includes CAN, OBD, a
 
 #### errors
 
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
