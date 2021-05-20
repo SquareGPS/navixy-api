@@ -210,7 +210,7 @@ or
 
 ### get_diagnostics
 
-Gets last sensors and states values received from the device.
+Gets last CAN and OBD sensors and states values received from the device.
 
 #### parameters
 
@@ -239,34 +239,32 @@ Gets last sensors and states values received from the device.
 ```json
 {
   "success": true,
-  "user_time": "2014-07-09 07:50:58",
-  "inputs": [
-    {
-      "label": "Sensor #1",
-      "name": "can_fuel",
-      "type": "fuel",
-      "value": 100.0,
-      "units_type": "litre",
-      "units": "litres",
-      "converted_units_type": null,
-      "converted_value": null
-    }
-  ],
+  "user_time": "2021-05-20 13:49:09",
+  "inputs": [{
+    "label":"OBD: RPM",
+    "units":"", 
+    "name":"obd_rpm",
+    "type":"rpm",
+    "value":889.0,
+    "units_type":"custom",
+    "converted_units_type":null,
+    "converted_value":null
+  }],
   "states": {
     "obd_vin": "123",
     "obd_mil_status": "false"
   },
-  "update_time": "2014-03-06 13:57:00"
+  "update_time": "2021-05-20 13:48:02"
 }
 ```
 
 * `user_time` - [date/time](../../../getting-started.md#data-types). Current time in user's timezone.
 * `inputs` - list of `sensor value` objects.
     * `label` - string. Sensor's label. E.g. "Sensor #1".
-    * `name` - [enum](../../../getting-started.md#data-types). Name of sensor's raw input. E.g. "can_fuel" (see below list of values).
-    * `type` - [enum](../../../getting-started.md#data-types). Type of quantity, measured by a sensor. E.g. "fuel".
+    * `name` - [enum](../../../getting-started.md#data-types). Name of sensor's raw input.
+    * `type` - [enum](../../../getting-started.md#data-types). Type of quantity, measured by a sensor.
     * `value` - float. Reading's value, measured in units from an eponymous field. E.g. 100.0.
-    * `units_type` - [enum](../../../getting-started.md#data-types). Unit of measurement of input to the sensor. E.g."litre".
+    * `units_type` - [enum](../../../getting-started.md#data-types). Unit of measurement of input to the sensor.
     * `units` - string. User label for sensor's units.
     * `converted_units_type` - [enum](../../../getting-started.md#data-types). Unit of measurement system preferred by current user
         (according to user/settings), suitable for this sensor. Can be null, if there is no need in 
@@ -278,17 +276,6 @@ Gets last sensors and states values received from the device.
 
 List of available sensor's input names for the object `sensor value`:
 
-* **composite**.
-* **input_status**.
-* **analog_x** (range for x: [1 – 8]).
-* **freq_x** (range for x: [1 – 8]).
-* **impulse_counter_x** (range for x: [1 – 8]).
-* **fuel_level**.
-* **fuel_frequency**.
-* **fuel_temperature**.
-* **lls_temperature_x** (range for x: [1 – 16]).
-* **lls_level_x** (range for x: [1 – 16]).
-* **fuel_consumption**.
 * **obd_consumption**.
 * **obd_rpm**.
 * **obd_fuel**.
@@ -301,16 +288,10 @@ List of available sensor's input names for the object `sensor value`:
 * **obd_control_module_voltage** (in volts).
 * **obd_time_since_engine_start** (run time since engine start in seconds).
 * **obd_mil_run_time** (in minutes).
-* **rs232_x** (range for x: [1 – 6]).
-* **board_voltage**.
 * **can_engine_temp**.
 * **can_engine_hours**.
 * **can_mileage**.
 * **can_throttle**.
-* **can_fuel** (fuel level in percents or in unknown units).
-* **can_fuel_2** (fuel level in percents or in unknown units).
-* **can_fuel_litres** (fuel level in litres).
-* **can_fuel_economy** (fuel economy in km/litres).
 * **can_consumption**.
 * **can_rpm**.
 * **can_speed**.
@@ -322,8 +303,6 @@ List of available sensor's input names for the object `sensor value`:
 * **can_fuel_rate** (instant fuel consumption liter/hour).
 * **raw_can_x** (range for x: [1 – 16]).
 * **can_axle_load_x** (range for x: [1 – 15]).
-* **temp_sensor**.
-* **ext_temp_sensor_x** (range for x: [1 – 10]).
 
 List of state names for the field `states`:
 
@@ -391,7 +370,7 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
 ```json
 {
     "success": true,
-    "user_time": "2014-07-09 07:50:58",
+    "user_time": "2021-05-20 13:49:09",
     "inputs": [{
       "label": "Sensor #1",
       "name": "can_fuel",
@@ -402,13 +381,25 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
       "converted_units_type": null,
       "converted_value": null
     }],
-    "update_time": "2014-03-06 13:57:00"
+    "update_time": "2021-05-20 13:48:02"
 }
 ```
 
 * `user_time` - [date/time](../../../getting-started.md#data-types). Current time in user's timezone.
-* `inputs` - array of last readings of fuel-related sensors. Items are objects of the same type as used in 
-[tracker/get_diagnostics](#get_diagnostics).
+* `inputs` - array of last readings of fuel-related sensors. Items are object listed below. 
+  
+List of available sensor's input names for the object `sensor value`:
+
+* **fuel_level**.
+* **fuel_frequency**.
+* **lls_level_x** (range for x: [1 – 16]).
+* **fuel_consumption**.
+* **rs232_x** (range for x: [1 – 6]).
+* **can_fuel** (fuel level in percents or in unknown units).
+* **can_fuel_2** (fuel level in percents or in unknown units).
+* **can_fuel_litres** (fuel level in litres).
+* **can_fuel_economy** (fuel economy in km/litres).
+
 * `update_time` - [date/time](../../../getting-started.md#data-types). Date and time when the data updated.
 
 #### errors
@@ -448,7 +439,7 @@ bound to them (if any).
 ```json
 {
     "success": true,
-    "user_time": "2014-07-09 07:50:58",
+    "user_time": "2021-05-20 13:49:09",
     "inputs": [true, true, false],
     "states": [
         {
@@ -458,7 +449,7 @@ bound to them (if any).
             "input_number": 1
         }
     ],
-    "update_time": "2014-03-06 13:57:00"
+    "update_time": "2021-05-20 13:48:02"
 }
 ```
 
@@ -588,23 +579,50 @@ Gets last sensor values for sensors that are:
 
 ```json
 {
-    "success": true,
-    "user_time": "2014-07-09 07:50:58",
-    "inputs": [{
-      "label": "Sensor #1",
-      "name": "can_fuel",
-      "type": "fuel",
-      "value": 100.0,
-      "units_type": "litre",
-      "units": "litres",
-      "converted_units_type": null,
-      "converted_value": null
-    }]
+  "success":true,
+  "user_time":"2021-05-20 13:49:09",
+  "inputs":[{
+    "label":"Board voltage",
+    "units":"V",
+    "name":"board_voltage",
+    "type":"power",
+    "value":13.562,
+    "units_type":"custom",
+    "converted_units_type":null,
+    "converted_value":null
+  }],
+  "update_time":"2021-05-20 13:48:02"
 }
 ```
 
 * `user_time` - [date/time](../../../getting-started.md#data-types). Current time in user's timezone.
-* `inputs` - list of `sensor value` objects. See [tracker/get_diagnostics](#get_diagnostics).
+* `inputs` - list of `sensor value` objects. See below.
+  * `label` - string. Sensor's label. E.g. "Sensor #1".
+  * `name` - [enum](../../../getting-started.md#data-types). Name of sensor's raw input.
+  * `type` - [enum](../../../getting-started.md#data-types). Type of quantity, measured by a sensor.
+  * `value` - float. Reading's value, measured in units from an eponymous field. E.g. 100.0.
+  * `units_type` - [enum](../../../getting-started.md#data-types). Unit of measurement of input to the sensor.
+  * `units` - string. User label for sensor's units.
+  * `converted_units_type` - [enum](../../../getting-started.md#data-types). Unit of measurement system preferred by current user
+    (according to user/settings), suitable for this sensor. Can be null, if there is no need in
+    conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
+  * `converted_value` - float. Reading's value in units from field `converted_units_type`.
+    Can be null if there is no need in conversion.
+* `update_time` - [date/time](../../../getting-started.md#data-types). Date and time when the data updated.
+
+List of available sensor's input names for the object `sensor value`:
+
+* **composite**.
+* **input_status**.
+* **analog_x** (range for x: [1 – 8]).
+* **freq_x** (range for x: [1 – 8]).
+* **impulse_counter_x** (range for x: [1 – 8]).
+* **fuel_temperature**.
+* **lls_temperature_x** (range for x: [1 – 16]).
+* **rs232_x** (range for x: [1 – 6]).
+* **board_voltage**.
+* **temp_sensor**.
+* **ext_temp_sensor_x** (range for x: [1 – 10]).
 
 #### errors
 
