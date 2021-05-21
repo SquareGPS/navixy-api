@@ -313,4 +313,4 @@ Copy sensors
 #### errors
 
 * 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 400 – Trackers must have same models (if base tracker and one of target trackers has a different model).
+* 272 – Trackers must have same models (if base tracker and one of target trackers has a different model).
