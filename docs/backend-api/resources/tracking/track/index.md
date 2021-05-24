@@ -262,7 +262,8 @@ Gets track points for the specified track ID, tracker and time period.
             "speed": 70,
             "precision": 100,
             "gsm_lbs": true,
-            "parking": true
+            "parking": true,
+            "buffered": true
         }
     ]
 }
@@ -280,6 +281,7 @@ Gets track points for the specified track ID, tracker and time period.
 * `precision` - optional int. Precision in meters.
 * `gsm_lbs` - optional boolean. `true` if location detected by GSM LBS.
 * `parking` - optional boolean. `true` if point does not belong to track.
+* `buffered` - optional boolean. `true` if point was saved in device memory and transferred to server later.
 
 #### errors
 
