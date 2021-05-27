@@ -4,9 +4,13 @@ description: API call to get last values for all metering sensors and state valu
 ---
 # Sensor readings
 
-API base path: `/tracker/readings`.
-
 API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/readings`.
 
 ### list
 

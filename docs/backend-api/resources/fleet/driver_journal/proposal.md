@@ -5,10 +5,14 @@ description: Contains API call to get the list of driver journal proposal.
 
 # Driver journal proposal
 
-API path: `/driver/journal/proposal`.
-
 Contains API call to get the list of driver journal proposal. Proposal objects - trips per specified period that could be
 used for driver journal entry creation.
+
+<hr>
+
+## API actions
+
+API path: `/driver/journal/proposal`.
 
 ### list
 

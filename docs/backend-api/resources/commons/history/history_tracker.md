@@ -5,9 +5,13 @@ description: Contains list method to get tracker history.
 
 # Tracker history
 
-API path: `/history/tracker/`.
-
 Contains list method to get tracker history.
+
+<hr>
+
+## API actions
+
+API path: `/history/tracker/`.
 
 ### list
 

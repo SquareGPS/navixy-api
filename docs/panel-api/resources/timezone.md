@@ -5,9 +5,13 @@ description: API call to get information about all supported timezones for the s
 
 # Timezone
 
-API path: `panel/timezone`.
-
 API call to get information about all supported timezones for the specified locale.
+
+<hr>
+
+## API actions
+
+API path: `panel/timezone`.
 
 ### list
 

@@ -5,13 +5,13 @@ description: This document contains zone object description and CRUD actions for
 
 # Working with zones
 
-API base path: `/zone`.
-
 Zones used in rules to limit rule area of activity. Also, zone names shown in reports after the address, if 
 an event happened inside the zone.
 
 This document describes CRUD actions for zones. Note that zone points handled separately because they are 
 represented by big arrays of data.
+
+<hr>
 
 ## Entity description
 
@@ -43,6 +43,8 @@ represented by big arrays of data.
 * `center` - location object. Location of circle center.
 * `tags` - int array. Array of tag IDs.
 
+<hr>
+
 #### polygon:
 
 ```json
@@ -61,6 +63,8 @@ represented by big arrays of data.
 * `address` - string. Zone address.
 * `color` - string. Zone color in 3-byte RGB hex format.
 * `tags` - int array. Array of tag IDs.
+
+<hr>
 
 #### sausage:
 
@@ -84,6 +88,12 @@ Represents all points within certain distance to the specified polyline.
 * `color` - string. Zone color in 3-byte RGB hex format.
 * `radius` - int. Polyline radius in meters.
 * `tags` - int array. Array of tag IDs.                 
+
+<hr>
+
+## API actions
+
+API base path: `/zone`.
 
 ### batch_convert
 
@@ -182,6 +192,8 @@ For `batch` parameter:
 
 * 234 - Invalid data format.
 
+<hr>
+
 ### create
 
 Creates a new zone.
@@ -225,6 +237,8 @@ Creates a new zone.
  it (e.g. if zone is circle).
 * 268 - Over quota –  if the user's quota for zones exceeded.
 
+<hr>
+
 ### delete
 
 Deletes user's zone by `zone_id` or array of `zone_ids`.
@@ -267,8 +281,6 @@ Deletes user's zone by `zone_id` or array of `zone_ids`.
 * 201 - Not found in the database.
 * 203 - Delete entity associated with.
 
-#### response
-
 ```json
 {
     "success": false,
@@ -286,6 +298,8 @@ Deletes user's zone by `zone_id` or array of `zone_ids`.
 ```
 
 * `ids` - int array. List IDs of the rules which uses the specified zone.
+
+<hr>
 
 ### list
 
@@ -326,6 +340,8 @@ Gets all user zones.
 
 * `list` - array of objects. Zone objects without points field.
 
+<hr>
+
 ### update
 
 Update zone parameters for the specified zone. Note that zone must exist, must belong to the current user, and its 
@@ -363,6 +379,7 @@ which type is "polygon".
 * 231 - Entity type mismatch – if type of the submitted zone differs from type of the zone currently stored in the 
 database.
 
+<hr>
 
 ### upload
 
@@ -439,6 +456,8 @@ if `dry_run=false`:
 * 234 - Invalid data format.
 * 268 - Over quota – if the user's quota for zones exceeded.
 
+<hr>
+
 From `Placemark` with `Point` geometry will be created circle geofence with a radius=default_radius.
 
 ```xml
@@ -457,6 +476,8 @@ From `Placemark` with `Point` geometry will be created circle geofence with a ra
     </Document>
 </kml>
 ```
+
+<hr>
 
 From `Placemark` with `LineString` geometry will be created route geofence with a radius=default_radius.
 
@@ -478,6 +499,8 @@ From `Placemark` with `LineString` geometry will be created route geofence with 
     </Document>
 </kml>
 ```
+
+<hr>
 
 From `Placemark` with `Polygon` geometry will be created polygon geofence.
 Polygons with holes not supported. In that case only the outer boundary will be imported and the inner boundary, holes, 
@@ -507,6 +530,8 @@ ignored.
     </Document>
 </kml>
 ```
+
+<hr>
 
 From `Placemark` with `MultiGeometry` geometry will be created several geofences.
 If `Placemark.name` defined it will be used as geofence name with respect of hierarchy of `Folder` and `Document`.

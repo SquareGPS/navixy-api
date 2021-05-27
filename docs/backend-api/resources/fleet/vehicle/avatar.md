@@ -5,9 +5,13 @@ description: API calls to upload and assign avatar to the vehicle.
 
 # Vehicle avatar
 
-API path: `/vehicle/avatar`.
-
 API calls to upload and assign avatar to the vehicle.
+
+<hr>
+
+## API actions
+
+API path: `/vehicle/avatar`.
 
 ### assign
 
@@ -49,6 +53,8 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 ##### errors
 
 * 201 – Not found in the database - when vehicle with `vehicle_id` not found.
+
+<hr>
 
 ### upload
 

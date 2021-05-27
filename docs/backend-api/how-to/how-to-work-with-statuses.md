@@ -9,6 +9,8 @@ Statuses are used to track current employee activity (in fact, of tracking devic
 The simplest example is "busy" | "not busy". This is a status listing consisting of two elements (statuses). Different
 trackers can be assigned different status lists.
 
+<hr>
+
 ## Create
 
 We need to create a status listing that we will assign to the device. Based on the statuses that are created for the sheet
@@ -62,6 +64,8 @@ The response will contain id of a new status:
     "id": 1
 }
 ```
+
+<hr>
 
 ## Assign
 

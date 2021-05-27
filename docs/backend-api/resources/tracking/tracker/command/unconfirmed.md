@@ -1,9 +1,15 @@
 ---
 title: Unconfirmed commands
-description: Unconfirmed commands
+description: API calls for to interact with unconfirmed SMS commands in the queue of the specified tracker.
 ---
 
 # Unconfirmed commands
+
+API calls for to interact with unconfirmed SMS commands in the queue of the specified tracker.
+
+<hr>
+
+## API actions
 
 API path: `/tracker/command/unconfirmed`.
 
@@ -46,14 +52,16 @@ Gets number of commands in queue for the specified tracker.
 
 #### errors
 
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+<hr>
 
 ### reset
 
 Removes all pending SMS commands from the queue for the specified tracker.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -84,5 +92,6 @@ Removes all pending SMS commands from the queue for the specified tracker.
 ```
 
 #### errors
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.

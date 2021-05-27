@@ -4,9 +4,9 @@ description: Contains tracker retranslator binding object and API calls to bind/
 ---
 # Retranslator
 
-API base path: `/tracker/retranslator`.
-
 Contains tracker retranslator binding object and API calls to bind/unbind it to tracker or get already binded one.
+
+<hr>
 
 ## Tracker retranslator binding object
 
@@ -19,6 +19,12 @@ Contains tracker retranslator binding object and API calls to bind/unbind it to 
 
 * `retranslator_id` - int. An id of the retranslator.
 * `fake_device_id` - string. Optional. If this field is set retranslator use it instead of real device id to forward data.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/retranslator`.
 
 ### bind
 
@@ -63,6 +69,8 @@ Creates or updates binding.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "retranslation" tariff feature available.
 * 242 - There were errors during content validation – if `fake_device_id` is invalid for the protocol.
 
+<hr>
+
 ### list
 
 List tracker retranslators bound to tracker with ID=`tracker_id`.
@@ -104,6 +112,8 @@ List tracker retranslators bound to tracker with ID=`tracker_id`.
 #### errors
 
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
+
+<hr>
 
 ### unbind
 

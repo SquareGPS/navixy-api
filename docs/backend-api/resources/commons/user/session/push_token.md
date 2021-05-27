@@ -5,9 +5,13 @@ description: Contains API calls to interact with push token.
 
 # Push token
 
-API path: `/user/session/push_token`.
-
 Contains API calls to interact with push token.
+
+<hr>
+
+## API actions
+
+API path: `/user/session/push_token`.
 
 ### bind
 
@@ -53,6 +57,12 @@ Prepended with minus and delimited with comma list means that all categories all
 * `history_info` – service information.
 * `history_service_task` – service task notifications.
 * `history_work_status` – work status notifications.
+
+#### errors
+
+* [General](../../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### delete
 

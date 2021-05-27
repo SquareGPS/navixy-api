@@ -5,9 +5,13 @@ description: Contains API call to get dealer info and dealer-specific UI setting
 
 # Dealer
 
-API path: `/dealer`.
-
 Contains API call to get dealer info and dealer-specific UI settings.
+
+<hr>
+
+## API actions
+
+API path: `/dealer`.
 
 ### get_ui_config
 

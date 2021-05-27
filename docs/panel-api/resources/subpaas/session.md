@@ -5,9 +5,13 @@ description: API call to create a subpaas session.
 
 # Subpaas session key
 
-API base path: `panel/subpaas/session`.
-
 API call to create a subpaas's session key.
+
+<hr>
+
+## API actions
+
+API base path: `panel/subpaas/session`.
 
 ### create
 

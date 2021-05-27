@@ -5,9 +5,13 @@ description: API calls to get delivery states and tasks by ids.
 
 # Delivery info
 
-API base path: `/delivery`.
-
 API calls to get delivery states and tasks by ids.
+
+<hr>
+
+## API actions
+
+API base path: `/delivery`.
 
 ### read
 
@@ -75,6 +79,8 @@ object structure.
 #### errors
 
 * 201 – Not found in the database - when there is no task or checkpoint with specified conditions.
+
+<hr>
 
 ### list
 

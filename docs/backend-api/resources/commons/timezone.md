@@ -5,9 +5,13 @@ description: Contains an API call to get information about all supported timezon
 
 # Timezone
 
-API path: `/timezone`.
-
 Contains an API call to get information about all supported timezones.
+
+<hr>
+
+## API actions
+
+API path: `/timezone`.
 
 ### list
 

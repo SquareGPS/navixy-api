@@ -5,10 +5,14 @@ description: Contains API call to get the last waybill number.
 
 # Waybill settings
 
-API base path: `track/waybill/settings/`.
-
 Contains API call to get the last waybill number. Waybill number saved when new waybill had downloaded. If it had only digits, 
 then it was incremented before saving.
+
+<hr>
+
+## API actions
+
+API base path: `track/waybill/settings/`.
 
 ### read
 

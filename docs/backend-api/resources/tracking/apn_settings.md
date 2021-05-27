@@ -5,9 +5,13 @@ description: API call to get APN settings by device's phone number.
 
 # APN settings
 
-API base path: `/apn_settings`.
-
 API call to get APN settings by device's phone number.
+
+<hr>
+
+## API actions
+
+API base path: `/apn_settings`.
 
 ### read
 

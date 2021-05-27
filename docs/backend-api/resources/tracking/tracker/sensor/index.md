@@ -1,18 +1,17 @@
 ---
 title: Sensor actions
-description: Sensor actions
+description: API calls to interact with sensors.
 ---
 
 # Sensor actions
 
-API base path: `/tracker/sensor`
+Contains API calls to interact with sensors.
 
-### sensor
+<hr>
 
-Data types
+## Sensor sub-types:
 
-Sensor sub-types:
-Metering sensor
+### Metering sensor
 
 ```json
 {
@@ -54,7 +53,9 @@ Metering sensor
     * `max_lowering_by_time` - optional. Double. Max legal value lowering per hour.
     * `max_lowering_by_mileage` - optional. Double. Max legal value lowering per 100 km.
 
-Discrete input
+<hr>
+
+### Discrete input
 
 ```json
 {
@@ -71,6 +72,12 @@ Discrete input
 * `name` - string.
 * `input_number` - int. Assigned input number.
 
+<hr>
+
+## API actions
+
+API base path: `/tracker/sensor`.
+
 ### batch_list
 
 List tracker sensors bound to trackers with specified identificators (parameter `trackers`).
@@ -80,10 +87,12 @@ There exist a similar method for working with a single tracker - [list](#list).
 #### parameters
 | Name | Description | Type |
 | --- | --- | --- |
-| trackers | Set of tracker identificators. Each of the relevant trackers must be accessible to the authorized user and not be blocked. Number of trackers (length of array) is limited to a maximum of 500 (this number may be changed in future). | int arrays |
+| trackers | Set of tracker identificators. Each of the relevant trackers must be accessible to the authorized user and not be blocked. Number of trackers (length of array) is limited to a maximum of 500 (this number may be changed in future). | int array |
 
 #### response
-Contains a map, where keys are IDs from **trackers** parameter and values are lists of [sensor](#sensor) objects.
+
+Contains a map, where keys are IDs from **trackers** parameter and values are lists of [sensor](#sensor-sub-types) objects.
+
 ```json
 {
   "success": true,
@@ -107,21 +116,24 @@ Contains a map, where keys are IDs from **trackers** parameter and values are li
 ```
 
 #### errors
-* 217 (List contains nonexistent entities) -  if one of `trackers` either does not exist or is blocked.
-* 221 (Device limit exceeded) - if too many ids were passed in `trackers` parameter.
+
+* 217 - List contains nonexistent entities -  if one of `trackers` either does not exist or is blocked.
+* 221 - Device limit exceeded - if too many ids were passed in `trackers` parameter.
+
+<hr>
 
 ### create
 
 Creates a sensor.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
 | name | description | type|
 | :------ | :------ | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| sensor | [Sensor object](#sensor). | JSON object |
+| sensor | [Sensor object](#sensor-sub-types). | JSON object |
 
 #### examples
 
@@ -146,17 +158,19 @@ Creates a sensor.
 
 #### errors
 
-* 232 (Input already in use) – if given input number (for discrete input) or input name (for metering sensor) already 
+* 232 - Input already in use – if given input number (for discrete input) or input name (for metering sensor) already 
 in use.
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions, or some other reason.
-* 219 (Not allowed for clones of the device) – if tracker is clone.
-* 270 (Too many sensors of same type) - the number of tracker's sensors, having same `sensor_type` is limited.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
+* 219 - Not allowed for clones of the device – if tracker is clone.
+* 270 - Too many sensors of same type - the number of tracker's sensors, having same `sensor_type` is limited.
+
+<hr>
 
 ### delete
 
 Deletes a sensor with `sensor_id` from the database.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -189,9 +203,11 @@ Deletes a sensor with `sensor_id` from the database.
 
 #### errors
 
-* 201 - Not found in the database (if sensor with a sensor_id is not exists or owned by other user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 219 – Not allowed for clones of the device (if tracker is clone).
+* 201 - Not found in the database - if sensor with a sensor_id is not exists or owned by other user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 – Not allowed for clones of the device - if tracker is clone.
+
+<hr>
 
 ### list
 
@@ -238,33 +254,35 @@ List tracker sensors bound to tracker with specified id (`tracker_id` parameter)
 }
 ```
 
-* `list` - list of sensor objects. See [sensor](#sensor) object description.
+* `list` - list of sensor objects. See [sensor](#sensor-sub-types) object description.
 
 #### errors
 
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions, or some other reason.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
+
+<hr>
 
 ### update
 
 Updates sensor.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
 | name | description | type|
 | :------ | :------ | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| sensor | [Sensor object](#sensor). | JSON object |
+| sensor | [Sensor object](#sensor-sub-types). | JSON object |
 
-#### examples
+#### example
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0, "units": "", "units_type": "celsius"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250, "sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0, "units": "", "units_type": "celsius"}'
     ```
 
 #### response
@@ -275,26 +293,28 @@ Updates sensor.
 
 #### errors
 
-* 201 (Not found in the database) – if sensor not exists or owned by other user.
-* 232 (Input already in use) – if given input number (for discrete input) or input name (for metering sensor) already 
+* 201 - Not found in the database – if sensor not exists or owned by other user.
+* 232 - Input already in use – if given input number (for discrete input) or input name (for metering sensor) already 
 in use.
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions, or some other reason.
-* 219 (Not allowed for clones of the device) – if tracker is clone.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
+* 219 - Not allowed for clones of the device – if tracker is clone.
 
+<hr>
 
 ### batch_copy
 
-Copy sensors
+Copies sensors from one tracker to another.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
 | base_tracker_id | Id of the base tracker (aka "object_id") from which you want to copy sensors. Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| trackers | Id of trackers. Target trackers for copying sensors. | [int] | [12345, 54321] |
+| trackers | Id of trackers. Target trackers for copying sensors. | [int] | `[12345, 54321]` |
 
+#### example
 
 === "cURL"
 
@@ -312,5 +332,5 @@ Copy sensors
 ```
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 272 – Trackers must have same models (if base tracker and one of target trackers has a different model).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 272 – Trackers must have same models - if base tracker and one of target trackers has a different model.

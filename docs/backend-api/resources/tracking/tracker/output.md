@@ -4,9 +4,13 @@ description: API calls for output control.
 ---
 # Output control
 
-API base path: `/tracker/output`.
-
 API calls for output control. Some device models work with `set_all` and some with `set` calls.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/output`.
 
 ### set_all
 
@@ -44,6 +48,8 @@ Request to change the states of all digital outputs of the device. The device mu
 * 214 – Requested operation or parameters are not supported by the device - if device does not support batch mode, or has
  a different number of outputs.
 * 219 – Not allowed for clones of the device - if tracker is clone.
+
+<hr>
 
 ### set
 

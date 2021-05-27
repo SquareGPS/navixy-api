@@ -1,13 +1,17 @@
 ---
 title: User audit
-description: Contains user audit checkin method that calls when user opens UI.
+description: Contains user audit check-in method that calls when user opens UI.
 ---
 
 # User audit
 
-API path: `/user/audit`.
+Contains user audit check-in method that calls when user opens UI.
 
-Contains user audit checkin method that calls when user opens UI.
+<hr>
+
+## API actions
+
+API path: `/user/audit`.
 
 ### checkin
 

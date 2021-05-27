@@ -13,6 +13,8 @@ recommend reading [Backend API: getting started][1].
 
 Two main differences are _authorization system_ and _request paths_.
 
+<hr>
+
 ### Panel API base URL
 
 Panel API resides in `panel/` subsection of API url. So you can determine URL to API calls like this:
@@ -25,6 +27,8 @@ For example, to make `account/auth`
 API call in Navixy ServerMate, you should use the URL: 
 
     {{ extra.api_example_url }}/panel/account/auth
+
+<hr>
 
 ### Authorization
 
@@ -95,6 +99,8 @@ its contents programmatically as it may change in the future.
 
 For more info, please see `account/auth`.
 
+<hr>
+
 ### Using session hash
 
 After successful authorization, you can make other Panel API calls. 
@@ -108,6 +114,8 @@ you can use the following Panel API call (the hash is from previous example):
 $ curl -X POST 'http://api.domain.com/v2/panel/user/list/' \
        -d 'hash=1dc2b813769d846c2c15030884948117&limit=10'
 ```
+
+<hr>
 
 ### Session expiration
 
@@ -128,6 +136,8 @@ get the following error:
 ```
 
 In this case, just obtain new hash using `account/auth`.
+
+<hr>
 
 ### Panel API Permissions
 

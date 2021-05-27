@@ -14,6 +14,8 @@ Forms can be attached to tasks. If form attached to task, this task cannot be co
 * Using web API, it's now possible to only attach/fill forms with tasks (checkin forms are created through 
 Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
 
+<hr>
+
 ## Form object
 
 ```json
@@ -62,6 +64,8 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
 * `submitted` - [date/time](../../../getting-started.md#data-types). Date when form values last submitted.
 * `submit_location` - location at which form values last submitted.
 
+<hr>
+
 ## Form file object
 
 ```json
@@ -90,6 +94,8 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
 * `metadata` - nullable metadata object.
 * `state` - [enum](../../../getting-started.md#data-types). Can be "created" | "in_progress" | "uploaded" | "deleted".
 * `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
+
+<hr>
 
 ## API actions
 
@@ -182,6 +188,8 @@ Gets form by an id.
 #### errors
 
 * 201 – Not found in the database - if there is no form with such an id.
+
+<hr>
 
 ### download
 

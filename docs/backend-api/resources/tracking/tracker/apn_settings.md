@@ -4,10 +4,14 @@ description: Contains API call to get APN settings by tracker ID.
 ---
 # APN settings by tracker ID
 
-API base path: `/tracker/apn_settings`.
-
 This resource contains API call to get APN settings by tracker ID. APN is short of Access Point Name and provides a device 
 with the information needed to connect to wireless service. 
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/apn_settings`.
 
 ### read
 

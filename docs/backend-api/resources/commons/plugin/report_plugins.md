@@ -7,6 +7,8 @@ description: Contains report plugins with plugin-specific parameters.
 
 Contains report plugins with plugin-specific parameters.
 
+<hr>
+
 ### Trips report
 
 A report on detailed trip history.
@@ -28,6 +30,8 @@ Plugin-specific parameters:
 | filter | If `true` short trips will hide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 | group_by_driver | Group trips by driver assigned to the device if `true`. | boolean | 
 
+<hr>
+
 ### Stops report
 
 A report on detailed stops history.
@@ -43,6 +47,8 @@ Plugin-specific parameters:
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
 | show_coordinates | Every address will contain longitude and latitude if `true`. | boolean |
+
+<hr>
 
 ### Trips and stops by shifts report
 
@@ -75,6 +81,8 @@ Plugin-specific parameters:
 }
 ```
 
+<hr>
+
 ### Geofence visits report
 
 A report on date, time, and mileage in geofence.
@@ -94,6 +102,8 @@ Plugin-specific parameters:
 | min_minutes_in_zone | Minimum minutes in a zone to start determining visit. If the device was in a zone less than a specified time - the visit not count. | int |
 | zone_ids | List of zone ids. | int array |
 | hide_charts| If `true`, charts will be hidden. | boolean |
+
+<hr>
 
 ### POI visits report
 
@@ -115,6 +125,8 @@ Plugin-specific parameters:
 | place_ids | List of place ids. | int array |
 | hide_charts| If `true`, charts will be hidden. | boolean |
 
+<hr>
+
 ### Car security report
 
 A report on alarms, tow alerts, AutoControl events, and crashes.
@@ -129,6 +141,8 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
+
+<hr>
 
 ### Emergency button (SOS) report
 
@@ -145,6 +159,8 @@ Plugin-specific parameters:
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
 
+<hr>
+
 ### Fall detection report
 
 A report on fall detection sensor log.
@@ -159,6 +175,8 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
+
+<hr>
 
 ### Tracker detach report
 
@@ -175,6 +193,8 @@ Plugin-specific parameters:
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
 
+<hr>
+
 ### Overall security report
 
 A report on all events related to security and safety.
@@ -190,6 +210,8 @@ Plugin-specific parameters:
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
 | group_by_type | If `true` events will group by type. | boolean |
+
+<hr>
 
 ### Engine hours report
 
@@ -208,6 +230,8 @@ Plugin-specific parameters:
 | show_detailed | If  `true` will contain detailed engine hours tab. | boolean |
 | include_summary_sheet_only | If `true` the report will contain only a summary sheet for all chosen devices. | boolean |
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
+
+<hr>
 
 ### Fuel volume report
 
@@ -235,6 +259,8 @@ Plugin-specific parameters:
 | speed_filter | If `true` enables speed filter. | boolean |
 | speed_filter_threshold | Defines a speed filter threshold. | int |
 
+<hr>
+
 ### Flow meter report
 
 A report on fuel consumption counted by flow meter sensors.
@@ -250,6 +276,8 @@ Plugin-specific parameters:
 | detailed_by_dates | If `true`, a table with statistics for every single day in selected date range will be added to the report. | boolean |
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 | include_summary_sheet_only | If `true` the report will contain only a summary sheet for all chosen devices. | boolean |
+
+<hr>
 
 ### Vehicle sensors report
 
@@ -280,6 +308,8 @@ Plugin-specific parameters:
 }
 ```
 
+<hr>
+
 ### Speed violation
 
 A report on speeding instances.
@@ -299,6 +329,8 @@ Plugin-specific parameters:
 | group_by_driver | Group violations by driver assigned to the device if `true`. | boolean |
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 
+<hr>
+
 ### Device switching ON/OFF report
 
 A report on switching device using hardware switch.
@@ -314,6 +346,8 @@ Plugin-specific parameters:
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
 
+<hr>
+
 ### GSM connection lost
 
 A report on long disruptions of server connection
@@ -328,6 +362,8 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
+
+<hr>
 
 ### Measuring sensors report
 
@@ -360,6 +396,8 @@ Plugin-specific parameters:
 }
 ```
 
+<hr>
+
 ### Equipment working time
 
 A report on activity and idle time of the equipment.
@@ -388,6 +426,8 @@ default **plugin_id**: 12.
 }
 ```
 
+<hr>
+
 ### Tasks report
 
 A report on tasks statuses.
@@ -405,6 +445,8 @@ default **plugin_id**: 42.
 | show_forms | Show forms when the task has it if `true`. | boolean |  
 | show_places_and_zones | Show places and geofences if `true`. | boolean |
 
+<hr>
+
 ### Form completion statistics report
 
 A report on form fields completion rate.
@@ -416,6 +458,8 @@ default **plugin_id**: 70.
 | name | description | type |
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
+
+<hr>
 
 ### Work statuses report
 
@@ -429,6 +473,8 @@ default **plugin_id**: 47.
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
+
+<hr>
 
 ### Check-in report
 
@@ -444,6 +490,8 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | show_coordinates | If `true`, coordinates will be added to the report. | boolean |
 
+<hr>
+
 ### Driver shift change report
 
 A report on driver identification.
@@ -458,6 +506,8 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
+
+<hr>
 
 ### Trips by state
 
@@ -476,6 +526,8 @@ Plugin-specific parameters:
 | filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 | include_summary_sheet_only | If `true` the report will contain only a summary sheet for all chosen devices. | boolean |
 | group_type | A group type. Can be "province" or "country". | [enum](../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Report on all events
 
@@ -517,6 +569,8 @@ Plugin-specific parameters:
 }
 ```
 
+<hr>
+
 ### Geofence entry/exit events
 
 A report on ins ad outs of a certain geofence.
@@ -533,6 +587,7 @@ Plugin-specific parameters:
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
 | min_minutes_in_zone | Minimum minutes in a zone to start determining visit. If the device was in a zone less than a specified time - the visit not count. | int |
 
+<hr>
 
 ### SMS-locations report
 
@@ -548,6 +603,8 @@ Plugin-specific parameters:
 | ------ | ------------- | ------ |
 | hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
 | show_seconds | If `true` timestamps will be with seconds. | boolean |
+
+<hr>
 
 ### Eco-driving report
 
@@ -599,6 +656,8 @@ Plugin-specific parameters:
 
 "10", "20", "30", "50" - the number of penalty points assigned for speeding by 10, 20, 30, and 50 km/h.
 
+<hr>
+
 ### Stay in zones report
 
 #### parameters
@@ -612,7 +671,9 @@ plugin-specific parameters:
 | show_seconds | If true, time values in report should have format with seconds. Default is **false**. | boolean
 | show_tags | If true, tags fields will be added to the report. Default is **false**. | boolean
 | min_minutes_in_zone | Minimum time in zone (geofence). Default is **5**. | int, min value 1
-| zone_ids | IDs of user zones, required, min size 1, max size 30 | list of ints |
+| zone_ids | IDs of user zones, required, min size 1, max size 30ю | list of ints |
+
+<hr>
 
 ### Stay in places report
 

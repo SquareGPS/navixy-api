@@ -5,10 +5,10 @@ description: Retranslator
 
 # Retranslator
 
-API path: `/retranslator`.
-
 Retranslarot and retranslator protocol objects and CRUD actions for retranslators. They can be used to redirect the data
 that comes from a device to the platform to some third-party application specified by the user.
+
+<hr>
 
 ## Retranslator protocol object
  
@@ -31,6 +31,8 @@ that comes from a device to the platform to some third-party application specifi
 * `fake_device_id_pattern` - optional string. Regex pattern for `fake_device_id` validation.
 * `required_login` - boolean. `true` if for this protocol login required.
 * `required_password` - boolean. `true` if for this protocol password required.
+
+<hr>
 
 ## Retranslator object
 
@@ -56,7 +58,11 @@ that comes from a device to the platform to some third-party application specifi
 * `password` - optional string.
 * `enabled` - boolean. Status.
 
+<hr>
+
 ## API actions
+
+API path: `/retranslator`.
 
 ### create
 
@@ -97,6 +103,7 @@ Creates new retranslator.
 * 7 - Invalid parameters - if retranslator have required fields (login or password), but was send empty.
 * 268 - Over quota – if the user's quota for retranslators exceeded.
 
+<hr>
 
 ### delete
 
@@ -135,6 +142,8 @@ Deletes user's retranslator with specified `retranslator_id`.
 #### errors
 
 * 201 - Not found in the database.
+
+<hr>
 
 ### list
 
@@ -183,6 +192,8 @@ Get all users' retranslators.
 * `password` - optional string.
 * `enabled` - boolean. Status.
 
+<hr>
+
 ### update
 
 Updates retranslator parameters for the specified retranslator. Note that retranslator must exist, and must belong to 
@@ -216,6 +227,8 @@ the current user.
 
 * 201 - Not found in the database – if retranslator with the specified ID cannot be found or belongs to another user.
 * 247 - Entity already exists – if retranslator with this address, port and login already exists.
+
+<hr>
 
 ### protocols list
 

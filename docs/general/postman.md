@@ -14,6 +14,7 @@ testing to creating and maintaining your own APIs for your own software.
 
 For our purposes we will only review their API client.
 
+<hr>
 
 ## Your first request
 
@@ -28,7 +29,7 @@ This can be especially handy when working with large requests.
     Each API request uses an HTTP method. The most common methods for Navixy API are GET and POST. 
     GET methods retrieve data from an API. POST sends new data to an API.
 
-1. Enter base request URL with the resource and sub-resource. In our example we will
+2. Enter base request URL with the resource and sub-resource. In our example we will
    use [user/auth](../backend-api/resources/commons/user/index.md#auth) and 
    [tracker/list](../backend-api/resources/tracking/tracker/index.md#list) requests. Base request URLs are:
 
@@ -37,7 +38,7 @@ This can be especially handy when working with large requests.
 
     ![Enter URL](./assets/enter-url.png)
 
-1. Click on the Params button, and you will see a table for key and value input: 
+3. Click on the Params button, and you will see a table for key and value input: 
 
     ![Enter params](./assets/postman_params.png)
 
@@ -54,7 +55,7 @@ This can be especially handy when working with large requests.
     
     ![Enter params](./assets/postman_params4.png)
 
-1. Press send, and you will see the reply, already split and highlighted for easier reading 
+4. Press send, and you will see the reply, already split and highlighted for easier reading 
 
     ![Enter params](./assets/postman_body.png)
 
@@ -63,13 +64,16 @@ This can be especially handy when working with large requests.
     Example: [tracker/list request](../backend-api/resources/tracking/tracker/index.md#list)
 
     ![Enter params](./assets/postman_tracker_list.png)
-    
+
+<hr>
 
 ### Working with parameters
 
 If your request has multiple parameters listed - you can easily enable and disable, preventing errors: 
 
 ![Enter params](./assets/postman_params5.gif)
+
+<hr>
 
 ### History of requests
 
@@ -79,6 +83,8 @@ or re-execute the request made in the past - a simple double-click will open a r
 
 ![Enter params](./assets/postman_response.gif)
 
+<hr>
+
 ## Examples in documentation
 
 You could see that our API documentation has both structure of the request and examples. 
@@ -86,6 +92,8 @@ You can copy them and paste in postman.
 In this case all parameters will be automatically separated to strings for more convenient edit.
 
 ![Enter params](./assets/postman_apn.png)
+
+<hr>
 
 ## How to install
 

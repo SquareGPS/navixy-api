@@ -5,9 +5,9 @@ description: API calls to read and update panel's service settings.
 
 # Service
 
-API path: `panel/dealer/settings/service`.
-
 API calls to read and update panel's service settings.
+
+<hr>
 
 ## Service settings object
 
@@ -97,6 +97,12 @@ API calls to read and update panel's service settings.
 * `tos` - string. Terms Of Service text.
 * `no_register_commands` - boolean. If `true` then do not send commands to devices on activation.
 
+<hr>
+
+## API actions
+
+API path: `panel/dealer/settings/service`.
+
 ### read
 
 Gets current monitoring service settings.
@@ -180,6 +186,8 @@ Only session `hash`.
 
 [General](../../../../backend-api/getting-started.md#error-codes) types only.
 
+<hr>
+
 ### update
 
 Updates monitoring service settings for the current dealer. 
@@ -226,8 +234,6 @@ Note: wallpapers, logos and favicons cannot be edited here.
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "service_title": "monitoring service", "locale": "en_US", "demo_login": "demo", "demo_password": "demo", "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"], "default_map": {"type": "osm", "location": {"lat": 33.0, "lng": 22.0}, "zoom": 2}, "currency": "EUR", "payment_link": "http://payme.ru", "promo_url": "http://monitoring.com/about", "google_client_id": "io54p54ijy54", "domain": "track.agent.com", "login_footer": "All rights reserved.", "allow_registration": true, "show_mobile_apps": true, "default_user_settings": {"geocoder": "google", "route_provider": "progorod", "measurement_system": "metric", "translit": false}, "display_model_features_link": false, "limited_domain": false, "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"], "color_theme": "aqua", "app_color_theme": "blue_1", "privacy_policy_link": "http://privacy-policy-url", "tos": "Terms Of Service text", "no_register_commands": false}'
     ```
     
-#### response
-
 #### response
 
 ```json

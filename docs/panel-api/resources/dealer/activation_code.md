@@ -5,9 +5,9 @@ description: API calls for interacting with activation codes used for device reg
 
 # Activation code
 
-API base path: `panel/dealer/activation_code`.
-
 API calls for interacting with activation codes used for device registration.
+
+<hr>
 
 ## Activation code object
 
@@ -34,6 +34,12 @@ API calls for interacting with activation codes used for device registration.
 * `activated` - boolean. If `true` it is activated.
 * `device_id` - int. A device id which activated with this code. It will be `0` if code not activated yet.
 * `tariff_name` - string. Tariff name.
+
+<hr>
+
+## API actions
+
+API base path: `panel/dealer/activation_code`.
 
 ### create
 
@@ -81,6 +87,8 @@ created codes.
 #### errors
 
 * 201 - Not found in the database - when tariff with `tariff_id` not found for a current dealer.
+
+<hr>
 
 ### list
 
@@ -138,6 +146,8 @@ of the following fields: `code`, `tariff_id`, `device_id`, `device_type`.
 
 * `list` - array of objects. List of [activation code objects](#activation-code-object).
 * `count` - int. Total number of records (ignoring offset and limit).
+
+<hr>
 
 ### update
 

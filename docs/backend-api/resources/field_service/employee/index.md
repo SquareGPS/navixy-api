@@ -5,10 +5,10 @@ description: Employee object and API calls to work with. Employees used to repre
 
 # Working with employees
 
-API base path: `/employee`.
-
 Employees used to represent people working at one's organization. They can be linked with other entities such as 
 trackers, vehicles, places, etc.
+
+<hr>
 
 ## Employee object
 
@@ -58,6 +58,12 @@ via [avatar/upload](./avatar.md#upload).
 * `personnel_number` - optional string. Max length is 15.
 * `tags` - int array. List of tag ids.
 
+<hr>
+
+## API actions
+
+API base path: `/employee`.
+
 ### list
 
 Gets all employees belonging to user.
@@ -97,6 +103,8 @@ Only session `hash`.
 
 [General](../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### create
 
 Creates a new employee.
@@ -133,6 +141,8 @@ Creates a new employee.
 #### errors
 
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
+
+<hr>
 
 ### read
 
@@ -197,6 +207,8 @@ Gets employee by its id.
 
 * 201 – Not found in the database - if there is no employee with such an id.
 
+<hr>
+
 ### update
 
 Updates existing employee.
@@ -229,6 +241,8 @@ Updates existing employee.
 
 * 201 – Not found in the database - if there is no employee with such an id.
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
+
+<hr>
 
 ### delete
 
@@ -267,6 +281,8 @@ Deletes an employee with the specified id.
 #### errors
 
 * 201 – Not found in the database - if there is no employee with such an id.
+
+<hr>
 
 ### batch_convert
 

@@ -1,11 +1,13 @@
 ---
 title: Checkpoints
-description: Checkpoints
+description: API actions for manipulating schedule checkpoint entries similarly to regular route checkpoints.
 ---
 
 # Task schedule checkpoints
 
 These actions allow manipulating schedule checkpoint entries similarly to regular route checkpoints.
+
+<hr>
 
 ## API actions
 
@@ -45,6 +47,12 @@ at least two checkpoints.
 { "success": true }
 ```
 
+#### errors
+
+[General](../../../../getting-started.md#error-codes) types only.
+
+<hr>
+
 ### transmute
 
 Transmutes a checkpoint to task and delete its route and other checkpoints in the route.
@@ -76,3 +84,7 @@ Transmutes a checkpoint to task and delete its route and other checkpoints in th
 ```json
 { "success": true }
 ```
+
+#### errors
+
+[General](../../../../getting-started.md#error-codes) types only.

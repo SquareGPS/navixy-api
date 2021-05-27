@@ -1,6 +1,6 @@
 ---
 title: Working with tasks
-description: Working with tasks
+description: API calls to work with tasks
 ---
 
 # Working with tasks
@@ -11,6 +11,8 @@ the task either failed completely or completed with warnings.
 
 If task assigned to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),
 it's available for viewing by app user. User will also receive notifications of newly assigned tasks, task changes, etc.
+
+<hr>
 
 ## Task object
 
@@ -73,6 +75,8 @@ it's available for viewing by app user. User will also receive notifications of 
 * `form` - [form object](../form/index.md#form-object). If present.
 * `form_template_id` - int. An id of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
 * `fields` - optional object. A map, each key of which is a custom field id *as a string*. See [entity/fields](../../commons/entity/fields.md)
+
+<hr>
 
 ## API actions
 

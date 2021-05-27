@@ -7,9 +7,13 @@ description: API call to register a mobile application. Deprecated.
 !!! warning "Deprecated"
     This API action deprecated and should not be used.
 
-API base path: `/tracker/mobile`.
-
 API call to register a mobile application. Use [tracker/register](./index.md#register) with `plugin_id` 35.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/mobile`.
 
 ### register
 

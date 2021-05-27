@@ -1,12 +1,14 @@
 ---
 title: Departments
-description: Departments
+description: API calls to work with departments
 ---
 
 # Departments
 
 Department is essentially just a group of [employees](employee/index.md). They can be assigned to departments by
  specifying non-null `department_id`.
+
+<hr>
 
 ## Department object
 
@@ -29,10 +31,12 @@ Department is essentially just a group of [employees](employee/index.md). They c
     * `address` - string. Address of the location.
     * `radius` - int. Radius of location zone in meters.
 
+<hr>
+
 ## API actions
 
 API base path: `/department`.
-  
+
 ### list
 
 Gets all departments belonging to user.
@@ -76,7 +80,9 @@ Gets all departments belonging to user.
 * 7 – Invalid parameters.
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or 
 doesn't have required tariff features.
-* 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded).
+* 221 – Device limit exceeded - if device limit set for the user’s dealer has been exceeded.
+
+<hr>
 
 ### create
 
@@ -116,7 +122,9 @@ Creates a new department with specified parameters.
 * 7 – Invalid parameters.
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or 
 doesn't have required tariff features.
-* 221 – Device limit exceeded (if device limit set for the user’s dealer has been exceeded).
+* 221 – Device limit exceeded - if device limit set for the user’s dealer has been exceeded.
+
+<hr>
 
 ### update
 
@@ -148,7 +156,9 @@ Updates existing department with a new specified parameters.
 
 #### errors
 
-* 201 – Not found in the database (if there is no department with specified id).
+* 201 – Not found in the database - if there is no department with specified id.
+
+<hr>
 
 ### delete
 
@@ -186,4 +196,4 @@ Deletes department with the specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no department with specified id).
+* 201 – Not found in the database - if there is no department with specified id.

@@ -1,10 +1,17 @@
 ---
-title: Tracker settings actions description: Tracker settings actions
+title: Tracker label and group
+description: API calls to get and change tracker's label and group.
 ---
 
 # Tracker settings actions
 
-API base path: `/tracker/settings`
+Contains API calls to get and change tracker's label and group.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/settings`.
 
 ### read
 
@@ -49,14 +56,16 @@ Gets base settings for the specified tracker.
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+<hr>
 
 ### update
 
 Updates the settings of the specified tracker.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -73,7 +82,7 @@ Updates the settings of the specified tracker.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "group_id": "1", "label": "Courier"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "group_id": 1, "label": "Courier"}'
     ```
 
 === "HTTP GET"
@@ -90,7 +99,7 @@ Updates the settings of the specified tracker.
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 204 – Entity not found (if there is no group with the specified group id).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 204 – Entity not found - if there is no group with the specified group id.
 

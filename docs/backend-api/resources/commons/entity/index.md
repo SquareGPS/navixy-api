@@ -5,11 +5,11 @@ description: Contains entity object description and API calls to interact with i
 
 # Entity actions
 
-API path: `/entity`.
-
 Contains entity object description and API calls to interact with it. <br>
 Entity describes a class of objects for which representation and editable fields can be customized.
 For example, you can add your own custom fields to **places** entity or rearrange existing fields.
+
+<hr>
 
 ## Entity object
 
@@ -51,6 +51,12 @@ Builtin fields:
 * location.
 * tags.
 * description.
+
+<hr>
+
+## API actions
+
+API path: `/entity`.
 
 ### list
 
@@ -105,6 +111,8 @@ Only session `hash`.
 #### errors
 
 * [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### read
 
@@ -174,15 +182,15 @@ Gets entity by the id or by type.
 
 * 201 - Not found in the database – if there is no entity with such ID.
 
+<hr>
+
 ### update(entity)
 
 Updates settings of customizable entity. Entity must have a valid id.
 
 **required sub-user rights**: `places_custom_fields_update` for entities with type `place`.
 
-!!! warning "`entity.settings.layout.sections` must contain ids of all builtin and custom fields which are associated 
-with this entity. No fields can be omitted from layout, only reordering allowed. Fields cannot be duplicated, even 
-in different sections."
+!!! warning "`entity.settings.layout.sections` must contain ids of all builtin and custom fields which are associated with this entity. No fields can be omitted from layout, only reordering allowed. Fields cannot be duplicated, even in different sections."
 
 #### parameters
 

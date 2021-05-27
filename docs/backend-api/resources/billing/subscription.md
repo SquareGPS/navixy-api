@@ -5,13 +5,19 @@ description: API calls to interact with payment subscriptions
 
 # Subscription
 
-API path: `/subscription`.
-
 API calls to interact with payment subscriptions
+
+<hr>
+
+## API actions
+
+API path: `/subscription`.
 
 ### /subscription/avangate/
 
 Working with [2Checkout](https://www.2checkout.com) (formerly [Avangate](http://www.avangate.com)) subscriptions (renewals).
+
+<hr>
 
 ### cancel
 
@@ -52,6 +58,8 @@ Unsubscribe from auto-renewal by reference.
 #### errors
 
 * 215 – External service error.
+
+<hr>
 
 ### list
 
