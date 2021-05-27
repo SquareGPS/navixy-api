@@ -1,15 +1,20 @@
 ---
 title: Engine hours
-description: Engine hours
+description: API call to read engine hours (time when engine is on) counted for the specified period.
 ---
-
 # Engine hours
 
-API base path: `/tracker/stats/engine_hours`
+Contains API call to read engine hours (time when engine is on) counted for the specified period.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/stats/engine_hours`.
 
 ### read
 
-Returns engine hours (time when engine is on) count in specified period.
+Returns engine hours counted for the specified period.
 
 #### parameters
 
@@ -40,8 +45,8 @@ Returns engine hours (time when engine is on) count in specified period.
 
 #### errors
 
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 211 – Requested time span is too big (if interval between "from" and "to" is too big (maximum value specified in API config)).
-* 214 – Requested operation or parameters are not supported by the device (if device does not have ignition input).
-* 219 – Not allowed for clones of the device (if specified tracker is a clone).
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 211 – Requested time span is too big - if interval between "from" and "to" is too big (maximum value specified in API config).
+* 214 – Requested operation or parameters are not supported by the device - if device does not have ignition input.
+* 219 – Not allowed for clones of the device - if specified tracker is a clone.

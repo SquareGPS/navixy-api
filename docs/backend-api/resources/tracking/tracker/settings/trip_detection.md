@@ -1,11 +1,21 @@
 ---
 title: Trip detection
-description: Trip detection
+description: API calls for getting and changing trip detection for the tracker.
 ---
-
 # Trip detection
 
-API base path: `/tracker/settings/trip_detection`
+Contains API calls for getting and changing trip detection for the tracker. It is responsible for the parking detection 
+function in the UI. The monitoring system automatically detects the facts of parking (states without movement), for the 
+following purposes:
+
+* To split a movement trajectory to separate trips - for clear illustration and easy viewing in tabular reports;
+* To capture "Trip end" / "Trip start" events - with possibility of Email/SMS notification.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/settings/trip_detection`.
 
 ### read
 
@@ -52,14 +62,16 @@ Gets trip detection settings for the specified tracker.
 
 #### errors
 
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+<hr>
 
 ### update
 
 Updates trip detection settings for the specified tracker.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -78,7 +90,7 @@ Updates trip detection settings for the specified tracker.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/settings/trip_detection/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "min_idle_duration_minutes": "5", "idle_speed_threshold": "3", "ignition_aware": "false", "motion_sensor_aware": "false"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "min_idle_duration_minutes": "5", "idle_speed_threshold": "3", "ignition_aware": false, "motion_sensor_aware": false}'
     ```
 
 === "HTTP GET"

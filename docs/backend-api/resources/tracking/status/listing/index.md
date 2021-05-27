@@ -5,10 +5,10 @@ description: Contains status listing object and API calls to interact with statu
 
 # Listing
 
-API base path: `/status/listing/`.
-
 Contains status listing object and API calls to interact with status listings.. Status listings are lists of possible statuses that can be assigned 
 to trackers.
+
+<hr>
 
 ## Status listing object structure
 
@@ -27,6 +27,12 @@ to trackers.
 * `employee_controlled` - boolean. If `true` employees can change their own status, e.g. using mobile tracking app.
 * `supervisor_controlled` - boolean. If `true` supervisors can change status, e.g. using mobile monitoring app.
 * `entries` - int array. List of IDs of statuses which belong to this listing. Order matters, and is preserved.
+
+<hr>
+
+## API actions
+
+API base path: `/status/listing/`.
 
 ### create
 
@@ -67,6 +73,8 @@ Creates new empty status listing.
 available.
 * 268 Over quota – if the user's quota for listings exceeded.
 
+<hr>
+
 ### delete
 
 Deletes status listing.
@@ -106,6 +114,8 @@ Deletes status listing.
 * 201 - Not found in the database – if listing with the specified ID does not exist.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
+
+<hr>
 
 ### list
 
@@ -152,6 +162,8 @@ Only session `hash`.
 
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
+
+<hr>
 
 ### update
 

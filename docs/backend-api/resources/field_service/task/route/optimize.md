@@ -5,11 +5,15 @@ description: API call to get optimized order of route checkpoints. To minimize t
 
 # Optimizing routes
 
-API path: `/task/route/points/optimize`.
-
 To minimize transit time and costs, it may be beneficial to reorder route checkpoints so total travel time between them
 is minimal. Our platform provides a way to perform such optimization. You don't even need to create route and checkpoints,
 you just provide data required to optimize and algorithm returns order in which points should be visited.
+
+<hr>
+
+## API actions
+
+API path: `/task/route/points/optimize`.
 
 ### optimize
 

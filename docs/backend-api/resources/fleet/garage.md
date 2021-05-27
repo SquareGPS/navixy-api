@@ -5,10 +5,10 @@ description: Contains garage object and API calls to interact with it.
 
 # Garage
 
-API path: `/garage`.
-
 Contains garage object and API calls to interact with it. Garage object contains name, address, name of the mechanic, name
 of the dispatcher and others. This data can be used for more convenient and efficient maintenance and task management.
+
+<hr>
 
 ## Garage object
 
@@ -29,6 +29,12 @@ of the dispatcher and others. This data can be used for more convenient and effi
 
 * `id` - int. Garage id.
 * `location` - location object. Valid location or null.
+
+<hr>
+
+## API actions
+
+API path: `/garage`.
 
 ### list
 
@@ -74,6 +80,8 @@ Gets all garages belonging to user.
 
 [General](../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### create
 
 Creates a new garage.
@@ -111,6 +119,8 @@ Creates a new garage.
 
 [General](../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### update
 
 Updates existing garage with the specified id.
@@ -143,6 +153,7 @@ Updates existing garage with the specified id.
 
 * 201 – Not found in the database - if there is no garage with such an id.
 
+<hr>
 
 ### delete
 

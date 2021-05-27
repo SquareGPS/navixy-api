@@ -5,9 +5,13 @@ description: Contains API calls to interact with tracks and for getting all trac
 
 # Track
 
-API path: `/track`.
-
 Contains API calls to interact with tracks and for getting tracks' points.
+
+<hr>
+
+## API actions
+
+API path: `/track`.
 
 ### download
 
@@ -56,6 +60,8 @@ KML/KMZ file or JSON response if requested time period exceeds limit specified i
 * 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified 
 in API config).
 
+<hr>
+
 ### list
 
 Gets a list of track descriptions for the specified tracker and time period.
@@ -64,14 +70,14 @@ Gets a list of track descriptions for the specified tracker and time period.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| from | From time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. | [date/time](../../../getting-started.md#data-types) | "2020-09-23 03:24:00" |
-| to | To time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. Specified date must be after "from" date. | [date/time](../../../getting-started.md#data-types) | "2020-09-23 06:24:00" |
-| filter | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean | true |
-| split | Optional, default=`true`. If `false`, all tracks will be merged into single one.| boolean | true |
-| include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | true |
-| cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates. | boolean | false | 
-| count_events | Optional, default=`false`. If `true`, number of events occurred during each non-single point track will be returned. | true |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | `123456` |
+| from | From time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. | [date/time](../../../getting-started.md#data-types) | `"2020-09-23 03:24:00"` |
+| to | To time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. Specified date must be after "from" date. | [date/time](../../../getting-started.md#data-types) | `"2020-09-23 06:24:00"` |
+| filter | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean | `true` |
+| split | Optional, default=`true`. If `false`, all tracks will be merged into single one.| boolean | `true` |
+| include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | `true` |
+| cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates. | boolean | `false` | 
+| count_events | Optional, default=`false`. If `true`, number of events occurred during each non-single point track will be returned. | `true` |
 
 #### example
 
@@ -217,6 +223,8 @@ or no normAvgFuelConsumption defined in a vehicle.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified in 
 API config).
+
+<hr>
 
 ### read
 

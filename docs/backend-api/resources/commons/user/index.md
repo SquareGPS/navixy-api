@@ -5,10 +5,10 @@ description: A user account lets you start working with the platform as well as 
 
 # User
 
-API path: `/user`.
-
 A user account lets you start working with the platform as well as customize your experience within it. Contains user 
 object structure and API calls to interact with users.
+
+<hr>
 
 ## User object structure
 
@@ -117,6 +117,12 @@ object structure and API calls to interact with users.
     * `privileges` - object only returned for sub-users. Describes effective sub-user privileges. 
     * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
 
+<hr>
+
+## API actions
+
+API path: `/user`.
+
 ### activate
 
 Activates previously registered user with the provided session hash 
@@ -132,6 +138,8 @@ Available only to master users.
 ```json
 { "success": true }
 ```
+
+<hr>
 
 ### auth
 
@@ -175,6 +183,8 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 * 103 – User not activated.
 * 104 – Logins limit exceeded, please reuse existing sessions instead (see also user/session/renew).
 * 105 – Login attempts limit exceeded, try again later.
+
+<hr>
 
 ### get_info
 
@@ -269,6 +279,8 @@ Only session `hash`.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### get_tariff_restrictions
 
 Gets user tariff restrictions.
@@ -310,6 +322,8 @@ Only session `hash`.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### logout
 
 Destroys current user session.
@@ -343,6 +357,8 @@ Only session `hash`.
 #### errors
 
 * [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### resend_activation
 

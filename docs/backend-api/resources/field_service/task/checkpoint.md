@@ -1,11 +1,13 @@
 ---
 title: Checkpoints
-description: Checkpoints
+description: Every route consists of checkpoints. Using these actions, you can manipulate checkpoints individually.
 ---
 
 # Checkpoints
 
 Every route consists of checkpoints. Using these actions, you can manipulate checkpoints individually.
+
+<hr>
 
 ## Checkpoint object
 
@@ -61,6 +63,8 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 * `form` - [form object](../form/index.md#form-object). If present.
 * `form_template_id` - int. An id of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
 
+<hr>
+
 ## API actions
 
 API base path: `/task/checkpoint`.
@@ -107,8 +111,10 @@ The returned object also can include "external_id_counts" field see `task/route/
 
 #### errors
 
-* 201 – Not found in the database (if task.tracker_id is not null and belongs to nonexistent tracker).
-* 236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks).
+* 201 – Not found in the database - if task.tracker_id is not null and belongs to nonexistent tracker.
+* 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
+
+<hr>
 
 ### delete
 
@@ -146,7 +152,9 @@ Deletes a checkpoint with the specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no checkpoint with such an id).
+* 201 – Not found in the database - if there is no checkpoint with such an id.
+
+<hr>
 
 ### list
 
@@ -211,6 +219,8 @@ Get checkpoints belonging to user with given ids
 #### errors
 
 [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### read
 
@@ -277,8 +287,9 @@ Gets route checkpoint by specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no checkpoint with such an id).
+* 201 – Not found in the database - if there is no checkpoint with such an id.
 
+<hr>
 
 ### transmute
 
@@ -318,8 +329,10 @@ Convert route checkpoint into a standalone task. If it's the only checkpoint in 
 
 #### errors
 
-* 201 – Not found in the database (if there is no checkpoint with such an id, or tracker to which checkpoint assigned is unavailable to current sub-user).
-* 255 – Invalid task state (if any of checkpoints are not in unassigned or assigned state).
+* 201 – Not found in the database - if there is no checkpoint with such an id, or tracker to which checkpoint assigned is unavailable to current sub-user.
+* 255 – Invalid task state - if any of checkpoints are not in unassigned or assigned state.
+
+<hr>
 
 ### update
 
@@ -361,5 +374,5 @@ Changing `order` reorders all other checkpoints.
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id).
-* 255 – Invalid task state (if current task state is not "unassigned" or "assigned").
+* 201 – Not found in the database - if there is no task with such an id.
+* 255 – Invalid task state - if current task state is not "unassigned" or "assigned".

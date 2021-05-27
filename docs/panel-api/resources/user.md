@@ -5,9 +5,9 @@ description: API calls on work with users in the admin panel.
 
 # User
 
-API path: `panel/user`.
-
 API calls on work with users in the admin panel.
+
+<hr>
 
 ## User object structure
 
@@ -76,6 +76,8 @@ Next fields are read-only, they should not be used in `user/update` and `user/cr
 * `creation_date` - [date/time](../../backend-api/getting-started.md#data-types). Date and time when user created, in UTC.
 * `trackers_count` - user trackers count.
 
+<hr>
+
 ## Discount object structure
 
 ```json
@@ -91,6 +93,12 @@ Next fields are read-only, they should not be used in `user/update` and `user/cr
 * `min_trackers` - int. Minimum active trackers to apply discount, min 0.
 * `end_date` - [date/time](../../backend-api/getting-started.md#data-types). Discount end date, null means open date, nullable.
 * `strategy` - [enum](../../backend-api/getting-started.md#data-types). One of "no_summing", "sum_with_progressive".\
+
+<hr>
+
+## API actions
+
+API path: `panel/user`.
 
 ### change_password
 
@@ -126,6 +134,8 @@ Changes password of a user.
 #### errors
 
 * 201 – Not found in the database - if specified user does not exist or belongs to different dealer.
+
+<hr>
 
 ### corrupt
 
@@ -175,6 +185,8 @@ Marks user and its sub users and trackers as deleted and corrupt all user tracke
 }
 ```
 
+<hr>
+
 ### create
 
 Creates a new user.
@@ -220,6 +232,8 @@ If `user.verified` not passed then it set equal to `user.activated`.
 #### errors
 
 * 206 - Login already in use – if this email already registered.
+
+<hr>
 
 ### export
 
@@ -272,6 +286,8 @@ About user object structure see [above](#user-object-structure).
 #### errors
 
 * [Genreal](../../backend-api/getting-started.md#error-codes) types only.
+
+<hr>
 
 ### list
 
@@ -360,6 +376,8 @@ entities will be returned only if filter string is contained within one of the f
 
 * [Genreal](../../backend-api/getting-started.md#error-codes) types only.
 
+<hr>
+
 ### read
 
 Returns user info by its id.
@@ -442,6 +460,8 @@ Returns user info by its id.
 
 * 201 - Not found in the database – when user with specified id not found or belongs to other dealer.
 
+<hr>
+
 ### update
 
 Updates existing user with new field values (see [user object](#user-object-structure)). User must 
@@ -482,6 +502,8 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 * 201 - Not found in the database – if specified user does not exist or belongs to different dealer.
 * 206 - Login already in use – if specified "login" is used by another user.
+
+<hr>
 
 ### session/create
 
@@ -528,6 +550,8 @@ user_sessions: "global" - Optional. Allows sessions of users creation, not only 
 
 * 201 - Not found in the database – if specified user does not exist or belongs to different dealer.
 
+<hr>
+
 ### transaction/change_balance
 
 Changes user balance (increase or decrease) or bonus and write this change in transactions (type = `payment`, subtype = `partner`).
@@ -567,6 +591,8 @@ New balance (bonus) must be not negative.
 
 * 201 – Not found in the database – if user not found or not owned by a current dealer.
 * 251 – Insufficient funds (403) – if user have not enough funds to withdraw passed (negative) amount.
+
+<hr>
 
 ### transaction/list
 

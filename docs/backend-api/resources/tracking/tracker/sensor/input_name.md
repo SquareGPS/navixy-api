@@ -1,11 +1,17 @@
 ---
-title: Input name
-description: Input name
+title: Sensor inputs
+description: API call to get descriptions of all sensor inputs existing in the system. 
 ---
 
 # Input name
 
-API base path: `/tracker/sensor/input_name`
+API base path: `/tracker/sensor/input_name`.
+
+API call to get descriptions of all sensor inputs existing in the system.
+
+<hr>
+
+## API actions
 
 ### list
 

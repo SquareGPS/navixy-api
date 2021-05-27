@@ -5,9 +5,13 @@ description: This resource contains information to download waybill report for t
 
 # Waybill
 
-API path: `/track/waybill`.
-
 This resource contains information to download waybill report for tracks.
+
+<hr>
+
+## API actions
+
+API path: `/track/waybill`.
 
 ### download
 

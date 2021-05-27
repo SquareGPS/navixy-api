@@ -5,9 +5,13 @@ description: Service task file creation API call.
 
 # Vehicle service task file
 
-API path: `/vehicle/service_task/file`.
-
 Contains call for creation the service task file.
+
+<hr>
+
+## API actions
+
+API path: `/vehicle/service_task/file`.
 
 ### create
 

@@ -5,10 +5,12 @@ description: API calls to upload and assign avatars for places. Avatars don't ch
 
 # Changing place avatar
 
-API path: `/place/avatar`.
-
 Avatars don't change through `/place/update`, you must use either `assign` (to set avatar to one of preset icons),
 or `upload` (to upload your own image). 
+
+<hr>
+
+## API actions
 
 #### upload
 
@@ -56,6 +58,8 @@ File part **mime** type must be one of:
 * 234 - Invalid data format – if passed file with unexpected mime type.
 * 254 - Cannot save file – on some file system errors.
 
+<hr>
+
 ### assign
 
 Assigns `icon_id` (from standard icon set) to this place. `icon_id` can be null – this means that uploaded avatar should
@@ -94,4 +98,4 @@ Assigns `icon_id` (from standard icon set) to this place. `icon_id` can be null 
 
 #### errors
 
-* 201 (Not found in the database) – when place with `place_id` not found.
+* 201 - Not found in the database – when place with `place_id` not found.

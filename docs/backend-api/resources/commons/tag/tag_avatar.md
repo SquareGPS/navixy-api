@@ -7,6 +7,10 @@ description: Contains API calls to interact with tag avatars.
 
 Contains API calls to interact with tag avatars.
 
+<hr>
+
+## API actions
+
 API path: `/tag/avatar`.
 
 ### assign
@@ -49,6 +53,8 @@ Assigns icon_id (from standard icon set) to specified tag.
 #### errors
 
 * 201 – Not found in the database - when vehicle with specified `tag_id` not found.
+
+<hr>
 
 ### upload
 

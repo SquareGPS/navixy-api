@@ -5,9 +5,9 @@ description: API calls to search address and location using geocoder
 
 # Geocoder
 
-API path: `/geocoder`.
-
 API calls to search address and location using geocoder.
+
+<hr>
 
 ## Geocoder types
 
@@ -16,6 +16,12 @@ API calls to search address and location using geocoder.
 * progorod.
 * osm.
 * locationiq.
+
+<hr>
+
+## API actions
+
+API path: `/geocoder`.
 
 ### search_address
 
@@ -26,10 +32,10 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | q | Address (or place) or coordinates to geocode. | string/location | "750 Avenue E,San Francisco,CA 94130,USA./60.0, 61.0" |
-| lang | Language in which results should be. | [enum](../../../getting-started.md#data-types) | "en" |
-| geocoder | Optional. Geocoder type that will be preferably used for searching. | [enum](../../../getting-started.md#data-types) | "google" |
+| lang | Language in which results should be. | [enum](../../getting-started.md#data-types) | "en" |
+| geocoder | Optional. Geocoder type that will be preferably used for searching. | [enum](../../getting-started.md#data-types) | "google" |
 | bounds | Optional. JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included.| bounds_object | `{"nw":{"lat":60.0,"lng":61.0},"se":{"lat":55.0,"lng":60.0}}` |
-| lang | Optional. ISO 639 [language code](../../getting-started.md#data-types). | [enum](../../../getting-started.md#data-types) | "en_US" |
+| lang | Optional. ISO 639 [language code](../../getting-started.md#data-types). | [enum](../../getting-started.md#data-types) | "en_US" |
 | with_details | Optional. If `true` then the response will contain details. | boolean | `true` |
 
 #### example
@@ -87,6 +93,7 @@ Performs a forward geocoding. Returns a list of locations matching the given add
         * `nw` - North West corner.
         * `se` - South East corner.
 
+<hr>
 
 ### search_location
 
@@ -97,10 +104,10 @@ Search address by location using geocoder.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | location | Location coordinates (see: [data types description section](../../getting-started.md#data-types) section). | location | `{"lat": , "lng": }` |
-| geocoder | Optional. Geocoder type that will be preferably used for searching. | [enum](../../../getting-started.md#data-types) | "google" |
-| lang | Optional. ISO 639 [language code](../../getting-started.md#data-types). | [enum](../../../getting-started.md#data-types) | "en_US" |
+| geocoder | Optional. Geocoder type that will be preferably used for searching. | [enum](../../getting-started.md#data-types) | "google" |
+| lang | Optional. ISO 639 [language code](../../getting-started.md#data-types). | [enum](../../getting-started.md#data-types) | "en_US" |
 | with_details | Optional. If `true` then the response will contain details. | boolean | `true` |
-| goal | Helps to choose the target geocoder. Now supported `ui`, `ui_user_action`. Use `ui_user_action` for requests initiated by user, otherwise `ui`. | [enum](../../../getting-started.md#data-types) | "ui" | 
+| goal | Helps to choose the target geocoder. Now supported `ui`, `ui_user_action`. Use `ui_user_action` for requests initiated by user, otherwise `ui`. | [enum](../../getting-started.md#data-types) | "ui" | 
 
 #### examples
 

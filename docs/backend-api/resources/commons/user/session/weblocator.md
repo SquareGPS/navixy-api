@@ -5,10 +5,14 @@ description: Calls to work with "weblocator" type sessions. Those are special se
 
 # User sessions weblocator
 
-API path: `/user/sessions/weblocator`.
-
 Calls to work with "weblocator" type sessions. Those are special sessions to integrate tracking 
 device functionality into external systems.
+
+<hr>
+
+## API actions
+
+API path: `/user/sessions/weblocator`.
 
 ### create
 
@@ -52,6 +56,8 @@ Only session `hash`.
 
 * 101 - In demo mode this function disabled – current session is demo but weblocator session already exists.
 * 236 – Feature unavailable due to tariff restrictions.
+
+<hr>
 
 ### read
 

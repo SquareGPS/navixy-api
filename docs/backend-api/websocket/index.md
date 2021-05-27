@@ -7,12 +7,16 @@ description: Information about WebSocket API and how to open connection.
 
 Information about WebSocket API and how to open connection.
 
+<hr>
+
 ## Introduction
 
 `WebSocket` is the alternate transport to getting data from the server. The process of notification about events occurs 
 from the server to the client through a constantly open connection. This allows you to display changes in real time.
 
 Currently, the [Atmosphere Framework](https://github.com/Atmosphere) used as an application layer library and protocol.
+
+<hr>
 
 ## Standard workflow
 
@@ -34,6 +38,8 @@ Let's describe a standard workflow for WebSocket API:
       and [unsubscribe](./subscription.md#unsubscribe-action) actions are similar 
       with common [API](../getting-started.md) format.
     * All `WebSocket` frames use a `JSON` format. Exceptions are heartbeat frames containing "X".
+
+<hr>
 
 ## Open connection
 
@@ -101,6 +107,8 @@ After that, will be sent a first frame through the opened WebSocket channel:
 
 This is service message for the Atmosphere protocol negotiation.
 Now everything is ready to [subscribe on events](./subscription.md#subscribe-action).
+
+<hr>
 
 ## Common fields
 

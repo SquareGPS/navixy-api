@@ -5,9 +5,9 @@ description: Information about email gateways objects. Email gateway can be owne
 
 # Gateways
 
-API path: `panel/gateways/email`.
-
 Information about email gateway objects. Email gateway can be owned by a dealer or leased from platform owner.
+
+<hr>
 
 ## Email gateway object
 
@@ -49,6 +49,12 @@ Leasable email gateway:
   "default_from_address": "no-reply@domain.tld"
 }
 ```
+
+<hr>
+
+## API actions
+
+API path: `panel/gateways/email`.
 
 ### list
 

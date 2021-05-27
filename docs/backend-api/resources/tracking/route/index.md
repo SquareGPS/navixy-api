@@ -5,9 +5,13 @@ description: API call for getting the route to destination point.
 
 # Tracking route
 
-API path: `/route`.
-
 API call for getting the route to destination point.
+
+<hr>
+
+## API actions
+
+API path: `/route`.
 
 ### get
 

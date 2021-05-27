@@ -5,9 +5,13 @@ description: Contains API calls to interact with unread history entries.
 
 # History unread
 
-API path: `/history/unread`.
-
 Contains API calls to interact with unread history entries.
+
+<hr>
+
+## API actions
+
+API path: `/history/unread`.
 
 ### list
 
@@ -79,6 +83,8 @@ Default and max limit is [history.maxLimit](../dealer.md).
 #### errors
 
 * 212 – Requested limit is too big (more [history.maxLimit](../dealer.md) config option).
+
+<hr>
 
 ### count
 

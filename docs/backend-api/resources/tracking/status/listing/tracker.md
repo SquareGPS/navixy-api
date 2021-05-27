@@ -5,9 +5,13 @@ description: Contains API call which link together trackers and status listings.
 
 # Tracker status listing
 
-API base path: `/status/listing/tracker`.
-
 Contains api call which link together trackers and status listings.
+
+<hr>
+
+## API actions
+
+API base path: `/status/listing/tracker`.
 
 ### assign
 

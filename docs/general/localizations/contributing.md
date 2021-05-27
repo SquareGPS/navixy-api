@@ -11,6 +11,8 @@ translate Navixy to your language.
 All translations are done through the [crowdin](http://crowdin.com) online translation service, developed 
 specifically for team-based translation projects.
 
+<hr>
+
 ## Getting started
 
 First of all you should contact your manager, to obtain Crowdin account associated with Navixy Crowdin project.
@@ -19,6 +21,8 @@ There are two ways to localize navixy platform:
 
 * Crowdin In-context translation
 * Translate via Crowdin UI
+
+<hr>
 
 ## Crowdin In-context translation (only Web UI)
 
@@ -43,6 +47,8 @@ opens translation dialog
 
 ![Translation dialog](../assets/translation-dialog.png)
 
+<hr>
+
 ## Translate via Crowdin UI
 
 Crowdin UI is a most powerfull way to work with translations in Navixy, and the only way if you want to translate not
@@ -61,6 +67,8 @@ Each entry in each directory contains strings for translation, displayed in tran
 ![Crowdin Translation Screen](../assets/translation-screen.png)
 
 If you have some problems with translation feel free to ask questions in comments.
+
+<hr>
 
 ## Translations delivery
 

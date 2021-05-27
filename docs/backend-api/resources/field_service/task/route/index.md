@@ -5,13 +5,13 @@ description: Routes basically named and ordered set of checkpoints. Each is esse
 
 # Routes
 
-API base path: `/task/route`
-
 Routes basically named and ordered set of checkpoints. Each [checkpoint](../checkpoint.md#checkpoint-object) is 
 essentially a task with an additional link to the parent route.
 
 Route completed if all the checkpoints completed and visited in the specified order. Otherwise, it is considered
 completed with warnings or failed.
+
+<hr>
 
 ## Route object
 
@@ -47,6 +47,12 @@ completed with warnings or failed.
 * `origin` - string. A route origin. *IGNORED* in route/create, route/update.
 * `tags` - int array. List of tag ids.
 * `checkpoint_ids` - int array. List of route checkpoint ids in order of execution. *IGNORED* in route/create.
+
+<hr>
+
+## API actions
+
+API base path: `/task/route`.
 
 ### assign
 
@@ -92,6 +98,8 @@ completed with warnings or failed.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 255 – Invalid task state - if current task state is not "unassigned" or "assigned".
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
+
+<hr>
 
 ### create
 
@@ -193,6 +201,8 @@ If there is nothing to return, then parameter "external_id_counts" will not be p
 * 201 – Not found in the database - if task.tracker_id is not null and belongs to nonexistent tracker.
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
+<hr>
+
 ### delete
 
 Deletes route (and its checkpoints) with the specified id.
@@ -232,6 +242,8 @@ Deletes route (and its checkpoints) with the specified id.
 #### errors
 
 * 201 – Not found in the database - if there is no route with such an id.
+
+<hr>
 
 ### list
 
@@ -292,6 +304,8 @@ Get all routes belonging to user with optional filtering.
 
 [General](../../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### read
 
 Gets route by specified id.
@@ -332,6 +346,8 @@ Gets route by specified id.
 #### errors
 
 * 201 – Not found in the database - if there is no route with such an id.
+
+<hr>
 
 ### update
 

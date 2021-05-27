@@ -5,10 +5,10 @@ description: Contains plugin object description and API calls to interact with i
 
 # Plugin
 
-API path: `/plugin`.
-
 Contains plugin object description and API calls to interact with it.<br>
 Plugins are special software modules which modify the behavior of various API calls.
+
+<hr>
 
 ## Plugin object structure
 
@@ -49,6 +49,12 @@ Plugins are special software modules which modify the behavior of various API ca
     }
 }
 ```
+
+<hr>
+
+## API actions
+
+API path: `/plugin`.
 
 ### list
 

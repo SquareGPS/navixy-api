@@ -5,9 +5,13 @@ description: API calls on getting the panel's hash, getting permissions and logo
 
 # Account
 
-API path: `panel/account`.
-
 API calls on getting the panel's hash, getting permissions and logout.
+
+<hr>
+
+## API actions
+
+API path: `panel/account`.
 
 ### auth
 
@@ -108,6 +112,8 @@ Does not require session hash and does not need any permissions. Auths dealer in
 * 11 - Access denied - if dealer blocked.
 * 12 - Dealer not found.
 
+<hr>
+
 ### get_permissions
 
 Returns permissions for current panel session. 
@@ -203,6 +209,8 @@ Only session `hash`.
 #### errors
 
 [General](../../backend-api/getting-started.md#error-codes) types only.
+
+<hr>
 
 ### logout
 

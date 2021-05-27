@@ -5,9 +5,13 @@ description: This resource contains methods to read and assign status of a parti
 
 # Tracker status
 
-API base path: `/status/tracker/`.
-
 This resource contains methods to read and assign status of a particular tracker.
+
+<hr>
+
+## API actions
+
+API base path: `/status/tracker/`.
 
 ### assign
 
@@ -76,6 +80,8 @@ Assign a status to the tracker.
 * 236 Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
 * 263 No change needed, old and new values are the same – if new status is equal to current status of tracker.
+
+<hr>
 
 ### list
 
@@ -156,6 +162,8 @@ Gets current assigned statuses for the specified trackers.
 * 221 Device limit exceeded – if device limit set for the user's dealer has been exceeded.
 * 236 Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature
  available.
+
+<hr>
 
 ### read
 

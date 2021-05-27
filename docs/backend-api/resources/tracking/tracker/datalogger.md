@@ -4,9 +4,13 @@ description: API call for uploading datalogger information.
 ---
 # Datalogger
 
-API base path: `/tracker/datalogger`
-
 API call for uploading datalogger information.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/datalogger`.
 
 ### upload
 

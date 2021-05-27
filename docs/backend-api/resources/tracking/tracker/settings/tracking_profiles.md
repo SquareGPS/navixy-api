@@ -1,9 +1,12 @@
 ---
 title: Tracking profiles
-description: Tracking profiles
+description: Tracking profiles of all device models with description.  
 ---
-
 # Tracking profiles
+
+Contains tracking profiles of all device models with description.
+
+<hr>
 
 ### albatross_s6
 
@@ -17,7 +20,9 @@ Tracking profile for Albatross S6.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=65535.
-* `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535
+* `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535.
+
+<hr>
 
 ### albatross_s8_5
 
@@ -35,6 +40,8 @@ Tracking profile for Albatross S8.5.
 * `psm_interval` - optional int. Duration in seconds for the device to stay in the deep sleep mode. Min=600, max=65535.
 * `psm_mode` - int. Define the sleep level. Min=0, max=1.
 
+<hr>
+
 ### apkcom
 
 Tracking profile for АПК КОМ ASC-2 GLONASS/GPS, АПК КОМ ASC-6 GLONASS/GPS, АПК КОМ ASC-7, АПК КОМ ASC-8.
@@ -51,6 +58,8 @@ Tracking profile for АПК КОМ ASC-2 GLONASS/GPS, АПК КОМ ASC-6 GLONAS
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=300.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=5000.
 
+<hr>
+
 ### arknav_x8
 
 Tracking profile for Arknav RX8.
@@ -66,6 +75,8 @@ Tracking profile for Arknav RX8.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=180.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=65534.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65534.
+
+<hr>
 
 ### arnavi2
 
@@ -92,6 +103,7 @@ Arnavi 2 tracking profile.
 * `freeze_by_motion` – boolean. Freeze coordinates when motion sensor detects no motion.
 * `freeze_by_ignition` – boolean. Freeze coordinates when ignition is OFF.
 
+<hr>
 
 ### arnavi4
 
@@ -113,6 +125,8 @@ Tracking profile for Arnavi 4, Arnavi 5, Arnavi Integral, Arnavi Integral-2, Arn
 * `tracking_angle` – int. Degrees 10-255, the device will send tracking data when course changing more than defined value. 
 * `tracking_distance` – int. Distance in meters 50-65535, e.g. 100 means that the device will send data every 100 meters.
 
+<hr>
+
 ### atlanta
 
 Tracking profile for Atlanta L-100, Atlanta O-300, Atlanta PT-100, Atlanta W-track, Atlanta WP-30C.
@@ -127,6 +141,8 @@ Tracking profile for Atlanta L-100, Atlanta O-300, Atlanta PT-100, Atlanta W-tra
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65534.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=18000.
 
+<hr>
+
 ### atlanta_pt100
 
 Tracking profile for Atlanta PT-100.
@@ -138,6 +154,8 @@ Tracking profile for Atlanta PT-100.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=300, max=18000.
+
+<hr>
 
 ### atrack
 
@@ -161,6 +179,8 @@ ATrack tracking profile.
 * `psm_mode` - optional int. Define the sleep level, 0 – no sleeping, 1- light sleep (GPS Off, GPRS On, G-sensor On), 2- deep sleep (GPS Off, GPRS Off, G-sensor On). Min=0, max=2, default=0.
 * `psm_interval` - optional int. Duration in seconds for the device to stay in the deep sleep mode. Min=30, max=65535x60, default=90x60.
 * `on_stop_tracking_interval` - int. Minimum time in seconds that must elapse before reporting next position while the ACC is in Off status. "acc" in control_mode must be set in order to use this time interval. Min=1, max=65535x10, default=15x60.
+
+<hr>
 
 ### autofon
 
@@ -186,6 +206,8 @@ Autofon profile.
 * `timer2_time` - date/time. Date/time for timer2 for sending location.
 * `timer2_interval` - int. Interval to wakeup for timer1, minutes, min=15.
 
+<hr>
+
 ### autoleaders_st901
 
 Tracking profile for Auto Leaders ST-901, Auto Leaders ST-901M.
@@ -202,6 +224,8 @@ Tracking profile for Auto Leaders ST-901, Auto Leaders ST-901M.
 * `psm_mode` - int. Define the sleep level. Min=0, max=1.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=18000.
 
+<hr>
+
 ### autoseeker_at17
 
 Tracking profile for Autoseeker AT-17.
@@ -214,6 +238,8 @@ Tracking profile for Autoseeker AT-17.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=1, max=18000.
 
+<hr>
+
 ### avlsat_neos
 
 Tracking profile for AVLSAT NEO-S.
@@ -225,6 +251,8 @@ Tracking profile for AVLSAT NEO-S.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=60, max=599940.
+
+<hr>
 
 ### bitrek310
 
@@ -241,6 +269,8 @@ Tracking profile for BI 310 CICADA, NaviTrek 310 Cicada.
 * `psm_interval` - int. Duration in seconds for the device to stay in the deep sleep mode. Min=300, max=86400.
 * `psm_mode` - int. Define the sleep level. Min=0, max=1.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=720, max=21600.
+
+<hr>
 
 ### bofan_pt521
 
@@ -260,6 +290,8 @@ Tracking profile for Bofan PT502, Bofan PT521.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=1200.
 * `type` - [enum](../../../../getting-started.md#data-types). Can be "interval" | "distance" | "power_save" | "distance_interval_angle" | "interval_angle" | "intelligent".
 
+<hr>
+
 ### box
 
 Tracking profile for BOX-tracker, BOXtracker 2, Galileosky Boxfinder v1.0.
@@ -273,6 +305,8 @@ Tracking profile for BOX-tracker, BOXtracker 2, Galileosky Boxfinder v1.0.
 
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=359.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=4294968.
+
+<hr>
 
 ### boxfinder
 
@@ -288,6 +322,8 @@ Tracking profile for Galileosky Boxfinder v1.0.
 * `shock_value` - double. Can be min=0.5, max=4 g.
 * `sleep_timeout` - int. Can be min=1, max=1440 minutes.
 
+<hr>
+
 ### bsj
 
 Tracking profile for BSJ KM-01/02, Gosafe G1C.
@@ -301,6 +337,8 @@ Tracking profile for BSJ KM-01/02, Gosafe G1C.
 
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=5, max=180.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
+
+<hr>
 
 ### c2stek_fl
 
@@ -317,6 +355,8 @@ Tracking profile for C2STEK FL10, C2STEK FL2000G.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=0, max=360.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=0, max=9999.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=0, max=9999.
+
+<hr>
 
 ### calamp
 
@@ -336,6 +376,8 @@ Tracking profile for CalAmp ATU-620, CalAmp LMU-1100, CalAmp LMU-1200, CalAmp LM
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=5000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
 
+<hr>
+
 ### cantrack_t80
 
 Tracking profile for Cantrack T80.
@@ -347,6 +389,8 @@ Tracking profile for Cantrack T80.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=1000.
+
+<hr>
 
 ### careu
 
@@ -363,6 +407,8 @@ Tracking profile for CAREU U1 Lite Plus, CAREU U1 Plus, CAREU UT1, CAREU UW1, CA
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=5, max=180.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=25, max=50000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=65535.
+
+<hr>
 
 ### cargo
 
@@ -382,6 +428,8 @@ Tracking profile for Cargo Light 2, Cargo Mini 2, Cargo Pro 2.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=5000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
 
+<hr>
+
 ### carscop_cctr800
 
 Tracking profile for Carscop CCTR-808S, Carscop CCTR-809.
@@ -398,6 +446,8 @@ Tracking profile for Carscop CCTR-808S, Carscop CCTR-809.
 * `psm_mode` - int. Define the sleep level. Min=0, max=1.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=999.
 
+<hr>
+
 ### carscop_cctr830
 
 Tracking profile for Carscop CCTR-830, Toptracking CCTR-830G.
@@ -409,6 +459,8 @@ Tracking profile for Carscop CCTR-830, Toptracking CCTR-830G.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=999.
+
+<hr>
 
 ### castel_idd
 
@@ -430,6 +482,8 @@ Tracking profile for Castel IDD-213.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=600.
 * `upload_records_count` - int. Count of uploaded records. Min =1, max=10.
 
+<hr>
+
 ### castel_interval
 
 Tracking profile for Castel MPIP-620, Castel PT-690, Castel PT-718S.
@@ -441,6 +495,8 @@ Tracking profile for Castel MPIP-620, Castel PT-690, Castel PT-718S.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=18000.
+
+<hr>
 
 ### cguard
 
@@ -458,6 +514,8 @@ cGuard tracking profile.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=0, max=65535, default=100.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=0, max=180, default=15.
 * `psm_interval` - int. Duration in seconds for the device to stay in the deep sleep mode. Min=0, max=65535, default=300.
+
+<hr>
 
 ### cguard_asset
 
@@ -490,6 +548,8 @@ name: 'cguard_asset'
 * `wakeup_period` - int. Wakeup period in minutes. Min=15, max=65535, default=1440. Required if wakeup_type = `PERIODICAL`
 * `moving_detection` - boolean. If `true` means that device will be wakes up at the beginning of the movement. Required if mode == 'ASSET'
 
+<hr>
+
 ### concox_distance_interval
 
 Tracking profile for Concox X3.
@@ -503,6 +563,8 @@ Tracking profile for Concox X3.
 
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=100, max=10000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=18000.
+
+<hr>
 
 ### concox_gt350
 
@@ -519,6 +581,8 @@ Tracking profile for Concox GT350.
 * `psm_interval` - int. Duration in seconds for the device to stay in the deep sleep mode. Min=600, max=432000.
 * `psm_mode` - int. Define the sleep level. Min=0, max=1.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=1800.
+
+<hr>
 
 ### concox_gt700
 
@@ -538,7 +602,7 @@ Tracking profile for Concox AT3, Concox AT4, Concox GT710.
 * `type` - [enum](../../../../getting-started.md#data-types). Can be "interval" | "distance" | "power_save" | "distance_interval_angle" | "interval_angle" | "intelligent".
 * `wakeup_time` - string. Format `hh:mm`.
 
-
+<hr>
 
 ### concox_interval
 
@@ -552,6 +616,8 @@ Tracking profile for Concox GK309 , Concox GS503, Concox GT03A, Concox GT03C, Co
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=18000.
 
+<hr>
+
 ### concox_jv200
 
 Tracking profile for Concox JV200.
@@ -563,6 +629,8 @@ Tracking profile for Concox JV200.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=18000.
+
+<hr>
 
 ### concox_qbit
 
@@ -580,6 +648,8 @@ Tracking profile for Concox QBIT.
 * `lbs_tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds in `lbs` mode. Min=30, max=18000.
 * `mode` - string. Can be "lbs" | "gps".
 
+<hr>
+
 ### concoxgt02
 
 Tracking profile for Concox GT02 / TR02.
@@ -592,6 +662,7 @@ Tracking profile for Concox GT02 / TR02.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=18000.
 
+<hr>
 
 ### concoxgt06
 
@@ -613,6 +684,8 @@ Tracking profile for Concox GV20, Concox X1, Protrack VT05.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=65535.
 * `type` - [enum](../../../../getting-started.md#data-types). Can be "interval" | "distance" | "power_save" | "distance_interval_angle" | "interval_angle" | "intelligent".
 
+<hr>
+
 ### default
 
 Default tracking profile.
@@ -629,6 +702,7 @@ Default tracking profile.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters.
 
+<hr>
 
 ### default_angle
 
@@ -647,6 +721,8 @@ Default profile with optional angle-based tracking.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters.
 * `tracking_angle` - optional int. If specified, the device will additionally send data when it changes direction to specified angle, e.g. 30 degrees.
+
+<hr>
 
 ### default_powersave
 
@@ -669,6 +745,8 @@ Default powersave profile with optional angle-based tracking.
 * `psm_interval` - optional int. Define the time interval in seconds (60-65535) which the unit stays in the sleeping state when type=`power_save`.
 * `psm_mode` - optional int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On), `2` - deep sleep(GPS Off, GPRS Off, G-sensor On).
 
+<hr>
+
 ### defenstar_007
 
 Tracking profile for Defenstar DS007.
@@ -680,6 +758,8 @@ Tracking profile for Defenstar DS007.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=60, max=65534.
+
+<hr>
 
 ### defenstar_008
 
@@ -693,6 +773,7 @@ Tracking profile for Defenstar DS008, Gubloos GPS-S1.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=9999.
 
+<hr>
 
 ### digitalsystems_dsf22
 
@@ -708,6 +789,7 @@ Tracking profile for DigitalSystems DSF22.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=359.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
 
+<hr>
 
 ### distance_interval
 
@@ -722,6 +804,8 @@ Tracking profile with distance and interval.
 
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=100000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
+
+<hr>
 
 ### distance_interval_angle_ps
 
@@ -741,6 +825,8 @@ Tracking profile with distance, interval, angle and power save mode.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=100000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
 
+<hr>
+
 ### distance_interval_angle
 
 Tracking profile with distance, interval and angle.
@@ -757,6 +843,8 @@ Tracking profile with distance, interval and angle.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees.
 
+<hr>
+
 ### eelink
 
 Tracking profile for Eelink GOT08, Eelink GOT10, Eelink GPT18, Eelink TK-319, Eelink TK116, Eelink TK119.
@@ -769,6 +857,7 @@ Tracking profile for Eelink GOT08, Eelink GOT10, Eelink GPT18, Eelink TK-319, Ee
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=18000.
 
+<hr>
 
 ### eelink_tk116
 
@@ -781,6 +870,8 @@ Tracking profile for Eelink TK116.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=3600.
+
+<hr>
 
 ### eelink_v2
 
@@ -804,6 +895,8 @@ Tracking profile for Eelink GPT18, Eelink TK-319.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=10000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=65535.
 
+<hr>
+
 ### enfora
 
 Tracking profile for Enfora MT-GL (GSM2218), Enfora MT-Gu (GSM2338), Novatel MT4100, SkyPatrol TT8740, SkyPatrol TT8750.
@@ -818,6 +911,8 @@ Tracking profile for Enfora MT-GL (GSM2218), Enfora MT-Gu (GSM2338), Novatel MT4
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=100, max=10000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=18000.
 
+<hr>
+
 ### esino
 
 Tracking profile for Esino ES-GP34, Esino ES-GT23.
@@ -830,6 +925,8 @@ Tracking profile for Esino ES-GP34, Esino ES-GT23.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=20, max=3600.
 
+<hr>
+
 ### etrack_tlt2h
 
 Tracking profile for E-Track TLT-2H.
@@ -841,6 +938,8 @@ Tracking profile for E-Track TLT-2H.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=59999.
+
+<hr>
 
 ### fifotrack
 
@@ -862,6 +961,8 @@ Tracking profile for fifotrack A100, fifotrack A100 FW1.15+, fifotrack A300, fif
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=655350.
 
+<hr>
+
 ### genesis_g36
 
 Tracking profile for Castel HT-770, Ezlink T28, G36, Orion 7, XiLi Technologies PT100.
@@ -873,6 +974,8 @@ Tracking profile for Castel HT-770, Ezlink T28, G36, Orion 7, XiLi Technologies 
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=1.
+
+<hr>
 
 ### gl200
 
@@ -898,6 +1001,8 @@ Queclink/Ruslink GL200/GL300 profile
 * `movement_detection` - boolean.
 * `non_movement_duration` - int. In seconds.
 
+<hr>
+
 ### gl500
 
 Queclink/Ruslink GL500 profile.
@@ -915,6 +1020,8 @@ Queclink/Ruslink GL500 profile.
 * `tracking_interval` - int. Interval in minutes.
 * `wakeup_time` - int. Wakeup time for power_save mode in a format "HH:mm".
 * `psm_interval` - int. Update interval in power_save mode, hours (1, 2, 3, 4, 6, 8, 12, 24).
+
+<hr>
 
 ### gt300
 
@@ -938,6 +1045,8 @@ Queclink/Ruslink GT300 profile.
 * `min_speed` - int. The speed threshold of movement detect, km/h 0-999.
 * `min_distance` - int. The distance threshold of movement detect, meters 1-9099.
 
+<hr>
+
 ### gotoptk206_amgps_freko
 
 Tracking profile for AMGPS Freko.
@@ -949,6 +1058,8 @@ Tracking profile for AMGPS Freko.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=3600.
+
+<hr>
 
 ### gv500
 
@@ -972,6 +1083,8 @@ Queclink/Ruslink GV500 profile.
 * `psm_mode` - int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On), `2` - deep sleep(GPS Off, GPRS Off, G-sensor On).
 * `psm_interval` - int. Sending interval when the engine is off, seconds.
 
+<hr>
+
 ### gv55lite
 
 Queclink/Ruslink GV55Lite profile.
@@ -994,6 +1107,8 @@ Queclink/Ruslink GV55Lite profile.
 * `psm_mode` - int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On), `2` - deep sleep(GPS Off, GPRS Off, G-sensor On).
 * `psm_interval` - int. Sending interval when the engine is off, seconds.
 
+<hr>
+
 ### gubloost1
 
 Tracking profile for Defenstar GPS668, Gubloos GPS-T1, MiniFinder Pico.
@@ -1005,6 +1120,8 @@ Tracking profile for Defenstar GPS668, Gubloos GPS-T1, MiniFinder Pico.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=9999.
+
+<hr>
 
 ### haicom_hi603x
 
@@ -1018,6 +1135,8 @@ Tracking profile for Haicom HI-603X.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=2592000.
 
+<hr>
+
 ### helioversal_m1
 
 Tracking profile for Helioversal M1.
@@ -1029,6 +1148,8 @@ Tracking profile for Helioversal M1.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
+
+<hr>
 
 ### hhd_g
 
@@ -1042,6 +1163,8 @@ Tracking profile for HHD G-400, HHD G-600.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=20.
 
+<hr>
+
 ### howen_herome
 
 Tracking profile for Hero-ME31-08, Hero-ME32-04, Hero-ME41-04.
@@ -1053,6 +1176,8 @@ Tracking profile for Hero-ME31-08, Hero-ME32-04, Hero-ME41-04.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
+
+<hr>
 
 ### hua_sheng_hs3000g
 
@@ -1070,6 +1195,8 @@ Tracking profile for Hua Sheng HS 3000G.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=5, max=250.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=450.
 
+<hr>
+
 ### huabao
 
 Tracking profile for Huabao HB-T10.
@@ -1080,6 +1207,8 @@ Tracking profile for Huabao HB-T10.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=9999.
+
+<hr>
 
 ### intellitrac_x1
 
@@ -1099,6 +1228,8 @@ Tracking profile for IntelliTrac X1, IntelliTrac X1+.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=65534.
 * `type` - [enum](../../../../getting-started.md#data-types). Can be "interval" | "distance" | "power_save" | "distance_interval_angle" | "interval_angle" | "intelligent".
 
+<hr>
+
 ### interval
 
 Tracking profile with an interval only.
@@ -1110,6 +1241,8 @@ Tracking profile with an interval only.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30.
+
+<hr>
 
 ### interval_angle
 
@@ -1124,6 +1257,8 @@ Tracking profile with an interval and angle.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees.
+
+<hr>
 
 ### interval_angle_powersave
 
@@ -1141,6 +1276,8 @@ Tracking profile with an interval, angle and powersave mode.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=5, max=355.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=900.
 
+<hr>
+
 ### interval_powersave
 
 Tracking profile with an interval and powersave mode.
@@ -1157,6 +1294,8 @@ Tracking profile with an interval and powersave mode.
 * `psm_mode` - int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On).
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=180.
 
+<hr>
+
 ### jimi_jc100
 
 Tracking profile for Jimi JC100.
@@ -1169,6 +1308,8 @@ Tracking profile for Jimi JC100.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=18000.
 
+<hr>
+
 ### jinsheng_js810
 
 Tracking profile for Jin Sheng JS810, Jin Sheng JS810S.
@@ -1180,6 +1321,8 @@ Tracking profile for Jin Sheng JS810, Jin Sheng JS810S.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=65534.
+
+<hr>
 
 ### jointech_gp
 
@@ -1203,6 +1346,8 @@ Tracking profile for Jointech GP4000, Jointech GP6000, Jointech GP6000F.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=65535.
 * `type` - [enum](../../../../getting-started.md#data-types). Can be "interval" | "distance" | "power_save" | "distance_interval_angle" | "interval_angle" | "intelligent".
 
+<hr>
+
 ### jointech_jt701
 
 Tracking profile for Jointech JT701.
@@ -1214,6 +1359,8 @@ Tracking profile for Jointech JT701.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=60000.
+
+<hr>
 
 ### jointech_jt703
 
@@ -1233,6 +1380,8 @@ Profile for Jointech JT703B
 * `wakeup_timers` - optional string. Define wake-up timers when the sleep mode enabled, 1-48 timers. Local time in a standard format `HH:mm:ss`.
 * `sleep_time_in_minutes` - optional int. Define the time interval which the unit stays in the sleeping state when wake-up timers not defined. Min=10, max=1440.
 
+<hr>
+
 ### jointech_jt707
 
 Tracking profile for Jointech JT707.
@@ -1249,6 +1398,8 @@ Tracking profile for Jointech JT707.
 * `psm_mode` - int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On).
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=5, max=43200.
 
+<hr>
+
 ### keson_ks168
 
 Tracking profile for Keson KS168.
@@ -1260,6 +1411,8 @@ Tracking profile for Keson KS168.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=65535.
+
+<hr>
 
 ### laipacs911
 
@@ -1277,6 +1430,8 @@ Tracking profile for Laipac S911 Lola, Laipac-911BL.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=5, max=43200.
 * `type` - [enum](../../../../getting-started.md#data-types). Can be "interval" | "distance" | "power_save" | "distance_interval_angle" | "interval_angle" | "intelligent".
 
+<hr>
+
 ### lk200
 
 Tracking profile for LKGPS LK209A, LKGPS LK209B, LKGPS LK210.
@@ -1288,6 +1443,8 @@ Tracking profile for LKGPS LK209A, LKGPS LK209B, LKGPS LK210.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=65535.
+
+<hr>
 
 ### logosoft
 
@@ -1306,6 +1463,8 @@ Tracking profile for Logosoft Log-101.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=300.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10.
+
+<hr>
 
 ### m7
 
@@ -1333,6 +1492,8 @@ Profile for Navixy M7.
 * `psm_interval` - optional int. Define the time interval in seconds (600-3932100) which the unit stays in the sleeping state.
 * `wakeup_timer` - optional string. Timer 1-3.
 
+<hr>
+
 ### maxtrack_140
 
 Tracking profile for Maxtrack MXT-140.
@@ -1348,6 +1509,8 @@ Tracking profile for Maxtrack MXT-140.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=180.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=0, max=25500.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=20, max=65535.
+
+<hr>
 
 ### megastek_gvt430
 
@@ -1365,6 +1528,8 @@ Tracking profile for Megastek GVT-430.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=100, max=1000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
 
+<hr>
+
 ### megastek_mt
 
 Tracking profile for Megastek MT-300, Megastek MT-90s, Megastek MT100.
@@ -1376,6 +1541,8 @@ Tracking profile for Megastek MT-300, Megastek MT-90s, Megastek MT100.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
+
+<hr>
 
 ### megastek_mt100
 
@@ -1393,6 +1560,8 @@ Tracking profile for Megastek MT100.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=65535.
 * `type` - [enum](../../../../getting-started.md#data-types). Can be "interval" | "distance" | "power_save" | "distance_interval_angle" | "interval_angle" | "intelligent".
 
+<hr>
+
 ### meiligaovt
 
 Tracking profile for GoTop VT360, GoTop VT380, Meiligao VT310, Meitrack VT310, RedView VT310.
@@ -1408,6 +1577,8 @@ Tracking profile for GoTop VT360, GoTop VT380, Meiligao VT310, Meitrack VT310, R
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=0, max=359.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=5000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=655350.
+
+<hr>
 
 ### meitrack
 
@@ -1429,6 +1600,8 @@ Meitrack profile.
 * `psm_mode` - optional int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On), `2` - deep sleep(GPS Off, GPRS Off, G-sensor On).
 * `psm_interval` - optional int. Define the time interval in seconds which the unit stays in the sleeping state.
 
+<hr>
+
 ### meitrack_asset
 
 Tracking profile for Meitrack T355v2.
@@ -1448,6 +1621,8 @@ Tracking profile for Meitrack T355v2.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=359.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=655350.
+
+<hr>
 
 ### meitrack_vehicle
 
@@ -1471,6 +1646,8 @@ Tracking profile for Meitrack MVT100, Meitrack MVT340, Meitrack MVT380, Meitrack
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=655350.
 
+<hr>
+
 ### meitrack_without_ps
 
 Tracking profile for Meitrack P66.
@@ -1487,6 +1664,8 @@ Tracking profile for Meitrack P66.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=655350.
 
+<hr>
+
 ### mictrack_mp90
 
 Tracking profile for MicTrack MP-90.
@@ -1501,6 +1680,8 @@ Tracking profile for MicTrack MP-90.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=20, max=180.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=65535.
 
+<hr>
+
 ### mika_g1
 
 Tracking profile for MIKA G1.
@@ -1512,6 +1693,8 @@ Tracking profile for MIKA G1.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=10000.
+
+<hr>
 
 ### mrd_100
 
@@ -1525,6 +1708,8 @@ Tracking profile for MRD-100.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=20, max=65535.
 
+<hr>
+
 ### mwp008_a
 
 Tracking profile for Diwei TK116, Moralwinhk P008A, Moralwinhk P168.
@@ -1536,6 +1721,8 @@ Tracking profile for Diwei TK116, Moralwinhk P008A, Moralwinhk P168.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=655350.
+
+<hr>
 
 ### myrope_m500
 
@@ -1551,6 +1738,8 @@ Tracking profile for MyRope M528, MyRope M588.
 * `psm_interval` - int. Define the time interval in seconds which the unit stays in the sleeping state. Min=60, max=65535.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=1, max=65535.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=1, max=65535.
+
+<hr>
 
 ### navisetgt
 
@@ -1568,6 +1757,8 @@ Tracking profile for Naviset GT-10, Naviset GT-20.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=255.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=300.
 
+<hr>
+
 ### noran
 
 Tracking profile for Noran NR008, Noran NR024, Noran NR100.
@@ -1579,6 +1770,8 @@ Tracking profile for Noran NR008, Noran NR024, Noran NR100.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=15, max=64800.
+
+<hr>
 
 ### oigo_ar2
 
@@ -1598,6 +1791,8 @@ Tracking profile for Oigo AR-2GM, Oigo AR-3HU.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=0, max=60000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=15, max=604800.
 
+<hr>
+
 ### orange_tk103
 
 Tracking profile for Orange TK-103.
@@ -1610,6 +1805,8 @@ Tracking profile for Orange TK-103.
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=990.
 
+<hr>
+
 ### piccolo_atx
 
 Tracking profile for Piccolo ATX.
@@ -1621,6 +1818,8 @@ Tracking profile for Piccolo ATX.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=300, max=86400.
+
+<hr>
 
 ### piccolo_distance_interval_angle
 
@@ -1637,6 +1836,8 @@ Tracking profile for Piccolo ATX2S, Piccolo Hybrid+, Piccolo STX, Piccolo TMX+.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=30, max=150.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=100, max=10000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=65535.
+
+<hr>
 
 ### piccolo_plus
 
@@ -1664,6 +1865,8 @@ Profile Wireless Links for Piccolo Plus
 * `asset_moving_interval` - optional int. Need for asset and hybrid modes. Min=300, max=86400.
 * `asset_stopped_interval` - optional int. Need for asset and hybrid modes. Min=300, max=86400.
 
+<hr>
+
 ### redview_vt680
 
 Tracking profile for RedView VT680.
@@ -1677,6 +1880,8 @@ Tracking profile for RedView VT680.
 
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=30, max=270.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=655350.
+
+<hr>
 
 ### sanfone
 
@@ -1693,6 +1898,8 @@ Tracking profile for Sanfone SF100, Sanfone SF700.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=360.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=30, max=60000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=999.
+
+<hr>
 
 ### satsol
 
@@ -1712,6 +1919,8 @@ Tracking profile for SAT-LITE 3, SAT-LITE 4, Sat Lite 2, Sat Pro, Super Lite.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=9999.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
 
+<hr>
+
 ### senseitp211
 
 ```json
@@ -1724,6 +1933,8 @@ Tracking profile for SAT-LITE 3, SAT-LITE 4, Sat Lite 2, Sat Pro, Super Lite.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30.
 * `gps_enabled` - boolean.
 
+<hr>
+
 ### sheriff_awax12
 
 Tracking profile for Sheriff AWAX12.
@@ -1735,6 +1946,8 @@ Tracking profile for Sheriff AWAX12.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=900, max=86400.
+
+<hr>
 
 ### sinowell_g102
 
@@ -1754,6 +1967,8 @@ Tracking profile for Sinowell G102.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=1000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=1000.
 
+<hr>
+
 ### skypatrol_tt8750plus
 
 Tracking profile for SkyPatrol TT8750+.
@@ -1772,6 +1987,8 @@ Tracking profile for SkyPatrol TT8750+.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=100, max=10000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=18000.
 
+<hr>
+
 ### sleep_active
 
 Tracking profile for СКАТ-Маяк.
@@ -1785,6 +2002,8 @@ Tracking profile for СКАТ-Маяк.
 
 * `active_time` - int. Min=300, max=599940 seconds.
 * `sleep_time` - int. Min=300, max=599940 seconds.
+
+<hr>
 
 ### spetrotec_iwatcher
 
@@ -1801,6 +2020,8 @@ Tracking profile for Spetrotec i-WATCHER AVL.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=100, max=100000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=60, max=86400.
 * `type` - [enum](../../../../getting-started.md#data-types). Can be "interval" | "distance" | "power_save" | "distance_interval_angle" | "interval_angle" | "intelligent".
+
+<hr>
 
 ### stab_liner
 
@@ -1820,6 +2041,8 @@ Tracking profile for M2M-Cyber GLX, STAB Liner 102.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=100000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=0, max=3600.
 
+<hr>
+
 ### starcom_helios
 
 Tracking profile for Starcom Helios Advanced, Starcom Helios Hybrid, Starcom Helios TT.
@@ -1831,6 +2054,8 @@ Tracking profile for Starcom Helios Advanced, Starcom Helios Hybrid, Starcom Hel
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=0, max=432000.
+
+<hr>
 
 ### starline_m17
 
@@ -1848,6 +2073,7 @@ Tracking profile for Starline M17.
 * `psm_mode` - int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On).
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=0, max=300.
 
+<hr>
 
 ### suntech_distance_interval_angle
 
@@ -1865,6 +2091,8 @@ Tracking profile for Suntech ST200, Suntech ST215, Suntech ST300, Suntech ST310U
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=60000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=20, max=60000.
 
+<hr>
+
 ### suntech_interval
 
 Tracking profile for Suntech ST940.
@@ -1876,6 +2104,8 @@ Tracking profile for Suntech ST940.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=20, max=60000.
+
+<hr>
 
 ### syrus
 
@@ -1892,6 +2122,8 @@ Tracking profile for Syrus 2G.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=5, max=90.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=100, max=5000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=9999.
+
+<hr>
 
 ### telfm
 
@@ -1914,6 +2146,8 @@ Teltonika FM tracking profile.
 * `sleep_mode` – [enum](../../../../getting-started.md#data-types). Can be "disabled" | "soft_sleep".
 * `stop_detection` – [enum](../../../../getting-started.md#data-types). Can be "ignition" | "g_sensor" | "gps".
 
+<hr>
+
 ### telfm5x
 
 Tracking profile for Teltonika FM5500, Teltonika FM6320, Teltonika FMB630, Teltonika FMB640.
@@ -1934,6 +2168,8 @@ Tracking profile for Teltonika FM5500, Teltonika FM6320, Teltonika FMB630, Telto
 * `tracking_distance` – int. Distance in meters min=50, max=65535, e.g. 100 means that the device will send data every 100 meters.
 * `tracking_interval` – int. Interval in seconds min=30, max=2592000, e.g. 30 means that the device will send tracking data no more frequently than every 30 seconds.
 
+<hr>
+
 ### topfly
 
 Tracking profile for TopFlyTech T8603, TopFlyTech T8608, TopFlyTech T8803, TopFlyTech T8803 Pro, TopFlyTech T8803+, TopFlyTech T8806, TopFlyTech T8806+, TopFlyTech T8806+R, TopFlyTech T8808A, TopFlyTech T8808A+, TopFlyTech T8808B, TopFlyTech T8808B+.
@@ -1952,6 +2188,8 @@ Tracking profile for TopFlyTech T8603, TopFlyTech T8608, TopFlyTech T8803, TopFl
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=0, max=65535.
 
+<hr>
+
 ### topshine_distance_interval
 
 Tracking profile for TopShine MT02, TopShine MT08, TopShine OGT100, TopShine VT1000, TopShine VT200W, TopShine VT900.
@@ -1965,6 +2203,8 @@ Tracking profile for TopShine MT02, TopShine MT08, TopShine OGT100, TopShine VT1
 
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=655350.
+
+<hr>
 
 ### topshine_distance_interval_angle
 
@@ -1982,6 +2222,8 @@ Tracking profile for TopShine MT08, TopShine OGT100, TopShine VT1000.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=655350.
 
+<hr>
+
 ### topten
 
 Tracking profile for TopTen GT08, TopTen TK-510, TopTen TK228.
@@ -1996,6 +2238,8 @@ Tracking profile for TopTen GT08, TopTen TK-510, TopTen TK228.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=0, max=359.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=655350.
 
+<hr>
+
 ### totarget
 
 Tracking profile for TT-08, VG-eLock7A.
@@ -2007,6 +2251,8 @@ Tracking profile for TT-08, VG-eLock7A.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=300.
+
+<hr>
 
 ### totem
 
@@ -2026,6 +2272,8 @@ Tracking profile for TotemTech AT05, TotemTech AT07.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=10, max=18000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=10, max=18000.
 
+<hr>
+
 ### trackertech_msp320
 
 Tracking profile for Tracker Technology MSP320.
@@ -2037,6 +2285,8 @@ Tracking profile for Tracker Technology MSP320.
 ```
 
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
+
+<hr>
 
 ### trackertech_msp340
 
@@ -2051,6 +2301,8 @@ Tracking profile for Tracker Technology MSP340.
 
 * `psm_interval` - int. Define the time interval in seconds which the unit stays in the sleeping state. Min=180, max=86400.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
+
+<hr>
 
 ### trackertech_msp350
 
@@ -2069,6 +2321,8 @@ Tracking profile for Tracker Technology MSP350.
 * `psm_mode` - int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On), `2` - deep sleep(GPS Off, GPRS Off, G-sensor On), `3` - ultra deep sleep.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=100000.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=86400.
+
+<hr>
 
 ### tramigo
 
@@ -2090,6 +2344,8 @@ Profile for Tramigo models that do not support the interval in seconds
 * `on_stop_tracking_interval` - int. Interval in minutes when not in a trip. Min=1, max=10080.
 * `sleep_mode` - sting enum. Can be "disabled" | "enabled".
 
+<hr>
+
 ### tramigo_with_seconds
 
 Profile for Tramigo models that do support the interval in seconds
@@ -2109,6 +2365,8 @@ Profile for Tramigo models that do support the interval in seconds
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=20, max=180.
 * `on_stop_tracking_interval` - int. Interval in minutes when not in a trip. Min=1, max=10080.
 * `sleep_mode` - sting enum. Can be "disabled" | "enabled".
+
+<hr>
 
 ### tt1
 
@@ -2136,6 +2394,8 @@ Profile for Navixy TT-1.
 * `bat_voltage` - optional string. Threshold of low back-up battery voltage.
 * `bat_psm_interval` - optional int. Sleeping duration when battery voltage below defined threshold, seconds.
 
+<hr>
+
 ### ulbotech_t300
 
 Tracking profile for IMTSA TR2-OBD, Ulbotech T361, Ulbotech T381.
@@ -2151,6 +2411,8 @@ Tracking profile for IMTSA TR2-OBD, Ulbotech T361, Ulbotech T381.
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=3, max=20.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=0, max=25500.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=900.
+
+<hr>
 
 ### vjoy
 
@@ -2170,6 +2432,8 @@ Tracking profile for Kingneed C30, Kingneed T0024 / T4024, Kingneed T0026, Kingn
 * `psm_mode` - int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On).
 * `psm_wake_up_interval` - int. Min=1, max=99 hours.
 
+<hr>
+
 ### xirgo
 
 Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2150C, Xirgo XT-2160G, Xirgo XT-2450V, Xirgo XT-2460G, Xirgo XT-4750C, Xirgo XT-4760G, Xirgo XT-4850C.
@@ -2187,6 +2451,8 @@ Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2150C, Xirgo XT-21
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=180.
 * `tracking_distance` - int. Distance in miles, e.g. 100 means that the device will send data every 100 miles. Min=1, max=100.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=2592000.
+
+<hr>
 
 ### xirgo_48
 
@@ -2206,6 +2472,8 @@ Tracking profile for Xirgo XT-4850C.
 * `tracking_distance` - int. Distance in miles, e.g. 100 means that the device will send data every 100 miles. Min=1, max=100.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=2592000.
 
+<hr>
+
 ### xirgo_dist
 
 Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2450V, Xirgo XT-2460G, Xirgo XT-4750C, Xirgo XT-4760G.
@@ -2224,6 +2492,7 @@ Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2450V, Xirgo XT-24
 * `tracking_distance` - int. Distance in miles, e.g. 100 means that the device will send data every 100 miles. Min=1, max=100.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=2592000.
 
+<hr>
 
 ### yatut_poisk
 

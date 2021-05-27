@@ -5,11 +5,11 @@ description: This document contains tracker object structure and API calls to in
 
 # Working with trackers
 
-API base path: `/tracker`.
-
 This document contains tracker object structure and API calls to interact with it. Tracker is one of the key entities in 
 our API. It represents tracking device registered in our GPS monitoring system. Lots of API calls created for 
 manipulation of tracker and/or its properties.
+
+<hr>
 
 ## Tracker object structure
 
@@ -57,7 +57,13 @@ manipulation of tracker and/or its properties.
 * `tag_binding` - object. List of attached tags. Appears only for [tracker/list](#list) call.
     * `tag_id` - int. An id of tag. Must be unique for a tracker.
     * `ordinal` - int. Number that can be used as ordinal or kind of tag. Must be unique for a tracker. Max value is 5.
-  
+
+<hr>
+
+## API actions
+
+API base path: `/tracker`.
+
 ### change_phone
 
 Changes tracker's phone and setup new apn.
@@ -99,6 +105,8 @@ Changes tracker's phone and setup new apn.
 * 223 – Phone number already in use - if specified phone number already used in another device.
 * 241 – Cannot change phone to bundled sim. Contact tech support. If specified phone number belongs tp sim card bundled
  with the device.
+
+<hr>
 
 ### corrupt
 
@@ -142,6 +150,8 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
 * 219 – Not allowed for clones of the device - if source tracker is clone itself.
 * 252 – Device already corrupted.
 * 208 – Device blocked.
+
+<hr>
 
 ### delete
 
@@ -207,6 +217,8 @@ or
 
 * `rules` - list of associated rule ids.
 * `vehicles` - list of associated vehicle ids.
+
+<hr>
 
 ### get_diagnostics
 
@@ -339,6 +351,8 @@ List of state names for the field `states`:
 * 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
+<hr>
+
 ### get_fuel
 
 Gets current fuel level (in liters) of tracker's fuel tanks.
@@ -406,6 +420,8 @@ List of available sensor's input names for the object `sensor value`:
 
 * 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+<hr>
 
 ### get_inputs
 
@@ -480,6 +496,8 @@ List of `input types`:
 * 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
+<hr>
+
 ### get_last_gps_point
 
 Gets last point of the tracker located by GPS. Points located by GSM LBS are excluded from consideration.
@@ -544,6 +562,8 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
 
 * 201 - Not found in the database – if there is no tracker with such id belonging to authorized user.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+<hr>
 
 ### get_readings
 
@@ -628,6 +648,8 @@ List of available sensor's input names for the object `sensor value`:
 
 * 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+<hr>
 
 ### get_state
 
@@ -740,6 +762,8 @@ output 2 is on, output 3 is off.
 * 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 
+<hr>
+
 ### get_states
 
 Gets current states (gps, gsm, outputs, etc.) for several trackers.
@@ -833,6 +857,8 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
   or some other reason).
 * 217 – List contains nonexistent entities (if allow_not_exist = `false` and there are nonexistent trackers 
   belonging to an authorized user).
+
+<hr>
 
 ### list_models
 
@@ -965,6 +991,8 @@ and configures it automatically. You don't need to pass any identifier during de
 
 [General](../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### list
 
 Gets user's trackers with optional filtering by labels.
@@ -1037,6 +1065,8 @@ See tracker object structure description [here](#tracker-object-structure).
 
 [General](../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### tags/set
 
 Set tags for a tracker. Tags must be created.
@@ -1067,6 +1097,8 @@ Set tags for a tracker. Tags must be created.
 #### errors
 
 [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### location_request
 
@@ -1114,6 +1146,8 @@ Request types:
 * 213 – Cannot perform action: the device is offline.
 * 214 – Requested operation or parameters are not supported by the device.
 * 256 – Location already actual.
+
+<hr>
 
 ### register_quick
 
@@ -1192,6 +1226,8 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 226 – Wrong ICCID - if specified ICCID was not found.
 * 227 – Wrong activation code - if specified activation code not found or is already activated.
 
+<hr>
+
 ### register_retry
 
 Resends registration commands to the device. The panel must have installed SMS gateway.
@@ -1264,6 +1300,8 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 219 – Not allowed for clones of the device - if specified tracker is a clone.
 * 214 – Requested operation or parameters are not supported by the device - if device does not have GSM module.
 * 242 – Device already connected - if tracker connected to the server.
+
+<hr>
 
 ### register
 
@@ -1365,6 +1403,8 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 226 – Wrong ICCID. Plugin specific: if specified ICCID was not found.
 * 227 – Wrong activation code. Plugin specific: if specified activation code not found or is already activated.
 * 258 – Bundle not found. Plugin specific: if bundle not found for specified device ID.
+
+<hr>
 
 ### send_command
 
@@ -1481,6 +1521,8 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 #### errors
 
 [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### raw_command/send
 

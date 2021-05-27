@@ -1,11 +1,20 @@
 ---
 title: LBS settings
-description: LBS settings
+description: API calls for reading and changing LBS settings.
 ---
 
 # LBS settings
 
-API base path: `/tracker/settings/lbs`
+Contains API calls for reading and changing LBS settings. It is responsible for the LBS detection radius portlet in devices
+and settings tab in the UI. LBS (Location-based service) technology allows to determine the tracker's location without using 
+standard location services such as GPS, GLONASS, Galileo or Beidou.
+LBS locates the position using cellular base stations or Wi-Fi access points.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/settings/lbs`.
 
 ### read
 
@@ -46,8 +55,10 @@ Gets LBS settings for the specified tracker.
 
 #### errors
 
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+<hr>
 
 ### update
 
@@ -84,5 +95,5 @@ Updates LBS settings for the specified tracker.
 
 #### errors
 
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.

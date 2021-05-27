@@ -5,11 +5,11 @@ description: Contains status object and API calls to interact with them.
 
 # Status
 
-API base path: `/status/`.
-
 Contains status object and API calls to interact with them. Statuses used to track current activity for employees (in 
 fact, of tracking devices owned by employees). The simplest example is "busy" | "not busy". This is a status listing 
 consisting of two elements. Different trackers can be assigned different status lists.
+
+<hr>
 
 ## Status object structure
 
@@ -24,6 +24,12 @@ consisting of two elements. Different trackers can be assigned different status 
 * `id` - int. A unique identifier of the status. Read-only.
 * `label` - string. Human-readable label for the status.
 * `color` - string. Hex-representation of RGB color used to display this status.
+
+<hr>
+
+## API actions
+
+API base path: `/status/`.
 
 ### create
 
@@ -66,6 +72,8 @@ Creates new possible status for the specified status listing.
 available.
 * 268 - Over quota – if the user's quota for statuses exceeded.
 
+<hr>
+
 ### delete
 
 Deletes status entry.
@@ -105,6 +113,8 @@ Deletes status entry.
 * 201 - Not found in the database – if status with the specified ID does not exist.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
+
+<hr>
 
 ### list
 
@@ -155,6 +165,8 @@ Gets statuses belonging to the specified status listing.
 
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff 
 feature available.
+
+<hr>
 
 ### update
 

@@ -5,8 +5,6 @@ description: API calls on user's actions with tracker tariffs
 
 # Tariff tracker
 
-API path: `/tariff/tracker/`.
-
 API calls on user's actions with tracker tariffs.
 
 User of **dealer** can switch tracker from the tariff **t1** to tariff **t2** if:
@@ -24,6 +22,12 @@ User's **effective dealer** is
 
 1. User's dealer if its **dealer_id** = **defaultDealerId** (config option) or **dogovor_type** = 'paas'.
 2. Parent of user's dealer otherwise.
+
+<hr>
+
+## API actions
+
+API path: `/tariff/tracker/`.
 
 ### change
 
@@ -67,6 +71,8 @@ Changes tariff of tracker (with `tracker_id`) to new tariff (with `tariff_id`).
 * 238 - Changing tariff is not allowed – user can't switch tracker to that tariff.
 * 239 – New tariff doesn't exist.
 * 240 - Not allowed changing tariff too frequently – tariff last changed less or equal to 30 days (**tariff.freeze.period** config option).
+
+<hr>
 
 ### list
 

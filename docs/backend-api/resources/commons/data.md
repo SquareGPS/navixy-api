@@ -1,9 +1,13 @@
 ---
 title: Data
-description: Parse the spreadsheet data
+description: API call to parse the spreadsheet data
 ---
 
 # Data
+
+API call to parse the spreadsheet data.
+
+<hr>
 
 ### /data/spreadsheet/parse
 

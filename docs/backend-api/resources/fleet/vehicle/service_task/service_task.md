@@ -5,10 +5,10 @@ description: Contains service task object description and API calls to work with
 
 # Vehicle service task
 
-API path: `/vehicle/service_task`.
-
 Contains service task object description and API calls to work with vehicle service tasks that is used for vehicle maintenance.
 Vehicle maintenance feature helps to make sure that any scheduled maintenance or urgent repair is carried out in a timely manner.
+
+<hr>
 
 ## Service task object
 
@@ -106,6 +106,8 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
 * `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted,
   then file will remain in others. File will be deleted only when the last task with it will be deleted.
 
+<hr>
+
 ## Task status
 
 Task **status** may be one of:
@@ -114,6 +116,12 @@ Task **status** may be one of:
 * `notified` – one of conditions exceed notification limit.
 * `expired` – one of conditions exceeded.
 * `done` – user [set](#set_status) task as "done".
+
+<hr>
+
+## API actions
+
+API path: `/vehicle/service_task`.
 
 ### batch_create
 
@@ -208,6 +216,8 @@ A `task` object is:
 
 * [General](../../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### create
 
 Creates a new vehicle service task. For vehicles with associated tracker only.
@@ -243,6 +253,8 @@ Creates a new vehicle service task. For vehicles with associated tracker only.
 
 * 201 Not found in the database – vehicle or tracker not found.
 * 214 Requested operation or parameters are not supported by the device – engine hours condition passed but tracker hasn't ignition sensor.
+
+<hr>
 
 ### delete
 
@@ -282,6 +294,8 @@ Either **task_id** or **task_ids** should be specified.
 #### errors
 
 * [General](../../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### download
 
@@ -324,6 +338,8 @@ Report file.
 #### errors
 
 * [General](../../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### list
 
@@ -411,6 +427,8 @@ List all service tasks of all user vehicles.
 #### errors
 
 * 201 Not found in the database – vehicle or tracker not found.
+
+<hr>
 
 ### read
 
@@ -506,6 +524,8 @@ All parameters described in a [here](#service-task-object).
 * 201 Not found in the database – does not exist one of tracker's counters which required to determine status.
 * 204 Entity not found – when vehicle or service task not found.
 
+<hr>
+
 ### set_status
 
 Updates task status, and saved (on `done` **status**) current date and values of used (in condition) counters for 
@@ -544,6 +564,8 @@ Updates task status, and saved (on `done` **status**) current date and values of
 
 * 201 Not found in the database – does not exist one of tracker's counters which required to determine status.
 * 204 Entity not found – when vehicle or service task not found.
+
+<hr>
 
 ### update
 

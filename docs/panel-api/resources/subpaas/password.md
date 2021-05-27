@@ -9,6 +9,12 @@ API base path: `panel/subpaas/password`.
 
 API call to change subpaas's password.
 
+<hr>
+
+## API actions
+
+API base path: `panel/subpaas/password`.
+
 ### change 
 
 Changes subpaas's password.

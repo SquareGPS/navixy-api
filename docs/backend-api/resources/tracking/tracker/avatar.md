@@ -4,9 +4,13 @@ description: Contains API call to upload avatar for the tracker.
 ---
 # Avatar for the tracker
 
-API base path: `/tracker/avatar`.
-
 Contains API call to upload avatar for the tracker.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/avatar`.
 
 ### upload
 

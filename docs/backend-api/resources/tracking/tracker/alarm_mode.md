@@ -4,9 +4,13 @@ description: Contains API calls to read and set alarm mode of device.
 ---
 # Alarm mode for tracker
 
-API base path: `/tracker/alarm_mode`.
-
 Contains API calls to read and set alarm mode of device.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/alarm_mode`.
 
 ### read
 
@@ -50,6 +54,8 @@ Gets the state of alarm mode of device.
 * 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
+
+<hr>
 
 ### set
 

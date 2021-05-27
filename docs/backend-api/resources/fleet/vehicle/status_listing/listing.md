@@ -8,9 +8,9 @@ description: Contains vehicle status listing object and API calls to interact wi
 !!! warning "Deprecated"
     This API action deprecated and should not be used.
 
-API path: `/vehicle/status/listing`.
-
 Contains vehicle status listing object and API calls to interact with it.
+
+<hr>
 
 ## Vehicle status listing object
 
@@ -27,6 +27,12 @@ Contains vehicle status listing object and API calls to interact with it.
 * `order` - int. Position of the status. Ignored when update because statuses already have position in an array.
 * `label` - string. Status's name (description).
 * `color` - string. RGB-color.
+
+<hr>
+
+## API actions
+
+API path: `/vehicle/status/listing`.
 
 ### read
 
@@ -65,6 +71,8 @@ Gets all of user's vehicle statuses.
 #### errors
 
 [General](../../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### update
 

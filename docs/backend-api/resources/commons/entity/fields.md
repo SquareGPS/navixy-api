@@ -5,9 +5,9 @@ description: Contains field object description and API calls to interact with it
 
 # Entity fields
 
-API path: `/entity/fields`.
-
 Contains field object description and API calls to interact with it.
+
+<hr>
 
 ## Field object
 
@@ -60,7 +60,11 @@ and a [place](../../field_service/place/index.md) has a custom field of type "re
 such place will be available in the mobile app to view.
 Thus, field employee can view all places assigned to him to visit them, etc.
 
+<hr>
+
 ## Fields actions
+
+API path: `/entity/fields`.
 
 Field allows adding custom information to a customizable entity. Each field belongs to one entity.
 
@@ -110,6 +114,8 @@ obtained from [entity/list](./index.md#list).
 #### errors
 
 * 201 - Not found in the database - if there is no entity with such ID.
+
+<hr>
 
 ### update(entity_id, fields, delete_missing)
 
