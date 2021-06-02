@@ -680,7 +680,9 @@ New users will be created with the time zone specified in `default_user_time_zon
 
 ```json
 {
-    "success": true
+  "success": true,
+  "total": 1,
+  "errors": 0
 }
 ```
 
@@ -699,6 +701,27 @@ Most error responses include `row_number` - the line number in the file where th
   "success" : false
 }
 ```
+* 273 – Duplicate login in source file.
+```json
+{
+  "row_number" : 4,
+  "status" : {
+    "code" : 273,
+    "description" : "Duplicate login"
+  },
+  "success" : false
+}
+```
+* 274 – Empty data file. No rows to load were found in the source file.
+```json
+{
+  "status" : {
+    "code" : 274,
+    "description" : "Empty data file"
+  },
+  "success" : false
+}
+```
 * 7 – Invalid parameters. Required columns not found or there has data validation errors.
 ```json
 {
@@ -709,6 +732,7 @@ Most error responses include `row_number` - the line number in the file where th
     "error" : "required column not found",
     "parameter" : "users_import.email"
   } ],
+  "row_number" : 1,
   "status" : {
     "code" : 7,
     "description" : "Invalid parameters"

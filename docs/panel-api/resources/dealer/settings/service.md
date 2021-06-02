@@ -98,7 +98,7 @@ API path: `panel/dealer/settings/service`.
 * `tos` - string. Terms Of Service text.
 * `no_register_commands` - boolean. If `true` then do not send commands to devices on activation.
 * `default_user_time_zone` - string. [Time zone id](../../timezone.md) for new users to be created via [user/upload](../../user.md#upload).
-  And this zone will be selected by default when creating a new user in the Navixy Admin Panel.
+  Also, this zone will be selected by default when creating a new user in the Navixy Admin Panel.
 
 ### read
 
