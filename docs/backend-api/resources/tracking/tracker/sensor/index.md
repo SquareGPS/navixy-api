@@ -304,6 +304,7 @@ in use.
 ### batch_copy
 
 Copies sensors from one tracker to another.
+Attention! This operation will delete target trackers sensors, and some sensor data could be loss!
 
 **required sub-user rights:** `tracker_update`.
 
