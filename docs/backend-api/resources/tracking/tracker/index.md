@@ -29,7 +29,7 @@ manipulation of tracker and/or its properties.
         "status_listing_id": null,
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
-        "phone": "+71234567890"
+        "phone": "71234567890"
     },
   "tag_bindings": [
     {
@@ -1152,7 +1152,7 @@ Request types:
 ### register_quick
 
 Registers a new tracker using only IMEI. Automatic SMS commands will not be sent for a register. 
-The device must be preconfigured.
+The device must be preconfigured. This API call can be used only for bundles.
 
 **required sub-user rights:** `tracker_register`.
 
@@ -1200,7 +1200,7 @@ The device must be preconfigured.
         "status_listing_id": null,
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
-        "phone" : "+71234567890"
+        "phone" : "71234567890"
       },
       "tag_bindings": [{
         "tag_id": 456789,
@@ -1239,7 +1239,7 @@ Resends registration commands to the device. The panel must have installed SMS g
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
-| device_id | Device ID that was used to register, e.g. IMEI. It can be used instead of `tracker_id` for models with a fixed ID.| string | "4568005588562" |
+| device_id | Optional. Device ID that was used to register, e.g. IMEI. It can be used instead of `tracker_id` for models with a fixed ID.| string | "4568005588562" |
 | apn_name | The name of GPRS APN of this sim card inserted into device. | string | "fast.tmobile.com" |
 | apn_user | The user of GPRS APN of this sim card inserted into device. | string | "tmobile" |
 | apn_password | The password of GPRS APN of the sim card inserted into device. | string | "tmobile" |
@@ -1341,9 +1341,6 @@ As this device identified by IMEI, we include it as device ID (123451234512346).
 Also, we include **phone**, **apn_name**, **apn_user**, **apn_password** of the sim card installed in 
 device and **activation_code** since these parameters required by the plugin.
 
-You can try to "auto-detect" APN settings by phone number 
-using [apn_settings/read](apn_settings.md#read) API call.
-
 === "cURL"
 
     ```shell
@@ -1362,29 +1359,24 @@ using [apn_settings/read](apn_settings.md#read) API call.
 
 ```json
 {
-    "success": true,
-    "value": {
-      "id": 123456,
-      "label": "tracker label",
-      "clone": false,
-      "group_id": 167,
-      "avatar_file_name" : "file name",
-      "source": {
-        "id": 234567,
-        "device_id": 9999999988888,
-        "model": "telfmb920",
-        "blocked": false,
-        "tariff_id": 345678,
-        "status_listing_id": null,
-        "creation_date": "2011-09-21",
-        "tariff_end_date": "2016-03-24",
-        "phone" : "+71234567890"
-      },
-      "tag_bindings": [{
-        "tag_id": 456789,
-        "ordinal": 4
-      }]
-    }
+  "success":true,
+  "value":{
+    "id":833389,
+    "label":"Courier",
+    "group_id":0,
+    "source":{
+      "id":526383,
+      "device_id":"123451234512346",
+      "model":"qlgv55lite",
+      "blocked":false,
+      "tariff_id":12163,
+      "phone":"79123122312",
+      "status_listing_id":null,
+      "creation_date":"2021-06-03",
+      "tariff_end_date":"2021-06-17"
+    },
+    "clone":false
+  }
 }
 ```
 
