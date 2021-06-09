@@ -531,7 +531,7 @@ JSON objects come in the next text frames:
 #### errors
 
 * 230 - Not supported for this entity type – when tracker deleted or blocked.
-* 201 - Not found in the database – when tracker with such IMEI not found.
+* 201 - Not found in the database – when tracker with such `device_id` not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 <hr>
