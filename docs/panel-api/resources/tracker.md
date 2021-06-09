@@ -504,7 +504,7 @@ JSON objects come in the next text frames:
 {
   "data":
   [
-    ["Time","2017-11-16 10:02:37.0"],
+    ["Time","2020-06-09 10:02:37.0"],
     ["Location valid","yes"],
     ["Latitude","-33.4595716"],
     ["Longitude","-70.7805233"],
