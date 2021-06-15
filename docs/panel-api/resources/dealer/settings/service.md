@@ -53,7 +53,8 @@ API calls to read and update panel's service settings.
     "app_color_theme": "blue_1",
     "privacy_policy_link": "http://privacy-policy-url",
     "tos": "Terms Of Service text",
-    "no_register_commands": false
+    "no_register_commands": false,
+    "default_user_time_zone": "Europe/London"
 }
 ```
 
@@ -96,6 +97,8 @@ API calls to read and update panel's service settings.
 * `privacy_policy_link` - string. A link to privacy policy.
 * `tos` - string. Terms Of Service text.
 * `no_register_commands` - boolean. If `true` then do not send commands to devices on activation.
+* `default_user_time_zone` - string. [Time zone id](../../timezone.md) for new users to be created via [user/upload](../../user.md#upload).
+  Also, this zone will be selected by default when creating a new user in the Navixy Admin Panel.
 
 <hr>
 
@@ -175,7 +178,8 @@ Only session `hash`.
        "app_color_theme": "blue_1",
        "privacy_policy_link": "http://privacy-policy-url",
        "tos": "Terms Of Service text",
-       "no_register_commands": false
+       "no_register_commands": false,
+       "default_user_time_zone": "America/New_York"
   }
 }
 ```
@@ -223,6 +227,7 @@ Note: wallpapers, logos and favicons cannot be edited here.
 | privacy_policy_link | A link to privacy policy. | string |
 | tos | Terms Of Service text. | string |
 | no_register_commands | If `true` then do not send commands to devices on activation. | boolean |
+| default_user_time_zone | Time zone by default for new users. | string |
 
 #### example
 
@@ -231,7 +236,7 @@ Note: wallpapers, logos and favicons cannot be edited here.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/notification/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "service_title": "monitoring service", "locale": "en_US", "demo_login": "demo", "demo_password": "demo", "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"], "default_map": {"type": "osm", "location": {"lat": 33.0, "lng": 22.0}, "zoom": 2}, "currency": "EUR", "payment_link": "http://payme.ru", "promo_url": "http://monitoring.com/about", "google_client_id": "io54p54ijy54", "domain": "track.agent.com", "login_footer": "All rights reserved.", "allow_registration": true, "show_mobile_apps": true, "default_user_settings": {"geocoder": "google", "route_provider": "progorod", "measurement_system": "metric", "translit": false}, "display_model_features_link": false, "limited_domain": false, "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"], "color_theme": "aqua", "app_color_theme": "blue_1", "privacy_policy_link": "http://privacy-policy-url", "tos": "Terms Of Service text", "no_register_commands": false}'
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "service_title": "monitoring service", "locale": "en_US", "demo_login": "demo", "demo_password": "demo", "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"], "default_map": {"type": "osm", "location": {"lat": 33.0, "lng": 22.0}, "zoom": 2}, "currency": "EUR", "payment_link": "http://payme.ru", "promo_url": "http://monitoring.com/about", "google_client_id": "io54p54ijy54", "domain": "track.agent.com", "login_footer": "All rights reserved.", "allow_registration": true, "show_mobile_apps": true, "default_user_settings": {"geocoder": "google", "route_provider": "progorod", "measurement_system": "metric", "translit": false}, "display_model_features_link": false, "limited_domain": false, "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"], "color_theme": "aqua", "app_color_theme": "blue_1", "privacy_policy_link": "http://privacy-policy-url", "tos": "Terms Of Service text", "no_register_commands": false, "default_user_time_zone": "Europe/London"}'
     ```
     
 #### response

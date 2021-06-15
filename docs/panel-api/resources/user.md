@@ -660,3 +660,123 @@ Gets list of user's billing transactions for the specified period. Same as [/tra
 #### errors
 
 * 201 – Not found in the database - if user not found or not owned by a current dealer.
+
+### upload
+
+Upload users from CSV or XLS file.
+
+**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV or XLS file upload (with the name "file").
+
+CSV column separator is `;`. Columns header for CSV and XLS (headers with `*` is required):
+ 
+`Email address*;Password*;Status*;Legal status*;Surname*;Name*;Middle name;Phone number;Сomment;Country;Region;City;Street, address;Zip code;Legal name;Tax number;IEC;Registration country;Registration region;Registration city;Registration address;Registration zip code;Discount;End date of discount;Device limit`
+
+For RU locale:
+
+`Адрес электронной почты*;Пароль*;Статус*;Юридический статус*;Фамилия*;Имя*;Отчество;Номер телефона;Комментарий;Страна;Регион;Город;Улица, дом, квартира;Почтовый индекс;Юридическое название;ИНН;КПП;ОГРН;ОКПО;Страна регистрации;Регион регистрации;Город регистрации;Улица, дом регистрации;Почтовый индекс регистрации;Скидка;Дата окончания скидки;Минимальное число устройств для скидки`
+
+Legal status must be one of the following numbers:
+
+ * 1 - individual
+ * 2 - legal entity
+ * 3 - sole trader
+
+For legal entity (2) and sole trader (3) in addition to the required`*` the following columns must be present and filled with data:
+
+`Country;Region;City;Street, address;Zip code;Legal name;Registration region;Registration city;Registration address;Registration zip code`
+
+Except `Legal name` for sole trader (3) it is not required.
+
+The remaining columns are optional and can be omitted. All columns can be in any order.
+
+New users will be created with the time zone specified in `default_user_time_zone` service [setting](./dealer/settings/service.md).
+
+
+*required permissions*: `[users: "create"]`.
+
+#### parameters
+
+| name | description | type | 
+| :--- | :--- | :--- |
+| file | A XLS or CSV file containing users data. | File upload |
+| redirect_target | Optional URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string |
+
+
+#### response
+
+```json
+{
+  "success": true,
+  "total": 1,
+  "errors": 0
+}
+```
+
+#### errors
+
+Most error responses include `row_number` - the line number in the file where the error was found.
+
+* 206 – Login already in use – if this email already registered.
+```json
+{
+  "row_number" : 2,
+  "status" : {
+    "code" : 206,
+    "description" : "Login already in use"
+  },
+  "success" : false
+}
+```
+* 273 – Duplicate login in source file.
+```json
+{
+  "row_number" : 4,
+  "status" : {
+    "code" : 273,
+    "description" : "Duplicate login"
+  },
+  "success" : false
+}
+```
+* 274 – Empty data file. No rows to load were found in the source file.
+```json
+{
+  "status" : {
+    "code" : 274,
+    "description" : "Empty data file"
+  },
+  "success" : false
+}
+```
+* 7 – Invalid parameters. Required columns not found or there has data validation errors.
+```json
+{
+  "errors" : [ {
+    "error" : "required column not found",
+    "parameter" : "users_import.password"
+  }, {
+    "error" : "required column not found",
+    "parameter" : "users_import.email"
+  } ],
+  "row_number" : 1,
+  "status" : {
+    "code" : 7,
+    "description" : "Invalid parameters"
+  },
+  "success" : false
+}
+```
+```json
+{
+  "errors" : [ {
+    "error" : "E-mail must be valid",
+    "parameter" : "user.login"
+  } ],
+  "row_number" : 2,
+  "status" : {
+    "code" : 7,
+    "description" : "Invalid parameters"
+  },
+  "success" : false
+}
+```
