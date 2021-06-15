@@ -496,7 +496,7 @@ Returns auth token for connection to tracker command console.
 
 Establish WS connection with a URL:
 
-`wss://ws.navixy.com/console?device=<tracker_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`
+`wss://ws.navixy.com/console?device=<device_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`
 
 JSON objects come in the next text frames:
 
@@ -504,7 +504,7 @@ JSON objects come in the next text frames:
 {
   "data":
   [
-    ["Time","2017-11-16 10:02:37.0"],
+    ["Time","2020-06-09 10:02:37.0"],
     ["Location valid","yes"],
     ["Latitude","-33.4595716"],
     ["Longitude","-70.7805233"],
@@ -531,7 +531,7 @@ JSON objects come in the next text frames:
 #### errors
 
 * 230 - Not supported for this entity type – when tracker deleted or blocked.
-* 201 - Not found in the database – when tracker not found.
+* 201 - Not found in the database – when tracker with such `device_id` not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 <hr>
