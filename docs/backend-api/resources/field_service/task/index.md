@@ -76,6 +76,8 @@ it's available for viewing by app user. User will also receive notifications of 
 * `form_template_id` - int. An id of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
 * `fields` - optional object. A map, each key of which is a custom field id *as a string*. See [entity/fields](../../commons/entity/fields.md)
 
+!!! note "To associate the task with an address - this field should be added to the location object."
+
 <hr>
 
 ## API actions

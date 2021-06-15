@@ -172,3 +172,9 @@ Response will consist the order in that checkpoint objects should be specified i
     ]
 }
 ```
+
+#### Association with address
+
+To associate the task or checkpoint with an address it should be specified in the location object. In this case, location 
+object in the create action will have an additional field - address. To get an address when you have location use the 
+[geocoder/search_location](../resources/tracking/geocoder.md#search_location) call.
