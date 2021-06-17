@@ -45,7 +45,8 @@ the events and sends notifications to user.
   }],
   "extended_params": {
     "emergency": false,
-    "zone_limit_inverted": false
+    "zone_limit_inverted": false,
+    "private_rule": true
   }
 }
 ```
