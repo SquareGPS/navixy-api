@@ -72,9 +72,9 @@ The same information can be obtained for the list of devices . In this case use 
 
 ### Counter values for a history period
 
-Sometimes necessary to get data for the specific period. For example, it may be necessary for insurances or governments.
-In this case should be used [data/list](../resources/tracking/tracker/counter.md#datalist) call. It will return JSON with
-the next information:
+Sometimes necessary to get data for the specific period with timestamps. For example, it may be necessary for insurances 
+or governments. In this case should be used [data/list](../resources/tracking/tracker/counter.md#datalist) call. It will 
+return JSON with the next information:
 ???+ example "Response"
 
     ```json
@@ -104,6 +104,14 @@ the next information:
       ]
     }
     ```
+
+<hr>
+
+### Counted mileage and engine hours for a period
+
+Sometimes we need counted values for a period, for example, how many kilometers the device travelled for 10 days or how many hours 
+the engine was on. In this case we should use [stats/mileage](../resources/tracking/tracker/stats/stats_mileage.md) or 
+[stats/engine_hours](../resources/tracking/tracker/stats/stats_engine_hours.md) calls.
 
 <hr>
 

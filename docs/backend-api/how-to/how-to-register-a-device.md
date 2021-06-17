@@ -1,5 +1,5 @@
 ---
-title: How to register a device
+title: Device registration
 description: Instruction about device registration on the platform step by step.
 ---
 
@@ -11,17 +11,22 @@ It is possible to activate any GPS tracking device listed in the supported model
 Every model will be shown with all integrated input types, available rule types and other necessary information.
 We need to make several steps to get the device registered on the platform.
 
-1. Check that the platform support registering device model with [list_models](../resources/tracking/tracker/index.md#list_models) 
+Step 1. Check that the platform support registering device model with [list_models](../resources/tracking/tracker/index.md#list_models) 
    API call.
-2. Check all plugins available for the user with [plugin/list](../resources/commons/plugin/index.md#list) request.
-   We are interested in the next plugin ids that are used for registration:
-   * 44 - device registration with optional activation code.
-   * 37 - device registration with mandatory activation code.
-   * 35 - mobile app registration with optional activation code.
-   * 68 - mobile app registration with mandatory activation code.
-   Full information about activation codes and for what purposes they needed 
-   is [here](https://www.navixy.com/docs/admin-panel-docs/activation-codes/).
-3. Register the device using the [tracker/register](../resources/tracking/tracker/index.md#register) action.
+
+Step 2. Check all plugins available for the user with [plugin/list](../resources/commons/plugin/index.md#list) request.
+
+&ensp;We are interested in the next plugin ids that are used for registration:
+
+* 44 - device registration with optional activation code.
+* 37 - device registration with mandatory activation code.
+* 35 - mobile app registration with optional activation code.
+* 68 - mobile app registration with mandatory activation code.
+
+&ensp;Full information about activation codes and for what purposes they needed 
+is [here](https://www.navixy.com/docs/admin-panel-docs/activation-codes/).
+     
+Step 3. Register the device using the [tracker/register](../resources/tracking/tracker/index.md#register) action.
 
 <hr>
 
@@ -126,14 +131,14 @@ The platform will confirm with the same information as for plugin 44.
 
 ### Common parameters
 
-notification_email - optional parameter. Notification with invitation to install the app will be sent to the specified in
+* notification_email - optional parameter. Notification with invitation to install the app will be sent to the specified in
 parameter email.
-notification_phone - optional parameter. Invitation to install the app will be sent to the specified phone. Phone should
+* notification_phone - optional parameter. Invitation to install the app will be sent to the specified phone. Phone should
 be specified in international format without `+` sign.
-model - enum with model always the same = `mobile_unknown_xgps`.
-label - string with name of your device.
-group_id - tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](../resources/tracking/tracker/group.md#list).
-plugin_id - what parameter ID to use. It must be listed in available [plugins list for the user](../resources/commons/plugin/index.md#list).
+* model - enum with model always the same = `mobile_unknown_xgps`.
+* label - string with name of your device.
+* group_id - tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](../resources/tracking/tracker/group.md#list).
+* plugin_id - what parameter ID to use. It must be listed in available [plugins list for the user](../resources/commons/plugin/index.md#list).
 * activation_code - optional string with activation code. Not necessary for plugin 35 and mandatory for plugin 68.
 
 <hr>
