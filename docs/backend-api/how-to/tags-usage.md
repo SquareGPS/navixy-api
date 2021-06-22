@@ -82,7 +82,7 @@ For example:
 
 The platform will provide us with objects with assigned tag in the response:
 
-???+ example
+???+ example "Response"
 
     ```json
     {

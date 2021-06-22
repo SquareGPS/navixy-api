@@ -98,7 +98,7 @@ After sending the platform will respond with the next information:
 }
 ```
 
-* Tracker object fields described [here](../resources/tracking/tracker#tracker-object-structure).
+* Tracker object fields described [here](../resources/tracking/tracker/index.md#tracker-object-structure).
 
 <hr>
 

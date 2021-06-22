@@ -182,7 +182,7 @@ Gets marker entries on a map for trackers and for the specified time interval.
 ##### condition fields
 
 | Name | Type | Comment |
-| :---: | :---: | :---: |
+| :--- | :--- | :--- |
 | employee | number | id |
 | tracker_id | number |  |
 | marker_time | DateTime |  |
@@ -197,7 +197,7 @@ It's a set of sort options. Each option is a pair of field name and sorting dire
 ##### sort fields
 
 | Name | Type | Comment |
-| :---: | :---: | :---: |
+| :--- | :--- | :--- |
 | employee | string? | full name |
 | tracker_id | number |  |
 | marker_time | DateTime |  |

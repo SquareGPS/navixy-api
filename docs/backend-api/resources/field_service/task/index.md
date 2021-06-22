@@ -367,7 +367,7 @@ Gets all task belonging to user with optional filtering.
 ##### condition fields
 
 | Name | Type | Comment |
-| :---: | :---: | :---: |
+| :--- | :--- | :--- |
 | id | number |  |
 | employee | number | id |
 | status | string |  |
@@ -393,7 +393,7 @@ set of sort options. Each option is a pair of column name and sorting direction,
 ##### sort fields
 
 | Name | Type | Comment |
-| :---: | :---: | :---: |
+| :--- | :--- | :--- |
 | id | number |  |
 | employee | string | full name or tracker label |
 | status | string |  |
