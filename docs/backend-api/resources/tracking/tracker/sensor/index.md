@@ -21,7 +21,7 @@ Contains API calls to interact with sensors.
     "name": "OBD Coolant temperature",
     "input_name": "obd_coolant_t",
     "divider": 1.0,
-    "accuracy": 0,
+    "accuracy": 0.0,
     "units": "",
     "units_type": "celsius",
     "parameters": {
@@ -40,7 +40,7 @@ Contains API calls to interact with sensors.
 * `name` - string. A name of sensor.
 * `input_name` - string. 
 * `divider` - double. 
-* `accuracy` - int.
+* `accuracy` - double. The minimum=`0.0`, maximum=`100.0` with step `0.25`.
 * `units` - string.
 * `units_type` - [enum](../../../../getting-started.md#data-types). Units type for a sensor.
 * `parameters` - optional object with additional parameters.
@@ -106,7 +106,7 @@ Contains a map, where keys are IDs from **trackers** parameter and values are li
         "input_name": "fuel_level",
         "group_type": null,
         "divider": 1,
-        "accuracy": 0,
+        "accuracy": 0.0,
         "units": null,
         "units_type": "litre"
       }
@@ -142,7 +142,7 @@ Creates a sensor.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/create' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0, "units": "", "units_type": "celsius"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0.0, "units": "", "units_type": "celsius"}'
     ```
 
 #### response
@@ -247,7 +247,7 @@ List tracker sensors bound to tracker with specified id (`tracker_id` parameter)
     "name": "OBD Coolant temperature",
     "input_name": "obd_coolant_t",
     "divider": 1.0,
-    "accuracy": 0,
+    "accuracy": 0.0,
     "units": "",
     "units_type": "celsius" 
    }]
@@ -282,7 +282,7 @@ Updates sensor.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250, "sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0, "units": "", "units_type": "celsius"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250, "sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0.0, "units": "", "units_type": "celsius"}'
     ```
 
 #### response

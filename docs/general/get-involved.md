@@ -208,7 +208,7 @@ Special error codes.
 ```
 
 !!! warning "Please note"
-If the response or structure has comments it is necessary to write these comments separately in the form of a list below.
+    If the response or structure has comments it is necessary to write these comments separately in the form of a list below.
 
 For real example see [/user](../backend-api/resources/commons/user/index.md) and
 [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).

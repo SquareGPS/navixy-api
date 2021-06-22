@@ -6,6 +6,7 @@ nav:
     - Get tracker list: 'get-tracker-list.md'
     - Get track points: 'get-track-points.md'
     - Get sensors and counters data: 'getting-measurements-and-counters-from-devices.md'
+    - Create geofences: 'how-to-create-geofences.md'
     - Use rules: 'use-rules.md'
     - Work with notifications: 'how-to-work-with-notifications.md'
     - Work with tasks: 'how-to-work-with-tasks.md'
