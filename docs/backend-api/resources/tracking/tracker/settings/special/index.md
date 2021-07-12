@@ -566,6 +566,39 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 * `sensitivity` - [enum](../../../../../getting-started.md#data-types). Can be "easy" | "normal" | "hard" | "hardest".
 
+**ign_ruptela**
+
+For Ruptela devices. Represents configuration parameters related to ignition detection ("Engine detection" and "Custom ignition", as Ruptela's documentation calls them).
+
+[JSON-schema](https://json-schema.org):
+```
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "properties" : {
+    "mode" : {
+      "$ref" : "ruptela_ignition_mode.json"
+    },
+    "use_voltage" : {
+      "type" : [ "boolean", "null" ]
+    },
+    "voltage" : {
+      "type" : [ "number", "null" ]
+    }
+  },
+  "required" : [ "mode" ],
+   "$id" : "ruptela-ignition.json"
+}
+
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "string",
+  "enum" : [ "always_on", "din", "movement_sensor", "custom" ],
+  "$id" : "ruptela_ignition_mode.json"
+}
+```
+
+
 **ign_src_suntech**
 
 ```json
