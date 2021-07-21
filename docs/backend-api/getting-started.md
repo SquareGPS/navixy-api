@@ -257,9 +257,10 @@ Session hash can be obtained via `user/auth` API call:
     
 <hr>
 
-### Date/time formats
+#### Date/time formats
 
 Date/time type can be represented with formats:
+
 * `yyyy-MM-dd HH:mm:ss` format (in user's timezone), default
 * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) `yyyy-MM-dd'T'HH:mm:ssZZ`
 
