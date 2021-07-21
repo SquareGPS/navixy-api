@@ -1,7 +1,14 @@
+---
+title: App: Delivery
+description: **Delivery** is a special plugin which can be embedded to any other application or website and allows track user's task by external ID and bounded tracker in the real time.
+---
+
 # App: Delivery
 
 **Delivery** is a special plugin which can be embedded to any other application or website and
  allows track user's task by external ID and bounded tracker in the real time.
+
+<hr>
 
 ##Usage
 
@@ -35,6 +42,8 @@ Available colors: `000000, 993300, 333300, 003300, 003366, 000080,
 993366, C0C0C0, FF99CC, FFCC99, FFFF99, CCFFCC, CCFFFF, 99CCFF, 
 CC99FF, FFFFFF`.
 
+<hr>
+
 ### Autoscaling
 
 Autoscaling means that the scale of the map, and the center of the area are automatically selected so that all displayed
@@ -44,6 +53,8 @@ objects are visible.
 
 *   `0` – do not scale
 *   `1` – scale (by default)
+
+<hr>
 
 ### Map scale
 
@@ -62,6 +73,8 @@ ignored with switched on autoscaling.
 *   `yandexpublic` – Yandex Public map
 *   `cdcom` – Progorod
 
+<hr>
+
 ## API for keys
 
 ### Authorisation on API
@@ -70,6 +83,8 @@ To use the calls described further you have to be authorized in system as it
 is described according to the link: [API authorization][1]
 
 [1]: ./../../backend-api/getting-started.md#authorization-and-access-levels
+
+<hr>
 
 ### Creating a key
 
@@ -90,6 +105,8 @@ answer example if the key is successfully generated:
     Previous key (if you already have got one), will be replaced with the new one. 
     All the links like http://ui.domain.com/pro/applications/locator/?key= <old key> 
     will not work anymore.
+
+<hr>
 
 ### Retrieving a key
 

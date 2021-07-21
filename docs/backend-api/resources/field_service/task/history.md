@@ -1,11 +1,13 @@
 ---
 title: Task history
-description: Task history
+description: Navixy platform tracks changes to task fields and state for your convenience.
 ---
 
 # Task history
 
 Our platform tracks changes to task fields and state for your convenience.
+
+<hr>
 
 ## History entry
 
@@ -28,6 +30,8 @@ Our platform tracks changes to task fields and state for your convenience.
 * `event_date` - [date/time](../../../getting-started.md#data-types). Date when history event happened.
 * `operation` - [enum](../../../getting-started.md#data-types). Operation which happened. Can be "create", "update", "assign" or "status_change".
 * `payload` - depends on operation. Typically, contains fields which were changed during operation.
+
+<hr>
 
 ## API actions
 

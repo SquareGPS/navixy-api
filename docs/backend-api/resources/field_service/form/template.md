@@ -5,8 +5,6 @@ description: Form is a "one-shot" entity; after it was filled by someone, it can
 
 # Form templates
 
-API path: `/form/template`.
-
 Form is a "one-shot" entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields 
 for future reference. Usually people need to fill forms with the same fields over an over again, so forms created on 
 the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an 
@@ -17,6 +15,8 @@ and it should not affect already filled forms. By separating filled forms and te
 in exactly same state regardless of how template changed.
  
 User can assign form to the task or checkin by choosing template without the need to create all form fields every time.
+
+<hr>
 
 ## Form template object
 
@@ -47,6 +47,12 @@ User can assign form to the task or checkin by choosing template without the nee
 * `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
 * `updated` - [date/time](../../../getting-started.md#data-types). Date when this template last modified. The read-only field.
 * `default` - boolean. This form will be chosen default for all new tasks with form if `true`.
+
+<hr>
+
+## API actions
+
+API path: `/form/template`.
 
 ### list
 
@@ -99,6 +105,8 @@ Gets all form templates belonging to current master user.
 
 [General](../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### create
 
 Creates new form template.
@@ -135,6 +143,8 @@ Creates new form template.
 #### errors
 
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
+
+<hr>
 
 ### read
 
@@ -194,6 +204,8 @@ Gets form template belonging to current master user by specified id.
 
 * 201 – Not found in the database - if there is no template with such an id.
 
+<hr>
+
 ### update
 
 Updates existing form template.
@@ -226,6 +238,8 @@ Updates existing form template.
 
 * 201 – Not found in the database - if template with the specified id does not exist.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
+
+<hr>
 
 ### delete
 
@@ -266,6 +280,7 @@ Deletes form template.
 * 201 – Not found in the database - if template with the specified id does not exist.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
+<hr>
 
 ### stats/read
 

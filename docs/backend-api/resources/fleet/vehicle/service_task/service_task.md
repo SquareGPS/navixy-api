@@ -1,13 +1,114 @@
 ---
-title: Vehicle service task
-description: Vehicle service task
+title: Service task
+description: Contains service task object description and API calls to work with it.   
 ---
 
 # Vehicle service task
 
-API path: `/vehicle/service_task`.
+Contains service task object description and API calls to work with vehicle service tasks that is used for vehicle maintenance.
+Vehicle maintenance feature helps to make sure that any scheduled maintenance or urgent repair is carried out in a timely manner.
 
-#### Task status
+<hr>
+
+## Service task object
+
+```json
+{
+    "id": 725,
+    "vehicle_id": 222,
+    "status": "created",
+    "prediction": {
+      "end_date": "2015-05-03 09:35:00",
+      "wear_percentage": 40
+    },
+    "description": "Service task",
+    "comment": "",
+    "cost": 100500.0,
+    "completion": {
+      "mileage": 31,
+      "date": "2014-03-16 00:00:00",
+      "engine_hours": 140
+    },
+    "conditions": {
+      "mileage": {
+        "limit": 100,
+        "notification_interval": 10
+      },
+      "date": {
+        "end": "2015-05-08 09:35:00",
+        "notification_interval": 3
+      },
+      "engine_hours": {
+        "limit": 100,
+        "notification_interval": 10
+      }
+    },
+    "start": {
+      "mileage": 1230,
+      "date": "2015-05-01 17:46:44",
+      "engine_hours": 50
+    },
+    "notifications": {
+      "sms_phones": [
+        "79221234567",
+        "79227654321"
+      ],
+      "emails": [
+        "email@domain.tld",
+        "email@mail.com"
+      ],
+      "push_enabled": true
+    },
+    "completion_date" : "2014-03-16 00:00:00",
+    "repeat": false,
+    "unplanned": false,
+    "file_ids": [1, 2]
+}
+```
+
+* `id` - int. An id of created task.
+* `vehicle_label` - string. Vehicle label.
+* `status` - [enum](../../../../getting-started.md#data-types). [Status](#task-status).
+* `prediction` - optional object. Legacy field, is not used anymore. check return_prediction parameter.
+    * `end_date` - [date/time](../../../../getting-started.md#data-types). Predicted end date.
+    * `wear_percentage` - int. Wear percentage.
+* `completion` - object. Date and counter's values when the task marked as done. Non-editable.
+* `completion_date` - [date/time](../../../../getting-started.md#data-types). Date when a service task completed.
+* `current_position` - object. Current position values.
+    * `mileage` - int. Current mileage.
+    * `date` - [date/time](../../../../getting-started.md#data-types). Current date.
+    * `engine_hours` - int. Current engine hours.
+* `start` - object. Consists initial values.
+    * `mileage` - int. Initial odometer value for tasks with mileage condition.
+    * `date` - [date/time](../../../../getting-started.md#data-types). Task creation date for tasks with date condition.
+    * `engine_hours` - int. Initial engine hours value for tasks with engine hours condition.
+* `vehicle_id` - int. An id of associated vehicle.
+* `description` - string. Name of a service task. Max 255 characters.
+* `comment` - string. Comment for a task. Max 255 characters.
+* `cost` - float. Cost in the currency of the user. For information only.
+* `conditions` - task end conditions. At least one of fields ("mileage" or "date" or "engine_hours") must be passed.
+    * `mileage` - optional object. Mileage condition.
+        * `limit` - int. Task limit in kilometers.
+        * `notification_interval` - int. Notify about task in specified number of kilometers.
+    * `date` - optional date condition object.
+        * `end` - [date/time](../../../../getting-started.md#data-types). Task end date.
+        * `notification_interval` - int. Notify about task in specified number of days.
+    * `engine_hours` - optional engine hours condition object.
+        * `limit` - int. Task limit in hours.
+        * `notification_interval` - int. Notify about task in specified number of hours.
+* `notifications` - notifications object.
+    * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format wo
+      `+` sign.
+    * `emails` - string array. Email addresses where sms notifications should be sent.
+    * `push_enabled` - boolean. If `true` push notifications enabled.
+* `repeat` - boolean. If `true` then new task will be created when current task done.
+* `unplanned` - boolean. If `true` service task is unplanned. For information only.
+* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted,
+  then file will remain in others. File will be deleted only when the last task with it will be deleted.
+
+<hr>
+
+## Task status
 
 Task **status** may be one of:
 
@@ -15,6 +116,12 @@ Task **status** may be one of:
 * `notified` – one of conditions exceed notification limit.
 * `expired` – one of conditions exceeded.
 * `done` – user [set](#set_status) task as "done".
+
+<hr>
+
+## API actions
+
+API path: `/vehicle/service_task`.
 
 ### batch_create
 
@@ -73,7 +180,7 @@ A `task` object is:
     * `mileage` - optional object. Mileage condition.
         * `limit` - int. Task limit in kilometers.
         * `notification_interval` - int. Notify about task in specified number of kilometers.
-    * `date` - optional date condition object. 
+    * `date` - optional date condition object.
         * `end` - [date/time](../../../../getting-started.md#data-types). Task end date.
         * `notification_interval` - int. Notify about task in specified number of days.
     * `engine_hours` - optional engine hours condition object.
@@ -81,14 +188,14 @@ A `task` object is:
         * `notification_interval` - int. Notify about task in specified number of hours.
 * `notifications` - notifications object.
     * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format without
-     `+` sign.
+      `+` sign.
     * `emails` - string array. Email addresses where sms notifications should be sent.
     * `push_enabled` - boolean. If `true` push notifications enabled.
 * `repeat` - boolean. If `true` then new task will be created when current task done.
 * `unplanned` - boolean. If `true` service task is unplanned. For information only.
-* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted, 
-then file will remain in others. File will be deleted only when the last task with it will be deleted.
-
+* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted,
+  then file will remain in others. File will be deleted only when the last task with it will be deleted.
+  
 #### example
 
 === "cURL"
@@ -105,6 +212,12 @@ then file will remain in others. File will be deleted only when the last task wi
 {"success":true}
 ```
 
+#### errors
+
+* [General](../../../../getting-started.md#error-codes) types only.
+
+<hr>
+
 ### create
 
 Creates a new vehicle service task. For vehicles with associated tracker only.
@@ -114,69 +227,6 @@ Creates a new vehicle service task. For vehicles with associated tracker only.
 | name | description | type |
 | :------ | :------ | :----- |
 | task | Service task to create. | JSON object |
-
-A `task` object is:
-
-```json
-{
-    "vehicle_id": 222,
-    "description": "Service task",
-    "comment": "",
-    "cost": 10050.0000,
-    "conditions": {
-        "mileage": {
-            "limit": 100,
-            "notification_interval": 10
-        },
-        "date": {
-            "end": "2015-05-08 09:35:00",
-            "notification_interval": 3
-        },
-        "engine_hours": {
-            "limit": 100,
-            "notification_interval": 10
-        }
-    },
-    "notifications": {
-        "sms_phones": [
-            "79221234567",
-            "79227654321"
-        ],
-        "emails": [
-            "email@domain.tld",
-            "email@mail.com"
-        ],
-        "push_enabled": true
-    },
-    "repeat": false,
-    "unplanned": false,
-    "file_ids": [1, 2]
-}
-```
-
-* `vehicle_id` - int. An id of associated vehicle.
-* `description` - string. Name of a service task. Max 255 characters.
-* `comment` - string. Comment for a task. Max 255 characters.
-* `cost` - float. Cost in the currency of the user. For information only.
-* `conditions` - task end conditions. At least one of fields ("mileage" or "date" or "engine_hours") must be passed.
-    * `mileage` - optional object. Mileage condition.
-        * `limit` - int. Task limit in kilometers.
-        * `notification_interval` - int. Notify about task in specified number of kilometers.
-    * `date` - optional date condition object. 
-        * `end` - [date/time](../../../../getting-started.md#data-types). Task end date.
-        * `notification_interval` - int. Notify about task in specified number of days.
-    * `engine_hours` - optional engine hours condition object.
-        * `limit` - int. Task limit in hours.
-        * `notification_interval` - int. Notify about task in specified number of hours.
-* `notifications` - notifications object.
-    * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format without
-     `+` sign.
-    * `emails` - string array. Email addresses where sms notifications should be sent.
-    * `push_enabled` - boolean. If `true` push notifications enabled.
-* `repeat` - boolean. If `true` then new task will be created when current task done.
-* `unplanned` - boolean. If `true` service task is unplanned. For information only.
-* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted, 
-then file will remain in others. File will be deleted only when the last task with it will be deleted.
 
 #### example
 
@@ -201,8 +251,10 @@ then file will remain in others. File will be deleted only when the last task wi
 
 #### errors
 
-* 201 (Not found in the database) – vehicle or tracker not found.
-* 214 (Requested operation or parameters are not supported by the device) – engine hours condition passed but tracker hasn't ignition sensor.
+* 201 Not found in the database – vehicle or tracker not found.
+* 214 Requested operation or parameters are not supported by the device – engine hours condition passed but tracker hasn't ignition sensor.
+
+<hr>
 
 ### delete
 
@@ -215,7 +267,7 @@ Deletes a vehicle service task.
 | task_id | Optional. Id of service task. | int |
 | task_ids |  Optional. Ids of service tasks. | int array |
 
-Either **task_id** or **task_ids** should be specified
+Either **task_id** or **task_ids** should be specified.
 
 #### examples
 
@@ -239,17 +291,23 @@ Either **task_id** or **task_ids** should be specified
 { "success": true }
 ```
 
+#### errors
+
+* [General](../../../../getting-started.md#error-codes) types only.
+
+<hr>
+
 ### download
 
-Creates pdf report of service tasks.
+Downloads pdf report of service tasks.
 
 #### parameters
 
 | name | description | type |
 | :------ | :------ | :----- |
-| order_by | Sort option. Possible values listed below | [enum](../../../../getting-started.md#data-types) |
+| order_by | Sort option. Possible values listed below. | [enum](../../../../getting-started.md#data-types) |
 | ascending | Optional. Default is `true`. Sort direction. | boolean |
-| group_by | Optional. Group by option. Can be "vehicle" or "status" | [enum](../../../../getting-started.md#data-types) |
+| group_by | Optional. Group by option. Can be "vehicle" or "status". | [enum](../../../../getting-started.md#data-types) |
 
 * `order_by` possible values:
     * "vehicle" - order by `vehicle_id`.
@@ -277,6 +335,11 @@ Creates pdf report of service tasks.
 
 Report file.
 
+#### errors
+
+* [General](../../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### list
 
@@ -286,7 +349,7 @@ List all service tasks of all user vehicles.
 
 | name | description | type |
 | :------ | :------ | :----- |
-| return_prediction | Include legacy **prediction** field or not | boolean |
+| return_prediction | Include legacy **prediction** field or not. | boolean |
 
 #### examples
 
@@ -295,7 +358,7 @@ List all service tasks of all user vehicles.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/list' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "return_prediction": "false"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "return_prediction": false}'
     ```
 
 === "HTTP GET"
@@ -359,51 +422,13 @@ List all service tasks of all user vehicles.
 }
 ```
 
-* `id` - int. An id of created task.
-* `vehicle_label` - string. Vehicle label.
-* `status` - [enum](../../../../getting-started.md#data-types). [Status](#task-status).
-* `prediction` - optional object. Legacy field, is not used anymore. check return_prediction parameter.
-    * `end_date` - [date/time](../../../../getting-started.md#data-types). Predicted end date.
-    * `wear_percentage` - int. Wear percentage.
-* `completion` - object. Date and counter's values when the task marked as done. Non-editable.
-* `completion_date` - [date/time](../../../../getting-started.md#data-types). Date when a service task completed.
-* `current_position` - object. Current position values.
-    * `mileage` - int. Current mileage.
-    * `date` - [date/time](../../../../getting-started.md#data-types). Current date.
-    * `engine_hours` - int. Current engine hours.
-* `start` - object. Consists initial values.
-    * `mileage` - int. Initial odometer value for tasks with mileage condition.
-    * `date` - [date/time](../../../../getting-started.md#data-types). Task creation date for tasks with date condition.
-    * `engine_hours` - int. Initial engine hours value for tasks with engine hours condition.
-* `vehicle_id` - int. An id of associated vehicle.
-* `description` - string. Name of a service task. Max 255 characters.
-* `comment` - string. Comment for a task. Max 255 characters.
-* `cost` - float. Cost in the currency of the user. For information only.
-* `conditions` - task end conditions. At least one of fields ("mileage" or "date" or "engine_hours") must be passed.
-    * `mileage` - optional object. Mileage condition.
-        * `limit` - int. Task limit in kilometers.
-        * `notification_interval` - int. Notify about task in specified number of kilometers.
-    * `date` - optional date condition object. 
-        * `end` - [date/time](../../../../getting-started.md#data-types). Task end date.
-        * `notification_interval` - int. Notify about task in specified number of days.
-    * `engine_hours` - optional engine hours condition object.
-        * `limit` - int. Task limit in hours.
-        * `notification_interval` - int. Notify about task in specified number of hours.
-* `notifications` - notifications object.
-    * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format wo
-     `+` sign.
-    * `emails` - string array. Email addresses where sms notifications should be sent.
-    * `push_enabled` - boolean. If `true` push notifications enabled.
-* `repeat` - boolean. If `true` then new task will be created when current task done.
-* `unplanned` - boolean. If `true` service task is unplanned. For information only.
-* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted, 
-then file will remain in others. File will be deleted only when the last task with it will be deleted.
-
-About [task status](#task-status) property.
+* list - array of vehicle objects described [here](#service-task-object).
 
 #### errors
 
-* 201 (Not found in the database) – vehicle or tracker not found.
+* 201 Not found in the database – vehicle or tracker not found.
+
+<hr>
 
 ### read
 
@@ -414,7 +439,7 @@ Get service task info by its id.
 | name | description | type |
 | :------ | :------ | :----- |
 | task_id | Id of service task. | int |
-| return_prediction | Include legacy **prediction** field or not | boolean |
+| return_prediction | Include legacy **prediction** field or not. | boolean |
 
 #### examples
 
@@ -423,7 +448,7 @@ Get service task info by its id.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "return_prediction": "false"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "return_prediction": false}'
     ```
 
 === "HTTP GET"
@@ -492,16 +517,18 @@ Get service task info by its id.
 }
 ```
 
-All parameters described in a [list method](#list).
+All parameters described in a [here](#service-task-object).
 
 #### errors
 
-* 201 (Not found in the database) – does not exist one of tracker's counters which required to determine status.
-* 204 (Entity not found) – when vehicle or service task not found.
+* 201 Not found in the database – does not exist one of tracker's counters which required to determine status.
+* 204 Entity not found – when vehicle or service task not found.
+
+<hr>
 
 ### set_status
 
-Updates task status, snd saved (on `done` **status**) current date and values of used (in condition) counters for 
+Updates task status, and saved (on `done` **status**) current date and values of used (in condition) counters for 
 "freeze" wearing percent.
 
 #### parameters
@@ -535,8 +562,10 @@ Updates task status, snd saved (on `done` **status**) current date and values of
 
 #### errors
 
-* 201 (Not found in the database) – does not exist one of tracker's counters which required to determine status.
-* 204 (Entity not found) – when vehicle or service task not found.
+* 201 Not found in the database – does not exist one of tracker's counters which required to determine status.
+* 204 Entity not found – when vehicle or service task not found.
+
+<hr>
 
 ### update
 
@@ -566,9 +595,8 @@ A [task object](#create) described in a task create.
 { "success": true }
 ```
 
-
 #### errors
 
-* 204 (Entity not found) – when vehicle or service task not found.
-* 214 (Requested operation or parameters are not supported by the device) – engine hours condition passed but tracker
+* 204 Entity not found – when vehicle or service task not found.
+* 214 Requested operation or parameters are not supported by the device – engine hours condition passed but tracker
  hasn't ignition sensor.

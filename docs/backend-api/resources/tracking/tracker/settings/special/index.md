@@ -1,6 +1,6 @@
 ---
 title: About special settings
-description: About special settings
+description: About special settings. Some trackers provide additional specific kind of control which is defined with `special_control` field of tracker model.
 ---
 
 ## About special settings
@@ -16,9 +16,11 @@ This field contains `type`, which identifies a certain kind of settings. (For ex
 
 Such control assumes tracker special settings
 
+<hr>
+
 ## API actions
 
-API base path: `/tracker/settings/special`
+API base path: `/tracker/settings/special`.
 
 ### read
 
@@ -29,7 +31,7 @@ Gets special settings for the specified tracker.
 | name | description | type| format|
 | :------ | :------ | :----- | :------ |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| type | Optional. Type of special object | [enum](../../../../../getting-started.md#data-types) | "electronic_lock_password" |
+| type | Optional. Type of special object. | [enum](../../../../../getting-started.md#data-types) | "electronic_lock_password" |
 
 #### examples
 
@@ -564,6 +566,39 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 * `sensitivity` - [enum](../../../../../getting-started.md#data-types). Can be "easy" | "normal" | "hard" | "hardest".
 
+**ign_ruptela**
+
+For Ruptela devices. Represents configuration parameters related to ignition detection ("Engine detection" and "Custom ignition", as Ruptela's documentation calls them).
+
+[JSON-schema](https://json-schema.org):
+```
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "properties" : {
+    "mode" : {
+      "$ref" : "ruptela_ignition_mode.json"
+    },
+    "use_voltage" : {
+      "type" : [ "boolean", "null" ]
+    },
+    "voltage" : {
+      "type" : [ "number", "null" ]
+    }
+  },
+  "required" : [ "mode" ],
+   "$id" : "ruptela-ignition.json"
+}
+
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "string",
+  "enum" : [ "always_on", "din", "movement_sensor", "custom" ],
+  "$id" : "ruptela_ignition_mode.json"
+}
+```
+
+
 **ign_src_suntech**
 
 ```json
@@ -884,18 +919,20 @@ defined by this parameter. Can be 1 - 255.
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 * 214 – Requested operation or parameters are not supported by the device.
 
+<hr>
+
 ### update
 
 Sets special settings for a specified tracker with the new one.
 
-**required sub-user rights:** `tracker_configure`
+**required sub-user rights:** `tracker_configure`.
 
 #### parameters
 
 | name | description | type|
 | :------ | :------ | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| value | Settings object, see above | JSON object |
+| value | Settings object, see above. | JSON object |
 
 #### examples
 
@@ -915,7 +952,7 @@ Sets special settings for a specified tracker with the new one.
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
 

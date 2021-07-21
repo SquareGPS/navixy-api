@@ -5,9 +5,13 @@ description: Contains list method to get history types available to user with lo
 
 # History type
 
-API path: `/history/type`.
-
 Contains list method to get history types available to user with localized descriptions.
+
+<hr>
+
+## API actions
+
+API path: `/history/type`.
 
 ### list
 

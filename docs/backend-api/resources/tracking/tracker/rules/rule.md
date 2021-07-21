@@ -1,11 +1,14 @@
 ---
 title: Rule
-description: Rule
+description: API calls to interact with tracker's rules. Rules used to set up conditions according to which the system logs the events and sends notifications to user.
 ---
 
 # Rule
 
-A rule element consists of following fields:
+Contains API calls to interact with tracker's rules. Rules used to set up conditions according to which the system logs
+the events and sends notifications to user.
+
+<hr>
 
 ## Rule object
 
@@ -100,15 +103,17 @@ A rule element consists of following fields:
 * `date/time` and `local_time` types described at 
 the [data types description section](../../../../getting-started.md#data-types).
 
+<hr>
+
 ## API actions
 
-API base path: `/tracker/rule`
+API base path: `/tracker/rule`.
 
 ### bind
 
 Binds rule with `rule_id` to trackers list.
 
-**required sub-user rights:** `tracker_rule_update`
+**required sub-user rights:** `tracker_rule_update`.
 
 #### parameters
 
@@ -137,11 +142,13 @@ Binds rule with `rule_id` to trackers list.
 
 * 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
 
+<hr>
+
 ### create
 
 Creates rule and scheduled intervals.
 
-**required sub-user rights:** `tracker_rule_update`
+**required sub-user rights:** `tracker_rule_update`.
 
 #### parameters
 
@@ -185,11 +192,13 @@ Creates rule and scheduled intervals.
 
 * 204 - Entity not found – when associated zone is not exist.
 
+<hr>
+
 ### delete
 
 Deletes rule with rule_id and all related objects from the database.
 
-**required sub-user rights:** `tracker_rule_update`
+**required sub-user rights:** `tracker_rule_update`.
 
 #### parameters
 
@@ -221,7 +230,9 @@ Deletes rule with rule_id and all related objects from the database.
 
 #### errors
 
-* 201 (Not found in the database) – if rule with `rule_id` does not exist or owned by other user.
+* 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
+
+<hr>
 
 ### list
 
@@ -284,18 +295,20 @@ List tracker rules bound to tracker with an id=`tracker_id` or all users' tracke
 
 * `list` - list of rules
 
+<hr>
+
 ### unbind
 
 Unbinds trackers from rule with `rule_id`.
 
-**required sub-user rights:** `tracker_rule_update`
+**required sub-user rights:** `tracker_rule_update`.
 
 #### parameters
 
 | name | description | type |
 | :------ | :------ | :----- |
 | rule_id | Id of a rule. | int |
-| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. |
+| trackers | Ids of trackers. Trackers which do not exist, owned by other user or deleted ignored without errors. | int array |
 
 #### examples
 
@@ -315,13 +328,15 @@ Unbinds trackers from rule with `rule_id`.
 
 #### errors
 
-* 201 (Not found in the database) – if rule with `rule_id` does not exist or owned by other user.
+* 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
+
+<hr>
 
 ### update
 
 Updates rule and scheduled intervals.
 
-**required sub-user rights:** `tracker_rule_update`
+**required sub-user rights:** `tracker_rule_update`.
 
 #### parameters
 
@@ -359,5 +374,5 @@ Updates rule and scheduled intervals.
 
 #### errors
 
-* 201 (Not found in the database) – if rule is not exists or owned by other user.
-* 204 (Entity not found) – when new associated zone is not exists.
+* 201 - Not found in the database – if rule is not exists or owned by other user.
+* 204 - Entity not found – when new associated zone is not exists.

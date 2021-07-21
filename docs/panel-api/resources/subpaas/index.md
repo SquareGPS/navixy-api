@@ -7,7 +7,7 @@ description: API calls to interact with Subpaases.
 
 API calls to interact with Subpaases.
 
-API base path: `panel/subpaas`.
+<hr>
 
 ## Subpaas object
 
@@ -41,6 +41,12 @@ API base path: `panel/subpaas`.
 * `contact_fio` - string. Contact person.
 * `contact_post` - string. Contact post (position).
 * `contact_phone` - string. Contact's phone.
+
+<hr>
+
+## API actions
+
+API base path: `panel/subpaas`.
 
 ### create
 
@@ -80,6 +86,8 @@ Creates subpaas. After creation its `dealer_block_type` will be in `INITIAL_BLOC
     * is not paas.
     * has different status than `NOT_BLOCKED`.
     * his tariff doesn't allow subpaases.
+
+<hr>
 
 ### list
 
@@ -141,6 +149,8 @@ Gets a list of all subpaases for a dealer. Dealer id will be taken from the sess
     * has different status than `NOT_BLOCKED`.
     * his tariff doesn't allow subpaases.
 
+<hr>
+
 ### read
 
 Gets subpaas info by its id.
@@ -195,7 +205,9 @@ Gets subpaas info by its id.
     * is not paas.
     * has different status than `NOT_BLOCKED`.
     * his tariff doesn't allow subpaases.
-    
+
+<hr>
+
 ### update
 
 Updates a subpaas with specified id.

@@ -1,11 +1,14 @@
 ---
 title: Driver journal entry
-description: Driver journal entry
+description: Contains driver journal entry object description and API calls to work with it.
 ---
 
 # Driver journal entry
 
-API path: `/driver/journal/entry`.
+Contains driver journal entry object description and API calls to work with it. Using the driver journal, you can monitor
+trips and categorize them by status to see the full picture of transport usage. Driver Entry is an already categorized trip.
+
+<hr>
 
 ## Driver journal entry object
 
@@ -46,6 +49,12 @@ API path: `/driver/journal/entry`.
 * `length` - float. Length of the trip km.
 * `start_odometer` - nullable float. Odometer's value at the start.
 * `end_odometer` - nullable float. Odometer's value at the end.
+
+<hr>
+
+## API actions
+
+API path: `/driver/journal/entry`.
 
 ### list
 
@@ -117,6 +126,12 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
 }
 ```
 
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
+
 ### create
 
 Creates driver journal entries.
@@ -143,6 +158,12 @@ Creates driver journal entries.
 { "success": true}
 ```
 
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types.
+
+<hr>
+
 ### update
 
 Updates driver journal entry. Only two fields `type` and `comment` are available to update.
@@ -151,7 +172,7 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 
 | name | description | type |
 | :------ | :------ | :----- |
-| entry | `driver_journal_entry_update_request` type. See below. | object |
+| entry | `driver_journal_entry_update_request` type. See below. | JSON object |
 
 * `driver_journal_entry_update_request` object:
   
@@ -182,6 +203,12 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 ```json
 { "success": true }
 ```
+
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### delete
 
@@ -215,6 +242,12 @@ Deletes driver journal entries.
 { "success": true }
 ```
 
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
+
 ### download
 
 Gets driver journal entries. Entries selected by intersecting their date range with date range from request (`from` 
@@ -231,7 +264,7 @@ and `to` parameters).
 | types | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`. | string array |
 | sort | Optional. Set of [sort options](#list). Each option is a pair of column name and sorting direction, e.g. `["start_date=acs", "type=desc"]`. | string array |
 | add_filename_header | If `true` then Content-Disposition header will be appended to the response. Default value is `true`. | boolean |
-| format | File format: "pdf", "xls" and "xlsx" | string |
+| format | File format: "pdf", "xls" and "xlsx". | string |
 | group_by | Optional. If specified, grouped entries will be in different sections of the table. | string |
 
 * Possible values of `group_by` parameter:
@@ -251,3 +284,7 @@ and `to` parameters).
 #### response
 
 A driver journal report file (standard file download).
+
+#### errors
+
+* [General](../../../getting-started.md#error-codes) types only.

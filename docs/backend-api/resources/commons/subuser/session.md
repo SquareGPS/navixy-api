@@ -5,9 +5,13 @@ description: Sub-user session actions to obtain its hash
 
 # Subuser session
 
-API path: `/subuser/session/`.
-
 Sub-user session actions to obtain its hash.
+
+<hr>
+
+## API actions
+
+API path: `/subuser/session/`.
 
 ### create
 

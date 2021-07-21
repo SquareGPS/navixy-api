@@ -1,11 +1,13 @@
 ---
 title: Rule types
-description: Rule types
+description: Rule types with all parameters to create. The rule availability depends on the device and rule integration for it.
 ---
 
 # Rule types
 
 Rule types with all parameters to create. The rule availability depends on the device and rule integration for it.
+
+<hr>
 
 ### Common parameters
 
@@ -33,6 +35,8 @@ Common parameters exist in all rule types.
 | zone_limit_inverted | The rule tracked inside or outside zones. Default is: `false`. | boolean |
 | private_rule | Affects only sub users now. If `true` then the rule and notifications are visible only to sub user. | boolean |
 
+<hr>
+
 ### Geofence entrance or exit
 
 A rule that triggers on entering/exiting geofences.
@@ -50,6 +54,8 @@ A rule that triggers on entering/exiting geofences.
 | ------ | ------------- | ------ |
 | append_zone_title | Show or not a label of zone in a notification. | boolean |
 
+<hr>
+
 ### Speed exceeding
 
 A rule that triggers on speed exceeding.
@@ -61,6 +67,8 @@ A rule that triggers on speed exceeding.
 | type | Default `type`: "speedup". | [enum](../../../../getting-started.md#data-types) |
 | param | Speed limit. | int |
 
+<hr>
+
 ### Parking state detection
 
 A rule that triggers on detection of parking state.
@@ -71,6 +79,8 @@ A rule that triggers on detection of parking state.
 | ------ | ------------- | ------ |
 | type | Default `type`: "track_change". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
+
+<hr>
 
 ### Deviation from the route
 
@@ -88,6 +98,8 @@ A rule that triggers on deviations from the route.
 | ------ | ------------- | ------ |
 | allow_exit_at_endpoints | If `true` disables notifications on deviations from the start and end points of a route. | boolean |
 
+<hr>
+
 ### Work status change
 
 A rule that triggers on status changing. 
@@ -103,6 +115,8 @@ A rule that triggers on status changing.
 | name | description | type |
 | ------ | ------------- | ------ |
 | status_ids | List of tracked status ids. | int array |
+
+<hr>
 
 ### Task performance
 
@@ -122,6 +136,8 @@ A rule that triggers on task status changes.
 | on_form_submission | If `true` form submission will track. | boolean |
 | on_repeated_form_submission | If `true` form resubmission will track. | boolean |
 
+<hr>
+
 ### Excessive idling (hardware related)
 
 A rule that triggers on excessive idling registered by hardware.
@@ -132,6 +148,8 @@ A rule that triggers on excessive idling registered by hardware.
 | ------ | ------------- | ------ |
 | type | Default `type`: "idling". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
+
+<hr>
 
 ### Excessive idling (platform related)
 
@@ -144,6 +162,8 @@ A rule that triggers on excessive idling registered by the platform.
 | type | Default `type`: "idling_soft". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
 | param | Idle duration to send notification. | int | 
+
+<hr>
 
 ### Fuel level change
 
@@ -162,6 +182,8 @@ A rule that triggers on a fuel level change.
 | ------ | ------------- | ------ |
 | sensor_id | Id of tracked sensor. | int |
 
+<hr>
+
 ### Harsh driving
 
 A rule that triggers on harsh driving.
@@ -171,6 +193,8 @@ A rule that triggers on harsh driving.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "harsh_driving". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Pressing SOS button
 
@@ -182,6 +206,8 @@ A rule that triggers on SOS button pressing.
 | ------ | ------------- | ------ |
 | type | Default `type`: "sos". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### Auto geofencing
 
 A rule that triggers on auto geofencing.
@@ -191,6 +217,8 @@ A rule that triggers on auto geofencing.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "auto_geofence". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Fall detection
 
@@ -202,6 +230,8 @@ A rule that triggers on fall detection.
 | ------ | ------------- | ------ |
 | type | Default `type`: "g_sensor". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### Unauthorized movement
 
 A rule that triggers on unauthorized movement.
@@ -212,6 +242,8 @@ A rule that triggers on unauthorized movement.
 | ------ | ------------- | ------ |
 | type | Default `type`: "parking". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### Car crash
 
 A rule that triggers on a car crash.
@@ -221,6 +253,8 @@ A rule that triggers on a car crash.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "crash_alarm". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Autocontrol related
 
@@ -308,6 +342,8 @@ Autocontrol related tracked rules.
 }
 ```
 
+<hr>
+
 ### Advanced driver assistance systems (ADAS)
 
 A rule that triggers on warnings from driver-assistance systems (ADAS).
@@ -329,6 +365,8 @@ A rule that triggers on warnings from driver-assistance systems (ADAS).
 | peds_collision_warning_enabled | If `true` lane departure tracked. |  boolean |
 | traffic_sign_recognition_enabled | If `true` lane departure tracked. |  boolean |
 
+<hr>
+
 ### Identification via RFID/iButton
 
 A rule that triggers on a driver identification.
@@ -340,6 +378,8 @@ A rule that triggers on a driver identification.
 | type | Default `type`: "driver_identification". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
 
+<hr>
+
 ### Driver change
 
 A rule that triggers on driver change.
@@ -349,6 +389,8 @@ A rule that triggers on driver change.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "driver_change". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Fatigue driving
 
@@ -360,6 +402,8 @@ A rule that triggers on fatigue driving.
 | ------ | ------------- | ------ |
 | type | Default `type`: "fatigue_driving". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### Social distancing monitoring
 
 A rule that triggers on social distancing violation.
@@ -370,6 +414,8 @@ A rule that triggers on social distancing violation.
 | ------ | ------------- | ------ |
 | type | Default `type`: "proximity_violation". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
+
+<hr>
 
 ### Tracker switched OFF or lost connection
 
@@ -383,6 +429,8 @@ A rule that triggers on device switch OFF and lost connection.
 | secondary_text | Secondary text of rule notification. | string |
 | param | Offline time to notification. | int |
 
+<hr>
+
 ### GSM signal dump
 
 A rule that triggers on GSM signal dump.
@@ -392,6 +440,8 @@ A rule that triggers on GSM signal dump.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "gsm_damp". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Low battery
 
@@ -403,6 +453,8 @@ A rule that triggers on low internal battery.
 | ------ | ------------- | ------ |
 | type | Default `type`: "lowpower". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### Bracelet sensor
 
 A rule that triggers on bracelet sensor opening/closing.
@@ -412,6 +464,8 @@ A rule that triggers on bracelet sensor opening/closing.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "bracelet". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Car alarm triggered
 
@@ -423,6 +477,8 @@ A rule that triggers on car alarm.
 | ------ | ------------- | ------ |
 | type | Default `type`: "alarmcontrol". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### Tracker detach from the objects
 
 A rule that triggers on a tracker detach from the object.
@@ -432,6 +488,8 @@ A rule that triggers on a tracker detach from the object.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "detach". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### External power cut
 
@@ -444,6 +502,8 @@ A rule that triggers on external power cut.
 | type | Default `type`: "battery_off". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
 
+<hr>
+
 ### Door opening in alarm mode
 
 A rule that triggers on door opening in alarm mode.
@@ -453,6 +513,8 @@ A rule that triggers on door opening in alarm mode.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "door_alarm". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Hood opening in alarm mode
 
@@ -464,6 +526,8 @@ A rule that triggers on hood opening in alarm mode.
 | ------ | ------------- | ------ |
 | type | Default `type`: "hood_alarm". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### Location report on demand
 
 A rule that triggers on location requests.
@@ -473,6 +537,8 @@ A rule that triggers on location requests.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "location_response". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Connection/disconnection to the OBD2 port
 
@@ -485,6 +551,8 @@ A rule that triggers on connection/disconnection to the OBD2 port.
 | type | Default `type`: "obd_plug_unplug". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
 
+<hr>
+
 ### Tracker switch ON/OFF
 
 A rule that triggers on tracker switch ON/OFF.
@@ -495,6 +563,8 @@ A rule that triggers on tracker switch ON/OFF.
 | ------ | ------------- | ------ |
 | type | Default `type`: "on_off". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
+
+<hr>
 
 ### Locking/unlocking (padlock)
 
@@ -507,6 +577,8 @@ A rule that triggers on locking/unlocking(padlock).
 | type | Default `type`: "locking_unlocking". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
 
+<hr>
+
 ### Backup battery low
 
 A rule that triggers on backup battery low.
@@ -517,6 +589,8 @@ A rule that triggers on backup battery low.
 | ------ | ------------- | ------ |
 | type | Default `type`: "backup_battery_low". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### Case intrusion
 
 A rule that triggers on case intrusion.
@@ -526,6 +600,8 @@ A rule that triggers on case intrusion.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "case_intrusion". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### GPS signal lost/recover
 
@@ -538,6 +614,8 @@ A rule that triggers on GPS signal lost/recover.
 | type | Default `type`: "gps_lost_recover". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
 
+<hr>
+
 ### Padlock tampering
 
 A rule that triggers on padlock tampering.
@@ -548,6 +626,8 @@ A rule that triggers on padlock tampering.
 | ------ | ------------- | ------ |
 | type | Default `type`: "strap_bolt". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
+
+<hr>
 
 ### Vibration sensor
 
@@ -560,6 +640,8 @@ A rule that triggers on vibration sensor.
 | type | Default `type`: "vibration". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
 
+<hr>
+
 ### Light sensor
 
 A rule that triggers on a light sensor.
@@ -571,6 +653,8 @@ A rule that triggers on a light sensor.
 | type | Default `type`: "light_sensor". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
 
+<hr>
+
 ### Call button pressed
 
 A rule that triggers on call button pressing. 
@@ -580,6 +664,8 @@ A rule that triggers on call button pressing.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "call_button_pressed". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Tracker switched ON
 
@@ -591,6 +677,8 @@ A rule that triggers on tracker switch ON.
 | ------ | ------------- | ------ |
 | type | Default `type`: "poweron". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### GPS antenna disconnected
 
 A rule that triggers on GPS antenna disconnect.
@@ -601,6 +689,8 @@ A rule that triggers on GPS antenna disconnect.
 | ------ | ------------- | ------ |
 | type | Default `type`: "antenna_disconnect". | [enum](../../../../getting-started.md#data-types) |
 
+<hr>
+
 ### Check engine (MIL)
 
 A rule that triggers on check engine (MIL) events.
@@ -610,6 +700,8 @@ A rule that triggers on check engine (MIL) events.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "check_engine_light". | [enum](../../../../getting-started.md#data-types) |
+
+<hr>
 
 ### Inputs triggering.
 
@@ -623,6 +715,8 @@ A rule on inputs triggering.
 | secondary_text | Secondary text of rule notification. | string |
 | param | Input number. | int | 
 
+<hr>
+
 ### Outputs triggering
 
 A rule on outputs triggering.
@@ -634,6 +728,8 @@ A rule on outputs triggering.
 | type | Default `type`: "output_change". | [enum](../../../../getting-started.md#data-types) |
 | secondary_text | Secondary text of rule notification. | string |
 | param | Output number. | int | 
+
+<hr>
 
 ### Parameter in range
 
@@ -654,6 +750,8 @@ A rule that triggers on a parameter in range.
 | sensor_id | Id of a tracked sensor. | int |
 | min | A minimum range value. | int |
 | max | A maximum range value. | int |
+
+<hr>
 
 ### No movement
 

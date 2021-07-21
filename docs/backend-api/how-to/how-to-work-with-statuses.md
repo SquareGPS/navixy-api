@@ -9,13 +9,15 @@ Statuses are used to track current employee activity (in fact, of tracking devic
 The simplest example is "busy" | "not busy". This is a status listing consisting of two elements (statuses). Different
 trackers can be assigned different status lists.
 
+<hr>
+
 ## Create
 
 We need to create a status listing that we will assign to the device. Based on the statuses that are created for the sheet
 - we will have a choice - what status can be assigned to the tracker.
 
 To create the listing we need only one parameter:
-* `listing` - [status_listing](../resources/tracking/status/index.md#status-listing-object-structure) object without "id" and "entries" fields.
+* `listing` - [status_listing](../resources/tracking/status/listing/index.md#status-listing-object-structure) object without "id" and "entries" fields.
 
 For example, we will create a listing for the delivery service to allow drivers and supervisors to change the status.
 Drivers can change their status using the X-GPS app. Supervisors can change status using the UI.
@@ -62,6 +64,8 @@ The response will contain id of a new status:
     "id": 1
 }
 ```
+
+<hr>
 
 ## Assign
 

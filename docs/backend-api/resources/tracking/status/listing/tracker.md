@@ -1,19 +1,23 @@
 ---
 title: Tracker status listing
-description: Tracker status listing
+description: Contains API call which link together trackers and status listings.
 ---
 
 # Tracker status listing
 
-Contains api calls which link together trackers and status listings.
+Contains api call which link together trackers and status listings.
 
-API base path: `/status/listing/tracker`
+<hr>
+
+## API actions
+
+API base path: `/status/listing/tracker`.
 
 ### assign
 
 Assigns a status listing (or remove assignment) to the tracker.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -46,10 +50,10 @@ Assigns a status listing (or remove assignment) to the tracker.
 
 #### errors
 
-* 201 (Not found in the database) – if there is no tracker with such ID belonging to authorized user.
-* 204 (Entity not found) – if there is no listing with such ID.
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
-* 219 (Not allowed for clones of the device) – if specified tracker is a clone.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
+* 201 - Not found in the database – if there is no tracker with such ID belonging to authorized user.
+* 204 - Entity not found – if there is no listing with such ID.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 - Not allowed for clones of the device – if specified tracker is a clone.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
 

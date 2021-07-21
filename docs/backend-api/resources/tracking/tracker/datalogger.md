@@ -1,10 +1,16 @@
 ---
 title: Datalogger
-description: Uploading datalogger information
+description: API call for uploading datalogger information.
 ---
 # Datalogger
 
-API base path: `/tracker/datalogger`
+API call for uploading datalogger information.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/datalogger`.
 
 ### upload
 
@@ -28,7 +34,7 @@ Uploads track data for specified tracker. Tracker must be a datalogger.
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 219 – Not allowed for clones of the device (if tracker is clone).
-* 233 – No data file (if file part is missing).
-* 214 – Requested operation or parameters are not supported by the device (if specified tracker is not datalogger).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 219 – Not allowed for clones of the device - if tracker is clone.
+* 233 – No data file - if file part is missing.
+* 214 – Requested operation or parameters are not supported by the device - if specified tracker is not datalogger.

@@ -39,7 +39,9 @@ To prolong the session, use the [following API call](../resources/commons/user/s
 You can disable the current hash with the [following call](../resources/commons/user/index.md#logout):
 
     {{ extra.api_example_url }}/user/logout?hash=your_hash
-    
+
+<hr>
+
 ## Using hash
 
 You must pass session hash with most API calls along other parameters required to make the call.

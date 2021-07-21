@@ -5,9 +5,13 @@ description: Contains a call to prolong user session.
 
 # User session
 
-API path: `/user/session`.
-
 Contains a call to prolong user session.
+
+<hr>
+
+## API actions
+
+API path: `/user/session`.
 
 ### renew
 
@@ -38,3 +42,4 @@ Only session `hash`.
 ```json
 { "success": true }
 ```
+

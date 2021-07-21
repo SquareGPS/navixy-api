@@ -1,11 +1,14 @@
 ---
 title: Garage
-description: Garage
+description: Contains garage object and API calls to interact with it.
 ---
 
 # Garage
 
-API path: `/garage`.
+Contains garage object and API calls to interact with it. Garage object contains name, address, name of the mechanic, name
+of the dispatcher and others. This data can be used for more convenient and efficient maintenance and task management.
+
+<hr>
 
 ## Garage object
 
@@ -25,11 +28,17 @@ API path: `/garage`.
 ```
 
 * `id` - int. Garage id.
-* `location` - valid location or null.
+* `location` - location object. Valid location or null.
+
+<hr>
+
+## API actions
+
+API path: `/garage`.
 
 ### list
 
-Get all garages belonging to user.
+Gets all garages belonging to user.
 
 #### examples
 
@@ -71,11 +80,13 @@ Get all garages belonging to user.
 
 [General](../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### create
 
 Creates a new garage.
 
-**required sub-user rights**: `vehicle_update`
+**required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
@@ -108,11 +119,13 @@ Creates a new garage.
 
 [General](../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### update
 
 Updates existing garage with the specified id.
 
-**required sub-user rights**: `vehicle_update`
+**required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
@@ -138,14 +151,15 @@ Updates existing garage with the specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no garage with such an id).
+* 201 – Not found in the database - if there is no garage with such an id.
 
+<hr>
 
 ### delete
 
 Deletes a garage with the specified id.
 
-**required sub-user rights**: `vehicle_update`
+**required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
@@ -177,4 +191,4 @@ Deletes a garage with the specified id.
     
 #### errors
 
-* 201 – Not found in the database (if there is no garage with such an id).
+* 201 – Not found in the database - if there is no garage with such an id.

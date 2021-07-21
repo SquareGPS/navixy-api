@@ -12,6 +12,8 @@ Each API resource semantically corresponds to some entity, for example:
 geofences, rules, objects, etc. The API calls for CRUD and other operations 
 with these entities have similar names regardless the resource used: list, read, create, delete.
 
+<hr>
+
 ## Standard workflow (example)
 
 Let's describe the standard workflow for API developer using very simple and most 
@@ -26,6 +28,8 @@ common example — requesting the track points data:
 In other words, to start working with API, the developers should have API call 
 description (as provided herein), and know user login and password.
 
+<hr>
+
 ## API base URL
 
 Depending on the physical location of the platform it will be:
@@ -38,6 +42,8 @@ For example, to make [`user/auth`](./resources/commons/user/index.md#auth)
 API call on the European Navixy ServerMate, you should use the URL: 
 
     https://api.eu.navixy.com/v2/user/auth
+
+<hr>
 
 ## API calls format
 
@@ -88,6 +94,8 @@ Typical actions:
 *   `read` – read one entity by ID
 *   `update` – update one entity by ID
 *   `delete` – delete one entity by ID
+
+<hr>
 
 ### Request and response format
 
@@ -175,11 +183,15 @@ Or error if hash is wrong:
 }
 ```
 
+<hr>
+
 ### HTTP codes
 
 If `success` is `true`, HTTP code is always `200 OK` (unless otherwise stated).
 If there is an error, HTTP code is `400 BAD REQUEST` (may vary depending on error type) 
 (see [error](#error-codes)).
+
+<hr>
 
 ### Authorization and access levels
 
@@ -216,6 +228,8 @@ Session hash can be obtained via `user/auth` API call:
     [api_base_url]/user/auth?login=demo&password=demo
     ```
 
+<hr>
+
 ### Data types
 
 *   `bool`, boolean - logical type: `true` of `false`. 
@@ -229,7 +243,7 @@ Session hash can be obtained via `user/auth` API call:
     `[1.7976931348623157 x 10^308, 4.9406564584124654 x 10^-324]`.
 *   `string` - string literals.
 *   `enum` - string literals from predefined set.
-*   `date/time` – is a string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
+*   `date/time` – is a string containing date/time in [defined formats](#datetime-formats).
 *   `local_time` – is a string containing local time in `HH:mm:ss` format.
 *   `location` – is json object contains geographical coordinates, e.g.
 ```json
@@ -241,6 +255,40 @@ Session hash can be obtained via `user/auth` API call:
     country code, e.g. `en_US` or `ru`. User interface support only language codes: 
     `ru, en, es, ar, de, pt, ro and uk`.
     
+<hr>
+
+### Date/time formats
+
+Date/time type can be represented with formats:
+ - `yyyy-MM-dd HH:mm:ss` format (in user's timezone), default
+ - [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) `yyyy-MM-dd'T'HH:mm:ssZZ`
+
+To use ISO 8601 date/time format you should pass `true` to (in order of lookup priority)
+1. `iso_datetime` parameter of the request body (root-level property for `application/json`).
+2. `iso_datetime` parameter of the HTTP query string.
+3. HTTP header `NVX-ISO-DateTime`
+
+=== "JSON request body parameter"
+```abap
+$ curl -X POST '[api_base_url]/resource/sub_resource/action' \
+-H 'Content-Type: application/json' \
+-d '{"iso_datetime": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+
+=== "form request parameter"
+```abap
+$ curl -X POST '[api_base_url]/resource/sub_resource/action' \
+-d 'iso_datetime=true' \
+-d 'hash=a6aa75587e5c59c32d347da438505fc3'
+```
+
+=== "HTTP Header"
+```abap
+$ curl -X POST '[api_base_url]/resource/sub_resource/action' \
+-H 'Content-Type: application/json' \
+-H 'NVX-ISO-DateTime: true' \
+-d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
 
 ### Error handling
 
@@ -257,6 +305,8 @@ In the event of error occurs, the response will be in the following format:
 }
 ```
 where `code` is one on the [error codes](#error-codes).
+
+<hr>
 
 #### Error codes
 

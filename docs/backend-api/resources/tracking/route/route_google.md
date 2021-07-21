@@ -1,15 +1,21 @@
 ---
 title: Tracking route Google
-description: Tracking route Google
+description: API call for getting the route to destination point using Google Directions API.
 ---
 
 # Tracking route Google
+
+API call for getting the route to destination point using [Google Directions API](https://developers.google.com/maps/documentation/directions/intro).
+
+<hr>
+
+## API actions
 
 API path: `/route/google`.
 
 ### get
 
-Gets route points using [Google Directions API](https://developers.google.com/maps/documentation/directions/intro).
+Gets route points using Google Directions API.
 
 #### parameters
 
@@ -17,12 +23,12 @@ Gets route points using [Google Directions API](https://developers.google.com/ma
 | :------ | :------ | :----- |
 | start | Location JSON object. Start of route. | JSON object |
 | end | Location JSON object. End of route. | JSON object |
-| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]` | array of JSON objects |
+| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]`. | array of JSON objects |
 | point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int |
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -63,7 +69,7 @@ Where **location** described in [data types description section](../../../gettin
 
 #### errors
 
-215 (External service error).
+215 - External service error.
 
 ```json
     {
@@ -76,14 +82,14 @@ Where **location** described in [data types description section](../../../gettin
     }
 ```
 
-* `errors` - [enum](../../../getting-started.md#data-types) array. Status. 
+  * `errors` - [enum](../../../getting-started.md#data-types) array. Status. 
     *   `OVER_QUERY_LIMIT` – indicates the service has received too many requests from your application within the 
     allowed time period.
     *   `REQUEST_DENIED` – indicates that the service denied use of the directions service by your application.
     *   `UNKNOWN_ERROR` – indicates directions request could not be processed due to a server error. The request may 
     succeed if you try again.
 
-218 (Malformed external service parameters)
+218 - Malformed external service parameters.
 
 ```json
     {
@@ -106,5 +112,5 @@ Where **location** described in [data types description section](../../../gettin
     *   `INVALID_REQUEST` – indicates that the provided request was invalid. Common causes of this status include 
     an invalid parameter or parameter value.
 
-236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without "routing" tariff 
+236 - Feature unavailable due to tariff restrictions – if there is at least one tracker without "routing" tariff 
 feature.

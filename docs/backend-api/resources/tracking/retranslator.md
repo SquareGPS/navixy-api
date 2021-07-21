@@ -5,9 +5,10 @@ description: Retranslator
 
 # Retranslator
 
-API path: `/retranslator`.
+Retranslarot and retranslator protocol objects and CRUD actions for retranslators. They can be used to redirect the data
+that comes from a device to the platform to some third-party application specified by the user.
 
-CRUD actions for retranslators.
+<hr>
 
 ## Retranslator protocol object
  
@@ -25,11 +26,13 @@ CRUD actions for retranslators.
 
 * `id` - int. Protocol ID.
 * `name` - string. Protocol name.
-* `has_login` - boolean. True if this protocol use login.
-* `has_password` - boolean. True if this protocol use password.
-* `fake_device_id_pattern` - optional string. Regex pattern for fake_device_id validation.
-* `required_login` - boolean. True if for this protocol login required.
-* `required_password` - boolean. True if for this protocol password required.
+* `has_login` - boolean. `true` if this protocol use login.
+* `has_password` - boolean. `true` if this protocol use password.
+* `fake_device_id_pattern` - optional string. Regex pattern for `fake_device_id` validation.
+* `required_login` - boolean. `true` if for this protocol login required.
+* `required_password` - boolean. `true` if for this protocol password required.
+
+<hr>
 
 ## Retranslator object
 
@@ -55,7 +58,11 @@ CRUD actions for retranslators.
 * `password` - optional string.
 * `enabled` - boolean. Status.
 
+<hr>
+
 ## API actions
+
+API path: `/retranslator`.
 
 ### create
 
@@ -69,7 +76,7 @@ Creates new retranslator.
 | :------ | :------ | :----- |
 | retranslator | Retranslator object without `id` field. | JSON object |
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -92,10 +99,11 @@ Creates new retranslator.
 
 #### errors
 
-* 247 (Entity already exists) - if retranslator with this address, port and login already exists.
-* 7 (Invalid parameters) - if retranslator have required fields (login or password), but was send empty.
-* 268 (Over quota) – if the user's quota for retranslators exceeded.
+* 247 - Entity already exists - if retranslator with this address, port and login already exists.
+* 7 - Invalid parameters - if retranslator have required fields (login or password), but was send empty.
+* 268 - Over quota – if the user's quota for retranslators exceeded.
 
+<hr>
 
 ### delete
 
@@ -133,7 +141,9 @@ Deletes user's retranslator with specified `retranslator_id`.
 
 #### errors
 
-* 201 (Not found in the database).
+* 201 - Not found in the database.
+
+<hr>
 
 ### list
 
@@ -182,6 +192,8 @@ Get all users' retranslators.
 * `password` - optional string.
 * `enabled` - boolean. Status.
 
+<hr>
+
 ### update
 
 Updates retranslator parameters for the specified retranslator. Note that retranslator must exist, and must belong to 
@@ -195,7 +207,7 @@ the current user.
 | :------ | :------ | :----- |
 | retranslator | Retranslator object without `id` field. | JSON object |
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -213,12 +225,20 @@ the current user.
 
 #### errors
 
-* 201 (Not found in the database) – if retranslator with the specified ID cannot be found or belongs to another user.
-* 247 (Entity already exists) – if retranslator with this address, port and login already exists.
+* 201 - Not found in the database – if retranslator with the specified ID cannot be found or belongs to another user.
+* 247 - Entity already exists – if retranslator with this address, port and login already exists.
+
+<hr>
 
 ### protocols list
 
 Returns all available retranslator protocols.
+
+#### parameters
+
+Only session `hash`.
+
+#### examples
 
 === "cURL"
 
@@ -255,6 +275,6 @@ Returns all available retranslator protocols.
 * `name` - string. Protocol name.
 * `has_login` - boolean. `true` if this protocol use login.
 * `has_password` - boolean. `true` if this protocol use password.
-* `fake_device_id_pattern` - optional string. Regex pattern for fake_device_id validation.
+* `fake_device_id_pattern` - optional string. Regex pattern for `fake_device_id` validation.
 * `required_login` - boolean. `true` if for this protocol login required.
 * `required_password` - boolean. `true` if for this protocol password required.

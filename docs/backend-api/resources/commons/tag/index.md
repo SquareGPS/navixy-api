@@ -5,12 +5,12 @@ description: Tag is a label, or a key word that is used for a quick and easy sea
 
 # Tag
 
-API path: `/tag`.
-
 Tag is a label, or a key word that is used for a quick and easy search. They help find the needed places, geofences, 
 employees, tasks, trackers, and vehicles. Contains tag object and API calls to interact with it.
 
-#### tag object
+<hr>
+
+## Tag object
 
 ```json
 {
@@ -35,6 +35,12 @@ employees, tasks, trackers, and vehicles. Contains tag object and API calls to i
 * vehicle
 * zone
 * tracker
+
+<hr>
+
+## API actions
+
+API path: `/tag`.
 
 ### create
 
@@ -79,6 +85,8 @@ Creates a new tag.
 
 [General](../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### delete
 
 Deletes tag with the specified id.
@@ -118,6 +126,8 @@ Deletes tag with the specified id.
 #### errors
 
 * 201 – Not found in the database - if there is no tag with such an id.
+
+<hr>
 
 ### list
 
@@ -162,6 +172,8 @@ Gets all tags belonging to user with optional filtering.
 #### errors
 
 [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### search
 
@@ -218,6 +230,8 @@ Search entities that bound with all of specified tags.
 #### errors
 
 [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### update
 

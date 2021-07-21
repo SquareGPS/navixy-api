@@ -12,6 +12,8 @@ task description, contact numbers, etc.
 To start work with tasks, they must be created. It will be a task with one point or several? This will determine whether
 we create a single task, or a route task.
 
+<hr>
+
 ### Single task
 
 Creation of a new single task.
@@ -55,6 +57,8 @@ The response will contain id of a new task.
     "id": 111
 }
 ```
+
+<hr>
 
 ### Route task
 
@@ -168,3 +172,9 @@ Response will consist the order in that checkpoint objects should be specified i
     ]
 }
 ```
+
+#### Association with address
+
+To associate the task or checkpoint with an address it should be specified in the location object. In this case, location 
+object in the create action will have an additional field - address. To get an address when you have location use the 
+[geocoder/search_location](../resources/tracking/geocoder.md#search_location) call.

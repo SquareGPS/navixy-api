@@ -1,19 +1,25 @@
 ---
 title: Mobile app register
-description: Mobile app register
+description: API call to register a mobile application. Deprecated.
 ---
 # Mobile app register
 
 !!! warning "Deprecated"
     This API action deprecated and should not be used.
 
-API base path: `/tracker/mobile`
+API call to register a mobile application. Use [tracker/register](./index.md#register) with `plugin_id` 35.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/mobile`.
 
 ### register
 
 Registers new mobile client application.
 
-**required sub-user rights:** `tracker_register`
+**required sub-user rights:** `tracker_register`.
 
 #### parameters
 
@@ -42,7 +48,7 @@ For `tracker` object structure, see [tracker/](./index.md#tracker-object-structu
 #### errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
-* 204 – Entity not found (if specified group does not exist).
-* 221 – Device limit exceeded (if device limit set for the user's dealer has been exceeded).
-* 224 – Device ID already in use (if specified device ID already registered in the system).
-* 225 – Not allowed for this legal type (if tariff of the new device is not compatible with user's legal type).
+* 204 – Entity not found - if specified group does not exist.
+* 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
+* 224 – Device ID already in use - if specified device ID already registered in the system.
+* 225 – Not allowed for this legal type - if tariff of the new device is not compatible with user's legal type.

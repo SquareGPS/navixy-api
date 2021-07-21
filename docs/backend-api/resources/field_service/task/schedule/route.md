@@ -1,11 +1,13 @@
 ---
 title: Scheduling routes
-description: Scheduling routes
+description: These actions allow creating scheduled routes similarly to regular routes.
 ---
 
 # Scheduling routes
 
 These actions allow creating scheduled routes similarly to regular routes.
+
+<hr>
 
 ## API actions
 
@@ -33,6 +35,7 @@ Creates route schedule with checkpoints.
     ```
 
 #### response
+
 ```json
 {
     "success": true,
@@ -41,6 +44,12 @@ Creates route schedule with checkpoints.
 ```
 
 * `id` - int. An id of the created route schedule entry.
+
+#### errors
+
+[General](../../../../getting-started.md#error-codes) types.
+
+<hr>
 
 ### delete
 
@@ -69,11 +78,18 @@ Deletes route schedule with checkpoints.
     ```
 
 #### response
+
 ```json
 {
     "success": true
 }
 ```
+
+#### errors
+
+[General](../../../../getting-started.md#error-codes) types.
+
+<hr>
 
 ### update
 
@@ -103,3 +119,7 @@ If checkpoint is being updated, then it should have an id. If old checkpoint is 
 ```json
 { "success": true }
 ```
+
+#### errors
+
+[General](../../../../getting-started.md#error-codes) types.

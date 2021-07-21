@@ -1,6 +1,6 @@
 ---
 title: Check-ins
-description: Check-ins
+description: API actions to interact with check-ins
 ---
 
 # Check-ins
@@ -14,6 +14,8 @@ Using check-ins field personnel can provide information to their HQ while on sit
 of the work done, or notify about a malfunction along with filled form describing the problem.
 
 Check-ins cannot be created using web API, so all actions are read-only.
+
+<hr>
 
 ## Check-in object
 
@@ -75,6 +77,8 @@ Check-ins cannot be created using web API, so all actions are read-only.
     * `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
 * `form_id` - int. An id of the form which was sent along with a check-in, can be null.
 * `form_label` - string. Label of the form which was sent along with a check-in, can be null.
+
+<hr>
 
 ## API actions
 
@@ -153,6 +157,8 @@ Get check-in which id is equal to `checkin_id`.
 * 7 – Invalid parameters.
 * 204 – Entity not found – when the marker entry is not exists.
 
+<hr>
+
 ### list
 
 Gets marker entries on a map for trackers and for the specified time interval.
@@ -164,20 +170,20 @@ Gets marker entries on a map for trackers and for the specified time interval.
 | name | description | type |
 | :--- | :--- | :--- |
 | trackers | Optional. Array of tracker ids. All trackers must not be deleted or blocked (if list_blocked=false). If not specified, all available trackers will be used as value. | int array |
-| from | Optional. Start date/time for searching. | date/time |
-| to | Optional. End date/time for searching. Must be after "from" date. | date/time |
+| from | Optional. Start date/time for searching. | [date/time](../../getting-started.md#data-types) |
+| to | Optional. End date/time for searching. Must be after "from" date. | [date/time](../../getting-started.md#data-types) |
 | conditions | Optional. Search conditions to apply to list. See [Search conditions](../commons/entity/search_conditions.md). Allowed fields are `employee`, `location`, `marker_time`, `comment`. | string array |
 | sort | Optional, offset, default is 0. List of sort expressions. See below. | string array |
-| location | Optional, location with radius, inside which check-ins must reside | Location JSON. For example, ```{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }``` | 
-| limit | Optional. Max number of records to return | int |
+| location | Optional, location with radius, inside which check-ins must reside. | Location JSON. For example, `{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }` | 
+| limit | Optional. Max number of records to return. | int |
 | offset | Optional, offset (starting index of first returned record), default is 0. | int |
-| format | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx" | string |
+| format | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx". | string |
 
 ##### condition fields
 
 | Name | Type | Comment |
-| :---: | :---: | :---: |
-| employee | number? | id |
+| :--- | :--- | :--- |
+| employee | number | id |
 | tracker_id | number |  |
 | marker_time | DateTime |  |
 | location | string | address |
@@ -191,7 +197,7 @@ It's a set of sort options. Each option is a pair of field name and sorting dire
 ##### sort fields
 
 | Name | Type | Comment |
-| :---: | :---: | :---: |
+| :--- | :--- | :--- |
 | employee | string? | full name |
 | tracker_id | number |  |
 | marker_time | DateTime |  |
@@ -228,7 +234,9 @@ It's a set of sort options. Each option is a pair of field name and sorting dire
 * 211 – Requested time span is too big.
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or 
 doesn't have required tariff features.
-* 221 – Device limit exceeded (if device limit set for the user's dealer has been exceeded).
+* 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
+
+<hr>
 
 ### delete
 

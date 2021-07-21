@@ -6,10 +6,14 @@ description: Calls to work with "delivery" type sessions. Those are special sess
 
 # Delivery
 
-API path: `/user/session/delivery`.
-
 Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
 tracking functionality into external systems.
+
+<hr>
+
+## API actions
+
+API path: `/user/session/delivery`.
 
 ### create
 
@@ -54,6 +58,8 @@ Only session `hash`.
 * 101 - In demo mode this function disabled – current session is demo but weblocator session already exists.
 * 236 – Feature unavailable due to tariff restrictions.
 
+<hr>
+
 ### read
 
 Returns current user delivery session key.
@@ -92,3 +98,7 @@ Only session `hash`.
 #### errors
 
 * 201 – Not found in the database - if there is no delivery session.
+
+#### errors
+
+* [General](../../../../getting-started.md#error-codes) types only.

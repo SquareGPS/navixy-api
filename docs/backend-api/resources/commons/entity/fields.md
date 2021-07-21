@@ -5,9 +5,9 @@ description: Contains field object description and API calls to interact with it
 
 # Entity fields
 
-API path: `/entity/fields`.
-
 Contains field object description and API calls to interact with it.
+
+<hr>
 
 ## Field object
 
@@ -60,7 +60,11 @@ and a [place](../../field_service/place/index.md) has a custom field of type "re
 such place will be available in the mobile app to view.
 Thus, field employee can view all places assigned to him to visit them, etc.
 
+<hr>
+
 ## Fields actions
+
+API path: `/entity/fields`.
 
 Field allows adding custom information to a customizable entity. Each field belongs to one entity.
 
@@ -111,6 +115,8 @@ obtained from [entity/list](./index.md#list).
 
 * 201 - Not found in the database - if there is no entity with such ID.
 
+<hr>
+
 ### update(entity_id, fields, delete_missing)
 
 Updates a set of custom fields associated with the specified entity.
@@ -124,8 +130,7 @@ All fields associated with the same entity must have different `label`s.
 
 Passing fields with `id` from non-existent fields or fields bound to another entity will result in an error.
 
-!!! warning "If `delete_missing` is `true`, all existing fields which are missing from the `fields` list will be 
-permanently deleted! Otherwise, they are unaffected."
+!!! warning "If `delete_missing` is `true`, all existing fields which are missing from the `fields` list will be permanently deleted! Otherwise, they are unaffected."
 
 #### parameters
 

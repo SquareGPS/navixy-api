@@ -5,9 +5,9 @@ description: Bill object description and API calls for work with user's bills.
 
 # Bill
 
-API path: `/bill`.
-
 Bill object description and API calls for work with user's bills.
+
+<hr>
 
 ## Bill object
 
@@ -31,6 +31,12 @@ Bill object description and API calls for work with user's bills.
     * `canceled`.
 * `positions` - string array. List of position names. Usually contains one element for a bill.
 * `link` - string. URL to order.
+
+<hr>
+
+## API actions
+
+API path: `/bill`.
 
 ### create
 
@@ -69,6 +75,8 @@ Creates a new bill for the user.
 #### errors
 
 * 222 – Plugin not found - when plugin **29** not available for user.
+
+<hr>
 
 ### list
 

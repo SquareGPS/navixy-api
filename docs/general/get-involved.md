@@ -19,6 +19,8 @@ There are several ways:
 In each of these cases, a GitHub account required.
 If you don't want to register on GitHub, you can just [contact us](./contacts.md) with any convenient way.
 
+<hr>
+
 ### Easy way
 
 On each page in the upper right corner of the text top there is a link with a picture of a pencil :material-pencil:.
@@ -41,6 +43,8 @@ We will review your pull request and accept it in the main branch.
 Thus, this method is only suitable for simple edits on one page.
 There is [another way](#second-way) to create pull requests to fix multiple pages at once.
 
+<hr>
+
 ### Second way
 
 This method allows you to make several edits on different pages before proposing them in a pull request.
@@ -54,6 +58,8 @@ This method allows you to make several edits on different pages before proposing
 1.  Go to the start page of the fork and click on the "Pull request" button.
 
 After review and pull request will be merged, and you can drop a fork.
+
+<hr>
 
 ### Hard way
 
@@ -88,11 +94,15 @@ This method involves installing the Git, IDE, Python and
 1. After the PR has been reviewed and merged to upstream you can remove
    branch and rebase a fork to the upstream.
 
+<hr>
+
 ## Introduction into Mkdocs
 
 This documentation built on [mkdocs engine](https://mkdocs.org) and [mkdocs-material theme](https://squidfunk.github.io/mkdocs-material).
 Firstly, read [how to layout and write your Markdown source files](https://mkdocs.org/user-guide/writing-your-docs)
 for an overview of how to write docs.
+
+<hr>
 
 ### Menu
 
@@ -112,6 +122,8 @@ nav:
 `title` sets the name for menu section. 
 `nav:` sets the sub-items order.
 
+<hr>
+
 ### Meta information
 
 Each page must have meta information section at the beginning. Required fields: `title` and `description`. 
@@ -126,40 +138,46 @@ description: Get involved into improving documentation and translations of the N
 
 Title will be displayed in menu and in browser title.
 
+<hr>
+
 ### Headers
 
 The information on each page should be structured. On pages of the same type, 
 the structure should be uniform.
 
+<hr>
+
 ### Example
 
 API resource page structure:
 
-````markdown
+```markdown
 # Resource name
-
-Path: `/path/to/resource\`
 
 Resource description.
 
-Resource specific actions:
+## Object name
 
-* [/path/to/resource/method1](#method1)
-* [/path/to/resource/method2](#method2)
+Object and its description
 
-## method1
+## API actions
+
+Path: `/path/to/resource\`.
+
+### method1
 
 Path: `/path/to/resource/method1`
 
 Method description.
 
-### Parameters
+#### Parameters
 
 | name  | description | type  | restrictions |
-| :---- | :----       | :---- | :----        |
-|param1 | description | int   | [1..100], not null |
+| ----- | -----       | ----- | -----      |
+| param1 | description. | int   | `[1..100]`, not null |
+| param2 | description. | boolean | not null |
 
-### Examples
+#### Examples
 
 === "cURL"
 
@@ -172,27 +190,27 @@ Method description.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/resource/sub_resource/action?param1=value1&hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/resource/sub_resource/action?param1=value1&param2&hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-### Response
+#### Response
 
-```json
-{ "success": true }
+    ```json
+    { "success": true }
+    ```
+
+#### Errors
+
+Special error codes.
+
+### method2
+
+...
+
 ```
 
 !!! warning "Please note"
     If the response or structure has comments it is necessary to write these comments separately in the form of a list below.
-
-### Errors
-
-Special error codes.
-
-## method2
-
-...
-
-````
 
 For real example see [/user](../backend-api/resources/commons/user/index.md) and
 [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).

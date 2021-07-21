@@ -1,11 +1,13 @@
 ---
 title: Schedule proposals
-description: Schedule proposals
+description: Schedule proposals are "preview" of what tasks and routes will be created at the specified date range.
 ---
 
 # Schedule proposals
 
 Schedule proposals are "preview" of what tasks and routes will be created at the specified date range.
+
+<hr>
 
 ## API actions
 
@@ -20,10 +22,10 @@ Get all tasks and routes that will be created by schedule.
 | name | description | type | 
 | :--- | :--- | :--- |
 | trackers | Optional. Ids of the trackers to which task is assigned. | int array |
-| from | Show tasks that will be created AFTER this date, e.g. "2014-07-01 00:00:00", should not before now | [date/time](../../../../getting-started.md#data-types) |
-| to | Show tasks will be created BEFORE this date, e.g. "2014-07-01 00:00:00", should not before `from` | [date/time](../../../../getting-started.md#data-types) |
+| from | Show tasks that will be created AFTER this date, e.g. "2014-07-01 00:00:00", should not before now. | [date/time](../../../../getting-started.md#data-types) |
+| to | Show tasks will be created BEFORE this date, e.g. "2014-07-01 00:00:00", should not before `from`. | [date/time](../../../../getting-started.md#data-types) |
 | filter | Optional. Filter for task schedule label and description. | string |
-| types | Optional. Tasks or routes. For example: `["task", "route"]` | [enum](../../../../getting-started.md#data-types) array |
+| types | Optional. Tasks or routes. For example: `["task", "route"]`. | [enum](../../../../getting-started.md#data-types) array |
 
 * If `trackers`, `filter`, `from` or `to` is not passed or _null_ then appropriate condition not used to filter results.
 

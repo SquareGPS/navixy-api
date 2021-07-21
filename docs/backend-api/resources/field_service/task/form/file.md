@@ -5,13 +5,16 @@ description: Contains API calls which manipulate files attached to form's fields
 
 # Attaching files
 
-API path: `/task/form/file`.
-
-
 When submitting form values of type [file](../../form/field-types.md#file), [photo](../../form/field-types.md#photo) or
 [signature](../../form/field-types.md#signature), you need to provide file id. To obtain it, first you [create](#create) 
 a file entry, then upload a file using provided credentials. File must adhere to limitations specified in the form field.
 Note that each file consumes space and contributes to file storage limit associated with user's account.
+
+<hr>
+
+## API actions
+
+API path: `/task/form/file`.
 
 ### create
 

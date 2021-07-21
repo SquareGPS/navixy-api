@@ -1,9 +1,15 @@
 ---
 title: Tracking route
-description: Tracking route
+description: API call for getting the route to destination point.
 ---
 
 # Tracking route
+
+API call for getting the route to destination point.
+
+<hr>
+
+## API actions
 
 API path: `/route`.
 
@@ -17,13 +23,13 @@ Gets route points via specified route provider.
 | :------ | :------ | :----- |
 | start | Location JSON object. Start of route. | JSON object |
 | end | Location JSON object. End of route. | JSON object |
-| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]` | array of JSON objects |
+| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]`. | array of JSON objects |
 | point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int |
 | provider_type | Optional. If not specified, the default user provider is used. One of "progorod", or "google", "osrm". | [enum](../../../getting-started.md#data-types) |
 
 * `location` object described in [data types description section](../../../getting-started.md#data-types).
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -59,6 +65,6 @@ Gets route points via specified route provider.
 
 #### errors
 
-* 215 (External service error).
-* 218 (Malformed external service parameters).
-* 236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without "routing" tariff feature.
+* 215 - External service error.
+* 218 - Malformed external service parameters.
+* 236 - Feature unavailable due to tariff restrictions – if there is at least one tracker without "routing" tariff feature.

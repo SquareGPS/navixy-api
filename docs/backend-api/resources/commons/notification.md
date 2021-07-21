@@ -5,9 +5,13 @@ description: Contains an API call to get list of user notifications.
 
 # Notification
 
-API path: `/notification`.
-
 Contains an API call to get list of user notifications.
+
+<hr>
+
+## API actions
+
+API path: `/notification`.
 
 ### list
 

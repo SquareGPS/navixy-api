@@ -1,9 +1,16 @@
 ---
 title: Sensor calibration data
-description: Sensor calibration data
+description: API calls to read and set sensor calibration data.
 ---
 
 # Sensor calibration data
+
+Contains API calls to read and set sensor calibration data which is used for calibration received data from sensors to the
+convenient format. For example, analog fuel sensor provides Volts that should be calibrated to Liters.
+
+<hr>
+
+## API actions
 
 API path: `/tracker/sensor/calibration_data`.
 
@@ -50,11 +57,13 @@ Gets calibration data for sensor.
 * 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
 * 228 – Not supported by the sensor (if sensor doesn't support calibration).
 
+<hr>
+
 ### update
 
 Replaces the calibration data for a sensor.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -82,17 +91,19 @@ Replaces the calibration data for a sensor.
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 228 – Not supported by the sensor (if sensor doesn't support calibration).
-* 228 – Not supported by the sensor (if sensor doesn't support calibration).
-* 219 – Not allowed for clones of the device (if tracker is clone).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 228 – Not supported by the sensor - if sensor doesn't support calibration.
+* 228 – Not supported by the sensor - if sensor doesn't support calibration.
+* 219 – Not allowed for clones of the device - if tracker is clone.
+
+<hr>
 
 ### upload_omnicomm
 
 Replaces the calibration data for a sensor from Omnicomm LLS monitor's XML configuration file. If XML file contains
 information about multiple sensors, user must specify which sensor number to use.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being an XML file upload 
 (with the name "file").
@@ -113,10 +124,10 @@ information about multiple sensors, user must specify which sensor number to use
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 228 – Not supported by the sensor (if sensor doesn't support calibration).
-* 219 – Not allowed for clones of the device (if tracker is clone).
-* 233 – No data file (if file part is missing).
-* 234 – Invalid data format (if supplied file is not a valid LLS monitor XML file).
-* 235 – Missing calibration data (if there is no calibration data for the specified sensor number).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 228 – Not supported by the sensor - if sensor doesn't support calibration.
+* 219 – Not allowed for clones of the device - if tracker is clone.
+* 233 – No data file - if file part is missing.
+* 234 – Invalid data format - if supplied file is not a valid LLS monitor XML file.
+* 235 – Missing calibration data - if there is no calibration data for the specified sensor number.
 

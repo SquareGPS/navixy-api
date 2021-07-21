@@ -12,6 +12,8 @@ All event messages contain the next fields:
 * `event` - [enum](../getting-started.md#data-types). Can be "state", "lifecycle", or "logout".
 * `data` - optional object. Specific event payload. 
 
+<hr>
+
 ## State event
 
 These messages are coming from server if client [subscribed](./subscription.md)
@@ -65,6 +67,8 @@ Message sample:
 
 !!! note "`source_id` is not a `tracker_id`."
 
+<hr>
+
 ## Lifecycle event
 
 These messages are coming from the server if client [subscribed](./subscription.md)
@@ -94,6 +98,8 @@ Message sample:
   }
 }
 ```
+
+<hr>
 
 ## Logout event
 

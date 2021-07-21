@@ -1,9 +1,15 @@
 ---
 title: APN settings of tracker
-description: APN settings of tracker
+description: API call to get APN settings by device's phone number.
 ---
 
 # APN settings
+
+API call to get APN settings by device's phone number.
+
+<hr>
+
+## API actions
 
 API base path: `/apn_settings`.
 
@@ -15,7 +21,7 @@ Gets the APN name/user/password and mobile operator for registered device by pho
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| phone | string representing valid international phone number without '+' sign. | string | "1234567890" |
+| phone | string representing valid international phone number without `+` sign. | string | "1234567890" |
 
 #### examples
 

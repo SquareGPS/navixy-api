@@ -5,8 +5,6 @@ description: This document describes API actions specific to working with task f
 
 # Working with task forms
 
-API path: `/task/form`.
-
 Forms can be attached to tasks to be filled by field employees using Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)).
 This document describes API actions specific to working with task forms (except `task/form/list` which can return all 
 kinds of forms).
@@ -16,6 +14,12 @@ For `<form_field>` and `<form_value>` object description, see [form fields and v
 For `<form>` object description, see [forms](../../form/index.md).
 
 Contains API calls related to forms associated with tasks.
+
+<hr>
+
+## API actions
+
+API path: `/task/form`.
 
 ### create
 
@@ -60,6 +64,8 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 * 247 – Entity already exists - if task already has form attached to it.
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
+<hr>
+
 ### delete
 
 Deletes a form (detach it from the task).<br>
@@ -103,6 +109,8 @@ All form data will be lost!
  attached.
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
+<hr>
+
 ### download
 
 Retrieves attached form as file.
@@ -138,6 +146,8 @@ A form rendered to file (standard file download).
 
 * 201 – Not found in the database - if task does not exist or does not have attached form.
 
+<hr>
+
 ### list
 
 Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, 
@@ -145,10 +155,10 @@ the list contains data on the objects related to each form – tracker / vehicle
 
 #### parameters
 
-*   **form_template_id** (*integer, optional*). The returned list will contain forms, related to that template.<br>
-    **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
+*   **template_id** (*integer, optional*). The returned list will contain forms, related to that template.<br>
+    **warning:** at least one of **template_id** and **task_ids** parameters must be not null.
 *   **task_ids** (*list of integers, optional*). Maximum size of list is 5000 elements. List of task ids. The returned list will contain forms, related to tasks, which ids specified in this parameter.<br>
-    **warning:** at least one of **form_template_id** and **task_ids** parameters must be not null.
+    **warning:** at least one of **template_id** and **task_ids** parameters must not be null.
 *   **order_by** (*optional, default = submitted*). Data field for list sorting. Available values:
     *   *task_id*
     *   *created*
@@ -294,6 +304,8 @@ where period_object is:
 
 * 204 – Not found - if there is no form template with such id belonging to authorized user.
 * [General](../../../../getting-started.md#error-codes) types of errors.
+
+<hr>
 
 ### read
 

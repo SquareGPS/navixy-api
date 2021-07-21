@@ -1,16 +1,21 @@
 ---
 title: Tracking route progorod
-description: Tracking route progorod
+description: API call for getting the route to destination point using Progorod router.
 ---
 
 # Tracking route progorod
 
-API path: `/route/progorod`.
+API call for getting the route to destination point using [Progorod router](https://giswiki.tmcrussia.com/index.php?title=%D0%9C%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F).
 
+<hr>
+
+## API actions
+
+API path: `/route/progorod`.
 
 ### get
 
-Gets route points using [Progorod router](https://giswiki.tmcrussia.com/index.php?title=%D0%9C%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F).
+Gets route points using Progorod router.
 
 #### parameters
 
@@ -18,7 +23,7 @@ Gets route points using [Progorod router](https://giswiki.tmcrussia.com/index.ph
 | :------ | :------ | :----- |
 | start | Location JSON object. Start of route. | JSON object |
 | end | Location JSON object. End of route. | JSON object |
-| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]` | array of JSON objects |
+| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]`. | array of JSON objects |
 | point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int |
 | minsize | Optional. Default=5. Smoothing parameter in conventional meters. Not recommended to set it less than distance between two neighbouring pixels on current zoom. | double |
 | use_traffic | Optional. Default=`false` If it is `false` then use `mode=optimal` and use traffic=0, else `mode=comfort` and use traffic=1. | boolean |
@@ -52,8 +57,8 @@ waypoints may be changed.
 
 #### errors
 
-* 215 (External service error).
-* 218 (Malformed external service parameters) – Contains info about error:
+* 215 - External service error.
+* 218 - Malformed external service parameters – Contains info about error:
 
 ```json
 {

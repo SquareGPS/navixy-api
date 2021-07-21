@@ -1,11 +1,13 @@
 ---
 title: Map layer
-description: Map layer
+description: Contains map layer object structure and API calls to interact with it. 
 ---
 
 # Map layer
 
-API path: `/map_layer`.
+Contains map layer object structure and API calls to interact with it.
+
+<hr>
 
 ## Map layer object structure:
 
@@ -19,7 +21,11 @@ API path: `/map_layer`.
 * `id` - int. Map layer entity ID.
 * `label` - string. Map layer name.
 
+<hr>
+
 ## API actions
+
+API path: `/map_layer`.
 
 ### read
 
@@ -54,11 +60,17 @@ Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf
 
 #### errors
 
-* 201 (Not found in the database) – if there is no map layer with such ID belonging to current user.
+* 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
+
+<hr>
 
 ### list
 
 Returns metadata for all map layers for the user.
+
+#### parameters
+
+Only session `hash`.
 
 #### examples
 
@@ -92,6 +104,8 @@ Returns metadata for all map layers for the user.
 
 No specific errors.
 
+<hr>
+
 ### upload
 
 Uploads new map layer.
@@ -120,10 +134,12 @@ Uploads new map layer.
 
 #### errors
 
-* 233 (No data file) – if file part is missing.
-* 234 (Invalid data format) – if file has wrong mime type.
-* 242 (Validation error) – if uploaded file is not valid KML.
-* 268 (Over quota) – if the user's quota for map layers exceeded.
+* 233 - No data file – if file part is missing.
+* 234 - Invalid data format – if file has wrong mime type.
+* 242 - Validation error – if uploaded file is not valid KML.
+* 268 - Over quota – if the user's quota for map layers exceeded.
+
+<hr>
 
 ### update
 
@@ -133,7 +149,7 @@ Updates metadata for the specified map layer.
 
 | name | description | type |
 | :------ | :------ | :----- |
-| layer | <map_layer_object> | JSON object |
+| layer | Map layer object described [here](#map-layer-object-structure) | JSON object |
 
 #### response
 
@@ -143,7 +159,9 @@ Updates metadata for the specified map layer.
 
 #### errors
 
-* 201 (Not found in the database) – if there is no map layer with such ID belonging to current user.
+* 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
+
+<hr>
 
 ### delete
 
@@ -179,4 +197,4 @@ Deletes specified layer.
 
 #### errors
 
-* 201 (Not found in the database) – if there is no map layer with such ID belonging to current user.
+* 201 - Not found in the database – if there is no map layer with such ID belonging to current user.

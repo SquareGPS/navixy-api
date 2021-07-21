@@ -1,15 +1,21 @@
 ---
 title: Tracking route OSRM
-description: Tracking route OSRM
+description: API call for getting the route to destination point using OSRM API.
 ---
 
 # Tracking route OSRM
+
+API call for getting the route to destination point using [OSRM API](https://github.com/Project-OSRM/osrm-backend/wiki/Server-api#requesting-routes).
+
+<hr>
+
+## API actions
 
 API path: `/route/osrm`.
 
 ### get
 
-Gets route points via [OSRM API](https://github.com/Project-OSRM/osrm-backend/wiki/Server-api#requesting-routes).
+Gets route points via OSRM API.
 
 #### parameters
 
@@ -17,7 +23,7 @@ Gets route points via [OSRM API](https://github.com/Project-OSRM/osrm-backend/wi
 | :------ | :------ | :----- |
 | start | Location JSON object. Start of route. | JSON object |
 | end | Location JSON object. End of route. | JSON object |
-| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]` | array of JSON objects |
+| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]`. | array of JSON objects |
 | point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int |
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
@@ -58,8 +64,9 @@ Where **location** described in [data types description section](../../../gettin
 
 #### errors
 
-* 215 (External service error).
-* 218 (Malformed external service parameters).
+* 215 - External service error.
+* 218 - Malformed external service parameters.
+  
     ```json
     {
         "success": false,
@@ -84,5 +91,5 @@ Where **location** described in [data types description section](../../../gettin
     * `status_code` - int. OSRM status code (don't rely on it).
     * `message` - string. OSRM error message (don't rely on it).
     
-* 236 (Feature unavailable due to tariff restrictions) – if there is at least one tracker without "routing" tariff 
+* 236 - Feature unavailable due to tariff restrictions – if there is at least one tracker without "routing" tariff 
 feature.

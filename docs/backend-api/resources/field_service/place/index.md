@@ -5,8 +5,6 @@ description: Place object and API calls to work with places. "Places" are busine
 
 # Working with places
 
-API path: `/place`.
-
 "Places" are business-specific points of interest like shops, delivery points, warehouses, etc - which are visited 
 by user's employees. Place entities can be extended with [custom fields](../../commons/entity/fields.md) to make them 
 even more useful. 
@@ -17,7 +15,9 @@ If there's an [employee](../employee) [assigned](../../tracking/tracker/employee
 and a place has a custom field of type "responsible employee", such place will be available in the mobile app to view.
 Thus, field employee can view all places assigned to him to visit them, etc.
 
-### Place object
+<hr>
+
+## Place object
 
 ```json
 {
@@ -51,6 +51,12 @@ Thus, field employee can view all places assigned to him to visit them, etc.
 * `description` - optional string. Description of the place.
 * `tags` - optional int array. A list of tag_ids. Non-empty.
 * `external_id` - optional string. Max length 32.
+
+<hr>
+
+## API actions
+
+API path: `/place`.
 
 ### read
 
@@ -110,6 +116,8 @@ Gets place by ID.
 #### errors
 
 * 201 - Not found in the database – if there is no place with such ID.
+
+<hr>
 
 ### list
 
@@ -179,6 +187,8 @@ Get places belonging to user.
 
 [General](../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### create
 
 Creates a new place.
@@ -199,7 +209,7 @@ Creates a new place.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/read' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}} "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
     ```
 
 #### response
@@ -216,6 +226,8 @@ Creates a new place.
 #### errors
 
 * 268 - Over quota – if the user's quota for places exceeded.
+
+<hr>
 
 ### update
 
@@ -236,7 +248,7 @@ Updates existing place.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"id": 111, "icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}} "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"id": 111, "icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
     ```
 
 #### response
@@ -248,6 +260,8 @@ Updates existing place.
 #### errors
 
 * 201 - Not found in the database – if there is no place with such ID.
+
+<hr>
 
 ### delete
 
@@ -278,6 +292,7 @@ Deletes place with the specified ID.
     ```
 
 #### response
+
 ```json
 { "success": true }
 ```
@@ -285,6 +300,8 @@ Deletes place with the specified ID.
 #### errors
 
 * 201 - Not found in the database – if there is no place with such ID.
+
+<hr>
 
 ### batch_convert
 
@@ -345,6 +362,8 @@ If `file_id` is set – `batch` parameter will be ignored.
 
 * 234 - Invalid data format.
 
+<hr>
+
 ### upload
 
 Upload places.
@@ -353,7 +372,7 @@ Upload places.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV file upload (with the name "file").
 
-CSV column separator is `;`, columns header required – `label;address;lat;lng;radius;external_id;description`
+CSV column separator is `;`, columns header required – `label;address;lat;lng;radius;external_id;description`.
 
 #### parameters
 

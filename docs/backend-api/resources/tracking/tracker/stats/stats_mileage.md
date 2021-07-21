@@ -1,11 +1,17 @@
 ---
 title: Mileage
-description: Mileage
+description: API call to get mileage in kilometers in specified period grouped by trackers and day.
 ---
 
 # Mileage
 
-API base path: `/tracker/stats/mileage`
+Contains API call to read engine hours (time when engine is on) counted for the specified period.
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/stats/mileage`.
 
 ### read
 
@@ -47,6 +53,6 @@ Returns mileage in kilometers in specified period grouped by trackers and day.
 
 #### errors
 
-* 211 – Requested time span is too big (if interval between "from" and "to" is too big (maximum value specified in API config)).
+* 211 – Requested time span is too big - if interval between "from" and "to" is too big (maximum value specified in API config).
 * 217 – List contains nonexistent entities.
 * 221 – Device limit exceeded.

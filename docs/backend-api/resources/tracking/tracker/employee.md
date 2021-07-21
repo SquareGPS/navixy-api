@@ -1,21 +1,25 @@
 ---
 title: Assigning employee to tracker
-description: Assigning employee to tracker
+description: API calls for assigning employee ("driver") to a device and reading who is already assigned.
 ---
 
 # Assigning employee to tracker
 
-API base path: `/tracker/employee`
-
 Allows assigning employee ("driver") to a device. Also, read who is on a vehicle now, hardware key and when, where was 
 assigned. 
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/employee`.
 
 ### assign
 
 Assigns another employee ("driver") to the tracker.
 
-**required sub-user rights:** `employee_update`
-**required tariff feature:** `app_fleet`
+**required sub-user rights:** `employee_update`.
+**required tariff feature:** `app_fleet`.
 
 #### parameters
 
@@ -48,9 +52,11 @@ Assigns another employee ("driver") to the tracker.
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker or employee with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 263 – No change needed, old and new values are the same (if new employee matches a currently assigned employee).
+* 201 – Not found in the database - if there is no tracker or employee with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 263 – No change needed, old and new values are the same - if new employee matches a currently assigned employee.
+
+<hr>
 
 ### read
 
@@ -129,5 +135,5 @@ Requests to read the current employee assigned to tracker, and when it was assig
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.

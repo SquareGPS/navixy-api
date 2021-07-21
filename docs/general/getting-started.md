@@ -43,19 +43,22 @@ API calls have the following structure:
     * `Response` - an example of successful response from the server with description of every field.
     * `Errors` - specific errors for this API-action. General error list applies to all calls.
 
+<hr>
+
 ## Get involved
 
 You can really help to improve [this documentation](./get-involved.md) or
- [localizations](./localizations) of Navixy Platform.
+ [localizations](./localizations/index.md) of Navixy Platform.
 
 If the translation of the user interface into your language is missing or contains errors, you can make or fix the
-localization on the [CrowdIn platform](https://crowdin.com/) yourself. Read [here](./localizations) how
+localization on the [CrowdIn platform](https://crowdin.com/) yourself. Read [here](./localizations/contributing.md) how
 to do it.
 
 Current documentation may also contain errors or white spots. All of it is available in the public domain on [GitHub]({{
 config.repo_url }}), and you can independently contribute in its correction or addition. Read [here](./get-involved.md)
 how to do it.
 
+<hr>
 
 ## Useful things
 

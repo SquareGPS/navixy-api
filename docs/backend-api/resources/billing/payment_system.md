@@ -5,9 +5,9 @@ description: Payment system settings object and API calls for working with payme
 
 # Payment system
 
-API path: `/payment_system`.
-
 Payment system settings object and API calls for working with payment systems and make payments.
+
+<hr>
 
 ## Payment system settings object
 
@@ -37,6 +37,12 @@ Payment system settings object and API calls for working with payment systems an
 * `subscription_code` - string. Subscription code. The same as "payment_code" for 2Checkout (formerly Avangate) but for subscriptions.
 * `methods` - optional string array. List of available payment methods (it may be empty).
 * `prices` - optional object with prices. For type == `ios_inapp` only.
+
+<hr>
+
+## API actions
+
+API path: `/payment_system`.
 
 ### list
 
@@ -83,6 +89,8 @@ Returns list of payment systems available for specified user.
 
 * 201 – Not found in the database.
 
+<hr>
+
 ### estimate/get
 
 Returns the estimate of the monthly payment amount
@@ -115,6 +123,8 @@ Returns the estimate of the monthly payment amount
 ```
 
 * `value` - float. Payment amount, rounded up to hundreds for rubles or to tens for other currencies.
+
+<hr>
 
 ### mobile/pay
 

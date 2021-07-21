@@ -7,7 +7,7 @@ description: An API call to get the list of available equipment.
 
 API call to get the list of all available equipment.
 
-API path: `panel/equipment`.
+<hr>
 
 ## Equipment object
 
@@ -27,7 +27,13 @@ API path: `panel/equipment`.
 * `vendor` - string. A vendor's name.
 * `name` - string. A model's name used by a vendor.
 
-## list
+<hr>
+
+## API actions
+
+API path: `panel/equipment`.
+
+### list
 
 Returns list of all equipment which can be assigned to tracker bundles. 
 

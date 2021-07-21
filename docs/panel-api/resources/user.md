@@ -7,7 +7,7 @@ description: API calls on work with users in the admin panel.
 
 API calls on work with users in the admin panel.
 
-API path: `panel/user`.
+<hr>
 
 ## User object structure
 
@@ -76,6 +76,8 @@ Next fields are read-only, they should not be used in `user/update` and `user/cr
 * `creation_date` - [date/time](../../backend-api/getting-started.md#data-types). Date and time when user created, in UTC.
 * `trackers_count` - user trackers count.
 
+<hr>
+
 ## Discount object structure
 
 ```json
@@ -91,6 +93,12 @@ Next fields are read-only, they should not be used in `user/update` and `user/cr
 * `min_trackers` - int. Minimum active trackers to apply discount, min 0.
 * `end_date` - [date/time](../../backend-api/getting-started.md#data-types). Discount end date, null means open date, nullable.
 * `strategy` - [enum](../../backend-api/getting-started.md#data-types). One of "no_summing", "sum_with_progressive".\
+
+<hr>
+
+## API actions
+
+API path: `panel/user`.
 
 ### change_password
 
@@ -126,6 +134,8 @@ Changes password of a user.
 #### errors
 
 * 201 – Not found in the database - if specified user does not exist or belongs to different dealer.
+
+<hr>
 
 ### corrupt
 
@@ -175,6 +185,8 @@ Marks user and its sub users and trackers as deleted and corrupt all user tracke
 }
 ```
 
+<hr>
+
 ### create
 
 Creates a new user.
@@ -221,6 +233,8 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 * 206 - Login already in use – if this email already registered.
 
+<hr>
+
 ### export
 
 Returns list of all users belonging to dealer as file.
@@ -245,7 +259,7 @@ entities will be returned only if filter string is contained within one of the f
 | offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
 | hide_inactive | Optional. If `true` only activated users will be returned. Default is `false`. |  boolean |
 | format | Optional. Format of exported list. Can be `xlsx` or `csv`. Default is `xlsx`.  | string |
-| columns | Optional. A list of columns to export. Default is `["id", "login", "first_name", "middle_name", "last_name", "phone"]` | string array |
+| columns | Optional. A list of columns to export. Default is `["id", "login", "first_name", "middle_name", "last_name", "phone"]`. | string array |
 
 About user object structure see [above](#user-object-structure).
 
@@ -272,6 +286,8 @@ About user object structure see [above](#user-object-structure).
 #### errors
 
 * [Genreal](../../backend-api/getting-started.md#error-codes) types only.
+
+<hr>
 
 ### list
 
@@ -360,6 +376,8 @@ entities will be returned only if filter string is contained within one of the f
 
 * [Genreal](../../backend-api/getting-started.md#error-codes) types only.
 
+<hr>
+
 ### read
 
 Returns user info by its id.
@@ -442,6 +460,8 @@ Returns user info by its id.
 
 * 201 - Not found in the database – when user with specified id not found or belongs to other dealer.
 
+<hr>
+
 ### update
 
 Updates existing user with new field values (see [user object](#user-object-structure)). User must 
@@ -482,6 +502,8 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 * 201 - Not found in the database – if specified user does not exist or belongs to different dealer.
 * 206 - Login already in use – if specified "login" is used by another user.
+
+<hr>
 
 ### session/create
 
@@ -528,6 +550,8 @@ user_sessions: "global" - Optional. Allows sessions of users creation, not only 
 
 * 201 - Not found in the database – if specified user does not exist or belongs to different dealer.
 
+<hr>
+
 ### transaction/change_balance
 
 Changes user balance (increase or decrease) or bonus and write this change in transactions (type = `payment`, subtype = `partner`).
@@ -566,7 +590,9 @@ New balance (bonus) must be not negative.
 #### errors
 
 * 201 – Not found in the database – if user not found or not owned by a current dealer.
-* 251 – Insufficient funds(403) – if user have not enough funds to withdraw passed (negative) amount.
+* 251 – Insufficient funds (403) – if user have not enough funds to withdraw passed (negative) amount.
+
+<hr>
 
 ### transaction/list
 
@@ -634,3 +660,123 @@ Gets list of user's billing transactions for the specified period. Same as [/tra
 #### errors
 
 * 201 – Not found in the database - if user not found or not owned by a current dealer.
+
+### upload
+
+Upload users from CSV or XLS file.
+
+**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV or XLS file upload (with the name "file").
+
+CSV column separator is `;`. Columns header for CSV and XLS (headers with `*` is required):
+ 
+`Email address*;Password*;Status*;Legal status*;Surname*;Name*;Middle name;Phone number;Сomment;Country;Region;City;Street, address;Zip code;Legal name;Tax number;IEC;Registration country;Registration region;Registration city;Registration address;Registration zip code;Discount;End date of discount;Device limit`
+
+For RU locale:
+
+`Адрес электронной почты*;Пароль*;Статус*;Юридический статус*;Фамилия*;Имя*;Отчество;Номер телефона;Комментарий;Страна;Регион;Город;Улица, дом, квартира;Почтовый индекс;Юридическое название;ИНН;КПП;ОГРН;ОКПО;Страна регистрации;Регион регистрации;Город регистрации;Улица, дом регистрации;Почтовый индекс регистрации;Скидка;Дата окончания скидки;Минимальное число устройств для скидки`
+
+Legal status must be one of the following numbers:
+
+ * 1 - individual
+ * 2 - legal entity
+ * 3 - sole trader
+
+For legal entity (2) and sole trader (3) in addition to the required`*` the following columns must be present and filled with data:
+
+`Country;Region;City;Street, address;Zip code;Legal name;Registration region;Registration city;Registration address;Registration zip code`
+
+Except `Legal name` for sole trader (3) it is not required.
+
+The remaining columns are optional and can be omitted. All columns can be in any order.
+
+New users will be created with the time zone specified in `default_user_time_zone` service [setting](./dealer/settings/service.md).
+
+
+*required permissions*: `[users: "create"]`.
+
+#### parameters
+
+| name | description | type | 
+| :--- | :--- | :--- |
+| file | A XLS or CSV file containing users data. | File upload |
+| redirect_target | Optional URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string |
+
+
+#### response
+
+```json
+{
+  "success": true,
+  "total": 1,
+  "errors": 0
+}
+```
+
+#### errors
+
+Most error responses include `row_number` - the line number in the file where the error was found.
+
+* 206 – Login already in use – if this email already registered.
+```json
+{
+  "row_number" : 2,
+  "status" : {
+    "code" : 206,
+    "description" : "Login already in use"
+  },
+  "success" : false
+}
+```
+* 273 – Duplicate login in source file.
+```json
+{
+  "row_number" : 4,
+  "status" : {
+    "code" : 273,
+    "description" : "Duplicate login"
+  },
+  "success" : false
+}
+```
+* 274 – Empty data file. No rows to load were found in the source file.
+```json
+{
+  "status" : {
+    "code" : 274,
+    "description" : "Empty data file"
+  },
+  "success" : false
+}
+```
+* 7 – Invalid parameters. Required columns not found or there has data validation errors.
+```json
+{
+  "errors" : [ {
+    "error" : "required column not found",
+    "parameter" : "users_import.password"
+  }, {
+    "error" : "required column not found",
+    "parameter" : "users_import.email"
+  } ],
+  "row_number" : 1,
+  "status" : {
+    "code" : 7,
+    "description" : "Invalid parameters"
+  },
+  "success" : false
+}
+```
+```json
+{
+  "errors" : [ {
+    "error" : "E-mail must be valid",
+    "parameter" : "user.login"
+  } ],
+  "row_number" : 2,
+  "status" : {
+    "code" : 7,
+    "description" : "Invalid parameters"
+  },
+  "success" : false
+}
+```

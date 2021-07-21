@@ -1,15 +1,15 @@
 ---
 title: Status
-description: Status
+description: Contains status object and API calls to interact with them.
 ---
 
 # Status
 
-Statuses used to track current activity for employees (in fact, of tracking devices owned by employees). 
-The simplest example is "busy" | "not busy". This is a status listing consisting of two elements. Different trackers 
-can be assigned different status lists.
+Contains status object and API calls to interact with them. Statuses used to track current activity for employees (in 
+fact, of tracking devices owned by employees). The simplest example is "busy" | "not busy". This is a status listing 
+consisting of two elements. Different trackers can be assigned different status lists.
 
-API base path: `/status/`
+<hr>
 
 ## Status object structure
 
@@ -25,29 +25,17 @@ API base path: `/status/`
 * `label` - string. Human-readable label for the status.
 * `color` - string. Hex-representation of RGB color used to display this status.
 
-## Status listing object structure
+<hr>
 
-```json
-{
-    "id": 1,
-    "label": "Taxi driver statuses",
-    "employee_controlled": true,
-    "supervisor_controlled": false,
-    "entries": [ 5, 2, 1, 4, 6]
-}
-```
+## API actions
 
-* `id` - int. A unique identifier of this status listing. Read-only.
-* `label` - string. Human-readable label for the status listing.
-* `employee_controlled` - boolean. If `true` employees can change their own status, e.g. using mobile tracking app.
-* `supervisor_controlled` - boolean. If `true` supervisors can change status, e.g. using mobile monitoring app.
-* `entries` - int array. List of IDs of statuses which belong to this listing. Order matters, and is preserved.
+API base path: `/status/`.
 
 ### create
 
 Creates new possible status for the specified status listing.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -56,7 +44,7 @@ Creates new possible status for the specified status listing.
 | listing_id | ID of the listing for this status to attach to. | int |
 | status | Status object without ID field. | JSON object |
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -79,16 +67,18 @@ Creates new possible status for the specified status listing.
 
 #### errors
 
-* 201 (Not found in the database) – if listing with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
+* 201 - Not found in the database – if listing with the specified ID does not exist.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
-* 268 (Over quota) – if the user's quota for statuses exceeded.
+* 268 - Over quota – if the user's quota for statuses exceeded.
+
+<hr>
 
 ### delete
 
 Deletes status entry.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -120,9 +110,11 @@ Deletes status entry.
 
 #### errors
 
-* 201 (Not found in the database) – if status with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff feature 
+* 201 - Not found in the database – if status with the specified ID does not exist.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
+
+<hr>
 
 ### list
 
@@ -171,14 +163,16 @@ Gets statuses belonging to the specified status listing.
 
 #### errors
 
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" tariff 
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff 
 feature available.
+
+<hr>
 
 ### update
 
 Updates status properties.
 
-**required sub-user rights:** `tracker_update`
+**required sub-user rights:** `tracker_update`.
 
 #### parameters
 
@@ -186,7 +180,7 @@ Updates status properties.
 | :------ | :------ | :----- |
 | status | Status object with ID field. | JSON object |
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -204,6 +198,6 @@ Updates status properties.
 
 #### errors
 
-* 201 (Not found in the database) – if status with the specified ID does not exist.
-* 236 (Feature unavailable due to tariff restrictions) – if there are no trackers with "statuses" 
+* 201 - Not found in the database – if status with the specified ID does not exist.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" 
 tariff feature available.

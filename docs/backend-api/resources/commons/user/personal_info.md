@@ -5,9 +5,13 @@ description: Contains user personal info update API call.
 
 # User personal info
 
-API path: `/user/personal_info`.
-
 Contains user personal info update API call.
+
+<hr>
+
+## API actions
+
+API path: `/user/personal_info`.
 
 ### update
 
@@ -40,7 +44,6 @@ and for `legal_entity` or `sole_trader`:
 * `registered_street_address` – string. User's registered address.
 * `state_reg_num` - string, optional, 15 characters maximum. State registration number. E.g. EIN in USA, OGRN in Russia.
 * `tin` – string. Taxpayer identification number.
-
 
 #### example
 

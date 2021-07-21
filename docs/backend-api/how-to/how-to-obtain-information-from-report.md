@@ -10,6 +10,8 @@ report's information that can be used in programs or specific reports in needs f
 information about trips + fuel consumption, drains and refills. 
 Follow the next steps, to obtain report's information.
 
+<hr>
+
 ## Generate report
 
 To receive data for processing, it must be generated. This can be done using a call 
@@ -48,6 +50,8 @@ It will respond with generated report_id.
 }
 ```
 
+<hr>
+
 ## Retrieve report
 
 To obtain all generated analytic data from the report in JSON format use 
@@ -73,7 +77,7 @@ API request:
 
 You will get the report in a JSON format:
 
-???+ example
+???+ example "Response"
 
     ```json
     {
@@ -522,6 +526,8 @@ You will get the report in a JSON format:
       "to": "2020-10-06 23:59:59"
     }
     ```
+
+<hr>
 
 ## Deleting reports
 

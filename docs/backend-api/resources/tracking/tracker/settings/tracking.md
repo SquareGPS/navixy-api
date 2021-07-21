@@ -1,11 +1,19 @@
 ---
 title: Tracking mode
-description: Tracking mode
+description: API calls for setting data transmission and operating modes of devices.
 ---
 
 # Tracking mode
 
-API base path: `/tracker/settings/tracking`
+API calls for reading and setting data transmission and operating modes of devices. It is responsible for the tracking 
+mode portlet in devices and settings tab in the UI. The list of settings can vary depending on model of the used tracker, 
+the principle of its work and its functionality. 
+
+<hr>
+
+## API actions
+
+API base path: `/tracker/settings/tracking`.
 
 ### read
 
@@ -46,15 +54,17 @@ Returned fields may differ from model to model. See tracking profiles for more i
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 214 – Requested operation or parameters are not supported by the device (if device model has no tracking settings at all).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 214 – Requested operation or parameters are not supported by the device - if device model has no tracking settings at all.
+
+<hr>
 
 ### update
 
 Sends new tracking settings to the specified tracker.
 
-**required sub-user rights:** `tracker_configure`
+**required sub-user rights:** `tracker_configure`.
 
 #### parameters
 
@@ -83,8 +93,8 @@ Returned fields may differ from model to model. See tracking profiles for more i
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 214 – Requested operation or parameters are not supported by the device (if device model has no tracking settings 
-at all).
-* 219 – Not allowed for clones of the device (if specified tracker is clone of another tracker).
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 214 – Requested operation or parameters are not supported by the device - if device model has no tracking settings 
+at all.
+* 219 – Not allowed for clones of the device - if specified tracker is clone of another tracker.

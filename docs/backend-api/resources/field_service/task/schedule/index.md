@@ -1,6 +1,6 @@
 ---
 title: Scheduling tasks
-description: Scheduling tasks
+description: API actions to interact with scheduling tasks. Some tasks happen on regular basis, and it's tedious to create them by hand every time. Task schedules is the way to automate this process.
 ---
 
 # Scheduling tasks
@@ -11,6 +11,8 @@ schedule checked and if there are tasks which start at this day, they are create
 
 Schedule entries are very similar to tasks, main difference is that `from` and `to` containing specific date and time 
 replaced with `from_time`, `duration` and `parameters`.
+
+<hr>
 
 ## Task schedule entry object
 
@@ -56,6 +58,8 @@ replaced with `from_time`, `duration` and `parameters`.
 * `tags` - int array. List of tag ids.
 * `form_template_id` - int. Form template id. Nullable.
 
+<hr>
+
 ## Route schedule entry
 
  ```json
@@ -76,6 +80,8 @@ replaced with `from_time`, `duration` and `parameters`.
 * `user_id` - int. User id. *IGNORED* in create/update.
 * `tracker_id` - int. An id of the tracker to which all generated tasks assigned. Nullable.
 * `parameters` - schedule parameters can be "weekdays" or "month_days". Described below.
+
+<hr>
 
 ## Checkpoint schedule entry
 
@@ -142,6 +148,7 @@ replaced with `from_time`, `duration` and `parameters`.
 
     * `month_days` - int array. Days of month on which tasks will be created (1..31).
 
+<hr>
 
 ## API actions
 
@@ -182,10 +189,12 @@ Creates new task schedule entry.
 
 #### errors
 
-* 201 – Not found in the database (if schedule.tracker_id belongs to nonexistent tracker).
-* 204 – Entity not found (if schedule.form_template_id belongs to nonexistent form template).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks).
+* 201 – Not found in the database - if schedule.tracker_id belongs to nonexistent tracker.
+* 204 – Entity not found - if schedule.form_template_id belongs to nonexistent form template.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
+
+<hr>
 
 ### delete
 
@@ -223,7 +232,9 @@ Delete task schedule with the specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no task schedule with such an id).
+* 201 – Not found in the database - if there is no task schedule with such an id.
+
+<hr>
 
 ### list
 
@@ -288,6 +299,8 @@ Also this call returns all unassigned task schedules.
 #### errors
 
 [General](../../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### read
 
@@ -363,6 +376,8 @@ Gets task, route or checkpoint schedule by specified id.
 
 [General](../../../../getting-started.md#error-codes) types only.
 
+<hr>
+
 ### update
 
 Updates existing task schedule.
@@ -395,7 +410,7 @@ Updates existing task schedule.
 
 #### errors
 
-* 201 – Not found in the database (if schedule.tracker_id belongs to nonexistent tracker).
-* 204 – Entity not found (if there is no task schedule with specified id).
-* 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
-* 236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks).
+* 201 – Not found in the database - if schedule.tracker_id belongs to nonexistent tracker.
+* 204 – Entity not found - if there is no task schedule with specified id.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.

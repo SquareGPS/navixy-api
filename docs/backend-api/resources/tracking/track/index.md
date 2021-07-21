@@ -1,9 +1,15 @@
 ---
 title: Track
-description: Track
+description: Contains API calls to interact with tracks and for getting all track points.
 ---
 
 # Track
+
+Contains API calls to interact with tracks and for getting tracks' points.
+
+<hr>
+
+## API actions
 
 API path: `/track`.
 
@@ -25,14 +31,14 @@ Downloads track points as KML/KMZ file for the specified track ID, tracker and t
 | format | File format, "kml" or "kmz", default is "kml". | [enum](../../../getting-started.md#data-types) | `"kml"` |
 | split | If `true`, split tracks by folders with start/end placemarks and track line. Default=`false`. | boolean | `false` |
 
-#### examples
+#### example
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/track/download' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456", "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "format": "kml", "split": "false"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "format": "kml", "split": false}'
     ```
 
 #### response
@@ -49,10 +55,12 @@ KML/KMZ file or JSON response if requested time period exceeds limit specified i
 
 #### errors
 
-* 204 (Entity not found) – if there is no tracker with such ID belonging to authorized user.
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
-* 211 (Requested time span is too big) – if interval between "from" and "to" is too big (maximum value specified 
+* 204 - Entity not found – if there is no tracker with such ID belonging to authorized user.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified 
 in API config).
+
+<hr>
 
 ### list
 
@@ -62,16 +70,16 @@ Gets a list of track descriptions for the specified tracker and time period.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| from | From time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. | [date/time](../../../getting-started.md#data-types) | "2020-09-23 03:24:00" |
-| to | To time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. Specified date must be after "from" date. | [date/time](../../../getting-started.md#data-types) | "2020-09-23 06:24:00" |
-| filter | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean | true |
-| split | Optional, default=`true`. If `false`, all tracks will be merged into single one.| boolean | true |
-| include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | true |
-| cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates. | boolean | false | 
-| count_events | Optional, default=`false`. If `true`, number of events occurred during each non-single point track will be returned. | true |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | `123456` |
+| from | From time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. | [date/time](../../../getting-started.md#data-types) | `"2020-09-23 03:24:00"` |
+| to | To time in `yyyy-MM-dd HH:mm:ss` format in user's timezone. Specified date must be after "from" date. | [date/time](../../../getting-started.md#data-types) | `"2020-09-23 06:24:00"` |
+| filter | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean | `true` |
+| split | Optional, default=`true`. If `false`, all tracks will be merged into single one.| boolean | `true` |
+| include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | `true` |
+| cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates. | boolean | `false` | 
+| count_events | Optional, default=`false`. If `true`, number of events occurred during each non-single point track will be returned. | `true` |
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -87,7 +95,7 @@ Gets a list of track descriptions for the specified tracker and time period.
 {
     "success": true,
     "limit_exceeded": false,
-    "list": [{"track_info": }]
+    "list": [<track_info>]
 }
 ```
 
@@ -211,10 +219,12 @@ or no normAvgFuelConsumption defined in a vehicle.
 
 #### errors
 
-* 204 (Entity not found) – if there is no tracker with such ID belonging to authorized user.
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
-* 211 (Requested time span is too big) – if interval between "from" and "to" is too big (maximum value specified in 
+* 204 - Entity not found – if there is no tracker with such ID belonging to authorized user.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified in 
 API config).
+
+<hr>
 
 ### read
 
@@ -229,10 +239,10 @@ Gets track points for the specified track ID, tracker and time period.
 | to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | [date/time](../../../getting-started.md#data-types) | "2020-09-23 06:24:00" |
 | track_id | Optional. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned. | int | 234567 |
 | include_gsm_lbs | Optional, default=`true`. If `false` && track_id not specified, GSM LBS points will be filtered out. | boolean | true |
-| point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000 | int | 3000 |
+| point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000. | int | 3000 |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. If `false` a response will contain parking points. | boolean | false |
 
-#### examples
+#### example
 
 === "cURL"
 
@@ -260,7 +270,8 @@ Gets track points for the specified track ID, tracker and time period.
             "speed": 70,
             "precision": 100,
             "gsm_lbs": true,
-            "parking": true
+            "parking": true,
+            "buffered": true
         }
     ]
 }
@@ -278,10 +289,11 @@ Gets track points for the specified track ID, tracker and time period.
 * `precision` - optional int. Precision in meters.
 * `gsm_lbs` - optional boolean. `true` if location detected by GSM LBS.
 * `parking` - optional boolean. `true` if point does not belong to track.
+* `buffered` - optional boolean. `true` if point was saved in device memory and transferred to server later.
 
 #### errors
 
-* 204 (Entity not found) – if there is no tracker with such ID belonging to authorized user.
-* 208 (Device blocked) – if tracker exists but was blocked due to tariff restrictions or some other reason.
-* 211 (Requested time span is too big) – if interval between "from" and "to" is too big (maximum value specified in 
+* 204 - Entity not found – if there is no tracker with such ID belonging to authorized user.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified in 
 API config).

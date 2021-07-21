@@ -1,11 +1,14 @@
 ---
 title: Vehicle
-description: Vehicle  
+description: Contains the vehicle object and API calls to interact with it.
 ---
 
 # Vehicle
 
-API path: `/vehicle`.
+Contains the vehicle object and API calls to interact with it. This object is used to describe vehicle's information like
+VIN, speed, consumption and other. Vehicle object should be assigned to tracker object.
+
+<hr>
 
 ## Vehicle object
 
@@ -107,6 +110,12 @@ API path: `/vehicle`.
         Subtypes: "mobile_crane", "racing", "buggy", "ambulance", "firefighter", "hearse", "shop", "harvester", "snowplow", "tractor", "grader", "excavator", "bulldozer", "armored", "amphibian"
     ```
 
+<hr>
+
+## API actions
+
+API path: `/vehicle`.
+
 ### create
 
 Creates a new vehicle.
@@ -145,11 +154,13 @@ Creates a new vehicle.
 
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 
+<hr>
+
 ### delete
 
 Deletes a vehicle with the specified id.
 
-**required sub-user rights**: `vehicle_update`
+**required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
@@ -181,11 +192,13 @@ Deletes a vehicle with the specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no vehicle with such an id).
+* 201 – Not found in the database - if there is no vehicle with such an id.
+
+<hr>
 
 ### list
 
-Get all vehicles belonging to user.
+Gets all vehicles belonging to user.
 
 #### examples
 
@@ -253,6 +266,8 @@ Get all vehicles belonging to user.
 #### errors
 
 [General](../../../getting-started.md#error-codes) types only.
+
+<hr>
 
 ### read
 
@@ -331,13 +346,15 @@ A [vehicle object](#vehicle-object).
 
 #### errors
 
-* 201 – Not found in the database (if there is no vehicle with such an id).
+* 201 – Not found in the database - if there is no vehicle with such an id.
+
+<hr>
 
 ### update
 
 Updates existing vehicle.
 
-**required sub-user rights**: `vehicle_update`
+**required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
@@ -364,23 +381,26 @@ Updates existing vehicle.
 
 #### errors
 
-* 201 – (Not found in the database) If there is no vehicle with such an id.
+* 201 – Not found in the database - if there is no vehicle with such an id.
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
-* 261 – (Entity has external links) When `tracker_id` changes and there are some service tasks associated with this vehicle.
+* 261 – Entity has external links - when `tracker_id` changes and there are some service tasks associated with this vehicle.
+
+<hr>
 
 ### batch_convert
+
 Convert batch of tab-delimited vehicles and return list of checked vehicles with errors.
 
-**Required subuser rights:** `vehicle_update`.
+**required sub-user rights:** `vehicle_update`.
 
 #### parameters
+
 name | description | type
 --- | --- | ---
-batch | batch of tab-delimited vehicles. | string
-file_id | preloaded file ID | string
-fields | Optional, array of field names, default is `["label", "model", "reg_number", "fuel_grade"]` | string array
-geocoder | geocoder type | string
-
+batch | Batch of tab-delimited vehicles. | string
+file_id | Preloaded file ID. | string
+fields | Optional, array of field names, default is `["label", "model", "reg_number", "fuel_grade"]`. | string array
+geocoder | Geocoder type. | string
 
 If `file_id` is set – `batch` parameter will be ignored.
 
@@ -389,19 +409,60 @@ If `file_id` is set – `batch` parameter will be ignored.
 ```json
 {
     "success": true,
-    "list": [ <checked_vehicle>, ... ],
-    "limit_exceeded": false // true if given batch constrained by limit      
+    "list": [<checked_vehicle>],
+    "limit_exceeded": false     
 }
 ```
+
+* `limit_exceeded` - `true` if given batch constrained by limit.
 
 where `checked_vehicle` is:
 
 ```json
 {
-    ... // all fields from <vehicle>
-    "errors": <array_of_objects> // optional
+      "id": 222,
+      "tracker_id": 1,
+      "label": "AGV",
+      "max_speed": 90,
+      "model": "Renault KERAX",
+      "type": "truck",
+      "subtype": "tractor",
+      "garage_id": null,
+      "trailer" : "trailer1",
+      "manufacture_year" : 2001,
+      "color" : "some color",
+      "additional_info" : "additional info",
+      "reg_number": "А001АА96",
+      "vin": "TMBJF25LXC6080000",
+      "chassis_number": "",
+      "frame_number" : "",
+      "payload_weight": 32000,
+      "payload_height": 1.2,
+      "payload_length": 1.0,
+      "payload_width": 1.0,
+      "passengers": 4,
+      "gross_weight" : null,
+      "fuel_type": "petrol",
+      "fuel_grade": "А-80",
+      "norm_avg_fuel_consumption": 9.0,
+      "fuel_tank_volume": 50,
+      "fuel_cost" : 100.3,
+      "wheel_arrangement": "4x2",
+      "tyre_size": "255/65 R16",
+      "tyres_number": 4,
+      "liability_insurance_policy_number": "12345",
+      "liability_insurance_valid_till": "2020-10-15",
+      "free_insurance_policy_number": "",
+      "free_insurance_valid_till": null,
+      "icon_id" : 55,
+      "avatar_file_name": null,
+      "tags": [1,2],
+      "errors": <array_of_objects>
 }
 ```
 
+* `errors` - optional array of objects.
+
 #### errors
-* 234 (Invalid data format)
+
+* 234 - Invalid data format.

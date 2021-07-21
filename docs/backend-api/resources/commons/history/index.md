@@ -5,9 +5,9 @@ description: Contains history entry object description and API calls to interact
 
 # History
 
-API path: `/history`.
-
 Contains history entry object description and API calls to interact with it.
+
+<hr>
 
 ## Tracker history entry
 
@@ -65,6 +65,12 @@ Contains history entry object description and API calls to interact with it.
     * `emergency` - boolean. `true` for emergency events with the same flag in a rule. 
 
 Date/time type described in [data types description section](../../../getting-started.md#data-types).
+
+<hr>
+
+## API actions
+
+API path: `/history`.
 
 ### read
 
@@ -133,6 +139,8 @@ Returns history entry with the specified id.
 
 * 201 – Not found in the database - when there are no history entries with that id.
 
+<hr>
+
 ### mark_read
 
 Marks history entry as read by `id` (see: [Tracker history entry](#tracker-history-entry)).
@@ -168,6 +176,8 @@ Marks history entry as read by `id` (see: [Tracker history entry](#tracker-histo
 #### errors
 
 * 201 – Not found in the database - when there are no history entries with that id.
+
+<hr>
 
 ### mark_read_all
 

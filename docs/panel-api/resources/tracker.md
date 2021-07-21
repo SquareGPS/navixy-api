@@ -7,7 +7,7 @@ description: API calls to interact with trackers in the admin panel.
 
 API calls to interact with trackers in the admin panel.
 
-API path: `panel/tracker`.
+<hr>
 
 ## Tracker object
 
@@ -23,6 +23,8 @@ API path: `panel/tracker`.
     "deleted": false,
     "label": "Truck",
     "user_id": 183654,
+    "model_name": "Teltonika FMB120",
+    "last_connection": "2020-02-02 12:44",
     "source": {
         "id": 456751,
         "device_id": "8624369656654",
@@ -48,6 +50,8 @@ API path: `panel/tracker`.
 * `deleted` - boolean. True if tracker or clone has been marked as deleted.
 * `label` - string. Tracker label.
 * `user_id` - int. An id of the user to which this tracker (or clone) belongs to.
+* `model_name` - string. Human-readable tracker model name.
+* `last_connection` - [date/time](../../backend-api/getting-started.md#data-types). Time when this tracker last connected to the server (in UTC+0 timezone).
 * `source` - source JSON object. 
     * `id` - int. Source id.
     * `device_id` - string. Source_imei.
@@ -59,6 +63,12 @@ API path: `panel/tracker`.
     * `connection_status` - [enum](../../backend-api/getting-started.md#data-types). Current connection status.
     * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
     * `corrupted` - boolean. `true` when tracker has been corrupted using /tracker/corrupt, and not passed when it is not corrupted.
+
+<hr>
+
+## API actions
+
+API path: `panel/tracker`.
 
 ### active/history/list
 
@@ -113,6 +123,8 @@ Provides information about trackers which were considered "active" by our PaaS b
 
 * 211 – Requested time span is too big.
 
+<hr>
+
 ### bundle/assign
 
 Assign bundle to specified ICCID.
@@ -133,7 +145,7 @@ Assign bundle to specified ICCID.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/assign' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": 78974217758}'
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": "78974217758"}'
     ```
 
 === "HTTP GET"
@@ -159,6 +171,8 @@ Assign bundle to specified ICCID.
 * 247 – Entity already exists - if ICCID is already exist.
 * 250 – Not allowed for deleted devices - if SIM card deleted.
 
+<hr>
+
 ### bundle/order/assign
 
 Assigns bundle to specified order ID.
@@ -169,8 +183,8 @@ Assigns bundle to specified order ID.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| bundle_id |	Id of a bundle. | int |
-| order_id |	Id of a bundle. Nullable. | int |
+| bundle_id | Id of a bundle. | int |
+| order_id | Id of a bundle. Nullable. | int |
 
 #### examples
 
@@ -199,6 +213,8 @@ Assigns bundle to specified order ID.
 #### errors
 
 * 201 – Not found in the database if bundle not found.
+
+<hr>
 
 ### bundle/import
 
@@ -243,6 +259,8 @@ Adds multiple bundles at once.
 * 201 – Not found in the database - if bundle not found.
 * 247 – Entity already exists - if one of IMEIs is already exist.
 * 204 – Entity not found - if there is no equipment with specified equip_id.
+
+<hr>
 
 ### bundle/list
 
@@ -295,6 +313,8 @@ the following fields: `id`, `imei`, `model_code`, `iccid`, `assign_time`.
 
 * 201 – Not found in the database - if `user_id` or `tariff_id` specified but was not found.
 
+<hr>
+
 ### bundle/read
 
 Returns the bundle object with the specified imei.
@@ -335,6 +355,8 @@ Returns the bundle object with the specified imei.
 #### errors
 
 * 201 – Not found in the database - if bundle not found.
+
+<hr>
 
 ### bundle/update
 
@@ -377,6 +399,8 @@ Assign specified equipment to bundle.
 
 * 201 – Not found in the database - if bundle not found.
 * 204 – Entity not found - if there is no equipment with specified `equip_id`.
+
+<hr>
 
 ### clone
 
@@ -427,6 +451,8 @@ Creates a clone of the existing non-clone tracker.
 * 247 - Entity already exists – if destination user already has a clone of this tracker.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
+<hr>
+
 ### console/connect
 
 Returns auth token for connection to tracker command console.
@@ -470,7 +496,7 @@ Returns auth token for connection to tracker command console.
 
 Establish WS connection with a URL:
 
-`wss://ws.navixy.com/console?device=<tracker_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`
+`wss://ws.navixy.com/console?device=<device_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`
 
 JSON objects come in the next text frames:
 
@@ -478,7 +504,7 @@ JSON objects come in the next text frames:
 {
   "data":
   [
-    ["Time","2017-11-16 10:02:37.0"],
+    ["Time","2020-06-09 10:02:37.0"],
     ["Location valid","yes"],
     ["Latitude","-33.4595716"],
     ["Longitude","-70.7805233"],
@@ -505,8 +531,10 @@ JSON objects come in the next text frames:
 #### errors
 
 * 230 - Not supported for this entity type – when tracker deleted or blocked.
-* 201 - Not found in the database – when tracker not found.
+* 201 - Not found in the database – when tracker with such `device_id` not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
+
+<hr>
 
 ### corrupt
 
@@ -564,6 +592,8 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 
 * `list` - int array. Clones tracker_ids list.
 
+<hr>
+
 ### batch_delete_clones
 
 Deletes the specified set of trackers that are clones of other trackers. 
@@ -599,7 +629,7 @@ response will contain a description of the reasons why the deletion failed.
 | success | Action's execution status.  | boolean |
 | deleted_count | Number of successfully deleted clones from `trackers`. | int |
 | not_deleted_count | Number of not deleted clones. | int |
-| not_deleted_trackers | Optional. Description of failed deletion operations. `{"id": integer, "error": string}` | array of objects |
+| not_deleted_trackers | Optional. Description of failed deletion operations. `{"id": integer, "error": string}`. | array of objects |
 
 Example:
 
@@ -627,7 +657,9 @@ Example:
 
 #### errors
 
-[Standard errors](../../backend-api/getting-started.md#error-codes)
+* [Standard errors](../../backend-api/getting-started.md#error-codes).
+
+<hr>
 
 ### delete_clone
 
@@ -701,6 +733,8 @@ or
 
 * 252 - Device already corrupted – when tracker's source corrupted.
 
+<hr>
+
 ### list
 
 Returns list of all trackers belonging to dealer (with optional filtering by `filter` string, `user_id` and/or `tariff_id`).
@@ -717,7 +751,7 @@ If `filter` is used, entities will be returned only if filter string contain one
 | user_id | Optional. Id of the user. User must belong to authorized dealer. | int |
 | tariff_id | Optional. Id of the tariff. Tariff must belong to authorized dealer. | int |
 | filter | Optional. Text filter string. | string |
-| order_by | Optional. List ordering. Can be one of "id", "label", "status", "model", "device_id", "phone", "creation_date". |	string |
+| order_by | Optional. List ordering. Can be one of "id", "label", "status", "model", "device_id", "phone", "creation_date", "last_connection". |	string |
 | ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
 | offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
 | limit | Optional. Max number of records to return, used for pagination. | int |
@@ -754,6 +788,8 @@ If `filter` is used, entities will be returned only if filter string contain one
       "deleted": false,
       "label": "Truck",
       "user_id": 183654,
+      "model_name": "Teltonika FMB120",
+      "last_connection": "2020-02-02 12:44",
       "source": {
           "id": 456751,
           "device_id": "8624369656654",
@@ -777,6 +813,8 @@ If `filter` is used, entities will be returned only if filter string contain one
 #### errors
 
 * 201 – Not found in the database - if specified `user_id` or `tariff_id` not found.
+
+<hr>
 
 ### move
 
@@ -825,6 +863,8 @@ Moves the existing non-clone tracker to another user belonging to the same deale
 * 247 - Entity already exists – when destination user already has a clone of this tracker.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
+<hr>
+
 ### read
 
 Returns the tracker object with the specified id.
@@ -869,6 +909,8 @@ Returns the tracker object with the specified id.
         "deleted": false,
         "label": "Truck",
         "user_id": 183654,
+        "model_name": "Teltonika FMB120",
+        "last_connection": "2020-02-02 12:44",
         "source": {
             "id": 456751,
             "device_id": "8624369656654",
@@ -891,6 +933,8 @@ Returns the tracker object with the specified id.
 
 * 201 - Not found in the database – when tracker not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
+
+<hr>
 
 ### register_entry
 
@@ -940,6 +984,8 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
 * 214 - Requested operation or parameters are not supported by the device – when device does not have GSM module.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
+<hr>
+
 ### settings/update
 
 Updates tracker settings.
@@ -951,7 +997,7 @@ Updates tracker settings.
 | name | description | type|
 | :------ | :------ | :----- |
 | tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
-| label | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain '<' and '>' symbols. | string |
+| label | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string |
 | deleted | If `true`, tracker will be marked as deleted and will not be shown in user's interface. | boolean |
 | comment | Optional. A comment (description) related to the tracker. Up to 3000 symbols. | string |
 
@@ -983,6 +1029,8 @@ Updates tracker settings.
 
 * 201 - Not found in the database – when tracker not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
+
+<hr>
 
 ### source/update
 
@@ -1025,6 +1073,8 @@ Updates source settings. Can block and unblock a device.
 
 * 201 - Not found in the database – when tracker not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
+
+<hr>
 
 ### tariff/change
 
@@ -1144,6 +1194,8 @@ else (tariff is not active: tariff_end = true)
 
 All dates according to UTC time.
 
+<hr>
+
 ### raw_command/send
 
 Sends the GPRS command to the device, processing it in a protocol-dependent manner beforehand.
@@ -1154,8 +1206,8 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 
 | name | description | type|
 | :------ | :------ | :----- |
-| device_id | Fixed device ID, e.g. IMEI | string |
-| command | Text or hexadecimal representation of the command | string |
+| device_id | Fixed device ID, e.g. IMEI. | string |
+| command | Text or hexadecimal representation of the command. | string |
 | type | Optional. Default is `text` . Can be "text" or "hex". | string |
 | reliable | Optional. default is `true`. If `false` the command doesn't need to be resent when the device is disconnected or if no acknowledgment is received. | boolean |
 
@@ -1166,7 +1218,7 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
     ```shell
     curl -X POST '{{ extra.api_example_url }}panel/tracker/raw_command/send' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": 889654248978, "command": "setparam 101:4"}'
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": "889654248978", "command": "setparam 101:4"}'
     ```
 
 #### response
