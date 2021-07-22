@@ -16,8 +16,8 @@ Now you can get all points for the interesting period using [`/track/read` API c
 Parameters that necessary for this call:
 
 * `tracker_id` - we got them in [tracker/list](../resources/tracking/tracker/index.md#list) call. Use only one tracker_id per call. It should be an integer.
-* `from` - a string containing start [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
-* `to` - a string containing end [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
+* `from` - a string containing start [date/time](../getting-started.md#datetime-formats).
+* `to` - a string containing end [date/time](../getting-started.md#datetime-formats).
 
 Optional parameters:
 

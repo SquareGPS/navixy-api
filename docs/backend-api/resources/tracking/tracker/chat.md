@@ -22,8 +22,8 @@ Gets a list of chat messages.
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| from | Optional. Start date/time of searching. Default value is now minus 7 days. | date/time | `yyyy-MM-dd HH:mm:ss` |
-| to | Optional. End date/time for searching. Default value is now. | date/time | `yyyy-MM-dd HH:mm:ss` |
+| from | Optional. Start date/time of searching. Default value is now minus 7 days. | [date/time](../../../getting-started.md#datetime-formats) | `yyyy-MM-dd HH:mm:ss` |
+| to | Optional. End date/time for searching. Default value is now. | [date/time](../../../getting-started.md#datetime-formats) | `yyyy-MM-dd HH:mm:ss` |
 | limit | Optional. Limit of messages in list. Default and max limit is 1024. | int | 1024 |
 | ascending | Optional. Ascending order direction from the first message to last. Default value is `true`. | boolean | true/false |
 
