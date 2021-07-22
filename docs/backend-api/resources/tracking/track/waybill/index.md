@@ -22,8 +22,8 @@ Downloads a waybill report DOCX file for tracks of the specified tracker and tim
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | [date/time](../../../../getting-started.md#data-types) | "2020-09-23 03:24:00" |
-| to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | [date/time](../../../../getting-started.md#data-types) | "2020-09-23 06:24:00" |
+| from | From date/time. | [date/time](../../../../getting-started.md#datetime-formats) | "2020-09-23 03:24:00" |
+| to | To date/time. Specified date must be after "from" date. | [date/time](../../../../getting-started.md#datetime-formats) | "2020-09-23 06:24:00" |
 | filter | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean | true |
 | split | Optional, default=`true`. If `false`, all tracks will be merged into single one. | boolean | false |
 | include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | false |

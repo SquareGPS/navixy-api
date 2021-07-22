@@ -19,9 +19,9 @@ To receive data for processing, it must be generated. This can be done using a c
 
 Parameters that necessary for this call:
 
-* `from` - A string containing [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Data in a report will be 
+* `from` - A string containing [date/time](../getting-started.md#datetime-formats). Data in a report will be 
 from that moment.
-* `to` - A string containing [date/time](../getting-started.md#data-types) in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be 
+* `to` - A string containing [date/time](../getting-started.md#datetime-formats). Specified date must be 
 after `from` date. Data in a report will be till specified moment.
 * `title` - Report title. Default title will be used if null.
 * `trackers` - List of [trackers' ids](./get-tracker-list.md) to be included in report (if report is by trackers).
