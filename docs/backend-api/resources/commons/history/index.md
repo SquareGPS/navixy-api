@@ -1,9 +1,9 @@
 ---
-title: History
+title: Events history
 description: Contains history entry object description and API calls to interact with it.
 ---
 
-# History
+# Events history
 
 Contains history entry object description and API calls to interact with it.
 

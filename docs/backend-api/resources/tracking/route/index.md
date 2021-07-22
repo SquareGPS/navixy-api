@@ -1,9 +1,9 @@
 ---
-title: Tracking route
+title: Getting route
 description: API call for getting the route to destination point.
 ---
 
-# Tracking route
+# Getting route
 
 API call for getting the route to destination point.
 

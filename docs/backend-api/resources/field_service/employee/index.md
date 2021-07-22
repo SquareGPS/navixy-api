@@ -1,11 +1,11 @@
 ---
-title: Working with employees
-description: Employee object and API calls to work with. Employees used to represent people working at one's organization. They can be linked with other entities such as trackers, vehicles, places, etc.
+title: Working with employees and drivers
+description: Employee object and API calls to work with. Employees (drivers) used to represent people working at one's organization. They can be linked with other entities such as trackers, vehicles, places, etc.
 ---
 
-# Working with employees
+# Working with employees and drivers
 
-Employees used to represent people working at one's organization. They can be linked with other entities such as 
+Employees and drivers used to represent people working at one's organization. They can be linked with other entities such as 
 trackers, vehicles, places, etc.
 
 <hr>
@@ -39,7 +39,7 @@ trackers, vehicles, places, etc.
 ```
 
 * `id` - int. Internal ID. Can be passed as null only for "create" action.
-* `tracker_id` - int. An id of the tracker currently assigned to this employee. `null` means no tracker assigned.
+* `tracker_id` - int. An id of the tracker currently assigned to this employee or driver. `null` means no tracker assigned.
 * `first_name` - string. First name. Cannot be empty. Max 100 characters.
 * `middle_name` - string. Middle name. Can be empty, cannot be null. Max 100 characters.
 * `last_name` - string. Last name. Can be empty, cannot be null. Max 100 characters.
@@ -66,7 +66,7 @@ API base path: `/employee`.
 
 ### list
 
-Gets all employees belonging to user.
+Gets all employees and drivers belonging to user.
 
 #### parameters
 
@@ -107,7 +107,7 @@ Only session `hash`.
 
 ### create
 
-Creates a new employee.
+Creates a new employee/driver.
 
 **required sub-user rights**: `employee_update`.
 
@@ -136,7 +136,7 @@ Creates a new employee.
 }
 ```
 
-* `id` - int. An id of the created employee.
+* `id` - int. An id of the created employee (driver).
 
 #### errors
 
@@ -146,7 +146,7 @@ Creates a new employee.
 
 ### read
 
-Gets employee by its id.
+Gets employee/driver by its id.
 
 #### parameters
 
@@ -205,13 +205,13 @@ Gets employee by its id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no employee with such an id.
+* 201 – Not found in the database - if there is no employee/driver with such an id.
 
 <hr>
 
 ### update
 
-Updates existing employee.
+Updates existing employee/driver.
 
 **required sub-user rights**: `employee_update`.
 
@@ -239,14 +239,14 @@ Updates existing employee.
 
 #### errors
 
-* 201 – Not found in the database - if there is no employee with such an id.
+* 201 – Not found in the database - if there is no employee/driver with such an id.
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
 
 <hr>
 
 ### delete
 
-Deletes an employee with the specified id.
+Deletes an employee/driver with the specified id.
 
 **required sub-user rights**: `employee_update`.
 
@@ -254,7 +254,7 @@ Deletes an employee with the specified id.
 
 | name | description | type |
 | :--- | :--- | :--- |
-| employee_id | Id of an employee to delete. | int |
+| employee_id | Id of an employee (driver) to delete. | int |
 
 #### examples
 
@@ -280,13 +280,13 @@ Deletes an employee with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no employee with such an id.
+* 201 – Not found in the database - if there is no employee/driver with such an id.
 
 <hr>
 
 ### batch_convert
 
-Convert batch of tab-delimited employees and return list of checked employees with errors.
+Converts batch of tab-delimited employees/drivers and returns list of checked employees/drivers with errors.
 
 **Required sub-user rights:** `employee_update`.
 
@@ -294,7 +294,7 @@ Convert batch of tab-delimited employees and return list of checked employees wi
 
 | name | description | type |
 | :--- | :--- | :--- |
-| batch | Batch of tab-delimited employees. | string |
+| batch | Batch of tab-delimited employees/drivers. | string |
 | file_id | Preloaded file ID. | string |
 | fields | Optional. Array of field names. Default is `["first_name", "middle_name", "last_name", "email", "phone"]`. | string array |
 | geocoder | Geocoder type. | string |
@@ -341,7 +341,7 @@ Convert batch of tab-delimited employees and return list of checked employees wi
 }
 ```
 
-* `list` - list of checked employees.
+* `list` - list of checked employees/drivers.
     * `errors` - optional array of errors.
 * `limit_exceeded` - boolean. `true` if given batch constrained by a limit.
 

@@ -1,11 +1,11 @@
 ---
 title: Task history
-description: Navixy platform tracks changes to task fields and state for your convenience.
+description: Navixy platform tracks changes to task fields and state for your convenience. Contains API calls to get this information.
 ---
 
 # Task history
 
-Our platform tracks changes to task fields and state for your convenience.
+Our platform tracks changes to task fields and state for your convenience. Contains API calls to get this information.
 
 <hr>
 

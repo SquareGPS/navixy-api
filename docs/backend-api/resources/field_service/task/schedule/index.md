@@ -1,9 +1,9 @@
 ---
-title: Scheduling tasks
-description: API actions to interact with scheduling tasks. Some tasks happen on regular basis, and it's tedious to create them by hand every time. Task schedules is the way to automate this process.
+title: Recurring tasks
+description: API actions to interact with recurring tasks. Some tasks happen on regular basis, and it's tedious to create them by hand every time. Task schedules is the way to automate this process.
 ---
 
-# Scheduling tasks
+# Recurring tasks
 
 Some tasks happen on regular basis, and it's tedious to create them by hand every time. Task schedules is the way to automate
 this process. At the beginning of each day (moments after 00:00 AM according to [user's timezone setting](../../../commons/user/settings/index.md)),

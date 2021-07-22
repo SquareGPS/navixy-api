@@ -1,9 +1,9 @@
 ---
-title: Driver journal proposal
+title: Trip proposal for driver journal
 description: Contains API call to get the list of driver journal proposal. 
 ---
 
-# Driver journal proposal
+# Trip proposal for driver journal
 
 Contains API call to get the list of driver journal proposal. Proposal objects - trips per specified period that could be
 used for driver journal entry creation.
@@ -16,7 +16,7 @@ API path: `/driver/journal/proposal`.
 
 ### list
 
-Gets proposal objects that could be used for driver journal entry creation. 
+Gets proposal trips that could be used for driver journal entry creation. 
 Proposal objects  created by a track's division by driver changes. 
 If there was no driver change on the track, then the track will be returned entirely. 
 Tracks selected by intersecting their date range with date range from request (`from` and `to` parameters).
