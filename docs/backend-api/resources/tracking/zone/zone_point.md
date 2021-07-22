@@ -1,11 +1,11 @@
 ---
-title: Zone point
-description: All actions to retrieve and manipulate points of the zone.
+title: Geofence point
+description: All actions to retrieve and manipulate points of the geofence.
 ---
 
-# Zone point
+# Geofence point
 
-All actions to retrieve and manipulate points of the zone. Note that `circle` zone type can't have points.
+All actions to retrieve and manipulate points of the geofence. Note that `circle` geofence type can't have points.
 
 <hr>
 
@@ -31,13 +31,13 @@ API base path: `/zone/point`.
 
 ### list
 
-Get points of user's zone with `zone_id`.
+Get points of user's geofence with `zone_id`.
 
 #### parameters
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| zone_id | Id of a zone. | int | 1234567 |
+| zone_id | Id of a geofence. | int | 1234567 |
 | count | Optional. If specified, the returned list will be simplified to contain this number of points. | int | 300 |
 
 #### examples
@@ -73,14 +73,14 @@ Get points of user's zone with `zone_id`.
 
 #### errors
 
-* 201 - Not found in the database – if zone with the specified ID cannot be found or belongs to another user.
-* 230 - Not supported for this entity type – if zone cannot have any points associated with it (e.g. if zone is circle).
+* 201 - Not found in the database – if geofence with the specified ID cannot be found or belongs to another user.
+* 230 - Not supported for this entity type – if geofence cannot have any points associated with it (e.g. if geofence is circle).
 
 <hr>
 
 ### update
 
-Update points for user's zone with `zone_id`.
+Update points for user's geofence with `zone_id`.
 
 **required sub-user rights**: `zone_update`.
 
@@ -88,8 +88,8 @@ Update points for user's zone with `zone_id`.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| zone_id | Id of a zone. | int |
-| points | Array of new points for this zone. Must contain at least 3 elements. Maximum number of points depends on zone type. | array of JSON objects |
+| zone_id | Id of a geofence. | int |
+| points | Array of new points for this geofence. Must contain at least 3 elements. Maximum number of points depends on geofence type. | array of JSON objects |
 
 #### example
 
@@ -109,7 +109,7 @@ Update points for user's zone with `zone_id`.
 
 #### errors
 
-* 201 - Not found in the database – if zone with the specified ID cannot be found or belongs to another user.
-* 202 - Too many points in a zone – if "points" array size exceeds limit for this zone type. Max allowed points count 
-for a zone is 100 for a polygon or 1024 for sausage.
-* 230 - Not supported for this entity type – if zone cannot have any points associated with it (e.g. if zone is circle).
+* 201 - Not found in the database – if geofence with the specified ID cannot be found or belongs to another user.
+* 202 - Too many points in a geofence – if "points" array size exceeds limit for this geofence type. Max allowed points count 
+for a geofence is 100 for a polygon or 1024 for sausage.
+* 230 - Not supported for this entity type – if geofence cannot have any points associated with it (e.g. if geofence is circle).

@@ -1,11 +1,11 @@
 ---
-title: Garage
+title: Depot
 description: Contains garage object and API calls to interact with it.
 ---
 
 # Garage
 
-Contains garage object and API calls to interact with it. Garage object contains name, address, name of the mechanic, name
+Contains garage object and API calls to interact with it. Depot (garage object) contains name, address, name of the mechanic, name
 of the dispatcher and others. This data can be used for more convenient and efficient maintenance and task management.
 
 <hr>
@@ -27,7 +27,7 @@ of the dispatcher and others. This data can be used for more convenient and effi
 }
 ```
 
-* `id` - int. Garage id.
+* `id` - int. Depot id.
 * `location` - location object. Valid location or null.
 
 <hr>
@@ -38,7 +38,7 @@ API path: `/garage`.
 
 ### list
 
-Gets all garages belonging to user.
+Gets all depots belonging to user.
 
 #### examples
 
@@ -84,7 +84,7 @@ Gets all garages belonging to user.
 
 ### create
 
-Creates a new garage.
+Creates a new depot.
 
 **required sub-user rights**: `vehicle_update`.
 
@@ -113,7 +113,7 @@ Creates a new garage.
 }
 ```
 
-* `id` - int. An id of a created garage.
+* `id` - int. An id of a created depot.
 
 #### errors
 
@@ -123,7 +123,7 @@ Creates a new garage.
 
 ### update
 
-Updates existing garage with the specified id.
+Updates existing depot with the specified id.
 
 **required sub-user rights**: `vehicle_update`.
 
@@ -151,13 +151,13 @@ Updates existing garage with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no garage with such an id.
+* 201 – Not found in the database - if there is no depot with such an id.
 
 <hr>
 
 ### delete
 
-Deletes a garage with the specified id.
+Deletes a depot with the specified id.
 
 **required sub-user rights**: `vehicle_update`.
 
@@ -165,7 +165,7 @@ Deletes a garage with the specified id.
 
 | name | description | type |
 | :------ | :------ | :----- |
-| garage_id | Id of the garage to delete. | int |
+| garage_id | Id of the depot to delete. | int |
 
 #### examples
 
@@ -191,4 +191,4 @@ Deletes a garage with the specified id.
     
 #### errors
 
-* 201 – Not found in the database - if there is no garage with such an id.
+* 201 – Not found in the database - if there is no depot with such an id.

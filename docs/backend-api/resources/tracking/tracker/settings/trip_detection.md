@@ -1,10 +1,11 @@
 ---
-title: Trip detection
-description: API calls for getting and changing trip detection for the tracker.
+title: Parking detection
+description: API calls for getting and changing parking detection for the tracker.
 ---
-# Trip detection
 
-Contains API calls for getting and changing trip detection for the tracker. It is responsible for the parking detection 
+# Parking detection
+
+Contains API calls for getting and changing parking detection for the tracker. It is responsible for the parking detection 
 function in the UI. The monitoring system automatically detects the facts of parking (states without movement), for the 
 following purposes:
 
@@ -19,7 +20,7 @@ API base path: `/tracker/settings/trip_detection`.
 
 ### read
 
-Gets trip detection settings for the specified tracker.
+Gets parking detection settings for the specified tracker.
 
 #### parameters
 
@@ -69,7 +70,7 @@ Gets trip detection settings for the specified tracker.
 
 ### update
 
-Updates trip detection settings for the specified tracker.
+Updates parking detection settings for the specified tracker.
 
 **required sub-user rights:** `tracker_update`.
 

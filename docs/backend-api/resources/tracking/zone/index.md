@@ -1,14 +1,14 @@
 ---
-title: Working with zones
-description: This document contains zone object description and CRUD actions for zones.
+title: Working with geofences
+description: This document contains zone object description and CRUD actions for geofences.
 ---
 
-# Working with zones
+# Working with geofences
 
-Zones used in rules to limit rule area of activity. Also, zone names shown in reports after the address, if 
-an event happened inside the zone.
+Geofences used in rules to limit rule area of activity. Also, geofence names shown in reports after the address, if 
+an event happened inside the geofence.
 
-This document describes CRUD actions for zones. Note that zone points handled separately because they are 
+This document describes CRUD actions for geofences. Note that geofence points handled separately because they are 
 represented by big arrays of data.
 
 <hr>
@@ -35,10 +35,10 @@ represented by big arrays of data.
 }
 ```
 
-* `id` - int. Zone ID.
-* `label` - string. Zone label.
-* `address` - string. Zone address.
-* `color` - string. Zone color in 3-byte RGB hex format.
+* `id` - int. Geofence ID.
+* `label` - string. Geofence label.
+* `address` - string. Geofence address.
+* `color` - string. Geofence color in 3-byte RGB hex format.
 * `radius` - int. Circle radius in meters.
 * `center` - location object. Location of circle center.
 * `tags` - int array. Array of tag IDs.
@@ -51,17 +51,17 @@ represented by big arrays of data.
 {
     "id": 124597,
     "type": "polygon",
-    "label": "Zone name",
+    "label": "Geofence name",
     "address": "Karlsplatz, 2",
     "color": "27A9E3",
     "tags": [1,236]
 }
 ```
 
-* `id` - int. Zone ID.
-* `label` - string. Zone label.
-* `address` - string. Zone address.
-* `color` - string. Zone color in 3-byte RGB hex format.
+* `id` - int. Geofence ID.
+* `label` - string. Geofence label.
+* `address` - string. Geofence address.
+* `color` - string. Geofence color in 3-byte RGB hex format.
 * `tags` - int array. Array of tag IDs.
 
 <hr>
@@ -74,7 +74,7 @@ Represents all points within certain distance to the specified polyline.
 {
     "id": 12345,
     "type": "sausage",
-    "label": "Zone name",
+    "label": "Geofence name",
     "address": "Karlsplatz, 2",
     "color": "27A9E3",
     "radius": 150,
@@ -82,10 +82,10 @@ Represents all points within certain distance to the specified polyline.
 }
 ```
 
-* `id` - int. Zone ID.
-* `label` - string. Zone label.
-* `address` - string. Zone address.
-* `color` - string. Zone color in 3-byte RGB hex format.
+* `id` - int. Geofence ID.
+* `label` - string. Geofence label.
+* `address` - string. Geofence address.
+* `color` - string. Geofence color in 3-byte RGB hex format.
 * `radius` - int. Polyline radius in meters.
 * `tags` - int array. Array of tag IDs.                 
 
@@ -97,7 +97,7 @@ API base path: `/zone`.
 
 ### batch_convert
 
-Convert batch of tab-delimited circle zones and return list of checked zones with errors.
+Convert batch of tab-delimited circle geofences and return list of checked geofences with errors.
 
 **required sub-user rights**: `zone_update`.
 
@@ -136,7 +136,7 @@ For `batch` parameter:
     "list": [{
       "id": null,
       "type": "circle",
-      "label": "Zone name",
+      "label": "Geofence name",
       "address": "Karlsplatz, 2",
       "color": "27A9E3",
       "radius": 100,
@@ -150,10 +150,10 @@ For `batch` parameter:
 }
 ```
 
-* `id` - int. Zone ID.
-* `label` - string. Zone label.
-* `address` - string. Zone address.
-* `color` - string. Zone color in 3-byte RGB hex format.
+* `id` - int. Geofence ID.
+* `label` - string. Geofence label.
+* `address` - string. Geofence address.
+* `color` - string. Geofence color in 3-byte RGB hex format.
 * `radius` - int. Circle radius in meters.
 * `center` - location object. Location of circle center.
 * `tags` - int array. Array of tag IDs.
@@ -166,7 +166,7 @@ For `batch` parameter:
     "success": true,
     "list": [{
       "id": null,
-      "label": "Zone name",
+      "label": "Geofence name",
       "address": "incorrect address",
       "color": "27A9E3",
       "radius": 100,
@@ -196,7 +196,7 @@ For `batch` parameter:
 
 ### create
 
-Creates a new zone.
+Creates a new geofence.
 
 **required sub-user rights**: `zone_update`.
 
@@ -205,8 +205,8 @@ Creates a new zone.
 | name | description | type|
 | :------ | :------ | :----- |
 | zone | zone JSON-object without `id` and `color` fields. | JSON object |
-| points | Array of new [points](../../../resources/tracking/zone/zone_point.md) for this zone. Must contain at least 3 elements. MUST be omitted if zone does not support points (e.g. circle). | array of `zone point` objects |
-| zone.color | Optional. Zone color in 3-byte RGB hex format. Default is "27A9E3". | string |
+| points | Array of new [points](../../../resources/tracking/zone/zone_point.md) for this geofence. Must contain at least 3 elements. MUST be omitted if zone does not support points (e.g. circle). | array of `zone point` objects |
+| zone.color | Optional. Geofence color in 3-byte RGB hex format. Default is "27A9E3". | string |
 
 
 #### example
@@ -228,20 +228,20 @@ Creates a new zone.
 }
 ```
 
-* `id` - int. An id of the created zone.
+* `id` - int. An id of the created geofence.
 
 #### errors
 
-* 202 - Too many points in a zone – max allowed points count for a zone is 100 for a polygon or 1024 for sausage.
-* 230 - Not supported for this entity type – if "points" were specified, but zone cannot have any points associated with
- it (e.g. if zone is circle).
-* 268 - Over quota –  if the user's quota for zones exceeded.
+* 202 - Too many points in a geofence – max allowed points count for a geofence is 100 for a polygon or 1024 for sausage.
+* 230 - Not supported for this entity type – if "points" were specified, but geofence cannot have any points associated with
+ it (e.g. if geofence is circle).
+* 268 - Over quota –  if the user's quota for geofences exceeded.
 
 <hr>
 
 ### delete
 
-Deletes user's zone by `zone_id` or array of `zone_ids`.
+Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
 **required sub-user rights**: `zone_update`.
 
@@ -249,8 +249,8 @@ Deletes user's zone by `zone_id` or array of `zone_ids`.
 
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
-| zone_id | Id of a zone. | int | 1234567 |
-| zone_ids | Array of zone ids. | int array | `[1234567, 2345678]` |
+| zone_id | Id of a geofence. | int | 1234567 |
+| zone_ids | Array of geofence ids. | int array | `[1234567, 2345678]` |
 
 * Use only one parameter `zone_id` or `zone_ids`.
 
@@ -297,13 +297,13 @@ Deletes user's zone by `zone_id` or array of `zone_ids`.
 }
 ```
 
-* `ids` - int array. List IDs of the rules which uses the specified zone.
+* `ids` - int array. List IDs of the rules which uses the specified geofence.
 
 <hr>
 
 ### list
 
-Gets all user zones.
+Gets all user geofences.
 
 #### examples
 
@@ -338,14 +338,14 @@ Gets all user zones.
 }
 ```
 
-* `list` - array of objects. Zone objects without points field.
+* `list` - array of objects. Geofence objects without points field.
 
 <hr>
 
 ### update
 
-Update zone parameters for the specified zone. Note that zone must exist, must belong to the current user, and its 
-type cannot be changed, e.g. if you already have a zone with ID=1 which type is "circle", you cannot submit a zone 
+Update geofence parameters for the specified geofence. Note that geofence must exist, must belong to the current user, and its 
+type cannot be changed. E.g. if you already have a geofence with ID=1 which type is "circle", not possible to submit a geofence 
 which type is "polygon".
 
 **required sub-user rights**: `zone_update`.
@@ -354,8 +354,8 @@ which type is "polygon".
 
 | name | description | type|
 | :------ | :------ | :----- |
-| zone | zone JSON-object without `id` and `color` fields. | JSON object |
-| zone.color | Optional. Zone color in 3-byte RGB hex format. Default is "27A9E3". | string |
+| zone | Geofence JSON-object without `id` and `color` fields. | JSON object |
+| zone.color | Optional. Geofence color in 3-byte RGB hex format. Default is "27A9E3". | string |
 
 #### example
 
@@ -375,8 +375,8 @@ which type is "polygon".
 
 #### errors
 
-* 201 - Not found in the database – if zone with the specified ID cannot be found or belongs to another user.
-* 231 - Entity type mismatch – if type of the submitted zone differs from type of the zone currently stored in the 
+* 201 - Not found in the database – if geofence with the specified ID cannot be found or belongs to another user.
+* 231 - Entity type mismatch – if type of the submitted geofence differs from type of the geofence currently stored in the 
 database.
 
 <hr>
@@ -451,10 +451,10 @@ if `dry_run=false`:
 
 #### errors
 
-* 202 - Too many points in a zone – max allowed points count for a zone is 100 for a polygon or 1024 for sausage.
+* 202 - Too many points in a geofence – max allowed points count for a geofence is 100 for a polygon or 1024 for sausage.
 * 233 - No data file – if file part is missing.
 * 234 - Invalid data format.
-* 268 - Over quota – if the user's quota for zones exceeded.
+* 268 - Over quota – if the user's quota for geofences exceeded.
 
 <hr>
 

@@ -1,9 +1,9 @@
 ---
-title: Changing avatar
-description: API calls to upload and assign avatars for places. Avatars don't change through `/place/update`, you must use either `assign` (to set avatar to one of preset icons), or `upload` (to upload your own image).
+title: Changing POI avatar
+description: API calls to upload and assign avatars for POIs. Avatars don't change through `/place/update`, you must use either `assign` (to set avatar to one of preset icons), or `upload` (to upload your own image).
 ---
 
-# Changing place avatar
+# Changing POI avatar
 
 Avatars don't change through `/place/update`, you must use either `assign` (to set avatar to one of preset icons),
 or `upload` (to upload your own image). 
@@ -14,7 +14,7 @@ or `upload` (to upload your own image).
 
 #### upload
 
-Uploads avatar image for specified place.
+Uploads avatar image for specified POI.
 
 **required sub-user rights:** `place_update`.
 
@@ -36,7 +36,7 @@ File part **mime** type must be one of:
 
 | name | description | type | 
 | :--- | :--- | :--- | 
-| place_id | ID of the place. | int |
+| place_id | ID of the POI. | int |
 | file | Image file. | File upload |
 | redirect_target | Optional URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string |
 
@@ -53,7 +53,7 @@ File part **mime** type must be one of:
 
 #### errors
 
-* 201 - Not found in the database – when place with place_id not found.
+* 201 - Not found in the database – when POI with place_id not found.
 * 233 - No data file – if file part not passed.
 * 234 - Invalid data format – if passed file with unexpected mime type.
 * 254 - Cannot save file – on some file system errors.
@@ -62,7 +62,7 @@ File part **mime** type must be one of:
 
 ### assign
 
-Assigns `icon_id` (from standard icon set) to this place. `icon_id` can be null – this means that uploaded avatar should
+Assigns `icon_id` (from standard icon set) to this POI. `icon_id` can be null – this means that uploaded avatar should
  be used instead of icon.
 
 **required sub-user rights:** `place_update`.
@@ -71,7 +71,7 @@ Assigns `icon_id` (from standard icon set) to this place. `icon_id` can be null 
 
 | name | description | type | 
 | :--- | :--- | :--- | 
-| place_id | ID of the place. | int |
+| place_id | ID of the POI. | int |
 | icon_id | Optional. ID of the icon from standard icon set. | int |
 
 #### examples
@@ -98,4 +98,4 @@ Assigns `icon_id` (from standard icon set) to this place. `icon_id` can be null 
 
 #### errors
 
-* 201 - Not found in the database – when place with `place_id` not found.
+* 201 - Not found in the database – when POI with `place_id` not found.

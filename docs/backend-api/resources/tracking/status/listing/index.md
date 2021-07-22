@@ -1,12 +1,12 @@
 ---
-title: Listing
-description: Contains status listing object and API calls to interact with status listings.
+title: Working status list
+description: Contains status listing object and API calls to interact with working status list.
 ---
 
-# Listing
+# Working status list
 
-Contains status listing object and API calls to interact with status listings.. Status listings are lists of possible statuses that can be assigned 
-to trackers.
+Contains status listing object and API calls to interact with status listings. Status listings are lists of possible 
+statuses that can be assigned to trackers.
 
 <hr>
 
@@ -22,11 +22,11 @@ to trackers.
 }
 ```
 
-* `id` - int. A unique identifier of this status listing. Read-only.
-* `label` - string. Human-readable label for the status listing.
-* `employee_controlled` - boolean. If `true` employees can change their own status, e.g. using mobile tracking app.
-* `supervisor_controlled` - boolean. If `true` supervisors can change status, e.g. using mobile monitoring app.
-* `entries` - int array. List of IDs of statuses which belong to this listing. Order matters, and is preserved.
+* `id` - int. A unique identifier of this working status list. Read-only.
+* `label` - string. Human-readable label for the working status list.
+* `employee_controlled` - boolean. If `true` employees can change their own working status, e.g. using mobile tracking app.
+* `supervisor_controlled` - boolean. If `true` supervisors can change working status, e.g. using mobile monitoring app.
+* `entries` - int array. List of IDs of working statuses which belong to this list. Order matters, and is preserved.
 
 <hr>
 
@@ -36,7 +36,7 @@ API base path: `/status/listing/`.
 
 ### create
 
-Creates new empty status listing.
+Creates new empty working status list.
 
 **required sub-user rights:** `tracker_update`.
 
@@ -65,19 +65,19 @@ Creates new empty status listing.
 }
 ```
 
-* `id` - int. ID of the created status listing.
+* `id` - int. ID of the created working status list.
 
 #### errors
 
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
-* 268 Over quota – if the user's quota for listings exceeded.
+* 268 - Over quota – if the user's quota for working status lists exceeded.
 
 <hr>
 
 ### delete
 
-Deletes status listing.
+Deletes working status list.
 
 **required sub-user rights:** `tracker_update`.
 
@@ -85,7 +85,7 @@ Deletes status listing.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| listing_id | ID of the listing for this status to attach to. | int |
+| listing_id | ID of the working status list for this status to attach to. | int |
 
 #### examples
 
@@ -111,7 +111,7 @@ Deletes status listing.
 
 #### errors
 
-* 201 - Not found in the database – if listing with the specified ID does not exist.
+* 201 - Not found in the database – if working status list with the specified ID does not exist.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
 
@@ -119,7 +119,7 @@ available.
 
 ### list
 
-Gets status listings belonging to authorized user.
+Gets working status lists belonging to authorized user.
 
 #### parameters
 
@@ -167,11 +167,11 @@ available.
 
 ### update
 
-Updates status listing properties.
+Updates working status list properties.
 
 **required sub-user rights:** `tracker_update`.
 
-`entries` field allows changing order of statuses attached to this listing.
+`entries` field allows changing order of statuses attached to this working status list.
 
 #### parameters
 
@@ -197,8 +197,8 @@ Updates status listing properties.
 
 #### errors
 
-* 201 - Not found in the database – if status listing with the specified ID does not exist.
+* 201 - Not found in the database – if working status list with the specified ID does not exist.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature
  available.
 * 262 - Entries list is missing some entries or contains nonexistent entries – if entries does not contain full set of
- status IDs associated with this status listing, or if it contains nonexistent status IDs.
+ status IDs associated with this working status list, or if it contains nonexistent status IDs.

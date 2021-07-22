@@ -1,9 +1,9 @@
 ---
-title: Tracking route Google
+title: Getting the route with Google
 description: API call for getting the route to destination point using Google Directions API.
 ---
 
-# Tracking route Google
+# Getting the route with Google
 
 API call for getting the route to destination point using [Google Directions API](https://developers.google.com/maps/documentation/directions/intro).
 

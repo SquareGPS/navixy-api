@@ -1,11 +1,11 @@
 ---
-title: Tracker history
-description: Contains list method to get tracker history.
+title: Tracker events
+description: Contains list method to get tracker's events.
 ---
 
-# Tracker history
+# Tracker events
 
-Contains list method to get tracker history.
+Contains list method to get tracker's events.
 
 <hr>
 
