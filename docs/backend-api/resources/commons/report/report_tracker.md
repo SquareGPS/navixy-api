@@ -107,8 +107,8 @@ Requests a report generation with the specified parameters.
 
 | name | description | type |
 | :------ | :------ | :----- |
-| from | A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | string |
-| to | A string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | string |
+| from | A string containing [date/time](../../../getting-started.md#datetime-formats). | string |
+| to | A string containing [date/time](../../../getting-started.md#datetime-formats). Specified date must be after "from" date. | string |
 | title | Report title. Default title will be used if null. | string |
 | geocoder | Which geocoder to use. See [geocoder/](../../tracking/geocoder.md). | string |
 | trackers | List of trackers' ids to be included in report (if report is by trackers). | int array |

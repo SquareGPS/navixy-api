@@ -243,19 +243,54 @@ Session hash can be obtained via `user/auth` API call:
     `[1.7976931348623157 x 10^308, 4.9406564584124654 x 10^-324]`.
 *   `string` - string literals.
 *   `enum` - string literals from predefined set.
-*   `date/time` – is a string containing date/time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone).
+*   `date/time` – is a string containing date/time in [defined formats](#datetime-formats).
 *   `local_time` – is a string containing local time in `HH:mm:ss` format.
 *   `location` – is json object contains geographical coordinates, e.g.
 ```json
 {"lat": 56.827001, "lng": 60.594296}
 ```
-*   `locale` – string in format `language\[_country\]`, where `language` is 
+*   `locale` – string in format `language[_country]`, where `language` is 
     [ISO 639 alpha-2](https://www.loc.gov/standards/iso639-2/php/English_list.php) language code, 
     and `country` is [ISO 3166 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-2#Current_codes) 
     country code, e.g. `en_US` or `ru`. User interface support only language codes: 
     `ru, en, es, ar, de, pt, ro and uk`.
     
 <hr>
+
+#### Date/time formats
+
+Date/time type can be represented with formats:
+
+* `yyyy-MM-dd HH:mm:ss` format (in user's timezone), default
+* [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) `yyyy-MM-dd'T'HH:mm:ssZZ`
+
+To use ISO 8601 date/time format you should pass `true` to (in order of lookup priority):
+
+1. `iso_datetime` parameter of the request body (root-level property for `application/json`).
+2. `iso_datetime` parameter of the HTTP query string.
+3. HTTP header `NVX-ISO-DateTime`
+
+=== "JSON request body parameter"
+    ```abap
+    $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
+    -H 'Content-Type: application/json' \
+    -d '{"iso_datetime": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+    ```
+
+=== "form request parameter"
+    ```abap
+    $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
+    -d 'iso_datetime=true' \
+    -d 'hash=a6aa75587e5c59c32d347da438505fc3'
+    ```
+
+=== "HTTP Header"
+    ```abap
+    $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
+    -H 'Content-Type: application/json' \
+    -H 'NVX-ISO-DateTime: true' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+    ```
 
 ### Error handling
 

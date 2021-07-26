@@ -22,8 +22,8 @@ Returns engine hours counted for the specified period.
 | name | description | type| format |
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| from | From time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). | [date/time](../../../../getting-started.md#data-types) | "2020-09-24 03:24:00" |
-| to | To time in `yyyy-MM-dd HH:mm:ss` format (in user's timezone). Specified date must be after "from" date. | [date/time](../../../../getting-started.md#data-types) | "2020-09-24 06:24:00" |
+| from | From date/time. | [date/time](../../../../getting-started.md#datetime-formats) | "2020-09-24 03:24:00" |
+| to | To date/time. Specified date must be after "from" date. | [date/time](../../../../getting-started.md#datetime-formats) | "2020-09-24 06:24:00" |
 
 #### examples
 

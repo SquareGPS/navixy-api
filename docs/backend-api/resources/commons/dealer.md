@@ -100,6 +100,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     "premium_gis": true,
     "features": ["branding_web"],
     "platform": {
+        "iso_datetime_support": true,
         "history.max_limit": 10,
         "report.max_time_span": "P90D",
         "stats.max_allowed_trackers": 128,
@@ -163,6 +164,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 * `premium_gis` - boolean. If `true` dealer has Premium GIS package.
 * `features` - string array. Set of the allowed features for a dealer (all list see below in "Dealer features").
 * `platform` - key-value object. Global platform settings.
+    * `iso_datetime_support` - boolean, if `true` platform supports ISO 8601 [date/time format](../../getting-started.md#datetime-formats). 
     * `history.max_limit` - int, max limit for [history](history/index.md) list actions.
     * `report.max_time_span` - ISO8601 period, max timespan for [reports generation](report/report_tracker.md#generate).
     * `stats.max_allowed_trackers` - int, max allowed trackers for [stats actions](../tracking/tracker/stats/stats_mileage.md).
