@@ -528,36 +528,28 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
 
 ```json
 {
-    "success": true,
-    "value": {
-      "lat": 53.445181,
-      "lng": -2.276432,
-      "alt": 10,
-      "satellites": 8,
-      "get_time": "2011-06-18 03:39:44",
-      "address": "4B Albany Road, Manchester, Great Britain",
-      "heading": 298,
-      "speed": 70,
-      "precision": 100,
-      "gsm_lbs": true,
-      "parking": true
-    }
+  "success" : true,
+  "value" : {
+    "get_time" : "2012-03-05 12:00:00",
+    "heading" : 11,
+    "lat" : 22.0,
+    "lng" : 33.0,
+    "satellites" : 5,
+    "speed" : 20,
+    "precision": 100
+  }
 }
 ```
 
 * `value` - track point object.
-    * `lat` - float. Latitude.
-    * `lng` - float. Longitude.
-    * `alt` - int. Altitude in meters.
-    * `satellites` - int. Number of satellites used in fix for this point.
-    * `get_time` - [date/time](../../../getting-started.md#data-types). GPS timestamp of the point, in user's timezone.
-    * `address` - string. Point address. "" if no address recorded for the point.
-    * `heading` - int. Direction bearing in degrees (0-360).
-    * `speed` - int. Speed in km/h.
-    * `precision` - int. Optional. Precision in meters.
-    * `gsm_lbs` - boolean. Optional. `true` if location detected by GSM LBS, optional.
-    * `parking` - boolean. Optional. `true` if point does not belong to track.
-
+  * `get_time` - [date/time](../../../getting-started.md#data-types). GPS timestamp of the point, in user's timezone.
+  * `heading` - int. Direction bearing in degrees (0-360).
+  * `lat` - float. Latitude.
+  * `lng` - float. Longitude.
+  * `satellites` - int. Number of satellites used in fix for this point.
+  * `speed` - int. Speed in km/h.
+  * `precision` - int. Optional. Exists if not equal to 0. Precision in meters.
+  
 #### errors
 
 * 201 - Not found in the database – if there is no tracker with such id belonging to authorized user.
@@ -997,7 +989,7 @@ and configures it automatically. You don't need to pass any identifier during de
 
 Gets user's trackers with optional filtering by labels.
 
-### parameters
+#### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
