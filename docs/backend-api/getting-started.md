@@ -292,6 +292,39 @@ To use ISO 8601 date/time format you should pass `true` to (in order of lookup p
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
+
+response example with fixed offset date/time :
+
+```json
+{
+  "success": true,
+  "user_time": "2014-07-09T07:50:58+05:00",
+  "list": [
+    {
+      "type": "odometer",
+      "value": 100500.1,
+      "update_time": "2014-03-06T13:57:00+05:00"
+    }
+  ]
+}
+```
+
+response example with UTC date/time :
+
+```json
+{
+  "success": true,
+  "user_time": "2014-07-09T02:50:58Z",
+  "list": [
+    {
+      "type": "odometer",
+      "value": 100500.1,
+      "update_time": "2014-03-06T17:57:00Z"
+    }
+  ]
+}
+```
+
 ### Error handling
 
 If an error occurs, API returns special error response. You can also detect error by checking 
