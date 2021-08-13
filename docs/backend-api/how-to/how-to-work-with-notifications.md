@@ -65,7 +65,8 @@ that could be used for different purposes:
              "place_ids": null,
              "last_known_location": false,
              "tracker_label": "Tracker label",
-             "emergency": false
+             "emergency": false,
+             "employee_id": 4563
          }
     }]
 }

@@ -37,7 +37,8 @@ Contains history entry object description and API calls to interact with it.
         "place_ids": null,
         "last_known_location": false,
         "tracker_label": "Tracker label",
-        "emergency": false
+        "emergency": false,
+        "employee_id": 4563
     }
 }
 ```
@@ -62,7 +63,8 @@ Contains history entry object description and API calls to interact with it.
     * `place_ids` - int. Related place identifiers.
     * `last_known_location` - boolean. `true` if location may be outdated.
     * `tracker_label` - string. Tracker label.
-    * `emergency` - boolean. `true` for emergency events with the same flag in a rule. 
+    * `emergency` - boolean. `true` for emergency events with the same flag in a rule.
+    * `employee_id` - int. Driver ID at the time of the event.
 
 Date/time type described in [data types description section](../../../getting-started.md#data-types).
 
@@ -129,7 +131,8 @@ Returns history entry with the specified id.
              "place_ids": null,
              "last_known_location": false,
              "tracker_label": "Tracker label",
-             "emergency": false
+             "emergency": false,
+             "employee_id": 4563
          }
     }
 }

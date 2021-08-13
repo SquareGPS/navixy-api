@@ -72,7 +72,8 @@ Default and max limit is [history.maxLimit](../dealer.md).
              "place_ids": null,
              "last_known_location": false,
              "tracker_label": "Tracker label",
-             "emergency": false
+             "emergency": false,
+             "employee_id": 4563
          }
     }]
 }
