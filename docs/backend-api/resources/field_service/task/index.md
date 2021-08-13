@@ -49,7 +49,7 @@ it's available for viewing by app user. User will also receive notifications of 
              "type": "text",
              "value":  "I love text!"
         }
-   },
+   }
 }
 ```
 
@@ -518,7 +518,7 @@ Gets task, checkpoint, or route with checkpoints by specified id.
 ```json
 {
     "success": true,
-    "value":  <task, checkpoint or route>,
+    "value":  <task or checkpoint or route>,
     "checkpoints": [
         <checkpoint1>,
         <checkpoint2>

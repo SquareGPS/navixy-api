@@ -1,11 +1,11 @@
 ---
-title: History unread
+title: Unread events
 description: Contains API calls to interact with unread history entries.
 ---
 
-# History unread
+# Unread events
 
-Contains API calls to interact with unread history entries.
+Contains API calls to interact with unread history events.
 
 <hr>
 
@@ -15,7 +15,7 @@ API path: `/history/unread`.
 
 ### list
 
-List less than or equal to `limit` of the latest user's unread history entries.
+List less than or equal to `limit` of the latest user's unread history events.
 
 #### parameters
 
@@ -72,7 +72,8 @@ Default and max limit is [history.maxLimit](../dealer.md).
              "place_ids": null,
              "last_known_location": false,
              "tracker_label": "Tracker label",
-             "emergency": false
+             "emergency": false,
+             "employee_id": 4563
          }
     }]
 }

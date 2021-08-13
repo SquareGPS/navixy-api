@@ -1,11 +1,11 @@
 ---
-title: Tracker history
-description: Contains list method to get tracker history.
+title: Tracker events
+description: Contains list method to get tracker's events.
 ---
 
-# Tracker history
+# Tracker events
 
-Contains list method to get tracker history.
+Contains list method to get tracker's events.
 
 <hr>
 
@@ -75,7 +75,8 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
              "place_ids": null,
              "last_known_location": false,
              "tracker_label": "Tracker label",
-             "emergency": false
+             "emergency": false,
+             "employee_id": 4563
          }
     }],
     "limit_exceeded": false

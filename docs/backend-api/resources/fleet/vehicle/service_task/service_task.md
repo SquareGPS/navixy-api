@@ -1,11 +1,11 @@
 ---
-title: Service task
+title: Service work
 description: Contains service task object description and API calls to work with it.   
 ---
 
-# Vehicle service task
+# Vehicle service work
 
-Contains service task object description and API calls to work with vehicle service tasks that is used for vehicle maintenance.
+Contains service task object description and API calls to interact with vehicle service works that is used for vehicle maintenance.
 Vehicle maintenance feature helps to make sure that any scheduled maintenance or urgent repair is carried out in a timely manner.
 
 <hr>
@@ -21,7 +21,7 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
       "end_date": "2015-05-03 09:35:00",
       "wear_percentage": 40
     },
-    "description": "Service task",
+    "description": "Service work",
     "comment": "",
     "cost": 100500.0,
     "completion": {
@@ -73,7 +73,7 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
     * `end_date` - [date/time](../../../../getting-started.md#data-types). Predicted end date.
     * `wear_percentage` - int. Wear percentage.
 * `completion` - object. Date and counter's values when the task marked as done. Non-editable.
-* `completion_date` - [date/time](../../../../getting-started.md#data-types). Date when a service task completed.
+* `completion_date` - [date/time](../../../../getting-started.md#data-types). Date when a service work completed.
 * `current_position` - object. Current position values.
     * `mileage` - int. Current mileage.
     * `date` - [date/time](../../../../getting-started.md#data-types). Current date.
@@ -83,7 +83,7 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
     * `date` - [date/time](../../../../getting-started.md#data-types). Task creation date for tasks with date condition.
     * `engine_hours` - int. Initial engine hours value for tasks with engine hours condition.
 * `vehicle_id` - int. An id of associated vehicle.
-* `description` - string. Name of a service task. Max 255 characters.
+* `description` - string. Name of a service work. Max 255 characters.
 * `comment` - string. Comment for a task. Max 255 characters.
 * `cost` - float. Cost in the currency of the user. For information only.
 * `conditions` - task end conditions. At least one of fields ("mileage" or "date" or "engine_hours") must be passed.
@@ -102,8 +102,8 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
     * `emails` - string array. Email addresses where sms notifications should be sent.
     * `push_enabled` - boolean. If `true` push notifications enabled.
 * `repeat` - boolean. If `true` then new task will be created when current task done.
-* `unplanned` - boolean. If `true` service task is unplanned. For information only.
-* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted,
+* `unplanned` - boolean. If `true` service work is unplanned. For information only.
+* `file_ids` - int array. One file will be specified in many service works. If one of the tasks will be deleted,
   then file will remain in others. File will be deleted only when the last task with it will be deleted.
 
 <hr>
@@ -125,7 +125,7 @@ API path: `/vehicle/service_task`.
 
 ### batch_create
 
-Creates multiple service tasks.
+Creates multiple service works.
 
 #### parameters
 
@@ -133,13 +133,13 @@ Creates multiple service tasks.
 | name | description | type |
 | :------ | :------ | :----- |
 | vehicle_ids | List of vehicle ids. Task will be created for every vehicle.  | int array |
-| task | Service task to create. `vehicle_id` field in these objects should not be specified. | JSON object |
+| task | Service work to create. `vehicle_id` field in these objects should not be specified. | JSON object |
 
 A `task` object is:
 
 ```json
 {
-    "description": "Service task",
+    "description": "Service work",
     "comment": "",
     "cost": 10050.0000,
     "conditions": {
@@ -173,7 +173,7 @@ A `task` object is:
 }
 ```
 
-* `description` - string. Name of a service task. Max 255 characters.
+* `description` - string. Name of a service work. Max 255 characters.
 * `comment` - string. Comment for a task. Max 255 characters.
 * `cost` - float. Cost in the currency of the user. For information only.
 * `conditions` - task end conditions. At least one of fields ("mileage" or "date" or "engine_hours") must be passed.
@@ -192,8 +192,8 @@ A `task` object is:
     * `emails` - string array. Email addresses where sms notifications should be sent.
     * `push_enabled` - boolean. If `true` push notifications enabled.
 * `repeat` - boolean. If `true` then new task will be created when current task done.
-* `unplanned` - boolean. If `true` service task is unplanned. For information only.
-* `file_ids` - int array. One file will be specified in many service tasks. If one of the tasks will be deleted,
+* `unplanned` - boolean. If `true` service work is unplanned. For information only.
+* `file_ids` - int array. One file will be specified in many service works. If one of the tasks will be deleted,
   then file will remain in others. File will be deleted only when the last task with it will be deleted.
   
 #### example
@@ -220,13 +220,13 @@ A `task` object is:
 
 ### create
 
-Creates a new vehicle service task. For vehicles with associated tracker only.
+Creates a new vehicle service work. For vehicles with associated tracker only.
 
 #### parameters
 
 | name | description | type |
 | :------ | :------ | :----- |
-| task | Service task to create. | JSON object |
+| task | Service work to create. | JSON object |
 
 #### example
 
@@ -251,21 +251,21 @@ Creates a new vehicle service task. For vehicles with associated tracker only.
 
 #### errors
 
-* 201 Not found in the database – vehicle or tracker not found.
-* 214 Requested operation or parameters are not supported by the device – engine hours condition passed but tracker hasn't ignition sensor.
+* 201 - Not found in the database – vehicle or tracker not found.
+* 214 - Requested operation or parameters not supported by the device – engine hours condition passed but tracker hasn't ignition sensor.
 
 <hr>
 
 ### delete
 
-Deletes a vehicle service task.
+Deletes a vehicle service work.
 
 #### parameters
 
 | name | description | type |
 | :------ | :------ | :----- |
-| task_id | Optional. Id of service task. | int |
-| task_ids |  Optional. Ids of service tasks. | int array |
+| task_id | Optional. Id of service work. | int |
+| task_ids |  Optional. Ids of service works. | int array |
 
 Either **task_id** or **task_ids** should be specified.
 
@@ -299,7 +299,7 @@ Either **task_id** or **task_ids** should be specified.
 
 ### download
 
-Downloads pdf report of service tasks.
+Downloads pdf report of service works.
 
 #### parameters
 
@@ -343,7 +343,7 @@ Report file.
 
 ### list
 
-List all service tasks of all user vehicles.
+List all service works of all user vehicles.
 
 #### parameters
 
@@ -382,7 +382,7 @@ List all service tasks of all user vehicles.
                 "end_date": "2015-05-03 09:35:00",
                 "wear_percentage": 40
             },
-            "description": "Service task",
+            "description": "Service work",
             "cost": 10050.0,
             "completion": {
                 "mileage": 31,
@@ -426,19 +426,19 @@ List all service tasks of all user vehicles.
 
 #### errors
 
-* 201 Not found in the database – vehicle or tracker not found.
+* 201 - Not found in the database – vehicle or tracker not found.
 
 <hr>
 
 ### read
 
-Get service task info by its id.
+Get service work info by its id.
 
 #### parameters
 
 | name | description | type |
 | :------ | :------ | :----- |
-| task_id | Id of service task. | int |
+| task_id | Id of service work. | int |
 | return_prediction | Include legacy **prediction** field or not. | boolean |
 
 #### examples
@@ -470,7 +470,7 @@ Get service task info by its id.
             "end_date": "2015-05-03 09:35:00",
             "wear_percentage": 40
         },
-        "description": "Service task",
+        "description": "Service work",
         "comment": "",
         "cost": 100500.0,
         "completion": {
@@ -522,7 +522,7 @@ All parameters described in a [here](#service-task-object).
 #### errors
 
 * 201 Not found in the database – does not exist one of tracker's counters which required to determine status.
-* 204 Entity not found – when vehicle or service task not found.
+* 204 Entity not found – when vehicle or service work not found.
 
 <hr>
 
@@ -535,7 +535,7 @@ Updates task status, and saved (on `done` **status**) current date and values of
 
 | name | description | type |
 | :------ | :------ | :----- |
-| task_id | Id of service task. | int |
+| task_id | Id of service work. | int |
 | status | A new task status. Only `done` status allowed for now. | [enum](../../../../getting-started.md#data-types) |
 
 #### examples
@@ -562,20 +562,20 @@ Updates task status, and saved (on `done` **status**) current date and values of
 
 #### errors
 
-* 201 Not found in the database – does not exist one of tracker's counters which required to determine status.
-* 204 Entity not found – when vehicle or service task not found.
+* 201 - Not found in the database – does not exist one of tracker's counters which required to determine status.
+* 204 - Entity not found – when vehicle or service work not found.
 
 <hr>
 
 ### update
 
-Updates information fields and notification settings of vehicle service task.
+Updates information fields and notification settings of vehicle service work.
 
 #### parameters
 
 | name | description | type |
 | :------ | :------ | :----- |
-| task | Service task to create. | JSON object |
+| task | Service work to create. | JSON object |
 
 A [task object](#create) described in a task create. 
 
@@ -597,6 +597,6 @@ A [task object](#create) described in a task create.
 
 #### errors
 
-* 204 Entity not found – when vehicle or service task not found.
-* 214 Requested operation or parameters are not supported by the device – engine hours condition passed but tracker
+* 204 - Entity not found – when vehicle or service work not found.
+* 214 - Requested operation or parameters not supported by the device – engine hours condition passed but tracker
  hasn't ignition sensor.

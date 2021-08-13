@@ -1,11 +1,11 @@
 ---
-title: Service task file
-description: Service task file creation API call.
+title: Service work file
+description: Service work file creation API call.
 ---
 
-# Vehicle service task file
+# Vehicle service work file
 
-Contains call for creation the service task file.
+Contains call for creation the service work file.
 
 <hr>
 
@@ -15,7 +15,7 @@ API path: `/vehicle/service_task/file`.
 
 ### create
 
-Creates a file to specify its id in service task later.
+Creates a file to specify its id in service work later.
 
 #### parameters
 

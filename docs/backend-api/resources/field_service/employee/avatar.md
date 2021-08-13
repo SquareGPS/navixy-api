@@ -16,7 +16,7 @@ API path: `/employee/avatar`.
 
 ### assign
 
-Assign `icon_id` (from standard icon set) to this employee. 
+Assign `icon_id` (from standard icon set) to this employee/driver. 
 The `icon_id` can be `null` – this means that uploaded avatar should be used instead of icon.
 
 **required sub-user rights**: `employee_update`.
@@ -25,7 +25,7 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 
 | name | description | type |
 | :--- | :--- | :--- |
-| employee_id | Id of the employee to whom the icon will assign. | int |
+| employee_id | Id of the employee/driver to whom the icon will assign. | int |
 | icon_id | Id of the icon. | int |
 
 #### examples
@@ -52,13 +52,13 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
     
 #### errors
 
-* 201 – Not found in the database - when employee with `employee_id` not found.
+* 201 – Not found in the database - when employee/driver with `employee_id` not found.
 
 <hr>
 
 ### upload
 
-Uploads avatar image for specified employee.
+Uploads avatar image for specified employee/driver.
 Then it will be available from /employee/avatars/
 e.g. `{{ extra.api_example_url }}/static/employee/avatars/abcdef123456789.png`.
 
@@ -79,7 +79,7 @@ File part **mime** type must be one of:
 
 | name | description | type |
 | :--- | :--- | :--- |
-| employee_id | Id of the employee to whom the icon will assign. | int |
+| employee_id | Id of the employee/driver to whom the icon will assign. | int |
 | file | Image file. | string |
 | redirect_target | Optional. URL to redirect. If passed returns redirect to `?response=`. | string |
 
@@ -96,7 +96,7 @@ File part **mime** type must be one of:
 
 #### errors
 
-* 201 – Not found in the database - when employee with `employee_id` not found.
+* 201 – Not found in the database - when employee/driver with `employee_id` not found.
 * 233 – No data file - if `file` part not passed.
 * 234 – Invalid data format - if passed `file` with unexpected `mime` type.
 * 254 – Cannot save file - on some file system errors.

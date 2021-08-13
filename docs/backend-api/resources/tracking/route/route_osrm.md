@@ -1,9 +1,9 @@
 ---
-title: Tracking route OSRM
+title: Getting route with OSRM
 description: API call for getting the route to destination point using OSRM API.
 ---
 
-# Tracking route OSRM
+# Getting route with OSRM
 
 API call for getting the route to destination point using [OSRM API](https://github.com/Project-OSRM/osrm-backend/wiki/Server-api#requesting-routes).
 

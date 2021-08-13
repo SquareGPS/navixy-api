@@ -1,11 +1,11 @@
 ---
-title: History type
-description: Contains list method to get history types available to user with localized descriptions.
+title: Event type
+description: Contains list method to get event types available to user with localized descriptions.
 ---
 
-# History type
+# Event type
 
-Contains list method to get history types available to user with localized descriptions.
+Contains list method to get event types available to user with localized descriptions.
 
 <hr>
 

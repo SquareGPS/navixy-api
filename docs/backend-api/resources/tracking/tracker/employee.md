@@ -60,7 +60,7 @@ Assigns another employee ("driver") to the tracker.
 
 ### read
 
-Requests to read the current employee assigned to tracker, and when it was assigned.
+Requests to read the current employee (driver) assigned to tracker, and when it was assigned.
 
 #### parameters
 
