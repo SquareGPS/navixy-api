@@ -106,6 +106,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
         "stats.max_allowed_trackers": 128,
         "stats.max_time_span": "P31D",
         "file_storage.hard_max_file_size": 16777216,
+        "form.max_fields_count": 128,
         "form.file_field.max_file_size": 16777216,
         "form.file_field.max_files_per_field": 6,
         "form.file_field.max_count": 16
@@ -170,6 +171,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `stats.max_allowed_trackers` - int, max allowed trackers for [stats actions](../tracking/tracker/stats/stats_mileage.md).
     * `stats.max_time_span` - ISO8601 period,max timespan for [stats actions](../tracking/tracker/stats/stats_mileage.md).
     * `file_storage.hard_max_file_size` - long, hard max file size in bytes for uploading files to the file storage.
+    * `form.max_fields_count` - integer, max fields per form.
     * `form.file_field.max_file_size` - long, max file size in bytes for the form file.
     * `form.file_field.max_files_per_field` - integer, max files per form field.
     * `form.file_field.max_count` - integer, max file fields per form.
