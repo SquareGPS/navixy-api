@@ -52,7 +52,7 @@ to grow exponentially.
 For example, we want to track maximum speed of our vehicles in Rome. To do that, we will need to create a geofence that 
 covers the city.
 
-!!! note "Geofence's accuracy can be fairly low as long as it's border crosses all of the main roads."
+!!! note "Geofence's accuracy can be fairly low as long as it's border crosses all the main roads."
 
 API request:
 

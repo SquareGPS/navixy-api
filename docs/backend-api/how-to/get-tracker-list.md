@@ -93,3 +93,9 @@ To get a list of trackers with labels matching the filter use this API call:
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "labels": ["aa", "b"]}'
     ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/list?hash=&labels=[]
+    ```

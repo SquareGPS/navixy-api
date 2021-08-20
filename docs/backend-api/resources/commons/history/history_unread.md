@@ -39,7 +39,7 @@ Default and max limit is [history.maxLimit](../dealer.md).
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/history/unread/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/history/unread/list?hash=&limit=&from=
     ```
 
 #### response
@@ -111,7 +111,7 @@ Get count of user's unread history messages starting `from` date.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/history/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/history/unread/count?hash=&from=&type=
     ```
 
 #### response

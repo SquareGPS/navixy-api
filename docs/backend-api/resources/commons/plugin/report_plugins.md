@@ -668,8 +668,8 @@ plugin-specific parameters:
 
 | name | description | type
 |------|-------------|------
-| show_seconds | If true, time values in report should have format with seconds. Default is **false**. | boolean
-| show_tags | If true, tags fields will be added to the report. Default is **false**. | boolean
+| show_seconds | If `true`, time values in report should have format with seconds. Default is **false**. | boolean
+| show_tags | If `true`, tags fields will be added to the report. Default is **false**. | boolean
 | min_minutes_in_zone | Minimum time in zone (geofence). Default is **5**. | int, min value 1
 | zone_ids | IDs of user zones, required, min size 1, max size 30ю | list of ints |
 
@@ -685,11 +685,24 @@ plugin-specific parameters:
 
 | name | description | type
 |------|-------------|------
-| fetch_places_by_employees | If true, report will be built for places that are related to selected trackers via custom fields. Cannot be used in conjunction with *place_ids* | boolean
+| fetch_places_by_employees | If `true`, report will be built for places that are related to selected trackers via custom fields. Cannot be used in conjunction with *place_ids* | boolean
 | hide_charts | | boolean
 | min_minutes_in_place | Minimum time in spent in place. Minimum value is 1, default is **5**. | int
 | place_ids | IDs of user's POI. Min size 1, max size 30 | list of ints |
 | show_mileage | | boolean
 | show_not_visited_places | | boolean
-| show_seconds | If true, time values in report should have format with seconds. Default is **false**. | boolean
+| show_seconds | If `true`, time values in report should have format with seconds. Default is **false**. | boolean
 
+<hr>
+
+### Point report
+
+Information on the points transmitted during the day. Maximum period 24 hours.
+
+default **plugin_id**: 91
+
+plugin-specific parameters:
+
+| name | description | type |
+|------|-------------|------ |
+| show_seconds | If `true`, time values in report should have format with seconds. Default is **false**. | boolean

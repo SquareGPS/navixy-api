@@ -38,8 +38,9 @@ API calls have the following structure:
     * `Parameters table` - contains list of parameters for selected API call, their description and data type.
     * `Examples` - example of a correct API call with all parameters listed. Examples can be useful for troubleshooting. 
     You can also copy them and simply substitute the data with your own. Each example has a copy button in the upper right 
-    corner. If the parameters don't contain special characters, they are presented in two variants: POST and GET. If the 
-    parameters include special characters, only POST examples given.
+    corner. They are presented with two types - POST with example values and template for API tools that can be used in Postman, 
+    SoapUI, Katalon, etc. POST with example values will contain a workable API request without optional parameters to see 
+    possible parameter values. Template for API tools will contain all (including optional) parameters without values.
     * `Response` - an example of successful response from the server with description of every field.
     * `Errors` - specific errors for this API-action. General error list applies to all calls.
 

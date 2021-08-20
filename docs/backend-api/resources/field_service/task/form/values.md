@@ -51,6 +51,12 @@ For **value** object description, see [form/form-fields-and-values/](../../form/
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546, "value": {"text1": {"type": "text", "value": "text field value"}}}'
     ```
 
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/form/read?hash=&task_id=
+    ```
+
 #### response
 
 ```json

@@ -96,7 +96,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/employee/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/employee/list?hash=
     ```
 
 #### errors
@@ -124,7 +124,13 @@ Creates a new employee/driver.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/employee/create' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee": {"tracker_id": 625987, "first_name": "John", "middle_name": "Jane", "last_name": "Smith", "email": "smith@example.com", "phone": "442071111111", "driver_license_number": "SKIMP407952HJ9GK 06", "driver_license_cats": "C", "driver_license_valid_till": "2018-01-01", "hardware_key": null, "icon_id" : 55, "avatar_file_name": null, "department_id": null, "location": {"lat": 52.5, "lng": 13.4, "address": "Engeldamm 18"}, "personnel_number": "1059236", "tags": [1,2]}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee": {"tracker_id": 625987, "first_name": "John", "middle_name": "Jane", "last_name": "Smith", "email": "smith@example.com", "phone": "442071111111", "driver_license_number": "SKIMP407952HJ9GK 06", "driver_license_cats": "C", "driver_license_valid_till": "2018-01-01", "hardware_key": null, "icon_id" : 55, "avatar_file_name": null, "department_id": null, "location": {"lat": 52.5, "lng": 13.4, "address": "Engeldamm 18"}, "personnel_number": "1059236", "tags": [1,2]}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/employee/create?hash=&employee={"tracker_id": , "first_name": "", "middle_name": "", "last_name": "", "email": "", "phone": "", "driver_license_number": "", "driver_license_cats": "", "driver_license_valid_till": "", "hardware_key": "", "icon_id" : , "avatar_file_name": , "department_id": , "location": {"lat": , "lng": , "address": ""}, "personnel_number": "", "tags": []}
     ```
 
 #### response
@@ -167,7 +173,7 @@ Gets employee/driver by its id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/employee/read?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
+    {{ extra.api_example_url }}/employee/read?hash=&employee_id=
     ```
 
 #### response
@@ -221,7 +227,7 @@ Updates existing employee/driver.
 | :--- | :--- | :--- |
 | employee | An [employee object](#employee-object) with `id` field. Non-null. | JSON object |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -231,10 +237,18 @@ Updates existing employee/driver.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee": {"employee_id": 111, "tracker_id": 625987, "first_name": "John", "middle_name": "Jane", "last_name": "Smith", "email": "smith@example.com", "phone": "442071111111", "driver_license_number": "SKIMP407952HJ9GK 06", "driver_license_cats": "C", "driver_license_valid_till": "2018-01-01", "hardware_key": null, "icon_id" : 55, "avatar_file_name": null, "department_id": null, "location": {"lat": 52.5, "lng": 13.4, "address": "Engeldamm 18"}, "personnel_number": "1059236", "tags": [1,2]}'
     ```
 
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/employee/update?hash=&employee={"employee_id": , "tracker_id": , "first_name": "", "middle_name": "", "last_name": "", "email": "", "phone": "", "driver_license_number": "", "driver_license_cats": "", "driver_license_valid_till": "", "hardware_key": "", "icon_id" : , "avatar_file_name": , "department_id": , "location": {"lat": , "lng": , "address": ""}, "personnel_number": "", "tags": []}
+    ```
+
 #### response
 
 ```json
-{ "success": true }
+{ 
+  "success": true
+}
 ```
 
 #### errors
@@ -269,7 +283,7 @@ Deletes an employee/driver with the specified id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/employee/delete?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
+    {{ extra.api_example_url }}/employee/delete?hash=&employee_id=
     ```
     
 #### response

@@ -37,6 +37,12 @@ Reads setting value by key.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "key": "tracker-icons"}'
     ```
 
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/settings/ui/read?hash=&key=
+    ```
+
 #### responses:
 
 ```json

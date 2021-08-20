@@ -38,7 +38,7 @@ at least two checkpoints.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/schedule/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=11231
+    {{ extra.api_example_url }}/task/schedule/checkpoint/delete?hash=&checkpoint_id=
     ```
 
 #### response
@@ -76,7 +76,7 @@ Transmutes a checkpoint to task and delete its route and other checkpoints in th
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/schedule/checkpoint/transmute?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=11231
+    {{ extra.api_example_url }}/task/schedule/checkpoint/transmute?hash=&checkpoint_id=
     ```
 
 #### response

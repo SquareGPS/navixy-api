@@ -87,7 +87,7 @@ Assigns `icon_id` (from standard icon set) to this POI. `icon_id` can be null â€
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/place/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304&icon_id=1
+    {{ extra.api_example_url }}/place/avatar/assign?hash=&place_id=&icon_id=
     ```
 
 #### response

@@ -80,7 +80,7 @@ API base path: `/task/route`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/route/assign?hash=a6aa75587e5c59c32d347da438505fc3&route_id=11231&tracker_id=223465
+    {{ extra.api_example_url }}/task/route/assign?hash=&route_id=&tracker_id=
     ```
 
 #### response
@@ -153,14 +153,20 @@ Also, need checkpoints list in order of execution, checkpoints `from` and `to` m
 * `from` - [date/time](../../../../getting-started.md#data-types). Start date of the interval - when the specified location has to be visited (in the user's time zone).
 * `to` - [date/time](../../../../getting-started.md#data-types). End date of the interval - when the specified location has to be visited (in the user's time zone).
 
-#### example
+#### examples
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/route/create' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 223652, "label": "Name", "description": "Description example", "checkpoints": [{"tracker_id": 223652, "location": { "lat": 56.83717295, "lng": 60.59761920, "radius": 150}, "label": "Name", "description": "Description example", "from": "2014-02-03 04:05:06", "to": "2014-03-04 05:06:07"}], "create_form": false}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route": {"label": "Name", "description": "Description example", "tracker_id": 223652, "external_id": "6598787877", "tags": [1,2]}, "checkpoints": [{"tracker_id": 223652, "location": { "lat": 56.83717295, "lng": 60.59761920, "radius": 150}, "label": "Name", "description": "Description example", "from": "2014-02-03 04:05:06", "to": "2014-03-04 05:06:07"}], "create_form": false}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/route/create?hash=&route={"tracker_id": , "label": "", "description": "", "external_id": "", "tags": []}&checkpoints=[{"tracker_id": , "location": { "lat": , "lng": , "radius": }, "label": "", "description": "", "from": "", "to": ""}]&create_form=
     ```
 
 #### response
@@ -228,7 +234,7 @@ Deletes route (and its checkpoints) with the specified id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/route/delete?hash=a6aa75587e5c59c32d347da438505fc3&route_id=23144
+    {{ extra.api_example_url }}/task/route/delete?hash=&route_id=
     ```
 
 #### response
@@ -272,7 +278,7 @@ Get all routes belonging to user with optional filtering.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/route/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/task/route/list?hash=&statuses=[]&trackers=[]&from=&to=&filter=
     ```
 
 #### response
@@ -316,6 +322,22 @@ Gets route by specified id.
 | :--- | :--- | :--- |
 | route_id | ID of the route. | int |
 
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/task/route/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route_id": 123152}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/route/read?hash=&route_id=
+    ```
+
 #### response
 
 ```json
@@ -356,6 +378,7 @@ Reordering checkpoint IDs in the `checkpoint_ids` array changes order of executi
 
 **required sub-user rights**: `task_update`.
 
+
 #### parameters
 
 | name | description | type | 
@@ -363,6 +386,22 @@ Reordering checkpoint IDs in the `checkpoint_ids` array changes order of executi
 | route | Route object without fields which are *IGNORED*. | JSON object |
 | checkpoints | List of [checkpoint objects](../checkpoint.md#checkpoint-object) objects. Should be null if **route**'s field **checkpoint_ids** is null, otherwise should be not null. If entry contains id, then update existing checkpoint, else create a new one. Present route's checkpoints, which are not included in this array, will be deleted. | array of objects |
 | create_form | If `true` then check additional `form_template_id` field in every **checkpoint** object and create, replace or delete checkpoint's form. Default value is `false` for backward compatibility. | boolean |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/task/route/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 223652, "route": {"id": 123542, "label": "Name", "description": "Description example", "external_id": "213541", "tags": [1,2], "checkpoint_ids": [2977,2978]}, "checkpoints": [{"tracker_id": 223652, "location": { "lat": 56.83717295, "lng": 60.59761920, "radius": 150}, "label": "Name", "description": "Description example", "from": "2014-02-03 04:05:06", "to": "2014-03-04 05:06:07"}], "create_form": false}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/route/update?hash=&route={"id": , "label": "", "description": "", "external_id": "", "tags": [], "checkpoint_ids": []}&checkpoints=[{"tracker_id": , "location": { "lat": , "lng": , "radius": }, "label": "", "description": "", "from": "", "to": ""}]&create_form=
+    ```
 
 #### response
 

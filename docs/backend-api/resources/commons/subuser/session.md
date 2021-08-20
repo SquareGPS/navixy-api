@@ -39,7 +39,7 @@ Creates a new session for the specified sub-user and obtain its hash. Can be use
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subuser/session/create?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951
+    {{ extra.api_example_url }}/subuser/session/create?hash=&subuser_id=
     ```
 
 #### response

@@ -35,81 +35,106 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "domain": "panel.navixy.com"}'
     ```
 
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/dealer/get_ui_config?hash=&domain=
+    ```
+
 #### response
 
 ```json
 {
-    "success": true,
-    "dealer": {
-        "id": 5001,
-        "ui_domain": "demo.navixy.com",
-        "company_url": "navixy.com"
+  "success": true,
+  "dealer": {
+    "id": 20410,
+    "ui_domain": "20410.navixy.ru",
+    "company_url": ""
+  },
+  "settings": {
+    "domain": "20410.navixy.ru",
+    "service_title": "Astarsys",
+    "locale": "en_US",
+    "demo_login": "",
+    "demo_password": "",
+    "maps": [
+      "roadmap",
+      "satellite",
+      "hybrid",
+      "yandexpublic",
+      "osm",
+      "osmmapnik",
+      "wikimapia"
+    ],
+    "default_map": {
+      "type": "roadmap",
+      "location": {
+        "lat": 57.0,
+        "lng": 61.0
+      },
+      "zoom": 10
     },
-    "settings": {
-        "domain" : "demo.navixy.com",
-        "service_title": "Navixy Demo",
-        "locale": "at_AT",
-        "demo_login": "demo",
-        "demo_password": "demo",
-        "maps": ["roadmap", "osm"],
-        "default_map": {
-            "type": "roadmap",
-            "location": {
-                "lat": 57.0,
-                "lng": 61.0
-            },
-            "zoom": 10
-        },
-        "currency": "EUR",
-        "payment_link": "http://site.de/pay.php", 
-        "promo_url": "http://site.de/about/",
-        "google_client_id": "clientID",
-        "favicon": "paas/5001/custom.ico",
-        "logo": "paas/5001/logo.png",
-        "app_logo": "paas/5001/app_logo.png",
-        "login_wallpaper": "paas/5001/login.png",
-        "desktop_wallpaper": "http://test.com/test.jpg",
-        "monitoring_logo": "http://test.com/test.jpg",
-        "login_footer": "All rights reserved.",
-        "allow_registration": true,
-        "show_mobile_apps" : true,
-        "show_call_notifications" : true,
-        "default_user_settings": {
-            "geocoder": "google",
-            "route_provider": "progorod",
-            "measurement_system": "metric",
-            "translit": false
-        },
-        "display_model_features_link" : true,
-        "color_theme": "aqua",
-        "app_color_theme": "blue_1",
-        "privacy_policy_link": "http://privacy-policy-url",
-        "tos": "Terms Of Service text",
-        "tracker_model_filter": {
-            "exclusion": true,
-            "values": []
-        },
-        "internal": {
-            "light_registration": true,
-            "demo_tracker_source_id": 14,
-            "demo_tracker_label": "Demo tracker"
-        },
-        "no_register_commands": false
+    "currency": "USD",
+    "payment_link": "",
+    "promo_url": "",
+    "google_client_id": "ID",
+    "favicon": null,
+    "logo": null,
+    "app_logo": null,
+    "login_wallpaper": null,
+    "desktop_wallpaper": null,
+    "monitoring_logo": null,
+    "monitoring_logo_clickable": true,
+    "login_footer": "",
+    "allow_registration": true,
+    "show_mobile_apps": false,
+    "show_call_notifications": false,
+    "display_model_features_link": false,
+    "color_theme": "metromorph",
+    "app_color_theme": "blue_2",
+    "has_https": false,
+    "privacy_policy_link": "",
+    "tos": "",
+    "no_register_commands": false,
+    "geocoders": [],
+    "route_providers": [],
+    "lbs_providers": [],
+    "matrix_providers": [],
+    "tracker_model_filter": {
+      "exclusion": true,
+      "values": []
     },
-    "demo_ends": "2014-01-01",
-    "premium_gis": true,
-    "features": ["branding_web"],
-    "platform": {
-        "iso_datetime_support": true,
-        "history.max_limit": 10,
-        "report.max_time_span": "P90D",
-        "stats.max_allowed_trackers": 128,
-        "stats.max_time_span": "P31D",
-        "file_storage.hard_max_file_size": 16777216,
-        "form.file_field.max_file_size": 16777216,
-        "form.file_field.max_files_per_field": 6,
-        "form.file_field.max_count": 16
+    "gis_package": "premium",
+    "credentials": {
+      "google": {
+        "maps_js_api_key": "Key"
+      }
     }
+  },
+  "demo_ends": null,
+  "premium_gis": true,
+  "allow_branding": true,
+  "features": [
+    "branding_web",
+    "branding_mobile",
+    "navixy_label",
+    "tracking",
+    "reports",
+    "fleet",
+    "field_service",
+    "premium_gis"
+  ],
+  "platform": {
+    "iso_datetime_support": true,
+    "history.max_limit": 1000,
+    "report.max_time_span": "P120D",
+    "stats.max_allowed_trackers": 128,
+    "stats.max_time_span": "P31D",
+    "file_storage.hard_max_file_size": 16777216,
+    "form.file_field.max_file_size": 16777216,
+    "form.file_field.max_files_per_field": 6,
+    "form.file_field.max_count": 16
+  }
 }
 ```
 
@@ -140,17 +165,20 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `login_wallpaper` - string. Path or url to dealer's interface login wallpaper.
     * `desktop_wallpaper` - string. Path to dealer's interface wallpaper or null.
     * `monitoring_logo` - string. Path to dealer's interface monitoring logo or null.
+    * `monitoring_logo_clickable` - boolean. `true` if click on the logo will open the company website. 
     * `login_footer` - string. Footer which will be included in login page.
     * `allow_registration` - boolean. If `true` then registration is available for dealer's users. All HTML 
     special chars escaped using HTML entities.
     * `show_mobile_apps` - boolean. If `true` then mobile applications are available for dealer's users.
     * `show_call_notifications` - boolean. If `true` then call notifications are available for dealer's users.
-    * `geocoder` - [enum](../../getting-started.md#data-types). Default geocoder.
-    * `route_provider` - [enum](../../getting-started.md#data-types). Default router.
-    * `measurement_system` - [enum](../../getting-started.md#data-types). Measurement system.
+    * `geocoders` - [enum](../../getting-started.md#data-types). A list of allowed geocoders.
+    * `route_providers` - [enum](../../getting-started.md#data-types). A list of allowed route providers.
+    * `route_providers` - [enum](../../getting-started.md#data-types). A list of allowed route providers.
     * `display_model_features_link` - boolean. When `true` show in model info link to squaregps.com (UI option).
     * `color_theme` - [enum](../../getting-started.md#data-types). Color theme code or empty string (for default theme).
     * `app_color_theme` - [enum](../../getting-started.md#data-types). Mobile app color theme code or empty string (for default theme).
+    * `has_https` - boolean. If `true` the domain has SSL certificate.
+    * `privacy_policy_link` - string. A link to a privacy policy document.
     * `tos` - string. Terms of service text.
     * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
     * `exclusion` - boolean. If `true` models in the `values` will be excluded.
@@ -182,8 +210,13 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 | branding_mobile | Allow to use custom icon, logo, color theme in the mobile applications. |
 | subpaas | Allow to use Sub-Dealers (can be used only together with `navixy_label`). |
 | navixy_label | Show "Powered by Navixy" in UI (required for subpaas feature). |
+| tracking | Main tracking feature in the UI. |
+| reports | Allows to use reports. |
+| fleet | Allows to use fleet management. |
+| field_service | Allows to use field service and tasks. |
+| premium_gis | Appears if dealer uses the Premium GIS tariff. | 
 
 #### errors
 
-* 12 – Dealer not found (if corresponding dealer not found in the database).
-* 201 – Not found in the database (if there is no Ui settings data for corresponding dealer).
+* 12 – Dealer not found - if corresponding dealer not found in the database.
+* 201 – Not found in the database - if there is no Ui settings data for corresponding dealer.

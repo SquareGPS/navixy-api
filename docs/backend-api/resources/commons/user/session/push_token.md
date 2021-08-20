@@ -35,6 +35,12 @@ Binds Push token with a current session.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "application": "navixy_android_viewer", "token": "f4be7b9d04da2ce1af111b"}'
     ```
 
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/session/push_token/bind?hash=&application=&token=&category_filter=
+    ```
+
 #### response
 
 ```json
@@ -85,7 +91,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/user/session/push_token/delete?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/user/session/push_token/delete?hash=
     ```
 
 #### response

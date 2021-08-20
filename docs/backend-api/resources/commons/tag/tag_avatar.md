@@ -39,7 +39,7 @@ Assigns icon_id (from standard icon set) to specified tag.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tag/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&tag_id=1&icon_id=14
+    {{ extra.api_example_url }}/tag/avatar/assign?hash=&tag_id=&icon_id=
     ```
 
 #### response

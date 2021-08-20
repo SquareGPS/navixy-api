@@ -81,7 +81,7 @@ Gets POI by ID.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/place/read?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
+    {{ extra.api_example_url }}/place/read?hash=&place_id=
     ```
 
 #### response
@@ -148,7 +148,7 @@ Get POIs belonging to user.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/place/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/place/list?hash=&place_ids=&filter=&conditions=&order_by=&ascending=&limit=&offset=
     ```
 
 #### response
@@ -202,14 +202,20 @@ Creates a new POI.
 | place | A place object without `id` field. | JSON object |
 | ignore_missing_fields | Optional (default is false). If `true`, POI can be created even without all required custom fields. | boolean |
 
-#### example
+#### examples
 
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/place/read' \
+    curl -X POST '{{ extra.api_example_url }}/place/create' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/place/create?hash=&place={"icon_id" : , "avatar_file_name": , "location": {"lat": , "lng": , "address": "", "radius": }, "fields": {"": {"type": "", "value": ""}}, "label": "", "description": "", "tags": [], "external_id": ""}&ignore_missing_fields=
     ```
 
 #### response
@@ -241,7 +247,7 @@ Updates existing POI.
 | :--- | :--- | :--- |
 | place | A place object. | JSON object |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -249,6 +255,12 @@ Updates existing POI.
     curl -X POST '{{ extra.api_example_url }}/place/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"id": 111, "icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/place/update?hash=&place={"id": , icon_id" : , "avatar_file_name": , "location": {"lat": , "lng": , "address": "", "radius": }, "fields": {"": {"type": "", "value": ""}}, "label": "", "description": "", "tags": [], "external_id": ""}
     ```
 
 #### response
@@ -288,7 +300,7 @@ Deletes POI with the specified ID.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/place/delete?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
+    {{ extra.api_example_url }}/place/delete?hash=&place_id=
     ```
 
 #### response

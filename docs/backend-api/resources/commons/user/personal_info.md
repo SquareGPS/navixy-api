@@ -53,7 +53,12 @@ and for `legal_entity` or `sole_trader`:
     curl -X POST '{{ extra.api_example_url }}/user/personal_info/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "okpo_code": ""}'
+    ```
 
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/personal_info/update?first_name=&middle_name=&last_name=&legal_typ=&phone=&post_country=&post_index=&post_region=&post_city=&post_street_address=&registered_country=&registered_index=&registered_region=&registered_city=&registered_street_address=&state_reg_num=&tin=&legal_name=&iec=&okpo_code=
     ```
 
 #### response

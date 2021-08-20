@@ -61,6 +61,12 @@ Creates a new bill for the user.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "payer": "Jon Doe", "sum": 100.0}'
     ```
 
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/bill/create?hash=&payer=&sum=
+    ```
+
 #### response
 
 ```json
@@ -98,13 +104,13 @@ Shows list of bills with their parameters in array.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/bill/list' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "limit": 2000, "offest": 10}'
     ```
 
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/bill/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/bill/list?hash=&limit=&offset=
     ```
 
 #### response

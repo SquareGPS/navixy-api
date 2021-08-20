@@ -44,7 +44,7 @@ Unsubscribe from auto-renewal by reference.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subscription/avangate/cancel?hash=a6aa75587e5c59c32d347da438505fc3&reference=5EAD4B0B2F
+    {{ extra.api_example_url }}/subscription/avangate/cancel?hash=&reference=
     ```
 
 #### response
@@ -84,7 +84,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subscription/avangate/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/subscription/avangate/list?hash=
     ```
 
 #### response

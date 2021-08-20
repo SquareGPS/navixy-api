@@ -36,10 +36,10 @@ Deletes a report from the database.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
     ```
 
-=== "HTTP GET"
+=== "template for API tools"
 
     ```
-    {{ extra.api_example_url }}/report/tracker/delete?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
+    {{ extra.api_example_url }}/report/tracker/delete?hash=&report_id=
     ```
 
 #### response
@@ -80,10 +80,10 @@ Retrieve generated report as a file.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567, "format": "pdf"}'
     ```
 
-=== "HTTP GET"
+=== "template for API tools"
 
     ```
-    {{ extra.api_example_url }}/report/tracker/download?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567&format=pdf
+    {{ extra.api_example_url }}/report/tracker/download?hash=&report_id=&format=&headless
     ```
 
 #### response
@@ -151,6 +151,12 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Trip report", "trackers": [669673], "from": "2020-10-05 00:00:00", "to": "2020-10-06 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}'
     ```
 
+=== "template for API tools"
+
+    ```
+    {{ extra.api_example_url }}/report/tracker/generate?hash=&title=&trackers=[]&from=&to=&time_filter={"from": "", "to": "", "weekdays": []}&plugin={"hide_empty_tabs": , "plugin_id": 4, "show_seconds": , "include_summary_sheet_only": , "split": , "show_idle_duration": , "show_coordinates": , "filter": , "group_by_driver": }&geocoder=&employees=[]
+    ```
+
 #### response
 
 ```json
@@ -202,10 +208,10 @@ Returns info about all available generated or in-progress reports.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
-=== "HTTP GET"
+=== "template for API tools"
 
     ```
-    {{ extra.api_example_url }}/report/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/report/tracker/list?hash=
     ```
 
 #### response
@@ -296,7 +302,7 @@ Retrieves a generated report as JSON.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/report/tracker/retrieve?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
+    {{ extra.api_example_url }}/report/tracker/retrieve?hash=&report_id=
     ```
 
 #### response
@@ -785,7 +791,7 @@ Returns a report generation status for the specified report id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/report/tracker/status?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
+    {{ extra.api_example_url }}/report/tracker/status?hash=&report_id=
     ```
 
 #### response

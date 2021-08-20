@@ -35,7 +35,7 @@ Available event types can be obtained by [/history/type/list](./history_type.md#
 
 Default and max limit is 1000. (Note for StandAlone: this value configured by maxHistoryLimit config option).
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -43,6 +43,12 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
     curl -X POST '{{ extra.api_example_url }}/history/tracker/list' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [131312, 123985], "from": "2020-12-10 16:44:00", "to": "2020-12-22 16:44:00"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/history/tracker/list?hash=&trackers=[]&from=&to=&events=[]&limit=&ascending=
     ```
 
 #### response
@@ -55,7 +61,7 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
          "type": "tracker",
          "is_read": false,
          "message": "Alarm",
-         "time": "2020-01-01 00:00:00",
+         "time": "2021-08-18 18:29:00",
          "event": "offline",
          "tracker_id": 2,
          "rule_id": 3,

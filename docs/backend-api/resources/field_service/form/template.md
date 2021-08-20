@@ -58,6 +58,10 @@ API path: `/form/template`.
 
 Gets all form templates belonging to current master user.
 
+#### parameters
+
+Only session `hash`.
+
 #### examples
 
 === "cURL"
@@ -71,7 +75,7 @@ Gets all form templates belonging to current master user.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/form/template/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/form/template/list?hash=
     ```
 
 #### response
@@ -119,7 +123,7 @@ Creates new form template.
 | :--- | :--- | :--- | 
 | template | Non-null form template object without `id`, `created`, `updated` fields. | JSON object |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -127,6 +131,12 @@ Creates new form template.
     curl -X POST '{{ extra.api_example_url }}/form/template/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/form/template/create?hash=&template={"label": "", "fields": [{"id": "", "label": "", "description": "", "required": , "type": "", "min_length": , "max_length": }], "submit_in_zone": , "default": }
     ```
 
 #### response
@@ -170,7 +180,7 @@ Gets form template belonging to current master user by specified id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/form/template/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
+    {{ extra.api_example_url }}/form/template/read?hash=&template_id=
     ```
 
 #### response
@@ -218,7 +228,7 @@ Updates existing form template.
 | :--- | :--- | :--- | 
 | template | Non-null form template object without `created`, `updated` fields. | JSON object |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -226,6 +236,12 @@ Updates existing form template.
     curl -X POST '{{ extra.api_example_url }}/form/template/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"id": 111, label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/form/template/update?hash=&template={"id": , "label": "", "fields": [{"id": "", "label": "", "description": "", "required": , "type": "", "min_length": , "max_length": }], "submit_in_zone": , "default": }
     ```
 
 #### response
@@ -266,7 +282,7 @@ Deletes form template.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/form/template/delete?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
+    {{ extra.api_example_url }}/form/template/delete?hash=&template_id=
     ```
 
 #### response
@@ -307,7 +323,7 @@ Returns template usage statistics.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/form/template/stats/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
+    {{ extra.api_example_url }}/form/template/stats/read?hash=&template_id=
     ```
 
 #### response

@@ -13,24 +13,24 @@ Tariff object description and API call to get the list of device's tariffs avail
 
 ```json
 {
-    "id": 10,
-    "name": "Business",
-    "group_id": 2,
-    "active": true,
-    "type": "monthly",
-    "price": 13.0,
-    "early_change_price": 23.0,
-    "device_limit": 1000,
-    "has_reports" : true,
-    "paas_free": false,
-    "store_period": "12m",
-    "features": [
-        "map_layers"
-    ],
-    "map_filter": {
-        "exclusion": true,
-        "values": []
-    }
+  "id": 10,
+  "name": "Business",
+  "group_id": 2,
+  "active": true,
+  "type": "monthly",
+  "price": 13.0,
+  "early_change_price": 23.0,
+  "device_limit": 1000,
+  "has_reports": true,
+  "paas_free": false,
+  "store_period": "12m",
+  "features": [
+    "map_layers"
+  ],
+  "map_filter": {
+    "exclusion": true,
+    "values": []
+  }
 }
 ```
 
@@ -79,7 +79,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tariff/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/tariff/list?hash=
     ```
 
 #### response
@@ -87,26 +87,54 @@ Only session `hash`.
 ```json
 {
   "success": true,
-  "list": [{
-       "id": 10,
-       "name": "Business",
-       "group_id": 2,
-       "active": true,
-       "type": "monthly",
-       "price": 13.0,
-       "early_change_price": 23.0,
-       "device_limit": 1000,
-       "has_reports" : true,
-       "paas_free": false,
-       "store_period": "12m",
-       "features": [
-           "map_layers"
-       ],
-       "map_filter": {
-           "exclusion": true,
-           "values": []
-       }
-  }] 
+  "list": [
+    {
+      "id": 12163,
+      "name": "Tracker demo tariff",
+      "group_id": 0,
+      "active": false,
+      "type": "monthly",
+      "price": 0.0000,
+      "early_change_price": 0.0000,
+      "device_limit": 1000,
+      "has_reports": true,
+      "store_period": "3m",
+      "features": [
+        "app_tasks",
+        "app_fleet",
+        "batch_operations",
+        "custom_maps",
+        "event_notification",
+        "geocoding",
+        "lbs",
+        "map_layers",
+        "multilevel_access",
+        "priority_support",
+        "retranslation",
+        "report_xls",
+        "report_scheduled",
+        "routing",
+        "ui_mobile",
+        "weblocator",
+        "chat",
+        "statuses",
+        "street_view",
+        "driver_journal",
+        "checkin",
+        "custom_fields"
+      ],
+      "map_filter": {
+        "exclusion": false,
+        "values": [
+          "roadmap",
+          "satellite",
+          "hybrid",
+          "yandex",
+          "yandex_satellite",
+          "bing_hybrid"
+        ]
+      }
+  }]
 }
 ```
 
@@ -115,4 +143,3 @@ Only session `hash`.
 #### errors
 
 * [General](../../../getting-started.md#error-codes) types only.
-

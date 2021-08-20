@@ -38,7 +38,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/user/session/weblocator/create?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/user/session/weblocator/create?hash=
     ```
 
 #### response
@@ -80,7 +80,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/user/session/weblocator/read?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/user/session/weblocator/read?hash=
     ```
 
 #### response

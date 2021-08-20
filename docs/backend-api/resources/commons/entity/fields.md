@@ -92,7 +92,7 @@ obtained from [entity/list](./index.md#list).
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/entity/fields/read?hash=a6aa75587e5c59c32d347da438505fc3&entity_id=131312
+    {{ extra.api_example_url }}/entity/fields/read?hash=&entity_id=
     ```
 
 #### response
@@ -102,7 +102,7 @@ obtained from [entity/list](./index.md#list).
     "success": true,
     "list": [{
          "id": 131312,
-         "label": "Additional info", 
+         "label": "Additional info",
          "type":  "employee",
          "required": false,
          "description": "Responsibility",
@@ -140,14 +140,20 @@ Passing fields with `id` from non-existent fields or fields bound to another ent
 | fields | List of new/existing fields to be created/updated. | JSON object |
 | delete_missing | Optional. Default is `false`. Delete fields not present in `fields` list. | boolean |
 
-#### example
+#### examples
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/entity/fields/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": 131312, "fields": {"label": "Additional info", "type":  "employee", "required": false, "description": "Responsibility", "params": {"responsible": true}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": 131312, "fields": {"label": "Additional info", "type":  "employee", "required": false, "description": "Responsibility", "params": {"responsible": true}}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/entity/fields/update?hash=&entity_id=&fields={"label": "", "type":  "", "required": false, "description": "", "params": {"responsible": true}}&delete_missing=
     ```
 
 #### response

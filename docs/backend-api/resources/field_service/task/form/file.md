@@ -51,7 +51,7 @@ If file created but not uploaded, it will be deleted after date/time specified i
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/form/file?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&field_id=file1&size=10
+    {{ extra.api_example_url }}/task/form/file?hash=&task_id=&field_id=&size=&filename=&metadata=
     ```
 
 #### response

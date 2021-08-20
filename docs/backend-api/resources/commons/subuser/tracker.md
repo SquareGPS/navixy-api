@@ -40,7 +40,7 @@ Gives access for sub-user to the specified trackers.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subuser/tracker/bind?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951&trackers=[127830]
+    {{ extra.api_example_url }}/subuser/tracker/bind?hash=&subuser_id=&trackers=[]
     ```
 
 #### response
@@ -86,7 +86,7 @@ Gets a list of tracker ids to which this sub-user has access.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subuser/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951
+    {{ extra.api_example_url }}/subuser/tracker/list?hash=&subuser_id=
     ```
 
 #### response
@@ -135,7 +135,7 @@ Disables access for sub-user to the specified trackers.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subuser/tracker/unbind?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951&trackers=[127830]
+    {{ extra.api_example_url }}/subuser/tracker/unbind?hash=&subuser_id=&trackers=[]
     ```
 
 #### response

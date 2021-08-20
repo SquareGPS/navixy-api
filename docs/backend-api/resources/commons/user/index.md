@@ -155,7 +155,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 |password | User password. | string | not null, 1 to 40 printable characters. |
 |dealer_id | If specified, API will check that user belongs to this dealer, and if not, error 102 will be returned. | int | optional. |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -163,6 +163,12 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
     curl -X POST '{{ extra.api_example_url }}/user/auth' \
         -H 'Content-Type: application/json' \ 
         -d '{"login": "user@email.com", "password": "12@14Y$"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/auth?hash=&login=&password=&dealer_id=
     ```
 
 #### response
@@ -207,7 +213,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/user/get_info?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/user/get_info?hash=
     ```
 
 #### response
@@ -302,7 +308,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/user/get_tariff_restrictions?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/user/get_tariff_restrictions?hash=
     ```
 
 #### response
@@ -345,7 +351,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/user/logout?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/user/logout?hash=
     ```
 
 #### response
@@ -385,7 +391,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/user/resend_activation?login=user@login.com
+    {{ extra.api_example_url }}/user/resend_activation?login=
     ```
 
 #### response

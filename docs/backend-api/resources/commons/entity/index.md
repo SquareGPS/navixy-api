@@ -79,7 +79,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/entity/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/entity/list?hash=
     ```
 
 #### response
@@ -140,7 +140,7 @@ Gets entity by the id or by type.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/entity/read?hash=a6aa75587e5c59c32d347da438505fc3&id=131312
+    {{ extra.api_example_url }}/entity/read?hash=&id=
     ```
 
 #### response
@@ -198,14 +198,20 @@ Updates settings of customizable entity. Entity must have a valid id.
 | :----- | :-----  | :----- |
 | entity | Entity object with valid id and settings. | JSON object |
 
-#### example
+#### examples
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/entity/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity": {"id": 123, "type": "place", "settings": {"layout": {"sections": [{"label": "Section label", "field_order": ["label", "location", "131212", "tags", "description"]}]}}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity": {"id": 123, "type": "place", "settings": {"layout": {"sections": [{"label": "Section label", "field_order": ["label", "location", "131212", "tags", "description"]}]}}}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/entity/read?hash=&entity={"id": , "type": "", "settings": {"layout": {"sections": [{"label": "", "field_order": ["label", "location", "131212", "tags", "description"]}]}}}
     ```
 
 #### response

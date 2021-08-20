@@ -76,7 +76,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/user/settings/read?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/user/settings/read?hash=
     ```
 
 #### response
@@ -130,7 +130,7 @@ Update current user's settings.
 | balance_alert_settings | Object containing array of emails. | JSON object |
 | file_storage_settings | Object containing file storage settings. | JSON object |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -138,6 +138,12 @@ Update current user's settings.
     curl -X POST '{{ extra.api_example_url }}/user/settings/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "time_zone": "Europe/Amsterdam", "locale": "nl_NL", "measurement_system": "metric", "geocoder": "osm", "route_provider": "google", "translit": false, "balance_alert_settings": {"emails": ["email1@example.com", "email2@example.com"]}, "file_storage_settings": {"auto_overwrite": true}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/settings/update?hash=time_zone=&locale=&measurement_system=&geocoder=&route_provider=&translit=&balance_alert_settings={"emails": [""]}&file_storage_settings={"auto_overwrite": }
     ```
 
 #### response
@@ -164,7 +170,7 @@ Updates current user's file storage settings.
 | :----- | :-----  | :----- |
 | file_storage_settings | Object containing file storage settings. | JSON object |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -172,6 +178,12 @@ Updates current user's file storage settings.
     curl -X POST '{{ extra.api_example_url }}/user/settings/file_storage/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "file_storage_settings": {"auto_overwrite": true}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/user/settings/file_storage/update?hash=&file_storage_sttings={"auto_overwrite": }
     ```
 
 #### errors

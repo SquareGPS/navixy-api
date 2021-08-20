@@ -70,7 +70,13 @@ Gets list of user's billing transactions for the specified period.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/transaction/list' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2021-01-20 08:16:40", "to": "2021-01-28 08:16:40"}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2021-01-20 08:16:40", "to": "2021-01-28 08:16:40", "limit": 100}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/transaction/list?hash=&from=&to=&limit=
     ```
 
 #### response

@@ -14,18 +14,12 @@ Contains feedback object API call to send a feedback email, ask for help or sugg
 ```JSON
 {
   "text": "My feedback",
-  "useragent": "Chrome/87.0.4280.88",
-  "platform": "Windows NT 10.0; Win64; x64",
-  "screenshots": ["encoded image1", "encoded image2"],
-  "log": <log_file>
+  "log": "User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36\nClient Id: 184541\nhttp://20410.navixy.ru/#/staff/tasks"
 }
 ```
 
 * `text` - string. Feedback text. May not be null.
-* `useragent` - optional string. Information about the browser of user.
-* `platform` - optional string. Information about the platform of user.
-* `screenshots` - optional string array. base64-encoded data:url image, example: data:image/jpeg;base64,`[encoded image]`.
-* `log` - optional log file. Contains log of the browser.
+* `log` - optional log file. Contains log of the browser, user agent, browser platform.
 
 <hr>
 
@@ -55,10 +49,18 @@ email address for feedback.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "feedback": {"text": "I love this platform"}, "type": "review"}'
     ```
 
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/feedback/send_email?hash=&feedback={"text": ""}&type=
+    ```
+
 #### response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### errors

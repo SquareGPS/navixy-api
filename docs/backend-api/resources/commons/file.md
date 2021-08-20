@@ -34,19 +34,19 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/file/stats/read?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/file/stats/read?hash=
     ```
 
 #### response
 
 ```json
 {
-    "success": true,
-    "value": {
-        "file_count": 24,
-        "total_size": 40192953,
-        "quota": 104857600
-    }
+  "success": true,
+  "value": {
+    "file_count": 10,
+    "total_size": 3320542,
+    "quota": 1073741824
+  }
 }
 ```
 

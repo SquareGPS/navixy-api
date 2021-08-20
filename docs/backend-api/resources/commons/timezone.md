@@ -23,7 +23,7 @@ Information about all supported timezones for the specified locale. Does not req
 | :--- | :--- | :--- |
 | locale | Name of locale. | [enum](../../getting-started.md#data-types) |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -31,6 +31,12 @@ Information about all supported timezones for the specified locale. Does not req
     curl -X POST '{{ extra.api_example_url }}/timezone/list' \
         -H 'Content-Type: application/json' \ 
         -d '{"locale": "En-en"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/timezone/list?hash=&locale=
     ```
 
 #### response

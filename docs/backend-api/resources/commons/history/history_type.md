@@ -24,7 +24,7 @@ Returns available history event types with localized descriptions.
 | locale | Locale code to set language of descriptions. | [enum](../../../getting-started.md#data-types) |
 | only_tracker_events | Optional. Default is `true`. Will return only tracker type events if `true`. | boolean |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -32,6 +32,12 @@ Returns available history event types with localized descriptions.
     curl -X POST '{{ extra.api_example_url }}/history/type/list' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "locale": "En-en"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/history/type/list?hash=&locale=&only_tracker_events=
     ```
 
 #### response

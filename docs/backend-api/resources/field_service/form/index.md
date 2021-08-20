@@ -124,7 +124,7 @@ Gets form by an id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/form/read?hash=a6aa75587e5c59c32d347da438505fc3&id=2
+    {{ extra.api_example_url }}/form/read?hash=&id=
     ```
 
 #### response
@@ -215,7 +215,7 @@ Downloads form as a file by an id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/form/download?hash=a6aa75587e5c59c32d347da438505fc3&id=2&format=pdf
+    {{ extra.api_example_url }}/form/download?hash=&id=&format=
     ```
 
 #### response

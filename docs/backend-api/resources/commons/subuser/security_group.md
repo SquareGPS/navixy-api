@@ -90,7 +90,7 @@ Creates new security group.
 | :----- | :-----  | :----- |
 | group | `security_group` object without "id" field. | JSON object |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -98,6 +98,12 @@ Creates new security group.
     curl -X POST '{{ extra.api_example_url }}/subuser/security_group/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "group": {"label": "Managers", "privileges": {"rights": ["tag_update", "tracker_register"], "store_period": "1d"}}}'
+    ```
+
+=== "template for API tools"
+
+    ```
+    {{ extra.api_example_url }}/subuser/security_group/create?hash=&group": {"label": "", "privileges": {"rights": ["", ""], "store_period": ""}}
     ```
 
 #### response
@@ -139,13 +145,13 @@ All sub-users belonging to this group will be assigned to default (null) securit
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subuser/security_group/delete' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 103}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "security_group_id": 103}'
     ```
     
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subuser/security_group/delete?hash=a6aa75587e5c59c32d347da438505fc3&id=103
+    {{ extra.api_example_url }}/subuser/security_group/delete?hash=&security_group_id=
     ```
 
 #### response
@@ -188,7 +194,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subuser/security_group/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/subuser/security_group/list?hash=
     ```
 
 #### response
@@ -229,7 +235,7 @@ Updates existing security group.
 | :----- | :-----  | :----- |
 | group | `security_group` with "id" field. | JSON object |
 
-#### example
+#### examples
 
 === "cURL"
 
@@ -237,6 +243,12 @@ Updates existing security group.
     curl -X POST '{{ extra.api_example_url }}/subuser/security_group/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "group": {"id": 103, "label": "Managers", "privileges": {"rights": ["tag_update", "tracker_register"], "store_period": "1d"}}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/subuser/security_group/update?hash=&group": {"id": , "label": "", "privileges": {"rights": ["", ""], "store_period": ""}}
     ```
 
 #### response

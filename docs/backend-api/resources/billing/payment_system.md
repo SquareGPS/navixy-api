@@ -50,6 +50,10 @@ Returns list of payment systems available for specified user.
 
 **required sub-user rights:** `payment_create`.
 
+#### parameters
+
+Only session `hash`.
+
 #### examples
 
 === "cURL"
@@ -63,7 +67,7 @@ Returns list of payment systems available for specified user.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/payment_system/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/payment_system/list?hash=
     ```
 
 #### response
@@ -97,6 +101,10 @@ Returns the estimate of the monthly payment amount
 
 **required sub-user rights**: `payment_create`.
 
+#### parameters
+
+Only session `hash`.
+
 #### examples
 
 === "cURL"
@@ -110,7 +118,7 @@ Returns the estimate of the monthly payment amount
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/payment_system/estimate/get?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/payment_system/estimate/get?hash=
     ```
 
 #### response
@@ -128,7 +136,7 @@ Returns the estimate of the monthly payment amount
 
 ### mobile/pay
 
-Create a bill using 'mobile' payment system (AKA Qiwi Bank).
+Create a bill using 'mobile' payment system AKA Qiwi Bank.
 
 **required sub-user rights:** `payment_create`.
 
@@ -137,7 +145,7 @@ Create a bill using 'mobile' payment system (AKA Qiwi Bank).
 | name | description | type|
 | :------ | :------ | :----- |
 | phone | 10-digit phone number without "+" sign and country code. | string |
-| sum | amount of money to pay, e.g. 100.50 . minimum is 1.00, maximum is 99999.00. | double |
+| sum | Amount of money to pay, e.g. 100.50 . minimum is 1.00, maximum is 99999.00. | double |
 
 #### example
 
@@ -147,6 +155,12 @@ Create a bill using 'mobile' payment system (AKA Qiwi Bank).
     curl -X POST '{{ extra.api_example_url }}/payment_system/mobile/pay' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "phone": "6156680000", "sum": 1000.00}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/payment_system/mobile/pay?hash=&phone=&sum=
     ```
 
 #### response

@@ -11,11 +11,11 @@ User of **dealer** can switch tracker from the tariff **t1** to tariff **t2** if
 
 1. Tracker belongs to user and isn't a **clone**.
 2. Tracker's tariff last changed more than **tariff.freeze.period** (config option. default 30 days) ago.
-3. **t1.tariff_id** != **t2.tariff_id**, i.e. the new tariff must be different from the current.
-4. **t1.dealer_id** = **t2.dealer_id** = **dealer.effectiveDealerId**, i.e. current and new tariffs must belong to user's effective dealer.
-5. **t2.active** = **1**, i.e. new tariff is **active** (tariff's option "Allow users to switch to this tariff independently" in **panel** is set **on**).
-6. **t1.grouping** = **t2.grouping**, i.e. user can change tariff only within one group of tariffs.
-7. **t2.device** = **tracker**, i.e. new tariff must be for trackers.
+3. **t1.tariff_id** != **t2.tariff_id**, i.e., the new tariff must be different from the current.
+4. **t1.dealer_id** = **t2.dealer_id** = **dealer.effectiveDealerId**, i.e., current and new tariffs must belong to user's effective dealer.
+5. **t2.active** = **1**, i.e., new tariff is **active** (tariff's option "Allow users to switch to this tariff independently" in **panel** is set **on**).
+6. **t1.grouping** = **t2.grouping**, i.e., user can change tariff only within one group of tariffs.
+7. **t2.device** = **tracker**, i.e., new tariff must be for trackers.
 8. The new tariff is [available to user's legal type](./index.md#tariff).
 
 User's **effective dealer** is
@@ -53,7 +53,7 @@ Changes tariff of tracker (with `tracker_id`) to new tariff (with `tariff_id`).
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tariff/tracker/change?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215&tariff_id=12
+    {{ extra.api_example_url }}/tariff/tracker/change?hash=&tracker_id=&tariff_id=
     ```
 
 #### response
@@ -97,7 +97,7 @@ List tariffs on which user can switch the passed tracker (even when tariff last 
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tariff/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215
+    {{ extra.api_example_url }}/tariff/tracker/list?hash=&tracker_id=
     ```
 
 #### response

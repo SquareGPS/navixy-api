@@ -115,7 +115,7 @@ Deletes sub-user. This operation cannot be reversed.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subuser/delete?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=123567
+    {{ extra.api_example_url }}/subuser/delete?hash=&subuser_id=
     ```
 
 #### response
@@ -158,7 +158,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/subuser/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/subuser/list?hash=
     ```
 
 #### response
@@ -220,14 +220,20 @@ Allows you to create sub-users associated to your master account.
 | user | `subuser object` without `id` field. | JSON object |
 | password | New sub-user's password. 6 to 20 characters. | string |
 
-#### example
+#### examples
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subuser/register' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}, "password": "@pa$swor!}'
+    ```
+
+=== "template for API tools"
+
+    ```
+    {{ extra.api_example_url }}/subuser/register?hash=&user={"activated": , "login": "", "first_name": "", "middle_name": "", "last_name": "", "legal_type": "", "phone": "", "post_country": "", "post_index": "", "post_region": "", "post_city": "", "post_street_address": "", "registered_country": "", "registered_index": "", "registered_region": "", "registered_city": "", "registered_street_address": "", "state_reg_num": "", "tin": "", "legal_name": "", "iec": "", "security_group_id": }&password=
     ```
 
 #### response
@@ -271,6 +277,12 @@ Updates sub-user data.
     curl -X POST '{{ extra.api_example_url }}/subuser/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"id": 123451, "activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
+    ```
+
+=== "template for API tools"
+
+    ```
+    {{ extra.api_example_url }}/subuser/update?hash=&user={"id": , "activated": , "login": "", "first_name": "", "middle_name": "", "last_name": "", "legal_type": "", "phone": "", "post_country": "", "post_index": "", "post_region": "", "post_city": "", "post_street_address": "", "registered_country": "", "registered_index": "", "registered_region": "", "registered_city": "", "registered_street_address": "", "state_reg_num": "", "tin": "", "legal_name": "", "iec": "", "security_group_id": }
     ```
 
 #### response

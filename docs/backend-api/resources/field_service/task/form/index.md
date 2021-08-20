@@ -47,7 +47,7 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/form/create?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&template_id=12548
+    {{ extra.api_example_url }}/task/form/create?hash=&task_id=&template_id=
     ```
 
 #### response
@@ -92,7 +92,7 @@ All form data will be lost!
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/form/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231
+    {{ extra.api_example_url }}/task/form/delete?hash=&task_id=
     ```
 
 #### response
@@ -135,7 +135,7 @@ Retrieves attached form as file.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/form/download?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&format=pdf
+    {{ extra.api_example_url }}/task/form/download?hash=&task_id=&format=
     ```
     
 #### response
@@ -225,7 +225,7 @@ where period_object is:
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/form/list?hash=a6aa75587e5c59c32d347da438505fc3&ascending=true&include_unsubmitted=true
+    {{ extra.api_example_url }}/task/form/list?hash=&ascending=&include_unsubmitted=&order_by=&include_unsubmitted=&filters=
     ```
     
 #### response
@@ -330,7 +330,7 @@ Gets form associated with the specified task.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/form/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=12546
+    {{ extra.api_example_url }}/task/form/read?hash=&task_id=
     ```
 
 #### response

@@ -98,7 +98,7 @@ Returns history entry with the specified id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/history/read?hash=a6aa75587e5c59c32d347da438505fc3&id=11231&add_tracker_label=true
+    {{ extra.api_example_url }}/history/read?hash=&id=&add_tracker_label=
     ```
 
 #### response
@@ -167,7 +167,7 @@ Marks history entry as read by `id` (see: [Tracker history entry](#tracker-histo
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/history/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&id=11231
+    {{ extra.api_example_url }}/history/mark_read?hash=&id=
     ```
 
 #### response
@@ -203,7 +203,7 @@ Only session `hash`.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/history/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/history/mark_read_all?hash=
     ```
 
 #### response

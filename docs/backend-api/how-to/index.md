@@ -27,3 +27,4 @@ needs but also help you make your business more profitable.
 * [How to send commands to device via GPRS](./how-to-send-commands-to-device.md)
 * [How to obtain report's information](./how-to-obtain-information-from-report.md)
 * [How to use tags](./tags-usage.md)
+* [How to work with service works and vehicles](./service-works-exploitation.md)

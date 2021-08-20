@@ -13,7 +13,7 @@ you just provide data required to optimize and algorithm returns order in which 
 
 ## API actions
 
-API path: `/task/route/points/optimize`.
+API path: `/task/route/points/`.
 
 ### optimize
 
@@ -47,6 +47,22 @@ points can have any order due to maximize summary efficiency of the route.
   {"location": {"lat": 55.555, "lng": 55.555}, "from": "2019-04-05 18:45:00", "to": "2019-04-05 19:00:00"}
 ]
 ```
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start_point": {"lat": 15.233, "lng": -5.554, "departure": "2019-04-05 13:30:00"}, "route_points": [{"location": {"lat": 11.111, "lng": 11.111}, "from": "2019-04-05 13:45:00", "to": "2019-04-05 14:00:00"}, {"location": {"lat": 22.222, "lng": -2.222}, "from": "2019-04-05 13:45:00", "to": "2019-04-05 14:00:00"}, {"location": {"lat": -3.333, "lng": 33.333}, "from": "2019-04-05 15:45:00", "to": "2019-04-05 16:00:00"}]}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/route/points/optimize?hash=&start_point={"lat": , "lng": , "departure": ""}&route_points=[{"location": {"lat": , "lng": }, "from": "", "to": ""}, {"location": {"lat": , "lng": }, "from": "", "to": ""}, {"location": {"lat": , "lng": }, "from": "", "to": ""}]
+    ```
 
 #### response
 

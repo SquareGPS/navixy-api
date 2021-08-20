@@ -67,7 +67,7 @@ Creates a new tag.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tag/create?hash=a6aa75587e5c59c32d347da438505fc3&tag={"name": "hop", "color": "FF0000"}
+    {{ extra.api_example_url }}/tag/create?hash=&tag={"name": "", "color": ""}
     ```
 
 #### response
@@ -112,7 +112,7 @@ Deletes tag with the specified id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tag/delete?hash=a6aa75587e5c59c32d347da438505fc3&tag_id=1
+    {{ extra.api_example_url }}/tag/delete?hash=&tag_id=
     ```
 
 #### response
@@ -152,7 +152,7 @@ Gets all tags belonging to user with optional filtering.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tag/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/tag/list?hash=&filter=
     ```
 
 #### response
@@ -199,7 +199,7 @@ Search entities that bound with all of specified tags.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tag/search?hash=a6aa75587e5c59c32d347da438505fc3&tag_ids=[1, 2, 3]
+    {{ extra.api_example_url }}/tag/search?hash=&tag_ids=[]&entity_types=
     ```
 
 #### response
@@ -258,7 +258,7 @@ Updates existing tag.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tag/update?hash=a6aa75587e5c59c32d347da438505fc3&tag={"id": 3, "name": "hop", "color": "FF0000"}'
+    {{ extra.api_example_url }}/tag/update?hash=&tag={"id": , "name": "", "color": ""}
     ```
 
 #### response

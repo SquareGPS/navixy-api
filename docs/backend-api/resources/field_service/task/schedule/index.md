@@ -136,8 +136,6 @@ replaced with `from_time`, `duration` and `parameters`.
 ```
 
     * `weekdays` - int array. Week days on which tasks will be created (1 = Monday, ... 7 = Sunday)
-    
-* month_days - task creation based on day of month.
 
 ```json
 {
@@ -173,7 +171,13 @@ Creates new task schedule entry.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/create' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/schedule/create?hash=&schedule={"tracker_id": , "location": {"lat": , "lng": , "address": "", "radius": }, "label": "", "description": "", "from_time": "", "duration": , "max_delay" : , "min_stay_duration": , "min_arrival_duration": , "parameters": {"type": "", "weekdays": []}, "tags": [], "form_template_id": }
     ```
 
 #### response
@@ -221,7 +225,7 @@ Delete task schedule with the specified id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/schedule/delete?hash=a6aa75587e5c59c32d347da438505fc3&schedule_id=23144
+    {{ extra.api_example_url }}/task/schedule/delete?hash=&schedule_id=
     ```
 
 #### response
@@ -261,7 +265,7 @@ Also this call returns all unassigned task schedules.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/schedule/list?hash=a6aa75587e5c59c32d347da438505fc3
+    {{ extra.api_example_url }}/task/schedule/list?hash=&trackers=[]&filter=
     ```
 
 #### response
@@ -325,7 +329,7 @@ Gets task, route or checkpoint schedule by specified id.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/task/schedule/read?hash=a6aa75587e5c59c32d347da438505fc3&id=12314
+    {{ extra.api_example_url }}/task/schedule/read?hash=&id=
     ```
 
 #### response
@@ -397,7 +401,13 @@ Updates existing task schedule.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"id": 29412, tracker_id": 22, "location": {"lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/task/schedule/update?hash=&schedule={"id": , "tracker_id": , "location": {"lat": , "lng": , "address": "", "radius": }, "label": "", "description": "", "from_time": "", "duration": , "max_delay" : , "min_stay_duration": , "min_arrival_duration": , "parameters": {"type": "", "weekdays": []}, "tags": [], "form_template_id": }
     ```
 
 #### response
