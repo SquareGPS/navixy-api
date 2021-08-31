@@ -1393,6 +1393,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 ### replace
 
 Lets to replace the device without losing its history and some of its settings.
+Replacement allows you to register a new device with history, sensors (optional), and rules (optional) of the current tracker saved.
 
 **required sub-user rights:** `tracker_configure`.
 
