@@ -72,15 +72,26 @@ A form can be assigned to an existing task with [task update call](../resources/
 
 ## Obtaining information from submitted forms
 
-We can get submitted forms to analyze all information our employees specified in two ways. 
+We can get submitted forms to analyze all information our employees specified in several ways. 
 
-To get specific forms as they sent:
+### Specific forms as they sent in tasks
 
-* Obtain the [list of templates](../resources/field_service/form/template.md#list) to get the template_id of the form we
+* Obtain a [list of templates](../resources/field_service/form/template.md#list) to get a template_id of a form we
   are interested in.
 * Obtain the [list of tasks](../resources/field_service/task/form/index.md#list) with the necessary form template_id and per specific time period.
 * With this task_id we can request [downloading](../resources/field_service/task/form/index.md#download) or
   [reading](../resources/field_service/task/form/index.md#read) the necessary form.
+
+Or
+
+* Get a [list of tasks](../resources/field_service/task/index.md#list) to find a specific task and obtain a form_id from it. 
+* Use this form_id to [read](../resources/field_service/form/index.md#read) and [download](../resources/field_service/form/index.md#download) forms.
+
+
+### Specific forms as they sent in check-ins
+
+* Obtain a list of [check-ins](../resources/field_service/checkin.md#list) to get form_id we are interested in.
+* Use this form_id to [read](../resources/field_service/form/index.md#read) and [download](../resources/field_service/form/index.md#download) forms.
 
 To get counted information in the report format.
 
