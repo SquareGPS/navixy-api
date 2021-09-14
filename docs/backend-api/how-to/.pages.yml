@@ -10,6 +10,7 @@ nav:
     - Use rules: 'use-rules.md'
     - Work with notifications: 'how-to-work-with-notifications.md'
     - Work with tasks: 'how-to-work-with-tasks.md'
+    - Forms usage: 'forms-creation.md'
     - Work with statuses: 'how-to-work-with-statuses.md'
     - Send commands to device: 'how-to-send-commands-to-device.md'
     - Obtain information from report: 'how-to-obtain-information-from-report.md'
