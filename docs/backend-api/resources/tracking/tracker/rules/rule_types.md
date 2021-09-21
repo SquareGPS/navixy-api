@@ -762,3 +762,22 @@ A rule that triggers when the device is stationary.
 | name | description | type |
 | ------ | ------------- | ------ |
 | type | Default `type`: "no_movement". | [enum](../../../../getting-started.md#data-types) |
+
+### Distance between objects
+
+A rule that triggers a change in distance between objects. The distance is measured by the last valid GPS coordinates.
+
+#### parameters
+
+| name | description | type |
+| ------ | ------------- | ------ |
+| type | Default `type`: "distance_control". | [enum](../../../../getting-started.md#data-types) |
+| secondary_text | Secondary text of rule notification, when distance is restored. | string |
+
+#### extended parameters
+
+| name | description | type |
+| ------ | ------------- | ------ |
+| observed_trackers | List of observed tracker ids. | int array |
+| control_type | Type of distance control. One of `["moving_away", "approaching"]`. | [enum](../../../../getting-started.md#data-types) |
+| control_distance_meters | Distance for control in meters. | int |

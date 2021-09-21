@@ -136,7 +136,8 @@ where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
 * `event_count` - int. Number of events on this track. Field will be omitted if "count_events" is `false`.
 * `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle bound to tracker 
 or no normAvgFuelConsumption defined in a vehicle.
-* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
+  Used to distinguish this track type (`regular`) from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
 
 `single_report` object. Returned if device was creating reports in "interval" mode (e.g. M7 tracker in interval mode):
@@ -144,21 +145,22 @@ or no normAvgFuelConsumption defined in a vehicle.
 ```json
 {
     "id": 123456,
-    "type": "single_report",
     "start_date": "2020-09-24 03:39:44",
     "start_address": "1255 6th Ave, New York, NY 10020, USA",
     "avg_speed": 34,
     "gsm_lbs": false,
+    "type": "single_report",
     "precision": 10
 }
 ```
 
 * `id` - int. Track id.
-* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
 * `start_date` - [date/time](../../../getting-started.md#data-types). Point creation date, in user's timezone e.g. "2011-06-18 03:39:44".
 * `start_address` - string. Point address.
 * `avg_speed` - int. Average speed in km/h, e.g. 70.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`.
+  Used to distinguish this track type (`single_report`) from the others.
 * `precision` - optional int. Location precision, meters.
 
 
@@ -192,7 +194,8 @@ or no normAvgFuelConsumption defined in a vehicle.
 * `event_count` - int. Number of events on this track. Field will be omitted if "count_events" is `false`.
 * `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle bound to tracker 
 or no normAvgFuelConsumption defined in a vehicle.
-* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
+  Used to distinguish this track type (`merged`) from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS flag.
 
 `cluster` object. Only returned if "split" is set to `true`:
@@ -214,7 +217,8 @@ or no normAvgFuelConsumption defined in a vehicle.
 * `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
 * `precision` - optional int. Location precision, meters.
 * `points` - array of points in a cluster.
-* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
+  Used to distinguish this track type (`cluster`) from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS flag, true if cluster contains only GSM LBS points.
 
 #### errors

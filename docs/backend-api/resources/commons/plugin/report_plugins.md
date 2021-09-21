@@ -693,3 +693,18 @@ plugin-specific parameters:
 | show_not_visited_places | | boolean
 | show_seconds | If true, time values in report should have format with seconds. Default is **false**. | boolean
 
+<hr>
+
+### Point report
+
+Information on the points transmitted during the day. Maximum period is 24 hours.
+
+#### parameters
+
+default **plugin_id**: 91.
+
+Plugin-specific parameters:
+
+| name | description | type |
+| ------ | ------------- | ------ |
+| show_seconds | If `true` timestamps will be with seconds. | boolean |
