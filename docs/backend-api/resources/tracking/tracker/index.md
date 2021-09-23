@@ -64,9 +64,9 @@ manipulation of tracker and/or its properties.
 
 API base path: `/tracker`.
 
-### list
+### read
 
-Gets tracker by ID.
+Gets tracker info by ID.
 
 #### parameters
 
