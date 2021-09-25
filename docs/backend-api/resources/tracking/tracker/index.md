@@ -64,47 +64,137 @@ manipulation of tracker and/or its properties.
 
 API base path: `/tracker`.
 
-### change_phone
+### read
 
-Changes tracker's phone and setup new apn.
-
-**required sub-user rights:** `tracker_configure`.
+Gets tracker info by ID.
 
 #### parameters
 
 | name | description | type | format |
 | :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| phone | The phone number of the sim card inserted into device in international format without "+" sign. | string| "6156680000" |
-| apn_name | The name of GPRS APN of the sim card inserted into device. | string | "fast.tmobile.com" |
-| apn_ user | The user of GPRS APN of the sim card inserted into device. | string | "tmobile" |
-| apn_password | The password of GPRS APN of the sim card inserted into device. | sting | "tmobile" |
+| tracker_id | Id of the tracker (aka "object_id") | int | 999199 |
 
 #### examples
 
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/change_phone' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/read' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
     ```
 
 #### response
 
 ```json
-{ "success": true }
+{
+  "success": true,
+  "value": {
+    "id": 123456,
+    "label": "Object 1",
+    "group_id": 0,
+    "source": {
+      "id": 10021901,
+      "device_id": "123456789009876",
+      "model": "atrack_ak11",
+      "blocked": false,
+      "tariff_id": 1294,
+      "phone": "79161234533",
+      "status_listing_id": null,
+      "creation_date": "2021-09-20",
+      "tariff_end_date": "2021-09-24"
+    },
+    "tag_bindings": [],
+    "clone": false
+  }
+}
 ```
+
+See tracker object structure description [here](#tracker-object-structure).
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
-* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
-* 219 – Not allowed for clones of the device - if specified tracker is a clone.
-* 214 – Requested operation or parameters are not supported by the device - if device does not have GSM module.
-* 223 – Phone number already in use - if specified phone number already used in another device.
-* 241 – Cannot change phone to bundled sim. Contact tech support. If specified phone number belongs tp sim card bundled
- with the device.
+* 201 - Not found in the database – if tracker not found.
+
+<hr>
+
+### list
+
+Gets user's trackers with optional filtering by labels.
+
+#### parameters
+
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| labels | Optional. List of tracker label filters. If specified, only trackers that labels contains any of the given filter will be returned. | string array | `["aa", "b"]` |
+
+Constraints for labels:
+
+* Labels array size: minimum 1, maximum 1024.
+* No null items.
+* No duplicate items.
+* Item length: minimum 1, maximum 60.
+
+For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `labels=["aa","b"]` only trackers
+containing "aa1" and "bb2" will be returned.
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/list' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "list": [{
+      "id": 123456,
+      "label": "tracker label",
+      "clone": false,
+      "group_id": 167,
+      "avatar_file_name" : "file name",
+      "source": {
+        "id": 234567,
+        "device_id": 9999999988888,
+        "model": "telfmb920",
+        "blocked": false,
+        "tariff_id": 345678,
+        "status_listing_id": null,
+        "creation_date": "2011-09-21",
+        "tariff_end_date": "2016-03-24",
+        "phone" : "+71234567890"
+      },
+      "tag_bindings": [{
+        "tag_id": 456789,
+        "ordinal": 4
+      }]
+    }]
+}
+```
+
+See tracker object structure description [here](#tracker-object-structure).
+
+#### errors
+
+[General](../../../getting-started.md#error-codes) types only.
 
 <hr>
 
@@ -217,6 +307,50 @@ or
 
 * `rules` - list of associated rule ids.
 * `vehicles` - list of associated vehicle ids.
+
+<hr>
+
+### change_phone
+
+Changes tracker's phone and setup new apn.
+
+**required sub-user rights:** `tracker_configure`.
+
+#### parameters
+
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| phone | The phone number of the sim card inserted into device in international format without "+" sign. | string| "6156680000" |
+| apn_name | The name of GPRS APN of the sim card inserted into device. | string | "fast.tmobile.com" |
+| apn_ user | The user of GPRS APN of the sim card inserted into device. | string | "tmobile" |
+| apn_password | The password of GPRS APN of the sim card inserted into device. | sting | "tmobile" |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/change_phone' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
+    ```
+
+#### response
+
+```json
+{ "success": true }
+```
+
+#### errors
+
+* 201 - Not found in the database – if tracker not found.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 – Not allowed for clones of the device - if specified tracker is a clone.
+* 214 – Requested operation or parameters are not supported by the device - if device does not have GSM module.
+* 223 – Phone number already in use - if specified phone number already used in another device.
+* 241 – Cannot change phone to bundled sim. Contact tech support. If specified phone number belongs tp sim card bundled
+  with the device.
 
 <hr>
 
@@ -348,7 +482,7 @@ List of state names for the field `states`:
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 <hr>
@@ -418,7 +552,7 @@ List of available sensor's input names for the object `sensor value`:
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 <hr>
@@ -493,7 +627,7 @@ List of `input types`:
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 <hr>
@@ -638,7 +772,7 @@ List of available sensor's input names for the object `sensor value`:
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 <hr>
@@ -751,7 +885,7 @@ output 2 is on, output 3 is off.
     
 #### errors
 
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
+* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 
 <hr>
@@ -985,80 +1119,6 @@ and configures it automatically. You don't need to pass any identifier during de
 
 <hr>
 
-### list
-
-Gets user's trackers with optional filtering by labels.
-
-#### parameters
-
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| labels | Optional. List of tracker label filters. If specified, only trackers that labels contains any of the given filter will be returned. | string array | `["aa", "b"]` |
-
-Constraints for labels:
-
-* Labels array size: minimum 1, maximum 1024.
-* No null items.
-* No duplicate items.
-* Item length: minimum 1, maximum 60.
-
-For example, we have trackers with labels "aa1", "bb2", "cc3", if we pass `labels=["aa","b"]` only trackers 
-containing "aa1" and "bb2" will be returned.
-
-#### examples
-
-=== "cURL"
-
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
-
-#### response
-
-```json
-{
-    "success": true,
-    "list": [{
-      "id": 123456,
-      "label": "tracker label",
-      "clone": false,
-      "group_id": 167,
-      "avatar_file_name" : "file name",
-      "source": {
-        "id": 234567,
-        "device_id": 9999999988888,
-        "model": "telfmb920",
-        "blocked": false,
-        "tariff_id": 345678,
-        "status_listing_id": null,
-        "creation_date": "2011-09-21",
-        "tariff_end_date": "2016-03-24",
-        "phone" : "+71234567890"
-      },
-      "tag_bindings": [{
-        "tag_id": 456789,
-        "ordinal": 4
-      }]
-    }]
-}
-```
-
-See tracker object structure description [here](#tracker-object-structure).
-
-#### errors
-
-[General](../../../getting-started.md#error-codes) types only.
-
-<hr>
-
 ### tags/set
 
 Set tags for a tracker. Tags must be created.
@@ -1133,7 +1193,7 @@ Request types:
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 213 – Cannot perform action: the device is offline.
 * 214 – Requested operation or parameters are not supported by the device.
@@ -1287,7 +1347,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 #### errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 – Not allowed for clones of the device - if specified tracker is a clone.
 * 214 – Requested operation or parameters are not supported by the device - if device does not have GSM module.
