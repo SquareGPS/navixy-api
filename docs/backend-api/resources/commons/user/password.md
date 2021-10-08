@@ -79,5 +79,5 @@ Changes password for login user.
 #### errors
 
 * 101 – In demo mode this function disabled - if specified session hash belongs to demo user.
-* 225 – New password must be different - if `old_password` = `new_password`.
+* 245 – New password must be different - if `old_password` = `new_password`.
 * 248 – Wrong password - if `old_password` is wrong.

@@ -26,7 +26,7 @@ Contains field object description and API calls to interact with it.
 * `label` -  string. Name of the field.
 * `type` - [enum](../../../getting-started.md#data-types). Type of field, see below.
 * `required` - boolean. Whether field required to be filled or not.
-* `description` - string. Additional info about the field, max 250 characters.
+* `description` - string. Additional info about the field, max 512 characters.
 * `params` - object. Type-specific parameters. If no specific params, this field should be omitted.
 
 **field types**:
