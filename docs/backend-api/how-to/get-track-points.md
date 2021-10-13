@@ -19,19 +19,7 @@ Parameters that necessary for this call:
 * `from` - a string containing start [date/time](../getting-started.md#datetime-formats).
 * `to` - a string containing end [date/time](../getting-started.md#datetime-formats).
 
-Optional parameters:
-
-* `track_id` - we can get them using [track/list](../resources/tracking/track/index.md#list) API call.
-  If specified, only points belonging to the specified track will be returned. If not, 
-  any valid track points between `from` and `to` will be returned. 
-  All requested track ids must be unique and not null.
-* `include_gsm_lbs` – boolean. It may contain `true` or `false`. 
-  If `false` && `track_id` not specified, GSM LBS points will be filtered out. It is `true` by default.
-* `point_limit` – int. If it specified, the returned track would be simplified to contain
-  this number of points. Min=2, Max=3000.
-* `filter` – boolean. If `true`, the returned track will be filtered, applicable only for LBS tracks. It is `false` 
-by default.
-* `split` – boolean. Default=`true`. If `false`, all tracks will be merged into single one.
+Full parameters description see at [`/track/read` API call](../resources/tracking/track/index.md#read). 
 
 The platform will reply:
 
