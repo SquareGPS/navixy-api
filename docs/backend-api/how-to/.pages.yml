@@ -2,7 +2,7 @@ title: How To
 nav:
     - index.md
     - Get session hash: 'get-session-hash.md'
-    - Device registration: 'how-to-register-a-device.md'
+    - Register a device: 'how-to-register-a-device.md'
     - Get tracker list: 'get-tracker-list.md'
     - Get track points: 'get-track-points.md'
     - Get sensors and counters data: 'getting-measurements-and-counters-from-devices.md'

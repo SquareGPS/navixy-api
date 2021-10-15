@@ -675,7 +675,7 @@ Upload users from CSV or XLS file.
 
 CSV column separator is `;`. Columns header for CSV and XLS (headers with `*` is required):
  
-`Email address*;Password*;Status*;Legal status*;Surname*;Name*;Middle name;Phone number;Сomment;Country;Region;City;Street, address;Zip code;Legal name;Tax number;IEC;Registration country;Registration region;Registration city;Registration address;Registration zip code;Discount;End date of discount;Device limit`
+`Email address*;Password*;Status*;Legal status*;Surname*;Name*;Middle name;Phone number;Comment;Country;Region;City;Street, address;Zip code;Legal name;Tax number;IEC;Registration country;Registration region;Registration city;Registration address;Registration zip code;Discount;End date of discount;Device limit`
 
 For RU locale:
 
