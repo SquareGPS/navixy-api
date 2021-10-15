@@ -322,9 +322,9 @@ Changes tracker's phone and setup new apn.
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
 | phone | The phone number of the sim card inserted into device in international format without "+" sign. | string| "6156680000" |
-| apn_name | The name of GPRS APN of the sim card inserted into device. | string | "fast.tmobile.com" |
-| apn_ user | The user of GPRS APN of the sim card inserted into device. | string | "tmobile" |
-| apn_password | The password of GPRS APN of the sim card inserted into device. | sting | "tmobile" |
+| apn_name | The name of GPRS APN of the sim card inserted into device. Max length 40. | string | "fast.tmobile.com" |
+| apn_ user | The user of GPRS APN of the sim card inserted into device. Max length 40, can be empty. | string | "tmobile" |
+| apn_password | The password of GPRS APN of the sim card inserted into device. Max length 40, can be empty. | sting | "tmobile" |
 
 #### examples
 
@@ -1292,9 +1292,9 @@ Resends registration commands to the device. The panel must have installed SMS g
 | :------ | :------ | :----- | :----- |
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
 | device_id | Optional. Device ID that was used to register, e.g. IMEI. It can be used instead of `tracker_id` for models with a fixed ID.| string | "4568005588562" |
-| apn_name | The name of GPRS APN of this sim card inserted into device. | string | "fast.tmobile.com" |
-| apn_user | The user of GPRS APN of this sim card inserted into device. | string | "tmobile" |
-| apn_password | The password of GPRS APN of the sim card inserted into device. | string | "tmobile" |
+| apn_name | The name of GPRS APN of this sim card inserted into device. Max length 40. | string | "fast.tmobile.com" |
+| apn_user | The user of GPRS APN of this sim card inserted into device. Max length 40, can be empty. | string | "tmobile" |
+| apn_password | The password of GPRS APN of the sim card inserted into device. Max length 40, can be empty. | string | "tmobile" |
 
 #### examples
 

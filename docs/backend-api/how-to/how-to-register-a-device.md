@@ -1,5 +1,5 @@
 ---
-title: Device registration
+title: Register a device
 description: Instruction about device registration on the platform step by step.
 ---
 
@@ -37,9 +37,9 @@ There is information about tracker registration with plugins 44 and 37.
 ### Common parameters
 
 * phone - device's phone number with country code and without `+` sign.
-* apn_name - this is the apn that depends on your device's SIM GSM carrier.
-* apn_user - it depends on your device's SIM too. нужно про пустые юзер и пассворд сделать, чтобы здесь написать. 
-* apn_password - this parameter depends on the GSM carrier as two previous parameters.
+* apn_name - this is the apn that depends on your device's SIM GSM carrier. Max length 40.
+* apn_user - it depends on your device's SIM too. Max length 40, can be empty.
+* apn_password - this parameter depends on the GSM carrier as two previous parameters. Max length 40, can be empty.
 * device_id - device's ID. What Id type is used in your device can be found with [list_models](../resources/tracking/tracker/index.md#list_models)
   action and [ID type field](../resources/tracking/tracker/index.md#id-type)
 * model - name of the model in the platform's code. It can be found in the [list_models](../resources/tracking/tracker/index.md#list_models) request too.

@@ -1157,7 +1157,7 @@ where free_period obtained from the hardcodes table or from default_model_settin
 The rest of days on a tariff: remainder = the number of whole days before the end of the current tariff.
 
 amount to be repaid = `ceil(tariff.price * remainder / amt)`,
-where `amt` – the number of days in the current month, а ceil – the operation of taking the integer part.
+where `amt` – the number of days in the current month, a ceil – the operation of taking the integer part.
 
 **Change**
 

@@ -9,7 +9,7 @@ Points of interest (POI) or places can be used for different purposes. They can 
 visited clients, simplify your work with tasks, and can be used to analyze your business with reports.
 
 Custom fields have also been designed for them, which can be used to add additional necessary information about locations
-and customers. ЕThey can be used for creation of your own CRM or ERP system, as well as for easy integration with third 
+and customers. They can be used for creation of your own CRM or ERP system, as well as for easy integration with third 
 party systems. It is possible to add a phone number, e-mail, and other relevant customer data. To get to the next level,
 it's possible to assign specific employees to a customer.
 
