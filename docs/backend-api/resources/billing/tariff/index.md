@@ -24,6 +24,7 @@ Tariff object description and API call to get the list of device's tariffs avail
     "has_reports" : true,
     "paas_free": false,
     "store_period": "12m",
+    "auto_prolong":true,
     "features": [
         "map_layers"
     ],
@@ -46,6 +47,7 @@ Tariff object description and API call to get the list of device's tariffs avail
 * `has_reports` - boolean. `true` if reports allowed, `false` otherwise.
 * `paas_free` - boolean. `true` if this tariff is free for PaaS owner, `false` otherwise.
 * `store_period` - string. Data storage period, e.g. "2h" (2 hours), "3d" (3 days), "5m" (5 months), "1y" (one year).
+* `auto_prolong` - boolean. `true` if this tariff plan prolongs automatically.
 * `features` - string array. Available features for the user.
 * `map_filter` - object with available maps for the user.
     * `exclusion` - boolean. If `true` maps from `values` will be not active, `false` - maps from values will be active.
@@ -99,6 +101,7 @@ Only session `hash`.
        "has_reports" : true,
        "paas_free": false,
        "store_period": "12m",
+       "auto_prolong":true,
        "features": [
            "map_layers"
        ],
