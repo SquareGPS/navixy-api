@@ -117,6 +117,7 @@ List tariffs on which user can switch the passed tracker (even when tariff last 
        "has_reports" : true,
        "paas_free": false,
        "store_period": "12m",
+       "auto_prolong":true,
        "features": [
            "map_layers"
        ],
