@@ -41,7 +41,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 {
     "success": true,
     "dealer": {
-        "id": 5001,
+        "id": 20410,
         "ui_domain": "demo.navixy.com",
         "company_url": "navixy.com"
     },
@@ -64,16 +64,19 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
         "payment_link": "http://site.de/pay.php", 
         "promo_url": "http://site.de/about/",
         "google_client_id": "clientID",
-        "favicon": "paas/5001/custom.ico",
-        "logo": "paas/5001/logo.png",
-        "app_logo": "paas/5001/app_logo.png",
-        "login_wallpaper": "paas/5001/login.png",
+        "favicon": "paas/20410/custom.ico",
+        "logo": "paas/20410/logo.png",
+        "app_logo": "paas/20410/app_logo.png",
+        "login_wallpaper": "paas/20410/login.png",
         "desktop_wallpaper": "http://test.com/test.jpg",
-        "monitoring_logo": "http://test.com/test.jpg",
+        "monitoring_logo": "http://test.com/test.jpg", 
+        "monitoring_logo_clickable":true,
         "login_footer": "All rights reserved.",
         "allow_registration": true,
         "show_mobile_apps" : true,
         "show_call_notifications" : true,
+        "has_https": true,
+        "captcha_provider": "internal",
         "default_user_settings": {
             "geocoder": "google",
             "route_provider": "progorod",
@@ -96,9 +99,11 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
         },
         "no_register_commands": false
     },
-    "demo_ends": "2014-01-01",
+    "gis_package": "premium",
+    "demo_ends": "2021-10-31",
     "premium_gis": true,
-    "features": ["branding_web"],
+    "allow_branding": true,
+    "features": ["branding_web","branding_mobile","navixy_label","tracking","reports","fleet","field_service","premium_gis"],
     "platform": {
         "iso_datetime_support": true,
         "history.max_limit": 10,
@@ -106,7 +111,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
         "stats.max_allowed_trackers": 128,
         "stats.max_time_span": "P31D",
         "file_storage.hard_max_file_size": 16777216,
-        "form.max_fields_count": 128,
+        "form.max_fields_count": 250,
         "form.file_field.max_file_size": 16777216,
         "form.file_field.max_files_per_field": 6,
         "form.file_field.max_count": 16
@@ -141,11 +146,14 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `login_wallpaper` - string. Path or url to dealer's interface login wallpaper.
     * `desktop_wallpaper` - string. Path to dealer's interface wallpaper or null.
     * `monitoring_logo` - string. Path to dealer's interface monitoring logo or null.
+    * `monitoring_logo_clickable` - boolean. If `true` clicking a logotype will open company promo URL.
     * `login_footer` - string. Footer which will be included in login page.
     * `allow_registration` - boolean. If `true` then registration is available for dealer's users. All HTML 
     special chars escaped using HTML entities.
     * `show_mobile_apps` - boolean. If `true` then mobile applications are available for dealer's users.
     * `show_call_notifications` - boolean. If `true` then call notifications are available for dealer's users.
+    * `has_https` - boolean. `true` if UI's domain is SSL encrypted.
+    * `captcha_provider` - [enum](../../getting-started.md#data-types). Captcha provider type for login page.
     * `geocoder` - [enum](../../getting-started.md#data-types). Default geocoder.
     * `route_provider` - [enum](../../getting-started.md#data-types). Default router.
     * `measurement_system` - [enum](../../getting-started.md#data-types). Measurement system.
@@ -154,6 +162,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `app_color_theme` - [enum](../../getting-started.md#data-types). Mobile app color theme code or empty string (for default theme).
     * `tos` - string. Terms of service text.
     * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
+    * `gis_package` - [enum](../../getting-started.md#data-types). Information about installed GIS packet.
     * `exclusion` - boolean. If `true` models in the `values` will be excluded.
     * `values` - string array. If it is empty - all models available.
     * `internal` - object with additional options.
@@ -163,6 +172,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
     * `no_register_commands` - boolean. If `true` then do not send commands to devices on activation.
 * `demo_ends` - string. A date when demo for this dealer ends. Is null when dealer is not on Trial tariff.
 * `premium_gis` - boolean. If `true` dealer has Premium GIS package.
+* `allow_branding` - boolean. If `true` branding allowed for a dealer.  
 * `features` - string array. Set of the allowed features for a dealer (all list see below in "Dealer features").
 * `platform` - key-value object. Global platform settings.
     * `iso_datetime_support` - boolean, if `true` platform supports ISO 8601 [date/time format](../../getting-started.md#datetime-formats). 
@@ -183,6 +193,11 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 | branding_web | Allow to use custom logos, color theme, domain and favicon in UI for web version. |
 | branding_mobile | Allow to use custom icon, logo, color theme in the mobile applications. |
 | subpaas | Allow to use Sub-Dealers (can be used only together with `navixy_label`). |
+| tracking | Allow to use tracking feature. |
+| reports | Allow to use reports. |
+| fleet | Allow to use fleet features. |
+| field_service | Allow to use field-service features. |
+| premium_gis | Allow to use premium GIS. |
 | navixy_label | Show "Powered by Navixy" in UI (required for subpaas feature). |
 
 #### errors
