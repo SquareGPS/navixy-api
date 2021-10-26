@@ -148,7 +148,7 @@ API request:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/create' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "place": {"label": "Company1", "description": "accepted one more deal for 7 devices on the next week", "files": [], "fields": {{"2327": {"value": "shop1@email.com", "type": "email"}}, {"2328": {"value": "555231415221", "type": "phone"}}, {"2329": {"value": "10/10/2021", "type": "text"}}, {"2330": {"value": "87292", "type": "text"}}, {2331: {value: "Sold 10 devices", type: "text"}}, {"2332": {"value": 71247, "type": "employee"}}}, "location": {"address": "Lovell House, 6 Archway, Hulme, Manchester M15 5RN, UK", "lat": 53.46583133200717, "lng": -2.2464680671691895, "radius": 50}, "tags": [218916]}'
+        {% raw %}-d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "place": {"label": "Company1", "description": "accepted one more deal for 7 devices on the next week", "files": [], "fields": {{"2327": {"value": "shop1@email.com", "type": "email"}}, {"2328": {"value": "555231415221", "type": "phone"}}, {"2329": {"value": "10/10/2021", "type": "text"}}, {"2330": {"value": "87292", "type": "text"}}, {2331: {value: "Sold 10 devices", type: "text"}}, {"2332": {"value": 71247, "type": "employee"}}}, "location": {"address": "Lovell House, 6 Archway, Hulme, Manchester M15 5RN, UK", "lat": 53.46583133200717, "lng": -2.2464680671691895, "radius": 50}, "tags": [218916]}'{% endraw %}
     ```
 
 The platform will confirm creation with:
