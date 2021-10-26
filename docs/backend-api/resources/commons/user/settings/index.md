@@ -24,7 +24,7 @@ CRUD actions for user settings.
 
 * `time_zone` - [enum](../../../../getting-started.md#data-types). ISO timezone id.
 * `locale` - [enum](../../../../getting-started.md#data-types). Locale code.
-* `measurement_system` - [enum](../../../../getting-started.md#data-types). Measurement system. Can be "metric", "imperial", "us" or "metric_gal_us".
+* `measurement_system` - [enum](../../../../getting-started.md#data-types). Measurement system. Can be "metric", "imperial", "us", "metric_gal_us" or "nautical".
 * `geocoder` - [enum](../../../../getting-started.md#data-types). Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq".
 * `route_provider` - [enum](../../../../getting-started.md#data-types). Preferred route finding provider. Can be "google", "progorod" or "osrm".
 * `translit` - boolean. `true` if sms notification should be transliterated, `false` otherwise.
@@ -123,7 +123,7 @@ Update current user's settings.
 | :----- | :-----  | :----- |
 | time_zone | ISO timezone id. | [enum](../../../../getting-started.md#data-types) |
 | locale | Locale code. | [enum](../../../../getting-started.md#data-types) |
-| measurement_system | Measurement system. Can be "metric", "imperial", "us" or "metric_gal_us". | [enum](../../../../getting-started.md#data-types) |
+| measurement_system | Measurement system. Can be "metric", "imperial", "us", "metric_gal_us" or "nautical". | [enum](../../../../getting-started.md#data-types) |
 | geocoder | Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq". | [enum](../../../../getting-started.md#data-types) |
 | route_provider | Preferred route finding provider. Can be "google", "progorod" or "osrm". | [enum](../../../../getting-started.md#data-types) |
 | translit | `true` if sms notification should be transliterated, `false` otherwise. | boolean |

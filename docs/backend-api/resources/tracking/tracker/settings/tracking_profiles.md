@@ -464,7 +464,7 @@ Tracking profile for Carscop CCTR-830, Toptracking CCTR-830G.
 
 ### castel_idd
 
-Tracking profile for Castel IDD-213.
+Tracking profile for Sinocastel IDD-213.
 
 ```json
 {
@@ -486,7 +486,7 @@ Tracking profile for Castel IDD-213.
 
 ### castel_interval
 
-Tracking profile for Castel MPIP-620, Castel PT-690, Castel PT-718S.
+Tracking profile for Sinocastel MPIP-620, Sinocastel PT-690, Sinocastel PT-718S.
 
 ```json
 {
@@ -943,7 +943,7 @@ Tracking profile for E-Track TLT-2H.
 
 ### fifotrack
 
-Tracking profile for fifotrack A100, fifotrack A100 FW1.15+, fifotrack A300, fifotrack A300 FW1.23+, fifotrack A600 (FW before V1.07), fifotrack A600 FW1.07+.
+Tracking profile for Fifotrack A100, fifotrack A100 FW1.15+, fifotrack A300, fifotrack A300 FW1.23+, fifotrack A600 (FW before V1.07), fifotrack A600 FW1.07+.
 
 ```json
 {
@@ -956,7 +956,7 @@ Tracking profile for fifotrack A100, fifotrack A100 FW1.15+, fifotrack A300, fif
 ```
 
 * `psm_interval` - int. Duration in seconds for the device to stay in the deep sleep mode. Min=0, max=3932100.
-* `psm_mode` - int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On), `2` - deep sleep(GPS Off, GPRS Off, G-sensor On).
+* `psm_mode` - int. Define the sleep level when type != `power_save`, `0` - no sleeping, `1` - light sleep(GPS Off, GPRS On, G-sensor On), `2` - deep sleep (GPS Off, GPRS Off, G-sensor On).
 * `tracking_angle` - int. The device will additionally send data when it changes direction to specified angle, e.g. 30 degrees. Min=10, max=359.
 * `tracking_distance` - int. Distance in meters, e.g. 100 means that the device will send data every 100 meters. Min=50, max=65535.
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=30, max=655350.
@@ -965,7 +965,7 @@ Tracking profile for fifotrack A100, fifotrack A100 FW1.15+, fifotrack A300, fif
 
 ### genesis_g36
 
-Tracking profile for Castel HT-770, Ezlink T28, G36, Orion 7, XiLi Technologies PT100.
+Tracking profile for Sinocastel HT-770, Ezlink T28, G36, Orion 7, XiLi Technologies PT100.
 
 ```json
 {

@@ -26,7 +26,8 @@ Downloads track points as KML/KMZ file for the specified track ID, tracker and t
 | to | To date/time. Specified date must be after "from" date. | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 06:24:00"` |
 | track_ids | Optional. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned. | int array | `[123456, 234567]` | 
 | include_gsm_lbs | Optional. If `false` && track_ids not specified, GSM LBS points will be filtered out. Default=`true`. | boolean | `true` |
-| point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. | int | `300` |
+| simplify | Optional. If `true` the returned track will be simplified. Default=`true`. | boolean | `true` |
+| point_limit | Optional. If specified and `simplify=true`, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. It is not a hard limit, returned track may contain more points.| int | `300` |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | `true` |
 | format | File format, "kml" or "kmz", default is "kml". | [enum](../../../getting-started.md#data-types) | `"kml"` |
 | split | If `true`, split tracks by folders with start/end placemarks and track line. Default=`false`. | boolean | `false` |
@@ -243,7 +244,8 @@ Gets track points for the specified track ID, tracker and time period.
 | to | To date/time. Specified date must be after "from" date. | [date/time](../../../getting-started.md#datetime-formats) | "2020-09-23 06:24:00" |
 | track_id | Optional. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned. | int | 234567 |
 | include_gsm_lbs | Optional, default=`true`. If `false` && track_id not specified, GSM LBS points will be filtered out. | boolean | true |
-| point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000. | int | 3000 |
+| simplify | Optional. If `true` the returned track will be simplified. Default=`true`. | boolean | `true` |
+| point_limit | Optional. If specified and `simplify=true`, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. It is not a hard limit, returned track may contain more points.| int | `300` |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. If `false` a response will contain parking points. | boolean | false |
 
 #### example

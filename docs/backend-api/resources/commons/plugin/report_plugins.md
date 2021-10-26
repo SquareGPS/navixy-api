@@ -632,12 +632,12 @@ Plugin-specific parameters:
 ```json
 {
   "harsh_driving_penalties":  {
-    "harshAcceleration":5,
-    "harshBraking":5,
-    "harshTurn":5,
-    "harshAccelerationNTurn":12,
-    "harshBrakingNTurn":12,
-    "harshQuickLaneChange":12
+    "harshAcceleration": 5,
+    "harshBraking": 5,
+    "harshTurn": 5,
+    "harshAccelerationNTurn": 12,
+    "harshBrakingNTurn": 12,
+    "harshQuickLaneChange": 12
   }
 }
 ```
@@ -647,10 +647,10 @@ Plugin-specific parameters:
 ```json
 {
   "speeding_penalties": {
-    "10":2,
-    "20":10,
-    "30":25,
-    "50":75}
+    "10": 2,
+    "20": 10,
+    "30": 25,
+    "50": 75}
 }
 ```
 
@@ -668,10 +668,10 @@ plugin-specific parameters:
 
 | name | description | type
 |------|-------------|------
-| show_seconds | If true, time values in report should have format with seconds. Default is **false**. | boolean
-| show_tags | If true, tags fields will be added to the report. Default is **false**. | boolean
-| min_minutes_in_zone | Minimum time in zone (geofence). Default is **5**. | int, min value 1
-| zone_ids | IDs of user zones, required, min size 1, max size 30ю | list of ints |
+| show_seconds | If true, time values in report should have format with seconds. Default is `false`. | boolean
+| show_tags | If true, tags fields will be added to the report. Default is `false`. | boolean
+| min_minutes_in_zone | Minimum time in zone (geofence). Default is `5`. | int, min value 1
+| zone_ids | IDs of user zones, required, min size 1, max size 30 | list of ints |
 
 <hr>
 
@@ -685,9 +685,9 @@ plugin-specific parameters:
 
 | name | description | type
 |------|-------------|------
-| fetch_places_by_employees | If true, report will be built for places that are related to selected trackers via custom fields. Cannot be used in conjunction with *place_ids* | boolean
+| fetch_places_by_employees | If true, report will be built for places that are related to selected trackers via custom fields. Cannot be used in conjunction with `place_ids` | boolean
 | hide_charts | | boolean
-| min_minutes_in_place | Minimum time in spent in place. Minimum value is 1, default is **5**. | int
+| min_minutes_in_place | Minimum time in spent in place. Minimum value is 1, default is `5` | int
 | place_ids | IDs of user's POI. Min size 1, max size 30 | list of ints |
 | show_mileage | | boolean
 | show_not_visited_places | | boolean

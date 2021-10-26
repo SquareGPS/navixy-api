@@ -41,7 +41,8 @@ API calls on work with users in the admin panel.
     "balance" : 10.01,
     "bonus": 0,
     "creation_date" : "2021-03-01 13:00:00",
-	"trackers_count": 10
+	"trackers_count": 10,
+    "comment": "about user"
 }
 ```
 
@@ -75,6 +76,7 @@ Next fields are read-only, they should not be used in `user/update` and `user/cr
 * `bonus` - double. User bonus balance.
 * `creation_date` - [date/time](../../backend-api/getting-started.md#data-types). Date and time when user created, in UTC.
 * `trackers_count` - user trackers count.
+* `comment` - comment about user (when creating and editing, the field must be separate from this object).
 
 <hr>
 
@@ -199,12 +201,13 @@ Creates a new user.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| user | [User object](#user-object-structure) without the "id", "dealer_id" and read-only fields. | JSON object |
+| user | [User object](#user-object-structure) without the `id`, `dealer_id`, `comment` and read-only fields. | JSON object |
 | time_zone |	User timezone. | string |
 | locale | User locale. | string |
 | password | User password, 6 to 20 printable characters. | string |
 | discount | [Discount object](#discount-object-structure). | JSON object |
 | default_tariff_id | Optional. ID of a default tariff plan for user's trackers |  int |
+| `comment` |	Comment | String, max length 255, only printable characters |
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
@@ -215,7 +218,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
     ```shell
     curl -X POST '{{ extra.api_example_url }}panel/user/create' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"activated": true, "verified": true, "login": "user@test.com", "first_name": "John", "middle_name": "William", "last_name": "Smith", "legal_name": "E. Biasi GmbH", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "okpo_code": "93281776", "iec": "773101001"}, "time_zone": "Europe/Moscow", "locale": "en_US", "password": "12@14Y$", "discount": {"value": 5.5, "min_trackers": 10, "end_date": null, "strategy": "sum_with_progressive"}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"activated": true, "verified": true, "login": "user@test.com", "first_name": "John", "middle_name": "William", "last_name": "Smith", "legal_name": "E. Biasi GmbH", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "okpo_code": "93281776", "iec": "773101001"}, "time_zone": "Europe/Moscow", "locale": "en_US", "password": "12@14Y$", "discount": {"value": 5.5, "min_trackers": 10, "end_date": null, "strategy": "sum_with_progressive"}, "comment": "about user"}'
     ```
 
 #### response
@@ -363,7 +366,8 @@ entities will be returned only if filter string is contained within one of the f
       "balance" : 10.01,
       "bonus": 0,
       "creation_date" : "2021-03-01 13:00:00",
-      "trackers_count": 10
+      "trackers_count": 10,
+      "comment": "about user"
     }],
     "count" : 1
 }
@@ -440,7 +444,8 @@ Returns user info by its id.
         "balance" : 10.01,
         "bonus": 0,
         "creation_date" : "2021-03-01 13:00:00",
-        "trackers_count": 10
+        "trackers_count": 10,
+        "comment": "about user"
     },
     "discount": {
         "value": 5.5,
@@ -474,9 +479,10 @@ this field will not be changed.
 
 | name | description | type|
 | :------ | :------ | :----- |
-| user | [User object](#user-object-structure) without read-only fields. | JSON object |
+| user | [User object](#user-object-structure) without `comment` and read-only fields. | JSON object |
 | discount | [Discount object](#discount-object-structure). | JSON object |
 | default_tariff_id | Optional. ID of a default tariff plan for user's trackers | int |
+| `comment` | Comment | String, max length 255, only printable characters |
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
@@ -487,7 +493,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
     ```shell
     curl -X POST '{{ extra.api_example_url }}panel/user/update' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"dealer_id": 5001, "activated": true, "verified": true, "login": "user@test.com", "first_name": "John", "middle_name": "William", "last_name": "Smith", "legal_name": "E. Biasi GmbH", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "okpo_code": "93281776", "iec": "773101001", "id": 38935}, "discount": {"value": 5.5, "min_trackers": 10, "end_date": null, "strategy": "sum_with_progressive"}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"dealer_id": 5001, "activated": true, "verified": true, "login": "user@test.com", "first_name": "John", "middle_name": "William", "last_name": "Smith", "legal_name": "E. Biasi GmbH", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "okpo_code": "93281776", "iec": "773101001", "id": 38935}, "discount": {"value": 5.5, "min_trackers": 10, "end_date": null, "strategy": "sum_with_progressive"}, "comment": "about user"}'
     ```
 
 #### response
@@ -669,7 +675,7 @@ Upload users from CSV or XLS file.
 
 CSV column separator is `;`. Columns header for CSV and XLS (headers with `*` is required):
  
-`Email address*;Password*;Status*;Legal status*;Surname*;Name*;Middle name;Phone number;Сomment;Country;Region;City;Street, address;Zip code;Legal name;Tax number;IEC;Registration country;Registration region;Registration city;Registration address;Registration zip code;Discount;End date of discount;Device limit`
+`Email address*;Password*;Status*;Legal status*;Surname*;Name*;Middle name;Phone number;Comment;Country;Region;City;Street, address;Zip code;Legal name;Tax number;IEC;Registration country;Registration region;Registration city;Registration address;Registration zip code;Discount;End date of discount;Device limit`
 
 For RU locale:
 

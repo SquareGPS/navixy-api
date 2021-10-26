@@ -91,7 +91,7 @@ object structure and API calls to interact with users.
      "progorod", "osm", or "locationiq".
     * `route_provider` - [enum](../../../getting-started.md#data-types). User's route provider. Can be "progorod", "google" or "osrm".
     * `time_zone` - [enum](../../../getting-started.md#data-types). User timezone name.
-    * `measurement_system` - [enum](../../../getting-started.md#data-types). User's measurement system "metric", "imperial" or "us".
+    * `measurement_system` - [enum](../../../getting-started.md#data-types). User's measurement system "metric", "imperial", "us", "metric_gal_us" or "nautical".
     * `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
     * `iec` - optional string. Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities.
     * `post_country` - string. Country part of user's post address.
