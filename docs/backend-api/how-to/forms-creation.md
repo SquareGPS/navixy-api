@@ -93,7 +93,7 @@ Or
 * Obtain a list of [check-ins](../resources/field_service/checkin.md#list) to get form_id we are interested in.
 * Use this form_id to [read](../resources/field_service/form/index.md#read) and [download](../resources/field_service/form/index.md#download) forms.
 
-To get counted information in the report format.
+#### To get counted information in the report format.
 
 * [Generate](../resources/commons/report/report_tracker.md#generate) a form completion report 
   with [plugin_id 70](../resources/commons/plugin/report_plugins.md#form-completion-statistics-report).   
