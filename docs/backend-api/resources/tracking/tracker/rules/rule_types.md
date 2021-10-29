@@ -126,7 +126,7 @@ A rule that triggers on task status changes.
 
 | name | description | type |
 | ------ | ------------- | ------ |
-| type | Default `type`: "work_status_change". | [enum](../../../../getting-started.md#data-types) |
+| type | Default `type`: "task_status_change". | [enum](../../../../getting-started.md#data-types) |
 
 #### extended parameters
 
