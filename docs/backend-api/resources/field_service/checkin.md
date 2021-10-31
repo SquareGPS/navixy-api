@@ -15,7 +15,7 @@ of the work done, or notify about a malfunction along with filled form describin
 
 Check-ins cannot be created using web API, so all actions are read-only.
 
-<hr>
+***
 
 ## Check-in object
 
@@ -78,7 +78,7 @@ Check-ins cannot be created using web API, so all actions are read-only.
 * `form_id` - int. An id of the form which was sent along with a check-in, can be null.
 * `form_label` - string. Label of the form which was sent along with a check-in, can be null.
 
-<hr>
+***
 
 ## API actions
 
@@ -157,7 +157,7 @@ Get check-in which id is equal to `checkin_id`.
 * 7 – Invalid parameters.
 * 204 – Entity not found – when the marker entry is not exists.
 
-<hr>
+***
 
 ### list
 
@@ -236,7 +236,7 @@ It's a set of sort options. Each option is a pair of field name and sorting dire
 doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
 
-<hr>
+***
 
 ### delete
 

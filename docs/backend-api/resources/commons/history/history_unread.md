@@ -7,7 +7,7 @@ description: Contains API calls to interact with unread history entries.
 
 Contains API calls to interact with unread history events.
 
-<hr>
+***
 
 ## API actions
 
@@ -85,7 +85,7 @@ Default and max limit is [history.maxLimit](../dealer.md).
 
 * 212 – Requested limit is too big (more [history.maxLimit](../dealer.md) config option).
 
-<hr>
+***
 
 ### count
 

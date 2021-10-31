@@ -8,7 +8,7 @@ description: API calls to assign and upload avatars. Avatars can't be changed th
 Avatars can't be changed through `/employee/update`, you must use either `assign` (to set avatar to one of preset icons),
 or `upload` (to upload your own image). 
 
-<hr>
+***
 
 ## API actions
 
@@ -54,7 +54,7 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 
 * 201 – Not found in the database - when employee/driver with `employee_id` not found.
 
-<hr>
+***
 
 ### upload
 

@@ -6,7 +6,7 @@ description: API calls for output control.
 
 API calls for output control. Some device models work with `set_all` and some with `set` calls.
 
-<hr>
+***
 
 ## API actions
 
@@ -49,7 +49,7 @@ Request to change the states of all digital outputs of the device. The device mu
  a different number of outputs.
 * 219 – Not allowed for clones of the device - if tracker is clone.
 
-<hr>
+***
 
 ### set
 

@@ -12,7 +12,7 @@ schedule checked and if there are tasks which start at this day, they are create
 Schedule entries are very similar to tasks, main difference is that `from` and `to` containing specific date and time 
 replaced with `from_time`, `duration` and `parameters`.
 
-<hr>
+***
 
 ## Task schedule entry object
 
@@ -58,7 +58,7 @@ replaced with `from_time`, `duration` and `parameters`.
 * `tags` - int array. List of tag ids.
 * `form_template_id` - int. Form template id. Nullable.
 
-<hr>
+***
 
 ## Route schedule entry
 
@@ -81,7 +81,7 @@ replaced with `from_time`, `duration` and `parameters`.
 * `tracker_id` - int. An id of the tracker to which all generated tasks assigned. Nullable.
 * `parameters` - schedule parameters can be "weekdays" or "month_days". Described below.
 
-<hr>
+***
 
 ## Checkpoint schedule entry
 
@@ -148,7 +148,7 @@ replaced with `from_time`, `duration` and `parameters`.
 
     * `month_days` - int array. Days of month on which tasks will be created (1..31).
 
-<hr>
+***
 
 ## API actions
 
@@ -194,7 +194,7 @@ Creates new task schedule entry.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
-<hr>
+***
 
 ### delete
 
@@ -234,7 +234,7 @@ Delete task schedule with the specified id.
 
 * 201 – Not found in the database - if there is no task schedule with such an id.
 
-<hr>
+***
 
 ### list
 
@@ -300,7 +300,7 @@ Also this call returns all unassigned task schedules.
 
 [General](../../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### read
 
@@ -376,7 +376,7 @@ Gets task, route or checkpoint schedule by specified id.
 
 [General](../../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### update
 

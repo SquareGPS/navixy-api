@@ -7,7 +7,11 @@ description: Contains a call to prolong user session.
 
 Contains a call to prolong user session.
 
-<hr>
+!!! warning "Session hash is deprecated"
+    To work with the API, it is necessary to use the API key, not the user's session hash.
+    Work with API through the user's session is deprecated and will be disabled in the future.
+
+***
 
 ## API actions
 

@@ -10,7 +10,7 @@ Specific portlets that are used for models of three device manufacturers:
 * Guard mode for Yatut.
 * Harsh behavior for Suntech.
 
-<hr>
+***
 
 ### engine_control_atrack
 
@@ -34,7 +34,7 @@ default=12800 mV.
 * `off_duration_seconds` - duration in seconds that must elapse before the engine state change accepted. 
 Min=0, max=600, default=5 seconds.
 
-<hr>
+***
 
 ### guard_mode_yatut
 
@@ -66,7 +66,7 @@ for `motion_sensor_mode` in double_period.
 * `perimeter_mode` - [enum](../../../../../getting-started.md#data-types). Can be "off" | "once_triggering" | "permanent" | "point_displacement". Default="off".
 * `perimeter_diameter` - int. Min=1, max=999, default=1 kilometer. Required for `perimeter_mode` != off.
 
-<hr>
+***
 
 ### harsh_behavior_suntech
 

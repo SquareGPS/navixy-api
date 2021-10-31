@@ -7,7 +7,7 @@ description: Contains API calls to interact with push token.
 
 Contains API calls to interact with push token.
 
-<hr>
+***
 
 ## API actions
 
@@ -62,7 +62,7 @@ Prepended with minus and delimited with comma list means that all categories all
 
 * [General](../../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### delete
 

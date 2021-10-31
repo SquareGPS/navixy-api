@@ -7,7 +7,7 @@ description: API calls to read and update panel's service settings.
 
 API calls to read and update panel's service settings.
 
-<hr>
+***
 
 ## Service settings object
 
@@ -100,7 +100,7 @@ API calls to read and update panel's service settings.
 * `default_user_time_zone` - string. [Time zone id](../../timezone.md) for new users to be created via [user/upload](../../user.md#upload).
   Also, this zone will be selected by default when creating a new user in the Navixy Admin Panel.
 
-<hr>
+***
 
 ## API actions
 
@@ -190,7 +190,7 @@ Only session `hash`.
 
 [General](../../../../backend-api/getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### update
 

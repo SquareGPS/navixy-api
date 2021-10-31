@@ -12,7 +12,7 @@ Each API resource semantically corresponds to some entity, for example:
 geofences, rules, objects, etc. The API calls for CRUD and other operations 
 with these entities have similar names regardless the resource used: list, read, create, delete.
 
-<hr>
+***
 
 ## Standard workflow (example)
 
@@ -28,7 +28,7 @@ common example — requesting the track points data:
 In other words, to start working with API, the developers should have API call 
 description (as provided herein), and know user login and password.
 
-<hr>
+***
 
 ## API base URL
 
@@ -43,7 +43,7 @@ API call on the European Navixy ServerMate, you should use the URL:
 
     https://api.eu.navixy.com/v2/user/auth
 
-<hr>
+***
 
 ## API calls format
 
@@ -95,7 +95,7 @@ Typical actions:
 *   `update` – update one entity by ID
 *   `delete` – delete one entity by ID
 
-<hr>
+***
 
 ### Request and response format
 
@@ -183,7 +183,7 @@ Or error if hash is wrong:
 }
 ```
 
-<hr>
+***
 
 ### HTTP codes
 
@@ -191,7 +191,7 @@ If `success` is `true`, HTTP code is always `200 OK` (unless otherwise stated).
 If there is an error, HTTP code is `400 BAD REQUEST` (may vary depending on error type) 
 (see [error](#error-codes)).
 
-<hr>
+***
 
 ### Authorization and access levels
 
@@ -228,7 +228,7 @@ Session hash can be obtained via `user/auth` API call:
     [api_base_url]/user/auth?login=demo&password=demo
     ```
 
-<hr>
+***
 
 ### Data types
 
@@ -255,7 +255,7 @@ Session hash can be obtained via `user/auth` API call:
     country code, e.g. `en_US` or `ru`. User interface support only language codes: 
     `ru, en, es, ar, de, pt, ro and uk`.
     
-<hr>
+***
 
 #### Date/time formats
 
@@ -341,7 +341,7 @@ In the event of error occurs, the response will be in the following format:
 ```
 where `code` is one on the [error codes](#error-codes).
 
-<hr>
+***
 
 #### Error codes
 

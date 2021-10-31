@@ -7,7 +7,7 @@ description: Tariff object description and API call to get the list of device's 
 
 Tariff object description and API call to get the list of device's tariffs available to user.
 
-<hr>
+***
 
 ## Tariff object
 
@@ -50,7 +50,7 @@ Tariff object description and API call to get the list of device's tariffs avail
 * `map_filter` - object with available maps for the user.
     * `exclusion` - boolean. If `true` maps from `values` will be not active, `false` - maps from values will be active.
 
-<hr>
+***
 
 ## API actions
 

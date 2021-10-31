@@ -8,7 +8,7 @@ description: User reports allow acquiring all-round statistics and analytics. Th
 User reports allow acquiring all-round statistics and analytics. The summary data can be shown in various perspectives,
 in tables and graphs.Contains API calls to interact with tracker reports.
 
-<hr>
+***
 
 ## API actions
 
@@ -54,7 +54,7 @@ Deletes a report from the database.
 
 * 101 – In demo mode this function disabled.
 
-<hr>
+***
 
 ### download
 
@@ -95,7 +95,7 @@ A report rendered to file (standard file download).
 * 204 - Entity not found - if report with the specified id not found.
 * 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
-<hr>
+***
 
 ### generate
 
@@ -184,7 +184,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 * 222 - Plugin not found - when specified report plugin not found.
 * 236 - Feature unavailable due to tariff restrictions - when one of the trackers has tariff with disabled reports ("has_reports" is false).
 
-<hr>
+***
 
 ### list
 
@@ -269,7 +269,7 @@ Returns info about all available generated or in-progress reports.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### retrieve
 
@@ -758,7 +758,7 @@ Retrieves a generated report as JSON.
 * 204 - Entity not found - if report with the specified id not found.
 * 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
-<hr>
+***
 
 ### status
 

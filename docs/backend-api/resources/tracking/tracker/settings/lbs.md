@@ -10,7 +10,7 @@ and settings tab in the UI. LBS (Location-based service) technology allows to de
 standard location services such as GPS, GLONASS, Galileo or Beidou.
 LBS locates the position using cellular base stations or Wi-Fi access points.
 
-<hr>
+***
 
 ## API actions
 
@@ -58,7 +58,7 @@ Gets LBS settings for the specified tracker.
 * 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-<hr>
+***
 
 ### update
 

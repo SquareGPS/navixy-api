@@ -7,7 +7,7 @@ description: API calls on getting the panel's hash, getting permissions and logo
 
 API calls on getting the panel's hash, getting permissions and logout.
 
-<hr>
+***
 
 ## API actions
 
@@ -112,7 +112,7 @@ Does not require session hash and does not need any permissions. Auths dealer in
 * 11 - Access denied - if dealer blocked.
 * 12 - Dealer not found.
 
-<hr>
+***
 
 ### get_permissions
 
@@ -210,7 +210,7 @@ Only session `hash`.
 
 [General](../../backend-api/getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### logout
 

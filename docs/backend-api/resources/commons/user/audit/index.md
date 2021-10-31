@@ -7,7 +7,7 @@ description: Contains user audit check-in method that calls when user opens UI.
 
 Contains user audit check-in method that calls when user opens UI.
 
-<hr>
+***
 
 ## API actions
 

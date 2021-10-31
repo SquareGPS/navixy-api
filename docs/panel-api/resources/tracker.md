@@ -7,7 +7,7 @@ description: API calls to interact with trackers in the admin panel.
 
 API calls to interact with trackers in the admin panel.
 
-<hr>
+***
 
 ## Tracker object
 
@@ -64,7 +64,7 @@ API calls to interact with trackers in the admin panel.
     * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
     * `corrupted` - boolean. `true` when tracker has been corrupted using /tracker/corrupt, and not passed when it is not corrupted.
 
-<hr>
+***
 
 ## API actions
 
@@ -123,7 +123,7 @@ Provides information about trackers which were considered "active" by our PaaS b
 
 * 211 – Requested time span is too big.
 
-<hr>
+***
 
 ### bundle/assign
 
@@ -171,7 +171,7 @@ Assign bundle to specified ICCID.
 * 247 – Entity already exists - if ICCID is already exist.
 * 250 – Not allowed for deleted devices - if SIM card deleted.
 
-<hr>
+***
 
 ### bundle/order/assign
 
@@ -214,7 +214,7 @@ Assigns bundle to specified order ID.
 
 * 201 – Not found in the database if bundle not found.
 
-<hr>
+***
 
 ### bundle/import
 
@@ -260,7 +260,7 @@ Adds multiple bundles at once.
 * 247 – Entity already exists - if one of IMEIs is already exist.
 * 204 – Entity not found - if there is no equipment with specified equip_id.
 
-<hr>
+***
 
 ### bundle/list
 
@@ -313,7 +313,7 @@ the following fields: `id`, `imei`, `model_code`, `iccid`, `assign_time`.
 
 * 201 – Not found in the database - if `user_id` or `tariff_id` specified but was not found.
 
-<hr>
+***
 
 ### bundle/read
 
@@ -356,7 +356,7 @@ Returns the bundle object with the specified imei.
 
 * 201 – Not found in the database - if bundle not found.
 
-<hr>
+***
 
 ### bundle/update
 
@@ -400,7 +400,7 @@ Assign specified equipment to bundle.
 * 201 – Not found in the database - if bundle not found.
 * 204 – Entity not found - if there is no equipment with specified `equip_id`.
 
-<hr>
+***
 
 ### clone
 
@@ -451,7 +451,7 @@ Creates a clone of the existing non-clone tracker.
 * 247 - Entity already exists – if destination user already has a clone of this tracker.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-<hr>
+***
 
 ### console/connect
 
@@ -534,7 +534,7 @@ JSON objects come in the next text frames:
 * 201 - Not found in the database – when tracker with such `device_id` not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-<hr>
+***
 
 ### corrupt
 
@@ -592,7 +592,7 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 
 * `list` - int array. Clones tracker_ids list.
 
-<hr>
+***
 
 ### batch_delete_clones
 
@@ -659,7 +659,7 @@ Example:
 
 * [Standard errors](../../backend-api/getting-started.md#error-codes).
 
-<hr>
+***
 
 ### delete_clone
 
@@ -733,7 +733,7 @@ or
 
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-<hr>
+***
 
 ### list
 
@@ -814,7 +814,7 @@ If `filter` is used, entities will be returned only if filter string contain one
 
 * 201 – Not found in the database - if specified `user_id` or `tariff_id` not found.
 
-<hr>
+***
 
 ### move
 
@@ -863,7 +863,7 @@ Moves the existing non-clone tracker to another user belonging to the same deale
 * 247 - Entity already exists – when destination user already has a clone of this tracker.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-<hr>
+***
 
 ### read
 
@@ -934,7 +934,7 @@ Returns the tracker object with the specified id.
 * 201 - Not found in the database – when tracker not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-<hr>
+***
 
 ### register_entry
 
@@ -984,7 +984,7 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
 * 214 - Requested operation or parameters are not supported by the device – when device does not have GSM module.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-<hr>
+***
 
 ### settings/update
 
@@ -1030,7 +1030,7 @@ Updates tracker settings.
 * 201 - Not found in the database – when tracker not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-<hr>
+***
 
 ### source/update
 
@@ -1074,7 +1074,7 @@ Updates source settings. Can block and unblock a device.
 * 201 - Not found in the database – when tracker not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-<hr>
+***
 
 ### tariff/change
 
@@ -1194,7 +1194,7 @@ else (tariff is not active: tariff_end = true)
 
 All dates according to UTC time.
 
-<hr>
+***
 
 ### raw_command/send
 

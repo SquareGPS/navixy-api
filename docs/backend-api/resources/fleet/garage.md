@@ -8,7 +8,7 @@ description: Contains garage object and API calls to interact with it.
 Contains garage object and API calls to interact with it. Depot (garage object) contains name, address, name of the mechanic, name
 of the dispatcher and others. This data can be used for more convenient and efficient maintenance and task management.
 
-<hr>
+***
 
 ## Garage object
 
@@ -30,7 +30,7 @@ of the dispatcher and others. This data can be used for more convenient and effi
 * `id` - int. Depot id.
 * `location` - location object. Valid location or null.
 
-<hr>
+***
 
 ## API actions
 
@@ -80,7 +80,7 @@ Gets all depots belonging to user.
 
 [General](../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### create
 
@@ -119,7 +119,7 @@ Creates a new depot.
 
 [General](../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### update
 
@@ -153,7 +153,7 @@ Updates existing depot with the specified id.
 
 * 201 – Not found in the database - if there is no depot with such an id.
 
-<hr>
+***
 
 ### delete
 

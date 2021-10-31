@@ -11,7 +11,7 @@ The user interface settings intended for storing settings of client applications
 One can imagine that this works similarly to the browser cache/local storage mechanism. The feature is that long-term 
 storage of these settings provided but not guaranteed - when the quota exceeded, data could be deleted.
 
-<hr>
+***
 
 ## API actions
 
@@ -62,7 +62,7 @@ When nonexistent key provided:
 
 * [General](../../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### update
 

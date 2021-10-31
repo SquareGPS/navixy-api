@@ -40,7 +40,7 @@ You can disable the current hash with the [following call](../resources/commons/
 
     {{ extra.api_example_url }}/user/logout?hash=your_hash
 
-<hr>
+***
 
 ## Using hash
 

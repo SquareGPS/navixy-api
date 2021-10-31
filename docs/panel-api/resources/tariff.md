@@ -7,7 +7,7 @@ description: API calls for interaction with tariff plans.
 
 API calls for interaction with tariff plans.
 
-<hr>
+***
 
 ## Tariff object
 
@@ -56,7 +56,7 @@ API calls for interaction with tariff plans.
     * `phone_call` - double. Phone voice notification sms price.
     * `traffic` - double. Traffic price per 1 MB.
   
-<hr>
+***
 
 ## API actions
 
@@ -101,7 +101,7 @@ Creates a new tariff.
 * 214 – Requested operation or parameters are not supported by the device - when `device_type` does not support specified tariff `type`.
 * 244 – Duplicate entity label - if there's another dealer's tariff with the same `name`.
 
-<hr>
+***
 
 ### list
 
@@ -180,7 +180,7 @@ If "filter" is used, entities will be returned only if filter string contains on
 * `wholesale_service_prices` - JSON object. Wholesale prices for all services (what dealer will pay per sms, per call, per mb).
 * `count` - int. Total number of records (ignoring offset and limit).
 
-<hr>
+***
 
 ### read
 
@@ -244,7 +244,7 @@ Returns tariff with specified id.
 
 * 201 – Not found in the database - if specified tariff does not exist or belongs to different dealer.
 
-<hr>
+***
 
 ### update
 
@@ -282,7 +282,7 @@ Updates existing tariff.
 * 214 – Requested operation or parameters are not supported by the device when `device_type` does not support specified tariff `type`.
 * 244 – Duplicate entity label - if there's another dealer's tariff with the same `name`.
 
-<hr>
+***
 
 ## defaults object
 
@@ -300,7 +300,7 @@ Updates existing tariff.
 * `free_days` - int. Amount of free (without tariff fee) days after device registration.
 * `free_days_device_limit` - int. A maximum number of activated user's devices with free period (null means no limit).
 
-<hr>
+***
 
 ### defaults/read
 
@@ -352,7 +352,7 @@ Only session `hash`.
 
 [General](../../backend-api/getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### defaults/update
 

@@ -6,7 +6,7 @@ description: API calls to get and update LED state of the tracker.
 
 API calls to get and update LED state of the tracker. LED switch should be available for the device.
 
-<hr>
+***
 
 ## API actions
 
@@ -55,7 +55,7 @@ Gets LED status for the specified tracker.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
 
-<hr>
+***
 
 ### update
 

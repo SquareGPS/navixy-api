@@ -7,7 +7,7 @@ description: All actions to retrieve and manipulate points of the geofence.
 
 All actions to retrieve and manipulate points of the geofence. Note that `circle` geofence type can't have points.
 
-<hr>
+***
 
 ## Point object structure
 
@@ -23,7 +23,7 @@ All actions to retrieve and manipulate points of the geofence. Note that `circle
 * `lng` - float. Point latitude.
 * `node` - boolean. Will be `true` if this point is a route node.
 
-<hr>
+***
 
 ## API actions
 
@@ -76,7 +76,7 @@ Get points of user's geofence with `zone_id`.
 * 201 - Not found in the database – if geofence with the specified ID cannot be found or belongs to another user.
 * 230 - Not supported for this entity type – if geofence cannot have any points associated with it (e.g. if geofence is circle).
 
-<hr>
+***
 
 ### update
 

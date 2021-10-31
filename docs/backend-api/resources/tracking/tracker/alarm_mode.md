@@ -6,7 +6,7 @@ description: Contains API calls to read and set alarm mode of device.
 
 Contains API calls to read and set alarm mode of device.
 
-<hr>
+***
 
 ## API actions
 
@@ -55,7 +55,7 @@ Gets the state of alarm mode of device.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
 
-<hr>
+***
 
 ### set
 

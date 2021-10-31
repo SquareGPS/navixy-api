@@ -8,7 +8,7 @@ description: Tag is a label, or a key word that is used for a quick and easy sea
 Tag is a label, or a key word that is used for a quick and easy search. They help find the needed places, geofences, 
 employees, tasks, trackers, and vehicles. Contains tag object and API calls to interact with it.
 
-<hr>
+***
 
 ## Tag object
 
@@ -36,7 +36,7 @@ employees, tasks, trackers, and vehicles. Contains tag object and API calls to i
 * zone
 * tracker
 
-<hr>
+***
 
 ## API actions
 
@@ -85,7 +85,7 @@ Creates a new tag.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### delete
 
@@ -127,7 +127,7 @@ Deletes tag with the specified id.
 
 * 201 – Not found in the database - if there is no tag with such an id.
 
-<hr>
+***
 
 ### list
 
@@ -173,7 +173,7 @@ Gets all tags belonging to user with optional filtering.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### search
 
@@ -231,7 +231,7 @@ Search entities that bound with all of specified tags.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### update
 

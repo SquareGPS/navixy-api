@@ -7,7 +7,7 @@ description: Sub-user session actions to obtain its hash
 
 Sub-user session actions to obtain its hash.
 
-<hr>
+***
 
 ## API actions
 

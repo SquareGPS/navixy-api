@@ -16,7 +16,7 @@ This field contains `type`, which identifies a certain kind of settings. (For ex
 
 Such control assumes tracker special settings
 
-<hr>
+***
 
 ## API actions
 
@@ -919,7 +919,7 @@ defined by this parameter. Can be 1 - 255.
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 * 214 – Requested operation or parameters are not supported by the device.
 
-<hr>
+***
 
 ### update
 

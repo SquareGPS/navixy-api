@@ -7,7 +7,7 @@ description: API calls for interaction with images that used for branding of the
 
 API calls for interaction with images that used for branding of the panel.
 
-<hr>
+***
 
 ## API actions
 
@@ -53,7 +53,7 @@ Deletes an image of specified `type`.
 
 * 201 - Not found in the database - when there are no settings for a dealer in the db.
 
-<hr>
+***
 
 ### upload
 

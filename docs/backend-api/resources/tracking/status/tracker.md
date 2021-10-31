@@ -7,7 +7,7 @@ description: This resource contains methods to read and assign working status of
 
 This resource contains methods to read and assign working status of a particular tracker.
 
-<hr>
+***
 
 ## API actions
 
@@ -81,7 +81,7 @@ Assign a working status to the tracker.
 available.
 * 263 - No change needed, old and new values are the same – if new status is equal to current status of tracker.
 
-<hr>
+***
 
 ### list
 
@@ -163,7 +163,7 @@ Gets current assigned statuses for the specified trackers.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature
  available.
 
-<hr>
+***
 
 ### read
 

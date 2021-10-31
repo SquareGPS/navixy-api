@@ -7,7 +7,7 @@ description: API calls for to interact with unconfirmed SMS commands in the queu
 
 API calls for to interact with unconfirmed SMS commands in the queue of the specified tracker.
 
-<hr>
+***
 
 ## API actions
 
@@ -55,7 +55,7 @@ Gets number of commands in queue for the specified tracker.
 * 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-<hr>
+***
 
 ### reset
 

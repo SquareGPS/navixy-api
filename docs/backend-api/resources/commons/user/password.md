@@ -8,7 +8,7 @@ description: Contains API calls to change and set users' passwords.
 Contains API calls to change and set users' passwords.
 
 
-<hr>
+***
 
 ## API actions
 
@@ -47,7 +47,7 @@ Changes password of user with the provided session hash (it is contained in a pa
 
 * 101 – In demo mode this function disabled - if specified session hash belongs to demo user.
 
-<hr>
+***
 
 ### set
 

@@ -7,7 +7,7 @@ description: Contains list method to get tracker's events.
 
 Contains list method to get tracker's events.
 
-<hr>
+***
 
 ## API actions
 

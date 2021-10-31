@@ -7,7 +7,7 @@ description: API calls to work with chat module.
 API calls to work with chat module. A chat module allows remote employees and supervisors quickly exchange their 
 ideas and feedback, as well as helps employers to boost team culture. This can prove to be a useful communication tool.
 
-<hr>
+***
 
 ## API actions
 
@@ -81,7 +81,7 @@ Where **message** object is:
 * 214 – Requested operation or parameters are not supported by the device.
 * 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff without "chat" feature).
 
-<hr>
+***
 
 ### mark_read_all
 
@@ -119,7 +119,7 @@ Marks all incoming chat messages as read for all or for given user trackers.
 
 * 201 – Not found in the database.
 
-<hr>
+***
 
 ### mark_read
 
@@ -160,7 +160,7 @@ Use only one parameter.
 
 * 201 – Not found in the database.
 
-<hr>
+***
 
 ### send
 
@@ -201,7 +201,7 @@ Sends chat message to a specified tracker.
 * 214 – Requested operation or parameters are not supported by the device.
 * 236 – Feature unavailable due to tariff restrictions - if one of the trackers has tariff with disabled reports ("has_reports" is `false`).
 
-<hr>
+***
 
 ### broadcast
 
@@ -242,7 +242,7 @@ Sends chat message to specified trackers.
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
 
-<hr>
+***
 
 ### updated/list
 
@@ -284,7 +284,7 @@ Gets date-times of last messages in chat of trackers.
 doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
 
-<hr>
+***
 
 ### unread/count
 

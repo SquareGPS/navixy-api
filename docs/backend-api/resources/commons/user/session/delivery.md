@@ -9,7 +9,7 @@ description: Calls to work with "delivery" type sessions. Those are special sess
 Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
 tracking functionality into external systems.
 
-<hr>
+***
 
 ## API actions
 
@@ -58,7 +58,7 @@ Only session `hash`.
 * 101 - In demo mode this function disabled – current session is demo but weblocator session already exists.
 * 236 – Feature unavailable due to tariff restrictions.
 
-<hr>
+***
 
 ### read
 

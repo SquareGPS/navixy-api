@@ -7,7 +7,7 @@ description: API call for getting the route to destination point using OSRM API.
 
 API call for getting the route to destination point using [OSRM API](https://github.com/Project-OSRM/osrm-backend/wiki/Server-api#requesting-routes).
 
-<hr>
+***
 
 ## API actions
 

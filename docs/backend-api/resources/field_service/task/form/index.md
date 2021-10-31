@@ -15,7 +15,7 @@ For `<form>` object description, see [forms](../../form/index.md).
 
 Contains API calls related to forms associated with tasks.
 
-<hr>
+***
 
 ## API actions
 
@@ -64,7 +64,7 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 * 247 – Entity already exists - if task already has form attached to it.
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
-<hr>
+***
 
 ### delete
 
@@ -109,7 +109,7 @@ All form data will be lost!
  attached.
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
-<hr>
+***
 
 ### download
 
@@ -146,7 +146,7 @@ A form rendered to file (standard file download).
 
 * 201 – Not found in the database - if task does not exist or does not have attached form.
 
-<hr>
+***
 
 ### list
 
@@ -305,7 +305,7 @@ where period_object is:
 * 204 – Not found - if there is no form template with such id belonging to authorized user.
 * [General](../../../../getting-started.md#error-codes) types of errors.
 
-<hr>
+***
 
 ### read
 

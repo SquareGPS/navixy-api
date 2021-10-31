@@ -7,7 +7,7 @@ description: Contains history entry object description and API calls to interact
 
 Contains history entry object description and API calls to interact with it.
 
-<hr>
+***
 
 ## Tracker history entry
 
@@ -68,7 +68,7 @@ Contains history entry object description and API calls to interact with it.
 
 Date/time type described in [data types description section](../../../getting-started.md#data-types).
 
-<hr>
+***
 
 ## API actions
 
@@ -142,7 +142,7 @@ Returns history entry with the specified id.
 
 * 201 – Not found in the database - when there are no history entries with that id.
 
-<hr>
+***
 
 ### mark_read
 
@@ -180,7 +180,7 @@ Marks history entry as read by `id` (see: [Tracker history entry](#tracker-histo
 
 * 201 – Not found in the database - when there are no history entries with that id.
 
-<hr>
+***
 
 ### mark_read_all
 

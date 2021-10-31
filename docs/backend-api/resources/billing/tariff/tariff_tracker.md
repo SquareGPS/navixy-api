@@ -23,7 +23,7 @@ User's **effective dealer** is
 1. User's dealer if its **dealer_id** = **defaultDealerId** (config option) or **dogovor_type** = 'paas'.
 2. Parent of user's dealer otherwise.
 
-<hr>
+***
 
 ## API actions
 
@@ -72,7 +72,7 @@ Changes tariff of tracker (with `tracker_id`) to new tariff (with `tariff_id`).
 * 239 – New tariff doesn't exist.
 * 240 - Not allowed changing tariff too frequently – tariff last changed less or equal to 30 days (**tariff.freeze.period** config option).
 
-<hr>
+***
 
 ### list
 
