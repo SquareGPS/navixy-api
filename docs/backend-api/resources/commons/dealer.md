@@ -7,7 +7,7 @@ description: Contains API call to get dealer info and dealer-specific UI setting
 
 Contains API call to get dealer info and dealer-specific UI settings.
 
-<hr>
+***
 
 ## API actions
 

@@ -8,7 +8,7 @@ description: Contains driver journal entry object description and API calls to w
 Contains driver journal entry object description and API calls to work with it. Using the driver journal, you can monitor
 trips and categorize them by status to see the full picture of transport usage. Driver Entry is an already categorized trip.
 
-<hr>
+***
 
 ## Driver journal entry object
 
@@ -50,7 +50,7 @@ trips and categorize them by status to see the full picture of transport usage. 
 * `start_odometer` - nullable float. Odometer's value at the start.
 * `end_odometer` - nullable float. Odometer's value at the end.
 
-<hr>
+***
 
 ## API actions
 
@@ -130,7 +130,7 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### create
 
@@ -162,7 +162,7 @@ Creates driver journal entries.
 
 * [General](../../../getting-started.md#error-codes) types.
 
-<hr>
+***
 
 ### update
 
@@ -208,7 +208,7 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### delete
 
@@ -246,7 +246,7 @@ Deletes driver journal entries.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### download
 

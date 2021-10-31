@@ -21,7 +21,7 @@ NOTE: Sub-users cannot have any "exclusive" objects. Every tracker, rule, task, 
  still belongs to your account.
 The only exception is reporting system: every sub-user has its own reports pool and reports schedule.
 
-<hr>
+***
 
 ## Sub-user object structure
 
@@ -83,7 +83,7 @@ group with no privileges.
 * `creation_date` - [date/time](../../../getting-started.md#data-types). Date and time when sub-user was created. This field is read-only, it should not be
  used in subuser/update.
 
-<hr>
+***
 
 ## API actions
 
@@ -132,7 +132,7 @@ Deletes sub-user. This operation cannot be reversed.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 * 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
 
-<hr>
+***
 
 ### list
 
@@ -204,7 +204,7 @@ Sub-user object described [here](#sub-user-object-structure).
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 
-<hr>
+***
 
 ### register
 
@@ -248,7 +248,7 @@ Allows you to create sub-users associated to your master account.
 * 201 – Not found in the database – when specified security_group_id does not exist.
 * 206 – login already in use - if this login email already registered.
 
-<hr>
+***
 
 ### update
 

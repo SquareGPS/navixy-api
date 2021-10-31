@@ -9,7 +9,7 @@ API calls for reading and setting data transmission and operating modes of devic
 mode portlet in devices and settings tab in the UI. The list of settings can vary depending on model of the used tracker, 
 the principle of its work and its functionality. 
 
-<hr>
+***
 
 ## API actions
 
@@ -58,7 +58,7 @@ Returned fields may differ from model to model. See tracking profiles for more i
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device model has no tracking settings at all.
 
-<hr>
+***
 
 ### update
 

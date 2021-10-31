@@ -7,7 +7,7 @@ description: Particular report can be delivered to user's mailbox regularly. Con
 
 Particular report can be delivered to user's mailbox regularly. Contains report schedule object description and API calls to interact with it.
 
-<hr>
+***
 
 ## schedule_entry object:
 
@@ -58,7 +58,7 @@ Particular report can be delivered to user's mailbox regularly. Contains report 
 * `last_result`  object with last report creation result.
     * `id` - int. An id of generated report.
 
-<hr>
+***
 
 ## API actions
 
@@ -103,7 +103,7 @@ Creates a new report schedule entry.
 * 222 - Plugin not found - if specified report plugin not found.
 * 236 - Feature unavailable due to.
 
-<hr>
+***
 
 ### delete
 
@@ -145,7 +145,7 @@ Deletes report schedule with the specified id.
 
 * 201 - Not found in the database - if there is no schedule with specified id.
 
-<hr>
+***
 
 ### list
 
@@ -219,7 +219,7 @@ Only session `hash`.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### update
 

@@ -7,7 +7,7 @@ description: Contains API calls to health-check and send email.
 
 Contains API calls to health-check and send email.
 
-<hr>
+***
 
 ## API actions
 
@@ -47,7 +47,7 @@ Only session `hash`.
 
 * [General](../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### send_email
 

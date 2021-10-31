@@ -8,7 +8,7 @@ description: Contains status listing object and API calls to interact with worki
 Contains status listing object and API calls to interact with status listings. Status listings are lists of possible 
 statuses that can be assigned to trackers.
 
-<hr>
+***
 
 ## Status listing object structure
 
@@ -28,7 +28,7 @@ statuses that can be assigned to trackers.
 * `supervisor_controlled` - boolean. If `true` supervisors can change working status, e.g. using mobile monitoring app.
 * `entries` - int array. List of IDs of working statuses which belong to this list. Order matters, and is preserved.
 
-<hr>
+***
 
 ## API actions
 
@@ -73,7 +73,7 @@ Creates new empty working status list.
 available.
 * 268 - Over quota – if the user's quota for working status lists exceeded.
 
-<hr>
+***
 
 ### delete
 
@@ -115,7 +115,7 @@ Deletes working status list.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
 
-<hr>
+***
 
 ### list
 
@@ -163,7 +163,7 @@ Only session `hash`.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
 
-<hr>
+***
 
 ### update
 

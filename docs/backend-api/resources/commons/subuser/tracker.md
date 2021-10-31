@@ -7,7 +7,7 @@ description: Contains API calls to control which tracker is available to which s
 
 Contains API calls to control which tracker is available to which sub-user.
 
-<hr>
+***
 
 ## API actions
 
@@ -58,7 +58,7 @@ Gives access for sub-user to the specified trackers.
 * 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
 * 262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don't exist.
 
-<hr>
+***
 
 ### list
 
@@ -106,7 +106,7 @@ Gets a list of tracker ids to which this sub-user has access.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 * 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
 
-<hr>
+***
 
 ### unbind
 

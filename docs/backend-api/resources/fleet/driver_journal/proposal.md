@@ -8,7 +8,7 @@ description: Contains API call to get the list of driver journal proposal.
 Contains API call to get the list of driver journal proposal. Proposal objects - trips per specified period that could be
 used for driver journal entry creation.
 
-<hr>
+***
 
 ## API actions
 

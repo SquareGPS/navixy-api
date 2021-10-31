@@ -7,7 +7,7 @@ description: Contains group object structure and API calls to interact with them
 Contains group object structure and API calls to interact with them. Tracker group used to organize trackers in user 
 interface. Currently, its function is purely visual.
 
-<hr>
+***
 
 ## Group object structure:
 
@@ -23,7 +23,7 @@ interface. Currently, its function is purely visual.
 * `title` - string. User-specified group title, 1 to 60 printable characters, e.g. "Employees".
 * `color` - string. Group color in web format (without #), e.g. "FF6DDC". Determines the color of tracker markers on the map.
 
-<hr>
+***
 
 ## API actions
 
@@ -64,7 +64,7 @@ Assigns multiple trackers to the specified group.
 * 217 - List contains nonexistent entities – if one or more of tracker ids belong to nonexistent tracker 
 (or to a tracker belonging to different user).
 
-<hr>
+***
 
 ### create
 
@@ -110,7 +110,7 @@ Creates a new empty group.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### delete
 
@@ -151,7 +151,7 @@ assigned to default group (0).
 
 * 201 - Not found in the database – if no group found with the specified id (or group belongs to another user).
 
-<hr>
+***
 
 ### list
 
@@ -193,7 +193,7 @@ and is not returned by this API call.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### update
 

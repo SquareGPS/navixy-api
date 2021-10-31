@@ -11,7 +11,7 @@ an event happened inside the geofence.
 This document describes CRUD actions for geofences. Note that geofence points handled separately because they are 
 represented by big arrays of data.
 
-<hr>
+***
 
 ## Entity description
 
@@ -43,7 +43,7 @@ represented by big arrays of data.
 * `center` - location object. Location of circle center.
 * `tags` - int array. Array of tag IDs.
 
-<hr>
+***
 
 #### polygon:
 
@@ -64,7 +64,7 @@ represented by big arrays of data.
 * `color` - string. Geofence color in 3-byte RGB hex format.
 * `tags` - int array. Array of tag IDs.
 
-<hr>
+***
 
 #### sausage:
 
@@ -89,7 +89,7 @@ Represents all points within certain distance to the specified polyline.
 * `radius` - int. Polyline radius in meters.
 * `tags` - int array. Array of tag IDs.                 
 
-<hr>
+***
 
 ## API actions
 
@@ -192,7 +192,7 @@ For `batch` parameter:
 
 * 234 - Invalid data format.
 
-<hr>
+***
 
 ### create
 
@@ -237,7 +237,7 @@ Creates a new geofence.
  it (e.g. if geofence is circle).
 * 268 - Over quota –  if the user's quota for geofences exceeded.
 
-<hr>
+***
 
 ### delete
 
@@ -299,7 +299,7 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
 * `ids` - int array. List IDs of the rules which uses the specified geofence.
 
-<hr>
+***
 
 ### list
 
@@ -340,7 +340,7 @@ Gets all user geofences.
 
 * `list` - array of objects. Geofence objects without points field.
 
-<hr>
+***
 
 ### update
 
@@ -379,7 +379,7 @@ which type is "polygon".
 * 231 - Entity type mismatch – if type of the submitted geofence differs from type of the geofence currently stored in the 
 database.
 
-<hr>
+***
 
 ### upload
 
@@ -456,7 +456,7 @@ if `dry_run=false`:
 * 234 - Invalid data format.
 * 268 - Over quota – if the user's quota for geofences exceeded.
 
-<hr>
+***
 
 From `Placemark` with `Point` geometry will be created circle geofence with a radius=default_radius.
 
@@ -477,7 +477,7 @@ From `Placemark` with `Point` geometry will be created circle geofence with a ra
 </kml>
 ```
 
-<hr>
+***
 
 From `Placemark` with `LineString` geometry will be created route geofence with a radius=default_radius.
 
@@ -500,7 +500,7 @@ From `Placemark` with `LineString` geometry will be created route geofence with 
 </kml>
 ```
 
-<hr>
+***
 
 From `Placemark` with `Polygon` geometry will be created polygon geofence.
 Polygons with holes not supported. In that case only the outer boundary will be imported and the inner boundary, holes, 
@@ -531,7 +531,7 @@ ignored.
 </kml>
 ```
 
-<hr>
+***
 
 From `Placemark` with `MultiGeometry` geometry will be created several geofences.
 If `Placemark.name` defined it will be used as geofence name with respect of hierarchy of `Folder` and `Document`.

@@ -7,7 +7,7 @@ description: CRUD actions for user settings.
 
 CRUD actions for user settings.
 
-<hr>
+***
 
 ## settings object
 
@@ -49,7 +49,7 @@ CRUD actions for user settings.
 
 * `auto_overwrite` - boolean. If `true` new files will replace old ones when file storage is full. Default is `false`.
 
-<hr>
+***
 
 ## API actions
 
@@ -109,7 +109,7 @@ Only session `hash`.
 
 **required sub-user rights** for `balance_alert_settings` and `file_storage_settings` fields: `admin` (available only to master users).
 
-<hr>
+***
 
 ### update
 
@@ -150,7 +150,7 @@ Update current user's settings.
 
 * [General](../../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### file_storage/update
 

@@ -7,7 +7,7 @@ description: API calls to read and update notification settings.
 
 API calls to read and update notification settings.
 
-<hr>
+***
 
 ## Notification settings object
 
@@ -27,7 +27,7 @@ API calls to read and update notification settings.
 * `sms_originator` - string. Max length is 20, must match `(p{L}|d|[-'" .,:/])*`. E.g. "demo.navixy.com" or "491761234567".
 * `caller_id` - string. Voice messages originator. Max length is 20, must match `(p{L}|d|[-'" .,:/])*`. E.g. "491761234543".
 
-<hr>
+***
 
 ## API actions
 
@@ -80,7 +80,7 @@ Only session `hash`.
 
 [General](../../../../backend-api/getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### update
 

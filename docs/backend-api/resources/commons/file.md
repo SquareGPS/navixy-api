@@ -7,7 +7,7 @@ description: Contains an API call to get user's file statistic.
 
 Contains an API call to get user's file statistic.
 
-<hr>
+***
 
 ## API actions
 

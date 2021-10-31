@@ -8,7 +8,7 @@ description: API calls to work with departments
 Department is essentially just a group of [employees](employee/index.md). They can be assigned to departments by
  specifying non-null `department_id`.
 
-<hr>
+***
 
 ## Department object
 
@@ -31,7 +31,7 @@ Department is essentially just a group of [employees](employee/index.md). They c
     * `address` - string. Address of the location.
     * `radius` - int. Radius of location zone in meters.
 
-<hr>
+***
 
 ## API actions
 
@@ -82,7 +82,7 @@ Gets all departments belonging to user.
 doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user’s dealer has been exceeded.
 
-<hr>
+***
 
 ### create
 
@@ -124,7 +124,7 @@ Creates a new department with specified parameters.
 doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user’s dealer has been exceeded.
 
-<hr>
+***
 
 ### update
 
@@ -158,7 +158,7 @@ Updates existing department with a new specified parameters.
 
 * 201 – Not found in the database - if there is no department with specified id.
 
-<hr>
+***
 
 ### delete
 

@@ -7,7 +7,7 @@ description: API calls to get and change tracker's label and group.
 
 Contains API calls to get and change tracker's label and group.
 
-<hr>
+***
 
 ## API actions
 
@@ -59,7 +59,7 @@ Gets base settings for the specified tracker.
 * 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-<hr>
+***
 
 ### update
 

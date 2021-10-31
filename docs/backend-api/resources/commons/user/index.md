@@ -8,7 +8,7 @@ description: A user account lets you start working with the platform as well as 
 A user account lets you start working with the platform as well as customize your experience within it. Contains user 
 object structure and API calls to interact with users.
 
-<hr>
+***
 
 ## User object structure
 
@@ -117,7 +117,7 @@ object structure and API calls to interact with users.
     * `privileges` - object only returned for sub-users. Describes effective sub-user privileges. 
     * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
 
-<hr>
+***
 
 ## API actions
 
@@ -139,13 +139,17 @@ Available only to master users.
 { "success": true }
 ```
 
-<hr>
+***
 
 ### auth
 
 Tries to authenticate user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
+
+!!! warning "Session hash is deprecated"
+    To work with the API, it is necessary to use the API key, not the user's session hash.
+    Work with API through the user's session is deprecated and will be disabled in the future.
 
 #### parameters
 
@@ -184,7 +188,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 * 104 – Logins limit exceeded, please reuse existing sessions instead (see also user/session/renew).
 * 105 – Login attempts limit exceeded, try again later.
 
-<hr>
+***
 
 ### get_info
 
@@ -279,7 +283,7 @@ Only session `hash`.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### get_tariff_restrictions
 
@@ -322,7 +326,7 @@ Only session `hash`.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### logout
 
@@ -358,7 +362,7 @@ Only session `hash`.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### resend_activation
 

@@ -10,7 +10,7 @@ When submitting form values of type [file](../../form/field-types.md#file), [pho
 a file entry, then upload a file using provided credentials. File must adhere to limitations specified in the form field.
 Note that each file consumes space and contributes to file storage limit associated with user's account.
 
-<hr>
+***
 
 ## API actions
 

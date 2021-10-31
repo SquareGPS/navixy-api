@@ -12,7 +12,7 @@ following purposes:
 * To split a movement trajectory to separate trips - for clear illustration and easy viewing in tabular reports;
 * To capture "Trip end" / "Trip start" events - with possibility of Email/SMS notification.
 
-<hr>
+***
 
 ## API actions
 
@@ -66,7 +66,7 @@ Gets parking detection settings for the specified tracker.
 * 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-<hr>
+***
 
 ### update
 

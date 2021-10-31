@@ -9,7 +9,7 @@ Contains entity object description and API calls to interact with it. <br>
 Entity describes a class of objects for which representation and editable fields can be customized.
 For example, you can add your own custom fields to **places** entity or rearrange existing fields.
 
-<hr>
+***
 
 ## Entity object
 
@@ -52,7 +52,7 @@ Builtin fields:
 * tags.
 * description.
 
-<hr>
+***
 
 ## API actions
 
@@ -112,7 +112,7 @@ Only session `hash`.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### read
 
@@ -182,7 +182,7 @@ Gets entity by the id or by type.
 
 * 201 - Not found in the database – if there is no entity with such ID.
 
-<hr>
+***
 
 ### update(entity)
 

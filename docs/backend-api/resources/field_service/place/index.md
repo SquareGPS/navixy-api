@@ -15,7 +15,7 @@ If there's an [employee](../employee) [assigned](../../tracking/tracker/employee
 and a POI has a custom field of type "responsible employee", such point of interest will be available in the mobile app to view.
 Thus, field employee/driver can view all points of interest assigned to him to visit them, etc.
 
-<hr>
+***
 
 ## Place object
 
@@ -52,7 +52,7 @@ Thus, field employee/driver can view all points of interest assigned to him to v
 * `tags` - optional int array. A list of tag_ids. Non-empty.
 * `external_id` - optional string. Max length 32.
 
-<hr>
+***
 
 ## API actions
 
@@ -117,7 +117,7 @@ Gets POI by ID.
 
 * 201 - Not found in the database – if there is no POI with such ID.
 
-<hr>
+***
 
 ### list
 
@@ -187,7 +187,7 @@ Get POIs belonging to user.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### create
 
@@ -227,7 +227,7 @@ Creates a new POI.
 
 * 268 - Over quota – if the user's quota for POIs exceeded.
 
-<hr>
+***
 
 ### update
 
@@ -261,7 +261,7 @@ Updates existing POI.
 
 * 201 - Not found in the database – if there is no POI with such ID.
 
-<hr>
+***
 
 ### delete
 
@@ -301,7 +301,7 @@ Deletes POI with the specified ID.
 
 * 201 - Not found in the database – if there is no POI with such ID.
 
-<hr>
+***
 
 ### batch_convert
 
@@ -362,7 +362,7 @@ If `file_id` is set – `batch` parameter will be ignored.
 
 * 234 - Invalid data format.
 
-<hr>
+***
 
 ### upload
 

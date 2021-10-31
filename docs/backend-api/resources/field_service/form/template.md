@@ -16,7 +16,7 @@ in exactly same state regardless of how template changed.
  
 User can assign form to the task or checkin by choosing template without the need to create all form fields every time.
 
-<hr>
+***
 
 ## Form template object
 
@@ -48,7 +48,7 @@ User can assign form to the task or checkin by choosing template without the nee
 * `updated` - [date/time](../../../getting-started.md#data-types). Date when this template last modified. The read-only field.
 * `default` - boolean. This form will be chosen default for all new tasks with form if `true`.
 
-<hr>
+***
 
 ## API actions
 
@@ -105,7 +105,7 @@ Gets all form templates belonging to current master user.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### create
 
@@ -144,7 +144,7 @@ Creates new form template.
 
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
-<hr>
+***
 
 ### read
 
@@ -204,7 +204,7 @@ Gets form template belonging to current master user by specified id.
 
 * 201 – Not found in the database - if there is no template with such an id.
 
-<hr>
+***
 
 ### update
 
@@ -239,7 +239,7 @@ Updates existing form template.
 * 201 – Not found in the database - if template with the specified id does not exist.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
-<hr>
+***
 
 ### delete
 
@@ -280,7 +280,7 @@ Deletes form template.
 * 201 – Not found in the database - if template with the specified id does not exist.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
-<hr>
+***
 
 ### stats/read
 

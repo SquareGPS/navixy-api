@@ -7,7 +7,7 @@ description: API call to get information about a dealer.
 
 API call to get information about a dealer.
 
-<hr>
+***
 
 ## API actions
 

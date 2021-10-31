@@ -7,7 +7,7 @@ description: Navixy platform tracks changes to task fields and state for your co
 
 Our platform tracks changes to task fields and state for your convenience. Contains API calls to get this information.
 
-<hr>
+***
 
 ## History entry
 
@@ -31,7 +31,7 @@ Our platform tracks changes to task fields and state for your convenience. Conta
 * `operation` - [enum](../../../getting-started.md#data-types). Operation which happened. Can be "create", "update", "assign" or "status_change".
 * `payload` - depends on operation. Typically, contains fields which were changed during operation.
 
-<hr>
+***
 
 ## API actions
 

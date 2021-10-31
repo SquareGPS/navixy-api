@@ -10,7 +10,7 @@ report's information that can be used in programs or specific reports in needs f
 information about trips + fuel consumption, drains and refills. 
 Follow the next steps, to obtain report's information.
 
-<hr>
+***
 
 ## Generate report
 
@@ -50,7 +50,7 @@ It will respond with generated report_id.
 }
 ```
 
-<hr>
+***
 
 ## Retrieve report
 
@@ -527,7 +527,7 @@ You will get the report in a JSON format:
     }
     ```
 
-<hr>
+***
 
 ## Deleting reports
 

@@ -7,7 +7,7 @@ description: Contains API calls to interact with tracks and for getting all trac
 
 Contains API calls to interact with tracks and for getting tracks' points.
 
-<hr>
+***
 
 ## API actions
 
@@ -61,7 +61,7 @@ KML/KMZ file or JSON response if requested time period exceeds limit specified i
 * 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified 
 in API config).
 
-<hr>
+***
 
 ### list
 
@@ -229,7 +229,7 @@ or no normAvgFuelConsumption defined in a vehicle.
 * 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified in 
 API config).
 
-<hr>
+***
 
 ### read
 

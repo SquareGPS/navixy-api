@@ -7,7 +7,7 @@ description: Schedule proposals are "preview" of what tasks and routes will be c
 
 Schedule proposals are "preview" of what tasks and routes will be created at the specified date range.
 
-<hr>
+***
 
 ## API actions
 

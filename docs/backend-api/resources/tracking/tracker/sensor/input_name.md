@@ -9,7 +9,7 @@ API base path: `/tracker/sensor/input_name`.
 
 API call to get descriptions of all sensor inputs existing in the system.
 
-<hr>
+***
 
 ## API actions
 

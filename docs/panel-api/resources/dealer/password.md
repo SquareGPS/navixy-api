@@ -7,7 +7,7 @@ description: API call to update dealer's password.
 
 API call to update dealer's password.
 
-<hr>
+***
 
 ## API actions
 

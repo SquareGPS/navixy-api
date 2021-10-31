@@ -10,7 +10,7 @@ specified conditions and send events to emails and phones. It sends notification
 Sometimes, necessary to store those notifications and history entries to use them in special reports, or they can be 
 used for scripts build on APIs. Let's see how to work with them.
 
-<hr>
+***
 
 ## Obtain a list of history entries
 
@@ -72,7 +72,7 @@ that could be used for different purposes:
 }
 ```
 
-<hr>
+***
 
 ### Events for specific trackers and time period
 

@@ -7,7 +7,7 @@ description: API calls to search address and location using geocoder
 
 API calls to search address and location using geocoder.
 
-<hr>
+***
 
 ## Geocoder types
 
@@ -17,7 +17,7 @@ API calls to search address and location using geocoder.
 * osm.
 * locationiq.
 
-<hr>
+***
 
 ## API actions
 
@@ -93,7 +93,7 @@ Performs a forward geocoding. Returns a list of locations matching the given add
         * `nw` - North West corner.
         * `se` - South East corner.
 
-<hr>
+***
 
 ### search_location
 

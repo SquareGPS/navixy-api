@@ -7,7 +7,7 @@ description: API calls to get delivery states and tasks by ids.
 
 API calls to get delivery states and tasks by ids.
 
-<hr>
+***
 
 ## API actions
 
@@ -80,7 +80,7 @@ object structure.
 
 * 201 – Not found in the database - when there is no task or checkpoint with specified conditions.
 
-<hr>
+***
 
 ### list
 

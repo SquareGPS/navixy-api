@@ -8,7 +8,7 @@ description: API call for updating task form values. Task form values can be sub
 Task form values can be submitted using web API only if there was a submission using Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)).
 The use case is to "fix" incorrectly filled data. This action not intended to fill empty form from scratch.
 
-<hr>
+***
 
 ## API actions
 

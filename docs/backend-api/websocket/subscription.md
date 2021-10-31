@@ -10,7 +10,7 @@ events and unsubscribe from them.
 These actions are similar with any other [API REST actions](../getting-started.md) 
 but must be sent inside open `WebSocket` channel and use only JSON format for messages between the client and server.
 
-<hr>
+***
 
 ## Subscribe Action
 
@@ -86,7 +86,7 @@ send a new state in the [event message](./events.md#state-event).
 - Subscribing to a `state` automatically creates a subscription to [lifecycle events](./events.md#state-event).
 - Subscribing to any event automatically creates a subscription to [logout events](./events.md#logout-event).
 
-<hr>
+***
 
 ## Unsubscribe Action
 
@@ -130,7 +130,7 @@ Response sample:
 }
 ```
 
-<hr>
+***
 
 ## Error Response
 

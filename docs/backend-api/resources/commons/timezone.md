@@ -7,7 +7,7 @@ description: Contains an API call to get information about all supported timezon
 
 Contains an API call to get information about all supported timezones.
 
-<hr>
+***
 
 ## API actions
 

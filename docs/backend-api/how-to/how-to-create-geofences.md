@@ -11,7 +11,7 @@ Geofence is a virtual perimeter for a real geographic area. The system can contr
 Moreover, you can assign various rules for events to particular geofences. For example, if you need to get speeding alerts
 only within a certain area (e.g. in city) or route.
 
-<hr>
+***
 
 ## Geofence creation
 
@@ -39,7 +39,7 @@ API request:
 
 The platform will respond with status and created geofence id. We can use this id to [create a rule](./use-rules.md).
 
-<hr>
+***
 
 ### Polygon geofence
 
@@ -66,7 +66,7 @@ API request:
 
 Don't forget that the rule isn't created yet. The platform will respond with geofence id. Use [the next instruction](./use-rules.md) to create rules.
 
-<hr>
+***
 
 ### Sausage geofence
 

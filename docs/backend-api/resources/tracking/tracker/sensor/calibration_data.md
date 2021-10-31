@@ -8,7 +8,7 @@ description: API calls to read and set sensor calibration data.
 Contains API calls to read and set sensor calibration data which is used for calibration received data from sensors to the
 convenient format. For example, analog fuel sensor provides Volts that should be calibrated to Liters.
 
-<hr>
+***
 
 ## API actions
 
@@ -57,7 +57,7 @@ Gets calibration data for sensor.
 * 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
 * 228 – Not supported by the sensor (if sensor doesn't support calibration).
 
-<hr>
+***
 
 ### update
 
@@ -96,7 +96,7 @@ Replaces the calibration data for a sensor.
 * 228 – Not supported by the sensor - if sensor doesn't support calibration.
 * 219 – Not allowed for clones of the device - if tracker is clone.
 
-<hr>
+***
 
 ### upload_omnicomm
 

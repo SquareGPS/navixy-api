@@ -7,7 +7,7 @@ description: Contains map layer object structure and API calls to interact with 
 
 Contains map layer object structure and API calls to interact with it.
 
-<hr>
+***
 
 ## Map layer object structure:
 
@@ -21,7 +21,7 @@ Contains map layer object structure and API calls to interact with it.
 * `id` - int. Map layer entity ID.
 * `label` - string. Map layer name.
 
-<hr>
+***
 
 ## API actions
 
@@ -62,7 +62,7 @@ Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf
 
 * 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
 
-<hr>
+***
 
 ### list
 
@@ -104,7 +104,7 @@ Only session `hash`.
 
 No specific errors.
 
-<hr>
+***
 
 ### upload
 
@@ -139,7 +139,7 @@ Uploads new map layer.
 * 242 - Validation error – if uploaded file is not valid KML.
 * 268 - Over quota – if the user's quota for map layers exceeded.
 
-<hr>
+***
 
 ### update
 
@@ -161,7 +161,7 @@ Updates metadata for the specified map layer.
 
 * 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
 
-<hr>
+***
 
 ### delete
 

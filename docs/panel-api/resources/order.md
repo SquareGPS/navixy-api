@@ -7,7 +7,7 @@ description: Contains API call to read the order by its ID.
 
 API call to read the order by its ID.
 
-<hr>
+***
 
 ## API actions
 
