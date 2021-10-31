@@ -64,7 +64,7 @@ Listed only tariffs [available for user's legal type](#tariff).
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

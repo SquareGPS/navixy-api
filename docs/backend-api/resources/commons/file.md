@@ -19,7 +19,7 @@ Gets user's files statistic.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

@@ -173,7 +173,7 @@ List all security groups belonging to current user.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

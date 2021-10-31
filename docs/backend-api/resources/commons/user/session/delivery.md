@@ -24,7 +24,7 @@ In demo session allowed to create a new session only if it not already exists.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -51,7 +51,7 @@ Only session `hash`.
 }
 ```
 
-* `value` - string. Created session hash key.
+* `value` - string. Created delivery session hash key.
 
 #### errors
 
@@ -66,7 +66,7 @@ Returns current user delivery session key.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -93,7 +93,7 @@ Only session `hash`.
 }
 ```
 
-* `value` - string. Session hash key.
+* `value` - string. Delivery session hash.
 
 #### errors
 

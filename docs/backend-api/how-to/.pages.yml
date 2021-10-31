@@ -1,7 +1,7 @@
 title: How To
 nav:
   - index.md
-  - Get session hash: 'get-session-hash.md'
+  - Get hash of an API Key: 'get-api-key.md'
   - Register a device: 'how-to-register-a-device.md'
   - Get tracker list: 'get-tracker-list.md'
   - Get track points: 'get-track-points.md'

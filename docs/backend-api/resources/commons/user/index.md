@@ -131,7 +131,9 @@ Available only to master users.
 
 !!! attention 
     This call will receive only session hash from registration email.
-    Any other hash will result in result error code 4 (user not found or session ended).
+    Any other hash will result in result error code 4 (User or API key not found or session ended).
+    The only thing that API calls with a user session will work for is creating, 
+    reading, and deleting API keys.
 
 #### response
 
@@ -148,7 +150,7 @@ Tries to authenticate user and get hash.
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
 !!! warning "Session hash is deprecated"
-    To work with the API, it is necessary to use the API key, not the user's session hash.
+    To work with the API, it is necessary to use the [API key](../api-keys.md), not the user's session hash.
     Work with API through the user's session is deprecated and will be disabled in the future.
 
 #### parameters
@@ -196,7 +198,7 @@ Gets user information and some settings.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -291,7 +293,7 @@ Gets user tariff restrictions.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -331,6 +333,7 @@ Only session `hash`.
 ### logout
 
 Destroys current user session.
+Works only with standard user session (not with API key).
 
 #### parameters
 

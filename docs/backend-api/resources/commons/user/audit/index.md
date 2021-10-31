@@ -16,6 +16,7 @@ API path: `/user/audit`.
 ### checkin
 
 This method calls when user opens UI.
+Works only with standard user session (not with API key).
 
 #### parameters
 

@@ -143,7 +143,7 @@ List all sub-users belonging to current user.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

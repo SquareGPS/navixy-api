@@ -113,10 +113,10 @@ For example:
 ```yaml
 title: Backend API
 nav:
-    - getting-started.md
-    - how-to
-    - resources
-    - websocket
+  - getting-started.md
+  - how-to
+  - resources
+  - websocket
 ```
 
 `title` sets the name for menu section. 

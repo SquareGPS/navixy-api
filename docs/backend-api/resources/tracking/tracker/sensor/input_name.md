@@ -19,7 +19,7 @@ Returns descriptions of all sensor inputs existing in the system.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

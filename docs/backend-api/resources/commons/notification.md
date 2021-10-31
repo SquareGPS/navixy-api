@@ -19,7 +19,7 @@ Lists user notifications.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
