@@ -28,7 +28,7 @@ is [here](https://www.navixy.com/docs/admin-panel-docs/activation-codes/).
      
 Step 3. Register the device using the [tracker/register](../resources/tracking/tracker/index.md#register) action.
 
-<hr>
+***
 
 ## Tracker registration
 
@@ -48,7 +48,7 @@ There is information about tracker registration with plugins 44 and 37.
 * plugin_id - what parameter ID to use. It must be listed in available [plugins list for the user](../resources/commons/plugin/index.md#list).
 * activation_code - optional string with activation code. Not necessary for plugin 44 and mandatory for plugin 37.
 
-<hr>
+***
 
 ### Using plugin id 44
 
@@ -100,7 +100,7 @@ After sending the platform will respond with the next information:
 
 * Tracker object fields described [here](../resources/tracking/tracker/index.md#tracker-object-structure).
 
-<hr>
+***
 
 ### Using plugin id 37
 
@@ -125,7 +125,7 @@ The API call will be the next:
 
 The platform will confirm with the same information as for plugin 44.
 
-<hr>
+***
 
 ## Mobile app registration
 
@@ -141,7 +141,7 @@ be specified in international format without `+` sign.
 * plugin_id - what parameter ID to use. It must be listed in available [plugins list for the user](../resources/commons/plugin/index.md#list).
 * activation_code - optional string with activation code. Not necessary for plugin 35 and mandatory for plugin 68.
 
-<hr>
+***
 
 ### Using parameter 35
 
@@ -188,7 +188,7 @@ The platform will notify us about success and with information about this device
 }
 ```
 
-<hr>
+***
 
 ### Using plugin id 68
 
@@ -210,7 +210,7 @@ If our user has mandatory activation codes (plugin 68) we should use this parame
 
 The platform will respond with the same information as for plugin 35.
 
-<hr>
+***
 
 ## The device doesn't register
 

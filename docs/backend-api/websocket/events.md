@@ -12,7 +12,7 @@ All event messages contain the next fields:
 * `event` - [enum](../getting-started.md#data-types). Can be "state", "lifecycle", or "logout".
 * `data` - optional object. Specific event payload. 
 
-<hr>
+***
 
 ## State event
 
@@ -67,7 +67,7 @@ Message sample:
 
 !!! note "`source_id` is not a `tracker_id`."
 
-<hr>
+***
 
 ## Lifecycle event
 
@@ -99,7 +99,7 @@ Message sample:
 }
 ```
 
-<hr>
+***
 
 ## Logout event
 

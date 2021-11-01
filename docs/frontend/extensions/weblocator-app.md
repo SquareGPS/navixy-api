@@ -8,7 +8,7 @@ description: "Web Locator" is a special plugin which can be embedded to any othe
 "Web Locator" is a special plugin which can be embedded to any other application or website 
 and allows track user's objects on the map in real-time.
 
-<hr>
+***
 
 ## Example
 
@@ -20,7 +20,7 @@ The following HTML texts is used to show on the map the objects from
 </iframe>
 ```
 
-<hr>
+***
 
 ## Usage
 
@@ -47,7 +47,7 @@ All parameters are transferred to the Web locator application by the GET method.
 
 Width and height of area are set in pixels.
 
-<hr>
+***
 
 ### Objects list
 
@@ -60,7 +60,7 @@ or
 
 `objects` - numbers of objects are listed through a comma (tracker_id)
 
-<hr>
+***
 
 ### Autoscaling
 
@@ -69,7 +69,7 @@ objects are visible.
 
 `autoscale` - 0: do not scale, 1: scale (by default).
 
-<hr>
+***
 
 ### Trace
 
@@ -78,7 +78,7 @@ Traces behind the assets will be shown on the map, as defined by the duration va
 
 `tail_size`: from 0 to 604800 (one week).
 
-<hr>
+***
 
 ### Map scale
 
@@ -87,7 +87,7 @@ with switched on autoscaling.
 
 `zoom`: from 0 to 18
 
-<hr>
+***
 
 ### Map choice
 
@@ -105,7 +105,7 @@ You can define a cartographic substrate
 *   `cdcom` – Progorod
 *   `satellite` – satellite
 
-<hr>
+***
 
 ## API for keys
 
@@ -116,7 +116,7 @@ described according to the link: [API authorization][1]
 
   [1]: ./../../backend-api/getting-started.md#authorization-and-access-levels
 
-<hr>
+***
 
 ### Keys Generation
 
@@ -135,7 +135,7 @@ Answer example if the key is successfully generated:
 }
 ```
 
-<hr>
+***
 
 ### Acquiring key
 

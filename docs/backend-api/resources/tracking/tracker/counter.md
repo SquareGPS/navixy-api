@@ -7,7 +7,7 @@ description: This resource contains counter specific actions
 
 This resource contains counter specific actions
 
-<hr>
+***
 
 ## Resource specific actions
 
@@ -24,7 +24,7 @@ Actions with counter values:
 * [/tracker/counter/value/set](#valueset)
 * [/tracker/counter/data/list](#datalist)
 
-<hr>
+***
 
 ### read
 
@@ -72,7 +72,7 @@ Reads counter of passed `type`.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 
-<hr>
+***
 
 ### update
 
@@ -125,7 +125,7 @@ Updates counter of passed `type`.
     * if sensor with such a `sensor_id` is not exists.
     * if type value is not one of list above.
 
-<hr>
+***
 
 ### get_counters
 
@@ -186,7 +186,7 @@ List of counter types:
 * 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-<hr>
+***
 
 ### value/get
 
@@ -272,7 +272,7 @@ Get actual values for counters of passed `type` and `trackers`.
   [`/tracker/counter/set`](#valueset) to create new counter (if not exist) and save some value.
 * 217 - List contains nonexistent entities – if one of the specified trackers does not exist or is blocked.
 
-<hr>
+***
 
 ### value/set
 
@@ -309,7 +309,7 @@ Creates new counter of passed `type` (if not) and update its `value`.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 
-<hr>
+***
 
 ### data/list
 

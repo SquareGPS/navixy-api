@@ -12,7 +12,7 @@ task description, contact numbers, etc.
 To start work with tasks, they must be created. It will be a task with one point or several? This will determine whether
 we create a single task, or a route task.
 
-<hr>
+***
 
 ### Single task
 
@@ -58,7 +58,7 @@ The response will contain id of a new task.
 }
 ```
 
-<hr>
+***
 
 ### Route task
 

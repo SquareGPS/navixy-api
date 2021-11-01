@@ -7,7 +7,7 @@ description: An API call to get the list of available equipment.
 
 API call to get the list of all available equipment.
 
-<hr>
+***
 
 ## Equipment object
 
@@ -27,7 +27,7 @@ API call to get the list of all available equipment.
 * `vendor` - string. A vendor's name.
 * `name` - string. A model's name used by a vendor.
 
-<hr>
+***
 
 ## API actions
 

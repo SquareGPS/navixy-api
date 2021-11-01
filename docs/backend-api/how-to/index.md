@@ -10,11 +10,11 @@ it more approachable.
 
 Our "How to" section has step-by-step examples of working with the Navixy API.
 
-From initial step of obtaining a session key to more complicated operations like retrieving a list of devices, tracks or
+From initial step of obtaining a API key hash to more complicated operations like retrieving a list of devices, tracks or
 creating reports. Using API and scripting you will be able to develop applications that not only satisfy your customer's
 needs but also help you make your business more profitable.
 
-* [How to get session hash](./get-session-hash.md).
+* [How to get hash of an API key](./get-api-key.md).
 * [How to register a device](./how-to-register-a-device.md) . 
 * [How to get tracker list](./get-tracker-list.md).
 * [How to get track points](./get-track-points.md).

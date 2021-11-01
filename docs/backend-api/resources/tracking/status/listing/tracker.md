@@ -7,7 +7,7 @@ description: Contains API call which link together trackers and working status l
 
 Contains api call which link together trackers and working status lists.
 
-<hr>
+***
 
 ## API actions
 

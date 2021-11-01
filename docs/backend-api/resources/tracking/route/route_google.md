@@ -7,7 +7,7 @@ description: API call for getting the route to destination point using Google Di
 
 API call for getting the route to destination point using [Google Directions API](https://developers.google.com/maps/documentation/directions/intro).
 
-<hr>
+***
 
 ## API actions
 

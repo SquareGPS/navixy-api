@@ -15,7 +15,7 @@ If there's an [employee](../employee) [assigned](../../tracking/tracker/employee
 and a POI has a custom field of type "responsible employee", such point of interest will be available in the mobile app to view.
 Thus, field employee/driver can view all points of interest assigned to him to visit them, etc.
 
-<hr>
+***
 
 ## Place object
 
@@ -52,7 +52,7 @@ Thus, field employee/driver can view all points of interest assigned to him to v
 * `tags` - optional int array. A list of tag_ids. Non-empty.
 * `external_id` - optional string. Max length 32.
 
-<hr>
+***
 
 ## API actions
 
@@ -117,7 +117,7 @@ Gets POI by ID.
 
 * 201 - Not found in the database – if there is no POI with such ID.
 
-<hr>
+***
 
 ### list
 
@@ -187,7 +187,7 @@ Get POIs belonging to user.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### create
 
@@ -207,7 +207,7 @@ Creates a new POI.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/place/read' \
+    curl -X POST '{{ extra.api_example_url }}/place/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
     ```
@@ -227,7 +227,7 @@ Creates a new POI.
 
 * 268 - Over quota – if the user's quota for POIs exceeded.
 
-<hr>
+***
 
 ### update
 
@@ -261,7 +261,7 @@ Updates existing POI.
 
 * 201 - Not found in the database – if there is no POI with such ID.
 
-<hr>
+***
 
 ### delete
 
@@ -301,7 +301,7 @@ Deletes POI with the specified ID.
 
 * 201 - Not found in the database – if there is no POI with such ID.
 
-<hr>
+***
 
 ### batch_convert
 
@@ -362,7 +362,7 @@ If `file_id` is set – `batch` parameter will be ignored.
 
 * 234 - Invalid data format.
 
-<hr>
+***
 
 ### upload
 

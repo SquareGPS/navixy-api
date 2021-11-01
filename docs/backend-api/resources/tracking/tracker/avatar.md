@@ -6,7 +6,7 @@ description: Contains API call to upload avatar for the tracker.
 
 Contains API call to upload avatar for the tracker.
 
-<hr>
+***
 
 ## API actions
 

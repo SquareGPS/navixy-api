@@ -1,7 +1,7 @@
 title: How To
 nav:
   - index.md
-  - Get session hash: 'get-session-hash.md'
+  - Get hash of an API Key: 'get-api-key.md'
   - Register a device: 'how-to-register-a-device.md'
   - Get tracker list: 'get-tracker-list.md'
   - Get track points: 'get-track-points.md'
@@ -17,3 +17,4 @@ nav:
   - Obtain information from report: 'how-to-obtain-information-from-report.md'
   - Tags usage: 'tags-usage.md'
   - Vehicles and service works usage: 'service-works-exploitation.md'
+  - Work with driver journals: 'driver-journals-usage.md'

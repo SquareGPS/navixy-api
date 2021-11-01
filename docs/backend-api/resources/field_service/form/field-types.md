@@ -34,7 +34,7 @@ values and its "parent" in template form.
 * `required` - boolean. If `true`, form cannot be submitted without filling this field with valid value.
 * `type` - string. Determines field type.
 
-<hr>
+***
 
 ### Text field
 
@@ -68,7 +68,7 @@ Multiline auto-expanding text field.
 
 * `value` - string. What was entered the text field.
 
-<hr>
+***
 
 ### Checkbox group
 
@@ -105,7 +105,7 @@ Group of checkboxes.
 
 * `values` - array of boolean. They are in the same order as fields in `group`.
 
-<hr>
+***
 
 ### Dropdown field
 
@@ -139,7 +139,7 @@ Dropdown menu for choosing one option.
 
 * `value_index` - int. Zero-based index of value from "options".
 
-<hr>
+***
 
 ### Radio button group
 
@@ -173,7 +173,7 @@ A group of radio buttons. Only one option is selectable.
 
 * `value_index` - int. Zero-based index of value from "options".
 
-<hr>
+***
 
 ### Date picker
 
@@ -204,7 +204,7 @@ A date picker.
 
 * `value` - [date/time](../../../getting-started.md#data-types).
 
-<hr>
+***
 
 ### Rating
 
@@ -233,7 +233,7 @@ Rating with "stars". Zero stars not allowed.
 
 * `value` - int. Number of stars selected. Cannot be more than `max_stars`.
 
-<hr>
+***
 
 ### File
 
@@ -268,7 +268,7 @@ File attachment. For example, document or spreadsheet.
 * `file_ids` - int array. Ids of the file which should be attached to this form field as value. Files must be 
 uploaded before form submission.
 
-<hr>
+***
 
 ### Photo
 
@@ -298,7 +298,7 @@ Photograph attachment.
 * `file_ids` - int array. Ids of the files which should be attached to this form field as value. Files must be
  uploaded before form submission. Only image files allowed.
 
-<hr>
+***
 
 ### Signature
 
@@ -322,7 +322,7 @@ A small image of customer's signature (usually obtained via writing on screen wi
 * `file_id` - int. An id of the file which should be attached to this form field as value. File must be uploaded
  before form submission.
 
-<hr>
+***
 
 ### Separator
 

@@ -6,7 +6,7 @@ description: API call to get last values for all metering sensors and state valu
 
 API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel.
 
-<hr>
+***
 
 ## API actions
 

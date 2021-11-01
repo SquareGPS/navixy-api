@@ -8,7 +8,7 @@ description: Using the audit log, account owner can track the activity of all us
 Using the audit log, account owner can track the activity of all users added through the "Access rights" section. Contains
 audit object and list method to get the audit log.
 
-<hr>
+***
 
 ## Audit object
 
@@ -38,7 +38,7 @@ audit object and list method to get the audit log.
 * `user_agent` - string. User agent.
 * `action_date` - [date/time](../../../../getting-started.md#data-types). Date and time of the action.
 
-<hr>
+***
 
 ## API actions
 

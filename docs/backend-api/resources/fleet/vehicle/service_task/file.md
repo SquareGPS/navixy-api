@@ -7,7 +7,7 @@ description: Service work file creation API call.
 
 Contains call for creation the service work file.
 
-<hr>
+***
 
 ## API actions
 

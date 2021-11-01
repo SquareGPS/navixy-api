@@ -8,7 +8,7 @@ description: Contains plugin object description and API calls to interact with i
 Contains plugin object description and API calls to interact with it.<br>
 Plugins are special software modules which modify the behavior of various API calls.
 
-<hr>
+***
 
 ## Plugin object structure
 
@@ -50,7 +50,7 @@ Plugins are special software modules which modify the behavior of various API ca
 }
 ```
 
-<hr>
+***
 
 ## API actions
 
@@ -63,7 +63,7 @@ settings and purchased features. Only these plugins can be used to register trac
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

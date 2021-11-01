@@ -6,7 +6,7 @@ description: API call for uploading datalogger information.
 
 API call for uploading datalogger information.
 
-<hr>
+***
 
 ## API actions
 

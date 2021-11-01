@@ -9,7 +9,7 @@ description: API call to get user's trackers with special grouping by "contacts"
 
 API call to get user's trackers with special grouping by "contacts"
 
-<hr>
+***
 
 ## API actions
 

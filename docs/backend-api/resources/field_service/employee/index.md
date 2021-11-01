@@ -8,7 +8,7 @@ description: Employee object and API calls to work with. Employees (drivers) use
 Employees and drivers used to represent people working at one's organization. They can be linked with other entities such as 
 trackers, vehicles, places, etc.
 
-<hr>
+***
 
 ## Employee object
 
@@ -58,7 +58,7 @@ via [avatar/upload](./avatar.md#upload).
 * `personnel_number` - optional string. Max length is 15.
 * `tags` - int array. List of tag ids.
 
-<hr>
+***
 
 ## API actions
 
@@ -70,7 +70,7 @@ Gets all employees and drivers belonging to user.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### response
 
@@ -103,7 +103,7 @@ Only session `hash`.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### create
 
@@ -142,7 +142,7 @@ Creates a new employee/driver.
 
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
 
-<hr>
+***
 
 ### read
 
@@ -207,7 +207,7 @@ Gets employee/driver by its id.
 
 * 201 – Not found in the database - if there is no employee/driver with such an id.
 
-<hr>
+***
 
 ### update
 
@@ -242,7 +242,7 @@ Updates existing employee/driver.
 * 201 – Not found in the database - if there is no employee/driver with such an id.
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
 
-<hr>
+***
 
 ### delete
 
@@ -282,7 +282,7 @@ Deletes an employee/driver with the specified id.
 
 * 201 – Not found in the database - if there is no employee/driver with such an id.
 
-<hr>
+***
 
 ### batch_convert
 

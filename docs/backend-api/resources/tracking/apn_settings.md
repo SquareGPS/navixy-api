@@ -7,7 +7,7 @@ description: API call to get APN settings by device's phone number.
 
 API call to get APN settings by device's phone number.
 
-<hr>
+***
 
 ## API actions
 

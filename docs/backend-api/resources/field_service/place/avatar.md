@@ -8,7 +8,7 @@ description: API calls to upload and assign avatars for POIs. Avatars don't chan
 Avatars don't change through `/place/update`, you must use either `assign` (to set avatar to one of preset icons),
 or `upload` (to upload your own image). 
 
-<hr>
+***
 
 ## API actions
 
@@ -58,7 +58,7 @@ File part **mime** type must be one of:
 * 234 - Invalid data format – if passed file with unexpected mime type.
 * 254 - Cannot save file – on some file system errors.
 
-<hr>
+***
 
 ### assign
 

@@ -7,7 +7,7 @@ description: API call to read engine hours (time when engine is on) counted for 
 
 Contains API call to read engine hours (time when engine is on) counted for the specified period.
 
-<hr>
+***
 
 ## API actions
 

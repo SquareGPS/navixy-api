@@ -8,7 +8,7 @@ description: Calls to work with "weblocator" type sessions. Those are special se
 Calls to work with "weblocator" type sessions. Those are special sessions to integrate tracking 
 device functionality into external systems.
 
-<hr>
+***
 
 ## API actions
 
@@ -23,7 +23,7 @@ In demo session allowed to create a new session only if it not already exists.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -57,7 +57,7 @@ Only session `hash`.
 * 101 - In demo mode this function disabled – current session is demo but weblocator session already exists.
 * 236 – Feature unavailable due to tariff restrictions.
 
-<hr>
+***
 
 ### read
 
@@ -65,7 +65,7 @@ Returns current user weblocator session key.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

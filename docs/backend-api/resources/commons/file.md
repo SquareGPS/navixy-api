@@ -7,7 +7,7 @@ description: Contains an API call to get user's file statistic.
 
 Contains an API call to get user's file statistic.
 
-<hr>
+***
 
 ## API actions
 
@@ -19,7 +19,7 @@ Gets user's files statistic.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

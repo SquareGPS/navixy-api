@@ -7,7 +7,7 @@ description: Transaction object description and API call to get list of user's b
 
 Transaction object description and API call to get list of user's billing transactions for the specified period.
 
-<hr>
+***
 
 ## Transaction object
 
@@ -43,7 +43,7 @@ Transaction object description and API call to get list of user's billing transa
 * `new_bonus` - double. User`s bonus balance after transaction.
 * `old_bonus` - double. User`s bonus balance before transaction.
 
-<hr>
+***
 
 ## API actions
 

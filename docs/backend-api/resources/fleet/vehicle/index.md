@@ -8,7 +8,7 @@ description: Contains the vehicle object and API calls to interact with it.
 Contains the vehicle object and API calls to interact with it. This object is used to describe vehicle's information like
 VIN, speed, consumption and other. Vehicle object should be assigned to tracker object.
 
-<hr>
+***
 
 ## Vehicle object
 
@@ -110,7 +110,7 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
         Subtypes: "mobile_crane", "racing", "buggy", "ambulance", "firefighter", "hearse", "shop", "harvester", "snowplow", "tractor", "grader", "excavator", "bulldozer", "armored", "amphibian"
     ```
 
-<hr>
+***
 
 ## API actions
 
@@ -154,7 +154,7 @@ Creates a new vehicle.
 
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 
-<hr>
+***
 
 ### delete
 
@@ -194,7 +194,7 @@ Deletes a vehicle with the specified id.
 
 * 201 – Not found in the database - if there is no vehicle with such an id.
 
-<hr>
+***
 
 ### list
 
@@ -267,7 +267,7 @@ Gets all vehicles belonging to user.
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### read
 
@@ -348,7 +348,7 @@ A [vehicle object](#vehicle-object).
 
 * 201 – Not found in the database - if there is no vehicle with such an id.
 
-<hr>
+***
 
 ### update
 
@@ -385,7 +385,7 @@ Updates existing vehicle.
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 * 261 – Entity has external links - when `tracker_id` changes and there are some service tasks associated with this vehicle.
 
-<hr>
+***
 
 ### batch_convert
 

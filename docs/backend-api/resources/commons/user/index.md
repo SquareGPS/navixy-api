@@ -8,7 +8,7 @@ description: A user account lets you start working with the platform as well as 
 A user account lets you start working with the platform as well as customize your experience within it. Contains user 
 object structure and API calls to interact with users.
 
-<hr>
+***
 
 ## User object structure
 
@@ -117,7 +117,7 @@ object structure and API calls to interact with users.
     * `privileges` - object only returned for sub-users. Describes effective sub-user privileges. 
     * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
 
-<hr>
+***
 
 ## API actions
 
@@ -131,7 +131,9 @@ Available only to master users.
 
 !!! attention 
     This call will receive only session hash from registration email.
-    Any other hash will result in result error code 4 (user not found or session ended).
+    Any other hash will result in result error code 4 (User or API key not found or session ended).
+    The only thing that API calls with a user session will work for is creating, 
+    reading, and deleting API keys.
 
 #### response
 
@@ -139,13 +141,17 @@ Available only to master users.
 { "success": true }
 ```
 
-<hr>
+***
 
 ### auth
 
 Tries to authenticate user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
+
+!!! warning "Session hash is deprecated"
+    To work with the API, it is necessary to use the [API key](../api-keys.md), not the user's session hash.
+    Work with API through the user's session is deprecated and will be disabled in the future.
 
 #### parameters
 
@@ -184,7 +190,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 * 104 – Logins limit exceeded, please reuse existing sessions instead (see also user/session/renew).
 * 105 – Login attempts limit exceeded, try again later.
 
-<hr>
+***
 
 ### get_info
 
@@ -192,7 +198,7 @@ Gets user information and some settings.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -279,7 +285,7 @@ Only session `hash`.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### get_tariff_restrictions
 
@@ -287,7 +293,7 @@ Gets user tariff restrictions.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -322,11 +328,12 @@ Only session `hash`.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### logout
 
 Destroys current user session.
+Works only with standard user session (not with API key).
 
 #### parameters
 
@@ -358,7 +365,7 @@ Only session `hash`.
 
 * [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### resend_activation
 

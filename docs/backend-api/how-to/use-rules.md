@@ -11,7 +11,7 @@ When a server receives a new portion of data from the device, it checks whether 
 or false for this data. If they are true, the server generates an event in history, logs it and immediately sends SMS,
 push message or email and saves event in history.
 
-<hr>
+***
 
 ### Create
 
@@ -55,7 +55,7 @@ You will get ID of created rule in response.
 }
 ```
 
-<hr>
+***
 
 ### Bind/Unbind
 
@@ -86,7 +86,7 @@ API requests:
      -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123, "trackers": [265489]}'
  ```
 
-<hr>
+***
 
 ### Update
 
@@ -107,7 +107,7 @@ API request:
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"id": 123, "description": "", "type": "work_status_change", "primary_text": "status changed", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": false, "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7, "time": "23:59:59"}, "type": "weekly"}], "zone_ids": []}}'
     ```
 
-<hr>
+***
 
 ### Suspend
 

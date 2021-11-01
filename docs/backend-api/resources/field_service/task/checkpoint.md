@@ -7,7 +7,7 @@ description: Every route consists of checkpoints. Using these actions, you can m
 
 Every route consists of checkpoints. Using these actions, you can manipulate checkpoints individually.
 
-<hr>
+***
 
 ## Checkpoint object
 
@@ -65,7 +65,7 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 
 !!! note "To associate the task with an address - this field should be added to the location object."
 
-<hr>
+***
 
 ## API actions
 
@@ -116,7 +116,7 @@ The returned object also can include "external_id_counts" field see `task/route/
 * 201 – Not found in the database - if task.tracker_id is not null and belongs to nonexistent tracker.
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
-<hr>
+***
 
 ### delete
 
@@ -156,7 +156,7 @@ Deletes a checkpoint with the specified id.
 
 * 201 – Not found in the database - if there is no checkpoint with such an id.
 
-<hr>
+***
 
 ### list
 
@@ -222,7 +222,7 @@ Get checkpoints belonging to user with given ids
 
 [General](../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### read
 
@@ -291,7 +291,7 @@ Gets route checkpoint by specified id.
 
 * 201 – Not found in the database - if there is no checkpoint with such an id.
 
-<hr>
+***
 
 ### transmute
 
@@ -334,7 +334,7 @@ Convert route checkpoint into a standalone task. If it's the only checkpoint in 
 * 201 – Not found in the database - if there is no checkpoint with such an id, or tracker to which checkpoint assigned is unavailable to current sub-user.
 * 255 – Invalid task state - if any of checkpoints are not in unassigned or assigned state.
 
-<hr>
+***
 
 ### update
 
