@@ -10,7 +10,7 @@ it more approachable.
 
 Our "How to" section has step-by-step examples of working with the Navixy API.
 
-From initial step of obtaining a API key hash to more complicated operations like retrieving a list of devices, tracks or
+From initial step of obtaining an API key hash to more complicated operations like retrieving a list of devices, tracks or
 creating reports. Using API and scripting you will be able to develop applications that not only satisfy your customer's
 needs but also help you make your business more profitable.
 
