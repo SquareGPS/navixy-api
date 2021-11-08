@@ -188,7 +188,7 @@ Marks all the user's history entries read.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

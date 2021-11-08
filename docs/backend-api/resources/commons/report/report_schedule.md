@@ -155,7 +155,7 @@ Get all report schedules belonging to user.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

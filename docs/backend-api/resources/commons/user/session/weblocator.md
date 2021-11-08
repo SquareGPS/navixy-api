@@ -23,7 +23,7 @@ In demo session allowed to create a new session only if it not already exists.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -65,7 +65,7 @@ Returns current user weblocator session key.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

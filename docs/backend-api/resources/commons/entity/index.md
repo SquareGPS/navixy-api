@@ -64,7 +64,7 @@ Get list of entities which are available for customization.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

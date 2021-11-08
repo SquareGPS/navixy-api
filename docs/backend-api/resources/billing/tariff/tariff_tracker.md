@@ -67,7 +67,7 @@ Changes tariff of tracker (with `tracker_id`) to new tariff (with `tariff_id`).
 * 201 – Not found in the database - if user doesn't have trackers with given `tracker_id`.
 * 219 – Not allowed for clones of the device.
 * 237 – Invalid tariff - if there are no tariff with specified `tariff_id` and belongs to user's **effective dealer**.
-* 221 - Device limit exceeded – when new tariff device limit is less than count of trackers in cabinet.
+* 221 - Device limit exceeded – when new tariff device limit is less than count of trackers in account.
 * 238 - Changing tariff is not allowed – user can't switch tracker to that tariff.
 * 239 – New tariff doesn't exist.
 * 240 - Not allowed changing tariff too frequently – tariff last changed less or equal to 30 days (**tariff.freeze.period** config option).

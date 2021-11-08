@@ -69,7 +69,7 @@ List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://ww
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

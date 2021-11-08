@@ -236,7 +236,7 @@ Returns all available retranslator protocols.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

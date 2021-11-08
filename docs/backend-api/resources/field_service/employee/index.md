@@ -70,7 +70,7 @@ Gets all employees and drivers belonging to user.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### response
 

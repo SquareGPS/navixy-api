@@ -70,7 +70,7 @@ Returns metadata for all map layers for the user.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

@@ -19,7 +19,7 @@ The report for health-check. It will do nothing.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

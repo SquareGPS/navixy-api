@@ -5,7 +5,7 @@ description: How to get tracker list and filter results.
 
 # How to get tracker list
 
-Now we [have a hash](./get-session-hash.md) — let's start with essential basics. 
+Now we [have a hash of an API key](./get-api-key.md) — let's start with essential basics. 
 
 Navixy has tracking device as a main unit, so most requests would require you to specify one or several tracker ids. 
 You can receive a list of all trackers in user's account with [tracker/list](../resources/tracking/tracker/index.md#list) 

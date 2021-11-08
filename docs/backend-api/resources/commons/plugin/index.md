@@ -63,7 +63,7 @@ settings and purchased features. Only these plugins can be used to register trac
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

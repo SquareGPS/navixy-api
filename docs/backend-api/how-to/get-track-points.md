@@ -8,7 +8,7 @@ description: How to get all points of trips
 Sometimes necessary to get all points of a trip with more info about the device's moves.
 How to get them?
 
-Firstly you need to [get hash](./get-session-hash.md).
+Firstly you need to [obtain hash of an API key](./get-api-key.md).
 
 Once you get the hash, you need to [get your tracker_id](./get-tracker-list.md). The platform must know points for what device must be in reply.
 
