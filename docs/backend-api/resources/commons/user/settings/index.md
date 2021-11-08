@@ -61,7 +61,7 @@ Reads current user's settings.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

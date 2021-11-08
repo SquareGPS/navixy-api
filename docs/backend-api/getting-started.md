@@ -20,7 +20,7 @@ Let's describe the standard workflow for API developer using very simple and mos
 common example — requesting the track points data:
 
 1.  Determine [URL to API calls](#api-base-url).
-1.  [Obtain session hash](./how-to/get-session-hash.md)
+1.  [Obtain hash of an API key](./how-to/get-api-key.md)
 1.  Get objects lists with [`tracker/list`](./how-to/get-tracker-list.md).
 1.  Get track lists with [`track/list`](./resources/tracking/track/index.md#list).
 1.  Get the track itself: [`track/read`](./resources/tracking/track/index.md#read).
@@ -86,7 +86,7 @@ Parameters can be passed in the:
     $ curl '[api_base_url]/resource/sub_resource/action?param1=value1&hash=a6aa75587e5c59c32d347da438505fc3'
     ```
 
-!!! warning "[Hash](./how-to/get-session-hash.md) is required for most API calls to identify user."
+!!! warning "[Hash of an API key](./how-to/get-api-key.md) is required for most API calls to identify user."
 
 Typical actions:
 
@@ -178,7 +178,7 @@ Or error if hash is wrong:
   "success": false,
   "status": {
     "code": 4,
-    "description": "User not found or session ended"
+    "description": "User or API key not found or session ended"
   }
 }
 ```
@@ -195,7 +195,7 @@ If there is an error, HTTP code is `400 BAD REQUEST` (may vary depending on erro
 
 ### Authorization and access levels
 
-Unless otherwise noted, every API call requires a valid user session hash
+Unless otherwise noted, every API call requires a valid API Key hash
 (A string containing 32 hexademical characters) that can be passed (in order of lookup priority):
 
 1. As `hash` parameter of the request body (root-level property for `application/json`).
@@ -209,24 +209,11 @@ Authorization: NVX SessionHashValue
 Following is pseudo-grammar that illustrates the construction of the `Authorization` request header:
 
 ```
-Authorization = "NVX" + " " + SessionHashValue ;
-SessionHashValue = 32 hexademical characters;
+Authorization = "NVX" + " " + ApiKeyHashValue ;
+ApiKeyValue = 32 hexademical characters;
 ```
 
-Session hash can be obtained via `user/auth` API call:
-
-=== "cURL"
-    ```abap
-    $ curl -X POST '[api_base_url]/user/auth' \
-           -H 'Content-Type: application/json' \ 
-           -d '{"login": "demo", "password": "demo"}'
-    ```
-
-=== "GET"
-    This method is not recommended. Just for example:
-    ```abap
-    [api_base_url]/user/auth?login=demo&password=demo
-    ```
+Read [how to get an API key](./how-to/get-api-key.md).
 
 ***
 
@@ -352,8 +339,8 @@ are 1-100 and resource or action specific errors are 101-300.
 |--- |--- |--- |
 |1|Database error|500|
 |2|Service Auth error|403|
-|3|Wrong user hash||
-|4|User not found or session ended||
+|3|Wrong hash||
+|4|User or API key not found or session ended||
 |5|Wrong request format||
 |6|Unexpected error|500|
 |7|Invalid parameters||

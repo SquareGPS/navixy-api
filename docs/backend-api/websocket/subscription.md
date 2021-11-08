@@ -154,7 +154,7 @@ Error response sample:
     "action": "subscription/subscribe",
     "status": {
         "code": 3,
-        "description": "Wrong user hash"
+        "description": "Wrong hash"
     },
     "data": {
         "events": ["state"],

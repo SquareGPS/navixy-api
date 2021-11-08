@@ -123,7 +123,7 @@ Gets working status lists belonging to authorized user.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
