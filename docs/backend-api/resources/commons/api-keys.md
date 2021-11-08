@@ -41,7 +41,7 @@ To distinguish keys from each other, you should give them meaningful names.
 }
 ```
 
-* `hash` - string, 32 chars. The key itself.
+* `hash` - string, 32 chars. Hash of an API key.
 * `create_date` - `date/time`. Key creation date.
 * `title` - string. Key title.
 

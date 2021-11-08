@@ -33,8 +33,8 @@ The response will be like this:
 
 Where resulting user's session hash is `882fb333405d006df0d5a3f410115e92` (just an example, you will get a different hex string).
 
-After that, you need to get a [list of API keys](../resources/commons/api-keys.md#list) or create a new via using 
-the [/api/key/create](../resources/commons/api-keys.md#create) call using obtained user's session hash:
+After that, you need to get a [list of API keys](../resources/commons/api-keys.md#list) or create a new one using 
+the [/api/key/create](../resources/commons/api-keys.md#create) call with obtained user's session hash:
 
     {{ extra.api_example_url }}/api/key/list?hash=882fb333405d006df0d5a3f410115e92&title=Integration+Key
 
