@@ -27,7 +27,7 @@ In one user's account, you can have up to 20 API keys intended for different ext
 To distinguish keys from each other, you should give them meaningful names.
 
 !!! warning "Security"
-    Do not publish API keys anywhere. having a key, you can perform almost any action in the 
+    Do not publish API keys anywhere. Having a key, you can perform almost any action in the 
     user's account. Make API calls only over HTTPS because the key is transmitted in cleartext.
 
 ***
