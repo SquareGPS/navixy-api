@@ -1,6 +1,6 @@
 ---
 title: How to send commands to devices via GPRS
-description: How to send commands to devices via GPRS channel with user hash
+description: How to send commands to devices via GPRS channel
 ---
 
 # How to send commands to device via GPRS
