@@ -1416,7 +1416,6 @@ Common parameters are:
 | device_id | **Must** be specified if device model uses fixed device id. See [tracker/list_models](#list_models). | string | "4568005588562" |
 | plugin_id | An id of a registration plugin which will be used to register the device. See [Registration plugins](../../commons/plugin/index.md). | int | 37 |
 | send_register_commands | Indicates send or not to send activation commands to a new device (via SMS or GPRS channel). If parameter is not specified or equals `null` will be used the platform settings. Default: `null`. | boolean | true/false |
-| keep_settings | Indicates keep setting  or reset to defaults. Default value: `true` | boolean |
 
 #### examples
 
@@ -1497,7 +1496,6 @@ The replacement device must be preconfigured. This API call can be used only for
 | :------ | :------ | :----- | :----- |
 | tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
 | imei | IMEI of the new device | string | "35645587458999" |
-| keep_settings | Indicates keep setting  or reset to defaults. Default value: `true` | boolean |
 
 #### examples
 
