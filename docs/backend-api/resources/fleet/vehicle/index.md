@@ -16,12 +16,14 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 {
     "id": 222,
     "tracker_id": 1,
+    "tracker_label": "Jimi LL301",
     "label": "AGV",
     "max_speed": 90,
     "model": "Renault KERAX",
     "type": "truck",
     "subtype": "tractor",
-    "garage_id": null,
+    "garage_id": 1,
+    "garage_organization_name": "Fleet Systems",
     "trailer" : "trailer1",
     "manufacture_year" : 2001,
     "color" : "some color",
@@ -56,12 +58,14 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 
 * `id` - int. An id of a vehicle.
 * `tracker_id` - int. An id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.
+* `tracker_label` - optional string. Tracker's label.
 * `label` - string. Vehicle's label.
 * `max_speed` - int. Maximum speed of a vehicle.
 * `model` - string. Vehicle's model.
 * `type`  [enum](../../../getting-started.md#data-types). Vehicle's type. Can be "truck" | "car" | "bus" | "special".
 * `subtype` - optional [enum](../../../getting-started.md#data-types). Depends on type, null means undefined. Possible subtypes listed below.
 * `garage_id` - nullable int. An id of a garage.
+* `garage_organization_name` - optional string. Garage organization name.
 * `trailer` - optional string. Information about a trailer.
 * `manufacture_year` - optional int. Manufacture year of a vehicle.
 * `color` - optional string. Not RGB. A color of a vehicle.
@@ -200,6 +204,15 @@ Deletes a vehicle with the specified id.
 
 Gets all vehicles belonging to user.
 
+##### parameters
+
+| name  | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | type |
+|:------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :----- |
+| limit | Pagination. Maximum number of vehicle records to return.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | int |
+| offset | Pagination. Get vehicles starting from.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | int |
+| sort | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["type=desc","label=acs"]`. Maximum 2 options in request. Available properties:<br/> - id<br/> - label<br/> - reg_number<br/> - model<br/> - type<br/> - garage_organization_name<br/> - vin<br/> - tracker_label<br/> - fuel_type<br/> - fuel_grade<br/> - norm_avg_fuel_consumption<br/> - fuel_tank_volume<br/> - payload_weight<br/> - chassis_number<br/> - subtype<br/> - wheel_arrangement<br/> - tyres_number<br/> - tyres_size<br/> - max_speed<br/> - passengers<br/> | string array |
+| filter | Optional. Filter vehicles by VIN, reg_number or label. Maximum 100 characters or null.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | string |
+
 #### examples
 
 === "cURL"
@@ -224,12 +237,14 @@ Gets all vehicles belonging to user.
     "list": [{
         "id": 222,
         "tracker_id": 1,
+        "tracker_label": "Jimi LL301",
         "label": "AGV",
         "max_speed": 90,
         "model": "Renault KERAX",
         "type": "truck",
         "subtype": "tractor",
-        "garage_id": null,
+        "garage_id": 1,
+        "garage_organization_name": "Fleet Systems",
         "trailer" : "trailer1",
         "manufacture_year" : 2001,
         "color" : "some color",
