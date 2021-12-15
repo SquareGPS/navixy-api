@@ -7,7 +7,7 @@ description: Contains field object description and API calls to interact with it
 
 Contains field object description and API calls to interact with it.
 
-<hr>
+***
 
 ## Field object
 
@@ -26,7 +26,7 @@ Contains field object description and API calls to interact with it.
 * `label` -  string. Name of the field.
 * `type` - [enum](../../../getting-started.md#data-types). Type of field, see below.
 * `required` - boolean. Whether field required to be filled or not.
-* `description` - string. Additional info about the field, max 250 characters.
+* `description` - string. Additional info about the field, max 512 characters.
 * `params` - object. Type-specific parameters. If no specific params, this field should be omitted.
 
 **field types**:
@@ -60,7 +60,7 @@ and a [place](../../field_service/place/index.md) has a custom field of type "re
 such place will be available in the mobile app to view.
 Thus, field employee can view all places assigned to him to visit them, etc.
 
-<hr>
+***
 
 ## Fields actions
 
@@ -115,7 +115,7 @@ obtained from [entity/list](./index.md#list).
 
 * 201 - Not found in the database - if there is no entity with such ID.
 
-<hr>
+***
 
 ### update(entity_id, fields, delete_missing)
 

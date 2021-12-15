@@ -19,7 +19,7 @@ There are several ways:
 In each of these cases, a GitHub account required.
 If you don't want to register on GitHub, you can just [contact us](./contacts.md) with any convenient way.
 
-<hr>
+***
 
 ### Easy way
 
@@ -43,7 +43,7 @@ We will review your pull request and accept it in the main branch.
 Thus, this method is only suitable for simple edits on one page.
 There is [another way](#second-way) to create pull requests to fix multiple pages at once.
 
-<hr>
+***
 
 ### Second way
 
@@ -59,7 +59,7 @@ This method allows you to make several edits on different pages before proposing
 
 After review and pull request will be merged, and you can drop a fork.
 
-<hr>
+***
 
 ### Hard way
 
@@ -94,7 +94,7 @@ This method involves installing the Git, IDE, Python and
 1. After the PR has been reviewed and merged to upstream you can remove
    branch and rebase a fork to the upstream.
 
-<hr>
+***
 
 ## Introduction into Mkdocs
 
@@ -102,7 +102,7 @@ This documentation built on [mkdocs engine](https://mkdocs.org) and [mkdocs-mate
 Firstly, read [how to layout and write your Markdown source files](https://mkdocs.org/user-guide/writing-your-docs)
 for an overview of how to write docs.
 
-<hr>
+***
 
 ### Menu
 
@@ -113,16 +113,16 @@ For example:
 ```yaml
 title: Backend API
 nav:
-    - getting-started.md
-    - how-to
-    - resources
-    - websocket
+  - getting-started.md
+  - how-to
+  - resources
+  - websocket
 ```
 
 `title` sets the name for menu section. 
 `nav:` sets the sub-items order.
 
-<hr>
+***
 
 ### Meta information
 
@@ -138,14 +138,14 @@ description: Get involved into improving documentation and translations of the N
 
 Title will be displayed in menu and in browser title.
 
-<hr>
+***
 
 ### Headers
 
 The information on each page should be structured. On pages of the same type, 
 the structure should be uniform.
 
-<hr>
+***
 
 ### Example
 

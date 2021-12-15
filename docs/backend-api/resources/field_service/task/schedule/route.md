@@ -7,7 +7,7 @@ description: These actions allow creating scheduled routes similarly to regular 
 
 These actions allow creating scheduled routes similarly to regular routes.
 
-<hr>
+***
 
 ## API actions
 
@@ -49,7 +49,7 @@ Creates route schedule with checkpoints.
 
 [General](../../../../getting-started.md#error-codes) types.
 
-<hr>
+***
 
 ### delete
 
@@ -89,7 +89,7 @@ Deletes route schedule with checkpoints.
 
 [General](../../../../getting-started.md#error-codes) types.
 
-<hr>
+***
 
 ### update
 

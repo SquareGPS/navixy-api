@@ -7,7 +7,7 @@ description: Contains user audit check-in method that calls when user opens UI.
 
 Contains user audit check-in method that calls when user opens UI.
 
-<hr>
+***
 
 ## API actions
 
@@ -16,6 +16,7 @@ API path: `/user/audit`.
 ### checkin
 
 This method calls when user opens UI.
+Works only with standard user session (not with API key).
 
 #### parameters
 

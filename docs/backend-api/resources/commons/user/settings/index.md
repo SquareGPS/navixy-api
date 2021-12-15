@@ -7,7 +7,7 @@ description: CRUD actions for user settings.
 
 CRUD actions for user settings.
 
-<hr>
+***
 
 ## settings object
 
@@ -24,7 +24,7 @@ CRUD actions for user settings.
 
 * `time_zone` - [enum](../../../../getting-started.md#data-types). ISO timezone id.
 * `locale` - [enum](../../../../getting-started.md#data-types). Locale code.
-* `measurement_system` - [enum](../../../../getting-started.md#data-types). Measurement system. Can be "metric", "imperial", "us" or "metric_gal_us".
+* `measurement_system` - [enum](../../../../getting-started.md#data-types). Measurement system. Can be "metric", "imperial", "us", "metric_gal_us" or "nautical".
 * `geocoder` - [enum](../../../../getting-started.md#data-types). Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq".
 * `route_provider` - [enum](../../../../getting-started.md#data-types). Preferred route finding provider. Can be "google", "progorod" or "osrm".
 * `translit` - boolean. `true` if sms notification should be transliterated, `false` otherwise.
@@ -49,7 +49,7 @@ CRUD actions for user settings.
 
 * `auto_overwrite` - boolean. If `true` new files will replace old ones when file storage is full. Default is `false`.
 
-<hr>
+***
 
 ## API actions
 
@@ -61,7 +61,7 @@ Reads current user's settings.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -109,7 +109,7 @@ Only session `hash`.
 
 **required sub-user rights** for `balance_alert_settings` and `file_storage_settings` fields: `admin` (available only to master users).
 
-<hr>
+***
 
 ### update
 
@@ -123,7 +123,7 @@ Update current user's settings.
 | :----- | :-----  | :----- |
 | time_zone | ISO timezone id. | [enum](../../../../getting-started.md#data-types) |
 | locale | Locale code. | [enum](../../../../getting-started.md#data-types) |
-| measurement_system | Measurement system. Can be "metric", "imperial", "us" or "metric_gal_us". | [enum](../../../../getting-started.md#data-types) |
+| measurement_system | Measurement system. Can be "metric", "imperial", "us", "metric_gal_us" or "nautical". | [enum](../../../../getting-started.md#data-types) |
 | geocoder | Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq". | [enum](../../../../getting-started.md#data-types) |
 | route_provider | Preferred route finding provider. Can be "google", "progorod" or "osrm". | [enum](../../../../getting-started.md#data-types) |
 | translit | `true` if sms notification should be transliterated, `false` otherwise. | boolean |
@@ -150,7 +150,7 @@ Update current user's settings.
 
 * [General](../../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### file_storage/update
 

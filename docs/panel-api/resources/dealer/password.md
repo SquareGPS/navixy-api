@@ -7,7 +7,7 @@ description: API call to update dealer's password.
 
 API call to update dealer's password.
 
-<hr>
+***
 
 ## API actions
 
@@ -46,5 +46,5 @@ Changes password for the authorized dealer.
 
 #### errors
 
-* 225 - New password must be different - if `old_password` = `new_password`.
+* 245 - New password must be different - if `old_password` = `new_password`.
 * 248 - Wrong password - if `old_password` is wrong.

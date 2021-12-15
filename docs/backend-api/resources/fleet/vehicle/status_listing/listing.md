@@ -10,7 +10,7 @@ description: Contains vehicle status listing object and API calls to interact wi
 
 Contains vehicle status listing object and API calls to interact with it.
 
-<hr>
+***
 
 ## Vehicle status listing object
 
@@ -28,7 +28,7 @@ Contains vehicle status listing object and API calls to interact with it.
 * `label` - string. Status's name (description).
 * `color` - string. RGB-color.
 
-<hr>
+***
 
 ## API actions
 
@@ -72,7 +72,7 @@ Gets all of user's vehicle statuses.
 
 [General](../../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### update
 

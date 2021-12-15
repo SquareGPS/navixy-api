@@ -8,7 +8,7 @@ description: This resource will describe - how to get information from tracker s
 Devices can be used not only to track GPS location. They can provide information about mileage, engine hours, measured
 from sensors like fuel level and temperature. All API calls to interact with devices can be found in tracking/tracker branch.
 
-<hr>
+***
 
 ## Counters
 
@@ -58,7 +58,7 @@ Engine hours:
 
 The platform will notify you about success in reply.
 
-<hr>
+***
 
 ### Getting values from counter
 
@@ -68,7 +68,7 @@ If necessary to get information from only specific counter type and one device t
 call will be suitable.
 The same information can be obtained for the list of devices . In this case use [value/list](../resources/tracking/tracker/counter.md#valuelist) call.
 
-<hr>
+***
 
 ### Counter values for a history period
 
@@ -105,7 +105,7 @@ return JSON with the next information:
     }
     ```
 
-<hr>
+***
 
 ### Counted mileage and engine hours for a period
 
@@ -113,7 +113,7 @@ Sometimes we need counted values for a period, for example, how many kilometers 
 the engine was on. In this case we should use [stats/mileage](../resources/tracking/tracker/stats/stats_mileage.md) or 
 [stats/engine_hours](../resources/tracking/tracker/stats/stats_engine_hours.md) calls.
 
-<hr>
+***
 
 ## Sensors
 
@@ -140,7 +140,7 @@ Full sensor creation has several steps:
 3. If this is an analog sensor, or it is a sensor that sends data in uncalibrated values (for example, fuel sensor that
    sends percents instead of liters) - it should be [calibrated](../resources/tracking/tracker/sensor/calibration_data.md).
    
-<hr>
+***
 
 ### Getting values from sensors
 
@@ -152,7 +152,7 @@ in the sensors readings, OBD & CAN and Fuel level widgets. For every widget we h
 * Data from the fuel sensors can be obtained using [get_fuel](../resources/tracking/tracker/index.md#get_fuel) call.
 * Readings from metering not CAN, OBD and fuel sensors mey be received with [get_readings](../resources/tracking/tracker/index.md#get_readings) call.
 
-<hr>
+***
 
 ### Getting values from all sensors and states
 

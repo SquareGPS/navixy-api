@@ -7,7 +7,7 @@ description: Contains API calls to interact with tracks and for getting all trac
 
 Contains API calls to interact with tracks and for getting tracks' points.
 
-<hr>
+***
 
 ## API actions
 
@@ -26,7 +26,8 @@ Downloads track points as KML/KMZ file for the specified track ID, tracker and t
 | to | To date/time. Specified date must be after "from" date. | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 06:24:00"` |
 | track_ids | Optional. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned. | int array | `[123456, 234567]` | 
 | include_gsm_lbs | Optional. If `false` && track_ids not specified, GSM LBS points will be filtered out. Default=`true`. | boolean | `true` |
-| point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. | int | `300` |
+| simplify | Optional. If `true` the returned track will be simplified. Default=`true`. | boolean | `true` |
+| point_limit | Optional. If specified and `simplify=true`, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. It is not a hard limit, returned track may contain more points.| int | `300` |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | `true` |
 | format | File format, "kml" or "kmz", default is "kml". | [enum](../../../getting-started.md#data-types) | `"kml"` |
 | split | If `true`, split tracks by folders with start/end placemarks and track line. Default=`false`. | boolean | `false` |
@@ -60,7 +61,7 @@ KML/KMZ file or JSON response if requested time period exceeds limit specified i
 * 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified 
 in API config).
 
-<hr>
+***
 
 ### list
 
@@ -136,7 +137,8 @@ where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
 * `event_count` - int. Number of events on this track. Field will be omitted if "count_events" is `false`.
 * `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle bound to tracker 
 or no normAvgFuelConsumption defined in a vehicle.
-* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
+  Used to distinguish this track type (`regular`) from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
 
 `single_report` object. Returned if device was creating reports in "interval" mode (e.g. M7 tracker in interval mode):
@@ -144,21 +146,22 @@ or no normAvgFuelConsumption defined in a vehicle.
 ```json
 {
     "id": 123456,
-    "type": "single_report",
     "start_date": "2020-09-24 03:39:44",
     "start_address": "1255 6th Ave, New York, NY 10020, USA",
     "avg_speed": 34,
     "gsm_lbs": false,
+    "type": "single_report",
     "precision": 10
 }
 ```
 
 * `id` - int. Track id.
-* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
 * `start_date` - [date/time](../../../getting-started.md#data-types). Point creation date, in user's timezone e.g. "2011-06-18 03:39:44".
 * `start_address` - string. Point address.
 * `avg_speed` - int. Average speed in km/h, e.g. 70.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`.
+  Used to distinguish this track type (`single_report`) from the others.
 * `precision` - optional int. Location precision, meters.
 
 
@@ -192,7 +195,8 @@ or no normAvgFuelConsumption defined in a vehicle.
 * `event_count` - int. Number of events on this track. Field will be omitted if "count_events" is `false`.
 * `norm_fuel_consumed` - float. A consumed fuel on track, litres. Field will be omitted if no vehicle bound to tracker 
 or no normAvgFuelConsumption defined in a vehicle.
-* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
+  Used to distinguish this track type (`merged`) from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS flag.
 
 `cluster` object. Only returned if "split" is set to `true`:
@@ -214,7 +218,8 @@ or no normAvgFuelConsumption defined in a vehicle.
 * `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
 * `precision` - optional int. Location precision, meters.
 * `points` - array of points in a cluster.
-* `type` - [enum](../../../getting-started.md#data-types). Used to distinguish this track type from the others. 
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
+  Used to distinguish this track type (`cluster`) from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS flag, true if cluster contains only GSM LBS points.
 
 #### errors
@@ -224,7 +229,7 @@ or no normAvgFuelConsumption defined in a vehicle.
 * 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified in 
 API config).
 
-<hr>
+***
 
 ### read
 
@@ -239,7 +244,8 @@ Gets track points for the specified track ID, tracker and time period.
 | to | To date/time. Specified date must be after "from" date. | [date/time](../../../getting-started.md#datetime-formats) | "2020-09-23 06:24:00" |
 | track_id | Optional. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned. | int | 234567 |
 | include_gsm_lbs | Optional, default=`true`. If `false` && track_id not specified, GSM LBS points will be filtered out. | boolean | true |
-| point_limit | Optional. If specified, the returned track will be simplified to contain this number of points. Min=2, Max=3000. | int | 3000 |
+| simplify | Optional. If `true` the returned track will be simplified. Default=`true`. | boolean | `true` |
+| point_limit | Optional. If specified and `simplify=true`, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. It is not a hard limit, returned track may contain more points.| int | `300` |
 | filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. If `false` a response will contain parking points. | boolean | false |
 
 #### example

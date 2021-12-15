@@ -7,7 +7,7 @@ description: This resource contains information to download waybill report for t
 
 This resource contains information to download waybill report for tracks.
 
-<hr>
+***
 
 ## API actions
 

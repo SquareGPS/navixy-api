@@ -8,7 +8,7 @@ description: Contains search conditions object description and condition types. 
 Contains search conditions object description and condition types.<br> 
 Search conditions used to search and filter list of certain entities by built-in and/or custom fields.
 
-<hr>
+***
 
 ## Search conditions object
 
@@ -43,7 +43,7 @@ Thus, boolean operations such as `AND` or `OR` can be applied to them. All condi
 
 !!!warning "A maximum of 72 conditions can be used at once, including nested conditions."
 
-<hr>
+***
 
 ### Condition types
 
@@ -67,7 +67,7 @@ Evaluates all specified conditions and joins them using `AND` boolean operator.
 }
 ```
 
-<hr>
+***
 
 #### "Or" condition
 
@@ -89,7 +89,7 @@ Evaluates all specified conditions and joins them using `OR` boolean operator.
 }
 ```
 
-<hr>
+***
 
 #### "Number equals" condition
 
@@ -108,7 +108,7 @@ Checks if specified field is equal to provided number value. Works for text fiel
 * `value` - int. Number value to which field matched against. Can be decimal. Must be between `-2^63` and `2^63-1`. No 
 more than 6 fractions digits.
 
-<hr>
+***
 
 #### "Contains string" condition
 

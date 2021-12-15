@@ -7,7 +7,7 @@ description: Contains API call to get APN settings by tracker ID.
 This resource contains API call to get APN settings by tracker ID. APN is short of Access Point Name and provides a device 
 with the information needed to connect to wireless service. 
 
-<hr>
+***
 
 ## API actions
 

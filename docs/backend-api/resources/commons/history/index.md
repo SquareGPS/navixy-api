@@ -7,7 +7,7 @@ description: Contains history entry object description and API calls to interact
 
 Contains history entry object description and API calls to interact with it.
 
-<hr>
+***
 
 ## Tracker history entry
 
@@ -37,7 +37,8 @@ Contains history entry object description and API calls to interact with it.
         "place_ids": null,
         "last_known_location": false,
         "tracker_label": "Tracker label",
-        "emergency": false
+        "emergency": false,
+        "employee_id": 4563
     }
 }
 ```
@@ -62,11 +63,12 @@ Contains history entry object description and API calls to interact with it.
     * `place_ids` - int. Related place identifiers.
     * `last_known_location` - boolean. `true` if location may be outdated.
     * `tracker_label` - string. Tracker label.
-    * `emergency` - boolean. `true` for emergency events with the same flag in a rule. 
+    * `emergency` - boolean. `true` for emergency events with the same flag in a rule.
+    * `employee_id` - int. Driver ID at the time of the event.
 
 Date/time type described in [data types description section](../../../getting-started.md#data-types).
 
-<hr>
+***
 
 ## API actions
 
@@ -129,7 +131,8 @@ Returns history entry with the specified id.
              "place_ids": null,
              "last_known_location": false,
              "tracker_label": "Tracker label",
-             "emergency": false
+             "emergency": false,
+             "employee_id": 4563
          }
     }
 }
@@ -139,7 +142,7 @@ Returns history entry with the specified id.
 
 * 201 – Not found in the database - when there are no history entries with that id.
 
-<hr>
+***
 
 ### mark_read
 
@@ -177,7 +180,7 @@ Marks history entry as read by `id` (see: [Tracker history entry](#tracker-histo
 
 * 201 – Not found in the database - when there are no history entries with that id.
 
-<hr>
+***
 
 ### mark_read_all
 
@@ -185,7 +188,7 @@ Marks all the user's history entries read.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

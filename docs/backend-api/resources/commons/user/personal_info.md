@@ -7,7 +7,7 @@ description: Contains user personal info update API call.
 
 Contains user personal info update API call.
 
-<hr>
+***
 
 ## API actions
 

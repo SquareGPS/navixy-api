@@ -7,7 +7,7 @@ description: Bill object description and API calls for work with user's bills.
 
 Bill object description and API calls for work with user's bills.
 
-<hr>
+***
 
 ## Bill object
 
@@ -32,7 +32,7 @@ Bill object description and API calls for work with user's bills.
 * `positions` - string array. List of position names. Usually contains one element for a bill.
 * `link` - string. URL to order.
 
-<hr>
+***
 
 ## API actions
 
@@ -76,7 +76,7 @@ Creates a new bill for the user.
 
 * 222 – Plugin not found - when plugin **29** not available for user.
 
-<hr>
+***
 
 ### list
 

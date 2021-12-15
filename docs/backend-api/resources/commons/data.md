@@ -7,7 +7,7 @@ description: API call to parse the spreadsheet data
 
 API call to parse the spreadsheet data.
 
-<hr>
+***
 
 ### /data/spreadsheet/parse
 

@@ -7,7 +7,7 @@ description: API call for getting the route to destination point.
 
 API call for getting the route to destination point.
 
-<hr>
+***
 
 ## API actions
 

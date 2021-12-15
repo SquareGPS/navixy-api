@@ -9,7 +9,7 @@ Contains status object and API calls to interact with them. Working statuses use
 fact, of tracking devices owned by employees). The simplest example is "busy" | "not busy". This is a status listing 
 consisting of two elements. Different trackers can be assigned different status lists.
 
-<hr>
+***
 
 ## Status object structure
 
@@ -25,7 +25,7 @@ consisting of two elements. Different trackers can be assigned different status 
 * `label` - string. Human-readable label for the working status.
 * `color` - string. Hex-representation of RGB color used to display this working status.
 
-<hr>
+***
 
 ## API actions
 
@@ -72,7 +72,7 @@ Creates new possible working status for the specified working status list.
 available.
 * 268 - Over quota – if the user's quota for working statuses exceeded.
 
-<hr>
+***
 
 ### delete
 
@@ -114,7 +114,7 @@ Deletes working status entry.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
 available.
 
-<hr>
+***
 
 ### list
 
@@ -166,7 +166,7 @@ Gets working statuses belonging to the specified status list.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff 
 feature available.
 
-<hr>
+***
 
 ### update
 

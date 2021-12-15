@@ -9,7 +9,7 @@ description: Calls to work with "delivery" type sessions. Those are special sess
 Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
 tracking functionality into external systems.
 
-<hr>
+***
 
 ## API actions
 
@@ -24,7 +24,7 @@ In demo session allowed to create a new session only if it not already exists.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -51,14 +51,14 @@ Only session `hash`.
 }
 ```
 
-* `value` - string. Created session hash key.
+* `value` - string. Created delivery session hash key.
 
 #### errors
 
 * 101 - In demo mode this function disabled – current session is demo but weblocator session already exists.
 * 236 – Feature unavailable due to tariff restrictions.
 
-<hr>
+***
 
 ### read
 
@@ -66,7 +66,7 @@ Returns current user delivery session key.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -93,7 +93,7 @@ Only session `hash`.
 }
 ```
 
-* `value` - string. Session hash key.
+* `value` - string. Delivery session hash.
 
 #### errors
 

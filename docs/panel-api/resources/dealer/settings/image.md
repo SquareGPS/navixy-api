@@ -7,7 +7,7 @@ description: API calls for interaction with images that used for branding of the
 
 API calls for interaction with images that used for branding of the panel.
 
-<hr>
+***
 
 ## API actions
 
@@ -53,7 +53,7 @@ Deletes an image of specified `type`.
 
 * 201 - Not found in the database - when there are no settings for a dealer in the db.
 
-<hr>
+***
 
 ### upload
 
@@ -64,10 +64,12 @@ with one of the parts being an image file upload (with the name "file").
 
 File part **mime** type must be one of:
 
-* **image/jpeg** or **image/pjpeg**
-* **image/png**
-* **image/gif**
-* **image/x-icon** (for favicon type)
+* `image/jpeg`
+* `image/pjpeg`
+* `image/png`
+* `image/gif`
+* `image/webp`
+* `image/x-icon` (for favicon type)
 
 *required permissions*: `service_settings: "update"`.
 

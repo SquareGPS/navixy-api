@@ -7,7 +7,7 @@ description: Payment system settings object and API calls for working with payme
 
 Payment system settings object and API calls for working with payment systems and make payments.
 
-<hr>
+***
 
 ## Payment system settings object
 
@@ -38,7 +38,7 @@ Payment system settings object and API calls for working with payment systems an
 * `methods` - optional string array. List of available payment methods (it may be empty).
 * `prices` - optional object with prices. For type == `ios_inapp` only.
 
-<hr>
+***
 
 ## API actions
 
@@ -89,7 +89,7 @@ Returns list of payment systems available for specified user.
 
 * 201 – Not found in the database.
 
-<hr>
+***
 
 ### estimate/get
 
@@ -124,7 +124,7 @@ Returns the estimate of the monthly payment amount
 
 * `value` - float. Payment amount, rounded up to hundreds for rubles or to tens for other currencies.
 
-<hr>
+***
 
 ### mobile/pay
 

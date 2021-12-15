@@ -1,0 +1,14 @@
+root = true
+
+[*]
+charset = utf-8
+indent_size = 2
+tab_width = 2
+end_of_line = lf
+trim_trailing_whitespace = true
+
+[*.bat]
+end_of_line = crlf
+
+[*.md]
+trim_trailing_whitespace = false

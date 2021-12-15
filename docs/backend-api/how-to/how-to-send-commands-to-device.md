@@ -1,6 +1,6 @@
 ---
 title: How to send commands to devices via GPRS
-description: How to send commands to devices via GPRS channel with user hash
+description: How to send commands to devices via GPRS channel
 ---
 
 # How to send commands to device via GPRS
@@ -12,7 +12,7 @@ devices from the UI by users. Also, that app can allow users to customize comman
 Another way of usage is to bind commands sending to the rules, status changing, some parameters triggering. The count of
 possible variations is great.
 
-<hr>
+***
 
 ## Sending of a command
 

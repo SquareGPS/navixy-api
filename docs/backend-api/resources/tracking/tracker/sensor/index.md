@@ -7,7 +7,7 @@ description: API calls to interact with sensors.
 
 Contains API calls to interact with sensors.
 
-<hr>
+***
 
 ## Sensor sub-types:
 
@@ -53,7 +53,7 @@ Contains API calls to interact with sensors.
     * `max_lowering_by_time` - optional. Double. Max legal value lowering per hour.
     * `max_lowering_by_mileage` - optional. Double. Max legal value lowering per 100 km.
 
-<hr>
+***
 
 ### Discrete input
 
@@ -72,7 +72,7 @@ Contains API calls to interact with sensors.
 * `name` - string.
 * `input_number` - int. Assigned input number.
 
-<hr>
+***
 
 ## API actions
 
@@ -120,7 +120,7 @@ Contains a map, where keys are IDs from **trackers** parameter and values are li
 * 217 - List contains nonexistent entities -  if one of `trackers` either does not exist or is blocked.
 * 221 - Device limit exceeded - if too many ids were passed in `trackers` parameter.
 
-<hr>
+***
 
 ### create
 
@@ -164,7 +164,7 @@ in use.
 * 219 - Not allowed for clones of the device – if tracker is clone.
 * 270 - Too many sensors of same type - the number of tracker's sensors, having same `sensor_type` is limited.
 
-<hr>
+***
 
 ### delete
 
@@ -207,7 +207,7 @@ Deletes a sensor with `sensor_id` from the database.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 – Not allowed for clones of the device - if tracker is clone.
 
-<hr>
+***
 
 ### list
 
@@ -260,7 +260,7 @@ List tracker sensors bound to tracker with specified id (`tracker_id` parameter)
 
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 
-<hr>
+***
 
 ### update
 
@@ -299,7 +299,7 @@ in use.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 * 219 - Not allowed for clones of the device – if tracker is clone.
 
-<hr>
+***
 
 ### batch_copy
 

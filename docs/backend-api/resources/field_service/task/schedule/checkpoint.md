@@ -7,7 +7,7 @@ description: API actions for manipulating schedule checkpoint entries similarly 
 
 These actions allow manipulating schedule checkpoint entries similarly to regular route checkpoints.
 
-<hr>
+***
 
 ## API actions
 
@@ -51,7 +51,7 @@ at least two checkpoints.
 
 [General](../../../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### transmute
 

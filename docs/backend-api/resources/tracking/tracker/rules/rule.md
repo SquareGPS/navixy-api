@@ -8,7 +8,7 @@ description: API calls to interact with tracker's rules. Rules used to set up co
 Contains API calls to interact with tracker's rules. Rules used to set up conditions according to which the system logs
 the events and sends notifications to user.
 
-<hr>
+***
 
 ## Rule object
 
@@ -103,7 +103,7 @@ the events and sends notifications to user.
 * `date/time` and `local_time` types described at 
 the [data types description section](../../../../getting-started.md#data-types).
 
-<hr>
+***
 
 ## API actions
 
@@ -142,7 +142,7 @@ Binds rule with `rule_id` to trackers list.
 
 * 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
 
-<hr>
+***
 
 ### create
 
@@ -192,7 +192,7 @@ Creates rule and scheduled intervals.
 
 * 204 - Entity not found – when associated zone is not exist.
 
-<hr>
+***
 
 ### delete
 
@@ -232,7 +232,7 @@ Deletes rule with rule_id and all related objects from the database.
 
 * 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
 
-<hr>
+***
 
 ### list
 
@@ -295,7 +295,7 @@ List tracker rules bound to tracker with an id=`tracker_id` or all users' tracke
 
 * `list` - list of rules
 
-<hr>
+***
 
 ### unbind
 
@@ -330,7 +330,7 @@ Unbinds trackers from rule with `rule_id`.
 
 * 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
 
-<hr>
+***
 
 ### update
 

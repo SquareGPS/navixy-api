@@ -7,7 +7,7 @@ description: Contains API calls to health-check and send email.
 
 Contains API calls to health-check and send email.
 
-<hr>
+***
 
 ## API actions
 
@@ -19,7 +19,7 @@ The report for health-check. It will do nothing.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 
@@ -47,7 +47,7 @@ Only session `hash`.
 
 * [General](../../getting-started.md#error-codes) types only.
 
-<hr>
+***
 
 ### send_email
 

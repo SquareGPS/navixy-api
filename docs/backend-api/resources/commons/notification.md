@@ -7,7 +7,7 @@ description: Contains an API call to get list of user notifications.
 
 Contains an API call to get list of user notifications.
 
-<hr>
+***
 
 ## API actions
 
@@ -19,7 +19,7 @@ Lists user notifications.
 
 #### parameters
 
-Only session `hash`.
+Only API key `hash`.
 
 #### examples
 

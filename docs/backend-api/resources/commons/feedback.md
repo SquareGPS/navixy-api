@@ -7,7 +7,7 @@ description: Contains feedback object and API call to send a feedback email, ask
 
 Contains feedback object API call to send a feedback email, ask for help or suggest a new feature.
 
-<hr>
+***
 
 ## Feedback object
 
@@ -27,7 +27,7 @@ Contains feedback object API call to send a feedback email, ask for help or sugg
 * `screenshots` - optional string array. base64-encoded data:url image, example: data:image/jpeg;base64,`[encoded image]`.
 * `log` - optional log file. Contains log of the browser.
 
-<hr>
+***
 
 ## API actions
 

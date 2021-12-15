@@ -12,7 +12,7 @@ Each API resource semantically corresponds to some entity, for example:
 geofences, rules, objects, etc. The API calls for CRUD and other operations 
 with these entities have similar names regardless the resource used: list, read, create, delete.
 
-<hr>
+***
 
 ## Standard workflow (example)
 
@@ -20,7 +20,7 @@ Let's describe the standard workflow for API developer using very simple and mos
 common example — requesting the track points data:
 
 1.  Determine [URL to API calls](#api-base-url).
-1.  [Obtain session hash](./how-to/get-session-hash.md)
+1.  [Obtain hash of an API key](./how-to/get-api-key.md)
 1.  Get objects lists with [`tracker/list`](./how-to/get-tracker-list.md).
 1.  Get track lists with [`track/list`](./resources/tracking/track/index.md#list).
 1.  Get the track itself: [`track/read`](./resources/tracking/track/index.md#read).
@@ -28,7 +28,7 @@ common example — requesting the track points data:
 In other words, to start working with API, the developers should have API call 
 description (as provided herein), and know user login and password.
 
-<hr>
+***
 
 ## API base URL
 
@@ -43,7 +43,7 @@ API call on the European Navixy ServerMate, you should use the URL:
 
     https://api.eu.navixy.com/v2/user/auth
 
-<hr>
+***
 
 ## API calls format
 
@@ -86,7 +86,7 @@ Parameters can be passed in the:
     $ curl '[api_base_url]/resource/sub_resource/action?param1=value1&hash=a6aa75587e5c59c32d347da438505fc3'
     ```
 
-!!! warning "[Hash](./how-to/get-session-hash.md) is required for most API calls to identify user."
+!!! warning "[Hash of an API key](./how-to/get-api-key.md) is required for most API calls to identify user."
 
 Typical actions:
 
@@ -95,7 +95,7 @@ Typical actions:
 *   `update` – update one entity by ID
 *   `delete` – delete one entity by ID
 
-<hr>
+***
 
 ### Request and response format
 
@@ -178,12 +178,12 @@ Or error if hash is wrong:
   "success": false,
   "status": {
     "code": 4,
-    "description": "User not found or session ended"
+    "description": "User or API key not found or session ended"
   }
 }
 ```
 
-<hr>
+***
 
 ### HTTP codes
 
@@ -191,11 +191,11 @@ If `success` is `true`, HTTP code is always `200 OK` (unless otherwise stated).
 If there is an error, HTTP code is `400 BAD REQUEST` (may vary depending on error type) 
 (see [error](#error-codes)).
 
-<hr>
+***
 
 ### Authorization and access levels
 
-Unless otherwise noted, every API call requires a valid user session hash
+Unless otherwise noted, every API call requires a valid API Key hash
 (A string containing 32 hexademical characters) that can be passed (in order of lookup priority):
 
 1. As `hash` parameter of the request body (root-level property for `application/json`).
@@ -209,26 +209,13 @@ Authorization: NVX SessionHashValue
 Following is pseudo-grammar that illustrates the construction of the `Authorization` request header:
 
 ```
-Authorization = "NVX" + " " + SessionHashValue ;
-SessionHashValue = 32 hexademical characters;
+Authorization = "NVX" + " " + ApiKeyHashValue ;
+ApiKeyValue = 32 hexademical characters;
 ```
 
-Session hash can be obtained via `user/auth` API call:
+Read [how to get an API key](./how-to/get-api-key.md).
 
-=== "cURL"
-    ```abap
-    $ curl -X POST '[api_base_url]/user/auth' \
-           -H 'Content-Type: application/json' \ 
-           -d '{"login": "demo", "password": "demo"}'
-    ```
-
-=== "GET"
-    This method is not recommended. Just for example:
-    ```abap
-    [api_base_url]/user/auth?login=demo&password=demo
-    ```
-
-<hr>
+***
 
 ### Data types
 
@@ -255,7 +242,7 @@ Session hash can be obtained via `user/auth` API call:
     country code, e.g. `en_US` or `ru`. User interface support only language codes: 
     `ru, en, es, ar, de, pt, ro and uk`.
     
-<hr>
+***
 
 #### Date/time formats
 
@@ -341,7 +328,7 @@ In the event of error occurs, the response will be in the following format:
 ```
 where `code` is one on the [error codes](#error-codes).
 
-<hr>
+***
 
 #### Error codes
 
@@ -352,8 +339,8 @@ are 1-100 and resource or action specific errors are 101-300.
 |--- |--- |--- |
 |1|Database error|500|
 |2|Service Auth error|403|
-|3|Wrong user hash||
-|4|User not found or session ended||
+|3|Wrong hash||
+|4|User or API key not found or session ended||
 |5|Wrong request format||
 |6|Unexpected error|500|
 |7|Invalid parameters||

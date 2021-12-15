@@ -1,5 +1,5 @@
 ---
-title: Device registration
+title: Register a device
 description: Instruction about device registration on the platform step by step.
 ---
 
@@ -28,7 +28,7 @@ is [here](https://www.navixy.com/docs/admin-panel-docs/activation-codes/).
      
 Step 3. Register the device using the [tracker/register](../resources/tracking/tracker/index.md#register) action.
 
-<hr>
+***
 
 ## Tracker registration
 
@@ -37,9 +37,9 @@ There is information about tracker registration with plugins 44 and 37.
 ### Common parameters
 
 * phone - device's phone number with country code and without `+` sign.
-* apn_name - this is the apn that depends on your device's SIM GSM carrier.
-* apn_user - it depends on your device's SIM too. нужно про пустые юзер и пассворд сделать, чтобы здесь написать. 
-* apn_password - this parameter depends on the GSM carrier as two previous parameters.
+* apn_name - this is the apn that depends on your device's SIM GSM carrier. Max length 40.
+* apn_user - it depends on your device's SIM too. Max length 40, can be empty.
+* apn_password - this parameter depends on the GSM carrier as two previous parameters. Max length 40, can be empty.
 * device_id - device's ID. What Id type is used in your device can be found with [list_models](../resources/tracking/tracker/index.md#list_models)
   action and [ID type field](../resources/tracking/tracker/index.md#id-type)
 * model - name of the model in the platform's code. It can be found in the [list_models](../resources/tracking/tracker/index.md#list_models) request too.
@@ -48,7 +48,7 @@ There is information about tracker registration with plugins 44 and 37.
 * plugin_id - what parameter ID to use. It must be listed in available [plugins list for the user](../resources/commons/plugin/index.md#list).
 * activation_code - optional string with activation code. Not necessary for plugin 44 and mandatory for plugin 37.
 
-<hr>
+***
 
 ### Using plugin id 44
 
@@ -100,7 +100,7 @@ After sending the platform will respond with the next information:
 
 * Tracker object fields described [here](../resources/tracking/tracker/index.md#tracker-object-structure).
 
-<hr>
+***
 
 ### Using plugin id 37
 
@@ -125,7 +125,7 @@ The API call will be the next:
 
 The platform will confirm with the same information as for plugin 44.
 
-<hr>
+***
 
 ## Mobile app registration
 
@@ -141,7 +141,7 @@ be specified in international format without `+` sign.
 * plugin_id - what parameter ID to use. It must be listed in available [plugins list for the user](../resources/commons/plugin/index.md#list).
 * activation_code - optional string with activation code. Not necessary for plugin 35 and mandatory for plugin 68.
 
-<hr>
+***
 
 ### Using parameter 35
 
@@ -188,7 +188,7 @@ The platform will notify us about success and with information about this device
 }
 ```
 
-<hr>
+***
 
 ### Using plugin id 68
 
@@ -210,7 +210,7 @@ If our user has mandatory activation codes (plugin 68) we should use this parame
 
 The platform will respond with the same information as for plugin 35.
 
-<hr>
+***
 
 ## The device doesn't register
 

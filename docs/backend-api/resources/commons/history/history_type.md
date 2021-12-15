@@ -7,7 +7,7 @@ description: Contains list method to get event types available to user with loca
 
 Contains list method to get event types available to user with localized descriptions.
 
-<hr>
+***
 
 ## API actions
 

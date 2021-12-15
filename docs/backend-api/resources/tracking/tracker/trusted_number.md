@@ -6,7 +6,7 @@ description: API calls to interact with list of trusted numbers for trackers.
 
 API calls to interact with list of trusted numbers for trackers.
 
-<hr>
+***
 
 ## API actions
 
@@ -54,7 +54,7 @@ Gets list of trusted numbers for the specified tracker.
 * 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-<hr>
+***
 
 ### update
 

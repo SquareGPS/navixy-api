@@ -9,7 +9,7 @@ To minimize transit time and costs, it may be beneficial to reorder route checkp
 is minimal. Our platform provides a way to perform such optimization. You don't even need to create route and checkpoints,
 you just provide data required to optimize and algorithm returns order in which points should be visited.
 
-<hr>
+***
 
 ## API actions
 

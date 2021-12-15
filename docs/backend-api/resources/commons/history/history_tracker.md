@@ -7,7 +7,7 @@ description: Contains list method to get tracker's events.
 
 Contains list method to get tracker's events.
 
-<hr>
+***
 
 ## API actions
 
@@ -75,7 +75,8 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
              "place_ids": null,
              "last_known_location": false,
              "tracker_label": "Tracker label",
-             "emergency": false
+             "emergency": false,
+             "employee_id": 4563
          }
     }],
     "limit_exceeded": false

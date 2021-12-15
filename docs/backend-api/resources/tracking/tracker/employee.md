@@ -8,7 +8,7 @@ description: API calls for assigning employee ("driver") to a device and reading
 Allows assigning employee ("driver") to a device. Also, read who is on a vehicle now, hardware key and when, where was 
 assigned. 
 
-<hr>
+***
 
 ## API actions
 
@@ -56,7 +56,7 @@ Assigns another employee ("driver") to the tracker.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 263 – No change needed, old and new values are the same - if new employee matches a currently assigned employee.
 
-<hr>
+***
 
 ### read
 

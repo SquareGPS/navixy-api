@@ -7,7 +7,13 @@ description: Contains a call to prolong user session.
 
 Contains a call to prolong user session.
 
-<hr>
+!!! warning "Session hash is deprecated"
+    To work with the API, it is necessary to use the [API key](../../api-keys.md), not the user's session hash.
+    Work with API through the user's session is deprecated and will be disabled in the future.
+    The only thing that API calls with a user session will work for is creating,
+    reading, and deleting API keys.
+
+***
 
 ## API actions
 
@@ -16,6 +22,7 @@ API path: `/user/session`.
 ### renew
 
 Prolongs current user session.
+Works only with standard user session (not with API key).
 
 #### parameters
 
