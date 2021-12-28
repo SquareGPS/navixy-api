@@ -14,16 +14,18 @@ audit object and list method to get the audit log.
 
 ```json
 {
-  "id":44504790,
+  "id": 44504790,
   "user_id": 3,
-  "subuser_id":184541,
-  "entry_category":"custom_field",
+  "subuser_id": 184541,
+  "entry_category": "custom_field",
   "entry_id": null,
-  "action":"create",
-  "payload":{"name":"Decimal number"},
-  "host":"94.140.138.215",
+  "action": "create",
+  "payload": {
+    "name": "Decimal number"
+  },
+  "host": "94.140.138.215",
   "user_agent": "Apache-HttpClient/4.1.1 (java 1.5)",
-  "action_date":"2020-12-21 17:54:01"
+  "action_date": "2020-12-21 17:54:01"
 }
 ```
 
@@ -86,19 +88,23 @@ If no sort param is specified, then sorting equivalent to option `["action_date=
 
 ```json
 {
-    "success": true,
-    "list": [{
-       "id":44504790,
-       "user_id": 3,
-       "subuser_id":184541,
-       "entry_category":"custom_field",
-       "entry_id": null,
-       "action":"create",
-       "payload":{"name":"Decimal number"},
-       "host":"94.140.138.215",
-       "user_agent": "Apache-HttpClient/4.1.1 (java 1.5)",
-       "action_date":"2020-12-21 17:54:01"
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 44504790,
+      "user_id": 3,
+      "subuser_id": 184541,
+      "entry_category": "custom_field",
+      "entry_id": null,
+      "action": "create",
+      "payload": {
+        "name": "Decimal number"
+      },
+      "host": "94.140.138.215",
+      "user_agent": "Apache-HttpClient/4.1.1 (java 1.5)",
+      "action_date": "2020-12-21 17:54:01"
+    }
+  ]
 }
 ```
 
