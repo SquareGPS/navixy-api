@@ -1460,12 +1460,12 @@ Replacement allows you to register a new device with history, sensors (optional)
 #### parameters
 
 !!! warning "Important"
-Because of the variety of tracker models and business applications, there are different ways to
-register a new tracker in our system. They are called [Registration plugins](../../commons/plugin/index.md).
-Each of registration plugins has its own set of additional parameters.
-
-In addition to parameters specified in this section, pass all parameters which are required by the
-plugin you have chosen. See example below.
+    Because of the variety of tracker models and business applications, there are different ways to
+    register a new tracker in our system. They are called [Registration plugins](../../commons/plugin/index.md).
+    Each of registration plugins has its own set of additional parameters.
+    <br/>
+    In addition to parameters specified in this section, pass all parameters which are required by the
+    plugin you have chosen. See example below.
 
 Common parameters are:
 
