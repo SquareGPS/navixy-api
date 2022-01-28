@@ -1,6 +1,6 @@
 ---
 title: App: Courier on the map
-description: **Delivery** is a special plugin which can be embedded to any other application or website and allows track user's task by external ID and bounded tracker in the real time.
+description: Delivery is a special plugin which can be embedded to any other application or website and allows track user's task by external ID and bounded tracker in the real time.
 ---
 
 # App: Courier on the map
