@@ -1,6 +1,6 @@
 ---
 title: App: Web Locator
-description: "Web Locator" is a special plugin which can be embedded to any other application or website and allows track user's objects on the map in real-time.
+description: Web Locator is a special plugin which can be embedded to any other application or website and allows track user's objects on the map in real-time.
 ---
 
 # App: Web Locator

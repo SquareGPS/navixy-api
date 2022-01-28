@@ -127,6 +127,8 @@ API base path: `/task`.
 * 255 – Invalid task state (if current task state is not "unassigned" or "assigned").
 * 236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks).
 
+***
+
 ### batch_convert
 
 Converts batch of tab-delimited tasks and return list of checked tasks with errors.
@@ -195,6 +197,8 @@ In case of location_check_mode==entity_location – vehicle_ids will be ignored.
 
 [General](../../../getting-started.md#error-codes) types only.
 
+***
+
 ### count
 
 Returns total number of tasks belonging to current user.
@@ -225,6 +229,8 @@ Returns total number of tasks belonging to current user.
 ```
 
 * `count` - int. Number of tasks.
+
+***
 
 ### create
 
@@ -305,6 +311,9 @@ will differ only by an id. Respectively, if the created task has to be connected
 * 201 – Not found in the database (if task.tracker_id is not null and belongs to nonexistent tracker).
 * 236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks).
 
+
+***
+
 ### delete
 
 Deletes the task with the specified id.
@@ -342,6 +351,8 @@ Deletes the task with the specified id.
 #### errors
 
 * 201 – Not found in the database (if there is no task with such an id).
+
+***
 
 ### list
 
@@ -388,6 +399,7 @@ condition not used to filter results.
 If **offset** or **limit** is null then restrictions for pagination will not be applied.
 
 ##### sort: string[]?
+
 set of sort options. Each option is a pair of column name and sorting direction, e.g. ["label=acs", "address=desc", "employee=desc"].
 
 ##### sort fields
@@ -485,7 +497,7 @@ If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** i
 
 [General](../../../getting-started.md#error-codes) types only.
 
-
+***
 
 ### read
 
@@ -535,6 +547,8 @@ object described [here](./checkpoint.md#checkpoint-object).
 
 * 201 – Not found in the database (if there is no task with such an id).
 
+***
+
 ### transmute
 
 Converts task into a route checkpoint.
@@ -576,6 +590,8 @@ Converts task into a route checkpoint.
 * 201 – Not found in the database (if there is no task or route with such an id, or tracker to which checkpoint 
 assigned is unavailable to current sub-user).
 * 255 – Invalid task state (if task or any of the checkpoints are not in unassigned or assigned state).
+
+***
 
 ### update
 
