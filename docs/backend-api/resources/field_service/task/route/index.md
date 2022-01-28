@@ -160,7 +160,7 @@ Also, need checkpoints list in order of execution, checkpoints `from` and `to` m
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/route/create' \
         -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 223652, "label": "Name", "description": "Description example", "checkpoints": [{"tracker_id": 223652, "location": { "lat": 56.83717295, "lng": 60.59761920, "radius": 150}, "label": "Name", "description": "Description example", "from": "2014-02-03 04:05:06", "to": "2014-03-04 05:06:07"}], "create_form": false}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route": {"tracker_id": 669673, "label": "Products delivery", "description": "12 trackers of model 1 and 37 trackers of model 2", "from": "2020-03-18 10:00:00", "to": "2020-03-18 16:00:00"}, "checkpoints": [{"tracker_id": 669673, "location": {"lat": 56.82425647897021, "lng": 60.596146783275664, "radius": 100}, "label": "Company1", "description": "5 trackers of model 1 and 15 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 12:00:00", "external_id": "10100", "max_delay": 0, "min_stay_duration": 10, "tags": [1, 4], "form_template_id": 132985}, {"tracker_id": 669673, "location": {"lat": 56.82425647897021, "lng": 60.5731415901079, "radius": 100}, "label": "Company2", "description": "4 trackers of model 1 and 12 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 14:00:00", "external_id": "10101", "max_delay": 0, "min_stay_duration": 10, "tags": [2, 4], "form_template_id": 132985}], "create_form": false}'
     ```
 
 #### response
@@ -363,6 +363,16 @@ Reordering checkpoint IDs in the `checkpoint_ids` array changes order of executi
 | route | Route object without fields which are *IGNORED*. | JSON object |
 | checkpoints | List of [checkpoint objects](../checkpoint.md#checkpoint-object) objects. Should be null if **route**'s field **checkpoint_ids** is null, otherwise should be not null. If entry contains id, then update existing checkpoint, else create a new one. Present route's checkpoints, which are not included in this array, will be deleted. | array of objects |
 | create_form | If `true` then check additional `form_template_id` field in every **checkpoint** object and create, replace or delete checkpoint's form. Default value is `false` for backward compatibility. | boolean |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/task/route/update' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route": {"id": 23785, "label": "Products delivery", "description": "12 trackers of model 1 and 37 trackers of model 2", "from": "2020-03-18 10:00:00", "to": "2020-03-18 16:00:00"}, "checkpoints": [{"id": 123, "tracker_id": 669673, "location": {"lat": 56.82425647897021, "lng": 60.596146783275664, "radius": 100}, "label": "Company1", "description": "5 trackers of model 1 and 15 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 12:00:00", "external_id": "10100", "max_delay": 0, "min_stay_duration": 10, "tags": [1, 4], "form_template_id": 132985}, {"id": 124, "tracker_id": 669673, "location": {"lat": 56.82425647897021, "lng": 60.5731415901079, "radius": 100}, "label": "Company2", "description": "4 trackers of model 1 and 12 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 14:00:00", "external_id": "10101", "max_delay": 0, "min_stay_duration": 10, "tags": [2, 4], "form_template_id": 132985}], "create_form": false}'
+    ```
 
 #### response
 

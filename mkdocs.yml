@@ -35,6 +35,9 @@ theme:
     - navigation.top
   language: en
 
+extra_css:
+  - assets/stylesheets/extra.css
+
 plugins:
   - search:
       separator: '[\s\.]+'
@@ -79,9 +82,6 @@ extra:
       link: https://www.navixy.com/contact/
       name: Contacts
   api_example_url: https://api.navixy.com/v2
-
-extra_css:
-  - assets/stylesheets/extra.css
 
 markdown_extensions:
   - markdown.extensions.admonition

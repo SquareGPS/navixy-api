@@ -5,7 +5,7 @@ description: API call to get mileage in kilometers in specified period grouped b
 
 # Mileage
 
-Contains API call to read engine hours (time when engine is on) counted for the specified period.
+Contains API call to read mileage counted for the specified period.
 
 ***
 
