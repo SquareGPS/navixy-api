@@ -1450,6 +1450,252 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 ***
 
+### replace
+
+Lets to replace the device without losing its history and some of its settings.
+Replacement allows you to register a new device with history, sensors (optional), and rules (optional) of the current tracker saved.
+
+**required sub-user rights:** `tracker_configure`.
+
+#### parameters
+
+!!! warning "Important"
+    Because of the variety of tracker models and business applications, there are different ways to
+    register a new tracker in our system. They are called [Registration plugins](../../commons/plugin/index.md).
+    Each of registration plugins has its own set of additional parameters.
+    <br/>
+    In addition to parameters specified in this section, pass all parameters which are required by the
+    plugin you have chosen. See example below.
+
+Common parameters are:
+
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
+| model | A code of one of the supported models. See [tracker/list_models](#list_models). | string | "pt10" |
+| device_id | **Must** be specified if device model uses fixed device id. See [tracker/list_models](#list_models). | string | "4568005588562" |
+| plugin_id | An id of a registration plugin which will be used to register the device. See [Registration plugins](../../commons/plugin/index.md). | int | 37 |
+| send_register_commands | Indicates send or not to send activation commands to a new device (via SMS or GPRS channel). If parameter is not specified or equals `null` will be used the platform settings. Default: `null`. | boolean | true/false |
+
+#### examples
+
+In this example we use plugin id = 37 (see [Plugin description](../../commons/plugin/index.md))
+to replace device with Queclink GV55Lite.
+As this device identified by IMEI, we include it as device ID (123451234512346).
+
+Also, we include **phone**, **apn_name**, **apn_user**, **apn_password** of the sim card installed in
+device. Activation code is not used when replacing a device.
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/replace' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "plugin_id": 37, "model": "qlgv55lite", "phone": "79123122312", "device_id": "123451234512346", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/replace?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&plugin_id=37&model=qlgv55lite&phone=79123122312&device_id=123451234512346&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
+    ```
+
+#### response
+
+```json
+{
+  "success":true,
+  "value":{
+    "id":833389,
+    "label":"Courier",
+    "group_id":0,
+    "source":{
+      "id":526383,
+      "device_id":"123451234512346",
+      "model":"qlgv55lite",
+      "blocked":false,
+      "tariff_id":12163,
+      "phone":"79123122312",
+      "status_listing_id":null,
+      "creation_date":"2021-06-03",
+      "tariff_end_date":"2021-06-17"
+    },
+    "clone":false
+  }
+}
+```
+
+For `tracker` object structure, see [tracker/](#tracker-object-structure).
+
+#### errors
+
+* 13 – Operation not permitted – if user has insufficient rights.
+* 204 – Entity not found - if specified group does not exist. See [group/list](./group.md#list).
+* 220 – Unknown device model - if specified device model does not exist.
+* 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
+* 222 – Plugin not found - if specified plugin not found or is not supported by device model.
+* 223 – Phone number already in use - if specified phone number already used in another device.
+* 224 – Device ID already in use - if specified device ID already registered in the system.
+* 225 – Not allowed for this legal type - if tariff of the new device is not compatible with user's legal type.
+* 226 – Wrong ICCID. Plugin specific: if specified ICCID was not found.
+* 258 – Bundle not found. Plugin specific: if bundle not found for specified device ID.
+* 266 – Cannot perform action for the device in current status: if the device is not activated yet
+
+<hr>
+
+### replace_quick
+
+Replaces a device using only IMEI. Automatic SMS commands will not be sent for an activation.
+The replacement device must be preconfigured. This API call can be used only for bundles.
+
+**required sub-user rights:** `tracker_configure`.
+
+#### parameters
+
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
+| imei | IMEI of the new device | string | "35645587458999" |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "imei": "35645587458999"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/register_quick?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&imei=35645587458999
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "value": {
+      "id": 123456,
+      "label": "tracker label",
+      "clone": false,
+      "group_id": 167,
+      "avatar_file_name" : "file name",
+      "source": {
+        "id": 234567,
+        "device_id": 9999999988888,
+        "model": "telfmb920",
+        "blocked": false,
+        "tariff_id": 345678,
+        "status_listing_id": null,
+        "creation_date": "2011-09-21",
+        "tariff_end_date": "2016-03-24",
+        "phone" : "71234567890"
+      },
+      "tag_bindings": [{
+        "tag_id": 456789,
+        "ordinal": 4
+      }]
+    }
+}
+```
+
+For `tracker` object structure, see [tracker/](#tracker-object-structure).
+
+#### errors
+
+* 13 – Operation not permitted – if user has insufficient rights.
+* 201 – Not found in the database - if there is no bundle with such IMEI.
+* 204 – Entity not found - if specified group does not exist.
+* 220 – Unknown device model - if specified device model does not exist.
+* 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
+* 222 – Plugin not found - if specified plugin not found or is not supported by device model.
+* 223 – Phone number already in use - if specified phone number already used in another device.
+* 224 – Device ID already in use - if specified device ID already registered in the system.
+* 225 – Not allowed for this legal type - if tariff of the new device is not compatible with user's legal type.
+* 226 – Wrong ICCID - if specified ICCID was not found.
+* 266 – Cannot perform action for the device in current status: if the device is not activated yet
+
+<hr>
+
+### replace_retry
+
+Resends registration commands to the new device. The panel must have installed SMS gateway.
+
+**required sub-user rights:** `tracker_configure`.
+
+#### parameters
+
+| name | description | type | format |
+| :------ | :------ | :----- | :----- |
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999119 |
+| apn_name | The name of GPRS APN of this sim card inserted into device. | string | "fast.tmobile.com" |
+| apn_user | The user of GPRS APN of this sim card inserted into device. | string | "tmobile" |
+| apn_password | The password of GPRS APN of the sim card inserted into device. | string | "tmobile" |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 999119, "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/register_retry?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=999119&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "value": {
+      "id": 123456,
+      "label": "tracker label",
+      "clone": false,
+      "group_id": 167,
+      "avatar_file_name" : "file name",
+      "source": {
+        "id": 234567,
+        "device_id": 9999999988888,
+        "model": "telfmb920",
+        "blocked": false,
+        "tariff_id": 345678,
+        "status_listing_id": null,
+        "creation_date": "2011-09-21",
+        "tariff_end_date": "2016-03-24",
+        "phone" : "+71234567890"
+      },
+      "tag_bindings": [{
+        "tag_id": 456789,
+        "ordinal": 4
+      }]
+    }
+}
+```
+
+For `tracker` object structure, see [tracker/](#tracker-object-structure).
+
+#### errors
+
+* 13 – Operation not permitted – if user has insufficient rights.
+* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 – Not allowed for clones of the device - if specified tracker is a clone.
+* 214 – Requested operation or parameters are not supported by the device - if device does not have GSM module.
+* 242 – Device already connected - if tracker connected to the server.
+* 266 – Cannot perform action for the device in current status: if the old device is not activated yet
+
+<hr>
+
 ### send_command
 
 Sends command to tracker for performing special control, determined with `special_control` field of tracker model.

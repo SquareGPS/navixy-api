@@ -71,9 +71,11 @@ with one of the parts being an image file upload (with the name `file`).
 
 File part **mime** type must be one of:
 
-* **image/jpeg** or **image/pjpeg**.
-* **image/png**.
-* **image/gif**.
+* `image/jpeg`
+* `image/pjpeg`
+* `image/png`
+* `image/gif`
+* `image/webp`
 
 #### parameters
 

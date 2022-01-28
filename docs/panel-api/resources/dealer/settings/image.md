@@ -64,10 +64,12 @@ with one of the parts being an image file upload (with the name "file").
 
 File part **mime** type must be one of:
 
-* **image/jpeg** or **image/pjpeg**
-* **image/png**
-* **image/gif**
-* **image/x-icon** (for favicon type)
+* `image/jpeg`
+* `image/pjpeg`
+* `image/png`
+* `image/gif`
+* `image/webp`
+* `image/x-icon` (for favicon type)
 
 *required permissions*: `service_settings: "update"`.
 

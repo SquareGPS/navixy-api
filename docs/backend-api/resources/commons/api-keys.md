@@ -14,7 +14,8 @@ Unlike the user's session:
 * the API key will not be deleted if the user logs out or changes the password,
 * you don't need to [renew](./user/session/index.md#renew) the key periodically,
 * you don't transfer or store the username and password,
-* you can delete the key at any time if there is a suspicion of compromise.
+* you can delete the key at any time if there is a suspicion of compromise,
+* you can create a separate key for each individual integration.
 
 !!! warning "Session hash is deprecated"
     To work with the API, it is necessary to use the API key, not the user's session hash. 
@@ -26,7 +27,7 @@ In one user's account, you can have up to 20 API keys intended for different ext
 To distinguish keys from each other, you should give them meaningful names.
 
 !!! warning "Security"
-    Do not publish API keys anywhere. having a key, you can perform almost any action in the 
+    Do not publish API keys anywhere. Having a key, you can perform almost any action in the 
     user's account. Make API calls only over HTTPS because the key is transmitted in cleartext.
 
 ***

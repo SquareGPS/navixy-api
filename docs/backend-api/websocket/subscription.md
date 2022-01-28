@@ -19,7 +19,7 @@ but must be sent inside open `WebSocket` channel and use only JSON format for me
 Request parameters:
 
 * `action` (text: "subscribe").
-* `hash` - required, string, length=32. Session hash code obtained by [user/auth](../resources/commons/user/index.md#auth) action.
+* `hash` - required. Hash of an [API Key](../resources/commons/api-keys.md) action.
 * `trackers` - required, int array, without nulls. List of tracker ids for the events that require a subscription.
 * `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
 
@@ -95,7 +95,7 @@ send a new state in the [event message](./events.md#state-event).
 Request parameters:
 
 * `action` - text: _"unsubscribe"_.
-* `hash` - required, string, length=32. Session hash code gotten by [user/auth](../resources/commons/user/index.md#auth) action.
+* `hash` - required. Hash of an [API Key](../resources/commons/api-keys.md) action.
 * `trackers` - required, int array, without nulls. List of tracker ids for events that require an unsubscription.
 * `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to unsubscribe. Event can be `state`.
 

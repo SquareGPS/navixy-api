@@ -21,31 +21,36 @@ Thus, field employee/driver can view all points of interest assigned to him to v
 
 ```json
 {
-    "id": 1,
-    "icon_id" : 55,
-    "avatar_file_name": null,
-    "location": {
-        "lat": 52.366,
-        "lng": 4.895,
-        "address": "730 5th Ave, New York, NY 10019, Unites States",
-        "radius": 500
-    },
-   "fields": {
-        "131312" : {
-             "type": "text",
-             "value":  "I love text!"
-        }
-   },
-    "label": "Crown Building",
-    "description": "Here we buy our goods",
-    "tags": [ 1, 2 ],
-    "external_id": "1"
+  "id": 1,
+  "icon_id": 55,
+  "avatar_file_name": null,
+  "location": {
+    "lat": 52.366,
+    "lng": 4.895,
+    "address": "730 5th Ave, New York, NY 10019, Unites States",
+    "radius": 500
+  },
+  "fields": {
+    "131312": {
+      "type": "text",
+      "value": "I love text!"
+    }
+  },
+  "label": "Crown Building",
+  "description": "Here we buy our goods",
+  "tags": [ 1, 2 ],
+  "external_id": "1"
 }
 ```   
 
 * `id` - int. An id of a POI.
 * `icon_id` - optional int. Can be 1 to 255. Can only be updated via [avatar/assign](./avatar.md).
 * `avatar_file_name` - optional string. Name of the avatar file. Can be null.
+* `location` - required information about place location.
+    * `lat` - required, float. The latitude. 
+    * `lng` - required, float. The longitude.
+    * `address` - required, string, max length 255. The address of place.
+    * `radius` - required, int, 1..300000. The radius of place in meters.
 * `fields` - optional object. A map, each key of which is a custom field id *as a string*. See [entity/fields](../../commons/entity/fields.md)
 * `label` - string. POI name.
 * `description` - optional string. POI description.
@@ -64,9 +69,9 @@ Gets POI by ID.
 
 #### parameters
 
-|name |description |type |
-|:--- |:--- |:--- |
-| place_id | ID of the POI. | int |
+| name     | description    | type |
+|:---------|:---------------|:-----|
+| place_id | ID of the POI. | int  |
 
 #### examples
 
@@ -88,28 +93,28 @@ Gets POI by ID.
 
 ```json
 {
-    "success": true,
-    "value": {
-         "id": 1,
-         "icon_id" : 55,
-         "avatar_file_name": null,
-         "location": {
-              "lat": 40.773998,
-              "lng": -73.66003,
-             "address": "730 5th Ave, New York, NY 10019, Unites States",
-             "radius": 50
-         },
-        "fields": {
-             "131312" : {
-                  "type": "text",
-                  "value":  "I love text!"
-             }
-        },
-         "label": "Crown Building",
-         "description": "Here we buy our goods",
-         "tags": [ 1, 2 ],
-         "external_id": "1"
-    }
+  "success": true,
+  "value": {
+    "id": 1,
+    "icon_id": 55,
+    "avatar_file_name": null,
+    "location": {
+      "lat": 40.773998,
+      "lng": -73.66003,
+      "address": "730 5th Ave, New York, NY 10019, Unites States",
+      "radius": 50
+    },
+    "fields": {
+      "131312": {
+        "type": "text",
+        "value": "I love text!"
+      }
+    },
+    "label": "Crown Building",
+    "description": "Here we buy our goods",
+    "tags": [ 1, 2 ],
+    "external_id": "1"
+  }
 }
 ```
 
@@ -125,15 +130,15 @@ Get POIs belonging to user.
 
 #### parameters
 
-|name |description |type |
-|:--- |:--- |:--- |
-| place_ids | Optional. List of POI IDs. | int array |
-| filter | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned POI. | string |
-| conditions | Optional. Search conditions to apply to list. Array of search conditions, see [Search conditions](../../commons/entity/search_conditions.md). | array of objects |
-| order_by | Optional. Built-in or custom field according to which output should be sorted. Entity field name, e.g "label" (builtin) or "123" (field id as string, see [entity/](../../commons/entity/index.md). | string |
-| ascending | Optional. If `false` – descending order. | boolean |
-| limit | Optional. Limit. | int |
-| offset | Optional. offset, default is 0. | int |
+| name       | description                                                                                                                                                                                         | type             |
+|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------|
+| place_ids  | Optional. List of POI IDs.                                                                                                                                                                          | int array        |
+| filter     | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned POI.                                                         | string           |
+| conditions | Optional. Search conditions to apply to list. Array of search conditions, see [Search conditions](../../commons/entity/search_conditions.md).                                                       | array of objects |
+| order_by   | Optional. Built-in or custom field according to which output should be sorted. Entity field name, e.g "label" (builtin) or "123" (field id as string, see [entity/](../../commons/entity/index.md). | string           |
+| ascending  | Optional. If `false` – descending order.                                                                                                                                                            | boolean          |
+| limit      | Optional. Limit.                                                                                                                                                                                    | int              |
+| offset     | Optional. offset, default is 0.                                                                                                                                                                     | int              |
 
 #### examples
 
@@ -155,29 +160,31 @@ Get POIs belonging to user.
 
 ```json
 {
-    "success": true,
-    "list": [{
-          "id": 1,
-          "icon_id" : 55,
-          "avatar_file_name": null,
-          "location": {
-              "lat": 40.773998,
-              "lng": -73.66003,
-              "address": "730 5th Ave, New York, NY 10019, Unites States",
-              "radius": 50
-          },
-         "fields": {
-              "131312" : {
-                   "type": "text",
-                   "value":  "I love text!"
-              }
-         },
-          "label": "Crown Building",
-          "description": "Here we buy our goods",
-          "tags": [ 1, 2 ],
-          "external_id": "1"
-    }],
-    "count": 1
+  "success": true,
+  "list": [
+    {
+      "id": 1,
+      "icon_id": 55,
+      "avatar_file_name": null,
+      "location": {
+        "lat": 40.773998,
+        "lng": -73.66003,
+        "address": "730 5th Ave, New York, NY 10019, Unites States",
+        "radius": 50
+      },
+      "fields": {
+        "131312": {
+          "type": "text",
+          "value": "I love text!"
+        }
+      },
+      "label": "Crown Building",
+      "description": "Here we buy our goods",
+      "tags": [ 1, 2 ],
+      "external_id": "1"
+    }
+  ],
+  "count": 1
 }
 ```
 
@@ -197,10 +204,10 @@ Creates a new POI.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| place | A place object without `id` field. | JSON object |
-| ignore_missing_fields | Optional (default is false). If `true`, POI can be created even without all required custom fields. | boolean |
+| name                  | description                                                                                         | type        |
+|:----------------------|:----------------------------------------------------------------------------------------------------|:------------|
+| place                 | A place object without `id` field.                                                                  | JSON object |
+| ignore_missing_fields | Optional (default is false). If `true`, POI can be created even without all required custom fields. | boolean     |
 
 #### example
 
@@ -216,8 +223,8 @@ Creates a new POI.
 
 ```json
 {
-    "success": true,
-    "id": 111
+  "success": true,
+  "id": 111
 }
 ```
 
@@ -237,8 +244,8 @@ Updates existing POI.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
+| name  | description     | type        |
+|:------|:----------------|:------------|
 | place | A place object. | JSON object |
 
 #### example
@@ -271,9 +278,9 @@ Deletes POI with the specified ID.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| place_id | ID of the POI to delete. | int |
+| name     | description              | type |
+|:---------|:-------------------------|:-----|
+| place_id | ID of the POI to delete. | int  |
 
 #### examples
 
@@ -311,13 +318,13 @@ Converts batch of tab-delimited POIs and return list of checked POIs with errors
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| batch | Batch of tab-delimited POIs. | string |
-| file_id | Preloaded file ID. | string |
-| fields | Optional. Array of field names, default is `["label", "address", "lat", "lng", "radius", "description", "tags"]`. | string array |
-| geocoder | Geocoder type. | string |
-| default_radius | Optional. Radius for point in meters. Default is 100. | int |
+| name           | description                                                                                                       | type         |
+|:---------------|:------------------------------------------------------------------------------------------------------------------|:-------------|
+| batch          | Batch of tab-delimited POIs.                                                                                      | string       |
+| file_id        | Preloaded file ID.                                                                                                | string       |
+| fields         | Optional. Array of field names, default is `["label", "address", "lat", "lng", "radius", "description", "tags"]`. | string array |
+| geocoder       | Geocoder type.                                                                                                    | string       |
+| default_radius | Optional. Radius for point in meters. Default is 100.                                                             | int          |
 
 If `file_id` is set – `batch` parameter will be ignored.
 
@@ -325,31 +332,33 @@ If `file_id` is set – `batch` parameter will be ignored.
 
 ```json
 {
-    "success": true,
-    "list": [{
-           "id": 1,
-           "icon_id" : 55,
-           "avatar_file_name": null,
-           "location": {
-               "lat": 40.773998,
-               "lng": -73.66003,
-               "address": "730 5th Ave, New York, NY 10019, Unites States",
-               "radius": 50
-           },
-          "fields": {
-               "131312" : {
-                    "type": "text",
-                    "value":  "I love text!"
-               }
-           },
-           "label": "Crown Building",
-           "description": "Here we buy our goods",
-           "tags": [ 1, 2 ],
-           "external_id": "1",
-           "errors": <array_of_objects>,
-           "tag_names": <array_of_strings>
-    }],
-    "limit_exceeded": false
+  "success": true,
+  "list": [
+    {
+      "id": 1,
+      "icon_id": 55,
+      "avatar_file_name": null,
+      "location": {
+        "lat": 40.773998,
+        "lng": -73.66003,
+        "address": "730 5th Ave, New York, NY 10019, Unites States",
+        "radius": 50
+      },
+      "fields": {
+        "131312": {
+          "type": "text",
+          "value": "I love text!"
+        }
+      },
+      "label": "Crown Building",
+      "description": "Here we buy our goods",
+      "tags": [ 1, 2 ],
+      "external_id": "1",
+      "errors": <array_of_objects>,
+      "tag_names": <array_of_strings>
+    }
+  ],
+  "limit_exceeded": false
 }
 ```
 
@@ -376,22 +385,22 @@ CSV column separator is `;`, columns header required – `label;address;lat;lng;
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| file | A CSV file upload containing POIs data. | File upload |
-| error_policy| `ignore` or `fail`. | string |
-| duplicate_policy | `skip` or `update` or `fail`, **belongs only to external_id duplicates**. | string |
-| default_radius | Optional, radius for point, meters, default is 100. | int |
-| geocoder | Geocoder type. | string |
-| redirect_target | Optional URL to redirect. If `redirect_target` passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string |
+| name             | description                                                                                                                       | type        |
+|:-----------------|:----------------------------------------------------------------------------------------------------------------------------------|:------------|
+| file             | A CSV file upload containing POIs data.                                                                                           | File upload |
+| error_policy     | `ignore` or `fail`.                                                                                                               | string      |
+| duplicate_policy | `skip` or `update` or `fail`, **belongs only to external_id duplicates**.                                                         | string      |
+| default_radius   | Optional, radius for point, meters, default is 100.                                                                               | int         |
+| geocoder         | Geocoder type.                                                                                                                    | string      |
+| redirect_target  | Optional URL to redirect. If `redirect_target` passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string      |
 
 #### response
 
 ```json
 {
-    "success": true,
-    "total": 1,
-    "errors": 0
+  "success": true,
+  "total": 1,
+  "errors": 0
 }
 ```
 
