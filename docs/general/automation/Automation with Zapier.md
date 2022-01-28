@@ -22,9 +22,9 @@ Zapier is not for free but offers a free trial. Check their [pricing](https://za
 
 Example use cases you can achieve:
 
-1. Send a GPRS command / activate output on schedule.
-2. Send a Slack message on a tracker event.
-3. Deactivate tracker on an event.
+* Send a GPRS command / activate output on schedule;
+* Send a Slack message on a tracker event; 
+* Deactivate tracker on an event.
 
 ***
 
