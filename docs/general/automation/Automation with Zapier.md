@@ -5,8 +5,8 @@ description: Work with API using Zapier.
 
 # Zapier
 
-Automation is simply setting something up to run automatically. Automation is all around you, even if you don't realize it.
-Take your smartphone, for example. You receive alerts whenever you receive a text message, voice mail, or email.
+Automation is simply setting something up to run automatically. Automation is all around you, even if you don't realize 
+it. Take your smartphone, for example. You receive alerts whenever you receive a text message, voice mail, or email.
 
 The heart of any automation boils down to a simple command: WHEN and DO. "When this happens, do that." Even the most complex 
 automation can be broken down into this simple command.
