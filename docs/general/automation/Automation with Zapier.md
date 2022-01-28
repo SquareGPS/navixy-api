@@ -277,7 +277,7 @@ and use case.
 
 ### Results
 
-The Zap is ready to work. Switch it on to start and try to out of the zone with your equipment. It will not work outside. 
+The Zap is ready to work. Turn it on to start and try to out of the zone with your equipment. It will not work outside. 
 Your device should be online to receive a command.
 
 !!! warning "Output switching"
