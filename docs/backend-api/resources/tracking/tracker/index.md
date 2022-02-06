@@ -387,18 +387,18 @@ Gets last CAN and OBD sensors and states values received from the device.
   "success": true,
   "user_time": "2021-05-20 13:49:09",
   "inputs": [{
-    "label":"OBD: RPM",
-    "units":"", 
-    "name":"obd_rpm",
-    "type":"rpm",
-    "value":889.0,
-    "units_type":"custom",
-    "converted_units_type":null,
-    "converted_value":null
+    "label": "OBD: RPM",
+    "units": "", 
+    "name":" obd_rpm",
+    "type": "rpm",
+    "value": 889.0,
+    "units_type": "custom",
+    "converted_units_type": null,
+    "converted_value": null
   }],
   "states": {
     "obd_vin": "123",
-    "obd_mil_status": "false"
+    "obd_mil_status": "0"
   },
   "update_time": "2021-05-20 13:48:02"
 }
@@ -992,10 +992,11 @@ Gets all integrated tracker models (from "models" table).
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| compact_view | Optional. `true` to compact view. Default is `false`. | boolean | true/false |
-| codes | Optional. Array of model codes. If passed only given models will be returned. | string array | `[model_1, model_2, ...]` |
+| name          | description                                                                                                                               | type         | format                    |
+|:--------------|:------------------------------------------------------------------------------------------------------------------------------------------|:-------------|:--------------------------|
+| compact_view  | Optional. `true` to compact view. Default is `false`.                                                                                     | boolean      | true/false                |
+| compact_index | Optional. `true` to compact view the indexed inputs: returns only input with max index. Default is `false`, but this value is deprecated. | boolean      | true/false                |
+| codes         | Optional. Array of model codes. If passed only given models will be returned.                                                             | string array | `[model_1, model_2, ...]` |
 
 #### examples
 
@@ -1004,7 +1005,7 @@ Gets all integrated tracker models (from "models" table).
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "compact_index": true}'
     ```
 
 === "HTTP GET"
@@ -1056,7 +1057,7 @@ Gets all integrated tracker models (from "models" table).
         "inoutzone",
         "battery_off"
     ],
-    "inputs": ["analog_2", "analog_1"],
+    "inputs": ["analog_2"],
     "state_fields": [],
     "special_settings": ["none"],
     "sms_control": [],
