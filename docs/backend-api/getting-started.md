@@ -261,7 +261,7 @@ To use ISO 8601 date/time format you should pass `true` to (in order of lookup p
     ```abap
     $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
     -H 'Content-Type: application/json' \
-    -d '{"iso_datetime": "true", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+    -d '{"iso_datetime": true, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
 === "form request parameter"
