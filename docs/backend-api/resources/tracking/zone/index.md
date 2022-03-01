@@ -342,6 +342,49 @@ Gets all user geofences.
 
 ***
 
+### search_location
+
+Gets all geofence IDs and names within which a specified coordinates are located inside.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| location | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/zone/search_location' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 56.827001, "lng": 60.594296}}'
+    ```
+
+#### response
+
+```json
+{
+  "list": [
+    {
+      "id": 18404,
+      "label": "geofence 1"
+    },
+    {
+      "id": 35284,
+      "label": "geofence 2"
+    }
+  ],
+  "success": true
+}
+```
+
+* `id` - int. Geofence ID that containing a searched location. 
+* `label` - string. Geofence name.
+
+***
+
 ### update
 
 Update geofence parameters for the specified geofence. Note that geofence must exist, must belong to the current user, and its 

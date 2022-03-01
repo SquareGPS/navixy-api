@@ -88,3 +88,14 @@ The platform will provide the status, and geofence id.
 
 The sausage geofence also, could be used to create a special route for cars with valuable cargo, such as cash collectors.
 Or for patrol cars. In this case, use the rule "deviation from the route".
+
+***
+
+### Getting geofence name by a tracker's location
+
+It may be necessary to get the geofence name or ID where a device is located. In this case, 
+use [zone/search_location](../resources/tracking/zone/index.md#search_location). For example, we want to get a geofence, 
+where our device is located, or we want to count how many devices are in some zone.
+
+To get this information we should request a device's [last_gps_location](../resources/tracking/tracker/index.md#get_last_gps_point) 
+first. With received lat and lng parameters we can check geofences. 
