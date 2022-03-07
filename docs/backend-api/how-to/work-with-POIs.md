@@ -182,5 +182,5 @@ It may be necessary to get the POI name or ID where a device is located. In this
 use [place/search_location](../resources/field_service/place/index.md#search_location). For example, we want to get a place,
 where our device is located, or we want to count how many devices are in some place.
 
-To get this information we should request a device's [last_gps_location](../resources/tracking/tracker/index.md#get_last_gps_point)
+To get this information we should request a device's [state and location](../resources/tracking/tracker/index.md#get_state)
 first. With received lat and lng parameters we can check places. 

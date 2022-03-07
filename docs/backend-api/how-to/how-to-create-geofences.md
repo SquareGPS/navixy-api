@@ -97,5 +97,5 @@ It may be necessary to get the geofence name or ID where a device is located. In
 use [zone/search_location](../resources/tracking/zone/index.md#search_location). For example, we want to get a geofence, 
 where our device is located, or we want to count how many devices are in some zone.
 
-To get this information we should request a device's [last_gps_location](../resources/tracking/tracker/index.md#get_last_gps_point) 
+To get this information we should request a device's [state and location](../resources/tracking/tracker/index.md#get_state) 
 first. With received lat and lng parameters we can check geofences. 
