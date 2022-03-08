@@ -236,6 +236,49 @@ Creates a new POI.
 
 ***
 
+### search_location
+
+Gets all POI IDs and names within which a specified coordinates are located inside.
+
+#### parameters
+
+| name | description | type|
+| :------ | :------ | :----- |
+| location | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/place/search_location' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 56.827001, "lng": 60.594296}}'
+    ```
+
+#### response
+
+```json
+{
+  "list": [
+    {
+      "id": 1201,
+      "label": "place 1"
+    },
+    {
+      "id": 3574,
+      "label": "place 2"
+    }
+  ],
+  "success": true
+}
+```
+
+* `id` - int. Place ID that containing a searched location.
+* `label` - string. Place name.
+
+***
+
 ### update
 
 Updates existing POI.
