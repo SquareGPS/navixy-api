@@ -120,24 +120,26 @@ Requests a report generation with the specified parameters.
 
 Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin/report_plugins.md) section. Common parameters are:
 
-| name | description | type |
-| :------ | :------ | :----- |
-| plugin_id | An id of a tracker report plugin which will be used to generate report. | int |
-| show_seconds|Flag to define whether time values in report should have format with seconds. `true` - show seconds, `false` - don't show seconds. | boolean |
+| name         | description                                                                                                                        | type    |
+|:-------------|:-----------------------------------------------------------------------------------------------------------------------------------|:--------|
+| plugin_id    | An id of a tracker report plugin which will be used to generate report.                                                            | int     |
+| show_seconds | Flag to define whether time values in report should have format with seconds. `true` - show seconds, `false` - don't show seconds. | boolean |
 
 #### Plugin example:
 
 ```json
 {
-  "details_interval_minutes":60,
+  "details_interval_seconds": 300,
   "plugin_id": 9,
   "show_seconds": false,
   "graph_type": "time",
-  "smoothing":false,
-  "sensors":[{
-    "tracker_id": 123456,
-    "sensor_id": 123456
-  }]
+  "smoothing": false,
+  "sensors": [
+    {
+      "tracker_id": 123456,
+      "sensor_id": 123456
+    }
+  ]
 }
 ```
 
