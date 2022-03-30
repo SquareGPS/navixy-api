@@ -22,7 +22,7 @@ Actions with counter values:
 * [/tracker/counter/value/get](#valueget)
 * [/tracker/counter/value/list](#valuelist)
 * [/tracker/counter/value/set](#valueset)
-* [/tracker/counter/data/list](#datalist)
+* [/tracker/counter/data/read](#dataread)
 
 ***
 
@@ -311,7 +311,7 @@ Creates new counter of passed `type` (if not) and update its `value`.
 
 ***
 
-### data/list
+### data/read
 
 Returns counter values for a period.
 
@@ -329,7 +329,7 @@ Returns counter values for a period.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/counter/data/list' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/counter/data/read' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "from": "2021-02-01 00:00:00", "to": "2021-02-01 03:00:00"}'
     ```
@@ -352,6 +352,7 @@ Returns counter values for a period.
 #### errors
 
 * 204 - Entity not found – if there is no tracker or counter belonging to authorized user.
+* 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified in API config)
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 7 - Invalid parameters –
     * if `from` is after `to`;

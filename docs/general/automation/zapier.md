@@ -80,11 +80,11 @@ The next step is to configure a trigger. To create a simple Zap we recommend you
 
     You can find it in the admin panel. Admin Panel > Trakers -> ID column
 
-    ![Tracker ID admin panel](./assets/trackerIDPanel.png)
+    ![Tracker ID admin panel](../assets/trackerIDPanel.png)
 
     Or in the user inteface. Platform -> Tracking -> Show device Info -> Copy id from the URL
 
-    ![Tracker ID user interface](./assets/trackerIDUI.png)
+    ![Tracker ID user interface](../assets/trackerIDUI.png)
 
 ???+ example "Set event types"
 
@@ -249,7 +249,7 @@ and use case.
 
     Is an action for devices that can change outputs with one general command. If we need to change one particular output state on such devices we should specify a new state for one and previous states for others.
 
-    ![Choose set ouputs](../assets/choose-set-ouputs.png)
+    ![Choose set ouputs](../assets/choose-set-outputs.png)
 
     Here we should choose an account again. It is already in the dropdown. The next what we should do is to set up action settings.
 
