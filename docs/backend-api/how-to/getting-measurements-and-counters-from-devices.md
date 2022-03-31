@@ -73,7 +73,7 @@ The same information can be obtained for the list of devices . In this case use 
 ### Counter values for a history period
 
 Sometimes necessary to get data for the specific period with timestamps. For example, it may be necessary for insurances 
-or governments. In this case should be used [data/list](../resources/tracking/tracker/counter.md#datalist) call. It will 
+or governments. In this case should be used [data/list](../resources/tracking/tracker/counter.md#dataread) call. It will 
 return JSON with the next information:
 ???+ example "Response"
 
@@ -225,3 +225,11 @@ request. It will reply with the next information:
 
 * input status and output status fields will show you binary information in decimal form. For example, output_status 
   field shows 3 - it is 11 in binary. The example device has two outputs. That's why 11 means output 1 = On and output 2 = ON.
+
+### Getting historical data from sensors
+
+It may be necessary to get historical data from measurement sensors. In this case, you can use 
+[tracker/sensor/data/read](../resources/tracking/tracker/sensor/index.md#dataread) 
+API call which allows you to get all provided values from a sensor in a period of 30 days. Choose the necessary sensor and 
+specify its ID. The list of a device's sensors with IDs you can get 
+with [sensor/list](../resources/tracking/tracker/sensor/index.md#list) request.
