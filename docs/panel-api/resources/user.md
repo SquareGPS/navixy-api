@@ -158,7 +158,7 @@ Marks user and its sub users and trackers as deleted and corrupt all user tracke
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}panel/user/corrupt' \
+    curl -X POST '{{ extra.api_example_url }}/panel/user/corrupt' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432, "login": "user@login.com"}'
     ```
@@ -216,7 +216,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}panel/user/create' \
+    curl -X POST '{{ extra.api_example_url }}/panel/user/create' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"activated": true, "verified": true, "login": "user@test.com", "first_name": "John", "middle_name": "William", "last_name": "Smith", "legal_name": "E. Biasi GmbH", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "okpo_code": "93281776", "iec": "773101001"}, "time_zone": "Europe/Moscow", "locale": "en_US", "password": "12@14Y$", "discount": {"value": 5.5, "min_trackers": 10, "end_date": null, "strategy": "sum_with_progressive"}, "comment": "about user"}'
     ```
@@ -491,7 +491,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}panel/user/update' \
+    curl -X POST '{{ extra.api_example_url }}/panel/user/update' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"dealer_id": 5001, "activated": true, "verified": true, "login": "user@test.com", "first_name": "John", "middle_name": "William", "last_name": "Smith", "legal_name": "E. Biasi GmbH", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "okpo_code": "93281776", "iec": "773101001", "id": 38935}, "discount": {"value": 5.5, "min_trackers": 10, "end_date": null, "strategy": "sum_with_progressive"}, "comment": "about user"}'
     ```
