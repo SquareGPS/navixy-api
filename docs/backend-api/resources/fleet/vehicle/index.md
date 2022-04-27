@@ -93,7 +93,7 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 * `free_insurance_policy_number` -  string. Free insurance policy number.
 * `free_insurance_valid_till` - string date. The date till free insurance valid.
 * `icon_id` - nullable int. Can only be updated via [avatar/assign](../vehicle/avatar.md#assign).
-* `avatar_file_name` - string. File name.
+* `avatar_file_name` - string. The name of the avatar file. This name is set when uploading a file via [avatar/upload](../vehicle/avatar.md#upload). Can only be updated via [avatar/assign](../vehicle/avatar.md#assign). 
 * `tags` - int array. List of tag ids.
 
 ???+ example "Subtypes:"
