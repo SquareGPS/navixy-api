@@ -29,6 +29,9 @@ of the dispatcher and others. This data can be used for more convenient and effi
 
 * `id` - int. Depot id.
 * `location` - location object. Valid location or null.
+* `mechanic_name` - string. Mechanic name or null.
+* `dispatcher_name` - string. Dispatcher name or null.
+* `organization_name` - string. Organization name or null.
 
 ***
 
