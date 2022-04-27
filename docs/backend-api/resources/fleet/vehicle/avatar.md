@@ -81,7 +81,7 @@ File part **mime** type must be one of :
 
 | name | description | type |
 | :------ | :------ | :----- |
-| tag_id | Tag id. | int |
+| vehicle_id | Vehicle id. | int |
 | file | Image file. | string |
 | redirect_target | Optional. URL to redirect. | string |
 
@@ -100,7 +100,7 @@ If `redirect_target` passed a return redirect to `response=<urlencoded response 
 
 #### errors
 
-* 201 – Not found in the database - when vehicle with `tag_id` not found.
+* 201 – Not found in the database - when vehicle with `vehicle_id` not found.
 * 233 – No data file - if `file` part not passed.
 * 234 – Invalid data format - if passed `file` with unexpected **mime** type.
 * 254 – Cannot save file - on some file system errors.
