@@ -1216,7 +1216,7 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}panel/tracker/raw_command/send' \
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/raw_command/send' \
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": "889654248978", "command": "setparam 101:4"}'
     ```

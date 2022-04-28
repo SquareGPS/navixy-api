@@ -326,6 +326,7 @@ Copies sensors from one tracker to another.
         -H 'Content-Type: application/json' \ 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "base_tracker_id": 123456, "trackers": [56789, 54321]}'
     ```
+
 #### response
 
 ```json
@@ -333,7 +334,55 @@ Copies sensors from one tracker to another.
     "success": true
 }
 ```
+
 #### errors
 
 * 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
 * 272 – Trackers must have same models - if base tracker and one of target trackers has a different model.
+
+### data/read
+
+Gets all metering sensor readings with values and time per requested period.
+
+#### parameters
+
+| name | description | type| format|
+| :------ | :------ | :----- | :------ |
+| tracker_id | Id of the base tracker (aka "object_id") from which you want to read sensor's data. Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| sensor_id | Sensor id. | int | 234567 |
+| from | Start date and time for searching. | [date/time](../../../../getting-started.md#data-types) | "2022-02-28 00:00:00" |
+| to | End date and time for searching. Must be after `from` date. Maximum period is `maxReportTimeSpan`, default 30 days. | [date/time](../../../../getting-started.md#data-types) | "2022-03-28 23:59:00" |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/sensor/data/read' \
+        -H 'Content-Type: application/json' \ 
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 1456789, "from": "2022-02-28 00:00:00", "to": "2022-03-28 23:59:00"}'
+    ```
+
+#### response
+
+```json
+{
+  "success": true,
+  "list": [
+    {
+      "value": 100500,
+      "get_time": "2022-02-28 00:00:00"
+    },
+    {
+      "value": 100501,
+      "get_time": "2022-02-28 00:00:30"
+    }
+  ]
+}
+```
+
+#### errors
+
+* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 211 – Requested time span is too big - if interval between "from" and "to" is too big. Maximum period is `maxReportTimeSpan`.
+* 228 – Not supported by the sensor - if sensor is not a metering sensor. 

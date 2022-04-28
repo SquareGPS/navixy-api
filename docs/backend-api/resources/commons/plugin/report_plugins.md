@@ -289,13 +289,14 @@ default **plugin_id**: 22.
 
 Plugin-specific parameters:
 
-| name | description | type |
-| ------ | ------------- | ------ |
-| hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
-| details_interval_minutes | The interval in minutes. Can be `[30, 60, 180, 360]`. | int |
-| graph_type | The type of X-axis. Can be "time" or "mileage". | [enum](../../../getting-started.md#data-types) |
-| smoothing | Smooth data if `true`. | boolean |
-| sensors | List of objects containing tracker_id and sensor_id. | array of objects |
+| name                     | description                                                          | type                                           |
+|--------------------------|----------------------------------------------------------------------|------------------------------------------------|
+| hide_empty_tabs          | If `true`, empty tabs will be hidden.                                | boolean                                        |
+| details_interval_seconds | The interval in seconds. From 30 to 21600.                           | int                                            |
+| details_interval_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`. | int                                            |
+| graph_type               | The type of X-axis. Can be "time" or "mileage".                      | [enum](../../../getting-started.md#data-types) |
+| smoothing                | Smooth data if `true`.                                               | boolean                                        |
+| sensors                  | List of objects containing tracker_id and sensor_id.                 | array of objects                               |
 
 * `sensors` is:
 
@@ -307,6 +308,8 @@ Plugin-specific parameters:
   }]
 }
 ```
+
+!!! note "Param `details_interval_minutes` is deprecated. Please sue `details_interval_seconds`."
 
 ***
 
@@ -375,15 +378,16 @@ default **plugin_id**: 9.
 
 Plugin-specific parameters:
 
-| name | description | type |
-| ------ | ------------- | ------ |
-| hide_empty_tabs | If `true`, empty tabs will be hidden. | boolean |
-| details_interval_minutes | The interval in minutes. Can be `[5, 30, 60, 180, 360]`. | int |
-| graph_type | The type of X-axis. Can be "time" or "mileage". | [enum](../../../getting-started.md#data-types) |
-| smoothing | Smooth data if `true`. | boolean |
-| show_address | Address of each reading appears in report if `true`. | boolean |
-| filter | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
-| sensors | List of objects containing tracker_id and sensor_id. | array of objects |
+| name                     | description                                                                                                                                                                  | type                                           |
+|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| hide_empty_tabs          | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean                                        |
+| details_interval_seconds | The interval in seconds. From 30 to 21600.                                                                                                                                   | int                                            |
+| details_interval_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`.                                                                                                         | int                                            |
+| graph_type               | The type of X-axis. Can be "time" or "mileage".                                                                                                                              | [enum](../../../getting-started.md#data-types) |
+| smoothing                | Smooth data if `true`.                                                                                                                                                       | boolean                                        |
+| show_address             | Address of each reading appears in report if `true`.                                                                                                                         | boolean                                        |
+| filter                   | If `true` short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                                        |
+| sensors                  | List of objects containing tracker_id and sensor_id.                                                                                                                         | array of objects                               |
 
 * `sensors` is:
 
@@ -395,6 +399,8 @@ Plugin-specific parameters:
   }]
 }
 ```
+
+!!! note "Param `details_interval_minutes` is deprecated. Please sue `details_interval_seconds`."
 
 ***
 

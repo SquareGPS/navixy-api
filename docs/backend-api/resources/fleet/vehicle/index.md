@@ -111,7 +111,7 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
     ```
     ```
         Type: "special"
-        Subtypes: "mobile_crane", "racing", "buggy", "ambulance", "firefighter", "hearse", "shop", "harvester", "snowplow", "tractor", "grader", "excavator", "bulldozer", "armored", "amphibian"
+        Subtypes: "mobile_crane", "racing", "buggy", "ambulance", "firefighter", "hearse", "shop", "harvester", "snowplow", "tractor", "grader", "excavator", "bulldozer", "armored", "amphibian", "boat"
     ```
 
 ***
