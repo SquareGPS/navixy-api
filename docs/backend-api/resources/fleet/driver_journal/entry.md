@@ -205,7 +205,8 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 ```
 
 #### errors
-* 201 – Not found in the database - if there is no entry in the driver journal with this id.
+* 201 – if tracker not found
+* 204 - Entity not found. 
 * [General](../../../getting-started.md#error-codes) types only.
 
 ***
