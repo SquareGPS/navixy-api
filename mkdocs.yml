@@ -6,7 +6,7 @@ site_description: >-
   Feel free to use our comprehensive REST API to integrate Navixy with CRMs,
   ERPs or any other 3rd party tools. You can also use it to build your custom web applications.
 
-copyright: Copyright &copy; 2020 Navixy
+copyright: Copyright &copy; 2022 Navixy
 
 use_directory_urls: true
 #strict: true - disabled to use --dirtyreload option. Enabled in build script.
