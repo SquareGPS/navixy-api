@@ -205,7 +205,8 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 ```
 
 #### errors
-
+* 201 – if tracker not found
+* 204 - Entity not found. 
 * [General](../../../getting-started.md#error-codes) types only.
 
 ***
