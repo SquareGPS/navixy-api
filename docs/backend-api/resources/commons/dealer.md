@@ -21,9 +21,13 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| domain | Dealer's monitoring interface domain, e.g. "panel.navixy.com". | string |
+| name   | description                                                               | type   |
+|:-------|:--------------------------------------------------------------------------|:-------|
+| domain | Dealer's monitoring interface domain, e.g. "panel.navixy.com".            | string |
+| hash   | Used instead of a domain to identify a dealer if there is a user session  | string |
+
+Params `domain` and `hash` is not required both, but one of them must be specified.
+If `hash` is specified the `domain` is not used.
 
 #### example
 
