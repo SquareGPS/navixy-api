@@ -36,7 +36,8 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
       },
       "date": {
         "end": "2015-05-08 09:35:00",
-        "notification_interval": 3
+        "notification_interval": 3,
+        "repeat_interval": 42
       },
       "engine_hours": {
         "limit": 100,
@@ -60,7 +61,7 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
       "push_enabled": true
     },
     "completion_date" : "2014-03-16 00:00:00",
-    "repeat": false,
+    "repeat": true,
     "unplanned": false,
     "file_ids": [1, 2]
 }
@@ -90,12 +91,15 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
     * `mileage` - optional object. Mileage condition.
         * `limit` - int. Task limit in kilometers.
         * `notification_interval` - int. Notify about task in specified number of kilometers.
+        * `repeat_interval` - int. Interval in kilometers to set `limit` for a new repeatable task when current one is completed. If this parameter is not set, the initial `limit` value will be used.
     * `date` - optional date condition object.
         * `end` - [date/time](../../../../getting-started.md#data-types). Task end date.
         * `notification_interval` - int. Notify about task in specified number of days.
+        * `repeat_interval` - int. Interval in days to calculate a new end date for repeatable tasks when they are completed. If this parameter is not specified, the interval will be calculated as the difference between the start date and the end date.
     * `engine_hours` - optional engine hours condition object.
         * `limit` - int. Task limit in hours.
         * `notification_interval` - int. Notify about task in specified number of hours.
+        * `repeat_interval` - int. Interval in hours to set `limit` for a new repeatable task when current one is completed. If this parameter is not set, the initial `limit` value will be used.
 * `notifications` - notifications object.
     * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format wo
       `+` sign.
