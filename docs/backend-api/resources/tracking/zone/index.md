@@ -124,7 +124,7 @@ For `batch` parameter:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/batch_convert' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "batch": "Geofence for test Karlsplatz, 2"}'
     ```
 
@@ -215,7 +215,7 @@ Creates a new geofence.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Zone name", "address": "zone address", "radius": 100, "center": {"lat": 56.827001, "lng": 60.594296}}}'
     ```
 
@@ -260,7 +260,7 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 1234567}'
     ```
 
@@ -311,7 +311,7 @@ Gets all user geofences.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -358,7 +358,7 @@ Gets all geofence IDs and names within which a specified coordinates are located
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/search_location' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 56.827001, "lng": 60.594296}}'
     ```
 
@@ -406,7 +406,7 @@ which type is "polygon".
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Zone name", "address": "zone address", "radius": 100, "center": {"lat": 56.827001, "lng": 60.594296}}}'
     ```
 

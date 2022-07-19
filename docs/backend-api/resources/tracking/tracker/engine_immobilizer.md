@@ -31,7 +31,7 @@ Requests to read the state of engine immobilizer.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
@@ -79,7 +79,7 @@ Requests to change the engine immobilizer state of the device. The device must b
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"tracker_id": 123456, "enabled": true, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 

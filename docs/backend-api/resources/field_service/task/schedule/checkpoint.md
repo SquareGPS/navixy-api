@@ -31,7 +31,7 @@ at least two checkpoints.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/checkpoint/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_id": 11231}'
     ```
 
@@ -69,7 +69,7 @@ Transmutes a checkpoint to task and delete its route and other checkpoints in th
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/checkpoint/transmute' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_id": 11231}'
     ```
 

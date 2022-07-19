@@ -60,7 +60,7 @@ Creates a new tag.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"name": "hop", "color": "FF0000"}}'
     ```
     
@@ -105,7 +105,7 @@ Deletes tag with the specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_id": 1}'
     ```
     
@@ -145,7 +145,7 @@ Gets all tags belonging to user with optional filtering.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     
@@ -192,7 +192,7 @@ Search entities that bound with all of specified tags.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/search' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_ids": [1, 2, 3]}'
     ```
     
@@ -251,7 +251,7 @@ Updates existing tag.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"id": 3, "name": "hop", "color": "FF0000"}}'
     ```
     

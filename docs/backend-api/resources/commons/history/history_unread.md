@@ -32,7 +32,7 @@ Default and max limit is [history.maxLimit](../dealer.md).
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/history/unread/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     
@@ -104,7 +104,7 @@ Get count of user's unread history messages starting `from` date.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/history/unread/count' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     

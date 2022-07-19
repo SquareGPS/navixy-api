@@ -181,7 +181,7 @@ Method description.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/resource/sub_resource/action' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"param1": "value1", "param2": "value2", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 

@@ -57,7 +57,7 @@ Creates a new bill for the user.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/bill/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "payer": "Jon Doe", "sum": 100.0}'
     ```
 
@@ -97,7 +97,7 @@ Shows list of bills with their parameters in array.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/bill/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 

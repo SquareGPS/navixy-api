@@ -70,7 +70,7 @@ Parameters can be passed in the:
 === "HTTP POST `application/json`"
     ```abap
     $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
-      -H 'Content-Type: application/json' \ 
+      -H 'Content-Type: application/json' \
       -d '{"param1": "value1", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 

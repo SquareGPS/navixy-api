@@ -44,7 +44,7 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/geocoder/search_address' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}'
     ```
 
@@ -115,7 +115,7 @@ Search address by location using geocoder.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/geocoder/search_location' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 56.827001, "lng": 60.594296}}'
     ```
 

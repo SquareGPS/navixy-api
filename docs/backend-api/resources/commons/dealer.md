@@ -15,9 +15,9 @@ API path: `/dealer`.
 
 ### get_ui_config
 
-Gets dealer info and dealer-specific UI settings by a domain.
+Gets dealer info and dealer-specific UI settings by a domain or hash.
 
-It doesn't need authentication and available in **UNAUTHORIZED** access level.
+It doesn't require authentication and available in **UNAUTHORIZED** access level.
 
 #### parameters
 
@@ -27,7 +27,7 @@ It doesn't need authentication and available in **UNAUTHORIZED** access level.
 | hash   | Used instead of a domain to identify a dealer if there is a user session  | string |
 
 Params `domain` and `hash` is not required both, but one of them must be specified.
-If `hash` is specified the `domain` is not used.
+If `hash` is specified the `domain` shouldn't be used.
 
 #### example
 
@@ -35,7 +35,7 @@ If `hash` is specified the `domain` is not used.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/dealer/get_ui_config' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "domain": "panel.navixy.com"}'
     ```
 

@@ -46,7 +46,7 @@ Get points of user's geofence with `zone_id`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/point/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 1234567}'
     ```
 
@@ -97,7 +97,7 @@ Update points for user's geofence with `zone_id`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/point/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 1234567, "points": [{"lat": 11.0, "lng": 22.0, "node": true},{"lat": 11.2, "lng": 22.2, "node": true},{"lat": 11.4, "lng": 22.4, "node": true}]}'
     ```
 

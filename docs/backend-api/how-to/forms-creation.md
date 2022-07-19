@@ -36,7 +36,7 @@ API request:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/form/template/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"label": "Trackers delivery", "description": "Employee, fill this form with every delivery", "fields": [{"id": "Text-1", "type": "text", "label": "Customer's name", "required": true, "description": "Specify here customer's and company's name", "max_length": 1000, "min_length": 1}, {"id": "Text-2", "type": "text", "label": "Delivered", "required": true, "description": "Specify here all delivered models and its amount", "max_length": 1000, "min_length": 1}, {"id": "Checkbox", "type": "checkbox_group", "label": "Additional options", "description": "Specify here all provided additional options", "group": [{"label": "Presentation and training"}, {"label": "Additional configuration"}, {"label": "Installation"}], "max_checked": 3, "min_checked": 1, "required": false}, {"id": "Signature", "type": "signature", "label": "Customer's signature", "description": "Let a customer add his signature about receiving the order", "required": true}], "submit_in_zone": true, "default": true}}'
     ```
 

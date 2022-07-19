@@ -64,7 +64,7 @@ Gets all form templates belonging to current master user.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/form/template/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -125,7 +125,7 @@ Creates new form template.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/form/template/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
     ```
 
@@ -163,7 +163,7 @@ Gets form template belonging to current master user by specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/form/template/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template_id": 111}'
     ```
 
@@ -224,7 +224,7 @@ Updates existing form template.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/form/template/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"id": 111, label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
     ```
 
@@ -259,7 +259,7 @@ Deletes form template.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/form/template/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template_id": 111}'
     ```
 
@@ -300,7 +300,7 @@ Returns template usage statistics.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/form/template/stats/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template_id": 111}'
     ```
 

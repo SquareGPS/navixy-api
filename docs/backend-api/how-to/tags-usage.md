@@ -29,7 +29,7 @@ API request:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"name": "team1", "color": "#00BFFF"}}'
     ```
 
@@ -70,7 +70,7 @@ For example:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/search' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_ids": [179227]}'
     ```
 

@@ -33,7 +33,7 @@ Changes password of user with the provided session hash (it is contained in a pa
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/password/change' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "password": "12@14Y$"}'
     ```
 
@@ -67,7 +67,7 @@ Works only with standard user session (not with API key).
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/password/set' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "old_password": "qwert1", "new_password": "12@14Y$"}'
     ```
 

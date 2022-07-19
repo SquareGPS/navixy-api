@@ -56,7 +56,7 @@ Returns list of payment systems available for specified user.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/payment_system/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -97,7 +97,7 @@ Returns the estimate of the monthly payment amount
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/payment_system/estimate/get' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 

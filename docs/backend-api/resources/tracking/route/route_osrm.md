@@ -34,7 +34,7 @@ Where **location** described in [data types description section](../../../gettin
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/route/osrm/get' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start": {"lat": 56.827001, "lng": 60.594296}, "end": {"lat": 52.835601, "lng": 60.514721}}'
     ```
 

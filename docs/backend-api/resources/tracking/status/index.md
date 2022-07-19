@@ -50,7 +50,7 @@ Creates new possible working status for the specified working status list.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345, "status": {"label": "Busy", "color": "E57373"}}'
     ```
 
@@ -92,7 +92,7 @@ Deletes working status entry.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status_id": 123}'
     ```
 
@@ -132,7 +132,7 @@ Gets working statuses belonging to the specified status list.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345}'
     ```
 
@@ -186,7 +186,7 @@ Updates working status properties.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status": {"id": 5, "label": "Busy", "color": "E57373"}}'
     ```
 
