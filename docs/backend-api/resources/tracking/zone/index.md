@@ -305,6 +305,15 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
 Gets all user geofences.
 
+#### parameters
+
+| name | description                                               | type | 
+| :--- |:----------------------------------------------------------| :--- |
+| filter | Optional. Filter for geofences label and description. | string |
+| tag_ids | Optional. Tag IDs assigned to the geofences.         | int array |
+| offset | Optional. Offset from start of the found geofences for pagination. | int |
+| limit | Optional. Limit of the found geofences for pagination. | int |
+
 #### examples
 
 === "cURL"
