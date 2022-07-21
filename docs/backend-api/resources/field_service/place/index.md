@@ -139,7 +139,7 @@ Get POIs belonging to user.
 | ascending  | Optional. If `false` – descending order.                                                                                                                                                            | boolean          |
 | limit      | Optional. Limit.                                                                                                                                                                                    | int              |
 | offset     | Optional. offset, default is 0.                                                                                                                                                                     | int              |
-
+| tag_ids    | Optional. Tag IDs assigned to the place. The places found must include all the tags from the list.                                                                                                  | int array        |
 #### examples
 
 === "cURL"

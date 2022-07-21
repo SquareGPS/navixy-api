@@ -307,12 +307,12 @@ Gets all user geofences.
 
 #### parameters
 
-| name | description                                               | type | 
-| :--- |:----------------------------------------------------------| :--- |
-| filter | Optional. Filter for geofences label and description. | string |
-| tag_ids | Optional. Tag IDs assigned to the geofences.         | int array |
-| offset | Optional. Offset from start of the found geofences for pagination. | int |
-| limit | Optional. Limit of the found geofences for pagination. | int |
+| name    | description                                                                                           | type      | 
+|:--------|:------------------------------------------------------------------------------------------------------|:----------|
+| filter  | Optional. Filter for geofences label and description.                                                 | string    |
+| tag_ids | Optional. Tag IDs assigned to the geofences. The zones found must include all the tags from the list. | int array |
+| offset  | Optional. Offset from start of the found geofences for pagination.                                    | int       |
+| limit   | Optional. Limit of the found geofences for pagination.                                                | int       |
 
 #### examples
 
