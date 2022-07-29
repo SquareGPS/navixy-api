@@ -153,10 +153,11 @@ Also this call returns all unassigned task schedules.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| trackers | Optional. Ids of the trackers to which task schedule is assigned. | int array |
-| filter | Optional. Filter for task schedule label and description. | string |
+| name     | description                                                                                                   | type      | 
+|:---------|:--------------------------------------------------------------------------------------------------------------|:----------|
+| trackers | Optional. Ids of the trackers to which task schedule is assigned.                                             | int array |
+| filter   | Optional. Filter for task schedule label and description.                                                     | string    |
+| tag_ids  | Optional. Tag IDs assigned to the task schedule. The schedules found must include all the tags from the list. | int array |
 
 #### examples
 
