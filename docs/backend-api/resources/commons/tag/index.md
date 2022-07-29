@@ -94,10 +94,12 @@ Deletes tag with the specified id.
 **required sub-user rights**: `tag_update`.
 
 #### parameters
+To delete tags, only one of the following parameters must be specified.
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| tag_id | Id of the tag to delete. | int |
+| name    | description                    | type      |
+|:--------|:-------------------------------|:----------|
+| tag_id  | Id of the tag to delete.       | int       |
+| tag_ids | An array of tag IDs to delete. | int array |
 
 #### examples
 
@@ -125,7 +127,7 @@ Deletes tag with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tag with such an id.
+* 201 – Not found in the database - if there is no tag with such an id. This error will not occur if the tag_ids parameter is specified, deletion is silent in this case.
 
 ***
 
