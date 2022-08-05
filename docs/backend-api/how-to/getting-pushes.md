@@ -16,37 +16,12 @@ each of these cases separately.
 
 ## Mobile apps
 
-To get push notifications on mobile devices, you need your app's push token. You can get it from Google if you're 
-developing an android app, or from the AppStore for iOS app.
+To get push notifications on mobile devices, you need get app's push token. It may be done in several steps:
 
-Then use the [push_token/bind](../resources/commons/user/session/push_token.md#bind) API call. Substitute the appropriate
-application ID for your OS and enter the token for your application obtained from the official store.
-
-### Example request for Android app
-
-=== "cURL"
-
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/session/push_token/bind' \
-    -H 'Content-Type: application/json' \
-    -d '{"hash": "current_user_hash_or_API_key", "application": "navixy_android_viewer", "token": "push_token_of_your_app"}'
-    ```
-
-### Example request for iOS app
-
-=== "cURL"
-
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/session/push_token/bind' \
-    -H 'Content-Type: application/json' \
-    -d '{"hash": "current_user_hash_or_API_key", "application": "navixy_android_viewer", "token": "push_token_of_your_app"}'
-    ```
-
-The platform will reply with 
-
-```json
-{ "success": true }
-```
+1. Contact Google if you're developing an android app, or from the AppStore for iOS app to get app's credentials.
+2. Contact our support team (support@navixy.com) with these credentials.
+3. We will provide you with the push_token and application for the API call. 
+4. Then use the [push_token/bind](../resources/commons/user/session/push_token.md#bind) API call from your app. Substitute the provided push token and application ID into it
 
 ***
 
