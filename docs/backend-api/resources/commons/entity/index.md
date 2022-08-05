@@ -72,7 +72,7 @@ Only API key `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/entity/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -133,7 +133,7 @@ Gets entity by the id or by type.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/entity/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 131312}'
     ```
 
@@ -204,7 +204,7 @@ Updates settings of customizable entity. Entity must have a valid id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/entity/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity": {"id": 123, "type": "place", "settings": {"layout": {"sections": [{"label": "Section label", "field_order": ["label", "location", "131212", "tags", "description"]}]}}}'
     ```
 

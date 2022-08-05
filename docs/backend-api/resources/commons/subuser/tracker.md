@@ -33,7 +33,7 @@ Gives access for sub-user to the specified trackers.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subuser/tracker/bind' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "trackers": [127830]}'
     ```
     
@@ -79,7 +79,7 @@ Gets a list of tracker ids to which this sub-user has access.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subuser/tracker/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951}'
     ```
     
@@ -128,7 +128,7 @@ Disables access for sub-user to the specified trackers.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subuser/tracker/unbind' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "trackers": [127830]}'
     ```
     

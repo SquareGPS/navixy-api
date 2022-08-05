@@ -33,7 +33,7 @@ API request:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Circle geofence", "type": "circle", "center": {"lat": 61.49504550221769, "lng": 23.775476217269897}, "radius": 50, "tags": [179227], "color": "03A9F4", "address":"Address"}}'
     ```
 
@@ -60,7 +60,7 @@ API request:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Speed limit in Rome", "type": "polygon", "color": "27A9E3", "address": "Address"}, points: [{"lat": 41.80970819375622, "lng": 12.576599121093752, "node": true}, {"lat": 41.79128073728445, "lng": 12.522354125976564, "node": true}, {"lat": 41.80970819375622, "lng": 12.38983154296875, "node": true}, {"lat": 41.86649282301996, "lng": 12.369232177734375, "node": true}, {"lat": 41.90943147946872, "lng": 12.38090515136719, "node": true}, {"lat": 41.956426414614235, "lng": 12.379531860351562, "node": true}, {"lat": 41.98501507352485, "lng": 12.435150146484375, "node": true}, {"lat": 41.98807738309159, "lng": 12.50724792480469, "node": true}, {"lat": 41.97531678812783, "lng": 12.54913330078125, "node": true}, {"lat": 41.95795827518022, "lng": 12.580718994140627, "node": true}, {"lat": 41.92322706102551, "lng": 12.61161804199219, "node": true}, {"lat": 41.902277040963696, "lng": 12.619171142578127, "node": true}, {"lat": 41.86904950322354, "lng": 12.607498168945312, "node": true}]}'
     ```
 

@@ -31,7 +31,7 @@ Does not require session hash and does not need any permissions. Auths dealer in
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/account/auth' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"login": "20410", "password": "12f@14Y$"}'
     ```
 
@@ -128,7 +128,7 @@ Only session `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/account/get_permissions' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
     ```
 
@@ -226,7 +226,7 @@ Only session `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/account/logout' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
     ```
 

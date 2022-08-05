@@ -29,7 +29,7 @@ Gets information about all supported timezones for the specified locale. Does no
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/timezone/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"locale": "en"}'
     ```
 

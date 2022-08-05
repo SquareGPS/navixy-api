@@ -139,7 +139,7 @@ Creates a new vehicle.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle": {"additional_info": null, "avatar_file_name": null, "chassis_number": "", "color": null, "frame_number": "", "free_insurance_policy_number": "", "free_insurance_valid_till": null, "fuel_cost": null, "fuel_grade": "", "fuel_tank_volume": null, "fuel_type": null, "garage_id": null, "gross_weight": null, "icon_color": "1E96DC", "icon_id": null, "label": "Vehicle", "liability_insurance_policy_number": "", "liability_insurance_valid_till": null, "manufacture_year": 2020, "max_speed": 160, "model": "", "norm_avg_fuel_consumption": null, "passengers": 1, "payload_height": 1868, "payload_length": 2820, "payload_weight": null, "payload_width": 1972, "reg_number": "AB234D", "subtype": "sedan", "tags": [], "tracker_id": null, "trailer": null, "type": "car", "tyre_size": "", "tyres_number": null, "vin": "45468743418579751", "wheel_arrangement": null}}'
     ```
 
@@ -178,7 +178,7 @@ Deletes a vehicle with the specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_id": 127722}'
     ```
 
@@ -219,7 +219,7 @@ Gets all vehicles belonging to user.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
@@ -300,7 +300,7 @@ Gets vehicle by specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_id": 127722}'
     ```
 
@@ -384,7 +384,7 @@ Updates existing vehicle.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle": {"additional_info": null, "avatar_file_name": null, "chassis_number": "", "color": null, "frame_number": "", "free_insurance_policy_number": "", "free_insurance_valid_till": null, "fuel_cost": null, "fuel_grade": "", "fuel_tank_volume": null, "fuel_type": null, "garage_id": null, "gross_weight": null, "icon_color": "1E96DC", "icon_id": null, "id": 223155, "label": "Vehicle", "liability_insurance_policy_number": "", "liability_insurance_valid_till": null, "manufacture_year": 2020, "max_speed": 160, "model": "", "norm_avg_fuel_consumption": null, "passengers": 1, "payload_height": 1868, "payload_length": 2820, "payload_weight": null, "payload_width": 1972, "reg_number": "AB234D", "subtype": "sedan", "tags": [], "tracker_id": null, "trailer": null, "type": "car", "tyre_size": "", "tyres_number": null, "vin": "45468743418579751", "wheel_arrangement": null}}'
     ```
 

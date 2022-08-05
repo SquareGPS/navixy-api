@@ -34,7 +34,7 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/employee/avatar/assign' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee_id": 2132, "icon_id": 3654}'
     ```
 

@@ -82,7 +82,7 @@ Creates new retranslator.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/retranslator/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
     ```
 
@@ -123,7 +123,7 @@ Deletes user's retranslator with specified `retranslator_id`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/retranslator/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator_id": 123456}'
     ```
 
@@ -155,7 +155,7 @@ Get all users' retranslators.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/retranslator/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -213,7 +213,7 @@ the current user.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/retranslator/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
     ```
 
@@ -244,7 +244,7 @@ Only API key `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/retranslator/protocol/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 

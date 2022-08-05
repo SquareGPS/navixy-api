@@ -46,7 +46,7 @@ Changes tariff of tracker (with `tracker_id`) to new tariff (with `tariff_id`).
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tariff/tracker/change' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 345215, "tariff_id": 12}'
     ```
 
@@ -90,7 +90,7 @@ List tariffs on which user can switch the passed tracker (even when tariff last 
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tariff/tracker/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 345215}'
     ```
 

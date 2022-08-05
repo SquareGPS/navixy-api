@@ -85,7 +85,7 @@ obtained from [entity/list](./index.md#list).
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/entity/fields/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": 131312}'
     ```
 
@@ -146,7 +146,7 @@ Passing fields with `id` from non-existent fields or fields bound to another ent
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/entity/fields/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": 131312, "fields": {"label": "Additional info", "type":  "employee", "required": false, "description": "Responsibility", "params": {"responsible": true}}'
     ```
 

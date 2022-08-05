@@ -31,7 +31,7 @@ Reads order by specified ID.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/order/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "order_id": 12341}'
     ```
 

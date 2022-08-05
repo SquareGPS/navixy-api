@@ -28,7 +28,7 @@ Drivers can change their working status using the X-GPS app. Supervisors can cha
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/listing/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"label": "Delivery_service", "employee_controlled": true, "supervisor_controlled": true}'
     ```
 
@@ -52,7 +52,7 @@ For example, we have 4 working statuses:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 1111, "status": {"label": "Free", "color": "E57373"}}'
     ```
 
@@ -79,7 +79,7 @@ For example, we have 10 drivers. We should create 10 requests for assigning the 
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/listing/tracker/assign' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 615487, "listing_id": 111}'
     ```
 

@@ -141,7 +141,7 @@ Creates a sensor.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0.0, "units": "", "units_type": "celsius"}'
     ```
 
@@ -185,7 +185,7 @@ Deletes a sensor with `sensor_id` from the database.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 23456}'
     ```
 
@@ -225,7 +225,7 @@ List tracker sensors bound to tracker with specified id (`tracker_id` parameter)
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
     ```
 
@@ -281,7 +281,7 @@ Updates sensor.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250, "sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0.0, "units": "", "units_type": "celsius"}'
     ```
 
@@ -323,7 +323,7 @@ Copies sensors from one tracker to another.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/batch_copy' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "base_tracker_id": 123456, "trackers": [56789, 54321]}'
     ```
 
@@ -359,7 +359,7 @@ Gets all metering sensor readings with values and time per requested period.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/sensor/data/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 1456789, "from": "2022-02-28 00:00:00", "to": "2022-03-28 23:59:00"}'
     ```
 

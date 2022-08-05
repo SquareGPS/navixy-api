@@ -102,7 +102,7 @@ Get check-in which id is equal to `checkin_id`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/checkin/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkin_id": 1}'
     ```
 
@@ -211,7 +211,7 @@ It's a set of sort options. Each option is a pair of field name and sorting dire
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/checkin/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [616384,345623], "from": "2020-08-05 03:06:00", "to": "2020-09-05 03:00:00", "offset": 20, "limit": 100, "format": "xlsx"}'
     ```
 
@@ -256,7 +256,7 @@ Deletes check-ins with the specified id-s.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/checkin/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkin_ids": [2132,4533]}'
     ```
 

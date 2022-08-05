@@ -79,7 +79,7 @@ Gets POI by ID.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place_id": 122304}'
     ```
 
@@ -146,7 +146,7 @@ Get POIs belonging to user.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -215,7 +215,7 @@ Creates a new POI.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
     ```
 
@@ -252,7 +252,7 @@ Gets all POI IDs and names within which a specified coordinates are located insi
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/search_location' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 56.827001, "lng": 60.594296}}'
     ```
 
@@ -297,7 +297,7 @@ Updates existing POI.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"id": 111, "icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
     ```
 
@@ -331,7 +331,7 @@ Deletes POI with the specified ID.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place_id": 122304}'
     ```
 

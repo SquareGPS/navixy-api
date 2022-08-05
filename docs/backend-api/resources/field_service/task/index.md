@@ -103,7 +103,7 @@ API base path: `/task`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/assign' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 23144, "tracker_id": 132421}'
     ```
 
@@ -209,7 +209,7 @@ Returns total number of tasks belonging to current user.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/count' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -279,7 +279,7 @@ Minimal JSON object to create a new task must contain:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"tracker_id": 22, "location": {"lat": 56.83717295, "lng": 60.59761920, "radius": 150}, "label": "Name", "description": "Description example", "from": "2020-02-03 04:05:06", "to": "2020-03-04 05:06:07"}, "create_form": false}'
     ```
     
@@ -331,7 +331,7 @@ Deletes the task with the specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 23144}'
     ```
 
@@ -425,7 +425,7 @@ If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** i
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -514,7 +514,7 @@ Gets task, checkpoint, or route with checkpoints by specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 23144}'
     ```
 
@@ -568,7 +568,7 @@ Converts task into a route checkpoint.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/transmute' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 23144, "route_id": 12334, "order": 0}'
     ```
 
@@ -611,7 +611,7 @@ Updates existing task. Note that you cannot change task owner using this method.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"id": 22379, "location": {"lat": 56.83717295, "lng": 60.59761920, "radius": 150}, "label": "Name", "description": "Description example", "from": "2020-02-03 04:05:06", "to": "2020-03-04 05:06:07"}, "create_form": false}'
     ```
 

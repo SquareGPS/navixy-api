@@ -32,7 +32,7 @@ Changes subpaas's password.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/password/change' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 99874, "new_password": "Fr1d@Y$"}'
     ```
 

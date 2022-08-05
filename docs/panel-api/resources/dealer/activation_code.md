@@ -63,7 +63,7 @@ created codes.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/dealer/activation_code/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "count": 10, "tariff_id": 12457, "bonus_amount": 3, "free_days": 5}'
     ```
     
@@ -113,7 +113,7 @@ of the following fields: `code`, `tariff_id`, `device_id`, `device_type`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/dealer/activation_code/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
     ```
 
@@ -174,7 +174,7 @@ Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes whi
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/dealer/activation_code/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06",  "codes": ["12315124", "12451576"], "tariff_id": 12457, "bonus_amount": 3, "free_days": 5}'
     ```
 

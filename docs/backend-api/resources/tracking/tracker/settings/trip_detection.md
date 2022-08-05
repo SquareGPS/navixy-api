@@ -34,7 +34,7 @@ Gets parking detection settings for the specified tracker.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/settings/trip_detection/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
     ```
 
@@ -90,7 +90,7 @@ Updates parking detection settings for the specified tracker.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/settings/trip_detection/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "min_idle_duration_minutes": "5", "idle_speed_threshold": "3", "ignition_aware": false, "motion_sensor_aware": false}'
     ```
 

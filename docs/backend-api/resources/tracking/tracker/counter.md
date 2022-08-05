@@ -43,7 +43,7 @@ Reads counter of passed `type`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
     ```
 
@@ -95,7 +95,7 @@ Updates counter of passed `type`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "multiplier": 3.14, "sensor_id": 1234}'
     ```
 
@@ -205,7 +205,7 @@ Gets actual value of specified `type` of sensor.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/get' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
     ```
 
@@ -249,7 +249,7 @@ Get actual values for counters of passed `type` and `trackers`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456, 234567], "type": "odometer"}'
     ```
 
@@ -292,7 +292,7 @@ Creates new counter of passed `type` (if not) and update its `value`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/set' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "value": 233.21}'
     ```
 
@@ -330,7 +330,7 @@ Returns counter values for a period.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/counter/data/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "from": "2021-02-01 00:00:00", "to": "2021-02-01 03:00:00"}'
     ```
 

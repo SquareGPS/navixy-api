@@ -31,7 +31,7 @@ Gets tracking settings for the specified tracker.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/settings/tracking/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
     ```
 
@@ -79,7 +79,7 @@ Sends new tracking settings to the specified tracker.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/settings/tracking/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "tracking_settings": {"tracking_angle": 30, "tracking_distance": 100, "tracking_interval": 60, "on_stop_tracking_interval": 180, "sleep_mode": "disabled", "stop_detection": "ignition"}}'
     ```
 

@@ -82,7 +82,7 @@ Creates new task schedule entry.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
     ```
 
@@ -124,7 +124,7 @@ Delete task schedule with the specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule_id": 23144}'
     ```
 
@@ -165,7 +165,7 @@ Also this call returns all unassigned task schedules.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -229,7 +229,7 @@ Gets task, route or checkpoint schedule by specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 12314}'
     ```
 
@@ -307,7 +307,7 @@ Updates existing task schedule.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
     ```
 
