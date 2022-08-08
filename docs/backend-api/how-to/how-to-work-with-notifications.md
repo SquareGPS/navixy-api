@@ -30,7 +30,7 @@ In our example we need to obtain no more than 100 entries for last month. If tod
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/history/unread/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "limit": 100, "from": "2020-12-26 00:00:00"}'
     ```
 
@@ -100,7 +100,7 @@ necessary to know only when the device entered and exited the geofence. API requ
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/history/tracker/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123985], "from": "2020-12-01 00:00:00", "to": "2020-12-31 23:59:59", "events": ["inzone", "outzone"], "limit": 100, "ascending": false}'
     ```
 

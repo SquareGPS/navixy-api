@@ -29,7 +29,7 @@ Gets number of commands in queue for the specified tracker.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/command/unconfirmed/count' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
     ```
 
@@ -75,7 +75,7 @@ Removes all pending SMS commands from the queue for the specified tracker.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/command/unconfirmed/reset' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
     ```
 

@@ -89,7 +89,7 @@ Provides information about trackers which were considered "active" by our PaaS b
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/active/history/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "from": "2021-02", "to": "2021-03"}'
     ```
 
@@ -144,7 +144,7 @@ Assign bundle to specified ICCID.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/assign' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": "78974217758"}'
     ```
 
@@ -192,7 +192,7 @@ Assigns bundle to specified order ID.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/order/assign' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "order_id": 78974217758}'
     ```
 
@@ -236,7 +236,7 @@ Adds multiple bundles at once.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/import' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imeis": ["896654523569742", "754854"], "equip_id": 13785, "factory_preset": false}'
     ```
 
@@ -286,7 +286,7 @@ the following fields: `id`, `imei`, `model_code`, `iccid`, `assign_time`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
     ```
 
@@ -333,7 +333,7 @@ Returns the bundle object with the specified imei.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imei": "835664527777452"}'
     ```
 
@@ -377,7 +377,7 @@ Assign specified equipment to bundle.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 13457, "equip_id": 35468}'
     ```
 
@@ -422,7 +422,7 @@ Creates a clone of the existing non-clone tracker.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/clone' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537, "user_id": 354468, "label": "Courier"}'
     ```
 
@@ -471,7 +471,7 @@ Returns auth token for connection to tracker command console.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/console/connect' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
     ```
 
@@ -554,7 +554,7 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/corrupt' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
     ```
 
@@ -612,7 +612,7 @@ response will contain a description of the reasons why the deletion failed.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_delete_clones' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "trackers": [134537, 458412]}'
     ```
 
@@ -679,7 +679,7 @@ Deletes a clone of the existing tracker.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/delete_clone' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
     ```
 
@@ -762,7 +762,7 @@ If `filter` is used, entities will be returned only if filter string contain one
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
     ```
 
@@ -837,7 +837,7 @@ Moves the existing non-clone tracker to another user belonging to the same deale
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/move' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "user_id": 214034}'
     ```
 
@@ -883,7 +883,7 @@ Returns the tracker object with the specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
     ```
 
@@ -956,7 +956,7 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/register_entry' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
     ```
 
@@ -1007,7 +1007,7 @@ Updates tracker settings.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/settings/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "label": "Courier", "deleted": false}'
     ```
     
@@ -1051,7 +1051,7 @@ Updates source settings. Can block and unblock a device.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/source/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "blocked": false}'
     ```
     
@@ -1095,7 +1095,7 @@ Updates source settings. Can block and unblock a device.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/tariff/change' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "tariff_id": 15843, "repay": false, "charge": true}'
     ```
     
@@ -1217,7 +1217,7 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/raw_command/send' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": "889654248978", "command": "setparam 101:4"}'
     ```
 

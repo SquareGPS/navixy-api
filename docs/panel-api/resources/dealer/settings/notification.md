@@ -49,7 +49,7 @@ Only session `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/notification/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
     ```
 
@@ -104,7 +104,7 @@ Updates notification settings for the current dealer.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/notification/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "email_from": "NAVIXY <no-reply@navixy.com>", "email_footer": "\n\n---nSincerely, Navixy", "sms_originator": "demo.navixy.com", "caller_id": "491761234543"}'
     ```
 

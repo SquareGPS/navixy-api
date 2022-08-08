@@ -28,7 +28,7 @@ Gets the state of alarm mode of device.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
@@ -74,7 +74,7 @@ Changes the state of alarm mode of device. The device must be online.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/set' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"tracker_id": 123456, "enabled": true, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 

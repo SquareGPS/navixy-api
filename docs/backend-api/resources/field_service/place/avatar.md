@@ -82,7 +82,7 @@ Assigns `icon_id` (from standard icon set) to this POI. `icon_id` can be null â€
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/place/avatar/assign' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place_id": 122304, "icon_id": 1}'
     ```
 

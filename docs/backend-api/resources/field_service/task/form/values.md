@@ -47,7 +47,7 @@ For **value** object description, see [form/form-fields-and-values/](../../form/
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/form/values/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546, "value": {"text1": {"type": "text", "value": "text field value"}}}'
     ```
 

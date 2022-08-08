@@ -47,7 +47,7 @@ Gets all departments belonging to user.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/department/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -102,7 +102,7 @@ Creates a new department with specified parameters.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/department/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department": {"label": "My Department", "location": {"lat": 46.9, "lng": 7.4, "address": "Rosenweg 3", "radius": 50}}'
     ```
 
@@ -144,7 +144,7 @@ Updates existing department with a new specified parameters.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/department/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department": {"id": 111, "label": "My Department", "location": {"lat": 46.9, "lng": 7.4, "address": "Rosenweg 3", "radius": 50}}'
     ```
 
@@ -178,7 +178,7 @@ Deletes department with the specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/department/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department_id": 111}'
     ```
 

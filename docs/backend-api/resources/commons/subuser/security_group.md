@@ -96,7 +96,7 @@ Creates new security group.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subuser/security_group/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "group": {"label": "Managers", "privileges": {"rights": ["tag_update", "tracker_register"], "store_period": "1d"}}}'
     ```
 
@@ -138,7 +138,7 @@ All sub-users belonging to this group will be assigned to default (null) securit
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subuser/security_group/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 103}'
     ```
     
@@ -181,7 +181,7 @@ Only API key `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subuser/security_group/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     
@@ -235,7 +235,7 @@ Updates existing security group.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subuser/security_group/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "group": {"id": 103, "label": "Managers", "privileges": {"rights": ["tag_update", "tracker_register"], "store_period": "1d"}}}'
     ```
 

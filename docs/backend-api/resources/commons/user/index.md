@@ -167,7 +167,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/auth' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"login": "user@email.com", "password": "12@14Y$"}'
     ```
 
@@ -206,7 +206,7 @@ Only API key `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/get_info' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     
@@ -301,7 +301,7 @@ Only API key `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     
@@ -345,7 +345,7 @@ Only session `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/logout' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     
@@ -385,7 +385,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/resend_activation' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"login": "user@login.com"}'
     ```
     

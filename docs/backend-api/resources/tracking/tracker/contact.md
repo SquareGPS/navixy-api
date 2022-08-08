@@ -25,7 +25,7 @@ Gets all user's trackers with special grouping by "contacts".
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 

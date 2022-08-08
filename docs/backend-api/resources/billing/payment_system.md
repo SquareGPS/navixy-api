@@ -56,7 +56,7 @@ Returns list of payment systems available for specified user.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/payment_system/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -72,13 +72,7 @@ Returns list of payment systems available for specified user.
 {
     "success": true,
     "list": [{
-         "type": "rbkmoney",
-         "url": "https:rbkmoney.com/acceptpurchase.aspx",
-         "account": "John Doe",
-         "currency": "EUR",
-         "payment_code": "Navixy Demo",
-         "subscription_code": "4671292",
-         "methods": ["method1", "method2"]
+      "type": "bill"
     }]
 }
 ```
@@ -103,7 +97,7 @@ Returns the estimate of the monthly payment amount
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/payment_system/estimate/get' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -124,41 +118,3 @@ Returns the estimate of the monthly payment amount
 
 * `value` - float. Payment amount, rounded up to hundreds for rubles or to tens for other currencies.
 
-***
-
-### mobile/pay
-
-Create a bill using 'mobile' payment system (AKA Qiwi Bank).
-
-**required sub-user rights:** `payment_create`.
-
-#### parameters
-
-| name | description | type|
-| :------ | :------ | :----- |
-| phone | 10-digit phone number without "+" sign and country code. | string |
-| sum | amount of money to pay, e.g. 100.50 . minimum is 1.00, maximum is 99999.00. | double |
-
-#### example
-
-=== "cURL"
-
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/payment_system/mobile/pay' \
-        -H 'Content-Type: application/json' \ 
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "phone": "6156680000", "sum": 1000.00}'
-    ```
-
-#### response
-
-```json
-{
-    "success": true
-}
-```
-
-#### errors
-
-* 13 – Operation not permitted - if this payment system not enabled for user's PaaS platform.
-* 201 – Not found in the database - if payment system not configured properly.
-* 215 – External service error - if QIWI payment gateway returned an error.

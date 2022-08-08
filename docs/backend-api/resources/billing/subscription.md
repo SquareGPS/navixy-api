@@ -37,7 +37,7 @@ Unsubscribe from auto-renewal by reference.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subscription/avangate/cancel' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "reference": "5EAD4B0B2F"}'
     ```
 
@@ -77,7 +77,7 @@ Only API key `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/subscription/avangate/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 

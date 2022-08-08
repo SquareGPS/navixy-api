@@ -41,7 +41,7 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/history/tracker/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [131312, 123985], "from": "2020-12-10 16:44:00", "to": "2020-12-22 16:44:00"}'
     ```
 

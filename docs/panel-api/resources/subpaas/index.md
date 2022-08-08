@@ -69,7 +69,7 @@ Creates subpaas. After creation its `dealer_block_type` will be in `INITIAL_BLOC
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com"}'
     ```
 #### response
@@ -108,7 +108,7 @@ Gets a list of all subpaases for a dealer. Dealer id will be taken from the sess
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
     ```
     
@@ -167,7 +167,7 @@ Gets subpaas info by its id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 97834}'
     ```
         
@@ -234,7 +234,7 @@ Updates a subpaas with specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/subpaas/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com", "contact_fio": "fio", "contact_post": "CEO", "contact_phone": "79999902190", "block_type": "NOT_BLOCKED"}'
     ```
 

@@ -72,7 +72,7 @@ obtained using a login/password via [/user/auth](./user/index.md#auth).
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/api/key/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "title": "My Super App"}'
     ```
 
@@ -124,7 +124,7 @@ obtained using a login/password via [/user/auth](./user/index.md#auth).
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/api/key/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "key": "5063e191d734e87e17987953c7a9a086"}'
     ```
 
@@ -167,7 +167,7 @@ Gets all of API keys for an account.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/api/key/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 

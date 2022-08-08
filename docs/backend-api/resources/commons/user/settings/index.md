@@ -69,7 +69,7 @@ Only API key `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/settings/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     
@@ -136,7 +136,7 @@ Update current user's settings.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/settings/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "time_zone": "Europe/Amsterdam", "locale": "nl_NL", "measurement_system": "metric", "geocoder": "osm", "route_provider": "google", "translit": false, "balance_alert_settings": {"emails": ["email1@example.com", "email2@example.com"]}, "file_storage_settings": {"auto_overwrite": true}}'
     ```
 
@@ -170,7 +170,7 @@ Updates current user's file storage settings.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/settings/file_storage/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "file_storage_settings": {"auto_overwrite": true}}'
     ```
 

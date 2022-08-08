@@ -24,7 +24,7 @@ Gets last waybill number.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/track/waybill/settings/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 

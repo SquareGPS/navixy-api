@@ -34,7 +34,7 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/avatar/assign' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_id": 127722, "icon_id": 1342}'
     ```
 

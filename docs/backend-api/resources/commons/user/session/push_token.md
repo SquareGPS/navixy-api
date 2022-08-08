@@ -21,8 +21,9 @@ Binds Push token with a current session.
 
 | name | description | type |
 | :----- | :-----  | :----- |
-| application | Application ID, for now it's "navixy_iphone_viewer" or "navixy_android_viewer". | [enum](../../../../getting-started.md#data-types) |
-| token | Push token. | string |
+| application | Application ID, "navixy_iphone_viewer" or "navixy_android_viewer" or "w3c_pushapi". | [enum](../../../../getting-started.md#data-types) |
+| token | Push token or endpoint from pushSubscription, full URL like https://fcm.googleapis.com/fcm/send/f6kicrBn7S0:APA91b if your app ID is " "| string |
+| parameters | Should be used only with object with "w3c_pushapi". Contain keys from pushSubscription {"p256dh": "...", "auth":"..."} | JSON object |
 | category_filter | Optional. Push notifications category filter, default is `*`. | string |
 
 #### example
@@ -31,7 +32,7 @@ Binds Push token with a current session.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/session/push_token/bind' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "application": "navixy_android_viewer", "token": "f4be7b9d04da2ce1af111b"}'
     ```
 
@@ -78,7 +79,7 @@ Only session `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/user/session/push_token/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     
@@ -97,3 +98,4 @@ Only session `hash`.
 #### errors
 
 [General](../../../../getting-started.md#error-codes) types only.
+

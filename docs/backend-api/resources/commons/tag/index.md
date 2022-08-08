@@ -60,7 +60,7 @@ Creates a new tag.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"name": "hop", "color": "FF0000"}}'
     ```
     
@@ -94,10 +94,12 @@ Deletes tag with the specified id.
 **required sub-user rights**: `tag_update`.
 
 #### parameters
+To delete tags, only one of the following parameters must be specified.
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| tag_id | Id of the tag to delete. | int |
+| name    | description                    | type      |
+|:--------|:-------------------------------|:----------|
+| tag_id  | Id of the tag to delete.       | int       |
+| tag_ids | An array of tag IDs to delete. | int array |
 
 #### examples
 
@@ -105,7 +107,7 @@ Deletes tag with the specified id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_id": 1}'
     ```
     
@@ -125,7 +127,7 @@ Deletes tag with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tag with such an id.
+* 201 – Not found in the database - if there is no tag with such an id. This error will not occur if the tag_ids parameter is specified, deletion is silent in this case.
 
 ***
 
@@ -145,7 +147,7 @@ Gets all tags belonging to user with optional filtering.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
     
@@ -192,7 +194,7 @@ Search entities that bound with all of specified tags.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/search' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_ids": [1, 2, 3]}'
     ```
     
@@ -251,7 +253,7 @@ Updates existing tag.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"id": 3, "name": "hop", "color": "FF0000"}}'
     ```
     

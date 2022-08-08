@@ -32,7 +32,7 @@ Assigns icon_id (from standard icon set) to specified tag.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tag/avatar/assign' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_id": 1, "icon_id": 14}'
     ```
     

@@ -40,7 +40,7 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/form/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "template_id": 12548}'
     ```
 
@@ -85,7 +85,7 @@ All form data will be lost!
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/form/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231}'
     ```
 
@@ -128,7 +128,7 @@ Retrieves attached form as file.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/form/download' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "format": "pdf"}'
     ```
 
@@ -178,7 +178,7 @@ the list contains data on the objects related to each form – tracker / vehicle
     *   *form_description*
 *   **ascending** (_boolean, required_). Sorting direction (ascending / descending).
 *   **include_unsubmitted** (_boolean, required_). If true, unsubmitted forms shall be included in the list.
-*   **filters** (_object, optional_). Specifies the criteria for filtering the list based on the values of the data fields. Conditions are combined by logical AND.\ Filters object contains following optional elements:
+*   **filters** (_object, optional_). Specifies the criteria for filtering the list based on the values of the data fields. Conditions are combined by logical AND.\Filters object contains following optional elements:
 
 ```json
 {
@@ -218,7 +218,7 @@ where period_object is:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/form/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "ascending": true, "include_unsubmitted": true}'
     ```
 
@@ -323,7 +323,7 @@ Gets form associated with the specified task.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/form/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546}'
     ```
 

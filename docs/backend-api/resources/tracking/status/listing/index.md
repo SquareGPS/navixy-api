@@ -52,7 +52,7 @@ Creates new empty working status list.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/listing/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true}'
     ```
 
@@ -93,7 +93,7 @@ Deletes working status list.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/listing/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345}'
     ```
 
@@ -131,7 +131,7 @@ Only API key `hash`.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/listing/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
     ```
 
@@ -185,7 +185,7 @@ Updates working status list properties.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/status/listing/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"id": 12345, "label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true, "entries": [ 5, 2, 1, 4, 6]}'
     ```
 

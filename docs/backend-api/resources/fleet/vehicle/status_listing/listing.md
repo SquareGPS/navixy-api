@@ -44,7 +44,7 @@ Gets all of user's vehicle statuses.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/status/listing/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
@@ -92,7 +92,7 @@ Old vehicle statuses, which are not present in `statuses` array, will be deleted
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/status/listing/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "statuses": [{"id": 1, "order": 0, "label": "label123", "color": "FFFFFF"}]}'
     ```
 

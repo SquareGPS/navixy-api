@@ -36,7 +36,8 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
       },
       "date": {
         "end": "2015-05-08 09:35:00",
-        "notification_interval": 3
+        "notification_interval": 3,
+        "repeat_interval": 42
       },
       "engine_hours": {
         "limit": 100,
@@ -60,7 +61,7 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
       "push_enabled": true
     },
     "completion_date" : "2014-03-16 00:00:00",
-    "repeat": false,
+    "repeat": true,
     "unplanned": false,
     "file_ids": [1, 2]
 }
@@ -90,12 +91,15 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
     * `mileage` - optional object. Mileage condition.
         * `limit` - int. Task limit in kilometers.
         * `notification_interval` - int. Notify about task in specified number of kilometers.
+        * `repeat_interval` - int. Interval in kilometers to set `limit` for a new repeatable task when current one is completed. If this parameter is not set, the initial `limit` value will be used.
     * `date` - optional date condition object.
         * `end` - [date/time](../../../../getting-started.md#data-types). Task end date.
         * `notification_interval` - int. Notify about task in specified number of days.
+        * `repeat_interval` - int. Interval in days to calculate a new end date for repeatable tasks when they are completed. If this parameter is not specified, the interval will be calculated as the difference between the start date and the end date.
     * `engine_hours` - optional engine hours condition object.
         * `limit` - int. Task limit in hours.
         * `notification_interval` - int. Notify about task in specified number of hours.
+        * `repeat_interval` - int. Interval in hours to set `limit` for a new repeatable task when current one is completed. If this parameter is not set, the initial `limit` value will be used.
 * `notifications` - notifications object.
     * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format wo
       `+` sign.
@@ -202,7 +206,7 @@ A `task` object is:
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/batch/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_ids": [76801, 76449], "task": {"comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
     ```
 
@@ -234,7 +238,7 @@ Creates a new vehicle service work. For vehicles with associated tracker only.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task": {"vehicle_id": 76801, "comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
     ```
 
@@ -275,7 +279,7 @@ Either **task_id** or **task_ids** should be specified.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/delete' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 33777}'
     ```
 
@@ -321,7 +325,7 @@ Downloads pdf report of service works.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/download' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "order_by": "vehicle", "group_by": "status"}'
     ```
 
@@ -357,7 +361,7 @@ List all service works of all user vehicles.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/list' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "return_prediction": false}'
     ```
 
@@ -447,7 +451,7 @@ Get service work info by its id.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/read' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "return_prediction": false}'
     ```
 
@@ -544,7 +548,7 @@ Updates task status, and saved (on `done` **status**) current date and values of
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/set_status' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "status": "done"}'
     ```
 
@@ -585,7 +589,7 @@ A [task object](#create) described in a task create.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/update' \
-        -H 'Content-Type: application/json' \ 
+        -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task": {"vehicle_id": 76801, "comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
     ```
 
