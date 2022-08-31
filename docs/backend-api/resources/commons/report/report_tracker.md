@@ -22,9 +22,9 @@ Deletes a report from the database.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| report_id | Id of a report that should be deleted. | int |
+| name      | description                            | type |
+|:----------|:---------------------------------------|:-----|
+| report_id | Id of a report that should be deleted. | int  |
 
 #### examples
 
@@ -64,11 +64,11 @@ Retrieve generated report as a file.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| report_id | Id of a report that should be deleted. | int |
-| format | A format of report that should be downloaded. Can be "xls", xlsx" or "pdf". | [enum](../../../getting-started.md#data-types) | 
-| headless | Optional parameter. Default=`false`. If need report without title page and TOC, set it to `true`. | boolean |
+| name      | description                                                                                       | type                                           |
+|:----------|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------|
+| report_id | Id of a report that should be deleted.                                                            | int                                            |
+| format    | A format of report that should be downloaded. Can be "xls", xlsx" or "pdf".                       | [enum](../../../getting-started.md#data-types) | 
+| headless  | Optional parameter. Default=`false`. If need report without title page and TOC, set it to `true`. | boolean                                        |
 
 #### examples
 
@@ -105,16 +105,16 @@ Requests a report generation with the specified parameters.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| from | A string containing [date/time](../../../getting-started.md#datetime-formats). | string |
-| to | A string containing [date/time](../../../getting-started.md#datetime-formats). Specified date must be after "from" date. | string |
-| title | Report title. Default title will be used if null. | string |
-| geocoder | Which geocoder to use. See [geocoder/](../../tracking/geocoder.md). | string |
-| trackers | List of trackers' ids to be included in report (if report is by trackers). | int array |
-| employees | List of employees' ids to be included in report (if report is by employees). | int array |
-| time_filter | An object which contains everyday time and weekday limits for processed data, e.g. `{"to":"18:00", "from":"12:00", "weekdays":[1,2,3,4,5]}`. | JSON object |
-| plugin | A plugin object (see below). | JSON object |
+| name        | description                                                                                                                                                          | type        |
+|:------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| from        | A string containing [date/time](../../../getting-started.md#datetime-formats).                                                                                       | string      |
+| to          | A string containing [date/time](../../../getting-started.md#datetime-formats). Specified date must be after "from" date.                                             | string      |
+| title       | Report title. Default title will be used if null.                                                                                                                    | string      |
+| geocoder    | Which geocoder to use. See [geocoder/](../../tracking/geocoder.md).                                                                                                  | string      |
+| trackers    | List of trackers' ids to be included in report (if report is by trackers).                                                                                           | int array   |
+| employees   | List of employees' ids to be included in report (if report is by employees. For example, [plugin id 82](../plugin/report_plugins.md#eco-driving-report-by-drivers)). | int array   |
+| time_filter | An object which contains everyday time and weekday limits for processed data, e.g. `{"to":"18:00", "from":"12:00", "weekdays":[1,2,3,4,5]}`.                         | JSON object |
+| plugin      | A plugin object (see below).                                                                                                                                         | JSON object |
 
 #### Parameter object fields:
 
@@ -281,9 +281,9 @@ Retrieves a generated report as JSON.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| report_id | Id of a report that should be deleted. | int |
+| name      | description                            | type |
+|:----------|:---------------------------------------|:-----|
+| report_id | Id of a report that should be deleted. | int  |
 
 #### examples
 
@@ -770,9 +770,9 @@ Returns a report generation status for the specified report id.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| report_id | Id of a report that should be deleted. | int |
+| name      | description                            | type |
+|:----------|:---------------------------------------|:-----|
+| report_id | Id of a report that should be deleted. | int  |
 
 #### examples
 
