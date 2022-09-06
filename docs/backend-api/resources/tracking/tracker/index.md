@@ -31,11 +31,10 @@ manipulation of tracker and/or its properties.
     "tariff_end_date": "2016-03-24",
     "phone": "71234567890"
   },
-  "tag_bindings": [
-    {
-      "tag_id": 456789,
-      "ordinal": 4
-    }]
+  "tag_bindings": [{
+    "tag_id": 456789,
+    "ordinal": 4
+  }]
 }
 ```
 
@@ -45,18 +44,18 @@ manipulation of tracker and/or its properties.
 * `group_id` - int. Tracker group id, 0 when no group.
 * `avatar_file_name` - string. Optional. Passed only if present.
 * `source` - object.
-  * `id` - int. Source id.
-  * `device_id` - string. Device id aka `source_imei`.
-  * `model` - string. Tracker model name from "models" table.
-  * `blocked` - boolean. `true` if tracker blocked due to tariff end.
-  * `tariff_id` - int. An id of tracker tariff from "main_tariffs" table.
-  * `status_listing_id` - int. An id of the status listing associated with this tracker, or null.
-  * `creation_date` - [date/time](../../../getting-started.md#data-types). Date when the tracker registered.
-  * `tariff_end_date` - [date/time](../../../getting-started.md#data-types). Date of next tariff prolongation, or null.
-  * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
+    * `id` - int. Source id.
+    * `device_id` - string. Device id aka `source_imei`.
+    * `model` - string. Tracker model name from "models" table.
+    * `blocked` - boolean. `true` if tracker blocked due to tariff end.
+    * `tariff_id` - int. An id of tracker tariff from "main_tariffs" table.
+    * `status_listing_id` - int. An id of the status listing associated with this tracker, or null.
+    * `creation_date` - [date/time](../../../getting-started.md#data-types). Date when the tracker registered.
+    * `tariff_end_date` - [date/time](../../../getting-started.md#data-types). Date of next tariff prolongation, or null.
+    * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
 * `tag_binding` - object. List of attached tags. Appears only for [tracker/list](#list) call.
-  * `tag_id` - int. An id of tag. Must be unique for a tracker.
-  * `ordinal` - int. Number that can be used as ordinal or kind of tag. Must be unique for a tracker. Max value is 5.
+    * `tag_id` - int. An id of tag. Must be unique for a tracker.
+    * `ordinal` - int. Number that can be used as ordinal or kind of tag. Must be unique for a tracker. Max value is 5.
 
 ***
 
@@ -406,17 +405,17 @@ Gets last CAN and OBD sensors and states values received from the device.
 
 * `user_time` - [date/time](../../../getting-started.md#data-types). Current time in user's timezone.
 * `inputs` - list of `sensor value` objects.
-  * `label` - string. Sensor's label. E.g. "Sensor #1".
-  * `name` - [enum](../../../getting-started.md#data-types). Name of sensor's raw input.
-  * `type` - [enum](../../../getting-started.md#data-types). Type of quantity, measured by a sensor.
-  * `value` - float. Reading's value, measured in units from an eponymous field. E.g. 100.0.
-  * `units_type` - [enum](../../../getting-started.md#data-types). Unit of measurement of input to the sensor.
-  * `units` - string. User label for sensor's units.
-  * `converted_units_type` - [enum](../../../getting-started.md#data-types). Unit of measurement system preferred by current user
-    (according to user/settings), suitable for this sensor. Can be null, if there is no need in
-    conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
-  * `converted_value` - float. Reading's value in units from field `converted_units_type`.
-    Can be null if there is no need in conversion.
+    * `label` - string. Sensor's label. E.g. "Sensor #1".
+    * `name` - [enum](../../../getting-started.md#data-types). Name of sensor's raw input.
+    * `type` - [enum](../../../getting-started.md#data-types). Type of quantity, measured by a sensor.
+    * `value` - float. Reading's value, measured in units from an eponymous field. E.g. 100.0.
+    * `units_type` - [enum](../../../getting-started.md#data-types). Unit of measurement of input to the sensor.
+    * `units` - string. User label for sensor's units.
+    * `converted_units_type` - [enum](../../../getting-started.md#data-types). Unit of measurement system preferred by current user
+        (according to user/settings), suitable for this sensor. Can be null, if there is no need in 
+        conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
+    * `converted_value` - float. Reading's value in units from field `converted_units_type`. 
+        Can be null if there is no need in conversion.
 * `states` - map of last state values or null (see below).
 * `update_time` - [date/time](../../../getting-started.md#data-types). Date and time when the data updated.
 
@@ -604,13 +603,13 @@ bound to them (if any).
 ```
 
 * `user_time` - [date/time](../../../getting-started.md#data-types). Current time in user's timezone.
-* `inputs` - array (boolean) of states of all digital inputs. `[true, true, false]` means input 1 is on,
+* `inputs` - array (boolean) of states of all digital inputs. `[true, true, false]` means input 1 is on, 
   input 2 is on, input 3 is off.
 * `states` - array of state objects.
-  * `type` - [enum](../../../getting-started.md#data-types). One of predefined semantic input types (see below).
-  * `name` - string. User-defined name for semantic input, or null if not specified.
-  * `status` - boolean. True if input is active, false otherwise.
-  * `input_number` - int. Number of the associated discrete input.
+    * `type` - [enum](../../../getting-started.md#data-types). One of predefined semantic input types (see below).
+    * `name` - string. User-defined name for semantic input, or null if not specified.
+    * `status` - boolean. True if input is active, false otherwise.
+    * `input_number` - int. Number of the associated discrete input.
 * `update_time` - [date/time](../../../getting-started.md#data-types). Date and time when the data updated.
 
 List of `input types`:
@@ -847,38 +846,38 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 * `user_time` - [date/time](../../../getting-started.md#data-types). Current time in user's timezone.
 * `source_id` - int. Tracker data source id (from "sources" table).
 * `gps` - gps object.
-  * `updated` - [date/time](../../../getting-started.md#data-types). Date of last gps coordinates update in a timezone of the user or null if there are
-    no updates.
-  * `signal_level` - int. GPS signal level in percent, e.g. 25, or null if device cannot provide such info.
-  * `lat` - float. Latitude.
-  * `lng` - float. Longitude.
-  * `heading` int. Direction bearing in degrees (0-360).
-  * `speed` - int. Speed in km/h, e.g. 20.
-  * `alt` - int. Altitude in meters, e.g. 10.
-  * `precision` - int. Optional. Precision in meters.
-  * `gsm_lbs` - boolean. Optional. True if location detected by GSM LBS.
-* `connection_status` - [enum](../../../getting-started.md#data-types). Device connection status, possible values: "signal_lost",
-  "just_registered", "offline", "idle", "active".
+    * `updated` - [date/time](../../../getting-started.md#data-types). Date of last gps coordinates update in a timezone of the user or null if there are 
+      no updates.
+    * `signal_level` - int. GPS signal level in percent, e.g. 25, or null if device cannot provide such info.
+    * `lat` - float. Latitude.
+    * `lng` - float. Longitude.
+    * `heading` int. Direction bearing in degrees (0-360).
+    * `speed` - int. Speed in km/h, e.g. 20.
+    * `alt` - int. Altitude in meters, e.g. 10.
+    * `precision` - int. Optional. Precision in meters.
+    * `gsm_lbs` - boolean. Optional. True if location detected by GSM LBS.
+* `connection_status` - [enum](../../../getting-started.md#data-types). Device connection status, possible values: "signal_lost", 
+"just_registered", "offline", "idle", "active".
 * `movement_status` - [enum](../../../getting-started.md#data-types). Movement status, possible values: "moving", "stopped", "parked".
 * `gsm` - object. Can be null if device does not support transmission of gsm info.
-  * `updated` - [date/time](../../../getting-started.md#data-types). Date of last gsm status update in a timezone of the user or null if there are no updates.
-  * `signal_level` - int. GSM signal level in percent, e.g. 25, or null if device cannot provide such info.
-  * `network_name` - string. GSM network name, e.g. "T-MOBILE", or null if device cannot provide such info.
-  * `roaming` - boolean. Roaming state, or null if device cannot provide such info.
+    * `updated` - [date/time](../../../getting-started.md#data-types). Date of last gsm status update in a timezone of the user or null if there are no updates.
+    * `signal_level` - int. GSM signal level in percent, e.g. 25, or null if device cannot provide such info.
+    * `network_name` - string. GSM network name, e.g. "T-MOBILE", or null if device cannot provide such info.
+    * `roaming` - boolean. Roaming state, or null if device cannot provide such info.
 * `last_update` - [date/time](../../../getting-started.md#data-types). Date of last device state update in a timezone of the user or null if there are no updates.
 * `battery_level` - int. Battery level in percent, e.g. 25, or null if device cannot provide such info.
 * `battery_update` - [date/time](../../../getting-started.md#data-types). Date of last battery update in a timezone of the user or null if there are no updates.
 * `inputs` - array of boolean. States of all digital inputs. `[true, true, false]` means input 1 is on, input 2 is on,
   input 3 is off.
 * `inputs_update` - [date/time](../../../getting-started.md#data-types). Date of last inputs update in a timezone of the user or null if there are no updates.
-* `outputs` - array of boolean. States of all digital outputs. `[true, true, false]` means output 1 is on,
+* `outputs` - array of boolean. States of all digital outputs. `[true, true, false]` means output 1 is on, 
   output 2 is on, output 3 is off.
 * `outputs_update` - [date/time](../../../getting-started.md#data-types). Date of last outputs update in a timezone of the user or null if there are no updates.
 * `additional` - object. map of additional states, keys depends on tracker model.
-  * `hardware_key` - last scanned hardware key object.
-    * `value` - int. Hardware key.
-    * `updated` - [date/time](../../../getting-started.md#data-types). Date of last hardware key update in a timezone of the user or null if
-      there are no updates.
+    * `hardware_key` - last scanned hardware key object.
+        * `value` - int. Hardware key.
+        * `updated` - [date/time](../../../getting-started.md#data-types). Date of last hardware key update in a timezone of the user or null if 
+        there are no updates.
 * `actual_track_update` - [date/time](../../../getting-started.md#data-types). When the last track was updated last time, when device last time moved.
 
 #### errors
@@ -969,7 +968,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 ```
 
 * `user_time` - [date/time](../../../getting-started.md#data-types). Current time in user's timezone.
-* `states` - object. A map containing state objects for requested trackers, where the key is the tracker ID
+* `states` - object. A map containing state objects for requested trackers, where the key is the tracker ID 
   and the value is the state (see state object description in [tracker/get_state](#get_state) response).
 * `blocked` - array of tracker IDs. Returned only if list_blocked=`true`.
 * `not_exist` - array of tracker IDs. Returned only if allow_not_exist=`true`.
@@ -977,9 +976,9 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 #### errors
 
 * 201 – Not found in the database (if tracker corrupted and allow_not_exist = `false`).
-* 208 – Device blocked (if list_blocked = `false` and tracker exists but was blocked due to tariff restrictions
+* 208 – Device blocked (if list_blocked = `false` and tracker exists but was blocked due to tariff restrictions 
   or some other reason).
-* 217 – List contains nonexistent entities (if allow_not_exist = `false` and there are nonexistent trackers
+* 217 – List contains nonexistent entities (if allow_not_exist = `false` and there are nonexistent trackers 
   belonging to an authorized user).
 
 ***
@@ -1075,7 +1074,7 @@ Gets all integrated tracker models (from "models" table).
 * `name` - string. Model name.
 * `has_auto_registration` - boolean. If `true` device may register by automatic commands from the platform.
 * `battery` - object. An internal device's battery.
-  * `low_charge` - float. Charge level for the "low battery" rule triggers.
+    * `low_charge` - float. Charge level for the "low battery" rule triggers.
 * `analog_inputs` - int. Number of analog inputs.
 * `digital_inputs` - int. Number of digital inputs.
 * `digital_outputs` - int. Number of digital outputs.
@@ -1365,9 +1364,9 @@ The panel must have installed SMS gateway.
 #### parameters
 
 !!! warning "Important"
-Because of the variety of tracker models and business applications, there are different ways to
-register tracker in our system. They are called [Registration plugins](../../commons/plugin/index.md).
-Each of registration plugins has its own set of additional parameters.
+    Because of the variety of tracker models and business applications, there are different ways to 
+    register tracker in our system. They are called [Registration plugins](../../commons/plugin/index.md). 
+    Each of registration plugins has its own set of additional parameters.
 
 In addition to parameters specified in this section, pass all parameters which are required by the
 plugin you have chosen. See example below.
@@ -1459,12 +1458,12 @@ Replacement allows you to register a new device with history, sensors (optional)
 #### parameters
 
 !!! warning "Important"
-Because of the variety of tracker models and business applications, there are different ways to
-register a new tracker in our system. They are called [Registration plugins](../../commons/plugin/index.md).
-Each of registration plugins has its own set of additional parameters.
-<br/>
-In addition to parameters specified in this section, pass all parameters which are required by the
-plugin you have chosen. See example below.
+    Because of the variety of tracker models and business applications, there are different ways to
+    register a new tracker in our system. They are called [Registration plugins](../../commons/plugin/index.md).
+    Each of registration plugins has its own set of additional parameters.
+    <br/>
+    In addition to parameters specified in this section, pass all parameters which are required by the
+    plugin you have chosen. See example below.
 
 Common parameters are:
 

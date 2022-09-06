@@ -13,5 +13,5 @@ Follow us in the social networks:
 *   [LinkedIn](https://linkedin.com/company/navixy/)
 *   [Twitter](https://twitter.com/Navixy)
 *   [Facebook](https://facebook.com/NavixyGPS)
-*   [Instagram](https://www.instagram.com/navixygps)
+*   [Instagram](https://instagram.com/navixygps)
 *   [Youtube](https://youtube.com/channel/UCL0u39pv4NlECAmFOZCZ-nw)
