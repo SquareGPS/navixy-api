@@ -253,15 +253,15 @@ Returns info about all available generated or in-progress reports.
 
 * `created` - string. Date when report created.
 * `time_filter` - object.
-  * `from` - string. Control time "from" of day.
-  * `to` - string. Control time "to" of day.
-  * `weekdays` - int array. Control "weekdays" of the report. Can be 1 - 7.
+    * `from` - string. Control time "from" of day.
+    * `to` - string. Control time "to" of day.
+    * `weekdays` - int array. Control "weekdays" of the report. Can be 1 - 7.
 * `title` - string. Report title.
 * `id` - int. Report id which can be used to retrieve or download report.
 * `parameters` - object with report parameters.
-  * `trackers` - int array. List of tracker ids used for report.
-  * `plugins` - array of objects. List of parameters for all plugins which were used to generate report.
-  * `locale_info` - object with information about the locale, timezone, and measurement system used for the report.
+    * `trackers` - int array. List of tracker ids used for report.
+    * `plugins` - array of objects. List of parameters for all plugins which were used to generate report.
+    * `locale_info` - object with information about the locale, timezone, and measurement system used for the report.
 * `percent` - int. Report readiness in percent.
 * `type` - [enum](../../../getting-started.md#data-types). Type of created report.
 * `from` - string. "from" parameter from generate.
