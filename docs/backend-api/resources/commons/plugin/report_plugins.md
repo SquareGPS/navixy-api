@@ -34,15 +34,15 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":4,
-  "show_seconds":false,
-  "include_summary_sheet_only":false,
-  "split":true,
-  "show_idle_duration":false,
-  "show_coordinates":false,
-  "filter":true,
-  "group_by_driver":false
+  "hide_empty_tabs": true,
+  "plugin_id": 4,
+  "show_seconds": false,
+  "include_summary_sheet_only": false,
+  "split": true,
+  "show_idle_duration": false,
+  "show_coordinates": false,
+  "filter": true,
+  "group_by_driver": false
 }
 ```
 
@@ -69,11 +69,11 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":6,
-  "show_seconds":false,
-  "show_coordinates":false,
-  "filter":false
+  "hide_empty_tabs": true,
+  "plugin_id": 6,
+  "show_seconds": false,
+  "show_coordinates": false,
+  "filter": false
 }
 ```
 
@@ -103,10 +103,10 @@ Plugin-specific parameters:
 ```json
 {
   "shifts": [{
-    "name":"Shift1",
-    "start_time":"00:00", 
-    "end_time":"23:59"
-  }]
+      "name": "Shift1",
+      "start_time": "00:00",
+      "end_time": "23:59"
+    }]
 }
 ```
 
@@ -114,24 +114,21 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":77,
-  "show_seconds":false,
-  "shifts":[
-    {
-    "name":"Shift1",
-    "start_time":"00:00",
-    "end_time":"12:00"
-    },
-    {
-    "name":"Shift2",
-    "start_time":"12:00",
-    "end_time":"23:59"
-    }
-  ],
-  "filter":true,
-  "show_coordinates":false,
-  "split_at_midnight":true
+  "hide_empty_tabs": true,
+  "plugin_id": 77,
+  "show_seconds": false,
+  "shifts": [{
+      "name": "Shift1",
+      "start_time": "00:00",
+      "end_time": "12:00"
+    }, {
+      "name": "Shift2",
+      "start_time": "12:00",
+      "end_time": "23:59"
+  }],
+  "filter": true,
+  "show_coordinates": false,
+  "split_at_midnight": true
 }
 ```
 
@@ -162,15 +159,15 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":8,
-  "show_seconds":false,
-  "include_summary_sheet_only":false,
-  "show_mileage":false,
-  "show_not_visited_zones":false,
-  "min_minutes_in_zone":5,
-  "hide_charts":false,
-  "zone_ids":[2143181, 2143182]
+  "hide_empty_tabs": true,
+  "plugin_id": 8,
+  "show_seconds": false,
+  "include_summary_sheet_only": false,
+  "show_mileage": false,
+  "show_not_visited_zones": false,
+  "min_minutes_in_zone": 5,
+  "hide_charts": false,
+  "zone_ids": [2143181, 2143182]
 }
 ```
 
@@ -202,16 +199,16 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":85,
-  "show_seconds":false,
-  "include_summary_sheet_only":false,
-  "show_mileage":false,
-  "show_not_visited_places":false,
-  "min_minutes_in_place":5,
-  "hide_charts":false,
-  "fetch_places_by_employees":false,
-  "place_ids":[1612957,1886863,1886864]
+  "hide_empty_tabs": true,
+  "plugin_id": 85,
+  "show_seconds": false,
+  "include_summary_sheet_only": false,
+  "show_mileage": false,
+  "show_not_visited_places": false,
+  "min_minutes_in_place": 5,
+  "hide_charts": false,
+  "fetch_places_by_employees": false,
+  "place_ids": [1612957, 1886863, 1886864]
 }
 ```
 
@@ -236,9 +233,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":15,
-  "show_seconds":false
+  "hide_empty_tabs": true,
+  "plugin_id": 15,
+  "show_seconds": false
 }
 ```
 
@@ -263,9 +260,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":16,
-  "show_seconds":false
+  "hide_empty_tabs": true,
+  "plugin_id": 16,
+  "show_seconds": false
 }
 ```
 
@@ -290,9 +287,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":17,
-  "show_seconds":false
+  "hide_empty_tabs": true,
+  "plugin_id": 17,
+  "show_seconds": false
 }
 ```
 
@@ -317,9 +314,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":18,
-  "show_seconds":false
+  "hide_empty_tabs": true,
+  "plugin_id": 18,
+  "show_seconds": false
 }
 ```
 
@@ -345,10 +342,10 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":19,
-  "show_seconds":false,
-  "group_by_type":false
+  "hide_empty_tabs": true,
+  "plugin_id": 19,
+  "show_seconds": false,
+  "group_by_type": false
 }
 ```
 
@@ -376,12 +373,12 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":7,
-  "show_seconds":false,
-  "show_detailed":false,
-  "include_summary_sheet_only":false,
-  "filter":true
+  "hide_empty_tabs": true,
+  "plugin_id": 7,
+  "show_seconds": false,
+  "show_detailed": false,
+  "include_summary_sheet_only": false,
+  "filter": true
 }
 ```
 
@@ -417,20 +414,20 @@ Plugin-specific parameters:
 
 ```json
 {
-  "show_seconds":false,
-  "plugin_id":10,
-  "graph_type":"mileage",
-  "detailed_by_dates":true,
-  "include_summary_sheet_only":false,
-  "use_ignition_data_for_consumption":false,
-  "include_mileage_plot":false,
-  "filter":true,
-  "include_speed_plot":false,
-  "smoothing":false,
-  "surge_filter":true,
-  "surge_filter_threshold":0.2,
-  "speed_filter":false,
-  "speed_filter_threshold":10
+  "show_seconds": false,
+  "plugin_id": 10,
+  "graph_type": "mileage",
+  "detailed_by_dates": true,
+  "include_summary_sheet_only": false,
+  "use_ignition_data_for_consumption": false,
+  "include_mileage_plot": false,
+  "filter": true,
+  "include_speed_plot": false,
+  "smoothing": false,
+  "surge_filter": true,
+  "surge_filter_threshold": 0.2,
+  "speed_filter": false,
+  "speed_filter_threshold": 10
 }
 ```
 
@@ -456,10 +453,10 @@ Plugin-specific parameters:
 
 ```json
 {
-  "detailed_by_dates":true,
-  "plugin_id":78,
-  "include_summary_sheet_only":false,
-  "filter":true
+  "detailed_by_dates": true,
+  "plugin_id": 78,
+  "include_summary_sheet_only": false,
+  "filter": true
 }
 ```
 
@@ -488,9 +485,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "sensors":[{
-    "tracker_id":37714,
-    "sensor_id":57968
+  "sensors": [{
+      "tracker_id": 37714,
+      "sensor_id": 57968
   }]
 }
 ```
@@ -501,17 +498,15 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":22,
-  "details_interval_seconds":60,
-  "graph_type":"time",
-  "smoothing":false,
-  "sensors":[
-    {
-      "tracker_id":993495,
-      "sensor_id":1378566
-    }
-  ]
+  "hide_empty_tabs": true,
+  "plugin_id": 22,
+  "details_interval_seconds": 60,
+  "graph_type": "time",
+  "smoothing": false,
+  "sensors": [{
+      "tracker_id": 993495,
+      "sensor_id": 1378566
+  }]
 }
 ```
 
@@ -540,13 +535,13 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":27,
-  "show_seconds":false,
-  "min_duration_minutes":5,
-  "max_speed":60,
-  "group_by_driver":false,
-  "filter":true
+  "hide_empty_tabs": true,
+  "plugin_id": 27,
+  "show_seconds": false,
+  "min_duration_minutes": 5,
+  "max_speed": 60,
+  "group_by_driver": false,
+  "filter": true
 }
 ```
 
@@ -571,9 +566,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":23,
-  "show_seconds":false
+  "hide_empty_tabs": true,
+  "plugin_id": 23,
+  "show_seconds": false
 }
 ```
 
@@ -598,9 +593,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":13,
-  "show_seconds":false
+  "hide_empty_tabs": true,
+  "plugin_id": 13,
+  "show_seconds": false
 }
 ```
 
@@ -631,9 +626,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "sensors":[{
-    "tracker_id":37714,
-    "sensor_id":57968
+  "sensors": [{
+      "tracker_id": 37714,
+      "sensor_id": 57968
   }]
 }
 ```
@@ -644,19 +639,17 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":9,
-  "details_interval_seconds":60,
-  "graph_type":"time",
-  "smoothing":false,
-  "show_address":false,
-  "filter":true,
-  "sensors":[
-    {
-      "tracker_id":993495,
-      "sensor_id":1378566
-    }
-  ]
+  "hide_empty_tabs": true,
+  "plugin_id": 9,
+  "details_interval_seconds": 60,
+  "graph_type": "time",
+  "smoothing": false,
+  "show_address": false,
+  "filter": true,
+  "sensors": [{
+      "tracker_id": 993495,
+      "sensor_id": 1378566
+  }]
 }
 ```
 
@@ -683,9 +676,9 @@ default **plugin_id**: 12.
 
 ```json
 {
-  "sensors":[{
-    "tracker_id":37714,
-    "sensor_id":57968
+  "sensors": [{
+      "tracker_id": 37714,
+      "sensor_id": 57968
   }]
 }
 ```
@@ -694,18 +687,16 @@ default **plugin_id**: 12.
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":12,
-  "show_seconds":false,
-  "min_working_period_duration":60,
-  "show_idle_percent":false,
-  "filter":false,
-  "sensors": [
-    {
-      "tracker_id":993495,
-      "sensor_id":1378562
-    }
-  ]
+  "hide_empty_tabs": true,
+  "plugin_id": 12,
+  "show_seconds": false,
+  "min_working_period_duration": 60,
+  "show_idle_percent": false,
+  "filter": false,
+  "sensors": [{
+      "tracker_id": 993495,
+      "sensor_id": 1378562
+  }]
 }
 ```
 
@@ -732,13 +723,13 @@ default **plugin_id**: 42.
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":42,
-  "show_seconds":false,
-  "show_external_id":false,
-  "show_description":false,
-  "show_forms":true,
-  "show_places_and_zones":false
+  "hide_empty_tabs": true,
+  "plugin_id": 42,
+  "show_seconds": false,
+  "show_external_id": false,
+  "show_description": false,
+  "show_forms": true,
+  "show_places_and_zones": false
 }
 ```
 
@@ -761,9 +752,9 @@ default **plugin_id**: 70.
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":70,
-  "show_nonselected":true
+  "hide_empty_tabs": true,
+  "plugin_id": 70,
+  "show_nonselected": true
 }
 ```
 
@@ -786,9 +777,9 @@ default **plugin_id**: 47.
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":47,
-  "show_seconds":false
+  "hide_empty_tabs": true,
+  "plugin_id": 47,
+  "show_seconds": false
 }
 ```
 
@@ -816,11 +807,11 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":80,
-  "show_coordinates":false,
-  "show_places_and_zones":false,
-  "show_forms":true
+  "hide_empty_tabs": true,
+  "plugin_id": 80,
+  "show_coordinates": false,
+  "show_places_and_zones": false,
+  "show_forms": true
 }
 ```
 
@@ -845,9 +836,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":66,
-  "show_seconds":false
+  "hide_empty_tabs": true,
+  "plugin_id": 66,
+  "show_seconds": false
 }
 ```
 
@@ -875,12 +866,12 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":73,
-  "show_seconds":false,
-  "filter":false,
-  "include_summary_sheet_only":false,
-  "group_type":"province"
+  "hide_empty_tabs": true,
+  "plugin_id": 73,
+  "show_seconds": false,
+  "filter": false,
+  "include_summary_sheet_only": false,
+  "group_type": "province"
 }
 ```
 
@@ -907,22 +898,83 @@ Plugin-specific parameters:
 
 ```json
 {
-  "event_types":["auto_geofence_in", "auto_geofence_out", "door_alarm",
-    "forward_collision_warning", "gps_lost", "gps_recover", "gsm_damp",
-    "harsh_driving", "headway_warning", "hood_alarm", "idle_end", "idle_start",
-    "ignition", "inroute", "outroute", "lane_departure", "obd_plug_in", "obd_unplug",
-    "peds_collision_warning", "peds_in_danger_zone", "odometer_set", "online",
-    "output_change", "security_control", "tracker_rename", "track_end", "track_start",
-    "tsr_warning", "sensor_inrange", "sensor_outrange", "work_status_change",
-    "call_button_pressed", "driver_changed", "driver_identified", "driver_not_identified",
-    "fueling", "drain", "checkin_creation", "tacho", "antenna_disconnect",
-    "check_engine_light", "location_response", "backup_battery_low", "fatigue_driving",
-    "inzone", "outzone", "speedup", "alarmcontrol", "battery_off", "bracelet_close",
-    "bracelet_open", "case_closed", "case_opened", "crash_alarm", "detach", "g_sensor",
-    "input_change", "light_sensor_bright", "light_sensor_dark", "lock_closed",
-    "lock_opened", "lowpower", "offline", "parking", "poweroff", "poweron", "sos",
-    "strap_bolt_cut", "strap_bolt_ins", "vibration_start", "vibration_end", "proximity_violation_start",
-    "proximity_violation_end", "force_location_request", "info"]
+  "event_types": [
+    "auto_geofence_in",
+    "auto_geofence_out",
+    "door_alarm",
+    "forward_collision_warning",
+    "gps_lost",
+    "gps_recover",
+    "gsm_damp",
+    "harsh_driving",
+    "headway_warning",
+    "hood_alarm",
+    "idle_end",
+    "idle_start",
+    "ignition",
+    "inroute",
+    "outroute",
+    "lane_departure",
+    "obd_plug_in",
+    "obd_unplug",
+    "peds_collision_warning",
+    "peds_in_danger_zone",
+    "odometer_set",
+    "online",
+    "output_change",
+    "security_control",
+    "tracker_rename",
+    "track_end",
+    "track_start",
+    "tsr_warning",
+    "sensor_inrange",
+    "sensor_outrange",
+    "work_status_change",
+    "call_button_pressed",
+    "driver_changed",
+    "driver_identified",
+    "driver_not_identified",
+    "fueling",
+    "drain",
+    "checkin_creation",
+    "tacho",
+    "antenna_disconnect",
+    "check_engine_light",
+    "location_response",
+    "backup_battery_low",
+    "fatigue_driving",
+    "inzone",
+    "outzone",
+    "speedup",
+    "alarmcontrol",
+    "battery_off",
+    "bracelet_close",
+    "bracelet_open",
+    "case_closed",
+    "case_opened",
+    "crash_alarm",
+    "detach",
+    "g_sensor",
+    "input_change",
+    "light_sensor_bright",
+    "light_sensor_dark",
+    "lock_closed",
+    "lock_opened",
+    "lowpower",
+    "offline",
+    "parking",
+    "poweroff",
+    "poweron",
+    "sos",
+    "strap_bolt_cut",
+    "strap_bolt_ins",
+    "vibration_start",
+    "vibration_end",
+    "proximity_violation_start",
+    "proximity_violation_end",
+    "force_location_request",
+    "info"
+  ]
 }
 
 ```
@@ -931,11 +983,11 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":11,
-  "show_seconds":false,
-  "group_by_type":false,
-  "event_types":[
+  "hide_empty_tabs": true,
+  "plugin_id": 11,
+  "show_seconds": false,
+  "group_by_type": false,
+  "event_types": [
     "force_location_request",
     "info",
     "inzone",
@@ -967,10 +1019,10 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":89,
-  "show_seconds":false,
-  "min_minutes_in_zone":5
+  "hide_empty_tabs": true,
+  "plugin_id": 89,
+  "show_seconds": false,
+  "min_minutes_in_zone": 5
 }
 ```
 
@@ -995,9 +1047,9 @@ Plugin-specific parameters:
 
 ```json
 {
-  "hide_empty_tabs":true,
-  "plugin_id":20,
-  "show_seconds":false
+  "hide_empty_tabs": true,
+  "plugin_id": 20,
+  "show_seconds": false
 }
 ```
 
@@ -1019,8 +1071,8 @@ Plugin-specific parameters:
 
 ```json
 {
-  "show_seconds":true,
-  "plugin_id":91
+  "show_seconds": true,
+  "plugin_id": 91
 }
 ```
 
@@ -1028,7 +1080,8 @@ Plugin-specific parameters:
 
 ### Eco-driving report by trackers
 
-A report on safety driving by trackers. For [report/generate](../report/report_tracker.md#generate) request use trackers parameter.
+A report on safety driving by trackers. For [report/generate](../report/report_tracker.md#generate) request use trackers
+parameter.
 
 #### parameters
 
@@ -1051,7 +1104,7 @@ Plugin-specific parameters:
 
 ```json
 {
-  "harsh_driving_penalties":  {
+  "harsh_driving_penalties": {
     "harshAcceleration": 5,
     "harshBraking": 5,
     "harshTurn": 5,
@@ -1070,7 +1123,8 @@ Plugin-specific parameters:
     "10": 2,
     "20": 10,
     "30": 25,
-    "50": 75}
+    "50": 75
+  }
 }
 ```
 
@@ -1080,27 +1134,27 @@ Plugin-specific parameters:
 
 ```json
 {
-  "speeding_penalties":{
-    "10":2,
-    "20":10,
-    "30":25,
-    "50":75
+  "speeding_penalties": {
+    "10": 2,
+    "20": 10,
+    "30": 25,
+    "50": 75
   },
-  "harsh_driving_penalties":{
-    "harshAcceleration":5,
-    "harshBraking":5,
-    "harshTurn":5,
-    "harshBrakingNTurn":12,
-    "harshAccelerationNTurn":12,
-    "harshQuickLaneChange":12
+  "harsh_driving_penalties": {
+    "harshAcceleration": 5,
+    "harshBraking": 5,
+    "harshTurn": 5,
+    "harshBrakingNTurn": 12,
+    "harshAccelerationNTurn": 12,
+    "harshQuickLaneChange": 12
   },
-  "speed_limit":260,
-  "idling_penalty":5,
-  "min_speeding_duration":1,
-  "min_idling_duration":5,
-  "use_vehicle_speed_limit":true,
-  "plugin_id":46,
-  "show_seconds":false
+  "speed_limit": 260,
+  "idling_penalty": 5,
+  "min_speeding_duration": 1,
+  "min_idling_duration": 5,
+  "use_vehicle_speed_limit": true,
+  "plugin_id": 46,
+  "show_seconds": false
 }
 ```
 
@@ -1108,7 +1162,8 @@ Plugin-specific parameters:
 
 ### Eco-driving report by drivers
 
-A report on safety driving by drivers. For [report/generate](../report/report_tracker.md#generate) request use employees parameter.
+A report on safety driving by drivers. For [report/generate](../report/report_tracker.md#generate) request use employees
+parameter.
 
 #### parameters
 
@@ -1131,27 +1186,27 @@ Plugin-specific parameters:
 
 ```json
 {
-  "speeding_penalties":{
-    "10":2,
-    "20":10,
-    "30":25,
-    "50":75
+  "speeding_penalties": {
+    "10": 2,
+    "20": 10,
+    "30": 25,
+    "50": 75
   },
-  "harsh_driving_penalties":{
-    "harshAcceleration":5,
-    "harshBraking":5,
-    "harshTurn":5,
-    "harshBrakingNTurn":12,
-    "harshAccelerationNTurn":12,
-    "harshQuickLaneChange":12
+  "harsh_driving_penalties": {
+    "harshAcceleration": 5,
+    "harshBraking": 5,
+    "harshTurn": 5,
+    "harshBrakingNTurn": 12,
+    "harshAccelerationNTurn": 12,
+    "harshQuickLaneChange": 12
   },
-  "speed_limit":260,
-  "idling_penalty":5,
-  "min_speeding_duration":1,
-  "min_idling_duration":5,
-  "use_vehicle_speed_limit":true,
-  "plugin_id":82,
-  "show_seconds":false
+  "speed_limit": 260,
+  "idling_penalty": 5,
+  "min_speeding_duration": 1,
+  "min_idling_duration": 5,
+  "use_vehicle_speed_limit": true,
+  "plugin_id": 82,
+  "show_seconds": false
 }
 ```
 
@@ -1174,11 +1229,11 @@ plugin-specific parameters:
 
 ```json
 {
-  "show_seconds":true,
+  "show_seconds": true,
   "show_tags": true,
   "min_minutes_in_zone": 1,
   "zone_ids": [2143181, 2143182],
-  "plugin_id":84
+  "plugin_id": 84
 }
 ```
 
@@ -1200,20 +1255,21 @@ plugin-specific parameters:
 | place_ids                 | IDs of user's POI. Min size 1, max size 30                                                                                                         | int array |
 | show_mileage              | Adds mileage to the report if `true`.                                                                                                              | boolean   |
 | show_not_visited_places   | Will show non visited POIs if `true`.                                                                                                              | boolean   |
-| show_seconds              | If `true`, time values in report should have format with seconds. Default is **false**.                                                            | boolean   |
+| show_seconds              | If `true`, time values in report should have format with seconds. Default is **
+false**.                                                            | boolean   |
 
 #### plugin example
 
 ```json
 {
-  "show_seconds":true,
+  "show_seconds": true,
   "min_minutes_in_place": 1,
   "fetch_places_by_employees": false,
   "hide_charts": true,
   "place_ids": [278645, 278646],
   "show_mileage": true,
   "show_not_visited_places": true,
-  "plugin_id":85
+  "plugin_id": 85
 }
 ```
 
