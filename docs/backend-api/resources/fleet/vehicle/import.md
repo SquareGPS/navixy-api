@@ -32,6 +32,10 @@ Available fields:
 * `max_speed`
 * `type`
 * `subtype`
+* `garage`
+* `manufacture_year`
+* `color`
+* `additional_info`
 * `trailer_reg_number`
 * `reg_number`
 * `chassis_number`
@@ -41,8 +45,10 @@ Available fields:
 * `payload_height`
 * `payload_width`
 * `payload_length`
+* `gross_weight`
 * `fuel_grade`
 * `fuel_tank_volume`
+* `fuel_cost`
 * `norm_avg_fuel_consumption`
 * `fuel_type`
 * `tyre_size`
