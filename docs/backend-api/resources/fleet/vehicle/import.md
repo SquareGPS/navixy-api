@@ -33,12 +33,14 @@ Available fields:
 * `type`
 * `subtype`
 * `garage`
+* `trailer`
 * `manufacture_year`
 * `color`
 * `additional_info`
 * `trailer_reg_number`
 * `reg_number`
 * `chassis_number`
+* `frame_number`
 * `vin`
 * `passengers`
 * `payload_weight`
