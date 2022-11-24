@@ -544,10 +544,10 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 
 #### parameters
 
-| name           | description                                                                | type    |
-|:---------------|:---------------------------------------------------------------------------|:--------|
-| tracker_id     | Id of a tracker. Tracker must belong to authorized dealer.                 | int     |
-| corrupt_clones | Optional. Default is `false`. Remove clones of the tracker for other users | boolean |
+| name           | description                                                               | type    |
+|:---------------|:--------------------------------------------------------------------------|:--------|
+| tracker_id     | Id of a tracker. Tracker must belong to authorized dealer.                | int     |
+| corrupt_clones | Optional. Default is `true`. Remove clones of the tracker for other users | boolean |
 
 #### examples
 

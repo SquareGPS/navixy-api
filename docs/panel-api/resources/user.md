@@ -147,11 +147,11 @@ Marks user and its sub users and trackers as deleted and corrupt all user tracke
 
 #### parameters
 
-| name           | description                                                                        | type    |
-|:---------------|:-----------------------------------------------------------------------------------|:--------|
-| user_id        | User id.                                                                           | int     |
-| login          | Login of a user. Login parameter must match user login.                            | string  |
-| corrupt_clones | Optional. Default is `false`. Remove clones of the user's trackers for other users | boolean |
+| name           | description                                                                       | type    |
+|:---------------|:----------------------------------------------------------------------------------|:--------|
+| user_id        | User id.                                                                          | int     |
+| login          | Login of a user. Login parameter must match user login.                           | string  |
+| corrupt_clones | Optional. Default is `true`. Remove clones of the user's trackers for other users | boolean |
 
 #### example
 
