@@ -143,15 +143,15 @@ Changes password of a user.
 
 Marks user and its sub users and trackers as deleted and corrupt all user trackers.
 
-
 *required permissions*: `users: "corrupt"`.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| user_id | User id. | int |
-| login | Login of a user. Login parameter must match user login. | string |
+| name           | description                                                                        | type    |
+|:---------------|:-----------------------------------------------------------------------------------|:--------|
+| user_id        | User id.                                                                           | int     |
+| login          | Login of a user. Login parameter must match user login.                            | string  |
+| corrupt_clones | Optional. Default is `false`. Remove clones of the user's trackers for other users | boolean |
 
 #### example
 
@@ -175,7 +175,7 @@ Marks user and its sub users and trackers as deleted and corrupt all user tracke
 
 * 201 – Not found in the database - if a user not found.
 * 252 – Device already corrupted - if some of user's tracker already corrupted.
-* 253 – Device has clones - if some of user's tracker has a clone.
+* 253 – Device has clones - if some of user's tracker has a clone and `corrupt_clones` is false.
 
 ```json
 {

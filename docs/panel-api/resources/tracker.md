@@ -544,9 +544,10 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of a tracker. Tracker must belong to authorized dealer. | int |
+| name           | description                                                                | type    |
+|:---------------|:---------------------------------------------------------------------------|:--------|
+| tracker_id     | Id of a tracker. Tracker must belong to authorized dealer.                 | int     |
+| corrupt_clones | Optional. Default is `false`. Remove clones of the tracker for other users | boolean |
 
 #### examples
 
@@ -577,7 +578,7 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 * 201 – Not found in the database - if tracker not found.
 * 219 – Not allowed for clones of the device - if source tracker is clone itself.
 * 252 – Device already corrupted.
-* 253 – Device has clones.
+* 253 – Device has clones and `corrupt_clones` is false.
 
 ```json
 {
