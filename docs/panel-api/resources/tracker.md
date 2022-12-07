@@ -937,7 +937,7 @@ Returns the tracker object with the specified id.
 
 ***
 
-### register_entry
+### register_retry
 
 Sends tracker registration commands and resets all tracking settings. Can be executed once in 120 seconds for every tracker.
 
@@ -956,7 +956,7 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/register_entry' \
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/register_retry' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
     ```
@@ -964,7 +964,7 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/panel/tracker/register_entry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
+    {{ extra.api_example_url }}/panel/tracker/register_retry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
     ```
 
 #### response
