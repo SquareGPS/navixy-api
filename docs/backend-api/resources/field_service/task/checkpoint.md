@@ -89,8 +89,8 @@ Creates a new checkpoint.
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/checkpoint/create' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint": {"tracker_id": 22, "label": "Shop", "description": "Buy things", "parent_id": 1, "order": 0, "location": { "lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "from_time": "12:34:00", "duration": 60, "tags": [1, 2], "form_template_id": 1}}'
+      -H 'Content-Type: application/json' \
+      -d '{"hash": "43c37b8d023272c5fd1b27d21244b", "checkpoint": {"tracker_id": 10179999, "label": "Shop 1", "description": "Description", "parent_id": 352665, "order": 0, "location": { "lat": 9.861999, "lng": -83.948999, "radius": 150}, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "from": "2022-12-14 11:00:00", "to": "2022-12-14 11:30:00", "duration": 60, "tags": [1, 2], "form_template_id": 1}}'
     ```
 
 #### response
@@ -355,7 +355,7 @@ Updates existing checkpoint.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/checkpoint/update' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint": {"id": 111, "label": "Shop", "description": "Buy things", "parent_id": 1, "order": 0, "location": { "lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "from_time": "12:34:00", "duration": 60, "tags": [1, 2], "form_template_id": 1}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint": {"id": 111, "tracker_id": 10179999, "label": "Shop 1", "description": "Description", "parent_id": 352665, "order": 0, "location": { "lat": 9.861999, "lng": -83.948999, "radius": 150}, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "from": "2022-12-14 11:00:00", "to": "2022-12-14 11:30:00", "duration": 60, "tags": [1, 2], "form_template_id": 1}}'
     ```
 
 Changing `order` reorders all other checkpoints.

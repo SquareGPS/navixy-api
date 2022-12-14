@@ -139,6 +139,31 @@ In this case, just obtain new hash using `account/auth`.
 
 ***
 
+### How to securely share panel's credentials
+
+To share access to the admin panel, and at the same time not to worry about data security, we recommend contacting the 
+technical support team to create a technical panel account. Provide the email address for which the technical account 
+will be created. You will receive a login and password for the account.
+
+The possibilities of tech account:
+
+* Add new users
+* Modify data of current users
+* Add new trackers
+* Clone current trackers
+* Change owner of a tracker
+* Change tracker data plan
+* Analyze incoming data with the air console
+
+Technicians are not allowed:
+
+* Delete users
+* Remove trackers
+* Add, change, delete plans
+* Change platform settings
+
+***
+
 ### Panel API Permissions
 
 Every call to panel api requires a set (possibly empty) of permissions. 
