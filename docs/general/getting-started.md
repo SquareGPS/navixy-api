@@ -45,6 +45,13 @@ API calls have the following structure:
 
 ***
 
+## Limits
+
+To maintain the stability of the system for all users, the platform has a limit of 50 requests per user and per IP 
+address (if your app works with multiple users).
+
+***
+
 ## Get involved
 
 You can really help to improve [this documentation](./get-involved.md) or

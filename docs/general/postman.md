@@ -95,6 +95,15 @@ In this case all parameters will be automatically separated to strings for more 
 
 ***
 
+### cURL examples in Postman
+
+You can copy the cURL examples from our documentation and import them into Postman for later use. 
+Copy an example, open an import tab and choose the Raw text. Then paste our example here and save the file.
+
+![Enter params](./assets/curl_in_postman.png)
+
+***
+
 ## How to install
 
 To get the latest version of the [Postman app](https://postman.com), visit the download 
