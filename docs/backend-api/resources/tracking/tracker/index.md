@@ -1293,6 +1293,7 @@ Resends registration commands to the device. The panel must have installed SMS g
 | apn_name     | The name of GPRS APN of this sim card inserted into device. Max length 40.                                                   | string | "fast.tmobile.com" |
 | apn_user     | The user of GPRS APN of this sim card inserted into device. Max length 40, can be empty.                                     | string | "tmobile"          |
 | apn_password | The password of GPRS APN of the sim card inserted into device. Max length 40, can be empty.                                  | string | "tmobile"          |
+| send_register_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals `null` will be used the platform settings. Default: `null`. | boolean | true or false   |
 
 #### examples
 
@@ -1301,13 +1302,13 @@ Resends registration commands to the device. The panel must have installed SMS g
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 999119, "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 999119, "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile", "send_register_commands": true}'
     ```
 
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tracker/register_retry?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=999119&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
+    {{ extra.api_example_url }}/tracker/register_retry?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=999119&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile&send_register_commands=true
     ```
 
 #### response

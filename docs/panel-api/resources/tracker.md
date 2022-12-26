@@ -947,9 +947,10 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
+| name                   | description                                                                                                                                                                                | type    |
+|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
+| tracker_id             | ID of the tracker. Tracker must belong to authorized dealer.                                                                                                                               | int     |
+| send_register_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals `null` will be used the platform settings. Default: `null`. | boolean |
 
 #### examples
 
@@ -958,13 +959,13 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/register_retry' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "send_register_commands": true}'
     ```
 
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/panel/tracker/register_retry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
+    {{ extra.api_example_url }}/panel/tracker/register_retry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&send_register_commands=true
     ```
 
 #### response
