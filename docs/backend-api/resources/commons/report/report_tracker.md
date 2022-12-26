@@ -24,7 +24,7 @@ Deletes a report from the database.
 
 | name      | description                            | type |
 |:----------|:---------------------------------------|:-----|
-| report_id | Id of a report that should be deleted. | int  |
+| report_id | ID of a report that should be deleted. | int  |
 
 #### examples
 
@@ -66,7 +66,7 @@ Retrieve generated report as a file.
 
 | name      | description                                                                                       | type                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------|
-| report_id | Id of a report that should be deleted.                                                            | int                                            |
+| report_id | ID of a report that should be deleted.                                                            | int                                            |
 | format    | A format of report that should be downloaded. Can be "xls", xlsx" or "pdf".                       | [enum](../../../getting-started.md#data-types) | 
 | headless  | Optional parameter. Default=`false`. If need report without title page and TOC, set it to `true`. | boolean                                        |
 
@@ -92,7 +92,7 @@ A report rendered to file (standard file download).
 
 #### errors
 
-* 204 - Entity not found - if report with the specified id not found.
+* 204 - Entity not found - if report with the specified ID not found.
 * 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
 ***
@@ -111,8 +111,8 @@ Requests a report generation with the specified parameters.
 | to          | A string containing [date/time](../../../getting-started.md#datetime-formats). Specified date must be after "from" date.                                             | string      |
 | title       | Report title. Default title will be used if null.                                                                                                                    | string      |
 | geocoder    | Which geocoder to use. See [geocoder/](../../tracking/geocoder.md).                                                                                                  | string      |
-| trackers    | List of trackers' ids to be included in report (if report is by trackers).                                                                                           | int array   |
-| employees   | List of employees' ids to be included in report (if report is by employees. For example, [plugin id 82](../plugin/report_plugins.md#eco-driving-report-by-drivers)). | int array   |
+| trackers    | List of trackers' IDs to be included in report (if report is by trackers).                                                                                           | int array   |
+| employees   | List of employees' IDs to be included in report (if report is by employees. For example, [plugin ID 82](../plugin/report_plugins.md#eco-driving-report-by-drivers)). | int array   |
 | time_filter | An object which contains everyday time and weekday limits for processed data, e.g. `{"to":"18:00", "from":"12:00", "weekdays":[1,2,3,4,5]}`.                         | JSON object |
 | plugin      | A plugin object (see below).                                                                                                                                         | JSON object |
 
@@ -122,7 +122,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 
 | name         | description                                                                                                                        | type    |
 |:-------------|:-----------------------------------------------------------------------------------------------------------------------------------|:--------|
-| plugin_id    | An id of a tracker report plugin which will be used to generate report.                                                            | int     |
+| plugin_id    | An ID of a tracker report plugin which will be used to generate report.                                                            | int     |
 | show_seconds | Flag to define whether time values in report should have format with seconds. `true` - show seconds, `false` - don't show seconds. | boolean |
 
 #### Plugin example:
@@ -162,7 +162,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 }
 ```
 
-* `id` - int. An id of the report queued for generation. Can be used to request report generation status and to retrieve generated report.
+* `id` - int. An ID of the report queued for generation. Can be used to request report generation status and to retrieve generated report.
 
 #### errors
 
@@ -182,7 +182,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 
 * `max_time_span` - string. ISO-8601 interval.
 
-* 217 - List contains nonexistent entities - when one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user).
+* 217 - List contains nonexistent entities - when one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 222 - Plugin not found - when specified report plugin not found.
 * 236 - Feature unavailable due to tariff restrictions - when one of the trackers has tariff with disabled reports ("has_reports" is false).
 
@@ -257,9 +257,9 @@ Returns info about all available generated or in-progress reports.
     * `to` - string. Control time "to" of day.
     * `weekdays` - int array. Control "weekdays" of the report. Can be 1 - 7.
 * `title` - string. Report title.
-* `id` - int. Report id which can be used to retrieve or download report.
+* `id` - int. Report ID which can be used to retrieve or download report.
 * `parameters` - object with report parameters.
-    * `trackers` - int array. List of tracker ids used for report.
+    * `trackers` - int array. List of tracker IDs used for report.
     * `plugins` - array of objects. List of parameters for all plugins which were used to generate report.
     * `locale_info` - object with information about the locale, timezone, and measurement system used for the report.
 * `percent` - int. Report readiness in percent.
@@ -283,7 +283,7 @@ Retrieves a generated report as JSON.
 
 | name      | description                            | type |
 |:----------|:---------------------------------------|:-----|
-| report_id | Id of a report that should be deleted. | int  |
+| report_id | ID of a report that should be deleted. | int  |
 
 #### examples
 
@@ -757,7 +757,7 @@ Retrieves a generated report as JSON.
 
 #### errors
 
-* 204 - Entity not found - if report with the specified id not found.
+* 204 - Entity not found - if report with the specified ID not found.
 * 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
 ***
@@ -772,7 +772,7 @@ Returns a report generation status for the specified report id.
 
 | name      | description                            | type |
 |:----------|:---------------------------------------|:-----|
-| report_id | Id of a report that should be deleted. | int  |
+| report_id | ID of a report that should be deleted. | int  |
 
 #### examples
 
@@ -803,4 +803,4 @@ Returns a report generation status for the specified report id.
 
 #### errors
 
-* 204 - Entity not found - if report with the specified id not found.
+* 204 - Entity not found - if report with the specified ID not found.

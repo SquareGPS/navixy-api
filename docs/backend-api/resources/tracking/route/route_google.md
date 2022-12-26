@@ -19,12 +19,12 @@ Gets route points using Google Directions API.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| start | Location JSON object. Start of route. | JSON object |
-| end | Location JSON object. End of route. | JSON object |
-| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]`. | array of JSON objects |
-| point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int |
+| name        | description                                                                                                      | type                  |
+|:------------|:-----------------------------------------------------------------------------------------------------------------|:----------------------|
+| start       | Location JSON object. Start of route.                                                                            | JSON object           |
+| end         | Location JSON object. End of route.                                                                              | JSON object           |
+| waypoints   | Optional. List of transitional points. `[{locationA},{locationN}]`.                                              | array of JSON objects |
+| point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int                   |
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types).
 

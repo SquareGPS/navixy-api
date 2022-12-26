@@ -42,8 +42,8 @@ Creates new empty working status list.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name    | description                                                                                                               | type        |
+|:--------|:--------------------------------------------------------------------------------------------------------------------------|:------------|
 | listing | [status_listing](../../status/listing/index.md#status-listing-object-structure) object without "id" and "entries" fields. | JSON object |
 
 #### examples
@@ -83,9 +83,9 @@ Deletes working status list.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| listing_id | ID of the working status list for this status to attach to. | int |
+| name       | description                                                 | type |
+|:-----------|:------------------------------------------------------------|:-----|
+| listing_id | ID of the working status list for this status to attach to. | int  |
 
 #### examples
 
@@ -175,8 +175,8 @@ Updates working status list properties.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name    | description                                                                                                            | type        |
+|:--------|:-----------------------------------------------------------------------------------------------------------------------|:------------|
 | listing | [status_listing](../../status/listing/index.md#status-listing-object-structure) object with "id" and "entries" fields. | JSON object |
 
 #### examples

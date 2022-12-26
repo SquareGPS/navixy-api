@@ -25,7 +25,7 @@ Department is essentially just a group of [employees](employee/index.md). They c
 }
 ```
 
-* `id` - int. An id of department.
+* `id` - int. An ID of department.
 * `label` - string. Name of department.
 * `location` - optional object. Location associated with these departments. Should be valid or null.
     * `address` - string. Address of the location.
@@ -92,8 +92,8 @@ Creates a new department with specified parameters.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name       | description                                                    | type        |
+|:-----------|:---------------------------------------------------------------|:------------|
 | department | An [department object](#department-object) without `id` field. | JSON object |
 
 #### example
@@ -115,7 +115,7 @@ Creates a new department with specified parameters.
 }
 ```
 
-* `id` - int. An id of the created department.
+* `id` - int. An ID of the created department.
 
 #### errors
 
@@ -134,8 +134,8 @@ Updates existing department with a new specified parameters.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name       | description                                 | type        |
+|:-----------|:--------------------------------------------|:------------|
 | department | An [department object](#department-object). | JSON object |
 
 #### example
@@ -156,21 +156,21 @@ Updates existing department with a new specified parameters.
 
 #### errors
 
-* 201 – Not found in the database - if there is no department with specified id.
+* 201 – Not found in the database - if there is no department with specified ID.
 
 ***
 
 ### delete
 
-Deletes department with the specified id.
+Deletes department with the specified ID.
 
 **required sub-user rights:** `employee_update`.
 
 #### parameters
 
-| name | description | type| 
-| :------ | :------ | :----- |
-| department_id | An id of the department. | int |
+| name          | description              | type | 
+|:--------------|:-------------------------|:-----|
+| department_id | An ID of the department. | int  |
 
 #### examples
 
@@ -196,4 +196,4 @@ Deletes department with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no department with specified id.
+* 201 – Not found in the database - if there is no department with specified ID.

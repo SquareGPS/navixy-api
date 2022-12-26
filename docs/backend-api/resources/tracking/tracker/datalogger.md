@@ -21,10 +21,10 @@ Uploads track data for specified tracker. Tracker must be a datalogger.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| file | A CSV file upload containing datalogger track data. | file |
+| name       | description                                                                                     | type |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  |
+| file       | A CSV file upload containing datalogger track data.                                             | file |
 
 #### response
 
@@ -34,7 +34,7 @@ Uploads track data for specified tracker. Tracker must be a datalogger.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 219 – Not allowed for clones of the device - if tracker is clone.
 * 233 – No data file - if file part is missing.
 * 214 – Requested operation or parameters are not supported by the device - if specified tracker is not datalogger.

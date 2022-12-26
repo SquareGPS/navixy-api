@@ -32,7 +32,7 @@ Drivers can change their working status using the X-GPS app. Supervisors can cha
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"label": "Delivery_service", "employee_controlled": true, "supervisor_controlled": true}'
     ```
 
-The response will contain id of a new working status list:
+The response will contain ID of a new working status list:
 
 ```json
 {
@@ -56,7 +56,7 @@ For example, we have 4 working statuses:
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 1111, "status": {"label": "Free", "color": "E57373"}}'
     ```
 
-The response will contain id of a new working status:
+The response will contain ID of a new working status:
 
 ```json
 {

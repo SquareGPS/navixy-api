@@ -103,7 +103,7 @@ Only session `hash`.
 ```
 
 * `id` - int. Dealer id.
-* `parent_dealer_id` - int. An id of parent dealer.
+* `parent_dealer_id` - int. An ID of parent dealer.
 * `contract_type` - [enum](../../../backend-api/getting-started.md#data-types). Contract type: "PARTNER", "AGENT" or "PAAS".
 * `tariff_id` - int. PaaS tariff id.
 * `tariff` - PaaS tariff info.

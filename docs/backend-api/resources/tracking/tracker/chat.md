@@ -19,13 +19,13 @@ Gets a list of chat messages.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| from | Optional. Start date/time of searching. Default value is now minus 7 days. | [date/time](../../../getting-started.md#datetime-formats) | `yyyy-MM-dd HH:mm:ss` |
-| to | Optional. End date/time for searching. Default value is now. | [date/time](../../../getting-started.md#datetime-formats) | `yyyy-MM-dd HH:mm:ss` |
-| limit | Optional. Limit of messages in list. Default and max limit is 1024. | int | 1024 |
-| ascending | Optional. Ascending order direction from the first message to last. Default value is `true`. | boolean | true/false |
+| name       | description                                                                                     | type                                                      | format                |
+|:-----------|:------------------------------------------------------------------------------------------------|:----------------------------------------------------------|:----------------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                                       | 999199                |
+| from       | Optional. Start date/time of searching. Default value is now minus 7 days.                      | [date/time](../../../getting-started.md#datetime-formats) | `yyyy-MM-dd HH:mm:ss` |
+| to         | Optional. End date/time for searching. Default value is now.                                    | [date/time](../../../getting-started.md#datetime-formats) | `yyyy-MM-dd HH:mm:ss` |
+| limit      | Optional. Limit of messages in list. Default and max limit is 1024.                             | int                                                       | 1024                  |
+| ascending  | Optional. Ascending order direction from the first message to last. Default value is `true`.    | boolean                                                   | true/false            |
 
 #### examples
 
@@ -76,7 +76,7 @@ Where **message** object is:
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
+* 201 – Not found in the database (if there is no tracker with such ID belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 * 214 – Requested operation or parameters are not supported by the device.
 * 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff without "chat" feature).
@@ -89,9 +89,9 @@ Marks all incoming chat messages as read for all or for given user trackers.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| trackers | Optional array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
+| name     | description                                                                                                        | type      | format             |
+|:---------|:-------------------------------------------------------------------------------------------------------------------|:----------|:-------------------|
+| trackers | Optional array of IDs of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
 
 #### examples
 
@@ -127,10 +127,10 @@ Marks incoming chat message as read by `message_id` or array of `message_ids`.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| message_id | Id of incoming message. | int | 123 |
-| message_ids | Ids of incoming messages. | int array | `[123,213]` |
+| name        | description               | type      | format      |
+|:------------|:--------------------------|:----------|:------------|
+| message_id  | ID of incoming message.   | int       | 123         |
+| message_ids | IDs of incoming messages. | int array | `[123,213]` |
 
 Use only one parameter.
 
@@ -168,10 +168,10 @@ Sends chat message to a specified tracker.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| message | Message text, not null, max size - 20000. | string | "Hello World" |
+| name       | description                                                                                     | type   | format        |
+|:-----------|:------------------------------------------------------------------------------------------------|:-------|:--------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int    | 123456        |
+| message    | Message text, not null, max size - 20000.                                                       | string | "Hello World" |
 
 #### example
 
@@ -192,11 +192,11 @@ Sends chat message to a specified tracker.
 }
 ```
 
-* `id` - id of the submitted message.
+* `id` - ID of the submitted message.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
 * 236 – Feature unavailable due to tariff restrictions - if one of the trackers has tariff with disabled reports ("has_reports" is `false`).
@@ -209,10 +209,10 @@ Sends chat message to specified trackers.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
-| message | Message text, not null, max size - 20000. | string | "Hello World" |
+| name     | description                                                                                                               | type      | format             |
+|:---------|:--------------------------------------------------------------------------------------------------------------------------|:----------|:-------------------|
+| trackers | Array of IDs of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
+| message  | Message text, not null, max size - 20000.                                                                                 | string    | "Hello World"      |
 
 #### example
 
@@ -250,9 +250,9 @@ Gets date-times of last messages in chat of trackers.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
+| name     | description                                                                                                               | type      | format             |
+|:---------|:--------------------------------------------------------------------------------------------------------------------------|:----------|:-------------------|
+| trackers | Array of IDs of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
 
 #### example
 
@@ -288,7 +288,7 @@ doesn't have required tariff features.
 
 ### unread/count
 
-Gets count of user's unread chat messages grouped by tracker id.
+Gets count of user's unread chat messages grouped by tracker ID.
 
 #### examples
 

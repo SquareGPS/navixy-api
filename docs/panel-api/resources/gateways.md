@@ -110,7 +110,7 @@ Only session `hash`.
         "mail.smtp.connectiontimeout": 60000,
         "mail.transport.protocol": "smtp"
       }
-    }]
+    }],
     "leasable": [
         {
             "id": 2,

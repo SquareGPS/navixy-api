@@ -22,10 +22,10 @@ Gives access for sub-user to the specified trackers.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| subuser_id | Id of the sub-user belonging to current account. | int |
-| trackers | List of tracker ids to associate with the specified sub-user. All trackers must belong to current master user. | int array |
+| name       | description                                                                                                    | type      |
+|:-----------|:---------------------------------------------------------------------------------------------------------------|:----------|
+| subuser_id | ID of the sub-user belonging to current account.                                                               | int       |
+| trackers   | List of tracker IDs to associate with the specified sub-user. All trackers must belong to current master user. | int array |
 
 #### examples
 
@@ -55,23 +55,23 @@ Gives access for sub-user to the specified trackers.
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
-* 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
-* 262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don't exist.
+* 201 – Not found in the database – if sub-user with such and ID does not exist or does not belong to current master user.
+* 262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker IDs don't exist.
 
 ***
 
 ### list
 
-Gets a list of tracker ids to which this sub-user has access.
+Gets a list of tracker IDs to which this sub-user has access.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| subuser_id | Id of the sub-user belonging to current account. | int |
+| name       | description                                      | type |
+|:-----------|:-------------------------------------------------|:-----|
+| subuser_id | ID of the sub-user belonging to current account. | int  |
 
 #### examples
 
@@ -98,13 +98,13 @@ Gets a list of tracker ids to which this sub-user has access.
 }
 ```
 
-* `list` - int array. List of tracker ids to which this sub-user has access.
+* `list` - int array. List of tracker IDs to which this sub-user has access.
 
 #### errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
-* 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
+* 201 – Not found in the database – if sub-user with such and ID does not exist or does not belong to current master user.
 
 ***
 
@@ -117,10 +117,10 @@ Disables access for sub-user to the specified trackers.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| subuser_id | Id of the sub-user belonging to current account. | int |
-| trackers | List of tracker ids to associate with the specified sub-user. All trackers must belong to current master user. | int array |
+| name       | description                                                                                                    | type      |
+|:-----------|:---------------------------------------------------------------------------------------------------------------|:----------|
+| subuser_id | ID of the sub-user belonging to current account.                                                               | int       |
+| trackers   | List of tracker IDs to associate with the specified sub-user. All trackers must belong to current master user. | int array |
 
 #### examples
 
@@ -150,5 +150,5 @@ Disables access for sub-user to the specified trackers.
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
-* 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
-* 262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker ids don't exist.
+* 201 – Not found in the database – if sub-user with such and ID does not exist or does not belong to current master user.
+* 262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker IDs don't exist.

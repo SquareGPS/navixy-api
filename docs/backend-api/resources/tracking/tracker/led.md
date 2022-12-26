@@ -18,9 +18,9 @@ Gets LED status for the specified tracker.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
 #### examples
 
@@ -51,7 +51,7 @@ Gets LED status for the specified tracker.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
 
@@ -63,10 +63,10 @@ Switches LED state for a specified tracker.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| value | The new LED state, `true` – ON, `false` – OFF. | boolean | true/false |
+| name       | description                                                                                     | type    | format     |
+|:-----------|:------------------------------------------------------------------------------------------------|:--------|:-----------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int     | 999199     |
+| value      | The new LED state, `true` – ON, `false` – OFF.                                                  | boolean | true/false |
 
 #### examples
 
@@ -92,7 +92,7 @@ Switches LED state for a specified tracker.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
 

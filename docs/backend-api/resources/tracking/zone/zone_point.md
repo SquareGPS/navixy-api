@@ -35,10 +35,10 @@ Get points of user's geofence with `zone_id`.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| zone_id | Id of a geofence. | int | 1234567 |
-| count | Optional. If specified, the returned list will be simplified to contain this number of points. | int | 300 |
+| name    | description                                                                                    | type | format  |
+|:--------|:-----------------------------------------------------------------------------------------------|:-----|:--------|
+| zone_id | ID of a geofence.                                                                              | int  | 1234567 |
+| count   | Optional. If specified, the returned list will be simplified to contain this number of points. | int  | 300     |
 
 #### examples
 
@@ -86,10 +86,10 @@ Update points for user's geofence with `zone_id`.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| zone_id | Id of a geofence. | int |
-| points | Array of new points for this geofence. Must contain at least 3 elements. Maximum number of points depends on geofence type. | array of JSON objects |
+| name    | description                                                                                                                 | type                  |
+|:--------|:----------------------------------------------------------------------------------------------------------------------------|:----------------------|
+| zone_id | ID of a geofence.                                                                                                           | int                   |
+| points  | Array of new points for this geofence. Must contain at least 3 elements. Maximum number of points depends on geofence type. | array of JSON objects |
 
 #### example
 

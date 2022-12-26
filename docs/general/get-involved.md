@@ -11,10 +11,10 @@ public domain on [GitHub]({{ config.repo_url }}).
 
 There are several ways:
 
-1.  [Creating an issue]({{ config.repo_url }}issues/new) with a detailed description of the problem.
-1.  [Editing a single page in a browser](#easy-way).
-1.  [Manually creating a fork](#second-way) and doing multiply commits before creating a pull request.
-1.  [Installing and editing](#hard-way) documentation locally on yours PC.
+1. [Creating an issue]({{ config.repo_url }}issues/new) with a detailed description of the problem.
+2. [Editing a single page in a browser](#easy-way).
+3. [Manually creating a fork](#second-way) and doing multiply commits before creating a pull request.
+4. [Installing and editing](#hard-way) documentation locally on yours PC.
 
 In each of these cases, a GitHub account required.
 If you don't want to register on GitHub, you can just [contact us](./contacts.md) with any convenient way.
@@ -49,13 +49,13 @@ There is [another way](#second-way) to create pull requests to fix multiple page
 
 This method allows you to make several edits on different pages before proposing them in a pull request.
 
-1.  Create a fork [of the repository]({{ config.repo_url }}) if it has not been created yet.
+1. Create a fork [of the repository]({{ config.repo_url }}) if it has not been created yet.
     (Just click the "Fork" button in the upper right corner.)
-1.  Go to the created fork and find the file you are interested in.
-1.  Open the file and click the edit button.
-1.  Make edits and commit with a clear description of the changes.
-1.  Edit other files of interest to you in the same way.
-1.  Go to the start page of the fork and click on the "Pull request" button.
+2. Go to the created fork and find the file you are interested in.
+3. Open the file and click the edit button.
+4. Make edits and commit with a clear description of the changes.
+5. Edit other files of interest to you in the same way.
+6. Go to the start page of the fork and click on the "Pull request" button.
 
 After review and pull request will be merged, and you can drop a fork.
 
@@ -67,32 +67,32 @@ This method involves installing the Git, IDE, Python and
 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) on yours PC.
 
 1. Install [Python 3](https://www.python.org/downloads/).
-1. Install [Git client](https://git-scm.com/downloads).
-1. Install an IDE, for example [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community edition would be enough).
-1. Create a fork [of the repository]({{ config.repo_url }}) and cloning it to local project. 
+2. Install [Git client](https://git-scm.com/downloads).
+3. Install an IDE, for example [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community edition would be enough).
+4. Create a fork [of the repository]({{ config.repo_url }}) and cloning it to local project. 
    In IDEA: `File` -> `New` -> `Project from version control`;
-1. Install [mkdocs-material](https://squidfunk.github.io/mkdocs-material) and other dependencies. In console:
+5. Install [mkdocs-material](https://squidfunk.github.io/mkdocs-material) and other dependencies. In console:
    ```sh
    cd /path/to/project
    mkdir venv
    python -m venv ./venv
    pip3 install -r requirements.txt
    ```
-1. Start the documentation server locally. In console:
+6. Start the documentation server locally. In console:
    ```sh
    cd /path/to/project
    source venv/bin/activate
    # Windows: \venv\Scripts\activate.bat
    mkdocs serve --dirtyreload
    ```
-1. To check that the server has started, open in a browser: http://localhost:8000
-1. Create a local git branch in project.
-1. Make changes in documentation and test it in browser. 
+7. To check that the server has started, open in a browser: http://localhost:8000
+8. Create a local git branch in project.
+9. Make changes in documentation and test it in browser. 
    Read the [introduction](#introduction-into-mkdocs).
-1. Commit and push changes. Please, use English in commit message.
-1. Create a Pull Request (PR) on Github from your fork. Please, use English in PR description.
-1. After the PR has been reviewed and merged to upstream you can remove
-   branch and rebase a fork to the upstream.
+10. Commit and push changes. Please, use English in commit message.
+11. Create a Pull Request (PR) on GitHub from your fork. Please, use English in PR description.
+12. After the PR has been reviewed and merged to upstream you can remove
+    branch and rebase a fork to the upstream.
 
 ***
 
@@ -172,10 +172,10 @@ Method description.
 
 #### Parameters
 
-| name  | description | type  | restrictions |
-| ----- | -----       | ----- | -----      |
-| param1 | description. | int   | `[1..100]`, not null |
-| param2 | description. | boolean | not null |
+| name   | description  | type    | restrictions         |
+|:-------|:-------------|:--------|:---------------------|
+| param1 | description. | int     | `[1..100]`, not null |
+| param2 | description. | boolean | not null             |
 
 #### Examples
 

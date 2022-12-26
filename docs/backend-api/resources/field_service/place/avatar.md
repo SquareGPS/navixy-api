@@ -36,11 +36,11 @@ File part **mime** type must be one of:
 
 ##### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
-| place_id | ID of the POI. | int |
-| file | Image file. | File upload |
-| redirect_target | Optional URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string |
+| name            | description                                                                                                                         | type        |
+|:----------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| place_id        | ID of the POI.                                                                                                                      | int         |
+| file            | Image file.                                                                                                                         | File upload |
+| redirect_target | Optional URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string      |
 
 ##### response
 
@@ -71,10 +71,10 @@ Assigns `icon_id` (from standard icon set) to this POI. `icon_id` can be null â€
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
-| place_id | ID of the POI. | int |
-| icon_id | Optional. ID of the icon from standard icon set. | int |
+| name     | description                                      | type |
+|:---------|:-------------------------------------------------|:-----|
+| place_id | ID of the POI.                                   | int  |
+| icon_id  | Optional. ID of the icon from standard icon set. | int  |
 
 #### examples
 

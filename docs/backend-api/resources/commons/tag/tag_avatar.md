@@ -21,10 +21,10 @@ Assigns icon_id (from standard icon set) to specified tag.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| tag_id | Id of the tag to assign. | int |
-| icon_id | Icon to assign to tag. Can be null – this means that uploaded avatar should be used instead of icon. | int |
+| name    | description                                                                                          | type |
+|:--------|:-----------------------------------------------------------------------------------------------------|:-----|
+| tag_id  | ID of the tag to assign.                                                                             | int  |
+| icon_id | Icon to assign to tag. Can be null – this means that uploaded avatar should be used instead of icon. | int  |
 
 #### examples
 
@@ -78,10 +78,10 @@ File part **mime** type must be one of:
 
 #### parameters
 
-| name | description |
-| :----- | :-----  |
-| tag_id | Id of the tag to upload. |
-| file | Image file. |
+| name            | description                                                                                                                       |
+|:----------------|:----------------------------------------------------------------------------------------------------------------------------------|
+| tag_id          | ID of the tag to upload.                                                                                                          |
+| file            | Image file.                                                                                                                       |
 | redirect_target | Optional. URL to redirect. If `redirect_target` passed return redirect to `<redirect_target>?response=<urlencoded response json>` |
 
 #### response

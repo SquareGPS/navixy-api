@@ -33,9 +33,9 @@ Reads the body of the specified layer.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| id | ID of the map layer. | int | 123456 |
+| name | description          | type | format |
+|:-----|:---------------------|:-----|:-------|
+| id   | ID of the map layer. | int  | 123456 |
 
 #### examples
 
@@ -115,11 +115,11 @@ Uploads new map layer.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| label | Label for a new map layer. | string |
-| file | A KML file upload containing map_layer data. | File upload |
-| redirect_target | Optional. URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>` | string |
+| name            | description                                                                                                                         | type        |
+|:----------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| label           | Label for a new map layer.                                                                                                          | string      |
+| file            | A KML file upload containing map_layer data.                                                                                        | File upload |
+| redirect_target | Optional. URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>` | string      |
 
 #### response
 
@@ -147,8 +147,8 @@ Updates metadata for the specified map layer.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name  | description                                                    | type        |
+|:------|:---------------------------------------------------------------|:------------|
 | layer | Map layer object described [here](#map-layer-object-structure) | JSON object |
 
 #### response
@@ -169,9 +169,9 @@ Deletes specified layer.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| id | ID of the map layer. | int | 123456 |
+| name | description          | type | format |
+|:-----|:---------------------|:-----|:-------|
+| id   | ID of the map layer. | int  | 123456 |
 
 #### examples
 

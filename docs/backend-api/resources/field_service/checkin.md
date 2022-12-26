@@ -54,18 +54,18 @@ Check-ins cannot be created using web API, so all actions are read-only.
 }
 ```    
 
-* `id` - int. An id of a check-in.
+* `id` - int. An ID of a check-in.
 * `marker_time` - [date/time](../../getting-started.md#data-types). Non-null. The time of check-in creation.
-* `user_id` - int. Non-null. An id of the master user.
-* `tracker_id` - int. Non-null. An id of the tracker which created this check-in.
-* `employee_id` - optional int. An id of the employee assigned to the tracker.
+* `user_id` - int. Non-null. An ID of the master user.
+* `tracker_id` - int. Non-null. An ID of the tracker which created this check-in.
+* `employee_id` - optional int. An ID of the employee assigned to the tracker.
 * `location` - non-null object. Location associated with this check-in marker.
     * `address` - string. Address of the location.
 * `comment` - optional string. A comment provided by app user.
 * `files` - list of <check-in_file> objects. Non-null. May be empty.
-    * `id` - int. File id.
-    * `storage_id` - int. Storage id.
-    * `user_id` - int. An id of the user.
+    * `id` - int. File ID.
+    * `storage_id` - int. Storage ID.
+    * `user_id` - int. An ID of the user.
     * `type` - [enum](../../getting-started.md#data-types). Can be "image" | "file".
     * `created` - [date/time](../../getting-started.md#data-types). Date when file created.
     * `uploaded` - [date/time](../../getting-started.md#data-types). Date when file uploaded, can be null if file not yet uploaded.
@@ -75,7 +75,7 @@ Check-ins cannot be created using web API, so all actions are read-only.
         * `orientation` - int. Image exif orientation.
     * `state` - [enum](../../getting-started.md#data-types). Can be "created" | "in_progress" | "uploaded" | "deleted".
     * `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
-* `form_id` - int. An id of the form which was sent along with a check-in, can be null.
+* `form_id` - int. An ID of the form which was sent along with a check-in, can be null.
 * `form_label` - string. Label of the form which was sent along with a check-in, can be null.
 
 ***
@@ -86,15 +86,15 @@ API path: `/checkin`.
 
 ### read
 
-Get check-in which id is equal to `checkin_id`.
+Get check-in which ID is equal to `checkin_id`.
  
 **required sub-user rights:** `employee_update`.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| checkin_id | Id of the check-in entry. | int |
+| name       | description               | type |
+|:-----------|:--------------------------|:-----|
+| checkin_id | ID of the check-in entry. | int  |
 
 #### examples
 
@@ -167,28 +167,28 @@ Gets marker entries on a map for trackers and for the specified time interval.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| trackers | Optional. Array of tracker ids. All trackers must not be deleted or blocked (if list_blocked=false). If not specified, all available trackers will be used as value. | int array |
-| from | Optional. Start date/time for searching. | [date/time](../../getting-started.md#data-types) |
-| to | Optional. End date/time for searching. Must be after "from" date. | [date/time](../../getting-started.md#data-types) |
-| conditions | Optional. Search conditions to apply to list. See [Search conditions](../commons/entity/search_conditions.md). Allowed fields are `employee`, `location`, `marker_time`, `comment`. | string array |
-| sort | Optional, offset, default is 0. List of sort expressions. See below. | string array |
-| location | Optional, location with radius, inside which check-ins must reside. | Location JSON. For example, `{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }` | 
-| limit | Optional. Max number of records to return. | int |
-| offset | Optional, offset (starting index of first returned record), default is 0. | int |
-| format | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx". | string |
+| name       | description                                                                                                                                                                         | type                                                                                |
+|:-----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------|
+| trackers   | Optional. Array of tracker IDs. All trackers must not be deleted or blocked (if list_blocked=false). If not specified, all available trackers will be used as value.                | int array                                                                           |
+| from       | Optional. Start date/time for searching.                                                                                                                                            | [date/time](../../getting-started.md#data-types)                                    |
+| to         | Optional. End date/time for searching. Must be after "from" date.                                                                                                                   | [date/time](../../getting-started.md#data-types)                                    |
+| conditions | Optional. Search conditions to apply to list. See [Search conditions](../commons/entity/search_conditions.md). Allowed fields are `employee`, `location`, `marker_time`, `comment`. | string array                                                                        |
+| sort       | Optional, offset, default is 0. List of sort expressions. See below.                                                                                                                | string array                                                                        |
+| location   | Optional, location with radius, inside which check-ins must reside.                                                                                                                 | Location JSON. For example, `{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }` | 
+| limit      | Optional. Max number of records to return.                                                                                                                                          | int                                                                                 |
+| offset     | Optional, offset (starting index of first returned record), default is 0.                                                                                                           | int                                                                                 |
+| format     | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx".                                                  | string                                                                              |
 
 ##### condition fields
 
-| Name | Type | Comment |
-| :--- | :--- | :--- |
-| employee | number | id |
-| tracker_id | number |  |
-| marker_time | DateTime |  |
-| location | string | address |
-| comment | string |  |
-| form | number | template's id |
+| Name        | Type     | Comment       |
+|:------------|:---------|:--------------|
+| employee    | number   | ID            |
+| tracker_id  | number   |               |
+| marker_time | DateTime |               |
+| location    | string   | address       |
+| comment     | string   |               |
+| form        | number   | template's ID |
 
 ##### sort 
 
@@ -196,14 +196,14 @@ It's a set of sort options. Each option is a pair of field name and sorting dire
 
 ##### sort fields
 
-| Name | Type | Comment |
-| :--- | :--- | :--- |
-| employee | string? | full name |
-| tracker_id | number |  |
-| marker_time | DateTime |  |
-| location | string | address |
-| comment | string |  |
-| form | string | label |
+| Name        | Type     | Comment   |
+|:------------|:---------|:----------|
+| employee    | string   | full name |
+| tracker_id  | number   |           |
+| marker_time | DateTime |           |
+| location    | string   | address   |
+| comment     | string   |           |
+| form        | string   | label     |
 
 #### example
 
@@ -240,15 +240,15 @@ doesn't have required tariff features.
 
 ### delete
 
-Deletes check-ins with the specified id-s.
+Deletes check-ins with the specified IDs.
 
 **required sub-user rights:** `checkin_update`.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| checkin_ids | List of check-in ids.  | int array |
+| name        | description           | type      |
+|:------------|:----------------------|:----------|
+| checkin_ids | List of check-in IDs. | int array |
 
 #### examples
 
@@ -277,5 +277,5 @@ Deletes check-ins with the specified id-s.
 #### errors
 
 * 7 – Invalid parameters.
-* 201 - Not found in the database - check-ins with the specified ids don't exist, or their corresponding 
+* 201 - Not found in the database - check-ins with the specified IDs don't exist, or their corresponding 
 trackers are not available to current sub-user.

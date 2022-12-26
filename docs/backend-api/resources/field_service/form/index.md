@@ -1,11 +1,11 @@
 ---
 title: About forms
-description: Forms used to provide additional information, such as user name, phone, delivery date, etc. upon task completion or check-in from iOS/Android mobile tracker app. Forms can be attached to tasks. If form attached to task, this task cannot be completed without form submission.
+description: Forms used to provide additional information, such as user's name, phone, delivery date, etc. upon task completion or check-in from iOS/Android mobile tracker app. Forms can be attached to tasks. If form attached to task, this task cannot be completed without form submission.
 ---
 
 # About forms
 
-Forms used to provide additional information, such as user name, phone, delivery date, etc. upon task completion
+Forms used to provide additional information, such as user's name, phone, delivery date, etc. upon task completion
 or check-in from iOS/Android mobile tracker app.
 Forms can be attached to tasks. If form attached to task, this task cannot be completed without form submission.
 
@@ -52,14 +52,14 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
 }
 ```    
 
-* `id` - int. Form unique id.
+* `id` - int. Form unique ID.
 * `label` - string. User-defined form label, from 1 to 100 characters.
 * `fields` - array of multiple [form_field](./field-types.md) objects. 
 * `created` - [date/time](../../../getting-started.md#data-types). Date when this form created (or attached to the task). The read-only field.
 * `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
-* `task_id` - int. An id of the task to which this form attached.
-* `template_id` - int. An id of the form template on which this form based. Can be null if template deleted.
-* `values` - a map with field ids as keys and [field_value](./field-types.md) objects as values. Can be null if form not filled.
+* `task_id` - int. An ID of the task to which this form attached.
+* `template_id` - int. An ID of the form template on which this form based. Can be null if template deleted.
+* `values` - a map with field IDs as keys and [field_value](./field-types.md) objects as values. Can be null if form not filled.
     * `key` - string. Key used to link field and its corresponding value.
 * `submitted` - [date/time](../../../getting-started.md#data-types). Date when form values last submitted.
 * `submit_location` - location at which form values last submitted.
@@ -85,7 +85,7 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
 }
 ```
 
-* `id` - int. File id.
+* `id` - int. File ID.
 * `type` - [enum](../../../getting-started.md#data-types). Can be "image" or "file".
 * `created` - [date/time](../../../getting-started.md#data-types). Date when file created.
 * `uploaded` - [date/time](../../../getting-started.md#data-types). Date when file uploaded. Can be null if file not yet uploaded.
@@ -103,13 +103,13 @@ API path: `/form`.
 
 ### read
 
-Gets form by an id.
+Gets form by an ID.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
-| id | Id of the form. | int |
+| name | description     | type  |
+|:-----|:----------------|:------|
+| id   | ID of the form. | int   |
 
 #### examples
 
@@ -187,19 +187,19 @@ Gets form by an id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no form with such an id.
+* 201 – Not found in the database - if there is no form with such an ID.
 
 ***
 
 ### download
 
-Downloads form as a file by an id.
+Downloads form as a file by an ID.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
-| id | Id of the form. | int | 
+| name   | description                          | type                                           |
+|:-------|:-------------------------------------|:-----------------------------------------------|
+| id     | ID of the form.                      | int                                            |
 | format | File format. Can be "pdf" or "xlsx". | [enum](../../../getting-started.md#data-types) |
 
 #### examples
@@ -224,4 +224,4 @@ Regular file download, or JSON with an error.
 
 #### errors
 
-* 201 – Not found in the database - if there is no form with such an id.
+* 201 – Not found in the database - if there is no form with such an ID.

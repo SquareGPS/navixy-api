@@ -19,10 +19,10 @@ List less than or equal to `limit` of the latest user's unread history events.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| limit | Optional. Limit of entries in response. | int |
-| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching. Default `from` is **now** minus one year. | date/time |
+| name  | description                                                                                                                  | type      |
+|:------|:-----------------------------------------------------------------------------------------------------------------------------|:----------|
+| limit | Optional. Limit of entries in response.                                                                                      | int       |
+| from  | Optional. Start [date/time](../../../getting-started.md#data-types) for searching. Default `from` is **now** minus one year. | date/time |
 
 Default and max limit is [history.maxLimit](../dealer.md).
 
@@ -93,10 +93,10 @@ Get count of user's unread history messages starting `from` date.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching.  Default `from` is **now** minus one year. | date/time |
-| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera". | [enum](../../../getting-started.md#data-types) |
+| name | description                                                                                                                   | type                                           |
+|:-----|:------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|
+| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching.  Default `from` is **now** minus one year. | date/time                                      |
+| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera".                                      | [enum](../../../getting-started.md#data-types) |
 
 #### examples
 

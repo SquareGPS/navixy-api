@@ -21,8 +21,8 @@ Deletes an image of specified `type`.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name | description                                                                                                     | type   |
+|:-----|:----------------------------------------------------------------------------------------------------------------|:-------|
 | type | Image type to delete. Can be one of `logo`, `favicon`, `login_wallpaper`, `desktop_wallpaper`, `document_logo`. | string |
 
 #### examples
@@ -76,11 +76,11 @@ File part **mime** type must be one of:
 #### parameters
 
 
-| name | description | type|
-| :------ | :------ | :----- |
-| type | Image type to delete. Can be one of `logo`, `favicon`, `login_wallpaper`, `desktop_wallpaper`, `document_logo`. | string |
-| file | Image file. | string |
-| redirect_target | Optional. An URL to redirect. | string | 
+| name            | description                                                                                                     | type   |
+|:----------------|:----------------------------------------------------------------------------------------------------------------|:-------|
+| type            | Image type to delete. Can be one of `logo`, `favicon`, `login_wallpaper`, `desktop_wallpaper`, `document_logo`. | string |
+| file            | Image file.                                                                                                     | string |
+| redirect_target | Optional. An URL to redirect.                                                                                   | string | 
 
 If `redirect_target` passed a return redirect to `response=<urlencoded response json>`.
 

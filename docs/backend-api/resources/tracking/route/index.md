@@ -19,13 +19,13 @@ Gets route points via specified route provider.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| start | Location JSON object. Start of route. | JSON object |
-| end | Location JSON object. End of route. | JSON object |
-| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]`. | array of JSON objects |
-| point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int |
-| provider_type | Optional. If not specified, the default user provider is used. One of "progorod", or "google", "osrm". | [enum](../../../getting-started.md#data-types) |
+| name          | description                                                                                                      | type                                           |
+|:--------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|
+| start         | Location JSON object. Start of route.                                                                            | JSON object                                    |
+| end           | Location JSON object. End of route.                                                                              | JSON object                                    |
+| waypoints     | Optional. List of transitional points. `[{locationA},{locationN}]`.                                              | array of JSON objects                          |
+| point_limit   | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int                                            |
+| provider_type | Optional. If not specified, the default user provider is used. One of "progorod", or "google", "osrm".           | [enum](../../../getting-started.md#data-types) |
 
 * `location` object described in [data types description section](../../../getting-started.md#data-types).
 

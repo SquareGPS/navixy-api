@@ -35,7 +35,7 @@ API call in Navixy ServerMate, you should use the URL:
 In order to authorize, you should make a GET or POST request to 
 `/account/auth/` with `login` (your administration panel login) 
 and `password` (its password), which returns JSON object, 
-containing `hash` (hexademical unique string) of the newly 
+containing `hash` (hexadecimal unique string) of the newly 
 created Panel API session, which you should use in other Panel API calls.
 
 Please note that you cannot use Panel API session hash in user API or vice versa.
@@ -122,7 +122,7 @@ $ curl -X POST 'http://api.domain.com/v2/panel/user/list/' \
 Every session (and thus, a hash key associated with it) has a limited 
 lifetime (30 days by default). So you should obtain new hash key periodically.
 
-If you will try to make a Panel API call with expired session hash, you'll 
+If you will be trying to make a Panel API call with expired session hash, you'll 
 get the following error:
 
 ```json
@@ -136,6 +136,31 @@ get the following error:
 ```
 
 In this case, just obtain new hash using `account/auth`.
+
+***
+
+### How to securely share panel's credentials
+
+To share access to the admin panel, and at the same time not to worry about data security, we recommend contacting the 
+technical support team to create a technical panel account. Provide the email address for which the technical account 
+will be created. You will receive a login and password for the account.
+
+The possibilities of tech account:
+
+* Add new users
+* Modify data of current users
+* Add new trackers
+* Clone current trackers
+* Change owner of a tracker
+* Change tracker data plan
+* Analyze incoming data with the air console
+
+Technicians are not allowed:
+
+* Delete users
+* Remove trackers
+* Add, change, delete plans
+* Change platform settings
 
 ***
 

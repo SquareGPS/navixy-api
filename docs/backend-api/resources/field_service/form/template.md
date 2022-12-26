@@ -10,7 +10,7 @@ for future reference. Usually people need to fill forms with the same fields ove
 the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an 
 electronic document, a template, on basis of which all paper forms printed.  
  
-The reason for such API design is that template fields can be changed over time (deleted, removed, reordered, etc)  
+The reason for such API design is that template fields can be changed over time (deleted, removed, reordered, etc.)  
 and it should not affect already filled forms. By separating filled forms and templates, one can always view filled form 
 in exactly same state regardless of how template changed.
  
@@ -40,7 +40,7 @@ User can assign form to the task or checkin by choosing template without the nee
 }
 ```
 
-* `id` - int. An id of a template.
+* `id` - int. An ID of a template.
 * `label` - string. User-defined template label, from 1 to 100 characters.
 * `fields` - array of multiple [form_field](./field-types.md) objects.
 * `created` - [date/time](../../../getting-started.md#data-types). Date when this template created. The read-only field.
@@ -115,8 +115,8 @@ Creates new form template.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
+| name     | description                                                              | type        |
+|:---------|:-------------------------------------------------------------------------|:------------|
 | template | Non-null form template object without `id`, `created`, `updated` fields. | JSON object |
 
 #### example
@@ -138,7 +138,7 @@ Creates new form template.
 }
 ```
 
-* `id` - int. An id of the created form template.
+* `id` - int. An ID of the created form template.
 
 #### errors
 
@@ -148,13 +148,13 @@ Creates new form template.
 
 ### read
 
-Gets form template belonging to current master user by specified id.
+Gets form template belonging to current master user by specified ID.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
-| template_id | Id of the form template. | int |
+| name        | description              | type |
+|:------------|:-------------------------|:-----|
+| template_id | ID of the form template. | int  |
 
 
 #### examples
@@ -202,7 +202,7 @@ Gets form template belonging to current master user by specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no template with such an id.
+* 201 – Not found in the database - if there is no template with such and ID.
 
 ***
 
@@ -214,8 +214,8 @@ Updates existing form template.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
+| name     | description                                                        | type        |
+|:---------|:-------------------------------------------------------------------|:------------|
 | template | Non-null form template object without `created`, `updated` fields. | JSON object |
 
 #### example
@@ -236,7 +236,7 @@ Updates existing form template.
 
 #### errors
 
-* 201 – Not found in the database - if template with the specified id does not exist.
+* 201 – Not found in the database - if template with the specified ID does not exist.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
 ***
@@ -249,9 +249,9 @@ Deletes form template.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
-| template_id | Id of the form template. | int |
+| name        | description              | type |
+|:------------|:-------------------------|:-----|
+| template_id | ID of the form template. | int  |
 
 #### examples
 
@@ -277,7 +277,7 @@ Deletes form template.
 
 #### errors
 
-* 201 – Not found in the database - if template with the specified id does not exist.
+* 201 – Not found in the database - if template with the specified ID does not exist.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
 ***
@@ -290,9 +290,9 @@ Returns template usage statistics.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
-| template_id | Id of the form template. | int |
+| name        | description              | type |
+|:------------|:-------------------------|:-----|
+| template_id | ID of the form template. | int  |
 
 #### examples
 
@@ -333,4 +333,4 @@ Returns template usage statistics.
 
 #### errors
 
-* 201 – Not found in the database - if template with the specified id does not exist.
+* 201 – Not found in the database - if template with the specified ID does not exist.

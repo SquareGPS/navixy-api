@@ -70,14 +70,14 @@ Field allows adding custom information to a customizable entity. Each field belo
 
 ### read(entity_id)
 
-Gets a set of custom fields associated with the specified entity. Note that you must know entity id, which can be 
+Gets a set of custom fields associated with the specified entity. Note that you must know entity ID, which can be 
 obtained from [entity/list](./index.md#list).
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| entity_id | ID of an entity. | int |
+| name      | description      | type |
+|:----------|:-----------------|:-----|
+| entity_id | ID of an entity. | int  |
 
 #### examples
 
@@ -134,11 +134,11 @@ Passing fields with `id` from non-existent fields or fields bound to another ent
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| entity_id | ID of an entity. | int |
-| fields | List of new/existing fields to be created/updated. | JSON object |
-| delete_missing | Optional. Default is `false`. Delete fields not present in `fields` list. | boolean |
+| name           | description                                                               | type        |
+|:---------------|:--------------------------------------------------------------------------|:------------|
+| entity_id      | ID of an entity.                                                          | int         |
+| fields         | List of new/existing fields to be created/updated.                        | JSON object |
+| delete_missing | Optional. Default is `false`. Delete fields not present in `fields` list. | boolean     |
 
 #### example
 

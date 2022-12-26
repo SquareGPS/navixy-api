@@ -50,7 +50,7 @@ Only API key `hash`.
 }
 ```
 
-* `id` - int. An id of notification.
+* `id` - int. An ID of notification.
 * `message` - string. Message of notification.
 * `show_till` - date/time. Date until notification should be shown.
 

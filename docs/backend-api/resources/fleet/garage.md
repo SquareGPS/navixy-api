@@ -27,7 +27,7 @@ of the dispatcher and others. This data can be used for more convenient and effi
 }
 ```
 
-* `id` - int. Depot id.
+* `id` - int. Depot ID.
 * `location` - location object. Valid location or null.
 * `mechanic_name` - string. Mechanic name or null.
 * `dispatcher_name` - string. Dispatcher name or null.
@@ -93,8 +93,8 @@ Creates a new depot.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name   | description                                     | type        |
+|:-------|:------------------------------------------------|:------------|
 | garage | An [garage object](#garage) without `id` field. | JSON object |
 
 #### example
@@ -116,7 +116,7 @@ Creates a new depot.
 }
 ```
 
-* `id` - int. An id of a created depot.
+* `id` - int. An ID of a created depot.
 
 #### errors
 
@@ -126,14 +126,14 @@ Creates a new depot.
 
 ### update
 
-Updates existing depot with the specified id.
+Updates existing depot with the specified ID.
 
 **required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name   | description                                  | type        |
+|:-------|:---------------------------------------------|:------------|
 | garage | An [garage object](#garage) with `id` field. | JSON object |
 
 #### example
@@ -154,21 +154,21 @@ Updates existing depot with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no depot with such an id.
+* 201 – Not found in the database - if there is no depot with such an ID.
 
 ***
 
 ### delete
 
-Deletes a depot with the specified id.
+Deletes a depot with the specified ID.
 
 **required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| garage_id | Id of the depot to delete. | int |
+| name      | description                | type |
+|:----------|:---------------------------|:-----|
+| garage_id | ID of the depot to delete. | int  |
 
 #### examples
 
@@ -194,4 +194,4 @@ Deletes a depot with the specified id.
     
 #### errors
 
-* 201 – Not found in the database - if there is no depot with such an id.
+* 201 – Not found in the database - if there is no depot with such an ID.

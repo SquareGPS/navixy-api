@@ -83,7 +83,7 @@ Message fields:
 * `type` - "event".
 * `event` - "lifecycle".
 * `data` - required object.
-    * `source_id` - source id.
+    * `source_id` - source ID.
     * `lifecycle_event` - lifecycle event type. Can be "block", "unblock", or "corrupt".
 
 Message sample:
@@ -103,7 +103,7 @@ Message sample:
 
 ## Logout event
 
-These messages are coming from server if client [subscribed](./subscription.md) to the any event. It occurs in the next cases:
+These messages are coming from server if client [subscribed](./subscription.md) to any event. It occurs in the next cases:
 
 * User logged out.
 * User session expired (did not renew during one month).

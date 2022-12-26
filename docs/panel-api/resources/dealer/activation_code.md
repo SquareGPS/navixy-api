@@ -26,13 +26,13 @@ API calls for interacting with activation codes used for device registration.
 }
 ```
 
-* `tariff_id` - int. A tariff id.
+* `tariff_id` - int. A tariff ID.
 * `bonus_amount` - int. Bonus that will be added to a user's balance when the device with this code activates.
 * `free_days` - int. Count of free days.
 * `money_amount` - int. Money that will be added to a user's balance.
 * `code` - string. A code value.
 * `activated` - boolean. If `true` it is activated.
-* `device_id` - int. A device id which activated with this code. It will be `0` if code not activated yet.
+* `device_id` - int. A device ID which activated with this code. It will be `0` if code not activated yet.
 * `tariff_name` - string. Tariff name.
 
 ***
@@ -50,12 +50,12 @@ created codes.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| count | A count of codes to creation. | int |
-| tariff_id | An id of new tariff (must belong to current dealer). | int |
-| bonus_amount | A new bonus amount. | int |
-| free_days | A new free period. | int |
+| name         | description                                          | type |
+|:-------------|:-----------------------------------------------------|:-----|
+| count        | A count of codes to creation.                        | int  |
+| tariff_id    | An ID of new tariff (must belong to current dealer). | int  |
+| bonus_amount | A new bonus amount.                                  | int  |
+| free_days    | A new free period.                                   | int  |
 
 #### examples
 
@@ -99,13 +99,13 @@ of the following fields: `code`, `tariff_id`, `device_id`, `device_type`.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| filter | Optional. Text filter string. | string |
-| order_by | Optional. Specify list ordering. Can be one of "code", "activated", "tariff_id", "tariff_name", "device_type", "money_amount", "bonus_amount", "free_days". | string |
-| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
-| offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
-| limit | Optional. Max number of records to return, used for pagination. | int |
+| name      | description                                                                                                                                                 | type    |
+|:----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
+| filter    | Optional. Text filter string.                                                                                                                               | string  |
+| order_by  | Optional. Specify list ordering. Can be one of "code", "activated", "tariff_id", "tariff_name", "device_type", "money_amount", "bonus_amount", "free_days". | string  |
+| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                   | boolean |
+| offset    | Optional. Starting offset, used for pagination. Default is `0`.                                                                                             | int     |
+| limit     | Optional. Max number of records to return, used for pagination.                                                                                             | int     |
 
 #### examples
 
@@ -161,12 +161,12 @@ Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes whi
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| codes | Codes to update. | string array |
-| tariff_id | An id of a new tariff. Have to belong to a current dealer. | int |
-| bonus_amount | A new bonus. | int |
-| free_days | A new free period. | int |
+| name         | description                                                | type         |
+|:-------------|:-----------------------------------------------------------|:-------------|
+| codes        | Codes to update.                                           | string array |
+| tariff_id    | An ID of a new tariff. Have to belong to a current dealer. | int          |
+| bonus_amount | A new bonus.                                               | int          |
+| free_days    | A new free period.                                         | int          |
 
 #### examples
 

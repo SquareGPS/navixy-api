@@ -1,11 +1,11 @@
 ---
 title: Delivery info
-description: API calls to get delivery states and tasks by ids.  
+description: API calls to get delivery states and tasks by IDs.  
 ---
 
 # Delivery info
 
-API calls to get delivery states and tasks by ids.
+API calls to get delivery states and tasks by IDs.
 
 ***
 
@@ -26,9 +26,9 @@ In addition to standard user session, this call supports special *DELIVERY* sess
 
 #### parameters
 
-|name |description |type |format |
-|--- |--- |--- |--- |
-| external_id | An external id of task. | int | 259876 |
+| name        | description             | type | format |
+|-------------|-------------------------|------|--------|
+| external_id | An external ID of task. | int  | 259876 |
 
 #### examples
 
@@ -63,7 +63,7 @@ In addition to standard user session, this call supports special *DELIVERY* sess
 }
 ```
 
-* `user_id` - master id of the user to which the task belongs to.
+* `user_id` - master ID of the user to which the task belongs to.
 * `task` - a task object, for more info see [/task](../../resources/field_service/task/index.md#task-object) 
 object structure.
 * `tracker` - corresponding tracker object, for more info see
@@ -95,9 +95,9 @@ in addition to standard user session, this call supports special *DELIVERY* sess
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| external_id | An external id of task. | int | 259876 |
+| name        | description             | type | format |
+|:------------|:------------------------|:-----|:-------|
+| external_id | An external ID of task. | int  | 259876 |
 
 #### examples
 
@@ -189,7 +189,7 @@ structure.
 * `last_name` - string. The last name of employee assigned to the task, or null if missing.
 * `vehicle_label` - string. A label of the vehicle assigned to the task, or null if missing.
 * `estimated_time` - int. Estimated time of arrival in seconds, or null if unavailable.
-* `user_id` - master id of the user to which the task belongs to.
+* `user_id` - master ID of the user to which the task belongs to.
 * `restrictions` - tariff restrictions object, for more info see 
 [user/get_tariff_restrictions](../../resources/commons/user/index.md#get_tariff_restrictions).
 

@@ -16,7 +16,7 @@ Step 1. Check that the platform support registering device model with [list_mode
 
 Step 2. Check all plugins available for the user with [plugin/list](../resources/commons/plugin/index.md#list) request.
 
-&ensp;We are interested in the next plugin ids that are used for registration:
+&ensp;We are interested in the next plugin IDs that are used for registration:
 
 * 44 - device registration with optional activation code.
 * 37 - device registration with mandatory activation code.
@@ -40,17 +40,17 @@ There is information about tracker registration with plugins 44 and 37.
 * apn_name - this is the apn that depends on your device's SIM GSM carrier. Max length 40.
 * apn_user - it depends on your device's SIM too. Max length 40, can be empty.
 * apn_password - this parameter depends on the GSM carrier as two previous parameters. Max length 40, can be empty.
-* device_id - device's ID. What Id type is used in your device can be found with [list_models](../resources/tracking/tracker/index.md#list_models)
+* device_id - device's ID. What ID type is used in your device can be found with [list_models](../resources/tracking/tracker/index.md#list_models)
   action and [ID type field](../resources/tracking/tracker/index.md#id-type)
 * model - name of the model in the platform's code. It can be found in the [list_models](../resources/tracking/tracker/index.md#list_models) request too.
 * label - label for the device.
-* group_id - tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](../resources/tracking/tracker/group.md#list).
+* group_id - tracker group ID, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](../resources/tracking/tracker/group.md#list).
 * plugin_id - what parameter ID to use. It must be listed in available [plugins list for the user](../resources/commons/plugin/index.md#list).
 * activation_code - optional string with activation code. Not necessary for plugin 44 and mandatory for plugin 37.
 
 ***
 
-### Using plugin id 44
+### Using plugin ID 44
 
 For example, we have a Teltonika FMB 140 device with IMEI 986575154632586. SIM's phone is 999999999969 and APN settings are
 internet, user, and passwd. It is supported on the platform and user has the plugin 44. Activation codes are optional for this plugin.
@@ -102,7 +102,7 @@ After sending the platform will respond with the next information:
 
 ***
 
-### Using plugin id 37
+### Using plugin ID 37
 
 In this example we need to specify an activation code during the registration. All other information will be the same as
 for the plugin 44. In this case, we have empty apn_user and apn_password to show the usage.
@@ -137,7 +137,7 @@ parameter email.
 be specified in international format without `+` sign.
 * model - enum with model always the same = `mobile_unknown_xgps`.
 * label - string with name of your device.
-* group_id - tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](../resources/tracking/tracker/group.md#list).
+* group_id - tracker group ID, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](../resources/tracking/tracker/group.md#list).
 * plugin_id - what parameter ID to use. It must be listed in available [plugins list for the user](../resources/commons/plugin/index.md#list).
 * activation_code - optional string with activation code. Not necessary for plugin 35 and mandatory for plugin 68.
 
@@ -190,7 +190,7 @@ The platform will notify us about success and with information about this device
 
 ***
 
-### Using plugin id 68
+### Using plugin ID 68
 
 If our user has mandatory activation codes (plugin 68) we should use this parameter when registering a new device.
 

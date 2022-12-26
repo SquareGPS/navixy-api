@@ -19,12 +19,12 @@ Binds Push token with a current session.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| application | Application ID, "navixy_iphone_viewer" or "navixy_android_viewer" or "w3c_pushapi". | [enum](../../../../getting-started.md#data-types) |
-| token | Push token or endpoint from pushSubscription, full URL like https://fcm.googleapis.com/fcm/send/f6kicrBn7S0:APA91b if your app ID is " "| string |
-| parameters | Should be used only with object with "w3c_pushapi". Contain keys from pushSubscription {"p256dh": "...", "auth":"..."} | JSON object |
-| category_filter | Optional. Push notifications category filter, default is `*`. | string |
+| name            | description                                                                                                                              | type                                              |
+|:----------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------|
+| application     | Application ID, "navixy_iphone_viewer" or "navixy_android_viewer" or "w3c_pushapi".                                                      | [enum](../../../../getting-started.md#data-types) |
+| token           | Push token or endpoint from pushSubscription, full URL like https://fcm.googleapis.com/fcm/send/f6kicrBn7S0:APA91b if your app ID is " " | string                                            |
+| parameters      | Should be used only with object with "w3c_pushapi". Contain keys from pushSubscription {"p256dh": "...", "auth":"..."}                   | JSON object                                       |
+| category_filter | Optional. Push notifications category filter, default is `*`.                                                                            | string                                            |
 
 #### example
 

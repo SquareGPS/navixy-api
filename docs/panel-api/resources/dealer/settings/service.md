@@ -62,7 +62,7 @@ API calls to read and update panel's service settings.
 * `locale` - [enum](../../../../backend-api/getting-started.md#data-types). Default locale of the dealer.
 * `demo_login` - string. If not empty, demo button will use this login to authorize.
 * `demo_password` - string. If not empty, demo button will use this password to authorize.
-* `maps` - [enum](../../../../backend-api/getting-started.md#data-types) array. Maps available in monitoring system. When a domain is platform owner's sub-domain then only free maps are available.
+* `maps` - [enum](../../../../backend-api/getting-started.md#data-types) array. Maps available in monitoring system. When a domain is platform owner's subdomain then only free maps are available.
 * `default_map` - default map settings object.
     * `type` - [enum](../../../../backend-api/getting-started.md#data-types). Default map code.
     * `location` - location object. Default location to show on the map when monitoring opens. Location object described
@@ -71,7 +71,7 @@ API calls to read and update panel's service settings.
 * `currency` - [enum](../../../../backend-api/getting-started.md#data-types). Code of the currency which can be shown in UI.
 * `payment_link` - string. A link to dealer's payment system. Can be null or empty.
 * `promo_url` - string. Customizable "About company" URL. Can be null or empty.
-* `google_client_id` - string. Google maps client ID (not supported by the interface yet).
+* `google_client_id` - string. Google Maps client ID (not supported by the interface yet).
 * `domain` - string. Domain which will be used for monitoring system.
 * `favicon` - string. Nullable, path or URL to dealer's interface favicon.
 * `app_logo` - string. Nullable, path or URL to dealer's mobile app logotype.
@@ -202,32 +202,32 @@ Note: wallpapers, logos and favicons cannot be edited here.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| service_title | Service name. | string |
-| locale | Default locale of the dealer. | [enum](../../../../backend-api/getting-started.md#data-types) |
-| demo_login | If not empty, demo button will use this login to authorize. | string |
-| demo_password | If not empty, demo button will use this password to authorize. | string |
-| maps | Maps available in monitoring system. | [enum](../../../../backend-api/getting-started.md#data-types) array |
-| default_map | Default map settings object. | JSON object |
-| currency | Code of the currency which will be shown in UI. | [enum](../../../../backend-api/getting-started.md#data-types) |
-| payment_link | A link to dealer's payment system. Can be null or empty. | string |
-| promo_url | Customizable "About company" URL. Can be null or empty. | string |
-| google_client_id | Google maps client ID. | string |
-| domain | Domain which will be used for monitoring system. | string |
-| login_footer |  Nullable, footer which will be included in login page. | string |
-| allow_registration | If `true` allows self-registration of users. | boolean |
-| show_mobile_apps | If `true` shows mobile apps to users who opens mobile web UI. | boolean |
-| default_user_settings | Default user settings object. | JSON object |
-| display_model_features_link | When `true` shows in model info link to navixy.com (UI option). | boolean |
-| limited_domain | If `true`, paas domain has limitations. | boolean |
-| allowed_maps | List of maps available for selection in "maps" list. | [enum](../../../../backend-api/getting-started.md#data-types) |
-| color_theme | 128 chars max. Color theme code or empty string (for default theme). | string |
-| app_color_theme | 128 chars max. Mobile app color theme code or empty string (for default theme). | string |
-| privacy_policy_link | A link to privacy policy. | string |
-| tos | Terms Of Service text. | string |
-| no_register_commands | If `true` then do not send commands to devices on activation. | boolean |
-| default_user_time_zone | Time zone by default for new users. | string |
+| name                        | description                                                                     | type                                                                |
+|:----------------------------|:--------------------------------------------------------------------------------|:--------------------------------------------------------------------|
+| service_title               | Service name.                                                                   | string                                                              |
+| locale                      | Default locale of the dealer.                                                   | [enum](../../../../backend-api/getting-started.md#data-types)       |
+| demo_login                  | If not empty, demo button will use this login to authorize.                     | string                                                              |
+| demo_password               | If not empty, demo button will use this password to authorize.                  | string                                                              |
+| maps                        | Maps available in monitoring system.                                            | [enum](../../../../backend-api/getting-started.md#data-types) array |
+| default_map                 | Default map settings object.                                                    | JSON object                                                         |
+| currency                    | Code of the currency which will be shown in UI.                                 | [enum](../../../../backend-api/getting-started.md#data-types)       |
+| payment_link                | A link to dealer's payment system. Can be null or empty.                        | string                                                              |
+| promo_url                   | Customizable "About company" URL. Can be null or empty.                         | string                                                              |
+| google_client_id            | Google maps client ID.                                                          | string                                                              |
+| domain                      | Domain which will be used for monitoring system.                                | string                                                              |
+| login_footer                | Nullable, footer which will be included in login page.                          | string                                                              |
+| allow_registration          | If `true` allows self-registration of users.                                    | boolean                                                             |
+| show_mobile_apps            | If `true` shows mobile apps to users who opens mobile web UI.                   | boolean                                                             |
+| default_user_settings       | Default user settings object.                                                   | JSON object                                                         |
+| display_model_features_link | When `true` shows in model info link to navixy.com (UI option).                 | boolean                                                             |
+| limited_domain              | If `true`, paas domain has limitations.                                         | boolean                                                             |
+| allowed_maps                | List of maps available for selection in "maps" list.                            | [enum](../../../../backend-api/getting-started.md#data-types)       |
+| color_theme                 | 128 chars max. Color theme code or empty string (for default theme).            | string                                                              |
+| app_color_theme             | 128 chars max. Mobile app color theme code or empty string (for default theme). | string                                                              |
+| privacy_policy_link         | A link to privacy policy.                                                       | string                                                              |
+| tos                         | Terms Of Service text.                                                          | string                                                              |
+| no_register_commands        | If `true` then do not send commands to devices on activation.                   | boolean                                                             |
+| default_user_time_zone      | Time zone by default for new users.                                             | string                                                              |
 
 #### example
 

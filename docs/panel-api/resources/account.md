@@ -20,10 +20,10 @@ Does not require session hash and does not need any permissions. Auths dealer in
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| login | A panel's login (number). | string |
-| password | A panel's password. | string |
+| name     | description               | type   |
+|:---------|:--------------------------|:-------|
+| login    | A panel's login (number). | string |
+| password | A panel's password.       | string |
 
 #### example
 

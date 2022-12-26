@@ -19,14 +19,14 @@ Gets route points using Progorod router.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| start | Location JSON object. Start of route. | JSON object |
-| end | Location JSON object. End of route. | JSON object |
-| waypoints | Optional. List of transitional points. `[{locationA},{locationN}]`. | array of JSON objects |
-| point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int |
-| minsize | Optional. Default=5. Smoothing parameter in conventional meters. Not recommended to set it less than distance between two neighbouring pixels on current zoom. | double |
-| use_traffic | Optional. Default=`false` If it is `false` then use `mode=optimal` and use traffic=0, else `mode=comfort` and use traffic=1. | boolean |
+| name        | description                                                                                                                                                    | type                  |
+|:------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------|
+| start       | Location JSON object. Start of route.                                                                                                                          | JSON object           |
+| end         | Location JSON object. End of route.                                                                                                                            | JSON object           |
+| waypoints   | Optional. List of transitional points. `[{locationA},{locationN}]`.                                                                                            | array of JSON objects |
+| point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2.                                               | int                   |
+| minsize     | Optional. Default=5. Smoothing parameter in conventional meters. Not recommended to set it less than distance between two neighbouring pixels on current zoom. | double                |
+| use_traffic | Optional. Default=`false` If it is `false` then use `mode=optimal` and use traffic=0, else `mode=comfort` and use traffic=1.                                   | boolean               |
 
 Where **location** described in [data types description section](../../../getting-started.md#data-types). Order of 
 waypoints may be changed.

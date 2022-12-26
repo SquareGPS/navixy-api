@@ -1,13 +1,13 @@
 ---
 title: Password
-description: API call to change subpaas's password.
+description: API call to change subpaas password.
 ---
 
 # Change password
 
 API base path: `panel/subpaas/password`.
 
-API call to change subpaas's password.
+API call to change subpaas password.
 
 ***
 
@@ -17,14 +17,14 @@ API base path: `panel/subpaas/password`.
 
 ### change 
 
-Changes subpaas's password.
+Changes subpaas password.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| subpaas_id | Subpaas's id. | int |
-| new_password | New subpaas's password, 6 to 20 printable characters. | string |
+| name         | description                                          | type   |
+|:-------------|:-----------------------------------------------------|:-------|
+| subpaas_id   | Subpaas' ID.                                         | int    |
+| new_password | New subpaas' password, 6 to 20 printable characters. | string |
 
 #### example
 
@@ -49,6 +49,6 @@ Changes subpaas's password.
 * 13 –
     * The dealer is not paas.
     * The dealer has different status than `NOT_BLOCKED`.
-    * The dealer's tariff doesn't allow subpaases.
+    * The dealer's tariff does not allow subpaases.
     * Found subpaas is in `DELETED` status.
 

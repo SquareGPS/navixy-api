@@ -7,7 +7,7 @@ description: How to get tracker list and filter results.
 
 Now we [have a hash of an API key](./get-api-key.md) — let's start with essential basics. 
 
-Navixy has tracking device as a main unit, so most requests would require you to specify one or several tracker ids. 
+Navixy has tracking device as a main unit, so most requests would require you to specify one or several tracker IDs. 
 You can receive a list of all trackers in user's account with [tracker/list](../resources/tracking/tracker/index.md#list) 
 API request:
 
@@ -56,29 +56,29 @@ It will return to you
 }
 ```  
         
-* `id` - int. Tracker id aka object_id.
+* `id` - int. Tracker ID aka object_id.
 * `label` - string. Tracker label.
 * `clone` - boolean. True if this tracker is clone.
-* `group_id` - int. Tracker group id, 0 when no group.
+* `group_id` - int. Tracker group ID, 0 when no group.
 * `avatar_file_name` - string. Optional. Passed only if present.
 * `source` - object.
-    * `id` - int. Source id.
-    * `device_id` - string. Device id aka source_imei.
+    * `id` - int. Source ID.
+    * `device_id` - string. Device ID aka source_imei.
     * `model` - string. Tracker model name from "models" table.
     * `blocked` - boolean. True if tracker blocked due to tariff end.
-    * `tariff_id` - int. An id of tracker tariff from "main_tariffs" table.
-    * `status_listing_id` - int. An id of the status listing associated with this tracker, or null.
+    * `tariff_id` - int. An ID of tracker tariff from "main_tariffs" table.
+    * `status_listing_id` - int. An ID of the status listing associated with this tracker, or null.
     * `creation_date` - date/time. Date when the tracker registered.
     * `tariff_end_date` - date/time. Date of next tariff prolongation, or null.
     * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
 * `tag_binding` - object. List of attached tags. Appears only for "tracker/list" call.
-    * `tag_id` - int. An id of tag. Must be unique for a tracker.
+    * `tag_id` - int. An ID of tag. Must be unique for a tracker.
     * `ordinal` - int. Number that can be used as ordinal or kind of tag. Must be unique for a tracker. Max value is 5.
 
 If account has a large amount of trackers, and you only need certain ones, 
 you can add an optional filter parameter to the request that will only return matching records. 
 
-This parameter has following constraints:
+This parameter has the following constraints:
 * labels array size: minimum 1, maximum 1024.
 * no null items.
 * no duplicate items.

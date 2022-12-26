@@ -19,18 +19,18 @@ Downloads track points as KML/KMZ file for the specified track ID, tracker and t
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | `123456` |
-| from | From date/time. | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 03:24:00"` |
-| to | To date/time. Specified date must be after "from" date. | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 06:24:00"` |
-| track_ids | Optional. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned. | int array | `[123456, 234567]` | 
-| include_gsm_lbs | Optional. If `false` && track_ids not specified, GSM LBS points will be filtered out. Default=`true`. | boolean | `true` |
-| simplify | Optional. If `true` the returned track will be simplified. Default=`true`. | boolean | `true` |
-| point_limit | Optional. If specified and `simplify=true`, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. It is not a hard limit, returned track may contain more points.| int | `300` |
-| filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. | boolean | `true` |
-| format | File format, "kml" or "kmz", default is "kml". | [enum](../../../getting-started.md#data-types) | `"kml"` |
-| split | If `true`, split tracks by folders with start/end placemarks and track line. Default=`false`. | boolean | `false` |
+| name            | description                                                                                                                                                                                                                                                                 | type                                                      | format                  |
+|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------|:------------------------|
+| tracker_id      | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                                                                                                                                                             | int                                                       | `123456`                |
+| from            | From date/time.                                                                                                                                                                                                                                                             | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 03:24:00"` |
+| to              | To date/time. Specified date must be after "from" date.                                                                                                                                                                                                                     | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 06:24:00"` |
+| track_ids       | Optional. If specified, only points belonging to the specified tracks will be returned. If not, any valid track points between "from" and "to" will be returned.                                                                                                            | int array                                                 | `[123456, 234567]`      | 
+| include_gsm_lbs | Optional. If `false` && track_ids not specified, GSM LBS points will be filtered out. Default=`true`.                                                                                                                                                                       | boolean                                                   | `true`                  |
+| simplify        | Optional. If `true` the returned track will be simplified. Default=`true`.                                                                                                                                                                                                  | boolean                                                   | `true`                  |
+| point_limit     | Optional. If specified and `simplify=true`, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. It is not a hard limit, returned track may contain more points. | int                                                       | `300`                   |
+| filter          | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now.                                                                                                                                                                            | boolean                                                   | `true`                  |
+| format          | File format, "kml" or "kmz", default is "kml".                                                                                                                                                                                                                              | [enum](../../../getting-started.md#data-types)            | `"kml"`                 |
+| split           | If `true`, split tracks by folders with start/end placemarks and track line. Default=`false`.                                                                                                                                                                               | boolean                                                   | `false`                 |
 
 #### example
 
@@ -69,16 +69,16 @@ Gets a list of track descriptions for the specified tracker and time period.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | `123456` |
-| from | From date/time. | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 03:24:00"` |
-| to | To date/time. Specified date must be after "from" date. | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 06:24:00"` |
-| filter | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean | `true` |
-| split | Optional, default=`true`. If `false`, all tracks will be merged into single one.| boolean | `true` |
-| include_gsm_lbs | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out. | boolean | `true` |
-| cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates. | boolean | `false` | 
-| count_events | Optional, default=`false`. If `true`, number of events occurred during each non-single point track will be returned. | boolean | `true` |
+| name                   | description                                                                                                                                    | type                                                      | format                  |
+|:-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------|:------------------------|
+| tracker_id             | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                                | int                                                       | `123456`                |
+| from                   | From date/time.                                                                                                                                | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 03:24:00"` |
+| to                     | To date/time. Specified date must be after "from" date.                                                                                        | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 06:24:00"` |
+| filter                 | Optional, default=`true`. If `true`, tracks which are too short (in terms of length and number of points) will be omitted from resulting list. | boolean                                                   | `true`                  |
+| split                  | Optional, default=`true`. If `false`, all tracks will be merged into single one.                                                               | boolean                                                   | `true`                  |
+| include_gsm_lbs        | Optional, default=`true`. If `false`, GSM LBS tracks will be filtered out.                                                                     | boolean                                                   | `true`                  |
+| cluster_single_reports | Optional, default=`false`. If `true`, single point reports will be clustered by its coordinates.                                               | boolean                                                   | `false`                 | 
+| count_events           | Optional, default=`false`. If `true`, number of events occurred during each non-single point track will be returned.                           | boolean                                                   | `true`                  |
 
 #### example
 
@@ -237,16 +237,16 @@ Gets track points for the specified track ID, tracker and time period.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| from | From date/time. | [date/time](../../../getting-started.md#datetime-formats) | "2020-09-23 03:24:00" |
-| to | To date/time. Specified date must be after "from" date. | [date/time](../../../getting-started.md#datetime-formats) | "2020-09-23 06:24:00" |
-| track_id | Optional. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned. | int | 234567 |
-| include_gsm_lbs | Optional, default=`true`. If `false` && track_id not specified, GSM LBS points will be filtered out. | boolean | true |
-| simplify | Optional. If `true` the returned track will be simplified. Default=`true`. | boolean | `true` |
-| point_limit | Optional. If specified and `simplify=true`, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. It is not a hard limit, returned track may contain more points.| int | `300` |
-| filter | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. If `false` a response will contain parking points. | boolean | false |
+| name            | description                                                                                                                                                                                                                                                                 | type                                                      | format                |
+|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------|:----------------------|
+| tracker_id      | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                                                                                                                                                             | int                                                       | 123456                |
+| from            | From date/time.                                                                                                                                                                                                                                                             | [date/time](../../../getting-started.md#datetime-formats) | "2020-09-23 03:24:00" |
+| to              | To date/time. Specified date must be after "from" date.                                                                                                                                                                                                                     | [date/time](../../../getting-started.md#datetime-formats) | "2020-09-23 06:24:00" |
+| track_id        | Optional. If specified, only points belonging to the specified track will be returned. If not, any valid track points between "from" and "to" will be returned.                                                                                                             | int                                                       | 234567                |
+| include_gsm_lbs | Optional, default=`true`. If `false` && track_id not specified, GSM LBS points will be filtered out.                                                                                                                                                                        | boolean                                                   | true                  |
+| simplify        | Optional. If `true` the returned track will be simplified. Default=`true`.                                                                                                                                                                                                  | boolean                                                   | `true`                |
+| point_limit     | Optional. If specified and `simplify=true`, the returned track will be simplified to contain this number of points. Min=2, Max=3000. If not specified, the server settings to decimates track will be used. It is not a hard limit, returned track may contain more points. | int                                                       | `300`                 |
+| filter          | Optional. If specified, the returned track will be filtered, applicable only for LBS tracks now. If `false` a response will contain parking points.                                                                                                                         | boolean                                                   | false                 |
 
 #### example
 

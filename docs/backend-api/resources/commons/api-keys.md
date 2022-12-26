@@ -61,10 +61,10 @@ obtained using a login/password via [/user/auth](./user/index.md#auth).
 
 #### parameters
 
-| name  | description | type  | restrictions |
-| :---- | :----       | :---- | :----        |
-| hash | Master user's session hash. | String | Not empty. |
-| title | New key title | String | Not empty, only printable characters. Max length: 255. |
+| name  | description                 | type   | restrictions                                           |
+|:------|:----------------------------|:-------|:-------------------------------------------------------|
+| hash  | Master user's session hash. | String | Not empty.                                             |
+| title | New key title               | String | Not empty, only printable characters. Max length: 255. |
 
 #### examples
 
@@ -113,10 +113,10 @@ obtained using a login/password via [/user/auth](./user/index.md#auth).
 
 #### parameters
 
-| name  | description | type  | restrictions |
-| :---- | :----       | :---- | :----        |
-| hash | Master user's session hash. | String | Not empty. |
-| key | The API key to delete. | String | Not empty.|
+| name | description                 | type   | restrictions |
+|:-----|:----------------------------|:-------|:-------------|
+| hash | Master user's session hash. | String | Not empty.   |
+| key  | The API key to delete.      | String | Not empty.   |
 
 #### examples
 
@@ -157,9 +157,9 @@ Gets all of API keys for an account.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| hash | Master user's session hash. | String | Not empty. |
+| name | description                 | type   | restrictions |
+|:-----|:----------------------------|:-------|:-------------|
+| hash | Master user's session hash. | String | Not empty.   |
 
 #### examples
 

@@ -24,8 +24,8 @@ from that moment.
 * `to` - A string containing [date/time](../getting-started.md#datetime-formats). Specified date must be 
 after `from` date. Data in a report will be till specified moment.
 * `title` - Report title. Default title will be used if null.
-* `trackers` - List of [trackers' ids](./get-tracker-list.md) to be included in report (if report is by trackers).
-* `employees` - List of [employees' ids](../resources/field_service/employee/index.md#list) to be included in report 
+* `trackers` - List of [trackers' IDs](./get-tracker-list.md) to be included in report (if report is by trackers).
+* `employees` - List of [employees' IDs](../resources/field_service/employee/index.md#list) to be included in report 
 (if report is by employees).
 * `time_filter` - An object which contains everyday time and weekday limits for processed data,
  e.g. `{"to":"18:00", "from":"12:00", "weekdays":[1,2,3,4,5]}`.

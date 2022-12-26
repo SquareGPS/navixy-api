@@ -94,7 +94,7 @@ Evaluates all specified conditions and joins them using `OR` boolean operator.
 #### "Number equals" condition
 
 Checks if specified field is equal to provided number value. Works for text fields too (e.q. "111" is considered equal to 111).
- For linked entity fields, it matches linked entity id to number value.
+ For linked entity fields, it matches linked entity ID to number value.
  
 ```json
 {

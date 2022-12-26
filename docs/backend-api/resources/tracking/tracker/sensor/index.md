@@ -67,7 +67,7 @@ Contains API calls to interact with sensors.
 }
 ```
 
-* `id` - int. An id of a sensor.
+* `id` - int. An ID of a sensor.
 * `sensor_type` - [enum](../../../../getting-started.md#data-types). Type of the sensor.
 * `name` - string.
 * `input_number` - int. Assigned input number.
@@ -80,14 +80,14 @@ API base path: `/tracker/sensor`.
 
 ### batch_list
 
-List tracker sensors bound to trackers with specified identificators (parameter `trackers`).
+List tracker sensors bound to trackers with specified identifiers (parameter `trackers`).
 
 There exist a similar method for working with a single tracker - [list](#list).
 
 #### parameters
-| Name | Description | Type |
-| --- | --- | --- |
-| trackers | Set of tracker identificators. Each of the relevant trackers must be accessible to the authorized user and not be blocked. Number of trackers (length of array) is limited to a maximum of 500 (this number may be changed in future). | int array |
+| Name     | Description                                                                                                                                                                                                                         | Type      |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| trackers | Set of tracker identifiers. Each of the relevant trackers must be accessible to the authorized user and not be blocked. Number of trackers (length of array) is limited to a maximum of 500 (this number may be changed in future). | int array |
 
 #### response
 
@@ -118,7 +118,7 @@ Contains a map, where keys are IDs from **trackers** parameter and values are li
 #### errors
 
 * 217 - List contains nonexistent entities -  if one of `trackers` either does not exist or is blocked.
-* 221 - Device limit exceeded - if too many ids were passed in `trackers` parameter.
+* 221 - Device limit exceeded - if too many IDs were passed in `trackers` parameter.
 
 ***
 
@@ -130,10 +130,10 @@ Creates a sensor.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| sensor | [Sensor object](#sensor-sub-types). | JSON object |
+| name       | description                                                                                     | type        |
+|:-----------|:------------------------------------------------------------------------------------------------|:------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int         |
+| sensor     | [Sensor object](#sensor-sub-types).                                                             | JSON object |
 
 #### examples
 
@@ -154,7 +154,7 @@ Creates a sensor.
 }
 ```
 
-* `id` - int. An id of created sensor.
+* `id` - int. An ID of created sensor.
 
 #### errors
 
@@ -174,10 +174,10 @@ Deletes a sensor with `sensor_id` from the database.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| sensor_id | Sensor id. | int | 234567 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
+| sensor_id  | Sensor ID.                                                                                      | int  | 234567 |
 
 #### examples
 
@@ -211,13 +211,13 @@ Deletes a sensor with `sensor_id` from the database.
 
 ### list
 
-List tracker sensors bound to tracker with specified id (`tracker_id` parameter).
+List tracker sensors bound to tracker with specified ID (`tracker_id` parameter).
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
 #### examples
 
@@ -270,10 +270,10 @@ Updates sensor.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| sensor | [Sensor object](#sensor-sub-types). | JSON object |
+| name       | description                                                                                     | type        |
+|:-----------|:------------------------------------------------------------------------------------------------|:------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int         |
+| sensor     | [Sensor object](#sensor-sub-types).                                                             | JSON object |
 
 #### example
 
@@ -312,10 +312,10 @@ Copies sensors from one tracker to another.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| base_tracker_id | Id of the base tracker (aka "object_id") from which you want to copy sensors. Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| trackers | Id of trackers. Target trackers for copying sensors. | [int] | `[12345, 54321]` |
+| name            | description                                                                                                                              | type  | format           |
+|:----------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:------|:-----------------|
+| base_tracker_id | ID of the base tracker (aka "object_id") from which you want to copy sensors. Tracker must belong to authorized user and not be blocked. | int   | 123456           |
+| trackers        | ID of trackers. Target trackers for copying sensors.                                                                                     | [int] | `[12345, 54321]` |
 
 #### example
 
@@ -337,7 +337,7 @@ Copies sensors from one tracker to another.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 272 – Trackers must have same models - if base tracker and one of target trackers has a different model.
 
 ### data/read
@@ -346,12 +346,12 @@ Gets all metering sensor readings with values and time per requested period.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the base tracker (aka "object_id") from which you want to read sensor's data. Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| sensor_id | Sensor id. | int | 234567 |
-| from | Start date and time for searching. | [date/time](../../../../getting-started.md#data-types) | "2022-02-28 00:00:00" |
-| to | End date and time for searching. Must be after `from` date. Maximum period is `maxReportTimeSpan`, default 30 days. | [date/time](../../../../getting-started.md#data-types) | "2022-03-28 23:59:00" |
+| name       | description                                                                                                                                    | type                                                   | format                |
+|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------|:----------------------|
+| tracker_id | ID of the base tracker (aka "object_id") from which you want to read sensor's data. Tracker must belong to authorized user and not be blocked. | int                                                    | 123456                |
+| sensor_id  | Sensor ID.                                                                                                                                     | int                                                    | 234567                |
+| from       | Start date and time for searching.                                                                                                             | [date/time](../../../../getting-started.md#data-types) | "2022-02-28 00:00:00" |
+| to         | End date and time for searching. Must be after `from` date. Maximum period is `maxReportTimeSpan`, default 30 days.                            | [date/time](../../../../getting-started.md#data-types) | "2022-03-28 23:59:00" |
 
 #### example
 
@@ -383,6 +383,6 @@ Gets all metering sensor readings with values and time per requested period.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 211 – Requested time span is too big - if interval between "from" and "to" is too big. Maximum period is `maxReportTimeSpan`.
 * 228 – Not supported by the sensor - if sensor is not a metering sensor. 

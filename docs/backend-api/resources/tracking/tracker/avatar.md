@@ -33,11 +33,11 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| file | image file. | string |
-| redirect_target | Optional. URL to redirect If `redirect_target` passed return redirect to `?response=`. | URL |
+| name            | description                                                                                     | type   |
+|:----------------|:------------------------------------------------------------------------------------------------|:-------|
+| tracker_id      | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int    |
+| file            | image file.                                                                                     | string |
+| redirect_target | Optional. URL to redirect If `redirect_target` passed return redirect to `?response=`.          | URL    |
 
 #### response
 

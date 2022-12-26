@@ -39,7 +39,7 @@ trackers, vehicles, places, etc.
 ```
 
 * `id` - int. Internal ID. Can be passed as null only for "create" action.
-* `tracker_id` - int. An id of the tracker currently assigned to this employee or driver. `null` means no tracker assigned.
+* `tracker_id` - int. An ID of the tracker currently assigned to this employee or driver. `null` means no tracker assigned.
 * `first_name` - string. First name. Cannot be empty. Max 100 characters.
 * `middle_name` - string. Middle name. Can be empty, cannot be null. Max 100 characters.
 * `last_name` - string. Last name. Can be empty, cannot be null. Max 100 characters.
@@ -49,14 +49,14 @@ trackers, vehicles, places, etc.
 * `driver_license_cats` - string. Driver license categories. Max 32 characters.
 * `driver_license_valid_till` - string date (yyyy-MM-dd). Date till a driver license valid. Can be null.
 * `hardware_key` - string. A hardware key. Can be null. Max 64 characters.
-* `icon_id` - int. An icon id. Can be null, can only be updated via [avatar/assign](./avatar.md#assign).
+* `icon_id` - int. An icon ID. Can be null, can only be updated via [avatar/assign](./avatar.md#assign).
 * `avatar_file_name` - string. A name of the updated avatar file. Nullable, can only be updated 
 via [avatar/upload](./avatar.md#upload).
-* `department_id` - int. An id of the department to which employee assigned. Can be null.
+* `department_id` - int. An ID of the department to which employee assigned. Can be null.
 * `location` - optional object. Location associated with this employee, should be valid or null.
     * `address` - string. Address of the location.
 * `personnel_number` - optional string. Max length is 15.
-* `tags` - int array. List of tag ids.
+* `tags` - int array. List of tag IDs.
 
 ***
 
@@ -70,12 +70,12 @@ Gets all employees and drivers belonging to user.
 
 #### parameters
 
-| name  | description                                                                                                                                                                                                                                                                                                                                                                                                                                                | type |
-|:------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :----- |
-| limit | Pagination. Maximum number of employee records to return.                                                                                                                                                                                                                                                                                                                                                                                                  | int |
-| offset | Pagination. Get employee records starting from.                                                                                                                                                                                                                                                                                                                                                                                                            | int |
-| sort | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["first_name=desc","object_label=acs"]`. Maximum 2 options in request. Available properties:<br/> - id<br/> - first_name<br/> - object_label<br/> - department_label<br/> - personnel_number<br/> - hardware_key<br/> - phone<br/> - email<br/> - address<br/> - driver_license_number<br/> - driver_license_cats<br/> - driver_license_valid_till<br/> | string array |
-| filter | Get a list of employees filtered by properties, at least one property must contain the desired string. All properties from the sorting list are used in filtering. Maximum 100 characters or null.                                                                                                                                                                                                                                                            | string |
+| name   | description                                                                                                                                                                                                                                                                                                                                                                                                                                                | type         |
+|:-------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|
+| limit  | Pagination. Maximum number of employee records to return.                                                                                                                                                                                                                                                                                                                                                                                                  | int          |
+| offset | Pagination. Get employee records starting from.                                                                                                                                                                                                                                                                                                                                                                                                            | int          |
+| sort   | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["first_name=desc","object_label=acs"]`. Maximum 2 options in request. Available properties:<br/> - ID<br/> - first_name<br/> - object_label<br/> - department_label<br/> - personnel_number<br/> - hardware_key<br/> - phone<br/> - email<br/> - address<br/> - driver_license_number<br/> - driver_license_cats<br/> - driver_license_valid_till<br/> | string array |
+| filter | Get a list of employees filtered by properties, at least one property must contain the desired string. All properties from the sorting list are used in filtering. Maximum 100 characters or null.                                                                                                                                                                                                                                                         | string       |
 
 
 #### response
@@ -121,8 +121,8 @@ Creates a new employee/driver.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
+| name     | description                                                          | type        |
+|:---------|:---------------------------------------------------------------------|:------------|
 | employee | An [employee object](#employee-object) without `id` field. Non-null. | JSON object |
 
 #### example
@@ -144,7 +144,7 @@ Creates a new employee/driver.
 }
 ```
 
-* `id` - int. An id of the created employee (driver).
+* `id` - int. An ID of the created employee (driver).
 
 #### errors
 
@@ -154,13 +154,13 @@ Creates a new employee/driver.
 
 ### read
 
-Gets employee/driver by its id.
+Gets employee/driver by his ID.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| employee_id | Id of an employee. | int |
+| name        | description        | type |
+|:------------|:-------------------|:-----|
+| employee_id | ID of an employee. | int  |
 
 #### examples
 
@@ -213,7 +213,7 @@ Gets employee/driver by its id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no employee/driver with such an id.
+* 201 – Not found in the database - if there is no employee/driver with such an ID.
 
 ***
 
@@ -225,8 +225,8 @@ Updates existing employee/driver.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
+| name     | description                                                       | type        |
+|:---------|:------------------------------------------------------------------|:------------|
 | employee | An [employee object](#employee-object) with `id` field. Non-null. | JSON object |
 
 #### example
@@ -247,22 +247,22 @@ Updates existing employee/driver.
 
 #### errors
 
-* 201 – Not found in the database - if there is no employee/driver with such an id.
+* 201 – Not found in the database - if there is no employee/driver with such an ID.
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
 
 ***
 
 ### delete
 
-Deletes an employee/driver with the specified id.
+Deletes an employee/driver with the specified ID.
 
 **required sub-user rights**: `employee_update`.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| employee_id | Id of an employee (driver) to delete. | int |
+| name        | description                           | type |
+|:------------|:--------------------------------------|:-----|
+| employee_id | ID of an employee (driver) to delete. | int  |
 
 #### examples
 
@@ -288,7 +288,7 @@ Deletes an employee/driver with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no employee/driver with such an id.
+* 201 – Not found in the database - if there is no employee/driver with such an ID.
 
 ***
 
@@ -300,13 +300,13 @@ Converts batch of tab-delimited employees/drivers and returns list of checked em
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| batch | Batch of tab-delimited employees/drivers. | string |
-| file_id | Preloaded file ID. | string |
-| fields | Optional. Array of field names. Default is `["first_name", "middle_name", "last_name", "email", "phone"]`. | string array |
-| geocoder | Geocoder type. | string |
-| default_radius | Optional. Radius for point in meters. Default is 100. | int |
+| name           | description                                                                                                | type         |
+|:---------------|:-----------------------------------------------------------------------------------------------------------|:-------------|
+| batch          | Batch of tab-delimited employees/drivers.                                                                  | string       |
+| file_id        | Preloaded file ID.                                                                                         | string       |
+| fields         | Optional. Array of field names. Default is `["first_name", "middle_name", "last_name", "email", "phone"]`. | string array |
+| geocoder       | Geocoder type.                                                                                             | string       |
+| default_radius | Optional. Radius for point in meters. Default is 100.                                                      | int          |
 
 * If `file_id` is set – `batch` parameter will be ignored.
 
