@@ -35,10 +35,10 @@ Changes tariff of tracker (with `tracker_id`) to new tariff (with `tariff_id`).
 
 **required sub-user rights**: `admin` (available only to master users).
 
-| name | description | type|
-| :------ | :------ | :-----|
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user. | int |
-| tariff_id | If of the new tariff. | int |
+| name       | description                                                                  | type |
+|:-----------|:-----------------------------------------------------------------------------|:-----|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user. | int  |
+| tariff_id  | If of the new tariff.                                                        | int  |
 
 #### examples
 
@@ -80,9 +80,9 @@ List tariffs on which user can switch the passed tracker (even when tariff last 
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :-----|
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user. | int |
+| name       | description                                                                  | type |
+|:-----------|:-----------------------------------------------------------------------------|:-----|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user. | int  |
 
 #### examples
 

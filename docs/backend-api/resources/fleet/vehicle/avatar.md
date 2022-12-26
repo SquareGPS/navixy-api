@@ -21,10 +21,10 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| vehicle_id | Id of the vehicle.| int |
-| icon_id | Id of the icon. | int |
+| name       | description        | type |
+|:-----------|:-------------------|:-----|
+| vehicle_id | ID of the vehicle. | int  |
+| icon_id    | ID of the icon.    | int  |
 
 `icon_id` can be null – this means that uploaded avatar should be used instead of icon.
 
@@ -79,10 +79,10 @@ File part **mime** type must be one of :
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| vehicle_id | Vehicle id. | int |
-| file | Image file. | string |
+| name            | description                | type   |
+|:----------------|:---------------------------|:-------|
+| vehicle_id      | Vehicle ID.                | int    |
+| file            | Image file.                | string |
 | redirect_target | Optional. URL to redirect. | string |
 
 If `redirect_target` passed a return redirect to `response=<urlencoded response json>`.

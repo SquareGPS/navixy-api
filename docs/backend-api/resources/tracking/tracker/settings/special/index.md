@@ -28,10 +28,10 @@ Gets special settings for the specified tracker.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| type | Optional. Type of special object. | [enum](../../../../../getting-started.md#data-types) | "electronic_lock_password" |
+| name       | description                                                                                     | type                                                 | format                     |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:---------------------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                                  | 123456                     |
+| type       | Optional. Type of special object.                                                               | [enum](../../../../../getting-started.md#data-types) | "electronic_lock_password" |
 
 #### examples
 
@@ -568,7 +568,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 **ign_ruptela**
 
-For Ruptela devices. Represents configuration parameters related to ignition detection ("Engine detection" and "Custom ignition", as Ruptela's documentation calls them).
+For Ruptela devices. Represents configuration parameters related to ignition detection ("Engine detection" and "Custom ignition", as Ruptela documentation calls them).
 
 [JSON-schema](https://json-schema.org):
 ```
@@ -915,7 +915,7 @@ defined by this parameter. Can be 1 - 255.
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
+* 201 – Not found in the database (if there is no tracker with such ID belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 * 214 – Requested operation or parameters are not supported by the device.
 
@@ -929,10 +929,10 @@ Sets special settings for a specified tracker with the new one.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| value | Settings object, see above. | JSON object |
+| name       | description                                                                                     | type        |
+|:-----------|:------------------------------------------------------------------------------------------------|:------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int         |
+| value      | Settings object, see above.                                                                     | JSON object |
 
 #### examples
 
@@ -952,7 +952,7 @@ Sets special settings for a specified tracker with the new one.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
 

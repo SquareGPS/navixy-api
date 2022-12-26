@@ -24,9 +24,9 @@ Our platform tracks changes to task fields and state for your convenience. Conta
 }
 ```
 
-* `id` - int. Entry id.
-* `user_id` - int. User id.
-* `task_id` - int. An id of the task with which this entry associated.
+* `id` - int. Entry ID.
+* `user_id` - int. User ID.
+* `task_id` - int. An ID of the task with which this entry associated.
 * `event_date` - [date/time](../../../getting-started.md#data-types). Date when history event happened.
 * `operation` - [enum](../../../getting-started.md#data-types). Operation which happened. Can be "create", "update", "assign" or "status_change".
 * `payload` - depends on operation. Typically, contains fields which were changed during operation.
@@ -39,13 +39,13 @@ API base path: `task/history`.
 
 ### list
 
-Returns history for the task with the specified id.
+Returns history for the task with the specified ID.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| task_id | Id of the task. | int |
+| name    | description     | type | 
+|:--------|:----------------|:-----|
+| task_id | ID of the task. | int  |
 
 #### examples
 

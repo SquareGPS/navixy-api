@@ -27,8 +27,8 @@ Unsubscribe from auto-renewal by reference.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :-----|
+| name      | description                                                                               | type   |
+|:----------|:------------------------------------------------------------------------------------------|:-------|
 | reference | Internal 2Checkout (formerly Avangate) subscription code. Get it from [list](#list) call. | string |
 
 #### examples

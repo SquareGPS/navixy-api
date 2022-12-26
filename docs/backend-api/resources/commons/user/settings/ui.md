@@ -23,9 +23,9 @@ Reads setting value by key.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| key | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, `_` and `-`. | string |
+| name | description                                                                                                | type   |
+|:-----|:-----------------------------------------------------------------------------------------------------------|:-------|
+| key  | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, `_` and `-`. | string |
 
 #### examples
 
@@ -70,10 +70,10 @@ Sets setting value.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| key | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, `_` and `-`. | string |
-| value | A new UI config value. Length should be between 0 and 8192 symbols. | string |
+| name  | description                                                                                                | type   |
+|:------|:-----------------------------------------------------------------------------------------------------------|:-------|
+| key   | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, `_` and `-`. | string |
+| value | A new UI config value. Length should be between 0 and 8192 symbols.                                        | string |
 
 #### responses:
 

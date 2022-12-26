@@ -67,7 +67,7 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
 }
 ```
 
-* `id` - int. An id of created task.
+* `id` - int. An ID of created task.
 * `vehicle_label` - string. Vehicle label.
 * `status` - [enum](../../../../getting-started.md#data-types). [Status](#task-status).
 * `prediction` - optional object. Legacy field, is not used anymore. check return_prediction parameter.
@@ -83,7 +83,7 @@ Vehicle maintenance feature helps to make sure that any scheduled maintenance or
     * `mileage` - int. Initial odometer value for tasks with mileage condition.
     * `date` - [date/time](../../../../getting-started.md#data-types). Task creation date for tasks with date condition.
     * `engine_hours` - int. Initial engine hours value for tasks with engine hours condition.
-* `vehicle_id` - int. An id of associated vehicle.
+* `vehicle_id` - int. An ID of associated vehicle.
 * `description` - string. Name of a service work. Max 255 characters.
 * `comment` - string. Comment for a task. Max 255 characters.
 * `cost` - float. Cost in the currency of the user. For information only.
@@ -134,10 +134,10 @@ Creates multiple service works.
 #### parameters
 
 
-| name | description | type |
-| :------ | :------ | :----- |
-| vehicle_ids | List of vehicle ids. Task will be created for every vehicle.  | int array |
-| task | Service work to create. `vehicle_id` field in these objects should not be specified. | JSON object |
+| name        | description                                                                          | type        |
+|:------------|:-------------------------------------------------------------------------------------|:------------|
+| vehicle_ids | List of vehicle IDs. Task will be created for every vehicle.                         | int array   |
+| task        | Service work to create. `vehicle_id` field in these objects should not be specified. | JSON object |
 
 A `task` object is:
 
@@ -228,8 +228,8 @@ Creates a new vehicle service work. For vehicles with associated tracker only.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name | description             | type        |
+|:-----|:------------------------|:------------|
 | task | Service work to create. | JSON object |
 
 #### example
@@ -251,7 +251,7 @@ Creates a new vehicle service work. For vehicles with associated tracker only.
 }
 ```
 
-* `id` - int. An id of created task.
+* `id` - int. An ID of created task.
 
 #### errors
 
@@ -266,10 +266,10 @@ Deletes a vehicle service work.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| task_id | Optional. Id of service work. | int |
-| task_ids |  Optional. Ids of service works. | int array |
+| name     | description                     | type      |
+|:---------|:--------------------------------|:----------|
+| task_id  | Optional. ID of service work.   | int       |
+| task_ids | Optional. IDs of service works. | int array |
 
 Either **task_id** or **task_ids** should be specified.
 
@@ -307,11 +307,11 @@ Downloads pdf report of service works.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| order_by | Sort option. Possible values listed below. | [enum](../../../../getting-started.md#data-types) |
-| ascending | Optional. Default is `true`. Sort direction. | boolean |
-| group_by | Optional. Group by option. Can be "vehicle" or "status". | [enum](../../../../getting-started.md#data-types) |
+| name      | description                                              | type                                              |
+|:----------|:---------------------------------------------------------|:--------------------------------------------------|
+| order_by  | Sort option. Possible values listed below.               | [enum](../../../../getting-started.md#data-types) |
+| ascending | Optional. Default is `true`. Sort direction.             | boolean                                           |
+| group_by  | Optional. Group by option. Can be "vehicle" or "status". | [enum](../../../../getting-started.md#data-types) |
 
 * `order_by` possible values:
     * "vehicle" - order by `vehicle_id`.
@@ -351,8 +351,8 @@ List all service works of all user vehicles.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name              | description                                 | type    |
+|:------------------|:--------------------------------------------|:--------|
 | return_prediction | Include legacy **prediction** field or not. | boolean |
 
 #### examples
@@ -440,9 +440,9 @@ Get service work info by its id.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| task_id | Id of service work. | int |
+| name              | description                                 | type    |
+|:------------------|:--------------------------------------------|:--------|
+| task_id           | ID of service work.                         | int     |
 | return_prediction | Include legacy **prediction** field or not. | boolean |
 
 #### examples
@@ -521,7 +521,7 @@ Get service work info by its id.
 }
 ```
 
-All parameters described in a [here](#service-task-object).
+All parameters described [here](#service-task-object).
 
 #### errors
 
@@ -537,10 +537,10 @@ Updates task status, and saved (on `done` **status**) current date and values of
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| task_id | Id of service work. | int |
-| status | A new task status. Only `done` status allowed for now. | [enum](../../../../getting-started.md#data-types) |
+| name    | description                                            | type                                              |
+|:--------|:-------------------------------------------------------|:--------------------------------------------------|
+| task_id | ID of service work.                                    | int                                               |
+| status  | A new task status. Only `done` status allowed for now. | [enum](../../../../getting-started.md#data-types) |
 
 #### examples
 
@@ -577,8 +577,8 @@ Updates information fields and notification settings of vehicle service work.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name | description             | type        |
+|:-----|:------------------------|:------------|
 | task | Service work to create. | JSON object |
 
 A [task object](#create) described in a task create. 

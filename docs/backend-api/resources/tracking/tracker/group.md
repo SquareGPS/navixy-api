@@ -19,7 +19,7 @@ interface. Currently, its function is purely visual.
 }
 ```
 
-* `id` - int. Group id. Used to reference group in objects and API calls. Read-only, assigned automatically by the server.
+* `id` - int. Group ID. Used to reference group in objects and API calls. Read-only, assigned automatically by the server.
 * `title` - string. User-specified group title, 1 to 60 printable characters, e.g. "Employees".
 * `color` - string. Group color in web format (without #), e.g. "FF6DDC". Determines the color of tracker markers on the map.
 
@@ -37,10 +37,10 @@ Assigns multiple trackers to the specified group.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| id | Group id, or 0 if trackers should be removed from any group. | int | 167 |
-| trackers | Array of Ids of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
+| name     | description                                                                                               | type      | format             |
+|:---------|:----------------------------------------------------------------------------------------------------------|:----------|:-------------------|
+| id       | Group ID, or 0 if trackers should be removed from any group.                                              | int       | 167                |
+| trackers | Array of IDs of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
 
 #### example
 
@@ -60,8 +60,8 @@ Assigns multiple trackers to the specified group.
 
 #### errors
 
-* 201 - Not found in the database – if no group found with the specified id (or group belongs to another user).
-* 217 - List contains nonexistent entities – if one or more of tracker ids belong to nonexistent tracker 
+* 201 - Not found in the database – if no group found with the specified ID (or group belongs to another user).
+* 217 - List contains nonexistent entities – if one or more of tracker IDs belong to nonexistent tracker 
 (or to a tracker belonging to different user).
 
 ***
@@ -74,10 +74,10 @@ Creates a new empty group.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
+| name  | description                                              | type   | format      |
+|:------|:---------------------------------------------------------|:-------|:------------|
 | title | Ser-specified group title, 1 to 60 printable characters. | string | "Employees" |
-| color | Group color. | string | "FF6DDC" |
+| color | Group color.                                             | string | "FF6DDC"    |
 
 #### examples
 
@@ -104,7 +104,7 @@ Creates a new empty group.
 }
 ```
 
-* `id` - int. An id of created group, e.g. 222.
+* `id` - int. An ID of created group, e.g. 222.
 
 #### errors
 
@@ -114,16 +114,16 @@ Creates a new empty group.
 
 ### delete
 
-Deletes group with the specified id. The group must belong to authorized user. All trackers from this group will be 
+Deletes group with the specified ID. The group must belong to authorized user. All trackers from this group will be 
 assigned to default group (0).
 
 **required sub-user rights:** `admin` (available only to master users).
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| id | Id of group to delete. | int | 167 |
+| name | description            | type | format |
+|:-----|:-----------------------|:-----|:-------|
+| id   | ID of group to delete. | int  | 167    |
 
 #### examples
 
@@ -149,13 +149,13 @@ assigned to default group (0).
 
 #### errors
 
-* 201 - Not found in the database – if no group found with the specified id (or group belongs to another user).
+* 201 - Not found in the database – if no group found with the specified ID (or group belongs to another user).
 
 ***
 
 ### list
 
-Gets all user tracker groups. There is always "default" unnamed group with id = 0. It cannot be modified, deleted, 
+Gets all user tracker groups. There is always "default" unnamed group with ID = 0. It cannot be modified, deleted, 
 and is not returned by this API call.
 
 #### examples
@@ -203,11 +203,11 @@ Updates specified tracker group. Group must belong to the authorized user.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| id | Id of group to update. | int | 167 |
+| name  | description                                              | type   | format      |
+|:------|:---------------------------------------------------------|:-------|:------------|
+| id    | ID of group to update.                                   | int    | 167         |
 | title | Ser-specified group title, 1 to 60 printable characters. | string | "Employees" |
-| color | Group color. | string | "FF6DDC" | 
+| color | Group color.                                             | string | "FF6DDC"    | 
 
 #### examples
 
@@ -233,4 +233,4 @@ Updates specified tracker group. Group must belong to the authorized user.
 
 #### errors
 
-* 201 - Not found in the database – if no group found with the specified id (or group belongs to another user).
+* 201 - Not found in the database – if no group found with the specified ID (or group belongs to another user).

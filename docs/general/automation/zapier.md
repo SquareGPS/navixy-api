@@ -82,7 +82,7 @@ The next step is to configure a trigger. To create a simple Zap we recommend you
 
     ![Tracker ID admin panel](../assets/trackerIDPanel.png)
 
-    Or in the user inteface. Platform -> Tracking -> Show device Info -> Copy id from the URL
+    Or in the user inteface. Platform -> Tracking -> Show device Info -> Copy ID from the URL
 
     ![Tracker ID user interface](../assets/trackerIDUI.png)
 

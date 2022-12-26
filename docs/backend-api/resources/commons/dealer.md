@@ -138,7 +138,7 @@ If `hash` is specified the `domain` shouldn't be used.
     * `currency` - [enum](../../getting-started.md#data-types). Dealer's currency ISO 4217 code.
     * `payment_link` - string. PaaS-dependent link that can be used to refill user's account. Can be null or empty.
     * `promo_url` - string. Customizable "About company" url.
-    * `google_client_id` - string. Client id which must be used to work with google API or null.
+    * `google_client_id` - string. Client ID which must be used to work with Google API or null.
     * `favicon` - string. Path or url to dealer's interface favicon.
     * `logo` - string. Path or url to dealer's logotype.
     * `app_logo` - string. Nullable, path or url to dealer's mobile app logotype.
@@ -162,7 +162,7 @@ If `hash` is specified the `domain` shouldn't be used.
     * `values` - string array. If it is empty - all models available.
     * `internal` - object with additional options.
     * `light_registration` - boolean. If `true` use "very simple" registration with demo tracker.
-    * `demo_tracker_source_id` - int. An id of tracker created on `light_registration`.
+    * `demo_tracker_source_id` - int. An ID of tracker created on `light_registration`.
     * `demo_tracker_label` - string. Label of tracker created on `light_registration`.
     * `no_register_commands` - boolean. If `true` then do not send commands to devices on activation.
 * `demo_ends` - string. A date when demo for this dealer ends. Is null when dealer is not on Trial tariff.
@@ -182,12 +182,12 @@ If `hash` is specified the `domain` shouldn't be used.
   
 #### Dealer features
 
-| name | description |
-| :------ | :------ |
-| branding_web | Allow to use custom logos, color theme, domain and favicon in UI for web version. |
-| branding_mobile | Allow to use custom icon, logo, color theme in the mobile applications. |
-| subpaas | Allow to use Sub-Dealers (can be used only together with `navixy_label`). |
-| navixy_label | Show "Powered by Navixy" in UI (required for subpaas feature). |
+| name            | description                                                                       |
+|:----------------|:----------------------------------------------------------------------------------|
+| branding_web    | Allow to use custom logos, color theme, domain and favicon in UI for web version. |
+| branding_mobile | Allow to use custom icon, logo, color theme in the mobile applications.           |
+| subpaas         | Allow to use Sub-Dealers (can be used only together with `navixy_label`).         |
+| navixy_label    | Show "Powered by Navixy" in UI (required for subpaas feature).                    |
 
 #### errors
 

@@ -56,8 +56,8 @@ Sub-user object is almost identical to usual user.
     }
 ```
 
-* `id` - int. Sub-user id, can be null (when creating new sub-user).
-* `activated` - boolean. `true` if sub-user activated (allowed to login)
+* `id` - int. Sub-user's ID, can be null (when creating new sub-user).
+* `activated` - boolean. `true` if sub-user activated (allowed to log in).
 * `login` - string. Sub-user email as login. Must be valid unique email address.
 * `first_name` - string. Sub-user's or contact person first name.
 * `middle_name` - string. Sub-user's or contact person middle name.
@@ -74,11 +74,11 @@ Sub-user object is almost identical to usual user.
 * `registered_region` - string. Region part of sub-user's registered address.
 * `registered_city` - string. City from registered address.
 * `registered_street_address` - string. Sub-user's registered address.
-* `state_reg_num` - string. State registration number. E.g. EIN in USA, OGRN in Russia. 15 characters max.
+* `state_reg_num` - string. State registration number. E.g. EIN in the USA, OGRN in Russia. 15 characters max.
 * `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
 * `legal_name` - string. Sub-user's legal name (for "legal_entity" only).
 * `iec` - optional string. Industrial Enterprises Classifier aka "KPP" (used in Russia. For "legal_entity" only).
-* `security_group_id` - int. An id of the security group to which sub-user belongs to. Can be null, which means default 
+* `security_group_id` - int. An ID of the security group to which sub-user belongs to. Can be null, which means default 
 group with no privileges.
 * `creation_date` - [date/time](../../../getting-started.md#data-types). Date and time when sub-user was created. This field is read-only, it should not be
  used in subuser/update.
@@ -98,9 +98,9 @@ Deletes sub-user. This operation cannot be reversed.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| subuser_id | Id of the sub-user belonging to current account. | int |
+| name       | description                                      | type |
+|:-----------|:-------------------------------------------------|:-----|
+| subuser_id | ID of the sub-user belonging to current account. | int  |
 
 #### examples
 
@@ -130,7 +130,7 @@ Deletes sub-user. This operation cannot be reversed.
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
-* 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
+* 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 
 ***
 
@@ -215,10 +215,10 @@ Allows you to create sub-users associated to your master account.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| user | `subuser object` without `id` field. | JSON object |
-| password | New sub-user's password. 6 to 20 characters. | string |
+| name     | description                                  | type        |
+|:---------|:---------------------------------------------|:------------|
+| user     | `subuser object` without `id` field.         | JSON object |
+| password | New sub-user's password. 6 to 20 characters. | string      |
 
 #### example
 
@@ -239,7 +239,7 @@ Allows you to create sub-users associated to your master account.
 }
 ```
 
-* `id` - int. An id of the created sub-user.
+* `id` - int. An ID of the created sub-user.
 
 #### errors
 
@@ -259,8 +259,8 @@ Updates sub-user data.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
+| name | description                       | type        |
+|:-----|:----------------------------------|:------------|
 | user | `subuser object` with `id` field. | JSON object |
 
 #### example
@@ -285,6 +285,6 @@ Updates sub-user data.
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
-* 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
+* 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
  Also, when specified `security_group_id` does not exist.
 

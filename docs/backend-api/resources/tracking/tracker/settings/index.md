@@ -19,9 +19,9 @@ Gets base settings for the specified tracker.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
 #### examples
 
@@ -56,7 +56,7 @@ Gets base settings for the specified tracker.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 ***
@@ -69,11 +69,11 @@ Updates the settings of the specified tracker.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| group_id | Tracker group id. 0 if tracker does not belong to any group. The specified group must exist. | int | 1 |
-| label | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string | "Courier" |
+| name       | description                                                                                                                                                     | type   | format    |
+|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------|:----------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                                                 | int    | 123456    |
+| group_id   | Tracker group ID. 0 if tracker does not belong to any group. The specified group must exist.                                                                    | int    | 1         |
+| label      | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string | "Courier" |
 
 #### examples
 
@@ -99,7 +99,7 @@ Updates the settings of the specified tracker.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 204 – Entity not found - if there is no group with the specified group id.
 

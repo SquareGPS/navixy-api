@@ -82,7 +82,7 @@ sorting by time if necessary.
 
 The necessary parameters for the call:
 
-* `trackers` - an int array. A list of [tracker ids](../resources/tracking/tracker/index.md#list) belong to user for which events will be searched.
+* `trackers` - an int array. A list of [tracker IDs](../resources/tracking/tracker/index.md#list) belong to user for which events will be searched.
 * `from` - a string containing the start [date/time](../getting-started.md#data-types) for searching.
 * `to` - a string containing the end [date/time](../getting-started.md#data-types) of searching. Must be after `from` date.
 

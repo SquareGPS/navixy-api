@@ -56,7 +56,7 @@ Particular report can be delivered to user's mailbox regularly. Contains report 
 * `sending_time` - optional string. Local time for sending reports, default "00:00:00", hourly granularity.
 * `fire_time` - optional string. Last schedule fire time, ignored on create/update.
 * `last_result`  object with last report creation result.
-    * `id` - int. An id of generated report.
+    * `id` - int. An ID of generated report.
 
 ***
 
@@ -72,8 +72,8 @@ Creates a new report schedule entry.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name     | description                                                      | type        |
+|:---------|:-----------------------------------------------------------------|:------------|
 | schedule | Schedule object without fields "id", "fire_time", "last_result". | JSON object |
 
 #### example
@@ -95,11 +95,11 @@ Creates a new report schedule entry.
 }
 ```
 
-* `id` - int. An id of the created schedule entry.
+* `id` - int. An ID of the created schedule entry.
 
 #### errors
 
-* 217 - List contains nonexistent entities - if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user).
+* 217 - List contains nonexistent entities - if one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 222 - Plugin not found - if specified report plugin not found.
 * 236 - Feature unavailable due to.
 
@@ -107,15 +107,15 @@ Creates a new report schedule entry.
 
 ### delete
 
-Deletes report schedule with the specified id.
+Deletes report schedule with the specified ID.
 
 **required sub-user rights**: `reports`.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| schedule_id | Id of the report schedule to delete. | int |
+| name        | description                          | type |
+|:------------|:-------------------------------------|:-----|
+| schedule_id | ID of the report schedule to delete. | int  |
 
 #### examples
 
@@ -143,7 +143,7 @@ Deletes report schedule with the specified id.
   
 #### errors
 
-* 201 - Not found in the database - if there is no schedule with specified id.
+* 201 - Not found in the database - if there is no schedule with specified ID.
 
 ***
 
@@ -229,8 +229,8 @@ Update existing report schedule.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name     | description                                                | type        |
+|:---------|:-----------------------------------------------------------|:------------|
 | schedule | Schedule object without fields "fire_time", "last_result". | JSON object |
 
 #### example
@@ -253,6 +253,6 @@ Update existing report schedule.
 
 #### errors
 
-* 217 - List contains nonexistent entities - if one or more of tracker ids belong to nonexistent tracker (or to a tracker belonging to different user).
+* 217 - List contains nonexistent entities - if one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 222 - Plugin not found - if specified report plugin not found.
 * 236 - Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of reports.

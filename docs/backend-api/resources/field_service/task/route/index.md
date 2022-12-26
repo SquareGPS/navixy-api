@@ -36,8 +36,8 @@ completed with warnings or failed.
 ```
 
 * `id` - int. Primary key used in route/update, *IGNORED* in route/create.
-* `user_id` - int. User id. *IGNORED* in route/create and route/update.
-* `tracker_id` - int. An id of the tracker to which route assigned. Can be null. *IGNORED* in route/update.
+* `user_id` - int. User ID. *IGNORED* in route/create and route/update.
+* `tracker_id` - int. An ID of the tracker to which route assigned. Can be null. *IGNORED* in route/update.
 * `creation_date` - [date/time](../../../../getting-started.md#data-types). When route created. *IGNORED* in route/create, route/update.
 * `from` - [date/time](../../../../getting-started.md#data-types). Date AFTER which first checkpoint zone must be visited, depends on first checkpoint `from`, *IGNORED* in route/create, route/update.
 * `to` - [date/time](../../../../getting-started.md#data-types). Date BEFORE which last checkpoint zone must be visited, depends on last checkpoint `to`, *IGNORED* in route/create, route/update.
@@ -45,8 +45,8 @@ completed with warnings or failed.
 * `status` - string. A route status. *IGNORED* in route/create, route/update.
 * `status_change_date` - [date/time](../../../../getting-started.md#data-types). When route status changed. *IGNORED* in route/create, route/update.
 * `origin` - string. A route origin. *IGNORED* in route/create, route/update.
-* `tags` - int array. List of tag ids.
-* `checkpoint_ids` - int array. List of route checkpoint ids in order of execution. *IGNORED* in route/create.
+* `tags` - int array. List of tag IDs.
+* `checkpoint_ids` - int array. List of route checkpoint IDs in order of execution. *IGNORED* in route/create.
 
 ***
 
@@ -62,10 +62,10 @@ API base path: `/task/route`.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| route_id | ID of the route to assign. | int |
-| tracker_id | ID of the tracker. Tracker must belong to authorized user and not be blocked. If null, task will be assigned to none. | int |
+| name       | description                                                                                                           | type | 
+|:-----------|:----------------------------------------------------------------------------------------------------------------------|:-----|
+| route_id   | ID of the route to assign.                                                                                            | int  |
+| tracker_id | ID of the tracker. Tracker must belong to authorized user and not be blocked. If null, task will be assigned to none. | int  |
 
 #### examples
 
@@ -93,8 +93,8 @@ API base path: `/task/route`.
 
 #### errors
 
-* 201 – Not found in the database - if there is no task with such an id.
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no task with such an ID.
+* 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 255 – Invalid task state - if current task state is not "unassigned" or "assigned".
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
@@ -103,18 +103,18 @@ API base path: `/task/route`.
 
 ### create
 
-Creates a new route. One of checkpoints can have id (in this case it must be a task) - it will be transmuted from
+Creates a new route. One of checkpoints can have ID (in this case it must be a task) - it will be transmuted from
 task to checkpoint.
 
 **required sub-user rights**: `task_update`.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| route | Route object without fields which are *IGNORED*. | JSON object |
-| checkpoints | Array of [checkpoint objects](../checkpoint.md#checkpoint-object) without fields which are *IGNORED*. | array of JSON objects |
-| create_form | If `true` then check additional `form_template_id` field in every **checkpoint** object and create form if it is not null. Default value is `false` for backward compatibility. | boolean |
+| name        | description                                                                                                                                                                     | type                  | 
+|:------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------|
+| route       | Route object without fields which are *IGNORED*.                                                                                                                                | JSON object           |
+| checkpoints | Array of [checkpoint objects](../checkpoint.md#checkpoint-object) without fields which are *IGNORED*.                                                                           | array of JSON objects |
+| create_form | If `true` then check additional `form_template_id` field in every **checkpoint** object and create form if it is not null. Default value is `false` for backward compatibility. | boolean               |
 
 Minimal route object to create a new route must contain:
 
@@ -166,8 +166,8 @@ Also, need checkpoints list in order of execution, checkpoints `from` and `to` m
 #### response
 
 Call returns JSON object of the created route.
-In response there will be external ids which have count greater than zero. 
-There can be multiple external ids in response because you can specify different external ids in a task's checkpoint.
+In response there will be external IDs which have count greater than zero. 
+There can be multiple external IDs in response because you can specify different external IDs in a task's checkpoint.
 If there is nothing to return, then parameter "external_id_counts" will not be present in response.
 
 ```json
@@ -193,8 +193,8 @@ If there is nothing to return, then parameter "external_id_counts" will not be p
 }
 ```
 
-* `checkpoint_ids` - int array. A list of route checkpoint ids in order of execution.
-* `external_id_counts` - optional object. Count of external ids.
+* `checkpoint_ids` - int array. A list of route checkpoint IDs in order of execution.
+* `external_id_counts` - optional object. Count of external IDs.
  
 #### errors
 
@@ -205,15 +205,15 @@ If there is nothing to return, then parameter "external_id_counts" will not be p
 
 ### delete
 
-Deletes route (and its checkpoints) with the specified id.
+Deletes route (and its checkpoints) with the specified ID.
 
 **required sub-user rights**: `task_update`.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| route_id | ID of the route to delete. | int |
+| name     | description                | type | 
+|:---------|:---------------------------|:-----|
+| route_id | ID of the route to delete. | int  |
 
 #### examples
 
@@ -241,7 +241,7 @@ Deletes route (and its checkpoints) with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no route with such an id.
+* 201 – Not found in the database - if there is no route with such an ID.
 
 ***
 
@@ -251,13 +251,13 @@ Get all routes belonging to user with optional filtering.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| statuses | Optional. List of task statuses, e.g. `["unassigned","failed"]`. Default all. | [enum](../../../../getting-started.md#data-types) array |
-| trackers | Optional. List of `tracker_id` to which task assigned. | int array |
-| from | Optional. Show tasks which are actual AFTER this date, e.g. "2020-06-01 00:00:00". | [date/time](../../../../getting-started.md#data-types) |
-| to | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00". | [date/time](../../../../getting-started.md#data-types) |
-| filter | Optional. Filter for task label and description. If **trackers**, **filter**, **from** or **to** is not passed or _null_ then appropriate condition not used to filter results. | string |
+| name     | description                                                                                                                                                                     | type                                                    | 
+|:---------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
+| statuses | Optional. List of task statuses, e.g. `["unassigned","failed"]`. Default all.                                                                                                   | [enum](../../../../getting-started.md#data-types) array |
+| trackers | Optional. List of `tracker_id` to which task assigned.                                                                                                                          | int array                                               |
+| from     | Optional. Show tasks which are actual AFTER this date, e.g. "2020-06-01 00:00:00".                                                                                              | [date/time](../../../../getting-started.md#data-types)  |
+| to       | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                                                             | [date/time](../../../../getting-started.md#data-types)  |
+| filter   | Optional. Filter for task label and description. If **trackers**, **filter**, **from** or **to** is not passed or _null_ then appropriate condition not used to filter results. | string                                                  |
 
 #### examples
 
@@ -308,13 +308,13 @@ Get all routes belonging to user with optional filtering.
 
 ### read
 
-Gets route by specified id.
+Gets route by specified ID.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| route_id | ID of the route. | int |
+| name     | description      | type | 
+|:---------|:-----------------|:-----|
+| route_id | ID of the route. | int  |
 
 #### response
 
@@ -345,7 +345,7 @@ Gets route by specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no route with such an id.
+* 201 – Not found in the database - if there is no route with such an ID.
 
 ***
 
@@ -358,11 +358,11 @@ Reordering checkpoint IDs in the `checkpoint_ids` array changes order of executi
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| route | Route object without fields which are *IGNORED*. | JSON object |
-| checkpoints | List of [checkpoint objects](../checkpoint.md#checkpoint-object) objects. Should be null if **route**'s field **checkpoint_ids** is null, otherwise should be not null. If entry contains id, then update existing checkpoint, else create a new one. Present route's checkpoints, which are not included in this array, will be deleted. | array of objects |
-| create_form | If `true` then check additional `form_template_id` field in every **checkpoint** object and create, replace or delete checkpoint's form. Default value is `false` for backward compatibility. | boolean |
+| name        | description                                                                                                                                                                                                                                                                                                                               | type             | 
+|:------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------|
+| route       | Route object without fields which are *IGNORED*.                                                                                                                                                                                                                                                                                          | JSON object      |
+| checkpoints | List of [checkpoint objects](../checkpoint.md#checkpoint-object) objects. Should be null if **route**'s field **checkpoint_ids** is null, otherwise should be not null. If entry contains ID, then update existing checkpoint, else create a new one. Present route's checkpoints, which are not included in this array, will be deleted. | array of objects |
+| create_form | If `true` then check additional `form_template_id` field in every **checkpoint** object and create, replace or delete checkpoint's form. Default value is `false` for backward compatibility.                                                                                                                                             | boolean          |
 
 #### example
 
@@ -402,5 +402,5 @@ JSON object of the updated route with `checkpoint_id`s
 
 #### errors
 
-* 201 – Not found in the database - if there is no task with such an id.
+* 201 – Not found in the database - if there is no task with such an ID.
 * 255 – Invalid task state - if current task state is not "unassigned" or "assigned".

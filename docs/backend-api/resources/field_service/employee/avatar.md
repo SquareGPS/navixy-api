@@ -23,10 +23,10 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| employee_id | Id of the employee/driver to whom the icon will assign. | int |
-| icon_id | Id of the icon. | int |
+| name        | description                                             | type |
+|:------------|:--------------------------------------------------------|:-----|
+| employee_id | ID of the employee/driver to whom the icon will assign. | int  |
+| icon_id     | ID of the icon.                                         | int  |
 
 #### examples
 
@@ -79,10 +79,10 @@ File part **mime** type must be one of:
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| employee_id | Id of the employee/driver to whom the icon will assign. | int |
-| file | Image file. | string |
+| name            | description                                                            | type   |
+|:----------------|:-----------------------------------------------------------------------|:-------|
+| employee_id     | ID of the employee/driver to whom the icon will assign.                | int    |
+| file            | Image file.                                                            | string |
 | redirect_target | Optional. URL to redirect. If passed returns redirect to `?response=`. | string |
 
 #### response

@@ -42,7 +42,7 @@ and for `legal_entity` or `sole_trader`:
 * `registered_region` – string. Region part of user's registered address.
 * `registered_city` – string. City from registered address.
 * `registered_street_address` – string. User's registered address.
-* `state_reg_num` - string, optional, 15 characters maximum. State registration number. E.g. EIN in USA, OGRN in Russia.
+* `state_reg_num` - string, optional, 15 characters maximum. State registration number. E.g. EIN in the USA, OGRN in Russia.
 * `tin` – string. Taxpayer identification number.
 
 #### example

@@ -117,7 +117,7 @@ the engine was on. In this case we should use [stats/mileage](../resources/track
 
 ## Sensors
 
-The platform has two sub-types of sensors:
+The platform has two subtypes of sensors:
 
 * [metering sensors](../resources/tracking/tracker/sensor/index.md#metering-sensor) - Discrete sensors responsible for 
   inputs states on the platform.

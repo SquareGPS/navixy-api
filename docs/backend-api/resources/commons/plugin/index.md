@@ -25,7 +25,7 @@ Plugins are special software modules which modify the behavior of various API ca
     "parameters" : {<parameter1>}
 ```
 
-* `id` - int. An id of plugin.
+* `id` - int. An ID of plugin.
 * `type` - string. Plugin type.
 * `ui_module` - string. Plugin UI module name.
 * `module` - string. Plugin module name.

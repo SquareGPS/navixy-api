@@ -21,7 +21,7 @@ employees, tasks, trackers, and vehicles. Contains tag object and API calls to i
 }
 ```
 
-* `id` - int. Tag id.
+* `id` - int. Tag ID.
 * `avatar_file_name` - optional string. File name with extension.
 * `name` - string. Tag's name.
 * `color` - string. Tag color in 3-byte RGB hex format.
@@ -50,9 +50,9 @@ Creates a new tag.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| tag | Tag object without `id` field. | JSON object |
+| name | description                    | type        |
+|:-----|:-------------------------------|:------------|
+| tag  | Tag object without `id` field. | JSON object |
 
 #### examples
 
@@ -79,7 +79,7 @@ Creates a new tag.
 }
 ```
 
-* `id` - int. An id of the created tag.
+* `id` - int. An ID of the created tag.
 
 #### errors
 
@@ -89,7 +89,7 @@ Creates a new tag.
 
 ### delete
 
-Deletes tag with the specified id.
+Deletes tag with the specified ID.
 
 **required sub-user rights**: `tag_update`.
 
@@ -98,7 +98,7 @@ To delete tags, only one of the following parameters must be specified.
 
 | name    | description                    | type      |
 |:--------|:-------------------------------|:----------|
-| tag_id  | Id of the tag to delete.       | int       |
+| tag_id  | ID of the tag to delete.       | int       |
 | tag_ids | An array of tag IDs to delete. | int array |
 
 #### examples
@@ -127,7 +127,7 @@ To delete tags, only one of the following parameters must be specified.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tag with such an id. This error will not occur if the tag_ids parameter is specified, deletion is silent in this case.
+* 201 – Not found in the database - if there is no tag with such an ID. This error will not occur if the tag_ids parameter is specified, deletion is silent in this case.
 
 ***
 
@@ -137,8 +137,8 @@ Gets all tags belonging to user with optional filtering.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
+| name   | description                                            | type   |
+|:-------|:-------------------------------------------------------|:-------|
 | filter | Optional filter for tag name. 3-60 characters or null. | string |
 
 #### examples
@@ -183,9 +183,9 @@ Search entities that bound with all of specified tags.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| tag_ids | List of tag IDs to search. | int array |
+| name         | description                                              | type         |
+|:-------------|:---------------------------------------------------------|:-------------|
+| tag_ids      | List of tag IDs to search.                               | int array    |
 | entity_types | Optional. List of [tagged entity types](#tag) to filter. | string array |
 
 #### examples
@@ -243,9 +243,9 @@ Updates existing tag.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| tag | Tag object with `id` field. | JSON object |
+| name | description                 | type        |
+|:-----|:----------------------------|:------------|
+| tag  | Tag object with `id` field. | JSON object |
 
 #### examples
 
@@ -273,4 +273,4 @@ Updates existing tag.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tag with such an id.
+* 201 – Not found in the database - if there is no tag with such an ID.

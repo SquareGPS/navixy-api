@@ -23,11 +23,11 @@ Tracks selected by intersecting their date range with date range from request (`
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| from | Include tracks which end after this date. | string |
-| to | Include tracks which start before this date. | string |
-| tracker_id | Id of the tracker. | int |
+| name       | description                                  | type   |
+|:-----------|:---------------------------------------------|:-------|
+| from       | Include tracks which end after this date.    | string |
+| to         | Include tracks which start before this date. | string |
+| tracker_id | ID of the tracker.                           | int    |
 
 #### example
 
@@ -67,8 +67,8 @@ Tracks selected by intersecting their date range with date range from request (`
 }
 ```
 
-* `tracker_id` - int. An id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. 
-* `employee_id` - nullable int. An id of employee (driver).
+* `tracker_id` - int. An ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. 
+* `employee_id` - nullable int. An ID of employee (driver).
 * `start_date` - [date/time](../../../getting-started.md#data-types). Start date of a journal entry.
 * `end_date` - [date/time](../../../getting-started.md#data-types). End date of a journal entry.
 * `start_location` - location object. Where entry starts.

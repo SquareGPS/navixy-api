@@ -18,9 +18,9 @@ Gets list of trusted numbers for the specified tracker.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
 #### examples
 
@@ -51,7 +51,7 @@ Gets list of trusted numbers for the specified tracker.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 ***
@@ -64,10 +64,10 @@ Replaces the list of trusted numbers for a specified tracker with the new one.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| list | Array of phone numbers (10-15 digits) represented as strings. | string array | `["496156680001", "496156680000"]` |
+| name       | description                                                                                     | type         | format                             |
+|:-----------|:------------------------------------------------------------------------------------------------|:-------------|:-----------------------------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int          | 999199                             |
+| list       | Array of phone numbers (10-15 digits) represented as strings.                                   | string array | `["496156680001", "496156680000"]` |
 
 #### examples
 
@@ -87,6 +87,6 @@ Replaces the list of trusted numbers for a specified tracker with the new one.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 

@@ -86,8 +86,8 @@ Creates new security group.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
+| name  | description                                 | type        |
+|:------|:--------------------------------------------|:------------|
 | group | `security_group` object without "id" field. | JSON object |
 
 #### example
@@ -109,7 +109,7 @@ Creates new security group.
 }
 ```
 
-* `id` - int. An id of the created security group.
+* `id` - int. An ID of the created security group.
 
 #### errors
 
@@ -128,9 +128,9 @@ All sub-users belonging to this group will be assigned to default (null) securit
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| security_group_id | Id of security group, which must be deleted. | int |
+| name              | description                                  | type |
+|:------------------|:---------------------------------------------|:-----|
+| security_group_id | ID of security group, which must be deleted. | int  |
 
 #### examples
 
@@ -225,8 +225,8 @@ Updates existing security group.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
+| name  | description                       | type        |
+|:------|:----------------------------------|:------------|
 | group | `security_group` with "id" field. | JSON object |
 
 #### example
@@ -250,6 +250,6 @@ Updates existing security group.
 #### errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
-* 201 – Not found in the database – when security group with the specified id does not exist.
+* 201 – Not found in the database – when security group with the specified ID does not exist.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 

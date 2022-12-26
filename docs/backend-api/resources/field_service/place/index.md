@@ -1,11 +1,11 @@
 ---
 title: Working with points of interest (POI)
-description: Place object and API calls to work with points of interest (POI). "Places" are business-specific points of interest like shops, delivery points, warehouses, etc - which are visited by user's employees and drivers.
+description: Place object and API calls to work with points of interest (POI). "Places" are business-specific points of interest like shops, delivery points, warehouses, etc. - which are visited by user's employees and drivers.
 ---
 
 # Working with points of interest (POI)
 
-"Places" are business-specific points of interest (POI) like shops, delivery points, warehouses, etc - which are visited 
+"Places" are business-specific points of interest (POI) like shops, delivery points, warehouses, etc. - which are visited 
 by user's employees. Place entities can be extended with [custom fields](../../commons/entity/fields.md) to make them 
 even more useful. 
 
@@ -43,7 +43,7 @@ Thus, field employee/driver can view all points of interest assigned to him to v
 }
 ```   
 
-* `id` - int. An id of a POI.
+* `id` - int. An ID of a POI.
 * `icon_id` - optional int. Can be 1 to 255. Can only be updated via [avatar/assign](./avatar.md).
 * `avatar_file_name` - optional string. Name of the avatar file. Can be null.
 * `location` - required information about place location.
@@ -51,7 +51,7 @@ Thus, field employee/driver can view all points of interest assigned to him to v
     * `lng` - required, float. The longitude.
     * `address` - required, string, max length 255. The address of place.
     * `radius` - required, int, 1..300000. The radius of place in meters.
-* `fields` - optional object. A map, each key of which is a custom field id *as a string*. See [entity/fields](../../commons/entity/fields.md)
+* `fields` - optional object. A map, each key of which is a custom field ID *as a string*. See [entity/fields](../../commons/entity/fields.md)
 * `label` - string. POI name.
 * `description` - optional string. POI description.
 * `tags` - optional int array. A list of tag_ids. Non-empty.
@@ -135,7 +135,7 @@ Get POIs belonging to user.
 | place_ids  | Optional. List of POI IDs.                                                                                                                                                                          | int array        |
 | filter     | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned POI.                                                         | string           |
 | conditions | Optional. Search conditions to apply to list. Array of search conditions, see [Search conditions](../../commons/entity/search_conditions.md).                                                       | array of objects |
-| order_by   | Optional. Built-in or custom field according to which output should be sorted. Entity field name, e.g "label" (builtin) or "123" (field id as string, see [entity/](../../commons/entity/index.md). | string           |
+| order_by   | Optional. Built-in or custom field according to which output should be sorted. Entity field name, e.g "label" (builtin) or "123" (field ID as string, see [entity/](../../commons/entity/index.md). | string           |
 | ascending  | Optional. If `false` – descending order.                                                                                                                                                            | boolean          |
 | limit      | Optional. Limit.                                                                                                                                                                                    | int              |
 | offset     | Optional. offset, default is 0.                                                                                                                                                                     | int              |
@@ -242,8 +242,8 @@ Gets all POI IDs and names within which a specified coordinates are located insi
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name     | description                                                                                                   | type        |
+|:---------|:--------------------------------------------------------------------------------------------------------------|:------------|
 | location | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
 
 #### example

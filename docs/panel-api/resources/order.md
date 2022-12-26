@@ -21,9 +21,9 @@ Reads order by specified ID.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| order_id | Order ID. | int |
+| name     | description | type |
+|:---------|:------------|:-----|
+| order_id | Order ID.   | int  |
 
 #### examples
 

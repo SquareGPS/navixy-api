@@ -265,7 +265,7 @@ File attachment. For example, document or spreadsheet.
 }
 ```
 
-* `file_ids` - int array. Ids of the file which should be attached to this form field as value. Files must be 
+* `file_ids` - int array. IDs of the file which should be attached to this form field as value. Files must be 
 uploaded before form submission.
 
 ***
@@ -295,7 +295,7 @@ Photograph attachment.
 }
 ```
 
-* `file_ids` - int array. Ids of the files which should be attached to this form field as value. Files must be
+* `file_ids` - int array. IDs of the files which should be attached to this form field as value. Files must be
  uploaded before form submission. Only image files allowed.
 
 ***
@@ -319,7 +319,7 @@ A small image of customer's signature (usually obtained via writing on screen wi
 }
 ```
 
-* `file_id` - int. An id of the file which should be attached to this form field as value. File must be uploaded
+* `file_id` - int. An ID of the file which should be attached to this form field as value. File must be uploaded
  before form submission.
 
 ***

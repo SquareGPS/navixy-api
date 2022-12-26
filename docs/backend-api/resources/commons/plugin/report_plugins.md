@@ -151,7 +151,7 @@ Plugin-specific parameters:
 | show_mileage               | Adds mileage to the report if `true`.                                                                                               | boolean   |
 | show_not_visited_zones     | Will show non visited zones if `true`.                                                                                              | boolean   |
 | min_minutes_in_zone        | Minimum minutes in a zone to start determining visit. If the device was in a zone less than a specified time - the visit not count. | int       |
-| zone_ids                   | List of zone ids.                                                                                                                   | int array |
+| zone_ids                   | List of zone IDs.                                                                                                                   | int array |
 | hide_charts                | If `true`, charts will be hidden.                                                                                                   | boolean   |
 | include_summary_sheet_only | If `true`, a report will have only summary sheet.                                                                                   | boolean   |
 
@@ -190,7 +190,7 @@ Plugin-specific parameters:
 | show_mileage               | Adds mileage to the report if `true`.                                                                                                 | boolean   |
 | show_not_visited_places    | Will show non visited POIs if `true`.                                                                                                 | boolean   |
 | min_minutes_in_place       | Minimum minutes in a place to start determining visit. If the device was in a place less than a specified time - the visit not count. | int       |
-| place_ids                  | List of place ids.                                                                                                                    | int array |
+| place_ids                  | List of place IDs.                                                                                                                    | int array |
 | hide_charts                | If `true`, charts will be hidden.                                                                                                     | boolean   |
 | include_summary_sheet_only | If `true`, a report will have only summary sheet.                                                                                     | boolean   |
 | fetch_places_by_employees  | If `true`, places will show assigned employee. Place should be assigned to an employee to show his name.                              | boolean   |
@@ -1248,15 +1248,14 @@ default **plugin_id**: 85
 plugin-specific parameters:
 
 | name                      | description                                                                                                                                        | type      |
-|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+|:--------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|:----------|
 | fetch_places_by_employees | If `true`, report will be built for places that are related to selected trackers via custom fields. Cannot be used in conjunction with `place_ids` | boolean   |
 | hide_charts               | If `true`, charts will be hidden.                                                                                                                  | boolean   |
 | min_minutes_in_place      | Minimum time in spent in place. Minimum value is 1, default is `5`                                                                                 | int       |
 | place_ids                 | IDs of user's POI. Min size 1, max size 30                                                                                                         | int array |
 | show_mileage              | Adds mileage to the report if `true`.                                                                                                              | boolean   |
 | show_not_visited_places   | Will show non visited POIs if `true`.                                                                                                              | boolean   |
-| show_seconds              | If `true`, time values in report should have format with seconds. Default is **
-false**.                                                            | boolean   |
+| show_seconds              | If `true`, time values in report should have format with seconds. Default is `false`.                                                              | boolean   |
 
 #### plugin example
 

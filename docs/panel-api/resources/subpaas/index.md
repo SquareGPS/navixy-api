@@ -29,10 +29,10 @@ API calls to interact with Subpaases.
 ```
 
 * `subpaas_id` - int. Subpaas id.
-* `title` - string. Subpaas's name.
+* `title` - string. Subpaas' name.
 * `jur_name` - string. Legal (juristic) company name.
 * `creation_date` - string. Creation date.
-* `block_type` - [enum](../../../backend-api/getting-started.md#data-types). Panel and Subpaas's users block status. One of: 
+* `block_type` - [enum](../../../backend-api/getting-started.md#data-types). Panel and Subpaas' users block status. One of: 
 "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED".
 * `users_count` - int. Count of users.
 * `active_users_count` - int. Count of active users.
@@ -54,14 +54,14 @@ Creates subpaas. After creation its `dealer_block_type` will be in `INITIAL_BLOC
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| password | Subpaas's password. | string |
-| title | Subpaas's name. | string |
-| email | Company email. | string |
-| jur_name | Legal (juristic) company name. | string |
-| jur_country | Subpaas's country | string |
-| link_monitoring | Subpaas's domain name. | string |
+| name            | description                    | type   |
+|:----------------|:-------------------------------|:-------|
+| password        | Subpaas' password.             | string |
+| title           | Subpaas' name.                 | string |
+| email           | Company email.                 | string |
+| jur_name        | Legal (juristic) company name. | string |
+| jur_country     | Subpaas' country               | string |
+| link_monitoring | Subpaas' domain name.          | string |
 
 #### example
 
@@ -91,16 +91,16 @@ Creates subpaas. After creation its `dealer_block_type` will be in `INITIAL_BLOC
 
 ### list
 
-Gets a list of all subpaases for a dealer. Dealer id will be taken from the session key.
+Gets a list of all subpaases for a dealer. Dealer ID will be taken from the session key.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| order_by | Optional. Sort option. Can be "subpaas_id", "title", "jur_name", "login", "block_type", "creation_date". Default is `subpaas_id`. | [enum](../../../backend-api/getting-started.md#data-types) |
-| ascending | Optional. If `true` ordering will be ascending, descending otherwise. Default is `true`. | boolean |
-| limit | Optional. Pagination. Maximum subpaases to return | int |
-| offset | Optional. Pagination. Get subpaases starting from. | int |
+| name      | description                                                                                                                       | type                                                       |
+|:----------|:----------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
+| order_by  | Optional. Sort option. Can be "subpaas_id", "title", "jur_name", "login", "block_type", "creation_date". Default is `subpaas_id`. | [enum](../../../backend-api/getting-started.md#data-types) |
+| ascending | Optional. If `true` ordering will be ascending, descending otherwise. Default is `true`.                                          | boolean                                                    |
+| limit     | Optional. Pagination. Maximum subpaases to return                                                                                 | int                                                        |
+| offset    | Optional. Pagination. Get subpaases starting from.                                                                                | int                                                        |
 
 #### examples
 
@@ -157,9 +157,9 @@ Gets subpaas info by its id.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| subpaas_id | Subpaas id. | int |
+| name       | description | type |
+|:-----------|:------------|:-----|
+| subpaas_id | Subpaas ID. | int  |
 
 #### examples
 
@@ -210,23 +210,23 @@ Gets subpaas info by its id.
 
 ### update
 
-Updates a subpaas with specified id.
+Updates a subpaas with specified ID.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| subpaas_id | Subpaas's id. | int |
-| password | Subpaas's password. | string |
-| title | Subpaas's name. | string |
-| email | Company email. | string |
-| jur_name | Legal (juristic) company name. | string |
-| jur_country | Subpaas's country | string |
-| link_monitoring | Subpaas's domain name. | string |
-| contact_fio | Contact person. | string |
-| contact_post | Contact post (position). | string |
-| contact_phone | Contact's phone. | string |
-| block_type | Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED". | [enum](../../../backend-api/getting-started.md#data-types) |
+| name            | description                                                                                                    | type                                                       |
+|:----------------|:---------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
+| subpaas_id      | Subpaas' ID.                                                                                                   | int                                                        |
+| password        | Subpaas' password.                                                                                             | string                                                     |
+| title           | Subpaas' name.                                                                                                 | string                                                     |
+| email           | Company email.                                                                                                 | string                                                     |
+| jur_name        | Legal (juristic) company name.                                                                                 | string                                                     |
+| jur_country     | Subpaas' country                                                                                               | string                                                     |
+| link_monitoring | Subpaas' domain name.                                                                                          | string                                                     |
+| contact_fio     | Contact person.                                                                                                | string                                                     |
+| contact_post    | Contact post (position).                                                                                       | string                                                     |
+| contact_phone   | Contact's phone.                                                                                               | string                                                     |
+| block_type      | Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED". | [enum](../../../backend-api/getting-started.md#data-types) |
 
 #### example
 

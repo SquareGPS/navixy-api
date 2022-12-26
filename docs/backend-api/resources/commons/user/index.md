@@ -73,10 +73,10 @@ object structure and API calls to interact with users.
 }
 ```
 
-* `paas_id` - int. Dealer id.
+* `paas_id` - int. Dealer ID.
 * `paas_settings` - object. The same as `settings` in [/dealer/get_ui_config response](../dealer.md#get_ui_config).
 * `user_info` - object. Info about user.
-    * `id` - int. User id.
+    * `id` - int. User ID.
     * `login` - string. User's login (in most cases it's an email address).
     * `title` - string. User first and last name or organization title.
     * `phone` - string. User phone (if not empty).
@@ -155,11 +155,11 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
 #### parameters
 
-| name  | description | type  | restrictions |
-| :---- | :----       | :---- | :----        |
-|login | User email as login (or demo login). | string | not null. |
-|password | User password. | string | not null, 1 to 40 printable characters. |
-|dealer_id | If specified, API will check that user belongs to this dealer, and if not, error 102 will be returned. | int | optional. |
+| name      | description                                                                                            | type   | restrictions                            |
+|:----------|:-------------------------------------------------------------------------------------------------------|:-------|:----------------------------------------|
+| login     | User email as login (or demo login).                                                                   | string | not null.                               |
+| password  | User password.                                                                                         | string | not null, 1 to 40 printable characters. |
+| dealer_id | If specified, API will check that user belongs to this dealer, and if not, error 102 will be returned. | int    | optional.                               |
 
 #### example
 
@@ -375,9 +375,9 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
 #### parameters
 
-| name  | description | type  | restrictions |
-| :---- | :----  | :---- | :---- |
-| login | User login (email). | string | not null. |
+| name  | description         | type   | restrictions |
+|:------|:--------------------|:-------|:-------------|
+| login | User login (email). | string | not null.    |
 
 #### examples
 

@@ -19,8 +19,8 @@ Gets the APN name/user/password and mobile operator for registered device by pho
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
+| name  | description                                                            | type   | format       |
+|:------|:-----------------------------------------------------------------------|:-------|:-------------|
 | phone | string representing valid international phone number without `+` sign. | string | "1234567890" |
 
 #### examples

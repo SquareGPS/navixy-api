@@ -27,7 +27,7 @@ These actions allow creating scheduled routes similarly to regular routes.
 
 * `id` - int. Primary key. Used in the update call, *IGNORED* in create.
 * `user_id` - int. User id. *IGNORED* in create/update.
-* `tracker_id` - int. An id of the tracker to which all generated tasks assigned. Nullable.
+* `tracker_id` - int. An ID of the tracker to which all generated tasks assigned. Nullable.
 * `parameters` - schedule parameters can be "weekdays" or "month_days". Described below.
 
 ***
@@ -61,7 +61,7 @@ These actions allow creating scheduled routes similarly to regular routes.
 
 * `id` - int. Primary key. Used in the update call, *IGNORED* in create.
 * `user_id` - int. User id. *IGNORED* in create/update.
-* `tracker_id` - int. An id of the tracker to which all generated tasks assigned. Nullable.
+* `tracker_id` - int. An ID of the tracker to which all generated tasks assigned. Nullable.
 * `location` - location associated with this task. Cannot be null.
   * `address` - string. Address of the location.
   * `radius` - int. Radius of location zone in meters.
@@ -70,7 +70,7 @@ These actions allow creating scheduled routes similarly to regular routes.
 * `min_arrival_duration` - int. Visits less than these values will be ignored, minutes.
 * `from_time` - string time. Time of day which defines start of the task within the days.
 * `duration` - int. Total duration in minutes between "from" and "to" for generated tasks.
-* `tags` - int array. List of tag ids.
+* `tags` - int array. List of tag IDs.
 * `form_template_id` - int. Form template id. Nullable.
 
 `<schedule_parameters>` can be one of the following:
@@ -109,9 +109,9 @@ Creates route schedule with checkpoints.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| route | [Route schedule entry](#route-schedule-entry) without fields which are *IGNORED*. | JSON object |
+| name        | description                                                                                    | type        | 
+|:------------|:-----------------------------------------------------------------------------------------------|:------------|
+| route       | [Route schedule entry](#route-schedule-entry) without fields which are *IGNORED*.              | JSON object |
 | checkpoints | Array of route's [checkpoints](#checkpoint-schedule-entry) without fields which are *IGNORED*. | JSON object |
 
 #### example
@@ -133,7 +133,7 @@ Creates route schedule with checkpoints.
 }
 ```
 
-* `id` - int. An id of the created route schedule entry.
+* `id` - int. An ID of the created route schedule entry.
 
 #### errors
 
@@ -147,9 +147,9 @@ Deletes route schedule with checkpoints.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| id | Route schedule ID. | int |
+| name | description        | type | 
+|:-----|:-------------------|:-----|
+| id   | Route schedule ID. | int  |
 
 #### examples
 
@@ -184,14 +184,14 @@ Deletes route schedule with checkpoints.
 ### update
 
 Updates route schedule with checkpoints. If checkpoint is being created, then it should have no id.
-If checkpoint is being updated, then it should have an id. If old checkpoint is not present in request, then it
+If checkpoint is being updated, then it should have and ID. If old checkpoint is not present in request, then it
  will be deleted.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| route | [Route schedule entry](#route-schedule-entry) without fields which are *IGNORED*. | JSON object |
+| name        | description                                                                                    | type        | 
+|:------------|:-----------------------------------------------------------------------------------------------|:------------|
+| route       | [Route schedule entry](#route-schedule-entry) without fields which are *IGNORED*.              | JSON object |
 | checkpoints | Array of route's [checkpoints](#checkpoint-schedule-entry) without fields which are *IGNORED*. | JSON object |
 
 #### example

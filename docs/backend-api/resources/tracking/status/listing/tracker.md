@@ -21,10 +21,10 @@ Assigns a working status list (or remove assignment) to the tracker.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| listing_id | ID of the working status list. Omit this parameter completely, if you want remove the assignment. | int | 12345 |
+| name       | description                                                                                       | type | format |
+|:-----------|:--------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.   | int  | 123456 |
+| listing_id | ID of the working status list. Omit this parameter completely, if you want remove the assignment. | int  | 12345  |
 
 #### examples
 

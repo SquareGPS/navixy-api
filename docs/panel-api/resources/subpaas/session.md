@@ -5,7 +5,7 @@ description: API call to create a subpaas session.
 
 # Subpaas session key
 
-API call to create a subpaas's session key.
+API call to create a subpaas session key.
 
 ***
 
@@ -19,9 +19,9 @@ Creates a subpaas session.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| subpaas_id | Subpaas's id. | int |
+| name       | description  | type |
+|:-----------|:-------------|:-----|
+| subpaas_id | Subpaas' ID. | int  |
 
 #### examples
 
@@ -54,6 +54,6 @@ Creates a subpaas session.
 * 13 –
     * The dealer is not paas.
     * The dealer has different status than `NOT_BLOCKED`.
-    * The dealer's tariff doesn't allow subpaases.
+    * The dealer's tariff does not allow subpaases.
     * Found subpaas is not in `NOT_BLOCKED` status.
 

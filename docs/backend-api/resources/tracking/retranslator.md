@@ -5,7 +5,7 @@ description: Retranslator
 
 # Retranslator
 
-Retranslarot and retranslator protocol objects and CRUD actions for retranslators. They can be used to redirect the data
+Retranslator and retranslator protocol objects and CRUD actions for retranslators. They can be used to redirect the data
 that comes from a device to the platform to some third-party application specified by the user.
 
 ***
@@ -72,8 +72,8 @@ Creates new retranslator.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name         | description                             | type        |
+|:-------------|:----------------------------------------|:------------|
 | retranslator | Retranslator object without `id` field. | JSON object |
 
 #### example
@@ -113,9 +113,9 @@ Deletes user's retranslator with specified `retranslator_id`.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| retranslator_id | ID of the retranslator that will be deleted. | int | 123456 |
+| name            | description                                  | type | format |
+|:----------------|:---------------------------------------------|:-----|:-------|
+| retranslator_id | ID of the retranslator that will be deleted. | int  | 123456 |
 
 #### examples
 
@@ -203,8 +203,8 @@ the current user.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
+| name         | description                             | type        |
+|:-------------|:----------------------------------------|:------------|
 | retranslator | Retranslator object without `id` field. | JSON object |
 
 #### example

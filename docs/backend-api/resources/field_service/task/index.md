@@ -54,8 +54,8 @@ it's available for viewing by app user. User will also receive notifications of 
 ```
 
 * `id` - int. Primary key. Used in task/update, *IGNORED* in task/create.
-* `user_id` - int. User id. *IGNORED* in create/update.
-* `tracker_id` - int. An id of the tracker to which task assigned. Can be null.  *IGNORED* in task/update.
+* `user_id` - int. User ID. *IGNORED* in create/update.
+* `tracker_id` - int. An ID of the tracker to which task assigned. Can be null.  *IGNORED* in task/update.
 * `location` - location associated with this task. Cannot be null.
     * `address` - string. Address of the location.
     * `radius`- int. Radius of location zone in meters.
@@ -71,10 +71,10 @@ it's available for viewing by app user. User will also receive notifications of 
 * `arrival_date` - [date/time](../../../getting-started.md#data-types). When tracker has arrived to the task zone. *IGNORED* in create/update.
 * `stay_duration` - int. Duration of stay in the task zone, seconds.
 * `origin` - string. Task origin. *IGNORED* in create/update.
-* `tags` - int array. List of tag ids.
+* `tags` - int array. List of tag IDs.
 * `form` - [form object](../form/index.md#form-object). If present.
-* `form_template_id` - int. An id of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
-* `fields` - optional object. A map, each key of which is a custom field id *as a string*. See [entity/fields](../../commons/entity/fields.md)
+* `form_template_id` - int. An ID of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
+* `fields` - optional object. A map, each key of which is a custom field ID *as a string*. See [entity/fields](../../commons/entity/fields.md)
 
 !!! note "To associate the task with an address - this field should be added to the location object."
 
@@ -92,10 +92,10 @@ API base path: `/task`.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| task_id | Id of the task to assign. | int |
-| tracker_id | Id of the tracker. Tracker must belong to authorized user and not be blocked. If null, task will be assigned to no one. | int |
+| name       | description                                                                                                             | type | 
+|:-----------|:------------------------------------------------------------------------------------------------------------------------|:-----|
+| task_id    | ID of the task to assign.                                                                                               | int  |
+| tracker_id | ID of the tracker. Tracker must belong to authorized user and not be blocked. If null, task will be assigned to no one. | int  |
 
 #### examples
 
@@ -121,8 +121,8 @@ API base path: `/task`.
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id).
-* 204 – Entity not found (if there is no tracker with such id belonging to authorized user).
+* 201 – Not found in the database (if there is no task with such an ID).
+* 204 – Entity not found (if there is no tracker with such ID belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 * 255 – Invalid task state (if current task state is not "unassigned" or "assigned").
 * 236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks).
@@ -137,18 +137,18 @@ Converts batch of tab-delimited tasks and return list of checked tasks with erro
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| batch | Batch of tab-delimited tasks. | string |
-| fields | Optional. Array of field names, default is `["label", "from", "to", "address", "lat", "lng", "description"]`. | string array |
-| geocoder | Geocoder type. | [enum](../../../getting-started.md#data-types) |
-| default_radius | Optional. Radius for point, default is 100. | int |
-| default_max_delay | Optional. Max delay for tasks, default is 0. | int |
-| default_duration | Optional. Duration for task in minutes, default is 60. | int
-| default_min_stay_duration | Optional. Minimal stay duration for task in minutes, default is 0. | int |
-| location_check_mode | Optional. One of "no_check", "entity_location", "parent_location" | [enum](../../../getting-started.md#data-types) |
-| employee_ids | Optional. List of employee Ids to automatic assign | int array |
-| vehicle_ids | Optional. List of vehicle Ids to automatic assign | int array |
+| name                      | description                                                                                                   | type                                           |
+|:--------------------------|:--------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|
+| batch                     | Batch of tab-delimited tasks.                                                                                 | string                                         |
+| fields                    | Optional. Array of field names, default is `["label", "from", "to", "address", "lat", "lng", "description"]`. | string array                                   |
+| geocoder                  | Geocoder type.                                                                                                | [enum](../../../getting-started.md#data-types) |
+| default_radius            | Optional. Radius for point, default is 100.                                                                   | int                                            |
+| default_max_delay         | Optional. Max delay for tasks, default is 0.                                                                  | int                                            |
+| default_duration          | Optional. Duration for task in minutes, default is 60.                                                        | int                                            |
+| default_min_stay_duration | Optional. Minimal stay duration for task in minutes, default is 0.                                            | int                                            |
+| location_check_mode       | Optional. One of "no_check", "entity_location", "parent_location"                                             | [enum](../../../getting-started.md#data-types) |
+| employee_ids              | Optional. List of employee IDs to automatic assign                                                            | int array                                      |
+| vehicle_ids               | Optional. List of vehicle IDs to automatic assign                                                             | int array                                      |
 
 In case of location_check_mode==entity_location – vehicle_ids will be ignored.
 
@@ -240,10 +240,10 @@ Creates a new task.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| task | `task` object without fields which are **IGNORED** | JSON object |
-| create_form | If `true` then check additional `form_template_id` field in `task` object and create form if it is not null. Default value is `false` for backward compatibility. | boolean |
+| name        | description                                                                                                                                                       | type        | 
+|:------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| task        | `task` object without fields which are **IGNORED**                                                                                                                | JSON object |
+| create_form | If `true` then check additional `form_template_id` field in `task` object and create form if it is not null. Default value is `false` for backward compatibility. | boolean     |
 
 Minimal JSON object to create a new task must contain:
 
@@ -299,12 +299,12 @@ A returned object also can include "external_id_counts" field see task/route/cre
 }
 ```
 
-* `id` - int. An id of the created task.
+* `id` - int. An ID of the created task.
 
 **Note:** The "id" parameter is unique, it is automatically generated by the server when you create a task. Therefore, 
 if you call task/create  two times with the same parameters, every time the new task will be created. These two tasks 
-will differ only by an id. Respectively, if the created task has to be connected to a certain record in external system,
- you have to remember the id of this record to use it in future when you want to change/delete the associated task in our system.
+will differ only by an ID. Respectively, if the created task has to be connected to a certain record in external system,
+ you have to remember the ID of this record to use it in future when you want to change/delete the associated task in our system.
 
 #### errors
 
@@ -315,15 +315,15 @@ will differ only by an id. Respectively, if the created task has to be connected
 
 ### delete
 
-Deletes the task with the specified id.
+Deletes the task with the specified ID.
 
 **required sub-user rights**: `task_update`.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| task_id | Id of the task to delete. | int |
+| name    | description               | type | 
+|:--------|:--------------------------|:-----|
+| task_id | ID of the task to delete. | int  |
 
 #### examples
 
@@ -349,7 +349,7 @@ Deletes the task with the specified id.
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id).
+* 201 – Not found in the database (if there is no task with such an ID).
 
 ***
 
@@ -359,38 +359,38 @@ Gets all task belonging to user with optional filtering.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| external_id | Optional. External task ID for search. | string |
-| statuses | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`. | string array |
-| trackers | Optional. Ids of the trackers to which task assigned. | int array |
-| from | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00". | [date/time](../../../getting-started.md#data-types) |
-| to | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00". | [date/time](../../../getting-started.md#data-types) |
-| conditions | Optional. Search conditions to apply to list. Array of search conditions. | array of [SearchCondition](../../commons/entity/search_conditions.md) |
-| filter | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task. | string |
-| filters | Optional. Filters for task label, description or address. | string array |
-| tag_ids | Optional. Tag IDs assigned to the task. | int array |
-| location | Optional. Location with radius, inside which task zone centers must reside. Example: ```{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }``` | Location JSON |
-| offset | Optional. Offset from start of the found tasks for pagination. | int |
-| limit | Optional. Limit of the found tasks for pagination. | int |
+| name        | description                                                                                                                                      | type                                                                  | 
+|:------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|
+| external_id | Optional. External task ID for search.                                                                                                           | string                                                                |
+| statuses    | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`.                                                                    | string array                                                          |
+| trackers    | Optional. IDs of the trackers to which task assigned.                                                                                            | int array                                                             |
+| from        | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00".                                                               | [date/time](../../../getting-started.md#data-types)                   |
+| to          | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                              | [date/time](../../../getting-started.md#data-types)                   |
+| conditions  | Optional. Search conditions to apply to list. Array of search conditions.                                                                        | array of [SearchCondition](../../commons/entity/search_conditions.md) |
+| filter      | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task.     | string                                                                |
+| filters     | Optional. Filters for task label, description or address.                                                                                        | string array                                                          |
+| tag_ids     | Optional. Tag IDs assigned to the task.                                                                                                          | int array                                                             |
+| location    | Optional. Location with radius, inside which task zone centers must reside. Example: ```{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }``` | Location JSON                                                         |
+| offset      | Optional. Offset from start of the found tasks for pagination.                                                                                   | int                                                                   |
+| limit       | Optional. Limit of the found tasks for pagination.                                                                                               | int                                                                   |
 
 ##### condition fields
 
-| Name | Type | Comment |
-| :--- | :--- | :--- |
-| id | number |  |
-| employee | number | id |
-| status | string |  |
-| label | string |  |
-| location | string | address |
-| from | [date/time](../../../getting-started.md#data-types) |  |
-| to | [date/time](../../../getting-started.md#data-types) |  |
-| status_change_date | [date/time](../../../getting-started.md#data-types) |  |
-| arrival_date | [date/time](../../../getting-started.md#data-types) |  |
-| stay_duration | Seconds |  |
-| description | string |  |
-| external_id | string |  |
-| form | number | template's id |
+| Name               | Type                                                | Comment       |
+|:-------------------|:----------------------------------------------------|:--------------|
+| id                 | int                                                 |               |
+| employee           | int                                                 | ID            |
+| status             | string                                              |               |
+| label              | string                                              |               |
+| location           | string                                              | address       |
+| from               | [date/time](../../../getting-started.md#data-types) |               |
+| to                 | [date/time](../../../getting-started.md#data-types) |               |
+| status_change_date | [date/time](../../../getting-started.md#data-types) |               |
+| arrival_date       | [date/time](../../../getting-started.md#data-types) |               |
+| stay_duration      | Seconds                                             |               |
+| description        | string                                              |               |
+| external_id        | string                                              |               |
+| form               | number                                              | template's ID |
 
 If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** is not passed or _null_ then appropriate 
 condition not used to filter results.
@@ -403,21 +403,21 @@ set of sort options. Each option is a pair of column name and sorting direction,
 
 ##### sort fields
 
-| Name | Type | Comment |
-| :--- | :--- | :--- |
-| id | number |  |
-| employee | string | full name or tracker label |
-| status | string |  |
-| label | string |  |
-| location | string | address |
-| from | [date/time](../../../getting-started.md#data-types) |  |
-| to | [date/time](../../../getting-started.md#data-types) |  |
-| status_change_date | [date/time](../../../getting-started.md#data-types) |  |
-| arrival_date | [date/time](../../../getting-started.md#data-types) |  |
-| stay_duration | Seconds |  |
-| description | string |  |
-| external_id | string |  |
-| form | string | label |
+| Name               | Type                                                | Comment                    |
+|:-------------------|:----------------------------------------------------|:---------------------------|
+| id                 | int                                                 |                            |
+| employee           | string                                              | full name or tracker label |
+| status             | string                                              |                            |
+| label              | string                                              |                            |
+| location           | string                                              | address                    |
+| from               | [date/time](../../../getting-started.md#data-types) |                            |
+| to                 | [date/time](../../../getting-started.md#data-types) |                            |
+| status_change_date | [date/time](../../../getting-started.md#data-types) |                            |
+| arrival_date       | [date/time](../../../getting-started.md#data-types) |                            |
+| stay_duration      | Seconds                                             |                            |
+| description        | string                                              |                            |
+| external_id        | string                                              |                            |
+| form               | string                                              | label                      |
 
 If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** is not passed or _null_ then appropriate condition not used to filter results.
 
@@ -470,8 +470,8 @@ If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** i
 ```
 
 * `list` - array of `task` objects.
-    * `id` - int. Task id.
-    * `user_id` - int. User id (office). An unchangeable parameter.
+    * `id` - int. Task ID.
+    * `user_id` - int. User ID (office). An unchangeable parameter.
     * `tracker_id` - int. Tracker ID. Indicator ID by which the implementation of this task will be controlled.
     * `location` - area (circle geofence), entering and leaving of geofence will be controlled.
     * `label` - string. Task name, length 1-200 characters.
@@ -500,13 +500,13 @@ If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** i
 
 ### read
 
-Gets task, checkpoint, or route with checkpoints by specified id.
+Gets task, checkpoint, or route with checkpoints by specified ID.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| task_id | Id of the task, route or checkpoint. | int |
+| name    | description                          | type | 
+|:--------|:-------------------------------------|:-----|
+| task_id | ID of the task, route or checkpoint. | int  |
 
 #### examples
 
@@ -539,12 +539,12 @@ Gets task, checkpoint, or route with checkpoints by specified id.
 ```
 
 * `value` - JSON object. `task` described [here](#task-object).
-* `checkpoints` - only returned if entity with specified id is a route. Contains all checkpoints of this route. `checkpoint`
+* `checkpoints` - only returned if entity with specified ID is a route. Contains all checkpoints of this route. `checkpoint`
 object described [here](./checkpoint.md#checkpoint-object).
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id).
+* 201 – Not found in the database (if there is no task with such an ID).
 
 ***
 
@@ -556,11 +556,11 @@ Converts task into a route checkpoint.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| task_id | Id of the task to convert. | int |
-| route_id | Id of the route to attach to. | int |
-| order | Zero-based index at which checkpoint should be inserted into route. | int |
+| name     | description                                                         | type | 
+|:---------|:--------------------------------------------------------------------|:-----|
+| task_id  | ID of the task to convert.                                          | int  |
+| route_id | ID of the route to attach to.                                       | int  |
+| order    | Zero-based index at which checkpoint should be inserted into route. | int  |
 
 #### examples
 
@@ -586,7 +586,7 @@ Converts task into a route checkpoint.
 
 #### errors
 
-* 201 – Not found in the database (if there is no task or route with such an id, or tracker to which checkpoint 
+* 201 – Not found in the database (if there is no task or route with such an ID, or tracker to which checkpoint 
 assigned is unavailable to current sub-user).
 * 255 – Invalid task state (if task or any of the checkpoints are not in unassigned or assigned state).
 
@@ -600,10 +600,10 @@ Updates existing task. Note that you cannot change task owner using this method.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| task | `task` object without fields which are *IGNORED*. | JSON object |
-| create_form | If `true` then check additional `form_template_id` field in `task` object and create, replace or delete task's form. Default value is `false` for backward compatibility. | boolean |
+| name        | description                                                                                                                                                               | type        | 
+|:------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| task        | `task` object without fields which are *IGNORED*.                                                                                                                         | JSON object |
+| create_form | If `true` then check additional `form_template_id` field in `task` object and create, replace or delete task's form. Default value is `false` for backward compatibility. | boolean     |
 
 #### example
 
@@ -633,5 +633,5 @@ A returned object also can include "external_id_counts" field see task/route/cre
 
 #### errors
 
-* 201 – Not found in the database (if there is no task with such an id).
+* 201 – Not found in the database (if there is no task with such an ID).
 * 255 – Invalid task state (if current task state is not "unassigned" or "assigned").
