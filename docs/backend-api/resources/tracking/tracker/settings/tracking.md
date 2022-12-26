@@ -21,9 +21,9 @@ Gets tracking settings for the specified tracker.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
 #### examples
 
@@ -54,7 +54,7 @@ Returned fields may differ from model to model. See tracking profiles for more i
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device model has no tracking settings at all.
 
@@ -68,9 +68,9 @@ Sends new tracking settings to the specified tracker.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
+| name              | description                                                                                                            | type        |
+|:------------------|:-----------------------------------------------------------------------------------------------------------------------|:------------|
+| tracker_id        | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                        | int         |
 | tracking_settings | Set of fields which differ from model to model. See [tracking profiles](./tracking_profiles.md)  for more information. | JSON object |
 
 #### examples
@@ -93,7 +93,7 @@ Returned fields may differ from model to model. See tracking profiles for more i
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device model has no tracking settings 
 at all.

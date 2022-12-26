@@ -55,14 +55,14 @@ Sends email from the platform to any email address with specified title and text
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| from | From email address. | string|
-| to | To email address. | string |
-| title | Title of the email. | string |
-| message | Text of the email. | string |
-| service_id | Service parameter. | int |
-| service_pass | Service parameter. | int |
+| name         | description         | type   |
+|:-------------|:--------------------|:-------|
+| from         | From email address. | string |
+| to           | To email address.   | string |
+| title        | Title of the email. | string |
+| message      | Text of the email.  | string |
+| service_id   | Service parameter.  | int    |
+| service_pass | Service parameter.  | int    |
 
 #### example
 

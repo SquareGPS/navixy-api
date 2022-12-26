@@ -6,7 +6,7 @@ description: Contains API calls which manipulate files attached to form's fields
 # Attaching files
 
 When submitting form values of type [file](../../form/field-types.md#file), [photo](../../form/field-types.md#photo) or
-[signature](../../form/field-types.md#signature), you need to provide file id. To obtain it, first you [create](#create) 
+[signature](../../form/field-types.md#signature), you need to provide file ID. To obtain it, first you [create](#create) 
 a file entry, then upload a file using provided credentials. File must adhere to limitations specified in the form field.
 Note that each file consumes space and contributes to file storage limit associated with user's account.
 
@@ -21,7 +21,7 @@ API path: `/task/form/file`.
 Creates a new file entry associated with form's field. By making this call you basically "request permission" to upload
  a file. In return, you are provided with upload credentials (url, form fields, etc.).<br>
 Note that in order to actually "include" file as form field's value, creating and uploading file is not enough.
- You must then submit a form with file id as a value of corresponding form field.
+ You must then submit a form with file ID as a value of corresponding form field.
 
 If file created but not uploaded, it will be deleted after date/time specified in "expires" response field.
  If file uploaded but not included as form field's value, it will be deleted on next form submission.
@@ -30,13 +30,13 @@ If file created but not uploaded, it will be deleted after date/time specified i
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| task_id | ID of the task to which form attached. | int |
-| field_id | ID of the form's field to which a new file should be attached. | string |
-| size | Maximum size in bytes for the file which will be uploaded. This is needed to "reserve" the space for a file in user's disk space quota. | int |
-| filename | Optional. If specified, uploaded file will have the specified name. If not, name will be taken from actual file upload form. | string |
-| metadata | Optional. Metadata object (for images only). | JSON object |
+| name     | description                                                                                                                             | type        |
+|:---------|:----------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| task_id  | ID of the task to which form attached.                                                                                                  | int         |
+| field_id | ID of the form's field to which a new file should be attached.                                                                          | string      |
+| size     | Maximum size in bytes for the file which will be uploaded. This is needed to "reserve" the space for a file in user's disk space quota. | int         |
+| filename | Optional. If specified, uploaded file will have the specified name. If not, name will be taken from actual file upload form.            | string      |
+| metadata | Optional. Metadata object (for images only).                                                                                            | JSON object |
 
 #### examples
 
@@ -103,11 +103,11 @@ Content-Type: image/png
 
 #### errors
 
-* 201 – Not found in the database - if there is no task with such an id, or task doesn't have form, or form has no
+* 201 – Not found in the database - if there is no task with such an ID, or task doesn't have form, or form has no
  field with such a field_id.
-* 231 – Entity type mismatch - if form field is not file-based, i.e. doesn't use file id as its value.
+* 231 – Entity type mismatch - if form field is not file-based, i.e. doesn't use file ID as its value.
 * 255 – Invalid task state - if current task state is not "unassigned", "assigned" or "arrived", or if task's form 
 not submitted at least once.
-* 267 – Too many entities - if there 6 or more unsubmitted files already associated with this form's field.
+* 267 – Too many entities - if there are 6 or more unsubmitted files already associated with this form's field.
 * 268 – File cannot be created due to quota violation.
 * 271 - File size is larger than the maximum allowed (by default 16 MB).

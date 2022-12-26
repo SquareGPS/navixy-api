@@ -24,7 +24,7 @@ Necessary parameters for this call. Availability of some parameters depends on u
 * `description` - A string containing rule's description.
 * `zone_ids` - An int array. A list of zones to bind where the rule will work. Leave it empty if rule should work 
 everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types.
-* `trackers` - An int array. A list of tracker ids belong to user for which the rule will work.
+* `trackers` - An int array. A list of tracker IDs belong to user for which the rule will work.
 * `type` - A string containing one of pre-defined types of rules. See [rule types](../resources/tracking/tracker/rules/rule_types.md).
 * `primary_text` - A string with primary text of rule notification when condition is `true`.
 * `secondary_text` - An optional string with secondary text of rule notification when condition is `false`. The availability of 
@@ -65,7 +65,7 @@ Unbinding works similarly. When a rule is not necessary for some devices, [unbin
 
 Necessary parameters for both calls the same.
  
-* `rule_id` - An id of a rule. You can get ids using the [rule/list](../resources/tracking/tracker/rules/rule.md#list) call.
+* `rule_id` - An ID of a rule. You can get IDs using the [rule/list](../resources/tracking/tracker/rules/rule.md#list) call.
 * `trackers` - An int array. List trackers' IDs. Trackers which do not exist, owned by other user or deleted ignored without errors.
  
 API requests:
@@ -95,7 +95,7 @@ If the rule must be updated, for example, one more phone number must be added fo
 
 List of necessary parameters is the same as in [rule/create](#create) call plus `id` parameter.
 
-* `id` - An integer with id of the updating rule. You can get ids using the [rule/list](../resources/tracking/tracker/rules/rule.md#list) call.
+* `id` - An integer with ID of the updating rule. You can get IDs using the [rule/list](../resources/tracking/tracker/rules/rule.md#list) call.
 
 API request:
 

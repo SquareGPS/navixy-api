@@ -39,10 +39,10 @@ Creates new possible working status for the specified working status list.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| listing_id | ID of the list for this working status to attach to. | int |
-| status | Status object without ID field. | JSON object |
+| name       | description                                          | type        |
+|:-----------|:-----------------------------------------------------|:------------|
+| listing_id | ID of the list for this working status to attach to. | int         |
+| status     | Status object without ID field.                      | JSON object |
 
 #### example
 
@@ -82,9 +82,9 @@ Deletes working status entry.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| status_id | ID of the working status belonging to authorized user. | int |
+| name      | description                                            | type |
+|:----------|:-------------------------------------------------------|:-----|
+| status_id | ID of the working status belonging to authorized user. | int  |
 
 #### examples
 
@@ -122,9 +122,9 @@ Gets working statuses belonging to the specified status list.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| listing_id | ID of the list for this working status to attach to. | int |
+| name       | description                                          | type |
+|:-----------|:-----------------------------------------------------|:-----|
+| listing_id | ID of the list for this working status to attach to. | int  |
 
 #### examples
 
@@ -176,8 +176,8 @@ Updates working status properties.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name   | description                  | type        |
+|:-------|:-----------------------------|:------------|
 | status | Status object with ID field. | JSON object |
 
 #### example

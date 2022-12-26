@@ -40,10 +40,10 @@ email address for feedback.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| feedback | Message from the user. Screenshot and log will be added to email as attachments. | JSON object |
-| type | Optional. One of strings: `support_request` (default), `feature_request` and `review`.  | [enum](../../getting-started.md#data-types) |
+| name     | description                                                                            | type                                        |
+|:---------|:---------------------------------------------------------------------------------------|:--------------------------------------------|
+| feedback | Message from the user. Screenshot and log will be added to email as attachments.       | JSON object                                 |
+| type     | Optional. One of strings: `support_request` (default), `feature_request` and `review`. | [enum](../../getting-started.md#data-types) |
 
 #### example
 

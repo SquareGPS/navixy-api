@@ -34,13 +34,13 @@ Tariff object description and API call to get the list of device's tariffs avail
 }
 ```
 
-* `id` - int. Unique id.
+* `id` - int. Unique ID.
 * `name` - string. Tariff's label.
 * `group_id` - int. Group of tariffs. User can change the tariff only on the tariff in the same group.
 * `active` - boolean. Tariff is active if `true`. User can change the tariff only on the active tariff.
 * `type` - [enum](../../../getting-started.md#data-types). Tariff type. Can be "monthly", "everyday", "activeday".
 * `price` - double. Price per month for "monthly" and "everyday" tariff or price per "active" day for "activeday" tariff.
-* `early_change_price` - double. Price of change tariff from current to other. With the last change in less than 
+* `early_change_price` - double. Price of change tariff from current to another. With the last change in less than 
 30 days (**tariff.freeze.period** config option). When not passed or "null" user cannot change tariff frequently.
 * `device_limit` - int. Maximum number of devices per account.
 * `has_reports` - boolean. `true` if reports allowed, `false` otherwise.

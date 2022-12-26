@@ -66,7 +66,7 @@ API calls on work with users in the admin panel.
 * `registered_region` - string. Region part of user's registered address.
 * `registered_city` - string. City from registered address.
 * `registered_street_address` - string. User's registered address.
-* `state_reg_num` - string. State registration number. E.g. EIN in USA, OGRN in Russia. 15 characters max.
+* `state_reg_num` - string. State registration number. E.g. EIN in the USA, OGRN in the Russia. 15 characters max.
 * `tin` - string. Taxpayer identification number aka "VATIN".
 * `okpo_code` - string, optional. All-Russian Classifier of Enterprises and Organizations, used in Russia for "legal_entity" or "sole_trader".
 * `iec` - string, optional. Industrial Enterprises Classifier aka "KPP" (used in Russia. for "legal_entity" only).
@@ -110,9 +110,9 @@ Changes password of a user.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| user_id |	Id of a user. | int |
+| name     | description                                        | type   |
+|:---------|:---------------------------------------------------|:-------|
+| user_id  | ID of a user.                                      | int    |
 | password | User's new password, 6 to 20 printable characters. | string |
 
 #### example
@@ -199,15 +199,15 @@ Creates a new user.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| user | [User object](#user-object-structure) without the `id`, `dealer_id`, `comment` and read-only fields. | JSON object |
-| time_zone |	User timezone. | string |
-| locale | User locale. | string |
-| password | User password, 6 to 20 printable characters. | string |
-| discount | [Discount object](#discount-object-structure). | JSON object |
-| default_tariff_id | Optional. ID of a default tariff plan for user's trackers |  int |
-| `comment` |	Comment | String, max length 255, only printable characters |
+| name              | description                                                                                          | type                                              |
+|:------------------|:-----------------------------------------------------------------------------------------------------|:--------------------------------------------------|
+| user              | [User object](#user-object-structure) without the `id`, `dealer_id`, `comment` and read-only fields. | JSON object                                       |
+| time_zone         | User timezone.                                                                                       | string                                            |
+| locale            | User locale.                                                                                         | string                                            |
+| password          | User password, 6 to 20 printable characters.                                                         | string                                            |
+| discount          | [Discount object](#discount-object-structure).                                                       | JSON object                                       |
+| default_tariff_id | Optional. ID of a default tariff plan for user's trackers                                            | int                                               |
+| `comment`         | Comment                                                                                              | String, max length 255, only printable characters |
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
@@ -230,7 +230,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 }
 ```
 
-* `id` - int. An id of the created user.
+* `id` - int. An ID of the created user.
 
 #### errors
 
@@ -253,16 +253,16 @@ entities will be returned only if filter string is contained within one of the f
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| filter | Optional. Text filter string. | string |
-| order_by | Optional. Specify list ordering. May be one of: `id`, `login`, `last_name`, `balance`, `bonus`, `phone`, `post_city`. Default is `id`. | string |
-| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
-| limit |  Optional. Max number of records to return, used for pagination. | int |
-| offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
-| hide_inactive | Optional. If `true` only activated users will be returned. Default is `false`. |  boolean |
-| format | Optional. Format of exported list. Can be `xlsx` or `csv`. Default is `xlsx`.  | string |
-| columns | Optional. A list of columns to export. Default is `["id", "login", "first_name", "middle_name", "last_name", "phone"]`. | string array |
+| name          | description                                                                                                                            | type         |
+|:--------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------|
+| filter        | Optional. Text filter string.                                                                                                          | string       |
+| order_by      | Optional. Specify list ordering. May be one of: `id`, `login`, `last_name`, `balance`, `bonus`, `phone`, `post_city`. Default is `id`. | string       |
+| ascending     | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                              | boolean      |
+| limit         | Optional. Max number of records to return, used for pagination.                                                                        | int          |
+| offset        | Optional. Starting offset, used for pagination. Default is `0`.                                                                        | int          |
+| hide_inactive | Optional. If `true` only activated users will be returned. Default is `false`.                                                         | boolean      |
+| format        | Optional. Format of exported list. Can be `xlsx` or `csv`. Default is `xlsx`.                                                          | string       |
+| columns       | Optional. A list of columns to export. Default is `["id", "login", "first_name", "middle_name", "last_name", "phone"]`.                | string array |
 
 About user object structure see [above](#user-object-structure).
 
@@ -288,7 +288,7 @@ About user object structure see [above](#user-object-structure).
 
 #### errors
 
-* [Genreal](../../backend-api/getting-started.md#error-codes) types only.
+* [General](../../backend-api/getting-started.md#error-codes) types only.
 
 ***
 
@@ -307,14 +307,14 @@ entities will be returned only if filter string is contained within one of the f
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| filter | Optional. Text filter string. | string |
-| order_by | Optional. Specify list ordering. May be one of: `id`, `login`, `last_name`, `balance`, `bonus`, `phone`, `post_city`. Default is `id`. | string |
-| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
-| limit |  Optional. Max number of records to return, used for pagination. | int |
-| offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
-| hide_inactive | Optional. If `true` only activated users will be returned. Default is `false`. |  boolean |
+| name          | description                                                                                                                            | type    |
+|:--------------|:---------------------------------------------------------------------------------------------------------------------------------------|:--------|
+| filter        | Optional. Text filter string.                                                                                                          | string  |
+| order_by      | Optional. Specify list ordering. May be one of: `id`, `login`, `last_name`, `balance`, `bonus`, `phone`, `post_city`. Default is `id`. | string  |
+| ascending     | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                              | boolean |
+| limit         | Optional. Max number of records to return, used for pagination.                                                                        | int     |
+| offset        | Optional. Starting offset, used for pagination. Default is `0`.                                                                        | int     |
+| hide_inactive | Optional. If `true` only activated users will be returned. Default is `false`.                                                         | boolean |
 
 #### examples
 
@@ -378,7 +378,7 @@ entities will be returned only if filter string is contained within one of the f
 
 #### errors
 
-* [Genreal](../../backend-api/getting-started.md#error-codes) types only.
+* [General](../../backend-api/getting-started.md#error-codes) types only.
 
 ***
 
@@ -390,9 +390,9 @@ Returns user info by its id.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| user_id | An id of a user to read. | int |
+| name    | description              | type |
+|:--------|:-------------------------|:-----|
+| user_id | An ID of a user to read. | int  |
 
 #### examples
 
@@ -463,7 +463,7 @@ Returns user info by its id.
 
 #### errors
 
-* 201 - Not found in the database – when user with specified id not found or belongs to other dealer.
+* 201 - Not found in the database – when user with specified ID not found or belongs to other dealer.
 
 ***
 
@@ -477,12 +477,12 @@ this field will not be changed.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| user | [User object](#user-object-structure) without `comment` and read-only fields. | JSON object |
-| discount | [Discount object](#discount-object-structure). | JSON object |
-| default_tariff_id | Optional. ID of a default tariff plan for user's trackers | int |
-| `comment` | Comment | String, max length 255, only printable characters |
+| name              | description                                                                   | type                                              |
+|:------------------|:------------------------------------------------------------------------------|:--------------------------------------------------|
+| user              | [User object](#user-object-structure) without `comment` and read-only fields. | JSON object                                       |
+| discount          | [Discount object](#discount-object-structure).                                | JSON object                                       |
+| default_tariff_id | Optional. ID of a default tariff plan for user's trackers                     | int                                               |
+| `comment`         | Comment                                                                       | String, max length 255, only printable characters |
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
@@ -521,9 +521,9 @@ user_sessions: "global" - Optional. Allows sessions of users creation, not only 
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| user_id | An id of a user to create session. | int |
+| name    | description                        | type |
+|:--------|:-----------------------------------|:-----|
+| user_id | An ID of a user to create session. | int  |
 
 #### examples
 
@@ -568,12 +568,12 @@ New balance (bonus) must be not negative.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| user_id | An id of user whom balance changed. | int |
-| amount | Amount to change. Can be negative. | double (2 digits after decimal mark) |
-| type | Type of balance to change. Can be "balance" or "bonus". | [enum](../../backend-api/getting-started.md#data-types) |
-| text | Description of transaction. | string (min length is 5 chars) |
+| name    | description                                             | type                                                    |
+|:--------|:--------------------------------------------------------|:--------------------------------------------------------|
+| user_id | An ID of user whom balance changed.                     | int                                                     |
+| amount  | Amount to change. Can be negative.                      | double (2 digits after decimal mark)                    |
+| type    | Type of balance to change. Can be "balance" or "bonus". | [enum](../../backend-api/getting-started.md#data-types) |
+| text    | Description of transaction.                             | string (min length is 5 chars)                          |
 
 #### example
 
@@ -608,12 +608,12 @@ Gets list of user's billing transactions for the specified period. Same as [/tra
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| user_id | An id of user whom transactions listed. must be owned by a current dealer. | int |
-| from | Start date/time for searching. | [date/time](../../backend-api/getting-started.md#data-types) |
-| to | End date/time for searching. Must be after "from" date.  | [date/time](../../backend-api/getting-started.md#data-types) |
-| limit | Optional. A maximum number of the returned transactions. | int |
+| name    | description                                                                | type                                                         |
+|:--------|:---------------------------------------------------------------------------|:-------------------------------------------------------------|
+| user_id | An ID of user whom transactions listed. must be owned by a current dealer. | int                                                          |
+| from    | Start date/time for searching.                                             | [date/time](../../backend-api/getting-started.md#data-types) |
+| to      | End date/time for searching. Must be after "from" date.                    | [date/time](../../backend-api/getting-started.md#data-types) |
+| limit   | Optional. A maximum number of the returned transactions.                   | int                                                          |
 
 #### example
 
@@ -656,12 +656,12 @@ Gets list of user's billing transactions for the specified period. Same as [/tra
     * `user_id` - int. ID of a user which made a transaction.
     * `dealer_id` - int. ID of a dealer.
     * `tracker_id` - int. Tracker id. 0 if transaction not associated with tracker.
-    * `amount` - double. Amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units removed from user`s balance.
-    * `new_balance` - double. User`s money balance after transaction.
-    * `old_balance` - double. User`s money balance before transaction.
-    * `bonus_amount` - double. Amount of bonus used in transaction, can be negative. e.g. 10.0000 means 10 bonuses units added to user`s bonus balance.
-    * `new_bonus` - double. User`s bonus balance after transaction.
-    * `old_bonus` - double. User`s bonus balance before transaction.
+    * `amount` - double. Amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units removed from user's balance.
+    * `new_balance` - double. User's money balance after transaction.
+    * `old_balance` - double. User's money balance before transaction.
+    * `bonus_amount` - double. Amount of bonus used in transaction, can be negative. e.g. 10.0000 means 10 bonuses units added to user's bonus balance.
+    * `new_bonus` - double. User's bonus balance after transaction.
+    * `old_bonus` - double. User's bonus balance before transaction.
 
 #### errors
 
@@ -702,10 +702,10 @@ New users will be created with the time zone specified in `default_user_time_zon
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| file | A XLS or CSV file containing users data. | File upload |
-| redirect_target | Optional URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string |
+| name            | description                                                                                                                         | type        | 
+|:----------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| file            | A XLS or CSV file containing users data.                                                                                            | File upload |
+| redirect_target | Optional URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string      |
 
 
 #### response

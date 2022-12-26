@@ -22,9 +22,9 @@ Creates a new session for the specified sub-user and obtain its hash. Can be use
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| subuser_id | Id of the sub-user belonging to current account. | int |
+| name       | description                                      | type |
+|:-----------|:-------------------------------------------------|:-----|
+| subuser_id | ID of the sub-user belonging to current account. | int  |
 
 #### examples
 
@@ -57,5 +57,5 @@ Creates a new session for the specified sub-user and obtain its hash. Can be use
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
-* 201 – Not found in the database – if sub-user with such an id does not exist or does not belong to current master user.
+* 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 

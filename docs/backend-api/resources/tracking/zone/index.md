@@ -103,13 +103,13 @@ Convert batch of tab-delimited circle geofences and return list of checked geofe
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| batch | Batch of tab-delimited places. | string |
-| file_id | ID of file preloaded with [/data/spreadsheet/parse](../../commons/data.md#dataspreadsheetparse) method. | string |
-| fields | Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "tags"]`. | [enum](../../../getting-started.md#data-types) array |
-| geocoder | Optional. Geocoder type. | [enum](../../../getting-started.md#data-types) |
-| default_radius | Optional. Radius for point, default is 100. | int |
+| name           | description                                                                                             | type                                                 |
+|:---------------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|
+| batch          | Batch of tab-delimited places.                                                                          | string                                               |
+| file_id        | ID of file preloaded with [/data/spreadsheet/parse](../../commons/data.md#dataspreadsheetparse) method. | string                                               |
+| fields         | Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "tags"]`.      | [enum](../../../getting-started.md#data-types) array |
+| geocoder       | Optional. Geocoder type.                                                                                | [enum](../../../getting-started.md#data-types)       |
+| default_radius | Optional. Radius for point, default is 100.                                                             | int                                                  |
 
 If 'file_id' is set – 'batch' parameter will be ignored.
 
@@ -202,11 +202,11 @@ Creates a new geofence.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| zone | zone JSON-object without `id` and `color` fields. | JSON object |
-| points | Array of new [points](../../../resources/tracking/zone/zone_point.md) for this geofence. Must contain at least 3 elements. MUST be omitted if zone does not support points (e.g. circle). | array of `zone point` objects |
-| zone.color | Optional. Geofence color in 3-byte RGB hex format. Default is "27A9E3". | string |
+| name       | description                                                                                                                                                                               | type                          |
+|:-----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------|
+| zone       | zone JSON-object without `id` and `color` fields.                                                                                                                                         | JSON object                   |
+| points     | Array of new [points](../../../resources/tracking/zone/zone_point.md) for this geofence. Must contain at least 3 elements. MUST be omitted if zone does not support points (e.g. circle). | array of `zone point` objects |
+| zone.color | Optional. Geofence color in 3-byte RGB hex format. Default is "27A9E3".                                                                                                                   | string                        |
 
 
 #### example
@@ -228,7 +228,7 @@ Creates a new geofence.
 }
 ```
 
-* `id` - int. An id of the created geofence.
+* `id` - int. An ID of the created geofence.
 
 #### errors
 
@@ -247,10 +247,10 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| zone_id | Id of a geofence. | int | 1234567 |
-| zone_ids | Array of geofence ids. | int array | `[1234567, 2345678]` |
+| name     | description            | type      | format               |
+|:---------|:-----------------------|:----------|:---------------------|
+| zone_id  | ID of a geofence.      | int       | 1234567              |
+| zone_ids | Array of geofence IDs. | int array | `[1234567, 2345678]` |
 
 * Use only one parameter `zone_id` or `zone_ids`.
 
@@ -357,8 +357,8 @@ Gets all geofence IDs and names within which a specified coordinates are located
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name     | description                                                                                                   | type        |
+|:---------|:--------------------------------------------------------------------------------------------------------------|:------------|
 | location | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
 
 #### example
@@ -404,10 +404,10 @@ which type is "polygon".
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| zone | Geofence JSON-object without `id` and `color` fields. | JSON object |
-| zone.color | Optional. Geofence color in 3-byte RGB hex format. Default is "27A9E3". | string |
+| name       | description                                                             | type        |
+|:-----------|:------------------------------------------------------------------------|:------------|
+| zone       | Geofence JSON-object without `id` and `color` fields.                   | JSON object |
+| zone.color | Optional. Geofence color in 3-byte RGB hex format. Default is "27A9E3". | string      |
 
 #### example
 
@@ -444,12 +444,12 @@ Import geofences from KML file.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| file | A KML file upload containing geofences data. | file upload |
-| default_radius | Default radius for circle and route geofence in meters. Min 20, default 150. | int |
-| dry_run | If `true` returns ready to create geofences or creates it and returns list of IDs otherwise. Default `true`. | boolean |
-| redirect_target | Optional. URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>` | string |
+| name            | description                                                                                                                         | type        |
+|:----------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| file            | A KML file upload containing geofences data.                                                                                        | file upload |
+| default_radius  | Default radius for circle and route geofence in meters. Min 20, default 150.                                                        | int         |
+| dry_run         | If `true` returns ready to create geofences or creates it and returns list of IDs otherwise. Default `true`.                        | boolean     |
+| redirect_target | Optional. URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>` | string      |
 
 #### responses
 

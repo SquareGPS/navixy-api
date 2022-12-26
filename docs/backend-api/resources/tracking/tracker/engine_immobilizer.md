@@ -21,9 +21,9 @@ Requests to read the state of engine immobilizer.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
 #### examples
 
@@ -54,7 +54,7 @@ Requests to read the state of engine immobilizer.
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
 
@@ -68,10 +68,10 @@ Requests to change the engine immobilizer state of the device. The device must b
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| enabled | `true` if immobilizer should be enabled. | boolean | true/false |
+| name       | description                                                                                     | type    | format     |
+|:-----------|:------------------------------------------------------------------------------------------------|:--------|:-----------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int     | 123456     |
+| enabled    | `true` if immobilizer should be enabled.                                                        | boolean | true/false |
 
 #### examples
 
@@ -97,7 +97,7 @@ Requests to change the engine immobilizer state of the device. The device must b
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 213 – Cannot perform action: the device is offline - if corresponding tracker is not connected to the server.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.

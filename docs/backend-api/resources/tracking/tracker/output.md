@@ -20,10 +20,10 @@ Request to change the states of all digital outputs of the device. The device mu
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| outputs | Array of desired states of all digital outputs, e.g. `[true, true, false]` means output 1 is on, output 2 is on, output 3 is off. | array of boolean | `[true, true, false]` |
+| name       | description                                                                                                                       | type             | format                |
+|:-----------|:----------------------------------------------------------------------------------------------------------------------------------|:-----------------|:----------------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                   | int              | 999199                |
+| outputs    | Array of desired states of all digital outputs, e.g. `[true, true, false]` means output 1 is on, output 2 is on, output 3 is off. | array of boolean | `[true, true, false]` |
 
 #### examples
 
@@ -42,7 +42,7 @@ Request to change the states of all digital outputs of the device. The device mu
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 213 – Cannot perform action: the device is offline - if corresponding tracker is not connected to the server.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support batch mode, or has
@@ -59,11 +59,11 @@ Request to change the state of the specified digital output of the device. The d
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| output | The number of the output to control, starting from 1. | int | 1 |
-| enable | `true` if the requested output should be enabled, or `false` if it should be disabled. | boolean | true/false |
+| name       | description                                                                                     | type    | format     |
+|:-----------|:------------------------------------------------------------------------------------------------|:--------|:-----------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int     | 999199     |
+| output     | The number of the output to control, starting from 1.                                           | int     | 1          |
+| enable     | `true` if the requested output should be enabled, or `false` if it should be disabled.          | boolean | true/false |
 
 #### examples
 
@@ -89,7 +89,7 @@ Request to change the state of the specified digital output of the device. The d
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 213 – Cannot perform action: the device is offline - if corresponding tracker is not connected to the server.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support controlling single

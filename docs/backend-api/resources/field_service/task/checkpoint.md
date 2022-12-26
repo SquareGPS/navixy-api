@@ -43,8 +43,8 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 ```
 
 * `id` - int. Primary key. Used in checkpoint/update. *IGNORED* in checkpoint/create.
-* `user_id` - int. User id. *IGNORED* in checkpoint/create, checkpoint/update.
-* `tracker_id` - int. An id of the tracker to which task assigned. Can be null.  *IGNORED* in checkpoint/update.
+* `user_id` - int. User ID. *IGNORED* in checkpoint/create, checkpoint/update.
+* `tracker_id` - int. An ID of the tracker to which task assigned. Can be null.  *IGNORED* in checkpoint/update.
 * `location` - location associated with this checkpoint. cannot be null.
     * `address` - string. Address of the location.
     * `radius` - int. Radius of location zone in meters.
@@ -59,9 +59,9 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 * `arrival_date` - [date/time](../../../getting-started.md#data-types). Wen tracker has arrived to the checkpoint zone. *IGNORED* in checkpoint/create, checkpoint/update.
 * `stay_duration` - int. Duration of stay in the checkpoint zone, seconds.
 * `origin` - string. Checkpoint origin. *IGNORED* in checkpoint/create, checkpoint/update.
-* `tags` - int array. List of tag ids.
+* `tags` - int array. List of tag IDs.
 * `form` - [form object](../form/index.md#form-object). If present.
-* `form_template_id` - int. An id of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
+* `form_template_id` - int. An ID of form template. Used in create and update actions only if `create_form` parameter is `true` in them.
 
 !!! note "To associate the task with an address - this field should be added to the location object."
 
@@ -79,8 +79,8 @@ Creates a new checkpoint.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
+| name       | description                                               | type        | 
+|:-----------|:----------------------------------------------------------|:------------|
 | checkpoint | A `checkpoint` object without fields which are *IGNORED*. | JSON object |
 
 #### example
@@ -120,15 +120,15 @@ The returned object also can include "external_id_counts" field see `task/route/
 
 ### delete
 
-Deletes a checkpoint with the specified id.
+Deletes a checkpoint with the specified ID.
 
 **required sub-user rights**: `task_update`.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| checkpoint_id | ID of the checkpoint to delete. | int |
+| name          | description                     | type | 
+|:--------------|:--------------------------------|:-----|
+| checkpoint_id | ID of the checkpoint to delete. | int  |
 
 #### examples
 
@@ -154,18 +154,18 @@ Deletes a checkpoint with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no checkpoint with such an id.
+* 201 – Not found in the database - if there is no checkpoint with such an ID.
 
 ***
 
 ### list
 
-Get checkpoints belonging to user with given ids
+Get checkpoints belonging to user with given IDs
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
+| name           | description                       | type      | 
+|:---------------|:----------------------------------|:----------|
 | checkpoint_ids | IDs of checkpoints, e.g. `[1,2]`. | int array |
 
 #### examples
@@ -226,13 +226,13 @@ Get checkpoints belonging to user with given ids
 
 ### read
 
-Gets route checkpoint by specified id.
+Gets route checkpoint by specified ID.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| checkpoint_id | ID of the checkpoint. | int |
+| name          | description           | type | 
+|:--------------|:----------------------|:-----|
+| checkpoint_id | ID of the checkpoint. | int  |
 
 #### examples
 
@@ -289,7 +289,7 @@ Gets route checkpoint by specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no checkpoint with such an id.
+* 201 – Not found in the database - if there is no checkpoint with such an ID.
 
 ***
 
@@ -301,9 +301,9 @@ Convert route checkpoint into a standalone task. If it's the only checkpoint in 
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| checkpoint_id | ID of the checkpoint. | int |
+| name          | description           | type | 
+|:--------------|:----------------------|:-----|
+| checkpoint_id | ID of the checkpoint. | int  |
 
 #### examples
 
@@ -331,7 +331,7 @@ Convert route checkpoint into a standalone task. If it's the only checkpoint in 
 
 #### errors
 
-* 201 – Not found in the database - if there is no checkpoint with such an id, or tracker to which checkpoint assigned is unavailable to current sub-user.
+* 201 – Not found in the database - if there is no checkpoint with such an ID, or tracker to which checkpoint assigned is unavailable to current sub-user.
 * 255 – Invalid task state - if any of checkpoints are not in unassigned or assigned state.
 
 ***
@@ -344,8 +344,8 @@ Updates existing checkpoint.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
+| name       | description                                               | type        | 
+|:-----------|:----------------------------------------------------------|:------------|
 | checkpoint | A `checkpoint` object without fields which are *IGNORED*. | JSON object |
 
 #### example
@@ -376,5 +376,5 @@ Changing `order` reorders all other checkpoints.
 
 #### errors
 
-* 201 – Not found in the database - if there is no task with such an id.
+* 201 – Not found in the database - if there is no task with such an ID.
 * 255 – Invalid task state - if current task state is not "unassigned" or "assigned".

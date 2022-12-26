@@ -29,10 +29,10 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| task_id | An id of the task to assign. | int |
-| template_id | An id of the form template. | int |
+| name        | description                  | type |
+|:------------|:-----------------------------|:-----|
+| task_id     | An ID of the task to assign. | int  |
+| template_id | An ID of the form template.  | int  |
 
 #### examples
 
@@ -60,7 +60,7 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 
 #### errors
 
-* 201 – Not found in the database - if there is no task or template with such an id, or task has the "route" type.
+* 201 – Not found in the database - if there is no task or template with such an ID, or task has the "route" type.
 * 247 – Entity already exists - if task already has form attached to it.
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
@@ -75,9 +75,9 @@ All form data will be lost!
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| task_id | An id of the task to which form is attached. | int |
+| name    | description                                  | type |
+|:--------|:---------------------------------------------|:-----|
+| task_id | An ID of the task to which form is attached. | int  |
 
 #### examples
 
@@ -105,7 +105,7 @@ All form data will be lost!
 
 #### errors
 
-* 201 – Not found in the database - if there is no task with such an id, or task has the "route" type, or it has no form
+* 201 – Not found in the database - if there is no task with such an ID, or task has the "route" type, or it has no form
  attached.
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
@@ -117,10 +117,10 @@ Retrieves attached form as file.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| task_id | An id of the task. | int |
-| format | Format of the download file. Can be "xls", "csv" or "pdf". | [enum](../../../../getting-started.md#data-types) |
+| name    | description                                                | type                                              |
+|:--------|:-----------------------------------------------------------|:--------------------------------------------------|
+| task_id | An ID of the task.                                         | int                                               |
+| format  | Format of the download file. Can be "xls", "csv" or "pdf". | [enum](../../../../getting-started.md#data-types) |
 
 #### examples
 
@@ -157,7 +157,7 @@ the list contains data on the objects related to each form – tracker / vehicle
 
 *   **template_id** (*integer, optional*). The returned list will contain forms, related to that template.<br>
     **warning:** at least one of **template_id** and **task_ids** parameters must be not null.
-*   **task_ids** (*list of integers, optional*). Maximum size of list is 5000 elements. List of task ids. The returned list will contain forms, related to tasks, which ids specified in this parameter.<br>
+*   **task_ids** (*list of integers, optional*). Maximum size of list is 5000 elements. List of task IDs. The returned list will contain forms, related to tasks, which IDs specified in this parameter.<br>
     **warning:** at least one of **template_id** and **task_ids** parameters must not be null.
 *   **order_by** (*optional, default = submitted*). Data field for list sorting. Available values:
     *   *task_id*
@@ -182,15 +182,15 @@ the list contains data on the objects related to each form – tracker / vehicle
 
 ```json
 {
-    "employee_full_name": , // a sequence of characters for partial matching (against the name of the associated employee)
-    "form_description": ,
-    "form_label": ,
-    "submit_address": ,
-    "task_id": // strict match
-    "task_address": ,
-    "task_label": ,
-    "tracker_label": ,
-    "vehicle_label": ,
+    "employee_full_name": "John Dow", // a sequence of characters for partial matching (against the name of the associated employee)
+    "form_description": "Description",
+    "form_label": "Form Label",
+    "submit_address": "Submit Address",
+    "task_id": 123, // strict match
+    "task_address": "Task Address",
+    "task_label": "Task Label",
+    "tracker_label": "Tracker label",
+    "vehicle_label": "Vehicle label",
 }
 ```
 
@@ -302,7 +302,7 @@ where period_object is:
 
 #### errors
 
-* 204 – Not found - if there is no form template with such id belonging to authorized user.
+* 204 – Not found - if there is no form template with such ID belonging to authorized user.
 * [General](../../../../getting-started.md#error-codes) types of errors.
 
 ***
@@ -313,9 +313,9 @@ Gets form associated with the specified task.
 
 #### parameters
 
-| name | description | type |
-| :--- | :--- | :--- |
-| task_id | An id of the task. | int |
+| name    | description        | type |
+|:--------|:-------------------|:-----|
+| task_id | An ID of the task. | int  |
 
 #### examples
 
@@ -374,7 +374,7 @@ Gets form associated with the specified task.
 
 * `value` - [form object](../../form/index.md#form-object), or null if no form attached.
 * `files` - list of files, both submitted and unsubmitted, associated with this form's fields.
-    * `id` - int. File id.
+    * `id` - int. File ID.
     * `type` - [enum](../../../../getting-started.md#data-types). Can be "image" or "file".
     * `created` - [date/time](../../../../getting-started.md#data-types). Date when file created.
     * `uploaded` - [date/time](../../../../getting-started.md#data-types). Date when file uploaded, can be null if file not yet uploaded.
@@ -389,5 +389,5 @@ Gets form associated with the specified task.
 
 #### errors
 
-* 201 – Not found in the database - if there is no task with such an id, or task assigned to tracker unavailable to 
+* 201 – Not found in the database - if there is no task with such an ID, or task assigned to tracker unavailable to 
 current sub-user.

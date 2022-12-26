@@ -23,9 +23,9 @@ Contains vehicle status listing object and API calls to interact with it.
 }
 ```
 
-* `id` - int. An id of the status.
+* `id` - int. An ID of the status.
 * `order` - int. Position of the status. Ignored when update because statuses already have position in an array.
-* `label` - string. Status's name (description).
+* `label` - string. Status name (description).
 * `color` - string. RGB-color.
 
 ***
@@ -80,9 +80,9 @@ Updates user's vehicle statuses.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| statuses| List of vehicle_status_entry objects. If status's id is not null, then update, else create new vehicle status. | array of objects |
+| name     | description                                                                                                  | type             |
+|:---------|:-------------------------------------------------------------------------------------------------------------|:-----------------|
+| statuses | List of vehicle_status_entry objects. If status ID is not null, then update, else create new vehicle status. | array of objects |
 
 Old vehicle statuses, which are not present in `statuses` array, will be deleted.
 

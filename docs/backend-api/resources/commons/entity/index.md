@@ -7,7 +7,7 @@ description: Contains entity object description and API calls to interact with i
 
 Contains entity object description and API calls to interact with it. <br>
 Entity describes a class of objects for which representation and editable fields can be customized.
-For example, you can add your own custom fields to **places** entity or rearrange existing fields.
+For example, you can add your own custom fields of **places** entity or rearrange existing fields.
 
 ***
 
@@ -39,7 +39,7 @@ For example, you can add your own custom fields to **places** entity or rearrang
 * `layout` - object describes layout of fields for entity.
    * `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
    * `label` - string. Name of section.
-   * `field_order` - string array. Built-in fields and ids of custom fields (as strings).
+   * `field_order` - string array. Built-in fields and IDs of custom fields (as strings).
 
 **entity types**:
 
@@ -116,13 +116,13 @@ Only API key `hash`.
 
 ### read
 
-Gets entity by the id or by type.
+Gets entity by the ID or by type.
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| id | ID of an entity. | int |
+| name | description                                       | type   |
+|:-----|:--------------------------------------------------|:-------|
+| id   | ID of an entity.                                  | int    |
 | type | Type of an entity. Entity type string, see above. | string |
 
 !!! note "Exactly one of these parameters must be specified. They can't be both null or both non-null."
@@ -186,17 +186,17 @@ Gets entity by the id or by type.
 
 ### update(entity)
 
-Updates settings of customizable entity. Entity must have a valid id.
+Updates settings of customizable entity. Entity must have a valid ID.
 
 **required sub-user rights**: `places_custom_fields_update` for entities with type `place`.
 
-!!! warning "`entity.settings.layout.sections` must contain ids of all builtin and custom fields which are associated with this entity. No fields can be omitted from layout, only reordering allowed. Fields cannot be duplicated, even in different sections."
+!!! warning "`entity.settings.layout.sections` must contain IDs of all builtin and custom fields which are associated with this entity. No fields can be omitted from layout, only reordering allowed. Fields cannot be duplicated, even in different sections."
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| entity | Entity object with valid id and settings. | JSON object |
+| name   | description                               | type        |
+|:-------|:------------------------------------------|:------------|
+| entity | Entity object with valid ID and settings. | JSON object |
 
 #### example
 

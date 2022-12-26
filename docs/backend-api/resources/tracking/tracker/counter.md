@@ -32,10 +32,10 @@ Reads counter of passed `type`.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
+| name       | description                                                                                     | type                                           | format     |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 123456     |
+| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`.                           | [enum](../../../getting-started.md#data-types) | "odometer" |
 
 #### examples
 
@@ -68,7 +68,7 @@ Reads counter of passed `type`.
 
 #### errors
 
-* 204 - Entity not found – if there is no tracker with such id belonging to authorized user.
+* 204 - Entity not found – if there is no tracker with such ID belonging to authorized user.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 
@@ -82,12 +82,12 @@ Updates counter of passed `type`.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer"|
-| multiplier | A new value of counter multiplier. | float | 1.34 |
-| sensor_id | Id of the sensor, which must be used as the source of odometer data (in case when parameter "type" equals "odometer"). If "type" is not "odometer", "sensor_id" must be null. | int | 123 |
+| name       | description                                                                                                                                                                   | type                                           | format     |
+|:-----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                                                               | int                                            | 123456     |
+| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`.                                                                                                         | [enum](../../../getting-started.md#data-types) | "odometer" |
+| multiplier | A new value of counter multiplier.                                                                                                                                            | float                                          | 1.34       |
+| sensor_id  | ID of the sensor, which must be used as the source of odometer data (in case when parameter "type" equals "odometer"). If "type" is not "odometer", "sensor_id" must be null. | int                                            | 123        |
 
 #### examples
 
@@ -114,7 +114,7 @@ Updates counter of passed `type`.
 #### errors
 
 * 8 - Queue service error, try again later – cannot set counter value, try later.
-* 204 - Entity not found – if there is no tracker with such id belonging to authorized user.
+* 204 - Entity not found – if there is no tracker with such ID belonging to authorized user.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 * 7 - Invalid parameters –
@@ -133,9 +133,9 @@ Gets last values of the tracker's counters.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Tracker ID (aka "object_id"). | int | 999119 |
+| name       | description                   | type | format |
+|:-----------|:------------------------------|:-----|:-------|
+| tracker_id | Tracker ID (aka "object_id"). | int  | 999119 |
 
 #### examples
 
@@ -183,7 +183,7 @@ List of counter types:
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 ***
@@ -194,10 +194,10 @@ Gets actual value of specified `type` of sensor.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
+| name       | description                                                                                     | type                                           | format     |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 123456     |
+| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`.                           | [enum](../../../getting-started.md#data-types) | "odometer" |
 
 #### examples
 
@@ -228,7 +228,7 @@ Gets actual value of specified `type` of sensor.
 
 #### errors
 
-* 204 - Entity not found – if there is no tracker with such id belonging to authorized user, counter does not exist or
+* 204 - Entity not found – if there is no tracker with such ID belonging to authorized user, counter does not exist or
   there are no values yet. use /tracker/counter/set to create new counter (if not exist) and save some value.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 
@@ -238,10 +238,10 @@ Get actual values for counters of passed `type` and `trackers`.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :------ |
-| trackers | List of the tracker's Ids belonging to authorized user. | int array | `[123456, 234567]` |
-| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
+| name     | description                                                           | type                                           | format             |
+|:---------|:----------------------------------------------------------------------|:-----------------------------------------------|:-------------------|
+| trackers | List of the tracker's ID belonging to authorized user.                | int array                                      | `[123456, 234567]` |
+| type     | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer"         |
 
 #### example
 
@@ -264,7 +264,7 @@ Get actual values for counters of passed `type` and `trackers`.
 }
 ```
 
-* `value` - a map with tracker's ids as keys.
+* `value` - a map with tracker's IDs as keys.
 
 #### errors
 
@@ -280,11 +280,11 @@ Creates new counter of passed `type` (if not) and update its `value`.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
-| value | A new value of counter. | float | 233.21 |
+| name       | description                                                                                     | type                                           | format     |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 123456     |
+| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`.                           | [enum](../../../getting-started.md#data-types) | "odometer" |
+| value      | A new value of counter.                                                                         | float                                          | 233.21     |
 
 #### example
 
@@ -305,7 +305,7 @@ Creates new counter of passed `type` (if not) and update its `value`.
 #### errors
 
 * 8 - Queue service error, try again later - can't set counter value, try later.
-* 204 - Entity not found – if there is no tracker with such id belonging to authorized user.
+* 204 - Entity not found – if there is no tracker with such ID belonging to authorized user.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 
@@ -317,12 +317,12 @@ Returns counter values for a period.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :------ |
-| tracker_id | Tracker ID (aka "object_id"). | int | 123456 |
-| type | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer" |
-| from | Requested period start. | date/time | `"2021-02-25 12:21:17"` |
-| to | Requested period end. | date/time | `"2021-03-25 12:21:17"` |
+| name       | description                                                           | type                                           | format                  |
+|:-----------|:----------------------------------------------------------------------|:-----------------------------------------------|:------------------------|
+| tracker_id | Tracker ID (aka "object_id").                                         | int                                            | 123456                  |
+| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started.md#data-types) | "odometer"              |
+| from       | Requested period start.                                               | date/time                                      | `"2021-02-25 12:21:17"` |
+| to         | Requested period end.                                                 | date/time                                      | `"2021-03-25 12:21:17"` |
 
 #### example
 

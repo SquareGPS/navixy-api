@@ -60,7 +60,7 @@ where `contact` object is:
 }
 ```
 
-* `user_id` - id of the user with which "contact" is established.
+* `user_id` - ID of the user with which "contact" is established.
 * `trackers` - trackers belonging to "contact" which locations shared with current user.
 Click to see descriptions of type [tracker](./index.md#tracker-object-structure).
 

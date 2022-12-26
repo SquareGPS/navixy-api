@@ -22,10 +22,10 @@ Updates existing form values of given task.
 
 ##### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- | 
-| task_id | An id of the task. | int |
-| values | Map of field_id-value object. | JSON object |
+| name    | description                   | type        |
+|:--------|:------------------------------|:------------|
+| task_id | An ID of the task.            | int         |
+| values  | Map of field_id-value object. | JSON object |
 
 
 where values object is:
@@ -62,7 +62,7 @@ For **value** object description, see [form/form-fields-and-values/](../../form/
 #### errors
 
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
-* 201 – Not found in the database - if task with the specified id does not exist.
+* 201 – Not found in the database - if task with the specified ID does not exist.
 * 255 – Invalid task state - if task has already done or failed or no values submitted.
 * 242 – There were errors during content validation - if given values are invalid for the form. Example:
 

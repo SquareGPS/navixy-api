@@ -42,7 +42,7 @@ API calls for interaction with tariff plans.
 * `type` - [enum](../../backend-api/getting-started.md#data-types). Type of tariff. Can be "monthly" or "activeday" 
 (for "tracker" device_type only).
 * `price` - double. Tariff subscription price (usually per month).
-* `early_change_price` - double. Price of change tariff from current to other. With the last change in less than 30 days
+* `early_change_price` - double. Price of change tariff from current to another. With the last change in less than 30 days
  (`tariff.freeze.period` config option). When not passed or `null` user cannot change tariff frequently.
 * `device_limit` - int. A maximum limit of devices per user. Not used for cameras and sockets.
 * `has_reports` - boolean. If `true` the tariff has reports.
@@ -70,8 +70,8 @@ Creates a new tariff.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name   | description                     | type        |
+|:-------|:--------------------------------|:------------|
 | tariff | Tariff object without ID field. | JSON object |
 
 #### example
@@ -93,7 +93,7 @@ Creates a new tariff.
 }
 ```
 
-* `id` - int. An id of the created tariff.
+* `id` - int. An ID of the created tariff.
 
 #### errors
 
@@ -114,14 +114,14 @@ If "filter" is used, entities will be returned only if filter string contains on
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| device_type | Optional. Filter by device type. One of "tracker", "camera" or "socket". | [enum](../../backend-api/getting-started.md#data-types) |
-| filter | Optional. Text filter. | string |
-| order_by | Optional. List ordering. One of: `id`, `name`, `device_type`, `group_id`, `price`. | string |
-| ascending | Optional. Default is `true`. If `true`, ordering will be ascending, descending otherwise. | boolean |
-| offset | Optional. Default is `0`. Starting offset, used for pagination. | int |
-| limit | Optional. Max number of records to return, used for pagination. | int |
+| name        | description                                                                               | type                                                    |
+|:------------|:------------------------------------------------------------------------------------------|:--------------------------------------------------------|
+| device_type | Optional. Filter by device type. One of "tracker", "camera" or "socket".                  | [enum](../../backend-api/getting-started.md#data-types) |
+| filter      | Optional. Text filter.                                                                    | string                                                  |
+| order_by    | Optional. List ordering. One of: `id`, `name`, `device_type`, `group_id`, `price`.        | string                                                  |
+| ascending   | Optional. Default is `true`. If `true`, ordering will be ascending, descending otherwise. | boolean                                                 |
+| offset      | Optional. Default is `0`. Starting offset, used for pagination.                           | int                                                     |
+| limit       | Optional. Max number of records to return, used for pagination.                           | int                                                     |
 
 #### examples
 
@@ -171,7 +171,7 @@ If "filter" is used, entities will be returned only if filter string contains on
        "service_sms": 0.17,  
        "phone_call": 0.55,   
        "traffic": 0.05
-    }
+    },
     "count" : 42
 }
 ```
@@ -184,15 +184,15 @@ If "filter" is used, entities will be returned only if filter string contains on
 
 ### read
 
-Returns tariff with specified id.
+Returns tariff with specified ID.
 
 *required permissions*: `"tariffs": "read"`.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tariff_id | Tariff ID to read. | int |
+| name      | description        | type |
+|:----------|:-------------------|:-----|
+| tariff_id | Tariff ID to read. | int  |
 
 #### examples
 
@@ -214,28 +214,29 @@ Returns tariff with specified id.
 
 ```json
 {
-    "success": true,
-    "value": {
-        "id": 12163,
-        "name": "Premium",
-        "group_id": 3,
-        "active": true,
-        "type": "monthly",
-        "price": 12.55,
-        "early_change_price": 23.0,
-        "device_limit": 2000,
-        "has_reports": true,
-        "store_period": "1y",
-        "device_type": "tracker",
-        "proportional_charge": false,
-        "service_prices": {
-          "incoming_sms": 0.3, 
-          "outgoing_sms": 0.3, 
-          "service_sms": 0.2,  
-          "phone_call": 0.6,   
-          "traffic": 0.09
-        }
+  "success": true,
+  "value": {
+    "id": 12163,
+    "name": "Premium",
+    "group_id": 3,
+    "active": true,
+    "type": "monthly",
+    "price": 12.55,
+    "early_change_price": 23.0,
+    "device_limit": 2000,
+    "has_reports": true,
+    "store_period": "1y",
+    "device_type": "tracker",
+    "proportional_charge": false,
+    "service_prices": {
+      "incoming_sms": 0.3,
+      "outgoing_sms": 0.3,
+      "service_sms": 0.2,
+      "phone_call": 0.6,
+      "traffic": 0.09
     }
+  }
+}
 ```
 
 * `value` - JSON object. See tariff object [here](#tariff-object).
@@ -254,8 +255,8 @@ Updates existing tariff.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name   | description                                | type        |
+|:-------|:-------------------------------------------|:------------|
 | tariff | Tariff object without `device_type` field. | JSON object |
 
 #### example
@@ -295,7 +296,7 @@ Updates existing tariff.
 }
 ```
 
-* `tariff_id` - int. An id of the default tariff for this device type.
+* `tariff_id` - int. An ID of the default tariff for this device type.
 * `activation_bonus` - double. Activation bonus - money added to bonus balance upon device registration.
 * `free_days` - int. Amount of free (without tariff fee) days after device registration.
 * `free_days_device_limit` - int. A maximum number of activated user's devices with free period (null means no limit).
@@ -362,8 +363,8 @@ Updates current tariff defaults for trackers and cameras.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name    | description                    | type        |
+|:--------|:-------------------------------|:------------|
 | tracker | Defaults object with ID field. | JSON object |
 
 #### example
@@ -386,5 +387,5 @@ Updates current tariff defaults for trackers and cameras.
 
 #### errors
 
-* 239 – New tariff doesn't exist - if tariff with specified id does not exist.
+* 239 – New tariff doesn't exist - if tariff with specified ID does not exist.
 * 237 – Invalid tariff - if new tariff has incompatible device type.

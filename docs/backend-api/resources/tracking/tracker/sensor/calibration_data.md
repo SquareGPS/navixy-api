@@ -20,10 +20,10 @@ Gets calibration data for sensor.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| sensor_id | Id of the sensor. | int | 12345 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
+| sensor_id  | ID of the sensor.                                                                               | int  | 12345  |
 
 #### examples
 
@@ -54,7 +54,7 @@ Gets calibration data for sensor.
 
 #### errors
 
-* 201 – Not found in the database (if there is no tracker with such id belonging to authorized user).
+* 201 – Not found in the database (if there is no tracker with such ID belonging to authorized user).
 * 228 – Not supported by the sensor (if sensor doesn't support calibration).
 
 ***
@@ -67,11 +67,11 @@ Replaces the calibration data for a sensor.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| sensor_id | Id of the sensor. | int | 12345 |
-| data | Array of calibration data objects. | array of JSON object  | `[{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]` |
+| name       | description                                                                                     | type                 | format                                         |
+|:-----------|:------------------------------------------------------------------------------------------------|:---------------------|:-----------------------------------------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                  | 123456                                         |
+| sensor_id  | ID of the sensor.                                                                               | int                  | 12345                                          |
+| data       | Array of calibration data objects.                                                              | array of JSON object | `[{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]` |
 
 #### examples
 
@@ -91,7 +91,7 @@ Replaces the calibration data for a sensor.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 228 – Not supported by the sensor - if sensor doesn't support calibration.
 * 228 – Not supported by the sensor - if sensor doesn't support calibration.
 * 219 – Not allowed for clones of the device - if tracker is clone.
@@ -110,11 +110,11 @@ information about multiple sensors, user must specify which sensor number to use
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int |
-| sensor_id | Id of the sensor. | int |
-| file | A file upload containing LLS monitor XML file. | file upload |
+| name       | description                                                                                     | type        |
+|:-----------|:------------------------------------------------------------------------------------------------|:------------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int         |
+| sensor_id  | ID of the sensor.                                                                               | int         |
+| file       | A file upload containing LLS monitor XML file.                                                  | file upload |
 
 #### response
 
@@ -124,7 +124,7 @@ information about multiple sensors, user must specify which sensor number to use
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 228 – Not supported by the sensor - if sensor doesn't support calibration.
 * 219 – Not allowed for clones of the device - if tracker is clone.
 * 233 – No data file - if file part is missing.

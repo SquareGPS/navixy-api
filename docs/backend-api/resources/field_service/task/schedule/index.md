@@ -44,8 +44,8 @@ replaced with `from_time`, `duration` and `parameters`.
 ```
 
 * `id` - int. Primary key. Used in the update call, *IGNORED* in create.
-* `user_id` - int. User id. *IGNORED* in create/update.
-* `tracker_id` - int. An id of the tracker to which all generated tasks assigned. Nullable.
+* `user_id` - int. User ID. *IGNORED* in create/update.
+* `tracker_id` - int. An ID of the tracker to which all generated tasks assigned. Nullable.
 * `location` - location associated with this task. Cannot be null.
     * `address` - string. Address of the location.
     * `radius` - int. Radius of location zone in meters.
@@ -55,8 +55,8 @@ replaced with `from_time`, `duration` and `parameters`.
 * `min_stay_duration` - int. Minimum duration of stay in task zone for task completion, minutes.
 * `min_arrival_duration` - int. Visits less than these values will be ignored, minutes.
 * `parameters` - schedule parameters can be "weekdays" or "month_days". Described below.
-* `tags` - int array. List of tag ids.
-* `form_template_id` - int. Form template id. Nullable.
+* `tags` - int array. List of tag IDs.
+* `form_template_id` - int. Form template ID. Nullable.
 
 ***
 
@@ -72,8 +72,8 @@ Creates new task schedule entry.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
+| name     | description                                                 | type        | 
+|:---------|:------------------------------------------------------------|:------------|
 | schedule | `schedule_entry` object without fields which are *IGNORED*. | JSON object |
 
 #### examples
@@ -95,7 +95,7 @@ Creates new task schedule entry.
 }
 ```
 
-* `id` - int. An id of the created schedule entry.
+* `id` - int. An ID of the created schedule entry.
 
 #### errors
 
@@ -108,15 +108,15 @@ Creates new task schedule entry.
 
 ### delete
 
-Delete task schedule with the specified id.
+Delete task schedule with the specified ID.
 
 **required sub-user rights**: `task_update`.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| schedule_id | Id of the task schedule to delete. | int |
+| name        | description                        | type | 
+|:------------|:-----------------------------------|:-----|
+| schedule_id | ID of the task schedule to delete. | int  |
 
 #### examples
 
@@ -142,7 +142,7 @@ Delete task schedule with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no task schedule with such an id.
+* 201 – Not found in the database - if there is no task schedule with such an ID.
 
 ***
 
@@ -155,7 +155,7 @@ Also this call returns all unassigned task schedules.
 
 | name     | description                                                                                                   | type      | 
 |:---------|:--------------------------------------------------------------------------------------------------------------|:----------|
-| trackers | Optional. Ids of the trackers to which task schedule is assigned.                                             | int array |
+| trackers | Optional. IDs of the trackers to which task schedule is assigned.                                             | int array |
 | filter   | Optional. Filter for task schedule label and description.                                                     | string    |
 | tag_ids  | Optional. Tag IDs assigned to the task schedule. The schedules found must include all the tags from the list. | int array |
 
@@ -215,13 +215,13 @@ Also this call returns all unassigned task schedules.
 
 ### read
 
-Gets task, route or checkpoint schedule by specified id.
+Gets task, route or checkpoint schedule by specified ID.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| id | An id of task, route or checkpoint schedule. | int |
+| name | description                                  | type | 
+|:-----|:---------------------------------------------|:-----|
+| id   | An ID of task, route or checkpoint schedule. | int  |
 
 #### examples
 
@@ -297,8 +297,8 @@ Updates existing task schedule.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
+| name     | description                                                 | type        | 
+|:---------|:------------------------------------------------------------|:------------|
 | schedule | `schedule_entry` object without fields which are *IGNORED*. | JSON object |
 
 #### examples
@@ -322,6 +322,6 @@ Updates existing task schedule.
 #### errors
 
 * 201 – Not found in the database - if schedule.tracker_id belongs to nonexistent tracker.
-* 204 – Entity not found - if there is no task schedule with specified id.
+* 204 – Entity not found - if there is no task schedule with specified ID.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.

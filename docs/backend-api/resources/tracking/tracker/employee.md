@@ -23,10 +23,10 @@ Assigns another employee ("driver") to the tracker.
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| new_employee_id | Id of the new employee. | int | 12345 |
+| name            | description                                                                                     | type | format |
+|:----------------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id      | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
+| new_employee_id | ID of the new employee.                                                                         | int  | 12345  |
 
 #### examples
 
@@ -52,7 +52,7 @@ Assigns another employee ("driver") to the tracker.
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker or employee with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker or employee with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 263 – No change needed, old and new values are the same - if new employee matches a currently assigned employee.
 
@@ -64,9 +64,9 @@ Requests to read the current employee (driver) assigned to tracker, and when it 
 
 #### parameters
 
-| name | description | type| format|
-| :------ | :------ | :----- | :------ |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
 #### examples
 
@@ -135,5 +135,5 @@ Requests to read the current employee (driver) assigned to tracker, and when it 
 
 #### errors
 
-* 201 – Not found in the database - if there is no tracker with such id belonging to authorized user.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.

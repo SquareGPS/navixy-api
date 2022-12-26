@@ -34,7 +34,7 @@ Let's describe a standard workflow for WebSocket API:
 !!! note
     * The [subscription requests](./subscription.md) must contain the 
       `hash` of an [API Key](../resources/commons/api-keys.md).
-    * Responses and errors for the [subscribe](./subscription.md#subscribe-action) 
+    * Responses and errors for [subscribe](./subscription.md#subscribe-action) 
       and [unsubscribe](./subscription.md#unsubscribe-action) actions are similar 
       with common [API](../getting-started.md) format.
     * All `WebSocket` frames use a `JSON` format. Exceptions are heartbeat frames containing "X".

@@ -90,13 +90,13 @@ Updates notification settings for the current dealer.
 
 #### parameters
  
-| name | description | type|
-| :------ | :------ | :----- |
-| email_from | Email from which notification messages will be sent. Can be email address or email with a name. | string |
-| email_footer | Footer which is added to all notification emails. Arbitrary text up to 600 characters. | string |
-| email_special | Optional. Special email address for PaaS reports. | string |
-| sms_originator | SMS originator. Max length is 20. | string |
-| caller_id | Voice messages originator. Max length is 20. | string |
+| name           | description                                                                                     | type   |
+|:---------------|:------------------------------------------------------------------------------------------------|:-------|
+| email_from     | Email from which notification messages will be sent. Can be email address or email with a name. | string |
+| email_footer   | Footer which is added to all notification emails. Arbitrary text up to 600 characters.          | string |
+| email_special  | Optional. Special email address for PaaS reports.                                               | string |
+| sms_originator | SMS originator. Max length is 20.                                                               | string |
+| caller_id      | Voice messages originator. Max length is 20.                                                    | string |
 
 #### example
 

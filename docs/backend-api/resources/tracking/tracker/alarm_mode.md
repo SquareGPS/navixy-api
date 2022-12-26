@@ -18,9 +18,9 @@ Gets the state of alarm mode of device.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
 #### examples
 
@@ -51,7 +51,7 @@ Gets the state of alarm mode of device.
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
 
@@ -63,10 +63,10 @@ Changes the state of alarm mode of device. The device must be online.
 
 #### parameters
 
-| name | description | type | format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 999199 |
-| enabled | `true` if alarm mode should be enabled. | boolean | true/false |
+| name       | description                                                                                     | type    | format     |
+|:-----------|:------------------------------------------------------------------------------------------------|:--------|:-----------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int     | 999199     |
+| enabled    | `true` if alarm mode should be enabled.                                                         | boolean | true/false |
 
 #### examples
 
@@ -92,7 +92,7 @@ Changes the state of alarm mode of device. The device must be online.
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such id belonging to authorized user.
+* 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 213 – Cannot perform action: the device is offline - if corresponding tracker is not connected to the server.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.

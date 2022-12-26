@@ -21,9 +21,9 @@ Changes password for the authorized dealer.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| old_password | Current dealer's password. | string |
+| name         | description                                                | type   |
+|:-------------|:-----------------------------------------------------------|:-------|
+| old_password | Current dealer's password.                                 | string |
 | new_password | New password for the dealer, 6 to 20 printable characters. | string |
 
 #### example

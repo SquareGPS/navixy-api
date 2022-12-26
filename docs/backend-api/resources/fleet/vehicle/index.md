@@ -56,15 +56,15 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 }
 ```
 
-* `id` - int. An id of a vehicle.
-* `tracker_id` - int. An id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.
+* `id` - int. An ID of a vehicle.
+* `tracker_id` - int. An ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.
 * `tracker_label` - optional string. Tracker's label.
 * `label` - string. Vehicle's label.
 * `max_speed` - int. Maximum speed of a vehicle.
 * `model` - string. Vehicle's model.
 * `type`  [enum](../../../getting-started.md#data-types). Vehicle's type. Can be "truck" | "car" | "bus" | "special".
 * `subtype` - optional [enum](../../../getting-started.md#data-types). Depends on type, null means undefined. Possible subtypes listed below.
-* `garage_id` - nullable int. An id of a garage.
+* `garage_id` - nullable int. An ID of a garage.
 * `garage_organization_name` - optional string. Garage organization name.
 * `trailer` - optional string. Information about a trailer.
 * `manufacture_year` - optional int. Manufacture year of a vehicle.
@@ -94,7 +94,7 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 * `free_insurance_valid_till` - string date. The date till free insurance valid.
 * `icon_id` - nullable int. Can only be updated via [avatar/assign](../vehicle/avatar.md#assign).
 * `avatar_file_name` - string. File name.
-* `tags` - int array. List of tag ids.
+* `tags` - int array. List of tag IDs.
 
 ???+ example "Subtypes:"
     ```
@@ -128,10 +128,10 @@ Creates a new vehicle.
 
 ##### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| vehicle | A [vehicle object](#vehicle-object) without `id` field. | JSON object |
-| force_reassign | Optional. Default is `true`. Will reassign the device to created vehicle even if it was assign to another one. | boolean |
+| name           | description                                                                                                    | type        |
+|:---------------|:---------------------------------------------------------------------------------------------------------------|:------------|
+| vehicle        | A [vehicle object](#vehicle-object) without `id` field.                                                        | JSON object |
+| force_reassign | Optional. Default is `true`. Will reassign the device to created vehicle even if it was assign to another one. | boolean     |
 
 #### example
 
@@ -152,7 +152,7 @@ Creates a new vehicle.
 }
 ```
 
-* `id` - int. An id of the created vehicle.
+* `id` - int. An ID of the created vehicle.
 
 #### errors
 
@@ -162,15 +162,15 @@ Creates a new vehicle.
 
 ### delete
 
-Deletes a vehicle with the specified id.
+Deletes a vehicle with the specified ID.
 
 **required sub-user rights**: `vehicle_update`.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| vehicle_id | Id of the vehicle to delete. | int |
+| name       | description                  | type |
+|:-----------|:-----------------------------|:-----|
+| vehicle_id | ID of the vehicle to delete. | int  |
 
 #### examples
 
@@ -196,7 +196,7 @@ Deletes a vehicle with the specified id.
 
 #### errors
 
-* 201 – Not found in the database - if there is no vehicle with such an id.
+* 201 – Not found in the database - if there is no vehicle with such and ID.
 
 ***
 
@@ -206,12 +206,12 @@ Gets all vehicles belonging to user.
 
 ##### parameters
 
-| name  | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | type |
-|:------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :----- |
-| limit | Pagination. Maximum number of vehicle records to return.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | int |
-| offset | Pagination. Get vehicles starting from.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | int |
-| sort | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["type=desc","label=acs"]`. Maximum 2 options in request. Available properties:<br/> - id<br/> - label<br/> - reg_number<br/> - model<br/> - type<br/> - garage_organization_name<br/> - vin<br/> - tracker_label<br/> - fuel_type<br/> - fuel_grade<br/> - norm_avg_fuel_consumption<br/> - fuel_tank_volume<br/> - payload_weight<br/> - chassis_number<br/> - subtype<br/> - wheel_arrangement<br/> - tyres_number<br/> - tyres_size<br/> - max_speed<br/> - passengers<br/> | string array |
-| filter | Optional. Filter vehicles by VIN, reg_number or label. Maximum 100 characters or null.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | string |
+| name   | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | type         |
+|:-------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|
+| limit  | Pagination. Maximum number of vehicle records to return.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | int          |
+| offset | Pagination. Get vehicles starting from.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | int          |
+| sort   | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["type=desc","label=acs"]`. Maximum 2 options in request. Available properties:<br/> - id<br/> - label<br/> - reg_number<br/> - model<br/> - type<br/> - garage_organization_name<br/> - vin<br/> - tracker_label<br/> - fuel_type<br/> - fuel_grade<br/> - norm_avg_fuel_consumption<br/> - fuel_tank_volume<br/> - payload_weight<br/> - chassis_number<br/> - subtype<br/> - wheel_arrangement<br/> - tyres_number<br/> - tyres_size<br/> - max_speed<br/> - passengers<br/> | string array |
+| filter | Optional. Filter vehicles by VIN, reg_number or label. Maximum 100 characters or null.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | string       |
 
 #### examples
 
@@ -286,13 +286,13 @@ Gets all vehicles belonging to user.
 
 ### read
 
-Gets vehicle by specified id.
+Gets vehicle by specified ID.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| vehicle_id | Id of a vehicle. | int |
+| name       | description      | type |
+|:-----------|:-----------------|:-----|
+| vehicle_id | ID of a vehicle. | int  |
 
 #### examples
 
@@ -361,7 +361,7 @@ A [vehicle object](#vehicle-object).
 
 #### errors
 
-* 201 – Not found in the database - if there is no vehicle with such an id.
+* 201 – Not found in the database - if there is no vehicle with such and ID.
 
 ***
 
@@ -373,10 +373,10 @@ Updates existing vehicle.
 
 #### parameters
 
-| name | description | type |
-| :------ | :------ | :----- |
-| vehicle | A [vehicle object](#vehicle-object). | JSON object |
-| force_reassign | Optional. Default is `true`. Will reassign the device to created vehicle even if it was assign to another one. | boolean |
+| name           | description                                                                                                    | type        |
+|:---------------|:---------------------------------------------------------------------------------------------------------------|:------------|
+| vehicle        | A [vehicle object](#vehicle-object).                                                                           | JSON object |
+| force_reassign | Optional. Default is `true`. Will reassign the device to created vehicle even if it was assign to another one. | boolean     |
 
 #### example
 
@@ -396,7 +396,7 @@ Updates existing vehicle.
 
 #### errors
 
-* 201 – Not found in the database - if there is no vehicle with such an id.
+* 201 – Not found in the database - if there is no vehicle with such and ID.
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 * 261 – Entity has external links - when `tracker_id` changes and there are some service tasks associated with this vehicle.
 
@@ -410,12 +410,12 @@ Convert batch of tab-delimited vehicles and return list of checked vehicles with
 
 #### parameters
 
-name | description | type
---- | --- | ---
-batch | Batch of tab-delimited vehicles. | string
-file_id | Preloaded file ID. | string
-fields | Optional, array of field names, default is `["label", "model", "reg_number", "fuel_grade"]`. | string array
-geocoder | Geocoder type. | string
+| name       | description                                                                                  | type         |
+|:-----------|:---------------------------------------------------------------------------------------------|:-------------|
+| batch      | Batch of tab-delimited vehicles.                                                             | string       |
+| file_id    | Preloaded file ID.                                                                           | string       |
+| fields     | Optional, array of field names, default is `["label", "model", "reg_number", "fuel_grade"]`. | string array |
+| } geocoder | Geocoder type.                                                                               | string       |
 
 If `file_id` is set – `batch` parameter will be ignored.
 

@@ -37,11 +37,11 @@ Transaction object description and API call to get list of user's billing transa
 * `dealer_id` - int. ID of a dealer.
 * `tracker_id` - int. Tracker id. 0 if transaction not associated with tracker.
 * `amount` - double. Amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units removed from user`s balance.
-* `new_balance` - double. User`s money balance after transaction.
-* `old_balance` - double. User`s money balance before transaction.
+* `new_balance` - double. User's money balance after transaction.
+* `old_balance` - double. User's money balance before transaction.
 * `bonus_amount` - double. Amount of bonus used in transaction, can be negative. e.g. 10.0000 means 10 bonuses units added to user`s bonus balance.
-* `new_bonus` - double. User`s bonus balance after transaction.
-* `old_bonus` - double. User`s bonus balance before transaction.
+* `new_bonus` - double. User's bonus balance after transaction.
+* `old_bonus` - double. User's bonus balance before transaction.
 
 ***
 
@@ -57,11 +57,11 @@ Gets list of user's billing transactions for the specified period.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :-----|
-| from | Start date/time for searching. | [date/time](../../getting-started.md#data-types) |
-| to | End date/time for searching. Must be after `from` date. | [date/time](../../getting-started.md#data-types) |
-| limit | Optional. Maximum number of returned transactions. | int |
+| name  | description                                             | type                                             |
+|:------|:--------------------------------------------------------|:-------------------------------------------------|
+| from  | Start date/time for searching.                          | [date/time](../../getting-started.md#data-types) |
+| to    | End date/time for searching. Must be after `from` date. | [date/time](../../getting-started.md#data-types) |
+| limit | Optional. Maximum number of returned transactions.      | int                                              |
 
 #### example
 

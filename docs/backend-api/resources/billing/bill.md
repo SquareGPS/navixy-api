@@ -22,7 +22,7 @@ Bill object description and API calls for work with user's bills.
 }
 ```
 
-* `order_id` - int. Unique bill id.
+* `order_id` - int. Unique bill ID.
 * `created` - [date/time](../../getting-started.md#data-types). When the bill created.
 * `sum` - float. A bill sum in default currency of the panel.
 * `status` - [enum](../../getting-started.md#data-types). Bill order status. Can be one of:
@@ -46,10 +46,10 @@ Creates a new bill for the user.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :-----|
-| payer | Some payer description. | string |
-| sum | A bill sum in default currency of the panel. | double |
+| name  | description                                  | type   |
+|:------|:---------------------------------------------|:-------|
+| payer | Some payer description.                      | string |
+| sum   | A bill sum in default currency of the panel. | double |
 
 #### example
 
@@ -70,7 +70,7 @@ Creates a new bill for the user.
 }
 ```
 
-* `value` - int. Created bill id.
+* `value` - int. Created bill ID.
 
 #### errors
 
@@ -86,10 +86,10 @@ Shows list of bills with their parameters in array.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| limit | Optional. A maximum number of bills in list. Maximum and default is 10 000. | int |
-| offset | Optional. Get bills starting from `offset`. Default 0. | int |
+| name   | description                                                                 | type |
+|:-------|:----------------------------------------------------------------------------|:-----|
+| limit  | Optional. A maximum number of bills in list. Maximum and default is 10 000. | int  |
+| offset | Optional. Get bills starting from `offset`. Default 0.                      | int  |
 
 #### examples
 

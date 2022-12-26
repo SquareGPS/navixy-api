@@ -120,7 +120,7 @@ The platform will confirm our update with:
 }
 ```
 
-When the reply received we know what ids our fields have, and we can change their order in the entity. Now we should update 
+When the reply received we know what IDs our fields have, and we can change their order in the entity. Now we should update 
 our entity.
 
 API request:

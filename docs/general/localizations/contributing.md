@@ -51,7 +51,7 @@ opens translation dialog
 
 ## Translate via Crowdin UI
 
-Crowdin UI is a most powerfull way to work with translations in Navixy, and the only way if you want to translate not
+Crowdin UI is a most powerful way to work with translations in Navixy, and the only way if you want to translate not
 Backend and Mobile apps.
 
 ![Crowdin UI directory](../assets/crowdin-ui-directory.png)

@@ -21,9 +21,9 @@ at least two checkpoints.
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| checkpoint_id | Checkpoint ID. | int |
+| name          | description    | type | 
+|:--------------|:---------------|:-----|
+| checkpoint_id | Checkpoint ID. | int  |
 
 #### examples
 
@@ -59,9 +59,9 @@ Transmutes a checkpoint to task and delete its route and other checkpoints in th
 
 #### parameters
 
-| name | description | type | 
-| :--- | :--- | :--- |
-| checkpoint_id | Checkpoint ID. | int |
+| name          | description    | type | 
+|:--------------|:---------------|:-----|
+| checkpoint_id | Checkpoint ID. | int  |
 
 #### examples
 

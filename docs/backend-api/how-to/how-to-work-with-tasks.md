@@ -25,7 +25,7 @@ The list of necessary parameters is next:
 
 For example, we want to create the next task:
 
-George will deliver new devices to the office on 16th of March, from 12 to 2 PM. His car has a tracker with id 203190.
+George will deliver new devices to the office on 16th of March, from 12 to 2 PM. His car has a tracker with ID 203190.
 Today may be some traffic jams that's why he may be late on one hour. Also, I know that he needs 30 minutes to get to the 
 office, put in new devices, and fill in documents.
 
@@ -49,7 +49,7 @@ In this case, the `task` object will have the next parameters:
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"tracker_id": 203190, "location": {"lat": 56.826486, "lng": 60.594784, "radius": 150}, "label": "New devices to office", "description": "16 new devices", "from": "2021-03-16 12:00:00", "to": "2021-03-16 14:00:00", "max_delay": 60, "min_stay_duration": 30}, "create_form": false}'
     ```
 
-The response will contain id of a new task.
+The response will contain ID of a new task.
 
 ```json
 {
@@ -73,19 +73,19 @@ The list of necessary parameters is next:
 For example, we need to create the next route:
 
 John needs to deliver our products to three customers on 18th of March, from 10 AM to 4 PM. His car has a tracker with
-id 669673. He can't get late because our customers will wait for production at the exact time and if he is late - the checkpoint
+ID 669673. He can't get late because our customers will wait for production at the exact time and if he is late - the checkpoint
 will be considered failed. This is how we know about the quality of delivery. Also, I know that he needs a minimum of 10 minutes
 to hand over the goods to the client and fill out the documents.
 
 In this case, every `checkpoint` object will have the next parameters:
 
-* `tracker_id` - an id of the tracker to which checkpoint should be assigned.
+* `tracker_id` - an ID of the tracker to which checkpoint should be assigned.
 * `location` - location associated with this checkpoint. cannot be null.
 * `label` - the name of the checkpoint.
 * `description` - a note about the checkpoint.
 * `from` and `to` - the time when this checkpoint should be completed.
 * `external_id` - this is a delivery code. It is necessary for a checkpoint because I have the plugin "Courier on the map".
-  Customers can specify this id to the plugin and see - where the driver at the moment.
+  Customers can specify this ID to the plugin and see - where the driver at the moment.
 * `max_delay` - the employee may be late with the execution for a maximum of this time in minutes. In our case, it is 0 minutes.
 * `min_stay_duration` - the task will not be considered completed if the employee spends less than this time in the task's zone.
 * `tags` - for every client, I created a tag. This allows me to keep statistics and facilitate the search for delivery to
@@ -95,7 +95,7 @@ In this case, every `checkpoint` object will have the next parameters:
   
 The route object will have its own parameters too:
 
-* `tracker_id` - an id of the tracker to which a route should be assigned.
+* `tracker_id` - an ID of the tracker to which a route should be assigned.
 * `label` - route name.
 * `description` - additional information about the whole route.
 * `from` and `to` - the time when this route should be completed.

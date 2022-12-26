@@ -17,14 +17,14 @@ API path: `/user/password`.
 ### change
 
 Changes password of user with the provided session hash (it is contained in a password restore link from email sent to
- user by user/restore_password.
+ user by user/restore_password).
 
 !!! note "This call will receive only session hash from a password restore email. Any other hash will result in result  error code 4 (User or API key not found or session ended)."
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
+| name     | description                                              | type   |
+|:---------|:---------------------------------------------------------|:-------|
 | password | New password for the user. 6 to 20 printable characters. | string |
 
 #### example
@@ -56,9 +56,9 @@ Works only with standard user session (not with API key).
 
 #### parameters
 
-| name | description | type |
-| :----- | :-----  | :----- |
-| old_password | Current password of the user. | string |
+| name         | description                                              | type   |
+|:-------------|:---------------------------------------------------------|:-------|
+| old_password | Current password of the user.                            | string |
 | new_password | New password for the user. 6 to 20 printable characters. | string |
 
 #### example

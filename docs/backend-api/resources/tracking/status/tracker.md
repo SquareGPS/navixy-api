@@ -19,10 +19,10 @@ Assign a working status to the tracker.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
-| new_status_id | ID of the working status. Must belong to status list assigned to this tracker. | int | 5 |
+| name          | description                                                                                     | type | format |
+|:--------------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id    | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
+| new_status_id | ID of the working status. Must belong to status list assigned to this tracker.                  | int  | 5      |
 
 #### examples
 
@@ -89,8 +89,8 @@ Gets current assigned statuses for the specified trackers.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
+| name     | description                                             | type      | format             |
+|:---------|:--------------------------------------------------------|:----------|:-------------------|
 | trackers | List of the tracker's IDs belonging to authorized user. | int array | `[123456, 234567]` |
 
 #### examples
@@ -171,9 +171,9 @@ Gets current assigned working status of the tracker.
 
 #### parameters
 
-| name | description | type| format |
-| :------ | :------ | :----- | :----- |
-| tracker_id | Id of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int | 123456 |
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
 #### examples
 

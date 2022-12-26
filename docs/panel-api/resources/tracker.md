@@ -40,24 +40,24 @@ API calls to interact with trackers in the admin panel.
 }
 ```
 
-* `id` - int. Tracker id aka object_id.
+* `id` - int. Tracker ID aka object_id.
 * `avatar_file_name` - optional string. Passed only if present.
 * `clone` - boolean. `true` if this tracker is clone.
 * `comment` - string. Comment (description) related to the tracker.
 * `creation_date` - [date/time](../../backend-api/getting-started.md#data-types). Tracker or clone creation date.
-* `group_id` - int. Tracker group id. `0` if no group.
-* `dealer_id` - int. An id of a dealer to which this tracker (or clone) belongs to.
+* `group_id` - int. Tracker group ID. `0` if no group.
+* `dealer_id` - int. An ID of a dealer to which this tracker (or clone) belongs to.
 * `deleted` - boolean. True if tracker or clone has been marked as deleted.
 * `label` - string. Tracker label.
-* `user_id` - int. An id of the user to which this tracker (or clone) belongs to.
+* `user_id` - int. An ID of the user to which this tracker (or clone) belongs to.
 * `model_name` - string. Human-readable tracker model name.
 * `last_connection` - [date/time](../../backend-api/getting-started.md#data-types). Time when this tracker last connected to the server (in UTC+0 timezone).
 * `source` - source JSON object. 
-    * `id` - int. Source id.
+    * `id` - int. Source ID.
     * `device_id` - string. Source_imei.
     * `model` - string. Tracker model name from "models" table.
     * `blocked` - boolean. `true` if tracker has been blocked due to tariff end, etc.
-    * `tariff_id` - int. An id of tracker's tariff from "main_tariffs" table.
+    * `tariff_id` - int. An ID of tracker's tariff from "main_tariffs" table.
     * `creation_date` - [date/time](../../backend-api/getting-started.md#data-types). Date when this tracker first registered in the system.
     * `tariff_end_date` - [date/time](../../backend-api/getting-started.md#data-types). Date of next tariff prolongation or null.
     * `connection_status` - [enum](../../backend-api/getting-started.md#data-types). Current connection status.
@@ -78,10 +78,10 @@ Provides information about trackers which were considered "active" by our PaaS b
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name | description                                          | type              |
+|:-----|:-----------------------------------------------------|:------------------|
 | from | Start year and month for searching, e. g. "2021-02". | year-month string |
-| to | End year and month for searching. e. g. "2021-03". | year-month string |
+| to   | End year and month for searching. e. g. "2021-03".   | year-month string |
 
 #### example
 
@@ -133,10 +133,10 @@ Assign bundle to specified ICCID.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| bundle_id | Id of the bundle. | int |
-| iccid | Must consist of printable characters and have length between 3 and 20. | string |
+| name      | description                                                            | type   |
+|:----------|:-----------------------------------------------------------------------|:-------|
+| bundle_id | ID of the bundle.                                                      | int    |
+| iccid     | Must consist of printable characters and have length between 3 and 20. | string |
 
 #### examples
 
@@ -181,10 +181,10 @@ Assigns bundle to specified order ID.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| bundle_id | Id of a bundle. | int |
-| order_id | Id of a bundle. Nullable. | int |
+| name      | description               | type |
+|:----------|:--------------------------|:-----|
+| bundle_id | ID of a bundle.           | int  |
+| order_id  | ID of a bundle. Nullable. | int  |
 
 #### examples
 
@@ -224,11 +224,11 @@ Adds multiple bundles at once.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| imeis | Array of IMEI numbers. | string array |
-| equip_id | Id of equipment to associate with all specified IMEIs. | int |
-| factory_preset | Whether this device was preconfigured on factory or not. | boolean |
+| name           | description                                              | type         |
+|:---------------|:---------------------------------------------------------|:-------------|
+| imeis          | Array of IMEI numbers.                                   | string array |
+| equip_id       | ID of equipment to associate with all specified IMEIs.   | int          |
+| factory_preset | Whether this device was preconfigured on factory or not. | boolean      |
 
 #### examples
 
@@ -271,14 +271,14 @@ the following fields: `id`, `imei`, `model_code`, `iccid`, `assign_time`.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| clones_filter | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../backend-api/getting-started.md#data-types) |
-| filter  Optional. Text filter string. | string |
-| order_by | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`. | [enum](../../backend-api/getting-started.md#data-types) |
-| ascending | If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
-| offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
-| limit | Optional. Max number of records to return, used for pagination. | int |
+| name                                  | description                                                                                                                                                                 | type                                                    |
+|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
+| clones_filter                         | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../backend-api/getting-started.md#data-types) |
+| filter  Optional. Text filter string. | string                                                                                                                                                                      |
+| order_by                              | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`.        | [enum](../../backend-api/getting-started.md#data-types) |
+| ascending                             | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                                 |
+| offset                                | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                                     |
+| limit                                 | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                                     |
 
 #### examples
 
@@ -323,8 +323,8 @@ Returns the bundle object with the specified imei.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name | description    | type   |
+|:-----|:---------------|:-------|
 | imei | Device's IMEI. | string |
 
 #### examples
@@ -366,10 +366,10 @@ Assign specified equipment to bundle.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| bundle_id | Id of the bundle. | int | 
-| equip_id | Valid equipment id. | int | 
+| name      | description         | type |
+|:----------|:--------------------|:-----|
+| bundle_id | ID of the bundle.   | int  | 
+| equip_id  | Valid equipment ID. | int  | 
 
 #### examples
 
@@ -410,11 +410,11 @@ Creates a clone of the existing non-clone tracker.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
-| label | User-defined label for clone, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. | string |
-| user_id | Id of the user who will become the owner of the clone. | int |
+| name       | description                                                                                                          | type   |
+|:-----------|:---------------------------------------------------------------------------------------------------------------------|:-------|
+| tracker_id | ID of the tracker. Tracker must belong to authorized dealer.                                                         | int    |
+| label      | User-defined label for clone, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. | string |
+| user_id    | ID of the user who will become the owner of the clone.                                                               | int    |
 
 #### examples
 
@@ -441,13 +441,13 @@ Creates a clone of the existing non-clone tracker.
 }
 ```
 
-* `id` - int. An id of the created clone.
+* `id` - int. An ID of the created clone.
 
 #### errors
 
 * 219 - Not allowed for clones of the device – when source tracker is clone itself.
 * 201 - Not found in the database – when specified `tracker_id` not found.
-* 246 - Invalid user ID – when user id is same as source tracker's owner id, or it does not exist/belong to authorized dealer.
+* 246 - Invalid user ID – when user ID is same as source tracker's owner id, or it does not exist/belong to authorized dealer.
 * 247 - Entity already exists – if destination user already has a clone of this tracker.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
@@ -461,9 +461,9 @@ Returns auth token for connection to tracker command console.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of a tracker. Tracker must belong to authorized dealer. | int |
+| name       | description                                                | type |
+|:-----------|:-----------------------------------------------------------|:-----|
+| tracker_id | ID of a tracker. Tracker must belong to authorized dealer. | int  |
 
 #### examples
 
@@ -546,7 +546,7 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 
 | name           | description                                                               | type    |
 |:---------------|:--------------------------------------------------------------------------|:--------|
-| tracker_id     | Id of a tracker. Tracker must belong to authorized dealer.                | int     |
+| tracker_id     | ID of a tracker. Tracker must belong to authorized dealer.                | int     |
 | corrupt_clones | Optional. Default is `true`. Remove clones of the tracker for other users | boolean |
 
 #### examples
@@ -603,8 +603,8 @@ response will contain a description of the reasons why the deletion failed.
  
 *required permissions*: `trackers: "delete"`.
 
-| name | description | type|
-| :------ | :------ | :----- |
+| name     | description                                                                                 | type      |
+|:---------|:--------------------------------------------------------------------------------------------|:----------|
 | trackers | Tracker ID list. Each of these trackers must be a clone and be accessible for current user. | int array |
 
 #### examples
@@ -625,11 +625,11 @@ response will contain a description of the reasons why the deletion failed.
 
 #### response
 
-| name | description | type|
-| :------ | :------ | :----- |
-| success | Action's execution status.  | boolean |
-| deleted_count | Number of successfully deleted clones from `trackers`. | int |
-| not_deleted_count | Number of not deleted clones. | int |
+| name                 | description                                                                              | type             |
+|:---------------------|:-----------------------------------------------------------------------------------------|:-----------------|
+| success              | Action's execution status.                                                               | boolean          |
+| deleted_count        | Number of successfully deleted clones from `trackers`.                                   | int              |
+| not_deleted_count    | Number of not deleted clones.                                                            | int              |
 | not_deleted_trackers | Optional. Description of failed deletion operations. `{"id": integer, "error": string}`. | array of objects |
 
 Example:
@@ -670,9 +670,9 @@ Deletes a clone of the existing tracker.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of a tracker. Tracker must belong to authorized dealer and must be a clone. | int |
+| name       | description                                                                    | type |
+|:-----------|:-------------------------------------------------------------------------------|:-----|
+| tracker_id | ID of a tracker. Tracker must belong to authorized dealer and must be a clone. | int  |
 
 #### examples
 
@@ -715,7 +715,7 @@ Deletes a clone of the existing tracker.
 }
 ```
 
-* `rules` - int array. A list of associated rule ids.
+* `rules` - int array. A list of associated rule IDs.
 
 or
 
@@ -730,7 +730,7 @@ or
 }
 ```
 
-* `vehicles` - int array. A list of associated vehicle ids.
+* `vehicles` - int array. A list of associated vehicle IDs.
 
 * 252 - Device already corrupted – when tracker's source corrupted.
 
@@ -747,15 +747,15 @@ If `filter` is used, entities will be returned only if filter string contain one
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| user_id | Optional. Id of the user. User must belong to authorized dealer. | int |
-| tariff_id | Optional. Id of the tariff. Tariff must belong to authorized dealer. | int |
-| filter | Optional. Text filter string. | string |
-| order_by | Optional. List ordering. Can be one of "id", "label", "status", "model", "device_id", "phone", "creation_date", "last_connection". |	string |
-| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`. | boolean |
-| offset | Optional. Starting offset, used for pagination. Default is `0`. | int |
-| limit | Optional. Max number of records to return, used for pagination. | int |
+| name      | description                                                                                                                        | type    |
+|:----------|:-----------------------------------------------------------------------------------------------------------------------------------|:--------|
+| user_id   | Optional. ID of the user. User must belong to authorized dealer.                                                                   | int     |
+| tariff_id | Optional. ID of the tariff. Tariff must belong to authorized dealer.                                                               | int     |
+| filter    | Optional. Text filter string.                                                                                                      | string  |
+| order_by  | Optional. List ordering. Can be one of "id", "label", "status", "model", "device_id", "phone", "creation_date", "last_connection". | 	string |
+| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                          | boolean |
+| offset    | Optional. Starting offset, used for pagination. Default is `0`.                                                                    | int     |
+| limit     | Optional. Max number of records to return, used for pagination.                                                                    | int     |
 
 #### examples
 
@@ -827,10 +827,10 @@ Moves the existing non-clone tracker to another user belonging to the same deale
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
-| user_id | Id of the user who will become the owner of the tracker. | int |
+| name       | description                                                  | type |
+|:-----------|:-------------------------------------------------------------|:-----|
+| tracker_id | ID of the tracker. Tracker must belong to authorized dealer. | int  |
+| user_id    | ID of the user who will become the owner of the tracker.     | int  |
 
 #### examples
 
@@ -868,15 +868,15 @@ Moves the existing non-clone tracker to another user belonging to the same deale
 
 ### read
 
-Returns the tracker object with the specified id.
+Returns the tracker object with the specified ID.
 
 *required permissions*: `trackers: "read"`.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
+| name       | description                                                  | type |
+|:-----------|:-------------------------------------------------------------|:-----|
+| tracker_id | ID of the tracker. Tracker must belong to authorized dealer. | int  |
 
 #### examples
 
@@ -996,12 +996,12 @@ Updates tracker settings.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int |
-| label | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string |
-| deleted | If `true`, tracker will be marked as deleted and will not be shown in user's interface. | boolean |
-| comment | Optional. A comment (description) related to the tracker. Up to 3000 symbols. | string |
+| name       | description                                                                                                                                                     | type    |
+|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
+| tracker_id | ID of the tracker. Tracker must belong to authorized dealer.                                                                                                    | int     |
+| label      | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string  |
+| deleted    | If `true`, tracker will be marked as deleted and will not be shown in user's interface.                                                                         | boolean |
+| comment    | Optional. A comment (description) related to the tracker. Up to 3000 symbols.                                                                                   | string  |
 
 #### examples
 
@@ -1042,10 +1042,10 @@ Updates source settings. Can block and unblock a device.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of the tracker. Tracker must belong to authorized dealer. | int | 
-| blocked | If `true`, tracker will be marked as blocked. | boolean | 
+| name       | description                                                  | type    |
+|:-----------|:-------------------------------------------------------------|:--------|
+| tracker_id | ID of the tracker. Tracker must belong to authorized dealer. | int     | 
+| blocked    | If `true`, tracker will be marked as blocked.                | boolean | 
 
 #### examples
 
@@ -1084,12 +1084,12 @@ Updates source settings. Can block and unblock a device.
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| tracker_id | Id of tracker. Tracker must belong to authorized dealer. | int |
-| tariff_id | New tariff id. | int |
-| repay | Repay remainder of current tariff payment. | boolean |
-| charge | Charge payment for new tariff. For monthly and everyday tariffs. | boolean |
+| name       | description                                                      | type    |
+|:-----------|:-----------------------------------------------------------------|:--------|
+| tracker_id | ID of tracker. Tracker must belong to authorized dealer.         | int     |
+| tariff_id  | New tariff ID.                                                   | int     |
+| repay      | Repay remainder of current tariff payment.                       | boolean |
+| charge     | Charge payment for new tariff. For monthly and everyday tariffs. | boolean |
 
 #### examples
 
@@ -1164,7 +1164,7 @@ where `amt` – the number of days in the current month, a ceil – the operatio
 **Change**
 
 ```shell
-tariff_id = next_tariff = new tariff id
+tariff_id = next_tariff = new tariff ID
 tariff_change = current date
 if tariff is active (tariff_end = false) then
     tariff_end = false
@@ -1206,12 +1206,12 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 
 #### parameters
 
-| name | description | type|
-| :------ | :------ | :----- |
-| device_id | Fixed device ID, e.g. IMEI. | string |
-| command | Text or hexadecimal representation of the command. | string |
-| type | Optional. Default is `text` . Can be "text" or "hex". | string |
-| reliable | Optional. default is `true`. If `false` the command doesn't need to be resent when the device is disconnected or if no acknowledgment is received. | boolean |
+| name      | description                                                                                                                                        | type    |
+|:----------|:---------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
+| device_id | Fixed device ID, e.g. IMEI.                                                                                                                        | string  |
+| command   | Text or hexadecimal representation of the command.                                                                                                 | string  |
+| type      | Optional. Default is `text` . Can be "text" or "hex".                                                                                              | string  |
+| reliable  | Optional. default is `true`. If `false` the command doesn't need to be resent when the device is disconnected or if no acknowledgment is received. | boolean |
 
 #### example
 
