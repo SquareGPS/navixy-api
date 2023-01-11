@@ -362,7 +362,7 @@ A [vehicle object](#vehicle-object).
 
 #### errors
 
-* 201 – Not found in the database - if there is no vehicle with such and ID.
+* 201 – Not found in the database - if there is no vehicle with such an ID.
 
 ***
 

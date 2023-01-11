@@ -202,7 +202,7 @@ Gets form template belonging to current master user by specified ID.
 
 #### errors
 
-* 201 – Not found in the database - if there is no template with such and ID.
+* 201 – Not found in the database - if there is no template with such an ID.
 
 ***
 
