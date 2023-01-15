@@ -55,7 +55,7 @@ Gives access for sub-user to the specified trackers.
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
-* 201 – Not found in the database – if sub-user with such and ID does not exist or does not belong to current master user.
+* 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 * 262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker IDs don't exist.
 
 ***
@@ -104,7 +104,7 @@ Gets a list of tracker IDs to which this sub-user has access.
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
-* 201 – Not found in the database – if sub-user with such and ID does not exist or does not belong to current master user.
+* 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 
 ***
 
@@ -150,5 +150,5 @@ Disables access for sub-user to the specified trackers.
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
-* 201 – Not found in the database – if sub-user with such and ID does not exist or does not belong to current master user.
+* 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 * 262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker IDs don't exist.
