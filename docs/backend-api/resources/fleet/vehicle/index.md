@@ -162,7 +162,7 @@ Creates a new vehicle.
 
 ### delete
 
-Deletes a vehicle with the specified ID.
+Deletes a vehicles with the specified IDs. Only one of the following parameters must be specified.
 
 **required sub-user rights**: `vehicle_update`.
 
@@ -171,6 +171,7 @@ Deletes a vehicle with the specified ID.
 | name       | description                  | type |
 |:-----------|:-----------------------------|:-----|
 | vehicle_id | ID of the vehicle to delete. | int  |
+| vehicle_ids | An array of vehicle IDs to delete. | int array |
 
 #### examples
 
@@ -196,7 +197,7 @@ Deletes a vehicle with the specified ID.
 
 #### errors
 
-* 201 – Not found in the database - if there is no vehicle with such and ID.
+* 201 – Not found in the database - if there is no vehicle with such an ID. This error will not occur if the vehicle_ids parameter is specified, deletion is silent in this case.
 
 ***
 
@@ -361,7 +362,7 @@ A [vehicle object](#vehicle-object).
 
 #### errors
 
-* 201 – Not found in the database - if there is no vehicle with such and ID.
+* 201 – Not found in the database - if there is no vehicle with such an ID.
 
 ***
 
@@ -396,7 +397,7 @@ Updates existing vehicle.
 
 #### errors
 
-* 201 – Not found in the database - if there is no vehicle with such and ID.
+* 201 – Not found in the database - if there is no vehicle with such an ID.
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 * 261 – Entity has external links - when `tracker_id` changes and there are some service tasks associated with this vehicle.
 

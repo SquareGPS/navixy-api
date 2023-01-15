@@ -184,7 +184,7 @@ Deletes route schedule with checkpoints.
 ### update
 
 Updates route schedule with checkpoints. If checkpoint is being created, then it should have no id.
-If checkpoint is being updated, then it should have and ID. If old checkpoint is not present in request, then it
+If checkpoint is being updated, then it should have an ID. If old checkpoint is not present in request, then it
  will be deleted.
 
 #### parameters

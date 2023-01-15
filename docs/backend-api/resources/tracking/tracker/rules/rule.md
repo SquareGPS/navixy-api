@@ -236,7 +236,7 @@ Deletes rule with rule_id and all related objects from the database.
 
 ### list
 
-List tracker rules bound to tracker with and ID=`tracker_id` or all users' tracker rules if `tracker_id` not passed.
+List tracker rules bound to tracker with an ID=`tracker_id` or all users' tracker rules if `tracker_id` not passed.
 
 #### examples
 
