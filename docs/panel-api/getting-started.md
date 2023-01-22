@@ -17,7 +17,7 @@ Two main differences are _authorization system_ and _request paths_.
 
 ### Panel API base URL
 
-Panel API resides in `panel/` subsection of API url. So you can determine URL to API calls like this:
+Panel API resides in `panel/` subsection of API URL. So you can determine URL to API calls like this:
 
 *  `https://api.eu.navixy.com/v2/panel/` for European Navixy ServerMate platform.
 *  `https://api.us.navixy.com/v2/panel/` for American Navixy ServerMate platform.

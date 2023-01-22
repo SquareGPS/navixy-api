@@ -139,10 +139,10 @@ If `hash` is specified the `domain` shouldn't be used.
     * `payment_link` - string. PaaS-dependent link that can be used to refill user's account. Can be null or empty.
     * `promo_url` - string. Customizable "About company" url.
     * `google_client_id` - string. Client ID which must be used to work with Google API or null.
-    * `favicon` - string. Path or url to dealer's interface favicon.
-    * `logo` - string. Path or url to dealer's logotype.
-    * `app_logo` - string. Nullable, path or url to dealer's mobile app logotype.
-    * `login_wallpaper` - string. Path or url to dealer's interface login wallpaper.
+    * `favicon` - string. Path or URL to dealer's interface favicon.
+    * `logo` - string. Path or URL to dealer's logotype.
+    * `app_logo` - string. Nullable, path or URL to dealer's mobile app logotype.
+    * `login_wallpaper` - string. Path or URL to dealer's interface login wallpaper.
     * `desktop_wallpaper` - string. Path to dealer's interface wallpaper or null.
     * `monitoring_logo` - string. Path to dealer's interface monitoring logo or null.
     * `login_footer` - string. Footer which will be included in login page.

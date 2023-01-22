@@ -80,7 +80,7 @@ File part **mime** type must be one of:
 |:----------------|:----------------------------------------------------------------------------------------------------------------|:-------|
 | type            | Image type to delete. Can be one of `logo`, `favicon`, `login_wallpaper`, `desktop_wallpaper`, `document_logo`. | string |
 | file            | Image file.                                                                                                     | string |
-| redirect_target | Optional. An URL to redirect.                                                                                   | string | 
+| redirect_target | Optional. A URL to redirect.                                                                                    | string | 
 
 If `redirect_target` passed a return redirect to `response=<urlencoded response json>`.
 

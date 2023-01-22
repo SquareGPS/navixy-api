@@ -19,7 +19,7 @@ API path: `/task/form/file`.
 ### create
 
 Creates a new file entry associated with form's field. By making this call you basically "request permission" to upload
- a file. In return, you are provided with upload credentials (url, form fields, etc.).<br>
+ a file. In return, you are provided with upload credentials (URL, form fields, etc.).<br>
 Note that in order to actually "include" file as form field's value, creating and uploading file is not enough.
  You must then submit a form with file ID as a value of corresponding form field.
 
@@ -72,7 +72,7 @@ If file created but not uploaded, it will be deleted after date/time specified i
 ```
 
 * `file_id` - int. This value will be submitted as form's field value.
-* `url` - string. An url to which POST form-data with file contents should be executed.
+* `url` - string. A URL to which POST form-data with file contents should be executed.
 * `expires` - date/time. After this date file record wil expire and upload requests will be rejected.
 * `file_field_name` - string. Name for file field in POST upload request.
 * `fields` - these fields should be passed as additional fields in POST multipart upload request, field with a file 

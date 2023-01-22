@@ -74,7 +74,7 @@ Check-ins cannot be created using web API, so all actions are read-only.
     * `metadata` - metadata object. 
         * `orientation` - int. Image exif orientation.
     * `state` - [enum](../../getting-started.md#data-types). Can be "created" | "in_progress" | "uploaded" | "deleted".
-    * `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
+    * `download_url` - string. Actual URL at which file is available. Can be null if file not yet uploaded.
 * `form_id` - int. An ID of the form which was sent along with a check-in, can be null.
 * `form_label` - string. Label of the form which was sent along with a check-in, can be null.
 
