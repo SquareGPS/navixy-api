@@ -383,7 +383,7 @@ Gets form associated with the specified task.
     * `metadata` - metadata object.
     * `orientation` - int. Image exif orientation.
     * `state` - [enum](../../../../getting-started.md#data-types). Can be "created", "in_progress", "uploaded", "deleted".
-    * `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
+    * `download_url` - string. Actual URL at which file is available. Can be null if file not yet uploaded.
     * `bindings` - all entities to which this file linked.
     * `previews` - available preview images for the file. Can be null or empty for any file in any state.
 
