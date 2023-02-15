@@ -10,21 +10,6 @@ and rule integration for it.
 
 ***
 
-
-#### Common extended parameters
-
-`extended_parameters` that used in all rule types.
-
-
-| name                | description                                                                                                                   | type    |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
-| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
-| zone_limit_inverted | The rule tracked inside or outside zones. Default is: `false`.                                                                | boolean |
-| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
-| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
-
-***
-
 ### Geofence entrance or exit
 
 A rule that triggers on device entering/exiting created on platform [geofences](../../zone/index.md#list).
