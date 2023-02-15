@@ -10,32 +10,18 @@ and rule integration for it.
 
 ***
 
-### Common parameters
-
-Common parameters exist in all rule types.
-
-| name            | description                                                                                           | type        |
-|-----------------|-------------------------------------------------------------------------------------------------------|-------------|
-| description     | Rule's description.                                                                                   | string      |
-| primary_text    | Primary text of rule notification.                                                                    | string      |
-| alerts          | Alerts object with destinations for notifications. Described in [rule_object](./rule.md#rule-object). | JSON object |
-| suspended       | `true` if the rule suspended.                                                                         | boolean     |
-| name            | Name of a rule.                                                                                       | string      |
-| trackers        | List of bound tracker IDs.                                                                            | int array   |
-| extended_params | Extended parameters for the rule. Described below.                                                    | JSON object |
-| schedule        | The rule will work in specified period. Described in [rule_object](./rule.md#rule-object).            | JSON object |
-| zone_ids        | List of bound zones.                                                                                  | int array   |
 
 #### Common extended parameters
 
 `extended_parameters` that used in all rule types.
 
-| name                | description                                                                                         | type    |
-|---------------------|-----------------------------------------------------------------------------------------------------|---------|
-| emergency           | If `true` enables emergency notification.                                                           | boolean |
-| zone_limit_inverted | The rule tracked inside or outside zones. Default is: `false`.                                      | boolean |
-| private_rule        | Affects only sub users now. If `true` then the rule and notifications are visible only to sub user. | boolean |
-| append_zone_title   | Show or not a label of zone in a notification.                                                      | boolean |
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| zone_limit_inverted | The rule tracked inside or outside zones. Default is: `false`.                                                                | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -45,11 +31,19 @@ A rule that triggers on device entering/exiting created on platform [geofences](
 
 #### parameters
 
-| name           | description                                              | type                                              |
-|----------------|----------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "inoutzone".                             | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification on entering geofence.  | string                                            |
-| secondary_text | Secondary text of rule notification on exiting geofence. | string                                            |
+| name           | description                                     | type                                              |
+|----------------|-------------------------------------------------|---------------------------------------------------|
+| type           | `inoutzone` for this rule type.                 | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification on entering geofence. | string                                            |
+| secondary_text | Text of rule notification on exiting geofence.  | string                                            |
+
+#### extended parameters
+
+| name              | description                                                                                     | type    |
+|-------------------|-------------------------------------------------------------------------------------------------|---------|
+| emergency         | If `true` enables emergency notification.                                                       | boolean |
+| private_rule      | Affects only sub users. If `true` then the rule and notifications are visible only to sub user. | boolean |
+| append_zone_title | Show or not the zone labels in a notification text.                                             | boolean |
 
 ***
 
@@ -59,11 +53,20 @@ A rule that triggers on detection of parking state calculated based on [parking 
 
 #### parameters
 
-| name           | description                                         | type                                              |
-|----------------|-----------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "track_change".                     | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification on parking start. | string                                            |
-| secondary_text | Secondary text of rule notification on parking end. | string                                            |
+| name           | description                                 | type                                              |
+|----------------|---------------------------------------------|---------------------------------------------------|
+| type           | `track_change` for this rule type.          | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification on parking start. | string                                            |
+| secondary_text | Text of rule notification on parking end.   | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
 
 ***
 
@@ -73,9 +76,19 @@ A rule that triggers on speed exceeding determined by hardware. Based on the con
 
 #### parameters
 
-| name         | description                                          | type                                              |
-|--------------|------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "over_speed_reported".               | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                       | type                                              |
+|--------------|---------------------------------------------------|---------------------------------------------------|
+| type         | `over_speed_reported` for this rule type.         | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when speeding detected. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -85,30 +98,42 @@ A rule that triggers on speed exceeding determined by the platform. Based on rec
 
 #### parameters
 
-| name         | description                                          | type                                              |
-|--------------|------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "speedup".                           | [enum](../../../../getting-started.md#data-types) |
-| param        | Speed limit.                                         | int                                               |
+| name         | description                                                               | type                                              |
+|--------------|---------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `speedup` for this rule type.                                             | [enum](../../../../getting-started.md#data-types) |
+| param        | Speed limit.                                                              | int                                               |
+| primary_text | Text of rule notification when speed exceeds the specified `param` value. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
 ### Deviation from the route
 
-A rule that triggers on deviations from the route. The [route (sausage)](../../zone/index.md#sausage) geofence must be created. 
+A rule that triggers on deviations from the route. Only the [route (sausage) type](../../zone/index.md#sausage) geofence may be assigned. 
 
 #### parameters
 
-| name         | description                                         | type                                              |
-|--------------|-----------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "route".                            | [enum](../../../../getting-started.md#data-types) |
-| zone_ids     | Mandatory list of bound route zones. Can't be empty | int array                                         |
-
+| name         | description                                                | type                                              |
+|--------------|------------------------------------------------------------|---------------------------------------------------|
+| type         | `route` for this rule type.                                | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device outs the route zone. | string                                            |
 
 #### extended parameters
 
-| name                    | description                                                                              | type    |
-|-------------------------|------------------------------------------------------------------------------------------|---------|
-| allow_exit_at_endpoints | If `true` disables notifications on deviations from the start and end points of a route. | boolean |
+| name                    | description                                                                                     | type    |
+|-------------------------|-------------------------------------------------------------------------------------------------|---------|
+| allow_exit_at_endpoints | If `true` disables notifications on deviations from the start and end points of a route.        | boolean |
+| emergency               | If `true` enables emergency notification.                                                       | boolean |
+| private_rule            | Affects only sub users. If `true` then the rule and notifications are visible only to sub user. | boolean |
+| append_zone_title       | Show or not the zone labels in a notification text.                                             | boolean |
 
 ***
 
@@ -118,19 +143,22 @@ A rule that triggers when your employee drives more than allowed. The driving ti
 
 #### parameters
 
-| name           | description                                                        | type                                              |
-|----------------|--------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "excessive_driving".                               | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when driving time exceeded.      | string                                            |
-| secondary_text | Secondary text of rule notification on driving time exceeding end. | string                                            |
-
+| name           | description                                              | type                                              |
+|----------------|----------------------------------------------------------|---------------------------------------------------|
+| type           | `excessive_driving` for this rule type.                  | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when driving time exceeded.    | string                                            |
+| secondary_text | Text of rule notification on driving time exceeding end. | string                                            |
 
 #### extended parameters
 
-| name             | description                                                                                                  | type |
-|------------------|--------------------------------------------------------------------------------------------------------------|------|
-| max_driving_time | Allowed driving time. How much time your employee can drive a car                                            | int  |
-| min_parking_time | Minimum parking time to reset the timer. How much time your employee must wait until he can continue driving | int  |
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| max_driving_time    | Allowed driving time. How much time your employee can drive a car                                                             | int     |
+| min_parking_time    | Minimum parking time to reset the timer. How much time your employee must wait until he can continue driving                  | int     |
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -140,17 +168,21 @@ A rule that triggers when your employee standstill more than allowed. The parkin
 
 #### parameters
 
-| name           | description                                                        | type                                              |
-|----------------|--------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "excessive_parking".                               | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when parking time exceeded.      | string                                            |
-| secondary_text | Secondary text of rule notification on parking time exceeding end. | string                                            |
+| name           | description                                              | type                                              |
+|----------------|----------------------------------------------------------|---------------------------------------------------|
+| type           | `excessive_parking` for this rule type.                  | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when parking time exceeded.    | string                                            |
+| secondary_text | Text of rule notification on parking time exceeding end. | string                                            |
 
 #### extended parameters
 
-| name                  | description                                              | type |
-|-----------------------|----------------------------------------------------------|------|
-| max_parking_duration  | Allowed parking time. How much time a car can standstill | int  |
+| name                 | description                                                                                                                   | type    |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| max_parking_duration | Allowed parking time. How much time a car can standstill                                                                      | int     |
+| emergency            | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule         | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted  | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title    | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -160,36 +192,46 @@ A rule that triggers when assigned to a tracker [task](../../../field_service/ta
 
 #### parameters
 
-| name         | description                                                 | type                                              |
-|--------------|-------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "task_status_change".                       | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                                                                 | type                                              |
+|--------------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `task_status_change` for this rule type.                                                                    | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when task changes its status to a chosen one or form is submitted or resubmitted. | string                                            |
 
 #### extended parameters
 
-| name                        | description                                                                            | type         |
-|-----------------------------|----------------------------------------------------------------------------------------|--------------|
-| statuses                    | List of tracked statuses. Possible statuses are "arrived", "done","delayed", "failed". | string array |
-| on_form_submission          | If `true` form submission will track.                                                  | boolean      |
-| on_repeated_form_submission | If `true` form resubmission will track.                                                | boolean      |
+| name                        | description                                                                                                                   | type         |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------|--------------|
+| statuses                    | List of tracked statuses. Possible statuses are "arrived", "done","delayed", "failed".                                        | string array |
+| on_form_submission          | If `true` form submission will track.                                                                                         | boolean      |
+| on_repeated_form_submission | If `true` form resubmission will track.                                                                                       | boolean      |
+| emergency                   | If `true` enables emergency notification.                                                                                     | boolean      |
+| private_rule                | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean      |
+| zone_limit_inverted         | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean      |
+| append_zone_title           | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean      |
 
 ***
 
 ### Work status change
 
-A rule that triggers when tracker [work status](../../status/tracker.md) changes.
+A rule that triggers when tracker [work status](../../status/tracker.md) changes. Choose specific status IDs from a currently 
+assigned to tracker [status listing](../../status/listing/index.md).
 
 #### parameters
 
-| name         | description                                                 | type                                              |
-|--------------|-------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "work_status_change".                       | [enum](../../../../getting-started.md#data-types) |
-
+| name         | description                                                         | type                                              |
+|--------------|---------------------------------------------------------------------|---------------------------------------------------|
+| type         | `work_status_change` for this rule type.                            | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when work status changes to a chosen one. | string                                            |
 
 #### extended parameters
 
-| name       | description                 | type      |
-|------------|-----------------------------|-----------|
-| status_ids | List of tracked status IDs. | int array |
+| name                | description                                                                                                                                  | type      |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| status_ids          | List of tracked status IDs. Choose specific status IDs from a currently assigned to tracker [status listing](../../status/listing/index.md). | int array |
+| emergency           | If `true` enables emergency notification.                                                                                                    | boolean   |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                                              | boolean   |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                                       | boolean   |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`.                | boolean   |
 
 ***
 
@@ -199,11 +241,20 @@ A rule that triggers on excessive idling registered by hardware. Based on the co
 
 #### parameters
 
-| name           | description                                                                         | type                                              |
-|----------------|-------------------------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "idling".                                                           | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when excessive idling detected by device.         | string                                            |
-| secondary_text | Secondary text of rule notification when excessive idling end detected by a device. | string                                            |
+| name           | description                                                               | type                                              |
+|----------------|---------------------------------------------------------------------------|---------------------------------------------------|
+| type           | `idling` for this rule type.                                              | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when excessive idling detected by device.       | string                                            |
+| secondary_text | Text of rule notification when excessive idling end detected by a device. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                                  | type      |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| emergency           | If `true` enables emergency notification.                                                                                                    | boolean   |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                                              | boolean   |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                                       | boolean   |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`.                | boolean   |
 
 ***
 
@@ -213,12 +264,21 @@ A rule that triggers on excessive idling registered by the platform. The idling 
 
 #### parameters
 
-| name           | description                                                                         | type                                              |
-|----------------|-------------------------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "idling_soft".                                                      | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when excessive idling detected by platform.       | string                                            |
-| secondary_text | Secondary text of rule notification when excessive idling end detected by platform. | string                                            |
-| param          | Idle duration to send notification.                                                 | int                                               | 
+| name           | description                                                               | type                                              |
+|----------------|---------------------------------------------------------------------------|---------------------------------------------------|
+| type           | `idling_soft` for this rule type.                                         | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when excessive idling detected by platform.     | string                                            |
+| secondary_text | Text of rule notification when excessive idling end detected by platform. | string                                            |
+| param          | Idle duration to send notification.                                       | int                                               | 
+
+#### extended parameters
+
+| name                | description                                                                                                                                  | type      |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| emergency           | If `true` enables emergency notification.                                                                                                    | boolean   |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                                              | boolean   |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                                       | boolean   |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`.                | boolean   |
 
 ***
 
@@ -229,17 +289,21 @@ accuracy of the sensor in a span of ten minutes.
 
 #### parameters
 
-| name           | description                                                             | type                                              |
-|----------------|-------------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "fuel_level_leap".                                      | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification on drastically fuel level increase.   | string                                            |
-| secondary_text | Secondary text of rule notification on drastically fuel level decrease. | string                                            |
+| name           | description                                                   | type                                              |
+|----------------|---------------------------------------------------------------|---------------------------------------------------|
+| type           | `fuel_level_leap` for this rule type.                         | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification on drastically fuel level increase. | string                                            |
+| secondary_text | Text of rule notification on drastically fuel level decrease. | string                                            |
 
 #### extended parameters
 
-| name      | description           | type |
-|-----------|-----------------------|------|
-| sensor_id | ID of tracked sensor. | int  |
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| sensor_id           | ID of tracked sensor. Should be a fuel level sensor.                                                                          | int     |
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -249,9 +313,19 @@ A rule that triggers on harsh driving. Based on the configs on the device side.
 
 #### parameters
 
-| name         | description                                                        | type                                              |
-|--------------|--------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "harsh_driving".                                   | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                  | type                                              |
+|--------------|--------------------------------------------------------------|---------------------------------------------------|
+| type         | `harsh_driving` for this rule type.                          | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device detects harsh driving. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -261,21 +335,25 @@ A rule that triggers on warnings from driver-assistance systems (ADAS). Detected
 
 #### parameters
 
-| name         | description                                               | type                                              |
-|--------------|-----------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "driver_assistance".                      | [enum](../../../../getting-started.md#data-types) |
-
+| name         | description                                                               | type                                              |
+|--------------|---------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `driver_assistance` for this rule type.                                   | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device detects some of chosen ADAS events. | string                                            |
 
 #### extended parameters
 
-| name                             | description                       | type    |
-|----------------------------------|-----------------------------------|---------|
-| lane_departure_enabled           | If `true` lane departure tracked. | boolean |
-| forward_collision_enabled        | If `true` lane departure tracked. | boolean |
-| headway_warning_enabled          | If `true` lane departure tracked. | boolean |
-| peds_in_danger_zone_enabled      | If `true` lane departure tracked. | boolean |
-| peds_collision_warning_enabled   | If `true` lane departure tracked. | boolean |
-| traffic_sign_recognition_enabled | If `true` lane departure tracked. | boolean |
+| name                             | description                                                                                                                   | type    |
+|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| lane_departure_enabled           | If `true` lane departure tracked.                                                                                             | boolean |
+| forward_collision_enabled        | If `true` forward collision tracked.                                                                                          | boolean |
+| headway_warning_enabled          | If `true` headway warning tracked.                                                                                            | boolean |
+| peds_in_danger_zone_enabled      | If `true` peds in danger zone tracked.                                                                                        | boolean |
+| peds_collision_warning_enabled   | If `true` peds collision warning works.                                                                                       | boolean |
+| traffic_sign_recognition_enabled | If `true` traffic sign recognition works.                                                                                     | boolean |
+| emergency                        | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule                     | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted              | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title                | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -285,9 +363,19 @@ A rule that triggers on auto geofencing. When a car's ignition is off, and it ou
 
 #### parameters
 
-| name         | description                                                                            | type                                              |
-|--------------|----------------------------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "auto_geofence".                                                       | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                                          | type                                              |
+|--------------|--------------------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `auto_geofence` for this rule type.                                                  | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device outs automatically created geofence around it. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -297,22 +385,27 @@ Autocontrol related tracked rules like alarm, battery, doors and others. Based o
 
 #### parameters
 
-| name         | description                                                                | type                                              |
-|--------------|----------------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "autocontrol".                                             | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                                               | type                                              |
+|--------------|-------------------------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `autocontrol` for this rule type.                                                         | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device determines one of chosen autocontrol related rules. | string                                            |
 
 #### extended parameters
 
-| name             | description                                            | type        |
-|------------------|--------------------------------------------------------|-------------|
-| alarmcontrol     | Activation of car alarms. Described below              | JSON object |
-| battery_off      | Disabling of external power supply. Described below    | JSON object |
-| door_alarm       | Opening doors/trunk. Described below                   | JSON object |
-| hood_alarm       | Opening hood. Described below                          | JSON object |
-| ignition         | Ignition. Described below                              | JSON object |
-| parking          | Unauthorized movement. Described below                 | JSON object |
-| gsm_damp         | GSM-signal dumping (low signal level). Described below | JSON object |
-| security_control | Switching ON/OFF security mode. Described below        | JSON object |
+| name                | description                                                                                                                   | type        |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|-------------|
+| alarmcontrol        | Activation of car alarms. Described below                                                                                     | JSON object |
+| battery_off         | Disabling of external power supply. Described below                                                                           | JSON object |
+| door_alarm          | Opening doors/trunk. Described below                                                                                          | JSON object |
+| hood_alarm          | Opening hood. Described below                                                                                                 | JSON object |
+| ignition            | Ignition. Described below                                                                                                     | JSON object |
+| parking             | Unauthorized movement. Described below                                                                                        | JSON object |
+| gsm_damp            | GSM-signal dumping (low signal level). Described below                                                                        | JSON object |
+| security_control    | Switching ON/OFF security mode. Described below                                                                               | JSON object |
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean     |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean     |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean     |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean     |
 
 ???+ example "Map of sub-rules settings"
 ```json
@@ -385,9 +478,19 @@ A rule that triggers when device's sensors detect car crash. Based on the config
 
 #### parameters
 
-| name         | description                                                           | type                                              |
-|--------------|-----------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "crash_alarm".                                        | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                                  | type                                              |
+|--------------|------------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `crash_alarm` for this rule type.                                            | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device determines crash by its accelerometer. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -397,11 +500,20 @@ A rule that triggers when a device provides cruise control switching event. Base
 
 #### parameters
 
-| name           | description                                                        | type                                              |
-|----------------|--------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "cruise_control".                                  | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification for cruise control switch on.    | string                                            |
-| secondary_text | Secondary text of rule notification for cruise control switch off. | string                                            |
+| name           | description                                               | type                                              |
+|----------------|-----------------------------------------------------------|---------------------------------------------------|
+| type           | `cruise_control` for this rule type.                      | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when cruise control switch on.  | string                                            |
+| secondary_text | Text of rule notification when cruise control switch off. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -411,19 +523,23 @@ A rule that triggers a change in distance between objects. The distance is measu
 
 #### parameters
 
-| name           | description                                                    | type                                              |
-|----------------|----------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "distance_control".                            | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when distance is breached.   | string                                            |
-| secondary_text | Secondary text of rule notification when distance is restored. | string                                            |
+| name           | description                                          | type                                              |
+|----------------|------------------------------------------------------|---------------------------------------------------|
+| type           | `distance_control` for this rule type.               | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when distance is breached. | string                                            |
+| secondary_text | Text of rule notification when distance is restored. | string                                            |
 
 #### extended parameters
 
-| name                    | description                                                        | type                                              |
-|-------------------------|--------------------------------------------------------------------|---------------------------------------------------|
-| observed_trackers       | List of observed tracker IDs.                                      | int array                                         |
-| control_type            | Type of distance control. One of `["moving_away", "approaching"]`. | [enum](../../../../getting-started.md#data-types) |
-| control_distance_meters | Distance for control in meters.                                    | int                                               |
+| name                    | description                                                                                                                   | type                                              |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| observed_trackers       | List of observed tracker IDs.                                                                                                 | int array                                         |
+| control_type            | Type of distance control. One of `["moving_away", "approaching"]`.                                                            | [enum](../../../../getting-started.md#data-types) |
+| control_distance_meters | Distance for control in meters.                                                                                               | int                                               |
+| emergency               | If `true` enables emergency notification.                                                                                     | boolean                                           |
+| private_rule            | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean                                           |
+| zone_limit_inverted     | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean                                           |
+| append_zone_title       | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean                                           |
 
 ***
 
@@ -433,11 +549,20 @@ A rule that triggers when driver lefts or enters cabin. Detected by camera and b
 
 #### parameters
 
-| name           | description                                                     | type                                              |
-|----------------|-----------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "driver_enter_absence".                         | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when driver lefts a cabin.    | string                                            |
-| secondary_text | Secondary text of rule notification when driver enters a cabin. | string                                            |
+| name           | description                                           | type                                              |
+|----------------|-------------------------------------------------------|---------------------------------------------------|
+| type           | `driver_enter_absence` for this rule type.            | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when driver lefts a cabin.  | string                                            |
+| secondary_text | Text of rule notification when driver enters a cabin. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -447,9 +572,19 @@ A rule that triggers on driver change automatically by the key or manually in wi
 
 #### parameters
 
-| name         | description                                                                    | type                                              |
-|--------------|--------------------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "driver_change".                                               | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                       | type                                              |
+|--------------|-------------------------------------------------------------------|---------------------------------------------------|
+| type         | `driver_change` for this rule type.                               | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when a new driver assigned to a device. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -459,11 +594,20 @@ A rule that triggers when driver distracts from the road. Detected by camera and
 
 #### parameters
 
-| name           | description                                                         | type                                              |
-|----------------|---------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "driver_distraction".                               | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when driver distraction detected. | string                                            |
-| secondary_text | Secondary text of rule notification when driver distraction ends.   | string                                            |
+| name           | description                                                 | type                                              |
+|----------------|-------------------------------------------------------------|---------------------------------------------------|
+| type           | `driver_distraction` for this rule type.                    | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when driver distraction detected. | string                                            |
+| secondary_text | Text of rule notification when driver distraction ends.     | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -473,9 +617,19 @@ A rule that triggers when g-sensor or accelerometer detects falling.
 
 #### parameters
 
-| name         | description                                                      | type                                              |
-|--------------|------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "g_sensor".                                      | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                              | type                                              |
+|--------------|----------------------------------------------------------|---------------------------------------------------|
+| type         | `g_sensor` for this rule type.                           | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when g-sensor detects falling. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -485,11 +639,20 @@ A rule that triggers on fatigue driving. Detected by camera and based on the con
 
 #### parameters
 
-| name           | description                                                         | type                                              |
-|----------------|---------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "fatigue_driving".                                  | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when fatigue driving is detected. | string                                            |
-| secondary_text | Secondary text of rule notification when fatigue driving ends.      | string                                            |
+| name           | description                                                 | type                                              |
+|----------------|-------------------------------------------------------------|---------------------------------------------------|
+| type           | `fatigue_driving` for this rule type.                       | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when fatigue driving is detected. | string                                            |
+| secondary_text | Text of rule notification when fatigue driving ends.        | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -499,11 +662,20 @@ A rule that triggers on a driver identification with help of RFID, iButton or Ca
 
 #### parameters
 
-| name           | description                                                                 | type                                              |
-|----------------|-----------------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "driver_identification".                                    | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when the driver tag has been identified.  | string                                            |
-| secondary_text | Secondary text of rule notification when the driver tag was not identified. | string                                            |
+| name           | description                                                        | type                                              |
+|----------------|--------------------------------------------------------------------|---------------------------------------------------|
+| type           | `driver_identification` for this rule type.                        | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when the driver tag has been identified. | string                                            |
+| secondary_text | Text of rule notification when the driver tag was not identified.  | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -513,9 +685,19 @@ A rule that triggers when the device does not detect motion for longer than the 
 
 #### parameters
 
-| name         | description                                                   | type                                              |
-|--------------|---------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "no_movement".                                | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                                                                  | type                                              |
+|--------------|--------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `no_movement` for this rule type.                                                                            | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when a device does not detect motion for longer than the time set in its settings. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -525,9 +707,19 @@ A rule that triggers on SOS button pressing. Based on the configs on the device 
 
 #### parameters
 
-| name         | description                                                              | type                                              |
-|--------------|--------------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "sos".                                                   | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                        | type                                              |
+|--------------|----------------------------------------------------|---------------------------------------------------|
+| type         | `sos` for this rule type.                          | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when SOS button pressed. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -537,11 +729,20 @@ A rule that triggers on social distancing violation. Similar to distance between
 
 #### parameters
 
-| name           | description                                                        | type                                              |
-|----------------|--------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "proximity_violation".                             | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when safety distance breached.   | string                                            |
-| secondary_text | Secondary text of rule notification when safety distance restored. | string                                            |
+| name           | description                                              | type                                              |
+|----------------|----------------------------------------------------------|---------------------------------------------------|
+| type           | `proximity_violation` for this rule type.                | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when safety distance breached. | string                                            |
+| secondary_text | Text of rule notification when safety distance restored. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -551,9 +752,19 @@ A rule that triggers on unauthorized movement detected by accelerometer when ign
 
 #### parameters
 
-| name         | description                                                                            | type                                              |
-|--------------|----------------------------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "parking".                                                             | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                                 | type                                              |
+|--------------|-----------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `parking` for this rule type.                                               | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when movement detected by device's accelerometer. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -563,9 +774,19 @@ A rule that triggers on backup battery low. Based on the configs on the device s
 
 #### parameters
 
-| name         | description                                                | type                                              |
-|--------------|------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "backup_battery_low".                      | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                  | type                                              |
+|--------------|--------------------------------------------------------------|---------------------------------------------------|
+| type         | `backup_battery_low` for this rule type.                     | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when backup battery charge is low. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -575,11 +796,20 @@ A rule that triggers on bracelet sensor opening/closing. Based on the configs on
 
 #### parameters
 
-| name           | description                                               | type                                              |
-|----------------|-----------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "bracelet".                               | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when bracelet opened.   | string                                            |
-| secondary_text | Secondary text of rule notification when bracelet closed. | string                                            |
+| name           | description                                     | type                                              |
+|----------------|-------------------------------------------------|---------------------------------------------------|
+| type           | `bracelet` for this rule type.                  | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when bracelet opened. | string                                            |
+| secondary_text | Text of rule notification when bracelet closed. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -589,9 +819,19 @@ A rule that triggers on call button pressing. Based on the configs on the device
 
 #### parameters
 
-| name         | description                                                             | type                                              |
-|--------------|-------------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "call_button_pressed".                                  | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                         | type                                              |
+|--------------|-----------------------------------------------------|---------------------------------------------------|
+| type         | `call_button_pressed` for this rule type.           | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when call button pressed. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -601,9 +841,19 @@ A rule that triggers on car alarm. Based on the configs on the device side.
 
 #### parameters
 
-| name         | description                                                             | type                                              |
-|--------------|-------------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "alarmcontrol".                                         | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                        | type                                              |
+|--------------|----------------------------------------------------|---------------------------------------------------|
+| type         | `alarmcontrol` for this rule type.                 | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when car alarm triggers. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -613,9 +863,19 @@ A rule that triggers on case intrusion. Based on the configs on the device side.
 
 #### parameters
 
-| name         | description                                                     | type                                              |
-|--------------|-----------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "case_intrusion".                               | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                      | type                                              |
+|--------------|------------------------------------------------------------------|---------------------------------------------------|
+| type         | `case_intrusion` for this rule type.                             | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device determines case intrusion. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -625,9 +885,19 @@ A rule that triggers on check engine (MIL) events. Based on the configs on the d
 
 #### parameters
 
-| name         | description                                                                | type                                              |
-|--------------|----------------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "check_engine_light".                                      | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                             | type                                              |
+|--------------|-------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `check_engine_light` for this rule type.                                | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when check engine (MIL) detected by a device. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -637,11 +907,20 @@ A rule that triggers on connection/disconnection to the OBD2 port. Based on the 
 
 #### parameters
 
-| name           | description                                                                   | type                                              |
-|----------------|-------------------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "obd_plug_unplug".                                            | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when device connected to OBDII port.        | string                                            |
-| secondary_text | Secondary text of rule notification when device disconnected from OBDII port. | string                                            |
+| name           | description                                                         | type                                              |
+|----------------|---------------------------------------------------------------------|---------------------------------------------------|
+| type           | `obd_plug_unplug` for this rule type.                               | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when device connected to OBDII port.      | string                                            |
+| secondary_text | Text of rule notification when device disconnected from OBDII port. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -651,9 +930,19 @@ A rule that triggers on door opening in alarm mode. Based on the configs on the 
 
 #### parameters
 
-| name         | description                                                           | type                                              |
-|--------------|-----------------------------------------------------------------------|---------------------------------------------------|
-| type         | Default `type`: "door_alarm".                                         | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                              | type                                              |
+|--------------|----------------------------------------------------------|---------------------------------------------------|
+| type         | `door_alarm` for this rule type.                         | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when door opens in alarm mode. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -663,11 +952,20 @@ A rule that triggers on connection/disconnection of an external device. Based on
 
 #### parameters
 
-| name           | description                                                                         | type                                              |
-|----------------|-------------------------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "external_device_connection".                                       | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when external device connected to tracker.        | string                                            |
-| secondary_text | Secondary text of rule notification when external device disconnected from tracker. | string                                            |
+| name           | description                                                               | type                                              |
+|----------------|---------------------------------------------------------------------------|---------------------------------------------------|
+| type           | `external_device_connection` for this rule type.                          | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when external device connected to tracker.      | string                                            |
+| secondary_text | Text of rule notification when external device disconnected from tracker. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -677,11 +975,20 @@ A rule that triggers when device disconnects from car's battery. Based on the co
 
 #### parameters
 
-| name           | description                                                        | type                                              |
-|----------------|--------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "battery_off".                                     | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when external power disconnects. | string                                            |
-| secondary_text | Secondary text of rule notification when external power connects.  | string                                            |
+| name           | description                                                | type                                              |
+|----------------|------------------------------------------------------------|---------------------------------------------------|
+| type           | `battery_off` for this rule type.                          | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when external power disconnects. | string                                            |
+| secondary_text | Text of rule notification when external power connects.    | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -691,9 +998,19 @@ A rule that triggers on GPS antenna disconnect. Based on the configs on the devi
 
 #### parameters
 
-| name | description                           | type                                              |
-|------|---------------------------------------|---------------------------------------------------|
-| type | Default `type`: "antenna_disconnect". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                                 | type                                              |
+|--------------|-----------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `antenna_disconnect` for this rule type.                                    | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device determines GPS antenna disconnection. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -703,9 +1020,19 @@ A rule that triggers when device determines GPS jamming. Based on the configs on
 
 #### parameters
 
-| name | description                 | type                                              |
-|------|-----------------------------|---------------------------------------------------|
-| type | Default `type`: "gps_damp". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                   | type                                              |
+|--------------|---------------------------------------------------------------|---------------------------------------------------|
+| type         | `gps_damp` for this rule type.                                | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device determines GPS jamming. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -715,11 +1042,20 @@ A rule that triggers on GPS signal lost/recover. Based on the configs on the dev
 
 #### parameters
 
-| name           | description                                                   | type                                              |
-|----------------|---------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "gps_lost_recover".                           | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when GPS signal lost.       | string                                            |
-| secondary_text | Secondary text of rule notification when GPS signal recovers. | string                                            |
+| name           | description                                         | type                                              |
+|----------------|-----------------------------------------------------|---------------------------------------------------|
+| type           | `gps_lost_recover` for this rule type.              | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when GPS signal lost.     | string                                            |
+| secondary_text | Text of rule notification when GPS signal recovers. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -729,9 +1065,19 @@ A rule that triggers on GSM jamming. Based on the configs on the device side.
 
 #### parameters
 
-| name | description                 | type                                              |
-|------|-----------------------------|---------------------------------------------------|
-| type | Default `type`: "gsm_damp". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                   | type                                              |
+|--------------|---------------------------------------------------------------|---------------------------------------------------|
+| type         | `gsm_damp` for this rule type.                                | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device determines GSM jamming. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -741,9 +1087,19 @@ A rule that triggers on hood opening in alarm mode. Based on the configs on the 
 
 #### parameters
 
-| name | description                   | type                                              |
-|------|-------------------------------|---------------------------------------------------|
-| type | Default `type`: "hood_alarm". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                              | type                                              |
+|--------------|----------------------------------------------------------|---------------------------------------------------|
+| type         | `hood_alarm` for this rule type.                         | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when hood opens in alarm mode. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -754,9 +1110,19 @@ Based on the configs on the device side.
 
 #### parameters
 
-| name | description                 | type                                              |
-|------|-----------------------------|---------------------------------------------------|
-| type | Default `type`: "ignition". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                   | type                                              |
+|--------------|---------------------------------------------------------------|---------------------------------------------------|
+| type         | `ignition` for this rule type.                                | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when ignition starts in alarm mode. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -766,11 +1132,20 @@ A rule that triggers on when light sensor detects bright/dark environment. Based
 
 #### parameters
 
-| name           | description                                                | type                                              |
-|----------------|------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "light_sensor".                            | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when environment bright. | string                                            |
-| secondary_text | Secondary text of rule notification when environment dark. | string                                            |
+| name           | description                                        | type                                              |
+|----------------|----------------------------------------------------|---------------------------------------------------|
+| type           | `light_sensor` for this rule type.                 | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when environment bright. | string                                            |
+| secondary_text | Text of rule notification when environment dark.   | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -780,9 +1155,19 @@ A rule that triggers on location requests.
 
 #### parameters
 
-| name | description                          | type                                              |
-|------|--------------------------------------|---------------------------------------------------|
-| type | Default `type`: "location_response". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                                | type                                              |
+|--------------|----------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `location_response` for this rule type.                                    | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when location is requested manually from device. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -792,11 +1177,20 @@ A rule that triggers on locking/unlocking(padlock). Based on the configs on the 
 
 #### parameters
 
-| name           | description                                           | type                                              |
-|----------------|-------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "locking_unlocking".                  | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when lock opens.    | string                                            |
-| secondary_text | Secondary text of rule notification when lock closes. | string                                            |
+| name           | description                                 | type                                              |
+|----------------|---------------------------------------------|---------------------------------------------------|
+| type           | `locking_unlocking` for this rule type.     | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when lock opens.  | string                                            |
+| secondary_text | Text of rule notification when lock closes. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -806,9 +1200,19 @@ A rule that triggers on low internal battery. Based on the device's battery volt
 
 #### parameters
 
-| name | description                 | type                                              |
-|------|-----------------------------|---------------------------------------------------|
-| type | Default `type`: "lowpower". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                    | type                                              |
+|--------------|----------------------------------------------------------------|---------------------------------------------------|
+| type         | `lowpower` for this rule type.                                 | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device's battery charge is low. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -818,11 +1222,20 @@ A rule that triggers on padlock tampering. Based on the configs on the device si
 
 #### parameters
 
-| name           | description                                                          | type                                              |
-|----------------|----------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "strap_bolt".                                        | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when padlock has been forced.      | string                                            |
-| secondary_text | Secondary text of rule notification when padlock has been installed. | string                                            |
+| name           | description                                                | type                                              |
+|----------------|------------------------------------------------------------|---------------------------------------------------|
+| type           | `strap_bolt` for this rule type.                           | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when padlock has been forced.    | string                                            |
+| secondary_text | Text of rule notification when padlock has been installed. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -832,9 +1245,19 @@ A rule that triggers when someone detach tracker from the object. Based on the c
 
 #### parameters
 
-| name | description               | type                                              |
-|------|---------------------------|---------------------------------------------------|
-| type | Default `type`: "detach". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                              | type                                              |
+|--------------|--------------------------------------------------------------------------|---------------------------------------------------|
+| type         | `detach` for this rule type.                                             | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when device determines detach from the object. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -844,11 +1267,20 @@ A rule that triggers on tracker switch ON/OFF. Based on the configs on the devic
 
 #### parameters
 
-| name           | description                                                   | type                                              |
-|----------------|---------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "on_off".                                     | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when tracker switched off.  | string                                            |
-| secondary_text | Secondary text of rule notification when tracker switched on. | string                                            |
+| name           | description                                          | type                                              |
+|----------------|------------------------------------------------------|---------------------------------------------------|
+| type           | `on_off` for this rule type.                         | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when tracker switched off. | string                                            |
+| secondary_text | Text of rule notification when tracker switched on.  | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -858,12 +1290,19 @@ A rule that triggers when tracker loses connection with the server - gets red of
 
 #### parameters
 
-| name           | description                                                                          | type                                              |
-|----------------|--------------------------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "offline".                                                           | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when tracker switched off or lost connection.      | string                                            |
-| secondary_text | Secondary text of rule notification when tracker switched on or connection restored. | string                                            |
-| param          | Offline time to notification in minutes.                                             | int                                               |
+| name           | description                                                                | type                                              |
+|----------------|----------------------------------------------------------------------------|---------------------------------------------------|
+| type           | `offline` for this rule type.                                              | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when tracker switched off or lost connection.    | string                                            |
+| secondary_text | Text of rule notification when tracker switched on or connection restored. | string                                            |
+| param          | Offline time to notification in minutes.                                   | int                                               |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
 
 ***
 
@@ -873,9 +1312,19 @@ A rule that triggers on tracker switch ON. Based on the configs on the device si
 
 #### parameters
 
-| name | description                | type                                              |
-|------|----------------------------|---------------------------------------------------|
-| type | Default `type`: "poweron". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                         | type                                              |
+|--------------|-----------------------------------------------------|---------------------------------------------------|
+| type         | `poweron` for this rule type.                       | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when tracker switches on. | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -885,11 +1334,20 @@ A rule that triggers when vibration sensor determines vibration. Based on the co
 
 #### parameters
 
-| name           | description                                              | type                                              |
-|----------------|----------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "vibration".                             | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when vibration starts. | string                                            |
-| secondary_text | Secondary text of rule notification when vibration ends. | string                                            |
+| name           | description                                      | type                                              |
+|----------------|--------------------------------------------------|---------------------------------------------------|
+| type           | `vibration` for this rule type.                  | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when vibration starts. | string                                            |
+| secondary_text | Text of rule notification when vibration ends.   | string                                            |
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -899,12 +1357,21 @@ A rule that triggers when the input state changes.
 
 #### parameters
 
-| name           | description                                                  | type                                              |
-|----------------|--------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "input_change".                              | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when input switches on.    | string                                            |
-| secondary_text | Secondary text of rule notification when input switches off. | string                                            |
-| param          | Discrete input number.                                       | int                                               | 
+| name           | description                                        | type                                              |
+|----------------|----------------------------------------------------|---------------------------------------------------|
+| type           | `input_change` for this rule type.                 | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when input switches on.  | string                                            |
+| secondary_text | Text of rule notification when input switches off. | string                                            |
+| param          | Discrete input number.                             | int                                               | 
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -914,12 +1381,21 @@ A rule that triggers when the output state changes.
 
 #### parameters
 
-| name           | description                                                   | type                                              |
-|----------------|---------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "output_change".                              | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when output switches on.    | string                                            |
-| secondary_text | Secondary text of rule notification when output switches off. | string                                            |
-| param          | Output number.                                                | int                                               | 
+| name           | description                                         | type                                              |
+|----------------|-----------------------------------------------------|---------------------------------------------------|
+| type           | `output_change` for this rule type.                 | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when output switches on.  | string                                            |
+| secondary_text | Text of rule notification when output switches off. | string                                            |
+| param          | Output number.                                      | int                                               | 
+
+#### extended parameters
+
+| name                | description                                                                                                                   | type    |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
 
 ***
 
@@ -929,11 +1405,11 @@ A rule that triggers when value of a chosen measurement sensor gets into or out 
 
 #### parameters
 
-| name           | description                                                            | type                                              |
-|----------------|------------------------------------------------------------------------|---------------------------------------------------|
-| type           | Default `type`: "sensor_range".                                        | [enum](../../../../getting-started.md#data-types) |
-| primary_text   | Primary text of rule notification when sensor value goes out range.    | string                                            |
-| secondary_text | Secondary text of rule notification when sensor value goes into range. | string                                            |
+| name           | description                                                  | type                                              |
+|----------------|--------------------------------------------------------------|---------------------------------------------------|
+| type           | `sensor_range` for this rule type.                           | [enum](../../../../getting-started.md#data-types) |
+| primary_text   | Text of rule notification when sensor value goes out range.  | string                                            |
+| secondary_text | Text of rule notification when sensor value goes into range. | string                                            |
 
 #### extended parameters
 
@@ -952,9 +1428,10 @@ A rule that triggers when specified value of a chosen state field sensor detecte
 
 #### parameters
 
-| name | description                            | type                                              |
-|------|----------------------------------------|---------------------------------------------------|
-| type | Default `type`: "state_field_control". | [enum](../../../../getting-started.md#data-types) |
+| name         | description                                                         | type                                              |
+|--------------|---------------------------------------------------------------------|---------------------------------------------------|
+| type         | `state_field_control` for this rule type.                           | [enum](../../../../getting-started.md#data-types) |
+| primary_text | Text of rule notification when state field determines chosen value. | string                                            |
 
 #### extended parameters
 
