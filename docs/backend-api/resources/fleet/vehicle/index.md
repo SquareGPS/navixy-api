@@ -411,12 +411,12 @@ Convert batch of tab-delimited vehicles and return list of checked vehicles with
 
 #### parameters
 
-| name       | description                                                                                  | type         |
-|:-----------|:---------------------------------------------------------------------------------------------|:-------------|
-| batch      | Batch of tab-delimited vehicles.                                                             | string       |
-| file_id    | Preloaded file ID.                                                                           | string       |
-| fields     | Optional, array of field names, default is `["label", "model", "reg_number", "fuel_grade"]`. | string array |
-| } geocoder | Geocoder type.                                                                               | string       |
+| name     | description                                                                                  | type         |
+|:---------|:---------------------------------------------------------------------------------------------|:-------------|
+| batch    | Batch of tab-delimited vehicles.                                                             | string       |
+| file_id  | Preloaded file ID.                                                                           | string       |
+| fields   | Optional, array of field names, default is `["label", "model", "reg_number", "fuel_grade"]`. | string array |
+| geocoder | Geocoder type.                                                                               | string       |
 
 If `file_id` is set – `batch` parameter will be ignored.
 
