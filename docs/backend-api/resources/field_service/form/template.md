@@ -1,6 +1,6 @@
 ---
 title: Form templates
-description: Form is a one-shot entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields for future reference. Usually people need to fill forms with the same fields over an over again, so forms created on the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an electronic document, a template, on basis of which all paper forms printed.
+description: Form is an one-shot entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields for future reference. Usually people need to fill forms with the same fields over an over again, so forms created on the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an electronic document, a template, on basis of which all paper forms printed.
 ---
 
 # Form templates
@@ -202,7 +202,7 @@ Gets form template belonging to current master user by specified ID.
 
 #### errors
 
-* 201 – Not found in the database - if there is no template with such and ID.
+* 201 – Not found in the database - if there is no template with such an ID.
 
 ***
 

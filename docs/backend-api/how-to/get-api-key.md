@@ -8,13 +8,16 @@ description: How to obtain hash of an API key
 "Hash", "Session key" or "API Key" is a randomly generated string that is used to verify and authenticate actions.
 The hash of API key must be passed in most API calls.
 
+!!! note "You can get an API key in the user's web interface. This is the recommended way."
+
 !!! warning "Session hash is deprecated"
     To work with the API, it is necessary to use the API key, not the user's session hash.
     Work with API through the user's session is deprecated and will be disabled in the future.
     The only thing that API calls with a user session will work for is creating,
     reading, and deleting API keys.
 
-To get the API key, you first need to get the hash of the user's session,
+To get an API key, you can create it in the user's web interface.
+If it needs to be done automatically, you must first get a user's session hash,
 because creating a new API key using the another API key is not available.
 
 You can get the user's session hash by [user/auth](../resources/commons/user/index.md#auth) 

@@ -16,7 +16,7 @@ with these entities have similar names regardless the resource used: list, read,
 
 ## Standard workflow (example)
 
-Let's describe the standard workflow for API developer using very simple and most 
+Let us describe the standard workflow for API developer using very simple and most 
 common example — requesting the track points data:
 
 1. Determine [URL to API calls](#api-base-url).
@@ -24,6 +24,8 @@ common example — requesting the track points data:
 3. Get objects lists with [`tracker/list`](./how-to/get-tracker-list.md).
 4. Get track lists with [`track/list`](./resources/tracking/track/index.md#list).
 5. Get the track itself: [`track/read`](./resources/tracking/track/index.md#read).
+
+!!! note "You can get an API key via user's web interface. This is the recommended way."
 
 In other words, to start working with API, the developers should have API call 
 description (as provided herein), and know user login and password.
@@ -315,7 +317,7 @@ response example with UTC date/time :
 ### Error handling
 
 If an error occurs, API returns special error response. You can also detect error by checking 
-HTTP response code. If it's not `200 OK`, you should parse and handle response body as an error response.
+HTTP response code. If it is not `200 OK`, you should parse and handle response body as an error response.
 In the event of error occurs, the response will be in the following format:
 ```json
 {
@@ -392,7 +394,7 @@ are 1-100 and resource or action specific errors are 101-300.
 | 236  | Feature unavailable due to tariff restrictions                       | 402       |
 | 237  | Invalid tariff                                                       |           |
 | 238  | Changing tariff is not allowed                                       | 403       |
-| 239  | New tariff doesn't exist                                             | 404       |
+| 239  | New tariff does not exist                                            | 404       |
 | 240  | Not allowed to change tariff too frequently                          | 403       |
 | 241  | Cannot change phone to bundled sim. Contact tech support.            |           |
 | 242  | There were errors during content validation                          |           |

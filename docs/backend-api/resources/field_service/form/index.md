@@ -93,7 +93,7 @@ Android/iOS tracker applications). See [Task form actions](../task/form/index.md
 * `size` - int. Size in bytes. If file not uploaded, show maximum allowed size for the upload.
 * `metadata` - nullable metadata object.
 * `state` - [enum](../../../getting-started.md#data-types). Can be "created" | "in_progress" | "uploaded" | "deleted".
-* `download_url` - string. Actual url at which file is available. Can be null if file not yet uploaded.
+* `download_url` - string. Actual URL at which file is available. Can be null if file not yet uploaded.
 
 ***
 
