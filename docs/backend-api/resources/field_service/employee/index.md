@@ -103,7 +103,7 @@ Gets all employees and drivers belonging to user.
 }
 ```
 
-* `list` - a list of employee objects.
+* `list` - a list of employees.
 * `count` - int. Total number of employees (ignoring offset and limit).
 
 #### errors

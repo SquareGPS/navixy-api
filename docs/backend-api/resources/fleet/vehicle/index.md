@@ -168,9 +168,9 @@ Deletes a vehicles with the specified IDs. Only one of the following parameters 
 
 #### parameters
 
-| name       | description                  | type |
-|:-----------|:-----------------------------|:-----|
-| vehicle_id | ID of the vehicle to delete. | int  |
+| name        | description                        | type      |
+|:------------|:-----------------------------------|:----------|
+| vehicle_id  | ID of the vehicle to delete.       | int       |
 | vehicle_ids | An array of vehicle IDs to delete. | int array |
 
 #### examples
