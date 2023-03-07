@@ -34,7 +34,8 @@ Request sample:
       "target": {
         "type": "all"
       },
-      "rate_limit": "5s"
+      "rate_limit": "5s",
+      "format": "compact"
     }
   ]
 }
@@ -46,9 +47,11 @@ Request sample:
   * `type` - required, text: _"state_batch"_.
   * `target` - required, object. One of targets below.
   * `rate_limit` - optional, string. A timespan for batching.
+  * `format` - optional, [enum](../getting-started.md#data-types), one of: "full" (default), "compact".
 * Simple:
   * `type` - required, text: _"state"_.
   * `trackers` - required, int array. List of tracker ids.
+  * `format` - optional, [enum](../getting-started.md#data-types), one of: "full" (default), "compact".
 
 Sample:
 ```json
@@ -58,7 +61,8 @@ Sample:
     "type": "selected",
     "tracker_ids": [15564, 15565, 15568]
   },
-  "rate_limit": "5s"
+  "rate_limit": "5s",
+  "format": "full"
 }
 ```
 

@@ -27,7 +27,9 @@ Message fields:
 
 * `type` - "event".
 * `event` - "state".
-* `data` - [source state](../resources/tracking/tracker/index.md#get_state).
+* `data` - depends on `format` request parameter:
+  * "full" - [source state](../resources/tracking/tracker/index.md#get_state).
+  * "compact" - [compact source state](#compact-source-state).
 * `user_time` - current time in user's timezone.
 
 Message sample:
@@ -81,7 +83,9 @@ Message fields:
 
 * `type` - "event".
 * `event` - "state".
-* `data` - [source state](../resources/tracking/tracker/index.md#get_state) array.
+* `data` - depends on `format` request parameter:
+  * "full" - [source state](../resources/tracking/tracker/index.md#get_state) array.
+  * "compact" - [compact source state](#compact-source-state) array.
 * `user_time` - current time in user's timezone.
 
 Message sample:
@@ -122,6 +126,33 @@ Message sample:
 ```
 
 !!! note "`source_id` is not a `tracker_id`."
+
+***
+
+### Compact source state
+
+Sample:
+
+```json
+
+{
+  "source_id": 10284,
+  "gps": {
+    "updated": "2018-10-17 12:51:43",
+    "signal_level": 100,
+    "location": {
+      "lat": 14.330065796228606,
+      "lng": -90.99037259141691
+    },
+    "heading": 248,
+    "speed": 0,
+    "alt": 431
+  },
+  "connection_status": "active",
+  "movement_status": "parked",
+  "last_update": "2018-10-17 12:51:46"
+}
+```
 
 ***
 
