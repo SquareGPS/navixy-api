@@ -53,8 +53,15 @@ In a simplified form, opening the WebSocket using [atmosphere-javascript](https:
       subSocket.push(JSON.stringify({
           action: 'subscribe',
           hash: 'e4c24xxx4a08e9xxxc337xxxx5ca04e1',
-          events: ['state'],
-          trackers: [123, 321, 322, 233]
+          requests: [
+              {
+                  type: 'state_batch',
+                  target: {
+                      type: 'selected',
+                      tracker_ids: [123, 321, 322, 233]
+                  }
+              }
+          ]
       }));
   }
   
