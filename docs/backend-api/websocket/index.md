@@ -57,8 +57,7 @@ In a simplified form, opening the WebSocket using [atmosphere-javascript](https:
               {
                   type: 'state_batch',
                   target: {
-                      type: 'selected',
-                      tracker_ids: [123, 321, 322, 233]
+                      type: 'all'
                   }
               }
           ]
