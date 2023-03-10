@@ -22,6 +22,12 @@ Request parameters:
 * `hash` - required, string, length=32. Session hash code obtained by [user/auth](../resources/commons/user/index.md#auth) action.
 * `requests` - required, object array. See requests' structure below.
 
+!!! warning "Deprecated"
+    Parameters below are deprecated by `requests` and should not be used.
+
+* `trackers` - required, int array, without nulls. List of tracker IDs for the events that require a subscription.
+* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
+
 Request sample:
 
 ```json
