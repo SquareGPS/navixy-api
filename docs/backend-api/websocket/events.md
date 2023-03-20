@@ -16,6 +16,8 @@ All event messages contain the next fields:
 
 ## State event
 
+!!! note "Can be used for 100 devices. If there are more devices, please use state batch event"
+
 These messages are coming from server if client [subscribed](./subscription.md)
 to the `state` events of the specific tracker that not blocked. It occurs in the next cases:
 
