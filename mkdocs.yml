@@ -89,6 +89,7 @@ markdown_extensions:
       guess_lang: false
   - markdown.extensions.meta
   - markdown.extensions.toc:
+      toc_depth: 3
       permalink: true
   - pymdownx.betterem:
       smart_enable: all
