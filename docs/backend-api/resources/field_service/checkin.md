@@ -13,7 +13,7 @@ provided by app user after pressing the "Check-in" in the tracker app.
 Using check-ins field personnel can provide information to their HQ while on site. For example, provide photo proof 
 of the work done, or notify about a malfunction along with filled form describing the problem.
 
-Check-ins cannot be created using web API, so all actions are read-only.
+Check-ins cannot be created using web API ([create](#create) is needed for exceptional cases), so all actions are read-only.
 
 ***
 
@@ -279,3 +279,42 @@ Deletes check-ins with the specified IDs.
 * 7 – Invalid parameters.
 * 201 - Not found in the database - check-ins with the specified IDs don't exist, or their corresponding 
 trackers are not available to current sub-user.
+
+***
+
+### create
+
+Creates a new check-in. Needed for exceptional cases.
+
+**required sub-user rights**: `checkin_update`.
+
+#### parameters
+
+| name            | description                                                                                                   | type        |
+|:----------------|:--------------------------------------------------------------------------------------------------------------|:------------|
+| tracker_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                                 | int         |
+| location        | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
+| comment         | Optional                                                                                                      | string      |
+| file_ids        | Optional. Preloaded file IDs.                                                                                 | int array   |
+| form_submission | Optional, only present when sending form along with check-in                                                  | JSON object |
+
+where `form_submission` type is JSON object:
+
+```json
+{
+  "form_id": <int>, // id of the form previously created with form/create
+  "values": {
+    // map contating values for form fields
+  }
+}
+```
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/checkin/delete' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 22, "location": { "lat": 9.861999, "lng": -83.948999 }, "comment": "houston, we have a problem", "file_ids": [11, 22], "form_submission": { "form_id": 23423, "values": {"111-aaa-whatever": { "type": "text", "value": "John Doe" }} }}'
+    ```

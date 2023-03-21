@@ -19,7 +19,12 @@ but must be sent inside open `WebSocket` channel and use only JSON format for me
 Request parameters:
 
 * `action` (text: "subscribe").
-* `hash` - required. Hash of an [API Key](../resources/commons/api-keys.md) action.
+* `hash` - required, string, length=32. Session hash code obtained by [user/auth](../resources/commons/user/index.md#auth) action.
+* `requests` - required, object array. See requests' structure below.
+
+!!! warning "Deprecated"
+    Parameters below are deprecated by `requests` and should not be used.
+
 * `trackers` - required, int array, without nulls. List of tracker IDs for the events that require a subscription.
 * `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
 
@@ -29,10 +34,60 @@ Request sample:
 {
   "action": "subscribe",
   "hash": "f4bf1b75403d851653dad99c78c4b237",
-  "events": ["state"],
-  "trackers": [15564, 15565, 15568]
+  "requests": [
+    {
+      "type": "state_batch",
+      "target": {
+        "type": "all"
+      },
+      "rate_limit": "5s",
+      "format": "compact"
+    }
+  ]
 }
 ```
+
+
+#### Sub requests:
+* Batching (preferred):
+  * `type` - required, text: _"state_batch"_.
+  * `target` - required, object. One of targets below.
+  * `rate_limit` - optional, string. A timespan for batching.
+  * `format` - optional, [enum](../getting-started.md#data-types), one of: "full" (default), "compact".
+* Simple:
+  * `type` - required, text: _"state"_.
+  * `trackers` - required, int array. List of tracker ids.
+  * `format` - optional, [enum](../getting-started.md#data-types), one of: "full" (default), "compact".
+
+Sample:
+```json
+{
+  "type": "state_batch",
+  "target": {
+    "type": "selected",
+    "tracker_ids": [15564, 15565, 15568]
+  },
+  "rate_limit": "5s",
+  "format": "full"
+}
+```
+
+
+##### Request targets:
+* All trackers:
+  * `type` - required, text: _"all"_.
+* Selected trackers:
+  * `type` - required, text: _"selected"_.
+  * `tracker_ids` - required, int array.
+
+Sample:
+
+```json
+{
+  "type": "all"
+}
+```
+
 
 ### Response
 
@@ -42,7 +97,12 @@ Response parameters:
 * `action` - required, text: _"subscription/subscribe"_.
 * `events` - required, array of [enum](../getting-started.md#data-types), without nulls. List of the subscribed events. Event can be `state`.
 * `data` - required, map <string, object>. Map with events subscription result. One key per subscribed event.
-  * `state` - presented if the "state" subscription requested, map <string, enum> - the current status of requested trackers.
+  * `state` - present if the "state" subscription requested, see sub response below.
+  * `state_batch` - present if the "state_batch" subscription requested, see sub response below.
+
+Sub response:
+* `success` - required, boolean.
+* `value` - required, map <string, enum>, present if success. The current status of requested trackers.
 
 Keys is a tracker IDs, values - one of the item:
 
@@ -66,9 +126,12 @@ Response sample:
   "events": ["state"],
   "data": {
     "state": {
-      "15564": "normal",
-      "15565": "blocked",
-      "15568": "unknown"
+      "value": {
+        "15564": "normal",
+        "15565": "blocked",
+        "15568": "unknown"
+      },
+      "success": true
     }
   }
 }
@@ -76,59 +139,28 @@ Response sample:
 
 ### The "state" event subscription
 
-After subscribe on the "state", server will send the current states of all non-blocked trackers to 
-which the subscription made.
-When changing the state of any tracker to which a subscription made, the server will 
-send a new state in the [event message](./events.md#state-event).
+After subscribe on the "state",
+server will send the current states of all non-blocked trackers to which the subscription made.
+When changing the state of any tracker to which a subscription made,
+the server will send a new state in the [event message](./events.md#state-event).
+
+### The "state_batch" event subscription
+
+After subscribe on the "state",
+server will send the current states of all non-blocked trackers to which the subscription made.
+After each period equal to `rate_limit`,
+the server will send a list of changed tracker states in the [event message](./events.md#state-event).
 
 ### Automatic subscriptions
 
-- Subscribing to a `state` automatically creates a subscription to [lifecycle events](./events.md#state-event).
+- Subscribing to a `state` or `state_batch` automatically creates a subscription to [lifecycle events](./events.md#state-event).
 - Subscribing to any event automatically creates a subscription to [logout events](./events.md#logout-event).
 
 ***
 
 ## Unsubscribe Action
 
-### Request
-
-Request parameters:
-
-* `action` - text: _"unsubscribe"_.
-* `hash` - required. Hash of an [API Key](../resources/commons/api-keys.md) action.
-* `trackers` - required, int array, without nulls. List of tracker IDs for events that require an unsubscription.
-* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to unsubscribe. Event can be `state`.
-
-Request sample:
-
-```json
-{
-  "action": "unsubscribe",
-  "hash": "f4bf1b75403d851653dad99c78c4b237",
-  "events": ["state"],
-  "trackers": [15568]
-}
-```
-
-### Response
-
-Response parameters:
-
-* `type` - required, text: _"response"_.
-* `action` - required, text: _"subscription/unsubscribe"_.
-* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of unsubscribed events. Event can be `state`.
-* `data` - required, int array, without nulls. List of tracker IDs from request.
-
-Response sample:
-
-```json
-{
-  "type": "response",
-  "action": "subscription/unsubscribe",
-  "events": ["state"],
-  "data": [15568]
-}
-```
+For structure see [Subscribe Action](#subscribe-action).
 
 ***
 
