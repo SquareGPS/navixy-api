@@ -45,20 +45,34 @@ Gets last values for all metering sensors and state values.
   "success": true,
   "inputs": [
     {
-            "value": 5.66,
-            "label": "label",
-            "units": "litres",
-            "name": "fuel_level",
-            "type": "fuel",
-            "units_type": "custom",
-            "update_time": "2019-03-16 11:15:19"
-        }
+      "value": 5.66,
+      "label": "label",
+      "units": "litres",
+      "name": "fuel_level",
+      "type": "fuel",
+      "units_type": "custom",
+      "update_time": "2023-03-16 11:15:19"
+    }
   ],
   "states": [
     {
-       "field": "obd_mil_status",
-       "value": 12345.23,
-       "update_time": "2019-03-16 11:15:19"
+      "field": "obd_mil_status",
+      "value": 12345.23,
+      "update_time": "2023-03-16 11:15:19"
+    }
+  ],
+  "virtual_sensors": [
+    {
+      "label": "Virtual Ignition",
+      "value": "On",
+      "type": "virtual_ignition",
+      "update_time": "2023-03-21 20:49:41"
+    },
+    {
+      "label": "Hood state",
+      "value": "Closed",
+      "type": "state",
+      "update_time": "2023-03-21 20:48:40"
     }
   ]
 }
