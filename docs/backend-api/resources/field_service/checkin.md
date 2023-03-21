@@ -290,13 +290,13 @@ Creates a new check-in. Needed for exceptional cases.
 
 #### parameters
 
-| name            | description                                                                                                   | type        |
-|:----------------|:--------------------------------------------------------------------------------------------------------------|:------------|
-| tracker_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                                 | int         |
-| location        | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
-| comment         | Optional                                                                                                      | string      |
-| file_ids        | Optional. Preloaded file IDs.                                                                                 | int array   |
-| form_submission | Optional, only present when sending form along with check-in                                                  | JSON object |
+| name            | description                                                                                                | type        |
+|:----------------|:-----------------------------------------------------------------------------------------------------------|:------------|
+| tracker_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                              | int         |
+| location        | Location coordinates (see: [data types description section](../../getting-started.md#data-types) section). | JSON object |
+| comment         | Optional                                                                                                   | string      |
+| file_ids        | Optional. Preloaded file IDs.                                                                              | int array   |
+| form_submission | Optional, only present when sending form along with check-in                                               | JSON object |
 
 where `form_submission` type is JSON object:
 
@@ -304,7 +304,7 @@ where `form_submission` type is JSON object:
 {
   "form_id": <int>, // id of the form previously created with form/create
   "values": {
-    // map contating values for form fields
+    // map which contains values for form fields
   }
 }
 ```
