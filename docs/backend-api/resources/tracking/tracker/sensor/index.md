@@ -9,7 +9,7 @@ Contains API calls to interact with sensors.
 
 ***
 
-## Sensor sub-types:
+## Sensor sub-types
 
 ### Metering sensor
 
@@ -35,10 +35,11 @@ Contains API calls to interact with sensors.
 }
 ```
 
+* `type` - string. Always "metering".
 * `id` - int. Sensor's id.
 * `sensor_type` - [enum](../../../../getting-started.md#data-types)
-* `name` - string. A name of sensor.
-* `input_name` - string. 
+* `name` - string, max size 100. A name of sensor.
+* `input_name` - string, max size 64. 
 * `divider` - double. 
 * `accuracy` - double. The minimum=`0.0`, maximum=`100.0` with step `0.25`.
 * `units` - string.
@@ -67,12 +68,58 @@ Contains API calls to interact with sensors.
 }
 ```
 
+* `type` - string. Always "discrete".
 * `id` - int. An ID of a sensor.
 * `sensor_type` - [enum](../../../../getting-started.md#data-types). Type of the sensor.
-* `name` - string.
-* `input_number` - int. Assigned input number.
+* `name` - string, max size 100.
+* `input_number` - int, [1..8]. Assigned input number.
 
 ***
+
+### Virtual sensor
+
+```json
+{
+  "type": "virtual",
+  "id": 1700049,
+  "sensor_type": "virtual_ignition",
+  "name": "Virtual Ignition",
+  "input_name": "board_voltage",
+  "parameters": {
+    "calc_method": "in_range",
+    "range_from": 13.4,
+    "value_titles": [{
+        "value": "0",
+        "title": "Off"
+    }, {
+        "value": "1",
+        "title": "On"
+    }]
+  }
+}
+```
+
+* `type` - string. Always "virtual".
+* `id` - int. Sensor's id.
+* `sensor_type` - [enum](../../../../getting-started.md#data-types). "virtual_ignition" for virtual ignition or "state" for others.
+* `name` - string, max size 100. A name of sensor.
+* `input_name` - string, max size 64. An source input field name (identifier).
+* `parameters` - optional object with additional parameters.
+  * `calc_method` - [enum](../../../../getting-started.md#data-types). A method of sensor value calculation. One of this: "in_range", "identity", "bit_index".
+  * `range_from` - double. Low bound of range. It is used only with "in_range" calc method.
+  * `range_to` - double. High bound of range. It is used only with "in_range" calc method.
+  * `bit_index` - int, [1..N]. A bit index in input field source value. It is used only with "bit_index" calc method.
+  * `value_titles` - mapping for bind special titles for sensor values, if it is necessary.
+    * `value` - string, max size 64. Sensor value. 
+    * `title` - string, max size 64. Title for the sensor value.
+
+Some requirements:
+
+* There can be only one virtual sensor with type `virtual_ignition` for tracker.
+* One or both field `range_from` and `range_to` must be present for the calc method "in_range".
+* Field `bit_index` must be present for the calc method "bit_index".
+* There can be no more than 100 value titles.
+* All of the values must be unique within `value_titles`.
 
 ## API actions
 
@@ -342,7 +389,8 @@ Copies sensors from one tracker to another.
 
 ### data/read
 
-Gets all metering sensor readings with values and time per requested period.
+Gets all metering or virtual sensor readings with values and time per requested period.
+It can't be used with discrete sensor. 
 
 #### parameters
 
@@ -380,6 +428,9 @@ Gets all metering sensor readings with values and time per requested period.
   ]
 }
 ```
+
+* `value` - a value of sensor data. It can be double, int or string depending on the sensor type.
+* `get_time` - time then value was received.
 
 #### errors
 
