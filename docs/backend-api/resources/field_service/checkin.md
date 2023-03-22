@@ -290,13 +290,13 @@ Creates a new check-in. Needed for exceptional cases.
 
 #### parameters
 
-| name            | description                                                                                                | type        |
-|:----------------|:-----------------------------------------------------------------------------------------------------------|:------------|
-| tracker_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                              | int         |
-| location        | Location coordinates (see: [data types description section](../../getting-started.md#data-types) section). | JSON object |
-| comment         | Optional                                                                                                   | string      |
-| file_ids        | Optional. Preloaded file IDs.                                                                              | int array   |
-| form_submission | Optional, only present when sending form along with check-in                                               | JSON object |
+| name            | description                                                                                                   | type        |
+|:----------------|:--------------------------------------------------------------------------------------------------------------|:------------|
+| tracker_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                                 | int         |
+| location        | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
+| comment         | Optional.                                                                                                     | string      |
+| file_ids        | Optional. IDs of files created by checkin/image/create).                                                      | int array   |
+| form_submission | Optional, only present when sending form along with check-in.                                                 | JSON object |
 
 where `form_submission` type is JSON object:
 
@@ -318,3 +318,70 @@ where `form_submission` type is JSON object:
         -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 22, "location": { "lat": 9.861999, "lng": -83.948999 }, "comment": "houston, we have a problem", "file_ids": [11, 22], "form_submission": { "form_id": 23423, "values": {"111-aaa-whatever": { "type": "text", "value": "John Doe" }} }}'
     ```
+
+#### response
+
+```json
+{
+  "success": true,
+  "id": 111
+}
+```
+
+#### errors
+* 7 – Invalid parameters.
+* 201 – Not found in the database - form with the specified IDs don't exist, or their corresponding
+  trackers are not available to current sub-user.
+* 242 – There were errors during content validation, if given values are invalid for the form.
+
+***
+
+### image/create
+
+Creates an image for check-in.
+
+#### parameters
+
+| name     | description                                                                                                                             | type        |
+|:---------|:----------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| size     | Maximum size in bytes for the file which will be uploaded. This is needed to "reserve" the space for a file in user's disk space quota. | int         |
+| filename | Optional. If specified, uploaded file will have the specified name. If not, name will be taken from actual file upload form.            | string      |
+| metadata | Optional. Metadata object (for images only).                                                                                            | JSON object |
+
+#### response
+
+The response is similar to the response to [task/form/file/create](task/form/file.md#create)
+
+#### errors
+
+* 268 – File cannot be created due to quota violation.
+* 271 - File size is larger than the maximum allowed (by default 16 MB).
+
+***
+
+### form/file/create
+
+Creates a new file entry associated with form's field.
+
+#### parameters
+
+| name       | description                                                                                                                             | type        |
+|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| checkin_id | ID of the check-in to which form attached.                                                                                              | int         |
+| field_id   | ID of the form's field to which a new file should be attached.                                                                          | string      |
+| size       | Maximum size in bytes for the file which will be uploaded. This is needed to "reserve" the space for a file in user's disk space quota. | int         |
+| filename   | Optional. If specified, uploaded file will have the specified name. If not, name will be taken from actual file upload form.            | string      |
+| metadata   | Optional. Metadata object (for images only).                                                                                            | JSON object |
+
+#### response
+
+The response is similar to the response to [task/form/file/create](task/form/file.md#create)
+
+#### errors
+
+* 201 – Not found in the database - if there is no check-in with such an ID, or task doesn't have form, or form has no
+  field with such a field_id.
+* 231 – Entity type mismatch - if form field is not file-based, i.e. doesn't use file ID as its value.
+* 267 – Too many entities - if there are 6 or more unsubmitted files already associated with this form's field.
+* 268 – File cannot be created due to quota violation.
+* 271 - File size is larger than the maximum allowed (by default 16 MB).
