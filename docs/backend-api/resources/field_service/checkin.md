@@ -277,7 +277,7 @@ Deletes check-ins with the specified IDs.
 #### errors
 
 * 7 – Invalid parameters.
-* 201 - Not found in the database - check-ins with the specified IDs don't exist, or their corresponding 
+* 201 – Not found in the database - check-ins with the specified IDs don't exist, or their corresponding 
 trackers are not available to current sub-user.
 
 ***
@@ -355,7 +355,49 @@ The response is similar to the response to [task/form/file/create](task/form/fil
 #### errors
 
 * 268 – File cannot be created due to quota violation.
-* 271 - File size is larger than the maximum allowed (by default 16 MB).
+* 271 – File size is larger than the maximum allowed (by default 16 MB).
+
+***
+
+### form/create
+
+Creates a new form that can be attached to a check-in. Form always created on the basis of form template.
+
+#### parameters
+
+| name        | description                                                                   | type |
+|:------------|:------------------------------------------------------------------------------|:-----|
+| tracker_id  | ID of the tracker. Tracker must belong to authorized user and not be blocked. | int  |
+| template_id | ID of the form template.                                                      | int  |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/checkin/form/create' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 22, "template_id": 12548}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/checkin/form/create?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=22&template_id=12548
+    ```
+
+#### response
+
+```json
+{
+  "success": true,
+  "id": 23423
+}
+```
+
+#### errors
+
+* 201 – Not found in the database - if there is no template with such an ID.
 
 ***
 
@@ -368,10 +410,23 @@ Creates a new file entry associated with form's field.
 | name       | description                                                                                                                             | type        |
 |:-----------|:----------------------------------------------------------------------------------------------------------------------------------------|:------------|
 | checkin_id | ID of the check-in to which form attached.                                                                                              | int         |
+| form_id    | ID of the form.                                                                                                                         | int         |
 | field_id   | ID of the form's field to which a new file should be attached.                                                                          | string      |
 | size       | Maximum size in bytes for the file which will be uploaded. This is needed to "reserve" the space for a file in user's disk space quota. | int         |
 | filename   | Optional. If specified, uploaded file will have the specified name. If not, name will be taken from actual file upload form.            | string      |
 | metadata   | Optional. Metadata object (for images only).                                                                                            | JSON object |
+
+* Use only one parameter `checkin_id` or `form_id`.
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/checkin/form/file/create' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkin_id": 1, "field_id": "111-aaa-whatever", "size": 101}'
+    ```
 
 #### response
 
@@ -379,9 +434,9 @@ The response is similar to the response to [task/form/file/create](task/form/fil
 
 #### errors
 
-* 201 – Not found in the database - if there is no check-in with such an ID, or task doesn't have form, or form has no
+* 201 – Not found in the database - if there is no check-in with such an ID, or check-in doesn't have form, or form has no
   field with such a field_id.
 * 231 – Entity type mismatch - if form field is not file-based, i.e. doesn't use file ID as its value.
 * 267 – Too many entities - if there are 6 or more unsubmitted files already associated with this form's field.
 * 268 – File cannot be created due to quota violation.
-* 271 - File size is larger than the maximum allowed (by default 16 MB).
+* 271 – File size is larger than the maximum allowed (by default 16 MB).
