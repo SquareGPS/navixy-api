@@ -30,7 +30,10 @@ Contains API calls to interact with sensors.
       "min": 0.0,
       "max": 12.0,
       "max_lowering_by_time": 120.0,
-      "max_lowering_by_mileage": 120.0
+      "max_lowering_by_mileage": 120.0,
+      "ignore_drains_in_move": true,
+      "ignore_refuels_in_move": false,
+      "refuel_gap_minutes": 11
     }
 }
 ```
@@ -53,6 +56,9 @@ Contains API calls to interact with sensors.
     * `max` - optional. Double. Max acceptable raw value for a sensor.
     * `max_lowering_by_time` - optional. Double. Max legal value lowering per hour.
     * `max_lowering_by_mileage` - optional. Double. Max legal value lowering per 100 km.
+    * `ignore_drains_in_move` - optional. Boolean. Default is false. If true, the fuel drains will not be detected during movement.
+    * `ignore_refuels_in_move` - optional. Boolean. Default is false. If true, the refuels will not be detected during movement.
+    * `refuel_gap_minutes` -  optional. Integer. Default is 5. Time in minutes after the start of the movement, refuels will be detected during movement.
 
 ***
 
