@@ -290,19 +290,19 @@ Creates a new check-in. Needed for exceptional cases.
 
 #### parameters
 
-| name            | description                                                                                                   | type        |
-|:----------------|:--------------------------------------------------------------------------------------------------------------|:------------|
-| tracker_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                                 | int         |
-| location        | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
-| comment         | Optional.                                                                                                     | string      |
-| file_ids        | Optional. IDs of files created by checkin/image/create).                                                      | int array   |
-| form_submission | Optional, only present when sending form along with check-in.                                                 | JSON object |
+| name            | description                                                                                                | type        |
+|:----------------|:-----------------------------------------------------------------------------------------------------------|:------------|
+| tracker_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                              | int         |
+| location        | Location coordinates (see: [data types description section](../../getting-started.md#data-types) section). | JSON object |
+| comment         | Optional.                                                                                                  | string      |
+| file_ids        | Optional. IDs of files created by checkin/image/create).                                                   | int array   |
+| form_submission | Optional, only present when sending form along with check-in.                                              | JSON object |
 
 where `form_submission` type is JSON object:
 
 ```json
 {
-  "form_id": <int>, // id of the form previously created with form/create
+  "form_id": <int>, // id of the form previously created with checkin/form/create
   "values": {
     // map which contains values for form fields
   }
@@ -314,7 +314,7 @@ where `form_submission` type is JSON object:
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/checkin/delete' \
+    curl -X POST '{{ extra.api_example_url }}/checkin/create' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 22, "location": { "lat": 9.861999, "lng": -83.948999 }, "comment": "houston, we have a problem", "file_ids": [11, 22], "form_submission": { "form_id": 23423, "values": {"111-aaa-whatever": { "type": "text", "value": "John Doe" }} }}'
     ```
@@ -350,7 +350,135 @@ Creates an image for check-in.
 
 #### response
 
-The response is similar to the response to [task/form/file/create](task/form/file.md#create)
+when using internal storage:
+```json
+{
+  "success": true,
+  "value": {
+    "file_id": 111,
+    "url": "http://bla.org/bla",
+    "expires": "2020-02-03 03:04:00",
+    "file_field_name": "file",
+    "fields": {
+      "token": "a43f43ed4340b86c808ac"
+    }
+  }
+}
+```
+
+when using the Amazon S3:
+```json
+{
+  "success": true,
+  "value": {
+    "file_id": 111,
+    "url": "https://bla.s3.amazonaws.com/",
+    "expires": "2020-02-03 03:04:00",
+    "file_field_name": "file",
+    "fields": {
+      "policy": "<Base64-encoded policy string>",
+      "key": "user/user1/${filename}",
+      "success_action_status": "200",
+      "x-amz-algorithm": "AWS4-HMAC-SHA256",
+      "x-amz-credential": "AKIAIOSFODNN7EXAMPLE/20151229/us-east-1/s3/aws4_request",
+      "x-amz-date": "20151229T000000Z",
+      "x-amz-signature": "<signature-value>",
+      "x-amz-server-side-encryption": "AES256",
+      "content-type": "image/png"
+    }
+  }
+}
+```
+
+* `file_id` - int. This value will be submitted as form's field value.
+* `url` - string. A URL to which POST form-data with file contents should be executed.
+* `expires` - date/time. After this date file record wil expire and upload requests will be rejected.
+* `file_field_name` - string. Name for file field in POST upload request.
+* `fields` - these fields should be passed as additional fields in POST multipart upload request, field with a file
+  must be the last one.
+
+#### How to upload file data
+
+Here's an example of upload you must make after receiving such response (assuming you uploading image named `actual_file_name.png`):
+
+Internal storage example:
+
+```http
+POST /bla HTTP/1.1
+Host: bla.org
+Content-Length: 1325
+Origin: http://bla.org
+... other headers ...
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="token"
+
+a43f43ed4340b86c808ac
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="actual_file_name.png"
+Content-Type: image/png
+
+... contents of file goes here ...
+--WebAppBoundary--
+```
+
+Amazon S3 example:
+```http
+POST / HTTP/1.1
+Host:  https://bla.s3.amazonaws.com
+Content-Length: 1972
+Origin: https://bla.s3.amazonaws.com/
+... other headers ...
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="policy"
+Content-Type: text/plain
+
+eyJleHBpcmF0aW9uIjogIjIwMjMtMDMtMjdUMjE6MTU6MzYuMDczWiIsImNvbmRpdGlvbnMiOiNbeyJidWNrZXQiOiAibmF2aXh5LWZpbGVzLXRlc3QtZXUifSxbInN0YXJ0cy13aXRoIiwgIiRrZXkiLCAiIl0seyJzdWNjZXNzX2FjdGlvbl9zdGF0dXMiOiAiMjAwIn0seyJ4LWFtei1hbGdvcml0aG0iOiAiQVdTNC1ITUFDLVNIQTI1NiJ9LHsieC1hbXotY3JlZGVudGlhbCI6ICJBS0lBSUJRNlNSQjY1RVZTU1JNQS8yMDIzMDMyNy9ldS1jZW50cmFsLTEvczMvYXdzNF9yZXF1ZXN0In0seyJ4LWFtei1kYXRlIjogIjIwMjMwMzI3VDIxMDAzNloifSx7IngtYW16LXNlcnZlci1zaWRlLWVuY3J5cHRpb24iOiAiQUVTMjU2In1dfQ==
+--WebAppBoundary
+Content-Disposition: form-data; name="key"
+Content-Type: text/plain
+
+nj9relv6m52qp01t0wv47wyk1ozd309g/${filename}
+--WebAppBoundary
+Content-Disposition: form-data; name="success_action_status"
+Content-Type: text/plain
+
+200
+--WebAppBoundary
+Content-Disposition: form-data; name="x-amz-algorithm"
+Content-Type: text/plain
+
+AWS4-HMAC-SHA256
+--WebAppBoundary
+Content-Disposition: form-data; name="x-amz-credential"
+Content-Type: text/plain
+
+AKIAIBQ6SRB65EVSSRMA/20230327/eu-central-1/s3/aws4_request
+--WebAppBoundary
+Content-Disposition: form-data; name="x-amz-date"
+Content-Type: text/plain
+
+20230327T210036Z
+--WebAppBoundary
+Content-Disposition: form-data; name="x-amz-signature"
+Content-Type: text/plain
+
+2df7efa0c0e0c5b97d0d9483acd77c9ec37360df921b019a4c4a93180a6136ad
+--WebAppBoundary
+Content-Disposition: form-data; name="x-amz-server-side-encryption"
+Content-Type: text/plain
+
+AES256
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="actual_file_name.png"
+Content-Type: image/png
+
+... contents of file goes here ...
+--WebAppBoundary--
+```
 
 #### errors
 
@@ -430,7 +558,14 @@ Creates a new file entry associated with form's field.
 
 #### response
 
-The response is similar to the response to [task/form/file/create](task/form/file.md#create)
+The response and update process are same to [image/create](#imagecreate).
+
+* `file_id` - int. This value will be submitted as form's field value.
+* `url` - string. A URL to which POST form-data with file contents should be executed.
+* `expires` - date/time. After this date file record wil expire and upload requests will be rejected.
+* `file_field_name` - string. Name for file field in POST upload request.
+* `fields` - these fields should be passed as additional fields in POST multipart upload request, field with a file
+  must be the last one.
 
 #### errors
 

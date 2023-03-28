@@ -216,7 +216,7 @@ Creates a new geofence.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/create' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Zone name", "address": "zone address", "radius": 100, "center": {"lat": 56.827001, "lng": 60.594296}}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Circle geofence", "type": "circle", "center": {"lat": 61.49504550221769, "lng": 23.775476217269897}, "radius": 50, "tags": [179227], "color": "03A9F4", "address":"Address"}}'
     ```
 
 #### response
@@ -406,7 +406,7 @@ which type is "polygon".
 
 | name       | description                                                             | type        |
 |:-----------|:------------------------------------------------------------------------|:------------|
-| zone       | Geofence JSON-object without `id` and `color` fields.                   | JSON object |
+| zone       | Geofence JSON-object with `id` and `color` fields.                      | JSON object |
 | zone.color | Optional. Geofence color in 3-byte RGB hex format. Default is "27A9E3". | string      |
 
 #### example
@@ -416,7 +416,7 @@ which type is "polygon".
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/update' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Zone name", "address": "zone address", "radius": 100, "center": {"lat": 56.827001, "lng": 60.594296}}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"id": 231512 "label": "Circle geofence", "type": "circle", "center": {"lat": 61.49504550221769, "lng": 23.775476217269897}, "radius": 50, "tags": [179227], "color": "03A9F4", "address":"Address"}}'
     ```
 
 #### response
