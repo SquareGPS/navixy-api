@@ -1,12 +1,12 @@
 ---
 title: Beacon data
-description: Contains list method to get beacon data.
+description: Contains list of methods to get beacon data.
 ---
 
 # Beacon data
 
 Methods for obtaining collected beacon data.
-Beacon data is data about radio tags (beacons) visible on the tracker, e.g. iBeacon, Teltonika EYE Beacon\Sensor, Eddystone.
+Beacon data is data about radio tags (beacons) visible on a tracker, e.g. iBeacon, Teltonika EYE Beacon\Sensor, Eddystone.
 
 ***
 
@@ -28,7 +28,7 @@ Beacon data is data about radio tags (beacons) visible on the tracker, e.g. iBea
 
 * `tracker_id` - int. An ID of the tracker (aka "object_id").
 * `hardware_id` - string. An ID of the beacon.
-* `rssi` - int. RSSI stands for received signal strength indicator and represents the power of a received signal on a device. According to it, you can understand how far away the beacon is from the tracker.
+* `rssi` - int. RSSI stands for received signal strength indicator and represents the power of received signal on a device. According to it, you can understand how far away the beacon is from the tracker.
 * `get_time` - [date/time](../../../getting-started.md#data-types). When this data received.
 * `latitude` - float.  Latitude.
 * `longitude` - float.  Longitude.
@@ -40,16 +40,16 @@ API path: `/beacon/data/read`.
 
 ### read
 
-List beacons data history between `from` date/time and `to` date/time sorted by **get_time** field.
+List of beacon data history between `from` date/time and `to` date/time sorted by **get_time** field.
 
 #### parameters
 
-| name      | description                                             | type                                                       |
-|:----------|:--------------------------------------------------------|:-----------------------------------------------------------|
-| from      | Start date/time for searching.                          | string [date/time](../../../getting-started.md#data-types) |
-| to        | End date/time for searching. Must be after "from" date. | string [date/time](../../../getting-started.md#data-types) |
-| trackers  | Optional. Default: all. List of trackers.               | int array                                                  |
-| beacons   | Optional. Default: all. List of beacons IDs.            | string array                                               |
+| name      | description                                                                                              | type                                                       |
+|:----------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
+| from      | Start date/time for searching.                                                                           | string [date/time](../../../getting-started.md#data-types) |
+| to        | End date/time for searching. Must be after "from" date.                                                  | string [date/time](../../../getting-started.md#data-types) |
+| trackers  | Optional. Default: null. List of trackers.                                                               | int array                                                  |
+| beacons   | Optional. Default: null. List of beacons IDs. All IDs must not be empty and not more than 64 characters. | string array                                               |
  
 
 #### example
@@ -102,20 +102,20 @@ List beacons data history between `from` date/time and `to` date/time sorted by 
 }
 ```
 
-* `list` - list of zero or more beacon_data_entry` objects which described in [Beacon data entry](./index.md#beacon-data-entry).
+* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](./index.md#beacon-data-entry).
 
 
 API path: `/beacon/data/last_values`.
 
 ### last values
 
-List last beacon data visible on the trackers.
+List of last beacon data visible on the trackers.
 
 #### parameters
 
 | name                    | description                                                                       | type              |
 |:------------------------|:----------------------------------------------------------------------------------|:------------------|
-| trackers                | Optional. Default: all. List of trackers.                                         | int array         |
+| trackers                | Optional. Default: null. List of trackers.                                        | int array         |
 | skip_older_than_seconds | Optional. Default: 3600. Skip entries older than the specified number of seconds. | int               |    
 
 
@@ -126,7 +126,7 @@ List last beacon data visible on the trackers.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/beacon/data/read' \
+    curl -X POST '{{ extra.api_example_url }}/beacon/data/last_values' \
         -H 'Content-Type: application/json' \
         -d '{
     "hash":"59be129c1855e34ea9eb272b1e26ef1d",
@@ -157,4 +157,4 @@ List last beacon data visible on the trackers.
 }
 ```
 
-* `list` - list of zero or more beacon_data_entry` objects which described in [Beacon data entry](./index.md#beacon-data-entry).
+* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](./index.md#beacon-data-entry).
