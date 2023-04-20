@@ -14,6 +14,11 @@ but must be sent inside open `WebSocket` channel and use only JSON format for me
 
 ## Subscribe Action
 
+The main difference between `state` and `state_batch` events is they can provide different amount of data every second.
+Use 'state' event for smaller fleets since it supports sending data up to 350 entries per second.
+For big or growing fleets better to use `state_batch` event since it supports sending data for up to 12000 entries per 
+second.
+
 ### Request
 
 Request parameters:
@@ -28,12 +33,12 @@ Request parameters:
 * `trackers` - required, int array, without nulls. List of tracker IDs for the events that require a subscription.
 * `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
 
-Request sample:
+#### Subscribe state_batch event sample:
 
 ```json
 {
   "action": "subscribe",
-  "hash": "f4bf1b75403d851653dad99c78c4b237",
+  "hash": "f4bf1b754034213653dad99c78c4b237",
   "requests": [
     {
       "type": "state_batch",
@@ -47,8 +52,30 @@ Request sample:
 }
 ```
 
+If you use target 'trackers' for some devices and then subscribe again to other devices - in state_batch event you will 
+receive data from all subscribed devices at once.
+
+#### Subscribe state event sample
+
+```json
+{
+  "action": "subscribe",
+  "hash": "4ce2b45d12a6c634154017511575369a",
+  "requests": [
+    {
+      "type": "state",
+      "trackers": [
+        1701976,
+        1701975
+      ],
+      "rate_limit": "5s",
+      "format": "compact"
+    }]
+}
+```
 
 #### Sub requests:
+
 * Batching (preferred):
   * `type` - required, text: _"state_batch"_.
   * `target` - required, object. One of targets below.
@@ -60,6 +87,7 @@ Request sample:
   * `format` - optional, [enum](../getting-started.md#data-types), one of: "full" (default), "compact".
 
 Sample:
+
 ```json
 {
   "type": "state_batch",
@@ -71,7 +99,6 @@ Sample:
   "format": "full"
 }
 ```
-
 
 ##### Request targets:
 * All trackers:
@@ -87,7 +114,6 @@ Sample:
   "type": "all"
 }
 ```
-
 
 ### Response
 
@@ -140,14 +166,16 @@ Response sample:
 ### The "state" event subscription
 
 After subscribe on the "state",
-server will send the current states of all non-blocked trackers to which the subscription made.
+server will send the current states of all non-blocked trackers to which the subscription made in a separate packets.
+Receiver must be able to read information from these packets separately.
 When changing the state of any tracker to which a subscription made,
 the server will send a new state in the [event message](./events.md#state-event).
 
 ### The "state_batch" event subscription
 
 After subscribe on the "state",
-server will send the current states of all non-blocked trackers to which the subscription made.
+server will send the current states of all non-blocked trackers to which the subscription made in one packet.
+Receiver must be able to parse data from different devices in this packet.
 After each period equal to `rate_limit`,
 the server will send a list of changed tracker states in the [event message](./events.md#state-event).
 
