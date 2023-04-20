@@ -6,7 +6,7 @@ description: Contains list of methods to get beacon data.
 # Beacon data
 
 Methods for obtaining collected beacon data.
-Beacon data is data about radio tags (beacons) visible on a tracker, e.g. iBeacon, Teltonika EYE Beacon\Sensor, Eddystone.
+Beacon data is data about radio tags (beacons) visible to a tracker, e.g. iBeacon, Teltonika EYE Beacon\Sensor, Eddystone.
 
 ***
 
