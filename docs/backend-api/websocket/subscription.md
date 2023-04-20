@@ -101,6 +101,7 @@ Sample:
 ```
 
 ##### Request targets:
+
 * All trackers:
   * `type` - required, text: _"all"_.
 * Selected trackers:
