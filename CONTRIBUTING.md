@@ -8,7 +8,8 @@ There are several ways:
 4. [Installing and editing](#hard-way) documentation locally on yours PC.
 
 In each of these cases, a GitHub account required.
-If you don't want to register on GitHub, you can just [contact us](https://developers.navixy.com/general/contacts/) with any convenient way.
+If you don't want to register on GitHub, you can just [contact us](https://developers.navixy.com/general/contacts/) 
+with any convenient way.
 
 ***
 

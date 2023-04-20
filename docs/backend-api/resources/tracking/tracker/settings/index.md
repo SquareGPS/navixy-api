@@ -28,7 +28,7 @@ Gets base settings for the specified tracker.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/settings' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/settings/read' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
     ```
@@ -36,7 +36,7 @@ Gets base settings for the specified tracker.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tracker/settings?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+    {{ extra.api_example_url }}/tracker/settings/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
     ```
 
 #### response
@@ -80,7 +80,7 @@ Updates the settings of the specified tracker.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/update' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/settings/update' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "group_id": 1, "label": "Courier"}'
     ```
@@ -88,7 +88,7 @@ Updates the settings of the specified tracker.
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tracker/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&group_id=1&label=Courier
+    {{ extra.api_example_url }}/tracker/settings/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&group_id=1&label=Courier
     ```
 
 #### response
