@@ -290,13 +290,13 @@ Creates a new check-in. Needed for exceptional cases.
 
 #### parameters
 
-| name            | description                                                                                                | type        |
-|:----------------|:-----------------------------------------------------------------------------------------------------------|:------------|
-| tracker_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                              | int         |
-| location        | Location coordinates (see: [data types description section](../../getting-started.md#data-types) section). | JSON object |
-| comment         | Optional.                                                                                                  | string      |
-| file_ids        | Optional. IDs of files created by checkin/image/create).                                                   | int array   |
-| form_submission | Optional, only present when sending form along with check-in.                                              | JSON object |
+| name            | description                                                                                                                                                                                                     | type        |
+|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| tracker_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                                                                                                                                   | int         |
+| location        | Location coordinates (see: [data types description section](../../getting-started.md#data-types) section).                                                                                                      | JSON object |
+| comment         | Optional.                                                                                                                                                                                                       | string      |
+| file_ids        | Optional. IDs of files created by checkin/image/create).                                                                                                                                                        | int array   |
+| form_submission | Optional, only present when sending form along with check-in. If the form includes optional fields that should be left empty for your check-in, refrain from adding these fields to the form submission object. | JSON object |
 
 where `form_submission` type is JSON object:
 
@@ -338,7 +338,7 @@ where `form_submission` type is JSON object:
 
 ### image/create
 
-Creates an image for check-in.
+Creates an image for check-in. If you have multiple files to upload, be sure to add a brief delay between uploading each one to ensure a smooth process.
 
 #### parameters
 
@@ -531,7 +531,7 @@ Creates a new form that can be attached to a check-in. Form always created on th
 
 ### form/file/create
 
-Creates a new file entry associated with form's field.
+Creates a new file entry associated with form's field. If you have multiple files to upload, be sure to add a brief delay between uploading each one to ensure a smooth process.
 
 #### parameters
 
