@@ -352,6 +352,7 @@ Gets all metering sensor readings with values and time per requested period.
 | sensor_id | Sensor id. | int | 234567 |
 | from | Start date and time for searching. | [date/time](../../../../getting-started.md#data-types) | "2022-02-28 00:00:00" |
 | to | End date and time for searching. Must be after `from` date. Maximum period is `maxReportTimeSpan`, default 30 days. | [date/time](../../../../getting-started.md#data-types) | "2022-03-28 23:59:00" |
+| raw_data   | If `true` then the response will contain raw data without any calibration and multiplication. Affects only, metering sensors Default value is false for backward compatibility. | boolean  | false |
 
 #### example
 
