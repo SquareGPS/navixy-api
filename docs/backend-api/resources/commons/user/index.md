@@ -74,7 +74,7 @@ object structure and API calls to interact with users.
 ```
 
 * `paas_id` - int. Dealer ID.
-* `paas_settings` - object. The same as `settings` in [/dealer/get_ui_config response](../dealer.md#getuiconfig).
+* `paas_settings` - object. The same as `settings` in [/dealer/get_ui_config response](../dealer.md#get_ui_config).
 * `user_info` - object. Info about user.
     * `id` - int. User ID.
     * `login` - string. User's login (in most cases it's an email address).
@@ -110,7 +110,7 @@ object structure and API calls to interact with users.
     * `legal_name` - optional string. A juridical name.
     * `master` - object. Returned only if current user is sub-user. All fields have same meaning as in "user_info", but for 
     master user's account.
-    * `tariff_restrictions` - tariff restrictions object, for more info see [user/get_tariff_restrictions](#gettariffrestrictions).
+    * `tariff_restrictions` - tariff restrictions object, for more info see [user/get_tariff_restrictions](#get_tariff_restrictions).
         * `allowed_maps` - string array. List of allowed maps.
     * `premium_gis` - boolean. `true` if a dealer has premium GIS tariff.
     * `features` - string array. Set of allowed [Dealer features](../dealer.md#dealer-features).
