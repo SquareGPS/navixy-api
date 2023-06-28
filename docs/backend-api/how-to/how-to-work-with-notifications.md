@@ -105,3 +105,34 @@ necessary to know only when the device entered and exited the geofence. API requ
     ```
 
 Response will contain the [history entries](../resources/commons/history/index.md#tracker-history-entry) that match to our request.
+
+### All events of a user per specific time period
+
+To obtain a list of all tracker events in the user received between the specified "from" and "to" dates, use the 
+[history/user/list](../resources/commons/history/history_user.md) method. You can also filter the results to include 
+only the necessary event types.
+
+Here are the required parameters for the call:
+
+* `from` - a string containing the start [date/time](../getting-started.md#data-types) for the search.
+* `to` - a string containing the end [date/time](../getting-started.md#data-types) for the search. Must be after `from` date.
+
+You can also use optional parameters to narrow down your search:
+
+* `events` - a string array with necessary event types. All other events will be ignored. Default: all. To get a list of events, use the [tracker/history/type](../resources/commons/history/history_type.md#list) call.
+* `limit` - an integer specifying the maximum number of entries in the result.
+* `ascending` - a boolean value that sorts the results in ascending order by time when set to `true` and descending when `false`.
+
+For example, we want to get state field events for the last five minutes on all trackers of a user. In this case, we will use 
+`to`=CURRTIME and `from`=CURRTIME-5 minutes. Filtering must be by `state_field_control` events.
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/history/user/list' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2023-06-13 18:42:10", "to": "2023-06-13 18:47:10", "events": ["state_field_control"], "limit": 100, "ascending": true}'
+    ```
+
+Response will contain the [history entries](../resources/commons/history/index.md#tracker-history-entry) that match to 
+our request.
