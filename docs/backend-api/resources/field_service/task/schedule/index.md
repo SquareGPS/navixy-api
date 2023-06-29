@@ -153,11 +153,13 @@ Also this call returns all unassigned task schedules.
 
 #### parameters
 
-| name     | description                                                                                                   | type      | 
-|:---------|:--------------------------------------------------------------------------------------------------------------|:----------|
-| trackers | Optional. IDs of the trackers to which task schedule is assigned.                                             | int array |
-| filter   | Optional. Filter for task schedule label and description.                                                     | string    |
-| tag_ids  | Optional. Tag IDs assigned to the task schedule. The schedules found must include all the tags from the list. | int array |
+| name     | description                                                                                                   | type         | 
+|:---------|:--------------------------------------------------------------------------------------------------------------|:-------------|
+| trackers | Optional. IDs of the trackers to which task schedule is assigned.                                             | int array    |
+| filter   | Optional. Filter for task schedule label and description.                                                     | string       |
+| tag_ids  | Optional. Tag IDs assigned to the task schedule. The schedules found must include all the tags from the list. | int array    |
+| types    | Optional. Tasks of specific type will be returned in the list. Can be `task` or `route`. Default is `task`.   | string array |
+
 
 #### examples
 

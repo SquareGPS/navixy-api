@@ -1,16 +1,16 @@
 ---
-title: Beacon data
-description: Contains list of methods to get beacon data.
+title: BLE beacon data
+description: Contains list of methods to get BLE beacon data.
 ---
 
-# Beacon data
+# BLE beacon data
 
-Methods for obtaining collected beacon data.
-Beacon data is data about radio tags (beacons) visible to a tracker, e.g. iBeacon, Teltonika EYE Beacon\Sensor, Eddystone.
+Methods for obtaining collected BLE beacon data.
+BLE beacon data is data about radio tags (BLE beacons) visible to a tracker, e.g. iBeacon, Teltonika EYE Beacon\Sensor, Eddystone.
 
 ***
 
-## Beacon data entry
+## BLE beacon data entry
 ```json
 {
   "tracker_id": 10181654,
@@ -102,14 +102,14 @@ List of beacon data history between `from` date/time and `to` date/time sorted b
 }
 ```
 
-* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](./index.md#beacon-data-entry).
+* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](./index.md#ble-beacon-data-entry).
 
 
 API path: `/beacon/data/last_values`.
 
 ### last values
 
-List of last beacon data visible on the trackers.
+List of last BLE beacon data visible on the trackers.
 
 #### parameters
 
@@ -157,4 +157,4 @@ List of last beacon data visible on the trackers.
 }
 ```
 
-* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](./index.md#beacon-data-entry).
+* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](./index.md#ble-beacon-data-entry).

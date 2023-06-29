@@ -200,6 +200,7 @@ The next step is to configure a trigger. To create a simple Zap we recommend you
     * excessive_driving_end
     * excessive_parking
     * excessive_parking_finished
+    * state_field_control
 
 ???+ example "Specify account's timezone"
 
