@@ -237,4 +237,4 @@ Gets last values for all metering sensors, state values and counters on multiple
 
 #### errors
 
-* 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
+* 217 - List contains nonexistent entities.
