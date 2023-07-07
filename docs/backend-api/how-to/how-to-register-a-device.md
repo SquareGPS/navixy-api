@@ -24,7 +24,7 @@ Step 2. Check all plugins available for the user with [plugin/list](../resources
 * 68 - mobile app registration with mandatory activation code.
 
 &ensp;Full information about activation codes and for what purposes they needed 
-is [here](https://www.navixy.com/docs/admin-panel-docs/activation-codes/).
+is [here](https://www.navixy.com/docs/admin-panel-docs/plans/activation-codes/).
      
 Step 3. Register the device using the [tracker/register](../resources/tracking/tracker/index.md#register) action.
 
@@ -215,7 +215,7 @@ The platform will respond with the same information as for plugin 35.
 ## The device doesn't register
 
 There could be several reasons - why the device doesn't register. If we omit the problems with the SMS gateway, and it works
-perfectly - all issues listed [here](https://www.navixy.com/docs/troubleshooting/user-interface/device-activation-problems/).
+perfectly - all issues listed [here](https://www.navixy.com/docs/user/get-started-docs/tracker-activation/device-activation-problems/).
 When we eliminated all possible issues and checked that everything works well we can send 
 [tracker/register_retry](../resources/tracking/tracker/index.md#register_retry)  request to not create the same unit for
 the user. Moreover, it is not possible to register two devices with the same ID on the platform.
