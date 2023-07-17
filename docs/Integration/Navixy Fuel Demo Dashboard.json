@@ -1,0 +1,1044 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_NAVIXY_TEST",
+      "label": "Navixy Test",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "marcusolsson-json-datasource",
+      "pluginName": "JSON API"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "geomap",
+      "name": "Geomap",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "marcusolsson-json-datasource",
+      "name": "JSON API",
+      "version": "1.3.6"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${DS_NAVIXY_TEST}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A speed"
+            },
+            "properties": [
+              {
+                "id": "custom.axisSoftMax",
+                "value": 160
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 21,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "cacheDurationSeconds": 300,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "${DS_NAVIXY_TEST}"
+          },
+          "fields": [
+            {
+              "jsonPath": "$.list[*].get_time",
+              "type": "time"
+            },
+            {
+              "jsonPath": "$.list[*].speed",
+              "language": "jsonpath",
+              "name": "",
+              "type": "number"
+            }
+          ],
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ],
+            [
+              "from",
+              "$__isoFrom()"
+            ],
+            [
+              "to",
+              "$__isoTo()"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "A",
+          "urlPath": "/track/read"
+        },
+        {
+          "cacheDurationSeconds": 5,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "${DS_NAVIXY_TEST}"
+          },
+          "fields": [
+            {
+              "jsonPath": "$.list[*].get_time"
+            },
+            {
+              "jsonPath": "$.list[*].value",
+              "language": "jsonpath",
+              "name": "Sensor 1"
+            }
+          ],
+          "hide": false,
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ],
+            [
+              "sensor_id",
+              "${sensor_id_1}"
+            ],
+            [
+              "from",
+              "$__isoFrom()"
+            ],
+            [
+              "to",
+              "$__isoTo()"
+            ],
+            [
+              "raw_data",
+              "${raw_data_1}"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "B",
+          "urlPath": "/tracker/sensor/data/read"
+        },
+        {
+          "cacheDurationSeconds": 5,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "${DS_NAVIXY_TEST}"
+          },
+          "fields": [
+            {
+              "jsonPath": "$.list[*].get_time"
+            },
+            {
+              "jsonPath": "$.list[*].value",
+              "language": "jsonpath",
+              "name": "Sensor 2"
+            }
+          ],
+          "hide": false,
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ],
+            [
+              "sensor_id",
+              "${sensor_id_2}"
+            ],
+            [
+              "from",
+              "$__isoFrom()"
+            ],
+            [
+              "to",
+              "$__isoTo()"
+            ],
+            [
+              "raw_data",
+              "${raw_data_2}"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "C",
+          "urlPath": "/tracker/sensor/data/read"
+        }
+      ],
+      "title": "Track",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${DS_NAVIXY_TEST}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 6,
+        "x": 0,
+        "y": 13
+      },
+      "id": 12,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 1,
+        "showHeader": true
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "cacheDurationSeconds": 300,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "${DS_NAVIXY_TEST}"
+          },
+          "fields": [
+            {
+              "jsonPath": "$.list[*].get_time",
+              "type": "time"
+            },
+            {
+              "jsonPath": "$.list[*].speed",
+              "language": "jsonpath",
+              "name": "",
+              "type": "number"
+            }
+          ],
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ],
+            [
+              "from",
+              "$__isoFrom()"
+            ],
+            [
+              "to",
+              "$__isoTo()"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "Speed",
+          "urlPath": "/track/read"
+        },
+        {
+          "cacheDurationSeconds": 300,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "${DS_NAVIXY_TEST}"
+          },
+          "fields": [
+            {
+              "jsonPath": "$.list[*].get_time"
+            },
+            {
+              "jsonPath": "$.list[*].value",
+              "language": "jsonpath",
+              "name": "Sensor 1"
+            }
+          ],
+          "hide": false,
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ],
+            [
+              "sensor_id",
+              "${sensor_id_1}"
+            ],
+            [
+              "from",
+              "$__isoFrom()"
+            ],
+            [
+              "to",
+              "$__isoTo()"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "Sensor 1",
+          "urlPath": "/tracker/sensor/data/read"
+        },
+        {
+          "cacheDurationSeconds": 300,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "${DS_NAVIXY_TEST}"
+          },
+          "fields": [
+            {
+              "jsonPath": "$.list[*].get_time"
+            },
+            {
+              "jsonPath": "$.list[*].value",
+              "language": "jsonpath",
+              "name": "Sensor 2"
+            }
+          ],
+          "hide": false,
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ],
+            [
+              "sensor_id",
+              "${sensor_id_2}"
+            ],
+            [
+              "from",
+              "$__isoFrom()"
+            ],
+            [
+              "to",
+              "$__isoTo()"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "Sensor 2",
+          "urlPath": "/tracker/sensor/data/read"
+        }
+      ],
+      "title": "Track",
+      "transformations": [],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${DS_NAVIXY_TEST}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 15,
+        "x": 6,
+        "y": 13
+      },
+      "id": 6,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Layer 0",
+          "type": "osm-standard"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "arrow": 0,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "name": "Layer 1",
+            "type": "route"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "fit",
+          "lat": 46,
+          "lon": 14,
+          "zoom": 15
+        }
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "cacheDurationSeconds": 300,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "${DS_NAVIXY_TEST}"
+          },
+          "fields": [
+            {
+              "jsonPath": "$.list[*].lat",
+              "language": "jsonpath",
+              "name": "",
+              "type": "number"
+            },
+            {
+              "jsonPath": "$.list[*].lng",
+              "language": "jsonpath",
+              "name": "",
+              "type": "number"
+            },
+            {
+              "jsonPath": "$.list[*].get_time",
+              "language": "jsonpath",
+              "name": "",
+              "type": "time"
+            }
+          ],
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ],
+            [
+              "from",
+              "$__isoFrom()"
+            ],
+            [
+              "to",
+              "$__isoTo()"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "A",
+          "urlPath": "/track/read"
+        }
+      ],
+      "title": "Track map",
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${DS_NAVIXY_TEST}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 152
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "length"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 83
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_speed"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 96
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "max_speed"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 103
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "norm_fuel_consumed"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 174
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "start_date"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 173
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "end_date"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 171
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "start_address"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 457
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 21,
+        "x": 0,
+        "y": 25
+      },
+      "id": 11,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "body": "",
+          "cacheDurationSeconds": 0,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "${DS_NAVIXY_TEST}"
+          },
+          "fields": [
+            {
+              "jsonPath": "$.list[*].start_date",
+              "language": "jsonpath",
+              "name": "",
+              "type": "time"
+            },
+            {
+              "jsonPath": "$.list[*].end_date",
+              "language": "jsonpath",
+              "name": "",
+              "type": "time"
+            },
+            {
+              "jsonPath": "$.list[*].avg_speed",
+              "language": "jsonpath",
+              "name": "",
+              "type": "number"
+            },
+            {
+              "jsonPath": "$.list[*].max_speed",
+              "language": "jsonpath",
+              "name": "",
+              "type": "number"
+            },
+            {
+              "jsonPath": "$.list[*].length",
+              "language": "jsonpath",
+              "name": "",
+              "type": "number"
+            },
+            {
+              "jsonPath": "$.list[*].start_address",
+              "language": "jsonpath",
+              "name": "",
+              "type": "string"
+            },
+            {
+              "jsonPath": "$.list[*].end_address",
+              "language": "jsonpath",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ],
+            [
+              "from",
+              "$__isoFrom()"
+            ],
+            [
+              "to",
+              "$__isoTo()"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "A",
+          "urlPath": "/track/list"
+        }
+      ],
+      "title": "Tracks",
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "${DS_NAVIXY_TEST}"
+        },
+        "definition": "$.list[*].",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Tracker",
+        "multi": false,
+        "name": "tracker_id",
+        "options": [],
+        "query": {
+          "cacheDurationSeconds": 60,
+          "fields": [
+            {
+              "jsonPath": "$.list[*].",
+              "language": "jsonpath",
+              "name": ""
+            }
+          ],
+          "method": "GET",
+          "queryParams": "",
+          "urlPath": "/tracker/list"
+        },
+        "refresh": 1,
+        "regex": "/\"label\":\"(?<text>[^\"]+)|\"id\":(?<value>(\\d+))/g",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "${DS_NAVIXY_TEST}"
+        },
+        "definition": "$.list[*]",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Sensor 1",
+        "multi": false,
+        "name": "sensor_id_1",
+        "options": [],
+        "query": {
+          "cacheDurationSeconds": 300,
+          "fields": [
+            {
+              "jsonPath": "$.list[*]",
+              "name": "Label"
+            },
+            {
+              "jsonPath": "",
+              "language": "jsonpath",
+              "name": "Value"
+            }
+          ],
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ]
+          ],
+          "queryParams": "",
+          "urlPath": "/tracker/sensor/list"
+        },
+        "refresh": 1,
+        "regex": "/\"name\":\"(?<text>[^\"]+)|\"id\":(?<value>[0-9]+)/g",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "true",
+          "value": "true"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Raw data 1",
+        "multi": false,
+        "name": "raw_data_1",
+        "options": [
+          {
+            "selected": false,
+            "text": "false",
+            "value": "false"
+          },
+          {
+            "selected": true,
+            "text": "true",
+            "value": "true"
+          }
+        ],
+        "query": "false,true",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "${DS_NAVIXY_TEST}"
+        },
+        "definition": "$.list[*]",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Sensor 2",
+        "multi": false,
+        "name": "sensor_id_2",
+        "options": [],
+        "query": {
+          "cacheDurationSeconds": 300,
+          "fields": [
+            {
+              "jsonPath": "$.list[*]",
+              "name": "Label"
+            },
+            {
+              "jsonPath": "",
+              "language": "jsonpath",
+              "name": "Value"
+            }
+          ],
+          "method": "GET",
+          "params": [
+            [
+              "tracker_id",
+              "${tracker_id}"
+            ]
+          ],
+          "queryParams": "",
+          "urlPath": "/tracker/sensor/list"
+        },
+        "refresh": 1,
+        "regex": "/\"name\":\"(?<text>[^\"]+)|\"id\":(?<value>[0-9]+)/g",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "false",
+          "value": "false"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Raw data 2",
+        "multi": false,
+        "name": "raw_data_2",
+        "options": [
+          {
+            "selected": true,
+            "text": "false",
+            "value": "false"
+          },
+          {
+            "selected": false,
+            "text": "true",
+            "value": "true"
+          }
+        ],
+        "query": "false,true",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Navixy Dashboard",
+  "uid": "dd13e80a-0000-48dc-9775-96401b79c1c6",
+  "version": 21,
+  "weekStart": ""
+}
