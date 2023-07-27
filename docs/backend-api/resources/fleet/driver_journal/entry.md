@@ -68,9 +68,9 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
 | name       | description                                                                                                                        | type                                                |
 |:-----------|:-----------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                    | int                                                 |
+| from       | Include tracks which end after this date, e.g. "2020-10-13 00:00:00".                                                              | [date/time](../../../getting-started.md#data-types) |
+| to         | Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                              | [date/time](../../../getting-started.md#data-types) |
 | entry_ids  | Optional. Array of entry IDs.                                                                                                      | int array                                           |
-| from       | Optional. Include tracks which end after this date, e.g. "2020-10-13 00:00:00".                                                    | [date/time](../../../getting-started.md#data-types) |
-| to         | Optional. Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                    | [date/time](../../../getting-started.md#data-types) |
 | types      | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`.                                                 | string array                                        |
 | sort       | Optional. Set of sort options. Each option is a pair of column name and sorting direction, e.g. `["start_date=acs", "type=desc"]`. | string array                                        |
 
@@ -259,9 +259,9 @@ and `to` parameters).
 | name                | description                                                                                                                                 | type                                                |
 |:--------------------|:--------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------|
 | tracker_id          | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                             | int                                                 |
+| from                | Include tracks which end after this date, e.g. "2020-10-13 00:00:00".                                                                       | [date/time](../../../getting-started.md#data-types) |
+| to                  | Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                                       | [date/time](../../../getting-started.md#data-types) |
 | entry_ids           | Optional. Array of entry IDs.                                                                                                               | int array                                           |
-| from                | Optional. Include tracks which end after this date, e.g. "2020-10-13 00:00:00".                                                             | [date/time](../../../getting-started.md#data-types) |
-| to                  | Optional. Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                             | [date/time](../../../getting-started.md#data-types) |
 | types               | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`.                                                          | string array                                        |
 | sort                | Optional. Set of [sort options](#list). Each option is a pair of column name and sorting direction, e.g. `["start_date=acs", "type=desc"]`. | string array                                        |
 | add_filename_header | If `true` then Content-Disposition header will be appended to the response. Default value is `true`.                                        | boolean                                             |
