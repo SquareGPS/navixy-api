@@ -156,7 +156,7 @@ in the sensors readings, OBD & CAN and Fuel level widgets. For every widget we h
 
 ### Getting values from all sensors and states
 
-Also, you are able to get the data from all sensors of the device and its states. Use [tracker/readings](../resources/tracking/tracker/readings.md)
+Also, you are able to get the data from all sensors of the device, its states and counters. Use [tracker/readings](../resources/tracking/tracker/readings.md)
 request. It will reply with the next information:
 
 ```json
@@ -225,6 +225,13 @@ request. It will reply with the next information:
 
 * input status and output status fields will show you binary information in decimal form. For example, output_status 
   field shows 3 - it is 11 in binary. The example device has two outputs. That's why 11 means output 1 = On and output 2 = ON.
+
+### Getting data from multiple devices in one request
+
+There is an API call that may optimize work with multiple devices at once. Just in case it is necessary to request the 
+current data from a lot of devices in one account,
+use [tracker/readings/batch_list](../resources/tracking/tracker/readings.md#batchlist) API call.
+It allows getting the same information as in the previously described method for multiple trackers.
 
 ### Getting historical data from sensors
 

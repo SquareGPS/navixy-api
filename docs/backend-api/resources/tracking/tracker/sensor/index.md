@@ -395,7 +395,7 @@ Copies sensors from one tracker to another.
 
 ### data/read
 
-Gets all metering or virtual sensor readings with values and time per requested period.
+Gets all `metering` or `virtual` sensor readings with values and time per requested period.
 It can't be used with discrete sensor. 
 
 #### parameters
@@ -406,7 +406,7 @@ It can't be used with discrete sensor.
 | sensor_id  | Sensor ID.                                                                                                                                                                       | int                                                    | 234567                |
 | from       | Start date and time for searching.                                                                                                                                               | [date/time](../../../../getting-started.md#data-types) | "2022-02-28 00:00:00" |
 | to         | End date and time for searching. Must be after `from` date. Maximum period is `maxReportTimeSpan`, default 30 days.                                                              | [date/time](../../../../getting-started.md#data-types) | "2022-03-28 23:59:00" |
-| raw_data   | If `true` then the response will contain raw data without any calibration and multiplication. Affects only, metering sensors. Default value is false for backward compatibility. | boolean                                                | false                 |
+| raw_data   | If `true` then the response will contain raw data without any calibration and multiplication. Affects only `metering` sensors. Default value is false for backward compatibility. | boolean                                                | false                 |
 
 #### example
 
@@ -437,10 +437,10 @@ It can't be used with discrete sensor.
 ```
 
 * `value` - a value of sensor data. It can be double, int or string depending on the sensor type.
-* `get_time` - time then value was received.
+* `get_time` - time when value was received.
 
 #### errors
 
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 211 – Requested time span is too big - if interval between "from" and "to" is too big. Maximum period is `maxReportTimeSpan`.
-* 228 – Not supported by the sensor - if sensor is not a metering sensor. 
+* 228 – Not supported by the sensor - if sensor is not a metering or virtual sensor. 

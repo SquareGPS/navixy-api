@@ -19,12 +19,6 @@ Unlike the user's session:
 
 !!! note "You can get an API key in user's web interface. This is the recommended way."
 
-!!! warning "Session hash is deprecated"
-    To work with the API, it is necessary to use the API key, not the user's session hash. 
-    Work with API through the user's session is deprecated and will be disabled in the future.
-    The only thing that API calls with a user session will work for is creating,
-    reading, and deleting API keys.
-
 In one user's account, you can have up to 20 API keys intended for different external integrations. 
 To distinguish keys from each other, you should give them meaningful names.
 
