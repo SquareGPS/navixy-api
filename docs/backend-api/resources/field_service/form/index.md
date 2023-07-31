@@ -14,6 +14,7 @@ Forms can be attached to tasks. If form attached to task, this task cannot be co
 * Using web API, it's now possible to only attach/fill forms with tasks (checkin forms are created through 
 Android/iOS tracker applications). See [Task form actions](../task/form/index.md) to use forms with tasks.
 
+Find comprehinsive information on forms usage in our [instructions](../../../how-to/forms-creation.md).
 ***
 
 ## Form object

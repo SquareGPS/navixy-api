@@ -149,9 +149,7 @@ Tries to authenticate user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
-!!! warning "Session hash is deprecated"
-    To work with the API, it is necessary to use the [API key](../api-keys.md), not the user's session hash.
-    Work with API through the user's session is deprecated and will be disabled in the future.
+!!! note "We recommend using [API keys](../../../how-to/get-api-key.md) instead of user session hash."
 
 #### parameters
 

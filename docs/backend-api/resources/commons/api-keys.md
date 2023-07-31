@@ -17,7 +17,7 @@ Unlike the user's session:
 * you can delete the key at any time if there is a suspicion of compromise,
 * you can create a separate key for each individual integration.
 
-!!! note "You can get an API key in user's web interface. This is the recommended way."
+!!! note "You can get an API key in user's web interface. This is the recommended way instead of user session hash."
 
 In one user's account, you can have up to 20 API keys intended for different external integrations. 
 To distinguish keys from each other, you should give them meaningful names.
@@ -25,6 +25,8 @@ To distinguish keys from each other, you should give them meaningful names.
 !!! warning "Security"
     Do not publish API keys anywhere. Having a key, you can perform almost any action in the 
     user's account. Make API calls only over HTTPS because the key is transmitted in cleartext.
+
+Find more details on API keys usage in our [instructions](../../how-to/get-api-key.md).
 
 ***
 

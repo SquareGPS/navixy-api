@@ -8,6 +8,8 @@ description: Contains API call to get the list of driver journal proposal.
 Contains API call to get the list of driver journal proposal. Proposal objects - trips per specified period that could be
 used for driver journal entry creation.
 
+To get information on how-to work with driver journals refer to our [instructions](../../../how-to/driver-journals-usage.md).
+
 ***
 
 ## API actions

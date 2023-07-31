@@ -109,7 +109,7 @@ Contains API calls to interact with sensors.
 * `id` - int. Sensor's id.
 * `sensor_type` - [enum](../../../../getting-started.md#data-types). "virtual_ignition" for virtual ignition or "state" for others.
 * `name` - string, max size 100. A name of sensor.
-* `input_name` - string, max size 64. An source input field name (identifier).
+* `input_name` - string, max size 64. A source input field name (identifier).
 * `parameters` - optional object with additional parameters.
   * `calc_method` - [enum](../../../../getting-started.md#data-types). A method of sensor value calculation. One of this: "in_range", "identity", "bit_index".
   * `range_from` - double. Low bound of range. It is used only with "in_range" calc method.
@@ -125,7 +125,9 @@ Some requirements:
 * One or both field `range_from` and `range_to` must be present for the calc method "in_range".
 * Field `bit_index` must be present for the calc method "bit_index".
 * There can be no more than 100 value titles.
-* All of the values must be unique within `value_titles`.
+* All values must be unique within `value_titles`.
+
+Described work with virtual sensors in our [instructions](../../../../how-to/virtual-sensors.md).
 
 ## API actions
 

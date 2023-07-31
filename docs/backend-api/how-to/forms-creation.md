@@ -87,6 +87,7 @@ Or
 * Get a [list of tasks](../resources/field_service/task/index.md#list) to find a specific task and obtain a form_id from it. 
 * Use this form_id to [read](../resources/field_service/form/index.md#read) and [download](../resources/field_service/form/index.md#download) forms.
 
+***
 
 ### Specific forms as they sent in check-ins
 

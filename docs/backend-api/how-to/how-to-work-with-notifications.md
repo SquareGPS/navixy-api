@@ -106,6 +106,8 @@ necessary to know only when the device entered and exited the geofence. API requ
 
 Response will contain the [history entries](../resources/commons/history/index.md#tracker-history-entry) that match to our request.
 
+***
+
 ### All events of a user per specific time period
 
 To obtain a list of all tracker events in the user received between the specified "from" and "to" dates, use the 

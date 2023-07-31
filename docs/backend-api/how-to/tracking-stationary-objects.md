@@ -15,6 +15,8 @@ gather the necessary data, and how to set them up using truck trailers as an exa
 information about trips and usage for subsequent service work and what API calls will provide information about the tags. 
 Additionally, we'll share other use cases based on real situations.
 
+***
+
 ## What you need to track stationary objects
 
 Various devices are able to read data from BLE beacons: Galileosky, Quecklink, Ruptela, Teltonika, TopFlyTech. We will 
@@ -28,6 +30,8 @@ It's worth noting that many BLE tags can transmit information about temperature 
 3. Platform APIs that provide information about which GPS device a particular tag is near. To create custom solutions for your users using APIs, you'll need developers. Clients typically hire their own developers or contract third-party teams.
 
 Now let's examine the procedure for implementing a real-world case study - tracking truck trailers for trip and usage information and subsequent service work.
+
+***
 
 ## How to get information about BLE beacons near the GPS device
 
@@ -58,6 +62,8 @@ According to it, you can understand how far away the beacon is from the tracker.
 * `latitude` - float. Latitude.
 * `longitude` - float. Longitude.
 * `ext_data` - object. Additional beacon data.
+
+***
 
 ## API calls to get information about BLE tags
 
@@ -113,6 +119,8 @@ This will show which devices were in the vicinity of this BLE beacon during peri
 }
 ```
 
+***
+
 ### Last data from BLE tags
 
 The second call retrieves information about [currently connected beacons](../resources/tracking/beacon/index.md#last-values) 
@@ -148,6 +156,8 @@ This will provide information that there's a trailer "7cf..." next to the device
   "success": true
 }
 ```
+
+***
 
 ## How to Obtain Information on Usage Times and Trip Details
 
@@ -197,6 +207,8 @@ to pay the driver for transporting the cargo, whether the contractual speed was 
 Additionally, the trip length can be used in the future to calculate the number of kilometers until the next 
 maintenance of the trailer.
 
+***
+
 ### Detailed trip info
 
 If you want a detailed track record of the trailer where the beacon is installed for displaying it in a report, 
@@ -237,6 +249,8 @@ Response:
 
 You can use these points together with your preferred maps API to display them on a map.
 
+***
+
 ## Other Examples of Using BLE Tags within Navixy API
 
 Here are some other examples of how to use BLE tags with a short algorithm to get the necessary results need:
@@ -259,6 +273,8 @@ compartment than in the trunk, the seat is likely in the trunk. As a result, you
 vehicles – first, those with a child seat in the passenger compartment, and then those with a child seat in the trunk. 
 This approach ensures that you efficiently match passengers with appropriate vehicles and drivers.
 
+***
+
 ### Agricultural Machinery
 
 Suppose your client has agricultural machinery that can be connected to various equipment. How can you track which 
@@ -272,6 +288,8 @@ the location of a specific tool, query  `beacon/last_values`  with a search for 
 device the tool is installed. This approach ensures efficient tracking and utilization of your agricultural equipment, 
 ultimately increasing productivity.
 
+***
+
 ### Use on Construction Sites
 
 Construction sites often have numerous tools and expensive equipment. While installing a beacon for tracking purposes is 
@@ -282,6 +300,8 @@ The solution for construction sites can be similar to that of agricultural machi
 as well as on storage sites. This approach allows you to effectively track your valuable equipment, ensuring that it's 
 being used efficiently and minimizing the risk of loss or misplacement. By keeping a close eye on your tools and 
 machinery, you can optimize productivity at the construction site.
+
+***
 
 ### Indoor Tracking
 
@@ -294,6 +314,8 @@ that staff members are where they need to be.
 * Tracking goods or machinery in different areas of the warehouse: Knowing the location of goods or equipment saves time, 
 as you don't have to search for them throughout the warehouse. This streamlines the retrieval process, making your 
 operations more efficient.
+
+***
 
 ### Tracking Goods with BLE Beacons
 

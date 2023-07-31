@@ -4,7 +4,9 @@ description: API call to get last values for all metering sensors and state valu
 ---
 # Sensor readings
 
-API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel.
+API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel. 
+
+Described getting data from sensors in our [guides](../../../how-to/getting-measurements-and-counters-from-devices.md). 
 
 ***
 

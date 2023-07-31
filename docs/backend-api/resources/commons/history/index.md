@@ -7,6 +7,8 @@ description: Contains history entry object description and API calls to interact
 
 Contains history entry object description and API calls to interact with it.
 
+Find instructions on getting notifications [here](../../../how-to/how-to-work-with-notifications.md).
+
 ***
 
 ## Tracker history entry
