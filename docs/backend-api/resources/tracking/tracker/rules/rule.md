@@ -8,6 +8,8 @@ description: API calls to interact with tracker's rules. Rules used to set up co
 Contains API calls to interact with tracker's rules. Rules used to set up conditions according to which the system logs
 the events and sends notifications to user.
 
+Described creation and using rules step-by-step in our [instructions](../../../../how-to/use-rules.md).
+
 ***
 
 ## Rule object

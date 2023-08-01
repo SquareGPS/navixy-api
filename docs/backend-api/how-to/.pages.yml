@@ -6,6 +6,7 @@ nav:
   - Get tracker list: 'get-tracker-list.md'
   - Get track points: 'get-track-points.md'
   - Get sensors and counters data: 'getting-measurements-and-counters-from-devices.md'
+  - Virtual sensors usage: 'virtual-sensors.md'
   - Create geofences: 'how-to-create-geofences.md'
   - Points of interest (POI) usage: 'work-with-POIs.md'
   - Use rules: 'use-rules.md'
@@ -20,3 +21,4 @@ nav:
   - Vehicles and service works usage: 'service-works-exploitation.md'
   - Work with driver journals: 'driver-journals-usage.md'
   - Create check-ins via API: 'how-to-create-checkins-via-api.md'
+  - Tracking stationary objects: 'tracking-stationary=objects.md'
