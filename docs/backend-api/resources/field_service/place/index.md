@@ -15,6 +15,8 @@ If there's an [employee](../employee) [assigned](../../tracking/tracker/employee
 and a POI has a custom field of type "responsible employee", such point of interest will be available in the mobile app to view.
 Thus, field employee/driver can view all points of interest assigned to him to visit them, etc.
 
+Working with POIs requires several actions so we described them in our [guides](../../../how-to/work-with-POIs.md).
+
 ***
 
 ## Place object

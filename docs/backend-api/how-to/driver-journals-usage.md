@@ -110,6 +110,8 @@ The platform will reply with the information about all trips per period:
 }
 ```
 
+***
+
 ### Entries creation
 
 Once we have a list of all trips, we need to create a driver journal entries. In addition to the received objects in the
@@ -132,6 +134,8 @@ The platform will confirm creation with:
   "success": true
 }
 ```
+
+***
 
 ### Driver journal obtaining
 

@@ -8,6 +8,8 @@ description: Tag is a label, or a key word that is used for a quick and easy sea
 Tag is a label, or a key word that is used for a quick and easy search. They help find the needed places, geofences, 
 employees, tasks, trackers, and vehicles. Contains tag object and API calls to interact with it.
 
+Find more information about tags API usage in our [how-tos](../../../how-to/tags-usage.md).
+
 ***
 
 ## Tag object

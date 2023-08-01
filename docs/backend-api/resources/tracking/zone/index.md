@@ -11,6 +11,8 @@ an event happened inside the geofence.
 This document describes CRUD actions for geofences. Note that geofence points handled separately because they are 
 represented by big arrays of data.
 
+Find instructions on working with geofences of different types [here](../../../how-to/how-to-create-geofences.md).
+
 ***
 
 ## Entity description

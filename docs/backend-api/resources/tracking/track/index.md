@@ -7,6 +7,8 @@ description: Contains API calls to interact with tracks and for getting all trac
 
 Contains API calls to interact with tracks and for getting tracks' points.
 
+Find more about track API getting with our [instructions](../../../how-to/get-track-points.md).
+
 ***
 
 ## API actions

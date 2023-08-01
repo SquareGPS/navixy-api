@@ -25,7 +25,7 @@ common example — requesting the track points data:
 4. Get track lists with [`track/list`](./resources/tracking/track/index.md#list).
 5. Get the track itself: [`track/read`](./resources/tracking/track/index.md#read).
 
-!!! note "You can get an API key via user's web interface. This is the recommended way."
+!!! note "You can get an API key via user's web interface. This is the recommended way instead of getting user session hash."
 
 In other words, to start working with API, the developers should have API call 
 description (as provided herein), and know user login and password.

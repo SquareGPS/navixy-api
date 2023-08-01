@@ -8,6 +8,8 @@ description: Contains driver journal entry object description and API calls to w
 Contains driver journal entry object description and API calls to work with it. Using the driver journal, you can monitor
 trips and categorize them by status to see the full picture of transport usage. Driver Entry is an already categorized trip.
 
+To get information on how-to work with driver journals refer to our [instructions](../../../how-to/driver-journals-usage.md).
+
 ***
 
 ## Driver journal entry object
