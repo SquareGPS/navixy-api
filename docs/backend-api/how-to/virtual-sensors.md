@@ -270,7 +270,7 @@ Report may be generated with [plugin 12](../resources/commons/plugin/report_plug
     ```shell
         curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
             -H 'Content-Type: application/json' \
-            -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Equipment working time", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {{"hide_empty_tabs":true,"plugin_id":12,"show_seconds":false,"min_working_period_duration":60,"show_idle_percent":true,"filter":false,"sensors":[{"tracker_id":642546,"sensor_id":1931610}]}}'
+            -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Equipment working time", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs":true,"plugin_id":12,"show_seconds":false,"min_working_period_duration":60,"show_idle_percent":true,"filter":false,"sensors":[{"tracker_id":642546,"sensor_id":1931610}]}}'
     ```
 
 ***
@@ -363,7 +363,7 @@ whenever the sensor data received by the platform falls within or outside a spec
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/rule/create' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {{"name": "Parameter in range","description": "Rule for getting alert on specific range","alerts": {"sms_phones": [],"emails": [],"phones": [],"push_enabled": true },"extended_params": {"sensor_id": 1991090,"threshold": 0,"min": 2,"max": 3 },"primary_text": "Sensor value out range","secondary_text": "Sensor value in range","suspended": false,"trackers": [642546],"type": "sensor_range","param": null,"zone_ids": [],"schedule": [{"type": "weekly","from": {"weekday": 1,"time": "00:00:00"},"to": {"weekday": 7,"time": "23:59:59"}}]}}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"name": "Parameter in range","description": "Rule for getting alert on specific range","alerts": {"sms_phones": [],"emails": [],"phones": [],"push_enabled": true },"extended_params": {"sensor_id": 1991090,"threshold": 0,"min": 2,"max": 3 },"primary_text": "Sensor value out range","secondary_text": "Sensor value in range","suspended": false,"trackers": [642546],"type": "sensor_range","param": null,"zone_ids": [],"schedule": [{"type": "weekly","from": {"weekday": 1,"time": "00:00:00"},"to": {"weekday": 7,"time": "23:59:59"} }]}}'
     ```
 
 ***
