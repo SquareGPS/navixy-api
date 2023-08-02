@@ -21,4 +21,4 @@ nav:
   - Vehicles and service works usage: 'service-works-exploitation.md'
   - Work with driver journals: 'driver-journals-usage.md'
   - Create check-ins via API: 'how-to-create-checkins-via-api.md'
-  - Tracking stationary objects: 'tracking-stationary=objects.md'
+  - Tracking stationary objects: 'tracking-stationary-objects.md'
