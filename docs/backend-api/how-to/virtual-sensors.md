@@ -10,6 +10,9 @@ into play. These powerful tools help users comprehend data from various device s
 translating it into text form for easier understanding. In this article, we'll delve into what virtual sensors are, how 
 they work, and how to configure them.
 
+Find this instruction with operations in UI only in 
+our [Expert center](https://docs.navixy.com/expert-center/virtual-sensors-usage).
+
 ***
 
 ## What are virtual sensors
