@@ -15,6 +15,9 @@ gather the necessary data, and how to set them up using truck trailers as an exa
 information about trips and usage for subsequent service work and what API calls will provide information about the tags. 
 Additionally, we'll share other use cases based on real situations.
 
+Find this instruction including BLE sensors configuration example in 
+our [Expert center](https://docs.navixy.com/expert-center/tracking-of-stationary-objects).
+
 ***
 
 ## What you need to track stationary objects
@@ -159,13 +162,13 @@ This will provide information that there's a trailer "7cf..." next to the device
 
 ***
 
-## How to Obtain Information on Usage Times and Trip Details
+## How to obtain information on usage times and trip details
 
 We've already gathered historical data using the first of the presented API calls, which showed on which devices the 
 trailer was displayed at a specific time. To get information about the journeys and usage time of this trailer, we 
 simply need to use one of the two API calls:
 
-### Overal trip info
+### Overall trip info
 
 API call [track/list](../resources/tracking/track/index.md#list) to get trip information for the period. This will 
 provide general information about the trips, such as where and when they started and ended, maximum speed, mileage, 
@@ -251,7 +254,7 @@ You can use these points together with your preferred maps API to display them o
 
 ***
 
-## Other Examples of Using BLE Tags within Navixy API
+## Other examples of using BLE tags within Navixy API
 
 Here are some other examples of how to use BLE tags with a short algorithm to get the necessary results need:
 
@@ -275,7 +278,7 @@ This approach ensures that you efficiently match passengers with appropriate veh
 
 ***
 
-### Agricultural Machinery
+### Agricultural machinery
 
 Suppose your client has agricultural machinery that can be connected to various equipment. How can you track which 
 tractor is using a seeder and which has a plow? This information will help you understand the frequency and extent 
@@ -290,7 +293,7 @@ ultimately increasing productivity.
 
 ***
 
-### Use on Construction Sites
+### Use on construction sites
 
 Construction sites often have numerous tools and expensive equipment. While installing a beacon for tracking purposes is 
 beneficial, another concern arises – how can you ensure that the equipment is tracked frequently, and that the GPS tracker 
@@ -303,7 +306,7 @@ machinery, you can optimize productivity at the construction site.
 
 ***
 
-### Indoor Tracking
+### Indoor tracking
 
 You can effectively track items indoors using the platform and BLE tags. All you need to do is install GPS devices in 
 different parts of the warehouse or building and tag the objects you want to track. Here are a few examples:
@@ -317,7 +320,7 @@ operations more efficient.
 
 ***
 
-### Tracking Goods with BLE Beacons
+### Tracking goods with BLE beacons
 
 Utilizing BLE beacons for tracking can greatly benefit transport companies by allowing them to determine which truck is 
 carrying a specific pallet of goods at any given moment. This method not only enables the tracking of goods' paths but 
