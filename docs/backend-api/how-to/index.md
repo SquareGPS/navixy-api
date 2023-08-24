@@ -19,6 +19,7 @@ needs but also help you make your business more profitable.
 * [How to get tracker list](./get-tracker-list.md).
 * [How to get track points](./get-track-points.md).
 * [How to get sensors and counters data](./getting-measurements-and-counters-from-devices.md).
+* [How to use virtual sensors and get information from them](./virtual-sensors.md).
 * [How to create geofences](./how-to-create-geofences.md).
 * [How to create points of interest (POIs) and use custom fields with them](./work-with-POIs.md).
 * [How to use rules](./use-rules.md).
@@ -32,3 +33,4 @@ needs but also help you make your business more profitable.
 * [How to use tags](./tags-usage.md).
 * [How to use service works](./service-works-exploitation.md).
 * [How to use driver journals](./driver-journals-usage.md).
+* [How to use BLE beacons along with trackers and Navixy APIs](./tracking-stationary-objects.md).

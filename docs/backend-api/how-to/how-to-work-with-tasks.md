@@ -138,6 +138,8 @@ The response will be:
 }
 ```
 
+***
+
 #### Route optimization
 
 If we need to get the optimized route that will minimize transit time and costs, it may be beneficial to reorder route checkpoints
@@ -172,6 +174,8 @@ Response will consist the order in that checkpoint objects should be specified i
     ]
 }
 ```
+
+***
 
 #### Association with address
 

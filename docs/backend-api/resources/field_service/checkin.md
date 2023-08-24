@@ -13,7 +13,8 @@ provided by app user after pressing the "Check-in" in the tracker app.
 Using check-ins field personnel can provide information to their HQ while on site. For example, provide photo proof 
 of the work done, or notify about a malfunction along with filled form describing the problem.
 
-Check-ins cannot be created using web API ([create](#create) is needed for exceptional cases), so all actions are read-only.
+Check-ins cannot be created using web API ([create](#create) is needed for exceptional cases and described 
+in [how-tos](../../how-to/how-to-create-checkins-via-api.md)), so all actions are read-only.
 
 ***
 

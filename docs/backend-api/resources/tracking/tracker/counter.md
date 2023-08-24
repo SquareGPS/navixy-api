@@ -7,6 +7,8 @@ description: This resource contains counter specific actions
 
 This resource contains counter specific actions
 
+Find information on how to get counters data [here](../../../how-to/getting-measurements-and-counters-from-devices.md).
+
 ***
 
 ## Resource specific actions

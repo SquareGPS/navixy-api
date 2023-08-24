@@ -15,7 +15,8 @@ API path: `/history/unread`.
 
 ### list
 
-List less than or equal to `limit` of the latest user's unread history events.
+List less than or equal to `limit` of the latest user's unread history events. Described how it works in our 
+[instructions](../../../how-to/how-to-work-with-notifications.md#all-unread-events-of-user).
 
 #### parameters
 

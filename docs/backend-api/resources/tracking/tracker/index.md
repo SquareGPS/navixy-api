@@ -125,7 +125,7 @@ See tracker object structure description [here](#tracker-object-structure).
 
 ### list
 
-Gets user's trackers with optional filtering by labels.
+Gets user's trackers with optional filtering by labels. We described this API call in our [how-tos](../../../how-to/get-tracker-list.md).
 
 #### parameters
 
@@ -1360,6 +1360,8 @@ Registers a new tracker device. During registration, device linked with current 
 and automatically configured to send data to our servers (if device model supports it).
 The panel must have installed SMS gateway.
 
+Find detailed instructions on tracker registration [there](../../../how-to/how-to-register-a-device.md).
+
 **required sub-user rights:** `tracker_register`.
 
 #### parameters
@@ -1816,6 +1818,8 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 ### raw_command/send
 
 Sends the GPRS command to the device, processing it in a protocol-dependent manner beforehand.
+
+Find more information about this API call usage in our [instructions](../../../how-to/how-to-send-commands-to-device.md).
 
 **required sub-user rights:** `tracker_configure`, `tracker_set_output`.
 

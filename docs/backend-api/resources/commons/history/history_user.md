@@ -18,6 +18,9 @@ API path: `/history/user/`.
 List less than or equal to `limit` of tracker events filtered by event types (`events`) between `from` date/time 
 and `to` date/time sorted by **time** field.
 
+Added more information about this API call usage in 
+our [instructions](../../../how-to/how-to-work-with-notifications.md#all-events-of-a-user-per-specific-time-period).
+
 #### parameters
 
 | name      | description                                                                                      | type                                                       |

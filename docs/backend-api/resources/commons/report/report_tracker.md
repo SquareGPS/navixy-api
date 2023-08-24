@@ -8,6 +8,8 @@ description: User reports allow acquiring all-round statistics and analytics. Th
 User reports allow acquiring all-round statistics and analytics. The summary data can be shown in various perspectives,
 in tables and graphs.Contains API calls to interact with tracker reports.
 
+Find information on obtaining data from report in our [how-tos](../../../how-to/how-to-obtain-information-from-report.md).
+
 ***
 
 ## API actions

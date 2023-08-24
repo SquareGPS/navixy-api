@@ -8,6 +8,8 @@ description: Contains service task object description and API calls to work with
 Contains service task object description and API calls to interact with vehicle service works that is used for vehicle maintenance.
 Vehicle maintenance feature helps to make sure that any scheduled maintenance or urgent repair is carried out in a timely manner.
 
+Described step-by-step about service task APIs in our [guides](../../../../how-to/service-works-exploitation.md).
+
 ***
 
 ## Service task object

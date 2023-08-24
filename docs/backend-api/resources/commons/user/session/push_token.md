@@ -5,7 +5,9 @@ description: Contains API calls to interact with push token.
 
 # Push token
 
-Contains API calls to interact with push token.
+Contains API calls to interact with push token. 
+
+Find information about push token usage in our [instructions](../../../../how-to/getting-pushes.md).
 
 ***
 
