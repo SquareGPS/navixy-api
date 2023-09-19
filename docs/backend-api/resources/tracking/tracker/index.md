@@ -1530,7 +1530,8 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 #### errors
 
-* 13 – Operation not permitted – if user has insufficient rights.
+* 7 – Invalid parameters - if fields violate restrictions described above or one of the models is a mobile app.
+* 13 – Operation not permitted - if user has insufficient rights.
 * 204 – Entity not found - if specified group does not exist. See [group/list](./group.md#list).
 * 220 – Unknown device model - if specified device model does not exist.
 * 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
@@ -1563,7 +1564,7 @@ The replacement device must be preconfigured. This API call can be used only for
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
+    curl -X POST '{{ extra.api_example_url }}/tracker/replace_quick' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "imei": "35645587458999"}'
     ```
@@ -1571,7 +1572,7 @@ The replacement device must be preconfigured. This API call can be used only for
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/tracker/register_quick?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&imei=35645587458999
+    {{ extra.api_example_url }}/tracker/replace_quick?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&imei=35645587458999
     ```
 
 #### response
@@ -1608,7 +1609,8 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 #### errors
 
-* 13 – Operation not permitted – if user has insufficient rights.
+* 7 – Invalid parameters - if fields violate restrictions described above or one of the models is a mobile app.
+* 13 – Operation not permitted - if user has insufficient rights.
 * 201 – Not found in the database - if there is no bundle with such IMEI.
 * 204 – Entity not found - if specified group does not exist.
 * 220 – Unknown device model - if specified device model does not exist.
