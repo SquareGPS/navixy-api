@@ -282,13 +282,36 @@ accuracy of the sensor in a span of ten minutes.
 
 #### extended parameters
 
-| name                | description                                                                                                                   | type    |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------|---------|
-| sensor_id           | ID of tracked sensor. Should be a fuel level sensor.                                                                          | int     |
-| emergency           | If `true` enables emergency notification.                                                                                     | boolean |
-| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean |
-| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean |
-| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean |
+| name                | description                                                                                                                   | type         |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|--------------|
+| sensor_id           | ID of tracked sensor. Should be a fuel level sensor. Only specified if `tracker_params` is not specified.                     | int          |
+| emergency           | If `true` enables emergency notification.                                                                                     | boolean      |
+| private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean      |
+| zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean      |
+| append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean      |
+| tracker_params      | An optional object. Specifies a list of sensors to be tracked in the rule, including for different trackers.                  | JSON object  |
+
+#### tracker_params
+
+| name       | description                                                                                      | type    |
+|------------|--------------------------------------------------------------------------------------------------|---------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.  | int     |
+| sensor_id  | ID of tracked sensor. Should be a fuel level sensor.                                             | int     |
+
+```json
+{
+  "tracker_params": [
+    {
+      "tracker_id": 10038820,
+      "sensor_id": 279421
+    },
+    {
+      "tracker_id": 10038821,
+      "sensor_id": 279422
+    }
+  ]
+}
+```
 
 ***
 
@@ -1398,12 +1421,38 @@ A rule that triggers when value of a chosen measurement sensor gets into or out 
 
 #### extended parameters
 
-| name      | description               | type |
-|-----------|---------------------------|------|
-| threshold | A threshold for a sensor. | int  |
-| sensor_id | ID of a tracked sensor.   | int  |
-| min       | A minimum range value.    | int  |
-| max       | A maximum range value.    | int  |
+| name            | description                                                                                                      | type        |
+|-----------------|------------------------------------------------------------------------------------------------------------------|-------------|
+| sensor_id       | ID of a tracked sensor. Only specified if `tracker_params` is not specified.                                     | int         |
+| threshold       | A threshold for a sensor. Ignored if `tracker_params` is specified.                                              | int         |
+| min             | A minimum range value. Ignored if `tracker_params` is specified.                                                 | int         |
+| max             | A maximum range value. Ignored if `tracker_params` is specified.                                                 | int         |
+| tracker_params  | An optional object. Specifies a list of parameters to be tracked in the rule, including for different trackers.  | JSON object |
+
+#### tracker_params
+
+| name            | description               | type        |
+|-----------------|---------------------------|-------------|
+| sensor_id       | ID of a tracked sensor.   | int         |
+| threshold       | A threshold for a sensor. | int         |
+| min             | A minimum range value.    | int         |
+| max             | A maximum range value.    | int         |
+
+Example:
+```json
+{
+  "tracker_params": [{
+    "tracker_id": 10181445,
+    "trigger_value": "1",
+    "state_field": "ble_magnet_sensor_3"
+  }, {
+    "tracker_id": 10181446,
+    "trigger_value": "1",
+    "virtual_sensor_id": 21212
+  }
+  ]
+}
+```
 
 ***
 
@@ -1420,10 +1469,38 @@ A rule that triggers when specified value of a chosen state field sensor detecte
 
 #### extended parameters
 
-| name                 | description                                                                                 | type                                              |
-|----------------------|---------------------------------------------------------------------------------------------|---------------------------------------------------|
-| allow_repeat         | Allows notification repeating even if state field value doesn't change.                     | bool                                              |
-| repeat_delay_seconds | How many seconds must pass with the same value before notification will be generated again. | int                                               |
-| state_field          | State field code.                                                                           | [enum](../../../../getting-started.md#data-types) |
-| trigger_value        | Expected value to trigger the rule.                                                         | string                                            |
+| name                 | description                                                                                                     | type                                              |
+|----------------------|-----------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| allow_repeat         | Allows notification repeating even if state field value doesn't change.                                         | bool                                              |
+| repeat_delay_seconds | How many seconds must pass with the same value before notification will be generated again.                     | int                                               |
+| trigger_value        | Expected value to trigger the rule. Only specified if `tracker_params` is not specified.                        | string                                            |
+| state_field          | State field code. Only specified if `virtual_sensor_id` and `tracker_params` are not specified.                 | [enum](../../../../getting-started.md#data-types) |
+| virtual_sensor_id    | ID of virtual sensor. Only specified if `state_field` and `tracker_params` are not specified.                   | int                                               |
+| tracker_params       | An optional object. Specifies a list of parameters to be tracked in the rule, including for different trackers. | JSON object                                       |
+
+#### tracker_params
+
+
+
+| name               | description                                                                                     | type                                              |
+|--------------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| tracker_id         | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                               |
+| trigger_value      | Expected value to trigger the rule.                                                             | string                                            |
+| state_field        | State field code. Only specified if `virtual_sensor_id` is not specified.                       | [enum](../../../../getting-started.md#data-types) |
+| virtual_sensor_id  | ID of virtual sensor. Only specified if `state_field` is not specified.                         | int                                               |
+
+```json
+{
+  "tracker_params": [{
+    "tracker_id": 10181445,
+    "trigger_value": "1",
+    "state_field": "ble_magnet_sensor_3"
+  }, {
+    "tracker_id": 10181446,
+    "trigger_value": "1",
+    "virtual_sensor_id": 21212
+  }
+  ]
+}
+```
 
