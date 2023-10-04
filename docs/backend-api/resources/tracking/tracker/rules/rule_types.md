@@ -1421,22 +1421,22 @@ A rule that triggers when value of a chosen measurement sensor gets into or out 
 
 #### extended parameters
 
-| name            | description                                                                                                      | type        |
-|-----------------|------------------------------------------------------------------------------------------------------------------|-------------|
-| sensor_id       | ID of a tracked sensor. Only specified if `tracker_params` is not specified.                                     | int         |
-| threshold       | A threshold for a sensor. Ignored if `tracker_params` is specified.                                              | int         |
-| min             | A minimum range value. Ignored if `tracker_params` is specified.                                                 | int         |
-| max             | A maximum range value. Ignored if `tracker_params` is specified.                                                 | int         |
-| tracker_params  | An optional object. Specifies a list of parameters to be tracked in the rule, including for different trackers.  | JSON object |
+| name            | description                                                                                                                              | type        |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| sensor_id       | ID of a tracked sensor. Only specified if `tracker_params` is not specified.                                                             | int         |
+| threshold       | A threshold for a sensor. If the parameter is omitted or null, the default value 0.03 is used. Ignored if `tracker_params` is specified. | double      |
+| min             | A minimum range value. Ignored if `tracker_params` is specified.                                                                         | double      |
+| max             | A maximum range value. Ignored if `tracker_params` is specified.                                                                         | double      |
+| tracker_params  | An optional object. Specifies a list of parameters to be tracked in the rule, including for different trackers.                          | JSON object |
 
 #### tracker_params
 
-| name            | description               | type        |
-|-----------------|---------------------------|-------------|
-| sensor_id       | ID of a tracked sensor.   | int         |
-| threshold       | A threshold for a sensor. | int         |
-| min             | A minimum range value.    | int         |
-| max             | A maximum range value.    | int         |
+| name            | description                                                                                    | type   |
+|-----------------|------------------------------------------------------------------------------------------------|--------|
+| sensor_id       | ID of a tracked sensor.                                                                        | int    |
+| threshold       | A threshold for a sensor. If the parameter is omitted or null, the default value 0.03 is used. | double |
+| min             | A minimum range value.                                                                         | double |
+| max             | A maximum range value.                                                                         | double |
 
 Example:
 ```json
