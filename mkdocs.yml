@@ -38,7 +38,6 @@ theme:
 plugins:
   - search:
       separator: '[\s\.]+'
-  - macros
   - minify:
       minify_html: true
       minify_js: true
@@ -51,6 +50,7 @@ plugins:
       filename: .pages.yml
       collapse_single_pages: false
       strict: true
+  - macros
   - pdf-export:
       combined: true
       combined_output_path: full-navixy-api-documentation.pdf
