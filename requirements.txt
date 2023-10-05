@@ -9,5 +9,5 @@ mkdocs-pdf-export-plugin==0.5.8
 mkdocs-awesome-pages-plugin==2.5.0
 mkdocs-macros-plugin==0.5.5
 pymdown-extensions==8.1.1
-WeasyPrint==52.4
+WeasyPrint==60.1
 Pygments==2.11.2
