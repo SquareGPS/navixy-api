@@ -88,12 +88,10 @@ Returns the list of the user's import processes.
 ```bash
 curl -X POST "{{ extra.api_example_url }}/data/import/list" \
     -H "Content-Type: application/json" \
-    -d '{
-          "hash": "a6aa75587e5c59c32d347da438505fc3"
-        }'
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-### read
+### /data/import/read
 
 Returns an import process with specified ID.
 
@@ -137,11 +135,11 @@ Returns an import process with specified ID.
 === "cURL"
 
 ```bash
-curl -X POST "{{ extra.api_example_url }}/vehicle/import/read" \
+curl -X POST "{{ extra.api_example_url }}/data/import/read" \
     -H "Content-Type: application/json" \
-    -d '{
-          "hash": "a6aa75587e5c59c32d347da438505fc3",
-          "type": "employee"
-          "process_id": 1
-        }'
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "type": "employee", "process_id": 1}'
 ```
+
+#### errors
+
+* 201 – Not found in database (if import is not found)

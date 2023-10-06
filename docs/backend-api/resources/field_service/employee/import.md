@@ -34,6 +34,7 @@ Available fields:
 * `phone`
 * `driver_license_number`
 * `driver_license_cats`
+* `driver_license_issue_date`
 * `driver_license_valid_till`
 * `hardware_key`
 * `address`
@@ -41,6 +42,7 @@ Available fields:
 * `lng`
 * `radius`
 * `personnel_number`
+* `ssn`
 * `tracker_label`
 * `tags`
 * `undefined` (if a meaning of a field is not known)
@@ -61,12 +63,14 @@ Available fields:
 ```bash
 curl -X POST "{{ extra.api_example_url }}/employee/import/start" \
     -H "Content-Type: application/json" \
-    -d '{
-          "hash": "a6aa75587e5c59c32d347da438505fc3",
-          "filename": "tmp-sheet640571613016981796.tsv",
-          "headers": ["label", "model", "max_speed", "type", "subtype", "reg_number", "fuel_grade", "fuel_tank_volume", "free_insurance_policy_number", "free_insurance_valid_till", "tracker_label", "tags"],
-          "user_headers": [ "Model", "Max speed", "Type", "Subtype", "Reg. number", "Fuel grade", "Fuel tank volume", "Free insurance policy number", "Free insurance valid till", "Object", "Tags"]
-        }'
+    --data-binary @- << EOF
+{
+    "hash": "a6aa75587e5c59c32d347da438505fc3",
+    "filename": "tmp-sheet640571613016981796.tsv",
+    "headers": ["label", "model", "max_speed", "type", "subtype", "reg_number", "fuel_grade", "fuel_tank_volume", "free_insurance_policy_number", "free_insurance_valid_till", "tracker_label", "tags"],
+    "user_headers": [ "Model", "Max speed", "Type", "Subtype", "Reg. number", "Fuel grade", "Fuel tank volume", "Free insurance policy number", "Free insurance valid till", "Object", "Tags"]
+}
+EOF
 ```
 
 #### errors
@@ -121,15 +125,12 @@ Returns an import process with specified ID.
 ```bash
 curl -X POST "{{ extra.api_example_url }}/employee/import/read" \
     -H "Content-Type: application/json" \
-    -d '{
-          "hash": "a6aa75587e5c59c32d347da438505fc3",
-          "process_id": 1
-        }'
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "process_id": 1}'
 ```
 
 #### errors
 
-- 201 - Not found in database
+* 201 – Not found in database (if import is not found)
 
 ### list
 
@@ -170,9 +171,7 @@ Returns the list of the user's employee import processes.
 ```bash
 curl -X POST "{{ extra.api_example_url }}/employee/import/list" \
     -H "Content-Type: application/json" \
-    -d '{
-          "hash": "a6aa75587e5c59c32d347da438505fc3"
-        }'
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
 ### download_failed
@@ -196,13 +195,10 @@ File (standard file download).
 ```bash
 curl -X POST "{{ extra.api_example_url }}/employee/import/download_failed" \
     -H "Content-Type: application/json" \
-    -d "{
-          \"hash\": \"a6aa75587e5c59c32d347da438505fc3\",
-          \"process_id\": 7
-        }"
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "process_id": 7}'
 ```
 
 #### errors
 
-- 201 – Not found in database (if import is not found)
-- 204 – Entity not found (if file is not found)
+* 201 – Not found in database (if import is not found)
+* 204 – Entity not found (if file is not found)
