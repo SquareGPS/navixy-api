@@ -23,6 +23,7 @@ trackers, vehicles, places, etc.
     "phone": "442071111111",
     "driver_license_number": "SKIMP407952HJ9GK 06",
     "driver_license_cats": "C",
+    "driver_license_issue_date": "2008-01-01",
     "driver_license_valid_till": "2018-01-01",
     "hardware_key": null,
     "icon_id" : 55,
@@ -34,6 +35,7 @@ trackers, vehicles, places, etc.
         "address": "Engeldamm 18"
     },
     "personnel_number": "1059236",
+    "ssn": "123-45-6789",
     "tags": [1,2]
 }
 ```
@@ -47,6 +49,7 @@ trackers, vehicles, places, etc.
 * `phone` - string. Employee's phone without "+" sign. Can be empty, cannot be null. Max 32 characters.
 * `driver_license_number` - string. Driver license number. Can be empty, cannot be null. Max 32 characters.
 * `driver_license_cats` - string. Driver license categories. Max 32 characters.
+* `driver_license_issue_date` - string date (yyyy-MM-dd). Issue date of a driver license. Can be null.
 * `driver_license_valid_till` - string date (yyyy-MM-dd). Date till a driver license valid. Can be null.
 * `hardware_key` - string. A hardware key. Can be null. Max 64 characters.
 * `icon_id` - int. An icon ID. Can be null, can only be updated via [avatar/assign](./avatar.md#assign).
@@ -56,6 +59,7 @@ via [avatar/upload](./avatar.md#upload).
 * `location` - optional object. Location associated with this employee, should be valid or null.
     * `address` - string. Address of the location.
 * `personnel_number` - optional string. Max length is 15.
+* `ssn` - optional string. Social Security number. Max length is 32.
 * `tags` - int array. List of tag IDs.
 
 ***
@@ -70,12 +74,12 @@ Gets all employees and drivers belonging to user.
 
 #### parameters
 
-| name   | description                                                                                                                                                                                                                                                                                                                                                                                                                                                | type         |
-|:-------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|
-| limit  | Pagination. Maximum number of employee records to return.                                                                                                                                                                                                                                                                                                                                                                                                  | int          |
-| offset | Pagination. Get employee records starting from.                                                                                                                                                                                                                                                                                                                                                                                                            | int          |
-| sort   | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["first_name=desc","object_label=acs"]`. Maximum 2 options in request. Available properties:<br/> - ID<br/> - first_name<br/> - object_label<br/> - department_label<br/> - personnel_number<br/> - hardware_key<br/> - phone<br/> - email<br/> - address<br/> - driver_license_number<br/> - driver_license_cats<br/> - driver_license_valid_till<br/> | string array |
-| filter | Get a list of employees filtered by properties, at least one property must contain the desired string. All properties from the sorting list are used in filtering. Maximum 100 characters or null.                                                                                                                                                                                                                                                         | string       |
+| name   | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | type         |
+|:-------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|
+| limit  | Pagination. Maximum number of employee records to return.                                                                                                                                                                                                                                                                                                                                                                                                                                              | int          |
+| offset | Pagination. Get employee records starting from.                                                                                                                                                                                                                                                                                                                                                                                                                                                        | int          |
+| sort   | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["first_name=desc","object_label=acs"]`. Maximum 2 options in request. Available properties:<br/> - ID<br/> - first_name<br/> - object_label<br/> - department_label<br/> - personnel_number<br/> - hardware_key<br/> - phone<br/> - email<br/> - address<br/> - driver_license_number<br/> - driver_license_cats<br/> - driver_license_valid_till<br/> - driver_license_valid_till<br/> - ssn<br/> | string array |
+| filter | Get a list of employees filtered by properties, at least one property must contain the desired string. All properties from the sorting list are used in filtering. Maximum 100 characters or null.                                                                                                                                                                                                                                                                                                     | string       |
 
 #### examples
 
@@ -192,6 +196,7 @@ Gets employee/driver by his ID.
      "phone": "442071111111",
      "driver_license_number": "SKIMP407952HJ9GK 06",
      "driver_license_cats": "C",
+     "driver_license_issue_date": "2008-01-01",
      "driver_license_valid_till": "2018-01-01",
      "hardware_key": null,
      "icon_id" : 55,
@@ -203,6 +208,7 @@ Gets employee/driver by his ID.
          "address": "Engeldamm 18"
      },
      "personnel_number": "1059236",
+     "ssn": "123-45-6789",
      "tags": [1,2]
  }
 }
@@ -326,6 +332,7 @@ Converts batch of tab-delimited employees/drivers and returns list of checked em
         "phone": "442071111111",
         "driver_license_number": "SKIMP407952HJ9GK 06",
         "driver_license_cats": "C",
+        "driver_license_issue_date": "2008-01-01",
         "driver_license_valid_till": "2018-01-01",
         "hardware_key": null,
         "icon_id": 55,
@@ -337,6 +344,7 @@ Converts batch of tab-delimited employees/drivers and returns list of checked em
           "address": "Engeldamm 18"
         },
         "personnel_number": "1059236",
+        "ssn": "123-45-6789",
         "tags": [
           1,
           2

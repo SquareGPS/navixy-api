@@ -100,6 +100,7 @@ Requests to read the current employee (driver) assigned to tracker, and when it 
     "phone": "",
     "driver_license_number": "34534545",
     "driver_license_cats": "AB, sgeg",
+    "driver_license_issue_date": "2005-06-04",
     "driver_license_valid_till": "2015-06-04",
     "hardware_key": "ab8def",
     "department_id": null,
