@@ -196,7 +196,9 @@ Gets user information and some settings.
 
 #### parameters
 
-Only API key `hash`.
+| name        | description                                                                            | type   | restrictions |
+|:------------|:---------------------------------------------------------------------------------------|:-------|:-------------|
+| application | If specified, the response will contain a description of the application's custom menu | string | optional     |
 
 #### examples
 
@@ -273,7 +275,8 @@ Only API key `hash`.
     "features": ["branding_web"],
     "privileges": {
         "rights": ["tag_update"]
-    }
+    },
+  "menu": <customizable_user_menu>
 }
 ```
 
