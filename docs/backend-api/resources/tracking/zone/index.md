@@ -353,6 +353,53 @@ Gets all user geofences.
 
 ***
 
+### read
+
+Gets geofence by specified ID.
+
+#### parameters
+
+| name    | description       | type | 
+|:--------|:------------------|:-----|
+| zone_id | ID of a geofence. | int  |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/zone/read' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 12345}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/zone/read?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=12345
+    ```
+
+#### response
+
+```json
+{
+    "success": true,
+    "value": {
+      "id": 12345,
+      "type": "sausage",
+      "label": "Zone name",
+      "address": "Karlsplatz, 2",
+      "color": "27A9E3",
+      "radius": 150,
+      "tags": [289]
+    }
+}
+```
+
+* `value` - Geofence object without points field.
+
+***
+
 ### search_location
 
 Gets all geofence IDs and names within which a specified coordinates are located inside.
