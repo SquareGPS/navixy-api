@@ -309,12 +309,13 @@ Gets all user geofences.
 
 #### parameters
 
-| name    | description                                                                                           | type      | 
-|:--------|:------------------------------------------------------------------------------------------------------|:----------|
-| filter  | Optional. Filter for geofences label and description.                                                 | string    |
-| tag_ids | Optional. Tag IDs assigned to the geofences. The zones found must include all the tags from the list. | int array |
-| offset  | Optional. Offset from start of the found geofences for pagination.                                    | int       |
-| limit   | Optional. Limit of the found geofences for pagination.                                                | int       |
+| name        | description                                                                                           | type      | 
+|:------------|:------------------------------------------------------------------------------------------------------|:----------|
+| filter      | Optional. Filter for geofences label and description.                                                 | string    |
+| tag_ids     | Optional. Tag IDs assigned to the geofences. The zones found must include all the tags from the list. | int array |
+| offset      | Optional. Offset from start of the found geofences for pagination.                                    | int       |
+| limit       | Optional. Limit of the found geofences for pagination.                                                | int       |
+| with_points | Optional, default=`false`. If `true`, return geofence with its [points](zone_point.md)                | boolean   |
 
 #### examples
 
@@ -359,9 +360,10 @@ Gets geofence by specified ID.
 
 #### parameters
 
-| name    | description       | type | 
-|:--------|:------------------|:-----|
-| zone_id | ID of a geofence. | int  |
+| name        | description                                                                            | type    | 
+|:------------|:---------------------------------------------------------------------------------------|:--------|
+| zone_id     | ID of a geofence.                                                                      | int     |
+| with_points | Optional, default=`false`. If `true`, return geofence with its [points](zone_point.md) | boolean |
 
 #### examples
 
