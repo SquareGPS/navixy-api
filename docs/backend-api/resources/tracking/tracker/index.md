@@ -460,24 +460,28 @@ List of state names for the field `states`:
 * **hardware_key** (driver identification key; value type: string).
 * **vibration_state** (value type: boolean).
 * **idling_state** (value type: boolean).
-* **external_power_state** (connected/disconnected; value type: boolean).
-* **case_intrusion_state** (value type: boolean).
-* **driver_ident_state** (identified/not identified; value type: boolean).
+* **external_power_state** (connected/disconnected; value type: string).
+* **case_intrusion_state** (value type: string).
+* **driver_ident_state** (identified/not identified; value type: string).
 * **tacho_vin** (value type: string).
 * **tacho_card1_sn** (value type: string).
 * **tacho_card2_sn** (value type: string).
 * **tacho_vin_last_download** (value type: string).
 * **tacho_card1_last_download** (value type: string).
 * **tacho_card2_last_download** (value type: string).
-* **can_hand_brake_state** (value type: boolean).
-* **can_hood_state** (value type: boolean, `true` means "open").
-* **can_airbag_state** (value type: boolean, `true` means "malfunction").
-* **can_trunk_state** (value type: boolean, `true` means "open").
-* **can_seat_belt_driver_state** (value type: boolean, `true` means "untied").
-* **can_seat_belt_passenger_state** (value type: boolean, `true` means "untied").
-* **can_door_state** (value type: boolean).
-* **can_door_driver_state** (value type: boolean, `true` means "open").
-* **can_door_passenger_state** (value type: boolean, `true` means "open").
+* **can_hand_brake_state** (value type: string).
+* **can_brake_state** (value type: string).
+* **can_hood_state** (value type: string, 0 or 1 means "close" or "open").
+* **can_airbag_state** (value type: string, 0 or 1 means "normal" or "malfunction").
+* **can_trunk_state** (value type: string, 0 or 1 means "close" or "open").
+* **can_seat_belt_driver_state** (value type: string, 0 or 1 means "untied" or "tied").
+* **can_seat_belt_passenger_state** (value type: string, 0 or 1 means "untied" or "tied").
+* **can_door_state** (value type: string, 0 or 1 means "close" or "open").
+* **can_door_driver_state** (value type: string, 0 or 1 means "close" or "open").
+* **can_door_passenger_state** (value type: string, 0 or 1 means "close" or "open").
+* **can_clutch_state** (value type: string).
+* **can_low_fuel** (value type: string).
+* **can_air_conditioning** (value type: string).
 
 #### errors
 
