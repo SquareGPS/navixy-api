@@ -128,7 +128,7 @@ Only session `hash`.
 * `logo` - string. Path or URL to dealer's logotype or null.
 * `paas_activation_date` - string. Date of activation pay.
 * `features` - string array. Set of the allowed [dealer features](../../../backend-api/resources/commons/dealer.md#dealer-features).
-* `default_user_time_zone` - string. [Time zone id](../timezone.md) for new users to be created via [user/upload](../user/user.md#upload).
+* `default_user_time_zone` - string. [Time zone id](../timezone.md) for new users to be created via [user/upload](../user#upload).
   Also, this zone will be selected by default when creating a new user in the Navixy Admin Panel.
 
 #### errors
