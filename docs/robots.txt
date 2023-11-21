@@ -1,0 +1,3 @@
+# Disallow crawling the testing version of documentation
+User-agent: *
+Disallow: /
