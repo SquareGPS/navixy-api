@@ -24,7 +24,7 @@ It is the easiest geofence to create. There we should use only one point as a ce
 calculate borders for it.
 
 For example, we want to create a geofence with a radius 50 meters that will cover a business park to track employees.
-We need this geofence to create a rule that will provide ann alert when they will come to work and another one - when 
+We need this geofence to create a rule that will provide an alert when they will come to work and another one - when 
 they go from it.
 
 API request:

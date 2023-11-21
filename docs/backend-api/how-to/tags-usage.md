@@ -147,6 +147,7 @@ The platform will provide us with objects with assigned tag in the response:
                     "phone": "",
                     "driver_license_number": "",
                     "driver_license_cats": "",
+                    "driver_license_issue_date": null,
                     "driver_license_valid_till": null,
                     "hardware_key": null,
                     "department_id": null,

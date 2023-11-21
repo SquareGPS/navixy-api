@@ -97,7 +97,7 @@ API calls to read and update panel's service settings.
 * `privacy_policy_link` - string. A link to privacy policy.
 * `tos` - string. Terms Of Service text.
 * `no_register_commands` - boolean. If `true` then do not send commands to devices on activation.
-* `default_user_time_zone` - string. [Time zone id](../../timezone.md) for new users to be created via [user/upload](../../user.md#upload).
+* `default_user_time_zone` - string. [Time zone id](../../timezone.md) for new users to be created via [user/upload](../../user/index.md#upload).
   Also, this zone will be selected by default when creating a new user in the Navixy Admin Panel.
 
 ***

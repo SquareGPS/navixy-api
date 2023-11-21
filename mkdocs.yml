@@ -38,7 +38,6 @@ theme:
 plugins:
   - search:
       separator: '[\s\.]+'
-  - macros
   - minify:
       minify_html: true
       minify_js: true
@@ -51,6 +50,7 @@ plugins:
       filename: .pages.yml
       collapse_single_pages: false
       strict: true
+  - macros
   - pdf-export:
       combined: true
       combined_output_path: full-navixy-api-documentation.pdf
@@ -104,6 +104,6 @@ markdown_extensions:
   - pymdownx.details
 
 # Enable analytics block to include scripts from /partial/integrations/analytics.html
-google_analytics:
-  - UA-XXXXXXXX-X
-  - auto
+#google_analytics:
+#  - UA-XXXXXXXX-X
+#  - auto

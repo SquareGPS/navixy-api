@@ -13,10 +13,10 @@ There are several ways:
 
 1. [Creating an issue]({{ config.repo_url }}issues/new) with a detailed description of the problem.
 2. [Editing a single page in a browser](#easy-way).
-3. [Manually creating a fork](#second-way) and doing multiply commits before creating a pull request.
-4. [Installing and editing](#hard-way) documentation locally on yours PC.
+3. [Manually creating a fork](#second-way) and doing multiple commits before creating a pull request.
+4. [Installing and editing](#hard-way) documentation locally on your PC.
 
-In each of these cases, a GitHub account required.
+In each of these cases, a GitHub account is required.
 If you don't want to register on GitHub, you can just [contact us](./contacts.md) with any convenient way.
 
 ***
@@ -162,7 +162,7 @@ Object and its description
 
 ## API actions
 
-Path: `/path/to/resource\`.
+Path: `/path/to/resource/`.
 
 ### method1
 
