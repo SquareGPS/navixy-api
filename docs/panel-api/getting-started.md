@@ -119,11 +119,10 @@ $ curl -X POST 'http://api.domain.com/v2/panel/user/list/' \
 
 ### Session expiration
 
-Every session (and thus, a hash key associated with it) has a limited 
-lifetime (30 days by default). So you should obtain new hash key periodically.
+Each session, and its associated hash key, has a limited lifespan that defaults to 24 hours. This is a change from the 
+previous setting of 30 days, implemented for improved security. You need to periodically obtain a new hash key.
 
-If you will be trying to make a Panel API call with expired session hash, you'll 
-get the following error:
+If you attempt to make a Panel API call with an expired session hash, you will receive an error:
 
 ```json
 {
