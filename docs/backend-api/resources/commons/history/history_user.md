@@ -86,7 +86,8 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
 ```
 
 * `list` - list of zero or more history_entry` objects which described in [Tracker history entry](./index.md#tracker-history-entry). 
-* `limit_exceeded` - boolean. `false` when listed all history entries satisfied with conditions and `true` otherwise.
+* `limit_exceeded` - boolean. It indicates if the response has exceeded the `store_period` limit, set in the user's 
+tariff plan. Will be `true` if you request a period that exceeds what the user's plan allows.
 
 #### errors
 

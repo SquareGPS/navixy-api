@@ -452,32 +452,30 @@ List of available sensor's input names for the object `sensor value`:
 List of state names for the field `states`:
 
 * **obd_vin** (value type: string).
-* **obd_mil_status** (value type: boolean).
 * **obd_dtc_number** (DTC codes number; value type: integer).
-* **obd_dtc_codes** (value type: string).
+* **obd_dtc_codes** (DTC codes; value type: string).
 * **obd_dtc_cleared_distance** (distance traveled since codes cleared in km; value type: double).
 * **obd_mil_activated_distance** (distance traveled with MIL on in km; value type: double).
 * **hardware_key** (driver identification key; value type: string).
-* **vibration_state** (value type: boolean).
-* **idling_state** (value type: boolean).
-* **external_power_state** (connected/disconnected; value type: boolean).
-* **case_intrusion_state** (value type: boolean).
-* **driver_ident_state** (identified/not identified; value type: boolean).
+* **external_power_state** (connected/disconnected; value type: string).
+* **driver_ident_state** (identified/not identified; value type: string).
 * **tacho_vin** (value type: string).
 * **tacho_card1_sn** (value type: string).
 * **tacho_card2_sn** (value type: string).
 * **tacho_vin_last_download** (value type: string).
 * **tacho_card1_last_download** (value type: string).
 * **tacho_card2_last_download** (value type: string).
-* **can_hand_brake_state** (value type: boolean).
-* **can_hood_state** (value type: boolean, `true` means "open").
-* **can_airbag_state** (value type: boolean, `true` means "malfunction").
-* **can_trunk_state** (value type: boolean, `true` means "open").
-* **can_seat_belt_driver_state** (value type: boolean, `true` means "untied").
-* **can_seat_belt_passenger_state** (value type: boolean, `true` means "untied").
-* **can_door_state** (value type: boolean).
-* **can_door_driver_state** (value type: boolean, `true` means "open").
-* **can_door_passenger_state** (value type: boolean, `true` means "open").
+* **can_hood_state** (value type: string, 0 or 1 means "close" or "open").
+* **can_airbag_state** (value type: string, 0 or 1 means "normal" or "malfunction").
+* **can_trunk_state** (value type: string, 0 or 1 means "close" or "open").
+* **can_seat_belt_driver_state** (value type: string, 0 or 1 means "untied" or "tied").
+* **can_seat_belt_passenger_state** (value type: string, 0 or 1 means "untied" or "tied").
+* **can_door_state** (value type: string, 0 or 1 means "close" or "open").
+* **can_door_driver_state** (value type: string, 0 or 1 means "close" or "open").
+* **can_door_passenger_state** (value type: string, 0 or 1 means "close" or "open").
+
+You can locate all inputs, states, and definitions by utilizing 
+the [tracker/sensor/input_name/list](./sensor/input_name.md#list) API call.
 
 #### errors
 

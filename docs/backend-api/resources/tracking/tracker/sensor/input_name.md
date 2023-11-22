@@ -7,7 +7,7 @@ description: API call to get descriptions of all sensor inputs existing in the s
 
 API base path: `/tracker/sensor/input_name`.
 
-API call to get descriptions of all sensor inputs existing in the system.
+API call to get all sensor inputs and state fields existing in the system and their descriptions.
 
 ***
 
@@ -15,7 +15,8 @@ API call to get descriptions of all sensor inputs existing in the system.
 
 ### list
 
-Returns descriptions of all sensor inputs existing in the system.
+This will provide descriptions of all sensor inputs and state fields present in the system. These descriptions will be 
+given in the language according to the user's locale.
 
 #### parameters
 
