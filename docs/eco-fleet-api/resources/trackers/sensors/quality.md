@@ -1,11 +1,11 @@
 ---
-title: Sensors
-description: Contains API calls to interact with sensor's quality.
+title: Fuel Sensor Quality Index
+description: Contains API calls to interact with fuel sensor quality index.
 ---
 
-# Sensor's quality
+# Fuel Sensor Quality Index
 
-Contains API calls to interact with sensor's quality.
+Contains API calls to interact with fuel sensor quality index.
 
 ## Resource
 
@@ -13,7 +13,7 @@ Contains API calls to interact with sensor's quality.
 
 ### GET
 
-Gets given sensor's quality index calculated based on sensor's readings in a given datetime interval.
+Returns given fuel sensor quality index calculated based on sensor readings in a given datetime period.
 
 #### parameters
 
