@@ -70,6 +70,13 @@ Example:
 
 ***
 
+##### Common errors
+
+* `errors/default/bad-request` - Causes: missing or invalid parameter value.
+* `errors/default/unauthorized` - Causes: missing `Authorization` header or credentials are insufficient or expired.
+
+***
+
 #### Date/time formats
 
 According to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
