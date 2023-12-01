@@ -79,6 +79,7 @@ extra:
       link: https://www.navixy.com/contact/
       name: Contacts
   api_example_url: https://api.navixy.com/v2
+  eco_fleet_api_example_url: https://api.navixy.com/eco_fleet/v1
 
 extra_css:
   - assets/stylesheets/extra.css
