@@ -9,22 +9,24 @@ Contains API calls to interact with fuel sensor quality index.
 
 ## Resource
 
-`/trackers/$tracker_id/sensors/$sensor_id/quality`.
+Resource path: `/trackers/$tracker_id/sensors/$sensor_id/quality`.
 
 ### GET
 
-Returns given fuel sensor quality index calculated based on sensor readings in a given datetime period.
+Returns the fuel sensor quality index calculated from sensor readings within a specified datetime period.
 
 #### parameters
 
-| name     | description                                                                      | type      |
-|:---------|:---------------------------------------------------------------------------------|:----------|
-| interval | Sensor readings' datetime interval which will be analyzed. Last week by default. | interval? |
+| name       | description                                                                      | type      |
+|:-----------|:---------------------------------------------------------------------------------|:----------|
+| tracker_id | ID of the tracker which has the sensor.                                          | integer   |
+| sensor_id  | ID of the sensor to analyze.                                                     | integer   |
+| interval   | Sensor readings' datetime interval which will be analyzed. Last week by default. | interval? |
 
 #### examples
 
 ```shell
-curl -X GET 'https://api.navixy.com/eco_fleet/v1/trackers/123/sensors/321/quality?interval=P7D/2020-12-31T00:00Z' \
+curl -X GET '{{ extra.eco_fleet_api_example_url }}/trackers/123/sensors/321/quality?interval=P7D/2020-12-31T00:00Z' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
 ```
 
@@ -36,7 +38,7 @@ curl -X GET 'https://api.navixy.com/eco_fleet/v1/trackers/123/sensors/321/qualit
 }
 ```
 
-* `smoothness` - a smoothness `score` of the given sensor's readings. Greater values mean less noise in readings sent by the sensor and vice versa.
+* `smoothness` - a smoothness score of the sensor readings. Higher values indicate reduced noise in sensor readings, while lower values suggest increased noise.
 
 ##### types
 
@@ -48,5 +50,5 @@ curl -X GET 'https://api.navixy.com/eco_fleet/v1/trackers/123/sensors/321/qualit
 #### errors
 
 * `errors/entity/not-found` - Entity not found. Thrown if sensor or calibration table is missing.
-* `errors/external-api/navixy` - Error accessing Navixy API. See `detail` field and consult Backend API documentation.
+* `errors/external-api/navixy` - Error accessing Navixy API. See `detail` field and consult [Backend API documentation](../../../../backend-api/getting-started.md#error-handling).
 * `errors/sensors/quality/not-enough-readings` - Not enough sensor readings in given interval. Try using interval with enough vehicle usage or changing readings' sending frequency and waiting for data accumulation.
