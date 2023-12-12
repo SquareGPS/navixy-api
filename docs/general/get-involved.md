@@ -162,7 +162,7 @@ Object and its description
 
 ## API actions
 
-Path: `/path/to/resource\`.
+Path: `/path/to/resource/`.
 
 ### method1
 
