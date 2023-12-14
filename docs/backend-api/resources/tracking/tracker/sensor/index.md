@@ -144,6 +144,22 @@ There exist a similar method for working with a single tracker - [list](#list).
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
 | trackers | Set of tracker identifiers. Each of the relevant trackers must be accessible to the authorized user and not be blocked. Number of trackers (length of array) is limited to a maximum of 500 (this number may be changed in future). | int array |
 
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/sensor/batch_list' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [204104, 181451]}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/sensor/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[204104, 181451]
+    ```
+
 #### response
 
 Contains a map, where keys are IDs from **trackers** parameter and values are lists of [sensor](#sensor-sub-types) objects.
