@@ -41,7 +41,6 @@ request aimed at gaining insights into the fields, which data that can be obtain
     ```shell
     curl -X 'POST' \
     'https://api.eu.navixy.com/dwh/v1/tracker/raw_data/get_inputs' \
-    -H 'accept: text/csv' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "6dc7d304dec4434f4c4202ec42817f83","tracker_id": 123456}'
     ```

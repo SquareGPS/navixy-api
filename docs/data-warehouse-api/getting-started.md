@@ -14,13 +14,13 @@ user API, this will be a great advantage.
 
 Data Warehouse API resides in `dwh` subsection of API URL and does not belong to backend APIv2. You need to determine URL 
 to API calls like this:
-*  `https://api.eu.navixy.com/dwh` for European Navixy ServerMate platform.
-*  `https://api.us.navixy.com/dwh` for American Navixy ServerMate platform.
+*  `https://api.eu.navixy.com/dwh/v1` for European Navixy ServerMate platform.
+*  `https://api.us.navixy.com/dwh/v1` for American Navixy ServerMate platform.
 
 For example, to make raw data readings API request in European Navixy ServerMate, you need to use this URL:
 
 ```
-{{ extra.dwh_api_example_url }}/trackers/123/sensors/321/quality
+https://api.eu.navixy.com/dwh/v1/tracker/raw_data/read
 ```
 
 ***
@@ -97,10 +97,13 @@ Example:
 
 ### Date/time formats
 
-According to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+According to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Additionally, described date/time formats in 
+[Backend API](../backend-api/getting-started.md#datetime-formats).
+
 
 Example: `2023-12-31T23:59:59Z`.
 
 With the parameter iso_datetime=false, date/time output is `yyyy-MM-dd HH:mm:ss`.
 
 Example: `2023-12-31 23:59:59`
+
