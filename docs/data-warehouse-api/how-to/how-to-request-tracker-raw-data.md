@@ -115,8 +115,8 @@ The API request for raw data in our case must look like below:
     -d '{
     "hash": "6dc7d304dec4434f4c4202ec42817f83",
     "tracker_id": "123456",
-    "from": "2023-11-29T08:31:00.000Z",
-    "to": "2023-11-29T08:32:00.000Z",
+    "from": "2023-11-29T08:31:00Z",
+    "to": "2023-11-29T08:32:00Z",
     "columns": ["lat","lng","speed","inputs.lls_level_1","inputs.hw_mileage"]}'
     ```
 

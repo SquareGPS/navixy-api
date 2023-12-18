@@ -99,8 +99,8 @@ Retrieves parsed raw data - values received from tracking devices and decoded by
 | name       | description                                                                                                                                                                       | type         | format                                                                            |
 |:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|:----------------------------------------------------------------------------------|
 | tracker_id | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked.                               | int          | 123456                                                                            |
-| from       | From date/time. Starting from what moment logs messages should be retrieved. The time is specified along with time zone according to ISO8601.                                     | date/time    | "2023-08-24T08:04:36.306Z"                                                        |
-| to         | To date/time. Till which moment messages should be retrieved into log. Specified date must be after "from" date. The time is specified along with time zone according to ISO8601. | date/time    | "2023-08-24T08:04:36.306Z"                                                        |
+| from       | From date/time. Starting from what moment logs messages should be retrieved. The time is specified along with time zone according to ISO8601.                                     | date/time    | "2023-08-24T08:04:36Z"                                                            |
+| to         | To date/time. Till which moment messages should be retrieved into log. Specified date must be after "from" date. The time is specified along with time zone according to ISO8601. | date/time    | "2023-08-24T08:04:36Z"                                                            |
 | columns    | List of CSV columns to retrieve                                                                                                                                                   | string array | `["flags.location_valid","lat","lng","discrete_inputs.1","inputs.board_voltage"]` |
 
 !!! note "Instead of using from/to parameters it is possible to set interval parameter - ISO8601 formatted interval, for example 2023-08-24T08:04:36.306Z/PT24H."
@@ -167,8 +167,8 @@ If you specify complex column without specifying internal value, then all intern
     -d '{
     "hash": "6dc7d304dec4434f4c4202ec42817f83",
     "tracker_id": "123456",
-    "from": "2023-11-29T08:31:00.000Z",
-    "to": "2023-11-29T08:32:00.000Z",
+    "from": "2023-11-29T08:31:00Z",
+    "to": "2023-11-29T08:32:00Z",
     "columns": ["lat","lng","speed","inputs.lls_level_1","inputs.hw_mileage"]}'
     ```
 
