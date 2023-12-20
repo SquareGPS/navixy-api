@@ -97,13 +97,6 @@ Example:
 
 ### Date/time formats
 
-According to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Additionally, described date/time formats in 
-[Backend API](../backend-api/getting-started.md#datetime-formats).
-
-
-Example: `2023-12-31T23:59:59Z`.
-
-With the parameter iso_datetime=false, date/time output is `yyyy-MM-dd HH:mm:ss`.
-
-Example: `2023-12-31 23:59:59`
+According to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Described details on date/time formats and examples in 
+[Raw data request - date and time](./how-to/raw-data-request-date-and-time.md).
 
