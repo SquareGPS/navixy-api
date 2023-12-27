@@ -17,6 +17,7 @@ your ERP system with the Navixy platform is crucial. This integration enables yo
 from specific devices, enhancing your overall fuel monitoring and expense tracking capabilities.
 
 In this situation, you may need to retrieve the following data:
+
 * Fuel Level
 * Device location
 * Mileage (odometer)
@@ -80,9 +81,7 @@ inputs: from `lls_level_1` to `lls_level_4`.
 
 We also see the `hw_mileage` which will allow us to get value of the hardware odometer.
 
-!!! note "The presence of some inputs in the received response does not mean that data is certainly available on these inputs. It 
-means that data may come on them, but whether it is actually available or not depends on the configuration of a 
-particular device."
+!!! note "The presence of some inputs in the received response does not mean that data is certainly available on these inputs. It means that data may come on them, but whether it is actually available or not depends on the configuration of a particular device."
 
 ## Requesting raw data readings
 
