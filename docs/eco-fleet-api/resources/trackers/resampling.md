@@ -1,6 +1,5 @@
 ---
-title: Tracker's data equalization
-description: Contains API calls to interact with trackers's data.
+title: Fuel data resampling
 ---
 
 # Fuel data resampling
@@ -31,18 +30,18 @@ The response is presented in a convenient CSV table format, incorporating column
 
 Standard list
 
-| name               | description                                                                      | type     |
-|:-------------------|:---------------------------------------------------------------------------------|:---------|
-| interval           | Sensor readings' datetime interval which will be analyzed. Last week by default. | interval |
-| step_size          | Equalization step in minutes.                                                    | int      |
-| equalization_props | Array of data equalization parameters for various data types.                    | array    |
+| name              | description                                                                      | type     |
+|:------------------|:---------------------------------------------------------------------------------|:---------|
+| interval          | Sensor readings' datetime interval which will be analyzed. Last week by default. | interval |
+| step_size         | Resampling step in minutes                                                       | int      |
+| resampling_props  | Array of data resampling parameters for various data types                       | array    |
 
 Additional list of resampling parameters
 
 | name              | description                                                                                              | type   | format      |
 |:------------------|:---------------------------------------------------------------------------------------------------------|:-------|-------------|
 | data_type         | Data type. Options: FUEL, SPEED,MOVEMENT, LNG, LAT                                                       | string | "SPEED"     |
-| resampling_method | Equalization method. Options: FOLLOWING, PREVIOUS, MEDIAN_IN_WINDOW, AVERAGE_IN_WINDOW, AVERAGE.         | string | "FOLLOWING" |
+| resampling_method | Resampling method.  Options: FOLLOWING, PREVIOUS, MEDIAN_IN_WINDOW, AVERAGE_IN_WINDOW, AVERAGE.          | string | "FOLLOWING" |
 | delta             | Delta time in seconds. Has different meaning for different algorithms.                                   | int    | null/1      |
 | fixed_value       | A fixed value that will be used if no data is found in the interval. You can specify null or any number. | float  | nulll/5.5   |
 
@@ -67,7 +66,7 @@ Additional list of resampling parameters
 
 ```shell
 curl -X 'POST' \
-  '{{ extra.eco_fleet_api_example_url }}/trackers/12345/data_equalization?interval=P7D/2020-12-31T00:00Z' \
+  '{{ extra.eco_fleet_api_example_url }}/trackers/12345/resampling?interval=P7D/2020-12-31T00:00Z' \
   -H 'accept: text/csv' \
   -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
   -H 'Content-Type: application/json' \
