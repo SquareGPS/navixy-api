@@ -118,6 +118,7 @@ Here are the specifications for the table output:
 
 **Simple** columns:
 
+* `msg_time` - time of message sent by device. Always returned in CSV output and does not need to be requested separately. Indicated according to user account time zone.
 * `server_time` - time of message processing by the server.
 * `gps_fix_type` - enum. One of `UNKNOWN`, `NO_FIX`, `HAS_FIX`, `LAST_KNOWN_POSITION`.
 * `lat` - float. Latitude.
@@ -155,6 +156,15 @@ The list of available internal values for a particular device is obtained using 
 If you specify complex column without specifying internal value, then all internal values will be returned as JSON map
 (except flags that will be returned as integer).
 
+You can append complex columns with an asterisk symbol:
+
+* `inputs.*`
+* `states.*`
+* `discrete_inputs.*`
+* `discrete_outputs.*`
+
+In this case, the platform will search for all available columns in the specified data range and then request them from the database. In the resulting CSV output, instead of the column with an asterisk will be all the existing columns in alphabetical order. If there are no columns, they will not be shown in the response.
+
 #### example
 
 === "cURL"
@@ -167,31 +177,34 @@ If you specify complex column without specifying internal value, then all intern
     -d '{
     "hash": "6dc7d304dec4434f4c4202ec42817f83",
     "tracker_id": "123456",
-    "from": "2023-11-29T08:31:00Z",
-    "to": "2023-11-29T08:32:00Z",
-    "columns": ["lat","lng","speed","inputs.lls_level_1","inputs.hw_mileage"]}'
+    "from": "2023-11-30T07:13:00.000Z",
+    "to": "2023-11-30T07:15:00.000Z",
+    "columns": ["lat","lng","speed","inputs.ble_lls_level_1","inputs.hw_mileage","discrete_inputs.*"]}'
     ```
 
 #### response
 
 ```
-"msg_time","lat","lng","speed","inputs.lls_level_1","inputs.hw_mileage"
-"2023-11-29T08:31:10Z",54.2312716,69.5261833,0,3307,24250.798
-"2023-11-29T08:31:12Z",54.1811183,69.5331349,24,3274,24257.16
-"2023-11-29T08:31:27Z",54.1802066,69.5333599,21,\N,\N
-"2023-11-29T08:31:27Z",54.1802066,69.5333599,21,3274,24257.262
-"2023-11-29T08:31:30Z",54.180055,69.533395,20,3274,24257.279
-"2023-11-29T08:31:31Z",54.180005,69.5334083,20,3274,24257.285
-"2023-11-29T08:31:33Z",54.179915,69.5334266,17,3274,24257.295
-"2023-11-29T08:31:34Z",54.1798766,69.533435,15,3274,24257.299
-"2023-11-29T08:31:36Z",54.1798116,69.5334433,12,3274,24257.306
-"2023-11-29T08:31:37Z",54.179785,69.5334416,10,3274,24257.309
-"2023-11-29T08:31:39Z",54.1797366,69.533425,9,3274,24257.315
-"2023-11-29T08:31:40Z",54.1797183,69.5334083,8,3274,24257.315
-"2023-11-29T08:31:42Z",54.1796883,69.5333449,10,3274,24257.322
-"2023-11-29T08:31:43Z",54.17968,69.5333016,12,3274,24257.325
-"2023-11-29T08:31:45Z",54.1796816,69.53318,15,3274,24257.333
-"2023-11-29T08:31:47Z",54.1796816,69.533025,20,3274,24257.343
+"msg_time","lat","lng","speed","inputs.ble_lls_level_1","inputs.hw_mileage","discrete_inputs.1","discrete_inputs.2"
+"2023-11-30T13:13:14+0600",54.22809,69.5264283,28,2871,24296.444,0,1
+"2023-11-30T13:13:25+0600",54.228095,69.5278333,32,2871,24296.536,0,1
+"2023-11-30T13:13:36+0600",54.227765,69.5293916,39,2871,24296.644,0,1
+"2023-11-30T13:13:46+0600",54.22744,69.5310083,39,2871,24296.756,0,1
+"2023-11-30T13:13:55+0600",54.227205,69.5323383,29,2871,24296.847,0,1
+"2023-11-30T13:13:56+0600",54.2271866,69.5324516,27,\N,\N,\N,\N
+"2023-11-30T13:14:00+0600",54.2270866,69.5328033,22,2871,24296.881,0,1
+"2023-11-30T13:14:01+0600",54.2270433,69.53286,23,2871,24296.887,0,1
+"2023-11-30T13:14:02+0600",54.2269866,69.5328883,22,2871,24296.893,0,1
+"2023-11-30T13:14:04+0600",54.2268766,69.5328683,22,2871,24296.906,0,1
+"2023-11-30T13:14:05+0600",54.2268266,69.5328266,23,2871,24296.912,0,1
+"2023-11-30T13:14:13+0600",54.2263733,69.5321966,33,2871,24296.977,0,1
+"2023-11-30T13:14:18+0600",54.2259866,69.5318949,34,2871,24297.014,0,1
+"2023-11-30T13:14:22+0600",54.2256266,69.5318,33,2871,24297.065,0,1
+"2023-11-30T13:14:25+0600",54.22534,69.5318866,35,2871,24297.097,0,1
+"2023-11-30T13:14:31+0600",54.224835,69.532085,33,2871,24297.155,0,1
+"2023-11-30T13:14:42+0600",54.2238583,69.5320866,38,2871,24297.264,0,1
+"2023-11-30T13:14:52+0600",54.2229033,69.5321616,36,2871,24297.36,0,1
+"2023-11-30T13:15:00+0600",54.222275,69.5320816,36,2871,24297.44,0,1
 ```
 
 #### errors
