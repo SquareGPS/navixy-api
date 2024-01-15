@@ -920,8 +920,8 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
           "updated": "2013-02-19 10:48:08",
           "signal_level": 25,
           "location": {
-            "lat": 56.826068,
-            "lng": 60.594338
+            "lat": 34.178868,
+            "lng": -118.599672
           },
           "heading": 45,
           "speed": 20,

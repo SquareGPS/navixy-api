@@ -120,9 +120,9 @@ Gets current assigned statuses for the specified trackers.
                 "old_status_id": 65,
                 "new_status_id": 66,
                 "location": {
-                    "lat": 55.60920599,
-                    "lng": 37.71843797,
-                    "address": "Moscow, Orekhovyy Bul'var, 14a"
+                    "lat": 35.365948,
+                    "lng": -108.112104,
+                    "address": "Navajo Nation Off-Reservation Trust Land, Chinle, NM, USA"
                 },
                 "changed": "2017-05-02 07:40:39",
                 "origin": "supervisor"
@@ -135,8 +135,8 @@ Gets current assigned statuses for the specified trackers.
                 "old_status_id": 67,
                 "new_status_id": null,
                 "location": {
-                    "lat": 56.8267226,
-                    "lng": 60.5947458,
+                    "lat": 34.178868, 
+                    "lng": -118.599672,
                     "address": ""
                 },
                 "changed": "2016-03-14 04:58:32",

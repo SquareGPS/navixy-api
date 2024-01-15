@@ -236,7 +236,7 @@ Read [how to get an API key](./how-to/get-api-key.md).
 *   `local_time` – is a string containing local time in `HH:mm:ss` format.
 *   `location` – is json object contains geographical coordinates, e.g.
 ```json
-{"lat": 56.827001, "lng": 60.594296}
+{"lat": 34.178868, "lng": -118.599672}
 ```
 *   `locale` – string in format `language[_country]`, where `language` is 
     [ISO 639 alpha-2](https://www.loc.gov/standards/iso639-2/php/English_list.php) language code, 

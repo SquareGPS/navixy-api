@@ -126,8 +126,8 @@ in addition to standard user session, this call supports special *DELIVERY* sess
           "user_id": 3,
           "tracker_id": 22,
           "location": {
-            "lat": 56.5,
-            "lng": 60.5,
+            "lat": 51.283546,
+            "lng": 7.301086,
             "address": "Fichtenstrasse 11",
             "radius": 150
           },

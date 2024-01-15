@@ -419,7 +419,7 @@ Gets all geofence IDs and names within which a specified coordinates are located
     ```shell
     curl -X POST '{{ extra.api_example_url }}/zone/search_location' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 56.827001, "lng": 60.594296}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 34.178868, "lng": -118.599672}}'
     ```
 
 #### response

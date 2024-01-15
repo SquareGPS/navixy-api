@@ -35,7 +35,7 @@ Where **location** described in [data types description section](../../../gettin
     ```shell
     curl -X POST '{{ extra.api_example_url }}/route/osrm/get' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start": {"lat": 56.827001, "lng": 60.594296}, "end": {"lat": 52.835601, "lng": 60.514721}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start": {34.178868, "lng": -118.599672}, "end": {35.365948, "lng": -108.112104}}'
     ```
 
 #### response
@@ -43,13 +43,13 @@ Where **location** described in [data types description section](../../../gettin
 ```json
 {
     "success": true,
-    "distance": 2546,
-    "time": 194,
-    "list": [{"lat": 56.827001, "lng": 60.594296}, {"lat": 52.835601, "lng": 60.514721}],
+    "distance": 1340584,
+    "time": 43500,
+    "list": [{"lat": 34.178868, "lng": -118.599672}, {"lat": 31.738386, "lng": -106.453854}],
     "key_points": [{
       "id": 123,
-      "lat": 56.827,
-      "lng": 60.594296
+      "lat": 35.365948,
+      "lng": -108.112104
     }] 
 }
 ```
