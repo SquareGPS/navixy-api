@@ -1,36 +1,34 @@
-<!-- Determine class according to level -->
-{% set class = "md-tabs" %}
-{% if page.ancestors | length > 0 %}
-  {% set class = "md-tabs md-tabs--active" %}
-{% endif %}
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+{% set class = "" %}
 
-<!-- Tabs with outline -->
+<!-- Navigation tabs -->
 <nav
-  class="{{ class }}"
-  aria-label="{{ lang.t('tabs.title') }}"
-  data-md-component="tabs"
+        class="md-tabs"
+        aria-label="{{ lang.t('tabs.title') }}"
+        data-md-component="tabs"
 >
-  <div class="md-tabs__wrapper">
-    <div class="md-tabs__inner md-grid">
-      <ul class="md-tabs__list">
-        {% for nav_item in nav %}
-          {% include "partials/tabs-item.html" %}
-        {% endfor %}
-      </ul>
-    </div>
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      {% for nav_item in nav %}
+      {% include "partials/tabs-item.html" %}
+      {% endfor %}
+    </ul>
+
+    <!-- custom part start -->
     <div class="md-container__pdf-source">
-      <!-- custom: link to pdf -->
       {% if config['plugins']['pdf-export'] %}
       <div class="md-source__icon md-icon navixy-pdf-link-div">
-          <a href="{{ config['plugins']['pdf-export'].config.combined_output_path | url }}" download="" title="Download all pages in PDF"></a>
+        <a href="{{ config['plugins']['pdf-export'].config.combined_output_path | url }}" download=""
+           title="Download all pages in PDF"></a>
       </div>
       {% endif %}
-      <!-- custom end -->
       {% if config.repo_url %}
       <div class="md-container__source">
           {% include "partials/source.html" %}
       </div>
       {% endif %}
     </div>
+    <!-- custom part end -->
+
   </div>
 </nav>

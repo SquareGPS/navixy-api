@@ -1,7 +1,6 @@
 :root {
   --md-primary-fg-color: #1e96dc;
   --md-accent-fg-color: #1e96dc;
-  --md-typeset-a-color: #1e96dc;
   --md-default-fg-color--light: #1e96dc;
   --md-text-link-color: #1e96dc;
   --md-footer-bg-color--dark: #373c43;
@@ -280,11 +279,7 @@ body
         padding: 7px 5px
     }
 }
-@media (min-width: 992px) {
-    .md-search {
-        width: 38px;
-    }
-}
+
 .md-search__input {
     background-color: #fdfdfd;
     display: block;
@@ -319,8 +314,8 @@ body
 }
 
 .md-search__icon[for=__search] {
-    top: 9px;
-    left: 7px;
+    top: 11px;
+    left: 9px;
 }
 .md-search__icon.md-icon svg {
     width: 20px;
@@ -360,7 +355,7 @@ body
         background-color: transparent;
     }
     .md-search__inner {
-        width: 38px;
+        width: 100%;
         position: absolute;
         right: 0;
     }
@@ -436,30 +431,14 @@ body
     background-color: #4a525d;
 }
 
-.md-tabs__wrapper {
-    max-width: 61rem;
-    width: 100%;
-    display: flex;
-}
-
 .md-tabs__inner.md-grid {
-    margin-left: 0;
+    display: flex;
+    font-size: 0;
 }
 
 .md-container__pdf-source {
     display: flex;
-}
-
-.md-container__pdf-source a {
-    opacity: 0.5 !important;
-}
-
-.md-container__pdf-source a:hover {
-    opacity: 1 !important;
-}
-
-.md-tabs__list {
-    display: flex;
+    margin: 0 0 0 auto;
 }
 
 .md-tabs__item {
@@ -471,9 +450,7 @@ body
     opacity: 1;
     margin: 0;
     height: 100%;
-    display: flex;
-    padding: .6rem;
-    padding-top: 18px;
+    padding: 16px .6rem;
 }
 
 .md-tabs__link:hover {
@@ -532,7 +509,7 @@ body
     opacity: 1;
 }
 
-/* repositary link */
+/* repository link */
 
 .md-source {
     opacity: .7;
@@ -550,14 +527,4 @@ body
 
 .md-source__icon svg {
     margin: 0.6rem 0 0.6rem auto;
-}
-
-.md-nav__item .md-nav__link--active,
-.md-nav__link:focus,
-.md-nav__link:hover {
-    color: #1e96dc !important;
-}
-.md-nav__title .md-nav__button.md-logo img, .md-nav__title .md-nav__button.md-logo svg {
-    width: auto;
-    fill: #fff;
 }
