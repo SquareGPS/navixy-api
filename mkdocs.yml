@@ -6,7 +6,7 @@ site_description: >-
   Feel free to use our comprehensive REST API to integrate B2Field with CRMs,
   ERPs or any other 3rd party tools. You can also use it to build your custom web applications.
 
-copyright: Copyright &copy; 2020 B2Field
+copyright: Copyright &copy; 2023 B2Field
 
 use_directory_urls: true
 #strict: true - disabled to use --dirtyreload option. Enabled in build script.
@@ -35,7 +35,6 @@ theme:
 plugins:
   - search:
       separator: '[\s\.]+'
-  - macros
   - minify:
       minify_html: true
       minify_js: true
@@ -48,6 +47,7 @@ plugins:
       filename: .pages.yml
       collapse_single_pages: false
       strict: true
+  - macros
   - pdf-export:
       combined: true
       combined_output_path: full-navixy-api-documentation.pdf
@@ -58,6 +58,7 @@ plugins:
 extra:
   #manifest: manifest.webmanifest todo
   repo_icon: github
+  homepage: https://developers.b2field.com
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/SquareGPS
@@ -79,6 +80,7 @@ markdown_extensions:
       guess_lang: false
   - markdown.extensions.meta
   - markdown.extensions.toc:
+      toc_depth: 3
       permalink: true
   - pymdownx.betterem:
       smart_enable: all
@@ -93,6 +95,6 @@ markdown_extensions:
   - pymdownx.details
 
 # Enable analytics block to include scripts from /partial/integrations/analytics.html
-google_analytics:
-  - UA-XXXXXXXX-X
-  - auto
+#google_analytics:
+#  - UA-XXXXXXXX-X
+#  - auto
