@@ -29,14 +29,13 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 
 #### parameters
 
-| name         | description                                                                                                                                                                                                                                                                                                  | type                                        | format                                                        |
-|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------|:--------------------------------------------------------------|
-| q            | Address (or place) or coordinates to geocode.                                                                                                                                                                                                                                                                | string/location                             | "750 Avenue E,San Francisco,CA 94130,USA./60.0, 61.0"         |
-| lang         | Language in which results should be.                                                                                                                                                                                                                                                                         | [enum](../../getting-started.md#data-types) | "en"                                                          |
-| geocoder     | Optional. Geocoder type that will be preferably used for searching. Google geocoder is always used for users with the premium GIS.                                                                                                                                                                           | [enum](../../getting-started.md#data-types) | "google"                                                      |
-| bounds       | Optional. JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included. | bounds_object                               | `{"nw":{"lat":60.0,"lng":61.0},"se":{"lat":55.0,"lng":60.0}}` |
-| lang         | Optional. ISO 639 [language code](../../getting-started.md#data-types).                                                                                                                                                                                                                                      | [enum](../../getting-started.md#data-types) | "en_US"                                                       |
-| with_details | Optional. If `true` then the response will contain details.                                                                                                                                                                                                                                                  | boolean                                     | `true`                                                        |
+| name         | description                                                                                                                                                                                                                                                                                                  | type                                        | format                                                            |
+|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------|:------------------------------------------------------------------|
+| q            | Address (or place) or coordinates to geocode.                                                                                                                                                                                                                                                                | string/location                             | "750 Avenue E,San Francisco,CA 94130,USA"                         |
+| geocoder     | Optional. Geocoder type that will be preferably used for searching. Google geocoder is always used for users with the premium GIS.                                                                                                                                                                           | [enum](../../getting-started.md#data-types) | "google"                                                          |
+| bounds       | Optional. JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included. | bounds_object                               | `{"nw":{"lat":37.9,"lng":-122.4},"se":{"lat":37.8,"lng":-122.3}}` |
+| lang         | Optional. Language in which results should be. ISO 639 [language code](../../getting-started.md#data-types).                                                                                                                                                                                                 | [enum](../../getting-started.md#data-types) | "en_US"                                                           |
+| with_details | Optional. If `true` then the response will contain details.                                                                                                                                                                                                                                                  | boolean                                     | `true`                                                            |
 
 #### example
 
@@ -54,8 +53,8 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 {
     "success": true,
     "locations": [{
-            "lat": 56.26697,
-            "lng": 19.55436,
+            "lat": 37.825014712963565,
+            "lng": -122.37202062079945,
             "address": "750 Avenue E,San Francisco",
             "details": {
               "country": "USA",
@@ -66,12 +65,12 @@ Performs a forward geocoding. Returns a list of locations matching the given add
               "postcode": "94130",
               "bounds": {
                 "nw":{
-                  "lat": 62.23621,
-                  "lng": 58.56997
+                  "lat": 37.825064712964,
+                  "lng": -122.3720706208
                 },
                 "se":{
-                  "lat": 31.98753,
-                  "lng": 42.23694
+                  "lat": 37.824964712964,
+                  "lng": -122.3719706208
                 }
               }
             }
@@ -116,7 +115,7 @@ Search address by location using geocoder.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/geocoder/search_location' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 56.827001, "lng": 60.594296}}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 37.825429, "lng": -122.371982}}'
     ```
 
 #### response
@@ -134,12 +133,12 @@ Search address by location using geocoder.
       "postcode": "94130",
       "bounds": {
         "nw":{
-          "lat": 62.23621,
-          "lng": 58.56997
+          "lat": 37.825064712964,
+          "lng": -122.3720706208
         },
         "se":{
-          "lat": 31.98753,
-          "lng": 42.23694
+          "lat": 37.824964712964,
+          "lng": -122.3719706208
         }
       }
     }

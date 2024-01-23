@@ -46,7 +46,7 @@ In this case, the `task` object will have the next parameters:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/create' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"tracker_id": 203190, "location": {"lat": 56.826486, "lng": 60.594784, "radius": 150}, "label": "New devices to office", "description": "16 new devices", "from": "2021-03-16 12:00:00", "to": "2021-03-16 14:00:00", "max_delay": 60, "min_stay_duration": 30}, "create_form": false}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"tracker_id": 203190, "location": {"lat": 34.178868, "lng": -118.599672, "radius": 150}, "label": "New devices to office", "description": "16 new devices", "from": "2021-03-16 12:00:00", "to": "2021-03-16 14:00:00", "max_delay": 60, "min_stay_duration": 30}, "create_form": false}'
     ```
 
 The response will contain ID of a new task.
@@ -107,7 +107,7 @@ The route object will have its own parameters too:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/route/create' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route": {"tracker_id": 669673, "label": "Products delivery", "description": "12 trackers of model 1 and 37 trackers of model 2", "from": "2020-03-18 10:00:00", "to": "2020-03-18 16:00:00"}, "checkpoints": [{"tracker_id": 669673,  "location": {"lat": 56.82425647897021, "lng": 60.596146783275664, "radius": 100}, "label": "Company1", "description": "5 trackers of model 1 and 15 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 12:00:00", "external_id": "10100", "max_delay": 0, "min_stay_duration": 10, "tags": [1, 4], "form_template_id": 132985}, {"tracker_id": 669673,  "location": {"lat": 56.82425647897021, "lng": 60.5731415901079, "radius": 100}, "label": "Company2", "description": "4 trackers of model 1 and 12 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 14:00:00", "external_id": "10101", "max_delay": 0, "min_stay_duration": 10, "tags": [2, 4], "form_template_id": 132985}, {"tracker_id": 669673,  "location": {"lat": 56.839578390716234, "lng": 60.61191376742048, "radius": 100}, "label": "Company3", "description": "3 trackers of model 1 and 10 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 16:00:00", "external_id": "10102", "max_delay": 0, "min_stay_duration": 10, "tags": [3, 4], "form_template_id": 132985}], "create_form": false}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route": {"tracker_id": 669673, "label": "Products delivery", "description": "12 trackers of model 1 and 37 trackers of model 2", "from": "2020-03-18 10:00:00", "to": "2020-03-18 16:00:00"}, "checkpoints": [{"tracker_id":669673,"location":{"lat":34.178868,"lng":-118.599672,"radius":100},"label":"Company1","description":"5 trackers of model 1 and 15 trackers of model 2","from":"2021-03-18 10:00:00","to":"2021-03-18 12:00:00","external_id":"10100","max_delay":0,"min_stay_duration":10,"tags":[1,4],"form_template_id":132985},{"tracker_id":669673,"location":{"lat":33.492830,"lng":-112.177673,"radius":100},"label":"Company2","description":"4 trackers of model 1 and 12 trackers of model 2","from":"2021-03-18 10:00:00","to":"2021-03-18 14:00:00","external_id":"10101","max_delay":0,"min_stay_duration":10,"tags":[2,4],"form_template_id":132985},{"tracker_id":669673,"location":{"lat":39.801066,"lng":-105.028685,"radius":100},"label":"Company3","description":"3 trackers of model 1 and 10 trackers of model 2","from":"2021-03-18 10:00:00","to":"2021-03-18 16:00:00","external_id":"10102","max_delay":0,"min_stay_duration":10,"tags":[3,4],"form_template_id":132985}], "create_form": false}'
     ```
 
 The response will be:
@@ -159,7 +159,7 @@ Necessary parameters:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start_point": {"lng": 56.80556254658192, "lat": 60.61020017514418, "departure":  "2021-03-18 10:00:00"}, "route_points": [{"location": {"lng": 56.8070005643385, "lat": 60.59535651773674}, "from":  "2021-03-18 10:00:00", "to": "2021-03-18 12:00:00"}, {"location": {"lng": 56.81842686951902, "lat": 60.55908602826782}, "from":  "2021-03-18 10:00:00", "to": "2021-03-18 14:00:00"}, {"location": {"lng": 56.833240263651874, "lat": 60.55538664239149}, "from":  "2021-03-18 10:00:00", "to": "2021-03-18 16:00:00"}]'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start_point": {"lat": 34.178868, "lng": -118.599672, "departure": "2021-03-18 10:00:00"}, "route_points": [{"location":{"lng":33.492830,"lat":-112.177673},"from":"2021-03-18 10:00:00","to":"2021-03-18 12:00:00"},{"location":{"lng":39.801066,"lat":-105.028685},"from":"2021-03-18 10:00:00","to":"2021-03-18 14:00:00"},{"location":{"lat":35.365948,"lng":-108.112104},"from":"2021-03-18 10:00:00","to":"2021-03-18 16:00:00"}]}'
     ```
 
 Response will consist the order in that checkpoint objects should be specified in `checkpoints` parameter of route creation:

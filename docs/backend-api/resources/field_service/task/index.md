@@ -24,8 +24,8 @@ Find more guides on working with tasks [there](../../../how-to/how-to-work-with-
     "user_id": 3,
     "tracker_id": 22,
     "location": {
-        "lat": 56.5,
-        "lng": 60.5,
+        "lat": 51.283546,
+        "lng": 7.301086,
         "address": "Fichtenstrasse 11",
         "radius": 150
     },
@@ -164,8 +164,8 @@ In case of location_check_mode==entity_location – vehicle_ids will be ignored.
          "user_id": 3,
          "tracker_id": 22,
          "location": {
-             "lat": 56.5,
-             "lng": 60.5,
+             "lat": 51.283546,
+             "lng": 7.301086,
              "address": "Fichtenstrasse 11",
              "radius": 150
          },
@@ -253,8 +253,8 @@ Minimal JSON object to create a new task must contain:
 {
     "tracker_id": 22,
     "location": {
-    "lat": 56.83717295,
-    "lng": 60.59761920,
+    "lat": 34.178868, 
+    "lng": -118.599672,
     "radius": 150
     },
     "label": "Name",
@@ -282,7 +282,7 @@ Minimal JSON object to create a new task must contain:
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/create' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"tracker_id": 22, "location": {"lat": 56.83717295, "lng": 60.59761920, "radius": 150}, "label": "Name", "description": "Description example", "from": "2020-02-03 04:05:06", "to": "2020-03-04 05:06:07"}, "create_form": false}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"tracker_id": 22, "location": {"lat": 34.178868, "lng": -118.599672, "radius": 150}, "label": "Name", "description": "Description example", "from": "2020-02-03 04:05:06", "to": "2020-03-04 05:06:07"}, "create_form": false}'
     ```
     
 task/create call returns the identifier of the created task.
@@ -361,20 +361,20 @@ Gets all task belonging to user with optional filtering.
 
 #### parameters
 
-| name        | description                                                                                                                                      | type                                                                  | 
-|:------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|
-| external_id | Optional. External task ID for search.                                                                                                           | string                                                                |
-| statuses    | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`.                                                                    | string array                                                          |
-| trackers    | Optional. IDs of the trackers to which task assigned.                                                                                            | int array                                                             |
-| from        | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00".                                                               | [date/time](../../../getting-started.md#data-types)                   |
-| to          | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                              | [date/time](../../../getting-started.md#data-types)                   |
-| conditions  | Optional. Search conditions to apply to list. Array of search conditions.                                                                        | array of [SearchCondition](../../commons/entity/search_conditions.md) |
-| filter      | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task.     | string                                                                |
-| filters     | Optional. Filters for task label, description or address.                                                                                        | string array                                                          |
-| tag_ids     | Optional. Tag IDs assigned to the task.                                                                                                          | int array                                                             |
-| location    | Optional. Location with radius, inside which task zone centers must reside. Example: ```{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }``` | Location JSON                                                         |
-| offset      | Optional. Offset from start of the found tasks for pagination.                                                                                   | int                                                                   |
-| limit       | Optional. Limit of the found tasks for pagination.                                                                                               | int                                                                   |
+| name        | description                                                                                                                                        | type                                                                  | 
+|:------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|
+| external_id | Optional. External task ID for search.                                                                                                             | string                                                                |
+| statuses    | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`.                                                                      | string array                                                          |
+| trackers    | Optional. IDs of the trackers to which task assigned.                                                                                              | int array                                                             |
+| from        | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00".                                                                 | [date/time](../../../getting-started.md#data-types)                   |
+| to          | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                                | [date/time](../../../getting-started.md#data-types)                   |
+| conditions  | Optional. Search conditions to apply to list. Array of search conditions.                                                                          | array of [SearchCondition](../../commons/entity/search_conditions.md) |
+| filter      | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task.       | string                                                                |
+| filters     | Optional. Filters for task label, description or address.                                                                                          | string array                                                          |
+| tag_ids     | Optional. Tag IDs assigned to the task.                                                                                                            | int array                                                             |
+| location    | Optional. Location with radius, inside which task zone centers must reside. Example: ```{ "lat": 34.178868, "lng": -118.599672, "radius": 350 }``` | Location JSON                                                         |
+| offset      | Optional. Offset from start of the found tasks for pagination.                                                                                     | int                                                                   |
+| limit       | Optional. Limit of the found tasks for pagination.                                                                                                 | int                                                                   |
 
 ##### condition fields
 
@@ -447,8 +447,8 @@ If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** i
         "user_id": 3,
         "tracker_id": 22, 
         "location": {
-            "lat": 56.5,
-            "lng": 60.5,
+            "lat": 48.210857,
+            "lng": 16.369329,
             "address": "Schulhof 2, Wien, Austria",
             "radius": 150
          },
@@ -614,7 +614,7 @@ Updates existing task. Note that you cannot change task owner using this method.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/update' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"id": 22379, "location": {"lat": 56.83717295, "lng": 60.59761920, "radius": 150}, "label": "Name", "description": "Description example", "from": "2020-02-03 04:05:06", "to": "2020-03-04 05:06:07"}, "create_form": false}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"id": 22379, "location": {"lat": 34.178868, "lng": -118.599672, "radius": 150}, "label": "Name", "description": "Description example", "from": "2020-02-03 04:05:06", "to": "2020-03-04 05:06:07"}, "create_form": false}'
     ```
 
 

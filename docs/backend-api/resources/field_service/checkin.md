@@ -28,8 +28,8 @@ in [how-tos](../../how-to/how-to-create-checkins-via-api.md)), so all actions ar
     "tracker_id": 222,
     "employee_id": 333,
     "location": {
-        "lat": 56.5,
-        "lng": 60.5,
+        "lat": 53.787154,
+        "lng": 9.757980,
         "address": "Moltkestrasse 32",
         "precision": 150
     },
@@ -125,8 +125,8 @@ Get check-in which ID is equal to `checkin_id`.
         "tracker_id": 222,
         "employee_id": 333,
         "location": {
-         "lat": 56.5,
-         "lng": 60.5,
+         "lat": 53.787154, 
+         "lng": 9.757980,
          "address": "Moltkestrasse 32",
          "precision": 150
         },
@@ -175,7 +175,7 @@ Gets marker entries on a map for trackers and for the specified time interval.
 | to         | Optional. End date/time for searching. Must be after "from" date.                                                                                                                   | [date/time](../../getting-started.md#data-types)                                    |
 | conditions | Optional. Search conditions to apply to list. See [Search conditions](../commons/entity/search_conditions.md). Allowed fields are `employee`, `location`, `marker_time`, `comment`. | string array                                                                        |
 | sort       | Optional, offset, default is 0. List of sort expressions. See below.                                                                                                                | string array                                                                        |
-| location   | Optional, location with radius, inside which check-ins must reside.                                                                                                                 | Location JSON. For example, `{ "lat": 56.823777, "lng": 60.594164, "radius": 350 }` | 
+| location   | Optional, location with radius, inside which check-ins must reside.                                                                                                                 | Location JSON. For example, `{ "lat": 53.787154, "lng": 9.757980, "radius": 350 }` | 
 | limit      | Optional. Max number of records to return.                                                                                                                                          | int                                                                                 |
 | offset     | Optional, offset (starting index of first returned record), default is 0.                                                                                                           | int                                                                                 |
 | format     | Optional. If empty, JSON will be returned. Otherwise server will return file download in specified format. Can be "pdf" or "xlsx".                                                  | string                                                                              |
