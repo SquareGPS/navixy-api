@@ -48,8 +48,6 @@ Contains API calls to interact with sensors.
 * `units` - string.
 * `units_type` - [enum](../../../../getting-started.md#data-types). Units type for a sensor.
 * `parameters` - optional object with additional parameters.
-    * `parent_ids` - optional array of parent_ids for composite sensor.
-    * `volume` - double. Optional. Volume for composite sensor.
     * `parent_ids` - optional. int array. Array of `parent_ids` for composite sensor.
     * `volume` - optional. Double. Volume for composite sensor.
     * `min` - optional. Double. Min acceptable raw value for a sensor.
