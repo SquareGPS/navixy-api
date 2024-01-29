@@ -211,8 +211,8 @@ Authorization: NVX SessionHashValue
 Following is pseudo-grammar that illustrates the construction of the `Authorization` request header:
 
 ```
-Authorization = "NVX" + " " + ApiKeyHashValue ;
 ApiKeyValue = 32 hexademical characters;
+Authorization = "NVX" + " " + ApiKeyValue ;
 ```
 
 Read [how to get an API key](./how-to/get-api-key.md).
