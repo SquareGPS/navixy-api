@@ -71,7 +71,7 @@ December 11, 2023. Then we can specify the timestamp in one of the following way
     "columns": ["lat","lng","discrete_inputs.1","inputs.board_voltage"]}'
     ```
 
-!!! note "Regardless of the time zone specified, the output for a raw data request will always contain a `msg_time` column that contains time stamps according to user account time zone. If you need to obtain `msg_time` in any other time zone, please refer to **Time zone** section below."
+!!! note "The output for a raw data request will always contain a `msg_time` column that contains time stamps according to user account time zone. If you need to obtain `msg_time` in any other time zone, please refer to **Time zone** section below."
 
 ## Regular date and time
 
