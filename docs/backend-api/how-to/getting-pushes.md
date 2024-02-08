@@ -16,12 +16,13 @@ each of these cases separately.
 
 ## Mobile apps
 
+At this moment the platform supports Firebase Cloud Messaging
+
 To get push notifications on mobile devices, you need get app's push token. It may be done in several steps:
 
-1. At this moment the platform supports [legacy HTTP API](https://firebase.google.com/docs/cloud-messaging/send-message?authuser=0#send_using_the_fcm_legacy_http_api).
-So we need the server key to create an application. To get it, go to the firebase console of your application project:
-Project settings -> Cloud messaging -> Cloud Messaging API (Legacy) -> Add server key
-2. Contact our support team (support@navixy.com) with the server key, platform (Android/iOS) and your app's name.
+1. Firebase projects support Google [service accounts](https://console.firebase.google.com/project/_/settings/serviceaccounts/adminsdk), which you can use to call Firebase server APIs from the app server.
+   To authenticate a service account and authorize it to access Firebase services, you must [generate a private key file in JSON format](https://firebase.google.com/docs/cloud-messaging/auth-server#provide-credentials-manually). 
+2. Contact our support team (support@navixy.com) with the generated private key, platform (Android/iOS) and your app's name.
 3. We will provide you with the application for an API call to bind your app. 
 4. Get the push token of your app from Google Play Market or App Store.
 5. Then use the [push_token/bind](../resources/commons/user/session/push_token.md#bind) API call from your app. Substitute the push token and received from our support team application ID into it.
