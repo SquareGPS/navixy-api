@@ -99,9 +99,10 @@ Retrieves parsed raw data - values received from tracking devices and decoded by
 | name       | description                                                                                                                                                                       | type         | format                                                                            |
 |:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|:----------------------------------------------------------------------------------|
 | tracker_id | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked.                               | int          | 123456                                                                            |
-| from       | From date/time. Starting from what moment logs messages should be retrieved. The time is specified along with time zone according to ISO8601.                                     | date/time    | "2023-08-24T08:04:36Z"                                                            |
-| to         | To date/time. Till which moment messages should be retrieved into log. Specified date must be after "from" date. The time is specified along with time zone according to ISO8601. | date/time    | "2023-08-24T08:04:36Z"                                                            |
+| from       | From date/time. Starting from what moment logs messages should be retrieved. It relates to the message time - when the packet was registered by a tracker. The time is specified along with time zone according to ISO8601.                                     | date/time    | "2023-08-24T08:04:36Z"                                                            |
+| to         | To date/time. Till which moment messages should be retrieved into log. It relates to the message time - when the packet was registered by a tracker. Specified date must be after "from" date. The time is specified along with time zone according to ISO8601. | date/time    | "2023-08-24T08:04:36Z"                                                            |
 | columns    | List of CSV columns to retrieve                                                                                                                                                   | string array | `["flags.location_valid","lat","lng","discrete_inputs.1","inputs.board_voltage"]` |
+| server_time_filter | Optional interval for additional filtering message by server time. If it is used - messages will be returned not only be messaage time - when the packet was registered by a tracker, they will be filtered by server time - when the message sent to the server.                                                                                                                                              | string/object | `"2024-02-03T10:26:26+0500/2024-02-03T10:27:18+0500"` / `{"from": "2024-02-03T10:26:26+0500", "to": "2024-02-03T10:27:18+0500"}` / `{"interval":"2024-02-03T10:26:26+0500/PT1H"}` |
 
 !!! note "Instead of using from/to parameters it is possible to set interval parameter - ISO8601 formatted interval, for example 2023-08-24T08:04:36.306Z/PT24H."
 
@@ -165,7 +166,7 @@ You can append complex columns with an asterisk symbol:
 
 In this case, the platform will search for all available columns in the specified data range and then request them from the database. In the resulting CSV output, instead of the column with an asterisk will be all the existing columns in alphabetical order. If there are no columns, they will not be shown in the response.
 
-#### example
+#### example for standard searching by message time only
 
 === "cURL"
 
@@ -206,6 +207,33 @@ In this case, the platform will search for all available columns in the specifie
 "2023-11-30T13:14:52+0600",54.2229033,69.5321616,36,2871,24297.36,0,1
 "2023-11-30T13:15:00+0600",54.222275,69.5320816,36,2871,24297.44,0,1
 ```
+
+#### example for searching by server time additionally
+
+This API is designed to accommodate scenarios where you retrieve information from trackers to your applications within specified time intervals. Occasionally, trackers may experience connectivity issues. During such occurrences, these trackers automatically store information in their memory buffers. Upon re-establishing a connection, devices promptly transmit their stored information to the platform.
+
+For instance:
+
+A tracker was connected from 10:00 to 10:30. It then loses GSM signal, storing information in its buffer from 10:30 to 12:00. At 12:00, it reconnects and begins sending packets from the buffer. These packets are timestamped with message times starting from 10:30, 10:31, and so forth. However, the server time reflects 12:00, 12:01, and so on.
+If your program requests data from 10:00 to 11:00 at 11:00 without utilizing the `server_time_filter` parameter, it will receive messages only from 10:00 to 10:30. The program might not be aware that it needs to re-request this data once all data from the buffer has been uploaded. 
+
+To address such situations, there is an optional filtering using the `server_time_filter` parameter. This ensures that your program will get all buffered information. This approach helps prevent potential data gaps and enhances the reliability of your application.
+
+=== "cURL"
+
+    ```shell
+    curl -X 'POST' \
+    'https://api.eu.navixy.com/dwh/v1/tracker/raw_data/read' \
+    -H 'accept: text/csv' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "hash": "6dc7d304dec4434f4c4202ec42817f83",
+    "tracker_id": "123456",
+    "from": "2024-02-03T07:00:00.000Z",
+    "to": "2024-02-03T07:23:59.000Z",
+    "server_time_filter": {"from": "2024-02-03T10:30:000Z", "to": "2024-02-03T12:30:000Z"}
+    "columns": ["lat","lng","speed","inputs.ble_lls_level_1","inputs.hw_mileage","discrete_inputs.*"]}'
+    ```
 
 #### errors
 
