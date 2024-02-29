@@ -113,7 +113,7 @@ For example, if the device's plan has maximum available storage period 3 months 
 
 #### errors
 
-* 204 - Entity not found – the tracker ID in your request may not match any trackers linked to the user account with this 
+* 201 - Not found in database – the tracker ID in your request may not match any trackers linked to the user account with this 
 session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
 * 208 - Device blocked – if a tracker exists under this user account but is currently inactive due to tariff plan 
 restrictions or any other reason.
@@ -128,16 +128,19 @@ This method retrieves a list of tracks for a given tracker within a specified ti
 
 #### parameters
 
-| name                   | description                                                                                                                                                            | type                                                       | format                  |
-|:-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|:------------------------|
-| tracker_id             | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked.                    | int                                                        | `123456`                |
-| from                   | The start date/time for trips. The response begins with the next trip point after this time.                                                                           | [date/time](../../../getting-started.md#datetime-formats)  | `"2020-09-23 03:24:00"` |
-| to                     | An end date/time for trips. The response concludes with the last point before this time. Ensure this date is later than the "from" date.                               | [date/time](../../../getting-started.md#datetime-formats)  | `"2020-09-23 06:24:00"` |
-| filter                 | Optional. Default is `true`. If set to `true`, any tracks that are deemed too short, based on their length and number of points, will be excluded from the final list. | boolean                                                    | `true`                  |
-| split                  | Optional. Default is `true`. If set to `false`, all the tracks will be combined into one single track within the period.                                               | boolean                                                    | `true`                  |
-| include_gsm_lbs        | Optional. Default is `true`. If set to `false`, GSM LBS points will be excluded.                                                                                       | boolean                                                    | `true`                  |
-| cluster_single_reports | Optional. Default is `false`. If set to `true`, trips consisting of a single point will be grouped together based on their coordinates.                                | boolean                                                    | `false`                 | 
-| count_events           | Optional. Default is `false`. If set to `true`, the system will return the count of events that occurred during each track that isn't a single point.                  | boolean                                                    | `true`                  |
+| name                   | description                                                                                                                                                                                                                                                                                                                                            | type                                                      | format                  |
+|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------|:------------------------|
+| tracker_id             | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked.                                                                                                                                                                                                    | int                                                       | `123456`                |
+| from                   | The start date/time for trips. The response begins with the next trip point after this time.                                                                                                                                                                                                                                                           | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 03:24:00"` |
+| to                     | An end date/time for trips. The response concludes with the last point before this time. Ensure this date is later than the "from" date.                                                                                                                                                                                                               | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 06:24:00"` |
+| filter                 | Optional. Default is `true`. If set to `true`, any tracks that are deemed too short, based on their length and number of points, will be excluded from the final list.                                                                                                                                                                                 | boolean                                                   | `true`                  |
+| split                  | Optional. Default is `true`. If set to `false`, all the tracks will be combined into one single track within the period.                                                                                                                                                                                                                               | boolean                                                   | `true`                  |
+| include_gsm_lbs        | Optional. Default is `true`. If set to `false`, GSM LBS points will be excluded.                                                                                                                                                                                                                                                                       | boolean                                                   | `true`                  |
+| cluster_single_reports | Optional. Default is `false`. If set to `true`, trips consisting of a single point will be grouped together based on their coordinates.                                                                                                                                                                                                                | boolean                                                   | `false`                 | 
+| count_events           | Optional. Default is `false`. If set to `true`, the system will return the count of events that occurred during each track that isn't a single point.                                                                                                                                                                                                  | boolean                                                   | `false`                 |
+| omit_addresses         | Optional. Default is `false`. If set to `true`, address parameters will be empty.                                                                                                                                                                                                                                                                      | boolean                                                   | `false`                 |
+| with_points            | Optional. Default is `false`. If set to `true`, track point lists will be included.                                                                                                                                                                                                                                                                    | boolean                                                   | `false`                 |
+| point_limit            | Optional. If specified, the returned data will be reduced to contain that specified number of points. The minimum value is 2, and the maximum is 3000. If it is not specified, the server's default settings for simplifying tracks will be applied. This is not a strict limit; the returned data can potentially contain more points than specified. | int                                                       | `300`                   |
 
 #### example
 
@@ -160,7 +163,7 @@ settings will provide us with necessary info by default.
 {
     "success": true,
     "limit_exceeded": false,
-    "list": [<track_info>]
+    "list": [track_info]
 }
 ```
 
@@ -170,7 +173,7 @@ for six months.
 * `list` - an array of JSON objects containing track information. It consists of zero or more JSON objects. Zero objects 
 indicates that there were no trips based on the track options or the device didn't supply any points to the platform.
 
-where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
+where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 
 `regular` object:
 
@@ -296,7 +299,7 @@ last point identified as a track for a specified time period.
 
 #### errors
 
-* 204 - Entity not found – the tracker ID in your request may not match any trackers linked to the user account with this
+* 201 - Not found in database – the tracker ID in your request may not match any trackers linked to the user account with this
   session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
 * 208 - Device blocked – if a tracker exists under this user account but is currently inactive due to tariff plan
   restrictions or any other reason.
@@ -381,7 +384,7 @@ are `true`, we should list them in our request.
 
 #### errors
 
-* 204 - Entity not found – the tracker ID in your request may not match any trackers linked to the user account with this
+* 201 - Not found in database – the tracker ID in your request may not match any trackers linked to the user account with this
   session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
 * 208 - Device blocked – if a tracker exists under this user account but is currently inactive due to tariff plan
   restrictions or any other reason.
