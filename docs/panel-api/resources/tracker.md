@@ -666,11 +666,9 @@ Example:
     "code": 247,
     "description": "Entity already exists"
   },
-  "errors": [
-    {
-      "parameter": "[10155545, 10174636]",
-      "error": "Entry with given value already exists"
-    }
+  "list": [
+    10191656,
+    10191657
   ],
   "success": false
 }
