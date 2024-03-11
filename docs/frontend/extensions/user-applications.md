@@ -53,4 +53,4 @@ The application can be installed for all users or for a specific one.
 
 ### Standalone version
 
-You can find the instruction on installation of the software [here](https://www.navixy.com/docs/admin/configuration/features/how-to-add-a-custom-app/).
+You can find the instruction on installation of the software [here](https://docs.navixy.com/on-premise/applications).

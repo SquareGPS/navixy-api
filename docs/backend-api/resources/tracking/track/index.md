@@ -279,7 +279,7 @@ last point identified as a track for a specified time period.
     "start_address": "1255 6th Ave, New York, NY 10020, USA",
     "end_date": "2020-09-24 06:39:44",
     "precision": 500,
-    "points": [{"lat": 56.829274,"lng": 60.597125}, {"lat": 56.829279,"lng": 60.597123}],
+    "points": [{"lat": 34.178868, "lng": -118.599672}, {"lat": 31.738386, "lng": -106.453854}],
     "type": "cluster",
     "gsm_lbs": false
 }

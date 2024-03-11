@@ -16,6 +16,7 @@ Unlike the user's session:
 * you do not transfer or store the username and password,
 * you can delete the key at any time if there is a suspicion of compromise,
 * you can create a separate key for each individual integration.
+* if request rate limit is exceeded, regular users will not be blocked, because API keys have a separate counter.
 
 !!! note "You can get an API key in user's web interface. This is the recommended way instead of user session hash."
 

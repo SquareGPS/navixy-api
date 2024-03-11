@@ -253,3 +253,42 @@ Updates existing security group.
 * 201 – Not found in the database – when security group with the specified ID does not exist.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 
+***
+
+### assign
+
+Assigns (removes) a security group to sub-users.
+
+**required tariff features:** `multilevel_access` – for ALL trackers.
+**required sub-user rights:** `admin` (available only to master users).
+
+#### parameters
+
+| name        | description                      | type      |
+|:------------|:---------------------------------|:----------|
+| group_id    | Nullable, ID of a security group | int       |
+| subuser_ids | IDs of sub-users                 | int array |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/subuser/security_group/assign' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "group_id": 3, subuser_ids: [12, 34]}'
+    ```
+
+#### response
+
+```json
+{
+    "success": true
+}
+```
+
+#### errors
+
+* 13 – Operation not permitted – if user has insufficient rights.
+* 201 – Not found in the database – when security group with the specified ID does not exist.
+* 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.

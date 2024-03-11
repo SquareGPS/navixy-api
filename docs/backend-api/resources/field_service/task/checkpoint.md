@@ -17,8 +17,8 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
     "user_id": 3,
     "tracker_id": 22,
     "location": {
-        "lat": 56.5,
-        "lng": 60.5,
+        "lat": 51.283546,
+        "lng": 7.301086,
         "address": "Fichtenstrasse 11",
         "radius": 150
     },
@@ -194,8 +194,8 @@ Get checkpoints belonging to user with given IDs
          "user_id": 3,
          "tracker_id": 22,
          "location": {
-             "lat": 56.5,
-             "lng": 60.5,
+             "lat": 51.283546,
+             "lng": 7.301086,
              "address": "Fichtenstrasse 11",
              "radius": 150
          },
@@ -260,8 +260,8 @@ Gets route checkpoint by specified ID.
           "user_id": 3,
           "tracker_id": 22,
           "location": {
-              "lat": 56.5,
-              "lng": 60.5,
+              "lat": 51.283546,
+              "lng": 7.301086,
               "address": "Fichtenstrasse 11",
               "radius": 150
           },

@@ -21,7 +21,7 @@ Returns the fuel sensor quality index calculated from sensor readings within a s
 |:-----------|:---------------------------------------------------------------------------------|:----------|
 | tracker_id | ID of the tracker which has the sensor.                                          | integer   |
 | sensor_id  | ID of the sensor to analyze.                                                     | integer   |
-| interval   | Sensor readings' datetime interval which will be analyzed. Last week by default. | interval? |
+| interval   | Sensor readings' datetime interval which will be analyzed. Last week by default. | interval  |
 
 #### examples
 

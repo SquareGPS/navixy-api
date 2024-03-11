@@ -22,8 +22,8 @@ replaced with `from_time`, `duration` and `parameters`.
     "user_id": 3,
     "tracker_id": 22,
     "location": {
-        "lat": 56.5,
-        "lng": 60.5,
+        "lat": 53.787154,
+        "lng": 9.757980,
         "address": "Moltkestrasse 32",
         "radius": 150
     },
@@ -83,7 +83,7 @@ Creates new task schedule entry.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/create' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
     ```
 
 #### response
@@ -187,8 +187,8 @@ Also this call returns all unassigned task schedules.
          "user_id": 3,
          "tracker_id": 22,
          "location": {
-             "lat": 56.5,
-             "lng": 60.5,
+             "lat": 53.787154,
+             "lng": 9.757980,
              "address": "Moltkestrasse 32",
              "radius": 150
          },
@@ -266,8 +266,8 @@ Gets task, route or checkpoint schedule by specified ID.
         "parent_id": 1,
         "order": 0,
         "location": {
-            "lat": 56.5,
-            "lng": 60.5,
+            "lat": 53.787154,
+            "lng": 9.757980,
             "address": "Moltkestrasse 32",
             "radius": 150
         },
@@ -310,7 +310,7 @@ Updates existing task schedule.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/task/schedule/update' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 56.5, "lng": 60.5, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
     ```
 
 #### response

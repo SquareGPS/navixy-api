@@ -45,7 +45,7 @@ Find instructions on getting notifications [here](../../../how-to/how-to-work-wi
 }
 ```
 
-* `id` - int. An ID of event.
+* `id` - long. An ID of event.
 * `type` - [enum](../../../getting-started.md#data-types). Type of device. Can be "socket", "tracker", or "camera".
 * `is_read` - boolean. If `true` the notification seen by user and marked as read.
 * `message` - string. Notification message.
@@ -84,7 +84,7 @@ Returns history entry with the specified ID.
 
 | name              | description                                                 | type    | 
 |:------------------|:------------------------------------------------------------|:--------|
-| id                | [History entry](#tracker-history-entry) ID.                 | int     |
+| id                | [History entry](#tracker-history-entry) ID.                 | long    |
 | add_tracker_label | Optional. If `true` tracker label will be added to message. | boolean |
 
 #### examples
@@ -154,7 +154,7 @@ Marks history entry as read by `id` (see: [Tracker history entry](#tracker-histo
 
 | name | description                                        | type | 
 |:-----|:---------------------------------------------------|:-----|
-| id   | [Tracker history entry](#tracker-history-entry) ID | int  |
+| id   | [Tracker history entry](#tracker-history-entry) ID | long |
 
 #### examples
 

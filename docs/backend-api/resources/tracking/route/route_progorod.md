@@ -36,13 +36,13 @@ waypoints may be changed.
 ```json
 {
     "success": true,
-    "distance": 2546,
-    "time": 194,
-    "list": [{"lat": 56.827001, "lng": 60.594296}, {"lat": 52.835601, "lng": 60.514721}],
+    "distance": 1340584,
+    "time": 43500,
+    "list": [{"lat": 34.178868, "lng": -118.599672}, {"lat": 31.738386, "lng": -106.453854}],
     "key_points": [{
       "id": 123,
-      "lat": 56.827,
-      "lng": 60.594296
+      "lat": 35.365948,
+      "lng": -108.112104
     }] 
 }
 ```

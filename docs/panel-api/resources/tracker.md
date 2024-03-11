@@ -405,6 +405,8 @@ Assign specified equipment to bundle.
 ### clone
 
 Creates a clone of the existing non-clone tracker.
+The method allows cloning from and to a subpaas's user account that is in the admin account hierarchy.
+Cloning from a user of one subpaas to another user of another subpaas in the same hierarchy is also possible.
 
 *required permissions*: `trackers: "create"`.
 
@@ -592,6 +594,87 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 ```
 
 * `list` - int array. Clones tracker_ids list.
+
+***
+
+### batch_clone
+
+Creates clones from the specified set of existing non-clone trackers.
+The following actions are allowed within the same admin account hierarchy:
+
+* Cloning from and to a subpaas's user account
+* Cloning from a user of one subpaas to another user of another subpaas
+* Cloning in a single operation from users that belong to different subpaas accounts
+
+
+The maximum number of trackers to clone per operation is 1000. Labels from the original trackers are preserved.
+
+*required permissions*: `trackers: "create"`.
+
+| name        | description                                                                                            | type      |
+|:------------|:-------------------------------------------------------------------------------------------------------|:----------|
+| tracker_ids | Tracker ID list. Each of these trackers must not be a clone and must be accessible to the target user. | int array |
+| user_id     | Target user ID that is accessible from the admin panel hierarchy.                                      | int       |
+
+#### examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_clone' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 998836, "tracker_ids": [134537, 458412]}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/panel/tracker/batch_clone?hash=fa7bf873fab9333144e171372a321b06&user_id=998836&tracker_ids=[134537,458412]
+    ```
+
+#### response
+
+| name    | description                                  | type              |
+|:--------|:---------------------------------------------|:------------------|
+| list    | Resulting list of created clone tracker IDs. | array of integers |
+| success | Action's execution status.                   | boolean           |
+
+Example:
+
+```json
+{
+  "list": [
+    587469,
+    587470
+  ],
+  "success": true
+}
+```
+
+#### errors
+
+The operation is applied transactionally: it completes only if `"success": true` is received for the whole batch, otherwise, the cloning process for all trackers is rolled back.
+
+* [Standard errors](../../backend-api/getting-started.md#error-codes).
+* 7 - Invalid parameters. Size must be between 1 and 1000 - triggered when the clone request exceeds 1000 trackers.
+* 217 – List contains nonexistent entities - if at least one tracker from the request is not found.
+* 247 – Entity already exists - if at least one of the trackers already has its clone in the target user. The error provides the list of trackers in the target user that caused the error.
+
+Example:
+
+```json
+{
+  "status": {
+    "code": 247,
+    "description": "Entity already exists"
+  },
+  "list": [
+    10191656,
+    10191657
+  ],
+  "success": false
+}
+```
 
 ***
 

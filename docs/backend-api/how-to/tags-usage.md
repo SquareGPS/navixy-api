@@ -92,9 +92,9 @@ The platform will provide us with objects with assigned tag in the response:
                 {
                     "id": 1446571,
                     "location": {
-                        "lat": 56.82617746,
-                        "lng": 60.59380531,
-                        "address": "Ulitsa Kuybysheva, 24, Yekaterinburg, Sverdlovskaya oblast', Russia, 620144",
+                        "lat": 34.178868,
+                        "lng": -118.599672,
+                        "address": "21550 W Oxnard St, Woodland Hills, CA 91367, USA",
                         "radius": 100
                     },
                     "label": "New place",
@@ -121,9 +121,9 @@ The platform will provide us with objects with assigned tag in the response:
                     "creation_date": "2021-06-17 12:41:37",
                     "origin": "manual",
                     "location": {
-                        "lat": 56.84437194,
-                        "lng": 60.62976837,
-                        "address": "Ulitsa Pervomayskaya, Д 59, Yekaterinburg, Sverdlovskaya oblast', Russia, 620075",
+                        "lat": 33.492830,
+                        "lng": -112.177673,
+                        "address": "3836-3820 N 55th Ave, Phoenix, AZ 85031, USA",
                         "radius": 152
                     },
                     "from": "2021-06-17 00:00:00",
@@ -152,9 +152,9 @@ The platform will provide us with objects with assigned tag in the response:
                     "hardware_key": null,
                     "department_id": null,
                     "location": {
-                        "lat": 56.86892633,
-                        "lng": 60.53234832,
-                        "address": "Prospekt Sedova, 33, Yekaterinburg, Sverdlovskaya oblast', Russia, 620050",
+                        "lat": 39.801066,
+                        "lng": -105.028685,
+                        "address": "5735 Hooker St, Denver, CO 80221, United States",
                         "radius": 150
                     },
                     "personnel_number": "1235341231",
