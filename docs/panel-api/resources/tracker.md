@@ -601,9 +601,11 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 
 Creates clones from the specified set of existing non-clone trackers.
 The following actions are allowed within the same admin account hierarchy:
+
 * Cloning from and to a subpaas's user account
 * Cloning from a user of one subpaas to another user of another subpaas
 * Cloning in a single operation from users that belong to different subpaas accounts
+
 
 The maximum number of trackers to clone per operation is 1000. Labels from the original trackers are preserved.
 
