@@ -643,13 +643,14 @@ If `Placemark.name` defined it will be used as geofence name with respect of hie
 
 ### asset/list
 
-Return list of assets related to geofence.
+Return list of assets located in geofence.
 
 #### parameters
 
-| name    | description       | type |
-|:--------|:------------------|:-----|
-| zone_id | ID of a geofence. | int  |
+| name    | description                                                                                                                                                          | type |
+|:--------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----|
+| zone_id | ID of a geofence.                                                                                                                                                    | int  |
+| types   | Optional. An array of asset types that will be present in the response. If the array is not specified, all types will be present. Types list: "employee", "vehicle". | int  |
 
 #### example
 
