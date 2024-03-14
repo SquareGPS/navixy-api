@@ -638,3 +638,47 @@ ignored.
 
 From `Placemark` with `MultiGeometry` geometry will be created several geofences.
 If `Placemark.name` defined it will be used as geofence name with respect of hierarchy of `Folder` and `Document`.
+
+***
+
+### asset/list
+
+Return list of assets related to geofence.
+
+#### parameters
+
+| name    | description       | type |
+|:--------|:------------------|:-----|
+| zone_id | ID of a geofence. | int  |
+
+#### example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/zone/asset/list' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 231512}'
+    ```
+
+#### response
+
+```json
+{
+  "list": [
+    {
+      "id": 2,
+      "type": "employee"
+    },
+    {
+      "id": 75,
+      "type": "vehicle"
+    }
+  ],
+  "success": true
+}
+```
+
+#### errors
+
+* 201 - Not found in the database – if geofence with the specified ID cannot be found or belongs to another user.
