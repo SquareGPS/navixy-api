@@ -88,7 +88,27 @@ Gets last values for all metering sensors, state values and counters.
 }
 ```
 
-* `states.value` - can be string, int, float, boolean, or null.
+* `inputs` - an array of JSON objects containing information about the tracker sensors readings.
+    * `value` - float. The value of the sensor.
+    * `label` - string. The label of the sensor.
+    * `units` - string. The units in which the sensor value is measured.
+    * `name` - string. The name of the sensor.
+    * `type` - string. The type of the sensor.
+    * `units_type` - string. The type of the units in which the sensor value is measured.
+    * `update_time` - date/time. The time when the sensor value was updated.
+* `states` - an array of JSON objects containing information about the tracker state readings.
+    * `field` - string. The field name of the state.
+    * `value` - can be string, int, float, boolean, or null. The value of the field.
+    * `update_time` - date/time. The time when the field value was updated.
+* `virtualSensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
+    * `value` - float. The value of the virtual sensor.
+    * `label` - string. The label of the virtual sensor.
+    * `type` - string. The type of the virtual sensor.
+    * `update_time` - date/time. The time when the virtual sensor value was updated.
+* `counters` - an array of JSON objects containing information about the tracker counter readings.
+    * `type` - string. The type of the counter.
+    * `value` - float. The value of the counter.
+    * `update_time` - date/time. The time when the counter value was updated.
 
 #### errors
 
@@ -237,7 +257,26 @@ Gets last values for all metering sensors, state values and counters on multiple
 }
 ```
 
-* `states.value` - can be string, int, float, boolean, or null.
+* `inputs` - an array of JSON objects containing information about the tracker sensors readings.
+  * `value` - float. The value of the sensor.
+  * `label` - string. The label of the sensor.
+  * `units` - string. The units in which the sensor value is measured.
+  * `name` - string. The name of the sensor.
+  * `type` - string. The type of the sensor.
+  * `units_type` - string. The type of the units in which the sensor value is measured.
+  * `update_time` - date/time. The time when the sensor value was updated.
+  * `min_value` - float. The minimum value of the sensor.
+  * `max_value` - float. The maximum value of the sensor.
+  * `converted_units_type` - string. The type of the units in which the sensor value is converted.
+  * `converted_value` - float. The converted value of the sensor reading.
+* `states` - an array of JSON objects containing information about the tracker state readings.
+  * `field` - string. The field name of the state.
+  * `value` - can be string, int, float, boolean, or null. The value of the field.
+  * `update_time` - date/time. The time when the field value was updated.
+* `counters` - an array of JSON objects containing information about the tracker counter readings.
+  * `type` - string. The type of the counter.
+  * `value` - float. The value of the counter.
+  * `update_time` - date/time. The time when the counter value was updated.
 
 #### errors
 
