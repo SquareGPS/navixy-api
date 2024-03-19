@@ -5,8 +5,7 @@ description: API call for updating task form values. Task form values can be sub
 
 # Updating task form values
 
-Task form values can be submitted using web API only if there was a submission using Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)).
-The use case is to "fix" incorrectly filled data. This action not intended to fill empty form from scratch.
+Task form values can only be submitted using the web API if there was a previous submission using the Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)). The purpose of this feature is to correct any incorrectly filled data that was accidentally submitted. It is not intended for filling out an empty form from scratch. This action can only be used if the task status is "assigned," and the device must not be deleted. It will not work for any other task statuses.
 
 ***
 
