@@ -93,7 +93,7 @@ Gets last values for all metering sensors, state values and counters.
     * `label` - string. The label of the sensor.
     * `units` - string. The units in which the sensor value is measured.
     * `name` - string. The name of the sensor.
-    * `type` - string. The type of the sensor.
+    * `type` - [metering sensor type](./sensor/index.md#Metering-sensor-type-values). The type of the sensor.
     * `units_type` - string. The type of the units in which the sensor value is measured.
     * `update_time` - date/time. The time when the sensor value was updated.
 * `states` - an array of JSON objects containing information about the tracker state readings.
@@ -103,7 +103,7 @@ Gets last values for all metering sensors, state values and counters.
 * `virtualSensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
     * `value` - float. The value of the virtual sensor.
     * `label` - string. The label of the virtual sensor.
-    * `type` - string. The type of the virtual sensor.
+    * `type` - [virtual sensor type](./sensor/index.md#Virtual-sensor-type-values). The type of the virtual sensor.
     * `update_time` - date/time. The time when the virtual sensor value was updated.
 * `counters` - an array of JSON objects containing information about the tracker counter readings.
     * `type` - string. The type of the counter.
@@ -262,7 +262,7 @@ Gets last values for all metering sensors, state values and counters on multiple
   * `label` - string. The label of the sensor.
   * `units` - string. The units in which the sensor value is measured.
   * `name` - string. The name of the sensor.
-  * `type` - string. The type of the sensor.
+  * `type` - [metering sensor type](./sensor/index.md#Metering-sensor-type-values). The type of the sensor.
   * `units_type` - string. The type of the units in which the sensor value is measured.
   * `update_time` - date/time. The time when the sensor value was updated.
   * `min_value` - float. The minimum value of the sensor.
