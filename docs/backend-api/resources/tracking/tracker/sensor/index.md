@@ -40,7 +40,7 @@ Contains API calls to interact with sensors.
 
 * `type` - string. Always "metering".
 * `id` - int. Sensor's id.
-* `sensor_type` - [metering sensor type](./index.md#Metering-sensor-type-values). Type of the sensor.
+* `sensor_type` - [metering sensor type](./index.md#metering-sensor-type-values). Type of the sensor.
 * `name` - string, max size 100. A name of sensor.
 * `input_name` - string, max size 64. 
 * `divider` - double. 
@@ -89,22 +89,22 @@ Contains API calls to interact with sensors.
 
 * `type` - string. Always "discrete".
 * `id` - int. An ID of a sensor.
-* `sensor_type` - [discrete sensor type](./index.md#Discrete-sensor-type-values). Type of the sensor.
+* `sensor_type` - [discrete sensor type](./index.md#discrete-sensor-type-values). Type of the sensor.
 * `name` - string, max size 100.
 * `input_number` - int, [1..8]. Assigned input number.
 
 #### Discrete sensor type values
 
-*   `fuel`
-*   `temperature`
-*   `rpm`
-*   `custom`
-*   `fuel_consumption`
-*   `instant_consumption`
+*   `ignition`
+*   `sos_button`
 *   `power`
-*   `speed`
-*   `flow_meter`
-*   `acceleration`
+*   `engine`
+*   `car_alarm`
+*   `door`
+*   `charge`
+*   `detach`
+*   `custom`
+
 ***
 
 ### Virtual sensor
@@ -132,7 +132,7 @@ Contains API calls to interact with sensors.
 
 * `type` - string. Always "virtual".
 * `id` - int. Sensor's id.
-* `sensor_type` - [virtual sensor type](./index.md#Virtual-sensor-type-values). Type of the sensor. "virtual_ignition" for virtual ignition or "state" for others.
+* `sensor_type` - [virtual sensor type](./index.md#virtual-sensor-type-values). Type of the sensor. "virtual_ignition" for virtual ignition or "state" for others.
 * `name` - string, max size 100. A name of sensor.
 * `input_name` - string, max size 64. A source input field name (identifier).
 * `parameters` - optional object with additional parameters.

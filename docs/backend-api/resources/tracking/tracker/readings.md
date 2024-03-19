@@ -20,10 +20,10 @@ Gets last values for all metering sensors, state values and counters.
 
 #### parameters
 
-| name        | description                                                                                        | type   | format |
-|:------------|:---------------------------------------------------------------------------------------------------|:-------|:-------|
-| tracker_id  | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.    | int    | 999199 |
-| sensor_type | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string | "fuel" |
+| name        | description                                                                                        | type                                                                                                                                                     | format |
+|:------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:-------|
+| tracker_id  | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.    | int                                                                                                                                                      | 999199 |
+| sensor_type | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](./sensor/index.md#metering-sensor-type-values) or [virtual sensor type](./sensor/index.md#virtual-sensor-type-values) | "fuel" |
 
 #### examples
 
@@ -93,7 +93,7 @@ Gets last values for all metering sensors, state values and counters.
     * `label` - string. The label of the sensor.
     * `units` - string. The units in which the sensor value is measured.
     * `name` - string. The name of the sensor.
-    * `type` - [metering sensor type](./sensor/index.md#Metering-sensor-type-values). The type of the sensor.
+    * `type` - [metering sensor type](./sensor/index.md#metering-sensor-type-values). The type of the sensor.
     * `units_type` - string. The type of the units in which the sensor value is measured.
     * `update_time` - date/time. The time when the sensor value was updated.
 * `states` - an array of JSON objects containing information about the tracker state readings.
@@ -103,7 +103,7 @@ Gets last values for all metering sensors, state values and counters.
 * `virtualSensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
     * `value` - float. The value of the virtual sensor.
     * `label` - string. The label of the virtual sensor.
-    * `type` - [virtual sensor type](./sensor/index.md#Virtual-sensor-type-values). The type of the virtual sensor.
+    * `type` - [virtual sensor type](./sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
     * `update_time` - date/time. The time when the virtual sensor value was updated.
 * `counters` - an array of JSON objects containing information about the tracker counter readings.
     * `type` - string. The type of the counter.
@@ -121,10 +121,10 @@ Gets last values for all metering sensors, state values and counters on multiple
 
 #### parameters
 
-| name        | description                                                                                        | type   | format          |
-|:------------|:---------------------------------------------------------------------------------------------------|:-------|:----------------|
-| trackers    | An array of tracker IDs (aka "object_id"). Trackers must belong to authorized user.                | int    | [999199,991999] |
-| sensor_type | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string | "fuel"          |
+| name        | description                                                                                        | type                                                                                                                                                     | format          |
+|:------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|
+| trackers    | An array of tracker IDs (aka "object_id"). Trackers must belong to authorized user.                | int                                                                                                                                                      | [999199,991999] |
+| sensor_type | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](./sensor/index.md#metering-sensor-type-values) or [virtual sensor type](./sensor/index.md#virtual-sensor-type-values) | "fuel"          |
 
 #### examples
 
@@ -258,25 +258,25 @@ Gets last values for all metering sensors, state values and counters on multiple
 ```
 
 * `inputs` - an array of JSON objects containing information about the tracker sensors readings.
-  * `value` - float. The value of the sensor.
-  * `label` - string. The label of the sensor.
-  * `units` - string. The units in which the sensor value is measured.
-  * `name` - string. The name of the sensor.
-  * `type` - [metering sensor type](./sensor/index.md#Metering-sensor-type-values). The type of the sensor.
-  * `units_type` - string. The type of the units in which the sensor value is measured.
-  * `update_time` - date/time. The time when the sensor value was updated.
-  * `min_value` - float. The minimum value of the sensor.
-  * `max_value` - float. The maximum value of the sensor.
-  * `converted_units_type` - string. The type of the units in which the sensor value is converted.
-  * `converted_value` - float. The converted value of the sensor reading.
+    * `value` - float. The value of the sensor.
+    * `label` - string. The label of the sensor.
+    * `units` - string. The units in which the sensor value is measured.
+    * `name` - string. The name of the sensor.
+    * `type` - [metering sensor type](./sensor/index.md#metering-sensor-type-values). The type of the sensor.
+    * `units_type` - string. The type of the units in which the sensor value is measured.
+    * `update_time` - date/time. The time when the sensor value was updated.
+    * `min_value` - float. The minimum value of the sensor.
+    * `max_value` - float. The maximum value of the sensor.
+    * `converted_units_type` - string. The type of the units in which the sensor value is converted.
+    * `converted_value` - float. The converted value of the sensor reading.
 * `states` - an array of JSON objects containing information about the tracker state readings.
-  * `field` - string. The field name of the state.
-  * `value` - can be string, int, float, boolean, or null. The value of the field.
-  * `update_time` - date/time. The time when the field value was updated.
+    * `field` - string. The field name of the state.
+    * `value` - can be string, int, float, boolean, or null. The value of the field.
+    * `update_time` - date/time. The time when the field value was updated.
 * `counters` - an array of JSON objects containing information about the tracker counter readings.
-  * `type` - string. The type of the counter.
-  * `value` - float. The value of the counter.
-  * `update_time` - date/time. The time when the counter value was updated.
+    * `type` - string. The type of the counter.
+    * `value` - float. The value of the counter.
+    * `update_time` - date/time. The time when the counter value was updated.
 
 #### errors
 
