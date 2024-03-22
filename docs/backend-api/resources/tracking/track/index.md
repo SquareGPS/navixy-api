@@ -387,3 +387,55 @@ are `true`, we should list them in our request.
   restrictions or any other reason.
 * 211 - Requested time span is too big – If the interval between the "from" and "to" dates is too large, it may exceed
   the maximum value defined in the API configuration.
+
+***
+
+### visit/list
+
+This method fetches IDs of zones and places that contain at least one track point.
+
+#### parameters
+
+| name           | description                                                                                                                                         | type    | format |
+|:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:--------|:-------|
+| tracker_id     | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked. | int     | 123456 |
+| track_id       | ID of the track.                                                                                                                                    | int     | 234567 |
+| include_zones  | Optional. Default is `true`. If the value is `false`, zones IDs will be excluded.                                                                   | boolean | true   |
+| include_places | Optional. Default is `true`. If the value is `false`, places IDs will be excluded.                                                                  | boolean | true   |
+
+#### example
+
+For instance, if we need to obtain IDs of zones and places that contain at least one track point of track 923150 related to tracker 1683258.
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/track/visit/list' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "track_id": 923150}'
+    ```
+
+#### response
+
+```json
+{
+  "success": true,
+  "value": {
+    "zones": [
+      54865,
+      35284
+    ],
+    "places": [
+      18404
+    ]
+  }
+}
+```
+
+* `zones` - int array. List of zones IDs.
+* `places` - int array. List of places IDs.
+
+#### errors
+
+* 204 - Entity not found – the tracker ID in your request may not match any trackers linked to the user account with this
+  session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
