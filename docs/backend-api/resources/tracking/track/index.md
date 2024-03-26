@@ -396,23 +396,24 @@ This method fetches IDs of zones and places that contain at least one track poin
 
 #### parameters
 
-| name           | description                                                                                                                                         | type    | format |
-|:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:--------|:-------|
-| tracker_id     | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked. | int     | 123456 |
-| track_id       | ID of the track.                                                                                                                                    | int     | 234567 |
-| include_zones  | Optional. Default is `true`. If the value is `false`, zones IDs will be excluded.                                                                   | boolean | true   |
-| include_places | Optional. Default is `true`. If the value is `false`, places IDs will be excluded.                                                                  | boolean | true   |
+| name           | description                                                                                                                                         | type                                                | format                |
+|:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------|:----------------------|
+| tracker_id     | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked. | int                                                 | 123456                |
+| from           | Start date/time for searching.                                                                                                                      | [date/time](../../../getting-started.md#data-types) | "2024-01-10 00:00:00" |
+| to             | End date/time for searching. Must be after `from` date.                                                                                             | [date/time](../../../getting-started.md#data-types) | "2024-01-20 00:00:00" | 
+| include_zones  | Optional. Default is `true`. If the value is `false`, zones IDs will be excluded.                                                                   | boolean                                             | true                  |
+| include_places | Optional. Default is `true`. If the value is `false`, places IDs will be excluded.                                                                  | boolean                                             | true                  |
 
 #### example
 
-For instance, if we need to obtain IDs of zones and places that contain at least one track point of track 923150 related to tracker 1683258.
+For instance, if we need to obtain IDs of zones and places that contain at least one track point related to tracker 1683258 in January.
 
 === "cURL"
 
     ```shell
     curl -X POST '{{ extra.api_example_url }}/track/visit/list' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "track_id": 923150}'
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "from": "2024-01-01 00:00:00", "to": "2024-01-31 00:00:00"}'
     ```
 
 #### response
