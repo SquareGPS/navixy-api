@@ -45,6 +45,12 @@ API call on the European Navixy ServerMate, you should use the URL:
 
     https://api.eu.navixy.com/v2/user/auth
 
+For white label solutions based on Navixy ServerMate platforms you can use your domain without `navixy`. In this case, use the same domain as for web interface and add `/api-v2` at the end:
+
+    https://your_domain/api-v2
+
+The form is same for European and American Navixy ServerMate platforms without `eu` and `us` there.
+
 ***
 
 ## API calls format
