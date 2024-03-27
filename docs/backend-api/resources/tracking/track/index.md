@@ -191,7 +191,8 @@ where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
     "event_count": 3,
     "norm_fuel_consumed": 1.07,
     "type": "regular",
-    "gsm_lbs": false
+    "gsm_lbs": false,
+    "points_list": [point_info] 
 }
 ```
 
@@ -211,6 +212,32 @@ where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 * `type` - [enum](../../../getting-started.md#data-types) with possible values: `regular`, `single_report`, `merged`, `cluster`. 
 It's used to differentiate this regular track type from other types.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
+* `points_list` - array of objects:
+
+```json
+{
+    "address": "1255 6th Ave, New York, NY 10020, USA",
+    "alt": 0,
+    "get_time": "2023-11-24 03:39:44",
+    "heading": 289,
+    "lat": 40.760047,
+    "lng": -73.980715,
+    "mileage": 0.0,
+    "satellites": 8,
+    "speed": 3
+}
+```
+
+* `address` - string. Address of the point.
+* `alt` - int. Altitude in meters.
+* `get_time` - [date/time](../../../getting-started.md#data-types). GPS timestamp of the point, in user's timezone.
+* `heading` - int. Direction bearing in degrees (0-360).
+* `lat` - float. Latitude.
+* `lng` - float. Longitude.
+* `mileage` - float. Mileage.
+* `satellites` - int. Number of satellites used in fix for this point.
+* `speed` - int. Speed in km/h.
+
 
 `single_report` object is returned when the device operates in "interval" mode or only one point per track is provided 
 (for example, an M7 tracker operating in interval mode):
@@ -223,7 +250,8 @@ It's used to differentiate this regular track type from other types.
     "avg_speed": 34,
     "gsm_lbs": false,
     "type": "single_report",
-    "precision": 10
+    "precision": 10,
+    "points_list": [point_info]
 }
 ```
 
@@ -236,6 +264,31 @@ the user's timezone, for example, "2011-06-18 03:39:44".
 * `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`.
   Used to distinguish this track type (`single_report`) from the others.
 * `precision` - optional int. It signifies the precision of the location in meters. Its presence relies on the device model.
+* `points_list` - array of objects:
+
+```json
+{
+    "address": "1255 6th Ave, New York, NY 10020, USA",
+    "alt": 0,
+    "get_time": "2023-11-24 03:39:44",
+    "heading": 289,
+    "lat": 40.760047,
+    "lng": -73.980715,
+    "mileage": 0.0,
+    "satellites": 8,
+    "speed": 3
+}
+```
+
+* `address` - string. Address of the point.
+* `alt` - int. Altitude in meters.
+* `get_time` - [date/time](../../../getting-started.md#data-types). GPS timestamp of the point, in user's timezone.
+* `heading` - int. Direction bearing in degrees (0-360).
+* `lat` - float. Latitude.
+* `lng` - float. Longitude.
+* `mileage` - float. Mileage.
+* `satellites` - int. Number of satellites used in fix for this point.
+* `speed` - int. Speed in km/h.
 
 `merged` object. Only returned if "split" is set to `false`:
 
@@ -252,7 +305,8 @@ the user's timezone, for example, "2011-06-18 03:39:44".
     "event_count": 3,
     "norm_fuel_consumed": 1.07,
     "type": "merged",
-    "gsm_lbs": false
+    "gsm_lbs": false,
+    "points_list": [point_info]
 }
 ```
 
@@ -273,6 +327,31 @@ last point identified as a track for a specified time period.
 * `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
   Used to distinguish this track type (`merged`) from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS flag.
+* `points_list` - array of objects:
+
+```json
+{
+    "address": "1255 6th Ave, New York, NY 10020, USA",
+    "alt": 0,
+    "get_time": "2023-11-24 03:39:44",
+    "heading": 289,
+    "lat": 40.760047,
+    "lng": -73.980715,
+    "mileage": 0.0,
+    "satellites": 8,
+    "speed": 3
+}
+```
+
+* `address` - string. Address of the point.
+* `alt` - int. Altitude in meters.
+* `get_time` - [date/time](../../../getting-started.md#data-types). GPS timestamp of the point, in user's timezone.
+* `heading` - int. Direction bearing in degrees (0-360).
+* `lat` - float. Latitude.
+* `lng` - float. Longitude.
+* `mileage` - float. Mileage.
+* `satellites` - int. Number of satellites used in fix for this point.
+* `speed` - int. Speed in km/h.
 
 `cluster` object. Can be returned only if "split" is set to `true`:
 
