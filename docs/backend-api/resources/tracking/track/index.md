@@ -212,32 +212,7 @@ where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 * `type` - [enum](../../../getting-started.md#data-types) with possible values: `regular`, `single_report`, `merged`, `cluster`. 
 It's used to differentiate this regular track type from other types.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
-* `points_list` - array of objects:
-
-```json
-{
-    "address": "1255 6th Ave, New York, NY 10020, USA",
-    "alt": 0,
-    "get_time": "2023-11-24 03:39:44",
-    "heading": 289,
-    "lat": 40.760047,
-    "lng": -73.980715,
-    "mileage": 0.0,
-    "satellites": 8,
-    "speed": 3
-}
-```
-
-* `address` - string. Address of the point.
-* `alt` - int. Altitude in meters.
-* `get_time` - [date/time](../../../getting-started.md#data-types). GPS timestamp of the point, in user's timezone.
-* `heading` - int. Direction bearing in degrees (0-360).
-* `lat` - float. Latitude.
-* `lng` - float. Longitude.
-* `mileage` - float. Mileage.
-* `satellites` - int. Number of satellites used in fix for this point.
-* `speed` - int. Speed in km/h.
-
+* `points_list` - array of JSON objects. A list of [point info](#point-info).
 
 `single_report` object is returned when the device operates in "interval" mode or only one point per track is provided 
 (for example, an M7 tracker operating in interval mode):
@@ -264,31 +239,7 @@ the user's timezone, for example, "2011-06-18 03:39:44".
 * `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`.
   Used to distinguish this track type (`single_report`) from the others.
 * `precision` - optional int. It signifies the precision of the location in meters. Its presence relies on the device model.
-* `points_list` - array of objects:
-
-```json
-{
-    "address": "1255 6th Ave, New York, NY 10020, USA",
-    "alt": 0,
-    "get_time": "2023-11-24 03:39:44",
-    "heading": 289,
-    "lat": 40.760047,
-    "lng": -73.980715,
-    "mileage": 0.0,
-    "satellites": 8,
-    "speed": 3
-}
-```
-
-* `address` - string. Address of the point.
-* `alt` - int. Altitude in meters.
-* `get_time` - [date/time](../../../getting-started.md#data-types). GPS timestamp of the point, in user's timezone.
-* `heading` - int. Direction bearing in degrees (0-360).
-* `lat` - float. Latitude.
-* `lng` - float. Longitude.
-* `mileage` - float. Mileage.
-* `satellites` - int. Number of satellites used in fix for this point.
-* `speed` - int. Speed in km/h.
+* `points_list` - array of JSON objects. A list of [point info](#point-info).
 
 `merged` object. Only returned if "split" is set to `false`:
 
@@ -327,31 +278,7 @@ last point identified as a track for a specified time period.
 * `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
   Used to distinguish this track type (`merged`) from the others. 
 * `gsm_lbs` - optional boolean. GSM LBS flag.
-* `points_list` - array of objects:
-
-```json
-{
-    "address": "1255 6th Ave, New York, NY 10020, USA",
-    "alt": 0,
-    "get_time": "2023-11-24 03:39:44",
-    "heading": 289,
-    "lat": 40.760047,
-    "lng": -73.980715,
-    "mileage": 0.0,
-    "satellites": 8,
-    "speed": 3
-}
-```
-
-* `address` - string. Address of the point.
-* `alt` - int. Altitude in meters.
-* `get_time` - [date/time](../../../getting-started.md#data-types). GPS timestamp of the point, in user's timezone.
-* `heading` - int. Direction bearing in degrees (0-360).
-* `lat` - float. Latitude.
-* `lng` - float. Longitude.
-* `mileage` - float. Mileage.
-* `satellites` - int. Number of satellites used in fix for this point.
-* `speed` - int. Speed in km/h.
+* `points_list` - array of JSON objects. A list of [point info](#point-info).
 
 `cluster` object. Can be returned only if "split" is set to `true`:
 
@@ -425,33 +352,40 @@ are `true`, we should list them in our request.
 {
     "success": true,
     "limit_exceeded": true,
-    "list": [
-        {
-            "lat": 43.0375133,
-            "lng": -79.226505,
-            "alt": 0,
-            "satellites": 10,
-            "mileage": 43.93,
-            "get_time": "2023-11-01 04:38:39",
-            "address": "Kottmeier Road, Thorold, Golden Horseshoe, Ontario, Canada, L3B 5N6",
-            "heading": 280,
-            "speed": 53,
-            "precision": 100,
-            "gsm_lbs": false,
-            "parking": false,
-            "buffered": true
-        }
-    ]
+    "list": [point_info]
 }
 ```
 
 * `limit_exceeded` - boolean. It will be `true` if the requested time period surpasses the limit set in the tracker's tariff.
   For instance, if the device's plan has a maximum storage period of three months (the default value), and we request trips
   for six months.
+* `list` - array of JSON objects. A list of [point info](#point-info).
+
+#### point info
+
+```json
+{
+    "lat": 43.0375133,
+    "lng": -79.226505,
+    "alt": 0,
+    "satellites": 10,
+    "mileage": 43.93,
+    "get_time": "2023-11-01 04:38:39",
+    "address": "Kottmeier Road, Thorold, Golden Horseshoe, Ontario, Canada, L3B 5N6",
+    "heading": 280,
+    "speed": 53,
+    "precision": 100,
+    "gsm_lbs": false,
+    "parking": false,
+    "buffered": true
+}
+```
+
 * `lat` - float. Represents latitude.
 * `lng` - float. Represents longitude.
 * `alt` - int. Indicates the altitude in meters.
 * `satellites` - int. Shows the number of GPS satellites used to determine this point.
+* `mileage` - float. Represents mileage.
 * `get_time` - [date/time](../../../getting-started.md#data-types). This is the GPS timestamp of the point, adjusted to the user's timezone.
 * `address` - string. Represents the location's address. Will be "" if no address recorded. If no address has been recorded, it will appear as "". An address is recorded when it marks the beginning or end of a trip, or when an event occurs.
 * `heading` - int. A value that represents the direction in degrees, with a range of 0 to 360. 0 corresponds to North.
