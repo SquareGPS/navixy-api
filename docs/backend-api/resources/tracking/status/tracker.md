@@ -158,7 +158,7 @@ Gets current assigned statuses for the specified trackers.
 
 #### errors
 
-* 217 - Requested limit is too big – limit is more than [history.maxLimit](../../commons/dealer.md).
+* 217 - List contains nonexistent entities - if one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 221 - Device limit exceeded – if device limit set for the user's dealer has been exceeded.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature
  available.

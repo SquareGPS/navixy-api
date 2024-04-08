@@ -62,7 +62,7 @@ Gets list of audit records available for current user.
 | actions     | Optional. Include audits for specific actions only.                                                                                   | string array                                           |
 | limit       | Pagination. Maximum number of audit records to return.                                                                                | int                                                    |
 | offset      | Pagination. Get audits starting from.                                                                                                 | int                                                    |
-| sort        | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["action_date=acs", "user=desc"]`. | string array                                           |
+| sort        | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["action_date=asc", "user=desc"]`. | string array                                           |
 | grouping    | Optional. Group log by "user", "action_date", "action" or don't group "default".                                                      | [enum](../../../../getting-started.md#data-types)      |
  
 Properties available for sorting by:
