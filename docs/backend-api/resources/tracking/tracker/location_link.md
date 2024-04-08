@@ -22,12 +22,12 @@ Creates new Geo Link.
 
 #### parameters
 
-| name        | description                                           | type                  |
-|:------------|:------------------------------------------------------|:----------------------|
-| lifetime    | Optional. Start and end of the session.               | JSON object           |
-| description | Link's description.                                   | string                |
-| trackers    | List of tracker IDs with parameters for each tracker. | array of JSON objects |
-| params      | Link parameters.                                      | JSON object           |
+| name        | description                                           | type                  | restrictions                                |
+|:------------|:------------------------------------------------------|:----------------------|---------------------------------------------|
+| lifetime    | Start and end of the session.                         | JSON object           | Optional.                                   |
+| description | Link's description.                                   | string                | Only printable characters. Max length: 255. |
+| trackers    | List of tracker IDs with parameters for each tracker. | array of JSON objects | Allowed length 1 to 100.                    |
+| params      | Link parameters.                                      | JSON object           |                                             |
 
 ##### lifetime object
 ```js
@@ -53,7 +53,7 @@ Creates new Geo Link.
 {
   "bounding_zone_ids": [123,...], // 0..100 zone IDs
   "bounding_mode": "inside", // or outside, optional when no bounding zones
-  "place_ids": [234,...] // 0..100 place IDs
+  "place_ids": [234,...], // 0..100 place IDs
   "shorten_url": false, // optional, false by default
   "display_options": {
     "map": "roadmap", // or satellite, hybrid, or any other available map
@@ -61,7 +61,7 @@ Creates new Geo Link.
     "show_icons": false, // optional, false by default
     "show_driver_info": false, // optional, false by default
     "show_vehicle_info": false, // optional, false by default
-    "trace_duration": 30, // in seconds, optional, 5 by default
+    "trace_duration": 30 // in seconds, optional, 5 by default
   }
 }
 ```
@@ -130,13 +130,13 @@ Updates Geo Link.
 
 #### parameters
 
-| name        | description                                           | type                  |
-|:------------|:------------------------------------------------------|:----------------------|
-| id          | Session ID.                                           | int                   |
-| lifetime    | Optional. Start and end of the session.               | JSON object           |
-| description | Link's description.                                   | string                |
-| trackers    | List of tracker IDs with parameters for each tracker. | array of JSON objects |
-| params      | Link parameters.                                      | JSON object           |
+| name        | description                                           | type                  | restrictions                                |
+|:------------|:------------------------------------------------------|:----------------------|---------------------------------------------|
+| id          | Session ID.                                           | int                   |                                             |
+| lifetime    | Optional. Start and end of the session.               | JSON object           | Optional.                                   |
+| description | Link's description.                                   | string                | Only printable characters. Max length: 255. |
+| trackers    | List of tracker IDs with parameters for each tracker. | array of JSON objects | Allowed length 1 to 100.                    |
+| params      | Link parameters.                                      | JSON object           |                                             |
 
 #### example
 
