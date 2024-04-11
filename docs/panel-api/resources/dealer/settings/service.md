@@ -87,6 +87,8 @@ API calls to read and update panel's service settings.
     * `geocoder` - string. Default geocoder.
     * `route_provider` - string. Default route provider.
     * `measurement_system` - [enum](../../../../backend-api/getting-started.md#data-types). Measurement system.
+    * `date_format` - Optional [enum](../../../../getting-started.md#data-types). Date representation.
+    * `hour_mode` - Optional [enum](../../../../getting-started.md#data-types). Time representation.
     * `translit` - boolean. SMS transliteration. If `true` allows you to reduce the number of characters in an SMS message
      by replacing the characters of the national alphabet with close Latin ones.
 * `display_model_features_link` - boolean. When `true` shows in model info link to navixy.com (UI option).
