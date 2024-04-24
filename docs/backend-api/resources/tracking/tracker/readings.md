@@ -20,10 +20,11 @@ Gets last values for all metering sensors, state values and counters.
 
 #### parameters
 
-| name        | description                                                                                        | type                                                                                                                                                     | format |
-|:------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:-------|
-| tracker_id  | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.    | int                                                                                                                                                      | 999199 |
-| sensor_type | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](./sensor/index.md#metering-sensor-type-values) or [virtual sensor type](./sensor/index.md#virtual-sensor-type-values) | "fuel" |
+| name               | description                                                                                        | type                                                                                                                                                     | format |
+|:-------------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:-------|
+| tracker_id         | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.    | int                                                                                                                                                      | 999199 |
+| sensor_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](./sensor/index.md#metering-sensor-type-values) or [virtual sensor type](./sensor/index.md#virtual-sensor-type-values) | "fuel" |
+| include_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                  | true   |
 
 #### examples
 
@@ -121,10 +122,11 @@ Gets last values for all metering sensors, state values and counters on multiple
 
 #### parameters
 
-| name        | description                                                                                        | type                                                                                                                                                     | format          |
-|:------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|
-| trackers    | An array of tracker IDs (aka "object_id"). Trackers must belong to authorized user.                | int                                                                                                                                                      | [999199,991999] |
-| sensor_type | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](./sensor/index.md#metering-sensor-type-values) or [virtual sensor type](./sensor/index.md#virtual-sensor-type-values) | "fuel"          |
+| name               | description                                                                                        | type                                                                                                                                                     | format          |
+|:-------------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|
+| trackers           | An array of tracker IDs (aka "object_id"). Trackers must belong to authorized user.                | int                                                                                                                                                      | [999199,991999] |
+| sensor_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](./sensor/index.md#metering-sensor-type-values) or [virtual sensor type](./sensor/index.md#virtual-sensor-type-values) | "fuel"          |
+| include_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                  | true            |
 
 #### examples
 
