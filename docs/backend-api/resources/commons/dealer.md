@@ -171,9 +171,9 @@ If `hash` is specified the `domain` shouldn't be used.
 * `platform` - key-value object. Global platform settings.
     * `iso_datetime_support` - boolean, if `true` platform supports ISO 8601 [date/time format](../../getting-started.md#datetime-formats). 
     * `history.max_limit` - int, max limit for [history](history/index.md) list actions.
-    * `report.max_time_span` - ISO8601 period, max timespan for [reports generation](report/report_tracker.md#generate).
+    * `report.max_time_span` - ISO 8601 duration, max timespan for [reports generation](report/report_tracker.md#generate).
     * `stats.max_allowed_trackers` - int, max allowed trackers for [stats actions](../tracking/tracker/stats/stats_mileage.md).
-    * `stats.max_time_span` - ISO8601 period,max timespan for [stats actions](../tracking/tracker/stats/stats_mileage.md).
+    * `stats.max_time_span` - ISO 8601 duration,max timespan for [stats actions](../tracking/tracker/stats/stats_mileage.md).
     * `file_storage.hard_max_file_size` - long, hard max file size in bytes for uploading files to the file storage.
     * `form.max_fields_count` - integer, max fields per form.
     * `form.file_field.max_file_size` - long, max file size in bytes for the form file.

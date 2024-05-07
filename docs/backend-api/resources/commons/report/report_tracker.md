@@ -182,7 +182,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 }
 ```
 
-* `max_time_span` - string. ISO-8601 interval.
+* `max_time_span` - string. ISO 8601 duration.
 
 * 217 - List contains nonexistent entities - when one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 222 - Plugin not found - when specified report plugin not found.
