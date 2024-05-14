@@ -63,16 +63,29 @@ settings will provide us with necessary info by default.
       },
       "tracks": [track_info]
     }
-  ]
+  ],
+  "total": {
+    "count": 2,
+    "length": 100.500,
+    "trips_duration": "PT1D",
+    "parking_duration": "PT1H",
+    "norm_fuel_consumed": 11.08
+  }
 }
 ```
 
-* `tracker_id` - int. Tracker identifier.
-* `limit_exceeded` - boolean. It will be `true` if the requested time period surpasses the limit set in the tracker's tariff.
+* `tracker_id` – int. Tracker identifier.
+* `limit_exceeded` – boolean. It will be `true` if the requested time period surpasses the limit set in the tracker's tariff.
 For instance, if the device's plan has a maximum storage period of three months (the default value), and we request trips for six months.
-* `from` - [date/time](../../../getting-started.md#data-types). This is timestamp of the start of the interval when the asset was attached to the tracker.
-* `to` - [date/time](../../../getting-started.md#data-types). This is timestamp of the end of the interval when the asset was attached to the tracker.
-* `tracks` - an array of JSON objects containing track information.
+* `from` – [date/time](../../../getting-started.md#data-types). This is timestamp of the start of the interval when the asset was attached to the tracker.
+* `to`  [date/time](../../../getting-started.md#data-types). This is timestamp of the end of the interval when the asset was attached to the tracker.
+* `tracks`  an array of JSON objects containing track information.
+* `total` – result for all tracks:
+  * `count` – int. Track count
+  * `length` – float. Sum of the lengths of all tracks
+  * `trips_duration` – ISO 8601 duration. Travel time
+  * `parking_duration` – ISO 8601 duration. Parking duration
+  * `norm_fuel_consumed` – optional float. Amount of fuel consumed during all tracks, measured in liters.
 
 where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 
