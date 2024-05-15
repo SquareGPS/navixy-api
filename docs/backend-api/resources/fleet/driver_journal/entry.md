@@ -74,7 +74,7 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
 | to         | Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                              | [date/time](../../../getting-started.md#data-types) |
 | entry_ids  | Optional. Array of entry IDs.                                                                                                      | int array                                           |
 | types      | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`.                                                 | string array                                        |
-| sort       | Optional. Set of sort options. Each option is a pair of column name and sorting direction, e.g. `["start_date=acs", "type=desc"]`. | string array                                        |
+| sort       | Optional. Set of sort options. Each option is a pair of column name and sorting direction, e.g. `["start_date=asc", "type=desc"]`. | string array                                        |
 
 * Possible columns of `sort` parameter:
 
@@ -86,7 +86,7 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
     * `end_address` - Sort only by the end address.
     * `driver` - Sort by last+first+middle driver name, not by driver ID. 
     * `type` - Sort by type. 
-    * If no `sort` param is specified, then `sort` option will be "start_date=acs".
+    * If no `sort` param is specified, then `sort` option will be "start_date=asc".
 
 #### example
 
@@ -265,7 +265,7 @@ and `to` parameters).
 | to                  | Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                                       | [date/time](../../../getting-started.md#data-types) |
 | entry_ids           | Optional. Array of entry IDs.                                                                                                               | int array                                           |
 | types               | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`.                                                          | string array                                        |
-| sort                | Optional. Set of [sort options](#list). Each option is a pair of column name and sorting direction, e.g. `["start_date=acs", "type=desc"]`. | string array                                        |
+| sort                | Optional. Set of [sort options](#list). Each option is a pair of column name and sorting direction, e.g. `["start_date=asc", "type=desc"]`. | string array                                        |
 | add_filename_header | If `true` then Content-Disposition header will be appended to the response. Default value is `true`.                                        | boolean                                             |
 | format              | File format: "pdf", "xls" and "xlsx".                                                                                                       | string                                              |
 | group_by            | Optional. If specified, grouped entries will be in different sections of the table.                                                         | string                                              |

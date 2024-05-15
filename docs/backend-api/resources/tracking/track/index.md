@@ -113,7 +113,7 @@ For example, if the device's plan has maximum available storage period 3 months 
 
 #### errors
 
-* 204 - Entity not found – the tracker ID in your request may not match any trackers linked to the user account with this 
+* 201 - Not found in database – the tracker ID in your request may not match any trackers linked to the user account with this 
 session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
 * 208 - Device blocked – if a tracker exists under this user account but is currently inactive due to tariff plan 
 restrictions or any other reason.
@@ -128,16 +128,19 @@ This method retrieves a list of tracks for a given tracker within a specified ti
 
 #### parameters
 
-| name                   | description                                                                                                                                                            | type                                                       | format                  |
-|:-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|:------------------------|
-| tracker_id             | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked.                    | int                                                        | `123456`                |
-| from                   | The start date/time for trips. The response begins with the next trip point after this time.                                                                           | [date/time](../../../getting-started.md#datetime-formats)  | `"2020-09-23 03:24:00"` |
-| to                     | An end date/time for trips. The response concludes with the last point before this time. Ensure this date is later than the "from" date.                               | [date/time](../../../getting-started.md#datetime-formats)  | `"2020-09-23 06:24:00"` |
-| filter                 | Optional. Default is `true`. If set to `true`, any tracks that are deemed too short, based on their length and number of points, will be excluded from the final list. | boolean                                                    | `true`                  |
-| split                  | Optional. Default is `true`. If set to `false`, all the tracks will be combined into one single track within the period.                                               | boolean                                                    | `true`                  |
-| include_gsm_lbs        | Optional. Default is `true`. If set to `false`, GSM LBS points will be excluded.                                                                                       | boolean                                                    | `true`                  |
-| cluster_single_reports | Optional. Default is `false`. If set to `true`, trips consisting of a single point will be grouped together based on their coordinates.                                | boolean                                                    | `false`                 | 
-| count_events           | Optional. Default is `false`. If set to `true`, the system will return the count of events that occurred during each track that isn't a single point.                  | boolean                                                    | `true`                  |
+| name                   | description                                                                                                                                                                                                                                                                                                                                            | type                                                      | format                  |
+|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------|:------------------------|
+| tracker_id             | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked.                                                                                                                                                                                                    | int                                                       | `123456`                |
+| from                   | The start date/time for trips. The response begins with the next trip point after this time.                                                                                                                                                                                                                                                           | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 03:24:00"` |
+| to                     | An end date/time for trips. The response concludes with the last point before this time. Ensure this date is later than the "from" date.                                                                                                                                                                                                               | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 06:24:00"` |
+| filter                 | Optional. Default is `true`. If set to `true`, any tracks that are deemed too short, based on their length and number of points, will be excluded from the final list.                                                                                                                                                                                 | boolean                                                   | `true`                  |
+| split                  | Optional. Default is `true`. If set to `false`, all the tracks will be combined into one single track within the period.                                                                                                                                                                                                                               | boolean                                                   | `true`                  |
+| include_gsm_lbs        | Optional. Default is `true`. If set to `false`, GSM LBS points will be excluded.                                                                                                                                                                                                                                                                       | boolean                                                   | `true`                  |
+| cluster_single_reports | Optional. Default is `false`. If set to `true`, trips consisting of a single point will be grouped together based on their coordinates.                                                                                                                                                                                                                | boolean                                                   | `false`                 | 
+| count_events           | Optional. Default is `false`. If set to `true`, the system will return the count of events that occurred during each track that isn't a single point.                                                                                                                                                                                                  | boolean                                                   | `false`                 |
+| omit_addresses         | Optional. Default is `false`. If set to `true`, address parameters will be empty.                                                                                                                                                                                                                                                                      | boolean                                                   | `false`                 |
+| with_points            | Optional. Default is `false`. If set to `true`, track point lists will be included.                                                                                                                                                                                                                                                                    | boolean                                                   | `false`                 |
+| point_limit            | Optional. If specified, the returned data will be reduced to contain that specified number of points. The minimum value is 2, and the maximum is 3000. If it is not specified, the server's default settings for simplifying tracks will be applied. This is not a strict limit; the returned data can potentially contain more points than specified. | int                                                       | `300`                   |
 
 #### example
 
@@ -158,9 +161,9 @@ settings will provide us with necessary info by default.
 
 ```json
 {
-    "success": true,
-    "limit_exceeded": false,
-    "list": [<track_info>]
+  "success": true,
+  "limit_exceeded": false,
+  "list": [track_info]
 }
 ```
 
@@ -170,138 +173,181 @@ for six months.
 * `list` - an array of JSON objects containing track information. It consists of zero or more JSON objects. Zero objects 
 indicates that there were no trips based on the track options or the device didn't supply any points to the platform.
 
-where <track_info> is either <regular>, <single_report>, <merged> or <cluster>:
+where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 
 `regular` object:
 
 ```json
 {
-    "id": 123456,
-    "start_date": "2023-11-23 03:39:44",
-    "start_address": "1255 6th Ave, New York, NY 10020, USA",
-    "max_speed": 62,
-    "end_date": "2023-11-23 06:39:44",
-    "end_address": "888 5th Ave, New York, NY 10021, USA",
-    "length": 5.5,
-    "points": 327,
-    "avg_speed": 49,
-    "event_count": 3,
-    "norm_fuel_consumed": 1.07,
-    "type": "regular",
-    "gsm_lbs": false
+  "id": 123456,
+  "start_date": "2023-11-23 03:39:44",
+  "start_address": "1255 6th Ave, New York, NY 10020, USA",
+  "max_speed": 62,
+  "end_date": "2023-11-23 06:39:44",
+  "end_address": "888 5th Ave, New York, NY 10021, USA",
+  "length": 5.5,
+  "points": 327,
+  "avg_speed": 49,
+  "event_count": 3,
+  "norm_fuel_consumed": 1.07,
+  "type": "regular",
+  "gsm_lbs": false,
+  "points_list": [point_info],
+  "bounds": {
+    "nw": {
+      "lat": 57.151005,
+      "lng": 59.92729333
+    },
+    "se": {
+      "lat": 56.47945333,
+      "lng": 61.19021833
+    }
+  }
 }
 ```
 
 * `id` - int. Track id.
-* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone e.g. "2011-06-18 03:39:44".
+* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone.
 * `start_address` - string. Track start address.
-* `max_speed` - int. Maximum speed registered during track in km/h, e.g. 96.
-* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
+* `max_speed` - int. Maximum speed registered during track in km/h.
+* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone.
 * `end_address` - string. Track end address.
-* `length` - float. Track length in kilometers, e.g. 85.5.
-* `points` - int. Total number of points in a track, e.g. 724.
-* `avg_speed` - int. Average speed in km/h, e.g. 70.
-* `event_count` - int. It represents the number of events recorded during this track. This field will not be present if "count_events" is set to `false`.
-* `norm_fuel_consumed` - float. It is representing the amount of fuel consumed during the track, measured
-  in litres. This field will not be present if there's no [vehicle_object](../../fleet/vehicle/index.md#vehicle) linked to the
-  tracker or if "normAvgFuelConsumption" is not defined for the linked vehicle object.
-* `type` - [enum](../../../getting-started.md#data-types) with possible values: `regular`, `single_report`, `merged`, `cluster`. 
-It's used to differentiate this regular track type from other types.
+* `length` - float. Track length in kilometers.
+* `points` - int. Total number of points in a track.
+* `avg_speed` - int. Average speed in km/h.
+* `event_count` - int. Number of events recorded during this track. This field will not be present if "count_events" is set to `false`.
+* `norm_fuel_consumed` - float. Amount of fuel consumed during the track, measured in litres.
+This field will not be present if there's no [vehicle_object](../../fleet/vehicle/index.md#vehicle) linked to the tracker or 
+if "normAvgFuelConsumption" is not defined for the linked vehicle object.
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
+* `points_list` - array of JSON objects. A list of [point info](#point-info).
+* `bounds` - object. North-west and south-east coordinates of the bounding box that contains all points.
 
 `single_report` object is returned when the device operates in "interval" mode or only one point per track is provided 
 (for example, an M7 tracker operating in interval mode):
 
 ```json
 {
-    "id": 123456,
-    "start_date": "2023-11-24 03:39:44",
-    "start_address": "1255 6th Ave, New York, NY 10020, USA",
-    "avg_speed": 34,
-    "gsm_lbs": false,
-    "type": "single_report",
-    "precision": 10
+  "id": 123456,
+  "start_date": "2023-11-24 03:39:44",
+  "start_address": "1255 6th Ave, New York, NY 10020, USA",
+  "avg_speed": 34,
+  "gsm_lbs": false,
+  "type": "single_report",
+  "precision": 10,
+  "points_list": [point_info]
 }
 ```
 
 * `id` - int. Track id.
-* `start_date` - [date/time](../../../getting-started.md#data-types). It represents the date and time when the tracker registered the point, adjusted to 
-the user's timezone, for example, "2011-06-18 03:39:44".
+* `start_date` - [date/time](../../../getting-started.md#data-types). Date when the tracker registered the point, in user's timezone.
 * `start_address` - string. Point address.
-* `avg_speed` - int. Average speed in km/h, e.g. 70.
+* `avg_speed` - int. Average speed in km/h.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
-* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`.
-  Used to distinguish this track type (`single_report`) from the others.
-* `precision` - optional int. It signifies the precision of the location in meters. Its presence relies on the device model.
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`.  Track type.
+* `precision` - optional int. Precision of the location in meters. Its presence relies on the device model.
+* `points_list` - array of JSON objects. A list of [point info](#point-info).
 
 `merged` object. Only returned if "split" is set to `false`:
 
 ```json
 {
-    "start_date": "2023-11-24 03:39:44",
-    "start_address": "1255 6th Ave, New York, NY 10020, USA",
-    "max_speed": 62,
-    "end_date": "2023-11-24 06:39:44",
-    "end_address": "888 5th Ave, New York, NY 10021, USA",
-    "length": 5.5,
-    "points": 327,
-    "avg_speed": 49,
-    "event_count": 3,
-    "norm_fuel_consumed": 1.07,
-    "type": "merged",
-    "gsm_lbs": false
+  "start_date": "2023-11-24 03:39:44",
+  "start_address": "1255 6th Ave, New York, NY 10020, USA",
+  "max_speed": 62,
+  "end_date": "2023-11-24 06:39:44",
+  "end_address": "888 5th Ave, New York, NY 10021, USA",
+  "length": 5.5,
+  "points": 327,
+  "avg_speed": 49,
+  "event_count": 3,
+  "norm_fuel_consumed": 1.07,
+  "type": "merged",
+  "gsm_lbs": false,
+  "points_list": [point_info],
+  "bounds": {
+    "nw": {
+      "lat": 57.151005,
+      "lng": 59.92729333
+    },
+    "se": {
+      "lat": 56.47945333,
+      "lng": 61.19021833
+    }
+  }
 }
 ```
 
-* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone e.g. "2011-06-18 03:39:44". It signifies the 
-initial point identified as a track for a specified time period.
+* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone.
+It signifies the initial point identified as a track for a specified time period.
 * `start_address` - string. Track start address.
-* `max_speed` - int. Maximum speed registered during period in km/h, e.g. 96.
-* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone e.g. "2011-06-18 05:18:36". It signifies the
-last point identified as a track for a specified time period.
+* `max_speed` - int. Maximum speed registered during period in km/h.
+* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone.
+It signifies the last point identified as a track for a specified time period.
 * `end_address` - string. Track end address.
-* `length` - float. Track length during period in kilometers, e.g. 85.5.
-* `points` - int. Total number of points in a track, e.g. 724.
-* `avg_speed` - int. Average speed in km/h, e.g. 70.
-* `event_count` - int. It represents the number of events recorded during this track. This field will not be present if "count_events" is set to `false`.
-* `norm_fuel_consumed` - float. It is representing the amount of fuel consumed during the track, measured
-  in litres. This field will not be present if there's no [vehicle_object](../../fleet/vehicle/index.md#vehicle) linked to the
-  tracker or if "normAvgFuelConsumption" is not defined for the linked vehicle object.
-* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
-  Used to distinguish this track type (`merged`) from the others. 
-* `gsm_lbs` - optional boolean. GSM LBS flag.
+* `length` - float. Track length in kilometers.
+* `points` - int. Total number of points in a track.
+* `avg_speed` - int. Average speed in km/h.
+* `event_count` - int. Number of events recorded during period. This field will not be present if "count_events" is set to `false`.
+* `norm_fuel_consumed` - float. Amount of fuel consumed during period, measured in litres.
+This field will not be present if there's no [vehicle_object](../../fleet/vehicle/index.md#vehicle) linked to the tracker or
+if "normAvgFuelConsumption" is not defined for the linked vehicle object.
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
+* `gsm_lbs` - optional boolean. GSM LBS point flag.
+* `points_list` - array of JSON objects. A list of [point info](#point-info).
+* `bounds` - object. North-west and south-east coordinates of the bounding box that contains all points.
 
 `cluster` object. Can be returned only if "split" is set to `true`:
 
 ```json
 {
-    "start_date": "2023-11-24 03:39:44",
-    "start_address": "1255 6th Ave, New York, NY 10020, USA",
-    "end_date": "2020-09-24 06:39:44",
-    "precision": 500,
-    "points": [{"lat": 34.178868, "lng": -118.599672}, {"lat": 31.738386, "lng": -106.453854}],
-    "type": "cluster",
-    "gsm_lbs": false
+  "start_date": "2023-11-24 03:39:44",
+  "start_address": "1255 6th Ave, New York, NY 10020, USA",
+  "end_date": "2020-09-24 06:39:44",
+  "precision": 500,
+  "points": [
+    {
+      "lat": 34.178868,
+      "lng": -118.599672
+    },
+    {
+      "lat": 31.738386,
+      "lng": -106.453854
+    }
+  ],
+  "bounds": {
+    "nw": {
+      "lat": 57.151005,
+      "lng": 59.92729333
+    },
+    "se": {
+      "lat": 56.47945333,
+      "lng": 61.19021833
+    }
+  },
+  "type": "cluster",
+  "gsm_lbs": false
 }
 ```
 
-* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone e.g. "2011-06-18 03:39:44".
+* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone.
 * `start_address` - string. Track start address.
-* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone e.g. "2011-06-18 05:18:36".
-* `precision` - optional int. It signifies the precision of the location in meters. Its presence relies on the device model.
+* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone.
+* `precision` - optional int. Precision of the location in meters. Its presence relies on the device model.
 * `points` - array of point objects in a cluster.
-* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. 
-  Used to distinguish this track type (`cluster`) from the others. 
-* `gsm_lbs` - optional boolean. GSM LBS flag. If a cluster only contains GSM LBS points, then this value will be set to `true`.
+* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
+* `gsm_lbs` - optional boolean. GSM LBS flag. `true` if a cluster contains only GSM LBS points.
+* `bounds` - object. North-west and south-east coordinates of the bounding box that contains all points.
 
 #### errors
 
-* 204 - Entity not found – the tracker ID in your request may not match any trackers linked to the user account with this
-  session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
+* 201 - Not found in database – the tracker ID in your request may not match any trackers linked to the user account with this
+session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
 * 208 - Device blocked – if a tracker exists under this user account but is currently inactive due to tariff plan
-  restrictions or any other reason.
+restrictions or any other reason.
 * 211 - Requested time span is too big – If the interval between the "from" and "to" dates is too large, it may exceed
-  the maximum value defined in the API configuration.
+the maximum value defined in the API configuration.
 
 ***
 
@@ -341,35 +387,42 @@ are `true`, we should list them in our request.
 
 ```json
 {
-    "success": true,
-    "limit_exceeded": true,
-    "list": [
-        {
-            "lat": 43.0375133,
-            "lng": -79.226505,
-            "alt": 0,
-            "satellites": 10,
-            "mileage": 43.93,
-            "get_time": "2023-11-01 04:38:39",
-            "address": "Kottmeier Road, Thorold, Golden Horseshoe, Ontario, Canada, L3B 5N6",
-            "heading": 280,
-            "speed": 53,
-            "precision": 100,
-            "gsm_lbs": false,
-            "parking": false,
-            "buffered": true
-        }
-    ]
+  "success": true,
+  "limit_exceeded": true,
+  "list": [point_info]
 }
 ```
 
 * `limit_exceeded` - boolean. It will be `true` if the requested time period surpasses the limit set in the tracker's tariff.
-  For instance, if the device's plan has a maximum storage period of three months (the default value), and we request trips
-  for six months.
+For instance, if the device's plan has a maximum storage period of three months (the default value), and we request trips
+for six months.
+* `list` - array of JSON objects. A list of [point info](#point-info).
+
+#### point info
+
+```json
+{
+  "lat": 43.0375133,
+  "lng": -79.226505,
+  "alt": 0,
+  "satellites": 10,
+  "mileage": 43.93,
+  "get_time": "2023-11-01 04:38:39",
+  "address": "Kottmeier Road, Thorold, Golden Horseshoe, Ontario, Canada, L3B 5N6",
+  "heading": 280,
+  "speed": 53,
+  "precision": 100,
+  "gsm_lbs": false,
+  "parking": false,
+  "buffered": true
+}
+```
+
 * `lat` - float. Represents latitude.
 * `lng` - float. Represents longitude.
 * `alt` - int. Indicates the altitude in meters.
 * `satellites` - int. Shows the number of GPS satellites used to determine this point.
+* `mileage` - float. Represents mileage.
 * `get_time` - [date/time](../../../getting-started.md#data-types). This is the GPS timestamp of the point, adjusted to the user's timezone.
 * `address` - string. Represents the location's address. Will be "" if no address recorded. If no address has been recorded, it will appear as "". An address is recorded when it marks the beginning or end of a trip, or when an event occurs.
 * `heading` - int. A value that represents the direction in degrees, with a range of 0 to 360. 0 corresponds to North.
@@ -381,9 +434,62 @@ are `true`, we should list them in our request.
 
 #### errors
 
-* 204 - Entity not found – the tracker ID in your request may not match any trackers linked to the user account with this
-  session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
+* 201 - Not found in database – the tracker ID in your request may not match any trackers linked to the user account with this
+session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
 * 208 - Device blocked – if a tracker exists under this user account but is currently inactive due to tariff plan
-  restrictions or any other reason.
+restrictions or any other reason.
 * 211 - Requested time span is too big – If the interval between the "from" and "to" dates is too large, it may exceed
-  the maximum value defined in the API configuration.
+the maximum value defined in the API configuration.
+
+***
+
+### visit/list
+
+This method fetches IDs of zones and places that contain at least one track point.
+
+#### parameters
+
+| name           | description                                                                                                                                         | type                                                | format                |
+|:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------|:----------------------|
+| tracker_id     | ID of the tracker (aka "object_id"). The tracker must be associated with the user whose hash is being used for the request, and not tariff-blocked. | int                                                 | 123456                |
+| from           | Start date/time for searching.                                                                                                                      | [date/time](../../../getting-started.md#data-types) | "2024-01-10 00:00:00" |
+| to             | End date/time for searching. Must be after `from` date.                                                                                             | [date/time](../../../getting-started.md#data-types) | "2024-01-20 00:00:00" | 
+| include_zones  | Optional. Default is `true`. If the value is `false`, zones IDs will be excluded.                                                                   | boolean                                             | true                  |
+| include_places | Optional. Default is `true`. If the value is `false`, places IDs will be excluded.                                                                  | boolean                                             | true                  |
+
+#### example
+
+For instance, if we need to obtain IDs of zones and places that contain at least one track point related to tracker 1683258 in January.
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/track/visit/list' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "from": "2024-01-01 00:00:00", "to": "2024-01-31 00:00:00"}'
+    ```
+
+#### response
+
+```json
+{
+  "success": true,
+  "value": {
+    "zones": [
+      54865,
+      35284
+    ],
+    "places": [
+      18404
+    ]
+  }
+}
+```
+
+* `zones` - int array. List of zones IDs.
+* `places` - int array. List of places IDs.
+
+#### errors
+
+* 204 - Entity not found – the tracker ID in your request may not match any trackers linked to the user account with this
+session hash. Ensure the correct tracker_id and hash of an appropriate user are used.

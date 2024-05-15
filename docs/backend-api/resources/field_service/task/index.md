@@ -401,7 +401,7 @@ If **offset** or **limit** is null then restrictions for pagination will not be 
 
 ##### sort: string[]?
 
-set of sort options. Each option is a pair of column name and sorting direction, e.g. ["label=acs", "address=desc", "employee=desc"].
+set of sort options. Each option is a pair of column name and sorting direction, e.g. ["label=asc", "address=desc", "employee=desc"].
 
 ##### sort fields
 

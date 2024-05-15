@@ -13,8 +13,10 @@ The documentation presented in several sections that are responsible for its own
 also has information regarding translation of the platform into different languages.
 * `Backend API` - describes all calls for working with information presented to users or sub-users in the UI. Tracking, 
 reports, tasks, and more.
-* `Panel-API` - describes all calls for working with information presented to administrators in the admin panel. 
+* `Panel API` - describes all calls for working with information presented to administrators in the admin panel. 
 Information about devices, tariff plans, users, and more.
+* `Eco Fleet API` - describes calls that provide information for efficient fuel management.
+* `Data Warehouse API` - describes calls for obtaining raw telematics data.
 * `Frontend` - provides information on customizing the welcome page and additional Weblocator and Delivery plugins.
 
 You can switch between sections using menu on the top of the page. On the right side of the menu, you can find a button 

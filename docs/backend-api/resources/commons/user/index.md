@@ -418,6 +418,6 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
     "remainder": "PT4M31.575S"
 }
 ```
-    * `timeout` - string. timeout between sending activation links in ISO-8601 duration format.
-    * `remainder` - string. remaining time to next try in ISO-8601 duration format
+    * `timeout` - string. timeout between sending activation links in ISO 8601 duration format.
+    * `remainder` - string. remaining time to next try in ISO 8601 duration format
 * 265 - Already done – user already activated and verified.

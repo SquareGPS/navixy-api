@@ -16,6 +16,8 @@ CRUD actions for user settings.
     "time_zone": "Europe/Amsterdam",
     "locale": "nl_NL",
     "measurement_system": "metric",
+    "date_format": "ddMMyyyy_dots",
+    "hour_mode": "TWENTY_FOUR_HOURS",
     "geocoder": "osm",
     "route_provider": "google",
     "translit": false
@@ -25,6 +27,8 @@ CRUD actions for user settings.
 * `time_zone` - [enum](../../../../getting-started.md#data-types). ISO timezone ID.
 * `locale` - [enum](../../../../getting-started.md#data-types). Locale code.
 * `measurement_system` - [enum](../../../../getting-started.md#data-types). Measurement system. Can be "metric", "imperial", "us", "metric_gal_us" or "nautical".
+* `date_format` - Optional [enum](../../../../getting-started.md#data-types). Date representation. Can be "ddMMyyyy_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
+* `hour_mode` - Optional [enum](../../../../getting-started.md#data-types). Time representation. Can be "TWENTY_FOUR_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
 * `geocoder` - [enum](../../../../getting-started.md#data-types). Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq".
 * `route_provider` - [enum](../../../../getting-started.md#data-types). Preferred route finding provider. Can be "google", "progorod" or "osrm".
 * `translit` - boolean. `true` if sms notification should be transliterated, `false` otherwise.

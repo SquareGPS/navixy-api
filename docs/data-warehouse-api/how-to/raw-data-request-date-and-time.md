@@ -17,7 +17,7 @@ The difference is that ISO 8601 is the default format for Data Warehouse API req
 
 ## ISO 8601
 
-!!! note "[ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) is an international standard of representing date and time-related data in unambigious form, both human- and machine readable. However, some programs, including Microsoft Excel, may not be able to read such timestamps, therefore it is optional."
+!!! note "[ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) is an international standard of representing date and time-related data in unambiguous form, both human- and machine-readable. However, some programs, including Microsoft Excel, may not be able to read such timestamps, therefore it is optional."
 
 Using this date/time standard when requesting raw data, you can specify the exact time for which you need the data, as 
 well as the time zone - not only as in the user account or UTC+0, but any other time zone of your choice, if required.
