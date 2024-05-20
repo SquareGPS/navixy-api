@@ -33,6 +33,8 @@ object structure and API calls to interact with users.
         "route_provider": "google",
         "time_zone": "America/New_York",
         "measurement_system" : "metric",
+        "date_format": "ddMMyyyy_dots",
+        "hour_mode": "TWENTY_FOUR_HOURS",
         "tin": "2345678239",
         "iec": "",
         "post_country": "USA",
@@ -92,6 +94,8 @@ object structure and API calls to interact with users.
     * `route_provider` - [enum](../../../getting-started.md#data-types). User's route provider. Can be "progorod", "google" or "osrm".
     * `time_zone` - [enum](../../../getting-started.md#data-types). User timezone name.
     * `measurement_system` - [enum](../../../getting-started.md#data-types). User's measurement system "metric", "imperial", "us", "metric_gal_us" or "nautical".
+    * `date_format` - Optional [enum](../../../getting-started.md#data-types). Date representation. Can be "ddMMyyyy_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
+    * `hour_mode` - Optional [enum](../../../getting-started.md#data-types). Time representation. Can be "TWENTY_FOUR_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
     * `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
     * `iec` - optional string. Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities.
     * `post_country` - string. Country part of user's post address.
@@ -239,6 +243,8 @@ Gets user information and some settings.
         "route_provider": "google",
         "time_zone": "America/New_York",
         "measurement_system" : "metric",
+        "date_format": "ddMMyyyy_dots",
+        "hour_mode": "TWENTY_FOUR_HOURS",
         "tin": "2345678239",
         "iec": "",
         "post_country": "USA",
