@@ -23,17 +23,27 @@ Find instructions on working with geofences of different types [here](../../../h
 
 ```json
 {
-    "id": 985472,
-    "type": "circle",
-    "label": "Zone name",
-    "address": "Karlsplatz, 2",
-    "color": "27A9E3",
-    "radius": 150,
-    "center": {
-        "lat": 48.200940,
-        "lng": 16.369856
+  "id": 985472,
+  "type": "circle",
+  "label": "Zone name",
+  "address": "Karlsplatz, 2",
+  "color": "27A9E3",
+  "radius": 150,
+  "center": {
+    "lat": 48.200940,
+    "lng": 16.369856
+  },
+  "bounds": {
+    "nw": {
+      "lat": 48.202289,
+      "lng": 16.367832
     },
-    "tags": [127, 15]
+    "se": {
+      "lat": 48.199591,
+      "lng": 16.371880
+    }
+  },
+  "tags": [127, 15]
 }
 ```
 
@@ -43,6 +53,7 @@ Find instructions on working with geofences of different types [here](../../../h
 * `color` - string. Geofence color in 3-byte RGB hex format.
 * `radius` - int. Circle radius in meters.
 * `center` - location object. Location of circle center.
+* `bounds` - object. North-west and south-east coordinates of the axis-aligned minimum bounding box.
 * `tags` - int array. Array of tag IDs.
 
 ***
@@ -51,12 +62,23 @@ Find instructions on working with geofences of different types [here](../../../h
 
 ```json
 {
-    "id": 124597,
-    "type": "polygon",
-    "label": "Geofence name",
-    "address": "Karlsplatz, 2",
-    "color": "27A9E3",
-    "tags": [1,236]
+  "id": 124597,
+  "type": "polygon",
+  "label": "Geofence name",
+  "address": "Karlsplatz, 2",
+  "color": "27A9E3",
+  "points": [<point>, ...],
+  "bounds": {
+    "nw": {
+      "lat": 48.202289,
+      "lng": 16.367832
+    },
+    "se": {
+      "lat": 48.199591,
+      "lng": 16.371880
+    }
+  },
+  "tags": [1, 236]
 }
 ```
 
@@ -64,6 +86,8 @@ Find instructions on working with geofences of different types [here](../../../h
 * `label` - string. Geofence label.
 * `address` - string. Geofence address.
 * `color` - string. Geofence color in 3-byte RGB hex format.
+* `points` - optional array of objects. [Geofence points](zone_point.md)
+* `bounds` - object. North-west and south-east coordinates of the axis-aligned minimum bounding box that contains all points.
 * `tags` - int array. Array of tag IDs.
 
 ***
@@ -74,13 +98,24 @@ Represents all points within certain distance to the specified polyline.
 
 ```json
 {
-    "id": 12345,
-    "type": "sausage",
-    "label": "Geofence name",
-    "address": "Karlsplatz, 2",
-    "color": "27A9E3",
-    "radius": 150,
-    "tags": [289]
+  "id": 12345,
+  "type": "sausage",
+  "label": "Geofence name",
+  "address": "Karlsplatz, 2",
+  "color": "27A9E3",
+  "radius": 150,
+  "points": [<point>, ...],
+  "bounds": {
+    "nw": {
+      "lat": 48.202289,
+      "lng": 16.367832
+    },
+    "se": {
+      "lat": 48.199591,
+      "lng": 16.371880
+    }
+  },
+  "tags": [289]
 }
 ```
 
@@ -89,7 +124,9 @@ Represents all points within certain distance to the specified polyline.
 * `address` - string. Geofence address.
 * `color` - string. Geofence color in 3-byte RGB hex format.
 * `radius` - int. Polyline radius in meters.
-* `tags` - int array. Array of tag IDs.                 
+* `points` - optional array of objects. [Geofence points](zone_point.md)
+* `bounds` - object. North-west and south-east coordinates of the axis-aligned minimum bounding box that contains all points with a radius.
+* `tags` - int array. Array of tag IDs.
 
 ***
 
@@ -134,8 +171,9 @@ For `batch` parameter:
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": null,
       "type": "circle",
       "label": "Geofence name",
@@ -146,9 +184,20 @@ For `batch` parameter:
         "lat": 48.2009935,
         "lng": 16.3699642
       },
+      "bounds": {
+        "nw": {
+          "lat": 48.202289,
+          "lng": 16.367832
+        },
+        "se": {
+          "lat": 48.199591,
+          "lng": 16.371880
+        }
+      },
       "tags": []
-    }],
-    "limit_exceeded": false 
+    }
+  ],
+  "limit_exceeded": false
 }
 ```
 
@@ -158,6 +207,7 @@ For `batch` parameter:
 * `color` - string. Geofence color in 3-byte RGB hex format.
 * `radius` - int. Circle radius in meters.
 * `center` - location object. Location of circle center.
+* `bounds` - object. North-west and south-east coordinates of the axis-aligned minimum bounding box.
 * `tags` - int array. Array of tag IDs.
 * `limit_exceeded` - boolean. `true` if given batch constrained by limit.
 
@@ -165,8 +215,9 @@ For `batch` parameter:
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": null,
       "label": "Geofence name",
       "address": "incorrect address",
@@ -176,13 +227,16 @@ For `batch` parameter:
         "lat": 0.0,
         "lng": 0.0
       },
-      "errors": [{
-        "parameter": "zone.center",
-        "error": "Location should be correct with 'lat' and 'lng' not null"
-      }],
-      "tags" : []
-    }],
-    "limit_exceeded": false  
+      "errors": [
+        {
+          "parameter": "zone.center",
+          "error": "Location should be correct with 'lat' and 'lng' not null"
+        }
+      ],
+      "tags": []
+    }
+  ],
+  "limit_exceeded": false
 }
 ```
 
@@ -225,8 +279,8 @@ Creates a new geofence.
 
 ```json
 {
-    "success": true,
-    "id": 1234567
+  "success": true,
+  "id": 1234567
 }
 ```
 
@@ -275,7 +329,9 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 #### response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### errors
@@ -285,17 +341,17 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
 ```json
 {
-    "success": false,
-    "status": {
-        "code": 203,
-        "description": "Delete entity associated with"
-    },
-    "entities": [
-        {
-            "type": "rules",
-            "ids": [12345, 23456]
-        }
-    ]
+  "success": false,
+  "status": {
+    "code": 203,
+    "description": "Delete entity associated with"
+  },
+  "entities": [
+    {
+      "type": "rules",
+      "ids": [12345, 23456]
+    }
+  ]
 }
 ```
 
@@ -337,20 +393,23 @@ Gets all user geofences.
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": 12345,
       "type": "sausage",
       "label": "Zone name",
       "address": "Karlsplatz, 2",
       "color": "27A9E3",
       "radius": 150,
+      "points": [<point>, ...],
       "tags": [289]
-    }]
+    }
+  ]
 }
 ```
 
-* `list` - array of objects. Geofence objects without points field.
+* `list` - array of objects. Geofence objects with optional points field.
 
 ***
 
@@ -385,20 +444,21 @@ Gets geofence by specified ID.
 
 ```json
 {
-    "success": true,
-    "value": {
-      "id": 12345,
-      "type": "sausage",
-      "label": "Zone name",
-      "address": "Karlsplatz, 2",
-      "color": "27A9E3",
-      "radius": 150,
-      "tags": [289]
-    }
+  "success": true,
+  "value": {
+    "id": 12345,
+    "type": "sausage",
+    "label": "Zone name",
+    "address": "Karlsplatz, 2",
+    "color": "27A9E3",
+    "radius": 150,
+    "points": [<point>, ...],
+    "tags": [289]
+  }
 }
 ```
 
-* `value` - Geofence object without points field.
+* `value` - Geofence object with optional points field.
 
 ***
 
@@ -473,7 +533,9 @@ which type is "polygon".
 #### response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### errors
@@ -547,8 +609,8 @@ if `dry_run=false`:
 
 ```json
 {
-    "success": true,
-    "list": [ 1, 2 ]
+  "success": true,
+  "list": [1, 2]
 }
 ```
 
