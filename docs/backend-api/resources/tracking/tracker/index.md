@@ -904,7 +904,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": "[999119, 999199, 9991911]"}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999119, 999199, 9991911]}'
     ```
 
 #### response
