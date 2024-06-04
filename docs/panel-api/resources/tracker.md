@@ -609,12 +609,15 @@ The following actions are allowed within the same admin account hierarchy:
 
 The maximum number of trackers to clone per operation is 1000. Labels from the original trackers are preserved.
 
+To clone trackers across the hierarchy, use the master admin panel's hash.
+
 *required permissions*: `trackers: "create"`.
 
-| name        | description                                                                                            | type      |
-|:------------|:-------------------------------------------------------------------------------------------------------|:----------|
-| tracker_ids | Tracker ID list. Each of these trackers must not be a clone and must be accessible to the target user. | int array |
-| user_id     | Target user ID that is accessible from the admin panel hierarchy.                                      | int       |
+| name            | description                                                                                                                                                                                                                                                                                                                                                                                                                      | type      |
+|:----------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------|
+| tracker_ids     | Tracker ID list. Each of these trackers must not be a clone and must be accessible to the target user.                                                                                                                                                                                                                                                                                                                           | int array |
+| user_id         | Target user ID that is accessible from the admin panel hierarchy.                                                                                                                                                                                                                                                                                                                                                                | int       |
+| ignore_existing | Optional (default = `false`). If `true`, allows performing a non-transactional cloning operation by creating clones if no clone conflicts are encountered within the operation. All already existing clones in the target user's account will not stop the operation, but the conflicting trackers from the tracker_ids will not be used in the cloning action and will be displayed in the response as `ignored_trackers` list. | boolean   |
 
 #### examples
 
@@ -623,26 +626,27 @@ The maximum number of trackers to clone per operation is 1000. Labels from the o
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_clone' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 998836, "tracker_ids": [134537, 458412]}'
+        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 998836, "tracker_ids": [134537, 458412, 99330], "ignore_existing": true}'
     ```
 
 === "HTTP GET"
 
     ```
-    {{ extra.api_example_url }}/panel/tracker/batch_clone?hash=fa7bf873fab9333144e171372a321b06&user_id=998836&tracker_ids=[134537,458412]
+    {{ extra.api_example_url }}/panel/tracker/batch_clone?hash=fa7bf873fab9333144e171372a321b06&user_id=998836&tracker_ids=[134537,458412]&ignore_existing=true
     ```
-
 #### response
 
-| name    | description                                  | type              |
-|:--------|:---------------------------------------------|:------------------|
-| list    | Resulting list of created clone tracker IDs. | array of integers |
-| success | Action's execution status.                   | boolean           |
+| name             | description                                                                                                                                         | type      |
+|:-----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:----------|
+| list             | Resulting list of created clone tracker IDs.                                                                                                        | int array |
+| success          | Action's execution status.                                                                                                                          | boolean   |
+| ignored_trackers | The trackers from the request that were ignored during the `batch_clone` operation due to the target user tracker conflicts (clones already exist). | int array |
 
 Example:
 
 ```json
 {
+  "ignored_trackers" : [ 99330 ],
   "list": [
     587469,
     587470
@@ -650,10 +654,9 @@ Example:
   "success": true
 }
 ```
-
 #### errors
 
-The operation is applied transactionally: it completes only if `"success": true` is received for the whole batch, otherwise, the cloning process for all trackers is rolled back.
+If the operation is applied transactionally meaning the `ignore_existing` = `false` or is not specified: it completes only if `"success": true` is received for the whole batch, otherwise, the cloning process for all trackers is rolled back.
 
 * [Standard errors](../../backend-api/getting-started.md#error-codes).
 * 7 - Invalid parameters. Size must be between 1 and 1000 - triggered when the clone request exceeds 1000 trackers.
