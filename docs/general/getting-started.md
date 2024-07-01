@@ -56,4 +56,4 @@ You can play a valuable role in improving the [Navixy Platform documentation](./
 
 If you notice that the user interface translation into your language is missing or contains errors, you can contribute to or correct the localization on the [CrowdIn platform](https://crowdin.com/). Refer to [this guide](./localizations/contributing.md) on how to do it.
 
-Additionally, the current documentation may contain errors or omissions. As it is publicly available on [GitHub]({{config.repo_url }}), you can independently contribute to its correction or expansion. Refer to [this guide](./get-involved.md) on how to do it.
+Additionally, the current documentation may contain errors or omissions. As it is publicly available on [GitHub]({{ config.repo_url }}), you can independently contribute to its correction or expansion. Refer to [this guide](./get-involved.md) on how to do it.
