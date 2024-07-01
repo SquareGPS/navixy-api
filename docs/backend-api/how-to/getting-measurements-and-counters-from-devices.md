@@ -200,24 +200,9 @@ request. It will reply with the next information:
             "update_time": "2021-06-01 15:23:03"
         },
         {
-            "field": "movement_state",
-            "value": "parked",
-            "update_time": "2021-06-01 15:23:03"
-        },
-        {
-            "field": "actual_track",
-            "value": 34112,
-            "update_time": "2021-06-01 12:58:03"
-        },
-        {
             "field": "output_status",
             "value": 3,
             "update_time": "2021-06-01 15:23:03"
-        },
-        {
-            "field": "tcp_status",
-            "value": 2,
-            "update_time": "2021-06-01 15:23:05"
         }
     ]
 }

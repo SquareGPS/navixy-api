@@ -199,16 +199,6 @@ Gets last values for all metering sensors, state values and counters on multiple
           "update_time": "2023-06-28 06:13:09"
         },
         {
-          "field": "movement_state",
-          "value": "parked",
-          "update_time": "2023-06-28 06:13:09"
-        },
-        {
-          "field": "tcp_status",
-          "value": 2,
-          "update_time": "2023-06-28 06:13:57"
-        },
-        {
           "field": "output_status",
           "value": 0,
           "update_time": "2023-06-28 06:13:09"
@@ -231,19 +221,9 @@ Gets last values for all metering sensors, state values and counters on multiple
           "update_time": "2023-06-28 06:13:23"
         },
         {
-          "field": "movement_state",
-          "value": "parked",
-          "update_time": "2023-06-28 06:13:23"
-        },
-        {
           "field": "output_status",
           "value": 0,
           "update_time": "2023-06-28 06:13:23"
-        },
-        {
-          "field": "tcp_status",
-          "value": 2,
-          "update_time": "2023-06-28 06:14:07"
         }
       ],
       "counters": [
