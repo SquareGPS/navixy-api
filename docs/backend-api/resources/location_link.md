@@ -3,10 +3,10 @@ title: Geo Links
 description: API calls for working with Geo Links. These are special sessions to share the location of mobile objects.
 ---
 
-# Geo Links info
+# Geo Links
 
 API calls for working with Geo Links. These are special sessions to share the location of mobile objects.
-This is a new API replacing [Weblocator](../../commons/user/session/weblocator.md).
+This is a new API replacing [Weblocator](commons/user/session/weblocator.md).
 
 ***
 
@@ -313,7 +313,7 @@ Returns a list of a user's links.
 | name       | description                                                                                                                                                                 | type             |
 |:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------|
 | filter     | Optional. Filter for all fields. If used with conditions, both filter and conditions must match for every returned links.                                                   | string           |
-| conditions | Optional. Search conditions to apply to list. Array of search conditions, see [Search conditions](../../commons/entity/search_conditions.md). Possible fields listed below. | array of objects |
+| conditions | Optional. Search conditions to apply to list. Array of search conditions, see [Search conditions](commons/entity/search_conditions.md). Possible fields listed below. | array of objects |
 | offset     | Optional. Offset, default is 0.                                                                                                                                             | int              |
 | limit      | Optional. Limit, default is 10,000.                                                                                                                                         | int              |
 | sort       | Optional. Each option is a pair of field name and sorting direction, e.g. `["creator=asc", "id=desc"]`. Possible fields listed below.                                       | string array     |
