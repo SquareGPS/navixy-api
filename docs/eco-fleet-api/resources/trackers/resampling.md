@@ -3,11 +3,11 @@ title: Fuel data resampling
 ---
 
 # Fuel data resampling
-!!! note "Navixy Eco Fleet Lab has developed a solution for comprehensive fuel data analysis. This method regenerates data sets which will be beneficial for variety of exercises, enabling researchers, developers, and diagnostics experts to leverage the **processed data**."
+!!! note "Navixy Eco Fleet Lab has developed a solution for complex fuel data analysis. This method regenerates data sets which will be beneficial for variety of exercises, enabling researchers, developers, and diagnostics experts to leverage the **processed data**."
 
 **Diagnostic process** is an important procedure undertaken by numerous partners and investigators. Its primary purpose is to identify the underlying causes, which is essential for efficient fuel management by identifying any abnormalities. For example, they analyze key events - drains and refueling for fraud or look for a reason for the appearance of noise in the fuel data.
 
-When partners or integrators incorporate fuel-related data into third-party systems for **further analysis and processing, including machine learning**, it can be highly effective in identifying behavioral patterns and detecting exceptions. This allows for more efficient investigations and enhances overall data processing capabilities.
+When partners or integrators incorporate fuel data into third-party systems for **further analysis and processing, including machine learning**, it can be highly effective in identifying behavioral patterns and detecting exceptions. This allows for more efficient investigations and enhances overall data processing capabilities.
 
 Effective data management relies on **accurate and synchronized raw data**. However, inconsistencies in different data sets (i.e. position, speed, and fuel level) across various timeframes can pose challenges.
 
@@ -18,7 +18,7 @@ To tackle the challenges posed by incomplete or inconsistent data, we utilize ad
 ## data_resampling
 ### Description
 
-The response is presented in a convenient CSV table format, incorporating columns below:
+The API response is presented in a convenient CSV table format, incorporating columns below:
 
 * Time - timestamp (depending on the timezone the tracker is located)
 * [FUEL_SENSOR_NAME] - Fuel level (The column name is derived based on the sensor name. There could be more than 1 column)
