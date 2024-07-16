@@ -7,7 +7,7 @@ title: Fuel data resampling
 
 **Diagnostic process** is an important procedure undertaken by numerous partners and investigators. Its primary purpose is to identify the underlying causes, which is essential for efficient fuel management by identifying any abnormalities. For example, they analyze key events - drains and refueling for fraud or look for a reason for the appearance of noise in the fuel data.
 
-When partners or integrators incorporate fuel-related data into third-party systems for **further analysis and processing, including machine learning**, it can be highly effective in identifying behavioral patterns and detecting exceptions. This allows for more efficient investigations and enhances overall data processing capabilities.
+When partners or integrators incorporate fuel data into third-party systems for **further analysis and processing, including machine learning**, it can be highly effective in identifying behavioral patterns and detecting exceptions. This allows for more efficient investigations and enhances overall data processing capabilities.
 
 Effective data management relies on **accurate and synchronized raw data**. However, inconsistencies in different data sets (i.e. position, speed, and fuel level) across various timeframes can pose challenges.
 
