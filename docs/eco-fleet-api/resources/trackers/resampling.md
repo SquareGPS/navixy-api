@@ -18,7 +18,7 @@ To tackle the challenges posed by incomplete or inconsistent data, we utilize ad
 ## data_resampling
 ### Description
 
-The response is presented in a convenient CSV table format, incorporating columns below:
+The API response is presented in a convenient CSV table format, incorporating columns below:
 
 * Time - timestamp (depending on the timezone the tracker is located)
 * [FUEL_SENSOR_NAME] - Fuel level (The column name is derived based on the sensor name. There could be more than 1 column)
