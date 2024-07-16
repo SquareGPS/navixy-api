@@ -3,7 +3,7 @@ title: Fuel data resampling
 ---
 
 # Fuel data resampling
-!!! note "Navixy Eco Fleet Lab has developed a solution for comprehensive fuel data analysis. This method regenerates data sets which will be beneficial for variety of exercises, enabling researchers, developers, and diagnostics experts to leverage the **processed data**."
+!!! note "Navixy Eco Fleet Lab has developed a solution for complex fuel data analysis. This method regenerates data sets which will be beneficial for variety of exercises, enabling researchers, developers, and diagnostics experts to leverage the **processed data**."
 
 **Diagnostic process** is an important procedure undertaken by numerous partners and investigators. Its primary purpose is to identify the underlying causes, which is essential for efficient fuel management by identifying any abnormalities. For example, they analyze key events - drains and refueling for fraud or look for a reason for the appearance of noise in the fuel data.
 
