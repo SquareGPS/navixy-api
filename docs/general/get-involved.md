@@ -66,30 +66,32 @@ After review and pull request will be merged, and you can drop a fork.
 This method involves installing the Git, IDE, Python and 
 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) on yours PC.
 
-1. Install [Python 3](https://www.python.org/downloads/).
+1. Install [Python 3.7.9](https://www.python.org/downloads/release/python-379/). It may not work properly with the newer versions
 2. Install [Git client](https://git-scm.com/downloads).
 3. Install an IDE, for example [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community edition would be enough).
-4. Create a fork [of the repository]({{ config.repo_url }}) and cloning it to local project. 
+4. Create a fork [of the repository]({{ config.repo_url }}) and cloning it to local project.
    In IDEA: `File` -> `New` -> `Project from version control`;
-5. Install [mkdocs-material](https://squidfunk.github.io/mkdocs-material) and other dependencies. In console:
+5. Install [mkdocs-material](https://squidfunk.github.io/mkdocs-material) and other dependencies. Send commands one by one in console (open console as administrator if you use Windows):
    ```sh
-   cd /path/to/project
+   cd /path/to//project/on/your/pc
    mkdir venv
    python -m venv ./venv
    pip3 install -r requirements.txt
    ```
+   Requirements installation will take some time, so wait for the end of process.
 6. Start the documentation server locally. In console:
    ```sh
-   cd /path/to/project
+   cd /path/to//project/on/your/pc
    source venv/bin/activate
-   # Windows: \venv\Scripts\activate.bat
+   In Windows use the full path to the file activate.bat on your PC: C:users\project\venv\Scripts\activate.bat
    mkdocs serve --dirtyreload
    ```
-7. To check that the server has started, open in a browser: http://localhost:8000
-8. Create a local git branch in project.
+   Don't close the console.
+7. To check that the server has started, open in a browser: http://localhost:8000. The console must be opened.
+8. Create a local git branch in project. Don't use the master branch.
 9. Make changes in documentation and test it in browser. 
    Read the [introduction](#introduction-into-mkdocs).
-10. Commit and push changes. Please, use English in commit message.
+10. Commit and push changes into your fork. Please, use English in commit message.
 11. Create a Pull Request (PR) on GitHub from your fork. Please, use English in PR description.
 12. After the PR has been reviewed and merged to upstream you can remove
     branch and rebase a fork to the upstream.
