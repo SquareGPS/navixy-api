@@ -73,7 +73,7 @@ This method involves installing the Git, IDE, Python and
    In IDEA: `File` -> `New` -> `Project from version control`;
 5. Install [mkdocs-material](https://squidfunk.github.io/mkdocs-material) and other dependencies. Send commands one by one in console (open console as administrator if you use Windows):
    ```sh
-   cd /path/to//project/on/your/pc
+   cd /path/to/project/on/your/pc
    mkdir venv
    python -m venv ./venv
    pip3 install -r requirements.txt
@@ -81,7 +81,7 @@ This method involves installing the Git, IDE, Python and
    Requirements installation will take some time, so wait for the end of process.
 6. Start the documentation server locally. In console:
    ```sh
-   cd /path/to//project/on/your/pc
+   cd /path/to/project/on/your/pc
    source venv/bin/activate
    In Windows use the full path to the file activate.bat on your PC: C:users\project\venv\Scripts\activate.bat
    mkdocs serve --dirtyreload
