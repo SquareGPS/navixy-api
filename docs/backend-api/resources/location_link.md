@@ -6,7 +6,7 @@ description: API calls for working with Geo Links. These are special sessions to
 # Geo Links
 
 API calls for working with Geo Links. These are special sessions to share the location of mobile objects.
-This is a new API replacing [Weblocator](commons/user/session/weblocator.md).
+This is a new API replacing Weblocator.
 
 ***
 
