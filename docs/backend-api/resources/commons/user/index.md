@@ -178,10 +178,12 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 ```json
 {
     "success": true,
+    "type": "authenticated",
     "hash": "22eac1c27af4be7b9d04da2ce1af111b"
 }
 ```
-
+* `type` - [enum](../../../getting-started.md#data-types). If `authenticated`, then the session is ready to use.
+  If `second_factor_required`, then the session can be used only for [authentication code](./auth/code.md) actions.
 * `hash` - string. Session hash.
 
 #### errors
