@@ -21,4 +21,4 @@ along with API and technical documentation for developers and partners.
 
 Our extensive range of API calls and methods enables you to develop applications that easily retrieve necessary information from the platform.
 By using and processing this data, you can create customized solutions that meet the specific needs of your customers and partners.
-A more personalized solution can attract more customers, enhance their loyalty, and drive business growth.
+A more personalized solution can attract more customers, enhance their loyalty, and drive business growth..
