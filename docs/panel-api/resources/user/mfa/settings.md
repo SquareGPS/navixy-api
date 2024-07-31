@@ -1,20 +1,8 @@
 # Multi-factor authentication settings
 
-## MFA settings object
-
-```json
-{
-  "is_enabled": true,
-  "accepted_types": ["email_code"]
-}
-```
-
-* `is_enabled` - boolean. If true, second factor will be requested after successfully entering correct login and password.
-* `accepted_types` - array of [factor types](#factor-type). Which factors will be accepted by the server. Cannot be empty.
-
-### Factor type
-
-* `email_code` - a multi-digit code sent by email.
+!!! warning "Work in progress"
+    This API is a work in progress and may change in future releases.
+    In this version allowing MFA to a user automatically enables it for them.
 
 ## API actions
 
@@ -49,17 +37,17 @@ Reads user's MFA settings.
 {
   "success": true,
   "value": {
-    "is_enabled": true,
-    "accepted_types": ["email_code"]
+    "type": "allowed",
+    "factor_types": ["email"]
   }
 }
 ```
 
-* `value` - optional [MFA settings object](#mfa-settings-object).
+* `value` - optional [MFA settings](#mfa-settings).
 
 #### errors
 
-* 201 – Not found in the database - if specified user does not exist or belongs to different dealer.
+* 201 – Not found in the database — if the specified user does not exist or belongs to a different dealer.
 
 ### update
 
@@ -69,10 +57,10 @@ Updates users' MFA settings.
 
 #### parameters
 
-| name     | description                | type                                        |
-|:---------|:---------------------------|:--------------------------------------------|
-| target   | Target of the update.      | [Update target](#update-target)             |
-| settings | MFA settings for the user. | [MFA settings object](#mfa-settings-object) |
+| name     | description                | type                            |
+|:---------|:---------------------------|:--------------------------------|
+| target   | Target of the update.      | [Update target](#update-target) |
+| settings | MFA settings for the user. | [MFA settings](#mfa-settings)   |
 
 ##### Update target
 
@@ -89,7 +77,7 @@ Updates users' MFA settings.
     curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/update' \
         -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
         -H 'Content-Type: application/json' \
-        -d '{ "target": { "type": "all" }, "settings": { "is_enabled": true, "accepted_types": ["email_code"] } }'
+        -d '{ "target": { "type": "all" }, "settings": { "type": "disallowed" } }'
     ```
 
 #### response
@@ -102,7 +90,7 @@ Updates users' MFA settings.
 
 #### errors
 
-* 201 – Not found in the database - if specified user does not exist or belongs to different dealer.
+* 201 – Not found in the database — if the specified user does not exist or belongs to a different dealer.
 
 ### read default
 
@@ -125,13 +113,12 @@ Reads default MFA settings which are applied to the newly created users.
 {
   "success": true,
   "value": {
-    "is_enabled": true,
-    "accepted_types": ["email_code"]
+    "type": "disallowed"
   }
 }
 ```
 
-* `value` - optional [MFA settings object](#mfa-settings-object).
+* `value` - optional [MFA settings](#mfa-settings).
 
 ### update default
 
@@ -141,9 +128,9 @@ Updates default MFA settings which are applied to the newly created users.
 
 #### parameters
 
-| name     | description                 | type                                        |
-|:---------|:----------------------------|:--------------------------------------------|
-| settings | MFA settings for the users. | [MFA settings object](#mfa-settings-object) |
+| name     | description                 | type                          |
+|:---------|:----------------------------|:------------------------------|
+| settings | MFA settings for the users. | [MFA settings](#mfa-settings) |
 
 #### example
 
@@ -153,7 +140,7 @@ Updates default MFA settings which are applied to the newly created users.
     curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/default/update' \
         -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
         -H 'Content-Type: application/json' \
-        -d '{ "settings": { "is_enabled": true, "accepted_types": ["email_code"] } }'
+        -d '{ "settings": { "type": "disallowed" } }'
     ```
 
 #### response
@@ -163,3 +150,26 @@ Updates default MFA settings which are applied to the newly created users.
   "success": true
 }
 ```
+
+## Types
+
+### MFA settings
+
+```json
+{
+  "type": "allowed",
+  "factor_types": ["email"]
+}
+```
+
+* `type` - [settings action type](#settings-action-type).
+* `factor_types` - optional array of [factor types](#factor-type). Required if `type` is `allowed`.
+
+### Settings action type
+
+* `allowed` - MFA with specified types is allowed for the users.
+* `disallowed` - MFA is disallowed for the users.
+
+### Factor type
+
+* `email` - a multi-digit code sent by email.
