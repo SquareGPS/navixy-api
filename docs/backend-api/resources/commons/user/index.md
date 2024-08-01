@@ -149,7 +149,7 @@ Available only to master users.
 
 ### auth
 
-Tries to authenticate user and get hash.
+Tries to authenticate the user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
@@ -182,7 +182,11 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
     "hash": "22eac1c27af4be7b9d04da2ce1af111b"
 }
 ```
-* `type` - [enum](../../../getting-started.md#data-types). If `authenticated`, then the session is ready to use. If `second_factor_required`, then the session can be used only for [authentication code](./auth/code.md) actions.
+
+* `type` - [enum](../../../getting-started.md#data-types).
+If `authenticated`, then the session is ready to use. 
+If `second_factor_required`, then the session can be used only for [authentication code](./auth/code.md) actions.
+* `factor_type` - [enum](../../../getting-started.md#data-types). Present if type is `second_factor_required`.
 * `hash` - string. Session hash.
 
 #### errors
