@@ -298,7 +298,7 @@ main
 .markdown-section h1
 {
     font-size: 60px;
-    font-weight: 300;
+    font-weight: 600;
 
     letter-spacing: -.5px;
 
@@ -351,7 +351,7 @@ main
 
 .markdown-section h1 a
 {
-    font-weight: 300;
+    font-weight: 600;
 }
 
 .markdown-section figure,
