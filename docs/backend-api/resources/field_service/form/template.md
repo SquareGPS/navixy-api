@@ -101,7 +101,7 @@ Gets all form templates belonging to current master user.
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `create`

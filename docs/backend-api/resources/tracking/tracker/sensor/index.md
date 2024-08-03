@@ -154,7 +154,7 @@ Some requirements:
 * There can be no more than 100 value titles.
 * All values must be unique within `value_titles`.
 
-Described work with virtual sensors in our [instructions](/backend-api/guides/data-retrieval/sensor-data.md).
+Described work with virtual sensors in our [instructions](../../../../guides/data-retrieval/sensor-data.md).
 
 ## API actions
 
@@ -440,13 +440,13 @@ It can't be used with discrete sensor.
 
 #### Parameters
 
-| name       | description                                                                                                                                                                      | type                                                   | format                |
-|:-----------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------|:----------------------|
-| tracker_id | ID of the base tracker (aka "object_id") from which you want to read sensor's data. Tracker must belong to authorized user and not be blocked.                                   | int                                                    | 123456                |
-| sensor_id  | Sensor ID.                                                                                                                                                                       | int                                                    | 234567                |
-| from       | Start date and time for searching.                                                                                                                                               | [date/time](../../../../getting-started/introduction.md#data-types) | "2022-02-28 00:00:00" |
-| to         | End date and time for searching. Must be after `from` date. Maximum period is `maxReportTimeSpan`, default 30 days.                                                              | [date/time](../../../../getting-started/introduction.md#data-types) | "2022-03-28 23:59:00" |
-| raw_data   | If `true` then the response will contain raw data without any calibration and multiplication. Affects only `metering` sensors. Default value is false for backward compatibility. | boolean                                                | false                 |
+| name       | description                                                                                                                                                                       | type                                                                | format                |
+|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:----------------------|
+| tracker_id | ID of the base tracker (aka "object_id") from which you want to read sensor's data. Tracker must belong to authorized user and not be blocked.                                    | int                                                                 | 123456                |
+| sensor_id  | Sensor ID.                                                                                                                                                                        | int                                                                 | 234567                |
+| from       | Start date and time for searching.                                                                                                                                                | [date/time](../../../../getting-started/introduction.md#data-types) | "2022-02-28 00:00:00" |
+| to         | End date and time for searching. Must be after `from` date. Maximum period is `maxReportTimeSpan`, default 30 days.                                                               | [date/time](../../../../getting-started/introduction.md#data-types) | "2022-03-28 23:59:00" |
+| raw_data   | If `true` then the response will contain raw data without any calibration and multiplication. Affects only `metering` sensors. Default value is false for backward compatibility. | boolean                                                             | false                 |
 
 #### Example
 

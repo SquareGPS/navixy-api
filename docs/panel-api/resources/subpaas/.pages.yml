@@ -1,4 +1,4 @@
 nav:
+  - SubPaaS actions: index.md
   - Password: password.md
-  - Index: index.md
   - Session: session.md

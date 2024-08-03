@@ -7,7 +7,7 @@ description: API call to change subpaas password.
 
 API base path: `panel/subpaas/password`.
 
-API call to change subpaas password.
+API call to change the password of a Subdealer (SubPaaS) account.
 
 
 ## API actions
@@ -16,7 +16,7 @@ API base path: `panel/subpaas/password`.
 
 ### `change` 
 
-Changes subpaas password.
+Changes SubPaaS password.
 
 #### Parameters
 

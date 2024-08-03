@@ -2,7 +2,6 @@
 title: Getting Started
 description: Getting started with Navixy Backend API
 ---
-
 Welcome to the Navixy Backend API documentation. This guide is designed to help developers integrate third-party solutions with the Navixy platform. Here, you will find comprehensive information on API calls, workflows, and best practices.
 
 ## Overview

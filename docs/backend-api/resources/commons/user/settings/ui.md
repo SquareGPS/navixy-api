@@ -59,7 +59,7 @@ When nonexistent key provided:
 
 #### Errors
 
-* [General](../../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `update`
@@ -81,6 +81,6 @@ Sets setting value.
 
 #### Errors
 
-* [General](../../../../getting-started/introduction.md#error-codes) types.
+* [General](../../../../getting-started/errors.md#error-codes) types.
 * 268 - over quota. The amount of storage available for the user for these settings has been exhausted. New settings 
 cannot be added until the amount of stored data has been reduced.

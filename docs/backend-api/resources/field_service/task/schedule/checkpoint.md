@@ -48,7 +48,7 @@ at least two checkpoints.
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `transmute`
@@ -85,4 +85,4 @@ Transmutes a checkpoint to task and delete its route and other checkpoints in th
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.

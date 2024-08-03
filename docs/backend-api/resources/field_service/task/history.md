@@ -81,4 +81,4 @@ Returns history for the task with the specified ID.
 
 #### Errors
 
-* [General](../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.

@@ -76,7 +76,7 @@ Only session `hash`.
 
 #### Errors
 
-[General](../../../../backend-api/getting-started/introduction.md#error-codes) types only.
+[General](../../../../backend-api/getting-started/errors.md#error-codes) types only.
 
 
 ### `update`
@@ -115,4 +115,4 @@ Updates notification settings for the current dealer.
 
 #### Errors
  
-[General](../../../../backend-api/getting-started/introduction.md#error-codes) types only.
+[General](../../../../backend-api/getting-started/errors.md#error-codes) types only.

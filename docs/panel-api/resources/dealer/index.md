@@ -5,7 +5,7 @@ description: API call to get information about a dealer.
 
 # Dealer get info
 
-API call to get information about a dealer.
+API call to get information about a Dealer.
 
 
 ## API actions
@@ -14,7 +14,7 @@ API path: `panel/dealer/`.
 
 ### get_info
 
-Gets information about dealer's tariff, balance, available features, etc.
+Gets information about dealer's plan, balance, available features, etc.
  
 *required permissions*: `base: "get_dealer_info"`.
 
@@ -102,10 +102,10 @@ Only session `hash`.
 ```
 
 * `id` - int. Dealer id.
-* `parent_dealer_id` - int. An ID of parent dealer.
+* `parent_dealer_id` - int. An ID of parent Dealer.
 * `contract_type` - [enum](../../../backend-api/getting-started/introduction.md#data-types). Contract type: "PARTNER", "AGENT" or "PAAS".
-* `tariff_id` - int. PaaS tariff id.
-* `tariff` - PaaS tariff info.
+* `tariff_id` - int. PaaS plan id.
+* `tariff` - PaaS plan info.
     * `license_price` - nullable double. Price per license.
     * `min_license_pay` - nullable double. Minimum license payment.
     * `trial` - boolean. If `true` the plan is Trial.

@@ -75,4 +75,4 @@ Get all tasks and routes that will be created by schedule.
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.

@@ -61,7 +61,7 @@ If the request is successful, the response will contain a list of trackers assoc
 }
 ```  
 
-If an account has a large number of trackers and you only need specific ones, you can add an optional filter parameter to the request to return only matching records.
+If an account has a large number of trackers, and you only need specific ones, you can add an optional filter parameter to the request to return only matching records.
 
 This parameter has the following constraints:
 

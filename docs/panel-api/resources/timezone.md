@@ -66,4 +66,4 @@ Gets information about all supported timezones for the specified locale. Does no
 
 #### Errors
 
-[General](../../backend-api/getting-started/introduction.md#error-codes) types only.
+[General](../../backend-api/getting-started/errors.md#error-codes) types only.

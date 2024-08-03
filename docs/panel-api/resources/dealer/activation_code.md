@@ -5,7 +5,7 @@ description: API calls for interacting with activation codes used for device reg
 
 # Activation code
 
-API calls for interacting with activation codes used for device registration.
+API calls for managing activation codes used in device activation.
 
 
 ## Activation code object
@@ -21,18 +21,20 @@ API calls for interacting with activation codes used for device registration.
     "activated": false,
     "activation_date": null,
     "device_id": 0,
-    "tariff_name": "Tracker demo tariff"
+    "tariff_name": "Tracker demo plan"
 }
 ```
 
-* `tariff_id` - int. A tariff ID.
-* `bonus_amount` - int. Bonus that will be added to a user's balance when the device with this code activates.
-* `free_days` - int. Count of free days.
-* `money_amount` - int. Money that will be added to a user's balance.
-* `code` - string. A code value.
-* `activated` - boolean. If `true` it is activated.
-* `device_id` - int. A device ID which activated with this code. It will be `0` if code not activated yet.
-* `tariff_name` - string. Tariff name.
+Here's the corrected markdown file for clarity:
+
+* `tariff_id` - int. The ID of the plan.
+* `bonus_amount` - int. The bonus amount that will be added to the user's balance when the device with this code is activated.
+* `free_days` - int. The number of free days.
+* `money_amount` - int. The amount of money that will be added to the user's balance.
+* `code` - string. The code value.
+* `activated` - boolean. Indicates whether the code is activated (`true`) or not.
+* `device_id` - int. The ID of the device activated with this code. It will be `0` if the code is not activated yet.
+* `tariff_name` - string. The name of the plan.
 
 
 ## API actions
@@ -41,8 +43,7 @@ API base path: `panel/dealer/activation_code`.
 
 ### `create`
 
-Creates specified `count` of activation codes with passed `tariff_id`, `bonus_amount` and `free_days`. Returns count of 
-created codes.
+Creates the specified number (`count`) of activation codes with the given `tariff_id`, `bonus_amount`, and `free_days`. Returns the count of created codes.
 
 *required permissions*: `activation_code: ["read", "create"]`.
 
@@ -193,4 +194,4 @@ Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes whi
 
 #### Errors
 
-* 201 - Not found in the database - when a tariff with `tariff_id` not found for a current dealer.
+* 201 - Not found in the database - when a plan with `tariff_id` is not found for the current dealer.

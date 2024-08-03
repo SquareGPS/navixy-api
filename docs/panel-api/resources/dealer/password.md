@@ -5,7 +5,7 @@ description: API call to update dealer's password.
 
 # Password
 
-API call to update dealer's password.
+API call to update Dealer's password.
 
 
 ## API actions
@@ -14,7 +14,7 @@ API base path: `panel/dealer/password`.
 
 ### `update`
 
-Changes password for the authorized dealer. 
+Changes password for the authorized Dealer. 
 
 *required permissions*: `password: "update"`.
 

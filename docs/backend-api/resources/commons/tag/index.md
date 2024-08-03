@@ -82,7 +82,7 @@ Creates a new tag.
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `delete`
@@ -170,7 +170,7 @@ Gets all tags belonging to user with optional filtering.
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `search`
@@ -227,7 +227,7 @@ Search entities that bound with all of specified tags.
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `update`

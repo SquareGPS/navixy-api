@@ -282,7 +282,7 @@ About user object structure see [above](#user-object-structure).
 
 #### Errors
 
-* [General](../../../backend-api/getting-started/introduction.md#error-codes) types only.
+* [General](../../../backend-api/getting-started/errors.md#error-codes) types only.
 
 
 ### `list`
@@ -371,7 +371,7 @@ entities will be returned only if filter string is contained within one of the f
 
 #### Errors
 
-* [General](../../../backend-api/getting-started/introduction.md#error-codes) types only.
+* [General](../../../backend-api/getting-started/errors.md#error-codes) types only.
 
 
 ### `read`

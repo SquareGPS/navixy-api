@@ -74,4 +74,4 @@ Only session `hash`.
 
 #### Errors
 
-[General](../../backend-api/getting-started/introduction.md#error-codes) types only.
+[General](../../backend-api/getting-started/errors.md#error-codes) types only.

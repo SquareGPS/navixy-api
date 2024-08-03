@@ -16,7 +16,7 @@ User of **dealer** can switch tracker from the plan **t1** to plan **t2** if:
 5. **t2.active** = **1**, i.e. new plan is **active** (plan's option "Allow users to switch to this plan independently" in **panel** is set **on**).
 6. **t1.grouping** = **t2.grouping**, i.e. user can change tariff only within one group of tariffs.
 7. **t2.device** = **tracker**, i.e. new plan must be for trackers.
-8. The new plan is [available to user's legal type](/backend-api/resources/billing/tariff/index.md#plan).
+8. The new plan is [available to user's legal type](./index.md#plan).
 
 User's **effective dealer** is
 
@@ -35,7 +35,7 @@ Changes plan of tracker (with `tracker_id`) to new plan (with `tariff_id`).
 **required sub-user rights**: `admin` (available only to master users).
 
 | name       | description                                                                                    | type |
-| :--------- | :--------------------------------------------------------------------------------------------- | :--- |
+|:-----------|:-----------------------------------------------------------------------------------------------|:-----|
 | tracker_id | ID of a tracking device (aka "object_id"). The tracking device must belong to authorized user. | int  |
 | tariff_id  | If of the new plan.                                                                            | int  |
 
@@ -127,9 +127,9 @@ List plans on which user can switch the passed tracker (even when tariff last ch
 }
 ```
 
-* `list` - array of objects. List of [plan objects](/backend-api/resources/billing/tariff/index.md#plan-object).
+* `list` - array of objects. List of [plan objects](./index.md#plan-object).
 * `days_to_next_change` - int. Days to the next free change, or 0 if free change available.
 
 #### Errors
 
-* [General](../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.

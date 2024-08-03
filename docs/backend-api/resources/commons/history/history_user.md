@@ -21,13 +21,13 @@ Added more information about this API call usage in our [guide](../../../guides/
 
 #### Parameters
 
-| name      | description                                                                                      | type                                                       |
-|:----------|:-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
+| name      | description                                                                                      | type                                                                    |
+|:----------|:-------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|
 | from      | Start date/time for searching.                                                                   | string [date/time](../../../getting-started/introduction.md#data-types) |
 | to        | End date/time for searching. Must be after "from" date.                                          | string [date/time](../../../getting-started/introduction.md#data-types) |
-| events    | Optional. Default: all. List of history types.                                                   | string array                                               |
-| limit     | Optional. Default: [history.maxLimit](../dealer.md). Max count of entries in result.             | int                                                        |
-| ascending | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`. | boolean                                                    |
+| events    | Optional. Default: all. List of history types.                                                   | string array                                                            |
+| limit     | Optional. Default: [history.maxLimit](../dealer.md). Max count of entries in result.             | int                                                                     |
+| ascending | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`. | boolean                                                                 |
 
 If `events` (event types) not passed then list all event types.
 

@@ -1,11 +1,11 @@
 nav:
-  - Tracker: tracker.md
-  - Gateways: gateways.md
+  - Dealer (PaaS): dealer
+  - Subdealer (SubPaaS): subpaas
   - Account: account.md
-  - Timezone: timezone.md
-  - Tariff: tariff.md
-  - Equipment: equipment.md
-  - Order: order.md
   - User: user
-  - Dealer: dealer
-  - Subpaas: subpaas
+  - Tracker: tracker.md
+  - Equipment: equipment.md
+  - Plan: tariff.md
+  - Gateways: gateways.md
+  - Timezone: timezone.md
+  - Order: order.md

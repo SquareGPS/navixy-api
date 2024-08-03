@@ -5,7 +5,7 @@ description: API call to create a subpaas session.
 
 # Subpaas session key
 
-API call to create a subpaas session key.
+API call to create a SubPaaS session key.
 
 
 ## API actions
@@ -14,7 +14,7 @@ API base path: `panel/subpaas/session`.
 
 ### `create`
 
-Creates a subpaas session.
+Creates a SubPaaS session.
 
 #### Parameters
 
@@ -51,8 +51,8 @@ Creates a subpaas session.
 #### Errors
 
 * 13 –
-    * The dealer is not paas.
-    * The dealer has different status than `NOT_BLOCKED`.
-    * The dealer's tariff does not allow subpaases.
-    * Found subpaas is not in `NOT_BLOCKED` status.
+    * The dealer is not PaaS type.
+    * The dealer has a status other than `NOT_BLOCKED`.
+    * The dealer's tariff does not allow SubPaaS accounts.
+    * The found SubPaaS is not in `NOT_BLOCKED` status.
 

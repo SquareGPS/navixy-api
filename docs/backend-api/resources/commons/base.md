@@ -44,7 +44,7 @@ Only API key `hash`.
 
 #### Errors
 
-* [General](../../getting-started/introduction.md#error-codes) types only.
+* [General](../../getting-started/errors.md#error-codes) types only.
 
 
 ### `send_email`
@@ -79,4 +79,4 @@ Sends email from the platform to any email address with specified title and text
 
 #### Errors
 
-* [General](../../getting-started/introduction.md#error-codes) types only.
+* [General](../../getting-started/errors.md#error-codes) types only.

@@ -149,7 +149,7 @@ Update current user's settings.
 
 #### Errors
 
-* [General](../../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `file_storage/update`

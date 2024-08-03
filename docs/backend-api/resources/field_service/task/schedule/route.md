@@ -134,7 +134,7 @@ Creates route schedule with checkpoints.
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types.
+[General](../../../../getting-started/errors.md#error-codes) types.
 
 
 ### `delete`
@@ -173,7 +173,7 @@ Deletes route schedule with checkpoints.
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types.
+[General](../../../../getting-started/errors.md#error-codes) types.
 
 
 ### `update`
@@ -207,4 +207,4 @@ If checkpoint is being updated, then it should have an ID. If old checkpoint is 
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types.
+[General](../../../../getting-started/errors.md#error-codes) types.

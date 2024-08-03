@@ -216,7 +216,7 @@ Get checkpoints belonging to user with given IDs
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `read`

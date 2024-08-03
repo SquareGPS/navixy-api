@@ -62,7 +62,7 @@ Prepended with minus and delimited with comma list means that all categories all
 
 #### Errors
 
-* [General](../../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `delete`
@@ -97,5 +97,5 @@ Only session `hash`.
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 

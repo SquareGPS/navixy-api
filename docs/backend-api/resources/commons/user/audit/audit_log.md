@@ -52,17 +52,17 @@ Gets list of audit records available for current user.
 
 #### Parameters
 
-| name        | description                                                                                                                           | type                                                   |
-|:------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------|
+| name        | description                                                                                                                           | type                                                                |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
 | from        | Include audit objects recorded after this date.                                                                                       | [date/time](../../../../getting-started/introduction.md#data-types) |
 | to          | Include audits before this date.                                                                                                      | [date/time](../../../../getting-started/introduction.md#data-types) |
-| subuser_ids | Optional. Include audits for specific sub-users.                                                                                      | int array                                              |
-| actions     | Optional. Include audits for specific actions only.                                                                                   | string array                                           |
-| limit       | Pagination. Maximum number of audit records to return.                                                                                | int                                                    |
-| offset      | Pagination. Get audits starting from.                                                                                                 | int                                                    |
-| sort        | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["action_date=asc", "user=desc"]`. | string array                                           |
+| subuser_ids | Optional. Include audits for specific sub-users.                                                                                      | int array                                                           |
+| actions     | Optional. Include audits for specific actions only.                                                                                   | string array                                                        |
+| limit       | Pagination. Maximum number of audit records to return.                                                                                | int                                                                 |
+| offset      | Pagination. Get audits starting from.                                                                                                 | int                                                                 |
+| sort        | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["action_date=asc", "user=desc"]`. | string array                                                        |
 | grouping    | Optional. Group log by "user", "action_date", "action" or don't group "default".                                                      | [enum](../../../../getting-started/introduction.md#data-types)      |
- 
+
 Properties available for sorting by:
 
 * `action`.
@@ -108,4 +108,4 @@ If no sort param is specified, then sorting equivalent to option `["action_date=
 
 #### Errors
 
-* [General](../../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.

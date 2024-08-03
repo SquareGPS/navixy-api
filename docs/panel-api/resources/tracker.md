@@ -645,7 +645,7 @@ Example:
 
 If the operation is applied transactionally meaning the `ignore_existing` = `false` or is not specified: it completes only if `"success": true` is received for the whole batch, otherwise, the cloning process for all trackers is rolled back.
 
-* [Standard errors](../../backend-api/getting-started/introduction.md#error-codes).
+* [Standard errors](../../backend-api/getting-started/errors.md#error-codes).
 * 7 - Invalid parameters. Size must be between 1 and 1000 - triggered when the clone request exceeds 1000 trackers.
 * 217 – List contains nonexistent entities - if at least one tracker from the request is not found.
 * 247 – Entity already exists - if at least one of the trackers already has its clone in the target user. The error provides the list of trackers in the target user that caused the error.
@@ -730,7 +730,7 @@ Example:
 
 #### Errors
 
-* [Standard errors](../../backend-api/getting-started/introduction.md#error-codes).
+* [Standard errors](../../backend-api/getting-started/errors.md#error-codes).
 
 
 ### `delete_clone`

@@ -18,7 +18,7 @@ Within the category of Physical sensors, Navixy differentiates three categories 
    
 3. **Counters**: These sensors track cumulative data over time, such as distance traveled or operating hours. Examples include an odometer that measures the total distance a vehicle has traveled, or an engine hours counter that logs the total operating time of an engine.
 
-For a comprehensive list of supported sensors, refer to the [input_name documentation](/backend-api/resources/tracking/tracker/sensor/input_name.md#response).
+For a comprehensive list of supported sensors, refer to the [input_name documentation](../../resources/tracking/tracker/sensor/input_name.md#response).
 
 ### Managing physical sensors
 
@@ -40,8 +40,8 @@ Some sensors are automatically created by the platform when a new device is acti
 For sensors that require manual creation, follow these steps:
 
 1. **Configure Data Sending:** Ensure that the sensor is configured to send data from the device side.
-2. **Verify Data Reception:** Use [AirConsole](/panel-api/resources/tracker.md#consoleconnect) to verify that the platform is receiving the data correctly.
-4. **Calibrate the Sensor:** If necessary, [calibrate the sensor](/backend-api/resources/tracking/tracker/sensor/calibration_data.md) (for analog sensors or those sending uncalibrated values) to ensure accurate data readings.
+2. **Verify Data Reception:** Use [AirConsole](../../../panel-api/resources/tracker.md#consoleconnect) to verify that the platform is receiving the data correctly.
+3. **Calibrate the Sensor:** If necessary, [calibrate the sensor](../../resources/tracking/tracker/sensor/calibration_data.md) (for analog sensors or those sending uncalibrated values) to ensure accurate data readings.
 
 By using these methods, you can effectively manage both automatically and manually created physical sensors, ensuring comprehensive and reliable data collection for your IoT and telematics applications.
 
@@ -51,14 +51,14 @@ By using these methods, you can effectively manage both automatically and manual
 
 To retrieve current sensor values, use the following API calls:
 
-- Input states: [get_inputs](/backend-api/resources/tracking/tracker/index.md#get_inputs)
-- CAN and OBD sensor data: [get_diagnostics](/backend-api/resources/tracking/tracker/index.md#get_diagnostics)
-- Fuel sensor data: [get_fuel](/backend-api/resources/tracking/tracker/index.md#get_fuel)
-- Other metering sensor readings: [get_readings](/backend-api/resources/tracking/tracker/index.md#get_readings)
+- Input states: [get_inputs](../../resources/tracking/tracker/index.md#get_inputs)
+- CAN and OBD sensor data: [get_diagnostics](../../resources/tracking/tracker/index.md#get_diagnostics)
+- Fuel sensor data: [get_fuel](../../resources/tracking/tracker/index.md#get_fuel)
+- Other metering sensor readings: [get_readings](../../resources/tracking/tracker/index.md#get_readings)
 
 #### Comprehensive sensor data
 
-To retrieve data from all sensors, states, and counters of a device, use the [tracker/readings](/backend-api/resources/tracking/tracker/readings.md) API call.
+To retrieve data from all sensors, states, and counters of a device, use the [tracker/readings](../../resources/tracking/tracker/readings.md) API call.
 
 Example response:
 
@@ -115,11 +115,11 @@ Note: The `input_status` and `output_status` fields provide binary information i
 
 #### Batch retrieval for multiple devices
 
-To optimize requests for multiple devices, use the [tracker/readings/batch_list](/backend-api/resources/tracking/tracker/readings.md#batchlist) API call.
+To optimize requests for multiple devices, use the [tracker/readings/batch_list](../../resources/tracking/tracker/readings.md#batchlist) API call.
 
 #### Historical sensor data
 
-To retrieve historical data from measurement sensors (up to 30 days), use the [tracker/sensor/data/read](/backend-api/resources/tracking/tracker/sensor/index.md#dataread) API call. Specify the sensor ID, which can be obtained using the [sensor/list](/backend-api/resources/tracking/tracker/sensor/index.md#list) request.
+To retrieve historical data from measurement sensors (up to 30 days), use the [tracker/sensor/data/read](../../resources/tracking/tracker/sensor/index.md#dataread) API call. Specify the sensor ID, which can be obtained using the [sensor/list](../../resources/tracking/tracker/sensor/index.md#list) request.
 
 ### Using counters
 
@@ -127,7 +127,7 @@ Counters are tools for monitoring specific metrics, such as odometer (mileage) a
 
 #### Counter creation
 
-To create a counter, use the [value/set](/backend-api/resources/tracking/tracker/counter.md#valueset) API call.
+To create a counter, use the [value/set](../../resources/tracking/tracker/counter.md#valueset) API call.
 
 Example for creating an odometer counter:
 
@@ -147,13 +147,13 @@ curl -X POST '{{ extra.api_example_url }}/tracker/counter/read' \
 
 #### Retrieving counter values
 
-- Get all counter values: [get_counters](/backend-api/resources/tracking/tracker/counter.md#get_counters)
-- Get specific counter type for one device: [value/get](/backend-api/resources/tracking/tracker/counter.md#valueget)
-- Get counter values for multiple devices: [value/list](/backend-api/resources/tracking/tracker/counter.md#valuelist)
+- Get all counter values: [get_counters](../../resources/tracking/tracker/counter.md#get_counters)
+- Get specific counter type for one device: [value/get](../../resources/tracking/tracker/counter.md#valueget)
+- Get counter values for multiple devices: [value/list](../../resources/tracking/tracker/counter.md#valuelist)
 
 #### Historical counter data
 
-To retrieve counter values with timestamps for a specific period, use the [data/list](/backend-api/resources/tracking/tracker/counter.md#dataread) API call.
+To retrieve counter values with timestamps for a specific period, use the [data/list](../../resources/tracking/tracker/counter.md#dataread) API call.
 
 Example response:
 
@@ -188,8 +188,8 @@ Example response:
 #### Aggregated counter data
 
 To retrieve counted values for a specific period:
-- Mileage: [stats/mileage](/backend-api/resources/tracking/tracker/stats/stats_mileage.md)
-- Engine hours: [stats/engine_hours](/backend-api/resources/tracking/tracker/stats/stats_engine_hours.md)
+- Mileage: [stats/mileage](../../resources/tracking/tracker/stats/stats_mileage.md)
+- Engine hours: [stats/engine_hours](../../resources/tracking/tracker/stats/stats_engine_hours.md)
 
 ## Virtual sensors
 
@@ -223,7 +223,7 @@ By interpreting and translating raw data from physical sensors, virtual sensors 
 Key parameters:
 
 | Field          | Type   | Description                                                                                          |
-| -------------- | ------ | ---------------------------------------------------------------------------------------------------- |
+|----------------|--------|------------------------------------------------------------------------------------------------------|
 | `type`         | string | Must be set as `virtual` for virtual sensors.                                                        |
 | `id`           | int    | The sensor's ID.                                                                                     |
 | `sensor_type`  | enum   | Must be "virtual_ignition" for virtual ignition sensor or "state" for others.                        |
@@ -258,7 +258,7 @@ One of the common uses for Virtual sensor functionality is monitoring and mainta
 A virtual sensor with the `in_range`  type operates by evaluating whether the sensor value falls within predefined boundaries. Based on this evaluation, it outputs either *A value* for normal operation or *B value* to signal a potential issue.
 
 | Condition                                    | Output  | Description                                                                                              |
-| -------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------- |
+|----------------------------------------------|---------|----------------------------------------------------------------------------------------------------------|
 | Sensor value falls within defined boundaries | Value A | Indicates that the sensor is operating within the expected range, signaling safe or optimal levels.      |
 | Sensor value is outside defined boundaries   | Value B | Signals that the sensor has detected a value outside the predefined range, alerting to potential issues. |
 
@@ -316,7 +316,7 @@ Let's consider an example where we have a raw temperature sensor output that nee
 
 #### Mapping nominal sensor values (`identity`)
 
-Virtual sensors in Navixy also allow for custom definitions of received values, making them ideal for scenarios where predefined sets of nominal values (or strings) are used. You can map nominal input values into predefined output values using the `identity` type of a virtual sensor.
+Virtual sensors in Navixy also allow for custom definitions of received values, making them ideal for scenarios where predefined sets of nominal values (or strings) are used. You can map nominal input values into predefined output values using the `identity` type of virtual sensor.
 
 **Applications:**
 
@@ -339,12 +339,12 @@ This flexibility guarantees that you can accurately capture and interpret the op
 
 Consider a truck equipped with a Power Take-Off (PTO) drive engagement sensor outputting the following values:
 
-| Raw Value | Meaning                    |
-|-----------|----------------------------|
-| 0         | No PTO drive engaged       |
+| Raw Value | Meaning                        |
+|-----------|--------------------------------|
+| 0         | No PTO drive engaged           |
 | 1         | At least one PTO drive engaged |
-| 2         | Error                      |
-| 3         | Not available              |
+| 2         | Error                          |
+| 3         | Not available                  |
 A virtual sensor can translate these raw values into meaningful status information.
 
 ##### Example 2. Hardware driver / asset identificators readings
@@ -388,7 +388,7 @@ The virtual sensor interprets specific bits within the transmitted value, allowi
 Given a transmitted value of 011 (interpreted in little-endian format):
 
 | Bit           | Value | Meaning                                          |
-| ------------- | ----- | ------------------------------------------------ |
+|---------------|-------|--------------------------------------------------|
 | 1 (rightmost) | 1     | Driver's seat belt: 0 = fastened, 1 = unfastened |
 | 2             | 1     | Driver's door: 0 = closed, 1 = open              |
 | 3             | 0     | Hood: 0 = closed, 1 = open                       |
@@ -399,7 +399,7 @@ To utilize this data effectively, create a separate virtual sensor for each para
 
 #### Creating a virtual sensor
 
-To create a virtual sensor, use the [tracker/sensor/create](/backend-api/resources/tracking/tracker/sensor/index.md#create) API call. This allows you to define and configure virtual sensors based on specific input parameters. Virtual sensors can be used to monitor various conditions and provide meaningful insights.
+To create a virtual sensor, use the [tracker/sensor/create](../../resources/tracking/tracker/sensor/index.md#create) API call. This allows you to define and configure virtual sensors based on specific input parameters. Virtual sensors can be used to monitor various conditions and provide meaningful insights.
 
 Example for creating a virtual ignition sensor:
 
@@ -413,7 +413,7 @@ This example demonstrates how to create a virtual ignition sensor that monitors 
 
 #### Updating a virtual sensor
 
-To update an existing virtual sensor, use the [tracker/sensor/update](/backend-api/resources/tracking/tracker/sensor/index.md#update) API call. This is useful for modifying the parameters or configuration of an already created sensor to reflect new thresholds or settings.
+To update an existing virtual sensor, use the [tracker/sensor/update](../../resources/tracking/tracker/sensor/index.md#update) API call. This is useful for modifying the parameters or configuration of an already created sensor to reflect new thresholds or settings.
 
 Example for updating a virtual ignition sensor:
 
@@ -427,7 +427,7 @@ This example shows how to update a virtual ignition sensor, changing the voltage
 ### Retrieving virtual sensor data
 
 1. **Historical data**
-   Use the [tracker/sensor/data/read](/backend-api/resources/tracking/tracker/sensor/index.md#dataread) API call.
+   Use the [tracker/sensor/data/read](../../resources/tracking/tracker/sensor/index.md#dataread) API call.
 
    Example:
    ```shell
@@ -437,7 +437,7 @@ This example shows how to update a virtual ignition sensor, changing the voltage
    ```
 
 2. **Current values**
-   Use the [tracker/readings/batch_list](/backend-api/resources/tracking/tracker/readings.md#batchlist) API call for multiple devices.
+   Use the [tracker/readings/batch_list](../../resources/tracking/tracker/readings.md#batchlist) API call for multiple devices.
 
    Example:
    ```shell

@@ -17,7 +17,7 @@ In each case, a GitHub account is required. If you prefer not to register on Git
 
 For simple, quick edits, you can use the built-in GitHub editor:
 
-1. On any documentation page, find the pencil icon (:material-pencil:) in the upper right corner and click it.
+1. On any documentation page, find the pencil icon in the upper right corner and click it.
 2. You will be prompted to create a fork of the repository if you haven't already.
 3. Click the green "Create fork" button. This will open the source code of the page in an editable format.
 4. Make your edits directly in the browser.
@@ -176,4 +176,4 @@ Special error codes.
 
 If the response or structure has comments, please write these comments separately in a list format below.
 
-For actual examples, refer to [/user](../../backend-api/resources/commons/user/) and [/source](../../backend-api/resources/commons/user/index.md).
+For actual examples, refer to [user](../../backend-api/resources/commons/user/) and [source](../../backend-api/resources/commons/user/index.md).

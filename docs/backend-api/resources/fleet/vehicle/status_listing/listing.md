@@ -68,7 +68,7 @@ Gets all of user's vehicle statuses.
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `update`
@@ -101,4 +101,4 @@ Old vehicle statuses, which are not present in `statuses` array, will be deleted
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.

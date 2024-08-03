@@ -299,7 +299,7 @@ where period_object is:
 #### Errors
 
 * 204 – Not found - if there is no form template with such ID belonging to authorized user.
-* [General](../../../../getting-started/introduction.md#error-codes) types of errors.
+* [General](../../../../getting-started/errors.md#error-codes) types of errors.
 
 
 ### `read`

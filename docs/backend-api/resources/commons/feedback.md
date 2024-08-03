@@ -38,9 +38,9 @@ email address for feedback.
 
 #### Parameters
 
-| name     | description                                                                            | type                                        |
-|:---------|:---------------------------------------------------------------------------------------|:--------------------------------------------|
-| feedback | Message from the user. Screenshot and log will be added to email as attachments.       | JSON object                                 |
+| name     | description                                                                            | type                                                     |
+|:---------|:---------------------------------------------------------------------------------------|:---------------------------------------------------------|
+| feedback | Message from the user. Screenshot and log will be added to email as attachments.       | JSON object                                              |
 | type     | Optional. One of strings: `support_request` (default), `feature_request` and `review`. | [enum](../../getting-started/introduction.md#data-types) |
 
 #### Example
@@ -61,4 +61,4 @@ email address for feedback.
 
 #### Errors
 
-* [General](../../getting-started/introduction.md#error-codes) types only.
+* [General](../../getting-started/errors.md#error-codes) types only.

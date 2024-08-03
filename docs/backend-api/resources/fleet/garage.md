@@ -79,7 +79,7 @@ Gets all depots belonging to user.
 
 #### Errors
 
-[General](../../getting-started/introduction.md#error-codes) types only.
+[General](../../getting-started/errors.md#error-codes) types only.
 
 
 ### `create`
@@ -117,7 +117,7 @@ Creates a new depot.
 
 #### Errors
 
-[General](../../getting-started/introduction.md#error-codes) types only.
+[General](../../getting-started/errors.md#error-codes) types only.
 
 
 ### `update`

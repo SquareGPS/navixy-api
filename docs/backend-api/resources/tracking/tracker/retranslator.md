@@ -16,7 +16,7 @@ Contains tracker retranslator binding object and API calls to bind/unbind it to 
 }
 ```
 
-* `retranslator_id` - int. An ID of the [retranslator](../../../tracking/retranslator/).
+* `retranslator_id` - int. An ID of the retranslator.
 * `fake_device_id` - string. Optional. If this field is set retranslator use it instead of real device ID to forward data.
 
 

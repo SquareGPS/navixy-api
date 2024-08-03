@@ -1,4 +1,3 @@
-# How to activate a device
 
 This guide offers detailed, step-by-step instructions on using the Navixy API to activate GPS tracking devices and X-GPS Mobile Apps on the platform.
 
@@ -208,7 +207,7 @@ Using the `register_quick` endpoint can significantly speed up the process of ac
 
 ### Troubleshooting GPS tracker activation
 
-There could be several reasons why a device doesn't activate. If we exclude SMS gateway issues and it is functioning correctly, all other potential issues are listed [here](https://www.navixy.com/docs/user/get-started-docs/tracker-activation/device-activation-problems/).
+There could be several reasons why a device doesn't activate. If we exclude SMS gateway issues, and it is functioning correctly, all other potential issues are listed [here](https://www.navixy.com/docs/user/get-started-docs/tracker-activation/device-activation-problems/).
 
 After eliminating all possible issues and ensuring everything is working properly, you can send the [`tracker/register_retry`](../../resources/tracking/tracker/index.md#register_retry) request to avoid creating the same unit again for the user. Additionally, it is not possible to activate two devices with the same ID on the platform.
 

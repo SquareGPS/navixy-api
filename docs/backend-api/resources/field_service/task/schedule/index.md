@@ -207,7 +207,7 @@ Also this call returns all unassigned task schedules.
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `read`
@@ -282,7 +282,7 @@ Gets task, route or checkpoint schedule by specified ID.
 
 #### Errors
 
-[General](../../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `update`

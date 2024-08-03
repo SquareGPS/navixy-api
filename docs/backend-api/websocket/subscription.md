@@ -193,14 +193,14 @@ For structure see [Subscribe Action](#subscribe-action).
 ## Error Response
 
 If something goes wrong, the server may respond with an error.
-Error codes are similar to the [API errors codes](../getting-started/introduction.md#error-codes).
+Error codes are similar to the [API errors codes](../getting-started/errors.md#error-codes).
 
 Error response parameters:
 
 * `type` - required, text: _"error"_.
 * `action` - required, string - action from request (e.g. "subscription/subscribe") or "null" for some unexpected errors.
 * `status` - required - error code and description:
-  * `code` - required - error code (see [API errors codes](../getting-started/introduction.md#error-codes)).
+  * `code` - required - error code (see [API errors codes](../getting-started/errors.md#error-codes)).
   * `description` - required, string - error description.
 * `data` - optional string - part of parameters from request or some info for unexpected errors.
 

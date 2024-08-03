@@ -515,7 +515,7 @@ name: 'cguard_asset'
 * `mode` - [enum](../../../../getting-started/introduction.md#data-types). Device working mode. `TRACKER` means that device work in the continuous mode. `ASSET` means that device work in the periodical mode and wakes up on schedule or by period.
 * `wakeup_type` - [enum](../../../../getting-started/introduction.md#data-types). Can be "SCHEDULED" | "PERIODICAL". How device wakes up in `ASSET` mode. default="PERIODICAL".
 * `wakeup_day` - [enum](../../../../getting-started/introduction.md#data-types). Can be "EVERYDAY" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY", default="EVERYDAY". What day to wake up if wakeup_type = `SCHEDULED`.
-* `wakeup_time` - string. What time in minutes to wake up if wakeup_type = `SCHEDULED`. Format `HH:mm`, default="12:00"
+* `wakeup_time` - string. Specifies the time in minutes to wake up if wakeup_type = `SCHEDULED`. Format `HH:mm`, default="12:00"
 * `wakeup_period` - int. Wakeup period in minutes. Min=15, max=65535, default=1440. Required if wakeup_type = `PERIODICAL`
 * `moving_detection` - boolean. If `true` means that device will be wakes up at the beginning of the movement. Required if mode == 'ASSET'
 

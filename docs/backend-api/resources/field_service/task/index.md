@@ -194,7 +194,7 @@ In case of location_check_mode==entity_location – vehicle_ids will be ignored.
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### count
@@ -489,7 +489,7 @@ If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** i
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `read`

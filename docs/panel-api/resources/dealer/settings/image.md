@@ -5,7 +5,7 @@ description: API calls for interaction with images that used for branding of the
 
 # Image
 
-API calls for interaction with images that used for branding of the panel.
+API calls for managing the images used for branding the platform.
 
 
 ## API actions

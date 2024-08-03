@@ -105,7 +105,7 @@ Creates a new empty group.
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `delete`
@@ -186,7 +186,7 @@ and is not returned by this API call.
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `update`

@@ -188,7 +188,7 @@ See tracker object structure description [here](#tracker-object-structure).
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### corrupt
@@ -1095,7 +1095,7 @@ Possible values are:
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `tags/set`
@@ -1127,7 +1127,7 @@ Set tags for a tracker. Tags must be created.
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `location_request`
@@ -1136,9 +1136,9 @@ Execute this command to get current position of the device. The device must supp
 
 #### Parameters
 
-| name       | description                                                                                     | type                                           | format |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 999119 |
+| name       | description                                                                                     | type                                                        | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:------------------------------------------------------------|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                                         | 999119 |
 | type       | Optional. Default type `sms`.                                                                   | [enum](../../../getting-started/introduction.md#data-types) | "sms"  |
 
 Request types:
@@ -1789,14 +1789,14 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 #### Errors
 
-[General](../../../getting-started/introduction.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `raw_command/send`
 
 Sends the GPRS command to the device, processing it in a protocol-dependent manner beforehand.
 
-**Find more information about this API call** usage in our [instructions](/backend-api/guides/device-management/send-commands.md).
+**Find more information about this API call** usage in our [instructions](../../../guides/device-management/send-commands.md).
 
 **required sub-user rights:** `tracker_configure`, `tracker_set_output`.
 

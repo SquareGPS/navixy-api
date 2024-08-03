@@ -1,5 +1,5 @@
 nav:
+  - Dealaer (PaaS) actions: index.md
   - Password: password.md
-  - Index: index.md
-  - Activation Code: activation_code.md
   - Settings: settings
+  - Activation code: activation_code.md

@@ -9,17 +9,17 @@ To interact with the Navixy API, you need an API key hash, which is essential fo
     - Access the Navixy user interface via the web
     - Use your credentials to log in
 
-1. **Navigate to the API Key Section**:
+2. **Navigate to the API Key Section**:
     - Once logged in, go to the `Settings` menu.
     - Find the `API Keys` section, typically located under `Account Settings` or `Security`.
 
-1. **Generate a New API Key**:
+3. **Generate a New API Key**:
     - Click on the `Generate New API Key` button.
     - Provide a name for the API key to easily identify it later.
     - Select the permissions and scope for the key based on your needs.
     - Click `Generate`.
 
-1. **Copy the API Key Hash**:
+4. **Copy the API Key Hash**:
     - Once the key is generated, you will see the API key hash.
     - Copy this hash and store it securely. You will use this hash in your API requests.
 
@@ -112,12 +112,12 @@ To authenticate your requests to the Navixy API, include the API key hash in one
    https://api.navixy.com/v2/resource/action?hash=your_api_key_hash
    ```
 
-1. **As a Request Header**: Include the hash in the `Authorization` header
+2. **As a Request Header**: Include the hash in the `Authorization` header
    ```sh
    Authorization: NVX your_api_key_hash
    ```
 
-1. **In the Request Body**: Include the hash in the JSON body of your request
+3. **In the Request Body**: Include the hash in the JSON body of your request
    ```json
    {
      "hash": "your_api_key_hash",

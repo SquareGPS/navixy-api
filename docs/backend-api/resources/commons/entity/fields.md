@@ -25,7 +25,7 @@ The field object contains the following attributes:
 
 * `id` - int. Field identifier. Null for the new object.
 * `label` -  string. Name of the field.
-* `type` - [enum](/backend-api/getting-started/introduction.md#data-types). Type of field, see below.
+* `type` - [enum](../../../getting-started/introduction.md#data-types). Type of field, see below.
 * `required` - boolean.  Whether the field is required to be filled or not.
 * `description` - string. Additional information about the field, up to 512 characters.
 * `params` - object. Type-specific parameters. This field should be omitted if no specific params are needed.

@@ -553,6 +553,8 @@ body
 
 .md-top {
   color:#fff;
+  bottom: 1rem;
+  margin: -2.8rem 1rem 1rem;
 }
 
 .md-nav__icon.md-icon {

@@ -81,4 +81,4 @@ Tracks selected by intersecting their date range with date range from request (`
 
 #### Errors
 
-* [General](../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.

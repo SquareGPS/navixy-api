@@ -1,4 +1,4 @@
 nav:
-  - Image: image.md
-  - Service: service.md
-  - Notification: notification.md
+  - Branding settings: image.md
+  - Service settings: service.md
+  - Notification settings: notification.md

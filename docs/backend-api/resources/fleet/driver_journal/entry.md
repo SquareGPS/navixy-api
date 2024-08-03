@@ -127,7 +127,7 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
 
 #### Errors
 
-* [General](../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `create`
@@ -158,7 +158,7 @@ Creates driver journal entries.
 
 #### Errors
 
-* [General](../../../getting-started/introduction.md#error-codes) types.
+* [General](../../../getting-started/errors.md#error-codes) types.
 
 
 ### `update`
@@ -204,7 +204,7 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 #### Errors
 * 201 – if tracker not found
 * 204 - if entry not found. 
-* [General](../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `delete`
@@ -241,7 +241,7 @@ Deletes driver journal entries.
 
 #### Errors
 
-* [General](../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `download`
@@ -283,4 +283,4 @@ A driver journal report file (standard file download).
 
 #### Errors
 
-* [General](../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.

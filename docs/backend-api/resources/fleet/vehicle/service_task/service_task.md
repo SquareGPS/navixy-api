@@ -217,7 +217,7 @@ A `task` object is:
 
 #### Errors
 
-* [General](../../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `create`
@@ -294,7 +294,7 @@ Either **task_id** or **task_ids** should be specified.
 
 #### Errors
 
-* [General](../../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `download`
@@ -337,7 +337,7 @@ Report file.
 
 #### Errors
 
-* [General](../../../../getting-started/introduction.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
 ### `list`
