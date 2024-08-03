@@ -3,17 +3,17 @@
 This guide explains how to retrieve a list of GPS trackers associated with a user account using the Navixy API. This is essential for managing and monitoring multiple devices within the Navixy platform.
 ## Prerequisites
 
-Before you begin, ensure you have an active Navixy account and an [API key for authentication](/backend-api/getting-started/authentication.md). 
+Before you begin, ensure you have an active Navixy account and an [API key for authentication](../../backend-api/getting-started/authentication.md). 
 
 ## Make the API request
 
-To get the list of trackers, you need to make a POST request to the [`/tracker/list`](/backend-api/resources/tracking/tracker/) endpoint. Below are the details and examples of how to do this.  
+To get the list of trackers, you need to make a POST request to the [`/tracker/list`](../../backend-api/resources/tracking/tracker/) endpoint. Below are the details and examples of how to do this.  
 
 ### API endpoint
 
 `https://api.navixy.com/v2/tracker/list`
 
-You can receive a list of all trackers in user's account with [tracker/list](/backend-api/resources/tracking/tracker/index.md#list).
+You can receive a list of all trackers in user's account with [tracker/list](../../backend-api/resources/tracking/tracker/index.md#list).
 
 ### API request
 ##### cURL
