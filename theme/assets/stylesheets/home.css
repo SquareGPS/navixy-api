@@ -773,9 +773,9 @@ body
 body .markdown-section
 {
     max-width: 1185px;
-    padding: 170px 7px 40px;
+    padding: 120px 7px 40px;
     background: url(../images/home/api_main.svg);
-    background-position: 93% 13%;
+    background-position: 93% 5%;
     background-repeat: no-repeat;
     background-size: 370px;
     margin: 0 auto;
