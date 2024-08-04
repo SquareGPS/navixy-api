@@ -1,0 +1,8 @@
+nav:
+  - Home: index.md
+  - General: general
+  - Backend API: backend-api
+  - Data Warehouse API: data-warehouse-api
+  - Eco Fleet API: eco-fleet-api
+  - Panel API: panel-api
+  - Frontend: frontend
