@@ -7,19 +7,18 @@ description: API call to get optimized order of route checkpoints. To minimize t
 
 To reduce transit time and costs, it may be helpful to rearrange route checkpoints so that the total travel time between them is minimized. Our platform offers a way to perform this optimization. You don't even need to create a route and checkpoints; you simply provide the necessary data for optimization, and the algorithm returns the order in which the points should be visited.
 
-***
 
 ## API actions
 
 API path: `/task/route/points/optimize`.
 
-### optimize
+### `optimize`
 
 The suggested order for the given route points will correspond to the time windows (from and to) of each point. Points with earlier time windows will have lower ordinal numbers. If time windows overlap, the order of such points may vary to maximize the overall efficiency of the route. The maximum distance per route optimization is 5000 kilometers. When using APIs, the maximum number of points per route optimization is 49 points to visit, plus 1 start point.
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 * **start_point** - (object) the coordinates of the location from where the performer will depart. The departure time is optional parameter. 
 
@@ -44,7 +43,7 @@ The suggested order for the given route points will correspond to the time windo
 ]
 ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -118,7 +117,7 @@ So the optimized route with start point from "lat": 38.81476676765485, "lng": -7
 ]
 ```
 
-#### errors
+#### Errors
 
 * 7 - Invalid parameters.
 * 210 - Path distance exceeds the max distance limit - if the overal route distance is more than 5000 km.

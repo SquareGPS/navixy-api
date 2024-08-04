@@ -1,0 +1,5 @@
+title: Device management
+nav:
+  - Activate a device: activate-device.md
+  - Send commands to a device: send-commands.md
+  - Use BLE beacons: ble-beacons.md

@@ -6,23 +6,22 @@ description: API calls to get and update LED state of the tracker.
 
 API calls to get and update LED state of the tracker. LED switch should be available for the device.
 
-***
 
 ## API actions
 
 API base path: `/tracker/led`.
 
-### read
+### `read`
 
 Gets LED status for the specified tracker.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -38,7 +37,7 @@ Gets LED status for the specified tracker.
     {{ extra.api_example_url }}/tracker/led/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -49,26 +48,25 @@ Gets LED status for the specified tracker.
 
 * `value` - boolean. LED status, `true` - ON, `false` - OFF.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
 
-***
 
-### update
+### `update`
 
 Switches LED state for a specified tracker.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type    | format     |
 |:-----------|:------------------------------------------------------------------------------------------------|:--------|:-----------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int     | 999199     |
 | value      | The new LED state, `true` – ON, `false` – OFF.                                                  | boolean | true/false |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -84,13 +82,13 @@ Switches LED state for a specified tracker.
     {{ extra.api_example_url }}/tracker/led/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&value=true
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.

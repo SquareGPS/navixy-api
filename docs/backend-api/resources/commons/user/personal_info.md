@@ -7,19 +7,18 @@ description: Contains user personal info update API call.
 
 Contains user personal info update API call.
 
-***
 
 ## API actions
 
 API path: `/user/personal_info`.
 
-### update
+### `update`
 
 Updates user personal info.
 
 Require a plugin with **id=45**.
 
-#### parameters
+#### Parameters
 
 * `legal_type` – string. Either "legal_entity", "sole_trader" or "individual".
 * `first_name` – string. Contact person first name.
@@ -45,7 +44,7 @@ and for `legal_entity` or `sole_trader`:
 * `state_reg_num` - string, optional, 15 characters maximum. State registration number. E.g. EIN in the USA, OGRN in Russia.
 * `tin` – string. Taxpayer identification number.
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -56,12 +55,12 @@ and for `legal_entity` or `sole_trader`:
 
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 222 - Plugin not found – when plugin **45** not available for user.

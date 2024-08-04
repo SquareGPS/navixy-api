@@ -7,26 +7,25 @@ description: Contains API calls to interact with tag avatars.
 
 Contains API calls to interact with tag avatars.
 
-***
 
 ## API actions
 
 API path: `/tag/avatar`.
 
-### assign
+### `assign`
 
 Assigns icon_id (from standard icon set) to specified tag.
 
 **required sub-user rights**: `tag_update`.
 
-#### parameters
+#### Parameters
 
 | name    | description                                                                                          | type |
 |:--------|:-----------------------------------------------------------------------------------------------------|:-----|
 | tag_id  | ID of the tag to assign.                                                                             | int  |
 | icon_id | Icon to assign to tag. Can be null – this means that uploaded avatar should be used instead of icon. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -42,7 +41,7 @@ Assigns icon_id (from standard icon set) to specified tag.
     {{ extra.api_example_url }}/tag/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&tag_id=1&icon_id=14
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -50,13 +49,12 @@ Assigns icon_id (from standard icon set) to specified tag.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when vehicle with specified `tag_id` not found.
 
-***
 
-### upload
+### `upload`
 
 Uploads avatar image for specified tag.<br>
 Then it will be available from `[api_base_url]/[api_static_path]/tag/avatars/<file_name>`<br>
@@ -76,7 +74,7 @@ File part **mime** type must be one of:
 * `image/gif`
 * `image/webp`
 
-#### parameters
+#### Parameters
 
 | name            | description                                                                                                                       |
 |:----------------|:----------------------------------------------------------------------------------------------------------------------------------|
@@ -84,7 +82,7 @@ File part **mime** type must be one of:
 | file            | Image file.                                                                                                                       |
 | redirect_target | Optional. URL to redirect. If `redirect_target` passed return redirect to `<redirect_target>?response=<urlencoded response json>` |
 
-#### response
+#### Response
 
 ```json
 {
@@ -95,7 +93,7 @@ File part **mime** type must be one of:
 
 * `value` - string. Avatar file name.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when tag with specified `tag_id` not found.
 * 233 – No data file - if `file` part not passed.

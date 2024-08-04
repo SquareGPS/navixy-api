@@ -1,5 +1,5 @@
 title: User
 nav:
-  - menu
+  - User actions: index.md
+  - User menu: menu.md
   - mfa
-  - index.md

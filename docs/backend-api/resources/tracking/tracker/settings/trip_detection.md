@@ -12,23 +12,22 @@ following purposes:
 * To split a movement trajectory to separate trips - for clear illustration and easy viewing in tabular reports;
 * To capture "Trip end" / "Trip start" events - with possibility of Email/SMS notification.
 
-***
 
 ## API actions
 
 API base path: `/tracker/settings/trip_detection`.
 
-### read
+### `read`
 
 Gets parking detection settings for the specified tracker.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -44,7 +43,7 @@ Gets parking detection settings for the specified tracker.
     {{ extra.api_example_url }}/tracker/settings/trip_detection/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -61,20 +60,19 @@ Gets parking detection settings for the specified tracker.
 * `ignition_aware` - boolean. Check ignition state to detect a trip.
 * `motion_sensor_aware` - boolean. Check motion sensor state to detect a trip.
 
-#### errors
+#### Errors
 
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-***
 
-### update
+### `update`
 
 Updates parking detection settings for the specified tracker.
 
 **required sub-user rights:** `tracker_update`.
 
-#### parameters
+#### Parameters
 
 | name                      | description                                                                                       | type    | format |
 |:--------------------------|:--------------------------------------------------------------------------------------------------|:--------|:-------|
@@ -84,7 +82,7 @@ Updates parking detection settings for the specified tracker.
 | ignition_aware            | Check ignition state to detect a trip.                                                            | boolean | false  |
 | motion_sensor_aware       | Check motion sensor state to detect a trip.                                                       | boolean | false  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -100,13 +98,13 @@ Updates parking detection settings for the specified tracker.
     {{ extra.api_example_url }}/tracker/settings/trip_detection/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&min_idle_duration_minutes=5&idle_speed_threshold=3&ignition_aware=false&motion_sensor_aware=false
     ```
 
-#### response
+#### Response
 
 ```json
 {"success": true}
 ```
 
-#### errors
+#### Errors
 
 * 204 – Entity not found (if there is no tracker with such ID belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).

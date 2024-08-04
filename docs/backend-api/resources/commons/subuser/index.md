@@ -21,7 +21,6 @@ NOTE: Sub-users cannot have any "exclusive" objects. Every tracker, rule, task, 
  still belongs to your account.
 The only exception is reporting system: every sub-user has its own reports pool and reports schedule.
 
-***
 
 ## Sub-user object structure
 
@@ -62,7 +61,7 @@ Sub-user object is almost identical to usual user.
 * `first_name` - string. Sub-user's or contact person first name.
 * `middle_name` - string. Sub-user's or contact person middle name.
 * `last_name` - string. Sub-user's or contact person last name.
-* `legal_type` - [enum](../../../getting-started.md#data-types). Can bed "legal_entity", "individual" or "sole_trader".
+* `legal_type` - [enum](../../../getting-started/introduction.md#data-types). Can bed "legal_entity", "individual" or "sole_trader".
 * `phone` - string. Sub-user's or contact phone (10-15 digits).
 * `post_country` - string. Country part of sub-user's post address.
 * `post_index` - string. Index part of sub-user's post address.
@@ -80,29 +79,28 @@ Sub-user object is almost identical to usual user.
 * `iec` - optional string. Industrial Enterprises Classifier aka "KPP" (used in Russia. For "legal_entity" only).
 * `security_group_id` - int. An ID of the security group to which sub-user belongs to. Can be null, which means default 
 group with no privileges.
-* `creation_date` - [date/time](../../../getting-started.md#data-types). Date and time when sub-user was created. This field is read-only, it should not be
+* `creation_date` - [date/time](../../../getting-started/introduction.md#data-types). Date and time when sub-user was created. This field is read-only, it should not be
  used in subuser/update.
 
-***
 
 ## API actions
 
 API path: `/subuser`.
 
-### delete
+### `delete`
 
 Deletes sub-user. This operation cannot be reversed.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name       | description                                      | type |
 |:-----------|:-------------------------------------------------|:-----|
 | subuser_id | ID of the sub-user belonging to current account. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -118,7 +116,7 @@ Deletes sub-user. This operation cannot be reversed.
     {{ extra.api_example_url }}/subuser/delete?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=123567
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -126,26 +124,25 @@ Deletes sub-user. This operation cannot be reversed.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 * 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 
-***
 
-### list
+### `list`
 
 List all sub-users belonging to current user.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -161,7 +158,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/subuser/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -199,28 +196,27 @@ Only API key `hash`.
 
 Sub-user object described [here](#sub-user-object-structure).
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 
-***
 
-### register
+### `register`
 
 Allows you to create sub-users associated to your master account.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name     | description                                  | type        |
 |:---------|:---------------------------------------------|:------------|
 | user     | `subuser object` without `id` field.         | JSON object |
 | password | New sub-user's password. 6 to 20 characters. | string      |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -230,7 +226,7 @@ Allows you to create sub-users associated to your master account.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "password": 123456, "user": {"activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -241,29 +237,28 @@ Allows you to create sub-users associated to your master account.
 
 * `id` - int. An ID of the created sub-user.
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 * 201 – Not found in the database – when specified security_group_id does not exist.
 * 206 – login already in use - if this login email already registered.
 
-***
 
-### update
+### `update`
 
 Updates sub-user data.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name | description                       | type        |
 |:-----|:----------------------------------|:------------|
 | user | `subuser object` with `id` field. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -273,7 +268,7 @@ Updates sub-user data.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"id": 123451, "activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -281,7 +276,7 @@ Updates sub-user data.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.

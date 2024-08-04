@@ -5,10 +5,9 @@ description: A user account lets you start working with the platform as well as 
 
 # User
 
-A user account lets you start working with the platform as well as customize your experience within it. Contains user 
-object structure and API calls to interact with users.
+A user account lets you start working with the platform as well as customize your experience within it. Contains user object structure and API calls to interact with users.
 
-***
+
 
 ## User object structure
 
@@ -82,20 +81,20 @@ object structure and API calls to interact with users.
     * `login` - string. User's login (in most cases it's an email address).
     * `title` - string. User first and last name or organization title.
     * `phone` - string. User phone (if not empty).
-    * `creation_date` - [date/time](../../../getting-started.md#data-types). User registration date/time.
+    * `creation_date` - [date/time](../../../getting-started/introduction.md#data-types). User registration date/time.
     * `balance` - float. User balance, max. 2 digits after dot. For sub-users, this field should be ignored.
     * `bonus` - float. User bonus, max. 2 digits after dot. For sub-users, this field should be ignored.
-    * `locale` - [enum](../../../getting-started.md#data-types). User locale, for example "en_EN".
+    * `locale` - [enum](../../../getting-started/introduction.md#data-types). User locale, for example "en_EN".
     * `demo` - boolean. `true` if this is a demo user, `false` otherwise.
     * `verified` - boolean. `true` if user email already verified.
-    * `legal_type` - [enum](../../../getting-started.md#data-types). Can bed "legal_entity", "individual" or "sole_trader".
-    * `default_geocoder` - [enum](../../../getting-started.md#data-types). User's default geocoder. Can be "google", "yandex",
+    * `legal_type` - [enum](../../../getting-started/introduction.md#data-types). Can bed "legal_entity", "individual" or "sole_trader".
+    * `default_geocoder` - [enum](../../../getting-started/introduction.md#data-types). User's default geocoder. Can be "google", "yandex",
      "progorod", "osm", or "locationiq".
-    * `route_provider` - [enum](../../../getting-started.md#data-types). User's route provider. Can be "progorod", "google" or "osrm".
-    * `time_zone` - [enum](../../../getting-started.md#data-types). User timezone name.
-    * `measurement_system` - [enum](../../../getting-started.md#data-types). User's measurement system "metric", "imperial", "us", "metric_gal_us" or "nautical".
-    * `date_format` - Optional [enum](../../../getting-started.md#data-types). Date representation. Can be "ddMMyyyy_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
-    * `hour_mode` - Optional [enum](../../../getting-started.md#data-types). Time representation. Can be "TWENTY_FOUR_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
+    * `route_provider` - [enum](../../../getting-started/introduction.md#data-types). User's route provider. Can be "progorod", "google" or "osrm".
+    * `time_zone` - [enum](../../../getting-started/introduction.md#data-types). User timezone name.
+    * `measurement_system` - [enum](../../../getting-started/introduction.md#data-types). User's measurement system "metric", "imperial", "us", "metric_gal_us" or "nautical".
+    * `date_format` - Optional [enum](../../../getting-started/introduction.md#data-types). Date representation. Can be "ddMMyyyy_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
+    * `hour_mode` - Optional [enum](../../../getting-started/introduction.md#data-types). Time representation. Can be "TWENTY_FOUR_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
     * `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
     * `iec` - optional string. Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities.
     * `post_country` - string. Country part of user's post address.
@@ -121,13 +120,13 @@ object structure and API calls to interact with users.
     * `privileges` - object only returned for sub-users. Describes effective sub-user privileges. 
     * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
 
-***
+
 
 ## API actions
 
 API path: `/user`.
 
-### activate
+### `activate`
 
 Activates previously registered user with the provided session hash 
 (it is contained in activation link from email sent to user).
@@ -139,23 +138,23 @@ Available only to master users.
     The only thing that API calls with a user session will work for is creating, 
     reading, and deleting API keys.
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-***
 
-### auth
+
+### `auth`
 
 Tries to authenticate the user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
-!!! note "We recommend using [API keys](../../../how-to/get-api-key.md) instead of user session hash."
+!!! note "It is strongly recommended using [API keys](../../../getting-started/authentication.md) instead of user session hash."
 
-#### parameters
+#### Parameters
 
 | name      | description                                                                                            | type   | restrictions                            |
 |:----------|:-------------------------------------------------------------------------------------------------------|:-------|:----------------------------------------|
@@ -163,7 +162,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 | password  | User password.                                                                                         | string | not null, 1 to 40 printable characters. |
 | dealer_id | If specified, API will check that user belongs to this dealer, and if not, error 102 will be returned. | int    | optional.                               |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -173,7 +172,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
         -d '{"login": "user@email.com", "password": "12@14Y$"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -189,7 +188,7 @@ If `second_factor_required`, then the session can be used only for [authenticati
 * `factor_type` - [enum](../../../getting-started.md#data-types). Present if type is `second_factor_required`.
 * `hash` - string. Session hash.
 
-#### errors
+#### Errors
 
 * 11 – Access denied - if dealer blocked.
 * 102 – Wrong login or password.
@@ -197,19 +196,19 @@ If `second_factor_required`, then the session can be used only for [authenticati
 * 104 – Logins limit exceeded, please reuse existing sessions instead (see also user/session/renew).
 * 105 – Login attempts limit exceeded, try again later.
 
-***
 
-### get_info
+
+### `get_info`
 
 Gets user information and some settings.
 
-#### parameters
+#### Parameters
 
 | name        | description                                                                            | type   | restrictions |
 |:------------|:---------------------------------------------------------------------------------------|:-------|:-------------|
 | application | If specified, the response will contain a description of the application's custom menu | string | optional     |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -225,7 +224,7 @@ Gets user information and some settings.
     {{ extra.api_example_url }}/user/get_info?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -293,21 +292,21 @@ Gets user information and some settings.
 
 * `user_object` - for more info see [user object structure](#user-object-structure).
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### get_tariff_restrictions
 
-Gets user tariff restrictions.
+### `get_tariff_restrictions`
 
-#### parameters
+Gets user plan restrictions.
+
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -323,7 +322,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/user/get_tariff_restrictions?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -336,22 +335,21 @@ Only API key `hash`.
 
 * `allowed_maps` - string array. List of allowed maps.
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### logout
+### `logout`
 
 Destroys current user session.
 Works only with standard user session (not with API key).
 
-#### parameters
+#### Parameters
 
 Only session `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -367,31 +365,31 @@ Only session `hash`.
     {{ extra.api_example_url }}/user/logout?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### resend_activation
+
+### `resend_activation`
 
 Sends a new activation link to user.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
-#### parameters
+#### Parameters
 
 | name  | description         | type   | restrictions |
 |:------|:--------------------|:-------|:-------------|
 | login | User login (email). | string | not null.    |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -407,13 +405,13 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
     {{ extra.api_example_url }}/user/resend_activation?login=user@login.com
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – user with a passed login not found.
 * 209 - Failed sending email – can't send email.

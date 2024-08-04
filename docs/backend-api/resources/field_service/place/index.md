@@ -15,9 +15,8 @@ If there's an [employee](../employee) [assigned](../../tracking/tracker/employee
 and a POI has a custom field of type "responsible employee", such point of interest will be available in the mobile app to view.
 Thus, field employee/driver can view all points of interest assigned to him to visit them, etc.
 
-Working with POIs requires several actions so we described them in our [guides](../../../how-to/work-with-POIs.md).
+Working with POIs requires several actions so we described them in our [guides](../../../guides/places/manage-pois.md).
 
-***
 
 ## Place object
 
@@ -59,23 +58,22 @@ Working with POIs requires several actions so we described them in our [guides](
 * `tags` - optional int array. A list of tag_ids. Non-empty.
 * `external_id` - optional string. Max length 32.
 
-***
 
 ## API actions
 
 API path: `/place`.
 
-### read
+### `read`
 
 Gets POI by ID.
 
-#### parameters
+#### Parameters
 
 | name     | description    | type |
 |:---------|:---------------|:-----|
 | place_id | ID of the POI. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -91,7 +89,7 @@ Gets POI by ID.
     {{ extra.api_example_url }}/place/read?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -120,17 +118,16 @@ Gets POI by ID.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no POI with such ID.
 
-***
 
-### list
+### `list`
 
 Get POIs belonging to user.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                                                                                                                         | type             |
 |:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------|
@@ -143,7 +140,7 @@ Get POIs belonging to user.
 | offset     | Optional. offset, default is 0.                                                                                                                                                                     | int              |
 | tag_ids    | Optional. Tag IDs assigned to the place. The places found must include all the tags from the list.                                                                                                  | int array        |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -159,7 +156,7 @@ Get POIs belonging to user.
     {{ extra.api_example_url }}/place/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -193,26 +190,25 @@ Get POIs belonging to user.
 
 * `count` - int. Found POIs count.
 
-#### errors
+#### Errors
 
-[General](../../../getting-started.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### create
+### `create`
 
 Creates a new POI.
 
 **required sub-user rights:** `place_update`.
 
-#### parameters
+#### Parameters
 
 | name                  | description                                                                                         | type        |
 |:----------------------|:----------------------------------------------------------------------------------------------------|:------------|
 | place                 | A place object without `id` field.                                                                  | JSON object |
 | ignore_missing_fields | Optional (default is false). If `true`, POI can be created even without all required custom fields. | boolean     |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -222,7 +218,7 @@ Creates a new POI.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -233,23 +229,22 @@ Creates a new POI.
 
 * `id` - int. An ID of the created POI.
 
-#### errors
+#### Errors
 
 * 268 - Over quota – if the user's quota for POIs exceeded.
 
-***
 
-### search_location
+### `search_location`
 
 Gets all POI IDs and names within which a specified coordinates are located inside.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                                                                   | type        |
 |:---------|:--------------------------------------------------------------------------------------------------------------|:------------|
-| location | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
+| location | Location coordinates (see: [data types description section](../../../getting-started/introduction.md#data-types) section). | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -259,7 +254,7 @@ Gets all POI IDs and names within which a specified coordinates are located insi
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 34.178868, "lng": -118.599672}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -280,21 +275,20 @@ Gets all POI IDs and names within which a specified coordinates are located insi
 * `id` - int. Place ID that containing a searched location.
 * `label` - string. Place name.
 
-***
 
-### update
+### `update`
 
 Updates existing POI.
 
 **required sub-user rights:** `place_update`.
 
-#### parameters
+#### Parameters
 
 | name  | description     | type        |
 |:------|:----------------|:------------|
 | place | A place object. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -304,31 +298,30 @@ Updates existing POI.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"id": 111, "icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no POI with such ID.
 
-***
 
-### delete
+### `delete`
 
 Deletes POI with the specified ID.
 
 **required sub-user rights:** `place_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description              | type |
 |:---------|:-------------------------|:-----|
 | place_id | ID of the POI to delete. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -344,25 +337,24 @@ Deletes POI with the specified ID.
     {{ extra.api_example_url }}/place/delete?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no POI with such ID.
 
-***
 
-### batch_convert
+### `batch_convert`
 
 Converts batch of tab-delimited POIs and return list of checked POIs with errors.
 
 **Required sub-user rights:** `place_update`.
 
-#### parameters
+#### Parameters
 
 | name           | description                                                                                                       | type         |
 |:---------------|:------------------------------------------------------------------------------------------------------------------|:-------------|
@@ -374,7 +366,7 @@ Converts batch of tab-delimited POIs and return list of checked POIs with errors
 
 If `file_id` is set – `batch` parameter will be ignored.
 
-#### response
+#### Response
 
 ```json
 {
@@ -413,13 +405,12 @@ If `file_id` is set – `batch` parameter will be ignored.
     * `tag_names` - optional string array. Tag names of the POI.
 * `limit_exceeded` - boolean. `true` if given batch constrained by a limit.
 
-#### errors
+#### Errors
 
 * 234 - Invalid data format.
 
-***
 
-### upload
+### `upload`
 
 Upload POIs.
 
@@ -429,7 +420,7 @@ Upload POIs.
 
 CSV column separator is `;`, columns header required – `label;address;lat;lng;radius;external_id;description`.
 
-#### parameters
+#### Parameters
 
 | name             | description                                                                                                                       | type        |
 |:-----------------|:----------------------------------------------------------------------------------------------------------------------------------|:------------|
@@ -440,7 +431,7 @@ CSV column separator is `;`, columns header required – `label;address;lat;lng;
 | geocoder         | Geocoder type.                                                                                                                    | string      |
 | redirect_target  | Optional URL to redirect. If `redirect_target` passed return redirect to `<redirect_target>?response=<urlencoded_response_json>`. | string      |
 
-#### response
+#### Response
 
 ```json
 {
@@ -450,7 +441,7 @@ CSV column separator is `;`, columns header required – `label;address;lat;lng;
 }
 ```
 
-#### errors
+#### Errors
 
 * 233 - No data file – if file part is missing.
 * 234 - Invalid data format.

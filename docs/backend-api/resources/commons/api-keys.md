@@ -27,9 +27,8 @@ To distinguish keys from each other, you should give them meaningful names.
     Do not publish API keys anywhere. Having a key, you can perform almost any action in the 
     user's account. Make API calls only over HTTPS because the key is transmitted in cleartext.
 
-Find more details on API keys usage in our [instructions](../../how-to/get-api-key.md).
+Find more details on API keys usage in our [instructions](../../getting-started/authentication.md).
 
-***
 
 ## API Key object
 
@@ -45,27 +44,26 @@ Find more details on API keys usage in our [instructions](../../how-to/get-api-k
 * `create_date` - `date/time`. Key creation date.
 * `title` - string. Key title.
 
-***
 
 ## Actions
 
 API path: `/api/key`.
 
-### create
+### `create`
 
 Creates a new API key.
 
 This call is available only to the master user and only with a standard session
 obtained using a login/password via [/user/auth](./user/index.md#auth).
 
-#### parameters
+#### Parameters
 
 | name  | description                 | type   | restrictions                                           |
 |:------|:----------------------------|:-------|:-------------------------------------------------------|
 | hash  | Master user's session hash. | String | Not empty.                                             |
 | title | New key title               | String | Not empty, only printable characters. Max length: 255. |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -81,7 +79,7 @@ obtained using a login/password via [/user/auth](./user/index.md#auth).
     {{ extra.api_example_url }}/api/key/create?hash=a6aa75587e5c59c32d347da438505fc3&title=My+Super+App
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -94,30 +92,29 @@ obtained using a login/password via [/user/auth](./user/index.md#auth).
 }
 ```
 
-#### errors
+#### Errors
 
 * 4 - User or API key not found or session ended. 
   If the user session (`hash` param) is invalid or a non-standard session is used (for example, another API key).
 * 13 - Operation not permitted. If a call with subuser's session hash.
 * 268 - Over quota. If 20 keys have already been created in the user's account.
 
-***
 
-### delete
+### `delete`
 
 Deletes API key.
 
 This call is available only to the master user and only with a standard session
 obtained using a login/password via [/user/auth](./user/index.md#auth).
 
-#### parameters
+#### Parameters
 
 | name | description                 | type   | restrictions |
 |:-----|:----------------------------|:-------|:-------------|
 | hash | Master user's session hash. | String | Not empty.   |
 | key  | The API key to delete.      | String | Not empty.   |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -133,7 +130,7 @@ obtained using a login/password via [/user/auth](./user/index.md#auth).
     {{ extra.api_example_url }}/api/key/delete?hash=a6aa75587e5c59c32d347da438505fc3&key=5063e191d734e87e17987953c7a9a086
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -141,26 +138,25 @@ obtained using a login/password via [/user/auth](./user/index.md#auth).
 }
 ```
 
-#### errors
+#### Errors
 
 * 4 - User or API key not found or session ended.
   If the user session (`hash` param) is invalid or a non-standard session is used (for example, another API key).
 * 13 - Operation not permitted. If a call with subuser's session hash.
 * 201 – Not found in the database - if there is no specified API key in account.
 
-***
 
-### list
+### `list`
 
 Gets all of API keys for an account.
 
-#### parameters
+#### Parameters
 
 | name | description                 | type   | restrictions |
 |:-----|:----------------------------|:-------|:-------------|
 | hash | Master user's session hash. | String | Not empty.   |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -176,7 +172,7 @@ Gets all of API keys for an account.
     {{ extra.api_example_url }}/api/key/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -193,7 +189,7 @@ Gets all of API keys for an account.
 }
 ```
 
-#### errors
+#### Errors
 
 * 4 - User or API key not found or session ended.
   If the user session (`hash` param) is invalid or a non-standard session is used (for example, another API key).

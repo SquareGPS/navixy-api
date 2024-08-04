@@ -7,20 +7,19 @@ description: Contains API calls to control which geofences is available to which
 
 Contains API calls to control which geofences is available to which sub-user.
 
-***
 
 ## API actions
 
 API path: `/subuser/zones`.
 
-### bind
+### `bind`
 
 Gives access for sub-user to specified geofences.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name          | description                                                                                                              | type      |
 |:--------------|:-------------------------------------------------------------------------------------------------------------------------|:----------|
@@ -30,7 +29,7 @@ Gives access for sub-user to specified geofences.
 
 !!! warning "At least one of **access_to_all** and **zone_ids** parameters must be not null."
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -40,7 +39,7 @@ Gives access for sub-user to specified geofences.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "access_to_all": false, "zone_ids": [7548]}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -48,27 +47,27 @@ Gives access for sub-user to specified geofences.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 201 – Not found in the database – if sub-user/geofence does not exist or does not belong to current master user.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
 
-### unbind
+### `unbind`
 
 Disables access for sub-user to specified geofences.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                                    | type      |
 |:-----------|:---------------------------------------------------------------------------------------------------------------|:----------|
 | subuser_id | ID of a sub-user belonging to current account.                                                                 | int       |
 | zone_ids   | List of geofence IDs to associate with a specified sub-user. All geofences must belong to current master user. | int array |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -78,7 +77,7 @@ Disables access for sub-user to specified geofences.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "zone_ids": [7548]}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -86,26 +85,26 @@ Disables access for sub-user to specified geofences.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 201 – Not found in the database – if sub-user/geofence not exist or does not belong to current master user.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
 
-### list_ids
+### `list_ids`
 
 Gets a list of geofence IDs to which this sub-user has access.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name       | description                                    | type |
 |:-----------|:-----------------------------------------------|:-----|
 | subuser_id | ID of a sub-user belonging to current account. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -115,7 +114,7 @@ Gets a list of geofence IDs to which this sub-user has access.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -125,20 +124,20 @@ Gets a list of geofence IDs to which this sub-user has access.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
 
-### list
+### `list`
 
 Gets a list of geofences to which this sub-user has access.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                 | type                                                          |
 |:-----------|:--------------------------------------------------------------------------------------------|:--------------------------------------------------------------|
@@ -147,9 +146,9 @@ Gets a list of geofences to which this sub-user has access.
 | tag_ids    | Optional. Tag IDs assigned to geofences. Geofences found must include all tags from a list. | int array                                                     |
 | offset     | Optional. Offset from start of found geofences for pagination.                              | int                                                           |
 | limit      | Optional. Limit of found geofences for pagination.                                          | int                                                           |
-| order      | Optional. Specify list ordering. Can be any of `id`, `label`. Default order by `id`.        | [enum](../../../../backend-api/getting-started.md#data-types) |
+| order      | Optional. Specify list ordering. Can be any of `id`, `label`. Default order by `id`.        | [enum](../../../../backend-api/getting-started/introduction.md#data-types) |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -159,7 +158,7 @@ Gets a list of geofences to which this sub-user has access.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "offset": 0, "limit": 1000}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -170,7 +169,7 @@ Gets a list of geofences to which this sub-user has access.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.

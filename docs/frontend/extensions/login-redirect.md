@@ -9,7 +9,6 @@ There are a number of options to user login page URL, which you can submit as GE
 You may use this feature for providing the links on external resources (e.g. your website) 
 to let your users go straight to the section they need, use some language by default, etc.
 
-***
 
 ### Page section
 
@@ -21,7 +20,6 @@ You can define the section which your users land by default with `partition` par
 *   `register_full` – full registration form
 *   `password_remind` – password reminder
 
-***
 
 ### Language
 
@@ -34,7 +32,6 @@ Use `locale` parameter to define which language will be used:
 
 If this parameter is omitted, the language which was set by default for your service will be used.
 
-***
 
 ### Examples
 

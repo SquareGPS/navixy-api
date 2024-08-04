@@ -7,7 +7,6 @@ description: Information about email gateways objects. Email gateway can be owne
 
 Information about email gateway objects. Email gateway can be owned by a dealer or leased from platform owner.
 
-***
 
 ## Email gateway object
 
@@ -50,23 +49,22 @@ Leasable email gateway:
 }
 ```
 
-***
 
 ## API actions
 
 API path: `panel/gateways/email`.
 
-### list
+### `list`
 
 Gets list of available email gateways for the panel.
 
 *required permissions*: `email_gateways: "read"`.
 
-#### parameters
+#### Parameters
 
 Only session `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -82,7 +80,7 @@ Only session `hash`.
     {{ extra.api_example_url }}/panel/gateways/email/list?hash=fa7bf873fab9333144e171372a321b06
     ```
    
-#### response
+#### Response
 
 ```json
 {
@@ -122,6 +120,6 @@ Only session `hash`.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../backend-api/getting-started.md#error-codes) types only.
+[General](../../backend-api/getting-started/errors.md#error-codes) types only.

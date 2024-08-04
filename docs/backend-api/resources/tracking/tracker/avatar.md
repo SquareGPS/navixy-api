@@ -6,13 +6,12 @@ description: Contains API call to upload avatar for the tracker.
 
 Contains API call to upload avatar for the tracker.
 
-***
 
 ## API actions
 
 API base path: `/tracker/avatar`.
 
-### upload
+### `upload`
 
 Uploads avatar image for specified tracker.
 Then it will be available from `{{ extra.api_example_url }}/[api_static_path]/tracker/avatars/<file_name>`
@@ -31,7 +30,7 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 * `image/gif`
 * `image/webp`
 
-#### parameters
+#### Parameters
 
 | name            | description                                                                                     | type   |
 |:----------------|:------------------------------------------------------------------------------------------------|:-------|
@@ -39,7 +38,7 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 | file            | image file.                                                                                     | string |
 | redirect_target | Optional. URL to redirect If `redirect_target` passed return redirect to `?response=`.          | URL    |
 
-#### response
+#### Response
 
 ```json
 {
@@ -50,7 +49,7 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 
 * `value` - avatar file name.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when tracker with a `tracker_id` not found in the database.
 * 208 – Device blocked.

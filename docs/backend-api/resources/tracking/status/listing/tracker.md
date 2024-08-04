@@ -7,26 +7,25 @@ description: Contains API call which link together trackers and working status l
 
 Contains api call which link together trackers and working status lists.
 
-***
 
 ## API actions
 
 API base path: `/status/listing/tracker`.
 
-### assign
+### `assign`
 
 Assigns a working status list (or remove assignment) to the tracker.
 
 **required sub-user rights:** `tracker_update`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                       | type | format |
 |:-----------|:--------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.   | int  | 123456 |
 | listing_id | ID of the working status list. Omit this parameter completely, if you want remove the assignment. | int  | 12345  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -42,13 +41,13 @@ Assigns a working status list (or remove assignment) to the tracker.
     {{ extra.api_example_url }}/status/listing/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&listing_id=12345
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no tracker with such ID belonging to authorized user.
 * 204 - Entity not found – if there is no working status list with such ID.
