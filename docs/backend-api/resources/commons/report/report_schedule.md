@@ -7,7 +7,6 @@ description: Particular report can be delivered to user's mailbox regularly. Con
 
 Particular report can be delivered to user's mailbox regularly. Contains report schedule object description and API calls to interact with it.
 
-***
 
 ## schedule_entry object:
 
@@ -52,31 +51,30 @@ Particular report can be delivered to user's mailbox regularly. Contains report 
 * `enabled` - boolean. `true` if the scheduled report enabled.
 * `period` - string. Report period, "Xm" | "w" | "d" | "y".
 * `emails` - optional string array. List of emails.
-* `email_format` - [enum](../../../getting-started.md#data-types). Can be "pdf" | "xls".
+* `email_format` - [enum](../../../getting-started/introduction.md#data-types). Can be "pdf" | "xls".
 * `sending_time` - optional string. Local time for sending reports, default "00:00:00", hourly granularity.
 * `fire_time` - optional string. Last schedule fire time, ignored on create/update.
 * `last_result`  object with last report creation result.
     * `id` - int. An ID of generated report.
 
-***
 
 ## API actions
 
 API path: `/report/schedule`.
 
-### create
+### `create`
 
 Creates a new report schedule entry.
 
 **required sub-user rights**: `reports`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                      | type        |
 |:---------|:-----------------------------------------------------------------|:------------|
 | schedule | Schedule object without fields "id", "fire_time", "last_result". | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -86,7 +84,7 @@ Creates a new report schedule entry.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "schedule": {"enabled": true, "parameters": {"report": {"title": "Trip report", "trackers": [669673], "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}, "period": "1w", "email_zip": false, "email_format": "xls", "emails": ["test@example.com"], "sending_time": "00:00:00", "schedule": {"type": "weekdays", "weekdays": [1]}}}}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -97,27 +95,26 @@ Creates a new report schedule entry.
 
 * `id` - int. An ID of the created schedule entry.
 
-#### errors
+#### Errors
 
 * 217 - List contains nonexistent entities - if one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 222 - Plugin not found - if specified report plugin not found.
 * 236 - Feature unavailable due to.
 
-***
 
-### delete
+### `delete`
 
 Deletes report schedule with the specified ID.
 
 **required sub-user rights**: `reports`.
 
-#### parameters
+#### Parameters
 
 | name        | description                          | type |
 |:------------|:-------------------------------------|:-----|
 | schedule_id | ID of the report schedule to delete. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -133,7 +130,7 @@ Deletes report schedule with the specified ID.
     {{ extra.api_example_url }}/report/schedule/delete?hash=a6aa75587e5c59c32d347da438505fc3&schedule_id=1234567
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -141,23 +138,22 @@ Deletes report schedule with the specified ID.
 }
 ```
   
-#### errors
+#### Errors
 
 * 201 - Not found in the database - if there is no schedule with specified ID.
 
-***
 
-### list
+### `list`
 
 Get all report schedules belonging to user.
 
 **required sub-user rights**: `reports`.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -173,7 +169,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/report/schedule/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -215,25 +211,24 @@ Only API key `hash`.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../getting-started.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### update
+### `update`
 
 Update existing report schedule. 
 
 **required sub-user rights**: `reports`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                | type        |
 |:---------|:-----------------------------------------------------------|:------------|
 | schedule | Schedule object without fields "fire_time", "last_result". | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -243,7 +238,7 @@ Update existing report schedule.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "schedule": {"enabled": true, "parameters": {"report": {"title": "Trip report", "trackers": [669673], "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}, "period": "1w", "email_zip": false, "email_format": "xls", "emails": ["test@example.com"], "sending_time": "00:00:00", "schedule": {"type": "weekdays", "weekdays": [1]}}}}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -251,7 +246,7 @@ Update existing report schedule.
 }
 ```
 
-#### errors
+#### Errors
 
 * 217 - List contains nonexistent entities - if one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 222 - Plugin not found - if specified report plugin not found.

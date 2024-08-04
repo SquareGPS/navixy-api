@@ -7,26 +7,25 @@ description: Sub-user session actions to obtain its hash
 
 Sub-user session actions to obtain its hash.
 
-***
 
 ## API actions
 
 API path: `/subuser/session/`.
 
-### create
+### `create`
 
 Creates a new session for the specified sub-user and obtain its hash. Can be used to log in to sub-user's accounts.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name       | description                                      | type |
 |:-----------|:-------------------------------------------------|:-----|
 | subuser_id | ID of the sub-user belonging to current account. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -42,7 +41,7 @@ Creates a new session for the specified sub-user and obtain its hash. Can be use
     {{ extra.api_example_url }}/subuser/session/create?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -53,7 +52,7 @@ Creates a new session for the specified sub-user and obtain its hash. Can be use
 
 * `hash` - string. Hash of the created sub-user session.
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.

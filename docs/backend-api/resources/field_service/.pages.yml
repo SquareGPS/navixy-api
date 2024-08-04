@@ -1,0 +1,7 @@
+nav:
+  - Department: department.md
+  - Checkin: checkin.md
+  - Form: form
+  - Task: task
+  - Place: place
+  - Employee: employee

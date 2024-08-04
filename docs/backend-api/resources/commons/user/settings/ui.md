@@ -11,23 +11,22 @@ The user interface settings intended for storing settings of client applications
 One can imagine that this works similarly to the browser cache/local storage mechanism. The feature is that long-term 
 storage of these settings provided but not guaranteed - when the quota exceeded, data could be deleted.
 
-***
 
 ## API actions
 
 API path: `/user/settings/ui`.
 
-### read
+### `read`
 
 Reads setting value by key.
 
-#### parameters
+#### Parameters
 
 | name | description                                                                                                | type   |
 |:-----|:-----------------------------------------------------------------------------------------------------------|:-------|
 | key  | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, `_` and `-`. | string |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -37,7 +36,7 @@ Reads setting value by key.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "key": "tracker-icons"}'
     ```
 
-#### responses:
+#### Responses:
 
 ```json
 {
@@ -58,31 +57,30 @@ When nonexistent key provided:
 }
 ```
 
-#### errors
+#### Errors
 
-* [General](../../../../getting-started.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### update
+### `update`
 
 Sets setting value.
 
-#### parameters
+#### Parameters
 
 | name  | description                                                                                                | type   |
 |:------|:-----------------------------------------------------------------------------------------------------------|:-------|
 | key   | Length should be between 1 and 50 is 50 symbols, should only contain English letters, digits, `_` and `-`. | string |
 | value | A new UI config value. Length should be between 0 and 8192 symbols.                                        | string |
 
-#### responses:
+#### Responses:
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
-* [General](../../../../getting-started.md#error-codes) types.
+* [General](../../../../getting-started/errors.md#error-codes) types.
 * 268 - over quota. The amount of storage available for the user for these settings has been exhausted. New settings 
 cannot be added until the amount of stored data has been reduced.

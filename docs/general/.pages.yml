@@ -1,9 +1,7 @@
 title: General
 nav:
-  - overview.md
-  - getting-started.md
-  - get-involved.md
-  - contacts.md
-  - automation
-  - localizations
-  - postman.md
+  - Overview: getting-started.md
+  - Postman: postman.md
+  - Zapier: zapier.md
+  - Contribute: contribute
+  - Contact us: contacts.md

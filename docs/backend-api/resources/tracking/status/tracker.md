@@ -7,24 +7,23 @@ description: This resource contains methods to read and assign working status of
 
 This resource contains methods to read and assign working status of a particular tracker.
 
-***
 
 ## API actions
 
 API base path: `/status/tracker/`.
 
-### assign
+### `assign`
 
 Assign a working status to the tracker.
 
-#### parameters
+#### Parameters
 
 | name          | description                                                                                     | type | format |
 |:--------------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id    | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 | new_status_id | ID of the working status. Must belong to status list assigned to this tracker.                  | int  | 5      |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -40,7 +39,7 @@ Assign a working status to the tracker.
     {{ extra.api_example_url }}/status/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&new_status_id=5
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -67,10 +66,10 @@ Assign a working status to the tracker.
     * `lat` - int. Latitude.
     * `lng` - int. Longitude.
     * `address` - string. Address of last change.
-    * `changed` - [date/time](../../../getting-started.md#data-types). Change date and time.
-    * `origin` - [enum](../../../getting-started.md#data-types). Origin – who changed the status ("employee" or "supervisor").
+    * `changed` - [date/time](../../../getting-started/introduction.md#data-types). Change date and time.
+    * `origin` - [enum](../../../getting-started/introduction.md#data-types). Origin – who changed the status ("employee" or "supervisor").
 
-#### errors
+#### Errors
 
 * 13 - Operation not permitted – if status list does not allow for a supervisor to change status.
 * 201 - Not found in the database – if there is no tracker with such ID belonging to authorized user.
@@ -81,19 +80,18 @@ Assign a working status to the tracker.
 available.
 * 263 - No change needed, old and new values are the same – if new status is equal to current status of tracker.
 
-***
 
-### list
+### `list`
 
 Gets current assigned statuses for the specified trackers.
 
-#### parameters
+#### Parameters
 
 | name     | description                                             | type      | format             |
 |:---------|:--------------------------------------------------------|:----------|:-------------------|
 | trackers | List of the tracker's IDs belonging to authorized user. | int array | `[123456, 234567]` |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -103,7 +101,7 @@ Gets current assigned statuses for the specified trackers.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456,234567]}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -153,29 +151,28 @@ Gets current assigned statuses for the specified trackers.
     * `old_status_id` - int. Previous status ID. May be null.
     * `new_status_id` - int. Current status ID. May be null.
     * `location` - Location and address at which status change occurred.
-    * `changed` - [date/time](../../../getting-started.md#data-types). Date and time of change.
-    * `origin` - [enum](../../../getting-started.md#data-types). Origin – who changed the status ("employee" or "supervisor").
+    * `changed` - [date/time](../../../getting-started/introduction.md#data-types). Date and time of change.
+    * `origin` - [enum](../../../getting-started/introduction.md#data-types). Origin – who changed the status ("employee" or "supervisor").
 
-#### errors
+#### Errors
 
 * 217 - List contains nonexistent entities - if one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 221 - Device limit exceeded – if device limit set for the user's dealer has been exceeded.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature
  available.
 
-***
 
-### read
+### `read`
 
 Gets current assigned working status of the tracker.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -191,7 +188,7 @@ Gets current assigned working status of the tracker.
     {{ extra.api_example_url }}/status/tracker/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -221,10 +218,10 @@ Gets current assigned working status of the tracker.
     * `old_status_id` - int. Previous status ID. May be null.
     * `new_status_id` - int. Current status ID. May be null.
     * `location` - Location and address at which status change occurred.
-    * `changed` - [date/time](../../../getting-started.md#data-types). Date and time of change.
-    * `origin` - [enum](../../../getting-started.md#data-types). Origin – who changed the status ("employee" or "supervisor").
+    * `changed` - [date/time](../../../getting-started/introduction.md#data-types). Date and time of change.
+    * `origin` - [enum](../../../getting-started/introduction.md#data-types). Origin – who changed the status ("employee" or "supervisor").
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no tracker with such ID belonging to authorized user.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.

@@ -14,14 +14,12 @@ To add them, contact the developer of the application.
 
 !!! note "If your domain is using an HTTPS connection, the link to the application must also be HTTPS. Otherwise, you will encounter a mixed content error." 
 
-***
 
 ## Authorization in the application
 
 When you open an application through the Navixy interface, user session hash will be sent to the URL of the application by 
 GET method. This hash can be used for authorization within the application.
 
-***
 
 ## Cookie
 
@@ -49,7 +47,6 @@ The application can be installed for all users or for a specific one.
 
 !!! note "If the app will be installed to the specific user, please contact the support team every time you need to add this app to another user. If the app installed for whole panel - all new users will automatically get the app. Also, the app can be installed to whole panel instead of specific users."
 
-***
 
 ### Standalone version
 

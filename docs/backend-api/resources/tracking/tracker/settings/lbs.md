@@ -10,23 +10,22 @@ and settings tab in the UI. LBS (Location-based service) technology allows to de
 standard location services such as GPS, GLONASS, Galileo or Beidou.
 LBS locates the position using cellular base stations or Wi-Fi access points.
 
-***
 
 ## API actions
 
 API base path: `/tracker/settings/lbs`.
 
-### read
+### `read`
 
 Gets LBS settings for the specified tracker.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -42,7 +41,7 @@ Gets LBS settings for the specified tracker.
     {{ extra.api_example_url }}/tracker/settings/lbs/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -53,25 +52,24 @@ Gets LBS settings for the specified tracker.
 
 * `max_radius` - int. Max allowed radius for LBS points in meters. Min=0, max=10000.
 
-#### errors
+#### Errors
 
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-***
 
-### update
+### `update`
 
 Updates LBS settings for the specified tracker.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 | max_radius | Max allowed radius for LBS points in meters. Min=0, max=10000.                                  | int  | 1000   |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -87,13 +85,13 @@ Updates LBS settings for the specified tracker.
     {{ extra.api_example_url }}/tracker/settings/lbs/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&max_radius=1000
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.

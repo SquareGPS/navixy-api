@@ -9,17 +9,16 @@ description: API call to get user's trackers with special grouping by "contacts"
 
 API call to get user's trackers with special grouping by "contacts"
 
-***
 
 ## API actions
 
 API base path: `/tracker/contact`.
 
-### list
+### `list`
 
 Gets all user's trackers with special grouping by "contacts".
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -35,7 +34,7 @@ Gets all user's trackers with special grouping by "contacts".
     {{ extra.api_example_url }}/tracker/contact/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -64,6 +63,6 @@ where `contact` object is:
 * `trackers` - trackers belonging to "contact" which locations shared with current user.
 Click to see descriptions of type [tracker](./index.md#tracker-object-structure).
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database.

@@ -10,13 +10,12 @@ When submitting form values of type [file](../../form/field-types.md#file), [pho
 a file entry, then upload a file using provided credentials. File must adhere to limitations specified in the form field.
 Note that each file consumes space and contributes to file storage limit associated with user's account.
 
-***
 
 ## API actions
 
 API path: `/task/form/file`.
 
-### create
+### `create`
 
 Creates a new file entry associated with form's field. By making this call you basically "request permission" to upload
  a file. In return, you are provided with upload credentials (URL, form fields, etc.).<br>
@@ -28,7 +27,7 @@ If file created but not uploaded, it will be deleted after date/time specified i
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                                                                                             | type        |
 |:---------|:----------------------------------------------------------------------------------------------------------------------------------------|:------------|
@@ -38,7 +37,7 @@ If file created but not uploaded, it will be deleted after date/time specified i
 | filename | Optional. If specified, uploaded file will have the specified name. If not, name will be taken from actual file upload form.            | string      |
 | metadata | Optional. Metadata object (for images only).                                                                                            | JSON object |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -54,7 +53,7 @@ If file created but not uploaded, it will be deleted after date/time specified i
     {{ extra.api_example_url }}/task/form/file?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&field_id=file1&size=10
     ```
 
-#### response
+#### Response
 
 when using internal storage:
 ```json
@@ -185,7 +184,7 @@ Content-Type: image/png
 --WebAppBoundary--
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no task with such an ID, or task doesn't have form, or form has no
  field with such a field_id.

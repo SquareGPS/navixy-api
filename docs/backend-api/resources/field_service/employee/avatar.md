@@ -8,27 +8,26 @@ description: API calls to assign and upload avatars. Avatars can't be changed th
 Avatars can't be changed through `/employee/update`, you must use either `assign` (to set avatar to one of preset icons),
 or `upload` (to upload your own image). 
 
-***
 
 ## API actions
 
 API path: `/employee/avatar`.
 
-### assign
+### `assign`
 
 Assign `icon_id` (from standard icon set) to this employee/driver. 
 The `icon_id` can be `null` – this means that uploaded avatar should be used instead of icon.
 
 **required sub-user rights**: `employee_update`.
 
-#### parameters
+#### Parameters
 
 | name        | description                                             | type |
 |:------------|:--------------------------------------------------------|:-----|
 | employee_id | ID of the employee/driver to whom the icon will assign. | int  |
 | icon_id     | ID of the icon.                                         | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -44,19 +43,18 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
     {{ extra.api_example_url }}/employee/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=2132&icon_id=3654
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
     
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when employee/driver with `employee_id` not found.
 
-***
 
-### upload
+### `upload`
 
 Uploads avatar image for specified employee/driver.
 Then it will be available from /employee/avatars/
@@ -77,7 +75,7 @@ File part **mime** type must be one of:
 * `image/gif`
 * `image/webp`
 
-#### parameters
+#### Parameters
 
 | name            | description                                                            | type   |
 |:----------------|:-----------------------------------------------------------------------|:-------|
@@ -85,7 +83,7 @@ File part **mime** type must be one of:
 | file            | Image file.                                                            | string |
 | redirect_target | Optional. URL to redirect. If passed returns redirect to `?response=`. | string |
 
-#### response
+#### Response
 
 ```json
 {
@@ -96,7 +94,7 @@ File part **mime** type must be one of:
 
 * `value` - string. Uploaded file name.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when employee/driver with `employee_id` not found.
 * 233 – No data file - if `file` part not passed.

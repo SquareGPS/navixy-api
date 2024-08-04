@@ -6,7 +6,6 @@ description: Contains tracker retranslator binding object and API calls to bind/
 
 Contains tracker retranslator binding object and API calls to bind/unbind it to tracker or get already binded one.
 
-***
 
 ## Tracker retranslator binding object
 
@@ -17,22 +16,21 @@ Contains tracker retranslator binding object and API calls to bind/unbind it to 
 }
 ```
 
-* `retranslator_id` - int. An ID of the [retranslator](../../../tracking/retranslator/).
+* `retranslator_id` - int. An ID of the retranslator.
 * `fake_device_id` - string. Optional. If this field is set retranslator use it instead of real device ID to forward data.
 
-***
 
 ## API actions
 
 API base path: `/tracker/retranslator`.
 
-### bind
+### `bind`
 
 Creates or updates binding.
 
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name            | description                                                                                      | type   | format   |
 |:----------------|:-------------------------------------------------------------------------------------------------|:-------|:---------|
@@ -40,7 +38,7 @@ Creates or updates binding.
 | retranslator_id | Retranslator ID.                                                                                 | int    | 123      |
 | fake_device_id  | Optional. If set the retranslator will use this value instead of real device ID to forward data. | string | "AI568T" |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -56,32 +54,31 @@ Creates or updates binding.
     {{ extra.api_example_url }}/tracker/retranslator/bind?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&retranslator_id=123
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 * 201 - Not found - either tracker or retranslator are not found by provided ID
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 - Not allowed for clones of the device – if tracker is a clone.
 * 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "retranslation" tariff feature available.
 * 242 - There were errors during content validation – if `fake_device_id` is invalid for the retranslator protocol.
 
-***
 
-### list
+### `list`
 
 List tracker retranslators bound to tracker with ID=`tracker_id`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -97,7 +94,7 @@ List tracker retranslators bound to tracker with ID=`tracker_id`.
     {{ extra.api_example_url }}/tracker/retranslator/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -109,26 +106,25 @@ List tracker retranslators bound to tracker with ID=`tracker_id`.
 }
 ```
 
-#### errors
+#### Errors
 
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 
-***
 
-### unbind
+### `unbind`
 
 Unbinds a tracker from retranslator.
 
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name            | description                                                                                     | type | format |
 |:----------------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id      | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 | retranslator_id | Retranslator ID.                                                                                | int  | 123    |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -144,13 +140,13 @@ Unbinds a tracker from retranslator.
     {{ extra.api_example_url }}/tracker/retranslator/unbind?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&retranslator_id=123
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 * 219 - Not allowed for clones of the device – if tracker is a clone.

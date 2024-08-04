@@ -8,19 +8,18 @@ description: API calls for working with Geo Links. These are special sessions to
 API calls for working with Geo Links. These are special sessions to share the location of mobile objects.
 This is a new API replacing Weblocator.
 
-***
 
 ## API actions
 
 API path: `/tracker/location/link`.
 
-### create
+### `create`
 
 Creates new Geo Link.
 
 **required sub-user rights**: `weblocator_session_create`.
 
-#### parameters
+#### Parameters
 
 | name        | description                                           | type                  | restrictions                                |
 |:------------|:------------------------------------------------------|:----------------------|---------------------------------------------|
@@ -66,7 +65,7 @@ Creates new Geo Link.
 }
 ```
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -107,7 +106,7 @@ Creates new Geo Link.
     EOF
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -116,7 +115,7 @@ Creates new Geo Link.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if a user has insufficient rights.
 * 204 – Entity not found – if one or more of zones or places are not found.
@@ -124,11 +123,11 @@ Creates new Geo Link.
 * 236 – Feature unavailable due to tariff restrictions – if there is at least one tracker without `weblocator` tariff feature.
 * 268 – Link cannot be created due to quota violation.
 
-### update
+### `update`
 
 Updates Geo Link.
 
-#### parameters
+#### Parameters
 
 | name        | description                                           | type                  | restrictions                                |
 |:------------|:------------------------------------------------------|:----------------------|---------------------------------------------|
@@ -138,7 +137,7 @@ Updates Geo Link.
 | trackers    | List of tracker IDs with parameters for each tracker. | array of JSON objects | Allowed length 1 to 100.                    |
 | params      | Link parameters.                                      | JSON object           |                                             |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -181,7 +180,7 @@ Updates Geo Link.
     EOF
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -189,7 +188,7 @@ Updates Geo Link.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if a user has insufficient rights.
 * 201 – Not found in the database – if link with such an ID does not exist or does not belong to current user.
@@ -197,18 +196,18 @@ Updates Geo Link.
 * 217 – List contains nonexistent entities – if one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 236 – Feature unavailable due to tariff restrictions – if there is at least one tracker without `weblocator` tariff feature.
 
-### status/change
+### `status/change`
 
 Lets to activate and deactivate a link.
 
-#### parameters
+#### Parameters
 
 | name      | description                       | type    |
 |:----------|:----------------------------------|:--------|
 | id        | Session ID.                       | int     |
 | is_active | If `false`, a link is deactivated | boolean |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -218,7 +217,7 @@ Lets to activate and deactivate a link.
         -d '{"hash":"a6aa75587e5c59c32d347da438505fc3","id":104,"is_active":false}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -226,21 +225,21 @@ Lets to activate and deactivate a link.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database – if link with such an ID does not exist or does not belong to current user.
 
-### read
+### `read`
 
 Returns a link with a specified ID.
 
-#### parameters
+#### Parameters
 
 | name | description  | type |
 |:-----|:-------------|:-----|
 | id   | Session ID.  | int  |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -256,7 +255,7 @@ Returns a link with a specified ID.
     {{ extra.api_example_url }}/tracker/location/link/read?hash=a6aa75587e5c59c32d347da438505fc3&id=103
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -300,15 +299,15 @@ Returns a link with a specified ID.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database – if link with such an ID does not exist or does not belong to current user.
 
-### list
+### `list`
 
 Returns a list of a user's links.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                                                                                                 | type             |
 |:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------|
@@ -337,7 +336,7 @@ Returns a list of a user's links.
 * `description`
 * If no `sort` param is specified, then `sort` option will be "id=asc".
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -353,7 +352,7 @@ Returns a list of a user's links.
     {{ extra.api_example_url }}/tracker/location/link/list?hash=a6aa75587e5c59c32d347da438505fc3&offset=0&limit=1000
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -397,17 +396,17 @@ Returns a list of a user's links.
 }
 ```
 
-### delete
+### `delete`
 
 Deletes a link with a specified ID.
 
-#### parameters
+#### Parameters
 
 | name | description  | type |
 |:-----|:-------------|:-----|
 | id   | Session ID.  | int  |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -417,7 +416,7 @@ Deletes a link with a specified ID.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "id": 103}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -425,6 +424,6 @@ Deletes a link with a specified ID.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database – if link with such an ID does not exist or does not belong to current user.

@@ -8,7 +8,6 @@ description: Contains the vehicle object and API calls to interact with it.
 Contains the vehicle object and API calls to interact with it. This object is used to describe vehicle's information like
 VIN, speed, consumption and other. Vehicle object should be assigned to tracker object.
 
-***
 
 ## Vehicle object
 
@@ -62,8 +61,8 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 * `label` - string. Vehicle's label.
 * `max_speed` - int. Maximum speed of a vehicle.
 * `model` - string. Vehicle's model.
-* `type`  [enum](../../../getting-started.md#data-types). Vehicle's type. Can be "truck" | "car" | "bus" | "special".
-* `subtype` - optional [enum](../../../getting-started.md#data-types). Depends on type, null means undefined. Possible subtypes listed below.
+* `type`  [enum](../../../getting-started/introduction.md#data-types). Vehicle's type. Can be "truck" | "car" | "bus" | "special".
+* `subtype` - optional [enum](../../../getting-started/introduction.md#data-types). Depends on type, null means undefined. Possible subtypes listed below.
 * `garage_id` - nullable int. An ID of a garage.
 * `garage_organization_name` - optional string. Garage organization name.
 * `trailer` - optional string. Information about a trailer.
@@ -80,7 +79,7 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 * `payload_width` - decimal. Payload width in millimeters.
 * `passengers` - int. A maximum count of passengers.
 * `gross_weight` - optional int. Gross weight in kilograms.
-* `fuel_type` - [enum](../../../getting-started.md#data-types). Can be "petrol" | "diesel" | "gas". 
+* `fuel_type` - [enum](../../../getting-started/introduction.md#data-types). Can be "petrol" | "diesel" | "gas". 
 * `fuel_grade` - string. Grade of fuel used in a vehicle.
 * `norm_avg_fuel_consumption` - decimal. Normal average fuel consumption in liters per 100 km.
 * `fuel_tank_volume` - int. Fuel tank capacity in liters.
@@ -114,26 +113,25 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
         Subtypes: "mobile_crane", "racing", "buggy", "ambulance", "firefighter", "hearse", "shop", "harvester", "snowplow", "tractor", "grader", "excavator", "bulldozer", "armored", "amphibian", "boat"
     ```
 
-***
 
 ## API actions
 
 API path: `/vehicle`.
 
-### create
+### `create`
 
 Creates a new vehicle.
 
 **required sub-user rights**: `vehicle_update`
 
-##### parameters
+##### Parameters
 
 | name           | description                                                                                                    | type        |
 |:---------------|:---------------------------------------------------------------------------------------------------------------|:------------|
 | vehicle        | A [vehicle object](#vehicle-object) without `id` field.                                                        | JSON object |
 | force_reassign | Optional. Default is `true`. Will reassign the device to created vehicle even if it was assign to another one. | boolean     |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -143,7 +141,7 @@ Creates a new vehicle.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle": {"additional_info": null, "avatar_file_name": null, "chassis_number": "", "color": null, "frame_number": "", "free_insurance_policy_number": "", "free_insurance_valid_till": null, "fuel_cost": null, "fuel_grade": "", "fuel_tank_volume": null, "fuel_type": null, "garage_id": null, "gross_weight": null, "icon_color": "1E96DC", "icon_id": null, "label": "Vehicle", "liability_insurance_policy_number": "", "liability_insurance_valid_till": null, "manufacture_year": 2020, "max_speed": 160, "model": "", "norm_avg_fuel_consumption": null, "passengers": 1, "payload_height": 1868, "payload_length": 2820, "payload_weight": null, "payload_width": 1972, "reg_number": "AB234D", "subtype": "sedan", "tags": [], "tracker_id": null, "trailer": null, "type": "car", "tyre_size": "", "tyres_number": null, "vin": "45468743418579751", "wheel_arrangement": null}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -154,26 +152,25 @@ Creates a new vehicle.
 
 * `id` - int. An ID of the created vehicle.
 
-#### errors
+#### Errors
 
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 
-***
 
-### delete
+### `delete`
 
 Deletes a vehicles with the specified IDs. Only one of the following parameters must be specified.
 
 **required sub-user rights**: `vehicle_update`.
 
-#### parameters
+#### Parameters
 
 | name        | description                        | type      |
 |:------------|:-----------------------------------|:----------|
 | vehicle_id  | ID of the vehicle to delete.       | int       |
 | vehicle_ids | An array of vehicle IDs to delete. | int array |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -189,23 +186,22 @@ Deletes a vehicles with the specified IDs. Only one of the following parameters 
     {{ extra.api_example_url }}/vehicle/delete?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no vehicle with such an ID. This error will not occur if the vehicle_ids parameter is specified, deletion is silent in this case.
 
-***
 
-### list
+### `list`
 
 Gets all vehicles belonging to user.
 
-##### parameters
+##### Parameters
 
 | name   | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | type         |
 |:-------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|
@@ -214,7 +210,7 @@ Gets all vehicles belonging to user.
 | sort   | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["type=desc","label=asc"]`. Maximum 2 options in request. Available properties:<br/> - id<br/> - label<br/> - reg_number<br/> - model<br/> - type<br/> - garage_organization_name<br/> - vin<br/> - tracker_label<br/> - fuel_type<br/> - fuel_grade<br/> - norm_avg_fuel_consumption<br/> - fuel_tank_volume<br/> - payload_weight<br/> - chassis_number<br/> - subtype<br/> - wheel_arrangement<br/> - tyres_number<br/> - tyres_size<br/> - max_speed<br/> - passengers<br/> | string array |
 | filter | Optional. Filter vehicles by VIN, reg_number or label. Maximum 100 characters or null.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | string       |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -230,7 +226,7 @@ Gets all vehicles belonging to user.
     {{ extra.api_example_url }}/vehicle/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -279,23 +275,22 @@ Gets all vehicles belonging to user.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../getting-started.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### read
+### `read`
 
 Gets vehicle by specified ID.
 
-#### parameters
+#### Parameters
 
 | name       | description      | type |
 |:-----------|:-----------------|:-----|
 | vehicle_id | ID of a vehicle. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -311,7 +306,7 @@ Gets vehicle by specified ID.
     {{ extra.api_example_url }}/vehicle/read?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -360,26 +355,25 @@ Gets vehicle by specified ID.
 
 A [vehicle object](#vehicle-object).
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no vehicle with such an ID.
 
-***
 
-### update
+### `update`
 
 Updates existing vehicle.
 
 **required sub-user rights**: `vehicle_update`.
 
-#### parameters
+#### Parameters
 
 | name           | description                                                                                                    | type        |
 |:---------------|:---------------------------------------------------------------------------------------------------------------|:------------|
 | vehicle        | A [vehicle object](#vehicle-object).                                                                           | JSON object |
 | force_reassign | Optional. Default is `true`. Will reassign the device to created vehicle even if it was assign to another one. | boolean     |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -389,27 +383,26 @@ Updates existing vehicle.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle": {"additional_info": null, "avatar_file_name": null, "chassis_number": "", "color": null, "frame_number": "", "free_insurance_policy_number": "", "free_insurance_valid_till": null, "fuel_cost": null, "fuel_grade": "", "fuel_tank_volume": null, "fuel_type": null, "garage_id": null, "gross_weight": null, "icon_color": "1E96DC", "icon_id": null, "id": 223155, "label": "Vehicle", "liability_insurance_policy_number": "", "liability_insurance_valid_till": null, "manufacture_year": 2020, "max_speed": 160, "model": "", "norm_avg_fuel_consumption": null, "passengers": 1, "payload_height": 1868, "payload_length": 2820, "payload_weight": null, "payload_width": 1972, "reg_number": "AB234D", "subtype": "sedan", "tags": [], "tracker_id": null, "trailer": null, "type": "car", "tyre_size": "", "tyres_number": null, "vin": "45468743418579751", "wheel_arrangement": null}}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no vehicle with such an ID.
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 * 261 – Entity has external links - when `tracker_id` changes and there are some service tasks associated with this vehicle.
 
-***
 
-### batch_convert
+### `batch_convert`
 
 Convert batch of tab-delimited vehicles and return list of checked vehicles with errors.
 
 **required sub-user rights:** `vehicle_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                                                  | type         |
 |:---------|:---------------------------------------------------------------------------------------------|:-------------|
@@ -420,7 +413,7 @@ Convert batch of tab-delimited vehicles and return list of checked vehicles with
 
 If `file_id` is set – `batch` parameter will be ignored.
 
-#### response
+#### Response
 
 ```json
 {
@@ -479,6 +472,6 @@ where `checked_vehicle` is:
 
 * `errors` - optional array of objects.
 
-#### errors
+#### Errors
 
 * 234 - Invalid data format.

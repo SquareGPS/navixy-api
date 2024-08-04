@@ -7,7 +7,6 @@ description: Contains map layer object structure and API calls to interact with 
 
 Contains map layer object structure and API calls to interact with it.
 
-***
 
 ## Map layer object structure:
 
@@ -21,23 +20,22 @@ Contains map layer object structure and API calls to interact with it.
 * `id` - int. Map layer entity ID.
 * `label` - string. Map layer name.
 
-***
 
 ## API actions
 
 API path: `/map_layer`.
 
-### read
+### `read`
 
 Reads the body of the specified layer.
 
-#### parameters
+#### Parameters
 
 | name | description          | type | format |
 |:-----|:---------------------|:-----|:-------|
 | id   | ID of the map layer. | int  | 123456 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -54,25 +52,24 @@ Reads the body of the specified layer.
     ```
 
 
-#### response
+#### Response
 
 Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf-8`.
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
 
-***
 
-### list
+### `list`
 
 Returns metadata for all map layers for the user.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -88,7 +85,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/map_layer/listd?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -100,20 +97,19 @@ Only API key `hash`.
 }
 ```
 
-#### errors
+#### Errors
 
 No specific errors.
 
-***
 
-### upload
+### `upload`
 
 Uploads new map layer.
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload 
 (with the name "file").
 
-#### parameters
+#### Parameters
 
 | name            | description                                                                                                                         | type        |
 |:----------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------|
@@ -121,7 +117,7 @@ Uploads new map layer.
 | file            | A KML file upload containing map_layer data.                                                                                        | File upload |
 | redirect_target | Optional. URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>` | string      |
 
-#### response
+#### Response
 
 ```json
 {
@@ -132,48 +128,46 @@ Uploads new map layer.
 
 * `id` - int. ID of the created layer.
 
-#### errors
+#### Errors
 
 * 233 - No data file – if file part is missing.
 * 234 - Invalid data format – if file has wrong mime type.
 * 242 - Validation error – if uploaded file is not valid KML.
 * 268 - Over quota – if the user's quota for map layers exceeded.
 
-***
 
-### update
+### `update`
 
 Updates metadata for the specified map layer.
 
-#### parameters
+#### Parameters
 
 | name  | description                                                    | type        |
 |:------|:---------------------------------------------------------------|:------------|
 | layer | Map layer object described [here](#map-layer-object-structure) | JSON object |
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
 
-***
 
-### delete
+### `delete`
 
 Deletes specified layer.
 
-#### parameters
+#### Parameters
 
 | name | description          | type | format |
 |:-----|:---------------------|:-----|:-------|
 | id   | ID of the map layer. | int  | 123456 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -189,12 +183,12 @@ Deletes specified layer.
     {{ extra.api_example_url }}/map_layer/delete?hash=a6aa75587e5c59c32d347da438505fc3&id=123456
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no map layer with such ID belonging to current user.

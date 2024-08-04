@@ -1,3 +1,4 @@
 title: User
 nav:
-  - index.md
+  - User actions: index.md
+  - User menu: menu.md

@@ -1,8 +1,9 @@
 title: Resources
 nav:
-  - billing
-  - commons
-  - field_service
-  - fleet
-  - tracking
-  - location_link.md
+  - Overview: index.md
+  - Location Tracking: tracking
+  - Field Service Management: field_service
+  - Fleet Management: fleet
+  - Billing: billing
+  - GeoLinks: location_link.md
+  - User Commons: commons

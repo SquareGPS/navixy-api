@@ -10,7 +10,6 @@ description: Contains vehicle status listing object and API calls to interact wi
 
 Contains vehicle status listing object and API calls to interact with it.
 
-***
 
 ## Vehicle status listing object
 
@@ -28,17 +27,16 @@ Contains vehicle status listing object and API calls to interact with it.
 * `label` - string. Status name (description).
 * `color` - string. RGB-color.
 
-***
 
 ## API actions
 
 API path: `/vehicle/status/listing`.
 
-### read
+### `read`
 
 Gets all of user's vehicle statuses.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -54,7 +52,7 @@ Gets all of user's vehicle statuses.
     {{ extra.api_example_url }}/vehicle/status/listing/read?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -68,17 +66,16 @@ Gets all of user's vehicle statuses.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### update
+### `update`
 
 Updates user's vehicle statuses.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                                                                  | type             |
 |:---------|:-------------------------------------------------------------------------------------------------------------|:-----------------|
@@ -86,7 +83,7 @@ Updates user's vehicle statuses.
 
 Old vehicle statuses, which are not present in `statuses` array, will be deleted.
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -96,12 +93,12 @@ Old vehicle statuses, which are not present in `statuses` array, will be deleted
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "statuses": [{"id": 1, "order": 0, "label": "label123", "color": "FFFFFF"}]}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.

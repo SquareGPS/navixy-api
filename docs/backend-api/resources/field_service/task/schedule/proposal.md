@@ -7,29 +7,28 @@ description: Schedule proposals are "preview" of what tasks and routes will be c
 
 Schedule proposals are "preview" of what tasks and routes will be created at the specified date range.
 
-***
 
 ## API actions
 
 API base path: `/task/schedule/proposal`.
 
-### list
+### `list`
 
 Get all tasks and routes that will be created by schedule.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                                                         | type                                                    | 
 |:---------|:----------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
 | trackers | Optional. IDs of the trackers to which task is assigned.                                            | int array                                               |
-| from     | Show tasks that will be created AFTER this date, e.g. "2014-07-01 00:00:00", should not before now. | [date/time](../../../../getting-started.md#data-types)  |
-| to       | Show tasks will be created BEFORE this date, e.g. "2014-07-01 00:00:00", should not before `from`.  | [date/time](../../../../getting-started.md#data-types)  |
+| from     | Show tasks that will be created AFTER this date, e.g. "2014-07-01 00:00:00", should not before now. | [date/time](../../../../getting-started/introduction.md#data-types)  |
+| to       | Show tasks will be created BEFORE this date, e.g. "2014-07-01 00:00:00", should not before `from`.  | [date/time](../../../../getting-started/introduction.md#data-types)  |
 | filter   | Optional. Filter for task schedule label and description.                                           | string                                                  |
-| types    | Optional. Tasks or routes. For example: `["task", "route"]`.                                        | [enum](../../../../getting-started.md#data-types) array |
+| types    | Optional. Tasks or routes. For example: `["task", "route"]`.                                        | [enum](../../../../getting-started/introduction.md#data-types) array |
 
 * If `trackers`, `filter`, `from` or `to` is not passed or _null_ then appropriate condition not used to filter results.
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -39,7 +38,7 @@ Get all tasks and routes that will be created by schedule.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2020-11-24 00:00:00", "to": "2020-11-25 00:00:00"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -74,6 +73,6 @@ Get all tasks and routes that will be created by schedule.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.

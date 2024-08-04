@@ -7,21 +7,20 @@ description: Contains an API call to get list of user notifications.
 
 Contains an API call to get list of user notifications.
 
-***
 
 ## API actions
 
 API path: `/notification`.
 
-### list
+### `list`
 
 Lists user notifications.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -37,7 +36,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/notification/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -54,6 +53,6 @@ Only API key `hash`.
 * `message` - string. Message of notification.
 * `show_till` - date/time. Date until notification should be shown.
 
-#### errors
+#### Errors
 
-* [General](../../getting-started.md#error-codes) types only.
+* [General](../../getting-started/errors.md#error-codes) types only.

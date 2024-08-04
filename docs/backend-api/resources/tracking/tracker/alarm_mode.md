@@ -6,23 +6,22 @@ description: Contains API calls to read and set alarm mode of device.
 
 Contains API calls to read and set alarm mode of device.
 
-***
 
 ## API actions
 
 API base path: `/tracker/alarm_mode`.
 
-### read
+### `read`
 
 Gets the state of alarm mode of device.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -38,7 +37,7 @@ Gets the state of alarm mode of device.
     {{ extra.api_example_url }}/tracker/alarm_mode/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -49,26 +48,25 @@ Gets the state of alarm mode of device.
 
 * `enabled` - `true` if alarm mode enabled.
 
-#### errors
+#### Errors
 
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
 
-***
 
-### set
+### `set`
 
 Changes the state of alarm mode of device. The device must be online.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type    | format     |
 |:-----------|:------------------------------------------------------------------------------------------------|:--------|:-----------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int     | 999199     |
 | enabled    | `true` if alarm mode should be enabled.                                                         | boolean | true/false |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -84,13 +82,13 @@ Changes the state of alarm mode of device. The device must be online.
     {{ extra.api_example_url }}/tracker/alarm_mode/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.

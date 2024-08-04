@@ -7,7 +7,6 @@ description: Contains a call to prolong user session.
 
 Contains a call to prolong user session.
 
-***
 
 ## API actions
 
@@ -18,11 +17,11 @@ API path: `/user/session`.
 Prolongs current user session.
 Works only with standard user session (not with API key).
 
-#### parameters
+#### Parameters
 
 Only session `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -38,7 +37,7 @@ Only session `hash`.
     {{ extra.api_example_url }}/user/session/renew?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }

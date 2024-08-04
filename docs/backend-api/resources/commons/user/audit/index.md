@@ -7,23 +7,22 @@ description: Contains user audit check-in method that calls when user opens UI.
 
 Contains user audit check-in method that calls when user opens UI or activates the UI tab in the browser after it hasn't been used for more than 2 hours.
 
-***
 
 ## API actions
 
 API path: `/user/audit`.
 
-### checkin
+### `checkin`
 
 This action occurs when a customer opens the UI or activates the UI tab in the browser after it hasn't been used for more than 2 hours.
 Works only with standard user session (not with API key).
 This action type may be in the [user audit log](./audit_log.md#list).
 
-#### parameters
+#### Parameters
 
 Only session `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -39,7 +38,7 @@ Only session `hash`.
     {{ extra.api_example_url }}/user/audit/checkin?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -47,6 +46,6 @@ Only session `hash`.
 }
 ```
 
-#### errors
+#### Errors
 
-* [General](../../../../getting-started.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.

@@ -150,18 +150,18 @@ Menu description for Navixy Web UI.
 
 API base path: `panel/user/menu`
 
-### read
+### `read`
 
 Reads the menu description specified for a particular user.
 
-#### parameters
+#### Parameters
 
 | name        | description                         | type   |
 |:------------|:------------------------------------|:-------|
 | user_id     | ID of a user (required master user) | int    |
 | application | Application ID, e.g. "navixy_web"   | string |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -171,7 +171,7 @@ Reads the menu description specified for a particular user.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432, "application": "navixy_web"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -180,22 +180,22 @@ Reads the menu description specified for a particular user.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if a master user not found.
 
-### update
+### `update`
 
 Updates the menu description specified for a particular user. 
 
-#### parameters
+#### Parameters
 
 | name    | description                         | type        |
 |:--------|:------------------------------------|:------------|
 | user_id | ID of a user (required master user) | int         |
 | value   | A new value of menu description     | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -205,7 +205,7 @@ Updates the menu description specified for a particular user.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432, "value": {"application":"navixy_web","account_menu":[],"main_menu":[],"footer_menu":[]}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -213,21 +213,21 @@ Updates the menu description specified for a particular user.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if a master user not found.
 
-### default/read
+### `default/read`
 
 Reads the default menu description for all users.
 
-#### parameters
+#### Parameters
 
 | name        | description                       | type   |
 |:------------|:----------------------------------|:-------|
 | application | Application ID, e.g. "navixy_web" | string |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -237,7 +237,7 @@ Reads the default menu description for all users.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "application": "navixy_web"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -246,17 +246,17 @@ Reads the default menu description for all users.
 }
 ```
 
-### default/update
+### `default/update`
 
 Updates the default menu description for all users.
 
-#### parameters
+#### Parameters
 
 | name    | description                     | type        |
 |:--------|:--------------------------------|:------------|
 | value   | A new value of menu description | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -266,7 +266,7 @@ Updates the default menu description for all users.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "value": {"application":"navixy_web","account_menu":[],"main_menu":[],"footer_menu":[]}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {

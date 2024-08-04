@@ -7,17 +7,16 @@ description: API call for getting the route to destination point using Progorod 
 
 API call for getting the route to destination point using [Progorod router](https://giswiki.tmcrussia.com/index.php?title=%D0%9C%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F).
 
-***
 
 ## API actions
 
 API path: `/route/progorod`.
 
-### get
+### `get`
 
 Gets route points using Progorod router.
 
-#### parameters
+#### Parameters
 
 | name        | description                                                                                                                                                    | type                  |
 |:------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------|
@@ -28,10 +27,10 @@ Gets route points using Progorod router.
 | minsize     | Optional. Default=5. Smoothing parameter in conventional meters. Not recommended to set it less than distance between two neighbouring pixels on current zoom. | double                |
 | use_traffic | Optional. Default=`false` If it is `false` then use `mode=optimal` and use traffic=0, else `mode=comfort` and use traffic=1.                                   | boolean               |
 
-Where **location** described in [data types description section](../../../getting-started.md#data-types). Order of 
+Where **location** described in [data types description section](../../../getting-started/introduction.md#data-types). Order of 
 waypoints may be changed.
 
-#### response
+#### Response
 
 ```json
 {
@@ -55,7 +54,7 @@ waypoints may be changed.
     * `lat` - float. Latitude.
     * `lng` - float. Longitude.
 
-#### errors
+#### Errors
 
 * 215 - External service error.
 * 218 - Malformed external service parameters – Contains info about error:
@@ -75,6 +74,6 @@ waypoints may be changed.
 }
 ```
 
-* `type` - [enum](../../../getting-started.md#data-types). Type of error. One of: "not_set", "malformed" and "isolated".
-* `point` - [enum](../../../getting-started.md#data-types). Error point. One of: "start", "end", "waypoint" and "all".
+* `type` - [enum](../../../getting-started/introduction.md#data-types). Type of error. One of: "not_set", "malformed" and "isolated".
+* `point` - [enum](../../../getting-started/introduction.md#data-types). Error point. One of: "start", "end", "waypoint" and "all".
 * `index` - int. Passed only for a waypoint. Index of bad point in waypoints array.

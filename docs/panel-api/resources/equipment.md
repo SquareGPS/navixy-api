@@ -7,7 +7,6 @@ description: An API call to get the list of available equipment.
 
 API call to get the list of all available equipment.
 
-***
 
 ## Equipment object
 
@@ -27,23 +26,22 @@ API call to get the list of all available equipment.
 * `vendor` - string. A vendor's name.
 * `name` - string. A model's name used by a vendor.
 
-***
 
 ## API actions
 
 API path: `panel/equipment`.
 
-### list
+### `list`
 
 Returns list of all equipment which can be assigned to tracker bundles. 
 
 *required permissions*: `tracker_bundles: "read"`.
 
-#### parameters
+#### Parameters
 
 Only session `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -59,7 +57,7 @@ Only session `hash`.
     {{ extra.api_example_url }}/panel/equipment/list?hash=fa7bf873fab9333144e171372a321b06
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -74,6 +72,6 @@ Only session `hash`.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../backend-api/getting-started.md#error-codes) types only.
+[General](../../backend-api/getting-started/errors.md#error-codes) types only.

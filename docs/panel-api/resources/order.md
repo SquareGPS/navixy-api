@@ -7,25 +7,24 @@ description: Contains API call to read the order by its ID.
 
 API call to read the order by its ID.
 
-***
 
 ## API actions
 
 API path: `panel/order`.
 
-### read
+### `read`
 
 Reads order by specified ID.
 
 *required permissions*: `tracker_bundles: "read"`.
 
-#### parameters
+#### Parameters
 
 | name     | description | type |
 |:---------|:------------|:-----|
 | order_id | Order ID.   | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -41,7 +40,7 @@ Reads order by specified ID.
     {{ extra.api_example_url }}/panel/order/read?hash=fa7bf873fab9333144e171372a321b06&order_id=12341
     ```
 
-#### response
+#### Response
 
 ```json
     {
@@ -78,6 +77,6 @@ Reads order by specified ID.
     }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if specified order does not exist.

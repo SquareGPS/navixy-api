@@ -8,24 +8,23 @@ description: API calls to read and set sensor calibration data.
 Contains API calls to read and set sensor calibration data which is used for calibration received data from sensors to the
 convenient format. For example, analog fuel sensor provides Volts that should be calibrated to Liters.
 
-***
 
 ## API actions
 
 API path: `/tracker/sensor/calibration_data`.
 
-### read
+### `read`
 
 Gets calibration data for sensor.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 | sensor_id  | ID of the sensor.                                                                               | int  | 12345  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -41,7 +40,7 @@ Gets calibration data for sensor.
     {{ extra.api_example_url }}/tracker/sensor/calibration_data/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&sensor_id=12345
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -52,20 +51,19 @@ Gets calibration data for sensor.
 
 * `value` - list of objects containing calibration data. 
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database (if there is no tracker with such ID belonging to authorized user).
 * 228 – Not supported by the sensor (if sensor doesn't support calibration).
 
-***
 
-### update
+### `update`
 
 Replaces the calibration data for a sensor.
 
 **required sub-user rights:** `tracker_update`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type                 | format                                         |
 |:-----------|:------------------------------------------------------------------------------------------------|:---------------------|:-----------------------------------------------|
@@ -73,7 +71,7 @@ Replaces the calibration data for a sensor.
 | sensor_id  | ID of the sensor.                                                                               | int                  | 12345                                          |
 | data       | Array of calibration data objects.                                                              | array of JSON object | `[{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]` |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -83,22 +81,21 @@ Replaces the calibration data for a sensor.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 12345, "data": [{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 228 – Not supported by the sensor - if sensor doesn't support calibration.
 * 228 – Not supported by the sensor - if sensor doesn't support calibration.
 * 219 – Not allowed for clones of the device - if tracker is clone.
 
-***
 
-### upload_omnicomm
+### `upload_omnicomm`
 
 Replaces the calibration data for a sensor from Omnicomm LLS monitor's XML configuration file. If XML file contains
 information about multiple sensors, user must specify which sensor number to use.
@@ -108,7 +105,7 @@ information about multiple sensors, user must specify which sensor number to use
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being an XML file upload 
 (with the name "file").
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type        |
 |:-----------|:------------------------------------------------------------------------------------------------|:------------|
@@ -116,13 +113,13 @@ information about multiple sensors, user must specify which sensor number to use
 | sensor_id  | ID of the sensor.                                                                               | int         |
 | file       | A file upload containing LLS monitor XML file.                                                  | file upload |
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 228 – Not supported by the sensor - if sensor doesn't support calibration.
