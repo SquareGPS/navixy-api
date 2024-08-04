@@ -5,10 +5,13 @@ description: API calls for interacting with activation codes used for device reg
 
 # Activation code
 
-API calls for managing activation codes used in device activation.
+Activation codes in Navixy streamline the device activation process by allowing users to set up devices themselves, ensuring they are configured with the appropriate plan and benefits from the start. These codes can include bonuses, free days, and monetary credits to a user’s balance upon activation, and are tied to specific plans. 
 
+Depending on the dealer's preference, activation codes can be optional or required. Dealers can choose to restrict device activation to only those they supply, preventing users from adding devices purchased elsewhere without an activation code received from the dealer.
 
-## Activation code object
+## Activation Code Object
+
+Let's explore the Activation Code object using the example:
 
 ```json
 {
@@ -24,8 +27,6 @@ API calls for managing activation codes used in device activation.
     "tariff_name": "Tracker demo plan"
 }
 ```
-
-Here's the corrected markdown file for clarity:
 
 * `tariff_id` - int. The ID of the plan.
 * `bonus_amount` - int. The bonus amount that will be added to the user's balance when the device with this code is activated.

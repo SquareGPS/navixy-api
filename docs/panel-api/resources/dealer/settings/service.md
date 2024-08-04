@@ -2,13 +2,13 @@
 title: Service
 description: API calls to read and update panel's service settings. 
 ---
+# Service Settings
 
-# Service
-
-API calls to read and update panel's service settings.
-
+Service settings in Navixy allow administrators to configure and customize various aspects of the monitoring service. These settings control the appearance and functionality of the platform, such as default maps, user interfaces, branding elements, and user registration options. By adjusting these parameters, administrators can tailor the platform to better meet the needs of their users and reflect their company's branding and operational requirements.
 
 ## Service settings object
+
+Let's explore the Service Settings object using the following example:
 
 ```json
 {
@@ -57,49 +57,45 @@ API calls to read and update panel's service settings.
 }
 ```
 
-* `service_title` - string. Service name.
+* `service_title` - string. Name of the service.
 * `locale` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). Default locale of the dealer.
-* `demo_login` - string. If not empty, demo button will use this login to authorize.
-* `demo_password` - string. If not empty, demo button will use this password to authorize.
-* `maps` - [enum](../../../../backend-api/getting-started/introduction.md#data-types) array. Maps available in monitoring system. When a domain is platform owner's subdomain then only free maps are available.
-* `default_map` - default map settings object.
+* `demo_login` - string. Login used for demo authorization if not empty.
+* `demo_password` - string. Password used for demo authorization if not empty.
+* `maps` - [enum](../../../../backend-api/getting-started/introduction.md#data-types) array. Maps available in the monitoring system. Only free maps are available if the domain is the platform owner's subdomain.
+* `default_map` - Default map settings object.
     * `type` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). Default map code.
-    * `location` - location object. Default location to show on the map when monitoring opens. Location object described
-     in [data types description section](../../../../backend-api/getting-started/introduction.md#data-types).
+    * `location` - Location object. Default location to show on the map when monitoring opens. Described in the [data types description section](../../../../backend-api/getting-started/introduction.md#data-types).
     * `zoom` - int. Default zoom level to use.
-* `currency` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). Code of the currency which can be shown in UI.
-* `payment_link` - string. A link to dealer's payment system. Can be null or empty.
+* `currency` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). Currency code shown in the UI.
+* `payment_link` - string. Link to the dealer's payment system. Can be null or empty.
 * `promo_url` - string. Customizable "About company" URL. Can be null or empty.
 * `google_client_id` - string. Google Maps client ID (not supported by the interface yet).
-* `domain` - string. Domain which will be used for monitoring system.
-* `favicon` - string. Nullable, path or URL to dealer's interface favicon.
-* `app_logo` - string. Nullable, path or URL to dealer's mobile app logotype.
-* `logo` - string. Nullable, path or URL to dealer's logotype.
-* `document_logo` - string. Nullable, path or URL to dealer's logotype for documents.
-* `login_wallpaper` - string. Nullable, path or URL to dealer's interface login wallpaper.
-* `desktop_wallpaper` - string. Nullable, path to dealer's interface wallpaper.
-* `login_footer` - string. Nullable, footer which will be included in login page.
-* `allow_registration` - boolean. If `true` allows self-registration of users.
-* `show_mobile_apps` - boolean. If `true` when entering the service from a mobile device or tablet, users will be prompted
- to download the mobile application or continue using the mobile web UI.
-* `default_user_settings` - default user settings object.
+* `domain` - string. Domain used for the monitoring system.
+* `favicon` - string. Path or URL to the dealer's interface favicon. Nullable.
+* `app_logo` - string. Path or URL to the dealer's mobile app logotype. Nullable.
+* `logo` - string. Path or URL to the dealer's logotype. Nullable.
+* `document_logo` - string. Path or URL to the dealer's logotype for documents. Nullable.
+* `login_wallpaper` - string. Path or URL to the dealer's interface login wallpaper. Nullable.
+* `desktop_wallpaper` - string. Path to the dealer's interface wallpaper. Nullable.
+* `login_footer` - string. Footer included on the login page. Nullable.
+* `allow_registration` - boolean. Allows self-registration of users if `true`.
+* `show_mobile_apps` - boolean. Prompts users to download the mobile app or continue using the mobile web UI when entering the service from a mobile device or tablet if `true`.
+* `default_user_settings` - Default user settings object.
     * `geocoder` - string. Default geocoder.
     * `route_provider` - string. Default route provider.
     * `measurement_system` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). Measurement system.
     * `date_format` - Optional [enum](../../../../backend-api/getting-started/introduction.md#data-types). Date representation.
     * `hour_mode` - Optional [enum](../../../../backend-api/getting-started/introduction.md#data-types). Time representation.
-    * `translit` - boolean. SMS transliteration. If `true` allows you to reduce the number of characters in an SMS message
-     by replacing the characters of the national alphabet with close Latin ones.
-* `display_model_features_link` - boolean. When `true` shows in model info link to navixy.com (UI option).
-* `limited_domain` - boolean. If `true`, paas domain has limitations.
-* `allowed_maps` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). List of maps available for selection in "maps" list.
-* `color_theme` - string. 128 chars max. Color theme code or empty string (for default theme).
-* `app_color_theme` - string. 128 chars max. Mobile app color theme code or empty string (for default theme).
-* `privacy_policy_link` - string. A link to privacy policy.
-* `tos` - string. Terms Of Service text.
-* `no_register_commands` - boolean. If `true` then do not send commands to devices on activation.
-* `default_user_time_zone` - string. [Time zone id](../../timezone.md) for new users to be created via [user/upload](../../user/index.md#upload).
-  Also, this zone will be selected by default when creating a new user in the Navixy Admin Panel.
+    * `translit` - boolean. SMS transliteration. Reduces the number of characters in an SMS by replacing the characters of the national alphabet with close Latin ones if `true`.
+* `display_model_features_link` - boolean. Shows a link to navixy.com in model info if `true` (UI option).
+* `limited_domain` - boolean. Indicates whether the PaaS domain has limitations if `true`.
+* `allowed_maps` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). List of maps available for selection in the "maps" list.
+* `color_theme` - string. Max 128 characters. Color theme code or empty string (for the default theme).
+* `app_color_theme` - string. Max 128 characters. Mobile app color theme code or empty string (for the default theme).
+* `privacy_policy_link` - string. Link to the privacy policy.
+* `tos` - string. Terms of Service text.
+* `no_register_commands` - boolean. Prevents sending commands to devices on activation if `true`.
+* `default_user_time_zone` - string. [Time zone ID](../../timezone.md) for new users created via [user/upload](../../user/index.md#upload). This time zone is also selected by default when creating a new user in the Navixy Admin Panel.
 
 
 ## API actions

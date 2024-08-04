@@ -5,8 +5,9 @@ description: API calls to interact with Subpaases.
 
 # Subdealer (Sub PaaS) actions
 
-API calls to interact with subdealers, also referred to as 'Sub PaaS'.
+IIn Navixy, a Subdealer (Sub PaaS) account is designed for dealers who need to manage multiple accounts that provide services independently. This feature is ideal for dealers who act as larger distributors or service providers. With Sub PaaS accounts, dealers can create and manage additional sub-accounts, each with its own users, devices, and settings.
 
+These sub-accounts function similarly to the main dealer account but allow for more granular control and management. This setup is perfect for servicing other dealers (subdealers) or larger enterprises that require separate PaaS accounts, such as a service run on their own domain. It streamlines operations of multiple independent organizations, while maintaining oversight from the main dealer account.
 
 ## Subdealer (Sub PaaS) object
 

@@ -5,7 +5,7 @@ description: API calls to interact with trackers in the admin panel.
 
 # Tracker
 
-API calls to interact with trackers in the admin panel.
+API calls to manage GPS tracking devices within the Admin Panel.
 
 
 ## Tracker object

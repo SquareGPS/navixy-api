@@ -5,7 +5,7 @@ description: API calls for interaction with user plans.
 
 # Plans
 
-API calls for interaction with user plans.
+API calls for managing user plans within the service platform (PaaS or Sub Paas).
 
 
 ## Plan object

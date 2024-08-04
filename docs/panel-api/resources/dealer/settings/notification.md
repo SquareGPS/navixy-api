@@ -3,28 +3,29 @@ title: Notification
 description: API calls to read and update notification settings. 
 ---
 
-# Notification
+# Notification Settings
 
-API calls to read and update notification settings.
+Notification settings in the Navixy Admin Panel are used to manage and configure alerts and notifications for various events and conditions. These settings allow you to customize notification channels, specifying how notifications are delivered, including options like email, SMS, or push notifications.
 
+## Notification Settings Object
 
-## Notification settings object
+Let's explore the Notification Setting object using the following example:
 
 ```json
 {
-    "email_from": "NAVIXY <no-reply@navixy.com>", 
-    "email_footer": "\n\n---nSincerely, Navixy",
+    "email_from": "Navixy <no-reply@navixy.com>", 
+    "email_footer": "\n\n—-nSincerely, Navixy",
     "email_special": "no-reply@navixy.com",
     "sms_originator": "demo.navixy.com",
     "caller_id": "491761234543"
 }
 ```
 
-* `email_from` - string. Email from which notification messages will be sent. Can be email address ("no-reply@navixy.com") or email with a name ("NAVIXY <no-reply@navixy.com>").
-* `email_footer` - string. Footer which is added to all notification emails. Arbitrary text up to 600 characters.
-* `email_special` - string. Special email address for PaaS reports.
-* `sms_originator` - string. Max length is 20, must match `(p{L}|d|[-'" .,:/])*`. E.g. "demo.navixy.com" or "491761234567".
-* `caller_id` - string. Voice messages originator. Max length is 20, must match `(p{L}|d|[-'" .,:/])*`. E.g. "491761234543".
+* `email_from` - string. The email address from which notification messages will be sent. This can be a simple email address ("no-reply@navixy.com") or an email address with a name ("Navixy <no-reply@navixy.com>").
+* `email_footer` - string. A footer added to all notification emails. This can be any text up to 600 characters.
+* `email_special` - string. A special email address used for PaaS reports.
+* `sms_originator` - string. The originator for SMS notifications. The maximum length is 20 characters and must match the regex pattern `(p{L}|d|[-'" .,:/])*`, e.g., "demo.navixy.com" or "491761234567".
+* `caller_id` - string. The originator for voice messages. The maximum length is 20 characters and must match the regex pattern `(p{L}|d|[-'" .,:/])*`, e.g., "491761234543".
 
 
 ## API actions

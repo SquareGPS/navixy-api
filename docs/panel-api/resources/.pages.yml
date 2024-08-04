@@ -4,8 +4,8 @@ nav:
   - Account: account.md
   - User: user
   - Tracker: tracker.md
-  - Equipment: equipment.md
   - Plan: tariff.md
   - Gateways: gateways.md
   - Timezone: timezone.md
-  - Order: order.md
+  - Equipment inventory: equipment.md
+  - Equipment order: order.md

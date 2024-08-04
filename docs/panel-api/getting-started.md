@@ -3,63 +3,54 @@ title: Getting Started
 description: Overview of Navixy Panel API
 ---
 
-## Navixy Panel API
+# Navixy Admin Panel API
 
-The structure of Panel API (aka Administration API) – request paths, 
-response and error formats – is the same as for user API, so we highly 
-recommend reading [Backend API: getting started](../backend-api/getting-started/introduction.md) 
+The Admin Panel API (or Panel API for short) allows developers to manage various entities within the Navixy Admin Panel. This documentation provides detailed information on how to interact with the API, including the methods and parameters required for effective management of your Navixy environment.
 
-Two main differences are _authorization system_ and _request paths_.
+## Introduction
 
+The Panel API is designed to help administrators and developers manage the Navixy platform more efficiently. Whether you are managing users, devices, or settings, this API provides the necessary tools to automate and streamline these tasks.
 
-### Panel API base URL
+The structure of the Panel API mirrors that of the Backend API, making it advantageous to read [Backend API: Getting Started](../backend-api/getting-started/introduction.md). The only differences lie in the authorization system and request paths.
 
-Panel API resides in `panel/` subsection of API URL. So you can determine URL to API calls like this:
+### Base URL
 
-*  `https://api.eu.navixy.com/v2/panel/` for European Navixy ServerMate platform.
-*  `https://api.us.navixy.com/v2/panel/` for American Navixy ServerMate platform.
-*  `https://api.your_domain/panel/` for the self-hosted (On-Premise) installations.
+The Panel API is accessible via the `panel/` subsection of the API URL. The URLs for different Navixy platforms are as follows:
 
-For example, to make `account/auth` 
-API call in Navixy ServerMate, you should use the URL: 
+* European Navixy ServerMate platform: `https://api.eu.navixy.com/v2/panel/`
+* American Navixy ServerMate platform: `https://api.us.navixy.com/v2/panel/`
+* Self-hosted (On-Premise) installations: `https://api.your_domain/panel/`
+
+For example, to make an `account/auth` API call on the Navixy ServerMate platform, you would use the following URL:
 
     {{ extra.api_example_url }}/panel/account/auth
 
-
 ### Authorization
 
-In order to authorize, you should make a GET or POST request to 
-`/account/auth/` with `login` (your administration panel login) 
-and `password` (its password), which returns JSON object, 
-containing `hash` (hexadecimal unique string) of the newly 
-created Panel API session, which you should use in other Panel API calls.
+To authorize, make a GET or POST request to `/account/auth/` with your `login` (your administration panel login) and `password`. This will return a JSON object containing a `hash` (a unique hexadecimal string) for the newly created Panel API session. Use this session hash in other Panel API calls.
 
-Please note that you cannot use Panel API session hash in user API or vice versa.
+Please note that you cannot use the Panel API session hash in the user API, and vice versa.
 
-You must keep in mind that string type containing any symbols except ASCII 
-codes from 32 to 127 must be [URL encoded][2] before transfer.
+Keep in mind that any string containing symbols outside ASCII codes 32 to 127 must be [URL encoded](https://en.wikipedia.org/wiki/Percent-encoding) before transfer.
 
-   [2]: https://en.wikipedia.org/wiki/Percent-encoding
+#### Example Authorization
 
-For example, in on-premise installations, there is a default user with login 
-`admin` and password `admin`. You can authorize with it like this 
-(all HTTP request examples are made using [curl](https://curl.haxx.se/) *nix utility):
+In on-premise installations, there is a default user with login `admin` and password `admin`. You can authorize with these credentials as follows (all HTTP request examples are made using the [curl](https://curl.haxx.se/) *nix utility):
 
-=== "POST"
-    ```abap
-    $ curl -d 'login=admin&password=admin' \
-           -X POST http://api.domain.com/v2/panel/account/auth/
-    ```
+##### POST Request
+```sh
+$ curl -d 'login=admin&password=admin' \
+       -X POST http://api.domain.com/v2/panel/account/auth/
+```
 
-=== "GET"
-    This method is not recommended. Just for example:
-    ```abap
-    $ curl http://api.domain.com/panel/v2/account/auth/?login=admin&password=admin
-    ```
+##### GET Request
+This method is not recommended and provided just for example:
+```sh
+$ curl http://api.domain.com/panel/v2/account/auth/?login=admin&password=admin
+```
 
-
-And you'll get answer like this:
-
+##### Response
+You will receive a response like this:
 ```json
 {
   "hash": "1dc2b813769d846c2c15030884948117",
@@ -68,18 +59,15 @@ And you'll get answer like this:
 }
 ```
 
-The value returned in `hash` field (in this example it is 
-`1dc2b813769d846c2c15030884948117`) should be saved for further use.
+The value returned in the `hash` field (in this example, `1dc2b813769d846c2c15030884948117`) should be saved for further use.
 
-If API call completes successfully, the HTTP response code is `200 OK`, 
-and `success` field in returned JSON is equal to `true`.
+### Error Handling
 
-If there is any error, for example, wrong credentials were used, HTTP 
-response code differs from 200, `success` field is `false`, and `status` 
-field contains the description of the error.
+When an API call completes successfully, the HTTP response code will be `200 OK`, and the `success` field in the returned JSON will be `true`.
 
-For example:
+In case of an error, such as incorrect credentials, the HTTP response code will differ from 200, the `success` field will be `false`, and the `status` field will contain a description of the error.
 
+#### Example Error Response
 ```json
 {
   "success": false,
@@ -90,31 +78,25 @@ For example:
 }
 ```
 
-The "description" field is just a human-readable hint, you should not check 
-its contents programmatically as it may change in the future.
+The `description` field provides a human-readable hint and should not be used programmatically as it may change in the future.
 
-For more info, please see `account/auth`.
+For more information, please refer to `account/auth`.
 
+### Using Session Hash
 
-### Using session hash
+After successful authorization, you can make other Panel API calls. Always pass the session hash you obtained earlier as the `hash` parameter. This parameter is required by default, even though it is not listed in the parameter list of every API call.
 
-After successful authorization, you can make other Panel API calls. 
-You should **always** pass the session hash you obtained earlier as the `hash` parameter.
-This parameter is not listed in parameters list of every API call, but still required by default.
+#### Example
+To list the first ten users belonging to your system account, use the following Panel API call (using the hash from the previous example):
 
-For example, to list first ten users belonging to your system account,
-you can use the following Panel API call (the hash is from previous example):
-
-```abap
+```bash
 $ curl -X POST 'http://api.domain.com/v2/panel/user/list/' \
        -d 'hash=1dc2b813769d846c2c15030884948117&limit=10'
 ```
 
+### Session Expiration
 
-### Session expiration
-
-Each session, and its associated hash key, has a limited lifespan that defaults to 24 hours. This is a change from the 
-previous setting of 30 days, implemented for improved security. You need to periodically obtain a new hash key.
+Each session, along with its associated hash key, has a default lifespan of 24 hours. You need to periodically obtain a new hash key.
 
 If you attempt to make a Panel API call with an expired session hash, you will receive an error:
 
@@ -128,16 +110,13 @@ If you attempt to make a Panel API call with an expired session hash, you will r
 }
 ```
 
-In this case, just obtain new hash using `account/auth`.
+To resolve this, simply obtain a new hash using `account/auth`.
 
+### How to Securely Share Panel's Credentials
 
-### How to securely share panel's credentials
+To securely share access to the admin panel, we recommend creating supplemental technical (service) accounts. At this time it can be done by [contacting the Navixy support team](../general/contacts.md) and providing the email address for the technical account. You will then receive a login and password for the account.
 
-To share access to the admin panel, and at the same time not to worry about data security, we recommend contacting the 
-technical support team to create a technical panel account. Provide the email address for which the technical account 
-will be created. You will receive a login and password for the account.
-
-The possibilities of tech account:
+Capabilities of a technical accounts:
 
 * Add new users
 * Modify data of current users
@@ -147,39 +126,34 @@ The possibilities of tech account:
 * Change tracker data plan
 * Analyze incoming data with the air console
 
-Technicians are not allowed:
+Restrictions for technical accounts:
 
 * Delete users
 * Remove trackers
-* Add, change, delete plans
+* Add, change, or delete plans
 * Change platform settings
-
 
 ### Panel API Permissions
 
-Every call to panel api requires a set (possibly empty) of permissions. 
-To determine if user is allowed to execute api call, user's permissions 
-is compared with call's required permissions. If user does not have at least 
-one required permission, the call is not executed and error "Operation not permitted" is returned.
+Every call to the Panel API requires a set (possibly empty) of permissions. To determine if a user is allowed to execute an API call, the user's permissions are compared with the required permissions for the call. If the user does not have at least one required permission, the call is not executed, and an "Operation not permitted" error is returned.
 
-Each permission is defined as a pair of category (e.g. `trackers`) and operation (e.g. `read`).
-A set of permissions within one category is often grouped as in the following example:
+Each permission is defined as a pair of category (e.g., `trackers`) and operation (e.g., `read`). A set of permissions within one category is often grouped, as shown in the following example:
 
-*   `trackers`: create, read
+* `trackers`: create, read
 
 This defines two permissions: (`trackers`, `create`) and (`trackers`, `read`).
 
 List of all possible categories and operations:
 
-*   `accounting`: generate
-*   `activation_code`: create, read, update
-*   `base`: get_dealer_info
-*   `notification_settings`: read, update
-*   `service\_settings`: read, update
-*   `tariffs`: create, read, update
-*   `trackers`: create, read, update, delete
-*   `transactions`: create, read, update
-*   `users`: create, read, update, delete
-*   `user\_sessions`: create
-*   `sms`: create
-*   `tracker\_bundles`: read, update
+* `accounting`: generate
+* `activation_code`: create, read, update
+* `base`: get_dealer_info
+* `notification_settings`: read, update
+* `service_settings`: read, update
+* `tariffs`: create, read, update
+* `trackers`: create, read, update, delete
+* `transactions`: create, read, update
+* `users`: create, read, update, delete
+* `user_sessions`: create
+* `sms`: create
+* `tracker_bundles`: read, update
