@@ -889,64 +889,70 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
     ```shell
     curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
         -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999119, 999199, 9991911]}'
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [1234567, 888999, 111333], "allow_not_exist": true, "list_blocked": true}'
     ```
 
 #### Response
 
 ```json
 {
-    "success": true,
-    "user_time":"2014-07-09 07:50:58",
-    "states": {
-      "999119": {
-        "source_id": 65894,
-        "gps": {
-          "updated": "2013-02-19 10:48:08",
-          "signal_level": 25,
-          "location": {
-            "lat": 34.178868,
-            "lng": -118.599672
-          },
-          "heading": 45,
-          "speed": 20,
-          "alt": 10,
-          "precision": 50,
-          "gsm_lbs": false
+  "user_time": "2024-08-01 13:45:23",
+  "states": {
+    "1234567": {
+      "source_id": 227676,
+      "gps": {
+        "updated": "2024-08-01 13:45:18",
+        "signal_level": 100,
+        "location": {
+          "lat": 45.0888968,
+          "lng": 10.0343262
         },
-        "connection_status": "active",
-        "movement_status": "moving",
-        "gsm": {
-          "updated": "2013-02-19 10:48:08",
-          "signal_level": 70,
-          "network_name": "T-MOBILE",
-          "roaming": false
+        "heading": 304,
+        "speed": 64,
+        "alt": 270
+      },
+      "connection_status": "active",
+      "movement_status": "moving",
+      "last_update": "2024-08-01 13:45:23",
+      "gsm": {
+        "updated": "2024-08-01 13:45:18",
+        "signal_level": 35,
+        "network_name": "T-Mobile",
+        "roaming": null
+      },
+      "battery_level": 100,
+      "battery_update": "2024-08-01 13:45:18",
+      "inputs": [
+        false,
+        false,
+        true
+      ],
+      "inputs_update": "2024-08-01 13:45:18",
+      "outputs": [
+        true,
+        false
+      ],
+      "outputs_update": "2024-08-01 13:45:18",
+      "additional": {
+        "moving": {
+          "value": "1",
+          "updated": "2024-08-01 13:45:18"
         },
-        "last_update": "2013-02-19 10:48:08",
-        "battery_level": 100,
-        "battery_update": "2013-02-19 10:48:08",
-        "inputs": [
-          true,
-          true,
-          false
-        ],
-        "inputs_update": "2013-02-19 10:48:08",
-        "outputs": [
-          true,
-          true,
-          false
-        ],
-        "outputs_update": "2013-02-19 10:48:08",
-        "additional": {
-          "hardware_key": {
-            "value": 564648745158875,
-            "updated": "2013-02-19 10:48:08"
-          }
+        "status": {
+          "value": "82961756",
+          "updated": "2024-08-01 13:45:18"
         }
-      }
-    },
-    "blocked": [999199],
-    "not_exist": [9991911]
+      },
+      "actual_track_update": "2024-08-01 13:38:55"
+    }
+  },
+  "blocked": [
+    888999
+  ],
+  "not_exist": [
+    111333
+  ],
+  "success": true
 }
 ```
 
