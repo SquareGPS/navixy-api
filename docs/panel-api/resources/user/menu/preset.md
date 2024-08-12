@@ -6,10 +6,10 @@ description: API calls to work with user menu presets.
 # Menu preset
 
 API calls to work with the customizable sidebar structure for end users.
+Customizable sidebar allows you to create flexible user menus by adding, rearranging, and renaming menu items and tabs.
+Menu presets act as templates that can be assigned to users.
 
 ## Entity description
-
-Menu presets allow you to create custom sidebar templates and assign them to users.
 
 ### Menu preset
 
