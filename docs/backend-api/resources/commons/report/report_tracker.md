@@ -3,32 +3,29 @@ title: Report tracker
 description: User reports allow acquiring all-round statistics and analytics. The summary data can be shown in various perspectives, in tables and graphs.Contains API calls to interact with tracker reports.
 ---
 
-# Report tracker
+# Report Tracker
 
-User reports allow acquiring all-round statistics and analytics. The summary data can be shown in various perspectives,
-in tables and graphs.Contains API calls to interact with tracker reports.
+User reports enable comprehensive statistics and analytics, presenting summary data in various perspectives through tables and graphs. This section details API calls to interact with tracker reports.
 
-Find information on obtaining data from report in our [how-tos](../../../how-to/how-to-obtain-information-from-report.md).
-
-***
+For information on how to obtain data from reports, refer to the [guide](../../../guides/data-retrieval/obtain-reports.md).
 
 ## API actions
 
 API path: `/report/tracker`.
 
-### delete
+### `delete`
 
 Deletes a report from the database.
 
 *required sub-user rights*: `reports`.
 
-#### parameters
+#### Parameters
 
 | name      | description                            | type |
 |:----------|:---------------------------------------|:-----|
 | report_id | ID of a report that should be deleted. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -44,7 +41,7 @@ Deletes a report from the database.
     {{ extra.api_example_url }}/report/tracker/delete?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -52,27 +49,26 @@ Deletes a report from the database.
 }
 ```
 
-#### errors
+#### Errors
 
 * 101 – In demo mode this function disabled.
 
-***
 
-### download
+### `download`
 
 Retrieve generated report as a file.
 
 **required sub-user rights**: `reports`
 
-#### parameters
+#### Parameters
 
 | name      | description                                                                                       | type                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------|
 | report_id | ID of a report that should be deleted.                                                            | int                                            |
-| format    | A format of report that should be downloaded. Can be "xls", xlsx" or "pdf".                       | [enum](../../../getting-started.md#data-types) | 
+| format    | A format of report that should be downloaded. Can be "xls", xlsx" or "pdf".                       | [enum](../../../getting-started/introduction.md#data-types) | 
 | headless  | Optional parameter. Default=`false`. If need report without title page and TOC, set it to `true`. | boolean                                        |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -88,29 +84,28 @@ Retrieve generated report as a file.
     {{ extra.api_example_url }}/report/tracker/download?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567&format=pdf
     ```
 
-#### response
+#### Response
 
 A report rendered to file (standard file download).
 
-#### errors
+#### Errors
 
 * 204 - Entity not found - if report with the specified ID not found.
 * 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
-***
 
-### generate
+### `generate`
 
 Requests a report generation with the specified parameters.
 
 **required sub-user rights**: `reports`.
 
-#### parameters
+#### Parameters
 
 | name        | description                                                                                                                                                          | type        |
 |:------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
-| from        | A string containing [date/time](../../../getting-started.md#datetime-formats).                                                                                       | string      |
-| to          | A string containing [date/time](../../../getting-started.md#datetime-formats). Specified date must be after "from" date.                                             | string      |
+| from        | A string containing [date/time](../../../getting-started/introduction.md#datetime-formats).                                                                                       | string      |
+| to          | A string containing [date/time](../../../getting-started/introduction.md#datetime-formats). Specified date must be after "from" date.                                             | string      |
 | title       | Report title. Default title will be used if null.                                                                                                                    | string      |
 | geocoder    | Which geocoder to use. See [geocoder/](../../tracking/geocoder.md).                                                                                                  | string      |
 | trackers    | List of trackers' IDs to be included in report (if report is by trackers).                                                                                           | int array   |
@@ -145,7 +140,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 }
 ```
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -155,7 +150,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Trip report", "trackers": [669673], "from": "2020-10-05 00:00:00", "to": "2020-10-06 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -166,7 +161,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 
 * `id` - int. An ID of the report queued for generation. Can be used to request report generation status and to retrieve generated report.
 
-#### errors
+#### Errors
 
 * 15 - Too many requests / rate limit exceeded - the number of reports created by one user in parallel limited.
 * 211 - Requested time span is too big - interval from `from` to `to` is bigger then max allowed time span (see response).
@@ -188,15 +183,14 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 * 222 - Plugin not found - when specified report plugin not found.
 * 236 - Feature unavailable due to tariff restrictions - when one of the trackers has tariff with disabled reports ("has_reports" is false).
 
-***
 
-### list
+### `list`
 
 Returns info about all available generated or in-progress reports.
 
 **required sub-user rights**: `reports`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -212,7 +206,7 @@ Returns info about all available generated or in-progress reports.
     {{ extra.api_example_url }}/report/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -265,29 +259,28 @@ Returns info about all available generated or in-progress reports.
     * `plugins` - array of objects. List of parameters for all plugins which were used to generate report.
     * `locale_info` - object with information about the locale, timezone, and measurement system used for the report.
 * `percent` - int. Report readiness in percent.
-* `type` - [enum](../../../getting-started.md#data-types). Type of created report.
+* `type` - [enum](../../../getting-started/introduction.md#data-types). Type of created report.
 * `from` - string. "from" parameter from generate.
 * `to` - string. "to" parameter from generate.
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### retrieve
+### `retrieve`
 
 Retrieves a generated report as JSON.
 
 **required sub-user rights**: `reports`.
 
-#### parameters
+#### Parameters
 
 | name      | description                            | type |
 |:----------|:---------------------------------------|:-----|
 | report_id | ID of a report that should be deleted. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -303,7 +296,7 @@ Retrieves a generated report as JSON.
     {{ extra.api_example_url }}/report/tracker/retrieve?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
     ```
 
-#### response
+#### Response
 
 ???+ example "Response"
 
@@ -757,26 +750,25 @@ Retrieves a generated report as JSON.
 
 * `report` - object. Body of the generated report. Its contents are plugin-dependent.
 
-#### errors
+#### Errors
 
 * 204 - Entity not found - if report with the specified ID not found.
 * 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
-***
 
-### status
+### `status`
 
 Returns a report generation status for the specified report id.
 
 **required sub-user rights**: `reports`.
 
-#### parameters
+#### Parameters
 
 | name      | description                            | type |
 |:----------|:---------------------------------------|:-----|
 | report_id | ID of a report that should be deleted. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -792,7 +784,7 @@ Returns a report generation status for the specified report id.
     {{ extra.api_example_url }}/report/tracker/status?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -803,6 +795,6 @@ Returns a report generation status for the specified report id.
 
 * `percent_ready` - int. Report readiness in percent.
 
-#### errors
+#### Errors
 
 * 204 - Entity not found - if report with the specified ID not found.

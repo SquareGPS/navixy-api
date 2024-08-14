@@ -8,7 +8,6 @@ description: Employee object and API calls to work with. Employees (drivers) use
 Employees and drivers used to represent people working at one's organization. They can be linked with other entities such as 
 trackers, vehicles, places, etc.
 
-***
 
 ## Employee object
 
@@ -62,17 +61,16 @@ via [avatar/upload](./avatar.md#upload).
 * `ssn` - optional string. Social Security number. Max length is 32.
 * `tags` - int array. List of tag IDs.
 
-***
 
 ## API actions
 
 API base path: `/employee`.
 
-### list
+### `list`
 
 Gets all employees and drivers belonging to user.
 
-#### parameters
+#### Parameters
 
 | name   | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | type         |
 |:-------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|
@@ -81,7 +79,7 @@ Gets all employees and drivers belonging to user.
 | sort   | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["first_name=desc","object_label=asc"]`. Maximum 2 options in request. Available properties:<br/> - ID<br/> - first_name<br/> - object_label<br/> - department_label<br/> - personnel_number<br/> - hardware_key<br/> - phone<br/> - email<br/> - address<br/> - driver_license_number<br/> - driver_license_cats<br/> - driver_license_valid_till<br/> - driver_license_valid_till<br/> - ssn<br/> | string array |
 | filter | Get a list of employees filtered by properties, at least one property must contain the desired string. All properties from the sorting list are used in filtering. Maximum 100 characters or null.                                                                                                                                                                                                                                                                                                     | string       |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -97,7 +95,7 @@ Gets all employees and drivers belonging to user.
     {{ extra.api_example_url }}/employee/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -110,25 +108,24 @@ Gets all employees and drivers belonging to user.
 * `list` - a list of employees.
 * `count` - int. Total number of employees (ignoring offset and limit).
 
-#### errors
+#### Errors
 
-[General](../../../getting-started.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### create
+### `create`
 
 Creates a new employee/driver.
 
 **required sub-user rights**: `employee_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                          | type        |
 |:---------|:---------------------------------------------------------------------|:------------|
 | employee | An [employee object](#employee-object) without `id` field. Non-null. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -138,7 +135,7 @@ Creates a new employee/driver.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee": {"tracker_id": 625987, "first_name": "John", "middle_name": "Jane", "last_name": "Smith", "email": "smith@example.com", "phone": "442071111111", "driver_license_number": "SKIMP407952HJ9GK 06", "driver_license_cats": "C", "driver_license_valid_till": "2018-01-01", "hardware_key": null, "icon_id" : 55, "avatar_file_name": null, "department_id": null, "location": {"lat": 52.5, "lng": 13.4, "address": "Engeldamm 18"}, "personnel_number": "1059236", "tags": [1,2]}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -149,23 +146,22 @@ Creates a new employee/driver.
 
 * `id` - int. An ID of the created employee (driver).
 
-#### errors
+#### Errors
 
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
 
-***
 
-### read
+### `read`
 
 Gets employee/driver by his ID.
 
-#### parameters
+#### Parameters
 
 | name        | description        | type |
 |:------------|:-------------------|:-----|
 | employee_id | ID of an employee. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -181,7 +177,7 @@ Gets employee/driver by his ID.
     {{ extra.api_example_url }}/employee/read?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -216,25 +212,24 @@ Gets employee/driver by his ID.
 
 * `value` - an employee object.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no employee/driver with such an ID.
 
-***
 
-### update
+### `update`
 
 Updates existing employee/driver.
 
 **required sub-user rights**: `employee_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                       | type        |
 |:---------|:------------------------------------------------------------------|:------------|
 | employee | An [employee object](#employee-object) with `id` field. Non-null. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -244,32 +239,31 @@ Updates existing employee/driver.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee": {"employee_id": 111, "tracker_id": 625987, "first_name": "John", "middle_name": "Jane", "last_name": "Smith", "email": "smith@example.com", "phone": "442071111111", "driver_license_number": "SKIMP407952HJ9GK 06", "driver_license_cats": "C", "driver_license_valid_till": "2018-01-01", "hardware_key": null, "icon_id" : 55, "avatar_file_name": null, "department_id": null, "location": {"lat": 52.5, "lng": 13.4, "address": "Engeldamm 18"}, "personnel_number": "1059236", "tags": [1,2]}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no employee/driver with such an ID.
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
 
-***
 
-### delete
+### `delete`
 
 Deletes an employee/driver with the specified ID.
 
 **required sub-user rights**: `employee_update`.
 
-#### parameters
+#### Parameters
 
 | name        | description                           | type |
 |:------------|:--------------------------------------|:-----|
 | employee_id | ID of an employee (driver) to delete. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -285,25 +279,24 @@ Deletes an employee/driver with the specified ID.
     {{ extra.api_example_url }}/employee/delete?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
     ```
     
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no employee/driver with such an ID.
 
-***
 
-### batch_convert
+### `batch_convert`
 
 Converts batch of tab-delimited employees/drivers and returns list of checked employees/drivers with errors.
 
 **Required sub-user rights:** `employee_update`.
 
-#### parameters
+#### Parameters
 
 | name           | description                                                                                                | type         |
 |:---------------|:-----------------------------------------------------------------------------------------------------------|:-------------|
@@ -315,7 +308,7 @@ Converts batch of tab-delimited employees/drivers and returns list of checked em
 
 * If `file_id` is set – `batch` parameter will be ignored.
 
-#### response
+#### Response
 
 ```json
 {
@@ -360,6 +353,6 @@ Converts batch of tab-delimited employees/drivers and returns list of checked em
     * `errors` - optional array of errors.
 * `limit_exceeded` - boolean. `true` if given batch constrained by a limit.
 
-#### errors
+#### Errors
 
 * 234 - Invalid data format.

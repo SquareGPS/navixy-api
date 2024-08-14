@@ -16,24 +16,23 @@ This field contains `type`, which identifies a certain kind of settings. (For ex
 
 Such control assumes tracker special settings
 
-***
 
 ## API actions
 
 API base path: `/tracker/settings/special`.
 
-### read
+### `read`
 
 Gets special settings for the specified tracker.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type                                                 | format                     |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:---------------------------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                                  | 123456                     |
-| type       | Optional. Type of special object.                                                               | [enum](../../../../../getting-started.md#data-types) | "electronic_lock_password" |
+| type       | Optional. Type of special object.                                                               | [enum](../../../../../getting-started/introduction.md#data-types) | "electronic_lock_password" |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -49,7 +48,7 @@ Gets special settings for the specified tracker.
     {{ extra.api_example_url }}/tracker/settings/special/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
     ```
 
-#### responses
+#### Responses
 
 If parameter type is present:
 
@@ -146,9 +145,9 @@ If parameter type omitted:
 }
 ```
 
-* `low_battery_mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
-* `ext_input_mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
-* `sos_button_mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `low_battery_mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
+* `ext_input_mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
+* `sos_button_mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 
 **auto_geofence_telfm**
 
@@ -161,7 +160,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `activation_timeout` - int. 0-65535 seconds.
 * `radius` - int. 50 - 10000 meters.
  
@@ -174,7 +173,7 @@ If parameter type omitted:
 }
 ```
 
-* `function` - [enum](../../../../../getting-started.md#data-types). Can be "slot1" | "slot2" | "vu_activities" | "vu_no_activities"
+* `function` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "slot1" | "slot2" | "vu_activities" | "vu_no_activities"
 
 **call_button**
 
@@ -286,7 +285,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "on_need" | "ign_on_only" | "ign_on" | "low_charge".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "on_need" | "ign_on_only" | "ign_on" | "low_charge".
 
 **ddd_emails**
 
@@ -321,7 +320,7 @@ If parameter type omitted:
 }
 ```
 
-* `fuel_type` - [enum](../../../../../getting-started.md#data-types). Can be "gasoline" | "diesel" | "lpg".
+* `fuel_type` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "gasoline" | "diesel" | "lpg".
 * `engine_volume` - double. Can be 0.0 - 10.0.
 * `multiplier` - double. Can be 0.0 - 10.0.
 
@@ -346,7 +345,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without 
 triggering harsh acceleration event.Can be 0 - 2.55.
 * `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering
@@ -366,7 +365,7 @@ harsh cornering event. Can be 0 - 2.55.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without 
 triggering harsh acceleration event.Can be 0.1 - 1.0.
 * `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering
@@ -386,7 +385,7 @@ harsh cornering event. Can be 0.1 - 1.0.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without 
 triggering harsh acceleration event. Can be 0.25 - 0.85 g.
 * `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering 
@@ -430,7 +429,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `high_speed` - int. Can be 100 - 400.
 * `high_speed_braking_delta` - int. Can be 0 - 100.
 * `high_speed_acceleration_delta` - int. Can be 0 - 100.
@@ -462,7 +461,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "disable" | "gps_only" | "motion_sensor_only" | "gps_and_motion_sensor".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "disable" | "gps_only" | "motion_sensor_only" | "gps_and_motion_sensor".
 * `high_speed` - int. Can be 100 - 400.
 * `high_speed_braking_delta` - int. Can be 0 - 100.
 * `high_speed_acceleration_delta` - int. Can be 0 - 100.
@@ -521,7 +520,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. Can be 0.1 - 8.
 * `max_braking_force` - double. Can be 0.1 - 8.
 
@@ -550,7 +549,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `x` - double. Can be 0 - 2.55.
 * `y` - double. Can be 0 - 2.55.
 * `z` - double. Can be 0 - 2.55.
@@ -564,7 +563,7 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 }
 ```
 
-* `sensitivity` - [enum](../../../../../getting-started.md#data-types). Can be "easy" | "normal" | "hard" | "hardest".
+* `sensitivity` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "easy" | "normal" | "hard" | "hardest".
 
 **ign_ruptela**
 
@@ -610,7 +609,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "power_voltage" | "din1" | "movement".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "power_voltage" | "din1" | "movement".
 * `power_voltage_low_level` - int. Can be 0 - 30000.
 * `power_voltage_high_level` - int. Can be 0 - 30000.
 
@@ -625,7 +624,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "power_voltage" | "din1" | "movement".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "power_voltage" | "din1" | "movement".
 * `power_voltage_low_level` - int. Can be 0 - 30000.
 * `power_voltage_high_level` - int. Can be 0 - 30000.
 
@@ -681,7 +680,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 
 **scat_mayak_bt_control**
 
@@ -693,7 +692,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `function` - [enum](../../../../../getting-started.md#data-types). Can be "bt_disable" | "bt_enable" | "bt_clear" | "bt_write".
+* `function` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "bt_disable" | "bt_enable" | "bt_clear" | "bt_write".
 * `bt_state` - boolean.
 
 **sos_key**
@@ -706,7 +705,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "report" | "call_report".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "report" | "call_report".
 * `phone` - string. SOS phone to call. Phone number in the international format without "+" sign. 
 
 **starcom_impact**
@@ -769,7 +768,7 @@ Can be 0 - 14.
 }
 ```
 
-* `data_type` - [enum](../../../../../getting-started.md#data-types). Can be "overview" | "activities" | "eventsAndFaults" | "detailedSpeed" | "technicalData" | 
+* `data_type` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "overview" | "activities" | "eventsAndFaults" | "detailedSpeed" | "technicalData" | 
 "card1Download" | "card2Download".
 * `activities_start_time` - string date. Format = "YYYY-MM-DD", not null only if data_type = "activities".
 * `activities_end_time` - string date. Format = "YYYY-MM-DD", not null only if data_type = "activities".
@@ -813,7 +812,7 @@ Can be 0 - 14.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `engine_off_to_tow` - int. A time parameter to judge whether the device considered towed after the engine off. 
 If the motion sensor doesn't detect stillness within the specified time after the engine off the device is being towed. 
 Can be 0 - 900 seconds.
@@ -843,7 +842,7 @@ step 100.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `engine_off_to_tow` - int. A time parameter to judge whether the device considered towed after the engine off. 
 If the motion sensor doesn't detect stillness within the specified time after the engine off the device is being towed. 
 Can be 0 - 900 seconds.
@@ -869,7 +868,7 @@ milliseconds, step 100.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "enable" | "disable".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "enable" | "disable".
 * `activation_timeout` - int. Can be 0 - 65535 minutes.
 * `threshold` - double. Can be 0.10 - 5.00.
 
@@ -893,7 +892,7 @@ milliseconds, step 100.
 }
 ```
 
-* `mode` - [enum](../../../../../getting-started.md#data-types). Can be "disabled" | "power_voltage" | "motion_sensor".
+* `mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "disabled" | "power_voltage" | "motion_sensor".
 * `ign_on_voltage` - int. Can be 250 - 28000.
 * `rest_duration_to_off` – int. A time parameter to make sure the device enters stillness status, i.e. the status of 
 the device will be changed to stillness if the motion sensor detects stillness and maintains for a period of time 
@@ -913,28 +912,27 @@ defined by this parameter. Can be 1 - 255.
 * `timeout` - int. Can be 30 - 65500. A time parameter when the device doesn't move.
 * `pre_alarm_duration` - int. Can be 0 - 65500. A time parameter when the device continues not to move after timeout.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database (if there is no tracker with such ID belonging to authorized user).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 * 214 – Requested operation or parameters are not supported by the device.
 
-***
 
-### update
+### `update`
 
 Sets special settings for a specified tracker with the new one.
 
 **required sub-user rights:** `tracker_configure`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type        |
 |:-----------|:------------------------------------------------------------------------------------------------|:------------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int         |
 | value      | Settings object, see above.                                                                     | JSON object |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -944,13 +942,13 @@ Sets special settings for a specified tracker with the new one.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "value": {"type": "time_shift", "offset": 3.0}}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.

@@ -7,19 +7,18 @@ description: API calls to upload and assign avatar to the vehicle.
 
 API calls to upload and assign avatar to the vehicle.
 
-***
 
 ## API actions
 
 API path: `/vehicle/avatar`.
 
-### assign
+### `assign`
 
 Assigns `icon_id` (from standard icon set) to specified vehicle.
 
 **required sub-user rights**: `vehicle_update`
 
-#### parameters
+#### Parameters
 
 | name       | description        | type |
 |:-----------|:-------------------|:-----|
@@ -28,7 +27,7 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 
 `icon_id` can be null – this means that uploaded avatar should be used instead of icon.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -44,19 +43,18 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
     {{ extra.api_example_url }}/vehicle/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722&icon_id=1342
     ```
 
-##### response
+##### Response
 
 ```json
 { "success": true }
 ```
 
-##### errors
+##### Errors
 
 * 201 – Not found in the database - when vehicle with `vehicle_id` not found.
 
-***
 
-### upload
+### `upload`
 
 Uploads avatar image for specified vehicle.
 Then it will be available from `[api_base_url]/<api_static_path>/vehicle/avatars/<file_name>`
@@ -77,7 +75,7 @@ File part **mime** type must be one of :
 * `image/gif`
 * `image/webp`
 
-#### parameters
+#### Parameters
 
 | name            | description                | type   |
 |:----------------|:---------------------------|:-------|
@@ -87,7 +85,7 @@ File part **mime** type must be one of :
 
 If `redirect_target` passed a return redirect to `response=<urlencoded response json>`.
 
-#### response
+#### Response
 
 ```json
 {
@@ -98,7 +96,7 @@ If `redirect_target` passed a return redirect to `response=<urlencoded response 
 
 * `value` - string. Avatar file name.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when vehicle with `vehicle_id` not found.
 * 233 – No data file - if `file` part not passed.

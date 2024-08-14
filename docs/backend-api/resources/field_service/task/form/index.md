@@ -15,26 +15,25 @@ For `<form>` object description, see [forms](../../form/index.md).
 
 Contains API calls related to forms associated with tasks.
 
-***
 
 ## API actions
 
 API path: `/task/form`.
 
-### create
+### `create`
 
 Attaches new form to the existing task or checkpoint. Form always created on the basis of form template.
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name        | description                  | type |
 |:------------|:-----------------------------|:-----|
 | task_id     | An ID of the task to assign. | int  |
 | template_id | An ID of the form template.  | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -50,7 +49,7 @@ Attaches new form to the existing task or checkpoint. Form always created on the
     {{ extra.api_example_url }}/task/form/create?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&template_id=12548
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -58,28 +57,27 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no task or template with such an ID, or task has the "route" type.
 * 247 – Entity already exists - if task already has form attached to it.
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
-***
 
-### delete
+### `delete`
 
 Deletes a form (detach it from the task).<br>
 All form data will be lost!
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name    | description                                  | type |
 |:--------|:---------------------------------------------|:-----|
 | task_id | An ID of the task to which form is attached. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -95,7 +93,7 @@ All form data will be lost!
     {{ extra.api_example_url }}/task/form/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -103,26 +101,25 @@ All form data will be lost!
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no task with such an ID, or task has the "route" type, or it has no form
  attached.
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
-***
 
-### download
+### `download`
 
 Retrieves attached form as file.
 
-#### parameters
+#### Parameters
 
 | name    | description                                                | type                                              |
 |:--------|:-----------------------------------------------------------|:--------------------------------------------------|
 | task_id | An ID of the task.                                         | int                                               |
-| format  | Format of the download file. Can be "xls", "csv" or "pdf". | [enum](../../../../getting-started.md#data-types) |
+| format  | Format of the download file. Can be "xls", "csv" or "pdf". | [enum](../../../../getting-started/introduction.md#data-types) |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -138,22 +135,21 @@ Retrieves attached form as file.
     {{ extra.api_example_url }}/task/form/download?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&format=pdf
     ```
     
-#### response
+#### Response
 
 A form rendered to file (standard file download).
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if task does not exist or does not have attached form.
 
-***
 
-### list
+### `list`
 
 Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, 
 the list contains data on the objects related to each form – tracker / vehicle / employee, task.
 
-#### parameters
+#### Parameters
 
 *   **template_id** (*integer, optional*). The returned list will contain forms, related to that template.<br>
     **warning:** at least one of **template_id** and **task_ids** parameters must be not null.
@@ -212,7 +208,7 @@ where period_object is:
 
 *   **offset, limit** (*integers, optional*). Specify which subset of elements from all matching results will be included in the returned list.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -228,7 +224,7 @@ where period_object is:
     {{ extra.api_example_url }}/task/form/list?hash=a6aa75587e5c59c32d347da438505fc3&ascending=true&include_unsubmitted=true
     ```
     
-#### response
+#### Response
 
 ```json
 {
@@ -300,24 +296,23 @@ where period_object is:
     * `places` - list of places associated with zone submission location. Can be empty.
     * `zones` - list of zones associated with zone submission location. Can be empty.
 
-#### errors
+#### Errors
 
 * 204 – Not found - if there is no form template with such ID belonging to authorized user.
-* [General](../../../../getting-started.md#error-codes) types of errors.
+* [General](../../../../getting-started/errors.md#error-codes) types of errors.
 
-***
 
-### read
+### `read`
 
 Gets form associated with the specified task.
 
-#### parameters
+#### Parameters
 
 | name    | description        | type |
 |:--------|:-------------------|:-----|
 | task_id | An ID of the task. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -333,7 +328,7 @@ Gets form associated with the specified task.
     {{ extra.api_example_url }}/task/form/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=12546
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -375,19 +370,19 @@ Gets form associated with the specified task.
 * `value` - [form object](../../form/index.md#form-object), or null if no form attached.
 * `files` - list of files, both submitted and unsubmitted, associated with this form's fields.
     * `id` - int. File ID.
-    * `type` - [enum](../../../../getting-started.md#data-types). Can be "image" or "file".
-    * `created` - [date/time](../../../../getting-started.md#data-types). Date when file created.
-    * `uploaded` - [date/time](../../../../getting-started.md#data-types). Date when file uploaded, can be null if file not yet uploaded.
+    * `type` - [enum](../../../../getting-started/introduction.md#data-types). Can be "image" or "file".
+    * `created` - [date/time](../../../../getting-started/introduction.md#data-types). Date when file created.
+    * `uploaded` - [date/time](../../../../getting-started/introduction.md#data-types). Date when file uploaded, can be null if file not yet uploaded.
     * `name` - string. Filename.
     * `size` - int. Size in bytes. If file not uploaded, show maximum allowed size for the upload.
     * `metadata` - metadata object.
     * `orientation` - int. Image exif orientation.
-    * `state` - [enum](../../../../getting-started.md#data-types). Can be "created", "in_progress", "uploaded", "deleted".
+    * `state` - [enum](../../../../getting-started/introduction.md#data-types). Can be "created", "in_progress", "uploaded", "deleted".
     * `download_url` - string. Actual URL at which file is available. Can be null if file not yet uploaded.
     * `bindings` - all entities to which this file linked.
     * `previews` - available preview images for the file. Can be null or empty for any file in any state.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no task with such an ID, or task assigned to tracker unavailable to 
 current sub-user.

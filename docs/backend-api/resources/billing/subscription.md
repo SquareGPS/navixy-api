@@ -7,7 +7,6 @@ description: API calls to interact with payment subscriptions
 
 API calls to interact with payment subscriptions
 
-***
 
 ## API actions
 
@@ -17,21 +16,20 @@ API path: `/subscription`.
 
 Working with [2Checkout](https://www.2checkout.com) (formerly [Avangate](http://www.avangate.com)) subscriptions (renewals).
 
-***
 
-### cancel
+### `cancel`
 
 Unsubscribe from auto-renewal by reference.
 
 **required sub-user rights:** `payment_create`.
 
-#### parameters
+#### Parameters
 
 | name      | description                                                                               | type   |
 |:----------|:------------------------------------------------------------------------------------------|:-------|
 | reference | Internal 2Checkout (formerly Avangate) subscription code. Get it from [list](#list) call. | string |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -47,7 +45,7 @@ Unsubscribe from auto-renewal by reference.
     {{ extra.api_example_url }}/subscription/avangate/cancel?hash=a6aa75587e5c59c32d347da438505fc3&reference=5EAD4B0B2F
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -55,23 +53,22 @@ Unsubscribe from auto-renewal by reference.
 }
 ```
 
-#### errors
+#### Errors
 
 * 215 – External service error.
 
-***
 
-### list
+### `list`
 
 List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://www.avangate.com) subscriptions (renewals).
 
 **required sub-user rights:** `payment_create`.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -87,7 +84,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/subscription/avangate/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -104,8 +101,8 @@ Only API key `hash`.
 * `reference` - string. Internal 2Checkout (formerly Avangate) subscription code. Pass it to /subscription/avangate/cancel.
 * `code` - string. 2Checkout (formerly Avangate) product code.
 * `quantity` - int. Count.
-* `expiration_date` - [date/time](../../getting-started.md#data-types). Next renew date/time.
+* `expiration_date` - [date/time](../../getting-started/introduction.md#data-types). Next renew date/time.
 
-#### errors
+#### Errors
 
 * 215 – External service error.

@@ -8,17 +8,16 @@ description: Contains API call to get the last waybill number.
 Contains API call to get the last waybill number. Waybill number saved when new waybill had downloaded. If it had only digits, 
 then it was incremented before saving.
 
-***
 
 ## API actions
 
 API base path: `track/waybill/settings/`.
 
-### read
+### `read`
 
 Gets last waybill number. 
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -34,7 +33,7 @@ Gets last waybill number.
     {{ extra.api_example_url }}/track/waybill/settings/read?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -45,6 +44,6 @@ Gets last waybill number.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if user have never downloaded a waybill.

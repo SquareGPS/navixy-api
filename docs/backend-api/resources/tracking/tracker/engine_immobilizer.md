@@ -9,23 +9,22 @@ fitted to a motor vehicle that prevents the engine from running unless it must r
 "hot wired" after entry has been achieved and thus reduces motor vehicle theft. This API call allows manipulating with 
 immobilizer state.
 
-***
 
 ## API actions
 
 API base path: `/tracker/engine_immobilizer`.
 
-### read
+### `read`
 
 Requests to read the state of engine immobilizer.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -41,7 +40,7 @@ Requests to read the state of engine immobilizer.
     {{ extra.api_example_url }}/tracker/engine_immobilizer/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -52,28 +51,27 @@ Requests to read the state of engine immobilizer.
 
 * `enabled` - boolean. `true` if engine immobilizer enabled.
 
-#### errors
+#### Errors
 
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
 
-***
 
-### set
+### `set`
 
 Requests to change the engine immobilizer state of the device. The device must be online.
 
 **required sub-user rights:** `tracker_set_output`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type    | format     |
 |:-----------|:------------------------------------------------------------------------------------------------|:--------|:-----------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int     | 123456     |
 | enabled    | `true` if immobilizer should be enabled.                                                        | boolean | true/false |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -89,13 +87,13 @@ Requests to change the engine immobilizer state of the device. The device must b
     {{ extra.api_example_url }}/tracker/engine_immobilizer/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.

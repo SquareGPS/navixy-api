@@ -1,15 +1,14 @@
 ---
-title: Tariff
-description: API calls for interaction with tariff plans.
+title: Plan
+description: API calls for interaction with user plans.
 ---
 
-# Tariff
+# Plans
 
-API calls for interaction with tariff plans.
+API calls for managing user plans within the service platform (PaaS or Sub Paas).
 
-***
 
-## Tariff object
+## Plan object
 
 ```json
 {
@@ -35,19 +34,19 @@ API calls for interaction with tariff plans.
 }
 ``` 
 
-* `id` - int. Tariff ID.
-* `name` - string. Tariff name.
-* `group_id` - int. Tariff group number.
-* `active` - boolean. `true` if user allowed change his current tariff to this one.
-* `type` - [enum](../../backend-api/getting-started.md#data-types). Type of tariff. Can be "monthly" or "activeday" 
+* `id` - int. Plan ID.
+* `name` - string. Plan name.
+* `group_id` - int. Plan group number.
+* `active` - boolean. `true` if user allowed change his current plan to this one.
+* `type` - [enum](../../backend-api/getting-started/introduction.md#data-types). Type of plan. Can be "monthly" or "activeday" 
 (for "tracker" device_type only).
-* `price` - double. Tariff subscription price (usually per month).
-* `early_change_price` - double. Price of change tariff from current to another. With the last change in less than 30 days
- (`tariff.freeze.period` config option). When not passed or `null` user cannot change tariff frequently.
+* `price` - double. Plan subscription price (usually per month).
+* `early_change_price` - double. Price of change plan from current to another. With the last change in less than 30 days
+ (`tariff.freeze.period` config option). When not passed or `null` user cannot change plan frequently.
 * `device_limit` - int. A maximum limit of devices per user. Not used for cameras and sockets.
-* `has_reports` - boolean. If `true` the tariff has reports.
+* `has_reports` - boolean. If `true` the plan has reports.
 * `store_period` - string. Data storage period, e.g. "2h" (2 hours), "3d" (3 days), "5m" (5 months), "1y" (one year).
-* `device_type` - [enum](../../backend-api/getting-started.md#data-types). Device type. Can be "tracker", "camera" or "socket".
+* `device_type` - [enum](../../backend-api/getting-started/introduction.md#data-types). Device type. Can be "tracker", "camera" or "socket".
 * `proportional_charge` - boolean. `true` if monthly fee will be smaller when device was blocked during month (for "monthly" tariffs only).
 * `service_prices` - JSON object with service prices.
     * `incoming_sms` - double. Incoming sms price.
@@ -56,25 +55,24 @@ API calls for interaction with tariff plans.
     * `phone_call` - double. Phone voice notification sms price.
     * `traffic` - double. Traffic price per 1 MB.
   
-***
 
 ## API actions
 
 API path: `panel/tariff`.
 
-### create
+### `create`
 
-Creates a new tariff.
+Creates a new plan.
 
 *required permissions*: `"tariffs": "create"`.
 
-#### parameters
+#### Parameters
 
-| name   | description                     | type        |
-|:-------|:--------------------------------|:------------|
-| tariff | Tariff object without ID field. | JSON object |
+| name   | description                   | type        |
+| :----- | :---------------------------- | :---------- |
+| tariff | Plan object without ID field. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -84,7 +82,7 @@ Creates a new tariff.
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tariff": {"name": "Premium", "group_id": 3, "active": true, "type": "monthly", "price": 12.55, "early_change_price": 23.0, "device_limit": 2000, "has_reports": true, "store_period": "1y", "device_type": "tracker", "proportional_charge": false, "service_prices": {"incoming_sms": 0.3, "outgoing_sms": 0.3, "service_sms": 0.2, "phone_call": 0.6, "traffic": 0.09}}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -93,37 +91,36 @@ Creates a new tariff.
 }
 ```
 
-* `id` - int. An ID of the created tariff.
+* `id` - int. An ID of the created plan.
 
-#### errors
+#### Errors
 
-* 201 – Not found in the database - if specified tariff does not exist or belongs to different dealer.
-* 214 – Requested operation or parameters are not supported by the device - when `device_type` does not support specified tariff `type`.
-* 244 – Duplicate entity label - if there's another dealer's tariff with the same `name`.
+* 201 – Not found in the database - if specified plan does not exist or belongs to different dealer.
+* 214 – Requested operation or parameters are not supported by the device - when `device_type` does not support specified plan `type`.
+* 244 – Duplicate entity label - if there's another dealer's plan with the same `name`.
 
-***
 
-### list
+### `list`
 
-Returns list of all tariffs belonging to dealer.
+Returns list of all plans belonging to dealer.
 
 If "filter" is used, entities will be returned only if filter string contains one of the following fields:
 `id`, `name`, `price`, `device_type`.
 
 *required permissions*: `"tariffs": "read"`.
 
-#### parameters
+#### Parameters
 
 | name        | description                                                                               | type                                                    |
 |:------------|:------------------------------------------------------------------------------------------|:--------------------------------------------------------|
-| device_type | Optional. Filter by device type. One of "tracker", "camera" or "socket".                  | [enum](../../backend-api/getting-started.md#data-types) |
+| device_type | Optional. Filter by device type. One of "tracker", "camera" or "socket".                  | [enum](../../backend-api/getting-started/introduction.md#data-types) |
 | filter      | Optional. Text filter.                                                                    | string                                                  |
 | order_by    | Optional. List ordering. One of: `id`, `name`, `device_type`, `group_id`, `price`.        | string                                                  |
 | ascending   | Optional. Default is `true`. If `true`, ordering will be ascending, descending otherwise. | boolean                                                 |
 | offset      | Optional. Default is `0`. Starting offset, used for pagination.                           | int                                                     |
 | limit       | Optional. Max number of records to return, used for pagination.                           | int                                                     |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -139,7 +136,7 @@ If "filter" is used, entities will be returned only if filter string contains on
     {{ extra.api_example_url }}/panel/tariff/list?hash=fa7bf873fab9333144e171372a321b06
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -176,25 +173,24 @@ If "filter" is used, entities will be returned only if filter string contains on
 }
 ```
 
-* `list` - objects array. List of tariff plans. See tariff object [here](#tariff-object).
+* `list` - objects array. List of plans. See plan object [here](#tariff-object).
 * `wholesale_service_prices` - JSON object. Wholesale prices for all services (what dealer will pay per sms, per call, per mb).
 * `count` - int. Total number of records (ignoring offset and limit).
 
-***
 
-### read
+### `read`
 
-Returns tariff with specified ID.
+Returns plan with specified ID.
 
 *required permissions*: `"tariffs": "read"`.
 
-#### parameters
+#### Parameters
 
 | name      | description        | type |
 |:----------|:-------------------|:-----|
 | tariff_id | Tariff ID to read. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -210,7 +206,7 @@ Returns tariff with specified ID.
     {{ extra.api_example_url }}/panel/tariff/read?hash=fa7bf873fab9333144e171372a321b06&tariff_id=12163
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -239,27 +235,26 @@ Returns tariff with specified ID.
 }
 ```
 
-* `value` - JSON object. See tariff object [here](#tariff-object).
+* `value` - JSON object. See plan object [here](#tariff-object).
 
-#### errors
+#### Errors
 
-* 201 – Not found in the database - if specified tariff does not exist or belongs to different dealer.
+* 201 – Not found in the database - if specified plan does not exist or belongs to different dealer.
 
-***
 
-### update
+### `update`
 
-Updates existing tariff.
+Updates existing plan.
 
 *required permissions*: `tariffs: "update"`.
 
-#### parameters
+#### Parameters
 
 | name   | description                                | type        |
 |:-------|:-------------------------------------------|:------------|
 | tariff | Tariff object without `device_type` field. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -269,7 +264,7 @@ Updates existing tariff.
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tariff": {"id": 12345, "name": "Premium", "group_id": 3, "active": true, "type": "monthly", "price": 12.55, "early_change_price": 23.0, "device_limit": 2000, "has_reports": true, "store_period": "1y", "proportional_charge": false, "service_prices": {"incoming_sms": 0.3, "outgoing_sms": 0.3, "service_sms": 0.2, "phone_call": 0.6, "traffic": 0.09}}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -277,13 +272,12 @@ Updates existing tariff.
 }
 ```
 
-#### errors
+#### Errors
 
-* 201 – Not found in the database - if specified tariff does not exist or belongs to different dealer.
-* 214 – Requested operation or parameters are not supported by the device when `device_type` does not support specified tariff `type`.
-* 244 – Duplicate entity label - if there's another dealer's tariff with the same `name`.
+* 201 – Not found in the database - if specified plan does not exist or belongs to different dealer.
+* 214 – Requested operation or parameters are not supported by the device when `device_type` does not support specified plan `type`.
+* 244 – Duplicate entity label - if there's another dealer's plan with the same `name`.
 
-***
 
 ## defaults object
 
@@ -296,24 +290,23 @@ Updates existing tariff.
 }
 ```
 
-* `tariff_id` - int. An ID of the default tariff for this device type.
+* `tariff_id` - int. An ID of the default plan for this device type.
 * `activation_bonus` - double. Activation bonus - money added to bonus balance upon device registration.
-* `free_days` - int. Amount of free (without tariff fee) days after device registration.
+* `free_days` - int. Amount of free (without a fee) days after device registration.
 * `free_days_device_limit` - int. A maximum number of activated user's devices with free period (null means no limit).
 
-***
 
 ### defaults/read
 
-Returns current tariff defaults for trackers and cameras.
+Returns current plan defaults for trackers and cameras.
 
 *required permissions*: `tariffs: "read"`.
 
-#### parameters
+#### Parameters
 
 Only session `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -329,7 +322,7 @@ Only session `hash`.
     {{ extra.api_example_url }}/panel/tariff/defaults/read?hash=fa7bf873fab9333144e171372a321b06
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -349,25 +342,24 @@ Only session `hash`.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../backend-api/getting-started.md#error-codes) types only.
+[General](../../backend-api/getting-started/errors.md#error-codes) types only.
 
-***
 
 ### defaults/update
 
-Updates current tariff defaults for trackers and cameras.
+Updates current plan defaults for trackers and cameras.
 
 *required permissions*: `tariffs: "update"`.
 
-#### parameters
+#### Parameters
 
 | name    | description                    | type        |
 |:--------|:-------------------------------|:------------|
 | tracker | Defaults object with ID field. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -377,7 +369,7 @@ Updates current tariff defaults for trackers and cameras.
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker": {"tariff_id": 1234, "activation_bonus": 1.1, "free_days": 14, "free_days_device_limit": 3}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -385,7 +377,7 @@ Updates current tariff defaults for trackers and cameras.
 }
 ```
 
-#### errors
+#### Errors
 
-* 239 – New tariff doesn't exist - if tariff with specified ID does not exist.
-* 237 – Invalid tariff - if new tariff has incompatible device type.
+* 239 – New plan doesn't exist - if plan with specified ID does not exist.
+* 237 – Invalid plan - if new plan has incompatible device type.

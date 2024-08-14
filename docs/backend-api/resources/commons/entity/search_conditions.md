@@ -3,14 +3,13 @@ title: Entity search conditions
 description: Contains search conditions object description and condition types. Search conditions used to search and filter list of certain entities by built-in and/or custom fields.
 ---
 
-# Entity search Conditions
+# Entity Search Conditions
 
-Contains search conditions object description and condition types.<br> 
-Search conditions used to search and filter list of certain entities by built-in and/or custom fields.
-
-***
+This page provides an overview of the search conditions object description and the types of conditions that can be used. Search conditions are employed to filter and retrieve a list of specific entities based on both built-in and custom fields.
 
 ## Search conditions object
+
+Search conditions are represented by an array of conditions, where each condition is evaluated to either true or false. Boolean operations such as AND or OR can be applied to these conditions. All conditions in the top-level array are joined using the AND operator by default.
 
 ```json
 [
@@ -38,18 +37,14 @@ Search conditions used to search and filter list of certain entities by built-in
 ]
 ```
 
-Conditions represented by an array, each condition during search evaluated, and the result is either `true` or `false`.
-Thus, boolean operations such as `AND` or `OR` can be applied to them. All conditions in a top-level array joined using `AND` operator.
+!!! warning “A maximum of 72 conditions can be used at once, including nested conditions.”
 
-!!!warning "A maximum of 72 conditions can be used at once, including nested conditions."
 
-***
+## Condition Types
 
-### Condition types
+### `AND` Condition
 
-#### "And" condition
-
-Evaluates all specified conditions and joins them using `AND` boolean operator.
+This condition evaluates all specified sub-conditions and joins them using the `AND` boolean operator.
 
 ```json
 {
@@ -67,11 +62,10 @@ Evaluates all specified conditions and joins them using `AND` boolean operator.
 }
 ```
 
-***
 
-#### "Or" condition
+#### `OR` Condition
 
-Evaluates all specified conditions and joins them using `OR` boolean operator.
+This condition evaluates all specified sub-conditions and joins them using the OR boolean operator.
 
 ```json
 {
@@ -89,12 +83,10 @@ Evaluates all specified conditions and joins them using `OR` boolean operator.
 }
 ```
 
-***
 
-#### "Number equals" condition
+### `NUMBER EQUALS` Condition
 
-Checks if specified field is equal to provided number value. Works for text fields too (e.q. "111" is considered equal to 111).
- For linked entity fields, it matches linked entity ID to number value.
+This condition checks if the specified field is equal to the provided number value. It also works for text fields (e.g., “111” is considered equal to 111). For linked entity fields, it matches the linked entity ID to the number value.
  
 ```json
 {
@@ -104,16 +96,13 @@ Checks if specified field is equal to provided number value. Works for text fiel
 }
 ```
 
-* `field` - string. A built-in field or field id.
-* `value` - int. Number value to which field matched against. Can be decimal. Must be between `-2^63` and `2^63-1`. No 
-more than 6 fractions digits.
+* `field` - string. A standard field or field ID.
+* `value` - int. Number value to match against the field. Can be decimal, must be between -2^63 and 2^63-1, with no more than 6 fractional digits.
 
-***
 
-#### "Contains string" condition
+### `CONTAINS STRING` Condition
 
-Checks if specified field contains substring equal to provided value. Works for number fields too, e.g. (123123 contains "123").
-For linked entity fields, it matches value against linked entity label or other similar field (first name, last name, etc.)
+This condition checks if the specified field contains a substring equal to the provided value. It also works for number fields (e.g., 123123 contains “123”). For linked entity fields, it matches the value against the linked entity label or other similar fields (e.g., first name, last name).
 
 ```json
 {
@@ -123,5 +112,5 @@ For linked entity fields, it matches value against linked entity label or other 
 }
 ```
 
-* `field` - string. A built-in field or field id.
-* `value` - int. string value to which field matched against. Cannot  be null or empty, max length is 760.
+* `field` - string. A standard field or field ID.
+* `value` - string. Value to match against the field. Cannot be null or empty, maximum length is 760 characters.

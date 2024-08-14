@@ -9,7 +9,6 @@ description: API call to register a mobile application. Deprecated.
 
 API call to register a mobile application. Use [tracker/register](./index.md#register) with `plugin_id` 35.
 
-***
 
 ## API actions
 
@@ -21,7 +20,7 @@ Registers new mobile client application.
 
 **required sub-user rights:** `tracker_register`.
 
-#### parameters
+#### Parameters
 
 Part of parameters are registration plugin-specific. See "Registration plugins" section.
 
@@ -34,7 +33,7 @@ Common parameters are:
 | device_id              | **Must** be specified if device model uses fixed device id. See [tracker/list_models](./index.md#list_models).                                                                              | string  | "4568005588562" |
 | send_register_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals  `null` will be used the platform settings. Default: `null`. | boolean | true/false      |
 
-#### response
+#### Response
 
 ```json
 {
@@ -45,7 +44,7 @@ Common parameters are:
 
 For `tracker` object structure, see [tracker/](./index.md#tracker-object-structure).
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 204 – Entity not found - if specified group does not exist.

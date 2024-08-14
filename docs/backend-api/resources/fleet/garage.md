@@ -8,7 +8,6 @@ description: Contains garage object and API calls to interact with it.
 Contains garage object and API calls to interact with it. Depot (garage object) contains name, address, name of the mechanic, name
 of the dispatcher and others. This data can be used for more convenient and efficient maintenance and task management.
 
-***
 
 ## Garage object
 
@@ -33,17 +32,16 @@ of the dispatcher and others. This data can be used for more convenient and effi
 * `dispatcher_name` - string. Dispatcher name or null.
 * `organization_name` - string. Organization name or null.
 
-***
 
 ## API actions
 
 API path: `/garage`.
 
-### list
+### `list`
 
 Gets all depots belonging to user.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -59,7 +57,7 @@ Gets all depots belonging to user.
     {{ extra.api_example_url }}/garage/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -79,25 +77,24 @@ Gets all depots belonging to user.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../getting-started.md#error-codes) types only.
+[General](../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### create
+### `create`
 
 Creates a new depot.
 
 **required sub-user rights**: `vehicle_update`.
 
-#### parameters
+#### Parameters
 
 | name   | description                                     | type        |
 |:-------|:------------------------------------------------|:------------|
 | garage | An [garage object](#garage) without `id` field. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -107,7 +104,7 @@ Creates a new depot.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "garage": {"location": {"lat": 40.4, "lng": -3.6, "address": "Calle Salitre, 58", "radius": 150}, "mechanic_name": "Martinez", "dispatcher_name": "Velasquez", "organization_name": "Bankia"}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -118,25 +115,24 @@ Creates a new depot.
 
 * `id` - int. An ID of a created depot.
 
-#### errors
+#### Errors
 
-[General](../../getting-started.md#error-codes) types only.
+[General](../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### update
+### `update`
 
 Updates existing depot with the specified ID.
 
 **required sub-user rights**: `vehicle_update`.
 
-#### parameters
+#### Parameters
 
 | name   | description                                  | type        |
 |:-------|:---------------------------------------------|:------------|
 | garage | An [garage object](#garage) with `id` field. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -146,31 +142,30 @@ Updates existing depot with the specified ID.
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "garage": {"id": 222, location": {"lat": 40.4, "lng": -3.6, "address": "Calle Salitre, 58", "radius": 150}, "mechanic_name": "Martinez", "dispatcher_name": "Velasquez", "organization_name": "Bankia"}}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no depot with such an ID.
 
-***
 
-### delete
+### `delete`
 
 Deletes a depot with the specified ID.
 
 **required sub-user rights**: `vehicle_update`.
 
-#### parameters
+#### Parameters
 
 | name      | description                | type |
 |:----------|:---------------------------|:-----|
 | garage_id | ID of the depot to delete. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -186,12 +181,12 @@ Deletes a depot with the specified ID.
     {{ extra.api_example_url }}/garage/delete?hash=a6aa75587e5c59c32d347da438505fc3&garage_id=111
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
     
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no depot with such an ID.

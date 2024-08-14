@@ -11,9 +11,8 @@ an event happened inside the geofence.
 This document describes CRUD actions for geofences. Note that geofence points handled separately because they are 
 represented by big arrays of data.
 
-Find instructions on working with geofences of different types [here](../../../how-to/how-to-create-geofences.md).
+Find instructions on working with geofences of different types [here](../../../guides/places/manage-geofences.md).
 
-***
 
 ## Entity description
 
@@ -56,7 +55,6 @@ Find instructions on working with geofences of different types [here](../../../h
 * `bounds` - object. North-west and south-east coordinates of the axis-aligned minimum bounding box.
 * `tags` - int array. Array of tag IDs.
 
-***
 
 #### polygon:
 
@@ -90,7 +88,6 @@ Find instructions on working with geofences of different types [here](../../../h
 * `bounds` - object. North-west and south-east coordinates of the axis-aligned minimum bounding box that contains all points.
 * `tags` - int array. Array of tag IDs.
 
-***
 
 #### sausage:
 
@@ -128,7 +125,6 @@ Represents all points within certain distance to the specified polyline.
 * `bounds` - object. North-west and south-east coordinates of the axis-aligned minimum bounding box that contains all points with a radius.
 * `tags` - int array. Array of tag IDs.
 
-***
 
 ## API actions
 
@@ -140,14 +136,14 @@ Convert batch of tab-delimited circle geofences and return list of checked geofe
 
 **required sub-user rights**: `zone_update`.
 
-#### parameters
+#### Parameters
 
 | name           | description                                                                                             | type                                                 |
 |:---------------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|
 | batch          | Batch of tab-delimited places.                                                                          | string                                               |
 | file_id        | ID of file preloaded with [/data/spreadsheet/parse](../../commons/data.md#dataspreadsheetparse) method. | string                                               |
-| fields         | Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "tags"]`.      | [enum](../../../getting-started.md#data-types) array |
-| geocoder       | Optional. Geocoder type.                                                                                | [enum](../../../getting-started.md#data-types)       |
+| fields         | Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "tags"]`.      | [enum](../../../getting-started/introduction.md#data-types) array |
+| geocoder       | Optional. Geocoder type.                                                                                | [enum](../../../getting-started/introduction.md#data-types)       |
 | default_radius | Optional. Radius for point, default is 100.                                                             | int                                                  |
 
 If 'file_id' is set – 'batch' parameter will be ignored.
@@ -157,7 +153,7 @@ For `batch` parameter:
 * lat - required if no address specified.
 * long - required if no address specified.
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -167,7 +163,7 @@ For `batch` parameter:
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "batch": "Geofence for test Karlsplatz, 2"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -211,7 +207,7 @@ For `batch` parameter:
 * `tags` - int array. Array of tag IDs.
 * `limit_exceeded` - boolean. `true` if given batch constrained by limit.
 
-#### response with errors object
+#### Response with errors object
 
 ```json
 {
@@ -244,19 +240,18 @@ For `batch` parameter:
     * `parameter` - string. Parameter name.
     * `error` - string. Error description.
 
-#### errors
+#### Errors
 
 * 234 - Invalid data format.
 
-***
 
-### create
+### `create`
 
 Creates a new geofence.
 
 **required sub-user rights**: `zone_update`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                                                                                                               | type                          |
 |:-----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------|
@@ -265,7 +260,7 @@ Creates a new geofence.
 | zone.color | Optional. Geofence color in 3-byte RGB hex format. Default is "27A9E3".                                                                                                                   | string                        |
 
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -275,7 +270,7 @@ Creates a new geofence.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Circle geofence", "type": "circle", "center": {"lat": 61.49504550221769, "lng": 23.775476217269897}, "radius": 50, "tags": [179227], "color": "03A9F4", "address":"Address"}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -286,22 +281,21 @@ Creates a new geofence.
 
 * `id` - int. An ID of the created geofence.
 
-#### errors
+#### Errors
 
 * 202 - Too many points in a geofence – max allowed points count for a geofence is 100 for a polygon or 1024 for sausage.
 * 230 - Not supported for this entity type – if "points" were specified, but geofence cannot have any points associated with
  it (e.g. if geofence is circle).
 * 268 - Over quota –  if the user's quota for geofences exceeded.
 
-***
 
-### delete
+### `delete`
 
 Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
 **required sub-user rights**: `zone_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description            | type      | format               |
 |:---------|:-----------------------|:----------|:---------------------|
@@ -310,7 +304,7 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
 * Use only one parameter `zone_id` or `zone_ids`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -326,7 +320,7 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
     {{ extra.api_example_url }}/zone/delete?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=1234567
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -334,7 +328,7 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database.
 * 203 - Delete entity associated with.
@@ -357,13 +351,12 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
 * `ids` - int array. List IDs of the rules which uses the specified geofence.
 
-***
 
-### list
+### `list`
 
 Gets all user geofences.
 
-#### parameters
+#### Parameters
 
 | name        | description                                                                                           | type      | 
 |:------------|:------------------------------------------------------------------------------------------------------|:----------|
@@ -373,7 +366,7 @@ Gets all user geofences.
 | limit       | Optional. Limit of the found geofences for pagination.                                                | int       |
 | with_points | Optional, default=`false`. If `true`, return geofence with its [points](zone_point.md)                | boolean   |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -389,7 +382,7 @@ Gets all user geofences.
     {{ extra.api_example_url }}/zone/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -411,20 +404,19 @@ Gets all user geofences.
 
 * `list` - array of objects. Geofence objects with optional points field.
 
-***
 
-### read
+### `read`
 
 Gets geofence by specified ID.
 
-#### parameters
+#### Parameters
 
 | name        | description                                                                            | type    | 
 |:------------|:---------------------------------------------------------------------------------------|:--------|
 | zone_id     | ID of a geofence.                                                                      | int     |
 | with_points | Optional, default=`false`. If `true`, return geofence with its [points](zone_point.md) | boolean |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -440,7 +432,7 @@ Gets geofence by specified ID.
     {{ extra.api_example_url }}/zone/read?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=12345
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -460,19 +452,18 @@ Gets geofence by specified ID.
 
 * `value` - Geofence object with optional points field.
 
-***
 
-### search_location
+### `search_location`
 
 Gets all geofence IDs and names within which a specified coordinates are located inside.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                                                                   | type        |
 |:---------|:--------------------------------------------------------------------------------------------------------------|:------------|
-| location | Location coordinates (see: [data types description section](../../../getting-started.md#data-types) section). | JSON object |
+| location | Location coordinates (see: [data types description section](../../../getting-started/introduction.md#data-types) section). | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -482,7 +473,7 @@ Gets all geofence IDs and names within which a specified coordinates are located
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 34.178868, "lng": -118.599672}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -503,9 +494,8 @@ Gets all geofence IDs and names within which a specified coordinates are located
 * `id` - int. Geofence ID that containing a searched location. 
 * `label` - string. Geofence name.
 
-***
 
-### update
+### `update`
 
 Update geofence parameters for the specified geofence. Note that geofence must exist, must belong to the current user, and its 
 type cannot be changed. E.g. if you already have a geofence with ID=1 which type is "circle", not possible to submit a geofence 
@@ -513,14 +503,14 @@ which type is "polygon".
 
 **required sub-user rights**: `zone_update`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                             | type        |
 |:-----------|:------------------------------------------------------------------------|:------------|
 | zone       | Geofence JSON-object with `id` and `color` fields.                      | JSON object |
 | zone.color | Optional. Geofence color in 3-byte RGB hex format. Default is "27A9E3". | string      |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -530,7 +520,7 @@ which type is "polygon".
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"id": 231512 "label": "Circle geofence", "type": "circle", "center": {"lat": 61.49504550221769, "lng": 23.775476217269897}, "radius": 50, "tags": [179227], "color": "03A9F4", "address":"Address"}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -538,15 +528,14 @@ which type is "polygon".
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if geofence with the specified ID cannot be found or belongs to another user.
 * 231 - Entity type mismatch – if type of the submitted geofence differs from type of the geofence currently stored in the 
 database.
 
-***
 
-### upload
+### `upload`
 
 Import geofences from KML file.
 
@@ -555,7 +544,7 @@ Import geofences from KML file.
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload 
 (with the name "file").
 
-#### parameters
+#### Parameters
 
 | name            | description                                                                                                                         | type        |
 |:----------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------|
@@ -564,7 +553,7 @@ Import geofences from KML file.
 | dry_run         | If `true` returns ready to create geofences or creates it and returns list of IDs otherwise. Default `true`.                        | boolean     |
 | redirect_target | Optional. URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>` | string      |
 
-#### responses
+#### Responses
 
 if `dry_run=true`:
 ```json
@@ -614,14 +603,13 @@ if `dry_run=false`:
 }
 ```
 
-#### errors
+#### Errors
 
 * 202 - Too many points in a geofence – max allowed points count for a geofence is 100 for a polygon or 1024 for sausage.
 * 233 - No data file – if file part is missing.
 * 234 - Invalid data format.
 * 268 - Over quota – if the user's quota for geofences exceeded.
 
-***
 
 From `Placemark` with `Point` geometry will be created circle geofence with a radius=default_radius.
 
@@ -642,7 +630,6 @@ From `Placemark` with `Point` geometry will be created circle geofence with a ra
 </kml>
 ```
 
-***
 
 From `Placemark` with `LineString` geometry will be created route geofence with a radius=default_radius.
 
@@ -665,7 +652,6 @@ From `Placemark` with `LineString` geometry will be created route geofence with 
 </kml>
 ```
 
-***
 
 From `Placemark` with `Polygon` geometry will be created polygon geofence.
 Polygons with holes not supported. In that case only the outer boundary will be imported and the inner boundary, holes, 
@@ -696,7 +682,6 @@ ignored.
 </kml>
 ```
 
-***
 
 From `Placemark` with `MultiGeometry` geometry will be created several geofences.
 If `Placemark.name` defined it will be used as geofence name with respect of hierarchy of `Folder` and `Document`.

@@ -5,11 +5,13 @@ description: API calls for interacting with activation codes used for device reg
 
 # Activation code
 
-API calls for interacting with activation codes used for device registration.
+Activation codes in Navixy streamline the device activation process by allowing users to set up devices themselves, ensuring they are configured with the appropriate plan and benefits from the start. These codes can include bonuses, free days, and monetary credits to a user’s balance upon activation, and are tied to specific plans. 
 
-***
+Depending on the dealer's preference, activation codes can be optional or required. Dealers can choose to restrict device activation to only those they supply, preventing users from adding devices purchased elsewhere without an activation code received from the dealer.
 
-## Activation code object
+## Activation Code Object
+
+Let's explore the Activation Code object using the example:
 
 ```json
 {
@@ -22,33 +24,31 @@ API calls for interacting with activation codes used for device registration.
     "activated": false,
     "activation_date": null,
     "device_id": 0,
-    "tariff_name": "Tracker demo tariff"
+    "tariff_name": "Tracker demo plan"
 }
 ```
 
-* `tariff_id` - int. A tariff ID.
-* `bonus_amount` - int. Bonus that will be added to a user's balance when the device with this code activates.
-* `free_days` - int. Count of free days.
-* `money_amount` - int. Money that will be added to a user's balance.
-* `code` - string. A code value.
-* `activated` - boolean. If `true` it is activated.
-* `device_id` - int. A device ID which activated with this code. It will be `0` if code not activated yet.
-* `tariff_name` - string. Tariff name.
+* `tariff_id` - int. The ID of the plan.
+* `bonus_amount` - int. The bonus amount that will be added to the user's balance when the device with this code is activated.
+* `free_days` - int. The number of free days.
+* `money_amount` - int. The amount of money that will be added to the user's balance.
+* `code` - string. The code value.
+* `activated` - boolean. Indicates whether the code is activated (`true`) or not.
+* `device_id` - int. The ID of the device activated with this code. It will be `0` if the code is not activated yet.
+* `tariff_name` - string. The name of the plan.
 
-***
 
 ## API actions
 
 API base path: `panel/dealer/activation_code`.
 
-### create
+### `create`
 
-Creates specified `count` of activation codes with passed `tariff_id`, `bonus_amount` and `free_days`. Returns count of 
-created codes.
+Creates the specified number (`count`) of activation codes with the given `tariff_id`, `bonus_amount`, and `free_days`. Returns the count of created codes.
 
 *required permissions*: `activation_code: ["read", "create"]`.
 
-#### parameters
+#### Parameters
 
 | name         | description                                          | type |
 |:-------------|:-----------------------------------------------------|:-----|
@@ -57,7 +57,7 @@ created codes.
 | bonus_amount | A new bonus amount.                                  | int  |
 | free_days    | A new free period.                                   | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -73,7 +73,7 @@ created codes.
     {{ extra.api_example_url }}/panel/dealer/activation_code/create?hash=fa7bf873fab9333144e171372a321b06&count=10&tariff_id=12457&bonus_amount=3&free_days=5
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -84,20 +84,19 @@ created codes.
 
 * `count` - int. Count of actually created codes.
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database - when tariff with `tariff_id` not found for a current dealer.
 
-***
 
-### list
+### `list`
 
 Lists all dealer activation codes. If `filter` is used, entities will be returned only if filter string will contain one 
 of the following fields: `code`, `tariff_id`, `device_id`, `device_type`. 
 
 *required permissions*: `activation_code: "read"`.
 
-#### parameters
+#### Parameters
 
 | name      | description                                                                                                                                                 | type    |
 |:----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
@@ -107,7 +106,7 @@ of the following fields: `code`, `tariff_id`, `device_id`, `device_type`.
 | offset    | Optional. Starting offset, used for pagination. Default is `0`.                                                                                             | int     |
 | limit     | Optional. Max number of records to return, used for pagination.                                                                                             | int     |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -123,7 +122,7 @@ of the following fields: `code`, `tariff_id`, `device_id`, `device_type`.
     {{ extra.api_example_url }}/panel/dealer/activation_code/list?hash=fa7bf873fab9333144e171372a321b06
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -147,9 +146,8 @@ of the following fields: `code`, `tariff_id`, `device_id`, `device_type`.
 * `list` - array of objects. List of [activation code objects](#activation-code-object).
 * `count` - int. Total number of records (ignoring offset and limit).
 
-***
 
-### update
+### `update`
 
 Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes which:
 * has `code` listed in `codes` parameter.
@@ -159,7 +157,7 @@ Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes whi
 
 *required permissions*: `activation_code: "update"`.
 
-#### parameters
+#### Parameters
 
 | name         | description                                                | type         |
 |:-------------|:-----------------------------------------------------------|:-------------|
@@ -168,7 +166,7 @@ Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes whi
 | bonus_amount | A new bonus.                                               | int          |
 | free_days    | A new free period.                                         | int          |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -184,7 +182,7 @@ Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes whi
     {{ extra.api_example_url }}/panel/dealer/activation_code/update?hash=fa7bf873fab9333144e171372a321b06&codes=["12315124", "12451576"]&tariff_id=12457&bonus_amount=3&free_days=5
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -195,6 +193,6 @@ Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes whi
 
 * `count` - int. Count of actually updated codes.
 
-#### errors
+#### Errors
 
-* 201 - Not found in the database - when a tariff with `tariff_id` not found for a current dealer.
+* 201 - Not found in the database - when a plan with `tariff_id` is not found for the current dealer.

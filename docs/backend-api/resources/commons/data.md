@@ -7,13 +7,12 @@ description: API call to parse the spreadsheet data
 
 API call to parse the spreadsheet data.
 
-***
 
-### /data/spreadsheet/parse
+### `/data/spreadsheet/parse`
 
 Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 
-#### parameters
+#### Parameters
 
 | name          | description                                                                                                                           | type        |
 |:--------------|:--------------------------------------------------------------------------------------------------------------------------------------|:------------|
@@ -24,7 +23,7 @@ Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 
 If `parse_header` is set to `true`, first row of the uploaded file will be treated as header corresponding to given `header_map`.
 
-#### response
+#### Response
 
 ```json
 {
@@ -38,22 +37,22 @@ If `parse_header` is set to `true`, first row of the uploaded file will be treat
 * `header` - optional string array. List of files' headers.
 * `preview` - string array. First N rows of file.
 
-#### errors
+#### Errors
 
 * 234 – Invalid data format.
 
-### /data/import/list
+### `/data/import/list`
 
 Returns the list of the user's import processes.
 
-#### parameters
+#### Parameters
 
 | name  | description                                                               | type         |
 |:------|:--------------------------------------------------------------------------|:-------------|
 | types | Optional. Types of the imported entities, e.g. `["vehicle", "employee"]`. | string array |
 
 
-#### response
+#### Response
 
 ```json
 {
@@ -81,7 +80,7 @@ Returns the list of the user's import processes.
 }
 ```
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -91,18 +90,18 @@ curl -X POST "{{ extra.api_example_url }}/data/import/list" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-### /data/import/read
+### `/data/import/read`
 
 Returns an import process with specified ID.
 
-#### parameters
+#### Parameters
 
 | name       | description                   | type   |
 |:-----------|:------------------------------|:-------|
 | process_id | Process ID                    | int    |
 | type       | Type of the imported entities | string |
 
-#### response
+#### Response
 
 ```json
 {
@@ -130,7 +129,7 @@ Returns an import process with specified ID.
 }
 ```
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -140,6 +139,6 @@ curl -X POST "{{ extra.api_example_url }}/data/import/read" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "type": "employee", "process_id": 1}'
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in database (if import is not found)

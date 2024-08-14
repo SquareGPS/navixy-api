@@ -2,73 +2,56 @@
 title: Getting Started
 description: Getting started with Navixy API
 ---
+# Navixy Developer Documentation
 
-# Getting started
+[Navixy](https://navixy.com) is a comprehensive GPS / Vehicle telematics platform developed by [SquareGPS](https://squaregps.com). This documentation provides detailed information on integrating third-party solutions with the Navixy platform, including API and technical documentation tailored for developers and partners.
 
-## How to read this documentation
+## How to use this documentation
 
-The documentation presented in several sections that are responsible for its own part of the Navixy platform:
+The documentation is organized into sections, each addressing a specific aspect of the Navixy platform:
 
-* `General` - introductory section. Explains how to work with the documentation and how you can help us improve it. It 
-also has information regarding translation of the platform into different languages.
-* `Backend API` - describes all calls for working with information presented to users or sub-users in the UI. Tracking, 
-reports, tasks, and more.
-* `Panel API` - describes all calls for working with information presented to administrators in the admin panel. 
-Information about devices, tariff plans, users, and more.
-* `Eco Fleet API` - describes calls that provide information for efficient fuel management.
-* `Data Warehouse API` - describes calls for obtaining raw telematics data.
-* `Frontend` - provides information on customizing the welcome page and additional Weblocator and Delivery plugins.
+* [**General**](../general/getting-started.md)  
+  Introduction, Navixy API Sandbox, No-code automation, and contribution guidelines
+* [**Backend API**](../backend-api/getting-started/introduction.md)
+  API calls for user interface functionalities like tracking, reports, and tasks
+* [**Panel API**](../panel-api/getting-started.md)
+  API calls for admin panel functionalities such as platform config and user management
+* [**Eco Fleet API**](../eco-fleet-api/getting-started.md)
+  API calls for efficient fuel management
+* [**Data Warehouse API**](../data-warehouse-api/getting-started.md)
+  API calls for obtaining raw IoT data received from devices
+* [**Frontend**](../frontend/extensions/user-applications.md)
+  Customizing the user experience by using embedded apps
 
-You can switch between sections using menu on the top of the page. On the right side of the menu, you can find a button 
-for downloading a PDF version of documentation and a link to our `github` page. 
+### Navigation
 
-All files of the section are presented in menu on the left. Once you click on one of them - it will display file contents. 
-On the right side of page you can find file's internal menu. Use it for quick navigation between parts of the file.
+Navigate using the top menu. Download a PDF or access our GitHub via links on the right. The left-hand menu lists files for each section—click to view contents. Use the internal menu on the right for quick navigation within the file.
 
-The documentation has three types of files: documents, guides and API calls.
+### Documentation structure
 
-Documents and guides are divided into semantic parts, the first of which is an introduction that briefly describes 
-what the document is about.
+The documentation includes three types of files: Documents, Guides, and API calls. Documents and guides are divided into semantic parts, starting with an introduction that summarizes the content.
 
-API calls have the following structure:
+### API call descriptions
 
-* `Introduction` - API call description and general information about its purpose.
-* `The structure of the object` - describes an object that is used in the calls. (optional)
-* `API-actions` - the API base call and actions. All API-actions also divided into several points:
-    * `Description of the API-actions` - describes purpose of the call.
-    * `Requirements` - what rights are required to use the API-action. (optional)
-    * `Parameters table` - contains list of parameters for selected API call, their description and data type.
-    * `Examples` - example of a correct API call with all parameters listed. Examples can be useful for troubleshooting. 
-    You can also copy them and simply substitute the data with your own. Each example has a copy button in the upper right 
-    corner. If the parameters don't contain special characters, they are presented in two variants: POST and GET. If the 
-    parameters include special characters, only POST examples given.
-    * `Response` - an example of successful response from the server with description of every field.
-    * `Errors` - specific errors for this API-action. General error list applies to all calls.
+* **Introduction** - General information and purpose of the API call.
+* **Object structure** - Describes the object structure used in the calls (optional).
+* **API Actions** - Base API call and associated actions, including:
+    * **Action description** - Purpose of the API action.
+    * **Requirements** - Necessary permissions (optional).
+    * **Parameters table** - Lists parameters for the API call with descriptions and data types.
+    * **Examples** - API call examples with parameters. Includes a copy button for easy use.
+    * **Response** - Example of a successful server response with field descriptions.
+    * **Errors** - Specific errors related to the API action, plus a general error list.
 
-***
 
-## Limits
+## API Limits
 
-To maintain the stability of the system for all users, the platform has a limit of 50 requests/second per user and per IP 
-address (if your app works with multiple users).
+To ensure system stability for all customers, the platform limits API requests to 50 requests per second per user and per IP address (for applications serving multiple users). These limits are applied based on user session hash and API keys.
 
-***
+## Navixy API Sandbox
+
+Navixy provides a powerful Postman collection, the Navixy API Sandbox, for working with API documentation, exploring, and testing API queries using real or demo data. This collection offers a familiar environment for many developers and simplifies the process of building customized solutions. For detailed information on using Postman with Navixy, please refer to the [Postman Guide](./postman.md).
 
 ## Get involved
 
-You can really help to improve [this documentation](./get-involved.md) or
- [localizations](./localizations/index.md) of Navixy Platform.
-
-If the translation of the user interface into your language is missing or contains errors, you can make or fix the
-localization on the [CrowdIn platform](https://crowdin.com/) yourself. Read [here](./localizations/contributing.md) how
-to do it.
-
-Current documentation may also contain errors or white spots. All of it is available in the public domain on [GitHub]({{
-config.repo_url }}), and you can independently contribute in its correction or addition. Read [here](./get-involved.md)
-how to do it.
-
-***
-
-## Useful things
-
-It is convenient to [use postman](./postman.md) for testing work with API.
+Help improve the [Navixy developer documentation](../general/contribute/dev-docs.md) or assist with [language translations](../general/contribute/translation.md). Your contributions make the Navixy platform even better for the community.

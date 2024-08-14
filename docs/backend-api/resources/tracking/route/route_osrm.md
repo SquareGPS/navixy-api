@@ -7,17 +7,16 @@ description: API call for getting the route to destination point using OSRM API.
 
 API call for getting the route to destination point using [OSRM API](https://github.com/Project-OSRM/osrm-backend/wiki/Server-api#requesting-routes).
 
-***
 
 ## API actions
 
 API path: `/route/osrm`.
 
-### get
+### `get`
 
 Gets route points via OSRM API.
 
-#### parameters
+#### Parameters
 
 | name        | description                                                                                                      | type                  |
 |:------------|:-----------------------------------------------------------------------------------------------------------------|:----------------------|
@@ -26,9 +25,9 @@ Gets route points via OSRM API.
 | waypoints   | Optional. List of transitional points. `[{locationA},{locationN}]`.                                              | array of JSON objects |
 | point_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int                   |
 
-Where **location** described in [data types description section](../../../getting-started.md#data-types).
+Where **location** described in [data types description section](../../../getting-started/introduction.md#data-types).
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -38,7 +37,7 @@ Where **location** described in [data types description section](../../../gettin
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start": {34.178868, "lng": -118.599672}, "end": {35.365948, "lng": -108.112104}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -62,7 +61,7 @@ Where **location** described in [data types description section](../../../gettin
     * `lat` - float. Latitude.
     * `lng` - float. Longitude.
 
-#### errors
+#### Errors
 
 * 215 - External service error.
 * 218 - Malformed external service parameters.
@@ -84,7 +83,7 @@ Where **location** described in [data types description section](../../../gettin
     }
     ```
   
-    * `status` - [enum](../../../getting-started.md#data-types).
+    * `status` - [enum](../../../getting-started/introduction.md#data-types).
         * `NOT_FOUND` – indicates at least one of the locations specified in the request's origin, destination, or 
         waypoints could not be geocoded, or OSRM cannot find route.
         * `UNKNOWN_ERROR` – unexpected OSRM error code.

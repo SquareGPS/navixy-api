@@ -1,6 +1,6 @@
 title: Backend API
 nav:
-  - getting-started.md
-  - how-to
+  - getting-started
+  - Guides: guides
   - resources
   - websocket

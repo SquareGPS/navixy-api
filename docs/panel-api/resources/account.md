@@ -7,25 +7,24 @@ description: API calls on getting the panel's hash, getting permissions and logo
 
 API calls on getting the panel's hash, getting permissions and logout.
 
-***
 
 ## API actions
 
 API path: `panel/account`.
 
-### auth
+### `auth`
 
 Does not require session hash and does not need any permissions. Auths dealer in a panel (planned also for dealer's "sub-users")
  and gets hash. 
 
-#### parameters
+#### Parameters
 
 | name     | description               | type   |
 |:---------|:--------------------------|:-------|
 | login    | A panel's login (number). | string |
 | password | A panel's password.       | string |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -35,7 +34,7 @@ Does not require session hash and does not need any permissions. Auths dealer in
         -d '{"login": "20410", "password": "12f@14Y$"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -105,24 +104,23 @@ Does not require session hash and does not need any permissions. Auths dealer in
 ```
 
 * `hash` - string. A session key.
-* `permissions` - object representing permissions for the panel. See panel account [permissions](../getting-started.md#panel-api-permissions).
+* `permissions` - object representing permissions for the panel. See panel account [permissions](../../backend-api/getting-started/introduction.md#panel-api-permissions).
     
-#### errors
+#### Errors
 
 * 11 - Access denied - if dealer blocked.
 * 12 - Dealer not found.
 
-***
 
-### get_permissions
+### `get_permissions`
 
 Returns permissions for current panel session. 
 
-#### parameters
+#### Parameters
 
 Only session `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -138,7 +136,7 @@ Only session `hash`.
     {{ extra.api_example_url }}/panel/account/get_permissions?hash=fa7bf873fab9333144e171372a321b06
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -206,21 +204,20 @@ Only session `hash`.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../backend-api/getting-started.md#error-codes) types only.
+[General](../../backend-api/getting-started/errors.md#error-codes) types only.
 
-***
 
-### logout
+### `logout`
 
 Ends the current session.
 
-#### parameters
+#### Parameters
 
 Only session `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -236,7 +233,7 @@ Only session `hash`.
     {{ extra.api_example_url }}/panel/account/logout?hash=fa7bf873fab9333144e171372a321b06
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -244,6 +241,6 @@ Only session `hash`.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../backend-api/getting-started.md#error-codes) types only.
+[General](../../backend-api/getting-started/errors.md#error-codes) types only.

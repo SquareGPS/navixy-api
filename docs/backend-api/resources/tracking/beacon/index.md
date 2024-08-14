@@ -8,7 +8,6 @@ description: Contains list of methods to get BLE beacon data.
 Methods for obtaining collected BLE beacon data.
 BLE beacon data is data about radio tags (BLE beacons) visible to a tracker, e.g. iBeacon, Teltonika EYE Beacon\Sensor, Eddystone.
 
-***
 
 ## BLE beacon data entry
 ```json
@@ -29,7 +28,7 @@ BLE beacon data is data about radio tags (BLE beacons) visible to a tracker, e.g
 * `tracker_id` - int. An ID of the tracker (aka "object_id").
 * `hardware_id` - string. An ID of the beacon.
 * `rssi` - int. RSSI stands for received signal strength indicator and represents the power of received signal on a device. According to it, you can understand how far away the beacon is from the tracker.
-* `get_time` - [date/time](../../../getting-started.md#data-types). When this data received.
+* `get_time` - [date/time](../../../getting-started/introduction.md#data-types). When this data received.
 * `latitude` - float.  Latitude.
 * `longitude` - float.  Longitude.
 * `ext_data` - object. Additional beacon data.
@@ -38,21 +37,21 @@ BLE beacon data is data about radio tags (BLE beacons) visible to a tracker, e.g
 
 API path: `/beacon/data/read`.
 
-### read
+### `read`
 
 List of beacon data history between `from` date/time and `to` date/time sorted by **get_time** field.
 
-#### parameters
+#### Parameters
 
 | name      | description                                                                                              | type                                                       |
 |:----------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
-| from      | Start date/time for searching.                                                                           | string [date/time](../../../getting-started.md#data-types) |
-| to        | End date/time for searching. Must be after "from" date.                                                  | string [date/time](../../../getting-started.md#data-types) |
+| from      | Start date/time for searching.                                                                           | string [date/time](../../../getting-started/introduction.md#data-types) |
+| to        | End date/time for searching. Must be after "from" date.                                                  | string [date/time](../../../getting-started/introduction.md#data-types) |
 | trackers  | Optional. Default: null. List of trackers.                                                               | int array                                                  |
 | beacons   | Optional. Default: null. List of beacons IDs. All IDs must not be empty and not more than 64 characters. | string array                                               |
  
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -68,7 +67,7 @@ List of beacon data history between `from` date/time and `to` date/time sorted b
     }'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -107,11 +106,11 @@ List of beacon data history between `from` date/time and `to` date/time sorted b
 
 API path: `/beacon/data/last_values`.
 
-### last values
+### `last values`
 
 List of last BLE beacon data visible on the trackers.
 
-#### parameters
+#### Parameters
 
 | name                    | description                                                                       | type              |
 |:------------------------|:----------------------------------------------------------------------------------|:------------------|
@@ -121,7 +120,7 @@ List of last BLE beacon data visible on the trackers.
 
 
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -135,7 +134,7 @@ List of last BLE beacon data visible on the trackers.
     }'
     ```
 
-#### response
+#### Response
 
 ```json
 {

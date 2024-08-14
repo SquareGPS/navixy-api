@@ -91,7 +91,7 @@ This method involves installing the Git, IDE, Python and
 ## Introduction into Mkdocs
 
 This documentation built on [mkdocs engine](https://mkdocs.org) and [mkdocs-material theme](https://squidfunk.github.io/mkdocs-material).
-Firstly, read [how to layout and write your Markdown source files](https://mkdocs.org/user-guide/writing-your-docs)
+Firstly, read [how to structure and write your Markdown source files](https://mkdocs.org/user-guide/writing-your-docs)
 for an overview of how to write docs.
 
 ***

@@ -7,7 +7,6 @@ description: Transaction object description and API call to get list of user's b
 
 Transaction object description and API call to get list of user's billing transactions for the specified period.
 
-***
 
 ## Transaction object
 
@@ -30,9 +29,9 @@ Transaction object description and API call to get list of user's billing transa
 ```
 
 * `description` - string. Transaction description.
-* `type` - [enum](../../getting-started.md#data-types). Type of transaction.
-* `subtype` - [enum](../../getting-started.md#data-types). Subtype of transaction.
-* `timestamp` - [date/time](../../getting-started.md#data-types). When transaction created.
+* `type` - [enum](../../getting-started/introduction.md#data-types). Type of transaction.
+* `subtype` - [enum](../../getting-started/introduction.md#data-types). Subtype of transaction.
+* `timestamp` - [date/time](../../getting-started/introduction.md#data-types). When transaction created.
 * `user_id` - int. ID of a user which made a transaction.
 * `dealer_id` - int. ID of a dealer.
 * `tracker_id` - int. Tracker id. 0 if transaction not associated with tracker.
@@ -43,27 +42,26 @@ Transaction object description and API call to get list of user's billing transa
 * `new_bonus` - double. User's bonus balance after transaction.
 * `old_bonus` - double. User's bonus balance before transaction.
 
-***
 
 ## API actions
 
 API path: `/transaction`.
 
-### list
+### `list`
 
 Gets list of user's billing transactions for the specified period.
 
 **required sub-user rights**: `payment_create`.
 
-#### parameters
+#### Parameters
 
 | name  | description                                             | type                                             |
 |:------|:--------------------------------------------------------|:-------------------------------------------------|
-| from  | Start date/time for searching.                          | [date/time](../../getting-started.md#data-types) |
-| to    | End date/time for searching. Must be after `from` date. | [date/time](../../getting-started.md#data-types) |
+| from  | Start date/time for searching.                          | [date/time](../../getting-started/introduction.md#data-types) |
+| to    | End date/time for searching. Must be after `from` date. | [date/time](../../getting-started/introduction.md#data-types) |
 | limit | Optional. Maximum number of returned transactions.      | int                                              |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -73,7 +71,7 @@ Gets list of user's billing transactions for the specified period.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2021-01-20 08:16:40", "to": "2021-01-28 08:16:40"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -98,6 +96,6 @@ Gets list of user's billing transactions for the specified period.
 
 * `list` - array of objects. List of [transactions objects](#transaction-object).
 
-#### errors
+#### Errors
 
 * 211 – Requested time span is too big - more than [report.maxTimeSpan](../commons/dealer.md).

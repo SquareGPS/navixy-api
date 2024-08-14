@@ -7,25 +7,24 @@ description: API actions for manipulating schedule checkpoint entries similarly 
 
 These actions allow manipulating schedule checkpoint entries similarly to regular route checkpoints.
 
-***
 
 ## API actions
 
 API path: `/task/schedule/checkpoint`.
 
-### delete
+### `delete`
 
 Deletes a checkpoint from route and reorder others.<br>
 If route has two checkpoints then use transmute on the other checkpoint, because route must have
 at least two checkpoints.
 
-#### parameters
+#### Parameters
 
 | name          | description    | type | 
 |:--------------|:---------------|:-----|
 | checkpoint_id | Checkpoint ID. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -41,29 +40,28 @@ at least two checkpoints.
     {{ extra.api_example_url }}/task/schedule/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=11231
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### transmute
+### `transmute`
 
 Transmutes a checkpoint to task and delete its route and other checkpoints in the route.
 
-#### parameters
+#### Parameters
 
 | name          | description    | type | 
 |:--------------|:---------------|:-----|
 | checkpoint_id | Checkpoint ID. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -79,12 +77,12 @@ Transmutes a checkpoint to task and delete its route and other checkpoints in th
     {{ extra.api_example_url }}/task/schedule/checkpoint/transmute?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=11231
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.

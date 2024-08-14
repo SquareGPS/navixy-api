@@ -5,28 +5,27 @@ description: API call to update dealer's password.
 
 # Password
 
-API call to update dealer's password.
+API call to update Dealer's password.
 
-***
 
 ## API actions
 
 API base path: `panel/dealer/password`.
 
-### update
+### `update`
 
-Changes password for the authorized dealer. 
+Changes password for the authorized Dealer. 
 
 *required permissions*: `password: "update"`.
 
-#### parameters
+#### Parameters
 
 | name         | description                                                | type   |
 |:-------------|:-----------------------------------------------------------|:-------|
 | old_password | Current dealer's password.                                 | string |
 | new_password | New password for the dealer, 6 to 20 printable characters. | string |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -36,7 +35,7 @@ Changes password for the authorized dealer.
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "old_password": "qwerty", "new_password": "B1r7d@Y"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -44,7 +43,7 @@ Changes password for the authorized dealer.
 }
 ```
 
-#### errors
+#### Errors
 
 * 245 - New password must be different - if `old_password` = `new_password`.
 * 248 - Wrong password - if `old_password` is wrong.

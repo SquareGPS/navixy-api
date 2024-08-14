@@ -7,19 +7,18 @@ description: Contains API call to get dealer info and dealer-specific UI setting
 
 Contains API call to get dealer info and dealer-specific UI settings.
 
-***
 
 ## API actions
 
 API path: `/dealer`.
 
-### get_ui_config
+### `get_ui_config`
 
 Gets dealer info and dealer-specific UI settings by a domain or hash.
 
 It doesn't require authentication and available in **UNAUTHORIZED** access level.
 
-#### parameters
+#### Parameters
 
 | name   | description                                                               | type   |
 |:-------|:--------------------------------------------------------------------------|:-------|
@@ -29,7 +28,7 @@ It doesn't require authentication and available in **UNAUTHORIZED** access level
 Params `domain` and `hash` is not required both, but one of them must be specified.
 If `hash` is specified the `domain` shouldn't be used.
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -39,7 +38,7 @@ If `hash` is specified the `domain` shouldn't be used.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "domain": "panel.navixy.com"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -124,18 +123,18 @@ If `hash` is specified the `domain` shouldn't be used.
 * `settings` - object. Custom settings. May be null if dealer has not set any custom settings.
     * `domain` - string. The same as dealer.ui_domain.
     * `service_title` - string. Title of the service.
-    * `locale` - [enum](../../getting-started.md#data-types). Default locale of the dealer.
+    * `locale` - [enum](../../getting-started/introduction.md#data-types). Default locale of the dealer.
     * `demo_login` - string. Dealer's login for demo user or empty string if no demo user available.
     * `demo_password` - string. Dealer's password for demo user or empty string if no demo user available.
     * `maps` - string array. List of available maps, 
     e.g. `["roadmap", "cdcom", "osm", "wikimapia", "yandexpublic", "hybrid", "satellite"]`.
     * `default_map` - object. Default map settings.
-    * `type` - [enum](../../getting-started.md#data-types). Default map type.
+    * `type` - [enum](../../getting-started/introduction.md#data-types). Default map type.
     * `location` - object. Default map center location.
     * `lat` - float. Latitude.
     * `long` - float. Longitude.
     * `zoom` - int. Default map zoom level.
-    * `currency` - [enum](../../getting-started.md#data-types). Dealer's currency ISO 4217 code.
+    * `currency` - [enum](../../getting-started/introduction.md#data-types). Dealer's currency ISO 4217 code.
     * `payment_link` - string. PaaS-dependent link that can be used to refill user's account. Can be null or empty.
     * `promo_url` - string. Customizable "About company" url.
     * `google_client_id` - string. Client ID which must be used to work with Google API or null.
@@ -150,12 +149,12 @@ If `hash` is specified the `domain` shouldn't be used.
     special chars escaped using HTML entities.
     * `show_mobile_apps` - boolean. If `true` then mobile applications are available for dealer's users.
     * `show_call_notifications` - boolean. If `true` then call notifications are available for dealer's users.
-    * `geocoder` - [enum](../../getting-started.md#data-types). Default geocoder.
-    * `route_provider` - [enum](../../getting-started.md#data-types). Default router.
-    * `measurement_system` - [enum](../../getting-started.md#data-types). Measurement system.
+    * `geocoder` - [enum](../../getting-started/introduction.md#data-types). Default geocoder.
+    * `route_provider` - [enum](../../getting-started/introduction.md#data-types). Default router.
+    * `measurement_system` - [enum](../../getting-started/introduction.md#data-types). Measurement system.
     * `display_model_features_link` - boolean. When `true` show in model info link to squaregps.com (UI option).
-    * `color_theme` - [enum](../../getting-started.md#data-types). Color theme code or empty string (for default theme).
-    * `app_color_theme` - [enum](../../getting-started.md#data-types). Mobile app color theme code or empty string (for default theme).
+    * `color_theme` - [enum](../../getting-started/introduction.md#data-types). Color theme code or empty string (for default theme).
+    * `app_color_theme` - [enum](../../getting-started/introduction.md#data-types). Mobile app color theme code or empty string (for default theme).
     * `tos` - string. Terms of service text.
     * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
     * `exclusion` - boolean. If `true` models in the `values` will be excluded.
@@ -169,7 +168,7 @@ If `hash` is specified the `domain` shouldn't be used.
 * `premium_gis` - boolean. If `true` dealer has Premium GIS package.
 * `features` - string array. Set of the allowed features for a dealer (all list see below in "Dealer features").
 * `platform` - key-value object. Global platform settings.
-    * `iso_datetime_support` - boolean, if `true` platform supports ISO 8601 [date/time format](../../getting-started.md#datetime-formats). 
+    * `iso_datetime_support` - boolean, if `true` platform supports ISO 8601 [date/time format](../../getting-started/introduction.md#datetime-formats). 
     * `history.max_limit` - int, max limit for [history](history/index.md) list actions.
     * `report.max_time_span` - ISO 8601 duration, max timespan for [reports generation](report/report_tracker.md#generate).
     * `stats.max_allowed_trackers` - int, max allowed trackers for [stats actions](../tracking/tracker/stats/stats_mileage.md).
@@ -189,7 +188,7 @@ If `hash` is specified the `domain` shouldn't be used.
 | subpaas         | Allow to use Sub-Dealers (can be used only together with `navixy_label`).         |
 | navixy_label    | Show "Powered by Navixy" in UI (required for subpaas feature).                    |
 
-#### errors
+#### Errors
 
 * 12 – Dealer not found (if corresponding dealer not found in the database).
 * 201 – Not found in the database (if there is no Ui settings data for corresponding dealer).

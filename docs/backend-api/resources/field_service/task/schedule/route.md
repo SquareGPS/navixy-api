@@ -7,7 +7,6 @@ description: These actions allow creating scheduled routes similarly to regular 
 
 These actions allow creating scheduled routes similarly to regular routes.
 
-***
 
 ## Route schedule entry
 
@@ -30,7 +29,6 @@ These actions allow creating scheduled routes similarly to regular routes.
 * `tracker_id` - int. An ID of the tracker to which all generated tasks assigned. Nullable.
 * `parameters` - schedule parameters can be "weekdays" or "month_days". Described below.
 
-***
 
 ## Checkpoint schedule entry
 
@@ -97,24 +95,23 @@ These actions allow creating scheduled routes similarly to regular routes.
 
     * `month_days` - int array. Days of month on which tasks will be created (1..31).
 
-***
 
 ## API actions
 
 API base path: `/task/schedule/route`.
 
-### create
+### `create`
 
 Creates route schedule with checkpoints.
 
-#### parameters
+#### Parameters
 
 | name        | description                                                                                    | type        | 
 |:------------|:-----------------------------------------------------------------------------------------------|:------------|
 | route       | [Route schedule entry](#route-schedule-entry) without fields which are *IGNORED*.              | JSON object |
 | checkpoints | Array of route's [checkpoints](#checkpoint-schedule-entry) without fields which are *IGNORED*. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -124,7 +121,7 @@ Creates route schedule with checkpoints.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route": {"tracker_id": 22, "label": "Shop", "description": "Buy things", "parameters": {"type": "month_days","month_days": [1, 10, 31]}}, "checkpoints": [{"tracker_id": 22, "label": "Shop", "description": "Buy things", "parent_id": 1, "order": 0, "location": { "lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "from_time": "12:34:00", "duration": 60, "tags": [1, 2], "form_template_id": 1}]}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -135,23 +132,22 @@ Creates route schedule with checkpoints.
 
 * `id` - int. An ID of the created route schedule entry.
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types.
+[General](../../../../getting-started/errors.md#error-codes) types.
 
-***
 
-### delete
+### `delete`
 
 Deletes route schedule with checkpoints.
 
-#### parameters
+#### Parameters
 
 | name | description        | type | 
 |:-----|:-------------------|:-----|
 | id   | Route schedule ID. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -167,7 +163,7 @@ Deletes route schedule with checkpoints.
     {{ extra.api_example_url }}/task/schedule/route/delete?hash=a6aa75587e5c59c32d347da438505fc3&id=23144
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -175,26 +171,25 @@ Deletes route schedule with checkpoints.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types.
+[General](../../../../getting-started/errors.md#error-codes) types.
 
-***
 
-### update
+### `update`
 
 Updates route schedule with checkpoints. If checkpoint is being created, then it should have no id.
 If checkpoint is being updated, then it should have an ID. If old checkpoint is not present in request, then it
  will be deleted.
 
-#### parameters
+#### Parameters
 
 | name        | description                                                                                    | type        | 
 |:------------|:-----------------------------------------------------------------------------------------------|:------------|
 | route       | [Route schedule entry](#route-schedule-entry) without fields which are *IGNORED*.              | JSON object |
 | checkpoints | Array of route's [checkpoints](#checkpoint-schedule-entry) without fields which are *IGNORED*. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -204,12 +199,12 @@ If checkpoint is being updated, then it should have an ID. If old checkpoint is 
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route": {"id": 111, "tracker_id": 22, "label": "Shop", "description": "Buy things", "parameters": {"type": "month_days","month_days": [1, 10, 31]}}, "checkpoints": {"id": 111, "tracker_id": 22, "label": "Shop", "description": "Buy things", "parent_id": 1, "order": 0, "location": { "lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "from_time": "12:34:00", "duration": 60, "tags": [1, 2], "form_template_id": 1}}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types.
+[General](../../../../getting-started/errors.md#error-codes) types.

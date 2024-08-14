@@ -8,7 +8,6 @@ description: Contains plugin object description and API calls to interact with i
 Contains plugin object description and API calls to interact with it.<br>
 Plugins are special software modules which modify the behavior of various API calls.
 
-***
 
 ## Plugin object structure
 
@@ -50,22 +49,21 @@ Plugins are special software modules which modify the behavior of various API ca
 }
 ```
 
-***
 
 ## API actions
 
 API path: `/plugin`.
 
-### list
+### `list`
 
 Get all plugins available to the user. List of available plugins may vary from user to user depending on platform 
 settings and purchased features. Only these plugins can be used to register trackers, generate reports, etc.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -81,7 +79,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/plugin/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -101,9 +99,9 @@ Only API key `hash`.
 
 * `list` - array of objects. List of available plugins.
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
 
 #### Standalone-specific:
 

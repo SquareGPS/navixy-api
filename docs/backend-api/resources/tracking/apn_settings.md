@@ -7,23 +7,22 @@ description: API call to get APN settings by device's phone number.
 
 API call to get APN settings by device's phone number.
 
-***
 
 ## API actions
 
 API base path: `/apn_settings`.
 
-### read
+### `read`
 
 Gets the APN name/user/password and mobile operator for registered device by phone number.
 
-#### parameters
+#### Parameters
 
 | name  | description                                                            | type   | format       |
 |:------|:-----------------------------------------------------------------------|:-------|:-------------|
 | phone | string representing valid international phone number without `+` sign. | string | "1234567890" |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -39,7 +38,7 @@ Gets the APN name/user/password and mobile operator for registered device by pho
     {{ extra.api_example_url }}/apn_settings/read?hash=a6aa75587e5c59c32d347da438505fc3&phone=1234567890
     ```
 
-#### response
+#### Response
 
 ```json
     {
@@ -53,6 +52,6 @@ Gets the APN name/user/password and mobile operator for registered device by pho
     }
 ```
 
-#### errors
+#### Errors
 
 * 201 – The phone number not found in the database.

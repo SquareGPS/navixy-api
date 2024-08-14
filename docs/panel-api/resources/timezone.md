@@ -7,23 +7,22 @@ description: API call to get information about all supported timezones for the s
 
 API call to get information about all supported timezones for the specified locale.
 
-***
 
 ## API actions
 
 API path: `panel/timezone`.
 
-### list
+### `list`
 
 Gets information about all supported timezones for the specified locale. Does not require authorization.
 
-#### parameters
+#### Parameters
 
 | name   | description                                  | type                                                    |
 |:-------|:---------------------------------------------|:--------------------------------------------------------|
-| locale | Locale code to set language of descriptions. | [enum](../../backend-api/getting-started.md#data-types) |
+| locale | Locale code to set language of descriptions. | [enum](../../backend-api/getting-started/introduction.md#data-types) |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -39,7 +38,7 @@ Gets information about all supported timezones for the specified locale. Does no
     {{ extra.api_example_url }}/panel/timezone/list?locale=en
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -65,6 +64,6 @@ Gets information about all supported timezones for the specified locale. Does no
 * `description` - string. ISO country code for the timezone.
 * `alt_ids` - string array. List of string, optional, alternative timezone IDs.
 
-#### errors
+#### Errors
 
-[General](../../backend-api/getting-started.md#error-codes) types only.
+[General](../../backend-api/getting-started/errors.md#error-codes) types only.

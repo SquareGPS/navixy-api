@@ -12,7 +12,6 @@ schedule checked and if there are tasks which start at this day, they are create
 Schedule entries are very similar to tasks, main difference is that `from` and `to` containing specific date and time 
 replaced with `from_time`, `duration` and `parameters`.
 
-***
 
 ## Task schedule entry object
 
@@ -58,25 +57,24 @@ replaced with `from_time`, `duration` and `parameters`.
 * `tags` - int array. List of tag IDs.
 * `form_template_id` - int. Form template ID. Nullable.
 
-***
 
 ## API actions
 
 API base path: `task/schedule`.
 
-### create
+### `create`
 
 Creates new task schedule entry.
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                 | type        | 
 |:---------|:------------------------------------------------------------|:------------|
 | schedule | `schedule_entry` object without fields which are *IGNORED*. | JSON object |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -86,7 +84,7 @@ Creates new task schedule entry.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -97,28 +95,27 @@ Creates new task schedule entry.
 
 * `id` - int. An ID of the created schedule entry.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if schedule.tracker_id belongs to nonexistent tracker.
 * 204 – Entity not found - if schedule.form_template_id belongs to nonexistent form template.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
-***
 
-### delete
+### `delete`
 
 Delete task schedule with the specified ID.
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name        | description                        | type | 
 |:------------|:-----------------------------------|:-----|
 | schedule_id | ID of the task schedule to delete. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -134,24 +131,23 @@ Delete task schedule with the specified ID.
     {{ extra.api_example_url }}/task/schedule/delete?hash=a6aa75587e5c59c32d347da438505fc3&schedule_id=23144
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no task schedule with such an ID.
 
-***
 
-### list
+### `list`
 
 Get all task or route schedules belonging to user with optional filtering.<br>
 Also this call returns all unassigned task schedules.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                                                                   | type         | 
 |:---------|:--------------------------------------------------------------------------------------------------------------|:-------------|
@@ -161,7 +157,7 @@ Also this call returns all unassigned task schedules.
 | types    | Optional. Tasks of specific type will be returned in the list. Can be `task` or `route`. Default is `task`.   | string array |
 
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -177,7 +173,7 @@ Also this call returns all unassigned task schedules.
     {{ extra.api_example_url }}/task/schedule/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -209,23 +205,22 @@ Also this call returns all unassigned task schedules.
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### read
+### `read`
 
 Gets task, route or checkpoint schedule by specified ID.
 
-#### parameters
+#### Parameters
 
 | name | description                                  | type | 
 |:-----|:---------------------------------------------|:-----|
 | id   | An ID of task, route or checkpoint schedule. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -241,7 +236,7 @@ Gets task, route or checkpoint schedule by specified ID.
     {{ extra.api_example_url }}/task/schedule/read?hash=a6aa75587e5c59c32d347da438505fc3&id=12314
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -285,25 +280,24 @@ Gets task, route or checkpoint schedule by specified ID.
 * `value` - <schedule_entry> object.
 * `checkpoints` - if value is <route_schedule_entry>.
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### update
+### `update`
 
 Updates existing task schedule.
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                 | type        | 
 |:---------|:------------------------------------------------------------|:------------|
 | schedule | `schedule_entry` object without fields which are *IGNORED*. | JSON object |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -313,7 +307,7 @@ Updates existing task schedule.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -321,7 +315,7 @@ Updates existing task schedule.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if schedule.tracker_id belongs to nonexistent tracker.
 * 204 – Entity not found - if there is no task schedule with specified ID.

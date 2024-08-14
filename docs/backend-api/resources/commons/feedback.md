@@ -7,7 +7,6 @@ description: Contains feedback object and API call to send a feedback email, ask
 
 Contains feedback object API call to send a feedback email, ask for help or suggest a new feature.
 
-***
 
 ## Feedback object
 
@@ -27,25 +26,24 @@ Contains feedback object API call to send a feedback email, ask for help or sugg
 * `screenshots` - optional string array. base64-encoded data:url image, example: data:image/jpeg;base64,`[encoded image]`.
 * `log` - optional log file. Contains log of the browser.
 
-***
 
 ## API actions
 
 API path: `/feedback`.
 
-### send_email
+### `send_email`
 
 Sends an email with user's feedback, ask for help, or suggestion a new feature. The message will be sent to dealer's 
 email address for feedback.
 
-#### parameters
+#### Parameters
 
-| name     | description                                                                            | type                                        |
-|:---------|:---------------------------------------------------------------------------------------|:--------------------------------------------|
-| feedback | Message from the user. Screenshot and log will be added to email as attachments.       | JSON object                                 |
-| type     | Optional. One of strings: `support_request` (default), `feature_request` and `review`. | [enum](../../getting-started.md#data-types) |
+| name     | description                                                                            | type                                                     |
+|:---------|:---------------------------------------------------------------------------------------|:---------------------------------------------------------|
+| feedback | Message from the user. Screenshot and log will be added to email as attachments.       | JSON object                                              |
+| type     | Optional. One of strings: `support_request` (default), `feature_request` and `review`. | [enum](../../getting-started/introduction.md#data-types) |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -55,12 +53,12 @@ email address for feedback.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "feedback": {"text": "I love this platform"}, "type": "review"}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
-* [General](../../getting-started.md#error-codes) types only.
+* [General](../../getting-started/errors.md#error-codes) types only.

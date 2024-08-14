@@ -5,25 +5,24 @@ description: API call to create a subpaas session.
 
 # Subpaas session key
 
-API call to create a subpaas session key.
+API call to create a SubPaaS session key.
 
-***
 
 ## API actions
 
 API base path: `panel/subpaas/session`.
 
-### create
+### `create`
 
-Creates a subpaas session.
+Creates a SubPaaS session.
 
-#### parameters
+#### Parameters
 
 | name       | description  | type |
 |:-----------|:-------------|:-----|
 | subpaas_id | Subpaas' ID. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -40,7 +39,7 @@ Creates a subpaas session.
     ```
 
 
-#### response
+#### Response
 
 ```json
 {
@@ -49,11 +48,11 @@ Creates a subpaas session.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 –
-    * The dealer is not paas.
-    * The dealer has different status than `NOT_BLOCKED`.
-    * The dealer's tariff does not allow subpaases.
-    * Found subpaas is not in `NOT_BLOCKED` status.
+    * The dealer is not PaaS type.
+    * The dealer has a status other than `NOT_BLOCKED`.
+    * The dealer's tariff does not allow SubPaaS accounts.
+    * The found SubPaaS is not in `NOT_BLOCKED` status.
 

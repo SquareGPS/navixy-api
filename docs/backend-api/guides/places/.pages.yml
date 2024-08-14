@@ -1,0 +1,4 @@
+title: Places
+nav:
+  - Manage geofences: manage-geofences.md
+  - Manage POIs: manage-pois.md
