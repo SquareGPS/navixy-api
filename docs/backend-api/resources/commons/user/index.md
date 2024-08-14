@@ -70,6 +70,15 @@ A user account lets you start working with the platform as well as customize you
     "features": ["branding_web"],
     "privileges": {
         "rights": ["tag_update"]
+    },
+    "user_menu": {
+        "title": "menu-editor.default-preset",
+        "account": [],
+        "main": [],
+        "footer": {
+            "title": null,
+            "items": []
+        }
     }
 }
 ```
@@ -119,6 +128,8 @@ A user account lets you start working with the platform as well as customize you
     * `features` - string array. Set of allowed [Dealer features](../dealer.md#dealer-features).
     * `privileges` - object only returned for sub-users. Describes effective sub-user privileges. 
     * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
+* `user_menu` - [User menu](../../../../panel-api/resources/user/menu/preset.md#menu-preset). Menu structure for the current user.
+    * `account` - [Menu item](../../../../panel-api/resources/user/menu/preset.md#menu-item) array. Menu items for account management.
 
 
 
@@ -208,15 +219,8 @@ Gets user information and some settings.
 === "cURL"
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/get_info' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-    
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/user/get_info?hash=a6aa75587e5c59c32d347da438505fc3
+    curl -X GET '{{ extra.api_example_url }}/user/get_info' \
+        -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
     ```
 
 #### Response
@@ -281,7 +285,7 @@ Gets user information and some settings.
     "privileges": {
         "rights": ["tag_update"]
     },
-  "menu": <customizable_user_menu>
+    "user_menu": <customizable_user_menu>
 }
 ```
 
