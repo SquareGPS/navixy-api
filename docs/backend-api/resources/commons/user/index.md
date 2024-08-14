@@ -159,6 +159,8 @@ Available only to master users.
 
 ### `auth`
 
+### `auth`
+
 Tries to authenticate the user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
@@ -213,6 +215,13 @@ If `second_factor_required`, then the session can be used only for [authenticati
 
 Gets user information and some settings.
 
+#### Parameters
+
+| name        | description                                                                            | type   | restrictions |
+|:------------|:---------------------------------------------------------------------------------------|:-------|:-------------|
+| application | If specified, the response will contain a description of the application's custom menu | string | optional     |
+
+#### Examples
 #### Examples
 
 === "cURL"
