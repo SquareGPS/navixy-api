@@ -51,12 +51,6 @@ plugins:
       collapse_single_pages: false
       strict: true
   - macros
-  - pdf-export:
-      combined: true
-      combined_output_path: full-navixy-api-documentation.pdf
-      theme_handler_path: theme/pdf-theme-handler.py
-      media_type: print
-      enabled_if_env: ENABLE_PDF_EXPORT
 
 extra:
   #manifest: manifest.webmanifest todo
