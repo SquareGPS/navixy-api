@@ -25,7 +25,7 @@ The documentation is organized into sections, each addressing a specific aspect 
 
 ### Navigation
 
-Navigate using the top menu. Download a PDF or access our GitHub via links on the right. The left-hand menu lists files for each section—click to view contents. Use the internal menu on the right for quick navigation within the file.
+Navigate using the top menu. Access our GitHub via link on the right. The left-hand menu lists files for each section—click to view contents. Use the internal menu on the right for quick navigation within the file.
 
 ### Documentation structure
 
