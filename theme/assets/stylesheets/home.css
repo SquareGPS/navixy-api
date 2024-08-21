@@ -5,6 +5,15 @@
 
 body
 {
+    /*
+      Start of testing branch watermark! Please be aware on merge
+    */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='100px' width='100px'><text transform='translate(20, 100) rotate(-45)' fill='rgb(0,0,0)' opacity='0.05' font-size='30'>Testing</text></svg>");
+    background-repeat: repeat;
+    /*
+      End of testing branch watermark! Please be aware on merge
+    */
+
     font-family: 'Roboto', 'Arial', sans-serif;
     font-size: 16px;
     font-weight: 400;
