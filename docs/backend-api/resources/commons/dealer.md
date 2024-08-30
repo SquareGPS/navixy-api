@@ -120,7 +120,7 @@ If `hash` is specified the `domain` shouldn't be used.
 * `id` - int. Dealer's ID.
 * `ui_domain` - string. Dealer's UI domain.
 * `company_url` - string. Dealer's promo site URL.
-* `settings` - object. Custom settings. May be null if dealer has not set any custom settings.
+* `settings` - object. Custom settings.
     * `domain` - string. The same as dealer.ui_domain.
     * `service_title` - string. Title of the service.
     * `locale` - [enum](../../getting-started/introduction.md#data-types). Default locale of the dealer.
@@ -155,7 +155,8 @@ If `hash` is specified the `domain` shouldn't be used.
     * `display_model_features_link` - boolean. When `true` show in model info link to squaregps.com (UI option).
     * `color_theme` - [enum](../../getting-started/introduction.md#data-types). Color theme code or empty string (for default theme).
     * `app_color_theme` - [enum](../../getting-started/introduction.md#data-types). Mobile app color theme code or empty string (for default theme).
-    * `tos` - string. Terms of service text.
+    * `privacy_policy_link` - string. Nullable, privacy policy link.
+    * `tos` - string. Nullable, terms of service text.
     * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
     * `exclusion` - boolean. If `true` models in the `values` will be excluded.
     * `values` - string array. If it is empty - all models available.
