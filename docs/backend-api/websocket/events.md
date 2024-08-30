@@ -29,8 +29,8 @@ Message fields:
 * `type` - "event".
 * `event` - "state".
 * `data` - depends on `format` request parameter:
-  * "full" - [source state](../resources/tracking/tracker/index.md#get_state).
-  * "compact" - [compact source state](#compact-source-state).
+    * "full" - [source state](../resources/tracking/tracker/index.md#get_state).
+    * "compact" - [compact source state](#compact-source-state).
 * `user_time` - current time in user's timezone.
 
 Message sample:
@@ -84,8 +84,8 @@ Message fields:
 * `type` - "event".
 * `event` - "state".
 * `data` - depends on `format` request parameter:
-  * "full" - [source state](../resources/tracking/tracker/index.md#get_state) array.
-  * "compact" - [compact source state](#compact-source-state) array.
+    * "full" - [source state](../resources/tracking/tracker/index.md#get_state) array.
+    * "compact" - [compact source state](#compact-source-state) array.
 * `user_time` - current time in user's timezone.
 
 Message sample:

@@ -49,11 +49,11 @@ For more comprehensive edits, or if you need to work on multiple pages, you can 
       python -m venv ./venv
       ```
     - Activate the virtual environment:
-      - On Windows:
-        ```sh
+        - On Windows:
+        ```
         C:\path\to\project\venv\Scripts\activate.bat
         ```
-      - On macOS/Linux:
+        - On macOS/Linux:
         ```sh
         source venv/bin/activate
         ```
@@ -143,24 +143,24 @@ Method description.
 #### Examples
 
 === "cURL"
-    \`\`\`shell
+    ```shell
     curl -X POST 'https://api.navixy.com/v2/resource/sub_resource/action' \
     -H 'Content-Type: application/json' \
     -d '{"param1": "value1", "param2": "value2", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
-\`\`\`
+    ```
 
 === "HTTP GET"
-    \`\`\`http
+    ```http
     https://api.navixy.com/v2/resource/sub_resource/action?param1=value1&param2&hash=a6aa75587e5c59c32d347da438505fc3
-    \`\`\`
+    ```
 
 #### Response
 
-\`\`\`json
-{
-  "success": true
-}
-\`\`\`
+    ```json
+    {
+       "success": true
+    }
+    ```
 
 #### Errors
 
@@ -173,7 +173,6 @@ Special error codes.
 ```
 
 
-
 If the response or structure has comments, please write these comments separately in a list format below.
 
-For actual examples, refer to [user](../../backend-api/resources/commons/user/) and [source](../../backend-api/resources/commons/user/index.md).
+For actual examples, refer to [user](../../backend-api/resources/commons/user/index.md) and [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).

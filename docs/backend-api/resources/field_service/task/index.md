@@ -56,7 +56,7 @@ Find more guides on working with tasks [there](../../../guides/field-service-man
 
 * `id` - int. Primary key. Used in task/update, *IGNORED* in task/create.
 * `user_id` - int. User ID. *IGNORED* in create/update.
-* `tracker_id` - int. An ID of the tracker to which task assigned. Can be null.  *IGNORED* in task/update.
+* `tracker_id` - int. An ID of the tracker to which task assigned. Can be null. **IGNORED** in task/update.
 * `location` - location associated with this task. Cannot be null.
     * `address` - string. Address of the location.
     * `radius`- int. Radius of location zone in meters.

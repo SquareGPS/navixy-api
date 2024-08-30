@@ -14,9 +14,10 @@ To give you a clear idea of how to work with the Navixy API, let's go through a 
 
 1. **Determine the URL to API calls**:
     - Depending on the physical location of the platform, the base URL will be:
-      - `https://api.eu.navixy.com/v2` for European Navixy platform;
-      - `https://api.us.navixy.com/v2` for North American Navixy Splatform;
-      - `https://api.your_domain` for self-hosted (On-Premise) installations.
+
+        * `https://api.eu.navixy.com/v2` for European Navixy platform;
+        * `https://api.us.navixy.com/v2` for North American Navixy Splatform;
+        * `https://api.your_domain` for self-hosted (On-Premise) installations.
 
 2. **[Obtain hash of an API key](authentication.md)**:
     - Authenticate and obtain a user key via the authentication call.
@@ -158,15 +159,18 @@ Unless otherwise noted, every API call requires a valid API Key hash. This hash 
 ## String Validation Rules
 
 This validation ensures that the provided string adheres to specific content rules. The rules may vary depending on the particular field being validated. The string is checked for the following criteria:
-- Empty strings or null values: may be allowed or restricted depending on the specific field
+
+- Empty strings or null values: may be allowed or restricted depending on the specific field.
 - Character types:
-  - Regular spaces are always allowed (Unicode category "Zs")
-  - Other whitespace characters (tabs, line breaks, etc.): may be allowed or restricted depending on the specific field
-  - Control characters (category "Cc" except whitespace characters): not allowed
-  - Private Use characters (category "Co"): not allowed
-  - Surrogate characters (category "Cs"): not allowed
-  - Characters requiring more than 3 bytes in UTF-8 encoding (e.g., some emojis): may be allowed or restricted depending on the specific field
-  - All other characters are allowed
+
+    * Regular spaces are always allowed (Unicode category "Zs").
+    * Other whitespace characters (tabs, line breaks, etc.): may be allowed or restricted depending on the specific field.
+    * Control characters (category "Cc" except whitespace characters): not allowed.
+    * Private Use characters (category "Co"): not allowed.
+    * Surrogate characters (category "Cs"): not allowed.
+    * Characters requiring more than 3 bytes in UTF-8 encoding (e.g., some emojis): may be allowed or restricted depending on the specific field.
+    * All other characters are allowed.
+
 - Strings consisting entirely of whitespace may be considered invalid for some fields.
 
 ## Date/Time Formats

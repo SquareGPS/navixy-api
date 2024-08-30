@@ -237,6 +237,7 @@ Key parameters:
 | `value_titles` | array  | Mapping for assigning special titles to sensor values.                                               |
 | `value`        | string | Raw sensor value from the device. Max size: 64 characters.                                           |
 | `title`        | string | Custom title for the sensor value. Max size: 64 characters.                                          |
+
 **Notes:**
 - Only one virtual sensor of the type `virtual_ignition` is allowed per GPS device.
 - For the `in_range` calculation method, at least one of `range_from` or `range_to` must be specified.
@@ -279,23 +280,24 @@ Let's consider an example where we have a raw temperature sensor output that nee
 
 - **Raw sensor output**: 1020 = -10°C, 1900 = 0°C
 - **Virtual sensor configuration**:
-  - `type`: `virtual`
-  - `sensor_type`: `state`
-  - `name`: `Normalized Temperature Sensor`
-  - `input_name`: `raw_temp_sensor`
-  - `parameters`: `{ ... }` (additional parameters if needed)
-  - `calc_method`: `in_range`
-  - `range_from`: 1020
-  - `range_to`: 1900
-  - `value_titles`: 
-    ```json
-    {
-      "1020": "-10°C",
-      "1900": "0°C"
-    }
-    ```
 
-**Configuration:
+    * `type`: `virtual`
+    * `sensor_type`: `state`
+    * `name`: `Normalized Temperature Sensor`
+    * `input_name`: `raw_temp_sensor`
+    * `parameters`: `{ ... }` (additional parameters if needed)
+    * `calc_method`: `in_range`
+    * `range_from`: 1020
+    * `range_to`: 1900
+    * `value_titles`: 
+      ```json
+      {
+        "1020": "-10°C",
+        "1900": "0°C"
+      }
+      ```
+
+**Configuration**:
 
 ```json
 {
@@ -345,6 +347,7 @@ Consider a truck equipped with a Power Take-Off (PTO) drive engagement sensor ou
 | 1         | At least one PTO drive engaged |
 | 2         | Error                          |
 | 3         | Not available                  |
+
 A virtual sensor can translate these raw values into meaningful status information.
 
 ##### Example 2. Hardware driver / asset identificators readings
@@ -451,44 +454,45 @@ This example shows how to update a virtual ignition sensor, changing the voltage
 Various reports can be generated to analyze sensor and counter data:
 
 1. **Equipment working time report**
-   - Plugin ID: 12
-   - Shows operational times of units linked to discrete or virtual inputs.
+    * Plugin ID: 12
+    * Shows operational times of units linked to discrete or virtual inputs.
 
-   Example:
-   ```shell
-   curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
-       -H 'Content-Type: application/json' \
-       -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Equipment working time", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs":true,"plugin_id":12,"show_seconds":false,"min_working_period_duration":60,"show_idle_percent":true,"filter":false,"sensors":[{"tracker_id":642546,"sensor_id":1931610}]}}'
-   ```
+    Example:
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Equipment working time", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs":true,"plugin_id":12,"show_seconds":false,"min_working_period_duration":60,"show_idle_percent":true,"filter":false,"sensors":[{"tracker_id":642546,"sensor_id":1931610}]}}'
+    ```
 
 2. **Engine hours report**
-   - Plugin ID: 7
-   - Shows working duration for ignition-based sensors.
+    * Plugin ID: 7
+    * Shows working duration for ignition-based sensors.
 
-   Example:
-   ```shell
-   curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
-       -H 'Content-Type: application/json' \
-       -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Engine hours report", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs":true,"plugin_id":7,"show_seconds":false,"show_detailed":true,"include_summary_sheet":true,"include_summary_sheet_only":false,"filter":true}}'
-   ```
+    Example:
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Engine hours report", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs":true,"plugin_id":7,"show_seconds":false,"show_detailed":true,"include_summary_sheet":true,"include_summary_sheet_only":false,"filter":true}}'
+    ```
 
 3. **Measuring sensors report**
-   - Plugin ID: 9
-   - Displays data from measurement sensors or virtual sensors with source value calculation method.
+    * Plugin ID: 9
+    * Displays data from measurement sensors or virtual sensors with source value calculation method.
 
-   Example:
-   ```shell
-   curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
-       -H 'Content-Type: application/json' \
-       -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Measuring sensors report", "trackers": [1685505], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs":true,"plugin_id":9,"details_interval_minutes":5,"graph_type":"time","smoothing":true,"show_address":false,"filter":true,"sensors":[{"tracker_id":1685505,"sensor_id":613753}]}}'
-   ```
+    Example:
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Measuring sensors report", "trackers": [1685505], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 9, "details_interval_minutes": 5, "graph_type": "time", "smoothing": true, "show_address": false, "filter": true, "sensors": [{"tracker_id": 1685505, "sensor_id": 613753}]}}'
+    ```
 
 4. **Vehicle readings report**
-   - Plugin ID: 22
-   - Shows data from vehicle instruments via CAN/OBD or virtual sensors.
+    * Plugin ID: 22
+    * Shows data from vehicle instruments via CAN/OBD or virtual sensors.
 
-   Example:
-   ```shell
-   curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
-       -H 'Content-Type: application/json' \
-       -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Vehicle readings report", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from":
+    Example:
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
+     -H 'Content-Type: application/json' \
+     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Vehicle readings report", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 22, "details_interval_minutes": 5, "graph_type": "time", "smoothing": true, "show_address": false, "filter": true, "sensors": [{"tracker_id": 1685505, "sensor_id": 613753}]}}'
+    ```   

@@ -79,9 +79,10 @@ Successful Response
 - `success` (boolean): Indicates if the authentication was successful
 - `hash` (string): The API key hash to be used in subsequent API calls
 - `user` (object): Contains user details
-  - `id` (integer): The user ID
-  - `login` (string): The user's login name
-  - `name` (string): The user's full name
+
+    * `id` (integer): The user ID
+    * `login` (string): The user's login name
+    * `name` (string): The user's full name
 
 Error Response
 
@@ -97,8 +98,9 @@ Error Response
 
 - `success` (boolean): Indicates if the authentication failed
 - `status` (object): Contains error details
-  - `code` (integer): The error code
-  - `description` (string): A description of the error
+    
+    * `code` (integer): The error code
+    * `description` (string): A description of the error
 
 
 ## Using the API Key Hash
