@@ -22,8 +22,9 @@ When an error occurs, the response will be in the following format:
 
 - `success` (boolean): Indicates if the request was successful.
 - `status` (object): Contains details about the error.
-  - `code` (integer): The error code.
-  - `description` (string): A description of the error.
+
+    * `code` (integer): The error code.
+    * `description` (string): A description of the error.
 
 ## Error Codes
 

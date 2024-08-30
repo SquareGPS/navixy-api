@@ -661,13 +661,13 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
 ```
 
 * `value` - track point object.
-  * `get_time` - [date/time](../../../getting-started/introduction.md#data-types). GPS timestamp of the point, in user's timezone.
-  * `heading` - int. Direction bearing in degrees (0-360).
-  * `lat` - float. Latitude.
-  * `lng` - float. Longitude.
-  * `satellites` - int. Number of satellites used in fix for this point.
-  * `speed` - int. Speed in km/h.
-  * `precision` - int. Optional. Exists if not equal to 0. Precision in meters.
+    * `get_time` - [date/time](../../../getting-started/introduction.md#data-types). GPS timestamp of the point, in user's timezone.
+    * `heading` - int. Direction bearing in degrees (0-360).
+    * `lat` - float. Latitude.
+    * `lng` - float. Longitude.
+    * `satellites` - int. Number of satellites used in fix for this point.
+    * `speed` - int. Speed in km/h.
+    * `precision` - int. Optional. Exists if not equal to 0. Precision in meters.
 
 #### Errors
 
@@ -727,17 +727,17 @@ Gets last sensor values for sensors that are:
 
 * `user_time` - [date/time](../../../getting-started/introduction.md#data-types). Current time in user's timezone.
 * `inputs` - list of `sensor value` objects. See below.
-  * `label` - string. Sensor's label. E.g. "Sensor #1".
-  * `name` - [enum](../../../getting-started/introduction.md#data-types). Name of sensor's raw input.
-  * `type` - [enum](../../../getting-started/introduction.md#data-types). Type of quantity, measured by a sensor.
-  * `value` - float. Reading's value, measured in units from an eponymous field. E.g. 100.0.
-  * `units_type` - [enum](../../../getting-started/introduction.md#data-types). Unit of measurement of input to the sensor.
-  * `units` - string. User label for sensor's units.
-  * `converted_units_type` - [enum](../../../getting-started/introduction.md#data-types). Unit of measurement system preferred by current user
-    (according to user/settings), suitable for this sensor. Can be null, if there is no need in
-    conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
-  * `converted_value` - float. Reading's value in units from field `converted_units_type`.
-    Can be null if there is no need in conversion.
+    * `label` - string. Sensor's label. E.g. "Sensor #1".
+    * `name` - [enum](../../../getting-started/introduction.md#data-types). Name of sensor's raw input.
+    * `type` - [enum](../../../getting-started/introduction.md#data-types). Type of quantity, measured by a sensor.
+    * `value` - float. Reading's value, measured in units from an eponymous field. E.g. 100.0.
+    * `units_type` - [enum](../../../getting-started/introduction.md#data-types). Unit of measurement of input to the sensor.
+    * `units` - string. User label for sensor's units.
+    * `converted_units_type` - [enum](../../../getting-started/introduction.md#data-types). Unit of measurement system preferred by current user
+      (according to user/settings), suitable for this sensor. Can be null, if there is no need in
+      conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
+    * `converted_value` - float. Reading's value in units from field `converted_units_type`.
+      Can be null if there is no need in conversion.
 * `update_time` - [date/time](../../../getting-started/introduction.md#data-types). Date and time when the data updated.
 
 List of available sensor's input names for the object `sensor value`:

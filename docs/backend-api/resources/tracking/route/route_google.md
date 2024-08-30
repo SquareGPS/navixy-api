@@ -81,7 +81,7 @@ Where **location** described in [data types description section](../../../gettin
     }
 ```
 
-  * `errors` - [enum](../../../getting-started/introduction.md#data-types) array. Status. 
+* `errors` - [enum](../../../getting-started/introduction.md#data-types) array. Status. 
     *   `OVER_QUERY_LIMIT` – indicates the service has received too many requests from your application within the 
     allowed time period.
     *   `REQUEST_DENIED` – indicates that the service denied use of the directions service by your application.

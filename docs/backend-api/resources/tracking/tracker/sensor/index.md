@@ -133,13 +133,13 @@ Contains API calls to interact with sensors.
 * `name` - string, max size 100. A name of sensor.
 * `input_name` - string, max size 64. A source input field name (identifier).
 * `parameters` - optional object with additional parameters.
-  * `calc_method` - [enum](../../../../getting-started/introduction.md#data-types). A method of sensor value calculation. One of this: "in_range", "identity", "bit_index".
-  * `range_from` - double. Low bound of range. It is used only with "in_range" calc method.
-  * `range_to` - double. High bound of range. It is used only with "in_range" calc method.
-  * `bit_index` - int, [1..N]. A bit index in input field source value. It is used only with "bit_index" calc method.
-  * `value_titles` - mapping for bind special titles for sensor values, if it is necessary.
-    * `value` - string, max size 64. Sensor value. 
-    * `title` - string, max size 64. Title for the sensor value.
+    * `calc_method` - [enum](../../../../getting-started/introduction.md#data-types). A method of sensor value calculation. One of this: "in_range", "identity", "bit_index".
+    * `range_from` - double. Low bound of range. It is used only with "in_range" calc method.
+    * `range_to` - double. High bound of range. It is used only with "in_range" calc method.
+    * `bit_index` - int, [1..N]. A bit index in input field source value. It is used only with "bit_index" calc method.
+    * `value_titles` - mapping for bind special titles for sensor values, if it is necessary.
+        * `value` - string, max size 64. Sensor value. 
+        * `title` - string, max size 64. Title for the sensor value.
 
 #### Virtual sensor type values
 
