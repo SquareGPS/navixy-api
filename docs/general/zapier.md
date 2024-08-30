@@ -75,7 +75,6 @@ Choose one of the following actions based on your device and use case.
    - Tracker ID
    - Output number
    - Output state (enable/disable)
-
    ![Set output settings](../general/assets/set-output-settings.png)
 
 2. **Set Outputs**

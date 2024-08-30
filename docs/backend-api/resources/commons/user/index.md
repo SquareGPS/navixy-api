@@ -155,8 +155,6 @@ Available only to master users.
 { "success": true }
 ```
 
-
-
 ### `auth`
 
 ### `auth`
@@ -224,8 +222,6 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 * 103 – User not activated.
 * 104 – Logins limit exceeded, please reuse existing sessions instead (see also user/session/renew).
 * 105 – Login attempts limit exceeded, try again later.
-
-
 
 ### `get_info`
 
@@ -319,8 +315,6 @@ Gets user information and some settings.
 
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
-
-
 ### `get_tariff_restrictions`
 
 Gets user plan restrictions.
@@ -398,8 +392,6 @@ Only session `hash`.
 
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
-
-
 ### `resend_activation`
 
 Sends a new activation link to user.
@@ -439,17 +431,17 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 * 201 - Not found in the database – user with a passed login not found.
 * 209 - Failed sending email – can't send email.
 * 264 - Timeout not reached – previous activation link generated less than 5 minutes ago (or other configured on server timeout).
-```json
-{
-    "success": false,
-    "status": {
-        "code": 264,
-        "description": "Timeout not reached"
-    },
-    "timeout": "PT5M",
-    "remainder": "PT4M31.575S"
-}
-```
+    ```json
+    {
+      "success": false,
+      "status": {
+          "code": 264,
+          "description": "Timeout not reached"
+      },
+      "timeout": "PT5M",
+      "remainder": "PT4M31.575S"
+    }
+    ```
     * `timeout` - string. timeout between sending activation links in ISO 8601 duration format.
     * `remainder` - string. remaining time to next try in ISO 8601 duration format
 * 265 - Already done – user already activated and verified.

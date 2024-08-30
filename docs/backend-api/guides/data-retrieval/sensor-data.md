@@ -237,6 +237,7 @@ Key parameters:
 | `value_titles` | array  | Mapping for assigning special titles to sensor values.                                               |
 | `value`        | string | Raw sensor value from the device. Max size: 64 characters.                                           |
 | `title`        | string | Custom title for the sensor value. Max size: 64 characters.                                          |
+
 **Notes:**
 - Only one virtual sensor of the type `virtual_ignition` is allowed per GPS device.
 - For the `in_range` calculation method, at least one of `range_from` or `range_to` must be specified.
@@ -296,7 +297,7 @@ Let's consider an example where we have a raw temperature sensor output that nee
       }
       ```
 
-**Configuration:
+**Configuration**:
 
 ```json
 {
@@ -346,6 +347,7 @@ Consider a truck equipped with a Power Take-Off (PTO) drive engagement sensor ou
 | 1         | At least one PTO drive engaged |
 | 2         | Error                          |
 | 3         | Not available                  |
+
 A virtual sensor can translate these raw values into meaningful status information.
 
 ##### Example 2. Hardware driver / asset identificators readings
