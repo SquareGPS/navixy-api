@@ -76,14 +76,14 @@ receive data from all subscribed devices at once.
 #### Sub requests:
 
 * Batching (preferred):
-  * `type` - required, text: _"state_batch"_.
-  * `target` - required, object. One of targets below.
-  * `rate_limit` - optional, string. A timespan for batching.
-  * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
+    * `type` - required, text: _"state_batch"_.
+    * `target` - required, object. One of targets below.
+    * `rate_limit` - optional, string. A timespan for batching.
+    * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 * Simple:
-  * `type` - required, text: _"state"_.
-  * `trackers` - required, int array. List of tracker ids.
-  * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
+    * `type` - required, text: _"state"_.
+    * `trackers` - required, int array. List of tracker ids.
+    * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 
 Sample:
 
@@ -102,10 +102,10 @@ Sample:
 ##### Request targets:
 
 * All trackers:
-  * `type` - required, text: _"all"_.
+    * `type` - required, text: _"all"_.
 * Selected trackers:
-  * `type` - required, text: _"selected"_.
-  * `tracker_ids` - required, int array.
+    * `type` - required, text: _"selected"_.
+    * `tracker_ids` - required, int array.
 
 Sample:
 
@@ -123,8 +123,8 @@ Response parameters:
 * `action` - required, text: _"subscription/subscribe"_.
 * `events` - required, array of [enum](../getting-started/introduction.md#data-types), without nulls. List of the subscribed events. Event can be `state`.
 * `data` - required, map <string, object>. Map with events subscription result. One key per subscribed event.
-  * `state` - present if the "state" subscription requested, see sub response below.
-  * `state_batch` - present if the "state_batch" subscription requested, see sub response below.
+    * `state` - present if the "state" subscription requested, see sub response below.
+    * `state_batch` - present if the "state_batch" subscription requested, see sub response below.
 
 Sub response:
 * `success` - required, boolean.
@@ -200,8 +200,8 @@ Error response parameters:
 * `type` - required, text: _"error"_.
 * `action` - required, string - action from request (e.g. "subscription/subscribe") or "null" for some unexpected errors.
 * `status` - required - error code and description:
-  * `code` - required - error code (see [API errors codes](../getting-started/errors.md#error-codes)).
-  * `description` - required, string - error description.
+    * `code` - required - error code (see [API errors codes](../getting-started/errors.md#error-codes)).
+    * `description` - required, string - error description.
 * `data` - optional string - part of parameters from request or some info for unexpected errors.
 
 Error response sample:

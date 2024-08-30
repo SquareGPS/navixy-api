@@ -35,9 +35,9 @@ For example, you can add custom fields to the **places** entity or rearrange exi
 * `id` - int. Entity identifier.
 * `type` - [enum](../../../getting-started/introduction.md#data-types). Currently, only "place" is supported.
 * `layout` - object describes layout of fields for entity.
-   * `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
-   * `label` - string. Name of section.
-   * `field_order` - string array. Built-in fields and IDs of custom fields (as strings).
+    * `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
+    * `label` - string. Name of section.
+    * `field_order` - string array. Built-in fields and IDs of custom fields (as strings).
 
 **Entity types**:
 
