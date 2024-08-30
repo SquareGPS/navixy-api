@@ -19,19 +19,19 @@ This method retrieves a list of tracks for a given asset within a specified time
 
 #### parameters
 
-| name                   | description                                                                                                                                                                                                                                                                                                                                            | type                                                      | format                                     |
-|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------|:-------------------------------------------|
-| asset                  | An object containing identifier and type to define a list of tracker identifiers. The list of tracker identifiers will be generated as a list of identifiers of trackers related to object with specified identifier and type. Permitted types: vehicle, employee.                                                                                     | string                                                    | `"asset": {"id": 123, "type": "employee"}` |
-| from                   | The start date/time for trips. The response begins with the next trip point after this time.                                                                                                                                                                                                                                                           | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 03:24:00"`                    |
-| to                     | An end date/time for trips. The response concludes with the last point before this time. Ensure this date is later than the "from" date.                                                                                                                                                                                                               | [date/time](../../../getting-started.md#datetime-formats) | `"2020-09-23 06:24:00"`                    |
-| filter                 | Optional. Default is `true`. If set to `true`, any tracks that are deemed too short, based on their length and number of points, will be excluded from the final list.                                                                                                                                                                                 | boolean                                                   | `true`                                     |
-| split                  | Optional. Default is `true`. If set to `false`, all the tracks will be combined into one single track within the period.                                                                                                                                                                                                                               | boolean                                                   | `true`                                     |
-| include_gsm_lbs        | Optional. Default is `true`. If set to `false`, GSM LBS points will be excluded.                                                                                                                                                                                                                                                                       | boolean                                                   | `true`                                     |
-| cluster_single_reports | Optional. Default is `false`. If set to `true`, trips consisting of a single point will be grouped together based on their coordinates.                                                                                                                                                                                                                | boolean                                                   | `false`                                    | 
-| count_events           | Optional. Default is `false`. If set to `true`, the system will return the count of events that occurred during each track that isn't a single point.                                                                                                                                                                                                  | boolean                                                   | `false`                                    |
-| omit_addresses         | Optional. Default is `false`. If set to `true`, address parameters will be empty.                                                                                                                                                                                                                                                                      | boolean                                                   | `false`                                    |
-| with_points            | Optional. Default is `false`. If set to `true`, track point lists will be included.                                                                                                                                                                                                                                                                    | boolean                                                   | `false`                                    |
-| point_limit            | Optional. If specified, the returned data will be reduced to contain that specified number of points. The minimum value is 2, and the maximum is 3000. If it is not specified, the server's default settings for simplifying tracks will be applied. This is not a strict limit; the returned data can potentially contain more points than specified. | int                                                       | `300`                                      |
+| name                   | description                                                                                                                                                                                                                                                                                                                                            | type                                                                   | format                                     |
+|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:-------------------------------------------|
+| asset                  | An object containing identifier and type to define a list of tracker identifiers. The list of tracker identifiers will be generated as a list of identifiers of trackers related to object with specified identifier and type. Permitted types: vehicle, employee.                                                                                     | string                                                                 | `"asset": {"id": 123, "type": "employee"}` |
+| from                   | The start date/time for trips. The response begins with the next trip point after this time.                                                                                                                                                                                                                                                           | [date/time](../../../getting-started/introduction.md#datetime-formats) | `"2020-09-23 03:24:00"`                    |
+| to                     | An end date/time for trips. The response concludes with the last point before this time. Ensure this date is later than the "from" date.                                                                                                                                                                                                               | [date/time](../../../getting-started/introduction.md#datetime-formats) | `"2020-09-23 06:24:00"`                    |
+| filter                 | Optional. Default is `true`. If set to `true`, any tracks that are deemed too short, based on their length and number of points, will be excluded from the final list.                                                                                                                                                                                 | boolean                                                                | `true`                                     |
+| split                  | Optional. Default is `true`. If set to `false`, all the tracks will be combined into one single track within the period.                                                                                                                                                                                                                               | boolean                                                                | `true`                                     |
+| include_gsm_lbs        | Optional. Default is `true`. If set to `false`, GSM LBS points will be excluded.                                                                                                                                                                                                                                                                       | boolean                                                                | `true`                                     |
+| cluster_single_reports | Optional. Default is `false`. If set to `true`, trips consisting of a single point will be grouped together based on their coordinates.                                                                                                                                                                                                                | boolean                                                                | `false`                                    | 
+| count_events           | Optional. Default is `false`. If set to `true`, the system will return the count of events that occurred during each track that isn't a single point.                                                                                                                                                                                                  | boolean                                                                | `false`                                    |
+| omit_addresses         | Optional. Default is `false`. If set to `true`, address parameters will be empty.                                                                                                                                                                                                                                                                      | boolean                                                                | `false`                                    |
+| with_points            | Optional. Default is `false`. If set to `true`, track point lists will be included.                                                                                                                                                                                                                                                                    | boolean                                                                | `false`                                    |
+| point_limit            | Optional. If specified, the returned data will be reduced to contain that specified number of points. The minimum value is 2, and the maximum is 3000. If it is not specified, the server's default settings for simplifying tracks will be applied. This is not a strict limit; the returned data can potentially contain more points than specified. | int                                                                    | `300`                                      |
 
 #### example
 
@@ -77,8 +77,8 @@ settings will provide us with necessary info by default.
 * `tracker_id` – int. Tracker identifier.
 * `limit_exceeded` – boolean. It will be `true` if the requested time period surpasses the limit set in the tracker's tariff.
 For instance, if the device's plan has a maximum storage period of three months (the default value), and we request trips for six months.
-* `from` – [date/time](../../../getting-started.md#data-types). This is timestamp of the start of the interval when the asset was attached to the tracker.
-* `to`  [date/time](../../../getting-started.md#data-types). This is timestamp of the end of the interval when the asset was attached to the tracker.
+* `from` – [date/time](../../../getting-started/introduction.md#data-types). This is timestamp of the start of the interval when the asset was attached to the tracker.
+* `to`  [date/time](../../../getting-started/introduction.md#data-types). This is timestamp of the end of the interval when the asset was attached to the tracker.
 * `tracks`  an array of JSON objects containing track information.
 * `total` – result for all tracks:
   * `count` – int. Track count
@@ -121,10 +121,10 @@ where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 ```
 
 * `id` - int. Track id.
-* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone.
+* `start_date` - [date/time](../../../getting-started/introduction.md#data-types). Track start date, in user's timezone.
 * `start_address` - string. Track start address.
 * `max_speed` - int. Maximum speed registered during track in km/h.
-* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone.
+* `end_date` - [date/time](../../../getting-started/introduction.md#data-types). Track end date, in user's timezone.
 * `end_address` - string. Track end address.
 * `length` - float. Track length in kilometers.
 * `points` - int. Total number of points in a track.
@@ -133,7 +133,7 @@ where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 * `norm_fuel_consumed` - float. Amount of fuel consumed during the track, measured in litres.
 This field will not be present if there's no [vehicle_object](../../fleet/vehicle/index.md#vehicle) linked to the tracker or
 if "normAvgFuelConsumption" is not defined for the linked vehicle object.
-* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
+* `type` - [enum](../../../getting-started/introduction.md#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
 * `points_list` - array of JSON objects. A list of [point info](#point-info).
 * `bounds` - object. North-west and south-east coordinates of the bounding box that contains all points.
@@ -155,11 +155,11 @@ if "normAvgFuelConsumption" is not defined for the linked vehicle object.
 ```
 
 * `id` - int. Track id.
-* `start_date` - [date/time](../../../getting-started.md#data-types). Date when the tracker registered the point, in user's timezone.
+* `start_date` - [date/time](../../../getting-started/introduction.md#data-types). Date when the tracker registered the point, in user's timezone.
 * `start_address` - string. Point address.
 * `avg_speed` - int. Average speed in km/h.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
-* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`.  Track type.
+* `type` - [enum](../../../getting-started/introduction.md#data-types): `regular`, `single_report`, `merged`, `cluster`.  Track type.
 * `precision` - optional int. Precision of the location in meters. Its presence relies on the device model.
 * `points_list` - array of JSON objects. A list of [point info](#point-info).
 
@@ -193,11 +193,11 @@ if "normAvgFuelConsumption" is not defined for the linked vehicle object.
 }
 ```
 
-* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone.
+* `start_date` - [date/time](../../../getting-started/introduction.md#data-types). Track start date, in user's timezone.
 It signifies the initial point identified as a track for a specified time period.
 * `start_address` - string. Track start address.
 * `max_speed` - int. Maximum speed registered during period in km/h.
-* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone.
+* `end_date` - [date/time](../../../getting-started/introduction.md#data-types). Track end date, in user's timezone.
 It signifies the last point identified as a track for a specified time period.
 * `end_address` - string. Track end address.
 * `length` - float. Track length in kilometers.
@@ -207,7 +207,7 @@ It signifies the last point identified as a track for a specified time period.
 * `norm_fuel_consumed` - float. Amount of fuel consumed during period, measured in litres.
 This field will not be present if there's no [vehicle_object](../../fleet/vehicle/index.md#vehicle) linked to the tracker or
 if "normAvgFuelConsumption" is not defined for the linked vehicle object.
-* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
+* `type` - [enum](../../../getting-started/introduction.md#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
 * `points_list` - array of JSON objects. A list of [point info](#point-info).
 * `bounds` - object. North-west and south-east coordinates of the bounding box that contains all points.
@@ -245,12 +245,12 @@ if "normAvgFuelConsumption" is not defined for the linked vehicle object.
 }
 ```
 
-* `start_date` - [date/time](../../../getting-started.md#data-types). Track start date, in user's timezone.
+* `start_date` - [date/time](../../../getting-started/introduction.md#data-types). Track start date, in user's timezone.
 * `start_address` - string. Track start address.
-* `end_date` - [date/time](../../../getting-started.md#data-types). Track end date, in user's timezone.
+* `end_date` - [date/time](../../../getting-started/introduction.md#data-types). Track end date, in user's timezone.
 * `precision` - optional int. Precision of the location in meters. Its presence relies on the device model.
 * `points` - array of point objects in a cluster.
-* `type` - [enum](../../../getting-started.md#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
+* `type` - [enum](../../../getting-started/introduction.md#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
 * `gsm_lbs` - optional boolean. GSM LBS flag. `true` if a cluster contains only GSM LBS points.
 * `bounds` - object. North-west and south-east coordinates of the bounding box that contains all points.
 
@@ -269,16 +269,16 @@ frame. The timestamp for each point corresponds to when the tracker recorded the
 
 #### parameters
 
-| name            | description                                                                                                                                                                                                                                                                                                                                                                      | type                                                      | format                                     |
-|:----------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------|:-------------------------------------------|
-| asset           | An object containing identifier and type to define a list of tracker identifiers. The list of tracker identifiers will be generated as a list of identifiers of trackers related to object with specified identifier and type. Permitted types: vehicle, employee.                                                                                                               | string                                                    | `"asset": {"id": 123, "type": "employee"}` |
-| from            | The start date/time for trips. The response begins with the next trip point after this time.                                                                                                                                                                                                                                                                                     | [date/time](../../../getting-started.md#datetime-formats) | "2020-09-23 03:24:00"                      |
-| to              | An end date/time for trips. The response concludes with the last point before this time. Ensure this date is later than the "from" date.                                                                                                                                                                                                                                         | [date/time](../../../getting-started.md#datetime-formats) | "2020-09-23 06:24:00"                      |
-| track_id        | Optional. If a specific track is identified, only points related to that track will be provided. If no track is specified, all valid track points recorded within the specified "from" and "to" timeframe will be returned.                                                                                                                                                      | int                                                       | 234567                                     |
-| include_gsm_lbs | Optional. Default is `true`. If the value is `false` && a track_id is not provided, the GSM LBS points will be excluded from the results.                                                                                                                                                                                                                                        | boolean                                                   | true                                       |
-| simplify        | Optional. Default is `true`. If set to `true`, the returned data will be simplified, resulting in fewer points.                                                                                                                                                                                                                                                                  | boolean                                                   | `true`                                     |
-| point_limit     | Optional. If it is specified and `simplify=true`, the returned data will be reduced to contain that specified number of points. The minimum value is 2, and the maximum is 3000. If it is not specified, the server's default settings for simplifying tracks will be applied. This is not a strict limit; the returned data can potentially contain more points than specified. | int                                                       | `300`                                      |
-| filter          | Optional. If this is set to `true`, the returned tracks will be filtered. This is currently only applicable to LBS tracks. If set to `false`, the response will include parking points.                                                                                                                                                                                          | boolean                                                   | false                                      |
+| name            | description                                                                                                                                                                                                                                                                                                                                                                      | type                                                                   | format                                     |
+|:----------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:-------------------------------------------|
+| asset           | An object containing identifier and type to define a list of tracker identifiers. The list of tracker identifiers will be generated as a list of identifiers of trackers related to object with specified identifier and type. Permitted types: vehicle, employee.                                                                                                               | string                                                                 | `"asset": {"id": 123, "type": "employee"}` |
+| from            | The start date/time for trips. The response begins with the next trip point after this time.                                                                                                                                                                                                                                                                                     | [date/time](../../../getting-started/introduction.md#datetime-formats) | "2020-09-23 03:24:00"                      |
+| to              | An end date/time for trips. The response concludes with the last point before this time. Ensure this date is later than the "from" date.                                                                                                                                                                                                                                         | [date/time](../../../getting-started/introduction.md#datetime-formats) | "2020-09-23 06:24:00"                      |
+| track_id        | Optional. If a specific track is identified, only points related to that track will be provided. If no track is specified, all valid track points recorded within the specified "from" and "to" timeframe will be returned.                                                                                                                                                      | int                                                                    | 234567                                     |
+| include_gsm_lbs | Optional. Default is `true`. If the value is `false` && a track_id is not provided, the GSM LBS points will be excluded from the results.                                                                                                                                                                                                                                        | boolean                                                                | true                                       |
+| simplify        | Optional. Default is `true`. If set to `true`, the returned data will be simplified, resulting in fewer points.                                                                                                                                                                                                                                                                  | boolean                                                                | `true`                                     |
+| point_limit     | Optional. If it is specified and `simplify=true`, the returned data will be reduced to contain that specified number of points. The minimum value is 2, and the maximum is 3000. If it is not specified, the server's default settings for simplifying tracks will be applied. This is not a strict limit; the returned data can potentially contain more points than specified. | int                                                                    | `300`                                      |
+| filter          | Optional. If this is set to `true`, the returned tracks will be filtered. This is currently only applicable to LBS tracks. If set to `false`, the response will include parking points.                                                                                                                                                                                          | boolean                                                                | false                                      |
 
 #### example
 
@@ -316,8 +316,8 @@ are `true`, we should list them in our request.
 * `limit_exceeded` - boolean. It will be `true` if the requested time period surpasses the limit set in the tracker's tariff.
 For instance, if the device's plan has a maximum storage period of three months (the default value), and we request trips
 for six months.
-* `from` - [date/time](../../../getting-started.md#data-types). This is timestamp of the start of the interval when the asset was attached to the tracker.
-* `to` - [date/time](../../../getting-started.md#data-types). This is timestamp of the end of the interval when the asset was attached to the tracker.
+* `from` - [date/time](../../../getting-started/introduction.md#data-types). This is timestamp of the start of the interval when the asset was attached to the tracker.
+* `to` - [date/time](../../../getting-started/introduction.md#data-types). This is timestamp of the end of the interval when the asset was attached to the tracker.
 * `track_points` - array of JSON objects. A list of [point info](#point-info).
 
 #### point info
