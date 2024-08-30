@@ -158,6 +158,7 @@ Unless otherwise noted, every API call requires a valid API Key hash. This hash 
 ## String Validation Rules
 
 This validation ensures that the provided string adheres to specific content rules. The rules may vary depending on the particular field being validated. The string is checked for the following criteria:
+
 - Empty strings or null values: may be allowed or restricted depending on the specific field
 - Character types:
   - Regular spaces are always allowed (Unicode category "Zs")
