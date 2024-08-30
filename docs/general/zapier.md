@@ -68,32 +68,38 @@ Example use cases include:
 Choose one of the following actions based on your device and use case.
 
 1. **Set Output**
-   For devices that change one output at a time.
-   ![Choose set output](../general/assets/choose-set-output.png)
-   Provide:
-    - Tracker ID
-    - Output number
-    - Output state (enable/disable)
-   ![Set output settings](../general/assets/set-output-settings.png)
+    For devices that change one output at a time.
+    ![Choose set output](../general/assets/choose-set-output.png)
+    Provide:
+
+     - Tracker ID
+     - Output number
+     - Output state (enable/disable)
+
+    ![Set output settings](../general/assets/set-output-settings.png)
 
 2. **Set Outputs**
 
-   For devices that change multiple outputs with one command.
-   ![Choose set outputs](../general/assets/choose-set-outputs.png)
-   Provide:
-    - Tracker ID
-    - Output states (e.g., true,true,false for outputs 1, 2, and 3)
-   ![Set outputs settings](../general/assets/set-outputs-settings.png)
+    For devices that change multiple outputs with one command.
+    ![Choose set outputs](../general/assets/choose-set-outputs.png)
+    Provide:
+ 
+     - Tracker ID
+     - Output states (e.g., true,true,false for outputs 1, 2, and 3)
+
+    ![Set outputs settings](../general/assets/set-outputs-settings.png)
 
 3. **Send GPRS Command**
 
-   For sending specific commands to a device, such as switching a digital output.
-   ![Choose send GPRS command](../general/assets/choose-send-gprs-command.png)
+    For sending specific commands to a device, such as switching a digital output.
+    ![Choose send GPRS command](../general/assets/choose-send-gprs-command.png)
    
-   Provide:
-    - Tracker ID
-    - Command (protocol-related command for the device)
-   ![Set send GPRS command settings](../general/assets/set-send-gprs-command-settings.png)
+    Provide:
+
+     - Tracker ID
+     - Command (protocol-related command for the device)
+
+    ![Set send GPRS command settings](../general/assets/set-send-gprs-command-settings.png)
 
 ### Results
 
