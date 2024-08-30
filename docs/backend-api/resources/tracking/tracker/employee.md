@@ -127,15 +127,15 @@ Requests to read the current employee (driver) assigned to tracker, and when it 
 
 * `current` - current employee (driver) info, standard employee object, can be `null`.
 * `last_change` - information about the employee's last assignment, can be `null`.
-  * `old_employee_id` - deprecated. Always `null`.
-  * `new_employee_id` - ID of an employee assigned to the tracker. Can be `null`.
-  * `location` - an address where it was. Can be `null`.
-    * `lat` - latitude.
-    * `lng` - longitude.
-    * `address` - an address where it was. Can be `null`.
-  * `origin` - `supervisor` (if the assignment was made through the [API](#assign)) or `tracker`
-    (if the assignment was made through the hardware/driver key).
-  * `hardware_key` - hardware key used to change employee.
+    * `old_employee_id` - deprecated. Always `null`.
+    * `new_employee_id` - ID of an employee assigned to the tracker. Can be `null`.
+    * `location` - an address where it was. Can be `null`.
+        * `lat` - latitude.
+        * `lng` - longitude.
+        * `address` - an address where it was. Can be `null`.
+    * `origin` - `supervisor` (if the assignment was made through the [API](#assign)) or `tracker`
+      (if the assignment was made through the hardware/driver key).
+    * `hardware_key` - hardware key used to change employee.
 
 #### Errors
 

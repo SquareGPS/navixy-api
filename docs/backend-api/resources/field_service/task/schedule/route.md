@@ -61,8 +61,8 @@ These actions allow creating scheduled routes similarly to regular routes.
 * `user_id` - int. User id. *IGNORED* in create/update.
 * `tracker_id` - int. An ID of the tracker to which all generated tasks assigned. Nullable.
 * `location` - location associated with this task. Cannot be null.
-  * `address` - string. Address of the location.
-  * `radius` - int. Radius of location zone in meters.
+    * `address` - string. Address of the location.
+    * `radius` - int. Radius of location zone in meters.
 * `max_delay` - int. Maximum allowed task completion delay in minutes.
 * `min_stay_duration` - int. Minimum duration of stay in task zone for task completion, minutes.
 * `min_arrival_duration` - int. Visits less than these values will be ignored, minutes.
