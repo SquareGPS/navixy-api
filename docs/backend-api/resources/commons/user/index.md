@@ -157,9 +157,7 @@ Available only to master users.
 
 ### `auth`
 
-### `auth`
-
-Tries to authenticate the user and get hash.
+Tries to authenticate user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
@@ -195,7 +193,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
     }
     ```
 
-    * `type` - [enum](../../../getting-started.md#data-types). Always `authenticated`. 
+    * `type` - [enum](../../../getting-started/introduction.md#data-types). Always `authenticated`. 
     * `hash` - string. Session hash.
 
 === "With 2FA enabled"
@@ -209,8 +207,8 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
     }
     ```
 
-    * `type` - [enum](../../../getting-started.md#data-types). Always `second_factor_required`.
-    * `factor_type` - [enum](../../../getting-started.md#data-types).
+    * `type` - [enum](../../../getting-started/introduction.md#data-types). Always `second_factor_required`.
+    * `factor_type` - [enum](../../../getting-started/introduction.md#data-types).
     Which type of the second factor is used.
     Only `email` is available at the moment.
     * `hash` - string. Session hash. Can be used only for [authentication code](./auth/code.md) actions
@@ -233,7 +231,6 @@ Gets user information and some settings.
 |:------------|:---------------------------------------------------------------------------------------|:-------|:-------------|
 | application | If specified, the response will contain a description of the application's custom menu | string | optional     |
 
-#### Examples
 #### Examples
 
 === "cURL"
