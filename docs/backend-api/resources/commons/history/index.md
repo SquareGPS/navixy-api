@@ -65,6 +65,7 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
     * `last_known_location` - optional boolean. `true` if location may be outdated.
     * `tracker_label` - optional string. Tracker label.
     * `emergency` - optional boolean. `true` for emergency events with the same flag in a rule.
+    * `zone_ids` - optional array of integers. Related geofence IDs.
     * `zone_labels` - optional array of strings. Related geofence labels.
     * `proximity_object_id` - optional int. Proximity tracker ID.
     * `employee_id` - optional int. Driver ID at the time of the event.
