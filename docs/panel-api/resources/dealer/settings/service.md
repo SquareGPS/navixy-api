@@ -92,8 +92,8 @@ Let's explore the Service Settings object using the following example:
 * `allowed_maps` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). List of maps available for selection in the "maps" list.
 * `color_theme` - string. Max 128 characters. Color theme code or empty string (for the default theme).
 * `app_color_theme` - string. Max 128 characters. Mobile app color theme code or empty string (for the default theme).
-* `privacy_policy_link` - string. Link to the privacy policy.
-* `tos` - string. Terms of Service text.
+* `privacy_policy_link` - string. Nullable, privacy policy link (it may be empty).
+* `tos` - string. Nullable, terms of service text (it may be empty).
 * `no_register_commands` - boolean. Prevents sending commands to devices on activation if `true`.
 * `default_user_time_zone` - string. [Time zone ID](../../timezone.md) for new users created via [user/upload](../../user/index.md#upload). This time zone is also selected by default when creating a new user in the Navixy Admin Panel.
 
