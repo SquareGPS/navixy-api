@@ -155,8 +155,8 @@ If `hash` is specified the `domain` shouldn't be used.
     * `display_model_features_link` - boolean. When `true` show in model info link to squaregps.com (UI option).
     * `color_theme` - [enum](../../getting-started/introduction.md#data-types). Color theme code or empty string (for default theme).
     * `app_color_theme` - [enum](../../getting-started/introduction.md#data-types). Mobile app color theme code or empty string (for default theme).
-    * `privacy_policy_link` - string. Nullable, privacy policy link.
-    * `tos` - string. Nullable, terms of service text.
+    * `privacy_policy_link` - string. Nullable, privacy policy link (it may be empty).
+    * `tos` - string. Nullable, terms of service text (it may be empty).
     * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
     * `exclusion` - boolean. If `true` models in the `values` will be excluded.
     * `values` - string array. If it is empty - all models available.
