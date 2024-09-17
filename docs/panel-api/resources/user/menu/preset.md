@@ -28,7 +28,7 @@ A collection of menu items, optionally titled, that are grouped together within 
 
 | Name  | Description              | Type                          |
 |-------|--------------------------|-------------------------------|
-| title | The title of the group   | string?                       |
+| title | The title of the group   | optional string               |
 | items | A list of the menu items | [Menu item](#menu-item) array |
 
 ### Menu item
@@ -38,7 +38,7 @@ An individual item in the sidebar, which can include an icon and a list of tabs.
 | Name  | Description                 | Type                        |
 |-------|-----------------------------|-----------------------------|
 | title | The title of the menu item  | string                      |
-| icon  | The icon of the menu item   | string?                     |
+| icon  | The icon of the menu item   | optional string             |
 | tabs  | A list of tabs in this item | [Menu tab](#menu-tab) array |
 
 ### Menu tab
