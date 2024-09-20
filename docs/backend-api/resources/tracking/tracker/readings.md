@@ -148,7 +148,7 @@ Gets last values for all metering sensors, state values and counters on multiple
 ```json
 
 {
-  "result": {readings_batch},
+  "result": {<readings_batch>},
   "success": true
 }
 ```
