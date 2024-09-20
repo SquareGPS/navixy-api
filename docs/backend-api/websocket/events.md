@@ -177,7 +177,7 @@ Message sample:
   "event": "state_batch",
   "user_time": "2018-10-17 12:51:55",
   "data": [
-    {readings_batch}
+    {<readings_batch>}
   ]
 }
 ```
