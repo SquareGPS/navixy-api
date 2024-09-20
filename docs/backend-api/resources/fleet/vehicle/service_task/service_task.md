@@ -426,7 +426,7 @@ Report file.
 
 ### `list`
 
-Lists the service works, sorted in ascending order by the predicted date
+Lists the service works, sorted in ascending order by the predicted date (if other sort options are not specified)
 
 #### Parameters
 
@@ -466,7 +466,7 @@ Lists the service works, sorted in ascending order by the predicted date
 ```json
 {
   "success": true,
-  "list": [service_work]
+  "list": [<service_work>]
 }
 ```
 
