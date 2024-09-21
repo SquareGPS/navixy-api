@@ -101,12 +101,15 @@ Update points for user's geofence with `zone_id`.
 #### Response
 
 ```json
-{ "success": true }
+{ 
+  "success": true
+}
 ```
 
 #### Errors
 
 * 201 - Not found in the database – if geofence with the specified ID cannot be found or belongs to another user.
 * 202 - Too many points in a geofence – if "points" array size exceeds limit for this geofence type. Max allowed points count 
-for a geofence is 100 for a polygon or 1024 for sausage.
-* 230 - Not supported for this entity type – if geofence cannot have any points associated with it (e.g. if geofence is circle).
+  for a geofence is 500 for a polygon or 1024 for a sausage.
+* 230 - Not supported for this entity type – if geofence cannot have any points associated with it (e.g., if geofence is circle).
+* 284 - Not enough points for the zone. The minimum number of points for polygon: 3; the minimum for sausage: 2.
