@@ -1,0 +1,9 @@
+title: Guides and Examples
+nav:
+  - Overview: index.md
+  - Device management: device-management
+  - Data retrieval: data-retrieval
+  - Places: places
+  - Notifications and rules: rules-notifications
+  - Fleet management: fleet-management
+  - Field service management: field-service-management

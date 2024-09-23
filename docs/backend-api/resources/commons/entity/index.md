@@ -5,11 +5,9 @@ description: Contains entity object description and API calls to interact with i
 
 # Entity actions
 
-Contains entity object description and API calls to interact with it. <br>
-Entity describes a class of objects for which representation and editable fields can be customized.
-For example, you can add your own custom fields of **places** entity or rearrange existing fields.
+This page provides an overview of entity object descriptions and the API calls used to interact with them. In Navixy, an entity represents a class of objects for which representation and editable fields can be customized. 
 
-***
+For example, you can add custom fields to the **places** entity or rearrange existing fields to suit your needs. This flexibility allows for tailored data representation and enhanced data management within the platform.
 
 ## Entity object
 
@@ -35,13 +33,13 @@ For example, you can add your own custom fields of **places** entity or rearrang
 ```
 
 * `id` - int. Entity identifier.
-* `type` - [enum](../../../getting-started.md#data-types). Currently, only "place" is supported.
+* `type` - [enum](../../../getting-started/introduction.md#data-types). Currently, only "place" is supported.
 * `layout` - object describes layout of fields for entity.
-   * `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
-   * `label` - string. Name of section.
-   * `field_order` - string array. Built-in fields and IDs of custom fields (as strings).
+    * `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
+    * `label` - string. Name of section.
+    * `field_order` - string array. Built-in fields and IDs of custom fields (as strings).
 
-**entity types**:
+**Entity types**:
 
 **place** - a place object, the same as is available through [place API](../../field_service/place/index.md).
 
@@ -52,21 +50,20 @@ Builtin fields:
 * tags.
 * description.
 
-***
 
 ## API actions
 
 API path: `/entity`.
 
-### list
+### `list`
 
 Get list of entities which are available for customization.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -82,7 +79,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/entity/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -108,17 +105,16 @@ Only API key `hash`.
 }
 ```
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### read
+### `read`
 
 Gets entity by the ID or by type.
 
-#### parameters
+#### Parameters
 
 | name | description                                       | type   |
 |:-----|:--------------------------------------------------|:-------|
@@ -127,7 +123,7 @@ Gets entity by the ID or by type.
 
 !!! note "Exactly one of these parameters must be specified. They can't be both null or both non-null."
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -143,7 +139,7 @@ Gets entity by the ID or by type.
     {{ extra.api_example_url }}/entity/read?hash=a6aa75587e5c59c32d347da438505fc3&id=131312
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -178,13 +174,12 @@ Gets entity by the ID or by type.
 
 * `fields` - array of objects. Fields associated with this entity. Described in [field object](./fields.md#field-object).
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no entity with such ID.
 
-***
 
-### update(entity)
+### `update`
 
 Updates settings of customizable entity. Entity must have a valid ID.
 
@@ -192,13 +187,13 @@ Updates settings of customizable entity. Entity must have a valid ID.
 
 !!! warning "`entity.settings.layout.sections` must contain IDs of all builtin and custom fields which are associated with this entity. No fields can be omitted from layout, only reordering allowed. Fields cannot be duplicated, even in different sections."
 
-#### parameters
+#### Parameters
 
 | name   | description                               | type        |
 |:-------|:------------------------------------------|:------------|
 | entity | Entity object with valid ID and settings. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -208,7 +203,7 @@ Updates settings of customizable entity. Entity must have a valid ID.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity": {"id": 123, "type": "place", "settings": {"layout": {"sections": [{"label": "Section label", "field_order": ["label", "location", "131212", "tags", "description"]}]}}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -216,7 +211,7 @@ Updates settings of customizable entity. Entity must have a valid ID.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if there is no entity with such ID.
 * 7 - Invalid parameters - if entity object violates restrictions described above.

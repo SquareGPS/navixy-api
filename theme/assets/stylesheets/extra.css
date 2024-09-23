@@ -24,13 +24,14 @@ button:focus {
 
 body
 {
-    font-family: 'Roboto', 'Arial', sans-serif;
+    font-family: 'Open Sans', 'Roboto', 'Arial', sans-serif;
     font-size: 16px;
     font-weight: 400;
 
     letter-spacing: .5px;
 
-    color: #212529;
+    #color: #212529;
+    color: #3a434a;
 
     margin: 0;
 }
@@ -269,7 +270,7 @@ body
 }
 
 .main-navigation .nav-menu .menu-item a:hover {
-    color: #1e96dc;
+    color: #0B395A;
     text-decoration: none
 }
 
@@ -405,18 +406,11 @@ body
     box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.07), 1px 0 0 0 rgba(0, 0, 0, 0.07);
 }
 
-.md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap:hover {
-    box-shadow: inset -3px 0 0 0 rgba(0, 0, 0, 0.07), 1px 0 0 0 rgba(0, 0, 0, 0.07);
-}
-
 .md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap {
     padding: 1.2rem 0;
-    box-shadow: inset 2px 0 0 0 rgba(0, 0, 0, 0.07), 0 0 0 0 rgba(0, 0, 0, 0.07);
+    #box-shadow: inset 2px 0 0 0 rgba(0, 0, 0, 0.07), 0 0 0 0 rgba(0, 0, 0, 0.07);
 }
 
-.md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap:hover {
-    box-shadow: inset 4px 0 0 0 rgba(0, 0, 0, 0.07), 0 0 0 0 rgba(0, 0, 0, 0.07);
-}
 
 .md-sidebar.md-sidebar .md-sidebar__inner {
     direction: ltr;
@@ -484,6 +478,7 @@ body
     opacity: 0.8;
 }
 
+
 /* pdf link in header  */
 .navixy-pdf-link-div {
     display: flex;
@@ -527,4 +522,54 @@ body
 
 .md-source__icon svg {
     margin: 0.6rem 0 0.6rem auto;
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3 {
+    font-weight: 600;
+    letter-spacing: normal;
+}
+
+.md-typeset h4 {
+  font-size: 1.1em;
+  color: #555
+}
+
+.md-nav__link {
+	padding-right: 6px;
+}
+
+.md-nav__item .md-nav__link--active {
+  color: #1e96dc;
+  font-weight: bold;
+}
+
+.md-typeset code, .md-typeset kbd, .md-typeset pre {
+  color:#000;
+}
+
+.md-typeset code {
+  font-size:0.95em;
+}
+
+.md-top {
+  color:#fff;
+  bottom: 1rem;
+  margin: -2.8rem 1rem 1rem;
+}
+
+.md-nav__icon.md-icon {
+  display:none;
+}
+
+.md-nav__item--nested .md-nav__toggle:checked~.md-nav__link .md-nav__icon {
+  display:block;
+}
+
+
+.md-typeset {
+  font-size: 0.75rem;
+}
+
+.md-footer-copyright {
+  display: none;
 }

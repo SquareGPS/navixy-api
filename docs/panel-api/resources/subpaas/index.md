@@ -1,15 +1,15 @@
 ---
-title: Subpaas actions
+title: Subdealer actions
 description: API calls to interact with Subpaases.
 ---
 
-# Subpaas actions
+# Subdealer (Sub PaaS) actions
 
-API calls to interact with Subpaases.
+IIn Navixy, a Subdealer (Sub PaaS) account is designed for dealers who need to manage multiple accounts that provide services independently. This feature is ideal for dealers who act as larger distributors or service providers. With Sub PaaS accounts, dealers can create and manage additional sub-accounts, each with its own users, devices, and settings.
 
-***
+These sub-accounts function similarly to the main dealer account but allow for more granular control and management. This setup is perfect for servicing other dealers (subdealers) or larger enterprises that require separate PaaS accounts, such as a service run on their own domain. It streamlines operations of multiple independent organizations, while maintaining oversight from the main dealer account.
 
-## Subpaas object
+## Subdealer (Sub PaaS) object
 
 ```json
 {
@@ -28,42 +28,41 @@ API calls to interact with Subpaases.
 }
 ```
 
-* `subpaas_id` - int. Subpaas id.
-* `title` - string. Subpaas' name.
-* `jur_name` - string. Legal (juristic) company name.
+* `subpaas_id` - int. SubPaas id.
+* `title` - string. SubPaas' name.
+* `jur_name` - string. Legal company name.
 * `creation_date` - string. Creation date.
-* `block_type` - [enum](../../../backend-api/getting-started.md#data-types). Panel and Subpaas' users block status. One of: 
+* `block_type` - [enum](../../../backend-api/getting-started/introduction.md#data-types). Panel and Subpaas' users block status. One of: 
 "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED".
 * `users_count` - int. Count of users.
 * `active_users_count` - int. Count of active users.
-* `trackers_count` - int. All devices of Subpaas.
-* `active_trackers_count` - int. Active devices of Subpaas.
+* `trackers_count` - int. All devices of SubPaas.
+* `active_trackers_count` - int. Active devices of SubPaas.
 * `contact_fio` - string. Contact person.
 * `contact_post` - string. Contact post (position).
 * `contact_phone` - string. Contact's phone.
 
-***
 
 ## API actions
 
 API base path: `panel/subpaas`.
 
-### create
+### `create`
 
-Creates subpaas. After creation its `dealer_block_type` will be in `INITIAL_BLOCK` status.
+Creates a subPaaS. After creation, its `dealer_block_type` will be in `INITIAL_BLOCK` status.
 
-#### parameters
+#### Parameters
 
-| name            | description                    | type   |
-|:----------------|:-------------------------------|:-------|
-| password        | Subpaas' password.             | string |
-| title           | Subpaas' name.                 | string |
-| email           | Company email.                 | string |
-| jur_name        | Legal (juristic) company name. | string |
-| jur_country     | Subpaas' country               | string |
-| link_monitoring | Subpaas' domain name.          | string |
+| name            | description           | type   |
+|:----------------|:----------------------|:-------|
+| password        | Subpaas' password.    | string |
+| title           | Subpaas' name.        | string |
+| email           | Company email.        | string |
+| jur_name        | Legal  company name.  | string |
+| jur_country     | Subpaas' country      | string |
+| link_monitoring | Subpaas' domain name. | string |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -72,7 +71,7 @@ Creates subpaas. After creation its `dealer_block_type` will be in `INITIAL_BLOC
         -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com"}'
     ```
-#### response
+#### Response
 
 ```json
 {
@@ -80,29 +79,28 @@ Creates subpaas. After creation its `dealer_block_type` will be in `INITIAL_BLOC
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – If the dealer
     * is not paas.
     * has different status than `NOT_BLOCKED`.
     * his tariff doesn't allow subpaases.
 
-***
 
-### list
+### `list`
 
-Gets a list of all subpaases for a dealer. Dealer ID will be taken from the session key.
+Gets a list of all SubPaaS accounts of a Dealer. Dealer ID will be taken from the session key.
 
-#### parameters
+#### Parameters
 
 | name      | description                                                                                                                       | type                                                       |
 |:----------|:----------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
-| order_by  | Optional. Sort option. Can be "subpaas_id", "title", "jur_name", "login", "block_type", "creation_date". Default is `subpaas_id`. | [enum](../../../backend-api/getting-started.md#data-types) |
+| order_by  | Optional. Sort option. Can be "subpaas_id", "title", "jur_name", "login", "block_type", "creation_date". Default is `subpaas_id`. | [enum](../../../backend-api/getting-started/introduction.md#data-types) |
 | ascending | Optional. If `true` ordering will be ascending, descending otherwise. Default is `true`.                                          | boolean                                                    |
 | limit     | Optional. Pagination. Maximum subpaases to return                                                                                 | int                                                        |
 | offset    | Optional. Pagination. Get subpaases starting from.                                                                                | int                                                        |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -118,7 +116,7 @@ Gets a list of all subpaases for a dealer. Dealer ID will be taken from the sess
     {{ extra.api_example_url }}/panel/subpaas/list?hash=fa7bf873fab9333144e171372a321b06
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -142,26 +140,25 @@ Gets a list of all subpaases for a dealer. Dealer ID will be taken from the sess
 
 * `list` - array of objects. List of [subpaas objects](#subpaas-object) described above.
 
-#### errors 
+#### Errors 
 
-* 13 – If the dealer
-    * is not paas.
-    * has different status than `NOT_BLOCKED`.
-    * his tariff doesn't allow subpaases.
+* 13 – If the dealer:
+    * is not of the PaaS type.
+    * has a status other than `NOT_BLOCKED`.
+    * their plan does not allow SubPaaS accounts.
 
-***
 
-### read
+### `read`
 
-Gets subpaas info by its id.
+Gets Sub PaaS account info by its id.
 
-#### parameters
+#### Parameters
 
 | name       | description | type |
 |:-----------|:------------|:-----|
 | subpaas_id | Subpaas ID. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -177,7 +174,7 @@ Gets subpaas info by its id.
     {{ extra.api_example_url }}/panel/subpaas/read?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -199,20 +196,19 @@ Gets subpaas info by its id.
 
 * `value` - [subpaas object](#subpaas-object) described above.
 
-#### errors
+#### Errors
 
-* 13 – If the dealer
-    * is not paas.
-    * has different status than `NOT_BLOCKED`.
-    * his tariff doesn't allow subpaases.
+* 13 – If the dealer:
+    * is not of the PaaS type.
+    * has a status other than `NOT_BLOCKED`.
+    * their plan does not allow SubPaaS accounts.
 
-***
 
-### update
+### `update`
 
-Updates a subpaas with specified ID.
+Updates a SubPaas account with the specified ID.
 
-#### parameters
+#### Parameters
 
 | name            | description                                                                                                    | type                                                       |
 |:----------------|:---------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
@@ -226,9 +222,9 @@ Updates a subpaas with specified ID.
 | contact_fio     | Contact person.                                                                                                | string                                                     |
 | contact_post    | Contact post (position).                                                                                       | string                                                     |
 | contact_phone   | Contact's phone.                                                                                               | string                                                     |
-| block_type      | Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED". | [enum](../../../backend-api/getting-started.md#data-types) |
+| block_type      | Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED". | [enum](../../../backend-api/getting-started/introduction.md#data-types) |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -238,7 +234,7 @@ Updates a subpaas with specified ID.
         -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com", "contact_fio": "fio", "contact_post": "CEO", "contact_phone": "79999902190", "block_type": "NOT_BLOCKED"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -246,13 +242,13 @@ Updates a subpaas with specified ID.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 –
-    * The dealer is not paas.
-    * The dealer has different status than `NOT_BLOCKED`.
-    * Subpaases are not permitted for dealer.
+    * The dealer is not PaaS.
+    * The dealer has a status other than `NOT_BLOCKED`.
+    * SubPaaS accounts are not permitted for the dealer.
     * `block_type` is `DELETED`.
-    * Found subpaas is in `DELETED` status.
-    * Found subpaas is not in `INITIAL_BLOCK` status and `block_type` is `INITIAL_BLOCK`.
-    * Found subpaas is in `INITIAL_BLOCK` status and `block_type` is not `INITIAL_BLOCK`.
+    * The found SubPaaS is in `DELETED` status.
+    * The found SubPaaS is not in `INITIAL_BLOCK` status and `block_type` is `INITIAL_BLOCK`.
+    * The found SubPaaS is in `INITIAL_BLOCK` status and `block_type` is not `INITIAL_BLOCK`.

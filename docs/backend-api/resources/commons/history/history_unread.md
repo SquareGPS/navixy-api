@@ -7,27 +7,25 @@ description: Contains API calls to interact with unread history entries.
 
 Contains API calls to interact with unread history events.
 
-***
 
 ## API actions
 
 API path: `/history/unread`.
 
-### list
+### `list`
 
-List less than or equal to `limit` of the latest user's unread history events. Described how it works in our 
-[instructions](../../../how-to/how-to-work-with-notifications.md#all-unread-events-of-user).
+List less than or equal to `limit` of the latest user's unread history events. Described how it works in our [guide](../../../guides/rules-notifications/work-with-notifications.md#all-unread-events-of-user).
 
-#### parameters
+#### Parameters
 
-| name  | description                                                                                                                  | type      |
-|:------|:-----------------------------------------------------------------------------------------------------------------------------|:----------|
-| limit | Optional. Limit of entries in response.                                                                                      | int       |
-| from  | Optional. Start [date/time](../../../getting-started.md#data-types) for searching. Default `from` is **now** minus one year. | date/time |
+| name  | description                                                                                                                               | type      |
+|:------|:------------------------------------------------------------------------------------------------------------------------------------------|:----------|
+| limit | Optional. Limit of entries in response.                                                                                                   | int       |
+| from  | Optional. Start [date/time](../../../getting-started/introduction.md#data-types) for searching. Default `from` is **now** minus one year. | date/time |
 
 Default and max limit is [history.maxLimit](../dealer.md).
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -43,7 +41,7 @@ Default and max limit is [history.maxLimit](../dealer.md).
     {{ extra.api_example_url }}/history/unread/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -82,24 +80,23 @@ Default and max limit is [history.maxLimit](../dealer.md).
 
 * `list` - array of objects. list of zero or more [Tracker history entry](./index.md#tracker-history-entry) objects.
 
-#### errors
+#### Errors
 
 * 212 – Requested limit is too big (more [history.maxLimit](../dealer.md) config option).
 
-***
 
-### count
+### `count`
 
 Get count of user's unread history messages starting `from` date.
 
-#### parameters
+#### Parameters
 
-| name | description                                                                                                                   | type                                           |
-|:-----|:------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|
-| from | Optional. Start [date/time](../../../getting-started.md#data-types) for searching.  Default `from` is **now** minus one year. | date/time                                      |
-| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera".                                      | [enum](../../../getting-started.md#data-types) |
+| name | description                                                                                                                                | type                                                        |
+|:-----|:-------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------|
+| from | Optional. Start [date/time](../../../getting-started/introduction.md#data-types) for searching.  Default `from` is **now** minus one year. | date/time                                                   |
+| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera".                                                   | [enum](../../../getting-started/introduction.md#data-types) |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -115,7 +112,7 @@ Get count of user's unread history messages starting `from` date.
     {{ extra.api_example_url }}/history/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -124,6 +121,6 @@ Get count of user's unread history messages starting `from` date.
 }
 ```
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.

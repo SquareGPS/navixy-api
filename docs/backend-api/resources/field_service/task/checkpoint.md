@@ -7,7 +7,6 @@ description: Every route consists of checkpoints. Using these actions, you can m
 
 Every route consists of checkpoints. Using these actions, you can manipulate checkpoints individually.
 
-***
 
 ## Checkpoint object
 
@@ -48,15 +47,15 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 * `location` - location associated with this checkpoint. cannot be null.
     * `address` - string. Address of the location.
     * `radius` - int. Radius of location zone in meters.
-* `creation_date` - [date/time](../../../getting-started.md#data-types). When checkpoint created. *IGNORED* in checkpoint/create, checkpoint/update.
-* `from` - [date/time](../../../getting-started.md#data-types). Date AFTER which checkpoint zone must be visited.
-* `to` - [date/time](../../../getting-started.md#data-types). Date BEFORE which checkpoint zone must be visited.
+* `creation_date` - [date/time](../../../getting-started/introduction.md#data-types). When checkpoint created. *IGNORED* in checkpoint/create, checkpoint/update.
+* `from` - [date/time](../../../getting-started/introduction.md#data-types). Date AFTER which checkpoint zone must be visited.
+* `to` - [date/time](../../../getting-started/introduction.md#data-types). Date BEFORE which checkpoint zone must be visited.
 * `external_id` - int. Used if task imported from external system. Arbitrary text string. Can be null.
-* `status` - [enum](../../../getting-started.md#data-types). Checkpoint status. *IGNORED* in checkpoint/create, checkpoint/update.
-* `status_change_date` - [date/time](../../../getting-started.md#data-types). When checkpoint status changed. *IGNORED* in checkpoint/create and checkpoint/update.
+* `status` - [enum](../../../getting-started/introduction.md#data-types). Checkpoint status. *IGNORED* in checkpoint/create, checkpoint/update.
+* `status_change_date` - [date/time](../../../getting-started/introduction.md#data-types). When checkpoint status changed. *IGNORED* in checkpoint/create and checkpoint/update.
 * `max_delay` - int. Maximum allowed checkpoint completion delay in minutes.
 * `min_stay_duration` - int. Minimum duration of stay in checkpoint zone for checkpoint completion, minutes.
-* `arrival_date` - [date/time](../../../getting-started.md#data-types). Wen tracker has arrived to the checkpoint zone. *IGNORED* in checkpoint/create, checkpoint/update.
+* `arrival_date` - [date/time](../../../getting-started/introduction.md#data-types). Wen tracker has arrived to the checkpoint zone. *IGNORED* in checkpoint/create, checkpoint/update.
 * `stay_duration` - int. Duration of stay in the checkpoint zone, seconds.
 * `origin` - string. Checkpoint origin. *IGNORED* in checkpoint/create, checkpoint/update.
 * `tags` - int array. List of tag IDs.
@@ -65,25 +64,24 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 
 !!! note "To associate the task with an address - this field should be added to the location object."
 
-***
 
 ## API actions
 
 API base path: `/task/checkpoint`.
 
-### create
+### `create`
 
 Creates a new checkpoint.
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                               | type        | 
 |:-----------|:----------------------------------------------------------|:------------|
 | checkpoint | A `checkpoint` object without fields which are *IGNORED*. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -93,7 +91,7 @@ Creates a new checkpoint.
       -d '{"hash": "43c37b8d023272c5fd1b27d21244b", "checkpoint": {"tracker_id": 10179999, "label": "Shop 1", "description": "Description", "parent_id": 352665, "order": 0, "location": { "lat": 9.861999, "lng": -83.948999, "radius": 150}, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "from": "2022-12-14 11:00:00", "to": "2022-12-14 11:30:00", "duration": 60, "tags": [1, 2], "form_template_id": 1}}'
     ```
 
-#### response
+#### Response
 
 Inserts the specified checkpoint at the specified position (`order`) in the parent route checkpoints list. Shifts the checkpoint currently at that position (if any) and any subsequent checkpoints to the right (adds one to their orders).
 
@@ -111,26 +109,25 @@ The returned object also can include "external_id_counts" field see `task/route/
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if task.tracker_id is not null and belongs to nonexistent tracker.
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
-***
 
-### delete
+### `delete`
 
 Deletes a checkpoint with the specified ID.
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name          | description                     | type | 
 |:--------------|:--------------------------------|:-----|
 | checkpoint_id | ID of the checkpoint to delete. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -146,29 +143,28 @@ Deletes a checkpoint with the specified ID.
     {{ extra.api_example_url }}/task/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=23144
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no checkpoint with such an ID.
 
-***
 
-### list
+### `list`
 
 Get checkpoints belonging to user with given IDs
 
-#### parameters
+#### Parameters
 
 | name           | description                       | type      | 
 |:---------------|:----------------------------------|:----------|
 | checkpoint_ids | IDs of checkpoints, e.g. `[1,2]`. | int array |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -184,7 +180,7 @@ Get checkpoints belonging to user with given IDs
     {{ extra.api_example_url }}/task/checkpoint/list?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_ids=[1,2]
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -218,23 +214,22 @@ Get checkpoints belonging to user with given IDs
 }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../getting-started.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### read
+### `read`
 
 Gets route checkpoint by specified ID.
 
-#### parameters
+#### Parameters
 
 | name          | description           | type | 
 |:--------------|:----------------------|:-----|
 | checkpoint_id | ID of the checkpoint. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -250,7 +245,7 @@ Gets route checkpoint by specified ID.
     {{ extra.api_example_url }}/task/checkpoint/read?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=111
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -287,25 +282,24 @@ Gets route checkpoint by specified ID.
 
 * `value` - `checkpoint` object described [here](#checkpoint-object).
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no checkpoint with such an ID.
 
-***
 
-### transmute
+### `transmute`
 
 Convert route checkpoint into a standalone task. If it's the only checkpoint in the route, the route deleted.
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name          | description           | type | 
 |:--------------|:----------------------|:-----|
 | checkpoint_id | ID of the checkpoint. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -321,7 +315,7 @@ Convert route checkpoint into a standalone task. If it's the only checkpoint in 
     {{ extra.api_example_url }}/task/checkpoint/transmute?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=111
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -329,26 +323,25 @@ Convert route checkpoint into a standalone task. If it's the only checkpoint in 
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no checkpoint with such an ID, or tracker to which checkpoint assigned is unavailable to current sub-user.
 * 255 – Invalid task state - if any of checkpoints are not in unassigned or assigned state.
 
-***
 
-### update
+### `update`
 
 Updates existing checkpoint.
 
 **required sub-user rights**: `task_update`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                               | type        | 
 |:-----------|:----------------------------------------------------------|:------------|
 | checkpoint | A `checkpoint` object without fields which are *IGNORED*. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -360,7 +353,7 @@ Updates existing checkpoint.
 
 Changing `order` reorders all other checkpoints.
 
-#### response
+#### Response
 
 ```json
 {
@@ -374,7 +367,7 @@ Changing `order` reorders all other checkpoints.
 
 * `external_id_counts` - array of objects. Optional. A returned object also can include "external_id_counts" field see task/route/create [method description](./route/index.md#create).
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no task with such an ID.
 * 255 – Invalid task state - if current task state is not "unassigned" or "assigned".

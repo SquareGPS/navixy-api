@@ -9,20 +9,19 @@ API base path: `/tracker/sensor/input_name`.
 
 API call to get all sensor inputs and state fields existing in the system and their descriptions.
 
-***
 
 ## API actions
 
-### list
+### `list`
 
 This will provide descriptions of all sensor inputs and state fields present in the system. These descriptions will be 
 given in the language according to the user's locale.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -38,7 +37,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/tracker/sensor/input_name/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 For every input following properties returned: `input_name` and `description`.
 
@@ -2232,6 +2231,6 @@ For every input following properties returned: `input_name` and `description`.
     }
     ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.

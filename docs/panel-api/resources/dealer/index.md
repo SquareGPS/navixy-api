@@ -2,44 +2,40 @@
 title: Dealer get info
 description: API call to get information about a dealer.
 ---
+# Dealer
 
-# Dealer get info
+In Navixy, a Dealer is an entity that acts as a reseller or distributor of the Navixy platform services. Dealers have access to the Navixy Admin Panel, where they can manage various aspects of the platform, including users, devices, and service plans.
 
-API call to get information about a dealer.
+## API Actions
 
-***
+**API Path**: `panel/dealer/`
 
-## API actions
+### `get_info`
 
-API path: `panel/dealer/`.
+API call to get information about a Dealer. This call retrieves details about the dealer's plan, balance, available features, and more.
 
-### get_info
+**Required Permissions:** 
+- `base: "get_dealer_info"`.
 
-Gets information about dealer's tariff, balance, available features, etc.
- 
-*required permissions*: `base: "get_dealer_info"`.
+#### Parameters
 
-#### parameters
+- `hash` (string, required): The session hash.
 
-Only session `hash`.
-
-#### examples
+#### Examples
 
 === "cURL"
-
     ```shell
     curl -X POST '{{ extra.api_example_url }}/panel/dealer/get_info' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
-    ```    
+    ```
 
 === "HTTP GET"
-
-    ```
+    ```shell
     {{ extra.api_example_url }}/panel/dealer/get_info?hash=fa7bf873fab9333144e171372a321b06
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -102,35 +98,33 @@ Only session `hash`.
 }
 ```
 
-* `id` - int. Dealer id.
-* `parent_dealer_id` - int. An ID of parent dealer.
-* `contract_type` - [enum](../../../backend-api/getting-started.md#data-types). Contract type: "PARTNER", "AGENT" or "PAAS".
-* `tariff_id` - int. PaaS tariff id.
-* `tariff` - PaaS tariff info.
-    * `license_price` - nullable double. Price per license.
-    * `min_license_pay` - nullable double. Minimum license payment.
-    * `trial` - boolean. If `true` the plan is Trial.
-    * `premium_gis` - boolean. If `true` premium GIS enabled for the partner.
-    * `store_period` - string. Max data store period for users.
-* `demo_tariff` - boolean. `true` for "TRIAL" PaaS tariffs.
-* `store_period` - string. Max data store period for users on `demo_tariff`.
-* `demo_ends` - string. TRIAL period end date or null.
-* `block_status` - [enum](../../../backend-api/getting-started.md#data-types). Panel and PaaS users block status. One of: 
-"NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED".
-* `legal_name` - string. Dealer legal name.
-* `active_amount` - int. Amount of all active trackers (with Sub-PaaSes).
-* `active_amount_own` - int. Amount of active trackers (without Sub-PaaSes).
-* `active_amount_subpaas` - int. Amount of Sub-PaaSes' active trackers.
-* `active_limit` - int. Active trackers limit.
-* `locale` - [enum](../../../backend-api/getting-started.md#data-types). Dealer's default locale.
-* `domain` - string. Dealer's domain.
-* `favicon` - string. Path or URL to dealer's interface favicon or null.
-* `logo` - string. Path or URL to dealer's logotype or null.
-* `paas_activation_date` - string. Date of activation pay.
-* `features` - string array. Set of the allowed [dealer features](../../../backend-api/resources/commons/dealer.md#dealer-features).
-* `default_user_time_zone` - string. [Time zone id](../timezone.md) for new users to be created via [user/upload](../user/index.md#upload).
-  Also, this zone will be selected by default when creating a new user in the Navixy Admin Panel.
+* `id` (int): Dealer ID.
+* `parent_dealer_id` (int): Parent Dealer ID.
+* `contract_type` ([enum](../../../backend-api/getting-started/introduction.md#data-types)): Contract type: "PARTNER", "AGENT" or "PAAS".
+* `tariff_id` (int): PaaS plan ID.
+* `tariff` (object): PaaS plan info.
+    * `license_price` (nullable double): Price per license.
+    * `min_license_pay` (nullable double): Minimum license payment.
+    * `trial` (boolean): If `true`, the plan is Trial.
+    * `premium_gis` (boolean): If `true`, premium GIS is enabled for the partner.
+    * `store_period` (string): Maximum data store period for users.
+* `demo_tariff` (boolean): `true` for "TRIAL" PaaS tariffs.
+* `store_period` (string): Maximum data store period for users on `demo_tariff`.
+* `demo_ends` (string): TRIAL period end date or null.
+* `block_status` ([enum](../../../backend-api/getting-started/introduction.md#data-types)): Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED".
+* `legal_name` (string): Dealer legal name.
+* `active_amount` (int): Total number of active trackers (including Sub-PaaSes).
+* `active_amount_own` (int): Number of active trackers (excluding Sub-PaaSes).
+* `active_amount_subpaas` (int): Number of Sub-PaaSes' active trackers.
+* `active_limit` (int): Active trackers limit.
+* `locale` ([enum](../../../backend-api/getting-started/introduction.md#data-types)): Dealer's default locale.
+* `domain` (string): Dealer's domain.
+* `favicon` (string): Path or URL to dealer's interface favicon or null.
+* `logo` (string): Path or URL to dealer's logotype or null.
+* `paas_activation_date` (string): Date of activation pay.
+* `features` (array of strings): Set of allowed [dealer features](../../../backend-api/resources/commons/dealer.md#dealer-features).
+* `default_user_time_zone` (string): [Time zone ID](../timezone.md) for new users created via [user/upload](../user/index.md#upload). This zone will also be selected by default when creating a new user in the Navixy Admin Panel.
 
-#### errors
+#### Errors
 
-* 201 - Not found in the database.
+* `201` - Not found in the database.

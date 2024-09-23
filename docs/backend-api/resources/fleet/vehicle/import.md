@@ -7,7 +7,6 @@ description: API calls to import vehicles.
 
 API calls to import vehicles.
 
-***
 
 ## API actions
 
@@ -17,7 +16,7 @@ API path: `/vehicle/import/`.
 
 Starting the background process of importing vehicles.
 
-#### parameters
+#### Parameters
 
 | name         | description                                                                                       | type         |
 |:-------------|:--------------------------------------------------------------------------------------------------|:-------------|
@@ -64,7 +63,7 @@ Available fields:
 * `tags`
 * `undefined` (if a meaning of a field is not known)
 
-#### response
+#### Response
 
 ```json
 {
@@ -73,7 +72,7 @@ Available fields:
 }
 ```
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -90,24 +89,24 @@ curl -X POST "{{ extra.api_example_url }}/vehicle/import/start" \
 EOF
 ```
 
-#### errors
+#### Errors
 
 * 15 - Too many requests (rate limit exceeded) - if too many imports in progress
 * 233 - No data file
 * 234 - Invalid data format
 * 247 - Entity already exists - there is another identical import with the same file
 
-### read
+### `read`
 
 Returns an import process with specified ID.
 
-#### parameters
+#### Parameters
 
 | name       | description | type |
 |:-----------|:------------|:-----|
 | process_id | Process ID  | int  |
 
-#### response
+#### Response
 
 ```json
 {
@@ -135,7 +134,7 @@ Returns an import process with specified ID.
 }
 ```
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -145,15 +144,15 @@ curl -X POST "{{ extra.api_example_url }}/vehicle/import/read" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "process_id": 1}'
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in database (if import is not found)
 
-### list
+### `list`
 
 Returns the list of the user's vehicle import processes.
 
-#### response
+#### Response
 
 ```json
 {
@@ -181,7 +180,7 @@ Returns the list of the user's vehicle import processes.
 }
 ```
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -191,21 +190,21 @@ curl -X POST "{{ extra.api_example_url }}/vehicle/import/list" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-### download_failed
+### `download_failed`
 
 Retrieve a file with lines that contained errors and did not pass validation.
 
-#### parameters
+#### Parameters
 
 | name       | description | type |
 |:-----------|:------------|:-----|
 | process_id | Process ID  | int  |
 
-#### response
+#### Response
 
 File (standard file download).
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -215,7 +214,7 @@ curl -X POST "{{ extra.api_example_url }}/vehicle/import/download_failed" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "process_id": 7}'
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in database (if import is not found)
 * 204 – Entity not found (if file is not found)

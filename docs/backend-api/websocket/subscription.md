@@ -7,10 +7,9 @@ description: Information about WebSocket subscription and how to subscribe to ev
 
 The `subscribe` and `unsubscribe` actions used by the client's side to subscribe on server 
 events and unsubscribe from them. 
-These actions are similar with any other [API REST actions](../getting-started.md) 
+These actions are similar with any other [API REST actions](../getting-started/introduction.md) 
 but must be sent inside open `WebSocket` channel and use only JSON format for messages between the client and server.
 
-***
 
 ## Subscribe Action
 
@@ -31,7 +30,7 @@ Request parameters:
     Parameters below are deprecated by `requests` and should not be used.
 
 * `trackers` - required, int array, without nulls. List of tracker IDs for the events that require a subscription.
-* `events` - required, [enum](../getting-started.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
+* `events` - required, [enum](../getting-started/introduction.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
 
 #### Subscribe state_batch event sample:
 
@@ -77,14 +76,14 @@ receive data from all subscribed devices at once.
 #### Sub requests:
 
 * Batching (preferred):
-  * `type` - required, text: _"state_batch"_.
-  * `target` - required, object. One of targets below.
-  * `rate_limit` - optional, string. A timespan for batching.
-  * `format` - optional, [enum](../getting-started.md#data-types), one of: "full" (default), "compact".
+    * `type` - required, text: _"state_batch"_.
+    * `target` - required, object. One of targets below.
+    * `rate_limit` - optional, string. A timespan for batching.
+    * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 * Simple:
-  * `type` - required, text: _"state"_.
-  * `trackers` - required, int array. List of tracker ids.
-  * `format` - optional, [enum](../getting-started.md#data-types), one of: "full" (default), "compact".
+    * `type` - required, text: _"state"_.
+    * `trackers` - required, int array. List of tracker ids.
+    * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 
 Sample:
 
@@ -103,10 +102,10 @@ Sample:
 ##### Request targets:
 
 * All trackers:
-  * `type` - required, text: _"all"_.
+    * `type` - required, text: _"all"_.
 * Selected trackers:
-  * `type` - required, text: _"selected"_.
-  * `tracker_ids` - required, int array.
+    * `type` - required, text: _"selected"_.
+    * `tracker_ids` - required, int array.
 
 Sample:
 
@@ -122,10 +121,10 @@ Response parameters:
 
 * `type` - required, text: _"response"_.
 * `action` - required, text: _"subscription/subscribe"_.
-* `events` - required, array of [enum](../getting-started.md#data-types), without nulls. List of the subscribed events. Event can be `state`.
+* `events` - required, array of [enum](../getting-started/introduction.md#data-types), without nulls. List of the subscribed events. Event can be `state`.
 * `data` - required, map <string, object>. Map with events subscription result. One key per subscribed event.
-  * `state` - present if the "state" subscription requested, see sub response below.
-  * `state_batch` - present if the "state_batch" subscription requested, see sub response below.
+    * `state` - present if the "state" subscription requested, see sub response below.
+    * `state_batch` - present if the "state_batch" subscription requested, see sub response below.
 
 Sub response:
 * `success` - required, boolean.
@@ -185,26 +184,24 @@ the server will send a list of changed tracker states in the [event message](./e
 - Subscribing to a `state` or `state_batch` automatically creates a subscription to [lifecycle events](./events.md#state-event).
 - Subscribing to any event automatically creates a subscription to [logout events](./events.md#logout-event).
 
-***
 
 ## Unsubscribe Action
 
 For structure see [Subscribe Action](#subscribe-action).
 
-***
 
 ## Error Response
 
 If something goes wrong, the server may respond with an error.
-Error codes are similar to the [API errors codes](../getting-started.md#error-codes).
+Error codes are similar to the [API errors codes](../getting-started/errors.md#error-codes).
 
 Error response parameters:
 
 * `type` - required, text: _"error"_.
 * `action` - required, string - action from request (e.g. "subscription/subscribe") or "null" for some unexpected errors.
 * `status` - required - error code and description:
-  * `code` - required - error code (see [API errors codes](../getting-started.md#error-codes)).
-  * `description` - required, string - error description.
+    * `code` - required - error code (see [API errors codes](../getting-started/errors.md#error-codes)).
+    * `description` - required, string - error description.
 * `data` - optional string - part of parameters from request or some info for unexpected errors.
 
 Error response sample:

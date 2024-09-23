@@ -9,24 +9,23 @@ description: Calls to work with "delivery" type sessions. Those are special sess
 Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
 tracking functionality into external systems.
 
-***
 
 ## API actions
 
 API path: `/user/session/delivery`.
 
-### create
+### `create`
 
 Creates new user delivery session.
 In demo session allowed to create a new session only if it not already exists.
 
 **required sub-user rights**: `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -42,7 +41,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/user/session/delivery/create?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -53,22 +52,21 @@ Only API key `hash`.
 
 * `value` - string. Created delivery session hash key.
 
-#### errors
+#### Errors
 
 * 101 - In demo mode this function disabled – current session is demo but weblocator session already exists.
 * 236 – Feature unavailable due to tariff restrictions.
 
-***
 
-### read
+### `read`
 
 Returns current user delivery session key.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -84,7 +82,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/user/session/delivery/read?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -95,10 +93,10 @@ Only API key `hash`.
 
 * `value` - string. Delivery session hash.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no delivery session.
 
-#### errors
+#### Errors
 
-* [General](../../../../getting-started.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.

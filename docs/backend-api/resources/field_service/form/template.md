@@ -1,6 +1,6 @@
 ---
 title: Form templates
-description: Form is an one-shot entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields for future reference. Usually people need to fill forms with the same fields over an over again, so forms created on the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an electronic document, a template, on basis of which all paper forms printed.
+description: Form is an one-shot entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields for future reference. Usually people need to fill forms with the same fields over an over again, so forms created on the basis of form templates. It's similar to paper forms - each paper form can be filled only once, but there's an electronic document, a template, on basis of which all paper forms printed.
 ---
 
 # Form templates
@@ -16,7 +16,6 @@ in exactly same state regardless of how template changed.
  
 User can assign form to the task or checkin by choosing template without the need to create all form fields every time.
 
-***
 
 ## Form template object
 
@@ -43,22 +42,21 @@ User can assign form to the task or checkin by choosing template without the nee
 * `id` - int. An ID of a template.
 * `label` - string. User-defined template label, from 1 to 100 characters.
 * `fields` - array of multiple [form_field](./field-types.md) objects.
-* `created` - [date/time](../../../getting-started.md#data-types). Date when this template created. The read-only field.
+* `created` - [date/time](../../../getting-started/introduction.md#data-types). Date when this template created. The read-only field.
 * `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
-* `updated` - [date/time](../../../getting-started.md#data-types). Date when this template last modified. The read-only field.
+* `updated` - [date/time](../../../getting-started/introduction.md#data-types). Date when this template last modified. The read-only field.
 * `default` - boolean. This form will be chosen default for all new tasks with form if `true`.
 
-***
 
 ## API actions
 
 API path: `/form/template`.
 
-### list
+### `list`
 
 Gets all form templates belonging to current master user.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -74,7 +72,7 @@ Gets all form templates belonging to current master user.
     {{ extra.api_example_url }}/form/template/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -101,25 +99,24 @@ Gets all form templates belonging to current master user.
 
 * `list` - ordered array of [form_template objects](#form-template-object).
 
-#### errors
+#### Errors
 
-[General](../../../getting-started.md#error-codes) types only.
+[General](../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### create
+### `create`
 
 Creates new form template.
 
 **required sub-user rights**: `form_template_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                              | type        |
 |:---------|:-------------------------------------------------------------------------|:------------|
 | template | Non-null form template object without `id`, `created`, `updated` fields. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -129,7 +126,7 @@ Creates new form template.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -140,24 +137,23 @@ Creates new form template.
 
 * `id` - int. An ID of the created form template.
 
-#### errors
+#### Errors
 
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
-***
 
-### read
+### `read`
 
 Gets form template belonging to current master user by specified ID.
 
-#### parameters
+#### Parameters
 
 | name        | description              | type |
 |:------------|:-------------------------|:-----|
 | template_id | ID of the form template. | int  |
 
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -173,7 +169,7 @@ Gets form template belonging to current master user by specified ID.
     {{ extra.api_example_url }}/form/template/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -200,25 +196,24 @@ Gets form template belonging to current master user by specified ID.
 
 * `list` - ordered array of [form_template objects](#form-template-object).
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if there is no template with such an ID.
 
-***
 
-### update
+### `update`
 
 Updates existing form template.
 
 **required sub-user rights**: `form_template_update`.
 
-#### parameters
+#### Parameters
 
 | name     | description                                                        | type        |
 |:---------|:-------------------------------------------------------------------|:------------|
 | template | Non-null form template object without `created`, `updated` fields. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -228,32 +223,31 @@ Updates existing form template.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"id": 111, label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if template with the specified ID does not exist.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
-***
 
-### delete
+### `delete`
 
 Deletes form template.
 
 **required sub-user rights**: `form_template_update`.
 
-#### parameters
+#### Parameters
 
 | name        | description              | type |
 |:------------|:-------------------------|:-----|
 | template_id | ID of the form template. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -269,32 +263,31 @@ Deletes form template.
     {{ extra.api_example_url }}/form/template/delete?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if template with the specified ID does not exist.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
-***
 
-### stats/read
+### `stats/read`
 
 Returns template usage statistics.
 
 **required sub-user rights**: none.
 
-#### parameters
+#### Parameters
 
 | name        | description              | type |
 |:------------|:-------------------------|:-----|
 | template_id | ID of the form template. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -310,7 +303,7 @@ Returns template usage statistics.
     {{ extra.api_example_url }}/form/template/stats/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -331,6 +324,6 @@ Returns template usage statistics.
 * `tasks` - maps task status to number of tasks with this status which use specified template.
 * `scheduled` - int. Number of task schedules using this template.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if template with the specified ID does not exist.

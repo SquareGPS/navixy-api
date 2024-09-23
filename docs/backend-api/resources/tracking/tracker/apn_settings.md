@@ -7,23 +7,22 @@ description: Contains API call to get APN settings by tracker ID.
 This resource contains API call to get APN settings by tracker ID. APN is short of Access Point Name and provides a device 
 with the information needed to connect to wireless service. 
 
-***
 
 ## API actions
 
 API base path: `/tracker/apn_settings`.
 
-### read
+### `read`
 
 Gets the APN name/user/password and mobile operator of device by a `tracker_id`.
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                     | type | format |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -39,7 +38,7 @@ Gets the APN name/user/password and mobile operator of device by a `tracker_id`.
     {{ extra.api_example_url }}/tracker/apn_settings/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -52,7 +51,7 @@ Gets the APN name/user/password and mobile operator of device by a `tracker_id`.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - if tracker or APN settings not found.
 * 208 – Device blocked.

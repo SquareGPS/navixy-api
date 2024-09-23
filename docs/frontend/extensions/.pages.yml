@@ -1,5 +1,5 @@
 title: Extensions
 nav:
+  - user-applications.md
   - delivery-app.md
   - login-redirect.md
-  - user-applications.md

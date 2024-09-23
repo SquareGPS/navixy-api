@@ -7,9 +7,8 @@ description: Contains history entry object description and API calls to interact
 
 Contains history entry object description and API calls to interact with it.
 
-Find instructions on getting notifications [here](../../../how-to/how-to-work-with-notifications.md).
+Find instructions on getting notifications [here](../../../guides/rules-notifications/work-with-notifications.md).
 
-***
 
 ## Tracker history entry
 
@@ -46,48 +45,53 @@ Find instructions on getting notifications [here](../../../how-to/how-to-work-wi
 ```
 
 * `id` - long. An ID of event.
-* `type` - [enum](../../../getting-started.md#data-types). Type of device. Can be "socket", "tracker", or "camera".
+* `type` - [enum](../../../getting-started/introduction.md#data-types). Type of device. Can be "socket", "tracker", or "camera".
 * `is_read` - boolean. If `true` the notification seen by user and marked as read.
 * `message` - string. Notification message.
-* `time` - [date/time](../../../getting-started.md#data-types). When this notification received.
-* `event` - [enum](../../../getting-started.md#data-types). Type of history event extension. Available event types can be obtained by [/history/type/list](./history_type.md#list) action.
+* `time` - [date/time](../../../getting-started/introduction.md#data-types). When this notification received.
+* `event` - [enum](../../../getting-started/introduction.md#data-types). Type of history event extension. Available event types can be obtained by [/history/type/list](./history_type.md#list) action.
 * `tracker_id` - int. An ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.
-* `rule_id` - int. An ID of assigned rule.
+* `rule_id` - optional int. An ID of assigned rule.
 * `track_id` - int. An ID of a track on which the event happened.
 * `location` - location object. Location where the event happened.
 * `address` - string. Address of location or `""` (empty string) if no address for location.
 * `extra` - object. Extra fields for events. Like for what task or tracker the event was.
-    * `task_id` - int. Related task identifier.
-    * `parent_task_id` - int. Related parent task identifier (for task checkpoint related history entries).
-    * `counter_id` - int. Related counter identifier.
-    * `service_task_id` - int. Related service task ID.
-    * `checkin_id` - int. Related check-in marker.
-    * `place_ids` - int. Related place identifiers.
-    * `last_known_location` - boolean. `true` if location may be outdated.
-    * `tracker_label` - string. Tracker label.
-    * `emergency` - boolean. `true` for emergency events with the same flag in a rule.
-    * `employee_id` - int. Driver ID at the time of the event.
+    * `task_id` - optional int. Related task identifier.
+    * `parent_task_id` - optional int. Related parent task identifier (for task checkpoint related history entries).
+    * `counter_id` - optional int. Related counter identifier.
+    * `service_task_id` - optional int. Related service task ID.
+    * `checkin_id` - optional int. Related check-in marker.
+    * `place_ids` - optional int. Related place identifiers.
+    * `last_known_location` - optional boolean. `true` if location may be outdated.
+    * `tracker_label` - optional string. Tracker label.
+    * `emergency` - optional boolean. `true` for emergency events with the same flag in a rule.
+    * `zone_ids` - optional array of integers. Related geofence IDs.
+    * `zone_labels` - optional array of strings. Related geofence labels.
+    * `proximity_object_id` - optional int. Proximity tracker ID.
+    * `employee_id` - optional int. Driver ID at the time of the event.
+    * `sensor_id` - optional int. Related sensor ID.
+    * `sensor_name` - optional string. Related sensor name.
+    * `sensor_calculated_value` - optional string. Related sensor value.
 
-Date/time type described in [data types description section](../../../getting-started.md#data-types).
+Date/time type described in [data types description section](../../../getting-started/introduction.md#data-types).
 
-***
 
 ## API actions
 
 API path: `/history`.
 
-### read
+### `read`
 
 Returns history entry with the specified ID.
 
-#### parameters
+#### Parameters
 
 | name              | description                                                 | type    | 
 |:------------------|:------------------------------------------------------------|:--------|
 | id                | [History entry](#tracker-history-entry) ID.                 | long    |
 | add_tracker_label | Optional. If `true` tracker label will be added to message. | boolean |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -103,7 +107,7 @@ Returns history entry with the specified ID.
     {{ extra.api_example_url }}/history/read?hash=a6aa75587e5c59c32d347da438505fc3&id=11231&add_tracker_label=true
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -140,23 +144,22 @@ Returns history entry with the specified ID.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when there are no history entries with that ID.
 
-***
 
-### mark_read
+### `mark_read`
 
 Marks history entry as read by `id` (see: [Tracker history entry](#tracker-history-entry)).
 
-#### parameters
+#### Parameters
 
 | name | description                                        | type | 
 |:-----|:---------------------------------------------------|:-----|
 | id   | [Tracker history entry](#tracker-history-entry) ID | long |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -172,27 +175,26 @@ Marks history entry as read by `id` (see: [Tracker history entry](#tracker-histo
     {{ extra.api_example_url }}/history/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&id=11231
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when there are no history entries with that ID.
 
-***
 
-### mark_read_all
+### `mark_read_all`
 
 Marks all the user's history entries read.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -208,13 +210,13 @@ Only API key `hash`.
     {{ extra.api_example_url }}/history/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.
     

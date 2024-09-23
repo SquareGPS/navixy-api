@@ -7,7 +7,6 @@ description: Navixy platform tracks changes to task fields and state for your co
 
 Our platform tracks changes to task fields and state for your convenience. Contains API calls to get this information.
 
-***
 
 ## History entry
 
@@ -27,27 +26,26 @@ Our platform tracks changes to task fields and state for your convenience. Conta
 * `id` - int. Entry ID.
 * `user_id` - int. User ID.
 * `task_id` - int. An ID of the task with which this entry associated.
-* `event_date` - [date/time](../../../getting-started.md#data-types). Date when history event happened.
-* `operation` - [enum](../../../getting-started.md#data-types). Operation which happened. Can be "create", "update", "assign" or "status_change".
+* `event_date` - [date/time](../../../getting-started/introduction.md#data-types). Date when history event happened.
+* `operation` - [enum](../../../getting-started/introduction.md#data-types). Operation which happened. Can be "create", "update", "assign" or "status_change".
 * `payload` - depends on operation. Typically, contains fields which were changed during operation.
 
-***
 
 ## API actions
 
 API base path: `task/history`.
 
-### list
+### `list`
 
 Returns history for the task with the specified ID.
 
-#### parameters
+#### Parameters
 
 | name    | description     | type | 
 |:--------|:----------------|:-----|
 | task_id | ID of the task. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -63,7 +61,7 @@ Returns history for the task with the specified ID.
     {{ extra.api_example_url }}/task/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=23144
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -81,6 +79,6 @@ Returns history for the task with the specified ID.
 }
 ```
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.

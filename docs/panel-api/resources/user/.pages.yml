@@ -1,4 +1,5 @@
 title: User
 nav:
-  - mfa
-  - index.md
+  - User actions: index.md
+  - User menu: menu
+  - User authentication: mfa

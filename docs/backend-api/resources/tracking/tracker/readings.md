@@ -6,19 +6,18 @@ description: API call to get last values for all metering sensors and state valu
 
 API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel. 
 
-Described getting data from sensors in our [guides](../../../how-to/getting-measurements-and-counters-from-devices.md). 
+Described getting data from sensors in our [guides](../../../guides/data-retrieval/sensor-data.md). 
 
-***
 
 ## API actions
 
 API base path: `/tracker/readings`.
 
-### list
+### `list`
 
 Gets last values for all metering sensors, state values and counters.
 
-#### parameters
+#### Parameters
 
 | name               | description                                                                                        | type                                                                                                                                                     | format |
 |:-------------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:-------|
@@ -26,7 +25,7 @@ Gets last values for all metering sensors, state values and counters.
 | sensor_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](./sensor/index.md#metering-sensor-type-values) or [virtual sensor type](./sensor/index.md#virtual-sensor-type-values) | "fuel" |
 | include_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                  | true   |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -42,7 +41,7 @@ Gets last values for all metering sensors, state values and counters.
     {{ extra.api_example_url }}/tracker/readings/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -111,16 +110,16 @@ Gets last values for all metering sensors, state values and counters.
     * `value` - float. The value of the counter.
     * `update_time` - date/time. The time when the counter value was updated.
 
-#### errors
+#### Errors
 
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-### batch_list
+### `batch_list`
 
 Gets last values for all metering sensors, state values and counters on multiple trackers.
 
-#### parameters
+#### Parameters
 
 | name               | description                                                                                        | type                                                                                                                                                     | format          |
 |:-------------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|
@@ -128,7 +127,7 @@ Gets last values for all metering sensors, state values and counters on multiple
 | sensor_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](./sensor/index.md#metering-sensor-type-values) or [virtual sensor type](./sensor/index.md#virtual-sensor-type-values) | "fuel"          |
 | include_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                  | true            |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -144,7 +143,7 @@ Gets last values for all metering sensors, state values and counters on multiple
     {{ extra.api_example_url }}/tracker/readings/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[10181215,10038816]
     ```
 
-#### response
+#### Response
 
 ```json
 
@@ -260,6 +259,6 @@ Gets last values for all metering sensors, state values and counters on multiple
     * `value` - float. The value of the counter.
     * `update_time` - date/time. The time when the counter value was updated.
 
-#### errors
+#### Errors
 
 * 217 - List contains nonexistent entities.

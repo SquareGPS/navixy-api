@@ -7,13 +7,12 @@ description: Contains an API call to get information about all supported timezon
 
 Contains an API call to get information about all supported timezones.
 
-***
 
 ## API actions
 
 API path: `/timezone`.
 
-### list
+### `list`
 
 Information about all supported timezones for the specified locale. Does not require user authorization.
 
@@ -21,9 +20,9 @@ Information about all supported timezones for the specified locale. Does not req
 
 | name   | description     | type                                        |
 |:-------|:----------------|:--------------------------------------------|
-| locale | Name of locale. | [enum](../../getting-started.md#data-types) |
+| locale | Name of locale. | [enum](../../getting-started/introduction.md#data-types) |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -33,7 +32,7 @@ Information about all supported timezones for the specified locale. Does not req
         -d '{"locale": "En-en"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -56,6 +55,6 @@ Information about all supported timezones for the specified locale. Does not req
 * `country_code` - string. ISO country code for the timezone.
 * `alt_ids` - string array. List of strings, optional, alternative timezone IDs.
 
-#### errors
+#### Errors
 
-* [General](../../getting-started.md#error-codes) types only.
+* [General](../../getting-started/errors.md#error-codes) types only.

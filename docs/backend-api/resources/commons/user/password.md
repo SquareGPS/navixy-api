@@ -8,26 +8,25 @@ description: Contains API calls to change and set users' passwords.
 Contains API calls to change and set users' passwords.
 
 
-***
 
 ## API actions
 
 API path: `/user/password`.
 
-### change
+### `change`
 
 Changes password of user with the provided session hash (it is contained in a password restore link from email sent to
  user by user/restore_password).
 
 !!! note "This call will receive only session hash from a password restore email. Any other hash will result in result  error code 4 (User or API key not found or session ended)."
 
-#### parameters
+#### Parameters
 
 | name     | description                                              | type   |
 |:---------|:---------------------------------------------------------|:-------|
 | password | New password for the user. 6 to 20 printable characters. | string |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -37,31 +36,30 @@ Changes password of user with the provided session hash (it is contained in a pa
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "password": "12@14Y$"}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 101 – In demo mode this function disabled - if specified session hash belongs to demo user.
 
-***
 
-### set
+### `set`
 
 Changes password for login user.
 Works only with standard user session (not with API key).
 
-#### parameters
+#### Parameters
 
 | name         | description                                              | type   |
 |:-------------|:---------------------------------------------------------|:-------|
 | old_password | Current password of the user.                            | string |
 | new_password | New password for the user. 6 to 20 printable characters. | string |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -71,13 +69,13 @@ Works only with standard user session (not with API key).
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "old_password": "qwert1", "new_password": "12@14Y$"}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 101 – In demo mode this function disabled - if specified session hash belongs to demo user.
 * 245 – New password must be different - if `old_password` = `new_password`.

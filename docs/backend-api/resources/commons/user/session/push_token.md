@@ -7,28 +7,27 @@ description: Contains API calls to interact with push token.
 
 Contains API calls to interact with push token. 
 
-Find information about push token usage in our [instructions](../../../../how-to/getting-pushes.md).
+Find information about push token usage in our [instructions](../../../../guides/rules-notifications/get-push-notifications.md).
 
-***
 
 ## API actions
 
 API path: `/user/session/push_token`.
 
-### bind
+### `bind`
 
 Binds Push token with a current session.
 
-#### parameters
+#### Parameters
 
 | name            | description                                                                                                                              | type                                              |
 |:----------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------|
-| application     | Application ID, "navixy_iphone_viewer" or "navixy_android_viewer" or "w3c_pushapi".                                                      | [enum](../../../../getting-started.md#data-types) |
+| application     | Application ID, "navixy_iphone_viewer" or "navixy_android_viewer" or "w3c_pushapi".                                                      | [enum](../../../../getting-started/introduction.md#data-types) |
 | token           | Push token or endpoint from pushSubscription, full URL like https://fcm.googleapis.com/fcm/send/f6kicrBn7S0:APA91b if your app ID is " " | string                                            |
 | parameters      | Should be used only with object with "w3c_pushapi". Contain keys from pushSubscription {"p256dh": "...", "auth":"..."}                   | JSON object                                       |
 | category_filter | Optional. Push notifications category filter, default is `*`.                                                                            | string                                            |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -38,7 +37,7 @@ Binds Push token with a current session.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "application": "navixy_android_viewer", "token": "f4be7b9d04da2ce1af111b"}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
@@ -61,21 +60,20 @@ Prepended with minus and delimited with comma list means that all categories all
 * `history_service_task` – service task notifications.
 * `history_work_status` – work status notifications.
 
-#### errors
+#### Errors
 
-* [General](../../../../getting-started.md#error-codes) types only.
+* [General](../../../../getting-started/errors.md#error-codes) types only.
 
-***
 
-### delete
+### `delete`
 
 Deletes push token bound with the session.
 
-#### parameters
+#### Parameters
 
 Only session `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -91,13 +89,13 @@ Only session `hash`.
     {{ extra.api_example_url }}/user/session/push_token/delete?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
-[General](../../../../getting-started.md#error-codes) types only.
+[General](../../../../getting-started/errors.md#error-codes) types only.
 

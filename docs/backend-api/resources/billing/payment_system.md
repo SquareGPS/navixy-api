@@ -7,7 +7,6 @@ description: Payment system settings object and API calls for working with payme
 
 Payment system settings object and API calls for working with payment systems and make payments.
 
-***
 
 ## Payment system settings object
 
@@ -38,19 +37,18 @@ Payment system settings object and API calls for working with payment systems an
 * `methods` - optional string array. List of available payment methods (it may be empty).
 * `prices` - optional object with prices. For type == `ios_inapp` only.
 
-***
 
 ## API actions
 
 API path: `/payment_system`.
 
-### list
+### `list`
 
 Returns list of payment systems available for specified user.
 
 **required sub-user rights:** `payment_create`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -66,7 +64,7 @@ Returns list of payment systems available for specified user.
     {{ extra.api_example_url }}/payment_system/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -79,19 +77,18 @@ Returns list of payment systems available for specified user.
 
 * `list` - array of objects. List of [payment system objects](#payment-system-settings-object).
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database.
 
-***
 
-### estimate/get
+### `estimate/get`
 
 Returns the estimate of the monthly payment amount
 
 **required sub-user rights**: `payment_create`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -107,7 +104,7 @@ Returns the estimate of the monthly payment amount
     {{ extra.api_example_url }}/payment_system/estimate/get?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {

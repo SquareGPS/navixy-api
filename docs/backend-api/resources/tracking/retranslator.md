@@ -8,7 +8,6 @@ description: Retranslator
 Retranslator and retranslator protocol objects and CRUD actions for retranslators. They can be used to redirect the data
 that comes from a device to the platform to some third-party application specified by the user.
 
-***
 
 ## Retranslator protocol object
  
@@ -32,7 +31,6 @@ that comes from a device to the platform to some third-party application specifi
 * `required_login` - boolean. `true` if for this protocol login required.
 * `required_password` - boolean. `true` if for this protocol password required.
 
-***
 
 ## Retranslator object
 
@@ -58,25 +56,24 @@ that comes from a device to the platform to some third-party application specifi
 * `password` - optional string.
 * `enabled` - boolean. Status.
 
-***
 
 ## API actions
 
 API path: `/retranslator`.
 
-### create
+### `create`
 
 Creates new retranslator.
 
 **required sub-user rights**: `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name         | description                             | type        |
 |:-------------|:----------------------------------------|:------------|
 | retranslator | Retranslator object without `id` field. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -86,7 +83,7 @@ Creates new retranslator.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -97,27 +94,26 @@ Creates new retranslator.
 
 * `id` - int. ID of the created retranslator.
 
-#### errors
+#### Errors
 
 * 247 - Entity already exists - if retranslator with this address, port and login already exists.
 * 7 - Invalid parameters - if retranslator have required fields (login or password), but was send empty.
 * 268 - Over quota – if the user's quota for retranslators exceeded.
 
-***
 
-### delete
+### `delete`
 
 Deletes user's retranslator with specified `retranslator_id`.
 
 **required sub-user rights**: `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name            | description                                  | type | format |
 |:----------------|:---------------------------------------------|:-----|:-------|
 | retranslator_id | ID of the retranslator that will be deleted. | int  | 123456 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -133,23 +129,22 @@ Deletes user's retranslator with specified `retranslator_id`.
     {{ extra.api_example_url }}/retranslator/delete?hash=a6aa75587e5c59c32d347da438505fc3&retranslator_id=123456
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database.
 
-***
 
-### list
+### `list`
 
 Get all users' retranslators.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -165,7 +160,7 @@ Get all users' retranslators.
     {{ extra.api_example_url }}/retranslator/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
     
-#### response
+#### Response
 
 ```json
 {
@@ -192,22 +187,21 @@ Get all users' retranslators.
 * `password` - optional string.
 * `enabled` - boolean. Status.
 
-***
 
-### update
+### `update`
 
 Updates retranslator parameters for the specified retranslator. Note that retranslator must exist, and must belong to 
 the current user.
 
 **required sub-user rights**: `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name         | description                             | type        |
 |:-------------|:----------------------------------------|:------------|
 | retranslator | Retranslator object without `id` field. | JSON object |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -217,28 +211,27 @@ the current user.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
     ```
 
-#### response
+#### Response
 
 ```json
 { "success": true }
 ```
 
-#### errors
+#### Errors
 
 * 201 - Not found in the database – if retranslator with the specified ID cannot be found or belongs to another user.
 * 247 - Entity already exists – if retranslator with this address, port and login already exists.
 
-***
 
-### protocols list
+### `protocol/list`
 
 Returns all available retranslator protocols.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -254,7 +247,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/retranslator/protocol/list?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {

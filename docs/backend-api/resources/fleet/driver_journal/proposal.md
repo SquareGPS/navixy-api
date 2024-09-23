@@ -8,22 +8,21 @@ description: Contains API call to get the list of driver journal proposal.
 Contains API call to get the list of driver journal proposal. Proposal objects - trips per specified period that could be
 used for driver journal entry creation.
 
-To get information on how-to work with driver journals refer to our [instructions](../../../how-to/driver-journals-usage.md).
+To get information on how-to work with driver journals refer to our [instructions](../../../guides/fleet-management/driver-journals.md).
 
-***
 
 ## API actions
 
 API path: `/driver/journal/proposal`.
 
-### list
+### `list`
 
 Gets proposal trips that could be used for driver journal entry creation. 
 Proposal objects  created by a track's division by driver changes. 
 If there was no driver change on the track, then the track will be returned entirely. 
 Tracks selected by intersecting their date range with date range from request (`from` and `to` parameters).
 
-#### parameters
+#### Parameters
 
 | name       | description                                  | type   |
 |:-----------|:---------------------------------------------|:-------|
@@ -31,7 +30,7 @@ Tracks selected by intersecting their date range with date range from request (`
 | to         | Include tracks which start before this date. | string |
 | tracker_id | ID of the tracker.                           | int    |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -41,7 +40,7 @@ Tracks selected by intersecting their date range with date range from request (`
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "from": "2020-10-13 00:00:00", "to": "2020-10-14 00:00:00"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -71,8 +70,8 @@ Tracks selected by intersecting their date range with date range from request (`
 
 * `tracker_id` - int. An ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. 
 * `employee_id` - nullable int. An ID of employee (driver).
-* `start_date` - [date/time](../../../getting-started.md#data-types). Start date of a journal entry.
-* `end_date` - [date/time](../../../getting-started.md#data-types). End date of a journal entry.
+* `start_date` - [date/time](../../../getting-started/introduction.md#data-types). Start date of a journal entry.
+* `end_date` - [date/time](../../../getting-started/introduction.md#data-types). End date of a journal entry.
 * `start_location` - location object. Where entry starts.
 * `end_location` - location object. Where entry ends.
 * `length` - float. Length of the trip km.
@@ -80,6 +79,6 @@ Tracks selected by intersecting their date range with date range from request (`
 * `end_odometer` - nullable float. Odometer's value at the end.
 * `overlapped` - boolean. `true` if there is already driver journal entry with date range which is intersecting this proposal object's date range.
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.

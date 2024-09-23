@@ -7,21 +7,20 @@ description: Contains an API call to get user's file statistic.
 
 Contains an API call to get user's file statistic.
 
-***
 
 ## API actions
 
 API path: `/file`.
 
-### stats/read
+### `stats/read`
 
 Gets user's files statistic.
 
-#### parameters
+#### Parameters
 
 Only API key `hash`.
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -37,7 +36,7 @@ Only API key `hash`.
     {{ extra.api_example_url }}/file/stats/read?hash=a6aa75587e5c59c32d347da438505fc3
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -54,6 +53,6 @@ Only API key `hash`.
 * `total_size` - int. Total files size in bytes.
 * `quota` - int. Space available to the user in bytes.
 
-#### errors
+#### Errors
 
-* [General](../../getting-started.md#error-codes) types only.
+* [General](../../getting-started/errors.md#error-codes) types only.

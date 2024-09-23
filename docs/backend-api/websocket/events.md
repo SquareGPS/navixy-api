@@ -8,11 +8,10 @@ description: Information about WebSocket events with conditions for obtaining an
 The server sends an `event message` through the WebSocket channel when an event occurs and client has subscription on this. 
 All event messages contain the next fields:
 
-* `type` - [enum](../getting-started.md#data-types). "event".
-* `event` - [enum](../getting-started.md#data-types). Can be "state", "state_batch", "lifecycle", or "logout".
+* `type` - [enum](../getting-started/introduction.md#data-types). "event".
+* `event` - [enum](../getting-started/introduction.md#data-types). Can be "state", "state_batch", "lifecycle", or "logout".
 * `data` - optional object. Specific event payload. 
 
-***
 
 ## State event
 
@@ -30,8 +29,8 @@ Message fields:
 * `type` - "event".
 * `event` - "state".
 * `data` - depends on `format` request parameter:
-  * "full" - [source state](../resources/tracking/tracker/index.md#get_state).
-  * "compact" - [compact source state](#compact-source-state).
+    * "full" - [source state](../resources/tracking/tracker/index.md#get_state).
+    * "compact" - [compact source state](#compact-source-state).
 * `user_time` - current time in user's timezone.
 
 Message sample:
@@ -71,7 +70,6 @@ Message sample:
 
 !!! note "`source_id` is not a `tracker_id`."
 
-***
 
 ## State batch event
 
@@ -86,8 +84,8 @@ Message fields:
 * `type` - "event".
 * `event` - "state".
 * `data` - depends on `format` request parameter:
-  * "full" - [source state](../resources/tracking/tracker/index.md#get_state) array.
-  * "compact" - [compact source state](#compact-source-state) array.
+    * "full" - [source state](../resources/tracking/tracker/index.md#get_state) array.
+    * "compact" - [compact source state](#compact-source-state) array.
 * `user_time` - current time in user's timezone.
 
 Message sample:
@@ -129,7 +127,6 @@ Message sample:
 
 !!! note "`source_id` is not a `tracker_id`."
 
-***
 
 ### Compact source state
 
@@ -156,7 +153,6 @@ Sample:
 }
 ```
 
-***
 
 ## Lifecycle event
 
@@ -188,7 +184,6 @@ Message sample:
 }
 ```
 
-***
 
 ## Logout event
 

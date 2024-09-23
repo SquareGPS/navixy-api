@@ -7,13 +7,12 @@ description: API calls to get delivery states and tasks by IDs.
 
 API calls to get delivery states and tasks by IDs.
 
-***
 
 ## API actions
 
 API base path: `/delivery`.
 
-### read
+### `read`
 
 Returns info sufficient for tracking certain task state, and the tracker assigned to it.
 Search conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:
@@ -24,13 +23,13 @@ If multiple tasks or checkpoints found, then return first task, otherwise checkp
 
 In addition to standard user session, this call supports special *DELIVERY* session type.
 
-#### parameters
+#### Parameters
 
 | name        | description             | type | format |
 |-------------|-------------------------|------|--------|
 | external_id | An external ID of task. | int  | 259876 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -46,7 +45,7 @@ In addition to standard user session, this call supports special *DELIVERY* sess
     {{ extra.api_example_url }}/delivery/read?hash=a6aa75587e5c59c32d347da438505fc3&external_id=259876
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -76,13 +75,12 @@ object structure.
 * `vehicle_label` - string. A label of the vehicle assigned to the task, or null if missing.
 * `estimated_time` - int. Estimated time of arrival in seconds, or null if unavailable.
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when there is no task or checkpoint with specified conditions.
 
-***
 
-### list
+### `list`
 
 External_id can be repeated, so this request will return all matching delivery. Returns info sufficient for tracking 
 certain task state, and the tracker assigned to it. 
@@ -93,13 +91,13 @@ arrived, assigned or delayed.
 
 in addition to standard user session, this call supports special *DELIVERY* session type.
 
-#### parameters
+#### Parameters
 
 | name        | description             | type | format |
 |:------------|:------------------------|:-----|:-------|
 | external_id | An external ID of task. | int  | 259876 |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -115,7 +113,7 @@ in addition to standard user session, this call supports special *DELIVERY* sess
     {{ extra.api_example_url }}/delivery/list?hash=a6aa75587e5c59c32d347da438505fc3&external_id=259876
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -193,6 +191,6 @@ structure.
 * `restrictions` - tariff restrictions object, for more info see 
 [user/get_tariff_restrictions](../../resources/commons/user/index.md#get_tariff_restrictions).
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database - when there is no task or checkpoint with specified conditions.

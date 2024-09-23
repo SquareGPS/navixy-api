@@ -34,7 +34,6 @@ values and its "parent" in template form.
 * `required` - boolean. If `true`, form cannot be submitted without filling this field with valid value.
 * `type` - string. Determines field type.
 
-***
 
 ### Text field
 
@@ -68,7 +67,6 @@ Multiline auto-expanding text field.
 
 * `value` - string. What was entered the text field.
 
-***
 
 ### Checkbox group
 
@@ -105,7 +103,6 @@ Group of checkboxes.
 
 * `values` - array of boolean. They are in the same order as fields in `group`.
 
-***
 
 ### Dropdown field
 
@@ -139,7 +136,6 @@ Dropdown menu for choosing one option.
 
 * `value_index` - int. Zero-based index of value from "options".
 
-***
 
 ### Radio button group
 
@@ -173,7 +169,6 @@ A group of radio buttons. Only one option is selectable.
 
 * `value_index` - int. Zero-based index of value from "options".
 
-***
 
 ### Date picker
 
@@ -202,9 +197,8 @@ A date picker.
 }
 ```
 
-* `value` - [date/time](../../../getting-started.md#data-types).
+* `value` - [date/time](../../../getting-started/introduction.md#data-types).
 
-***
 
 ### Rating
 
@@ -233,7 +227,6 @@ Rating with "stars". Zero stars not allowed.
 
 * `value` - int. Number of stars selected. Cannot be more than `max_stars`.
 
-***
 
 ### File
 
@@ -253,7 +246,7 @@ File attachment. For example, document or spreadsheet.
 
 * `max_file_size` - int. Max file size, bytes, no more than 16 Mb.
 * `min_file_size` - int. Minimum file size, bytes.
-* `allowed_extensions` - [enum](../../../getting-started.md#data-types) array. List of allowed file extensions, up to 16 items, cannot be empty, but can
+* `allowed_extensions` - [enum](../../../getting-started/introduction.md#data-types) array. List of allowed file extensions, up to 16 items, cannot be empty, but can
  be null, which means "no extension limits".
 
 ##### value object:
@@ -268,7 +261,6 @@ File attachment. For example, document or spreadsheet.
 * `file_ids` - int array. IDs of the file which should be attached to this form field as value. Files must be 
 uploaded before form submission.
 
-***
 
 ### Photo
 
@@ -298,7 +290,6 @@ Photograph attachment.
 * `file_ids` - int array. IDs of the files which should be attached to this form field as value. Files must be
  uploaded before form submission. Only image files allowed.
 
-***
 
 ### Signature
 
@@ -322,7 +313,6 @@ A small image of customer's signature (usually obtained via writing on screen wi
 * `file_id` - int. An ID of the file which should be attached to this form field as value. File must be uploaded
  before form submission.
 
-***
 
 ### Separator
 

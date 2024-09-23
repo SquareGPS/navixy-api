@@ -7,24 +7,23 @@ description: Contains list method to get event types available to user with loca
 
 Contains list method to get event types available to user with localized descriptions.
 
-***
 
 ## API actions
 
 API path: `/history/type`.
 
-### list
+### `list`
 
 Returns available history event types with localized descriptions.
 
-#### parameters
+#### Parameters
 
 | name                | description                                                                  | type                                           |
 |:--------------------|:-----------------------------------------------------------------------------|:-----------------------------------------------|
-| locale              | Locale code to set language of descriptions.                                 | [enum](../../../getting-started.md#data-types) |
+| locale              | Locale code to set language of descriptions.                                 | [enum](../../../getting-started/introduction.md#data-types) |
 | only_tracker_events | Optional. Default is `true`. Will return only tracker type events if `true`. | boolean                                        |
 
-#### example
+#### Example
 
 === "cURL"
 
@@ -34,7 +33,7 @@ Returns available history event types with localized descriptions.
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "locale": "En-en"}'
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -49,6 +48,6 @@ Returns available history event types with localized descriptions.
 * `type` - string. History event type.
 * `description` - string. Localized description.
 
-#### errors
+#### Errors
 
-* [General](../../../getting-started.md#error-codes) types only.
+* [General](../../../getting-started/errors.md#error-codes) types only.

@@ -7,27 +7,26 @@ description: Contains API calls to control which tracker is available to which s
 
 Contains API calls to control which tracker is available to which sub-user.
 
-***
 
 ## API actions
 
 API path: `/subuser/tracker`.
 
-### bind
+### `bind`
 
 Gives access for sub-user to the specified trackers.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                                    | type      |
 |:-----------|:---------------------------------------------------------------------------------------------------------------|:----------|
 | subuser_id | ID of the sub-user belonging to current account.                                                               | int       |
 | trackers   | List of tracker IDs to associate with the specified sub-user. All trackers must belong to current master user. | int array |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -43,7 +42,7 @@ Gives access for sub-user to the specified trackers.
     {{ extra.api_example_url }}/subuser/tracker/bind?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951&trackers=[127830]
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -51,29 +50,28 @@ Gives access for sub-user to the specified trackers.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 * 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 * 262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker IDs don't exist.
 
-***
 
-### list
+### `list`
 
 Gets a list of tracker IDs to which this sub-user has access.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name       | description                                      | type |
 |:-----------|:-------------------------------------------------|:-----|
 | subuser_id | ID of the sub-user belonging to current account. | int  |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -89,7 +87,7 @@ Gets a list of tracker IDs to which this sub-user has access.
     {{ extra.api_example_url }}/subuser/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -100,29 +98,28 @@ Gets a list of tracker IDs to which this sub-user has access.
 
 * `list` - int array. List of tracker IDs to which this sub-user has access.
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 * 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 
-***
 
-### unbind
+### `unbind`
 
 Disables access for sub-user to the specified trackers.
 
 **required tariff features:** `multilevel_access` – for ALL trackers.
 **required sub-user rights:** `admin` (available only to master users).
 
-#### parameters
+#### Parameters
 
 | name       | description                                                                                                    | type      |
 |:-----------|:---------------------------------------------------------------------------------------------------------------|:----------|
 | subuser_id | ID of the sub-user belonging to current account.                                                               | int       |
 | trackers   | List of tracker IDs to associate with the specified sub-user. All trackers must belong to current master user. | int array |
 
-#### examples
+#### Examples
 
 === "cURL"
 
@@ -138,7 +135,7 @@ Disables access for sub-user to the specified trackers.
     {{ extra.api_example_url }}/subuser/tracker/unbind?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951&trackers=[127830]
     ```
 
-#### response
+#### Response
 
 ```json
 {
@@ -146,7 +143,7 @@ Disables access for sub-user to the specified trackers.
 }
 ```
 
-#### errors
+#### Errors
 
 * 13 – Operation not permitted – if user has insufficient rights.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
