@@ -157,7 +157,7 @@ Available only to master users.
 
 ### `auth`
 
-Tries to authenticate user and get hash.
+Tries to authenticate the user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
@@ -183,14 +183,35 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
 #### Response
 
-```json
-{
-    "success": true,
-    "hash": "22eac1c27af4be7b9d04da2ce1af111b"
-}
-```
+=== "Default"
 
-* `hash` - string. Session hash.
+    ```json
+    {
+        "success": true,
+        "type": "authenticated",
+        "hash": "22eac1c27af4be7b9d04da2ce1af111b"
+    }
+    ```
+
+    * `type` - [enum](../../../getting-started/introduction.md#data-types). Always `authenticated`. 
+    * `hash` - string. Session hash.
+
+=== "With 2FA enabled"
+
+    ```json
+    {
+        "success": true,
+        "type": "second_factor_required",
+        "factor_type": "email",
+        "hash": "22eac1c27af4be7b9d04da2ce1af111b"
+    }
+    ```
+
+    * `type` - [enum](../../../getting-started/introduction.md#data-types). Always `second_factor_required`.
+    * `factor_type` - [enum](../../../getting-started/introduction.md#data-types).
+    Which type of the second factor is used.
+    Only `email` is available at the moment.
+    * `hash` - string. Session hash. Can be used only for [authentication code](./auth/code.md) actions
 
 #### Errors
 
