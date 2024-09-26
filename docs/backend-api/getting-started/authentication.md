@@ -12,6 +12,8 @@ Unlike a user's session hash, the API key has the following characteristics:
 - It can be deleted at any time if there is a suspicion of compromise.
 - You can create a separate key for each individual integration.
 
+Every user account may have up to 20 API keys. Sub-users don't have API keys functionality.
+
 Follow these steps to obtain the API key.
 
 ## Ways to Obtain an API Key Hash
