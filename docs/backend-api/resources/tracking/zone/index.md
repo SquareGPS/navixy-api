@@ -149,9 +149,9 @@ Convert batch of tab-delimited circle geofences and return list of checked geofe
 If 'file_id' is set – 'batch' parameter will be ignored.
 
 For `batch` parameter:
-* address - required if no coordinates specified.
-* lat - required if no address specified.
-* long - required if no address specified.
+* address - required if `coordinates` are not specified.
+* lat - required if `address` is not specified.
+* lng - required if `address` is not specified.
 
 #### Example
 
@@ -202,7 +202,7 @@ For `batch` parameter:
 * `address` - string. Geofence address.
 * `color` - string. Geofence color in 3-byte RGB hex format.
 * `radius` - int. Circle radius in meters.
-* `center` - location object. Location of circle center.
+* `center` - location object. Location of the circle center.
 * `bounds` - object. North-west and south-east coordinates of the axis-aligned minimum bounding box.
 * `tags` - int array. Array of tag IDs.
 * `limit_exceeded` - boolean. `true` if given batch constrained by limit.
@@ -236,7 +236,7 @@ For `batch` parameter:
 }
 ```
 
-* `errors` - optional object. It appears if parameters incorrect.
+* `errors` - optional object. It appears if parameters are incorrect.
     * `parameter` - string. Parameter name.
     * `error` - string. Error description.
 
@@ -283,10 +283,11 @@ Creates a new geofence.
 
 #### Errors
 
-* 202 - Too many points in a geofence – max allowed points count for a geofence is 100 for a polygon or 1024 for sausage.
+* 202 - Too many points in a geofence – max allowed count of points for a geofence is 500 for a polygon or 1024 for sausage.
 * 230 - Not supported for this entity type – if "points" were specified, but geofence cannot have any points associated with
- it (e.g. if geofence is circle).
+  it (e.g. if geofence is circle).
 * 268 - Over quota –  if the user's quota for geofences exceeded.
+* 284 - Not enough points for the zone. The minimum number of points for polygon: 3; the minimum for sausage: 2.
 
 
 ### `delete`
@@ -498,7 +499,7 @@ Gets all geofence IDs and names within which a specified coordinates are located
 ### `update`
 
 Update geofence parameters for the specified geofence. Note that geofence must exist, must belong to the current user, and its 
-type cannot be changed. E.g. if you already have a geofence with ID=1 which type is "circle", not possible to submit a geofence 
+type cannot be changed. E.g., if you already have a geofence with ID=1 which type is "circle", not possible to submit a geofence 
 which type is "polygon".
 
 **required sub-user rights**: `zone_update`.
@@ -530,14 +531,14 @@ which type is "polygon".
 
 #### Errors
 
-* 201 - Not found in the database – if geofence with the specified ID cannot be found or belongs to another user.
-* 231 - Entity type mismatch – if type of the submitted geofence differs from type of the geofence currently stored in the 
-database.
+* 201 - Not found in the database: if the geofence with specified ID cannot be found or belongs to another user.
+* 231 - Entity type mismatch: if the type of submitted geofence differs from the type of geofence currently stored in the 
+  database.
 
 
 ### `upload`
 
-Import geofences from KML file.
+Import geofences from a KML file.
 
 **required sub-user rights**: `zone_update`.
 
@@ -605,10 +606,11 @@ if `dry_run=false`:
 
 #### Errors
 
-* 202 - Too many points in a geofence – max allowed points count for a geofence is 100 for a polygon or 1024 for sausage.
+* 202 - Too many points in a geofence – max allowed count of points for a geofence is 500 for a polygon or 1024 for sausage.
 * 233 - No data file – if file part is missing.
 * 234 - Invalid data format.
 * 268 - Over quota – if the user's quota for geofences exceeded.
+* 284 - Not enough points for the zone. The minimum number of points for polygon: 3; the minimum for sausage: 2.
 
 
 From `Placemark` with `Point` geometry will be created circle geofence with a radius=default_radius.
@@ -654,7 +656,7 @@ From `Placemark` with `LineString` geometry will be created route geofence with 
 
 
 From `Placemark` with `Polygon` geometry will be created polygon geofence.
-Polygons with holes not supported. In that case only the outer boundary will be imported and the inner boundary, holes, 
+Polygons with holes are not supported. In that case, only the outer boundary will be imported and the inner boundary, holes, 
 ignored.
 
 ```xml

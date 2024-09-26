@@ -157,7 +157,7 @@ Available only to master users.
 
 ### `auth`
 
-Tries to authenticate user and get hash.
+Tries to authenticate the user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 

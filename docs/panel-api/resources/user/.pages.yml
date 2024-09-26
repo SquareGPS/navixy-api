@@ -2,4 +2,4 @@ title: User
 nav:
   - User actions: index.md
   - User menu: menu
-  - mfa
+  - User authentication: mfa
