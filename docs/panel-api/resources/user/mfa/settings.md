@@ -8,47 +8,6 @@
 
 API path: `panel/user/mfa/settings`.
 
-### read
-
-Reads user's MFA settings.
-
-*required permissions*: `users: "read"`.
-
-#### parameters
-
-| name    | description   | type |
-|:--------|:--------------|:-----|
-| user_id | ID of a user. | int  |
-
-#### example
-
-=== "cURL"
-
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/read' \
-        -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
-        -H 'Content-Type: application/json' \
-        -d '{ "user_id": 231432 }'
-    ```
-
-#### response
-
-```json
-{
-  "success": true,
-  "value": {
-    "type": "allowed",
-    "factor_types": ["email"]
-  }
-}
-```
-
-* `value` - optional [MFA settings](#mfa-settings).
-
-#### errors
-
-* 201 – Not found in the database — if the specified user does not exist or belongs to a different dealer.
-
 ### update
 
 Updates users' MFA settings.
