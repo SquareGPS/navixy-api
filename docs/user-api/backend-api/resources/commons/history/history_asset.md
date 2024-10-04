@@ -19,18 +19,19 @@ and `to` date/time sorted by **time** field.
 
 #### Parameters
 
-| name              | description                                                                                                                     | type                                                                    |
-|:------------------|:--------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|
-| assets            | List of objects containing identifier and type to define a list of tracker identifiers. Permitted types: `vehicle`, `employee`. | object array                                                            |
-| from              | Start date/time for searching.                                                                                                  | string [date/time](../../../getting-started/introduction.md#data-types) |
-| to                | End date/time for searching. Must be after "from" date.                                                                         | string [date/time](../../../getting-started/introduction.md#data-types) |
-| events            | Optional. Default: all. List of history types.                                                                                  | string array                                                            |
-| limit             | Optional. Default: [history.maxLimit](../dealer.md). Max count of entries in result.                                            | int                                                                     |
-| offset            | Optional. Default: `0`. Starting offset, used for pagination.                                                                   | int                                                                     |
-| ascending         | Optional. Default: `true`. If `true`, ordering by time will be ascending, descending otherwise.                                 | boolean                                                                 |
-| only_emergency    | Optional. Default: `false`. If `true`, only emergency events will be included.                                                  | boolean                                                                 |
-| add_tracker_label | Optional. Default: `true`. If `true`, tracker label will be added to "message" field.                                           | boolean                                                                 |
-| add_tracker_files | Optional. Default: `false`. If `true`, tracker files info will be included.                                                     | boolean                                                                 |
+| name              | description                                                                                                                                             | type                                                                    |
+|:------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|
+| assets            | Optional. Default: all. List of objects containing identifier and type to define a list of tracker identifiers. Permitted types: `vehicle`, `employee`. | object array                                                            |
+| from              | Start date/time for searching.                                                                                                                          | string [date/time](../../../getting-started/introduction.md#data-types) |
+| to                | End date/time for searching. Must be after "from" date.                                                                                                 | string [date/time](../../../getting-started/introduction.md#data-types) |
+| events            | Optional. Default: all. List of history types.                                                                                                          | string array                                                            |
+| limit             | Optional. Default: [history.maxLimit](../dealer.md). Max count of entries in result.                                                                    | int                                                                     |
+| offset            | Optional. Default: `0`. Starting offset, used for pagination.                                                                                           | int                                                                     |
+| ascending         | Optional. Default: `true`. If `true`, ordering by time will be ascending, descending otherwise.                                                         | boolean                                                                 |
+| only_emergency    | Optional. Default: `false`. If `true`, only emergency events will be included.                                                                          | boolean                                                                 |
+| only_unread       | Optional. Default: `false`. If `true`, only unread events will be included.                                                                             | boolean                                                                 |
+| add_tracker_label | Optional. Default: `true`. If `true`, tracker label will be added to "message" field.                                                                   | boolean                                                                 |
+| add_tracker_files | Optional. Default: `false`. If `true`, tracker files info will be included.                                                                             | boolean                                                                 |
 
 If `events` (event types) not passed then list all event types.
 
@@ -38,6 +39,7 @@ Available event types can be obtained by [/history/type/list](./history_type.md#
 
 Default and max limit is 1000. (Note for StandAlone: this value configured by maxHistoryLimit config option).
 
+Interval will be restricted by store period interval.
 
 #### Example
 
@@ -80,6 +82,10 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
              "tracker_label": "Tracker label",
              "emergency": false,
              "employee_id": 4563
+         },
+         "asset": {
+             "id": 1683258,
+             "type": "employee"
          }
     }],
     "limit_exceeded": false,
@@ -89,12 +95,11 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
 }
 ```
 
-* `list` - list of zero or more history_entry` objects which described in [Tracker history entry](./index.md#tracker-history-entry). 
+* `list` - list of zero or more history_entry` objects which described in [Tracker history entry](./index.md#tracker-history-entry) with additional asset parameter. 
 * `limit_exceeded` - boolean. `false` when listed all history entries satisfied with conditions and `true` otherwise.
 * `total` - int. Amount of history entries satisfied with conditions.
 * `total_unread` - int. Amount of unread history entries satisfied with conditions.
 
 #### Errors
 
-* 211 – Requested time span is too big - time span between `from` and `to` is more than [report.maxTimeSpan](../dealer.md) days.
 * 212 – Requested `limit` is too big - `limit` is more than [history.maxLimit](../dealer.md).
