@@ -12,48 +12,63 @@ Let's explore the Service Settings object using the following example:
 
 ```json
 {
-    "service_title": "monitoring service",
-    "locale": "en_US",
-    "demo_login": "demo",
-    "demo_password": "demo",
-    "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
-    "default_map": {
-      "type": "osm",
-      "location": {
-        "lat": 33.0, 
-        "lng": 22.0
-      },
-      "zoom": 2
+  "service_title": "monitoring service",
+  "locale": "en_US",
+  "demo_login": "demo",
+  "demo_password": "demo",
+  "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
+  "default_map": {
+    "type": "osm",
+    "location": {
+      "lat": 33.0,
+      "lng": 22.0
     },
-    "currency": "EUR",
-    "payment_link": "http://payme.ru",
-    "promo_url": "http://monitoring.com/about",
-    "google_client_id": "io54p54ijy54",
-    "domain": "track.agent.com",
-    "favicon": "http://test.com/favicon.ico",
-    "app_logo": "paas/5001/app_logo.png",
-    "logo": "paas/5001/logo.png",
-    "document_logo": "paas/5001/document_logo.png",
-    "login_wallpaper": "paas/5001/login.png",
-    "desktop_wallpaper": "http://test.com/test.jpg",
-    "login_footer": "All rights reserved.",
-    "allow_registration": true,
-    "show_mobile_apps": true,
-    "default_user_settings": {
-      "geocoder": "google",
-      "route_provider": "progorod",
-      "measurement_system": "metric",
-      "translit": false
+    "zoom": 2
+  },
+  "currency": "EUR",
+  "payment_link": "http://payme.ru",
+  "promo_url": "http://monitoring.com/about",
+  "google_client_id": "io54p54ijy54",
+  "domain": "track.agent.com",
+  "favicon": "http://test.com/favicon.ico",
+  "app_logo": "paas/5001/app_logo.png",
+  "logo": "paas/5001/logo.png",
+  "document_logo": "paas/5001/document_logo.png",
+  "login_wallpaper": "paas/5001/login.png",
+  "desktop_wallpaper": "http://test.com/test.jpg",
+  "login_footer": "All rights reserved.",
+  "allow_registration": true,
+  "show_mobile_apps": true,
+  "default_user_settings": {
+    "geocoder": "google",
+    "route_provider": "progorod",
+    "measurement_system": "metric",
+    "translit": false
+  },
+  "display_model_features_link": false,
+  "limited_domain": false,
+  "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
+  "color_theme": "aqua",
+  "app_color_theme": "blue_1",
+  "privacy_policy_link": "http://privacy-policy-url",
+  "tos": "Terms Of Service text",
+  "no_register_commands": false,
+  "default_user_time_zone": "Europe/London",
+  "information_center": {
+    "release_notes": {
+      "visible": false,
+      "content": {
+        "type": "default"
+      }
     },
-    "display_model_features_link": false,
-    "limited_domain": false,
-    "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
-    "color_theme": "aqua",
-    "app_color_theme": "blue_1",
-    "privacy_policy_link": "http://privacy-policy-url",
-    "tos": "Terms Of Service text",
-    "no_register_commands": false,
-    "default_user_time_zone": "Europe/London"
+    "user_guides": {
+      "visible": true,
+      "content": {
+        "type": "custom",
+        "source": "https://domain.example/user-guides"
+      }
+    }
+  }
 }
 ```
 
@@ -96,6 +111,7 @@ Let's explore the Service Settings object using the following example:
 * `tos` - string. Nullable, terms of service text (it may be empty).
 * `no_register_commands` - boolean. Prevents sending commands to devices on activation if `true`.
 * `default_user_time_zone` - string. [Time zone ID](../../timezone.md) for new users created via [user/upload](../../user/index.md#upload). This time zone is also selected by default when creating a new user in the Navixy Admin Panel.
+* `information_center` - [Information center](../../../../backend-api/resources/commons/dealer.md#information-center). "Information center" menu entry settings.
 
 
 ## API actions
@@ -134,48 +150,63 @@ Only session `hash`.
 {
   "success": true,
   "value": {
-       "service_title": "monitoring service",
-       "locale": "en_US",
-       "demo_login": "demo",
-       "demo_password": "demo",
-       "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
-       "default_map": {
-         "type": "osm",
-         "location": {
-           "lat": 33.0, 
-           "lng": 22.0
-         },
-         "zoom": 2
-       },
-       "currency": "EUR",
-       "payment_link": "http://payme.ru",
-       "promo_url": "http://monitoring.com/about",
-       "google_client_id": "io54p54ijy54",
-       "domain": "track.agent.com",
-       "favicon": "http://test.com/favicon.ico",
-       "app_logo": "paas/5001/app_logo.png",
-       "logo": "paas/5001/logo.png",
-       "document_logo": "paas/5001/document_logo.png",
-       "login_wallpaper": "paas/5001/login.png",
-       "desktop_wallpaper": "http://test.com/test.jpg",
-       "login_footer": "All rights reserved.",
-       "allow_registration": true,
-       "show_mobile_apps": true,
-       "default_user_settings": {
-         "geocoder": "google",
-         "route_provider": "progorod",
-         "measurement_system": "metric",
-         "translit": false
-       },
-       "display_model_features_link": false,
-       "limited_domain": false,
-       "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
-       "color_theme": "aqua",
-       "app_color_theme": "blue_1",
-       "privacy_policy_link": "http://privacy-policy-url",
-       "tos": "Terms Of Service text",
-       "no_register_commands": false,
-       "default_user_time_zone": "America/New_York"
+    "service_title": "monitoring service",
+    "locale": "en_US",
+    "demo_login": "demo",
+    "demo_password": "demo",
+    "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
+    "default_map": {
+      "type": "osm",
+      "location": {
+        "lat": 33.0,
+        "lng": 22.0
+      },
+      "zoom": 2
+    },
+    "currency": "EUR",
+    "payment_link": "http://payme.ru",
+    "promo_url": "http://monitoring.com/about",
+    "google_client_id": "io54p54ijy54",
+    "domain": "track.agent.com",
+    "favicon": "http://test.com/favicon.ico",
+    "app_logo": "paas/5001/app_logo.png",
+    "logo": "paas/5001/logo.png",
+    "document_logo": "paas/5001/document_logo.png",
+    "login_wallpaper": "paas/5001/login.png",
+    "desktop_wallpaper": "http://test.com/test.jpg",
+    "login_footer": "All rights reserved.",
+    "allow_registration": true,
+    "show_mobile_apps": true,
+    "default_user_settings": {
+      "geocoder": "google",
+      "route_provider": "progorod",
+      "measurement_system": "metric",
+      "translit": false
+    },
+    "display_model_features_link": false,
+    "limited_domain": false,
+    "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
+    "color_theme": "aqua",
+    "app_color_theme": "blue_1",
+    "privacy_policy_link": "http://privacy-policy-url",
+    "tos": "Terms Of Service text",
+    "no_register_commands": false,
+    "default_user_time_zone": "America/New_York",
+    "information_center": {
+      "release_notes": {
+        "visible": false,
+        "content": {
+          "type": "default"
+        }
+      },
+      "user_guides": {
+        "visible": true,
+        "content": {
+          "type": "custom",
+          "source": "https://domain.example/user-guides"
+        }
+      }
+    }
   }
 }
 ```
@@ -197,31 +228,32 @@ Note: wallpapers, logos and favicons cannot be edited here.
 
 #### Parameters
 
-| name                        | description                                                                     | type                                                                             |
-|:----------------------------|:--------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|
-| service_title               | Service name.                                                                   | string                                                                           |
-| demo_login                  | If not empty, demo button will use this login to authorize.                     | string                                                                           |
-| demo_password               | If not empty, demo button will use this password to authorize.                  | string                                                                           |
-| maps                        | Maps available in monitoring system.                                            | [enum](../../../../backend-api/getting-started/introduction.md#data-types) array |
-| default_map                 | Default map settings object.                                                    | JSON object                                                                      |
-| currency                    | Code of the currency which will be shown in UI.                                 | [enum](../../../../backend-api/getting-started/introduction.md#data-types)       |
-| payment_link                | A link to dealer's payment system. Can be null or empty.                        | string                                                                           |
-| promo_url                   | Customizable "About company" URL. Can be null or empty.                         | string                                                                           |
-| google_client_id            | Google maps client ID.                                                          | string                                                                           |
-| domain                      | Domain which will be used for monitoring system.                                | string                                                                           |
-| login_footer                | Nullable, footer which will be included in login page.                          | string                                                                           |
-| allow_registration          | If `true` allows self-registration of users.                                    | boolean                                                                          |
-| show_mobile_apps            | If `true` shows mobile apps to users who opens mobile web UI.                   | boolean                                                                          |
-| default_user_settings       | Default user settings object.                                                   | JSON object                                                                      |
-| display_model_features_link | When `true` shows in model info link to navixy.com (UI option).                 | boolean                                                                          |
-| limited_domain              | If `true`, paas domain has limitations.                                         | boolean                                                                          |
-| allowed_maps                | List of maps available for selection in "maps" list.                            | [enum](../../../../backend-api/getting-started/introduction.md#data-types)       |
-| color_theme                 | 128 chars max. Color theme code or empty string (for default theme).            | string                                                                           |
-| app_color_theme             | 128 chars max. Mobile app color theme code or empty string (for default theme). | string                                                                           |
-| privacy_policy_link         | A link to privacy policy.                                                       | string                                                                           |
-| tos                         | Terms Of Service text.                                                          | string                                                                           |
-| no_register_commands        | If `true` then do not send commands to devices on activation.                   | boolean                                                                          |
-| default_user_time_zone      | Time zone by default for new users.                                             | string                                                                           |
+| name                        | description                                                                     | type                                                                                         |
+|:----------------------------|:--------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------|
+| service_title               | Service name.                                                                   | string                                                                                       |
+| demo_login                  | If not empty, demo button will use this login to authorize.                     | string                                                                                       |
+| demo_password               | If not empty, demo button will use this password to authorize.                  | string                                                                                       |
+| maps                        | Maps available in monitoring system.                                            | [enum](../../../../backend-api/getting-started/introduction.md#data-types) array             |
+| default_map                 | Default map settings object.                                                    | JSON object                                                                                  |
+| currency                    | Code of the currency which will be shown in UI.                                 | [enum](../../../../backend-api/getting-started/introduction.md#data-types)                   |
+| payment_link                | A link to dealer's payment system. Can be null or empty.                        | string                                                                                       |
+| promo_url                   | Customizable "About company" URL. Can be null or empty.                         | string                                                                                       |
+| google_client_id            | Google maps client ID.                                                          | string                                                                                       |
+| domain                      | Domain which will be used for monitoring system.                                | string                                                                                       |
+| login_footer                | Nullable, footer which will be included in login page.                          | string                                                                                       |
+| allow_registration          | If `true` allows self-registration of users.                                    | boolean                                                                                      |
+| show_mobile_apps            | If `true` shows mobile apps to users who opens mobile web UI.                   | boolean                                                                                      |
+| default_user_settings       | Default user settings object.                                                   | JSON object                                                                                  |
+| display_model_features_link | When `true` shows in model info link to navixy.com (UI option).                 | boolean                                                                                      |
+| limited_domain              | If `true`, paas domain has limitations.                                         | boolean                                                                                      |
+| allowed_maps                | List of maps available for selection in "maps" list.                            | [enum](../../../../backend-api/getting-started/introduction.md#data-types)                   |
+| color_theme                 | 128 chars max. Color theme code or empty string (for default theme).            | string                                                                                       |
+| app_color_theme             | 128 chars max. Mobile app color theme code or empty string (for default theme). | string                                                                                       |
+| privacy_policy_link         | A link to privacy policy.                                                       | string                                                                                       |
+| tos                         | Terms Of Service text.                                                          | string                                                                                       |
+| no_register_commands        | If `true` then do not send commands to devices on activation.                   | boolean                                                                                      |
+| default_user_time_zone      | Time zone by default for new users.                                             | string                                                                                       |
+| information_center          | "Information center" menu entry settings.                                       | [Information center](../../../../backend-api/resources/commons/dealer.md#information-center) |
 
 #### Example
 

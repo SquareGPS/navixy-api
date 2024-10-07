@@ -183,7 +183,7 @@ Marks history entry as read by `id` (see: [Tracker history entry](#tracker-histo
 
 #### Errors
 
-* 201 – Not found in the database - when there are no history entries with that ID.
+* 201 – Not found in the database - when there are no unread history entries with that ID.
 
 
 ### `mark_read_all`

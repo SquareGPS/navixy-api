@@ -113,6 +113,19 @@ If `hash` is specified the `domain` shouldn't be used.
         "form.file_field.max_file_size": 16777216,
         "form.file_field.max_files_per_field": 6,
         "form.file_field.max_count": 16
+    },
+    "information_center": {
+        "release_notes": {
+            "visible": false,
+            "content": { "type": "default" }
+        },
+        "user_guides": {
+            "visible": true,
+            "content": {
+                "type": "custom",
+                "source": "https://domain.example/user-guides"
+            }
+        }
     }
 }
 ```
@@ -179,6 +192,7 @@ If `hash` is specified the `domain` shouldn't be used.
     * `form.file_field.max_file_size` - long, max file size in bytes for the form file.
     * `form.file_field.max_files_per_field` - integer, max files per form field.
     * `form.file_field.max_count` - integer, max file fields per form.
+* `information_center` - [Information center](#information-center). "Information center" menu entry settings.
   
 #### Dealer features
 
@@ -188,6 +202,28 @@ If `hash` is specified the `domain` shouldn't be used.
 | branding_mobile | Allow to use custom icon, logo, color theme in the mobile applications.           |
 | subpaas         | Allow to use Sub-Dealers (can be used only together with `navixy_label`).         |
 | navixy_label    | Show "Powered by Navixy" in UI (required for subpaas feature).                    |
+
+#### Information center
+
+| name    | type                        | description             |
+|:--------|:----------------------------|:------------------------|
+| visible | boolean                     | Tab visibility setting. |
+| content | [Tab content](#tab-content) | Tab content settings.   |
+
+#### Tab content
+
+=== "Default"
+    
+    | name | type   | description         |
+    |:-----|:-------|:--------------------|
+    | type | string | Always `"default"`. |
+
+=== "Custom"
+    
+    | name   | type   | description                          |
+    |:-------|:-------|:-------------------------------------|
+    | type   | string | Always `"custom"`.                   |
+    | source | string | URL to the content page for the tab. |
 
 #### Errors
 
