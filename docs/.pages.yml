@@ -1,7 +1,8 @@
 nav:
-  - General: general
-  - Data Warehouse API: data-warehouse-api
-  - User Interface API: backend-api
-  - Eco Fleet API: eco-fleet-api
-  - Admin Panel API: panel-api
-  - Frontend: frontend
+  - Home: https://developers.navixy.com
+  - general
+  - data-warehouse-api
+  - backend-api
+  - eco-fleet-api
+  - frontend
+  - panel-api

@@ -7,9 +7,8 @@ description: Get involved into improving documentation and translations of the N
 Join us in enhancing Navixy developer documentation! Your contributions are highly valued and appreciated. Whether you’ve spotted an inaccuracy, found a typo, or have additional information to share, your help is appreciated. All our documentation is publicly available on [GitHub]({{ config.repo_url }}), and you can get involved in several ways to make it better:
 
 1. [Creating an issue]({{ config.repo_url }}issues/new) with a detailed description of the problem.
-2. [Editing a single page in a browser](#easy-way).
-3. [Manually creating a fork](#second-way) and making multiple commits before creating a pull request.
-4. [Installing and editing](#advanced-way) documentation locally on your PC.
+2. [Editing a single page in a browser](#quick-edits-in-the-browser).
+3. [Installing and editing](#advanced-local-editing) and making multiple commits before creating a pull request.
 
 In each case, a GitHub account is required. If you prefer not to register on GitHub, you can [contact us](../contacts.md) with any feedback or suggestions.
 
@@ -89,7 +88,7 @@ Our documentation is built using [MkDocs](https://mkdocs.org) and the [Material 
 The menu structure is automatically generated using the [awesome-pages plugin](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin). To set the desired page order, use a `.pages.yml` file in the directory. Example:
 
 ```yaml
-title: Backend API
+title: User Interface API
 nav:
   - getting-started.md
   - how-to

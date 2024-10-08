@@ -50,5 +50,5 @@ curl -X GET '{{ extra.eco_fleet_api_example_url }}/trackers/123/sensors/321/qual
 #### Errors
 
 * `errors/entity/not-found` - Entity not found. Thrown if sensor or calibration table is missing.
-* `errors/external-api/navixy` - Error accessing Navixy API. See `detail` field and consult [Backend API documentation](../../../../backend-api/getting-started/introduction.md#error-handling).
+* `errors/external-api/navixy` - Error accessing Navixy API. See `detail` field and consult [User Interface API documentation](../../../../backend-api/getting-started/errors.md).
 * `errors/sensors/quality/not-enough-readings` - Not enough sensor readings in given interval. Try using interval with enough vehicle usage or changing readings' sending frequency and waiting for data accumulation.
