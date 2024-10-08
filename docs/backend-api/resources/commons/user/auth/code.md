@@ -1,5 +1,5 @@
 ---
-title: User authentication code actions
+title: User authentication code
 description: A user authentication code account lets you authenticate yourself as part of multi-factor authentication.
 ---
 

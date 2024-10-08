@@ -10,18 +10,12 @@ description: Getting started with Navixy API
 
 The documentation is organized into sections, each addressing a specific aspect of the Navixy platform:
 
-* [**General**](../general/getting-started.md)  
-  Introduction, Navixy API Sandbox, No-code automation, and contribution guidelines
-* [**Backend API**](../backend-api/getting-started/introduction.md)
-  API calls for user interface functionalities like tracking, reports, and tasks
-* [**Panel API**](../panel-api/getting-started.md)
-  API calls for admin panel functionalities such as platform config and user management
-* [**Eco Fleet API**](../eco-fleet-api/getting-started.md)
-  API calls for efficient fuel management
-* [**Data Warehouse API**](../data-warehouse-api/getting-started.md)
-  API calls for obtaining raw IoT data received from devices
-* [**Frontend**](../frontend/extensions/user-applications.md)
-  Customizing the user experience by using embedded apps
+* [**General**](../general/getting-started.md): Introduction, Navixy API Sandbox, No-code automation, and contribution guidelines.
+* [**Data Warehouse API**](../data-warehouse-api/getting-started.md): API calls for obtaining raw IoT data received from devices.
+* [**User Interface API**](../backend-api/getting-started/introduction.md): API calls for user interface functionalities like tracking, reports, and tasks.
+* [**Eco Fleet API**](../eco-fleet-api/getting-started.md): API calls for efficient fuel management.
+* [**Frontend**](../frontend/extensions/user-applications.md): Customizing the user experience by using embedded apps.
+* [**Admin Panel API**](../panel-api/getting-started.md): API calls for admin panel functionalities such as platform config and user management.
 
 ### Navigation
 

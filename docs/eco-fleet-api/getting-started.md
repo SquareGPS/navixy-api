@@ -6,7 +6,7 @@ description: Overview of Navixy Eco Fleet API
 # Navixy Eco Fleet API
 
 The structure of Eco Fleet API is close to the user API, so
-we highly recommend reading [Backend API: getting started](../backend-api/getting-started/introduction.md).
+we highly recommend reading [User Interface API: getting started](../backend-api/getting-started/introduction.md).
 
 The main differences are _request paths_, _authorization system_ and _request format_.
 
@@ -28,7 +28,7 @@ For example, to make a sensor quality API call in European Navixy ServerMate, yo
 
 ### Authentication
 
-Authentication is handled by [Backend API](../backend-api/getting-started/authentication.md).
+Authentication is handled by [User Interface API](../backend-api/getting-started/authentication.md).
 
 
 ### Authorization

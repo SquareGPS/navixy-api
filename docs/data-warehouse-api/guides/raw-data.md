@@ -25,7 +25,7 @@ Please note that you will not receive human-readable information about fuel drai
 
 Tracking devices from different manufacturers have different specifics of work and send data in various forms. In addition, sensors can be of different types: digital and analog, wired and wireless, built-in and external. Also, there can be several sensors monitoring the same type of readings: for example, two fuel sensors in two tanks, internal and external temperature sensors, etc.
 
-Before requesting raw data, we need to understand what data the device can report to the platform and what the data inputs are named. To do this, we need to use the [`raw_data/get_inputs`](../resources/tracker/raw_data#get_inputs) request.
+Before requesting raw data, we need to understand what data the device can report to the platform and what the data inputs are named. To do this, we need to use the [`raw_data/get_inputs`](../resources/tracker/raw_data.md#getinputs) request.
 
 Example for a device with ID 123456:
 
@@ -144,11 +144,11 @@ The above example is one of the simplest, but it clearly demonstrates the proces
 
 When requesting raw data, you must specify the exact period for which you need the data to ensure the platform can accurately process your request and return the necessary information.
 
-Similar to the [Backend API](../../backend-api/getting-started/introduction.md), you can specify the date and time in either the standard `YYYY-MM-DD HH:mm:ss` format with or without a time zone or in ISO 8601 format. 
+Similar to the [User Interface API](../../backend-api/getting-started/introduction.md), you can specify the date and time in either the standard `YYYY-MM-DD HH:mm:ss` format with or without a time zone or in ISO 8601 format. 
 
 The default format for Data Warehouse API requests is ISO 8601.
 
-The platform allows you to request raw data for any period within the [time frame limits](../../data-warehouse-api/getting-started.md#time-frames-limit).
+The platform allows you to request raw data for any period within the [time frame limits](../../data-warehouse-api/getting-started.md#time-frame-limits).
 
 All methods for specifying the date and time provided below are equally valid. Choose the one that is most convenient or best matches the format used in your integrations.
 
@@ -236,7 +236,7 @@ In this case, the retrieved data will be in the time zone of the user account.
 
 There may be situations when you need to obtain data in a specific time zone different from the user account. This can be useful when the customer's time zone differs from yours due to geographical reasons.
 
-In this case, you need to supplement your request with the `time_zone` parameter and specify the required zone ID. You can request all the possible zone IDs using the [`timezone/list`](../../backend-api/resources/commons/timezone.md) request from the Backend API.
+In this case, you need to supplement your request with the `time_zone` parameter and specify the required zone ID. You can request all the possible zone IDs using the [`timezone/list`](../../backend-api/resources/commons/timezone.md) request from the User Interface API.
 
 **API request example:**
 

@@ -103,7 +103,7 @@ To set the desired page order in the menu, use the file `.pages.yml` in director
 For example:
 
 ```yaml
-title: Backend API
+title: User Interface API
 nav:
   - getting-started.md
   - how-to
