@@ -47,7 +47,7 @@ plugins:
       type: date
       fallback_to_build_date: true
   - awesome-pages:
-      filename: .pages.yml
+      filename: ..pages.yml
       collapse_single_pages: false
       strict: true
   - macros
