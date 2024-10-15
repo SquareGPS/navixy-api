@@ -257,33 +257,55 @@ curl -X 'POST' \
 "2024-10-10T13:13:46+0600",54.22744,69.5310083,39,2871,24296.756,0,1
 ```
 
-#### Example for standard searching by message time only in Parquet
+#### Parquet file format request example
 
-For getting a Parquet file with all the same parameters you need to add the `format: "parquet"`.
+For getting a Parquet file with the same parameters add the `format: "parquet"` to the request body.
+
+In the next example, we will slightly adjust the body of the request so you can further test the downloaded Parquet file (navixy_data.parquet).
+The following code block is a Bash script used for downloading a Parquet file using a Linux distribution and its terminal.
 
 === "cURL for Parquet"
 
 ```shell
+#!/bin/bash
+
 curl -X 'POST' \
-  'https://api.eu.navixy.com/dwh/v1/tracker/raw_data/read' \
-  -H 'NVX-ISO-DateTime: true' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "hash": "6dc7d304dec4434f4c4202ec42817f83",
-    "tracker_id": "123456",
-    "from": "2024-10-10T00:00:00.000Z",
-    "to": "2024-10-11T00:00:00.000Z",
-    "format": "parquet",
-    "columns": [
-      "lat",
-      "lng",
-      "speed",
-      "inputs.ble_lls_level_1",
-      "inputs.hw_mileage",
-      "discrete_inputs.*"
-    ]
-  }'
+'https://api.eu.navixy.com/dwh/v1/tracker/raw_data/read' \
+-H 'accept: application/octet-stream' \
+-H 'Content-Type: application/json' \
+-d '{
+  "hash": "feed000000000000000000000000cafe",
+  "tracker_id": "3036057",
+  "from": "2024-09-10T02:00:00Z",
+  "to": "2024-09-10T06:00:00Z",
+  "columns": [
+	"lat",
+	"lng",
+	"speed",
+	"inputs.can_fuel_litres"
+  ],
+  "format": "parquet"
+}' \
+--output navixy_data.parquet
 ```
+
+1. Switch to the root user or use the ```sudo``` prefix before the terminal commands
+
+2. Create an .sh file using nano - ```nano curl.sh```
+
+3. Paste the cURL example above into the file
+
+4. Write the file (CTRL+O -> Enter) and exit ```nano``` (CTRL+X)
+
+5. Add the Execution rights to the file using the ```chmod +x curl.sh``` command
+
+6. Run the script ```./curl.sh```
+
+
+<video controls style="width: 100%; height: auto;">
+  <source src="../assets/videos/1_parquet_curl_linux.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 #### Example for searching by server time additionally
 
