@@ -161,15 +161,28 @@ settings will provide us with necessary info by default.
 {
   "success": true,
   "limit_exceeded": false,
-  "list": [track_info]
+  "list": [track_info],
+  "total": {
+    "count": 2,
+    "length": 100.500,
+    "trips_duration": "PT1D",
+    "parking_duration": "PT1H",
+    "norm_fuel_consumed": 11.08
+  }
 }
 ```
 
-* `limit_exceeded` - boolean. It will be `true` if the requested time period surpasses the limit set in the tracker's tariff. 
+* `limit_exceeded` – boolean. It will be `true` if the requested time period surpasses the limit set in the tracker's tariff. 
 For instance, if the device's plan has a maximum storage period of three months (the default value), and we request trips 
 for six months.
-* `list` - an array of JSON objects containing track information. It consists of zero or more JSON objects. Zero objects 
+* `list` – an array of JSON objects containing track information. It consists of zero or more JSON objects. Zero objects 
 indicates that there were no trips based on the track options or the device didn't supply any points to the platform.
+* `total` – result for all tracks:
+  * `count` – int. Track count
+  * `length` – float. Sum of the lengths of all tracks
+  * `trips_duration` – ISO 8601 duration. Travel time
+  * `parking_duration` – ISO 8601 duration. Parking duration
+  * `norm_fuel_consumed` – optional float. Amount of fuel consumed during all tracks, measured in liters.
 
 where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 
