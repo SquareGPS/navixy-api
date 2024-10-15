@@ -1,4 +1,5 @@
 nav:
+  - Tracker object: index.md
   - APN Settings: apn_settings.md
   - Group: group.md
   - Employee: employee.md
@@ -9,7 +10,6 @@ nav:
   - Contact: contact.md
   - Output: output.md
   - Engine Immobilizer: engine_immobilizer.md
-  - Index: index.md
   - Led: led.md
   - Datalogger: datalogger.md
   - Alarm Mode: alarm_mode.md

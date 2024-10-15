@@ -8,7 +8,7 @@ An API Key, also known as a "Hash" is a randomly generated string used to verify
 Unlike a user's session hash, the API key has the following characteristics:
 
 - It will not be deleted if the user logs out or changes their password.
-- There is no need to [renew](./user/session/index.md#renew) the key periodically.
+- There is no need to [renew](../resources/commons/user/session/index.md#renew) the key periodically.
 - It does not require the transfer or storage of the username and password.
 - It can be deleted at any time if there is a suspicion of compromise.
 - You can create a separate key for each individual integration.

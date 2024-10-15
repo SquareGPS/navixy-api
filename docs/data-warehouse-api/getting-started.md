@@ -8,7 +8,7 @@ Navixy Data Warehouse (DWH) API is a powerful tool designed for developers and d
 
 ## Overview
 
-The structure of the Data Warehouse API is mostly similar to the [Backend API](../backend-api/getting-started/introduction.md). If you're familiar with the basics of the user API, you will find this API intuitive and easy to work with. The DWH API provides robust methods to access raw, unprocessed data, ensuring you can harness the full potential of your connected devices.
+The structure of the Data Warehouse API is mostly similar to the [User Interface API](../backend-api/getting-started/introduction.md). If you're familiar with the basics of the user API, you will find this API intuitive and easy to work with. The DWH API provides robust methods to access raw, unprocessed data, ensuring you can harness the full potential of your connected devices.
 
 ## Time Frame Limits
 
@@ -30,7 +30,7 @@ https://api.eu.navixy.com/dwh/v1/tracker/raw_data/read
 
 ### Authentication
 
-Authentication is handled by the [Backend API](../backend-api/getting-started/authentication.md).
+Authentication is handled by the [User Interface API](../backend-api/getting-started/authentication.md).
 
 ### Authorization
 
@@ -85,7 +85,7 @@ Example:
 
 ### Date/Time Formats
 
-The API uses date/time formats according to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). For detailed information on date/time formats and examples, refer to [Raw Data Request - Date and Time](../data-warehouse-api/guides/raw-data.md#Date-and-Time-Interval).
+The API uses date/time formats according to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). For detailed information on date/time formats and examples, refer to [Raw Data Request - Specifying Time Frame](../data-warehouse-api/guides/raw-data.md#specifying-time-frame).
 
 ## Examples
 
