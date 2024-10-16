@@ -15,7 +15,7 @@ API base path: `/tracker/readings`.
 
 ### `list`
 
-Gets last values for all metering sensors, state values and counters.
+Gets last values for all sensors, state values and counters.
 
 #### Parameters
 
@@ -48,13 +48,15 @@ Gets last values for all metering sensors, state values and counters.
   "success": true,
   "inputs": [
     {
+      "sensor_id": 37641,
       "value": 5.66,
       "label": "label",
       "units": "litres",
       "name": "fuel_level",
       "type": "fuel",
       "units_type": "custom",
-      "update_time": "2023-06-28 06:05:59"
+      "update_time": "2023-06-28 06:05:59",
+      "composite_sensor_ids": [37651, 37652]
     }
   ],
   "states": [
@@ -66,12 +68,14 @@ Gets last values for all metering sensors, state values and counters.
   ],
   "virtual_sensors": [
     {
+      "sensor_id": 37642,
       "label": "Virtual Ignition",
       "value": "On",
       "type": "virtual_ignition",
       "update_time": "2023-06-28 06:05:59"
     },
     {
+      "sensor_id": 37643,
       "label": "Hood state",
       "value": "Closed",
       "type": "state",
@@ -89,6 +93,7 @@ Gets last values for all metering sensors, state values and counters.
 ```
 
 * `inputs` - an array of JSON objects containing information about the tracker sensors readings.
+    * `sensor_id` - int. The ID of the sensor.
     * `value` - float. The value of the sensor.
     * `label` - string. The label of the sensor.
     * `units` - string. The units in which the sensor value is measured.
@@ -96,11 +101,13 @@ Gets last values for all metering sensors, state values and counters.
     * `type` - [metering sensor type](./sensor/index.md#metering-sensor-type-values). The type of the sensor.
     * `units_type` - string. The type of the units in which the sensor value is measured.
     * `update_time` - date/time. The time when the sensor value was updated.
+    * `composite_sensor_ids` - array of int. The IDs of the composite sensors that include sensor. Optional.
 * `states` - an array of JSON objects containing information about the tracker state readings.
     * `field` - string. The field name of the state.
     * `value` - can be string, int, float, boolean, or null. The value of the field.
     * `update_time` - date/time. The time when the field value was updated.
 * `virtualSensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
+    * `sensor_id` - int. The ID of the virtual sensor.
     * `value` - float. The value of the virtual sensor.
     * `label` - string. The label of the virtual sensor.
     * `type` - [virtual sensor type](./sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
@@ -117,7 +124,7 @@ Gets last values for all metering sensors, state values and counters.
 
 ### `batch_list`
 
-Gets last values for all metering sensors, state values and counters on multiple trackers.
+Gets last values for all sensors, state values and counters on multiple trackers.
 
 #### Parameters
 
@@ -152,6 +159,7 @@ Gets last values for all metering sensors, state values and counters on multiple
     "10181215": {
       "inputs": [
         {
+          "sensor_id": 37641,
           "label": "Tank 1",
           "units": "",
           "name": "lls_level_1",
@@ -162,9 +170,11 @@ Gets last values for all metering sensors, state values and counters on multiple
           "units_type": "litre",
           "converted_units_type": null,
           "converted_value": null,
-          "update_time": "2023-06-28 06:13:09"
+          "update_time": "2023-06-28 06:13:09",
+          "composite_sensor_ids": [37651, 37652]
         },
         {
+          "sensor_id": 37642,
           "label": "Tank 2",
           "units": "",
           "name": "lls_level_6",
@@ -178,6 +188,7 @@ Gets last values for all metering sensors, state values and counters on multiple
           "update_time": "2023-05-11 00:35:16"
         },
         {
+          "sensor_id": 37643,
           "label": "Fuel",
           "units": "",
           "name": "composite",
@@ -201,6 +212,22 @@ Gets last values for all metering sensors, state values and counters on multiple
           "field": "output_status",
           "value": 0,
           "update_time": "2023-06-28 06:13:09"
+        }
+      ],
+      "virtual_sensors": [
+        {
+          "sensor_id": 37644,
+          "label": "Virtual Ignition",
+          "value": "On",
+          "type": "virtual_ignition",
+          "update_time": "2023-06-28 06:05:59"
+        },
+        {
+          "sensor_id": 37645,
+          "label": "Hood state",
+          "value": "Closed",
+          "type": "state",
+          "update_time": "2023-06-28 06:05:59"
         }
       ],
       "counters": [
@@ -239,6 +266,7 @@ Gets last values for all metering sensors, state values and counters on multiple
 ```
 
 * `inputs` - an array of JSON objects containing information about the tracker sensors readings.
+    * `sensor_id` - int. The ID of the sensor.
     * `value` - float. The value of the sensor.
     * `label` - string. The label of the sensor.
     * `units` - string. The units in which the sensor value is measured.
@@ -250,10 +278,17 @@ Gets last values for all metering sensors, state values and counters on multiple
     * `max_value` - float. The maximum value of the sensor.
     * `converted_units_type` - string. The type of the units in which the sensor value is converted.
     * `converted_value` - float. The converted value of the sensor reading.
+    * `composite_sensor_ids` - array of int. The IDs of the composite sensors that include sensor. Optional.
 * `states` - an array of JSON objects containing information about the tracker state readings.
     * `field` - string. The field name of the state.
     * `value` - can be string, int, float, boolean, or null. The value of the field.
     * `update_time` - date/time. The time when the field value was updated.
+* `virtualSensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
+  * `sensor_id` - int. The ID of the virtual sensor.
+  * `value` - float. The value of the virtual sensor.
+  * `label` - string. The label of the virtual sensor.
+  * `type` - [virtual sensor type](./sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
+  * `update_time` - date/time. The time when the virtual sensor value was updated.
 * `counters` - an array of JSON objects containing information about the tracker counter readings.
     * `type` - string. The type of the counter.
     * `value` - float. The value of the counter.
