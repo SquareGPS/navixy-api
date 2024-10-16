@@ -122,4 +122,4 @@ Only session `hash`.
 
 #### Errors
 
-[General](../../backend-api/getting-started/errors.md#error-codes) types only.
+[General](../../user-api/backend-api/getting-started/errors.md#error-codes) types only.

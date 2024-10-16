@@ -58,7 +58,7 @@ The User object structure defines the attributes and details of a user account w
 * `middle_name` - string. Contact person's middle name.
 * `last_name` - string. Contact person's last name.
 * `legal_name` - string. User's legal name (for "legal_entity" only).
-* `legal_type` - [enum](../../../backend-api/getting-started/introduction.md#data-types). Can be "legal_entity", "individual", or "sole_trader".
+* `legal_type` - [enum](../../../user-api/backend-api/getting-started/introduction.md#data-types). Can be "legal_entity", "individual", or "sole_trader".
 * `phone` - string. Contact phone number with 10-15 digits, without the "+" sign.
 * `post_country` - string. Country part of the user's postal address.
 * `post_index` - string. Postal / ZIP code of the user's address.
@@ -80,7 +80,7 @@ Next fields are read-only and should not be used in `user/update` and `user/crea
 
 * `balance` - double. User balance.
 * `bonus` - double. User bonus balance.
-* `creation_date` - [date/time](../../../backend-api/getting-started/introduction.md#data-types). Date and time when the user was created, in UTC.
+* `creation_date` - [date/time](../../../user-api/backend-api/getting-started/introduction.md#data-types). Date and time when the user was created, in UTC.
 * `trackers_count` - int. Number of trackers associated with the user.
 * `comment` - string. Comment about the user (when creating and editing, this field must be separate from this object).
 
@@ -99,8 +99,8 @@ The discount object structure defines a discount applied to a user's account bas
 
 * `value` - double. Personal discount percent, min 0 max 100.
 * `min_trackers` - int. Minimum active trackers to apply discount, min 0.
-* `end_date` - [date/time](../../../backend-api/getting-started/introduction.md#data-types). Discount end date, null means open date, nullable.
-* `strategy` - [enum](../../../backend-api/getting-started/introduction.md#data-types). One of "no_summing", "sum_with_progressive".\
+* `end_date` - [date/time](../../../user-api/backend-api/getting-started/introduction.md#data-types). Discount end date, null means open date, nullable.
+* `strategy` - [enum](../../../user-api/backend-api/getting-started/introduction.md#data-types). One of "no_summing", "sum_with_progressive".\
 
 
 ## API actions
@@ -645,7 +645,7 @@ If the `filter` parameter is used (i.e., it is passed, it is not empty, and it d
 
 #### Errors
 
-* [General](../../../backend-api/getting-started/errors.md#error-codes) types only.
+* [General](../../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
 
 
 
@@ -698,7 +698,7 @@ About user object structure see [above](#user-object-structure).
 
 #### Errors
 
-* [General](../../../backend-api/getting-started/errors.md#error-codes) types only.
+* [General](../../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
 
 
 ### `session/create`
@@ -749,7 +749,7 @@ user_sessions: "global" - Optional. Allows sessions of users creation, not only 
 
 ### `transaction/list`
 
-Gets list of user's billing transactions for the specified period. Same as [/transaction/list](../../../backend-api/resources/billing/transaction.md#list) from main api.
+Gets list of user's billing transactions for the specified period. Same as [/transaction/list](../../../user-api/backend-api/resources/billing/transaction.md#list) from main api.
 
 *required permissions*: `[users: "read", transactions: "read"]`.
 
@@ -758,8 +758,8 @@ Gets list of user's billing transactions for the specified period. Same as [/tra
 | name    | description                                                                | type                                                         |
 |:--------|:---------------------------------------------------------------------------|:-------------------------------------------------------------|
 | user_id | An ID of user whom transactions listed. must be owned by a current dealer. | int                                                          |
-| from    | Start date/time for searching.                                             | [date/time](../../../backend-api/getting-started/introduction.md#data-types) |
-| to      | End date/time for searching. Must be after "from" date.                    | [date/time](../../../backend-api/getting-started/introduction.md#data-types) |
+| from    | Start date/time for searching.                                             | [date/time](../../../user-api/backend-api/getting-started/introduction.md#data-types) |
+| to      | End date/time for searching. Must be after "from" date.                    | [date/time](../../../user-api/backend-api/getting-started/introduction.md#data-types) |
 | limit   | Optional. A maximum number of the returned transactions.                   | int                                                          |
 
 #### Example
@@ -797,9 +797,9 @@ Gets list of user's billing transactions for the specified period. Same as [/tra
 
 * `list` - array of objects. List of transaction objects.
     * `description` - string. Transaction description.
-    * `type` - [enum](../../../backend-api/getting-started/introduction.md#data-types). Type of transaction.
-    * `subtype` - [enum](../../../backend-api/getting-started/introduction.md#data-types). Subtype of transaction.
-    * `timestamp` - [date/time](../../../backend-api/getting-started/introduction.md#data-types). When transaction created.
+    * `type` - [enum](../../../user-api/backend-api/getting-started/introduction.md#data-types). Type of transaction.
+    * `subtype` - [enum](../../../user-api/backend-api/getting-started/introduction.md#data-types). Subtype of transaction.
+    * `timestamp` - [date/time](../../../user-api/backend-api/getting-started/introduction.md#data-types). When transaction created.
     * `user_id` - int. ID of a user which made a transaction.
     * `dealer_id` - int. ID of a dealer.
     * `tracker_id` - int. Tracker id. 0 if transaction not associated with tracker.
@@ -828,7 +828,7 @@ New balance (bonus) must be not negative.
 |:--------|:--------------------------------------------------------|:--------------------------------------------------------|
 | user_id | An ID of user whom balance changed.                     | int                                                     |
 | amount  | Amount to change. Can be negative.                      | double (2 digits after decimal mark)                    |
-| type    | Type of balance to change. Can be "balance" or "bonus". | [enum](../../../backend-api/getting-started/introduction.md#data-types) |
+| type    | Type of balance to change. Can be "balance" or "bonus". | [enum](../../../user-api/backend-api/getting-started/introduction.md#data-types) |
 | text    | Description of transaction.                             | string (min length is 5 chars)                          |
 
 #### Example
