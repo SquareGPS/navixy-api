@@ -107,7 +107,7 @@ Only API key `hash`.
 }
 ```
 
-* `list` - array of objects. List of [plan objects](#plan object).
+* `list` - array of objects. List of [plan objects](#plan-object).
 
 #### Errors
 

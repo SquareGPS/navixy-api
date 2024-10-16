@@ -77,7 +77,7 @@ If a rule needs to be updated, such as adding another phone number for SMS notif
 
 ### Required Parameters
 
-The list of necessary parameters is the same as in the [`rule/create`](#create) call, plus the `id` parameter.
+The list of necessary parameters is the same as in the [`rule/create`](#creating-a-rule) call, plus the `id` parameter.
 
 * `id`: An integer with the ID of the rule to be updated. You can get rule IDs using the [`rule/list`](../../resources/tracking/tracker/rules/rule.md#list) call.
 
