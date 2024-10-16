@@ -11,7 +11,7 @@ The Admin Panel API (or Panel API for short) allows developers to manage various
 
 The Admin Panel API is designed to help administrators and developers manage the Navixy platform more efficiently. Whether you are managing users, devices, or settings, this API provides the necessary tools to automate and streamline these tasks.
 
-The structure of the Admin Panel API mirrors that of the User Interface API, making it advantageous to read [User Interface API: Getting Started](../backend-api/getting-started/introduction.md). The only differences lie in the authorization system and request paths.
+The structure of the Admin Panel API mirrors that of the Backend API, making it advantageous to read [Backend API: Getting Started](../user-api/backend-api/getting-started/introduction.md). The only differences lie in the authorization system and request paths.
 
 ### Base URL
 

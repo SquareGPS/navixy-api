@@ -32,7 +32,7 @@ These sub-accounts function similarly to the main dealer account but allow for m
 * `title` - string. SubPaas' name.
 * `jur_name` - string. Legal company name.
 * `creation_date` - string. Creation date.
-* `block_type` - [enum](../../../backend-api/getting-started/introduction.md#data-types). Panel and Subpaas' users block status. One of: 
+* `block_type` - [enum](../../../user-api/backend-api/getting-started/introduction.md#data-types). Panel and Subpaas' users block status. One of: 
 "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED".
 * `users_count` - int. Count of users.
 * `active_users_count` - int. Count of active users.
@@ -95,7 +95,7 @@ Gets a list of all SubPaaS accounts of a Dealer. Dealer ID will be taken from th
 
 | name      | description                                                                                                                       | type                                                       |
 |:----------|:----------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
-| order_by  | Optional. Sort option. Can be "subpaas_id", "title", "jur_name", "login", "block_type", "creation_date". Default is `subpaas_id`. | [enum](../../../backend-api/getting-started/introduction.md#data-types) |
+| order_by  | Optional. Sort option. Can be "subpaas_id", "title", "jur_name", "login", "block_type", "creation_date". Default is `subpaas_id`. | [enum](../../../user-api/backend-api/getting-started/introduction.md#data-types) |
 | ascending | Optional. If `true` ordering will be ascending, descending otherwise. Default is `true`.                                          | boolean                                                    |
 | limit     | Optional. Pagination. Maximum subpaases to return                                                                                 | int                                                        |
 | offset    | Optional. Pagination. Get subpaases starting from.                                                                                | int                                                        |
@@ -138,7 +138,7 @@ Gets a list of all SubPaaS accounts of a Dealer. Dealer ID will be taken from th
 }
 ```
 
-* `list` - array of objects. List of [subpaas objects](#subpaas-object) described above.
+* `list` - array of objects. List of [subpaas objects](#subdealer-sub-paas-object) described above.
 
 #### Errors 
 
@@ -194,7 +194,7 @@ Gets Sub PaaS account info by its id.
 }
 ```
 
-* `value` - [subpaas object](#subpaas-object) described above.
+* `value` - [subpaas object](#subdealer-sub-paas-object) described above.
 
 #### Errors
 
@@ -222,7 +222,7 @@ Updates a SubPaas account with the specified ID.
 | contact_fio     | Contact person.                                                                                                | string                                                     |
 | contact_post    | Contact post (position).                                                                                       | string                                                     |
 | contact_phone   | Contact's phone.                                                                                               | string                                                     |
-| block_type      | Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED". | [enum](../../../backend-api/getting-started/introduction.md#data-types) |
+| block_type      | Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED". | [enum](../../../user-api/backend-api/getting-started/introduction.md#data-types) |
 
 #### Example
 

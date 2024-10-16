@@ -104,7 +104,7 @@ Does not require session hash and does not need any permissions. Auths dealer in
 ```
 
 * `hash` - string. A session key.
-* `permissions` - object representing permissions for the panel. See panel account [permissions](../../backend-api/getting-started/introduction.md#panel-api-permissions).
+* `permissions` - object representing permissions for the panel. See panel account [permissions](../../panel-api/getting-started.md#admin-panel-api-permissions).
     
 #### Errors
 
@@ -206,7 +206,7 @@ Only session `hash`.
 
 #### Errors
 
-[General](../../backend-api/getting-started/errors.md#error-codes) types only.
+[General](../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
 
 
 ### `logout`
@@ -243,4 +243,4 @@ Only session `hash`.
 
 #### Errors
 
-[General](../../backend-api/getting-started/errors.md#error-codes) types only.
+[General](../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
