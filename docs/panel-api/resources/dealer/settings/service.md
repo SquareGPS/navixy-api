@@ -73,15 +73,15 @@ Let's explore the Service Settings object using the following example:
 ```
 
 * `service_title` - string. Name of the service.
-* `locale` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). Default locale of the dealer.
+* `locale` - [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types). Default locale of the dealer.
 * `demo_login` - string. Login used for demo authorization if not empty.
 * `demo_password` - string. Password used for demo authorization if not empty.
-* `maps` - [enum](../../../../backend-api/getting-started/introduction.md#data-types) array. Maps available in the monitoring system. Only free maps are available if the domain is the platform owner's subdomain.
+* `maps` - [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types) array. Maps available in the monitoring system. Only free maps are available if the domain is the platform owner's subdomain.
 * `default_map` - Default map settings object.
-    * `type` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). Default map code.
-    * `location` - Location object. Default location to show on the map when monitoring opens. Described in the [data types description section](../../../../backend-api/getting-started/introduction.md#data-types).
+    * `type` - [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types). Default map code.
+    * `location` - Location object. Default location to show on the map when monitoring opens. Described in the [data types description section](../../../../user-api/backend-api/getting-started/introduction.md#data-types).
     * `zoom` - int. Default zoom level to use.
-* `currency` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). Currency code shown in the UI.
+* `currency` - [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types). Currency code shown in the UI.
 * `payment_link` - string. Link to the dealer's payment system. Can be null or empty.
 * `promo_url` - string. Customizable "About company" URL. Can be null or empty.
 * `google_client_id` - string. Google Maps client ID (not supported by the interface yet).
@@ -98,13 +98,13 @@ Let's explore the Service Settings object using the following example:
 * `default_user_settings` - Default user settings object.
     * `geocoder` - string. Default geocoder.
     * `route_provider` - string. Default route provider.
-    * `measurement_system` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). Measurement system.
-    * `date_format` - Optional [enum](../../../../backend-api/getting-started/introduction.md#data-types). Date representation.
-    * `hour_mode` - Optional [enum](../../../../backend-api/getting-started/introduction.md#data-types). Time representation.
+    * `measurement_system` - [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types). Measurement system.
+    * `date_format` - Optional [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types). Date representation.
+    * `hour_mode` - Optional [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types). Time representation.
     * `translit` - boolean. SMS transliteration. Reduces the number of characters in an SMS by replacing the characters of the national alphabet with close Latin ones if `true`.
 * `display_model_features_link` - boolean. Shows a link to navixy.com in model info if `true` (UI option).
 * `limited_domain` - boolean. Indicates whether the PaaS domain has limitations if `true`.
-* `allowed_maps` - [enum](../../../../backend-api/getting-started/introduction.md#data-types). List of maps available for selection in the "maps" list.
+* `allowed_maps` - [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types). List of maps available for selection in the "maps" list.
 * `color_theme` - string. Max 128 characters. Color theme code or empty string (for the default theme).
 * `app_color_theme` - string. Max 128 characters. Mobile app color theme code or empty string (for the default theme).
 * `privacy_policy_link` - string. Nullable, privacy policy link (it may be empty).
@@ -215,7 +215,7 @@ Only session `hash`.
 
 #### Errors
 
-[General](../../../../backend-api/getting-started/errors.md#error-codes) types only.
+[General](../../../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
 
 
 ### `update`
@@ -233,9 +233,9 @@ Note: wallpapers, logos and favicons cannot be edited here.
 | service_title               | Service name.                                                                   | string                                                                                       |
 | demo_login                  | If not empty, demo button will use this login to authorize.                     | string                                                                                       |
 | demo_password               | If not empty, demo button will use this password to authorize.                  | string                                                                                       |
-| maps                        | Maps available in monitoring system.                                            | [enum](../../../../backend-api/getting-started/introduction.md#data-types) array             |
+| maps                        | Maps available in monitoring system.                                            | [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types) array             |
 | default_map                 | Default map settings object.                                                    | JSON object                                                                                  |
-| currency                    | Code of the currency which will be shown in UI.                                 | [enum](../../../../backend-api/getting-started/introduction.md#data-types)                   |
+| currency                    | Code of the currency which will be shown in UI.                                 | [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types)                   |
 | payment_link                | A link to dealer's payment system. Can be null or empty.                        | string                                                                                       |
 | promo_url                   | Customizable "About company" URL. Can be null or empty.                         | string                                                                                       |
 | google_client_id            | Google maps client ID.                                                          | string                                                                                       |
@@ -246,7 +246,7 @@ Note: wallpapers, logos and favicons cannot be edited here.
 | default_user_settings       | Default user settings object.                                                   | JSON object                                                                                  |
 | display_model_features_link | When `true` shows in model info link to navixy.com (UI option).                 | boolean                                                                                      |
 | limited_domain              | If `true`, paas domain has limitations.                                         | boolean                                                                                      |
-| allowed_maps                | List of maps available for selection in "maps" list.                            | [enum](../../../../backend-api/getting-started/introduction.md#data-types)                   |
+| allowed_maps                | List of maps available for selection in "maps" list.                            | [enum](../../../../user-api/backend-api/getting-started/introduction.md#data-types)                   |
 | color_theme                 | 128 chars max. Color theme code or empty string (for default theme).            | string                                                                                       |
 | app_color_theme             | 128 chars max. Mobile app color theme code or empty string (for default theme). | string                                                                                       |
 | privacy_policy_link         | A link to privacy policy.                                                       | string                                                                                       |
