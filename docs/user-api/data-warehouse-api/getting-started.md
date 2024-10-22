@@ -4,7 +4,7 @@ description: Overview of Navixy Raw IoT Data API.
 ---
 # Navixy Raw IoT Data API
 
-Navixy Raw IoT Data API is a powerful tool designed for developers and data engineers who need access to comprehensive, raw data from GPS and telematics devices. This API allows you to extract unprocessed data with high granularity, enabling detailed analysis and customized solutions. With the Navixy DWH API, you can seamlessly integrate with our platform, retrieve essential data, and leverage it for various applications, including analytics, reporting, and data science.
+Navixy Raw IoT Data API is a powerful tool designed for developers and data engineers who need access to comprehensive, raw data from GPS and telematics devices. This API allows you to extract unprocessed data with high granularity, enabling detailed analysis and customized solutions. With the Navixy Raw IoT Data API, you can seamlessly integrate with our platform, retrieve essential data, and leverage it for various applications, including analytics, reporting, and data science.
 
 ## Overview
 
@@ -12,7 +12,7 @@ The structure of the Raw IoT Data API is mostly similar to the [Backend API](../
 
 ## Time Frame Limits
 
-The Raw IoT Data API allows you to request raw data for periods ranging from one to several months, depending on your plan restrictions. The maximum time frame for data retrieval is determined by your subscription plan, with a common limit for lower tiers being 30 days from the current date. Data stored beyond this period cannot be requested through the DW API.
+The Raw IoT Data API allows you to request raw data for periods ranging from one to several months, depending on your plan restrictions. The maximum time frame for data retrieval is determined by your subscription plan, with a common limit for lower tiers being 30 days from the current date. Data stored beyond this period cannot be requested through the Raw IoT Data API.
 
 ## Base URL
 
@@ -103,7 +103,7 @@ curl -X 'POST' \
   }'
 ```
 
-### Example of Reading Raw Data
+### Example of Reading Raw IoT Data
 
 This example shows how to use the `read` method to fetch parsed raw data values received from tracking devices and decoded by the platform.
 

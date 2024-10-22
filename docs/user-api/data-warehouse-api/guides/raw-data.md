@@ -2,7 +2,7 @@
 title: Requesting raw data
 description: How to request raw tracker data from Navixy Raw IoT Data API and typical use cases.
 ---
-# Requesting Raw Data
+# Requesting Raw IoT Data
 
 Navixy Raw IoT Data API allows telematics solution providers and developers of location-based solutions to access comprehensive, unprocessed data from tracking devices. This enables accurate information retrieval and a deeper understanding of collected data, facilitating issue resolution and integration into other systems for extensive analysis and business use.
 
