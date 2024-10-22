@@ -4,7 +4,7 @@ description: Contains API calls to retrieve trackers raw data.
 ---
 # Raw Data
 
-The Navixy Raw IoT Data API allows you to retrieve all the data sent by your devices in a raw format.
+The Navixy Raw IoT Data API allows you to retrieve all the data sent by your devices in a raw format for 30 days or more, depending on your plan.
 
 !!! note "Parsed raw data — Data obtained immediately after decoding (parsing) incoming data packets, considering the protocol and specifics of the device model from which the packets were received."
 
