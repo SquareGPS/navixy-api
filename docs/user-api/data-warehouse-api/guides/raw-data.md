@@ -4,7 +4,7 @@ description: How to request raw tracker data from Navixy Data Warehouse and typi
 ---
 # Requesting Raw Data
 
-Navixy Data Warehouse API allows telematics solution providers and developers of location-based solutions to access comprehensive, unprocessed data from tracking devices. This enables accurate information retrieval and a deeper understanding of collected data, facilitating issue resolution and integration into other systems for extensive analysis and business use.
+Navixy Raw IoT Data API allows telematics solution providers and developers of location-based solutions to access comprehensive, unprocessed data from tracking devices. This enables accurate information retrieval and a deeper understanding of collected data, facilitating issue resolution and integration into other systems for extensive analysis and business use.
 
 ## Typical Use Case
 
@@ -88,7 +88,7 @@ In addition, we will use names for inputs according to the information obtained 
 
 !!! note "We specify `inputs.lls_level_1` because we know that our device only sends data on this input. If we didn't know the input number, we could have specified all four possible inputs, and then the inputs without data would just get zero values."
 
-The API request [`raw_data/read`](../resources/tracker/raw_data#read) for reading the required raw data in our case should look like this:
+The API request [`raw_data/read`](../resources/tracker/raw_data.md#read) for reading the required raw data in our case should look like this:
 
 === "cURL"
 
@@ -146,7 +146,7 @@ When requesting raw data, you must specify the exact period for which you need t
 
 Similar to the [Backend API](../../backend-api/getting-started/introduction.md), you can specify the date and time in either the standard `YYYY-MM-DD HH:mm:ss` format with or without a time zone or in ISO 8601 format. 
 
-The default format for Data Warehouse API requests is ISO 8601.
+The default format for Raw IoT Data API requests is ISO 8601.
 
 The platform allows you to request raw data for any period within the [time frame limits](../getting-started.md#time-frame-limits).
 

@@ -4,7 +4,7 @@ description: Contains API calls to retrieve trackers raw data.
 ---
 # Raw Data
 
-The Navixy Data Warehouse API allows you to retrieve all the data sent by your devices within the last 30 days in a raw format.
+The Navixy Raw IoT Data API allows you to retrieve all the data sent by your devices in a raw format.
 
 !!! note "Parsed raw data — Data obtained immediately after decoding (parsing) incoming data packets, considering the protocol and specifics of the device model from which the packets were received."
 
@@ -17,7 +17,7 @@ You can access various types of data that your devices send, such as:
 * Status of inputs and outputs,
 * Other attributes.
 
-The Navixy Data Warehouse API provides the following key methods:
+The Navixy Raw IoT Data API provides the following key methods:
 
 - **`get_inputs`**: To retrieve a list of available attributes from a device to understand which ones can be requested in a file.
 - **`read`**: To get a CSV file with decoded data values sent by tracking devices.
@@ -303,7 +303,7 @@ curl -X 'POST' \
 
 
 <video controls style="width: 100%; height: auto;">
-  <source src="../tracker/assets/videos/1_parquet_curl_linux.mp4" type="video/mp4">
+  <source src="../assets/videos/1_parquet_curl_linux.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
