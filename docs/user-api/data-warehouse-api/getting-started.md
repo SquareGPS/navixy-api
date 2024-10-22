@@ -4,15 +4,15 @@ description: Overview of Navixy Raw IoT Data API.
 ---
 # Navixy Raw IoT Data API
 
-Navixy Data Warehouse (DWH) API is a powerful tool designed for developers and data engineers who need access to comprehensive, raw data from GPS and telematics devices. This API allows you to extract unprocessed data with high granularity, enabling detailed analysis and customized solutions. With the Navixy DWH API, you can seamlessly integrate with our platform, retrieve essential data, and leverage it for various applications, including analytics, reporting, and data science.
+Navixy Raw IoT Data API is a powerful tool designed for developers and data engineers who need access to comprehensive, raw data from GPS and telematics devices. This API allows you to extract unprocessed data with high granularity, enabling detailed analysis and customized solutions. With the Navixy DWH API, you can seamlessly integrate with our platform, retrieve essential data, and leverage it for various applications, including analytics, reporting, and data science.
 
 ## Overview
 
-The structure of the Raw IoT Data API is mostly similar to the [Backend API](../backend-api/getting-started/introduction.md). If you're familiar with the basics of the user API, you will find this API intuitive and easy to work with. The DWH API provides robust methods to access raw, unprocessed data, ensuring you can harness the full potential of your connected devices.
+The structure of the Raw IoT Data API is mostly similar to the [Backend API](../backend-api/getting-started/introduction.md). If you're familiar with the basics of the user API, you will find this API intuitive and easy to work with. The Raw IoT Data API provides robust methods to access raw, unprocessed data, ensuring you can harness the full potential of your connected devices.
 
 ## Time Frame Limits
 
-The Data Warehouse (DW) API allows you to request raw data for periods ranging from one to several months, depending on your plan restrictions. The maximum time frame for data retrieval is determined by your subscription plan, with a common limit for lower tiers being 30 days from the current date. Data stored beyond this period cannot be requested through the DW API.
+The Raw IoT Data API allows you to request raw data for periods ranging from one to several months, depending on your plan restrictions. The maximum time frame for data retrieval is determined by your subscription plan, with a common limit for lower tiers being 30 days from the current date. Data stored beyond this period cannot be requested through the DW API.
 
 ## Base URL
 

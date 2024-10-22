@@ -1,6 +1,6 @@
 ---
 title: Requesting raw data
-description: How to request raw tracker data from Navixy Data Warehouse and typical use cases.
+description: How to request raw tracker data from Navixy Raw IoT Data API and typical use cases.
 ---
 # Requesting Raw Data
 
