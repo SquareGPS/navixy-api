@@ -23,7 +23,7 @@ When creating a subscription, you must specify the [applicationServerKey](https:
 
 Our public key in base64 is:
 ```
-BKPE9clw-_CxWE-WlqSkVpLnHT-7rE637udxtfGRUfXshjfCgatSNqNtRp5HjwEukACcdhIPMwPc9Ch7UsZXXY
+BKPE9clw-_CxWE-WlqSkVpLnHT-7rE637udxtfGRUfXshjfCgatSNqNtRp5HjwEukACcdhIPMwPc9Ch7UsZXxY
 ```
 
 Here is a function example:
