@@ -94,7 +94,7 @@ Interval will be restricted by store period interval.
 }
 ```
 
-* `list` - list of zero or more history_entry` objects which described in [Tracker history entry](./index.md#tracker-history-entry) with additional asset parameter. 
+* `list` - list of zero or more history_entry` objects which described in [Tracker history entry](./index.md#tracker-history-entry) with additional optional asset parameter. 
 * `limit_exceeded` - boolean. `false` when listed all history entries satisfied with conditions and `true` otherwise.
 * `total` - int. Amount of history entries satisfied with conditions.
 * `total_unread` - int. Amount of unread history entries satisfied with conditions.
