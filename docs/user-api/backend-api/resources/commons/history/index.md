@@ -40,7 +40,17 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
         "tracker_label": "Tracker label",
         "emergency": false,
         "employee_id": 4563
-    }
+    },
+    "assets": [
+        {
+            "id": 4563,
+            "type": "employee"
+        },
+        {
+            "id": 6345,
+            "type": "vehicle"
+        }
+    ]
 }
 ```
 
@@ -72,6 +82,9 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
     * `sensor_id` - optional int. Related sensor ID.
     * `sensor_name` - optional string. Related sensor name.
     * `sensor_calculated_value` - optional string. Related sensor value.
+* `assets` - optional array of objects. List of related objects containing identifier and type.
+    * `id` - int. Identifier of the asset.
+    * `type` - string. Type of the asset. Can be "vehicle" or "employee".
 
 Date/time type described in [data types description section](../../../getting-started/introduction.md#data-types).
 
