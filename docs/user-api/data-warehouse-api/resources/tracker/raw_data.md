@@ -1,10 +1,10 @@
 ---
-title: Raw data
+title: Raw IoT Data
 description: Contains API calls to retrieve trackers raw data.
 ---
-# Raw Data
+# Raw IoT Data
 
-The Navixy Data Warehouse API allows you to retrieve all the data sent by your devices within the last 30 days in a raw format.
+The Navixy Raw IoT Data API allows you to retrieve all the data sent by your devices in a raw format for 30 days or more, depending on your plan.
 
 !!! note "Parsed raw data — Data obtained immediately after decoding (parsing) incoming data packets, considering the protocol and specifics of the device model from which the packets were received."
 
@@ -17,7 +17,7 @@ You can access various types of data that your devices send, such as:
 * Status of inputs and outputs,
 * Other attributes.
 
-The Navixy Data Warehouse API provides the following key methods:
+The Navixy Raw IoT Data API provides the following key methods:
 
 - **`get_inputs`**: To retrieve a list of available attributes from a device to understand which ones can be requested in a file.
 - **`read`**: To get a CSV file with decoded data values sent by tracking devices.
@@ -124,7 +124,7 @@ be placed in a separate column.
 | name               | type          | description                                                                                                                                                                                                                                                                                                            | format                                                                                                                                                                            | required |
 |:-------------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------|
 | tracker_id         | int           | An ID of a tracker for which you want to retrieve the file with the parsed raw data.                                                                                                                                                                                                                                   | 123456                                                                                                                                                                            | yes      |
-| from               | date/time     | The start date/time for the file, indicating from what moment the parsed raw data should be retrieved. This relates to the message time—when the packet was registered by a tracker. It cannot be more than 30 days ago from the current moment. The time is specified along with the time zone according to ISO 8601. | "2023-08-24T08:04:36Z"                                                                                                                                                            | yes      |
+| from               | date/time     | The start date/time for the file, indicating from what moment the parsed raw data should be retrieved. This relates to the message time—when the packet was registered by a tracker. It can be up to 30 days from current moment or more, depending on your plan. The time is specified along with the time zone according to ISO 8601. | "2023-08-24T08:04:36Z"                                                                                                                                                            | yes      |
 | to                 | date/time     | The end date/time, indicating up to which moment messages should be retrieved into the file. This relates to the message time—when the packet was registered by a tracker. The specified date must be after the "from" date. The time is specified along with the time zone according to ISO 8601.                     | "2023-08-24T08:04:36Z"                                                                                                                                                            | yes      |
 | columns            | string array  | List of attributes to retrieve in CSV/Parquet file. You can obtain it with [get_inputs](raw_data.md#get_inputs) request.                                                                                                                                                                                             | `["flags.location_valid","lat","lng","discrete_inputs.1","inputs.board_voltage"]`                                                                                                 | yes      |
 | server_time_filter | string/object | An interval for additional filtering of messages by server time. If used, messages will be returned not only based on the message time (when the packet was registered by a tracker), but also filtered by the server time (when the message was received by the server).                                              | `"2024-02-03T10:26:26+0500/2024-02-03T10:27:18+0500"` / `{"from": "2024-02-03T10:26:26+0500", "to": "2024-02-03T10:27:18+0500"}` / `{"interval":"2024-02-03T10:26:26+0500/PT1H"}` | no       |
@@ -303,7 +303,7 @@ curl -X 'POST' \
 
 
 <video controls style="width: 100%; height: auto;">
-  <source src="../tracker/assets/videos/1_parquet_curl_linux.mp4" type="video/mp4">
+  <source src="../assets/videos/1_parquet_curl_linux.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

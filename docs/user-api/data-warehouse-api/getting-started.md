@@ -1,22 +1,22 @@
 ---
 title: Getting Started
-description: Overview of Navixy Data Warehouse API.
+description: Overview of Navixy Raw IoT Data API.
 ---
-# Navixy Data Warehouse API
+# Navixy Raw IoT Data API
 
-Navixy Data Warehouse (DWH) API is a powerful tool designed for developers and data engineers who need access to comprehensive, raw data from GPS and telematics devices. This API allows you to extract unprocessed data with high granularity, enabling detailed analysis and customized solutions. With the Navixy DWH API, you can seamlessly integrate with our platform, retrieve essential data, and leverage it for various applications, including analytics, reporting, and data science.
+Navixy Raw IoT Data API is a powerful tool designed for developers and data engineers who need access to comprehensive, raw data from GPS and telematics devices. This API allows you to extract unprocessed data with high granularity, enabling detailed analysis and customized solutions. With the Navixy Raw IoT Data API, you can seamlessly integrate with our platform, retrieve essential data, and leverage it for various applications, including analytics, reporting, and data science.
 
 ## Overview
 
-The structure of the Data Warehouse API is mostly similar to the [Backend API](../backend-api/getting-started/introduction.md). If you're familiar with the basics of the user API, you will find this API intuitive and easy to work with. The DWH API provides robust methods to access raw, unprocessed data, ensuring you can harness the full potential of your connected devices.
+The structure of the Raw IoT Data API is mostly similar to the [Backend API](../backend-api/getting-started/introduction.md). If you're familiar with the basics of the user API, you will find this API intuitive and easy to work with. The Raw IoT Data API provides robust methods to access raw, unprocessed data, ensuring you can harness the full potential of your connected devices.
 
 ## Time Frame Limits
 
-The Data Warehouse (DW) API allows you to request raw data for periods ranging from one to several months, depending on your plan restrictions. The maximum time frame for data retrieval is determined by your subscription plan, with a common limit for lower tiers being 30 days from the current date. Data stored beyond this period cannot be requested through the DW API.
+The Raw IoT Data API allows you to request raw data for periods ranging from one to several months, depending on your plan restrictions. The maximum time frame for data retrieval is determined by your subscription plan, with a common limit for lower tiers being 30 days from the current date. Data stored beyond this period cannot be requested through the Raw IoT Data API.
 
 ## Base URL
 
-Data Warehouse API resides in the `dwh` subsection of the API URL and does not belong to backend APIv2. You need to determine the URL to API calls like this:
+Raw IoT Data API resides in the `dwh` subsection of the API URL and does not belong to backend APIv2. You need to determine the URL to API calls like this:
 * `https://api.eu.navixy.com/dwh/v1` for the European Navixy ServerMate platform.
 * `https://api.us.navixy.com/dwh/v1` for the American Navixy ServerMate platform.
 
@@ -34,7 +34,7 @@ Authentication is handled by the [Backend API](../backend-api/getting-started/au
 
 ### Authorization
 
-Requests to the Data Warehouse API are made using a user session hash or API key. It can be passed as the Authorization HTTP header with the NVX auth scheme or within a `-d` (data) command.
+Requests to the Raw IoT Data API are made using a user session hash or API key. It can be passed as the Authorization HTTP header with the NVX auth scheme or within a `-d` (data) command.
 
 Example:
 
@@ -103,7 +103,7 @@ curl -X 'POST' \
   }'
 ```
 
-### Example of Reading Raw Data
+### Example of Reading Raw IoT Data
 
 This example shows how to use the `read` method to fetch parsed raw data values received from tracking devices and decoded by the platform.
 
@@ -128,4 +128,4 @@ curl -X 'POST' \
   }'
 ```
 
-By leveraging the Navixy Data Warehouse API, developers and data engineers can access and analyze detailed raw data from their GPS and telematics devices, enabling a wide range of custom solutions and insights.
+By leveraging the Navixy Raw IoT Data API, developers and data engineers can access and analyze detailed raw data from their GPS and telematics devices, enabling a wide range of custom solutions and insights.

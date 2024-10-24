@@ -55,6 +55,32 @@ This document contains tracker object structure and API calls to interact with i
     * `ordinal` - int. Number that can be used as ordinal or kind of tag. Must be unique for a tracker. Max value is 5.
 
 
+### Tracker output info
+
+```json
+{
+    "number": 1,
+    "title": "OUT1"
+}
+```
+
+* `number` - int. Output number.
+* `title` - string. User-defined output name.
+
+
+### Tracker input types
+
+* **ignition** - Car's ignition. There can be only one sensor of this type.
+* **engine** - Engine's working status.
+* **mass** - Car's "ground".
+* **car_alarm** - Expected to be "on" when car alarm triggered.
+* **sos_button** - An emergency "red" button.
+* **hood** - "on" if engine's hood is open.
+* **door** - "on" if car's door is open.
+* **car_lock** - "on" if car's central lock is open.
+* **custom** - user-defined type. In general, should have non-empty "name" field.
+
+
 ## API actions
 
 API base path: `/tracker`.
@@ -593,23 +619,208 @@ bound to them (if any).
 * `inputs` - array (boolean) of states of all digital inputs. `[true, true, false]` means input 1 is on, 
   input 2 is on, input 3 is off.
 * `states` - array of state objects.
-    * `type` - [enum](../../../getting-started/introduction.md#data-types). One of predefined semantic input types (see below).
+    * `type` - [enum](../../../getting-started/introduction.md#data-types). One of predefined semantic [input types](#tracker-input-types)
     * `name` - string. User-defined name for semantic input, or null if not specified.
     * `status` - boolean. True if input is active, false otherwise.
     * `input_number` - int. Number of the associated discrete input.
 * `update_time` - [date/time](../../../getting-started/introduction.md#data-types). Date and time when the data updated.
 
-List of `input types`:
+#### Errors
 
-* **ignition** - Car's ignition. There can be only one sensor of this type.
-* **engine** - Engine's working status.
-* **mass** - Car's "ground".
-* **car_alarm** - Expected to be "on" when car alarm triggered.
-* **sos_button** - An emergency "red" button.
-* **hood** - "on" if engine's hood is open.
-* **door** - "on" if car's door is open.
-* **car_lock** - "on" if car's central lock is open.
-* **custom** - user-defined type. In general, should have non-empty "name" field.
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+
+### `batch_get_inputs`
+
+Gets current state of trackers' digital inputs and "semantic" inputs (ignition, buttons, car alarms, etc.)
+bound to them (if any).
+
+#### Parameters
+
+| name     | description                                                                                            | type      | format             |
+|:---------|:-------------------------------------------------------------------------------------------------------|:----------|:-------------------|
+| trackers | IDs of the trackers (aka "object_id"). Each tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
+
+#### Examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/batch_get_inputs' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [265489]}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/batch_get_inputs?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[265489]
+    ```
+
+#### Response
+
+```json
+{
+    "success": true,
+    "user_time": "2021-05-20 13:49:09",
+        "data": {
+            "265489": {<input info>}
+        }    
+}
+```
+
+* `user_time` - [date/time](../../../getting-started/introduction.md#data-types). Current time in user's timezone.
+* `data` - object. Input info mapped to tracker ids.
+
+Input info:
+
+```json
+{
+    "inputs": [true, true, false],
+    "states": [
+        {
+            "type": "ignition",
+            "name": "DIN1",
+            "status": true,
+            "input_number": 1
+        }
+    ],
+    "update_time": "2021-05-20 13:48:02"
+}
+```
+
+* `inputs` - array (boolean) of states of all digital inputs. `[true, true, false]` means input 1 is on,
+  input 2 is on, input 3 is off.
+* `states` - array of state objects.
+  * `type` - [enum](../../../getting-started/introduction.md#data-types). One of predefined semantic [input types](#tracker-input-types)
+  * `name` - string. User-defined name for semantic input, or null if not specified.
+  * `status` - boolean. True if input is active, false otherwise.
+  * `input_number` - int. Number of the associated discrete input.
+* `update_time` - [date/time](../../../getting-started/introduction.md#data-types). Date and time when the data updated.
+
+#### Errors
+
+* 217 - List contains nonexistent entities -  if one of `trackers` either does not exist or is blocked.
+* 221 - Device limit exceeded - if too many IDs were passed in `trackers` parameter.
+
+
+### `get_outputs`
+
+Gets tracker's outputs info
+
+#### Parameters
+
+| name       | description                                                                                     | type | format |
+|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
+| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999119 |
+
+#### Examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/get_outputs' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/get_outputs?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+    ```
+
+#### Response
+
+```json
+{
+    "success": true,
+    "result": [<output info>]
+}
+```
+
+* `result` - array of objects. Array of output info objects described [here](#tracker-output-info).
+
+#### Errors
+
+* 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
+* 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
+
+
+### `batch_get_outputs`
+
+Gets trackers' outputs info
+
+#### Parameters
+
+| name     | description                                                                                            | type      | format             |
+|:---------|:-------------------------------------------------------------------------------------------------------|:----------|:-------------------|
+| trackers | IDs of the trackers (aka "object_id"). Each tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
+
+#### Examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/batch_get_outputs' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [265489]}'
+    ```
+
+=== "HTTP GET"
+
+    ```
+    {{ extra.api_example_url }}/tracker/batch_get_outputs?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[265489]
+    ```
+
+#### Response
+
+```json
+{
+    "success": true,
+    "result": {
+        "265489": [<output info>]
+    }
+}
+```
+
+* `result` - object. Array of output info objects described [here](#tracker-output-info) mapped to tracker ids.
+
+#### Errors
+
+* 217 - List contains nonexistent entities -  if one of `trackers` either does not exist or is blocked.
+* 221 - Device limit exceeded - if too many IDs were passed in `trackers` parameter.
+
+
+### `output/update`
+
+Updates tracker's outputs info
+
+#### Parameters
+
+| name           | description                                                                                     | type                                |
+|:---------------|:------------------------------------------------------------------------------------------------|:------------------------------------|
+| tracker_id     | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                 |
+| tracker_output | Output info object containing number and title.                                                 | [output info](#tracker-output-info) | 
+
+#### Examples
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/tracker/output/update' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "tracker_output": {"number": 1, "title": "OUT1"}}'
+    ```
+
+#### Response
+
+```json
+{
+  "success": true
+}
+```
 
 #### Errors
 

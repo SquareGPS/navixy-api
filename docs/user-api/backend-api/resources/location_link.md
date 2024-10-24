@@ -15,7 +15,7 @@ API path: `/tracker/location/link`.
 
 ### `create`
 
-Creates new Geo Link.
+Creates new Geo Link. There may be up to 10000 geo-links per user account.
 
 **required sub-user rights**: `weblocator_session_create`.
 
