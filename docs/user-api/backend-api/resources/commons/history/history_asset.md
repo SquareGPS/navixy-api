@@ -82,10 +82,12 @@ Interval will be restricted by store period interval.
              "emergency": false,
              "employee_id": 4563
          },
-         "asset": {
-             "id": 1683258,
-             "type": "employee"
-         }
+         "assets": [
+             {
+                 "id": 1683258,
+                 "type": "employee"
+             }
+         ]
     }],
     "limit_exceeded": false,
     "total": 150,
@@ -94,7 +96,7 @@ Interval will be restricted by store period interval.
 }
 ```
 
-* `list` - list of zero or more history_entry` objects which described in [Tracker history entry](./index.md#tracker-history-entry) with additional optional asset parameter. 
+* `list` - list of zero or more history_entry` objects which described in [Tracker history entry](./index.md#tracker-history-entry). 
 * `limit_exceeded` - boolean. `false` when listed all history entries satisfied with conditions and `true` otherwise.
 * `total` - int. Amount of history entries satisfied with conditions.
 * `total_unread` - int. Amount of unread history entries satisfied with conditions.
