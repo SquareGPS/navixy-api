@@ -44,13 +44,14 @@ Changes password of user with the provided session hash (it is contained in a pa
 
 #### Errors
 
-* 101 – In demo mode this function disabled - if specified session hash belongs to demo user.
+* 101 – In demo mode this function is disabled — if the specified session hash belongs to the demo user.
 
 
 ### `set`
 
-Changes password for login user.
-Works only with standard user session (not with API key).
+Changes password for the user.
+Works only with a standard user session (not with an API key).
+If MFA is enabled, it also requires a [session authentication](./auth/factor/email.md).
 
 #### Parameters
 
@@ -77,6 +78,7 @@ Works only with standard user session (not with API key).
 
 #### Errors
 
-* 101 – In demo mode this function disabled - if specified session hash belongs to demo user.
+* 101 – In demo mode this function is disabled — if the specified session hash belongs to the demo user.
 * 245 – New password must be different - if `old_password` = `new_password`.
 * 248 – Wrong password - if `old_password` is wrong.
+* 285 – Multi-factor authentication required.
