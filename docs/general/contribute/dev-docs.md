@@ -174,4 +174,4 @@ Special error codes.
 
 If the response or structure has comments, please write these comments separately in a list format below.
 
-For actual examples, refer to [user](../../user-api/backend-api/resources/commons/user/index.md) and [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).
+For actual examples, refer to [user](../../user-api/backend-api/resources/commons/user/index.md) and [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/master/docs/user-api/backend-api/resources/commons/user/index.md).
