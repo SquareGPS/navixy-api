@@ -32,7 +32,8 @@ Contains API calls to interact with sensors.
       "max_lowering_by_mileage": 120.0,
       "ignore_drains_in_move": true,
       "ignore_refuels_in_move": false,
-      "refuel_gap_minutes": 11
+      "refuel_gap_minutes": 11,
+      "custom_field_name": false
     }
 }
 ```
@@ -53,11 +54,13 @@ Contains API calls to interact with sensors.
     * `volume` - optional. Double. Volume for composite sensor.
     * `min` - optional. Double. Min acceptable raw value for a sensor.
     * `max` - optional. Double. Max acceptable raw value for a sensor.
-    * `max_lowering_by_time` - optional. Double. Max legal value lowering per hour.
-    * `max_lowering_by_mileage` - optional. Double. Max legal value lowering per 100 km.
+    * `max_lowering_by_time` - optional. Double. Maximum legal value lowering per hour.
+    * `max_lowering_by_mileage` - optional. Double. Maximum legal value lowering per 100 km.
     * `ignore_drains_in_move` - optional. Boolean. Default is false. If true, the fuel drains will not be detected during movement.
     * `ignore_refuels_in_move` - optional. Boolean. Default is false. If true, the refuels will not be detected during movement.
-    * `refuel_gap_minutes` -  optional. Integer. Default is 5. Time in minutes after the start of the movement, refuels will be detected during movement.
+    * `refuel_gap_minutes` -  optional. Integer. Default is 5. The time in minutes after the start of the movement, refuels will be detected during movement.
+    * `custom_field_name` - optional. Boolean. Default false. The parameter determines whether the `input_name` field is a custom value was entered by user.
+      This makes sense only if the [tracker model](../index.md#list_models) has the feature `has_custom_fields`.
 
 #### Metering sensor type values
 
@@ -113,6 +116,7 @@ Contains API calls to interact with sensors.
   "sensor_type": "virtual_ignition",
   "name": "Virtual Ignition",
   "input_name": "board_voltage",
+  "custom_field_name": false,
   "parameters": {
     "calc_method": "in_range",
     "range_from": 13.4,
@@ -132,11 +136,13 @@ Contains API calls to interact with sensors.
 * `sensor_type` - [virtual sensor type](index.md#virtual-sensor-type-values). Type of the sensor. "virtual_ignition" for virtual ignition or "state" for others.
 * `name` - string, max size 100. A name of sensor.
 * `input_name` - string, max size 64. A source input field name (identifier).
+* `custom_field_name` - optional. Boolean. Default false. The parameter determines whether the `input_name` field is a custom value was entered by user.
+  This makes sense only if the [tracker model](../index.md#list_models) has the feature `has_custom_fields`.
 * `parameters` - optional object with additional parameters.
     * `calc_method` - [enum](../../../../getting-started/introduction.md#data-types). A method of sensor value calculation. One of this: "in_range", "identity", "bit_index".
     * `range_from` - double. Low bound of range. It is used only with "in_range" calc method.
     * `range_to` - double. High bound of range. It is used only with "in_range" calc method.
-    * `bit_index` - int, [1..N]. A bit index in input field source value. It is used only with "bit_index" calc method.
+    * `bit_index` - int, `[1..N]`. A bit index in input field source value. It is used only with "bit_index" calc method.
     * `value_titles` - mapping for bind special titles for sensor values, if it is necessary.
         * `value` - string, max size 64. Sensor value. 
         * `title` - string, max size 64. Title for the sensor value.
@@ -164,7 +170,7 @@ API base path: `/tracker/sensor`.
 
 List tracker sensors bound to trackers with specified identifiers (parameter `trackers`).
 
-There exist a similar method for working with a single tracker - [list](#list).
+There exists a similar method for working with a single tracker - [list](#list).
 
 #### Parameters
 | Name     | Description                                                                                                                                                                                                                         | Type      |
@@ -299,9 +305,9 @@ Deletes a sensor with `sensor_id` from the database.
 
 #### Errors
 
-* 201 - Not found in the database - if sensor with a sensor_id is not exists or owned by other user.
+* 201 - Not found in the database - if sensor with a `sensor_id` does not exist or owned by another user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
-* 219 – Not allowed for clones of the device - if tracker is clone.
+* 219 – Not allowed for clones of the device - if tracker is a clone.
 
 
 ### `list`
@@ -387,11 +393,11 @@ Updates sensor.
 
 #### Errors
 
-* 201 - Not found in the database – if sensor not exists or owned by other user.
+* 201 - Not found in the database – if sensor does not exist or owned by another user.
 * 232 - Input already in use – if given input number (for discrete input) or input name (for metering sensor) already 
 in use.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
-* 219 - Not allowed for clones of the device – if tracker is clone.
+* 219 - Not allowed for clones of the device – if tracker is a clone.
 
 
 ### batch_copy
@@ -431,7 +437,7 @@ Copies sensors from one tracker to another.
 #### Errors
 
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
-* 272 – Trackers must have same models - if base tracker and one of target trackers has a different model.
+* 272 – Trackers must have the same model - if base tracker and one of target trackers has a different model.
 
 ### data/read
 

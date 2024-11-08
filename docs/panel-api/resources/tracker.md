@@ -264,14 +264,14 @@ Gets list of all bundles. If `filter` is used, entities will be returned only if
 
 #### Parameters
 
-| name                                  | description                                                                                                                                                                 | type                                                    |
-|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
+| name                                  | description                                                                                                                                                                 | type                                                                          |
+|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|
 | clones_filter                         | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
 | filter  Optional. Text filter string. | string                                                                                                                                                                      |
 | order_by                              | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`.        | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
-| ascending                             | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                                 |
-| offset                                | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                                     |
-| limit                                 | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                                     |
+| ascending                             | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                                                       |
+| offset                                | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                                                           |
+| limit                                 | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                                                           |
 
 #### Examples
 
