@@ -19,7 +19,7 @@ Contains API calls to interact with asset groups.
 
 * `id` - int. ID of the group.
 * `name` - string. Name of the group.
-* `assets` - list of Asset objects described [below](#asset-entry). Can be empty.
+* `assets` - list of asset objects described [below](#asset-entry). Can be empty.
 
 
 ## Asset entry
@@ -43,11 +43,11 @@ Create new asset group.
 
 #### Parameters
 
-| name           | description                                                                                                                        | type                            |
-|:---------------|:-----------------------------------------------------------------------------------------------------------------------------------|:--------------------------------|
-| name           | Optional. If not set, defaults to the new entry ID. Name of the group.                                                             | string                          |
-| assets         | Assets to include to group. Only one assets of each type is allowed.                                                               | array of [assets](#asset-entry) |
-| force_reassign | Optional. Default is `false`. If `true`, assets will be reassigned to the created group even if they were assigned to another one. | boolean                         |
+| name           | description                                                                                                                                                   | type                            |
+|:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------|
+| name           | Optional. If not set, defaults to the new entry ID. Name of the group.                                                                                        | string                          |
+| assets         | Assets to include to group. Only one assets of each type is allowed.                                                                                          | array of [assets](#asset-entry) |
+| force_reassign | Optional. Default is `false`. If `true`, assets will be assigned even if they were assigned to another group, and their previous assignments will be removed. | boolean                         |
 
 #### Example
 
@@ -67,26 +67,32 @@ Create new asset group.
 ```json
 {
   "id": 25684,
+  "reassigned_assets": [<asset>],
   "success": true
 }
 ```
 
 * `id` - int. ID of the group.
+* `reassigned_assets` - list of asset objects described [here](#asset-entry) that were removed during reassignment. Optional.
 
 #### Errors
 
 * 201 - Not found in the database - when there are no assets in the db.
 * 285 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group.
+  Response will contain `assigned_assets` - list of assets that are already assigned to a group.
 
 ### `list`
 
-List asset groups by ids.
+List asset groups by ids or asset.
 
 #### Parameters
 
-| name   | description       | type      |
-|:-------|:------------------|:----------|
-| groups | IDs of the groups | int array |
+| name      | description                    | type                         |
+|:----------|:-------------------------------|:-----------------------------|
+| group_ids | IDs of the groups to search by | int array                    |
+| asset     | Asset to search by             | [asset object](#asset-entry) |
+
+* Exactly one parameter must be specified: `group_ids` or `asset`.
 
 #### Example
 
@@ -97,7 +103,7 @@ List asset groups by ids.
         -H 'Content-Type: application/json' \
         -d '{
     "hash":"59be129c1855e34ea9eb272b1e26ef1d",
-    "groups": [25684, 25685]
+    "group_ids": [25684, 25685]
     }'
     ```
 
@@ -110,46 +116,7 @@ List asset groups by ids.
 }
 ```
 
-* `list` - object array. Asset objects described [here](#asset-entry).
-
-#### Errors
-
-* 201 - Not found in the database - when there are no group in the db.
-
-
-### `read`
-
-Read asset group by asset.
-
-#### Parameters
-
-| name  | description        | type                         |
-|:------|:-------------------|:-----------------------------|
-| asset | Asset to search by | [asset object](#asset-entry) |
-
-#### Example
-
-=== "cURL"
-
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/asset_group/read' \
-        -H 'Content-Type: application/json' \
-        -d '{
-    "hash":"59be129c1855e34ea9eb272b1e26ef1d",
-    "asset": {"id": 36558, "type": "employee"}
-    }'
-    ```
-
-#### Response
-
-```json
-{
-  "value": {<asset_group>},
-  "success": true
-}
-```
-
-* `value` - object. Asset object described [here](#asset-entry).
+* `list` - object array. Asset groups described [here](#asset-group-entry).
 
 #### Errors
 
@@ -162,11 +129,11 @@ Set assets to existing group.
 
 #### Parameters
 
-| name           | description                                                                                                                       | type                            |
-|:---------------|:----------------------------------------------------------------------------------------------------------------------------------|:--------------------------------|
-| id             | ID of the group.                                                                                                                  | int                             |
-| assets         | Assets to set to group. Only one assets for each type is allowed.                                                                 | array of [assets](#asset-entry) |
-| force_reassign | Optional. Default is `false`. If `true`, assets will be reassigned to the group even if they were assigned to another one.        | boolean                         |
+| name           | description                                                                                                                                                   | type                            |
+|:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------|
+| id             | ID of the group.                                                                                                                                              | int                             |
+| assets         | Assets to set to group. Only one assets for each type is allowed.                                                                                             | array of [assets](#asset-entry) |
+| force_reassign | Optional. Default is `false`. If `true`, assets will be assigned even if they were assigned to another group, and their previous assignments will be removed. | boolean                         |
 
 #### Example
 
@@ -186,14 +153,18 @@ Set assets to existing group.
 
 ```json
 {
-  "success": true
+  "success": true,
+  "reassigned_assets": [<asset>]
 }
 ```
+
+* `reassigned_assets` - list of asset objects described [here](#asset-entry) that were removed during reassignment. Optional.
 
 #### Errors
 
 * 201 - Not found in the database - when there are no asset or no group with asset in the db.
-* 285 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group.
+* 285 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group. 
+Response will contain `assigned_assets` - list of assets that are already assigned to a group.
 
 
 ### `remove`
@@ -231,8 +202,10 @@ Remove assets from group.
 
 #### Errors
 
-* 201 - Not found in the database - when there are no asset or no group with asset in the db.
-* 286 - All Assets must be present in the group - if not all assets are present in the group.
+* 201 - Not found in the database - when there are no group in the db.
+* 286 - All assets must be present in the group - if not all assets are present in the group.
+* 287 - At least 1 asset in the group must be accessible - if the requested assets contain assets inaccessible to the user,
+and after deletion there will be no assets in the group that are accessible to the user.
 
 
 ### `update`
@@ -241,10 +214,10 @@ Update asset group name.
 
 #### Parameters
 
-| name | description        | type   |
-|:-----|:-------------------|:-------|
-| id   | ID of the group.   | int    |
-| name | Name of the group. | string |
+| name | description             | type   |
+|:-----|:------------------------|:-------|
+| id   | ID of the group.        | int    |
+| name | New name for the group. | string |
 
 #### Example
 
@@ -271,6 +244,7 @@ Update asset group name.
 #### Errors
 
 * 201 - Not found in the database - when there are no group in the db.
+* 287 - At least 1 asset in the group must be accessible - if the group contains no assets accessible to the user.
 
 
 ### `delete`
@@ -282,6 +256,8 @@ Delete asset group.
 | name | description        | type   |
 |:-----|:-------------------|:-------|
 | id   | ID of the group.   | int    |
+
+* The group will be marked as deleted, but its history will remain intact.
 
 #### Example
 
@@ -307,3 +283,4 @@ Delete asset group.
 #### Errors
 
 * 201 - Not found in the database - when there are no group in the db.
+* 289 - All assets in the group must be accessible - if there are assets in the group that are not accessible to the user.
