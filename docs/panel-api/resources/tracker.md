@@ -59,8 +59,9 @@ API calls to manage GPS tracking devices within the Admin Panel.
     * `tariff_id` - int. An ID of tracker's tariff from "main_tariffs" table.
     * `creation_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date when this tracker first registered in the system.
     * `tariff_end_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date of next tariff prolongation or null.
-    * `connection_status` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). Current connection status.
-    * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
+    * `connection_status` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). 
+      Device connection status, possible values: "signal_lost", "just_registered", "just_replaced", "offline", "idle", "active"
+    * `phone` - string. Phone of the device. Can be null or empty if the device has no GSM module or uses bundled SIM which number hidden from the user.
     * `corrupted` - boolean. `true` when tracker has been corrupted using /tracker/corrupt, and not passed when it is not corrupted.
 
 

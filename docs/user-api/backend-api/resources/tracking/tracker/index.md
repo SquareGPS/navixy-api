@@ -1052,7 +1052,7 @@ Gets current tracker state (gps, gsm, outputs, etc.).
     * `precision` - int. Optional. Precision in meters.
     * `gsm_lbs` - boolean. Optional. True if location detected by GSM LBS.
 * `connection_status` - [enum](../../../getting-started/introduction.md#data-types). Device connection status, possible values: "signal_lost", 
-"just_registered", "offline", "idle", "active".
+  "just_registered", "just_replaced", "offline", "idle", "active".
 * `movement_status` - [enum](../../../getting-started/introduction.md#data-types). Movement status, possible values: "moving", "stopped", "parked".
 * `gsm` - object. Can be null if device does not support transmission of gsm info.
     * `updated` - [date/time](../../../getting-started/introduction.md#data-types). Date of last gsm status update in a timezone of the user or null if there are no updates.
