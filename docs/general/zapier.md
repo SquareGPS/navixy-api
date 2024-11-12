@@ -59,7 +59,7 @@ Example use cases include:
     * **Tracker IDs:** Find them in the admin panel or user interface.
       ![Tracker ID admin panel](../general/assets/trackerIDPanel.png)
       ![Tracker ID user interface](../general/assets/trackerIDUI.png)
-    * **Event Types:** Choose one or multiple event types from the provided list.
+    * **Event Types:** Specify one or multiple event types separated by comma from the provided list by click on the parameter name in Zapier or using [history/type/list](../user-api/backend-api/resources/commons/history/history_type.md#list) API request.
     * **Account's Time Zone:** Specify the time zone (e.g., UTC+3 as 3).
     * **Time Interval:** Set the interval for event checks in minutes (e.g., 15 minutes).
 

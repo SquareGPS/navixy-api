@@ -824,12 +824,12 @@ New balance (bonus) must be not negative.
 
 #### Parameters
 
-| name    | description                                             | type                                                    |
-|:--------|:--------------------------------------------------------|:--------------------------------------------------------|
-| user_id | An ID of user whom balance changed.                     | int                                                     |
-| amount  | Amount to change. Can be negative.                      | double (2 digits after decimal mark)                    |
+| name    | description                                             | type                                                                             |
+|:--------|:--------------------------------------------------------|:---------------------------------------------------------------------------------|
+| user_id | An ID of user whom balance changed.                     | int                                                                              |
+| amount  | Amount to change. Can be negative.                      | double (2 digits after decimal mark)                                             |
 | type    | Type of balance to change. Can be "balance" or "bonus". | [enum](../../../user-api/backend-api/getting-started/introduction.md#data-types) |
-| text    | Description of transaction.                             | string (min length is 5 chars)                          |
+| text    | Description of transaction.                             | string (min length is 5 chars)                                                   |
 
 #### Example
 

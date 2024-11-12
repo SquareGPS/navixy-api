@@ -18,8 +18,8 @@ Gets information about all supported timezones for the specified locale. Does no
 
 #### Parameters
 
-| name   | description                                  | type                                                    |
-|:-------|:---------------------------------------------|:--------------------------------------------------------|
+| name   | description                                  | type                                                                          |
+|:-------|:---------------------------------------------|:------------------------------------------------------------------------------|
 | locale | Locale code to set language of descriptions. | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
 
 #### Examples

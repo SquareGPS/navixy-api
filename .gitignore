@@ -1,5 +1,9 @@
 # Default ignored files
 .*/
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
 /.idea/
 /.site/
 /venv/

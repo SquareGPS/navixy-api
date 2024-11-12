@@ -111,14 +111,14 @@ If "filter" is used, entities will be returned only if filter string contains on
 
 #### Parameters
 
-| name        | description                                                                               | type                                                    |
-|:------------|:------------------------------------------------------------------------------------------|:--------------------------------------------------------|
+| name        | description                                                                               | type                                                                          |
+|:------------|:------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|
 | device_type | Optional. Filter by device type. One of "tracker", "camera" or "socket".                  | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
-| filter      | Optional. Text filter.                                                                    | string                                                  |
-| order_by    | Optional. List ordering. One of: `id`, `name`, `device_type`, `group_id`, `price`.        | string                                                  |
-| ascending   | Optional. Default is `true`. If `true`, ordering will be ascending, descending otherwise. | boolean                                                 |
-| offset      | Optional. Default is `0`. Starting offset, used for pagination.                           | int                                                     |
-| limit       | Optional. Max number of records to return, used for pagination.                           | int                                                     |
+| filter      | Optional. Text filter.                                                                    | string                                                                        |
+| order_by    | Optional. List ordering. One of: `id`, `name`, `device_type`, `group_id`, `price`.        | string                                                                        |
+| ascending   | Optional. Default is `true`. If `true`, ordering will be ascending, descending otherwise. | boolean                                                                       |
+| offset      | Optional. Default is `0`. Starting offset, used for pagination.                           | int                                                                           |
+| limit       | Optional. Max number of records to return, used for pagination.                           | int                                                                           |
 
 #### Examples
 

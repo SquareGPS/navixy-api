@@ -59,8 +59,9 @@ API calls to manage GPS tracking devices within the Admin Panel.
     * `tariff_id` - int. An ID of tracker's tariff from "main_tariffs" table.
     * `creation_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date when this tracker first registered in the system.
     * `tariff_end_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date of next tariff prolongation or null.
-    * `connection_status` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). Current connection status.
-    * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
+    * `connection_status` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). 
+      Device connection status, possible values: "signal_lost", "just_registered", "just_replaced", "offline", "idle", "active"
+    * `phone` - string. Phone of the device. Can be null or empty if the device has no GSM module or uses bundled SIM which number hidden from the user.
     * `corrupted` - boolean. `true` when tracker has been corrupted using /tracker/corrupt, and not passed when it is not corrupted.
 
 
@@ -264,14 +265,14 @@ Gets list of all bundles. If `filter` is used, entities will be returned only if
 
 #### Parameters
 
-| name                                  | description                                                                                                                                                                 | type                                                    |
-|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
+| name                                  | description                                                                                                                                                                 | type                                                                          |
+|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|
 | clones_filter                         | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
 | filter  Optional. Text filter string. | string                                                                                                                                                                      |
 | order_by                              | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`.        | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
-| ascending                             | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                                 |
-| offset                                | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                                     |
-| limit                                 | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                                     |
+| ascending                             | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                                                       |
+| offset                                | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                                                           |
+| limit                                 | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                                                           |
 
 #### Examples
 

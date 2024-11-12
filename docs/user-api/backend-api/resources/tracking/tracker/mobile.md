@@ -29,8 +29,8 @@ Common parameters are:
 | name                   | description                                                                                                                                                                                 | type    | format          |
 |:-----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|:----------------|
 | label                  | User-defined label for this tracker. Must consist of printable characters and have length between 1 and 60.                                                                                 | string  | "Courier"       |
-| group_id               | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](group.md#list).                                                             | int     | 0               |
-| device_id              | **Must** be specified if device model uses fixed device id. See [tracker/list_models](index.md#list_models).                                                                              | string  | "4568005588562" |
+| group_id               | Tracker group id, 0 if tracker does not belong to any group. The specified group must exist. See [group/list](group.md#list).                                                               | int     | 0               |
+| device_id              | **Must** be specified if device model uses fixed device id. See [tracker/list_models](index.md#list_models).                                                                                | string  | "4568005588562" |
 | send_register_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals  `null` will be used the platform settings. Default: `null`. | boolean | true/false      |
 
 #### Response

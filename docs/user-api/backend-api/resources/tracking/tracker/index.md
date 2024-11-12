@@ -1052,7 +1052,7 @@ Gets current tracker state (gps, gsm, outputs, etc.).
     * `precision` - int. Optional. Precision in meters.
     * `gsm_lbs` - boolean. Optional. True if location detected by GSM LBS.
 * `connection_status` - [enum](../../../getting-started/introduction.md#data-types). Device connection status, possible values: "signal_lost", 
-"just_registered", "offline", "idle", "active".
+  "just_registered", "just_replaced", "offline", "idle", "active".
 * `movement_status` - [enum](../../../getting-started/introduction.md#data-types). Movement status, possible values: "moving", "stopped", "parked".
 * `gsm` - object. Can be null if device does not support transmission of gsm info.
     * `updated` - [date/time](../../../getting-started/introduction.md#data-types). Date of last gsm status update in a timezone of the user or null if there are no updates.
@@ -1234,6 +1234,7 @@ Gets all integrated tracker models (from "models" table).
     "gsm_roaming": true,
     "has_detach_button": false,
     "has_fuel_input": true,
+    "has_custom_fields": false,
     "analog_inputs": 2,
     "digital_inputs": 4,
     "rs232_inputs": 0,
@@ -1286,13 +1287,16 @@ Gets all integrated tracker models (from "models" table).
   over a GPRS connection.
 * `has_gsm_lbs_location_request` - boolean. `true` if the tracker has an opportunity to request a location by LBS
   with a command over a GPRS connection.
-* `has_chat` - boolean. `true` if chat available for the device.
+* `has_chat` - boolean. `true` if chat is available for a device with this model.
 * `has_odometer` - boolean. `true` if the tracker has an integrated odometer.
 * `has_lbs` - boolean. `true` if the tracker sends information about cell info.
 * `has_motion_sensor` - boolean. `true` if the tracker has an integrated motion sensor.
 * `has_hardware_key` - boolean. `true` if the tracker has an opportunity for identification of a driver by a hardware key.
 * `additional_fields` - optional. List of descriptions of special fields using for control trackers that
   users fill on time of registration.
+* `has_custom_fields` - boolean, optional, default `false`.
+  `true` if the protocol of this model supports transmission of fields (attributes) names.
+  It allows to set a custom `input_name` for [sensors](./sensor/index.md). 
 
 ##### ID type
 
