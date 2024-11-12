@@ -275,6 +275,7 @@ accuracy of the sensor in a span of ten minutes.
 | sensor_id           | ID of tracked sensor. Should be a fuel level sensor. Only specified if `tracker_params` is not specified.                     | int          |
 | emergency           | If `true` enables emergency notification.                                                                                     | boolean      |
 | private_rule        | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                               | boolean      |
+| display_value       | Show or not the fuel level in a notification text. Default is: `false`.                                                       | boolean      |
 | zone_limit_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                        | boolean      |
 | append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean      |
 | tracker_params      | An optional object. Specifies a list of sensors to be tracked in the rule, including for different trackers.                  | JSON object  |
@@ -1355,21 +1356,22 @@ A rule that triggers when value of a chosen measurement sensor gets into or out 
 
 #### Parameters
 
-| name           | description                                                                                         | type                                              |
-|----------------|-----------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| name           | description                                                                                         | type                                                           |
+|----------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
 | type           | `sensor_range` for this rule type.                                                                  | [enum](../../../../getting-started/introduction.md#data-types) |
-| primary_text   | Text of rule notification when sensor value goes out range. It is for `sensor_outrange` event type. | string                                            |
-| secondary_text | Text of rule notification when sensor value goes into range. It is for `sensor_inrange` event type. | string                                            |
+| primary_text   | Text of rule notification when sensor value goes out range. It is for `sensor_outrange` event type. | string                                                         |
+| secondary_text | Text of rule notification when sensor value goes into range. It is for `sensor_inrange` event type. | string                                                         |
 
 #### extended parameters
 
-| name            | description                                                                                                                              | type        |
-|-----------------|------------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| sensor_id       | ID of a tracked sensor. Only specified if `tracker_params` is not specified.                                                             | int         |
-| threshold       | A threshold for a sensor. If the parameter is omitted or null, the default value 0.03 is used. Ignored if `tracker_params` is specified. | double      |
-| min             | A minimum range value. Ignored if `tracker_params` is specified.                                                                         | double      |
-| max             | A maximum range value. Ignored if `tracker_params` is specified.                                                                         | double      |
-| tracker_params  | An optional object. Specifies a list of parameters to be tracked in the rule, including for different trackers.                          | JSON object |
+| name           | description                                                                                                                              | type        |
+|----------------|------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| sensor_id      | ID of a tracked sensor. Only specified if `tracker_params` is not specified.                                                             | int         |
+| threshold      | A threshold for a sensor. If the parameter is omitted or null, the default value 0.03 is used. Ignored if `tracker_params` is specified. | double      |
+| min            | A minimum range value. Ignored if `tracker_params` is specified.                                                                         | double      |
+| max            | A maximum range value. Ignored if `tracker_params` is specified.                                                                         | double      |
+| display_value  | Show or not the sensor value in a notification text. Default is: `true`.                                                                 | boolean     |
+| tracker_params | An optional object. Specifies a list of parameters to be tracked in the rule, including for different trackers.                          | JSON object |
 
 #### tracker_params
 
@@ -1395,40 +1397,37 @@ Example:
   ]
 }
 ```
-
-
 ### State field value
 
 A rule that triggers when specified value of a chosen state field sensor detected.
 
 #### Parameters
 
-| name         | description                                                                                                     | type                                              |
-|--------------|-----------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| name         | description                                                                                                     | type                                                           |
+|--------------|-----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
 | type         | `state_field_control` for this rule type.                                                                       | [enum](../../../../getting-started/introduction.md#data-types) |
-| primary_text | Text of rule notification when state field determines chosen value. It is for `state_field_control` event type. | string                                            |
+| primary_text | Text of rule notification when state field determines chosen value. It is for `state_field_control` event type. | string                                                         |
 
 #### extended parameters
 
-| name                 | description                                                                                                     | type                                              |
-|----------------------|-----------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
-| allow_repeat         | Allows notification repeating even if state field value doesn't change.                                         | bool                                              |
-| repeat_delay_seconds | How many seconds must pass with the same value before notification will be generated again.                     | int                                               |
-| trigger_value        | Expected value to trigger the rule. Only specified if `tracker_params` is not specified.                        | string                                            |
+| name                 | description                                                                                                     | type                                                           |
+|----------------------|-----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| allow_repeat         | Allows notification repeating even if state field value doesn't change.                                         | bool                                                           |
+| repeat_delay_seconds | How many seconds must pass with the same value before notification will be generated again.                     | int                                                            |
+| trigger_value        | Expected value to trigger the rule. Only specified if `tracker_params` is not specified.                        | string                                                         |
 | state_field          | State field code. Only specified if `virtual_sensor_id` and `tracker_params` are not specified.                 | [enum](../../../../getting-started/introduction.md#data-types) |
-| virtual_sensor_id    | ID of virtual sensor. Only specified if `state_field` and `tracker_params` are not specified.                   | int                                               |
-| tracker_params       | An optional object. Specifies a list of parameters to be tracked in the rule, including for different trackers. | JSON object                                       |
+| virtual_sensor_id    | ID of virtual sensor. Only specified if `state_field` and `tracker_params` are not specified.                   | int                                                            |
+| display_value        | Show or not the sensor value in a notification text. Default is: `false`.                                       | boolean                                                        |
+| tracker_params       | An optional object. Specifies a list of parameters to be tracked in the rule, including for different trackers. | JSON object                                                    |
 
 #### tracker_params
 
-
-
-| name               | description                                                                                     | type                                              |
-|--------------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------|
-| tracker_id         | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                               |
-| trigger_value      | Expected value to trigger the rule.                                                             | string                                            |
+| name               | description                                                                                     | type                                                           |
+|--------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| tracker_id         | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                                            |
+| trigger_value      | Expected value to trigger the rule.                                                             | string                                                         |
 | state_field        | State field code. Only specified if `virtual_sensor_id` is not specified.                       | [enum](../../../../getting-started/introduction.md#data-types) |
-| virtual_sensor_id  | ID of virtual sensor. Only specified if `state_field` is not specified.                         | int                                               |
+| virtual_sensor_id  | ID of virtual sensor. Only specified if `state_field` is not specified.                         | int                                                            |
 
 ```json
 {
@@ -1444,4 +1443,3 @@ A rule that triggers when specified value of a chosen state field sensor detecte
   ]
 }
 ```
-
