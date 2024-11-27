@@ -21,6 +21,17 @@ Contains API calls to interact with asset groups.
 * `name` - string. Name of the group.
 * `assets` - list of asset objects described [below](#asset-entry). Can be empty.
 
+## Asset group object entry
+```json
+{
+  "asset" : {<asset>},
+  "group_id" : 64584
+}
+```
+
+* `asset` - asset described [below](#asset-entry).
+* `group_id` - int. ID of the group.
+
 
 ## Asset entry
 ```json
@@ -67,19 +78,19 @@ Create new asset group.
 ```json
 {
   "id": 25684,
-  "reassigned_assets": [<asset>],
+  "reassigned_assets": [<asset_group_object>],
   "success": true
 }
 ```
 
 * `id` - int. ID of the group.
-* `reassigned_assets` - list of asset objects described [here](#asset-entry) that were removed during reassignment. Optional.
+* `reassigned_assets` - list of asset group objects described [here](#asset-group-object-entry) that were removed during reassignment. Optional.
 
 #### Errors
 
 * 201 - Not found in the database - when there are no assets in the db.
 * 285 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group.
-  Response will contain `assigned_assets` - list of assets that are already assigned to a group.
+Response will contain `assigned_assets` - list of asset group objects described [here](#asset-group-object-entry) that are already assigned to a group.
 
 ### `list`
 
@@ -154,17 +165,17 @@ Set assets to existing group.
 ```json
 {
   "success": true,
-  "reassigned_assets": [<asset>]
+  "reassigned_assets": [<asset_group_object>]
 }
 ```
 
-* `reassigned_assets` - list of asset objects described [here](#asset-entry) that were removed during reassignment. Optional.
+* `reassigned_assets` - list of asset group objects described [here](#asset-group-object-entry) that were removed during reassignment. Optional.
 
 #### Errors
 
 * 201 - Not found in the database - when there are no asset or no group with asset in the db.
 * 285 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group. 
-Response will contain `assigned_assets` - list of assets that are already assigned to a group.
+Response will contain `assigned_assets` - list of asset group objects described [here](#asset-group-object-entry) that are already assigned to a group.
 
 
 ### `remove`
