@@ -1287,11 +1287,11 @@ Gets all integrated tracker models (from "models" table).
   "connection": [{
     "protocol": "NGP",
     "transport": "HTTPS",
-    "url": "https://ngp-tracker.navixy.com"
+    "url": "https://ngp-tracker.example.com"
   }, {
     "protocol": "NGP",
     "transport": "MQTTS",
-    "url": "mqtts://ngp_device:secretword@mqtt.navixy.com:8883/ngp",
+    "url": "mqtts://ngp_device:secretword@example.com:8883/ngp",
     "description": "Credentials for connection: login: ngp_device, password: secretword, topic: ngp.#"
   }
   ],
