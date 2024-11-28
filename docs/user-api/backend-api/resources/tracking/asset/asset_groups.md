@@ -215,8 +215,7 @@ Remove assets from group.
 
 * 201 - Not found in the database - when there are no group in the db.
 * 286 - All assets must be present in the group - if not all assets are present in the group.
-* 287 - At least 1 asset in the group must be accessible - if the requested assets contain assets inaccessible to the user,
-and after deletion there will be no assets in the group that are accessible to the user.
+* 287 - if the group contains no assets accessible to the user.
 
 
 ### `update`
