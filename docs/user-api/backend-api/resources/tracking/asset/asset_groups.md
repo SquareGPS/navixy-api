@@ -89,7 +89,7 @@ Create new asset group.
 #### Errors
 
 * 201 - Not found in the database - when there are no assets in the db.
-* 285 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group.
+* 290 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group.
 Response will contain `assigned_assets` - list of asset group objects described [here](#asset-group-object-entry) that are already assigned to a group.
 
 ### `list`
@@ -174,7 +174,7 @@ Set assets to existing group.
 #### Errors
 
 * 201 - Not found in the database - when there are no asset or no group with asset in the db.
-* 285 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group. 
+* 290 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group. 
 Response will contain `assigned_assets` - list of asset group objects described [here](#asset-group-object-entry) that are already assigned to a group.
 
 
