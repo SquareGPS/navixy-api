@@ -166,7 +166,8 @@ Message fields:
 
 * `type` - "event".
 * `event` - "readings_batch".
-* `data` -  [readings_batch](../resources/tracking/tracker/readings.md#readings-batch-object) array.
+* `data` -  [readings_batch](../resources/tracking/tracker/readings.md#readings-batch-object) array. Each element
+  contains only changed objects.
 * `user_time` - current time in user's timezone.
 
 Message sample:

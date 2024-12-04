@@ -34,8 +34,8 @@ Request parameters:
 
 ### The "state_batch" event subscription
 
-After subscribe on the "state_batch",
-server will send the current states of all non-blocked trackers to which the subscription made in one packet.
+After subscribing to "state_batch",
+server will send the current states of all non-blocked trackers included in the subscription in a single packet.
 Receiver must be able to parse data from different devices in this packet.
 After each period equal to `rate_limit`,
 the server will send a list of changed tracker states in the [event message](./events.md#state-batch-event).
@@ -70,13 +70,10 @@ the server will send a list of changed tracker states in the [event message](./e
     * `type` - required, text: _"selected"_.
     * `tracker_ids` - required, int array.
 
-If you use target 'selected' for some devices and then subscribe again to other devices - in state_batch event you will 
-receive data from all subscribed devices at once.
-
 ### The "state" event subscription
 
-After subscribe on the "state",
-server will send the current states of all non-blocked trackers to which the subscription made in a separate packets.
+After subscribing to "state",
+server will send the current states of all non-blocked trackers included in the subscription in separate packets.
 Receiver must be able to read information from these packets separately.
 When changing the state of any tracker to which a subscription made,
 the server will send a new state in the [event message](./events.md#state-event).
@@ -104,11 +101,11 @@ the server will send a new state in the [event message](./events.md#state-event)
 
 ### The "readings_batch" event subscription
 
-After subscribe on the "readings_batch",
-server will send the current readings of all non-blocked trackers to which the subscription made in one packet.
+After subscribing to "readings_batch",
+server will send the current readings of all non-blocked trackers included in the subscription in a single packet.
 Receiver must be able to parse data from different devices in this packet.
 After each period equal to `rate_limit`,
-the server will send a list of changed tracker readings in the [event message](./events.md#readings-batch-event).
+the server will send readings updates in the [event message](./events.md#readings-batch-event).
 
 ```json
 {
@@ -134,9 +131,6 @@ the server will send a list of changed tracker readings in the [event message](.
 * `sensor_type` - optional, [metering sensor type](../resources/tracking/tracker/sensor/index.md#metering-sensor-type-values) or [virtual sensor type](../resources/tracking/tracker/sensor/index.md#virtual-sensor-type-values).
 If specified, state values and counters will be omitted. Used to filter sensors by type.
 * `include_components` - optional, boolean. Default is `true`. If set to `false`, parts of composite sensors will be excluded.
-
-If you use target 'selected' for some devices and then subscribe again to other devices - in readings_batch event you will
-receive data from all subscribed devices at once.
 
 ### Response
 
