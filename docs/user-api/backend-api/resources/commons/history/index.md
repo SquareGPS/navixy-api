@@ -82,6 +82,8 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
     * `sensor_id` - optional int. Related sensor ID.
     * `sensor_name` - optional string. Related sensor name.
     * `sensor_calculated_value` - optional string. Related sensor value.
+    * `employee_full_name` - optional string. Related driver full name.
+    * `vehicle_label` - optional string. Related vehicle label.
 * `assets` - optional array of objects. List of related objects containing identifier and type.
     * `id` - int. Identifier of the asset.
     * `type` - string. Type of the asset. Can be "vehicle" or "employee".
