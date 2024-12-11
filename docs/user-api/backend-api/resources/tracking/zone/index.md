@@ -498,9 +498,15 @@ Gets all geofence IDs and names within which a specified coordinates are located
 
 ### `update`
 
-Update geofence parameters for the specified geofence. Note that geofence must exist, must belong to the current user, and its 
-type cannot be changed. E.g., if you already have a geofence with ID=1 which type is "circle", not possible to submit a geofence 
-which type is "polygon".
+Update geofence parameters for the specified geofence.
+
+!!! note "Notes"
+
+    - The geofence must exist, belong to the current user, and its type cannot be modified.
+    For example, if you already have a geofence with ID=1 of type "circle",
+    you cannot submit a geofence with the same ID but of type "polygon".
+    - If the `zone` object is of type `sausage` or `polygon` and contains an array of points, these points will be updated.
+    Alternatively, you can update the points using the [zone/point/update](zone_point.md#update) endpoint.
 
 **required sub-user rights**: `zone_update`.
 
