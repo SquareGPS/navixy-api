@@ -705,10 +705,10 @@ Download geofences as KML File.
 
 #### Parameters
 
-| name     | description                                                                           | type      |
-|:---------|:--------------------------------------------------------------------------------------|:----------|
-| format   | Optional. File format, either "kml" or "kmz". Default is "kml".                       | string    |
-| zone_ids | Optional. Array of geofence IDs. If null, all available geofences will be downloaded. | int array |
+| name     | description                                                                           | type                                                        |
+|:---------|:--------------------------------------------------------------------------------------|:------------------------------------------------------------|
+| format   | Optional. File format, either "kml" or "kmz". Default is "kml".                       | [enum](../../../getting-started/introduction.md#data-types) |
+| zone_ids | Optional. Array of geofence IDs. If null, all available geofences will be downloaded. | int array                                                   |
 
 #### Example
 
@@ -721,6 +721,10 @@ Download geofences as KML File.
     ```
 
 #### Response
+
+A KML/KMZ file with the points (standard file download).
+
+!!! example "Example of a KML file with different geofences"
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
