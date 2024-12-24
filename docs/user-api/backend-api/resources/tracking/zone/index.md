@@ -613,13 +613,18 @@ if `dry_run=false`:
 * 284 - Not enough points for the zone. The minimum number of points for polygon: 3; the minimum for sausage: 2.
 
 
-From `Placemark` with `Point` geometry will be created circle geofence with a radius=default_radius.
+From `Placemark` with `Point` geometry will be created circle geofence using the radius from extended data or the default value if not specified.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
     <Document>
         <name>Points</name>
+        <ExtendedData>
+            <Data name="radius">
+                <value>300</value>
+            </Data>
+        </ExtendedData>
         <Placemark>
             <name>named point</name>
             <Point>
@@ -633,13 +638,18 @@ From `Placemark` with `Point` geometry will be created circle geofence with a ra
 ```
 
 
-From `Placemark` with `LineString` geometry will be created route geofence with a radius=default_radius.
+From `Placemark` with `LineString` geometry will be created route geofence using the radius from extended data or the default value if not specified.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
     <Document>
         <name>Simple line</name>
+        <ExtendedData>
+            <Data name="radius">
+                <value>300</value>
+            </Data>
+        </ExtendedData>
         <Placemark>
             <LineString>
                 <coordinates>
@@ -687,3 +697,71 @@ ignored.
 
 From `Placemark` with `MultiGeometry` geometry will be created several geofences.
 If `Placemark.name` defined it will be used as geofence name with respect of hierarchy of `Folder` and `Document`.
+
+
+### `download`
+
+Download geofences as KML File.
+
+#### Parameters
+
+| name     | description                                                                           | type      |
+|:---------|:--------------------------------------------------------------------------------------|:----------|
+| format   | Optional. File format, either "kml" or "kmz". Default is "kml".                       | string    |
+| zone_ids | Optional. Array of geofence IDs. If null, all available geofences will be downloaded. | int array |
+
+#### Example
+
+=== "cURL"
+
+    ```shell
+    curl -X POST '{{ extra.api_example_url }}/zone/download' \
+        -H 'Content-Type: application/json' \
+        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+    ```
+
+#### Response
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kml xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
+    <Document>
+        <name>zones</name>
+        <Placemark>
+            <name>polygon_zone</name>
+            <visibility>1</visibility>
+            <Polygon>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>44.7489290062,41.7201261755 44.7572878562,41.7208046390 44.7562364303,41.7190268459</coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark>
+        <Placemark>
+            <name>circle_zone</name>
+            <visibility>1</visibility>
+            <ExtendedData>
+                <Data name="radius">
+                    <value>300</value>
+                </Data>
+            </ExtendedData>
+            <Point>
+                <coordinates>44.7463912723,41.7096716534</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>sausage_zone</name>
+            <visibility>1</visibility>
+            <ExtendedData>
+                <Data name="radius">
+                    <value>300</value>
+                </Data>
+            </ExtendedData>
+            <LineString>
+                <coordinates>44.7288827746,41.7176609187 44.7340679137,41.7181063157 44.7384917427,41.7187820845</coordinates>
+            </LineString>
+        </Placemark>
+    </Document>
+</kml>
+```
