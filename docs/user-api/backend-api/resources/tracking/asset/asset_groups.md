@@ -88,7 +88,7 @@ Create new asset group.
 
 #### Errors
 
-* 201 - Not found in the database - when there are no assets in the db.
+* 291 - All assets in the request must be accessible - if there are assets in the request that are not accessible to the user.
 * 290 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group.
 Response will contain `assigned_assets` - list of asset group objects described [here](#asset-group-object-entry) that are already assigned to a group.
 
@@ -128,10 +128,6 @@ List asset groups by ids or asset.
 ```
 
 * `list` - object array. Asset groups described [here](#asset-group-entry).
-
-#### Errors
-
-* 201 - Not found in the database - when there are no asset or no group with asset in the db.
 
 
 ### `set`
@@ -173,7 +169,8 @@ Set assets to existing group.
 
 #### Errors
 
-* 201 - Not found in the database - when there are no asset or no group with asset in the db.
+* 201 - Not found in the database - if there is no group in the db.
+* 291 - All assets in the request must be accessible - if there are assets in the request that are not accessible to the user.
 * 290 - Asset already assigned to a group - if `force_reassign` is `false` and asset is already assigned to a group. 
 Response will contain `assigned_assets` - list of asset group objects described [here](#asset-group-object-entry) that are already assigned to a group.
 
@@ -213,7 +210,7 @@ Remove assets from group.
 
 #### Errors
 
-* 201 - Not found in the database - when there are no group in the db.
+* 201 - Not found in the database - if there is no group in the db.
 * 286 - All assets must be present in the group - if not all assets are present in the group.
 * 287 - if the group contains no assets accessible to the user.
 
@@ -253,7 +250,7 @@ Update asset group name.
 
 #### Errors
 
-* 201 - Not found in the database - when there are no group in the db.
+* 201 - Not found in the database - if there is no group in the db.
 * 287 - At least 1 asset in the group must be accessible - if the group contains no assets accessible to the user.
 
 
@@ -292,5 +289,5 @@ Delete asset group.
 
 #### Errors
 
-* 201 - Not found in the database - when there are no group in the db.
+* 201 - Not found in the database - if there is no group in the db.
 * 289 - All assets in the group must be accessible - if there are assets in the group that are not accessible to the user.
