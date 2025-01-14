@@ -1214,73 +1214,135 @@ Gets all integrated tracker models (from "models" table).
 
 ```json
 {
-    "id": 166,
-    "code": "tt1_wp",
-    "type": "vehicle",
-    "name": "WondeProud TT1",
-    "id_type": "10,2",
-    "has_phone": true,
-    "has_apn_settings": true,
-    "register": true,
-    "battery": {
-        "min_charge": 3.4,
-        "low_charge": 3.7,
-        "max_charge": 4.1
-    },
-    "altitude": true,
-    "satellites": true,
-    "gsm_level": true,
-    "gsm_network": true,
-    "gsm_roaming": true,
-    "has_detach_button": false,
-    "has_fuel_input": true,
-    "has_custom_fields": false,
-    "analog_inputs": 2,
-    "digital_inputs": 4,
-    "rs232_inputs": 0,
-    "digital_outputs": 4,
-    "track_control": "tt1",
-    "output_control": "default",
-    "special_control": "none",
-    "vendor": "WondeProud",
-    "rules": [
-        "offline",
-        "input_change",
-        "sos",
-        "sensor_range",
-        "speedup",
-        "route",
-        "track_change",
-        "inoutzone",
-        "battery_off"
-    ],
-    "inputs": ["analog_2"],
-    "state_fields": [],
-    "special_settings": ["none"],
-    "sms_control": [],
-    "has_led_control": false,
-    "has_location_request": true,
-    "has_gsm_lbs_location_request": true,
-    "has_chat": false,
-    "check_bundle": false,
-    "has_odometer": true
+  "id": 2450,
+  "vendor": "Navixy",
+  "code": "navixy_ngp",
+  "parent_code": null,
+  "type": "vehicle",
+  "name": "Navixy Generic Protocol",
+  "id_type": "ascii,6,64",
+  "has_phone": false,
+  "has_apn_settings": false,
+  "register": true,
+  "has_auto_registration": false,
+  "port": null,
+  "battery": {
+    "min_charge": 0.0,
+    "low_charge": 0.1,
+    "max_charge": 1.0
+  },
+  "altitude": true,
+  "satellites": true,
+  "gsm_level": true,
+  "gsm_network": true,
+  "gsm_roaming": true,
+  "has_detach_button": false,
+  "has_fuel_input": true,
+  "analog_inputs": 32,
+  "digital_inputs": 8,
+  "digital_outputs": 8,
+  "rs232_inputs": 0,
+  "track_control": "none",
+  "output_control": "default",
+  "special_control": "none",
+  "rules": [
+    "speedup",
+    "inoutzone",
+    "route",
+    "offline",
+    "track_change",
+    "sensor_range",
+    "driver_change",
+    "task_status_change",
+    "fuel_level_leap",
+    "distance_control",
+    "excessive_driving",
+    "excessive_parking",
+    "state_field_control",
+    "sos",
+    "input_change",
+    "output_change",
+    "idling_soft"
+  ],
+  "inputs": [
+    "analog_32",
+    "board_voltage",
+    "ext_temp_sensor_32",
+    "humidity_32",
+    "hw_mileage",
+    "lls_level_32",
+    "lls_temperature_32",
+    "temp_sensor"
+  ],
+  "state_fields": [
+    "event_id",
+    "hardware_key",
+    "moving",
+    "obd_vin"
+  ],
+  "special_settings": [
+    "none"
+  ],
+  "sms_control": [],
+  "connection": [{
+    "protocol": "NGP",
+    "transport": "HTTPS",
+    "url": "https://ngp-tracker.example.com"
+  }, {
+    "protocol": "NGP",
+    "transport": "MQTTS",
+    "url": "mqtts://ngp_device:secretword@example.com:8883/ngp",
+    "description": "Credentials for connection: login: ngp_device, password: secretword, topic: ngp.#"
+  }
+  ],
+  "has_led_control": false,
+  "has_location_request": false,
+  "has_gprs_location_request": false,
+  "has_gsm_lbs_location_request": false,
+  "has_chat": false,
+  "has_custom_fields": true,
+  "has_odometer": true,
+  "has_lbs": true,
+  "has_motion_sensor": true,
+  "has_hardware_key": true,
+  "register_fields": []
 }
 ```
 
 * `id` - int. Model ID.
 * `vendor` - string. Vendor name.
+* `code` - string. Model text code
 * `parent_code` - string. Can be null.
 * `type` - [enum](../../../getting-started/introduction.md#data-types). Can be "logger", "portable", "vehicle", or "personal".
 * `name` - string. Model name.
+* `id_type` - string. Identifier type see description below.
+* `has_phone` - boolean. `true` if the tracker has phone.
+* `has_apn_settings` - boolean. `true` if the tracker has APN settings.
+* `register` - boolean. `true` if the tracker is available for registration.
 * `has_auto_registration` - boolean. If `true` device may register by automatic commands from the platform.
+* `port` - int, optional. The port number to connect to the tracking server. Can be null if the model does not support anything, or if it supports multiple connection types, the details will be in the `connection` field.
 * `battery` - object. An internal device's battery.
+    * `min_charge` - float. Minimum battery level. Used to calculate the current battery level.
     * `low_charge` - float. Charge level for the "low battery" rule triggers.
+    * `max_charge` - float. Maximum battery level. Used to calculate the current battery level.
+* `altitude` - boolean. `true` if the tracker supports altitude.
+* `satellites` - boolean. `true` if the tracker supports the number of satellites.
+* `gsm_level` - boolean. `true` if the tracker supports GSM signal level strength.
+* `gsm_network` - boolean. `true` if the tracker supports GSM network name.
+* `gsm_roaming` - boolean. `true` if the tracker supports GSM roaming state.
+* `has_detach_button` - boolean. `true` if the tracker has detaching sensor.
+* `has_fuel_input` - boolean. `true` if the tracker has fuel sensor.
 * `analog_inputs` - int. Number of analog inputs.
 * `digital_inputs` - int. Number of digital inputs.
 * `digital_outputs` - int. Number of digital outputs.
 * `rs232_inputs` - int. Number of RS232 inputs.
+* `output_control` - [enum](../../../getting-started/introduction.md#data-types). Can be "none", "default", "batch", "stateless", "async", "async_offline" or "batch_async".
+* `special_control` - string. Additional specific types of tracker control (see [settings/special](./settings/special/index.md)). If multiple are separated by commas.
 * `inputs` - array of [enum](../../../getting-started/introduction.md#data-types). All available input types.
+* `state_fields` - array of [enum](../../../getting-started.md#data-types). All available state fields.
 * `rules` - array of [enum](../../../getting-started/introduction.md#data-types). Supported rules.
+* `special_settings` - array of [enum](../../../getting-started/introduction.md#data-types). Additional specific types of tracker control (see [settings/special](./settings/special/index.md)).
+* `sms_control` - array of [enum](../../../getting-started/introduction.md#data-types). Supported SMS control commands.
 * `has_led_control` - boolean. `true` if a switching LED supported by this tracker.
 * `has_location_request` - boolean. `true` if the tracker has an opportunity to request a location with a command by SMS.
 * `has_gprs_location_request` - boolean. `true` if the tracker has an opportunity to request a location with a command
@@ -1288,15 +1350,20 @@ Gets all integrated tracker models (from "models" table).
 * `has_gsm_lbs_location_request` - boolean. `true` if the tracker has an opportunity to request a location by LBS
   with a command over a GPRS connection.
 * `has_chat` - boolean. `true` if chat is available for a device with this model.
+* `has_custom_fields` - boolean, optional, default `false`.
+  `true` if the protocol of this model supports transmission of fields (attributes) names.
+  It allows to set a custom `input_name` for [sensors](./sensor/index.md).
 * `has_odometer` - boolean. `true` if the tracker has an integrated odometer.
 * `has_lbs` - boolean. `true` if the tracker sends information about cell info.
 * `has_motion_sensor` - boolean. `true` if the tracker has an integrated motion sensor.
 * `has_hardware_key` - boolean. `true` if the tracker has an opportunity for identification of a driver by a hardware key.
 * `additional_fields` - optional. List of descriptions of special fields using for control trackers that
   users fill on time of registration.
-* `has_custom_fields` - boolean, optional, default `false`.
-  `true` if the protocol of this model supports transmission of fields (attributes) names.
-  It allows to set a custom `input_name` for [sensors](./sensor/index.md). 
+* `connection` - array of objects, optional. A list of options for connecting the model to the platform.
+    * `protocol` - string. The name of the application layer protocol.
+    * `transport` - string. Transport layer protocol.
+    * `url` - string. Uniform Resource Locator - full details for the connection. Such as protocol, host, port, credentials, etc.
+    * `description` - string. Connection details.
 
 ##### ID type
 

@@ -50,23 +50,28 @@ Most of data-modifying operations, on the contrary, require some rights to be pr
 
 Possible rights are:
 
-* admin – master user-only. Can't be assigned to security groups,
-* tracker_update,
-* tracker_register,
-* tracker_rule_update,
-* tracker_configure,
-* tracker_set_output,
-* tag_update,
-* task_update,
-* zone_update,
-* place_update,
-* employee_update,
-* vehicle_update,
-* payment_create
-* form_template_update,
-* reports,
-* checkin_update.
-
+| name  | description                                 |
+|:------|:--------------------------------------------|
+| `admin` | Available for master user-only. Cannot be assigned to security groups. |
+| `tracker_update` | Allows adjustments to platform-related tracker settings, including labeling, tagging, changing phone numbers, LBS location settings, parking detection settings, odometer settings, engine hours settings, working statuses, data forwarding, connection timeout settings, inputs and sensors management, and BLE sensors management for some device models. |
+| `tracker_configure` | Allows adjustments to hardware-related tracker settings that require sending device configuration commands. This includes tracking mode settings, ignition input settings, timezone settings, harsh driving settings, etc. |
+| `tracker_set_output` | Allows changing the output state. |
+| `tracker_register` | Allows activating new trackers. |
+| `tracker_rule_update` | Allows creating and updating rules. |
+| `tag_update` | Allows creating and updating tags. |
+| `task_update` | Allows creating and updating tasks. |
+| `form_template_update` | Allows creating and updating forms. |
+| `zone_update` | Allows creating and updating geofences. |
+| `place_update` | Allows creating and updating places. |
+| `places_custom_fields_update` | Allows creating and updating custom fields for places. |
+| `employee_update` | Allows creating and updating employees and drivers. |
+| `vehicle_update` | Allows creating and updating vehicles, garages, and adding avatars to vehicles. |
+| `video_monitoring` | Allows requesting real-time video, playback video, and video events. |
+| `payment_create` | Allows interacting with the payment system assigned to a user. |
+| `reports` | Allows generating all types of reports. |
+| `weblocator_session_create` | Allows creating geo-links. |
+| `delivery_session_create` | Allows using the delivery tracking functionality. |
+| `checkin_update` | Allows creating check-ins. |
 
 ## API actions
 

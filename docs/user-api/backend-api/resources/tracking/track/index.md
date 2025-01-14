@@ -50,7 +50,7 @@ The data should cover trips starting from 3:24 AM to 6:24 AM on November 19, 202
 
 In case the available storage period is not exceeded, you will get the file.
 
-!!!+ example "KML file example with two points"
+!!! example "KML file example with two points"
 
     ```xml
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
