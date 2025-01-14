@@ -354,38 +354,39 @@ Gets all task belonging to user with optional filtering.
 
 #### Parameters
 
-| name        | description                                                                                                                                        | type                                                                  | 
-|:------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|
-| external_id | Optional. External task ID for search.                                                                                                             | string                                                                |
-| statuses    | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`.                                                                      | string array                                                          |
-| trackers    | Optional. IDs of the trackers to which task assigned.                                                                                              | int array                                                             |
-| from        | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00".                                                                 | [date/time](../../../getting-started/introduction.md#data-types)                   |
-| to          | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                                | [date/time](../../../getting-started/introduction.md#data-types)                   |
-| conditions  | Optional. Search conditions to apply to list. Array of search conditions.                                                                          | array of [SearchCondition](../../commons/entity/search_conditions.md) |
-| filter      | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task.       | string                                                                |
-| filters     | Optional. Filters for task label, description or address.                                                                                          | string array                                                          |
-| tag_ids     | Optional. Tag IDs assigned to the task.                                                                                                            | int array                                                             |
-| location    | Optional. Location with radius, inside which task zone centers must reside. Example: ```{ "lat": 34.178868, "lng": -118.599672, "radius": 350 }``` | Location JSON                                                         |
-| offset      | Optional. Offset from start of the found tasks for pagination.                                                                                     | int                                                                   |
-| limit       | Optional. Limit of the found tasks for pagination.                                                                                                 | int                                                                   |
+| name        | description                                                                                                                                                             | type                                                                  | 
+|:------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|
+| external_id | Optional. External task ID for search.                                                                                                                                  | string                                                                |
+| statuses    | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`.                                                                                           | string array                                                          |
+| trackers    | Optional. IDs of the trackers to which task assigned.                                                                                                                   | int array                                                             |
+| from        | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00".                                                                                      | [date/time](../../../getting-started/introduction.md#data-types)      |
+| to          | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                                                     | [date/time](../../../getting-started/introduction.md#data-types)      |
+| conditions  | Optional. Search conditions to apply to list. Array of search conditions.                                                                                               | array of [SearchCondition](../../commons/entity/search_conditions.md) |
+| filter      | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task.                            | string                                                                |
+| filters     | Optional. Filters for task label, description or address.                                                                                                               | string array                                                          |
+| tag_ids     | Optional. Tag IDs assigned to the task.                                                                                                                                 | int array                                                             |
+| location    | Optional. Location with radius, inside which task zone centers must reside. Example: ```{ "lat": 34.178868, "lng": -118.599672, "radius": 350 }```                      | Location JSON                                                         |
+| sort        | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["status=asc", "stay_duration=desc"]`. Possible fields listed below. | string array                                                          |
+| offset      | Optional. Offset from start of the found tasks for pagination.                                                                                                          | int                                                                   |
+| limit       | Optional. Limit of the found tasks for pagination.                                                                                                                      | int                                                                   |
 
 ##### condition fields
 
-| Name               | Type                                                | Comment       |
-|:-------------------|:----------------------------------------------------|:--------------|
-| id                 | int                                                 |               |
-| employee           | int                                                 | ID            |
-| status             | string                                              |               |
-| label              | string                                              |               |
-| location           | string                                              | address       |
+| Name               | Type                                                             | Comment       |
+|:-------------------|:-----------------------------------------------------------------|:--------------|
+| id                 | int                                                              |               |
+| employee           | int                                                              | ID            |
+| status             | string                                                           |               |
+| label              | string                                                           |               |
+| location           | string                                                           | address       |
 | from               | [date/time](../../../getting-started/introduction.md#data-types) |               |
 | to                 | [date/time](../../../getting-started/introduction.md#data-types) |               |
 | status_change_date | [date/time](../../../getting-started/introduction.md#data-types) |               |
 | arrival_date       | [date/time](../../../getting-started/introduction.md#data-types) |               |
-| stay_duration      | Seconds                                             |               |
-| description        | string                                              |               |
-| external_id        | string                                              |               |
-| form               | number                                              | template's ID |
+| stay_duration      | int                                                              | seconds       |
+| description        | string                                                           |               |
+| external_id        | string                                                           |               |
+| form               | int                                                              | template's ID |
 
 If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** is not passed or _null_ then appropriate 
 condition not used to filter results.
@@ -398,21 +399,21 @@ set of sort options. Each option is a pair of column name and sorting direction,
 
 ##### sort fields
 
-| Name               | Type                                                | Comment                    |
-|:-------------------|:----------------------------------------------------|:---------------------------|
-| id                 | int                                                 |                            |
-| employee           | string                                              | full name or tracker label |
-| status             | string                                              |                            |
-| label              | string                                              |                            |
-| location           | string                                              | address                    |
+| Name               | Type                                                             | Comment                    |
+|:-------------------|:-----------------------------------------------------------------|:---------------------------|
+| id                 | int                                                              |                            |
+| employee           | string                                                           | full name or tracker label |
+| status             | string                                                           |                            |
+| label              | string                                                           |                            |
+| location           | string                                                           | address                    |
 | from               | [date/time](../../../getting-started/introduction.md#data-types) |                            |
 | to                 | [date/time](../../../getting-started/introduction.md#data-types) |                            |
 | status_change_date | [date/time](../../../getting-started/introduction.md#data-types) |                            |
 | arrival_date       | [date/time](../../../getting-started/introduction.md#data-types) |                            |
-| stay_duration      | Seconds                                             |                            |
-| description        | string                                              |                            |
-| external_id        | string                                              |                            |
-| form               | string                                              | label                      |
+| stay_duration      | int                                                              | seconds                    |
+| description        | string                                                           |                            |
+| external_id        | string                                                           |                            |
+| form               | string                                                           | label                      |
 
 If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** is not passed or _null_ then appropriate condition not used to filter results.
 

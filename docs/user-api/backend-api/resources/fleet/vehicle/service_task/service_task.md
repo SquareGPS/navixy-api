@@ -386,17 +386,19 @@ Downloads report of service works.
 
 #### Parameters
 
-| name                | description                                                                                                                                                                                                                      | type                                                           |
-|:--------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|
-| only_unplanned      | Optional. Default is `false`. Service works filter. If `true`, only unplanned service works will be included.                                                                                                                    | boolean                                                        |
-| vehicle_ids         | Optional. Service works filter. If not empty, service works will be filtered by vehicle ids.                                                                                                                                     | int array                                                      |
-| statuses            | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired".                                                                           | [enum](../../../../getting-started/introduction.md#data-types) |
-| sort                | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["status=asc", "cost=desc"]`. Possible property names are "id", "vehicle", "description", "status", "cost", "predicted_date". | string array                                                   |
-| limit               | Optional. Maximum number of returned service works.                                                                                                                                                                              | int                                                            |
-| offset              | Optional. Offset from start of found service works for pagination.                                                                                                                                                               | int                                                            |
-| add_filename_header | Optional. Option to include header. Default is `false`. If `true`, Content-Disposition header will be appended to the response.                                                                                                  | boolean                                                        |
-| format              | Optional. Default is "pdf". Report format. Possible values are "pdf", "xls","xlsx".                                                                                                                                              | [enum](../../../../getting-started/introduction.md#data-types) |
-| group_by            | Optional. Group by option. Possible values are "vehicle", "status".                                                                                                                                                              | [enum](../../../../getting-started/introduction.md#data-types) |
+| name                | description                                                                                                                                            | type                                                                     |
+|:--------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|
+| only_unplanned      | Optional. Default is `false`. Service works filter. If `true`, only unplanned service works will be included.                                          | boolean                                                                  |
+| vehicle_ids         | Optional. Service works filter. If not empty, service works will be filtered by vehicle ids.                                                           | int array                                                                |
+| statuses            | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired". | [enum](../../../../getting-started/introduction.md#data-types)           |
+| conditions          | Optional. [Search conditions](#condition-fields) to apply to list.                                                                                     | array of [SearchCondition](../../../commons/entity/search_conditions.md) |
+| filter              | Optional. Text filter string. If used with conditions, both filter and conditions must match for every returned service task.                          | string                                                                   |
+| sort                | Optional. Set of [sort options](#sort-fields). Each option is a pair of property name and sorting direction, e.g. `["status=asc", "cost=desc"]`.       | string array                                                             |
+| limit               | Optional. Maximum number of returned service works.                                                                                                    | int                                                                      |
+| offset              | Optional. Offset from start of found service works for pagination.                                                                                     | int                                                                      |
+| add_filename_header | Optional. Option to include header. Default is `false`. If `true`, Content-Disposition header will be appended to the response.                        | boolean                                                                  |
+| format              | Optional. Default is "pdf". Report format. Possible values are "pdf", "xls","xlsx".                                                                    | [enum](../../../../getting-started/introduction.md#data-types)           |
+| group_by            | Optional. Group by option. Possible values are "vehicle", "status".                                                                                    | [enum](../../../../getting-started/introduction.md#data-types)           |
 
 
 #### Examples
@@ -431,19 +433,43 @@ List all service works of all user vehicles.
 #### Parameters
 
 
-| name                | description                                                                                                                                                                                                                      | type                                                           |
-|:--------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|
-| only_unplanned      | Optional. Default is `false`. Service works filter. If `true`, only unplanned service works will be included.                                                                                                                    | boolean                                                        |
-| vehicle_ids         | Optional. Service works filter. If not empty, service works will be filtered by vehicle ids.                                                                                                                                     | int array                                                      |
-| statuses            | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired".                                                                           | [enum](../../../../getting-started/introduction.md#data-types) |
-| sort                | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["status=asc", "cost=desc"]`. Possible property names are "id", "vehicle", "description", "status", "cost", "predicted_date". | string array                                                   |
-| limit               | Optional. Maximum number of returned service works.                                                                                                                                                                              | int                                                            |
-| offset              | Optional. Offset from start of found service works for pagination.                                                                                                                                                               | int                                                            |
-| add_filename_header | Optional. Default is `false`. Option to include header. If `true`, Content-Disposition header will be appended to the response.                                                                                                  | boolean                                                        |
-| format              | Optional. Default is "pdf". Report format. Possible values are "pdf", "xls","xlsx".                                                                                                                                              | [enum](../../../../getting-started/introduction.md#data-types) |
-| group_by            | Optional. Group by option. Possible values are "vehicle", "status".                                                                                                                                                              | [enum](../../../../getting-started/introduction.md#data-types) |
-| return_prediction   | Optional. Default is `true`. Option to include legacy **prediction** field or not.                                                                                                                                               | boolean                                                        |
+| name                | description                                                                                                                                                    | type                                                                     |
+|:--------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|
+| only_unplanned      | Optional. Default is `false`. Service works filter. If `true`, only unplanned service works will be included.                                                  | boolean                                                                  |
+| vehicle_ids         | Optional. Service works filter. If not empty, service works will be filtered by vehicle ids.                                                                   | int array                                                                |
+| statuses            | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired".         | [enum](../../../../getting-started/introduction.md#data-types)           |
+| conditions          | Optional. Search conditions to apply to list. Possible fields listed below.                                                                                    | array of [SearchCondition](../../../commons/entity/search_conditions.md) |
+| filter              | Optional. Text filter string. If used with conditions, both filter and conditions must match for every returned service task.                                  | string                                                                   |
+| sort                | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["status=asc", "cost=desc"]`. Possible fields listed below. | string array                                                             |
+| limit               | Optional. Maximum number of returned service works.                                                                                                            | int                                                                      |
+| offset              | Optional. Offset from start of found service works for pagination.                                                                                             | int                                                                      |
+| add_filename_header | Optional. Default is `false`. Option to include header. If `true`, Content-Disposition header will be appended to the response.                                | boolean                                                                  |
+| return_prediction   | Optional. Default is `true`. Option to include legacy **prediction** field or not.                                                                             | boolean                                                                  |
 
+##### condition fields
+
+| Name           | Type                                                                |
+|:---------------|:--------------------------------------------------------------------|
+| vehicle        | string                                                              |
+| vehicle_id     | int                                                                 |
+| description    | string                                                              |
+| creation_date  | [date/time](../../../../getting-started/introduction.md#data-types) |
+| status         | string                                                              |
+| cost           | float                                                               |
+| predicted_date | [date/time](../../../../getting-started/introduction.md#data-types) |
+
+##### sort fields
+
+| Name              | Type                                                                |
+|:------------------|:--------------------------------------------------------------------|
+| id                | int                                                                 |
+| vehicle           | string                                                              |
+| vehicle_id        | int                                                                 |
+| description       | string                                                              |
+| creation_date     | [date/time](../../../../getting-started/introduction.md#data-types) |
+| status            | string                                                              |
+| cost              | float                                                               |
+| predicted_date    | [date/time](../../../../getting-started/introduction.md#data-types) |
 
 #### Examples
 
