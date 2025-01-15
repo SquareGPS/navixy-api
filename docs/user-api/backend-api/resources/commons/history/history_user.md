@@ -21,13 +21,17 @@ Added more information about this API call usage in our [guide](../../../guides/
 
 #### Parameters
 
-| name      | description                                                                                      | type                                                                    |
-|:----------|:-------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|
-| from      | Start date/time for searching.                                                                   | string [date/time](../../../getting-started/introduction.md#data-types) |
-| to        | End date/time for searching. Must be after "from" date.                                          | string [date/time](../../../getting-started/introduction.md#data-types) |
-| events    | Optional. Default: all. List of history types.                                                   | string array                                                            |
-| limit     | Optional. Default: [history.maxLimit](../dealer.md). Max count of entries in result.             | int                                                                     |
-| ascending | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`. | boolean                                                                 |
+| name              | description                                                                                      | type                                                                    |
+|:------------------|:-------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|
+| from              | Start date/time for searching.                                                                   | string [date/time](../../../getting-started/introduction.md#data-types) |
+| to                | End date/time for searching. Must be after "from" date.                                          | string [date/time](../../../getting-started/introduction.md#data-types) |
+| events            | Optional. Default: all. List of history types.                                                   | string array                                                            |
+| limit             | Optional. Default: [history.maxLimit](../dealer.md). Max count of entries in result.             | int                                                                     |
+| ascending         | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`. | boolean                                                                 |
+| only_emergency    | Optional. Default: `false`. If `true`, only emergency events will be included.                   | boolean                                                                 |
+| only_unread       | Optional. Default: `false`. If `true`, only unread events will be included.                      | boolean                                                                 |
+| add_tracker_label | Optional. Default: `true`. If `true`, tracker label will be added to "message" field.            | boolean                                                                 |
+| add_tracker_files | Optional. Default: `false`. If `true`, tracker files info will be included.                      | boolean                                                                 |
 
 If `events` (event types) not passed then list all event types.
 
@@ -79,13 +83,17 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
              "employee_id": 4563
          }
     }],
-    "limit_exceeded": false
+    "limit_exceeded": false,
+    "total": 150,
+    "total_unread": 10
 }
 ```
 
 * `list` - list of zero or more history_entry` objects which described in [Tracker history entry](index.md#tracker-history-entry). 
 * `limit_exceeded` - boolean. It indicates if the response has exceeded the `store_period` limit, set in the user's 
 tariff plan. Will be `true` if you request a period that exceeds what the user's plan allows.
+* `total` - int. Amount of history entries satisfied with conditions.
+* `total_unread` - int. Amount of unread history entries satisfied with conditions.
 
 #### Errors
 
