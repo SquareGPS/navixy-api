@@ -18,9 +18,9 @@ Gets information about all supported timezones for the specified locale. Does no
 
 #### Parameters
 
-| name   | description                                  | type                                                    |
-|:-------|:---------------------------------------------|:--------------------------------------------------------|
-| locale | Locale code to set language of descriptions. | [enum](../../backend-api/getting-started/introduction.md#data-types) |
+| name   | description                                  | type                                                                          |
+|:-------|:---------------------------------------------|:------------------------------------------------------------------------------|
+| locale | Locale code to set language of descriptions. | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
 
 #### Examples
 
@@ -66,4 +66,4 @@ Gets information about all supported timezones for the specified locale. Does no
 
 #### Errors
 
-[General](../../backend-api/getting-started/errors.md#error-codes) types only.
+[General](../../user-api/backend-api/getting-started/errors.md#error-codes) types only.

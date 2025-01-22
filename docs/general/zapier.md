@@ -50,7 +50,7 @@ Example use cases include:
    Choose "New Tracker Event" as the trigger. Connect your account by providing a User Session Key or an API key.
    ![New account connect](../general/assets/newAccountConnect.png)
 
-   Obtain a User Session Key from Navixy Admin Panel -> Users -> User -> Get session key. For API keys, refer to [authentication](../backend-api/getting-started/authentication.md).
+   Obtain a User Session Key from Navixy Admin Panel -> Users -> User -> Get session key. For API keys, refer to [authentication](../user-api/backend-api/getting-started/authentication.md).
 
    Select the correct server (US for accounts starting with 1000xxxx, otherwise EU).
 
@@ -59,7 +59,7 @@ Example use cases include:
     * **Tracker IDs:** Find them in the admin panel or user interface.
       ![Tracker ID admin panel](../general/assets/trackerIDPanel.png)
       ![Tracker ID user interface](../general/assets/trackerIDUI.png)
-    * **Event Types:** Choose one or multiple event types from the provided list.
+    * **Event Types:** Specify one or multiple event types separated by comma from the provided list by click on the parameter name in Zapier or using [history/type/list](../user-api/backend-api/resources/commons/history/history_type.md#list) API request.
     * **Account's Time Zone:** Specify the time zone (e.g., UTC+3 as 3).
     * **Time Interval:** Set the interval for event checks in minutes (e.g., 15 minutes).
 

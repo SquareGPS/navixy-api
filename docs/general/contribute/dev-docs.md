@@ -88,9 +88,9 @@ Our documentation is built using [MkDocs](https://mkdocs.org) and the [Material 
 The menu structure is automatically generated using the [awesome-pages plugin](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin). To set the desired page order, use a `.pages.yml` file in the directory. Example:
 
 ```yaml
-title: User Interface API
+title: Backend API
 nav:
-  - getting-started.md
+  - introduction.md
   - how-to
   - resources
   - websocket
@@ -174,4 +174,4 @@ Special error codes.
 
 If the response or structure has comments, please write these comments separately in a list format below.
 
-For actual examples, refer to [user](../../backend-api/resources/commons/user/index.md) and [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).
+For actual examples, refer to [user](../../user-api/backend-api/resources/commons/user/index.md) and [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/master/docs/user-api/backend-api/resources/commons/user/index.md).

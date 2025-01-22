@@ -38,7 +38,7 @@ API calls for managing user plans within the service platform (PaaS or Sub Paas)
 * `name` - string. Plan name.
 * `group_id` - int. Plan group number.
 * `active` - boolean. `true` if user allowed change his current plan to this one.
-* `type` - [enum](../../backend-api/getting-started/introduction.md#data-types). Type of plan. Can be "monthly" or "activeday" 
+* `type` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). Type of plan. Can be "monthly" or "activeday" 
 (for "tracker" device_type only).
 * `price` - double. Plan subscription price (usually per month).
 * `early_change_price` - double. Price of change plan from current to another. With the last change in less than 30 days
@@ -46,7 +46,7 @@ API calls for managing user plans within the service platform (PaaS or Sub Paas)
 * `device_limit` - int. A maximum limit of devices per user. Not used for cameras and sockets.
 * `has_reports` - boolean. If `true` the plan has reports.
 * `store_period` - string. Data storage period, e.g. "2h" (2 hours), "3d" (3 days), "5m" (5 months), "1y" (one year).
-* `device_type` - [enum](../../backend-api/getting-started/introduction.md#data-types). Device type. Can be "tracker", "camera" or "socket".
+* `device_type` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). Device type. Can be "tracker", "camera" or "socket".
 * `proportional_charge` - boolean. `true` if monthly fee will be smaller when device was blocked during month (for "monthly" tariffs only).
 * `service_prices` - JSON object with service prices.
     * `incoming_sms` - double. Incoming sms price.
@@ -111,14 +111,14 @@ If "filter" is used, entities will be returned only if filter string contains on
 
 #### Parameters
 
-| name        | description                                                                               | type                                                    |
-|:------------|:------------------------------------------------------------------------------------------|:--------------------------------------------------------|
-| device_type | Optional. Filter by device type. One of "tracker", "camera" or "socket".                  | [enum](../../backend-api/getting-started/introduction.md#data-types) |
-| filter      | Optional. Text filter.                                                                    | string                                                  |
-| order_by    | Optional. List ordering. One of: `id`, `name`, `device_type`, `group_id`, `price`.        | string                                                  |
-| ascending   | Optional. Default is `true`. If `true`, ordering will be ascending, descending otherwise. | boolean                                                 |
-| offset      | Optional. Default is `0`. Starting offset, used for pagination.                           | int                                                     |
-| limit       | Optional. Max number of records to return, used for pagination.                           | int                                                     |
+| name        | description                                                                               | type                                                                          |
+|:------------|:------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|
+| device_type | Optional. Filter by device type. One of "tracker", "camera" or "socket".                  | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
+| filter      | Optional. Text filter.                                                                    | string                                                                        |
+| order_by    | Optional. List ordering. One of: `id`, `name`, `device_type`, `group_id`, `price`.        | string                                                                        |
+| ascending   | Optional. Default is `true`. If `true`, ordering will be ascending, descending otherwise. | boolean                                                                       |
+| offset      | Optional. Default is `0`. Starting offset, used for pagination.                           | int                                                                           |
+| limit       | Optional. Max number of records to return, used for pagination.                           | int                                                                           |
 
 #### Examples
 
@@ -173,7 +173,7 @@ If "filter" is used, entities will be returned only if filter string contains on
 }
 ```
 
-* `list` - objects array. List of plans. See plan object [here](#tariff-object).
+* `list` - objects array. List of plans. See plan object [here](#plan-object).
 * `wholesale_service_prices` - JSON object. Wholesale prices for all services (what dealer will pay per sms, per call, per mb).
 * `count` - int. Total number of records (ignoring offset and limit).
 
@@ -235,7 +235,7 @@ Returns plan with specified ID.
 }
 ```
 
-* `value` - JSON object. See plan object [here](#tariff-object).
+* `value` - JSON object. See plan object [here](#plan-object).
 
 #### Errors
 
@@ -344,7 +344,7 @@ Only session `hash`.
 
 #### Errors
 
-[General](../../backend-api/getting-started/errors.md#error-codes) types only.
+[General](../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
 
 
 ### defaults/update
