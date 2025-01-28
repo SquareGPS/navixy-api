@@ -75,6 +75,7 @@ A user account lets you start working with the platform as well as customize you
         "title": "menu-editor.default-preset",
         "account": [],
         "main": [],
+        "applications": [],
         "footer": {
             "title": null,
             "items": []
@@ -130,6 +131,7 @@ A user account lets you start working with the platform as well as customize you
     * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
 * `user_menu` - [User menu](../../../../../panel-api/resources/user/menu/preset.md#menu-preset). Menu structure for the current user.
     * `account` - [Menu item](../../../../../panel-api/resources/user/menu/preset.md#menu-item) array. Menu items for account management.
+    * `applications` - [Menu item](../../../../panel-api/resources/user/menu/preset.md#menu-item) array. Menu items for applications.
 
 
 
