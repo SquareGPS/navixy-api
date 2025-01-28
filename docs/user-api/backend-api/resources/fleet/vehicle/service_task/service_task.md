@@ -453,6 +453,7 @@ List all service works of all user vehicles.
 | vehicle        | string                                                              |
 | vehicle_id     | int                                                                 |
 | description    | string                                                              |
+| comment        | string                                                              |
 | creation_date  | [date/time](../../../../getting-started/introduction.md#data-types) |
 | status         | string                                                              |
 | cost           | float                                                               |
@@ -460,16 +461,17 @@ List all service works of all user vehicles.
 
 ##### sort fields
 
-| Name              | Type                                                                |
-|:------------------|:--------------------------------------------------------------------|
-| id                | int                                                                 |
-| vehicle           | string                                                              |
-| vehicle_id        | int                                                                 |
-| description       | string                                                              |
-| creation_date     | [date/time](../../../../getting-started/introduction.md#data-types) |
-| status            | string                                                              |
-| cost              | float                                                               |
-| predicted_date    | [date/time](../../../../getting-started/introduction.md#data-types) |
+| Name           | Type                                                                |
+|:---------------|:--------------------------------------------------------------------|
+| id             | int                                                                 |
+| vehicle        | string                                                              |
+| vehicle_id     | int                                                                 |
+| description    | string                                                              |
+| comment        | string                                                              |
+| creation_date  | [date/time](../../../../getting-started/introduction.md#data-types) |
+| status         | string                                                              |
+| cost           | float                                                               |
+| predicted_date | [date/time](../../../../getting-started/introduction.md#data-types) |
 
 #### Examples
 
