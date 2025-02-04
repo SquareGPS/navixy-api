@@ -1015,6 +1015,9 @@ Gets current tracker state (gps, gsm, outputs, etc.).
     },
     "connection_status":"active",
     "movement_status":"parked",
+    "movement_status_update": "2022-08-31 13:40:44",
+    "ignition": false,
+    "ignition_update": "2022-08-31 13:40:44",
     "gsm": {
       "updated":"2022-08-31 13:47:09",
       "signal_level":100,
@@ -1054,6 +1057,9 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 * `connection_status` - [enum](../../../getting-started/introduction.md#data-types). Device connection status, possible values: "signal_lost", 
   "just_registered", "just_replaced", "offline", "idle", "active".
 * `movement_status` - [enum](../../../getting-started/introduction.md#data-types). Movement status, possible values: "moving", "stopped", "parked".
+* `movement_status_update` - [date/time](../../../getting-started/introduction.md#data-types). The date and time when the movement status was last changed or null if there are no changes.
+* `ignition` - boolean. Optional. State of vehicle’s or virtual ignition sensor.
+* `ignition_update` - [date/time](../../../getting-started/introduction.md#data-types). Optional. The date and time when the ignition state was last changed.
 * `gsm` - object. Can be null if device does not support transmission of gsm info.
     * `updated` - [date/time](../../../getting-started/introduction.md#data-types). Date of last gsm status update in a timezone of the user or null if there are no updates.
     * `signal_level` - int. GSM signal level in percent, e.g. 25, or null if device cannot provide such info.
@@ -1124,6 +1130,9 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
       },
       "connection_status": "active",
       "movement_status": "moving",
+      "movement_status_update": "2024-08-01 13:38:55",
+      "ignition": true,
+      "ignition_update": "2024-08-01 13:37:34",
       "last_update": "2024-08-01 13:45:23",
       "gsm": {
         "updated": "2024-08-01 13:45:18",

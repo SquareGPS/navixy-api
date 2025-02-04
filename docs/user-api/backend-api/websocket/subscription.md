@@ -38,7 +38,7 @@ After subscribing to "state_batch",
 server will send the current states of all non-blocked trackers included in the subscription in a single packet.
 Receiver must be able to parse data from different devices in this packet.
 After each period equal to `rate_limit`,
-the server will send a list of changed tracker states in the [event message](./events.md#state-batch-event).
+the server will send a list of changed tracker states in the [event message](events.md#state-batch-event).
 
 ```json
 {
@@ -76,7 +76,7 @@ After subscribing to "state",
 server will send the current states of all non-blocked trackers included in the subscription in separate packets.
 Receiver must be able to read information from these packets separately.
 When changing the state of any tracker to which a subscription made,
-the server will send a new state in the [event message](./events.md#state-event).
+the server will send a new state in the [event message](events.md#state-event).
 
 ```json
 {
@@ -105,7 +105,7 @@ After subscribing to "readings_batch",
 server will send the current readings of all non-blocked trackers included in the subscription in a single packet.
 Receiver must be able to parse data from different devices in this packet.
 After each period equal to `rate_limit`,
-the server will send readings updates in the [event message](./events.md#readings-batch-event).
+the server will send readings updates in the [event message](events.md#readings-batch-event).
 
 ```json
 {
@@ -177,22 +177,6 @@ Response sample:
   }
 }
 ```
-
-### The "state" event subscription
-
-After subscribe on the "state",
-server will send the current states of all non-blocked trackers to which the subscription made in a separate packets.
-Receiver must be able to read information from these packets separately.
-When changing the state of any tracker to which a subscription made,
-the server will send a new state in the [event message](events.md#state-event).
-
-### The "state_batch" event subscription
-
-After subscribe on the "state",
-server will send the current states of all non-blocked trackers to which the subscription made in one packet.
-Receiver must be able to parse data from different devices in this packet.
-After each period equal to `rate_limit`,
-the server will send a list of changed tracker states in the [event message](events.md#state-event).
 
 ### Automatic subscriptions
 

@@ -55,6 +55,9 @@ Message sample:
     },
     "connection_status": "active",
     "movement_status": "parked",
+    "movement_status_update": "2018-10-04 22:47:07",
+    "ignition": false,
+    "ignition_update": "2018-10-04 22:47:07",
     "gsm": null,
     "last_update": "2018-10-17 12:51:46",
     "battery_level": null,
@@ -111,6 +114,9 @@ Message sample:
       },
       "connection_status": "active",
       "movement_status": "parked",
+      "movement_status_update": "2018-10-04 22:47:07",
+      "ignition": false,
+      "ignition_update": "2018-10-04 22:47:07",
       "gsm": null,
       "last_update": "2018-10-17 12:51:46",
       "battery_level": null,
@@ -149,6 +155,9 @@ Sample:
   },
   "connection_status": "active",
   "movement_status": "parked",
+  "movement_status_update": "2018-10-04 22:47:07",
+  "ignition": false,
+  "ignition_update": "2018-10-04 22:47:07",
   "last_update": "2018-10-17 12:51:46"
 }
 ```
@@ -156,7 +165,7 @@ Sample:
 
 ## Readings batch event
 
-These messages are coming from server if client [subscribed](./subscription.md)
+These messages are coming from server if client [subscribed](subscription.md)
 to the `readings_batch` events of the specific tracker that not blocked. It occurs in the next cases:
 
 * Immediately after subscription.
