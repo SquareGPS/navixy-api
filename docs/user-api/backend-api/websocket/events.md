@@ -55,6 +55,9 @@ Message sample:
     },
     "connection_status": "active",
     "movement_status": "parked",
+    "movement_status_update": "2018-10-04 22:47:07",
+    "ignition": false,
+    "ignition_update": "2018-10-04 22:47:07",
     "gsm": null,
     "last_update": "2018-10-17 12:51:46",
     "battery_level": null,
@@ -111,6 +114,9 @@ Message sample:
       },
       "connection_status": "active",
       "movement_status": "parked",
+      "movement_status_update": "2018-10-04 22:47:07",
+      "ignition": false,
+      "ignition_update": "2018-10-04 22:47:07",
       "gsm": null,
       "last_update": "2018-10-17 12:51:46",
       "battery_level": null,
@@ -149,6 +155,9 @@ Sample:
   },
   "connection_status": "active",
   "movement_status": "parked",
+  "movement_status_update": "2018-10-04 22:47:07",
+  "ignition": false,
+  "ignition_update": "2018-10-04 22:47:07",
   "last_update": "2018-10-17 12:51:46"
 }
 ```
