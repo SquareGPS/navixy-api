@@ -154,66 +154,74 @@ Gets last values for all sensors, state values and counters on multiple trackers
 ```json
 
 {
-  "result": {
-    "10181215": {
-      "inputs": [
-        {
-          "sensor_id": 37641,
-          "label": "Tank 1",
-          "units": "",
-          "name": "lls_level_1",
-          "type": "fuel",
-          "min_value": 0.0,
-          "max_value": 480.0,
-          "value": 225.71,
-          "units_type": "litre",
-          "converted_units_type": null,
-          "converted_value": null,
-          "update_time": "2023-06-28 06:13:09",
+  "result": {<readings_batch>},
+  "success": true
+}
+```
+
+#### readings batch object
+
+```json
+{
+  "10181215": {
+    "inputs": [
+      {
+        "sensor_id": 37641,
+        "label": "Tank 1",
+        "units": "",
+        "name": "lls_level_1",
+        "type": "fuel",
+        "min_value": 0.0,
+        "max_value": 480.0,
+        "value": 225.71,
+        "units_type": "litre",
+        "converted_units_type": null,
+        "converted_value": null,
+        "update_time": "2023-06-28 06:13:09",
           "composite_sensor_ids": [37651, 37652]
-        },
-        {
-          "sensor_id": 37642,
-          "label": "Tank 2",
-          "units": "",
-          "name": "lls_level_6",
-          "type": "fuel",
-          "min_value": 0.0,
-          "max_value": 300.0,
-          "value": 113.52,
-          "units_type": "litre",
-          "converted_units_type": null,
-          "converted_value": null,
-          "update_time": "2023-05-11 00:35:16"
-        },
-        {
-          "sensor_id": 37643,
-          "label": "Fuel",
-          "units": "",
-          "name": "composite",
-          "type": "fuel",
-          "min_value": 0.0,
-          "max_value": 700.0,
-          "value": 175.31,
-          "units_type": "litre",
-          "converted_units_type": null,
-          "converted_value": null,
-          "update_time": "2023-05-11 00:35:26"
-        }
-      ],
-      "states": [
-        {
-          "field": "input_status",
-          "value": 0,
-          "update_time": "2023-06-28 06:13:09"
-        },
-        {
-          "field": "output_status",
-          "value": 0,
-          "update_time": "2023-06-28 06:13:09"
-        }
-      ],
-      "virtual_sensors": [
+      },
+      {
+        "sensor_id": 37642,
+         "label": "Tank 2",
+        "units": "",
+        "name": "lls_level_6",
+        "type": "fuel",
+        "min_value": 0.0,
+        "max_value": 300.0,
+        "value": 113.52,
+        "units_type": "litre",
+        "converted_units_type": null,
+        "converted_value": null,
+        "update_time": "2023-05-11 00:35:16"
+      },
+      {
+        "sensor_id": 37643,
+        "label": "Fuel",
+        "units": "",
+        "name": "composite",
+        "type": "fuel",
+        "min_value": 0.0,
+        "max_value": 700.0,
+        "value": 175.31,
+        "units_type": "litre",
+        "converted_units_type": null,
+        "converted_value": null,
+        "update_time": "2023-05-11 00:35:26"
+      }
+    ],
+    "states": [
+      {
+        "field": "input_status",
+        "value": 0,
+        "update_time": "2023-06-28 06:13:09"
+      },
+      {
+        "field": "output_status",
+        "value": 0,
+        "update_time": "2023-06-28 06:13:09"
+      }
+    ],
+    "virtual_sensors": [
         {
           "sensor_id": 37644,
           "label": "Virtual Ignition",
@@ -229,38 +237,36 @@ Gets last values for all sensors, state values and counters on multiple trackers
           "update_time": "2023-06-28 06:05:59"
         }
       ],
-      "counters": [
-        {
-          "type": "odometer",
-          "value": 3232.9923342688653,
-          "update_time": "2023-06-28 06:05:59"
-        }
-      ]
-    },
-    "10038816": {
-      "inputs": [],
-      "states": [
-        {
-          "field": "input_status",
-          "value": 0,
-          "update_time": "2023-06-28 06:13:23"
-        },
-        {
-          "field": "output_status",
-          "value": 0,
-          "update_time": "2023-06-28 06:13:23"
-        }
-      ],
-      "counters": [
-        {
-          "type": "odometer",
-          "value": 20854.422727641213,
-          "update_time": "2023-06-28 06:12:23"
-        }
-      ]
-    }
+    "counters": [
+      {
+        "type": "odometer",
+        "value": 3232.9923342688653,
+        "update_time": "2023-06-28 06:05:59"
+      }
+    ]
   },
-  "success": true
+  "10038816": {
+    "inputs": [],
+    "states": [
+      {
+        "field": "input_status",
+        "value": 0,
+        "update_time": "2023-06-28 06:13:23"
+      },
+      {
+        "field": "output_status",
+        "value": 0,
+        "update_time": "2023-06-28 06:13:23"
+      }
+    ],
+    "counters": [
+      {
+        "type": "odometer",
+        "value": 20854.422727641213,
+        "update_time": "2023-06-28 06:12:23"
+      }
+    ]
+  }
 }
 ```
 
