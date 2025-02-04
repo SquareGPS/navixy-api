@@ -43,24 +43,25 @@ API calls to manage GPS tracking devices within the Admin Panel.
 * `avatar_file_name` - optional string. Passed only if present.
 * `clone` - boolean. `true` if this tracker is clone.
 * `comment` - string. Comment (description) related to the tracker.
-* `creation_date` - [date/time](../../backend-api/getting-started/introduction.md#data-types). Tracker or clone creation date.
+* `creation_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Tracker or clone creation date.
 * `group_id` - int. Tracker group ID. `0` if no group.
 * `dealer_id` - int. An ID of a dealer to which this tracker (or clone) belongs to.
 * `deleted` - boolean. True if tracker or clone has been marked as deleted.
 * `label` - string. Tracker label.
 * `user_id` - int. An ID of the user to which this tracker (or clone) belongs to.
 * `model_name` - string. Human-readable tracker model name.
-* `last_connection` - [date/time](../../backend-api/getting-started/introduction.md#data-types). Time when this tracker last connected to the server (in UTC+0 timezone).
+* `last_connection` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Time when this tracker last connected to the server (in UTC+0 timezone).
 * `source` - source JSON object. 
     * `id` - int. Source ID.
     * `device_id` - string. Source_imei.
     * `model` - string. Tracker model name from "models" table.
     * `blocked` - boolean. `true` if tracker has been blocked due to tariff end, etc.
     * `tariff_id` - int. An ID of tracker's tariff from "main_tariffs" table.
-    * `creation_date` - [date/time](../../backend-api/getting-started/introduction.md#data-types). Date when this tracker first registered in the system.
-    * `tariff_end_date` - [date/time](../../backend-api/getting-started/introduction.md#data-types). Date of next tariff prolongation or null.
-    * `connection_status` - [enum](../../backend-api/getting-started/introduction.md#data-types). Current connection status.
-    * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
+    * `creation_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date when this tracker first registered in the system.
+    * `tariff_end_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date of next tariff prolongation or null.
+    * `connection_status` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). 
+      Device connection status, possible values: "signal_lost", "just_registered", "just_replaced", "offline", "idle", "active"
+    * `phone` - string. Phone of the device. Can be null or empty if the device has no GSM module or uses bundled SIM which number hidden from the user.
     * `corrupted` - boolean. `true` when tracker has been corrupted using /tracker/corrupt, and not passed when it is not corrupted.
 
 
@@ -264,14 +265,14 @@ Gets list of all bundles. If `filter` is used, entities will be returned only if
 
 #### Parameters
 
-| name                                  | description                                                                                                                                                                 | type                                                    |
-|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
-| clones_filter                         | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../backend-api/getting-started/introduction.md#data-types) |
+| name                                  | description                                                                                                                                                                 | type                                                                          |
+|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|
+| clones_filter                         | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
 | filter  Optional. Text filter string. | string                                                                                                                                                                      |
-| order_by                              | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`.        | [enum](../../backend-api/getting-started/introduction.md#data-types) |
-| ascending                             | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                                 |
-| offset                                | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                                     |
-| limit                                 | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                                     |
+| order_by                              | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`.        | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
+| ascending                             | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                                                       |
+| offset                                | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                                                           |
+| limit                                 | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                                                           |
 
 #### Examples
 
@@ -645,7 +646,7 @@ Example:
 
 If the operation is applied transactionally meaning the `ignore_existing` = `false` or is not specified: it completes only if `"success": true` is received for the whole batch, otherwise, the cloning process for all trackers is rolled back.
 
-* [Standard errors](../../backend-api/getting-started/errors.md#error-codes).
+* [Standard errors](../../user-api/backend-api/getting-started/errors.md#error-codes).
 * 7 - Invalid parameters. Size must be between 1 and 1000 - triggered when the clone request exceeds 1000 trackers.
 * 217 – List contains nonexistent entities - if at least one tracker from the request is not found.
 * 247 – Entity already exists - if at least one of the trackers already has its clone in the target user. The error provides the list of trackers in the target user that caused the error.
@@ -730,7 +731,7 @@ Example:
 
 #### Errors
 
-* [Standard errors](../../backend-api/getting-started/errors.md#error-codes).
+* [Standard errors](../../user-api/backend-api/getting-started/errors.md#error-codes).
 
 
 ### `delete_clone`

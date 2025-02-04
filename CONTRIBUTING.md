@@ -105,7 +105,7 @@ For example:
 ```yaml
 title: Backend API
 nav:
-  - getting-started.md
+  - introduction.md
   - how-to
   - resources
   - websocket
@@ -202,5 +202,5 @@ Special error codes.
 --- 
 > Please note, if the response or structure has comments it is necessary to write these comments separately in the form of a list below.
 
-For real example see [/user](docs/backend-api/resources/commons/user/index.md) and
+For real example see [/user](docs/user-api/backend-api/resources/commons/user/index.md) and
 [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).

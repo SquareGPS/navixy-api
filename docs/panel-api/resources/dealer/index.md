@@ -100,7 +100,7 @@ API call to get information about a Dealer. This call retrieves details about th
 
 * `id` (int): Dealer ID.
 * `parent_dealer_id` (int): Parent Dealer ID.
-* `contract_type` ([enum](../../../backend-api/getting-started/introduction.md#data-types)): Contract type: "PARTNER", "AGENT" or "PAAS".
+* `contract_type` ([enum](../../../user-api/backend-api/getting-started/introduction.md#data-types)): Contract type: "PARTNER", "AGENT" or "PAAS".
 * `tariff_id` (int): PaaS plan ID.
 * `tariff` (object): PaaS plan info.
     * `license_price` (nullable double): Price per license.
@@ -111,18 +111,18 @@ API call to get information about a Dealer. This call retrieves details about th
 * `demo_tariff` (boolean): `true` for "TRIAL" PaaS tariffs.
 * `store_period` (string): Maximum data store period for users on `demo_tariff`.
 * `demo_ends` (string): TRIAL period end date or null.
-* `block_status` ([enum](../../../backend-api/getting-started/introduction.md#data-types)): Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED".
+* `block_status` ([enum](../../../user-api/backend-api/getting-started/introduction.md#data-types)): Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED".
 * `legal_name` (string): Dealer legal name.
 * `active_amount` (int): Total number of active trackers (including Sub-PaaSes).
 * `active_amount_own` (int): Number of active trackers (excluding Sub-PaaSes).
 * `active_amount_subpaas` (int): Number of Sub-PaaSes' active trackers.
 * `active_limit` (int): Active trackers limit.
-* `locale` ([enum](../../../backend-api/getting-started/introduction.md#data-types)): Dealer's default locale.
+* `locale` ([enum](../../../user-api/backend-api/getting-started/introduction.md#data-types)): Dealer's default locale.
 * `domain` (string): Dealer's domain.
 * `favicon` (string): Path or URL to dealer's interface favicon or null.
 * `logo` (string): Path or URL to dealer's logotype or null.
 * `paas_activation_date` (string): Date of activation pay.
-* `features` (array of strings): Set of allowed [dealer features](../../../backend-api/resources/commons/dealer.md#dealer-features).
+* `features` (array of strings): Set of allowed [dealer features](../../../user-api/backend-api/resources/commons/dealer.md#dealer-features).
 * `default_user_time_zone` (string): [Time zone ID](../timezone.md) for new users created via [user/upload](../user/index.md#upload). This zone will also be selected by default when creating a new user in the Navixy Admin Panel.
 
 #### Errors

@@ -7,9 +7,8 @@ description: Get involved into improving documentation and translations of the N
 Join us in enhancing Navixy developer documentation! Your contributions are highly valued and appreciated. Whether you’ve spotted an inaccuracy, found a typo, or have additional information to share, your help is appreciated. All our documentation is publicly available on [GitHub]({{ config.repo_url }}), and you can get involved in several ways to make it better:
 
 1. [Creating an issue]({{ config.repo_url }}issues/new) with a detailed description of the problem.
-2. [Editing a single page in a browser](#easy-way).
-3. [Manually creating a fork](#second-way) and making multiple commits before creating a pull request.
-4. [Installing and editing](#advanced-way) documentation locally on your PC.
+2. [Editing a single page in a browser](#quick-edits-in-the-browser).
+3. [Installing and editing](#advanced-local-editing) and making multiple commits before creating a pull request.
 
 In each case, a GitHub account is required. If you prefer not to register on GitHub, you can [contact us](../contacts.md) with any feedback or suggestions.
 
@@ -91,7 +90,7 @@ The menu structure is automatically generated using the [awesome-pages plugin](h
 ```yaml
 title: Backend API
 nav:
-  - getting-started.md
+  - introduction.md
   - how-to
   - resources
   - websocket
@@ -175,4 +174,4 @@ Special error codes.
 
 If the response or structure has comments, please write these comments separately in a list format below.
 
-For actual examples, refer to [user](../../backend-api/resources/commons/user/index.md) and [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/master/docs/backend-api/resources/commons/user/index.md).
+For actual examples, refer to [user](../../user-api/backend-api/resources/commons/user/index.md) and [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/master/docs/user-api/backend-api/resources/commons/user/index.md).
