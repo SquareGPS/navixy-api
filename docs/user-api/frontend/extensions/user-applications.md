@@ -27,7 +27,7 @@ To create a new user application using the user/application/update API, send a P
  === "cURL"
 
     ```shell
-    curl -X POST "https://api.navixy.com/v2/user/application/update" \
+    curl -X POST "https://api.navixy.com/v2/user/application/create" \
             -H "Content-Type: application/json" \
             -d '{
                 "hash": "your_api_hash",
@@ -45,23 +45,18 @@ To create a new user application using the user/application/update API, send a P
 
 - `hash` (string, required) – Your API authentication hash.
 - `application` (object, required):
-- `id` (integer, optional) – Set to null to create a new application.
-- `name` (string, required) – Name of the application.
-- `url` (string, required) – The URL where the application is hosted.
-- `icon` (string, optional) – URL of the application's icon.
-- `is_enabled` (boolean, required) – Set to true to enable the application right after creation.
+  - `id` (integer, optional) – Set to null to create a new application.
+  - `name` (string, required) – Name of the application.
+  - `url` (string, required) – The URL where the application is hosted.
+  - `icon` (string, optional) – URL of the application's icon.
+  - `is_enabled` (boolean, required) – Set to true to enable the application right after creation.
 
 ### Response 
 
-```
+```json
 {
   "success": true,
   "id": 12345
 }
 ```
 This confirms that the application has been successfully created with the ID `12345`.
-
-## Alternative solution - UI plugins
-
-If for some reason User applications functionality does not suit your needs, you can try the UI plugin feature. It allows you embedding 3rd-party applications with the help from our support and offers a [marketplace](https://marketplace.navixy.com/) with existing solutions provided by different developers. 
-To learn more about this feature and how to use it, see [UI plugins](ui-plugins.md).
