@@ -40,7 +40,17 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
         "tracker_label": "Tracker label",
         "emergency": false,
         "employee_id": 4563
-    }
+    },
+    "assets": [
+        {
+            "id": 4563,
+            "type": "employee"
+        },
+        {
+            "id": 6345,
+            "type": "vehicle"
+        }
+    ]
 }
 ```
 
@@ -72,6 +82,11 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
     * `sensor_id` - optional int. Related sensor ID.
     * `sensor_name` - optional string. Related sensor name.
     * `sensor_calculated_value` - optional string. Related sensor value.
+    * `employee_full_name` - optional string. Related driver full name.
+    * `vehicle_label` - optional string. Related vehicle label.
+* `assets` - optional array of objects. List of related objects containing identifier and type.
+    * `id` - int. Identifier of the asset.
+    * `type` - string. Type of the asset. Can be "vehicle" or "employee".
 
 Date/time type described in [data types description section](../../../getting-started/introduction.md#data-types).
 
@@ -86,10 +101,15 @@ Returns history entry with the specified ID.
 
 #### Parameters
 
-| name              | description                                                 | type    | 
-|:------------------|:------------------------------------------------------------|:--------|
-| id                | [History entry](#tracker-history-entry) ID.                 | long    |
-| add_tracker_label | Optional. If `true` tracker label will be added to message. | boolean |
+| name              | description                                                                            | type    | 
+|:------------------|:---------------------------------------------------------------------------------------|:--------|
+| id                | [History entry](#tracker-history-entry) ID.                                            | long    |
+| add_asset_label   | Optional. Default: `true`. If `true`, asset label will be added to "message" field.    | boolean |
+| add_tracker_label | Optional. Default: `false`. If `true`, tracker label will be added to "message" field. | boolean |
+| add_tracker_files | Optional. Default: `false`. If `true`, tracker files info will be included.            | boolean |
+
+The asset label is calculated as the vehicle label. If there is no vehicle asset, it is calculated as the employee's full name. If there are no assets, it defaults to the tracker label.
+If both `add_asset_label` and `add_tracker_label` are `true`, the asset label will be added.
 
 #### Examples
 
