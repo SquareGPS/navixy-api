@@ -9,7 +9,7 @@ data from trackers received by the platform.
 you to retrieve all the information available to users on the platform. This includes data and actions related to trackers, 
 their trips, sensor and counter data, reports, vehicles, drivers and employees, tasks, and much more information that your 
 integrations may need.
-* [**Frontend**](./frontend/extensions/user-applications.md): In this section, you will find information on how to add your 
+* [**Frontend**](./frontend/extensions/ui-plugins): In this section, you will find information on how to add your 
 application to the Navixy web interface, as well as how to add the Navixy interface to your website.
 * [**Eco-Fleet API**](./eco-fleet-api/getting-started.md): In this section, you will find calls to determine the accuracy
 of your fuel sensors.

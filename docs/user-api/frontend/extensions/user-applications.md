@@ -1,53 +1,62 @@
 ---
-title: User apps
-description: Information about adding of created apps to the UI
+title: User applications
+description: Information about embedding custom applications to the UI on user's own
 ---
 
-# User apps
+# User applications
 
-You can add your own application to the user interface. It will appear as an additional tab in the "Applications" menu.
-In order for the app to work within the platform, it needs to support iframe feature.
-If you don't have an iframe option, the app can be added as a separate link, in which case a new browser tab will open 
-when you click on it.
-Some apps have been developed by our partners and are available in [Marketplace](https://marketplace.navixy.com/). 
-To add them, contact the developer of the application.
+The User Applications feature enables you to embed third-party applications into the platform entirely on your own, without requiring assistance from developers or support. You can integrate external services directly into the interface or open them in a new tab, using URL parameters, user authentication, and secure session management for seamless interaction.
 
-!!! note "If your domain is using an HTTPS connection, the link to the application must also be HTTPS. Otherwise, you will encounter a mixed content error." 
+With full control over configuration, you can customize your workspace to fit your needs without technical expertise. For instructions on how to configure such applications from the platform's UI, see [User applications section in Navixy's User documentation](https://docs.navixy.com/user-guide/user-applications). 
 
+However, if you need to automate application management and integrate external tools programmatically, you can access User applications functionality through API. It has dedicated endpoints to:
+- List existing applications in the account
+- Create new user applications
+- Update existing applications
+- Delete existing applications 
+- Enable/Disable - control application availability 
 
-## Authorization in the application
+For detailed reference see [User application resources](../../backend-api/resources/commons/user/applications.md). 
 
-When you open an application through the Navixy interface, user session hash will be sent to the URL of the application by 
-GET method. This hash can be used for authorization within the application.
+## How to create a new application
 
+To create a new user application using the user/application/update API, send a POST request with the required parameters.
 
-## Cookie
+### Example
 
-By default, the web server sends the following cookies when an external application link opens:
+ === "cURL"
 
-* User session hash as `hash=a6aa75587e5c59c32d347da438505fc3`.
-* Locale as `locale=en`.
+    ```shell
+    curl -X POST "https://api.navixy.com/v2/user/application/create" \
+            -H "Content-Type: application/json" \
+            -d '{
+                "hash": "your_api_hash",
+                "application": {
+                "id": null,
+                "name": "New Application",
+                "url": "https://example.com",
+                "icon": "https://example.com/icon.png",
+                "is_enabled": true
+            }
+    }'
+    ```
 
-!!! note "If you do not want the server to send cookies, inform technical support and this function will be disabled."
+### Parameters explained
 
-## How to add an application
+- `hash` (string, required) – Your API authentication hash.
+- `application` (object, required):
+  - `id` (integer, optional) – Set to null to create a new application.
+  - `name` (string, required) – Name of the application.
+  - `url` (string, required) – The URL where the application is hosted.
+  - `icon` (string, optional) – URL of the application's icon.
+  - `is_enabled` (boolean, required) – Set to true to enable the application right after creation.
 
-### Cloud version
+### Response 
 
-Contact [Navixy technical support](../../../general/contacts.md) and specify the following parameters:
-
-* Application name.
-* External URL link.
-* Opening method - iframe or a new tab.
-* Installation destination - user_id or panel_id.
-* Cookies sending - user session hash and/or locale or nothing.
-
-Our specialists will do everything necessary, and the application will be available in the user interface.
-The application can be installed for all users or for a specific one.
-
-!!! note "If the app will be installed to the specific user, please contact the support team every time you need to add this app to another user. If the app installed for whole panel - all new users will automatically get the app. Also, the app can be installed to whole panel instead of specific users."
-
-
-### Standalone version
-
-You can find the instruction on installation of the software [here](https://docs.navixy.com/on-premise/applications).
+```json
+{
+  "success": true,
+  "id": 12345
+}
+```
+This confirms that the application has been successfully created with the ID `12345`.
