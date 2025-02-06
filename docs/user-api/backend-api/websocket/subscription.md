@@ -22,7 +22,7 @@ second.
 
 Request parameters:
 
-* `action` (text: "subscribe").
+* `action` required, text: _"subscribe"_.
 * `hash` - required, string, length=32. Session hash code obtained by [user/auth](../resources/commons/user/index.md#auth) action.
 * `requests` - required, object array. See requests' structure below.
 
@@ -32,7 +32,13 @@ Request parameters:
 * `trackers` - required, int array, without nulls. List of tracker IDs for the events that require a subscription.
 * `events` - required, [enum](../getting-started/introduction.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
 
-#### Subscribe state_batch event sample:
+### The "state_batch" event subscription
+
+After subscribing to "state_batch",
+server will send the current states of all non-blocked trackers included in the subscription in a single packet.
+Receiver must be able to parse data from different devices in this packet.
+After each period equal to `rate_limit`,
+the server will send a list of changed tracker states in the [event message](events.md#state-batch-event).
 
 ```json
 {
@@ -51,10 +57,26 @@ Request parameters:
 }
 ```
 
-If you use target 'trackers' for some devices and then subscribe again to other devices - in state_batch event you will 
-receive data from all subscribed devices at once.
+* `type` - required, text: _"state_batch"_. Event type.
+* `target` - required, [target](#Request-targets). Trackers to subscribe.
+* `rate_limit` - optional, string. A timespan for batching.
+* `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 
-#### Subscribe state event sample
+##### Request targets:
+
+* All trackers:
+    * `type` - required, text: _"all"_.
+* Selected trackers:
+    * `type` - required, text: _"selected"_.
+    * `tracker_ids` - required, int array.
+
+### The "state" event subscription
+
+After subscribing to "state",
+server will send the current states of all non-blocked trackers included in the subscription in separate packets.
+Receiver must be able to read information from these packets separately.
+When changing the state of any tracker to which a subscription made,
+the server will send a new state in the [event message](events.md#state-event).
 
 ```json
 {
@@ -73,47 +95,42 @@ receive data from all subscribed devices at once.
 }
 ```
 
-#### Sub requests:
+* `type` - required, text: _"state"_. Event type.
+* `trackers` - required, int array. List of tracker ids.
+* `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 
-* Batching (preferred):
-    * `type` - required, text: _"state_batch"_.
-    * `target` - required, object. One of targets below.
-    * `rate_limit` - optional, string. A timespan for batching.
-    * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
-* Simple:
-    * `type` - required, text: _"state"_.
-    * `trackers` - required, int array. List of tracker ids.
-    * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
+### The "readings_batch" event subscription
 
-Sample:
+After subscribing to "readings_batch",
+server will send the current readings of all non-blocked trackers included in the subscription in a single packet.
+Receiver must be able to parse data from different devices in this packet.
+After each period equal to `rate_limit`,
+the server will send readings updates in the [event message](events.md#readings-batch-event).
 
 ```json
 {
-  "type": "state_batch",
-  "target": {
-    "type": "selected",
-    "tracker_ids": [15564, 15565, 15568]
-  },
-  "rate_limit": "5s",
-  "format": "full"
+  "action": "subscribe",
+  "hash": "f4bf1b754034213653dad99c78c4b237",
+  "requests": [
+    {
+      "type": "readings_batch",
+      "target": {
+        "type": "all"
+      },
+      "rate_limit": "5s",
+      "sensor_type": "temperature",
+      "include_components": false
+    }
+  ]
 }
 ```
 
-##### Request targets:
-
-* All trackers:
-    * `type` - required, text: _"all"_.
-* Selected trackers:
-    * `type` - required, text: _"selected"_.
-    * `tracker_ids` - required, int array.
-
-Sample:
-
-```json
-{
-  "type": "all"
-}
-```
+* `type` - required, text: _"state_batch"_. Event type.
+* `target` - required, [target](#Request-targets). Trackers to subscribe.
+* `rate_limit` - optional, string. A timespan for batching.
+* `sensor_type` - optional, [metering sensor type](../resources/tracking/tracker/sensor/index.md#metering-sensor-type-values) or [virtual sensor type](../resources/tracking/tracker/sensor/index.md#virtual-sensor-type-values).
+If specified, state values and counters will be omitted. Used to filter sensors by type.
+* `include_components` - optional, boolean. Default is `true`. If set to `false`, parts of composite sensors will be excluded.
 
 ### Response
 
@@ -121,10 +138,11 @@ Response parameters:
 
 * `type` - required, text: _"response"_.
 * `action` - required, text: _"subscription/subscribe"_.
-* `events` - required, array of [enum](../getting-started/introduction.md#data-types), without nulls. List of the subscribed events. Event can be `state`.
+* `events` - required, array of [enum](../getting-started/introduction.md#data-types), without nulls. List of the subscribed events types.
 * `data` - required, map <string, object>. Map with events subscription result. One key per subscribed event.
     * `state` - present if the "state" subscription requested, see sub response below.
     * `state_batch` - present if the "state_batch" subscription requested, see sub response below.
+    * `readings_batch` - present if the "readings_batch" subscription requested, see sub response below.
 
 Sub response:
 * `success` - required, boolean.
@@ -135,11 +153,8 @@ Keys is a tracker IDs, values - one of the item:
 * `normal` - non-blocked, normal status. [State events](events.md#state-event) for this
   tracker will be delivered to client.
 * `blocked` - tracker blocked. [State events](events.md#state-event) for this tracker 
-  will *not* be delivered to client. 
-
-[Lifecycle events](events.md#lifecycle-event) will be delivered. After unblocking, 
+`will *not* be delivered to client. [Lifecycle events](events.md#lifecycle-event) will be delivered. After unblocking, 
 current tracker state will be sent automatically.
-
 * `unknown` - tracker ID missed in the database or not belong to current user.  
 * `disallowed` - subscription for this tracker not allowed by the current session.
 
@@ -163,25 +178,9 @@ Response sample:
 }
 ```
 
-### The "state" event subscription
-
-After subscribe on the "state",
-server will send the current states of all non-blocked trackers to which the subscription made in a separate packets.
-Receiver must be able to read information from these packets separately.
-When changing the state of any tracker to which a subscription made,
-the server will send a new state in the [event message](events.md#state-event).
-
-### The "state_batch" event subscription
-
-After subscribe on the "state",
-server will send the current states of all non-blocked trackers to which the subscription made in one packet.
-Receiver must be able to parse data from different devices in this packet.
-After each period equal to `rate_limit`,
-the server will send a list of changed tracker states in the [event message](events.md#state-event).
-
 ### Automatic subscriptions
 
-- Subscribing to a `state` or `state_batch` automatically creates a subscription to [lifecycle events](events.md#state-event).
+- Subscribing to a `state`, `state_batch`, `readings_batch` automatically creates a subscription to [lifecycle events](events.md#state-event).
 - Subscribing to any event automatically creates a subscription to [logout events](events.md#logout-event).
 
 

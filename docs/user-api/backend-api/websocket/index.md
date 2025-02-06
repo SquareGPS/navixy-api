@@ -25,9 +25,8 @@ Let's describe a standard workflow for WebSocket API:
 3. Open WebSocket connection by the path [/event/subscription/](subscription.md) with `Atmosphere` protocol parameters.
 4. Subscribe on events using [subscribe action](subscription.md#subscribe-action).
 5. Listen and process the [incoming events](events.md).
-6. Get the current tracker states after subscribe on a `state` event.
-7. Subscribe and unsubscribe on the events if needed.
-8. Unsubscribe when leaving monitoring page using [unsubscribe action](subscription.md#unsubscribe-action).
+6. Subscribe and unsubscribe on the events if needed.
+7. Unsubscribe when leaving monitoring page using [unsubscribe action](subscription.md#unsubscribe-action).
 
 !!! note
     * The [subscription requests](subscription.md) must contain the 

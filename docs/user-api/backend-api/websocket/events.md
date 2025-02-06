@@ -9,7 +9,7 @@ The server sends an `event message` through the WebSocket channel when an event 
 All event messages contain the next fields:
 
 * `type` - [enum](../getting-started/introduction.md#data-types). "event".
-* `event` - [enum](../getting-started/introduction.md#data-types). Can be "state", "state_batch", "lifecycle", or "logout".
+* `event` - [enum](../getting-started/introduction.md#data-types). Can be "state", "state_batch", "readings_batch", "lifecycle", or "logout".
 * `data` - optional object. Specific event payload. 
 
 
@@ -55,6 +55,9 @@ Message sample:
     },
     "connection_status": "active",
     "movement_status": "parked",
+    "movement_status_update": "2018-10-04 22:47:07",
+    "ignition": false,
+    "ignition_update": "2018-10-04 22:47:07",
     "gsm": null,
     "last_update": "2018-10-17 12:51:46",
     "battery_level": null,
@@ -82,7 +85,7 @@ to the `state_batch` events of the specific tracker that not blocked. It occurs 
 Message fields:
 
 * `type` - "event".
-* `event` - "state".
+* `event` - "state_batch".
 * `data` - depends on `format` request parameter:
     * "full" - [source state](../resources/tracking/tracker/index.md#get_state) array.
     * "compact" - [compact source state](#compact-source-state) array.
@@ -111,6 +114,9 @@ Message sample:
       },
       "connection_status": "active",
       "movement_status": "parked",
+      "movement_status_update": "2018-10-04 22:47:07",
+      "ignition": false,
+      "ignition_update": "2018-10-04 22:47:07",
       "gsm": null,
       "last_update": "2018-10-17 12:51:46",
       "battery_level": null,
@@ -149,15 +155,47 @@ Sample:
   },
   "connection_status": "active",
   "movement_status": "parked",
+  "movement_status_update": "2018-10-04 22:47:07",
+  "ignition": false,
+  "ignition_update": "2018-10-04 22:47:07",
   "last_update": "2018-10-17 12:51:46"
 }
 ```
 
 
+## Readings batch event
+
+These messages are coming from server if client [subscribed](subscription.md)
+to the `readings_batch` events of the specific tracker that not blocked. It occurs in the next cases:
+
+* Immediately after subscription.
+* `rate_limit` period passed.
+
+Message fields:
+
+* `type` - "event".
+* `event` - "readings_batch".
+* `data` -  [readings_batch](../resources/tracking/tracker/readings.md#readings-batch-object) array. Each element
+  contains only changed objects.
+* `user_time` - current time in user's timezone.
+
+Message sample:
+
+```json
+{
+  "type": "event",
+  "event": "state_batch",
+  "user_time": "2018-10-17 12:51:55",
+  "data": [
+    {<readings_batch>}
+  ]
+}
+```
+
 ## Lifecycle event
 
 These messages are coming from the server if client [subscribed](subscription.md)
-to the `state` events of the specific tracker. It occurs in the next cases:
+to the `state`, `state_batch` or `readings_batch` events of the specific tracker. It occurs in the next cases:
 
 * Tracker blocked.
 * Tracker unblocked.
