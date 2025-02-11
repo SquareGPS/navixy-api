@@ -57,23 +57,24 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
 * `id` - long. An ID of event.
 * `type` - [enum](../../../getting-started/introduction.md#data-types). Type of device. Can be "socket", "tracker", or "camera".
 * `is_read` - boolean. If `true` the notification seen by user and marked as read.
-* `message` - string. Notification message.
+* `message` - string. Notification message shortened to 256 characters.
 * `time` - [date/time](../../../getting-started/introduction.md#data-types). When this notification received.
 * `event` - [enum](../../../getting-started/introduction.md#data-types). Type of history event extension. Available event types can be obtained by [/history/type/list](history_type.md#list) action.
 * `tracker_id` - int. An ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.
 * `rule_id` - optional int. An ID of assigned rule.
-* `track_id` - int. An ID of a track on which the event happened.
+* `track_id` - int. An ID of a track on which the event happened or `0` if no track is associated.
 * `location` - location object. Location where the event happened.
-* `address` - string. Address of location or `""` (empty string) if no address for location.
-* `extra` - object. Extra fields for events. Like for what task or tracker the event was.
-    * `task_id` - optional int. Related task identifier.
-    * `parent_task_id` - optional int. Related parent task identifier (for task checkpoint related history entries).
-    * `counter_id` - optional int. Related counter identifier.
+* `address` - string. Address of location or `""` (empty string) if there is no address for location.
+* `extra` - optional object. Extra fields for events. Like for what task or tracker the event was.
+    * `task_id` - optional int. Related task ID.
+    * `parent_task_id` - optional int. Related parent task ID (for task checkpoint related history entries).
+    * `counter_id` - optional int. Related counter ID.
     * `service_task_id` - optional int. Related service task ID.
     * `checkin_id` - optional int. Related check-in marker.
-    * `place_ids` - optional int. Related place identifiers.
+    * `place_ids` - optional array of integers. Related place IDs.
+    * `places_total_count` - optional int. Total count of places.
     * `last_known_location` - optional boolean. `true` if location may be outdated.
-    * `tracker_label` - optional string. Tracker label.
+    * `tracker_label` - optional string. Related tracker label.
     * `emergency` - optional boolean. `true` for emergency events with the same flag in a rule.
     * `zone_ids` - optional array of integers. Related geofence IDs.
     * `zone_labels` - optional array of strings. Related geofence labels.
@@ -82,6 +83,8 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
     * `sensor_id` - optional int. Related sensor ID.
     * `sensor_name` - optional string. Related sensor name.
     * `sensor_calculated_value` - optional string. Related sensor value.
+    * `full_message` - optional string. Full event message, included when the `message` was shortened.
+    * `precision` - optional int. Precision of the location in meters.
     * `employee_full_name` - optional string. Related driver full name.
     * `vehicle_label` - optional string. Related vehicle label.
 * `assets` - optional array of objects. List of related objects containing identifier and type.

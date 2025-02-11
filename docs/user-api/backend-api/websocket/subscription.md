@@ -32,7 +32,7 @@ Request parameters:
 * `trackers` - required, int array, without nulls. List of tracker IDs for the events that require a subscription.
 * `events` - required, [enum](../getting-started/introduction.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
 
-### The "state_batch" event subscription
+#### The "state_batch" event subscription
 
 After subscribing to "state_batch",
 server will send the current states of all non-blocked trackers included in the subscription in a single packet.
@@ -62,7 +62,7 @@ the server will send a list of changed tracker states in the [event message](eve
 * `rate_limit` - optional, string. A timespan for batching.
 * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 
-##### Request targets:
+###### Request targets:
 
 * All trackers:
     * `type` - required, text: _"all"_.
@@ -70,7 +70,7 @@ the server will send a list of changed tracker states in the [event message](eve
     * `type` - required, text: _"selected"_.
     * `tracker_ids` - required, int array.
 
-### The "state" event subscription
+#### The "state" event subscription
 
 After subscribing to "state",
 server will send the current states of all non-blocked trackers included in the subscription in separate packets.
@@ -99,13 +99,13 @@ the server will send a new state in the [event message](events.md#state-event).
 * `trackers` - required, int array. List of tracker ids.
 * `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 
-### The "readings_batch" event subscription
+#### The "readings_batch" event subscription
 
 After subscribing to "readings_batch",
 server will send the current readings of all non-blocked trackers included in the subscription in a single packet.
 Receiver must be able to parse data from different devices in this packet.
-After each period equal to `rate_limit`,
-the server will send readings updates in the [event message](events.md#readings-batch-event).
+New data will arrive in real-time in the [event message](events.md#readings-batch-event), 
+but no more frequently than the specified rate_limit.
 
 ```json
 {
@@ -129,8 +129,51 @@ the server will send readings updates in the [event message](events.md#readings-
 * `target` - required, [target](#Request-targets). Trackers to subscribe.
 * `rate_limit` - optional, string. A timespan for batching.
 * `sensor_type` - optional, [metering sensor type](../resources/tracking/tracker/sensor/index.md#metering-sensor-type-values) or [virtual sensor type](../resources/tracking/tracker/sensor/index.md#virtual-sensor-type-values).
-If specified, state values and counters will be omitted. Used to filter sensors by type.
+  If specified, state values and counters will be omitted. Used to filter sensors by type.
 * `include_components` - optional, boolean. Default is `true`. If set to `false`, parts of composite sensors will be excluded.
+
+
+#### The "iot_monitor" event subscription
+
+This subscription type is intended for the Data Stream Analyzer tool, 
+which allows viewing the attribute values of the last N messages received from a tracker.
+The server stores attributes for no more than the last 12 messages, sorted in descending order by message timestamp.
+For each attribute, data is stored in two queues:
+
+* Without data gaps – only messages where the specific attribute was present (not null).
+* With data gaps – if an attribute was missing in one of the last messages, a null value is recorded in the queue.
+
+After subscribing to "iot_monitor", server will send values of attributes from the latest messages for 
+all non-blocked trackers included in the subscription in a single packet.
+Receiver must be able to parse data from different devices in this packet.
+New data will arrive in real-time in the [event message](events.md#iot-monitor-event), 
+but no more frequently than the specified `rate_limit`.
+
+```json
+{
+  "action": "subscribe",
+  "hash": "6c638c52cb40729d5e6181a48f868649",
+  "requests": [
+    {
+      "type": "iot_monitor",
+      "target": {
+        "type": "selected",
+        "tracker_ids": [
+          21080
+        ]
+      },
+      "rate_limit": "5s"
+    }
+  ]
+}
+```
+
+Request fields:
+
+* `type` - required, text: _"iot_monitor"_. Event type.
+* `target` - required, [target](#Request-targets). Trackers to subscribe. Maximum 10 trackers.
+* `rate_limit` - optional, string. A timespan for batching.
+
 
 ### Response
 
@@ -138,7 +181,7 @@ Response parameters:
 
 * `type` - required, text: _"response"_.
 * `action` - required, text: _"subscription/subscribe"_.
-* `events` - required, array of [enum](../getting-started/introduction.md#data-types), without nulls. List of the subscribed events types.
+* `events` - required, array of [enum](../getting-started/introduction.md#data-types), without nulls. List of the subscribed events types ("", "" or "iot_monitor").
 * `data` - required, map <string, object>. Map with events subscription result. One key per subscribed event.
     * `state` - present if the "state" subscription requested, see sub response below.
     * `state_batch` - present if the "state_batch" subscription requested, see sub response below.
