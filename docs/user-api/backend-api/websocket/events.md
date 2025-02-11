@@ -80,7 +80,7 @@ These messages are coming from server if client [subscribed](subscription.md)
 to the `state_batch` events of the specific tracker that not blocked. It occurs in the next cases:
 
 * Immediately after subscription.
-* `rate_limit` period passed.
+* Tracker state changed. But no more frequently than the `rate_limit`.
 
 Message fields:
 
@@ -165,11 +165,11 @@ Sample:
 
 ## Readings batch event
 
-These messages are coming from server if client [subscribed](subscription.md)
+These messages are coming from server if client [subscribed](subscription.md#the-readings_batch-event-subscription)
 to the `readings_batch` events of the specific tracker that not blocked. It occurs in the next cases:
 
 * Immediately after subscription.
-* `rate_limit` period passed.
+* Sensor data is updated, but no more frequently than the `rate_limit`.
 
 Message fields:
 
@@ -189,6 +189,198 @@ Message sample:
   "data": [
     {<readings_batch>}
   ]
+}
+```
+
+## IoT monitor event
+
+These messages are coming from server if client [subscribed](subscription.md#the-iot_monitor-event-subscription)
+to the `iot_monitor` events of the specific tracker that not blocked. These packets contain values 
+of attributes from the latest messages sent by the selected tracker.
+It occurs in the next cases:
+
+* Immediately after subscription.
+* The latest attribute values are updated. But no more frequently than the `rate_limit`.
+
+Message fields:
+
+* `type` - "event".
+* `event` - "iot_monitor".
+* `data`:
+  * `iot_last_values`:
+    * `tracker_id` - tracker ID.
+    * `nonnull_fields` - list of objects. Queue without data gaps – only messages where the specific attribute was present (not null).
+      * <field_name> - name of the attribute.
+        * `value` - value of attribute.
+        * `msg_time` - message time.
+        * `srv_time` - server time.
+    * `all_fields` - list of objects. Queue with data gaps – if an attribute was missing in one of the last messages, a null value is recorded in the queue.
+      * <field_name> - name of the attribute.
+        * `value` - value of attribute.
+        * `msg_time` - message time.
+        * `srv_time` - server time.
+
+Message sample:
+
+```json
+{
+  "event": "iot_monitor",
+  "type": "event",
+  "data": {
+    "iot_last_values": [
+      {
+        "tracker_id": 21080,
+        "nonnull_fields": {
+          "satellites": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": 10
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": 10
+            }
+          ],
+          "heading": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": 7
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": 6
+            }
+          ],
+          "latitude": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": "5.9654133"
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": "5.9646583"
+            }
+          ],
+          "longitude": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": "6.5171267"
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": "6.5169383"
+            }
+          ],
+          "lls_level_1": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": "262.9138"
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": "262.9945"
+            }
+          ],
+          "speed": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": 43
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": 48
+            }
+          ]
+        },
+        "all_fields": {
+          "satellites": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": 10
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": 10
+            }
+          ],
+          "heading": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": 7
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": 6
+            }
+          ],
+          "latitude": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": "5.9654133"
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": "5.9646583"
+            }
+          ],
+          "longitude": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": "6.5171267"
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": "6.5169383"
+            }
+          ],
+          "lls_level_1": [
+            {
+              "msg_time": "2025-02-11T15:12:59Z",
+              "srv_time": "2025-02-11T15:12:59Z",
+              "value": null
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": "262.9945"
+            }
+          ],
+          "speed": [
+            {
+              "msg_time": "2025-02-11T15:12:58Z",
+              "srv_time": "2025-02-11T15:12:58Z",
+              "value": 43
+            },
+            {
+              "msg_time": "2025-02-11T15:12:52Z",
+              "srv_time": "2025-02-11T15:12:53Z",
+              "value": 48
+            }
+          ]
+        }
+      }
+    ]
+  }
 }
 ```
 
