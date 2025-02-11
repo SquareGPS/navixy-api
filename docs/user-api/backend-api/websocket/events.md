@@ -207,15 +207,15 @@ Message fields:
 * `type` - "event".
 * `event` - "iot_monitor".
 * `data`:
-  * `iot_last_values`:
+  * `iot_last_values` - list of objects:
     * `tracker_id` - tracker ID.
     * `nonnull_fields` - list of objects. Queue without data gaps – only messages where the specific attribute was present (not null).
-      * <field_name> - name of the attribute.
+      * `<field_name>` - name of the attribute.
         * `value` - value of attribute.
         * `msg_time` - message time.
         * `srv_time` - server time.
     * `all_fields` - list of objects. Queue with data gaps – if an attribute was missing in one of the last messages, a null value is recorded in the queue.
-      * <field_name> - name of the attribute.
+      * `<field_name>` - name of the attribute.
         * `value` - value of attribute.
         * `msg_time` - message time.
         * `srv_time` - server time.
