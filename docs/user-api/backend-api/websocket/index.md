@@ -55,6 +55,12 @@ In a simplified form, opening the WebSocket using [atmosphere-javascript](https:
                   target: {
                       type: 'all'
                   }
+              },
+              {
+                  type: 'readings_batch',
+                  target: {
+                      type: 'all'
+                  }
               }
           ]
       }));

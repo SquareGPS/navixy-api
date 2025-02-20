@@ -8,9 +8,9 @@ description: Information about WebSocket events with conditions for obtaining an
 The server sends an `event message` through the WebSocket channel when an event occurs and client has subscription on this. 
 All event messages contain the next fields:
 
-* `type` - [enum](../getting-started/introduction.md#data-types). "event".
-* `event` - [enum](../getting-started/introduction.md#data-types). Can be "state", "state_batch", "readings_batch", "lifecycle", or "logout".
-* `data` - optional object. Specific event payload. 
+* `type` – [enum](../getting-started/introduction.md#data-types). "event".
+* `event` – [enum](../getting-started/introduction.md#data-types). Can be "state", "state_batch", "readings_batch", "lifecycle", or "logout".
+* `data` – optional object. Specific event payload. 
 
 
 ## State event
@@ -26,12 +26,12 @@ to the `state` events of the specific tracker that not blocked. It occurs in the
 
 Message fields:
 
-* `type` - "event".
-* `event` - "state".
-* `data` - depends on `format` request parameter:
-    * "full" - [source state](../resources/tracking/tracker/index.md#get_state).
-    * "compact" - [compact source state](#compact-source-state).
-* `user_time` - current time in user's timezone.
+* `type` – "event".
+* `event` – "state".
+* `data` – depends on `format` request parameter:
+    * "full" – [source state](../resources/tracking/tracker/index.md#get_state).
+    * "compact" – [compact source state](#compact-source-state).
+* `user_time` – current time in user's timezone.
 
 Message sample:
 
@@ -84,12 +84,12 @@ to the `state_batch` events of the specific tracker that not blocked. It occurs 
 
 Message fields:
 
-* `type` - "event".
-* `event` - "state_batch".
-* `data` - depends on `format` request parameter:
-    * "full" - [source state](../resources/tracking/tracker/index.md#get_state) array.
-    * "compact" - [compact source state](#compact-source-state) array.
-* `user_time` - current time in user's timezone.
+* `type` – "event".
+* `event` – "state_batch".
+* `data` – depends on `format` request parameter:
+    * "full" – [source state](../resources/tracking/tracker/index.md#get_state) array.
+    * "compact" – [compact source state](#compact-source-state) array.
+* `user_time` – current time in user's timezone.
 
 Message sample:
 
@@ -173,11 +173,10 @@ to the `readings_batch` events of the specific tracker that not blocked. It occu
 
 Message fields:
 
-* `type` - "event".
-* `event` - "readings_batch".
-* `data` -  [readings_batch](../resources/tracking/tracker/readings.md#readings-batch-object) array. Each element
-  contains only changed objects.
-* `user_time` - current time in user's timezone.
+* `type` – "event".
+* `event` – "readings_batch".
+* `data` – [readings_batch](../resources/tracking/tracker/readings.md#readings-batch-object) array. NOTE: Unlike a tracker/readings/batch_list endpoint response in the common API, each item contains only modified objects.
+* `user_time` – current time in user's timezone.
 
 Message sample:
 
@@ -204,21 +203,21 @@ It occurs in the next cases:
 
 Message fields:
 
-* `type` - "event".
-* `event` - "iot_monitor".
+* `type` – "event".
+* `event` – "iot_monitor".
 * `data`:
-  * `iot_last_values` - list of objects:
-    * `tracker_id` - tracker ID.
-    * `nonnull_fields` - list of objects. Queue without data gaps – only messages where the specific attribute was present (not null).
-      * `<field_name>` - name of the attribute.
-        * `value` - value of attribute.
-        * `msg_time` - message time.
-        * `srv_time` - server time.
-    * `all_fields` - list of objects. Queue with data gaps – if an attribute was missing in one of the last messages, a null value is recorded in the queue.
-      * `<field_name>` - name of the attribute.
-        * `value` - value of attribute.
-        * `msg_time` - message time.
-        * `srv_time` - server time.
+  * `iot_last_values` – list of objects:
+    * `tracker_id` – tracker ID.
+    * `nonnull_fields` – list of objects. Queue without data gaps – only messages where the specific attribute was present (not null).
+      * `<field_name>` – name of the attribute.
+        * `value` – value of attribute.
+        * `msg_time` – message time.
+        * `srv_time` – server time.
+    * `all_fields` – list of objects. Queue with data gaps – if an attribute was missing in one of the last messages, a null value is recorded in the queue.
+      * `<field_name>` – name of the attribute.
+        * `value` – value of attribute.
+        * `msg_time` – message time.
+        * `srv_time` – server time.
 
 Message sample:
 
@@ -395,11 +394,11 @@ to the `state`, `state_batch` or `readings_batch` events of the specific tracker
 
 Message fields:
 
-* `type` - "event".
-* `event` - "lifecycle".
-* `data` - required object.
-    * `source_id` - source ID.
-    * `lifecycle_event` - lifecycle event type. Can be "block", "unblock", or "corrupt".
+* `type` – "event".
+* `event` – "lifecycle".
+* `data` – required object.
+    * `source_id` – source ID.
+    * `lifecycle_event` – lifecycle event type. Can be "block", "unblock", or "corrupt".
 
 Message sample:
 
@@ -429,9 +428,9 @@ These messages are coming from server if client [subscribed](subscription.md) to
 
 Message fields:
 
-* `type` - "event".
-* `event` - "logout".
-* `data` - "session closed".
+* `type` – "event".
+* `event` – "logout".
+* `data` – "session closed".
 
 Message sample:
 ```json
