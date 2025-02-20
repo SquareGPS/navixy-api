@@ -23,14 +23,14 @@ second.
 Request parameters:
 
 * `action` required, text: _"subscribe"_.
-* `hash` - required, string, length=32. Session hash code obtained by [user/auth](../resources/commons/user/index.md#auth) action.
-* `requests` - required, object array. See requests' structure below.
+* `hash` – required, string, length=32. Session hash code obtained by [user/auth](../resources/commons/user/index.md#auth) action.
+* `requests` – required, object array. See requests' structure below.
 
 !!! warning "Deprecated"
-    Parameters below are deprecated by `requests` and should not be used.
+    These parameters are deprecated and should not be used, please use `requests` instead:
 
-* `trackers` - required, int array, without nulls. List of tracker IDs for the events that require a subscription.
-* `events` - required, [enum](../getting-started/introduction.md#data-types) array, without nulls. List of events to subscribe. Event can be one of: `state`.
+    * `trackers` – required, int array, without nulls. List of tracker IDs for the events that require a subscription.
+    * `events` – required, [enum](../getting-started/introduction.md#data-types) array, without nulls. List of events to subscribe. An event can only be a `state`.
 
 #### The "state_batch" event subscription
 
@@ -57,18 +57,18 @@ the server will send a list of changed tracker states in the [event message](eve
 }
 ```
 
-* `type` - required, text: _"state_batch"_. Event type.
-* `target` - required, [target](#Request-targets). Trackers to subscribe.
-* `rate_limit` - optional, string. A timespan for batching.
-* `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
+* `type` – required, text: _"state_batch"_. Event type.
+* `target` – required, [target](#Request-targets). Trackers to subscribe.
+* `rate_limit` – optional, string. A timespan for batching.
+* `format` – optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 
 ###### Request targets:
 
 * All trackers:
-    * `type` - required, text: _"all"_.
+    * `type` – required, text: _"all"_.
 * Selected trackers:
-    * `type` - required, text: _"selected"_.
-    * `tracker_ids` - required, int array.
+    * `type` – required, text: _"selected"_.
+    * `tracker_ids` – required, int array.
 
 #### The "state" event subscription
 
@@ -89,15 +89,14 @@ the server will send a new state in the [event message](events.md#state-event).
         1701976,
         1701975
       ],
-      "rate_limit": "5s",
       "format": "compact"
     }]
 }
 ```
 
-* `type` - required, text: _"state"_. Event type.
-* `trackers` - required, int array. List of tracker ids.
-* `format` - optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
+* `type` – required, text: _"state"_. Event type.
+* `trackers` – required, int array. List of tracker ids.
+* `format` – optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 
 #### The "readings_batch" event subscription
 
@@ -125,12 +124,12 @@ but no more frequently than the specified rate_limit.
 }
 ```
 
-* `type` - required, text: _"state_batch"_. Event type.
-* `target` - required, [target](#Request-targets). Trackers to subscribe.
-* `rate_limit` - optional, string. A timespan for batching.
-* `sensor_type` - optional, [metering sensor type](../resources/tracking/tracker/sensor/index.md#metering-sensor-type-values) or [virtual sensor type](../resources/tracking/tracker/sensor/index.md#virtual-sensor-type-values).
+* `type` – required, text: _"state_batch"_. Event type.
+* `target` – required, [target](#Request-targets). Trackers to subscribe.
+* `rate_limit` – optional, string. A timespan for batching.
+* `sensor_type` – optional, [metering sensor type](../resources/tracking/tracker/sensor/index.md#metering-sensor-type-values) or [virtual sensor type](../resources/tracking/tracker/sensor/index.md#virtual-sensor-type-values).
   If specified, state values and counters will be omitted. Used to filter sensors by type.
-* `include_components` - optional, boolean. Default is `true`. If set to `false`, parts of composite sensors will be excluded.
+* `include_components` – optional, boolean. Default is `true`. If set to `false`, parts of composite sensors will be excluded.
 
 
 #### The "iot_monitor" event subscription
@@ -170,36 +169,36 @@ but no more frequently than the specified `rate_limit`.
 
 Request fields:
 
-* `type` - required, text: _"iot_monitor"_. Event type.
-* `target` - required, [target](#Request-targets). Trackers to subscribe. Maximum 10 trackers.
-* `rate_limit` - optional, string. A timespan for batching.
+* `type` – required, text: _"iot_monitor"_. Event type.
+* `target` – required, [target](#Request-targets). Trackers to subscribe. Maximum 10 trackers.
+* `rate_limit` – optional, string. A timespan for batching.
 
 
 ### Response
 
 Response parameters:
 
-* `type` - required, text: _"response"_.
-* `action` - required, text: _"subscription/subscribe"_.
-* `events` - required, array of [enum](../getting-started/introduction.md#data-types), without nulls. List of the subscribed events types ("", "" or "iot_monitor").
-* `data` - required, map <string, object>. Map with events subscription result. One key per subscribed event.
-    * `state` - present if the "state" subscription requested, see sub response below.
-    * `state_batch` - present if the "state_batch" subscription requested, see sub response below.
-    * `readings_batch` - present if the "readings_batch" subscription requested, see sub response below.
+* `type` – required, text: _"response"_.
+* `action` – required, text: _"subscription/subscribe"_.
+* `events` – required, array of [enum](../getting-started/introduction.md#data-types), without nulls. List of the subscribed events types ("", "" or "iot_monitor").
+* `data` – required, map <string, object>. Map with events subscription result. One key per subscribed event.
+    * `state` – present if the "state" subscription requested, see sub response below.
+    * `state_batch` – present if the "state_batch" subscription requested, see sub response below.
+    * `readings_batch` – present if the "readings_batch" subscription requested, see sub response below.
 
 Sub response:
-* `success` - required, boolean.
-* `value` - required, map <string, enum>, present if success. The current status of requested trackers.
+* `success` – required, boolean.
+* `value` – required, map <string, enum>, present if success. The current status of requested trackers.
 
-Keys is a tracker IDs, values - one of the item:
+Keys is a tracker IDs, values – one of the item:
 
-* `normal` - non-blocked, normal status. [State events](events.md#state-event) for this
+* `normal` – non-blocked, normal status. [State events](events.md#state-event) for this
   tracker will be delivered to client.
-* `blocked` - tracker blocked. [State events](events.md#state-event) for this tracker 
+* `blocked` – tracker blocked. [State events](events.md#state-event) for this tracker 
 `will *not* be delivered to client. [Lifecycle events](events.md#lifecycle-event) will be delivered. After unblocking, 
 current tracker state will be sent automatically.
-* `unknown` - tracker ID missed in the database or not belong to current user.  
-* `disallowed` - subscription for this tracker not allowed by the current session.
+* `unknown` – tracker ID missed in the database or not belong to current user.  
+* `disallowed` – subscription for this tracker not allowed by the current session.
 
 Response sample:
 
@@ -239,12 +238,12 @@ Error codes are similar to the [API errors codes](../getting-started/errors.md#e
 
 Error response parameters:
 
-* `type` - required, text: _"error"_.
-* `action` - required, string - action from request (e.g. "subscription/subscribe") or "null" for some unexpected errors.
-* `status` - required - error code and description:
-    * `code` - required - error code (see [API errors codes](../getting-started/errors.md#error-codes)).
-    * `description` - required, string - error description.
-* `data` - optional string - part of parameters from request or some info for unexpected errors.
+* `type` – required, text: _"error"_.
+* `action` – required, string – action from request (e.g. "subscription/subscribe") or "null" for some unexpected errors.
+* `status` – required – error code and description:
+    * `code` – required – error code (see [API errors codes](../getting-started/errors.md#error-codes)).
+    * `description` – required, string – error description.
+* `data` – optional string – part of parameters from request or some info for unexpected errors.
 
 Error response sample:
 
