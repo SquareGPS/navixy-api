@@ -57,7 +57,7 @@ Lists all existing user applications.
     | name | type    | description                    |
     |:-----|:--------|:-------------------------------|
     | type | string  | Always `"api_key"`             |
-    | hash | string  | An [API key](api-keys.md) hash |
+    | hash | string  | An [API key](../api-keys.md) hash |
 
 === "User session"
 

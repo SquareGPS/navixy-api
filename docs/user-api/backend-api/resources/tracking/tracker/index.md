@@ -1348,7 +1348,7 @@ Gets all integrated tracker models (from "models" table).
 * `output_control` - [enum](../../../getting-started/introduction.md#data-types). Can be "none", "default", "batch", "stateless", "async", "async_offline" or "batch_async".
 * `special_control` - string. Additional specific types of tracker control (see [settings/special](./settings/special/index.md)). If multiple are separated by commas.
 * `inputs` - array of [enum](../../../getting-started/introduction.md#data-types). All available input types.
-* `state_fields` - array of [enum](../../../getting-started.md#data-types). All available state fields.
+* `state_fields` - array of [enum](../../../getting-started/introduction.md#data-types). All available state fields.
 * `rules` - array of [enum](../../../getting-started/introduction.md#data-types). Supported rules.
 * `special_settings` - array of [enum](../../../getting-started/introduction.md#data-types). Additional specific types of tracker control (see [settings/special](./settings/special/index.md)).
 * `sms_control` - array of [enum](../../../getting-started/introduction.md#data-types). Supported SMS control commands.
