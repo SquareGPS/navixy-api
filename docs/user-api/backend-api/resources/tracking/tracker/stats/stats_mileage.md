@@ -41,9 +41,15 @@ Returns mileage in kilometers in specified period grouped by trackers and day.
   "success": true,
   "result": {
     "123456": {
-      "2000-01-01": { "mileage": 0.0 },
-      "2000-01-02": { "mileage": 0.0 },
-      "2000-01-03": { "mileage": 199.09 }
+      "2000-01-01": {
+        "mileage": 0.0
+      },
+      "2000-01-02": {
+        "mileage": 0.0
+      },
+      "2000-01-03": {
+        "mileage": 199.09
+      }
     }
   },
   "limit_exceeded": false

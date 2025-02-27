@@ -63,24 +63,24 @@ curl -X 'POST' \
 
 ```json
 {
-    "discrete_inputs": 2,
-    "discrete_outputs": 1,
-    "inputs": [
-        "analog_1",
-        "avl_io_100000",
-        "battery_voltage",
-        "board_voltage",
-        "ext_temp_sensor_4",
-        "freq_1",
-        "hw_mileage",
-        "impulse_counter_1",
-        "lls_level_4",
-        "lls_temperature_4"
-    ],
-    "states": [
-        "hardware_key"
-    ],
-    "success": true
+  "discrete_inputs": 2,
+  "discrete_outputs": 1,
+  "inputs": [
+    "analog_1",
+    "avl_io_100000",
+    "battery_voltage",
+    "board_voltage",
+    "ext_temp_sensor_4",
+    "freq_1",
+    "hw_mileage",
+    "impulse_counter_1",
+    "lls_level_4",
+    "lls_temperature_4"
+  ],
+  "states": [
+    "hardware_key"
+  ],
+  "success": true
 }
 ```
 

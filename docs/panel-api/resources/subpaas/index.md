@@ -75,7 +75,7 @@ Creates a subPaaS. After creation, its `dealer_block_type` will be in `INITIAL_B
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -238,7 +238,7 @@ Updates a SubPaas account with the specified ID.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

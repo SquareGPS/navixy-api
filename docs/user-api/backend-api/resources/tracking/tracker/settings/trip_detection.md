@@ -47,11 +47,11 @@ Gets parking detection settings for the specified tracker.
 
 ```json
 {
-    "success": true,
-    "min_idle_duration_minutes": 5,
-    "idle_speed_threshold": 3,
-    "ignition_aware": false,
-    "motion_sensor_aware": false
+  "success": true,
+  "min_idle_duration_minutes": 5,
+  "idle_speed_threshold": 3,
+  "ignition_aware": false,
+  "motion_sensor_aware": false
 }
 ```
 
@@ -101,7 +101,9 @@ Updates parking detection settings for the specified tracker.
 #### Response
 
 ```json
-{"success": true}
+{
+  "success": true
+}
 ```
 
 #### Errors

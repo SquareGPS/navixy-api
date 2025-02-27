@@ -49,7 +49,7 @@ Unsubscribe from auto-renewal by reference.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -88,13 +88,15 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "list": [{
-        "reference": "5EAD4B0B2F",
-        "code": "4679109",
-        "quantity": 123,
-        "expiration_date": "2021-01-28 13:32:11"
-    }]
+  "success": true,
+  "list": [
+    {
+      "reference": "5EAD4B0B2F",
+      "code": "4679109",
+      "quantity": 123,
+      "expiration_date": "2021-01-28 13:32:11"
+    }
+  ]
 }
 ```
 

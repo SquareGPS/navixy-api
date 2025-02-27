@@ -42,11 +42,11 @@ Gets base settings for the specified tracker.
 
 ```json
 {
-    "success": true,
-    "settings": {
-        "label": "Courier",
-        "group_id": 1
-    }
+  "success": true,
+  "settings": {
+    "label": "Courier",
+    "group_id": 1
+  }
 }
 ```
 
@@ -92,7 +92,9 @@ Updates the settings of the specified tracker.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

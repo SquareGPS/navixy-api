@@ -16,7 +16,7 @@ This document contains tracker object structure and API calls to interact with i
   "label": "tracker label",
   "clone": false,
   "group_id": 167,
-  "avatar_file_name" : "file name",
+  "avatar_file_name": "file name",
   "source": {
     "id": 234567,
     "device_id": 9999999988888,
@@ -28,10 +28,12 @@ This document contains tracker object structure and API calls to interact with i
     "tariff_end_date": "2016-03-24",
     "phone": "71234567890"
   },
-  "tag_bindings": [{
-    "tag_id": 456789,
-    "ordinal": 4
-  }]
+  "tag_bindings": [
+    {
+      "tag_id": 456789,
+      "ordinal": 4
+    }
+  ]
 }
 ```
 
@@ -59,8 +61,8 @@ This document contains tracker object structure and API calls to interact with i
 
 ```json
 {
-    "number": 1,
-    "title": "OUT1"
+  "number": 1,
+  "title": "OUT1"
 }
 ```
 
@@ -184,13 +186,14 @@ containing "aa1" and "bb2" will be returned.
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": 123456,
       "label": "tracker label",
       "clone": false,
       "group_id": 167,
-      "avatar_file_name" : "file name",
+      "avatar_file_name": "file name",
       "source": {
         "id": 234567,
         "device_id": 9999999988888,
@@ -200,13 +203,16 @@ containing "aa1" and "bb2" will be returned.
         "status_listing_id": null,
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
-        "phone" : "+71234567890"
+        "phone": "+71234567890"
       },
-      "tag_bindings": [{
-        "tag_id": 456789,
-        "ordinal": 4
-      }]
-    }]
+      "tag_bindings": [
+        {
+          "tag_id": 456789,
+          "ordinal": 4
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -248,7 +254,9 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -292,7 +300,9 @@ Deletes a tracker if it is "clone". Will not work if specified ID of the origina
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -303,23 +313,24 @@ Deletes a tracker if it is "clone". Will not work if specified ID of the origina
 
 ```json
 {
-    "success": false,
-    "status": {
-        "code": 203,
-        "description": "Delete entity associated with"
-    },
-    "rules": [10]
+  "success": false,
+  "status": {
+    "code": 203,
+    "description": "Delete entity associated with"
+  },
+  "rules": [10]
 }
 ```
 or
+
 ```json
 {
-    "success": false,
-    "status": {
-        "code": 203,
-        "description": "Delete entity associated with"
-    },
-    "vehicles": [11]
+  "success": false,
+  "status": {
+    "code": 203,
+    "description": "Delete entity associated with"
+  },
+  "vehicles": [11]
 }
 ```
 
@@ -356,7 +367,9 @@ Changes tracker's phone and setup new apn.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -402,16 +415,18 @@ Gets last CAN and OBD sensors and states values received from the device.
 {
   "success": true,
   "user_time": "2021-05-20 13:49:09",
-  "inputs": [{
-    "label": "OBD: RPM",
-    "units": "", 
-    "name":" obd_rpm",
-    "type": "rpm",
-    "value": 889.0,
-    "units_type": "custom",
-    "converted_units_type": null,
-    "converted_value": null
-  }],
+  "inputs": [
+    {
+      "label": "OBD: RPM",
+      "units": "",
+      "name": " obd_rpm",
+      "type": "rpm",
+      "value": 889.0,
+      "units_type": "custom",
+      "converted_units_type": null,
+      "converted_value": null
+    }
+  ],
   "states": {
     "obd_vin": "123",
     "obd_mil_status": "0"
@@ -530,9 +545,10 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
 
 ```json
 {
-    "success": true,
-    "user_time": "2021-05-20 13:49:09",
-    "inputs": [{
+  "success": true,
+  "user_time": "2021-05-20 13:49:09",
+  "inputs": [
+    {
       "label": "Sensor #1",
       "name": "can_fuel",
       "type": "fuel",
@@ -541,8 +557,9 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
       "units": "litres",
       "converted_units_type": null,
       "converted_value": null
-    }],
-    "update_time": "2021-05-20 13:48:02"
+    }
+  ],
+  "update_time": "2021-05-20 13:48:02"
 }
 ```
 
@@ -600,18 +617,18 @@ bound to them (if any).
 
 ```json
 {
-    "success": true,
-    "user_time": "2021-05-20 13:49:09",
-    "inputs": [true, true, false],
-    "states": [
-        {
-            "type": "ignition",
-            "name": "DIN1",
-            "status": true,
-            "input_number": 1
-        }
-    ],
-    "update_time": "2021-05-20 13:48:02"
+  "success": true,
+  "user_time": "2021-05-20 13:49:09",
+  "inputs": [true, true, false],
+  "states": [
+    {
+      "type": "ignition",
+      "name": "DIN1",
+      "status": true,
+      "input_number": 1
+    }
+  ],
+  "update_time": "2021-05-20 13:48:02"
 }
 ```
 
@@ -662,11 +679,11 @@ bound to them (if any).
 
 ```json
 {
-    "success": true,
-    "user_time": "2021-05-20 13:49:09",
-        "data": {
-            "265489": {<input info>}
-        }    
+  "success": true,
+  "user_time": "2021-05-20 13:49:09",
+  "data": {
+    "265489": {<input info>}
+  }
 }
 ```
 
@@ -677,16 +694,16 @@ Input info:
 
 ```json
 {
-    "inputs": [true, true, false],
-    "states": [
-        {
-            "type": "ignition",
-            "name": "DIN1",
-            "status": true,
-            "input_number": 1
-        }
-    ],
-    "update_time": "2021-05-20 13:48:02"
+  "inputs": [true, true, false],
+  "states": [
+    {
+      "type": "ignition",
+      "name": "DIN1",
+      "status": true,
+      "input_number": 1
+    }
+  ],
+  "update_time": "2021-05-20 13:48:02"
 }
 ```
 
@@ -735,8 +752,8 @@ Gets tracker's outputs info
 
 ```json
 {
-    "success": true,
-    "result": [<output info>]
+  "success": true,
+  "result": [<output info>]
 }
 ```
 
@@ -778,10 +795,10 @@ Gets trackers' outputs info
 
 ```json
 {
-    "success": true,
-    "result": {
-        "265489": [<output info>]
-    }
+  "success": true,
+  "result": {
+    "265489": [<output info>]
+  }
 }
 ```
 
@@ -858,14 +875,14 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
 
 ```json
 {
-  "success" : true,
-  "value" : {
-    "get_time" : "2012-03-05 12:00:00",
-    "heading" : 11,
-    "lat" : 22.0,
-    "lng" : 33.0,
-    "satellites" : 5,
-    "speed" : 20,
+  "success": true,
+  "value": {
+    "get_time": "2012-03-05 12:00:00",
+    "heading": 11,
+    "lat": 22.0,
+    "lng": 33.0,
+    "satellites": 5,
+    "speed": 20,
     "precision": 100
   }
 }
@@ -920,19 +937,21 @@ Gets last sensor values for sensors that are:
 
 ```json
 {
-  "success":true,
-  "user_time":"2021-05-20 13:49:09",
-  "inputs":[{
-    "label":"Board voltage",
-    "units":"V",
-    "name":"board_voltage",
-    "type":"power",
-    "value":13.562,
-    "units_type":"custom",
-    "converted_units_type":null,
-    "converted_value":null
-  }],
-  "update_time":"2021-05-20 13:48:02"
+  "success": true,
+  "user_time": "2021-05-20 13:49:09",
+  "inputs": [
+    {
+      "label": "Board voltage",
+      "units": "V",
+      "name": "board_voltage",
+      "type": "power",
+      "value": 13.562,
+      "units_type": "custom",
+      "converted_units_type": null,
+      "converted_value": null
+    }
+  ],
+  "update_time": "2021-05-20 13:48:02"
 }
 ```
 
@@ -999,45 +1018,47 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 
 ```json
 {
-  "user_time":"2022-08-31 13:47:13",
-  "state":{
-    "source_id":545139,
-    "gps":{
-      "updated":"2022-08-31 13:47:09",
-      "signal_level":100,
-      "location":{
-        "lat":42.82769,
-        "lng":-78.26290833333333
+  "user_time": "2022-08-31 13:47:13",
+  "state": {
+    "source_id": 545139,
+    "gps": {
+      "updated": "2022-08-31 13:47:09",
+      "signal_level": 100,
+      "location": {
+        "lat": 42.82769,
+        "lng": -78.26290833333333
       },
-      "heading":45,
-      "speed":0,
-      "alt":0
+      "heading": 45,
+      "speed": 0,
+      "alt": 0
     },
-    "connection_status":"active",
-    "movement_status":"parked",
+    "connection_status": "active",
+    "movement_status": "parked",
     "movement_status_update": "2022-08-31 13:40:44",
     "ignition": false,
     "ignition_update": "2022-08-31 13:40:44",
     "gsm": {
-      "updated":"2022-08-31 13:47:09",
-      "signal_level":100,
-      "network_name":"Mobile",
-      "roaming":false
+      "updated": "2022-08-31 13:47:09",
+      "signal_level": 100,
+      "network_name": "Mobile",
+      "roaming": false
     },
-    "last_update":"2022-08-31 13:47:09",
-    "battery_level":97,
-    "battery_update":"2022-08-31 13:47:09",
-    "inputs":[false,false,false],
-    "inputs_update":"2022-08-31 13:47:09",
-    "outputs":[true, false],
-    "outputs_update":"2022-08-31 13:47:09",
-    "additional":{
-      "hardware_key":{
-        "value":"20910998202956382057",
-        "updated":"2022-08-31 10:47:09"}},
-    "actual_track_update":"2022-08-31 13:40:44"
+    "last_update": "2022-08-31 13:47:09",
+    "battery_level": 97,
+    "battery_update": "2022-08-31 13:47:09",
+    "inputs": [false, false, false],
+    "inputs_update": "2022-08-31 13:47:09",
+    "outputs": [true, false],
+    "outputs_update": "2022-08-31 13:47:09",
+    "additional": {
+      "hardware_key": {
+        "value": "20910998202956382057",
+        "updated": "2022-08-31 10:47:09"
+      }
+    },
+    "actual_track_update": "2022-08-31 13:40:44"
   },
-  "success":true
+  "success": true
 }
 ```
 
@@ -1293,16 +1314,17 @@ Gets all integrated tracker models (from "models" table).
     "none"
   ],
   "sms_control": [],
-  "connection": [{
-    "protocol": "NGP",
-    "transport": "HTTPS",
-    "url": "https://ngp-tracker.example.com"
-  }, {
-    "protocol": "NGP",
-    "transport": "MQTTS",
-    "url": "mqtts://ngp_device:secretword@example.com:8883/ngp",
-    "description": "Credentials for connection: login: ngp_device, password: secretword, topic: ngp.#"
-  }
+  "connection": [
+    {
+      "protocol": "NGP",
+      "transport": "HTTPS",
+      "url": "https://ngp-tracker.example.com"
+    }, {
+      "protocol": "NGP",
+      "transport": "MQTTS",
+      "url": "mqtts://ngp_device:secretword@example.com:8883/ngp",
+      "description": "Credentials for connection: login: ngp_device, password: secretword, topic: ngp.#"
+    }
   ],
   "has_led_control": false,
   "has_location_request": false,
@@ -1419,7 +1441,9 @@ Set tags for a tracker. Tags must be created.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -1463,7 +1487,9 @@ Request types:
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -1533,23 +1559,23 @@ device and **activation_code** since these parameters required by the plugin.
 
 ```json
 {
-  "success":true,
-  "value":{
-    "id":833389,
-    "label":"Courier",
-    "group_id":0,
-    "source":{
-      "id":526383,
-      "device_id":"123451234512346",
-      "model":"qlgv55lite",
-      "blocked":false,
-      "tariff_id":12163,
-      "phone":"79123122312",
-      "status_listing_id":null,
-      "creation_date":"2021-06-03",
-      "tariff_end_date":"2021-06-17"
+  "success": true,
+  "value": {
+    "id": 833389,
+    "label": "Courier",
+    "group_id": 0,
+    "source": {
+      "id": 526383,
+      "device_id": "123451234512346",
+      "model": "qlgv55lite",
+      "blocked": false,
+      "tariff_id": 12163,
+      "phone": "79123122312",
+      "status_listing_id": null,
+      "creation_date": "2021-06-03",
+      "tariff_end_date": "2021-06-17"
     },
-    "clone":false
+    "clone": false
   }
 }
 ```
@@ -1608,29 +1634,31 @@ Resends registration commands to the device. The panel must have installed SMS g
 
 ```json
 {
-    "success": true,
-    "value": {
-      "id": 123456,
-      "label": "tracker label",
-      "clone": false,
-      "group_id": 167,
-      "avatar_file_name" : "file name",
-      "source": {
-        "id": 234567,
-        "device_id": 9999999988888,
-        "model": "telfmb920",
-        "blocked": false,
-        "tariff_id": 345678,
-        "status_listing_id": null,
-        "creation_date": "2011-09-21",
-        "tariff_end_date": "2016-03-24",
-        "phone" : "+71234567890"
-      },
-      "tag_bindings": [{
+  "success": true,
+  "value": {
+    "id": 123456,
+    "label": "tracker label",
+    "clone": false,
+    "group_id": 167,
+    "avatar_file_name": "file name",
+    "source": {
+      "id": 234567,
+      "device_id": 9999999988888,
+      "model": "telfmb920",
+      "blocked": false,
+      "tariff_id": 345678,
+      "status_listing_id": null,
+      "creation_date": "2011-09-21",
+      "tariff_end_date": "2016-03-24",
+      "phone": "+71234567890"
+    },
+    "tag_bindings": [
+      {
         "tag_id": 456789,
         "ordinal": 4
-      }]
-    }
+      }
+    ]
+  }
 }
 ```
 
@@ -1681,29 +1709,31 @@ The device must be preconfigured. This API call can be used only for bundles.
 
 ```json
 {
-    "success": true,
-    "value": {
-      "id": 123456,
-      "label": "tracker label",
-      "clone": false,
-      "group_id": 167,
-      "avatar_file_name" : "file name",
-      "source": {
-        "id": 234567,
-        "device_id": 9999999988888,
-        "model": "telfmb920",
-        "blocked": false,
-        "tariff_id": 345678,
-        "status_listing_id": null,
-        "creation_date": "2011-09-21",
-        "tariff_end_date": "2016-03-24",
-        "phone" : "71234567890"
-      },
-      "tag_bindings": [{
+  "success": true,
+  "value": {
+    "id": 123456,
+    "label": "tracker label",
+    "clone": false,
+    "group_id": 167,
+    "avatar_file_name": "file name",
+    "source": {
+      "id": 234567,
+      "device_id": 9999999988888,
+      "model": "telfmb920",
+      "blocked": false,
+      "tariff_id": 345678,
+      "status_listing_id": null,
+      "creation_date": "2011-09-21",
+      "tariff_end_date": "2016-03-24",
+      "phone": "71234567890"
+    },
+    "tag_bindings": [
+      {
         "tag_id": 456789,
         "ordinal": 4
-      }]
-    }
+      }
+    ]
+  }
 }
 ```
 
@@ -1778,23 +1808,23 @@ device. Activation code is not used when replacing a device.
 
 ```json
 {
-  "success":true,
-  "value":{
-    "id":833389,
-    "label":"Courier",
-    "group_id":0,
-    "source":{
-      "id":526383,
-      "device_id":"123451234512346",
-      "model":"qlgv55lite",
-      "blocked":false,
-      "tariff_id":12163,
-      "phone":"79123122312",
-      "status_listing_id":null,
-      "creation_date":"2021-06-03",
-      "tariff_end_date":"2021-06-17"
+  "success": true,
+  "value": {
+    "id": 833389,
+    "label": "Courier",
+    "group_id": 0,
+    "source": {
+      "id": 526383,
+      "device_id": "123451234512346",
+      "model": "qlgv55lite",
+      "blocked": false,
+      "tariff_id": 12163,
+      "phone": "79123122312",
+      "status_listing_id": null,
+      "creation_date": "2021-06-03",
+      "tariff_end_date": "2021-06-17"
     },
-    "clone":false
+    "clone": false
   }
 }
 ```
@@ -1852,29 +1882,31 @@ The replacement device must be preconfigured. This API call can be used only for
 
 ```json
 {
-    "success": true,
-    "value": {
-      "id": 123456,
-      "label": "tracker label",
-      "clone": false,
-      "group_id": 167,
-      "avatar_file_name" : "file name",
-      "source": {
-        "id": 234567,
-        "device_id": 9999999988888,
-        "model": "telfmb920",
-        "blocked": false,
-        "tariff_id": 345678,
-        "status_listing_id": null,
-        "creation_date": "2011-09-21",
-        "tariff_end_date": "2016-03-24",
-        "phone" : "71234567890"
-      },
-      "tag_bindings": [{
+  "success": true,
+  "value": {
+    "id": 123456,
+    "label": "tracker label",
+    "clone": false,
+    "group_id": 167,
+    "avatar_file_name": "file name",
+    "source": {
+      "id": 234567,
+      "device_id": 9999999988888,
+      "model": "telfmb920",
+      "blocked": false,
+      "tariff_id": 345678,
+      "status_listing_id": null,
+      "creation_date": "2011-09-21",
+      "tariff_end_date": "2016-03-24",
+      "phone": "71234567890"
+    },
+    "tag_bindings": [
+      {
         "tag_id": 456789,
         "ordinal": 4
-      }]
-    }
+      }
+    ]
+  }
 }
 ```
 
@@ -1932,29 +1964,31 @@ Resends registration commands to the new device. The panel must have installed S
 
 ```json
 {
-    "success": true,
-    "value": {
-      "id": 123456,
-      "label": "tracker label",
-      "clone": false,
-      "group_id": 167,
-      "avatar_file_name" : "file name",
-      "source": {
-        "id": 234567,
-        "device_id": 9999999988888,
-        "model": "telfmb920",
-        "blocked": false,
-        "tariff_id": 345678,
-        "status_listing_id": null,
-        "creation_date": "2011-09-21",
-        "tariff_end_date": "2016-03-24",
-        "phone" : "+71234567890"
-      },
-      "tag_bindings": [{
+  "success": true,
+  "value": {
+    "id": 123456,
+    "label": "tracker label",
+    "clone": false,
+    "group_id": 167,
+    "avatar_file_name": "file name",
+    "source": {
+      "id": 234567,
+      "device_id": 9999999988888,
+      "model": "telfmb920",
+      "blocked": false,
+      "tariff_id": 345678,
+      "status_listing_id": null,
+      "creation_date": "2011-09-21",
+      "tariff_end_date": "2016-03-24",
+      "phone": "+71234567890"
+    },
+    "tag_bindings": [
+      {
         "tag_id": 456789,
         "ordinal": 4
-      }]
-    }
+      }
+    ]
+  }
 }
 ```
 
@@ -2055,13 +2089,14 @@ See [special settings JSON object](settings/special/index.md#read)
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": 123456,
       "label": "tracker label",
       "clone": false,
       "group_id": 167,
-      "avatar_file_name" : "file name",
+      "avatar_file_name": "file name",
       "source": {
         "id": 234567,
         "device_id": 1234567890,
@@ -2071,14 +2106,16 @@ See [special settings JSON object](settings/special/index.md#read)
         "status_listing_id": null,
         "creation_date": "2011-09-21",
         "tariff_end_date": "2016-03-24",
-        "phone" : "+71234567890"
+        "phone": "+71234567890"
       },
-      "tag_bindings": [{
-        "tag_id": 456789,
-        "ordinal": 4
-      }]
+      "tag_bindings": [
+        {
+          "tag_id": 456789,
+          "ordinal": 4
+        }
+      ]
     }
-    ]
+  ]
 }
 ```
 

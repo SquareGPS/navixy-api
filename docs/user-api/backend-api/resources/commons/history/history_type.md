@@ -37,11 +37,13 @@ Returns available history event types with localized descriptions.
 
 ```json
 {
-    "success": true, 
-    "list": [{
-         "type": "alarmcontrol",
-         "description": "Car alarm" 
-    }]
+  "success": true,
+  "list": [
+    {
+      "type": "alarmcontrol",
+      "description": "Car alarm"
+    }
+  ]
 }
 ```
 

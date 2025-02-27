@@ -42,12 +42,12 @@ Gets the APN name/user/password and mobile operator of device by a `tracker_id`.
 
 ```json
 {
-    "success": true,
-    "value": {
-        "name":"fast.tmobile.com",
-        "user":"tmobile",
-        "password":"tmobile"
-    }
+  "success": true,
+  "value": {
+    "name": "fast.tmobile.com",
+    "user": "tmobile",
+    "password": "tmobile"
+  }
 }
 ```
 

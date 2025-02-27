@@ -31,7 +31,7 @@ Creates a file to specify its ID in service work later.
 {
   "success": true,
   "value": {
-    "file_id": 111, 
+    "file_id": 111,
     "url": "http://example.com",
     "expires": "2016-02-03 03:04:00",
     "file_field_name": "file",

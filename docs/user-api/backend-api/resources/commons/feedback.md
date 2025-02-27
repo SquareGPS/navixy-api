@@ -56,7 +56,9 @@ email address for feedback.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

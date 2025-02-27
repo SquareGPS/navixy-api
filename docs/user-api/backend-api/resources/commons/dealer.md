@@ -42,78 +42,78 @@ If `hash` is specified the `domain` shouldn't be used.
 
 ```json
 {
-    "success": true,
-    "dealer": {
-        "id": 5001,
-        "ui_domain": "demo.navixy.com",
-        "company_url": "navixy.com"
+  "success": true,
+  "dealer": {
+    "id": 5001,
+    "ui_domain": "demo.navixy.com",
+    "company_url": "navixy.com"
+  },
+  "settings": {
+    "domain": "demo.navixy.com",
+    "service_title": "Navixy Demo",
+    "locale": "at_AT",
+    "demo_login": "demo",
+    "demo_password": "demo",
+    "maps": ["roadmap", "osm"],
+    "default_map": {
+      "type": "roadmap",
+      "location": {
+        "lat": 57.0,
+        "lng": 61.0
+      },
+      "zoom": 10
     },
-    "settings": {
-        "domain" : "demo.navixy.com",
-        "service_title": "Navixy Demo",
-        "locale": "at_AT",
-        "demo_login": "demo",
-        "demo_password": "demo",
-        "maps": ["roadmap", "osm"],
-        "default_map": {
-            "type": "roadmap",
-            "location": {
-                "lat": 57.0,
-                "lng": 61.0
-            },
-            "zoom": 10
-        },
-        "currency": "EUR",
-        "payment_link": "http://site.de/pay.php", 
-        "promo_url": "http://site.de/about/",
-        "google_client_id": "clientID",
-        "favicon": "paas/5001/custom.ico",
-        "logo": "paas/5001/logo.png",
-        "app_logo": "paas/5001/app_logo.png",
-        "login_wallpaper": "paas/5001/login.png",
-        "desktop_wallpaper": "http://test.com/test.jpg",
-        "monitoring_logo": "http://test.com/test.jpg",
-        "login_footer": "All rights reserved.",
-        "allow_registration": true,
-        "show_mobile_apps" : true,
-        "show_call_notifications" : true,
-        "default_user_settings": {
-            "geocoder": "google",
-            "route_provider": "progorod",
-            "measurement_system": "metric",
-            "translit": false
-        },
-        "display_model_features_link" : true,
-        "color_theme": "aqua",
-        "app_color_theme": "blue_1",
-        "privacy_policy_link": "http://privacy-policy-url",
-        "tos": "Terms Of Service text",
-        "tracker_model_filter": {
-            "exclusion": true,
-            "values": []
-        },
-        "internal": {
-            "light_registration": true,
-            "demo_tracker_source_id": 14,
-            "demo_tracker_label": "Demo tracker"
-        },
-        "no_register_commands": false
+    "currency": "EUR",
+    "payment_link": "http://site.de/pay.php",
+    "promo_url": "http://site.de/about/",
+    "google_client_id": "clientID",
+    "favicon": "paas/5001/custom.ico",
+    "logo": "paas/5001/logo.png",
+    "app_logo": "paas/5001/app_logo.png",
+    "login_wallpaper": "paas/5001/login.png",
+    "desktop_wallpaper": "http://test.com/test.jpg",
+    "monitoring_logo": "http://test.com/test.jpg",
+    "login_footer": "All rights reserved.",
+    "allow_registration": true,
+    "show_mobile_apps": true,
+    "show_call_notifications": true,
+    "default_user_settings": {
+      "geocoder": "google",
+      "route_provider": "progorod",
+      "measurement_system": "metric",
+      "translit": false
     },
-    "demo_ends": "2014-01-01",
-    "premium_gis": true,
-    "features": ["branding_web"],
-    "platform": {
-        "iso_datetime_support": true,
-        "history.max_limit": 10,
-        "report.max_time_span": "P90D",
-        "stats.max_allowed_trackers": 128,
-        "stats.max_time_span": "P31D",
-        "file_storage.hard_max_file_size": 16777216,
-        "form.max_fields_count": 128,
-        "form.file_field.max_file_size": 16777216,
-        "form.file_field.max_files_per_field": 6,
-        "form.file_field.max_count": 16
-    }
+    "display_model_features_link": true,
+    "color_theme": "aqua",
+    "app_color_theme": "blue_1",
+    "privacy_policy_link": "http://privacy-policy-url",
+    "tos": "Terms Of Service text",
+    "tracker_model_filter": {
+      "exclusion": true,
+      "values": []
+    },
+    "internal": {
+      "light_registration": true,
+      "demo_tracker_source_id": 14,
+      "demo_tracker_label": "Demo tracker"
+    },
+    "no_register_commands": false
+  },
+  "demo_ends": "2014-01-01",
+  "premium_gis": true,
+  "features": ["branding_web"],
+  "platform": {
+    "iso_datetime_support": true,
+    "history.max_limit": 10,
+    "report.max_time_span": "P90D",
+    "stats.max_allowed_trackers": 128,
+    "stats.max_time_span": "P31D",
+    "file_storage.hard_max_file_size": 16777216,
+    "form.max_fields_count": 128,
+    "form.file_field.max_file_size": 16777216,
+    "form.file_field.max_files_per_field": 6,
+    "form.file_field.max_count": 16
+  }
 }
 ```
 

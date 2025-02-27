@@ -12,12 +12,12 @@ Bill object description and API calls for work with user's bills.
 
 ```json
 {
-    "order_id": 63602,
-    "created": "2012-03-05 11:55:03",
-    "sum": 150.0,
-    "status": "created",
-    "positions": ["The subscription fee for the services of Account W3"],
-    "link": "http://bill.navixy.com/xK1QEYK"
+  "order_id": 63602,
+  "created": "2012-03-05 11:55:03",
+  "sum": 150.0,
+  "status": "created",
+  "positions": ["The subscription fee for the services of Account W3"],
+  "link": "http://bill.navixy.com/xK1QEYK"
 }
 ```
 
@@ -63,8 +63,8 @@ Creates a new bill for the user.
 
 ```json
 {
-    "success": true,
-    "value": 6421
+  "success": true,
+  "value": 6421
 }
 ```
 
@@ -108,16 +108,18 @@ Shows list of bills with their parameters in array.
 
 ```json
 {
-    "success": true,
-    "count": 7,
-    "bills": [{
+  "success": true,
+  "count": 7,
+  "bills": [
+    {
       "order_id": 63602,
       "created": "2012-03-05 11:55:03",
       "sum": 150.0,
       "status": "created",
       "positions": ["The subscription fee for the services of Account W3"],
       "link": "http://bill.navixy.com/xK1QEYK"
-    }]
+    }
+  ]
 }
 ```
 

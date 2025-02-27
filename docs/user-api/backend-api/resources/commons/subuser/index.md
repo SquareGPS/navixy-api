@@ -28,31 +28,31 @@ Sub-user object is almost identical to usual user.
 
 ```json
 {
-      "id": 103,
-      "activated": true,
-      "login": "user@test.com",
-      "first_name": "Charles",
-      "middle_name": "Henry",
-      "last_name": "Pearson",
-      "legal_type": "legal_entity",
-      "phone": "491761234567",
-      "post_country": "Germany",
-      "post_index": "61169",
-      "post_region": "Hessen",
-      "post_city": "Wiesbaden",
-      "post_street_address": "Marienplatz 2",
-      "registered_country": "Germany",
-      "registered_index": "61169",
-      "registered_region": "Hessen",
-      "registered_city": "Wiesbaden",
-      "registered_street_address": "Marienplatz 2",
-      "state_reg_num": "12-3456789",
-      "tin": "1131145180",
-      "legal_name": "E. Biasi GmbH",
-      "iec": "",
-      "security_group_id": 333,
-      "creation_date": "2016-05-20 00:00:00"
-    }
+ "id": 103,
+ "activated": true,
+ "login": "user@test.com",
+ "first_name": "Charles",
+ "middle_name": "Henry",
+ "last_name": "Pearson",
+ "legal_type": "legal_entity",
+ "phone": "491761234567",
+ "post_country": "Germany",
+ "post_index": "61169",
+ "post_region": "Hessen",
+ "post_city": "Wiesbaden",
+ "post_street_address": "Marienplatz 2",
+ "registered_country": "Germany",
+ "registered_index": "61169",
+ "registered_region": "Hessen",
+ "registered_city": "Wiesbaden",
+ "registered_street_address": "Marienplatz 2",
+ "state_reg_num": "12-3456789",
+ "tin": "1131145180",
+ "legal_name": "E. Biasi GmbH",
+ "iec": "",
+ "security_group_id": 333,
+ "creation_date": "2016-05-20 00:00:00"
+}
 ```
 
 * `id` - int. Sub-user's ID, can be null (when creating new sub-user).
@@ -120,7 +120,7 @@ Deletes sub-user. This operation cannot be reversed.
 
 ```json
 {
-    "success": true
+ "success": true
 }
 ```
 
@@ -162,33 +162,35 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "list": [{
-       "id": 103,
-       "activated": true,
-       "login": "user@test.com",
-       "first_name": "Charles",
-       "middle_name": "Henry",
-       "last_name": "Pearson",
-       "legal_type": "legal_entity",
-       "phone": "491761234567",
-       "post_country": "Germany",
-       "post_index": "61169",
-       "post_region": "Hessen",
-       "post_city": "Wiesbaden",
-       "post_street_address": "Marienplatz 2",
-       "registered_country": "Germany",
-       "registered_index": "61169",
-       "registered_region": "Hessen",
-       "registered_city": "Wiesbaden",
-       "registered_street_address": "Marienplatz 2",
-       "state_reg_num": "12-3456789",
-       "tin": "1131145180",
-       "legal_name": "E. Biasi GmbH",
-       "iec": "",
-       "security_group_id": 333,
-       "creation_date": "2016-05-20 00:00:00"
-    }]
+ "success": true,
+ "list": [
+  {
+   "id": 103,
+   "activated": true,
+   "login": "user@test.com",
+   "first_name": "Charles",
+   "middle_name": "Henry",
+   "last_name": "Pearson",
+   "legal_type": "legal_entity",
+   "phone": "491761234567",
+   "post_country": "Germany",
+   "post_index": "61169",
+   "post_region": "Hessen",
+   "post_city": "Wiesbaden",
+   "post_street_address": "Marienplatz 2",
+   "registered_country": "Germany",
+   "registered_index": "61169",
+   "registered_region": "Hessen",
+   "registered_city": "Wiesbaden",
+   "registered_street_address": "Marienplatz 2",
+   "state_reg_num": "12-3456789",
+   "tin": "1131145180",
+   "legal_name": "E. Biasi GmbH",
+   "iec": "",
+   "security_group_id": 333,
+   "creation_date": "2016-05-20 00:00:00"
+  }
+ ]
 }
 ```
 
@@ -230,8 +232,8 @@ Allows you to create sub-users associated to your master account.
 
 ```json
 {
-    "success": true,
-    "id": 121458
+ "success": true,
+ "id": 121458
 }
 ```
 
@@ -272,7 +274,7 @@ Updates sub-user data.
 
 ```json
 {
-    "success": true
+ "success": true
 }
 ```
 

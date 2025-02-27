@@ -37,8 +37,8 @@ Common parameters are:
 
 ```json
 {
-    "success": true,
-    "value": {<tracker>}
+  "success": true,
+  "value": {<tracker>}
 }
 ```
 

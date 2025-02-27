@@ -45,8 +45,8 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "value": "42fc7d3068cb98d233c3af749dee4a8d"
+  "success": true,
+  "value": "42fc7d3068cb98d233c3af749dee4a8d"
 }
 ```
 
@@ -86,8 +86,8 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "value": "42fc7d3068cb98d233c3af749dee4a8d"
+  "success": true,
+  "value": "42fc7d3068cb98d233c3af749dee4a8d"
 }
 ```
 

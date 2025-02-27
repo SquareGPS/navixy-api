@@ -36,15 +36,17 @@ Information about all supported timezones for the specified locale. Does not req
 
 ```json
 {
-    "success": true,
-    "list": [{
-        "zone_id": "Australia/Sydney",
-        "description": "Sydney",
-        "base_offset": 10.0,
-        "dst_offset": 1,
-        "country_code": "AU",
-        "alt_ids": ["Australia/ACT", "Australia/Canberra", "Australia/NSW"]
-    }]
+  "success": true,
+  "list": [
+    {
+      "zone_id": "Australia/Sydney",
+      "description": "Sydney",
+      "base_offset": 10.0,
+      "dst_offset": 1,
+      "country_code": "AU",
+      "alt_ids": ["Australia/ACT", "Australia/Canberra", "Australia/NSW"]
+    }
+  ]
 }
 ```
 

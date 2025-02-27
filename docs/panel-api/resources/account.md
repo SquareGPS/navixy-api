@@ -38,68 +38,68 @@ Does not require session hash and does not need any permissions. Auths dealer in
 
 ```json
 {
-    "hash": "fa7bf873fab9333144e171372a321b06",
-    "success": true,
-    "permissions": {
-        "base": [
-            "get_dealer_info"
-        ],
-        "service_settings": [
-            "read",
-            "update"
-        ],
-        "notification_settings": [
-            "read",
-            "update"
-        ],
-        "trackers": [
-            "corrupt",
-            "create",
-            "delete",
-            "global",
-            "read",
-            "report",
-            "update"
-        ],
-        "users": [
-            "corrupt",
-            "create",
-            "read",
-            "update"
-        ],
-        "user_sessions": [
-            "create"
-        ],
-        "tariffs": [
-            "create",
-            "read",
-            "update"
-        ],
-        "transactions": [
-            "create",
-            "read"
-        ],
-        "activation_code": [
-            "read",
-            "update"
-        ],
-        "password": [
-            "update"
-        ],
-        "email_gateways": [
-            "create",
-            "delete",
-            "read",
-            "send_email",
-            "update"
-        ],
-        "subpaas": [
-            "create",
-            "delete",
-            "read",
-            "update"
-        ]
-    }
+ "hash": "fa7bf873fab9333144e171372a321b06",
+ "success": true,
+ "permissions": {
+  "base": [
+   "get_dealer_info"
+  ],
+  "service_settings": [
+   "read",
+   "update"
+  ],
+  "notification_settings": [
+   "read",
+   "update"
+  ],
+  "trackers": [
+   "corrupt",
+   "create",
+   "delete",
+   "global",
+   "read",
+   "report",
+   "update"
+  ],
+  "users": [
+   "corrupt",
+   "create",
+   "read",
+   "update"
+  ],
+  "user_sessions": [
+   "create"
+  ],
+  "tariffs": [
+   "create",
+   "read",
+   "update"
+  ],
+  "transactions": [
+   "create",
+   "read"
+  ],
+  "activation_code": [
+   "read",
+   "update"
+  ],
+  "password": [
+   "update"
+  ],
+  "email_gateways": [
+   "create",
+   "delete",
+   "read",
+   "send_email",
+   "update"
+  ],
+  "subpaas": [
+   "create",
+   "delete",
+   "read",
+   "update"
+  ]
+ }
 }
 ```
 
@@ -140,67 +140,67 @@ Only session `hash`.
 
 ```json
 {
-    "success": true,
-    "permissions": {
-        "base": [
-            "get_dealer_info"
-        ],
-        "service_settings": [
-            "read",
-            "update"
-        ],
-        "notification_settings": [
-            "read",
-            "update"
-        ],
-        "trackers": [
-            "corrupt",
-            "create",
-            "delete",
-            "global",
-            "read",
-            "report",
-            "update"
-        ],
-        "users": [
-            "corrupt",
-            "create",
-            "read",
-            "update"
-        ],
-        "user_sessions": [
-            "create"
-        ],
-        "tariffs": [
-            "create",
-            "read",
-            "update"
-        ],
-        "transactions": [
-            "create",
-            "read"
-        ],
-        "activation_code": [
-            "read",
-            "update"
-        ],
-        "password": [
-            "update"
-        ],
-        "email_gateways": [
-            "create",
-            "delete",
-            "read",
-            "send_email",
-            "update"
-        ],
-        "subpaas": [
-            "create",
-            "delete",
-            "read",
-            "update"
-        ]
-    }
+ "success": true,
+ "permissions": {
+  "base": [
+   "get_dealer_info"
+  ],
+  "service_settings": [
+   "read",
+   "update"
+  ],
+  "notification_settings": [
+   "read",
+   "update"
+  ],
+  "trackers": [
+   "corrupt",
+   "create",
+   "delete",
+   "global",
+   "read",
+   "report",
+   "update"
+  ],
+  "users": [
+   "corrupt",
+   "create",
+   "read",
+   "update"
+  ],
+  "user_sessions": [
+   "create"
+  ],
+  "tariffs": [
+   "create",
+   "read",
+   "update"
+  ],
+  "transactions": [
+   "create",
+   "read"
+  ],
+  "activation_code": [
+   "read",
+   "update"
+  ],
+  "password": [
+   "update"
+  ],
+  "email_gateways": [
+   "create",
+   "delete",
+   "read",
+   "send_email",
+   "update"
+  ],
+  "subpaas": [
+   "create",
+   "delete",
+   "read",
+   "update"
+  ]
+ }
 }
 ```
 
@@ -237,7 +237,7 @@ Only session `hash`.
 
 ```json
 {
-    "success": true
+ "success": true
 }
 ```
 

@@ -13,15 +13,16 @@ Plugins are special software modules which modify the behavior of various API ca
 
 ```json
 {
-    "id": 1,
-    "type":"tracker_register",
-    "ui_module": "Registration.appPlugins.BundledSim",
-    "module": "com.navixy.plugin.tracker.register.bundled_sim",
-    "filter": {
-        "exclusion": true,
-        "values": ["navixymobile", "mobile_unknown.*"]
-    },
-    "parameters" : {<parameter1>}
+  "id": 1,
+  "type": "tracker_register",
+  "ui_module": "Registration.appPlugins.BundledSim",
+  "module": "com.navixy.plugin.tracker.register.bundled_sim",
+  "filter": {
+    "exclusion": true,
+    "values": ["navixymobile", "mobile_unknown.*"]
+  },
+  "parameters": {<parameter1>}
+}
 ```
 
 * `id` - int. An ID of plugin.
@@ -38,14 +39,14 @@ Plugins are special software modules which modify the behavior of various API ca
 
 ```json
 {
-    "id": 4,
-    "type": "tracker_report",
-    "module": "com.navixy.plugin.tracker.report.trip",
-    "ui_module": "Trip",
-    "filter": {
-        "exclusion": true,
-        "values": []
-    }
+  "id": 4,
+  "type": "tracker_report",
+  "module": "com.navixy.plugin.tracker.report.trip",
+  "ui_module": "Trip",
+  "filter": {
+    "exclusion": true,
+    "values": []
+  }
 }
 ```
 
@@ -83,17 +84,19 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "list": [{
-         "id": 4,
-         "type": "tracker_report",
-         "module": "com.navixy.plugin.tracker.report.trip",
-         "ui_module": "Trip",
-         "filter": {
-             "exclusion": true,
-             "values": []
-         }
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 4,
+      "type": "tracker_report",
+      "module": "com.navixy.plugin.tracker.report.trip",
+      "ui_module": "Trip",
+      "filter": {
+        "exclusion": true,
+        "values": []
+      }
+    }
+  ]
 }
 ```
 

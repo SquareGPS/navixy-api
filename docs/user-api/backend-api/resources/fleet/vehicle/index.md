@@ -13,45 +13,45 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 
 ```json
 {
-    "id": 222,
-    "tracker_id": 1,
-    "tracker_label": "Jimi LL301",
-    "label": "AGV",
-    "max_speed": 90,
-    "model": "Renault KERAX",
-    "type": "truck",
-    "subtype": "tractor",
-    "garage_id": 1,
-    "garage_organization_name": "Fleet Systems",
-    "trailer" : "trailer1",
-    "manufacture_year" : 2001,
-    "color" : "some color",
-    "additional_info" : "additional info",
-    "reg_number": "А001АА96",
-    "vin": "TMBJF25LXC6080000",
-    "chassis_number": "",
-    "frame_number" : "",
-    "payload_weight": 32000,
-    "payload_height": 1.2,
-    "payload_length": 1.0,
-    "payload_width": 1.0,
-    "passengers": 4,
-    "gross_weight" : null,
-    "fuel_type": "petrol",
-    "fuel_grade": "А-80",
-    "norm_avg_fuel_consumption": 9.0,
-    "fuel_tank_volume": 50,
-    "fuel_cost" : 100.3,
-    "wheel_arrangement": "4x2",
-    "tyre_size": "255/65 R16",
-    "tyres_number": 4,
-    "liability_insurance_policy_number": "12345",
-    "liability_insurance_valid_till": "2020-10-15",
-    "free_insurance_policy_number": "",
-    "free_insurance_valid_till": null,
-    "icon_id" : 55,
-    "avatar_file_name": null,
-    "tags": [1,2]
+  "id": 222,
+  "tracker_id": 1,
+  "tracker_label": "Jimi LL301",
+  "label": "AGV",
+  "max_speed": 90,
+  "model": "Renault KERAX",
+  "type": "truck",
+  "subtype": "tractor",
+  "garage_id": 1,
+  "garage_organization_name": "Fleet Systems",
+  "trailer": "trailer1",
+  "manufacture_year": 2001,
+  "color": "some color",
+  "additional_info": "additional info",
+  "reg_number": "А001АА96",
+  "vin": "TMBJF25LXC6080000",
+  "chassis_number": "",
+  "frame_number": "",
+  "payload_weight": 32000,
+  "payload_height": 1.2,
+  "payload_length": 1.0,
+  "payload_width": 1.0,
+  "passengers": 4,
+  "gross_weight": null,
+  "fuel_type": "petrol",
+  "fuel_grade": "А-80",
+  "norm_avg_fuel_consumption": 9.0,
+  "fuel_tank_volume": 50,
+  "fuel_cost": 100.3,
+  "wheel_arrangement": "4x2",
+  "tyre_size": "255/65 R16",
+  "tyres_number": 4,
+  "liability_insurance_policy_number": "12345",
+  "liability_insurance_valid_till": "2020-10-15",
+  "free_insurance_policy_number": "",
+  "free_insurance_valid_till": null,
+  "icon_id": 55,
+  "avatar_file_name": null,
+  "tags": [1, 2]
 }
 ```
 
@@ -145,8 +145,8 @@ Creates a new vehicle.
 
 ```json
 {
-    "success": true,
-    "id": 111
+  "success": true,
+  "id": 111
 }
 ```
 
@@ -189,7 +189,9 @@ Deletes a vehicles with the specified IDs. Only one of the following parameters 
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -230,48 +232,50 @@ Gets all vehicles belonging to user.
 
 ```json
 {
-    "success": true,
-    "list": [{
-        "id": 222,
-        "tracker_id": 1,
-        "tracker_label": "Jimi LL301",
-        "label": "AGV",
-        "max_speed": 90,
-        "model": "Renault KERAX",
-        "type": "truck",
-        "subtype": "tractor",
-        "garage_id": 1,
-        "garage_organization_name": "Fleet Systems",
-        "trailer" : "trailer1",
-        "manufacture_year" : 2001,
-        "color" : "some color",
-        "additional_info" : "additional info",
-        "reg_number": "А001АА96",
-        "vin": "TMBJF25LXC6080000",
-        "chassis_number": "",
-        "frame_number" : "",
-        "payload_weight": 32000,
-        "payload_height": 1.2,
-        "payload_length": 1.0,
-        "payload_width": 1.0,
-        "passengers": 4,
-        "gross_weight" : null,
-        "fuel_type": "petrol",
-        "fuel_grade": "А-80",
-        "norm_avg_fuel_consumption": 9.0,
-        "fuel_tank_volume": 50,
-        "fuel_cost" : 100.3,
-        "wheel_arrangement": "4x2",
-        "tyre_size": "255/65 R16",
-        "tyres_number": 4,
-        "liability_insurance_policy_number": "12345",
-        "liability_insurance_valid_till": "2020-10-15",
-        "free_insurance_policy_number": "",
-        "free_insurance_valid_till": null,
-        "icon_id" : 55,
-        "avatar_file_name": null,
-        "tags": [1,2]
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 222,
+      "tracker_id": 1,
+      "tracker_label": "Jimi LL301",
+      "label": "AGV",
+      "max_speed": 90,
+      "model": "Renault KERAX",
+      "type": "truck",
+      "subtype": "tractor",
+      "garage_id": 1,
+      "garage_organization_name": "Fleet Systems",
+      "trailer": "trailer1",
+      "manufacture_year": 2001,
+      "color": "some color",
+      "additional_info": "additional info",
+      "reg_number": "А001АА96",
+      "vin": "TMBJF25LXC6080000",
+      "chassis_number": "",
+      "frame_number": "",
+      "payload_weight": 32000,
+      "payload_height": 1.2,
+      "payload_length": 1.0,
+      "payload_width": 1.0,
+      "passengers": 4,
+      "gross_weight": null,
+      "fuel_type": "petrol",
+      "fuel_grade": "А-80",
+      "norm_avg_fuel_consumption": 9.0,
+      "fuel_tank_volume": 50,
+      "fuel_cost": 100.3,
+      "wheel_arrangement": "4x2",
+      "tyre_size": "255/65 R16",
+      "tyres_number": 4,
+      "liability_insurance_policy_number": "12345",
+      "liability_insurance_valid_till": "2020-10-15",
+      "free_insurance_policy_number": "",
+      "free_insurance_valid_till": null,
+      "icon_id": 55,
+      "avatar_file_name": null,
+      "tags": [1, 2]
+    }
+  ]
 }
 ```
 
@@ -310,46 +314,46 @@ Gets vehicle by specified ID.
 
 ```json
 {
-    "success": true,
-    "value": {
-         "id": 222,
-         "tracker_id": 1,
-         "label": "AGV",
-         "max_speed": 90,
-         "model": "Renault KERAX",
-         "type": "truck",
-         "subtype": "tractor",
-         "garage_id": null,
-         "trailer" : "trailer1",
-         "manufacture_year" : 2001,
-         "color" : "some color",
-         "additional_info" : "additional info",
-         "reg_number": "А001АА96",
-         "vin": "TMBJF25LXC6080000",
-         "chassis_number": "",
-         "frame_number" : "",
-         "payload_weight": 32000,
-         "payload_height": 1.2,
-         "payload_length": 1.0,
-         "payload_width": 1.0,
-         "passengers": 4,
-         "gross_weight" : null,
-         "fuel_type": "petrol",
-         "fuel_grade": "А-80",
-         "norm_avg_fuel_consumption": 9.0,
-         "fuel_tank_volume": 50,
-         "fuel_cost" : 100.3,
-         "wheel_arrangement": "4x2",
-         "tyre_size": "255/65 R16",
-         "tyres_number": 4,
-         "liability_insurance_policy_number": "12345",
-         "liability_insurance_valid_till": "2020-10-15",
-         "free_insurance_policy_number": "",
-         "free_insurance_valid_till": null,
-         "icon_id" : 55,
-         "avatar_file_name": null,
-         "tags": [1,2]
-    }
+  "success": true,
+  "value": {
+    "id": 222,
+    "tracker_id": 1,
+    "label": "AGV",
+    "max_speed": 90,
+    "model": "Renault KERAX",
+    "type": "truck",
+    "subtype": "tractor",
+    "garage_id": null,
+    "trailer": "trailer1",
+    "manufacture_year": 2001,
+    "color": "some color",
+    "additional_info": "additional info",
+    "reg_number": "А001АА96",
+    "vin": "TMBJF25LXC6080000",
+    "chassis_number": "",
+    "frame_number": "",
+    "payload_weight": 32000,
+    "payload_height": 1.2,
+    "payload_length": 1.0,
+    "payload_width": 1.0,
+    "passengers": 4,
+    "gross_weight": null,
+    "fuel_type": "petrol",
+    "fuel_grade": "А-80",
+    "norm_avg_fuel_consumption": 9.0,
+    "fuel_tank_volume": 50,
+    "fuel_cost": 100.3,
+    "wheel_arrangement": "4x2",
+    "tyre_size": "255/65 R16",
+    "tyres_number": 4,
+    "liability_insurance_policy_number": "12345",
+    "liability_insurance_valid_till": "2020-10-15",
+    "free_insurance_policy_number": "",
+    "free_insurance_valid_till": null,
+    "icon_id": 55,
+    "avatar_file_name": null,
+    "tags": [1, 2]
+  }
 }
 ```
 
@@ -386,7 +390,9 @@ Updates existing vehicle.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -417,9 +423,9 @@ If `file_id` is set – `batch` parameter will be ignored.
 
 ```json
 {
-    "success": true,
-    "list": [<checked_vehicle>],
-    "limit_exceeded": false     
+  "success": true,
+  "list": [<checked_vehicle>],
+  "limit_exceeded": false
 }
 ```
 
@@ -429,44 +435,44 @@ where `checked_vehicle` is:
 
 ```json
 {
-      "id": 222,
-      "tracker_id": 1,
-      "label": "AGV",
-      "max_speed": 90,
-      "model": "Renault KERAX",
-      "type": "truck",
-      "subtype": "tractor",
-      "garage_id": null,
-      "trailer" : "trailer1",
-      "manufacture_year" : 2001,
-      "color" : "some color",
-      "additional_info" : "additional info",
-      "reg_number": "А001АА96",
-      "vin": "TMBJF25LXC6080000",
-      "chassis_number": "",
-      "frame_number" : "",
-      "payload_weight": 32000,
-      "payload_height": 1.2,
-      "payload_length": 1.0,
-      "payload_width": 1.0,
-      "passengers": 4,
-      "gross_weight" : null,
-      "fuel_type": "petrol",
-      "fuel_grade": "А-80",
-      "norm_avg_fuel_consumption": 9.0,
-      "fuel_tank_volume": 50,
-      "fuel_cost" : 100.3,
-      "wheel_arrangement": "4x2",
-      "tyre_size": "255/65 R16",
-      "tyres_number": 4,
-      "liability_insurance_policy_number": "12345",
-      "liability_insurance_valid_till": "2020-10-15",
-      "free_insurance_policy_number": "",
-      "free_insurance_valid_till": null,
-      "icon_id" : 55,
-      "avatar_file_name": null,
-      "tags": [1,2],
-      "errors": <array_of_objects>
+  "id": 222,
+  "tracker_id": 1,
+  "label": "AGV",
+  "max_speed": 90,
+  "model": "Renault KERAX",
+  "type": "truck",
+  "subtype": "tractor",
+  "garage_id": null,
+  "trailer": "trailer1",
+  "manufacture_year": 2001,
+  "color": "some color",
+  "additional_info": "additional info",
+  "reg_number": "А001АА96",
+  "vin": "TMBJF25LXC6080000",
+  "chassis_number": "",
+  "frame_number": "",
+  "payload_weight": 32000,
+  "payload_height": 1.2,
+  "payload_length": 1.0,
+  "payload_width": 1.0,
+  "passengers": 4,
+  "gross_weight": null,
+  "fuel_type": "petrol",
+  "fuel_grade": "А-80",
+  "norm_avg_fuel_consumption": 9.0,
+  "fuel_tank_volume": 50,
+  "fuel_cost": 100.3,
+  "wheel_arrangement": "4x2",
+  "tyre_size": "255/65 R16",
+  "tyres_number": 4,
+  "liability_insurance_policy_number": "12345",
+  "liability_insurance_valid_till": "2020-10-15",
+  "free_insurance_policy_number": "",
+  "free_insurance_valid_till": null,
+  "icon_id": 55,
+  "avatar_file_name": null,
+  "tags": [1, 2],
+  "errors": <array_of_objects>
 }
 ```
 

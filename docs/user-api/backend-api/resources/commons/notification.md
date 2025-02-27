@@ -40,12 +40,14 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "list": [{
-         "id": 12451529,
-         "message": "notification",
-         "show_till": "2020-12-31 17:27:28"
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 12451529,
+      "message": "notification",
+      "show_till": "2020-12-31 17:27:28"
+    }
+  ]
 }
 ```
 

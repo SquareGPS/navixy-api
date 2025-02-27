@@ -13,11 +13,11 @@ Let's explore the Notification Setting object using the following example:
 
 ```json
 {
-    "email_from": "Navixy <no-reply@navixy.com>", 
-    "email_footer": "\n\n—-nSincerely, Navixy",
-    "email_special": "no-reply@navixy.com",
-    "sms_originator": "demo.navixy.com",
-    "caller_id": "491761234543"
+  "email_from": "Navixy <no-reply@navixy.com>",
+  "email_footer": "\n\n—-nSincerely, Navixy",
+  "email_special": "no-reply@navixy.com",
+  "sms_originator": "demo.navixy.com",
+  "caller_id": "491761234543"
 }
 ```
 
@@ -62,14 +62,14 @@ Only session `hash`.
 
 ```json
 {
-    "success": true, 
-    "value": {
-        "email_from": "NAVIXY <no-reply@navixy.com>", 
-        "email_footer": "\n\n---nSincerely, Navixy",
-        "email_special": "no-reply@navixy.com",
-        "sms_originator": "demo.navixy.com",
-        "caller_id": "491761234543"
-    }
+  "success": true,
+  "value": {
+    "email_from": "NAVIXY <no-reply@navixy.com>",
+    "email_footer": "\n\n---nSincerely, Navixy",
+    "email_special": "no-reply@navixy.com",
+    "sms_originator": "demo.navixy.com",
+    "caller_id": "491761234543"
+  }
 }
 ``` 
 
@@ -110,7 +110,7 @@ Updates notification settings for the current dealer.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

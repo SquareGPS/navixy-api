@@ -12,30 +12,30 @@ API calls to manage GPS tracking devices within the Admin Panel.
 
 ```json
 {
-    "id": 111231,
-    "avatar_file_name" : "avatar",
-    "clone": true,
-    "comment": "Need to change SIM till next month",
+  "id": 111231,
+  "avatar_file_name": "avatar",
+  "clone": true,
+  "comment": "Need to change SIM till next month",
+  "creation_date": "2020-02-02",
+  "group_id": 0,
+  "dealer_id": 20410,
+  "deleted": false,
+  "label": "Truck",
+  "user_id": 183654,
+  "model_name": "Teltonika FMB120",
+  "last_connection": "2020-02-02 12:44",
+  "source": {
+    "id": 456751,
+    "device_id": "8624369656654",
+    "model": "telfmb120",
+    "blocked": false,
+    "tariff_id": 13457,
     "creation_date": "2020-02-02",
-    "group_id": 0,
-    "dealer_id": 20410,
-    "deleted": false,
-    "label": "Truck",
-    "user_id": 183654,
-    "model_name": "Teltonika FMB120",
-    "last_connection": "2020-02-02 12:44",
-    "source": {
-        "id": 456751,
-        "device_id": "8624369656654",
-        "model": "telfmb120",
-        "blocked": false,
-        "tariff_id": 13457,
-        "creation_date": "2020-02-02",
-        "tariff_end_date": "2021-02-02",
-        "connection_status": "idle",
-        "phone": "79995693344",
-        "corrupted": true
-    }
+    "tariff_end_date": "2021-02-02",
+    "connection_status": "idle",
+    "phone": "79995693344",
+    "corrupted": true
+  }
 }
 ```
 
@@ -156,7 +156,7 @@ Assign bundle to specified ICCID.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -203,7 +203,7 @@ Assigns bundle to specified order ID.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -246,7 +246,7 @@ Adds multiple bundles at once.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -294,9 +294,9 @@ Gets list of all bundles. If `filter` is used, entities will be returned only if
 
 ```json
 {
-    "success": true,
-    "list" : [<bundle>],
-    "count" : 42
+  "success": true,
+  "list": [<bundle>],
+  "count": 42
 }
 ```
 
@@ -340,8 +340,8 @@ Returns the bundle object with the specified imei.
 
 ```json
 {
-    "success": true,
-    "value" : <bundle>
+  "success": true,
+  "value": <bundle>
 }
 ```
 
@@ -383,7 +383,7 @@ Assign specified equipment to bundle.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -429,8 +429,8 @@ Cloning from a user of one subpaas to another user of another subpaas in the sam
 
 ```json
 {
-    "success": true,
-    "id": 3947
+  "success": true,
+  "id": 3947
 }
 ```
 
@@ -477,9 +477,9 @@ Returns auth token for connection to tracker command console.
 
 ```json
 {
-    "success": true,
-    "key": "6ad7490d4ec7f600ef10d4db41584980cd3ac230",
-    "timestamp": 1399957326
+  "success": true,
+  "key": "6ad7490d4ec7f600ef10d4db41584980cd3ac230",
+  "timestamp": 1399957326
 }
 ```
 
@@ -494,27 +494,26 @@ JSON objects come in the next text frames:
 
 ```json
 {
-  "data":
-  [
-    ["Time","2020-06-09 10:02:37.0"],
-    ["Location valid","yes"],
-    ["Latitude","-33.4595716"],
-    ["Longitude","-70.7805233"],
-    ["Speed","0"],
-    ["Heading","229"],
-    ["Moving","false"],
-    ["Satellites","7"],
-    ["Hardware mileage","3707.85"],
-    ["Mileage","3853.16"],
-    ["Digital input status","8"],
-    ["Analog input 1","0.004"],
-    ["Analog input 2","0.02"],
-    ["Digital output status","3"],
-    ["board_voltage","11.619"],
-    ["temp_sensor","23.0"],
-    ["GSM Level","13"],
-    ["GSM Operator code","73002"],
-    ["Battery level","3.827"]
+  "data": [
+    ["Time", "2020-06-09 10:02:37.0"],
+    ["Location valid", "yes"],
+    ["Latitude", "-33.4595716"],
+    ["Longitude", "-70.7805233"],
+    ["Speed", "0"],
+    ["Heading", "229"],
+    ["Moving", "false"],
+    ["Satellites", "7"],
+    ["Hardware mileage", "3707.85"],
+    ["Mileage", "3853.16"],
+    ["Digital input status", "8"],
+    ["Analog input 1", "0.004"],
+    ["Analog input 2", "0.02"],
+    ["Digital output status", "3"],
+    ["board_voltage", "11.619"],
+    ["temp_sensor", "23.0"],
+    ["GSM Level", "13"],
+    ["GSM Operator code", "73002"],
+    ["Battery level", "3.827"]
   ],
   "type": "status"
 }
@@ -560,7 +559,7 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -573,12 +572,12 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 
 ```json
 {
-    "success": false,
-    "status": {
-        "code": 253,
-        "description": "Device has clones"
-    },
-    "list": [234651]
+  "success": false,
+  "status": {
+    "code": 253,
+    "description": "Device has clones"
+  },
+  "list": [234651]
 }
 ```
 
@@ -634,7 +633,7 @@ Example:
 
 ```json
 {
-  "ignored_trackers" : [ 99330 ],
+  "ignored_trackers": [99330],
   "list": [
     587469,
     587470
@@ -766,7 +765,7 @@ Deletes a clone of the existing tracker.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -778,12 +777,12 @@ Deletes a clone of the existing tracker.
 
 ```json
 {
-    "success": false,
-    "status": {
-        "code": 203,
-        "description": "Delete entity associated with"
-    },
-    "rules": [10]
+  "success": false,
+  "status": {
+    "code": 203,
+    "description": "Delete entity associated with"
+  },
+  "rules": [10]
 }
 ```
 
@@ -793,12 +792,12 @@ or
 
 ```json
 {
-    "success": false,
-    "status": {
-        "code": 203,
-        "description": "Delete entity associated with"
-    },
-    "vehicles": [11]
+  "success": false,
+  "status": {
+    "code": 203,
+    "description": "Delete entity associated with"
+  },
+  "vehicles": [11]
 }
 ```
 
@@ -848,10 +847,11 @@ If `filter` is used, entities will be returned only if filter string contain one
 
 ```json
 {
-    "success": true,
-    "list" : [{
+  "success": true,
+  "list": [
+    {
       "id": 111231,
-      "avatar_file_name" : "avatar",
+      "avatar_file_name": "avatar",
       "clone": true,
       "comment": "Need to change SIM till next month",
       "creation_date": "2020-02-02",
@@ -863,19 +863,20 @@ If `filter` is used, entities will be returned only if filter string contain one
       "model_name": "Teltonika FMB120",
       "last_connection": "2020-02-02 12:44",
       "source": {
-          "id": 456751,
-          "device_id": "8624369656654",
-          "model": "telfmb120",
-          "blocked": false,
-          "tariff_id": 13457,
-          "creation_date": "2020-02-02",
-          "tariff_end_date": "2021-02-02",
-          "connection_status": "idle",
-          "phone": "79995693344",
-          "corrupted": true
+        "id": 456751,
+        "device_id": "8624369656654",
+        "model": "telfmb120",
+        "blocked": false,
+        "tariff_id": 13457,
+        "creation_date": "2020-02-02",
+        "tariff_end_date": "2021-02-02",
+        "connection_status": "idle",
+        "phone": "79995693344",
+        "corrupted": true
       }
-    }],
-    "count" : 42
+    }
+  ],
+  "count": 42
 }
 ```
 
@@ -922,7 +923,7 @@ Moves the existing non-clone tracker to another user belonging to the same deale
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -967,33 +968,33 @@ Returns the tracker object with the specified ID.
 
 ```json
 {
-    "success": true,
-    "value" : {
-        "id": 111231,
-        "avatar_file_name" : "avatar",
-        "clone": true,
-        "comment": "Need to change SIM till next month",
-        "creation_date": "2020-02-02",
-        "group_id": 0,
-        "dealer_id": 20410,
-        "deleted": false,
-        "label": "Truck",
-        "user_id": 183654,
-        "model_name": "Teltonika FMB120",
-        "last_connection": "2020-02-02 12:44",
-        "source": {
-            "id": 456751,
-            "device_id": "8624369656654",
-            "model": "telfmb120",
-            "blocked": false,
-            "tariff_id": 13457,
-            "creation_date": "2020-02-02",
-            "tariff_end_date": "2021-02-02",
-            "connection_status": "idle",
-            "phone": "79995693344",
-            "corrupted": true
-        }
+  "success": true,
+  "value": {
+    "id": 111231,
+    "avatar_file_name": "avatar",
+    "clone": true,
+    "comment": "Need to change SIM till next month",
+    "creation_date": "2020-02-02",
+    "group_id": 0,
+    "dealer_id": 20410,
+    "deleted": false,
+    "label": "Truck",
+    "user_id": 183654,
+    "model_name": "Teltonika FMB120",
+    "last_connection": "2020-02-02 12:44",
+    "source": {
+      "id": 456751,
+      "device_id": "8624369656654",
+      "model": "telfmb120",
+      "blocked": false,
+      "tariff_id": 13457,
+      "creation_date": "2020-02-02",
+      "tariff_end_date": "2021-02-02",
+      "connection_status": "idle",
+      "phone": "79995693344",
+      "corrupted": true
     }
+  }
 }
 ```
 
@@ -1040,7 +1041,7 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -1090,7 +1091,7 @@ Updates tracker settings.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -1133,7 +1134,7 @@ Updates source settings. Can block and unblock a device.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -1176,7 +1177,7 @@ Updates source settings. Can block and unblock a device.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -1291,7 +1292,7 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

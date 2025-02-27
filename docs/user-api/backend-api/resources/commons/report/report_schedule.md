@@ -88,8 +88,8 @@ Creates a new report schedule entry.
 
 ```json
 {
-    "success": true,
-    "id": 111
+  "success": true,
+  "id": 111
 }
 ```
 
@@ -134,7 +134,7 @@ Deletes report schedule with the specified ID.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
   
@@ -173,8 +173,9 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": 1,
       "enabled": true,
       "parameters": {
@@ -207,7 +208,8 @@ Only API key `hash`.
         "success": true,
         "id": 1
       }
-    }]
+    }
+  ]
 }
 ```
 
@@ -242,7 +244,7 @@ Update existing report schedule.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

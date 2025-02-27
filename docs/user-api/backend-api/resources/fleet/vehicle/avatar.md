@@ -46,7 +46,9 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 ##### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 ##### Errors
@@ -89,8 +91,8 @@ If `redirect_target` passed a return redirect to `response=<urlencoded response 
 
 ```json
 {
-    "success": true,
-    "value": "abcdef123456789.png"
+  "success": true,
+  "value": "abcdef123456789.png"
 }
 ```
 

@@ -12,8 +12,8 @@ Contains map layer object structure and API calls to interact with it.
 
 ```json
 {
-    "id": 123456,
-    "label": "test"
+  "id": 123456,
+  "label": "test"
 }
 ```
 
@@ -90,10 +90,12 @@ Only API key `hash`.
 ```json
 {
   "success": true,
-  "list": [{
-    "id": 123456,
-    "label": "test"
-  }]
+  "list": [
+    {
+      "id": 123456,
+      "label": "test"
+    }
+  ]
 }
 ```
 
@@ -121,8 +123,8 @@ Uploads new map layer.
 
 ```json
 {
-    "success": true,
-    "id": 163
+  "success": true,
+  "id": 163
 }
 ```
 
@@ -149,7 +151,9 @@ Updates metadata for the specified map layer.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -186,7 +190,9 @@ Deletes specified layer.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

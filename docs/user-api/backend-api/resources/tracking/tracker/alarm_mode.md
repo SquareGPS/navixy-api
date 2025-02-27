@@ -41,8 +41,8 @@ Gets the state of alarm mode of device.
 
 ```json
 {
- "success": true,
- "enabled": true
+  "success": true,
+  "enabled": true
 }
 ```
 
@@ -85,7 +85,9 @@ Changes the state of alarm mode of device. The device must be online.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

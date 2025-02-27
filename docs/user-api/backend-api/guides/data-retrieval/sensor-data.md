@@ -64,50 +64,50 @@ Example response:
 
 ```json
 {
-    "success": true,
-    "inputs": [
-        {
-            "label": "Board voltage",
-            "units": "V",
-            "name": "board_voltage",
-            "type": "power",
-            "value": 26.13,
-            "units_type": "custom",
-            "converted_units_type": null,
-            "converted_value": null,
-            "update_time": "2021-06-01 15:23:03"
-        },
-        {
-            "label": "Analog sensor #1",
-            "units": "",
-            "name": "analog_1",
-            "type": "fuel",
-            "min_value": 0.0,
-            "max_value": 450.0,
-            "value": 269.82,
-            "units_type": "litre",
-            "converted_units_type": null,
-            "converted_value": null,
-            "update_time": "2021-06-01 15:23:03"
-        }
-    ],
-    "states": [
-        {
-            "field": "battery_level",
-            "value": 4.01,
-            "update_time": "2021-06-01 15:23:03"
-        },
-        {
-            "field": "input_status",
-            "value": 0,
-            "update_time": "2021-06-01 15:23:03"
-        },
-        {
-            "field": "output_status",
-            "value": 3,
-            "update_time": "2021-06-01 15:23:03"
-        }
-    ]
+  "success": true,
+  "inputs": [
+    {
+      "label": "Board voltage",
+      "units": "V",
+      "name": "board_voltage",
+      "type": "power",
+      "value": 26.13,
+      "units_type": "custom",
+      "converted_units_type": null,
+      "converted_value": null,
+      "update_time": "2021-06-01 15:23:03"
+    },
+    {
+      "label": "Analog sensor #1",
+      "units": "",
+      "name": "analog_1",
+      "type": "fuel",
+      "min_value": 0.0,
+      "max_value": 450.0,
+      "value": 269.82,
+      "units_type": "litre",
+      "converted_units_type": null,
+      "converted_value": null,
+      "update_time": "2021-06-01 15:23:03"
+    }
+  ],
+  "states": [
+    {
+      "field": "battery_level",
+      "value": 4.01,
+      "update_time": "2021-06-01 15:23:03"
+    },
+    {
+      "field": "input_status",
+      "value": 0,
+      "update_time": "2021-06-01 15:23:03"
+    },
+    {
+      "field": "output_status",
+      "value": 3,
+      "update_time": "2021-06-01 15:23:03"
+    }
+  ]
 }
 ```
 
@@ -209,13 +209,15 @@ By interpreting and translating raw data from physical sensors, virtual sensors 
   "parameters": {
     "calc_method": "in_range",
     "range_from": 13.4,
-    "value_titles": [{
+    "value_titles": [
+      {
         "value": "0",
         "title": "Off"
-    }, {
+      }, {
         "value": "1",
         "title": "On"
-    }]
+      }
+    ]
   }
 }
 ```

@@ -44,8 +44,8 @@ Requests to read the state of engine immobilizer.
 
 ```json
 {
-   "success": true,
-   "enabled": true
+  "success": true,
+  "enabled": true
 }
 ```
 
@@ -90,7 +90,9 @@ Requests to change the engine immobilizer state of the device. The device must b
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

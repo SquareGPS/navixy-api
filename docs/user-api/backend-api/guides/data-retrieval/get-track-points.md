@@ -26,23 +26,23 @@ The platform will respond with the following data:
 
 ```json
 {
-    "success": true,
-    "limit_exceeded": true,
-    "list": [
-        {
-            "lat": 53.445181,
-            "lng": -2.276432,
-            "alt": 10,
-            "satellites": 8,
-            "get_time": "2011-06-18 03:39:44",
-            "address": "4B Albany Road, Manchester, Great Britain",
-            "heading": 298,
-            "speed": 70,
-            "precision": 100,
-            "gsm_lbs": true,
-            "parking": true
-        }
-    ]
+  "success": true,
+  "limit_exceeded": true,
+  "list": [
+    {
+      "lat": 53.445181,
+      "lng": -2.276432,
+      "alt": 10,
+      "satellites": 8,
+      "get_time": "2011-06-18 03:39:44",
+      "address": "4B Albany Road, Manchester, Great Britain",
+      "heading": 298,
+      "speed": 70,
+      "precision": 100,
+      "gsm_lbs": true,
+      "parking": true
+    }
+  ]
 }
 ```
 

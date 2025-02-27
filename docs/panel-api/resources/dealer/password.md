@@ -39,7 +39,7 @@ Changes password for the authorized Dealer.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

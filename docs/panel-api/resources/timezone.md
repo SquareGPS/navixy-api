@@ -42,18 +42,20 @@ Gets information about all supported timezones for the specified locale. Does no
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "zone_id": "America/Tijuana",
       "description": "Tijuana",
       "base_offset": -8.0,
       "dst_offset": 1,
       "country_code": "MX",
       "alt_ids": [
-          "America/Ensenada",
-          "America/Santa_Isabel"
+        "America/Ensenada",
+        "America/Santa_Isabel"
       ]
-    }]
+    }
+  ]
 }
 ```
 

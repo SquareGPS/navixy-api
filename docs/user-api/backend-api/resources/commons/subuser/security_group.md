@@ -13,12 +13,12 @@ Contains security group object structure and API calls related to security group
 
 ```json
 {
-    "id": 103,
-    "label": "Managers",
-    "privileges": {
+  "id": 103,
+  "label": "Managers",
+  "privileges": {
     "rights": ["tag_update", "tracker_register"],
     "store_period": "1d"
-    }
+  }
 }
 ```
 
@@ -104,8 +104,8 @@ Creates new security group.
 
 ```json
 {
-    "success": true,
-    "id": 103
+  "success": true,
+  "id": 103
 }
 ```
 
@@ -151,7 +151,7 @@ All sub-users belonging to this group will be assigned to default (null) securit
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -193,15 +193,17 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "list": [{
-         "id": 103,
-         "label": "Managers",
-         "privileges": {
-         "rights": ["tag_update", "tracker_register"],
-         "store_period": "1d"
-         }
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 103,
+      "label": "Managers",
+      "privileges": {
+        "rights": ["tag_update", "tracker_register"],
+        "store_period": "1d"
+      }
+    }
+  ]
 }
 ```
 
@@ -240,7 +242,7 @@ Updates existing security group.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -279,7 +281,7 @@ Assigns (removes) a security group to sub-users.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

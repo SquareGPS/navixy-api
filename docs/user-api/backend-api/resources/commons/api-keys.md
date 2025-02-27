@@ -176,15 +176,17 @@ Gets all of API keys for an account.
 
 ```json
 {
-  "list": [{
+  "list": [
+    {
       "hash": "c915157ac483e7319b0b257408bc04e1",
       "create_date": "2021-10-29 12:00:36",
       "title": "My Super App"
-  }, {
+    }, {
       "hash": "e3b7d1d727d21e064a190239b3403ee3",
       "create_date": "2021-11-19 16:06:03",
       "title": "AmoCRM integration"
-  }],
+    }
+  ],
   "success": true
 }
 ```

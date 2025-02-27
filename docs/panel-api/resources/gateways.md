@@ -84,9 +84,10 @@ Only session `hash`.
 
 ```json
 {
-    "success": true,
-    "bound_gateway": 2,
-    "own": [{
+  "success": true,
+  "bound_gateway": 2,
+  "own": [
+    {
       "id": 1,
       "leasable": false,
       "label": "Paas gate",
@@ -108,15 +109,16 @@ Only session `hash`.
         "mail.smtp.connectiontimeout": 60000,
         "mail.transport.protocol": "smtp"
       }
-    }],
-    "leasable": [
-        {
-            "id": 2,
-            "label": "Default",
-            "provider": "mandrill_smtp",
-            "default_from_address": "no-reply@x-gpsmail.com"
-        }
-    ]
+    }
+  ],
+  "leasable": [
+    {
+      "id": 2,
+      "label": "Default",
+      "provider": "mandrill_smtp",
+      "default_from_address": "no-reply@x-gpsmail.com"
+    }
+  ]
 }
 ```
 

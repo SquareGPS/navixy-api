@@ -39,7 +39,9 @@ Changes password of user with the provided session hash (it is contained in a pa
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -72,7 +74,9 @@ Works only with standard user session (not with API key).
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

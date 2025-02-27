@@ -41,15 +41,15 @@ Gets the APN name/user/password and mobile operator for registered device by pho
 #### Response
 
 ```json
-    {
-        "success": true,
-        "value": {
-            "name":"internet",
-            "user":"",
-            "password":"",
-            "operator_name":"Deutsche Telekom"
-        }
-    }
+{
+  "success": true,
+  "value": {
+    "name": "internet",
+    "user": "",
+    "password": "",
+    "operator_name": "Deutsche Telekom"
+  }
+}
 ```
 
 #### Errors

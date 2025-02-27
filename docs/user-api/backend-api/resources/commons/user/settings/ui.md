@@ -76,7 +76,9 @@ Sets setting value.
 #### Responses:
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

@@ -44,27 +44,29 @@ Tracks selected by intersecting their date range with date range from request (`
 
 ```json
 {
-    "success": true,
-    "list": [{
-        "tracker_id": 1,
-        "employee_id": 1,
-        "start_date": "2020-10-14 07:03:39",
-        "end_date": "2020-10-15 08:05:02",
-        "start_location": {
-         "lat": 11.111111,
-         "lng": 22.222222,
-         "address": "Address string"
-        },
-        "end_location": {
-         "lat": 33.333333,
-         "lng": 44.444444,
-         "address": "Address string"
-        },
-        "length": 2.1,
-        "start_odometer": 50.2,
-        "end_odometer": 52.0,
-        "overlapped": false
-    }]
+  "success": true,
+  "list": [
+    {
+      "tracker_id": 1,
+      "employee_id": 1,
+      "start_date": "2020-10-14 07:03:39",
+      "end_date": "2020-10-15 08:05:02",
+      "start_location": {
+        "lat": 11.111111,
+        "lng": 22.222222,
+        "address": "Address string"
+      },
+      "end_location": {
+        "lat": 33.333333,
+        "lng": 44.444444,
+        "address": "Address string"
+      },
+      "length": 2.1,
+      "start_odometer": 50.2,
+      "end_odometer": 52.0,
+      "overlapped": false
+    }
+  ]
 }
 ```
 

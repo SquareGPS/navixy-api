@@ -12,19 +12,19 @@ Transaction object description and API call to get list of user's billing transa
 
 ```json
 {
-    "description": "Recharge bonus balance during tracker registration",
-    "type": "bonus_charge",
-    "subtype": "register",
-    "timestamp": "2021-01-28 08:16:40",
-    "user_id": 12203,
-    "dealer_id": 5001,
-    "tracker_id": 303126,
-    "amount": -10.0000,
-    "new_balance": 800.0000,
-    "old_balance": 810.0000,
-    "bonus_amount": 10.0000,
-    "new_bonus": 10.0000,
-    "old_bonus": 0.0000
+  "description": "Recharge bonus balance during tracker registration",
+  "type": "bonus_charge",
+  "subtype": "register",
+  "timestamp": "2021-01-28 08:16:40",
+  "user_id": 12203,
+  "dealer_id": 5001,
+  "tracker_id": 303126,
+  "amount": -10.0000,
+  "new_balance": 800.0000,
+  "old_balance": 810.0000,
+  "bonus_amount": 10.0000,
+  "new_bonus": 10.0000,
+  "old_bonus": 0.0000
 }
 ```
 
@@ -76,21 +76,23 @@ Gets list of user's billing transactions for the specified period.
 ```json
 {
   "success": true,
-  "list": [{
-     "description": "Recharge bonus balance during tracker registration",
-     "type": "bonus_charge",
-     "subtype": "register",
-     "timestamp": "2021-01-28 08:16:40",
-     "user_id": 12203,
-     "dealer_id": 5001,
-     "tracker_id": 303126,
-     "amount": -10.0000,
-     "new_balance": 800.0000,
-     "old_balance": 810.0000,
-     "bonus_amount": 10.0000,
-     "new_bonus": 10.0000,
-     "old_bonus": 0.0000
-     }]
+  "list": [
+    {
+      "description": "Recharge bonus balance during tracker registration",
+      "type": "bonus_charge",
+      "subtype": "register",
+      "timestamp": "2021-01-28 08:16:40",
+      "user_id": 12203,
+      "dealer_id": 5001,
+      "tracker_id": 303126,
+      "amount": -10.0000,
+      "new_balance": 800.0000,
+      "old_balance": 810.0000,
+      "bonus_amount": 10.0000,
+      "new_bonus": 10.0000,
+      "old_bonus": 0.0000
+    }
+  ]
 }
 ```
 

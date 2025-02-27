@@ -49,30 +49,32 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 
 ```json
 {
-    "success": true,
-    "locations": [{
-            "lat": 37.825014712963565,
-            "lng": -122.37202062079945,
-            "address": "750 Avenue E,San Francisco",
-            "details": {
-              "country": "USA",
-              "province": "CA",
-              "locality": "San Francisco",
-              "street": "Avenue E",
-              "house": "750",
-              "postcode": "94130",
-              "bounds": {
-                "nw":{
-                  "lat": 37.825064712964,
-                  "lng": -122.3720706208
-                },
-                "se":{
-                  "lat": 37.824964712964,
-                  "lng": -122.3719706208
-                }
-              }
-            }
-    }]
+  "success": true,
+  "locations": [
+    {
+      "lat": 37.825014712963565,
+      "lng": -122.37202062079945,
+      "address": "750 Avenue E,San Francisco",
+      "details": {
+        "country": "USA",
+        "province": "CA",
+        "locality": "San Francisco",
+        "street": "Avenue E",
+        "house": "750",
+        "postcode": "94130",
+        "bounds": {
+          "nw": {
+            "lat": 37.825064712964,
+            "lng": -122.3720706208
+          },
+          "se": {
+            "lat": 37.824964712964,
+            "lng": -122.3719706208
+          }
+        }
+      }
+    }
+  ]
 }
 ```
 
@@ -119,26 +121,26 @@ Search address by location using geocoder.
 
 ```json
 {
-    "success": true,
-    "value": "750 Avenue E,San Francisco,CA 94130,USA",
-    "details": {
-      "country": "USA",
-      "province": "CA",
-      "locality": "San Francisco",
-      "street": "Avenue E",
-      "house": "750",
-      "postcode": "94130",
-      "bounds": {
-        "nw":{
-          "lat": 37.825064712964,
-          "lng": -122.3720706208
-        },
-        "se":{
-          "lat": 37.824964712964,
-          "lng": -122.3719706208
-        }
+  "success": true,
+  "value": "750 Avenue E,San Francisco,CA 94130,USA",
+  "details": {
+    "country": "USA",
+    "province": "CA",
+    "locality": "San Francisco",
+    "street": "Avenue E",
+    "house": "750",
+    "postcode": "94130",
+    "bounds": {
+      "nw": {
+        "lat": 37.825064712964,
+        "lng": -122.3720706208
+      },
+      "se": {
+        "lat": 37.824964712964,
+        "lng": -122.3719706208
       }
     }
+  }
 }
 ```
 

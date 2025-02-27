@@ -19,8 +19,8 @@ Described creation and using rules step-by-step in the [guide](../../../../guide
   "name": "Lock is opened/closed",
   "type": "locking_unlocking",
   "description": "This rule was created automatically",
-  "zone_ids": [ 18928 ],
-  "trackers": [ 10029750, 10030168, 10031971 ],
+  "zone_ids": [18928],
+  "trackers": [10029750, 10030168, 10031971],
   "primary_text": "Lock is opened",
   "secondary_text": "Lock is closed",
   "param": 0,
@@ -32,18 +32,20 @@ Described creation and using rules step-by-step in the [guide](../../../../guide
   },
   "suspended": false,
   "auto_created": true,
-  "schedule": [{
-    "type": "weekly",
-    "from": {
-      "weekday": 1,
-      "time": "00:00:00"
-    },
-    "to": {
-      "weekday": 7,
-      "time": "23:59:59"
-    },
-    "interval_id": 48732
-  }],
+  "schedule": [
+    {
+      "type": "weekly",
+      "from": {
+        "weekday": 1,
+        "time": "00:00:00"
+      },
+      "to": {
+        "weekday": 7,
+        "time": "23:59:59"
+      },
+      "interval_id": 48732
+    }
+  ],
   "extended_params": {
     "emergency": false,
     "zone_limit_inverted": false,
@@ -135,7 +137,9 @@ Binds rule with `rule_id` to trackers list.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -181,8 +185,8 @@ that are described for every rule type if exist in [rule types](rule_types.md).
 
 ```json
 {
-    "success": true,
-    "id": 123
+  "success": true,
+  "id": 123
 }
 ```
 
@@ -224,7 +228,9 @@ Deletes rule with rule_id and all related objects from the database.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -256,38 +262,42 @@ List tracker rules bound to tracker with an ID=`tracker_id` or all users' tracke
 
 ```json
 {
-   "success": true,
-   "list": [{
-     "id": 667281,
-     "name": "Case intrusion",
-     "type": "case_intrusion",
-     "description": "This rule was created automatically",
-     "zone_id": 0,
-     "trackers": [10029448, 10030168],
-     "primary_text": "Case is opened",
-     "secondary_text": "Case is closed",
-     "param": 0,
-     "alerts": {
-       "sms_phones": [],
-       "phones": [],
-       "emails": [],
-       "push_enabled": true
-     },
-     "suspended": false,
-     "auto_created": true,
-     "schedule": [{
-       "type": "weekly",
-       "from": {
-         "weekday": 1,
-         "time": "00:00:00"
-       },
-       "to": {
-         "weekday": 7,
-         "time": "23:59:59"
-       },
-       "interval_id": 46892
-     }]
-   }]
+  "success": true,
+  "list": [
+    {
+      "id": 667281,
+      "name": "Case intrusion",
+      "type": "case_intrusion",
+      "description": "This rule was created automatically",
+      "zone_id": 0,
+      "trackers": [10029448, 10030168],
+      "primary_text": "Case is opened",
+      "secondary_text": "Case is closed",
+      "param": 0,
+      "alerts": {
+        "sms_phones": [],
+        "phones": [],
+        "emails": [],
+        "push_enabled": true
+      },
+      "suspended": false,
+      "auto_created": true,
+      "schedule": [
+        {
+          "type": "weekly",
+          "from": {
+            "weekday": 1,
+            "time": "00:00:00"
+          },
+          "to": {
+            "weekday": 7,
+            "time": "23:59:59"
+          },
+          "interval_id": 46892
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -320,7 +330,9 @@ Unbinds trackers from rule with `rule_id`.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -365,7 +377,9 @@ Presented parameters are common for all rules, but there are specific parameters
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

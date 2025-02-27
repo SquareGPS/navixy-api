@@ -47,8 +47,8 @@ curl -X POST '{{ extra.api_example_url }}/task/create' \
 
 ```json
 {
-    "success": true,
-    "id": 111
+  "success": true,
+  "id": 111
 }
 ```
 
@@ -135,27 +135,27 @@ curl -X POST '{{ extra.api_example_url }}/task/route/create' \
 
 ```json
 {
-    "success": true,
-    "result": {
-        "id": 7115375,
-        "user_id": 184541,
-        "tracker_id": 669673,
-        "label": "Products delivery",
-        "description": "12 trackers of model 1 and 37 trackers of model 2",
-        "from": "2021-03-18 10:00:00",
-        "to": "2021-03-18 16:00:00",
-        "creation_date": "2021-03-17 14:45:49",
-        "status": "assigned",
-        "status_change_date": "2021-03-17 14:45:49",
-        "origin": "manual",
-        "checkpoint_ids": [
-            7115376,
-            7115377,
-            7115378
-        ],
-        "external_id": null,
-        "type": "route"
-    }
+  "success": true,
+  "result": {
+    "id": 7115375,
+    "user_id": 184541,
+    "tracker_id": 669673,
+    "label": "Products delivery",
+    "description": "12 trackers of model 1 and 37 trackers of model 2",
+    "from": "2021-03-18 10:00:00",
+    "to": "2021-03-18 16:00:00",
+    "creation_date": "2021-03-17 14:45:49",
+    "status": "assigned",
+    "status_change_date": "2021-03-17 14:45:49",
+    "origin": "manual",
+    "checkpoint_ids": [
+      7115376,
+      7115377,
+      7115378
+    ],
+    "external_id": null,
+    "type": "route"
+  }
 }
 ```
 
@@ -208,12 +208,8 @@ curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
 
 ```json
 {
-    "success": true,
-    "result": [
-        0,
-        1,
-        2
-    ]
+  "success": true,
+  "result": [0, 1, 2]
 }
 ```
 

@@ -12,48 +12,48 @@ Let's explore the Service Settings object using the following example:
 
 ```json
 {
-    "service_title": "monitoring service",
-    "locale": "en_US",
-    "demo_login": "demo",
-    "demo_password": "demo",
-    "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
-    "default_map": {
-      "type": "osm",
-      "location": {
-        "lat": 33.0, 
-        "lng": 22.0
-      },
-      "zoom": 2
+  "service_title": "monitoring service",
+  "locale": "en_US",
+  "demo_login": "demo",
+  "demo_password": "demo",
+  "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
+  "default_map": {
+    "type": "osm",
+    "location": {
+      "lat": 33.0,
+      "lng": 22.0
     },
-    "currency": "EUR",
-    "payment_link": "http://payme.ru",
-    "promo_url": "http://monitoring.com/about",
-    "google_client_id": "io54p54ijy54",
-    "domain": "track.agent.com",
-    "favicon": "http://test.com/favicon.ico",
-    "app_logo": "paas/5001/app_logo.png",
-    "logo": "paas/5001/logo.png",
-    "document_logo": "paas/5001/document_logo.png",
-    "login_wallpaper": "paas/5001/login.png",
-    "desktop_wallpaper": "http://test.com/test.jpg",
-    "login_footer": "All rights reserved.",
-    "allow_registration": true,
-    "show_mobile_apps": true,
-    "default_user_settings": {
-      "geocoder": "google",
-      "route_provider": "progorod",
-      "measurement_system": "metric",
-      "translit": false
-    },
-    "display_model_features_link": false,
-    "limited_domain": false,
-    "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
-    "color_theme": "aqua",
-    "app_color_theme": "blue_1",
-    "privacy_policy_link": "http://privacy-policy-url",
-    "tos": "Terms Of Service text",
-    "no_register_commands": false,
-    "default_user_time_zone": "Europe/London"
+    "zoom": 2
+  },
+  "currency": "EUR",
+  "payment_link": "http://payme.ru",
+  "promo_url": "http://monitoring.com/about",
+  "google_client_id": "io54p54ijy54",
+  "domain": "track.agent.com",
+  "favicon": "http://test.com/favicon.ico",
+  "app_logo": "paas/5001/app_logo.png",
+  "logo": "paas/5001/logo.png",
+  "document_logo": "paas/5001/document_logo.png",
+  "login_wallpaper": "paas/5001/login.png",
+  "desktop_wallpaper": "http://test.com/test.jpg",
+  "login_footer": "All rights reserved.",
+  "allow_registration": true,
+  "show_mobile_apps": true,
+  "default_user_settings": {
+    "geocoder": "google",
+    "route_provider": "progorod",
+    "measurement_system": "metric",
+    "translit": false
+  },
+  "display_model_features_link": false,
+  "limited_domain": false,
+  "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
+  "color_theme": "aqua",
+  "app_color_theme": "blue_1",
+  "privacy_policy_link": "http://privacy-policy-url",
+  "tos": "Terms Of Service text",
+  "no_register_commands": false,
+  "default_user_time_zone": "Europe/London"
 }
 ```
 
@@ -134,48 +134,48 @@ Only session `hash`.
 {
   "success": true,
   "value": {
-       "service_title": "monitoring service",
-       "locale": "en_US",
-       "demo_login": "demo",
-       "demo_password": "demo",
-       "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
-       "default_map": {
-         "type": "osm",
-         "location": {
-           "lat": 33.0, 
-           "lng": 22.0
-         },
-         "zoom": 2
-       },
-       "currency": "EUR",
-       "payment_link": "http://payme.ru",
-       "promo_url": "http://monitoring.com/about",
-       "google_client_id": "io54p54ijy54",
-       "domain": "track.agent.com",
-       "favicon": "http://test.com/favicon.ico",
-       "app_logo": "paas/5001/app_logo.png",
-       "logo": "paas/5001/logo.png",
-       "document_logo": "paas/5001/document_logo.png",
-       "login_wallpaper": "paas/5001/login.png",
-       "desktop_wallpaper": "http://test.com/test.jpg",
-       "login_footer": "All rights reserved.",
-       "allow_registration": true,
-       "show_mobile_apps": true,
-       "default_user_settings": {
-         "geocoder": "google",
-         "route_provider": "progorod",
-         "measurement_system": "metric",
-         "translit": false
-       },
-       "display_model_features_link": false,
-       "limited_domain": false,
-       "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
-       "color_theme": "aqua",
-       "app_color_theme": "blue_1",
-       "privacy_policy_link": "http://privacy-policy-url",
-       "tos": "Terms Of Service text",
-       "no_register_commands": false,
-       "default_user_time_zone": "America/New_York"
+    "service_title": "monitoring service",
+    "locale": "en_US",
+    "demo_login": "demo",
+    "demo_password": "demo",
+    "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
+    "default_map": {
+      "type": "osm",
+      "location": {
+        "lat": 33.0,
+        "lng": 22.0
+      },
+      "zoom": 2
+    },
+    "currency": "EUR",
+    "payment_link": "http://payme.ru",
+    "promo_url": "http://monitoring.com/about",
+    "google_client_id": "io54p54ijy54",
+    "domain": "track.agent.com",
+    "favicon": "http://test.com/favicon.ico",
+    "app_logo": "paas/5001/app_logo.png",
+    "logo": "paas/5001/logo.png",
+    "document_logo": "paas/5001/document_logo.png",
+    "login_wallpaper": "paas/5001/login.png",
+    "desktop_wallpaper": "http://test.com/test.jpg",
+    "login_footer": "All rights reserved.",
+    "allow_registration": true,
+    "show_mobile_apps": true,
+    "default_user_settings": {
+      "geocoder": "google",
+      "route_provider": "progorod",
+      "measurement_system": "metric",
+      "translit": false
+    },
+    "display_model_features_link": false,
+    "limited_domain": false,
+    "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"],
+    "color_theme": "aqua",
+    "app_color_theme": "blue_1",
+    "privacy_policy_link": "http://privacy-policy-url",
+    "tos": "Terms Of Service text",
+    "no_register_commands": false,
+    "default_user_time_zone": "America/New_York"
   }
 }
 ```
@@ -237,7 +237,7 @@ Note: wallpapers, logos and favicons cannot be edited here.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
