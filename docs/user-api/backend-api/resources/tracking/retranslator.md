@@ -10,16 +10,16 @@ that comes from a device to the platform to some third-party application specifi
 
 
 ## Retranslator protocol object
- 
+
 ```json
 {
-    "id": 123456,
-    "name": "protocol",
-    "has_login": true,
-    "has_password": false,
-    "fake_device_id_pattern": "id_pattern",
-    "required_login": true,
-    "required_password": false
+  "id": 123456,
+  "name": "protocol",
+  "has_login": true,
+  "has_password": false,
+  "fake_device_id_pattern": "id_pattern",
+  "required_login": true,
+  "required_password": false
 }
 ```
 
@@ -36,14 +36,14 @@ that comes from a device to the platform to some third-party application specifi
 
 ```json
 {
-    "id": 1,
-    "name": "Some server",
-    "protocol_id": 123456,
-    "address": "127.0.0.1",
-    "port": 15000,
-    "login": "login",
-    "password": "password",
-    "enabled": true
+  "id": 1,
+  "name": "Some server",
+  "protocol_id": 123456,
+  "address": "127.0.0.1",
+  "port": 15000,
+  "login": "login",
+  "password": "password",
+  "enabled": true
 }
 ```
 
@@ -87,8 +87,8 @@ Creates new retranslator.
 
 ```json
 {
-    "success": true,
-    "id": 123456
+  "success": true,
+  "id": 123456
 }
 ```
 
@@ -132,7 +132,9 @@ Deletes user's retranslator with specified `retranslator_id`.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -164,8 +166,9 @@ Get all users' retranslators.
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": 1,
       "name": "Some server",
       "protocol_id": 123456,
@@ -174,7 +177,8 @@ Get all users' retranslators.
       "login": "login",
       "password": "password",
       "enabled": true
-    }]
+    }
+  ]
 }
 ```
 
@@ -214,7 +218,9 @@ the current user.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -251,8 +257,9 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": 123456,
       "name": "protocol",
       "has_login": true,
@@ -260,7 +267,8 @@ Only API key `hash`.
       "fake_device_id_pattern": "id_pattern",
       "required_login": true,
       "required_password": false
-    }]
+    }
+  ]
 }
 ```
 

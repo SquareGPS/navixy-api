@@ -58,7 +58,9 @@ and for `legal_entity` or `sole_trader`:
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

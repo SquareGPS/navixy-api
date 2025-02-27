@@ -45,8 +45,8 @@ Creates a new session for the specified sub-user and obtain its hash. Can be use
 
 ```json
 {
-    "success": true,
-    "hash" : "22eac1c27af4be7b9d04da2ce1af111b"
+  "success": true,
+  "hash": "22eac1c27af4be7b9d04da2ce1af111b"
 }
 ```
 

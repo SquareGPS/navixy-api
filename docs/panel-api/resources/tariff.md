@@ -12,25 +12,25 @@ API calls for managing user plans within the service platform (PaaS or Sub Paas)
 
 ```json
 {
-    "id": 12163,
-    "name": "Premium",
-    "group_id": 3,
-    "active": true,
-    "type": "monthly",
-    "price": 12.55,
-    "early_change_price": 23.0,
-    "device_limit": 2000,
-    "has_reports": true,
-    "store_period": "1y",
-    "device_type": "tracker",
-    "proportional_charge": false,
-    "service_prices": {
-      "incoming_sms": 0.3, 
-      "outgoing_sms": 0.3, 
-      "service_sms": 0.2,  
-      "phone_call": 0.6,   
-      "traffic": 0.09
-    }
+  "id": 12163,
+  "name": "Premium",
+  "group_id": 3,
+  "active": true,
+  "type": "monthly",
+  "price": 12.55,
+  "early_change_price": 23.0,
+  "device_limit": 2000,
+  "has_reports": true,
+  "store_period": "1y",
+  "device_type": "tracker",
+  "proportional_charge": false,
+  "service_prices": {
+    "incoming_sms": 0.3,
+    "outgoing_sms": 0.3,
+    "service_sms": 0.2,
+    "phone_call": 0.6,
+    "traffic": 0.09
+  }
 }
 ``` 
 
@@ -86,8 +86,8 @@ Creates a new plan.
 
 ```json
 {
-    "success": true,
-    "id" : 123568
+  "success": true,
+  "id": 123568
 }
 ```
 
@@ -140,36 +140,38 @@ If "filter" is used, entities will be returned only if filter string contains on
 
 ```json
 {
-    "success": true,
-    "list" : [{
-       "id": 12163,
-       "name": "Premium",
-       "group_id": 3,
-       "active": true,
-       "type": "monthly",
-       "price": 12.55,
-       "early_change_price": 23.0,
-       "device_limit": 2000,
-       "has_reports": true,
-       "store_period": "1y",
-       "device_type": "tracker",
-       "proportional_charge": false,
-       "service_prices": {
-         "incoming_sms": 0.3, 
-         "outgoing_sms": 0.3, 
-         "service_sms": 0.2,  
-         "phone_call": 0.6,   
-         "traffic": 0.09
-       }
-    }],
-    "wholesale_service_prices" : {
-       "incoming_sms": 0.27, 
-       "outgoing_sms": 0.27, 
-       "service_sms": 0.17,  
-       "phone_call": 0.55,   
-       "traffic": 0.05
-    },
-    "count" : 42
+  "success": true,
+  "list": [
+    {
+      "id": 12163,
+      "name": "Premium",
+      "group_id": 3,
+      "active": true,
+      "type": "monthly",
+      "price": 12.55,
+      "early_change_price": 23.0,
+      "device_limit": 2000,
+      "has_reports": true,
+      "store_period": "1y",
+      "device_type": "tracker",
+      "proportional_charge": false,
+      "service_prices": {
+        "incoming_sms": 0.3,
+        "outgoing_sms": 0.3,
+        "service_sms": 0.2,
+        "phone_call": 0.6,
+        "traffic": 0.09
+      }
+    }
+  ],
+  "wholesale_service_prices": {
+    "incoming_sms": 0.27,
+    "outgoing_sms": 0.27,
+    "service_sms": 0.17,
+    "phone_call": 0.55,
+    "traffic": 0.05
+  },
+  "count": 42
 }
 ```
 
@@ -268,7 +270,7 @@ Updates existing plan.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -283,10 +285,10 @@ Updates existing plan.
 
 ```json
 {
-    "tariff_id": 1234,
-    "activation_bonus": 1.1,
-    "free_days": 14,
-    "free_days_device_limit": 3
+  "tariff_id": 1234,
+  "activation_bonus": 1.1,
+  "free_days": 14,
+  "free_days_device_limit": 3
 }
 ```
 
@@ -326,19 +328,19 @@ Only session `hash`.
 
 ```json
 {
-    "success": true,
-    "tracker": {
-        "tariff_id": 1234,
-        "activation_bonus": 1.1,
-        "free_days": 14,
-        "free_days_device_limit": 3
-    },
-    "camera": {
-        "tariff_id": 1289,
-        "activation_bonus": 0.5,
-        "free_days": 7,
-        "free_days_device_limit": 3
-    }
+  "success": true,
+  "tracker": {
+    "tariff_id": 1234,
+    "activation_bonus": 1.1,
+    "free_days": 14,
+    "free_days_device_limit": 3
+  },
+  "camera": {
+    "tariff_id": 1289,
+    "activation_bonus": 0.5,
+    "free_days": 7,
+    "free_days_device_limit": 3
+  }
 }
 ```
 
@@ -373,7 +375,7 @@ Updates current plan defaults for trackers and cameras.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

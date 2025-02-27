@@ -35,8 +35,11 @@ Request to change the states of all digital outputs of the device. The device mu
     ```
 
 #### Response
+
 ```json
-{ "success": true }
+{
+ "success": true
+}
 ```
 
 #### Errors
@@ -82,7 +85,9 @@ Request to change the state of the specified digital output of the device. The d
 #### Response
 
 ```json
-{ "success": true }
+{
+ "success": true
+}
 ```
 
 #### Errors

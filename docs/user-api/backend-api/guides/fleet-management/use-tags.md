@@ -66,83 +66,83 @@ The platform will respond with objects that have the assigned tag:
 
 ```json
 {
-    "success": true,
-    "result": {
-        "place": [
-            {
-                "id": 1446571,
-                "location": {
-                    "lat": 34.178868,
-                    "lng": -118.599672,
-                    "address": "21550 W Oxnard St, Woodland Hills, CA 91367, USA",
-                    "radius": 100
-                },
-                "label": "New place",
-                "description": "",
-                "external_id": null,
-                "tags": [
-                    179227
-                ]
-            }
-        ],
-        "task": [
-            {
-                "id": 8280866,
-                "user_id": 184541,
-                "tracker_id": 669673,
-                "status": "assigned",
-                "status_change_date": "2021-06-17 12:41:52",
-                "tags": [
-                    179227
-                ],
-                "label": "New task ",
-                "description": "",
-                "external_id": null,
-                "creation_date": "2021-06-17 12:41:37",
-                "origin": "manual",
-                "location": {
-                    "lat": 33.492830,
-                    "lng": -112.177673,
-                    "address": "3836-3820 N 55th Ave, Phoenix, AZ 85031, USA",
-                    "radius": 152
-                },
-                "from": "2021-06-17 00:00:00",
-                "to": "2021-06-17 23:59:59",
-                "arrival_date": null,
-                "stay_duration": 0,
-                "min_stay_duration": 0,
-                "min_arrival_duration": 0,
-                "max_delay": 0,
-                "type": "task"
-            }
-        ],
-        "employee": [
-            {
-                "id": 55693,
-                "tracker_id": 669673,
-                "first_name": "Andrew",
-                "middle_name": "",
-                "last_name": "",
-                "email": "",
-                "phone": "",
-                "driver_license_number": "",
-                "driver_license_cats": "",
-                "driver_license_issue_date": null,
-                "driver_license_valid_till": null,
-                "hardware_key": null,
-                "department_id": null,
-                "location": {
-                    "lat": 39.801066,
-                    "lng": -105.028685,
-                    "address": "5735 Hooker St, Denver, CO 80221, United States",
-                    "radius": 150
-                },
-                "personnel_number": "1235341231",
-                "tags": [
-                    179227
-                ]
-            }
+  "success": true,
+  "result": {
+    "place": [
+      {
+        "id": 1446571,
+        "location": {
+          "lat": 34.178868,
+          "lng": -118.599672,
+          "address": "21550 W Oxnard St, Woodland Hills, CA 91367, USA",
+          "radius": 100
+        },
+        "label": "New place",
+        "description": "",
+        "external_id": null,
+        "tags": [
+          179227
         ]
-    }
+      }
+    ],
+    "task": [
+      {
+        "id": 8280866,
+        "user_id": 184541,
+        "tracker_id": 669673,
+        "status": "assigned",
+        "status_change_date": "2021-06-17 12:41:52",
+        "tags": [
+          179227
+        ],
+        "label": "New task ",
+        "description": "",
+        "external_id": null,
+        "creation_date": "2021-06-17 12:41:37",
+        "origin": "manual",
+        "location": {
+          "lat": 33.492830,
+          "lng": -112.177673,
+          "address": "3836-3820 N 55th Ave, Phoenix, AZ 85031, USA",
+          "radius": 152
+        },
+        "from": "2021-06-17 00:00:00",
+        "to": "2021-06-17 23:59:59",
+        "arrival_date": null,
+        "stay_duration": 0,
+        "min_stay_duration": 0,
+        "min_arrival_duration": 0,
+        "max_delay": 0,
+        "type": "task"
+      }
+    ],
+    "employee": [
+      {
+        "id": 55693,
+        "tracker_id": 669673,
+        "first_name": "Andrew",
+        "middle_name": "",
+        "last_name": "",
+        "email": "",
+        "phone": "",
+        "driver_license_number": "",
+        "driver_license_cats": "",
+        "driver_license_issue_date": null,
+        "driver_license_valid_till": null,
+        "hardware_key": null,
+        "department_id": null,
+        "location": {
+          "lat": 39.801066,
+          "lng": -105.028685,
+          "address": "5735 Hooker St, Denver, CO 80221, United States",
+          "radius": 150
+        },
+        "personnel_number": "1235341231",
+        "tags": [
+          179227
+        ]
+      }
+    ]
+  }
 }
 ```

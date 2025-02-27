@@ -45,8 +45,8 @@ Gets LBS settings for the specified tracker.
 
 ```json
 {
-    "success": true,
-    "max_radius": 300
+  "success": true,
+  "max_radius": 300
 }
 ```
 
@@ -88,7 +88,9 @@ Updates LBS settings for the specified tracker.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

@@ -40,12 +40,12 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "value": {
-        "file_count": 24,
-        "total_size": 40192953,
-        "quota": 104857600
-    }
+  "success": true,
+  "value": {
+    "file_count": 24,
+    "total_size": 40192953,
+    "quota": 104857600
+  }
 }
 ```
 

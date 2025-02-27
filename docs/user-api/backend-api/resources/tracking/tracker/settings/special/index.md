@@ -54,12 +54,12 @@ If parameter type is present:
 
 ```json
 {
-    "success": true,
-    "value": {
-      "type": "electronic_lock_password",
-      "password": "4567879",
-      "remember_password": false
-    }
+  "success": true,
+  "value": {
+    "type": "electronic_lock_password",
+    "password": "4567879",
+    "remember_password": false
+  }
 }
 ```
 
@@ -69,16 +69,18 @@ If parameter type omitted:
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "type": "electronic_lock_password",
       "password": "4567879",
       "remember_password": false
-    },{
+    }, {
       "type": "hhd_lock_password",
       "password": "25698545",
       "remember_password": true
-    }]
+    }
+  ]
 }
 ```
 
@@ -90,9 +92,9 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "electronic_lock_password",
-    "password": "password",
-    "remember_password": false
+  "type": "electronic_lock_password",
+  "password": "password",
+  "remember_password": false
 }
 ```
 
@@ -102,9 +104,9 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "hhd_lock_password",
-    "password": "56894567",
-    "remember_password": true
+  "type": "hhd_lock_password",
+  "password": "56894567",
+  "remember_password": true
 }
 ```
 
@@ -114,9 +116,9 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "jointech_lock_password",
-    "password": "d45s6w",
-    "remember_password": false
+  "type": "jointech_lock_password",
+  "password": "d45s6w",
+  "remember_password": false
 }
 ```
 
@@ -126,9 +128,9 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "vg_lock_password",
-    "password": "123456",
-    "remember_password": true
+  "type": "vg_lock_password",
+  "password": "123456",
+  "remember_password": true
 }
 ```
 
@@ -138,10 +140,10 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "autofon_sms_alerts",
-    "low_battery_mode": "enable",
-    "ext_input_mode": "disable",
-    "sos_button_mode": "enable"
+  "type": "autofon_sms_alerts",
+  "low_battery_mode": "enable",
+  "ext_input_mode": "disable",
+  "sos_button_mode": "enable"
 }
 ```
 
@@ -153,10 +155,10 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "auto_geofence_telfm",
-    "mode": "enable",
-    "activation_timeout": 300,
-    "radius": 50
+  "type": "auto_geofence_telfm",
+  "mode": "enable",
+  "activation_timeout": 300,
+  "radius": 50
 }
 ```
 
@@ -168,8 +170,8 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "bce_tacho_control",
-    "function": "slot1"
+  "type": "bce_tacho_control",
+  "function": "slot1"
 }
 ```
 
@@ -179,9 +181,13 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "call_button",
-    "capacity": 1,
-    "items": [{ "phone": "45641784111"}]
+  "type": "call_button",
+  "capacity": 1,
+  "items": [
+    {
+      "phone": "45641784111"
+    }
+  ]
 }
 ```
 
@@ -192,9 +198,13 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "call_buttons_v40",
-    "capacity": 4,
-    "items": [{ "phone": "45641784111"}]
+  "type": "call_buttons_v40",
+  "capacity": 4,
+  "items": [
+    {
+      "phone": "45641784111"
+    }
+  ]
 }
 ```
 
@@ -205,14 +215,14 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "careu_psm",
-    "sleep_when_ignition_off": true,
-    "sleep_when_no_motion": true,
-    "sleep_when_no_communication": true,
-    "sleep_conditions_duration": 1,
-    "deep_sleep_conditions_duration": 300,
-    "wake_up_interval": 30,
-    "wake_up_from_dsm_interval": 2
+  "type": "careu_psm",
+  "sleep_when_ignition_off": true,
+  "sleep_when_no_motion": true,
+  "sleep_when_no_communication": true,
+  "sleep_conditions_duration": 1,
+  "deep_sleep_conditions_duration": 300,
+  "wake_up_interval": 30,
+  "wake_up_from_dsm_interval": 2
 }
 ```
 
@@ -229,27 +239,27 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "castel_alarms",
-    "acceleration": {
-        "report": true,
-        "beep": true,
-        "threshold": 0.4
-    },
-    "deceleration": {
-        "report": false, 
-        "beep": false, 
-        "threshold": 0.7
-    },
-    "crash": {
-        "report": true, 
-        "beep": true, 
-        "threshold": 1.0 
-    },
-    "sharp_turn": {
-        "report": true, 
-        "beep": true, 
-        "threshold": 0.3
-    }
+  "type": "castel_alarms",
+  "acceleration": {
+    "report": true,
+    "beep": true,
+    "threshold": 0.4
+  },
+  "deceleration": {
+    "report": false,
+    "beep": false,
+    "threshold": 0.7
+  },
+  "crash": {
+    "report": true,
+    "beep": true,
+    "threshold": 1.0
+  },
+  "sharp_turn": {
+    "report": true,
+    "beep": true,
+    "threshold": 0.3
+  }
 }
 ```
 
@@ -265,10 +275,10 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "castel_obd",
-    "enable_pid_reports": true,
-    "pid_data_records_per_message": 1,
-    "pid_data_collect_interval": 30
+  "type": "castel_obd",
+  "enable_pid_reports": true,
+  "pid_data_records_per_message": 1,
+  "pid_data_collect_interval": 30
 }
 ```
 
@@ -280,8 +290,8 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "charging_gmt100",
-    "mode": "on_need"
+  "type": "charging_gmt100",
+  "mode": "on_need"
 }
 ```
 
@@ -291,8 +301,8 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "ddd_emails",
-    "emails": ["test@email.com", "example@email.com"]
+  "type": "ddd_emails",
+  "emails": ["test@email.com", "example@email.com"]
 }
 ```
 
@@ -302,8 +312,8 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "digital_password",
-    "password": "123456"
+  "type": "digital_password",
+  "password": "123456"
 }
 ```
 
@@ -313,10 +323,10 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "fcc_telfm",
-    "fuel_type": "gasoline",
-    "engine_volume": 10.0,
-    "multiplier": 0.0
+  "type": "fcc_telfm",
+  "fuel_type": "gasoline",
+  "engine_volume": 10.0,
+  "multiplier": 0.0
 }
 ```
 
@@ -328,8 +338,8 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "galileo_tacho_control",
-    "function": "download"
+  "type": "galileo_tacho_control",
+  "function": "download"
 }
 ```
 
@@ -337,11 +347,11 @@ If parameter type omitted:
 
 ```json
 {
-    "type": "galileo_hds",
-    "mode": "enable",
-    "max_acceleration_force": 1.26,
-    "max_braking_force": 1.59,
-    "max_cornering_force": 0.75
+  "type": "galileo_hds",
+  "mode": "enable",
+  "max_acceleration_force": 1.26,
+  "max_braking_force": 1.59,
+  "max_cornering_force": 0.75
 }
 ```
 
@@ -357,11 +367,11 @@ harsh cornering event. Can be 0 - 2.55.
 
 ```json
 {
-    "type": "harsh_behavior_hua_sheng",
-    "mode": "enable",
-    "max_acceleration_force": 1.0,
-    "max_braking_force": 0.5,
-    "max_cornering_force": 0.1
+  "type": "harsh_behavior_hua_sheng",
+  "mode": "enable",
+  "max_acceleration_force": 1.0,
+  "max_braking_force": 0.5,
+  "max_cornering_force": 0.1
 }
 ```
 
@@ -377,11 +387,11 @@ harsh cornering event. Can be 0.1 - 1.0.
 
 ```json
 {
-    "type": "hbm_telfm",
-    "mode": "enable",
-    "max_acceleration_force": 0.3,
-    "max_braking_force": 0.85,
-    "max_angular_velocity": 0.1
+  "type": "hbm_telfm",
+  "mode": "enable",
+  "max_acceleration_force": 0.3,
+  "max_braking_force": 0.85,
+  "max_angular_velocity": 0.1
 }
 ```
 
@@ -397,11 +407,11 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 ```json
 {
-    "type": "hbm_telfm5x",
-    "mode": "enable",
-    "max_acceleration_force": 0.5,
-    "max_braking_force": 3.0,
-    "max_angular_velocity": 10.0
+  "type": "hbm_telfm5x",
+  "mode": "enable",
+  "max_acceleration_force": 0.5,
+  "max_braking_force": 3.0,
+  "max_angular_velocity": 10.0
 }
 ```
 
@@ -416,16 +426,16 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 ```json
 {
-    "type": "hbm_ql",
-    "mode": "enable",
-    "high_speed": 100,
-    "high_speed_braking_delta": 50,
-    "high_speed_acceleration_delta": 50,
-    "medium_speed": 70,
-    "medium_speed_braking_delta": 50,
-    "medium_speed_acceleration_delta": 50,
-    "low_speed_braking_delta": 50,
-    "low_speed_acceleration_delta": 50
+  "type": "hbm_ql",
+  "mode": "enable",
+  "high_speed": 100,
+  "high_speed_braking_delta": 50,
+  "high_speed_acceleration_delta": 50,
+  "medium_speed": 70,
+  "medium_speed_braking_delta": 50,
+  "medium_speed_acceleration_delta": 50,
+  "low_speed_braking_delta": 50,
+  "low_speed_acceleration_delta": 50
 }
 ```
 
@@ -443,21 +453,20 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 ```json
 {
-    "type": "hbm_ms_ql",
-    "mode": "gps_only",
-    "high_speed": 100,
-    "high_speed_braking_delta": 50,
-    "high_speed_acceleration_delta": 50,
-    "medium_speed": 60,
-    "medium_speed_braking_delta": 50,
-    "medium_speed_acceleration_delta": 50,
-    "low_speed_braking_delta": 50,
-    "low_speed_acceleration_delta": 50,
-    "turn_brake_threshold": 30,
-    "turn_brake_duration": 320,
-    "acceleration_threshold": 15,
-    "acceleration_duration": 1200
-
+  "type": "hbm_ms_ql",
+  "mode": "gps_only",
+  "high_speed": 100,
+  "high_speed_braking_delta": 50,
+  "high_speed_acceleration_delta": 50,
+  "medium_speed": 60,
+  "medium_speed_braking_delta": 50,
+  "medium_speed_acceleration_delta": 50,
+  "low_speed_braking_delta": 50,
+  "low_speed_acceleration_delta": 50,
+  "turn_brake_threshold": 30,
+  "turn_brake_duration": 320,
+  "acceleration_threshold": 15,
+  "acceleration_duration": 1200
 }
 ```
 
@@ -479,11 +488,11 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 ```json
 {
-    "type": "harsh_behavior_bce",
-    "is_switched_off": false,
-    "acceleration_limit": 0.04,
-    "braking_limit": 1.21,
-    "cornering_limit": 2.38
+  "type": "harsh_behavior_bce",
+  "is_switched_off": false,
+  "acceleration_limit": 0.04,
+  "braking_limit": 1.21,
+  "cornering_limit": 2.38
 }
 ```
 
@@ -496,11 +505,11 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 ```json
 {
-    "type": "harsh_behavior_concox_x1",
-    "acc_speed": 40,
-    "acc_detection_time": 4,
-    "braking_speed": 60,
-    "braking_detection_time": 2
+  "type": "harsh_behavior_concox_x1",
+  "acc_speed": 40,
+  "acc_detection_time": 4,
+  "braking_speed": 60,
+  "braking_detection_time": 2
 }
 ```
 
@@ -513,10 +522,10 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 ```json
 {
-    "type": "harsh_behavior_tramigo",
-    "mode": "enable",
-    "max_acceleration_force": 0.5,
-    "max_braking_force": 1.3
+  "type": "harsh_behavior_tramigo",
+  "mode": "enable",
+  "max_acceleration_force": 0.5,
+  "max_braking_force": 1.3
 }
 ```
 
@@ -528,9 +537,9 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 ```json
 {
-    "type": "harsh_behavior_ruptela",
-    "braking_limit": 30,
-    "acceleration_limit": 60
+  "type": "harsh_behavior_ruptela",
+  "braking_limit": 30,
+  "acceleration_limit": 60
 }
 ```
 
@@ -541,11 +550,11 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 ```json
 {
-    "type": "nimbelink_accel",
-    "mode": "enable",
-    "x": 1.12,
-    "y": 0.8,
-    "z": 2.33
+  "type": "nimbelink_accel",
+  "mode": "enable",
+  "x": 1.12,
+  "y": 0.8,
+  "z": 2.33
 }
 ```
 
@@ -558,8 +567,8 @@ harsh cornering event. Can be 0.1 - 1.0 rad/s.
 
 ```json
 {
-    "type": "hua_sheng_vibration_sensitivity",
-    "sensitivity": "easy"
+  "type": "hua_sheng_vibration_sensitivity",
+  "sensitivity": "easy"
 }
 ```
 
@@ -602,10 +611,10 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 
 ```json
 {
-    "type": "ign_src_suntech",
-    "mode": "power_voltage",
-    "power_voltage_low_level": 12000,
-    "power_voltage_high_level": 19000
+  "type": "ign_src_suntech",
+  "mode": "power_voltage",
+  "power_voltage_low_level": 12000,
+  "power_voltage_high_level": 19000
 }
 ```
 
@@ -617,10 +626,10 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 
 ```json
 {
-    "type": "ign_src_telfm",
-    "mode": "power_voltage",
-    "power_voltage_low_level": 12000,
-    "power_voltage_high_level": 24000
+  "type": "ign_src_telfm",
+  "mode": "power_voltage",
+  "power_voltage_low_level": 12000,
+  "power_voltage_high_level": 24000
 }
 ```
 
@@ -632,10 +641,10 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 
 ```json
 {
-    "type": "locus_sec",
-    "signature": "signature",
-    "sms_password": "23145",
-    "reset": false
+  "type": "locus_sec",
+  "signature": "signature",
+  "sms_password": "23145",
+  "reset": false
 }
 ```
 
@@ -647,9 +656,14 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 
 ```json
 {
-    "type": "phonebook_gt300",
-    "capacity": 20,
-    "items": [{ "name": "Karl", "phone": "555469874" }]
+  "type": "phonebook_gt300",
+  "capacity": 20,
+  "items": [
+    {
+      "name": "Karl",
+      "phone": "555469874"
+    }
+  ]
 }
 ```
 
@@ -661,9 +675,14 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 
 ```json
 {
-    "type": "phonebook_pt100",
-    "capacity": 3,
-    "items": [{ "name": "Karl", "phone": "555469874" }]
+  "type": "phonebook_pt100",
+  "capacity": 3,
+  "items": [
+    {
+      "name": "Karl",
+      "phone": "555469874"
+    }
+  ]
 }
 ```
 
@@ -675,8 +694,8 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 
 ```json
 {
-    "type": "pwr_off_key",
-    "mode": "enable"
+  "type": "pwr_off_key",
+  "mode": "enable"
 }
 ```
 
@@ -686,9 +705,9 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 
 ```json
 {
-    "type": "scat_mayak_bt_control",
-    "function": "bt_disable",
-    "bt_state": true
+  "type": "scat_mayak_bt_control",
+  "function": "bt_disable",
+  "bt_state": true
 }
 ```
 
@@ -699,9 +718,9 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 
 ```json
 {
-    "type": "sos_key",
-    "mode": "report",
-    "phone": "55548875236"
+  "type": "sos_key",
+  "mode": "report",
+  "phone": "55548875236"
 }
 ```
 
@@ -712,13 +731,13 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 
 ```json
 {
-    "type": "starcom_impact",
-    "strong_duration": 12,
-    "strong_force": 4,
-    "strong_impact_enabled": true,
-    "weak_duration": 9,
-    "weak_force": 6,
-    "weak_impact_enabled": true
+  "type": "starcom_impact",
+  "strong_duration": 12,
+  "strong_force": 4,
+  "strong_impact_enabled": true,
+  "weak_duration": 9,
+  "weak_force": 6,
+  "weak_impact_enabled": true
 }
 ```
 
@@ -735,8 +754,8 @@ Can be 0 - 14.
 
 ```json
 {
-    "type": "tacho_company_card",
-    "company_card_number": "A2332BF23EC3245A"
+  "type": "tacho_company_card",
+  "company_card_number": "A2332BF23EC3245A"
 }
 ```
 
@@ -746,10 +765,10 @@ Can be 0 - 14.
 
 ```json
 {
-    "type": "tacho_remote_download",
-    "company_card_number": "A2332BF23EC3245A",
-    "vu_download_interval": 10,
-    "card_download_interval": 2
+  "type": "tacho_remote_download",
+  "company_card_number": "A2332BF23EC3245A",
+  "vu_download_interval": 10,
+  "card_download_interval": 2
 }
 ```
 
@@ -761,10 +780,10 @@ Can be 0 - 14.
 
 ```json
 {
-    "type": "teltonika_tacho_request",
-    "data_type": "activities",
-    "activities_start_time": "2020-09-01",
-    "activities_end_time": "2020-09-16"
+  "type": "teltonika_tacho_request",
+  "data_type": "activities",
+  "activities_start_time": "2020-09-01",
+  "activities_end_time": "2020-09-16"
 }
 ```
 
@@ -777,9 +796,9 @@ Can be 0 - 14.
 
 ```json
 {
-    "type": "temporary_digital_password",
-    "password": "231578",
-    "duration_in_min": 17
+  "type": "temporary_digital_password",
+  "password": "231578",
+  "duration_in_min": 17
 }
 ```
 
@@ -790,8 +809,8 @@ Can be 0 - 14.
 
 ```json
 {
-    "type": "time_shift",
-    "offset": 3.0
+  "type": "time_shift",
+  "offset": 3.0
 }
 ```
 
@@ -801,14 +820,14 @@ Can be 0 - 14.
 
 ```json
 {
-    "type": "tow_detection_ql",
-    "mode": "enable",
-    "engine_off_to_tow": 300,
-    "fake_tow_delay": 300,
-    "tow_interval": 12000,
-    "rest_duration": 90,
-    "motion_duration": 8300,
-    "motion_threshold": 3
+  "type": "tow_detection_ql",
+  "mode": "enable",
+  "engine_off_to_tow": 300,
+  "fake_tow_delay": 300,
+  "tow_interval": 12000,
+  "rest_duration": 90,
+  "motion_duration": 8300,
+  "motion_threshold": 3
 }
 ```
 
@@ -831,14 +850,14 @@ step 100.
 
 ```json
 {
-    "type": "tow_detection_ql2",
-    "mode": "enable",
-    "engine_off_to_tow": 300,
-    "fake_tow_delay": 300,
-    "tow_interval": 12000,
-    "rest_duration": 90,
-    "motion_duration": 400,
-    "motion_threshold": 3
+  "type": "tow_detection_ql2",
+  "mode": "enable",
+  "engine_off_to_tow": 300,
+  "fake_tow_delay": 300,
+  "tow_interval": 12000,
+  "rest_duration": 90,
+  "motion_duration": 400,
+  "motion_threshold": 3
 }
 ```
 
@@ -861,10 +880,10 @@ milliseconds, step 100.
 
 ```json
 {
-    "type": "tow_detection_telfm",
-    "mode": "enable",
-    "activation_timeout": 5,
-    "threshold": 0.30
+  "type": "tow_detection_telfm",
+  "mode": "enable",
+  "activation_timeout": 5,
+  "threshold": 0.30
 }
 ```
 
@@ -876,7 +895,7 @@ milliseconds, step 100.
 
 ```json
 {
-    "type": "video_stream_howen"
+  "type": "video_stream_howen"
 }
 ```
 
@@ -884,11 +903,11 @@ milliseconds, step 100.
 
 ```json
 {
-    "type": "virtual_ign_ql",
-    "mode": "motion_sensor",
-    "ign_on_voltage": 12000,
-    "rest_duration_to_off": 120,
-    "motion_duration_to_on": 75
+  "type": "virtual_ign_ql",
+  "mode": "motion_sensor",
+  "ign_on_voltage": 12000,
+  "rest_duration_to_off": 120,
+  "motion_duration_to_on": 75
 }
 ```
 
@@ -902,10 +921,10 @@ defined by this parameter. Can be 1 - 255.
 **no_movement_alarm**
 ```json
 {
-   "type":"no_movement_alarm",
-   "enabled":true,
-   "timeout":300,
-   "pre_alarm_duration":120
+  "type": "no_movement_alarm",
+  "enabled": true,
+  "timeout": 300,
+  "pre_alarm_duration": 120
 }
 ```
 
@@ -945,7 +964,9 @@ Sets special settings for a specified tracker with the new one.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

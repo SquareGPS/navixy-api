@@ -105,43 +105,43 @@ Gets current assigned statuses for the specified trackers.
 
 ```json
 {
-    "success": true,
-    "value": {
-        "5344": {
-            "current_status": {
-                "id": 66,
-                "label": "Busy",
-                "color": "FFC107"
-            },
-            "last_change": {
-                "id": 441,
-                "old_status_id": 65,
-                "new_status_id": 66,
-                "location": {
-                    "lat": 35.365948,
-                    "lng": -108.112104,
-                    "address": "Navajo Nation Off-Reservation Trust Land, Chinle, NM, USA"
-                },
-                "changed": "2017-05-02 07:40:39",
-                "origin": "supervisor"
-            }
+  "success": true,
+  "value": {
+    "5344": {
+      "current_status": {
+        "id": 66,
+        "label": "Busy",
+        "color": "FFC107"
+      },
+      "last_change": {
+        "id": 441,
+        "old_status_id": 65,
+        "new_status_id": 66,
+        "location": {
+          "lat": 35.365948,
+          "lng": -108.112104,
+          "address": "Navajo Nation Off-Reservation Trust Land, Chinle, NM, USA"
         },
-        "15595": {
-            "current_status": null,
-            "last_change": {
-                "id": 123,
-                "old_status_id": 67,
-                "new_status_id": null,
-                "location": {
-                    "lat": 34.178868, 
-                    "lng": -118.599672,
-                    "address": ""
-                },
-                "changed": "2016-03-14 04:58:32",
-                "origin": "employee"
-            }
-        }
+        "changed": "2017-05-02 07:40:39",
+        "origin": "supervisor"
+      }
+    },
+    "15595": {
+      "current_status": null,
+      "last_change": {
+        "id": 123,
+        "old_status_id": 67,
+        "new_status_id": null,
+        "location": {
+          "lat": 34.178868,
+          "lng": -118.599672,
+          "address": ""
+        },
+        "changed": "2016-03-14 04:58:32",
+        "origin": "employee"
+      }
     }
+  }
 }
 ```
 

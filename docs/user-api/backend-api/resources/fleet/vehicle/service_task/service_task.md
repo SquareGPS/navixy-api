@@ -18,7 +18,7 @@ Described step-by-step about service task APIs in our [guides](../../../../guide
   "id": 725,
   "repeat": true,
   "unplanned": false,
-  "completion_date" : "2014-03-16 00:00:00",
+  "completion_date": "2014-03-16 00:00:00",
   "vehicle_id": 222,
   "cost": 100500.0,
   "start": {
@@ -227,7 +227,9 @@ A `task` object is:
 #### Response
 
 ```json
-{"success":true}
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -327,7 +329,7 @@ A `task` object is:
 
 ```json
 {
-  "success":true,
+  "success": true,
   "id": 33777
 }
 ```
@@ -372,7 +374,9 @@ Either **task_id** or **task_ids** should be specified.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -579,7 +583,9 @@ Updates task status, and saved (on `done` **status**) current date and values of
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -681,7 +687,9 @@ A `task` object is:
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

@@ -107,7 +107,9 @@ Updates counter of passed `type`.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -216,8 +218,8 @@ Gets actual value of specified `type` of sensor.
 
 ```json
 {
-    "success": true,
-    "value": 18.9
+  "success": true,
+  "value": 18.9
 }
 ```
 
@@ -295,7 +297,9 @@ Creates new counter of passed `type` (if not) and update its `value`.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -334,13 +338,15 @@ Returns counter values for a period.
 ```json
 {
   "success": true,
-  "list": [{
+  "list": [
+    {
       "value": 3835.52,
       "update_time": "2021-02-01 02:52:55"
-  }, {
+    }, {
       "value": 3835.7,
       "update_time": "2021-02-01 02:57:18"
-  }]
+    }
+  ]
 }
 ```
 

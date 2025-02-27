@@ -27,9 +27,9 @@ If `parse_header` is set to `true`, first row of the uploaded file will be treat
 
 ```json
 {
-    "file_id": "568539",
-    "header": ["header1", "header2"],
-    "preview": ["preview of file 1", "preview of file 2"]
+  "file_id": "568539",
+  "header": ["header1", "header2"],
+  "preview": ["preview of file 1", "preview of file 2"]
 }
 ```
 

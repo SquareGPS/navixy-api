@@ -157,7 +157,7 @@ Method description.
 
     ```json
     {
-       "success": true
+      "success": true
     }
     ```
 

@@ -14,33 +14,33 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
 
 ```json
 {
-    "id": 1,
-    "type": "tracker",
-    "is_read": false,
-    "message": "Alarm",
-    "time": "2020-01-01 00:00:00",
-    "event": "offline",
-    "tracker_id": 2,
-    "rule_id": 3,
-    "track_id": 4,
-    "location":{ 
-        "lat": 50.0,
-        "lng": 60.0,
-        "precision": 50
-    },
-    "address": "address",
-    "extra": {
-        "task_id": null , 
-        "parent_task_id": null,
-        "counter_id": null,
-        "service_task_id": null,
-        "checkin_id": null,
-        "place_ids": null,
-        "last_known_location": false,
-        "tracker_label": "Tracker label",
-        "emergency": false,
-        "employee_id": 4563
-    }
+  "id": 1,
+  "type": "tracker",
+  "is_read": false,
+  "message": "Alarm",
+  "time": "2020-01-01 00:00:00",
+  "event": "offline",
+  "tracker_id": 2,
+  "rule_id": 3,
+  "track_id": 4,
+  "location": {
+    "lat": 50.0,
+    "lng": 60.0,
+    "precision": 50
+  },
+  "address": "address",
+  "extra": {
+    "task_id": null,
+    "parent_task_id": null,
+    "counter_id": null,
+    "service_task_id": null,
+    "checkin_id": null,
+    "place_ids": null,
+    "last_known_location": false,
+    "tracker_label": "Tracker label",
+    "emergency": false,
+    "employee_id": 4563
+  }
 }
 ```
 
@@ -114,36 +114,36 @@ Returns history entry with the specified ID.
 
 ```json
 {
-    "success": true,
-    "value": {
-         "id": 1,
-         "type": "tracker",
-         "is_read": false,
-         "message": "Alarm",
-         "time": "2020-01-01 00:00:00",
-         "event": "offline",
-         "tracker_id": 2,
-         "rule_id": 3,
-         "track_id": 4,
-         "location":{ 
-             "lat": 50.0,
-             "lng": 60.0,
-             "precision": 50
-         },
-         "address": "address",
-         "extra": {
-             "task_id": null , 
-             "parent_task_id": null,
-             "counter_id": null,
-             "service_task_id": null,
-             "checkin_id": null,
-             "place_ids": null,
-             "last_known_location": false,
-             "tracker_label": "Tracker label",
-             "emergency": false,
-             "employee_id": 4563
-         }
+  "success": true,
+  "value": {
+    "id": 1,
+    "type": "tracker",
+    "is_read": false,
+    "message": "Alarm",
+    "time": "2020-01-01 00:00:00",
+    "event": "offline",
+    "tracker_id": 2,
+    "rule_id": 3,
+    "track_id": 4,
+    "location": {
+      "lat": 50.0,
+      "lng": 60.0,
+      "precision": 50
+    },
+    "address": "address",
+    "extra": {
+      "task_id": null,
+      "parent_task_id": null,
+      "counter_id": null,
+      "service_task_id": null,
+      "checkin_id": null,
+      "place_ids": null,
+      "last_known_location": false,
+      "tracker_label": "Tracker label",
+      "emergency": false,
+      "employee_id": 4563
     }
+  }
 }
 ```
 
@@ -181,7 +181,9 @@ Marks history entry as read by `id` (see: [Tracker history entry](#tracker-histo
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -216,7 +218,9 @@ Only API key `hash`.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

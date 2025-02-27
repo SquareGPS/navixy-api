@@ -120,7 +120,7 @@ Gets a list of geofence IDs to which this sub-user has access.
 {
   "success": true,
   "access_to_all": true,
-  "list" : [7548]
+  "list": [7548]
 }
 ```
 
@@ -164,7 +164,7 @@ Gets a list of geofences to which this sub-user has access.
 {
   "success": true,
   "access_to_all": false,
-  "list" : [<zone>, ...],
+  "list": [<zone>, ...],
   "count": 12
 }
 ```

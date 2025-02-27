@@ -56,7 +56,10 @@ Gets last values for all sensors, state values and counters.
       "type": "fuel",
       "units_type": "custom",
       "update_time": "2023-06-28 06:05:59",
-      "composite_sensor_ids": [37651, 37652]
+      "composite_sensor_ids": [
+        37651,
+        37652
+      ]
     }
   ],
   "states": [
@@ -178,11 +181,11 @@ Gets last values for all sensors, state values and counters on multiple trackers
         "converted_units_type": null,
         "converted_value": null,
         "update_time": "2023-06-28 06:13:09",
-          "composite_sensor_ids": [37651, 37652]
+        "composite_sensor_ids": [37651, 37652]
       },
       {
         "sensor_id": 37642,
-         "label": "Tank 2",
+        "label": "Tank 2",
         "units": "",
         "name": "lls_level_6",
         "type": "fuel",
@@ -222,21 +225,21 @@ Gets last values for all sensors, state values and counters on multiple trackers
       }
     ],
     "virtual_sensors": [
-        {
-          "sensor_id": 37644,
-          "label": "Virtual Ignition",
-          "value": "On",
-          "type": "virtual_ignition",
-          "update_time": "2023-06-28 06:05:59"
-        },
-        {
-          "sensor_id": 37645,
-          "label": "Hood state",
-          "value": "Closed",
-          "type": "state",
-          "update_time": "2023-06-28 06:05:59"
-        }
-      ],
+      {
+        "sensor_id": 37644,
+        "label": "Virtual Ignition",
+        "value": "On",
+        "type": "virtual_ignition",
+        "update_time": "2023-06-28 06:05:59"
+      },
+      {
+        "sensor_id": 37645,
+        "label": "Hood state",
+        "value": "Closed",
+        "type": "state",
+        "update_time": "2023-06-28 06:05:59"
+      }
+    ],
     "counters": [
       {
         "type": "odometer",

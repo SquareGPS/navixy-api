@@ -13,74 +13,74 @@ A user account lets you start working with the platform as well as customize you
 
 ```json
 {
-    "success": true,
-    "paas_id": 7,
-    "paas_settings": <paas_settings>,
-    "user_info": {
-        "id": 43568,
-        "login": "demo@navixy.com",
-        "title": "John Smith",
-        "phone": "79123456789",
-        "creation_date": "2016-05-20 01:10:34",
-        "balance": 74.31,
-        "bonus": 0,
-        "locale": "en_US",
-        "demo": true,
-        "verified" : true,
-        "legal_type" : "individual",
-        "default_geocoder": "google",
-        "route_provider": "google",
-        "time_zone": "America/New_York",
-        "measurement_system" : "metric",
-        "date_format": "ddMMyyyy_dots",
-        "hour_mode": "TWENTY_FOUR_HOURS",
-        "tin": "2345678239",
-        "iec": "",
-        "post_country": "USA",
-        "post_region": "NY",
-        "post_index": "10120",
-        "post_city": "New York",
-        "post_street_address": "1556 Broadway, suite 416",
-        "registered_country": "USA",
-        "registered_region": "NY",
-        "registered_index": "10120",
-        "registered_city": "New York",
-        "registered_street_address": "1556 Broadway, suite 416",
-        "first_name": "John",
-        "middle_name": "Walker",
-        "last_name": "Smith",
-        "legal_name": "QWER Inc."
-    },
-    "master": {
-        "id": 1234,
-        "demo": false,
-        "legal_type": "individual",
-        "first_name": "David",
-        "middle_name": "Middle",
-        "last_name": "Blane",
-        "legal_name": "Blah LLC",
-        "title": "David Blane",
-        "balance": 0.0,
-        "bonus": 89.78
-    },
-    "tariff_restrictions": {
-        "allowed_maps": ["roadmap","osm"]
-    },
-    "premium_gis": true,
-    "features": ["branding_web"],
-    "privileges": {
-        "rights": ["tag_update"]
-    },
-    "user_menu": {
-        "title": "menu-editor.default-preset",
-        "account": [],
-        "main": [],
-        "applications": [],
-        "footer": {
-            "title": null,
-            "items": []
-        }
+  "success": true,
+  "paas_id": 7,
+  "paas_settings": <paas_settings>,
+  "user_info": {
+    "id": 43568,
+    "login": "demo@navixy.com",
+    "title": "John Smith",
+    "phone": "79123456789",
+    "creation_date": "2016-05-20 01:10:34",
+    "balance": 74.31,
+    "bonus": 0,
+    "locale": "en_US",
+    "demo": true,
+    "verified": true,
+    "legal_type": "individual",
+    "default_geocoder": "google",
+    "route_provider": "google",
+    "time_zone": "America/New_York",
+    "measurement_system": "metric",
+    "date_format": "ddMMyyyy_dots",
+    "hour_mode": "TWENTY_FOUR_HOURS",
+    "tin": "2345678239",
+    "iec": "",
+    "post_country": "USA",
+    "post_region": "NY",
+    "post_index": "10120",
+    "post_city": "New York",
+    "post_street_address": "1556 Broadway, suite 416",
+    "registered_country": "USA",
+    "registered_region": "NY",
+    "registered_index": "10120",
+    "registered_city": "New York",
+    "registered_street_address": "1556 Broadway, suite 416",
+    "first_name": "John",
+    "middle_name": "Walker",
+    "last_name": "Smith",
+    "legal_name": "QWER Inc."
+  },
+  "master": {
+    "id": 1234,
+    "demo": false,
+    "legal_type": "individual",
+    "first_name": "David",
+    "middle_name": "Middle",
+    "last_name": "Blane",
+    "legal_name": "Blah LLC",
+    "title": "David Blane",
+    "balance": 0.0,
+    "bonus": 89.78
+  },
+  "tariff_restrictions": {
+    "allowed_maps": ["roadmap", "osm"]
+  },
+  "premium_gis": true,
+  "features": ["branding_web"],
+  "privileges": {
+    "rights": ["tag_update"]
+  },
+  "user_menu": {
+    "title": "menu-editor.default-preset",
+    "account": [],
+    "main": [],
+    "applications": [],
+    "footer": {
+      "title": null,
+      "items": []
     }
+  }
 }
 ```
 
@@ -154,7 +154,9 @@ Available only to master users.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 ### `auth`
@@ -246,65 +248,65 @@ Gets user information and some settings.
 
 ```json
 {
-    "success": true,
-    "paas_id": 7,
-    "paas_settings": <paas_settings>,
-    "user_info": {
-        "id": 43568,
-        "login": "demo@navixy.com",
-        "title": "John Smith",
-        "phone": "79123456789",
-        "creation_date": "2016-05-20 01:10:34",
-        "balance": 74.31,
-        "bonus": 0,
-        "locale": "en_US",
-        "demo": true,
-        "verified" : true,
-        "legal_type" : "individual",
-        "default_geocoder": "google",
-        "route_provider": "google",
-        "time_zone": "America/New_York",
-        "measurement_system" : "metric",
-        "date_format": "ddMMyyyy_dots",
-        "hour_mode": "TWENTY_FOUR_HOURS",
-        "tin": "2345678239",
-        "iec": "",
-        "post_country": "USA",
-        "post_region": "NY",
-        "post_index": "10120",
-        "post_city": "New York",
-        "post_street_address": "1556 Broadway, suite 416",
-        "registered_country": "USA",
-        "registered_region": "NY",
-        "registered_index": "10120",
-        "registered_city": "New York",
-        "registered_street_address": "1556 Broadway, suite 416",
-        "first_name": "John",
-        "middle_name": "Walker",
-        "last_name": "Smith",
-        "legal_name": "QWER Inc."
-    },
-    "master": {
-        "id": 1234,
-        "demo": false,
-        "legal_type": "individual",
-        "first_name": "David",
-        "middle_name": "Middle",
-        "last_name": "Blane",
-        "legal_name": "Blah LLC",
-        "title": "David Blane",
-        "balance": 0.0,
-        "bonus": 89.78
-    },
-    "tariff_restrictions": {
-        "allowed_maps": ["roadmap","osm"]
-    },
-    "premium_gis": true,
-    "features": ["branding_web"],
-    "privileges": {
-        "rights": ["tag_update"]
-    },
-    "user_menu": <customizable_user_menu>
+  "success": true,
+  "paas_id": 7,
+  "paas_settings": <paas_settings>,
+  "user_info": {
+    "id": 43568,
+    "login": "demo@navixy.com",
+    "title": "John Smith",
+    "phone": "79123456789",
+    "creation_date": "2016-05-20 01:10:34",
+    "balance": 74.31,
+    "bonus": 0,
+    "locale": "en_US",
+    "demo": true,
+    "verified": true,
+    "legal_type": "individual",
+    "default_geocoder": "google",
+    "route_provider": "google",
+    "time_zone": "America/New_York",
+    "measurement_system": "metric",
+    "date_format": "ddMMyyyy_dots",
+    "hour_mode": "TWENTY_FOUR_HOURS",
+    "tin": "2345678239",
+    "iec": "",
+    "post_country": "USA",
+    "post_region": "NY",
+    "post_index": "10120",
+    "post_city": "New York",
+    "post_street_address": "1556 Broadway, suite 416",
+    "registered_country": "USA",
+    "registered_region": "NY",
+    "registered_index": "10120",
+    "registered_city": "New York",
+    "registered_street_address": "1556 Broadway, suite 416",
+    "first_name": "John",
+    "middle_name": "Walker",
+    "last_name": "Smith",
+    "legal_name": "QWER Inc."
+  },
+  "master": {
+    "id": 1234,
+    "demo": false,
+    "legal_type": "individual",
+    "first_name": "David",
+    "middle_name": "Middle",
+    "last_name": "Blane",
+    "legal_name": "Blah LLC",
+    "title": "David Blane",
+    "balance": 0.0,
+    "bonus": 89.78
+  },
+  "tariff_restrictions": {
+    "allowed_maps": ["roadmap", "osm"]
+  },
+  "premium_gis": true,
+  "features": ["branding_web"],
+  "privileges": {
+    "rights": ["tag_update"]
+  },
+  "user_menu": <customizable_user_menu>
 }
 ```
 
@@ -342,10 +344,10 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "value": {
-         "allowed_maps": ["roadmap","osm"]
-    }
+  "success": true,
+  "value": {
+    "allowed_maps": ["roadmap", "osm"]
+  }
 }
 ```
 
@@ -384,7 +386,9 @@ Only session `hash`.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -422,7 +426,9 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -434,8 +440,8 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
     {
       "success": false,
       "status": {
-          "code": 264,
-          "description": "Timeout not reached"
+        "code": 264,
+        "description": "Timeout not reached"
       },
       "timeout": "PT5M",
       "remainder": "PT4M31.575S"

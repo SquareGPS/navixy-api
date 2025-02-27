@@ -28,7 +28,9 @@ Uploads track data for specified tracker. Tracker must be a datalogger.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

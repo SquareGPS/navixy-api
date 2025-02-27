@@ -12,9 +12,9 @@ interface. Currently, its function is purely visual.
 
 ```json
 {
-    "id": 167,
-    "title": "Main office",
-    "color": "FF6DDC"
+  "id": 167,
+  "title": "Main office",
+  "color": "FF6DDC"
 }
 ```
 
@@ -53,7 +53,9 @@ Assigns multiple trackers to the specified group.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -96,8 +98,8 @@ Creates a new empty group.
 
 ```json
 {
-    "success": true,
-    "id": 222
+  "success": true,
+  "id": 222
 }
 ```
 
@@ -140,7 +142,9 @@ assigned to default group (0).
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -173,14 +177,14 @@ and is not returned by this API call.
 
 ```json
 {
-    "success": true,
-    "list": [
-        {
-            "title": "test",
-            "color": "FF6DDC",
-            "id": 129301
-        }
-    ]
+  "success": true,
+  "list": [
+    {
+      "title": "test",
+      "color": "FF6DDC",
+      "id": 129301
+    }
+  ]
 }
 ```
 
@@ -222,7 +226,9 @@ Updates specified tracker group. Group must belong to the authorized user.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

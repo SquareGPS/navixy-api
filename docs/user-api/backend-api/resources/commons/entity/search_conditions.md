@@ -13,27 +13,31 @@ Search conditions are represented by an array of conditions, where each conditio
 
 ```json
 [
-    {"type":"and", 
-        "conditions":[
-          {"type":"or", 
-             "conditions":[
-                {
-                      "type": "eq",
-                      "field":"18",
-                      "value": 1111
-                },
-                {
-                      "type": "contains",
-                      "field":"27",
-                      "value": "qqq"
-                }]
+  {
+    "type": "and",
+    "conditions": [
+      {
+        "type": "or",
+        "conditions": [
+          {
+            "type": "eq",
+            "field": "18",
+            "value": 1111
           },
-        {
+          {
             "type": "contains",
-            "field":"label",
-            "value": "who"
-        }]
-    }
+            "field": "27",
+            "value": "qqq"
+          }
+        ]
+      },
+      {
+        "type": "contains",
+        "field": "label",
+        "value": "who"
+      }
+    ]
+  }
 ]
 ```
 
@@ -48,17 +52,19 @@ This condition evaluates all specified sub-conditions and joins them using the `
 
 ```json
 {
-    "type":"and", 
-    "conditions":[{
-        "type": "eq",
-        "field":"18",
-        "value": 1111
+  "type": "and",
+  "conditions": [
+    {
+      "type": "eq",
+      "field": "18",
+      "value": 1111
     },
     {
-        "type": "contains",
-        "field":"27",
-        "value": "qqq"
-    }]
+      "type": "contains",
+      "field": "27",
+      "value": "qqq"
+    }
+  ]
 }
 ```
 
@@ -70,17 +76,19 @@ This condition evaluates all specified sub-conditions and joins them using the `
 
 ```json
 {
-    "type":"or", 
-    "conditions":[{
-         "type": "eq",
-         "field":"18",
-         "value": 1111
+  "type": "or",
+  "conditions": [
+    {
+      "type": "eq",
+      "field": "18",
+      "value": 1111
     },
     {
-         "type": "contains",
-         "field":"27",
-         "value": "qqq"
-    }]
+      "type": "contains",
+      "field": "27",
+      "value": "qqq"
+    }
+  ]
 }
 ```
 
@@ -110,9 +118,9 @@ This condition checks if the specified field is equal to the provided number val
  
 ```json
 {
-      "type": "eq",
-      "field":"18",
-      "value": 1111
+  "type": "eq",
+  "field": "18",
+  "value": 1111
 }
 ```
 
@@ -125,9 +133,9 @@ This condition checks if the specified field contains a substring equal to the p
 
 ```json
 {
-    "type": "contains",
-    "field":"label",
-    "value": "who"
+  "type": "contains",
+  "field": "label",
+  "value": "who"
 }
 ```
 
@@ -140,9 +148,9 @@ This condition checks if the specified field matches any value within the provid
 
 ```json
 {
-    "type": "in",
-    "field": "18",
-    "value": [1111, 2222, 3333]
+  "type": "in",
+  "field": "18",
+  "value": [1111, 2222, 3333]
 }
 ```
 
@@ -157,12 +165,12 @@ meaning it includes both the `from` and `to` timestamps.
 
 ```json
 {
-    "type": "period",
-    "field": "creation_date",
-    "value": {
-        "from": "2023-01-01T00:00:00Z",
-        "to": "2023-12-31T23:59:59Z"
-    }
+  "type": "period",
+  "field": "creation_date",
+  "value": {
+    "from": "2023-01-01T00:00:00Z",
+    "to": "2023-12-31T23:59:59Z"
+  }
 }
 ```
 

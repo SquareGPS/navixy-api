@@ -14,12 +14,14 @@ The field object contains the following attributes:
 
 ```json
 {
-    "id": 131312,
-    "label": "Additional info", 
-    "type":  "employee",
-    "required": false,
-    "description": "Responsibility",
-    "params": {"responsible": true}
+  "id": 131312,
+  "label": "Additional info",
+  "type": "employee",
+  "required": false,
+  "description": "Responsibility",
+  "params": {
+    "responsible": true
+  }
 }
 ```
 
@@ -49,7 +51,7 @@ The field object contains the following attributes:
 
 ```json
 {
-"responsible": true
+  "responsible": true
 }
 ```
 
@@ -91,15 +93,19 @@ Gets a set of custom fields associated with the specified entity. Note that you 
 
 ```json
 {
-    "success": true,
-    "list": [{
-         "id": 131312,
-         "label": "Additional info", 
-         "type":  "employee",
-         "required": false,
-         "description": "Responsibility",
-         "params": {"responsible": true}
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 131312,
+      "label": "Additional info",
+      "type": "employee",
+      "required": false,
+      "description": "Responsibility",
+      "params": {
+        "responsible": true
+      }
+    }
+  ]
 }
 ```
 
@@ -147,15 +153,19 @@ A list of **all** fields associated with the specified entity. Newly created fie
 
 ```json
 {
-    "success": true,
-    "list": [{
-         "id": 131312,
-         "label": "Additional info", 
-         "type":  "employee",
-         "required": false,
-         "description": "Responsibility",
-         "params": {"responsible": true}
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 131312,
+      "label": "Additional info",
+      "type": "employee",
+      "required": false,
+      "description": "Responsibility",
+      "params": {
+        "responsible": true
+      }
+    }
+  ]
 }
 ```
 

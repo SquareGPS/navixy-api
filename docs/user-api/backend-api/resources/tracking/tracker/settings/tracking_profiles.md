@@ -13,8 +13,8 @@ Tracking profile for Albatross S6.
 
 ```json
 {
-    "tracking_interval": 30,
-    "tracking_distance": 100
+  "tracking_interval": 30,
+  "tracking_distance": 100
 }
 ```
 
@@ -28,9 +28,9 @@ Tracking profile for Albatross S8.5.
 
 ```json
 {
-    "tracking_interval": 30,
-    "psm_interval": 60000,
-    "psm_mode": 0
+  "tracking_interval": 30,
+  "psm_interval": 60000,
+  "psm_mode": 0
 }
 ```
 
@@ -45,9 +45,9 @@ Tracking profile for АПК КОМ ASC-2 GLONASS/GPS, АПК КОМ ASC-6 GLONAS
 
 ```json
 {
-    "tracking_angle": 30,
-    "tracking_interval": 30,
-    "tracking_distance": 100
+  "tracking_angle": 30,
+  "tracking_interval": 30,
+  "tracking_distance": 100
 }
 ```
 
@@ -62,9 +62,9 @@ Tracking profile for Arknav RX8.
 
 ```json
 {
-    "tracking_angle": 30,
-    "tracking_interval": 60,
-    "tracking_distance": 150
+  "tracking_angle": 30,
+  "tracking_interval": 60,
+  "tracking_distance": 150
 }
 ```
 
@@ -105,11 +105,11 @@ Tracking profile for Arnavi 4, Arnavi 5, Arnavi Integral, Arnavi Integral-2, Arn
 
 ```json
 {
-    "max_tracking_interval": 60,
-    "min_tracking_interval": 5,
-    "speed_change": 10,
-    "tracking_angle": 30,
-    "tracking_distance": 150
+  "max_tracking_interval": 60,
+  "min_tracking_interval": 5,
+  "speed_change": 10,
+  "tracking_angle": 30,
+  "tracking_distance": 150
 }
 ```
 
@@ -126,8 +126,8 @@ Tracking profile for Atlanta L-100, Atlanta O-300, Atlanta PT-100, Atlanta W-tra
 
 ```json
 {
-    "tracking_distance": 150,
-    "tracking_interval": 60
+  "tracking_distance": 150,
+  "tracking_interval": 60
 }
 ```
 
@@ -141,7 +141,7 @@ Tracking profile for Atlanta PT-100.
 
 ```json
 {
-    "tracking_interval": 300
+  "tracking_interval": 300
 }
 ```
 
@@ -154,13 +154,13 @@ ATrack tracking profile.
 
 ```json
 {
-    "control_mode": "acc",
-    "tracking_interval": 30,
-    "tracking_distance": 150,
-    "tracking_angle" : 30,
-    "psm_mode": 0,
-    "psm_interval": 30,
-    "on_stop_tracking_interval": 1
+  "control_mode": "acc",
+  "tracking_interval": 30,
+  "tracking_distance": 150,
+  "tracking_angle": 30,
+  "psm_mode": 0,
+  "psm_interval": 30,
+  "on_stop_tracking_interval": 1
 }
 ```
 * `control_mode` - optional [enum](../../../../getting-started/introduction.md#data-types). Mode of tracking by the ACC or engine status. Can be "acc" | "engine_status".
@@ -178,13 +178,13 @@ Autofon profile.
 
 ```json
 {
-    "type": "interval",
-    "tracking_interval": 30,
-    "online_on_ext_power": true,
-    "timer1_time" : "2020-09-16 03:17:26",
-    "timer1_interval": 15,
-    "timer2_time" : "2020-09-18 03:17:26",
-    "timer2_interval": 30
+  "type": "interval",
+  "tracking_interval": 30,
+  "online_on_ext_power": true,
+  "timer1_time": "2020-09-16 03:17:26",
+  "timer1_interval": 15,
+  "timer2_time": "2020-09-18 03:17:26",
+  "timer2_interval": 30
 }
 ```
 
@@ -203,9 +203,9 @@ Tracking profile for Auto Leaders ST-901, Auto Leaders ST-901M.
 
 ```json
 {
-    "psm_interval": 60,
-    "psm_mode": 0,
-    "tracking_interval": 30
+  "psm_interval": 60,
+  "psm_mode": 0,
+  "tracking_interval": 30
 }
 ```
 
@@ -220,7 +220,7 @@ Tracking profile for Autoseeker AT-17.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -233,7 +233,7 @@ Tracking profile for AVLSAT NEO-S.
 
 ```json
 {
-    "tracking_interval": 60
+  "tracking_interval": 60
 }
 ```
 
@@ -246,9 +246,9 @@ Tracking profile for BI 310 CICADA, NaviTrek 310 Cicada.
 
 ```json
 {
-    "psm_interval": 12000,
-    "psm_mode": 0,
-    "tracking_interval": 720
+  "psm_interval": 12000,
+  "psm_mode": 0,
+  "tracking_interval": 720
 }
 ```
 
@@ -263,10 +263,10 @@ Tracking profile for Bofan PT502, Bofan PT521.
 
 ```json
 {
-    "tracking_angle": 30,
-    "tracking_distance": 100,
-    "tracking_interval": 60,
-    "type": "interval"
+  "tracking_angle": 30,
+  "tracking_distance": 100,
+  "tracking_interval": 60,
+  "type": "interval"
 }
 ```
 
@@ -282,8 +282,8 @@ Tracking profile for BOX-tracker, BOXtracker 2, Galileosky Boxfinder v1.0.
 
 ```json
 {
-    "tracking_angle": 30,
-    "tracking_interval": 120
+  "tracking_angle": 30,
+  "tracking_interval": 120
 }
 ```
 
@@ -297,8 +297,8 @@ Tracking profile for Galileosky Boxfinder v1.0.
 
 ```json
 {
-    "shock_value": 1.5,
-    "sleep_timeout": 180
+  "shock_value": 1.5,
+  "sleep_timeout": 180
 }
 ```
 
@@ -312,8 +312,8 @@ Tracking profile for BSJ KM-01/02, Gosafe G1C.
 
 ```json
 {
-    "tracking_angle": 30,
-    "tracking_interval": 150
+  "tracking_angle": 30,
+  "tracking_interval": 150
 }
 ```
 
@@ -327,9 +327,9 @@ Tracking profile for C2STEK FL10, C2STEK FL2000G.
 
 ```json
 {
-    "tracking_angle": 30,
-    "tracking_distance": 300,
-    "tracking_interval": 120
+  "tracking_angle": 30,
+  "tracking_distance": 300,
+  "tracking_interval": 120
 }
 ```
 
@@ -344,10 +344,10 @@ Tracking profile for CalAmp ATU-620, CalAmp LMU-1100, CalAmp LMU-1200, CalAmp LM
 
 ```json
 {
-    "psm_interval": 600,
-    "tracking_angle": 30,
-    "tracking_distance": 200,
-    "tracking_interval": 60
+  "psm_interval": 600,
+  "tracking_angle": 30,
+  "tracking_distance": 200,
+  "tracking_interval": 60
 }
 ```
 
@@ -363,7 +363,7 @@ Tracking profile for Cantrack T80.
 
 ```json
 {
-    "tracking_interval": 10
+  "tracking_interval": 10
 }
 ```
 
@@ -376,9 +376,9 @@ Tracking profile for CAREU U1 Lite Plus, CAREU U1 Plus, CAREU UT1, CAREU UW1, CA
 
 ```json
 {
-    "tracking_angle": 45,
-    "tracking_distance": 50,
-    "tracking_interval": 20
+  "tracking_angle": 45,
+  "tracking_distance": 50,
+  "tracking_interval": 20
 }
 ```
 
@@ -393,10 +393,10 @@ Tracking profile for Cargo Light 2, Cargo Mini 2, Cargo Pro 2.
 
 ```json
 {
-    "psm_interval": 600,
-    "tracking_angle": 60,
-    "tracking_distance": 100,
-    "tracking_interval": 30
+  "psm_interval": 600,
+  "tracking_angle": 60,
+  "tracking_distance": 100,
+  "tracking_interval": 30
 }
 ```
 
@@ -412,9 +412,9 @@ Tracking profile for Carscop CCTR-808S, Carscop CCTR-809.
 
 ```json
 {
-    "psm_interval": 3600,
-    "psm_mode": 1,
-    "tracking_interval": 30
+  "psm_interval": 3600,
+  "psm_mode": 1,
+  "tracking_interval": 30
 }
 ```
 
@@ -429,7 +429,7 @@ Tracking profile for Carscop CCTR-830, Toptracking CCTR-830G.
 
 ```json
 {
-    "tracking_interval": 40
+  "tracking_interval": 40
 }
 ```
 
@@ -442,11 +442,11 @@ Tracking profile for Sinocastel IDD-213.
 
 ```json
 {
-    "sleep_report_interval": 120,
-    "tracking_angle": 20,
-    "tracking_distance": 500,
-    "tracking_interval": 200,
-    "upload_records_count": 1
+  "sleep_report_interval": 120,
+  "tracking_angle": 20,
+  "tracking_distance": 500,
+  "tracking_interval": 200,
+  "upload_records_count": 1
 }
 ```
 
@@ -463,7 +463,7 @@ Tracking profile for Sinocastel MPIP-620, Sinocastel PT-690, Sinocastel PT-718S.
 
 ```json
 {
-    "tracking_interval": 60
+  "tracking_interval": 60
 }
 ```
 
@@ -476,10 +476,10 @@ cGuard tracking profile.
 
 ```json
 {
-    "tracking_interval": 60,
-    "tracking_distance": 100,
-    "tracking_angle" : 15,
-    "psm_interval": 300
+  "tracking_interval": 60,
+  "tracking_distance": 100,
+  "tracking_angle": 15,
+  "psm_interval": 300
 }
 ```
 * `tracking_interval` - int. Interval in seconds, e.g. 30 means that the device will send tracking data every 30 seconds. Min=0, max=65535, default=60.
@@ -495,16 +495,16 @@ name: 'cguard_asset'
 
 ```json
 {
-    "tracking_interval": 60,
-    "tracking_distance": 100,
-    "tracking_angle" : 45,
-    "psm_interval": 300,
-    "mode": "ASSET",
-    "wakeup_type": "PERIODICAL",
-    "wakeup_day": "EVERYDAY",
-    "wakeup_time": "12:00",
-    "wakeup_period": 1440,
-    "moving_detection": true
+  "tracking_interval": 60,
+  "tracking_distance": 100,
+  "tracking_angle": 45,
+  "psm_interval": 300,
+  "mode": "ASSET",
+  "wakeup_type": "PERIODICAL",
+  "wakeup_day": "EVERYDAY",
+  "wakeup_time": "12:00",
+  "wakeup_period": 1440,
+  "moving_detection": true
 }
 ```
 
@@ -526,8 +526,8 @@ Tracking profile for Concox X3.
 
 ```json
 {
-    "tracking_distance": 100,
-    "tracking_interval": 30
+  "tracking_distance": 100,
+  "tracking_interval": 30
 }
 ```
 
@@ -541,9 +541,9 @@ Tracking profile for Concox GT350.
 
 ```json
 {
-    "psm_interval": 600,
-    "psm_mode": 1,
-    "tracking_interval": 10
+  "psm_interval": 600,
+  "psm_mode": 1,
+  "tracking_interval": 10
 }
 ```
 
@@ -558,10 +558,10 @@ Tracking profile for Concox AT3, Concox AT4, Concox GT710.
 
 ```json
 {
-    "psm_interval": 2,
-    "tracking_interval": 1,
-    "type": "interval",
-    "wakeup_time": "10:20"
+  "psm_interval": 2,
+  "tracking_interval": 1,
+  "type": "interval",
+  "wakeup_time": "10:20"
 }
 ```
 
@@ -577,7 +577,7 @@ Tracking profile for Concox GK309 , Concox GS503, Concox GT03A, Concox GT03C, Co
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -590,7 +590,7 @@ Tracking profile for Concox JV200.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -603,9 +603,9 @@ Tracking profile for Concox QBIT.
 
 ```json
 {
-    "gps_tracking_interval": 10,
-    "lbs_tracking_interval": 60,
-    "mode": "lbs"
+  "gps_tracking_interval": 10,
+  "lbs_tracking_interval": 60,
+  "mode": "lbs"
 }
 ```
 
@@ -620,7 +620,7 @@ Tracking profile for Concox GT02 / TR02.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -633,11 +633,11 @@ Tracking profile for Concox GV20, Concox X1, Protrack VT05.
 
 ```json
 {
-    "psm_interval": 3000,
-    "tracking_angle": 120,
-    "tracking_distance": 250,
-    "tracking_interval": 30,
-    "type": "intelligent"
+  "psm_interval": 3000,
+  "tracking_angle": 120,
+  "tracking_distance": 250,
+  "tracking_interval": 30,
+  "type": "intelligent"
 }
 ```
 
@@ -654,9 +654,9 @@ Default tracking profile.
 
 ```json
 {
-    "type": "interval",
-    "tracking_interval": 30,
-    "tracking_distance": 100
+  "type": "interval",
+  "tracking_interval": 30,
+  "tracking_distance": 100
 }
 ```
 
@@ -671,10 +671,10 @@ Default profile with optional angle-based tracking.
 
 ```json
 {
-    "type": "distance",
-    "tracking_interval": 30,
-    "tracking_distance": 100,
-    "tracking_angle" : 30
+  "type": "distance",
+  "tracking_interval": 30,
+  "tracking_distance": 100,
+  "tracking_angle": 30
 }
 ```
 
@@ -689,12 +689,12 @@ Default profile with optional angle-based tracking.
 Default powersave profile with optional angle-based tracking.
 ```json
 {
-    "type": "power_save",
-    "tracking_interval": 30,
-    "tracking_distance": 100,
-    "tracking_angle" : 30,
-    "psm_interval": 65535,
-    "psm_mode": 2
+  "type": "power_save",
+  "tracking_interval": 30,
+  "tracking_distance": 100,
+  "tracking_angle": 30,
+  "psm_interval": 65535,
+  "psm_mode": 2
 }
 ```
 
@@ -712,7 +712,7 @@ Tracking profile for Defenstar DS007.
 
 ```json
 {
-    "tracking_interval": 65534
+  "tracking_interval": 65534
 }
 ```
 
@@ -725,7 +725,7 @@ Tracking profile for Defenstar DS008, Gubloos GPS-S1.
 
 ```json
 {
-    "tracking_interval": 1000
+  "tracking_interval": 1000
 }
 ```
 
@@ -738,8 +738,8 @@ Tracking profile for DigitalSystems DSF22.
 
 ```json
 {
-    "tracking_angle": 10,
-    "tracking_interval": 120
+  "tracking_angle": 10,
+  "tracking_interval": 120
 }
 ```
 
@@ -753,8 +753,8 @@ Tracking profile with distance and interval.
 
 ```json
 {
-    "tracking_distance": 250,
-    "tracking_interval": 3600
+  "tracking_distance": 250,
+  "tracking_interval": 3600
 }
 ```
 
@@ -768,10 +768,10 @@ Tracking profile with distance, interval, angle and power save mode.
 
 ```json
 {
-    "psm_interval": 86400,
-    "tracking_angle": 10,
-    "tracking_distance": 100,
-    "tracking_interval": 60
+  "psm_interval": 86400,
+  "tracking_angle": 10,
+  "tracking_distance": 100,
+  "tracking_interval": 60
 }
 ```
 
@@ -787,9 +787,9 @@ Tracking profile with distance, interval and angle.
 
 ```json
 {
-    "tracking_interval": 30,
-    "tracking_distance": 100,
-    "tracking_angle" : 30
+  "tracking_interval": 30,
+  "tracking_distance": 100,
+  "tracking_angle": 30
 }
 ```
 
@@ -804,7 +804,7 @@ Tracking profile for Eelink GOT08, Eelink GOT10, Eelink GPT18, Eelink TK-319, Ee
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -817,7 +817,7 @@ Tracking profile for Eelink TK116.
 
 ```json
 {
-    "tracking_interval": 3600
+  "tracking_interval": 3600
 }
 ```
 
@@ -830,12 +830,12 @@ Tracking profile for Eelink GPT18, Eelink TK-319.
 
 ```json
 {
-    "active_tracking_interval": 30,
-    "gps_working_mode": "always_on",
-    "gsm_working_mode": "auto",
-    "tracking_angle": 30,
-    "tracking_distance": 50,
-    "tracking_interval": 60
+  "active_tracking_interval": 30,
+  "gps_working_mode": "always_on",
+  "gsm_working_mode": "auto",
+  "tracking_angle": 30,
+  "tracking_distance": 50,
+  "tracking_interval": 60
 }
 ```
 
@@ -853,8 +853,8 @@ Tracking profile for Enfora MT-GL (GSM2218), Enfora MT-Gu (GSM2338), Novatel MT4
 
 ```json
 {
-    "tracking_distance": 100,
-    "tracking_interval": 60
+  "tracking_distance": 100,
+  "tracking_interval": 60
 }
 ```
 
@@ -868,7 +868,7 @@ Tracking profile for Esino ES-GP34, Esino ES-GT23.
 
 ```json
 {
-    "tracking_interval": 20
+  "tracking_interval": 20
 }
 ```
 
@@ -881,7 +881,7 @@ Tracking profile for E-Track TLT-2H.
 
 ```json
 {
-    "tracking_interval": 600
+  "tracking_interval": 600
 }
 ```
 
@@ -894,11 +894,11 @@ Tracking profile for Fifotrack A100, fifotrack A100 FW1.15+, fifotrack A300, fif
 
 ```json
 {
-    "psm_interval": 3600,
-    "psm_mode": 2,
-    "tracking_angle": 45,
-    "tracking_distance": 100,
-    "tracking_interval": 60
+  "psm_interval": 3600,
+  "psm_mode": 2,
+  "tracking_angle": 45,
+  "tracking_distance": 100,
+  "tracking_interval": 60
 }
 ```
 
@@ -915,7 +915,7 @@ Tracking profile for Sinocastel HT-770, Ezlink T28, G36, Orion 7, XiLi Technolog
 
 ```json
 {
-    "tracking_interval": 1
+  "tracking_interval": 1
 }
 ```
 
@@ -928,13 +928,13 @@ Queclink/Ruslink GL200/GL300 profile
 
 ```json
 {
-    "type": "distance",
-    "tracking_interval": 30,
-    "tracking_distance": 100,
-    "tracking_angle" : 30,
-    "psm_interval": 600,
-    "movement_detection": true,
-    "non_movement_duration": 420
+  "type": "distance",
+  "tracking_interval": 30,
+  "tracking_distance": 100,
+  "tracking_angle": 30,
+  "psm_interval": 600,
+  "movement_detection": true,
+  "non_movement_duration": 420
 }
 ```
 
@@ -953,10 +953,10 @@ Queclink/Ruslink GL500 profile.
 
 ```json
 {
-    "type": "interval",
-    "tracking_interval": 1,
-    "wakeup_time": "10:00",
-    "psm_interval": 8
+  "type": "interval",
+  "tracking_interval": 1,
+  "wakeup_time": "10:00",
+  "psm_interval": 8
 }
 ```
 
@@ -972,12 +972,12 @@ Queclink/Ruslink GT300 profile.
 
 ```json
 {
-    "tracking_interval": 5,
-    "start_time": "0000",
-    "end_time": "2359",
-    "movement_detection": true,
-    "min_speed": 10,
-    "min_distance": 20
+  "tracking_interval": 5,
+  "start_time": "0000",
+  "end_time": "2359",
+  "movement_detection": true,
+  "min_speed": 10,
+  "min_distance": 20
 }
 ```
 
@@ -995,7 +995,7 @@ Tracking profile for AMGPS Freko.
 
 ```json
 {
-    "tracking_interval": 10
+  "tracking_interval": 10
 }
 ```
 
@@ -1008,12 +1008,12 @@ Queclink/Ruslink GV500 profile.
 
 ```json
 {
-    "type": "interval",
-    "tracking_interval": 30,
-    "tracking_distance": 100,
-    "tracking_angle" : 30,
-    "psm_mode": 1,
-    "psm_interval": 600
+  "type": "interval",
+  "tracking_interval": 30,
+  "tracking_distance": 100,
+  "tracking_angle": 30,
+  "psm_mode": 1,
+  "psm_interval": 600
 }
 ```
 
@@ -1031,12 +1031,12 @@ Queclink/Ruslink GV55Lite profile.
 
 ```json
 {
-    "type": "interval",
-    "tracking_interval": 30,
-    "tracking_distance": 100,
-    "tracking_angle" : 30,
-    "psm_mode": 1,
-    "psm_interval": 600
+  "type": "interval",
+  "tracking_interval": 30,
+  "tracking_distance": 100,
+  "tracking_angle": 30,
+  "psm_mode": 1,
+  "psm_interval": 600
 }
 ```
 
@@ -1054,7 +1054,7 @@ Tracking profile for Defenstar GPS668, Gubloos GPS-T1, MiniFinder Pico.
 
 ```json
 {
-    "tracking_interval": 10
+  "tracking_interval": 10
 }
 ```
 
@@ -1067,7 +1067,7 @@ Tracking profile for Haicom HI-603X.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -1080,7 +1080,7 @@ Tracking profile for Helioversal M1.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -1093,7 +1093,7 @@ Tracking profile for HHD G-400, HHD G-600.
 
 ```json
 {
-    "tracking_interval": 20
+  "tracking_interval": 20
 }
 ```
 
@@ -1106,7 +1106,7 @@ Tracking profile for Hero-ME31-08, Hero-ME32-04, Hero-ME41-04.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -1119,9 +1119,9 @@ Tracking profile for Hua Sheng HS 3000G.
 
 ```json
 {
-    "psm_interval": 600,
-    "tracking_angle": 10,
-    "tracking_interval": 30
+  "psm_interval": 600,
+  "tracking_angle": 10,
+  "tracking_interval": 30
 }
 ```
 
@@ -1135,7 +1135,7 @@ Tracking profile for Hua Sheng HS 3000G.
 Tracking profile for Huabao HB-T10.
 ```json
 {
-    "tracking_interval": 1000
+  "tracking_interval": 1000
 }
 ```
 
@@ -1148,10 +1148,10 @@ Tracking profile for IntelliTrac X1, IntelliTrac X1+.
 
 ```json
 {
-    "tracking_angle": 5,
-    "tracking_distance": 100,
-    "tracking_interval": 30,
-    "type": "interval"
+  "tracking_angle": 5,
+  "tracking_distance": 100,
+  "tracking_interval": 30,
+  "type": "interval"
 }
 ```
 
@@ -1167,7 +1167,7 @@ Tracking profile with an interval only.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -1180,8 +1180,8 @@ Tracking profile with an interval and angle.
 
 ```json
 {
-    "tracking_interval": 30,
-    "tracking_angle" : 30
+  "tracking_interval": 30,
+  "tracking_angle": 30
 }
 ```
 
@@ -1195,9 +1195,9 @@ Tracking profile with an interval, angle and powersave mode.
 
 ```json
 {
-    "psm_interval": 60,
-    "tracking_angle": 55,
-    "tracking_interval": 30
+  "psm_interval": 60,
+  "tracking_angle": 55,
+  "tracking_interval": 30
 }
 ```
 
@@ -1212,9 +1212,9 @@ Tracking profile with an interval and powersave mode.
 
 ```json
 {
-    "psm_interval": 3000,
-    "psm_mode": 1,
-    "tracking_interval": 30
+  "psm_interval": 3000,
+  "psm_mode": 1,
+  "tracking_interval": 30
 }
 ```
 
@@ -1229,7 +1229,7 @@ Tracking profile for Jimi JC100.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -1242,7 +1242,7 @@ Tracking profile for Jin Sheng JS810, Jin Sheng JS810S.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -1255,12 +1255,12 @@ Tracking profile for Jointech GP4000, Jointech GP6000, Jointech GP6000F.
 
 ```json
 {
-    "psm_interval": 3600,
-    "psm_mode": 1,
-    "tracking_angle": 45,
-    "tracking_distance": 150,
-    "tracking_interval": 30,
-    "type": "interval"
+  "psm_interval": 3600,
+  "psm_mode": 1,
+  "tracking_angle": 45,
+  "tracking_distance": 150,
+  "tracking_interval": 30,
+  "type": "interval"
 }
 ```
 
@@ -1278,7 +1278,7 @@ Tracking profile for Jointech JT701.
 
 ```json
 {
-    "tracking_interval": 240
+  "tracking_interval": 240
 }
 ```
 
@@ -1291,10 +1291,10 @@ Profile for Jointech JT703B
 
 ```json
 {
-    "tracking_interval": 10,
-    "sleep_mode": "enabled",
-    "wakeup_timers": ["10:00:00", "16:00:00"],
-    "sleep_time_in_minutes": 60
+  "tracking_interval": 10,
+  "sleep_mode": "enabled",
+  "wakeup_timers": ["10:00:00", "16:00:00"],
+  "sleep_time_in_minutes": 60
 }
 ```
 
@@ -1310,9 +1310,9 @@ Tracking profile for Jointech JT707.
 
 ```json
 {
-    "psm_interval": 150,
-    "psm_mode": 0,
-    "tracking_interval": 60
+  "psm_interval": 150,
+  "psm_mode": 0,
+  "tracking_interval": 60
 }
 ```
 
@@ -1327,7 +1327,7 @@ Tracking profile for Keson KS168.
 
 ```json
 {
-    "tracking_interval": 10
+  "tracking_interval": 10
 }
 ```
 
@@ -1340,9 +1340,9 @@ Tracking profile for Laipac S911 Lola, Laipac-911BL.
 
 ```json
 {
-    "tracking_distance": 1000,
-    "tracking_interval": 30,
-    "type": "distance"
+  "tracking_distance": 1000,
+  "tracking_interval": 30,
+  "type": "distance"
 }
 ```
 
@@ -1357,7 +1357,7 @@ Tracking profile for LKGPS LK209A, LKGPS LK209B, LKGPS LK210.
 
 ```json
 {
-    "tracking_interval": 45
+  "tracking_interval": 45
 }
 ```
 
@@ -1370,10 +1370,10 @@ Tracking profile for Logosoft Log-101.
 
 ```json
 {
-    "type": "interval",
-    "tracking_interval": 30,
-    "tracking_distance": 300,
-    "tracking_angle" : 10
+  "type": "interval",
+  "tracking_interval": 30,
+  "tracking_distance": 300,
+  "tracking_angle": 10
 }
 ```
 
@@ -1389,15 +1389,15 @@ Profile for Navixy M7.
 
 ```json
 {
-    "type": "interval",
-    "psm_mode": 1,
-    "tracking_interval": 30,
-    "tracking_distance": 100,
-    "tracking_angle" : 30,
-    "psm_interval": 600,
-    "wakeup_timer1": "10:00",
-    "wakeup_timer2": "16:00",
-    "wakeup_timer3": "22:00"
+  "type": "interval",
+  "psm_mode": 1,
+  "tracking_interval": 30,
+  "tracking_distance": 100,
+  "tracking_angle": 30,
+  "psm_interval": 600,
+  "wakeup_timer1": "10:00",
+  "wakeup_timer2": "16:00",
+  "wakeup_timer3": "22:00"
 }
 ```
 
@@ -1416,9 +1416,9 @@ Tracking profile for Maxtrack MXT-140.
 
 ```json
 {
-    "tracking_angle": 60,
-    "tracking_distance": 500,
-    "tracking_interval": 20
+  "tracking_angle": 60,
+  "tracking_distance": 500,
+  "tracking_interval": 20
 }
 ```
 
@@ -1433,9 +1433,9 @@ Tracking profile for Megastek GVT-430.
 
 ```json
 {
-    "tracking_angle": 25,
-    "tracking_distance": 100,
-    "tracking_interval": 30
+  "tracking_angle": 25,
+  "tracking_distance": 100,
+  "tracking_interval": 30
 }
 ```
 
@@ -1450,7 +1450,7 @@ Tracking profile for Megastek MT-300, Megastek MT-90s, Megastek MT100.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -1463,9 +1463,9 @@ Tracking profile for Megastek MT100.
 
 ```json
 {
-    "tracking_distance": 50,
-    "tracking_interval": 300,
-    "type": "intelligent"
+  "tracking_distance": 50,
+  "tracking_interval": 300,
+  "type": "intelligent"
 }
 ```
 
@@ -1480,9 +1480,9 @@ Tracking profile for GoTop VT360, GoTop VT380, Meiligao VT310, Meitrack VT310, R
 
 ```json
 {
-    "tracking_angle": 30,
-    "tracking_distance": 200,
-    "tracking_interval": 10
+  "tracking_angle": 30,
+  "tracking_distance": 200,
+  "tracking_interval": 10
 }
 ```
 
@@ -1497,11 +1497,11 @@ Meitrack profile.
 
 ```json
 {
-    "tracking_interval": 30,
-    "tracking_distance": 100,
-    "tracking_angle" : 30,
-    "psm_mode": 0,
-    "psm_interval": 3600
+  "tracking_interval": 30,
+  "tracking_distance": 100,
+  "tracking_angle": 30,
+  "psm_mode": 0,
+  "psm_interval": 3600
 }
 ```
 
@@ -1518,11 +1518,11 @@ Tracking profile for Meitrack T355v2.
 
 ```json
 {
-    "psm_interval": 3932100,
-    "psm_mode": 0,
-    "tracking_angle": 10,
-    "tracking_distance": 50,
-    "tracking_interval": 30
+  "psm_interval": 3932100,
+  "psm_mode": 0,
+  "tracking_angle": 10,
+  "tracking_distance": 50,
+  "tracking_interval": 30
 }
 ```
 
@@ -1539,12 +1539,12 @@ Tracking profile for Meitrack MVT100, Meitrack MVT340, Meitrack MVT380, Meitrack
 
 ```json
 {
-    "on_stop_tracking_interval": 120,
-    "psm_interval": 300,
-    "psm_mode": 2,
-    "tracking_angle": 45,
-    "tracking_distance": 50,
-    "tracking_interval": 30
+  "on_stop_tracking_interval": 120,
+  "psm_interval": 300,
+  "psm_mode": 2,
+  "tracking_angle": 45,
+  "tracking_distance": 50,
+  "tracking_interval": 30
 }
 ```
 
@@ -1562,9 +1562,9 @@ Tracking profile for Meitrack P66.
 
 ```json
 {
-    "tracking_angle": 45,
-    "tracking_distance": 150,
-    "tracking_interval": 60
+  "tracking_angle": 45,
+  "tracking_distance": 150,
+  "tracking_interval": 60
 }
 ```
 
@@ -1579,8 +1579,8 @@ Tracking profile for MicTrack MP-90.
 
 ```json
 {
-    "tracking_angle": 20,
-    "tracking_interval": 60
+  "tracking_angle": 20,
+  "tracking_interval": 60
 }
 ```
 
@@ -1594,7 +1594,7 @@ Tracking profile for MIKA G1.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -1607,7 +1607,7 @@ Tracking profile for MRD-100.
 
 ```json
 {
-    "tracking_interval": 20
+  "tracking_interval": 20
 }
 ```
 
@@ -1620,7 +1620,7 @@ Tracking profile for Diwei TK116, Moralwinhk P008A, Moralwinhk P168.
 
 ```json
 {
-    "tracking_interval": 10
+  "tracking_interval": 10
 }
 ```
 
@@ -1630,11 +1630,12 @@ Tracking profile for Diwei TK116, Moralwinhk P008A, Moralwinhk P168.
 ### myrope_m500
 
 Tracking profile for MyRope M528, MyRope M588.
+
 ```json
 {
-    "psm_interval": 60,
-    "tracking_distance": 10,
-    "tracking_interval": 50
+  "psm_interval": 60,
+  "tracking_distance": 10,
+  "tracking_interval": 50
 }
 ```
 
@@ -1649,9 +1650,9 @@ Tracking profile for Naviset GT-10, Naviset GT-20.
 
 ```json
 {
-    "tracking_angle": 120,
-    "tracking_distance": 150,
-    "tracking_interval": 240
+  "tracking_angle": 120,
+  "tracking_distance": 150,
+  "tracking_interval": 240
 }
 ```
 
@@ -1666,7 +1667,7 @@ Tracking profile for Noran NR008, Noran NR024, Noran NR100.
 
 ```json
 {
-    "tracking_interval": 150
+  "tracking_interval": 150
 }
 ```
 
@@ -1679,10 +1680,10 @@ Tracking profile for Oigo AR-2GM, Oigo AR-3HU.
 
 ```json
 {
-    "psm_interval": 60,
-    "tracking_angle": 45,
-    "tracking_distance": 300,
-    "tracking_interval": 15
+  "psm_interval": 60,
+  "tracking_angle": 45,
+  "tracking_distance": 300,
+  "tracking_interval": 15
 }
 ```
 
@@ -1698,7 +1699,7 @@ Tracking profile for Orange TK-103.
 
 ```json
 {
-    "tracking_interval": 990
+  "tracking_interval": 990
 }
 ```
 
@@ -1711,7 +1712,7 @@ Tracking profile for Piccolo ATX.
 
 ```json
 {
-    "tracking_interval": 300
+  "tracking_interval": 300
 }
 ```
 
@@ -1724,9 +1725,9 @@ Tracking profile for Piccolo ATX2S, Piccolo Hybrid+, Piccolo STX, Piccolo TMX+.
 
 ```json
 {
-    "tracking_angle": 30,
-    "tracking_distance": 100,
-    "tracking_interval": 30
+  "tracking_angle": 30,
+  "tracking_distance": 100,
+  "tracking_interval": 30
 }
 ```
 
@@ -1741,14 +1742,14 @@ Profile Wireless Links for Piccolo Plus
 
 ```json
 {
-    "sleep_mode": "disabled",
-    "track_by": "interval",
-    "tracking_interval": 60,
-    "tracking_distance": 100,
-    "track_by_angle": true,
-    "tracking_angle": 30,
-    "asset_moving_interval": 300,
-    "asset_stopped_interval": 86400
+  "sleep_mode": "disabled",
+  "track_by": "interval",
+  "tracking_interval": 60,
+  "tracking_distance": 100,
+  "track_by_angle": true,
+  "tracking_angle": 30,
+  "asset_moving_interval": 300,
+  "asset_stopped_interval": 86400
 }
 ```
 
@@ -1768,8 +1769,8 @@ Tracking profile for RedView VT680.
 
 ```json
 {
-    "tracking_angle": 60,
-    "tracking_interval": 10
+  "tracking_angle": 60,
+  "tracking_interval": 10
 }
 ```
 
@@ -1783,9 +1784,9 @@ Tracking profile for Sanfone SF100, Sanfone SF700.
 
 ```json
 {
-    "tracking_angle": 120,
-    "tracking_distance": 60,
-    "tracking_interval": 60
+  "tracking_angle": 120,
+  "tracking_distance": 60,
+  "tracking_interval": 60
 }
 ```
 
@@ -1800,10 +1801,10 @@ Tracking profile for SAT-LITE 3, SAT-LITE 4, Sat Lite 2, Sat Pro, Super Lite.
 
 ```json
 {
-    "psm_interval": 30,
-    "tracking_angle": 10,
-    "tracking_distance": 50,
-    "tracking_interval": 30
+  "psm_interval": 30,
+  "tracking_angle": 10,
+  "tracking_distance": 50,
+  "tracking_interval": 30
 }
 ```
 
@@ -1817,8 +1818,8 @@ Tracking profile for SAT-LITE 3, SAT-LITE 4, Sat Lite 2, Sat Pro, Super Lite.
 
 ```json
 {
-    "tracking_interval": 30,
-    "gps_enabled": true
+  "tracking_interval": 30,
+  "gps_enabled": true
 }
 ```
 
@@ -1832,7 +1833,7 @@ Tracking profile for Sheriff AWAX12.
 
 ```json
 {
-    "tracking_interval": 900
+  "tracking_interval": 900
 }
 ```
 
@@ -1845,10 +1846,10 @@ Tracking profile for Sinowell G102.
 
 ```json
 {
-    "psm_interval": 10,
-    "tracking_angle": 5,
-    "tracking_distance": 50,
-    "tracking_interval": 10
+  "psm_interval": 10,
+  "tracking_angle": 5,
+  "tracking_distance": 50,
+  "tracking_interval": 10
 }
 ```
 
@@ -1864,10 +1865,10 @@ Tracking profile for SkyPatrol TT8750+.
 
 ```json
 {
-    "psm_interval": 30,
-    "tracking_angle": 10,
-    "tracking_distance": 100,
-    "tracking_interval": 30
+  "psm_interval": 30,
+  "tracking_angle": 10,
+  "tracking_distance": 100,
+  "tracking_interval": 30
 }
 ```
 
@@ -1883,8 +1884,8 @@ Tracking profile for СКАТ-Маяк.
 
 ```json
 {
-    "active_time": 300,
-    "sleep_time": 300
+  "active_time": 300,
+  "sleep_time": 300
 }
 ```
 
@@ -1898,9 +1899,9 @@ Tracking profile for Spetrotec i-WATCHER AVL.
 
 ```json
 {
-    "tracking_distance": 100,
-    "tracking_interval": 60,
-    "type": "interval"
+  "tracking_distance": 100,
+  "tracking_interval": 60,
+  "type": "interval"
 }
 ```
 
@@ -1915,10 +1916,10 @@ Tracking profile for M2M-Cyber GLX, STAB Liner 102.
 
 ```json
 {
-    "psm_interval": 3600,
-    "tracking_angle": 10,
-    "tracking_distance": 50,
-    "tracking_interval": 30
+  "psm_interval": 3600,
+  "tracking_angle": 10,
+  "tracking_distance": 50,
+  "tracking_interval": 30
 }
 ```
 
@@ -1934,7 +1935,7 @@ Tracking profile for Starcom Helios Advanced, Starcom Helios Hybrid, Starcom Hel
 
 ```json
 {
-    "tracking_interval": 10
+  "tracking_interval": 10
 }
 ```
 
@@ -1947,9 +1948,9 @@ Tracking profile for Starline M17.
 
 ```json
 {
-    "psm_interval": 600,
-    "psm_mode": 0,
-    "tracking_interval": 100
+  "psm_interval": 600,
+  "psm_mode": 0,
+  "tracking_interval": 100
 }
 ```
 
@@ -1964,9 +1965,9 @@ Tracking profile for Suntech ST200, Suntech ST215, Suntech ST300, Suntech ST310U
 
 ```json
 {
-    "tracking_angle": 30,
-    "tracking_distance": 50,
-    "tracking_interval": 20
+  "tracking_angle": 30,
+  "tracking_distance": 50,
+  "tracking_interval": 20
 }
 ```
 
@@ -1981,7 +1982,7 @@ Tracking profile for Suntech ST940.
 
 ```json
 {
-    "tracking_interval": 20
+  "tracking_interval": 20
 }
 ```
 
@@ -1994,9 +1995,9 @@ Tracking profile for Syrus 2G.
 
 ```json
 {
-    "tracking_angle": 5,
-    "tracking_distance": 200,
-    "tracking_interval": 30
+  "tracking_angle": 5,
+  "tracking_distance": 200,
+  "tracking_interval": 30
 }
 ```
 
@@ -2033,11 +2034,11 @@ Tracking profile for Teltonika FM5500, Teltonika FM6320, Teltonika FMB630, Telto
 
 ```json
 {
-    "sleep_mode": "disabled",
-    "sleep_timeout": 300,
-    "tracking_angle": 25,
-    "tracking_distance": 50,
-    "tracking_interval": 30
+  "sleep_mode": "disabled",
+  "sleep_timeout": 300,
+  "tracking_angle": 25,
+  "tracking_distance": 50,
+  "tracking_interval": 30
 }
 ```
 
@@ -2054,10 +2055,10 @@ Tracking profile for TopFlyTech T8603, TopFlyTech T8608, TopFlyTech T8803, TopFl
 
 ```json
 {
-    "psm_interval": 10000,
-    "tracking_angle": 60,
-    "tracking_distance": 50,
-    "tracking_interval": 30
+  "psm_interval": 10000,
+  "tracking_angle": 60,
+  "tracking_distance": 50,
+  "tracking_interval": 30
 }
 ```
 
@@ -2073,8 +2074,8 @@ Tracking profile for TopShine MT02, TopShine MT08, TopShine OGT100, TopShine VT1
 
 ```json
 {
-    "tracking_distance": 50,
-    "tracking_interval": 10
+  "tracking_distance": 50,
+  "tracking_interval": 10
 }
 ```
 
@@ -2088,9 +2089,9 @@ Tracking profile for TopShine MT08, TopShine OGT100, TopShine VT1000.
 
 ```json
 {
-    "tracking_angle": 15,
-    "tracking_distance": 50,
-    "tracking_interval": 60
+  "tracking_angle": 15,
+  "tracking_distance": 50,
+  "tracking_interval": 60
 }
 ```
 
@@ -2105,8 +2106,8 @@ Tracking profile for TopTen GT08, TopTen TK-510, TopTen TK228.
 
 ```json
 {
-    "tracking_angle": 25,
-    "tracking_interval": 30
+  "tracking_angle": 25,
+  "tracking_interval": 30
 }
 ```
 
@@ -2120,7 +2121,7 @@ Tracking profile for TT-08, VG-eLock7A.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -2133,10 +2134,10 @@ Tracking profile for TotemTech AT05, TotemTech AT07.
 
 ```json
 {
-    "psm_interval": 15000,
-    "tracking_angle": 10,
-    "tracking_distance": 60,
-    "tracking_interval": 30
+  "psm_interval": 15000,
+  "tracking_angle": 10,
+  "tracking_distance": 60,
+  "tracking_interval": 30
 }
 ```
 
@@ -2152,7 +2153,7 @@ Tracking profile for Tracker Technology MSP320.
 
 ```json
 {
-    "tracking_interval": 30
+  "tracking_interval": 30
 }
 ```
 
@@ -2165,8 +2166,8 @@ Tracking profile for Tracker Technology MSP340.
 
 ```json
 {
-    "psm_interval": 180,
-    "tracking_interval": 30
+  "psm_interval": 180,
+  "tracking_interval": 30
 }
 ```
 
@@ -2180,10 +2181,10 @@ Tracking profile for Tracker Technology MSP350.
 
 ```json
 {
-    "psm_interval": 2147483647,
-    "psm_mode": 0,
-    "tracking_distance": 50,
-    "tracking_interval": 30
+  "psm_interval": 2147483647,
+  "psm_mode": 0,
+  "tracking_distance": 50,
+  "tracking_interval": 30
 }
 ```
 
@@ -2199,11 +2200,11 @@ Profile for Tramigo models that do not support the interval in seconds
 
 ```json
 {
-    "tracking_interval": 1,
-    "tracking_distance": 0.5,
-    "tracking_angle": 20,
-    "on_stop_tracking_interval": 120,
-    "sleep_mode": "disabled"
+  "tracking_interval": 1,
+  "tracking_distance": 0.5,
+  "tracking_angle": 20,
+  "on_stop_tracking_interval": 120,
+  "sleep_mode": "disabled"
 }
 ```
 
@@ -2220,11 +2221,11 @@ Profile for Tramigo models that do support the interval in seconds
 
 ```json
 {
-    "tracking_interval": 30,
-    "tracking_distance": 20,
-    "tracking_angle": 180,
-    "on_stop_tracking_interval": 100,
-    "sleep_mode": "enabled"
+  "tracking_interval": 30,
+  "tracking_distance": 20,
+  "tracking_angle": 180,
+  "on_stop_tracking_interval": 100,
+  "sleep_mode": "enabled"
 }
 ```
 
@@ -2241,14 +2242,14 @@ Profile for Navixy TT-1.
 
 ```json
 {
-    "type": "interval",
-    "psm_mode": 2,
-    "tracking_interval": 30,
-    "tracking_distance": 100,
-    "tracking_angle" : 30,
-    "psm_interval": 60,
-    "bat_voltage": "1.5",
-    "bat_psm_interval": 600
+  "type": "interval",
+  "psm_mode": 2,
+  "tracking_interval": 30,
+  "tracking_distance": 100,
+  "tracking_angle": 30,
+  "psm_interval": 60,
+  "bat_voltage": "1.5",
+  "bat_psm_interval": 600
 }
 ```
 
@@ -2268,9 +2269,9 @@ Tracking profile for IMTSA TR2-OBD, Ulbotech T361, Ulbotech T381.
 
 ```json
 {
-    "tracking_angle": 3,
-    "tracking_distance": 150,
-    "tracking_interval": 30
+  "tracking_angle": 3,
+  "tracking_distance": 150,
+  "tracking_interval": 30
 }
 ```
 
@@ -2285,10 +2286,10 @@ Tracking profile for Kingneed C30, Kingneed T0024 / T4024, Kingneed T0026, Kingn
 
 ```json
 {
-    "continuous_report_interval": 10,
-    "motion_interval": 30,
-    "psm_mode": 1,
-    "psm_wake_up_interval": 1
+  "continuous_report_interval": 10,
+  "motion_interval": 30,
+  "psm_mode": 1,
+  "psm_wake_up_interval": 1
 }
 ```
 
@@ -2304,10 +2305,10 @@ Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2150C, Xirgo XT-21
 
 ```json
 {
-    "psm_interval": 2592000,
-    "tracking_angle": 10,
-    "tracking_distance": 1,
-    "tracking_interval": 30
+  "psm_interval": 2592000,
+  "tracking_angle": 10,
+  "tracking_distance": 1,
+  "tracking_interval": 30
 }
 ```
 
@@ -2323,10 +2324,10 @@ Tracking profile for Xirgo XT-4850C.
 
 ```json
 {
-    "psm_interval": 60,
-    "tracking_angle": 10,
-    "tracking_distance": 1,
-    "tracking_interval": 30
+  "psm_interval": 60,
+  "tracking_angle": 10,
+  "tracking_distance": 1,
+  "tracking_interval": 30
 }
 ```
 
@@ -2342,10 +2343,10 @@ Tracking profile for Xirgo XT-2050C, Xirgo XT-2060G, Xirgo XT-2450V, Xirgo XT-24
 
 ```json
 {
-    "psm_interval": 60,
-    "tracking_angle": 10,
-    "tracking_distance": 2,
-    "tracking_interval": 60
+  "psm_interval": 60,
+  "tracking_angle": 10,
+  "tracking_distance": 2,
+  "tracking_interval": 60
 }
 ```
 
@@ -2362,10 +2363,10 @@ name: 'yatut_poisk'
 
 ```json
 {
-    "mode": "DAILY",
-    "main_wakeup_time": "12:00",
-    "wakeup_period": "24",
-    "gps_determination_period": 0
+  "mode": "DAILY",
+  "main_wakeup_time": "12:00",
+  "wakeup_period": "24",
+  "gps_determination_period": 0
 }
 ```
 

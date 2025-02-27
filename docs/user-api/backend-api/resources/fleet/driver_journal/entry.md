@@ -14,26 +14,26 @@ To get information on how-to work with driver journals refer to our [instruction
 
 ```json
 {
-    "id":127722,
-    "tracker_id": 1,
-    "start_date": "2020-10-13 07:03:39",
-    "end_date": "2020-10-14 08:05:02",
-    "employee_id": 1,
-    "type": "work",
-    "comment": "comment string",
-    "start_location": {
-        "lat": 11.0,
-        "lng": 22.0,
-        "address": "address value"
-    },
-    "end_location": {
-        "lat": 11.0,
-        "lng": 22.0,
-        "address": "address value"
-    },
-    "length": 1.44,
-    "start_odometer": 1.34,
-    "end_odometer": 5.34
+  "id": 127722,
+  "tracker_id": 1,
+  "start_date": "2020-10-13 07:03:39",
+  "end_date": "2020-10-14 08:05:02",
+  "employee_id": 1,
+  "type": "work",
+  "comment": "comment string",
+  "start_location": {
+    "lat": 11.0,
+    "lng": 22.0,
+    "address": "address value"
+  },
+  "end_location": {
+    "lat": 11.0,
+    "lng": 22.0,
+    "address": "address value"
+  },
+  "length": 1.44,
+  "start_odometer": 1.34,
+  "end_odometer": 5.34
 }
 ```
 
@@ -99,29 +99,31 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
 
 ```json
 {
-    "success": true,
-    "list": [{
-        "id": 127722,
-        "tracker_id": 1,
-        "start_date": "2020-10-13 07:03:39",
-        "end_date": "2020-10-14 08:05:02",
-        "employee_id": 1,
-        "type": "work",
-        "comment": null,
-        "start_location": {
-            "lat": 23.25658,
-            "lng": 21.89892,
-            "address": "address"
-        },
-        "end_location": {
-            "lat": 23.26227,
-            "lng": 21.59321,
-            "address": "address"
-        },
-        "length": 1.44,
-        "start_odometer": 1.34,
-        "end_odometer": 5.34
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 127722,
+      "tracker_id": 1,
+      "start_date": "2020-10-13 07:03:39",
+      "end_date": "2020-10-14 08:05:02",
+      "employee_id": 1,
+      "type": "work",
+      "comment": null,
+      "start_location": {
+        "lat": 23.25658,
+        "lng": 21.89892,
+        "address": "address"
+      },
+      "end_location": {
+        "lat": 23.26227,
+        "lng": 21.59321,
+        "address": "address"
+      },
+      "length": 1.44,
+      "start_odometer": 1.34,
+      "end_odometer": 5.34
+    }
+  ]
 }
 ```
 
@@ -153,7 +155,9 @@ Creates driver journal entries.
 #### Response
 
 ```json
-{ "success": true}
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -198,7 +202,9 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -236,7 +242,9 @@ Deletes driver journal entries.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

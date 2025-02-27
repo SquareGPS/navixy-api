@@ -41,15 +41,26 @@ Where **location** described in [data types description section](../../../gettin
 
 ```json
 {
-    "success": true,
-    "distance": 1340584,
-    "time": 43500,
-    "list": [{"lat": 34.178868, "lng": -118.599672}, {"lat": 31.738386, "lng": -106.453854}],
-    "key_points": [{
+  "success": true,
+  "distance": 1340584,
+  "time": 43500,
+  "list": [
+    {
+      "lat": 34.178868,
+      "lng": -118.599672
+    },
+    {
+      "lat": 31.738386,
+      "lng": -106.453854
+    }
+  ],
+  "key_points": [
+    {
       "id": 123,
       "lat": 35.365948,
       "lng": -108.112104
-    }] 
+    }
+  ]
 }
 ```
 
@@ -65,23 +76,23 @@ Where **location** described in [data types description section](../../../gettin
 
 * 215 - External service error.
 * 218 - Malformed external service parameters.
-  
-    ```json
+
+```json
+{
+  "success": false,
+  "status": {
+    "code": 218,
+    "description": "Malformed external service parameters"
+  },
+  "errors": [
     {
-        "success": false,
-        "status": {
-            "code": 218,
-            "description": "Malformed external service parameters"
-        },
-        "errors": [
-            {
-                "status": "NOT_FOUND",
-                "status_code": 207,
-                "message": "Cannot find route between points"
-            }
-        ]
+      "status": "NOT_FOUND",
+      "status_code": 207,
+      "message": "Cannot find route between points"
     }
-    ```
+  ]
+}
+```
   
     * `status` - [enum](../../../getting-started/introduction.md#data-types).
         * `NOT_FOUND` – indicates at least one of the locations specified in the request's origin, destination, or 

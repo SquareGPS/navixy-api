@@ -41,17 +41,28 @@ Where **location** described in [data types description section](../../../gettin
 
 ```json
 {
-    "success": true,
-    "distance": 1340584,
-    "time": 43500,
-    "list": [{"lat": 34.178868, "lng": -118.599672}, {"lat": 31.738386, "lng": -106.453854}],
-    "key_points": [{
+  "success": true,
+  "distance": 1340584,
+  "time": 43500,
+  "list": [
+    {
+      "lat": 34.178868,
+      "lng": -118.599672
+    },
+    {
+      "lat": 31.738386,
+      "lng": -106.453854
+    }
+  ],
+  "key_points": [
+    {
       "id": 123,
       "lat": 35.365948,
       "lng": -108.112104,
       "distance": 1052511,
       "time": 37800
-      }] 
+    }
+  ]
 }
 ```
 
@@ -71,14 +82,14 @@ Where **location** described in [data types description section](../../../gettin
 215 - External service error.
 
 ```json
-    {
-        "success": false,
-        "status": {
-            "code": 215,
-            "description": "External service error"
-        },
-        "errors": ["OVER_QUERY_LIMIT"]
-    }
+{
+  "success": false,
+  "status": {
+    "code": 215,
+    "description": "External service error"
+  },
+  "errors": ["OVER_QUERY_LIMIT"]
+}
 ```
 
 * `errors` - [enum](../../../getting-started/introduction.md#data-types) array. Status. 
@@ -91,14 +102,14 @@ Where **location** described in [data types description section](../../../gettin
 218 - Malformed external service parameters.
 
 ```json
-    {
-        "success": false,
-        "status": {
-            "code": 218,
-            "description": "Malformed external service parameters"
-        },
-        "errors": ["NOT_FOUND"]
-    }
+{
+  "success": false,
+  "status": {
+    "code": 218,
+    "description": "Malformed external service parameters"
+  },
+  "errors": ["NOT_FOUND"]
+}
 ```
 
 * `errors` - [enum](../../../getting-started/introduction.md#data-types) array. Status.

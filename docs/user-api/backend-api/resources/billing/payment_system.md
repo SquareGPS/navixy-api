@@ -12,19 +12,19 @@ Payment system settings object and API calls for working with payment systems an
 
 ```json
 {
-    "type": "rbkmoney",
-    "url": "https:rbkmoney.com/acceptpurchase.aspx",
-    "account": "John Doe",
-    "currency": "EUR",
-    "payment_code": "Navixy Demo",
-    "subscription_code": "4671292",
-    "methods": ["method1", "method2"],
-    "prices": {
-        "Loccate_default_pay_1": 0.99,
-        "Loccate_default_pay_5": 4.99,
-        "Loccate_default_pay_10": 9.99,
-        "Loccate_default_pay_20": 19.99
-    }
+  "type": "rbkmoney",
+  "url": "https:rbkmoney.com/acceptpurchase.aspx",
+  "account": "John Doe",
+  "currency": "EUR",
+  "payment_code": "Navixy Demo",
+  "subscription_code": "4671292",
+  "methods": ["method1", "method2"],
+  "prices": {
+    "Loccate_default_pay_1": 0.99,
+    "Loccate_default_pay_5": 4.99,
+    "Loccate_default_pay_10": 9.99,
+    "Loccate_default_pay_20": 19.99
+  }
 }
 ```
 
@@ -68,10 +68,12 @@ Returns list of payment systems available for specified user.
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "type": "bill"
-    }]
+    }
+  ]
 }
 ```
 
@@ -108,8 +110,8 @@ Returns the estimate of the monthly payment amount
 
 ```json
 {
-    "success": true,
-    "value": 400.0
+  "success": true,
+  "value": 400.0
 }
 ```
 

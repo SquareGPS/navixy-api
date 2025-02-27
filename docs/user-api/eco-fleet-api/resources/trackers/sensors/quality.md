@@ -34,7 +34,7 @@ curl -X GET '{{ extra.eco_fleet_api_example_url }}/trackers/123/sensors/321/qual
 
 ```json
 {
-    "smoothness": 8.29
+  "smoothness": 8.29
 }
 ```
 

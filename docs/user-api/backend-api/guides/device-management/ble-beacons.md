@@ -27,16 +27,16 @@ Now let's examine the procedure for implementing a real-world case study: tracki
 
 ```json
 {
-  "tracker_id": 10181654,
-  "hardware_id": "7cf9501df3d6924e423cabcde4c924ff",
-  "rssi": -101,
-  "get_time": "2023-04-17 17:14:42",
-  "latitude": 50.3487321,
-  "longitude": 7.58238,
-  "ext_data": {
-    "voltage": 3.075,
-    "temperature": 24.0
-  }
+  "tracker_id": 10181654,
+  "hardware_id": "7cf9501df3d6924e423cabcde4c924ff",
+  "rssi": -101,
+  "get_time": "2023-04-17 17:14:42",
+  "latitude": 50.3487321,
+  "longitude": 7.58238,
+  "ext_data": {
+    "voltage": 3.075,
+    "temperature": 24.0
+  }
 }
 ```
 
@@ -176,19 +176,19 @@ Response:
 
 ```json
 {
-    "id": 11672,
-    "start_date": "2023-04-17 17:05:42",
-    "start_address": "10470, County Road, Town of Clarence, Erie County, New York, United States, 14031",
-    "max_speed": 62,
-    "end_date": "2023-04-17 17:40:22",
-    "end_address": "Fast Teddy's, 221, Main Street, City of Tonawanda, New York, United States, 14150",
-    "length": 18.91,
-    "points": 59,
-    "avg_speed": 49,
-    "event_count": 3,
-    "norm_fuel_consumed": 6.32,
-    "type": "regular",
-    "gsm_lbs": false
+  "id": 11672,
+  "start_date": "2023-04-17 17:05:42",
+  "start_address": "10470, County Road, Town of Clarence, Erie County, New York, United States, 14031",
+  "max_speed": 62,
+  "end_date": "2023-04-17 17:40:22",
+  "end_address": "Fast Teddy's, 221, Main Street, City of Tonawanda, New York, United States, 14150",
+  "length": 18.91,
+  "points": 59,
+  "avg_speed": 49,
+  "event_count": 3,
+  "norm_fuel_consumed": 6.32,
+  "type": "regular",
+  "gsm_lbs": false
 }
 ```
 
@@ -218,21 +218,21 @@ Response:
 
 ```json
 {
-    "success": true,
-    "limit_exceeded": true,
-    "list": [
-        {
-        "address": "10470, County Road, Town of Clarence, Erie County, New York, United States, 14031",
-        "satellites": 10,
-        "mileage": 0,
-        "heading": 173,
-        "speed": 42,
-        "get_time": "2023-04-17 17:05:42",
-        "alt": 0,
-        "lat": 43.0318683,
-        "lng": -78.5985733
-        }
-    ]
+  "success": true,
+  "limit_exceeded": true,
+  "list": [
+    {
+      "address": "10470, County Road, Town of Clarence, Erie County, New York, United States, 14031",
+      "satellites": 10,
+      "mileage": 0,
+      "heading": 173,
+      "speed": 42,
+      "get_time": "2023-04-17 17:05:42",
+      "alt": 0,
+      "lat": 43.0318683,
+      "lng": -78.5985733
+    }
+  ]
 }
 ```
 

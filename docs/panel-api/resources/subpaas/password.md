@@ -39,7 +39,7 @@ Changes SubPaaS password.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

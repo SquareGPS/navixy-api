@@ -14,27 +14,27 @@ Contains API calls to interact with sensors.
 
 ```json
 {
-    "type": "metering",
-    "id": 860250,
-    "sensor_type": "temperature",
-    "name": "OBD Coolant temperature",
-    "input_name": "obd_coolant_t",
-    "divider": 1.0,
-    "accuracy": 0.0,
-    "units": "",
-    "units_type": "celsius",
-    "parameters": {
-      "parent_ids": [123042, 123566],
-      "volume": 0.7,
-      "min": 0.0,
-      "max": 12.0,
-      "max_lowering_by_time": 120.0,
-      "max_lowering_by_mileage": 120.0,
-      "ignore_drains_in_move": true,
-      "ignore_refuels_in_move": false,
-      "refuel_gap_minutes": 11,
-      "custom_field_name": false
-    }
+  "type": "metering",
+  "id": 860250,
+  "sensor_type": "temperature",
+  "name": "OBD Coolant temperature",
+  "input_name": "obd_coolant_t",
+  "divider": 1.0,
+  "accuracy": 0.0,
+  "units": "",
+  "units_type": "celsius",
+  "parameters": {
+    "parent_ids": [123042, 123566],
+    "volume": 0.7,
+    "min": 0.0,
+    "max": 12.0,
+    "max_lowering_by_time": 120.0,
+    "max_lowering_by_mileage": 120.0,
+    "ignore_drains_in_move": true,
+    "ignore_refuels_in_move": false,
+    "refuel_gap_minutes": 11,
+    "custom_field_name": false
+  }
 }
 ```
 
@@ -120,13 +120,15 @@ Contains API calls to interact with sensors.
   "parameters": {
     "calc_method": "in_range",
     "range_from": 13.4,
-    "value_titles": [{
+    "value_titles": [
+      {
         "value": "0",
         "title": "Off"
-    }, {
+      }, {
         "value": "1",
         "title": "On"
-    }]
+      }
+    ]
   }
 }
 ```
@@ -252,8 +254,8 @@ Creates a sensor.
 
 ```json
 {
-    "success": true,
-    "id": 937
+  "success": true,
+  "id": 937
 }
 ```
 
@@ -300,7 +302,9 @@ Deletes a sensor with `sensor_id` from the database.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -340,18 +344,20 @@ List tracker sensors bound to tracker with specified ID (`tracker_id` parameter)
 
 ```json
 {
-   "success": true,
-   "list": [{
-    "type": "metering",
-    "id": 860250,
-    "sensor_type": "temperature",
-    "name": "OBD Coolant temperature",
-    "input_name": "obd_coolant_t",
-    "divider": 1.0,
-    "accuracy": 0.0,
-    "units": "",
-    "units_type": "celsius" 
-   }]
+  "success": true,
+  "list": [
+    {
+      "type": "metering",
+      "id": 860250,
+      "sensor_type": "temperature",
+      "name": "OBD Coolant temperature",
+      "input_name": "obd_coolant_t",
+      "divider": 1.0,
+      "accuracy": 0.0,
+      "units": "",
+      "units_type": "celsius"
+    }
+  ]
 }
 ```
 
@@ -388,7 +394,9 @@ Updates sensor.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -430,7 +438,7 @@ Copies sensors from one tracker to another.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

@@ -12,14 +12,14 @@ CRUD actions for user settings.
 
 ```json
 {
-    "time_zone": "Europe/Amsterdam",
-    "locale": "nl_NL",
-    "measurement_system": "metric",
-    "date_format": "ddMMyyyy_dots",
-    "hour_mode": "TWENTY_FOUR_HOURS",
-    "geocoder": "osm",
-    "route_provider": "google",
-    "translit": false
+  "time_zone": "Europe/Amsterdam",
+  "locale": "nl_NL",
+  "measurement_system": "metric",
+  "date_format": "ddMMyyyy_dots",
+  "hour_mode": "TWENTY_FOUR_HOURS",
+  "geocoder": "osm",
+  "route_provider": "google",
+  "translit": false
 }
 ```
 
@@ -36,7 +36,7 @@ CRUD actions for user settings.
 
 ```json
 {
-    "emails": ["email1@example.com", "email2@example.com"]
+  "emails": ["email1@example.com", "email2@example.com"]
 }
 ```
 
@@ -46,7 +46,7 @@ CRUD actions for user settings.
 
 ```json
 {
-    "auto_overwrite": true
+  "auto_overwrite": true
 }
 ```
 
@@ -85,23 +85,23 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "settings": {
-        "time_zone": "Europe/Amsterdam",
-        "locale": "nl_NL",
-        "measurement_system": "metric",
-        "geocoder": "osm",
-        "route_provider": "google",
-        "translit": false
-    },
-    "file_storage_settings": {
-         "auto_overwrite": true
-    },
-    "balance_alert_settings": {
-         "emails": ["email1@example.com", "email2@example.com"]
-    },
-    "first_user_balance_warning_period": "7d",
-    "second_user_balance_warning_period": "2d"
+  "success": true,
+  "settings": {
+    "time_zone": "Europe/Amsterdam",
+    "locale": "nl_NL",
+    "measurement_system": "metric",
+    "geocoder": "osm",
+    "route_provider": "google",
+    "translit": false
+  },
+  "file_storage_settings": {
+    "auto_overwrite": true
+  },
+  "balance_alert_settings": {
+    "emails": ["email1@example.com", "email2@example.com"]
+  },
+  "first_user_balance_warning_period": "7d",
+  "second_user_balance_warning_period": "2d"
 }
 ```
 
@@ -144,7 +144,9 @@ Update current user's settings.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
