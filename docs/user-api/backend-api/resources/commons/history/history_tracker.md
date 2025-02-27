@@ -51,37 +51,39 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
 
 ```json
 {
-    "success": true,
-    "list": [{
-         "id": 1,
-         "type": "tracker",
-         "is_read": false,
-         "message": "Alarm",
-         "time": "2020-01-01 00:00:00",
-         "event": "offline",
-         "tracker_id": 2,
-         "rule_id": 3,
-         "track_id": 4,
-         "location":{ 
-             "lat": 50.0,
-             "lng": 60.0,
-             "precision": 50
-         },
-         "address": "address",
-         "extra": {
-             "task_id": null ,
-             "parent_task_id": null,
-             "counter_id": null,
-             "service_task_id": null,
-             "checkin_id": null,
-             "place_ids": null,
-             "last_known_location": false,
-             "tracker_label": "Tracker label",
-             "emergency": false,
-             "employee_id": 4563
-         }
-    }],
-    "limit_exceeded": false,
+  "success": true,
+  "list": [
+    {
+      "id": 1,
+      "type": "tracker",
+      "is_read": false,
+      "message": "Alarm",
+      "time": "2020-01-01 00:00:00",
+      "event": "offline",
+      "tracker_id": 2,
+      "rule_id": 3,
+      "track_id": 4,
+      "location": {
+        "lat": 50.0,
+        "lng": 60.0,
+        "precision": 50
+      },
+      "address": "address",
+      "extra": {
+        "task_id": null,
+        "parent_task_id": null,
+        "counter_id": null,
+        "service_task_id": null,
+        "checkin_id": null,
+        "place_ids": null,
+        "last_known_location": false,
+        "tracker_label": "Tracker label",
+        "emergency": false,
+        "employee_id": 4563
+      }
+    }
+  ],
+  "limit_exceeded": false,
     "total": 150,
     "total_unread": 10
 }

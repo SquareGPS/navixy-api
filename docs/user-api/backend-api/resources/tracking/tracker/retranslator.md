@@ -11,8 +11,8 @@ Contains tracker retranslator binding object and API calls to bind/unbind it to 
 
 ```json
 {
-    "retranslator_id": 4548,
-    "fake_device_id": "AI568T"
+  "retranslator_id": 4548,
+  "fake_device_id": "AI568T"
 }
 ```
 
@@ -57,7 +57,9 @@ Creates or updates binding.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -98,11 +100,13 @@ List tracker retranslators bound to tracker with ID=`tracker_id`.
 
 ```json
 {
-   "success": true,
-   "list": [{
-     "retranslator_id": 4548,
-     "fake_device_id": "AI568T"
-   }]
+  "success": true,
+  "list": [
+    {
+      "retranslator_id": 4548,
+      "fake_device_id": "AI568T"
+    }
+  ]
 }
 ```
 
@@ -143,7 +147,9 @@ Unbinds a tracker from retranslator.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

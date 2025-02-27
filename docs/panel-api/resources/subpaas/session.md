@@ -43,8 +43,8 @@ Creates a SubPaaS session.
 
 ```json
 {
-    "success": true,
-    "hash": "600d4a5400000000600d4a5400000000"
+  "success": true,
+  "hash": "600d4a5400000000600d4a5400000000"
 }
 ```
 

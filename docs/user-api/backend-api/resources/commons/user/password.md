@@ -39,7 +39,9 @@ Changes password of user with the provided session hash (it is contained in a pa
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -73,7 +75,9 @@ If MFA is enabled, it also requires a [session authentication](./auth/factor/ema
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

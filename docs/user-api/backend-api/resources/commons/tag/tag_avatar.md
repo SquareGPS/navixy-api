@@ -45,7 +45,7 @@ Assigns icon_id (from standard icon set) to specified tag.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -86,8 +86,8 @@ File part **mime** type must be one of:
 
 ```json
 {
-    "success": true,
-    "value": "avatar.jpg"
+  "success": true,
+  "value": "avatar.jpg"
 }
 ```
 

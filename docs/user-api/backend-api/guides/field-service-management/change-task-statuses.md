@@ -27,8 +27,8 @@ curl -X POST '{{ extra.api_example_url }}/status/listing/create' \
 
 ```json
 {
-    "success": true,
-    "id": 1111
+  "success": true,
+  "id": 1111
 }
 ```
 
@@ -53,8 +53,8 @@ curl -X POST '{{ extra.api_example_url }}/status/create' \
 
 ```json
 {
-    "success": true,
-    "id": 1
+  "success": true,
+  "id": 1
 }
 ```
 
@@ -80,7 +80,7 @@ curl -X POST '{{ extra.api_example_url }}/status/listing/tracker/assign' \
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

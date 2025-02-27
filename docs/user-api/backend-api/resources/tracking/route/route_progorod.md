@@ -34,15 +34,26 @@ waypoints may be changed.
 
 ```json
 {
-    "success": true,
-    "distance": 1340584,
-    "time": 43500,
-    "list": [{"lat": 34.178868, "lng": -118.599672}, {"lat": 31.738386, "lng": -106.453854}],
-    "key_points": [{
+  "success": true,
+  "distance": 1340584,
+  "time": 43500,
+  "list": [
+    {
+      "lat": 34.178868,
+      "lng": -118.599672
+    },
+    {
+      "lat": 31.738386,
+      "lng": -106.453854
+    }
+  ],
+  "key_points": [
+    {
       "id": 123,
       "lat": 35.365948,
       "lng": -108.112104
-    }] 
+    }
+  ]
 }
 ```
 
@@ -61,16 +72,18 @@ waypoints may be changed.
 
 ```json
 {
-    "success": false,
-    "status": {
-        "code": 218,
-        "description": "Malformed external service parameters"
-    },
-    "errors": [{
-        "type": "malformed",
-        "point": "start",
-        "index": 3
-    }]
+  "success": false,
+  "status": {
+    "code": 218,
+    "description": "Malformed external service parameters"
+  },
+  "errors": [
+    {
+      "type": "malformed",
+      "point": "start",
+      "index": 3
+    }
+  ]
 }
 ```
 

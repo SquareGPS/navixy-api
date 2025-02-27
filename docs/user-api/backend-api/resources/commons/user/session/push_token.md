@@ -40,7 +40,9 @@ Binds Push token with a current session.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 Using `category_filter` you can filter out unwanted notifications categories.
@@ -92,7 +94,9 @@ Only session `hash`.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

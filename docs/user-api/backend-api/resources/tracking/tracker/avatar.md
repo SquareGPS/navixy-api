@@ -42,8 +42,8 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 
 ```json
 {
-    "success": true,
-    "value": "file name"
+  "success": true,
+  "value": "file name"
 }
 ```
 

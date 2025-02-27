@@ -38,9 +38,9 @@ Gets all user's trackers with special grouping by "contacts".
 
 ```json
 {
-    "success": true,
-    "contacts": [{<contact1>}, {<contact n>}],
-    "trackers": [{<tracker1>}, {<tracker n>}]
+  "success": true,
+  "contacts": [{<contact1>}, {<contact n>}],
+  "trackers": [{<tracker1>}, {<tracker n>}]
 }
 ```
 
@@ -51,11 +51,11 @@ where `contact` object is:
 
 ```json
 {
-    "user_id": 12059,
-    "first_name": "Adam",
-    "middle_name": "James",
-    "last_name": "Williams",
-    "trackers": [{<tracker1>}, {<tracker n>}]
+  "user_id": 12059,
+  "first_name": "Adam",
+  "middle_name": "James",
+  "last_name": "Williams",
+  "trackers": [{<tracker1>}, {<tracker n>}]
 }
 ```
 

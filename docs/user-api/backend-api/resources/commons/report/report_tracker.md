@@ -45,7 +45,7 @@ Deletes a report from the database.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -173,7 +173,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
     "code": 211,
     "description": "Requested time span is too big"
   },
-    "max_time_span": "P90D"
+  "max_time_span": "P90D"
 }
 ```
 
@@ -210,19 +210,22 @@ Returns info about all available generated or in-progress reports.
 
 ```json
 {
-    "success": true,"list": [
+  "success": true,
+  "list": [
     {
-        "created": "2020-10-08 21:59:30",
-        "time_filter": {
-          "from":"00:00:00",
-          "to":"23:59:59",
-          "weekdays":[1,2,3,4,5,6,7]},
-        "title": "Trip report",
-        "id": 5601797,
-        "parameters": { 
-          "geocoder": "google",
-          "trackers": [669673],
-          "plugins": [{
+      "created": "2020-10-08 21:59:30",
+      "time_filter": {
+        "from": "00:00:00",
+        "to": "23:59:59",
+        "weekdays": [1, 2, 3, 4, 5, 6, 7]
+      },
+      "title": "Trip report",
+      "id": 5601797,
+      "parameters": {
+        "geocoder": "google",
+        "trackers": [669673],
+        "plugins": [
+          {
             "plugin_id": 4,
             "filter": true,
             "hide_empty_tabs": true,
@@ -232,19 +235,21 @@ Returns info about all available generated or in-progress reports.
             "show_seconds": false,
             "group_by_driver": false,
             "show_idle_duration": false
-          }],
-          "locale_info": {
-            "locale": "ru_RU",
-            "time_zone": "Asia/Yekaterinburg",
-            "measurement_system": "metric"
           }
-        }, 
-        "percent": 100,
-        "type": "user",
-        "from": "2020-10-05 00:00:00",
-        "to": "2020-10-06 23:59:59"
+        ],
+        "locale_info": {
+          "locale": "ru_RU",
+          "time_zone": "Asia/Yekaterinburg",
+          "measurement_system": "metric"
+        }
+      },
+      "percent": 100,
+      "type": "user",
+      "from": "2020-10-05 00:00:00",
+      "to": "2020-10-06 23:59:59"
     }
-]}
+  ]
+}
 ```
 
 * `created` - string. Date when report created.

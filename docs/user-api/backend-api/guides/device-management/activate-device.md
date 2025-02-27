@@ -83,23 +83,23 @@ After sending the platform will respond with the following information:
 
 ```json
 {
-  "success":true,
-  "value":{
-    "id":833389,
-    "label":"T571TO",
-    "group_id":0,
-    "source":{
-      "id":526383,
-      "device_id":"986575154632586",
-      "model":"telfmb140",
-      "blocked":false,
-      "tariff_id":12163,
-      "phone":"999999999969",
-      "status_listing_id":null,
-      "creation_date":"2021-06-03",
-      "tariff_end_date":"2021-06-17"
+  "success": true,
+  "value": {
+    "id": 833389,
+    "label": "T571TO",
+    "group_id": 0,
+    "source": {
+      "id": 526383,
+      "device_id": "986575154632586",
+      "model": "telfmb140",
+      "blocked": false,
+      "tariff_id": 12163,
+      "phone": "999999999969",
+      "status_listing_id": null,
+      "creation_date": "2021-06-03",
+      "tariff_end_date": "2021-06-17"
     },
-    "clone":false
+    "clone": false
   }
 }
 ```
@@ -175,29 +175,31 @@ curl -X POST 'https://api.navixy.com/v2/tracker/register_quick' \
 
 ```json
 {
-    "success": true,
-    "value": {
-        "id": 123456,
-        "label": "tracker label",
-        "clone": false,
-        "group_id": 167,
-        "avatar_file_name": "file name",
-        "source": {
-            "id": 234567,
-            "device_id": 9999999988888,
-            "model": "telfmb920",
-            "blocked": false,
-            "tariff_id": 345678,
-            "status_listing_id": null,
-            "creation_date": "2011-09-21",
-            "tariff_end_date": "2016-03-24",
-            "phone": "71234567890"
-        },
-        "tag_bindings": [{
-            "tag_id": 456789,
-            "ordinal": 4
-        }]
-    }
+  "success": true,
+  "value": {
+    "id": 123456,
+    "label": "tracker label",
+    "clone": false,
+    "group_id": 167,
+    "avatar_file_name": "file name",
+    "source": {
+      "id": 234567,
+      "device_id": 9999999988888,
+      "model": "telfmb920",
+      "blocked": false,
+      "tariff_id": 345678,
+      "status_listing_id": null,
+      "creation_date": "2011-09-21",
+      "tariff_end_date": "2016-03-24",
+      "phone": "71234567890"
+    },
+    "tag_bindings": [
+      {
+        "tag_id": 456789,
+        "ordinal": 4
+      }
+    ]
+  }
 }
 ```
 
@@ -248,24 +250,24 @@ The platform will notify us about success and with information about this device
 
 ```json
 {
-   "success": true,
-   "value": {
-      "id": 833997,
-      "label": "Andrew",
-      "group_id": 0,
-      "source": {
-         "id": 526785,
-         "device_id": "186196632419",
-         "model": "mobile_unknown_xgps",
-         "blocked": false,
-         "tariff_id": 12163,
-         "phone": null,
-         "status_listing_id": null,
-         "creation_date": "2021-06-04",
-         "tariff_end_date": "2021-06-18"
-      },
-      "clone": false
-   }
+  "success": true,
+  "value": {
+    "id": 833997,
+    "label": "Andrew",
+    "group_id": 0,
+    "source": {
+      "id": 526785,
+      "device_id": "186196632419",
+      "model": "mobile_unknown_xgps",
+      "blocked": false,
+      "tariff_id": 12163,
+      "phone": null,
+      "status_listing_id": null,
+      "creation_date": "2021-06-04",
+      "tariff_end_date": "2021-06-18"
+    },
+    "clone": false
+  }
 }
 ```
 

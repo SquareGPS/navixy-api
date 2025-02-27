@@ -15,16 +15,16 @@ Let's explore the Activation Code object using the example:
 
 ```json
 {
-    "tariff_id": 12163,
-    "bonus_amount": 0,
-    "free_days": 14,
-    "money_amount": 0,
-    "device_type": "tracker",
-    "code": "5248654776",
-    "activated": false,
-    "activation_date": null,
-    "device_id": 0,
-    "tariff_name": "Tracker demo plan"
+  "tariff_id": 12163,
+  "bonus_amount": 0,
+  "free_days": 14,
+  "money_amount": 0,
+  "device_type": "tracker",
+  "code": "5248654776",
+  "activated": false,
+  "activation_date": null,
+  "device_id": 0,
+  "tariff_name": "Tracker demo plan"
 }
 ```
 
@@ -77,8 +77,8 @@ Creates the specified number (`count`) of activation codes with the given `tarif
 
 ```json
 {
-    "success": true,
-    "count": 10
+  "success": true,
+  "count": 10
 }
 ```
 
@@ -126,20 +126,22 @@ of the following fields: `code`, `tariff_id`, `device_id`, `device_type`.
 
 ```json
 {
-    "success": true,
-    "list": [{
-         "tariff_id": 12163,
-         "bonus_amount": 0,
-         "free_days": 14,
-         "money_amount": 0,
-         "device_type": "tracker",
-         "code": "1201245293",
-         "activated": true,
-         "activation_date": "2020-11-12 20:00:08",
-         "device_id": 464606,
-         "tariff_name": "Tracker demo tariff"
-    }],
-    "count" : 1
+  "success": true,
+  "list": [
+    {
+      "tariff_id": 12163,
+      "bonus_amount": 0,
+      "free_days": 14,
+      "money_amount": 0,
+      "device_type": "tracker",
+      "code": "1201245293",
+      "activated": true,
+      "activation_date": "2020-11-12 20:00:08",
+      "device_id": 464606,
+      "tariff_name": "Tracker demo tariff"
+    }
+  ],
+  "count": 1
 }
 ```
 
@@ -186,8 +188,8 @@ Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes whi
 
 ```json
 {
-    "success": true,
-    "count": 5
+  "success": true,
+  "count": 5
 }
 ```
 

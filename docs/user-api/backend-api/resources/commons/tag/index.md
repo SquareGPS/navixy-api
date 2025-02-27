@@ -73,8 +73,8 @@ Creates a new tag.
 
 ```json
 {
-    "success": true,
-    "id": 111
+  "success": true,
+  "id": 111
 }
 ```
 
@@ -119,7 +119,7 @@ To delete tags, only one of the following parameters must be specified.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -158,13 +158,15 @@ Gets all tags belonging to user with optional filtering.
 
 ```json
 {
-    "success": true,
-    "list": [{
-       "id": 3,
-       "avatar_file_name": "avatar.jpg",
-       "name": "hop",
-       "color": "FF0000"
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 3,
+      "avatar_file_name": "avatar.jpg",
+      "name": "hop",
+      "color": "FF0000"
+    }
+  ]
 }
 ```
 
@@ -204,16 +206,16 @@ Search entities that bound with all of specified tags.
 
 ```json
 {
-    "success": true,
-    "result": {
-      "place": [<place>],
-      "task": [<task>],
-      "task_schedule": [<task_schedule>],
-      "employee": [<employee>],
-      "vehicle": [<vehicle>],
-      "zone": [<zone>],
-      "tracker": [<tracker>]
-    }
+  "success": true,
+  "result": {
+    "place": [<place>],
+    "task": [<task>],
+    "task_schedule": [<task_schedule>],
+    "employee": [<employee>],
+    "vehicle": [<vehicle>],
+    "zone": [<zone>],
+    "tracker": [<tracker>]
+  }
 }
 ```
 
@@ -262,7 +264,7 @@ Updates existing tag.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

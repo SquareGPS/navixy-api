@@ -41,8 +41,8 @@ Gets list of trusted numbers for the specified tracker.
 
 ```json
 {
-    "success": true,
-    "list": ["496156680000", "496156680001"]
+  "success": true,
+  "list": ["496156680000", "496156680001"]
 }
 ```
 
@@ -80,7 +80,9 @@ Replaces the list of trusted numbers for a specified tracker with the new one.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

@@ -42,7 +42,7 @@ Only session `hash`.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

@@ -120,7 +120,7 @@ Gets a list of place IDs to which this sub-user has access.
 {
   "success": true,
   "access_to_all": true,
-  "list" : [7548]
+  "list": [7548]
 }
 ```
 
@@ -164,7 +164,7 @@ Gets a list of places to which this sub-user has access.
 {
   "success": true,
   "access_to_all": false,
-  "list" : [<place>, ...],
+  "list": [<place>, ...],
   "count": 12
 }
 ```

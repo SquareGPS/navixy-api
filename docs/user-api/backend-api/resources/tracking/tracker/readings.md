@@ -56,7 +56,10 @@ Gets last values for all sensors, state values and counters.
       "type": "fuel",
       "units_type": "custom",
       "update_time": "2023-06-28 06:05:59",
-      "composite_sensor_ids": [37651, 37652]
+      "composite_sensor_ids": [
+        37651,
+        37652
+      ]
     }
   ],
   "states": [

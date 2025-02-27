@@ -13,16 +13,16 @@ of the dispatcher and others. This data can be used for more convenient and effi
 
 ```json
 {
-    "id": 222,
-    "location": {
-        "lat": 40.4,
-        "lng": -3.6,
-        "address": "Calle Salitre, 58",
-        "radius": 150
-    },
-    "mechanic_name": "Martinez",
-    "dispatcher_name": "Velasquez",
-    "organization_name": "Bankia"
+  "id": 222,
+  "location": {
+    "lat": 40.4,
+    "lng": -3.6,
+    "address": "Calle Salitre, 58",
+    "radius": 150
+  },
+  "mechanic_name": "Martinez",
+  "dispatcher_name": "Velasquez",
+  "organization_name": "Bankia"
 }
 ```
 
@@ -61,19 +61,21 @@ Gets all depots belonging to user.
 
 ```json
 {
-    "success": true,
-    "list": [{
-        "id": 222,
-        "location": {
-         "lat": 40.4,
-         "lng": -3.6,
-         "address": "Calle Salitre, 58",
-         "radius": 150
-        },
-        "mechanic_name": "Martinez",
-        "dispatcher_name": "Velasquez",
-        "organization_name": "Bankia"
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 222,
+      "location": {
+        "lat": 40.4,
+        "lng": -3.6,
+        "address": "Calle Salitre, 58",
+        "radius": 150
+      },
+      "mechanic_name": "Martinez",
+      "dispatcher_name": "Velasquez",
+      "organization_name": "Bankia"
+    }
+  ]
 }
 ```
 
@@ -108,8 +110,8 @@ Creates a new depot.
 
 ```json
 {
-    "success": true,
-    "id": 111
+  "success": true,
+  "id": 111
 }
 ```
 
@@ -145,7 +147,9 @@ Updates existing depot with the specified ID.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -184,7 +188,9 @@ Deletes a depot with the specified ID.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
     
 #### Errors

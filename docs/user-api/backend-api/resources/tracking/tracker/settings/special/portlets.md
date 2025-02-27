@@ -17,10 +17,10 @@ Special settings to set the engine event behavior for ATrack.
 
 ```json
 {
-    "power_voltage_high_level": 13800,
-    "on_duration_seconds": 120,
-    "power_voltage_low_level": 12800,
-    "off_duration_seconds": 300
+  "power_voltage_high_level": 13800,
+  "on_duration_seconds": 120,
+  "power_voltage_low_level": 12800,
+  "off_duration_seconds": 300
 }
 ```
 
@@ -40,15 +40,15 @@ Guard special settings for "Я ТУТ ПОИСК".
 
 ```json
 {
-    "motion_sensor_mode": "double_period",
-    "motion_sensor_first_period": "23:00-07:00",
-    "motion_sensor_second_period": "10:00-17:00",
-    "motion_sensor_amplitude": 10,
-    "motion_sensor_duration": 30,
-    "motion_sensor_ignore_time": 50,
-    "motion_sensor_double_check": false,
-    "perimeter_mode": "once_triggering",
-    "perimeter_diameter": 1
+  "motion_sensor_mode": "double_period",
+  "motion_sensor_first_period": "23:00-07:00",
+  "motion_sensor_second_period": "10:00-17:00",
+  "motion_sensor_amplitude": 10,
+  "motion_sensor_duration": 30,
+  "motion_sensor_ignore_time": 50,
+  "motion_sensor_double_check": false,
+  "perimeter_mode": "once_triggering",
+  "perimeter_diameter": 1
 }
 ```
 
@@ -71,11 +71,11 @@ Harsh driving settings for Suntech.
 
 ```json
 {
-    "mode": "enable",
-    "max_acceleration_force": 1.5,
-    "max_braking_force": 0.05,
-    "max_cornering_force": 3,
-    "type": "harsh_behavior_suntech"
+  "mode": "enable",
+  "max_acceleration_force": 1.5,
+  "max_braking_force": 0.05,
+  "max_cornering_force": 3,
+  "type": "harsh_behavior_suntech"
 }
 ```
 

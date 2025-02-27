@@ -58,12 +58,14 @@ Get points of user's geofence with `zone_id`.
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "lat": 11.0,
       "lng": 22.0,
       "node": true
-    }]
+    }
+  ]
 }
 ```
 
@@ -101,7 +103,7 @@ Update points for user's geofence with `zone_id`.
 #### Response
 
 ```json
-{ 
+{
   "success": true
 }
 ```

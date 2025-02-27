@@ -42,8 +42,8 @@ Gets number of commands in queue for the specified tracker.
 
 ```json
 {
-    "success": true,
-    "count": 0
+  "success": true,
+  "count": 0
 }
 ```
 
@@ -86,7 +86,9 @@ Removes all pending SMS commands from the queue for the specified tracker.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

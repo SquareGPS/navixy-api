@@ -13,11 +13,12 @@ For example, you can add custom fields to the **places** entity or rearrange exi
 
 ```json
 {
-    "id": 123,
-    "type": "place",
-    "settings": {
-      "layout": {
-        "sections": [{
+  "id": 123,
+  "type": "place",
+  "settings": {
+    "layout": {
+      "sections": [
+        {
           "label": "Section label",
           "field_order": [
             "label",
@@ -26,9 +27,10 @@ For example, you can add custom fields to the **places** entity or rearrange exi
             "tags",
             "description"
           ]
-        }]
-      }
+        }
+      ]
     }
+  }
 }
 ```
 
@@ -83,25 +85,29 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "list": [{
+  "success": true,
+  "list": [
+    {
       "id": 123,
       "type": "place",
       "settings": {
         "layout": {
-          "sections": [{
-            "label": "Section label",
-            "field_order": [
-              "label",
-              "location",
-              "131212",
-              "tags",
-              "description"
-            ]
-          }]
+          "sections": [
+            {
+              "label": "Section label",
+              "field_order": [
+                "label",
+                "location",
+                "131212",
+                "tags",
+                "description"
+              ]
+            }
+          ]
         }
       }
-    }]
+    }
+  ]
 }
 ```
 
@@ -143,32 +149,36 @@ Gets entity by the ID or by type.
 
 ```json
 {
-    "success": true,
-    "entity": {
-        "id": 123,
-        "type": "place",
-        "settings": {
-            "layout": {
-                    "sections": [{
-                        "label": "Section label",
-                        "field_order": [
-                          "label",
-                          "location",
-                          "131212",
-                          "tags",
-                          "description"
-                        ]
-                    }]
-            }
-        }
-    }, 
-    "fields": [{
-       "id": 131312,
-       "label": "Additional info", 
-       "type":  "text",
-       "required": true,
-       "description": "Info about place"
-    }]
+  "success": true,
+  "entity": {
+    "id": 123,
+    "type": "place",
+    "settings": {
+      "layout": {
+        "sections": [
+          {
+            "label": "Section label",
+            "field_order": [
+              "label",
+              "location",
+              "131212",
+              "tags",
+              "description"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "fields": [
+    {
+      "id": 131312,
+      "label": "Additional info",
+      "type": "text",
+      "required": true,
+      "description": "Info about place"
+    }
+  ]
 }
 ```
 
@@ -207,7 +217,7 @@ Updates settings of customizable entity. Entity must have a valid ID.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

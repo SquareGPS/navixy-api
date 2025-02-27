@@ -15,10 +15,10 @@ Contains vehicle status listing object and API calls to interact with it.
 
 ```json
 {
-    "id": 1,
-    "order": 0,
-    "label": "label123",
-    "color": "FFFFFF"
+  "id": 1,
+  "order": 0,
+  "label": "label123",
+  "color": "FFFFFF"
 }
 ```
 
@@ -56,13 +56,15 @@ Gets all of user's vehicle statuses.
 
 ```json
 {
-    "success": true,
-    "list": [{
-        "id": 1,
-        "order": 0,
-        "label": "label123",
-        "color": "FFFFFF"
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 1,
+      "order": 0,
+      "label": "label123",
+      "color": "FFFFFF"
+    }
+  ]
 }
 ```
 
@@ -96,7 +98,9 @@ Old vehicle statuses, which are not present in `statuses` array, will be deleted
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

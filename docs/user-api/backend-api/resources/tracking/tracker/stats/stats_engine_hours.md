@@ -38,8 +38,8 @@ Returns engine hours counted for the specified period.
 
 ```json
 {
-    "success": true,
-    "value": 42.0
+  "success": true,
+  "value": 42.0
 }
 ```
 

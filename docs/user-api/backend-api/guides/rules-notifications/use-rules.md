@@ -39,8 +39,8 @@ The platform will respond with the ID of the created rule.
 
 ```json
 {
-    "success": true,
-    "id": 123
+  "success": true,
+  "id": 123
 }
 ```
 

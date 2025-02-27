@@ -46,8 +46,8 @@ Returned fields may differ from model to model. See tracking profiles for more i
 
 ```json
 {
-    "success": true,
-    "value" : {<tracking settings>}
+  "success": true,
+  "value": {<tracking settings>}
 }
 ```
 
@@ -86,7 +86,9 @@ Sends new tracking settings to the specified tracker.
 Returned fields may differ from model to model. See tracking profiles for more information.
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

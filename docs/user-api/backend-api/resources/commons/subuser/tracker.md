@@ -46,7 +46,7 @@ Gives access for sub-user to the specified trackers.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -91,8 +91,8 @@ Gets a list of tracker IDs to which this sub-user has access.
 
 ```json
 {
-    "success": true,
-    "list" : [124588]
+  "success": true,
+  "list": [124588]
 }
 ```
 
@@ -139,7 +139,7 @@ Disables access for sub-user to the specified trackers.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

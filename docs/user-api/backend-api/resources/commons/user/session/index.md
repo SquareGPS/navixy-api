@@ -40,6 +40,8 @@ Only session `hash`.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 

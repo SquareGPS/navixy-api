@@ -43,7 +43,7 @@ If `redirect_target` passed a return redirect to `response=<urlencoded response 
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```    
 
@@ -87,7 +87,7 @@ Deletes an image of specified `type`.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
     

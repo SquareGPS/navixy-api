@@ -12,24 +12,24 @@ Tariff object description and API call to get the list of device's plans availab
 
 ```json
 {
-    "id": 10,
-    "name": "Business",
-    "group_id": 2,
-    "active": true,
-    "type": "monthly",
-    "price": 13.0,
-    "early_change_price": 23.0,
-    "device_limit": 1000,
-    "has_reports" : true,
-    "paas_free": false,
-    "store_period": "12m",
-    "features": [
-        "map_layers"
-    ],
-    "map_filter": {
-        "exclusion": true,
-        "values": []
-    }
+  "id": 10,
+  "name": "Business",
+  "group_id": 2,
+  "active": true,
+  "type": "monthly",
+  "price": 13.0,
+  "early_change_price": 23.0,
+  "device_limit": 1000,
+  "has_reports": true,
+  "paas_free": false,
+  "store_period": "12m",
+  "features": [
+    "map_layers"
+  ],
+  "map_filter": {
+    "exclusion": true,
+    "values": []
+  }
 }
 ```
 
@@ -84,26 +84,28 @@ Only API key `hash`.
 ```json
 {
   "success": true,
-  "list": [{
-       "id": 10,
-       "name": "Business",
-       "group_id": 2,
-       "active": true,
-       "type": "monthly",
-       "price": 13.0,
-       "early_change_price": 23.0,
-       "device_limit": 1000,
-       "has_reports" : true,
-       "paas_free": false,
-       "store_period": "12m",
-       "features": [
-           "map_layers"
-       ],
-       "map_filter": {
-           "exclusion": true,
-           "values": []
-       }
-  }] 
+  "list": [
+    {
+      "id": 10,
+      "name": "Business",
+      "group_id": 2,
+      "active": true,
+      "type": "monthly",
+      "price": 13.0,
+      "early_change_price": 23.0,
+      "device_limit": 1000,
+      "has_reports": true,
+      "paas_free": false,
+      "store_period": "12m",
+      "features": [
+        "map_layers"
+      ],
+      "map_filter": {
+        "exclusion": true,
+        "values": []
+      }
+    }
+  ]
 }
 ```
 

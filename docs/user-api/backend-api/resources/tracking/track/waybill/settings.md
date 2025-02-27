@@ -37,10 +37,10 @@ Gets last waybill number.
 
 ```json
 {
-    "success": true,
-    "value": {
-        "number": "test123"
-    }
+  "success": true,
+  "value": {
+    "number": "test123"
+  }
 }
 ```
 

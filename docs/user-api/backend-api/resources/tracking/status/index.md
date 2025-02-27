@@ -16,9 +16,9 @@ Find details on working status usage in our [guides](../../../guides/field-servi
 
 ```json
 {
-    "id": 5,
-    "label": "Busy",
-    "color": "E57373"
+  "id": 5,
+  "label": "Busy",
+  "color": "E57373"
 }
 ```
 
@@ -58,8 +58,8 @@ Creates new possible working status for the specified working status list.
 
 ```json
 {
-    "success": true,
-    "id": 111
+  "success": true,
+  "id": 111
 }
 ```
 
@@ -104,7 +104,9 @@ Deletes working status entry.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -144,16 +146,18 @@ Gets working statuses belonging to the specified status list.
 
 ```json
 {
-    "success": true,
-    "list":[{
+  "success": true,
+  "list": [
+    {
       "id": 5,
       "label": "Busy",
       "color": "E57373"
-    },{
+    }, {
       "id": 6,
       "label": "Free",
       "color": "A27373"
-    }]
+    }
+  ]
 }
 ```
 
@@ -190,7 +194,9 @@ Updates working status properties.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

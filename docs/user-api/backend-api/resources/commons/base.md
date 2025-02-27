@@ -39,7 +39,9 @@ Only API key `hash`.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -74,7 +76,9 @@ Sends email from the platform to any email address with specified title and text
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

@@ -12,8 +12,8 @@ API call to get the list of all available equipment.
 
 ```json
 {
-  "equip_id": 33, 
-  "model_name": "SPT10 SB", 
+  "equip_id": 33,
+  "model_name": "SPT10 SB",
   "model_code": "pt10",
   "vendor": "3. NAVIXY S Series (personal)",
   "name": "NAVIXY S10"
@@ -61,14 +61,16 @@ Only session `hash`.
 
 ```json
 {
-    "success": true,
-    "list" : [{
-        "equip_id": 33, 
-        "model_name": "SPT10 SB", 
-        "model_code": "pt10",
-        "vendor": "3. NAVIXY S Series (personal)",
-        "name": "NAVIXY S10"
-    }] 
+  "success": true,
+  "list": [
+    {
+      "equip_id": 33,
+      "model_name": "SPT10 SB",
+      "model_code": "pt10",
+      "vendor": "3. NAVIXY S Series (personal)",
+      "name": "NAVIXY S10"
+    }
+  ]
 }
 ```
 

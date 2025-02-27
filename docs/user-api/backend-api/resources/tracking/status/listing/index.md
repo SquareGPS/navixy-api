@@ -13,11 +13,11 @@ statuses that can be assigned to trackers.
 
 ```json
 {
-    "id": 1,
-    "label": "Taxi driver statuses",
-    "employee_controlled": true,
-    "supervisor_controlled": false,
-    "entries": [ 5, 2, 1, 4, 6]
+  "id": 1,
+  "label": "Taxi driver statuses",
+  "employee_controlled": true,
+  "supervisor_controlled": false,
+  "entries": [5, 2, 1, 4, 6]
 }
 ```
 
@@ -58,8 +58,8 @@ Creates new empty working status list.
 
 ```json
 {
-    "success": true,
-    "id": 111
+  "success": true,
+  "id": 111
 }
 ```
 
@@ -103,7 +103,9 @@ Deletes working status list.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -141,14 +143,16 @@ Only API key `hash`.
 
 ```json
 {
-    "success": true,
-    "list":[{
+  "success": true,
+  "list": [
+    {
       "id": 1,
       "label": "Taxi driver statuses",
       "employee_controlled": true,
       "supervisor_controlled": false,
-      "entries": [ 5, 2, 1, 4, 6]
-    }]
+      "entries": [5, 2, 1, 4, 6]
+    }
+  ]
 }
 ```
 
@@ -187,7 +191,9 @@ Updates working status list properties.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

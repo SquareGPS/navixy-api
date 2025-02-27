@@ -73,8 +73,8 @@ curl -X POST '{{ extra.api_example_url }}/form/template/create' \
 #### Example Response:
 ```json
 {
-    "success": true,
-    "id": 111
+  "success": true,
+  "id": 111
 }
 ```
 

@@ -46,8 +46,8 @@ Gets a list of chat messages.
 
 ```json
 {
-    "success": true,
-    "list": [{<message1>}, {<message2>}]
+  "success": true,
+  "list": [{<message1>}, {<message2>}]
 }
 ```
 
@@ -110,7 +110,9 @@ Marks all incoming chat messages as read for all or for given user trackers.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -150,7 +152,9 @@ Use only one parameter.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -183,8 +187,8 @@ Sends chat message to a specified tracker.
 
 ```json
 {
-    "success": true,
-    "id": 222
+  "success": true,
+  "id": 222
 }
 ```
 
@@ -223,9 +227,9 @@ Sends chat message to specified trackers.
 
 ```json
 {
-    "success": true,
-    "sent_to": [14],
-    "not_sent_to": [5234]
+  "success": true,
+  "sent_to": [14],
+  "not_sent_to": [5234]
 }
 ```
 
@@ -262,11 +266,11 @@ Gets date-times of last messages in chat of trackers.
 
 ```json
 {
-    "success": true,
-    "value": {
-        "101": "2016-02-29 00:23:00",
-        "122": "2017-02-28 00:23:00"
-    }
+  "success": true,
+  "value": {
+    "101": "2016-02-29 00:23:00",
+    "122": "2017-02-28 00:23:00"
+  }
 }
 ```
 
@@ -303,11 +307,11 @@ Gets count of user's unread chat messages grouped by tracker ID.
 
 ```json
 {
-    "success": true,
-    "value": {
-      "1": 123,
-      "2": 321
-    }
+  "success": true,
+  "value": {
+    "1": 123,
+    "2": 321
+  }
 }
 ```
 

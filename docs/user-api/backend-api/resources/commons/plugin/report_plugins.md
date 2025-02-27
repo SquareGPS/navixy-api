@@ -101,11 +101,13 @@ Plugin-specific parameters:
 
 ```json
 {
-  "shifts": [{
+  "shifts": [
+    {
       "name": "Shift1",
       "start_time": "00:00",
       "end_time": "23:59"
-    }]
+    }
+  ]
 }
 ```
 
@@ -116,7 +118,8 @@ Plugin-specific parameters:
   "hide_empty_tabs": true,
   "plugin_id": 77,
   "show_seconds": false,
-  "shifts": [{
+  "shifts": [
+    {
       "name": "Shift1",
       "start_time": "00:00",
       "end_time": "12:00"
@@ -124,7 +127,8 @@ Plugin-specific parameters:
       "name": "Shift2",
       "start_time": "12:00",
       "end_time": "23:59"
-  }],
+    }
+  ],
   "filter": true,
   "show_coordinates": false,
   "split_at_midnight": true
@@ -479,10 +483,12 @@ Plugin-specific parameters:
 
 ```json
 {
-  "sensors": [{
+  "sensors": [
+    {
       "tracker_id": 37714,
       "sensor_id": 57968
-  }]
+    }
+  ]
 }
 ```
 
@@ -497,10 +503,12 @@ Plugin-specific parameters:
   "details_interval_seconds": 60,
   "graph_type": "time",
   "smoothing": false,
-  "sensors": [{
+  "sensors": [
+    {
       "tracker_id": 993495,
       "sensor_id": 1378566
-  }]
+    }
+  ]
 }
 ```
 
@@ -616,10 +624,12 @@ Plugin-specific parameters:
 
 ```json
 {
-  "sensors": [{
+  "sensors": [
+    {
       "tracker_id": 37714,
       "sensor_id": 57968
-  }]
+    }
+  ]
 }
 ```
 
@@ -636,10 +646,12 @@ Plugin-specific parameters:
   "smoothing": false,
   "show_address": false,
   "filter": true,
-  "sensors": [{
+  "sensors": [
+    {
       "tracker_id": 993495,
       "sensor_id": 1378566
-  }]
+    }
+  ]
 }
 ```
 
@@ -665,10 +677,12 @@ default **plugin_id**: 12.
 
 ```json
 {
-  "sensors": [{
+  "sensors": [
+    {
       "tracker_id": 37714,
       "sensor_id": 57968
-  }]
+    }
+  ]
 }
 ```
 
@@ -682,10 +696,12 @@ default **plugin_id**: 12.
   "min_working_period_duration": 60,
   "show_idle_percent": false,
   "filter": false,
-  "sensors": [{
+  "sensors": [
+    {
       "tracker_id": 993495,
       "sensor_id": 1378562
-  }]
+    }
+  ]
 }
 ```
 

@@ -44,8 +44,17 @@ Gets calibration data for sensor.
 
 ```json
 {
-    "success": true,
-    "value": [{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]
+  "success": true,
+  "value": [
+    {
+      "in": 0.0,
+      "out": 0.0
+    },
+    {
+      "in": 0.7,
+      "out": 60.0
+    }
+  ]
 }
 ```
 
@@ -84,7 +93,9 @@ Replaces the calibration data for a sensor.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
@@ -116,7 +127,9 @@ information about multiple sensors, user must specify which sensor number to use
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

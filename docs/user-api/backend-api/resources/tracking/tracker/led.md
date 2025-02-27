@@ -41,8 +41,8 @@ Gets LED status for the specified tracker.
 
 ```json
 {
-    "success": true,
-    "value": true
+  "success": true,
+  "value": true
 }
 ```
 
@@ -85,7 +85,9 @@ Switches LED state for a specified tracker.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors

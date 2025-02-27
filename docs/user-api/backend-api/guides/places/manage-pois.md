@@ -56,54 +56,54 @@ The platform will confirm the update with:
 
 ```json
 {
-    "success": true,
-    "list": [
-        {
-            "id": 2327,
-            "label": "E-mail",
-            "required": false,
-            "description": "Customer's email",
-            "type": "email"
-        },
-        {
-            "id": 2328,
-            "label": "Phone",
-            "required": false,
-            "description": "Customer's phone",
-            "type": "phone"
-        },
-        {
-            "id": 2329,
-            "label": "The last visit date",
-            "required": false,
-            "description": null,
-            "type": "text"
-        },
-        {
-            "id": 2330,
-            "label": "The last order №",
-            "required": false,
-            "description": null,
-            "type": "text"
-        },
-        {
-            "id": 2331,
-            "label": "The last visit result",
-            "required": false,
-            "description": null,
-            "type": "text"
-        },
-        {
-            "id": 2332,
-            "label": "Responsible employee",
-            "required": false,
-            "description": null,
-            "params": {
-                "responsible": true
-            },
-            "type": "employee"
-        }
-    ]
+  "success": true,
+  "list": [
+    {
+      "id": 2327,
+      "label": "E-mail",
+      "required": false,
+      "description": "Customer's email",
+      "type": "email"
+    },
+    {
+      "id": 2328,
+      "label": "Phone",
+      "required": false,
+      "description": "Customer's phone",
+      "type": "phone"
+    },
+    {
+      "id": 2329,
+      "label": "The last visit date",
+      "required": false,
+      "description": null,
+      "type": "text"
+    },
+    {
+      "id": 2330,
+      "label": "The last order №",
+      "required": false,
+      "description": null,
+      "type": "text"
+    },
+    {
+      "id": 2331,
+      "label": "The last visit result",
+      "required": false,
+      "description": null,
+      "type": "text"
+    },
+    {
+      "id": 2332,
+      "label": "Responsible employee",
+      "required": false,
+      "description": null,
+      "params": {
+        "responsible": true
+      },
+      "type": "employee"
+    }
+  ]
 }
 ```
 

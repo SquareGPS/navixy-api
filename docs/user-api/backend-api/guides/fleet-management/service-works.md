@@ -63,8 +63,8 @@ The platform will respond with:
 
 ```json
 {
-    "success": true,
-    "id": 96175
+  "success": true,
+  "id": 96175
 }
 ```
 
@@ -140,7 +140,7 @@ The platform will respond with the ID of the created service work:
 
 ```json
 {
-    "success": true,
-    "id": 42401
+  "success": true,
+  "id": 42401
 }
 ```

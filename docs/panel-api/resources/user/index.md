@@ -16,37 +16,37 @@ This page describes the User object and the API actions that can be performed wi
 The User object structure defines the attributes and details of a user account within the Navixy platform, including personal information, contact details, legal identifiers, and account-specific data like balance.
 
 ```json
-{ 
-    "dealer_id": 5001,
-    "activated": true,
-    "verified": true,
-    "login": "user@test.com",
-    "first_name": "John",
-    "middle_name": "William",
-    "last_name": "Smith",
-    "legal_name": "ABC Inc.",
-    "legal_type": "legal_entity",
-    "phone": "2135551234",
-    "post_country": "United States",
-    "post_index": "90001",
-    "post_region": "California",
-    "post_city": "Los Angeles", 
-    "post_street_address": "1234 Sunset Blvd",
-    "registered_country": "United States",
-    "registered_index": "90001",
-    "registered_region": "California",
-    "registered_city": "Los Angeles",
-    "registered_street_address": "1234 Sunset Blvd",
-    "state_reg_num": "12-3456789",
-    "tin": "1131145180",
-    "okpo_code": "93281776",
-    "iec": "773101001",
-    "id": 38935,
-    "balance": 10.01,
-    "bonus": 0,
-    "creation_date": "2021-03-01 13:00:00",
-    "trackers_count": 10,
-    "comment": "about user"
+{
+  "dealer_id": 5001,
+  "activated": true,
+  "verified": true,
+  "login": "user@test.com",
+  "first_name": "John",
+  "middle_name": "William",
+  "last_name": "Smith",
+  "legal_name": "ABC Inc.",
+  "legal_type": "legal_entity",
+  "phone": "2135551234",
+  "post_country": "United States",
+  "post_index": "90001",
+  "post_region": "California",
+  "post_city": "Los Angeles",
+  "post_street_address": "1234 Sunset Blvd",
+  "registered_country": "United States",
+  "registered_index": "90001",
+  "registered_region": "California",
+  "registered_city": "Los Angeles",
+  "registered_street_address": "1234 Sunset Blvd",
+  "state_reg_num": "12-3456789",
+  "tin": "1131145180",
+  "okpo_code": "93281776",
+  "iec": "773101001",
+  "id": 38935,
+  "balance": 10.01,
+  "bonus": 0,
+  "creation_date": "2021-03-01 13:00:00",
+  "trackers_count": 10,
+  "comment": "about user"
 }
 ```
 
@@ -90,10 +90,10 @@ The discount object structure defines a discount applied to a user's account bas
 
 ```json
 {
-    "value": 5.5,
-    "min_trackers": 10,
-    "end_date": "2021-03-01",
-    "strategy": "sum_with_progressive"
+  "value": 5.5,
+  "min_trackers": 10,
+  "end_date": "2021-03-01",
+  "strategy": "sum_with_progressive"
 }
 ```
 
@@ -181,8 +181,8 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 ```json
 {
-    "success": true, 
-    "id" : 15534
+  "success": true,
+  "id": 15534
 }
 ```
 
@@ -224,46 +224,46 @@ Returns user info by its id.
 #### Response
 ```json
 {
-    "success": true,
-    "value": { 
-        "dealer_id": 5001,
-        "activated": true,
-        "verified": true,
-        "login": "user@test.com",
-        "first_name": "John",
-        "middle_name": "William",
-        "last_name": "Smith",
-        "legal_name": "ABC Inc.",
-        "legal_type": "legal_entity",
-        "phone": "3231234567",
-        "post_country": "USA",
-        "post_index": "90001",
-        "post_region": "California",
-        "post_city": "Los Angeles", 
-        "post_street_address": "123 Main St",
-        "registered_country": "USA",
-        "registered_index": "90001",
-        "registered_region": "California",
-        "registered_city": "Los Angeles",
-        "registered_street_address": "123 Main St",
-        "state_reg_num": "12-3456789",
-        "tin": "1131145180",
-        "okpo_code": "93281776",
-        "iec": "773101001",
-        "id": 38935,
-        "balance": 10.01,
-        "bonus": 0,
-        "creation_date": "2021-03-01 13:00:00",
-        "trackers_count": 10,
-        "comment": "about user"
-    },
-    "discount": {
-        "value": 5.5,
-        "min_trackers": 10,
-        "end_date": "2021-03-01",
-        "strategy": "sum_with_progressive"
-    },
-    "default_tariff_id": 123
+  "success": true,
+  "value": {
+    "dealer_id": 5001,
+    "activated": true,
+    "verified": true,
+    "login": "user@test.com",
+    "first_name": "John",
+    "middle_name": "William",
+    "last_name": "Smith",
+    "legal_name": "ABC Inc.",
+    "legal_type": "legal_entity",
+    "phone": "3231234567",
+    "post_country": "USA",
+    "post_index": "90001",
+    "post_region": "California",
+    "post_city": "Los Angeles",
+    "post_street_address": "123 Main St",
+    "registered_country": "USA",
+    "registered_index": "90001",
+    "registered_region": "California",
+    "registered_city": "Los Angeles",
+    "registered_street_address": "123 Main St",
+    "state_reg_num": "12-3456789",
+    "tin": "1131145180",
+    "okpo_code": "93281776",
+    "iec": "773101001",
+    "id": 38935,
+    "balance": 10.01,
+    "bonus": 0,
+    "creation_date": "2021-03-01 13:00:00",
+    "trackers_count": 10,
+    "comment": "about user"
+  },
+  "discount": {
+    "value": 5.5,
+    "min_trackers": 10,
+    "end_date": "2021-03-01",
+    "strategy": "sum_with_progressive"
+  },
+  "default_tariff_id": 123
 }
 ```
 
@@ -344,7 +344,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/user/update' \
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -383,7 +383,7 @@ Changes password of a user.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -420,7 +420,7 @@ Marks user and its sub users and trackers as deleted and corrupt all user tracke
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 
@@ -432,11 +432,11 @@ Marks user and its sub users and trackers as deleted and corrupt all user tracke
 
 ```json
 {
-    "success": false,
-    "status": {
-        "code": 253,
-        "description": "Device has clones"
-    }
+  "success": false,
+  "status": {
+    "code": 253,
+    "description": "Device has clones"
+  }
 }
 ```
 
@@ -499,65 +499,69 @@ Most error responses include `row_number` - the line number in the file where th
 * 206 – Login already in use – if this email already registered.
 ```json
 {
-  "row_number" : 2,
-  "status" : {
-    "code" : 206,
-    "description" : "Login already in use"
+  "row_number": 2,
+  "status": {
+    "code": 206,
+    "description": "Login already in use"
   },
-  "success" : false
+  "success": false
 }
 ```
 * 273 – Duplicate login in source file.
 ```json
 {
-  "row_number" : 4,
-  "status" : {
-    "code" : 273,
-    "description" : "Duplicate login"
+  "row_number": 4,
+  "status": {
+    "code": 273,
+    "description": "Duplicate login"
   },
-  "success" : false
+  "success": false
 }
 ```
 * 274 – Empty data file. No rows to load were found in the source file.
 ```json
 {
-  "status" : {
-    "code" : 274,
-    "description" : "Empty data file"
+  "status": {
+    "code": 274,
+    "description": "Empty data file"
   },
-  "success" : false
+  "success": false
 }
 ```
 * 7 – Invalid parameters. Required columns not found or there has data validation errors.
 ```json
 {
-  "errors" : [ {
-    "error" : "required column not found",
-    "parameter" : "users_import.password"
-  }, {
-    "error" : "required column not found",
-    "parameter" : "users_import.email"
-  } ],
-  "row_number" : 1,
-  "status" : {
-    "code" : 7,
-    "description" : "Invalid parameters"
+  "errors": [
+    {
+      "error": "required column not found",
+      "parameter": "users_import.password"
+    }, {
+      "error": "required column not found",
+      "parameter": "users_import.email"
+    }
+  ],
+  "row_number": 1,
+  "status": {
+    "code": 7,
+    "description": "Invalid parameters"
   },
-  "success" : false
+  "success": false
 }
 ```
 ```json
 {
-  "errors" : [ {
-    "error" : "E-mail must be valid",
-    "parameter" : "user.login"
-  } ],
-  "row_number" : 2,
-  "status" : {
-    "code" : 7,
-    "description" : "Invalid parameters"
+  "errors": [
+    {
+      "error": "E-mail must be valid",
+      "parameter": "user.login"
+    }
+  ],
+  "row_number": 2,
+  "status": {
+    "code": 7,
+    "description": "Invalid parameters"
   },
-  "success" : false
+  "success": false
 }
 ```
 
@@ -603,40 +607,42 @@ If the `filter` parameter is used (i.e., it is passed, it is not empty, and it d
 
 ```json
 {
-    "success": true,
-    "list": [{
-        "dealer_id": 5001,
-        "activated": true,
-        "verified": true,
-        "login": "user@test.com",
-        "first_name": "John",
-        "middle_name": "William",
-        "last_name": "Smith",
-        "legal_name": "ABC Inc.",
-        "legal_type": "legal_entity",
-        "phone": "3231234567",
-        "post_country": "USA",
-        "post_index": "90001",
-        "post_region": "California",
-        "post_city": "Los Angeles",
-        "post_street_address": "123 Main St",
-        "registered_country": "USA",
-        "registered_index": "90001",
-        "registered_region": "California",
-        "registered_city": "Los Angeles",
-        "registered_street_address": "123 Main St",
-        "state_reg_num": "12-3456789",
-        "tin": "1131145180",
-        "okpo_code": "93281776",
-        "iec": "773101001",
-        "id": 38935,
-        "balance": 10.01,
-        "bonus": 0,
-        "creation_date": "2021-03-01 13:00:00",
-        "trackers_count": 10,
-        "comment": "about user"
-    }],
-    "count": 1
+  "success": true,
+  "list": [
+    {
+      "dealer_id": 5001,
+      "activated": true,
+      "verified": true,
+      "login": "user@test.com",
+      "first_name": "John",
+      "middle_name": "William",
+      "last_name": "Smith",
+      "legal_name": "ABC Inc.",
+      "legal_type": "legal_entity",
+      "phone": "3231234567",
+      "post_country": "USA",
+      "post_index": "90001",
+      "post_region": "California",
+      "post_city": "Los Angeles",
+      "post_street_address": "123 Main St",
+      "registered_country": "USA",
+      "registered_index": "90001",
+      "registered_region": "California",
+      "registered_city": "Los Angeles",
+      "registered_street_address": "123 Main St",
+      "state_reg_num": "12-3456789",
+      "tin": "1131145180",
+      "okpo_code": "93281776",
+      "iec": "773101001",
+      "id": 38935,
+      "balance": 10.01,
+      "bonus": 0,
+      "creation_date": "2021-03-01 13:00:00",
+      "trackers_count": 10,
+      "comment": "about user"
+    }
+  ],
+  "count": 1
 }
 ```
 
@@ -735,8 +741,8 @@ user_sessions: "global" - Optional. Allows sessions of users creation, not only 
 
 ```json
 {
-    "success": true,
-    "hash" : "a2caa32267f028bd41b982980467132c"
+  "success": true,
+  "hash": "a2caa32267f028bd41b982980467132c"
 }
 ```
 
@@ -776,22 +782,24 @@ Gets list of user's billing transactions for the specified period. Same as [/tra
 
 ```json
 {
-  "success": true, 
-  "list": [{
-    "description": "Recharge bonus balance during tracker registration",
-    "type": "bonus_charge",
-    "subtype": "register",
-    "timestamp": "2021-01-28 08:16:40",
-    "user_id": 12203,
-    "dealer_id": 5001,
-    "tracker_id": 303126,
-    "amount": -10.0000,
-    "new_balance": 800.0000,
-    "old_balance": 810.0000,
-    "bonus_amount": 10.0000,
-    "new_bonus": 10.0000,
-    "old_bonus": 0.0000
-  }]
+  "success": true,
+  "list": [
+    {
+      "description": "Recharge bonus balance during tracker registration",
+      "type": "bonus_charge",
+      "subtype": "register",
+      "timestamp": "2021-01-28 08:16:40",
+      "user_id": 12203,
+      "dealer_id": 5001,
+      "tracker_id": 303126,
+      "amount": -10.0000,
+      "new_balance": 800.0000,
+      "old_balance": 810.0000,
+      "bonus_amount": 10.0000,
+      "new_bonus": 10.0000,
+      "old_bonus": 0.0000
+    }
+  ]
 }
 ```
 
@@ -845,7 +853,7 @@ New balance (bonus) must be not negative.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

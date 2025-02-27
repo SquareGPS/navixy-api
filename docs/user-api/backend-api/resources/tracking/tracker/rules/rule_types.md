@@ -1385,15 +1385,16 @@ A rule that triggers when value of a chosen measurement sensor gets into or out 
 Example:
 ```json
 {
-  "tracker_params": [{
-    "tracker_id": 10181445,
-    "trigger_value": "1",
-    "state_field": "ble_magnet_sensor_3"
-  }, {
-    "tracker_id": 10181446,
-    "trigger_value": "1",
-    "virtual_sensor_id": 21212
-  }
+  "tracker_params": [
+    {
+      "tracker_id": 10181445,
+      "trigger_value": "1",
+      "state_field": "ble_magnet_sensor_3"
+    }, {
+      "tracker_id": 10181446,
+      "trigger_value": "1",
+      "virtual_sensor_id": 21212
+    }
   ]
 }
 ```
@@ -1431,15 +1432,16 @@ A rule that triggers when specified value of a chosen state field sensor detecte
 
 ```json
 {
-  "tracker_params": [{
-    "tracker_id": 10181445,
-    "trigger_value": "1",
-    "state_field": "ble_magnet_sensor_3"
-  }, {
-    "tracker_id": 10181446,
-    "trigger_value": "1",
-    "virtual_sensor_id": 21212
-  }
+  "tracker_params": [
+    {
+      "tracker_id": 10181445,
+      "trigger_value": "1",
+      "state_field": "ble_magnet_sensor_3"
+    }, {
+      "tracker_id": 10181446,
+      "trigger_value": "1",
+      "virtual_sensor_id": 21212
+    }
   ]
 }
 ```

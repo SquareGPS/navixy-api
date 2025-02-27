@@ -90,7 +90,8 @@ the server will send a new state in the [event message](events.md#state-event).
         1701975
       ],
       "format": "compact"
-    }]
+    }
+  ]
 }
 ```
 
@@ -249,15 +250,15 @@ Error response sample:
 
 ```json
 {
-    "type": "error",
-    "action": "subscription/subscribe",
-    "status": {
-        "code": 3,
-        "description": "Wrong hash"
-    },
-    "data": {
-        "events": ["state"],
-        "trackers": [15564]
-    }
+  "type": "error",
+  "action": "subscription/subscribe",
+  "status": {
+    "code": 3,
+    "description": "Wrong hash"
+  },
+  "data": {
+    "events": ["state"],
+    "trackers": [15564]
+  }
 }
 ```

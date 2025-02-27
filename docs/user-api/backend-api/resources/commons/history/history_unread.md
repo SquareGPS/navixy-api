@@ -45,36 +45,38 @@ Default and max limit is [history.maxLimit](../dealer.md).
 
 ```json
 {
-    "success": true,
-    "list": [{
-         "id": 1,
-         "type": "tracker",
-         "is_read": false,
-         "message": "Alarm",
-         "time": "2020-01-01 00:00:00",
-         "event": "offline",
-         "tracker_id": 2,
-         "rule_id": 3,
-         "track_id": 4,
-         "location":{ 
-             "lat": 50.0,
-             "lng": 60.0,
-             "precision": 50
-         },
-         "address": "address",
-         "extra": {
-             "task_id": null , 
-             "parent_task_id": null,
-             "counter_id": null,
-             "service_task_id": null,
-             "checkin_id": null,
-             "place_ids": null,
-             "last_known_location": false,
-             "tracker_label": "Tracker label",
-             "emergency": false,
-             "employee_id": 4563
-         }
-    }]
+  "success": true,
+  "list": [
+    {
+      "id": 1,
+      "type": "tracker",
+      "is_read": false,
+      "message": "Alarm",
+      "time": "2020-01-01 00:00:00",
+      "event": "offline",
+      "tracker_id": 2,
+      "rule_id": 3,
+      "track_id": 4,
+      "location": {
+        "lat": 50.0,
+        "lng": 60.0,
+        "precision": 50
+      },
+      "address": "address",
+      "extra": {
+        "task_id": null,
+        "parent_task_id": null,
+        "counter_id": null,
+        "service_task_id": null,
+        "checkin_id": null,
+        "place_ids": null,
+        "last_known_location": false,
+        "tracker_label": "Tracker label",
+        "emergency": false,
+        "employee_id": 4563
+      }
+    }
+  ]
 }
 ```
 
@@ -116,8 +118,8 @@ Get count of user's unread history messages starting `from` date.
 
 ```json
 {
-    "success": true,
-    "count": 1
+  "success": true,
+  "count": 1
 }
 ```
 

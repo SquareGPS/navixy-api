@@ -269,7 +269,7 @@ Note: wallpapers, logos and favicons cannot be edited here.
 
 ```json
 {
-    "success": true
+  "success": true
 }
 ```
 

@@ -44,7 +44,9 @@ Assigns a working status list (or remove assignment) to the tracker.
 #### Response
 
 ```json
-{ "success": true }
+{
+  "success": true
+}
 ```
 
 #### Errors
