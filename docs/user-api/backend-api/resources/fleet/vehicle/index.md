@@ -95,7 +95,8 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 * `avatar_file_name` - string. File name.
 * `tags` - int array. List of tag IDs.
 
-???+ example "Subtypes:"
+???+ abstract "Subtypes:"
+
     ```
         Type: "car"
         Subtypes: "sedan", "universal", "hatchback", "liftback", "limousine", "pickup", "minivan", "coupe", "coupe4d", "muscle", "convertible", "phaeton", "lando", "crossover", "roadster", "suv"

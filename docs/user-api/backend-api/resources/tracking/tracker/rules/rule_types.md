@@ -401,67 +401,68 @@ Autocontrol related tracked rules like alarm, battery, doors and others. Based o
 | append_zone_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone_limit_inverted param set to `true`. | boolean     |
 
 ???+ example "Map of sub-rules settings"
-```json
-{
-  "alarmcontrol": {
-    "enabled": true,
-    "sms": false,
-    "call": false,
-    "email": true,
-    "push": true,
-    "always_notify": false
-  },
-  "battery_off": {
-    "enabled": true,
-    "sms": true,
-    "call": false,
-    "email": true,
-    "push": true
-  },
-  "door_alarm": {
-    "enabled": true,
-    "sms": false,
-    "call": false,
-    "email": true,
-    "push": true
-  },
-  "hood_alarm": {
-    "enabled": true,
-    "sms": false,
-    "call": false,
-    "email": true,
-    "push": true
-  },
-  "ignition": {
-    "enabled": true,
-    "sms": false,
-    "call": false,
-    "email": true,
-    "push": true
-  },
-  "parking": {
-    "enabled": true,
-    "sms": false,
-    "call": false,
-    "email": true,
-    "push": true
-  },
-  "gsm_damp": {
-    "enabled": true,
-    "sms": false,
-    "call": false,
-    "email": true,
-    "push": true
-  },
-  "security_control": {
-    "enabled": true,
-    "sms": false,
-    "call": false,
-    "email": true,
-    "push": true
-  }
-}
-```
+
+    ```json
+    {
+      "alarmcontrol": {
+        "enabled": true,
+        "sms": false,
+        "call": false,
+        "email": true,
+        "push": true,
+        "always_notify": false
+      },
+      "battery_off": {
+        "enabled": true,
+        "sms": true,
+        "call": false,
+        "email": true,
+        "push": true
+      },
+      "door_alarm": {
+        "enabled": true,
+        "sms": false,
+        "call": false,
+        "email": true,
+        "push": true
+      },
+      "hood_alarm": {
+        "enabled": true,
+        "sms": false,
+        "call": false,
+        "email": true,
+        "push": true
+      },
+      "ignition": {
+        "enabled": true,
+        "sms": false,
+        "call": false,
+        "email": true,
+        "push": true
+      },
+      "parking": {
+        "enabled": true,
+        "sms": false,
+        "call": false,
+        "email": true,
+        "push": true
+      },
+      "gsm_damp": {
+        "enabled": true,
+        "sms": false,
+        "call": false,
+        "email": true,
+        "push": true
+      },
+      "security_control": {
+        "enabled": true,
+        "sms": false,
+        "call": false,
+        "email": true,
+        "push": true
+      }
+    }
+    ```
 
 
 ### Car crash
