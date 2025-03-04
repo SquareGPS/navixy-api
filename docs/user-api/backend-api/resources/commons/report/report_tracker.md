@@ -303,7 +303,7 @@ Retrieves a generated report as JSON.
 
 #### Response
 
-???+ example "Response"
+??? example "Response"
 
     ```json
     {

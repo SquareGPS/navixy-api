@@ -58,7 +58,7 @@ API request:
 
 You will receive the report in JSON format:
 
-???+ example "Response"
+??? example "Response"
 
     ```json
     {

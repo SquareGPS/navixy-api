@@ -14,8 +14,10 @@ API call to get all sensor inputs and state fields existing in the system and th
 
 ### `list`
 
-This will provide descriptions of all sensor inputs and state fields present in the system. These descriptions will be 
-given in the language according to the user's locale.
+This will provide translations of all sensor inputs and state fields present in the system. 
+These translations (field `description` in response) will be given in the language according to the user's locale.
+For state fields, the value type and descriptions (translations) of possible values are also provided if available.
+
 
 #### Parameters
 
@@ -45,2189 +47,2025 @@ For every input following properties returned: `input_name` and `description`.
 
 `description` is made in current user's language (according to [locale settings](../../../commons/user/settings/index.md)).
 
-???+ example "Response"
+??? example "Response"
 
     ```json
     {
-    "success": true,
-    "list": [
+      "list": [
         {
-            "input_name": "acceleration",
-            "description": "Acceleration"
+          "input_name": "acceleration",
+          "description": "Acceleration"
         },
         {
-            "input_name": "analog_1",
-            "description": "Analog sensor #1"
+          "input_name": "air_pressure",
+          "description": "Air pressure"
         },
         {
-            "input_name": "analog_2",
-            "description": "Analog sensor #2"
+          "input_name": "alt_large_assign",
+          "description": "ALT large assign [N]"
         },
         {
-            "input_name": "analog_3",
-            "description": "Analog sensor #3"
+          "input_name": "alt_medium_assign",
+          "description": "ALT medium assign [N]"
         },
         {
-            "input_name": "analog_4",
-            "description": "Analog sensor #4"
+          "input_name": "alt_small_assign",
+          "description": "ALT small assign [N]"
         },
         {
-            "input_name": "analog_5",
-            "description": "Analog sensor #5"
+          "input_name": "analog",
+          "description": "Analog sensor [N]"
         },
         {
-            "input_name": "analog_6",
-            "description": "Analog sensor #6"
+          "input_name": "avl_io",
+          "description": "AVL IO [N]"
         },
         {
-            "input_name": "analog_7",
-            "description": "Analog sensor #7"
+          "input_name": "axis_x",
+          "description": "Acceleration by X axis"
         },
         {
-            "input_name": "analog_8",
-            "description": "Analog sensor #8"
+          "input_name": "axis_y",
+          "description": "Acceleration by Y axis"
         },
         {
-            "input_name": "axis_x",
-            "description": "Acceleration by X axis"
+          "input_name": "axis_z",
+          "description": "Acceleration by Z axis"
         },
         {
-            "input_name": "axis_y",
-            "description": "Acceleration by Y axis"
+          "input_name": "battery_current",
+          "description": "Battery current"
         },
         {
-            "input_name": "axis_z",
-            "description": "Acceleration by Z axis"
+          "input_name": "battery_level",
+          "description": "Battery level"
         },
         {
-            "input_name": "battery_current",
-            "description": "Battery current"
+          "input_name": "battery_level_of",
+          "description": "Battery level [N]"
         },
         {
-            "input_name": "battery_level",
-            "description": "Battery level"
+          "input_name": "battery_voltage",
+          "description": "Battery voltage"
         },
         {
-            "input_name": "battery_voltage",
-            "description": "Battery voltage"
+          "input_name": "ble_analog",
+          "description": "BLE: Analog [N]"
         },
         {
-            "input_name": "ble_battery_level_1",
-            "description": "BLE: Battery level #1"
+          "input_name": "ble_battery_level",
+          "description": "BLE: Battery level [N]"
         },
         {
-            "input_name": "ble_battery_level_10",
-            "description": "BLE: Battery level #10"
+          "input_name": "ble_battery_voltage",
+          "description": "BLE: Battery voltage [N]"
         },
         {
-            "input_name": "ble_battery_level_11",
-            "description": "BLE: Battery level #11"
+          "input_name": "ble_frequency",
+          "description": "BLE: LLS frequency [N]"
         },
         {
-            "input_name": "ble_battery_level_12",
-            "description": "BLE: Battery level #12"
+          "input_name": "ble_humidity",
+          "description": "BLE: Humidity sensor [N]"
         },
         {
-            "input_name": "ble_battery_level_13",
-            "description": "BLE: Battery level #13"
+          "input_name": "ble_input_status",
+          "description": "BLE: Input status [N]"
         },
         {
-            "input_name": "ble_battery_level_14",
-            "description": "BLE: Battery level #14"
+          "input_name": "ble_lls_height",
+          "description": "BLE: LLS height [N]"
         },
         {
-            "input_name": "ble_battery_level_15",
-            "description": "BLE: Battery level #15"
+          "input_name": "ble_lls_level",
+          "description": "BLE: LLS level [N]"
         },
         {
-            "input_name": "ble_battery_level_16",
-            "description": "BLE: Battery level #16"
+          "input_name": "ble_lls_level_raw",
+          "description": "BLE: LLS level raw [N]"
         },
         {
-            "input_name": "ble_battery_level_2",
-            "description": "BLE: Battery level #2"
+          "input_name": "ble_lls_pressure",
+          "description": "BLE: LLS pressure [N]"
         },
         {
-            "input_name": "ble_battery_level_3",
-            "description": "BLE: Battery level #3"
+          "input_name": "ble_lls_temperature",
+          "description": "BLE: LLS temperature [N]"
         },
         {
-            "input_name": "ble_battery_level_4",
-            "description": "BLE: Battery level #4"
+          "input_name": "ble_luminosity",
+          "description": "BLE: Luminosity [N]"
         },
         {
-            "input_name": "ble_battery_level_5",
-            "description": "BLE: Battery level #5"
+          "input_name": "ble_output_status",
+          "description": "BLE: Output status [N]"
         },
         {
-            "input_name": "ble_battery_level_6",
-            "description": "BLE: Battery level #6"
+          "input_name": "ble_pitch",
+          "description": "BLE: Pitch angle [N]"
         },
         {
-            "input_name": "ble_battery_level_7",
-            "description": "BLE: Battery level #7"
+          "input_name": "ble_roll",
+          "description": "BLE: Roll angle [N]"
         },
         {
-            "input_name": "ble_battery_level_8",
-            "description": "BLE: Battery level #8"
+          "input_name": "ble_signal_strength",
+          "description": "BLE: Signal strength [N]"
         },
         {
-            "input_name": "ble_battery_level_9",
-            "description": "BLE: Battery level #9"
+          "input_name": "ble_temp_sensor",
+          "description": "BLE: Temperature sensor [N]"
         },
         {
-            "input_name": "ble_battery_voltage_1",
-            "description": "BLE: Battery voltage #1"
+          "input_name": "ble_tire_pressure",
+          "description": "BLE: Tire pressure [N]"
         },
         {
-            "input_name": "ble_battery_voltage_10",
-            "description": "BLE: Battery voltage #10"
+          "input_name": "ble_tire_temperature",
+          "description": "BLE: Tire air temperature [N]"
         },
         {
-            "input_name": "ble_battery_voltage_11",
-            "description": "BLE: Battery voltage #11"
+          "input_name": "ble_user_data",
+          "description": "BLE: Custom user data [N]"
         },
         {
-            "input_name": "ble_battery_voltage_12",
-            "description": "BLE: Battery voltage #12"
+          "input_name": "board_voltage",
+          "description": "Board voltage"
         },
         {
-            "input_name": "ble_battery_voltage_13",
-            "description": "BLE: Battery voltage #13"
+          "input_name": "braking",
+          "description": "Braking"
         },
         {
-            "input_name": "ble_battery_voltage_14",
-            "description": "BLE: Battery voltage #14"
+          "input_name": "calamp_accum",
+          "description": "CalAmp Accumulator [N]"
         },
         {
-            "input_name": "ble_battery_voltage_15",
-            "description": "BLE: Battery voltage #15"
+          "input_name": "can_16bit_r",
+          "description": "CAN16BITR [N]"
         },
         {
-            "input_name": "ble_battery_voltage_16",
-            "description": "BLE: Battery voltage #16"
+          "input_name": "can_32bit_r",
+          "description": "CAN32BITR [N]"
         },
         {
-            "input_name": "ble_battery_voltage_2",
-            "description": "BLE: Battery voltage #2"
+          "input_name": "can_8bit_r",
+          "description": "CAN8BITR [N]"
         },
         {
-            "input_name": "ble_battery_voltage_3",
-            "description": "BLE: Battery voltage #3"
+          "input_name": "can_adblue_level",
+          "description": "CAN: Level of AdBlue fluid"
         },
         {
-            "input_name": "ble_battery_voltage_4",
-            "description": "BLE: Battery voltage #4"
+          "input_name": "can_alternator_current",
+          "description": "CAN: Alternator current"
         },
         {
-            "input_name": "ble_battery_voltage_5",
-            "description": "BLE: Battery voltage #5"
+          "input_name": "can_alternator_voltage",
+          "description": "CAN: Alternator voltage"
         },
         {
-            "input_name": "ble_battery_voltage_6",
-            "description": "BLE: Battery voltage #6"
+          "input_name": "can_ambient_air_temp",
+          "description": "CAN: Ambient air temperature"
         },
         {
-            "input_name": "ble_battery_voltage_7",
-            "description": "BLE: Battery voltage #7"
+          "input_name": "can_avg_fuel_economy",
+          "description": "CAN: Average fuel economy"
         },
         {
-            "input_name": "ble_battery_voltage_8",
-            "description": "BLE: Battery voltage #8"
+          "input_name": "can_axle_load",
+          "description": "CAN: Axle load [N]"
         },
         {
-            "input_name": "ble_battery_voltage_9",
-            "description": "BLE: Battery voltage #9"
+          "input_name": "can_barometric_pressure",
+          "description": "CAN: Barometric pressure"
         },
         {
-            "input_name": "ble_humidity_1",
-            "description": "BLE: Humidity sensor #1"
+          "input_name": "can_battery_level",
+          "description": "CAN: Battery level (SoC)"
         },
         {
-            "input_name": "ble_humidity_10",
-            "description": "BLE: Humidity sensor #10"
+          "input_name": "can_battery_potential",
+          "description": "CAN: Battery potential"
         },
         {
-            "input_name": "ble_humidity_11",
-            "description": "BLE: Humidity sensor #11"
+          "input_name": "can_battery_temperature",
+          "description": "CAN: Battery temperature"
         },
         {
-            "input_name": "ble_humidity_12",
-            "description": "BLE: Humidity sensor #12"
+          "input_name": "can_battery_voltage",
+          "description": "CAN: Battery voltage"
         },
         {
-            "input_name": "ble_humidity_13",
-            "description": "BLE: Humidity sensor #13"
+          "input_name": "can_bellow_press_front_left",
+          "description": "CAN: Bellow pressure front left"
         },
         {
-            "input_name": "ble_humidity_14",
-            "description": "BLE: Humidity sensor #14"
+          "input_name": "can_bellow_press_front_right",
+          "description": "CAN: Bellow pressure front right"
         },
         {
-            "input_name": "ble_humidity_15",
-            "description": "BLE: Humidity sensor #15"
+          "input_name": "can_bellow_press_rear_left",
+          "description": "CAN: Bellow pressure rear left"
         },
         {
-            "input_name": "ble_humidity_16",
-            "description": "BLE: Humidity sensor #16"
+          "input_name": "can_bellow_press_rear_right",
+          "description": "CAN: Bellow pressure rear right"
         },
         {
-            "input_name": "ble_humidity_2",
-            "description": "BLE: Humidity sensor #2"
+          "input_name": "can_brake_pedal_position",
+          "description": "CAN: Brake pedal position"
         },
         {
-            "input_name": "ble_humidity_3",
-            "description": "BLE: Humidity sensor #3"
+          "input_name": "can_cab_interior_temp",
+          "description": "CAN: Cab interior temperature"
         },
         {
-            "input_name": "ble_humidity_4",
-            "description": "BLE: Humidity sensor #4"
+          "input_name": "can_cargo_ambient_temp",
+          "description": "CAN: Cargo ambient temperature"
         },
         {
-            "input_name": "ble_humidity_5",
-            "description": "BLE: Humidity sensor #5"
+          "input_name": "can_charging_system_voltage",
+          "description": "CAN: Charging system potential (voltage)"
         },
         {
-            "input_name": "ble_humidity_6",
-            "description": "BLE: Humidity sensor #6"
+          "input_name": "can_consumption",
+          "description": "CAN: Total fuel used"
         },
         {
-            "input_name": "ble_humidity_7",
-            "description": "BLE: Humidity sensor #7"
+          "input_name": "can_consumption_relative",
+          "description": "CAN: Fuel consumed (counter)"
         },
         {
-            "input_name": "ble_humidity_8",
-            "description": "BLE: Humidity sensor #8"
+          "input_name": "can_coolant_level",
+          "description": "CAN: Coolant level"
         },
         {
-            "input_name": "ble_humidity_9",
-            "description": "BLE: Humidity sensor #9"
+          "input_name": "can_coolant_t",
+          "description": "CAN: Coolant temperature"
         },
         {
-            "input_name": "ble_lls_level_1",
-            "description": "BLE: LLS #1 level"
+          "input_name": "can_e_battery_health",
+          "description": "CAN: Battery health (SoH)"
         },
         {
-            "input_name": "ble_lls_level_10",
-            "description": "BLE: LLS #10 level"
+          "input_name": "can_e_charger_current",
+          "description": "CAN: Charger current"
         },
         {
-            "input_name": "ble_lls_level_2",
-            "description": "BLE: LLS #2 level"
+          "input_name": "can_e_charger_current_actual",
+          "description": "CAN: Charger current actual"
         },
         {
-            "input_name": "ble_lls_level_3",
-            "description": "BLE: LLS #3 level"
+          "input_name": "can_e_charger_energy",
+          "description": "CAN: Charger energy"
         },
         {
-            "input_name": "ble_lls_level_4",
-            "description": "BLE: LLS #4 level"
+          "input_name": "can_e_charger_voltage",
+          "description": "CAN: Charger voltage"
         },
         {
-            "input_name": "ble_lls_level_5",
-            "description": "BLE: LLS #5 level"
+          "input_name": "can_e_charger_voltage_actual",
+          "description": "CAN: Charger voltage actual"
         },
         {
-            "input_name": "ble_lls_level_6",
-            "description": "BLE: LLS #6 level"
+          "input_name": "can_e_current_range",
+          "description": "CAN: Current Range"
         },
         {
-            "input_name": "ble_lls_level_7",
-            "description": "BLE: LLS #7 level"
+          "input_name": "can_e_electric_consumption",
+          "description": "CAN: Power Consumption"
         },
         {
-            "input_name": "ble_lls_level_8",
-            "description": "BLE: LLS #8 level"
+          "input_name": "can_e_full_battery_capacity",
+          "description": "CAN: Full battery capacity"
         },
         {
-            "input_name": "ble_lls_level_9",
-            "description": "BLE: LLS #9 level"
+          "input_name": "can_e_remain_battery_capacity",
+          "description": "CAN: Remaining battery capacity"
         },
         {
-            "input_name": "ble_lls_temperature_1",
-            "description": "BLE: LLS #1 temperature"
+          "input_name": "can_e_remaining_charge_time",
+          "description": "CAN: Remaining charge time"
         },
         {
-            "input_name": "ble_lls_temperature_10",
-            "description": "BLE: LLS #10 temperature"
+          "input_name": "can_eco_duration",
+          "description": "CAN: ECO duration"
         },
         {
-            "input_name": "ble_lls_temperature_2",
-            "description": "BLE: LLS #2 temperature"
+          "input_name": "can_eco_score",
+          "description": "CAN: ECO score"
         },
         {
-            "input_name": "ble_lls_temperature_3",
-            "description": "BLE: LLS #3 temperature"
+          "input_name": "can_engine_hours",
+          "description": "CAN: Engine hours"
         },
         {
-            "input_name": "ble_lls_temperature_4",
-            "description": "BLE: LLS #4 temperature"
+          "input_name": "can_engine_hours_relative",
+          "description": "CAN: Relative engine hours"
         },
         {
-            "input_name": "ble_lls_temperature_5",
-            "description": "BLE: LLS #5 temperature"
+          "input_name": "can_engine_load",
+          "description": "CAN: Engine load"
         },
         {
-            "input_name": "ble_lls_temperature_6",
-            "description": "BLE: LLS #6 temperature"
+          "input_name": "can_engine_manifold_pressure",
+          "description": "CAN: Engine intake manifold pressure"
         },
         {
-            "input_name": "ble_lls_temperature_7",
-            "description": "BLE: LLS #7 temperature"
+          "input_name": "can_engine_manifold_temp",
+          "description": "CAN: Engine intake manifold temperature"
         },
         {
-            "input_name": "ble_lls_temperature_8",
-            "description": "BLE: LLS #8 temperature"
+          "input_name": "can_engine_oil_level",
+          "description": "CAN: Engine oil level"
         },
         {
-            "input_name": "ble_lls_temperature_9",
-            "description": "BLE: LLS #9 temperature"
+          "input_name": "can_engine_percent_torque",
+          "description": "CAN: Actual engine percent torque"
         },
         {
-            "input_name": "ble_luminosity_1",
-            "description": "BLE: Luminosity #1"
+          "input_name": "can_engine_revolutions",
+          "description": "CAN: Total engine revolutions"
         },
         {
-            "input_name": "ble_luminosity_10",
-            "description": "BLE: Luminosity #10"
+          "input_name": "can_engine_temp",
+          "description": "CAN: Engine temp."
         },
         {
-            "input_name": "ble_luminosity_11",
-            "description": "BLE: Luminosity #11"
+          "input_name": "can_fuel",
+          "description": "CAN: Fuel level [N]"
         },
         {
-            "input_name": "ble_luminosity_12",
-            "description": "BLE: Luminosity #12"
+          "input_name": "can_fuel_economy",
+          "description": "CAN: Fuel economy"
         },
         {
-            "input_name": "ble_luminosity_13",
-            "description": "BLE: Luminosity #13"
+          "input_name": "can_fuel_litres",
+          "description": "CAN: Fuel (litres)"
         },
         {
-            "input_name": "ble_luminosity_14",
-            "description": "BLE: Luminosity #14"
+          "input_name": "can_fuel_rate",
+          "description": "CAN: Instant fuel rate"
         },
         {
-            "input_name": "ble_luminosity_15",
-            "description": "BLE: Luminosity #15"
+          "input_name": "can_fuel_temperature",
+          "description": "CAN: Fuel temperature"
         },
         {
-            "input_name": "ble_luminosity_16",
-            "description": "BLE: Luminosity #16"
+          "input_name": "can_gross_combo_vehicle_weight",
+          "description": "CAN: Gross combination vehicle weight"
         },
         {
-            "input_name": "ble_luminosity_2",
-            "description": "BLE: Luminosity #2"
+          "input_name": "can_idle_consumption",
+          "description": "CAN: Total fuel used in idle"
         },
         {
-            "input_name": "ble_luminosity_3",
-            "description": "BLE: Luminosity #3"
+          "input_name": "can_idle_engine_hours",
+          "description": "CAN: Idle engine hours"
         },
         {
-            "input_name": "ble_luminosity_4",
-            "description": "BLE: Luminosity #4"
+          "input_name": "can_intake_air_t",
+          "description": "CAN: Intake air temp."
         },
         {
-            "input_name": "ble_luminosity_5",
-            "description": "BLE: Luminosity #5"
+          "input_name": "can_intercooler_temperature",
+          "description": "CAN: Intercooler temperature"
         },
         {
-            "input_name": "ble_luminosity_6",
-            "description": "BLE: Luminosity #6"
+          "input_name": "can_mileage",
+          "description": "CAN: Mileage"
         },
         {
-            "input_name": "ble_luminosity_7",
-            "description": "BLE: Luminosity #7"
+          "input_name": "can_mileage_relative",
+          "description": "CAN: Relative mileage"
         },
         {
-            "input_name": "ble_luminosity_8",
-            "description": "BLE: Luminosity #8"
+          "input_name": "can_oil_pressure",
+          "description": "CAN: Engine oil pressure"
         },
         {
-            "input_name": "ble_luminosity_9",
-            "description": "BLE: Luminosity #9"
+          "input_name": "can_oil_temperature",
+          "description": "CAN: Engine oil temperature"
         },
         {
-            "input_name": "ble_signal_strength_1",
-            "description": "BLE: Signal strength #1"
+          "input_name": "can_param",
+          "description": "CAN [N]"
         },
         {
-            "input_name": "ble_signal_strength_10",
-            "description": "BLE: Signal strength #10"
+          "input_name": "can_pto_duration",
+          "description": "CAN: Total duration of PTO when stand still"
         },
         {
-            "input_name": "ble_signal_strength_11",
-            "description": "BLE: Signal strength #11"
+          "input_name": "can_pto_fuel_used",
+          "description": "CAN: Total fuel used during PTO when stand still"
         },
         {
-            "input_name": "ble_signal_strength_12",
-            "description": "BLE: Signal strength #12"
+          "input_name": "can_pto_oil_temperature",
+          "description": "CAN: PTO oil temperature"
         },
         {
-            "input_name": "ble_signal_strength_13",
-            "description": "BLE: Signal strength #13"
+          "input_name": "can_r_prefix",
+          "description": "CAN: R-prefix"
         },
         {
-            "input_name": "ble_signal_strength_14",
-            "description": "BLE: Signal strength #14"
+          "input_name": "can_road_surface_temp",
+          "description": "CAN: Road surface temperature"
         },
         {
-            "input_name": "ble_signal_strength_15",
-            "description": "BLE: Signal strength #15"
+          "input_name": "can_rpm",
+          "description": "CAN: RPM"
         },
         {
-            "input_name": "ble_signal_strength_16",
-            "description": "BLE: Signal strength #16"
+          "input_name": "can_service_brake_pressure",
+          "description": "CAN: The pneumatic pressure in the service brake circuit or reservoir [N]"
         },
         {
-            "input_name": "ble_signal_strength_2",
-            "description": "BLE: Signal strength #2"
+          "input_name": "can_service_distance",
+          "description": "CAN: Service distance"
         },
         {
-            "input_name": "ble_signal_strength_3",
-            "description": "BLE: Signal strength #3"
+          "input_name": "can_sli_battery_net_current",
+          "description": "CAN: SLI battery net current [N]"
         },
         {
-            "input_name": "ble_signal_strength_4",
-            "description": "BLE: Signal strength #4"
+          "input_name": "can_speed",
+          "description": "CAN: Speed"
         },
         {
-            "input_name": "ble_signal_strength_5",
-            "description": "BLE: Signal strength #5"
+          "input_name": "can_tacho_performance",
+          "description": "CAN: Tachograph performance"
         },
         {
-            "input_name": "ble_signal_strength_6",
-            "description": "BLE: Signal strength #6"
+          "input_name": "can_throttle",
+          "description": "CAN: Throttle"
         },
         {
-            "input_name": "ble_signal_strength_7",
-            "description": "BLE: Signal strength #7"
+          "input_name": "can_total_fuel_used",
+          "description": "CAN: Engine total fuel used"
         },
         {
-            "input_name": "ble_signal_strength_8",
-            "description": "BLE: Signal strength #8"
+          "input_name": "can_total_fuel_used_gas",
+          "description": "CAN: Total fuel used (gas)"
         },
         {
-            "input_name": "ble_signal_strength_9",
-            "description": "BLE: Signal strength #9"
+          "input_name": "can_total_power_takeoff_hours",
+          "description": "CAN: Total power takeoff hours"
         },
         {
-            "input_name": "ble_temp_sensor_1",
-            "description": "BLE: temperature sensor #1"
+          "input_name": "can_transmission_oil_level",
+          "description": "CAN: Transmission oil level"
         },
         {
-            "input_name": "ble_temp_sensor_10",
-            "description": "BLE: temperature sensor #10"
+          "input_name": "can_transmission_oil_pressure",
+          "description": "CAN: Transmission oil pressure"
         },
         {
-            "input_name": "ble_temp_sensor_11",
-            "description": "BLE: temperature sensor #11"
+          "input_name": "can_transmission_oil_temp",
+          "description": "CAN: Transmission oil temperature"
         },
         {
-            "input_name": "ble_temp_sensor_12",
-            "description": "BLE: temperature sensor #12"
+          "input_name": "can_trip_fuel_used",
+          "description": "CAN: Engine trip fuel"
         },
         {
-            "input_name": "ble_temp_sensor_13",
-            "description": "BLE: temperature sensor #13"
+          "input_name": "can_trip_fuel_used_gas",
+          "description": "CAN: Trip fuel (gaseous)"
         },
         {
-            "input_name": "ble_temp_sensor_14",
-            "description": "BLE: temperature sensor #14"
+          "input_name": "can_turbo_oil_temperature",
+          "description": "CAN: Turbo oil temperature"
         },
         {
-            "input_name": "ble_temp_sensor_15",
-            "description": "BLE: temperature sensor #15"
+          "input_name": "can_washer_fluid_level",
+          "description": "CAN: Washer fluid level"
         },
         {
-            "input_name": "ble_temp_sensor_16",
-            "description": "BLE: temperature sensor #16"
+          "input_name": "cornering",
+          "description": "Cornering"
         },
         {
-            "input_name": "ble_temp_sensor_2",
-            "description": "BLE: temperature sensor #2"
+          "input_name": "cornering_rad",
+          "description": "Cornering"
         },
         {
-            "input_name": "ble_temp_sensor_3",
-            "description": "BLE: temperature sensor #3"
+          "input_name": "counter",
+          "description": "Counter [N]"
         },
         {
-            "input_name": "ble_temp_sensor_4",
-            "description": "BLE: temperature sensor #4"
+          "input_name": "custom_param",
+          "description": "Custom [N]"
         },
         {
-            "input_name": "ble_temp_sensor_5",
-            "description": "BLE: temperature sensor #5"
+          "input_name": "ext_battery_voltage",
+          "description": "External battery voltage"
         },
         {
-            "input_name": "ble_temp_sensor_6",
-            "description": "BLE: temperature sensor #6"
+          "input_name": "ext_temp_sensor",
+          "description": "External temperature [N]"
         },
         {
-            "input_name": "ble_temp_sensor_7",
-            "description": "BLE: temperature sensor #7"
+          "input_name": "field",
+          "description": "Field [N]"
         },
         {
-            "input_name": "ble_temp_sensor_8",
-            "description": "BLE: temperature sensor #8"
+          "input_name": "flex_id",
+          "description": "Flex ID [N]"
         },
         {
-            "input_name": "ble_temp_sensor_9",
-            "description": "BLE: temperature sensor #9"
+          "input_name": "flex_id_signed",
+          "description": "Flex ID (signed) [N]"
         },
         {
-            "input_name": "ble_tire_pressure_1",
-            "description": "BLE: Tire pressure #1"
+          "input_name": "freq",
+          "description": "Frequency sensor [N]"
         },
         {
-            "input_name": "ble_tire_pressure_10",
-            "description": "BLE: Tire pressure #10"
+          "input_name": "fuel_consumption",
+          "description": "Fuel consumption"
         },
         {
-            "input_name": "ble_tire_pressure_11",
-            "description": "BLE: Tire pressure #11"
+          "input_name": "fuel_frequency",
+          "description": "LLS: Frequency"
         },
         {
-            "input_name": "ble_tire_pressure_12",
-            "description": "BLE: Tire pressure #12"
+          "input_name": "fuel_level",
+          "description": "LLS: Level"
         },
         {
-            "input_name": "ble_tire_pressure_13",
-            "description": "BLE: Tire pressure #13"
+          "input_name": "fuel_temperature",
+          "description": "LLS: Temperature"
         },
         {
-            "input_name": "ble_tire_pressure_14",
-            "description": "BLE: Tire pressure #14"
+          "input_name": "humidity",
+          "description": "Relative humidity sensor [N]"
         },
         {
-            "input_name": "ble_tire_pressure_15",
-            "description": "BLE: Tire pressure #15"
+          "input_name": "humidity_internal",
+          "description": "Relative humidity"
         },
         {
-            "input_name": "ble_tire_pressure_16",
-            "description": "BLE: Tire pressure #16"
+          "input_name": "hw_mileage",
+          "description": "Mileage"
         },
         {
-            "input_name": "ble_tire_pressure_17",
-            "description": "BLE: Tire pressure #17"
+          "input_name": "illuminance_internal",
+          "description": "Illuminance"
         },
         {
-            "input_name": "ble_tire_pressure_18",
-            "description": "BLE: Tire pressure #18"
+          "input_name": "impulse_counter",
+          "description": "Impulse counter [N]"
         },
         {
-            "input_name": "ble_tire_pressure_19",
-            "description": "BLE: Tire pressure #19"
+          "input_name": "io_port",
+          "description": "I/O port [N]"
         },
         {
-            "input_name": "ble_tire_pressure_2",
-            "description": "BLE: Tire pressure #2"
+          "input_name": "lls_level",
+          "description": "LLS: Level [N]"
         },
         {
-            "input_name": "ble_tire_pressure_20",
-            "description": "BLE: Tire pressure #20"
+          "input_name": "lls_level_raw",
+          "description": "LLS: Level (raw) [N]"
         },
         {
-            "input_name": "ble_tire_pressure_21",
-            "description": "BLE: Tire pressure #21"
+          "input_name": "lls_temperature",
+          "description": "LLS: Temperature [N]"
         },
         {
-            "input_name": "ble_tire_pressure_22",
-            "description": "BLE: Tire pressure #22"
+          "input_name": "modbus",
+          "description": "Modbus [N]"
         },
         {
-            "input_name": "ble_tire_pressure_23",
-            "description": "BLE: Tire pressure #23"
+          "input_name": "obd_absolute_load_value",
+          "description": "OBD: Absolute load value"
         },
         {
-            "input_name": "ble_tire_pressure_24",
-            "description": "BLE: Tire pressure #24"
+          "input_name": "obd_barometric_pressure",
+          "description": "OBD: Barometric pressure"
         },
         {
-            "input_name": "ble_tire_pressure_25",
-            "description": "BLE: Tire pressure #25"
+          "input_name": "obd_consumption",
+          "description": "OBD: Fuel consumption"
         },
         {
-            "input_name": "ble_tire_pressure_26",
-            "description": "BLE: Tire pressure #26"
+          "input_name": "obd_control_module_voltage",
+          "description": "OBD: Control module voltage"
         },
         {
-            "input_name": "ble_tire_pressure_27",
-            "description": "BLE: Tire pressure #27"
+          "input_name": "obd_coolant_t",
+          "description": "OBD: Coolant temperature"
         },
         {
-            "input_name": "ble_tire_pressure_28",
-            "description": "BLE: Tire pressure #28"
+          "input_name": "obd_custom_fuel_litres",
+          "description": "OBD: Real Fuel (litres)"
         },
         {
-            "input_name": "ble_tire_pressure_29",
-            "description": "BLE: Tire pressure #29"
+          "input_name": "obd_custom_odometer",
+          "description": "OBD: Odometer"
         },
         {
-            "input_name": "ble_tire_pressure_3",
-            "description": "BLE: Tire pressure #3"
+          "input_name": "obd_engine_load",
+          "description": "OBD: Engine load"
         },
         {
-            "input_name": "ble_tire_pressure_30",
-            "description": "BLE: Tire pressure #30"
+          "input_name": "obd_fuel",
+          "description": "OBD: Fuel"
         },
         {
-            "input_name": "ble_tire_pressure_4",
-            "description": "BLE: Tire pressure #4"
+          "input_name": "obd_intake_air_pressure",
+          "description": "OBD: Intake air pressure"
         },
         {
-            "input_name": "ble_tire_pressure_5",
-            "description": "BLE: Tire pressure #5"
+          "input_name": "obd_intake_air_t",
+          "description": "OBD: Intake air temp."
         },
         {
-            "input_name": "ble_tire_pressure_6",
-            "description": "BLE: Tire pressure #6"
+          "input_name": "obd_mil_run_time",
+          "description": "OBD: Time run with MIL on"
         },
         {
-            "input_name": "ble_tire_pressure_7",
-            "description": "BLE: Tire pressure #7"
+          "input_name": "obd_oil_temperature",
+          "description": "OBD: Oil temperature"
         },
         {
-            "input_name": "ble_tire_pressure_8",
-            "description": "BLE: Tire pressure #8"
+          "input_name": "obd_rpm",
+          "description": "OBD: RPM"
         },
         {
-            "input_name": "ble_tire_pressure_9",
-            "description": "BLE: Tire pressure #9"
+          "input_name": "obd_speed",
+          "description": "OBD: Speed"
         },
         {
-            "input_name": "ble_tire_temperature_1",
-            "description": "BLE: Tire air temperature #1"
+          "input_name": "obd_throttle",
+          "description": "OBD: Throttle"
         },
         {
-            "input_name": "ble_tire_temperature_10",
-            "description": "BLE: Tire air temperature #10"
+          "input_name": "obd_time_since_engine_start",
+          "description": "OBD: Run time since engine start"
         },
         {
-            "input_name": "ble_tire_temperature_11",
-            "description": "BLE: Tire air temperature #11"
+          "input_name": "passengers_entered",
+          "description": "Passenger counter: Entry [N]"
         },
         {
-            "input_name": "ble_tire_temperature_12",
-            "description": "BLE: Tire air temperature #12"
+          "input_name": "passengers_exit",
+          "description": "Passenger counter: Exit [N]"
         },
         {
-            "input_name": "ble_tire_temperature_13",
-            "description": "BLE: Tire air temperature #13"
+          "input_name": "passengers_remaining",
+          "description": "Passenger counter: Remaining"
         },
         {
-            "input_name": "ble_tire_temperature_14",
-            "description": "BLE: Tire air temperature #14"
+          "input_name": "pdop",
+          "description": "PDOP"
         },
         {
-            "input_name": "ble_tire_temperature_15",
-            "description": "BLE: Tire air temperature #15"
+          "input_name": "physiologic_blood_pressure_dt",
+          "description": "Diastolic blood pressure"
         },
         {
-            "input_name": "ble_tire_temperature_16",
-            "description": "BLE: Tire air temperature #16"
+          "input_name": "physiologic_blood_pressure_st",
+          "description": "Systolic blood pressure"
         },
         {
-            "input_name": "ble_tire_temperature_17",
-            "description": "BLE: Tire air temperature #17"
+          "input_name": "physiologic_heart_rate",
+          "description": "Heart rate"
         },
         {
-            "input_name": "ble_tire_temperature_18",
-            "description": "BLE: Tire air temperature #18"
+          "input_name": "raw_can",
+          "description": "CAN: Raw data [N]"
         },
         {
-            "input_name": "ble_tire_temperature_19",
-            "description": "BLE: Tire air temperature #19"
+          "input_name": "raw_obd",
+          "description": "OBD: Raw data [N]"
         },
         {
-            "input_name": "ble_tire_temperature_2",
-            "description": "BLE: Tire air temperature #2"
+          "input_name": "rs232",
+          "description": "RS-232 [N]"
         },
         {
-            "input_name": "ble_tire_temperature_20",
-            "description": "BLE: Tire air temperature #20"
+          "input_name": "rs485",
+          "description": "RS-485 [N]"
         },
         {
-            "input_name": "ble_tire_temperature_21",
-            "description": "BLE: Tire air temperature #21"
+          "input_name": "stt_large_assign",
+          "description": "STT large assign [N]"
         },
         {
-            "input_name": "ble_tire_temperature_22",
-            "description": "BLE: Tire air temperature #22"
+          "input_name": "stt_medium_assign",
+          "description": "STT medium assign [N]"
         },
         {
-            "input_name": "ble_tire_temperature_23",
-            "description": "BLE: Tire air temperature #23"
+          "input_name": "stt_small_assign",
+          "description": "STT small assign [N]"
         },
         {
-            "input_name": "ble_tire_temperature_24",
-            "description": "BLE: Tire air temperature #24"
+          "input_name": "tacho_mileage",
+          "description": "TACHO: Mileage"
         },
         {
-            "input_name": "ble_tire_temperature_25",
-            "description": "BLE: Tire air temperature #25"
+          "input_name": "tacho_speed",
+          "description": "TACHO: Speed"
         },
         {
-            "input_name": "ble_tire_temperature_26",
-            "description": "BLE: Tire air temperature #26"
+          "input_name": "temp_sensor",
+          "description": "Temperature"
         },
         {
-            "input_name": "ble_tire_temperature_27",
-            "description": "BLE: Tire air temperature #27"
+          "input_name": "tire_pressure",
+          "description": "Tire pressure [N]"
         },
         {
-            "input_name": "ble_tire_temperature_28",
-            "description": "BLE: Tire air temperature #28"
+          "input_name": "tire_sensor_battery_voltage",
+          "description": "Tire sensor voltage [N]"
         },
         {
-            "input_name": "ble_tire_temperature_29",
-            "description": "BLE: Tire air temperature #29"
+          "input_name": "tire_sensor_status",
+          "description": "Tire sensor status [N]"
         },
         {
-            "input_name": "ble_tire_temperature_3",
-            "description": "BLE: Tire air temperature #3"
+          "input_name": "tire_temperature",
+          "description": "Tire air temperature [N]"
         },
         {
-            "input_name": "ble_tire_temperature_30",
-            "description": "BLE: Tire air temperature #30"
+          "input_name": "total_passengers_entered",
+          "description": "Passenger counter: Entry total [N]"
         },
         {
-            "input_name": "ble_tire_temperature_4",
-            "description": "BLE: Tire air temperature #4"
+          "input_name": "total_passengers_exit",
+          "description": "Passenger counter: Exit total [N]"
         },
         {
-            "input_name": "ble_tire_temperature_5",
-            "description": "BLE: Tire air temperature #5"
+          "input_name": "uds_adblue_tanklevel_absolut",
+          "description": "UDS: Level of AdBlue fluid"
         },
         {
-            "input_name": "ble_tire_temperature_6",
-            "description": "BLE: Tire air temperature #6"
+          "input_name": "uds_adblue_tanklevel_percent",
+          "description": "UDS: Level of AdBlue fluid (percent)"
         },
         {
-            "input_name": "ble_tire_temperature_7",
-            "description": "BLE: Tire air temperature #7"
+          "input_name": "uds_ambient_air_temp",
+          "description": "UDS: Ambient air temperature"
         },
         {
-            "input_name": "ble_tire_temperature_8",
-            "description": "BLE: Tire air temperature #8"
+          "input_name": "uds_battery_state_percent",
+          "description": "UDS: Battery level"
         },
         {
-            "input_name": "ble_tire_temperature_9",
-            "description": "BLE: Tire air temperature #9"
+          "input_name": "uds_battery_voltage",
+          "description": "UDS: Battery voltage"
         },
         {
-            "input_name": "ble_user_data_1",
-            "description": "BLE custom user data #1"
+          "input_name": "uds_consumption",
+          "description": "UDS: Fuel consumption"
         },
         {
-            "input_name": "ble_user_data_10",
-            "description": "BLE custom user data #10"
+          "input_name": "uds_consumption_average",
+          "description": "UDS: Average fuel consumption"
         },
         {
-            "input_name": "ble_user_data_11",
-            "description": "BLE custom user data #11"
+          "input_name": "uds_consumption_average_high",
+          "description": "UDS: Average high fuel consumption"
         },
         {
-            "input_name": "ble_user_data_12",
-            "description": "BLE custom user data #12"
+          "input_name": "uds_consumption_average_low",
+          "description": "UDS: Average low fuel consumption"
         },
         {
-            "input_name": "ble_user_data_13",
-            "description": "BLE custom user data #13"
+          "input_name": "uds_consumption_since_reset",
+          "description": "UDS: Fuel consumption since reset"
         },
         {
-            "input_name": "ble_user_data_14",
-            "description": "BLE custom user data #14"
+          "input_name": "uds_eco_co2_score",
+          "description": "UDS: Environmental score"
         },
         {
-            "input_name": "ble_user_data_15",
-            "description": "BLE custom user data #15"
+          "input_name": "uds_engine_coolant_temp",
+          "description": "UDS: Coolant temperature"
         },
         {
-            "input_name": "ble_user_data_16",
-            "description": "BLE custom user data #16"
+          "input_name": "uds_engine_oil_temperature",
+          "description": "UDS: Oil temperature"
         },
         {
-            "input_name": "ble_user_data_17",
-            "description": "BLE custom user data #17"
+          "input_name": "uds_fuel_tank_level_absolute",
+          "description": "UDS: Fuel level"
         },
         {
-            "input_name": "ble_user_data_18",
-            "description": "BLE custom user data #18"
+          "input_name": "uds_fuel_tank_level_percent",
+          "description": "UDS: Fuel level (percent)"
         },
         {
-            "input_name": "ble_user_data_19",
-            "description": "BLE custom user data #19"
+          "input_name": "uds_odometer",
+          "description": "UDS: Odometer"
         },
         {
-            "input_name": "ble_user_data_2",
-            "description": "BLE custom user data #2"
+          "input_name": "uds_rpm",
+          "description": "UDS: RPM"
         },
         {
-            "input_name": "ble_user_data_20",
-            "description": "BLE custom user data #20"
+          "input_name": "uds_service_days_since_last",
+          "description": "UDS: Days since last service"
         },
         {
-            "input_name": "ble_user_data_21",
-            "description": "BLE custom user data #21"
+          "input_name": "uds_service_distance_snc_lst",
+          "description": "UDS: Km since last service"
         },
         {
-            "input_name": "ble_user_data_22",
-            "description": "BLE custom user data #22"
+          "input_name": "uds_service_interval_days",
+          "description": "UDS: Days till next service"
         },
         {
-            "input_name": "ble_user_data_23",
-            "description": "BLE custom user data #23"
+          "input_name": "uds_service_interval_distance",
+          "description": "UDS: Distance to drive till next service"
         },
         {
-            "input_name": "ble_user_data_24",
-            "description": "BLE custom user data #24"
+          "input_name": "uds_service_max_days",
+          "description": "UDS: Max days of service interval"
         },
         {
-            "input_name": "ble_user_data_25",
-            "description": "BLE custom user data #25"
+          "input_name": "uds_service_max_distance",
+          "description": "UDS: Max km of service interval"
         },
         {
-            "input_name": "ble_user_data_26",
-            "description": "BLE custom user data #26"
+          "input_name": "uds_speed",
+          "description": "UDS: Speed"
         },
         {
-            "input_name": "ble_user_data_27",
-            "description": "BLE custom user data #27"
+          "input_name": "uds_steer_angle",
+          "description": "UDS: Steer angle"
         },
         {
-            "input_name": "ble_user_data_28",
-            "description": "BLE custom user data #28"
+          "input_name": "uds_tank_level_cng_percent",
+          "description": "UDS: Cng fuel tank level (percent)"
         },
         {
-            "input_name": "ble_user_data_29",
-            "description": "BLE custom user data #29"
+          "input_name": "uds_throttle",
+          "description": "UDS: Throttle"
         },
         {
-            "input_name": "ble_user_data_3",
-            "description": "BLE custom user data #3"
+          "input_name": "uds_time_since_engine_start",
+          "description": "UDS: Run time since engine start"
         },
         {
-            "input_name": "ble_user_data_30",
-            "description": "BLE custom user data #30"
+          "input_name": "uds_tire_pressure_front_left",
+          "description": "UDS: Tire pressure front left"
         },
         {
-            "input_name": "ble_user_data_31",
-            "description": "BLE custom user data #31"
+          "input_name": "uds_tire_pressure_front_right",
+          "description": "UDS: Tire pressure front right"
         },
         {
-            "input_name": "ble_user_data_32",
-            "description": "BLE custom user data #32"
+          "input_name": "uds_tire_pressure_rear_left",
+          "description": "UDS: Tire pressure rear left"
         },
         {
-            "input_name": "ble_user_data_33",
-            "description": "BLE custom user data #33"
+          "input_name": "uds_tire_pressure_rear_right",
+          "description": "UDS: Tire pressure rear right"
         },
         {
-            "input_name": "ble_user_data_34",
-            "description": "BLE custom user data #34"
+          "input_name": "user_data",
+          "description": "Custom user data [N]"
         },
         {
-            "input_name": "ble_user_data_35",
-            "description": "BLE custom user data #35"
+          "input_name": "val",
+          "description": "VAL [N]"
         },
         {
-            "input_name": "ble_user_data_36",
-            "description": "BLE custom user data #36"
+          "input_name": "vdop",
+          "description": "VDOP"
         },
         {
-            "input_name": "ble_user_data_37",
-            "description": "BLE custom user data #37"
+          "input_name": "remote_ip",
+          "description": "remote_ip",
+          "value_type": "String"
         },
         {
-            "input_name": "ble_user_data_38",
-            "description": "BLE custom user data #38"
+          "input_name": "chat_availability",
+          "description": "chat_availability",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ble_user_data_39",
-            "description": "BLE custom user data #39"
+          "input_name": "stt_mode",
+          "description": "STT mode",
+          "value_type": "Integer"
         },
         {
-            "input_name": "ble_user_data_4",
-            "description": "BLE custom user data #4"
+          "input_name": "alt_mode",
+          "description": "ALT mode",
+          "value_type": "Integer"
         },
         {
-            "input_name": "ble_user_data_40",
-            "description": "BLE custom user data #40"
+          "input_name": "event_code",
+          "description": "Event code",
+          "value_type": "String"
         },
         {
-            "input_name": "ble_user_data_41",
-            "description": "BLE custom user data #41"
+          "input_name": "sub_event_code",
+          "description": "Subevent code",
+          "value_type": "String"
         },
         {
-            "input_name": "ble_user_data_42",
-            "description": "BLE custom user data #42"
+          "input_name": "event_id",
+          "description": "Event ID",
+          "value_type": "Integer"
         },
         {
-            "input_name": "ble_user_data_43",
-            "description": "BLE custom user data #43"
+          "input_name": "status",
+          "description": "Status (state)",
+          "value_type": "String"
         },
         {
-            "input_name": "ble_user_data_44",
-            "description": "BLE custom user data #44"
+          "input_name": "ext_status",
+          "description": "Extended status (state)",
+          "value_type": "String"
         },
         {
-            "input_name": "ble_user_data_45",
-            "description": "BLE custom user data #45"
+          "input_name": "hardware_key",
+          "description": "Hardware key",
+          "value_type": "String"
         },
         {
-            "input_name": "ble_user_data_46",
-            "description": "BLE custom user data #46"
+          "input_name": "new_driver_name",
+          "description": "Driver name",
+          "value_type": "String"
         },
         {
-            "input_name": "ble_user_data_47",
-            "description": "BLE custom user data #47"
+          "input_name": "driver_ident_state",
+          "description": "Driver identified",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ble_user_data_48",
-            "description": "BLE custom user data #48"
+          "input_name": "driver_code",
+          "description": "driver_code",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ble_user_data_49",
-            "description": "BLE custom user data #49"
+          "input_name": "moving",
+          "description": "Moving",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ble_user_data_5",
-            "description": "BLE custom user data #5"
+          "input_name": "strap_bolt_cut",
+          "description": "Seal opened",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ble_user_data_50",
-            "description": "BLE custom user data #50"
+          "input_name": "external_power_state",
+          "description": "External power state",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ble_user_data_6",
-            "description": "BLE custom user data #6"
+          "input_name": "charging_status",
+          "description": "Charging status",
+          "value_type": "Integer"
         },
         {
-            "input_name": "ble_user_data_7",
-            "description": "BLE custom user data #7"
+          "input_name": "gps_status",
+          "description": "GPS status",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ble_user_data_8",
-            "description": "BLE custom user data #8"
+          "input_name": "battery_health_1",
+          "description": "Battery health 1",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ble_user_data_9",
-            "description": "BLE custom user data #9"
+          "input_name": "battery_health_2",
+          "description": "Battery health 2",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "board_voltage",
-            "description": "Board voltage"
+          "input_name": "battery_health_3",
+          "description": "Battery health 3",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "braking",
-            "description": "Braking"
+          "input_name": "battery_health_4",
+          "description": "Battery health 4",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_adblue_level",
-            "description": "CAN: Level of AdBlue fluid"
+          "input_name": "backup_battery_health",
+          "description": "Backup battery health",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_1",
-            "description": "CAN: Axle #1 load"
+          "input_name": "ble_beacon_id",
+          "description": "BLE: ID",
+          "value_type": "String"
         },
         {
-            "input_name": "can_axle_load_10",
-            "description": "CAN: Axle #10 load"
+          "input_name": "ble_mac",
+          "description": "BLE: MAC address",
+          "value_type": "String"
         },
         {
-            "input_name": "can_axle_load_11",
-            "description": "CAN: Axle #11 load"
+          "input_name": "ble_magnet_sensor_1",
+          "description": "Magnetic Bluetooth sensor 1",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_12",
-            "description": "CAN: Axle #12 load"
+          "input_name": "ble_magnet_sensor_2",
+          "description": "Magnetic Bluetooth sensor 2",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_13",
-            "description": "CAN: Axle #13 load"
+          "input_name": "ble_magnet_sensor_3",
+          "description": "Magnetic Bluetooth sensor 3",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_14",
-            "description": "CAN: Axle #14 load"
+          "input_name": "ble_magnet_sensor_4",
+          "description": "Magnetic Bluetooth sensor 4",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_15",
-            "description": "CAN: Axle #15 load"
+          "input_name": "ble_magnet_sensor_5",
+          "description": "Magnetic Bluetooth sensor 5",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_2",
-            "description": "CAN: Axle #2 load"
+          "input_name": "ble_magnet_sensor_6",
+          "description": "Magnetic Bluetooth sensor 6",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_3",
-            "description": "CAN: Axle #3 load"
+          "input_name": "ble_magnet_sensor_7",
+          "description": "Magnetic Bluetooth sensor 7",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_4",
-            "description": "CAN: Axle #4 load"
+          "input_name": "ble_magnet_sensor_8",
+          "description": "Magnetic Bluetooth sensor 8",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_5",
-            "description": "CAN: Axle #5 load"
+          "input_name": "ble_magnet_sensor_9",
+          "description": "Magnetic Bluetooth sensor 9",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_6",
-            "description": "CAN: Axle #6 load"
+          "input_name": "ble_magnet_sensor_10",
+          "description": "Magnetic Bluetooth sensor 10",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_axle_load_7",
-            "description": "CAN: Axle #7 load"
+          "input_name": "lock_state",
+          "description": "Lock state",
+          "value_type": "String"
         },
         {
-            "input_name": "can_axle_load_8",
-            "description": "CAN: Axle #8 load"
+          "input_name": "lock_status",
+          "description": "Lock status",
+          "value_type": "String"
         },
         {
-            "input_name": "can_axle_load_9",
-            "description": "CAN: Axle #9 load"
+          "input_name": "lock_state_raw",
+          "description": "Raw lock status: Raw data",
+          "value_type": "Integer"
         },
         {
-            "input_name": "can_consumption",
-            "description": "CAN: Total fuel used"
+          "input_name": "lock_command_result",
+          "description": "Lock/unlock command result",
+          "value_type": "String"
         },
         {
-            "input_name": "can_consumption_relative",
-            "description": "CAN: Relative fuel consumption"
+          "input_name": "door_state_1",
+          "description": "Door state 1",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_coolant_t",
-            "description": "CAN: Coolant temperature"
+          "input_name": "door_state_2",
+          "description": "Door state 2",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_engine_hours",
-            "description": "CAN: Engine hours"
+          "input_name": "door_state_3",
+          "description": "Door state 3",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_engine_hours_relative",
-            "description": "CAN: Relative engine hours"
+          "input_name": "door_state_4",
+          "description": "Door state 4",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_engine_load",
-            "description": "CAN: Engine load"
+          "input_name": "door_state_5",
+          "description": "Door state 5",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_engine_revolutions",
-            "description": "CAN: Total engine revolutions"
+          "input_name": "door_state_6",
+          "description": "Door state 6",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_engine_temp",
-            "description": "CAN: Engine temp."
+          "input_name": "door_state_7",
+          "description": "Door state 7",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_fuel",
-            "description": "CAN: Fuel level"
+          "input_name": "door_state_8",
+          "description": "Door state 8",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_fuel_2",
-            "description": "CAN: Fuel level #2"
+          "input_name": "door_state_9",
+          "description": "Door state 9",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_fuel_economy",
-            "description": "CAN: Fuel consumption"
+          "input_name": "door_state_10",
+          "description": "Door state 10",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_fuel_litres",
-            "description": "CAN: Fuel (litres)"
+          "input_name": "door_state_11",
+          "description": "Door state 11",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_fuel_rate",
-            "description": "CAN: Instant fuel rate"
+          "input_name": "door_state_12",
+          "description": "Door state 12",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_intake_air_t",
-            "description": "CAN: Intake air temp."
+          "input_name": "door_state_13",
+          "description": "Door state 13",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_mileage",
-            "description": "CAN: Mileage"
+          "input_name": "door_state_14",
+          "description": "Door state 14",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_mileage_relative",
-            "description": "CAN: Relative mileage"
+          "input_name": "door_state_15",
+          "description": "Door state 15",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_pto_duration",
-            "description": "CAN: Total duration of PTO when stand still"
+          "input_name": "door_state_16",
+          "description": "Door state 16",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "can_pto_fuel_used",
-            "description": "CAN: Total fuel used during PTO when stand still"
+          "input_name": "door_status_1",
+          "description": "Door status 1",
+          "value_type": "Integer"
         },
         {
-            "input_name": "can_r_prefix",
-            "description": "CAN: R-prefix"
+          "input_name": "door_status_2",
+          "description": "Door status 2",
+          "value_type": "Integer"
         },
         {
-            "input_name": "can_rpm",
-            "description": "CAN: RPM"
+          "input_name": "door_status_3",
+          "description": "Door status 3",
+          "value_type": "Integer"
         },
         {
-            "input_name": "can_speed",
-            "description": "CAN: Speed"
+          "input_name": "door_status_4",
+          "description": "Door status 4",
+          "value_type": "Integer"
         },
         {
-            "input_name": "can_throttle",
-            "description": "CAN: Throttle"
+          "input_name": "light_state_1",
+          "description": "Light sensor status 1",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "composite",
-            "description": "input.composite"
+          "input_name": "light_state_2",
+          "description": "Light sensor status 2",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "cornering",
-            "description": "Cornering"
+          "input_name": "light_state_3",
+          "description": "Light sensor status 3",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_battery_voltage",
-            "description": "External battery voltage"
+          "input_name": "light_state_4",
+          "description": "Light sensor status 4",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_1",
-            "description": "External temperature #1"
+          "input_name": "light_state_5",
+          "description": "Light sensor status 5",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_10",
-            "description": "External temperature #10"
+          "input_name": "light_state_6",
+          "description": "Light sensor status 6",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_2",
-            "description": "External temperature #2"
+          "input_name": "light_state_7",
+          "description": "Light sensor status 7",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_3",
-            "description": "External temperature #3"
+          "input_name": "light_state_8",
+          "description": "Light sensor status 8",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_4",
-            "description": "External temperature #4"
+          "input_name": "light_state_9",
+          "description": "Light sensor status 9",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_5",
-            "description": "External temperature #5"
+          "input_name": "light_state_10",
+          "description": "Light sensor status 10",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_6",
-            "description": "External temperature #6"
+          "input_name": "light_state_11",
+          "description": "Light sensor status 11",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_7",
-            "description": "External temperature #7"
+          "input_name": "light_state_12",
+          "description": "Light sensor status 12",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_8",
-            "description": "External temperature #8"
+          "input_name": "light_state_13",
+          "description": "Light sensor status 13",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "ext_temp_sensor_9",
-            "description": "External temperature #9"
+          "input_name": "light_state_14",
+          "description": "Light sensor status 14",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "freq_1",
-            "description": "Frequency sensor #1"
+          "input_name": "light_state_15",
+          "description": "Light sensor status 15",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "freq_2",
-            "description": "Frequency sensor #2"
+          "input_name": "light_state_16",
+          "description": "Light sensor status 16",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "freq_3",
-            "description": "Frequency sensor #3"
+          "input_name": "tacho_vin",
+          "description": "TACHO: VIN",
+          "value_type": "String"
         },
         {
-            "input_name": "freq_4",
-            "description": "Frequency sensor #4"
+          "input_name": "tacho_card1_sn",
+          "description": "TACHO: Card 1 number",
+          "value_type": "String"
         },
         {
-            "input_name": "freq_5",
-            "description": "Frequency sensor #5"
+          "input_name": "tacho_card2_sn",
+          "description": "TACHO: Card 2 number",
+          "value_type": "String"
         },
         {
-            "input_name": "freq_6",
-            "description": "Frequency sensor #6"
+          "input_name": "tacho_vin_last_download",
+          "description": "tacho_vin_last_download",
+          "value_type": "String"
         },
         {
-            "input_name": "freq_7",
-            "description": "Frequency sensor #7"
+          "input_name": "tacho_card1_last_download",
+          "description": "tacho_card1_last_download",
+          "value_type": "String"
         },
         {
-            "input_name": "freq_8",
-            "description": "Frequency sensor #8"
+          "input_name": "tacho_card2_last_download",
+          "description": "tacho_card2_last_download",
+          "value_type": "String"
         },
         {
-            "input_name": "fuel_consumption",
-            "description": "Fuel consumption"
+          "input_name": "obd_vin",
+          "description": "VIN",
+          "value_type": "String"
         },
         {
-            "input_name": "fuel_frequency",
-            "description": "LLS: Frequency"
+          "input_name": "obd_mil_status",
+          "description": "OBD: MIL status (check engine)",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "fuel_level",
-            "description": "LLS: Level"
+          "input_name": "obd_dtc_number",
+          "description": "Errors",
+          "value_type": "Integer"
         },
         {
-            "input_name": "fuel_temperature",
-            "description": "LLS: Temperature"
+          "input_name": "obd_dtc_codes",
+          "description": "DTC",
+          "value_type": "String"
         },
         {
-            "input_name": "humidity_1",
-            "description": "Relative humidity sensor #1"
+          "input_name": "obd_dtc_cleared_distance",
+          "description": "OBD: Mileage after DTC reset",
+          "value_type": "Double"
         },
         {
-            "input_name": "humidity_2",
-            "description": "Relative humidity sensor #2"
+          "input_name": "obd_mil_activated_distance",
+          "description": "OBD: Distance with MIL on",
+          "value_type": "Double"
         },
         {
-            "input_name": "humidity_3",
-            "description": "Relative humidity sensor #3"
+          "input_name": "obd_four_wheel_drive",
+          "description": "OBD: 4x4",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "humidity_4",
-            "description": "Relative humidity sensor #4"
+          "input_name": "obd_electronic_lock_status",
+          "description": "OBD: Electronic lock status",
+          "value_type": "Integer"
         },
         {
-            "input_name": "hw_mileage",
-            "description": "Mileage"
+          "input_name": "can_hand_brake_state",
+          "description": "Car is on handbrake",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "impulse_counter_1",
-            "description": "Impulse counter #1"
+          "input_name": "can_hood_state",
+          "description": "Hood",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Closed",
+            "1": "Opened"
+          }
         },
         {
-            "input_name": "impulse_counter_2",
-            "description": "Impulse counter #2"
+          "input_name": "can_airbag_state",
+          "description": "Airbag",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Not used",
+            "1": "Fired"
+          }
         },
         {
-            "input_name": "impulse_counter_3",
-            "description": "Impulse counter #3"
+          "input_name": "can_trunk_state",
+          "description": "Trunk",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Closed",
+            "1": "Opened"
+          }
         },
         {
-            "input_name": "impulse_counter_4",
-            "description": "Impulse counter #4"
+          "input_name": "can_seat_belt_driver_state",
+          "description": "Driver seat belt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Locked",
+            "1": "Unlocked"
+          }
         },
         {
-            "input_name": "impulse_counter_5",
-            "description": "Impulse counter #5"
+          "input_name": "can_seat_belt_passenger_state",
+          "description": "Passenger seat belt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Locked",
+            "1": "Unlocked"
+          }
         },
         {
-            "input_name": "impulse_counter_6",
-            "description": "Impulse counter #6"
+          "input_name": "can_door_state",
+          "description": "Door",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Closed",
+            "1": "Opened"
+          }
         },
         {
-            "input_name": "impulse_counter_7",
-            "description": "Impulse counter #7"
+          "input_name": "can_door_driver_state",
+          "description": "Driver door",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Closed",
+            "1": "Opened"
+          }
         },
         {
-            "input_name": "impulse_counter_8",
-            "description": "Impulse counter #8"
+          "input_name": "can_door_passenger_state",
+          "description": "Passenger door",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Closed",
+            "1": "Opened"
+          }
         },
         {
-            "input_name": "input_status",
-            "description": "input.input_status"
+          "input_name": "can_cruise_control",
+          "description": "CAN: Cruise Control",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_1",
-            "description": "LLS #1: Level"
+          "input_name": "can_brake_state",
+          "description": "CAN: Brake pedal",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_10",
-            "description": "LLS #10: Level"
+          "input_name": "can_selected_gear",
+          "description": "CAN: Selected Gear",
+          "value_type": "Integer"
         },
         {
-            "input_name": "lls_level_11",
-            "description": "LLS #11: Level"
+          "input_name": "can_retarder_location",
+          "description": "CAN: Retarder location",
+          "value_type": "Integer"
         },
         {
-            "input_name": "lls_level_12",
-            "description": "LLS #12: Level"
+          "input_name": "can_e_fast_charge",
+          "description": "CAN: Fast charge",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_13",
-            "description": "LLS #13: Level"
+          "input_name": "can_e_active_charge_mode",
+          "description": "CAN: Active charge mode",
+          "value_type": "Integer"
         },
         {
-            "input_name": "lls_level_14",
-            "description": "LLS #14: Level"
+          "input_name": "can_e_charger_control_mode",
+          "description": "CAN: Charger control mode",
+          "value_type": "Integer"
         },
         {
-            "input_name": "lls_level_15",
-            "description": "LLS #15: Level"
+          "input_name": "can_e_charger_status",
+          "description": "CAN: Charger status",
+          "value_type": "Integer"
         },
         {
-            "input_name": "lls_level_16",
-            "description": "LLS #16: Level"
+          "input_name": "can_e_charger_internal_fault",
+          "description": "CAN: Charger internal fault",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_2",
-            "description": "LLS #2: Level"
+          "input_name": "can_e_charger_plugged",
+          "description": "CAN: Charger plugged",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_3",
-            "description": "LLS #3: Level"
+          "input_name": "can_e_powertrain_state",
+          "description": "CAN: Powertrain state",
+          "value_type": "Integer"
         },
         {
-            "input_name": "lls_level_4",
-            "description": "LLS #4: Level"
+          "input_name": "can_e_charging_active",
+          "description": "CAN: Charging active",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_5",
-            "description": "LLS #5: Level"
+          "input_name": "can_park_brake",
+          "description": "CAN: Park brake active",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_6",
-            "description": "LLS #6: Level"
+          "input_name": "can_helmet_status",
+          "description": "CAN: Helmet status",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_7",
-            "description": "LLS #7: Level"
+          "input_name": "can_top_case_sensor",
+          "description": "CAN: Top case sensor",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_8",
-            "description": "LLS #8: Level"
+          "input_name": "can_driving_direction",
+          "description": "CAN: Driving direction",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_9",
-            "description": "LLS #9: Level"
+          "input_name": "can_ignition_state",
+          "description": "CAN: Ignition state",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_raw_1",
-            "description": "LLS #1: Level (raw)"
+          "input_name": "can_engine_state",
+          "description": "CAN: Engine state",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_raw_2",
-            "description": "LLS #2: Level (raw)"
+          "input_name": "can_footbrake_state",
+          "description": "CAN: Footbrake state",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_raw_3",
-            "description": "LLS #3: Level (raw)"
+          "input_name": "can_webasto_state",
+          "description": "CAN: Webasto",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_raw_4",
-            "description": "LLS #4: Level (raw)"
+          "input_name": "can_roof_state",
+          "description": "CAN: Roof",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_raw_5",
-            "description": "LLS #5: Level (raw)"
+          "input_name": "can_front_left_door",
+          "description": "CAN: Front left door",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_raw_6",
-            "description": "LLS #6: Level (raw)"
+          "input_name": "can_front_right_door",
+          "description": "CAN: Front right door",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_raw_7",
-            "description": "LLS #7: Level (raw)"
+          "input_name": "can_rear_left_door",
+          "description": "CAN: Rear left door",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_level_raw_8",
-            "description": "LLS #8: Level (raw)"
+          "input_name": "can_rear_right_door",
+          "description": "CAN: Rear right door",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_1",
-            "description": "LLS #1: Temperature"
+          "input_name": "can_oil_pressure_or_level",
+          "description": "CAN: Oil pressure/level",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_10",
-            "description": "LLS #10: Temperature"
+          "input_name": "can_coolant_temp_or_level",
+          "description": "CAN: Coolant liquid temperature/level",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_11",
-            "description": "LLS #11: Temperature"
+          "input_name": "can_eps_state",
+          "description": "CAN: EPS state",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_12",
-            "description": "LLS #12: Temperature"
+          "input_name": "can_lights_failure",
+          "description": "CAN: Lights failure",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_13",
-            "description": "LLS #13: Temperature"
+          "input_name": "can_low_tire_pressure",
+          "description": "CAN: Low tire pressure",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_14",
-            "description": "LLS #14: Temperature"
+          "input_name": "can_brake_pad_wear",
+          "description": "CAN: Wear of brake pads",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_15",
-            "description": "LLS #15: Temperature"
+          "input_name": "can_warning",
+          "description": "CAN: Warning",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_16",
-            "description": "LLS #16: Temperature"
+          "input_name": "can_abs_state",
+          "description": "CAN: ABS state",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_2",
-            "description": "LLS #2: Temperature"
+          "input_name": "can_low_fuel",
+          "description": "CAN: Low fuel",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_3",
-            "description": "LLS #3: Temperature"
+          "input_name": "can_glow_plug_indicator",
+          "description": "CAN: Glow plug indicator",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_4",
-            "description": "LLS #4: Temperature"
+          "input_name": "can_electronics_power_control",
+          "description": "CAN: Electronic Power Control",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_5",
-            "description": "LLS #5: Temperature"
+          "input_name": "can_parking_lights",
+          "description": "CAN: Parking lights",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_6",
-            "description": "LLS #6: Temperature"
+          "input_name": "can_dipped_headlights",
+          "description": "CAN: Dipped headlights",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_7",
-            "description": "LLS #7: Temperature"
+          "input_name": "can_full_beam_headlights",
+          "description": "CAN: Full beam headlights",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_8",
-            "description": "LLS #8: Temperature"
+          "input_name": "can_ready_to_drive",
+          "description": "CAN: Ready to drive",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "lls_temperature_9",
-            "description": "LLS #9: Temperature"
+          "input_name": "can_automatic_retarder",
+          "description": "CAN: Automatic retarder",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_absolute_load_value",
-            "description": "Absolute load value"
+          "input_name": "can_manual_retarder",
+          "description": "CAN: Manual retarder",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_consumption",
-            "description": "OBD: Fuel consumption"
+          "input_name": "can_air_conditioning",
+          "description": "CAN: Air conditioning",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_control_module_voltage",
-            "description": "Control module voltage"
+          "input_name": "can_rear_fog_lights",
+          "description": "CAN: Rear fog lights",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_coolant_t",
-            "description": "OBD: Coolant temperature"
+          "input_name": "can_front_fog_lights",
+          "description": "CAN: Front fog lights",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_custom_fuel_litres",
-            "description": "OBD: Real Fuel (litres)"
+          "input_name": "can_additional_front_fog_lights",
+          "description": "CAN: Additional front fog lights",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_custom_odometer",
-            "description": "OBD: Odometer"
+          "input_name": "can_additional_rear_lights",
+          "description": "CAN: Additional rear lights",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_engine_load",
-            "description": "OBD: Engine load"
+          "input_name": "can_light_signal",
+          "description": "CAN: Light signal",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_fuel",
-            "description": "OBD: Fuel"
+          "input_name": "can_rear_left_seat_belt_state",
+          "description": "Rear left passenger belt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Locked",
+            "1": "Unlocked"
+          }
         },
         {
-            "input_name": "obd_intake_air_pressure",
-            "description": "OBD: Intake air pressure"
+          "input_name": "can_rear_right_seat_belt_state",
+          "description": "Rear right passenger belt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Locked",
+            "1": "Unlocked"
+          }
         },
         {
-            "input_name": "obd_intake_air_t",
-            "description": "OBD: Intake air temp."
+          "input_name": "can_rear_centre_seat_belt_state",
+          "description": "Rear center passenger belt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "Locked",
+            "1": "Unlocked"
+          }
         },
         {
-            "input_name": "obd_mil_run_time",
-            "description": "Time run with MIL on"
+          "input_name": "can_front_passenger_presence",
+          "description": "CAN: Front passenger presence",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_oil_temperature",
-            "description": "OBD: Oil temperature"
+          "input_name": "can_front_diff_locked",
+          "description": "CAN: Front differential locked",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_rpm",
-            "description": "OBD: RPM"
+          "input_name": "can_rear_diff_locked",
+          "description": "CAN: Rear differential locked",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_speed",
-            "description": "OBD: Speed"
+          "input_name": "can_central_diff_4hi_locked",
+          "description": "CAN: Central differential (4HI) locked",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_throttle",
-            "description": "OBD: Throttle"
+          "input_name": "can_central_diff_4lo_locked",
+          "description": "CAN: Central differential with reductor (4LO) locked",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "obd_time_since_engine_start",
-            "description": "Run time since engine start"
+          "input_name": "can_trailer_axle_lift_active_1",
+          "description": "CAN: Trailer axle lift 1",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "passengers_entered_1",
-            "description": "Passenger counter #1: Entry"
+          "input_name": "can_trailer_axle_lift_active_2",
+          "description": "CAN: Trailer axle lift 2",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "passengers_entered_2",
-            "description": "Passenger counter #2: Entry"
+          "input_name": "can_clutch_state",
+          "description": "CAN: Clutch state",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "passengers_entered_3",
-            "description": "Passenger counter #3: Entry"
+          "input_name": "can_pto_drive_engagement",
+          "description": "CAN: PTO drive engagement",
+          "value_type": "String"
         },
         {
-            "input_name": "passengers_entered_4",
-            "description": "Passenger counter #4: Entry"
+          "input_name": "can_adblue_status",
+          "description": "CAN: AdBlue status",
+          "value_type": "String"
         },
         {
-            "input_name": "passengers_entered_5",
-            "description": "Passenger counter #5: Entry"
+          "input_name": "can_mil_indicator",
+          "description": "CAN: MIL indicator",
+          "value_type": "String"
         },
         {
-            "input_name": "passengers_entered_6",
-            "description": "Passenger counter #6: Entry"
+          "input_name": "can_current_gear",
+          "description": "CAN: Current gear",
+          "value_type": "Integer"
         },
         {
-            "input_name": "passengers_entered_7",
-            "description": "Passenger counter #7: Entry"
+          "input_name": "can_pto_state",
+          "description": "CAN: PTO state",
+          "value_type": "String"
         },
         {
-            "input_name": "passengers_entered_8",
-            "description": "Passenger counter #8: Entry"
+          "input_name": "can_j1939_fault_codes",
+          "description": "CAN: J1939 DTC",
+          "value_type": "String"
         },
         {
-            "input_name": "passengers_exit_1",
-            "description": "Passenger counter #1: Exit"
+          "input_name": "can_j1708_fault_codes",
+          "description": "can_j1708_fault_codes",
+          "value_type": "String"
         },
         {
-            "input_name": "passengers_exit_2",
-            "description": "Passenger counter #2: Exit"
+          "input_name": "can_e_charger_bms_com_timeout",
+          "description": "CAN: Charger BMS COM timeout",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "passengers_exit_3",
-            "description": "Passenger counter #3: Exit"
+          "input_name": "can_e_charger_crc_violation",
+          "description": "CAN: Charger CRC violation",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "passengers_exit_4",
-            "description": "Passenger counter #4: Exit"
+          "input_name": "can_e_charger_mc_violation",
+          "description": "CAN: Charger MC violation",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "passengers_exit_5",
-            "description": "Passenger counter #5: Exit"
+          "input_name": "can_e_malfunction_indicator",
+          "description": "CAN: Malfunction indicator",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "passengers_exit_6",
-            "description": "Passenger counter #6: Exit"
+          "input_name": "can_vehicle_available",
+          "description": "CAN: Vehicle available",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "passengers_exit_7",
-            "description": "Passenger counter #7: Exit"
+          "input_name": "can_e_kill_switch_active",
+          "description": "CAN: Kill switch active",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "passengers_exit_8",
-            "description": "Passenger counter #8: Exit"
+          "input_name": "can_e_kickstand_release",
+          "description": "CAN: Kickstand release",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "physiologic_blood_pressure_dt",
-            "description": "Diastolic blood pressure"
+          "input_name": "can_e_over_under_temperature",
+          "description": "CAN: Over/under temperature",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "physiologic_blood_pressure_st",
-            "description": "Systolic blood pressure"
+          "input_name": "can_e_battery_on_off",
+          "description": "CAN: Battery on/off",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "physiologic_heart_rate",
-            "description": "Heart rate"
+          "input_name": "can_e_warning_undervoltage",
+          "description": "CAN: Undervoltage",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "raw_can_1",
-            "description": "CAN: Raw data #1"
+          "input_name": "can_e_warning_overvoltage",
+          "description": "CAN: Overvoltage",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "raw_can_10",
-            "description": "CAN: Raw data #10"
+          "input_name": "can_e_warning_overcurrent",
+          "description": "CAN: Overcurrent",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "raw_can_11",
-            "description": "CAN: Raw data #11"
+          "input_name": "uds_vin",
+          "description": "UDS: VIN",
+          "value_type": "String"
         },
         {
-            "input_name": "raw_can_12",
-            "description": "CAN: Raw data #12"
+          "input_name": "uds_sb_lock_status_front_left",
+          "description": "UDS: Lock status of the front left seatbelt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "unlocked",
+            "1": "locked"
+          }
         },
         {
-            "input_name": "raw_can_13",
-            "description": "CAN: Raw data #13"
+          "input_name": "uds_sb_lock_status_front_right",
+          "description": "UDS: Lock status of the front right seatbelt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "unlocked",
+            "1": "locked"
+          }
         },
         {
-            "input_name": "raw_can_14",
-            "description": "CAN: Raw data #14"
+          "input_name": "uds_sb_lock_status_rear_left",
+          "description": "UDS: Lock status of the back left seatbelt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "unlocked",
+            "1": "locked"
+          }
         },
         {
-            "input_name": "raw_can_15",
-            "description": "CAN: Raw data #15"
+          "input_name": "uds_sb_lock_status_rear_right",
+          "description": "UDS: Lock status of the back right seatbelt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "unlocked",
+            "1": "locked"
+          }
         },
         {
-            "input_name": "raw_can_16",
-            "description": "CAN: Raw data #16"
+          "input_name": "uds_sb_lock_status_rear_middle",
+          "description": "UDS: Lock status of the back rear middle seatbelt",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "unlocked",
+            "1": "locked"
+          }
         },
         {
-            "input_name": "raw_can_2",
-            "description": "CAN: Raw data #2"
+          "input_name": "uds_sb_indicator_lamp",
+          "description": "UDS: Seatbelt unfastened warning lamp",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "off",
+            "1": "on"
+          }
         },
         {
-            "input_name": "raw_can_3",
-            "description": "CAN: Raw data #3"
+          "input_name": "uds_dtc_service_codes",
+          "description": "UDS: DTC",
+          "value_type": "String"
         },
         {
-            "input_name": "raw_can_4",
-            "description": "CAN: Raw data #4"
+          "input_name": "uds_park_brake_status",
+          "description": "UDS: Handbrake status",
+          "value_type": "Integer",
+          "value_titles": {
+            "0": "in rest position",
+            "1": "pulled",
+            "2": "pressed",
+            "3": "fault"
+          }
         },
         {
-            "input_name": "raw_can_5",
-            "description": "CAN: Raw data #5"
+          "input_name": "uds_boot_status",
+          "description": "UDS: State of boot",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "closed",
+            "1": "open"
+          }
         },
         {
-            "input_name": "raw_can_6",
-            "description": "CAN: Raw data #6"
+          "input_name": "uds_hood_status",
+          "description": "UDS: State of hood",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "closed",
+            "1": "open"
+          }
         },
         {
-            "input_name": "raw_can_7",
-            "description": "CAN: Raw data #7"
+          "input_name": "uds_mil",
+          "description": "UDS: MIL status (check engine)",
+          "value_type": "Boolean"
         },
         {
-            "input_name": "raw_can_8",
-            "description": "CAN: Raw data #8"
+          "input_name": "uds_general_door_status",
+          "description": "UDS: Door state",
+          "value_type": "Integer",
+          "value_titles": {
+            "0": "closed",
+            "1": "open",
+            "2": "not installed"
+          }
         },
         {
-            "input_name": "raw_can_9",
-            "description": "CAN: Raw data #9"
+          "input_name": "uds_door_status_front_left",
+          "description": "UDS: Door front left",
+          "value_type": "Integer",
+          "value_titles": {
+            "0": "closed",
+            "1": "open",
+            "2": "not installed"
+          }
         },
         {
-            "input_name": "rs232_1",
-            "description": "RS-232 #1"
+          "input_name": "uds_door_status_front_right",
+          "description": "UDS: Door front right",
+          "value_type": "Integer",
+          "value_titles": {
+            "0": "closed",
+            "1": "open",
+            "2": "not installed"
+          }
         },
         {
-            "input_name": "rs232_2",
-            "description": "RS-232 #2"
+          "input_name": "uds_door_status_rear_left",
+          "description": "UDS: Door rear left",
+          "value_type": "Integer",
+          "value_titles": {
+            "0": "closed",
+            "1": "open",
+            "2": "not installed"
+          }
         },
         {
-            "input_name": "rs232_3",
-            "description": "RS-232 #3"
+          "input_name": "uds_door_status_rear_right",
+          "description": "UDS: Door rear right",
+          "value_type": "Integer",
+          "value_titles": {
+            "0": "closed",
+            "1": "open",
+            "2": "not installed"
+          }
         },
         {
-            "input_name": "rs232_4",
-            "description": "RS-232 #4"
+          "input_name": "uds_pass_airbag_switch",
+          "description": "UDS: Passenger airbag",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "closed",
+            "1": "open"
+          }
         },
         {
-            "input_name": "rs232_5",
-            "description": "RS-232 #5"
+          "input_name": "uds_airbag_warning_lamp",
+          "description": "UDS: Warning lamp for airbag",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "off",
+            "1": "on"
+          }
         },
         {
-            "input_name": "rs232_6",
-            "description": "RS-232 #6"
+          "input_name": "uds_warn_brake_lining_wear",
+          "description": "UDS: Brake lining wear",
+          "value_type": "Integer",
+          "value_titles": {
+            "0": "OK or none active",
+            "1": "active or 1 stage reached",
+            "2": "2 stage reached"
+          }
         },
         {
-            "input_name": "tacho_mileage",
-            "description": "TACHO: Mileage"
+          "input_name": "uds_warn_brake_fluid_level_low",
+          "description": "UDS: Brake fluid level low",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "no",
+            "1": "yes"
+          }
         },
         {
-            "input_name": "tacho_speed",
-            "description": "TACHO: Speed"
+          "input_name": "uds_warn_coolant_level_low",
+          "description": "UDS: Coolant level low",
+          "value_type": "Boolean",
+          "value_titles": {
+            "0": "no",
+            "1": "yes"
+          }
         },
         {
-            "input_name": "temp_sensor",
-            "description": "Temperature"
+          "input_name": "presence_device_absent",
+          "description": "Identifier of the absent presence device",
+          "value_type": "String"
         },
         {
-            "input_name": "tire_pressure_1",
-            "description": "Tire pressure #1"
-        },
-        {
-            "input_name": "tire_pressure_10",
-            "description": "Tire pressure #10"
-        },
-        {
-            "input_name": "tire_pressure_11",
-            "description": "Tire pressure #11"
-        },
-        {
-            "input_name": "tire_pressure_12",
-            "description": "Tire pressure #12"
-        },
-        {
-            "input_name": "tire_pressure_13",
-            "description": "Tire pressure #13"
-        },
-        {
-            "input_name": "tire_pressure_14",
-            "description": "Tire pressure #14"
-        },
-        {
-            "input_name": "tire_pressure_15",
-            "description": "Tire pressure #15"
-        },
-        {
-            "input_name": "tire_pressure_16",
-            "description": "Tire pressure #16"
-        },
-        {
-            "input_name": "tire_pressure_17",
-            "description": "Tire pressure #17"
-        },
-        {
-            "input_name": "tire_pressure_18",
-            "description": "Tire pressure #18"
-        },
-        {
-            "input_name": "tire_pressure_19",
-            "description": "Tire pressure #19"
-        },
-        {
-            "input_name": "tire_pressure_2",
-            "description": "Tire pressure #2"
-        },
-        {
-            "input_name": "tire_pressure_20",
-            "description": "Tire pressure #20"
-        },
-        {
-            "input_name": "tire_pressure_21",
-            "description": "Tire pressure #21"
-        },
-        {
-            "input_name": "tire_pressure_22",
-            "description": "Tire pressure #22"
-        },
-        {
-            "input_name": "tire_pressure_23",
-            "description": "Tire pressure #23"
-        },
-        {
-            "input_name": "tire_pressure_24",
-            "description": "Tire pressure #24"
-        },
-        {
-            "input_name": "tire_pressure_25",
-            "description": "Tire pressure #25"
-        },
-        {
-            "input_name": "tire_pressure_26",
-            "description": "Tire pressure #26"
-        },
-        {
-            "input_name": "tire_pressure_27",
-            "description": "Tire pressure #27"
-        },
-        {
-            "input_name": "tire_pressure_28",
-            "description": "Tire pressure #28"
-        },
-        {
-            "input_name": "tire_pressure_29",
-            "description": "Tire pressure #29"
-        },
-        {
-            "input_name": "tire_pressure_3",
-            "description": "Tire pressure #3"
-        },
-        {
-            "input_name": "tire_pressure_30",
-            "description": "Tire pressure #30"
-        },
-        {
-            "input_name": "tire_pressure_4",
-            "description": "Tire pressure #4"
-        },
-        {
-            "input_name": "tire_pressure_5",
-            "description": "Tire pressure #5"
-        },
-        {
-            "input_name": "tire_pressure_6",
-            "description": "Tire pressure #6"
-        },
-        {
-            "input_name": "tire_pressure_7",
-            "description": "Tire pressure #7"
-        },
-        {
-            "input_name": "tire_pressure_8",
-            "description": "Tire pressure #8"
-        },
-        {
-            "input_name": "tire_pressure_9",
-            "description": "Tire pressure #9"
-        },
-        {
-            "input_name": "tire_temperature_1",
-            "description": "Tire air temperature #1"
-        },
-        {
-            "input_name": "tire_temperature_10",
-            "description": "Tire air temperature #10"
-        },
-        {
-            "input_name": "tire_temperature_11",
-            "description": "Tire air temperature #11"
-        },
-        {
-            "input_name": "tire_temperature_12",
-            "description": "Tire air temperature #12"
-        },
-        {
-            "input_name": "tire_temperature_13",
-            "description": "Tire air temperature #13"
-        },
-        {
-            "input_name": "tire_temperature_14",
-            "description": "Tire air temperature #14"
-        },
-        {
-            "input_name": "tire_temperature_15",
-            "description": "Tire air temperature #15"
-        },
-        {
-            "input_name": "tire_temperature_16",
-            "description": "Tire air temperature #16"
-        },
-        {
-            "input_name": "tire_temperature_17",
-            "description": "Tire air temperature #17"
-        },
-        {
-            "input_name": "tire_temperature_18",
-            "description": "Tire air temperature #18"
-        },
-        {
-            "input_name": "tire_temperature_19",
-            "description": "Tire air temperature #19"
-        },
-        {
-            "input_name": "tire_temperature_2",
-            "description": "Tire air temperature #2"
-        },
-        {
-            "input_name": "tire_temperature_20",
-            "description": "Tire air temperature #20"
-        },
-        {
-            "input_name": "tire_temperature_21",
-            "description": "Tire air temperature #21"
-        },
-        {
-            "input_name": "tire_temperature_22",
-            "description": "Tire air temperature #22"
-        },
-        {
-            "input_name": "tire_temperature_23",
-            "description": "Tire air temperature #23"
-        },
-        {
-            "input_name": "tire_temperature_24",
-            "description": "Tire air temperature #24"
-        },
-        {
-            "input_name": "tire_temperature_25",
-            "description": "Tire air temperature #25"
-        },
-        {
-            "input_name": "tire_temperature_26",
-            "description": "Tire air temperature #26"
-        },
-        {
-            "input_name": "tire_temperature_27",
-            "description": "Tire air temperature #27"
-        },
-        {
-            "input_name": "tire_temperature_28",
-            "description": "Tire air temperature #28"
-        },
-        {
-            "input_name": "tire_temperature_29",
-            "description": "Tire air temperature #29"
-        },
-        {
-            "input_name": "tire_temperature_3",
-            "description": "Tire air temperature #3"
-        },
-        {
-            "input_name": "tire_temperature_30",
-            "description": "Tire air temperature #30"
-        },
-        {
-            "input_name": "tire_temperature_4",
-            "description": "Tire air temperature #4"
-        },
-        {
-            "input_name": "tire_temperature_5",
-            "description": "Tire air temperature #5"
-        },
-        {
-            "input_name": "tire_temperature_6",
-            "description": "Tire air temperature #6"
-        },
-        {
-            "input_name": "tire_temperature_7",
-            "description": "Tire air temperature #7"
-        },
-        {
-            "input_name": "tire_temperature_8",
-            "description": "Tire air temperature #8"
-        },
-        {
-            "input_name": "tire_temperature_9",
-            "description": "Tire air temperature #9"
-        },
-        {
-            "input_name": "uds_adblue_tanklevel_absolut",
-            "description": "UDS: Level of AdBlue fluid"
-        },
-        {
-            "input_name": "uds_adblue_tanklevel_percent",
-            "description": "UDS: Level of AdBlue fluid (percent)"
-        },
-        {
-            "input_name": "uds_ambient_air_temp",
-            "description": "UDS: Ambient air temperature"
-        },
-        {
-            "input_name": "uds_battery_state_percent",
-            "description": "UDS: Battery level"
-        },
-        {
-            "input_name": "uds_battery_voltage",
-            "description": "UDS: Battery voltage"
-        },
-        {
-            "input_name": "uds_consumption",
-            "description": "UDS: Fuel consumption"
-        },
-        {
-            "input_name": "uds_consumption_average",
-            "description": "UDS: Average fuel consumption"
-        },
-        {
-            "input_name": "uds_consumption_average_high",
-            "description": "UDS: Average high fuel consumption"
-        },
-        {
-            "input_name": "uds_consumption_average_low",
-            "description": "UDS: Average low fuel consumption"
-        },
-        {
-            "input_name": "uds_consumption_since_reset",
-            "description": "UDS: Fuel consumption since reset"
-        },
-        {
-            "input_name": "uds_eco_co2_score",
-            "description": "UDS: Environmental score"
-        },
-        {
-            "input_name": "uds_engine_coolant_temp",
-            "description": "UDS: Coolant temperature"
-        },
-        {
-            "input_name": "uds_engine_oil_temperature",
-            "description": "UDS: Oil temperature"
-        },
-        {
-            "input_name": "uds_fuel_tank_level_absolute",
-            "description": "UDS: Fuel level"
-        },
-        {
-            "input_name": "uds_fuel_tank_level_percent",
-            "description": "UDS: Fuel level (percent)"
-        },
-        {
-            "input_name": "uds_odometer",
-            "description": "UDS: Odometer"
-        },
-        {
-            "input_name": "uds_rpm",
-            "description": "UDS: RPM"
-        },
-        {
-            "input_name": "uds_service_days_since_last",
-            "description": "UDS: Days since last service"
-        },
-        {
-            "input_name": "uds_service_distance_snc_lst",
-            "description": "UDS: Km since last service"
-        },
-        {
-            "input_name": "uds_service_interval_days",
-            "description": "UDS: Days till next service"
-        },
-        {
-            "input_name": "uds_service_interval_distance",
-            "description": "UDS: Distance to drive till next service"
-        },
-        {
-            "input_name": "uds_service_max_days",
-            "description": "UDS: Max days of service interval"
-        },
-        {
-            "input_name": "uds_service_max_distance",
-            "description": "UDS: Max km of service interval"
-        },
-        {
-            "input_name": "uds_speed",
-            "description": "UDS: Speed"
-        },
-        {
-            "input_name": "uds_steer_angle",
-            "description": "UDS: Steer angle"
-        },
-        {
-            "input_name": "uds_tank_level_cng_percent",
-            "description": "UDS: Cng fuel tank level (percent)"
-        },
-        {
-            "input_name": "uds_throttle",
-            "description": "UDS: Throttle"
-        },
-        {
-            "input_name": "uds_time_since_engine_start",
-            "description": "UDS: Run time since engine start"
-        },
-        {
-            "input_name": "uds_tire_pressure_front_left",
-            "description": "UDS: Tire pressure front left"
-        },
-        {
-            "input_name": "uds_tire_pressure_front_right",
-            "description": "UDS: Tire pressure front right"
-        },
-        {
-            "input_name": "uds_tire_pressure_rear_left",
-            "description": "UDS: Tire pressure rear left"
-        },
-        {
-            "input_name": "uds_tire_pressure_rear_right",
-            "description": "UDS: Tire pressure rear right"
-        },
-        {
-            "input_name": "user_data_1",
-            "description": "Custom user data #1"
-        },
-        {
-            "input_name": "user_data_10",
-            "description": "Custom user data #10"
-        },
-        {
-            "input_name": "user_data_11",
-            "description": "Custom user data #11"
-        },
-        {
-            "input_name": "user_data_12",
-            "description": "Custom user data #12"
-        },
-        {
-            "input_name": "user_data_13",
-            "description": "Custom user data #13"
-        },
-        {
-            "input_name": "user_data_14",
-            "description": "Custom user data #14"
-        },
-        {
-            "input_name": "user_data_15",
-            "description": "Custom user data #15"
-        },
-        {
-            "input_name": "user_data_16",
-            "description": "Custom user data #16"
-        },
-        {
-            "input_name": "user_data_17",
-            "description": "Custom user data #17"
-        },
-        {
-            "input_name": "user_data_18",
-            "description": "Custom user data #18"
-        },
-        {
-            "input_name": "user_data_19",
-            "description": "Custom user data #19"
-        },
-        {
-            "input_name": "user_data_2",
-            "description": "Custom user data #2"
-        },
-        {
-            "input_name": "user_data_20",
-            "description": "Custom user data #20"
-        },
-        {
-            "input_name": "user_data_21",
-            "description": "Custom user data #21"
-        },
-        {
-            "input_name": "user_data_22",
-            "description": "Custom user data #22"
-        },
-        {
-            "input_name": "user_data_23",
-            "description": "Custom user data #23"
-        },
-        {
-            "input_name": "user_data_24",
-            "description": "Custom user data #24"
-        },
-        {
-            "input_name": "user_data_25",
-            "description": "Custom user data #25"
-        },
-        {
-            "input_name": "user_data_26",
-            "description": "Custom user data #26"
-        },
-        {
-            "input_name": "user_data_27",
-            "description": "Custom user data #27"
-        },
-        {
-            "input_name": "user_data_28",
-            "description": "Custom user data #28"
-        },
-        {
-            "input_name": "user_data_29",
-            "description": "Custom user data #29"
-        },
-        {
-            "input_name": "user_data_3",
-            "description": "Custom user data #3"
-        },
-        {
-            "input_name": "user_data_30",
-            "description": "Custom user data #30"
-        },
-        {
-            "input_name": "user_data_31",
-            "description": "Custom user data #31"
-        },
-        {
-            "input_name": "user_data_32",
-            "description": "Custom user data #32"
-        },
-        {
-            "input_name": "user_data_4",
-            "description": "Custom user data #4"
-        },
-        {
-            "input_name": "user_data_5",
-            "description": "Custom user data #5"
-        },
-        {
-            "input_name": "user_data_6",
-            "description": "Custom user data #6"
-        },
-        {
-            "input_name": "user_data_7",
-            "description": "Custom user data #7"
-        },
-        {
-            "input_name": "user_data_8",
-            "description": "Custom user data #8"
-        },
-        {
-            "input_name": "user_data_9",
-            "description": "Custom user data #9"
+          "input_name": "absent_device_recovered",
+          "description": "Identifier of the absent device that was recovered",
+          "value_type": "String"
         }
-        ]
+      ],
+      "success": true
     }
     ```
 
