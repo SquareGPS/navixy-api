@@ -34,7 +34,7 @@ Example use cases include:
    Think about what you want to automate. For instance, you might want to deactivate equipment automatically when it leaves a specific geofence.
 
 3. **Access Navixy Triggers and Actions**
-   Open the [invitation link](https://zapier.com/developer/public-invite/150604/ce501cb480b559ee2b402283f0c8faa9/) to access Navixy triggers and actions. Click "Accept invite & Build a Zap."
+   Open the [invitation link](https://zapier.com/developer/public-invite/150604/58a1e9e9182a0403e11abe7314614505/) to access Navixy triggers and actions. Click "Accept invite & Build a Zap."
 
 4. **Dashboard Overview**
    The dashboard displays all your Zaps. You can create, update, and manage your Zaps here.
