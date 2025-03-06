@@ -103,14 +103,18 @@ Gets last values for all sensors, state values and counters.
     * `type` - [metering sensor type](sensor/index.md#metering-sensor-type-values). The type of the sensor.
     * `units_type` - string. The type of the units in which the sensor value is measured.
     * `update_time` - date/time. The time when the sensor value was updated.
-    * `composite_sensor_ids` - array of int. The IDs of the composite sensors that include sensor. Optional.
+    * `min_value` - optional float. The minimum value of the sensor.
+    * `max_value` - optional float. The maximum value of the sensor.
+    * `converted_units_type` - nullable string. The type of the units in which the sensor value is converted.
+    * `converted_value` - nullable float. The converted value of the sensor reading.
+    * `composite_sensor_ids` - optional array of int. The IDs of the composite sensors that include sensor.
 * `states` - an array of JSON objects containing information about the tracker state readings.
     * `field` - string. The field name of the state.
     * `value` - can be string, int, float, boolean, or null. The value of the field.
     * `update_time` - date/time. The time when the field value was updated.
-* `virtualSensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
+* `virtual_sensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
     * `sensor_id` - int. The ID of the virtual sensor.
-    * `value` - float. The value of the virtual sensor.
+    * `value` - string. The value of the virtual sensor.
     * `label` - string. The label of the virtual sensor.
     * `type` - [virtual sensor type](sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
     * `update_time` - date/time. The time when the virtual sensor value was updated.
@@ -282,18 +286,18 @@ Gets last values for all sensors, state values and counters on multiple trackers
     * `type` - [metering sensor type](sensor/index.md#metering-sensor-type-values). The type of the sensor.
     * `units_type` - string. The type of the units in which the sensor value is measured.
     * `update_time` - date/time. The time when the sensor value was updated.
-    * `min_value` - float. The minimum value of the sensor.
-    * `max_value` - float. The maximum value of the sensor.
-    * `converted_units_type` - string. The type of the units in which the sensor value is converted.
-    * `converted_value` - float. The converted value of the sensor reading.
-    * `composite_sensor_ids` - array of int. The IDs of the composite sensors that include sensor. Optional.
+    * `min_value` - optional float. The minimum value of the sensor.
+    * `max_value` - optional float. The maximum value of the sensor.
+    * `converted_units_type` - nullable string. The type of the units in which the sensor value is converted.
+    * `converted_value` - nullable float. The converted value of the sensor reading.
+    * `composite_sensor_ids` - optional array of int. The IDs of the composite sensors that include sensor.
 * `states` - an array of JSON objects containing information about the tracker state readings.
     * `field` - string. The field name of the state.
     * `value` - can be string, int, float, boolean, or null. The value of the field.
     * `update_time` - date/time. The time when the field value was updated.
-* `virtualSensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
+* `virtual_sensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
     * `sensor_id` - int. The ID of the virtual sensor.
-    * `value` - float. The value of the virtual sensor.
+    * `value` - string. The value of the virtual sensor.
     * `label` - string. The label of the virtual sensor.
     * `type` - [virtual sensor type](./sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
     * `update_time` - date/time. The time when the virtual sensor value was updated.
