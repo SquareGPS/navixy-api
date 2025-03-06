@@ -151,8 +151,8 @@ Contains API calls to interact with sensors.
 
 #### Virtual sensor type values
 
-*   `state`
-*   `virtual_ignition`
+*   `state` – custom virtual sensor
+*   `virtual_ignition` – virtual ignition sensor
 
 Some requirements:
 
