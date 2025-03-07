@@ -14,43 +14,55 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
 
 ```json
 {
-    "id": 1,
-    "type": "tracker",
-    "is_read": false,
-    "message": "Alarm",
-    "time": "2020-01-01 00:00:00",
-    "event": "offline",
-    "tracker_id": 2,
-    "rule_id": 3,
-    "track_id": 4,
-    "location":{ 
-        "lat": 50.0,
-        "lng": 60.0,
-        "precision": 50
-    },
-    "address": "address",
-    "extra": {
-        "task_id": null , 
-        "parent_task_id": null,
-        "counter_id": null,
-        "service_task_id": null,
-        "checkin_id": null,
-        "place_ids": null,
-        "last_known_location": false,
-        "tracker_label": "Tracker label",
-        "emergency": false,
-        "employee_id": 4563
-    },
-    "assets": [
-        {
+  "id": 1,
+  "type": "tracker",
+  "is_read": false,
+  "message": "Alarm",
+  "time": "2020-01-01 00:00:00",
+  "event": "offline",
+  "tracker_id": 2,
+  "rule_id": 3,
+  "track_id": 4,
+  "location": {
+    "lat": 50.0,
+    "lng": 60.0,
+    "precision": 50
+  },
+  "address": "address",
+  "extra": {
+    "task_id": null,
+    "parent_task_id": null,
+    "counter_id": null,
+    "service_task_id": null,
+    "checkin_id": null,
+    "place_ids": null,
+    "last_known_location": false,
+    "tracker_label": "Tracker label",
+    "emergency": false,
+    "employee_id": 4563,
+    "asset_groups": [
+      {
+        "id": 7989,
+        "name": "group_14",
+        "assets": [
+          {
             "id": 4563,
             "type": "employee"
-        },
-        {
+          },
+          {
             "id": 6345,
             "type": "vehicle"
-        }
+          }
+        ]
+      }
     ]
+  },
+  "assets": [
+    {
+      "id": 4563,
+      "type": "employee"
+    }
+  ]
 }
 ```
 
@@ -84,6 +96,12 @@ Find instructions on getting notifications [here](../../../guides/rules-notifica
     * `sensor_calculated_value` - optional string. Related sensor value.
     * `employee_full_name` - optional string. Related driver full name.
     * `vehicle_label` - optional string. Related vehicle label.
+    * `asset_groups` - optional array of objects. List of related asset groups.
+        * `id` - int. Identifier of the asset group.
+        * `name` - string. Name of the asset group.
+        * `assets` - optional array of objects. List of related objects containing identifier and type.
+            * `id` - int. Identifier of the asset.
+            * `type` - string. Type of the asset. Can be "vehicle" or "employee".
 * `assets` - optional array of objects. List of related objects containing identifier and type.
     * `id` - int. Identifier of the asset.
     * `type` - string. Type of the asset. Can be "vehicle" or "employee".

@@ -54,47 +54,14 @@ If both `add_asset_label` and `add_tracker_label` are `true`, the asset label wi
 
 ```json
 {
-    "success": true,
-    "list": [{
-         "id": 1,
-         "type": "tracker",
-         "is_read": false,
-         "message": "Alarm",
-         "time": "2020-01-01 00:00:00",
-         "event": "offline",
-         "tracker_id": 2,
-         "rule_id": 3,
-         "track_id": 4,
-         "location":{ 
-             "lat": 50.0,
-             "lng": 60.0,
-             "precision": 50
-         },
-         "address": "address",
-         "extra": {
-             "task_id": null ,
-             "parent_task_id": null,
-             "counter_id": null,
-             "service_task_id": null,
-             "checkin_id": null,
-             "place_ids": null,
-             "last_known_location": false,
-             "tracker_label": "Tracker label",
-             "emergency": false,
-             "employee_id": 4563
-         }
-    }],
-    "limit_exceeded": false,
-    "total": 150,
-    "total_unread": 10
+  "list": [<history_entry>],
+  "limit_exceeded": false,
+  "success": true
 }
 ```
 
-* `list` - list of zero or more history_entry` objects which described in [Tracker history entry](index.md#tracker-history-entry). 
-* `limit_exceeded` - boolean. It indicates if the response has exceeded the `store_period` limit, set in the user's 
-tariff plan. Will be `true` if you request a period that exceeds what the user's plan allows.
-* `total` - int. Amount of history entries satisfied with conditions.
-* `total_unread` - int. Amount of unread history entries satisfied with conditions.
+* `list` - list of zero or more history entry objects described [here](index.md#tracker-history-entry). 
+* `limit_exceeded` - boolean. `true` if the requested period exceeds the user's tariff store period.
 
 #### Errors
 
