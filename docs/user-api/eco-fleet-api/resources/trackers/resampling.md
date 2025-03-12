@@ -3,7 +3,8 @@ title: Fuel data resampling
 ---
 
 # Fuel data resampling
-!!! note "Navixy Eco Fleet Lab has developed a solution for complex fuel data analysis. This method regenerates data sets which will be beneficial for variety of exercises, enabling researchers, developers, and diagnostics experts to leverage the **processed data**."
+
+> Navixy Eco Fleet Lab has developed a solution for complex fuel data analysis. This method regenerates data sets which will be beneficial for variety of exercises, enabling researchers, developers, and diagnostics experts to leverage the **processed data**.
 
 **Diagnostic process** is an important procedure undertaken by numerous partners and investigators. Its primary purpose is to identify the underlying causes, which is essential for efficient fuel management by identifying any abnormalities. For example, they analyze key events - drains and refueling for fraud or look for a reason for the appearance of noise in the fuel data.
 
@@ -33,7 +34,7 @@ The API response is presented in a convenient CSV format, incorporating columns 
 Standard list
 
 | name             | description                                                                                      | type             | format                                            |
-|:-----------------|:-------------------------------------------------------------------------------------------------|:-----------------|---------------------------- ----------------------|
+|:-----------------|:-------------------------------------------------------------------------------------------------|:-----------------|---------------------------------------------------|
 | hash             | Hash of an API key is required for API calls to identify user.                                   | string           | "NVX c459c3589336ebf26ff18257a8d93a45"            |
 | tracker_id       | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.  | int              | 123456                                            |
 | interval         | Sensor readings' datetime interval which will be analyzed. Last week by default.                 | interval         | 2023-08-24T08:04:36.306Z/2023-08-26T08:04:36.306Z |
