@@ -20,7 +20,7 @@ Returns mileage in kilometers in specified period grouped by trackers and day.
 
 | name     | description                                                                                         | type                                                         |
 |:---------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|
-| trackers | Array of tracker IDs (aka "object_id"). Trackers must belong to authorized user and not be blocked. | int array                                                    |
+| trackers | Array of tracker IDs (aka "object_id"). Trackers must belong to authorized user and not be blocked. Maximum 128 trackers per request. | int array                               |
 | from     | From date/time.                                                                                     | [date/time](../../../../getting-started/introduction.md#datetime-formats) |
 | to       | To date/time. Specified date must be after "from" date.                                             | [date/time](../../../../getting-started/introduction.md#datetime-formats) |
 
