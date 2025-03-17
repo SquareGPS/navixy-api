@@ -12,7 +12,7 @@ when you click on it.
 Some apps have been developed by our partners and are available in [Marketplace](https://marketplace.navixy.com/). 
 To add them, contact the developer of the application.
 
-!!! note "If your domain is using an HTTPS connection, the link to the application must also be HTTPS. Otherwise, you will encounter a mixed content error." 
+> If your domain is using an HTTPS connection, the link to the application must also be HTTPS. Otherwise, you will encounter a mixed content error.
 
 
 ## Authorization in the application
@@ -28,7 +28,7 @@ By default, the web server sends the following cookies when an external applicat
 * User session hash as `hash=a6aa75587e5c59c32d347da438505fc3`.
 * Locale as `locale=en`.
 
-!!! note "If you do not want the server to send cookies, inform technical support and this function will be disabled."
+> If you do not want the server to send cookies, inform technical support and this function will be disabled.
 
 ## How to add an application
 
@@ -45,7 +45,7 @@ Contact [Navixy technical support](../../../general/contacts.md) and specify the
 Our specialists will do everything necessary, and the application will be available in the user interface.
 The application can be installed for all users or for a specific one.
 
-!!! note "If the app will be installed to the specific user, please contact the support team every time you need to add this app to another user. If the app installed for whole panel - all new users will automatically get the app. Also, the app can be installed to whole panel instead of specific users."
+> If the app will be installed to the specific user, please contact the support team every time you need to add this app to another user. If the app installed for whole panel - all new users will automatically get the app. Also, the app can be installed to whole panel instead of specific users.
 
 
 ### Standalone version

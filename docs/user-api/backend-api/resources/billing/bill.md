@@ -128,7 +128,7 @@ Shows list of bills with their parameters in array.
 
 If bill created using [/bill/create](#create) call then **positions** will contain exactly one element.
 
-!!! note "For Standalone version base part of **link** may be changed by **billing.orders.baseUrl** config option."
+> For Standalone version base part of **link** may be changed by **billing.orders.baseUrl** config option.
 
 #### Errors
 

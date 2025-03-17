@@ -89,7 +89,7 @@ Forms can be filled in two ways:
 
 A form can be assigned to an existing task with the [task update](../../resources/field_service/task/index.md#update) call or used during [task creation](../../resources/field_service/task/index.md#create).
 
-!!! note "`create_form` parameter should be `false` to add an already created form."
+> `create_form` parameter should be `false` to add an already created form.
 
 ## Retrieving Information from Submitted Forms
 

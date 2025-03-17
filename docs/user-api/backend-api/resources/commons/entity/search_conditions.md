@@ -41,7 +41,8 @@ Search conditions are represented by an array of conditions, where each conditio
 ]
 ```
 
-!!! warning "A maximum of 72 conditions can be used at once, including nested conditions."
+<!-- theme: warning -->
+> A maximum of 72 conditions can be used at once, including nested conditions.
 
 
 ## Condition Types

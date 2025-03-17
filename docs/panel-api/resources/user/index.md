@@ -7,7 +7,7 @@ description: API calls on work with users in the admin panel.
 
 In the Navixy Admin Panel, a User refers to the accounts of Organizations or Individuals who are customers of the Dealer (or Sub Dealer). For example, an organization 'ABC Inc.' can be a User with the type "legal_entity," and John Doe can be a User with the type "individual."
 
-!!! note "User accounts may have additional sub-accounts, commonly referred to as 'sub-users,' allowing larger organizations to grant access to multiple employees."
+> User accounts may have additional sub-accounts, commonly referred to as 'sub-users,' allowing larger organizations to grant access to multiple employees.
 
 This page describes the User object and the API actions that can be performed with it within the Admin Panel.
 

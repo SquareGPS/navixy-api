@@ -28,13 +28,10 @@ Let's describe a standard workflow for WebSocket API:
 6. Subscribe and unsubscribe on the events if needed.
 7. Unsubscribe when leaving monitoring page using [unsubscribe action](subscription.md#unsubscribe-action).
 
-!!! note
-    * The [subscription requests](subscription.md) must contain the 
-      `hash` of an [API Key](../resources/commons/api-keys.md).
-    * Responses and errors for [subscribe](subscription.md#subscribe-action) 
-      and [unsubscribe](subscription.md#unsubscribe-action) actions are similar 
-      with common [API](../getting-started/introduction.md) format.
-    * All `WebSocket` frames use a `JSON` format. Exceptions are heartbeat frames containing "X".
+> ### Notes:
+> * The [subscription requests](subscription.md) must contain the `hash` of an [API Key](../resources/commons/api-keys.md).
+> * Responses and errors for [subscribe](subscription.md#subscribe-action) and [unsubscribe](subscription.md#unsubscribe-action) actions are similar with common [API](../getting-started/introduction.md) format.
+> * All `WebSocket` frames use a `JSON` format. Exceptions are heartbeat frames containing "X".
 
 
 ## Open connection

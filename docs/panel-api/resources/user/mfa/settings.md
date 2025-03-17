@@ -1,8 +1,9 @@
 # Multi-factor authentication settings
 
-!!! warning "Work in progress"
-    This API is a work in progress and may change in future releases.
-    In this version allowing MFA to a user automatically enables it for them.
+<!-- theme: warning -->
+> **Work in progress!** <br>
+> This API is a work in progress and may change in future releases.<br>
+> In this version, allowing MFA to a user automatically enables it for them.
 
 ## API actions
 

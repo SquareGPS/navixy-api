@@ -500,13 +500,11 @@ Gets all geofence IDs and names within which a specified coordinates are located
 
 Update geofence parameters for the specified geofence.
 
-!!! note "Notes"
-
-    - The geofence must exist, belong to the current user, and its type cannot be modified.
-    For example, if you already have a geofence with ID=1 of type "circle",
-    you cannot submit a geofence with the same ID but of type "polygon".
-    - If the `zone` object is of type `sausage` or `polygon` and contains an array of points, these points will be updated.
-    Alternatively, you can update the points using the [zone/point/update](zone_point.md#update) endpoint.
+> ### Notes:
+> - The geofence must exist, belong to the current user, and its type cannot be modified.
+>     For example, if you already have a geofence with ID=1 of type "circle",
+>     you cannot submit a geofence with the same ID but of type "polygon".
+> - If the `zone` object is of type `sausage` or `polygon` and contains an array of points, these points will be updated. Alternatively, you can update the points using the [zone/point/update](zone_point.md#update) endpoint.
 
 **required sub-user rights**: `zone_update`.
 
@@ -730,8 +728,7 @@ Download geofences as KML File.
 
 A KML/KMZ file with the points (standard file download).
 
-!!! example "Example of a KML file with different geofences"
-
+<!-- title: "Example of a KML file with different geofences" -->
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <kml xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">

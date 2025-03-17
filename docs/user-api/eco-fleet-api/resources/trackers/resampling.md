@@ -14,7 +14,7 @@ Effective data management relies on **accurate and synchronized raw data**. Howe
 
 To tackle the challenges posed by incomplete or inconsistent data, we utilize advanced statistical models. With our API requests, you can easily **access and download processed datasets** from our platform for specific time periods. This API request specifically provides fuel-related data in a convenient CSV format.
 
-!!! note "**Data resampling** refers to the joint process of creating a uniform data structure by organizing existing values and generating new ones (for missing values) in a chronological order, while considering equal time intervals. This approach ensures data integrity and facilitates analysis."
+> **Data resampling** refers to the joint process of creating a uniform data structure by organizing existing values and generating new ones (for missing values) in a chronological order, while considering equal time intervals. This approach ensures data integrity and facilitates analysis.
 
 ## data_resampling
 ### Description
@@ -58,7 +58,7 @@ Additional list of resampling parameters
 * AVERAGE_IN_WINDOW- In this algorithm, the presence of delta is imperative. The median of all the neighboring values in the series within the interval [T-Δ, T+Δ], fixed_value if no values.
 * AVERAGE - To replace missing values in a series, we use the average of the two neighboring values. For any missing values between valid ones, we replace them with the average of the surrounding valid values. If the series begins or ends with missing values, we substitute them with the next or previous valid value accordingly. If delta is not equal to null than algorithm changes: if the interval [T-Δ, T+Δ] contains at least one value, otherwise fixed_value.
 
-!!! note "We recommend utilizing distinct methods for varying data types, as outlined in the table below. However, the choice of which methods to employ ultimately depends on your individual needs and expectations."
+> We recommend utilizing distinct methods for varying data types, as outlined in the table below. However, the choice of which methods to employ ultimately depends on your individual needs and expectations.
 
 | Method     | Data type            | Use case                                                                               |
 |:-----------|:---------------------|:---------------------------------------------------------------------------------------|

@@ -105,6 +105,7 @@ Choose one of the following actions based on your device and use case.
 
 Activate your Zap to start the automation. Ensure your device is online to receive commands.
 
-!!! warning "Switching off the engine of a moving vehicle can lead to serious accidents and is extremely dangerous. This action should only be performed under safe conditions, such as when the vehicle is stationary and secured. Navixy is not liable for any accidents, injuries, or damages resulting from the improper use of this functionality."
+<!-- theme: warning -->
+> Switching off the engine of a moving vehicle can lead to serious accidents and is extremely dangerous. This action should only be performed under safe conditions, such as when the vehicle is stationary and secured. Navixy is not liable for any accidents, injuries, or damages resulting from the improper use of this functionality.
 
 For detailed steps and more examples, refer to the [Navixy documentation](../general/getting-started.md).

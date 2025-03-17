@@ -50,9 +50,8 @@ The data should cover trips starting from 3:24 AM to 6:24 AM on November 19, 202
 
 In case the available storage period is not exceeded, you will get the file.
 
-!!! example "KML file example with two points"
-
-    ```xml
+<!-- title: "KML file example with two points" -->
+```xml
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
       <Document>
@@ -97,7 +96,7 @@ In case the available storage period is not exceeded, you will get the file.
         </Placemark>
       </Document>
     </kml>
-    ```
+```
 
 For example, if the device's plan has maximum available storage period 3 months (default value) and we request data from 
 6 months, the response will contain JSON with the next information: 
@@ -112,10 +111,8 @@ For example, if the device's plan has maximum available storage period 3 months 
 
 #### Errors
 
-* 201 - Not found in database – the tracker ID in your request may not match any trackers linked to the user account with this 
-session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
-* 208 - Device blocked – if a tracker exists under this user account but is currently inactive due to tariff plan 
-restrictions or any other reason.
+* 201 - Not found in database – the tracker ID in your request may not match any trackers linked to the user account with this session hash. Ensure the correct tracker_id and hash of an appropriate user are used.
+* 208 - Device blocked – if a tracker exists under this user account but is currently inactive due to tariff plan restrictions or any other reason.
 * 211 - Requested time span is too big – If the interval between the "from" and "to" dates is too large, it may exceed 
 the maximum value defined in the API configuration.
 

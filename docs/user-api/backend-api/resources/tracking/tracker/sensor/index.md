@@ -412,8 +412,9 @@ in use.
 
 Copies sensors from one tracker to another.
 
-!!! warning "Important"
-    This operation will delete sensors of target trackers, and some sensor data could be lost!
+<!-- theme: warning -->
+> **Important!**<br>
+> This operation will delete sensors of target trackers, and some sensor data could be lost!
 
 **required sub-user rights:** `tracker_update`.
 

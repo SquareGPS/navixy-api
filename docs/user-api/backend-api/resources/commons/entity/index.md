@@ -127,7 +127,7 @@ Gets entity by the ID or by type.
 | id   | ID of an entity.                                  | int    |
 | type | Type of an entity. Entity type string, see above. | string |
 
-!!! note "Exactly one of these parameters must be specified. They can't be both null or both non-null."
+> Exactly one of these parameters must be specified. They can't be both null or both non-null.
 
 #### Examples
 
@@ -195,7 +195,8 @@ Updates settings of customizable entity. Entity must have a valid ID.
 
 **required sub-user rights**: `places_custom_fields_update` for entities with type `place`.
 
-!!! warning "`entity.settings.layout.sections` must contain IDs of all builtin and custom fields which are associated with this entity. No fields can be omitted from layout, only reordering allowed. Fields cannot be duplicated, even in different sections."
+<!-- theme: warning -->
+> `entity.settings.layout.sections` must contain IDs of all builtin and custom fields which are associated with this entity. No fields can be omitted from layout, only reordering allowed. Fields cannot be duplicated, even in different sections.
 
 #### Parameters
 

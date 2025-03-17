@@ -492,7 +492,7 @@ Plugin-specific parameters:
 }
 ```
 
-!!! note "Parameter `details_interval_minutes` is deprecated. Please use `details_interval_seconds`."
+> Parameter `details_interval_minutes` is deprecated. Please use `details_interval_seconds`.
 
 #### plugin example
 
@@ -633,7 +633,7 @@ Plugin-specific parameters:
 }
 ```
 
-!!! note "Param `details_interval_minutes` is deprecated. Please sue `details_interval_seconds`."
+> Param `details_interval_minutes` is deprecated. Please sue `details_interval_seconds`.
 
 #### plugin example
 
