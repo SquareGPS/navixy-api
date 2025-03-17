@@ -1225,6 +1225,15 @@
               ]
             }
           ]
-        }
+        },
+    {
+    "type": "divider",
+    "title": " "
+    },
+    {
+    "type": "item",
+    "title": "Go to GitHub repository",
+    "uri": "https://github.com/SquareGPS/navixy-api"
+    }
   ]
 }
