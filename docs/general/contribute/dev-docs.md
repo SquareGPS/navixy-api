@@ -2,17 +2,17 @@
 title: Get involved
 description: Get involved into improving documentation and translations of the Navixy Platform
 ---
-# Contributing to Developer Documentation
+# Contributing to Developer documentation
 
 Join us in enhancing Navixy developer documentation! Your contributions are highly valued and appreciated. Whether you’ve spotted an inaccuracy, found a typo, or have additional information to share, your help is appreciated. All our documentation is publicly available on [GitHub]({{ config.repo_url }}), and you can get involved in several ways to make it better:
 
-1. [Creating an issue]({{ config.repo_url }}issues/new) with a detailed description of the problem.
+1. [Creating an issue with a detailed description of the problem.](https://github.com/SquareGPS/navixy-api/issues/new) 
 2. [Editing a single page in a browser](#quick-edits-in-the-browser).
-3. [Installing and editing](#advanced-local-editing) and making multiple commits before creating a pull request.
+3. [Local editing and making multiple commits before creating a pull request.](#advanced-local-editing) 
 
 In each case, a GitHub account is required. If you prefer not to register on GitHub, you can [contact us](../contacts.md) with any feedback or suggestions.
 
-### Quick Edits in the Browser
+### Quick edits in the browser
 
 For simple, quick edits, you can use the built-in GitHub editor:
 
@@ -26,109 +26,113 @@ For simple, quick edits, you can use the built-in GitHub editor:
 
 We will review your pull request and, once approved, merge it into the main branch. This method is best for minor, single-page edits.
 
-### Advanced Local Editing
+## Local editing
 
 For more comprehensive edits, or if you need to work on multiple pages, you can set up the documentation locally:
 
-1. **Install Python and Git:**
-    - Download and install [Python 3.7.9](https://www.python.org/downloads/release/python-379/). Newer versions might not work correctly.
-    - Download and install the [Git client](https://git-scm.com/downloads).
+## Prerequisites
 
-2. **Set Up Your Development Environment:**
-    - Install an Integrated Development Environment (IDE), such as [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community edition is sufficient).
-    - Fork the [Navixy documentation repository]({{ config.repo_url }}).
-    - Clone your fork to your local machine using your IDE: `File` -> `New` -> `Project from version control`.
+Before you start contributing to the Navixy API documentation in Stoplight, ensure you have the following tools installed:
 
-3. **Install Dependencies:**
-    - Open a terminal or command prompt and navigate to your project directory.
-    - Set up a virtual environment:
-      ```sh
-      cd /path/to/project/on/your/pc
-      mkdir venv
-      python -m venv ./venv
-      ```
-    - Activate the virtual environment:
-        - On Windows:
-        ```
-        C:\path\to\project\venv\Scripts\activate.bat
-        ```
-        - On macOS/Linux:
-        ```sh
-        source venv/bin/activate
-        ```
-    - Install MkDocs and dependencies:
-      ```sh
-      pip install -r requirements.txt
-      ```
+- **Git** – Required for version control and managing your contributions
+- **GitHub Account** – Needed for submitting your changes
 
-4. **Run the Documentation Locally:**
-    - Start the local MkDocs server:
-      ```sh
-      mkdocs serve --dirtyreload
-      ```
-    - Open your browser and navigate to `http://localhost:8000` to see the documentation.
+Optional but recommended tools:
 
-5. **Make Your Edits:**
-    - Create a new branch in your local Git repository (avoid using the master branch).
-    - Make your changes and preview them locally in the browser.
-    - Commit your changes with clear commit messages in English.
+- **Stoplight Studio** – A visual editor for editing OpenAPI and Markdown files
+- **Stoplight CLI** – Enables local previews of the documentation
 
-6. **Submit Your Changes:**
-    - Push your changes to your fork on GitHub.
-    - Open a pull request from your fork to the main repository. Ensure your pull request description is in English.
+### Getting started
 
-After your pull request is reviewed and merged, you can delete your branch and rebase your fork to the upstream repository.
+Fork the repository, clone it to your local machine, and create a new branch for your changes. This keeps your contributions organized and makes the review process smoother.
 
-## Introduction to MkDocs
+### Editing documentation
 
-Our documentation is built using [MkDocs](https://mkdocs.org) and the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) theme. To get started, read the [MkDocs user guide](https://mkdocs.org/user-guide/writing-your-docs) for an overview of how to layout and write Markdown source files.
+#### Working with markdown files
 
-### Menu
+The documentation consists primarily of Markdown files with Stoplight Flavored Markdown (SMD) extensions:
 
-The menu structure is automatically generated using the [awesome-pages plugin](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin). To set the desired page order, use a `.pages.yml` file in the directory. Example:
+1. Navigate to the folder containing the documentation you want to edit
+2. Open the relevant `.md` files in your preferred text editor or Stoplight Studio
+3. Make your changes following the [Stoplight Flavored Markdown conventions](https://docs.stoplight.io/docs/platform/b591e6d161539-stoplight-flavored-markdown-smd)
 
-```yaml
-title: Backend API
-nav:
-  - introduction.md
-  - how-to
-  - resources
-  - websocket
+#### Working with API specifications
+
+If you're updating API endpoint documentation:
+
+1. Locate the relevant OpenAPI specification files (`.yaml` or `.json`)
+2. Edit them using Stoplight Studio for the best experience, or manually in a text editor
+3. Ensure your changes maintain the correct OpenAPI syntax
+4. Test your changes for validity if possible
+
+### Previewing your changes
+
+#### Using Stoplight Studio
+
+For the best editing experience:
+
+1. Open Stoplight Studio
+2. Select "Open Existing Project" and navigate to your cloned repository
+3. Make your edits and preview them in real-time within the Studio interface
+
+#### Using Stoplight CLI
+
+If you've installed the Stoplight CLI:
+
+```sh
+stoplight preview
 ```
 
-### Meta Information
+This will start a local server where you can preview how your documentation changes will look.
 
-Each page should start with a meta-information section. Required fields are `title` and `description`. Example:
+### Submitting your changes
 
-```yaml
----
-title: Get involved
-description: Contribute to improving Navixy documentation and translations.
----
-```
+Commit your changes with clear, descriptive messages in English. Push to your fork on GitHub and create a pull request with a detailed description of your changes.
 
-### Headers
+When creating your pull request, make sure to select `master` as the target branch. All contributions should be submitted against the master branch unless specifically instructed otherwise.
 
-Structure your information with clear headers. Ensure consistency across pages of the same type.
+The repository maintainers will review your contribution and may request modifications or clarifications before merging.
 
-### Example
+### Documentation style guidelines
 
-API resource page structure:
+#### Documentation structure
+
+The documentation includes three types of files:
+* Documents (.md)
+* API calls (.json or .yaml)
+
+Documents are divided into semantic parts, starting with an introduction that summarizes the content.
+
+#### API call descriptions
+
+Each API call should include the following sections:
+
+* **Introduction** - General information and purpose of the API call
+* **Object structure** - Describes the object structure used in the calls (optional)
+* **API Actions** - Base API call and associated actions, including:
+    * **Action description** - Purpose of the API action
+    * **Requirements** - Necessary permissions (optional)
+    * **Parameters table** - Lists parameters for the API call with descriptions and data types
+    * **Examples** - API call examples with parameters, including copy functionality
+    * **Response** - Example of a successful server response with field descriptions
+    * **Errors** - Specific errors related to the API action, plus a general error list
+
+#### Example API documentation format
 
 ```markdown
-# Resource Name
+# Resource name
 
 Resource description.
 
-## Object Name
+## Object name
 
 Object and its description.
 
-## API Actions
+## API actions
 
 Path: `/path/to/resource/`.
 
-### Method_1
+### method_name
 
 Method description.
 
@@ -164,14 +168,8 @@ Method description.
 #### Errors
 
 Special error codes.
-
-### Method_2
-...
-
-
 ```
 
-
-If the response or structure has comments, please write these comments separately in a list format below.
+Ensure your documentation is accurate and all examples work as described.
 
 For actual examples, refer to [user](../../user-api/backend-api/resources/commons/user/index.md) and [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/master/docs/user-api/backend-api/resources/commons/user/index.md).

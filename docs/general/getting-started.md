@@ -4,7 +4,7 @@ description: Getting started with Navixy API
 ---
 # Navixy Developer Documentation
 
-[Navixy](https://navixy.com) is a comprehensive GPS / Vehicle telematics platform developed by [SquareGPS](https://squaregps.com). This documentation provides detailed information on integrating third-party solutions with the Navixy platform, including API and technical documentation tailored for developers and partners.
+[Navixy](https://navixy.com) is a comprehensive GPS/Vehicle telematics platform developed by [SquareGPS](https://squaregps.com). This documentation provides detailed information on integrating third-party solutions with the Navixy platform, including API and technical documentation tailored for developers and partners.
 
 ## How to use this documentation
 
@@ -16,13 +16,17 @@ The documentation is organized into sections, each addressing a specific aspect 
 
 ### Navigation
 
-Navigate using the top menu. Access our GitHub via link on the right. The left-hand menu lists files for each section—click to view contents. Use the internal menu on the right for quick navigation within the file.
+Navigate the documentation sections using the left sidebar. Use the internal menu on the right for quick navigation within the page.
+
+You can access the related GitHub repository directly via link on the left sidebar. 
 
 ### Documentation structure
 
 The documentation includes three types of files: Documents, Guides, and API calls. Documents and guides are divided into semantic parts, starting with an introduction that summarizes the content.
 
 ### API call descriptions
+
+**Resources** sections represent API reference for the related functionality and have a common structure:
 
 * **Introduction** - General information and purpose of the API call.
 * **Object structure** - Describes the object structure used in the calls (optional).
