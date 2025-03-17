@@ -34,13 +34,15 @@ For more comprehensive edits, or if you need to work on multiple pages, you can 
 
 Before you start contributing to the Navixy API documentation in Stoplight, ensure you have the following tools installed:
 
-- **Git** – Required for version control and managing your contributions
-- **GitHub Account** – Needed for submitting your changes
+- [**Git**](https://git-scm.com/downloads) – Required for version control and managing your contributions
+- [**GitHub Account**](https://github.com/login) – Needed for submitting your changes
 
 Optional but recommended tools:
 
-- **Stoplight Studio** – A visual editor for editing OpenAPI and Markdown files
-- **Stoplight CLI** – Enables local previews of the documentation
+- [**Stoplight Studio**](https://github.com/stoplightio/studio/releases) – A visual editor for editing OpenAPI and Markdown files
+- [**Stoplight CLI**](https://www.npmjs.com/package/@stoplight/cli) – Enables local previews of the documentation
+
+> **Stoplight Studio** and **Stoplight CLI** also require [Node.js](https://nodejs.org/en/download/current) for installation. 
 
 ### Getting started
 
@@ -61,9 +63,9 @@ The documentation consists primarily of Markdown files with Stoplight Flavored M
 If you're updating API endpoint documentation:
 
 1. Locate the relevant OpenAPI specification files (`.yaml` or `.json`)
-2. Edit them using Stoplight Studio for the best experience, or manually in a text editor
+2. Edit them using Stoplight Studio for the best experience, or manually in an IDE of choice
 3. Ensure your changes maintain the correct OpenAPI syntax
-4. Test your changes for validity if possible
+4. Test your changes for validity if possible (**try out** requests)
 
 ### Previewing your changes
 
@@ -97,7 +99,7 @@ The repository maintainers will review your contribution and may request modific
 
 #### Documentation structure
 
-The documentation includes three types of files:
+The documentation includes two types of files:
 * Documents (.md)
 * API calls (.json or .yaml)
 
