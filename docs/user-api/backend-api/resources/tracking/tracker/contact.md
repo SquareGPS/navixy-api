@@ -4,8 +4,9 @@ description: API call to get user's trackers with special grouping by "contacts"
 ---
 # Contact 
 
-!!! warning "Deprecated"
-    This API action deprecated and should not be used.
+<!-- theme: warning -->
+> **Deprecated!**<br>
+> This API action deprecated and should not be used.
 
 API call to get user's trackers with special grouping by "contacts"
 

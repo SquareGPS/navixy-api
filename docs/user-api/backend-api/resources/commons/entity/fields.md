@@ -127,7 +127,8 @@ All fields associated with the same entity must have different `label`s.
 
 Passing fields with `id` from non-existent fields or fields bound to another entity will result in an error.
 
-!!! warning "If `delete_missing` is `true`, all existing fields which are missing from the `fields` list will be permanently deleted! Otherwise, they are unaffected."
+<!-- theme: warning -->
+> If `delete_missing` is `true`, all existing fields which are missing from the `fields` list will be permanently deleted! Otherwise, they are unaffected.
 
 #### Parameters
 

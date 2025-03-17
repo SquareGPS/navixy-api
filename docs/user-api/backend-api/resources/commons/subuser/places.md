@@ -27,7 +27,8 @@ Gives access for sub-user to specified places.
 | access_to_all | Optional. If `true` then sub-user will have access to all places of master user.                                   | boolean   |
 | place_ids     | Optional. List of place IDs to associate with a specified sub-user. All places must belong to current master user. | int array |
 
-!!! warning "At least one of **access_to_all** and **place_ids** parameters must be not null."
+<!-- theme: warning -->
+> At least one of **access_to_all** and **place_ids** parameters must be not null.
 
 #### Examples
 

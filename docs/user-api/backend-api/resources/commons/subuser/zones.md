@@ -27,7 +27,8 @@ Gives access for sub-user to specified geofences.
 | access_to_all | Optional. If `true` then sub-user will have access to all geofences of master user.                                      | boolean   |
 | zone_ids      | Optional. List of geofence IDs to associate with a specified sub-user. All geofences must belong to current master user. | int array |
 
-!!! warning "At least one of **access_to_all** and **zone_ids** parameters must be not null."
+<!-- theme: warning -->
+> At least one of `access_to_all` and `zone_ids` parameters must be not null.
 
 #### Examples
 

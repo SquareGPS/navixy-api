@@ -145,11 +145,10 @@ Activates previously registered user with the provided session hash
 (it is contained in activation link from email sent to user).
 Available only to master users.
 
-!!! attention 
-    This call will receive only session hash from registration email.
-    Any other hash will result in result error code 4 (User or API key not found or session ended).
-    The only thing that API calls with a user session will work for is creating, 
-    reading, and deleting API keys.
+<!-- theme: danger -->
+> This call will receive only session hash from registration email. <br>
+> Any other hash will result in result error code 4 (User or API key not found or session ended).
+> The only thing that API calls with a user session will work for is creating, reading, and deleting API keys.
 
 #### Response
 
@@ -165,7 +164,7 @@ Tries to authenticate the user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
-!!! note "It is strongly recommended using [API keys](../../../getting-started/authentication.md) instead of user session hash."
+> It is strongly recommended using [API keys](../../../getting-started/authentication.md) instead of user session hash.
 
 #### Parameters
 

@@ -26,31 +26,31 @@ For our CRM system, we need the following fields:
 
 Some fields are default and cannot be changed (Label, Address, Description, and Tags). All other necessary fields should be created manually.
 
-!!!note "Custom fields added here will be available for all places."
+> Custom fields added here will be available for all places.
 
 First, get the entity ID to identify which entity to update and where to add fields.
 
 **API Request:**
 
-=== "cURL"
+#### cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/entity/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
+```shell
+curl -X POST '{{ extra.api_example_url }}/entity/list' \
+     -H 'Content-Type: application/json' \
+     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
 
 The response will provide the necessary entity ID with existing fields. Add new fields to this entity. Only add fields that do not already exist.
 
 **API Request:**
 
-=== "cURL"
+#### cURL
 
-    ```shell
+```shell
     curl -X POST '{{ extra.api_example_url }}/entity/fields/update' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "delete_missing": true, "entity_id": 520, "fields": [{"label": "E-mail", "required": false, "type": "email", "description": "Customer\'s email"}, {"label": "Phone", "required": false, "type": "phone", "description": "Customer\'s phone"}, {"label": "The last visit date", "required": false, "type": "text", "description": null}, {"label": "The last order №", "required": false, "type": "text", "description": null}, {"label": "The last visit result", "required": false, "type": "text", "description": null}, {"label": "Responsible employee", "params": {"responsible": true}, "required": false, "type": "employee", "description": null}]}'
-    ```
+```
 
 The platform will confirm the update with:
 

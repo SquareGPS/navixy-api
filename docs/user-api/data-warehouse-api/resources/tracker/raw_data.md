@@ -6,7 +6,7 @@ description: Contains API calls to retrieve trackers raw data.
 
 The Navixy Raw IoT Data API allows you to retrieve all the data sent by your devices in a raw format up to 6 months depending on your plan.
 
-!!! note "Parsed raw data — Data obtained immediately after decoding (parsing) incoming data packets, considering the protocol and specifics of the device model from which the packets were received."
+> Parsed raw data — Data obtained immediately after decoding (parsing) incoming data packets, considering the protocol and specifics of the device model from which the packets were received.
 
 On this page, you'll learn about API methods that give you access to parsed raw data, perfect for detailed analysis.
 
@@ -117,7 +117,7 @@ its tariff plan. For example, it may have been blocked because the user does not
 Retrieves parsed raw data—values received from tracking devices by the platform. Each attribute in the exported file will 
 be placed in a separate column.
 
-!!! note "The names and values of the inputs and status attributes returned by this request align with the names visible in [Air Console](https://docs.navixy.com/admin-panel/air-console) when connecting to a device. You can find them in the right column, where the incoming data is decoded."
+> The names and values of the inputs and status attributes returned by this request align with the names visible in [Air Console](https://docs.navixy.com/admin-panel/air-console) when connecting to a device. You can find them in the right column, where the incoming data is decoded.
 
 #### Request parameters
 
@@ -130,7 +130,7 @@ be placed in a separate column.
 | server_time_filter | string/object | An interval for additional filtering of messages by server time. If used, messages will be returned not only based on the message time (when the packet was registered by a tracker), but also filtered by the server time (when the message was received by the server).                                              | `"2024-02-03T10:26:26+0500/2024-02-03T10:27:18+0500"` / `{"from": "2024-02-03T10:26:26+0500", "to": "2024-02-03T10:27:18+0500"}` / `{"interval":"2024-02-03T10:26:26+0500/PT1H"}` | no       |
 | format             | string        | This is used when you need to request data in `parquet` format. If the format parameter is not provided, the default format used will be CSV.                                                                                                                                                                          | `"parquet"`                                                                                                                                                                       | no       |
 
-!!! note "Instead of using the `from`/`to` parameters, you can set the `interval` parameter — an ISO 8601 formatted interval, for example, `2023-08-24T08:04:36.306Z/PT24H`."
+> Instead of using the `from`/`to` parameters, you can set the `interval` parameter — an ISO 8601 formatted interval, for example, `2023-08-24T08:04:36.306Z/PT24H`.
 
 The response could be provided in a CSV or [Parquet](https://parquet.apache.org/docs/overview/) format file, with columns 
 predefined in the `columns` parameter of the API request. 

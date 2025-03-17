@@ -5,8 +5,9 @@ description: Contains vehicle status listing object and API calls to interact wi
 
 # Vehicle status listing
 
-!!! warning "Deprecated"
-    This API action deprecated and should not be used.
+<!-- theme: warning -->
+> **Deprecated!**<br>
+> This API action deprecated and should not be used.
 
 Contains vehicle status listing object and API calls to interact with it.
 

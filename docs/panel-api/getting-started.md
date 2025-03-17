@@ -23,7 +23,7 @@ The Admin Panel API is accessible via the `panel/` subsection of the API URL. Th
 
 For example, to make an `account/auth` API call on the Navixy ServerMate platform, you would use the following URL:
 
-    {{ extra.api_example_url }}/panel/account/auth
+`{{ extra.api_example_url }}/panel/account/auth`
 
 ### Authorization
 
@@ -37,15 +37,14 @@ Keep in mind that any string containing symbols outside ASCII codes 32 to 127 mu
 
 In on-premise installations, there is a default user with login `admin` and password `admin`. You can authorize with these credentials as follows (all HTTP request examples are made using the [curl](https://curl.haxx.se/) *nix utility):
 
-##### POST Request
-```sh
+```POST 
 $ curl -d 'login=admin&password=admin' \
        -X POST http://api.domain.com/v2/panel/account/auth/
 ```
 
-##### GET Request
-This method is not recommended and provided just for example:
-```sh
+```GET 
+//This method is not recommended and provided just for example:
+
 $ curl http://api.domain.com/panel/v2/account/auth/?login=admin&password=admin
 ```
 

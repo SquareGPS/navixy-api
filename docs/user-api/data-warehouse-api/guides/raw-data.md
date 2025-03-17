@@ -69,7 +69,7 @@ Among the obtained inputs, we see the one of interest to us - `lls_level_4`. Thi
 
 We also see the `hw_mileage`, which will allow us to get the value of the hardware odometer.
 
-!!! note "The presence of some inputs in the received response does not mean that data is certainly available on these inputs. It means that data may come on them, but whether it is actually available or not depends on the configuration of a particular device."
+> The presence of some inputs in the received response does not mean that data is certainly available on these inputs. It means that data may come on them, but whether it is actually available or not depends on the configuration of a particular device.
 
 ## Requesting Raw Data Readings
 
@@ -86,7 +86,7 @@ In addition, we will use names for inputs according to the information obtained 
 * `inputs.lls_level_1`
 * `inputs.hw_mileage`
 
-!!! note "We specify `inputs.lls_level_1` because we know that our device only sends data on this input. If we didn't know the input number, we could have specified all four possible inputs, and then the inputs without data would just get zero values."
+> We specify `inputs.lls_level_1` because we know that our device only sends data on this input. If we didn't know the input number, we could have specified all four possible inputs, and then the inputs without data would just get zero values.
 
 The API request [`raw_data/read`](../resources/tracker/raw_data.md#read) for reading the required raw data in our case should look like this:
 
@@ -136,7 +136,7 @@ The response is returned in a CSV table format:
 
 In the above example, we see the output for one minute of tracking. When querying raw data over a long period of time, the response can reach significant sizes — this must be considered.
 
-!!! note "In one of the lines, we see `\N` instead of fuel level and mileage values. This means that no such information was received in this data packet. The `\N` symbol represents `NULL`."
+In one of the lines, we see `\N` instead of fuel level and mileage values. This means that no such information was received in this data packet. The `\N` symbol represents `NULL`.
 
 The above example is one of the simplest, but it clearly demonstrates the process of using an API request to read raw data. You can query a lot of data at once and over large periods of time, depending on your objectives.
 
@@ -280,13 +280,13 @@ or
 "to": "2023-11-30 18:00:00",
 ```
 
-!!! note "The `to` date and time must be after the `from`, otherwise the query will result in an `Invalid parameters` error."
+> The `to` date and time must be after the `from`, otherwise the query will result in an `Invalid parameters` error.
 
 ### Interval
 
 An alternative method of indicating the request period is an interval. Here you specify the start or end date and time of the period appended by the duration of the period.
 
-!!! note "When specifying the `interval` parameter, the `from` and `to` parameters must not be specified. These are mutually exclusive ways of specifying the data request period."
+> When specifying the `interval` parameter, the `from` and `to` parameters must not be specified. These are mutually exclusive ways of specifying the data request period.
 
 The interval can be specified in different forms:
 

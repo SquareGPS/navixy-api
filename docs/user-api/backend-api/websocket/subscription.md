@@ -26,11 +26,11 @@ Request parameters:
 * `hash` – required, string, length=32. Session hash code obtained by [user/auth](../resources/commons/user/index.md#auth) action.
 * `requests` – required, object array. See requests' structure below.
 
-!!! warning "Deprecated"
-    These parameters are deprecated and should not be used, please use `requests` instead:
-
-    * `trackers` – required, int array, without nulls. List of tracker IDs for the events that require a subscription.
-    * `events` – required, [enum](../getting-started/introduction.md#data-types) array, without nulls. List of events to subscribe. An event can only be a `state`.
+<!-- theme: warning -->
+> **Deprecated!**<br>
+> These parameters are deprecated and should not be used, please use `requests` instead:
+> * `trackers` – required, int array, without nulls. List of tracker IDs for the events that require a subscription.
+> * `events` – required, [enum](../getting-started/introduction.md#data-types) array, without nulls. List of events to subscribe. An event can only be a `state`.
 
 #### The "state_batch" event subscription
 

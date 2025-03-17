@@ -4,7 +4,7 @@ description: Get involved into improving documentation and translations of the N
 ---
 # Contributing to Developer documentation
 
-Join us in enhancing Navixy developer documentation! Your contributions are highly valued and appreciated. Whether you’ve spotted an inaccuracy, found a typo, or have additional information to share, your help is appreciated. All our documentation is publicly available on [GitHub]({{ config.repo_url }}), and you can get involved in several ways to make it better:
+Join us in enhancing Navixy developer documentation! Your contributions are highly valued and appreciated. Whether you’ve spotted an inaccuracy, found a typo, or have additional information to share, your help is appreciated. All our documentation is publicly available on [GitHub](https://github.com/SquareGPS/navixy-api), and you can get involved in several ways to make it better:
 
 1. [Creating an issue with a detailed description of the problem.](https://github.com/SquareGPS/navixy-api/issues/new) 
 2. [Editing a single page in a browser](#quick-edits-in-the-browser).
