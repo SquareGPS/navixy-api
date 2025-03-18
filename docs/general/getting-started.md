@@ -2,7 +2,7 @@
 title: Getting Started
 description: Getting started with Navixy API
 ---
-# Navixy API Documentation
+# Navixy Developer Documentation
 
 [Navixy](https://navixy.com) is a comprehensive GPS/Vehicle telematics platform developed by [SquareGPS](https://squaregps.com). This documentation provides detailed information on integrating third-party solutions with the Navixy platform, including API and technical documentation tailored for developers and partners.
 
