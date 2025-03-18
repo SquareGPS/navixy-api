@@ -12,7 +12,7 @@ API calls to get delivery states and tasks by IDs.
 
 API base path: `/delivery`.
 
-### `read`
+### read
 
 Returns info sufficient for tracking certain task state, and the tracker assigned to it.
 Search conducted only among tasks and checkpoints, which have start date less than or equal now and have statuses:
@@ -80,7 +80,7 @@ object structure.
 * 201 – Not found in the database - when there is no task or checkpoint with specified conditions.
 
 
-### `list`
+### list
 
 External_id can be repeated, so this request will return all matching delivery. Returns info sufficient for tracking 
 certain task state, and the tracker assigned to it. 

@@ -27,7 +27,7 @@ All actions to retrieve and manipulate points of the geofence. Note that `circle
 
 API base path: `/zone/point`.
 
-### `list`
+### list
 
 Get points of user's geofence with `zone_id`.
 
@@ -77,7 +77,7 @@ Get points of user's geofence with `zone_id`.
 * 230 - Not supported for this entity type – if geofence cannot have any points associated with it (e.g. if geofence is circle).
 
 
-### `update`
+### update
 
 Update points for user's geofence with `zone_id`.
 

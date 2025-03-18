@@ -12,7 +12,7 @@ Contains an API call to get information about all supported timezones.
 
 API path: `/timezone`.
 
-### `list`
+### list
 
 Information about all supported timezones for the specified locale. Does not require user authorization.
 

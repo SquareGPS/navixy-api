@@ -12,7 +12,7 @@ Contains list method to get user's events.
 
 API path: `/history/user/`.
 
-### `list`
+### list
 
 List less than or equal to `limit` of tracker events filtered by event types (`events`) between `from` date/time 
 and `to` date/time sorted by **time** field.

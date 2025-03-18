@@ -35,7 +35,7 @@ Our platform tracks changes to task fields and state for your convenience. Conta
 
 API base path: `task/history`.
 
-### `list`
+### list
 
 Returns history for the task with the specified ID.
 

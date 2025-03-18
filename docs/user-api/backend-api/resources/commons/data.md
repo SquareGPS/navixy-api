@@ -8,7 +8,7 @@ description: API call to parse the spreadsheet data
 API call to parse the spreadsheet data.
 
 
-### `/data/spreadsheet/parse`
+### /data/spreadsheet/parse
 
 Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 
@@ -41,7 +41,7 @@ If `parse_header` is set to `true`, first row of the uploaded file will be treat
 
 * 234 – Invalid data format.
 
-### `/data/import/list`
+### /data/import/list
 
 Returns the list of the user's import processes.
 
@@ -90,7 +90,7 @@ curl -X POST "{{ extra.api_example_url }}/data/import/list" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-### `/data/import/read`
+### /data/import/read
 
 Returns an import process with specified ID.
 

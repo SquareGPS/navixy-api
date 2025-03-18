@@ -26,7 +26,7 @@ Actions with counter values:
 * [/tracker/counter/data/read](#dataread)
 
 
-### `read`
+### read
 
 Reads counter of passed `type`.
 
@@ -73,7 +73,7 @@ Reads counter of passed `type`.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 
 
-### `update`
+### update
 
 Updates counter of passed `type`.
 
@@ -127,7 +127,7 @@ Updates counter of passed `type`.
     * if type value is not one of list above.
 
 
-### `get_counters`
+### get_counters
 
 Gets last values of the tracker's counters.
 
@@ -187,7 +187,7 @@ List of counter types:
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `value/get`
+### value/get
 
 Gets actual value of specified `type` of sensor.
 
@@ -231,7 +231,7 @@ Gets actual value of specified `type` of sensor.
   there are no values yet. use /tracker/counter/set to create new counter (if not exist) and save some value.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-### `value/list`
+### value/list
 
 Get actual values for counters of passed `type` and `trackers`.
 
@@ -272,7 +272,7 @@ Get actual values for counters of passed `type` and `trackers`.
 * 217 - List contains nonexistent entities – if one of the specified trackers does not exist or is blocked.
 
 
-### `value/set`
+### value/set
 
 Creates new counter of passed `type` (if not) and update its `value`.
 
@@ -310,7 +310,7 @@ Creates new counter of passed `type` (if not) and update its `value`.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 
 
-### `data/read`
+### data/read
 
 Returns counter values for a period.
 

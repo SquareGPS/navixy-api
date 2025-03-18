@@ -102,7 +102,7 @@ Let's explore the Service Settings object using the following example:
 
 API path: `panel/dealer/settings/service`.
 
-### `read`
+### read
 
 Gets current monitoring service settings.
 
@@ -187,7 +187,7 @@ Only session `hash`.
 [General](../../../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
 
 
-### `update`
+### update
 
 Updates monitoring service settings for the current dealer. 
 

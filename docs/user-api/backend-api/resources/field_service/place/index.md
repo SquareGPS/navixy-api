@@ -63,7 +63,7 @@ Working with POIs requires several actions so we described them in our [guides](
 
 API path: `/place`.
 
-### `read`
+### read
 
 Gets POI by ID.
 
@@ -123,7 +123,7 @@ Gets POI by ID.
 * 201 - Not found in the database – if there is no POI with such ID.
 
 
-### `list`
+### list
 
 Get POIs belonging to user.
 
@@ -195,7 +195,7 @@ Get POIs belonging to user.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `create`
+### create
 
 Creates a new POI.
 
@@ -234,7 +234,7 @@ Creates a new POI.
 * 268 - Over quota – if the user's quota for POIs exceeded.
 
 
-### `search_location`
+### search_location
 
 Gets all POI IDs and names within which a specified coordinates are located inside.
 
@@ -276,7 +276,7 @@ Gets all POI IDs and names within which a specified coordinates are located insi
 * `label` - string. Place name.
 
 
-### `update`
+### update
 
 Updates existing POI.
 
@@ -309,7 +309,7 @@ Updates existing POI.
 * 201 - Not found in the database – if there is no POI with such ID.
 
 
-### `delete`
+### delete
 
 Deletes POI with the specified ID.
 
@@ -348,7 +348,7 @@ Deletes POI with the specified ID.
 * 201 - Not found in the database – if there is no POI with such ID.
 
 
-### `batch_convert`
+### batch_convert
 
 Converts batch of tab-delimited POIs and return list of checked POIs with errors.
 
@@ -410,7 +410,7 @@ If `file_id` is set – `batch` parameter will be ignored.
 * 234 - Invalid data format.
 
 
-### `upload`
+### upload
 
 Upload POIs.
 

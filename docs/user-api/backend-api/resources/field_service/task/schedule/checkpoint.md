@@ -12,7 +12,7 @@ These actions allow manipulating schedule checkpoint entries similarly to regula
 
 API path: `/task/schedule/checkpoint`.
 
-### `delete`
+### delete
 
 Deletes a checkpoint from route and reorder others.<br>
 If route has two checkpoints then use transmute on the other checkpoint, because route must have
@@ -51,7 +51,7 @@ at least two checkpoints.
 [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `transmute`
+### transmute
 
 Transmutes a checkpoint to task and delete its route and other checkpoints in the route.
 

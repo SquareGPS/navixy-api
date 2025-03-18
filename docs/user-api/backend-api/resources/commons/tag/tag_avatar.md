@@ -12,7 +12,7 @@ Contains API calls to interact with tag avatars.
 
 API path: `/tag/avatar`.
 
-### `assign`
+### assign
 
 Assigns icon_id (from standard icon set) to specified tag.
 
@@ -54,7 +54,7 @@ Assigns icon_id (from standard icon set) to specified tag.
 * 201 – Not found in the database - when vehicle with specified `tag_id` not found.
 
 
-### `upload`
+### upload
 
 Uploads avatar image for specified tag.<br>
 Then it will be available from `[api_base_url]/[api_static_path]/tag/avatars/<file_name>`<br>

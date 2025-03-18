@@ -12,7 +12,7 @@ ideas and feedback, as well as helps employers to boost team culture. This can p
 
 API base path: `/tracker/chat`.
 
-### `list`
+### list
 
 Gets a list of chat messages.
 
@@ -81,7 +81,7 @@ Where **message** object is:
 * 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff without "chat" feature).
 
 
-### `mark_read_all`
+### mark_read_all
 
 Marks all incoming chat messages as read for all or for given user trackers.
 
@@ -120,7 +120,7 @@ Marks all incoming chat messages as read for all or for given user trackers.
 * 201 – Not found in the database.
 
 
-### `mark_read`
+### mark_read
 
 Marks incoming chat message as read by `message_id` or array of `message_ids`.
 
@@ -162,7 +162,7 @@ Use only one parameter.
 * 201 – Not found in the database.
 
 
-### `send`
+### send
 
 Sends chat message to a specified tracker.
 
@@ -202,7 +202,7 @@ Sends chat message to a specified tracker.
 * 236 – Feature unavailable due to tariff restrictions - if one of the trackers has tariff with disabled reports ("has_reports" is `false`).
 
 
-### `broadcast`
+### broadcast
 
 Sends chat message to specified trackers.
 
@@ -242,7 +242,7 @@ Sends chat message to specified trackers.
 * 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
 
 
-### `updated/list`
+### updated/list
 
 Gets date-times of last messages in chat of trackers.
 
@@ -283,7 +283,7 @@ doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
 
 
-### `unread/count`
+### unread/count
 
 Gets count of user's unread chat messages grouped by tracker ID.
 

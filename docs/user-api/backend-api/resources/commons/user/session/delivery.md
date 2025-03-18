@@ -14,7 +14,7 @@ tracking functionality into external systems.
 
 API path: `/user/session/delivery`.
 
-### `create`
+### create
 
 Creates new user delivery session.
 In demo session allowed to create a new session only if it not already exists.
@@ -58,7 +58,7 @@ Only API key `hash`.
 * 236 – Feature unavailable due to tariff restrictions.
 
 
-### `read`
+### read
 
 Returns current user delivery session key.
 

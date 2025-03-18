@@ -13,7 +13,7 @@ assigned.
 
 API base path: `/tracker/employee`.
 
-### `assign`
+### assign
 
 Assigns another employee ("driver") to the tracker.
 
@@ -58,7 +58,7 @@ Assigns another employee ("driver") to the tracker.
 * 263 – No change needed, old and new values are the same - if new employee matches a currently assigned employee.
 
 
-### `read`
+### read
 
 Requests to read the current employee (driver) assigned to tracker, and when it was assigned.
 

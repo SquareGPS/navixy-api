@@ -119,7 +119,7 @@ VIN, speed, consumption and other. Vehicle object should be assigned to tracker 
 
 API path: `/vehicle`.
 
-### `create`
+### create
 
 Creates a new vehicle.
 
@@ -158,7 +158,7 @@ Creates a new vehicle.
 * 247 – Entity already exists, if tracker_id!=null and exists a vehicle that already bound to this tracker_id.
 
 
-### `delete`
+### delete
 
 Deletes a vehicles with the specified IDs. Only one of the following parameters must be specified.
 
@@ -200,7 +200,7 @@ Deletes a vehicles with the specified IDs. Only one of the following parameters 
 * 201 – Not found in the database - if there is no vehicle with such an ID. This error will not occur if the vehicle_ids parameter is specified, deletion is silent in this case.
 
 
-### `list`
+### list
 
 Gets all vehicles belonging to user.
 
@@ -285,7 +285,7 @@ Gets all vehicles belonging to user.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `read`
+### read
 
 Gets vehicle by specified ID.
 
@@ -365,7 +365,7 @@ A [vehicle object](#vehicle-object).
 * 201 – Not found in the database - if there is no vehicle with such an ID.
 
 
-### `update`
+### update
 
 Updates existing vehicle.
 
@@ -403,7 +403,7 @@ Updates existing vehicle.
 * 261 – Entity has external links - when `tracker_id` changes and there are some service tasks associated with this vehicle.
 
 
-### `batch_convert`
+### batch_convert
 
 Convert batch of tab-delimited vehicles and return list of checked vehicles with errors.
 

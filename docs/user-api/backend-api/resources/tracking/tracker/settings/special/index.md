@@ -21,7 +21,7 @@ Such control assumes tracker special settings
 
 API base path: `/tracker/settings/special`.
 
-### `read`
+### read
 
 Gets special settings for the specified tracker.
 
@@ -938,7 +938,7 @@ defined by this parameter. Can be 1 - 255.
 * 214 – Requested operation or parameters are not supported by the device.
 
 
-### `update`
+### update
 
 Sets special settings for a specified tracker with the new one.
 

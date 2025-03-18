@@ -16,7 +16,7 @@ storage of these settings provided but not guaranteed - when the quota exceeded,
 
 API path: `/user/settings/ui`.
 
-### `read`
+### read
 
 Reads setting value by key.
 
@@ -62,7 +62,7 @@ When nonexistent key provided:
 * [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `update`
+### update
 
 Sets setting value.
 

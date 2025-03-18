@@ -49,7 +49,7 @@ Find more details on API keys usage in our [instructions](../../getting-started/
 
 API path: `/api/key`.
 
-### `create`
+### create
 
 Creates a new API key.
 
@@ -100,7 +100,7 @@ obtained using a login/password via [/user/auth](user/index.md#auth).
 * 268 - Over quota. If 20 keys have already been created in the user's account.
 
 
-### `delete`
+### delete
 
 Deletes API key.
 
@@ -146,7 +146,7 @@ obtained using a login/password via [/user/auth](user/index.md#auth).
 * 201 – Not found in the database - if there is no specified API key in account.
 
 
-### `list`
+### list
 
 Gets all of API keys for an account.
 

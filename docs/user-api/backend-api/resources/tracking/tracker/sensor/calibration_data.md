@@ -13,7 +13,7 @@ convenient format. For example, analog fuel sensor provides Volts that should be
 
 API path: `/tracker/sensor/calibration_data`.
 
-### `read`
+### read
 
 Gets calibration data for sensor.
 
@@ -66,7 +66,7 @@ Gets calibration data for sensor.
 * 228 – Not supported by the sensor (if sensor doesn't support calibration).
 
 
-### `update`
+### update
 
 Replaces the calibration data for a sensor.
 
@@ -106,7 +106,7 @@ Replaces the calibration data for a sensor.
 * 219 – Not allowed for clones of the device - if tracker is clone.
 
 
-### `upload_omnicomm`
+### upload_omnicomm
 
 Replaces the calibration data for a sensor from Omnicomm LLS monitor's XML configuration file. If XML file contains
 information about multiple sensors, user must specify which sensor number to use.

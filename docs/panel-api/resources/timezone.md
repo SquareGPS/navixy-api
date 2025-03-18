@@ -12,7 +12,7 @@ API call to get information about all supported timezones for the specified loca
 
 API path: `panel/timezone`.
 
-### `list`
+### list
 
 Gets information about all supported timezones for the specified locale. Does not require authorization.
 

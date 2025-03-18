@@ -47,7 +47,7 @@ These sub-accounts function similarly to the main dealer account but allow for m
 
 API base path: `panel/subpaas`.
 
-### `create`
+### create
 
 Creates a subPaaS. After creation, its `dealer_block_type` will be in `INITIAL_BLOCK` status.
 
@@ -87,7 +87,7 @@ Creates a subPaaS. After creation, its `dealer_block_type` will be in `INITIAL_B
     * his tariff doesn't allow subpaases.
 
 
-### `list`
+### list
 
 Gets a list of all SubPaaS accounts of a Dealer. Dealer ID will be taken from the session key.
 
@@ -148,7 +148,7 @@ Gets a list of all SubPaaS accounts of a Dealer. Dealer ID will be taken from th
     * their plan does not allow SubPaaS accounts.
 
 
-### `read`
+### read
 
 Gets Sub PaaS account info by its id.
 
@@ -204,7 +204,7 @@ Gets Sub PaaS account info by its id.
     * their plan does not allow SubPaaS accounts.
 
 
-### `update`
+### update
 
 Updates a SubPaas account with the specified ID.
 

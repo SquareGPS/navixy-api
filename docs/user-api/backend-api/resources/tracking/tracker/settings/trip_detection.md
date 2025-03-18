@@ -17,7 +17,7 @@ following purposes:
 
 API base path: `/tracker/settings/trip_detection`.
 
-### `read`
+### read
 
 Gets parking detection settings for the specified tracker.
 
@@ -66,7 +66,7 @@ Gets parking detection settings for the specified tracker.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `update`
+### update
 
 Updates parking detection settings for the specified tracker.
 

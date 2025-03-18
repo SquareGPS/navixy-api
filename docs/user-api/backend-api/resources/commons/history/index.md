@@ -83,7 +83,7 @@ Date/time type described in [data types description section](../../../getting-st
 
 API path: `/history`.
 
-### `read`
+### read
 
 Returns history entry with the specified ID.
 
@@ -152,7 +152,7 @@ Returns history entry with the specified ID.
 * 201 – Not found in the database - when there are no history entries with that ID.
 
 
-### `mark_read`
+### mark_read
 
 Marks history entry as read by `id` (see: [Tracker history entry](#tracker-history-entry)).
 
@@ -191,7 +191,7 @@ Marks history entry as read by `id` (see: [Tracker history entry](#tracker-histo
 * 201 – Not found in the database - when there are no unread history entries with that ID.
 
 
-### `mark_read_all`
+### mark_read_all
 
 Marks all the user's history entries read.
 

@@ -139,7 +139,7 @@ A user account lets you start working with the platform as well as customize you
 
 API path: `/user`.
 
-### `activate`
+### activate
 
 Activates previously registered user with the provided session hash 
 (it is contained in activation link from email sent to user).
@@ -158,7 +158,7 @@ Available only to master users.
 }
 ```
 
-### `auth`
+### auth
 
 Tries to authenticate the user and get hash.
 
@@ -224,7 +224,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 * 104 – Logins limit exceeded, please reuse existing sessions instead (see also user/session/renew).
 * 105 – Login attempts limit exceeded, try again later.
 
-### `get_info`
+### get_info
 
 Gets user information and some settings.
 
@@ -315,7 +315,7 @@ Gets user information and some settings.
 
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
-### `get_tariff_restrictions`
+### get_tariff_restrictions
 
 Gets user plan restrictions.
 
@@ -357,7 +357,7 @@ Only API key `hash`.
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `logout`
+### logout
 
 Destroys current user session.
 Works only with standard user session (not with API key).
@@ -394,7 +394,7 @@ Only session `hash`.
 
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
-### `resend_activation`
+### resend_activation
 
 Sends a new activation link to user.
 

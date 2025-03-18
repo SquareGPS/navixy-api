@@ -57,7 +57,7 @@ CRUD actions for user settings.
 
 API path: `/user/settings`.
 
-### `read`
+### read
 
 Reads current user's settings.
 
@@ -112,7 +112,7 @@ Only API key `hash`.
 **required sub-user rights** for `balance_alert_settings` and `file_storage_settings` fields: `admin` (available only to master users).
 
 
-### `update`
+### update
 
 Update current user's settings.
 
@@ -154,7 +154,7 @@ Update current user's settings.
 * [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `file_storage/update`
+### file_storage/update
 
 Updates current user's file storage settings.
 

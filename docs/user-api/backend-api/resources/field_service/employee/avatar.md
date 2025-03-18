@@ -13,7 +13,7 @@ or `upload` (to upload your own image).
 
 API path: `/employee/avatar`.
 
-### `assign`
+### assign
 
 Assign `icon_id` (from standard icon set) to this employee/driver. 
 The `icon_id` can be `null` – this means that uploaded avatar should be used instead of icon.
@@ -54,7 +54,7 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 * 201 – Not found in the database - when employee/driver with `employee_id` not found.
 
 
-### `upload`
+### upload
 
 Uploads avatar image for specified employee/driver.
 Then it will be available from /employee/avatars/

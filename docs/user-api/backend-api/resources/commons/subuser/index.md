@@ -87,7 +87,7 @@ group with no privileges.
 
 API path: `/subuser`.
 
-### `delete`
+### delete
 
 Deletes sub-user. This operation cannot be reversed.
 
@@ -131,7 +131,7 @@ Deletes sub-user. This operation cannot be reversed.
 * 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 
 
-### `list`
+### list
 
 List all sub-users belonging to current user.
 
@@ -204,7 +204,7 @@ Sub-user object described [here](#sub-user-object-structure).
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 
 
-### `register`
+### register
 
 Allows you to create sub-users associated to your master account.
 
@@ -247,7 +247,7 @@ Allows you to create sub-users associated to your master account.
 * 206 – login already in use - if this login email already registered.
 
 
-### `update`
+### update
 
 Updates sub-user data.
 

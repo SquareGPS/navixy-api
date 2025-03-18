@@ -11,7 +11,7 @@ The Navixy platform can be branded through the Admin Panel by customizing variou
 
 API path: `panel/dealer/settings/image`.
 
-### `upload`
+### upload
 
 Uploads image of specified `type`. 
 
@@ -55,7 +55,7 @@ If `redirect_target` passed a return redirect to `response=<urlencoded response 
 * 236 - Feature unavailable due to tariff restrictions - if branding feature disabled for this dealer.
 * 254 - Cannot save file - on some file system errors.
 
-### `delete` 
+### delete
 
 Deletes an image of specified `type`. 
 

@@ -21,7 +21,7 @@ API calls to search address and location using geocoder.
 
 API path: `/geocoder`.
 
-### `search_address`
+### search_address
 
 Performs a forward geocoding. Returns a list of locations matching the given address. Items in the list sorted by relevance.
 
@@ -93,7 +93,7 @@ Performs a forward geocoding. Returns a list of locations matching the given add
         * `se` - South East corner.
 
 
-### `search_location`
+### search_location
 
 Search address by location using geocoder.
 

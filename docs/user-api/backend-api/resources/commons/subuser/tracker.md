@@ -12,7 +12,7 @@ Contains API calls to control which tracker is available to which sub-user.
 
 API path: `/subuser/tracker`.
 
-### `bind`
+### bind
 
 Gives access for sub-user to the specified trackers.
 
@@ -58,7 +58,7 @@ Gives access for sub-user to the specified trackers.
 * 262 – Entries list is missing some entries or contains nonexistent entries – if one or more of specified tracker IDs don't exist.
 
 
-### `list`
+### list
 
 Gets a list of tracker IDs to which this sub-user has access.
 
@@ -105,7 +105,7 @@ Gets a list of tracker IDs to which this sub-user has access.
 * 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 
 
-### `unbind`
+### unbind
 
 Disables access for sub-user to the specified trackers.
 

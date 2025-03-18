@@ -35,7 +35,7 @@ Department is essentially just a group of [employees](employee/index.md). They c
 
 API base path: `/department`.
 
-### `list`
+### list
 
 Gets all departments belonging to user.
 
@@ -81,7 +81,7 @@ doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user’s dealer has been exceeded.
 
 
-### `create`
+### create
 
 Creates a new department with specified parameters.
 
@@ -122,7 +122,7 @@ doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user’s dealer has been exceeded.
 
 
-### `update`
+### update
 
 Updates existing department with a new specified parameters. 
 
@@ -155,7 +155,7 @@ Updates existing department with a new specified parameters.
 * 201 – Not found in the database - if there is no department with specified ID.
 
 
-### `delete`
+### delete
 
 Deletes department with the specified ID.
 

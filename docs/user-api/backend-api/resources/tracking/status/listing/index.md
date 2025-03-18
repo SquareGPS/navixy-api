@@ -32,7 +32,7 @@ statuses that can be assigned to trackers.
 
 API base path: `/status/listing/`.
 
-### `create`
+### create
 
 Creates new empty working status list.
 
@@ -72,7 +72,7 @@ available.
 * 268 - Over quota – if the user's quota for working status lists exceeded.
 
 
-### `delete`
+### delete
 
 Deletes working status list.
 
@@ -115,7 +115,7 @@ Deletes working status list.
 available.
 
 
-### `list`
+### list
 
 Gets working status lists belonging to authorized user.
 
@@ -164,7 +164,7 @@ Only API key `hash`.
 available.
 
 
-### `update`
+### update
 
 Updates working status list properties.
 

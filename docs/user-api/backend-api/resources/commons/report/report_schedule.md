@@ -62,7 +62,7 @@ Particular report can be delivered to user's mailbox regularly. Contains report 
 
 API path: `/report/schedule`.
 
-### `create`
+### create
 
 Creates a new report schedule entry.
 
@@ -102,7 +102,7 @@ Creates a new report schedule entry.
 * 236 - Feature unavailable due to.
 
 
-### `delete`
+### delete
 
 Deletes report schedule with the specified ID.
 
@@ -143,7 +143,7 @@ Deletes report schedule with the specified ID.
 * 201 - Not found in the database - if there is no schedule with specified ID.
 
 
-### `list`
+### list
 
 Get all report schedules belonging to user.
 
@@ -218,7 +218,7 @@ Only API key `hash`.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `update`
+### update
 
 Update existing report schedule. 
 

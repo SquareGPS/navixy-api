@@ -12,7 +12,7 @@ with the information needed to connect to wireless service.
 
 API base path: `/tracker/apn_settings`.
 
-### `read`
+### read
 
 Gets the APN name/user/password and mobile operator of device by a `tracker_id`.
 

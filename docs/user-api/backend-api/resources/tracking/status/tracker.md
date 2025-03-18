@@ -12,7 +12,7 @@ This resource contains methods to read and assign working status of a particular
 
 API base path: `/status/tracker/`.
 
-### `assign`
+### assign
 
 Assign a working status to the tracker.
 
@@ -81,7 +81,7 @@ available.
 * 263 - No change needed, old and new values are the same – if new status is equal to current status of tracker.
 
 
-### `list`
+### list
 
 Gets current assigned statuses for the specified trackers.
 
@@ -162,7 +162,7 @@ Gets current assigned statuses for the specified trackers.
  available.
 
 
-### `read`
+### read
 
 Gets current assigned working status of the tracker.
 

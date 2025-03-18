@@ -11,7 +11,7 @@ API calls to get and update LED state of the tracker. LED switch should be avail
 
 API base path: `/tracker/led`.
 
-### `read`
+### read
 
 Gets LED status for the specified tracker.
 
@@ -55,7 +55,7 @@ Gets LED status for the specified tracker.
 * 214 – Requested operation or parameters are not supported by the device.
 
 
-### `update`
+### update
 
 Switches LED state for a specified tracker.
 

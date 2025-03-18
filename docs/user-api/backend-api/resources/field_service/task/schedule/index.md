@@ -62,7 +62,7 @@ replaced with `from_time`, `duration` and `parameters`.
 
 API base path: `task/schedule`.
 
-### `create`
+### create
 
 Creates new task schedule entry.
 
@@ -103,7 +103,7 @@ Creates new task schedule entry.
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
 
-### `delete`
+### delete
 
 Delete task schedule with the specified ID.
 
@@ -142,7 +142,7 @@ Delete task schedule with the specified ID.
 * 201 – Not found in the database - if there is no task schedule with such an ID.
 
 
-### `list`
+### list
 
 Get all task or route schedules belonging to user with optional filtering.<br>
 Also this call returns all unassigned task schedules.
@@ -210,7 +210,7 @@ Also this call returns all unassigned task schedules.
 [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `read`
+### read
 
 Gets task, route or checkpoint schedule by specified ID.
 
@@ -285,7 +285,7 @@ Gets task, route or checkpoint schedule by specified ID.
 [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `update`
+### update
 
 Updates existing task schedule.
 

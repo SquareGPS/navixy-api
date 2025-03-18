@@ -12,7 +12,7 @@ Contains an API call to get user's file statistic.
 
 API path: `/file`.
 
-### `stats/read`
+### stats/read
 
 Gets user's files statistic.
 

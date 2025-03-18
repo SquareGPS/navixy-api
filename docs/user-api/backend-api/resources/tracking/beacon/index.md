@@ -37,7 +37,7 @@ BLE beacon data is data about radio tags (BLE beacons) visible to a tracker, e.g
 
 API path: `/beacon/data/read`.
 
-### `read`
+### read
 
 List of beacon data history between `from` date/time and `to` date/time sorted by **get_time** field.
 
@@ -106,7 +106,7 @@ List of beacon data history between `from` date/time and `to` date/time sorted b
 
 API path: `/beacon/data/last_values`.
 
-### `last values`
+### last values
 
 List of last BLE beacon data visible on the trackers.
 

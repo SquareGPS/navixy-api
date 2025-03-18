@@ -245,7 +245,7 @@ For `batch` parameter:
 * 234 - Invalid data format.
 
 
-### `create`
+### create
 
 Creates a new geofence.
 
@@ -290,7 +290,7 @@ Creates a new geofence.
 * 284 - Not enough points for the zone. The minimum number of points for polygon: 3; the minimum for sausage: 2.
 
 
-### `delete`
+### delete
 
 Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
@@ -353,7 +353,7 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 * `ids` - int array. List IDs of the rules which uses the specified geofence.
 
 
-### `list`
+### list
 
 Gets all user geofences.
 
@@ -406,7 +406,7 @@ Gets all user geofences.
 * `list` - array of objects. Geofence objects with optional points field.
 
 
-### `read`
+### read
 
 Gets geofence by specified ID.
 
@@ -454,7 +454,7 @@ Gets geofence by specified ID.
 * `value` - Geofence object with optional points field.
 
 
-### `search_location`
+### search_location
 
 Gets all geofence IDs and names within which a specified coordinates are located inside.
 
@@ -496,7 +496,7 @@ Gets all geofence IDs and names within which a specified coordinates are located
 * `label` - string. Geofence name.
 
 
-### `update`
+### update
 
 Update geofence parameters for the specified geofence.
 
@@ -540,7 +540,7 @@ Update geofence parameters for the specified geofence.
   database.
 
 
-### `upload`
+### upload
 
 Import geofences from a KML file.
 
@@ -703,7 +703,7 @@ From `Placemark` with `MultiGeometry` geometry will be created several geofences
 If `Placemark.name` defined it will be used as geofence name with respect of hierarchy of `Folder` and `Document`.
 
 
-### `download`
+### download
 
 Download geofences as KML File.
 

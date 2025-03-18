@@ -11,7 +11,7 @@ API calls to interact with list of trusted numbers for trackers.
 
 API base path: `/tracker/trusted_number`.
 
-### `list`
+### list
 
 Gets list of trusted numbers for the specified tracker.
 
@@ -54,7 +54,7 @@ Gets list of trusted numbers for the specified tracker.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `update`
+### update
 
 Replaces the list of trusted numbers for a specified tracker with the new one.
 

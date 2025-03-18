@@ -12,7 +12,7 @@ Contains api call which link together trackers and working status lists.
 
 API base path: `/status/listing/tracker`.
 
-### `assign`
+### assign
 
 Assigns a working status list (or remove assignment) to the tracker.
 

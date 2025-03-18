@@ -36,7 +36,7 @@ Bill object description and API calls for work with user's bills.
 
 API path: `/bill`.
 
-### `create`
+### create
 
 Creates a new bill for the user. 
 
@@ -75,7 +75,7 @@ Creates a new bill for the user.
 * 222 – Plugin not found - when plugin **29** not available for user.
 
 
-### `list`
+### list
 
 Shows list of bills with their parameters in array. 
 

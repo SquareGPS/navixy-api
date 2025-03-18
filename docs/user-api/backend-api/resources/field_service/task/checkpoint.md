@@ -69,7 +69,7 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 
 API base path: `/task/checkpoint`.
 
-### `create`
+### create
 
 Creates a new checkpoint.
 
@@ -115,7 +115,7 @@ The returned object also can include "external_id_counts" field see `task/route/
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
 
-### `delete`
+### delete
 
 Deletes a checkpoint with the specified ID.
 
@@ -154,7 +154,7 @@ Deletes a checkpoint with the specified ID.
 * 201 – Not found in the database - if there is no checkpoint with such an ID.
 
 
-### `list`
+### list
 
 Get checkpoints belonging to user with given IDs
 
@@ -219,7 +219,7 @@ Get checkpoints belonging to user with given IDs
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `read`
+### read
 
 Gets route checkpoint by specified ID.
 
@@ -287,7 +287,7 @@ Gets route checkpoint by specified ID.
 * 201 – Not found in the database - if there is no checkpoint with such an ID.
 
 
-### `transmute`
+### transmute
 
 Convert route checkpoint into a standalone task. If it's the only checkpoint in the route, the route deleted.
 
@@ -329,7 +329,7 @@ Convert route checkpoint into a standalone task. If it's the only checkpoint in 
 * 255 – Invalid task state - if any of checkpoints are not in unassigned or assigned state.
 
 
-### `update`
+### update
 
 Updates existing checkpoint.
 

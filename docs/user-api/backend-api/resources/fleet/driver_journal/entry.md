@@ -55,7 +55,7 @@ To get information on how-to work with driver journals refer to our [instruction
 
 API path: `/driver/journal/entry`.
 
-### `list`
+### list
 
 Gets driver journal entries. 
 There are two ways to get entries: by their IDs or by specifying date range.
@@ -132,7 +132,7 @@ If there are no `entry_ids` in request, entries will be selected by intersecting
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `create`
+### create
 
 Creates driver journal entries.
 
@@ -165,7 +165,7 @@ Creates driver journal entries.
 * [General](../../../getting-started/errors.md#error-codes) types.
 
 
-### `update`
+### update
 
 Updates driver journal entry. Only two fields `type` and `comment` are available to update.
 
@@ -213,7 +213,7 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `delete`
+### delete
 
 Deletes driver journal entries.
 
@@ -252,7 +252,7 @@ Deletes driver journal entries.
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `download`
+### download
 
 Gets driver journal entries. Entries selected by intersecting their date range with date range from request (`from` 
 and `to` parameters).

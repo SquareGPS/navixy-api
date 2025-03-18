@@ -14,7 +14,7 @@ the principle of its work and its functionality.
 
 API base path: `/tracker/settings/tracking`.
 
-### `read`
+### read
 
 Gets tracking settings for the specified tracker.
 
@@ -58,7 +58,7 @@ Returned fields may differ from model to model. See tracking profiles for more i
 * 214 – Requested operation or parameters are not supported by the device - if device model has no tracking settings at all.
 
 
-### `update`
+### update
 
 Sends new tracking settings to the specified tracker.
 

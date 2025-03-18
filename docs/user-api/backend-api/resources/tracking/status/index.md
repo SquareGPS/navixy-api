@@ -31,7 +31,7 @@ Find details on working status usage in our [guides](../../../guides/field-servi
 
 API base path: `/status/`.
 
-### `create`
+### create
 
 Creates new possible working status for the specified working status list.
 
@@ -73,7 +73,7 @@ available.
 * 268 - Over quota – if the user's quota for working statuses exceeded.
 
 
-### `delete`
+### delete
 
 Deletes working status entry.
 
@@ -116,7 +116,7 @@ Deletes working status entry.
 available.
 
 
-### `list`
+### list
 
 Gets working statuses belonging to the specified status list.
 
@@ -169,7 +169,7 @@ Gets working statuses belonging to the specified status list.
 feature available.
 
 
-### `update`
+### update
 
 Updates working status properties.
 

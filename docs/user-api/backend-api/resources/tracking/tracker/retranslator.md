@@ -24,7 +24,7 @@ Contains tracker retranslator binding object and API calls to bind/unbind it to 
 
 API base path: `/tracker/retranslator`.
 
-### `bind`
+### bind
 
 Creates or updates binding.
 
@@ -70,7 +70,7 @@ Creates or updates binding.
 * 242 - There were errors during content validation – if `fake_device_id` is invalid for the retranslator protocol.
 
 
-### `list`
+### list
 
 List tracker retranslators bound to tracker with ID=`tracker_id`.
 
@@ -115,7 +115,7 @@ List tracker retranslators bound to tracker with ID=`tracker_id`.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 
 
-### `unbind`
+### unbind
 
 Unbinds a tracker from retranslator.
 

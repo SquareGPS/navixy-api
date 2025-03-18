@@ -20,7 +20,7 @@ Contains API calls related to forms associated with tasks.
 
 API path: `/task/form`.
 
-### `create`
+### create
 
 Attaches new form to the existing task or checkpoint. Form always created on the basis of form template.
 
@@ -64,7 +64,7 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
 
-### `delete`
+### delete
 
 Deletes a form (detach it from the task).<br>
 All form data will be lost!
@@ -108,7 +108,7 @@ All form data will be lost!
 * 255 – Invalid task state - if current task state is not `unassigned`, `assigned` or `arrived`.
 
 
-### `download`
+### download
 
 Retrieves attached form as file.
 
@@ -144,7 +144,7 @@ A form rendered to file (standard file download).
 * 201 – Not found in the database - if task does not exist or does not have attached form.
 
 
-### `list`
+### list
 
 Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, 
 the list contains data on the objects related to each form – tracker / vehicle / employee, task.
@@ -302,7 +302,7 @@ where period_object is:
 * [General](../../../../getting-started/errors.md#error-codes) types of errors.
 
 
-### `read`
+### read
 
 Gets form associated with the specified task.
 

@@ -13,7 +13,7 @@ Contains API calls to change and set users' passwords.
 
 API path: `/user/password`.
 
-### `change`
+### change
 
 Changes password of user with the provided session hash (it is contained in a password restore link from email sent to
  user by user/restore_password).
@@ -49,7 +49,7 @@ Changes password of user with the provided session hash (it is contained in a pa
 * 101 – In demo mode this function disabled - if specified session hash belongs to demo user.
 
 
-### `set`
+### set
 
 Changes password for login user.
 Works only with standard user session (not with API key).

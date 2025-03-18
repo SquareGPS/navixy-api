@@ -12,7 +12,7 @@ Sub-user session actions to obtain its hash.
 
 API path: `/subuser/session/`.
 
-### `create`
+### create
 
 Creates a new session for the specified sub-user and obtain its hash. Can be used to log in to sub-user's accounts.
 

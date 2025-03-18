@@ -60,7 +60,7 @@ File part **mime** type must be one of:
 * 254 - Cannot save file – on some file system errors.
 
 
-### `assign`
+### assign
 
 Assigns `icon_id` (from standard icon set) to this POI. `icon_id` can be null – this means that uploaded avatar should
  be used instead of icon.

@@ -12,7 +12,7 @@ Contains API calls to interact with unread history events.
 
 API path: `/history/unread`.
 
-### `list`
+### list
 
 List less than or equal to `limit` of the latest user's unread history events. Described how it works in our [guide](../../../guides/rules-notifications/work-with-notifications.md#all-unread-events-of-a-user).
 

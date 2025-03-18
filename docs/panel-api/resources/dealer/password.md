@@ -12,7 +12,7 @@ API call to update Dealer's password.
 
 API base path: `panel/dealer/password`.
 
-### `update`
+### update
 
 Changes password for the authorized Dealer. 
 

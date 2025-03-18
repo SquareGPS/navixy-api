@@ -17,7 +17,7 @@ API path: `/subscription`.
 Working with [2Checkout](https://www.2checkout.com) (formerly [Avangate](http://www.avangate.com)) subscriptions (renewals).
 
 
-### `cancel`
+### cancel
 
 Unsubscribe from auto-renewal by reference.
 
@@ -58,7 +58,7 @@ Unsubscribe from auto-renewal by reference.
 * 215 – External service error.
 
 
-### `list`
+### list
 
 List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://www.avangate.com) subscriptions (renewals).
 

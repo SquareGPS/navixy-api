@@ -13,7 +13,7 @@ This is a new API replacing Weblocator.
 
 API path: `/tracker/location/link`.
 
-### `create`
+### create
 
 Creates new Geo Link. There may be up to 10000 geo-links per user account.
 
@@ -123,7 +123,7 @@ Creates new Geo Link. There may be up to 10000 geo-links per user account.
 * 236 – Feature unavailable due to tariff restrictions – if there is at least one tracker without `weblocator` tariff feature.
 * 268 – Link cannot be created due to quota violation.
 
-### `update`
+### update
 
 Updates Geo Link.
 
@@ -196,7 +196,7 @@ Updates Geo Link.
 * 217 – List contains nonexistent entities – if one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 236 – Feature unavailable due to tariff restrictions – if there is at least one tracker without `weblocator` tariff feature.
 
-### `status/change`
+### status/change
 
 Lets to activate and deactivate a link.
 
@@ -229,7 +229,7 @@ Lets to activate and deactivate a link.
 
 * 201 – Not found in the database – if link with such an ID does not exist or does not belong to current user.
 
-### `read`
+### read
 
 Returns a link with a specified ID.
 
@@ -303,7 +303,7 @@ Returns a link with a specified ID.
 
 * 201 – Not found in the database – if link with such an ID does not exist or does not belong to current user.
 
-### `list`
+### list
 
 Returns a list of a user's links.
 
@@ -396,7 +396,7 @@ Returns a list of a user's links.
 }
 ```
 
-### `delete`
+### delete
 
 Deletes a link with a specified ID.
 

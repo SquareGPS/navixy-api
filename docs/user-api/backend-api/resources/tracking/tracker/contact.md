@@ -15,7 +15,7 @@ API call to get user's trackers with special grouping by "contacts"
 
 API base path: `/tracker/contact`.
 
-### `list`
+### list
 
 Gets all user's trackers with special grouping by "contacts".
 

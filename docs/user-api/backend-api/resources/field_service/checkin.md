@@ -82,7 +82,7 @@ Check-ins cannot be created using the web API ([create](#create) is needed for e
 
 API path: `/checkin`.
 
-### `read`
+### read
 
 Get check-in which ID is equal to `checkin_id`.
  
@@ -156,7 +156,7 @@ Get check-in which ID is equal to `checkin_id`.
 * 204 – Entity not found – when the marker entry is not exists.
 
 
-### `list`
+### list
 
 Gets marker entries on a map for trackers and for the specified time interval.
 
@@ -234,7 +234,7 @@ doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
 
 
-### `delete`
+### delete
 
 Deletes check-ins with the specified IDs.
 
@@ -277,7 +277,7 @@ Deletes check-ins with the specified IDs.
 trackers are not available to current sub-user.
 
 
-### `create`
+### create
 
 Creates a new check-in. Needed for exceptional cases.
 
@@ -330,7 +330,7 @@ where `form_submission` type is JSON object:
 * 242 – There were errors during content validation, if given values are invalid for the form.
 
 
-### `image/create`
+### image/create
 
 Creates an image for check-in. If you have multiple files to upload, be sure to add a brief delay between uploading each one to ensure a smooth process.
 
@@ -480,7 +480,7 @@ Content-Type: image/png
 * 271 – File size is larger than the maximum allowed (by default 16 MB).
 
 
-### `form/create`
+### form/create
 
 Creates a new form that can be attached to a check-in. Form always created on the basis of form template.
 
@@ -521,7 +521,7 @@ Creates a new form that can be attached to a check-in. Form always created on th
 * 201 – Not found in the database - if there is no template with such an ID.
 
 
-### `form/file/create`
+### form/file/create
 
 Creates a new file entry associated with form's field. If you have multiple files to upload, be sure to add a brief delay between uploading each one to ensure a smooth process.
 

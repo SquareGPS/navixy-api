@@ -14,7 +14,7 @@ immobilizer state.
 
 API base path: `/tracker/engine_immobilizer`.
 
-### `read`
+### read
 
 Requests to read the state of engine immobilizer.
 
@@ -58,7 +58,7 @@ Requests to read the state of engine immobilizer.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
 
 
-### `set`
+### set
 
 Requests to change the engine immobilizer state of the device. The device must be online.
 

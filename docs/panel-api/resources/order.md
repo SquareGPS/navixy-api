@@ -12,7 +12,7 @@ API call to read the order by its ID.
 
 API path: `panel/order`.
 
-### `read`
+### read
 
 Reads order by specified ID.
 

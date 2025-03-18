@@ -13,7 +13,7 @@ For information on how to obtain data from reports, refer to the [guide](../../.
 
 API path: `/report/tracker`.
 
-### `delete`
+### delete
 
 Deletes a report from the database.
 
@@ -54,7 +54,7 @@ Deletes a report from the database.
 * 101 – In demo mode this function disabled.
 
 
-### `download`
+### download
 
 Retrieve generated report as a file.
 
@@ -94,7 +94,7 @@ A report rendered to file (standard file download).
 * 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
 
-### `generate`
+### generate
 
 Requests a report generation with the specified parameters.
 
@@ -184,7 +184,7 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 * 236 - Feature unavailable due to tariff restrictions - when one of the trackers has tariff with disabled reports ("has_reports" is false).
 
 
-### `list`
+### list
 
 Returns info about all available generated or in-progress reports.
 
@@ -273,7 +273,7 @@ Returns info about all available generated or in-progress reports.
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `retrieve`
+### retrieve
 
 Retrieves a generated report as JSON.
 
@@ -761,7 +761,7 @@ Retrieves a generated report as JSON.
 * 229 - Requested data is not ready yet - if report exists, but its generation is still in progress.
 
 
-### `status`
+### status
 
 Returns a report generation status for the specified report id.
 

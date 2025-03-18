@@ -69,7 +69,7 @@ API calls to manage GPS tracking devices within the Admin Panel.
 
 API path: `panel/tracker`.
 
-### `active/history/list`
+### active/history/list
 
 Provides information about trackers which were considered "active" by our PaaS billing system, on a month-by-month basis.
 
@@ -123,7 +123,7 @@ Provides information about trackers which were considered "active" by our PaaS b
 * 211 – Requested time span is too big.
 
 
-### `bundle/assign`
+### bundle/assign
 
 Assign bundle to specified ICCID.
 
@@ -170,7 +170,7 @@ Assign bundle to specified ICCID.
 * 250 – Not allowed for deleted devices - if SIM card deleted.
 
 
-### `bundle/order/assign`
+### bundle/order/assign
 
 Assigns bundle to specified order ID.
 
@@ -212,7 +212,7 @@ Assigns bundle to specified order ID.
 * 201 – Not found in the database if bundle not found.
 
 
-### `bundle/import`
+### bundle/import
 
 Adds multiple bundles at once.
 
@@ -257,7 +257,7 @@ Adds multiple bundles at once.
 * 204 – Entity not found - if there is no equipment with specified equip_id.
 
 
-### `bundle/list`
+### bundle/list
 
 Gets list of all bundles. If `filter` is used, entities will be returned only if filter string contained within one of the following fields: `id`, `imei`, `model_code`, `iccid`, `assign_time`.
 
@@ -308,7 +308,7 @@ Gets list of all bundles. If `filter` is used, entities will be returned only if
 * 201 – Not found in the database - if `user_id` or `tariff_id` specified but was not found.
 
 
-### `bundle/read`
+### bundle/read
 
 Returns the bundle object with the specified imei.
 
@@ -350,7 +350,7 @@ Returns the bundle object with the specified imei.
 * 201 – Not found in the database - if bundle not found.
 
 
-### `bundle/update`
+### bundle/update
 
 Assign specified equipment to bundle.
 
@@ -393,7 +393,7 @@ Assign specified equipment to bundle.
 * 204 – Entity not found - if there is no equipment with specified `equip_id`.
 
 
-### `clone`
+### clone
 
 Creates a clone of the existing non-clone tracker.
 The method allows cloning from and to a subpaas's user account that is in the admin account hierarchy.
@@ -445,7 +445,7 @@ Cloning from a user of one subpaas to another user of another subpaas in the sam
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 
-### `console/connect`
+### console/connect
 
 Returns auth token for connection to tracker command console.
 
@@ -526,7 +526,7 @@ JSON objects come in the next text frames:
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 
-### `corrupt`
+### corrupt
 
 Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename tracking table.
 
@@ -584,7 +584,7 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 * `list` - int array. Clones tracker_ids list.
 
 
-### `batch_clone`
+### batch_clone
 
 Creates clones from the specified set of existing non-clone trackers.
 The following actions are allowed within the same admin account hierarchy:
@@ -667,7 +667,7 @@ Example:
 ```
 
 
-### `batch_delete_clones`
+### batch_delete_clones
 
 Deletes the specified set of trackers that are clones of other trackers. 
 The action will be considered as completed successfully, even if some trackers could not be deleted. Then for the rest 
@@ -733,7 +733,7 @@ Example:
 * [Standard errors](../../user-api/backend-api/getting-started/errors.md#error-codes).
 
 
-### `delete_clone`
+### delete_clone
 
 Deletes a clone of the existing tracker.
 
@@ -806,7 +806,7 @@ or
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 
-### `list`
+### list
 
 Returns list of all trackers belonging to dealer (with optional filtering by `filter` string, `user_id` and/or `tariff_id`).
 
@@ -888,7 +888,7 @@ If `filter` is used, entities will be returned only if filter string contain one
 * 201 – Not found in the database - if specified `user_id` or `tariff_id` not found.
 
 
-### `move`
+### move
 
 Moves the existing non-clone tracker to another user belonging to the same dealer.
 
@@ -936,7 +936,7 @@ Moves the existing non-clone tracker to another user belonging to the same deale
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 
-### `read`
+### read
 
 Returns the tracker object with the specified ID.
 
@@ -1006,7 +1006,7 @@ Returns the tracker object with the specified ID.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 
-### `register_retry`
+### register_retry
 
 Sends tracker registration commands and resets all tracking settings. Can be executed once in 120 seconds for every tracker.
 
@@ -1056,7 +1056,7 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 
-### `settings/update`
+### settings/update
 
 Updates tracker settings.
 
@@ -1101,7 +1101,7 @@ Updates tracker settings.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 
-### `source/update`
+### source/update
 
 Updates source settings. Can block and unblock a device.
 
@@ -1144,7 +1144,7 @@ Updates source settings. Can block and unblock a device.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
 
-### `tariff/change`
+### tariff/change
 
 *required permissions*: `[trackers: "update", "transactions": "create", "tariffs": "read"]`.
 
@@ -1263,7 +1263,7 @@ else (tariff is not active: tariff_end = true)
 All dates according to UTC time.
 
 
-### `raw_command/send`
+### raw_command/send
 
 Sends the GPRS command to the device, processing it in a protocol-dependent manner beforehand.
 

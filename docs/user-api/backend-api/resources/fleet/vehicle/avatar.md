@@ -12,7 +12,7 @@ API calls to upload and assign avatar to the vehicle.
 
 API path: `/vehicle/avatar`.
 
-### `assign`
+### assign
 
 Assigns `icon_id` (from standard icon set) to specified vehicle.
 
@@ -56,7 +56,7 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 * 201 – Not found in the database - when vehicle with `vehicle_id` not found.
 
 
-### `upload`
+### upload
 
 Uploads avatar image for specified vehicle.
 Then it will be available from `[api_base_url]/<api_static_path>/vehicle/avatars/<file_name>`

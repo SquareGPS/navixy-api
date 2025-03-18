@@ -12,7 +12,7 @@ API call for getting the route to destination point using [OSRM API](https://git
 
 API path: `/route/osrm`.
 
-### `get`
+### get
 
 Gets route points via OSRM API.
 

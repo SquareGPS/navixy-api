@@ -14,7 +14,7 @@ Learn more about the track API by following our [instructions](../../../guides/d
 
 API path: `/track`.
 
-### `download`
+### download
 
 This method allows you to download track points as a KML/KMZ file which can be used in other apps to show tracks.
 
@@ -117,7 +117,7 @@ For example, if the device's plan has maximum available storage period 3 months 
 the maximum value defined in the API configuration.
 
 
-### `list`
+### list
 
 This method retrieves a list of tracks for a given tracker within a specified time period.
 
@@ -345,7 +345,7 @@ restrictions or any other reason.
 the maximum value defined in the API configuration.
 
 
-### `read`
+### read
 
 This method fetches all track points that a GPS tracker has recorded and sent to the platform within a specified time 
 frame. The timestamp for each point corresponds to when the tracker recorded the point, adjusted to the user's time zone.
@@ -436,7 +436,7 @@ restrictions or any other reason.
 the maximum value defined in the API configuration.
 
 
-### `visit/list`
+### visit/list
 
 This method fetches IDs of zones and places that contain at least one track point.
 

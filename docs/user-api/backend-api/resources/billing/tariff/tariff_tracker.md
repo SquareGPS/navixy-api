@@ -28,7 +28,7 @@ User's **effective dealer** is
 
 API path: `/tariff/tracker/`.
 
-### `change`
+### change
 
 Changes plan of tracker (with `tracker_id`) to new plan (with `tariff_id`).
 
@@ -74,7 +74,7 @@ Changes plan of tracker (with `tracker_id`) to new plan (with `tariff_id`).
 * 240 - Not allowed changing plan too frequently – plan last changed less or equal to 30 days (**tariff.freeze.period** config option).
 
 
-### `list`
+### list
 
 List plans on which user can switch the passed tracker (even when tariff last changed less or equal than **tariff.freeze.period** time ago).
 

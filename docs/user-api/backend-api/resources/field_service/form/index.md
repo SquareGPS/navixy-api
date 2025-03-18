@@ -99,7 +99,7 @@ Find comprehinsive information on forms usage in our [instructions](../../../gui
 
 API path: `/form`.
 
-### `read`
+### read
 
 Gets form by an ID.
 
@@ -188,7 +188,7 @@ Gets form by an ID.
 * 201 – Not found in the database - if there is no form with such an ID.
 
 
-### `download`
+### download
 
 Downloads form as a file by an ID.
 

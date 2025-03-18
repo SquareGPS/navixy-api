@@ -27,7 +27,7 @@ interface. Currently, its function is purely visual.
 
 API base path: `/tracker/group`.
 
-### `assign`
+### assign
 
 Assigns multiple trackers to the specified group.
 
@@ -65,7 +65,7 @@ Assigns multiple trackers to the specified group.
 (or to a tracker belonging to different user).
 
 
-### `create`
+### create
 
 Creates a new empty group.
 
@@ -110,7 +110,7 @@ Creates a new empty group.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `delete`
+### delete
 
 Deletes group with the specified ID. The group must belong to authorized user. All trackers from this group will be 
 assigned to default group (0).
@@ -152,7 +152,7 @@ assigned to default group (0).
 * 201 - Not found in the database – if no group found with the specified ID (or group belongs to another user).
 
 
-### `list`
+### list
 
 Gets all user tracker groups. There is always "default" unnamed group with ID = 0. It cannot be modified, deleted, 
 and is not returned by this API call.
@@ -193,7 +193,7 @@ and is not returned by this API call.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `update`
+### update
 
 Updates specified tracker group. Group must belong to the authorized user.
 

@@ -54,7 +54,7 @@ Leasable email gateway:
 
 API path: `panel/gateways/email`.
 
-### `list`
+### list
 
 Gets list of available email gateways for the panel.
 

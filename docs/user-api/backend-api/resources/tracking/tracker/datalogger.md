@@ -11,7 +11,7 @@ API call for uploading datalogger information.
 
 API base path: `/tracker/datalogger`.
 
-### `upload`
+### upload
 
 Uploads track data for specified tracker. Tracker must be a datalogger.
 

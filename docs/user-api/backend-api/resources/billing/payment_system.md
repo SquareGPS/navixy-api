@@ -42,7 +42,7 @@ Payment system settings object and API calls for working with payment systems an
 
 API path: `/payment_system`.
 
-### `list`
+### list
 
 Returns list of payment systems available for specified user.
 
@@ -84,7 +84,7 @@ Returns list of payment systems available for specified user.
 * 201 – Not found in the database.
 
 
-### `estimate/get`
+### estimate/get
 
 Returns the estimate of the monthly payment amount
 

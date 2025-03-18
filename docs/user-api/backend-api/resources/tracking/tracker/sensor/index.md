@@ -227,7 +227,7 @@ Contains a map, where keys are IDs from **trackers** parameter and values are li
 * 221 - Device limit exceeded - if too many IDs were passed in `trackers` parameter.
 
 
-### `create`
+### create
 
 Creates a sensor.
 
@@ -270,7 +270,7 @@ in use.
 * 270 - Too many sensors of same type - the number of tracker's sensors, having same `sensor_type` is limited.
 
 
-### `delete`
+### delete
 
 Deletes a sensor with `sensor_id` from the database.
 
@@ -314,7 +314,7 @@ Deletes a sensor with `sensor_id` from the database.
 * 219 – Not allowed for clones of the device - if tracker is a clone.
 
 
-### `list`
+### list
 
 List tracker sensors bound to tracker with specified ID (`tracker_id` parameter).
 
@@ -368,7 +368,7 @@ List tracker sensors bound to tracker with specified ID (`tracker_id` parameter)
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 
 
-### `update`
+### update
 
 Updates sensor.
 

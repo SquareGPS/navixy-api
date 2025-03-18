@@ -31,7 +31,7 @@ Contains feedback object API call to send a feedback email, ask for help or sugg
 
 API path: `/feedback`.
 
-### `send_email`
+### send_email
 
 Sends an email with user's feedback, ask for help, or suggestion a new feature. The message will be sent to dealer's 
 email address for feedback.

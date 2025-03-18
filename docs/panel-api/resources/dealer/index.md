@@ -10,7 +10,7 @@ In Navixy, a Dealer is an entity that acts as a reseller or distributor of the N
 
 **API Path**: `panel/dealer/`
 
-### `get_info`
+### get_info
 
 API call to get information about a Dealer. This call retrieves details about the dealer's plan, balance, available features, and more.
 

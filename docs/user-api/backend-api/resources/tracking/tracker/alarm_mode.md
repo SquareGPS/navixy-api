@@ -11,7 +11,7 @@ Contains API calls to read and set alarm mode of device.
 
 API base path: `/tracker/alarm_mode`.
 
-### `read`
+### read
 
 Gets the state of alarm mode of device.
 
@@ -55,7 +55,7 @@ Gets the state of alarm mode of device.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
 
 
-### `set`
+### set
 
 Changes the state of alarm mode of device. The device must be online.
 

@@ -11,7 +11,7 @@ Contains API call to upload avatar for the tracker.
 
 API base path: `/tracker/avatar`.
 
-### `upload`
+### upload
 
 Uploads avatar image for specified tracker.
 Then it will be available from `{{ extra.api_example_url }}/[api_static_path]/tracker/avatars/<file_name>`

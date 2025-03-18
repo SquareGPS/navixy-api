@@ -12,7 +12,7 @@ Contains API calls to get and change tracker's label and group.
 
 API base path: `/tracker/settings`.
 
-### `read`
+### read
 
 Gets base settings for the specified tracker.
 
@@ -59,7 +59,7 @@ Gets base settings for the specified tracker.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `update`
+### update
 
 Updates the settings of the specified tracker.
 

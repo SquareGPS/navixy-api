@@ -57,7 +57,7 @@ Builtin fields:
 
 API path: `/entity`.
 
-### `list`
+### list
 
 Get list of entities which are available for customization.
 
@@ -116,7 +116,7 @@ Only API key `hash`.
 * [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `read`
+### read
 
 Gets entity by the ID or by type.
 
@@ -189,7 +189,7 @@ Gets entity by the ID or by type.
 * 201 - Not found in the database – if there is no entity with such ID.
 
 
-### `update`
+### update
 
 Updates settings of customizable entity. Entity must have a valid ID.
 

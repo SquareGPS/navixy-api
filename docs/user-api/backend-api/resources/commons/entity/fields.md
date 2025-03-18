@@ -63,7 +63,7 @@ API path: `/entity/fields`.
 
 Fields allow adding custom information to a customizable entity. Each field belongs to one entity.
 
-### `read`
+### read
 
 Gets a set of custom fields associated with the specified entity. Note that you must know the entity ID, which can be obtained from [entity/list](index.md#list).
 
@@ -114,7 +114,7 @@ Gets a set of custom fields associated with the specified entity. Note that you 
 * 201 - Not found in the database - if there is no entity with such ID.
 
 
-### `update`
+### update
 
 Updates a set of custom fields associated with the specified entity.
 

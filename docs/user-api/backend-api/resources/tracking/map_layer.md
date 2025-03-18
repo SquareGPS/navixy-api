@@ -25,7 +25,7 @@ Contains map layer object structure and API calls to interact with it.
 
 API path: `/map_layer`.
 
-### `read`
+### read
 
 Reads the body of the specified layer.
 
@@ -61,7 +61,7 @@ Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf
 * 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
 
 
-### `list`
+### list
 
 Returns metadata for all map layers for the user.
 
@@ -104,7 +104,7 @@ Only API key `hash`.
 No specific errors.
 
 
-### `upload`
+### upload
 
 Uploads new map layer.
 
@@ -138,7 +138,7 @@ Uploads new map layer.
 * 268 - Over quota – if the user's quota for map layers exceeded.
 
 
-### `update`
+### update
 
 Updates metadata for the specified map layer.
 
@@ -161,7 +161,7 @@ Updates metadata for the specified map layer.
 * 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
 
 
-### `delete`
+### delete
 
 Deletes specified layer.
 

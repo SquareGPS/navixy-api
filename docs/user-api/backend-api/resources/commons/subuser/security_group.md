@@ -77,7 +77,7 @@ Possible rights are:
 
 API path: `/subuser/security_group/`.
 
-### `create`
+### create
 
 Creates new security group.
 
@@ -117,7 +117,7 @@ Creates new security group.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 
 
-### `delete`
+### delete
 
 Deletes existing security group.
 All sub-users belonging to this group will be assigned to default (null) security group.
@@ -162,7 +162,7 @@ All sub-users belonging to this group will be assigned to default (null) securit
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 
 
-### `list`
+### list
 
 List all security groups belonging to current user.
 
@@ -215,7 +215,7 @@ Only API key `hash`.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
 
 
-### `update`
+### update
 
 Updates existing security group.
 
@@ -253,7 +253,7 @@ Updates existing security group.
 * 236 – Feature unavailable due to tariff restrictions - if there is at least one tracker without `multilevel_access` tariff feature.
 
 
-### `assign`
+### assign
 
 Assigns (removes) a security group to sub-users.
 

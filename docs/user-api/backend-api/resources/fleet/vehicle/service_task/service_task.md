@@ -136,7 +136,7 @@ Task **status** may be one of:
 
 API path: `/vehicle/service_task`.
 
-### `batch_create`
+### batch_create
 
 Creates multiple service works.
 
@@ -237,7 +237,7 @@ A `task` object is:
 * [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `create`
+### create
 
 Creates a new vehicle service work. For vehicles with associated tracker only.
 
@@ -342,7 +342,7 @@ A `task` object is:
 * 214 - Requested operation or parameters not supported by the device – engine hours condition passed but tracker hasn't ignition sensor.
 
 
-### `delete`
+### delete
 
 Deletes a vehicle service work.
 
@@ -384,7 +384,7 @@ Either **task_id** or **task_ids** should be specified.
 * [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `download`
+### download
 
 Downloads report of service works.
 
@@ -430,7 +430,7 @@ Report file.
 * [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `list`
+### list
 
 List all service works of all user vehicles.
 
@@ -509,7 +509,7 @@ List all service works of all user vehicles.
 * 201 - Not found in the database – vehicle or tracker not found.
 
 
-### `read`
+### read
 
 Gets service work info by its id.
 
@@ -552,7 +552,7 @@ Gets service work info by its id.
 * 204 Entity not found – when vehicle or service work not found.
 
 
-### `set_status`
+### set_status
 
 Updates task status, and saved (on `done` **status**) current date and values of used (in condition) counters for 
 "freeze" wearing percent.
@@ -594,7 +594,7 @@ Updates task status, and saved (on `done` **status**) current date and values of
 * 204 - Entity not found – when vehicle or service work not found.
 
 
-### `update`
+### update
 
 Updates information fields and notification settings of vehicle service work.
 

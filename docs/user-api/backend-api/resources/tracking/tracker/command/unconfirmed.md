@@ -12,7 +12,7 @@ API calls for to interact with unconfirmed SMS commands in the queue of the spec
 
 API path: `/tracker/command/unconfirmed`.
 
-### `count`
+### count
 
 Gets number of commands in queue for the specified tracker.
 
@@ -55,7 +55,7 @@ Gets number of commands in queue for the specified tracker.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `reset`
+### reset
 
 Removes all pending SMS commands from the queue for the specified tracker.
 

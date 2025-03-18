@@ -12,7 +12,7 @@ Contains user personal info update API call.
 
 API path: `/user/personal_info`.
 
-### `update`
+### update
 
 Updates user personal info.
 

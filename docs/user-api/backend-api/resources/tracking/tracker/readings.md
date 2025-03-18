@@ -13,7 +13,7 @@ Described getting data from sensors in our [guides](../../../guides/data-retriev
 
 API base path: `/tracker/readings`.
 
-### `list`
+### list
 
 Gets last values for all sensors, state values and counters.
 
@@ -128,7 +128,7 @@ Gets last values for all sensors, state values and counters.
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-### `batch_list`
+### batch_list
 
 Gets last values for all sensors, state values and counters on multiple trackers.
 

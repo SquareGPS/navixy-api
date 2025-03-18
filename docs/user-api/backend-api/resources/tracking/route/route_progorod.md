@@ -12,7 +12,7 @@ API call for getting the route to destination point using [Progorod router](http
 
 API path: `/route/progorod`.
 
-### `get`
+### get
 
 Gets route points using Progorod router.
 

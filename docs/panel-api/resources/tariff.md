@@ -60,7 +60,7 @@ API calls for managing user plans within the service platform (PaaS or Sub Paas)
 
 API path: `panel/tariff`.
 
-### `create`
+### create
 
 Creates a new plan.
 
@@ -100,7 +100,7 @@ Creates a new plan.
 * 244 – Duplicate entity label - if there's another dealer's plan with the same `name`.
 
 
-### `list`
+### list
 
 Returns list of all plans belonging to dealer.
 
@@ -180,7 +180,7 @@ If "filter" is used, entities will be returned only if filter string contains on
 * `count` - int. Total number of records (ignoring offset and limit).
 
 
-### `read`
+### read
 
 Returns plan with specified ID.
 
@@ -244,7 +244,7 @@ Returns plan with specified ID.
 * 201 – Not found in the database - if specified plan does not exist or belongs to different dealer.
 
 
-### `update`
+### update
 
 Updates existing plan.
 

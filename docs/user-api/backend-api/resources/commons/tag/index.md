@@ -41,7 +41,7 @@ For more details on using the tags API, refer to our [how-to guide](../../../gui
 
 API path: `/tag`.
 
-### `create`
+### create
 
 Creates a new tag.
 
@@ -85,7 +85,7 @@ Creates a new tag.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `delete`
+### delete
 
 Deletes tag with the specified ID.
 
@@ -128,7 +128,7 @@ To delete tags, only one of the following parameters must be specified.
 * 201 – Not found in the database - if there is no tag with such an ID. This error will not occur if the tag_ids parameter is specified, deletion is silent in this case.
 
 
-### `list`
+### list
 
 Gets all tags belonging to user with optional filtering.
 
@@ -175,7 +175,7 @@ Gets all tags belonging to user with optional filtering.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `search`
+### search
 
 Search entities that bound with all of specified tags.
 
@@ -232,7 +232,7 @@ Search entities that bound with all of specified tags.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `update`
+### update
 
 Updates existing tag.
 

@@ -111,7 +111,7 @@ the [data types description section](../../../../getting-started/introduction.md
 
 API base path: `/tracker/rule`.
 
-### `bind`
+### bind
 
 Binds rule with `rule_id` to trackers list.
 
@@ -147,7 +147,7 @@ Binds rule with `rule_id` to trackers list.
 * 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
 
 
-### `create`
+### create
 
 Creates rule and scheduled intervals.
 
@@ -197,7 +197,7 @@ that are described for every rule type if exist in [rule types](rule_types.md).
 * 204 - Entity not found – when associated zone is not exist.
 
 
-### `delete`
+### delete
 
 Deletes rule with rule_id and all related objects from the database.
 
@@ -238,7 +238,7 @@ Deletes rule with rule_id and all related objects from the database.
 * 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
 
 
-### `list`
+### list
 
 List tracker rules bound to tracker with an ID=`tracker_id` or all users' tracker rules if `tracker_id` not passed.
 
@@ -304,7 +304,7 @@ List tracker rules bound to tracker with an ID=`tracker_id` or all users' tracke
 * `list` - list of rules
 
 
-### `unbind`
+### unbind
 
 Unbinds trackers from rule with `rule_id`.
 
@@ -340,7 +340,7 @@ Unbinds trackers from rule with `rule_id`.
 * 201 - Not found in the database – if rule with `rule_id` does not exist or owned by other user.
 
 
-### `update`
+### update
 
 Updates rule and scheduled intervals.
 

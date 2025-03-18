@@ -52,7 +52,7 @@ completed with warnings or failed.
 
 API base path: `/task/route`.
 
-### `assign`
+### assign
 
 (Re)assigns route to a new tracker (or make it unassigned).
 
@@ -98,7 +98,7 @@ API base path: `/task/route`.
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
 
-### `create`
+### create
 
 Creates a new route. One of checkpoints can have ID (in this case it must be a task) - it will be transmuted from
 task to checkpoint.
@@ -199,7 +199,7 @@ If there is nothing to return, then parameter "external_id_counts" will not be p
 * 236 – Feature unavailable due to tariff restrictions - if device's tariff does not allow usage of tasks.
 
 
-### `delete`
+### delete
 
 Deletes route (and its checkpoints) with the specified ID.
 
@@ -240,7 +240,7 @@ Deletes route (and its checkpoints) with the specified ID.
 * 201 – Not found in the database - if there is no route with such an ID.
 
 
-### `list`
+### list
 
 Get all routes belonging to user with optional filtering.
 
@@ -300,7 +300,7 @@ Get all routes belonging to user with optional filtering.
 [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `read`
+### read
 
 Gets route by specified ID.
 
@@ -342,7 +342,7 @@ Gets route by specified ID.
 * 201 – Not found in the database - if there is no route with such an ID.
 
 
-### `update`
+### update
 
 Updates existing route. Note that you cannot change task owner using this method.<br>
 Reordering checkpoint IDs in the `checkpoint_ids` array changes order of execution.

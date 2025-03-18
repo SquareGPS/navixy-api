@@ -12,7 +12,7 @@ API calls to import employees.
 
 API path: `/employee/import/`.
 
-### `start`
+### start
 
 Starting the background process of importing employees.
 
@@ -79,7 +79,7 @@ EOF
 * 234 - Invalid data format
 * 247 - Entity already exists - there is another identical import with the same file
 
-### `read`
+### read
 
 Returns an import process with specified ID.
 
@@ -131,7 +131,7 @@ curl -X POST "{{ extra.api_example_url }}/employee/import/read" \
 
 * 201 – Not found in database (if import is not found)
 
-### `list`
+### list
 
 Returns the list of the user's employee import processes.
 
@@ -173,7 +173,7 @@ curl -X POST "{{ extra.api_example_url }}/employee/import/list" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-### `download_failed`
+### download_failed
 
 Retrieve a file with lines that contained errors and did not pass validation.
 

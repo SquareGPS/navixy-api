@@ -12,7 +12,7 @@ Contains an API call to get list of user notifications.
 
 API path: `/notification`.
 
-### `list`
+### list
 
 Lists user notifications.
 

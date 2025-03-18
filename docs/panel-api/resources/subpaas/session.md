@@ -12,7 +12,7 @@ API call to create a SubPaaS session key.
 
 API base path: `panel/subpaas/session`.
 
-### `create`
+### create
 
 Creates a SubPaaS session.
 

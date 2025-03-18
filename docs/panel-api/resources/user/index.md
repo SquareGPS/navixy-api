@@ -107,7 +107,7 @@ The discount object structure defines a discount applied to a user's account bas
 
 API path: `panel/user`.
 
-### `create`
+### create
 
 Creates a new user.
 
@@ -193,7 +193,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 * 206 - Login already in use – if this email already registered.
 
 
-### `read`
+### read
 
 Returns user info by its id.
 
@@ -276,7 +276,7 @@ Returns user info by its id.
 * 201 - Not found in the database – when user with specified ID not found or belongs to other dealer.
 
 
-### `update`
+### update
 
 Updates existing user with new field values (see [user object](#user-object-structure)). User must 
 exist and must belong to authorized dealer. Changing of `legal_type` is not permitted, i.e. 
@@ -356,7 +356,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/user/update' \
 
 
 
-### `change_password`
+### change_password
 
 Changes password of a user.
 
@@ -392,7 +392,7 @@ Changes password of a user.
 * 201 – Not found in the database - if specified user does not exist or belongs to different dealer.
 
 
-### `corrupt`
+### corrupt
 
 Marks user and its sub users and trackers as deleted and corrupt all user trackers.
 
@@ -441,7 +441,7 @@ Marks user and its sub users and trackers as deleted and corrupt all user tracke
 ```
 
 
-### `upload`
+### upload
 
 Upload users from CSV or XLS file.
 
@@ -565,7 +565,7 @@ Most error responses include `row_number` - the line number in the file where th
 }
 ```
 
-### `list`
+### list
 
 Returns a list of all users belonging to a dealer.
 
@@ -655,7 +655,7 @@ If the `filter` parameter is used (i.e., it is passed, it is not empty, and it d
 
 
 
-### `export`
+### export
 
 This API call returns a file containing a list of all users belonging to a Dealer.
 
@@ -707,7 +707,7 @@ About user object structure see [above](#user-object-structure).
 * [General](../../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
 
 
-### `session/create`
+### session/create
 
 Creates an interface session for specified user and returns the hash for the created session.
 
@@ -753,7 +753,7 @@ user_sessions: "global" - Optional. Allows sessions of users creation, not only 
 * 201 - Not found in the database – if specified user does not exist or belongs to different dealer.
 
 
-### `transaction/list`
+### transaction/list
 
 Gets list of user's billing transactions for the specified period. Same as [/transaction/list](../../../user-api/backend-api/resources/billing/transaction.md#list) from main api.
 
@@ -822,7 +822,7 @@ Gets list of user's billing transactions for the specified period. Same as [/tra
 
 * 201 – Not found in the database - if user not found or not owned by a current dealer.
 
-### `transaction/change_balance`
+### transaction/change_balance
 
 Changes user balance (increase or decrease) or bonus and write this change in transactions (type = `payment`, subtype = `partner`).
 

@@ -12,7 +12,7 @@ Contains API call to read mileage counted for the specified period.
 
 API base path: `/tracker/stats/mileage`.
 
-### `read`
+### read
 
 Returns mileage in kilometers in specified period grouped by trackers and day.
 

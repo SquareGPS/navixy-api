@@ -84,7 +84,7 @@ Find more guides on working with tasks [there](../../../guides/field-service-man
 
 API base path: `/task`.
 
-### `assign`
+### assign
 
 (Re)assigns task to new tracker (or make it unassigned).
 
@@ -229,7 +229,7 @@ Returns total number of tasks belonging to current user.
 * `count` - int. Number of tasks.
 
 
-### `create`
+### create
 
 Creates a new task.
 
@@ -309,7 +309,7 @@ will differ only by an ID. Respectively, if the created task has to be connected
 * 236 – Feature unavailable due to tariff restrictions (if device's tariff does not allow usage of tasks).
 
 
-### `delete`
+### delete
 
 Deletes the task with the specified ID.
 
@@ -348,7 +348,7 @@ Deletes the task with the specified ID.
 * 201 – Not found in the database (if there is no task with such an ID).
 
 
-### `list`
+### list
 
 Gets all task belonging to user with optional filtering.
 
@@ -493,7 +493,7 @@ If **external_id**, **trackers**, **filters**, **from**, **to** or **tag_ids** i
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `read`
+### read
 
 Gets task, checkpoint, or route with checkpoints by specified ID.
 
@@ -542,7 +542,7 @@ object described [here](checkpoint.md#checkpoint-object).
 * 201 – Not found in the database (if there is no task with such an ID).
 
 
-### `transmute`
+### transmute
 
 Converts task into a route checkpoint.
 
@@ -585,7 +585,7 @@ assigned is unavailable to current sub-user).
 * 255 – Invalid task state (if task or any of the checkpoints are not in unassigned or assigned state).
 
 
-### `update`
+### update
 
 Updates existing task. Note that you cannot change task owner using this method.
 

@@ -33,7 +33,7 @@ Contains vehicle status listing object and API calls to interact with it.
 
 API path: `/vehicle/status/listing`.
 
-### `read`
+### read
 
 Gets all of user's vehicle statuses.
 
@@ -74,7 +74,7 @@ Gets all of user's vehicle statuses.
 [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `update`
+### update
 
 Updates user's vehicle statuses.
 

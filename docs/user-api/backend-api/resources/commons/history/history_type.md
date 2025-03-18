@@ -12,7 +12,7 @@ Contains list method to get event types available to user with localized descrip
 
 API path: `/history/type`.
 
-### `list`
+### list
 
 Returns available history event types with localized descriptions.
 

@@ -12,7 +12,7 @@ API call for getting the route to destination point.
 
 API path: `/route`.
 
-### `get`
+### get
 
 Gets route points via specified route provider.
 

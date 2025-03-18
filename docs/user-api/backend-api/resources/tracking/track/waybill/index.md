@@ -12,7 +12,7 @@ This resource contains information to download waybill report for tracks.
 
 API path: `/track/waybill`.
 
-### `download`
+### download
 
 Downloads a waybill report DOCX file for tracks of the specified tracker and time period.
 

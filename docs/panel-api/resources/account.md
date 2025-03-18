@@ -12,7 +12,7 @@ API calls on getting the panel's hash, getting permissions and logout.
 
 API path: `panel/account`.
 
-### `auth`
+### auth
 
 Does not require session hash and does not need any permissions. Auths dealer in a panel (planned also for dealer's "sub-users")
  and gets hash. 
@@ -112,7 +112,7 @@ Does not require session hash and does not need any permissions. Auths dealer in
 * 12 - Dealer not found.
 
 
-### `get_permissions`
+### get_permissions
 
 Returns permissions for current panel session. 
 
@@ -209,7 +209,7 @@ Only session `hash`.
 [General](../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
 
 
-### `logout`
+### logout
 
 Ends the current session.
 

@@ -12,7 +12,7 @@ Schedule proposals are "preview" of what tasks and routes will be created at the
 
 API base path: `/task/schedule/proposal`.
 
-### `list`
+### list
 
 Get all tasks and routes that will be created by schedule.
 

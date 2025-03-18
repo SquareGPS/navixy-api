@@ -14,7 +14,7 @@ API call to change the password of a Subdealer (SubPaaS) account.
 
 API base path: `panel/subpaas/password`.
 
-### `change` 
+### change
 
 Changes SubPaaS password.
 

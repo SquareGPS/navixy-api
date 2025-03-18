@@ -12,7 +12,7 @@ Contains user audit check-in method that calls when user opens UI or activates t
 
 API path: `/user/audit`.
 
-### `checkin`
+### checkin
 
 This action occurs when a customer opens the UI or activates the UI tab in the browser after it hasn't been used for more than 2 hours.
 Works only with standard user session (not with API key).

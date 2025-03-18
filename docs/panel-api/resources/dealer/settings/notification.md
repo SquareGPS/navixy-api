@@ -32,7 +32,7 @@ Let's explore the Notification Setting object using the following example:
 
 API path: `panel/dealer/settings/notification`.
 
-### `read`
+### read
 
 Gets current monitoring notification settings.
 
@@ -80,7 +80,7 @@ Only session `hash`.
 [General](../../../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
 
 
-### `update`
+### update
 
 Updates notification settings for the current dealer. 
 

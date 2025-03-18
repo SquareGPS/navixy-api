@@ -52,7 +52,7 @@ User can assign form to the task or checkin by choosing template without the nee
 
 API path: `/form/template`.
 
-### `list`
+### list
 
 Gets all form templates belonging to current master user.
 
@@ -104,7 +104,7 @@ Gets all form templates belonging to current master user.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `create`
+### create
 
 Creates new form template.
 
@@ -142,7 +142,7 @@ Creates new form template.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
 
-### `read`
+### read
 
 Gets form template belonging to current master user by specified ID.
 
@@ -201,7 +201,7 @@ Gets form template belonging to current master user by specified ID.
 * 201 – Not found in the database - if there is no template with such an ID.
 
 
-### `update`
+### update
 
 Updates existing form template.
 
@@ -235,7 +235,7 @@ Updates existing form template.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
 
-### `delete`
+### delete
 
 Deletes form template.
 
@@ -275,7 +275,7 @@ Deletes form template.
 * 101 – In demo mode this function disabled - if current user has "demo" flag.
 
 
-### `stats/read`
+### stats/read
 
 Returns template usage statistics.
 

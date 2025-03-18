@@ -53,7 +53,7 @@ Tariff object description and API call to get the list of device's plans availab
 
 API path: `/tariff`.
 
-### `list`
+### list
 
 Gets list of device's plans available to user.<br>
 If user's dealer is **default dealer** or **paas** then listed tariffs of that dealer, else listed plans of parent dealer.<br>

@@ -37,7 +37,7 @@ of the dispatcher and others. This data can be used for more convenient and effi
 
 API path: `/garage`.
 
-### `list`
+### list
 
 Gets all depots belonging to user.
 
@@ -84,7 +84,7 @@ Gets all depots belonging to user.
 [General](../../getting-started/errors.md#error-codes) types only.
 
 
-### `create`
+### create
 
 Creates a new depot.
 
@@ -122,7 +122,7 @@ Creates a new depot.
 [General](../../getting-started/errors.md#error-codes) types only.
 
 
-### `update`
+### update
 
 Updates existing depot with the specified ID.
 
@@ -157,7 +157,7 @@ Updates existing depot with the specified ID.
 * 201 – Not found in the database - if there is no depot with such an ID.
 
 
-### `delete`
+### delete
 
 Deletes a depot with the specified ID.
 

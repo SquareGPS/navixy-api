@@ -7,7 +7,7 @@ description: API calls to work with user applications.
 
 API calls to work with user applications.
 
-### `/user/application/list`
+### /user/application/list
 
 Lists all existing user applications.
 
@@ -70,7 +70,7 @@ Lists all existing user applications.
 * `new_tab` - the application will be opened in a new tab.
 * `embedded` - the application page will be embedded into the platform UI.
 
-### `/user/application/create`
+### /user/application/create
 
 Creates a new application.
 
@@ -102,7 +102,7 @@ Creates a new application.
 
 * `id` - integer. Unique ID of the created application.
 
-### `/user/application/update`
+### /user/application/update
 
 Updates an existing application.
 
@@ -124,7 +124,7 @@ Updates an existing application.
 
 * 201 – Application not found.
 
-### `/user/application/delete`
+### /user/application/delete
 
 Deletes a specified application by its unique identifier.
 
@@ -146,7 +146,7 @@ Deletes a specified application by its unique identifier.
 
 * 201 – Application not found.
 
-### `/user/application/enabled/set`
+### /user/application/enabled/set
 
 Toggles application visibility in the side menu.
 

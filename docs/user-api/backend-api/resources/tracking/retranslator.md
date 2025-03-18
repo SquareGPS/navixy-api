@@ -61,7 +61,7 @@ that comes from a device to the platform to some third-party application specifi
 
 API path: `/retranslator`.
 
-### `create`
+### create
 
 Creates new retranslator.
 
@@ -101,7 +101,7 @@ Creates new retranslator.
 * 268 - Over quota – if the user's quota for retranslators exceeded.
 
 
-### `delete`
+### delete
 
 Deletes user's retranslator with specified `retranslator_id`.
 
@@ -142,7 +142,7 @@ Deletes user's retranslator with specified `retranslator_id`.
 * 201 - Not found in the database.
 
 
-### `list`
+### list
 
 Get all users' retranslators.
 
@@ -192,7 +192,7 @@ Get all users' retranslators.
 * `enabled` - boolean. Status.
 
 
-### `update`
+### update
 
 Updates retranslator parameters for the specified retranslator. Note that retranslator must exist, and must belong to 
 the current user.
@@ -229,7 +229,7 @@ the current user.
 * 247 - Entity already exists – if retranslator with this address, port and login already exists.
 
 
-### `protocol/list`
+### protocol/list
 
 Returns all available retranslator protocols.
 

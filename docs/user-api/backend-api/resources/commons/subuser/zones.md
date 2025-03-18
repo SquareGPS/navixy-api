@@ -12,7 +12,7 @@ Contains API calls to control which geofences is available to which sub-user.
 
 API path: `/subuser/zones`.
 
-### `bind`
+### bind
 
 Gives access for sub-user to specified geofences.
 
@@ -54,7 +54,7 @@ Gives access for sub-user to specified geofences.
 * 201 – Not found in the database – if sub-user/geofence does not exist or does not belong to current master user.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
 
-### `unbind`
+### unbind
 
 Disables access for sub-user to specified geofences.
 
@@ -92,7 +92,7 @@ Disables access for sub-user to specified geofences.
 * 201 – Not found in the database – if sub-user/geofence not exist or does not belong to current master user.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
 
-### `list_ids`
+### list_ids
 
 Gets a list of geofence IDs to which this sub-user has access.
 
@@ -131,7 +131,7 @@ Gets a list of geofence IDs to which this sub-user has access.
 * 201 – Not found in the database – if sub-user with such an ID does not exist or does not belong to current master user.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
 
-### `list`
+### list
 
 Gets a list of geofences to which this sub-user has access.
 

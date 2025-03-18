@@ -66,7 +66,7 @@ via [avatar/upload](avatar.md#upload).
 
 API base path: `/employee`.
 
-### `list`
+### list
 
 Gets all employees and drivers belonging to user.
 
@@ -113,7 +113,7 @@ Gets all employees and drivers belonging to user.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `create`
+### create
 
 Creates a new employee/driver.
 
@@ -151,7 +151,7 @@ Creates a new employee/driver.
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
 
 
-### `read`
+### read
 
 Gets employee/driver by his ID.
 
@@ -217,7 +217,7 @@ Gets employee/driver by his ID.
 * 201 – Not found in the database - if there is no employee/driver with such an ID.
 
 
-### `update`
+### update
 
 Updates existing employee/driver.
 
@@ -251,7 +251,7 @@ Updates existing employee/driver.
 * 247 – Entity already exists, if `tracker_id`!=null and exists an employee that already bound to this `tracker_id`.
 
 
-### `delete`
+### delete
 
 Deletes an employee/driver with the specified ID.
 
@@ -290,7 +290,7 @@ Deletes an employee/driver with the specified ID.
 * 201 – Not found in the database - if there is no employee/driver with such an ID.
 
 
-### `batch_convert`
+### batch_convert
 
 Converts batch of tab-delimited employees/drivers and returns list of checked employees/drivers with errors.
 

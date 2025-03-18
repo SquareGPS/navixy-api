@@ -25,7 +25,7 @@ To give you a clear idea of how to work with the Navixy API, let's go through a 
 
 3. **Get objects lists with `tracker/list`**:
     - Example API call:
-    ```sh
+    ```shell
     $ curl -X POST 'https://api.navixy.com/v2/tracker/list' \
         -H 'Content-Type: application/json' \
         -d '{
@@ -35,7 +35,7 @@ To give you a clear idea of how to work with the Navixy API, let's go through a 
 
 4. **Get track lists with `track/list`**:
     - Example API call:
-    ```sh
+    ```shell
     $ curl -X POST 'https://api.navixy.com/v2/track/list' \
         -H 'Content-Type: application/json' \
         -d '{
@@ -46,7 +46,7 @@ To give you a clear idea of how to work with the Navixy API, let's go through a 
 
 5. **Get the track itself with `track/read`**:
     - Example API call:
-    ```sh
+    ```shell
     $ curl -X POST 'https://api.navixy.com/v2/track/read' \
         -H 'Content-Type: application/json' \
         -d '{
@@ -60,31 +60,21 @@ To give you a clear idea of how to work with the Navixy API, let's go through a 
 Depending on the physical location of the platform, use one of the following base URLs:
 
 - **European Navixy platform**:
-  ```
-  https://api.eu.navixy.com/v2
-  ```
+  `https://api.eu.navixy.com/v2`
 
 - **North American Navixy platform**:
-  ```
-  https://api.us.navixy.com/v2
-  ```
+  `https://api.us.navixy.com/v2`
 
 - **Self-hosted (On-Premise) installations**:
-  ```
-  https://api.your_domain
-  ```
+  `https://api.your_domain`
 
-For example, to make a `user/auth` API call on the European Navixy ServerMate platform, you should use the URL:
-```
-https://api.eu.navixy.com/v2/user/auth
-```
+For example, to make a `user/auth` API call on the European Navixy ServerMate platform, you should use the URL
+`https://api.eu.navixy.com/v2/user/auth`
 
 ## API Calls Format
 
-API calls follow a consistent notation:
-```
-/resource/sub_resource/action(parameter1, parameter2, [parameter3])
-```
+API calls follow a consistent notation:<br>
+`/resource/sub_resource/action(parameter1, parameter2, [parameter3])`
 
 Parameters can be passed in different ways:
 - **HTTP POST `application/json`**: Recommended
@@ -95,7 +85,7 @@ Parameters can be passed in different ways:
 
 #### HTTP POST `application/json`
 
-```sh
+```shell
 $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
     -H 'Content-Type: application/json' \
     -d '{"param1": "value1", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
@@ -103,7 +93,7 @@ $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
 
 #### HTTP POST `application/x-www-form-urlencoded`
 
-```sh
+```shell
 $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
     -d 'param1=value' \
     -d 'hash=a6aa75587e5c59c32d347da438505fc3'
@@ -111,16 +101,14 @@ $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
 
 #### HTTP GET
 
-```sh
+```shell
 $ curl '[api_base_url]/resource/sub_resource/action?param1=value1&hash=a6aa75587e5c59c32d347da438505fc3'
 ```
 
 ## Request and Response Format
 
 To make an API call, send a `POST` request to:
-```
-[api_base_url]/resource/action/
-```
+`[api_base_url]/resource/action/`
 
 The response will be given with `application/json` content type, even for errors. Response fields and object structure are specific to the API call.
 
@@ -190,7 +178,7 @@ To use ISO 8601 date/time format, pass `true` to:
 
 #### JSON request body parameter
 
-```sh
+```shell
 $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
     -H 'Content-Type: application/json' \
     -d '{"iso_datetime": true, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
@@ -198,7 +186,7 @@ $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
 
 #### Form request parameter
 
-```sh
+```shell
 $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
     -d 'iso_datetime=true' \
     -d 'hash=a6aa75587e5c59c32d347da438505fc3'
@@ -206,7 +194,7 @@ $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
 
 #### HTTP Header
 
-```sh
+```shell
 $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
     -H 'Content-Type: application/json' \
     -H 'NVX-ISO-DateTime: true' \

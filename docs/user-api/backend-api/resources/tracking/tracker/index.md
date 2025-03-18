@@ -87,7 +87,7 @@ This document contains tracker object structure and API calls to interact with i
 
 API base path: `/tracker`.
 
-### `read`
+### read
 
 Gets tracker info by ID.
 
@@ -146,7 +146,7 @@ See tracker object structure description [here](#tracker-object-structure).
 * 201 - Not found in the database – if tracker not found.
 
 
-### `list`
+### list
 
 Gets user's trackers with optional filtering by labels. We described this API call in the [guide](../../../guides/data-retrieval/get-tracker-list.md).
 
@@ -269,7 +269,7 @@ Marks tracker as deleted and corrupt its source, device_id and phone.
 * 208 – Device blocked.
 
 
-### `delete`
+### delete
 
 Deletes a tracker if it is "clone". Will not work if specified ID of the original tracker.
 
@@ -338,7 +338,7 @@ or
 * `vehicles` - list of associated vehicle IDs.
 
 
-### `change_phone`
+### change_phone
 
 Changes tracker's phone and setup new apn.
 
@@ -383,7 +383,7 @@ Changes tracker's phone and setup new apn.
   with the device.
 
 
-### `get_diagnostics`
+### get_diagnostics
 
 Gets last CAN and OBD sensors and states values received from the device.
 
@@ -515,7 +515,7 @@ the [tracker/sensor/input_name/list](sensor/input_name.md#list) API call.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `get_fuel`
+### get_fuel
 
 Gets current fuel level (in liters) of tracker's fuel tanks.
 
@@ -586,7 +586,7 @@ List of available sensor's input names for the object `sensor value`:
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `get_inputs`
+### get_inputs
 
 Gets current state of tracker's digital inputs and "semantic" inputs (ignition, buttons, car alarms, etc.)
 bound to them (if any).
@@ -648,7 +648,7 @@ bound to them (if any).
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `batch_get_inputs`
+### batch_get_inputs
 
 Gets current state of trackers' digital inputs and "semantic" inputs (ignition, buttons, car alarms, etc.)
 bound to them (if any).
@@ -722,7 +722,7 @@ Input info:
 * 221 - Device limit exceeded - if too many IDs were passed in `trackers` parameter.
 
 
-### `get_outputs`
+### get_outputs
 
 Gets tracker's outputs info
 
@@ -765,7 +765,7 @@ Gets tracker's outputs info
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `batch_get_outputs`
+### batch_get_outputs
 
 Gets trackers' outputs info
 
@@ -810,7 +810,7 @@ Gets trackers' outputs info
 * 221 - Device limit exceeded - if too many IDs were passed in `trackers` parameter.
 
 
-### `output/update`
+### output/update
 
 Updates tracker's outputs info
 
@@ -845,7 +845,7 @@ Updates tracker's outputs info
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `get_last_gps_point`
+### get_last_gps_point
 
 Gets last point of the tracker located by GPS. Points located by GSM LBS are excluded from consideration.
 
@@ -903,7 +903,7 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `get_readings`
+### get_readings
 
 Gets last sensor values for sensors that are:
 
@@ -990,7 +990,7 @@ List of available sensor's input names for the object `sensor value`:
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `get_state`
+### get_state
 
 Gets current tracker state (gps, gsm, outputs, etc.).
 
@@ -1108,7 +1108,7 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 * 208 – Device blocked (if tracker exists but was blocked due to tariff restrictions or some other reason).
 
 
-### `get_states`
+### get_states
 
 Gets current states (gps, gsm, outputs, etc.) for several trackers.
 
@@ -1212,7 +1212,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
   belonging to an authorized user).
 
 
-### `list_models`
+### list_models
 
 Gets all integrated tracker models (from "models" table).
 
@@ -1417,7 +1417,7 @@ Possible values are:
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `tags/set`
+### tags/set
 
 Set tags for a tracker. Tags must be created.
 
@@ -1451,7 +1451,7 @@ Set tags for a tracker. Tags must be created.
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `location_request`
+### location_request
 
 Execute this command to get current position of the device. The device must support requesting function.
 
@@ -1501,7 +1501,7 @@ Request types:
 * 256 – Location already actual.
 
 
-### `register`
+### register
 
 Registers a new tracker device. During registration, device linked with current API user's account
 and automatically configured to send data to our servers (if device model supports it).
@@ -1597,7 +1597,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 258 – Bundle not found. Plugin specific: if bundle not found for specified device ID.
 
 
-### `register_retry`
+### register_retry
 
 Resends registration commands to the device. The panel must have installed SMS gateway.
 
@@ -1674,7 +1674,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 242 – Device already connected - if tracker connected to the server.
 
 
-### `register_quick`
+### register_quick
 
 Registers a new tracker using only IMEI. Automatic SMS commands will not be sent for a register.
 The device must be preconfigured. This API call can be used only for bundles.
@@ -1754,7 +1754,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 * 227 – Wrong activation code - if specified activation code not found or is already activated.
 
 
-### `replace`
+### replace
 
 Lets to replace the device without losing its history and some of its settings.
 Replacement allows you to register a new device with history, sensors (optional), and rules (optional) of the current tracker saved.
@@ -1846,7 +1846,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 <hr>
 
-### `replace_quick`
+### replace_quick
 
 Replaces a device using only IMEI. Automatic SMS commands will not be sent for an activation.
 The replacement device must be preconfigured. This API call can be used only for bundles.
@@ -1927,7 +1927,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 <hr>
 
-### `replace_retry`
+### replace_retry
 
 Resends registration commands to the new device. The panel must have installed SMS gateway.
 
@@ -2004,7 +2004,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 
 <hr>
 
-### `send_command`
+### send_command
 
 Sends command to tracker for performing special control, determined with `special_control` field of tracker model.
 
@@ -2124,7 +2124,7 @@ For `tracker` object structure, see [tracker/](#tracker-object-structure).
 [General](../../../getting-started/errors.md#error-codes) types only.
 
 
-### `raw_command/send`
+### raw_command/send
 
 Sends the GPRS command to the device, processing it in a protocol-dependent manner beforehand.
 

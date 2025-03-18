@@ -47,7 +47,7 @@ Transaction object description and API call to get list of user's billing transa
 
 API path: `/transaction`.
 
-### `list`
+### list
 
 Gets list of user's billing transactions for the specified period.
 

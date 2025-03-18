@@ -11,7 +11,7 @@ API calls for output control. Some device models work with `set_all` and some wi
 
 API base path: `/tracker/output`.
 
-### `set_all`
+### set_all
 
 Request to change the states of all digital outputs of the device. The device must be online. 
 
@@ -52,7 +52,7 @@ Request to change the states of all digital outputs of the device. The device mu
 * 219 – Not allowed for clones of the device - if tracker is clone.
 
 
-### `set`
+### set
 
 Request to change the state of the specified digital output of the device. The device must be online.
 

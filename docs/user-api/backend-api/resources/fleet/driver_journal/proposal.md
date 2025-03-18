@@ -15,7 +15,7 @@ To get information on how-to work with driver journals refer to our [instruction
 
 API path: `/driver/journal/proposal`.
 
-### `list`
+### list
 
 Gets proposal trips that could be used for driver journal entry creation. 
 Proposal objects  created by a track's division by driver changes. 

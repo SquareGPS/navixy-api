@@ -12,7 +12,7 @@ API call to get all sensor inputs and state fields existing in the system and th
 
 ## API actions
 
-### `list`
+### list
 
 This will provide translations of all sensor inputs and state fields present in the system. 
 These translations (field `description` in response) will be given in the language according to the user's locale.

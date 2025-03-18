@@ -12,7 +12,7 @@ Contains API call to get dealer info and dealer-specific UI settings.
 
 API path: `/dealer`.
 
-### `get_ui_config`
+### get_ui_config
 
 Gets dealer info and dealer-specific UI settings by a domain or hash.
 

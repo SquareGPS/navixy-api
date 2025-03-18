@@ -12,7 +12,7 @@ API call to get APN settings by device's phone number.
 
 API base path: `/apn_settings`.
 
-### `read`
+### read
 
 Gets the APN name/user/password and mobile operator for registered device by phone number.
 

@@ -14,7 +14,7 @@ Find information about push token usage in our [instructions](../../../../guides
 
 API path: `/user/session/push_token`.
 
-### `bind`
+### bind
 
 Binds Push token with a current session.
 
@@ -67,7 +67,7 @@ Prepended with minus and delimited with comma list means that all categories all
 * [General](../../../../getting-started/errors.md#error-codes) types only.
 
 
-### `delete`
+### delete
 
 Deletes push token bound with the session.
 

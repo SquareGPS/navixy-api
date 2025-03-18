@@ -42,7 +42,7 @@ Let's explore the Activation Code object using the example:
 
 API base path: `panel/dealer/activation_code`.
 
-### `create`
+### create
 
 Creates the specified number (`count`) of activation codes with the given `tariff_id`, `bonus_amount`, and `free_days`. Returns the count of created codes.
 
@@ -89,7 +89,7 @@ Creates the specified number (`count`) of activation codes with the given `tarif
 * 201 - Not found in the database - when tariff with `tariff_id` not found for a current dealer.
 
 
-### `list`
+### list
 
 Lists all dealer activation codes. If `filter` is used, entities will be returned only if filter string will contain one 
 of the following fields: `code`, `tariff_id`, `device_id`, `device_type`. 
@@ -149,7 +149,7 @@ of the following fields: `code`, `tariff_id`, `device_id`, `device_type`.
 * `count` - int. Total number of records (ignoring offset and limit).
 
 
-### `update`
+### update
 
 Changes `tariff_id`, `bonus_amount` and `free_days` for all activation codes which:
 * has `code` listed in `codes` parameter.

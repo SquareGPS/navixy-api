@@ -15,7 +15,7 @@ LBS locates the position using cellular base stations or Wi-Fi access points.
 
 API base path: `/tracker/settings/lbs`.
 
-### `read`
+### read
 
 Gets LBS settings for the specified tracker.
 
@@ -58,7 +58,7 @@ Gets LBS settings for the specified tracker.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
 
-### `update`
+### update
 
 Updates LBS settings for the specified tracker.
 
