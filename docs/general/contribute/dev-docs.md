@@ -30,7 +30,7 @@ We will review your pull request and, once approved, merge it into the main bran
 
 For more comprehensive edits, or if you need to work on multiple pages, you can set up the documentation locally:
 
-## Prerequisites
+### Prerequisites
 
 Before you start contributing to the Navixy API documentation in Stoplight, ensure you have the following tools installed:
 
@@ -46,7 +46,7 @@ Optional but recommended tools:
 
 ### Getting started
 
-Fork the repository, clone it to your local machine, and create a new branch for your changes. This keeps your contributions organized and makes the review process smoother.
+Fork the [repository](https://github.com/SquareGPS/navixy-api), clone it to your local machine, and create a new branch for your changes. This keeps your contributions organized and makes the review process smoother.
 
 ### Editing documentation
 
@@ -67,17 +67,97 @@ If you're updating API endpoint documentation:
 3. Ensure your changes maintain the correct OpenAPI syntax
 4. Test your changes for validity if possible (**try out** requests)
 
+### Editing table of contents (toc.json)
+
+The `toc.json` file is a crucial component that defines the structure and navigation of your documentation in Stoplight. It determines how your documentation is organized in the sidebar navigation.
+
+#### "toc.json" structure
+
+The table of contents uses three main entities:
+
+1. **Divider** - Creates a horizontal line separator in the navigation
+2. **Group** - A collapsible folder that can contain items and other groups
+3. **Item** - An individual document or API endpoint reference
+
+#### Example toc.json
+
+```json
+[
+  {
+    "type": "divider",
+    "title": "Getting Started"
+  },
+  {
+    "type": "item",
+    "title": "Introduction",
+    "uri": "docs/introduction.md"
+  },
+  {
+    "type": "group",
+    "title": "Backend API",
+    "items": [
+      {
+        "type": "item",
+        "title": "Overview",
+        "uri": "docs/backend-api/overview.md"
+      },
+      {
+        "type": "group",
+        "title": "Resources",
+        "items": [
+          {
+            "type": "item",
+            "title": "User",
+            "uri": "docs/backend-api/resources/user.md"
+          },
+          {
+            "type": "item",
+            "title": "Device",
+            "uri": "docs/backend-api/resources/device.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "divider",
+    "title": "Reference"
+  },
+  {
+    "type": "item",
+    "title": "API Reference",
+    "uri": "reference/api.yaml"
+  }
+]
+```
+
+#### Adding or modifying entries
+
+When adding new documentation pages, ensure they're properly represented in the `toc.json` file:
+
+1. Determine the appropriate location in the navigation hierarchy
+2. Add a new entry with the correct type (divider, group, or item)
+3. For items, provide the correct relative path to the file in the `uri` property
+4. For groups, nest additional items inside the `items` array
+
+<!-- theme: warning -->
+> **Important:** When editing the `toc.json` file, only modify entries relevant to your changes. Do not alter other sections of the navigation structure unless you specifically intend to reorganize that part of the documentation. This helps prevent unintended navigation issues and conflicts during the review process.
+
+After making changes to `toc.json`, preview your documentation to ensure the navigation appears as expected.
+
 ### Previewing your changes
+<details>
+  <summary>Using Stoplight Studio</summary>
+  
+  For the best editing experience:
+  1. Open Stoplight Studio
+  2. Select "Open Existing Project" and navigate to your cloned repository
+  3. Make your edits and preview them in real-time within the Studio interface
+ 
+</details>
 
-#### Using Stoplight Studio
-
-For the best editing experience:
-
-1. Open Stoplight Studio
-2. Select "Open Existing Project" and navigate to your cloned repository
-3. Make your edits and preview them in real-time within the Studio interface
-
-#### Using Stoplight CLI
+<details>
+  <summary>Using Stoplight CLI</summary>
 
 If you've installed the Stoplight CLI:
 
@@ -87,6 +167,8 @@ stoplight preview
 
 This will start a local server where you can preview how your documentation changes will look.
 
+</details>
+
 ### Submitting your changes
 
 Commit your changes with clear, descriptive messages in English. Push to your fork on GitHub and create a pull request with a detailed description of your changes.
@@ -95,9 +177,9 @@ When creating your pull request, make sure to select `master` as the target bran
 
 The repository maintainers will review your contribution and may request modifications or clarifications before merging.
 
-### Documentation style guidelines
+## Documentation style guidelines
 
-#### Documentation structure
+### Documentation structure
 
 The documentation includes two types of files:
 * Documents (.md)
@@ -105,7 +187,7 @@ The documentation includes two types of files:
 
 Documents are divided into semantic parts, starting with an introduction that summarizes the content.
 
-#### API call descriptions
+### API call descriptions
 
 Each API call should include the following sections:
 
@@ -119,7 +201,7 @@ Each API call should include the following sections:
     * **Response** - Example of a successful server response with field descriptions
     * **Errors** - Specific errors related to the API action, plus a general error list
 
-#### Example API documentation format
+# Example API documentation format
 
 ```markdown
 # Resource name
@@ -147,14 +229,14 @@ Method description.
 
 #### Examples
 
-=== "cURL"
+<!--title: "cURL"-->
     ```shell
     curl -X POST 'https://api.navixy.com/v2/resource/sub_resource/action' \
     -H 'Content-Type: application/json' \
     -d '{"param1": "value1", "param2": "value2", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
     ```
 
-=== "HTTP GET"
+<!--title: "HTTP GET"-->
     ```http
     https://api.navixy.com/v2/resource/sub_resource/action?param1=value1&param2&hash=a6aa75587e5c59c32d347da438505fc3
     ```

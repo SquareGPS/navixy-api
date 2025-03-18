@@ -22,7 +22,7 @@ You can access the related GitHub repository directly via link on the left sideb
 
 ### Documentation structure
 
-The documentation includes three types of files: Documents, Guides, and API calls. Documents and guides are divided into semantic parts, starting with an introduction that summarizes the content.
+The documentation includes two types of files: Documents, and API calls. Documents are divided into semantic parts, starting with an introduction that summarizes the content.
 
 ### API call descriptions
 
