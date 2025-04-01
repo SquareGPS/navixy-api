@@ -222,10 +222,10 @@ Method description.
 
 #### Parameters
 
-| name   | description  | type    | restrictions         |
-|:-------|:-------------|:--------|:---------------------|
-| param1 | description. | int     | `[1..100]`, not null |
-| param2 | description. | boolean | not null             |
+  | name   | description  | type    | restrictions         |
+  |:-------|:-------------|:--------|:---------------------|
+  | param1 | description. | int     | `[1..100]`, not null |
+  | param2 | description. | boolean | not null             |
 
 #### Examples
 
