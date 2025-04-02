@@ -133,7 +133,7 @@ but no more frequently than the specified rate_limit.
 * `include_components` – optional, boolean. Default is `true`. If set to `false`, parts of composite sensors will be excluded.
 
 
-#### The "iot_monitor" event subscription
+#### Data Stream Analyzer's "iot_monitor" event subscription
 
 This subscription type is intended for the Data Stream Analyzer tool, 
 which allows viewing the attribute values of the last N messages received from a tracker.
