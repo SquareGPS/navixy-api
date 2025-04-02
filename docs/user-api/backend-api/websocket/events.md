@@ -191,7 +191,7 @@ Message sample:
 }
 ```
 
-## Data Stream analyzer event
+## Data Stream Analyzer event
 
 You can receive Data Stream Analyser messages through websocket. These messages are coming from server if client [subscribed](subscription.md#the-iot_monitor-event-subscription)
 to the `iot_monitor` events of the specific tracker that is not blocked. These packets contain values 
