@@ -18,7 +18,7 @@ Use 'state' event for smaller fleets since it supports sending data up to 350 en
 For big or growing fleets better to use `state_batch` event since it supports sending data for up to 12000 entries per 
 second.
 
-### Request
+## Request
 
 Request parameters:
 
@@ -32,7 +32,7 @@ Request parameters:
 > * `trackers` – required, int array, without nulls. List of tracker IDs for the events that require a subscription.
 > * `events` – required, [enum](../getting-started/introduction.md#data-types) array, without nulls. List of events to subscribe. An event can only be a `state`.
 
-#### The "state_batch" event subscription
+### The "state_batch" event subscription
 
 After subscribing to "state_batch",
 server will send the current states of all non-blocked trackers included in the subscription in a single packet.
@@ -70,7 +70,7 @@ the server will send a list of changed tracker states in the [event message](eve
     * `type` – required, text: _"selected"_.
     * `tracker_ids` – required, int array.
 
-#### The "state" event subscription
+### The "state" event subscription
 
 After subscribing to "state",
 server will send the current states of all non-blocked trackers included in the subscription in separate packets.
@@ -99,7 +99,7 @@ the server will send a new state in the [event message](events.md#state-event).
 * `trackers` – required, int array. List of tracker ids.
 * `format` – optional, [enum](../getting-started/introduction.md#data-types), one of: "full" (default), "compact".
 
-#### The "readings_batch" event subscription
+### The "readings_batch" event subscription
 
 After subscribing to "readings_batch",
 server will send the current readings of all non-blocked trackers included in the subscription in a single packet.
@@ -133,7 +133,7 @@ but no more frequently than the specified rate_limit.
 * `include_components` – optional, boolean. Default is `true`. If set to `false`, parts of composite sensors will be excluded.
 
 
-#### The "iot_monitor" event subscription
+### Data Stream Analyzer's "iot_monitor" event subscription
 
 This subscription type is intended for the Data Stream Analyzer tool, 
 which allows viewing the attribute values of the last N messages received from a tracker.

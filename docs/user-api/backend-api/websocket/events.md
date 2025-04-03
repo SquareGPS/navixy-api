@@ -191,10 +191,10 @@ Message sample:
 }
 ```
 
-## IoT monitor event
+## Data Stream Analyzer event
 
-These messages are coming from server if client [subscribed](subscription.md#the-iot_monitor-event-subscription)
-to the `iot_monitor` events of the specific tracker that not blocked. These packets contain values 
+You can receive Data Stream Analyser messages through websocket. These messages are coming from server if client [subscribed](subscription.md#the-iot_monitor-event-subscription)
+to the `iot_monitor` events of the specific tracker that is not blocked. These packets contain values 
 of attributes from the latest messages sent by the selected tracker.
 It occurs in the next cases:
 
