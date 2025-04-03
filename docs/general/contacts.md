@@ -14,7 +14,7 @@ If you have any questions or need support, our team is here to help. Reach out t
 
 Keep up with the latest updates and connect with us on social media:
 
-- **[GitHub]({{ config.repo_url }})**: Follow our repository for the latest code and updates.
+- **[GitHub](https://github.com/SquareGPS/navixy-api)**: Follow our repository for the latest code and updates.
 - **[LinkedIn](https://linkedin.com/company/navixy/)**: Connect with us professionally and stay informed about our business updates.
 - **[Twitter](https://twitter.com/Navixy)**: Follow us for real-time updates and announcements.
 - **[Facebook](https://facebook.com/NavixyGPS)**: Join our community and engage with us.
