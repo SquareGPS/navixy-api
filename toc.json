@@ -8,7 +8,8 @@
     {
           "type": "item",
           "title": "Introduction to Navixy API",
-          "uri": "/docs/general/getting-started.md"
+          "uri": "/docs/general/getting-started.md",
+          "slug": "api-intro"
         },
         {
           "type": "group",
