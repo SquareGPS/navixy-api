@@ -406,8 +406,6 @@ Plugin-specific parameters:
 | smoothing                         | Smooth graph if `true`. Smoothing reduces the accuracy of calculating refills or drains.                                                                                      | boolean                                        |
 | surge_filter                      | If `true`, enables surge filter.                                                                                                                                              | boolean                                        |
 | surge_filter_threshold            | Defines a level of surge filter. Can be 0.01 - 0.99.                                                                                                                          | float                                          |
-| speed_filter                      | If `true`, enables speed filter.                                                                                                                                              | boolean                                        |
-| speed_filter_threshold            | Defines a speed filter threshold.                                                                                                                                             | int                                            |
 
 #### plugin example
 
@@ -424,9 +422,7 @@ Plugin-specific parameters:
   "include_speed_plot": false,
   "smoothing": false,
   "surge_filter": true,
-  "surge_filter_threshold": 0.2,
-  "speed_filter": false,
-  "speed_filter_threshold": 10
+  "surge_filter_threshold": 0.2
 }
 ```
 

@@ -8,17 +8,20 @@
     {
           "type": "item",
           "title": "Introduction to Navixy API",
-          "uri": "/docs/general/getting-started.md"
+          "uri": "/docs/general/getting-started.md",
+          "slug": "general/getting-started"
         },
         {
           "type": "group",
           "title": "Contribute",
           "uri": "/docs/general/contribute/dev-docs.md",
+          "slug": "general/contribute/dev-docs",
           "items": [
             {
               "type": "item",
               "title": "Translate Navixy",
-              "uri": "/docs/general/contribute/translation.md"
+              "uri": "/docs/general/contribute/translation.md",
+              "slug": "general/contribute/translation"
             }
           ]
         },
@@ -26,23 +29,27 @@
           "type": "group",
           "title": "API automation tools",
           "uri": "docs/general/api-tools.md",
+          "slug": "general/api-tools",
           "items": [
         {
           "type": "item",
           "title": "Postman",
-          "uri": "/docs/general/postman.md"
+          "uri": "/docs/general/postman.md",
+          "slug": "general/api-tools/postman"
         },
         {
           "type": "item",
           "title": "Automation with Zapier",
-          "uri": "/docs/general/zapier.md"
+          "uri": "/docs/general/zapier.md",
+          "slug": "general/api-tools/zapier"
         }
         ]
       },
     {
           "type": "item",
           "title": "Contact Us",
-          "uri": "/docs/general/contacts.md"
+          "uri": "/docs/general/contacts.md",
+          "slug": "general/contacts"
         },
     {
       "type": "divider",
@@ -51,7 +58,8 @@
     {
           "type": "item",
           "title": "Getting Started",
-          "uri": "/docs/panel-api/getting-started.md"
+          "uri": "/docs/panel-api/getting-started.md",
+          "slug": "panel-api/getting-started"
         },
         {
           "type": "group",
@@ -60,37 +68,44 @@
             {
               "type": "item",
               "title": "Account",
-              "uri": "/docs/panel-api/resources/account.md"
+              "uri": "/docs/panel-api/resources/account.md",
+              "slug": "panel-api/resources/account"
             },
             {
               "type": "group",
               "title": "Dealer",
               "uri": "docs/panel-api/resources/dealer/index.md",
+              "slug": "panel-api/resources/dealer",
               "items": [
                 {
                   "type": "item",
                   "title": "Activation code",
-                  "uri": "/docs/panel-api/resources/dealer/activation_code.md"
+                  "uri": "/docs/panel-api/resources/dealer/activation_code.md",
+                  "slug": "panel-api/resources/dealer/activation-code"
                 },
                 {
                   "type": "item",
                   "title": "Update password",
-                  "uri": "/docs/panel-api/resources/dealer/password.md"
+                  "uri": "/docs/panel-api/resources/dealer/password.md",
+                  "slug": "panel-api/resources/dealer/password"
                 },
                 {
                   "type": "group",
                   "title": "Settings",
                   "uri": "/docs/panel-api/resources/dealer/settings/service.md",
+                  "slug": "panel-api/resources/dealer/settings/service",
                   "items": [
                     {
                       "type": "item",
                       "title": "Image",
-                      "uri": "/docs/panel-api/resources/dealer/settings/image.md"
+                      "uri": "/docs/panel-api/resources/dealer/settings/image.md",
+                      "slug": "panel-api/resources/dealer/settings/image"
                     },
                     {
                       "type": "item",
                       "title": "Notification",
-                      "uri": "/docs/panel-api/resources/dealer/settings/notification.md"
+                      "uri": "/docs/panel-api/resources/dealer/settings/notification.md",
+                      "slug": "panel-api/resources/dealer/settings/notification"
                     }
                   ]
                 }
@@ -99,64 +114,76 @@
             {
               "type": "item",
               "title": "Equipment",
-              "uri": "/docs/panel-api/resources/equipment.md"
+              "uri": "/docs/panel-api/resources/equipment.md",
+              "slug": "panel-api/resources/equipment"
             },
             {
               "type": "item",
               "title": "Gateways",
-              "uri": "/docs/panel-api/resources/gateways.md"
+              "uri": "/docs/panel-api/resources/gateways.md",
+              "slug": "panel-api/resources/gateways"
             },
             {
               "type": "item",
               "title": "Order",
-              "uri": "/docs/panel-api/resources/order.md"
+              "uri": "/docs/panel-api/resources/order.md",
+              "slug": "panel-api/resources/order"
             },
             {
               "type": "group",
               "title": "Subpaas",
               "uri": "/docs/panel-api/resources/subpaas/index.md",
+              "slug": "panel-api/resources/subpaas",
               "items": [
                 {
                   "type": "item",
                   "title": "Password",
-                  "uri": "/docs/panel-api/resources/subpaas/password.md"
+                  "uri": "/docs/panel-api/resources/subpaas/password.md",
+                  "slug": "panel-api/resources/subpaas/password"
                 },
                 {
                   "type": "item",
                   "title": "Session",
-                  "uri": "/docs/panel-api/resources/subpaas/session.md"
+                  "uri": "/docs/panel-api/resources/subpaas/session.md",
+                  "slug": "panel-api/resources/subpaas/session"
                 }
               ]
             },
             {
               "type": "item",
               "title": "Plan",
-              "uri": "/docs/panel-api/resources/tariff.md"
+              "uri": "/docs/panel-api/resources/tariff.md",
+              "slug": "panel-api/resources/plan"
             },
             {
               "type": "item",
               "title": "Timezone",
-              "uri": "/docs/panel-api/resources/timezone.md"
+              "uri": "/docs/panel-api/resources/timezone.md",
+              "slug": "panel-api/resources/timezone"
             },
             {
               "type": "item",
               "title": "Tracker",
-              "uri": "/docs/panel-api/resources/tracker.md"
+              "uri": "/docs/panel-api/resources/tracker.md",
+              "slug": "panel-api/resources/tracker"
             },
             {
               "type": "group",
               "title": "User",
               "uri": "/docs/panel-api/resources/user/index.md",
+              "slug": "panel-api/resources/user",
               "items": [
                 {
                       "type": "item",
                       "title": "Menu preset",
-                      "uri": "/docs/panel-api/resources/user/menu/preset.md"
+                      "uri": "/docs/panel-api/resources/user/menu/preset.md",
+                      "slug": "panel-api/resources/user/menu-preset"
                 },
                 {
                       "type": "item",
                       "title": "Multi-factor authentication settings",
-                      "uri": "/docs/panel-api/resources/user/mfa/settings.md"
+                      "uri": "/docs/panel-api/resources/user/mfa/settings.md",
+                      "slug": "panel-api/resources/user/mfa-settings"
                     }
               ]
             }
@@ -169,27 +196,32 @@
     {
           "type": "item",
           "title": "Getting Started",
-          "uri": "/docs/user-api/getting-started.md"
+          "uri": "/docs/user-api/getting-started.md",
+          "slug": "user-api/getting-started"
         },
         {
           "type": "group",
           "title": "Backend functionality",
           "uri": "/docs/user-api/backend-api/getting-started/introduction.md",
+          "slug": "user-api/backend-api/introduction",
           "items": [
             {
             "type": "item",
             "title": "API Keys Advantages",
-            "uri": "/docs/user-api/backend-api/getting-started/authentication.md"
+            "uri": "/docs/user-api/backend-api/getting-started/authentication.md",
+            "slug": "user-api/backend-api/introduction/authentication"
             },
             {
             "type": "item",
             "title": "Errors",
-            "uri": "/docs/user-api/backend-api/getting-started/errors.md"
+            "uri": "/docs/user-api/backend-api/getting-started/errors.md",
+            "slug": "user-api/backend-api/introduction/errors"
             },
             {
               "type": "group",
               "title": "Guides",
               "uri": "/docs/user-api/backend-api/guides/index.md",
+              "slug": "user-api/backend-api/guides",
               "items": [
                 {
                   "type": "group",
@@ -198,22 +230,26 @@
                     {
                       "type": "item",
                       "title": "Getting track points",
-                      "uri": "/docs/user-api/backend-api/guides/data-retrieval/get-track-points.md"
+                      "uri": "/docs/user-api/backend-api/guides/data-retrieval/get-track-points.md",
+                      "slug": "user-api/backend-api/guides/data-retrieval/get-track-points"
                     },
                     {
                       "type": "item",
                       "title": "Getting list of GPS trackers",
-                      "uri": "/docs/user-api/backend-api/guides/data-retrieval/get-tracker-list.md"
+                      "uri": "/docs/user-api/backend-api/guides/data-retrieval/get-tracker-list.md",
+                      "slug": "user-api/backend-api/guides/data-retrieval/get-tracker-list"
                     },
                     {
                       "type": "item",
                       "title": "Generate report",
-                      "uri": "/docs/user-api/backend-api/guides/data-retrieval/obtain-reports.md"
+                      "uri": "/docs/user-api/backend-api/guides/data-retrieval/obtain-reports.md",
+                      "slug": "user-api/backend-api/guides/data-retrieval/obtain-reports"
                     },
                     {
                       "type": "item",
                       "title": "Retrieving aensor and counter data",
-                      "uri": "/docs/user-api/backend-api/guides/data-retrieval/sensor-data.md"
+                      "uri": "/docs/user-api/backend-api/guides/data-retrieval/sensor-data.md",
+                      "slug": "user-api/backend-api/guides/data-retrieval/sensor-data"
                     }
                   ]
                 },
@@ -224,17 +260,20 @@
                     {
                       "type": "item",
                       "title": "Activate a device",
-                      "uri": "/docs/user-api/backend-api/guides/device-management/activate-device.md"
+                      "uri": "/docs/user-api/backend-api/guides/device-management/activate-device.md",
+                      "slug": "user-api/backend-api/guides/device-management/activate-device"
                     },
                     {
                       "type": "item",
                       "title": "Tracking stationary objects with BLE tags",
-                      "uri": "/docs/user-api/backend-api/guides/device-management/ble-beacons.md"
+                      "uri": "/docs/user-api/backend-api/guides/device-management/ble-beacons.md",
+                      "slug": "user-api/backend-api/guides/device-management/ble-beacons"
                     },
                     {
                       "type": "item",
                       "title": "Sending commands to a GPS Tracker via IP protocol (OTA)",
-                      "uri": "/docs/user-api/backend-api/guides/device-management/send-commands.md"
+                      "uri": "/docs/user-api/backend-api/guides/device-management/send-commands.md",
+                      "slug": "user-api/backend-api/guides/device-management/send-commands"
                     }
                   ]
                 },
@@ -245,22 +284,26 @@
                     {
                       "type": "item",
                       "title": "Changing employee statuses",
-                      "uri": "/docs/user-api/backend-api/guides/field-service-management/change-task-statuses.md"
+                      "uri": "/docs/user-api/backend-api/guides/field-service-management/change-task-statuses.md",
+                      "slug": "user-api/backend-api/guides/field-service-management/change-task-statuses"
                     },
                     {
                       "type": "item",
                       "title": "Working with check-ins",
-                      "uri": "/docs/user-api/backend-api/guides/field-service-management/check-ins.md"
+                      "uri": "/docs/user-api/backend-api/guides/field-service-management/check-ins.md",
+                      "slug": "user-api/backend-api/guides/field-service-management/check-ins"
                     },
                     {
                       "type": "item",
                       "title": "Using task forms",
-                      "uri": "/docs/user-api/backend-api/guides/field-service-management/create-forms.md"
+                      "uri": "/docs/user-api/backend-api/guides/field-service-management/create-forms.md",
+                      "slug": "user-api/backend-api/guides/field-service-management/create-forms"
                     },
                     {
                       "type": "item",
                       "title": "How to create and assign tasks",
-                      "uri": "/docs/user-api/backend-api/guides/field-service-management/manage-tasks.md"
+                      "uri": "/docs/user-api/backend-api/guides/field-service-management/manage-tasks.md",
+                      "slug": "user-api/backend-api/guides/field-service-management/manage-tasks"
                     }
                   ]
                 },
@@ -271,17 +314,20 @@
                     {
                       "type": "item",
                       "title": "Using driver journals",
-                      "uri": "/docs/user-api/backend-api/guides/fleet-management/driver-journals.md"
+                      "uri": "/docs/user-api/backend-api/guides/fleet-management/driver-journals.md",
+                      "slug": "user-api/backend-api/guides/fleet-management/driver-journals"
                     },
                     {
                       "type": "item",
                       "title": "Managing vehicles and aervice works",
-                      "uri": "/docs/user-api/backend-api/guides/fleet-management/service-works.md"
+                      "uri": "/docs/user-api/backend-api/guides/fleet-management/service-works.md",
+                      "slug": "user-api/backend-api/guides/fleet-management/service-work"
                     },
                     {
                       "type": "item",
                       "title": "Using tags",
-                      "uri": "/docs/user-api/backend-api/guides/fleet-management/use-tags.md"
+                      "uri": "/docs/user-api/backend-api/guides/fleet-management/use-tags.md",
+                      "slug": "user-api/backend-api/guides/fleet-management/use-tags"
                     }
                   ]
                 },
@@ -292,12 +338,14 @@
                     {
                       "type": "item",
                       "title": "Managing geofences",
-                      "uri": "/docs/user-api/backend-api/guides/places/manage-geofences.md"
+                      "uri": "/docs/user-api/backend-api/guides/places/manage-geofences.md",
+                      "slug": "user-api/backend-api/guides/places/manage-geofences"
                     },
                     {
                       "type": "item",
                       "title": "Managing POIs",
-                      "uri": "/docs/user-api/backend-api/guides/places/manage-pois.md"
+                      "uri": "/docs/user-api/backend-api/guides/places/manage-pois.md",
+                      "slug": "user-api/backend-api/guides/places/manage-pois"
                     }
                   ]
                 },
@@ -305,16 +353,19 @@
                   "type": "group",
                   "title": "Notifications and rules",
                   "uri": "/docs/user-api/backend-api/guides/rules-notifications/work-with-notifications.md",
+                  "slug": "user-api/backend-api/guides/rules-notifications/work-with-notifications",
                   "items": [
                     {
                       "type": "item",
                       "title": "Receiving push notifications in your app",
-                      "uri": "/docs/user-api/backend-api/guides/rules-notifications/get-push-notifications.md"
+                      "uri": "/docs/user-api/backend-api/guides/rules-notifications/get-push-notifications.md",
+                      "slug": "user-api/backend-api/guides/rules-notifications/get-push-notifications"
                     },
                     {
                       "type": "item",
                       "title": "Using rules",
-                      "uri": "/docs/user-api/backend-api/guides/rules-notifications/use-rules.md"
+                      "uri": "/docs/user-api/backend-api/guides/rules-notifications/use-rules.md",
+                      "slug": "user-api/backend-api/guides/rules-notifications/use-rules"
                     }
                   ]
                 }
@@ -324,6 +375,7 @@
               "type": "group",
               "title": "Resources",
               "uri": "/docs/user-api/backend-api/resources/index.md",
+              "slug": "user-api/backend-api/resources",
               "items": [
                 {
                   "type": "group",
@@ -332,34 +384,40 @@
                     {
                       "type": "item",
                       "title": "Bill",
-                      "uri": "/docs/user-api/backend-api/resources/billing/bill.md"
+                      "uri": "/docs/user-api/backend-api/resources/billing/bill.md",
+                      "slug": "user-api/backend-api/resources/billing/bill"
                     },
                     {
                       "type": "item",
                       "title": "Payment system",
-                      "uri": "/docs/user-api/backend-api/resources/billing/payment_system.md"
+                      "uri": "/docs/user-api/backend-api/resources/billing/payment_system.md",
+                      "slug": "user-api/backend-api/resources/billing/payment-system"
                     },
                     {
                       "type": "item",
                       "title": "Subscription",
-                      "uri": "/docs/user-api/backend-api/resources/billing/subscription.md"
+                      "uri": "/docs/user-api/backend-api/resources/billing/subscription.md",
+                      "slug": "user-api/backend-api/resources/billing/subscription"
                     },
                     {
                       "type": "group",
                       "title": "Tariff",
                       "uri": "/docs/user-api/backend-api/resources/billing/tariff/index.md",
+                      "slug": "user-api/backend-api/resources/billing/tariff",
                       "items": [
                         {
                           "type": "item",
                           "title": "Tariff tracker",
-                          "uri": "/docs/user-api/backend-api/resources/billing/tariff/tariff_tracker.md"
+                          "uri": "/docs/user-api/backend-api/resources/billing/tariff/tariff_tracker.md",
+                          "slug": "user-api/backend-api/resources/billing/tariff/tariff-tracker"
                         }
                       ]
                     },
                     {
                       "type": "item",
                       "title": "Transaction",
-                      "uri": "/docs/user-api/backend-api/resources/billing/transaction.md"
+                      "uri": "/docs/user-api/backend-api/resources/billing/transaction.md",
+                      "slug": "user-api/backend-api/resources/billing/transaction"
                     }
                   ]
                 },
@@ -370,91 +428,108 @@
                     {
                       "type": "item",
                       "title": "API Keys",
-                      "uri": "/docs/user-api/backend-api/resources/commons/api-keys.md"
+                      "uri": "/docs/user-api/backend-api/resources/commons/api-keys.md",
+                      "slug": "user-api/backend-api/resources/commons/api-keys"
                     },
                     {
                       "type": "item",
                       "title": "Base",
-                      "uri": "/docs/user-api/backend-api/resources/commons/base.md"
+                      "uri": "/docs/user-api/backend-api/resources/commons/base.md",
+                      "slug": "user-api/backend-api/resources/commons/base"
                     },
                     {
                       "type": "item",
                       "title": "Data",
-                      "uri": "/docs/user-api/backend-api/resources/commons/data.md"
+                      "uri": "/docs/user-api/backend-api/resources/commons/data.md",
+                      "slug": "user-api/backend-api/resources/commons/data"
                     },
                     {
                       "type": "item",
                       "title": "Dealer",
-                      "uri": "/docs/user-api/backend-api/resources/commons/dealer.md"
+                      "uri": "/docs/user-api/backend-api/resources/commons/dealer.md",
+                      "slug": "user-api/backend-api/resources/commons/dealer"
                     },
                     {
                       "type": "group",
                       "title": "Entity",
                       "uri": "/docs/user-api/backend-api/resources/commons/entity/index.md",
+                      "slug": "user-api/backend-api/resources/commons/entity",
                       "items": [
                         {
                           "type": "item",
                           "title": "Entity fields",
-                          "uri": "/docs/user-api/backend-api/resources/commons/entity/fields.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/entity/fields.md",
+                          "slug": "user-api/backend-api/resources/commons/entity/fields"
                         },
                         {
                           "type": "item",
                           "title": "Entity search conditions",
-                          "uri": "/docs/user-api/backend-api/resources/commons/entity/search_conditions.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/entity/search_conditions.md",
+                          "slug": "user-api/backend-api/resources/commons/entity/search-conditions"
                         }
                       ]
                     },
                     {
                       "type": "item",
                       "title": "Feedback",
-                      "uri": "/docs/user-api/backend-api/resources/commons/feedback.md"
+                      "uri": "/docs/user-api/backend-api/resources/commons/feedback.md",
+                      "slug": "user-api/backend-api/resources/commons/feedback"
                     },
                     {
                       "type": "item",
                       "title": "File",
-                      "uri": "/docs/user-api/backend-api/resources/commons/file.md"
+                      "uri": "/docs/user-api/backend-api/resources/commons/file.md",
+                      "slug": "user-api/backend-api/resources/commons/file"
                     },
                     {
                       "type": "group",
                       "title": "History",
                       "uri": "/docs/user-api/backend-api/resources/commons/history/index.md",
+                      "slug": "user-api/backend-api/resources/commons/history",
                       "items": [
                         {
                           "type": "item",
                           "title": "Tracker events",
-                          "uri": "/docs/user-api/backend-api/resources/commons/history/history_tracker.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/history/history_tracker.md",
+                          "slug": "user-api/backend-api/resources/commons/history/history-tracker"
                         },
                         {
                           "type": "item",
                           "title": "Event type",
-                          "uri": "/docs/user-api/backend-api/resources/commons/history/history_type.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/history/history_type.md",
+                          "slug": "user-api/backend-api/resources/commons/history/history-type"
                         },
                         {
                           "type": "item",
                           "title": "Unread events",
-                          "uri": "/docs/user-api/backend-api/resources/commons/history/history_unread.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/history/history_unread.md",
+                          "slug": "user-api/backend-api/resources/commons/history/history-unread"
                         },
                         {
                           "type": "item",
                           "title": "User events",
-                          "uri": "/docs/user-api/backend-api/resources/commons/history/history_user.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/history/history_user.md",
+                          "slug": "user-api/backend-api/resources/commons/history/history-user"
                         }
                       ]
                     },
                     {
                       "type": "item",
                       "title": "Notification",
-                      "uri": "/docs/user-api/backend-api/resources/commons/notification.md"
+                      "uri": "/docs/user-api/backend-api/resources/commons/notification.md",
+                      "slug": "user-api/backend-api/resources/commons/notification"
                     },
                     {
                       "type": "group",
                       "title": "Plugin",
                       "uri": "/docs/user-api/backend-api/resources/commons/plugin/index.md",
+                      "slug": "user-api/backend-api/resources/commons/plugin",
                       "items": [
                         {
                           "type": "item",
                           "title": "Report plugins",
-                          "uri": "/docs/user-api/backend-api/resources/commons/plugin/report_plugins.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/plugin/report_plugins.md",
+                          "slug": "user-api/backend-api/resources/commons/report-plugins"
                         }
                       ]
                     },
@@ -465,12 +540,14 @@
                         {
                           "type": "item",
                           "title": "Report schedule",
-                          "uri": "/docs/user-api/backend-api/resources/commons/report/report_schedule.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/report/report_schedule.md",
+                          "slug": "user-api/backend-api/resources/commons/report/report-schedule"
                         },
                         {
                           "type": "item",
                           "title": "Report tracker",
-                          "uri": "/docs/user-api/backend-api/resources/commons/report/report_tracker.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/report/report_tracker.md",
+                          "slug": "user-api/backend-api/resources/commons/report/report-tracker"
                         }
                       ]
                     },
@@ -478,31 +555,37 @@
                       "type": "group",
                       "title": "Subuser",
                       "uri": "/docs/user-api/backend-api/resources/commons/subuser/index.md",
+                      "slug": "user-api/backend-api/resources/commons/subuser",
                       "items": [
                         {
                           "type": "item",
                           "title": "Subuser places",
-                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/places.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/places.md",
+                          "slug": "user-api/backend-api/resources/commons/subuser/places"
                         },
                         {
                           "type": "item",
                           "title": "Sub-user security group",
-                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/security_group.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/security_group.md",
+                          "slug": "user-api/backend-api/resources/commons/subuser/security-group"
                         },
                         {
                           "type": "item",
                           "title": "Subuser session",
-                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/session.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/session.md",
+                          "slug": "user-api/backend-api/resources/commons/subuser/session"
                         },
                         {
                           "type": "item",
                           "title": "Subuser tracker",
-                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/tracker.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/tracker.md",
+                          "slug": "user-api/backend-api/resources/commons/subuser/tracker"
                         },
                         {
                           "type": "item",
                           "title": "Subuser geofences",
-                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/zones.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/subuser/zones.md",
+                          "slug": "user-api/backend-api/resources/commons/subuser/zones"
                         }
                       ]
                     },
@@ -510,65 +593,77 @@
                       "type": "group",
                       "title": "Tag",
                       "uri": "/docs/user-api/backend-api/resources/commons/tag/index.md",
+                      "slug": "user-api/backend-api/resources/commons/tag",
                       "items": [
                         {
                           "type": "item",
                           "title": "Tag avatar",
-                          "uri": "/docs/user-api/backend-api/resources/commons/tag/tag_avatar.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/tag/tag_avatar.md",
+                          "slug": "user-api/backend-api/resources/commons/tag/tag-avatar"
                         }
                       ]
                     },
                     {
                       "type": "item",
                       "title": "Timezone",
-                      "uri": "/docs/user-api/backend-api/resources/commons/timezone.md"
+                      "uri": "/docs/user-api/backend-api/resources/commons/timezone.md",
+                      "slug": "user-api/backend-api/resources/commons/timezone"
                     },
                     {
                       "type": "group",
                       "title": "User",
                       "uri": "/docs/user-api/backend-api/resources/commons/user/index.md",
+                      "slug": "user-api/backend-api/resources/commons/user",
                       "items": [
                         {
                           "type": "group",
                           "title": "audit",
                           "uri": "/docs/user-api/backend-api/resources/commons/user/audit/index.md",
+                          "slug": "user-api/backend-api/resources/commons/user/audit",
                           "items": [
                             {
                               "type": "item",
                               "title": "User audit log",
-                              "uri": "/docs/user-api/backend-api/resources/commons/user/audit/audit_log.md"
+                              "uri": "/docs/user-api/backend-api/resources/commons/user/audit/audit_log.md",
+                              "slug": "user-api/backend-api/resources/commons/user/audit/audit-log"
                             }
                           ]
                         },
                         {
                         "type": "item",
                             "title": "User authentication code",
-                            "uri": "/docs/user-api/backend-api/resources/commons/user/auth/code.md"
+                            "uri": "/docs/user-api/backend-api/resources/commons/user/auth/code.md",
+                            "slug": "user-api/backend-api/resources/commons/user/auth/code"
                         },
                         {
                           "type": "item",
                           "title": "User password",
-                          "uri": "/docs/user-api/backend-api/resources/commons/user/password.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/password.md",
+                          "slug": "user-api/backend-api/resources/commons/user/password"
                         },
                         {
                           "type": "item",
                           "title": "User personal info",
-                          "uri": "/docs/user-api/backend-api/resources/commons/user/personal_info.md"
+                          "uri": "/docs/user-api/backend-api/resources/commons/user/personal_info.md",
+                          "slug": "user-api/backend-api/resources/commons/user/personal-info"
                         },
                         {
                           "type": "group",
                           "title": "Session",
                           "uri": "/docs/user-api/backend-api/resources/commons/user/session/index.md",
+                          "slug": "user-api/backend-api/resources/commons/user/session",
                           "items": [
                             {
                               "type": "item",
                               "title": "Delivery",
-                              "uri": "/docs/user-api/backend-api/resources/commons/user/session/delivery.md"
+                              "uri": "/docs/user-api/backend-api/resources/commons/user/session/delivery.md",
+                              "slug": "user-api/backend-api/resources/commons/user/session/delivery"
                             },
                             {
                               "type": "item",
                               "title": "Push token",
-                              "uri": "/docs/user-api/backend-api/resources/commons/user/session/push_token.md"
+                              "uri": "/docs/user-api/backend-api/resources/commons/user/session/push_token.md",
+                              "slug": "user-api/backend-api/resources/commons/user/session/push-token"
                             }
                           ]
                         },
@@ -576,18 +671,21 @@
                           "type": "group",
                           "title": "Settings",
                           "uri": "/docs/user-api/backend-api/resources/commons/user/settings/index.md",
+                          "slug": "user-api/backend-api/resources/commons/user/session/settings",
                           "items": [
                             {
                               "type": "item",
                               "title": "User UI settings",
-                              "uri": "/docs/user-api/backend-api/resources/commons/user/settings/ui.md"
+                              "uri": "/docs/user-api/backend-api/resources/commons/user/settings/ui.md",
+                              "slug": "user-api/backend-api/resources/commons/user/session/settings/ui"
                             }
                           ]
                         },
                         {
                           "type": "item",
                           "title": "User applications",
-                          "uri": "docs/user-api/backend-api/resources/commons/user/applications.md"
+                          "uri": "docs/user-api/backend-api/resources/commons/user/applications.md",
+                          "slug": "user-api/backend-api/resources/commons/user/applications"
                         }
                       ]
                     }
@@ -600,27 +698,32 @@
                     {
                       "type": "item",
                       "title": "Check-ins",
-                      "uri": "/docs/user-api/backend-api/resources/field_service/checkin.md"
+                      "uri": "/docs/user-api/backend-api/resources/field_service/checkin.md",
+                      "slug": "user-api/backend-api/resources/field-service/checkin"
                     },
                     {
                       "type": "item",
                       "title": "Departments",
-                      "uri": "/docs/user-api/backend-api/resources/field_service/department.md"
+                      "uri": "/docs/user-api/backend-api/resources/field_service/department.md",
+                      "slug": "user-api/backend-api/resources/field-service/department"
                     },
                     {
                       "type": "group",
                       "title": "Employee",
                       "uri": "/docs/user-api/backend-api/resources/field_service/employee/index.md",
+                      "slug": "user-api/backend-api/resources/field-service/employee",
                       "items": [
                         {
                           "type": "item",
                           "title": "Changing avatar",
-                          "uri": "/docs/user-api/backend-api/resources/field_service/employee/avatar.md"
+                          "uri": "/docs/user-api/backend-api/resources/field_service/employee/avatar.md",
+                          "slug": "user-api/backend-api/resources/field-service/employee/avatar"
                         },
                         {
                           "type": "item",
                           "title": "Employee import",
-                          "uri": "/docs/user-api/backend-api/resources/field_service/employee/import.md"
+                          "uri": "/docs/user-api/backend-api/resources/field_service/employee/import.md",
+                          "slug": "user-api/backend-api/resources/field-service/employee/import"
                         }
                       ]
                     },
@@ -628,16 +731,19 @@
                       "type": "group",
                       "title": "Form",
                       "uri": "/docs/user-api/backend-api/resources/field_service/form/index.md",
+                      "slug": "user-api/backend-api/resources/field-service/form",
                       "items": [
                         {
                           "type": "item",
                           "title": "Form field types",
-                          "uri": "/docs/user-api/backend-api/resources/field_service/form/field-types.md"
+                          "uri": "/docs/user-api/backend-api/resources/field_service/form/field-types.md",
+                          "slug": "user-api/backend-api/resources/field-service/form/field-types"
                         },
                         {
                           "type": "item",
                           "title": "Form templates",
-                          "uri": "/docs/user-api/backend-api/resources/field_service/form/template.md"
+                          "uri": "/docs/user-api/backend-api/resources/field_service/form/template.md",
+                          "slug": "user-api/backend-api/resources/field-service/form/template"
                         }
                       ]
                     },
@@ -645,11 +751,13 @@
                       "type": "group",
                       "title": "Place",
                       "uri": "/docs/user-api/backend-api/resources/field_service/place/index.md",
+                      "slug": "user-api/backend-api/resources/field-service/place",
                       "items": [
                         {
                           "type": "item",
                           "title": "Changing POI avatar",
-                          "uri": "/docs/user-api/backend-api/resources/field_service/place/avatar.md"
+                          "uri": "/docs/user-api/backend-api/resources/field_service/place/avatar.md",
+                          "slug": "user-api/backend-api/resources/field-service/place/avatar"
                         }
                       ]
                     },
@@ -660,44 +768,52 @@
                         {
                           "type": "item",
                           "title": "Checkpoints",
-                          "uri": "/docs/user-api/backend-api/resources/field_service/task/checkpoint.md"
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/checkpoint.md",
+                          "slug": "user-api/backend-api/resources/field-service/task/checkpoint"
                         },
                         {
                           "type": "group",
                           "title": "Form",
                           "uri": "/docs/user-api/backend-api/resources/field_service/task/form/index.md",
+                          "slug": "user-api/backend-api/resources/field-service/task/form",
                           "items": [
                             {
                               "type": "item",
                               "title": "Attaching files",
-                              "uri": "/docs/user-api/backend-api/resources/field_service/task/form/file.md"
+                              "uri": "/docs/user-api/backend-api/resources/field_service/task/form/file.md",
+                              "slug": "user-api/backend-api/resources/field-service/task/form/file"
                             },
                             {
                               "type": "item",
                               "title": "Updating task form values",
-                              "uri": "/docs/user-api/backend-api/resources/field_service/task/form/values.md"
+                              "uri": "/docs/user-api/backend-api/resources/field_service/task/form/values.md",
+                              "slug": "user-api/backend-api/resources/field-service/task/form/values"
                             }
                           ]
                         },
                         {
                           "type": "item",
                           "title": "Task history",
-                          "uri": "/docs/user-api/backend-api/resources/field_service/task/history.md"
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/history.md",
+                          "slug": "user-api/backend-api/resources/field-service/task/history"
                         },
                         {
                           "type": "item",
                           "title": "Working with tasks",
-                          "uri": "/docs/user-api/backend-api/resources/field_service/task/index.md"
+                          "uri": "/docs/user-api/backend-api/resources/field_service/task/index.md",
+                          "slug": "user-api/backend-api/resources/field-service/task"
                         },
                         {
                           "type": "group",
                           "title": "Route",
                           "uri": "/docs/user-api/backend-api/resources/field_service/task/route/index.md",
+                          "slug": "user-api/backend-api/resources/field-service/task/route",
                           "items": [
                             {
                               "type": "item",
                               "title": "Optimizing routes",
-                              "uri": "/docs/user-api/backend-api/resources/field_service/task/route/optimize.md"
+                              "uri": "/docs/user-api/backend-api/resources/field_service/task/route/optimize.md",
+                              "slug": "user-api/backend-api/resources/field-service/task/route/optimize"
                             }
                           ]
                         },
@@ -705,21 +821,25 @@
                           "type": "group",
                           "title": "Schedule",
                           "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/index.md",
+                          "slug": "user-api/backend-api/resources/field-service/task/schedule",
                           "items": [
                             {
                               "type": "item",
                               "title": "Checkpoints",
-                              "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/checkpoint.md"
+                              "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/checkpoint.md",
+                              "slug": "user-api/backend-api/resources/field-service/task/schedule/checkpoint"
                             },
                             {
                               "type": "item",
                               "title": "Schedule proposals",
-                              "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/proposal.md"
+                              "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/proposal.md",
+                              "slug": "user-api/backend-api/resources/field-service/task/schedule/proposal"
                             },
                             {
                               "type": "item",
                               "title": "Scheduling routes",
-                              "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/route.md"
+                              "uri": "/docs/user-api/backend-api/resources/field_service/task/schedule/route.md",
+                              "slug": "user-api/backend-api/resources/field-service/task/schedule/route"
                             }
                           ]
                         }
@@ -735,47 +855,51 @@
                       "type": "group",
                       "title": "Driver journal",
                       "uri": "/docs/user-api/backend-api/resources/fleet/driver_journal/entry.md",
+                      "slug": "user-api/backend-api/resources/fleet/driver-journal/entry",
                       "items": [
                         {
                           "type": "item",
                           "title": "Trip proposal for driver journal",
-                          "uri": "/docs/user-api/backend-api/resources/fleet/driver_journal/proposal.md"
+                          "uri": "/docs/user-api/backend-api/resources/fleet/driver_journal/proposal.md",
+                          "slug": "user-api/backend-api/resources/fleet/driver-journal/proposal"
                         }
                       ]
                     },
                     {
                       "type": "item",
                       "title": "Depot",
-                      "uri": "/docs/user-api/backend-api/resources/fleet/garage.md"
+                      "uri": "/docs/user-api/backend-api/resources/fleet/garage.md",
+                      "slug": "user-api/backend-api/resources/fleet/garage"
                     },
                     {
                       "type": "group",
                       "title": "Vehicle",
                       "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/index.md",
+                      "slug": "user-api/backend-api/resources/fleet/vehicle",
                       "items": [
                         {
                           "type": "item",
                           "title": "Vehicle avatar",
-                          "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/avatar.md"
+                          "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/avatar.md",
+                          "slug": "user-api/backend-api/resources/fleet/vehicle/avatar"
                         },
                         {
                           "type": "item",
                           "title": "Vehicle import",
-                          "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/import.md"
+                          "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/import.md",
+                          "slug": "user-api/backend-api/resources/fleet/vehicle/import"
                         },
                         {
                           "type": "group",
                           "title": "Service task",
+                          "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/service_task/service_task.md",
+                          "slug": "user-api/backend-api/resources/fleet/vehicle/service-task",
                           "items": [
                             {
                               "type": "item",
                               "title": "Service work file",
-                              "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/service_task/file.md"
-                            },
-                            {
-                              "type": "item",
-                              "title": "Service work",
-                              "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/service_task/service_task.md"
+                              "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/service_task/file.md",
+                              "slug": "user-api/backend-api/resources/fleet/vehicle/service-task/file"
                             }
                           ]
                         },
@@ -786,7 +910,8 @@
                             {
                               "type": "item",
                               "title": "Status listing",
-                              "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/status_listing/listing.md"
+                              "uri": "/docs/user-api/backend-api/resources/fleet/vehicle/status_listing/listing.md",
+                              "slug": "user-api/backend-api/resources/fleet/vehicle/status-listing/listing"
                             }
                           ]
                         }
@@ -797,7 +922,8 @@
                 {
                   "type": "item",
                   "title": "Geo Links",
-                  "uri": "/docs/user-api/backend-api/resources/location_link.md"
+                  "uri": "/docs/user-api/backend-api/resources/location_link.md",
+                  "slug": "user-api/backend-api/resources/location-link"
                 },
                 {
                   "type": "group",
@@ -806,52 +932,62 @@
                     {
                       "type": "item",
                       "title": "APN settings of tracker",
-                      "uri": "/docs/user-api/backend-api/resources/tracking/apn_settings.md"
+                      "uri": "/docs/user-api/backend-api/resources/tracking/apn_settings.md",
+                      "slug": "user-api/backend-api/resources/tracking/apn-settings"
                     },
                     {
                       "type": "item",
                       "title": "BLE beacon data",
-                      "uri": "/docs/user-api/backend-api/resources/tracking/beacon/index.md"
+                      "uri": "/docs/user-api/backend-api/resources/tracking/beacon/index.md",
+                      "slug": "user-api/backend-api/resources/tracking/beacon"
                     },
                     {
                       "type": "item",
                       "title": "Delivery info",
-                      "uri": "/docs/user-api/backend-api/resources/tracking/delivery.md"
+                      "uri": "/docs/user-api/backend-api/resources/tracking/delivery.md",
+                      "slug": "user-api/backend-api/resources/tracking/delivery"
                     },
                     {
                       "type": "item",
                       "title": "Geocoder",
-                      "uri": "/docs/user-api/backend-api/resources/tracking/geocoder.md"
+                      "uri": "/docs/user-api/backend-api/resources/tracking/geocoder.md",
+                      "slug": "user-api/backend-api/resources/tracking/geocoder"
                     },
                     {
                       "type": "item",
                       "title": "Map layer",
-                      "uri": "/docs/user-api/backend-api/resources/tracking/map_layer.md"
+                      "uri": "/docs/user-api/backend-api/resources/tracking/map_layer.md",
+                      "slug": "user-api/backend-api/resources/tracking/map-layer"
                     },
                     {
                       "type": "item",
                       "title": "Retranslator",
-                      "uri": "/docs/user-api/backend-api/resources/tracking/retranslator.md"
+                      "uri": "/docs/user-api/backend-api/resources/tracking/retranslator.md",
+                      "slug": "user-api/backend-api/resources/tracking/retranslator"
                     },
                     {
                       "type": "group",
                       "title": "Route",
                       "uri": "/docs/user-api/backend-api/resources/tracking/route/index.md",
+                      "slug": "user-api/backend-api/resources/tracking/route",
                       "items": [
                         {
                           "type": "item",
                           "title": "Getting the route with Google",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/route/route_google.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/route/route_google.md",
+                          "slug": "user-api/backend-api/resources/tracking/route/route-google"
                         },
                         {
                           "type": "item",
                           "title": "Getting route with OSRM",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/route/route_osrm.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/route/route_osrm.md",
+                          "slug": "user-api/backend-api/resources/tracking/route/route-osrm"
                         },
                         {
                           "type": "item",
                           "title": "Getting route with Progorod",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/route/route_progorod.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/route/route_progorod.md",
+                          "slug": "user-api/backend-api/resources/tracking/route/route-progorod"
                         }
                       ]
                     },
@@ -859,23 +995,27 @@
                       "type": "group",
                       "title": "Status",
                       "uri": "/docs/user-api/backend-api/resources/tracking/status/index.md",
+                      "slug": "user-api/backend-api/resources/tracking/status",
                       "items": [
                         {
                           "type": "group",
                           "title": "Listing",
                           "uri": "/docs/user-api/backend-api/resources/tracking/status/listing/index.md",
+                          "slug": "user-api/backend-api/resources/tracking/status/listing",
                           "items": [
                             {
                               "type": "item",
                               "title": "Tracker's working status list",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/status/listing/tracker.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/status/listing/tracker.md",
+                              "slug": "user-api/backend-api/resources/tracking/status/listing/tracker"
                             }
                           ]
                         },
                         {
                           "type": "item",
                           "title": "Tracker's working status",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/status/tracker.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/status/tracker.md",
+                          "slug": "user-api/backend-api/resources/tracking/status/tracker"
                         }
                       ]
                     },
@@ -883,16 +1023,19 @@
                       "type": "group",
                       "title": "Track",
                       "uri": "/docs/user-api/backend-api/resources/tracking/track/index.md",
+                      "slug": "user-api/backend-api/resources/tracking/track",
                       "items": [
                         {
                           "type": "group",
                           "title": "Waybill",
                           "uri": "/docs/user-api/backend-api/resources/tracking/track/waybill/index.md",
+                          "slug": "user-api/backend-api/resources/tracking/track/waybill",
                           "items": [
                             {
                               "type": "item",
                               "title": "Waybill settings",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/track/waybill/settings.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/track/waybill/settings.md",
+                              "slug": "user-api/backend-api/resources/tracking/track/waybill/settings"
                             }
                           ]
                         }
@@ -901,26 +1044,32 @@
                     {
                       "type": "group",
                       "title": "Tracker",
+                      "uri": "/docs/user-api/backend-api/resources/tracking/tracker/index.md",
+                      "slug": "user-api/backend-api/resources/tracking/tracker",
                       "items": [
                         {
                           "type": "item",
                           "title": "Alarm mode",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/alarm_mode.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/alarm_mode.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/alarm-mode"
                         },
                         {
                           "type": "item",
                           "title": "APN settings by tracker ID",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/apn_settings.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/apn_settings.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/apn-settings"
                         },
                         {
                           "type": "item",
                           "title": "Avatar for the tracker",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/avatar.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/avatar.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/avatar"
                         },
                         {
                           "type": "item",
                           "title": "Chat",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/chat.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/chat.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/chat"
                         },
                         {
                           "type": "group",
@@ -929,69 +1078,76 @@
                             {
                               "type": "item",
                               "title": "Unconfirmed commands",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/command/unconfirmed.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/command/unconfirmed.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/command/unconfirmed"
                             }
                           ]
                         },
                         {
                           "type": "item",
                           "title": "Contact",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/contact.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/contact.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/contact"
                         },
                         {
                           "type": "item",
                           "title": "Counters",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/counter.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/counter.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/counter"
                         },
                         {
                           "type": "item",
                           "title": "Datalogger",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/datalogger.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/datalogger.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/datalogger"
                         },
                         {
                           "type": "item",
                           "title": "Assigning employee to tracker",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/employee.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/employee.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/employee"
                         },
                         {
                           "type": "item",
                           "title": "Engine immobilizer",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/engine_immobilizer.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/engine_immobilizer.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/engine-immobilizer"
                         },
                         {
                           "type": "item",
                           "title": "Group",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/group.md"
-                        },
-                        {
-                          "type": "item",
-                          "title": "Working with trackers",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/index.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/group.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/group"
                         },
                         {
                           "type": "item",
                           "title": "LED",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/led.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/led.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/led"
                         },
                         {
                           "type": "item",
                           "title": "Mobile app register",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/mobile.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/mobile.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/mobile"
                         },
                         {
                           "type": "item",
                           "title": "Output control",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/output.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/output.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/output"
                         },
                         {
                           "type": "item",
                           "title": "Sensor readings",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/readings.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/readings.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/readings"
                         },
                         {
                           "type": "item",
                           "title": "Retranslator",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/retranslator.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/retranslator.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/retranslator"
                         },
                         {
                           "type": "group",
@@ -1000,12 +1156,14 @@
                             {
                               "type": "item",
                               "title": "Rule types",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/rules/rule_types.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/rules/rule_types.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/rules/rule-types"
                             },
                             {
                               "type": "item",
                               "title": "Rule",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/rules/rule.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/rules/rule.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/rules/rule"
                             }
                           ]
                         },
@@ -1013,16 +1171,19 @@
                           "type": "group",
                           "title": "Sensor",
                           "uri": "/docs/user-api/backend-api/resources/tracking/tracker/sensor/index.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/sensor",
                           "items": [
                             {
                               "type": "item",
                               "title": "Sensor calibration data",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/sensor/calibration_data.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/sensor/calibration_data.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/sensor/calibration-data"
                             },
                             {
                               "type": "item",
                               "title": "Sensor inputs",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/sensor/input_name.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/sensor/input_name.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/sensor/input-name"
                             }
                           ]
                         },
@@ -1030,38 +1191,45 @@
                           "type": "group",
                           "title": "Settings",
                           "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/index.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/settings",
                           "items": [
                             {
                               "type": "item",
                               "title": "LBS settings",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/lbs.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/lbs.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/settings/lbs"
                             },
                             {
                               "type": "group",
                               "title": "Special",
                               "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/special/index.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/settings/special",
                               "items": [
                                 {
                                   "type": "item",
                                   "title": "Specific portlets",
-                                  "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/special/portlets.md"
+                                  "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/special/portlets.md",
+                                  "slug": "user-api/backend-api/resources/tracking/tracker/settings/special/portlets"
                                 }
                               ]
                             },
                             {
                               "type": "item",
                               "title": "Tracking profiles",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/tracking_profiles.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/tracking_profiles.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/settings/tracking-profiles"
                             },
                             {
                               "type": "item",
                               "title": "Tracking mode",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/tracking.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/tracking.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/settings/tracking"
                             },
                             {
                               "type": "item",
                               "title": "Parking detection",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/trip_detection.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/settings/trip_detection.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/settings/trip-detection"
                             }
                           ]
                         },
@@ -1072,19 +1240,22 @@
                             {
                               "type": "item",
                               "title": "Engine hours",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/stats/stats_engine_hours.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/stats/stats_engine_hours.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/stats/stats-engine-hours"
                             },
                             {
                               "type": "item",
                               "title": "Mileage",
-                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/stats/stats_mileage.md"
+                              "uri": "/docs/user-api/backend-api/resources/tracking/tracker/stats/stats_mileage.md",
+                              "slug": "user-api/backend-api/resources/tracking/tracker/stats/stats-mileage"
                             }
                           ]
                         },
                         {
                           "type": "item",
                           "title": "Trusted number",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/trusted_number.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/tracker/trusted_number.md",
+                          "slug": "user-api/backend-api/resources/tracking/tracker/trusted-number"
                         }
                       ]
                     },
@@ -1092,11 +1263,13 @@
                       "type": "group",
                       "title": "Zone",
                       "uri": "/docs/user-api/backend-api/resources/tracking/zone/index.md",
+                      "slug": "user-api/backend-api/resources/tracking/zone",
                       "items": [
                         {
                           "type": "item",
                           "title": "Geofence point",
-                          "uri": "/docs/user-api/backend-api/resources/tracking/zone/zone_point.md"
+                          "uri": "/docs/user-api/backend-api/resources/tracking/zone/zone_point.md",
+                          "slug": "user-api/backend-api/resources/tracking/zone/zone-point"
                         }
                       ]
                     }
@@ -1108,16 +1281,19 @@
               "type": "group",
               "title": "Websocket",
               "uri": "/docs/user-api/backend-api/websocket/index.md",
+              "slug": "user-api/backend-api/websocket",
               "items": [
                 {
                   "type": "item",
                   "title": "WebSocket Events",
-                  "uri": "/docs/user-api/backend-api/websocket/events.md"
+                  "uri": "/docs/user-api/backend-api/websocket/events.md",
+                  "slug": "user-api/backend-api/websocket/events"
                 },
                 {
                   "type": "item",
                   "title": "WebSocket Subscription",
-                  "uri": "/docs/user-api/backend-api/websocket/subscription.md"
+                  "uri": "/docs/user-api/backend-api/websocket/subscription.md",
+                  "slug": "user-api/backend-api/websocket/subscription"
                 }
               ]
             }
@@ -1133,23 +1309,15 @@
               "items": [
                 {
                   "type": "item",
-                  "title": "Application 'Courier on the map'",
-                  "uri": "/docs/user-api/frontend/extensions/delivery-app.md"
-                },
-                {
-                  "type": "item",
                   "title": "Login redirect",
-                  "uri": "/docs/user-api/frontend/extensions/login-redirect.md"
-                },
-                {
-                  "type": "item",
-                  "title": "Mobile tracker",
-                  "uri": "/docs/user-api/frontend/extensions/mobile-tracker.md"
+                  "uri": "/docs/user-api/frontend/extensions/login-redirect.md",
+                  "slug": "user-api/frontend/extensions/login-redirect"
                 },
                 {
                   "type": "item",
                   "title": "User applications",
-                  "uri": "/docs/user-api/frontend/extensions/user-applications.md"
+                  "uri": "/docs/user-api/frontend/extensions/user-applications.md",
+                  "slug": "user-api/frontend/extensions/user-applications"
                 }
               ]
             }
@@ -1160,6 +1328,7 @@
           "type": "group",
           "title": "Data warehouse",
           "uri": "/docs/user-api/data-warehouse-api/getting-started.md",
+          "slug": "user-api/data-warehouse-api/getting-started",
           "items": [
             {
               "type": "group",
@@ -1168,7 +1337,8 @@
                 {
                   "type": "item",
                   "title": "Requesting raw data",
-                  "uri": "/docs/user-api/data-warehouse-api/guides/raw-data.md"
+                  "uri": "/docs/user-api/data-warehouse-api/guides/raw-data.md",
+                  "slug": "user-api/data-warehouse-api/guides/raw-data"
                 }
               ]
             },
@@ -1183,7 +1353,8 @@
                     {
                       "type": "item",
                       "title": "Raw IoT Data",
-                      "uri": "/docs/user-api/data-warehouse-api/resources/tracker/raw_data.md"
+                      "uri": "/docs/user-api/data-warehouse-api/resources/tracker/raw_data.md",
+                      "slug": "user-api/data-warehouse-api/resources/tracker/raw-data"
                     }
                   ]
                 }
@@ -1195,6 +1366,7 @@
           "type": "group",
           "title": "Eco fleet",
           "uri": "/docs/user-api/eco-fleet-api/getting-started.md",
+          "slug": "user-api/eco-fleet-api/getting-started",
           "items": [
             {
               "type": "group",
@@ -1207,7 +1379,8 @@
                     {
                       "type": "item",
                       "title": "Fuel data resampling",
-                      "uri": "/docs/user-api/eco-fleet-api/resources/trackers/resampling.md"
+                      "uri": "/docs/user-api/eco-fleet-api/resources/trackers/resampling.md",
+                      "slug": "user-api/eco-fleet-api/resources/trackers/resampling"
                     },
                     {
                       "type": "group",
@@ -1216,7 +1389,8 @@
                         {
                           "type": "item",
                           "title": "Fuel Sensor Quality Index",
-                          "uri": "/docs/user-api/eco-fleet-api/resources/trackers/sensors/quality.md"
+                          "uri": "/docs/user-api/eco-fleet-api/resources/trackers/sensors/quality.md",
+                          "slug": "user-api/eco-fleet-api/resources/trackers/sensors/quality"
                         }
                       ]
                     }
@@ -1232,8 +1406,22 @@
     },
     {
     "type": "item",
-    "title": "Go to GitHub repository",
+    "title": "GitHub repository",
     "uri": "https://github.com/SquareGPS/navixy-api"
+    },
+    {
+    "type": "item",
+    "title": "User documentation",
+    "uri": "https://docs.navixy.com/"
+    },
+    {
+    "type": "divider",
+    "title": " "
+    },
+    {
+    "type": "item",
+    "title": "Back to Navixy website",
+    "uri": "https://navixy.com/"
     }
   ]
 }
