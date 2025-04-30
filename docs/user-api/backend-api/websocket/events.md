@@ -12,8 +12,7 @@ All event messages contain the next fields:
 * `event` – [enum](../getting-started/introduction.md#data-types). Can be "state", "state_batch", "readings_batch", "lifecycle", or "logout".
 * `data` – optional object. Specific event payload. 
 
-
-## State event
+### `State event`
 
 !!! note "Can be used for 100 devices. If there are more devices, please use state batch event"
 
@@ -24,122 +23,82 @@ to the `state` events of the specific tracker that not blocked. It occurs in the
 * Immediately after subscription.
 * Immediately after unblocking.
 
-Message fields:
-
-* `type` – "event".
-* `event` – "state".
-* `data` – depends on `format` request parameter:
-    * "full" – [source state](../resources/tracking/tracker/index.md#get_state).
-    * "compact" – [compact source state](#compact-source-state).
-* `user_time` – current time in user's timezone.
-
-Message sample:
+#### Message
 
 ```json
 {
   "type": "event",
   "event": "state",
-  "user_time": "2018-10-17 12:51:55",
-  "data": {
-    "source_id": 10284,
-    "gps": {
-      "updated": "2018-10-17 12:51:43",
-      "signal_level": 100,
-      "location": {
-        "lat": 14.330065796228606,
-        "lng": -90.99037259141691
-      },
-      "heading": 248,
-      "speed": 0,
-      "alt": 431
-    },
-    "connection_status": "active",
-    "movement_status": "parked",
-    "movement_status_update": "2018-10-04 22:47:07",
-    "ignition": false,
-    "ignition_update": "2018-10-04 22:47:07",
-    "gsm": null,
-    "last_update": "2018-10-17 12:51:46",
-    "battery_level": null,
-    "battery_update": null,
-    "inputs": [false, false, false, false, false, false, false, false],
-    "inputs_update": "2018-10-17 12:51:43",
-    "outputs": [false, false, false, false, false, false, false, false],
-    "outputs_update": "2018-10-17 12:51:43",
-    "actual_track_update": "2018-10-04 22:47:07"
-  }
+  "data": {<source_state or compact_source_state>},
+  "user_time": "2018-10-17 12:51:55"
 }
 ```
 
-!!! note "`source_id` is not a `tracker_id`."
+* `type` – "event".
+* `event` – "state".
+* `data` – depends on `format` request parameter:
+  * "full" – [source state](../resources/tracking/tracker/index.md#get_state).
+  * "compact" – [compact source state](#compact-source-state).
+* `user_time` – current time in user's timezone.
 
-
-## State batch event
+### `State batch event`
 
 These messages are coming from server if client [subscribed](subscription.md)
 to the `state_batch` events of the specific tracker that not blocked. It occurs in the next cases:
 
 * Immediately after subscription.
 * Tracker state changed. But no more frequently than the `rate_limit`.
+* Tracker blocked.
+* Tracker unblocked.
+* Tracker corrupted (removed).
 
-Message fields:
-
-* `type` – "event".
-* `event` – "state_batch".
-* `data` – depends on `format` request parameter:
-    * "full" – [source state](../resources/tracking/tracker/index.md#get_state) array.
-    * "compact" – [compact source state](#compact-source-state) array.
-* `user_time` – current time in user's timezone.
-
-Message sample:
+#### Message
 
 ```json
 {
   "type": "event",
   "event": "state_batch",
-  "user_time": "2018-10-17 12:51:55",
-  "data": [
-    {
-      "source_id": 10284,
-      "gps": {
-        "updated": "2018-10-17 12:51:43",
-        "signal_level": 100,
-        "location": {
-          "lat": 14.330065796228606,
-          "lng": -90.99037259141691
-        },
-        "heading": 248,
-        "speed": 0,
-        "alt": 431
-      },
-      "connection_status": "active",
-      "movement_status": "parked",
-      "movement_status_update": "2018-10-04 22:47:07",
-      "ignition": false,
-      "ignition_update": "2018-10-04 22:47:07",
-      "gsm": null,
-      "last_update": "2018-10-17 12:51:46",
-      "battery_level": null,
-      "battery_update": null,
-      "inputs": [false, false, false, false, false, false, false, false],
-      "inputs_update": "2018-10-17 12:51:43",
-      "outputs": [false, false, false, false, false, false, false, false],
-      "outputs_update": "2018-10-17 12:51:43",
-      "actual_track_update": "2018-10-04 22:47:07"
-    }
-  ]
+  "data": [{<source_state_event or lifecycle_event>}]
 }
 ```
 
-!!! note "`source_id` is not a `tracker_id`."
+* `type` – "event".
+* `event` – "state_batch".
+* `data` – array of [source state](#source-state-event) events and [lifecycle](#lifecycle-event) events.
 
-
-### Compact source state
-
-Sample:
+#### Source state event
 
 ```json
+{
+  "type": "source_state_event",
+  "state": {<source_state or compact_source_state>},
+}
+```
 
+* `type` – "source_state_event".
+* `state` – depends on `format` request parameter:
+  * "full" – [source state](../resources/tracking/tracker/index.md#get_state).
+  * "compact" – [compact source state](#compact-source-state).
+
+#### Lifecycle event
+
+```json
+{
+  "type": "lifecycle_event",
+  "source_id": 123456,
+  "lifecycle_event": "block",
+  "timestamp": "2021-01-28 08:16:40"
+}
+```
+
+* `type` – "lifecycle_event".
+* `source_id` – source ID.
+* `lifecycle_event` – lifecycle event type. Can be "block", "unblock", or "corrupt".
+* `timestamp` – lifecycle event time.
+
+#### Compact source state
+
+```json
 {
   "source_id": 10284,
   "gps": {
@@ -158,40 +117,87 @@ Sample:
   "movement_status_update": "2018-10-04 22:47:07",
   "ignition": false,
   "ignition_update": "2018-10-04 22:47:07",
+  "inputs": [false, false, false],
+  "inputs_update": "2022-08-31 13:47:09",
+  "outputs": [true, false],
+  "outputs_update": "2022-08-31 13:47:09",
   "last_update": "2018-10-17 12:51:46"
 }
 ```
 
+* `source_id` - int. Tracker data source ID (from "sources" table).
+* `gps` - gps object.
+  * `updated` - [date/time](../../../getting-started/introduction.md#data-types). Date of last gps coordinates update in a timezone of the user or null if there are
+    no updates.
+  * `signal_level` - int. GPS signal level in percent, e.g. 25, or null if device cannot provide such info.
+  * `lat` - float. Latitude.
+  * `lng` - float. Longitude.
+  * `heading` int. Direction bearing in degrees (0-360).
+  * `speed` - int. Speed in km/h, e.g. 20.
+  * `alt` - int. Altitude in meters, e.g. 10.
+  * `precision` - int. Optional. Precision in meters.
+  * `gsm_lbs` - boolean. Optional. True if location detected by GSM LBS.
+* `connection_status` - [enum](../../../getting-started/introduction.md#data-types). Device connection status, possible values: "signal_lost",
+  "just_registered", "just_replaced", "offline", "idle", "active".
+* `movement_status` - [enum](../../../getting-started/introduction.md#data-types). Movement status, possible values: "moving", "stopped", "parked".
+* `movement_status_update` - [date/time](../../../getting-started/introduction.md#data-types). The date and time when the movement status was last changed or null if there are no changes.
+* `ignition` - boolean. Optional. State of vehicle’s or virtual ignition sensor.
+* `ignition_update` - [date/time](../../../getting-started/introduction.md#data-types). Optional. The date and time when the ignition state was last changed.
+* `inputs` - array of boolean. States of all digital inputs. `[true, true, false]` means input 1 is on, input 2 is on,
+  input 3 is off.
+* `inputs_update` - [date/time](../../../getting-started/introduction.md#data-types). Date of last inputs update in a timezone of the user or null if there are no updates.
+* `outputs` - array of boolean. States of all digital outputs. `[true, true, false]` means output 1 is on,
+  output 2 is on, output 3 is off.
+* `outputs_update` - [date/time](../../../getting-started/introduction.md#data-types). Date of last outputs update in a timezone of the user or null if there are no updates.
+* `last_update` - [date/time](../../../getting-started/introduction.md#data-types). Date of last device state update in a timezone of the user or null if there are no updates.
 
-## Readings batch event
+### `Readings batch event`
 
 These messages are coming from server if client [subscribed](subscription.md#the-readings_batch-event-subscription)
 to the `readings_batch` events of the specific tracker that not blocked. It occurs in the next cases:
 
 * Immediately after subscription.
 * Sensor data is updated, but no more frequently than the `rate_limit`.
+* Tracker blocked.
+* Tracker unblocked.
+* Tracker corrupted (removed).
 
-Message fields:
-
-* `type` – "event".
-* `event` – "readings_batch".
-* `data` – [readings_batch](../resources/tracking/tracker/readings.md#readings-batch-object) array. NOTE: Unlike a tracker/readings/batch_list endpoint response in the common API, each item contains only modified objects.
-* `user_time` – current time in user's timezone.
-
-Message sample:
+#### Message
 
 ```json
 {
   "type": "event",
-  "event": "state_batch",
-  "user_time": "2018-10-17 12:51:55",
-  "data": [
-    {<readings_batch>}
-  ]
+  "event": "readings_batch",
+  "data": [{<reading_event or lifecycle_event>}]
 }
 ```
 
-## IoT monitor event
+* `type` – "event".
+* `event` – "readings_batch".
+* `data` – array of [reading](#readings-event) events and [lifecycle](#lifecycle-event) events.
+
+#### Readings event
+
+```json
+{
+  "type": "readings_event",
+  "tracker_id": 10181215,
+  "inputs": [...],
+  "states": [...],
+  "virtual_sensors": [...],
+  "counters": [...],
+  "timestamp": "2021-01-28 08:16:40"
+}
+```
+
+* `type` – "readings_event".
+* `tracker_id` – tracker ID.
+* `inputs, states, virtual_sensors, counters` - [readings_batch](../resources/tracking/tracker/readings.md#readings-batch-object) object fields.
+* `timestamp` - readings event time.
+
+!!! note "Unlike a tracker/readings/batch_list endpoint response in the common API, each item contains only modified objects."
+
+### `IoT monitor event`
 
 These messages are coming from server if client [subscribed](subscription.md#the-iot_monitor-event-subscription)
 to the `iot_monitor` events of the specific tracker that not blocked. These packets contain values 
@@ -201,25 +207,7 @@ It occurs in the next cases:
 * Immediately after subscription.
 * The latest attribute values are updated. But no more frequently than the `rate_limit`.
 
-Message fields:
-
-* `type` – "event".
-* `event` – "iot_monitor".
-* `data`:
-  * `iot_last_values` – list of objects:
-    * `tracker_id` – tracker ID.
-    * `nonnull_fields` – list of objects. Queue without data gaps – only messages where the specific attribute was present (not null).
-      * `<field_name>` – name of the attribute.
-        * `value` – value of attribute.
-        * `msg_time` – message time.
-        * `srv_time` – server time.
-    * `all_fields` – list of objects. Queue with data gaps – if an attribute was missing in one of the last messages, a null value is recorded in the queue.
-      * `<field_name>` – name of the attribute.
-        * `value` – value of attribute.
-        * `msg_time` – message time.
-        * `srv_time` – server time.
-
-Message sample:
+#### Message
 
 ```json
 {
@@ -383,36 +371,28 @@ Message sample:
 }
 ```
 
-## Lifecycle event
+### `Lifecycle event`
 
 These messages are coming from the server if client [subscribed](subscription.md)
-to the `state`, `state_batch` or `readings_batch` events of the specific tracker. It occurs in the next cases:
+to the `state` events of the specific tracker. It occurs in the next cases:
 
 * Tracker blocked.
 * Tracker unblocked.
 * Tracker corrupted (removed).
 
-Message fields:
-
-* `type` – "event".
-* `event` – "lifecycle".
-* `data` – required object.
-    * `source_id` – source ID.
-    * `lifecycle_event` – lifecycle event type. Can be "block", "unblock", or "corrupt".
-
-Message sample:
+#### Message
 
 ```json
 {
   "type": "event",
   "event": "lifecycle",
-  "data": {
-    "source_id": 123456,
-    "lifecycle_event": "block"
-  }
+  "data": {<lifecycle_event>}
 }
 ```
 
+* `type` – "event".
+* `event` – "lifecycle".
+* `data` – [lifecycle](#lifecycle-event) event.
 
 ## Logout event
 
@@ -426,13 +406,8 @@ These messages are coming from server if client [subscribed](subscription.md) to
 * User blocked from admin panel.
 * User was corrupted (removed).
 
-Message fields:
+#### Message
 
-* `type` – "event".
-* `event` – "logout".
-* `data` – "session closed".
-
-Message sample:
 ```json
 {
   "type": "event",
@@ -440,3 +415,7 @@ Message sample:
   "data": "session closed"
 }
 ```
+
+* `type` – "event".
+* `event` – "logout".
+* `data` – "session closed".
