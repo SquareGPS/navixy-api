@@ -35,7 +35,7 @@ Reads counter of passed `type`.
 | name       | description                                                                                     | type                                           | format     |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 123456     |
-| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`.                           | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
+| type       | Counter type. One of `["odometer", "engine_hours"]`.                           | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
 
 #### Examples
 
@@ -84,7 +84,7 @@ Updates counter of passed `type`.
 | name       | description                                                                                                                                                                   | type                                           | format     |
 |:-----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                                                               | int                                            | 123456     |
-| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`.                                                                                                         | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
+| type       | Counter type. One of `["odometer", "engine_hours"]`.                                                                                                         | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
 | multiplier | A new value of counter multiplier.                                                                                                                                            | float                                          | 1.34       |
 | sensor_id  | ID of the sensor, which must be used as the source of odometer data (in case when parameter "type" equals "odometer"). If "type" is not "odometer", "sensor_id" must be null. | int                                            | 123        |
 
@@ -178,7 +178,6 @@ Gets last values of the tracker's counters.
 List of counter types:
 
 * `odometer` - odometer.
-* `fuel_consumed` - total fuel consumed.
 * `engine_hours` - engine hours.
 
 #### Errors
@@ -196,7 +195,7 @@ Gets actual value of specified `type` of sensor.
 | name       | description                                                                                     | type                                           | format     |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 123456     |
-| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`.                           | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
+| type       | Counter type. One of `["odometer", "engine_hours"]`.                           | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
 
 #### Examples
 
@@ -237,10 +236,10 @@ Get actual values for counters of passed `type` and `trackers`.
 
 #### Parameters
 
-| name     | description                                                           | type                                           | format             |
-|:---------|:----------------------------------------------------------------------|:-----------------------------------------------|:-------------------|
-| trackers | List of the tracker's ID belonging to authorized user.                | int array                                      | `[123456, 234567]` |
-| type     | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started/introduction.md#data-types) | "odometer"         |
+| name     | description                                            | type                                           | format             |
+|:---------|:-------------------------------------------------------|:-----------------------------------------------|:-------------------|
+| trackers | List of the tracker's ID belonging to authorized user. | int array                                      | `[123456, 234567]` |
+| type     | Counter type. One of `["odometer", "engine_hours"]`.   | [enum](../../../getting-started/introduction.md#data-types) | "odometer"         |
 
 #### Example
 
@@ -281,7 +280,7 @@ Creates new counter of passed `type` (if not) and update its `value`.
 | name       | description                                                                                     | type                                           | format     |
 |:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
 | tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 123456     |
-| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`.                           | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
+| type       | Counter type. One of `["odometer", "engine_hours"]`.                                            | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
 | value      | A new value of counter.                                                                         | float                                          | 233.21     |
 
 #### Example
@@ -316,12 +315,12 @@ Returns counter values for a period.
 
 #### Parameters
 
-| name       | description                                                           | type                                           | format                  |
-|:-----------|:----------------------------------------------------------------------|:-----------------------------------------------|:------------------------|
-| tracker_id | Tracker ID (aka "object_id").                                         | int                                            | 123456                  |
-| type       | Counter type. One of `["odometer", "fuel_consumed", "engine_hours"]`. | [enum](../../../getting-started/introduction.md#data-types) | "odometer"              |
-| from       | Requested period start.                                               | date/time                                      | `"2021-02-25 12:21:17"` |
-| to         | Requested period end.                                                 | date/time                                      | `"2021-03-25 12:21:17"` |
+| name       | description                                          | type                                           | format                  |
+|:-----------|:-----------------------------------------------------|:-----------------------------------------------|:------------------------|
+| tracker_id | Tracker ID (aka "object_id").                        | int                                            | 123456                  |
+| type       | Counter type. One of `["odometer", "engine_hours"]`. | [enum](../../../getting-started/introduction.md#data-types) | "odometer"              |
+| from       | Requested period start.                              | date/time                                      | `"2021-02-25 12:21:17"` |
+| to         | Requested period end.                                | date/time                                      | `"2021-03-25 12:21:17"` |
 
 #### Example
 
