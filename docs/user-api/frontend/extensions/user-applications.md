@@ -24,22 +24,20 @@ To create a new user application using the user/application/update API, send a P
 
 ### Example
 
- === "cURL"
-
-    ```shell
-    curl -X POST "https://api.navixy.com/v2/user/application/create" \
-            -H "Content-Type: application/json" \
-            -d '{
-                "hash": "your_api_hash",
-                "application": {
-                "id": null,
-                "name": "New Application",
-                "url": "https://example.com",
-                "icon": "https://example.com/icon.png",
-                "is_enabled": true
-            }
-    }'
-    ```
+```bash
+curl -X POST "https://api.navixy.com/v2/user/application/create" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "hash": "your_api_hash",
+      "application": {
+      "id": null,
+      "name": "New Application",
+      "url": "https://example.com",
+      "icon": "https://example.com/icon.png",
+      "is_enabled": true
+    }
+  }'
+```
 
 ### Parameters explained
 
