@@ -682,10 +682,18 @@
                           ]
                         },
                         {
-                          "type": "item",
+                          "type": "group",
                           "title": "User applications",
                           "uri": "docs/user-api/backend-api/resources/commons/user/applications.md",
-                          "slug": "user-api/backend-api/resources/commons/user/applications"
+                          "slug": "user-api/backend-api/resources/commons/user/applications",
+                          "items": [
+                            {
+                              "type": "item",
+                              "title": "User applications resources",
+                              "uri": "reference/user-applications.json",
+                              "slug": "user-api/backend-api/resources/commons/user/applications/resources"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1312,12 +1320,6 @@
                   "title": "Login redirect",
                   "uri": "/docs/user-api/frontend/extensions/login-redirect.md",
                   "slug": "user-api/frontend/extensions/login-redirect"
-                },
-                {
-                  "type": "item",
-                  "title": "User applications",
-                  "uri": "/docs/user-api/frontend/extensions/user-applications.md",
-                  "slug": "user-api/frontend/extensions/user-applications"
                 }
               ]
             }
