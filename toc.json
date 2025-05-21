@@ -684,7 +684,7 @@
                         {
                           "type": "group",
                           "title": "User applications",
-                          "uri": "docs/user-api/backend-api/resources/commons/user/applications.md",
+                          "uri": "docs/user-api/frontend/extensions/user-applications.md",
                           "slug": "user-api/backend-api/resources/commons/user/applications",
                           "items": [
                             {
