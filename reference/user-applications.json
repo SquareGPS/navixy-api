@@ -38,7 +38,7 @@
   ],
   "tags": [
     {
-      "name": "user",
+      "name": "apps",
       "description": "API for user applications"
     }
   ],
@@ -46,7 +46,7 @@
     "/user/application/list": {
       "get": {
         "tags": [
-          "user"
+          "apps"
         ],
         "summary": "Lists all existing user applications",
         "description": "Lists all applications existing in a user account.",
@@ -93,7 +93,7 @@
     "/user/application/create": {
       "post": {
         "tags": [
-          "user"
+          "apps"
         ],
         "summary": "Creates a new application",
         "description": "Creates a new application.",
@@ -145,7 +145,7 @@
     "/user/application/update": {
       "put": {
         "tags": [
-          "user"
+          "apps"
         ],
         "summary": "Updates an existing application",
         "description": "Updates an existing application.",
@@ -218,7 +218,7 @@
     "/user/application/delete": {
       "delete": {
         "tags": [
-          "user"
+          "apps"
         ],
         "summary": "Deletes a specified application by its unique identifier",
         "description": "Deletes a specified application by its unique identifier.",
@@ -284,7 +284,7 @@
     "/user/application/enabled/set": {
       "post": {
         "tags": [
-          "user"
+          "apps"
         ],
         "summary": "Toggles application visibility in the side menu",
         "description": "Toggles application visibility in the side menu.",
