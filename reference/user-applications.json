@@ -1,11 +1,8 @@
 {
   "openapi": "3.1.0",
-  "x-stoplight": {
-    "id": "vp4jhpidxjnan"
-  },
   "info": {
     "title": "User Applications API",
-    "description": "API calls to work with User applications functionalit.",
+    "description": "API calls to work with user applications.",
     "version": "1.0.0",
     "contact": {
       "name": "API Support",
@@ -33,23 +30,21 @@
   ],
   "security": [
     {
-      "api_key": []
+      "authentication": []
     }
   ],
   "tags": [
     {
-      "name": "apps",
+      "name": "user",
       "description": "API for user applications"
     }
   ],
   "paths": {
     "/user/application/list": {
       "get": {
-        "tags": [
-          "apps"
-        ],
+        "tags": ["user"],
         "summary": "Lists all existing user applications",
-        "description": "Lists all applications existing in a user account.",
+        "description": "Lists all existing user applications.",
         "operationId": "user_applications_list",
         "responses": {
           "200": {
@@ -84,17 +79,12 @@
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "kr440w4g07wcc"
         }
       }
     },
     "/user/application/create": {
       "post": {
-        "tags": [
-          "apps"
-        ],
+        "tags": ["user"],
         "summary": "Creates a new application",
         "description": "Creates a new application.",
         "operationId": "user_applications_create",
@@ -108,9 +98,7 @@
                     "$ref": "#/components/schemas/CreateApplicationRequest"
                   }
                 },
-                "required": [
-                  "application"
-                ]
+                "required": ["application"]
               }
             }
           },
@@ -136,17 +124,12 @@
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "o8zxa2uvzswzy"
         }
       }
     },
     "/user/application/update": {
-      "put": {
-        "tags": [
-          "apps"
-        ],
+      "post": {
+        "tags": ["user"],
         "summary": "Updates an existing application",
         "description": "Updates an existing application.",
         "operationId": "user_applications_update",
@@ -160,9 +143,7 @@
                     "$ref": "#/components/schemas/Application"
                   }
                 },
-                "required": [
-                  "application"
-                ]
+                "required": ["application"]
               }
             }
           },
@@ -209,17 +190,12 @@
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "ilzydm36ofosu"
         }
       }
     },
     "/user/application/delete": {
-      "delete": {
-        "tags": [
-          "apps"
-        ],
+      "post": {
+        "tags": ["user"],
         "summary": "Deletes a specified application by its unique identifier",
         "description": "Deletes a specified application by its unique identifier.",
         "operationId": "user_applications_delete",
@@ -275,17 +251,12 @@
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "llenypsrnuw27"
         }
       }
     },
     "/user/application/enabled/set": {
       "post": {
-        "tags": [
-          "apps"
-        ],
+        "tags": ["user"],
         "summary": "Toggles application visibility in the side menu",
         "description": "Toggles application visibility in the side menu.",
         "operationId": "user_applications_enabled_set",
@@ -350,9 +321,6 @@
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "w31x2duj9kqct"
         }
       }
     }
@@ -367,9 +335,6 @@
             "description": "Operation success status",
             "example": true
           }
-        },
-        "x-stoplight": {
-          "id": "g640237nnbne1"
         }
       },
       "ErrorResponse": {
@@ -395,50 +360,32 @@
               }
             }
           }
-        },
-        "x-stoplight": {
-          "id": "2lzs7tcs6qu55"
         }
       },
       "ApiKeyAuthorization": {
         "type": "object",
-        "required": [
-          "type",
-          "hash"
-        ],
+        "required": ["type", "hash"],
         "properties": {
           "type": {
             "type": "string",
             "description": "Authorization type identifier",
-            "enum": [
-              "api_key"
-            ]
+            "enum": ["api_key"]
           },
           "hash": {
             "type": "string",
             "description": "An API key hash"
           }
-        },
-        "x-stoplight": {
-          "id": "dew9jd7cc834m"
         }
       },
       "UserSessionAuthorization": {
         "type": "object",
-        "required": [
-          "type"
-        ],
+        "required": ["type"],
         "properties": {
           "type": {
             "type": "string",
             "description": "Authorization type identifier",
-            "enum": [
-              "user_session"
-            ]
+            "enum": ["user_session"]
           }
-        },
-        "x-stoplight": {
-          "id": "jv0toy3i2mlox"
         }
       },
       "ApplicationAuthorization": {
@@ -449,18 +396,11 @@
           {
             "$ref": "#/components/schemas/UserSessionAuthorization"
           }
-        ],
-        "x-stoplight": {
-          "id": "okbksxujz77se"
-        }
+        ]
       },
       "Application": {
         "type": "object",
-        "required": [
-          "id",
-          "label",
-          "url_template"
-        ],
+        "required": ["id", "label", "url_template"],
         "properties": {
           "id": {
             "type": "integer",
@@ -486,10 +426,7 @@
           "display_method": {
             "type": "string",
             "description": "Determines how the application will be opened",
-            "enum": [
-              "new_tab",
-              "embedded"
-            ],
+            "enum": ["new_tab", "embedded"],
             "default": "new_tab"
           },
           "icon": {
@@ -502,17 +439,11 @@
             "description": "Longer plain text description is shown to users",
             "default": ""
           }
-        },
-        "x-stoplight": {
-          "id": "3sm7m3q782lw0"
         }
       },
       "CreateApplicationRequest": {
         "type": "object",
-        "required": [
-          "label",
-          "url_template"
-        ],
+        "required": ["label", "url_template"],
         "properties": {
           "label": {
             "type": "string",
@@ -529,10 +460,7 @@
           "display_method": {
             "type": "string",
             "description": "Determines how the application will be opened",
-            "enum": [
-              "new_tab",
-              "embedded"
-            ],
+            "enum": ["new_tab", "embedded"],
             "default": "new_tab"
           },
           "icon": {
@@ -545,9 +473,6 @@
             "description": "Longer plain text description is shown to users",
             "default": ""
           }
-        },
-        "x-stoplight": {
-          "id": "x8of5ltmir60c"
         }
       },
       "ApplicationListResponse": {
@@ -565,9 +490,6 @@
               "$ref": "#/components/schemas/Application"
             }
           }
-        },
-        "x-stoplight": {
-          "id": "eq0wd15gdr4dn"
         }
       },
       "CreateApplicationResponse": {
@@ -583,40 +505,15 @@
             "description": "Unique ID of the created application",
             "example": 779
           }
-        },
-        "x-stoplight": {
-          "id": "7uj730lvv7vw4"
         }
       }
     },
     "securitySchemes": {
-      "api_key": {
+      "authentication": {
         "type": "apiKey",
-        "name": "api_key",
+        "name": "Authentication",
         "in": "header",
-        "description": "API key authentication"
-      }
-    },
-    "responses": {
-      "Success": {
-        "description": "Successful response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/SuccessResponse"
-            }
-          }
-        }
-      },
-      "Error": {
-        "description": "Error response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        }
+        "description": "API authentication header"
       }
     }
   }
