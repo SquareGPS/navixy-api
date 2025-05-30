@@ -30,7 +30,7 @@
   ],
   "security": [
     {
-      "authentication": []
+      "Authorization": []
     }
   ],
   "tags": [
@@ -42,7 +42,9 @@
   "paths": {
     "/user/application/list": {
       "get": {
-        "tags": ["user"],
+        "tags": [
+          "user"
+        ],
         "summary": "Lists all existing user applications",
         "description": "Lists all existing user applications.",
         "operationId": "user_applications_list",
@@ -84,7 +86,9 @@
     },
     "/user/application/create": {
       "post": {
-        "tags": ["user"],
+        "tags": [
+          "user"
+        ],
         "summary": "Creates a new application",
         "description": "Creates a new application.",
         "operationId": "user_applications_create",
@@ -98,7 +102,9 @@
                     "$ref": "#/components/schemas/CreateApplicationRequest"
                   }
                 },
-                "required": ["application"]
+                "required": [
+                  "application"
+                ]
               }
             }
           },
@@ -129,7 +135,9 @@
     },
     "/user/application/update": {
       "post": {
-        "tags": ["user"],
+        "tags": [
+          "user"
+        ],
         "summary": "Updates an existing application",
         "description": "Updates an existing application.",
         "operationId": "user_applications_update",
@@ -143,7 +151,9 @@
                     "$ref": "#/components/schemas/Application"
                   }
                 },
-                "required": ["application"]
+                "required": [
+                  "application"
+                ]
               }
             }
           },
@@ -195,7 +205,9 @@
     },
     "/user/application/delete": {
       "post": {
-        "tags": ["user"],
+        "tags": [
+          "user"
+        ],
         "summary": "Deletes a specified application by its unique identifier",
         "description": "Deletes a specified application by its unique identifier.",
         "operationId": "user_applications_delete",
@@ -256,7 +268,9 @@
     },
     "/user/application/enabled/set": {
       "post": {
-        "tags": ["user"],
+        "tags": [
+          "user"
+        ],
         "summary": "Toggles application visibility in the side menu",
         "description": "Toggles application visibility in the side menu.",
         "operationId": "user_applications_enabled_set",
@@ -364,12 +378,17 @@
       },
       "ApiKeyAuthorization": {
         "type": "object",
-        "required": ["type", "hash"],
+        "required": [
+          "type",
+          "hash"
+        ],
         "properties": {
           "type": {
             "type": "string",
             "description": "Authorization type identifier",
-            "enum": ["api_key"]
+            "enum": [
+              "api_key"
+            ]
           },
           "hash": {
             "type": "string",
@@ -379,12 +398,16 @@
       },
       "UserSessionAuthorization": {
         "type": "object",
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "properties": {
           "type": {
             "type": "string",
             "description": "Authorization type identifier",
-            "enum": ["user_session"]
+            "enum": [
+              "user_session"
+            ]
           }
         }
       },
@@ -400,7 +423,11 @@
       },
       "Application": {
         "type": "object",
-        "required": ["id", "label", "url_template"],
+        "required": [
+          "id",
+          "label",
+          "url_template"
+        ],
         "properties": {
           "id": {
             "type": "integer",
@@ -426,7 +453,10 @@
           "display_method": {
             "type": "string",
             "description": "Determines how the application will be opened",
-            "enum": ["new_tab", "embedded"],
+            "enum": [
+              "new_tab",
+              "embedded"
+            ],
             "default": "new_tab"
           },
           "icon": {
@@ -443,7 +473,10 @@
       },
       "CreateApplicationRequest": {
         "type": "object",
-        "required": ["label", "url_template"],
+        "required": [
+          "label",
+          "url_template"
+        ],
         "properties": {
           "label": {
             "type": "string",
@@ -460,7 +493,10 @@
           "display_method": {
             "type": "string",
             "description": "Determines how the application will be opened",
-            "enum": ["new_tab", "embedded"],
+            "enum": [
+              "new_tab",
+              "embedded"
+            ],
             "default": "new_tab"
           },
           "icon": {
@@ -509,11 +545,11 @@
       }
     },
     "securitySchemes": {
-      "authentication": {
+      "Authorization": {
         "type": "apiKey",
-        "name": "Authentication",
+        "name": "Authorization",
         "in": "header",
-        "description": "API authentication header"
+        "description": "Enter an API key with the \"NVX: \" prefix, e.g. \"NVX 123456abcdefg\""
       }
     }
   }
