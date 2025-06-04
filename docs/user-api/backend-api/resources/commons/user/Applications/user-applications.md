@@ -1,6 +1,7 @@
 ---
 title: User applications
 description: Information about embedding custom applications to the UI on user's own
+stoplight-id: 98c051b5036d5
 ---
 
 # User applications
