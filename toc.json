@@ -207,7 +207,7 @@
           "items": [
             {
             "type": "item",
-            "title": "API Keys Advantages",
+            "title": "Authentication",
             "uri": "/docs/user-api/backend-api/getting-started/authentication.md",
             "slug": "user-api/backend-api/introduction/authentication"
             },
@@ -229,25 +229,25 @@
                   "items": [
                     {
                       "type": "item",
-                      "title": "Getting track points",
+                      "title": "Get track points",
                       "uri": "/docs/user-api/backend-api/guides/data-retrieval/get-track-points.md",
                       "slug": "user-api/backend-api/guides/data-retrieval/get-track-points"
                     },
                     {
                       "type": "item",
-                      "title": "Getting list of GPS trackers",
+                      "title": "Get list of GPS trackers",
                       "uri": "/docs/user-api/backend-api/guides/data-retrieval/get-tracker-list.md",
                       "slug": "user-api/backend-api/guides/data-retrieval/get-tracker-list"
                     },
                     {
                       "type": "item",
-                      "title": "Generate report",
+                      "title": "Obtain inforamtion from report",
                       "uri": "/docs/user-api/backend-api/guides/data-retrieval/obtain-reports.md",
                       "slug": "user-api/backend-api/guides/data-retrieval/obtain-reports"
                     },
                     {
                       "type": "item",
-                      "title": "Retrieving aensor and counter data",
+                      "title": "Retrieve sensor and counter data",
                       "uri": "/docs/user-api/backend-api/guides/data-retrieval/sensor-data.md",
                       "slug": "user-api/backend-api/guides/data-retrieval/sensor-data"
                     }
@@ -265,13 +265,13 @@
                     },
                     {
                       "type": "item",
-                      "title": "Tracking stationary objects with BLE tags",
+                      "title": "Track objects with BLE tags",
                       "uri": "/docs/user-api/backend-api/guides/device-management/ble-beacons.md",
                       "slug": "user-api/backend-api/guides/device-management/ble-beacons"
                     },
                     {
                       "type": "item",
-                      "title": "Sending commands to a GPS Tracker via IP protocol (OTA)",
+                      "title": "Send commands to trackers",
                       "uri": "/docs/user-api/backend-api/guides/device-management/send-commands.md",
                       "slug": "user-api/backend-api/guides/device-management/send-commands"
                     }
@@ -283,25 +283,25 @@
                   "items": [
                     {
                       "type": "item",
-                      "title": "Changing employee statuses",
+                      "title": "Control employee statuses",
                       "uri": "/docs/user-api/backend-api/guides/field-service-management/change-task-statuses.md",
                       "slug": "user-api/backend-api/guides/field-service-management/change-task-statuses"
                     },
                     {
                       "type": "item",
-                      "title": "Working with check-ins",
+                      "title": "Send check-ins",
                       "uri": "/docs/user-api/backend-api/guides/field-service-management/check-ins.md",
                       "slug": "user-api/backend-api/guides/field-service-management/check-ins"
                     },
                     {
                       "type": "item",
-                      "title": "Using task forms",
+                      "title": "Handle task forms",
                       "uri": "/docs/user-api/backend-api/guides/field-service-management/create-forms.md",
                       "slug": "user-api/backend-api/guides/field-service-management/create-forms"
                     },
                     {
                       "type": "item",
-                      "title": "How to create and assign tasks",
+                      "title": "Manage tasks",
                       "uri": "/docs/user-api/backend-api/guides/field-service-management/manage-tasks.md",
                       "slug": "user-api/backend-api/guides/field-service-management/manage-tasks"
                     }
@@ -313,19 +313,19 @@
                   "items": [
                     {
                       "type": "item",
-                      "title": "Using driver journals",
+                      "title": "Work with driver journals",
                       "uri": "/docs/user-api/backend-api/guides/fleet-management/driver-journals.md",
                       "slug": "user-api/backend-api/guides/fleet-management/driver-journals"
                     },
                     {
                       "type": "item",
-                      "title": "Managing vehicles and aervice works",
+                      "title": "Manage vehicles and service works",
                       "uri": "/docs/user-api/backend-api/guides/fleet-management/service-works.md",
                       "slug": "user-api/backend-api/guides/fleet-management/service-work"
                     },
                     {
                       "type": "item",
-                      "title": "Using tags",
+                      "title": "Search objects with tags",
                       "uri": "/docs/user-api/backend-api/guides/fleet-management/use-tags.md",
                       "slug": "user-api/backend-api/guides/fleet-management/use-tags"
                     }
@@ -337,13 +337,13 @@
                   "items": [
                     {
                       "type": "item",
-                      "title": "Managing geofences",
+                      "title": "Manage geofences",
                       "uri": "/docs/user-api/backend-api/guides/places/manage-geofences.md",
                       "slug": "user-api/backend-api/guides/places/manage-geofences"
                     },
                     {
                       "type": "item",
-                      "title": "Managing POIs",
+                      "title": "Manage POIs",
                       "uri": "/docs/user-api/backend-api/guides/places/manage-pois.md",
                       "slug": "user-api/backend-api/guides/places/manage-pois"
                     }
@@ -357,13 +357,13 @@
                   "items": [
                     {
                       "type": "item",
-                      "title": "Receiving push notifications in your app",
+                      "title": "Receive push notifications",
                       "uri": "/docs/user-api/backend-api/guides/rules-notifications/get-push-notifications.md",
                       "slug": "user-api/backend-api/guides/rules-notifications/get-push-notifications"
                     },
                     {
                       "type": "item",
-                      "title": "Using rules",
+                      "title": "Handle rules",
                       "uri": "/docs/user-api/backend-api/guides/rules-notifications/use-rules.md",
                       "slug": "user-api/backend-api/guides/rules-notifications/use-rules"
                     }
@@ -684,16 +684,8 @@
                         {
                           "type": "group",
                           "title": "User applications",
-                          "uri": "docs/user-api/frontend/extensions/user-applications.md",
-                          "slug": "user-api/backend-api/resources/commons/user/applications",
-                          "items": [
-                            {
-                              "type": "item",
-                              "title": "User applications resources",
-                              "uri": "reference/user-applications.json",
-                              "slug": "user-api/backend-api/resources/commons/user/applications/resources"
-                            }
-                          ]
+                          "uri": "docs/user-api/backend-api/resources/commons/user/applications.md",
+                          "slug": "user-api/backend-api/resources/commons/user/applications"
                         }
                       ]
                     }
@@ -1320,6 +1312,12 @@
                   "title": "Login redirect",
                   "uri": "/docs/user-api/frontend/extensions/login-redirect.md",
                   "slug": "user-api/frontend/extensions/login-redirect"
+                },
+                {
+                  "type": "item",
+                  "title": "User applications",
+                  "uri": "/docs/user-api/frontend/extensions/user-applications.md",
+                  "slug": "user-api/frontend/extensions/user-applications"
                 }
               ]
             }
