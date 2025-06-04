@@ -53,13 +53,19 @@
         },
     {
       "type": "divider",
-      "title": "Panel API"
+      "title": "Admin Panel API"
     },
     {
           "type": "item",
           "title": "Getting Started",
           "uri": "/docs/panel-api/getting-started.md",
           "slug": "panel-api/getting-started"
+        },
+        {
+        "type": "item",
+        "title": "Admin Panel authentication",
+        "uri": "docs/panel-api/Admin-Panel-authentication.md",
+        "slug": "panel-api/authentication"
         },
         {
           "type": "group",
@@ -191,7 +197,7 @@
         },
     {
       "type": "divider",
-      "title": "User API"
+      "title": "Platform API"
     },
     {
           "type": "item",
@@ -200,17 +206,17 @@
           "slug": "user-api/getting-started"
         },
         {
+          "type": "item",
+          "title": "Platform authentication",
+          "uri": "docs/user-api/platform-authentication.md",
+          "slug": "user-api/authentication"
+        },
+        {
           "type": "group",
           "title": "Backend functionality",
           "uri": "/docs/user-api/backend-api/getting-started/introduction.md",
           "slug": "user-api/backend-api/introduction",
           "items": [
-            {
-            "type": "item",
-            "title": "Authentication",
-            "uri": "/docs/user-api/backend-api/getting-started/authentication.md",
-            "slug": "user-api/backend-api/introduction/authentication"
-            },
             {
             "type": "item",
             "title": "Errors",
@@ -682,7 +688,7 @@
                           ]
                         },
                         {
-                          "type": "group",
+                          "type": "item",
                           "title": "User applications",
                           "uri": "docs/user-api/backend-api/resources/commons/user/applications.md",
                           "slug": "user-api/backend-api/resources/commons/user/applications"
