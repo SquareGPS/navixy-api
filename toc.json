@@ -1326,6 +1326,12 @@
                   "title": "Login redirect",
                   "uri": "/docs/user-api/frontend/extensions/login-redirect.md",
                   "slug": "user-api/frontend/extensions/login-redirect"
+                },
+                {
+                  "type": "item",
+                  "title": "User applications",
+                  "uri": "/docs/user-api/frontend/extensions/user-applications.md",
+                  "slug": "user-api/frontend/extensions/user-applications"
                 }
               ]
             }
