@@ -10,24 +10,23 @@ The Navixy platform API supports two authentication methods:
 
 ## 1. User session hash (basic authentication)
 
-A session hash is the fundamental authentication token in the Navixy system and serves as the mandatory starting point for all authentication workflows.
+A session hash is the basic authentication token in the Navixy system and serves as the starting point for authentication workflows.
 
 Use session hashes for:
 
 - Initial system access
-- Creating API keys
 - User interface operations
 - Short-term scripts
 
 > Session hash limitations:
-> - Expires after periods of inactivity (typically 30 minutes)
+> - Expires after periods of inactivity (30 days)
 > - Invalidated when logging out or changing password
 > - Requires periodic renewal for longer sessions
 > - Less secure for automated processes
 
 ### Obtaining a session hash
 
-To get a session hash, send a POST request to the user authentication endpoint `{baseURL}/v2/user/auth` providing your account's login and passord as parameters:
+To get a session hash, send a POST request to the user authentication endpoint `{baseURL}/v2/user/auth` providing your account's login and password as parameters:
 
 ```bash
 curl -X POST "https://your.server.com/v2/user/auth" \
@@ -53,7 +52,7 @@ API keys are a more stable and secure authentication method, it is recommended f
 
 | Feature | API Keys | Session Hashes |
 |---------|----------|----------------|
-| Expiration | Don't automatically expire | Expire after inactivity |
+| Expiration | Don't automatically expire | Expire after 30 days |
 | Password changes | Not affected | Immediately invalidated |
 | User logout | Not affected | Immediately invalidated |
 | Credential storage | Only store the API key | Must store/access username & password |
@@ -63,12 +62,11 @@ API keys are a more stable and secure authentication method, it is recommended f
 
 > API key limitations:
 > - Every user account may have up to 20 API keys
-> - IOnly account Owners have access to API keys functionality
-> - Requires a valid session hash to initially create a key
+> - Only account Owners have access to API keys functionality
 
 ### Creating API keys
 
-#### Method 1: Through the web interface
+API keys sgould be created through the Navixy web interface:
 
 1. **Login to the Web Interface**:
     - Access the Navixy user interface via the web.
@@ -87,29 +85,7 @@ API keys are a more stable and secure authentication method, it is recommended f
     - Once the key is generated, you will see it in the API keys table, including the label, creation date, and the API key hash.
     - Use this hash in your API requests.
 
-#### Method 2: Through the API (requires session hash)
-
-Send a POST request to `{baseURL}/v2/user/api_key/create` providing your session `hash` and new API key `title` as parameters:
-
-```bash
-curl -X POST "https://api.eu.navixy.com/v2/user/api_key/create" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "hash": "your_session_hash",
-    "title": "Integration API Key"
-  }'
-```
-
-Successful response:
-```json
-{
-  "success": true,
-  "value": "new_api_key_hash_here"
-}
-```
-
 ## Using authentication in API requests
-
 
 You can include your authentication credentials in requests trough three different methods. Each method has specific use cases and security considerations.
 
@@ -137,11 +113,10 @@ This is the most secure method and follows API best practices. It keeps authenti
 
 Include your authentication directly in the JSON body of your request as `hash` parameter:
 
-```json
-{
-  "hash": "your_hash_or_api_key",
-  "param1": "value1"
-}
+```bash
+curl -X POST "https://api.eu.navixy.com/v2/tracker/list/" \
+  -H "Content-Type: application/json" \
+  -d '{"hash": "1dc2b813769d846c2c15030884948117"}'
 ```
 
 This method works only with POST requests and mixes authentication with request parameters. It can be useful for testing but is less ideal for production use.
@@ -195,12 +170,12 @@ Any application using this key will immediately lose access and need to be recon
 After understanding the available authentication methods, follow this recommended progression for integrating with Navixy platform API:
 
 1. **Initial authentication**
-   - Authenticate with username/password to obtain a session hash
-   - This step is mandatory and cannot be skipped
-   - Session hashes provide temporary access needed to create API keys
+   - Log in to the needed user account in Navixy UI with username/password
+   - Make sure that you hace Owner role in the account
+   - Now you are ready to create API keys
 
 2. **API key creation**
-   - Use the session hash to create one or more API keys
+   - Create one or more API keys in A=ccount settings -> API keys
    - Create separate API keys for different integrations
    - Give each key a descriptive name to identify its purpose
 
@@ -229,9 +204,9 @@ Understanding authentication errors helps you troubleshoot issues and implement 
 ```
 
 Common authentication error codes:
-- **Code 3: Access denied** - Your API key or session hash is invalid or has been revoked
-- **Code 4: Invalid session** - Your session hash has expired due to inactivity
-- **Code 7: User account blocked** - The associated user account is suspended or disabled
+- **Code 3: Wrong hash** - Your API key or session hash is invalid or has been revoked
+- **Code 4: User or API key not found or session ended** - User or session hash don't exist or expired
+- **Code 7: Invalid parameters** - Inserted request parameters are incorrect
 
 Your integration should handle these errors appropriately, possibly by prompting for re-authentication or alerting administrators about potential issues.
 
@@ -239,7 +214,7 @@ Your integration should handle these errors appropriately, possibly by prompting
 
 Follow these guidelines to ensure secure and effective authentication:
 
-1. **Start with session hash authentication** to access the system initially - this is a mandatory first step
+1. **Log in to the needed Navixy account** to access the system initially - **Owner** account role is needed
 
 2. **Create and use API keys** for all ongoing integration needs - they provide more stable, secure access
 
@@ -247,14 +222,10 @@ Follow these guidelines to ensure secure and effective authentication:
 
 4. **Add descriptive labels** to easily identify the purpose of each key when viewing your key list
 
-5. **Implement key rotation** as part of your security protocols to limit the impact of potential key exposure
+5. **Revoke compromised keys** promptly to maintain security of your account
 
-6. **Revoke unused or compromised keys** promptly to maintain security of your account
+6. **Transmit authentication credentials** only over HTTPS to prevent interception of keys
 
-7. **Monitor key usage** and investigate unexpected activities that might indicate unauthorized access
+7. **Store credentials securely** server-side, never in client-side code or public repositories
 
-8. **Transmit authentication credentials** only over HTTPS to prevent interception of keys
-
-9. **Store credentials securely** server-side, never in client-side code or public repositories
-
-10. **Implement proper error handling** for authentication failures, including automatic recovery where appropriate
+8. **Implement proper error handling** for authentication failures, including automatic recovery where appropriate

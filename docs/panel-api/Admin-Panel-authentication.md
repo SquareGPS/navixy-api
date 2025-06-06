@@ -10,10 +10,9 @@ The Navixy Admin Panel API provides administrative access to manage the entire N
 
 The Admin Panel API uses **session hash authentication** as its sole authentication method. This approach is specifically designed for administrative workflows and provides:
 
-- **Extended session duration**: 24-hour session lifespan
-- **Administrative privileges**: Access to system-wide management functions
-- **Simplified integration**: Single authentication step for admin operations
-- **Secure credential sharing**: Support for technical service accounts
+- **Secure session duration**: 24-hour session lifespan
+- **Administrative privileges**: Access to all account and device management functions
+- **Simple integration**: Single authentication step for admin operations
 
 <!-- theme: warning -->
 >Admin Panel API sessions are completely separate from platform API sessions. You cannot use an admin panel session hash with the platform API, and vice versa.
@@ -32,12 +31,12 @@ Depending on the deployment method (regional web server or on-premise installati
 
 ### For web usage
 
-To authenticate with ServerMate, send a POST request to the `/account/auth/` endpoint with your admin panel credentials:
+To authenticate with ServerMate, send a POST request to the `/account/auth/` endpoint with your admin panel credentials: numeric Admin Paned ID and password.
 
 ```bash
 curl -X POST "https://api.eu.navixy.com/v2/panel/account/auth/" \
   -H "Content-Type: application/json" \
-  -d '{"login": "your_admin_email@company.com", "password": "your_admin_password"}'
+  -d '{"login": "your_numeric_panel_ID", "password": "your_admin_password"}'
 ```
 
 **Successful response:**
@@ -54,8 +53,6 @@ curl -X POST "https://api.eu.navixy.com/v2/panel/account/auth/" \
 ```
 
 The `hash` value is your session token - save it securely for subsequent API calls.
-
-> **Note**: Login can be either your email address or numeric panel ID, depending on your account setup.
 
 ### For on-premise installations
 
@@ -115,7 +112,7 @@ curl "https://api.eu.navixy.com/v2/panel/user/list/?hash=1dc2b813769d846c2c15030
 
 #### Session lifespan
 
-Admin Panel API sessions have a **24-hour lifespan** from creation, regardless of activity. This extended duration accommodates longer administrative workflows and batch operations.
+Admin Panel API sessions have a **24-hour lifespan** from creation, regardless of activity. This duration accommodates longer administrative workflows and batch operations.
 
 #### Session expiration
 
@@ -133,9 +130,7 @@ When your session expires, API calls will return:
 
 To resolve expired sessions, simply obtain a new hash using the `/account/auth/` endpoint.
 
-#### Session renewal
-
-Unlike platform API sessions, admin panel sessions cannot be renewed. When a session expires after 24 hours, you must authenticate again to obtain a new session hash.
+> Unlike platform API sessions, admin panel sessions cannot be renewed. When a session expires after 24 hours, you must authenticate again to obtain a new session hash.
 
 #### Ending sessions
 
@@ -208,7 +203,7 @@ When you lack required permissions:
 
 ### Checking current permissions
 
-You can verify what permissions your current session has without making other API calls:
+You can verify the permissions of your current session using the `get_permissions` request:
 
 ```bash
 curl -X POST "https://api.eu.navixy.com/v2/panel/account/get_permissions" \
@@ -235,49 +230,9 @@ Understanding admin panel authentication errors helps implement proper error han
 
 #### Common authentication errors
 
-**Access denied - account blocked (Code 11):**
-```json
-{
-  "success": false,
-  "status": {
-    "code": 11,
-    "description": "Access denied"
-  }
-}
-```
-
-**Invalid credentials (Code 12):**
-```json
-{
-  "success": false,
-  "status": {
-    "code": 12,
-    "description": "Dealer not found"
-  }
-}
-```
-
-**Session expired (Code 4):**
-```json
-{
-  "success": false,
-  "status": {
-    "code": 4,
-    "description": "User not found or session ended"
-  }
-}
-```
-
-**Insufficient permissions (Code 13):**
-```json
-{
-  "success": false,
-  "status": {
-    "code": 13,
-    "description": "Operation not permitted"
-  }
-}
-```
+- **Code 3: Wrong hash** - Your API key or session hash is invalid or has been revoked
+- **Code 4: User or API key not found or session ended** - User or session hash don't exist or expired
+- **Code 7: Invalid parameters** - Inserted request parameters are incorrect
 
 #### Error handling best practices
 
@@ -296,7 +251,7 @@ Here's a step-by-step workflow for Admin Panel authentication on the example of 
 ```bash
 curl -X POST "https://api.eu.navixy.com/v2/panel/account/auth/" \
   -H "Content-Type: application/json" \
-  -d '{"login": "admin@company.com", "password": "secure_password"}'
+  -d '{"login": "your_numeric_panel_ID", "password": "secure_password"}'
 ```
 
 Response example: 
@@ -348,7 +303,7 @@ Technical accounts have a predefined set of permissions that differ from full ad
 | User management | Can add and modify users | Can add, modify, and delete users |
 | Tracker management | Can add, clone, and modify trackers | Can add, clone, modify, and remove trackers |
 | Data plan management | Can change tracker data plans | Can change tracker data plans |
-| Air console access | Can analyze incoming data | Can analyze incoming data |
+| Air console access | Can analyze incoming data | Can analyze incoming data and send commands |
 | Plan management | Cannot add, change, or delete plans | Can manage all plans |
 | Platform settings | Cannot modify platform settings | Can modify platform settings |
 
@@ -359,7 +314,7 @@ Authentication with technical accounts follows the same process:
 ```bash
 curl -X POST "https://api.eu.navixy.com/v2/panel/account/auth/" \
   -H "Content-Type: application/json" \
-  -d '{"login": "technical_account@company.com", "password": "technical_password"}'
+  -d '{"login": "your_numeric_panel_ID", "password": "technical_password"}'
 ```
 
 ## Authentication best practices
@@ -373,7 +328,6 @@ Follow these guidelines for secure and effective admin panel authentication:
 3. **Store session hashes securely**, never in client-side code or logs
 4. **Implement session expiration handling** in your applications
 5. **Use technical accounts** for automated processes instead of personal credentials
-6. **Monitor API access logs** for unusual administrative activities
 7. **Rotate credentials regularly** especially for technical accounts
 8. **Explicitly logout sessions** when no longer needed for enhanced security
 
@@ -382,17 +336,6 @@ Follow these guidelines for secure and effective admin panel authentication:
 1. **Implement proper error handling** for all authentication scenarios
 2. **Cache session hashes** to avoid unnecessary authentication calls
 3. **Plan for 24-hour session lifecycle** in your application architecture
-4. **Request appropriate permissions** when setting up technical accounts
 5. **Test authentication flows** in development environments first
 6. **Document which technical accounts** are used by which integrations
-7. **Use permission checking** to verify capabilities before operations
 8. **Support JSON format** for all API requests consistently
-
-#### Operational practices
-
-1. **Keep track of session expiration times** to prevent service interruptions
-2. **Have backup authentication methods** for critical automated processes
-3. **Regularly audit admin panel access** and remove unused technical accounts
-4. **Coordinate with Navixy support** for technical account management
-5. **Plan maintenance windows** around 24-hour session boundaries
-6. **Handle account blocking scenarios** (error code 11) with proper escalation procedures
