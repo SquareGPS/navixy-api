@@ -66,7 +66,7 @@ API keys are a more stable and secure authentication method, it is recommended f
 
 ### Creating API keys
 
-API keys sgould be created through the Navixy web interface:
+API keys should be created through the Navixy web interface:
 
 1. **Login to the Web Interface**:
     - Access the Navixy user interface via the web.
