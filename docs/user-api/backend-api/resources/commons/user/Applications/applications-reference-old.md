@@ -1,6 +1,7 @@
 ---
 title: User Applications
 description: API calls to work with user applications.
+stoplight-id: yqyqc091ax6en
 ---
 
 # User Applications
