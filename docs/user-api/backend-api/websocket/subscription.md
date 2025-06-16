@@ -13,7 +13,7 @@ but must be sent inside open `WebSocket` channel and use only JSON format for me
 
 ## Subscribe Action
 
-The main difference between `state` and `state_batch` events is they can provide different amount of data every second.
+The main difference between `state` and `state_batch` events is that they can provide different amount of data every second.
 Use 'state' event for smaller fleets since it supports sending data up to 350 entries per second.
 For big or growing fleets better to use `state_batch` event since it supports sending data for up to 12000 entries per 
 second.
@@ -223,7 +223,7 @@ Response sample:
 
 ### Automatic subscriptions
 
-- Subscribing to a `state`, `state_batch`, `readings_batch` automatically creates a subscription to [lifecycle events](events.md#state-event).
+- Subscribing to a `state` automatically creates a subscription to [lifecycle events](events.md#lifecycle-event).
 - Subscribing to any event automatically creates a subscription to [logout events](events.md#logout-event).
 
 
