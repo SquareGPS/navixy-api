@@ -18,7 +18,7 @@ However, if you need to automate application management and integrate external t
 * Delete existing applications
 * Enable/Disable - control application availability
 
-For detailed reference see [User application resources](../../../../../backend-api/resources/commons/backend-api/resources/commons/user/applications.md).
+For detailed reference see [User application resources](https://app.gitbook.com/o/X7489dsx4ngbC5iEh4eH/s/wsyU95CoLDheydH0OQPY/~/changes/2/introduction/resources/commons/user/user-applications/user).
 
 ## How to create a new application
 

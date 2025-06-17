@@ -1,12 +1,13 @@
 ---
 title: Updating task form values
-description: API call for updating task form values. Task form values can be submitted using web API only if there was a submission using Mobile Tracker App.
+description: >-
+  API call for updating task form values. Task form values can be submitted
+  using web API only if there was a submission using Mobile Tracker App.
 ---
 
 # Updating task form values
 
-Task form values can only be submitted using the web API if there was a previous submission using the Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)). The purpose of this feature is to correct any incorrectly filled data that was accidentally submitted. It is not intended for filling out an empty form from scratch. This action can only be used if the task status is "assigned," and the device must not be deleted. It will not work for any other task statuses.
-
+Task form values can only be submitted using the web API if there was a previous submission using the Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker\&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)). The purpose of this feature is to correct any incorrectly filled data that was accidentally submitted. It is not intended for filling out an empty form from scratch. This action can only be used if the task status is "assigned," and the device must not be deleted. It will not work for any other task statuses.
 
 ## API actions
 
@@ -18,13 +19,12 @@ Updates existing form values of given task.
 
 **required sub-user rights**: `task_update`.
 
-##### Parameters
+**Parameters**
 
-| name    | description                   | type        |
-|:--------|:------------------------------|:------------|
-| task_id | An ID of the task.            | int         |
-| values  | Map of field_id-value object. | JSON object |
-
+| name     | description                    | type        |
+| -------- | ------------------------------ | ----------- |
+| task\_id | An ID of the task.             | int         |
+| values   | Map of field\_id-value object. | JSON object |
 
 where values object is:
 
@@ -37,17 +37,19 @@ where values object is:
 }
 ```
 
-For **value** object description, see [form/form-fields-and-values/](../../form/field-types.md#form-fields-and-values).
+For **value** object description, see [form/form-fields-and-values/](broken-reference).
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/task/form/values/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546, "value": {"text1": {"type": "text", "value": "text field value"}}}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/task/form/values/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546, "value": {"text1": {"type": "text", "value": "text field value"}}}'
+```
+````
 
 #### Response
 

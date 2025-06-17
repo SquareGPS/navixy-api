@@ -4,12 +4,12 @@ Integrating objects into the Internet of Things (IoT) is simplified with the Nav
 
 In this tutorial, we will guide you through the process of tracking stationary objects. We will discuss the following:
 
-- How to organize tracking for stationary objects
-- Which GPS devices and BLE tags to use for data collection
-- Step-by-step setup instructions, using truck trailers as an example
-- How to obtain information about trips and usage for subsequent service work
-- The API calls needed to retrieve information about the tags
-- Additional use cases based on real-world scenarios
+* How to organize tracking for stationary objects
+* Which GPS devices and BLE tags to use for data collection
+* Step-by-step setup instructions, using truck trailers as an example
+* How to obtain information about trips and usage for subsequent service work
+* The API calls needed to retrieve information about the tags
+* Additional use cases based on real-world scenarios
 
 Additionally, you can read more about configuration examples in our [Expert Center](https://docs.navixy.com/expert-center/tracking-of-stationary-objects).
 
@@ -41,27 +41,29 @@ Now let's examine the procedure for implementing a real-world case study: tracki
 ```
 
 You can read information from it:
-- `tracker_id` - int. The ID of the tracker (also known as “object_id”).
-- `hardware_id` - string. The ID of the beacon.
-- `rssi` - int. RSSI stands for received signal strength indicator and represents the power of the received signal on a device. This value helps determine the distance between the beacon and the tracker.
-- `get_time` - date/time. The timestamp when this data was received.
-- `latitude` - float. Latitude coordinate.
-- `longitude` - float. Longitude coordinate.
-- `ext_data` - object. Additional beacon data, such as:
-	- `voltage` - float. The voltage of the beacon.
-	- `temperature` - float. The temperature reading from the beacon.
 
+* `tracker_id` - int. The ID of the tracker (also known as “object\_id”).
+* `hardware_id` - string. The ID of the beacon.
+* `rssi` - int. RSSI stands for received signal strength indicator and represents the power of the received signal on a device. This value helps determine the distance between the beacon and the tracker.
+* `get_time` - date/time. The timestamp when this data was received.
+* `latitude` - float. Latitude coordinate.
+* `longitude` - float. Longitude coordinate.
+* `ext_data` - object. Additional beacon data, such as:
+  * `voltage` - float. The voltage of the beacon.
+  * `temperature` - float. The temperature reading from the beacon.
 
 ## API calls to get information about BLE tags
 
 There are two API calls that allow you to get all the necessary information about BLE beacons:
+
 ### Historical data from BLE tags
 
-The first call retrieves [historical data from devices](../../resources/tracking/beacon/index.md#read). You can set the `from` and `to` parameters for obtaining data during a specific period about connected BLE beacons. Since we need the information from the BLE tags' point of view, i.e., the trailers, let's request the information using the `beacons` parameter.
+The first call retrieves [historical data from devices](broken-reference). You can set the `from` and `to` parameters for obtaining data during a specific period about connected BLE beacons. Since we need the information from the BLE tags' point of view, i.e., the trailers, let's request the information using the `beacons` parameter.
 
 **Request example:**
 
 cURL
+
 ```shell
 curl -X POST 'https://api.navixy.com/v2/beacon/data/read' \
     -H 'Content-Type: application/json' \
@@ -72,7 +74,6 @@ curl -X POST 'https://api.navixy.com/v2/beacon/data/read' \
         "beacons": ["7cf9501df3d6924e423cabcde4c924ff"]
     }'
 ```
-
 
 This will show which devices were in the vicinity of this BLE beacon during period
 
@@ -110,11 +111,12 @@ This will show which devices were in the vicinity of this BLE beacon during peri
 
 ### Last data from BLE tags
 
-The second call retrieves information about [currently connected beacons](../../resources/tracking/beacon/index.md#last-values) to a specific device. For example, if you want to know which trailer is currently near the device, use the following request:
+The second call retrieves information about [currently connected beacons](broken-reference) to a specific device. For example, if you want to know which trailer is currently near the device, use the following request:
 
 **Request example:**
 
 cURL
+
 ```shell
 curl -X POST 'https://api.navixy.com/v2/beacon/data/last_values' \
     -H 'Content-Type: application/json' \
@@ -147,20 +149,17 @@ curl -X POST 'https://api.navixy.com/v2/beacon/data/last_values' \
 
 This will provide information that there is a trailer with the identifier `7cf9501df3d6924e423cabcde4c924ff` located next to the device.
 
-
-
-
 ## Obtaining information on trip details and usage time
 
 We've already gathered historical data using the first of the presented API calls, which showed on which devices the trailer was displayed at a specific time. To get information about the journeys and usage time of this trailer, we simply need to use one of the two API calls:
 
 ### Overall trip info
 
-API call [track/list](../../resources/tracking/track/index.md#list) to get trip information for the period. This will provide general information about the trips, such as where and when they started and ended, maximum speed, mileage, and more.
+API call [track/list](broken-reference) to get trip information for the period. This will provide general information about the trips, such as where and when they started and ended, maximum speed, mileage, and more.
 
 Request example:
 
-=== "cURL"
+\=== "cURL"
 
 ```shell
 curl -X POST 'https://api.navixy.com/v2/beacon/data/last_values' \
@@ -192,7 +191,7 @@ Response:
 }
 ```
 
-From this data, we can see that the trip lasted nearly 35 minutes (end_date - start_date), with an average speed of 49 km/h and a maximum speed of 62 km/h. The trip length was 18.91 km. This information allows us to determine how much to pay the driver for transporting the cargo, whether the contractual speed was exceeded, and other details. Additionally, the trip length can be used in the future to calculate the number of kilometers until the next maintenance of the trailer.
+From this data, we can see that the trip lasted nearly 35 minutes (end\_date - start\_date), with an average speed of 49 km/h and a maximum speed of 62 km/h. The trip length was 18.91 km. This information allows us to determine how much to pay the driver for transporting the cargo, whether the contractual speed was exceeded, and other details. Additionally, the trip length can be used in the future to calculate the number of kilometers until the next maintenance of the trailer.
 
 ### Detailed trip info
 
@@ -200,7 +199,7 @@ If you want a detailed track record of the trailer where the beacon is installed
 
 Request example:
 
-=== "cURL"
+\=== "cURL"
 
 ```shell
 curl -X POST 'https://api.navixy.com/v2/track/read' \
@@ -237,7 +236,6 @@ Response:
 ```
 
 You can use these points together with your preferred maps API to display them on a map.
-
 
 ## Other examples of using BLE tags
 

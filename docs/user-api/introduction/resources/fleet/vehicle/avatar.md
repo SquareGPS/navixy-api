@@ -7,7 +7,6 @@ description: API calls to upload and assign avatar to the vehicle.
 
 API calls to upload and assign avatar to the vehicle.
 
-
 ## API actions
 
 API path: `/vehicle/avatar`.
@@ -20,30 +19,34 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 
 #### Parameters
 
-| name       | description        | type |
-|:-----------|:-------------------|:-----|
-| vehicle_id | ID of the vehicle. | int  |
-| icon_id    | ID of the icon.    | int  |
+| name        | description        | type |
+| ----------- | ------------------ | ---- |
+| vehicle\_id | ID of the vehicle. | int  |
+| icon\_id    | ID of the icon.    | int  |
 
 `icon_id` can be null – this means that uploaded avatar should be used instead of icon.
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/vehicle/avatar/assign' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_id": 127722, "icon_id": 1342}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/vehicle/avatar/assign' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_id": 127722, "icon_id": 1342}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/vehicle/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722&icon_id=1342
-    ```
+````
+```
+{{ extra.api_example_url }}/vehicle/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722&icon_id=1342
+```
+````
 
-##### Response
+**Response**
 
 ```json
 {
@@ -51,22 +54,21 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 }
 ```
 
-##### Errors
+**Errors**
 
 * 201 – Not found in the database - when vehicle with `vehicle_id` not found.
 
-
 ### upload
 
-Uploads avatar image for specified vehicle.
-Then it will be available from `[api_base_url]/<api_static_path>/vehicle/avatars/<file_name>`
+Uploads avatar image for specified vehicle.\
+Then it will be available from `[api_base_url]/<api_static_path>/vehicle/avatars/<file_name>`\
 e.g. `{{ extra.api_example_url }}/static/vehicle/avatars/abcdef123456789.png`.
 
 **required sub-user rights**: `vehicle_update`
 
-**avatar_file_name** returned in response and will be returned from [/vehicle/list](index.md#list).
+**avatar\_file\_name** returned in response and will be returned from [/vehicle/list](broken-reference).
 
-**MUST** be a POST multipart request (multipart/form-data),
+**MUST** be a POST multipart request (multipart/form-data),\
 with one of the parts being an image file upload (with the name "file").
 
 File part **mime** type must be one of :
@@ -79,11 +81,11 @@ File part **mime** type must be one of :
 
 #### Parameters
 
-| name            | description                | type   |
-|:----------------|:---------------------------|:-------|
-| vehicle_id      | Vehicle ID.                | int    |
-| file            | Image file.                | string |
-| redirect_target | Optional. URL to redirect. | string |
+| name             | description                | type   |
+| ---------------- | -------------------------- | ------ |
+| vehicle\_id      | Vehicle ID.                | int    |
+| file             | Image file.                | string |
+| redirect\_target | Optional. URL to redirect. | string |
 
 If `redirect_target` passed a return redirect to `response=<urlencoded response json>`.
 

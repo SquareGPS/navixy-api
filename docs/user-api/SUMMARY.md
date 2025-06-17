@@ -79,9 +79,17 @@
         * [User](introduction/resources/commons/user/index.md)
         * [User password](introduction/resources/commons/user/password.md)
         * [User personal info](introduction/resources/commons/user/personal_info.md)
-        * [Applications](introduction/resources/commons/user/applications/README.md)
-          * [User Applications](introduction/resources/commons/user/applications/applications-reference-old.md)
-          * [User applications](introduction/resources/commons/user/applications/user-applications.md)
+        * [User applications](introduction/resources/commons/user/user-applications/README.md)
+          * ```yaml
+            type: builtin:openapi
+            props:
+              models: true
+            dependencies:
+              spec:
+                ref:
+                  kind: openapi
+                  spec: user-apps
+            ```
         * [audit](introduction/resources/commons/user/audit/README.md)
           * [User audit log](introduction/resources/commons/user/audit/audit_log.md)
           * [User audit](introduction/resources/commons/user/audit/index.md)

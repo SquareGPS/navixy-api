@@ -12,11 +12,12 @@ For example, to generate a bill for fuel payment, you may need to categorize all
 
 ### Retrieving All Trips for a Period
 
-To generate a driver journal, first retrieve a list of possible trips using the [`fleet/driver_journal/proposal/list`](../../resources/fleet/driver_journal/proposal.md#list) API call.
+To generate a driver journal, first retrieve a list of possible trips using the [`fleet/driver_journal/proposal/list`](broken-reference) API call.
 
 #### API Request
 
-=== "cURL"
+\=== "cURL"
+
 ```shell
 curl -X POST '{{ extra.api_example_url }}/driver/journal/proposal/list' \
     -H 'Content-Type: application/json' \
@@ -24,6 +25,7 @@ curl -X POST '{{ extra.api_example_url }}/driver/journal/proposal/list' \
 ```
 
 #### Example Response
+
 ```json
 {
   "success": true,
@@ -95,7 +97,8 @@ Once you have a list of all trips, create driver journal entries. Specify the ty
 
 #### API Request
 
-=== "cURL"
+\=== "cURL"
+
 ```shell
 curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/create' \
     -H 'Content-Type: application/json' \
@@ -103,6 +106,7 @@ curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/create' \
 ```
 
 #### Example Response
+
 ```json
 {
   "success": true
@@ -113,4 +117,4 @@ curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/create' \
 
 After creating the entries, you can download the driver journal in the desired format using the `download` API call. To display the journal in an application, use the `list` request.
 
-For detailed API documentation, refer to the [Navixy API reference](../../resources/fleet/driver_journal/entry.md).
+For detailed API documentation, refer to the [Navixy API reference](broken-reference).

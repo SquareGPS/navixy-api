@@ -1,7 +1,9 @@
 # How to Create and Assign Tasks
 
 Tasks in Navixy are a feature used to plan and monitor the activities of field workers. They help in organizing and managing various operations such as service, delivery, transportation, merchandising, and trade. Tasks provide employees with detailed information including date, time, addresses, task descriptions, and contact numbers.
+
 ### How Do Tasks Operate?
+
 1. **Creation**: Tasks are created with specific details such as the location, time, and description. They can be single-point tasks or route tasks with multiple checkpoints.
 2. **Assignment**: Tasks are assigned to employees, typically those equipped with tracking devices. The tasks appear on their X-GPS tracker app, providing all necessary details.
 3. **Execution**: Employees perform the tasks, updating their status and providing real-time information through the app. This can include check-ins, status updates, and form submissions.
@@ -12,7 +14,7 @@ Tasks can be either **single-point** tasks or **route** tasks with multiple chec
 
 ## Single Task
 
-To create a new single task, use the [`task/create`](../../resources/field_service/task/index.md#create) method. You need to provide a JSON object that contains all the necessary information about the task. Optionally, you can create a form for the task by setting the `create_form` parameter to `true`.
+To create a new single task, use the [`task/create`](broken-reference) method. You need to provide a JSON object that contains all the necessary information about the task. Optionally, you can create a form for the task by setting the `create_form` parameter to `true`.
 
 ### Example
 
@@ -54,7 +56,7 @@ curl -X POST '{{ extra.api_example_url }}/task/create' \
 
 ## Route Task
 
-To create a new route task, use the [`task/route/create`](../../resources/field_service/task/route/index.md#create) method. You need to provide a JSON object that contains all the necessary information about the route and its checkpoints.
+To create a new route task, use the [`task/route/create`](broken-reference) method. You need to provide a JSON object that contains all the necessary information about the route and its checkpoints.
 
 ### Example
 
@@ -161,7 +163,7 @@ curl -X POST '{{ extra.api_example_url }}/task/route/create' \
 
 ## Route Optimization
 
-To optimize a route for minimizing transit time and costs, reorder the checkpoints before creating the route. Use the [`task/route/points/optimize`](../../resources/field_service/task/route/optimize.md) method to perform this optimization.
+To optimize a route for minimizing transit time and costs, reorder the checkpoints before creating the route. Use the [`task/route/points/optimize`](broken-reference) method to perform this optimization.
 
 ### Example Request
 
@@ -215,4 +217,4 @@ curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
 
 ## Association with Address
 
-To associate a task or checkpoint with an address, include the address in the location object. Use the [`geocoder/search_location`](../../resources/tracking/geocoder.md#search_location) method to obtain an address when you have a location.
+To associate a task or checkpoint with an address, include the address in the location object. Use the [`geocoder/search_location`](broken-reference) method to obtain an address when you have a location.

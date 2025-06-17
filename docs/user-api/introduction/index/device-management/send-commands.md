@@ -6,8 +6,8 @@ Most modern GPS tracking devices can be reconfigured remotely using IP commands 
 
 To send a command to a device, you only need the following parameters:
 
-- `tracker_id`: The ID of the device to which you want to send the command.
-- `command`: The text or hexadecimal representation of the command in a protocol-dependent manner.
+* `tracker_id`: The ID of the device to which you want to send the command.
+* `command`: The text or hexadecimal representation of the command in a protocol-dependent manner.
 
 #### Example: Reconfiguring a Teltonika FMB140 Device
 
@@ -17,9 +17,9 @@ Suppose you have a Teltonika FMB140 device with an ID of `231402` on the platfor
 
 ### API Request
 
-To send this command, use the API request [`raw_command/send`](../../resources/tracking/tracker/index.md#raw_commandsend):
+To send this command, use the API request [`raw_command/send`](broken-reference):
 
-=== "cURL"
+\=== "cURL"
 
 ```shell
 curl -X POST 'https://tracker.navixy.com/v2/tracker/raw_command/send' \

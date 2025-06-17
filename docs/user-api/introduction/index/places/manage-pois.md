@@ -6,11 +6,12 @@ This guide will describe how to create and use places with custom fields using t
 
 ## Creating Custom Fields and POIs
 
-Before using fields and POIs, we need to create them. Our goal is to create a new customer record with all necessary information and assign an employee to this customer. The employee will be able to view all information in their mobile app. The place object is described [here](../../resources/field_service/place/index.md#place-object).
+Before using fields and POIs, we need to create them. Our goal is to create a new customer record with all necessary information and assign an employee to this customer. The employee will be able to view all information in their mobile app. The place object is described [here](broken-reference).
 
 ### Example Fields for a CRM System
 
 For our CRM system, we need the following fields:
+
 * `Label`: The customer's name.
 * `Address`: The full address of the customer.
 * `Description`: Additional information about the customer, such as working hours or specific details.
@@ -111,13 +112,15 @@ Once we have the field IDs, we can change their order in the entity. Update the 
 
 **API Request:**
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/entity/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "entity": {"allowed": true, "id": 520, "type": "place", "settings": {"layout": {"sections": [{"label": "Places", "field_order": ["label", "location", "description", "tags", "2327", "2328", "2329", "2330", "2331", "2332"]}]}}}}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/entity/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "entity": {"allowed": true, "id": 520, "type": "place", "settings": {"layout": {"sections": [{"label": "Places", "field_order": ["label", "location", "description", "tags", "2327", "2328", "2329", "2330", "2331", "2332"]}]}}}}'
+```
+````
 
 ### Creating POIs
 
@@ -125,13 +128,15 @@ With the fields set up, we can now create a location. The field names indicate t
 
 **API Request:**
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/place/create' \
-        -H 'Content-Type: application/json' \
-        {% raw %}-d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "place": {"label": "Company1", "description": "Accepted one more deal for 7 devices next week", "files": [], "fields": {"2327": {"value": "shop1@email.com", "type": "email"}, "2328": {"value": "555231415221", "type": "phone"}, "2329": {"value": "10/10/2021", "type": "text"}, "2330": {"value": "87292", "type": "text"}, "2331": {"value": "Sold 10 devices", "type": "text"}, "2332": {"value": 71247, "type": "employee"}}, "location": {"address": "Lovell House, 6 Archway, Hulme, Manchester M15 5RN, UK", "lat": 53.46583133200717, "lng": -2.2464680671691895, "radius": 50}, "tags": [218916]}}{% endraw %}
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/place/create' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "place": {"label": "Company1", "description": "Accepted one more deal for 7 devices next week", "files": [], "fields": {"2327": {"value": "shop1@email.com", "type": "email"}, "2328": {"value": "555231415221", "type": "phone"}, "2329": {"value": "10/10/2021", "type": "text"}, "2330": {"value": "87292", "type": "text"}, "2331": {"value": "Sold 10 devices", "type": "text"}, "2332": {"value": 71247, "type": "employee"}}, "location": {"address": "Lovell House, 6 Archway, Hulme, Manchester M15 5RN, UK", "lat": 53.46583133200717, "lng": -2.2464680671691895, "radius": 50}, "tags": [218916]}}
+```
+````
 
 The platform will confirm creation with:
 
@@ -146,12 +151,12 @@ The platform will confirm creation with:
 
 ## Obtaining and Updating Information about Places
 
-* To retrieve information about place objects (e.g., to sync this data with your CRM), use the [`place/list`](../../resources/field_service/place/index.md#list) API call.
-* To get a count of visits to places, [`generate`](../../resources/commons/report/report_tracker.md#generate) a report with [ID 85](../../resources/commons/plugin/report_plugins.md#poi-visits-report).
-* To update information about a place, use the [`place/update`](../../resources/field_service/place/index.md#update) API call.
+* To retrieve information about place objects (e.g., to sync this data with your CRM), use the [`place/list`](broken-reference) API call.
+* To get a count of visits to places, [`generate`](broken-reference) a report with [ID 85](broken-reference).
+* To update information about a place, use the [`place/update`](broken-reference) API call.
 
 ### Getting POI Name by a Tracker's Location
 
-To get the POI name or ID where a device is located, use the [`place/search_location`](../../resources/field_service/place/index.md#search_location) API call. For example, you may want to determine which place a device is located in or count how many devices are in a particular place.
+To get the POI name or ID where a device is located, use the [`place/search_location`](broken-reference) API call. For example, you may want to determine which place a device is located in or count how many devices are in a particular place.
 
-To get this information, first request the device's [`state and location`](../../resources/tracking/tracker/index.md#get_state). Using the received latitude and longitude parameters, you can check the relevant places.
+To get this information, first request the device's [`state and location`](broken-reference). Using the received latitude and longitude parameters, you can check the relevant places.
