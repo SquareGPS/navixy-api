@@ -23,7 +23,7 @@ To give you a clear idea of how to work with the Navixy API, let's go through a 
      * `https://api.eu.navixy.com/v2` for European Navixy platform;
      * `https://api.us.navixy.com/v2` for North American Navixy Splatform;
      * `https://api.your_domain` for self-hosted (On-Premise) installations.
-2. [**Obtain hash of an API key**](../backend-api/getting-started/authentication.md):
+2. [**Obtain hash of an API key**](../platform-authentication.md#id-1.-user-session-hash-basic-authentication):
    * Authenticate and obtain a user key via the authentication call.
 3.  **Get objects lists with `tracker/list`**:
 
@@ -235,5 +235,5 @@ $ curl -X POST '[api_base_url]/resource/sub_resource/action' \
 
 ### Next Steps
 
-* [Authentication](../backend-api/getting-started/authentication.md): Learn how to authenticate and obtain a user key
-* [errors](errors.md): Understand how to handle errors in the Navixy API
+* [Authentication](../platform-authentication.md): Learn how to authenticate and obtain a user key
+* [Errors](errors.md): Understand how to handle errors in the Navixy API
