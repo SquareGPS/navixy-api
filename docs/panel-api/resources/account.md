@@ -105,7 +105,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/account/auth' \
 ```
 
 * `hash` - string. A session key.
-* `permissions` - object representing permissions for the panel. See panel account [permissions](../#admin-panel-api-permissions).
+* `permissions` - object representing permissions for the panel. See panel account [permissions](../panel-api.md#admin-panel-api-permissions).
 
 #### Errors
 
