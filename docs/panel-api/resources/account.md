@@ -5,8 +5,6 @@ description: API calls on getting the panel's hash, getting permissions and logo
 
 # Account
 
-API calls on getting the panel's hash, getting permissions and logout.
-
 ## API actions
 
 API path: `panel/account`.
@@ -105,7 +103,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/account/auth' \
 ```
 
 * `hash` - string. A session key.
-* `permissions` - object representing permissions for the panel. See panel account [permissions](../panel-api.md#admin-panel-api-permissions).
+* `permissions` - object representing permissions for the panel. See panel account [permissions](../getting-started.md#admin-panel-api-permissions).
 
 #### Errors
 

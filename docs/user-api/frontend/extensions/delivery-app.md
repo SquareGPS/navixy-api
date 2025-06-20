@@ -71,7 +71,7 @@ ignored with switched on autoscaling.
 ### Authorisation on API
 
 To use the calls described further you have to be authorized in system as it\
-is described according to the link: [API authorization](../../introduction/#authorization-and-access-levels)
+is described according to the link: [API authorization](../../backend-api/#authorization-and-access-levels)
 
 ### Creating a key
 

@@ -49,4 +49,4 @@ Navixy provides a powerful Postman collection, the Navixy API Sandbox, for worki
 
 ## Get involved
 
-Help improve the [Navixy developer documentation](general/dev-docs/) or assist with [language translations](general/dev-docs/translation.md). Your contributions make the Navixy platform even better for the community.
+Help improve the [Navixy developer documentation](general/contribute/) or assist with [language translations](general/contribute/translation.md). Your contributions make the Navixy platform even better for the community.
