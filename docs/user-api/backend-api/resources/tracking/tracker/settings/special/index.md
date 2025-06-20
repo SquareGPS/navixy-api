@@ -15,7 +15,7 @@ you can see below)`special_control` = "none" means that tracker doesn't have spe
 
 * **read** special settings with [api/tracker/settings/special/read](index.md#read),
 * **update** special settings with [api/tracker/settings/special/update](index.md#update),
-* **perform special control** with [api/tracker/send\_command](../../index.md#send_command).
+* **perform special control** with [api/tracker/send\_command](broken-reference).
 
 Such control assumes tracker special settings
 

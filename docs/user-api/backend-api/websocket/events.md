@@ -30,7 +30,7 @@ Message fields:
 * `type` – "event".
 * `event` – "state".
 * `data` – depends on `format` request parameter:
-  * "full" – [source state](../resources/tracking/tracker/index.md#get_state).
+  * "full" – [source state](broken-reference).
   * "compact" – [compact source state](events.md#compact-source-state).
 * `user_time` – current time in user's timezone.
 
@@ -87,7 +87,7 @@ Message fields:
 * `type` – "event".
 * `event` – "state\_batch".
 * `data` – depends on `format` request parameter:
-  * "full" – [source state](../resources/tracking/tracker/index.md#get_state) array.
+  * "full" – [source state](broken-reference) array.
   * "compact" – [compact source state](events.md#compact-source-state) array.
 * `user_time` – current time in user's timezone.
 

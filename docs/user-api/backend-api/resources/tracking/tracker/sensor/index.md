@@ -57,7 +57,7 @@ Contains API calls to interact with sensors.
   * `ignore_refuels_in_move` - optional. Boolean. Default is false. If true, the refuels will not be detected during movement.
   * `refuel_gap_minutes` - optional. Integer. Default is 5. The time in minutes after the start of the movement, refuels will be detected during movement.
   * `custom_field_name` - optional. Boolean. Default false. The parameter determines whether the `input_name` field is a custom value was entered by user.\
-    This makes sense only if the [tracker model](../index.md#list_models) has the feature `has_custom_fields`.
+    This makes sense only if the [tracker model](broken-reference) has the feature `has_custom_fields`.
 
 #### Metering sensor type values
 
@@ -134,7 +134,7 @@ Contains API calls to interact with sensors.
 * `name` - string, max size 100. A name of sensor.
 * `input_name` - string, max size 64. A source input field name (identifier).
 * `custom_field_name` - optional. Boolean. Default false. The parameter determines whether the `input_name` field is a custom value was entered by user.\
-  This makes sense only if the [tracker model](../index.md#list_models) has the feature `has_custom_fields`.
+  This makes sense only if the [tracker model](broken-reference) has the feature `has_custom_fields`.
 * `parameters` - optional object with additional parameters.
   * `calc_method` - [enum](../../../../#data-types). A method of sensor value calculation. One of this: "in\_range", "identity", "bit\_index".
   * `range_from` - double. Low bound of range. It is used only with "in\_range" calc method.

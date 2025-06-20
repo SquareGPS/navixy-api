@@ -68,7 +68,7 @@ Use the [`history/tracker/list`](../../resources/commons/history/history_tracker
 
 ### Required Parameters
 
-* `trackers`: An array of integers. A [list of tracker IDs](../../resources/tracking/tracker/index.md#list) for which events will be searched.
+* `trackers`: An array of integers. A [list of tracker IDs](broken-reference) for which events will be searched.
 * `from`: A string containing the start [date/time](../../#data-types) for the search.
 * `to`: A string containing the end [date/time](../../#data-types) for the search. Must be after the `from` date.
 

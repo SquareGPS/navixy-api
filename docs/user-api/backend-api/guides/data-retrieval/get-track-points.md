@@ -6,7 +6,7 @@ In many scenarios, it becomes essential to retrieve all location points of a tra
 
 ### Obtain API Key Hash
 
-First, you need to [obtain the hash of an API key](../../../backend-api/getting-started/authentication.md).
+First, you need to [obtain the hash of an API key](../../getting-started/authentication.md).
 
 ### Get Tracker ID
 
@@ -18,7 +18,7 @@ With the API key hash and tracker ID in hand, you can now get all points for a s
 
 ### Required Parameters
 
-* `tracker_id` - Obtained from the [`tracker/list`](../../resources/tracking/tracker/index.md#list) call. Only one tracker\_id per call. It should be an integer.
+* `tracker_id` - Obtained from the [`tracker/list`](broken-reference) call. Only one tracker\_id per call. It should be an integer.
 * `from` - A string containing the start [`date/time`](../../#datetime-formats).
 * `to` - A string containing the end [`date/time`](../../#datetime-formats).
 
