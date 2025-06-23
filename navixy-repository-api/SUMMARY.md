@@ -6,6 +6,11 @@
 * [Getting started](getting-started.md)
 * [Technical reference](technical-reference.md)
 
+## Guides
+
+* [Activating a GPS device](guides/activating-a-gps-device.md)
+* [Creating a custom asset](guides/creating-a-custom-asset.md)
+
 ## Endpoint Reference
 
 * ```yaml
