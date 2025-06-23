@@ -1,0 +1,186 @@
+# Authentication
+
+Authentication is required for all API requests and is based on OAuth 2.0.
+
+### Acquiring access token
+
+Navixy Repository API supports two authentication methods depending on the type of client.
+
+#### For frontend applications
+
+Use OAuth2 Authorization Code Flow.
+
+**Step 1. Redirect the user to the authorization endpoint:**
+
+```bash
+curl -X GET "{AUTH_BASE_URL}/authorize" \
+  --data-urlencode 'client_id=<YOUR_CLIENT_ID>' \
+  --data-urlencode 'response_type=code' \
+  --data-urlencode 'redirect_uri=https://<YOUR_APP_CALLBACK_URL>' \
+  --data-urlencode 'scope=<REQUESTED_SCOPE_ONE> <REQUESTED_SCOPE_TWO>' \
+  --data-urlencode 'state=<YOUR_SECURE_RANDOM>'
+```
+
+**Step 2. Exchange authorization code for access token**
+
+**Request:**
+
+```bash
+curl -X POST {AUTH_BASE_URL}/oauth/token \
+  -H "Content-Type: application/json" \
+  -d '{
+    "grant_type": "authorization_code",
+    "client_id": "<YOUR_CLIENT_ID>",
+    "client_secret": "<YOUR_CLIENT_SECRET>",
+    "code": "<YOUR_AUTHORIZATION_CODE>",
+    "redirect_uri": "https://<YOUR_APP_CALLBACK_URL>"
+  }'
+```
+
+**Response:**
+
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...signature",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "8xLOxBtZp8",
+  "scope": "<REQUESTED_SCOPE_ONE> <REQUESTED_SCOPE_TWO>",
+  "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.e...signature"
+}
+```
+
+**Error example:**
+
+```json
+{
+  "error": "invalid_grant",
+  "error_description": "Authorization code expired"
+}
+```
+
+#### For server-to-server communication
+
+Use OAuth2 Client Credentials Flow to acquire a token. Employ client credentials for this purpose.
+
+**Request:**
+
+```bash
+curl -X POST {AUTH_BASE_URL}/oauth/token \
+  -H "Content-Type: application/json" \
+  -d '{
+    "grant_type": "client_credentials",
+    "client_id": "<YOUR_CLIENT_ID>",
+    "client_secret": "<YOUR_CLIENT_SECRET>"
+  }'
+```
+
+**Response:**
+
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...signature",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "<REQUESTED_SCOPE_ONE> <REQUESTED_SCOPE_TWO>"
+}
+```
+
+### Transmitting access token
+
+Use `access_token` to authenticate API requests:
+
+```bash
+curl -X GET {BASE_URL}/resource \
+  -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
+
+### Revoking tokens
+
+If an access token or refresh token needs to be invalidated (for example, when a user logs out or client credentials are rotated), it can be revoked using the OAuth2 token revocation endpoint:
+
+```bash
+curl -X POST {AUTH_BASE_URL}/oauth/revoke \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_id": "<YOUR_CLIENT_ID>",
+    "client_secret": "<YOUR_CLIENT_SECRET>",
+    "token": "<TOKEN_TO_REVOKE>"
+  }'
+```
+
+Revoked tokens become immediately invalid and cannot be used for accessing protected resources.
+
+### Security recommendations
+
+* Always send tokens over HTTPS. Any requests made over plain HTTP will be rejected.
+* Never expose client secrets or tokens in frontend code or public repositories.
+* Access tokens are short-lived and should be refreshed or re-requested as needed.
+
+### Using a third-party library
+
+To simplify integration, we recommend using ready-made OAuth 2.0 client libraries:
+
+#### For browser-based applications
+
+**Universal**
+
+* [**oidc-client-ts**](https://github.com/authts/oidc-client-ts) – A popular and well-maintained library for managing OAuth2 and OIDC tokens in browser apps.
+* [**AppAuth-JS**](https://github.com/openid/AppAuth-JS) – Official OpenID Connect client library for JavaScript.
+
+**For React**
+
+* [**react-oidc-context**](https://github.com/authts/react-oidc-context) – Wrapper around the oidc-client-ts, OIDC/OAuth2 support with React Context API, highly recommended for larger apps.
+* [**react-oauth2-code-pkce**](https://github.com/soofstad/react-oauth2-pkce) – Lightweight React hook for OAuth2 Authorization Code Flow.
+
+**For Vue.js**
+
+* [**vuex-oidc**](https://github.com/perarnborg/vuex-oidc) – Wrapper around the oidc-client-ts, integration of OIDC authentication with Vuex.
+
+**For Angular**
+
+* [**angular-oauth2-oidc**](https://github.com/manfredsteyer/angular-oauth2-oidc) – Popular and mature OAuth2 and OIDC library for Angular.
+
+#### For mobile applications
+
+* [**AppAuth-Android**](https://github.com/openid/AppAuth-Android) – OpenID Certified library for Android apps.
+* [**AppAuth-iOS**](https://github.com/openid/AppAuth-iOS) – OpenID Certified library for iOS apps (Objective-C/Swift).
+* [**flutter\_appauth**](https://pub.dev/packages/flutter_appauth) – Wrapper around AppAuth for Flutter applications.
+* [**react-native-app-auth**](https://github.com/FormidableLabs/react-native-app-auth) – An SDK for communicating with OAuth2 providers.
+
+#### For server-side applications
+
+**For Java**
+
+* [**Spring Security OAuth2 Client**](https://docs.spring.io/spring-security/reference/servlet/oauth2/client/index.html) – Spring Security component provides comprehensive OAuth 2.0 support.
+* [**ScribeJava**](https://github.com/scribejava/scribejava) – Simple OAuth library for Java
+
+**For Kotlin**
+
+* [**Spring Security OAuth2 Client**](https://docs.spring.io/spring-security/reference/servlet/oauth2/client/index.html) – Spring Security component provides comprehensive OAuth 2.0 support.
+* [**ktor-auth-oauth**](https://ktor.io/docs/oauth.html) – A Ktor plugin that handles authentication and authorization.
+
+**For Python**
+
+* [**Authlib**](https://github.com/lepture/authlib) – Universal OAuth2 and OpenID Connect client for Python.
+* [**requests-oauthlib**](https://github.com/requests/requests-oauthlib) – Provides OAuth library support for Requests.
+
+**For Node.js**
+
+* [**openid-client**](https://github.com/panva/node-openid-client) – OAuth 2 / OpenID Connect Client API for JavaScript Runtimes.
+* [**Simple OAuth2**](https://github.com/lelylan/simple-oauth2) – A simple Node.js client library for OAuth2.
+
+**For Go**
+
+* [**golang.org/x/oauth2**](https://pkg.go.dev/golang.org/x/oauth2) – Client implementation for OAuth 2.0 spec.
+* [**coreos/go-oidc**](https://github.com/coreos/go-oidc) – A Go OpenID Connect client.
+
+**For ASP.NET Core**
+
+* [**Microsoft.AspNetCore.Authentication.OpenIdConnect**](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authentication.openidconnect) – ASP.NET Core middleware that enables an application to support the OpenID Connect authentication workflow.
+* [**Duende.IdentityModel.OidcClient**](https://github.com/DuendeSoftware/IdentityModel.OidcClient) – a .NET library for claims-based identity, OAuth 2.0, and OpenID Connect.
+
+**For PHP**
+
+* [**Laravel Socialite**](https://laravel.com/docs/socialite) – Laravel wrapper around OAuth 1 & OAuth 2 libraries.
+* [**league/oauth2-client**](https://github.com/thephpleague/oauth2-client) – Easy integration with OAuth 2.0 service providers

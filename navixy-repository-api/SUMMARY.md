@@ -1,7 +1,11 @@
 # Table of contents
 
-* [Readme](README.md)
+* [README](README.md)
 * [Overview](overview.md)
+* [Authentication](authentication.md)
+
+## Endpoint Reference
+
 * ```yaml
   type: builtin:openapi
   props:
