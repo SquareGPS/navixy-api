@@ -154,7 +154,9 @@ All list endpoints return results in a paginated format:
 | offset   | int      | yes          | no            | The index of the first item to return (default: 0).                                                                                       |
 | sort     | string   | yes          | no            | Sort expression. Supports one or more fields, optionally prefixed with `-` to indicate descending order. For example, `title,-created_at` |
 
-#### Full-text search
+#### Search
+
+The API provides flexible search capabilities to help you find specific resources quickly and efficiently. Search functionality is available across all list endpoints and can be combined with filtering and sorting for precise data retrieval.
 
 To perform a basic full-text search (available for `list` endpoints), use the `q` parameter.
 
@@ -175,7 +177,7 @@ curl -X POST {BASE_URL}/org/list \
   -d '{"q": "solutions inc"}'
 ```
 
-#### Advanced filtering
+#### Filtering
 
 For complex queries beyond basic search, use the `conditions` parameter in POST requests. The filtering system supports logical operators (AND, OR, NOT) and field-level comparisons (equality, range, set membership, etc.) for complex expressions.
 
@@ -195,13 +197,25 @@ Filters are defined as condition objects with a `type` field that determines the
 }
 ```
 
+**Supported operators**
+
+#### **Sorting**
+
+Control the order of results using the `sort` parameter. Sorting works with both GET and POST requests.
+
+**Sort syntax**
+
+* **Single field:** `sort=created_at` (ascending)
+* **Descending order:** `sort=-created_at` (prefix with `-`)
+* **Multiple fields:** `sort=label,-created_at,id` (comma-separated)
+
 ### Versioning
 
-We follow industry-standard semantic versioning principles to ensure clear, predictable upgrades and stable integrations.
+The API follows industry-standard semantic versioning principles to ensure clear, predictable upgrades and stable integrations.
 
 #### Versioning strategy
 
-To make versioning transparent and intuitive, we include the version directly in the request URL:
+To make versioning transparent and intuitive,  the version is directly included into the request URL:
 
 ```
 {base_url}/v{major}/{resource}/{operation}
@@ -213,15 +227,15 @@ For example:
 https://api.example.com/v1/org/list
 ```
 
-The **major version number** is incremented only when we introduce breaking changes, such as:
+The **major version number** is incremented only upon the introduction of breaking changes, such as:
 
-* Changing the structure or format of responses.
-* Renaming or removing existing endpoints or their fields.
-* Modifying validation rules in a way that would reject previously valid requests.
+* Changing the structure or format of responses
+* Renaming or removing existing endpoints or their fields
+* Modifying validation rules in a way that would reject previously valid requests
 
 #### Version support and deprecation
 
-We guarantee each major API version will be supported for a minimum of X months from the date of release.
+Each major API version is guaranteed to be supported for a minimum of X months from the date of release.
 
 When a new major version is released, the following applies:
 
@@ -229,52 +243,48 @@ When a new major version is released, the following applies:
 * A deprecation notice is issued at least Y days in advance of shutting down a previous version.
 * You will receive detailed migration guidelines, including examples and mappings of old vs. new formats.
 
-We encourage all users to track version deprecations proactively and implement version upgrades on time.
+Users are encouraged to proactively track version deprecations and implement version upgrades on time.
 
 #### Documentation and migration
 
-Every maintained API version is fully documented, with:
+Every maintained API version is fully documented, containing the following:
 
-* A version-specific reference.
-* A changelog outlining all updates.
-* Migration instructions to help you move from an older version to the latest one with minimal friction.
+* A version-specific reference
+* A changelog outlining all updates
+* Migration instructions to help you move from an older version to the latest one with minimal friction
 
-To ease migration:
+The following methods may ease the migration:
 
-* We recommend using sandbox environments to validate new versions.
-* You can run multiple versions in parallel if needed during transitional periods.
-
-For changelogs and migration guides, refer to the API Changelog.
+* Using sandbox environments to validate new versions
+* Running multiple versions in parallel during transitional periods
 
 ### API automation tools
 
-In the modern development environment, speed and precision matter. Automating your API interactions saves time, reduces errors, and helps you bring value to users faster. Whether you're building full-stack applications, setting up system integrations, or testing individual endpoints, this section introduces key tools that simplify and accelerate your work with the Metadata Repository API.
+In the modern development environment, speed and precision matter. Automating your API interactions saves time, reduces errors, and helps you bring value to users faster. Whether you're building full-stack applications, setting up system integrations, or testing individual endpoints, this section introduces key tools that simplify and accelerate your work with Navixy Repository API.
 
-We support both developers and non-developers by providing industry-standard tools and resources for interacting with the API. More integrations and tools will be added over time to support growing use cases and automation scenarios.
+Navixy supports both developers and non-developers by providing industry-standard tools and resources for interacting with the API. More integrations and tools will be added over time to support growing use cases and automation scenarios.
 
-#### OpenAPI definition
+#### OpenAPI
 
-Explore the full structure of Navixy Repository API using the OpenAPI definition.
+Explore the full structure of Navixy Repository API using the OpenAPI standard.
 
 * Use it to generate client SDKs in various programming languages.
 * Import the definition into OpenAPI-based API documentation & testing tools.
-* Perfect for documentation readers who want to explore and test endpoints without manual setup, if the built-in documentation tools are insufficient for your specific needs
+* Perfect for documentation readers who want to explore and test endpoints without manual setup if the built-in documentation tools are insufficient for your specific needs
 
-You can download the OpenAPI specification here.
+You can download the OpenAPI specification [here](https://swagger.io/specification/).
 
 #### Postman
 
 Postman is a powerful API client used for testing and exploring APIs with ease.
 
-* We provide a ready-to-use Postman Collection for the Metadata Repository API.
+* Navixy Repository API comes with a ready-to-use Postman Collection.
 * Just import it, enter your credentials, and start making requests – no setup required.
-* Great for quickly learning the API and trying different operations in a sandbox environment. Should you encounter limitations with the documentation's sandbox capabilities, we recommend exploring advanced Postman features or dedicated development environments for more complex testing scenarios.
-
-Run in Postman
+* It's great for quickly learning the API and trying different operations in a sandbox environment. Should you encounter limitations with the documentation's sandbox capabilities, we recommend exploring advanced Postman features or dedicated development environments for more complex testing scenarios.
 
 #### Zapier
 
-Zapier is a no-code automation platform that connects Metadata Repository with thousands of third-party apps.
+Zapier is a no-code automation platform that connects Navixy Repository with thousands of third-party apps.
 
-* Set up workflows (called "Zaps") in which triggers in the Metadata Repository automatically result in actions in other systems.
-* Ideal for business users and analysts who need automation without writing code. Example: Automatically log tracker activity to a spreadsheet or notify your team in Slack when a specific event occurs.
+* Set up workflows (called "Zaps"), which contain triggers in Navixy Repository that automatically result in actions in other systems.
+* It's perfect for business users and analysts who need automation without writing code. For example, it allows you to log tracker activity to a spreadsheet or notify your team in Slack when a specific event occurs.
