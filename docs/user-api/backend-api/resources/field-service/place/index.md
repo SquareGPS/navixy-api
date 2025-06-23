@@ -14,7 +14,7 @@ even more useful.
 
 In case an event happened at the POI, in various reports name of the POI will be specified after the address.
 
-If there's an [employee](../employee/) [assigned](../../tracking/tracker/employee.md#assign) to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker\&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),\
+If there's an [employee](../../field_service/employee/) [assigned](../../tracking/tracker/employee.md#assign) to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker\&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),\
 and a POI has a custom field of type "responsible employee", such point of interest will be available in the mobile app to view.\
 Thus, field employee/driver can view all points of interest assigned to him to visit them, etc.
 

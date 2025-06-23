@@ -540,7 +540,7 @@ A rule that triggers when driver lefts or enters cabin. Detected by camera and b
 
 ### Driver change
 
-A rule that triggers on driver change automatically by the key or manually in widget with driver from a [drivers list](../../../field_service/employee/index.md).
+A rule that triggers on driver change automatically by the key or manually in widget with driver from a [drivers list](../../../field-service/employee/index.md).
 
 #### Parameters
 
