@@ -222,7 +222,7 @@
         * [Form templates](user-api/backend-api/resources/field-service/form/template.md)
       * [Place](user-api/backend-api/resources/field-service/place/README.md)
         * [Changing POI avatar](user-api/backend-api/resources/field-service/place/avatar.md)
-        * [Working with points of interest (POI)](user-api/backend-api/resources/field-service/place/index.md)
+        * [Working with points of interest (POI)](user-api/backend-api/resources/field-service/place/work-with-poi.md)
       * [Task](user-api/backend-api/resources/field-service/task/README.md)
         * [Checkpoints](user-api/backend-api/resources/field-service/task/checkpoint.md)
         * [Task history](user-api/backend-api/resources/field-service/task/history.md)

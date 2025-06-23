@@ -54,7 +54,7 @@ _Special params:_
 }
 ```
 
-* `responsible` - boolean. Entities with this set to true can be shown to the employee in the mobile app. Only one employee field can have this value set to true. If there’s an [employee assigned](../../tracking/tracker/employee.md#assign) to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker\&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)), and a [place](../../field-service/place/index.md) has a custom field of type “responsible employee”, such place will be available in the mobile app for viewing. This allows the employee to view all places assigned to them to visit, etc.
+* `responsible` - boolean. Entities with this set to true can be shown to the employee in the mobile app. Only one employee field can have this value set to true. If there’s an [employee assigned](../../tracking/tracker/employee.md#assign) to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker\&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)), and a [place](../../field-service/place/work-with-poi.md) has a custom field of type “responsible employee”, such place will be available in the mobile app for viewing. This allows the employee to view all places assigned to them to visit, etc.
 
 ## Fields actions
 

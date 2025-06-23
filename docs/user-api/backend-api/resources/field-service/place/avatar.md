@@ -22,7 +22,7 @@ Uploads avatar image for specified POI.
 Then it will be available from `[api_base_url]/<api_static_uri>/place/avatars/<file_name>`\
 e.g. `{{ extra.api_example_url }}/static/place/avatars/abcdef123456789.png`.
 
-**avatar\_file\_name** returned in response and will be returned from [place/list](index.md#list).
+**avatar\_file\_name** returned in response and will be returned from [place/list](work-with-poi.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data),\
 with one of the parts being an image file upload (with the name "file").
