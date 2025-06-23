@@ -3,6 +3,8 @@
 * [README](README.md)
 * [Overview](overview.md)
 * [Authentication](authentication.md)
+* [Getting started](getting-started.md)
+* [Technical reference](technical-reference.md)
 
 ## Endpoint Reference
 
