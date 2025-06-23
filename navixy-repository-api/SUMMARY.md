@@ -1,6 +1,7 @@
 # Table of contents
 
-* [Navixy Repository API Documentation Overview](README.md)
+* [Readme](README.md)
+* [Overview](overview.md)
 * ```yaml
   type: builtin:openapi
   props:
