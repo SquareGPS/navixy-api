@@ -1,18 +1,23 @@
 ---
 title: Get involved
-description: Get involved into improving documentation and translations of the Navixy Platform
+description: >-
+  Get involved into improving documentation and translations of the Navixy
+  Platform
 ---
-# Contributing to Developer documentation
+
+# Get involved
+
+## Contributing to Developer documentation
 
 Join us in enhancing Navixy developer documentation! Your contributions are highly valued and appreciated. Whether you’ve spotted an inaccuracy, found a typo, or have additional information to share, your help is appreciated. All our documentation is publicly available on [GitHub](https://github.com/SquareGPS/navixy-api), and you can get involved in several ways to make it better:
 
-1. [Creating an issue with a detailed description of the problem.](https://github.com/SquareGPS/navixy-api/issues/new) 
-2. [Editing a single page in a browser](#quick-edits-in-the-browser).
-3. [Local editing and making multiple commits before creating a pull request.](#advanced-local-editing) 
+1. [Creating an issue with a detailed description of the problem.](https://github.com/SquareGPS/navixy-api/issues/new)
+2. [Editing a single page in a browser](./#quick-edits-in-the-browser).
+3. [Local editing and making multiple commits before creating a pull request.](./#advanced-local-editing)
 
 In each case, a GitHub account is required. If you prefer not to register on GitHub, you can [contact us](../contacts.md) with any feedback or suggestions.
 
-### Quick edits in the browser
+#### Quick edits in the browser
 
 For simple, quick edits, you can use the built-in GitHub editor:
 
@@ -22,43 +27,42 @@ For simple, quick edits, you can use the built-in GitHub editor:
 4. Make your edits directly in the browser.
 5. Provide a brief description of your changes in the commit message box.
 6. Click the "Propose changes" button to create a new branch in your fork.
-7. Submit a pull request from your fork to the main repository. 
+7. Submit a pull request from your fork to the main repository.
 
 We will review your pull request and, once approved, merge it into the main branch. This method is best for minor, single-page edits.
 
-## Local editing
+### Local editing
 
 For more comprehensive edits, or if you need to work on multiple pages, you can set up the documentation locally:
 
-### Prerequisites
+#### Prerequisites
 
 Before you start contributing to the Navixy API documentation in Stoplight, ensure you have the following tools installed:
 
-- [**Git**](https://git-scm.com/downloads) – Required for version control and managing your contributions
-- [**GitHub Account**](https://github.com/login) – Needed for submitting your changes
+* [**Git**](https://git-scm.com/downloads) – Required for version control and managing your contributions
+* [**GitHub Account**](https://github.com/login) – Needed for submitting your changes
 
-Optional but recommended tools:
+#### Editing documentation
 
-- [**Stoplight Studio**](https://github.com/stoplightio/studio/releases) – A visual editor for editing OpenAPI and Markdown files
-- [**Stoplight CLI**](https://www.npmjs.com/package/@stoplight/cli) – Enables local previews of the documentation
-
-> **Stoplight Studio** and **Stoplight CLI** also require [Node.js](https://nodejs.org/en/download/current) for installation. 
-
-### Getting started
+{% stepper %}
+{% step %}
+#### Getting started
 
 Fork the [repository](https://github.com/SquareGPS/navixy-api), clone it to your local machine, and create a new branch for your changes. This keeps your contributions organized and makes the review process smoother.
+{% endstep %}
 
-### Editing documentation
+{% step %}
+**Working with markdown files**
 
-#### Working with markdown files
-
-The documentation consists primarily of Markdown files with Stoplight Flavored Markdown (SMD) extensions:
+The documentation consists primarily of Markdown files with GFM (GitHub Flavored Markdown) extensions:
 
 1. Navigate to the folder containing the documentation you want to edit
-2. Open the relevant `.md` files in your preferred text editor or Stoplight Studio
-3. Make your changes following the [Stoplight Flavored Markdown conventions](https://docs.stoplight.io/docs/platform/b591e6d161539-stoplight-flavored-markdown-smd)
+2. Open the relevant `.md` files in your preferred text editor&#x20;
+3. Make your changes following the [GitHub Flavored Markdown conventions](https://github.github.com/gfm/)
+{% endstep %}
 
-#### Working with API specifications
+{% step %}
+**Working with API specifications**
 
 If you're updating API endpoint documentation:
 
@@ -66,144 +70,51 @@ If you're updating API endpoint documentation:
 2. Edit them using Stoplight Studio for the best experience, or manually in an IDE of choice
 3. Ensure your changes maintain the correct OpenAPI syntax
 4. Test your changes for validity if possible (**try out** requests)
+{% endstep %}
 
-### Editing table of contents (toc.json)
-
-The `toc.json` file is a crucial component that defines the structure and navigation of your documentation in Stoplight. It determines how your documentation is organized in the sidebar navigation.
-
-#### "toc.json" structure
-
-The table of contents uses three main entities:
-
-1. **Divider** - Creates a horizontal line separator in the navigation
-2. **Group** - A collapsible folder that can contain items and other groups
-3. **Item** - An individual document or API endpoint reference
-
-#### Example toc.json
-
-```json
-[
-  {
-    "type": "divider",
-    "title": "Getting Started"
-  },
-  {
-    "type": "item",
-    "title": "Introduction",
-    "uri": "docs/introduction.md"
-  },
-  {
-    "type": "group",
-    "title": "Backend API",
-    "items": [
-      {
-        "type": "item",
-        "title": "Overview",
-        "uri": "docs/backend-api/overview.md"
-      },
-      {
-        "type": "group",
-        "title": "Resources",
-        "items": [
-          {
-            "type": "item",
-            "title": "User",
-            "uri": "docs/backend-api/resources/user.md"
-          },
-          {
-            "type": "item",
-            "title": "Device",
-            "uri": "docs/backend-api/resources/device.md"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "divider",
-    "title": "Reference"
-  },
-  {
-    "type": "item",
-    "title": "API Reference",
-    "uri": "reference/api.yaml"
-  }
-]
-```
-
-#### Adding or modifying entries
-
-When adding new documentation pages, ensure they're properly represented in the `toc.json` file:
-
-1. Determine the appropriate location in the navigation hierarchy
-2. Add a new entry with the correct type (divider, group, or item)
-3. For items, provide the correct relative path to the file in the `uri` property
-4. For groups, nest additional items inside the `items` array
-
-<!-- theme: warning -->
-> **Important:** When editing the `toc.json` file, only modify entries relevant to your changes. Do not alter other sections of the navigation structure unless you specifically intend to reorganize that part of the documentation. This helps prevent unintended navigation issues and conflicts during the review process.
-
-After making changes to `toc.json`, preview your documentation to ensure the navigation appears as expected.
-
-### Previewing your changes
-<details>
-  <summary>Using Stoplight Studio</summary>
-  
-  For the best editing experience:
-  1. Open Stoplight Studio
-  2. Select "Open Existing Project" and navigate to your cloned repository
-  3. Make your edits and preview them in real-time within the Studio interface
- 
-</details>
-
-<details>
-  <summary>Using Stoplight CLI</summary>
-
-If you've installed the Stoplight CLI:
-
-```sh
-stoplight preview
-```
-
-This will start a local server where you can preview how your documentation changes will look.
-
-</details>
-
-### Submitting your changes
+{% step %}
+#### Submitting your changes
 
 Commit your changes with clear, descriptive messages in English. Push to your fork on GitHub and create a pull request with a detailed description of your changes.
 
 When creating your pull request, make sure to select `master` as the target branch. All contributions should be submitted against the master branch unless specifically instructed otherwise.
 
 The repository maintainers will review your contribution and may request modifications or clarifications before merging.
+{% endstep %}
+{% endstepper %}
 
-## Documentation style guidelines
+{% hint style="info" %}
+The content of the docyumentation reflects the page tree in the repository, no additional actions are needed for Table of Contents.
+{% endhint %}
 
-### Documentation structure
+### Documentation style guidelines
+
+#### Documentation structure
 
 The documentation includes two types of files:
+
 * Documents (.md)
 * API calls (.json or .yaml)
 
 Documents are divided into semantic parts, starting with an introduction that summarizes the content.
 
-### API call descriptions
+#### API call descriptions
 
 Each API call should include the following sections:
 
 * **Introduction** - General information and purpose of the API call
 * **Object structure** - Describes the object structure used in the calls (optional)
 * **API Actions** - Base API call and associated actions, including:
-    * **Action description** - Purpose of the API action
-    * **Requirements** - Necessary permissions (optional)
-    * **Parameters table** - Lists parameters for the API call with descriptions and data types
-    * **Examples** - API call examples with parameters, including copy functionality
-    * **Response** - Example of a successful server response with field descriptions
-    * **Errors** - Specific errors related to the API action, plus a general error list
+  * **Action description** - Purpose of the API action
+  * **Requirements** - Necessary permissions (optional)
+  * **Parameters table** - Lists parameters for the API call with descriptions and data types
+  * **Examples** - API call examples with parameters, including copy functionality
+  * **Response** - Example of a successful server response with field descriptions
+  * **Errors** - Specific errors related to the API action, plus a general error list
 
-# Example API documentation format
+## Example API documentation format (MD reference)
 
-```markdown
+````markdown
 # Resource name
 
 Resource description.
@@ -252,8 +163,8 @@ Method description.
 #### Errors
 
 Special error codes.
-```
+````
 
 Ensure your documentation is accurate and all examples work as described.
 
-For actual examples, refer to [user](../../user-api/backend-api/resources/commons/user/index.md) and [source](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/master/docs/user-api/backend-api/resources/commons/user/index.md).
+For actual examples, refer to [user](../../panel-api/resources/user/index.md) and [tracker](../../panel-api/resources/tracker.md#list).
