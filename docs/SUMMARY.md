@@ -26,7 +26,7 @@
     * [Activation code](panel-api/resources/dealer/activation_code.md)
     * [Dealer](panel-api/resources/dealer/index.md)
     * [Password](panel-api/resources/dealer/password.md)
-    * [settings](panel-api/resources/dealer/settings/README.md)
+    * [Settings](panel-api/resources/dealer/settings/README.md)
       * [Branding Customization](panel-api/resources/dealer/settings/image.md)
       * [Notification Settings](panel-api/resources/dealer/settings/notification.md)
       * [Service Settings](panel-api/resources/dealer/settings/service.md)
