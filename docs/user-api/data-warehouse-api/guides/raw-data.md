@@ -28,7 +28,7 @@ Please note that you will not receive human-readable information about fuel drai
 
 Tracking devices from different manufacturers have different specifics of work and send data in various forms. In addition, sensors can be of different types: digital and analog, wired and wireless, built-in and external. Also, there can be several sensors monitoring the same type of readings: for example, two fuel sensors in two tanks, internal and external temperature sensors, etc.
 
-Before requesting raw data, we need to understand what data the device can report to the platform and what the data inputs are named. To do this, we need to use the [`raw_data/get_inputs`](../resources/tracker/raw_data.md#getinputs) request.
+Before requesting raw data, we need to understand what data the device can report to the platform and what the data inputs are named. To do this, we need to use the [`raw_data/get_inputs`](../resources/tracker/raw-data.md#getinputs) request.
 
 Example for a device with ID 123456:
 
@@ -91,7 +91,7 @@ In addition, we will use names for inputs according to the information obtained 
 
 > We specify `inputs.lls_level_1` because we know that our device only sends data on this input. If we didn't know the input number, we could have specified all four possible inputs, and then the inputs without data would just get zero values.
 
-The API request [`raw_data/read`](../resources/tracker/raw_data.md#read) for reading the required raw data in our case should look like this:
+The API request [`raw_data/read`](../resources/tracker/raw-data.md#read) for reading the required raw data in our case should look like this:
 
 \=== "cURL"
 

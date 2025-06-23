@@ -12,7 +12,7 @@ and rule integration for it.
 
 ### Geofence entrance or exit
 
-A rule that triggers on device entering/exiting created on platform [geofences](../../zone/index.md#list).
+A rule that triggers on device entering/exiting created on platform [geofences](../../zone/#list).
 
 #### Parameters
 
@@ -94,7 +94,7 @@ A rule that triggers on speed exceeding determined by the platform. Based on rec
 
 ### Deviation from the route
 
-A rule that triggers on deviations from the route. Only the [route (sausage) type](../../zone/index.md#sausage) geofence may be assigned.
+A rule that triggers on deviations from the route. Only the [route (sausage) type](../../zone/#sausage) geofence may be assigned.
 
 #### Parameters
 
@@ -159,7 +159,7 @@ A rule that triggers when your employee standstill more than allowed. The parkin
 
 ### Task performance
 
-A rule that triggers when assigned to a tracker [task](../../../field_service/task/index.md) changes its status.
+A rule that triggers when assigned to a tracker [task](broken-reference) changes its status.
 
 #### Parameters
 

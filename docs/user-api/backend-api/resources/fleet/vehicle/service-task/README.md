@@ -3,7 +3,9 @@ title: Service work
 description: Contains service task object description and API calls to work with it.
 ---
 
-# Vehicle service work
+# Service task
+
+## Vehicle service work
 
 Contains service task object description and API calls to interact with vehicle service works that is used for vehicle maintenance.\
 Vehicle maintenance feature helps to make sure that any scheduled maintenance or urgent repair is carried out in a timely manner.
@@ -106,7 +108,7 @@ Described step-by-step about service task APIs in our [guides](../../../../guide
   * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format without `+` sign.
   * `emails` - string array. Email addresses where sms notifications should be sent.
   * `push_enabled` - boolean. If `true` push notifications enabled.
-* `status` - [enum](../../../../#data-types). [Status](service_task.md#task-status).
+* `status` - [enum](../../../../#data-types). [Status](./#task-status).
 * `description` - string. Name of a service work. Max 255 characters.
 * `comment` - string. Comment for a task. Max 255 characters.
 * `file_ids` - int array. One file will be specified in many service works. If one of the tasks will be deleted,\
@@ -127,7 +129,7 @@ Task **status** may be one of:
 * `created` – initial state of task.
 * `notified` – one of conditions exceed notification limit.
 * `expired` – one of conditions exceeded.
-* `done` – user [set](service_task.md#set_status) task as "done".
+* `done` – user [set](./#set_status) task as "done".
 
 ## API actions
 
@@ -391,19 +393,19 @@ Downloads report of service works.
 
 #### Parameters
 
-| name                  | description                                                                                                                                                     | type                                                                     |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| only\_unplanned       | Optional. Default is `false`. Service works filter. If `true`, only unplanned service works will be included.                                                   | boolean                                                                  |
-| vehicle\_ids          | Optional. Service works filter. If not empty, service works will be filtered by vehicle ids.                                                                    | int array                                                                |
-| statuses              | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired".          | [enum](../../../../#data-types)                                          |
-| conditions            | Optional. [Search conditions](service_task.md#condition-fields) to apply to list.                                                                               | array of [SearchCondition](../../../commons/entity/search_conditions.md) |
-| filter                | Optional. Text filter string. If used with conditions, both filter and conditions must match for every returned service task.                                   | string                                                                   |
-| sort                  | Optional. Set of [sort options](service_task.md#sort-fields). Each option is a pair of property name and sorting direction, e.g. `["status=asc", "cost=desc"]`. | string array                                                             |
-| limit                 | Optional. Maximum number of returned service works.                                                                                                             | int                                                                      |
-| offset                | Optional. Offset from start of found service works for pagination.                                                                                              | int                                                                      |
-| add\_filename\_header | Optional. Option to include header. Default is `false`. If `true`, Content-Disposition header will be appended to the response.                                 | boolean                                                                  |
-| format                | Optional. Default is "pdf". Report format. Possible values are "pdf", "xls","xlsx".                                                                             | [enum](../../../../#data-types)                                          |
-| group\_by             | Optional. Group by option. Possible values are "vehicle", "status".                                                                                             | [enum](../../../../#data-types)                                          |
+| name                  | description                                                                                                                                            | type                                                                     |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| only\_unplanned       | Optional. Default is `false`. Service works filter. If `true`, only unplanned service works will be included.                                          | boolean                                                                  |
+| vehicle\_ids          | Optional. Service works filter. If not empty, service works will be filtered by vehicle ids.                                                           | int array                                                                |
+| statuses              | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired". | [enum](../../../../#data-types)                                          |
+| conditions            | Optional. [Search conditions](./#condition-fields) to apply to list.                                                                                   | array of [SearchCondition](../../../commons/entity/search_conditions.md) |
+| filter                | Optional. Text filter string. If used with conditions, both filter and conditions must match for every returned service task.                          | string                                                                   |
+| sort                  | Optional. Set of [sort options](./#sort-fields). Each option is a pair of property name and sorting direction, e.g. `["status=asc", "cost=desc"]`.     | string array                                                             |
+| limit                 | Optional. Maximum number of returned service works.                                                                                                    | int                                                                      |
+| offset                | Optional. Offset from start of found service works for pagination.                                                                                     | int                                                                      |
+| add\_filename\_header | Optional. Option to include header. Default is `false`. If `true`, Content-Disposition header will be appended to the response.                        | boolean                                                                  |
+| format                | Optional. Default is "pdf". Report format. Possible values are "pdf", "xls","xlsx".                                                                    | [enum](../../../../#data-types)                                          |
+| group\_by             | Optional. Group by option. Possible values are "vehicle", "status".                                                                                    | [enum](../../../../#data-types)                                          |
 
 #### Examples
 
@@ -508,7 +510,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/list' \
 }
 ```
 
-* list - array of service works objects described [here](service_task.md#service-task-object).
+* list - array of service works objects described [here](./#service-task-object).
 
 #### Errors
 
@@ -554,7 +556,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/read' \
 }
 ```
 
-* value - service work object described [here](service_task.md#service-task-object).
+* value - service work object described [here](./#service-task-object).
 
 #### Errors
 

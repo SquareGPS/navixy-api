@@ -92,7 +92,7 @@ The response will contain the [history entries](../../resources/commons/history/
 
 ### All Events of a User for a Specific Time Period
 
-To obtain a list of all tracker events for a user received between the specified "from" and "to" dates, use the [`history/user/list`](../../resources/commons/history/history_user.md#list) method. You can also filter the results to include only the necessary event types.
+To obtain a list of all tracker events for a user received between the specified "from" and "to" dates, use the [`history/user/list`](../../resources/commons/history/history-user.md#list) method. You can also filter the results to include only the necessary event types.
 
 ### Required Parameters
 
