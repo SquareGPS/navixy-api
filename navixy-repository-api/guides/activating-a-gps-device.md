@@ -6,7 +6,9 @@ A device cannot exist outside of inventory. If you have only one inventory when 
 
 In this guide, you will learn how to add a device to your inventory and activate it. You can activate any device listed on the [supported models](https://www.navixy.com/devices/) page or a smartphone with the X-GPS Tracker app installed.
 
-> For more information on API calls, including parameter descriptions and request and response schemas, click their names.
+{% hint style="info" %}
+For more information on API calls, including parameter descriptions and request and response schemas, click their names.
+{% endhint %}
 
 ### Types of GPS devices
 
@@ -14,6 +16,21 @@ Navixy Repository API supports two types of devices:
 
 * Devices capable of transmitting GPS data independently (referred to as **masters**).
 * Devices unable to contact GPS servers (referred to as **slaves**). They must be paired with master devices to transmit data to our servers; they cannot be activated independently. BT sensors are a common example of the second type.
+
+### Inventory item structure
+
+### Properties
+
+| Property       | Type            | Required | Description                                                                                                                     |
+| -------------- | --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `inventory_id` | integer (int64) | Yes      | Unique identifier for the inventory                                                                                             |
+| `device_id`    | string          | Yes      | The server uses a unique identifier assigned to the device to authenticate and distinguish incoming data from different devices |
+| `phone`        | string          | No       | The mobile phone number of the device's SIM card used to send or receive SMS commands and data. Must be in E.164 format         |
+| `label`        | string          | Yes      | The inventory item label                                                                                                        |
+| `model`        | string          | Yes      | A code of one of the supported models. See inventory\_item/models/list                                                          |
+| `asset_id`     | integer (int64) | No       | Unique asset identifier for linking                                                                                             |
+
+### How to activate a GPS device
 
 #### Step 1. Create a master inventory item
 

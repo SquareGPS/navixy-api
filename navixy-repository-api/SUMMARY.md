@@ -10,6 +10,7 @@
 
 * [Activating a GPS device](guides/activating-a-gps-device.md)
 * [Creating a custom asset](guides/creating-a-custom-asset.md)
+* [Configuring an asset link](guides/configuring-an-asset-link.md)
 
 ## Endpoint Reference
 
