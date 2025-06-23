@@ -253,7 +253,6 @@
           * [Vehicle status listing](user-api/backend-api/resources/fleet/vehicle/status_listing/listing.md)
   * [Websocket](user-api/backend-api/websocket/README.md)
     * [WebSocket Events](user-api/backend-api/websocket/events.md)
-    * [WebSocket API](user-api/backend-api/websocket/index.md)
     * [WebSocket Subscription](user-api/backend-api/websocket/subscription.md)
 * [Frontend extentions](user-api/frontend/README.md)
   * [Login redirect](user-api/frontend/login-redirect.md)
