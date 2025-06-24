@@ -75,9 +75,9 @@ To create a new asset type, send the following request:
 }
 ```
 
-Two categories are available: `business` for moving assets and `geo` for stationary.
+The request body contains the following parameters: `category`, `settings,` and `fields`.
 
-The request body contains the following parameters:
+The available categories are `business` for moving assets and `geo` for stationary.
 
 **`settings`** defines the structure of sections and fields belonging to your asset type. This object contains a `layout` property that describes how the asset form is split into logical sections and the order of fields within each section. The layout consists of sections, where each section has:
 
@@ -91,7 +91,7 @@ The request body contains the following parameters:
 * `required`: Whether the field is mandatory
 * `description`: Optional description
 
-As a response, you will receive the ID of the newly created asset type:
+After sending the request, you will receive a response with the ID of the newly created asset type:
 
 ```json
 {
