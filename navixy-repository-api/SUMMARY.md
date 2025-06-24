@@ -1,10 +1,10 @@
 # Table of contents
 
-* [README](README.md)
-* [Overview](overview.md)
+* [Overview](README.md)
 * [Authentication](authentication.md)
 * [Getting started](getting-started.md)
 * [Technical reference](technical-reference.md)
+* [README](<README (1).md>)
 
 ## Guides
 
