@@ -162,11 +162,11 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
 
 ### Step 3. Create an asset and assign your device
 
-Assets represent the real-world objects you want to track (vehicles, equipment, etc.). Each asset belongs to an asset type that defines its structure and custom fields.
+Assets represent the real-world objects you want to track, such as vehicles and equipment. Each asset belongs to an asset type that defines its structure and custom fields.
 
 #### 3.1. Create an asset type
 
-First, create an asset type for fleet vehicles:
+First, create an asset type for your fleet. In our example, we'll use marine vessels:
 
 ```bash
 curl -X POST {BASE_URL}/v0/asset_type/create?orgId=<YOUR_ORG_ID> \
@@ -184,8 +184,7 @@ curl -X POST {BASE_URL}/v0/asset_type/create?orgId=<YOUR_ORG_ID> \
               "label",
               "registration_number",
               "captain_name",
-              "vessel_year",
-              "description"
+              "vessel_year"
             ]
           }
         ]
@@ -280,7 +279,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/update?orgId=<YOUR_ORG_ID> \
 
 Asset links help you group related assets together for better organization and management.
 
-#### 4.1. Create an Asset Link
+#### 4.1. Create an asset link
 
 Let's create a group for delivery vehicles:
 
@@ -331,19 +330,19 @@ You should see your "Fishing Boat Neptune" asset in the response.
 
 #### What you've accomplished
 
-✅ **Authenticated** with the Navixy Repository API\
-✅ **Activated a GPS device** that can now transmit location data\
-✅ **Created an asset type** with custom fields for marine vessel management\
-✅ **Created an asset** representing your fishing boat\
-✅ **Linked the GPS device** to track your asset\
-✅ **Organized assets** using asset links for better management
+* &#x20;**Authenticated** with the Navixy Repository API
+* **Activated a GPS device** that can now transmit location data
+* **Created an asset type** with custom fields for marine vessel management
+* **Created an asset** representing your fishing boat
+* **Assigned the GPS device** to track your asset
+* **Organized assets** using asset links for better management
 
 #### Next steps
 
 Now that you have the basics set up, you can:
 
-* **Add more devices**: Create additional inventory items for other GPS trackers
-* **Expand your fleet**: Create more assets and link them to devices
-* **Create custom asset types**: Design asset types for different equipment categories
-* **Organize with asset links**: Group assets by location, department, or function
-* **Monitor your assets**: Use the tracking data from your activated devices
+* Add more devices by creating additional inventory items
+* Create more assets and assign them to devices
+* Create custom asset types for different categories of assets
+* Group assets by location, department, or function via asset links
+* Use the tracking data from your activated devices to monitor your assets
