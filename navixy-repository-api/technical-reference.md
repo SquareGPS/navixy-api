@@ -29,13 +29,13 @@ Both environments offer identical API functionality, but may differ in:
 
 The API follows the **OpenAPI** **standard** with full CRUD for each object type:
 
-| Object          | Main Methods                                    |
-| --------------- | ----------------------------------------------- |
-| entity          | create, read, update, delete, list              |
-| entity\_type    | create, read, update, delete, list              |
-| entity\_group   | create, read, update, delete, list, set, remove |
-| inventory       | create, read, update, delete, list              |
-| inventory\_item | create, read, update, list, activate, pair      |
+| Object          | Main Methods                                        |
+| --------------- | --------------------------------------------------- |
+| asset           | create, read, update, delete, list                  |
+| asset\_type     | create, read, update, delete, list                  |
+| asset\_group    | create, read, update, delete, list, set, remove     |
+| inventory       | create, read, update, delete, list                  |
+| inventory\_item | create, read, update, list, activate, pair, archive |
 
 ### Call patterns
 
