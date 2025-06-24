@@ -10,32 +10,15 @@ In this guide, you will learn how to create and configure a custom asset.
 For more information on API calls, including parameter descriptions and request and response schemas, click their names.
 {% endhint %}
 
-### Asset structure
 
-| Property     | Type               | Required | Description                                               |
-| ------------ | ------------------ | -------- | --------------------------------------------------------- |
-| `id`         | integer (int64)    | Yes      | Unique identifier for the asset                           |
-| `type_id`    | integer (int64)    | Yes      | Unique identifier for the asset's type                    |
-| `label`      | string             | Yes      | The asset's title/name                                    |
-| `fields`     | object             | Yes      | A map, each key of which is a custom field ID as a string |
-| `created_at` | string (date-time) | Yes      | Date and time at which the asset was created              |
-
-### Asset\_type structure
-
-The `Asset_type` object defines the template for creating assets, specifying their structure and available custom fields.
-
-| Property     | Type               | Required | Description                                                               |
-| ------------ | ------------------ | -------- | ------------------------------------------------------------------------- |
-| `id`         | integer (int64)    | Yes      | Unique identifier for the asset type                                      |
-| `label`      | string             | Yes      | The asset type label                                                      |
-| `category`   | string             | Yes      | The category of asset type. Allowed values: `business`, `geo`             |
-| `settings`   | object             | No       | Defines the structure of sections and fields belonging to your asset type |
-| `fields`     | array              | Yes      | A list of custom fields of the asset type                                 |
-| `created_at` | string (date-time) | Yes      | Date and time at which the asset type was created                         |
 
 ### How to create a custom asset
 
 #### Step 1. Create an asset type
+
+{% openapi-schemas spec="navixy-repo" schemas="AssetType" grouped="true" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+{% endopenapi-schemas %}
 
 To create a new asset type, send the following request:
 
@@ -100,6 +83,10 @@ After sending the request, you will receive a response with the ID of the newly 
 ```
 
 #### Step 2. Create an asset
+
+{% openapi-schemas spec="navixy-repo" schemas="Asset" grouped="true" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+{% endopenapi-schemas %}
 
 To create an asset, send the following request:
 
