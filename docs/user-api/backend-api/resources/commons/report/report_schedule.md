@@ -1,14 +1,15 @@
 ---
 title: Report schedule
-description: Particular report can be delivered to user's mailbox regularly. Contains report schedule object description and API calls to interact with it.
+description: >-
+  Particular report can be delivered to user's mailbox regularly. Contains
+  report schedule object description and API calls to interact with it.
 ---
 
 # Report schedule
 
 Particular report can be delivered to user's mailbox regularly. Contains report schedule object description and API calls to interact with it.
 
-
-## schedule_entry object:
+## schedule\_entry object:
 
 ```json
 {
@@ -51,12 +52,11 @@ Particular report can be delivered to user's mailbox regularly. Contains report 
 * `enabled` - boolean. `true` if the scheduled report enabled.
 * `period` - string. Report period, "Xm" | "w" | "d" | "y".
 * `emails` - optional string array. List of emails.
-* `email_format` - [enum](../../../getting-started/introduction.md#data-types). Can be "pdf" | "xls".
+* `email_format` - [enum](../../../#data-types). Can be "pdf" | "xls".
 * `sending_time` - optional string. Local time for sending reports, default "00:00:00", hourly granularity.
 * `fire_time` - optional string. Last schedule fire time, ignored on create/update.
-* `last_result`  object with last report creation result.
-    * `id` - int. An ID of generated report.
-
+* `last_result` object with last report creation result.
+  * `id` - int. An ID of generated report.
 
 ## API actions
 
@@ -70,19 +70,21 @@ Creates a new report schedule entry.
 
 #### Parameters
 
-| name     | description                                                      | type        |
-|:---------|:-----------------------------------------------------------------|:------------|
-| schedule | Schedule object without fields "id", "fire_time", "last_result". | JSON object |
+| name     | description                                                        | type        |
+| -------- | ------------------------------------------------------------------ | ----------- |
+| schedule | Schedule object without fields "id", "fire\_time", "last\_result". | JSON object |
 
 #### Example
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/report/schedule/create' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "schedule": {"enabled": true, "parameters": {"report": {"title": "Trip report", "trackers": [669673], "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}, "period": "1w", "email_zip": false, "email_format": "xls", "emails": ["test@example.com"], "sending_time": "00:00:00", "schedule": {"type": "weekdays", "weekdays": [1]}}}}}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/report/schedule/create' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "schedule": {"enabled": true, "parameters": {"report": {"title": "Trip report", "trackers": [669673], "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}, "period": "1w", "email_zip": false, "email_format": "xls", "emails": ["test@example.com"], "sending_time": "00:00:00", "schedule": {"type": "weekdays", "weekdays": [1]}}}}}'
+```
+````
 
 #### Response
 
@@ -101,7 +103,6 @@ Creates a new report schedule entry.
 * 222 - Plugin not found - if specified report plugin not found.
 * 236 - Feature unavailable due to.
 
-
 ### delete
 
 Deletes report schedule with the specified ID.
@@ -110,25 +111,29 @@ Deletes report schedule with the specified ID.
 
 #### Parameters
 
-| name        | description                          | type |
-|:------------|:-------------------------------------|:-----|
-| schedule_id | ID of the report schedule to delete. | int  |
+| name         | description                          | type |
+| ------------ | ------------------------------------ | ---- |
+| schedule\_id | ID of the report schedule to delete. | int  |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/report/schedule/delete' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "schedule_id": 1234567}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/report/schedule/delete' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "schedule_id": 1234567}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/report/schedule/delete?hash=a6aa75587e5c59c32d347da438505fc3&schedule_id=1234567
-    ```
+````
+```
+{{ extra.api_example_url }}/report/schedule/delete?hash=a6aa75587e5c59c32d347da438505fc3&schedule_id=1234567
+```
+````
 
 #### Response
 
@@ -137,11 +142,10 @@ Deletes report schedule with the specified ID.
   "success": true
 }
 ```
-  
+
 #### Errors
 
 * 201 - Not found in the database - if there is no schedule with specified ID.
-
 
 ### list
 
@@ -155,19 +159,23 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/report/schedule/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/report/schedule/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/report/schedule/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+````
+```
+{{ extra.api_example_url }}/report/schedule/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+````
 
 #### Response
 
@@ -215,30 +223,31 @@ Only API key `hash`.
 
 #### Errors
 
-[General](../../../getting-started/errors.md#error-codes) types only.
-
+[General](../../../errors.md#error-codes) types only.
 
 ### update
 
-Update existing report schedule. 
+Update existing report schedule.
 
 **required sub-user rights**: `reports`.
 
 #### Parameters
 
-| name     | description                                                | type        |
-|:---------|:-----------------------------------------------------------|:------------|
-| schedule | Schedule object without fields "fire_time", "last_result". | JSON object |
+| name     | description                                                  | type        |
+| -------- | ------------------------------------------------------------ | ----------- |
+| schedule | Schedule object without fields "fire\_time", "last\_result". | JSON object |
 
 #### Example
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/report/schedule/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "schedule": {"enabled": true, "parameters": {"report": {"title": "Trip report", "trackers": [669673], "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}, "period": "1w", "email_zip": false, "email_format": "xls", "emails": ["test@example.com"], "sending_time": "00:00:00", "schedule": {"type": "weekdays", "weekdays": [1]}}}}}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/report/schedule/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "schedule": {"enabled": true, "parameters": {"report": {"title": "Trip report", "trackers": [669673], "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}, "period": "1w", "email_zip": false, "email_format": "xls", "emails": ["test@example.com"], "sending_time": "00:00:00", "schedule": {"type": "weekdays", "weekdays": [1]}}}}}'
+```
+````
 
 #### Response
 

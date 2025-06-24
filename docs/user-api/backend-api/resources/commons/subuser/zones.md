@@ -7,7 +7,6 @@ description: Contains API calls to control which geofences is available to which
 
 Contains API calls to control which geofences is available to which sub-user.
 
-
 ## API actions
 
 API path: `/subuser/zones`.
@@ -16,29 +15,29 @@ API path: `/subuser/zones`.
 
 Gives access for sub-user to specified geofences.
 
-**required tariff features:** `multilevel_access` – for ALL trackers.
-**required sub-user rights:** `admin` (available only to master users).
+**required tariff features:** `multilevel_access` – for ALL trackers.**required sub-user rights:** `admin` (available only to master users).
 
 #### Parameters
 
-| name          | description                                                                                                              | type      |
-|:--------------|:-------------------------------------------------------------------------------------------------------------------------|:----------|
-| subuser_id    | ID of a sub-user belonging to current account.                                                                           | int       |
-| access_to_all | Optional. If `true` then sub-user will have access to all geofences of master user.                                      | boolean   |
-| zone_ids      | Optional. List of geofence IDs to associate with a specified sub-user. All geofences must belong to current master user. | int array |
+| name            | description                                                                                                              | type      |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ | --------- |
+| subuser\_id     | ID of a sub-user belonging to current account.                                                                           | int       |
+| access\_to\_all | Optional. If `true` then sub-user will have access to all geofences of master user.                                      | boolean   |
+| zone\_ids       | Optional. List of geofence IDs to associate with a specified sub-user. All geofences must belong to current master user. | int array |
 
-<!-- theme: warning -->
 > At least one of `access_to_all` and `zone_ids` parameters must be not null.
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/subuser/zones/bind' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "access_to_all": false, "zone_ids": [7548]}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/subuser/zones/bind' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "access_to_all": false, "zone_ids": [7548]}'
+```
+````
 
 #### Response
 
@@ -58,25 +57,26 @@ Gives access for sub-user to specified geofences.
 
 Disables access for sub-user to specified geofences.
 
-**required tariff features:** `multilevel_access` – for ALL trackers.
-**required sub-user rights:** `admin` (available only to master users).
+**required tariff features:** `multilevel_access` – for ALL trackers.**required sub-user rights:** `admin` (available only to master users).
 
 #### Parameters
 
-| name       | description                                                                                                    | type      |
-|:-----------|:---------------------------------------------------------------------------------------------------------------|:----------|
-| subuser_id | ID of a sub-user belonging to current account.                                                                 | int       |
-| zone_ids   | List of geofence IDs to associate with a specified sub-user. All geofences must belong to current master user. | int array |
+| name        | description                                                                                                    | type      |
+| ----------- | -------------------------------------------------------------------------------------------------------------- | --------- |
+| subuser\_id | ID of a sub-user belonging to current account.                                                                 | int       |
+| zone\_ids   | List of geofence IDs to associate with a specified sub-user. All geofences must belong to current master user. | int array |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/subuser/zones/unbind' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "zone_ids": [7548]}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/subuser/zones/unbind' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "zone_ids": [7548]}'
+```
+````
 
 #### Response
 
@@ -92,28 +92,29 @@ Disables access for sub-user to specified geofences.
 * 201 – Not found in the database – if sub-user/geofence not exist or does not belong to current master user.
 * 236 – Feature unavailable due to tariff restrictions (if there is at least one tracker without `multilevel_access` tariff feature).
 
-### list_ids
+### list\_ids
 
 Gets a list of geofence IDs to which this sub-user has access.
 
-**required tariff features:** `multilevel_access` – for ALL trackers.
-**required sub-user rights:** `admin` (available only to master users).
+**required tariff features:** `multilevel_access` – for ALL trackers.**required sub-user rights:** `admin` (available only to master users).
 
 #### Parameters
 
-| name       | description                                    | type |
-|:-----------|:-----------------------------------------------|:-----|
-| subuser_id | ID of a sub-user belonging to current account. | int  |
+| name        | description                                    | type |
+| ----------- | ---------------------------------------------- | ---- |
+| subuser\_id | ID of a sub-user belonging to current account. | int  |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/subuser/zones/list_ids' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/subuser/zones/list_ids' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951}'
+```
+````
 
 #### Response
 
@@ -135,29 +136,30 @@ Gets a list of geofence IDs to which this sub-user has access.
 
 Gets a list of geofences to which this sub-user has access.
 
-**required tariff features:** `multilevel_access` – for ALL trackers.
-**required sub-user rights:** `admin` (available only to master users).
+**required tariff features:** `multilevel_access` – for ALL trackers.**required sub-user rights:** `admin` (available only to master users).
 
 #### Parameters
 
-| name       | description                                                                                 | type                                                        |
-|:-----------|:--------------------------------------------------------------------------------------------|:------------------------------------------------------------|
-| subuser_id | ID of a sub-user belonging to current account.                                              | int                                                         |
-| filter     | Optional. Filter for geofence label.                                                        | string                                                      |
-| tag_ids    | Optional. Tag IDs assigned to geofences. Geofences found must include all tags from a list. | int array                                                   |
-| offset     | Optional. Offset from start of found geofences for pagination.                              | int                                                         |
-| limit      | Optional. Limit of found geofences for pagination.                                          | int                                                         |
-| order      | Optional. Specify list ordering. Can be any of `id`, `label`. Default order by `id`.        | [enum](../../../getting-started/introduction.md#data-types) |
+| name        | description                                                                                 | type                         |
+| ----------- | ------------------------------------------------------------------------------------------- | ---------------------------- |
+| subuser\_id | ID of a sub-user belonging to current account.                                              | int                          |
+| filter      | Optional. Filter for geofence label.                                                        | string                       |
+| tag\_ids    | Optional. Tag IDs assigned to geofences. Geofences found must include all tags from a list. | int array                    |
+| offset      | Optional. Offset from start of found geofences for pagination.                              | int                          |
+| limit       | Optional. Limit of found geofences for pagination.                                          | int                          |
+| order       | Optional. Specify list ordering. Can be any of `id`, `label`. Default order by `id`.        | [enum](../../../#data-types) |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/subuser/zones/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "offset": 0, "limit": 1000}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/subuser/zones/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "offset": 0, "limit": 1000}'
+```
+````
 
 #### Response
 

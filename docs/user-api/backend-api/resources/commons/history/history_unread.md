@@ -7,7 +7,6 @@ description: Contains API calls to interact with unread history entries.
 
 Contains API calls to interact with unread history events.
 
-
 ## API actions
 
 API path: `/history/unread`.
@@ -18,28 +17,32 @@ List less than or equal to `limit` of the latest user's unread history events. D
 
 #### Parameters
 
-| name  | description                                                                                                                               | type      |
-|:------|:------------------------------------------------------------------------------------------------------------------------------------------|:----------|
-| limit | Optional. Limit of entries in response.                                                                                                   | int       |
-| from  | Optional. Start [date/time](../../../getting-started/introduction.md#data-types) for searching. Default `from` is **now** minus one year. | date/time |
+| name  | description                                                                                                | type      |
+| ----- | ---------------------------------------------------------------------------------------------------------- | --------- |
+| limit | Optional. Limit of entries in response.                                                                    | int       |
+| from  | Optional. Start [date/time](../../../#data-types) for searching. Default `from` is **now** minus one year. | date/time |
 
 Default and max limit is [history.maxLimit](../dealer.md).
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/history/unread/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-    
-=== "HTTP GET"
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/history/unread/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+````
 
-    ```
-    {{ extra.api_example_url }}/history/unread/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+\=== "HTTP GET"
+
+````
+```
+{{ extra.api_example_url }}/history/unread/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+````
 
 #### Response
 
@@ -86,33 +89,36 @@ Default and max limit is [history.maxLimit](../dealer.md).
 
 * 212 – Requested limit is too big (more [history.maxLimit](../dealer.md) config option).
 
-
 ### `count`
 
 Get count of user's unread history messages starting `from` date.
 
 #### Parameters
 
-| name | description                                                                                                                                | type                                                        |
-|:-----|:-------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------|
-| from | Optional. Start [date/time](../../../getting-started/introduction.md#data-types) for searching.  Default `from` is **now** minus one year. | date/time                                                   |
-| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera".                                                   | [enum](../../../getting-started/introduction.md#data-types) |
+| name | description                                                                                                | type                         |
+| ---- | ---------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| from | Optional. Start [date/time](../../../#data-types) for searching. Default `from` is **now** minus one year. | date/time                    |
+| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera".                   | [enum](../../../#data-types) |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/history/unread/count' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-    
-=== "HTTP GET"
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/history/unread/count' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+````
 
-    ```
-    {{ extra.api_example_url }}/history/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+\=== "HTTP GET"
+
+````
+```
+{{ extra.api_example_url }}/history/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
+```
+````
 
 #### Response
 
@@ -125,4 +131,4 @@ Get count of user's unread history messages starting `from` date.
 
 #### Errors
 
-* [General](../../../getting-started/errors.md#error-codes) types only.
+* [General](../../../errors.md#error-codes) types only.

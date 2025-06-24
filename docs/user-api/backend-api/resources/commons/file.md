@@ -7,7 +7,6 @@ description: Contains an API call to get user's file statistic.
 
 Contains an API call to get user's file statistic.
 
-
 ## API actions
 
 API path: `/file`.
@@ -22,19 +21,23 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/file/stats/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/file/stats/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/file/stats/read?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+````
+```
+{{ extra.api_example_url }}/file/stats/read?hash=a6aa75587e5c59c32d347da438505fc3
+```
+````
 
 #### Response
 
@@ -55,4 +58,4 @@ Only API key `hash`.
 
 #### Errors
 
-* [General](../../getting-started/errors.md#error-codes) types only.
+* [General](../../errors.md#error-codes) types only.

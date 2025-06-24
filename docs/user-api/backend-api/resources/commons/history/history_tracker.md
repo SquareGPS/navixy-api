@@ -7,28 +7,27 @@ description: Contains list method to get tracker's events.
 
 Contains list method to get tracker's events.
 
-
 ## API actions
 
 API path: `/history/tracker/`.
 
 ### list
 
-List less than or equal to `limit` of tracker events filtered by event types (`events`) between `from` date/time 
-and `to` date/time sorted by **time** field. 
+List less than or equal to `limit` of tracker events filtered by event types (`events`) between `from` date/time\
+and `to` date/time sorted by **time** field.
 
 Described this API call usage details in our [guide](../../../guides/rules-notifications/work-with-notifications.md#events-for-specific-trackers-and-time-period).
 
 #### Parameters
 
-| name      | description                                                                                      | type                                                       |
-|:----------|:-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
-| trackers  | List of tracker's IDs.                                                                           | int array                                                  |
-| from      | Start date/time for searching.                                                                   | string [date/time](../../../getting-started/introduction.md#data-types) |
-| to        | End date/time for searching. Must be after "from" date.                                          | string [date/time](../../../getting-started/introduction.md#data-types) |
-| events    | Optional. Default: all. List of history types.                                                   | string array                                               |
-| limit     | Optional. Default: [history.maxLimit](../dealer.md). Max count of entries in result.             | int                                                        |
-| ascending | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`. | boolean                                                    |
+| name      | description                                                                                      | type                                     |
+| --------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| trackers  | List of tracker's IDs.                                                                           | int array                                |
+| from      | Start date/time for searching.                                                                   | string [date/time](../../../#data-types) |
+| to        | End date/time for searching. Must be after "from" date.                                          | string [date/time](../../../#data-types) |
+| events    | Optional. Default: all. List of history types.                                                   | string array                             |
+| limit     | Optional. Default: [history.maxLimit](../dealer.md). Max count of entries in result.             | int                                      |
+| ascending | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`. | boolean                                  |
 
 If `events` (event types) not passed then list all event types.
 
@@ -38,13 +37,15 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
 
 #### Example
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/history/tracker/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [131312, 123985], "from": "2020-12-10 16:44:00", "to": "2020-12-22 16:44:00"}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/history/tracker/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [131312, 123985], "from": "2020-12-10 16:44:00", "to": "2020-12-22 16:44:00"}'
+```
+````
 
 #### Response
 
@@ -86,7 +87,7 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
 }
 ```
 
-* `list` - list of zero or more history_entry` objects which described in [Tracker history entry](index.md#tracker-history-entry). 
+* `list` - list of zero or more history\_entry\` objects which described in [Tracker history entry](index.md#tracker-history-entry).
 * `limit_exceeded` - boolean. `false` when listed all history entries satisfied with conditions and `true` otherwise.
 
 #### Errors

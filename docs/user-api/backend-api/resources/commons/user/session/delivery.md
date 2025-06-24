@@ -1,14 +1,14 @@
 ---
 title: Delivery
-description: Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
-             tracking functionality into external systems.
+description: >-
+  Calls to work with "delivery" type sessions. Those are special sessions to
+  integrate order (task) tracking functionality into external systems.
 ---
 
 # Delivery
 
-Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task) 
+Calls to work with "delivery" type sessions. Those are special sessions to integrate order (task)\
 tracking functionality into external systems.
-
 
 ## API actions
 
@@ -16,7 +16,7 @@ API path: `/user/session/delivery`.
 
 ### create
 
-Creates new user delivery session.
+Creates new user delivery session.\
 In demo session allowed to create a new session only if it not already exists.
 
 **required sub-user rights**: `admin` (available only to master users).
@@ -27,19 +27,23 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/session/delivery/create' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-    
-=== "HTTP GET"
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/user/session/delivery/create' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+````
 
-    ```
-    {{ extra.api_example_url }}/user/session/delivery/create?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+\=== "HTTP GET"
+
+````
+```
+{{ extra.api_example_url }}/user/session/delivery/create?hash=a6aa75587e5c59c32d347da438505fc3
+```
+````
 
 #### Response
 
@@ -57,7 +61,6 @@ Only API key `hash`.
 * 101 - In demo mode this function disabled – current session is demo but weblocator session already exists.
 * 236 – Feature unavailable due to tariff restrictions.
 
-
 ### read
 
 Returns current user delivery session key.
@@ -68,19 +71,23 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/session/delivery/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-    
-=== "HTTP GET"
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/user/session/delivery/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+````
 
-    ```
-    {{ extra.api_example_url }}/user/session/delivery/read?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+\=== "HTTP GET"
+
+````
+```
+{{ extra.api_example_url }}/user/session/delivery/read?hash=a6aa75587e5c59c32d347da438505fc3
+```
+````
 
 #### Response
 
@@ -99,4 +106,4 @@ Only API key `hash`.
 
 #### Errors
 
-* [General](../../../../getting-started/errors.md#error-codes) types only.
+* [General](../../../../errors.md#error-codes) types only.

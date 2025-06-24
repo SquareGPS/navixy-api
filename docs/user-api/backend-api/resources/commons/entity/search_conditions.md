@@ -1,6 +1,9 @@
 ---
 title: Entity search conditions
-description: Contains search conditions object description and condition types. Search conditions used to search and filter list of certain entities by built-in and/or custom fields.
+description: >-
+  Contains search conditions object description and condition types. Search
+  conditions used to search and filter list of certain entities by built-in
+  and/or custom fields.
 ---
 
 # Entity Search Conditions
@@ -41,9 +44,7 @@ Search conditions are represented by an array of conditions, where each conditio
 ]
 ```
 
-<!-- theme: warning -->
 > A maximum of 72 conditions can be used at once, including nested conditions.
-
 
 ## Condition Types
 
@@ -97,7 +98,7 @@ This condition evaluates all specified sub-conditions and joins them using the `
 
 ### NOT Condition
 
-This condition evaluates a sub-condition and negates its result. If the sub-condition evaluates to `true`, the `NOT`
+This condition evaluates a sub-condition and negates its result. If the sub-condition evaluates to `true`, the `NOT`\
 condition will be evaluated as `false`, and vice versa.
 
 ```json
@@ -116,7 +117,7 @@ condition will be evaluated as `false`, and vice versa.
 ### NUMBER EQUALS Condition
 
 This condition checks if the specified field is equal to the provided number value. It also works for text fields (e.g., “111” is considered equal to 111). For linked entity fields, it matches the linked entity ID to the number value.
- 
+
 ```json
 {
   "type": "eq",
@@ -156,12 +157,11 @@ This condition checks if the specified field matches any value within the provid
 ```
 
 * `field` - string. A standard field or field ID.
-* `value` - array. Contains a list of values to match against the field. Each value must follow the same rules as in
-  `NUMBER EQUALS` or `CONTAINS STRING` conditions, depending on the field type.
+* `value` - array. Contains a list of values to match against the field. Each value must follow the same rules as in`NUMBER EQUALS` or `CONTAINS STRING` conditions, depending on the field type.
 
 ### TIMESTAMP IN THE PERIOD Condition
 
-This condition checks if the specified timestamp field falls within a given period. The period is inclusive,
+This condition checks if the specified timestamp field falls within a given period. The period is inclusive,\
 meaning it includes both the `from` and `to` timestamps.
 
 ```json
@@ -177,5 +177,5 @@ meaning it includes both the `from` and `to` timestamps.
 
 * `field` - string. The name or ID of the timestamp field to evaluate.
 * `value` - object. Contains the `from` and `to` values defining the period.
-    * `from` - [date/time](../../../getting-started/introduction.md#data-types). The beginning of the period.
-    * `to` - [date/time](../../../getting-started/introduction.md#data-types). The end of the period.
+  * `from` - [date/time](../../../#data-types). The beginning of the period.
+  * `to` - [date/time](../../../#data-types). The end of the period.

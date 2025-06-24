@@ -7,7 +7,6 @@ description: Contains an API call to get information about all supported timezon
 
 Contains an API call to get information about all supported timezones.
 
-
 ## API actions
 
 API path: `/timezone`.
@@ -18,19 +17,21 @@ Information about all supported timezones for the specified locale. Does not req
 
 #### parameter
 
-| name   | description     | type                                        |
-|:-------|:----------------|:--------------------------------------------|
-| locale | Name of locale. | [enum](../../getting-started/introduction.md#data-types) |
+| name   | description     | type                      |
+| ------ | --------------- | ------------------------- |
+| locale | Name of locale. | [enum](../../#data-types) |
 
 #### Example
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/timezone/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"locale": "En-en"}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/timezone/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"locale": "En-en"}'
+```
+````
 
 #### Response
 
@@ -59,4 +60,4 @@ Information about all supported timezones for the specified locale. Does not req
 
 #### Errors
 
-* [General](../../getting-started/errors.md#error-codes) types only.
+* [General](../../errors.md#error-codes) types only.

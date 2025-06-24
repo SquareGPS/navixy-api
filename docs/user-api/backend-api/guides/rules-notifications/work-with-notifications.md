@@ -10,12 +10,12 @@ Use the [`history/unread/list`](../../resources/commons/history/history_unread.m
 
 This call contains only two optional parameters:
 
-- `limit`: An integer specifying the maximum count of entries in the response.
-- `from`: A string containing the start [date/time](../../getting-started/introduction.md#data-types) for the search. Without this parameter, you will get all unread entries for the last 30 days.
+* `limit`: An integer specifying the maximum count of entries in the response.
+* `from`: A string containing the start [date/time](../../#data-types) for the search. Without this parameter, you will get all unread entries for the last 30 days.
 
 Example: To obtain no more than 100 entries for the last month (assuming today's date is 2021-01-26), the API request will be:
 
-=== "cURL"
+\=== "cURL"
 
 ```shell
 curl -X POST '{{ extra.api_example_url }}/history/unread/list' \
@@ -68,19 +68,19 @@ Use the [`history/tracker/list`](../../resources/commons/history/history_tracker
 
 ### Required Parameters
 
-- `trackers`: An array of integers. A [list of tracker IDs](../../resources/tracking/tracker/index.md#list) for which events will be searched.
-- `from`: A string containing the start [date/time](../../getting-started/introduction.md#data-types) for the search.
-- `to`: A string containing the end [date/time](../../getting-started/introduction.md#data-types) for the search. Must be after the `from` date.
+* `trackers`: An array of integers. A [list of tracker IDs](broken-reference) for which events will be searched.
+* `from`: A string containing the start [date/time](../../#data-types) for the search.
+* `to`: A string containing the end [date/time](../../#data-types) for the search. Must be after the `from` date.
 
 ### Optional Parameters
 
-- `events`: An array of strings with the necessary event types. All other events will be ignored. Default is all. To get a list of events, use the [`tracker/history/type`](../../resources/commons/history/history_type.md#list) call.
-- `limit`: An integer specifying the maximum count of entries in the result.
-- `ascending`: A boolean that sorts the results in ascending order by time when `true` and descending when `false`.
+* `events`: An array of strings with the necessary event types. All other events will be ignored. Default is all. To get a list of events, use the [`tracker/history/type`](../../resources/commons/history/history_type.md#list) call.
+* `limit`: An integer specifying the maximum count of entries in the result.
+* `ascending`: A boolean that sorts the results in ascending order by time when `true` and descending when `false`.
 
 Example: To obtain no more than 100 entries for December for one device, sorted in descending order by time, and to know only when the device entered and exited the geofence, the API request will be:
 
-=== "cURL"
+\=== "cURL"
 
 ```shell
 curl -X POST '{{ extra.api_example_url }}/history/tracker/list' \
@@ -92,22 +92,22 @@ The response will contain the [history entries](../../resources/commons/history/
 
 ### All Events of a User for a Specific Time Period
 
-To obtain a list of all tracker events for a user received between the specified "from" and "to" dates, use the [`history/user/list`](../../resources/commons/history/history_user.md#list) method. You can also filter the results to include only the necessary event types.
+To obtain a list of all tracker events for a user received between the specified "from" and "to" dates, use the [`history/user/list`](../../resources/commons/history/history-user.md#list) method. You can also filter the results to include only the necessary event types.
 
 ### Required Parameters
 
-- `from`: A string containing the start [date/time](../../getting-started/introduction.md#data-types) for the search.
-- `to`: A string containing the end [date/time](../../getting-started/introduction.md#data-types) for the search. Must be after the `from` date.
+* `from`: A string containing the start [date/time](../../#data-types) for the search.
+* `to`: A string containing the end [date/time](../../#data-types) for the search. Must be after the `from` date.
 
 ### Optional Parameters
 
-- `events`: An array of strings with the necessary event types. All other events will be ignored. Default is all. To get a list of events, use the [`tracker/history/type`](../../resources/commons/history/history_type.md#list) call.
-- `limit`: An integer specifying the maximum number of entries in the result.
-- `ascending`: A boolean that sorts the results in ascending order by time when `true` and descending when `false`.
+* `events`: An array of strings with the necessary event types. All other events will be ignored. Default is all. To get a list of events, use the [`tracker/history/type`](../../resources/commons/history/history_type.md#list) call.
+* `limit`: An integer specifying the maximum number of entries in the result.
+* `ascending`: A boolean that sorts the results in ascending order by time when `true` and descending when `false`.
 
 Example: To get state field events for the last five minutes on all trackers of a user, use `to`=CURRTIME and `from`=CURRTIME-5 minutes. Filter by `state_field_control` events.
 
-=== "cURL"
+\=== "cURL"
 
 ```shell
 curl -X POST '{{ extra.api_example_url }}/history/user/list' \

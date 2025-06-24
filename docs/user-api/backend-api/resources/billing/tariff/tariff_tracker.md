@@ -11,8 +11,8 @@ User of **dealer** can switch tracker from the plan **t1** to plan **t2** if:
 
 1. Tracker belongs to user and isn't a **clone**.
 2. Tracker's tariff last changed more than **tariff.freeze.period** (config option. default 30 days) ago.
-3. **t1.tariff_id** != **t2.tariff_id**, i.e. the new plan must be different from the current.
-4. **t1.dealer_id** = **t2.dealer_id** = **dealer.effectiveDealerId**, i.e. current and new plans must belong to user's effective dealer.
+3. **t1.tariff\_id** != **t2.tariff\_id**, i.e. the new plan must be different from the current.
+4. **t1.dealer\_id** = **t2.dealer\_id** = **dealer.effectiveDealerId**, i.e. current and new plans must belong to user's effective dealer.
 5. **t2.active** = **1**, i.e. new plan is **active** (plan's option "Allow users to switch to this plan independently" in **panel** is set **on**).
 6. **t1.grouping** = **t2.grouping**, i.e. user can change tariff only within one group of tariffs.
 7. **t2.device** = **tracker**, i.e. new plan must be for trackers.
@@ -20,9 +20,8 @@ User of **dealer** can switch tracker from the plan **t1** to plan **t2** if:
 
 User's **effective dealer** is
 
-1. User's dealer if its **dealer_id** = **defaultDealerId** (config option) or **dogovor_type** = 'paas'.
+1. User's dealer if its **dealer\_id** = **defaultDealerId** (config option) or **dogovor\_type** = 'paas'.
 2. Parent of user's dealer otherwise.
-
 
 ## API actions
 
@@ -34,26 +33,30 @@ Changes plan of tracker (with `tracker_id`) to new plan (with `tariff_id`).
 
 **required sub-user rights**: `admin` (available only to master users).
 
-| name       | description                                                                                    | type |
-|:-----------|:-----------------------------------------------------------------------------------------------|:-----|
-| tracker_id | ID of a tracking device (aka "object_id"). The tracking device must belong to authorized user. | int  |
-| tariff_id  | If of the new plan.                                                                            | int  |
+| name        | description                                                                                     | type |
+| ----------- | ----------------------------------------------------------------------------------------------- | ---- |
+| tracker\_id | ID of a tracking device (aka "object\_id"). The tracking device must belong to authorized user. | int  |
+| tariff\_id  | If of the new plan.                                                                             | int  |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tariff/tracker/change' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 345215, "tariff_id": 12}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/tariff/tracker/change' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 345215, "tariff_id": 12}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/tariff/tracker/change?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215&tariff_id=12
-    ```
+````
+```
+{{ extra.api_example_url }}/tariff/tracker/change?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215&tariff_id=12
+```
+````
 
 #### Response
 
@@ -73,32 +76,35 @@ Changes plan of tracker (with `tracker_id`) to new plan (with `tariff_id`).
 * 239 – New plan doesn't exist.
 * 240 - Not allowed changing plan too frequently – plan last changed less or equal to 30 days (**tariff.freeze.period** config option).
 
-
 ### list
 
 List plans on which user can switch the passed tracker (even when tariff last changed less or equal than **tariff.freeze.period** time ago).
 
 #### Parameters
 
-| name       | description                                                                  | type |
-|:-----------|:-----------------------------------------------------------------------------|:-----|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user. | int  |
+| name        | description                                                                   | type |
+| ----------- | ----------------------------------------------------------------------------- | ---- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user. | int  |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tariff/tracker/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 345215}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/tariff/tracker/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 345215}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/tariff/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215
-    ```
+````
+```
+{{ extra.api_example_url }}/tariff/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215
+```
+````
 
 #### Response
 
@@ -136,4 +142,4 @@ List plans on which user can switch the passed tracker (even when tariff last ch
 
 #### Errors
 
-* [General](../../../getting-started/errors.md#error-codes) types only.
+* [General](../../../errors.md#error-codes) types only.

@@ -7,7 +7,6 @@ description: Bill object description and API calls for work with user's bills.
 
 Bill object description and API calls for work with user's bills.
 
-
 ## Bill object
 
 ```json
@@ -22,15 +21,14 @@ Bill object description and API calls for work with user's bills.
 ```
 
 * `order_id` - int. Unique bill ID.
-* `created` - [date/time](../../getting-started/introduction.md#data-types). When the bill created.
+* `created` - [date/time](../../#data-types). When the bill created.
 * `sum` - float. A bill sum in default currency of the panel.
-* `status` - [enum](../../getting-started/introduction.md#data-types). Bill order status. Can be one of:
-    * `created` – but not settled.
-    * `settled`.
-    * `canceled`.
+* `status` - [enum](../../#data-types). Bill order status. Can be one of:
+  * `created` – but not settled.
+  * `settled`.
+  * `canceled`.
 * `positions` - string array. List of position names. Usually contains one element for a bill.
 * `link` - string. URL to order.
-
 
 ## API actions
 
@@ -38,26 +36,28 @@ API path: `/bill`.
 
 ### create
 
-Creates a new bill for the user. 
+Creates a new bill for the user.
 
 **required sub-user rights**: `payment_create`.
 
 #### Parameters
 
 | name  | description                                  | type   |
-|:------|:---------------------------------------------|:-------|
+| ----- | -------------------------------------------- | ------ |
 | payer | Some payer description.                      | string |
 | sum   | A bill sum in default currency of the panel. | double |
 
 #### Example
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/bill/create' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "payer": "Jon Doe", "sum": 100.0}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/bill/create' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "payer": "Jon Doe", "sum": 100.0}'
+```
+````
 
 #### Response
 
@@ -74,35 +74,38 @@ Creates a new bill for the user.
 
 * 222 – Plugin not found - when plugin **29** not available for user.
 
-
 ### list
 
-Shows list of bills with their parameters in array. 
+Shows list of bills with their parameters in array.
 
 **required sub-user rights**: `payment_create`.
 
 #### Parameters
 
 | name   | description                                                                 | type |
-|:-------|:----------------------------------------------------------------------------|:-----|
+| ------ | --------------------------------------------------------------------------- | ---- |
 | limit  | Optional. A maximum number of bills in list. Maximum and default is 10 000. | int  |
 | offset | Optional. Get bills starting from `offset`. Default 0.                      | int  |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/bill/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/bill/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/bill/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+````
+```
+{{ extra.api_example_url }}/bill/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+````
 
 #### Response
 
@@ -124,9 +127,9 @@ Shows list of bills with their parameters in array.
 ```
 
 * `count` - int. Total number of bills.
-* `bills` - array of objects. A list of [bill objects](#bill-object).
+* `bills` - array of objects. A list of [bill objects](bill.md#bill-object).
 
-If bill created using [/bill/create](#create) call then **positions** will contain exactly one element.
+If bill created using [/bill/create](bill.md#create) call then **positions** will contain exactly one element.
 
 > For Standalone version base part of **link** may be changed by **billing.orders.baseUrl** config option.
 
