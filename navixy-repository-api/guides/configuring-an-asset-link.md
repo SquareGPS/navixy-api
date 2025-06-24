@@ -10,16 +10,11 @@ In this guide, you will learn about how asset links are structured, how to creat
 For more information on API calls, including parameter descriptions and request and response schemas, click their names.
 {% endhint %}
 
-### Asset link structure
-
-| Property     | Type               | Required | Description                                   |
-| ------------ | ------------------ | -------- | --------------------------------------------- |
-| `id`         | integer (int64)    | Yes      | Unique identifier for the asset link          |
-| `label`      | string             | Yes      | The asset link label                          |
-| `asset_ids`  | array\[integer]    | Yes      | Array of asset IDs included in this link      |
-| `created_at` | string (date-time) | Yes      | Date and time when the asset link was created |
-
 ### How to configure an asset link
+
+{% openapi-schemas spec="navixy-repo" schemas="AssetLink" grouped="true" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+{% endopenapi-schemas %}
 
 #### Step 1. Create a new asset link
 

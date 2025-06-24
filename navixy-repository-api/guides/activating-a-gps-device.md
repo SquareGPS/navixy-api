@@ -1,10 +1,8 @@
 # Activating a GPS device
 
-In Navixy Repository API, GPS devices are referred to as **inventory items** and stored in user-created lists called **inventories**. Inventories are collections of devices used to organize and manage equipment more efficiently. They serve as logical groupings that help structure, track, and operate devices.
+In Navixy Repository API, GPS devices are referred to as **inventory items** and stored in user-created lists called **inventories**. Inventories are collections of devices used to organize and manage equipment more efficiently. They serve as logical groupings that help structure, track, and operate devices. A device cannot exist outside of inventory.
 
-A device cannot exist outside of inventory. If you have only one inventory when registering a device, the newly created inventory item is automatically placed there.
-
-In this guide, you will learn how to add a device to your inventory and activate it. You can activate any device listed on the [supported models](https://www.navixy.com/devices/) page or a smartphone with the X-GPS Tracker app installed.
+In this guide, you will learn how to add a device to an inventory and activate it. You can activate any device listed on the [supported models](https://www.navixy.com/devices/) page or a smartphone with the X-GPS Tracker app installed.
 
 {% hint style="info" %}
 For more information on API calls, including parameter descriptions and request and response schemas, click their names.
@@ -17,22 +15,40 @@ Navixy Repository API supports two types of devices:
 * Devices capable of transmitting GPS data independently (referred to as **masters**).
 * Devices unable to contact GPS servers (referred to as **slaves**). They must be paired with master devices to transmit data to our servers; they cannot be activated independently. BT sensors are a common example of the second type.
 
-### Inventory item structure
-
-### Properties
-
-| Property       | Type            | Required | Description                                                                                                                     |
-| -------------- | --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `inventory_id` | integer (int64) | Yes      | Unique identifier for the inventory                                                                                             |
-| `device_id`    | string          | Yes      | The server uses a unique identifier assigned to the device to authenticate and distinguish incoming data from different devices |
-| `phone`        | string          | No       | The mobile phone number of the device's SIM card used to send or receive SMS commands and data. Must be in E.164 format         |
-| `label`        | string          | Yes      | The inventory item label                                                                                                        |
-| `model`        | string          | Yes      | A code of one of the supported models. See inventory\_item/models/list                                                          |
-| `asset_id`     | integer (int64) | No       | Unique asset identifier for linking                                                                                             |
-
 ### How to activate a GPS device
 
-#### Step 1. Create a master inventory item
+#### Step 1. Create an inventory
+
+{% openapi-schemas spec="navixy-repo" schemas="Inventory" grouped="true" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+{% endopenapi-schemas %}
+
+Every inventory item requires an inventory. To create it, send the following request:
+
+&#x20;[**POST /inventory/create**](broken-reference)
+
+Use this request body:
+
+```
+{​
+  "label": "Dutch",
+  "description": "Dutch branch office"​
+​}
+```
+
+You will receive the ID of the created inventory:
+
+```
+{
+  "id": 12
+}
+```
+
+#### Step 2. Create a master inventory item
+
+{% openapi-schemas spec="navixy-repo" schemas="InventoryMasterItem" grouped="true" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+{% endopenapi-schemas %}
 
 To create a **master inventory item**, send the following request:
 
@@ -48,6 +64,10 @@ Use this request body:
   "label": "gps_tracker_fmc130_001"
 }
 ```
+
+{% openapi-schemas spec="navixy-repo" schemas="InventorySlaveItem" grouped="true" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+{% endopenapi-schemas %}
 
 To create a **slave inventory item**, send the following request:
 
@@ -70,7 +90,7 @@ In either case, you will get the ID of the newly created item:
 }
 ```
 
-#### Step 2. (Optional) Pair the slave device with master
+#### Step 3. (Optional) Pair the slave device with master
 
 If you've created a slave device, you need to pair it with a master device. To do this, send the following request:
 
@@ -80,14 +100,14 @@ Use this request body:
 
 ```json
 {
-  "id": 123,
-  "master_id": 334
+  "id": 556,
+  "master_id": 123
 }
 ```
 
 You will receive an empty response body and a `204 No Content` status.
 
-#### Step 3. Activate the master device
+#### Step 4. Activate the master device
 
 To activate a master-type device, whether paired with slave devices or not, the device must be preconfigured and exist in the organization's inventory. Upon activation, the device is assigned to the organization.
 

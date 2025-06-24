@@ -32,7 +32,7 @@ The **Navixy Repository API documentation** is organized into two complementary 
 
 #### Section content
 
-This section provides essential background knowledge and integration tutorials:
+These articles provide essential background knowledge and guidelines:
 
 * [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through your first API integration, from authentication to creating your first group of linked assets.
 * [**Authentication**](authentication.md): A comprehensive guide to using OAuth 2.0 authorization protocol.
@@ -47,7 +47,6 @@ The endpoint reference is organized by resource type, such as `/asset`, `/asset_
 
 * **HTTP method** (`GET` or `POST`) and endpoint URL
 * **Endpoint description** explaining the operation's purpose (e.g., "Returns all assets available to the organization")
-* **Security requirements** and authentication details
 * **Parameter documentation**: Complete schemas for query parameters and request bodies, with detailed descriptions for each field
 * **Response schemas** organized by HTTP status code, showing exactly what data you'll receive
 * **Code examples**: Sample requests and responses in multiple formats
