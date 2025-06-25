@@ -114,7 +114,7 @@ Note the inventory ID (`12`) for the next step.
 
 #### 2.2. Create and activate a master device
 
-Master devices can transmit GPS data independently. Most GPS trackers are master devices.
+Master devices can transmit GPS data independently.
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory_item/master/create?orgId=<YOUR_ORG_ID> \
@@ -129,11 +129,11 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create?orgId=<YOUR_ORG_ID> \
   }'
 ```
 
-**Key Parameters:**
+**Key parameters:**
 
 * `device_id`: The device's IMEI number (usually found on a sticker)
 * `model`: Device model code ([see supported devices](https://www.navixy.com/devices/))
-* `phone`: SIM card number in E.164 format (optional but recommended)
+* `phone`: SIM card number (optional)
 
 **Response:**
 
@@ -162,7 +162,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
 
 ### Step 3. Create an asset and assign your device
 
-Assets represent the real-world objects you want to track, such as vehicles and equipment. Each asset belongs to an asset type that defines its structure and custom fields.
+Assets represent the real-world objects you want to track, such as vehicles and equipment. Each asset belongs to an asset type that defines its structure and available custom fields.
 
 #### 3.1. Create an asset type
 
@@ -223,7 +223,7 @@ curl -X POST {BASE_URL}/v0/asset_type/create?orgId=<YOUR_ORG_ID> \
 
 #### 3.2 Create an asset
 
-Let's create a specific asset:
+Create a specific asset:
 
 ```bash
 curl -X POST {BASE_URL}/v0/asset/create?orgId=<YOUR_ORG_ID> \
@@ -328,6 +328,7 @@ curl -X GET "{BASE_URL}/v0/asset/list?orgId=<YOUR_ORG_ID>&q=&limit=10&offset=0&s
 
 You should see your "Fishing Boat Neptune" asset in the response.
 
+{% hint style="success" %}
 #### What you've accomplished
 
 * &#x20;**Authenticated** with the Navixy Repository API
@@ -336,13 +337,13 @@ You should see your "Fishing Boat Neptune" asset in the response.
 * **Created an asset** representing your fishing boat
 * **Assigned the GPS device** to track your asset
 * **Organized assets** using asset links for better management
+{% endhint %}
 
 #### Next steps
 
 Now that you have the basics set up, you can:
 
-* Add more devices by creating additional inventory items
-* Create more assets and assign them to devices
-* Create custom asset types for different categories of assets
-* Group assets by location, department, or function via asset links
-* Use the tracking data from your activated devices to monitor your assets
+* [Add more devices by creating additional inventory items](getting-started.md#id-2.3.-activate-the-device)
+* [Create custom asset types for different categories of assets](getting-started.md#id-3.1.-create-an-asset-type)
+* [Create more assets and assign them to devices](getting-started.md#id-3.2-create-an-asset)
+* [Group assets by location, department, or function via asset links](getting-started.md#step-4.-organize-assets-with-asset-links)
