@@ -93,11 +93,16 @@ To create an inventory that will hold your device, send the following request:
 
 [**POST /inventory/create**](broken-reference)
 
+
+
 ```bash
-{​
+curl -X POST {BASE_URL}/v0/asset/create?orgId=<YOUR_ORG_ID> \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '​{
   "label": "Florida",
   "description": "Florida branch office"​
-​}
+​}'
 ```
 
 **Response:**
