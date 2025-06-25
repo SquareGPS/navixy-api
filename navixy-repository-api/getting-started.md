@@ -1,6 +1,6 @@
 # Getting started
 
-This guide will walk you through the essential steps to start using Navixy Repository API. You'll learn how to authenticate, activate a GPS device, create an asset, and organize assets with asset links.
+This guide will walk you through the basic steps to start using Navixy Repository API. You'll learn how to authenticate, activate a GPS device, create an asset, and organize assets with asset links.
 
 ### Prerequisites
 

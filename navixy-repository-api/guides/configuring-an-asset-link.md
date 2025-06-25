@@ -20,7 +20,7 @@ For more information on API calls, including parameter descriptions and request 
 
 To create a new asset link, prepare an array of assets and send the following request:
 
-**POST /asset\_link/create**
+[**POST /asset\_link/create**](broken-reference)
 
 Use this request body:
 
@@ -45,14 +45,14 @@ You will receive a response with the new link ID:
 
 To add an asset to an existing link, send the following request:
 
-**POST /asset\_link/set**
+[**POST /asset\_link/set**](broken-reference)
 
 Use this request body:
 
 ```json
 {
-  "link_id": 12,
-  "asset_id": 21
+  "link_id": 789,
+  "asset_id": 2
 }
 ```
 

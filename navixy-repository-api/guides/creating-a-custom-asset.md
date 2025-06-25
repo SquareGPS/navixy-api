@@ -62,15 +62,15 @@ The request body contains the following parameters: `category`, `settings,` and 
 
 The available categories are `business` for moving assets and `geo` for stationary.
 
-**`settings`** defines the structure of sections and fields belonging to your asset type. This object contains a `layout` property that describes how the asset form is split into logical sections and the order of fields within each section. The layout consists of sections, where each section has:
+The **`settings`** parameter defines the structure of sections and fields belonging to your asset type. This object contains a `layout` property that describes how the asset form is split into logical sections and the order of fields within each section. The layout consists of sections, where each section has:
 
 * `label`: Section name
-* `fields`: List of field keys to be displayed in the specified order within the section
+* `fields`: List of fields to be displayed in the specified order inside the section
 
-**`fields`** is an array of custom field objects used to add custom information to assets, allowing for enhanced customization and data management. Each custom field includes:
+The **`fields`** parameter is an array of custom field objects used to add user-created information to assets, allowing for enhanced customization and data management. Each field includes:
 
 * `type`: Field type (text, decimal, geojson)
-* `label`: Field's name
+* `label`: Field name
 * `required`: Whether the field is mandatory
 * `description`: Optional description
 

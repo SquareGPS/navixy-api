@@ -60,14 +60,24 @@ Use this request body:
 {
   "inventory_id": 12,
   "model": "navixy_ngp",
-  "device_id": "abc123",
+  "device_id": "123456789012345",
   "label": "gps_tracker_fmc130_001"
 }
+
 ```
+
+You will get the ID of the newly created item:
+
+<pre class="language-json"><code class="lang-json"><strong>{
+</strong>  "id": 123
+}
+</code></pre>
 
 {% openapi-schemas spec="navixy-repo" schemas="InventorySlaveItem" grouped="true" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
+
+**Step 3. (Optional) Create a slave inventory item**
 
 To create a **slave inventory item**, send the following request:
 
@@ -82,15 +92,14 @@ Use this request body:
 }
 ```
 
-In either case, you will get the ID of the newly created item:
+Just like with the master, the response will contain the ID of the created item.
 
-```json
-{
-  "id": 123
+<pre class="language-json"><code class="lang-json"><strong>{
+</strong>  "id": 556
 }
-```
+</code></pre>
 
-#### Step 3. (Optional) Pair the slave device with master
+#### Step 4. (Optional) Pair slave device with master
 
 If you've created a slave device, you need to pair it with a master device. To do this, send the following request:
 
@@ -107,7 +116,7 @@ Use this request body:
 
 You will receive an empty response body and a `204 No Content` status.
 
-#### Step 4. Activate the master device
+#### Step 5. Activate the master device
 
 To activate a master-type device, whether paired with slave devices or not, the device must be preconfigured and exist in the organization's inventory. Upon activation, the device is assigned to the organization.
 

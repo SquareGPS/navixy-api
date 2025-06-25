@@ -5,12 +5,10 @@
 * [Getting started](getting-started.md)
 * [Technical reference](technical-reference.md)
 * [README](<README (1).md>)
-
-## Guides
-
-* [Activating a GPS device](guides/activating-a-gps-device.md)
-* [Creating a custom asset](guides/creating-a-custom-asset.md)
-* [Configuring an asset link](guides/configuring-an-asset-link.md)
+* [Guides](guides/README.md)
+  * [Activating a GPS device](guides/activating-a-gps-device.md)
+  * [Creating a custom asset](guides/creating-a-custom-asset.md)
+  * [Configuring an asset link](guides/configuring-an-asset-link.md)
 
 ## Endpoint Reference
 
