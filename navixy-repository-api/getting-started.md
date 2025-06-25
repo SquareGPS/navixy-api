@@ -87,13 +87,13 @@ For more information about authenticating in Navixy Repository API, see [Authent
 
 GPS devices in Navixy Repository API are called **inventory items** and are organized into **inventories**.
 
-#### 2. 1. Create an inventory
+{% stepper %}
+{% step %}
+#### Create an inventory
 
 To create an inventory that will hold your device, send the following request:
 
-[**POST /inventory/create**](broken-reference)
-
-
+#### &#x20;[**POST /inventory/create**](broken-reference)
 
 ```bash
 curl -X POST {BASE_URL}/v0/asset/create?orgId=<YOUR_ORG_ID> \
@@ -114,10 +114,12 @@ curl -X POST {BASE_URL}/v0/asset/create?orgId=<YOUR_ORG_ID> \
 ```
 
 Note the inventory ID (`12`) for the next step.
+{% endstep %}
 
-#### 2.2. Create and activate a master device
+{% step %}
+#### Create and activate a master device
 
-Master devices can transmit GPS data independently.
+Devices that can transmit GPS data independently are called master devices.
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory_item/master/create?orgId=<YOUR_ORG_ID> \
@@ -145,8 +147,10 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create?orgId=<YOUR_ORG_ID> \
   "id": 123
 }
 ```
+{% endstep %}
 
-#### 2.3. Activate the device
+{% step %}
+#### Activate the device
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
@@ -160,8 +164,8 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
 ```
 
 **Response:** `204 No Content` (Success)
-
-***
+{% endstep %}
+{% endstepper %}
 
 ### Step 3. Create an asset and assign your device to it
 
