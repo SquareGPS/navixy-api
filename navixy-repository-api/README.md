@@ -37,7 +37,7 @@ These articles provide essential background knowledge and guidelines:
 * [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through your first API integration, from authentication to creating your first group of linked assets.
 * [**Authentication**](authentication.md): A comprehensive guide to using OAuth 2.0 authorization protocol.
 * [**Technical reference**](technical-reference.md): Implementation details covering server URLs, API versioning, pagination strategies, sorting mechanisms, and advanced filtering options.
-* [**Guides**](broken-reference): In-depth guides exploring the most common use cases.
+* [**Guides**](guides/): In-depth guides exploring the most common use cases.
 
 #### Endpoint reference
 
