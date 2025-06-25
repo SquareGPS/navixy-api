@@ -14,7 +14,7 @@ Tasks can be either **single-point** tasks or **route** tasks with multiple chec
 
 ## Single Task
 
-To create a new single task, use the [`task/create`](../../../introduction/index/field-service-management/broken-reference/) method. You need to provide a JSON object that contains all the necessary information about the task. Optionally, you can create a form for the task by setting the `create_form` parameter to `true`.
+To create a new single task, use the [`task/create`](../../resources/field-service/task/#create) method. You need to provide a JSON object that contains all the necessary information about the task. Optionally, you can create a form for the task by setting the `create_form` parameter to `true`.
 
 ### Example
 
@@ -56,7 +56,7 @@ curl -X POST '{{ extra.api_example_url }}/task/create' \
 
 ## Route Task
 
-To create a new route task, use the [`task/route/create`](../../../introduction/index/field-service-management/broken-reference/) method. You need to provide a JSON object that contains all the necessary information about the route and its checkpoints.
+To create a new route task, use the [`task/route/create`](../../resources/field-service/task/route/index.md#create) method. You need to provide a JSON object that contains all the necessary information about the route and its checkpoints.
 
 ### Example
 
@@ -163,7 +163,7 @@ curl -X POST '{{ extra.api_example_url }}/task/route/create' \
 
 ## Route Optimization
 
-To optimize a route for minimizing transit time and costs, reorder the checkpoints before creating the route. Use the [`task/route/points/optimize`](../../../introduction/index/field-service-management/broken-reference/) method to perform this optimization.
+To optimize a route for minimizing transit time and costs, reorder the checkpoints before creating the route. Use the [`task/route/points/optimize`](../../resources/field-service/task/route/optimize.md) method to perform this optimization.
 
 ### Example Request
 
@@ -217,4 +217,4 @@ curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
 
 ## Association with Address
 
-To associate a task or checkpoint with an address, include the address in the location object. Use the [`geocoder/search_location`](../../../introduction/index/field-service-management/broken-reference/) method to obtain an address when you have a location.
+To associate a task or checkpoint with an address, include the address in the location object. Use the [`geocoder/search_location`](../../resources/tracking/geocoder.md#search_location) method to obtain an address when you have a location.

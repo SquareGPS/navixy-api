@@ -4,7 +4,7 @@ Task forms are versatile tools that can be utilized across various business func
 
 ## Creating Forms
 
-To enable employees to fill out forms and for users to assign these forms to tasks, form templates must be [created](../../../introduction/index/field-service-management/broken-reference/). Let's create a form for a delivery service, where employees deliver products like trackers and provide additional services if needed. Detailed form field types can be found [here](../../../introduction/index/field-service-management/broken-reference/).
+To enable employees to fill out forms and for users to assign these forms to tasks, form templates must be [created](../../resources/field-service/form/template.md#create). Let's create a form for a delivery service, where employees deliver products like trackers and provide additional services if needed. Detailed form field types can be found [here](../../resources/field-service/form/field-types.md).
 
 For instance, we need a form that is submitted only within the task zone to ensure task completion is recorded only after the employee has visited the task location. All fields are required except one.
 
@@ -15,7 +15,7 @@ For instance, we need a form that is submitted only within the task zone to ensu
 
 #### API Request:
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X POST '{{ extra.api_example_url }}/form/template/create' \
@@ -90,7 +90,7 @@ Forms can be filled in two ways:
 
 ### Assigning Forms
 
-A form can be assigned to an existing task with the [task update](../../../introduction/index/field-service-management/broken-reference/) call or used during [task creation](../../../introduction/index/field-service-management/broken-reference/).
+A form can be assigned to an existing task with the [task update](../../resources/field-service/task/#update) call or used during [task creation](../../resources/field-service/task/#create).
 
 > `create_form` parameter should be `false` to add an already created form.
 
@@ -100,23 +100,23 @@ You can analyze the submitted forms in several ways:
 
 ### Specific Forms Submitted with Tasks
 
-* Obtain a [list of templates](../../../introduction/index/field-service-management/broken-reference/) to get the `template_id` of the desired form.
-* Retrieve the [list of tasks](../../../introduction/index/field-service-management/broken-reference/) with the specific `template_id` and time period.
-* Use the `task_id` to [download](../../../introduction/index/field-service-management/broken-reference/) or [read](../../../introduction/index/field-service-management/broken-reference/) the form.
+* Obtain a [list of templates](../../resources/field-service/form/template.md#list) to get the `template_id` of the desired form.
+* Retrieve the [list of tasks](../../resources/field-service/task/form/index.md#list) with the specific `template_id` and time period.
+* Use the `task_id` to [download](../../resources/field-service/task/form/index.md#download) or [read](../../resources/field-service/task/form/index.md#read) the form.
 
 Alternatively:
 
-* Get a [list of tasks](../../../introduction/index/field-service-management/broken-reference/) to find a specific task and obtain the `form_id`.
-* Use the `form_id` to [read](../../../introduction/index/field-service-management/broken-reference/) and [download](../../../introduction/index/field-service-management/broken-reference/) the forms.
+* Get a [list of tasks](../../resources/field-service/task/#list) to find a specific task and obtain the `form_id`.
+* Use the `form_id` to [read](../../resources/field-service/task/form/index.md#read) and [download](../../resources/field-service/task/form/index.md#download) the forms.
 
 ### Specific Forms Submitted with Check-ins
 
-* Obtain a list of [check-ins](../../../introduction/index/field-service-management/broken-reference/) to get the `form_id`.
-* Use the `form_id` to [read](../../../introduction/index/field-service-management/broken-reference/) and [download](../../../introduction/index/field-service-management/broken-reference/) the forms.
+* Obtain a list of [check-ins](../../resources/field-service/checkin.md#list) to get the `form_id`.
+* Use the `form_id`  to [read](../../resources/field-service/task/form/index.md#read) and [download](../../resources/field-service/task/form/index.md#download) the forms.
 
 ### Generating Reports
 
 To get summarized information in a report format:
 
-* [Generate](../../../introduction/index/field-service-management/broken-reference/) a form completion report with [plugin\_id 70](../../../introduction/index/field-service-management/broken-reference/).
-* [Download](../../../introduction/index/field-service-management/broken-reference/) the report.
+* [Generate](../../resources/commons/report/report_tracker.md#generate) a form completion report with [plugin\_id 70](../../resources/commons/plugin/report_plugins.md#form-completion-statistics-report).
+* [Download](../../resources/commons/report/report_tracker.md#download) the report.
