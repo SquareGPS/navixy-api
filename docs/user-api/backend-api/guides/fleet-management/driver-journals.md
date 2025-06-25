@@ -117,4 +117,4 @@ curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/create' \
 
 After creating the entries, you can download the driver journal in the desired format using the `download` API call. To display the journal in an application, use the `list` request.
 
-For detailed API documentation, refer to the [Navixy API reference](../../../introduction/index/fleet-management/broken-reference/).
+For detailed API documentation, refer to the [Navixy API reference](../../resources/fleet/driver_journal/entry.md).

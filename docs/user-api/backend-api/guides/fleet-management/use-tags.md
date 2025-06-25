@@ -12,19 +12,23 @@ First, create the tag using the `tag/create` method. Let's name it "team1."
 
 API request:
 
-\=== "cURL"
-
+{% tabs %}
+{% tab title="cURL" %}
 ```shell
 curl -X POST '{{ extra.api_example_url }}/tag/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"name": "team1", "color": "#00BFFF"}}'
 ```
+{% endtab %}
 
-\=== "HTTP GET"
-
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
 ```shell
 {{ extra.api_example_url }}/tag/create?hash=a6aa75587e5c59c32d347da438505fc3&tag={"name": "team1", "color": "#00BFFF"}
 ```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 The platform will reply with the created tag ID. You can find this tag using the `tag/list` method.
 
@@ -32,13 +36,13 @@ The platform will reply with the created tag ID. You can find this tag using the
 
 Next, assign this tag to your objects. You can do this when updating or creating objects by adding the "tags" parameter:
 
-* [Place](../../../introduction/index/fleet-management/broken-reference/) - [update](../../../introduction/index/fleet-management/broken-reference/)/[create](../../../introduction/index/fleet-management/broken-reference/)
-* [Task](../../../introduction/index/fleet-management/broken-reference/) - [update](../../../introduction/index/fleet-management/broken-reference/)/[create](../../../introduction/index/fleet-management/broken-reference/)
-* [Task schedule](../../../introduction/index/fleet-management/broken-reference/) - [update](../../../introduction/index/fleet-management/broken-reference/)/[create](../../../introduction/index/fleet-management/broken-reference/)
-* [Employee](../../../introduction/index/fleet-management/broken-reference/) - [update](../../../introduction/index/fleet-management/broken-reference/)/[create](../../../introduction/index/fleet-management/broken-reference/)
+* [Place](../../resources/field-service/place/work-with-poi.md#place-object) - [update](../../resources/field-service/place/work-with-poi.md#update)/[create](../../resources/field-service/place/work-with-poi.md#create)
+* [Task](../../resources/field-service/task/#task-object) - [update](../../resources/field-service/task/#update)/[create](../../resources/field-service/task/#create)
+* [Task schedule](../../resources/field-service/task/schedule/index.md#task-schedule-entry-object) - [update](../../resources/field-service/task/schedule/index.md#update)/[create](../../resources/field-service/task/schedule/index.md#create)
+* [Employee](../../resources/field-service/employee/index.md#employee-object) - [update](../../resources/field-service/employee/index.md#update)/[create](../../resources/field-service/employee/index.md#create)
 * [Vehicle](../../../introduction/index/fleet-management/broken-reference/) - [update](../../../introduction/index/fleet-management/broken-reference/)/[create](../../../introduction/index/fleet-management/broken-reference/)
-* [Zone](../../../introduction/index/fleet-management/broken-reference/) - [update](../../../introduction/index/fleet-management/broken-reference/)/[create](../../../introduction/index/fleet-management/broken-reference/)
-* [Tracker](../../../introduction/index/fleet-management/broken-reference/) - Use the `tags/set` method
+* [Zone](../../resources/tracking/zone/#entity-description) - [update](../../resources/tracking/zone/#update)/[create](../../resources/tracking/zone/#create)
+* [Tracker](../../resources/tracking/tracker/#tracker-object-structure) - Use the `tags/set` method
 
 ## Searching Objects with Tags
 
@@ -46,25 +50,28 @@ To find all objects with a specific tag, use the `tag/search` method.
 
 API request:
 
-\=== "cURL"
-
+{% tabs %}
+{% tab title="cURL" %}
 ```shell
 curl -X POST '{{ extra.api_example_url }}/tag/search' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_ids": [179227]}'
 ```
+{% endtab %}
 
-\=== "HTTP GET"
-
+{% tab title="HTTP GET" %}
 ```shell
 {{ extra.api_example_url }}/tag/search?hash=22eac1c27af4be7b9d04da2ce1af111b&tag_ids=[179227]
 ```
+{% endtab %}
+{% endtabs %}
 
 The platform will respond with objects that have the assigned tag:
 
-???+ example "Response"
+<details>
 
-````
+<summary>Response</summary>
+
 ```json
 {
   "success": true,
@@ -147,4 +154,5 @@ The platform will respond with objects that have the assigned tag:
   }
 }
 ```
-````
+
+</details>
