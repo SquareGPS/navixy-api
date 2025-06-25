@@ -12,38 +12,13 @@ Before you begin, ensure you have:
 
 ### Step 1. Authentication
 
-The Navixy Repository API uses OAuth 2.0 for authentication. Choose the appropriate flow based on your application type.
+The Navixy Repository API uses OAuth 2.0 for authentication. Depending on your application type, you can choose between Authorization Code for front-end applications and Client Credentials for Server-to-Server. To learn more about the latter, refer to the corresponding section of the [Authentication page](authentication.md#for-server-to-server-communication).
 
-#### For Server-to-Server applications
+To use Authorization Code flow with user interaction:
 
-Use the Client Credentials flow for backend applications:
-
-```bash
-curl -X POST {AUTH_BASE_URL}/oauth/token \
-  -H "Content-Type: application/json" \
-  -d '{
-    "grant_type": "client_credentials",
-    "client_id": "<YOUR_CLIENT_ID>",
-    "client_secret": "<YOUR_CLIENT_SECRET>"
-  }'
-```
-
-**Response:**
-
-```json
-{
-  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "token_type": "Bearer",
-  "expires_in": 3600,
-  "scope": "read write"
-}
-```
-
-#### For frontend applications
-
-Use the Authorization Code flow with user interaction:
-
-1. **Redirect users to authorization endpoint:**
+{% stepper %}
+{% step %}
+**Redirect users to the authorization endpoint**
 
 ```bash
 curl -X GET "{AUTH_BASE_URL}/authorize" \
@@ -53,20 +28,23 @@ curl -X GET "{AUTH_BASE_URL}/authorize" \
   --data-urlencode 'scope=read write' \
   --data-urlencode 'state=<YOUR_SECURE_RANDOM>'
 ```
+{% endstep %}
 
-2. **Exchange authorization code for access token:**
+{% step %}
+**Exchange authorization code for access token**
 
-```bash
-curl -X POST {AUTH_BASE_URL}/oauth/token \
-  -H "Content-Type: application/json" \
-  -d '{
+<pre class="language-bash"><code class="lang-bash">curl -X POST {AUTH_BASE_URL}/oauth/token \
+<strong>  -H "Content-Type: application/json" \
+</strong>  -d '{
     "grant_type": "authorization_code",
-    "client_id": "<YOUR_CLIENT_ID>",
-    "client_secret": "<YOUR_CLIENT_SECRET>",
-    "code": "<YOUR_AUTHORIZATION_CODE>",
-    "redirect_uri": "https://<YOUR_APP_CALLBACK_URL>"
+    "client_id": "&#x3C;YOUR_CLIENT_ID>",
+    "client_secret": "&#x3C;YOUR_CLIENT_SECRET>",
+    "code": "&#x3C;YOUR_AUTHORIZATION_CODE>",
+    "redirect_uri": "https://&#x3C;YOUR_APP_CALLBACK_URL>"
   }'
-```
+</code></pre>
+{% endstep %}
+{% endstepper %}
 
 #### Making authenticated requests
 
@@ -167,142 +145,25 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
 {% endstep %}
 {% endstepper %}
 
-### Step 3. Create an asset and assign your device to it
-
-Assets represent the real-world objects you want to track, such as vehicles and equipment. Each asset belongs to an asset type that defines its structure and available custom fields.
-
-#### 3.1. Create an asset type
-
-First, create an asset type for your fleet. In our example, we'll use marine vessels:
-
-```bash
-curl -X POST {BASE_URL}/v0/asset_type/create?orgId=<YOUR_ORG_ID> \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "label": "Marine vessels",
-    "category": "business",
-    "settings": {
-      "layout": {
-        "sections": [
-          {
-            "label": "Vessel details",
-            "fields": [
-              "label",
-              "registration_number",
-              "captain_name",
-              "vessel_year"
-            ]
-          }
-        ]
-      }
-    },
-    "fields": [
-      {
-        "type": "text",
-        "label": "Registration number",
-        "required": true,
-        "description": "Vessel registration or hull identification number"
-      },
-      {
-        "type": "text",
-        "label": "Captain name",
-        "required": false,
-        "description": "Primary captain assigned to the vessel"
-      },
-      {
-        "type": "decimal",
-        "label": "Year of manufacture",
-        "required": false,
-        "description": "Year the vessel was manufactured"
-      }
-    ]
-  }'
-```
-
-**Response:**
-
-```json
-{
-  "id": 456
-}
-```
-
-#### 3.2 Create an asset
-
-Create a specific asset:
-
-```bash
-curl -X POST {BASE_URL}/v0/asset/create?orgId=<YOUR_ORG_ID> \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "type_id": 456,
-    "label": "Fishing Boat Neptune",
-    "fields": {
-      "registration_number": {
-        "type": "text",
-        "value": "FL-1234-AB"
-      },
-      "captain_name": {
-        "type": "text",
-        "value": "Captain Morgan"
-      },
-      "vessel_year": {
-        "type": "decimal",
-        "value": 2021
-      }
-    }
-  }'
-```
-
-**Response:**
-
-```json
-{
-  "id": 789
-}
-```
-
-#### 3.3. Assign your device to the asset
-
-Connect your GPS device to the asset by updating the inventory item:
-
-```bash
-curl -X POST {BASE_URL}/v0/inventory_item/master/update?orgId=<YOUR_ORG_ID> \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "id": 123,
-    "inventory_id": 12,
-    "label": "Teltonika FMC130 - Vessel 001",
-    "asset_id": 789
-  }'
-```
-
-**Response:** `204 No Content` (Success)
-
 ### Verification and next steps
 
 #### Verify your setup
 
-Let's confirm everything is working by listing your assets:
+Let's confirm everything is working by listing your inventory items:
 
 ```bash
-curl -X GET "{BASE_URL}/v0/asset/list?orgId=<YOUR_ORG_ID>&q=&limit=10&offset=0&sort=label" \
+curl -X GET "{BASE_URL}/v0/inventory_item/list?orgId=<YOUR_ORG_ID>&q=&limit=10&offset=0&sort=label" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-You should see your "Fishing Boat Neptune" asset in the response.
+You should see your device in the response.
 
 {% hint style="success" %}
 #### What you've accomplished
 
 * &#x20;**Authenticated** with the Navixy Repository API
+* **Created an inventory for your devices**
 * **Activated a GPS device** that can now transmit location data
-* **Created an asset type** with custom fields for marine vessel management
-* **Created an asset** representing your fishing boat
-* **Assigned the GPS device** to track your asset
 {% endhint %}
 
 #### Next steps
