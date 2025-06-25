@@ -6,7 +6,7 @@ In many scenarios, it becomes essential to retrieve all location points of a tra
 
 ### Obtain API Key Hash
 
-First, you need to [obtain the hash of an API key](../../getting-started/authentication.md).
+First, you need to [obtain the hash of an API key](../../../authentication.md#id-2.-api-keys-recommended-authentication).
 
 ### Get Tracker ID
 

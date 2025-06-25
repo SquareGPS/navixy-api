@@ -16,7 +16,7 @@ Within the category of Physical sensors, Navixy differentiates three categories 
 2. **Discrete sensors**: These sensors detect and report binary states such as on/off or open/close. For instance, an ignition sensor that indicates whether the vehicle ignition is on or off, or a door sensor that shows if a door is open or closed.
 3. **Counters**: These sensors track cumulative data over time, such as distance traveled or operating hours. Examples include an odometer that measures the total distance a vehicle has traveled, or an engine hours counter that logs the total operating time of an engine.
 
-For a comprehensive list of supported sensors, refer to the [input\_name documentation](../../../introduction/index/data-retrieval/broken-reference/).
+For a comprehensive list of supported sensors, refer to the [input\_name documentation](../../resources/tracking/tracker/sensor/input_name.md).
 
 ### Managing physical sensors
 

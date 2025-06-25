@@ -58,7 +58,7 @@ There are two API calls that allow you to get all the necessary information abou
 
 ### Historical data from BLE tags
 
-The first call retrieves [historical data from devices](../../../introduction/index/device-management/broken-reference/). You can set the `from` and `to` parameters for obtaining data during a specific period about connected BLE beacons. Since we need the information from the BLE tags' point of view, i.e., the trailers, let's request the information using the `beacons` parameter.
+The first call retrieves [historical data from devices](../../resources/tracking/beacon/index.md#read). You can set the `from` and `to` parameters for obtaining data during a specific period about connected BLE beacons. Since we need the information from the BLE tags' point of view, i.e., the trailers, let's request the information using the `beacons` parameter.
 
 **Request example:**
 
@@ -111,7 +111,7 @@ This will show which devices were in the vicinity of this BLE beacon during peri
 
 ### Last data from BLE tags
 
-The second call retrieves information about [currently connected beacons](../../../introduction/index/device-management/broken-reference/) to a specific device. For example, if you want to know which trailer is currently near the device, use the following request:
+The second call retrieves information about [currently connected beacons](../../resources/tracking/beacon/index.md#last-values) to a specific device. For example, if you want to know which trailer is currently near the device, use the following request:
 
 **Request example:**
 
@@ -155,11 +155,11 @@ We've already gathered historical data using the first of the presented API call
 
 ### Overall trip info
 
-API call [track/list](../../../introduction/index/device-management/broken-reference/) to get trip information for the period. This will provide general information about the trips, such as where and when they started and ended, maximum speed, mileage, and more.
+API call [track/list](../../resources/tracking/track/index.md#list) to get trip information for the period. This will provide general information about the trips, such as where and when they started and ended, maximum speed, mileage, and more.
 
 Request example:
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X POST 'https://api.navixy.com/v2/beacon/data/last_values' \
@@ -199,7 +199,7 @@ If you want a detailed track record of the trailer where the beacon is installed
 
 Request example:
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X POST 'https://api.navixy.com/v2/track/read' \

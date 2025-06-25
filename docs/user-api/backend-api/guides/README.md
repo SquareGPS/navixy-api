@@ -13,13 +13,13 @@ The "Guides and Examples" section of the Navixy API documentation is designed to
 
 ## Tracking and Data Retrieval
 
-* [**Getting Tracker List**](../../introduction/index/broken-reference/)\
+* [**Getting Tracker List**](data-retrieval/get-tracker-list.md)\
   Retrieve a list of all trackers associated with your account for easy management.
-* [**Retrieving Track Points**](../../introduction/index/broken-reference/)\
+* [**Retrieving Track Points**](data-retrieval/get-track-points.md)\
   Learn how to get detailed track points data for comprehensive movement analysis.
 * [**Fetching Sensors and Counters Data**](data-retrieval/sensor-data.md)\
   Access data from various sensors and counters installed on your tracking devices.
-* [**Obtaining Report Information**](../../introduction/index/broken-reference/)\
+* [**Obtaining Report Information**](data-retrieval/obtain-reports.md)\
   Generate and retrieve detailed reports for insights into fleet performance.
 
 ## Geofences and Points of Interest
@@ -31,7 +31,7 @@ The "Guides and Examples" section of the Navixy API documentation is designed to
 
 ## Notifications and Rules
 
-* [**Working with Notifications**](../../introduction/index/broken-reference/)\
+* [**Working with Notifications**](rules-notifications/work-with-notifications.md)\
   Configure and manage notifications to stay informed about important events.
 * [**Receiving Push Notifications**](rules-notifications/get-push-notifications.md)\
   Set up push notifications to receive real-time alerts on your mobile devices.

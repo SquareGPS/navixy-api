@@ -17,9 +17,9 @@ Suppose you have a Teltonika FMB140 device with an ID of `231402` on the platfor
 
 ### API Request
 
-To send this command, use the API request [`raw_command/send`](../../../introduction/index/device-management/broken-reference/):
+To send this command, use the API request [`raw_command/send`](../../resources/tracking/tracker/#raw_command-send):
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X POST 'https://tracker.navixy.com/v2/tracker/raw_command/send' \

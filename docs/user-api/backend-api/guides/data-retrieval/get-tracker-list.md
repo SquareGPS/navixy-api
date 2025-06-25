@@ -4,7 +4,7 @@ This guide explains how to retrieve a list of GPS trackers associated with a use
 
 ## Prerequisites
 
-Before you begin, ensure you have an active Navixy account and an [API key for authentication](../../getting-started/authentication.md).
+Before you begin, ensure you have an active Navixy account and an [API key for authentication](../../../authentication.md#id-2.-api-keys-recommended-authentication).
 
 ## Make the API request
 

@@ -1438,7 +1438,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
   * `url` - string. Uniform Resource Locator - full details for the connection. Such as protocol, host, port, credentials, etc.
   * `description` - string. Connection details.
 
-**ID type**
+#### **ID type**
 
 An ID type used to determine the information needed to register device in our system (see [tracker/register](./#register)).
 
