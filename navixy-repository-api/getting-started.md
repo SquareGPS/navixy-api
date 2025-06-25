@@ -158,7 +158,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
 
 ***
 
-### Step 3. Create an asset and assign your device
+### Step 3. Create an asset and assign your device to it
 
 Assets represent the real-world objects you want to track, such as vehicles and equipment. Each asset belongs to an asset type that defines its structure and available custom fields.
 
@@ -273,46 +273,6 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/update?orgId=<YOUR_ORG_ID> \
 
 **Response:** `204 No Content` (Success)
 
-### Step 4. Organize assets with asset links
-
-Asset links help you group related assets together for better organization and management.
-
-#### 4.1. Create an asset link
-
-Let's create a group for delivery vehicles:
-
-```bash
-curl -X POST {BASE_URL}/v0/asset_link/create?orgId=<YOUR_ORG_ID> \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "label": "Fishing fleet",
-    "asset_ids": [789]
-  }'
-```
-
-**Response:**
-
-```json
-{
-  "id": 999
-}
-```
-
-#### Add more assets to the link
-
-As you create more vehicle assets, you can add them to this group:
-
-```bash
-curl -X POST {BASE_URL}/v0/asset_link/set?orgId=<YOUR_ORG_ID> \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "link_id": 999,
-    "asset_id": <NEW_ASSET_ID>
-  }'
-```
-
 ### Verification and next steps
 
 #### Verify your setup
@@ -334,7 +294,6 @@ You should see your "Fishing Boat Neptune" asset in the response.
 * **Created an asset type** with custom fields for marine vessel management
 * **Created an asset** representing your fishing boat
 * **Assigned the GPS device** to track your asset
-* **Organized assets** using asset links for better management
 {% endhint %}
 
 #### Next steps
