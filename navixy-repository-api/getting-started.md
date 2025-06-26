@@ -7,7 +7,6 @@ This guide will walk you through the basic steps to start using Navixy Repositor
 Before you begin, ensure you have:
 
 * Valid Navixy Repository API credentials (`client_id` and `client_secret`)
-* Your organization ID (`orgId`) from your JWT token
 * A GPS device ready for activation (we'll use a Teltonika FMC130 tracker in this example)
 
 ### Step 1. Authentication

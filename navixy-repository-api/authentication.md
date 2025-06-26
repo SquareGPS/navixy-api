@@ -2,6 +2,17 @@
 
 Authentication is required for all API requests and is based on OAuth 2.0.
 
+### Organization-based access control
+
+All API requests are automatically scoped to your organization. The organization context is determined from your access token. You cannot access resources belonging to other organizations.
+
+#### How organization scoping works
+
+1. When you authenticate, your access token contains your organization identifier.
+2. The API automatically extracts this identifier from your token.
+3. All operations are restricted to your organization's resources.
+4. No manual organization specification is required.
+
 ### Acquiring access token
 
 Navixy Repository API supports two authentication methods depending on the type of client.
@@ -10,7 +21,9 @@ Navixy Repository API supports two authentication methods depending on the type 
 
 Use OAuth2 Authorization Code Flow.
 
-**Step 1. Redirect the user to the authorization endpoint:**
+{% stepper %}
+{% step %}
+**Redirect the user to the authorization endpoint:**
 
 ```bash
 curl -X GET "{AUTH_BASE_URL}/authorize" \
@@ -20,8 +33,10 @@ curl -X GET "{AUTH_BASE_URL}/authorize" \
   --data-urlencode 'scope=<REQUESTED_SCOPE_ONE> <REQUESTED_SCOPE_TWO>' \
   --data-urlencode 'state=<YOUR_SECURE_RANDOM>'
 ```
+{% endstep %}
 
-**Step 2. Exchange authorization code for access token**
+{% step %}
+**Exchange authorization code for access token**
 
 **Request:**
 
@@ -58,6 +73,8 @@ curl -X POST {AUTH_BASE_URL}/oauth/token \
   "error_description": "Authorization code expired"
 }
 ```
+{% endstep %}
+{% endstepper %}
 
 #### For server-to-server communication
 
