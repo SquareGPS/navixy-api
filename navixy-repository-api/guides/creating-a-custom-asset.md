@@ -10,8 +10,6 @@ In this guide, you will learn how to create and configure a custom asset.
 For more information on API calls, including parameter descriptions and request and response schemas, click their names.
 {% endhint %}
 
-
-
 ### How to create a custom asset
 
 #### Step 1. Create an asset type
@@ -26,18 +24,25 @@ To create a new asset type, send the following request:
 
 ```json
 {
-  "label": "Boats",
+  "label": "Commercial Vessels",
   "category": "business",
   "settings": {
     "layout": {
       "sections": [
         {
-          "label": "Section 1",
+          "label": "Vessel information",
           "fields": [
             "label",
-            "Text field",
-            "131212",
+            "vessel_name",
+            "registration_number",
             "description"
+          ]
+        },
+        {
+          "label": "Technical specifications",
+          "fields": [
+            "engine_power",
+            "max_passengers"
           ]
         }
       ]
@@ -46,12 +51,22 @@ To create a new asset type, send the following request:
   "fields": [
     {
       "type": "text",
-      "label": "Text field",
+      "label": "vessel_name",
+      "required": true
+    },
+    {
+      "type": "text",
+      "label": "registration_number",
       "required": true
     },
     {
       "type": "decimal",
-      "label": "Number field",
+      "label": "engine_power",
+      "required": false
+    },
+    {
+      "type": "decimal",
+      "label": "max_passengers",
       "required": false
     }
   ]
@@ -78,7 +93,7 @@ After sending the request, you will receive a response with the ID of the newly 
 
 ```json
 {
-  "id": 123
+  "id": 456
 }
 ```
 
@@ -94,12 +109,24 @@ To create an asset, send the following request:
 
 ```json
 {
-    "type_id": 123
-    "label": "Aspen V6 GTX",
-    "fields": {
-      "field1" : {
-        "type": "text",
-        "value":  "I love text!"
+  "type_id": 456,
+  "label": "Sea Explorer",
+  "fields": {
+    "vessel_name": {
+      "type": "text",
+      "value": "Sea Explorer"
+    },
+    "registration_number": {
+      "type": "text",
+      "value": "BOT-2024-001"
+    },
+    "engine_power": {
+      "type": "decimal",
+      "value": 350.5
+    },
+    "max_passengers": {
+      "type": "decimal",
+      "value": 12
     }
   }
 }
@@ -109,7 +136,7 @@ You will receive the ID of the newly created asset:
 
 ```json
 {
-  "id": 123
+  "id": 789
 }
 ```
 
@@ -129,8 +156,8 @@ If your device is already activated (the inventory item already exists), send th
 {
   "id": 123,
   "inventory_id": 12,
-  "label": "GPS tracker FMC130-001",
-  "asset_id": 21
+  "label": "Sea Explorer GPS Tracker",
+  "asset_id": 789
 }
 ```
 
@@ -139,17 +166,17 @@ If you haven't created an inventory item yet, you can add the `asset_id` paramet
 [**POST inventory\_item/master/create**](broken-reference)
 
 ```
-​{​
+​{
   "inventory_id": 12,
   "device_id": "123456789012345",
-  "label": "GPS tracker FMC130-001",
+  "label": "Sea Explorer GPS Tracker",
   "model": "navixy_ngp",
-  "asset_id": 21​
-​}
+  "asset_id": 789
+}
 ```
 
 {% hint style="success" %}
 **Congratulations!**\
 \
-You've successfully created a custom asset. Next, you can assign it to a linked group.
+You've successfully created a custom asset. Next, you can [assign it to a linked group](configuring-an-asset-link.md).
 {% endhint %}

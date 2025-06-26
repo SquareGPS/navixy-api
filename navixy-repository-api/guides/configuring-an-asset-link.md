@@ -1,6 +1,6 @@
 # Configuring an asset link
 
-In Navixy Repository API, **asset links** are user-created collections of assets grouped by a certain principle. These groups help organize and manage assets that work together or have logical relationships.
+In Navixy Repository API, **asset links** are user-created collections of assets grouped by a certain principle, such as a truck, a trailer, and the equipment it carries, or vehicles parked at a specific site. These links help organize and manage assets that work together or have logical relationships.
 
 An asset link can contain assets of all types. Links automatically manage asset relationships and handle reassignments when assets are moved between groups.
 
@@ -15,6 +15,10 @@ For more information on API calls, including parameter descriptions and request 
 {% openapi-schemas spec="navixy-repo" schemas="AssetLink" grouped="true" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
+
+#### Prerequisites
+
+An existing asset. Learn how to create it in [Creating a custom asset](creating-a-custom-asset.md).
 
 #### Step 1. Create a new asset link
 
