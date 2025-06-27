@@ -1,17 +1,21 @@
 openapi: 3.1.0
 info:
   title: Navixy Repository API
+  description: ""
   contact:
     name: Navixy support
     url: https://www.navixy.com/contact/
     email: support@navixy.com
+  license:
+    name: Creative Commons Attribution 4.0 International License
+    url: https://creativecommons.org/licenses/by/4.0/
   version: V0 API (MVP)
 externalDocs:
   description: Find more info here
   url: https://developers.navixy.com/
 servers:
-- url: http://localhost:8080
-  description: localhost
+- url: https://repo-api.navixy.dev
+  description: Test server
 tags:
 - name: Inventories
   description: "Inventories are collections of devices used to organize and manage\
@@ -38,13 +42,6 @@ paths:
       summary: Update an existing slave item
       description: Updates the information of an existing slave item
       operationId: updateSlave
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -77,19 +74,12 @@ paths:
     post:
       tags:
       - Inventory Items
-      summary: Pair a slave with an master item
+      summary: Pair a slave with a master item
       description: "Pairs a slave device with a master device within the organization's\
         \ inventory system. Used to establish logical associations between devices\
         \ (e.g., sensors with trackers). Both devices belong to the same organization\
         \ but may be located in different inventories."
       operationId: pairSlave
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -153,12 +143,6 @@ paths:
         required: false
         schema:
           type: string
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         "200":
           description: List of inventory items
@@ -185,13 +169,6 @@ paths:
       description: Returns all slave items available to the organization with advanced
         filtering options
       operationId: listSlavePost
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -221,16 +198,9 @@ paths:
     post:
       tags:
       - Inventory Items
-      summary: Delete an slave item
+      summary: Delete a slave item
       description: Deletes the specified slave item by its ID
       operationId: deleteSlave
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -264,15 +234,8 @@ paths:
       tags:
       - Inventory Items
       summary: Create a new slave item
-      description: Adds an slave item for the organization
+      description: Adds a slave item for the organization
       operationId: createSlave
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -305,13 +268,6 @@ paths:
       summary: Update an existing master item
       description: Updates the information of an existing master item
       operationId: updateMaster
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -375,12 +331,6 @@ paths:
         required: false
         schema:
           type: string
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         "200":
           description: List of inventory items
@@ -407,13 +357,6 @@ paths:
       description: Returns all master items available to the organization with advanced
         filtering options
       operationId: listMasterPost
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -444,15 +387,8 @@ paths:
       tags:
       - Inventory Items
       summary: Create a new master item
-      description: Adds an master item for the organization
+      description: Adds a master item for the organization
       operationId: createMaster
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -482,18 +418,11 @@ paths:
     post:
       tags:
       - Inventory Items
-      summary: Archive an master item
+      summary: Archive a master item
       description: Marks an inventory item as deleted without permanently removing
         it from the system. This soft delete approach allows recovery of inventory
         item’s data upon request to support
       operationId: archiveMaster
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -526,19 +455,12 @@ paths:
     post:
       tags:
       - Inventory Items
-      summary: Activate an master item
+      summary: Activate a master item
       description: "Activates a created master device using a unique identifier. The\
         \ device must be preconfigured and may exist either in the organization's\
         \ inventory or in a dealer's inventory. Upon activation, the device is assigned\
         \ to the organization"
       operationId: activateMaster
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -574,13 +496,6 @@ paths:
       summary: Update an existing inventory
       description: Updates the information of an existing inventory
       operationId: updateInventory
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -644,12 +559,6 @@ paths:
         required: false
         schema:
           type: string
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         "200":
           description: List of inventories
@@ -676,13 +585,6 @@ paths:
       description: Returns all inventories available to the organization with advanced
         filtering options
       operationId: listInventoriesPost
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -715,13 +617,6 @@ paths:
       summary: Delete an inventory
       description: Deletes the specified inventory by its ID
       operationId: deleteInventory
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -757,13 +652,6 @@ paths:
       summary: Create a new inventory
       description: Adds a new inventory for the organization
       operationId: createInventory
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -796,13 +684,6 @@ paths:
       summary: Update an asset type
       description: Updates the properties and structure of an existing asset type
       operationId: updateAssetType
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -866,12 +747,6 @@ paths:
         required: false
         schema:
           type: string
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         "200":
           description: List of asset types
@@ -898,13 +773,6 @@ paths:
       description: Returns all asset types from an organization with advanced filtering
         options
       operationId: listAssetTypesPost
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -937,13 +805,6 @@ paths:
       summary: Delete an asset type
       description: Deletes the specified asset type by its ID
       operationId: deleteAssetType
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -979,13 +840,6 @@ paths:
       summary: Create a new asset type
       description: Adds new entity type
       operationId: createAssetType
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1018,13 +872,6 @@ paths:
       summary: Update an existing link
       description: Updates the information of an existing asset link
       operationId: updateAssetLink
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1057,14 +904,9 @@ paths:
     post:
       tags:
       - Asset Links
+      summary: Assign asset to a link
+      description: Binds an asset to the specified asset link
       operationId: setAssetLink
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1072,21 +914,34 @@ paths:
               $ref: "#/components/schemas/AssetLinks2AssetRequest"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: Asset successfully assigned to the link (No Content)
           content: {}
+        "400":
+          description: Invalid request or validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Authentication is required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Specified asset link not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /v0/asset_link/remove:
     post:
       tags:
       - Asset Links
+      summary: Unassign asset from a link
+      description: Removes an asset from a specified asset link.
       operationId: removeAssetLink
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1094,9 +949,27 @@ paths:
               $ref: "#/components/schemas/AssetLinks2AssetRequest"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: Asset successfully unassigned from the link (No Content)
           content: {}
+        "400":
+          description: Invalid request or validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Authentication is required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Specified asset link or assets not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /v0/asset_link/list:
     get:
       tags:
@@ -1132,12 +1005,6 @@ paths:
         required: false
         schema:
           type: string
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         "200":
           description: List of links
@@ -1164,13 +1031,6 @@ paths:
       description: Returns all asset links available to the organization with advanced
         filtering options
       operationId: listAssetLinksPost
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1203,13 +1063,6 @@ paths:
       summary: Delete an link
       description: Deletes the specified asset link by its ID
       operationId: deleteAssetLink
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1245,13 +1098,6 @@ paths:
       summary: Create a new link
       description: Adds a new asset link for the organization
       operationId: createAssetLink
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1284,13 +1130,6 @@ paths:
       summary: Update an existing asset
       description: Updates the information of an existing asset
       operationId: updateAsset
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1354,12 +1193,6 @@ paths:
         required: true
         schema:
           type: string
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         "200":
           description: List of assets
@@ -1386,13 +1219,6 @@ paths:
       description: Returns all assets available to the organization with advanced
         filtering options
       operationId: listAssetsPost
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1425,13 +1251,6 @@ paths:
       summary: Delete an asset
       description: Deletes the specified asset by its ID
       operationId: deleteAsset
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1467,13 +1286,6 @@ paths:
       summary: Create a new asset
       description: Adds an asset for the organization
       operationId: createAsset
-      parameters:
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       requestBody:
         content:
           application/json:
@@ -1504,16 +1316,10 @@ paths:
       tags:
       - Inventory Items
       summary: Get slave item by ID
-      description: Returns an slave item's data by ID
+      description: Returns a slave item's data by ID
       operationId: readSlave
       parameters:
       - name: id
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
-      - name: orgId
         in: query
         required: true
         schema:
@@ -1549,16 +1355,10 @@ paths:
       tags:
       - Inventory Items
       summary: Get master item by ID
-      description: Returns an master item's data by ID
+      description: Returns a master item's data by ID
       operationId: readMaster
       parameters:
       - name: id
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
-      - name: orgId
         in: query
         required: true
         schema:
@@ -1589,6 +1389,61 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+  /v0/inventory_item/master/model/list:
+    get:
+      tags:
+      - Inventory Items
+      summary: List master item models
+      description: Returns all master item models with their respective capabilities
+        and specifications
+      operationId: listMasterModels
+      parameters:
+      - name: q
+        in: query
+        description: A search query string
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Maximum number of items to return (default: 100, max: 1000)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        description: "The index of the first item to return (default: 0)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: "Sort expression. Supports one or more fields, optionally prefixed\
+          \ with `-` to indicate descending order. For example, `title,-created_at`"
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of master item models
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MasterItemModel"
+        "400":
+          description: Invalid request or validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Authentication is required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /v0/inventory/read:
     get:
       tags:
@@ -1600,12 +1455,6 @@ paths:
       - name: id
         in: query
         description: Unique identifier for the inventory
-        required: true
-        schema:
-          type: integer
-          format: int64
-      - name: orgId
-        in: query
         required: true
         schema:
           type: integer
@@ -1650,12 +1499,6 @@ paths:
         schema:
           type: integer
           format: int64
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         "200":
           description: Asset type details
@@ -1692,12 +1535,6 @@ paths:
       - name: id
         in: query
         description: Unique identifier for the link
-        required: true
-        schema:
-          type: integer
-          format: int64
-      - name: orgId
-        in: query
         required: true
         schema:
           type: integer
@@ -1742,12 +1579,6 @@ paths:
         schema:
           type: integer
           format: int64
-      - name: orgId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         "200":
           description: Asset details
@@ -1780,6 +1611,17 @@ components:
         code:
           type: string
           description: Error code identifier
+          enum:
+          - invalid_parameters
+          - inventory_item_already_active
+          - asset_not_found
+          - asset_type_not_found
+          - asset_link_not_found
+          - inventory_not_found
+          - inventory_item_not_found
+          - asset_type_has_assets
+          - inventory_has_items
+          - unexpected_error
         message:
           type: string
           description: Human-readable error message
@@ -1893,33 +1735,6 @@ components:
       required:
       - field
       - values
-    CompoundCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          conditions:
-            type: array
-            items:
-              oneOf:
-              - $ref: "#/components/schemas/AndCondition"
-              - $ref: "#/components/schemas/BetweenCondition"
-              - $ref: "#/components/schemas/CompoundCondition"
-              - $ref: "#/components/schemas/ContainsCondition"
-              - $ref: "#/components/schemas/EqualsCondition"
-              - $ref: "#/components/schemas/FieldCondition"
-              - $ref: "#/components/schemas/GreaterThanCondition"
-              - $ref: "#/components/schemas/GreaterThanOrEqualsCondition"
-              - $ref: "#/components/schemas/InCondition"
-              - $ref: "#/components/schemas/LessThanCondition"
-              - $ref: "#/components/schemas/LessThanOrEqualsCondition"
-              - $ref: "#/components/schemas/NotCondition"
-              - $ref: "#/components/schemas/NotEqualsCondition"
-              - $ref: "#/components/schemas/OrCondition"
-            maxItems: 60
-            minItems: 2
-      required:
-      - conditions
     Condition:
       description: "Represents an advanced filter condition for search queries. Supports\
         \ logical operators (AND, OR, NOT) and field-level comparisons (equality,\
@@ -1930,6 +1745,19 @@ components:
         type: eq
         field: status
         value: active
+      oneOf:
+      - $ref: "#/components/schemas/AndCondition"
+      - $ref: "#/components/schemas/OrCondition"
+      - $ref: "#/components/schemas/NotCondition"
+      - $ref: "#/components/schemas/EqualsCondition"
+      - $ref: "#/components/schemas/NotEqualsCondition"
+      - $ref: "#/components/schemas/LessThanCondition"
+      - $ref: "#/components/schemas/LessThanOrEqualsCondition"
+      - $ref: "#/components/schemas/GreaterThanCondition"
+      - $ref: "#/components/schemas/GreaterThanOrEqualsCondition"
+      - $ref: "#/components/schemas/InCondition"
+      - $ref: "#/components/schemas/ContainsCondition"
+      - $ref: "#/components/schemas/BetweenCondition"
       properties:
         type:
           type: string
@@ -1959,15 +1787,6 @@ components:
       required:
       - field
       - value
-    FieldCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-      required:
-      - field
     GreaterThanCondition:
       allOf:
       - $ref: "#/components/schemas/Condition"
@@ -2043,21 +1862,7 @@ components:
             \ a field-level comparison or a combination of multiple conditions for\
             \ advanced filtering"
           items:
-            oneOf:
-            - $ref: "#/components/schemas/AndCondition"
-            - $ref: "#/components/schemas/BetweenCondition"
-            - $ref: "#/components/schemas/CompoundCondition"
-            - $ref: "#/components/schemas/ContainsCondition"
-            - $ref: "#/components/schemas/EqualsCondition"
-            - $ref: "#/components/schemas/FieldCondition"
-            - $ref: "#/components/schemas/GreaterThanCondition"
-            - $ref: "#/components/schemas/GreaterThanOrEqualsCondition"
-            - $ref: "#/components/schemas/InCondition"
-            - $ref: "#/components/schemas/LessThanCondition"
-            - $ref: "#/components/schemas/LessThanOrEqualsCondition"
-            - $ref: "#/components/schemas/NotCondition"
-            - $ref: "#/components/schemas/NotEqualsCondition"
-            - $ref: "#/components/schemas/OrCondition"
+            $ref: "#/components/schemas/Condition"
         limit:
           type: integer
           format: int32
@@ -2177,19 +1982,14 @@ components:
           description: The server uses a unique identifier assigned to the device
             to authenticate and distinguish incoming data from different devices
           example: "123456789012345"
-        phone:
-          type: string
-          description: "The mobile phone number of the device’s SIM card, used to\
-            \ send or receive SMS commands and data. Must be in E.164 format"
-          example: "+12345678901"
         label:
           type: string
           description: The inventory item label
           example: GPS tracker FMC130-001
         model:
           type: string
-          description: A code of one of the supported models. See inventory_item/models/list
-          example: navixy_ngp
+          description: A code of one of the supported models. See `a slaveinventory_item/master/model/list`
+          example: telfmb125
         asset_id:
           type: integer
           format: int64
@@ -2220,19 +2020,14 @@ components:
           description: The server uses a unique identifier assigned to the device
             to authenticate and distinguish incoming data from different devices
           example: "123456789012345"
-        phone:
-          type: string
-          description: "The mobile phone number of the device’s SIM card, used to\
-            \ send or receive SMS commands and data. Must be in E.164 format"
-          example: "+12345678901"
         label:
           type: string
           description: The inventory item label
           example: GPS tracker FMC130-001
         model:
           type: string
-          description: A code of one of the supported models. See inventory_item/models/list
-          example: navixy_ngp
+          description: A code of one of the supported models. See `a slaveinventory_item/master/model/list`
+          example: telfmb125
         asset_id:
           type: integer
           format: int64
@@ -2258,10 +2053,34 @@ components:
           example: "123456789012345"
         model:
           type: string
-          description: A code of one of the supported models. See inventory_item/models/list
-          example: navixy_ngp
+          description: A code of one of the supported models. See `a slaveinventory_item/master/model/list`
+          example: telfmb125
+        activation_method_id:
+          type: integer
+          format: int32
+          description: Unique identifier of one of the authentication methods supported
+            by the model. See `a slaveinventory_item/master/model/list`
+        fields:
+          type: object
+          additionalProperties:
+            type: string
+            description: |-
+              Combined set of field values needed for model activation, including:
+              - Model-specific parameters
+              - Activation-method-specific parameters
+            example: "{\"iridium_modem_imei\":\"123456789012345\",\"activation_code\"\
+              :\"123\"}"
+          description: |-
+            Combined set of field values needed for model activation, including:
+            - Model-specific parameters
+            - Activation-method-specific parameters
+          example:
+            iridium_modem_imei: "123456789012345"
+            activation_code: "123"
       required:
+      - activation_method_id
       - device_id
+      - fields
       - id
       - model
     InventoryUpdateRequest:
@@ -2772,15 +2591,115 @@ components:
       - fields
       - label
       - type_id
+    ActivationField:
+      description: Describes a field required for device activation
+      properties:
+        field:
+          type: string
+          description: The field code
+          example: iccid
+        title:
+          type: string
+          description: The title of the field
+          example: ICCID
+        optional:
+          type: boolean
+          description: Specifies if this field is optional
+        pattern:
+          type: string
+          description: A regular expression used to validate the field's value
+          example: "\\d{15}"
+      required:
+      - field
+      - optional
+      - pattern
+      - title
+    ActivationMethod:
+      description: Represents an available method for activating the device
+      properties:
+        id:
+          type: integer
+          format: int32
+          description: Unique identifier for the activation method
+        title:
+          type: string
+          description: The title of the activation method
+          example: By tracker phone number
+        method_fields:
+          type: array
+          description: List of fields required for this activation method
+          items:
+            $ref: "#/components/schemas/ActivationField"
+      required:
+      - id
+      - method_fields
+      - title
+    Communication:
+      description: Represents the communication settings supported by the model
+      properties:
+        port:
+          type: integer
+          format: int32
+          description: "The network port used for device communication. Can be null\
+            \ if the model does not support anything, or if it supports multiple connection\
+            \ types, the details will be in the `protocols` field"
+          example: 47776
+        protocols:
+          type: object
+          additionalProperties:
+            type: array
+            description: A list of protocol types
+            items:
+              type: string
+              description: A list of protocol types
+          description: A list of protocol types
+      required:
+      - protocols
+    MasterItemModel:
+      description: "Represents a supported device model with supported communication\
+        \ types, and activation fields and methods"
+      properties:
+        code:
+          type: string
+          description: A unique code representing the device model. Used for identification
+          example: telfmb125
+        vendor:
+          type: string
+          description: Name of the manufacturer or vendor of the device
+          example: Teltonika
+        name:
+          type: string
+          description: The name of the model
+          example: FMB125
+        communication:
+          $ref: "#/components/schemas/Communication"
+        base_activation_fields:
+          type: array
+          description: The list of base activation fields for device activation
+          items:
+            $ref: "#/components/schemas/ActivationField"
+        activation_methods:
+          type: array
+          description: List of available activation methods that can be used with
+            this model
+          items:
+            $ref: "#/components/schemas/ActivationMethod"
+      required:
+      - activation_methods
+      - base_activation_fields
+      - code
+      - communication
+      - name
+      - vendor
   securitySchemes:
     OAuth2:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: http://localhost:8180/realms/users/protocol/openid-connect/token
+          tokenUrl: https://auth.account.navixy.dev/realms/users/protocol/openid-connect/token
           scopes: {}
         authorizationCode:
-          authorizationUrl: http://localhost:8180/realms/users/protocol/openid-connect/auth
-          tokenUrl: http://localhost:8180/realms/users/protocol/openid-connect/token
-          refreshUrl: http://localhost:8180/realms/users/protocol/openid-connect/token
+          authorizationUrl: https://auth.account.navixy.dev/realms/users/protocol/openid-connect/auth
+          tokenUrl: https://auth.account.navixy.dev/realms/users/protocol/openid-connect/token
+          refreshUrl: https://auth.account.navixy.dev/realms/users/protocol/openid-connect/token
           scopes: {}
