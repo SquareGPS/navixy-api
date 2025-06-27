@@ -1,6 +1,6 @@
 # Activating a GPS device
 
-In Navixy Repository API, GPS devices are referred to as **inventory items** and stored in user-created lists called **inventories**. Inventories are collections of devices used to organize and manage equipment more efficiently. They serve as logical groupings that help structure, track, and operate devices. A device cannot exist outside of inventory.
+the In Navixy Repository API, GPS devices are referred to as **inventory items** and stored in user-created lists called **inventories**. Inventories are collections of devices used to organize and manage equipment more efficiently. They serve as logical groupings that help structure, track, and operate devices. A device cannot exist outside of inventory.
 
 In this guide, you will learn how to add a device to an inventory and activate it. You can activate any device listed on the [supported models](https://www.navixy.com/devices/) page or a smartphone with the [X-GPS Tracker](https://docs.navixy.com/user-guide/x-gps-tracker) app installed.
 
@@ -164,7 +164,15 @@ Alternatively, you can create and pair the slave device with a single request:
 }
 ```
 
-The response will be same as with an ordinary creation request.
+The response will be the same as with an ordinary creation request.
+
+### Extracting GPS device data
+
+Activating the device registers it with [Navixy API](https://www.navixy.com/docs/navixy-api/) and [IoT Logic](https://www.navixy.com/docs/iot-logic-api) systems. This allows you to:
+
+* Receive the device's telematics data via Navixy API's [Track points](https://www.navixy.com/docs/navixy-api/user-api/backend-api/guides/data-retrieval/get-track-points)
+* Enrich the received data with [IoT Logic via Websocket](https://www.navixy.com/docs/iot-logic-api/websocket-access-for-dsa)
+* Send the data to an external system via [IoT Logic and MQTT](https://www.navixy.com/docs/iot-logic-api/navixy-iot-guide/scenario1)
 
 {% hint style="success" %}
 **Congratulations!**\
