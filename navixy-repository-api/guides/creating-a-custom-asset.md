@@ -178,5 +178,5 @@ If you haven't created an inventory item yet, you can add the `asset_id` paramet
 {% hint style="success" %}
 **Congratulations!**\
 \
-You've successfully created a custom asset. Next, you can [assign it to a linked group](configuring-an-asset-link.md).
+You've successfully created a custom asset. Next, you can [add it to an asset link](configuring-an-asset-link.md).
 {% endhint %}

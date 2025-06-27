@@ -17,6 +17,10 @@ Navixy Repository API supports two types of devices:
 
 ### How to activate a GPS device
 
+#### Prerequisites
+
+A GPS device ready for activation.
+
 #### Step 1. Create an inventory
 
 {% openapi-schemas spec="navixy-repo" schemas="Inventory" grouped="true" %}
