@@ -170,11 +170,11 @@ Alternatively, you can create and pair the slave device with a single request:
 
 The response will be the same as with an ordinary creation request.
 
-### Extracting GPS device data
+### How to use the data transmitted by the device?
 
 Activating the device registers it with [Navixy API](https://www.navixy.com/docs/navixy-api/) and [IoT Logic](https://www.navixy.com/docs/iot-logic-api) systems. This allows you to:
 
-* Receive the device's telematics data via Navixy API's [Track points](https://www.navixy.com/docs/navixy-api/user-api/backend-api/guides/data-retrieval/get-track-points)
+* Receive the device's location data via Navixy API's [Track points](https://www.navixy.com/docs/navixy-api/user-api/backend-api/guides/data-retrieval/get-track-points)
 * Enrich the received data with [IoT Logic via Websocket](https://www.navixy.com/docs/iot-logic-api/websocket-access-for-dsa)
 * Send the data to an external system via [IoT Logic and MQTT](https://www.navixy.com/docs/iot-logic-api/navixy-iot-guide/scenario1)
 
