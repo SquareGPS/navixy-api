@@ -11,7 +11,7 @@ Navixy Raw IoT Data API is a powerful tool designed for developers and data engi
 
 ## Overview
 
-The structure of the Raw IoT Data API is mostly similar to the [Backend API](../backend-api/). If you're familiar with the basics of the user API, you will find this API intuitive and easy to work with. The Raw IoT Data API provides robust methods to access raw, unprocessed data, ensuring you can harness the full potential of your connected devices.
+The structure of the Raw IoT Data API is mostly similar to the [Backend API](broken-reference). If you're familiar with the basics of the user API, you will find this API intuitive and easy to work with. The Raw IoT Data API provides robust methods to access raw, unprocessed data, ensuring you can harness the full potential of your connected devices.
 
 ## Time Frame Limits
 

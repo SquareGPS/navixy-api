@@ -22,7 +22,7 @@ Imagine that you need to retrieve the following data:
 * Date and Time
 * Any other data valuable to your business
 
-Please note that you will not receive human-readable information about fuel drains and refills, excessive consumption, idling, and other analytics—those are available through [backend-API methods](../../backend-api/). Raw data requests provide unprocessed data received directly from the device, decoded by the Navixy platform, offering instantaneous data readings for a specific period. This data is suitable for further processing and analysis on your end.
+Please note that you will not receive human-readable information about fuel drains and refills, excessive consumption, idling, and other analytics—those are available through [backend-API methods](broken-reference). Raw data requests provide unprocessed data received directly from the device, decoded by the Navixy platform, offering instantaneous data readings for a specific period. This data is suitable for further processing and analysis on your end.
 
 ## Requesting Inputs List
 
@@ -147,7 +147,7 @@ The above example is one of the simplest, but it clearly demonstrates the proces
 
 When requesting raw data, you must specify the exact period for which you need the data to ensure the platform can accurately process your request and return the necessary information.
 
-Similar to the [Backend API](../../backend-api/), you can specify the date and time in either the standard `YYYY-MM-DD HH:mm:ss` format with or without a time zone or in ISO 8601 format.
+Similar to the [Backend API](broken-reference), you can specify the date and time in either the standard `YYYY-MM-DD HH:mm:ss` format with or without a time zone or in ISO 8601 format.
 
 The default format for Raw IoT Data API requests is ISO 8601.
 
@@ -239,7 +239,7 @@ In this case, the retrieved data will be in the time zone of the user account.
 
 There may be situations when you need to obtain data in a specific time zone different from the user account. This can be useful when the customer's time zone differs from yours due to geographical reasons.
 
-In this case, you need to supplement your request with the `time_zone` parameter and specify the required zone ID. You can request all the possible zone IDs using the [`timezone/list`](../../backend-api/resources/commons/timezone.md) request from the Backend API.
+In this case, you need to supplement your request with the `time_zone` parameter and specify the required zone ID. You can request all the possible zone IDs using the [`timezone/list`](../../resources/timezone.md) request from the Backend API.
 
 **API request example:**
 

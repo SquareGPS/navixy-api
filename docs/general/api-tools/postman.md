@@ -52,7 +52,7 @@ The Postman API client simplifies sending API requests and ensures that paramete
     Each API request uses an HTTP method. The most common methods for the Navixy API are GET and POST. GET retrieves data from the API, while POST sends new data.
 2.  **Enter the Base Request URL with the Resource and Sub-resource:**
 
-    In our example, we will use [`user/auth`](../../user-api/backend-api/resources/commons/user/index.md#auth) and [`tracker/list`](../../user-api/backend-api/resources/tracking/tracker/index.md#list) requests. Base request URLs are:
+    In our example, we will use [`user/auth`](broken-reference) and [`tracker/list`](../../user-api/backend-api/resources/tracking/tracker/index.md#list) requests. Base request URLs are:
 
     * For EU server - `https://api.eu.navixy.com/v2/`
     * For US server - `https://api.us.navixy.com/v2/`

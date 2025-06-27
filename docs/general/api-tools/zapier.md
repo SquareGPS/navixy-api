@@ -49,7 +49,7 @@ Example use cases include:
     Select the correct server (US for accounts starting with 1000xxxx, otherwise EU).
 3. **Specify Trigger Details**
    * **Tracker IDs:** Find them in the admin panel or user interface.![Tracker ID admin panel](../assets/trackerIDPanel.png)![Tracker ID user interface](../assets/trackerIDUI.png)
-   * **Event Types:** Specify one or multiple event types separated by comma from the provided list by click on the parameter name in Zapier or using [history/type/list](../../user-api/backend-api/resources/commons/history/history_type.md#list) API request.
+   * **Event Types:** Specify one or multiple event types separated by comma from the provided list by click on the parameter name in Zapier or using [history/type/list](../../user-api/resources/history/history_type.md#list) API request.
    * **Account's Time Zone:** Specify the time zone (e.g., UTC+3 as 3).
    * **Time Interval:** Set the interval for event checks in minutes (e.g., 15 minutes).
 

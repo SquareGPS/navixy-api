@@ -6,7 +6,7 @@ description: Overview of Navixy Eco Fleet API
 # Eco Fleet API
 
 The structure of Eco Fleet API is close to the user API, so\
-we highly recommend reading [Backend API: getting started](../backend-api/).
+we highly recommend reading [Backend API: getting started](broken-reference).
 
 The main differences are _request paths_, _authorization system_ and _request format_.
 

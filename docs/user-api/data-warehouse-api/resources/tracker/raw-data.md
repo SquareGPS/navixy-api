@@ -102,7 +102,7 @@ For example:
 * If LLS Levels from 1 to 4 are available, `lls_level_4` is returned, and it is assumed that LLS levels 1 through 3 also exist.
 * If AVL IOs from 1 to 100000 are available for a device, `avl_io_100000` is returned, then AVL IOs with smaller indexes also exist.
 
-Additionally, you can get a description of all inputs from response using the[input\_name](../../../backend-api/resources/tracking/tracker/sensor/input_name.md#list) endpoint.
+Additionally, you can get a description of all inputs from response using the[input\_name](../../../resources/tracker/sensor/input_name.md#list) endpoint.
 
 #### Possible errors
 
