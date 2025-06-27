@@ -136,9 +136,21 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
   -d '{
     "id": 123,
     "device_id": "356307042441234",
-    "model": "teltonika_fmc130"
+    "model": "teltonika_fmc130",
+    "activation_method_id": 1,
+    "fields": {​
+      "iridium_modem_imei": "123456789012345",
+      "activation_code": "123"​
+    }
   }'
 ```
+
+**Key parameters:**
+
+* `activation_method_id`: Unique identifier of one of the authentication methods supported by the model.
+* `fields` : Combined set of field values needed for model activation, including:
+  * Model-specific parameters
+  * Activation method-specific parameters
 
 **Response:** `204 No Content` (Success)
 {% endstep %}

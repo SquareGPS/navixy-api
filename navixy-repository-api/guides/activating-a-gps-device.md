@@ -61,10 +61,17 @@ Use this request body:
   "inventory_id": 12,
   "model": "navixy_ngp",
   "device_id": "123456789012345",
-  "label": "gps_tracker_fmc130_001"
+  "label": "gps_tracker_fmc130_001",
+  "phone": "+1234567890"
 }
 
 ```
+
+**Key parameters:**
+
+* `device_id`: The device's IMEI number (usually found on a sticker)
+* `model`: Device model code ([see supported devices](https://www.navixy.com/devices/))
+* `phone`: SIM card number (optional)
 
 You will get the ID of the newly created item:
 
@@ -89,11 +96,26 @@ Send the following request:
 {
   "id": 123,
   "device_id": "123456789012345",
-  "model": "navixy_ngp"
+  "model": "navixy_ngp",
+  "activation_method_id": 1,
+  "fields": {​
+    "iridium_modem_imei": "123456789012345",
+    "activation_code": "123"​
+  }
 }
 ```
 
-You will receive an empty response body and the `204 No Content` status.
+**Key parameters:**
+
+* `activation_method_id`: Unique identifier of one of the authentication methods supported by the model.
+*   `fields` : Combined set of field values needed for model activation, including:
+
+    * Model-specific parameters
+    * Activation method-specific parameters
+
+    You will receive an empty response body and the `204 No Content` status
+
+
 
 **Step 4. (Optional) Create and pair slave devices**
 
@@ -131,6 +153,18 @@ Use this request body:
 ```
 
 You will receive an empty response body and a `204 No Content` status.
+
+Alternatively, you can create and pair the slave device with a single request:
+
+```json
+{
+  "inventory_id": 12,
+  "label": "gps_tracker_fmc130_001",
+  "master_id": 123
+}
+```
+
+The response will be same as with an ordinary creation request.
 
 {% hint style="success" %}
 **Congratulations!**\
