@@ -7,11 +7,9 @@ description: This document contains zone object description and CRUD actions for
 
 ## Working with geofences
 
-Geofences used in rules to limit rule area of activity. Also, geofence names shown in reports after the address, if\
-an event happened inside the geofence.
+Geofences used in rules to limit rule area of activity. Also, geofence names shown in reports after the address, if an event happened inside the geofence.
 
-This document describes CRUD actions for geofences. Note that geofence points handled separately because they are\
-represented by big arrays of data.
+This document describes CRUD actions for geofences. Note that geofence points handled separately because they are represented by big arrays of data.
 
 Find instructions on working with geofences of different types [here](../../../guides/places/manage-geofences.md).
 
@@ -154,15 +152,15 @@ For `batch` parameter:
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/zone/batch_convert' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "batch": "Geofence for test Karlsplatz, 2"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -261,15 +259,15 @@ Creates a new geofence.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/zone/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Circle geofence", "type": "circle", "center": {"lat": 61.49504550221769, "lng": 23.775476217269897}, "radius": 50, "tags": [179227], "color": "03A9F4", "address":"Address"}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -307,23 +305,23 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/zone/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 1234567}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/zone/delete?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=1234567
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -372,23 +370,21 @@ Gets all user geofences.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/zone/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/zone/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -425,23 +421,23 @@ Gets geofence by specified ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/zone/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 12345}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/zone/read?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=12345
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -475,15 +471,15 @@ Gets all geofence IDs and names within which a specified coordinates are located
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/zone/search_location' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 34.178868, "lng": -118.599672}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -528,15 +524,15 @@ Update geofence parameters for the specified geofence.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/zone/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"id": 231512 "label": "Circle geofence", "type": "circle", "center": {"lat": 61.49504550221769, "lng": 23.775476217269897}, "radius": 50, "tags": [179227], "color": "03A9F4", "address":"Address"}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -558,8 +554,7 @@ Import geofences from a KML file.
 
 **required sub-user rights**: `zone_update`.
 
-**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload\
-(with the name "file").
+**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload (with the name "file").
 
 #### Parameters
 
@@ -724,15 +719,13 @@ Download geofences as KML File.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/zone/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
 
 #### Response
 

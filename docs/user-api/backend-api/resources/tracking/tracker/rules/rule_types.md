@@ -1,14 +1,10 @@
 ---
 title: Rule types
-description: >-
-  Rule types with all parameters to create. The rule availability depends on the
-  device and rule integration for it.
 ---
 
 # Rule types
 
-Rule types with all parameters to create. The rule availability depends on the device, connected and configured equipment\
-and rule integration for it.
+Rule types with all parameters to create. The rule availability depends on the device, connected and configured equipment and rule integration for it.
 
 ### Geofence entrance or exit
 
@@ -159,7 +155,7 @@ A rule that triggers when your employee standstill more than allowed. The parkin
 
 ### Task performance
 
-A rule that triggers when assigned to a tracker [task](broken-reference) changes its status.
+A rule that triggers when assigned to a tracker [task](../../../field-service/task/) changes its status.
 
 #### Parameters
 
@@ -386,9 +382,10 @@ Autocontrol related tracked rules like alarm, battery, doors and others. Based o
 | zone\_limit\_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                          | boolean     |
 | append\_zone\_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone\_limit\_inverted param set to `true`. | boolean     |
 
-???+ example "Map of sub-rules settings"
+<details>
 
-````
+<summary>Map of sub-rules settings</summary>
+
 ```json
 {
   "alarmcontrol": {
@@ -450,7 +447,10 @@ Autocontrol related tracked rules like alarm, battery, doors and others. Based o
   }
 }
 ```
-````
+
+
+
+</details>
 
 ### Car crash
 

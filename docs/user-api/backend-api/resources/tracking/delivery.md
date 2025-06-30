@@ -5,8 +5,6 @@ description: API calls to get delivery states and tasks by IDs.
 
 # Delivery info
 
-API calls to get delivery states and tasks by IDs.
-
 ## API actions
 
 API base path: `/delivery`.
@@ -30,23 +28,25 @@ In addition to standard user session, this call supports special _DELIVERY_ sess
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/delivery/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": 259876}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```sh
 {{ extra.api_example_url }}/delivery/read?hash=a6aa75587e5c59c32d347da438505fc3&external_id=259876
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -99,23 +99,25 @@ in addition to standard user session, this call supports special _DELIVERY_ sess
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/delivery/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": 259876}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/delivery/list?hash=a6aa75587e5c59c32d347da438505fc3&external_id=259876
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

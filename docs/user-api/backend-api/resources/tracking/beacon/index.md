@@ -52,10 +52,9 @@ List of beacon data history between `from` date/time and `to` date/time sorted b
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/beacon/data/read' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -66,7 +65,6 @@ curl -X POST '{{ extra.api_example_url }}/beacon/data/read' \
 "trackers": [10181654]
 }'
 ```
-````
 
 #### Response
 
@@ -119,10 +117,9 @@ List of last BLE beacon data visible on the trackers.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/beacon/data/last_values' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -131,7 +128,6 @@ curl -X POST '{{ extra.api_example_url }}/beacon/data/last_values' \
 "skip_older_than_seconds": 3600
 }'
 ```
-````
 
 #### Response
 

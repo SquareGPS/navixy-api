@@ -44,15 +44,15 @@ Creates new possible working status for the specified working status list.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/status/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345, "status": {"label": "Busy", "color": "E57373"}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -86,23 +86,23 @@ Deletes working status entry.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/status/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status_id": 123}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/status/delete?hash=a6aa75587e5c59c32d347da438505fc3&status_id=123
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -130,23 +130,23 @@ Gets working statuses belonging to the specified status list.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/status/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
 ```
 {{ extra.api_example_url }}/status/list?hash=a6aa75587e5c59c32d347da438505fc3&listing_id=12345
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -188,15 +188,15 @@ Updates working status properties.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/status/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status": {"id": 5, "label": "Busy", "color": "E57373"}}'
 ```
-````
+{% endcode %}
 
 #### Response
 

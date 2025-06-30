@@ -99,7 +99,7 @@
           * [Tracking mode](user-api/backend-api/resources/tracking/tracker/settings/tracking.md)
           * [Tracking profiles](user-api/backend-api/resources/tracking/tracker/settings/tracking_profiles.md)
           * [Parking detection](user-api/backend-api/resources/tracking/tracker/settings/trip_detection.md)
-          * [special](user-api/backend-api/resources/tracking/tracker/settings/special/README.md)
+          * [Special](user-api/backend-api/resources/tracking/tracker/settings/special/README.md)
             * [About special settings](user-api/backend-api/resources/tracking/tracker/settings/special/index.md)
             * [Specific portlets](user-api/backend-api/resources/tracking/tracker/settings/special/portlets.md)
         * [Stats](user-api/backend-api/resources/tracking/tracker/stats/README.md)

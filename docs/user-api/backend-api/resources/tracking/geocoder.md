@@ -35,15 +35,15 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/geocoder/search_address' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -108,15 +108,15 @@ Search address by location using geocoder.
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/geocoder/search_location' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 37.825429, "lng": -122.371982}}'
 ```
-````
+{% endcode %}
 
 #### Response
 

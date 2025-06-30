@@ -1,12 +1,11 @@
 ---
 title: Map layer
-description: Contains map layer object structure and API calls to interact with it. 
+description: Contains map layer object structure and API calls to interact with it.
 ---
 
 # Map layer
 
 Contains map layer object structure and API calls to interact with it.
-
 
 ## Map layer object structure:
 
@@ -20,7 +19,6 @@ Contains map layer object structure and API calls to interact with it.
 * `id` - int. Map layer entity ID.
 * `label` - string. Map layer name.
 
-
 ## API actions
 
 API path: `/map_layer`.
@@ -32,25 +30,28 @@ Reads the body of the specified layer.
 #### Parameters
 
 | name | description          | type | format |
-|:-----|:---------------------|:-----|:-------|
+| ---- | -------------------- | ---- | ------ |
 | id   | ID of the map layer. | int  | 123456 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/map_layer/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 123456}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/map_layer/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 123456}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/map_layer/read?hash=a6aa75587e5c59c32d347da438505fc3&id=123456
-    ```
-
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+{{ extra.api_example_url }}/map_layer/read?hash=a6aa75587e5c59c32d347da438505fc3&id=123456
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -59,7 +60,6 @@ Layer body with content-type: `application/vnd.google-earth.kml+xml; charset=utf
 #### Errors
 
 * 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
-
 
 ### list
 
@@ -71,19 +71,23 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/map_layer/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/map_layer/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/map_layer/listd?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+{{ extra.api_example_url }}/map_layer/listd?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -103,21 +107,20 @@ Only API key `hash`.
 
 No specific errors.
 
-
 ### upload
 
 Uploads new map layer.
 
-**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload 
+**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a KML file upload\
 (with the name "file").
 
 #### Parameters
 
-| name            | description                                                                                                                         | type        |
-|:----------------|:------------------------------------------------------------------------------------------------------------------------------------|:------------|
-| label           | Label for a new map layer.                                                                                                          | string      |
-| file            | A KML file upload containing map_layer data.                                                                                        | File upload |
-| redirect_target | Optional. URL to redirect. If **redirect_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>` | string      |
+| name             | description                                                                                                                          | type        |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| label            | Label for a new map layer.                                                                                                           | string      |
+| file             | A KML file upload containing map\_layer data.                                                                                        | File upload |
+| redirect\_target | Optional. URL to redirect. If **redirect\_target** passed return redirect to `<redirect_target>?response=<urlencoded_response_json>` | string      |
 
 #### Response
 
@@ -137,16 +140,15 @@ Uploads new map layer.
 * 242 - Validation error – if uploaded file is not valid KML.
 * 268 - Over quota – if the user's quota for map layers exceeded.
 
-
 ### update
 
 Updates metadata for the specified map layer.
 
 #### Parameters
 
-| name  | description                                                    | type        |
-|:------|:---------------------------------------------------------------|:------------|
-| layer | Map layer object described [here](#map-layer-object-structure) | JSON object |
+| name  | description                                                                | type        |
+| ----- | -------------------------------------------------------------------------- | ----------- |
+| layer | Map layer object described [here](map_layer.md#map-layer-object-structure) | JSON object |
 
 #### Response
 
@@ -160,7 +162,6 @@ Updates metadata for the specified map layer.
 
 * 201 - Not found in the database – if there is no map layer with such ID belonging to current user.
 
-
 ### delete
 
 Deletes specified layer.
@@ -168,24 +169,30 @@ Deletes specified layer.
 #### Parameters
 
 | name | description          | type | format |
-|:-----|:---------------------|:-----|:-------|
+| ---- | -------------------- | ---- | ------ |
 | id   | ID of the map layer. | int  | 123456 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/map_layer/delete' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 123456}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/map_layer/delete' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 123456}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/map_layer/delete?hash=a6aa75587e5c59c32d347da438505fc3&id=123456
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+{{ extra.api_example_url }}/map_layer/delete?hash=a6aa75587e5c59c32d347da438505fc3&id=123456
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

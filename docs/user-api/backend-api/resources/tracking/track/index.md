@@ -37,15 +37,15 @@ This method allows you to download track points as a KML/KMZ file which can be u
 Let's consider an example, where we're looking for a KML file for a tracker with ID 1683258 that doesn't break down by stops.\
 The data should cover trips starting from 3:24 AM to 6:24 AM on November 19, 2023, according to the user's local time.
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/track/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "from": "2023-11-19 03:24:00", "to": "2023-11-19 06:24:00", "format": "kml", "split": false}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -143,15 +143,15 @@ LBS points recorded, without clustering, separated by parkings, while also count
 each trip, we only need to specify the "filter" and "count\_events" from optional parameters. This is because the other optional\
 settings will provide us with necessary info by default.
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/track/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "from": "2023-11-01 03:24:00", "to": "2023-11-30 06:24:00", "filter": false, "count_events": true}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -369,15 +369,15 @@ For instance, if we need to obtain track points for tracker 1683258 that fall wi
 track ID 923150, without applying a smart filter, LBS points and simplifier. Since these optional parameters by default\
 are `true`, we should list them in our request.
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/track/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "track_id": 923150, "from": "2023-11-01 00:00:00", "to": "2023-11-01 23:59:59", "filter": false, "simplify": false, "include_gsm_lbs": false}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -455,15 +455,15 @@ This method fetches IDs of zones and places that contain at least one track poin
 
 For instance, if we need to obtain IDs of zones and places that contain at least one track point related to tracker 1683258 in January.
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/track/visit/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "from": "2024-01-01 00:00:00", "to": "2024-01-31 00:00:00"}'
 ```
-````
+{% endcode %}
 
 #### Response
 

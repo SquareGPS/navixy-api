@@ -15,7 +15,7 @@ you can see below)`special_control` = "none" means that tracker doesn't have spe
 
 * **read** special settings with [api/tracker/settings/special/read](index.md#read),
 * **update** special settings with [api/tracker/settings/special/update](index.md#update),
-* **perform special control** with [api/tracker/send\_command](broken-reference).
+* **perform special control** with [api/tracker/send\_command](../../#send_command).
 
 Such control assumes tracker special settings
 
@@ -36,23 +36,23 @@ Gets special settings for the specified tracker.
 
 **Examples**
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/settings/special/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/settings/special/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 **Responses**
 
@@ -959,15 +959,15 @@ Sets special settings for a specified tracker with the new one.
 
 **Examples**
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/settings/special/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "value": {"type": "time_shift", "offset": 3.0}}'
 ```
-````
+{% endcode %}
 
 **Response**
 

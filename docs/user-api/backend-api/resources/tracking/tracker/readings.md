@@ -7,8 +7,6 @@ description: >-
 
 # Sensor readings
 
-API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel.
-
 Described getting data from sensors in our [guides](../../../guides/data-retrieval/sensor-data.md).
 
 ## API actions
@@ -29,23 +27,23 @@ Gets last values for all sensors, state values and counters.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/readings/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/readings/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -149,23 +147,25 @@ Gets last values for all sensors, state values and counters on multiple trackers
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/readings/batch_list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [10181215,10038816]}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/readings/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[10181215,10038816]
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

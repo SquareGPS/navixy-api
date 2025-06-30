@@ -1,6 +1,5 @@
 ---
 title: Getting route with Progorod
-description: API call for getting the route to destination point using Progorod router.
 ---
 
 # Getting route with Progorod
@@ -26,8 +25,7 @@ Gets route points using Progorod router.
 | minsize      | Optional. Default=5. Smoothing parameter in conventional meters. Not recommended to set it less than distance between two neighbouring pixels on current zoom. | double                |
 | use\_traffic | Optional. Default=`false` If it is `false` then use `mode=optimal` and use traffic=0, else `mode=comfort` and use traffic=1.                                   | boolean               |
 
-Where **location** described in [data types description section](../../../#data-types). Order of\
-waypoints may be changed.
+Where **location** described in [data types description section](../../../#data-types). Order of waypoints may be changed.
 
 #### Response
 

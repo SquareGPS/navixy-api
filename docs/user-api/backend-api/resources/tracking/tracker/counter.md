@@ -5,8 +5,6 @@ description: This resource contains counter specific actions
 
 # Counters
 
-This resource contains counter specific actions
-
 Find information on how to get counters data [here](../../../guides/data-retrieval/sensor-data.md).
 
 ## Resource specific actions
@@ -37,23 +35,25 @@ Reads counter of passed `type`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/counter/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/counter/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -91,23 +91,25 @@ Updates counter of passed `type`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/counter/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "multiplier": 3.14, "sensor_id": 1234}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/counter/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer&multiplier=3.14&sensor_id=1234
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -143,23 +145,23 @@ Gets last values of the tracker's counters.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/get_counters' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/get_counters?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -206,23 +208,25 @@ Gets actual value of specified `type` of sensor.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/get' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/counter/value/get?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -254,15 +258,15 @@ Get actual values for counters of passed `type` and `trackers`.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456, 234567], "type": "odometer"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -296,15 +300,15 @@ Creates new counter of passed `type` (if not) and update its `value`.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/set' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "value": 233.21}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -336,15 +340,15 @@ Returns counter values for a period.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/counter/data/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "from": "2021-02-01 00:00:00", "to": "2021-02-01 03:00:00"}'
 ```
-````
+{% endcode %}
 
 #### Response
 

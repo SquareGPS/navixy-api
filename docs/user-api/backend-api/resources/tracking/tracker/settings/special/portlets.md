@@ -1,6 +1,5 @@
 ---
 title: Specific portlets
-description: Specific portlets that are used for models of three device manufacturers.
 ---
 
 # Specific portlets

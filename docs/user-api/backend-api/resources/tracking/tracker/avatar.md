@@ -2,10 +2,8 @@
 title: Avatar for the tracker
 description: Contains API call to upload avatar for the tracker.
 ---
+
 # Avatar for the tracker
-
-Contains API call to upload avatar for the tracker.
-
 
 ## API actions
 
@@ -13,16 +11,16 @@ API base path: `/tracker/avatar`.
 
 ### upload
 
-Uploads avatar image for specified tracker.
-Then it will be available from `{{ extra.api_example_url }}/[api_static_path]/tracker/avatars/<file_name>`
+Uploads avatar image for specified tracker. \
+Then it will be available from `{{ extra.api_example_url }}/[api_static_path]/tracker/avatars/<file_name>`\
 e.g. `{{ extra.api_example_url }}/static/tracker/avatars/abcdef123456789.png`.
 
 **required sub-user rights:** `tracker_update`.
 
-**MUST** be a POST multipart request (multipart/form-data),
+**MUST** be a POST multipart request (multipart/form-data),\
 with one of the parts being an image file upload (with the name "file").
 
-File part **mime** type must be one of (see: [source:api-server/src/main/java/com/navixy/common/util/ImageFormats.java ImageFormats.IMAGE_FORMATS]):
+File part **mime** type must be one of (see: \[source:api-server/src/main/java/com/navixy/common/util/ImageFormats.java ImageFormats.IMAGE\_FORMATS]):
 
 * `image/jpeg`
 * `image/pjpeg`
@@ -32,11 +30,11 @@ File part **mime** type must be one of (see: [source:api-server/src/main/java/co
 
 #### Parameters
 
-| name            | description                                                                                     | type   |
-|:----------------|:------------------------------------------------------------------------------------------------|:-------|
-| tracker_id      | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int    |
-| file            | image file.                                                                                     | string |
-| redirect_target | Optional. URL to redirect If `redirect_target` passed return redirect to `?response=`.          | URL    |
+| name             | description                                                                                      | type   |
+| ---------------- | ------------------------------------------------------------------------------------------------ | ------ |
+| tracker\_id      | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int    |
+| file             | image file.                                                                                      | string |
+| redirect\_target | Optional. URL to redirect If `redirect_target` passed return redirect to `?response=`.           | URL    |
 
 #### Response
 

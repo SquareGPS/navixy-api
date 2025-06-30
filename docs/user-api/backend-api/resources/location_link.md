@@ -1,8 +1,6 @@
 ---
 title: Geo Links
-description: >-
-  API calls for working with Geo Links. These are special sessions to share the
-  location of mobile objects.
+description: API calls for working with Geo Links.
 ---
 
 # Geo Links
@@ -71,9 +69,8 @@ Creates new Geo Link. There may be up to 10000 geo-links per user account.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
 ```bash
 curl -X POST "{{ extra.api_example_url }}/tracker/location/link/create" \
     -H "Content-Type: application/json" \
@@ -110,7 +107,6 @@ curl -X POST "{{ extra.api_example_url }}/tracker/location/link/create" \
 }
 EOF
 ```
-````
 
 #### Response
 
@@ -145,9 +141,8 @@ Updates Geo Link.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
 ```bash
 curl -X POST "{{ extra.api_example_url }}/tracker/location/link/update" \
     -H "Content-Type: application/json" \
@@ -186,7 +181,6 @@ curl -X POST "{{ extra.api_example_url }}/tracker/location/link/update" \
 }
 EOF
 ```
-````
 
 #### Response
 
@@ -217,15 +211,13 @@ Lets to activate and deactivate a link.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/location/link/status/change' \
     -H 'Content-Type: application/json' \
     -d '{"hash":"a6aa75587e5c59c32d347da438505fc3","id":104,"is_active":false}'
 ```
-````
 
 #### Response
 
@@ -251,23 +243,23 @@ Returns a link with a specified ID.
 
 #### Example
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/location/link/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash":"a6aa75587e5c59c32d347da438505fc3","id":103}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/location/link/read?hash=a6aa75587e5c59c32d347da438505fc3&id=103
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -323,13 +315,13 @@ Returns a list of a user's links.
 
 #### Parameters
 
-| name       | description                                                                                                                                                                      | type             |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| filter     | Optional. Filter for all fields. If used with conditions, both filter and conditions must match for every returned links.                                                        | string           |
-| conditions | Optional. Search conditions to apply to list. Array of search conditions, see [Search conditions](../../introduction/resources/broken-reference/). Possible fields listed below. | array of objects |
-| offset     | Optional. Offset, default is 0.                                                                                                                                                  | int              |
-| limit      | Optional. Limit, default is 10,000.                                                                                                                                              | int              |
-| sort       | Optional. Each option is a pair of field name and sorting direction, e.g. `["creator=asc", "id=desc"]`. Possible fields listed below.                                            | string array     |
+| name       | description                                                                                                                                                           | type             |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| filter     | Optional. Filter for all fields. If used with conditions, both filter and conditions must match for every returned links.                                             | string           |
+| conditions | Optional. Search conditions to apply to list. Array of search conditions, see [Search conditions](commons/entity/search_conditions.md). Possible fields listed below. | array of objects |
+| offset     | Optional. Offset, default is 0.                                                                                                                                       | int              |
+| limit      | Optional. Limit, default is 10,000.                                                                                                                                   | int              |
+| sort       | Optional. Each option is a pair of field name and sorting direction, e.g. `["creator=asc", "id=desc"]`. Possible fields listed below.                                 | string array     |
 
 **condition fields**
 
@@ -352,23 +344,25 @@ Returns a list of a user's links.
 
 #### Example
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/location/link/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "offset": 0, "limit": 1000}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/location/link/list?hash=a6aa75587e5c59c32d347da438505fc3&offset=0&limit=1000
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -426,15 +420,13 @@ Deletes a link with a specified ID.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/location/link/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "id": 103}'
 ```
-````
 
 #### Response
 

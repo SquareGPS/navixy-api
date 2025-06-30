@@ -1,6 +1,5 @@
 ---
 title: Getting route with OSRM
-description: API call for getting the route to destination point using OSRM API.
 ---
 
 # Getting route with OSRM
@@ -28,15 +27,15 @@ Where **location** described in [data types description section](../../../#data-
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/route/osrm/get' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start": {34.178868, "lng": -118.599672}, "end": {35.365948, "lng": -108.112104}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -95,6 +94,7 @@ curl -X POST '{{ extra.api_example_url }}/route/osrm/get' \
 }
 ```
 
+{% code overflow="wrap" %}
 ```
 * `status` - [enum](../../../getting-started/introduction.md#data-types).
     * `NOT_FOUND` – indicates at least one of the locations specified in the request's origin, destination, or 
@@ -103,6 +103,7 @@ curl -X POST '{{ extra.api_example_url }}/route/osrm/get' \
 * `status_code` - int. OSRM status code (don't rely on it).
 * `message` - string. OSRM error message (don't rely on it).
 ```
+{% endcode %}
 
 * 236 - Feature unavailable due to tariff restrictions – if there is at least one tracker without "routing" tariff\
   feature.

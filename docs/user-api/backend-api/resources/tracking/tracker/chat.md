@@ -5,8 +5,7 @@ description: API calls to work with chat module.
 
 # Chat
 
-API calls to work with chat module. A chat module allows remote employees and supervisors quickly exchange their\
-ideas and feedback, as well as helps employers to boost team culture. This can prove to be a useful communication tool.
+API calls to work with chat module. A chat module allows remote employees and supervisors quickly exchange their ideas and feedback, as well as helps employers to boost team culture. This can prove to be a useful communication tool.
 
 ## API actions
 
@@ -28,23 +27,23 @@ Gets a list of chat messages.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/list' \
     -H 'Content-Type: application/json' \
     -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/chat/list?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -96,23 +95,23 @@ Marks all incoming chat messages as read for all or for given user trackers.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read_all' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/chat/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -141,23 +140,23 @@ Use only one parameter.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "message_id": 123}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/chat/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&message_id=123
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -184,15 +183,15 @@ Sends chat message to a specified tracker.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/send' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "message": "Hello World"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -225,15 +224,15 @@ Sends chat message to specified trackers.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999199, 991999], "message": "Hello World"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -265,15 +264,13 @@ Gets date-times of last messages in chat of trackers.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999199, 991999]}'
 ```
-````
 
 #### Response
 
@@ -301,23 +298,23 @@ Gets count of user's unread chat messages grouped by tracker ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/chat/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

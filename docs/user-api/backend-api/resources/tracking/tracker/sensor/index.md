@@ -57,7 +57,7 @@ Contains API calls to interact with sensors.
   * `ignore_refuels_in_move` - optional. Boolean. Default is false. If true, the refuels will not be detected during movement.
   * `refuel_gap_minutes` - optional. Integer. Default is 5. The time in minutes after the start of the movement, refuels will be detected during movement.
   * `custom_field_name` - optional. Boolean. Default false. The parameter determines whether the `input_name` field is a custom value was entered by user.\
-    This makes sense only if the [tracker model](broken-reference) has the feature `has_custom_fields`.
+    This makes sense only if the [tracker model](../#list_models) has the feature `has_custom_fields`.
 
 #### Metering sensor type values
 
@@ -134,7 +134,7 @@ Contains API calls to interact with sensors.
 * `name` - string, max size 100. A name of sensor.
 * `input_name` - string, max size 64. A source input field name (identifier).
 * `custom_field_name` - optional. Boolean. Default false. The parameter determines whether the `input_name` field is a custom value was entered by user.\
-  This makes sense only if the [tracker model](broken-reference) has the feature `has_custom_fields`.
+  This makes sense only if the [tracker model](../#list_models) has the feature `has_custom_fields`.
 * `parameters` - optional object with additional parameters.
   * `calc_method` - [enum](../../../../#data-types). A method of sensor value calculation. One of this: "in\_range", "identity", "bit\_index".
   * `range_from` - double. Low bound of range. It is used only with "in\_range" calc method.
@@ -177,23 +177,25 @@ There exists a similar method for working with a single tracker - [list](index.m
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/sensor/batch_list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [204104, 181451]}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/sensor/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[204104, 181451]
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -241,15 +243,15 @@ Creates a sensor.
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/sensor/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0.0, "units": "", "units_type": "celsius"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -285,23 +287,25 @@ Deletes a sensor with `sensor_id` from the database.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/sensor/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 23456}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/sensor/delete?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&sensor_id=23456
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -329,23 +333,23 @@ List tracker sensors bound to tracker with specified ID (`tracker_id` parameter)
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/sensor/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tracker/sensor/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -389,15 +393,15 @@ Updates sensor.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/sensor/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250, "sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0.0, "units": "", "units_type": "celsius"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -419,8 +423,10 @@ curl -X POST '{{ extra.api_example_url }}/tracker/sensor/update' \
 
 Copies sensors from one tracker to another.
 
-> **Important!**\
-> This operation will delete sensors of target trackers, and some sensor data could be lost!
+{% hint style="danger" %}
+**Important!**\
+This operation will delete sensors of target trackers, and some sensor data could be lost!
+{% endhint %}
 
 **required sub-user rights:** `tracker_update`.
 
@@ -433,15 +439,15 @@ Copies sensors from one tracker to another.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/sensor/batch_copy' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "base_tracker_id": 123456, "trackers": [56789, 54321]}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -473,15 +479,15 @@ It can't be used with discrete sensor.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tracker/sensor/data/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 1456789, "from": "2022-02-28 00:00:00", "to": "2022-03-28 23:59:00"}'
 ```
-````
+{% endcode %}
 
 #### Response
 

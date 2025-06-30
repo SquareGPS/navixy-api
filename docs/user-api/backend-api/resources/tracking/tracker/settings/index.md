@@ -5,9 +5,6 @@ description: API calls to get and change tracker's label and group.
 
 # Tracker settings actions
 
-Contains API calls to get and change tracker's label and group.
-
-
 ## API actions
 
 API base path: `/tracker/settings`.
@@ -18,25 +15,29 @@ Gets base settings for the specified tracker.
 
 #### Parameters
 
-| name       | description                                                                                     | type | format |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
+| name        | description                                                                                      | type | format |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ------ |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/tracker/settings/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/settings/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/settings/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+{{ extra.api_example_url }}/tracker/settings/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -58,7 +59,6 @@ Gets base settings for the specified tracker.
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-
 ### update
 
 Updates the settings of the specified tracker.
@@ -67,27 +67,33 @@ Updates the settings of the specified tracker.
 
 #### Parameters
 
-| name       | description                                                                                                                                                     | type   | format    |
-|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------|:----------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                                                 | int    | 123456    |
-| group_id   | Tracker group ID. 0 if tracker does not belong to any group. The specified group must exist.                                                                    | int    | 1         |
-| label      | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string | "Courier" |
+| name        | description                                                                                                                                                     | type   | format    |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | --------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.                                                                | int    | 123456    |
+| group\_id   | Tracker group ID. 0 if tracker does not belong to any group. The specified group must exist.                                                                    | int    | 1         |
+| label       | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string | "Courier" |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/tracker/settings/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "group_id": 1, "label": "Courier"}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/settings/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "group_id": 1, "label": "Courier"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/settings/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&group_id=1&label=Courier
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+{{ extra.api_example_url }}/tracker/settings/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&group_id=1&label=Courier
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -102,4 +108,3 @@ Updates the settings of the specified tracker.
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 204 – Entity not found - if there is no group with the specified group id.
-

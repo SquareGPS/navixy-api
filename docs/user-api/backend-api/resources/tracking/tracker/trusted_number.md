@@ -2,10 +2,8 @@
 title: Trusted number
 description: API calls to interact with list of trusted numbers for trackers.
 ---
+
 # Trusted number
-
-API calls to interact with list of trusted numbers for trackers.
-
 
 ## API actions
 
@@ -17,25 +15,29 @@ Gets list of trusted numbers for the specified tracker.
 
 #### Parameters
 
-| name       | description                                                                                     | type | format |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
+| name        | description                                                                                      | type | format |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ------ |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/tracker/trusted_number/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/trusted_number/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/trusted_number/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+{{ extra.api_example_url }}/tracker/trusted_number/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -53,7 +55,6 @@ Gets list of trusted numbers for the specified tracker.
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-
 ### update
 
 Replaces the list of trusted numbers for a specified tracker with the new one.
@@ -62,20 +63,22 @@ Replaces the list of trusted numbers for a specified tracker with the new one.
 
 #### Parameters
 
-| name       | description                                                                                     | type         | format                             |
-|:-----------|:------------------------------------------------------------------------------------------------|:-------------|:-----------------------------------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int          | 999199                             |
-| list       | Array of phone numbers (10-15 digits) represented as strings.                                   | string array | `["496156680001", "496156680000"]` |
+| name        | description                                                                                      | type         | format                             |
+| ----------- | ------------------------------------------------------------------------------------------------ | ------------ | ---------------------------------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int          | 999199                             |
+| list        | Array of phone numbers (10-15 digits) represented as strings.                                    | string array | `["496156680001", "496156680000"]` |
 
 #### Examples
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/trusted_number/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "list": ["496156680001", "496156680000"]}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/tracker/trusted_number/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "list": ["496156680001", "496156680000"]}'
+```
+{% endcode %}
 
 #### Response
 
@@ -89,4 +92,3 @@ Replaces the list of trusted numbers for a specified tracker with the new one.
 
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
-

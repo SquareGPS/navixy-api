@@ -1,8 +1,5 @@
 ---
 title: Getting the route with Google
-description: >-
-  API call for getting the route to destination point using Google Directions
-  API.
 ---
 
 # Getting the route with Google
@@ -30,15 +27,15 @@ Where **location** described in [data types description section](../../../#data-
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/route/google/get' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start": {"lat": 34.178868, "lng": -118.599672}, "end": {"lat": 31.738386, "lng": -106.453854}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
