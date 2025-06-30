@@ -25,10 +25,6 @@ All API requests are automatically scoped to your organization. The organization
 
 Navixy Repository API supports two authentication methods depending on the type of client.
 
-{% hint style="warning" %}
-Note that {AUTH\_BASE\_URL}  is a placeholder for the server URL you'll be using. For more information about URLs, see [API Environments](technical-reference.md#api-environments).
-{% endhint %}
-
 #### For frontend applications
 
 Use OAuth2 Authorization Code Flow.
