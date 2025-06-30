@@ -2,6 +2,14 @@
 
 Authentication is required for all API requests and is based on OAuth 2.0.
 
+### Authentication environments
+
+Navixy Repository API provides several authentication URLs depending on your geographical location.
+
+{% hint style="warning" %}
+Note that in this and other articles about Navixy Repository API,  {AUTH\_BASE\_URL} is a placeholder for the URL you'll be using.
+{% endhint %}
+
 ### Organization-based access control
 
 All API requests are automatically scoped to your organization. The organization context is determined by your access token. You cannot access resources belonging to other organizations.

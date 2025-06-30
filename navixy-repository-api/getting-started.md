@@ -9,13 +9,13 @@ Before you begin, ensure you have:
 * Valid Navixy Repository API credentials (`client_id` and `client_secret`)
 * A GPS device ready for activation
 
+{% hint style="warning" %}
+Note that {BASE\_URL} and {AUTH\_BASE\_URL} are placeholders for the URLs you'll be using. For more information about {BASE\_URL}, see [API Environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
+{% endhint %}
+
 ### Step 1. Authentication
 
 Navixy Repository API uses OAuth 2.0 for authentication. Depending on your application type, you can choose between Authorization Code for front-end applications and Client Credentials for Server-to-Server. To learn more about the latter, refer to the corresponding section of the [Authentication article](authentication.md#for-server-to-server-communication).
-
-{% hint style="warning" %}
-Note that {AUTH\_BASE\_URL} and {BASE\_URL} are placeholders for the server URL you'll be using. For more information about this URL, see [API Environments](technical-reference.md#api-environments).
-{% endhint %}
 
 To use Authorization Code flow with user interaction:
 

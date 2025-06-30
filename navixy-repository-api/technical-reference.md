@@ -2,7 +2,7 @@
 
 ### API environments
 
-The Navixy IoT Logic API is available on multiple regional platforms to optimize performance and comply with data residency requirements.
+Navixy Repository API is available on multiple regional platforms to optimize performance and comply with data residency requirements.
 
 #### Base URLs
 
@@ -26,7 +26,7 @@ Both environments offer identical API functionality, but may differ in:
 * Maintenance windows and update schedules
 
 {% hint style="warning" %}
-Note that in this and other articles about Navixy Repository API, {AUTH\_BASE\_URL} and {BASE\_URL} are placeholders for the server URL you'll be using.
+Note that in this and other articles about Navixy Repository API,  {BASE\_URL} is a placeholder for the URL you'll be using.
 {% endhint %}
 
 ### Methods
