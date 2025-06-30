@@ -170,9 +170,15 @@ The response will be the same as with an ordinary creation request.
 
 ### How to use the data transmitted by the device?
 
-Activating the device registers it with [Navixy API](https://www.navixy.com/docs/navixy-api/) and [IoT Logic](https://www.navixy.com/docs/iot-logic-api) systems. This allows you to:
+Activating the device registers it with other Navixy systems: [Navixy API](https://www.navixy.com/docs/navixy-api/), a telematics platform without business management features, and [IoT Logic](https://www.navixy.com/docs/iot-logic-api), a low-code data processing and enrichment tool.
 
-* Receive the device's location data via Navixy API's [Track points](https://www.navixy.com/docs/navixy-api/user-api/backend-api/guides/data-retrieval/get-track-points)
+{% hint style="warning" %}
+Please note that Navixy API has a [different authentication system](https://www.navixy.com/docs/navixy-api/user-api/authentication) from Navixy Repository API.
+{% endhint %}
+
+Activation allows you to:
+
+* Receive the device's location data via [Navixy API's Track points](https://www.navixy.com/docs/navixy-api/user-api/backend-api/guides/data-retrieval/get-track-points)
 * Enrich the received data with [IoT Logic via Websocket](https://www.navixy.com/docs/iot-logic-api/websocket-access-for-dsa)
 * Send the data to an external system via [IoT Logic and MQTT](https://www.navixy.com/docs/iot-logic-api/navixy-iot-guide/scenario1)
 

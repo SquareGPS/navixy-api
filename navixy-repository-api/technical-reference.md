@@ -25,6 +25,10 @@ Both environments offer identical API functionality, but may differ in:
 * Data storage location (important for compliance with regulations like GDPR)
 * Maintenance windows and update schedules
 
+{% hint style="warning" %}
+Note that in this and other articles about Navixy Repository API, {AUTH\_BASE\_URL} and {BASE\_URL} are placeholders for the server URL you'll be using.
+{% endhint %}
+
 ### Methods
 
 The API follows the **OpenAPI** **standard** with full CRUD for each object type:
