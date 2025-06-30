@@ -41,7 +41,7 @@ These articles provide essential background knowledge and guidelines:
 
 #### Endpoint reference
 
-The endpoint reference is organized by resource type, such as `/asset`, `/asset_type`, `/inventory`), and provides complete technical specifications for each endpoint.
+The endpoint reference is organized by resource type, such as [`/asset`](broken-reference), `/`[`asset_type`](broken-reference), `/`[`inventory`](broken-reference)), and provides complete technical specifications for each endpoint.
 
 **For each API call, you'll find:**
 

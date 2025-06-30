@@ -11,7 +11,7 @@ All API requests are automatically scoped to your organization. The organization
 1. When you authenticate, your access token contains your organization identifier.
 2. The API automatically extracts this identifier from your token.
 3. All operations are restricted to your organization's resources.
-4. No manual organization specification is required.
+4. No manual organization specification is required in API calls.
 
 ### Acquiring access token
 

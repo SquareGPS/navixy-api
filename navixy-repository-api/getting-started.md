@@ -1,17 +1,21 @@
 # Getting started
 
-This guide will walk you through the basic steps to start using Navixy Repository API. You'll learn how to authenticate, activate a GPS device, create an asset, and organize assets with asset links.
+This guide will walk you through the basic steps to start using Navixy Repository API. You'll learn how to authenticate, create an inventory and inventory item to store your GPS device, and activate it.
 
 ### Prerequisites
 
 Before you begin, ensure you have:
 
 * Valid Navixy Repository API credentials (`client_id` and `client_secret`)
-* A GPS device ready for activation (we'll use a Teltonika FMC130 tracker in this example)
+* A GPS device ready for activation
 
 ### Step 1. Authentication
 
 The Navixy Repository API uses OAuth 2.0 for authentication. Depending on your application type, you can choose between Authorization Code for front-end applications and Client Credentials for Server-to-Server. To learn more about the latter, refer to the corresponding section of the [Authentication page](authentication.md#for-server-to-server-communication).
+
+{% hint style="warning" %}
+Note that {AUTH\_BASE\_URL} and {BASE\_URL} are placeholders for the server URL you'll be using. For more information about this URL, see [API Environments](technical-reference.md#api-environments).
+{% endhint %}
 
 To use Authorization Code flow with user interaction:
 
@@ -50,7 +54,7 @@ curl -X GET "{AUTH_BASE_URL}/authorize" \
 Include the access token in all API requests:
 
 ```bash
-curl -X GET {BASE_URL}/v0/inventory/list?orgId=1 \
+curl -X GET {BASE_URL}/v0/inventory/list \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
@@ -73,7 +77,7 @@ To create an inventory that will hold your device, send the following request:
 #### &#x20;[**POST /inventory/create**](broken-reference)
 
 ```bash
-curl -X POST {BASE_URL}/v0/asset/create?orgId=<YOUR_ORG_ID> \
+curl -X POST {BASE_URL}/v0/inventory/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '​{
@@ -99,13 +103,12 @@ Note the inventory ID (`12`) for the next step.
 Devices that can transmit GPS data independently are called master devices.
 
 ```bash
-curl -X POST {BASE_URL}/v0/inventory_item/master/create?orgId=<YOUR_ORG_ID> \
+curl -X POST {BASE_URL}/v0/inventory_item/master/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
     "inventory_id": 12,
     "device_id": "356307042441234",
-    "phone": "+1234567890",
     "label": "Teltonika FMC130 - Vessel 001",
     "model": "teltonika_fmc130"
   }'
@@ -115,7 +118,6 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create?orgId=<YOUR_ORG_ID> \
 
 * `device_id`: The device's IMEI number (usually found on a sticker)
 * `model`: Device model code ([see supported devices](https://www.navixy.com/devices/))
-* `phone`: SIM card number (optional)
 
 **Response:**
 
@@ -130,7 +132,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create?orgId=<YOUR_ORG_ID> \
 #### Activate the device
 
 ```bash
-curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
+curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -139,7 +141,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
     "model": "teltonika_fmc130",
     "activation_method_id": 1,
     "fields": {​
-      "iridium_modem_imei": "123456789012345",
+      "teltonika_fmc130_imei": "123456789012345",
       "activation_code": "123"​
     }
   }'
@@ -163,7 +165,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate?orgId=<YOUR_ORG_ID> \
 Let's confirm everything is working by listing your inventory items:
 
 ```bash
-curl -X GET "{BASE_URL}/v0/inventory_item/list?orgId=<YOUR_ORG_ID>&q=&limit=10&offset=0&sort=label" \
+curl -X GET "{BASE_URL}/v0/inventory_item/master/list?q=&limit=10&offset=0&sort=label" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
@@ -182,6 +184,7 @@ You should see your device in the response.
 Now that you have the basics set up, you can:
 
 * [Add more devices by creating additional inventory items](getting-started.md#id-2.3.-activate-the-device)
+* [Create new inventories to store your devices based on any principle](guides/activating-a-gps-device.md#step-1.-create-an-inventory)
+* [Create assets — objects representing real-world business units — and assign devices to them](getting-started.md#id-3.2-create-an-asset)
 * [Create custom asset types for different categories of assets](getting-started.md#id-3.1.-create-an-asset-type)
-* [Create more assets and assign them to devices](getting-started.md#id-3.2-create-an-asset)
 * [Group assets by location, department, or function via asset links](getting-started.md#step-4.-organize-assets-with-asset-links)

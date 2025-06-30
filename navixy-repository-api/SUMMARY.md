@@ -1,8 +1,8 @@
 # Table of contents
 
 * [Overview](README.md)
-* [Authentication](authentication.md)
 * [Getting started](getting-started.md)
+* [Authentication](authentication.md)
 * [Technical reference](technical-reference.md)
 * [Guides](guides/README.md)
   * [Activating a GPS device](guides/activating-a-gps-device.md)

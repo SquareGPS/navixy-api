@@ -1,6 +1,6 @@
 # Activating a GPS device
 
-the In Navixy Repository API, GPS devices are referred to as **inventory items** and stored in user-created lists called **inventories**. Inventories are collections of devices used to organize and manage equipment more efficiently. They serve as logical groupings that help structure, track, and operate devices. A device cannot exist outside of inventory.
+In Navixy Repository API, GPS devices are referred to as **inventory items** and stored in user-created lists called **inventories**. Inventories are collections of devices used to organize and manage equipment more efficiently. They serve as logical groupings that help structure, track, and operate devices. A device cannot exist outside of inventory.
 
 In this guide, you will learn how to add a device to an inventory and activate it. You can activate any device listed on the [supported models](https://www.navixy.com/devices/) page or a smartphone with the [X-GPS Tracker](https://docs.navixy.com/user-guide/x-gps-tracker) app installed.
 
@@ -66,7 +66,6 @@ Use this request body:
   "model": "navixy_ngp",
   "device_id": "123456789012345",
   "label": "gps_tracker_fmc130_001",
-  "phone": "+1234567890"
 }
 
 ```
@@ -75,7 +74,6 @@ Use this request body:
 
 * `device_id`: The device's IMEI number (usually found on a sticker)
 * `model`: Device model code ([see supported devices](https://www.navixy.com/devices/))
-* `phone`: SIM card number (optional)
 
 You will get the ID of the newly created item:
 
