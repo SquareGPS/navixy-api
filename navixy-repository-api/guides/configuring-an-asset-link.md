@@ -62,6 +62,23 @@ Use this request body:
 
 You will receive `200 OK` response, and the asset will be added to the `asset_ids` array.
 
+**Step 3. (Optional) Remove an asset from an asset link**
+
+To remove an asset from an existing link, send the following request:
+
+[**POST /asset\_link/remove**](broken-reference)
+
+Use this request body:
+
+```json
+{
+  "link_id": 789,
+  "asset_id": 2
+}
+```
+
+You will receive an empty response body and a `204 No Content` status, and the asset will be removed from the `asset_ids` array.
+
 {% hint style="success" %}
 **Congratulations!**\
 \

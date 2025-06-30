@@ -86,9 +86,9 @@ You will get the ID of the newly created item:
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
-#### Step 3. Activate the master device
+#### Step 3. Activate the GPS device
 
-To activate a master-type device, the device must be preconfigured and exist in the organization's inventory. Upon activation, the device is assigned to the organization.
+To activate a device connected to a master-type inventory item, it must be preconfigured and exist in the organization's inventory. Upon activation, the device is assigned to the organization.
 
 Send the following request:
 
@@ -170,7 +170,7 @@ The response will be the same as with an ordinary creation request.
 
 ### How to use the data transmitted by the device?
 
-Activating the device registers it with other Navixy systems: [Navixy API](https://www.navixy.com/docs/navixy-api/), a telematics platform without business management features, and [IoT Logic](https://www.navixy.com/docs/iot-logic-api), a low-code data processing and enrichment tool.
+Activating the GPS device registers it with other Navixy systems: [Navixy API](https://www.navixy.com/docs/navixy-api/), a telematics platform without business management features, and [IoT Logic](https://www.navixy.com/docs/iot-logic-api), a low-code data processing and enrichment tool.
 
 {% hint style="warning" %}
 Please note that Navixy API has a [different authentication system](https://www.navixy.com/docs/navixy-api/user-api/authentication) from Navixy Repository API.

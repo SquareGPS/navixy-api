@@ -37,7 +37,7 @@ The API follows the **OpenAPI** **standard** with full CRUD for each object type
 | --------------- | --------------------------------------------------- |
 | asset           | create, read, update, delete, list                  |
 | asset\_type     | create, read, update, delete, list                  |
-| asset\_group    | create, read, update, delete, list, set, remove     |
+| asset\_link     | create, read, update, delete, list, set, remove     |
 | inventory       | create, read, update, delete, list                  |
 | inventory\_item | create, read, update, list, activate, pair, archive |
 

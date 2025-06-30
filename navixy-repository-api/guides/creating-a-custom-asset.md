@@ -140,13 +140,13 @@ You will receive the ID of the newly created asset:
 }
 ```
 
-#### Step 3. Assign a device
+#### Step 3. Assign a GPS device
 
 {% openapi-schemas spec="navixy-repo" schemas="InventoryMasterItem" grouped="true" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
-Now that you have an asset, you need to assign a device to it. This is done by adding an `asset_id` parameter to the master-type inventory item representing the device. You can assign several devices to one asset — or, in the API's terms, add the same `asset_id` to several inventory items.
+Now that you have an asset, you need to assign a device to it. This is done by adding the `asset_id` parameter to the master-type inventory item representing the device. You can assign several devices to one asset — or, in the API's terms, add the same `asset_id` to several inventory items.
 
 If your device is already activated (the inventory item already exists), send the following request:
 
