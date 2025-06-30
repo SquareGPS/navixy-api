@@ -218,13 +218,13 @@ The API follows industry-standard semantic versioning principles to ensure clear
 To make versioning transparent and intuitive,  the version is directly included into the request URL:
 
 ```
-{base_url}/v{major}/{resource}/{operation}
+{BASE_URL}/v{major}/{resource}/{operation}
 ```
 
 For example:
 
 ```
-https://api.example.com/v1/org/list
+https://api.example.com/v1/inventory/list
 ```
 
 The **major version number** is incremented only upon the introduction of breaking changes, such as:
@@ -232,18 +232,6 @@ The **major version number** is incremented only upon the introduction of breaki
 * Changing the structure or format of responses
 * Renaming or removing existing endpoints or their fields
 * Modifying validation rules in a way that would reject previously valid requests
-
-#### Version support and deprecation
-
-Each major API version is guaranteed to be supported for a minimum of X months from the date of release.
-
-When a new major version is released, the following applies:
-
-* The old version remains fully functional during a grace period.
-* A deprecation notice is issued at least Y days in advance of shutting down a previous version.
-* You will receive detailed migration guidelines, including examples and mappings of old vs. new formats.
-
-Users are encouraged to proactively track version deprecations and implement version upgrades on time.
 
 #### Documentation and migration
 
