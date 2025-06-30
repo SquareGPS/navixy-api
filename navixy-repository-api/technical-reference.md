@@ -97,7 +97,7 @@ All API responses follow a consistent JSON format:
 
 ### Errors
 
-We use conventional HTTP status codes to indicate the success or failure of a request.
+Navixy Repository API uses conventional HTTP status codes to indicate the success or failure of a request.
 
 * **2xx** – Request was successful.
 * **4xx** – Request failed due to client error (e.g., validation error, missing parameter).
@@ -163,18 +163,18 @@ To perform a basic full-text search (available for `list` endpoints), use the `q
 **GET:**
 
 ```bash
-curl -X GET {BASE_URL}/org/list \
+curl -X GET {BASE_URL}/inventory/list \
   -H "Authorization: Bearer <YOUR-TOKEN>" \
-  --data-urlencode 'q=solutions inc'
+  --data-urlencode 'q=florida warehouse'
 ```
 
 **POST:**
 
 ```bash
-curl -X POST {BASE_URL}/org/list \
+curl -X POST {BASE_URL}/inventory/list \
   -H "Authorization: Bearer <YOUR-TOKEN>" \
   -H 'Content-Type: application/json' \
-  -d '{"q": "solutions inc"}'
+  -d '{"q": "florida warehouse"}'
 ```
 
 #### Filtering
@@ -215,7 +215,7 @@ The API follows industry-standard semantic versioning principles to ensure clear
 
 #### Versioning strategy
 
-To make versioning transparent and intuitive,  the version is directly included into the request URL:
+To make versioning transparent and intuitive,  the version is directly included in the request URL:
 
 ```
 {BASE_URL}/v{major}/{resource}/{operation}

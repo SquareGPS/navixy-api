@@ -4,7 +4,7 @@ Authentication is required for all API requests and is based on OAuth 2.0.
 
 ### Organization-based access control
 
-All API requests are automatically scoped to your organization. The organization context is determined from your access token. You cannot access resources belonging to other organizations.
+All API requests are automatically scoped to your organization. The organization context is determined by your access token. You cannot access resources belonging to other organizations.
 
 #### How organization scoping works
 
@@ -13,7 +13,7 @@ All API requests are automatically scoped to your organization. The organization
 3. All operations are restricted to your organization's resources.
 4. No manual organization specification is required in API calls.
 
-### Acquiring access token
+### Acquiring an access token
 
 Navixy Repository API supports two authentication methods depending on the type of client.
 
@@ -103,7 +103,7 @@ curl -X POST {AUTH_BASE_URL}/oauth/token \
 }
 ```
 
-### Transmitting access token
+### Transmitting the access token
 
 Use `access_token` to authenticate API requests:
 
