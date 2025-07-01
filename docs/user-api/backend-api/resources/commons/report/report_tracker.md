@@ -1,14 +1,13 @@
 ---
 title: Report tracker
 description: >-
-  User reports allow acquiring all-round statistics and analytics. The summary
-  data can be shown in various perspectives, in tables and graphs.Contains API
-  calls to interact with tracker reports.
+  User reports enable comprehensive statistics and analytics, presenting summary
+  data in various perspectives through tables and graphs.
 ---
 
 # Report Tracker
 
-User reports enable comprehensive statistics and analytics, presenting summary data in various perspectives through tables and graphs. This section details API calls to interact with tracker reports.
+This section details API calls to interact with tracker reports.
 
 For information on how to obtain data from reports, refer to the [guide](../../../guides/data-retrieval/obtain-reports.md).
 
@@ -30,23 +29,23 @@ _required sub-user rights_: `reports`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/report/tracker/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/report/tracker/delete?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -76,23 +75,25 @@ Retrieve generated report as a file.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/report/tracker/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567, "format": "pdf"}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/report/tracker/download?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567&format=pdf
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -151,15 +152,15 @@ Part of parameters are plugin-specific. See ["Tracker report plugins"](../plugin
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Trip report", "trackers": [669673], "from": "2020-10-05 00:00:00", "to": "2020-10-06 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -201,23 +202,23 @@ Returns info about all available generated or in-progress reports.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/report/tracker/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/report/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -299,29 +300,30 @@ Retrieves a generated report as JSON.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/report/tracker/retrieve' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/report/tracker/retrieve?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
-??? example "Response"
+<details>
 
-````
+<summary>Example response</summary>
+
 ```json
 {
 "success": true,
@@ -769,7 +771,8 @@ curl -X POST '{{ extra.api_example_url }}/report/tracker/retrieve' \
   "to": "2020-10-06 23:59:59"
 }
 ```
-````
+
+</details>
 
 * `report` - object. Body of the generated report. Its contents are plugin-dependent.
 
@@ -792,23 +795,23 @@ Returns a report generation status for the specified report id.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/report/tracker/status' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/report/tracker/status?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

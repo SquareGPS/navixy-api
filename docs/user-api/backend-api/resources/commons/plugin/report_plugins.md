@@ -5,8 +5,6 @@ description: Contains report plugins with plugin-specific parameters.
 
 # Report plugins
 
-Contains report plugins with plugin-specific parameters.
-
 ### Trips report
 
 A report on detailed trip history.

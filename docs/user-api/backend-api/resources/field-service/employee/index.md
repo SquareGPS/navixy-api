@@ -1,15 +1,11 @@
 ---
 title: Working with employees and drivers
-description: >-
-  Employee object and API calls to work with. Employees (drivers) used to
-  represent people working at one's organization. They can be linked with other
-  entities such as trackers, vehicles, places, etc.
+description: Employee object and API calls to work with.
 ---
 
 # Working with employees and drivers
 
-Employees and drivers used to represent people working at one's organization. They can be linked with other entities such as\
-trackers, vehicles, places, etc.
+Employees and drivers used to represent people working at one's organization. They can be linked with other entities such as trackers, vehicles, places, etc.
 
 ## Employee object
 
@@ -82,23 +78,21 @@ Gets all employees and drivers belonging to user.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/employee/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/employee/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -131,15 +125,15 @@ Creates a new employee/driver.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/employee/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee": {"tracker_id": 625987, "first_name": "John", "middle_name": "Jane", "last_name": "Smith", "email": "smith@example.com", "phone": "442071111111", "driver_license_number": "SKIMP407952HJ9GK 06", "driver_license_cats": "C", "driver_license_valid_till": "2018-01-01", "hardware_key": null, "icon_id" : 55, "avatar_file_name": null, "department_id": null, "location": {"lat": 52.5, "lng": 13.4, "address": "Engeldamm 18"}, "personnel_number": "1059236", "tags": [1,2]}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -168,23 +162,23 @@ Gets employee/driver by his ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/employee/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee_id": 111}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/employee/read?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -239,15 +233,15 @@ Updates existing employee/driver.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/employee/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee": {"employee_id": 111, "tracker_id": 625987, "first_name": "John", "middle_name": "Jane", "last_name": "Smith", "email": "smith@example.com", "phone": "442071111111", "driver_license_number": "SKIMP407952HJ9GK 06", "driver_license_cats": "C", "driver_license_valid_till": "2018-01-01", "hardware_key": null, "icon_id" : 55, "avatar_file_name": null, "department_id": null, "location": {"lat": 52.5, "lng": 13.4, "address": "Engeldamm 18"}, "personnel_number": "1059236", "tags": [1,2]}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -274,23 +268,23 @@ Deletes an employee/driver with the specified ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/employee/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee_id": 111}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/employee/delete?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

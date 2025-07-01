@@ -5,8 +5,7 @@ description: Contains garage object and API calls to interact with it.
 
 # Garage
 
-Contains garage object and API calls to interact with it. Depot (garage object) contains name, address, name of the mechanic, name\
-of the dispatcher and others. This data can be used for more convenient and efficient maintenance and task management.
+Depot (garage object) contains name, address, name of the mechanic, name of the dispatcher and others. This data can be used for more convenient and efficient maintenance and task management.
 
 ## Garage object
 
@@ -41,23 +40,21 @@ Gets all depots belonging to user.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/garage/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/garage/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -99,15 +96,15 @@ Creates a new depot.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/garage/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "garage": {"location": {"lat": 40.4, "lng": -3.6, "address": "Calle Salitre, 58", "radius": 150}, "mechanic_name": "Martinez", "dispatcher_name": "Velasquez", "organization_name": "Bankia"}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -138,15 +135,15 @@ Updates existing depot with the specified ID.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/garage/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "garage": {"id": 222, location": {"lat": 40.4, "lng": -3.6, "address": "Calle Salitre, 58", "radius": 150}, "mechanic_name": "Martinez", "dispatcher_name": "Velasquez", "organization_name": "Bankia"}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -174,23 +171,23 @@ Deletes a depot with the specified ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/garage/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "garage_id": 111}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/garage/delete?hash=a6aa75587e5c59c32d347da438505fc3&garage_id=111
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

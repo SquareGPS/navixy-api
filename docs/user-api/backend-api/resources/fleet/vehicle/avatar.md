@@ -5,8 +5,6 @@ description: API calls to upload and assign avatar to the vehicle.
 
 # Vehicle avatar
 
-API calls to upload and assign avatar to the vehicle.
-
 ## API actions
 
 API path: `/vehicle/avatar`.
@@ -28,23 +26,25 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/vehicle/avatar/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_id": 127722, "icon_id": 1342}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/vehicle/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722&icon_id=1342
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 **Response**
 
@@ -66,7 +66,7 @@ e.g. `{{ extra.api_example_url }}/static/vehicle/avatars/abcdef123456789.png`.
 
 **required sub-user rights**: `vehicle_update`
 
-**avatar\_file\_name** returned in response and will be returned from [/vehicle/list](../../../../introduction/resources/fleet/vehicle/broken-reference/).
+**avatar\_file\_name** returned in response and will be returned from [/vehicle/list](broken-reference).
 
 **MUST** be a POST multipart request (multipart/form-data),\
 with one of the parts being an image file upload (with the name "file").

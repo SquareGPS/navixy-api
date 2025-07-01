@@ -32,8 +32,7 @@ API base path: `/tracker/raw_data/`
 This API request returns the available attributes of a device. Before you dive into requesting raw data,\
 it's crucial to understand the device's data capabilities and the specific names of its attributes.
 
-Keep in mind that this request doesn't provide actual device data. Instead, it acts as a supplementary request to give\
-you insights into the fields, so you know what data you can obtain subsequently.
+Keep in mind that this request doesn't provide actual device data. Instead, it acts as a supplementary request to give you insights into the fields, so you know what data you can obtain subsequently.
 
 You can get information about one device per request.
 
@@ -45,10 +44,9 @@ You can get information about one device per request.
 
 #### Request example
 
-For example, we have a tracker with ID 123456, and we don't know which attributes are available to request in the raw data\
-file. We will add its ID to this API request.
+For example, we have a tracker with ID 123456, and we don't know which attributes are available to request in the raw data file. We will add its ID to this API request.
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -94,15 +92,14 @@ curl -X 'POST' \
 | inputs            | string array | A list of available metering inputs with indexes. How to read these indexes is described below. | `["lls_level_4"]` |
 | states            | string array | A list of available status attributes.                                                          | `["event_code]`   |
 
-If there is more than one input of the same type, they are indexed (1, 2, 3...). In this case, only the input with the\
-maximum index will be returned.
+If there is more than one input of the same type, they are indexed (1, 2, 3...). In this case, only the input with the maximum index will be returned.
 
 For example:
 
 * If LLS Levels from 1 to 4 are available, `lls_level_4` is returned, and it is assumed that LLS levels 1 through 3 also exist.
 * If AVL IOs from 1 to 100000 are available for a device, `avl_io_100000` is returned, then AVL IOs with smaller indexes also exist.
 
-Additionally, you can get a description of all inputs from response using the[input\_name](../../../backend-api/resources/tracking/tracker/sensor/input_name.md#list) endpoint.
+Additionally, you can get a description of all inputs from response using the [input\_name](../../../backend-api/resources/tracking/tracker/sensor/input_name.md#list) endpoint.
 
 #### Possible errors
 
@@ -132,8 +129,7 @@ be placed in a separate column.
 
 > Instead of using the `from`/`to` parameters, you can set the `interval` parameter — an ISO 8601 formatted interval, for example, `2023-08-24T08:04:36.306Z/PT24H`.
 
-The response could be provided in a CSV or [Parquet](https://parquet.apache.org/docs/overview/) format file, with columns\
-predefined in the `columns` parameter of the API request.
+The response could be provided in a CSV or [Parquet](https://parquet.apache.org/docs/overview/) format file, with columns predefined in the `columns` parameter of the API request.
 
 Here are the specifications for the table output in the CSV format:
 
@@ -147,11 +143,9 @@ Here are the specifications for the table output in the CSV format:
 
 **Simple columns**
 
-Simple columns are columns that contain straightforward and general information applicable to most models, such as time,\
-GPS, and GSM data. For example: `columns: ["server_time", "gps_fix_type", "lat", "lng", "speed"]`.
+Simple columns are columns that contain straightforward and general information applicable to most models, such as time, GPS, and GSM data. For example: `columns: ["server_time", "gps_fix_type", "lat", "lng", "speed"]`.
 
-In the table below, you will find a list of all simple columns along with descriptions of what these columns mean and\
-what they may return in the file.
+In the table below, you will find a list of all simple columns along with descriptions of what these columns mean and what they may return in the file.
 
 | name           | type      | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | format in file               |
 | -------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
@@ -202,8 +196,7 @@ and its description in the table below.
 | inputs            | Metering inputs values. Inputs list depends on the device.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | states            | Various states. States list depends on the device.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
-If you specify a complex column without specifying an internal value, then all internal values will be returned as a JSON\
-map (except for flags, which will be returned as an integer).
+If you specify a complex column without specifying an internal value, then all internal values will be returned as a JSON map (except for flags, which will be returned as an integer).
 
 You can append complex columns with an asterisk symbol:
 
@@ -212,18 +205,15 @@ You can append complex columns with an asterisk symbol:
 * `discrete_inputs.*`
 * `discrete_outputs.*`
 
-In this case, the platform will search for all available columns within the specified data range and then request them from\
-the database. In the resulting CSV/Parquet output, instead of the column with an asterisk, all existing columns will be shown in\
-alphabetical order. Columns that are unavailable for the device model will not be included in the resulting file.
+In this case, the platform will search for all available columns within the specified data range and then request them from the database. In the resulting CSV/Parquet output, instead of the column with an asterisk, all existing columns will be shown in alphabetical order. Columns that are unavailable for the device model will not be included in the resulting file.
 
 #### Example for standard searching by message time only in CSV
 
 Suppose we need to request the following information about device 123456 for the period from October 10 to October 11, 2024:\
-data on latitude and longitude, speed, fuel level from wireless fuel level sensor 1, calculated mileage, and the status\
-of all discrete inputs. We do not need the message reception time by the server for our analysis.\
+data on latitude and longitude, speed, fuel level from wireless fuel level sensor 1, calculated mileage, and the status of all discrete inputs. We do not need the message reception time by the server for our analysis.\
 To get a csv file our request header must contain `accept: text/csv` and would look like this:
 
-\=== "cURL for CSV"
+#### cURL for CSV
 
 ```shell
 curl -X 'POST' \
@@ -263,7 +253,7 @@ For getting a Parquet file with the same parameters add the `format: "parquet"` 
 In the next example, we will slightly adjust the body of the request, so you can further test the downloaded Parquet file (navixy\_data.parquet).\
 The following code block is a Bash script used for downloading a Parquet file using a Linux distribution and its terminal.
 
-\=== "cURL for Parquet"
+#### cURL for Parquet
 
 ```shell
 #!/bin/bash
@@ -299,25 +289,16 @@ Your browser does not support the video tag.
 
 #### Example for searching by server time additionally
 
-This API is designed to accommodate scenarios where you retrieve information from trackers to your applications within\
-specified time intervals. Occasionally, trackers may experience connectivity issues. During such occurrences, these\
-trackers automatically store information in their memory buffers. Upon re-establishing a connection, devices promptly\
-transmit their stored information to the platform.
+This API is designed to accommodate scenarios where you retrieve information from trackers to your applications within specified time intervals. Occasionally, trackers may experience connectivity issues. During such occurrences, these trackers automatically store information in their memory buffers. Upon re-establishing a connection, devices promptly transmit their stored information to the platform.
 
 For instance:
 
 A tracker was connected from 10:00 to 10:30. It then loses GSM signal, storing information in its buffer from 10:30 to 12:00.\
-At 12:00, it reconnects and begins sending packets from the buffer. These packets are timestamped with message times starting\
-from 10:30, 10:31, and so forth. However, the server time reflects 12:00, 12:01, and so on. If your program requests data\
-from 10:00 to 11:00 at 11:00 without utilizing the `server_time_filter` parameter, it will receive messages only\
-from 10:00 to 10:30. The program might not be aware that it needs to re-request this data once all data from the buffer\
-has been uploaded.
+At 12:00, it reconnects and begins sending packets from the buffer. These packets are timestamped with message times starting from 10:30, 10:31, and so forth. However, the server time reflects 12:00, 12:01, and so on. If your program requests data from 10:00 to 11:00 at 11:00 without utilizing the `server_time_filter` parameter, it will receive messages only from 10:00 to 10:30. The program might not be aware that it needs to re-request this data once all data from the buffer has been uploaded.
 
-To address such situations, there is optional filtering using the `server_time_filter` parameter. This ensures that your\
-program will get all buffered information. This approach helps prevent potential data gaps and enhances the reliability\
-of your application.
+To address such situations, there is optional filtering using the `server_time_filter` parameter. This ensures that your program will get all buffered information. This approach helps prevent potential data gaps and enhances the reliability of your application.
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \

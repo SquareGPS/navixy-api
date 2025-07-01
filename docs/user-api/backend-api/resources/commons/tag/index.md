@@ -1,14 +1,11 @@
 ---
 title: Tag
-description: >-
-  Tag is a label, or a key word that is used for a quick and easy search. They
-  help find the needed places, geofences, employees, tasks, trackers, and
-  vehicles. Contains tag object and API calls to inte
+description: Information about the tag object and the API calls used to interact with it.
 ---
 
 # Tag
 
-A tag is a label or keyword used for quick and easy searches. Tags help locate places, geofences, employees, tasks, trackers, and vehicles. This section contains information about the tag object and the API calls used to interact with it.
+A tag is a label or keyword used for quick and easy searches. Tags help locate places, geofences, employees, tasks, trackers, and vehicles.&#x20;
 
 For more details on using the tags API, refer to our [how-to guide](../../../guides/fleet-management/use-tags.md).
 
@@ -56,23 +53,25 @@ Creates a new tag.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tag/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"name": "hop", "color": "FF0000"}}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tag/create?hash=a6aa75587e5c59c32d347da438505fc3&tag={"name": "hop", "color": "FF0000"}
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -106,23 +105,23 @@ To delete tags, only one of the following parameters must be specified.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tag/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_id": 1}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tag/delete?hash=a6aa75587e5c59c32d347da438505fc3&tag_id=1
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -148,23 +147,21 @@ Gets all tags belonging to user with optional filtering.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tag/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/tag/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -199,23 +196,23 @@ Search entities that bound with all of specified tags.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tag/search' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_ids": [1, 2, 3]}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tag/search?hash=a6aa75587e5c59c32d347da438505fc3&tag_ids=[1, 2, 3]
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -260,23 +257,25 @@ Updates existing tag.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tag/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"id": 3, "name": "hop", "color": "FF0000"}}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tag/update?hash=a6aa75587e5c59c32d347da438505fc3&tag={"id": 3, "name": "hop", "color": "FF0000"}'
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

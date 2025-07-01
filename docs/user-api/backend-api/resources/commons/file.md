@@ -5,8 +5,6 @@ description: Contains an API call to get user's file statistic.
 
 # File
 
-Contains an API call to get user's file statistic.
-
 ## API actions
 
 API path: `/file`.
@@ -21,23 +19,21 @@ Only API key `hash`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/file/stats/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/file/stats/read?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

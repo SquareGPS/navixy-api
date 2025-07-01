@@ -5,8 +5,6 @@ description: Bill object description and API calls for work with user's bills.
 
 # Bill
 
-Bill object description and API calls for work with user's bills.
-
 ## Bill object
 
 ```json
@@ -49,15 +47,13 @@ Creates a new bill for the user.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/bill/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "payer": "Jon Doe", "sum": 100.0}'
 ```
-````
 
 #### Response
 
@@ -89,23 +85,21 @@ Shows list of bills with their parameters in array.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/bill/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/bill/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

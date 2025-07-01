@@ -1,25 +1,25 @@
 ---
 title: UI plugins
-description: Information about adding 3rd-party apps to the marketplace and UI with the help of developers and support
+description: >-
+  Information about adding 3rd-party apps to the marketplace and UI with the
+  help of developers and support
 ---
 
 # UI plugins
 
-You can add your own application to the user interface. It will appear as an additional tab in the "Applications" menu.
-In order for the app to work within the platform, it needs to support iframe feature.
-If you don't have an iframe option, the app can be added as a separate link, in which case a new browser tab will open 
-when you click on it.
-Some apps have been developed by our partners and are available in [Marketplace](https://marketplace.navixy.com/). 
+You can add your own application to the user interface. It will appear as an additional tab in the "Applications" menu.\
+In order for the app to work within the platform, it needs to support iframe feature.\
+If you don't have an iframe option, the app can be added as a separate link, in which case a new browser tab will open\
+when you click on it.\
+Some apps have been developed by our partners and are available in [Marketplace](https://marketplace.navixy.com/).\
 To add them, contact the developer of the application.
 
 > If your domain is using an HTTPS connection, the link to the application must also be HTTPS. Otherwise, you will encounter a mixed content error.
 
-
 ## Authorization in the application
 
-When you open an application through the Navixy interface, user session hash will be sent to the URL of the application by 
+When you open an application through the Navixy interface, user session hash will be sent to the URL of the application by\
 GET method. This hash can be used for authorization within the application.
-
 
 ## Cookie
 
@@ -39,14 +39,13 @@ Contact [Navixy technical support](../../../general/contacts.md) and specify the
 * Application name.
 * External URL link.
 * Opening method - iframe or a new tab.
-* Installation destination - user_id or panel_id.
+* Installation destination - user\_id or panel\_id.
 * Cookies sending - user session hash and/or locale or nothing.
 
-Our specialists will do everything necessary, and the application will be available in the user interface.
+Our specialists will do everything necessary, and the application will be available in the user interface.\
 The application can be installed for all users or for a specific one.
 
 > If the app will be installed to the specific user, please contact the support team every time you need to add this app to another user. If the app installed for whole panel - all new users will automatically get the app. Also, the app can be installed to whole panel instead of specific users.
-
 
 ### Standalone version
 
@@ -55,5 +54,6 @@ You can find the instruction on installation of the software [here](https://docs
 ## Alternative solution - User applications
 
 You can also embed practically any custom application to the platform on your own. The User applications feature offers an unprecedented freedom when you need to display 3rd-party content without switching interfaces using UI or API. To learn more about this functionality, see:
- - [User documentation](https://docs.navixy.com/user-guide/user-applications) - detailed feature description and instruction on how to use it from the platform's UI.
- - [API documentation](user-applications.md) - instructions on how to use it through API requests.
+
+* [User documentation](https://docs.navixy.com/user-guide/user-applications) - detailed feature description and instruction on how to use it from the platform's UI.
+* [API documentation](user-applications.md) - instructions on how to use it through API requests.

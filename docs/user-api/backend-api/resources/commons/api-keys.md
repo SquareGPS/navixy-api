@@ -26,7 +26,7 @@ To distinguish keys from each other, you should give them meaningful names.
 > Security\
 > Do not publish API keys anywhere. Having a key, you can perform almost any action in the user's account. Make API calls only over HTTPS because the key is transmitted in cleartext.
 
-Find more details on API keys usage in our [instructions](../../../backend-api/getting-started/authentication.md).
+Find more details on API keys usage in our [instructions](../../../authentication.md).
 
 ## API Key object
 
@@ -62,23 +62,23 @@ obtained using a login/password via [/user/auth](user/index.md#auth).
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/api/key/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "title": "My Super App"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/api/key/create?hash=a6aa75587e5c59c32d347da438505fc3&title=My+Super+App
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -116,23 +116,25 @@ obtained using a login/password via [/user/auth](user/index.md#auth).
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/api/key/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "key": "5063e191d734e87e17987953c7a9a086"}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/api/key/delete?hash=a6aa75587e5c59c32d347da438505fc3&key=5063e191d734e87e17987953c7a9a086
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -161,23 +163,21 @@ Gets all of API keys for an account.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/api/key/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/api/key/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

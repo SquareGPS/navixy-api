@@ -1,9 +1,5 @@
 ---
 title: User actions
-description: >-
-  A user account lets you start working with the platform as well as customize
-  your experience within it. Contains user object structure and API calls to
-  interact with users.
 ---
 
 # User
@@ -162,7 +158,7 @@ Tries to authenticate the user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
-> It is strongly recommended using [API keys](../../../../backend-api/getting-started/authentication.md) instead of user session hash.
+> It is strongly recommended using [API keys](../../../../authentication.md#id-2.-api-keys-recommended-authentication) instead of user session hash.
 
 #### Parameters
 
@@ -174,36 +170,34 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/user/auth' \
     -H 'Content-Type: application/json' \
     -d '{"login": "user@email.com", "password": "12@14Y$"}'
 ```
-````
 
 #### Response
 
-\=== "Default"
-
-````
+{% tabs %}
+{% tab title="Default" %}
+{% code overflow="wrap" %}
 ```json
 {
     "success": true,
     "type": "authenticated",
     "hash": "22eac1c27af4be7b9d04da2ce1af111b"
 }
-```
 
 * `type` - [enum](../../../getting-started/introduction.md#data-types). Always `authenticated`. 
 * `hash` - string. Session hash.
-````
+```
+{% endcode %}
+{% endtab %}
 
-\=== "With 2FA enabled"
-
-````
+{% tab title="With 2FA enabled" %}
+{% code overflow="wrap" %}
 ```json
 {
     "success": true,
@@ -211,14 +205,16 @@ curl -X POST '{{ extra.api_example_url }}/user/auth' \
     "factor_type": "email",
     "hash": "22eac1c27af4be7b9d04da2ce1af111b"
 }
-```
 
 * `type` - [enum](../../../getting-started/introduction.md#data-types). Always `second_factor_required`.
 * `factor_type` - [enum](../../../getting-started/introduction.md#data-types).
 Which type of the second factor is used.
 Only `email` is available at the moment.
 * `hash` - string. Session hash. Can be used only for [authentication code](./auth/code.md) actions
-````
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Errors
 
@@ -240,14 +236,12 @@ Gets user information and some settings.
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X GET '{{ extra.api_example_url }}/user/get_info' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
 ```
-````
 
 #### Response
 
@@ -331,23 +325,23 @@ Only API key `hash`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/user/get_tariff_restrictions?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -377,23 +371,21 @@ Only session `hash`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/user/logout' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/user/logout?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -421,23 +413,21 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/user/resend_activation' \
     -H 'Content-Type: application/json' \
     -d '{"login": "user@login.com"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/user/resend_activation?login=user@login.com
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

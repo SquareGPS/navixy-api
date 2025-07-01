@@ -1,21 +1,12 @@
 ---
 title: Form templates
-description: >-
-  Form is an one-shot entity; after it was filled by someone, it cannot be
-  reused. It's stored along with filled fields for future reference. Usually
-  people need to fill forms with the same fields over
 ---
 
 # Form templates
 
-Form is a "one-shot" entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields\
-for future reference. Usually people need to fill forms with the same fields over an over again, so forms created on\
-the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an\
-electronic document, a template, on basis of which all paper forms printed.
+Form is a "one-shot" entity; after it was filled by someone, it cannot be reused. It's stored along with filled fields for future reference. Usually people need to fill forms with the same fields over an over again, so forms created on the basis of form templates. It's similar to paper forms: each paper form can be filled only once, but there's an electronic document, a template, on basis of which all paper forms printed.
 
-The reason for such API design is that template fields can be changed over time (deleted, removed, reordered, etc.)\
-and it should not affect already filled forms. By separating filled forms and templates, one can always view filled form\
-in exactly same state regardless of how template changed.
+The reason for such API design is that template fields can be changed over time (deleted, removed, reordered, etc.) and it should not affect already filled forms. By separating filled forms and templates, one can always view filled form in exactly same state regardless of how template changed.
 
 User can assign form to the task or checkin by choosing template without the need to create all form fields every time.
 
@@ -59,23 +50,23 @@ Gets all form templates belonging to current master user.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/form/template/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/form/template/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -122,15 +113,15 @@ Creates new form template.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/form/template/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -159,23 +150,23 @@ Gets form template belonging to current master user by specified ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/form/template/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template_id": 111}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/form/template/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -222,15 +213,15 @@ Updates existing form template.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/form/template/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"id": 111, label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -257,23 +248,23 @@ Deletes form template.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/form/template/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template_id": 111}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/form/template/delete?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -300,23 +291,23 @@ Returns template usage statistics.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/form/template/stats/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template_id": 111}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/form/template/stats/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

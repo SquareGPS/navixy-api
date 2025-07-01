@@ -1,12 +1,9 @@
 ---
 title: User personal info
-description: Contains user personal info update API call. 
+description: Contains user personal info update API call.
 ---
 
 # User personal info
-
-Contains user personal info update API call.
-
 
 ## API actions
 
@@ -20,7 +17,7 @@ Require a plugin with **id=45**.
 
 #### Parameters
 
-* `legal_type` – string. Either "legal_entity", "sole_trader" or "individual".
+* `legal_type` – string. Either "legal\_entity", "sole\_trader" or "individual".
 * `first_name` – string. Contact person first name.
 * `middle_name` – string. Contact person middle name.
 * `last_name` – string. Contact person last name.
@@ -46,14 +43,15 @@ and for `legal_entity` or `sole_trader`:
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/personal_info/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "okpo_code": ""}'
-
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/user/personal_info/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "okpo_code": ""}'
+```
+{% endcode %}
 
 #### Response
 

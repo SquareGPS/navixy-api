@@ -2,15 +2,13 @@
 title: Subuser
 description: >-
   API calls related to sub-users, that is, additional users who have access to
-  your account and monitoring assets. Sub-users is a convenient way for
-  corporate clients to provide multiple employees, who
+  your account and monitoring assets.
 ---
 
 # Subuser
 
 Contains API calls related to sub-users, that is, additional users who have access to your account and monitoring assets.\
-Sub-users is a convenient way for corporate clients to provide multiple employees, who have different roles and privileges,\
-with access to the monitoring system.
+Sub-users is a convenient way for corporate clients to provide multiple employees, who have different roles and privileges, with access to the monitoring system.
 
 "Usual" user account called "master account" in relation to sub-users.
 
@@ -18,9 +16,10 @@ Every sub-user can operate on a subset of trackers from your "master account". E
 unavailable trackers, also becomes hidden from sub-user. This is called "scoping".\
 Sub-users' rights can also be limited to prevent unauthorized changes to your data and application setting.
 
-NOTE: Sub-users cannot have any "exclusive" objects. Every tracker, rule, task, etc., even created or edited by sub-user,\
-still belongs to your account.\
+{% hint style="info" %}
+Sub-users cannot have any "exclusive" objects. Every tracker, rule, task, etc., even created or edited by sub-user, still belongs to your account.\
 The only exception is reporting system: every sub-user has its own reports pool and reports schedule.
+{% endhint %}
 
 ## Sub-user object structure
 
@@ -100,23 +99,23 @@ Deletes sub-user. This operation cannot be reversed.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/subuser/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 123567}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/subuser/delete?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=123567
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -144,23 +143,21 @@ Only API key `hash`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/subuser/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/subuser/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -222,15 +219,15 @@ Allows you to create sub-users associated to your master account.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/subuser/register' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "password": 123456, "user": {"activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -264,15 +261,15 @@ Updates sub-user data.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/subuser/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"id": 123451, "activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
 ```
-````
+{% endcode %}
 
 #### Response
 

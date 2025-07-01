@@ -2,6 +2,7 @@
 title: Dealer get info
 description: API call to get information about a dealer.
 ---
+
 # Dealer
 
 In Navixy, a Dealer is an entity that acts as a reseller or distributor of the Navixy platform services. Dealers have access to the Navixy Admin Panel, where they can manage various aspects of the platform, including users, devices, and service plans.
@@ -10,30 +11,23 @@ In Navixy, a Dealer is an entity that acts as a reseller or distributor of the N
 
 **API Path**: `panel/dealer/`
 
-### get_info
+### get\_info
 
 API call to get information about a Dealer. This call retrieves details about the dealer's plan, balance, available features, and more.
 
-**Required Permissions:** 
-- `base: "get_dealer_info"`.
+**Required Permissions:**
+
+* `base: "get_dealer_info"`.
 
 #### Parameters
 
-- `hash` (string, required): The session hash.
+* `hash` (string, required): The session hash.
 
 #### Examples
 
-=== "cURL"
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/dealer/get_info' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
-    ```
+\=== "cURL"`shell curl -X POST '{{ extra.api_example_url }}/panel/dealer/get_info' \ -H 'Content-Type: application/json' \ -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'`
 
-=== "HTTP GET"
-    ```shell
-    {{ extra.api_example_url }}/panel/dealer/get_info?hash=fa7bf873fab9333144e171372a321b06
-    ```
+\=== "HTTP GET"`shell {{ extra.api_example_url }}/panel/dealer/get_info?hash=fa7bf873fab9333144e171372a321b06`
 
 #### Response
 
@@ -103,15 +97,15 @@ API call to get information about a Dealer. This call retrieves details about th
 * `contract_type` ([enum](../../../user-api/backend-api/getting-started/introduction.md#data-types)): Contract type: "PARTNER", "AGENT" or "PAAS".
 * `tariff_id` (int): PaaS plan ID.
 * `tariff` (object): PaaS plan info.
-    * `license_price` (nullable double): Price per license.
-    * `min_license_pay` (nullable double): Minimum license payment.
-    * `trial` (boolean): If `true`, the plan is Trial.
-    * `premium_gis` (boolean): If `true`, premium GIS is enabled for the partner.
-    * `store_period` (string): Maximum data store period for users.
+  * `license_price` (nullable double): Price per license.
+  * `min_license_pay` (nullable double): Minimum license payment.
+  * `trial` (boolean): If `true`, the plan is Trial.
+  * `premium_gis` (boolean): If `true`, premium GIS is enabled for the partner.
+  * `store_period` (string): Maximum data store period for users.
 * `demo_tariff` (boolean): `true` for "TRIAL" PaaS tariffs.
 * `store_period` (string): Maximum data store period for users on `demo_tariff`.
 * `demo_ends` (string): TRIAL period end date or null.
-* `block_status` ([enum](../../../user-api/backend-api/getting-started/introduction.md#data-types)): Panel and PaaS users block status. One of: "NOT_BLOCKED", "INITIAL_BLOCK", "BLOCK_LOGIN" or "CLIENTS_BLOCKED".
+* `block_status` ([enum](../../../user-api/backend-api/getting-started/introduction.md#data-types)): Panel and PaaS users block status. One of: "NOT\_BLOCKED", "INITIAL\_BLOCK", "BLOCK\_LOGIN" or "CLIENTS\_BLOCKED".
 * `legal_name` (string): Dealer legal name.
 * `active_amount` (int): Total number of active trackers (including Sub-PaaSes).
 * `active_amount_own` (int): Number of active trackers (excluding Sub-PaaSes).

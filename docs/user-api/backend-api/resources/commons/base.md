@@ -5,8 +5,6 @@ description: Contains API calls to health-check and send email.
 
 # Base
 
-Contains API calls to health-check and send email.
-
 ## API actions
 
 API path: `/base`.
@@ -21,23 +19,21 @@ Only API key `hash`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/base/nothing' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/base/nothing?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -68,15 +64,15 @@ Sends email from the platform to any email address with specified title and text
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/base/send_email' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "gps@navixy.com", "to" : "customer@email.com", "title": "test email", "message": "this email for test", "service_id": 1, "service_pass": 28}'
 ```
-````
+{% endcode %}
 
 #### Response
 

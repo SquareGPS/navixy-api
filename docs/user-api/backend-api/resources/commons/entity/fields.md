@@ -74,23 +74,23 @@ Gets a set of custom fields associated with the specified entity. Note that you 
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/entity/fields/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": 131312}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/entity/fields/read?hash=a6aa75587e5c59c32d347da438505fc3&entity_id=131312
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -141,15 +141,15 @@ Passing fields with `id` from non-existent fields or fields bound to another ent
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/entity/fields/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity_id": 131312, "fields": {"label": "Additional info", "type":  "employee", "required": false, "description": "Responsibility", "params": {"responsible": true}}'
 ```
-````
+{% endcode %}
 
 #### Response
 

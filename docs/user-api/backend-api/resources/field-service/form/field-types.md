@@ -1,9 +1,5 @@
 ---
 title: Form field types
-description: >-
-  Form field types. Every form (and form template) contains an ordered list of
-  fields of various types. Field type defines how user input elements will look
-  like, and how user input will be validated.
 ---
 
 # Form fields and values
@@ -11,12 +7,9 @@ description: >-
 Every form (and form template) contains an ordered list of fields of various types.\
 Field type defines how user input elements will look like, and how user input will be validated.
 
-Every field has a set of common parameters, which are the same for all field types, and type-specific parameters,\
-which define specific style and validation constraints. Both common and type-specific parameters contained as fields in\
-the JSON object.
+Every field has a set of common parameters, which are the same for all field types, and type-specific parameters, which define specific style and validation constraints. Both common and type-specific parameters contained as fields in the JSON object.
 
-Field values for submitted form stored separately as JSON objects. The contents of value JSON objects are entirely\
-field type-specific.
+Field values for submitted form stored separately as JSON objects. The contents of value JSON objects are entirely field type-specific.
 
 **common field parameters:**
 

@@ -5,21 +5,18 @@ description: API call to parse the spreadsheet data
 
 # Data
 
-API call to parse the spreadsheet data.
-
-
 ### /data/spreadsheet/parse
 
 Parse spreadsheet file (.xlsx, .xls, .csv) and store it in internal storage.
 
 #### Parameters
 
-| name          | description                                                                                                                           | type        |
-|:--------------|:--------------------------------------------------------------------------------------------------------------------------------------|:------------|
-| file          | File to upload.                                                                                                                       | file        |
-| preview_count | Size of preview. Min=1, max=20.                                                                                                       | int         |
-| parse_header  | Parse first row as header.                                                                                                            | boolean     |
-| header_map    | If `parse_header` is `true` should contains map of matching column name to field identifier, `{"Label": "label", "Latitude": "lat"}`. | JSON object |
+| name           | description                                                                                                                           | type        |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| file           | File to upload.                                                                                                                       | file        |
+| preview\_count | Size of preview. Min=1, max=20.                                                                                                       | int         |
+| parse\_header  | Parse first row as header.                                                                                                            | boolean     |
+| header\_map    | If `parse_header` is `true` should contains map of matching column name to field identifier, `{"Label": "label", "Latitude": "lat"}`. | JSON object |
 
 If `parse_header` is set to `true`, first row of the uploaded file will be treated as header corresponding to given `header_map`.
 
@@ -48,9 +45,8 @@ Returns the list of the user's import processes.
 #### Parameters
 
 | name  | description                                                               | type         |
-|:------|:--------------------------------------------------------------------------|:-------------|
+| ----- | ------------------------------------------------------------------------- | ------------ |
 | types | Optional. Types of the imported entities, e.g. `["vehicle", "employee"]`. | string array |
-
 
 #### Response
 
@@ -82,9 +78,9 @@ Returns the list of the user's import processes.
 
 #### Example
 
-=== "cURL"
+cURL
 
-```bash
+```sh
 curl -X POST "{{ extra.api_example_url }}/data/import/list" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
@@ -96,10 +92,10 @@ Returns an import process with specified ID.
 
 #### Parameters
 
-| name       | description                   | type   |
-|:-----------|:------------------------------|:-------|
-| process_id | Process ID                    | int    |
-| type       | Type of the imported entities | string |
+| name        | description                   | type   |
+| ----------- | ----------------------------- | ------ |
+| process\_id | Process ID                    | int    |
+| type        | Type of the imported entities | string |
 
 #### Response
 
@@ -131,9 +127,9 @@ Returns an import process with specified ID.
 
 #### Example
 
-=== "cURL"
+cURL
 
-```bash
+```sh
 curl -X POST "{{ extra.api_example_url }}/data/import/read" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "type": "employee", "process_id": 1}'

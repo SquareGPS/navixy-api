@@ -5,7 +5,7 @@ description: API calls to work with departments
 
 # Departments
 
-Department is essentially just a group of [employees](../../../introduction/resources/field_service/broken-reference/). They can be assigned to departments by\
+Department is essentially just a group of [employees](employee/index.md). They can be assigned to departments by\
 specifying non-null `department_id`.
 
 ## Department object
@@ -39,23 +39,21 @@ Gets all departments belonging to user.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/department/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/department/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -96,15 +94,15 @@ Creates a new department with specified parameters.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/department/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department": {"label": "My Department", "location": {"lat": 46.9, "lng": 7.4, "address": "Rosenweg 3", "radius": 50}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -138,15 +136,15 @@ Updates existing department with a new specified parameters.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/department/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department": {"id": 111, "label": "My Department", "location": {"lat": 46.9, "lng": 7.4, "address": "Rosenweg 3", "radius": 50}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -172,23 +170,23 @@ Deletes department with the specified ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/department/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department_id": 111}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/department/delete?hash=a6aa75587e5c59c32d347da438505fc3&department_id=111
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

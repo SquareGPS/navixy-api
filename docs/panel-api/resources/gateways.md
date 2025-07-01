@@ -1,16 +1,17 @@
 ---
 title: Gateways
-description: Information about email gateways objects. Email gateway can be owned by a dealer or leased from platform owner.
+description: >-
+  Information about email gateways objects. Email gateway can be owned by a
+  dealer or leased from platform owner.
 ---
 
 # Gateways
 
 Information about email gateway objects. Email gateway can be owned by a dealer or leased from platform owner.
 
-
 ## Email gateway object
 
-Own email gateway:
+Own email gateway:\
 Now supported only SMTP provider.
 
 ```json
@@ -49,7 +50,6 @@ Leasable email gateway:
 }
 ```
 
-
 ## API actions
 
 API path: `panel/gateways/email`.
@@ -58,7 +58,7 @@ API path: `panel/gateways/email`.
 
 Gets list of available email gateways for the panel.
 
-*required permissions*: `email_gateways: "read"`.
+_required permissions_: `email_gateways: "read"`.
 
 #### Parameters
 
@@ -66,20 +66,24 @@ Only session `hash`.
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/gateways/email/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/panel/gateways/email/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/panel/gateways/email/list?hash=fa7bf873fab9333144e171372a321b06
-    ```
-   
+````
+```
+{{ extra.api_example_url }}/panel/gateways/email/list?hash=fa7bf873fab9333144e171372a321b06
+```
+````
+
 #### Response
 
 ```json

@@ -1,15 +1,11 @@
 ---
 title: Changing avatar
-description: >-
-  API calls to assign and upload avatars. Avatars can't be changed through
-  `/employee/update`, you must use either `assign` (to set avatar to one of
-  preset icons), or `upload` (to upload your own image)
+description: API calls to assign and upload avatars.
 ---
 
 # Changing avatar
 
-Avatars can't be changed through `/employee/update`, you must use either `assign` (to set avatar to one of preset icons),\
-or `upload` (to upload your own image).
+Avatars can't be changed through `/employee/update`, you must use either `assign` (to set avatar to one of preset icons), or `upload` (to upload your own image).
 
 ## API actions
 
@@ -31,23 +27,25 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/employee/avatar/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee_id": 2132, "icon_id": 3654}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/employee/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=2132&icon_id=3654
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

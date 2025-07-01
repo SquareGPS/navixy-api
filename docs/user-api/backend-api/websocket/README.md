@@ -98,9 +98,11 @@ In a simplified form, opening the WebSocket using [atmosphere-javascript](https:
 
 Executing this code will lead to send a request
 
+{% code overflow="wrap" %}
 ```
 wss://domain.com/event/subscription?X-Atmosphere-tracking-id=0&X-Atmosphere-Framework=2.3.6-javascript&X-Atmosphere-Transport=websocket&Content-Type=application/json&X-atmo-protocol=true
 ```
+{% endcode %}
 
 and upgrade the connection to the WebSocket.\
 After that, will be sent a first frame through the opened WebSocket channel:

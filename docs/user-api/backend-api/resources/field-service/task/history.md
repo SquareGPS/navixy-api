@@ -1,13 +1,11 @@
 ---
 title: Task history
-description: >-
-  Navixy platform tracks changes to task fields and state for your convenience.
-  Contains API calls to get this information.
+description: Contains API calls to get this information.
 ---
 
 # Task history
 
-Our platform tracks changes to task fields and state for your convenience. Contains API calls to get this information.
+Navixy platform tracks changes to task fields and state for your convenience.Our platform tracks changes to task fields and state for your convenience. Contains API calls to get this information.
 
 ## History entry
 
@@ -47,23 +45,23 @@ Returns history for the task with the specified ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/checkpoint/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_id": 23144}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=23144
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

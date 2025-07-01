@@ -5,8 +5,6 @@ description: Contains an API call to get information about all supported timezon
 
 # Timezone
 
-Contains an API call to get information about all supported timezones.
-
 ## API actions
 
 API path: `/timezone`.
@@ -23,15 +21,13 @@ Information about all supported timezones for the specified locale. Does not req
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/timezone/list' \
     -H 'Content-Type: application/json' \
     -d '{"locale": "En-en"}'
 ```
-````
 
 #### Response
 

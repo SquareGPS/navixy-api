@@ -7,8 +7,6 @@ description: >-
 
 # Event type
 
-Contains list method to get event types available to user with localized descriptions.
-
 ## API actions
 
 API path: `/history/type`.
@@ -26,15 +24,13 @@ Returns available history event types with localized descriptions.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/history/type/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "locale": "En-en"}'
 ```
-````
 
 #### Response
 

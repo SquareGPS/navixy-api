@@ -1,21 +1,16 @@
 ---
 title: Working with points of interest (POI)
-description: >-
-  Place object and API calls to work with points of interest (POI). "Places" are
-  business-specific points of interest like shops, delivery points, warehouses,
-  etc. - which are visited by user's employee
+description: Place object and API calls to work with points of interest (POI).
 ---
 
 # Working with points of interest (POI)
 
-"Places" are business-specific points of interest (POI) like shops, delivery points, warehouses, etc. - which are visited\
-by user's employees. Place entities can be extended with [custom fields](../../commons/entity/fields.md) to make them\
+"Places" are business-specific points of interest (POI) like shops, delivery points, warehouses, etc. - which are visited by user's employees. Place entities can be extended with [custom fields](../../commons/entity/fields.md) to make them\
 even more useful.
 
 In case an event happened at the POI, in various reports name of the POI will be specified after the address.
 
-If there's an [employee](../../field_service/employee/) [assigned](../../tracking/tracker/employee.md#assign) to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker\&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)),\
-and a POI has a custom field of type "responsible employee", such point of interest will be available in the mobile app to view.\
+If there's an [employee](../employee/index.md) [assigned](../../tracking/tracker/employee.md#assign) to a Mobile Tracker App ([Android](https://play.google.com/store/apps/details?id=com.navixy.xgps.tracker\&hl=ru) / [iOS](https://apps.apple.com/us/app/x-gps-tracker/id802887190)), and a POI has a custom field of type "responsible employee", such point of interest will be available in the mobile app to view.\
 Thus, field employee/driver can view all points of interest assigned to him to visit them, etc.
 
 Working with POIs requires several actions so we described them in our [guides](../../../guides/places/manage-pois.md).
@@ -76,23 +71,23 @@ Gets POI by ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/place/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place_id": 122304}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/place/read?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -146,23 +141,21 @@ Get POIs belonging to user.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/place/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/place/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -217,15 +210,15 @@ Creates a new POI.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/place/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -254,15 +247,15 @@ Gets all POI IDs and names within which a specified coordinates are located insi
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/place/search_location' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 34.178868, "lng": -118.599672}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -299,15 +292,15 @@ Updates existing POI.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/place/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"id": 111, "icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -333,23 +326,23 @@ Deletes POI with the specified ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/place/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place_id": 122304}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/place/delete?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

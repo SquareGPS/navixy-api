@@ -94,23 +94,23 @@ Get check-in which ID is equal to `checkin_id`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/checkin/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkin_id": 1}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/checkin/read?hash=a6aa75587e5c59c32d347da438505fc3&checkin_id=1
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -205,15 +205,15 @@ It's a set of sort options. Each option is a pair of field name and sorting dire
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/checkin/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [616384,345623], "from": "2020-08-05 03:06:00", "to": "2020-09-05 03:00:00", "offset": 20, "limit": 100, "format": "xlsx"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -250,23 +250,23 @@ Deletes check-ins with the specified IDs.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/checkin/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkin_ids": [2132,4533]}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/checkin/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkin_ids=[2132,4533]
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -311,15 +311,15 @@ where `form_submission` type is JSON object:
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/checkin/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 22, "location": { "lat": 9.861999, "lng": -83.948999 }, "comment": "houston, we have a problem", "file_ids": [11, 22], "form_submission": { "form_id": 23423, "values": {"111-aaa-whatever": { "type": "text", "value": "John Doe" }} }}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -502,23 +502,25 @@ Creates a new form that can be attached to a check-in. Form always created on th
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/checkin/form/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 22, "template_id": 12548}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/checkin/form/create?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=22&template_id=12548
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -552,15 +554,15 @@ Creates a new file entry associated with form's field. If you have multiple file
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/checkin/form/file/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkin_id": 1, "field_id": "111-aaa-whatever", "size": 101}'
 ```
-````
+{% endcode %}
 
 #### Response
 

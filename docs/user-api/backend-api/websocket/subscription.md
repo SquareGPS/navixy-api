@@ -9,15 +9,13 @@ description: >-
 
 The `subscribe` and `unsubscribe` actions used by the client's side to subscribe on server\
 events and unsubscribe from them.\
-These actions are similar with any other [API REST actions](../)\
-but must be sent inside open `WebSocket` channel and use only JSON format for messages between the client and server.
+These actions are similar with any other [API REST actions](../) but must be sent inside open `WebSocket` channel and use only JSON format for messages between the client and server.
 
 ## Subscribe Action
 
 The main difference between `state` and `state_batch` events is they can provide different amount of data every second.\
 Use 'state' event for smaller fleets since it supports sending data up to 350 entries per second.\
-For big or growing fleets better to use `state_batch` event since it supports sending data for up to 12000 entries per\
-second.
+For big or growing fleets better to use `state_batch` event since it supports sending data for up to 12000 entries per second.
 
 ## Request
 
@@ -73,11 +71,9 @@ the server will send a list of changed tracker states in the [event message](eve
 
 ### The "state" event subscription
 
-After subscribing to "state",\
-server will send the current states of all non-blocked trackers included in the subscription in separate packets.\
+After subscribing to "state", server will send the current states of all non-blocked trackers included in the subscription in separate packets.\
 Receiver must be able to read information from these packets separately.\
-When changing the state of any tracker to which a subscription made,\
-the server will send a new state in the [event message](events.md#state-event).
+When changing the state of any tracker to which a subscription made, the server will send a new state in the [event message](events.md#state-event).
 
 ```json
 {
@@ -102,11 +98,9 @@ the server will send a new state in the [event message](events.md#state-event).
 
 ### The "readings\_batch" event subscription
 
-After subscribing to "readings\_batch",\
-server will send the current readings of all non-blocked trackers included in the subscription in a single packet.\
+After subscribing to "readings\_batch", server will send the current readings of all non-blocked trackers included in the subscription in a single packet.\
 Receiver must be able to parse data from different devices in this packet.\
-New data will arrive in real-time in the [event message](events.md#readings-batch-event),\
-but no more frequently than the specified rate\_limit.
+New data will arrive in real-time in the [event message](events.md#readings-batch-event), but no more frequently than the specified rate\_limit.
 
 ```json
 {
@@ -135,9 +129,7 @@ but no more frequently than the specified rate\_limit.
 
 ### Data Stream Analyzer's "iot\_monitor" event subscription
 
-This subscription type is intended for the Data Stream Analyzer tool,\
-which allows viewing the attribute values of the last N messages received from a tracker.\
-The server stores attributes for no more than the last 12 messages, sorted in descending order by message timestamp.\
+This subscription type is intended for the Data Stream Analyzer tool, which allows viewing the attribute values of the last N messages received from a tracker. The server stores attributes for no more than the last 12 messages, sorted in descending order by message timestamp.\
 For each attribute, data is stored in two queues:
 
 * Without data gaps – only messages where the specific attribute was present (not null).
@@ -146,8 +138,7 @@ For each attribute, data is stored in two queues:
 After subscribing to "iot\_monitor", server will send values of attributes from the latest messages for\
 all non-blocked trackers included in the subscription in a single packet.\
 Receiver must be able to parse data from different devices in this packet.\
-New data will arrive in real-time in the [event message](events.md#iot-monitor-event),\
-but no more frequently than the specified `rate_limit`.
+New data will arrive in real-time in the [event message](events.md#iot-monitor-event), but no more frequently than the specified `rate_limit`.
 
 ```json
 {

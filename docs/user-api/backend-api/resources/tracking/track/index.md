@@ -213,7 +213,7 @@ where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 * `avg_speed` - int. Average speed in km/h.
 * `event_count` - int. Number of events recorded during this track. This field will not be present if "count\_events" is set to `false`.
 * `norm_fuel_consumed` - float. Amount of fuel consumed during the track, measured in litres.\
-  This field will not be present if there's no [vehicle\_object](../../fleet/vehicle/index.md#vehicle) linked to the tracker or\
+  This field will not be present if there's no [vehicle\_object](broken-reference) linked to the tracker or\
   if "normAvgFuelConsumption" is not defined for the linked vehicle object.
 * `type` - [enum](../../../#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.
@@ -287,7 +287,7 @@ where `track_info` is either `regular`, `single_report`, `merged` or `cluster`:
 * `avg_speed` - int. Average speed in km/h.
 * `event_count` - int. Number of events recorded during period. This field will not be present if "count\_events" is set to `false`.
 * `norm_fuel_consumed` - float. Amount of fuel consumed during period, measured in litres.\
-  This field will not be present if there's no [vehicle\_object](../../fleet/vehicle/index.md#vehicle) linked to the tracker or\
+  This field will not be present if there's no [vehicle\_object](broken-reference) linked to the tracker or\
   if "normAvgFuelConsumption" is not defined for the linked vehicle object.
 * `type` - [enum](../../../#data-types): `regular`, `single_report`, `merged`, `cluster`. Track type.
 * `gsm_lbs` - optional boolean. GSM LBS point flag.

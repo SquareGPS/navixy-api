@@ -18,8 +18,7 @@ All event messages contain the next fields:
 
 > Can be used for 100 devices. If there are more devices, please use state batch event.
 
-These messages are coming from server if client [subscribed](subscription.md)\
-to the `state` events of the specific tracker that not blocked. It occurs in the next cases:
+These messages are coming from server if client [subscribed](subscription.md) to the `state` events of the specific tracker that not blocked. It occurs in the next cases:
 
 * Tracker state changed.
 * Immediately after subscription.
@@ -30,7 +29,7 @@ Message fields:
 * `type` – "event".
 * `event` – "state".
 * `data` – depends on `format` request parameter:
-  * "full" – [source state](broken-reference).
+  * "full" – [source state](../resources/tracking/tracker/#get_state).
   * "compact" – [compact source state](events.md#compact-source-state).
 * `user_time` – current time in user's timezone.
 
@@ -76,8 +75,7 @@ Message sample:
 
 ## State batch event
 
-These messages are coming from server if client [subscribed](subscription.md)\
-to the `state_batch` events of the specific tracker that not blocked. It occurs in the next cases:
+These messages are coming from server if client [subscribed](subscription.md) to the `state_batch` events of the specific tracker that not blocked. It occurs in the next cases:
 
 * Immediately after subscription.
 * Tracker state changed. But no more frequently than the `rate_limit`.
@@ -87,7 +85,7 @@ Message fields:
 * `type` – "event".
 * `event` – "state\_batch".
 * `data` – depends on `format` request parameter:
-  * "full" – [source state](broken-reference) array.
+  * "full" – [source state](../resources/tracking/tracker/#get_state) array.
   * "compact" – [compact source state](events.md#compact-source-state) array.
 * `user_time` – current time in user's timezone.
 
@@ -163,8 +161,7 @@ Sample:
 
 ## Readings batch event
 
-These messages are coming from server if client [subscribed](subscription.md#the-readings_batch-event-subscription)\
-to the `readings_batch` events of the specific tracker that not blocked. It occurs in the next cases:
+These messages are coming from server if client [subscribed](subscription.md#the-readings_batch-event-subscription) to the `readings_batch` events of the specific tracker that not blocked. It occurs in the next cases:
 
 * Immediately after subscription.
 * Sensor data is updated, but no more frequently than the `rate_limit`.
@@ -191,9 +188,7 @@ Message sample:
 
 ## Data Stream Analyzer event
 
-You can receive Data Stream Analyser messages through websocket. These messages are coming from server if client [subscribed](subscription.md#the-iot_monitor-event-subscription)\
-to the `iot_monitor` events of the specific tracker that is not blocked. These packets contain values\
-of attributes from the latest messages sent by the selected tracker.\
+You can receive Data Stream Analyser messages through websocket. These messages are coming from server if client [subscribed](subscription.md#the-iot_monitor-event-subscription) to the `iot_monitor` events of the specific tracker that is not blocked. These packets contain values of attributes from the latest messages sent by the selected tracker.\
 It occurs in the next cases:
 
 * Immediately after subscription.
@@ -383,8 +378,7 @@ Message sample:
 
 ## Lifecycle event
 
-These messages are coming from the server if client [subscribed](subscription.md)\
-to the `state`, `state_batch` or `readings_batch` events of the specific tracker. It occurs in the next cases:
+These messages are coming from the server if client [subscribed](subscription.md) to the `state`, `state_batch` or `readings_batch` events of the specific tracker. It occurs in the next cases:
 
 * Tracker blocked.
 * Tracker unblocked.

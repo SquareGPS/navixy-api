@@ -7,7 +7,7 @@ description: >-
 
 # Driver journal entry
 
-Contains driver journal entry object description and API calls to work with it. Using the driver journal, you can monitor trips and categorize them by status to see the full picture of transport usage. Driver Entry is an already categorized trip.
+Using the driver journal, you can monitor trips and categorize them by status to see the full picture of transport usage. Driver Entry is an already categorized trip.
 
 To get information on how-to work with driver journals refer to our [instructions](../../../guides/fleet-management/driver-journals.md).
 
@@ -59,8 +59,7 @@ API path: `/driver/journal/entry`.
 
 Gets driver journal entries.\
 There are two ways to get entries: by their IDs or by specifying date range.\
-If there are no `entry_ids` in request, entries will be selected by intersecting their date range with date range from\
-request (`from` and `to` parameters).
+If there are no `entry_ids` in request, entries will be selected by intersecting their date range with date range from request (`from` and `to` parameters).
 
 #### Parameters
 
@@ -86,15 +85,15 @@ request (`from` and `to` parameters).
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "from": "2020-10-13 00:00:00", "to": "2020-10-14 00:00:00"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -144,15 +143,15 @@ Creates driver journal entries.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "entries": [{"tracker_id": 1, "start_date": "2020-10-13 07:03:39", "end_date": "2020-10-14 08:05:02", "employee_id": 1, "type": "work", "comment": "comment string", "start_location": {"lat": 11.0, "lng": 22.0, "address": "address value"}, "end_location": {"lat": 11.0, "lng": 22.0, "address": "address value"}, "length": 1.44, "start_odometer": 1.34, "end_odometer": 5.34}]}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -192,15 +191,15 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "entry": {"id": 1, "type": "work", "comment": "new comment"}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -228,23 +227,25 @@ Deletes driver journal entries.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "entry_ids": [127722, 127724]}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/driver/journal/entry/delete?hash=a6aa75587e5c59c32d347da438505fc3&entry_id=[127722, 127724]
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -260,8 +261,7 @@ curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/delete' \
 
 ### download
 
-Gets driver journal entries. Entries selected by intersecting their date range with date range from request (`from`\
-and `to` parameters).
+Gets driver journal entries. Entries selected by intersecting their date range with date range from request (`from` and `to` parameters).
 
 #### Parameters
 
@@ -283,15 +283,15 @@ and `to` parameters).
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/driver/journal/entry/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "from": "2020-10-13 00:00:00", "to": "2020-10-14 00:00:00", "add_filename_header": true, "format": "pdf"}'
 ```
-````
+{% endcode %}
 
 #### Response
 

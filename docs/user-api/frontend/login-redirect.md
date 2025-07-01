@@ -1,16 +1,11 @@
 ---
 title: Login redirect
-description: >-
-  There are a number of options to user login page URL, which you can submit as
-  GET-parameters. You may use this feature for providing the links on external
-  resources (e.g. your website) to let your use
 ---
 
 # Login redirect
 
 There are a number of options to user login page URL, which you can submit as GET-parameters.\
-You may use this feature for providing the links on external resources (e.g. your website)\
-to let your users go straight to the section they need, use some language by default, etc.
+You may use this feature for providing the links on external resources (e.g. your website) to let your users go straight to the section they need, use some language by default, etc.
 
 ### Page section
 

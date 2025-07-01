@@ -5,8 +5,6 @@ description: Contains API calls to control which geofences is available to which
 
 # Subuser geofences
 
-Contains API calls to control which geofences is available to which sub-user.
-
 ## API actions
 
 API path: `/subuser/zones`.
@@ -29,15 +27,15 @@ Gives access for sub-user to specified geofences.
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/subuser/zones/bind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "access_to_all": false, "zone_ids": [7548]}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -68,15 +66,15 @@ Disables access for sub-user to specified geofences.
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/subuser/zones/unbind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "zone_ids": [7548]}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -106,15 +104,13 @@ Gets a list of geofence IDs to which this sub-user has access.
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/subuser/zones/list_ids' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951}'
 ```
-````
 
 #### Response
 
@@ -151,15 +147,15 @@ Gets a list of geofences to which this sub-user has access.
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/subuser/zones/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "offset": 0, "limit": 1000}'
 ```
-````
+{% endcode %}
 
 #### Response
 

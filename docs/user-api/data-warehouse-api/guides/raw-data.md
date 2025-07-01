@@ -32,7 +32,7 @@ Before requesting raw data, we need to understand what data the device can repor
 
 Example for a device with ID 123456:
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -93,7 +93,7 @@ In addition, we will use names for inputs according to the information obtained 
 
 The API request [`raw_data/read`](../resources/tracker/raw-data.md#read) for reading the required raw data in our case should look like this:
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -117,7 +117,7 @@ curl -X 'POST' \
 
 The response is returned in a CSV table format:
 
-```
+```csv
 "msg_time","lat","lng","speed","inputs.lls_level_1","inputs.hw_mileage"
 "2023-11-29T08:31:10Z",54.2312716,69.5261833,0,3307,24250.798
 "2023-11-29T08:31:12Z",54.1811183,69.5331349,24,3274,24257.16
@@ -192,7 +192,7 @@ Another example. The client account is set to UTC-6 (Mexico) time, and the time 
 
 **API request example:**
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -216,7 +216,7 @@ Another valid option to specify date and time is the usual `YYYY-MM-DD HH:mm:ss`
 
 **API request example:**
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -243,7 +243,7 @@ In this case, you need to supplement your request with the `time_zone` parameter
 
 **API request example:**
 
-\=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \

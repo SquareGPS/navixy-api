@@ -5,8 +5,7 @@ description: Contains API calls which manipulate files attached to form's fields
 
 # Attaching files
 
-When submitting form values of type [file](../../../../../introduction/resources/field_service/task/form/broken-reference/), [photo](../../../../../introduction/resources/field_service/task/form/broken-reference/) or[signature](../../../../../introduction/resources/field_service/task/form/broken-reference/), you need to provide file ID. To obtain it, first you [create](file.md#create)\
-a file entry, then upload a file using provided credentials. File must adhere to limitations specified in the form field.\
+When submitting form values of type [file](../../form/field-types.md#file), [photo](../../form/field-types.md#photo) or [signature](../../form/field-types.md#signature), you need to provide file ID. To obtain it, first you [create](file.md#create) a file entry, then upload a file using provided credentials. File must adhere to limitations specified in the form field.\
 Note that each file consumes space and contributes to file storage limit associated with user's account.
 
 ## API actions
@@ -15,10 +14,8 @@ API path: `/task/form/file`.
 
 ### create
 
-Creates a new file entry associated with form's field. By making this call you basically "request permission" to upload\
-a file. In return, you are provided with upload credentials (URL, form fields, etc.).\
-Note that in order to actually "include" file as form field's value, creating and uploading file is not enough.\
-You must then submit a form with file ID as a value of corresponding form field.
+Creates a new file entry associated with form's field. By making this call you basically "request permission" to upload a file. In return, you are provided with upload credentials (URL, form fields, etc.).\
+Note that in order to actually "include" file as form field's value, creating and uploading file is not enough. You must then submit a form with file ID as a value of corresponding form field.
 
 If file created but not uploaded, it will be deleted after date/time specified in "expires" response field.\
 If file uploaded but not included as form field's value, it will be deleted on next form submission.
@@ -37,23 +34,25 @@ If file uploaded but not included as form field's value, it will be deleted on n
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/form/file' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "field_id": "file1", "size": 10}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/form/file?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&field_id=file1&size=10
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

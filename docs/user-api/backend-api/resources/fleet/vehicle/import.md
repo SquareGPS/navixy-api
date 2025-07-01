@@ -3,10 +3,7 @@ title: Vehicle import
 description: API calls to import vehicles.
 ---
 
-## API actions
-
-API calls to import vehicles.
-
+# Vehicle import
 
 ## API actions
 
@@ -16,13 +13,13 @@ API path: `/vehicle/import/`.
 
 Starting the background process of importing vehicles.
 
-#### Parameters
+**Parameters**
 
-| name         | description                                                                                       | type         |
-|:-------------|:--------------------------------------------------------------------------------------------------|:-------------|
-| filename     | Name of file preloaded with [/data/spreadsheet/parse](../../commons/data.md#dataspreadsheetparse) | string       |
-| headers      | List of files' headers, see available fields above                                                | string array |
-| user_headers | Optional. List of user labels for headers                                                         | string array |
+| name          | description                                                                                       | type         |
+| ------------- | ------------------------------------------------------------------------------------------------- | ------------ |
+| filename      | Name of file preloaded with [/data/spreadsheet/parse](../../commons/data.md#dataspreadsheetparse) | string       |
+| headers       | List of files' headers, see available fields above                                                | string array |
+| user\_headers | Optional. List of user labels for headers                                                         | string array |
 
 Available fields:
 
@@ -63,7 +60,7 @@ Available fields:
 * `tags`
 * `undefined` (if a meaning of a field is not known)
 
-#### Response
+**Response**
 
 ```json
 {
@@ -72,11 +69,11 @@ Available fields:
 }
 ```
 
-#### Example
+**Example**
 
-=== "cURL"
+cURL
 
-```bash
+```sh
 curl -X POST "{{ extra.api_example_url }}/vehicle/import/start" \
     -H "Content-Type: application/json" \
     --data-binary @- << EOF
@@ -89,7 +86,7 @@ curl -X POST "{{ extra.api_example_url }}/vehicle/import/start" \
 EOF
 ```
 
-#### Errors
+**Errors**
 
 * 15 - Too many requests (rate limit exceeded) - if too many imports in progress
 * 233 - No data file
@@ -100,13 +97,13 @@ EOF
 
 Returns an import process with specified ID.
 
-#### Parameters
+**Parameters**
 
-| name       | description | type |
-|:-----------|:------------|:-----|
-| process_id | Process ID  | int  |
+| name        | description | type |
+| ----------- | ----------- | ---- |
+| process\_id | Process ID  | int  |
 
-#### Response
+**Response**
 
 ```json
 {
@@ -134,17 +131,17 @@ Returns an import process with specified ID.
 }
 ```
 
-#### Example
+**Example**
 
-=== "cURL"
+cURL
 
-```bash
+```sh
 curl -X POST "{{ extra.api_example_url }}/vehicle/import/read" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "process_id": 1}'
 ```
 
-#### Errors
+**Errors**
 
 * 201 – Not found in database (if import is not found)
 
@@ -152,7 +149,7 @@ curl -X POST "{{ extra.api_example_url }}/vehicle/import/read" \
 
 Returns the list of the user's vehicle import processes.
 
-#### Response
+**Response**
 
 ```json
 {
@@ -180,41 +177,41 @@ Returns the list of the user's vehicle import processes.
 }
 ```
 
-#### Example
+**Example**
 
-=== "cURL"
+cURL
 
-```bash
+```sh
 curl -X POST "{{ extra.api_example_url }}/vehicle/import/list" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
 
-### download_failed
+### download\_failed
 
 Retrieve a file with lines that contained errors and did not pass validation.
 
-#### Parameters
+**Parameters**
 
-| name       | description | type |
-|:-----------|:------------|:-----|
-| process_id | Process ID  | int  |
+| name        | description | type |
+| ----------- | ----------- | ---- |
+| process\_id | Process ID  | int  |
 
-#### Response
+**Response**
 
 File (standard file download).
 
-#### Example
+**Example**
 
-=== "cURL"
+cURL
 
-```bash
+```sh
 curl -X POST "{{ extra.api_example_url }}/vehicle/import/download_failed" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "process_id": 7}'
 ```
 
-#### Errors
+**Errors**
 
 * 201 – Not found in database (if import is not found)
 * 204 – Entity not found (if file is not found)

@@ -1,15 +1,11 @@
 ---
 title: Changing POI avatar
-description: >-
-  API calls to upload and assign avatars for POIs. Avatars don't change through
-  `/place/update`, you must use either `assign` (to set avatar to one of preset
-  icons), or `upload` (to upload your own imag
+description: API calls to upload and assign avatars for POIs.
 ---
 
 # Changing POI avatar
 
-Avatars don't change through `/place/update`, you must use either `assign` (to set avatar to one of preset icons),\
-or `upload` (to upload your own image).
+Avatars don't change through `/place/update`, you must use either `assign` (to set avatar to one of preset icons), or `upload` (to upload your own image).
 
 ## API actions
 
@@ -77,23 +73,25 @@ be used instead of icon.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/place/avatar/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place_id": 122304, "icon_id": 1}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/place/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304&icon_id=1
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

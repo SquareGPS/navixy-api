@@ -1,8 +1,8 @@
 ---
 title: Task form actions
 description: >-
-  This document describes API actions specific to working with task forms
-  (except task/form/list which can return all kinds of forms).
+  API actions specific to working with task forms (except task/form/list which
+  can return all kinds of forms).
 ---
 
 # Working with task forms
@@ -36,23 +36,25 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/form/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "template_id": 12548}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/form/create?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&template_id=12548
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -70,8 +72,11 @@ curl -X POST '{{ extra.api_example_url }}/task/form/create' \
 
 ### delete
 
-Deletes a form (detach it from the task).\
+Deletes a form (detach it from the task).
+
+{% hint style="warning" %}
 All form data will be lost!
+{% endhint %}
 
 **required sub-user rights**: `task_update`.
 
@@ -83,23 +88,23 @@ All form data will be lost!
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/form/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/form/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -128,23 +133,25 @@ Retrieves attached form as file.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/form/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "format": "pdf"}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/form/download?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&format=pdf
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -156,8 +163,7 @@ A form rendered to file (standard file download).
 
 ### list
 
-Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms,\
-the list contains data on the objects related to each form – tracker / vehicle / employee, task.
+Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, the list contains data on the objects related to each form – tracker / vehicle / employee, task.
 
 #### Parameters
 
@@ -220,23 +226,25 @@ where period\_object is:
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/form/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "ascending": true, "include_unsubmitted": true}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/form/list?hash=a6aa75587e5c59c32d347da438505fc3&ascending=true&include_unsubmitted=true
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -327,23 +335,23 @@ Gets form associated with the specified task.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/form/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/form/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=12546
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

@@ -1,9 +1,5 @@
 ---
 title: About forms
-description: >-
-  Forms used to provide additional information, such as user's name, phone,
-  delivery date, etc. upon task completion or check-in from iOS/Android mobile
-  tracker app. Forms can be attached to tasks. If f
 ---
 
 # About forms
@@ -112,23 +108,21 @@ Gets form by an ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/form/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/form/read?hash=a6aa75587e5c59c32d347da438505fc3&id=2
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -205,23 +199,23 @@ Downloads form as a file by an ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/form/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2, "format": "pdf"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/form/download?hash=a6aa75587e5c59c32d347da438505fc3&id=2&format=pdf
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

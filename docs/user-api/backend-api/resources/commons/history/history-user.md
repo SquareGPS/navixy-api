@@ -5,8 +5,6 @@ description: Contains list method to get user's events.
 
 # User events
 
-Contains list method to get user's events.
-
 ## API actions
 
 API path: `/history/user/`.
@@ -36,15 +34,15 @@ Default and max limit is 1000. (Note for StandAlone: this value configured by ma
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/history/user/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2020-12-10 16:44:00", "to": "2020-12-22 16:44:00"}'
 ```
-````
+{% endcode %}
 
 #### Response
 

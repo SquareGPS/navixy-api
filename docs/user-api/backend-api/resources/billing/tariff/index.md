@@ -7,8 +7,6 @@ description: >-
 
 # Plan
 
-Tariff object description and API call to get the list of device's plans available to user.
-
 ## Plan object
 
 ```json
@@ -55,8 +53,7 @@ API path: `/tariff`.
 
 ### list
 
-Gets list of device's plans available to user.\
-If user's dealer is **default dealer** or **paas** then listed tariffs of that dealer, else listed plans of parent dealer.\
+Gets list of device's plans available to user. If user's dealer is **default dealer** or **paas** then listed tariffs of that dealer, else listed plans of parent dealer.\
 Listed only plans available for user's legal type.
 
 #### Parameters
@@ -65,23 +62,21 @@ Only API key `hash`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tariff/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+```http
 {{ extra.api_example_url }}/tariff/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

@@ -1,8 +1,6 @@
 ---
 title: Updating task form values
-description: >-
-  API call for updating task form values. Task form values can be submitted
-  using web API only if there was a submission using Mobile Tracker App.
+description: API call for updating task form values.
 ---
 
 # Updating task form values
@@ -41,15 +39,15 @@ For **value** object description, see [form/form-fields-and-values/](../../../..
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/form/values/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546, "value": {"text1": {"type": "text", "value": "text field value"}}}'
 ```
-````
+{% endcode %}
 
 #### Response
 

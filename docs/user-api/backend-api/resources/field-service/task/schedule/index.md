@@ -1,19 +1,13 @@
 ---
 title: Recurring tasks
-description: >-
-  API actions to interact with recurring tasks. Some tasks happen on regular
-  basis, and it's tedious to create them by hand every time. Task schedules is
-  the way to automate this process.
+description: API actions to interact with recurring tasks.
 ---
 
 # Recurring tasks
 
-Some tasks happen on regular basis, and it's tedious to create them by hand every time. Task schedules is the way to automate\
-this process. At the beginning of each day (moments after 00:00 AM according to [user's timezone setting](../../../commons/user/settings/index.md)),\
-schedule checked and if there are tasks which start at this day, they are created and assigned to employees (if assignee specified).
+Some tasks happen on regular basis, and it's tedious to create them by hand every time. Task schedules is the way to automate this process. At the beginning of each day (moments after 00:00 AM according to [user's timezone setting](../../../commons/user/settings/index.md)), schedule checked and if there are tasks which start at this day, they are created and assigned to employees (if assignee specified).
 
-Schedule entries are very similar to tasks, main difference is that `from` and `to` containing specific date and time\
-replaced with `from_time`, `duration` and `parameters`.
+Schedule entries are very similar to tasks, main difference is that `from` and `to` containing specific date and time replaced with `from_time`, `duration` and `parameters`.
 
 ## Task schedule entry object
 
@@ -77,15 +71,15 @@ Creates new task schedule entry.
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/schedule/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -119,23 +113,23 @@ Delete task schedule with the specified ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/schedule/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule_id": 23144}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/schedule/delete?hash=a6aa75587e5c59c32d347da438505fc3&schedule_id=23144
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -163,23 +157,23 @@ Also this call returns all unassigned task schedules.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/schedule/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/schedule/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -229,23 +223,23 @@ Gets task, route or checkpoint schedule by specified ID.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/schedule/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 12314}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/task/schedule/read?hash=a6aa75587e5c59c32d347da438505fc3&id=12314
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -309,15 +303,15 @@ Updates existing task schedule.
 
 #### Examples
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/task/schedule/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
 ```
-````
+{% endcode %}
 
 #### Response
 

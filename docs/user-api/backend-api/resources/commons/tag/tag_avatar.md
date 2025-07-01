@@ -5,8 +5,6 @@ description: Contains API calls to interact with tag avatars.
 
 # Tag avatar
 
-Contains API calls to interact with tag avatars.
-
 ## API actions
 
 API path: `/tag/avatar`.
@@ -26,23 +24,25 @@ Assigns icon\_id (from standard icon set) to specified tag.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/tag/avatar/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_id": 1, "icon_id": 14}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/tag/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&tag_id=1&icon_id=14
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -64,7 +64,7 @@ e.g. `{{ extra.api_example_url }}/static/tag/avatars/abcdef123456789.png`.
 
 **required sub-user rights**: `tag_update`.
 
-**avatar\_file\_name** returned in response and will be returned from [/tag/list](../../../../introduction/resources/commons/tag/broken-reference/).
+**avatar\_file\_name** returned in response and will be returned from [/tag/list](index.md#list).
 
 **MUST** be a POST multipart request (multipart/form-data), with one of the parts being an image file upload (with the name `file`).
 

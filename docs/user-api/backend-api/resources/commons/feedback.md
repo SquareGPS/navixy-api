@@ -7,8 +7,6 @@ description: >-
 
 # Feedback
 
-Contains feedback object API call to send a feedback email, ask for help or suggest a new feature.
-
 ## Feedback object
 
 ```json
@@ -45,15 +43,15 @@ email address for feedback.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/feedback/send_email' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "feedback": {"text": "I love this platform"}, "type": "review"}'
 ```
-````
+{% endcode %}
 
 #### Response
 

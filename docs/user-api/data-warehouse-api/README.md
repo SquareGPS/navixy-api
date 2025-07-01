@@ -3,9 +3,7 @@ title: Getting Started
 description: Overview of Navixy Raw IoT Data API.
 ---
 
-# Data Warehouse API
-
-## Navixy Raw IoT Data API
+# Navixy Raw IoT Data API
 
 Navixy Raw IoT Data API is a powerful tool designed for developers and data engineers who need access to comprehensive, raw data from GPS and telematics devices. This API allows you to extract unprocessed data with high granularity, enabling detailed analysis and customized solutions. With the Navixy Raw IoT Data API, you can seamlessly integrate with our platform, retrieve essential data, and leverage it for various applications, including analytics, reporting, and data science.
 
@@ -34,7 +32,7 @@ https://api.eu.navixy.com/dwh/v1/tracker/raw_data/read
 
 ### Authentication
 
-Authentication is handled by the [Backend API](../backend-api/getting-started/authentication.md).
+Authentication is handled by the [Backend API](../backend-api/).
 
 ### Authorization
 
@@ -42,8 +40,10 @@ Requests to the Raw IoT Data API are made using a user session hash or API key. 
 
 Example:
 
-\=== "with Authorization header"
 
+
+{% tabs %}
+{% tab title="With Authorization header" %}
 ```shell
 curl -X 'POST' \
   'https://api.eu.navixy.com/dwh/v1/tracker/raw_data/get_inputs' \
@@ -52,9 +52,9 @@ curl -X 'POST' \
   -H 'Authorization: NVX 8a41497ed8e77fa68b9c4a9420971fdb' \
   -d '{"tracker_id": 123456'}'
 ```
+{% endtab %}
 
-\=== "with hash"
-
+{% tab title="With hash" %}
 ```shell
 curl -X 'POST' \
   'https://api.eu.navixy.com/dwh/v1/tracker/raw_data/get_inputs' \
@@ -62,6 +62,8 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
   -d '{"hash": "6dc7d304dec4434f4c4202ec42817f83","tracker_id": 123456}'
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Response Format
 

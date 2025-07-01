@@ -5,8 +5,7 @@ description: Contains API call to get the list of driver journal proposal.
 
 # Trip proposal for driver journal
 
-Contains API call to get the list of driver journal proposal. Proposal objects - trips per specified period that could be\
-used for driver journal entry creation.
+Proposal objects - trips per specified period that could be used for driver journal entry creation.
 
 To get information on how-to work with driver journals refer to our [instructions](../../../guides/fleet-management/driver-journals.md).
 
@@ -31,15 +30,15 @@ Tracks selected by intersecting their date range with date range from request (`
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/driver/journal/proposal/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "from": "2020-10-13 00:00:00", "to": "2020-10-14 00:00:00"}'
 ```
-````
+{% endcode %}
 
 #### Response
 

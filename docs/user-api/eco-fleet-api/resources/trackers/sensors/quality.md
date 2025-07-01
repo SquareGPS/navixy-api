@@ -5,8 +5,6 @@ description: Contains API calls to interact with fuel sensor quality index.
 
 # Fuel Sensor Quality Index
 
-Contains API calls to interact with fuel sensor quality index.
-
 ## Resource
 
 Resource path: `/trackers/$tracker_id/sensors/$sensor_id/quality`.
@@ -25,10 +23,12 @@ Returns the fuel sensor quality index calculated from sensor readings within a s
 
 #### Examples
 
+{% code overflow="wrap" %}
 ```shell
 curl -X GET '{{ extra.eco_fleet_api_example_url }}/trackers/123/sensors/321/quality?interval=P7D/2020-12-31T00:00Z' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
 ```
+{% endcode %}
 
 #### Response
 
