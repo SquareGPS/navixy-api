@@ -1,8 +1,7 @@
 # Multi-factor authentication settings
 
-<!-- theme: warning -->
-> **Work in progress!** <br>
-> This API is a work in progress and may change in future releases.<br>
+> **Work in progress!**\
+> This API is a work in progress and may change in future releases.\
 > In this version, allowing MFA to a user automatically enables it for them.
 
 ## API actions
@@ -13,34 +12,34 @@ API path: `panel/user/mfa/settings`.
 
 Updates users' MFA settings.
 
-*required permissions*: `users: "update"`.
+_required permissions_: `users: "update"`.
 
-#### parameters
+#### Parameters
 
-| name     | description                | type                            |
-|:---------|:---------------------------|:--------------------------------|
-| target   | Target of the update.      | [Update target](#update-target) |
-| settings | MFA settings for the user. | [MFA settings](#mfa-settings)   |
+| name     | description                | type                                           |
+| -------- | -------------------------- | ---------------------------------------------- |
+| target   | Target of the update.      | [Update target](mfa-settings.md#update-target) |
+| settings | MFA settings for the user. | [MFA settings](mfa-settings.md#mfa-settings)   |
 
-##### Update target
+**Update target**
 
 | name | description                                                                | type                       |
-|------|----------------------------------------------------------------------------|----------------------------|
+| ---- | -------------------------------------------------------------------------- | -------------------------- |
 | type | Specifies the type of the target: it could be either `all` or `selected`.  | string                     |
 | ids  | Used only when the `type` is `selected`. Specifies the `ids` of the users. | array of positive integers |
 
-#### example
+#### Example
 
-=== "cURL"
+{% code title="cURL" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/update' \
+    -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
+    -H 'Content-Type: application/json' \
+    -d '{ "target": { "type": "all" }, "settings": { "type": "disallowed" } }'
+```
+{% endcode %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/update' \
-        -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
-        -H 'Content-Type: application/json' \
-        -d '{ "target": { "type": "all" }, "settings": { "type": "disallowed" } }'
-    ```
-
-#### response
+#### Response
 
 ```json
 {
@@ -48,7 +47,7 @@ Updates users' MFA settings.
 }
 ```
 
-#### errors
+#### Errors
 
 * 201 – Not found in the database — if the specified user does not exist or belongs to a different dealer.
 
@@ -56,18 +55,18 @@ Updates users' MFA settings.
 
 Reads default MFA settings which are applied to the newly created users.
 
-*required permissions*: `users: "read"`.
+_required permissions_: `users: "read"`.
 
-#### example
+#### Example
 
-=== "cURL"
+{% code title="cURL" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/default/read' \
+    -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
+```
+{% endcode %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/default/read' \
-        -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
-    ```
-
-#### response
+#### Response
 
 ```json
 {
@@ -78,32 +77,32 @@ Reads default MFA settings which are applied to the newly created users.
 }
 ```
 
-* `value` - optional [MFA settings](#mfa-settings).
+* `value` - optional [MFA settings](mfa-settings.md#mfa-settings).
 
 ### update default
 
 Updates default MFA settings which are applied to the newly created users.
 
-*required permissions*: `users: "update"`.
+_required permissions_: `users: "update"`.
 
-#### parameters
+#### Parameters
 
-| name     | description                 | type                          |
-|:---------|:----------------------------|:------------------------------|
-| settings | MFA settings for the users. | [MFA settings](#mfa-settings) |
+| name     | description                 | type                                         |
+| -------- | --------------------------- | -------------------------------------------- |
+| settings | MFA settings for the users. | [MFA settings](mfa-settings.md#mfa-settings) |
 
-#### example
+#### Example
 
-=== "cURL"
+{% code title="cURL" %}
+```sh
+curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/default/update' \
+    -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
+    -H 'Content-Type: application/json' \
+    -d '{ "settings": { "type": "disallowed" } }'
+```
+{% endcode %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/default/update' \
-        -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
-        -H 'Content-Type: application/json' \
-        -d '{ "settings": { "type": "disallowed" } }'
-    ```
-
-#### response
+#### Response
 
 ```json
 {
@@ -122,8 +121,8 @@ Updates default MFA settings which are applied to the newly created users.
 }
 ```
 
-* `type` - [settings action type](#settings-action-type).
-* `factor_types` - optional array of [factor types](#factor-type). Required if `type` is `allowed`.
+* `type` - [settings action type](mfa-settings.md#settings-action-type).
+* `factor_types` - optional array of [factor types](mfa-settings.md#factor-type). Required if `type` is `allowed`.
 
 ### Settings action type
 

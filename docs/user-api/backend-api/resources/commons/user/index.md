@@ -126,9 +126,9 @@ A user account lets you start working with the platform as well as customize you
   * `features` - string array. Set of allowed [Dealer features](../dealer.md#dealer-features).
   * `privileges` - object only returned for sub-users. Describes effective sub-user privileges.
   * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
-* `user_menu` - [User menu](../../../../../panel-api/resources/user/menu/preset.md#menu-preset). Menu structure for the current user.
-  * `account` - [Menu item](../../../../../panel-api/resources/user/menu/preset.md#menu-item) array. Menu items for account management.
-  * `applications` - [Menu item](../../../../../panel-api/resources/user/menu/preset.md#menu-item) array. Menu items for applications.
+* `user_menu` - [User menu](../../../../../panel-api/resources/user/preset.md#menu-preset). Menu structure for the current user.
+  * `account` - [Menu item](../../../../../panel-api/resources/user/preset.md#menu-item) array. Menu items for account management.
+  * `applications` - [Menu item](../../../../../panel-api/resources/user/preset.md#menu-item) array. Menu items for applications.
 
 ## API actions
 

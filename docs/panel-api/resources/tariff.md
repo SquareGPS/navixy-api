@@ -37,7 +37,7 @@ API calls for managing user plans within the service platform (PaaS or Sub Paas)
 * `name` - string. Plan name.
 * `group_id` - int. Plan group number.
 * `active` - boolean. `true` if user allowed change his current plan to this one.
-* `type` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). Type of plan. Can be "monthly" or "activeday"\
+* `type` - [enum](../../user-api/backend-api/#data-types). Type of plan. Can be "monthly" or "activeday"\
   (for "tracker" device\_type only).
 * `price` - double. Plan subscription price (usually per month).
 * `early_change_price` - double. Price of change plan from current to another. With the last change in less than 30 days\
@@ -45,7 +45,7 @@ API calls for managing user plans within the service platform (PaaS or Sub Paas)
 * `device_limit` - int. A maximum limit of devices per user. Not used for cameras and sockets.
 * `has_reports` - boolean. If `true` the plan has reports.
 * `store_period` - string. Data storage period, e.g. "2h" (2 hours), "3d" (3 days), "5m" (5 months), "1y" (one year).
-* `device_type` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). Device type. Can be "tracker", "camera" or "socket".
+* `device_type` - [enum](../../user-api/backend-api/#data-types). Device type. Can be "tracker", "camera" or "socket".
 * `proportional_charge` - boolean. `true` if monthly fee will be smaller when device was blocked during month (for "monthly" tariffs only).
 * `service_prices` - JSON object with service prices.
   * `incoming_sms` - double. Incoming sms price.
@@ -72,15 +72,15 @@ _required permissions_: `"tariffs": "create"`.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tariff/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tariff": {"name": "Premium", "group_id": 3, "active": true, "type": "monthly", "price": 12.55, "early_change_price": 23.0, "device_limit": 2000, "has_reports": true, "store_period": "1y", "device_type": "tracker", "proportional_charge": false, "service_prices": {"incoming_sms": 0.3, "outgoing_sms": 0.3, "service_sms": 0.2, "phone_call": 0.6, "traffic": 0.09}}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -109,34 +109,34 @@ _required permissions_: `"tariffs": "read"`.
 
 #### Parameters
 
-| name         | description                                                                               | type                                                                          |
-| ------------ | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| device\_type | Optional. Filter by device type. One of "tracker", "camera" or "socket".                  | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
-| filter       | Optional. Text filter.                                                                    | string                                                                        |
-| order\_by    | Optional. List ordering. One of: `id`, `name`, `device_type`, `group_id`, `price`.        | string                                                                        |
-| ascending    | Optional. Default is `true`. If `true`, ordering will be ascending, descending otherwise. | boolean                                                                       |
-| offset       | Optional. Default is `0`. Starting offset, used for pagination.                           | int                                                                           |
-| limit        | Optional. Max number of records to return, used for pagination.                           | int                                                                           |
+| name         | description                                                                               | type                                           |
+| ------------ | ----------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| device\_type | Optional. Filter by device type. One of "tracker", "camera" or "socket".                  | [enum](../../user-api/backend-api/#data-types) |
+| filter       | Optional. Text filter.                                                                    | string                                         |
+| order\_by    | Optional. List ordering. One of: `id`, `name`, `device_type`, `group_id`, `price`.        | string                                         |
+| ascending    | Optional. Default is `true`. If `true`, ordering will be ascending, descending otherwise. | boolean                                        |
+| offset       | Optional. Default is `0`. Starting offset, used for pagination.                           | int                                            |
+| limit        | Optional. Max number of records to return, used for pagination.                           | int                                            |
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tariff/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tariff/list?hash=fa7bf873fab9333144e171372a321b06
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -195,23 +195,23 @@ _required permissions_: `"tariffs": "read"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tariff/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tariff_id": 12163}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tariff/read?hash=fa7bf873fab9333144e171372a321b06&tariff_id=12163
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -262,15 +262,15 @@ _required permissions_: `tariffs: "update"`.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tariff/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tariff": {"id": 12345, "name": "Premium", "group_id": 3, "active": true, "type": "monthly", "price": 12.55, "early_change_price": 23.0, "device_limit": 2000, "has_reports": true, "store_period": "1y", "proportional_charge": false, "service_prices": {"incoming_sms": 0.3, "outgoing_sms": 0.3, "service_sms": 0.2, "phone_call": 0.6, "traffic": 0.09}}}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -314,23 +314,23 @@ Only session `hash`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tariff/defaults/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tariff/defaults/read?hash=fa7bf873fab9333144e171372a321b06
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -354,7 +354,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tariff/defaults/read' \
 
 #### Errors
 
-[General](../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
+[General](../../user-api/backend-api/errors.md#error-codes) types only.
 
 ### defaults/update
 
@@ -370,15 +370,15 @@ _required permissions_: `tariffs: "update"`.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tariff/defaults/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker": {"tariff_id": 1234, "activation_bonus": 1.1, "free_days": 14, "free_days_device_limit": 3}}'
 ```
-````
+{% endcode %}
 
 #### Response
 

@@ -10,12 +10,11 @@ The Navixy Admin Panel API provides administrative access to manage the entire N
 
 The Admin Panel API uses **session hash authentication** as its sole authentication method. This approach is specifically designed for administrative workflows and provides:
 
-- **Secure session duration**: 24-hour session lifespan
-- **Administrative privileges**: Access to all account and device management functions
-- **Simple integration**: Single authentication step for admin operations
+* **Secure session duration**: 24-hour session lifespan
+* **Administrative privileges**: Access to all account and device management functions
+* **Simple integration**: Single authentication step for admin operations
 
-<!-- theme: warning -->
->Admin Panel API sessions are completely separate from platform API sessions. You cannot use an admin panel session hash with the platform API, and vice versa.
+> Admin Panel API sessions are completely separate from platform API sessions. You cannot use an admin panel session hash with the platform API, and vice versa.
 
 ## Base URLs
 
@@ -23,9 +22,9 @@ Admin Panel API authentication is accessible through the [`/panel/account` resou
 
 Depending on the deployment method (regional web server or on-premise installation), here are the common endpoint paths:
 
-- **European server**: `https://api.eu.navixy.com/v2/panel/account/auth/`
-- **American server**: `https://api.us.navixy.com/v2/panel/account/auth/`
-- **On-premise installations**: `https://api.your-domain.com/v2/panel/account/auth/`
+* **European server**: `https://api.eu.navixy.com/v2/panel/account/auth/`
+* **American server**: `https://api.us.navixy.com/v2/panel/account/auth/`
+* **On-premise installations**: `https://api.your-domain.com/v2/panel/account/auth/`
 
 ## Obtaining a session hash
 
@@ -40,6 +39,7 @@ curl -X POST "https://api.eu.navixy.com/v2/panel/account/auth/" \
 ```
 
 **Successful response:**
+
 ```json
 {
   "success": true,
@@ -58,10 +58,9 @@ The `hash` value is your session token - save it securely for subsequent API cal
 
 On-premise installations include default administrator credentials for initial setup:
 
-- **Default login**: `admin`
-- **Default password**: `admin`
+* **Default login**: `admin`
+* **Default password**: `admin`
 
-<!-- theme: warning -->
 > **Security warning**: Change default credentials immediately after installation in production environments.
 
 ```bash
@@ -87,7 +86,7 @@ curl -X POST "https://api.eu.navixy.com/v2/panel/user/list/" \
   -d '{"limit": 10}'
 ```
 
-#### 2. In request body 
+#### 2. In request body
 
 Include the `hash` parameter in your JSON request body:
 
@@ -101,12 +100,15 @@ curl -X POST "https://api.eu.navixy.com/v2/panel/user/list/" \
 
 Append the hash to the URL as a query parameter:
 
+{% code overflow="wrap" %}
 ```bash
 curl "https://api.eu.navixy.com/v2/panel/user/list/?hash=1dc2b813769d846c2c15030884948117&limit=10"
 ```
+{% endcode %}
 
-<!-- theme: warning -->
-> **Security Warning**: Query parameter method exposes credentials in URLs, server logs, and browser history. Use only for testing, never in production.
+{% hint style="danger" %}
+**Security Warning**: Query parameter method exposes credentials in URLs, server logs, and browser history. Use only for testing, never in production.
+{% endhint %}
 
 ## Session management
 
@@ -143,6 +145,7 @@ curl -X POST "https://api.eu.navixy.com/v2/panel/account/logout" \
 ```
 
 **Response:**
+
 ```json
 {
   "success": true
@@ -171,21 +174,21 @@ Permissions are defined as category-operation pairs:
 
 #### Available permission categories
 
-- **accounting**: `generate`
-- **activation_code**: `create`, `read`, `update`
-- **base**: `get_dealer_info`
-- **email_gateways**: `create`, `delete`, `read`, `send_email`, `update`
-- **notification_settings**: `read`, `update`
-- **password**: `update`
-- **service_settings**: `read`, `update`
-- **sms**: `create`
-- **subpaas**: `create`, `delete`, `read`, `update`
-- **tariffs**: `create`, `read`, `update`
-- **trackers**: `corrupt`, `create`, `delete`, `global`, `read`, `report`, `update`
-- **tracker_bundles**: `read`, `update`
-- **transactions**: `create`, `read`, `update`
-- **users**: `corrupt`, `create`, `read`, `update`, `delete`
-- **user_sessions**: `create`
+* **accounting**: `generate`
+* **activation\_code**: `create`, `read`, `update`
+* **base**: `get_dealer_info`
+* **email\_gateways**: `create`, `delete`, `read`, `send_email`, `update`
+* **notification\_settings**: `read`, `update`
+* **password**: `update`
+* **service\_settings**: `read`, `update`
+* **sms**: `create`
+* **subpaas**: `create`, `delete`, `read`, `update`
+* **tariffs**: `create`, `read`, `update`
+* **trackers**: `corrupt`, `create`, `delete`, `global`, `read`, `report`, `update`
+* **tracker\_bundles**: `read`, `update`
+* **transactions**: `create`, `read`, `update`
+* **users**: `corrupt`, `create`, `read`, `update`, `delete`
+* **user\_sessions**: `create`
 
 #### Permission denied response
 
@@ -212,6 +215,7 @@ curl -X POST "https://api.eu.navixy.com/v2/panel/account/get_permissions" \
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -230,9 +234,9 @@ Understanding admin panel authentication errors helps implement proper error han
 
 #### Common authentication errors
 
-- **Code 3: Wrong hash** - Your API key or session hash is invalid or has been revoked
-- **Code 4: User or API key not found or session ended** - User or session hash don't exist or expired
-- **Code 7: Invalid parameters** - Inserted request parameters are incorrect
+* **Code 3: Wrong hash** - Your API key or session hash is invalid or has been revoked
+* **Code 4: User or API key not found or session ended** - User or session hash don't exist or expired
+* **Code 7: Invalid parameters** - Inserted request parameters are incorrect
 
 #### Error handling best practices
 
@@ -254,7 +258,8 @@ curl -X POST "https://api.eu.navixy.com/v2/panel/account/auth/" \
   -d '{"login": "your_numeric_panel_ID", "password": "secure_password"}'
 ```
 
-Response example: 
+Response example:
+
 ```json
 {
   "success": true,
@@ -298,14 +303,14 @@ Technical accounts must be created by the Navixy support team:
 
 Technical accounts have a predefined set of permissions that differ from full administrative accounts:
 
-| Permission type | Technical accounts | Full admin accounts |
-|:----------------|:-------------------|:--------------------|
-| User management | Can add and modify users | Can add, modify, and delete users |
-| Tracker management | Can add, clone, and modify trackers | Can add, clone, modify, and remove trackers |
-| Data plan management | Can change tracker data plans | Can change tracker data plans |
-| Air console access | Can analyze incoming data | Can analyze incoming data and send commands |
-| Plan management | Cannot add, change, or delete plans | Can manage all plans |
-| Platform settings | Cannot modify platform settings | Can modify platform settings |
+| Permission type      | Technical accounts                  | Full admin accounts                         |
+| -------------------- | ----------------------------------- | ------------------------------------------- |
+| User management      | Can add and modify users            | Can add, modify, and delete users           |
+| Tracker management   | Can add, clone, and modify trackers | Can add, clone, modify, and remove trackers |
+| Data plan management | Can change tracker data plans       | Can change tracker data plans               |
+| Air console access   | Can analyze incoming data           | Can analyze incoming data and send commands |
+| Plan management      | Cannot add, change, or delete plans | Can manage all plans                        |
+| Platform settings    | Cannot modify platform settings     | Can modify platform settings                |
 
 #### Using technical accounts
 
@@ -328,14 +333,14 @@ Follow these guidelines for secure and effective admin panel authentication:
 3. **Store session hashes securely**, never in client-side code or logs
 4. **Implement session expiration handling** in your applications
 5. **Use technical accounts** for automated processes instead of personal credentials
-7. **Rotate credentials regularly** especially for technical accounts
-8. **Explicitly logout sessions** when no longer needed for enhanced security
+6. **Rotate credentials regularly** especially for technical accounts
+7. **Explicitly logout sessions** when no longer needed for enhanced security
 
 #### Integration practices
 
 1. **Implement proper error handling** for all authentication scenarios
 2. **Cache session hashes** to avoid unnecessary authentication calls
 3. **Plan for 24-hour session lifecycle** in your application architecture
-5. **Test authentication flows** in development environments first
-6. **Document which technical accounts** are used by which integrations
-8. **Support JSON format** for all API requests consistently
+4. **Test authentication flows** in development environments first
+5. **Document which technical accounts** are used by which integrations
+6. **Support JSON format** for all API requests consistently

@@ -167,4 +167,4 @@ Special error codes.
 
 Ensure your documentation is accurate and all examples work as described.
 
-For actual examples, refer to [user](../../panel-api/resources/user/index.md) and [tracker](../../panel-api/resources/tracker.md#list).
+For actual examples, refer to [user](broken-reference) and [tracker](../../panel-api/resources/tracker.md#list).

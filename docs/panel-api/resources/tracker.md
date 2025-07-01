@@ -42,23 +42,23 @@ API calls to manage GPS tracking devices within the Admin Panel.
 * `avatar_file_name` - optional string. Passed only if present.
 * `clone` - boolean. `true` if this tracker is clone.
 * `comment` - string. Comment (description) related to the tracker.
-* `creation_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Tracker or clone creation date.
+* `creation_date` - [date/time](../../user-api/backend-api/#data-types). Tracker or clone creation date.
 * `group_id` - int. Tracker group ID. `0` if no group.
 * `dealer_id` - int. An ID of a dealer to which this tracker (or clone) belongs to.
 * `deleted` - boolean. True if tracker or clone has been marked as deleted.
 * `label` - string. Tracker label.
 * `user_id` - int. An ID of the user to which this tracker (or clone) belongs to.
 * `model_name` - string. Human-readable tracker model name.
-* `last_connection` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Time when this tracker last connected to the server (in UTC+0 timezone).
+* `last_connection` - [date/time](../../user-api/backend-api/#data-types). Time when this tracker last connected to the server (in UTC+0 timezone).
 * `source` - source JSON object.
   * `id` - int. Source ID.
   * `device_id` - string. Source\_imei.
   * `model` - string. Tracker model name from "models" table.
   * `blocked` - boolean. `true` if tracker has been blocked due to tariff end, etc.
   * `tariff_id` - int. An ID of tracker's tariff from "main\_tariffs" table.
-  * `creation_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date when this tracker first registered in the system.
-  * `tariff_end_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date of next tariff prolongation or null.
-  * `connection_status` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types).\
+  * `creation_date` - [date/time](../../user-api/backend-api/#data-types). Date when this tracker first registered in the system.
+  * `tariff_end_date` - [date/time](../../user-api/backend-api/#data-types). Date of next tariff prolongation or null.
+  * `connection_status` - [enum](../../user-api/backend-api/#data-types).\
     Device connection status, possible values: "signal\_lost", "just\_registered", "just\_replaced", "offline", "idle", "active"
   * `phone` - string. Phone of the device. Can be null or empty if the device has no GSM module or uses bundled SIM which number hidden from the user.
   * `corrupted` - boolean. `true` when tracker has been corrupted using /tracker/corrupt, and not passed when it is not corrupted.
@@ -82,15 +82,15 @@ _required permissions_: `trackers: "read"`.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/active/history/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "from": "2021-02", "to": "2021-03"}'
 ```
-````
+{% endcode %}
 
 #### Response
 
@@ -137,23 +137,25 @@ _required permissions_: `tracker_bundles: "update"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": "78974217758"}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/bundle/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&iccid=78974217758
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -187,23 +189,25 @@ _required permissions_: `tracker_bundles: "update"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/order/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "order_id": 78974217758}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/bundle/order/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -233,23 +237,25 @@ _required permissions_: `tracker_bundles: "create"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/import' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imeis": ["896654523569742", "754854"], "equip_id": 13785, "factory_preset": false}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/bundle/import?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758&factory_preset=false
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -273,34 +279,34 @@ _required permissions_: `tracker_bundles: "read"`.
 
 #### Parameters
 
-| name                                 | description                                                                                                                                                                 | type                                                                          |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| clones\_filter                       | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
-| filter Optional. Text filter string. | string                                                                                                                                                                      |                                                                               |
-| order\_by                            | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`.        | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
-| ascending                            | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                                                       |
-| offset                               | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                                                           |
-| limit                                | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                                                           |
+| name                                 | description                                                                                                                                                                 | type                                           |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| clones\_filter                       | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../user-api/backend-api/#data-types) |
+| filter Optional. Text filter string. | string                                                                                                                                                                      |                                                |
+| order\_by                            | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`.        | [enum](../../user-api/backend-api/#data-types) |
+| ascending                            | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                        |
+| offset                               | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                            |
+| limit                                | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                            |
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/bundle/list?hash=fa7bf873fab9333144e171372a321b06
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -333,23 +339,23 @@ _required permissions_: `tracker_bundles: "read"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imei": "835664527777452"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/bundle/read?hash=fa7bf873fab9333144e171372a321b06&imei=835664527777452
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -379,23 +385,25 @@ _required permissions_: `tracker_bundles: "update"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 13457, "equip_id": 35468}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/bundle/update?hash=fa7bf873fab9333144e171372a321b06&bundle_id=13457&equip_id=35468
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -428,23 +436,25 @@ _required permissions_: `trackers: "create"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/clone' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537, "user_id": 354468, "label": "Courier"}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537&user_id=354468&label=Courier
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -479,23 +489,23 @@ _required permissions_: `trackers: "update"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/console/connect' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/console/connect?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -564,23 +574,23 @@ _required permissions_: `trackers: "corrupt"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/corrupt' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/corrupt?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -633,23 +643,25 @@ _required permissions_: `trackers: "create"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_clone' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 998836, "tracker_ids": [134537, 458412, 99330], "ignore_existing": true}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/batch_clone?hash=fa7bf873fab9333144e171372a321b06&user_id=998836&tracker_ids=[134537,458412]&ignore_existing=true
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -676,7 +688,7 @@ Example:
 
 If the operation is applied transactionally meaning the `ignore_existing` = `false` or is not specified: it completes only if `"success": true` is received for the whole batch, otherwise, the cloning process for all trackers is rolled back.
 
-* [Standard errors](../../user-api/backend-api/getting-started/errors.md#error-codes).
+* [Standard errors](../../user-api/backend-api/errors.md#error-codes).
 * 7 - Invalid parameters. Size must be between 1 and 1000 - triggered when the clone request exceeds 1000 trackers.
 * 217 – List contains nonexistent entities - if at least one tracker from the request is not found.
 * 247 – Entity already exists - if at least one of the trackers already has its clone in the target user. The error provides the list of trackers in the target user that caused the error.
@@ -700,8 +712,7 @@ Example:
 ### batch\_delete\_clones
 
 Deletes the specified set of trackers that are clones of other trackers.\
-The action will be considered as completed successfully, even if some trackers could not be deleted. Then for the rest\
-response will contain a description of the reasons why the deletion failed.
+The action will be considered as completed successfully, even if some trackers could not be deleted. Then for the rest response will contain a description of the reasons why the deletion failed.
 
 _required permissions_: `trackers: "delete"`.
 
@@ -711,23 +722,25 @@ _required permissions_: `trackers: "delete"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_delete_clones' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "trackers": [134537, 458412]}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/batch_delete_clones?hash=fa7bf873fab9333144e171372a321b06&trackers=[134537, 458412]
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -764,7 +777,7 @@ Example:
 
 #### Errors
 
-* [Standard errors](../../user-api/backend-api/getting-started/errors.md#error-codes).
+* [Standard errors](../../user-api/backend-api/errors.md#error-codes).
 
 ### delete\_clone
 
@@ -780,23 +793,23 @@ _required permissions_: `trackers: "delete"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/delete_clone' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/delete_clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -863,23 +876,24 @@ _required permissions_: `trackers: "read"`.
 
 #### Examples
 
-\=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 
-````
-```shell
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/list?hash=fa7bf873fab9333144e171372a321b06
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -942,23 +956,25 @@ _required permissions_: `trackers: "create", "delete"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/move' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "user_id": 214034}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/move?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&user_id=214034
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -990,23 +1006,23 @@ _required permissions_: `trackers: "read"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/read?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -1066,23 +1082,25 @@ _required permissions_: `trackers: "update"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/register_retry' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "send_register_commands": true}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/register_retry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&send_register_commands=true
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -1119,23 +1137,25 @@ _required permissions_: `trackers: "update"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/settings/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "label": "Courier", "deleted": false}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/settings/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&label=Courier&deleted=false
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -1165,23 +1185,25 @@ _required permissions_: `trackers: "update"`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/source/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "blocked": false}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/source/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&blocked=false
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -1211,23 +1233,25 @@ _required permissions_: `[trackers: "update", "transactions": "create", "tariffs
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/tariff/change' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "tariff_id": 15843, "repay": false, "charge": true}'
 ```
-````
+{% endcode %}
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/tracker/tariff/change?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&tariff_id=15843&repay=false&charge=true
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -1335,15 +1359,15 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+{% code overflow="wrap" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/tracker/raw_command/send' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": "889654248978", "command": "setparam 101:4"}'
 ```
-````
+{% endcode %}
 
 #### Response
 

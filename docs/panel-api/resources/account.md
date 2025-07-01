@@ -11,8 +11,7 @@ API path: `panel/account`.
 
 ### auth
 
-Does not require session hash and does not need any permissions. Auths dealer in a panel (planned also for dealer's "sub-users")\
-and gets hash.
+Does not require session hash and does not need any permissions. Auths dealer in a panel (planned also for dealer's "sub-users") and gets hash.
 
 #### Parameters
 
@@ -23,15 +22,13 @@ and gets hash.
 
 #### Example
 
-\=== "cURL"
+cURL
 
-````
-```shell
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/account/auth' \
     -H 'Content-Type: application/json' \
     -d '{"login": "20410", "password": "12f@14Y$"}'
 ```
-````
 
 #### Response
 
@@ -120,23 +117,23 @@ Only session `hash`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/account/get_permissions' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/account/get_permissions?hash=fa7bf873fab9333144e171372a321b06
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -220,23 +217,23 @@ Only session `hash`.
 
 #### Examples
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST '{{ extra.api_example_url }}/panel/account/logout' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 {{ extra.api_example_url }}/panel/account/logout?hash=fa7bf873fab9333144e171372a321b06
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
