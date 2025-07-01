@@ -166,7 +166,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
 Let's confirm everything is working by listing your inventory items:
 
 ```bash
-curl -X GET "{BASE_URL}/v0/inventory_item/master/list?q=&limit=10&offset=0&sort=label" \
+curl -X GET "{BASE_URL}/v0/inventory_item/master/list" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
