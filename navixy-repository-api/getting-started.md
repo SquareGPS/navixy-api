@@ -75,8 +75,6 @@ For a more in-depth explanation of activating a GPS device and working with inve
 
 To create an inventory that will store your device, send the following request:
 
-#### &#x20;[**POST /inventory/create**](broken-reference)
-
 ```bash
 curl -X POST {BASE_URL}/v0/inventory/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
