@@ -6,7 +6,7 @@ Notifications are a crucial part of tracking. A [created rule](use-rules.md#crea
 
 ### All Unread Events of a User
 
-Use the [`history/unread/list`](../../resources/history/history_unread.md#list) call to get all unread events.
+Use the [`history/unread/list`](broken-reference) call to get all unread events.
 
 This call contains only two optional parameters:
 

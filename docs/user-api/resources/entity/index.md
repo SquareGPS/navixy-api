@@ -46,7 +46,7 @@ For example, you can add custom fields to the **places** entity or rearrange exi
 
 **Entity types**:
 
-**place** - a place object, the same as is available through [place API](../field-service/place/work-with-poi.md).
+**place** - a place object, the same as is available through [place API](../map/place/work-with-poi.md).
 
 Builtin fields:
 

@@ -1,6 +1,7 @@
 ---
 title: Tag avatar
 description: Contains API calls to interact with tag avatars.
+hidden: true
 ---
 
 # Tag avatar

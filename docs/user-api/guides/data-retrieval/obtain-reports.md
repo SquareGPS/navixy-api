@@ -12,7 +12,7 @@ Necessary parameters for this call:
 * `to` - A string containing [date/time](broken-reference). The specified date must be after the `from` date. Data in the report will be up to this moment.
 * `title` - Report title. If null, the default title will be used.
 * `trackers` - List of [tracker IDs](../../backend-api/guides/data-retrieval/broken-reference/) to be included in the report (if the report is by trackers).
-* `employees` - List of [employee IDs](../../resources/field-service/employee/index.md#list) to be included in the report (if the report is by employees).
+* `employees` - List of [employee IDs](broken-reference) to be included in the report (if the report is by employees).
 * `time_filter` - An object containing daily time and weekday limits for processed data, e.g., `{"to":"18:00", "from":"12:00", "weekdays":[1,2,3,4,5]}`.
 * `plugin` - A plugin object. See the list of all [report plugins](../../resources/report/report_plugins.md).
 

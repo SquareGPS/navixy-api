@@ -12,7 +12,7 @@ description: Getting started with Navixy API
 The documentation is organized into sections, each addressing a specific aspect of the Navixy platform:
 
 * [**General**](./): Introduction, Navixy API Sandbox, No-code automation, and contribution guidelines.
-* [**Navixy platform API**](https://app.gitbook.com/o/YVLWhgAwCZPoU5vlRsCs/s/wsyU95CoLDheydH0OQPY/): API calls for user interface functionalities like raw device data, tracking, reports, tasks, and much more.
+* [**Navixy platform API**](broken-reference): API calls for user interface functionalities like raw device data, tracking, reports, tasks, and much more.
 * [**Admin Panel API**](https://app.gitbook.com/s/yXecjDA8Sz658QNg2Ynx/getting-started#introduction): API calls for admin panel functionalities such as platform config and user management.
 
 ### Navigation
