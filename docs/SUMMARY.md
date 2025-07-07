@@ -107,6 +107,8 @@
           * [Mileage](user-api/backend-api/resources/tracking/tracker/stats/stats_mileage.md)
       * [Zone](user-api/backend-api/resources/tracking/zone/README.md)
         * [Geofence point](user-api/backend-api/resources/tracking/zone/zone_point.md)
+      * [Asset](user-api/backend-api/resources/tracking/asset/README.md)
+        * [Asset groups](user-api/backend-api/resources/tracking/asset/asset-groups.md)
     * [Geo Links](user-api/backend-api/resources/location_link.md)
     * [Billing](user-api/backend-api/resources/billing/README.md)
       * [Bill](user-api/backend-api/resources/billing/bill.md)
@@ -170,9 +172,9 @@
         * [User applications](user-api/backend-api/resources/commons/user/applications/README.md)
           * [User Applications](user-api/backend-api/resources/commons/user/applications/applications-reference-old.md)
           * ```yaml
-            type: builtin:openapi
             props:
               models: true
+            type: builtin:openapi
             dependencies:
               spec:
                 ref:
