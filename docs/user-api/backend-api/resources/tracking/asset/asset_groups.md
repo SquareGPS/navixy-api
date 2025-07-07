@@ -62,16 +62,16 @@ Create new asset group.
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/asset_group/create' \
-        -H 'Content-Type: application/json' \
-        -d '{
-    "hash":"59be129c1855e34ea9eb272b1e26ef1d",
-    "assets": [{"id": 36558, "type": "employee"}, {"id": 45685, "type": "vehicle"}]
-    }'
-    ```
+```shell
+  curl -X POST '{{ extra.api_example_url }}/asset_group/create' \
+      -H 'Content-Type: application/json' \
+      -d '{
+  "hash":"59be129c1855e34ea9eb272b1e26ef1d",
+  "assets": [{"id": 36558, "type": "employee"}, {"id": 45685, "type": "vehicle"}]
+  }'
+```
 
 #### Response
 
