@@ -269,6 +269,7 @@ Delete asset group.
 #### Example
 
 cURL
+
 ```shell
   curl -X POST '{{ extra.api_example_url }}/asset_group/delete' \
       -H 'Content-Type: application/json' \
