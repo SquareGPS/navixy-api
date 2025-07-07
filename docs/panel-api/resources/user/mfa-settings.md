@@ -32,7 +32,7 @@ _required permissions_: `users: "update"`.
 
 {% code title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/mfa/settings/update' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
     -H 'Content-Type: application/json' \
     -d '{ "target": { "type": "all" }, "settings": { "type": "disallowed" } }'
@@ -61,7 +61,7 @@ _required permissions_: `users: "read"`.
 
 {% code title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/default/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/mfa/settings/default/read' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
 ```
 {% endcode %}
@@ -95,7 +95,7 @@ _required permissions_: `users: "update"`.
 
 {% code title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/mfa/settings/default/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/mfa/settings/default/update' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
     -H 'Content-Type: application/json' \
     -d '{ "settings": { "type": "disallowed" } }'

@@ -36,7 +36,7 @@ First, get the entity ID to identify which entity to update and where to add fie
 #### cURL
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/entity/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/entity/list' \
      -H 'Content-Type: application/json' \
      -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -48,7 +48,7 @@ The response will provide the necessary entity ID with existing fields. Add new 
 #### cURL
 
 ```shell
-    curl -X POST '{{ extra.api_example_url }}/entity/fields/update' \
+    curl -X POST 'https://api.eu.navixy.com/v2/entity/fields/update' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "delete_missing": true, "entity_id": 520, "fields": [{"label": "E-mail", "required": false, "type": "email", "description": "Customer\'s email"}, {"label": "Phone", "required": false, "type": "phone", "description": "Customer\'s phone"}, {"label": "The last visit date", "required": false, "type": "text", "description": null}, {"label": "The last order №", "required": false, "type": "text", "description": null}, {"label": "The last visit result", "required": false, "type": "text", "description": null}, {"label": "Responsible employee", "params": {"responsible": true}, "required": false, "type": "employee", "description": null}]}'
 ```
@@ -116,7 +116,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/entity/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/entity/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "entity": {"allowed": true, "id": 520, "type": "place", "settings": {"layout": {"sections": [{"label": "Places", "field_order": ["label", "location", "description", "tags", "2327", "2328", "2329", "2330", "2331", "2332"]}]}}}}'
 ```
@@ -132,7 +132,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/place/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/place/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "place": {"label": "Company1", "description": "Accepted one more deal for 7 devices next week", "files": [], "fields": {"2327": {"value": "shop1@email.com", "type": "email"}, "2328": {"value": "555231415221", "type": "phone"}, "2329": {"value": "10/10/2021", "type": "text"}, "2330": {"value": "87292", "type": "text"}, "2331": {"value": "Sold 10 devices", "type": "text"}, "2332": {"value": 71247, "type": "employee"}}, "location": {"address": "Lovell House, 6 Archway, Hulme, Manchester M15 5RN, UK", "lat": 53.46583133200717, "lng": -2.2464680671691895, "radius": 50}, "tags": [218916]}}
 ```

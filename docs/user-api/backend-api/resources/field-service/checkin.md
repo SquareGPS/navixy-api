@@ -97,7 +97,7 @@ Get check-in which ID is equal to `checkin_id`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/checkin/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/checkin/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkin_id": 1}'
 ```
@@ -106,7 +106,7 @@ curl -X POST '{{ extra.api_example_url }}/checkin/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/checkin/read?hash=a6aa75587e5c59c32d347da438505fc3&checkin_id=1
+https://api.eu.navixy.com/v2/checkin/read?hash=a6aa75587e5c59c32d347da438505fc3&checkin_id=1
 ```
 {% endcode %}
 {% endtab %}
@@ -209,7 +209,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/checkin/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/checkin/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [616384,345623], "from": "2020-08-05 03:06:00", "to": "2020-09-05 03:00:00", "offset": 20, "limit": 100, "format": "xlsx"}'
 ```
@@ -253,7 +253,7 @@ Deletes check-ins with the specified IDs.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/checkin/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/checkin/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkin_ids": [2132,4533]}'
 ```
@@ -262,7 +262,7 @@ curl -X POST '{{ extra.api_example_url }}/checkin/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/checkin/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkin_ids=[2132,4533]
+https://api.eu.navixy.com/v2/checkin/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkin_ids=[2132,4533]
 ```
 {% endcode %}
 {% endtab %}
@@ -315,7 +315,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/checkin/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/checkin/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 22, "location": { "lat": 9.861999, "lng": -83.948999 }, "comment": "houston, we have a problem", "file_ids": [11, 22], "form_submission": { "form_id": 23423, "values": {"111-aaa-whatever": { "type": "text", "value": "John Doe" }} }}'
 ```
@@ -506,7 +506,7 @@ Creates a new form that can be attached to a check-in. Form always created on th
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/checkin/form/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/checkin/form/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 22, "template_id": 12548}'
 ```
@@ -516,7 +516,7 @@ curl -X POST '{{ extra.api_example_url }}/checkin/form/create' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/checkin/form/create?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=22&template_id=12548
+https://api.eu.navixy.com/v2/checkin/form/create?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=22&template_id=12548
 ```
 {% endcode %}
 {% endtab %}
@@ -558,7 +558,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/checkin/form/file/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/checkin/form/file/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkin_id": 1, "field_id": "111-aaa-whatever", "size": 101}'
 ```

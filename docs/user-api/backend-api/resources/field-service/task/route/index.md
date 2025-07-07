@@ -66,7 +66,7 @@ API base path: `/task/route`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/route/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/route/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route_id": 11231, "tracker_id": 223465}'
 ```
@@ -76,7 +76,7 @@ curl -X POST '{{ extra.api_example_url }}/task/route/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/route/assign?hash=a6aa75587e5c59c32d347da438505fc3&route_id=11231&tracker_id=223465
+https://api.eu.navixy.com/v2/task/route/assign?hash=a6aa75587e5c59c32d347da438505fc3&route_id=11231&tracker_id=223465
 ```
 {% endcode %}
 {% endtab %}
@@ -155,7 +155,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/route/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/route/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route": {"tracker_id": 669673, "label": "Products delivery", "description": "12 trackers of model 1 and 37 trackers of model 2", "from": "2020-03-18 10:00:00", "to": "2020-03-18 16:00:00"}, "checkpoints": [{"tracker_id": 669673, "location": {"lat": 34.178868, "lng": -118.599672, "radius": 100}, "label": "Company1", "description": "5 trackers of model 1 and 15 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 12:00:00", "external_id": "10100", "max_delay": 0, "min_stay_duration": 10, "tags": [1, 4], "form_template_id": 132985}, {"tracker_id": 669673, "location": {"lat": 31.738386, "lng": -106.453854, "radius": 100}, "label": "Company2", "description": "4 trackers of model 1 and 12 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 14:00:00", "external_id": "10101", "max_delay": 0, "min_stay_duration": 10, "tags": [2, 4], "form_template_id": 132985}], "create_form": false}'
 ```
@@ -216,7 +216,7 @@ Deletes route (and its checkpoints) with the specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/route/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/route/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route_id": 23144}'
 ```
@@ -225,7 +225,7 @@ curl -X POST '{{ extra.api_example_url }}/task/route/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/route/delete?hash=a6aa75587e5c59c32d347da438505fc3&route_id=23144
+https://api.eu.navixy.com/v2/task/route/delete?hash=a6aa75587e5c59c32d347da438505fc3&route_id=23144
 ```
 {% endcode %}
 {% endtab %}
@@ -262,7 +262,7 @@ Get all routes belonging to user with optional filtering.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/route/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/route/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -271,7 +271,7 @@ curl -X POST '{{ extra.api_example_url }}/task/route/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/route/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/task/route/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -368,7 +368,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/route/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/route/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "route": {"id": 23785, "label": "Products delivery", "description": "12 trackers of model 1 and 37 trackers of model 2", "from": "2020-03-18 10:00:00", "to": "2020-03-18 16:00:00"}, "checkpoints": [{"id": 123, "tracker_id": 669673, "location": {"lat": 34.178868, "lng": -118.599672, "radius": 100}, "label": "Company1", "description": "5 trackers of model 1 and 15 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 12:00:00", "external_id": "10100", "max_delay": 0, "min_stay_duration": 10, "tags": [1, 4], "form_template_id": 132985}, {"id": 124, "tracker_id": 669673, "location": {"lat": 31.738386, "lng": -106.453854, "radius": 100}, "label": "Company2", "description": "4 trackers of model 1 and 12 trackers of model 2", "from": "2021-03-18 10:00:00", "to": "2021-03-18 14:00:00", "external_id": "10101", "max_delay": 0, "min_stay_duration": 10, "tags": [2, 4], "form_template_id": 132985}], "create_form": false}'
 ```

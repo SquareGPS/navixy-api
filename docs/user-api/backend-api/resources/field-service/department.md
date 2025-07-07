@@ -42,7 +42,7 @@ Gets all departments belonging to user.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/department/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/department/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -50,7 +50,7 @@ curl -X POST '{{ extra.api_example_url }}/department/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/department/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/department/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -98,7 +98,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/department/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/department/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department": {"label": "My Department", "location": {"lat": 46.9, "lng": 7.4, "address": "Rosenweg 3", "radius": 50}}'
 ```
@@ -140,7 +140,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/department/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/department/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department": {"id": 111, "label": "My Department", "location": {"lat": 46.9, "lng": 7.4, "address": "Rosenweg 3", "radius": 50}}'
 ```
@@ -173,7 +173,7 @@ Deletes department with the specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/department/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/department/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "department_id": 111}'
 ```
@@ -182,7 +182,7 @@ curl -X POST '{{ extra.api_example_url }}/department/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/department/delete?hash=a6aa75587e5c59c32d347da438505fc3&department_id=111
+https://api.eu.navixy.com/v2/department/delete?hash=a6aa75587e5c59c32d347da438505fc3&department_id=111
 ```
 {% endcode %}
 {% endtab %}

@@ -67,7 +67,7 @@ Only session `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/gateways/email/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/gateways/email/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -76,7 +76,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/gateways/email/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/gateways/email/list?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/gateways/email/list?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}

@@ -62,7 +62,7 @@ _required permissions_: `activation_code: ["read", "create"]`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/dealer/activation_code/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/activation_code/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "count": 10, "tariff_id": 12457, "bonus_amount": 3, "free_days": 5}'
 ```
@@ -72,7 +72,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/dealer/activation_code/create' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/dealer/activation_code/create?hash=fa7bf873fab9333144e171372a321b06&count=10&tariff_id=12457&bonus_amount=3&free_days=5
+https://api.eu.navixy.com/v2/panel/dealer/activation_code/create?hash=fa7bf873fab9333144e171372a321b06&count=10&tariff_id=12457&bonus_amount=3&free_days=5
 ```
 {% endcode %}
 {% endtab %}
@@ -114,7 +114,7 @@ _required permissions_: `activation_code: "read"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/dealer/activation_code/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/activation_code/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -123,7 +123,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/dealer/activation_code/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```
-{{ extra.api_example_url }}/panel/dealer/activation_code/list?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/dealer/activation_code/list?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}
@@ -181,7 +181,7 @@ _required permissions_: `activation_code: "update"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/dealer/activation_code/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/activation_code/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06",  "codes": ["12315124", "12451576"], "tariff_id": 12457, "bonus_amount": 3, "free_days": 5}'
 ```
@@ -191,7 +191,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/dealer/activation_code/update' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/dealer/activation_code/update?hash=fa7bf873fab9333144e171372a321b06&codes=["12315124", "12451576"]&tariff_id=12457&bonus_amount=3&free_days=5
+https://api.eu.navixy.com/v2/panel/dealer/activation_code/update?hash=fa7bf873fab9333144e171372a321b06&codes=["12315124", "12451576"]&tariff_id=12457&bonus_amount=3&free_days=5
 ```
 {% endcode %}
 {% endtab %}

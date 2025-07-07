@@ -26,7 +26,7 @@ _required permissions_: `tracker_bundles: "read"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/order/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/order/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "order_id": 12341}'
 ```
@@ -35,7 +35,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/order/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/order/read?hash=fa7bf873fab9333144e171372a321b06&order_id=12341
+https://api.eu.navixy.com/v2/panel/order/read?hash=fa7bf873fab9333144e171372a321b06&order_id=12341
 ```
 {% endcode %}
 {% endtab %}

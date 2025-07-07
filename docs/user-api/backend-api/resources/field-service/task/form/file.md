@@ -38,7 +38,7 @@ If file uploaded but not included as form field's value, it will be deleted on n
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/form/file' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/form/file' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "field_id": "file1", "size": 10}'
 ```
@@ -48,7 +48,7 @@ curl -X POST '{{ extra.api_example_url }}/task/form/file' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/form/file?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&field_id=file1&size=10
+https://api.eu.navixy.com/v2/task/form/file?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&field_id=file1&size=10
 ```
 {% endcode %}
 {% endtab %}

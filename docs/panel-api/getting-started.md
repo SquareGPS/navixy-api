@@ -23,7 +23,7 @@ The Admin Panel API is accessible via the `panel/` subsection of the API URL. Th
 
 For example, to make an `account/auth` API call on the Navixy ServerMate platform, you would use the following URL:
 
-`{{ extra.api_example_url }}/panel/account/auth`
+`https://api.eu.navixy.com/v2/panel/account/auth`
 
 ### Authorization
 

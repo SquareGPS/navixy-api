@@ -28,7 +28,7 @@ Gives access for sub-user to the specified trackers.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/tracker/bind' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/tracker/bind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "trackers": [127830]}'
 ```
@@ -38,7 +38,7 @@ curl -X POST '{{ extra.api_example_url }}/subuser/tracker/bind' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/subuser/tracker/bind?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951&trackers=[127830]
+https://api.eu.navixy.com/v2/subuser/tracker/bind?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951&trackers=[127830]
 ```
 {% endcode %}
 {% endtab %}
@@ -76,7 +76,7 @@ Gets a list of tracker IDs to which this sub-user has access.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/tracker/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/tracker/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951}'
 ```
@@ -85,7 +85,7 @@ curl -X POST '{{ extra.api_example_url }}/subuser/tracker/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/subuser/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951
+https://api.eu.navixy.com/v2/subuser/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951
 ```
 {% endcode %}
 {% endtab %}
@@ -127,7 +127,7 @@ Disables access for sub-user to the specified trackers.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/tracker/unbind' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/tracker/unbind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "trackers": [127830]}'
 ```
@@ -137,7 +137,7 @@ curl -X POST '{{ extra.api_example_url }}/subuser/tracker/unbind' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/subuser/tracker/unbind?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951&trackers=[127830]
+https://api.eu.navixy.com/v2/subuser/tracker/unbind?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=204951&trackers=[127830]
 ```
 {% endcode %}
 {% endtab %}

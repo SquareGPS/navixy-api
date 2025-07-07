@@ -71,7 +71,7 @@ _required permissions_: `service_settings: "update"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/image/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/settings/image/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "type": "logo"}'
 ```
@@ -80,7 +80,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/image/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/dealer/settings/image/delete?hash=fa7bf873fab9333144e171372a321b06&type=logo
+https://api.eu.navixy.com/v2/panel/dealer/settings/image/delete?hash=fa7bf873fab9333144e171372a321b06&type=logo
 ```
 {% endcode %}
 {% endtab %}

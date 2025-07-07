@@ -72,7 +72,7 @@ Creates new Geo Link. There may be up to 10000 geo-links per user account.
 cURL
 
 ```bash
-curl -X POST "{{ extra.api_example_url }}/tracker/location/link/create" \
+curl -X POST "https://api.eu.navixy.com/v2/tracker/location/link/create" \
     -H "Content-Type: application/json" \
     --data-binary @- << EOF
 {
@@ -144,7 +144,7 @@ Updates Geo Link.
 cURL
 
 ```bash
-curl -X POST "{{ extra.api_example_url }}/tracker/location/link/update" \
+curl -X POST "https://api.eu.navixy.com/v2/tracker/location/link/update" \
     -H "Content-Type: application/json" \
     --data-binary @- << EOF
 {
@@ -214,7 +214,7 @@ Lets to activate and deactivate a link.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/location/link/status/change' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/location/link/status/change' \
     -H 'Content-Type: application/json' \
     -d '{"hash":"a6aa75587e5c59c32d347da438505fc3","id":104,"is_active":false}'
 ```
@@ -246,7 +246,7 @@ Returns a link with a specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/location/link/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/location/link/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash":"a6aa75587e5c59c32d347da438505fc3","id":103}'
 ```
@@ -255,7 +255,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/location/link/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/location/link/read?hash=a6aa75587e5c59c32d347da438505fc3&id=103
+https://api.eu.navixy.com/v2/tracker/location/link/read?hash=a6aa75587e5c59c32d347da438505fc3&id=103
 ```
 {% endcode %}
 {% endtab %}
@@ -348,7 +348,7 @@ Returns a list of a user's links.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/location/link/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/location/link/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "offset": 0, "limit": 1000}'
 ```
@@ -358,7 +358,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/location/link/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/location/link/list?hash=a6aa75587e5c59c32d347da438505fc3&offset=0&limit=1000
+https://api.eu.navixy.com/v2/tracker/location/link/list?hash=a6aa75587e5c59c32d347da438505fc3&offset=0&limit=1000
 ```
 {% endcode %}
 {% endtab %}
@@ -423,7 +423,7 @@ Deletes a link with a specified ID.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/location/link/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/location/link/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "id": 103}'
 ```

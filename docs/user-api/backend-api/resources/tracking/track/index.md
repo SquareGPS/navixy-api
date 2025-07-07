@@ -41,7 +41,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/track/download' \
+curl -X POST 'https://api.eu.navixy.com/v2/track/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "from": "2023-11-19 03:24:00", "to": "2023-11-19 06:24:00", "format": "kml", "split": false}'
 ```
@@ -147,7 +147,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/track/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/track/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "from": "2023-11-01 03:24:00", "to": "2023-11-30 06:24:00", "filter": false, "count_events": true}'
 ```
@@ -373,7 +373,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/track/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/track/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "track_id": 923150, "from": "2023-11-01 00:00:00", "to": "2023-11-01 23:59:59", "filter": false, "simplify": false, "include_gsm_lbs": false}'
 ```
@@ -459,7 +459,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/track/visit/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/track/visit/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 1683258, "from": "2024-01-01 00:00:00", "to": "2024-01-31 00:00:00"}'
 ```

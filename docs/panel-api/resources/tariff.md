@@ -76,7 +76,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tariff/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tariff/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tariff": {"name": "Premium", "group_id": 3, "active": true, "type": "monthly", "price": 12.55, "early_change_price": 23.0, "device_limit": 2000, "has_reports": true, "store_period": "1y", "device_type": "tracker", "proportional_charge": false, "service_prices": {"incoming_sms": 0.3, "outgoing_sms": 0.3, "service_sms": 0.2, "phone_call": 0.6, "traffic": 0.09}}}'
 ```
@@ -123,7 +123,7 @@ _required permissions_: `"tariffs": "read"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tariff/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tariff/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -132,7 +132,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tariff/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tariff/list?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/tariff/list?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}
@@ -198,7 +198,7 @@ _required permissions_: `"tariffs": "read"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tariff/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tariff/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tariff_id": 12163}'
 ```
@@ -207,7 +207,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tariff/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tariff/read?hash=fa7bf873fab9333144e171372a321b06&tariff_id=12163
+https://api.eu.navixy.com/v2/panel/tariff/read?hash=fa7bf873fab9333144e171372a321b06&tariff_id=12163
 ```
 {% endcode %}
 {% endtab %}
@@ -266,7 +266,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tariff/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tariff/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tariff": {"id": 12345, "name": "Premium", "group_id": 3, "active": true, "type": "monthly", "price": 12.55, "early_change_price": 23.0, "device_limit": 2000, "has_reports": true, "store_period": "1y", "proportional_charge": false, "service_prices": {"incoming_sms": 0.3, "outgoing_sms": 0.3, "service_sms": 0.2, "phone_call": 0.6, "traffic": 0.09}}}'
 ```
@@ -317,7 +317,7 @@ Only session `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tariff/defaults/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tariff/defaults/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -326,7 +326,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tariff/defaults/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tariff/defaults/read?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/tariff/defaults/read?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}
@@ -374,7 +374,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tariff/defaults/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tariff/defaults/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker": {"tariff_id": 1234, "activation_bonus": 1.1, "free_days": 14, "free_days_device_limit": 3}}'
 ```

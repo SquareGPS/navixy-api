@@ -102,7 +102,7 @@ Deletes sub-user. This operation cannot be reversed.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 123567}'
 ```
@@ -111,7 +111,7 @@ curl -X POST '{{ extra.api_example_url }}/subuser/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/subuser/delete?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=123567
+https://api.eu.navixy.com/v2/subuser/delete?hash=a6aa75587e5c59c32d347da438505fc3&subuser_id=123567
 ```
 {% endcode %}
 {% endtab %}
@@ -146,7 +146,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -154,7 +154,7 @@ curl -X POST '{{ extra.api_example_url }}/subuser/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/subuser/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/subuser/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -223,7 +223,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/register' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/register' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "password": 123456, "user": {"activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
 ```
@@ -265,7 +265,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user": {"id": 123451, "activated": true, "login": "user@test.com", "first_name": "Charles", "middle_name": "Henry", "last_name": "Pearson", "legal_type": "legal_entity", "phone": "491761234567", "post_country": "Germany", "post_index": "61169", "post_region": "Hessen", "post_city": "Wiesbaden", "post_street_address": "Marienplatz 2", "registered_country": "Germany", "registered_index": "61169", "registered_region": "Hessen", "registered_city": "Wiesbaden", "registered_street_address": "Marienplatz 2", "state_reg_num": "12-3456789", "tin": "1131145180", "legal_name": "E. Biasi GmbH", "iec": "", "security_group_id": 333}}'
 ```

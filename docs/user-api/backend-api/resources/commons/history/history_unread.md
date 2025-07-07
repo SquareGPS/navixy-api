@@ -27,7 +27,7 @@ Default and max limit is [history.maxLimit](../dealer.md).
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/history/unread/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/history/unread/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -36,7 +36,7 @@ curl -X POST '{{ extra.api_example_url }}/history/unread/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/history/unread/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/history/unread/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -103,7 +103,7 @@ Get count of user's unread history messages starting `from` date.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/history/unread/count' \
+curl -X POST 'https://api.eu.navixy.com/v2/history/unread/count' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -112,7 +112,7 @@ curl -X POST '{{ extra.api_example_url }}/history/unread/count' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/history/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/history/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}

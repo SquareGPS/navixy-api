@@ -74,7 +74,7 @@ Gets POI by ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/place/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/place/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place_id": 122304}'
 ```
@@ -83,7 +83,7 @@ curl -X POST '{{ extra.api_example_url }}/place/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/place/read?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
+https://api.eu.navixy.com/v2/place/read?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
 ```
 {% endcode %}
 {% endtab %}
@@ -144,7 +144,7 @@ Get POIs belonging to user.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/place/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/place/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -152,7 +152,7 @@ curl -X POST '{{ extra.api_example_url }}/place/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/place/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/place/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -214,7 +214,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/place/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/place/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
 ```
@@ -251,7 +251,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/place/search_location' \
+curl -X POST 'https://api.eu.navixy.com/v2/place/search_location' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 34.178868, "lng": -118.599672}}'
 ```
@@ -296,7 +296,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/place/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/place/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place": {"id": 111, "icon_id" : 55, "avatar_file_name": null, "location": {"lat": 40.773998, "lng": -73.66003, "address": "730 5th Ave, New York, NY 10019, Unites States", "radius": 50}, "fields": {"131312": {"type": "text", "value": "I love text!"}}, "label": "Crown Building", "description": "Here we buy our goods", "tags": [1, 2], "external_id": "1"}'
 ```
@@ -329,7 +329,7 @@ Deletes POI with the specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/place/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/place/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place_id": 122304}'
 ```
@@ -338,7 +338,7 @@ curl -X POST '{{ extra.api_example_url }}/place/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/place/delete?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
+https://api.eu.navixy.com/v2/place/delete?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304
 ```
 {% endcode %}
 {% endtab %}

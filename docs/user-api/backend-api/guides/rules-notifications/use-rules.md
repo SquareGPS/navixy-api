@@ -31,7 +31,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"description": "", "type": "work_status_change", "primary_text": "status changed", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": false, "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7,"time": "23:59:59"}, "type": "weekly"}], "zone_ids": []}}'
 ```
@@ -61,7 +61,7 @@ Once a rule is created, you can bind devices to it using the [`rule/bind`](../..
 {% tab title="Bind" %}
 {% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/bind' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/bind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123, "trackers": [265489]}'
 ```
@@ -71,7 +71,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/rule/bind' \
 {% tab title="Unbind" %}
 {% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/unbind' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/unbind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123, "trackers": [265489]}'
 ```
@@ -95,7 +95,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"id": 123, "description": "", "type": "work_status_change", "primary_text": "status changed", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": false, "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7, "time": "23:59:59"}, "type": "weekly"}], "zone_ids": []}}'
 ```
@@ -111,7 +111,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"id": 123, "description": "", "type": "work_status_change", "primary_text": "status changed", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": true, "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7, "time": "23:59:59"}, "type": "weekly"}], "zone_ids": []}}'
 ```

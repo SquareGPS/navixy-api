@@ -66,7 +66,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/settings/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/settings/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -75,7 +75,7 @@ curl -X POST '{{ extra.api_example_url }}/user/settings/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/user/settings/read?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/user/settings/read?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -136,7 +136,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/settings/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/settings/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "time_zone": "Europe/Amsterdam", "locale": "nl_NL", "measurement_system": "metric", "geocoder": "osm", "route_provider": "google", "translit": false, "balance_alert_settings": {"emails": ["email1@example.com", "email2@example.com"]}, "file_storage_settings": {"auto_overwrite": true}}'
 ```
@@ -172,7 +172,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/settings/file_storage/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/settings/file_storage/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "file_storage_settings": {"auto_overwrite": true}}'
 ```

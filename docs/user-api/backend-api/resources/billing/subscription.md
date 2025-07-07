@@ -30,7 +30,7 @@ Unsubscribe from auto-renewal by reference.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subscription/avangate/cancel' \
+curl -X POST 'https://api.eu.navixy.com/v2/subscription/avangate/cancel' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "reference": "5EAD4B0B2F"}'
 ```
@@ -39,7 +39,7 @@ curl -X POST '{{ extra.api_example_url }}/subscription/avangate/cancel' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/subscription/avangate/cancel?hash=a6aa75587e5c59c32d347da438505fc3&reference=5EAD4B0B2F
+https://api.eu.navixy.com/v2/subscription/avangate/cancel?hash=a6aa75587e5c59c32d347da438505fc3&reference=5EAD4B0B2F
 ```
 {% endcode %}
 {% endtab %}
@@ -72,7 +72,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subscription/avangate/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/subscription/avangate/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -81,7 +81,7 @@ curl -X POST '{{ extra.api_example_url }}/subscription/avangate/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/subscription/avangate/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/subscription/avangate/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}

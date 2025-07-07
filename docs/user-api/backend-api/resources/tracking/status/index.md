@@ -48,7 +48,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345, "status": {"label": "Busy", "color": "E57373"}}'
 ```
@@ -89,7 +89,7 @@ Deletes working status entry.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status_id": 123}'
 ```
@@ -98,7 +98,7 @@ curl -X POST '{{ extra.api_example_url }}/status/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/status/delete?hash=a6aa75587e5c59c32d347da438505fc3&status_id=123
+https://api.eu.navixy.com/v2/status/delete?hash=a6aa75587e5c59c32d347da438505fc3&status_id=123
 ```
 {% endcode %}
 {% endtab %}
@@ -133,7 +133,7 @@ Gets working statuses belonging to the specified status list.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345}'
 ```
@@ -142,7 +142,7 @@ curl -X POST '{{ extra.api_example_url }}/status/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```
-{{ extra.api_example_url }}/status/list?hash=a6aa75587e5c59c32d347da438505fc3&listing_id=12345
+https://api.eu.navixy.com/v2/status/list?hash=a6aa75587e5c59c32d347da438505fc3&listing_id=12345
 ```
 {% endcode %}
 {% endtab %}
@@ -192,7 +192,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "status": {"id": 5, "label": "Busy", "color": "E57373"}}'
 ```

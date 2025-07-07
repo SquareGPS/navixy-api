@@ -31,7 +31,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/places/bind' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/places/bind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "access_to_all": false, "place_ids": [7548]}'
 ```
@@ -70,7 +70,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/places/unbind' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/places/unbind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "place_ids": [7548]}'
 ```
@@ -107,7 +107,7 @@ Gets a list of place IDs to which this sub-user has access.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/places/list_ids' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/places/list_ids' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951}'
 ```
@@ -151,7 +151,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/places/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/places/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "subuser_id": 204951, "offset": 0, "limit": 1000}'
 ```

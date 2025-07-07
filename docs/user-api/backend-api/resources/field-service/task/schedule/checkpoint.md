@@ -28,7 +28,7 @@ at least two checkpoints.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/schedule/checkpoint/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/schedule/checkpoint/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_id": 11231}'
 ```
@@ -37,7 +37,7 @@ curl -X POST '{{ extra.api_example_url }}/task/schedule/checkpoint/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/schedule/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=11231
+https://api.eu.navixy.com/v2/task/schedule/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=11231
 ```
 {% endcode %}
 {% endtab %}
@@ -68,7 +68,7 @@ Transmutes a checkpoint to task and delete its route and other checkpoints in th
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/schedule/checkpoint/transmute' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/schedule/checkpoint/transmute' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_id": 11231}'
 ```
@@ -77,7 +77,7 @@ curl -X POST '{{ extra.api_example_url }}/task/schedule/checkpoint/transmute' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/schedule/checkpoint/transmute?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=11231
+https://api.eu.navixy.com/v2/task/schedule/checkpoint/transmute?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=11231
 ```
 {% endcode %}
 {% endtab %}

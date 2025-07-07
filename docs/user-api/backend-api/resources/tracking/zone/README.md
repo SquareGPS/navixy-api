@@ -156,7 +156,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/zone/batch_convert' \
+curl -X POST 'https://api.eu.navixy.com/v2/zone/batch_convert' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "batch": "Geofence for test Karlsplatz, 2"}'
 ```
@@ -263,7 +263,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/zone/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/zone/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"label": "Circle geofence", "type": "circle", "center": {"lat": 61.49504550221769, "lng": 23.775476217269897}, "radius": 50, "tags": [179227], "color": "03A9F4", "address":"Address"}}'
 ```
@@ -308,7 +308,7 @@ Deletes user's geofence by `zone_id` or array of `zone_ids`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/zone/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/zone/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 1234567}'
 ```
@@ -317,7 +317,7 @@ curl -X POST '{{ extra.api_example_url }}/zone/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/zone/delete?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=1234567
+https://api.eu.navixy.com/v2/zone/delete?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=1234567
 ```
 {% endcode %}
 {% endtab %}
@@ -373,7 +373,7 @@ Gets all user geofences.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/zone/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/zone/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -381,7 +381,7 @@ curl -X POST '{{ extra.api_example_url }}/zone/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/zone/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/zone/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -424,7 +424,7 @@ Gets geofence by specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/zone/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/zone/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone_id": 12345}'
 ```
@@ -433,7 +433,7 @@ curl -X POST '{{ extra.api_example_url }}/zone/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/zone/read?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=12345
+https://api.eu.navixy.com/v2/zone/read?hash=a6aa75587e5c59c32d347da438505fc3&zone_id=12345
 ```
 {% endcode %}
 {% endtab %}
@@ -475,7 +475,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/zone/search_location' \
+curl -X POST 'https://api.eu.navixy.com/v2/zone/search_location' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": {"lat": 34.178868, "lng": -118.599672}}'
 ```
@@ -528,7 +528,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/zone/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/zone/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "zone": {"id": 231512 "label": "Circle geofence", "type": "circle", "center": {"lat": 61.49504550221769, "lng": 23.775476217269897}, "radius": 50, "tags": [179227], "color": "03A9F4", "address":"Address"}}'
 ```
@@ -722,7 +722,7 @@ Download geofences as KML File.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/zone/download' \
+curl -X POST 'https://api.eu.navixy.com/v2/zone/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```

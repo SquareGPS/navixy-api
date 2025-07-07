@@ -16,7 +16,7 @@ Uploads avatar image for specified POI.
 **required sub-user rights:** `place_update`.
 
 Then it will be available from `[api_base_url]/<api_static_uri>/place/avatars/<file_name>`\
-e.g. `{{ extra.api_example_url }}/static/place/avatars/abcdef123456789.png`.
+e.g. `https://api.eu.navixy.com/v2/static/place/avatars/abcdef123456789.png`.
 
 **avatar\_file\_name** returned in response and will be returned from [place/list](work-with-poi.md#list).
 
@@ -77,7 +77,7 @@ be used instead of icon.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/place/avatar/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/place/avatar/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "place_id": 122304, "icon_id": 1}'
 ```
@@ -87,7 +87,7 @@ curl -X POST '{{ extra.api_example_url }}/place/avatar/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/place/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304&icon_id=1
+https://api.eu.navixy.com/v2/place/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&place_id=122304&icon_id=1
 ```
 {% endcode %}
 {% endtab %}

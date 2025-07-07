@@ -123,7 +123,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle": {"additional_info": null, "avatar_file_name": null, "chassis_number": "", "color": null, "frame_number": "", "free_insurance_policy_number": "", "free_insurance_valid_till": null, "fuel_cost": null, "fuel_grade": "", "fuel_tank_volume": null, "fuel_type": null, "garage_id": null, "gross_weight": null, "icon_color": "1E96DC", "icon_id": null, "label": "Vehicle", "liability_insurance_policy_number": "", "liability_insurance_valid_till": null, "manufacture_year": 2020, "max_speed": 160, "model": "", "norm_avg_fuel_consumption": null, "passengers": 1, "payload_height": 1868, "payload_length": 2820, "payload_weight": null, "payload_width": 1972, "reg_number": "AB234D", "subtype": "sedan", "tags": [], "tracker_id": null, "trailer": null, "type": "car", "tyre_size": "", "tyres_number": null, "vin": "45468743418579751", "wheel_arrangement": null}}'
 ```
@@ -162,7 +162,7 @@ Deletes a vehicles with the specified IDs. Only one of the following parameters 
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_id": 127722}'
 ```
@@ -171,7 +171,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/vehicle/delete?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722
+https://api.eu.navixy.com/v2/vehicle/delete?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722
 ```
 {% endcode %}
 {% endtab %}
@@ -209,7 +209,7 @@ Gets all vehicles belonging to user.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -217,7 +217,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/vehicle/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/vehicle/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -292,7 +292,7 @@ Gets vehicle by specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_id": 127722}'
 ```
@@ -301,7 +301,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/vehicle/read?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722
+https://api.eu.navixy.com/v2/vehicle/read?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722
 ```
 {% endcode %}
 {% endtab %}
@@ -379,7 +379,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle": {"additional_info": null, "avatar_file_name": null, "chassis_number": "", "color": null, "frame_number": "", "free_insurance_policy_number": "", "free_insurance_valid_till": null, "fuel_cost": null, "fuel_grade": "", "fuel_tank_volume": null, "fuel_type": null, "garage_id": null, "gross_weight": null, "icon_color": "1E96DC", "icon_id": null, "id": 223155, "label": "Vehicle", "liability_insurance_policy_number": "", "liability_insurance_valid_till": null, "manufacture_year": 2020, "max_speed": 160, "model": "", "norm_avg_fuel_consumption": null, "passengers": 1, "payload_height": 1868, "payload_length": 2820, "payload_weight": null, "payload_width": 1972, "reg_number": "AB234D", "subtype": "sedan", "tags": [], "tracker_id": null, "trailer": null, "type": "car", "tyre_size": "", "tyres_number": null, "vin": "45468743418579751", "wheel_arrangement": null}}'
 ```

@@ -51,7 +51,7 @@ Returns list of payment systems available for specified user.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/payment_system/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/payment_system/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -60,7 +60,7 @@ curl -X POST '{{ extra.api_example_url }}/payment_system/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/payment_system/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/payment_system/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -96,7 +96,7 @@ Returns the estimate of the monthly payment amount
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/payment_system/estimate/get' \
+curl -X POST 'https://api.eu.navixy.com/v2/payment_system/estimate/get' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -105,7 +105,7 @@ curl -X POST '{{ extra.api_example_url }}/payment_system/estimate/get' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/payment_system/estimate/get?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/payment_system/estimate/get?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}

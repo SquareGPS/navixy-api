@@ -76,7 +76,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/retranslator/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
 ```
@@ -116,7 +116,7 @@ Deletes user's retranslator with specified `retranslator_id`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/retranslator/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator_id": 123456}'
 ```
@@ -125,7 +125,7 @@ curl -X POST '{{ extra.api_example_url }}/retranslator/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/retranslator/delete?hash=a6aa75587e5c59c32d347da438505fc3&retranslator_id=123456
+https://api.eu.navixy.com/v2/retranslator/delete?hash=a6aa75587e5c59c32d347da438505fc3&retranslator_id=123456
 ```
 {% endcode %}
 {% endtab %}
@@ -152,7 +152,7 @@ Get all users' retranslators.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/retranslator/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -161,7 +161,7 @@ curl -X POST '{{ extra.api_example_url }}/retranslator/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/retranslator/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/retranslator/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -215,7 +215,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/retranslator/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
 ```
@@ -247,7 +247,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/retranslator/protocol/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/protocol/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -256,7 +256,7 @@ curl -X POST '{{ extra.api_example_url }}/retranslator/protocol/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/retranslator/protocol/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/retranslator/protocol/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}

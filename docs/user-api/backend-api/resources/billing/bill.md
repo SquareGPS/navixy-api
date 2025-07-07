@@ -50,7 +50,7 @@ Creates a new bill for the user.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/bill/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/bill/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "payer": "Jon Doe", "sum": 100.0}'
 ```
@@ -88,7 +88,7 @@ Shows list of bills with their parameters in array.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/bill/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/bill/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -96,7 +96,7 @@ curl -X POST '{{ extra.api_example_url }}/bill/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/bill/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/bill/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}

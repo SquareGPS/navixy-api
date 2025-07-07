@@ -28,7 +28,7 @@ Gets information about all supported timezones for the specified locale. Does no
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/timezone/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/timezone/list' \
     -H 'Content-Type: application/json' \
     -d '{"locale": "en"}'
 ```
@@ -36,7 +36,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/timezone/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/panel/timezone/list?locale=en
+https://api.eu.navixy.com/v2/panel/timezone/list?locale=en
 ```
 {% endtab %}
 {% endtabs %}

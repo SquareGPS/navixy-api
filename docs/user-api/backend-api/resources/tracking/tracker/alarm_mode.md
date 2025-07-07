@@ -24,7 +24,7 @@ Gets the state of alarm mode of device.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/alarm_mode/read' \
     -H 'Content-Type: application/json' \
     -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -33,7 +33,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/alarm_mode/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tracker/alarm_mode/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -73,7 +73,7 @@ Changes the state of alarm mode of device. The device must be online.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/set' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/alarm_mode/set' \
     -H 'Content-Type: application/json' \
     -d '{"tracker_id": 123456, "enabled": true, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -83,7 +83,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/set' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/alarm_mode/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tracker/alarm_mode/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}

@@ -59,7 +59,7 @@ In a simplified form, opening the WebSocket using [atmosphere-javascript](https:
   }
   
   var request = {
-      url: '{{ extra.api_example_url }}/event/subscription',
+      url: 'https://api.eu.navixy.com/v2/event/subscription',
       contentType : "application/json",
       logLevel : 'debug',
       transport : 'websocket',

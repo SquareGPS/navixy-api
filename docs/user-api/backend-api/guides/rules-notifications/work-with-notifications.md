@@ -19,7 +19,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/history/unread/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/history/unread/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "limit": 100, "from": "2020-12-26 00:00:00"}'
 ```
@@ -86,7 +86,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/history/tracker/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/history/tracker/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123985], "from": "2020-12-01 00:00:00", "to": "2020-12-31 23:59:59", "events": ["inzone", "outzone"], "limit": 100, "ascending": false}'
 ```
@@ -115,7 +115,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/history/user/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/history/user/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2023-06-13 18:42:10", "to": "2023-06-13 18:47:10", "events": ["state_field_control"], "limit": 100, "ascending": true}'
 ```

@@ -27,7 +27,7 @@ Returns available history event types with localized descriptions.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/history/type/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/history/type/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "locale": "En-en"}'
 ```

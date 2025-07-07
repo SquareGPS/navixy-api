@@ -117,7 +117,7 @@ Only session `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/service/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/settings/service/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -126,7 +126,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/service/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/dealer/settings/service/read?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/dealer/settings/service/read?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}
@@ -232,7 +232,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/notification/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/settings/notification/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "service_title": "monitoring service", "locale": "en_US", "demo_login": "demo", "demo_password": "demo", "maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"], "default_map": {"type": "osm", "location": {"lat": 33.0, "lng": 22.0}, "zoom": 2}, "currency": "EUR", "payment_link": "http://payme.ru", "promo_url": "http://monitoring.com/about", "google_client_id": "io54p54ijy54", "domain": "track.agent.com", "login_footer": "All rights reserved.", "allow_registration": true, "show_mobile_apps": true, "default_user_settings": {"geocoder": "google", "route_provider": "progorod", "measurement_system": "metric", "translit": false}, "display_model_features_link": false, "limited_domain": false, "allowed_maps": ["osm", "wikimapia", "yandexpublic", "osmmapnik"], "color_theme": "aqua", "app_color_theme": "blue_1", "privacy_policy_link": "http://privacy-policy-url", "tos": "Terms Of Service text", "no_register_commands": false, "default_user_time_zone": "Europe/London"}'
 ```

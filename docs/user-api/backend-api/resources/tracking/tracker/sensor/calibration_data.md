@@ -28,7 +28,7 @@ Gets calibration data for sensor.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/sensor/calibration_data/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/sensor/calibration_data/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 12345}'
 ```
@@ -38,7 +38,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/sensor/calibration_data/read' 
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/sensor/calibration_data/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&sensor_id=12345
+https://api.eu.navixy.com/v2/tracker/sensor/calibration_data/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&sensor_id=12345
 ```
 {% endcode %}
 {% endtab %}
@@ -89,7 +89,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/sensor/calibration_data/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/sensor/calibration_data/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 12345, "data": [{"in":0.0,"out":0.0},{"in":0.7,"out":60.0}]}'
 ```

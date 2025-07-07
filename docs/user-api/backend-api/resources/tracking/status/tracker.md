@@ -28,7 +28,7 @@ Assign a working status to the tracker.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/tracker/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/tracker/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "new_status_id": 5}'
 ```
@@ -38,7 +38,7 @@ curl -X POST '{{ extra.api_example_url }}/status/tracker/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/status/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&new_status_id=5
+https://api.eu.navixy.com/v2/status/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&new_status_id=5
 ```
 {% endcode %}
 {% endtab %}
@@ -100,7 +100,7 @@ Gets current assigned statuses for the specified trackers.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/tracker/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/tracker/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456,234567]}'
 ```
@@ -180,7 +180,7 @@ Gets current assigned working status of the tracker.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/tracker/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/tracker/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
 ```
@@ -189,7 +189,7 @@ curl -X POST '{{ extra.api_example_url }}/status/tracker/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/status/tracker/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+https://api.eu.navixy.com/v2/status/tracker/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
 ```
 {% endcode %}
 {% endtab %}

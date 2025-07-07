@@ -65,7 +65,7 @@ obtained using a login/password via [/user/auth](user/index.md#auth).
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/api/key/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/api/key/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "title": "My Super App"}'
 ```
@@ -74,7 +74,7 @@ curl -X POST '{{ extra.api_example_url }}/api/key/create' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/api/key/create?hash=a6aa75587e5c59c32d347da438505fc3&title=My+Super+App
+https://api.eu.navixy.com/v2/api/key/create?hash=a6aa75587e5c59c32d347da438505fc3&title=My+Super+App
 ```
 {% endcode %}
 {% endtab %}
@@ -120,7 +120,7 @@ obtained using a login/password via [/user/auth](user/index.md#auth).
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/api/key/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/api/key/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "key": "5063e191d734e87e17987953c7a9a086"}'
 ```
@@ -130,7 +130,7 @@ curl -X POST '{{ extra.api_example_url }}/api/key/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/api/key/delete?hash=a6aa75587e5c59c32d347da438505fc3&key=5063e191d734e87e17987953c7a9a086
+https://api.eu.navixy.com/v2/api/key/delete?hash=a6aa75587e5c59c32d347da438505fc3&key=5063e191d734e87e17987953c7a9a086
 ```
 {% endcode %}
 {% endtab %}
@@ -166,7 +166,7 @@ Gets all of API keys for an account.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/api/key/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/api/key/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -174,7 +174,7 @@ curl -X POST '{{ extra.api_example_url }}/api/key/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/api/key/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/api/key/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}

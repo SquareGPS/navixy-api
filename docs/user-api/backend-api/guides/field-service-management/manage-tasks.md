@@ -23,7 +23,7 @@ Let's create a task for George to deliver new devices to an office on March 16th
 **API request:**
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/task/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b",
@@ -65,7 +65,7 @@ Let's create a route task for John to deliver products to three customers on Mar
 **API request:**
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/task/route/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/route/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b",
@@ -168,7 +168,7 @@ To optimize a route for minimizing transit time and costs, reorder the checkpoin
 ### Example Request
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/route/points/optimize' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b",

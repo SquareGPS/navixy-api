@@ -21,7 +21,7 @@ This action has a special rate-limit in 5 minutes to avoid abuse.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/auth/code/resend' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/auth/code/resend' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
 ```
 
@@ -51,7 +51,7 @@ On successful verification, you'll receive a normal session hash.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/auth/code/verify' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/auth/code/verify' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
     -H 'Content-Type: application/json' \
     -d '{ "code": "123456" }'

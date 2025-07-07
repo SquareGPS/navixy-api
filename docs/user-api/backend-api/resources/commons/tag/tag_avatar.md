@@ -28,7 +28,7 @@ Assigns icon\_id (from standard icon set) to specified tag.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tag/avatar/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/tag/avatar/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_id": 1, "icon_id": 14}'
 ```
@@ -38,7 +38,7 @@ curl -X POST '{{ extra.api_example_url }}/tag/avatar/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tag/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&tag_id=1&icon_id=14
+https://api.eu.navixy.com/v2/tag/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&tag_id=1&icon_id=14
 ```
 {% endcode %}
 {% endtab %}
@@ -60,7 +60,7 @@ curl -X POST '{{ extra.api_example_url }}/tag/avatar/assign' \
 
 Uploads avatar image for specified tag.\
 Then it will be available from `[api_base_url]/[api_static_path]/tag/avatars/<file_name>`\
-e.g. `{{ extra.api_example_url }}/static/tag/avatars/abcdef123456789.png`.
+e.g. `https://api.eu.navixy.com/v2/static/tag/avatars/abcdef123456789.png`.
 
 **required sub-user rights**: `tag_update`.
 

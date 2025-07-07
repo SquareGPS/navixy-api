@@ -74,7 +74,7 @@ Available fields:
 cURL
 
 ```sh
-curl -X POST "{{ extra.api_example_url }}/vehicle/import/start" \
+curl -X POST "https://api.eu.navixy.com/v2/vehicle/import/start" \
     -H "Content-Type: application/json" \
     --data-binary @- << EOF
 {
@@ -136,7 +136,7 @@ Returns an import process with specified ID.
 cURL
 
 ```sh
-curl -X POST "{{ extra.api_example_url }}/vehicle/import/read" \
+curl -X POST "https://api.eu.navixy.com/v2/vehicle/import/read" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "process_id": 1}'
 ```
@@ -182,7 +182,7 @@ Returns the list of the user's vehicle import processes.
 cURL
 
 ```sh
-curl -X POST "{{ extra.api_example_url }}/vehicle/import/list" \
+curl -X POST "https://api.eu.navixy.com/v2/vehicle/import/list" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -206,7 +206,7 @@ File (standard file download).
 cURL
 
 ```sh
-curl -X POST "{{ extra.api_example_url }}/vehicle/import/download_failed" \
+curl -X POST "https://api.eu.navixy.com/v2/vehicle/import/download_failed" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "process_id": 7}'
 ```
