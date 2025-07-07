@@ -84,7 +84,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/checkpoint/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/checkpoint/create' \
   -H 'Content-Type: application/json' \
   -d '{"hash": "43c37b8d023272c5fd1b27d21244b", "checkpoint": {"tracker_id": 10179999, "label": "Shop 1", "description": "Description", "parent_id": 352665, "order": 0, "location": { "lat": 9.861999, "lng": -83.948999, "radius": 150}, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "from": "2022-12-14 11:00:00", "to": "2022-12-14 11:30:00", "duration": 60, "tags": [1, 2], "form_template_id": 1}}'
 ```
@@ -130,7 +130,7 @@ Deletes a checkpoint with the specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/checkpoint/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/checkpoint/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_id": 23144}'
 ```
@@ -139,7 +139,7 @@ curl -X POST '{{ extra.api_example_url }}/task/checkpoint/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=23144
+https://api.eu.navixy.com/v2/task/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=23144
 ```
 {% endcode %}
 {% endtab %}
@@ -170,7 +170,7 @@ Get checkpoints belonging to user with given IDs
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/checkpoint/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/checkpoint/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_ids": [1,2]}'
 ```
@@ -179,7 +179,7 @@ curl -X POST '{{ extra.api_example_url }}/task/checkpoint/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/checkpoint/list?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_ids=[1,2]
+https://api.eu.navixy.com/v2/task/checkpoint/list?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_ids=[1,2]
 ```
 {% endcode %}
 {% endtab %}
@@ -238,7 +238,7 @@ Gets route checkpoint by specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/checkpoint/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/checkpoint/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_id": 111}'
 ```
@@ -247,7 +247,7 @@ curl -X POST '{{ extra.api_example_url }}/task/checkpoint/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/checkpoint/read?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=111
+https://api.eu.navixy.com/v2/task/checkpoint/read?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=111
 ```
 {% endcode %}
 {% endtab %}
@@ -311,7 +311,7 @@ Convert route checkpoint into a standalone task. If it's the only checkpoint in 
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/checkpoint/transmute' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/checkpoint/transmute' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_id": 111}'
 ```
@@ -320,7 +320,7 @@ curl -X POST '{{ extra.api_example_url }}/task/checkpoint/transmute' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/checkpoint/transmute?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=111
+https://api.eu.navixy.com/v2/task/checkpoint/transmute?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=111
 ```
 {% endcode %}
 {% endtab %}
@@ -357,7 +357,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/checkpoint/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/checkpoint/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint": {"id": 111, "tracker_id": 10179999, "label": "Shop 1", "description": "Description", "parent_id": 352665, "order": 0, "location": { "lat": 9.861999, "lng": -83.948999, "radius": 150}, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "from": "2022-12-14 11:00:00", "to": "2022-12-14 11:30:00", "duration": 60, "tags": [1, 2], "form_template_id": 1}}'
 ```

@@ -173,7 +173,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/auth' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/auth' \
     -H 'Content-Type: application/json' \
     -d '{"login": "user@email.com", "password": "12@14Y$"}'
 ```
@@ -239,7 +239,7 @@ Gets user information and some settings.
 cURL
 
 ```sh
-curl -X GET '{{ extra.api_example_url }}/user/get_info' \
+curl -X GET 'https://api.eu.navixy.com/v2/user/get_info' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
 ```
 
@@ -328,7 +328,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/get_tariff_restrictions' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -337,7 +337,7 @@ curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/user/get_tariff_restrictions?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/user/get_tariff_restrictions?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -374,7 +374,7 @@ Only session `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/logout' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/logout' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -382,7 +382,7 @@ curl -X POST '{{ extra.api_example_url }}/user/logout' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/user/logout?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/user/logout?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -416,7 +416,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/resend_activation' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/resend_activation' \
     -H 'Content-Type: application/json' \
     -d '{"login": "user@login.com"}'
 ```
@@ -424,7 +424,7 @@ curl -X POST '{{ extra.api_example_url }}/user/resend_activation' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/user/resend_activation?login=user@login.com
+https://api.eu.navixy.com/v2/user/resend_activation?login=user@login.com
 ```
 {% endtab %}
 {% endtabs %}

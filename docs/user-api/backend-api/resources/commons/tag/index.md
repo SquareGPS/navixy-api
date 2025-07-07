@@ -57,7 +57,7 @@ Creates a new tag.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tag/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/tag/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"name": "hop", "color": "FF0000"}}'
 ```
@@ -67,7 +67,7 @@ curl -X POST '{{ extra.api_example_url }}/tag/create' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tag/create?hash=a6aa75587e5c59c32d347da438505fc3&tag={"name": "hop", "color": "FF0000"}
+https://api.eu.navixy.com/v2/tag/create?hash=a6aa75587e5c59c32d347da438505fc3&tag={"name": "hop", "color": "FF0000"}
 ```
 {% endcode %}
 {% endtab %}
@@ -108,7 +108,7 @@ To delete tags, only one of the following parameters must be specified.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tag/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/tag/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_id": 1}'
 ```
@@ -117,7 +117,7 @@ curl -X POST '{{ extra.api_example_url }}/tag/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tag/delete?hash=a6aa75587e5c59c32d347da438505fc3&tag_id=1
+https://api.eu.navixy.com/v2/tag/delete?hash=a6aa75587e5c59c32d347da438505fc3&tag_id=1
 ```
 {% endcode %}
 {% endtab %}
@@ -150,7 +150,7 @@ Gets all tags belonging to user with optional filtering.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tag/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tag/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -158,7 +158,7 @@ curl -X POST '{{ extra.api_example_url }}/tag/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/tag/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tag/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -199,7 +199,7 @@ Search entities that bound with all of specified tags.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tag/search' \
+curl -X POST 'https://api.eu.navixy.com/v2/tag/search' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_ids": [1, 2, 3]}'
 ```
@@ -208,7 +208,7 @@ curl -X POST '{{ extra.api_example_url }}/tag/search' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tag/search?hash=a6aa75587e5c59c32d347da438505fc3&tag_ids=[1, 2, 3]
+https://api.eu.navixy.com/v2/tag/search?hash=a6aa75587e5c59c32d347da438505fc3&tag_ids=[1, 2, 3]
 ```
 {% endcode %}
 {% endtab %}
@@ -261,7 +261,7 @@ Updates existing tag.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tag/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tag/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"id": 3, "name": "hop", "color": "FF0000"}}'
 ```
@@ -271,7 +271,7 @@ curl -X POST '{{ extra.api_example_url }}/tag/update' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tag/update?hash=a6aa75587e5c59c32d347da438505fc3&tag={"id": 3, "name": "hop", "color": "FF0000"}'
+https://api.eu.navixy.com/v2/tag/update?hash=a6aa75587e5c59c32d347da438505fc3&tag={"id": 3, "name": "hop", "color": "FF0000"}'
 ```
 {% endcode %}
 {% endtab %}

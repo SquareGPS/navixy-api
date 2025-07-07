@@ -102,7 +102,7 @@ API base path: `/task`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 23144, "tracker_id": 132421}'
 ```
@@ -112,7 +112,7 @@ curl -X POST '{{ extra.api_example_url }}/task/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/assign?hash=a6aa75587e5c59c32d347da438505fc3&task_id=23144&tracker_id=132421
+https://api.eu.navixy.com/v2/task/assign?hash=a6aa75587e5c59c32d347da438505fc3&task_id=23144&tracker_id=132421
 ```
 {% endcode %}
 {% endtab %}
@@ -209,7 +209,7 @@ Returns total number of tasks belonging to current user.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/count' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/count' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -217,7 +217,7 @@ curl -X POST '{{ extra.api_example_url }}/task/count' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/task/count?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/task/count?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -280,7 +280,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"tracker_id": 22, "location": {"lat": 34.178868, "lng": -118.599672, "radius": 150}, "label": "Name", "description": "Description example", "from": "2020-02-03 04:05:06", "to": "2020-03-04 05:06:07"}, "create_form": false}'
 ```
@@ -330,7 +330,7 @@ Deletes the task with the specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 23144}'
 ```
@@ -339,7 +339,7 @@ curl -X POST '{{ extra.api_example_url }}/task/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=23144
+https://api.eu.navixy.com/v2/task/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=23144
 ```
 {% endcode %}
 {% endtab %}
@@ -427,7 +427,7 @@ If **external\_id**, **trackers**, **filters**, **from**, **to** or **tag\_ids**
 {% tabs %}
 {% tab title="Shell" %}
 ```bash
-curl -X POST '{{ extra.api_example_url }}/task/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -516,7 +516,7 @@ Gets task, checkpoint, or route with checkpoints by specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 23144}'
 ```
@@ -525,7 +525,7 @@ curl -X POST '{{ extra.api_example_url }}/task/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=23144
+https://api.eu.navixy.com/v2/task/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=23144
 ```
 {% endcode %}
 {% endtab %}
@@ -572,7 +572,7 @@ Converts task into a route checkpoint.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/transmute' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/transmute' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 23144, "route_id": 12334, "order": 0}'
 ```
@@ -582,7 +582,7 @@ curl -X POST '{{ extra.api_example_url }}/task/transmute' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/transmute?hash=a6aa75587e5c59c32d347da438505fc3&task_id=23144&route_id=12334&order=0
+https://api.eu.navixy.com/v2/task/transmute?hash=a6aa75587e5c59c32d347da438505fc3&task_id=23144&route_id=12334&order=0
 ```
 {% endcode %}
 {% endtab %}
@@ -619,7 +619,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task": {"id": 22379, "location": {"lat": 34.178868, "lng": -118.599672, "radius": 150}, "label": "Name", "description": "Description example", "from": "2020-02-03 04:05:06", "to": "2020-03-04 05:06:07"}, "create_form": false}'
 ```

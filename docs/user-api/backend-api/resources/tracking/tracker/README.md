@@ -99,7 +99,7 @@ Gets tracker info by ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456}'
 ```
@@ -108,7 +108,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+https://api.eu.navixy.com/v2/tracker/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
 ```
 {% endcode %}
 {% endtab %}
@@ -171,7 +171,7 @@ containing "aa1" and "bb2" will be returned.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -179,7 +179,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -241,7 +241,7 @@ Marks tracker as deleted and corrupt its source, device\_id and phone.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/corrupt' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/corrupt' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -250,7 +250,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/corrupt' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/corrupt?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/corrupt?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -290,7 +290,7 @@ Deletes a tracker if it is "clone". Will not work if specified ID of the origina
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -299,7 +299,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/delete?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/delete?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -368,7 +368,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/change_phone' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/change_phone' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "phone": "6156680000", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
 ```
@@ -407,7 +407,7 @@ Gets last CAN and OBD sensors and states values received from the device.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/get_diagnostics' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/get_diagnostics' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -416,7 +416,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_diagnostics' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/get_diagnostics?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/get_diagnostics?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -542,7 +542,7 @@ Gets current fuel level (in liters) of tracker's fuel tanks.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/get_fuel' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/get_fuel' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -551,7 +551,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_fuel' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/get_fuel?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/get_fuel?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -616,7 +616,7 @@ bound to them (if any).
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/get_inputs' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/get_inputs' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -625,7 +625,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_inputs' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/get_inputs?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/get_inputs?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -681,7 +681,7 @@ bound to them (if any).
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/batch_get_inputs' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/batch_get_inputs' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [265489]}'
 ```
@@ -690,7 +690,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/batch_get_inputs' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/batch_get_inputs?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[265489]
+https://api.eu.navixy.com/v2/tracker/batch_get_inputs?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[265489]
 ```
 {% endcode %}
 {% endtab %}
@@ -757,7 +757,7 @@ Gets tracker's outputs info
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/get_outputs' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/get_outputs' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -766,7 +766,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_outputs' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/get_outputs?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/get_outputs?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -805,7 +805,7 @@ Gets trackers' outputs info
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/batch_get_outputs' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/batch_get_outputs' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [265489]}'
 ```
@@ -814,7 +814,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/batch_get_outputs' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/batch_get_outputs?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[265489]
+https://api.eu.navixy.com/v2/tracker/batch_get_outputs?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[265489]
 ```
 {% endcode %}
 {% endtab %}
@@ -855,7 +855,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/output/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/output/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "tracker_output": {"number": 1, "title": "OUT1"}}'
 ```
@@ -889,7 +889,7 @@ Gets last point of the tracker located by GPS. Points located by GSM LBS are exc
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/get_last_gps_point' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/get_last_gps_point' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -898,7 +898,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_last_gps_point' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/get_last_gps_point?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/get_last_gps_point?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -954,7 +954,7 @@ Gets last sensor values for sensors that are:
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/get_readings' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/get_readings' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -963,7 +963,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_readings' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/get_readings?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/get_readings?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -1038,7 +1038,7 @@ Gets current tracker state (gps, gsm, outputs, etc.).
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/get_state' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/get_state' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -1047,7 +1047,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_state' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/get_state?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/get_state?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -1164,7 +1164,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/get_states' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [1234567, 888999, 111333], "allow_not_exist": true, "list_blocked": true}'
 ```
@@ -1268,7 +1268,7 @@ Gets all integrated tracker models (from "models" table).
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/list_models' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "compact_index": true}'
 ```
@@ -1277,7 +1277,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/list_models?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tracker/list_models?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -1475,7 +1475,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/tags/set' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/tags/set' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "tag_bindings": "[{"tag_id" : 1, "ordinal" : 1}, {"tag_id" : 2, "ordinal" : 2}]"}'
 ```
@@ -1515,7 +1515,7 @@ Request types:
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/location_request' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/location_request' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456}'
 ```
@@ -1524,7 +1524,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/location_request' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/location_request?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+https://api.eu.navixy.com/v2/tracker/location_request?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
 ```
 {% endcode %}
 {% endtab %}
@@ -1589,7 +1589,7 @@ device and **activation\_code** since these parameters required by the plugin.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/register' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/register' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": 0, "plugin_id": 37, "model": "qlgv55lite", "phone": "79123122312", "activation_code": "123123123", "device_id": "123451234512346", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
 ```
@@ -1599,7 +1599,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=Courier&group_id=0&plugin_id=37&model=qlgv55lite&phone=79123122312&activation_code=123123123&device_id=123451234512346&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
+https://api.eu.navixy.com/v2/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=Courier&group_id=0&plugin_id=37&model=qlgv55lite&phone=79123122312&activation_code=123123123&device_id=123451234512346&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
 ```
 {% endcode %}
 {% endtab %}
@@ -1669,7 +1669,7 @@ Resends registration commands to the device. The panel must have installed SMS g
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/register_retry' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 999119, "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile", "send_register_commands": true}'
 ```
@@ -1679,7 +1679,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/register_retry?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=999119&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile&send_register_commands=true
+https://api.eu.navixy.com/v2/tracker/register_retry?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=999119&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile&send_register_commands=true
 ```
 {% endcode %}
 {% endtab %}
@@ -1749,7 +1749,7 @@ The device must be preconfigured. This API call can be used only for bundles.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/register_quick' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Courier", "group_id": 0, "imei": "35645587458999"}'
 ```
@@ -1759,7 +1759,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/register_quick' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/register_quick?hash=a6aa75587e5c59c32d347da438505fc3&label=Courier&group_id=0&imei=35645587458999
+https://api.eu.navixy.com/v2/tracker/register_quick?hash=a6aa75587e5c59c32d347da438505fc3&label=Courier&group_id=0&imei=35645587458999
 ```
 {% endcode %}
 {% endtab %}
@@ -1850,7 +1850,7 @@ device. Activation code is not used when replacing a device.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/replace' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/replace' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "plugin_id": 37, "model": "qlgv55lite", "phone": "79123122312", "device_id": "123451234512346", "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
 ```
@@ -1860,7 +1860,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/replace' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/replace?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&plugin_id=37&model=qlgv55lite&phone=79123122312&device_id=123451234512346&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
+https://api.eu.navixy.com/v2/tracker/replace?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&plugin_id=37&model=qlgv55lite&phone=79123122312&device_id=123451234512346&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
 ```
 {% endcode %}
 {% endtab %}
@@ -1930,7 +1930,7 @@ The replacement device must be preconfigured. This API call can be used only for
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/replace_quick' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/replace_quick' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "imei": "35645587458999"}'
 ```
@@ -1940,7 +1940,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/replace_quick' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/replace_quick?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&imei=35645587458999
+https://api.eu.navixy.com/v2/tracker/replace_quick?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&imei=35645587458999
 ```
 {% endcode %}
 {% endtab %}
@@ -2018,7 +2018,7 @@ Resends registration commands to the new device. The panel must have installed S
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/register_retry' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 999119, "apn_name": "fast.tmobile.com", "apn_user": "tmobile", "apn_password": "tmobile"}'
 ```
@@ -2028,7 +2028,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/register_retry' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/register_retry?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=999119&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
+https://api.eu.navixy.com/v2/tracker/register_retry?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=999119&apn_name=fast.tmobile.com&apn_user=tmobile&apn_password=tmobile
 ```
 {% endcode %}
 {% endtab %}
@@ -2155,7 +2155,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/send_command' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/send_command' \
     -H 'Content-Type: application/json' \
     -d '"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 999119, "command": {name: "electronic_lock_command", command_code: "unseal", special_settings:{"type":"electronic_lock_password", "password": "345892", "remember_password": true}}}'
 ```
@@ -2224,7 +2224,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/raw_command/send' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/raw_command/send' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "command": "AT+GTRTO=gv200,A,,,,,,0001$", "type": "text"}'
 ```

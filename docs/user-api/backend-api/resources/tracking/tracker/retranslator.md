@@ -42,7 +42,7 @@ Creates or updates binding.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/retranslator/bind' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/retranslator/bind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "retranslator_id": 123}'
 ```
@@ -52,7 +52,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/retranslator/bind' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/retranslator/bind?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&retranslator_id=123
+https://api.eu.navixy.com/v2/tracker/retranslator/bind?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&retranslator_id=123
 ```
 {% endcode %}
 {% endtab %}
@@ -89,7 +89,7 @@ List tracker retranslators bound to tracker with ID=`tracker_id`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/retranslator/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/retranslator/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -98,7 +98,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/retranslator/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/retranslator/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/retranslator/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -141,7 +141,7 @@ Unbinds a tracker from retranslator.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/retranslator/unbind' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/retranslator/unbind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "retranslator_id": 123}'
 ```
@@ -151,7 +151,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/retranslator/unbind' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/retranslator/unbind?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&retranslator_id=123
+https://api.eu.navixy.com/v2/tracker/retranslator/unbind?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&retranslator_id=123
 ```
 {% endcode %}
 {% endtab %}

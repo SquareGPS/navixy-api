@@ -53,7 +53,7 @@ Gets all form templates belonging to current master user.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/form/template/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/form/template/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -62,7 +62,7 @@ curl -X POST '{{ extra.api_example_url }}/form/template/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/form/template/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/form/template/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -117,7 +117,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/form/template/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/form/template/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
 ```
@@ -153,7 +153,7 @@ Gets form template belonging to current master user by specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/form/template/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/form/template/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template_id": 111}'
 ```
@@ -162,7 +162,7 @@ curl -X POST '{{ extra.api_example_url }}/form/template/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/form/template/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
+https://api.eu.navixy.com/v2/form/template/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
 ```
 {% endcode %}
 {% endtab %}
@@ -217,7 +217,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/form/template/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/form/template/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template": {"id": 111, label": "Order form", "fields": [{"id": "Text-1", "label": "Name", "description": "Your full name", "required": true, "type": "text", "min_length": 5, "max_length": 255}], "submit_in_zone": true, "default": false}}'
 ```
@@ -251,7 +251,7 @@ Deletes form template.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/form/template/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/form/template/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template_id": 111}'
 ```
@@ -260,7 +260,7 @@ curl -X POST '{{ extra.api_example_url }}/form/template/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/form/template/delete?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
+https://api.eu.navixy.com/v2/form/template/delete?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
 ```
 {% endcode %}
 {% endtab %}
@@ -294,7 +294,7 @@ Returns template usage statistics.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/form/template/stats/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/form/template/stats/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "template_id": 111}'
 ```
@@ -303,7 +303,7 @@ curl -X POST '{{ extra.api_example_url }}/form/template/stats/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/form/template/stats/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
+https://api.eu.navixy.com/v2/form/template/stats/read?hash=a6aa75587e5c59c32d347da438505fc3&template_id=111
 ```
 {% endcode %}
 {% endtab %}

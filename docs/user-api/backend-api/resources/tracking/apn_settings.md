@@ -25,7 +25,7 @@ Gets the APN name/user/password and mobile operator for registered device by pho
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/apn_settings/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/apn_settings/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "phone": "1234567890"}'
 ```
@@ -35,7 +35,7 @@ curl -X POST '{{ extra.api_example_url }}/apn_settings/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/apn_settings/read?hash=a6aa75587e5c59c32d347da438505fc3&phone=1234567890
+https://api.eu.navixy.com/v2/apn_settings/read?hash=a6aa75587e5c59c32d347da438505fc3&phone=1234567890
 ```
 {% endcode %}
 {% endtab %}

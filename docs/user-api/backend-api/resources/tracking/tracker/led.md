@@ -26,7 +26,7 @@ Gets LED status for the specified tracker.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/led/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/led/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -35,7 +35,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/led/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/led/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/led/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -75,7 +75,7 @@ Switches LED state for a specified tracker.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/led/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/led/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "value": true}'
 ```
@@ -85,7 +85,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/led/update' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/led/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&value=true
+https://api.eu.navixy.com/v2/tracker/led/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&value=true
 ```
 {% endcode %}
 {% endtab %}

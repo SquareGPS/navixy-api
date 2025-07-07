@@ -131,7 +131,7 @@ To create a counter, use the [value/set](../../../introduction/index/data-retrie
 Example for creating an odometer counter:
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/counter/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 311852, "type": "odometer", "value": 98342.1}'
 ```
@@ -139,7 +139,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/counter/read' \
 Example for creating an engine hours counter:
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/counter/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 311852, "type": "engine_hours", "value": 2368.2}'
 ```
@@ -452,7 +452,7 @@ This example shows how to update a virtual ignition sensor, changing the voltage
     Example:
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/readings/batch_list' \
+    curl -X POST 'https://api.eu.navixy.com/v2/tracker/readings/batch_list' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [10181215,10038816]}'
     ```
@@ -469,7 +469,7 @@ Various reports can be generated to analyze sensor and counter data:
     Example:
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
+    curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/generate' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Equipment working time", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs":true,"plugin_id":12,"show_seconds":false,"min_working_period_duration":60,"show_idle_percent":true,"filter":false,"sensors":[{"tracker_id":642546,"sensor_id":1931610}]}}'
     ```
@@ -481,7 +481,7 @@ Various reports can be generated to analyze sensor and counter data:
     Example:
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
+    curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/generate' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Engine hours report", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs":true,"plugin_id":7,"show_seconds":false,"show_detailed":true,"include_summary_sheet":true,"include_summary_sheet_only":false,"filter":true}}'
     ```
@@ -493,7 +493,7 @@ Various reports can be generated to analyze sensor and counter data:
     Example:
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
+    curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/generate' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Measuring sensors report", "trackers": [1685505], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 9, "details_interval_minutes": 5, "graph_type": "time", "smoothing": true, "show_address": false, "filter": true, "sensors": [{"tracker_id": 1685505, "sensor_id": 613753}]}}'
     ```
@@ -505,7 +505,7 @@ Various reports can be generated to analyze sensor and counter data:
     Example:
 
     ```shell
-    curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
+    curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/generate' \
      -H 'Content-Type: application/json' \
      -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Vehicle readings report", "trackers": [642546], "from": "2023-07-27 00:00:00", "to": "2023-07-27 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 22, "details_interval_minutes": 5, "graph_type": "time", "smoothing": true, "show_address": false, "filter": true, "sensors": [{"tracker_id": 1685505, "sensor_id": 613753}]}}'
     ```

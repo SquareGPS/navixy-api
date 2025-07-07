@@ -31,7 +31,7 @@ The `icon_id` can be `null` – this means that uploaded avatar should be used i
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/employee/avatar/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/employee/avatar/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee_id": 2132, "icon_id": 3654}'
 ```
@@ -41,7 +41,7 @@ curl -X POST '{{ extra.api_example_url }}/employee/avatar/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/employee/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=2132&icon_id=3654
+https://api.eu.navixy.com/v2/employee/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=2132&icon_id=3654
 ```
 {% endcode %}
 {% endtab %}
@@ -61,7 +61,7 @@ curl -X POST '{{ extra.api_example_url }}/employee/avatar/assign' \
 
 Uploads avatar image for specified employee/driver.\
 Then it will be available from /employee/avatars/\
-e.g. `{{ extra.api_example_url }}/static/employee/avatars/abcdef123456789.png`.
+e.g. `https://api.eu.navixy.com/v2/static/employee/avatars/abcdef123456789.png`.
 
 **required sub-user rights**: `employee_update`.
 

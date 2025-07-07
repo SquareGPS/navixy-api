@@ -181,7 +181,7 @@ There exists a similar method for working with a single tracker - [list](index.m
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/sensor/batch_list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/sensor/batch_list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [204104, 181451]}'
 ```
@@ -191,7 +191,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/sensor/batch_list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/sensor/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[204104, 181451]
+https://api.eu.navixy.com/v2/tracker/sensor/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[204104, 181451]
 ```
 {% endcode %}
 {% endtab %}
@@ -247,7 +247,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/sensor/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/sensor/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250,"sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0.0, "units": "", "units_type": "celsius"}'
 ```
@@ -291,7 +291,7 @@ Deletes a sensor with `sensor_id` from the database.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/sensor/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/sensor/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 23456}'
 ```
@@ -301,7 +301,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/sensor/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/sensor/delete?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&sensor_id=23456
+https://api.eu.navixy.com/v2/tracker/sensor/delete?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&sensor_id=23456
 ```
 {% endcode %}
 {% endtab %}
@@ -336,7 +336,7 @@ List tracker sensors bound to tracker with specified ID (`tracker_id` parameter)
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/sensor/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/sensor/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
 ```
@@ -345,7 +345,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/sensor/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/sensor/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+https://api.eu.navixy.com/v2/tracker/sensor/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
 ```
 {% endcode %}
 {% endtab %}
@@ -397,7 +397,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/sensor/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/sensor/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor": {"type": "metering", "id": 860250, "sensor_type": "temperature", "name": "OBD Coolant temperature", "input_name": "obd_coolant_t", "divider": 1.0, "accuracy": 0.0, "units": "", "units_type": "celsius"}'
 ```
@@ -443,7 +443,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/sensor/batch_copy' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/sensor/batch_copy' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "base_tracker_id": 123456, "trackers": [56789, 54321]}'
 ```
@@ -483,7 +483,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/sensor/data/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/sensor/data/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 1456789, "from": "2022-02-28 00:00:00", "to": "2022-03-28 23:59:00"}'
 ```

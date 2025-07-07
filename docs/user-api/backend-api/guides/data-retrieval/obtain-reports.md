@@ -22,7 +22,7 @@ API request:
 
 ````
 ```shell
-curl -X POST '{{ extra.api_example_url }}/report/tracker/generate' \
+curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/generate' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Trip report", "trackers": [669673], "from": "2020-10-05 00:00:00", "to": "2020-10-06 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}'
 ```
@@ -49,7 +49,7 @@ API request:
 
 ````
 ```shell
-curl -X POST '{{ extra.api_example_url }}/report/tracker/retrieve' \
+curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/retrieve' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
 ```
@@ -59,7 +59,7 @@ curl -X POST '{{ extra.api_example_url }}/report/tracker/retrieve' \
 
 ````
 ```
-{{ extra.api_example_url }}/report/tracker/retrieve?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
+https://api.eu.navixy.com/v2/report/tracker/retrieve?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
 ```    
 ````
 
@@ -329,7 +329,7 @@ API request:
 
 ````
 ```shell
-curl -X POST '{{ extra.api_example_url }}/report/tracker/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
 ```
@@ -339,6 +339,6 @@ curl -X POST '{{ extra.api_example_url }}/report/tracker/delete' \
 
 ````
 ```
-{{ extra.api_example_url }}/report/tracker/delete?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
+https://api.eu.navixy.com/v2/report/tracker/delete?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
 ```
 ````

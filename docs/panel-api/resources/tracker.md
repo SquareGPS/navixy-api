@@ -86,7 +86,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/active/history/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/active/history/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "from": "2021-02", "to": "2021-03"}'
 ```
@@ -141,7 +141,7 @@ _required permissions_: `tracker_bundles: "update"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": "78974217758"}'
 ```
@@ -151,7 +151,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/bundle/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&iccid=78974217758
+https://api.eu.navixy.com/v2/panel/tracker/bundle/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&iccid=78974217758
 ```
 {% endcode %}
 {% endtab %}
@@ -193,7 +193,7 @@ _required permissions_: `tracker_bundles: "update"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/order/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/order/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "order_id": 78974217758}'
 ```
@@ -203,7 +203,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/order/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/bundle/order/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758
+https://api.eu.navixy.com/v2/panel/tracker/bundle/order/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758
 ```
 {% endcode %}
 {% endtab %}
@@ -241,7 +241,7 @@ _required permissions_: `tracker_bundles: "create"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/import' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/import' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imeis": ["896654523569742", "754854"], "equip_id": 13785, "factory_preset": false}'
 ```
@@ -251,7 +251,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/import' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/bundle/import?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758&factory_preset=false
+https://api.eu.navixy.com/v2/panel/tracker/bundle/import?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758&factory_preset=false
 ```
 {% endcode %}
 {% endtab %}
@@ -293,7 +293,7 @@ _required permissions_: `tracker_bundles: "read"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -302,7 +302,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/bundle/list?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/tracker/bundle/list?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}
@@ -342,7 +342,7 @@ _required permissions_: `tracker_bundles: "read"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imei": "835664527777452"}'
 ```
@@ -351,7 +351,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/bundle/read?hash=fa7bf873fab9333144e171372a321b06&imei=835664527777452
+https://api.eu.navixy.com/v2/panel/tracker/bundle/read?hash=fa7bf873fab9333144e171372a321b06&imei=835664527777452
 ```
 {% endcode %}
 {% endtab %}
@@ -389,7 +389,7 @@ _required permissions_: `tracker_bundles: "update"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 13457, "equip_id": 35468}'
 ```
@@ -399,7 +399,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/update' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/bundle/update?hash=fa7bf873fab9333144e171372a321b06&bundle_id=13457&equip_id=35468
+https://api.eu.navixy.com/v2/panel/tracker/bundle/update?hash=fa7bf873fab9333144e171372a321b06&bundle_id=13457&equip_id=35468
 ```
 {% endcode %}
 {% endtab %}
@@ -440,7 +440,7 @@ _required permissions_: `trackers: "create"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/clone' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/clone' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537, "user_id": 354468, "label": "Courier"}'
 ```
@@ -450,7 +450,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/clone' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537&user_id=354468&label=Courier
+https://api.eu.navixy.com/v2/panel/tracker/clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537&user_id=354468&label=Courier
 ```
 {% endcode %}
 {% endtab %}
@@ -492,7 +492,7 @@ _required permissions_: `trackers: "update"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/console/connect' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/console/connect' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
 ```
@@ -501,7 +501,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/console/connect' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/console/connect?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
+https://api.eu.navixy.com/v2/panel/tracker/console/connect?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
 ```
 {% endcode %}
 {% endtab %}
@@ -577,7 +577,7 @@ _required permissions_: `trackers: "corrupt"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/corrupt' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/corrupt' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
 ```
@@ -586,7 +586,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/corrupt' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/corrupt?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
+https://api.eu.navixy.com/v2/panel/tracker/corrupt?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
 ```
 {% endcode %}
 {% endtab %}
@@ -647,7 +647,7 @@ _required permissions_: `trackers: "create"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_clone' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/batch_clone' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 998836, "tracker_ids": [134537, 458412, 99330], "ignore_existing": true}'
 ```
@@ -657,7 +657,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_clone' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/batch_clone?hash=fa7bf873fab9333144e171372a321b06&user_id=998836&tracker_ids=[134537,458412]&ignore_existing=true
+https://api.eu.navixy.com/v2/panel/tracker/batch_clone?hash=fa7bf873fab9333144e171372a321b06&user_id=998836&tracker_ids=[134537,458412]&ignore_existing=true
 ```
 {% endcode %}
 {% endtab %}
@@ -726,7 +726,7 @@ _required permissions_: `trackers: "delete"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_delete_clones' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/batch_delete_clones' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "trackers": [134537, 458412]}'
 ```
@@ -736,7 +736,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_delete_clones' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/batch_delete_clones?hash=fa7bf873fab9333144e171372a321b06&trackers=[134537, 458412]
+https://api.eu.navixy.com/v2/panel/tracker/batch_delete_clones?hash=fa7bf873fab9333144e171372a321b06&trackers=[134537, 458412]
 ```
 {% endcode %}
 {% endtab %}
@@ -796,7 +796,7 @@ _required permissions_: `trackers: "delete"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/delete_clone' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/delete_clone' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
 ```
@@ -805,7 +805,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/delete_clone' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/delete_clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
+https://api.eu.navixy.com/v2/panel/tracker/delete_clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
 ```
 {% endcode %}
 {% endtab %}
@@ -880,7 +880,7 @@ _required permissions_: `trackers: "read"`.
 {% tab title="cURL" %}
 ```sh
 
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -889,7 +889,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/list?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/tracker/list?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}
@@ -960,7 +960,7 @@ _required permissions_: `trackers: "create", "delete"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/move' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/move' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "user_id": 214034}'
 ```
@@ -970,7 +970,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/move' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/move?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&user_id=214034
+https://api.eu.navixy.com/v2/panel/tracker/move?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&user_id=214034
 ```
 {% endcode %}
 {% endtab %}
@@ -1009,7 +1009,7 @@ _required permissions_: `trackers: "read"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
 ```
@@ -1018,7 +1018,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/read?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
+https://api.eu.navixy.com/v2/panel/tracker/read?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
 ```
 {% endcode %}
 {% endtab %}
@@ -1086,7 +1086,7 @@ _required permissions_: `trackers: "update"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/register_retry' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/register_retry' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "send_register_commands": true}'
 ```
@@ -1096,7 +1096,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/register_retry' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/register_retry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&send_register_commands=true
+https://api.eu.navixy.com/v2/panel/tracker/register_retry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&send_register_commands=true
 ```
 {% endcode %}
 {% endtab %}
@@ -1141,7 +1141,7 @@ _required permissions_: `trackers: "update"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/settings/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/settings/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "label": "Courier", "deleted": false}'
 ```
@@ -1151,7 +1151,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/settings/update' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/settings/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&label=Courier&deleted=false
+https://api.eu.navixy.com/v2/panel/tracker/settings/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&label=Courier&deleted=false
 ```
 {% endcode %}
 {% endtab %}
@@ -1189,7 +1189,7 @@ _required permissions_: `trackers: "update"`.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/source/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/source/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "blocked": false}'
 ```
@@ -1199,7 +1199,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/source/update' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/source/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&blocked=false
+https://api.eu.navixy.com/v2/panel/tracker/source/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&blocked=false
 ```
 {% endcode %}
 {% endtab %}
@@ -1237,7 +1237,7 @@ _required permissions_: `[trackers: "update", "transactions": "create", "tariffs
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/tariff/change' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/tariff/change' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "tariff_id": 15843, "repay": false, "charge": true}'
 ```
@@ -1247,7 +1247,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/tracker/tariff/change' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/tracker/tariff/change?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&tariff_id=15843&repay=false&charge=true
+https://api.eu.navixy.com/v2/panel/tracker/tariff/change?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&tariff_id=15843&repay=false&charge=true
 ```
 {% endcode %}
 {% endtab %}
@@ -1363,7 +1363,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/tracker/raw_command/send' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/raw_command/send' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": "889654248978", "command": "setparam 101:4"}'
 ```

@@ -30,7 +30,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/output/set_all' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/output/set_all' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "outputs": [true, true, false]}'
 ```
@@ -73,7 +73,7 @@ Request to change the state of the specified digital output of the device. The d
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/output/set' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/output/set' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", tracker_id: 265489, "output": 1, "enable": true}'
 ```
@@ -83,7 +83,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/output/set' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/output/set?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&output=1&enable=true
+https://api.eu.navixy.com/v2/tracker/output/set?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&output=1&enable=true
 ```
 {% endcode %}
 {% endtab %}

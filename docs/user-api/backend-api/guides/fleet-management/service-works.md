@@ -13,7 +13,7 @@ To create a vehicle object, specify all relevant information about the vehicle. 
 Creating a Ford Transit cargo van vehicle object:
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/vehicle/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "a6aa75587e5c59c32d347da438505fc3",
@@ -79,7 +79,7 @@ Creating service works for oil change, brakes replacement, and spark plug replac
 #### Oil Change
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "a6aa75587e5c59c32d347da438505fc3",
@@ -109,7 +109,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
 #### Brakes Replacement
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "a6aa75587e5c59c32d347da438505fc3",

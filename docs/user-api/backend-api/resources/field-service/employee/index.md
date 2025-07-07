@@ -81,7 +81,7 @@ Gets all employees and drivers belonging to user.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/employee/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/employee/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -89,7 +89,7 @@ curl -X POST '{{ extra.api_example_url }}/employee/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/employee/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/employee/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -129,7 +129,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/employee/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/employee/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee": {"tracker_id": 625987, "first_name": "John", "middle_name": "Jane", "last_name": "Smith", "email": "smith@example.com", "phone": "442071111111", "driver_license_number": "SKIMP407952HJ9GK 06", "driver_license_cats": "C", "driver_license_valid_till": "2018-01-01", "hardware_key": null, "icon_id" : 55, "avatar_file_name": null, "department_id": null, "location": {"lat": 52.5, "lng": 13.4, "address": "Engeldamm 18"}, "personnel_number": "1059236", "tags": [1,2]}'
 ```
@@ -165,7 +165,7 @@ Gets employee/driver by his ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/employee/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/employee/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee_id": 111}'
 ```
@@ -174,7 +174,7 @@ curl -X POST '{{ extra.api_example_url }}/employee/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/employee/read?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
+https://api.eu.navixy.com/v2/employee/read?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
 ```
 {% endcode %}
 {% endtab %}
@@ -237,7 +237,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/employee/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/employee/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee": {"employee_id": 111, "tracker_id": 625987, "first_name": "John", "middle_name": "Jane", "last_name": "Smith", "email": "smith@example.com", "phone": "442071111111", "driver_license_number": "SKIMP407952HJ9GK 06", "driver_license_cats": "C", "driver_license_valid_till": "2018-01-01", "hardware_key": null, "icon_id" : 55, "avatar_file_name": null, "department_id": null, "location": {"lat": 52.5, "lng": 13.4, "address": "Engeldamm 18"}, "personnel_number": "1059236", "tags": [1,2]}'
 ```
@@ -271,7 +271,7 @@ Deletes an employee/driver with the specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/employee/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/employee/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "employee_id": 111}'
 ```
@@ -280,7 +280,7 @@ curl -X POST '{{ extra.api_example_url }}/employee/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/employee/delete?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
+https://api.eu.navixy.com/v2/employee/delete?hash=a6aa75587e5c59c32d347da438505fc3&employee_id=111
 ```
 {% endcode %}
 {% endtab %}

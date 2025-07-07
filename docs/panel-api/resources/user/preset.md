@@ -82,7 +82,7 @@ Lists all available menu presets with their current assignments.
 
 {% code title="cURL" overflow="wrap" %}
 ```sh
-curl -X GET '{{ extra.api_example_url }}/panel/user/menu/preset/list' \ 
+curl -X GET 'https://api.eu.navixy.com/v2/panel/user/menu/preset/list' \ 
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
 ```
 {% endcode %}
@@ -301,7 +301,7 @@ Creates given menu preset.
 
 {% code title="cURL" overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/menu/preset/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/menu/preset/create' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
     -H 'Content-Type: application/json' \
     -d '{ "preset": { "title": "Created", "main": [ { "title": "Monitoring", "items": [ { "title": "Tasks", "tabs": [ { "title": "Tasks", "destination": "tasks" } ] } ] } ], "footer": [] } }'
@@ -335,7 +335,7 @@ Updates the menu preset.
 
 {% code title="cURL" overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/menu/preset/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/menu/preset/update' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b' \
     -H 'Content-Type: application/json' \
     -d '{ "preset": { "id": 2, "title": "Updated", "main": [ { "title": "Monitoring", "items": [ { "title": "Tasks", "tabs": [ { "title": "Tasks", "destination": "tasks" } ] } ] } ], "footer": [] } }'
@@ -369,7 +369,7 @@ Deletes the menu preset.
 
 {% code title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/menu/preset/delete?preset_id=2' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/menu/preset/delete?preset_id=2' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
 ```
 {% endcode %}
@@ -401,7 +401,7 @@ Assigns the menu preset to users.
 
 {% code title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/menu/preset/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/menu/preset/assign' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
     -H "Content-Type: application/json" \
     -d '{ "preset_id": 2, "target": { "type": "users", "ids": [3] } }'
@@ -429,7 +429,7 @@ Lists all available menu items.
 
 {% code title="cURL" %}
 ```sh
-curl -X GET '{{ extra.api_example_url }}/panel/user/menu/preset/items/list' \
+curl -X GET 'https://api.eu.navixy.com/v2/panel/user/menu/preset/items/list' \
     -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
 ```
 {% endcode %}

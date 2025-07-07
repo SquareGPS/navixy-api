@@ -12,8 +12,8 @@ API base path: `/tracker/avatar`.
 ### upload
 
 Uploads avatar image for specified tracker. \
-Then it will be available from `{{ extra.api_example_url }}/[api_static_path]/tracker/avatars/<file_name>`\
-e.g. `{{ extra.api_example_url }}/static/tracker/avatars/abcdef123456789.png`.
+Then it will be available from `https://api.eu.navixy.com/v2/[api_static_path]/tracker/avatars/<file_name>`\
+e.g. `https://api.eu.navixy.com/v2/static/tracker/avatars/abcdef123456789.png`.
 
 **required sub-user rights:** `tracker_update`.
 

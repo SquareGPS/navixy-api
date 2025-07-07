@@ -48,7 +48,7 @@ Returns history for the task with the specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/checkpoint/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/checkpoint/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "checkpoint_id": 23144}'
 ```
@@ -57,7 +57,7 @@ curl -X POST '{{ extra.api_example_url }}/task/checkpoint/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=23144
+https://api.eu.navixy.com/v2/task/checkpoint/delete?hash=a6aa75587e5c59c32d347da438505fc3&checkpoint_id=23144
 ```
 {% endcode %}
 {% endtab %}

@@ -15,7 +15,7 @@ API request:
 {% tabs %}
 {% tab title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tag/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/tag/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag": {"name": "team1", "color": "#00BFFF"}}'
 ```
@@ -24,7 +24,7 @@ curl -X POST '{{ extra.api_example_url }}/tag/create' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```shell
-{{ extra.api_example_url }}/tag/create?hash=a6aa75587e5c59c32d347da438505fc3&tag={"name": "team1", "color": "#00BFFF"}
+https://api.eu.navixy.com/v2/tag/create?hash=a6aa75587e5c59c32d347da438505fc3&tag={"name": "team1", "color": "#00BFFF"}
 ```
 {% endcode %}
 {% endtab %}
@@ -53,7 +53,7 @@ API request:
 {% tabs %}
 {% tab title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tag/search' \
+curl -X POST 'https://api.eu.navixy.com/v2/tag/search' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tag_ids": [179227]}'
 ```
@@ -61,7 +61,7 @@ curl -X POST '{{ extra.api_example_url }}/tag/search' \
 
 {% tab title="HTTP GET" %}
 ```shell
-{{ extra.api_example_url }}/tag/search?hash=22eac1c27af4be7b9d04da2ce1af111b&tag_ids=[179227]
+https://api.eu.navixy.com/v2/tag/search?hash=22eac1c27af4be7b9d04da2ce1af111b&tag_ids=[179227]
 ```
 {% endtab %}
 {% endtabs %}

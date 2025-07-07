@@ -40,7 +40,7 @@ Attaches new form to the existing task or checkpoint. Form always created on the
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/form/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/form/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "template_id": 12548}'
 ```
@@ -50,7 +50,7 @@ curl -X POST '{{ extra.api_example_url }}/task/form/create' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/form/create?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&template_id=12548
+https://api.eu.navixy.com/v2/task/form/create?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&template_id=12548
 ```
 {% endcode %}
 {% endtab %}
@@ -91,7 +91,7 @@ All form data will be lost!
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/form/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/form/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231}'
 ```
@@ -100,7 +100,7 @@ curl -X POST '{{ extra.api_example_url }}/task/form/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/form/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231
+https://api.eu.navixy.com/v2/task/form/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231
 ```
 {% endcode %}
 {% endtab %}
@@ -137,7 +137,7 @@ Retrieves attached form as file.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/form/download' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/form/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 11231, "format": "pdf"}'
 ```
@@ -147,7 +147,7 @@ curl -X POST '{{ extra.api_example_url }}/task/form/download' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/form/download?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&format=pdf
+https://api.eu.navixy.com/v2/task/form/download?hash=a6aa75587e5c59c32d347da438505fc3&task_id=11231&format=pdf
 ```
 {% endcode %}
 {% endtab %}
@@ -230,7 +230,7 @@ where period\_object is:
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/form/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/form/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "ascending": true, "include_unsubmitted": true}'
 ```
@@ -240,7 +240,7 @@ curl -X POST '{{ extra.api_example_url }}/task/form/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/form/list?hash=a6aa75587e5c59c32d347da438505fc3&ascending=true&include_unsubmitted=true
+https://api.eu.navixy.com/v2/task/form/list?hash=a6aa75587e5c59c32d347da438505fc3&ascending=true&include_unsubmitted=true
 ```
 {% endcode %}
 {% endtab %}
@@ -338,7 +338,7 @@ Gets form associated with the specified task.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/form/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/form/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "task_id": 12546}'
 ```
@@ -347,7 +347,7 @@ curl -X POST '{{ extra.api_example_url }}/task/form/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/form/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=12546
+https://api.eu.navixy.com/v2/task/form/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=12546
 ```
 {% endcode %}
 {% endtab %}

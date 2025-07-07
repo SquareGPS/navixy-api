@@ -24,7 +24,7 @@ Information about all supported timezones for the specified locale. Does not req
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/timezone/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/timezone/list' \
     -H 'Content-Type: application/json' \
     -d '{"locale": "En-en"}'
 ```

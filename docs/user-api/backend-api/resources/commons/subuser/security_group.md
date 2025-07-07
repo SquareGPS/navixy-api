@@ -86,7 +86,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/security_group/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/security_group/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "group": {"label": "Managers", "privileges": {"rights": ["tag_update", "tracker_register"], "store_period": "1d"}}}'
 ```
@@ -126,7 +126,7 @@ All sub-users belonging to this group will be assigned to default (null) securit
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/security_group/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/security_group/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 103}'
 ```
@@ -135,7 +135,7 @@ curl -X POST '{{ extra.api_example_url }}/subuser/security_group/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/subuser/security_group/delete?hash=a6aa75587e5c59c32d347da438505fc3&id=103
+https://api.eu.navixy.com/v2/subuser/security_group/delete?hash=a6aa75587e5c59c32d347da438505fc3&id=103
 ```
 {% endcode %}
 {% endtab %}
@@ -170,7 +170,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/security_group/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/security_group/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -179,7 +179,7 @@ curl -X POST '{{ extra.api_example_url }}/subuser/security_group/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/subuser/security_group/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/subuser/security_group/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -228,7 +228,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/security_group/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/security_group/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "group": {"id": 103, "label": "Managers", "privileges": {"rights": ["tag_update", "tracker_register"], "store_period": "1d"}}}'
 ```
@@ -267,7 +267,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/subuser/security_group/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/subuser/security_group/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "group_id": 3, subuser_ids: [12, 34]}'
 ```

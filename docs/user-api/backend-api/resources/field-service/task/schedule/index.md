@@ -75,7 +75,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/schedule/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/schedule/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
 ```
@@ -116,7 +116,7 @@ Delete task schedule with the specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/schedule/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/schedule/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule_id": 23144}'
 ```
@@ -125,7 +125,7 @@ curl -X POST '{{ extra.api_example_url }}/task/schedule/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/schedule/delete?hash=a6aa75587e5c59c32d347da438505fc3&schedule_id=23144
+https://api.eu.navixy.com/v2/task/schedule/delete?hash=a6aa75587e5c59c32d347da438505fc3&schedule_id=23144
 ```
 {% endcode %}
 {% endtab %}
@@ -160,7 +160,7 @@ Also this call returns all unassigned task schedules.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/schedule/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/schedule/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -169,7 +169,7 @@ curl -X POST '{{ extra.api_example_url }}/task/schedule/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/schedule/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/task/schedule/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -226,7 +226,7 @@ Gets task, route or checkpoint schedule by specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/schedule/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/schedule/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 12314}'
 ```
@@ -235,7 +235,7 @@ curl -X POST '{{ extra.api_example_url }}/task/schedule/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/task/schedule/read?hash=a6aa75587e5c59c32d347da438505fc3&id=12314
+https://api.eu.navixy.com/v2/task/schedule/read?hash=a6aa75587e5c59c32d347da438505fc3&id=12314
 ```
 {% endcode %}
 {% endtab %}
@@ -307,7 +307,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/task/schedule/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/schedule/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "schedule": {"tracker_id": 22, "location": {"lat": 53.787154, "lng": 9.757980, "address": "Moltkestrasse 32", "radius": 150}, "label": "Shop", "description": "Buy things", "from_time": "12:34:00", "duration": 60, "max_delay" : 5, "min_stay_duration": 0, "min_arrival_duration": 0, "parameters": {"type": "weekdays", "weekdays": [1, 5, 6]}, "tags": [1, 2], "form_template_id": 1}'
 ```

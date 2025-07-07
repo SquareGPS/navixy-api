@@ -44,7 +44,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/group/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/group/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999199, 991999], "id": 167}'
 ```
@@ -83,7 +83,7 @@ Creates a new empty group.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/group/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/group/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Employees", "color": "FF6DDC"}'
 ```
@@ -93,7 +93,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/group/create' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/group/create?hash=a6aa75587e5c59c32d347da438505fc3&title=Employees&color=FF6DDC
+https://api.eu.navixy.com/v2/tracker/group/create?hash=a6aa75587e5c59c32d347da438505fc3&title=Employees&color=FF6DDC
 ```
 {% endcode %}
 {% endtab %}
@@ -133,7 +133,7 @@ assigned to default group (0).
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/group/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/group/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "id": 167}'
 ```
@@ -143,7 +143,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/group/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/group/delete?hash=a6aa75587e5c59c32d347da438505fc3&id=167
+https://api.eu.navixy.com/v2/tracker/group/delete?hash=a6aa75587e5c59c32d347da438505fc3&id=167
 ```
 {% endcode %}
 {% endtab %}
@@ -171,7 +171,7 @@ and is not returned by this API call.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/group/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/group/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -180,7 +180,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/group/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/group/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tracker/group/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -225,7 +225,7 @@ Updates specified tracker group. Group must belong to the authorized user.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/group/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/group/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "id": 167, "title": "Employees", "color": "FF6DDC"}'
 ```
@@ -235,7 +235,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/group/update' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/group/update?hash=a6aa75587e5c59c32d347da438505fc3&id=167&title=Employees&color=FF6DDC
+https://api.eu.navixy.com/v2/tracker/group/update?hash=a6aa75587e5c59c32d347da438505fc3&id=167&title=Employees&color=FF6DDC
 ```
 {% endcode %}
 {% endtab %}

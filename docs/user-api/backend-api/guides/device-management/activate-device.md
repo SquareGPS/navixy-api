@@ -56,7 +56,7 @@ In this case, we don't need to assign the device to a specific group, so `group_
 {% tabs %}
 {% tab title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/register' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/register' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "a6aa75587e5c59c32d347da438505fc3",
@@ -76,7 +76,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=T571TO&group_id=0&plugin_id=44&model=telfmb140&phone=999999999969&device_id=986575154632586&apn_name=internet&apn_user=user&apn_password=passwd
+https://api.eu.navixy.com/v2/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=T571TO&group_id=0&plugin_id=44&model=telfmb140&phone=999999999969&device_id=986575154632586&apn_name=internet&apn_user=user&apn_password=passwd
 ```
 {% endcode %}
 {% endtab %}
@@ -120,7 +120,7 @@ The API call will be as follows:
 {% tabs %}
 {% tab title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/register' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/register' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "a6aa75587e5c59c32d347da438505fc3",
@@ -139,7 +139,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=T571TO&group_id=0&plugin_id=37&activation_code=6045325592&model=telfmb140&phone=999999999969&device_id=986575154632586&apn_name=internet
+https://api.eu.navixy.com/v2/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=T571TO&group_id=0&plugin_id=37&activation_code=6045325592&model=telfmb140&phone=999999999969&device_id=986575154632586&apn_name=internet
 ```
 {% endcode %}
 {% endtab %}
@@ -239,7 +239,7 @@ For example, we need to activate the app for our employee Andrew. To make it con
 {% tabs %}
 {% tab title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/register' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/register' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Andrew", "group_id": 0, "plugin_id": 35, "model": "mobile_unknown_xgps", "notification_phone": "999877459965"}'
 ```
@@ -248,7 +248,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=Andrew&group_id=0&plugin_id=35&model=mobile_unknown_xgps&notification_phone=999877459965
+https://api.eu.navixy.com/v2/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=Andrew&group_id=0&plugin_id=35&model=mobile_unknown_xgps&notification_phone=999877459965
 ```
 {% endcode %}
 {% endtab %}
@@ -286,7 +286,7 @@ If a user is required to use [activation codes](https://docs.navixy.com/admin-pa
 {% tabs %}
 {% tab title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/register' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/register' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "label": "Andrew", "group_id": 0, "plugin_id": 68, "activation_code": "6045325592", "model": "mobile_unknown_xgps", "notification_phone": "999877459965"}'
 ```
@@ -295,7 +295,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/register' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=Andrew&group_id=0&plugin_id=68&activation_code=6045325592&model=mobile_unknown_xgps&notification_phone=999877459965
+https://api.eu.navixy.com/v2/tracker/register?hash=a6aa75587e5c59c32d347da438505fc3&label=Andrew&group_id=0&plugin_id=68&activation_code=6045325592&model=mobile_unknown_xgps&notification_phone=999877459965
 ```
 {% endcode %}
 {% endtab %}

@@ -218,7 +218,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/batch/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/batch/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_ids": [76801, 76449], "task": {"comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
 ```
@@ -320,7 +320,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task": {"vehicle_id": 76801, "comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
 ```
@@ -360,7 +360,7 @@ Either **task\_id** or **task\_ids** should be specified.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 33777}'
 ```
@@ -369,7 +369,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/vehicle/service_task/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=33777
+https://api.eu.navixy.com/v2/vehicle/service_task/delete?hash=a6aa75587e5c59c32d347da438505fc3&task_id=33777
 ```
 {% endcode %}
 {% endtab %}
@@ -412,7 +412,7 @@ Downloads report of service works.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/download' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "group_by": "status"}'
 ```
@@ -421,7 +421,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/download' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/vehicle/service_task/download?hash=a6aa75587e5c59c32d347da438505fc3&group_by=status
+https://api.eu.navixy.com/v2/vehicle/service_task/download?hash=a6aa75587e5c59c32d347da438505fc3&group_by=status
 ```
 {% endcode %}
 {% endtab %}
@@ -486,7 +486,7 @@ List all service works of all user vehicles.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "return_prediction": false}'
 ```
@@ -495,7 +495,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/vehicle/service_task/list?hash=a6aa75587e5c59c32d347da438505fc3&return_prediction=false
+https://api.eu.navixy.com/v2/vehicle/service_task/list?hash=a6aa75587e5c59c32d347da438505fc3&return_prediction=false
 ```
 {% endcode %}
 {% endtab %}
@@ -533,7 +533,7 @@ Gets service work info by its id.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "return_prediction": false}'
 ```
@@ -543,7 +543,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/vehicle/service_task/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&return_prediction=false
+https://api.eu.navixy.com/v2/vehicle/service_task/read?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&return_prediction=false
 ```
 {% endcode %}
 {% endtab %}
@@ -582,7 +582,7 @@ Updates task status, and saved (on `done` **status**) current date and values of
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/set_status' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/set_status' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task_id": 37577, "status": "done"}'
 ```
@@ -592,7 +592,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/set_status' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/vehicle/service_task/set_status?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&status=done
+https://api.eu.navixy.com/v2/vehicle/service_task/set_status?hash=a6aa75587e5c59c32d347da438505fc3&task_id=37577&status=done
 ```
 {% endcode %}
 {% endtab %}
@@ -697,7 +697,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "task": {"vehicle_id": 76801, "comment": "", "conditions": {"date": {"end": "2020-12-10 23:59:59", "notification_interval": 3}}, "cost": 100, "description": "service1", "file_ids": [], "notifications": {"sms_phones": [], "emails": [], "push_enabled": true}, "repeat": false, "unplanned": false}'
 ```

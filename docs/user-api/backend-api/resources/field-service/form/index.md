@@ -111,7 +111,7 @@ Gets form by an ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/form/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/form/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2}'
 ```
@@ -119,7 +119,7 @@ curl -X POST '{{ extra.api_example_url }}/form/read' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/form/read?hash=a6aa75587e5c59c32d347da438505fc3&id=2
+https://api.eu.navixy.com/v2/form/read?hash=a6aa75587e5c59c32d347da438505fc3&id=2
 ```
 {% endtab %}
 {% endtabs %}
@@ -202,7 +202,7 @@ Downloads form as a file by an ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/form/download' \
+curl -X POST 'https://api.eu.navixy.com/v2/form/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 2, "format": "pdf"}'
 ```
@@ -211,7 +211,7 @@ curl -X POST '{{ extra.api_example_url }}/form/download' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/form/download?hash=a6aa75587e5c59c32d347da438505fc3&id=2&format=pdf
+https://api.eu.navixy.com/v2/form/download?hash=a6aa75587e5c59c32d347da438505fc3&id=2&format=pdf
 ```
 {% endcode %}
 {% endtab %}

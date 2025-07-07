@@ -68,7 +68,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/subpaas/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/subpaas/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com"}'
 ```
@@ -107,7 +107,7 @@ Gets a list of all SubPaaS accounts of a Dealer. Dealer ID will be taken from th
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/subpaas/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/subpaas/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -116,7 +116,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/subpaas/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/subpaas/list?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/subpaas/list?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}
@@ -168,7 +168,7 @@ Gets Sub PaaS account info by its id.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/subpaas/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/subpaas/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 97834}' 
 ```
@@ -177,7 +177,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/subpaas/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/subpaas/read?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
+https://api.eu.navixy.com/v2/panel/subpaas/read?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
 ```
 {% endcode %}
 {% endtab %}
@@ -238,7 +238,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/subpaas/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/subpaas/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com", "contact_fio": "fio", "contact_post": "CEO", "contact_phone": "79999902190", "block_type": "NOT_BLOCKED"}'
 ```

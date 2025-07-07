@@ -27,7 +27,7 @@ Gets LBS settings for the specified tracker.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/settings/lbs/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/settings/lbs/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
 ```
@@ -36,7 +36,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/settings/lbs/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/settings/lbs/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+https://api.eu.navixy.com/v2/tracker/settings/lbs/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
 ```
 {% endcode %}
 {% endtab %}
@@ -75,7 +75,7 @@ Updates LBS settings for the specified tracker.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/settings/lbs/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/settings/lbs/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "max_radius": 1000}'
 ```
@@ -85,7 +85,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/settings/lbs/update' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/settings/lbs/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&max_radius=1000
+https://api.eu.navixy.com/v2/tracker/settings/lbs/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&max_radius=1000
 ```
 {% endcode %}
 {% endtab %}

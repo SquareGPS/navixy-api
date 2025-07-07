@@ -55,7 +55,7 @@ List of beacon data history between `from` date/time and `to` date/time sorted b
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/beacon/data/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/beacon/data/read' \
     -H 'Content-Type: application/json' \
     -d '{
 "hash":"59be129c1855e34ea9eb272b1e26ef1d",
@@ -120,7 +120,7 @@ List of last BLE beacon data visible on the trackers.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/beacon/data/last_values' \
+curl -X POST 'https://api.eu.navixy.com/v2/beacon/data/last_values' \
     -H 'Content-Type: application/json' \
     -d '{
 "hash":"59be129c1855e34ea9eb272b1e26ef1d",

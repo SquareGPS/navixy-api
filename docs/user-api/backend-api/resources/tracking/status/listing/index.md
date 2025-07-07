@@ -50,7 +50,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/listing/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/listing/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true}'
 ```
@@ -90,7 +90,7 @@ Deletes working status list.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/listing/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/listing/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345}'
 ```
@@ -99,7 +99,7 @@ curl -X POST '{{ extra.api_example_url }}/status/listing/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/status/listing/delete?hash=a6aa75587e5c59c32d347da438505fc3&listing_id=12345
+https://api.eu.navixy.com/v2/status/listing/delete?hash=a6aa75587e5c59c32d347da438505fc3&listing_id=12345
 ```
 {% endcode %}
 {% endtab %}
@@ -132,7 +132,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/listing/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/listing/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -141,7 +141,7 @@ curl -X POST '{{ extra.api_example_url }}/status/listing/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/status/listing/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/status/listing/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -191,7 +191,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/listing/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/listing/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"id": 12345, "label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true, "entries": [ 5, 2, 1, 4, 6]}'
 ```

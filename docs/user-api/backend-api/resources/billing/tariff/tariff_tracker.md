@@ -42,7 +42,7 @@ Changes plan of tracker (with `tracker_id`) to new plan (with `tariff_id`).
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tariff/tracker/change' \
+curl -X POST 'https://api.eu.navixy.com/v2/tariff/tracker/change' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 345215, "tariff_id": 12}'
 ```
@@ -52,7 +52,7 @@ curl -X POST '{{ extra.api_example_url }}/tariff/tracker/change' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```
-{{ extra.api_example_url }}/tariff/tracker/change?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215&tariff_id=12
+https://api.eu.navixy.com/v2/tariff/tracker/change?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215&tariff_id=12
 ```
 {% endcode %}
 {% endtab %}
@@ -91,7 +91,7 @@ List plans on which user can switch the passed tracker (even when tariff last ch
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tariff/tracker/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tariff/tracker/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 345215}'
 ```
@@ -100,7 +100,7 @@ curl -X POST '{{ extra.api_example_url }}/tariff/tracker/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tariff/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215
+https://api.eu.navixy.com/v2/tariff/tracker/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=345215
 ```
 {% endcode %}
 {% endtab %}

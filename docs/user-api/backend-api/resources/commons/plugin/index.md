@@ -65,7 +65,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/plugin/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/plugin/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -73,7 +73,7 @@ curl -X POST '{{ extra.api_example_url }}/plugin/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/plugin/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/plugin/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}

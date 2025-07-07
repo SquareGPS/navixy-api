@@ -26,7 +26,7 @@ Requests to read the state of engine immobilizer.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/engine_immobilizer/read' \
     -H 'Content-Type: application/json' \
     -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -35,7 +35,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/engine_immobilizer/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tracker/engine_immobilizer/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -77,7 +77,7 @@ Requests to change the engine immobilizer state of the device. The device must b
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/engine_immobilizer/set' \
     -H 'Content-Type: application/json' \
     -d '{"tracker_id": 123456, "enabled": true, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -87,7 +87,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/engine_immobilizer/set' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/engine_immobilizer/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tracker/engine_immobilizer/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}

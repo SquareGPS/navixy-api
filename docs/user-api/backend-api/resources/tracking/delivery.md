@@ -32,7 +32,7 @@ In addition to standard user session, this call supports special _DELIVERY_ sess
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/delivery/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/delivery/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": 259876}'
 ```
@@ -42,7 +42,7 @@ curl -X POST '{{ extra.api_example_url }}/delivery/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```sh
-{{ extra.api_example_url }}/delivery/read?hash=a6aa75587e5c59c32d347da438505fc3&external_id=259876
+https://api.eu.navixy.com/v2/delivery/read?hash=a6aa75587e5c59c32d347da438505fc3&external_id=259876
 ```
 {% endcode %}
 {% endtab %}
@@ -103,7 +103,7 @@ in addition to standard user session, this call supports special _DELIVERY_ sess
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/delivery/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/delivery/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "external_id": 259876}'
 ```
@@ -113,7 +113,7 @@ curl -X POST '{{ extra.api_example_url }}/delivery/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/delivery/list?hash=a6aa75587e5c59c32d347da438505fc3&external_id=259876
+https://api.eu.navixy.com/v2/delivery/list?hash=a6aa75587e5c59c32d347da438505fc3&external_id=259876
 ```
 {% endcode %}
 {% endtab %}

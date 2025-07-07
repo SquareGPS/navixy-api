@@ -24,7 +24,7 @@ Creates a SubPaaS session.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/subpaas/session/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/subpaas/session/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 97834}'
 ```
@@ -33,7 +33,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/subpaas/session/create' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/subpaas/session/create?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
+https://api.eu.navixy.com/v2/panel/subpaas/session/create?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
 ```
 {% endcode %}
 {% endtab %}

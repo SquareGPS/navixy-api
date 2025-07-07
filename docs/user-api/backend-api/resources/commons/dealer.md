@@ -30,7 +30,7 @@ If `hash` is specified the `domain` shouldn't be used.
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/dealer/get_ui_config' \
+curl -X POST 'https://api.eu.navixy.com/v2/dealer/get_ui_config' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "domain": "panel.navixy.com"}'
 ```

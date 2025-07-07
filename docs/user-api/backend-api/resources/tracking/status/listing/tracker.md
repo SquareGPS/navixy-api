@@ -30,7 +30,7 @@ Assigns a working status list (or remove assignment) to the tracker.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/status/listing/tracker/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/listing/tracker/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "listing_id": 12345}'
 ```
@@ -40,7 +40,7 @@ curl -X POST '{{ extra.api_example_url }}/status/listing/tracker/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/status/listing/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&listing_id=12345
+https://api.eu.navixy.com/v2/status/listing/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&listing_id=12345
 ```
 {% endcode %}
 {% endtab %}

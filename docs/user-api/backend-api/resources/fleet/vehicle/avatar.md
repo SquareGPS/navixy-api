@@ -30,7 +30,7 @@ Assigns `icon_id` (from standard icon set) to specified vehicle.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/avatar/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/avatar/assign' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "vehicle_id": 127722, "icon_id": 1342}'
 ```
@@ -40,7 +40,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/avatar/assign' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/vehicle/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722&icon_id=1342
+https://api.eu.navixy.com/v2/vehicle/avatar/assign?hash=a6aa75587e5c59c32d347da438505fc3&vehicle_id=127722&icon_id=1342
 ```
 {% endcode %}
 {% endtab %}
@@ -62,7 +62,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/avatar/assign' \
 
 Uploads avatar image for specified vehicle.\
 Then it will be available from `[api_base_url]/<api_static_path>/vehicle/avatars/<file_name>`\
-e.g. `{{ extra.api_example_url }}/static/vehicle/avatars/abcdef123456789.png`.
+e.g. `https://api.eu.navixy.com/v2/static/vehicle/avatars/abcdef123456789.png`.
 
 **required sub-user rights**: `vehicle_update`
 

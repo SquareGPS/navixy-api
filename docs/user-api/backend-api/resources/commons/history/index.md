@@ -96,7 +96,7 @@ Returns history entry with the specified ID.
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/history/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/history/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 11231, "add_tracker_label": true}'
 ```
@@ -106,7 +106,7 @@ curl -X POST '{{ extra.api_example_url }}/history/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/history/read?hash=a6aa75587e5c59c32d347da438505fc3&id=11231&add_tracker_label=true
+https://api.eu.navixy.com/v2/history/read?hash=a6aa75587e5c59c32d347da438505fc3&id=11231&add_tracker_label=true
 ```
 {% endcode %}
 {% endtab %}
@@ -168,7 +168,7 @@ Marks history entry as read by `id` (see: [Tracker history entry](index.md#track
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/history/mark_read' \
+curl -X POST 'https://api.eu.navixy.com/v2/history/mark_read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 11231}'
 ```
@@ -177,7 +177,7 @@ curl -X POST '{{ extra.api_example_url }}/history/mark_read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/history/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&id=11231
+https://api.eu.navixy.com/v2/history/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&id=11231
 ```
 {% endcode %}
 {% endtab %}
@@ -208,7 +208,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/history/mark_read_all' \
+curl -X POST 'https://api.eu.navixy.com/v2/history/mark_read_all' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -217,7 +217,7 @@ curl -X POST '{{ extra.api_example_url }}/history/mark_read_all' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/history/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/history/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}

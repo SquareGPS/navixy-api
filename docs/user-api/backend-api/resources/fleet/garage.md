@@ -43,7 +43,7 @@ Gets all depots belonging to user.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/garage/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/garage/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -51,7 +51,7 @@ curl -X POST '{{ extra.api_example_url }}/garage/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/garage/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/garage/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -100,7 +100,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/garage/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/garage/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "garage": {"location": {"lat": 40.4, "lng": -3.6, "address": "Calle Salitre, 58", "radius": 150}, "mechanic_name": "Martinez", "dispatcher_name": "Velasquez", "organization_name": "Bankia"}}'
 ```
@@ -139,7 +139,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/garage/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/garage/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "garage": {"id": 222, location": {"lat": 40.4, "lng": -3.6, "address": "Calle Salitre, 58", "radius": 150}, "mechanic_name": "Martinez", "dispatcher_name": "Velasquez", "organization_name": "Bankia"}}'
 ```
@@ -174,7 +174,7 @@ Deletes a depot with the specified ID.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/garage/delete' \
+curl -X POST 'https://api.eu.navixy.com/v2/garage/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "garage_id": 111}'
 ```
@@ -183,7 +183,7 @@ curl -X POST '{{ extra.api_example_url }}/garage/delete' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/garage/delete?hash=a6aa75587e5c59c32d347da438505fc3&garage_id=111
+https://api.eu.navixy.com/v2/garage/delete?hash=a6aa75587e5c59c32d347da438505fc3&garage_id=111
 ```
 {% endcode %}
 {% endtab %}

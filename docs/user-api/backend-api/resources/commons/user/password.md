@@ -26,7 +26,7 @@ Changes password of user with the provided session hash (it is contained in a pa
 cURL
 
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/password/change' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/password/change' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "password": "12@14Y$"}'
 ```
@@ -61,7 +61,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/user/password/set' \
+curl -X POST 'https://api.eu.navixy.com/v2/user/password/set' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "old_password": "qwert1", "new_password": "12@14Y$"}'
 ```

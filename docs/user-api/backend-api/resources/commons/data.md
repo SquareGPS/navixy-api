@@ -81,7 +81,7 @@ Returns the list of the user's import processes.
 cURL
 
 ```sh
-curl -X POST "{{ extra.api_example_url }}/data/import/list" \
+curl -X POST "https://api.eu.navixy.com/v2/data/import/list" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -130,7 +130,7 @@ Returns an import process with specified ID.
 cURL
 
 ```sh
-curl -X POST "{{ extra.api_example_url }}/data/import/read" \
+curl -X POST "https://api.eu.navixy.com/v2/data/import/read" \
     -H "Content-Type: application/json" \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "type": "employee", "process_id": 1}'
 ```

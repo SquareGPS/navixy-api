@@ -131,7 +131,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 {% code title="cURL" %}
 ```sh
-    curl -X POST '{{ extra.api_example_url }}/panel/user/create' \
+    curl -X POST 'https://api.eu.navixy.com/v2/panel/user/create' \
         -H 'Content-Type: application/json' \
         -d '{
               "hash": "22eac1c27af4be7b9d04da2ce1af111b",
@@ -206,7 +206,7 @@ _required permissions_: `users: "read"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 231485}'
 ```
@@ -215,7 +215,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/user/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/user/read?hash=fa7bf873fab9333144e171372a321b06&user_id=231485
+https://api.eu.navixy.com/v2/panel/user/read?hash=fa7bf873fab9333144e171372a321b06&user_id=231485
 ```
 {% endcode %}
 {% endtab %}
@@ -299,7 +299,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 {% code title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/panel/user/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/update' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b", 
@@ -371,7 +371,7 @@ _required permissions_: `users: "update"`.
 
 {% code title="cURL" overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/change_password' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/change_password' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432, "password": "12@14Y$"}'
 ```
@@ -407,7 +407,7 @@ _required permissions_: `users: "corrupt"`.
 
 {% code title="cURL" overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/corrupt' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/corrupt' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432, "login": "user@login.com"}'
 ```
@@ -593,7 +593,7 @@ _Required permissions_: `users: "read"`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -602,7 +602,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/user/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/user/list?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/user/list?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}
@@ -688,7 +688,7 @@ About user object structure see [above](./#user-object-structure).
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/export' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/export' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -697,7 +697,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/user/export' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/user/export?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/user/export?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}
@@ -730,7 +730,7 @@ user\_sessions: "global" - Optional. Allows sessions of users creation, not only
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/session/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/session/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 231485}'
 ```
@@ -739,7 +739,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/user/session/create' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/user/session/create?hash=fa7bf873fab9333144e171372a321b06&user_id=231485
+https://api.eu.navixy.com/v2/panel/user/session/create?hash=fa7bf873fab9333144e171372a321b06&user_id=231485
 ```
 {% endcode %}
 {% endtab %}
@@ -779,7 +779,7 @@ _required permissions_: `[users: "read", transactions: "read"]`.
 
 {% code title="cURL" overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/transaction/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/transaction/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 231485, "from": "2020-02-03 03:04:00", "to": "2021-02-03 03:04:00"}'
 ```
@@ -850,7 +850,7 @@ _required permissions_: `[users: "update", transactions: "create"]`.
 
 {% code title="cURL" overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/user/transaction/change_balance' \
+curl -X POST 'https://api.eu.navixy.com/v2/panel/user/transaction/change_balance' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 231485, "amount": 2.05, "type": "balance", "text": "additional payment"}'
 ```

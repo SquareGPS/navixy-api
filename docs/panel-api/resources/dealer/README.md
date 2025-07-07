@@ -28,7 +28,7 @@ API call to get information about a Dealer. This call retrieves details about th
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/panel/dealer/get_info' \ 
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/get_info' \ 
     -H 'Content-Type: application/json' \ 
     -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
 ```
@@ -38,7 +38,7 @@ curl -X POST '{{ extra.api_example_url }}/panel/dealer/get_info' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/panel/dealer/get_info?hash=fa7bf873fab9333144e171372a321b06
+https://api.eu.navixy.com/v2/panel/dealer/get_info?hash=fa7bf873fab9333144e171372a321b06
 ```
 {% endcode %}
 {% endtab %}

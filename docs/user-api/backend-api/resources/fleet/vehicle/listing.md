@@ -39,7 +39,7 @@ Gets all of user's vehicle statuses.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/status/listing/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/status/listing/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -48,7 +48,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/status/listing/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/vehicle/status/listing/read?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/vehicle/status/listing/read?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -92,7 +92,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/vehicle/status/listing/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/status/listing/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "statuses": [{"id": 1, "order": 0, "label": "label123", "color": "FFFFFF"}]}'
 ```

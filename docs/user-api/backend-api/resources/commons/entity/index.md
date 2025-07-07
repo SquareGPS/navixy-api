@@ -72,7 +72,7 @@ Only API key `hash`.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/entity/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/entity/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
 ```
@@ -80,7 +80,7 @@ curl -X POST '{{ extra.api_example_url }}/entity/list' \
 
 {% tab title="HTTP GET" %}
 ```http
-{{ extra.api_example_url }}/entity/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/entity/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endtab %}
 {% endtabs %}
@@ -137,7 +137,7 @@ Gets entity by the ID or by type.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/entity/read' \
+curl -X POST 'https://api.eu.navixy.com/v2/entity/read' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 131312}'
 ```
@@ -146,7 +146,7 @@ curl -X POST '{{ extra.api_example_url }}/entity/read' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/entity/read?hash=a6aa75587e5c59c32d347da438505fc3&id=131312
+https://api.eu.navixy.com/v2/entity/read?hash=a6aa75587e5c59c32d347da438505fc3&id=131312
 ```
 {% endcode %}
 {% endtab %}
@@ -215,7 +215,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/entity/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/entity/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity": {"id": 123, "type": "place", "settings": {"layout": {"sections": [{"label": "Section label", "field_order": ["label", "location", "131212", "tags", "description"]}]}}}'
 ```

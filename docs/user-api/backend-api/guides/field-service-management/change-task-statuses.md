@@ -11,7 +11,7 @@ To create a working status list, use the `status/listing/create` method. You nee
 ### Example Request to Create a Working Status List
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/status/listing/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/listing/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b",
@@ -37,7 +37,7 @@ Next, add individual working statuses to the list. For example, you might have t
 ### Example Request to Add a Working Status
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/status/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b",
@@ -67,7 +67,7 @@ To assign the working status list to devices, use the `tracker_id` and `listing_
 ### Example Request to Assign a Status List to a Tracker
 
 ```shell
-curl -X POST '{{ extra.api_example_url }}/status/listing/tracker/assign' \
+curl -X POST 'https://api.eu.navixy.com/v2/status/listing/tracker/assign' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b",

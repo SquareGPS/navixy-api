@@ -23,7 +23,7 @@ Gets all user's trackers with special grouping by "contacts".
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/contact/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -32,7 +32,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/contact/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/contact/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tracker/contact/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}

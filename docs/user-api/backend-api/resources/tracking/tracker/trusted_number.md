@@ -24,7 +24,7 @@ Gets list of trusted numbers for the specified tracker.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/trusted_number/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/trusted_number/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
@@ -33,7 +33,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/trusted_number/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/trusted_number/list?hash=a6aa75587e5c59c32d347da438505fc3
+https://api.eu.navixy.com/v2/tracker/trusted_number/list?hash=a6aa75587e5c59c32d347da438505fc3
 ```
 {% endcode %}
 {% endtab %}
@@ -74,7 +74,7 @@ cURL
 
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/trusted_number/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/trusted_number/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "list": ["496156680001", "496156680000"]}'
 ```

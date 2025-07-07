@@ -74,7 +74,7 @@ This parameter has the following constraints:
 To get a list of trackers with labels matching the filter, use this API call:
 
 ```
-curl -X POST '{{ extra.api_example_url }}/tracker/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/list' \
    -H 'Content-Type: application/json' \
    -d '{"hash": "your_api_key_hash", "labels": ["aa", "b"]}'
 ```

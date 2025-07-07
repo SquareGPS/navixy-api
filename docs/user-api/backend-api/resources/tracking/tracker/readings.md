@@ -30,7 +30,7 @@ Gets last values for all sensors, state values and counters.
 {% tabs %}
 {% tab title="cURL" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/readings/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/readings/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
 ```
@@ -39,7 +39,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/readings/list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/readings/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+https://api.eu.navixy.com/v2/tracker/readings/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
 ```
 {% endcode %}
 {% endtab %}
@@ -151,7 +151,7 @@ Gets last values for all sensors, state values and counters on multiple trackers
 {% tab title="cURL" %}
 {% code overflow="wrap" %}
 ```sh
-curl -X POST '{{ extra.api_example_url }}/tracker/readings/batch_list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/readings/batch_list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [10181215,10038816]}'
 ```
@@ -161,7 +161,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/readings/batch_list' \
 {% tab title="HTTP GET" %}
 {% code overflow="wrap" %}
 ```http
-{{ extra.api_example_url }}/tracker/readings/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[10181215,10038816]
+https://api.eu.navixy.com/v2/tracker/readings/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[10181215,10038816]
 ```
 {% endcode %}
 {% endtab %}
