@@ -40,13 +40,13 @@ LBS points recorded, without clustering, separated by parkings, while also count
 each trip, we only need to specify the "filter" and "count_events" from optional parameters. This is because the other optional
 settings will provide us with necessary info by default.
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/track/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "asset": {"id": 1683258, "type": "employee"}, "from": "2023-11-01 03:24:00", "to": "2023-11-30 06:24:00", "filter": false, "count_events": true}'
-    ```
+```shell
+curl -X POST '{{ extra.api_example_url }}/track/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "asset": {"id": 1683258, "type": "employee"}, "from": "2023-11-01 03:24:00", "to": "2023-11-30 06:24:00", "filter": false, "count_events": true}'
+  ```
 
 #### response
 
@@ -285,13 +285,13 @@ frame. The timestamp for each point corresponds to when the tracker recorded the
 For instance, if we need to obtain track points for employee 1683258 that fall within November 1, without applying a smart filter, LBS points and simplifier. Since these optional parameters by default
 are `true`, we should list them in our request.
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/track/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "asset": {"id": 1683258, "type": "employee"}, "from": "2023-11-01 00:00:00", "to": "2023-11-01 23:59:59", "filter": false, "simplify": false, "include_gsm_lbs": false}'
-    ```
+```shell
+curl -X POST '{{ extra.api_example_url }}/track/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "asset": {"id": 1683258, "type": "employee"}, "from": "2023-11-01 00:00:00", "to": "2023-11-01 23:59:59", "filter": false, "simplify": false, "include_gsm_lbs": false}'
+```
 
 #### response
 

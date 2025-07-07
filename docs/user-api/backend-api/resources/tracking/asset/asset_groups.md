@@ -62,16 +62,16 @@ Create new asset group.
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/asset_group/create' \
-        -H 'Content-Type: application/json' \
-        -d '{
-    "hash":"59be129c1855e34ea9eb272b1e26ef1d",
-    "assets": [{"id": 36558, "type": "employee"}, {"id": 45685, "type": "vehicle"}]
-    }'
-    ```
+```shell
+curl -X POST '{{ extra.api_example_url }}/asset_group/create' \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "hash":"59be129c1855e34ea9eb272b1e26ef1d",
+  "assets": [{"id": 36558, "type": "employee"}, {"id": 45685, "type": "vehicle"}]
+  }'
+```
 
 #### Response
 
@@ -107,16 +107,16 @@ List asset groups by ids or asset.
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/asset_group/list' \
-        -H 'Content-Type: application/json' \
-        -d '{
-    "hash":"59be129c1855e34ea9eb272b1e26ef1d",
-    "group_ids": [25684, 25685]
-    }'
-    ```
+```shell
+  curl -X POST '{{ extra.api_example_url }}/asset_group/list' \
+      -H 'Content-Type: application/json' \
+      -d '{
+  "hash":"59be129c1855e34ea9eb272b1e26ef1d",
+  "group_ids": [25684, 25685]
+  }'
+```
 
 #### Response
 
@@ -144,17 +144,17 @@ Set assets to existing group.
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/asset_group/set' \
-        -H 'Content-Type: application/json' \
-        -d '{
-    "hash":"59be129c1855e34ea9eb272b1e26ef1d",
-    "id": 25684,
-    "assets": [{"id": 36558, "type": "employee"}, {"id": 45685, "type": "vehicle"}]
-    }'
-    ```
+```shell
+  curl -X POST '{{ extra.api_example_url }}/asset_group/set' \
+      -H 'Content-Type: application/json' \
+      -d '{
+  "hash":"59be129c1855e34ea9eb272b1e26ef1d",
+  "id": 25684,
+  "assets": [{"id": 36558, "type": "employee"}, {"id": 45685, "type": "vehicle"}]
+  }'
+```
 
 #### Response
 
@@ -188,17 +188,17 @@ Remove assets from group.
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/asset_group/remove' \
-        -H 'Content-Type: application/json' \
-        -d '{
-    "hash":"59be129c1855e34ea9eb272b1e26ef1d",
-    "id": 25684,
-    "assets": [{"id": 36558, "type": "employee"}, {"id": 45685, "type": "vehicle"}]
-    }'
-    ```
+```shell
+  curl -X POST '{{ extra.api_example_url }}/asset_group/remove' \
+      -H 'Content-Type: application/json' \
+      -d '{
+  "hash":"59be129c1855e34ea9eb272b1e26ef1d",
+  "id": 25684,
+  "assets": [{"id": 36558, "type": "employee"}, {"id": 45685, "type": "vehicle"}]
+  }'
+```
 
 #### Response
 
@@ -228,17 +228,17 @@ Update asset group name.
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/asset_group/update' \
-        -H 'Content-Type: application/json' \
-        -d '{
-    "hash":"59be129c1855e34ea9eb272b1e26ef1d",
-    "id": 25684,
-    "name": "new_name"
-    }'
-    ```
+```shell
+  curl -X POST '{{ extra.api_example_url }}/asset_group/update' \
+      -H 'Content-Type: application/json' \
+      -d '{
+  "hash":"59be129c1855e34ea9eb272b1e26ef1d",
+  "id": 25684,
+  "name": "new_name"
+  }'
+ ```
 
 #### Response
 
@@ -268,16 +268,15 @@ Delete asset group.
 
 #### Example
 
-=== "cURL"
-
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/asset_group/delete' \
-        -H 'Content-Type: application/json' \
-        -d '{
-    "hash":"59be129c1855e34ea9eb272b1e26ef1d",
-    "id": 25684,
-    }'
-    ```
+cURL
+```shell
+  curl -X POST '{{ extra.api_example_url }}/asset_group/delete' \
+      -H 'Content-Type: application/json' \
+      -d '{
+  "hash":"59be129c1855e34ea9eb272b1e26ef1d",
+  "id": 25684,
+  }'
+```
 
 #### Response
 
