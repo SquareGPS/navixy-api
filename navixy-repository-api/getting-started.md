@@ -107,8 +107,8 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create \
   -d '{
     "inventory_id": 12,
     "device_id": "356307042441234",
-    "label": "Teltonika FMC130 - Vessel 001",
-    "model": "teltonika_fmc130"
+    "label": "Vessel 001",
+    "model": "telfmb125"
   }'
 ```
 
@@ -139,7 +139,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
     "model": "teltonika_fmc130",
     "activation_method_id": 1,
     "fields": {​
-      "teltonika_fmc130_imei": "123456789012345",
+      "teltonika_fmb125_imei": "123456789012345",
       "activation_code": "123"​
     }
   }'
