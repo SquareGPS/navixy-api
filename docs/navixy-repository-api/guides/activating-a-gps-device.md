@@ -21,15 +21,94 @@ Navixy Repository API supports two types of devices:
 
 A GPS device ready for activation.
 
-#### Step 1. Create an inventory
+#### Step 1. Fetch device model specification
+
+Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can view all specifications for all device models by making this request:
+
+[**GET /inventory\_item/master/models/list**](broken-reference)
+
+Of course, realistically, you already know your model and simply want to fetch its specific parameters. That can be achieved by adding a query. For example, let's say our GPS device is Teltonika GMC4200. We'll use this request:
+
+**GET /inventory\_item/master/models/list?q=Teltonika%20FM4200**
+
+From the response, you will need to save the following critical parameters for the next steps:
+
+* `code`: The unique identifier for the model (e.g., `telfm4200`).
+* `activation_methods`: An array of supported activation methods. Note the `id` of the method you plan to use (e.g., `44`).
+* `method_fields`: A list of field keys required for your chosen activation method (e.g., `apn_name`, `phone`).
+
+```
+ {
+            "code": "telfm4200",
+            "vendor": "Teltonika Telematics",
+            "name": "Teltonika FM4200",
+            "communication": {
+                "port": 47776,
+                "protocols": {}
+            },
+            "base_activation_fields": [],
+            "activation_methods": [
+                {
+                    "id": 1,
+                    "title": "SIM card provided with a device",
+                    "method_fields": [
+                        {
+                            "field": "iccid",
+                            "title": "ICCID number of SIM-card from the package",
+                            "optional": false,
+                            "pattern": "89[0-9]{17,18}"
+                        }
+                    ]
+                },
+                {
+                    "id": 44,
+                    "title": "By activation code and tracker phone number",
+                    "method_fields": [
+                        {
+                            "field": "apn_name",
+                            "title": "APN",
+                            "optional": true,
+                            "pattern": "[-a-zA-Z0-9_.@ ]*"
+                        },
+                        {
+                            "field": "apn_user",
+                            "title": "Username",
+                            "optional": true,
+                            "pattern": "[-a-zA-Z0-9_.@ ]*"
+                        },
+                        {
+                            "field": "apn_password",
+                            "title": "Password",
+                            "optional": true,
+                            "pattern": "^[^\\p{Cntrl}\\uD800-\\uDFFF\\uE000-\\uF8FF]+$"
+                        },
+                        {
+                            "field": "phone",
+                            "title": "Phone number",
+                            "optional": false,
+                            "pattern": "^[0-9]{8,20}$"
+                        },
+                        {
+                            "field": "activation_code",
+                            "title": "Activation code",
+                            "optional": true,
+                            "pattern": "[0-9]{3,20}"
+                        }
+                    ]
+                }
+            ]
+        },
+```
+
+#### Step 2. Create an inventory
 
 {% openapi-schemas spec="navixy-repo" schemas="Inventory" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 Every inventory item requires an inventory. To create it, send the following request:
 
-&#x20;[**POST /inventory/create**](broken-reference)
+[**POST /inventory/create**](broken-reference/)
 
 Use this request body:
 
@@ -48,15 +127,15 @@ You will receive the ID of the created inventory:
 }
 ```
 
-#### Step 2. Create a master inventory item
+#### Step 3. Create a master inventory item
 
 {% openapi-schemas spec="navixy-repo" schemas="InventoryMasterItem" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 To create a **master inventory item**, send the following request:
 
-[**POST /inventory\_item/master/create**](broken-reference)
+[**POST /inventory\_item/master/create**](broken-reference/)
 
 Use this request body:
 
@@ -72,8 +151,8 @@ Use this request body:
 
 **Key parameters:**
 
-* `device_id`: The device's IMEI number (usually found on a sticker)
-* `model`: Device model code ([see supported devices](https://www.navixy.com/devices/))
+* `device_id`: The device's IMEI number (usually found on a sticker).
+* `model`: The code of your device model that you learned in [Step 1](activating-a-gps-device.md#step-1.-learn-your-devices-parameters).
 
 You will get the ID of the newly created item:
 
@@ -83,16 +162,16 @@ You will get the ID of the newly created item:
 </code></pre>
 
 {% openapi-schemas spec="navixy-repo" schemas="InventorySlaveItem" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
-#### Step 3. Activate the GPS device
+#### Step 4. Activate the GPS device
 
 To activate a device connected to a master-type inventory item, it must be preconfigured and exist in the organization's inventory. Upon activation, the device is assigned to the organization.
 
 Send the following request:
 
-[**POST inventory\_item/master/activate**](broken-reference)
+[**POST inventory\_item/master/activate**](broken-reference/)
 
 ```json
 {
@@ -107,23 +186,20 @@ Send the following request:
 }
 ```
 
-**Key parameters:**
+These are the key parameters you've learned in [Step 1](activating-a-gps-device.md#step-1.-learn-your-devices-parameters):
 
-* `activation_method_id`: Unique identifier of one of the authentication methods supported by the model.
-*   `fields` : Combined set of field values needed for model activation, including:
+* `activation_method_id`: A unique identifier of one of the authentication methods supported by the model.
+* `fields` : Combined set of field values needed for model activation, including:
+  * Model-specific parameters
+  * Activation method-specific parameters
 
-    * Model-specific parameters
-    * Activation method-specific parameters
+You will receive an empty response body with the `204 No Content` status.
 
-    You will receive an empty response body and the `204 No Content` status
-
-
-
-**Step 4. (Optional) Create and pair slave devices**
+**Step 5. (Optional) Create and pair slave devices**
 
 To create a **slave inventory item**, send the following request:
 
-[**POST /inventory\_item/slave/create**](broken-reference)
+[**POST /inventory\_item/slave/create**](broken-reference/)
 
 Use this request body:
 
@@ -143,7 +219,7 @@ Just like with the master, the response will contain the ID of the created item.
 
 Now that you've created a slave device, you need to pair it with a master device. To do this, send the following request:
 
-[**POST /inventory\_item/slave/pair**](broken-reference)
+[**POST /inventory\_item/slave/pair**](broken-reference/)
 
 Use this request body:
 
@@ -183,7 +259,8 @@ Activation allows you to:
 * Send the data to an external system via [IoT Logic and MQTT](https://www.navixy.com/docs/iot-logic-api/navixy-iot-guide/scenario1)
 
 {% hint style="success" %}
-**Congratulations!**\
-\
+**Congratulations!**\\
+
+\
 You've successfully activated your device. Next, you can [assign it to an asset](creating-a-custom-asset.md#step-3.-assign-a-device).
 {% endhint %}

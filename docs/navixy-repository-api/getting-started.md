@@ -10,7 +10,7 @@ Before you begin, ensure you have:
 * A registered Callback URL (Redirect URI): The specific URL in your application where users will be redirected after granting consent.
 * URLs of API and authentication servers ({BASE\_URL} and {AUTH\_BASE\_URL}), determined depending on your geographical location. For more information about {BASE\_URL}, see [API Environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
 * A secure method to generate and validate the `state` parameter for Cross-Site Request Forgery (CSRF) protection.
-* A GPS device ready for activation.
+* A GPS device ready for activation that belongs to the list of [supported devices](https://www.navixy.com/devices/).
 
 ### Step 1. Authentication
 
@@ -70,9 +70,54 @@ For a more in-depth explanation of activating a GPS device and working with inve
 
 {% stepper %}
 {% step %}
-#### Create an inventory
+#### Fetch device model specification
 
-To create an inventory that will store your device, send the following request:
+Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can retrieve the complete profile for any supported model by querying the [**/inventory\_item/master/models/list**](broken-reference) endpoint.
+
+For example, to get the specifications for a Teltonika FMC234, use the following request:
+
+**GET /inventory\_item/master/models/list?q=Teltonika%20FMC234**
+
+From the response, you will need to save the following critical parameters for future requests:
+
+* `code`: The unique identifier for the model (e.g., `telfmc234`).
+* `activation_methods`: An array of supported activation methods. Note the `id` of the method you plan to use (e.g., `1`).
+* `method_fields`: A list of fields required for the chosen activation method (e.g., `iccid`).
+
+```
+{
+    "data": [
+        {
+            "code": "telfmu130_fmc130_234",
+            "vendor": "Teltonika Telematics",
+            "name": "Teltonika FMC234",
+            ...,
+            "activation_methods": [
+                {
+                    "id": 1,
+                    "title": "SIM card provided with a device",
+                    "method_fields": [
+                        {
+                            "field": "iccid",
+                            "title": "ICCID number of SIM-card from the package",
+                            "optional": false,
+                            "pattern": "89[0-9]{17,18}"
+                        }
+                    ]
+                },
+                ...
+            ]
+        }
+    ],
+    "has_more": false
+}
+```
+{% endstep %}
+
+{% step %}
+**Create an inventory**
+
+Next, create an inventory to house your new device. Inventories are logical containers for organizing your items.
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory/create \
@@ -84,21 +129,21 @@ curl -X POST {BASE_URL}/v0/inventory/create \
 ​}'
 ```
 
-**Response:**
+The API will respond with the new inventory's `id`. Save it for the next step.
 
 ```json
 {
   "id": 12
 }
 ```
-
-Note the inventory ID (`12`) for the next step.
 {% endstep %}
 
 {% step %}
-#### Create a master device
+**Create a master device**
 
 Devices that can transmit GPS data independently are called master devices. In Navixy Repository API, devices are stored as inventory items.
+
+Now, create the master device as an item within your inventory. You will need `inventory_id` and the model `code` you've fetched previously.
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory_item/master/create \
@@ -108,16 +153,16 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create \
     "inventory_id": 12,
     "device_id": "356307042441234",
     "label": "Vessel 001",
-    "model": "telfmb125"
+    "model": "telfmu130_fmc130_234"
   }'
 ```
 
 **Key parameters:**
 
-* `device_id`: The device's IMEI number (usually found on a sticker)
-* `model`: Device model code ([see supported devices](https://www.navixy.com/devices/))
+* `device_id`: The unique identifier of the device, typically IMEI.
+* `model`: The model's internal code.
 
-**Response:**
+Save the returned device `id` for the next and final step.
 
 ```json
 {
@@ -127,7 +172,9 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create \
 {% endstep %}
 
 {% step %}
-#### Activate the device
+**Activate the device**
+
+Finally, activate the device using its `id` along with `activation_method_id` and `fields`.
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
@@ -136,23 +183,20 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
   -d '{
     "id": 123,
     "device_id": "356307042441234",
-    "model": "teltonika_fmc130",
+    "model": "telfmu130_fmc130_234",
     "activation_method_id": 1,
     "fields": {​
-      "teltonika_fmb125_imei": "123456789012345",
-      "activation_code": "123"​
+      "iccid": "8912345678901234567",
     }
   }'
 ```
 
 **Key parameters:**
 
-* `activation_method_id`: Unique identifier of one of the authentication methods supported by the model.
-* `fields` : Combined set of field values needed for model activation, including:
-  * Model-specific parameters
-  * Activation method-specific parameters
+* `activation_method_id`: The `id` of your device's activation method.
+* `fields`: An object containing the key-value pairs for the identified `method_fields` .
 
-**Response:** `204 No Content` (Success)
+A successful activation will return a `204 No Content` response.
 {% endstep %}
 {% endstepper %}
 
@@ -170,9 +214,9 @@ curl -X GET "{BASE_URL}/v0/inventory_item/master/list" \
 You should see your device in the response.
 
 {% hint style="success" %}
-#### What you've accomplished
+**What you've accomplished**
 
-* &#x20;Authenticated with the Navixy Repository API
+* Authenticated with the Navixy Repository API
 * Created an inventory for your GPS devices
 * Created an inventory item representing your device
 * Activated the device that can now [transmit location data](guides/activating-a-gps-device.md#how-to-use-the-data-transmitted-by-the-device)
