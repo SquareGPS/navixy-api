@@ -6,18 +6,17 @@ This guide will walk you through the basic steps to start using Navixy Repositor
 
 Before you begin, ensure you have:
 
-* Valid Navixy Repository API credentials (`client_id` and `client_secret`)
-* A GPS device ready for activation
-
-{% hint style="warning" %}
-Note that {BASE\_URL} and {AUTH\_BASE\_URL} are placeholders for the URLs you'll be using. For more information about {BASE\_URL}, see [API Environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
-{% endhint %}
+* Valid Navixy Repository API credentials (`client_id` and `client_secret`).
+* A registered Callback URL (Redirect URI): The specific URL in your application where users will be redirected after granting consent.
+* URLs of API and authentication servers ({BASE\_URL} and {AUTH\_BASE\_URL}), determined depending on your geographical location. For more information about {BASE\_URL}, see [API Environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
+* A secure method to generate and validate the `state` parameter for Cross-Site Request Forgery (CSRF) protection.
+* A GPS device ready for activation.
 
 ### Step 1. Authentication
 
 Navixy Repository API uses OAuth 2.0 for authentication. Depending on your application type, you can choose between Authorization Code for front-end applications and Client Credentials for Server-to-Server. To learn more about the latter, refer to the corresponding section of the [Authentication article](authentication.md#for-server-to-server-communication).
 
-To use Authorization Code flow with user interaction:
+To use Authorization Code flow:
 
 {% stepper %}
 {% step %}

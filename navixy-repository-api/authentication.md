@@ -6,10 +6,6 @@ Authentication is required for all API requests and is based on OAuth 2.0.
 
 Navixy Repository API provides several authentication URLs depending on your geographical location.
 
-{% hint style="warning" %}
-Note that in this and other articles about Navixy Repository API,  {AUTH\_BASE\_URL} is a placeholder for the URL you'll be using.
-{% endhint %}
-
 ### Organization-based access control
 
 All API requests are automatically scoped to your organization. The organization context is determined by your access token. You cannot access resources belonging to other organizations.
@@ -28,6 +24,15 @@ Navixy Repository API supports two authentication methods depending on the type 
 #### For frontend applications
 
 Use OAuth2 Authorization Code Flow.
+
+**Prerequisites**
+
+Before you begin, ensure you have:
+
+* Valid Navixy Repository API credentials (`client_id` and `client_secret`).
+* A registered Callback URL (Redirect URI): The specific URL in your application where users will be redirected after granting consent.
+* Authentication server URL ({AUTH\_BASE\_URL}), determined depending on your geographical location. For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
+* A secure method to generate and validate the `state` parameter for Cross-Site Request Forgery (CSRF) protection.
 
 {% stepper %}
 {% step %}
@@ -87,6 +92,15 @@ curl -X POST {AUTH_BASE_URL}/oauth/token \
 #### For server-to-server communication
 
 Use OAuth2 Client Credentials Flow to acquire a token. Employ client credentials for this purpose.
+
+**Prerequisites**
+
+Before you begin, ensure you have:
+
+* Valid Navixy Repository API credentials (`client_id` and `client_secret`).
+* A registered OAuth2 client application configured for client credentials flow.
+* Authentication server URL ({AUTH\_BASE\_URL}), determined depending on your geographical location. For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
+* A server-side environment where credentials can be securely stored.
 
 **Request:**
 
