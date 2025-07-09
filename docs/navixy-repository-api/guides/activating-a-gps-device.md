@@ -27,18 +27,15 @@ Navixy Repository API supports [a wide variety of GPS devices](https://www.navix
 
 [**GET /inventory\_item/master/models/list**](broken-reference)
 
-Of course, realistically, you already know your model and simply want to fetch its specific parameters. That can be achieved by adding a query. For example, let's say our GPS device is Teltonika GMC4200. We'll use this request:
+Of course, you probably already know your model and want to fetch its specific parameters. That can be achieved by adding a query. For example, let's say our GPS device is Teltonika GMC4200. We'll use this request:
 
 **GET /inventory\_item/master/models/list?q=Teltonika%20FM4200**
 
-From the response, you will need to save the following critical parameters for the next steps:
-
-* `code`: The unique identifier for the model (e.g., `telfm4200`).
-* `activation_methods`: An array of supported activation methods. Note the `id` of the method you plan to use (e.g., `44`).
-* `method_fields`: A list of field keys required for your chosen activation method (e.g., `apn_name`, `phone`).
-
-```
- {
+{% code fullWidth="false" %}
+```json
+{
+    "data": [
+        {
             "code": "telfm4200",
             "vendor": "Teltonika Telematics",
             "name": "Teltonika FM4200",
@@ -80,7 +77,7 @@ From the response, you will need to save the following critical parameters for t
                             "field": "apn_password",
                             "title": "Password",
                             "optional": true,
-                            "pattern": "^[^\\p{Cntrl}\\uD800-\\uDFFF\\uE000-\\uF8FF]+$"
+                            "pattern":"^[^\\p{Cntrl}\�-\�\-\]+$"
                         },
                         {
                             "field": "phone",
@@ -97,8 +94,18 @@ From the response, you will need to save the following critical parameters for t
                     ]
                 }
             ]
-        },
+        }
+    ],
+    "has_more": false
+}
 ```
+{% endcode %}
+
+From the response, you will need to save the following critical parameters for the next steps:
+
+* `code`: The unique identifier for the model (e.g., `telfm4200`).
+* `activation_methods`: An array of supported activation methods. Note the `id` of the method you plan to use (e.g., `44`).
+* `method_fields`: A list of field keys required for your chosen activation method (e.g., `apn_name`, `phone`).
 
 #### Step 2. Create an inventory
 
@@ -146,7 +153,6 @@ Use this request body:
   "device_id": "123456789012345",
   "label": "gps_tracker_fmc130_001",
 }
-
 ```
 
 **Key parameters:**

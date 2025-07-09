@@ -157,11 +157,6 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create \
   }'
 ```
 
-**Key parameters:**
-
-* `device_id`: The unique identifier of the device, typically IMEI.
-* `model`: The model's internal code.
-
 Save the returned device `id` for the next and final step.
 
 ```json
@@ -174,7 +169,7 @@ Save the returned device `id` for the next and final step.
 {% step %}
 **Activate the device**
 
-Finally, activate the device using its `id` along with `activation_method_id` and `fields`.
+Finally, activate the device using its `id` from the previous step along with the `activation_method_id` and `fields` you saved earlier.
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
@@ -191,11 +186,6 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
   }'
 ```
 
-**Key parameters:**
-
-* `activation_method_id`: The `id` of your device's activation method.
-* `fields`: An object containing the key-value pairs for the identified `method_fields` .
-
 A successful activation will return a `204 No Content` response.
 {% endstep %}
 {% endstepper %}
@@ -204,7 +194,7 @@ A successful activation will return a `204 No Content` response.
 
 #### Verify your setup
 
-Let's confirm everything is working by listing your inventory items:
+Let's confirm everything works by listing your inventory items:
 
 ```bash
 curl -X GET "{BASE_URL}/v0/inventory_item/master/list" \
@@ -217,7 +207,8 @@ You should see your device in the response.
 **What you've accomplished**
 
 * Authenticated with the Navixy Repository API
-* Created an inventory for your GPS devices
+* Fetched the specification for your device model
+* Created an inventory for your devices
 * Created an inventory item representing your device
 * Activated the device that can now [transmit location data](guides/activating-a-gps-device.md#how-to-use-the-data-transmitted-by-the-device)
 {% endhint %}
