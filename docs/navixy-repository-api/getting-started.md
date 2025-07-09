@@ -181,7 +181,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
     "model": "telfmu130_fmc130_234",
     "activation_method_id": 1,
     "fields": {​
-      "iccid": "8912345678901234567",
+      "iccid": "8912345678901234567"
     }
   }'
 ```

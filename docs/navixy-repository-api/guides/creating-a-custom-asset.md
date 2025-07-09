@@ -26,68 +26,66 @@ To create a new asset type, send the following request:
 {
   "label": "Commercial Vessels",
   "category": "business",
+  "fields": [
+    {
+      "type": "text",
+      "label": "Vessel Name",
+      "required": true
+    },
+    {
+      "type": "text",
+      "label": "Registration Number",
+      "required": true
+    },
+    {
+      "type": "decimal",
+      "label": "Engine Power",
+      "required": false
+    },
+    {
+      "type": "decimal",
+      "label": "Max Passengers",
+      "required": false
+    }
+  ],
   "settings": {
     "layout": {
       "sections": [
         {
-          "label": "Vessel information",
+          "label": "Vessel Information",
           "fields": [
-            "label",
-            "vessel_name",
-            "registration_number",
-            "description"
+            "Vessel Name",
+            "Registration Number"
           ]
         },
         {
-          "label": "Technical specifications",
+          "label": "Technical Specifications",
           "fields": [
-            "engine_power",
-            "max_passengers"
+            "Engine Power",
+            "Max Passengers"
           ]
         }
       ]
     }
-  },
-  "fields": [
-    {
-      "type": "text",
-      "label": "vessel_name",
-      "required": true
-    },
-    {
-      "type": "text",
-      "label": "registration_number",
-      "required": true
-    },
-    {
-      "type": "decimal",
-      "label": "engine_power",
-      "required": false
-    },
-    {
-      "type": "decimal",
-      "label": "max_passengers",
-      "required": false
-    }
-  ]
+  }
 }
 ```
 
-The request body contains the following parameters: `category`, `settings,` and `fields`.
+Aside from the `label` of the asset type, the request body contains the following parameters: `category`, `settings,` and `fields`.
 
 The available categories are `business` for moving assets and `geo` for stationary.
 
-The **`settings`** parameter defines the structure of sections and fields belonging to your asset type. This object contains a `layout` property that describes how the asset form is split into logical sections and the order of fields within each section. The layout consists of sections, where each section has:
+The **`settings`** key defines the structure of sections and fields belonging to your asset type. This object contains a `layout` property that describes how the asset form is split into logical sections and the order of fields within each section. The layout consists of sections, where each section has:
 
 * `label`: Section name
 * `fields`: List of fields to be displayed in the specified order inside the section
 
-The **`fields`** parameter is an array of custom field objects used to add user-created information to assets, allowing for enhanced customization and data management. Each field includes:
+The **`fields`** key is an array of custom field objects used to add user-created information to assets, allowing for enhanced customization and data management. Each field includes:
 
 * `type`: Field type (text, decimal, geojson)
 * `label`: Field name
 * `required`: Whether the field is mandatory
-* `description`: Optional description
+* `description`: An optional description
 
 After sending the request, you will receive a response with the ID of the newly created asset type:
 
@@ -97,13 +95,82 @@ After sending the request, you will receive a response with the ID of the newly 
 }
 ```
 
-#### Step 2. Create an asset
+#### Step 2. Fetch custom field IDs
+
+Before creating an asset, we'll need to learn the IDs of the custom fields we've added in Step 1. To do it, send the following request:
+
+[**POST asset\_type/read?id=\{{id\}}**](broken-reference/)
+
+In our case, it will be **POST asset\_type/read?id=456.**
+
+You will receive full information about the asset type, including the `id` of each custom field. Save them for later.
+
+```
+{
+    "id": 25,
+    "label": "Commercial Vessels",
+    "category": "business",
+    "settings": {
+        "layout": {
+            "sections": [
+                {
+                    "label": "Vessel Information",
+                    "fields": [
+                        "Vessel Name",
+                        "Registration Number"
+                    ]
+                },
+                {
+                    "label": "Technical Specifications",
+                    "fields": [
+                        "Engine Power",
+                        "Max Passengers"
+                    ]
+                }
+            ]
+        }
+    },
+    "fields": [
+        {
+            "id": null,
+            "label": "Vessel Name",
+            "required": true,
+            "description": "",
+            "type": "text"
+        },
+        {
+            "id": null,
+            "label": "Registration Number",
+            "required": true,
+            "description": "",
+            "type": "text"
+        },
+        {
+            "id": null,
+            "label": "Engine Power",
+            "required": false,
+            "description": "",
+            "type": "decimal"
+        },
+        {
+            "id": null,
+            "label": "Max Passengers",
+            "required": false,
+            "description": "",
+            "type": "decimal"
+        }
+    ],
+    "created_at": "2025-07-09T11:57:36.003383Z"
+}
+```
+
+#### Step 3. Create an asset
 
 {% openapi-schemas spec="navixy-repo" schemas="Asset" grouped="true" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
-To create an asset, send the following request:
+To create an asset, send the following request using the `id` of each custom field from the previous step.
 
 [**POST asset/create**](broken-reference/)
 
@@ -112,19 +179,19 @@ To create an asset, send the following request:
   "type_id": 456,
   "label": "Sea Explorer",
   "fields": {
-    "vessel_name": {
+    "id1": {
       "type": "text",
       "value": "Sea Explorer"
     },
-    "registration_number": {
+    "id2": {
       "type": "text",
       "value": "BOT-2024-001"
     },
-    "engine_power": {
+    "id3": {
       "type": "decimal",
       "value": 350.5
     },
-    "max_passengers": {
+    "id4": {
       "type": "decimal",
       "value": 12
     }
@@ -140,7 +207,7 @@ You will receive the ID of the newly created asset:
 }
 ```
 
-#### Step 3. Assign a GPS device
+#### Step 4. Assign a GPS device
 
 {% openapi-schemas spec="navixy-repo" schemas="InventoryMasterItem" grouped="true" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)

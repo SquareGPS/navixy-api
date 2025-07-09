@@ -251,7 +251,7 @@ Alternatively, you can create and pair the slave device with a single request:
 }
 ```
 
-The response will be the same as with an ordinary creation request.
+The response will be the same as with an ordinary creation request (the `id` of the created item).
 
 ### How to use the data transmitted by the device
 
