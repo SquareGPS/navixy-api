@@ -77,63 +77,7 @@ Of course, you probably already know your model and want to fetch its specific p
                             "field": "apn_password",
                             "title": "Password",
                             "optional": true,
-                            "pattern":"^[^\\p{Cntrl}\ -\ \-\]+$"
-                        },
-                        {
-                            "field": "phone",
-                            "title": "Phone number",
-                            "optional": false,
-                            "pattern": "^[0-9]{8,20}$"
-                        },
-                        {
-                            "field": "activation_code",
-                            "title": "Activation code",
-                            "optional": true,
-                            "pattern": "[0-9]{3,20}"
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    "has_more": false
-}
-            },
-            "base_activation_fields": [],
-            "activation_methods": [
-                {
-                    "id": 1,
-                    "title": "SIM card provided with a device",
-                    "method_fields": [
-                        {
-                            "field": "iccid",
-                            "title": "ICCID number of SIM-card from the package",
-                            "optional": false,
-                            "pattern": "89[0-9]{17,18}"
-                        }
-                    ]
-                },
-                {
-                    "id": 44,
-                    "title": "By activation code and tracker phone number",
-                    "method_fields": [
-                        {
-                            "field": "apn_name",
-                            "title": "APN",
-                            "optional": true,
-                            "pattern": "[-a-zA-Z0-9_.@ ]*"
-                        },
-                        {
-                            "field": "apn_user",
-                            "title": "Username",
-                            "optional": true,
-                            "pattern": "[-a-zA-Z0-9_.@ ]*"
-                        },
-                        {
-                            "field": "apn_password",
-                            "title": "Password",
-                            "optional": true,
-                            "pattern":"^[^\\p{Cntrl}\ -\ \-\]+$"
+                            "pattern":"^[^\p{Cntrl}\uD800-\uDFFF\uE000-\uF8FF]+$"
                         },
                         {
                             "field": "phone",
@@ -157,7 +101,7 @@ Of course, you probably already know your model and want to fetch its specific p
 ```
 {% endcode %}
 
-From the response, you will need to save the following critical parameters for the next steps:
+From the response, the following parameters are required for the next steps:
 
 * `code`: The unique identifier for the model (e.g., `telfm4200`).
 * `activation_methods`: An array of supported activation methods. Note the `id` of the method you plan to use (e.g., `44`).
@@ -205,21 +149,21 @@ Use this request body:
 ```json
 {
   "inventory_id": 12,
-  "model": "navixy_ngp",
+  "model": "telfm4200",
   "device_id": "123456789012345",
-  "label": "gps_tracker_fmc130_001",
+  "label": "Delivery Van 1",
 }
 ```
 
 **Key parameters:**
 
-* `device_id`: The device's IMEI number (usually found on a sticker).
+* `device_id`: The unique identifier of the device, typically its IMEI.
 * `model`: The code of your device model that you learned in [Step 1](activating-a-gps-device.md#step-1.-learn-your-devices-parameters).
 
 You will get the ID of the newly created item:
 
 <pre class="language-json"><code class="lang-json"><strong>{
-</strong>  "id": 123
+</strong>  "id": 34
 }
 </code></pre>
 
@@ -237,13 +181,16 @@ Send the following request:
 
 ```json
 {
-  "id": 123,
+  "id": 34,
   "device_id": "123456789012345",
-  "model": "navixy_ngp",
-  "activation_method_id": 1,
+  "model": "telfm4200",
+  "activation_method_id": 44,
   "fields": {​
-    "iridium_modem_imei": "123456789012345",
-    "activation_code": "123"​
+    "apn_name": "broadband",
+    "apn_user": "user",
+    "apn_password": "SecurePassword123!",
+    "phone": "15551234567",
+    "activation_code": "54321"​
   }
 }
 ```
@@ -268,7 +215,7 @@ Use this request body:
 ```json
 {
   "inventory_id": 12,
-  "label": "gps_tracker_fmc130_001"
+  "label": "BT sensor 1"
 }
 ```
 
@@ -288,7 +235,7 @@ Use this request body:
 ```json
 {
   "id": 556,
-  "master_id": 123
+  "master_id": 34
 }
 ```
 
@@ -299,14 +246,14 @@ Alternatively, you can create and pair the slave device with a single request:
 ```json
 {
   "inventory_id": 12,
-  "label": "gps_tracker_fmc130_001",
-  "master_id": 123
+  "label": "BT sensor 1",
+  "master_id": 34
 }
 ```
 
 The response will be the same as with an ordinary creation request.
 
-### How to use the data transmitted by the device?
+### How to use the data transmitted by the device
 
 Activating the GPS device registers it with other Navixy systems: [Navixy API](https://www.navixy.com/docs/navixy-api/), a telematics platform without business management features, and [IoT Logic](https://www.navixy.com/docs/iot-logic-api), a low-code data processing and enrichment tool.
 
