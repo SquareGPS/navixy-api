@@ -204,7 +204,7 @@ curl -X GET "{BASE_URL}/v0/inventory_item/master/list" \
 You should see your device in the response.
 
 {% hint style="success" %}
-**What you've accomplished**
+**What you've accomplished:**
 
 * Authenticated with the Navixy Repository API
 * Fetched the specification for your device model
@@ -217,8 +217,8 @@ You should see your device in the response.
 
 Now that you have the basics set up, you can:
 
-* [Add more devices by creating additional inventory items](getting-started.md#id-2.3.-activate-the-device)
-* [Create new inventories to store your devices based on any principle](guides/activating-a-gps-device.md#step-1.-create-an-inventory)
-* [Create assets — objects representing real-world business units — and assign devices to them](getting-started.md#id-3.2-create-an-asset)
+* [Add and activate more devices by creating additional inventory items](getting-started.md#id-2.3.-activate-the-device)
+* [Create new inventories to store your devices](guides/activating-a-gps-device.md#step-1.-create-an-inventory)
+* [Create assets (objects representing real-world business units) and assign devices to them](getting-started.md#id-3.2-create-an-asset)
 * [Create custom asset types for different categories of assets](getting-started.md#id-3.1.-create-an-asset-type)
 * [Group assets by location, department, or function via asset links](getting-started.md#step-4.-organize-assets-with-asset-links)

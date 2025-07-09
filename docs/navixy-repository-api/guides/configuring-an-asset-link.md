@@ -13,7 +13,7 @@ For more information on API calls, including parameter descriptions and request 
 ### How to configure an asset link
 
 {% openapi-schemas spec="navixy-repo" schemas="AssetLink" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 #### Prerequisites
@@ -24,7 +24,7 @@ An existing asset. Learn how to create it in [Creating a custom asset](creating-
 
 To create a new asset link, prepare an array of assets and send the following request:
 
-[**POST /asset\_link/create**](broken-reference)
+[**POST /asset\_link/create**](broken-reference/)
 
 Use this request body:
 
@@ -49,7 +49,7 @@ You will receive a response with the new link ID:
 
 To add an asset to an existing link, send the following request:
 
-[**POST /asset\_link/set**](broken-reference)
+[**POST /asset\_link/set**](broken-reference/)
 
 Use this request body:
 
@@ -66,7 +66,7 @@ You will receive `200 OK` response, and the asset will be added to the `asset_id
 
 To remove an asset from an existing link, send the following request:
 
-[**POST /asset\_link/remove**](broken-reference)
+[**POST /asset\_link/remove**](broken-reference/)
 
 Use this request body:
 
@@ -81,6 +81,5 @@ You will receive an empty response body and a `204 No Content` status, and the a
 
 {% hint style="success" %}
 **Congratulations!**\
-\
 You've successfully created and configured an asset link.
 {% endhint %}

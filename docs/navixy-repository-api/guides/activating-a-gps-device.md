@@ -268,8 +268,6 @@ Activation allows you to:
 * Send the data to an external system via [IoT Logic and MQTT](https://www.navixy.com/docs/iot-logic-api/navixy-iot-guide/scenario1)
 
 {% hint style="success" %}
-**Congratulations!**\\
-
-\
+**Congratulations!**\
 You've successfully activated your device. Next, you can [assign it to an asset](creating-a-custom-asset.md#step-3.-assign-a-device).
 {% endhint %}

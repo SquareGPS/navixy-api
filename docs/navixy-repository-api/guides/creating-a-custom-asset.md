@@ -15,12 +15,12 @@ For more information on API calls, including parameter descriptions and request 
 #### Step 1. Create an asset type
 
 {% openapi-schemas spec="navixy-repo" schemas="AssetType" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 To create a new asset type, send the following request:
 
-[**POST asset\_type/create**](broken-reference)
+[**POST asset\_type/create**](broken-reference/)
 
 ```json
 {
@@ -100,12 +100,12 @@ After sending the request, you will receive a response with the ID of the newly 
 #### Step 2. Create an asset
 
 {% openapi-schemas spec="navixy-repo" schemas="Asset" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 To create an asset, send the following request:
 
-[**POST asset/create**](broken-reference)
+[**POST asset/create**](broken-reference/)
 
 ```json
 {
@@ -143,14 +143,14 @@ You will receive the ID of the newly created asset:
 #### Step 3. Assign a GPS device
 
 {% openapi-schemas spec="navixy-repo" schemas="InventoryMasterItem" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 Now that you have an asset, you need to assign a device to it. This is done by adding the `asset_id` parameter to the master-type inventory item representing the device. You can assign several devices to one asset — or, in the API's terms, add the same `asset_id` to several inventory items.
 
 If your device is already activated (the inventory item already exists), send the following request:
 
-[**POST inventory\_item/master/update**](broken-reference)
+[**POST inventory\_item/master/update**](broken-reference/)
 
 ```json
 {
@@ -163,7 +163,7 @@ If your device is already activated (the inventory item already exists), send th
 
 If you haven't created an inventory item yet, you can add the `asset_id` parameter to the creation request:
 
-[**POST inventory\_item/master/create**](broken-reference)
+[**POST inventory\_item/master/create**](broken-reference/)
 
 ```
 ​{
@@ -177,6 +177,5 @@ If you haven't created an inventory item yet, you can add the `asset_id` paramet
 
 {% hint style="success" %}
 **Congratulations!**\
-\
 You've successfully created a custom asset. Next, you can [add it to an asset link](configuring-an-asset-link.md).
 {% endhint %}
