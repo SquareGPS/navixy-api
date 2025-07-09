@@ -77,7 +77,63 @@ Of course, you probably already know your model and want to fetch its specific p
                             "field": "apn_password",
                             "title": "Password",
                             "optional": true,
-                            "pattern":"^[^\\p{Cntrl}\�-\�\-\]+$"
+                            "pattern":"^[^\\p{Cntrl}\ -\ \-\]+$"
+                        },
+                        {
+                            "field": "phone",
+                            "title": "Phone number",
+                            "optional": false,
+                            "pattern": "^[0-9]{8,20}$"
+                        },
+                        {
+                            "field": "activation_code",
+                            "title": "Activation code",
+                            "optional": true,
+                            "pattern": "[0-9]{3,20}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "has_more": false
+}
+            },
+            "base_activation_fields": [],
+            "activation_methods": [
+                {
+                    "id": 1,
+                    "title": "SIM card provided with a device",
+                    "method_fields": [
+                        {
+                            "field": "iccid",
+                            "title": "ICCID number of SIM-card from the package",
+                            "optional": false,
+                            "pattern": "89[0-9]{17,18}"
+                        }
+                    ]
+                },
+                {
+                    "id": 44,
+                    "title": "By activation code and tracker phone number",
+                    "method_fields": [
+                        {
+                            "field": "apn_name",
+                            "title": "APN",
+                            "optional": true,
+                            "pattern": "[-a-zA-Z0-9_.@ ]*"
+                        },
+                        {
+                            "field": "apn_user",
+                            "title": "Username",
+                            "optional": true,
+                            "pattern": "[-a-zA-Z0-9_.@ ]*"
+                        },
+                        {
+                            "field": "apn_password",
+                            "title": "Password",
+                            "optional": true,
+                            "pattern":"^[^\\p{Cntrl}\ -\ \-\]+$"
                         },
                         {
                             "field": "phone",
