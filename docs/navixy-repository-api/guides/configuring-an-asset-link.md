@@ -22,7 +22,7 @@ An existing asset. Learn how to create it in [Creating a custom asset](creating-
 
 #### Step 1. Create a new asset link
 
-To create a new asset link, prepare an array of assets and send the following request:
+To create a new asset link, prepare an array of assets (or use an empty array) and send the following request:
 
 [**POST /asset\_link/create**](broken-reference/)
 
@@ -32,7 +32,7 @@ Use this request body:
 {
   "label": "Boston boats",
   "asset_ids": [
-    1
+    3
   ]
 }
 ```

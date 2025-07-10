@@ -132,28 +132,28 @@ You will receive full information about the asset type, including the `id` of ea
     },
     "fields": [
         {
-            "id": null,
+            "id": 55,
             "label": "Vessel Name",
             "required": true,
             "description": "",
             "type": "text"
         },
         {
-            "id": null,
+            "id": 56,
             "label": "Registration Number",
             "required": true,
             "description": "",
             "type": "text"
         },
         {
-            "id": null,
+            "id": 57,
             "label": "Engine Power",
             "required": false,
             "description": "",
             "type": "decimal"
         },
         {
-            "id": null,
+            "id": 58,
             "label": "Max Passengers",
             "required": false,
             "description": "",
@@ -179,19 +179,19 @@ To create an asset, send the following request using the `id` of each custom fie
   "type_id": 456,
   "label": "Sea Explorer",
   "fields": {
-    "id1": {
+    "55": {
       "type": "text",
       "value": "Sea Explorer"
     },
-    "id2": {
+    "56": {
       "type": "text",
       "value": "BOT-2024-001"
     },
-    "id3": {
+    "57": {
       "type": "decimal",
       "value": 350.5
     },
-    "id4": {
+    "58": {
       "type": "decimal",
       "value": 12
     }
@@ -215,7 +215,7 @@ You will receive the ID of the newly created asset:
 
 Now that you have an asset, you need to assign a device to it. This is done by adding the `asset_id` parameter to the master-type inventory item representing the device. You can assign several devices to one asset — or, in the API's terms, add the same `asset_id` to several inventory items.
 
-If your device is already activated (the inventory item already exists), send the following request:
+If your device is already activated, send the following request (let's assume your item's `label` is `Sea Explorer GPS Tracker`):
 
 [**POST inventory\_item/master/update**](broken-reference/)
 
@@ -237,7 +237,7 @@ If you haven't created an inventory item yet, you can add the `asset_id` paramet
   "inventory_id": 12,
   "device_id": "123456789012345",
   "label": "Sea Explorer GPS Tracker",
-  "model": "navixy_ngp",
+  "model": "telfmu130_fmc130_234",
   "asset_id": 789
 }
 ```
