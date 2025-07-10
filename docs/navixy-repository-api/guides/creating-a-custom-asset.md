@@ -170,7 +170,7 @@ You will receive full information about the asset type, including the `id` of ea
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
-To create an asset, send the following request using the `id` of each custom field from the previous step.
+To create an asset, send the following request using the `id` of each custom field from the previous step, or at least those you marked as `required`.
 
 [**POST asset/create**](broken-reference/)
 
