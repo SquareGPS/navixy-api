@@ -76,7 +76,10 @@ Navixy Repository API supports [a wide variety of GPS devices](https://www.navix
 
 For example, to get the specifications for a Teltonika FMC234, use the following request:
 
-**GET /inventory\_item/master/models/list?q=Teltonika%20FMC234**
+```
+curl -X GET "{BASE_URL}/v0/inventory_item/master/model/list?q=Teltonika%20FMC234" \
+  -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
 
 From the response, you will need to save the following critical parameters for future requests:
 

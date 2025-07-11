@@ -21,7 +21,10 @@ To create a new asset type, send the following request:
 {% endopenapi-operation %}
 
 ```json
-{
+curl -X POST {BASE_URL}/v0/asset_type/create \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
   "label": "Commercial Vessels",
   "category": "business",
   "fields": [
@@ -66,7 +69,7 @@ To create a new asset type, send the following request:
       ]
     }
   }
-}
+}'
 ```
 
 Aside from the `label` of the asset type, the request body contains the following parameters: `category`, `settings,` and `fields`.
@@ -101,7 +104,12 @@ Before creating an asset, we'll need to learn the IDs of the custom fields we've
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
-In our case, it will be **POST asset\_type/read?id=456.**
+In our case, it will be:
+
+```
+curl -X GET "{BASE_URL}/v0/asset_type/read?id=456" \
+  -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
 
 You will receive full information about the asset type, including the `id` of each custom field. Save them for later.
 
@@ -170,14 +178,17 @@ You will receive full information about the asset type, including the `id` of ea
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
-To create an asset, send the following request using the `id` of each custom field from the previous step, or at least those you marked as `required`.
-
 {% openapi-operation spec="navixy-repo" path="/v0/asset/create" method="post" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
+To create an asset, send the following request using the `id` of each custom field from the previous step, or at least those you marked as `required:`
+
 ```json
-{
+curl -X POST {BASE_URL}/v0/asset/create \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
   "type_id": 456,
   "label": "Sea Explorer",
   "fields": {
@@ -198,7 +209,7 @@ To create an asset, send the following request using the `id` of each custom fie
       "value": 12
     }
   }
-}
+}'
 ```
 
 You will receive the ID of the newly created asset:
@@ -224,12 +235,15 @@ If your device is already activated, send the following request (let's assume yo
 {% endopenapi-operation %}
 
 ```json
-{
+curl -X POST {BASE_URL}/v0/inventory_item/master/update \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
   "id": 123,
   "inventory_id": 12,
   "label": "Sea Explorer GPS Tracker",
   "asset_id": 789
-}
+}'
 ```
 
 If you haven't created an inventory item yet, you can add the `asset_id` parameter to the creation request:
@@ -238,14 +252,17 @@ If you haven't created an inventory item yet, you can add the `asset_id` paramet
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
-```
-​{
-  "inventory_id": 12,
-  "device_id": "123456789012345",
-  "label": "Sea Explorer GPS Tracker",
-  "model": "telfmu130_fmc130_234",
-  "asset_id": 789
-}
+```json
+​curl -X POST {BASE_URL}/v0/inventory_item/master/create \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "inventory_id": 12,
+    "device_id": "123456789012345",
+    "label": "Sea Explorer GPS Tracker",
+    "model": "telfmu130_fmc130_234",
+    "asset_id": 789
+}'
 ```
 
 {% hint style="success" %}

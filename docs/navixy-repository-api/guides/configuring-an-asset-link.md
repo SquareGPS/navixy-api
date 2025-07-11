@@ -27,12 +27,15 @@ To create a new asset link, prepare an array of assets (or use an empty array) a
 Use this request body:
 
 ```json
-{
-  "label": "Boston boats",
-  "asset_ids": [
-    3
-  ]
-}
+curl -X POST {BASE_URL}/v0/asset_link/create \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "label": "Boston boats",
+    "asset_ids": [
+      3
+    ]
+  }'
 ```
 
 You will receive a response with the new link ID:
@@ -54,10 +57,13 @@ To add an asset to an existing link, send the following request:
 Use this request body:
 
 ```json
-{
-  "link_id": 789,
-  "asset_id": 2
-}
+curl -X POST {BASE_URL}/v0/asset_link/set \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "link_id": 789,
+    "asset_id": 2
+  }'
 ```
 
 You will receive `204 No Content` response, and the asset will be added to the `asset_ids` array.
@@ -73,10 +79,13 @@ To remove an asset from an existing link, send the following request:
 Use this request body:
 
 ```json
-{
-  "link_id": 789,
-  "asset_id": 2
-}
+curl -X POST {BASE_URL}/v0/asset_link/remove \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "link_id": 789,
+    "asset_id": 2
+  }'
 ```
 
 You will receive an empty response body and a `204 No Content` status, and the asset will be removed from the `asset_ids` array.
