@@ -8,7 +8,7 @@ Before you begin, ensure you have:
 
 * Valid Navixy Repository API credentials (`client_id` and `client_secret`).
 * A registered Callback URL (Redirect URI): The specific URL in your application where users will be redirected after granting consent.
-* URLs of API and authentication servers ({BASE\_URL} and {AUTH\_BASE\_URL}), determined depending on your geographical location. For more information about {BASE\_URL}, see [API Environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
+* URLs of API and authentication servers ({BASE\_URL} and {AUTH\_BASE\_URL}), determined depending on your geographical location. For more information about {BASE\_URL}, see [API environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
 * A secure method to generate and validate the `state` parameter for Cross-Site Request Forgery (CSRF) protection.
 * A GPS device ready for activation that belongs to the list of [supported devices](https://www.navixy.com/devices/).
 
