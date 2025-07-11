@@ -4,10 +4,6 @@ In Navixy Repository API, GPS devices are referred to as **inventory items** and
 
 In this guide, you will learn how to add a device to an inventory and activate it. You can activate any device listed on the [supported models](https://www.navixy.com/devices/) page or a smartphone with the [X-GPS Tracker](https://docs.navixy.com/user-guide/x-gps-tracker) app installed.
 
-{% hint style="info" %}
-For more information on API calls, including parameter descriptions and request and response schemas, click their names.
-{% endhint %}
-
 ### Types of GPS devices
 
 Navixy Repository API supports two types of devices:
@@ -25,7 +21,9 @@ A GPS device ready for activation.
 
 Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can view all specifications for all device models by making this request:
 
-[**GET /inventory\_item/master/models/list**](broken-reference)
+{% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/model/list" method="get" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 Of course, you probably already know your model and want to fetch its specific parameters. That can be achieved by adding a query. For example, let's say our GPS device is Teltonika GMC4200. We'll use this request:
 
@@ -115,7 +113,9 @@ From the response, the following parameters are required for the next steps:
 
 Every inventory item requires an inventory. To create it, send the following request:
 
-[**POST /inventory/create**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/inventory/create" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 Use this request body:
 
@@ -130,7 +130,7 @@ You will receive the ID of the created inventory:
 
 ```
 {
-  "id": 12
+  "id": 24
 }
 ```
 
@@ -142,13 +142,15 @@ You will receive the ID of the created inventory:
 
 To create a **master inventory item**, send the following request:
 
-[**POST /inventory\_item/master/create**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/create" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 Use this request body:
 
 ```json
 {
-  "inventory_id": 12,
+  "inventory_id": 24,
   "model": "telfm4200",
   "device_id": "123456789012345",
   "label": "Delivery Van 1",
@@ -177,7 +179,9 @@ To activate a device connected to a master-type inventory item, it must be preco
 
 Send the following request:
 
-[**POST inventory\_item/master/activate**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/activate" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 ```json
 {
@@ -185,10 +189,7 @@ Send the following request:
   "device_id": "123456789012345",
   "model": "telfm4200",
   "activation_method_id": 44,
-  "fields": {​
-    "apn_name": "broadband",
-    "apn_user": "user",
-    "apn_password": "SecurePassword123!",
+  "fields": {
     "phone": "15551234567",
     "activation_code": "54321"​
   }
@@ -206,15 +207,17 @@ You will receive an empty response body with the `204 No Content` status.
 
 **Step 5. (Optional) Create and pair slave devices**
 
-To create a **slave inventory item**, send the following request:
+A slave device doesn't transmit GPS data unless paired with a master device. Many slave devices are sensors connected via Bluetooth.
 
-[**POST /inventory\_item/slave/create**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/inventory_item/slave/create" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
-Use this request body:
+To create a slave inventory item, use this request body:
 
 ```json
 {
-  "inventory_id": 12,
+  "inventory_id": 24,
   "label": "BT sensor 1"
 }
 ```
@@ -228,7 +231,9 @@ Just like with the master, the response will contain the ID of the created item.
 
 Now that you've created a slave device, you need to pair it with a master device. To do this, send the following request:
 
-[**POST /inventory\_item/slave/pair**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/inventory_item/slave/pair" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 Use this request body:
 
@@ -241,11 +246,11 @@ Use this request body:
 
 You will receive an empty response body and a `204 No Content` status.
 
-Alternatively, you can create and pair the slave device with a single request:
+Alternatively, you can create and pair the slave device with a single request to **POST inventory\_item/slave/create** using this body:
 
 ```json
 {
-  "inventory_id": 12,
+  "inventory_id": 24,
   "label": "BT sensor 1",
   "master_id": 34
 }

@@ -6,10 +6,6 @@ An asset link can contain assets of all types. Links automatically manage asset 
 
 In this guide, you will learn about how asset links are structured, how to create them, and how to assign assets to them.
 
-{% hint style="info" %}
-For more information on API calls, including parameter descriptions and request and response schemas, click their names.
-{% endhint %}
-
 ### How to configure an asset link
 
 {% openapi-schemas spec="navixy-repo" schemas="AssetLink" grouped="true" %}
@@ -24,7 +20,9 @@ An existing asset. Learn how to create it in [Creating a custom asset](creating-
 
 To create a new asset link, prepare an array of assets (or use an empty array) and send the following request:
 
-[**POST /asset\_link/create**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/asset_link/create" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 Use this request body:
 
@@ -49,7 +47,9 @@ You will receive a response with the new link ID:
 
 To add an asset to an existing link, send the following request:
 
-[**POST /asset\_link/set**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/asset_link/set" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 Use this request body:
 
@@ -60,13 +60,15 @@ Use this request body:
 }
 ```
 
-You will receive `200 OK` response, and the asset will be added to the `asset_ids` array.
+You will receive `204 No Content` response, and the asset will be added to the `asset_ids` array.
 
 **Step 3. (Optional) Remove an asset from an asset link**
 
 To remove an asset from an existing link, send the following request:
 
-[**POST /asset\_link/remove**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/asset_link/remove" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 Use this request body:
 

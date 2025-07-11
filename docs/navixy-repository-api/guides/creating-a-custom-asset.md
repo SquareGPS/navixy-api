@@ -6,10 +6,6 @@ Each asset belongs to a specific type that defines its structure and allows you 
 
 In this guide, you will learn how to create and configure a custom asset.
 
-{% hint style="info" %}
-For more information on API calls, including parameter descriptions and request and response schemas, click their names.
-{% endhint %}
-
 ### How to create a custom asset
 
 #### Step 1. Create an asset type
@@ -20,7 +16,9 @@ For more information on API calls, including parameter descriptions and request 
 
 To create a new asset type, send the following request:
 
-[**POST asset\_type/create**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/asset_type/create" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 ```json
 {
@@ -99,7 +97,9 @@ After sending the request, you will receive a response with the ID of the newly 
 
 Before creating an asset, we'll need to learn the IDs of the custom fields we've added in Step 1. To do it, send the following request:
 
-[**POST asset\_type/read?id=\{{id\}}**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/asset_type/read" method="get" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 In our case, it will be **POST asset\_type/read?id=456.**
 
@@ -172,7 +172,9 @@ You will receive full information about the asset type, including the `id` of ea
 
 To create an asset, send the following request using the `id` of each custom field from the previous step, or at least those you marked as `required`.
 
-[**POST asset/create**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/asset/create" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 ```json
 {
@@ -217,7 +219,9 @@ Now that you have an asset, you need to assign a device to it. This is done by a
 
 If your device is already activated, send the following request (let's assume your item's `label` is `Sea Explorer GPS Tracker`):
 
-[**POST inventory\_item/master/update**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/update" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 ```json
 {
@@ -230,7 +234,9 @@ If your device is already activated, send the following request (let's assume yo
 
 If you haven't created an inventory item yet, you can add the `asset_id` parameter to the creation request:
 
-[**POST inventory\_item/master/create**](broken-reference/)
+{% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/create" method="post" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-operation %}
 
 ```
 ​{

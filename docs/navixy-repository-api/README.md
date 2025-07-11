@@ -45,9 +45,9 @@ The endpoint reference is organized by resource type, such as [`asset`](broken-r
 
 **For each API call, you'll find:**
 
-* **HTTP method** (`GET` or `POST`) and endpoint URL
-* **Endpoint description** explaining the operation's purpose (e.g., "Returns all items in the inventory")
-* **Parameter documentation**: Complete schemas for query parameters and request bodies, with detailed descriptions for each field
-* **Response schemas** organized by HTTP status code, showing exactly what data you'll receive
-* **Code examples**: Sample requests and responses in multiple formats
+* **HTTP method** (`GET` or `POST`) and endpoint URL.
+* **Endpoint description** explaining the operation's purpose (e.g., "Returns all items in the inventory").
+* **Parameter documentation**: Complete schemas for query parameters and request bodies, with detailed descriptions for each field.
+* **Response schemas** organized by HTTP status code, showing exactly what data you'll receive.
+* **Code examples**: Sample requests and responses in multiple formats.
 * **Interactive testing**: Customizable requests that can be sent to mock or live servers for immediate testing.

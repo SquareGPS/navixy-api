@@ -217,8 +217,8 @@ You should see your device in the response.
 
 Now that you have the basics set up, you can:
 
-* [Add and activate more devices by creating additional inventory items](getting-started.md#id-2.3.-activate-the-device)
-* [Create new inventories to store your devices](guides/activating-a-gps-device.md#step-1.-create-an-inventory)
-* [Create assets (objects representing real-world business units) and assign devices to them](getting-started.md#id-3.2-create-an-asset)
-* [Create custom asset types for different categories of assets](getting-started.md#id-3.1.-create-an-asset-type)
+* [Add and activate more devices by creating additional inventory items](guides/activating-a-gps-device.md)
+* [Create new inventories to store your devices](guides/activating-a-gps-device.md#step-2.-create-an-inventory)
+* [Create custom asset types for different categories of assets](guides/creating-a-custom-asset.md#step-1.-create-an-asset-type)
+* [Create assets (objects representing real-world business units) and assign devices to them](guides/creating-a-custom-asset.md#step-3.-create-an-asset)
 * [Group assets by location, department, or function via asset links](getting-started.md#step-4.-organize-assets-with-asset-links)
