@@ -103,9 +103,9 @@ All API responses follow a consistent JSON format:
 
 Navixy Repository API uses conventional HTTP status codes to indicate the success or failure of a request.
 
-* **2xx** – Request was successful.
-* **4xx** – Request failed due to client error (e.g., validation error, missing parameter).
-* **5xx** – An internal server error occurred (these are rare and typically indicate an issue on our side).
+* **2xx**: Request was successful.
+* **4xx:** Request failed due to client error (e.g., validation error, missing parameter).
+* **5xx:** An internal server error occurred (these are rare and typically indicate an issue on our side).
 
 #### Error response format
 
