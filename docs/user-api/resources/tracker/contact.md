@@ -1,6 +1,7 @@
 ---
 title: Contact
 description: API call to get user's trackers with special grouping by "contacts"
+hidden: true
 ---
 
 # Contact

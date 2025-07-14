@@ -102,7 +102,7 @@ curl -X POST '{{ extra.api_example_url }}/beacon/data/read' \
 }
 ```
 
-* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](index.md#ble-beacon-data-entry).
+* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](index-1.md#ble-beacon-data-entry).
 
 API path: `/beacon/data/last_values`.
 
@@ -155,4 +155,4 @@ curl -X POST '{{ extra.api_example_url }}/beacon/data/last_values' \
 }
 ```
 
-* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](index.md#ble-beacon-data-entry).
+* `list` - list of zero or more `beacon_data_entry` objects which is described in [Beacon data entry](index-1.md#ble-beacon-data-entry).

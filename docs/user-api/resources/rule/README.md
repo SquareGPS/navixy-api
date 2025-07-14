@@ -10,7 +10,7 @@ description: >-
 Contains API calls to interact with tracker's rules. Rules used to set up conditions according to which the system logs\
 the events and sends notifications to user.
 
-Described creation and using rules step-by-step in the [guide](../../../guides/rules-notifications/use-rules.md).
+Described creation and using rules step-by-step in the [guide](../../guides/rules-notifications/use-rules.md).
 
 ## Rule object
 
@@ -166,9 +166,9 @@ that are described for every rule type if exist in [rule types](rule_types.md).
 | zone\_ids        | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and can't be empty for `route` and `inoutzone` rule types. | int array                |
 | type             | One of pre-defined types of rules. See [rule types](rule_types.md).                                                                                                                                              | [enum](broken-reference) |
 | param            | A common parameter that responsible for integer conditions. See [rule types](rule_types.md).                                                                                                                     | int                      |
-| alerts           | An object with destinations for notifications. Described [above](rule.md#rule-object).                                                                                                                           | JSON object              |
+| alerts           | An object with destinations for notifications. Described [above](./#rule-object).                                                                                                                                | JSON object              |
 | suspended        | Starts or stops tracking the rule. `true` if the rule suspended.                                                                                                                                                 | boolean                  |
-| schedule         | An optional object. Configures the time - when the rule works. Described [above](rule.md#rule-object).                                                                                                           | JSON object              |
+| schedule         | An optional object. Configures the time - when the rule works. Described [above](./#rule-object).                                                                                                                | JSON object              |
 | extended\_params | An optional object. Specified for concrete rule type. See [rule types](rule_types.md).                                                                                                                           | JSON object              |
 
 #### Example
@@ -360,16 +360,16 @@ Presented parameters are common for all rules, but there are specific parameters
 
 | name             | description                                                                                                                                                                                                                                | type                     |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
-| id               | ID of a rule. You can get IDs using the [rule/list](rule.md#list) call.                                                                                                                                                                    | int                      |
+| id               | ID of a rule. You can get IDs using the [rule/list](./#list) call.                                                                                                                                                                         | int                      |
 | name             | The name of created rule.                                                                                                                                                                                                                  | string                   |
 | description      | Rule's description.                                                                                                                                                                                                                        | string                   |
 | zone\_ids        | List of zones to bind where the rule will work. Leave it empty if rule should work everywhere. Parameter `zone_ids` is not allowed for rule `offline` and required for `route` and `inoutzone` rule types (there can be exactly one item). | int array                |
 | trackers         | List of tracker IDs belong to user for which the rule will work.                                                                                                                                                                           | int array                |
 | type             | One of pre-defined types of rules. See [rule types](rule_types.md).                                                                                                                                                                        | [enum](broken-reference) |
 | param            | A common parameter that responsible for integer conditions. See [rule types](rule_types.md).                                                                                                                                               | int                      |
-| alerts           | An object with destinations for notifications. Described [above](rule.md#rule-object).                                                                                                                                                     | JSON object              |
+| alerts           | An object with destinations for notifications. Described [above](./#rule-object).                                                                                                                                                          | JSON object              |
 | suspended        | Starts and stops tracking the rule. `true` if the rule suspended.                                                                                                                                                                          | boolean                  |
-| schedule         | An optional object. Configures the time - when the rule works. Described [above](rule.md#rule-object).                                                                                                                                     | JSON object              |
+| schedule         | An optional object. Configures the time - when the rule works. Described [above](./#rule-object).                                                                                                                                          | JSON object              |
 | extended\_params | An optional object. Specified for concrete rule type. See [rule types](rule_types.md).                                                                                                                                                     | JSON object              |
 
 #### Example

@@ -72,7 +72,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/status/listing/read' \
 
 #### Errors
 
-[General](../../../../general/errors.md#error-codes) types only.
+[General](../../../../../general/errors.md#error-codes) types only.
 
 ### update
 
@@ -90,6 +90,7 @@ Old vehicle statuses, which are not present in `statuses` array, will be deleted
 
 \=== "cURL"
 
+{% code overflow="wrap" %}
 ````
 ```shell
 curl -X POST '{{ extra.api_example_url }}/vehicle/status/listing/update' \
@@ -97,6 +98,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/status/listing/update' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "statuses": [{"id": 1, "order": 0, "label": "label123", "color": "FFFFFF"}]}'
 ```
 ````
+{% endcode %}
 
 #### Response
 
@@ -108,4 +110,4 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/status/listing/update' \
 
 #### Errors
 
-[General](../../../../general/errors.md#error-codes) types only.
+[General](../../../../../general/errors.md#error-codes) types only.

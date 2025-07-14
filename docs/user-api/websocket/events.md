@@ -173,7 +173,7 @@ Message fields:
 
 * `type` – "event".
 * `event` – "readings\_batch".
-* `data` – [readings\_batch](../resources/tracker/readings.md#readings-batch-object) array. NOTE: Unlike a tracker/readings/batch\_list endpoint response in the common API, each item contains only modified objects.
+* `data` – [readings\_batch](../resources/tracker/sensor/readings.md#readings-batch-object) array. NOTE: Unlike a tracker/readings/batch\_list endpoint response in the common API, each item contains only modified objects.
 * `user_time` – current time in user's timezone.
 
 Message sample:

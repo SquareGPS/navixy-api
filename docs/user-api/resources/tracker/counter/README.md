@@ -7,22 +7,22 @@ description: This resource contains counter specific actions
 
 This resource contains counter specific actions
 
-Find information on how to get counters data [here](../../guides/data-retrieval/sensor-data.md).
+Find information on how to get counters data [here](../../../guides/data-retrieval/sensor-data.md).
 
 ## Resource specific actions
 
 Actions with counter entities:
 
-* [/tracker/counter/read](counter.md#read)
-* [/tracker/counter/update](counter.md#update)
+* [/tracker/counter/read](./#read)
+* [/tracker/counter/update](./#update)
 
 Actions with counter values:
 
-* [/tracker/get\_counters](counter.md#get_counters)
-* [/tracker/counter/value/get](counter.md#valueget)
-* [/tracker/counter/value/list](counter.md#valuelist)
-* [/tracker/counter/value/set](counter.md#valueset)
-* [/tracker/counter/data/read](counter.md#dataread)
+* [/tracker/get\_counters](./#get_counters)
+* [/tracker/counter/value/get](./#valueget)
+* [/tracker/counter/value/list](./#valuelist)
+* [/tracker/counter/value/set](./#valueset)
+* [/tracker/counter/data/read](./#dataread)
 
 ### read
 
@@ -279,7 +279,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/list' \
 
 #### Errors
 
-* 204 - Entity not found – if one of the specified counter does not exist or there are no values yet. Use[`/tracker/counter/set`](counter.md#valueset) to create new counter (if not exist) and save some value.
+* 204 - Entity not found – if one of the specified counter does not exist or there are no values yet. Use[`/tracker/counter/set`](./#valueset) to create new counter (if not exist) and save some value.
 * 217 - List contains nonexistent entities – if one of the specified trackers does not exist or is blocked.
 
 ### value/set

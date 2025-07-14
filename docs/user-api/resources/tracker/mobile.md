@@ -1,6 +1,7 @@
 ---
 title: Mobile app register
 description: API call to register a mobile application. Deprecated.
+hidden: true
 ---
 
 # Mobile app register

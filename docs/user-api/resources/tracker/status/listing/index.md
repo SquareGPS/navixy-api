@@ -1,13 +1,13 @@
 ---
 title: Working status list
-description: Contains status listing object and API calls to interact with working status list.
+description: >-
+  Contains status listing object and API calls to interact with working status
+  list.
 ---
 
 # Working status list
 
-Contains status listing object and API calls to interact with status listings. Status listings are lists of possible 
-statuses that can be assigned to trackers.
-
+Contains status listing object and API calls to interact with status listings. Status listings are lists of possible statuses that can be assigned to trackers.
 
 ## Status listing object structure
 
@@ -27,7 +27,6 @@ statuses that can be assigned to trackers.
 * `supervisor_controlled` - boolean. If `true` supervisors can change working status, e.g. using mobile monitoring app.
 * `entries` - int array. List of IDs of working statuses which belong to this list. Order matters, and is preserved.
 
-
 ## API actions
 
 API base path: `/status/listing/`.
@@ -40,19 +39,21 @@ Creates new empty working status list.
 
 #### Parameters
 
-| name    | description                                                                                                               | type        |
-|:--------|:--------------------------------------------------------------------------------------------------------------------------|:------------|
-| listing | [status_listing](index.md#status-listing-object-structure) object without "id" and "entries" fields. | JSON object |
+| name    | description                                                                                           | type        |
+| ------- | ----------------------------------------------------------------------------------------------------- | ----------- |
+| listing | [status\_listing](index.md#status-listing-object-structure) object without "id" and "entries" fields. | JSON object |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/status/listing/create' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/status/listing/create' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true}'
+```
+````
 
 #### Response
 
@@ -67,10 +68,8 @@ Creates new empty working status list.
 
 #### Errors
 
-* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
-available.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature available.
 * 268 - Over quota – if the user's quota for working status lists exceeded.
-
 
 ### delete
 
@@ -80,25 +79,29 @@ Deletes working status list.
 
 #### Parameters
 
-| name       | description                                                 | type |
-|:-----------|:------------------------------------------------------------|:-----|
-| listing_id | ID of the working status list for this status to attach to. | int  |
+| name        | description                                                 | type |
+| ----------- | ----------------------------------------------------------- | ---- |
+| listing\_id | ID of the working status list for this status to attach to. | int  |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/status/listing/delete' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/status/listing/delete' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing_id": 12345}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/status/listing/delete?hash=a6aa75587e5c59c32d347da438505fc3&listing_id=12345
-    ```
+````
+```
+{{ extra.api_example_url }}/status/listing/delete?hash=a6aa75587e5c59c32d347da438505fc3&listing_id=12345
+```
+````
 
 #### Response
 
@@ -111,9 +114,7 @@ Deletes working status list.
 #### Errors
 
 * 201 - Not found in the database – if working status list with the specified ID does not exist.
-* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
-available.
-
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature available.
 
 ### list
 
@@ -125,19 +126,23 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/status/listing/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/status/listing/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+````
 
-=== "HTTP GET"
+\=== "HTTP GET"
 
-    ```
-    {{ extra.api_example_url }}/status/listing/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+````
+```
+{{ extra.api_example_url }}/status/listing/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+````
 
 #### Response
 
@@ -156,13 +161,11 @@ Only API key `hash`.
 }
 ```
 
-* `list` - ordered array of [status_listing](index.md#status-listing-object-structure) objects.
+* `list` - ordered array of [status\_listing](index.md#status-listing-object-structure) objects.
 
 #### Errors
 
-* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
-available.
-
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature available.
 
 ### update
 
@@ -174,19 +177,21 @@ Updates working status list properties.
 
 #### Parameters
 
-| name    | description                                                                                                            | type        |
-|:--------|:-----------------------------------------------------------------------------------------------------------------------|:------------|
-| listing | [status_listing](index.md#status-listing-object-structure) object with "id" and "entries" fields. | JSON object |
+| name    | description                                                                                        | type        |
+| ------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| listing | [status\_listing](index.md#status-listing-object-structure) object with "id" and "entries" fields. | JSON object |
 
 #### Examples
 
-=== "cURL"
+\=== "cURL"
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/status/listing/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"id": 12345, "label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true, "entries": [ 5, 2, 1, 4, 6]}'
-    ```
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/status/listing/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "listing": {"id": 12345, "label": "Taxi driver statuses", "employee_controlled": false, "supervisor_controlled": true, "entries": [ 5, 2, 1, 4, 6]}'
+```
+````
 
 #### Response
 
@@ -199,7 +204,54 @@ Updates working status list properties.
 #### Errors
 
 * 201 - Not found in the database – if working status list with the specified ID does not exist.
-* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature
- available.
-* 262 - Entries list is missing some entries or contains nonexistent entries – if entries does not contain full set of
- status IDs associated with this working status list, or if it contains nonexistent status IDs.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature available.
+* 262 - Entries list is missing some entries or contains nonexistent entries – if entries does not contain full set of status IDs associated with this working status list, or if it contains nonexistent status IDs.
+
+### assign
+
+Assigns a working status list (or remove assignment) to the tracker.
+
+**required sub-user rights:** `tracker_update`.
+
+#### Parameters
+
+| name        | description                                                                                       | type | format |
+| ----------- | ------------------------------------------------------------------------------------------------- | ---- | ------ |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.  | int  | 123456 |
+| listing\_id | ID of the working status list. Omit this parameter completely, if you want remove the assignment. | int  | 12345  |
+
+#### Examples
+
+\=== "cURL"
+
+````
+```shell
+curl -X POST '{{ extra.api_example_url }}/status/listing/tracker/assign' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "listing_id": 12345}'
+```
+````
+
+\=== "HTTP GET"
+
+````
+```
+{{ extra.api_example_url }}/status/listing/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&listing_id=12345
+```
+````
+
+#### Response
+
+```json
+{
+  "success": true
+}
+```
+
+#### Errors
+
+* 201 - Not found in the database – if there is no tracker with such ID belonging to authorized user.
+* 204 - Entity not found – if there is no working status list with such ID.
+* 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
+* 219 - Not allowed for clones of the device – if specified tracker is a clone.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature available.

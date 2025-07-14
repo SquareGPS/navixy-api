@@ -9,7 +9,7 @@ description: >-
 
 API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel.
 
-Described getting data from sensors in our [guides](../../guides/data-retrieval/sensor-data.md).
+Described getting data from sensors in our [guides](../../../guides/data-retrieval/sensor-data.md).
 
 ## API actions
 
@@ -21,11 +21,11 @@ Gets last values for all sensors, state values and counters.
 
 #### Parameters
 
-| name                | description                                                                                        | type                                                                                                                                                                            | format |
-| ------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| tracker\_id         | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.   | int                                                                                                                                                                             | 999199 |
-| sensor\_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | <p>string<br><a href="sensor/index.md#metering-sensor-type-values">metering sensor type</a> or <a href="sensor/index.md#virtual-sensor-type-values">virtual sensor type</a></p> | "fuel" |
-| include\_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                                         | true   |
+| name                | description                                                                                        | type                                                                                                                                                              | format |
+| ------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| tracker\_id         | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.   | int                                                                                                                                                               | 999199 |
+| sensor\_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | <p>string<br><a href="index.md#metering-sensor-type-values">metering sensor type</a> or <a href="index.md#virtual-sensor-type-values">virtual sensor type</a></p> | "fuel" |
+| include\_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                           | true   |
 
 #### Examples
 
@@ -107,7 +107,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/readings/list' \
   * `label` - string. The label of the sensor.
   * `units` - string. The units in which the sensor value is measured.
   * `name` - string. The name of the sensor.
-  * `type` - [metering sensor type](sensor/index.md#metering-sensor-type-values). The type of the sensor.
+  * `type` - [metering sensor type](index.md#metering-sensor-type-values). The type of the sensor.
   * `units_type` - string. The type of the units in which the sensor value is measured.
   * `update_time` - date/time. The time when the sensor value was updated.
   * `min_value` - optional float. The minimum value of the sensor.
@@ -123,7 +123,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/readings/list' \
   * `sensor_id` - int. The ID of the virtual sensor.
   * `value` - string. The value of the virtual sensor.
   * `label` - string. The label of the virtual sensor.
-  * `type` - [virtual sensor type](sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
+  * `type` - [virtual sensor type](index.md#virtual-sensor-type-values). The type of the virtual sensor.
   * `update_time` - date/time. The time when the virtual sensor value was updated.
 * `counters` - an array of JSON objects containing information about the tracker counter readings.
   * `type` - string. The type of the counter.
@@ -141,11 +141,11 @@ Gets last values for all sensors, state values and counters on multiple trackers
 
 #### Parameters
 
-| name                | description                                                                                        | type                                                                                                                                                                            | format           |
-| ------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| trackers            | An array of tracker IDs (aka "object\_id"). Trackers must belong to authorized user.               | int                                                                                                                                                                             | \[999199,991999] |
-| sensor\_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | <p>string<br><a href="sensor/index.md#metering-sensor-type-values">metering sensor type</a> or <a href="sensor/index.md#virtual-sensor-type-values">virtual sensor type</a></p> | "fuel"           |
-| include\_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                                         | true             |
+| name                | description                                                                                        | type                                                                                                                                                              | format           |
+| ------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| trackers            | An array of tracker IDs (aka "object\_id"). Trackers must belong to authorized user.               | int                                                                                                                                                               | \[999199,991999] |
+| sensor\_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | <p>string<br><a href="index.md#metering-sensor-type-values">metering sensor type</a> or <a href="index.md#virtual-sensor-type-values">virtual sensor type</a></p> | "fuel"           |
+| include\_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                           | true             |
 
 #### Examples
 
@@ -294,7 +294,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/readings/batch_list' \
   * `label` - string. The label of the sensor.
   * `units` - string. The units in which the sensor value is measured.
   * `name` - string. The name of the sensor.
-  * `type` - [metering sensor type](sensor/index.md#metering-sensor-type-values). The type of the sensor.
+  * `type` - [metering sensor type](index.md#metering-sensor-type-values). The type of the sensor.
   * `units_type` - string. The type of the units in which the sensor value is measured.
   * `update_time` - date/time. The time when the sensor value was updated.
   * `min_value` - optional float. The minimum value of the sensor.
@@ -310,7 +310,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/readings/batch_list' \
   * `sensor_id` - int. The ID of the virtual sensor.
   * `value` - string. The value of the virtual sensor.
   * `label` - string. The label of the virtual sensor.
-  * `type` - [virtual sensor type](sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
+  * `type` - [virtual sensor type](index.md#virtual-sensor-type-values). The type of the virtual sensor.
   * `update_time` - date/time. The time when the virtual sensor value was updated.
 * `counters` - an array of JSON objects containing information about the tracker counter readings.
   * `type` - string. The type of the counter.

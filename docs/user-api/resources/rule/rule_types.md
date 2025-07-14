@@ -12,7 +12,7 @@ and rule integration for it.
 
 ### Geofence entrance or exit
 
-A rule that triggers on device entering/exiting created on platform [geofences](../../map/zone/#list).
+A rule that triggers on device entering/exiting created on platform [geofences](../map/zone/#list).
 
 #### Parameters
 
@@ -32,7 +32,7 @@ A rule that triggers on device entering/exiting created on platform [geofences](
 
 ### Parking state detection
 
-A rule that triggers on detection of parking state calculated based on [parking detection settings](../settings/trip_detection.md).
+A rule that triggers on detection of parking state calculated based on [parking detection settings](../tracker/settings/trip_detection.md).
 
 #### Parameters
 
@@ -94,7 +94,7 @@ A rule that triggers on speed exceeding determined by the platform. Based on rec
 
 ### Deviation from the route
 
-A rule that triggers on deviations from the route. Only the [route (sausage) type](../../map/zone/#sausage) geofence may be assigned.
+A rule that triggers on deviations from the route. Only the [route (sausage) type](../map/zone/#sausage) geofence may be assigned.
 
 #### Parameters
 
@@ -114,7 +114,7 @@ A rule that triggers on deviations from the route. Only the [route (sausage) typ
 
 ### Driving time
 
-A rule that triggers when your employee drives more than allowed. The driving time is calculated based on [parking detection settings](../settings/trip_detection.md).
+A rule that triggers when your employee drives more than allowed. The driving time is calculated based on [parking detection settings](../tracker/settings/trip_detection.md).
 
 #### Parameters
 
@@ -137,7 +137,7 @@ A rule that triggers when your employee drives more than allowed. The driving ti
 
 ### Parking time
 
-A rule that triggers when your employee standstill more than allowed. The parking time is calculated based on [parking detection settings](../settings/trip_detection.md).
+A rule that triggers when your employee standstill more than allowed. The parking time is calculated based on [parking detection settings](../tracker/settings/trip_detection.md).
 
 #### Parameters
 
@@ -159,7 +159,7 @@ A rule that triggers when your employee standstill more than allowed. The parkin
 
 ### Task performance
 
-A rule that triggers when assigned to a tracker [task](../../../backend-api/resources/tracking/tracker/rules/broken-reference/) changes its status.
+A rule that triggers when assigned to a tracker [task](../../backend-api/resources/tracking/tracker/rules/broken-reference/) changes its status.
 
 #### Parameters
 
@@ -182,8 +182,8 @@ A rule that triggers when assigned to a tracker [task](../../../backend-api/reso
 
 ### Work status change
 
-A rule that triggers when tracker [work status](../status/tracker.md) changes. Choose specific status IDs from a currently\
-assigned to tracker [status listing](../status/listing/index.md).
+A rule that triggers when tracker [work status](../tracker/status/tracker.md) changes. Choose specific status IDs from a currently\
+assigned to tracker [status listing](../tracker/status/listing/index.md).
 
 #### Parameters
 
@@ -194,13 +194,13 @@ assigned to tracker [status listing](../status/listing/index.md).
 
 #### extended parameters
 
-| name                  | description                                                                                                                               | type      |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| status\_ids           | List of tracked status IDs. Choose specific status IDs from a currently assigned to tracker [status listing](../status/listing/index.md). | int array |
-| emergency             | If `true` enables emergency notification.                                                                                                 | boolean   |
-| private\_rule         | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                                           | boolean   |
-| zone\_limit\_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                                    | boolean   |
-| append\_zone\_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone\_limit\_inverted param set to `true`.           | boolean   |
+| name                  | description                                                                                                                                       | type      |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| status\_ids           | List of tracked status IDs. Choose specific status IDs from a currently assigned to tracker [status listing](../tracker/status/listing/index.md). | int array |
+| emergency             | If `true` enables emergency notification.                                                                                                         | boolean   |
+| private\_rule         | Affects only sub users. If `true` then the rule and notifications are visible only to sub user.                                                   | boolean   |
+| zone\_limit\_inverted | The rule tracked inside of zones if `false` or outside if `true`. Default is: `false`.                                                            | boolean   |
+| append\_zone\_title   | Show or not the zone labels in a notification text. Must be `null` or `false` if the zone\_limit\_inverted param set to `true`.                   | boolean   |
 
 ### Excessive idling (hardware related)
 
@@ -225,7 +225,7 @@ A rule that triggers on excessive idling registered by hardware. Based on the co
 
 ### Excessive idling (platform related)
 
-A rule that triggers on excessive idling registered by the platform. The idling time is calculated based on [parking detection settings](../settings/trip_detection.md) and ignition state.
+A rule that triggers on excessive idling registered by the platform. The idling time is calculated based on [parking detection settings](../tracker/settings/trip_detection.md) and ignition state.
 
 #### Parameters
 
