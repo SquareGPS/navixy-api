@@ -22,6 +22,8 @@ For CTOs and system architects, it represents a stable API-first data model, whi
 
 <figure><img src=".gitbook/assets/diagram-logo-final.webp" alt=""><figcaption></figcaption></figure>
 
+<figure><img src=".gitbook/assets/diagram-logo-final.webp" alt=""><figcaption></figcaption></figure>
+
 **Navixy Repository API** operates using the following resources:
 
 <table><thead><tr><th width="138.5999755859375">Term</th><th>Definition</th></tr></thead><tbody><tr><td><a href="broken-reference"><strong>Asset</strong></a></td><td>An object that represents a real-world business unit: a person, car, boat, bike, piece of equipment, or any other trackable resource.</td></tr><tr><td><a href="broken-reference"><strong>Asset type</strong></a></td><td>Defines the structure of custom property fields and display configuration for assets. Examples: "Boats", "Cargo", "Warehouse Operators". Supports full customization: field groups, fields order, field properties (label, description, required or not).</td></tr><tr><td><a href="broken-reference"><strong>Asset link</strong></a></td><td>Assets grouped in line with the user's business logic, such as "Staff" → "Shift 15/12/2025" or "Truck, 3 trailers, driver 1, driver 2" → "Motorcade 1." This allows for flexible connections while maintaining relationship history between assets.</td></tr><tr><td><a href="broken-reference"><strong>Inventory</strong></a></td><td>Devices (GPS trackers, sensors, etc.) are kept in <strong>inventories</strong> — collections used to efficiently organize and manage equipment. They help structure, track, and operate devices.</td></tr><tr><td><a href="broken-reference"><strong>Inventory item</strong></a></td><td>Devices stored in inventories. They can be activated, paired, and assigned to assets. Note that multiple items can be connected to a single asset.</td></tr></tbody></table>
@@ -45,9 +47,9 @@ The endpoint reference is organized by resource type, such as [`asset`](broken-r
 
 **For each API call, you'll find:**
 
-* **HTTP method** (`GET` or `POST`) and endpoint URL
-* **Endpoint description** explaining the operation's purpose (e.g., "Returns all items in the inventory")
-* **Parameter documentation**: Complete schemas for query parameters and request bodies, with detailed descriptions for each field
-* **Response schemas** organized by HTTP status code, showing exactly what data you'll receive
-* **Code examples**: Sample requests and responses in multiple formats
+* **HTTP method** (`GET` or `POST`) and endpoint URL.
+* **Endpoint description** explaining the operation's purpose (e.g., "Returns all items in the inventory").
+* **Parameter documentation**: Complete schemas for query parameters and request bodies, with detailed descriptions for each field.
+* **Response schemas** organized by HTTP status code, showing exactly what data you'll receive.
+* **Code examples**: Sample requests and responses in multiple formats.
 * **Interactive testing**: Customizable requests that can be sent to mock or live servers for immediate testing.

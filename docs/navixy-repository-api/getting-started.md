@@ -8,9 +8,9 @@ Before you begin, ensure you have:
 
 * Valid Navixy Repository API credentials (`client_id` and `client_secret`).
 * A registered Callback URL (Redirect URI): The specific URL in your application where users will be redirected after granting consent.
-* URLs of API and authentication servers ({BASE\_URL} and {AUTH\_BASE\_URL}), determined depending on your geographical location. For more information about {BASE\_URL}, see [API Environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
+* URLs of API and authentication servers ({BASE\_URL} and {AUTH\_BASE\_URL}), determined depending on your geographical location. For more information about {BASE\_URL}, see [API environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
 * A secure method to generate and validate the `state` parameter for Cross-Site Request Forgery (CSRF) protection.
-* A GPS device ready for activation.
+* A GPS device ready for activation that belongs to the list of [supported devices](https://www.navixy.com/devices/).
 
 ### Step 1. Authentication
 
@@ -70,9 +70,57 @@ For a more in-depth explanation of activating a GPS device and working with inve
 
 {% stepper %}
 {% step %}
-#### Create an inventory
+#### Fetch device model specification
 
-To create an inventory that will store your device, send the following request:
+Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can retrieve the complete profile for any supported model by querying the [**/inventory\_item/master/models/list**](broken-reference) endpoint.
+
+For example, to get the specifications for a Teltonika FMC234, use the following request:
+
+```
+curl -X GET "{BASE_URL}/v0/inventory_item/master/model/list?q=Teltonika%20FMC234" \
+  -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
+
+From the response, you will need to save the following critical parameters for future requests:
+
+* `code`: The unique identifier for the model (e.g., `telfmc234`).
+* `activation_methods`: An array of supported activation methods. Note the `id` of the method you plan to use (e.g., `1`).
+* `method_fields`: A list of fields required for the chosen activation method (e.g., `iccid`).
+
+```
+{
+    "data": [
+        {
+            "code": "telfmu130_fmc130_234",
+            "vendor": "Teltonika Telematics",
+            "name": "Teltonika FMC234",
+            ...,
+            "activation_methods": [
+                {
+                    "id": 1,
+                    "title": "SIM card provided with a device",
+                    "method_fields": [
+                        {
+                            "field": "iccid",
+                            "title": "ICCID number of SIM-card from the package",
+                            "optional": false,
+                            "pattern": "89[0-9]{17,18}"
+                        }
+                    ]
+                },
+                ...
+            ]
+        }
+    ],
+    "has_more": false
+}
+```
+{% endstep %}
+
+{% step %}
+**Create an inventory**
+
+Next, create an inventory to house your new device. Inventories are logical containers for organizing your items.
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory/create \
@@ -84,21 +132,21 @@ curl -X POST {BASE_URL}/v0/inventory/create \
 ​}'
 ```
 
-**Response:**
+The API will respond with the new inventory's `id`. Save it for the next step.
 
 ```json
 {
   "id": 12
 }
 ```
-
-Note the inventory ID (`12`) for the next step.
 {% endstep %}
 
 {% step %}
-#### Create a master device
+**Create a master device**
 
 Devices that can transmit GPS data independently are called master devices. In Navixy Repository API, devices are stored as inventory items.
+
+Now, create a master device as an item in your inventory. You will need `inventory_id` and the model `code` you've fetched previously, as well as `device_id` , which is typically its IMEI.
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory_item/master/create \
@@ -108,16 +156,11 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create \
     "inventory_id": 12,
     "device_id": "356307042441234",
     "label": "Vessel 001",
-    "model": "telfmb125"
+    "model": "telfmu130_fmc130_234"
   }'
 ```
 
-**Key parameters:**
-
-* `device_id`: The device's IMEI number (usually found on a sticker)
-* `model`: Device model code ([see supported devices](https://www.navixy.com/devices/))
-
-**Response:**
+Save the returned device `id` for the next and final step.
 
 ```json
 {
@@ -127,7 +170,9 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/create \
 {% endstep %}
 
 {% step %}
-#### Activate the device
+**Activate the device**
+
+Finally, activate the device using its `id` from the previous step along with the `activation_method_id` and `fields` you saved earlier.
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
@@ -136,23 +181,15 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
   -d '{
     "id": 123,
     "device_id": "356307042441234",
-    "model": "teltonika_fmc130",
+    "model": "telfmu130_fmc130_234",
     "activation_method_id": 1,
     "fields": {​
-      "teltonika_fmb125_imei": "123456789012345",
-      "activation_code": "123"​
+      "iccid": "8912345678901234567"
     }
   }'
 ```
 
-**Key parameters:**
-
-* `activation_method_id`: Unique identifier of one of the authentication methods supported by the model.
-* `fields` : Combined set of field values needed for model activation, including:
-  * Model-specific parameters
-  * Activation method-specific parameters
-
-**Response:** `204 No Content` (Success)
+A successful activation will return a `204 No Content` response.
 {% endstep %}
 {% endstepper %}
 
@@ -160,7 +197,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
 
 #### Verify your setup
 
-Let's confirm everything is working by listing your inventory items:
+Let's confirm everything works by listing your inventory items:
 
 ```bash
 curl -X GET "{BASE_URL}/v0/inventory_item/master/list" \
@@ -170,10 +207,11 @@ curl -X GET "{BASE_URL}/v0/inventory_item/master/list" \
 You should see your device in the response.
 
 {% hint style="success" %}
-#### What you've accomplished
+**What you've accomplished:**
 
-* &#x20;Authenticated with the Navixy Repository API
-* Created an inventory for your GPS devices
+* Authenticated with the Navixy Repository API
+* Fetched the specification for your device model
+* Created an inventory for your devices
 * Created an inventory item representing your device
 * Activated the device that can now [transmit location data](guides/activating-a-gps-device.md#how-to-use-the-data-transmitted-by-the-device)
 {% endhint %}
@@ -182,8 +220,8 @@ You should see your device in the response.
 
 Now that you have the basics set up, you can:
 
-* [Add more devices by creating additional inventory items](getting-started.md#id-2.3.-activate-the-device)
-* [Create new inventories to store your devices based on any principle](guides/activating-a-gps-device.md#step-1.-create-an-inventory)
-* [Create assets — objects representing real-world business units — and assign devices to them](getting-started.md#id-3.2-create-an-asset)
-* [Create custom asset types for different categories of assets](getting-started.md#id-3.1.-create-an-asset-type)
+* [Add and activate more devices by creating additional inventory items](guides/activating-a-gps-device.md)
+* [Create new inventories to store your devices](guides/activating-a-gps-device.md#step-2.-create-an-inventory)
+* [Create custom asset types for different categories of assets](guides/creating-a-custom-asset.md#step-1.-create-an-asset-type)
+* [Create assets (objects representing real-world business units) and assign devices to them](guides/creating-a-custom-asset.md#step-3.-create-an-asset)
 * [Group assets by location, department, or function via asset links](getting-started.md#step-4.-organize-assets-with-asset-links)

@@ -26,7 +26,7 @@ Both environments offer identical API functionality, but may differ in:
 * Maintenance windows and update schedules
 
 {% hint style="warning" %}
-Note that in this and other articles about Navixy Repository API,  {BASE\_URL} is a placeholder for the URL you'll be using.
+Note that in this and other articles about Navixy Repository API, {BASE\_URL} is a placeholder for the URL you'll be using.
 {% endhint %}
 
 ### Methods
@@ -103,9 +103,9 @@ All API responses follow a consistent JSON format:
 
 Navixy Repository API uses conventional HTTP status codes to indicate the success or failure of a request.
 
-* **2xx** – Request was successful.
-* **4xx** – Request failed due to client error (e.g., validation error, missing parameter).
-* **5xx** – An internal server error occurred (these are rare and typically indicate an issue on our side).
+* **2xx**: Request was successful.
+* **4xx:** Request failed due to client error (e.g., validation error, missing parameter).
+* **5xx:** An internal server error occurred (these are rare and typically indicate an issue on our side).
 
 #### Error response format
 
@@ -219,7 +219,7 @@ The API follows industry-standard semantic versioning principles to ensure clear
 
 #### Versioning strategy
 
-To make versioning transparent and intuitive,  the version is directly included in the request URL:
+To make versioning transparent and intuitive, the version is directly included in the request URL:
 
 ```
 {BASE_URL}/v{major}/{resource}/{operation}
@@ -264,7 +264,7 @@ Explore the full structure of Navixy Repository API using the OpenAPI standard.
 * Import the definition into OpenAPI-based API documentation & testing tools.
 * Perfect for documentation readers who want to explore and test endpoints without manual setup if the built-in documentation tools are insufficient for your specific needs
 
-You can download the OpenAPI specification [here](https://swagger.io/specification/).
+You can download the OpenAPI specification [here](resources/navixy-repo-api-specification.yaml).
 
 #### Postman
 
