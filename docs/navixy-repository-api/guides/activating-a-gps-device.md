@@ -22,19 +22,21 @@ A GPS device ready for activation.
 Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can view all specifications for all device models by making this request:
 
 {% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/model/list" method="get" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
 Of course, you probably already know your model and want to fetch its specific parameters. That can be achieved by adding a query. For example, let's say our GPS device is Teltonika FM4200. We'll use this request:
 
+{% code overflow="wrap" %}
 ```
 curl -X GET "{BASE_URL}/v0/inventory_item/master/model/list?q=Teltonika%20FM4200" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
+{% endcode %}
 
 You'll get a response that looks like this:
 
-{% code fullWidth="false" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```json
 {
     "data": [
@@ -113,13 +115,13 @@ Remember the following parameters for the next steps:
 #### Step 2. Create an inventory
 
 {% openapi-schemas spec="navixy-repo" schemas="Inventory" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 Every inventory item requires an inventory. To create it, send the following request:
 
 {% openapi-operation spec="navixy-repo" path="/v0/inventory/create" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
 Use this request body:
@@ -145,13 +147,13 @@ You will receive the ID of the created inventory:
 #### Step 3. Create a master inventory item
 
 {% openapi-schemas spec="navixy-repo" schemas="InventoryMasterItem" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 To create a **master inventory item**, send the following request:
 
 {% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/create" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
 Use this request body:
@@ -180,7 +182,7 @@ You will get the ID of the newly created item:
 </code></pre>
 
 {% openapi-schemas spec="navixy-repo" schemas="InventorySlaveItem" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 #### Step 4. Activate the GPS device
@@ -190,7 +192,7 @@ To activate a device connected to a master-type inventory item, it must be preco
 Send the following request:
 
 {% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/activate" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
 <pre class="language-json"><code class="lang-json">curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
@@ -222,7 +224,7 @@ You will receive an empty response body with the `204 No Content` status.
 A slave device doesn't transmit GPS data unless paired with a master device. Many slave devices are sensors connected via Bluetooth.
 
 {% openapi-operation spec="navixy-repo" path="/v0/inventory_item/slave/create" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
 To create a slave inventory item, use this request body:
@@ -246,7 +248,7 @@ Just like with the master, the response will contain the ID of the created item.
 Now that you've created a slave device, you need to pair it with a master device. To do this, send the following request:
 
 {% openapi-operation spec="navixy-repo" path="/v0/inventory_item/slave/pair" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
 Use this request body:
@@ -265,8 +267,7 @@ You will receive an empty response body and a `204 No Content` status.
 
 Alternatively, you can create and pair the slave device with a single request:
 
-<pre class="language-json"><code class="lang-json"># Request
-curl -X POST {BASE_URL}/v0/inventory_item/slave/create \
+<pre class="language-json"><code class="lang-json">curl -X POST {BASE_URL}/v0/inventory_item/slave/create \
   -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -282,15 +283,11 @@ The response will be the same as with an ordinary creation request (the `id` of 
 
 Activating the GPS device registers it with other Navixy systems: [Navixy API](https://www.navixy.com/docs/navixy-api/), a telematics platform without business management features, and [IoT Logic](https://www.navixy.com/docs/iot-logic-api), a low-code data processing and enrichment tool.
 
-{% hint style="warning" %}
-Please note that Navixy API has a [different authentication system](https://www.navixy.com/docs/navixy-api/user-api/authentication) from Navixy Repository API.
-{% endhint %}
+Activation allows you to work with the device in other APIs:
 
-Activation allows you to:
-
-* Receive the device's location data via [Navixy API's Track points](https://www.navixy.com/docs/navixy-api/user-api/backend-api/guides/data-retrieval/get-track-points)
+* Fetch the device's telemetrics via [Navixy API](https://www.navixy.com/docs/navixy-api/user-api/backend-api/guides/data-retrieval/get-track-points)
 * Enrich the received data with [IoT Logic via Websocket](https://www.navixy.com/docs/iot-logic-api/websocket-access-for-dsa)
-* Send the data to an external system via [IoT Logic and MQTT](https://www.navixy.com/docs/iot-logic-api/navixy-iot-guide/scenario1)
+* Send its data to an external system via [IoT Logic and MQTT](https://www.navixy.com/docs/iot-logic-api/navixy-iot-guide/scenario1)
 
 {% hint style="success" %}
 **Congratulations!**\

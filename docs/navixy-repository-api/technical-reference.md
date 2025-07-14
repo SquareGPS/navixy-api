@@ -33,13 +33,13 @@ Note that in this and other articles about Navixy Repository API, {BASE\_URL} is
 
 The API follows the **OpenAPI** **standard** with full CRUD for each object type:
 
-| Object          | Main Methods                                        |
-| --------------- | --------------------------------------------------- |
-| asset           | create, read, update, delete, list                  |
-| asset\_type     | create, read, update, delete, list                  |
-| asset\_link     | create, read, update, delete, list, set, remove     |
-| inventory       | create, read, update, delete, list                  |
-| inventory\_item | create, read, update, archive, list, activate, pair |
+| Object          | Main Methods                                                             |
+| --------------- | ------------------------------------------------------------------------ |
+| asset           | create, read, update, delete, list                                       |
+| asset\_type     | create, read, update, delete, list                                       |
+| asset\_link     | create, read, update, delete, list, set, remove                          |
+| inventory       | create, read, update, delete, list                                       |
+| inventory\_item | create, read, update, archive, delete, list, activate, pair, list models |
 
 ### Call patterns
 
@@ -135,7 +135,7 @@ When a request fails (typically with a 4xx or 5xx status), the response body con
 
 List endpoints in this API support fetching paginated data with flexible filtering and sorting options. You can use both GET and POST methods depending on the complexity of the query.
 
-#### Pagination basics
+#### Pagination
 
 All list endpoints return results in a paginated format:
 
@@ -151,12 +151,7 @@ All list endpoints return results in a paginated format:
 
 #### Query parameters
 
-| **Name** | **Type** | **Nullable** | **Important** | **Description**                                                                                                                           |
-| -------- | -------- | ------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| q        | string   | yes          | yes           | A search query string                                                                                                                     |
-| limit    | int      | yes          | no            | Maximum number of items to return (default: 100, max: 1000).                                                                              |
-| offset   | int      | yes          | no            | The index of the first item to return (default: 0).                                                                                       |
-| sort     | string   | yes          | no            | Sort expression. Supports one or more fields, optionally prefixed with `-` to indicate descending order. For example, `title,-created_at` |
+<table data-header-hidden><thead><tr><th width="78.80001831054688"></th><th width="87.79998779296875"></th><th width="101.20001220703125"></th><th width="106.39996337890625"></th><th></th></tr></thead><tbody><tr><td><strong>Name</strong></td><td><strong>Type</strong></td><td><strong>Nullable</strong></td><td><strong>Required</strong></td><td><strong>Description</strong></td></tr><tr><td>q</td><td>string</td><td>yes</td><td>yes</td><td>A search query string</td></tr><tr><td>limit</td><td>int</td><td>yes</td><td>no</td><td>Maximum number of items to return (default: 100, max: 1000).</td></tr><tr><td>offset</td><td>int</td><td>yes</td><td>no</td><td>The index of the first item to return (default: 0).</td></tr><tr><td>sort</td><td>string</td><td>yes</td><td>no</td><td>Sort expression. Supports one or more fields. See <a href="technical-reference.md#sorting">Sorting</a> for more information.</td></tr></tbody></table>
 
 #### Search
 
@@ -203,15 +198,17 @@ Filters are defined as condition objects with a `type` field that determines the
 
 **Supported operators**
 
+<table><thead><tr><th width="93">Name</th><th width="192.60003662109375">Description</th><th>Comment</th></tr></thead><tbody><tr><td>eq</td><td>Equals</td><td>Checks if the field equals the given value</td></tr><tr><td>neq</td><td>Not equals</td><td>Checks if the field does not equal the given value</td></tr><tr><td>gt</td><td>Greater than</td><td>Checks if the field is greater than the given value</td></tr><tr><td>gte</td><td>Greater than or equal</td><td>Checks if the field is greater than or equal to the given value</td></tr><tr><td>lt</td><td>Less than</td><td>Checks if the field is less than the given value</td></tr><tr><td>lte</td><td>Less than or equal</td><td>Checks if the field is less than or equal to the given value</td></tr><tr><td>contains</td><td>Contains substring</td><td>Checks if the field contains the given substring</td></tr><tr><td>in</td><td>In list</td><td>Checks if the field value is within the given list of values</td></tr><tr><td>between</td><td>Between two values</td><td>Checks if the field value is between two values (inclusive)</td></tr><tr><td>and</td><td>Logical AND</td><td>All conditions must be true</td></tr><tr><td>or</td><td>Logical OR</td><td>At least one condition must be true</td></tr><tr><td>not</td><td>Logical NOT</td><td>Negates the given condition</td></tr></tbody></table>
+
 #### **Sorting**
 
 Control the order of results using the `sort` parameter. Sorting works with both GET and POST requests.
 
-**Sort syntax**
+**Sorting syntax**
 
-* **Single field:** `sort=created_at` (ascending)
-* **Descending order:** `sort=-created_at` (prefix with `-`)
-* **Multiple fields:** `sort=label,-created_at,id` (comma-separated)
+* **Ascending order by a single field:** `sort=created_at`&#x20;
+* **Descending order by a single field:** `sort=-created_at` (prefix with `-`)
+* **Multiple fields:** `label,-created_at,id` (comma-separated)
 
 ### Versioning
 

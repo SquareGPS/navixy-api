@@ -146,7 +146,7 @@ The API will respond with the new inventory's `id`. Save it for the next step.
 
 Devices that can transmit GPS data independently are called master devices. In Navixy Repository API, devices are stored as inventory items.
 
-Now, create a master device as an item in your inventory. You will need `inventory_id` and the model `code` you've fetched previously, as well as `device_id` , which is typically its IMEI.
+Now, create a master device as an item in your inventory. You will need `inventory_id` and the model `code` you've fetched previously, as well as `device_id` , which is typically its IMEI (pattern: `^[0-9a-zA-Z\\-]{1,64}$`).
 
 ```bash
 curl -X POST {BASE_URL}/v0/inventory_item/master/create \
