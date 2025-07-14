@@ -129,6 +129,8 @@ paths:
         schema:
           type: integer
           format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
       - name: offset
         in: query
         description: "The index of the first item to return (default: 0)"
@@ -136,10 +138,11 @@ paths:
         schema:
           type: integer
           format: int32
+          minimum: 0
       - name: sort
         in: query
         description: "Sort expression. Supports one or more fields, optionally prefixed\
-          \ with `-` to indicate descending order. For example, `title,-created_at`"
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
         required: false
         schema:
           type: string
@@ -149,7 +152,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InventorySlaveItem"
+                $ref: "#/components/schemas/ListResponseInventorySlaveItem"
         "400":
           description: Invalid request or validation error
           content:
@@ -181,7 +184,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InventorySlaveItem"
+                $ref: "#/components/schemas/ListResponseInventorySlaveItem"
         "400":
           description: Invalid request or validation error
           content:
@@ -317,6 +320,8 @@ paths:
         schema:
           type: integer
           format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
       - name: offset
         in: query
         description: "The index of the first item to return (default: 0)"
@@ -324,10 +329,11 @@ paths:
         schema:
           type: integer
           format: int32
+          minimum: 0
       - name: sort
         in: query
         description: "Sort expression. Supports one or more fields, optionally prefixed\
-          \ with `-` to indicate descending order. For example, `title,-created_at`"
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
         required: false
         schema:
           type: string
@@ -337,7 +343,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InventoryMasterItem"
+                $ref: "#/components/schemas/ListResponseInventoryMasterItem"
         "400":
           description: Invalid request or validation error
           content:
@@ -369,7 +375,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InventoryMasterItem"
+                $ref: "#/components/schemas/ListResponseInventoryMasterItem"
         "400":
           description: Invalid request or validation error
           content:
@@ -545,6 +551,8 @@ paths:
         schema:
           type: integer
           format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
       - name: offset
         in: query
         description: "The index of the first item to return (default: 0)"
@@ -552,10 +560,11 @@ paths:
         schema:
           type: integer
           format: int32
+          minimum: 0
       - name: sort
         in: query
         description: "Sort expression. Supports one or more fields, optionally prefixed\
-          \ with `-` to indicate descending order. For example, `title,-created_at`"
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
         required: false
         schema:
           type: string
@@ -565,7 +574,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Inventory"
+                $ref: "#/components/schemas/ListResponseInventory"
         "400":
           description: Invalid request or validation error
           content:
@@ -597,7 +606,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Inventory"
+                $ref: "#/components/schemas/ListResponseInventory"
         "400":
           description: Invalid request or validation error
           content:
@@ -733,6 +742,8 @@ paths:
         schema:
           type: integer
           format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
       - name: offset
         in: query
         description: "The index of the first item to return (default: 0)"
@@ -740,10 +751,11 @@ paths:
         schema:
           type: integer
           format: int32
+          minimum: 0
       - name: sort
         in: query
         description: "Sort expression. Supports one or more fields, optionally prefixed\
-          \ with `-` to indicate descending order. For example, `title,-created_at`"
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
         required: false
         schema:
           type: string
@@ -753,7 +765,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AssetType"
+                $ref: "#/components/schemas/ListResponseAssetType"
         "400":
           description: Invalid request or validation error
           content:
@@ -785,7 +797,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AssetType"
+                $ref: "#/components/schemas/ListResponseAssetType"
         "400":
           description: Invalid request or validation error
           content:
@@ -991,6 +1003,8 @@ paths:
         schema:
           type: integer
           format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
       - name: offset
         in: query
         description: "The index of the first item to return (default: 0)"
@@ -998,10 +1012,11 @@ paths:
         schema:
           type: integer
           format: int32
+          minimum: 0
       - name: sort
         in: query
         description: "Sort expression. Supports one or more fields, optionally prefixed\
-          \ with `-` to indicate descending order. For example, `title,-created_at`"
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
         required: false
         schema:
           type: string
@@ -1011,7 +1026,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AssetLink"
+                $ref: "#/components/schemas/ListResponseAssetLink"
         "400":
           description: Invalid request or validation error
           content:
@@ -1043,7 +1058,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AssetLink"
+                $ref: "#/components/schemas/ListResponseAssetLink"
         "400":
           description: Invalid request or validation error
           content:
@@ -1169,28 +1184,31 @@ paths:
       - name: q
         in: query
         description: A search query string
-        required: true
+        required: false
         schema:
           type: string
       - name: limit
         in: query
         description: "Maximum number of items to return (default: 100, max: 1000)"
-        required: true
+        required: false
         schema:
           type: integer
           format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
       - name: offset
         in: query
         description: "The index of the first item to return (default: 0)"
-        required: true
+        required: false
         schema:
           type: integer
           format: int32
+          minimum: 0
       - name: sort
         in: query
         description: "Sort expression. Supports one or more fields, optionally prefixed\
-          \ with `-` to indicate descending order. For example, `title,-created_at`"
-        required: true
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
+        required: false
         schema:
           type: string
       responses:
@@ -1199,7 +1217,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Asset"
+                $ref: "#/components/schemas/ListResponseAsset"
         "400":
           description: Invalid request or validation error
           content:
@@ -1231,7 +1249,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Asset"
+                $ref: "#/components/schemas/ListResponseAsset"
         "400":
           description: Invalid request or validation error
           content:
@@ -1325,6 +1343,7 @@ paths:
         schema:
           type: integer
           format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Inventory item details
@@ -1364,6 +1383,7 @@ paths:
         schema:
           type: integer
           format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Inventory item details
@@ -1411,6 +1431,8 @@ paths:
         schema:
           type: integer
           format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
       - name: offset
         in: query
         description: "The index of the first item to return (default: 0)"
@@ -1418,10 +1440,11 @@ paths:
         schema:
           type: integer
           format: int32
+          minimum: 0
       - name: sort
         in: query
         description: "Sort expression. Supports one or more fields, optionally prefixed\
-          \ with `-` to indicate descending order. For example, `title,-created_at`"
+          \ with `-` to indicate descending order. For example, `vendor,-name`"
         required: false
         schema:
           type: string
@@ -1431,7 +1454,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MasterItemModel"
+                $ref: "#/components/schemas/ListResponseMasterItemModel"
         "400":
           description: Invalid request or validation error
           content:
@@ -1459,6 +1482,7 @@ paths:
         schema:
           type: integer
           format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Inventory details
@@ -1499,6 +1523,7 @@ paths:
         schema:
           type: integer
           format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Asset type details
@@ -1539,6 +1564,7 @@ paths:
         schema:
           type: integer
           format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Link details
@@ -1579,6 +1605,7 @@ paths:
         schema:
           type: integer
           format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Asset details
@@ -1612,13 +1639,17 @@ components:
           type: string
           description: Error code identifier
           enum:
+          - invalid_request
           - invalid_parameters
           - inventory_item_already_active
+          - disabled_in_demo
           - asset_not_found
           - asset_type_not_found
           - asset_link_not_found
+          - bundle_not_found
           - inventory_not_found
           - inventory_item_not_found
+          - resource_already_exists
           - asset_type_has_assets
           - inventory_has_items
           - unexpected_error
@@ -1690,6 +1721,336 @@ components:
       required:
       - id
       - master_id
+    AndCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          conditions:
+            type: array
+            items:
+              $ref: "#/components/schemas/Condition"
+      description: Represents a logical AND of multiple conditions. All conditions
+        must be true.
+      example:
+        type: and
+        conditions:
+        - type: contains
+          field: description
+          value: active
+        - type: gt
+          field: created_at
+          value: 2025-07-12T17:00:00Z
+      required:
+      - conditions
+    BetweenCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          values:
+            type: array
+            items:
+              type: object
+            maxItems: 2
+            minItems: 2
+      description: Checks if the field's value is between two values (inclusive).
+        Use for numeric or date fields.
+      example:
+        type: between
+        field: created_at
+        values:
+        - 2024-01-01
+        - 2024-12-31
+      required:
+      - field
+      - values
+    CompoundCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          conditions:
+            type: array
+            items:
+              oneOf:
+              - $ref: "#/components/schemas/AndCondition"
+              - $ref: "#/components/schemas/BetweenCondition"
+              - $ref: "#/components/schemas/CompoundCondition"
+              - $ref: "#/components/schemas/ContainsCondition"
+              - $ref: "#/components/schemas/EqualsCondition"
+              - $ref: "#/components/schemas/FieldCondition"
+              - $ref: "#/components/schemas/GreaterThanCondition"
+              - $ref: "#/components/schemas/GreaterThanOrEqualsCondition"
+              - $ref: "#/components/schemas/InCondition"
+              - $ref: "#/components/schemas/LessThanCondition"
+              - $ref: "#/components/schemas/LessThanOrEqualsCondition"
+              - $ref: "#/components/schemas/NotCondition"
+              - $ref: "#/components/schemas/NotEqualsCondition"
+              - $ref: "#/components/schemas/OrCondition"
+            maxItems: 60
+            minItems: 2
+      required:
+      - conditions
+    Condition:
+      description: "Represents an advanced filter condition for search queries. Supports\
+        \ logical operators (AND, OR, NOT) and field-level comparisons (equality,\
+        \ range, set membership, etc.). Conditions can be nested for complex expressions"
+      discriminator:
+        propertyName: type
+      example:
+        type: gte
+        field: created_at
+        value: 2025-07-12T17:00:00Z
+      properties:
+        type:
+          type: string
+      required:
+      - type
+    ContainsCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: string
+            minLength: 1
+      description: Checks if the field contains the given substring. Useful for string
+        fields.
+      example:
+        type: contains
+        field: description
+        value: active
+      required:
+      - field
+      - value
+    EqualsCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
+      description: Checks if the field is equal to the given value.
+      example:
+        type: eq
+        field: category
+        value: business
+      required:
+      - field
+      - value
+    FieldCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+      required:
+      - field
+    GreaterThanCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
+      description: Checks if the field is greater than the given value.
+      example:
+        type: gt
+        field: created_at
+        value: 2025-07-12T17:00:00Z
+      required:
+      - field
+      - value
+    GreaterThanOrEqualsCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
+      description: Checks if the field is greater than or equal to the given value.
+      example:
+        type: gte
+        field: created_at
+        value: 2025-07-12T17:00:00Z
+      required:
+      - field
+      - value
+    InCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          values:
+            type: array
+            items:
+              type: object
+            minItems: 1
+      description: Checks if the field's value is within the given list of values.
+      example:
+        type: in
+        field: model
+        values:
+        - model1
+        - model2
+      required:
+      - field
+      - values
+    LessThanCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
+      description: Checks if the field is less than the given value.
+      example:
+        type: lt
+        field: created_at
+        value: 2025-07-12T17:00:00Z
+      required:
+      - field
+      - value
+    LessThanOrEqualsCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
+      description: Checks if the field is less than or equal to the given value.
+      example:
+        type: lte
+        field: created_at
+        value: 2025-07-12T17:00:00Z
+      required:
+      - field
+      - value
+    ListRequest:
+      properties:
+        q:
+          type: string
+          description: A search query string
+        conditions:
+          type: array
+          description: "A list of additional filter conditions to apply to the search.\
+            \ Supports various logical and comparison operators such as AND, OR, NOT,\
+            \ equality, range, and set membership. Each condition specifies either\
+            \ a field-level comparison or a combination of multiple conditions for\
+            \ advanced filtering"
+          example:
+            type: gte
+            field: created_at
+            value: 2025-07-12T17:00:00Z
+          items:
+            oneOf:
+            - $ref: "#/components/schemas/AndCondition"
+            - $ref: "#/components/schemas/BetweenCondition"
+            - $ref: "#/components/schemas/CompoundCondition"
+            - $ref: "#/components/schemas/ContainsCondition"
+            - $ref: "#/components/schemas/EqualsCondition"
+            - $ref: "#/components/schemas/FieldCondition"
+            - $ref: "#/components/schemas/GreaterThanCondition"
+            - $ref: "#/components/schemas/GreaterThanOrEqualsCondition"
+            - $ref: "#/components/schemas/InCondition"
+            - $ref: "#/components/schemas/LessThanCondition"
+            - $ref: "#/components/schemas/LessThanOrEqualsCondition"
+            - $ref: "#/components/schemas/NotCondition"
+            - $ref: "#/components/schemas/NotEqualsCondition"
+            - $ref: "#/components/schemas/OrCondition"
+          maxItems: 64
+          minItems: 0
+        limit:
+          type: integer
+          format: int32
+          default: 100
+          description: Maximum number of items to return
+          maximum: 1000
+        offset:
+          type: integer
+          format: int32
+          default: 0
+          description: The index of the first item to return
+        sort:
+          type: string
+          description: "Sort expression. Supports one or more fields, optionally prefixed\
+            \ with `-` to indicate descending order. For example, `label,-created_at`"
+    NotCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          condition:
+            $ref: "#/components/schemas/Condition"
+      description: Represents a logical NOT of a condition. Negates the given condition.
+      example:
+        type: not
+        condition:
+          type: in
+          field: id
+          values:
+          - 12
+          - 23
+          - 45
+      required:
+      - condition
+    NotEqualsCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
+      description: Checks if the field is NOT equal to the given value.
+      example:
+        type: neq
+        field: model
+        value: model1
+      required:
+      - field
+      - value
+    OrCondition:
+      allOf:
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          conditions:
+            type: array
+            items:
+              $ref: "#/components/schemas/Condition"
+      description: Represents a logical OR of multiple conditions. At least one condition
+        must be true.
+      example:
+        type: or
+        conditions:
+        - type: contains
+          field: description
+          value: active
+        - type: gt
+          field: created_at
+          value: 2025-07-12T17:00:00Z
+      required:
+      - conditions
     InventorySlaveItem:
       description: The Inventory slave item
       properties:
@@ -1716,206 +2077,28 @@ components:
       - id
       - inventory_id
       - label
-    AndCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-    BetweenCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-          values:
-            type: array
-            items:
-              type: object
-            maxItems: 2
-            minItems: 2
-      required:
-      - field
-      - values
-    Condition:
-      description: "Represents an advanced filter condition for search queries. Supports\
-        \ logical operators (AND, OR, NOT) and field-level comparisons (equality,\
-        \ range, set membership, etc.). Conditions can be nested for complex expressions"
-      discriminator:
-        propertyName: type
-      example:
-        type: eq
-        field: status
-        value: active
-      oneOf:
-      - $ref: "#/components/schemas/AndCondition"
-      - $ref: "#/components/schemas/OrCondition"
-      - $ref: "#/components/schemas/NotCondition"
-      - $ref: "#/components/schemas/EqualsCondition"
-      - $ref: "#/components/schemas/NotEqualsCondition"
-      - $ref: "#/components/schemas/LessThanCondition"
-      - $ref: "#/components/schemas/LessThanOrEqualsCondition"
-      - $ref: "#/components/schemas/GreaterThanCondition"
-      - $ref: "#/components/schemas/GreaterThanOrEqualsCondition"
-      - $ref: "#/components/schemas/InCondition"
-      - $ref: "#/components/schemas/ContainsCondition"
-      - $ref: "#/components/schemas/BetweenCondition"
+    ListResponseInventorySlaveItem:
+      description: Defines the response schema for `/*/list`
       properties:
-        type:
-          type: string
-      required:
-      - type
-    ContainsCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-          value:
-            type: string
-      required:
-      - field
-      - value
-    EqualsCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-          value:
-            type: object
-      required:
-      - field
-      - value
-    GreaterThanCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-          value:
-            type: object
-      required:
-      - field
-      - value
-    GreaterThanOrEqualsCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-          value:
-            type: object
-      required:
-      - field
-      - value
-    InCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-          values:
-            type: array
-            items:
-              type: object
-      required:
-      - field
-      - values
-    LessThanCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-          value:
-            type: object
-      required:
-      - field
-      - value
-    LessThanOrEqualsCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-          value:
-            type: object
-      required:
-      - field
-      - value
-    ListRequest:
-      properties:
-        q:
-          type: string
-          description: A search query string
-        conditions:
+        data:
           type: array
-          description: "A list of additional filter conditions to apply to the search.\
-            \ Supports various logical and comparison operators such as AND, OR, NOT,\
-            \ equality, range, and set membership. Each condition specifies either\
-            \ a field-level comparison or a combination of multiple conditions for\
-            \ advanced filtering"
+          description: "A list of items returned for the current page, based on the\
+            \ provided pagination and filter parameters"
           items:
-            $ref: "#/components/schemas/Condition"
-        limit:
-          type: integer
-          format: int32
-          description: "Maximum number of items to return (default: 100, max: 1000)"
-        offset:
-          type: integer
-          format: int32
-          description: "The index of the first item to return (default: 0)"
-        sort:
-          type: string
-          description: "Sort expression. Supports one or more fields, optionally prefixed\
-            \ with `-` to indicate descending order. For example, `title,-created_at`"
-    NotCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          condition:
-            $ref: "#/components/schemas/Condition"
+            $ref: "#/components/schemas/InventorySlaveItem"
+        has_more:
+          type: boolean
+          description: "Indicates whether more items are available beyond the current\
+            \ page. When false, the current result set is the final one"
       required:
-      - condition
-    NotEqualsCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
-      - type: object
-        properties:
-          field:
-            type: string
-          value:
-            type: object
-      required:
-      - field
-      - value
-    OrCondition:
-      allOf:
-      - $ref: "#/components/schemas/Condition"
+      - data
+      - has_more
     IdRequest:
       properties:
         id:
           type: integer
           format: int64
           description: Unique identifier for the recourse
-      required:
-      - id
-    IdResponse:
-      description: Response containing the unique identifier of the created resource
-      example:
-        id: 123
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: Unique identifier for the created resource
       required:
       - id
     SlaveItemCreateRequest:
@@ -1938,6 +2121,17 @@ components:
       required:
       - inventory_id
       - label
+    IdResponse:
+      description: Response containing the unique identifier of the created resource
+      example:
+        id: 123
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique identifier for the created resource
+      required:
+      - id
     MasterItemUpdateRequest:
       description: Defines the request schema for `/inventory_item/master/update`
       properties:
@@ -1988,7 +2182,7 @@ components:
           example: GPS tracker FMC130-001
         model:
           type: string
-          description: A code of one of the supported models. See `a slaveinventory_item/master/model/list`
+          description: A code of one of the supported models. See `inventory_item/master/model/list`
           example: telfmb125
         asset_id:
           type: integer
@@ -2007,6 +2201,22 @@ components:
       - inventory_id
       - label
       - model
+    ListResponseInventoryMasterItem:
+      description: Defines the response schema for `/*/list`
+      properties:
+        data:
+          type: array
+          description: "A list of items returned for the current page, based on the\
+            \ provided pagination and filter parameters"
+          items:
+            $ref: "#/components/schemas/InventoryMasterItem"
+        has_more:
+          type: boolean
+          description: "Indicates whether more items are available beyond the current\
+            \ page. When false, the current result set is the final one"
+      required:
+      - data
+      - has_more
     MasterItemCreateRequest:
       description: Defines the request schema for `/inventory_item/master/create`
       properties:
@@ -2020,14 +2230,17 @@ components:
           description: The server uses a unique identifier assigned to the device
             to authenticate and distinguish incoming data from different devices
           example: "123456789012345"
+          pattern: "^[0-9a-zA-Z\\-]{1,64}$"
         label:
           type: string
           description: The inventory item label
           example: GPS tracker FMC130-001
         model:
           type: string
-          description: A code of one of the supported models. See `a slaveinventory_item/master/model/list`
+          description: A code of one of the supported models. See `inventory_item/master/model/list`
           example: telfmb125
+          minLength: 1
+          pattern: "[-a-z0-9_]{1,255}"
         asset_id:
           type: integer
           format: int64
@@ -2046,20 +2259,11 @@ components:
           format: int64
           description: Unique identifier for the master item
           example: 123
-        device_id:
-          type: string
-          description: The server uses a unique identifier assigned to the device
-            to authenticate and distinguish incoming data from different devices
-          example: "123456789012345"
-        model:
-          type: string
-          description: A code of one of the supported models. See `a slaveinventory_item/master/model/list`
-          example: telfmb125
         activation_method_id:
           type: integer
           format: int32
           description: Unique identifier of one of the authentication methods supported
-            by the model. See `a slaveinventory_item/master/model/list`
+            by the model. See `inventory_item/master/model/list`
         fields:
           type: object
           additionalProperties:
@@ -2079,10 +2283,8 @@ components:
             activation_code: "123"
       required:
       - activation_method_id
-      - device_id
       - fields
       - id
-      - model
     InventoryUpdateRequest:
       properties:
         id:
@@ -2127,6 +2329,22 @@ components:
       - created_at
       - id
       - label
+    ListResponseInventory:
+      description: Defines the response schema for `/*/list`
+      properties:
+        data:
+          type: array
+          description: "A list of items returned for the current page, based on the\
+            \ provided pagination and filter parameters"
+          items:
+            $ref: "#/components/schemas/Inventory"
+        has_more:
+          type: boolean
+          description: "Indicates whether more items are available beyond the current\
+            \ page. When false, the current result set is the final one"
+      required:
+      - data
+      - has_more
     DeleteRequest:
       properties:
         id:
@@ -2206,10 +2424,6 @@ components:
         type: text
         label: Text field
         required: true
-      oneOf:
-      - $ref: "#/components/schemas/TextField"
-      - $ref: "#/components/schemas/DecimalField"
-      - $ref: "#/components/schemas/GeoJsonField"
       properties:
         id:
           type: integer
@@ -2224,22 +2438,11 @@ components:
           type: string
           enum:
           - text
+          - bigtext
           - decimal
+          - integer
+          - master_item
           - geojson
-      required:
-      - label
-      - required
-      - type
-    DecimalField:
-      allOf:
-      - $ref: "#/components/schemas/CustomField"
-      required:
-      - label
-      - required
-      - type
-    GeoJsonField:
-      allOf:
-      - $ref: "#/components/schemas/CustomField"
       required:
       - label
       - required
@@ -2271,25 +2474,18 @@ components:
           example:
           - label
           - Text field
-          - "131212"
+          - Number field
           - description
           items:
             type: string
             description: List of field keys to be displayed in the specified order
               within this section
-            example: "[\"label\",\"Text field\",\"131212\",\"description\"]"
+            example: "[\"label\",\"Text field\",\"Number field\",\"description\"]"
           maxItems: 64
           minItems: 0
       required:
       - fields
       - label
-    TextField:
-      allOf:
-      - $ref: "#/components/schemas/CustomField"
-      required:
-      - label
-      - required
-      - type
     AssetType:
       description: The Asset type
       properties:
@@ -2333,6 +2529,22 @@ components:
       - fields
       - id
       - label
+    ListResponseAssetType:
+      description: Defines the response schema for `/*/list`
+      properties:
+        data:
+          type: array
+          description: "A list of items returned for the current page, based on the\
+            \ provided pagination and filter parameters"
+          items:
+            $ref: "#/components/schemas/AssetType"
+        has_more:
+          type: boolean
+          description: "Indicates whether more items are available beyond the current\
+            \ page. When false, the current result set is the final one"
+      required:
+      - data
+      - has_more
     AssetTypeCreateRequest:
       description: Defines the request schema for `/asset_type/create`
       properties:
@@ -2432,6 +2644,22 @@ components:
       - created_at
       - id
       - label
+    ListResponseAssetLink:
+      description: Defines the response schema for `/*/list`
+      properties:
+        data:
+          type: array
+          description: "A list of items returned for the current page, based on the\
+            \ provided pagination and filter parameters"
+          items:
+            $ref: "#/components/schemas/AssetLink"
+        has_more:
+          type: boolean
+          description: "Indicates whether more items are available beyond the current\
+            \ page. When false, the current result set is the final one"
+      required:
+      - data
+      - has_more
     AssetLinkCreateRequest:
       description: Defines the request schema for `/asset_link/create`
       properties:
@@ -2476,6 +2704,7 @@ components:
       - id
       - label
     CustomFieldValue:
+      default: {}
       description: "Base type for custom field values. Implements different field\
         \ types: text, numeric (decimal), GeoJSON. Each object contains a 'type' field\
         \ that defines the specific value format. "
@@ -2493,7 +2722,10 @@ components:
           type: string
           enum:
           - text
+          - bigtext
           - decimal
+          - integer
+          - master_item
           - geojson
       required:
       - type
@@ -2565,6 +2797,22 @@ components:
       - id
       - label
       - type_id
+    ListResponseAsset:
+      description: Defines the response schema for `/*/list`
+      properties:
+        data:
+          type: array
+          description: "A list of items returned for the current page, based on the\
+            \ provided pagination and filter parameters"
+          items:
+            $ref: "#/components/schemas/Asset"
+        has_more:
+          type: boolean
+          description: "Indicates whether more items are available beyond the current\
+            \ page. When false, the current result set is the final one"
+      required:
+      - data
+      - has_more
     AssetCreateRequest:
       description: Defines the request schema for `/asset/create`
       properties:
@@ -2655,6 +2903,22 @@ components:
           description: A list of protocol types
       required:
       - protocols
+    ListResponseMasterItemModel:
+      description: Defines the response schema for `/*/list`
+      properties:
+        data:
+          type: array
+          description: "A list of items returned for the current page, based on the\
+            \ provided pagination and filter parameters"
+          items:
+            $ref: "#/components/schemas/MasterItemModel"
+        has_more:
+          type: boolean
+          description: "Indicates whether more items are available beyond the current\
+            \ page. When false, the current result set is the final one"
+      required:
+      - data
+      - has_more
     MasterItemModel:
       description: "Represents a supported device model with supported communication\
         \ types, and activation fields and methods"
