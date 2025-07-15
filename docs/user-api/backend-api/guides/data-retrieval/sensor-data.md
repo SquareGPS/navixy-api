@@ -50,14 +50,14 @@ By using these methods, you can effectively manage both automatically and manual
 
 To retrieve current sensor values, use the following API calls:
 
-* Input states: [get\_inputs](../../../introduction/index/data-retrieval/broken-reference/)
-* CAN and OBD sensor data: [get\_diagnostics](../../../introduction/index/data-retrieval/broken-reference/)
-* Fuel sensor data: [get\_fuel](../../../introduction/index/data-retrieval/broken-reference/)
-* Other metering sensor readings: [get\_readings](../../../introduction/index/data-retrieval/broken-reference/)
+* Input states: [get\_inputs](../../resources/tracking/tracker/#get_inputs)
+* CAN and OBD sensor data: [get\_diagnostics](../../resources/tracking/tracker/#get_diagnostics)
+* Fuel sensor data: [get\_fuel](../../resources/tracking/tracker/#get_fuel)
+* Other metering sensor readings: [get\_readings](../../resources/tracking/tracker/#get_readings)
 
 #### Comprehensive sensor data
 
-To retrieve data from all sensors, states, and counters of a device, use the [tracker/readings](../../../introduction/index/data-retrieval/broken-reference/) API call.
+To retrieve data from all sensors, states, and counters of a device, use the [tracker/readings/list](../../resources/tracking/tracker/readings.md#list) API call.
 
 Example response:
 
@@ -114,11 +114,11 @@ Note: The `input_status` and `output_status` fields provide binary information i
 
 #### Batch retrieval for multiple devices
 
-To optimize requests for multiple devices, use the [tracker/readings/batch\_list](../../../introduction/index/data-retrieval/broken-reference/) API call.
+To optimize requests for multiple devices, use the [tracker/readings/batch\_list](../../resources/tracking/tracker/readings.md#batch_list) API call.
 
 #### Historical sensor data
 
-To retrieve historical data from measurement sensors (up to 30 days), use the [tracker/sensor/data/read](../../../introduction/index/data-retrieval/broken-reference/) API call. Specify the sensor ID, which can be obtained using the [sensor/list](../../../introduction/index/data-retrieval/broken-reference/) request.
+To retrieve historical data from measurement sensors (up to 30 days), use the [tracker/sensor/data/read](../../resources/tracking/tracker/sensor/index.md#data-read) API call. Specify the sensor ID, which can be obtained using the [sensor/list](../../resources/tracking/tracker/sensor/index.md#list) request.
 
 ### Using counters
 
@@ -126,7 +126,7 @@ Counters are tools for monitoring specific metrics, such as odometer (mileage) a
 
 #### Counter creation
 
-To create a counter, use the [value/set](../../../introduction/index/data-retrieval/broken-reference/) API call.
+To create a counter, use the [value/set](../../resources/tracking/tracker/counter.md#value-set) API call.
 
 Example for creating an odometer counter:
 
@@ -146,9 +146,9 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/read' \
 
 #### Retrieving counter values
 
-* Get all counter values: [get\_counters](../../../introduction/index/data-retrieval/broken-reference/)
-* Get specific counter type for one device: [value/get](../../../introduction/index/data-retrieval/broken-reference/)
-* Get counter values for multiple devices: [value/list](../../../introduction/index/data-retrieval/broken-reference/)
+* Get all counter values: [get\_counters](../../resources/tracking/tracker/counter.md#get_counters)
+* Get specific counter type for one device: [value/get](../../resources/tracking/tracker/counter.md#value-get)
+* Get counter values for multiple devices: [value/list](../../resources/tracking/tracker/counter.md#value-list)
 
 #### Historical counter data
 
@@ -188,8 +188,8 @@ Example response:
 
 To retrieve counted values for a specific period:
 
-* Mileage: [stats/mileage](../../../introduction/index/data-retrieval/broken-reference/)
-* Engine hours: [stats/engine\_hours](../../../introduction/index/data-retrieval/broken-reference/)
+* Mileage: [stats/mileage](../../resources/tracking/tracker/stats/stats_mileage.md)
+* Engine hours: [stats/engine\_hours](../../resources/tracking/tracker/stats/stats_engine_hours.md)
 
 ## Virtual sensors
 
@@ -408,7 +408,7 @@ To utilize this data effectively, create a separate virtual sensor for each para
 
 #### Creating a virtual sensor
 
-To create a virtual sensor, use the [tracker/sensor/create](../../../introduction/index/data-retrieval/broken-reference/) API call. This allows you to define and configure virtual sensors based on specific input parameters. Virtual sensors can be used to monitor various conditions and provide meaningful insights.
+To create a virtual sensor, use the [tracker/sensor/create](../../resources/tracking/tracker/sensor/index.md#create) API call. This allows you to define and configure virtual sensors based on specific input parameters. Virtual sensors can be used to monitor various conditions and provide meaningful insights.
 
 Example for creating a virtual ignition sensor:
 
@@ -422,7 +422,7 @@ This example demonstrates how to create a virtual ignition sensor that monitors 
 
 #### Updating a virtual sensor
 
-To update an existing virtual sensor, use the [tracker/sensor/update](../../../introduction/index/data-retrieval/broken-reference/) API call. This is useful for modifying the parameters or configuration of an already created sensor to reflect new thresholds or settings.
+To update an existing virtual sensor, use the [tracker/sensor/update](../../resources/tracking/tracker/sensor/index.md#update) API call. This is useful for modifying the parameters or configuration of an already created sensor to reflect new thresholds or settings.
 
 Example for updating a virtual ignition sensor:
 
@@ -437,7 +437,7 @@ This example shows how to update a virtual ignition sensor, changing the voltage
 ### Retrieving virtual sensor data
 
 1.  **Historical data**\
-    Use the [tracker/sensor/data/read](../../../introduction/index/data-retrieval/broken-reference/) API call.
+    Use the [tracker/sensor/data/read](../../resources/tracking/tracker/sensor/index.md#data-read) API call.
 
     Example:
 
@@ -447,7 +447,7 @@ This example shows how to update a virtual ignition sensor, changing the voltage
         -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "sensor_id": 965837, "from": "2023-07-24 00:00:00", "to": "2023-07-24 23:59:00", "raw_data": false}'
     ```
 2.  **Current values**\
-    Use the [tracker/readings/batch\_list](../../../introduction/index/data-retrieval/broken-reference/) API call for multiple devices.
+    Use the [tracker/readings/batch\_list](../../resources/tracking/tracker/readings.md#batch_list) API call for multiple devices.
 
     Example:
 
