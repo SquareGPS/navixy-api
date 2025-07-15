@@ -152,7 +152,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/read' \
 
 #### Historical counter data
 
-To retrieve counter values with timestamps for a specific period, use the [data/list](../../../introduction/index/data-retrieval/broken-reference/) API call.
+To retrieve counter values with timestamps for a specific period, use the [data/read](../../resources/tracking/tracker/sensor/index.md#data-read) API call.
 
 Example response:
 
@@ -161,24 +161,12 @@ Example response:
   "success": true,
   "list": [
     {
-      "value": 581321.0,
-      "update_time": "2021-05-30 12:16:01"
+      "value": 100500,
+      "get_time": "2022-02-28 00:00:00"
     },
     {
-      "value": 581322.0,
-      "update_time": "2021-05-30 12:36:01"
-    },
-    {
-      "value": 581323.0,
-      "update_time": "2021-05-30 12:56:01"
-    },
-    {
-      "value": 581324.0,
-      "update_time": "2021-05-30 13:16:01"
-    },
-    {
-      "value": 581325.0,
-      "update_time": "2021-05-30 13:36:01"
+      "value": 100501,
+      "get_time": "2022-02-28 00:00:30"
     }
   ]
 }
