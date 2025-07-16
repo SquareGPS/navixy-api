@@ -1,4 +1,4 @@
-# obtain-reports
+# Obtaining Report Information
 
 Reports offer essential insights to effectively manage your fleet or mobile workforce. At times, you may need to extract report data for use in external applications or to generate custom business reports, such as those detailing trip information alongside fuel consumption, drains, and refills. Follow these steps to obtain report information using the Navixy API.
 
@@ -11,22 +11,20 @@ Necessary parameters for this call:
 * `from` - A string containing [date/time](../../#datetime-formats). Data in the report will be from this moment.
 * `to` - A string containing [date/time](../../#datetime-formats). The specified date must be after the `from` date. Data in the report will be up to this moment.
 * `title` - Report title. If null, the default title will be used.
-* `trackers` - List of [tracker IDs](broken-reference) to be included in the report (if the report is by trackers).
+* `trackers` - List of [tracker IDs](../../resources/tracking/tracker/#list) to be included in the report (if the report is by trackers).
 * `employees` - List of [employee IDs](../../resources/field-service/employee/index.md#list) to be included in the report (if the report is by employees).
 * `time_filter` - An object containing daily time and weekday limits for processed data, e.g., `{"to":"18:00", "from":"12:00", "weekdays":[1,2,3,4,5]}`.
 * `plugin` - A plugin object. See the list of all [report plugins](../../resources/commons/plugin/report_plugins.md).
 
 API request:
 
-\=== "cURL"
-
-````
-```shell
+{% code title="cURL" overflow="wrap" %}
+```sh
 curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/generate' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "title": "Trip report", "trackers": [669673], "from": "2020-10-05 00:00:00", "to": "2020-10-06 23:59:59", "time_filter": {"from": "00:00:00", "to": "23:59:59", "weekdays": [1,2,3,4,5,6,7]}, "plugin": {"hide_empty_tabs": true, "plugin_id": 4, "show_seconds": false, "include_summary_sheet_only": false, "split": true, "show_idle_duration": false, "show_coordinates": false, "filter": true, "group_by_driver": false}}'
 ```
-````
+{% endcode %}
 
 The response will include the generated report ID:
 
@@ -45,29 +43,30 @@ Use the `report_id` from the previous call response.
 
 API request:
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/retrieve' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 https://api.eu.navixy.com/v2/report/tracker/retrieve?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
-```    
-````
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 You will receive the report in JSON format:
 
-??? example "Response"
+<details>
 
-````
+<summary>Response</summary>
+
 ```json
 {
 "success": true,
@@ -315,7 +314,8 @@ You will receive the report in JSON format:
   "to": "2020-10-06 23:59:59"
 }
 ```
-````
+
+</details>
 
 ### Deleting Reports
 
@@ -325,20 +325,20 @@ Use the `report_id` from the `generate` call response.
 
 API request:
 
-\=== "cURL"
-
-````
-```shell
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST 'https://api.eu.navixy.com/v2/report/tracker/delete' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "report_id": 1234567}'
 ```
-````
+{% endtab %}
 
-\=== "HTTP GET"
-
-````
-```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
 https://api.eu.navixy.com/v2/report/tracker/delete?hash=a6aa75587e5c59c32d347da438505fc3&report_id=1234567
 ```
-````
+{% endcode %}
+{% endtab %}
+{% endtabs %}

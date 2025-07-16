@@ -19,8 +19,7 @@ Suppose you have a Teltonika FMB140 device with an ID of `231402` on the platfor
 
 To send this command, use the API request [`raw_command/send`](../../resources/tracking/tracker/#raw_command-send):
 
-cURL
-
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://tracker.navixy.com/v2/tracker/raw_command/send' \
     -H 'Content-Type: application/json' \
@@ -30,6 +29,7 @@ curl -X POST 'https://tracker.navixy.com/v2/tracker/raw_command/send' \
         "command": "setparam 2004:52.57.1.136"
     }'
 ```
+{% endcode %}
 
 Upon successful execution, the platform will confirm that the command has been sent.
 

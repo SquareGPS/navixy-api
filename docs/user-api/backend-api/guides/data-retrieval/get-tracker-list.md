@@ -8,27 +8,31 @@ Before you begin, ensure you have an active Navixy account and an [API key for a
 
 ## Make the API request
 
-To get the list of trackers, you need to make a POST request to the [`/tracker/list`](broken-reference) endpoint. Below are the details and examples of how to do this.
+To get the list of trackers, you need to make a POST request to the [`/tracker/list`](../../resources/tracking/tracker/#list) endpoint. Below are the details and examples of how to do this.
 
 ### API endpoint
 
-`https://api.navixy.com/v2/tracker/list`
+`https://api.{region}.navixy.com/v2/tracker/list`
 
 ### API request
 
 **cURL**
 
-```
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST 'https://api.navixy.com/v2/tracker/list' \
 	-H 'Content-Type: application/json' \
 	-d '{"hash": "your_api_key_hash"}'
 ```
+{% endtab %}
 
-**HTTP GET**
-
-```
+{% tab title="HTTP GET" %}
+```http
 https://api.navixy.com/v2/tracker/list?hash=your_api_key_hash
 ```
+{% endtab %}
+{% endtabs %}
 
 **Response**
 

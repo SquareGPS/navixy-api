@@ -40,7 +40,7 @@ Next, assign this tag to your objects. You can do this when updating or creating
 * [Task](../../resources/field-service/task/#task-object) - [update](../../resources/field-service/task/#update)/[create](../../resources/field-service/task/#create)
 * [Task schedule](../../resources/field-service/task/schedule/index.md#task-schedule-entry-object) - [update](../../resources/field-service/task/schedule/index.md#update)/[create](../../resources/field-service/task/schedule/index.md#create)
 * [Employee](../../resources/field-service/employee/index.md#employee-object) - [update](../../resources/field-service/employee/index.md#update)/[create](../../resources/field-service/employee/index.md#create)
-* [Vehicle](../../../introduction/index/fleet-management/broken-reference/) - [update](../../../introduction/index/fleet-management/broken-reference/)/[create](../../../introduction/index/fleet-management/broken-reference/)
+* [Vehicle](../../resources/fleet/vehicle/#vehicle-object) - [update](../../resources/fleet/vehicle/#update)/[create](../../resources/fleet/vehicle/#create)
 * [Zone](../../resources/tracking/zone/#entity-description) - [update](../../resources/tracking/zone/#update)/[create](../../resources/tracking/zone/#create)
 * [Tracker](../../resources/tracking/tracker/#tracker-object-structure) - Use the `tags/set` method
 

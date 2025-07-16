@@ -2,25 +2,39 @@
 
 In Navixy, check-ins are a feature used to record and report the location and status of employees in the field. They allow employees to send real-time updates about their location, accompanied by additional data such as forms, photos, and comments. These check-ins can be used for various purposes, including verifying task completion, providing updates on job progress, and collecting field data. Check-ins are typically created using the X-GPS Tracker mobile app and can be integrated into workflows to ensure accurate and timely information from field employees.
 
-> Check-ins are normally created using X-GPS Tracker mobile app. The description below is necessary only for non-standard use, such as creating your own Mobile Tracker app that works with the Navixy platform.
+{% hint style="info" %}
+Check-ins are normally created using X-GPS Tracker mobile app. The description below is necessary only for non-standard use, such as creating your own Mobile Tracker app that works with the Navixy platform.
+{% endhint %}
+
+## Creation steps
 
 To create check-ins in the Navixy platform, follow these steps:
 
-## Step 1: Create a Form from a Template
+{% stepper %}
+{% step %}
+## Create a Form from a Template
 
 Use the [`checkin/form/create`](../../resources/field-service/checkin.md#form-create) API call to create a form based on a template. In the X-GPS Tracker, the form is created when the template is selected by a user.
+{% endstep %}
 
-## Step 2: Create Files for Photos
+{% step %}
+## Create Files for Photos
 
 Use the [`checkin/image/create`](../../resources/field-service/checkin.md#image-create) API call to create files for check-in photos and upload the photo data. In the X-GPS Tracker, check-in photos are created as each photo is added.
+{% endstep %}
 
-## Step 3: Create Form Files
+{% step %}
+## Create Form Files
 
 Use the [`checkin/form/file/create`](../../resources/field-service/checkin.md#form-file-create) API call to create form files and upload their data. In the X-GPS Tracker, form files are created when they are added while filling out the form.
+{% endstep %}
 
-## Step 4: Create the Check-in
+{% step %}
+## Create the Check-in
 
 Use the [`checkin/create`](../../resources/field-service/checkin.md#create) API call to create the check-in, attaching all the necessary data. If the form includes optional fields that should be left empty for your check-in, simply refrain from adding these fields to the form submission object.
+{% endstep %}
+{% endstepper %}
 
 ## File Upload Process
 

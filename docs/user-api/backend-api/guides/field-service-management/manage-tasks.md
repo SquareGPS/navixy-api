@@ -22,6 +22,7 @@ Let's create a task for George to deliver new devices to an office on March 16th
 
 **API request:**
 
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/task/create' \
     -H 'Content-Type: application/json' \
@@ -44,6 +45,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/task/create' \
         "create_form": false
     }'
 ```
+{% endcode %}
 
 ### Example Response
 
@@ -64,6 +66,7 @@ Let's create a route task for John to deliver products to three customers on Mar
 
 **API request:**
 
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/task/route/create' \
     -H 'Content-Type: application/json' \
@@ -132,6 +135,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/task/route/create' \
         "create_form": false
     }'
 ```
+{% endcode %}
 
 ### Example Response
 
@@ -167,6 +171,7 @@ To optimize a route for minimizing transit time and costs, reorder the checkpoin
 
 ### Example Request
 
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/task/route/points/optimize' \
     -H 'Content-Type: application/json' \
@@ -205,6 +210,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/task/route/points/optimize' \
         ]
     }'
 ```
+{% endcode %}
 
 ### Example Response
 

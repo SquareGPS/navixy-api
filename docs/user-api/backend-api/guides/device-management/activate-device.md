@@ -26,7 +26,7 @@ Full information about activation codes and their purposes is available [here](h
 
 **Step 3: Activate the device**
 
-Activate the device using the [`tracker/register`](../../../introduction/index/device-management/broken-reference/) action.
+Activate the device using the [`tracker/register`](../../resources/tracking/tracker/#register) action.
 
 ### GPS tracker activation
 

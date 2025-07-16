@@ -6,10 +6,11 @@ Employee statuses track the current activity of employees via their tracking dev
 
 To manage employee activities effectively, create working status lists and assign them to devices. For instance, a status list for a delivery service allows drivers and supervisors to change their working status using the X-GPS app or the UI.
 
-To create a working status list, use the `status/listing/create` method. You need to provide the `listing` parameter, which is a [status_listing](../../resources/tracking/status/listing/index.md#status-listing-object-structure) object without the "id" and "entries" fields.
+To create a working status list, use the `status/listing/create` method. You need to provide the `listing` parameter, which is a [status\_listing](../../resources/tracking/status/listing/index.md#status-listing-object-structure) object without the "id" and "entries" fields.
 
 ### Example Request to Create a Working Status List
 
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/status/listing/create' \
     -H 'Content-Type: application/json' \
@@ -22,6 +23,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/status/listing/create' \
         }
     }'
 ```
+{% endcode %}
 
 ### Example Response
 
@@ -36,6 +38,7 @@ Next, add individual working statuses to the list. For example, you might have t
 
 ### Example Request to Add a Working Status
 
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/status/create' \
     -H 'Content-Type: application/json' \
@@ -48,6 +51,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/status/create' \
         }
     }'
 ```
+{% endcode %}
 
 ### Example Response
 
@@ -66,6 +70,7 @@ To assign the working status list to devices, use the `tracker_id` and `listing_
 
 ### Example Request to Assign a Status List to a Tracker
 
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/status/listing/tracker/assign' \
     -H 'Content-Type: application/json' \
@@ -75,6 +80,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/status/listing/tracker/assign' \
         "listing_id": 111
     }'
 ```
+{% endcode %}
 
 ### Example Response
 
@@ -89,7 +95,6 @@ curl -X POST 'https://api.eu.navixy.com/v2/status/listing/tracker/assign' \
 Once assigned, drivers and supervisors can change working statuses. Here are some use cases:
 
 1. **Automated Task Assignment:** Create a script to assign a new task to a driver with the working status "Free." After assigning the task, the script changes the working status to "Pick up the goods from storage."
-
 2. **Task Completion:** When a task is completed, a script changes the working status to "Free" and retrieves fields from the ERP system to create a new task and assign it to the driver.
 
 This flexible system allows for efficient management of employee activities and can be integrated with various business processes for automation.

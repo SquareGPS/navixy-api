@@ -27,31 +27,33 @@ For our CRM system, we need the following fields:
 
 Some fields are default and cannot be changed (Label, Address, Description, and Tags). All other necessary fields should be created manually.
 
-> Custom fields added here will be available for all places.
+{% hint style="info" %}
+Custom fields added here will be available for all places.
+{% endhint %}
 
 First, get the entity ID to identify which entity to update and where to add fields.
 
 **API Request:**
 
-#### cURL
-
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/entity/list' \
      -H 'Content-Type: application/json' \
      -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
 ```
+{% endcode %}
 
 The response will provide the necessary entity ID with existing fields. Add new fields to this entity. Only add fields that do not already exist.
 
 **API Request:**
 
-#### cURL
-
+{% code title="cURL" overflow="wrap" %}
 ```shell
     curl -X POST 'https://api.eu.navixy.com/v2/entity/fields/update' \
         -H 'Content-Type: application/json' \
         -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "delete_missing": true, "entity_id": 520, "fields": [{"label": "E-mail", "required": false, "type": "email", "description": "Customer\'s email"}, {"label": "Phone", "required": false, "type": "phone", "description": "Customer\'s phone"}, {"label": "The last visit date", "required": false, "type": "text", "description": null}, {"label": "The last order №", "required": false, "type": "text", "description": null}, {"label": "The last visit result", "required": false, "type": "text", "description": null}, {"label": "Responsible employee", "params": {"responsible": true}, "required": false, "type": "employee", "description": null}]}'
 ```
+{% endcode %}
 
 The platform will confirm the update with:
 
@@ -112,9 +114,7 @@ Once we have the field IDs, we can change their order in the entity. Update the 
 
 **API Request:**
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/entity/update' \
     -H 'Content-Type: application/json' \
@@ -128,9 +128,7 @@ With the fields set up, we can now create a location. The field names indicate t
 
 **API Request:**
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/place/create' \
     -H 'Content-Type: application/json' \

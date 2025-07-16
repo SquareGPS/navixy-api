@@ -62,8 +62,7 @@ The first call retrieves [historical data from devices](../../resources/tracking
 
 **Request example:**
 
-cURL
-
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.navixy.com/v2/beacon/data/read' \
     -H 'Content-Type: application/json' \
@@ -74,6 +73,7 @@ curl -X POST 'https://api.navixy.com/v2/beacon/data/read' \
         "beacons": ["7cf9501df3d6924e423cabcde4c924ff"]
     }'
 ```
+{% endcode %}
 
 This will show which devices were in the vicinity of this BLE beacon during period
 
@@ -115,8 +115,7 @@ The second call retrieves information about [currently connected beacons](../../
 
 **Request example:**
 
-cURL
-
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.navixy.com/v2/beacon/data/last_values' \
     -H 'Content-Type: application/json' \
@@ -126,6 +125,7 @@ curl -X POST 'https://api.navixy.com/v2/beacon/data/last_values' \
         "skip_older_than_seconds": 1200
     }'
 ```
+{% endcode %}
 
 ```json
 {
@@ -159,8 +159,7 @@ API call [track/list](../../resources/tracking/track/index.md#list) to get trip 
 
 Request example:
 
-cURL
-
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.navixy.com/v2/beacon/data/last_values' \
     -H 'Content-Type: application/json' \
@@ -170,6 +169,7 @@ curl -X POST 'https://api.navixy.com/v2/beacon/data/last_values' \
         "skip_older_than_seconds": 1200
     }'
 ```
+{% endcode %}
 
 Response:
 
@@ -199,8 +199,7 @@ If you want a detailed track record of the trailer where the beacon is installed
 
 Request example:
 
-cURL
-
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.navixy.com/v2/track/read' \
     -H 'Content-Type: application/json' \
@@ -212,6 +211,7 @@ curl -X POST 'https://api.navixy.com/v2/track/read' \
         "filter": true
     }'
 ```
+{% endcode %}
 
 Response:
 

@@ -15,9 +15,7 @@ This call contains only two optional parameters:
 
 Example: To obtain no more than 100 entries for the last month (assuming today's date is 2021-01-26), the API request will be:
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/history/unread/list' \
     -H 'Content-Type: application/json' \
@@ -70,7 +68,7 @@ Use the [`history/tracker/list`](../../resources/commons/history/history_tracker
 
 ### Required Parameters
 
-* `trackers`: An array of integers. A [list of tracker IDs](broken-reference) for which events will be searched.
+* `trackers`: An array of integers. A [list of tracker IDs](../../resources/tracking/tracker/#list) for which events will be searched.
 * `from`: A string containing the start [date/time](../../#data-types) for the search.
 * `to`: A string containing the end [date/time](../../#data-types) for the search. Must be after the `from` date.
 
@@ -82,9 +80,7 @@ Use the [`history/tracker/list`](../../resources/commons/history/history_tracker
 
 Example: To obtain no more than 100 entries for December for one device, sorted in descending order by time, and to know only when the device entered and exited the geofence, the API request will be:
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/history/tracker/list' \
     -H 'Content-Type: application/json' \
@@ -111,9 +107,7 @@ To obtain a list of all tracker events for a user received between the specified
 
 Example: To get state field events for the last five minutes on all trackers of a user, use `to`=CURRTIME and `from`=CURRTIME-5 minutes. Filter by `state_field_control` events.
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/history/user/list' \
     -H 'Content-Type: application/json' \

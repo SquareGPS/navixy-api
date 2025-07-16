@@ -15,8 +15,7 @@ For instance, we need a form that is submitted only within the task zone to ensu
 
 #### API Request:
 
-cURL
-
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/form/template/create' \
     -H 'Content-Type: application/json' \
@@ -71,6 +70,7 @@ curl -X POST 'https://api.eu.navixy.com/v2/form/template/create' \
         }
     }'
 ```
+{% endcode %}
 
 #### Example Response:
 
@@ -92,7 +92,9 @@ Forms can be filled in two ways:
 
 A form can be assigned to an existing task with the [task update](../../resources/field-service/task/#update) call or used during [task creation](../../resources/field-service/task/#create).
 
-> `create_form` parameter should be `false` to add an already created form.
+{% hint style="info" %}
+`create_form` parameter should be `false` to add an already created form.
+{% endhint %}
 
 ## Retrieving Information from Submitted Forms
 
@@ -112,7 +114,7 @@ Alternatively:
 ### Specific Forms Submitted with Check-ins
 
 * Obtain a list of [check-ins](../../resources/field-service/checkin.md#list) to get the `form_id`.
-* Use the `form_id`  to [read](../../resources/field-service/task/form/index.md#read) and [download](../../resources/field-service/task/form/index.md#download) the forms.
+* Use the `form_id` to [read](../../resources/field-service/task/form/index.md#read) and [download](../../resources/field-service/task/form/index.md#download) the forms.
 
 ### Generating Reports
 

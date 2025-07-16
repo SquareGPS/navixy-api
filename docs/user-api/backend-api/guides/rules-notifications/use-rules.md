@@ -27,9 +27,7 @@ Availability of some parameters depends on the rule type used:
 
 ### API Request
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/create' \
     -H 'Content-Type: application/json' \
@@ -91,9 +89,7 @@ The list of necessary parameters is the same as in the [`rule/create`](use-rules
 
 ### API Request
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/update' \
     -H 'Content-Type: application/json' \
@@ -107,9 +103,7 @@ To suspend a rule, use the [`rule/update`](../../resources/tracking/tracker/rule
 
 ### API Request
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/update' \
     -H 'Content-Type: application/json' \

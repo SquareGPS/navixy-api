@@ -18,7 +18,7 @@ With the API key hash and tracker ID in hand, you can now get all points for a s
 
 ### Required Parameters
 
-* `tracker_id` - Obtained from the [`tracker/list`](broken-reference) call. Only one tracker\_id per call. It should be an integer.
+* `tracker_id` - Obtained from the [`tracker/list`](../../resources/tracking/tracker/#list) call. Only one tracker\_id per call. It should be an integer.
 * `from` - A string containing the start [`date/time`](../../#datetime-formats).
 * `to` - A string containing the end [`date/time`](../../#datetime-formats).
 
@@ -71,13 +71,13 @@ You can also [download](../../resources/tracking/track/index.md#download) a KML 
 
 ### Example Request
 
-\=== "cURL"
-
+{% code title="cURL" overflow="wrap" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/track/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "format": "kml", "split": false}'
 ```
+{% endcode %}
 
 ### Additional Parameters
 

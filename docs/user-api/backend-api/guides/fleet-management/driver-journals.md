@@ -12,17 +12,17 @@ For example, to generate a bill for fuel payment, you may need to categorize all
 
 ### Retrieving All Trips for a Period
 
-To generate a driver journal, first retrieve a list of possible trips using the [`fleet/driver_journal/proposal/list`](../../../introduction/index/fleet-management/broken-reference/) API call.
+To generate a driver journal, first retrieve a list of possible trips using the [`fleet/driver_journal/proposal/list`](../../resources/fleet/driver_journal/proposal.md#list) API call.
 
 #### API Request
 
-\=== "cURL"
-
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/driver/journal/proposal/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2021-10-26 00:00:00", "to": "2021-10-26 23:59:59", "tracker_id": 311852}'
 ```
+{% endcode %}
 
 #### Example Response
 
@@ -97,13 +97,13 @@ Once you have a list of all trips, create driver journal entries. Specify the ty
 
 #### API Request
 
-\=== "cURL"
-
+{% code title="cURL" %}
 ```shell
 curl -X POST 'https://api.eu.navixy.com/v2/driver/journal/entry/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entries": [{"tracker_id": 311852, "employee_id": 2183, "start_date": "2021-10-26 00:00:00", "end_date": "2021-10-26 01:39:22", "start_location": {"address": "123 Main St, Los Angeles, CA 90012", "lat": 34.052235, "lng": -118.243683}, "end_location": {"address": "456 Elm St, Los Angeles, CA 90012", "lat": 34.052235, "lng": -118.243683}, "length": 70.83, "start_odometer": 620741.0, "end_odometer": 620812.0, "type": "work", "comment": "order_ID=23415"}, {"tracker_id": 311852, "employee_id": 2183, "start_date": "2021-10-26 01:47:22", "end_date": "2021-10-26 03:30:58", "start_location": {"address": "456 Elm St, Los Angeles, CA 90012", "lat": 34.052235, "lng": -118.243683}, "end_location": {"address": "789 Oak St, Los Angeles, CA 90012", "lat": 34.052235, "lng": -118.243683}, "length": 45.32, "start_odometer": 620812.0, "end_odometer": 620856.0, "type": "personal", "comment": "trip to a cafe"}, {"tracker_id": 311852, "employee_id": 2183, "start_date": "2021-10-26 03:37:58", "end_date": "2021-10-26 04:53:18", "start_location": {"address": "789 Oak St, Los Angeles, CA 90012", "lat": 34.052235, "lng": -118.243683}, "end_location": {"address": "101 Pine St, Los Angeles, CA 90012", "lat": 34.052235, "lng": -118.243683}, "length": 77.6, "start_odometer": 620856.0, "end_odometer": 620934.0, "type": "work", "comment": "order_ID=31024"}]}'
 ```
+{% endcode %}
 
 #### Example Response
 

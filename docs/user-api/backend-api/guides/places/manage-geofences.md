@@ -14,9 +14,7 @@ For example, to create a geofence with a 50-meter radius around a business park 
 
 **API Request:**
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```sh
 curl -X POST 'https://tracker.navixy.com/v2/zone/create' \
     -H 'Content-Type: application/json' \
@@ -32,9 +30,7 @@ A polygon geofence is more complex as it requires specifying multiple points whe
 
 **API Request:**
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```sh
 curl -X POST 'https://tracker.navixy.com/v2/zone/create' \
     -H 'Content-Type: application/json' \
@@ -52,9 +48,7 @@ For example, to create geofences for street cleaning vehicles to ensure they fol
 
 **API Request:**
 
-cURL
-
-{% code overflow="wrap" %}
+{% code title="cURL" overflow="wrap" %}
 ```sh
 curl -X POST 'https://tracker.navixy.com/v2/zone/create' \
     -H 'Content-Type: application/json' \
