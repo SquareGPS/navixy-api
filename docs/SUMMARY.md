@@ -137,6 +137,7 @@
         * [Unread events](user-api/backend-api/resources/commons/history/history_unread.md)
         * [User events](user-api/backend-api/resources/commons/history/history-user.md)
         * [Events history](user-api/backend-api/resources/commons/history/index.md)
+        * [Asset events](user-api/backend-api/resources/commons/history/asset-events.md)
       * [Plugin](user-api/backend-api/resources/commons/plugin/README.md)
         * [Plugin](user-api/backend-api/resources/commons/plugin/index.md)
         * [Report plugins](user-api/backend-api/resources/commons/plugin/report_plugins.md)
