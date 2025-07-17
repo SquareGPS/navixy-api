@@ -5,11 +5,11 @@ description: Contains list method to get user's events.
 
 # User events
 
-### API actions
+## API actions
 
 API path: `/history/user/`.
 
-#### List
+### list
 
 Lists less than or equal to `limit` of tracker events filtered by event types (`events`) between `from` date/time and `to` date/time sorted by **time** field.
 

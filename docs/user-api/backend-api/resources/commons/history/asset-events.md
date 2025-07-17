@@ -1,14 +1,14 @@
 # Asset events
 
-Contains list method to get asset events.
+Contains methods to get asset events.
 
-### API actions
+## API actions
 
 API path: `/history/asset/`.
 
-#### `list`
+### list
 
-List less than or equal to `limit` of assets' events sorted by **time** field.
+Lists less than or equal to `limit` of assets' events sorted by the `time` field.
 
 **Parameters**
 
@@ -39,13 +39,13 @@ The asset label is calculated as the vehicle label. If there is no vehicle asset
 
 \=== "cURL"
 
-````
-```shell
+{% code overflow="wrap" %}
+```
 curl -X POST '{{ extra.api_example_url }}/history/asset/list' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "assets": [{"id": 1683258, "type": "employee"}], "from": "2020-12-10 16:44:00", "to": "2020-12-22 16:44:00"}'
 ```
-````
+{% endcode %}
 
 **Response**
 
@@ -65,9 +65,9 @@ curl -X POST '{{ extra.api_example_url }}/history/asset/list' \
 * 211 – Requested time span is too big - time span between `from` and `to` is more than report.maxTimeSpan days.
 * 212 – Requested `limit` is too big - `limit` is more than history.maxLimit.
 
-#### `count`
+### count
 
-Count total and unread number of asset events.
+Count the total and unread number of asset events.
 
 **Parameters**
 
@@ -89,13 +89,11 @@ Interval will be restricted by store period interval.
 
 \=== "cURL"
 
-````
-```shell
+```
 curl -X POST '{{ extra.api_example_url }}/history/asset/count' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "assets": [{"id": 1683258, "type": "employee"}], "from": "2020-12-10 16:44:00", "to": "2020-12-22 16:44:00"}'
 ```
-````
 
 **Response**
 
