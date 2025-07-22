@@ -222,17 +222,9 @@ You will receive the ID of the newly created asset:
 
 #### Step 4. Assign a GPS device
 
-{% openapi-schemas spec="navixy-repo" schemas="InventoryMasterItem" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
-{% endopenapi-schemas %}
+Now that you have an asset, you need to assign a device to it. This is done by adding the `asset_id` parameter to the inventory item (master or slave) representing the device. You can assign several devices to one asset — or, in the API's terms, add the same `asset_id` to several inventory items.
 
-Now that you have an asset, you need to assign a device to it. This is done by adding the `asset_id` parameter to the master-type inventory item representing the device. You can assign several devices to one asset — or, in the API's terms, add the same `asset_id` to several inventory items.
-
-If your device is already activated, send the following request (let's assume your item's `label` is `Sea Explorer GPS Tracker`):
-
-{% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/update" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
-{% endopenapi-operation %}
+If your device is already activated, send the following request (let's assume you have a master-type item called  `Sea Explorer GPS Tracker`):
 
 ```json
 curl -X POST {BASE_URL}/v0/inventory_item/master/update \
@@ -246,11 +238,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/update \
 }'
 ```
 
-If you haven't created an inventory item yet, you can add the `asset_id` parameter to the creation request:
-
-{% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/create" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
-{% endopenapi-operation %}
+If you haven't created an inventory item yet, you can add the `asset_id` parameter to the creation request. For a master item, send the following request:
 
 ```json
 ​curl -X POST {BASE_URL}/v0/inventory_item/master/create \
