@@ -6,10 +6,7 @@ Navixy Repository API is available on multiple regional platforms to optimize pe
 
 #### Base URLs
 
-| Region   | Base URL                    | Data Location         |
-| -------- | --------------------------- | --------------------- |
-| Europe   | `https://api.eu.navixy.com` | European data centers |
-| Americas | `https://api.us.navixy.com` | US-based data centers |
+<table><thead><tr><th width="182.60003662109375">Region</th><th width="312.4000244140625">Base URL</th><th>Data Location</th></tr></thead><tbody><tr><td>Europe</td><td><code>https://api.navixy.com/repo/v0</code></td><td>European data centers</td></tr><tr><td>Americas</td><td><code>https://api.us.navixy.com/repo/v0</code></td><td>US-based data centers</td></tr></tbody></table>
 
 #### Environment selection
 

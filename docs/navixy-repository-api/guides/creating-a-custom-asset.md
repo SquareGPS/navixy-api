@@ -8,6 +8,10 @@ In this guide, you will learn how to create and configure a custom asset.
 
 ### How to create a custom asset
 
+{% hint style="warning" %}
+Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
+{% endhint %}
+
 #### Step 1. Create an asset type
 
 {% openapi-schemas spec="navixy-repo" schemas="AssetType" grouped="true" %}

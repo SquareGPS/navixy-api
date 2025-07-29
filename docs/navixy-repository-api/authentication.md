@@ -4,7 +4,13 @@ Authentication is required for all API requests and is based on OAuth 2.0.
 
 ### Authentication environments
 
-Navixy Repository API provides several authentication URLs depending on your geographical location.
+#### **Base URLs**
+
+<table><thead><tr><th width="182.60003662109375">Region</th><th>Base URL</th><th>Data Location</th></tr></thead><tbody><tr><td>Europe</td><td><code>https://keycloak.navixy.com</code></td><td>European data centers</td></tr><tr><td>Americas</td><td><code>https://keycloak.us.navixy.com</code></td><td>US-based data centers</td></tr></tbody></table>
+
+{% hint style="warning" %}
+Note that in this and other articles about Navixy Repository API, {AUTH\_BASE\_URL} is a placeholder for the URL you'll be using.
+{% endhint %}
 
 ### Organization-based access control
 

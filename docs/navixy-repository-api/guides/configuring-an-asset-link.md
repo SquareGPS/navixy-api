@@ -8,8 +8,12 @@ In this guide, you will learn about how asset links are structured, how to creat
 
 ### How to configure an asset link
 
+{% hint style="warning" %}
+Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
+{% endhint %}
+
 {% openapi-schemas spec="navixy-repo" schemas="AssetLink" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
 #### Prerequisites
@@ -21,7 +25,7 @@ An existing asset. Learn how to create it in [Creating a custom asset](creating-
 To create a new asset link, prepare an array of assets (or use an empty array) and send the following request:
 
 {% openapi-operation spec="navixy-repo" path="/v0/asset_link/create" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
 Use this request body:
@@ -51,7 +55,7 @@ You will receive a response with the new link ID:
 To add an asset to an existing link, send the following request:
 
 {% openapi-operation spec="navixy-repo" path="/v0/asset_link/set" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
 Use this request body:
@@ -73,7 +77,7 @@ You will receive `204 No Content` response, and the asset will be added to the `
 To remove an asset from an existing link, send the following request:
 
 {% openapi-operation spec="navixy-repo" path="/v0/asset_link/remove" method="post" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
 Use this request body:

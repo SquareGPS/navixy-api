@@ -13,6 +13,10 @@ Navixy Repository API supports two types of devices:
 
 ### How to activate a GPS device
 
+{% hint style="warning" %}
+Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
+{% endhint %}
+
 #### Prerequisites
 
 A GPS device ready for activation.
