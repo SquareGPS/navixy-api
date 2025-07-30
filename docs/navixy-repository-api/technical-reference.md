@@ -50,10 +50,8 @@ The API follows the **OpenAPI** **standard** with full CRUD for each object type
 **Example:**
 
 ```
-GET https://api.example.com/v1/data/search?objectId=123&type=location
+GET https://api.navixy.com/repo/v0/inventory/read?id=123
 ```
-
-**POST requests**
 
 Use `POST` requests with a **JSON body** when you need to:
 
@@ -159,18 +157,18 @@ To perform a basic full-text search (available for `list` endpoints), use the `q
 **GET:**
 
 ```bash
-curl -X GET {BASE_URL}/inventory/list \
+curl -X GET https://api.navixy.com/repo/v0/inventory/list \
   -H "Authorization: Bearer <YOUR-TOKEN>" \
-  --data-urlencode 'q=florida warehouse'
+  --data-urlencode 'q=geneva warehouse'
 ```
 
 **POST:**
 
 ```bash
-curl -X POST {BASE_URL}/inventory/list \
+curl -X POST https://api.navixy.com/repo/v0/inventory/list \
   -H "Authorization: Bearer <YOUR-TOKEN>" \
   -H 'Content-Type: application/json' \
-  -d '{"q": "florida warehouse"}'
+  -d '{"q": "geneva warehouse"}'
 ```
 
 #### Filtering
@@ -216,13 +214,13 @@ The API follows industry-standard semantic versioning principles to ensure clear
 To make versioning transparent and intuitive, the version is directly included in the request URL:
 
 ```
-{BASE_URL}/v{major}/{resource}/{operation}
+https://api.navixy.com/repo/v{major}/{resource}/{operation}
 ```
 
 For example:
 
 ```
-https://api.example.com/v1/inventory/list
+https://api.navixy.com/repo/v0/inventory/list
 ```
 
 The **major version number** is incremented only upon the introduction of breaking changes, such as:
@@ -258,7 +256,7 @@ Explore the full structure of Navixy Repository API using the OpenAPI standard.
 * Import the definition into OpenAPI-based API documentation & testing tools.
 * Perfect for documentation readers who want to explore and test endpoints without manual setup if the built-in documentation tools are insufficient for your specific needs
 
-You can download the OpenAPI specification [here](resources/navixy-repo-api-specification.yaml).
+You can view the OpenAPI specification [here](resources/navixy-repo-api-specification.yaml).
 
 #### Postman
 

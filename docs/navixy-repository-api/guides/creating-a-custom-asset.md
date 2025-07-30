@@ -24,6 +24,8 @@ To create a new asset type, send the following request:
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
+Use this request body:
+
 ```json
 curl -X POST {BASE_URL}/v0/asset_type/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
@@ -92,6 +94,10 @@ The **`fields`** key is an array of custom field objects used to add user-create
 * `required`: Whether the field is mandatory
 * `description`: An optional description
 
+{% hint style="warning" %}
+If you remove a custom field from an asset type via [POST asset\_type/update](broken-reference), all assets based on this type will lose this field. If you add a new field marked as required, you will need to add values for that field to the assets.
+{% endhint %}
+
 After sending the request, you will receive a response with the ID of the newly created asset type:
 
 ```json
@@ -102,7 +108,7 @@ After sending the request, you will receive a response with the ID of the newly 
 
 #### Step 2. Fetch custom field IDs
 
-Before creating an asset, we'll need to learn the IDs of the custom fields we've added in Step 1. To do it, send the following request:
+Before creating an asset, we'll need to learn the auto-generated internal ID of each custom field we've added in Step 1. We can learn them by sending the following request using the asset type's own ID:
 
 {% openapi-operation spec="navixy-repo" path="/v0/asset_type/read" method="get" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)

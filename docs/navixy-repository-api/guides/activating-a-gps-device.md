@@ -29,7 +29,7 @@ Navixy Repository API supports [a wide variety of GPS devices](https://www.navix
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
-Of course, you probably already know your model and want to fetch its specific parameters. That can be achieved by adding a query. For example, let's say our GPS device is Teltonika FM4200. We'll use this request:
+Of course, you probably already know your model and want to fetch its specific parameters. That can be achieved by adding a query. For example, let's say your GPS device is Teltonika FM4200. Use this request:
 
 {% code overflow="wrap" %}
 ```
