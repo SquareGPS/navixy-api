@@ -40,7 +40,8 @@ Example use cases include:
 ### Setting Up a Trigger
 
 1. **Select App**\
-   Search for and select the Navixy app.![Search for Navixy app](../assets/searchApp.png)
+   Search for and select the Navixy app.\
+   ![Search for Navixy app](../assets/searchApp.png)
 2.  **Configure Trigger**\
     Choose "New Tracker Event" as the trigger. Connect your account by providing a User Session Key or an API key.![New account connect](../assets/newAccountConnect.png)
 
@@ -48,7 +49,8 @@ Example use cases include:
 
     Select the correct server (US for accounts starting with 1000xxxx, otherwise EU).
 3. **Specify Trigger Details**
-   * **Tracker IDs:** Find them in the admin panel or user interface.![Tracker ID admin panel](../assets/trackerIDPanel.png)![Tracker ID user interface](../assets/trackerIDUI.png)
+   * **Tracker IDs:** Find them in the admin panel or user interface.![Tracker ID admin panel](../assets/trackerIDPanel.png)\
+     ![Tracker ID user interface](../assets/trackerIDUI.png)
    * **Event Types:** Specify one or multiple event types separated by comma from the provided list by click on the parameter name in Zapier or using [history/type/list](../../user-api/backend-api/resources/commons/history/history_type.md#list) API request.
    * **Account's Time Zone:** Specify the time zone (e.g., UTC+3 as 3).
    * **Time Interval:** Set the interval for event checks in minutes (e.g., 15 minutes).
@@ -58,7 +60,8 @@ Example use cases include:
 Choose one of the following actions based on your device and use case.
 
 1.  **Set Output**\
-    For devices that change one output at a time.![Choose set output](../assets/choose-set-output.png)\
+    For devices that change one output at a time.\
+    ![Choose set output](../assets/choose-set-output.png)\
     Provide:
 
     * Tracker ID
