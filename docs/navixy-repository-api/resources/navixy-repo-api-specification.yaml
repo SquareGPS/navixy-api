@@ -14,9 +14,9 @@ externalDocs:
   description: Find more info here
   url: https://www.navixy.com/docs/developers/navixy-repository-api
 servers:
-  - url: https://api.navixy.com/repo/v0
+  - url: https://api.navixy.com/repo
     description: Europe server
-  - url: https://api.us.navixy.com/repo/v0
+  - url: https://api.us.navixy.com/repo
     description: Americas server
 tags:
   - name: Inventories
@@ -3099,7 +3099,10 @@ components:
         - communication
         - name
         - vendor
-securitySchemes:
+security:
+  - OAuth2_EU: []
+  - OAuth2_US: []
+security:
   OAuth2_EU:
     type: oauth2
     description: "OAuth 2.0 authentication for Europe. Use this for users based in Europe and adjacent regions."
