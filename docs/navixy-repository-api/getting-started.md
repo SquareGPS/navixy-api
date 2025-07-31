@@ -57,10 +57,6 @@ curl -X GET {BASE_URL}/v0/inventory/list \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-{% hint style="warning" %}
-The API enforces rate limits of 50 requests per second per user and per IP address. Space out your requests accordingly to avoid hitting these limits.
-{% endhint %}
-
 For more information about authenticating in Navixy Repository API, see [Authentication](authentication.md).
 
 ### Step 2. Activate your GPS device

@@ -154,15 +154,35 @@ You will receive the ID of the created inventory:
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
-To create a **master inventory item**, send the following request:
+```bash
+curl -X POST {BASE_URL}/v0/inventory_item/master/create \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "label": "GPS tracker for Delivery Van 1"
+  }'
+```
 
 {% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/create" method="post" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
-Use this request body:
+You have two approaches to create a **master inventory item**:
 
-<pre class="language-json"><code class="lang-json"><strong>curl -X POST {BASE_URL}/v0/inventory_item/master/create \
+**Option A: Create with minimal information.** If you choose Option A, you'll need to update the item with device details before activation.
+
+```bash
+curl -X POST {BASE_URL}/v0/inventory_item/master/create \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "label": "Delivery Van 1"
+  }'
+```
+
+**Option B:** **Create with full device details**
+
+<pre class="language-bash"><code class="lang-bash"><strong>curl -X POST {BASE_URL}/v0/inventory_item/master/create \
 </strong>  -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -184,10 +204,6 @@ You will get the ID of the newly created item:
 </strong>  "id": 34
 }
 </code></pre>
-
-{% openapi-schemas spec="navixy-repo" schemas="InventorySlaveItem" grouped="true" %}
-[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
-{% endopenapi-schemas %}
 
 #### Step 4. Activate the GPS device
 
