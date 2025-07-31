@@ -9,7 +9,7 @@ info:
   license:
     name: Creative Commons Attribution 4.0 International License
     url: https://creativecommons.org/licenses/by/4.0/
-  version: V0 API (MVP)
+  version: 0.1.0
 externalDocs:
   description: Find more info here
   url: https://www.navixy.com/docs/developers/navixy-repository-api
@@ -3099,31 +3099,31 @@ components:
         - communication
         - name
         - vendor
+  securitySchemes:
+    OAuth2_EU:
+      type: oauth2
+      description: "OAuth 2.0 authentication for Europe. Use this for users based in Europe and adjacent regions."
+      flows:
+        clientCredentials:
+          tokenUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/auth
+          tokenUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/token
+          refreshUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/token
+          scopes: {}
+    OAuth2_US:
+      type: oauth2
+      description: "OAuth 2.0 authentication for Americas region. Use this for users based in North and South America."
+      flows:
+        clientCredentials:
+          tokenUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/auth
+          tokenUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/token
+          refreshUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/token
+          scopes: {}
 security:
   - OAuth2_EU: []
   - OAuth2_US: []
-security:
-  OAuth2_EU:
-    type: oauth2
-    description: "OAuth 2.0 authentication for Europe. Use this for users based in Europe and adjacent regions."
-    flows:
-      clientCredentials:
-        tokenUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/token
-        scopes: {}
-      authorizationCode:
-        authorizationUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/auth
-        tokenUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/token
-        refreshUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/token
-        scopes: {}
-  OAuth2_US:
-    type: oauth2
-    description: "OAuth 2.0 authentication for Americas region. Use this for users based in North and South America."
-    flows:
-      clientCredentials:
-        tokenUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/token
-        scopes: {}
-      authorizationCode:
-        authorizationUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/auth
-        tokenUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/token
-        refreshUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/token
-        scopes: {}
