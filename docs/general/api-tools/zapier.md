@@ -43,7 +43,8 @@ Example use cases include:
    Search for and select the Navixy app.\
    ![Search for Navixy app](../assets/searchApp.png)
 2.  **Configure Trigger**\
-    Choose "New Tracker Event" as the trigger. Connect your account by providing a User Session Key or an API key.![New account connect](../assets/newAccountConnect.png)
+    Choose "New Tracker Event" as the trigger. Connect your account by providing a User Session Key or an API key.\
+    ![New account connect](../assets/newAccountConnect.png)
 
     Obtain a User Session Key from Navixy Admin Panel -> Users -> User -> Get session key. For API keys, refer to [authentication](../../user-api/backend-api/getting-started/authentication.md).
 
