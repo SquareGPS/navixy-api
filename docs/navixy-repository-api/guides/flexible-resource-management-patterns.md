@@ -2,10 +2,10 @@
 
 Navixy Repository API uses a consistent pattern across all resources that support flexible creation and progressive enhancement. This pattern applies to:
 
-* **Inventory Items** (master and slave)
-* **Assets**
-* **Asset Links**
 * **Inventories**
+* **Inventory items** (master and slave)
+* **Assets**
+* **Asset links**
 
 ### Core pattern: Progressive resource development
 
@@ -75,7 +75,7 @@ Other direct relationships:
 * **Item → Inventory**: Set `inventory_id` on item
 * **Asset → Devices**: Devices reference assets via `asset_id`
 
-**Many-to-Many relationships** (dedicated endpoints):
+**Many-to-many relationships** (dedicated endpoints):
 
 Example: To add a vehicle to a delivery route via asset link, use this request:
 
@@ -97,7 +97,7 @@ curl -X POST {BASE_URL}/asset_link/set \
 
 ### Resource-specific applications
 
-#### Inventory Items (Master)
+#### Inventory items (Master)
 
 **Minimal → Configured → Assigned → Activated**
 
@@ -153,7 +153,7 @@ curl -X POST {BASE_URL}/inventory_item/master/activate \
   }'
 ```
 
-#### Inventory Items (Slave)
+#### Inventory items (Slave)
 
 **Minimal → Configured → Paired**
 
