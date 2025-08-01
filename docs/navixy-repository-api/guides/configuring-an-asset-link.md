@@ -1,3 +1,20 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+---
+
 # Configuring an asset link
 
 In Navixy Repository API, **asset links** are user-created collections of assets grouped by a certain principle, such as a truck, a trailer, and the equipment it carries, or vehicles parked at a specific site. These links help organize and manage assets that work together or have logical relationships.

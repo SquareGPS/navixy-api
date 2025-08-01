@@ -96,21 +96,21 @@ The **`fields`** key is an array of custom field objects used to add user-create
 
 <details>
 
-<summary>Field type description</summary>
+<summary>Field type descriptions</summary>
 
 * **Text**: A short text value\
-  `{"type":"text","value":"Example text"}`
+  `{"value":"Example text"}`
 
 - **Bigtext**: A large text value for storing long user input or multi-line content\
-  `{"type":"bigtext","value":"Longer text or content spanning multiple lines..."}`
+  `{value":"Longer text or content spanning multiple lines..."}`
 - **Integer**: A whole number (not a fraction or decimal)\
-  `{"type":"integer","value":100}`
+  `{"value":100}`
 - **Decimal**: A decimal (fixed-point) value\
-  `{"type":"decimal","value":123.45}`
+  `{"value":123.45}`
 - **GeoJSON**: A GeoJSON value (geometry, feature, or feature collection)\
-  `{"type":"geojson","value":{"type":"Point","coordinates":[30,10]}}`
-- **Master item**: A reference to a master-type inventory item by its unique internal ID\
-  `{"type":"master_item","value":123}`
+  `{value":{"type":"Point","coordinates":[30,10]}}`
+- **Master item**: A reference to a master inventory item by its unique internal ID\
+  `{"value":123}`
 
 </details>
 
@@ -254,7 +254,7 @@ You will receive the ID of the newly created asset:
 
 Now that you have an asset, you need to assign a device to it. This is done by adding the `asset_id` parameter to the inventory item (master or slave) representing the device. You can assign several devices to one asset — or, in the API's terms, add the same `asset_id` to several inventory items.
 
-Navixy Repository API allows for flexible device assignment:
+Navixy Repository API allows for flexible device assignment.
 
 * **Assign during device creation**: Include `asset_id` when creating the inventory item
 * **Assign to existing device**: Update an existing inventory item with `asset_id`

@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Flexible resource management patterns
 
 Navixy Repository API uses a consistent pattern across all resources that support flexible creation and progressive enhancement. This pattern applies to:
@@ -11,37 +15,40 @@ Navixy Repository API uses a consistent pattern across all resources that suppor
 
 #### 1. Minimal creation
 
-Start with just the required fields (often only a `label`):
+Start with just the required fields (often only a `label`).\
+Example: Create an empty inventory.
 
 ```bash
-curl -X POST {BASE_URL}/{resource}/create \
+curl -X POST {BASE_URL}/inventory/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
-    "label": "Quick identifier"
+    "label": "London Warehouse"
   }'
 ```
 
 **Advantages:**
 
 * Rapid prototyping
-* Bulk imports without full details
+* Manual import operations without full details
 * Placeholder creation for future configuration
 
 #### 2. Progressive enhancement
 
-Add details as they become available through updates:
+Add details as they become available through updates.\
+Example: Adding device details to a master item:
 
 ```bash
-curl -X POST {BASE_URL}/{resource}/update \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "id": 123,
-    "label": "Updated label",
-    "additional_field": "value",
-    "relationship_id": 456
-  }'
+curl -X POST {BASE_URL}/inventory_item/master/update \
+-H "Authorization: Bearer <ACCESS_TOKEN>" \
+-H "Content-Type: application/json" \
+-d '{
+ "id": 456,
+ "label": "Fleet Tracker Unit 001",
+ "device_id": "359632104567890",
+ "model": "telfmb125",
+ "inventory_id": 123
+ }'
 ```
 
 **Advantages:**
@@ -97,7 +104,7 @@ curl -X POST {BASE_URL}/asset_link/set \
 
 ### Resource-specific applications
 
-#### Inventory items (Master)
+#### Inventory items (master)
 
 **Minimal → Configured → Assigned → Activated**
 
@@ -153,7 +160,7 @@ curl -X POST {BASE_URL}/inventory_item/master/activate \
   }'
 ```
 
-#### Inventory items (Slave)
+#### Inventory items (slave)
 
 **Minimal → Configured → Paired**
 
@@ -316,19 +323,6 @@ For maintaining reserves:
 2. Keep in "unassigned" state
 3. Quick assignment when needed
 4. Return to the pool when finished
-
-### State tracking
-
-Resources progress through implicit states based on parameter population:
-
-| State          | Inventory item                               | Asset                | Asset link      |
-| -------------- | -------------------------------------------- | -------------------- | --------------- |
-| **Minimal**    | Has label only                               | Has type and label   | Has label only  |
-| **Configured** | Has device details                           | Has custom fields    | Has description |
-| **Assigned**   | Has inventory\_id                            | Has linked devices   | Has asset\_ids  |
-| **Connected**  | Has asset\_id (master) or master\_id (slave) | Part of asset links  | Fully populated |
-| **Active**     | Successfully activated                       | Devices transmitting | In use          |
-| **Archived**   | Soft-deleted                                 | Removed              | Deleted         |
 
 ### Best practices
 

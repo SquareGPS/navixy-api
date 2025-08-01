@@ -68,7 +68,7 @@ For a more in-depth explanation of activating a GPS device and working with inve
 {% step %}
 #### Fetch device model specification
 
-Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can retrieve the complete profile for any supported model by querying the [**/inventory\_item/master/models/list**](broken-reference) endpoint.
+Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can retrieve the complete profile for any supported model by querying the [**/inventory\_item/master/model/list**](broken-reference) endpoint.
 
 For example, to get the specifications for a Teltonika FMC234, use the following request:
 
