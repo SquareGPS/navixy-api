@@ -94,6 +94,26 @@ The **`fields`** key is an array of custom field objects used to add user-create
 * `required`: Whether the field is mandatory
 * `description`: An optional description
 
+<details>
+
+<summary>Field type description</summary>
+
+* **Text**: A short text value\
+  `{"type":"text","value":"Example text"}`
+
+- **Bigtext**: A large text value for storing long user input or multi-line content\
+  `{"type":"bigtext","value":"Longer text or content spanning multiple lines..."}`
+- **Integer**: A whole number (not a fraction or decimal)\
+  `{"type":"integer","value":100}`
+- **Decimal**: A decimal (fixed-point) value\
+  `{"type":"decimal","value":123.45}`
+- **GeoJSON**: A GeoJSON value (geometry, feature, or feature collection)\
+  `{"type":"geojson","value":{"type":"Point","coordinates":[30,10]}}`
+- **Master item**: A reference to a master-type inventory item by its unique internal ID\
+  `{"type":"master_item","value":123}`
+
+</details>
+
 {% hint style="warning" %}
 If you remove a custom field from an asset type via [POST asset\_type/update](broken-reference), all assets based on this type will lose this field. If you add a new field marked as required, you will need to add values for that field to the assets.
 {% endhint %}
@@ -108,13 +128,13 @@ After sending the request, you will receive a response with the ID of the newly 
 
 #### Step 2. Fetch custom field IDs
 
-Before creating an asset, we'll need to learn the auto-generated internal ID of each custom field we've added in Step 1. We can learn them by sending the following request using the asset type's own ID:
+Before creating an asset, you need to learn the auto-generated internal ID of each custom field you've added in Step 1. You can learn them by sending the following request using the asset type's own ID:
 
 {% openapi-operation spec="navixy-repo" path="/v0/asset_type/read" method="get" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
-In our case, it will be:
+In this case, it will be:
 
 ```
 curl -X GET "{BASE_URL}/v0/asset_type/read?id=456" \
@@ -234,6 +254,16 @@ You will receive the ID of the newly created asset:
 
 Now that you have an asset, you need to assign a device to it. This is done by adding the `asset_id` parameter to the inventory item (master or slave) representing the device. You can assign several devices to one asset — or, in the API's terms, add the same `asset_id` to several inventory items.
 
+Navixy Repository API allows for flexible device assignment:
+
+* **Assign during device creation**: Include `asset_id` when creating the inventory item
+* **Assign to existing device**: Update an existing inventory item with `asset_id`
+* **Assign later**: Create devices without assets and assign them when needed
+
+This flexibility allows you to pre-create devices in inventory before assets exist, reassign devices between assets as needed, and manage unassigned spare devices.
+
+**Assign to an existing device**
+
 If your device is already activated, send the following request (let's assume you have a master-type item called  `Sea Explorer GPS Tracker`):
 
 ```json
@@ -247,6 +277,8 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/update \
   "asset_id": 789
 }'
 ```
+
+**Assign during device creation**
 
 If you haven't created an inventory item yet, you can add the `asset_id` parameter to the creation request. For a master item, send the following request:
 
