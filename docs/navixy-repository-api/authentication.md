@@ -1,4 +1,4 @@
-# Authentication
+# Authenticationx
 
 Authentication is required for all API requests and is based on OAuth 2.0.
 
@@ -14,7 +14,7 @@ Note that in this and other articles about Navixy Repository API, {AUTH\_BASE\_U
 
 ### Organization-based access control
 
-All API requests are automatically scoped to your organization. The organization context is determined by your access token. You cannot access resources belonging to other organizations.
+All API requests are automatically scoped to your organization. Your access token determines the organization context. You cannot access resources belonging to other organizations.
 
 #### How organization scoping works
 
@@ -25,11 +25,7 @@ All API requests are automatically scoped to your organization. The organization
 
 ### Acquiring an access token
 
-Navixy Repository API supports two authentication methods depending on the type of client.
-
-#### For frontend applications
-
-Use OAuth2 Authorization Code Flow.
+Navixy Repository API supports the OAuth2 Authorization Code Flow.
 
 **Prerequisites**
 
@@ -45,7 +41,7 @@ Before you begin, ensure you have:
 **Redirect the user to the authorization endpoint:**
 
 ```bash
-curl -X GET "{AUTH_BASE_URL}/authorize" \
+curl -X GET "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
   --data-urlencode 'client_id=<YOUR_CLIENT_ID>' \
   --data-urlencode 'response_type=code' \
   --data-urlencode 'redirect_uri=https://<YOUR_APP_CALLBACK_URL>' \
@@ -60,7 +56,7 @@ curl -X GET "{AUTH_BASE_URL}/authorize" \
 **Request:**
 
 ```bash
-curl -X POST {AUTH_BASE_URL}/oauth/token \
+curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
   -H "Content-Type: application/json" \
   -d '{
     "grant_type": "authorization_code",
@@ -95,42 +91,6 @@ curl -X POST {AUTH_BASE_URL}/oauth/token \
 {% endstep %}
 {% endstepper %}
 
-#### For server-to-server communication
-
-Use OAuth2 Client Credentials Flow to acquire a token. Employ client credentials for this purpose.
-
-**Prerequisites**
-
-Before you begin, ensure you have:
-
-* Valid Navixy Repository API credentials (`client_id` and `client_secret`).
-* A registered OAuth2 client application configured for client credentials flow.
-* Authentication server URL ({AUTH\_BASE\_URL}), determined depending on your geographical location. For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
-* A server-side environment where credentials can be securely stored.
-
-**Request:**
-
-```bash
-curl -X POST {AUTH_BASE_URL}/oauth/token \
-  -H "Content-Type: application/json" \
-  -d '{
-    "grant_type": "client_credentials",
-    "client_id": "<YOUR_CLIENT_ID>",
-    "client_secret": "<YOUR_CLIENT_SECRET>"
-  }'
-```
-
-**Response:**
-
-```json
-{
-  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...signature",
-  "token_type": "Bearer",
-  "expires_in": 3600,
-  "scope": "<REQUESTED_SCOPE_ONE> <REQUESTED_SCOPE_TWO>"
-}
-```
-
 ### Transmitting the access token
 
 Use `access_token` to authenticate API requests:
@@ -140,12 +100,47 @@ curl -X GET {BASE_URL}/resource \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
+### Refreshing an access token
+
+Access tokens have a limited lifespan and typically expire after 900 seconds. In order to maintain access without requiring the user to re-authenticate, use the refresh token provided during the initial token exchange to obtain a new access token.
+
+**Request:**
+
+```bash
+curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d 'grant_type=refresh_token' \
+  -d 'client_id=<YOUR_CLIENT_ID>' \
+  -d 'client_secret=<YOUR_CLIENT_SECRET>' \
+  -d 'refresh_token=<YOUR_REFRESH_TOKEN>'
+```
+
+**Response:**
+
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...signature",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "8xLOxBtZp8",
+  "scope": "<REQUESTED_SCOPE_ONE> <REQUESTED_SCOPE_TWO>"
+}
+```
+
+**Notes:**
+
+* The new `access_token` should replace the old one in all subsequent API requests.
+* A new `refresh_token` may also be issued. If so, you should update your stored token accordingly.
+* If the `refresh_token` has expired or is invalid, you must re-authenticate using the full authorization code flow.
+
+This mechanism allows long-lived sessions while minimizing user effort and maintaining security best practices.
+
 ### Revoking tokens
 
 If an access token or refresh token needs to be invalidated (for example, when a user logs out or client credentials are rotated), it can be revoked using the OAuth2 token revocation endpoint:
 
 ```bash
-curl -X POST {AUTH_BASE_URL}/oauth/revoke \
+curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/revoke \
   -H "Content-Type: application/json" \
   -d '{
     "client_id": "<YOUR_CLIENT_ID>",
