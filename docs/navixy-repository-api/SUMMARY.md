@@ -23,3 +23,11 @@
           kind: openapi
           spec: navixy-repo
     ```
+
+## Group 1
+
+* [Inventory](group-1/inventory.md)
+* [Inventory item](group-1/inventory-item.md)
+* [Asset](group-1/asset.md)
+* [Asset type](group-1/asset-type.md)
+* [Asset link](group-1/asset-link.md)

@@ -1,0 +1,2 @@
+# Asset type
+
