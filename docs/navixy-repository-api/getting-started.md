@@ -14,20 +14,18 @@ Before you begin, ensure you have:
 
 ### Step 1. Authentication
 
-Navixy Repository API uses OAuth 2.0 for authentication. Depending on your application type, you can choose between Authorization Code for front-end applications and Client Credentials for Server-to-Server. To learn more about the latter, refer to the corresponding section of the [Authentication article](authentication.md#for-server-to-server-communication).
-
-To use Authorization Code flow:
+Navixy Repository API supports the OAuth2 Authorization Code Flow. To acquire an access token, follow these steps:
 
 {% stepper %}
 {% step %}
 **Redirect users to the authorization endpoint**
 
 ```bash
-curl -X GET "{AUTH_BASE_URL}/authorize" \
+curl -X GET "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
   --data-urlencode 'client_id=<YOUR_CLIENT_ID>' \
   --data-urlencode 'response_type=code' \
   --data-urlencode 'redirect_uri=https://<YOUR_APP_CALLBACK_URL>' \
-  --data-urlencode 'scope=read write' \
+  --data-urlencode 'scope=<REQUESTED_SCOPE_ONE> <REQUESTED_SCOPE_TWO>' \
   --data-urlencode 'state=<YOUR_SECURE_RANDOM>'
 ```
 {% endstep %}
@@ -35,16 +33,32 @@ curl -X GET "{AUTH_BASE_URL}/authorize" \
 {% step %}
 **Exchange authorization code for access token**
 
-<pre class="language-bash"><code class="lang-bash">curl -X POST {AUTH_BASE_URL}/oauth/token \
-<strong>  -H "Content-Type: application/json" \
-</strong>  -d '{
+**Request:**
+
+```bash
+curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
+  -H "Content-Type: application/json" \
+  -d '{
     "grant_type": "authorization_code",
-    "client_id": "&#x3C;YOUR_CLIENT_ID>",
-    "client_secret": "&#x3C;YOUR_CLIENT_SECRET>",
-    "code": "&#x3C;YOUR_AUTHORIZATION_CODE>",
-    "redirect_uri": "https://&#x3C;YOUR_APP_CALLBACK_URL>"
+    "client_id": "<YOUR_CLIENT_ID>",
+    "client_secret": "<YOUR_CLIENT_SECRET>",
+    "code": "<YOUR_AUTHORIZATION_CODE>",
+    "redirect_uri": "https://<YOUR_APP_CALLBACK_URL>"
   }'
-</code></pre>
+```
+
+**Response:**
+
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...signature",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "8xLOxBtZp8",
+  "scope": "<REQUESTED_SCOPE_ONE> <REQUESTED_SCOPE_TWO>",
+  "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.e...signature"
+}
+```
 {% endstep %}
 {% endstepper %}
 
