@@ -1,9 +1,0 @@
-nav:
-  - Overview: index.md
-  - Personal Info: personal_info.md
-  - Auth: auth
-  - Session: session
-  - User Password: password.md
-  - Settings: settings
-  - Audit: audit
-  - Applications: applications.md

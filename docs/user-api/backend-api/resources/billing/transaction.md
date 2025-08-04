@@ -1,12 +1,11 @@
 ---
 title: Transaction
-description: Transaction object description and API call to get list of user's billing transactions for the specified period.
+description: >-
+  Transaction object description and API call to get list of user's billing
+  transactions for the specified period.
 ---
 
 # Transaction
-
-Transaction object description and API call to get list of user's billing transactions for the specified period.
-
 
 ## Transaction object
 
@@ -29,25 +28,24 @@ Transaction object description and API call to get list of user's billing transa
 ```
 
 * `description` - string. Transaction description.
-* `type` - [enum](../../getting-started/introduction.md#data-types). Type of transaction.
-* `subtype` - [enum](../../getting-started/introduction.md#data-types). Subtype of transaction.
-* `timestamp` - [date/time](../../getting-started/introduction.md#data-types). When transaction created.
+* `type` - [enum](../../#data-types). Type of transaction.
+* `subtype` - [enum](../../#data-types). Subtype of transaction.
+* `timestamp` - [date/time](../../#data-types). When transaction created.
 * `user_id` - int. ID of a user which made a transaction.
 * `dealer_id` - int. ID of a dealer.
 * `tracker_id` - int. Tracker id. 0 if transaction not associated with tracker.
-* `amount` - double. Amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units removed from user`s balance.
+* `amount` - double. Amount of money in transaction, can be negative. e.g. -10.0000 means 10 money units removed from user\`s balance.
 * `new_balance` - double. User's money balance after transaction.
 * `old_balance` - double. User's money balance before transaction.
-* `bonus_amount` - double. Amount of bonus used in transaction, can be negative. e.g. 10.0000 means 10 bonuses units added to user`s bonus balance.
+* `bonus_amount` - double. Amount of bonus used in transaction, can be negative. e.g. 10.0000 means 10 bonuses units added to user\`s bonus balance.
 * `new_bonus` - double. User's bonus balance after transaction.
 * `old_bonus` - double. User's bonus balance before transaction.
-
 
 ## API actions
 
 API path: `/transaction`.
 
-### `list`
+### list
 
 Gets list of user's billing transactions for the specified period.
 
@@ -55,21 +53,23 @@ Gets list of user's billing transactions for the specified period.
 
 #### Parameters
 
-| name  | description                                             | type                                             |
-|:------|:--------------------------------------------------------|:-------------------------------------------------|
-| from  | Start date/time for searching.                          | [date/time](../../getting-started/introduction.md#data-types) |
-| to    | End date/time for searching. Must be after `from` date. | [date/time](../../getting-started/introduction.md#data-types) |
-| limit | Optional. Maximum number of returned transactions.      | int                                              |
+| name  | description                                             | type                           |
+| ----- | ------------------------------------------------------- | ------------------------------ |
+| from  | Start date/time for searching.                          | [date/time](../../#data-types) |
+| to    | End date/time for searching. Must be after `from` date. | [date/time](../../#data-types) |
+| limit | Optional. Maximum number of returned transactions.      | int                            |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/transaction/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2021-01-20 08:16:40", "to": "2021-01-28 08:16:40"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/transaction/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "from": "2021-01-20 08:16:40", "to": "2021-01-28 08:16:40"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -96,7 +96,7 @@ Gets list of user's billing transactions for the specified period.
 }
 ```
 
-* `list` - array of objects. List of [transactions objects](#transaction-object).
+* `list` - array of objects. List of [transactions objects](transaction.md#transaction-object).
 
 #### Errors
 

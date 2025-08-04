@@ -1,11 +1,14 @@
 ---
 title: Entity
-description: Contains entity object description and API calls to interact with it. Entity describes a class of objects for which representation and editable fields can be customized.
+description: >-
+  Contains entity object description and API calls to interact with it. Entity
+  describes a class of objects for which representation and editable fields can
+  be customized.
 ---
 
 # Entity actions
 
-This page provides an overview of entity object descriptions and the API calls used to interact with them. In Navixy, an entity represents a class of objects for which representation and editable fields can be customized. 
+This page provides an overview of entity object descriptions and the API calls used to interact with them. In Navixy, an entity represents a class of objects for which representation and editable fields can be customized.
 
 For example, you can add custom fields to the **places** entity or rearrange existing fields to suit your needs. This flexibility allows for tailored data representation and enhanced data management within the platform.
 
@@ -35,15 +38,15 @@ For example, you can add custom fields to the **places** entity or rearrange exi
 ```
 
 * `id` - int. Entity identifier.
-* `type` - [enum](../../../getting-started/introduction.md#data-types). Currently, only "place" is supported.
+* `type` - [enum](../../../#data-types). Currently, only "place" is supported.
 * `layout` - object describes layout of fields for entity.
-    * `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
-    * `label` - string. Name of section.
-    * `field_order` - string array. Built-in fields and IDs of custom fields (as strings).
+  * `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
+  * `label` - string. Name of section.
+  * `field_order` - string array. Built-in fields and IDs of custom fields (as strings).
 
 **Entity types**:
 
-**place** - a place object, the same as is available through [place API](../../field_service/place/index.md).
+**place** - a place object, the same as is available through [place API](../../field-service/place/work-with-poi.md).
 
 Builtin fields:
 
@@ -52,12 +55,11 @@ Builtin fields:
 * tags.
 * description.
 
-
 ## API actions
 
 API path: `/entity`.
 
-### `list`
+### list
 
 Get list of entities which are available for customization.
 
@@ -67,19 +69,21 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/entity/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/entity/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/entity/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+```http
+https://api.eu.navixy.com/v2/entity/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -113,37 +117,40 @@ Only API key `hash`.
 
 #### Errors
 
-* [General](../../../getting-started/errors.md#error-codes) types only.
+* [General](../../../errors.md#error-codes) types only.
 
-
-### `read`
+### read
 
 Gets entity by the ID or by type.
 
 #### Parameters
 
 | name | description                                       | type   |
-|:-----|:--------------------------------------------------|:-------|
+| ---- | ------------------------------------------------- | ------ |
 | id   | ID of an entity.                                  | int    |
 | type | Type of an entity. Entity type string, see above. | string |
 
-!!! note "Exactly one of these parameters must be specified. They can't be both null or both non-null."
+> Exactly one of these parameters must be specified. They can't be both null or both non-null.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/entity/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 131312}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/entity/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "id": 131312}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/entity/read?hash=a6aa75587e5c59c32d347da438505fc3&id=131312
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/entity/read?hash=a6aa75587e5c59c32d347da438505fc3&id=131312
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -188,30 +195,31 @@ Gets entity by the ID or by type.
 
 * 201 - Not found in the database – if there is no entity with such ID.
 
-
-### `update`
+### update
 
 Updates settings of customizable entity. Entity must have a valid ID.
 
 **required sub-user rights**: `places_custom_fields_update` for entities with type `place`.
 
-!!! warning "`entity.settings.layout.sections` must contain IDs of all builtin and custom fields which are associated with this entity. No fields can be omitted from layout, only reordering allowed. Fields cannot be duplicated, even in different sections."
+> `entity.settings.layout.sections` must contain IDs of all builtin and custom fields which are associated with this entity. No fields can be omitted from layout, only reordering allowed. Fields cannot be duplicated, even in different sections.
 
 #### Parameters
 
 | name   | description                               | type        |
-|:-------|:------------------------------------------|:------------|
+| ------ | ----------------------------------------- | ----------- |
 | entity | Entity object with valid ID and settings. | JSON object |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/entity/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity": {"id": 123, "type": "place", "settings": {"layout": {"sections": [{"label": "Section label", "field_order": ["label", "location", "131212", "tags", "description"]}]}}}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/entity/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "entity": {"id": 123, "type": "place", "settings": {"layout": {"sections": [{"label": "Section label", "field_order": ["label", "location", "131212", "tags", "description"]}]}}}'
+```
+{% endcode %}
 
 #### Response
 

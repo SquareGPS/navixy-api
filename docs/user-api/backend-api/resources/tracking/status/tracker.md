@@ -1,43 +1,48 @@
 ---
 title: Tracker's working status
-description: This resource contains methods to read and assign working status of a particular tracker.
+description: >-
+  This resource contains methods to read and assign working status of a
+  particular tracker.
 ---
 
 # Tracker's working status
-
-This resource contains methods to read and assign working status of a particular tracker.
-
 
 ## API actions
 
 API base path: `/status/tracker/`.
 
-### `assign`
+### assign
 
 Assign a working status to the tracker.
 
 #### Parameters
 
-| name          | description                                                                                     | type | format |
-|:--------------|:------------------------------------------------------------------------------------------------|:-----|:-------|
-| tracker_id    | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
-| new_status_id | ID of the working status. Must belong to status list assigned to this tracker.                  | int  | 5      |
+| name            | description                                                                                      | type | format |
+| --------------- | ------------------------------------------------------------------------------------------------ | ---- | ------ |
+| tracker\_id     | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
+| new\_status\_id | ID of the working status. Must belong to status list assigned to this tracker.                   | int  | 5      |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/status/tracker/assign' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "new_status_id": 5}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/status/tracker/assign' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "new_status_id": 5}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/status/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&new_status_id=5
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/status/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&new_status_id=5
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -60,14 +65,14 @@ Assign a working status to the tracker.
 ```
 
 * `last_change` - object describing last change of the status. May be null.
-    * `old_status_id` - int. Previous status ID. May be null.
-    * `new_status_id` - int. Current status ID. May be null.
-    * `location` - object. Location and address at which status change occurred.
-    * `lat` - int. Latitude.
-    * `lng` - int. Longitude.
-    * `address` - string. Address of last change.
-    * `changed` - [date/time](../../../getting-started/introduction.md#data-types). Change date and time.
-    * `origin` - [enum](../../../getting-started/introduction.md#data-types). Origin – who changed the status ("employee" or "supervisor").
+  * `old_status_id` - int. Previous status ID. May be null.
+  * `new_status_id` - int. Current status ID. May be null.
+  * `location` - object. Location and address at which status change occurred.
+  * `lat` - int. Latitude.
+  * `lng` - int. Longitude.
+  * `address` - string. Address of last change.
+  * `changed` - [date/time](../../../#data-types). Change date and time.
+  * `origin` - [enum](../../../#data-types). Origin – who changed the status ("employee" or "supervisor").
 
 #### Errors
 
@@ -76,30 +81,29 @@ Assign a working status to the tracker.
 * 204 - Entity not found – if there is no status list assigned to this tracker containing with such ID.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
-* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
-available.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature\
+  available.
 * 263 - No change needed, old and new values are the same – if new status is equal to current status of tracker.
 
-
-### `list`
+### list
 
 Gets current assigned statuses for the specified trackers.
 
 #### Parameters
 
 | name     | description                                             | type      | format             |
-|:---------|:--------------------------------------------------------|:----------|:-------------------|
+| -------- | ------------------------------------------------------- | --------- | ------------------ |
 | trackers | List of the tracker's IDs belonging to authorized user. | int array | `[123456, 234567]` |
 
 #### Examples
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/status/tracker/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456,234567]}'
-    ```
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/status/tracker/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456,234567]}'
+```
 
 #### Response
 
@@ -146,47 +150,50 @@ Gets current assigned statuses for the specified trackers.
 ```
 
 * `value` - Map with a tracker's IDs as keys.
-    * `current_status` - Status object showing current status of tracker. May be null.
-    * `last_change` - Object describing last change of the status. May be null.
-    * `old_status_id` - int. Previous status ID. May be null.
-    * `new_status_id` - int. Current status ID. May be null.
-    * `location` - Location and address at which status change occurred.
-    * `changed` - [date/time](../../../getting-started/introduction.md#data-types). Date and time of change.
-    * `origin` - [enum](../../../getting-started/introduction.md#data-types). Origin – who changed the status ("employee" or "supervisor").
+  * `current_status` - Status object showing current status of tracker. May be null.
+  * `last_change` - Object describing last change of the status. May be null.
+  * `old_status_id` - int. Previous status ID. May be null.
+  * `new_status_id` - int. Current status ID. May be null.
+  * `location` - Location and address at which status change occurred.
+  * `changed` - [date/time](../../../#data-types). Date and time of change.
+  * `origin` - [enum](../../../#data-types). Origin – who changed the status ("employee" or "supervisor").
 
 #### Errors
 
 * 217 - List contains nonexistent entities - if one or more of tracker IDs belong to nonexistent tracker (or to a tracker belonging to different user).
 * 221 - Device limit exceeded – if device limit set for the user's dealer has been exceeded.
-* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature
- available.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature\
+  available.
 
-
-### `read`
+### read
 
 Gets current assigned working status of the tracker.
 
 #### Parameters
 
-| name       | description                                                                                     | type | format |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
+| name        | description                                                                                      | type | format |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ------ |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/status/tracker/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/status/tracker/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/status/tracker/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/status/tracker/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -215,16 +222,16 @@ Gets current assigned working status of the tracker.
 
 * `current_status` - status object showing current status of tracker. May be null.
 * `last_change` - object describing last change of the status. May be null.
-    * `old_status_id` - int. Previous status ID. May be null.
-    * `new_status_id` - int. Current status ID. May be null.
-    * `location` - Location and address at which status change occurred.
-    * `changed` - [date/time](../../../getting-started/introduction.md#data-types). Date and time of change.
-    * `origin` - [enum](../../../getting-started/introduction.md#data-types). Origin – who changed the status ("employee" or "supervisor").
+  * `old_status_id` - int. Previous status ID. May be null.
+  * `new_status_id` - int. Current status ID. May be null.
+  * `location` - Location and address at which status change occurred.
+  * `changed` - [date/time](../../../#data-types). Date and time of change.
+  * `origin` - [enum](../../../#data-types). Origin – who changed the status ("employee" or "supervisor").
 
 #### Errors
 
 * 201 - Not found in the database – if there is no tracker with such ID belonging to authorized user.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
-* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
-available.
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature\
+  available.

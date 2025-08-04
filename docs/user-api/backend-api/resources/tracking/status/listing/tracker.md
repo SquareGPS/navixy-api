@@ -7,12 +7,11 @@ description: Contains API call which link together trackers and working status l
 
 Contains api call which link together trackers and working status lists.
 
-
 ## API actions
 
 API base path: `/status/listing/tracker`.
 
-### `assign`
+### assign
 
 Assigns a working status list (or remove assignment) to the tracker.
 
@@ -20,26 +19,32 @@ Assigns a working status list (or remove assignment) to the tracker.
 
 #### Parameters
 
-| name       | description                                                                                       | type | format |
-|:-----------|:--------------------------------------------------------------------------------------------------|:-----|:-------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.   | int  | 123456 |
-| listing_id | ID of the working status list. Omit this parameter completely, if you want remove the assignment. | int  | 12345  |
+| name        | description                                                                                       | type | format |
+| ----------- | ------------------------------------------------------------------------------------------------- | ---- | ------ |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.  | int  | 123456 |
+| listing\_id | ID of the working status list. Omit this parameter completely, if you want remove the assignment. | int  | 12345  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/status/listing/tracker/assign' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "listing_id": 12345}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/status/listing/tracker/assign' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "listing_id": 12345}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/status/listing/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&listing_id=12345
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/status/listing/tracker/assign?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&listing_id=12345
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -55,6 +60,5 @@ Assigns a working status list (or remove assignment) to the tracker.
 * 204 - Entity not found – if there is no working status list with such ID.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
-* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature 
-available.
-
+* 236 - Feature unavailable due to tariff restrictions – if there are no trackers with "statuses" tariff feature\
+  available.

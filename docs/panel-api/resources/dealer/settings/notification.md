@@ -1,6 +1,6 @@
 ---
 title: Notification
-description: API calls to read and update notification settings. 
+description: API calls to read and update notification settings.
 ---
 
 # Notification Settings
@@ -21,22 +21,21 @@ Let's explore the Notification Setting object using the following example:
 }
 ```
 
-* `email_from` - string. The email address from which notification messages will be sent. This can be a simple email address ("no-reply@navixy.com") or an email address with a name ("Navixy <no-reply@navixy.com>").
+* `email_from` - string. The email address from which notification messages will be sent. This can be a simple email address ("no-reply@navixy.com") or an email address with a name ("Navixy [no-reply@navixy.com](mailto:no-reply@navixy.com)").
 * `email_footer` - string. A footer added to all notification emails. This can be any text up to 600 characters.
 * `email_special` - string. A special email address used for PaaS reports.
 * `sms_originator` - string. The originator for SMS notifications. The maximum length is 20 characters and must match the regex pattern `(p{L}|d|[-'" .,:/])*`, e.g., "demo.navixy.com" or "491761234567".
 * `caller_id` - string. The originator for voice messages. The maximum length is 20 characters and must match the regex pattern `(p{L}|d|[-'" .,:/])*`, e.g., "491761234543".
 
-
 ## API actions
 
 API path: `panel/dealer/settings/notification`.
 
-### `read`
+### read
 
 Gets current monitoring notification settings.
 
-*required permissions*: `notification_settings: "read"`.
+_required permissions_: `notification_settings: "read"`.
 
 #### Parameters
 
@@ -44,19 +43,23 @@ Only session `hash`.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/settings/notification/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/notification/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/dealer/settings/notification/read?hash=fa7bf873fab9333144e171372a321b06
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/dealer/settings/notification/read?hash=fa7bf873fab9333144e171372a321b06
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -71,40 +74,41 @@ Only session `hash`.
     "caller_id": "491761234543"
   }
 }
-``` 
+```
 
-* `value` - [Notification settings object](#notification-settings-object) described above.
+* `value` - [Notification settings object](notification.md#notification-settings-object) described above.
 
 #### Errors
 
-[General](../../../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
+[General](../../../../user-api/backend-api/errors.md#error-codes) types only.
 
+### update
 
-### `update`
+Updates notification settings for the current dealer.
 
-Updates notification settings for the current dealer. 
-
-*required permissions*: `notification_settings: "update"`.
+_required permissions_: `notification_settings: "update"`.
 
 #### Parameters
- 
-| name           | description                                                                                     | type   |
-|:---------------|:------------------------------------------------------------------------------------------------|:-------|
-| email_from     | Email from which notification messages will be sent. Can be email address or email with a name. | string |
-| email_footer   | Footer which is added to all notification emails. Arbitrary text up to 600 characters.          | string |
-| email_special  | Optional. Special email address for PaaS reports.                                               | string |
-| sms_originator | SMS originator. Max length is 20.                                                               | string |
-| caller_id      | Voice messages originator. Max length is 20.                                                    | string |
+
+| name            | description                                                                                     | type   |
+| --------------- | ----------------------------------------------------------------------------------------------- | ------ |
+| email\_from     | Email from which notification messages will be sent. Can be email address or email with a name. | string |
+| email\_footer   | Footer which is added to all notification emails. Arbitrary text up to 600 characters.          | string |
+| email\_special  | Optional. Special email address for PaaS reports.                                               | string |
+| sms\_originator | SMS originator. Max length is 20.                                                               | string |
+| caller\_id      | Voice messages originator. Max length is 20.                                                    | string |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/notification/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "email_from": "NAVIXY <no-reply@navixy.com>", "email_footer": "\n\n---nSincerely, Navixy", "sms_originator": "demo.navixy.com", "caller_id": "491761234543"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/settings/notification/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "email_from": "NAVIXY <no-reply@navixy.com>", "email_footer": "\n\n---nSincerely, Navixy", "sms_originator": "demo.navixy.com", "caller_id": "491761234543"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -115,5 +119,5 @@ Updates notification settings for the current dealer.
 ```
 
 #### Errors
- 
-[General](../../../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
+
+[General](../../../../user-api/backend-api/errors.md#error-codes) types only.

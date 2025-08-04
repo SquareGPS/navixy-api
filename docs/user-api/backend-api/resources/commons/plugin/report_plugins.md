@@ -5,30 +5,27 @@ description: Contains report plugins with plugin-specific parameters.
 
 # Report plugins
 
-Contains report plugins with plugin-specific parameters.
-
-
 ### Trips report
 
 A report on detailed trip history.
 
 #### Parameters
 
-Default **plugin_id**: 4.
+Default **plugin\_id**: 4.
 
 Plugin-specific parameters:
 
-| name                       | description                                                                                                                                                          | type    |
-|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| hide_empty_tabs            | If `true`, empty tabs will be hidden.                                                                                                                                | boolean |
-| show_seconds               | If `true`, timestamps will be with seconds.                                                                                                                          | boolean |
-| include_summary_sheet_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                          | boolean |
-| include_summary_sheet      | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                   | boolean |
-| split                      | Trips will be split by stops if `true`.                                                                                                                              | boolean |
-| show_idle_duration         | Will show idle duration in report if `true`.                                                                                                                         | boolean |
-| show_coordinates           | Every address will contain longitude and latitude if `true`.                                                                                                         | boolean |
-| filter                     | If `true`,short trips will hide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
-| group_by_driver            | Group trips by driver assigned to the device if `true`.                                                                                                              | boolean | 
+| name                          | description                                                                                                                                                          | type    |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| hide\_empty\_tabs             | If `true`, empty tabs will be hidden.                                                                                                                                | boolean |
+| show\_seconds                 | If `true`, timestamps will be with seconds.                                                                                                                          | boolean |
+| include\_summary\_sheet\_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                          | boolean |
+| include\_summary\_sheet       | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                   | boolean |
+| split                         | Trips will be split by stops if `true`.                                                                                                                              | boolean |
+| show\_idle\_duration          | Will show idle duration in report if `true`.                                                                                                                         | boolean |
+| show\_coordinates             | Every address will contain longitude and latitude if `true`.                                                                                                         | boolean |
+| filter                        | If `true`,short trips will hide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
+| group\_by\_driver             | Group trips by driver assigned to the device if `true`.                                                                                                              | boolean |
 
 #### plugin example
 
@@ -47,23 +44,22 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Stops report
 
 A report on detailed stops history.
 
 #### Parameters
 
-Default **plugin_id**: 6.
+Default **plugin\_id**: 6.
 
 Plugin-specific parameters:
 
-| name             | description                                                                                                                                                                       | type    |
-|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| hide_empty_tabs  | If `true`, empty tabs will be hidden.                                                                                                                                             | boolean |
-| show_seconds     | If `true`, timestamps will be with seconds.                                                                                                                                       | boolean |
-| show_coordinates | Every address will contain longitude and latitude if `true`.                                                                                                                      | boolean |
-| filter           | If `true`, short trips will be part of stops (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
+| name              | description                                                                                                                                                                       | type    |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.                                                                                                                                             | boolean |
+| show\_seconds     | If `true`, timestamps will be with seconds.                                                                                                                                       | boolean |
+| show\_coordinates | Every address will contain longitude and latitude if `true`.                                                                                                                      | boolean |
+| filter            | If `true`, short trips will be part of stops (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 
 #### plugin example
 
@@ -77,25 +73,24 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Trips and stops by shifts report
 
 A report on trips and stops by shifts.
 
 #### Parameters
 
-Default **plugin_id**: 77.
+Default **plugin\_id**: 77.
 
 Plugin-specific parameters:
 
-| name              | description                                                                                                                                                                  | type             |
-|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-| hide_empty_tabs   | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean          |
-| show_seconds      | If `true`,timestamps will be with seconds.                                                                                                                                   | boolean          |
-| shifts            | List of shifts with names, start and end time. e.g. `[{"name":"Shift1", "start_time":"00:00", "end_time":"23:59"}]`                                                          | array of objects |
-| filter            | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean          |
-| show_coordinates  | Every address will contain longitude and latitude if `true`.                                                                                                                 | boolean          |
-| split_at_midnight | Split shifts at midnight if `true`.                                                                                                                                          | boolean          |
+| name                | description                                                                                                                                                                  | type             |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| hide\_empty\_tabs   | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean          |
+| show\_seconds       | If `true`,timestamps will be with seconds.                                                                                                                                   | boolean          |
+| shifts              | List of shifts with names, start and end time. e.g. `[{"name":"Shift1", "start_time":"00:00", "end_time":"23:59"}]`                                                          | array of objects |
+| filter              | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean          |
+| show\_coordinates   | Every address will contain longitude and latitude if `true`.                                                                                                                 | boolean          |
+| split\_at\_midnight | Split shifts at midnight if `true`.                                                                                                                                          | boolean          |
 
 * `shifts` is:
 
@@ -135,28 +130,27 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Geofence visits report
 
 A report on date, time, and mileage in geofence.
 
 #### Parameters
 
-Default **plugin_id**: 8.
+Default **plugin\_id**: 8.
 
 Plugin-specific parameters:
 
-| name                       | description                                                                                                                         | type      |
-|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| hide_empty_tabs            | If `true`, empty tabs will be hidden.                                                                                               | boolean   |
-| show_seconds               | If `true`, timestamps will be with seconds.                                                                                         | boolean   |
-| show_mileage               | Adds mileage to the report if `true`.                                                                                               | boolean   |
-| show_not_visited_zones     | Will show non visited zones if `true`.                                                                                              | boolean   |
-| min_minutes_in_zone        | Minimum minutes in a zone to start determining visit. If the device was in a zone less than a specified time - the visit not count. | int       |
-| zone_ids                   | List of zone IDs.                                                                                                                   | int array |
-| hide_charts                | If `true`, charts will be hidden.                                                                                                   | boolean   |
-| include_summary_sheet_only | If `true`, report will contain only a summary sheet.                                                                                | boolean   |
-| include_summary_sheet      | If `true`, report will contain a summary sheet. Default is `true`.                                                                  | boolean   |
+| name                          | description                                                                                                                         | type      |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| hide\_empty\_tabs             | If `true`, empty tabs will be hidden.                                                                                               | boolean   |
+| show\_seconds                 | If `true`, timestamps will be with seconds.                                                                                         | boolean   |
+| show\_mileage                 | Adds mileage to the report if `true`.                                                                                               | boolean   |
+| show\_not\_visited\_zones     | Will show non visited zones if `true`.                                                                                              | boolean   |
+| min\_minutes\_in\_zone        | Minimum minutes in a zone to start determining visit. If the device was in a zone less than a specified time - the visit not count. | int       |
+| zone\_ids                     | List of zone IDs.                                                                                                                   | int array |
+| hide\_charts                  | If `true`, charts will be hidden.                                                                                                   | boolean   |
+| include\_summary\_sheet\_only | If `true`, report will contain only a summary sheet.                                                                                | boolean   |
+| include\_summary\_sheet       | If `true`, report will contain a summary sheet. Default is `true`.                                                                  | boolean   |
 
 #### plugin example
 
@@ -175,29 +169,28 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### POI visits report
 
 A report on date, time, and the number of POIs visits.
 
 #### Parameters
 
-Default **plugin_id**: 85.
+Default **plugin\_id**: 85.
 
 Plugin-specific parameters:
 
-| name                       | description                                                                                                                           | type      |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| hide_empty_tabs            | If `true`, empty tabs will be hidden.                                                                                                 | boolean   |
-| show_seconds               | If `true`, timestamps will be with seconds.                                                                                           | boolean   |
-| show_mileage               | Adds mileage to the report if `true`.                                                                                                 | boolean   |
-| show_not_visited_places    | Will show non visited POIs if `true`.                                                                                                 | boolean   |
-| min_minutes_in_place       | Minimum minutes in a place to start determining visit. If the device was in a place less than a specified time - the visit not count. | int       |
-| place_ids                  | List of place IDs.                                                                                                                    | int array |
-| hide_charts                | If `true`, charts will be hidden.                                                                                                     | boolean   |
-| include_summary_sheet_only | If `true`, report will have only a summary sheet.                                                                                     | boolean   |
-| include_summary_sheet      | If `true`, report will contain a summary sheet. Default is `true`.                                                                    | boolean   |
-| fetch_places_by_employees  | If `true`, places will show assigned employee. Place should be assigned to an employee to show his name.                              | boolean   |
+| name                          | description                                                                                                                           | type      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| hide\_empty\_tabs             | If `true`, empty tabs will be hidden.                                                                                                 | boolean   |
+| show\_seconds                 | If `true`, timestamps will be with seconds.                                                                                           | boolean   |
+| show\_mileage                 | Adds mileage to the report if `true`.                                                                                                 | boolean   |
+| show\_not\_visited\_places    | Will show non visited POIs if `true`.                                                                                                 | boolean   |
+| min\_minutes\_in\_place       | Minimum minutes in a place to start determining visit. If the device was in a place less than a specified time - the visit not count. | int       |
+| place\_ids                    | List of place IDs.                                                                                                                    | int array |
+| hide\_charts                  | If `true`, charts will be hidden.                                                                                                     | boolean   |
+| include\_summary\_sheet\_only | If `true`, report will have only a summary sheet.                                                                                     | boolean   |
+| include\_summary\_sheet       | If `true`, report will contain a summary sheet. Default is `true`.                                                                    | boolean   |
+| fetch\_places\_by\_employees  | If `true`, places will show assigned employee. Place should be assigned to an employee to show his name.                              | boolean   |
 
 #### plugin example
 
@@ -216,21 +209,20 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Car security report
 
 A report on alarms, towing alerts, AutoControl events, and crashes.
 
 #### Parameters
 
-Default **plugin_id**: 15.
+Default **plugin\_id**: 15.
 
 Plugin-specific parameters:
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -242,21 +234,20 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Emergency button (SOS) report
 
 A report on SOS button events log
 
 #### Parameters
 
-Default **plugin_id**: 16.
+Default **plugin\_id**: 16.
 
 Plugin-specific parameters:
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -268,21 +259,20 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Fall detection report
 
 A report on fall detection sensor log.
 
 #### Parameters
 
-Default **plugin_id**: 17.
+Default **plugin\_id**: 17.
 
 Plugin-specific parameters:
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -294,21 +284,20 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Tracker detach report
 
 A report on demounting devices from tracking objects.
 
 #### Parameters
 
-Default **plugin_id**: 18.
+Default **plugin\_id**: 18.
 
 Plugin-specific parameters:
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -320,22 +309,21 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Overall security report
 
 A report on all events related to security and safety.
 
 #### Parameters
 
-default **plugin_id**: 19.
+default **plugin\_id**: 19.
 
 Plugin-specific parameters:
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
-| group_by_type   | If `true`,events will group by type.       | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
+| group\_by\_type   | If `true`,events will group by type.       | boolean |
 
 #### plugin example
 
@@ -348,25 +336,24 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Engine hours report
 
 A report on time spent in motion and on idling.
 
 #### Parameters
 
-default **plugin_id**: 7.
+default **plugin\_id**: 7.
 
 Plugin-specific parameters:
 
-| name                       | description                                                                                                                                                                   | type    |
-|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| hide_empty_tabs            | If `true`, empty tabs will be hidden.                                                                                                                                         | boolean |
-| show_seconds               | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean |
-| show_detailed              | If `true`, report will contain detailed engine hours tab.                                                                                                                     | boolean |
-| include_summary_sheet_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean |
-| include_summary_sheet      | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                            | boolean |
-| filter                     | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
+| name                          | description                                                                                                                                                                   | type    |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| hide\_empty\_tabs             | If `true`, empty tabs will be hidden.                                                                                                                                         | boolean |
+| show\_seconds                 | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean |
+| show\_detailed                | If `true`, report will contain detailed engine hours tab.                                                                                                                     | boolean |
+| include\_summary\_sheet\_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean |
+| include\_summary\_sheet       | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                            | boolean |
+| filter                        | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 
 #### plugin example
 
@@ -381,31 +368,30 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Fuel volume report
 
 A report on fuel refills, drains, consumption (based on fuel level sensor).
 
 #### Parameters
 
-default **plugin_id**: 10.
+default **plugin\_id**: 10.
 
 Plugin-specific parameters:
 
-| name                              | description                                                                                                                                                                   | type                                           |
-|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| show_seconds                      | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean                                        |
-| graph_type                        | The type of X-axis. Can be "time" or "mileage".                                                                                                                               | [enum](../../../getting-started/introduction.md#data-types) |
-| detailed_by_dates                 | If `true`, show final data on fuel traffic for each day in the period.                                                                                                        | boolean                                        |
-| include_summary_sheet_only        | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean                                        |
-| include_summary_sheet             | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                            | boolean                                        |
-| use_ignition_data_for_consumption | Calculate consumption only when the ignition was on if `true`.                                                                                                                | boolean                                        |
-| include_mileage_plot              | Optional. Used if `graph_type = time`. Show mileage plot if `true`.                                                                                                           | boolean                                        |
-| filter                            | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                                        |
-| include_speed_plot                | If `true`, show speed plot.                                                                                                                                                   | boolean                                        |
-| smoothing                         | Smooth graph if `true`. Smoothing reduces the accuracy of calculating refills or drains.                                                                                      | boolean                                        |
-| surge_filter                      | If `true`, enables surge filter.                                                                                                                                              | boolean                                        |
-| surge_filter_threshold            | Defines a level of surge filter. Can be 0.01 - 0.99.                                                                                                                          | float                                          |
+| name                                  | description                                                                                                                                                                   | type                         |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| show\_seconds                         | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean                      |
+| graph\_type                           | The type of X-axis. Can be "time" or "mileage".                                                                                                                               | [enum](../../../#data-types) |
+| detailed\_by\_dates                   | If `true`, show final data on fuel traffic for each day in the period.                                                                                                        | boolean                      |
+| include\_summary\_sheet\_only         | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean                      |
+| include\_summary\_sheet               | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                            | boolean                      |
+| use\_ignition\_data\_for\_consumption | Calculate consumption only when the ignition was on if `true`.                                                                                                                | boolean                      |
+| include\_mileage\_plot                | Optional. Used if `graph_type = time`. Show mileage plot if `true`.                                                                                                           | boolean                      |
+| filter                                | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                      |
+| include\_speed\_plot                  | If `true`, show speed plot.                                                                                                                                                   | boolean                      |
+| smoothing                             | Smooth graph if `true`. Smoothing reduces the accuracy of calculating refills or drains.                                                                                      | boolean                      |
+| surge\_filter                         | If `true`, enables surge filter.                                                                                                                                              | boolean                      |
+| surge\_filter\_threshold              | Defines a level of surge filter. Can be 0.01 - 0.99.                                                                                                                          | float                        |
 
 #### plugin example
 
@@ -426,23 +412,22 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Flow meter report
 
 A report on fuel consumption counted by flow meter sensors.
 
 #### Parameters
 
-default **plugin_id**: 78.
+default **plugin\_id**: 78.
 
 Plugin-specific parameters:
 
-| name                       | description                                                                                                                                                                   | type    |
-|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| detailed_by_dates          | If `true`, a table with statistics for every single day in selected date range will be added to the report.                                                                   | boolean |
-| filter                     | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
-| include_summary_sheet_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean |
-| include_summary_sheet      | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                            | boolean |
+| name                          | description                                                                                                                                                                   | type    |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| detailed\_by\_dates           | If `true`, a table with statistics for every single day in selected date range will be added to the report.                                                                   | boolean |
+| filter                        | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
+| include\_summary\_sheet\_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean |
+| include\_summary\_sheet       | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                            | boolean |
 
 #### plugin example
 
@@ -455,25 +440,24 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Vehicle sensors report
 
 A report on CAN-bus and OBD2-port data.
 
 #### Parameters
 
-default **plugin_id**: 22.
+default **plugin\_id**: 22.
 
 Plugin-specific parameters:
 
-| name                     | description                                                          | type                                           |
-|--------------------------|----------------------------------------------------------------------|------------------------------------------------|
-| hide_empty_tabs          | If `true`, empty tabs will be hidden.                                | boolean                                        |
-| details_interval_seconds | The interval in seconds. From 30 to 21600.                           | int                                            |
-| details_interval_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`. | int                                            |
-| graph_type               | The type of X-axis. Can be "time" or "mileage".                      | [enum](../../../getting-started/introduction.md#data-types) |
-| smoothing                | Smooth data if `true`.                                               | boolean                                        |
-| sensors                  | List of objects containing tracker_id and sensor_id.                 | array of objects                               |
+| name                       | description                                                          | type                         |
+| -------------------------- | -------------------------------------------------------------------- | ---------------------------- |
+| hide\_empty\_tabs          | If `true`, empty tabs will be hidden.                                | boolean                      |
+| details\_interval\_seconds | The interval in seconds. From 30 to 21600.                           | int                          |
+| details\_interval\_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`. | int                          |
+| graph\_type                | The type of X-axis. Can be "time" or "mileage".                      | [enum](../../../#data-types) |
+| smoothing                  | Smooth data if `true`.                                               | boolean                      |
+| sensors                    | List of objects containing tracker\_id and sensor\_id.               | array of objects             |
 
 * `sensors` is:
 
@@ -488,7 +472,7 @@ Plugin-specific parameters:
 }
 ```
 
-!!! note "Parameter `details_interval_minutes` is deprecated. Please use `details_interval_seconds`."
+> Parameter `details_interval_minutes` is deprecated. Please use `details_interval_seconds`.
 
 #### plugin example
 
@@ -508,25 +492,24 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Speed violation
 
 A report on speeding instances.
 
 #### Parameters
 
-default **plugin_id**: 27.
+default **plugin\_id**: 27.
 
 Plugin-specific parameters:
 
-| name                 | description                                                                                                                                                                  | type    |
-|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| hide_empty_tabs      | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean |
-| show_seconds         | If `true`,timestamps will be with seconds.                                                                                                                                   | boolean |
-| min_duration_minutes | A minimum time in seconds when speed is more than `max_speed` to determine violation.                                                                                        | int     |
-| max_speed            | A maximum speed to determine violation.                                                                                                                                      | int     |
-| group_by_driver      | Group violations by driver assigned to the device if `true`.                                                                                                                 | boolean |
-| filter               | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
+| name                   | description                                                                                                                                                                  | type    |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| hide\_empty\_tabs      | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean |
+| show\_seconds          | If `true`,timestamps will be with seconds.                                                                                                                                   | boolean |
+| min\_duration\_minutes | A minimum time in seconds when speed is more than `max_speed` to determine violation.                                                                                        | int     |
+| max\_speed             | A maximum speed to determine violation.                                                                                                                                      | int     |
+| group\_by\_driver      | Group violations by driver assigned to the device if `true`.                                                                                                                 | boolean |
+| filter                 | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean |
 
 #### plugin example
 
@@ -542,21 +525,20 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Device switching ON/OFF report
 
 A report on switching device using hardware switch.
 
 #### Parameters
 
-default **plugin_id**: 23.
+default **plugin\_id**: 23.
 
 Plugin-specific parameters:
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -568,21 +550,20 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### GSM connection lost
 
 A report on long disruptions of server connection
 
 #### Parameters
 
-default **plugin_id**: 13.
+default **plugin\_id**: 13.
 
 Plugin-specific parameters:
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -594,27 +575,26 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Measuring sensors report
 
 A report on detailed sensor reading history.
 
 #### Parameters
 
-default **plugin_id**: 9.
+default **plugin\_id**: 9.
 
 Plugin-specific parameters:
 
-| name                     | description                                                                                                                                                                  | type                                           |
-|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| hide_empty_tabs          | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean                                        |
-| details_interval_seconds | The interval in seconds. From 30 to 21600.                                                                                                                                   | int                                            |
-| details_interval_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`.                                                                                                         | int                                            |
-| graph_type               | The type of X-axis. Can be "time" or "mileage".                                                                                                                              | [enum](../../../getting-started/introduction.md#data-types) |
-| smoothing                | Smooth data if `true`.                                                                                                                                                       | boolean                                        |
-| show_address             | Address of each reading appears in report if `true`.                                                                                                                         | boolean                                        |
-| filter                   | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                                        |
-| sensors                  | List of objects containing tracker_id and sensor_id.                                                                                                                         | array of objects                               |
+| name                       | description                                                                                                                                                                  | type                         |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| hide\_empty\_tabs          | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean                      |
+| details\_interval\_seconds | The interval in seconds. From 30 to 21600.                                                                                                                                   | int                          |
+| details\_interval\_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`.                                                                                                         | int                          |
+| graph\_type                | The type of X-axis. Can be "time" or "mileage".                                                                                                                              | [enum](../../../#data-types) |
+| smoothing                  | Smooth data if `true`.                                                                                                                                                       | boolean                      |
+| show\_address              | Address of each reading appears in report if `true`.                                                                                                                         | boolean                      |
+| filter                     | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                      |
+| sensors                    | List of objects containing tracker\_id and sensor\_id.                                                                                                                       | array of objects             |
 
 * `sensors` is:
 
@@ -629,7 +609,7 @@ Plugin-specific parameters:
 }
 ```
 
-!!! note "Param `details_interval_minutes` is deprecated. Please sue `details_interval_seconds`."
+> Param `details_interval_minutes` is deprecated. Please sue `details_interval_seconds`.
 
 #### plugin example
 
@@ -651,23 +631,22 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Equipment working time
 
 A report on activity and idle time of the equipment.
 
 #### Parameters
 
-default **plugin_id**: 12.
+default **plugin\_id**: 12.
 
-| name                        | description                                                                                                                                                                  | type             |
-|-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-| hide_empty_tabs             | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean          |
-| show_seconds                | If `true`,timestamps will be with seconds.                                                                                                                                   | boolean          |
-| min_working_period_duration | A minimum time in seconds the equipment works to determine activity. Min = 1.                                                                                                | int              |
-| show_idle_percent           | If `true`,show percentage of idling.                                                                                                                                         | boolean          |
-| filter                      | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean          |
-| sensors                     | List of objects containing tracker_id and sensor_id.                                                                                                                         | array of objects |
+| name                           | description                                                                                                                                                                  | type             |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| hide\_empty\_tabs              | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean          |
+| show\_seconds                  | If `true`,timestamps will be with seconds.                                                                                                                                   | boolean          |
+| min\_working\_period\_duration | A minimum time in seconds the equipment works to determine activity. Min = 1.                                                                                                | int              |
+| show\_idle\_percent            | If `true`,show percentage of idling.                                                                                                                                         | boolean          |
+| filter                         | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean          |
+| sensors                        | List of objects containing tracker\_id and sensor\_id.                                                                                                                       | array of objects |
 
 * `sensors` is:
 
@@ -701,23 +680,22 @@ default **plugin_id**: 12.
 }
 ```
 
-
 ### Tasks report
 
 A report on tasks statuses.
 
 #### Parameters
 
-default **plugin_id**: 42.
+default **plugin\_id**: 42.
 
-| name                  | description                                 | type    |
-|-----------------------|---------------------------------------------|---------|
-| hide_empty_tabs       | If `true`, empty tabs will be hidden.       | boolean |
-| show_seconds          | If `true`,timestamps will be with seconds.  | boolean |
-| show_external_id      | Show external ID of task, if `true`.        | boolean |
-| show_description      | Show description of task, if `true`.        | boolean |
-| show_forms            | Show forms when the task has it, if `true`. | boolean |  
-| show_places_and_zones | Show places and geofences, if `true`.       | boolean |
+| name                     | description                                 | type    |
+| ------------------------ | ------------------------------------------- | ------- |
+| hide\_empty\_tabs        | If `true`, empty tabs will be hidden.       | boolean |
+| show\_seconds            | If `true`,timestamps will be with seconds.  | boolean |
+| show\_external\_id       | Show external ID of task, if `true`.        | boolean |
+| show\_description        | Show description of task, if `true`.        | boolean |
+| show\_forms              | Show forms when the task has it, if `true`. | boolean |
+| show\_places\_and\_zones | Show places and geofences, if `true`.       | boolean |
 
 #### plugin example
 
@@ -733,19 +711,18 @@ default **plugin_id**: 42.
 }
 ```
 
-
 ### Form completion statistics report
 
 A report on form fields completion rate.
 
 #### Parameters
 
-default **plugin_id**: 70.
+default **plugin\_id**: 70.
 
-| name             | description                                             | type    |
-|------------------|---------------------------------------------------------|---------|
-| hide_empty_tabs  | If `true`, empty tabs will be hidden.                   | boolean |
-| show_nonselected | If `true`, not selected options in forms will be shown. | boolean |
+| name              | description                                             | type    |
+| ----------------- | ------------------------------------------------------- | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.                   | boolean |
+| show\_nonselected | If `true`, not selected options in forms will be shown. | boolean |
 
 #### plugin example
 
@@ -757,19 +734,18 @@ default **plugin_id**: 70.
 }
 ```
 
-
 ### Work statuses report
 
 A report on status changes history.
 
 #### Parameters
 
-default **plugin_id**: 47.
+default **plugin\_id**: 47.
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -781,24 +757,23 @@ default **plugin_id**: 47.
 }
 ```
 
-
 ### Check-in report
 
 A report on markers for Check-in function. Available only for X-GPS Trackers.
 
 #### Parameters
 
-default **plugin_id**: 80
+default **plugin\_id**: 80
 
 Plugin-specific parameters:
 
-| name                  | description                                                   | type    |
-|-----------------------|---------------------------------------------------------------|---------|
-| show_coordinates      | If `true`, coordinates will be added to the report.           | boolean |
-| hide_empty_tabs       | If `true`, empty tabs will be hidden.                         | boolean |
-| show_coordinates      | Every address will contain longitude and latitude, if `true`. | boolean |
-| show_places_and_zones | Show places and geofences, if `true`.                         |         |
-| show_forms            | Show forms when the task has it, if `true`.                   | boolean |
+| name                     | description                                                   | type    |
+| ------------------------ | ------------------------------------------------------------- | ------- |
+| show\_coordinates        | If `true`, coordinates will be added to the report.           | boolean |
+| hide\_empty\_tabs        | If `true`, empty tabs will be hidden.                         | boolean |
+| show\_coordinates        | Every address will contain longitude and latitude, if `true`. | boolean |
+| show\_places\_and\_zones | Show places and geofences, if `true`.                         |         |
+| show\_forms              | Show forms when the task has it, if `true`.                   | boolean |
 
 #### plugin example
 
@@ -812,21 +787,20 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Driver shift change report
 
 A report on driver identification.
 
 #### Parameters
 
-default **plugin_id**: 66.
+default **plugin\_id**: 66.
 
 Plugin-specific parameters:
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -838,25 +812,24 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Trips by state
 
 A report on trips breakdown by jurisdictions.
 
 #### Parameters
 
-default **plugin_id**: 73.
+default **plugin\_id**: 73.
 
 Plugin-specific parameters:
 
-| name                       | description                                                                                                                                                                   | type                                           |
-|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| hide_empty_tabs            | If `true`, empty tabs will be hidden.                                                                                                                                         | boolean                                        |
-| show_seconds               | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean                                        |
-| filter                     | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                                        |
-| include_summary_sheet_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean                                        |
-| include_summary_sheet      | If `true`, the report will contain a summary sheet. Default is `true`.                                                                                                        | boolean                                        |
-| group_type                 | A group type. Can be "province" or "country".                                                                                                                                 | [enum](../../../getting-started/introduction.md#data-types) |
+| name                          | description                                                                                                                                                                   | type                         |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| hide\_empty\_tabs             | If `true`, empty tabs will be hidden.                                                                                                                                         | boolean                      |
+| show\_seconds                 | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean                      |
+| filter                        | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                      |
+| include\_summary\_sheet\_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean                      |
+| include\_summary\_sheet       | If `true`, the report will contain a summary sheet. Default is `true`.                                                                                                        | boolean                      |
+| group\_type                   | A group type. Can be "province" or "country".                                                                                                                                 | [enum](../../../#data-types) |
 
 #### plugin example
 
@@ -871,23 +844,22 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Report on all events
 
 An overall report about any kind of events.
 
 #### Parameters
 
-default **plugin_id**: 11.
+default **plugin\_id**: 11.
 
 Plugin-specific parameters:
 
-| name            | description                                    | type         |
-|-----------------|------------------------------------------------|--------------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.          | boolean      |
-| show_seconds    | If `true`,timestamps will be with seconds.     | boolean      |
-| group_by_type   | Groups events by type if `true`.               | boolean      |
-| event_types     | A list of event types that will be considered. | string array |
+| name              | description                                    | type         |
+| ----------------- | ---------------------------------------------- | ------------ |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.          | boolean      |
+| show\_seconds     | If `true`,timestamps will be with seconds.     | boolean      |
+| group\_by\_type   | Groups events by type if `true`.               | boolean      |
+| event\_types      | A list of event types that will be considered. | string array |
 
 * the object with all `event_types` is:
 
@@ -992,22 +964,21 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Geofence entry/exit events
 
 A report on ins ad outs of a certain geofence.
 
 #### Parameters
 
-default **plugin_id**: 89.
+default **plugin\_id**: 89.
 
 Plugin-specific parameters:
 
-| name                | description                                                                                                                         | type    |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------------|---------|
-| hide_empty_tabs     | If `true`, empty tabs will be hidden.                                                                                               | boolean |
-| show_seconds        | If `true`,timestamps will be with seconds.                                                                                          | boolean |
-| min_minutes_in_zone | Minimum minutes in a zone to start determining visit. If the device was in a zone less than a specified time - the visit not count. | int     |
+| name                   | description                                                                                                                         | type    |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| hide\_empty\_tabs      | If `true`, empty tabs will be hidden.                                                                                               | boolean |
+| show\_seconds          | If `true`,timestamps will be with seconds.                                                                                          | boolean |
+| min\_minutes\_in\_zone | Minimum minutes in a zone to start determining visit. If the device was in a zone less than a specified time - the visit not count. | int     |
 
 #### plugin example
 
@@ -1020,21 +991,20 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### SMS-locations report
 
 A report on location requests over SMS channel.
 
 #### Parameters
 
-default **plugin_id**: 20.
+default **plugin\_id**: 20.
 
 Plugin-specific parameters:
 
-| name            | description                                | type    |
-|-----------------|--------------------------------------------|---------|
-| hide_empty_tabs | If `true`, empty tabs will be hidden.      | boolean |
-| show_seconds    | If `true`,timestamps will be with seconds. | boolean |
+| name              | description                                | type    |
+| ----------------- | ------------------------------------------ | ------- |
+| hide\_empty\_tabs | If `true`, empty tabs will be hidden.      | boolean |
+| show\_seconds     | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -1052,13 +1022,13 @@ Information on the points transmitted during the day. Maximum period is 24 hours
 
 #### Parameters
 
-default **plugin_id**: 91.
+default **plugin\_id**: 91.
 
 Plugin-specific parameters:
 
-| name         | description                                | type    |
-|--------------|--------------------------------------------|---------|
-| show_seconds | If `true`,timestamps will be with seconds. | boolean |
+| name          | description                                | type    |
+| ------------- | ------------------------------------------ | ------- |
+| show\_seconds | If `true`,timestamps will be with seconds. | boolean |
 
 #### plugin example
 
@@ -1069,28 +1039,27 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Eco-driving report by trackers
 
-A report on safety driving by trackers. For [report/generate](../report/report_tracker.md#generate) request use trackers
+A report on safety driving by trackers. For [report/generate](../report/report_tracker.md#generate) request use trackers\
 parameter.
 
 #### Parameters
 
-default **plugin_id**: 46.
+default **plugin\_id**: 46.
 
 Plugin-specific parameters:
 
-| name                    | description                                                                             | type             |
-|-------------------------|-----------------------------------------------------------------------------------------|------------------|
-| harsh_driving_penalties | A list of penalties for harsh driving.                                                  | array of objects |
-| speeding_penalties      | A list of penalties for speeding.                                                       | array of objects |
-| speed_limit             | Max permitted speed value.                                                              | int              |
-| idling_penalty          | Penalty for idling.                                                                     | int              |
-| min_idling_duration     | A minimum time in minutes to determine idling.                                          | int              |
-| min_speeding_duration   | A minimum time in minutes when speed is more than `speed_limit` to determine violation. | int              |
-| use_vehicle_speed_limit | If `true`vehicle speed limit used instead of `speed_limit` parameter.                   | boolean          |
-| show_seconds            | If `true`,timestamps will be with seconds.                                              | boolean          |
+| name                       | description                                                                             | type             |
+| -------------------------- | --------------------------------------------------------------------------------------- | ---------------- |
+| harsh\_driving\_penalties  | A list of penalties for harsh driving.                                                  | array of objects |
+| speeding\_penalties        | A list of penalties for speeding.                                                       | array of objects |
+| speed\_limit               | Max permitted speed value.                                                              | int              |
+| idling\_penalty            | Penalty for idling.                                                                     | int              |
+| min\_idling\_duration      | A minimum time in minutes to determine idling.                                          | int              |
+| min\_speeding\_duration    | A minimum time in minutes when speed is more than `speed_limit` to determine violation. | int              |
+| use\_vehicle\_speed\_limit | If `true`vehicle speed limit used instead of `speed_limit` parameter.                   | boolean          |
+| show\_seconds              | If `true`,timestamps will be with seconds.                                              | boolean          |
 
 * `harsh_driving_penalties` is:
 
@@ -1150,28 +1119,27 @@ Plugin-specific parameters:
 }
 ```
 
-
 ### Eco-driving report by drivers
 
-A report on safety driving by drivers. For [report/generate](../report/report_tracker.md#generate) request use employees
+A report on safety driving by drivers. For [report/generate](../report/report_tracker.md#generate) request use employees\
 parameter.
 
 #### Parameters
 
-default **plugin_id**: 82.
+default **plugin\_id**: 82.
 
 Plugin-specific parameters:
 
-| name                    | description                                                                             | type             |
-|-------------------------|-----------------------------------------------------------------------------------------|------------------|
-| harsh_driving_penalties | A list of penalties for harsh driving.                                                  | array of objects |
-| speeding_penalties      | A list of penalties for speeding.                                                       | array of objects |
-| speed_limit             | Max permitted speed value.                                                              | int              |
-| idling_penalty          | Penalty for idling.                                                                     | int              |
-| min_idling_duration     | A minimum time in minutes to determine idling.                                          | int              |
-| min_speeding_duration   | A minimum time in minutes when speed is more than `speed_limit` to determine violation. | int              |
-| use_vehicle_speed_limit | If `true`vehicle speed limit used instead of `speed_limit` parameter.                   | boolean          |
-| show_seconds            | If `true`,timestamps will be with seconds.                                              | boolean          |
+| name                       | description                                                                             | type             |
+| -------------------------- | --------------------------------------------------------------------------------------- | ---------------- |
+| harsh\_driving\_penalties  | A list of penalties for harsh driving.                                                  | array of objects |
+| speeding\_penalties        | A list of penalties for speeding.                                                       | array of objects |
+| speed\_limit               | Max permitted speed value.                                                              | int              |
+| idling\_penalty            | Penalty for idling.                                                                     | int              |
+| min\_idling\_duration      | A minimum time in minutes to determine idling.                                          | int              |
+| min\_speeding\_duration    | A minimum time in minutes when speed is more than `speed_limit` to determine violation. | int              |
+| use\_vehicle\_speed\_limit | If `true`vehicle speed limit used instead of `speed_limit` parameter.                   | boolean          |
+| show\_seconds              | If `true`,timestamps will be with seconds.                                              | boolean          |
 
 #### plugin example
 
@@ -1205,16 +1173,16 @@ Plugin-specific parameters:
 
 #### Parameters
 
-default **plugin_id**: 84
+default **plugin\_id**: 84
 
 plugin-specific parameters:
 
-| name                | description                                                                           | type             |
-|---------------------|---------------------------------------------------------------------------------------|------------------|
-| show_seconds        | If `true`, time values in report should have format with seconds. Default is `false`. | boolean          |
-| show_tags           | If `true`, tags fields will be added to the report. Default is `false`.               | boolean          |
-| min_minutes_in_zone | Minimum time in zone (geofence). Default is `5`.                                      | int, min value 1 |
-| zone_ids            | IDs of user zones, required, min size 1, max size 30                                  | int array        |
+| name                   | description                                                                           | type             |
+| ---------------------- | ------------------------------------------------------------------------------------- | ---------------- |
+| show\_seconds          | If `true`, time values in report should have format with seconds. Default is `false`. | boolean          |
+| show\_tags             | If `true`, tags fields will be added to the report. Default is `false`.               | boolean          |
+| min\_minutes\_in\_zone | Minimum time in zone (geofence). Default is `5`.                                      | int, min value 1 |
+| zone\_ids              | IDs of user zones, required, min size 1, max size 30                                  | int array        |
 
 #### plugin example
 
@@ -1228,24 +1196,23 @@ plugin-specific parameters:
 }
 ```
 
-
 ### Stay in places report
 
 #### Parameters
 
-default **plugin_id**: 85
+default **plugin\_id**: 85
 
 plugin-specific parameters:
 
-| name                      | description                                                                                                                                        | type      |
-|:--------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|:----------|
-| fetch_places_by_employees | If `true`, report will be built for places that are related to selected trackers via custom fields. Cannot be used in conjunction with `place_ids` | boolean   |
-| hide_charts               | If `true`, charts will be hidden.                                                                                                                  | boolean   |
-| min_minutes_in_place      | Minimum time in spent in place. Minimum value is 1, default is `5`                                                                                 | int       |
-| place_ids                 | IDs of user's POI. Min size 1, max size 30                                                                                                         | int array |
-| show_mileage              | Adds mileage to the report if `true`.                                                                                                              | boolean   |
-| show_not_visited_places   | Will show non visited POIs if `true`.                                                                                                              | boolean   |
-| show_seconds              | If `true`, time values in report should have format with seconds. Default is `false`.                                                              | boolean   |
+| name                         | description                                                                                                                                        | type      |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| fetch\_places\_by\_employees | If `true`, report will be built for places that are related to selected trackers via custom fields. Cannot be used in conjunction with `place_ids` | boolean   |
+| hide\_charts                 | If `true`, charts will be hidden.                                                                                                                  | boolean   |
+| min\_minutes\_in\_place      | Minimum time in spent in place. Minimum value is 1, default is `5`                                                                                 | int       |
+| place\_ids                   | IDs of user's POI. Min size 1, max size 30                                                                                                         | int array |
+| show\_mileage                | Adds mileage to the report if `true`.                                                                                                              | boolean   |
+| show\_not\_visited\_places   | Will show non visited POIs if `true`.                                                                                                              | boolean   |
+| show\_seconds                | If `true`, time values in report should have format with seconds. Default is `false`.                                                              | boolean   |
 
 #### plugin example
 
@@ -1261,5 +1228,3 @@ plugin-specific parameters:
   "plugin_id": 85
 }
 ```
-
-

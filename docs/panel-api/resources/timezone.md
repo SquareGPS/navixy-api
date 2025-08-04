@@ -1,42 +1,45 @@
 ---
 title: Timezone
-description: API call to get information about all supported timezones for the specified locale.
+description: >-
+  API call to get information about all supported timezones for the specified
+  locale.
 ---
 
 # Timezone
 
-API call to get information about all supported timezones for the specified locale.
 
 
 ## API actions
 
 API path: `panel/timezone`.
 
-### `list`
+### list
 
 Gets information about all supported timezones for the specified locale. Does not require authorization.
 
 #### Parameters
 
-| name   | description                                  | type                                                                          |
-|:-------|:---------------------------------------------|:------------------------------------------------------------------------------|
-| locale | Locale code to set language of descriptions. | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
+| name   | description                                  | type                                           |
+| ------ | -------------------------------------------- | ---------------------------------------------- |
+| locale | Locale code to set language of descriptions. | [enum](../../user-api/backend-api/#data-types) |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/timezone/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"locale": "en"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/timezone/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"locale": "en"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/timezone/list?locale=en
-    ```
+{% tab title="HTTP GET" %}
+```http
+https://api.eu.navixy.com/v2/panel/timezone/list?locale=en
+```
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -68,4 +71,4 @@ Gets information about all supported timezones for the specified locale. Does no
 
 #### Errors
 
-[General](../../user-api/backend-api/getting-started/errors.md#error-codes) types only.
+[General](../../user-api/backend-api/errors.md#error-codes) types only.

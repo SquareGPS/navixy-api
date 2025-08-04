@@ -5,9 +5,6 @@ description: An API call to get the list of available equipment.
 
 # Equipment
 
-API call to get the list of all available equipment.
-
-
 ## Equipment object
 
 ```json
@@ -26,16 +23,15 @@ API call to get the list of all available equipment.
 * `vendor` - string. A vendor's name.
 * `name` - string. A model's name used by a vendor.
 
-
 ## API actions
 
 API path: `panel/equipment`.
 
-### `list`
+### list
 
-Returns list of all equipment which can be assigned to tracker bundles. 
+Returns list of all equipment which can be assigned to tracker bundles.
 
-*required permissions*: `tracker_bundles: "read"`.
+_required permissions_: `tracker_bundles: "read"`.
 
 #### Parameters
 
@@ -43,19 +39,23 @@ Only session `hash`.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/equipment/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/equipment/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/equipment/list?hash=fa7bf873fab9333144e171372a321b06
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/equipment/list?hash=fa7bf873fab9333144e171372a321b06
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

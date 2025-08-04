@@ -7,7 +7,6 @@ description: API calls to interact with trackers in the admin panel.
 
 API calls to manage GPS tracking devices within the Admin Panel.
 
-
 ## Tracker object
 
 ```json
@@ -39,58 +38,59 @@ API calls to manage GPS tracking devices within the Admin Panel.
 }
 ```
 
-* `id` - int. Tracker ID aka object_id.
+* `id` - int. Tracker ID aka object\_id.
 * `avatar_file_name` - optional string. Passed only if present.
 * `clone` - boolean. `true` if this tracker is clone.
 * `comment` - string. Comment (description) related to the tracker.
-* `creation_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Tracker or clone creation date.
+* `creation_date` - [date/time](../../user-api/backend-api/#data-types). Tracker or clone creation date.
 * `group_id` - int. Tracker group ID. `0` if no group.
 * `dealer_id` - int. An ID of a dealer to which this tracker (or clone) belongs to.
 * `deleted` - boolean. True if tracker or clone has been marked as deleted.
 * `label` - string. Tracker label.
 * `user_id` - int. An ID of the user to which this tracker (or clone) belongs to.
 * `model_name` - string. Human-readable tracker model name.
-* `last_connection` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Time when this tracker last connected to the server (in UTC+0 timezone).
-* `source` - source JSON object. 
-    * `id` - int. Source ID.
-    * `device_id` - string. Source_imei.
-    * `model` - string. Tracker model name from "models" table.
-    * `blocked` - boolean. `true` if tracker has been blocked due to tariff end, etc.
-    * `tariff_id` - int. An ID of tracker's tariff from "main_tariffs" table.
-    * `creation_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date when this tracker first registered in the system.
-    * `tariff_end_date` - [date/time](../../user-api/backend-api/getting-started/introduction.md#data-types). Date of next tariff prolongation or null.
-    * `connection_status` - [enum](../../user-api/backend-api/getting-started/introduction.md#data-types). 
-      Device connection status, possible values: "signal_lost", "just_registered", "just_replaced", "offline", "idle", "active"
-    * `phone` - string. Phone of the device. Can be null or empty if the device has no GSM module or uses bundled SIM which number hidden from the user.
-    * `corrupted` - boolean. `true` when tracker has been corrupted using /tracker/corrupt, and not passed when it is not corrupted.
-
+* `last_connection` - [date/time](../../user-api/backend-api/#data-types). Time when this tracker last connected to the server (in UTC+0 timezone).
+* `source` - source JSON object.
+  * `id` - int. Source ID.
+  * `device_id` - string. Source\_imei.
+  * `model` - string. Tracker model name from "models" table.
+  * `blocked` - boolean. `true` if tracker has been blocked due to tariff end, etc.
+  * `tariff_id` - int. An ID of tracker's tariff from "main\_tariffs" table.
+  * `creation_date` - [date/time](../../user-api/backend-api/#data-types). Date when this tracker first registered in the system.
+  * `tariff_end_date` - [date/time](../../user-api/backend-api/#data-types). Date of next tariff prolongation or null.
+  * `connection_status` - [enum](../../user-api/backend-api/#data-types).\
+    Device connection status, possible values: "signal\_lost", "just\_registered", "just\_replaced", "offline", "idle", "active"
+  * `phone` - string. Phone of the device. Can be null or empty if the device has no GSM module or uses bundled SIM which number hidden from the user.
+  * `corrupted` - boolean. `true` when tracker has been corrupted using /tracker/corrupt, and not passed when it is not corrupted.
 
 ## API actions
 
 API path: `panel/tracker`.
 
-### `active/history/list`
+### active/history/list
 
 Provides information about trackers which were considered "active" by our PaaS billing system, on a month-by-month basis.
 
-*required permissions*: `trackers: "read"`.
+_required permissions_: `trackers: "read"`.
 
 #### Parameters
 
 | name | description                                          | type              |
-|:-----|:-----------------------------------------------------|:------------------|
+| ---- | ---------------------------------------------------- | ----------------- |
 | from | Start year and month for searching, e. g. "2021-02". | year-month string |
 | to   | End year and month for searching. e. g. "2021-03".   | year-month string |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/active/history/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "from": "2021-02", "to": "2021-03"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/active/history/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "from": "2021-02", "to": "2021-03"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -122,35 +122,40 @@ Provides information about trackers which were considered "active" by our PaaS b
 
 * 211 – Requested time span is too big.
 
-
-### `bundle/assign`
+### bundle/assign
 
 Assign bundle to specified ICCID.
 
-*required permissions*: `tracker_bundles: "update"`.
+_required permissions_: `tracker_bundles: "update"`.
 
 #### Parameters
 
-| name      | description                                                            | type   |
-|:----------|:-----------------------------------------------------------------------|:-------|
-| bundle_id | ID of the bundle.                                                      | int    |
-| iccid     | Must consist of printable characters and have length between 3 and 20. | string |
+| name       | description                                                            | type   |
+| ---------- | ---------------------------------------------------------------------- | ------ |
+| bundle\_id | ID of the bundle.                                                      | int    |
+| iccid      | Must consist of printable characters and have length between 3 and 20. | string |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/assign' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": "78974217758"}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/assign' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "iccid": "78974217758"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/bundle/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&iccid=78974217758
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/bundle/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&iccid=78974217758
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -169,35 +174,40 @@ Assign bundle to specified ICCID.
 * 247 – Entity already exists - if ICCID is already exist.
 * 250 – Not allowed for deleted devices - if SIM card deleted.
 
-
-### `bundle/order/assign`
+### bundle/order/assign
 
 Assigns bundle to specified order ID.
 
-*required permissions*: `tracker_bundles: "update"`.
+_required permissions_: `tracker_bundles: "update"`.
 
 #### Parameters
 
-| name      | description               | type |
-|:----------|:--------------------------|:-----|
-| bundle_id | ID of a bundle.           | int  |
-| order_id  | ID of a bundle. Nullable. | int  |
+| name       | description               | type |
+| ---------- | ------------------------- | ---- |
+| bundle\_id | ID of a bundle.           | int  |
+| order\_id  | ID of a bundle. Nullable. | int  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/order/assign' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "order_id": 78974217758}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/order/assign' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 1241, "order_id": 78974217758}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/bundle/order/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/bundle/order/assign?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -211,36 +221,41 @@ Assigns bundle to specified order ID.
 
 * 201 – Not found in the database if bundle not found.
 
-
-### `bundle/import`
+### bundle/import
 
 Adds multiple bundles at once.
 
-*required permissions*: `tracker_bundles: "create"`.
+_required permissions_: `tracker_bundles: "create"`.
 
 #### Parameters
 
-| name           | description                                              | type         |
-|:---------------|:---------------------------------------------------------|:-------------|
-| imeis          | Array of IMEI numbers.                                   | string array |
-| equip_id       | ID of equipment to associate with all specified IMEIs.   | int          |
-| factory_preset | Whether this device was preconfigured on factory or not. | boolean      |
+| name            | description                                              | type         |
+| --------------- | -------------------------------------------------------- | ------------ |
+| imeis           | Array of IMEI numbers.                                   | string array |
+| equip\_id       | ID of equipment to associate with all specified IMEIs.   | int          |
+| factory\_preset | Whether this device was preconfigured on factory or not. | boolean      |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/import' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imeis": ["896654523569742", "754854"], "equip_id": 13785, "factory_preset": false}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/import' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imeis": ["896654523569742", "754854"], "equip_id": 13785, "factory_preset": false}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/bundle/import?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758&factory_preset=false
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/bundle/import?hash=fa7bf873fab9333144e171372a321b06&bundle_id=1241&order_id=78974217758&factory_preset=false
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -254,41 +269,44 @@ Adds multiple bundles at once.
 
 * 201 – Not found in the database - if bundle not found.
 * 247 – Entity already exists - if one of IMEIs is already exist.
-* 204 – Entity not found - if there is no equipment with specified equip_id.
+* 204 – Entity not found - if there is no equipment with specified equip\_id.
 
-
-### `bundle/list`
+### bundle/list
 
 Gets list of all bundles. If `filter` is used, entities will be returned only if filter string contained within one of the following fields: `id`, `imei`, `model_code`, `iccid`, `assign_time`.
 
-*required permissions*: `tracker_bundles: "read"`.
+_required permissions_: `tracker_bundles: "read"`.
 
 #### Parameters
 
-| name                                  | description                                                                                                                                                                 | type                                                                          |
-|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|
-| clones_filter                         | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
-| filter  Optional. Text filter string. | string                                                                                                                                                                      |
-| order_by                              | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`.        | [enum](../../user-api/backend-api/getting-started/introduction.md#data-types) |
-| ascending                             | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                                                       |
-| offset                                | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                                                           |
-| limit                                 | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                                                           |
+| name                                 | description                                                                                                                                                                 | type                                           |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| clones\_filter                       | Optional. Possible values: `exclude_clones` (filter out "cloned" trackers from results), `only_include_clones` (results shall contain only "cloned" trackers) or `not_set`. | [enum](../../user-api/backend-api/#data-types) |
+| filter Optional. Text filter string. | string                                                                                                                                                                      |                                                |
+| order\_by                            | Optional. Specify list ordering. Can be one of `id`, `label`, `status`, `model`, `device_id`, `phone`, `creation_date`, `user_id`, `comment`. Default order by `id`.        | [enum](../../user-api/backend-api/#data-types) |
+| ascending                            | If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                                                                             | boolean                                        |
+| offset                               | Optional. Starting offset, used for pagination. Default is `0`.                                                                                                             | int                                            |
+| limit                                | Optional. Max number of records to return, used for pagination.                                                                                                             | int                                            |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/bundle/list?hash=fa7bf873fab9333144e171372a321b06
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/bundle/list?hash=fa7bf873fab9333144e171372a321b06
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -307,35 +325,38 @@ Gets list of all bundles. If `filter` is used, entities will be returned only if
 
 * 201 – Not found in the database - if `user_id` or `tariff_id` specified but was not found.
 
-
-### `bundle/read`
+### bundle/read
 
 Returns the bundle object with the specified imei.
 
-*required permissions*: `tracker_bundles: "read"`.
+_required permissions_: `tracker_bundles: "read"`.
 
 #### Parameters
 
 | name | description    | type   |
-|:-----|:---------------|:-------|
+| ---- | -------------- | ------ |
 | imei | Device's IMEI. | string |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imei": "835664527777452"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "imei": "835664527777452"}'
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/bundle/read?hash=fa7bf873fab9333144e171372a321b06&imei=835664527777452
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/bundle/read?hash=fa7bf873fab9333144e171372a321b06&imei=835664527777452
-    ```
-    
 #### Response
 
 ```json
@@ -349,35 +370,40 @@ Returns the bundle object with the specified imei.
 
 * 201 – Not found in the database - if bundle not found.
 
-
-### `bundle/update`
+### bundle/update
 
 Assign specified equipment to bundle.
 
-*required permissions*: `tracker_bundles: "update"`.
+_required permissions_: `tracker_bundles: "update"`.
 
 #### Parameters
 
-| name      | description         | type |
-|:----------|:--------------------|:-----|
-| bundle_id | ID of the bundle.   | int  | 
-| equip_id  | Valid equipment ID. | int  | 
+| name       | description         | type |
+| ---------- | ------------------- | ---- |
+| bundle\_id | ID of the bundle.   | int  |
+| equip\_id  | Valid equipment ID. | int  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/bundle/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 13457, "equip_id": 35468}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/bundle/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "bundle_id": 13457, "equip_id": 35468}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/bundle/update?hash=fa7bf873fab9333144e171372a321b06&bundle_id=13457&equip_id=35468
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/bundle/update?hash=fa7bf873fab9333144e171372a321b06&bundle_id=13457&equip_id=35468
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -392,38 +418,43 @@ Assign specified equipment to bundle.
 * 201 – Not found in the database - if bundle not found.
 * 204 – Entity not found - if there is no equipment with specified `equip_id`.
 
+### clone
 
-### `clone`
-
-Creates a clone of the existing non-clone tracker.
-The method allows cloning from and to a subpaas's user account that is in the admin account hierarchy.
+Creates a clone of the existing non-clone tracker.\
+The method allows cloning from and to a subpaas's user account that is in the admin account hierarchy.\
 Cloning from a user of one subpaas to another user of another subpaas in the same hierarchy is also possible.
 
-*required permissions*: `trackers: "create"`.
+_required permissions_: `trackers: "create"`.
 
 #### Parameters
 
-| name       | description                                                                                                          | type   |
-|:-----------|:---------------------------------------------------------------------------------------------------------------------|:-------|
-| tracker_id | ID of the tracker. Tracker must belong to authorized dealer.                                                         | int    |
-| label      | User-defined label for clone, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. | string |
-| user_id    | ID of the user who will become the owner of the clone.                                                               | int    |
+| name        | description                                                                                                          | type   |
+| ----------- | -------------------------------------------------------------------------------------------------------------------- | ------ |
+| tracker\_id | ID of the tracker. Tracker must belong to authorized dealer.                                                         | int    |
+| label       | User-defined label for clone, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. | string |
+| user\_id    | ID of the user who will become the owner of the clone.                                                               | int    |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/clone' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537, "user_id": 354468, "label": "Courier"}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/clone' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537, "user_id": 354468, "label": "Courier"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537&user_id=354468&label=Courier
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537&user_id=354468&label=Courier
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -444,34 +475,37 @@ Cloning from a user of one subpaas to another user of another subpaas in the sam
 * 247 - Entity already exists – if destination user already has a clone of this tracker.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-
-### `console/connect`
+### console/connect
 
 Returns auth token for connection to tracker command console.
 
-*required permissions*: `trackers: "update"`.
+_required permissions_: `trackers: "update"`.
 
 #### Parameters
 
-| name       | description                                                | type |
-|:-----------|:-----------------------------------------------------------|:-----|
-| tracker_id | ID of a tracker. Tracker must belong to authorized dealer. | int  |
+| name        | description                                                | type |
+| ----------- | ---------------------------------------------------------- | ---- |
+| tracker\_id | ID of a tracker. Tracker must belong to authorized dealer. | int  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/console/connect' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/console/connect' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/console/connect?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/console/connect?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -525,36 +559,39 @@ JSON objects come in the next text frames:
 * 201 - Not found in the database – when tracker with such `device_id` not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-
-### `corrupt`
+### corrupt
 
 Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename tracking table.
 
-*required permissions*: `trackers: "corrupt"`.
+_required permissions_: `trackers: "corrupt"`.
 
 #### Parameters
 
-| name           | description                                                               | type    |
-|:---------------|:--------------------------------------------------------------------------|:--------|
-| tracker_id     | ID of a tracker. Tracker must belong to authorized dealer.                | int     |
-| corrupt_clones | Optional. Default is `true`. Remove clones of the tracker for other users | boolean |
+| name            | description                                                               | type    |
+| --------------- | ------------------------------------------------------------------------- | ------- |
+| tracker\_id     | ID of a tracker. Tracker must belong to authorized dealer.                | int     |
+| corrupt\_clones | Optional. Default is `true`. Remove clones of the tracker for other users | boolean |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/corrupt' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/corrupt' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/corrupt?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/corrupt?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
-    ```
-    
 #### Response
 
 ```json
@@ -581,53 +618,58 @@ Mark tracker as deleted and corrupt its source `device_id` and `phone`. Rename t
 }
 ```
 
-* `list` - int array. Clones tracker_ids list.
+* `list` - int array. Clones tracker\_ids list.
 
+### batch\_clone
 
-### `batch_clone`
-
-Creates clones from the specified set of existing non-clone trackers.
+Creates clones from the specified set of existing non-clone trackers.\
 The following actions are allowed within the same admin account hierarchy:
 
 * Cloning from and to a subpaas's user account
 * Cloning from a user of one subpaas to another user of another subpaas
 * Cloning in a single operation from users that belong to different subpaas accounts
 
-
 The maximum number of trackers to clone per operation is 1000. Labels from the original trackers are preserved.
 
 To clone trackers across the hierarchy, use the master admin panel's hash.
 
-*required permissions*: `trackers: "create"`.
+_required permissions_: `trackers: "create"`.
 
-| name            | description                                                                                                                                                                                                                                                                                                                                                                                                                      | type      |
-|:----------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------|
-| tracker_ids     | Tracker ID list. Each of these trackers must not be a clone and must be accessible to the target user.                                                                                                                                                                                                                                                                                                                           | int array |
-| user_id         | Target user ID that is accessible from the admin panel hierarchy.                                                                                                                                                                                                                                                                                                                                                                | int       |
-| ignore_existing | Optional (default = `false`). If `true`, allows performing a non-transactional cloning operation by creating clones if no clone conflicts are encountered within the operation. All already existing clones in the target user's account will not stop the operation, but the conflicting trackers from the tracker_ids will not be used in the cloning action and will be displayed in the response as `ignored_trackers` list. | boolean   |
+| name             | description                                                                                                                                                                                                                                                                                                                                                                                                                       | type      |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| tracker\_ids     | Tracker ID list. Each of these trackers must not be a clone and must be accessible to the target user.                                                                                                                                                                                                                                                                                                                            | int array |
+| user\_id         | Target user ID that is accessible from the admin panel hierarchy.                                                                                                                                                                                                                                                                                                                                                                 | int       |
+| ignore\_existing | Optional (default = `false`). If `true`, allows performing a non-transactional cloning operation by creating clones if no clone conflicts are encountered within the operation. All already existing clones in the target user's account will not stop the operation, but the conflicting trackers from the tracker\_ids will not be used in the cloning action and will be displayed in the response as `ignored_trackers` list. | boolean   |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/batch_clone' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 998836, "tracker_ids": [134537, 458412, 99330], "ignore_existing": true}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_clone' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "user_id": 998836, "tracker_ids": [134537, 458412, 99330], "ignore_existing": true}'
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/batch_clone?hash=fa7bf873fab9333144e171372a321b06&user_id=998836&tracker_ids=[134537,458412]&ignore_existing=true
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/batch_clone?hash=fa7bf873fab9333144e171372a321b06&user_id=998836&tracker_ids=[134537,458412]&ignore_existing=true
-    ```
 #### Response
 
-| name             | description                                                                                                                                         | type      |
-|:-----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:----------|
-| list             | Resulting list of created clone tracker IDs.                                                                                                        | int array |
-| success          | Action's execution status.                                                                                                                          | boolean   |
-| ignored_trackers | The trackers from the request that were ignored during the `batch_clone` operation due to the target user tracker conflicts (clones already exist). | int array |
+| name              | description                                                                                                                                         | type      |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| list              | Resulting list of created clone tracker IDs.                                                                                                        | int array |
+| success           | Action's execution status.                                                                                                                          | boolean   |
+| ignored\_trackers | The trackers from the request that were ignored during the `batch_clone` operation due to the target user tracker conflicts (clones already exist). | int array |
 
 Example:
 
@@ -641,11 +683,12 @@ Example:
   "success": true
 }
 ```
+
 #### Errors
 
 If the operation is applied transactionally meaning the `ignore_existing` = `false` or is not specified: it completes only if `"success": true` is received for the whole batch, otherwise, the cloning process for all trackers is rolled back.
 
-* [Standard errors](../../user-api/backend-api/getting-started/errors.md#error-codes).
+* [Standard errors](../../user-api/backend-api/errors.md#error-codes).
 * 7 - Invalid parameters. Size must be between 1 and 1000 - triggered when the clone request exceeds 1000 trackers.
 * 217 – List contains nonexistent entities - if at least one tracker from the request is not found.
 * 247 – Entity already exists - if at least one of the trackers already has its clone in the target user. The error provides the list of trackers in the target user that caused the error.
@@ -666,43 +709,47 @@ Example:
 }
 ```
 
+### batch\_delete\_clones
 
-### `batch_delete_clones`
+Deletes the specified set of trackers that are clones of other trackers.\
+The action will be considered as completed successfully, even if some trackers could not be deleted. Then for the rest response will contain a description of the reasons why the deletion failed.
 
-Deletes the specified set of trackers that are clones of other trackers. 
-The action will be considered as completed successfully, even if some trackers could not be deleted. Then for the rest 
-response will contain a description of the reasons why the deletion failed.
- 
-*required permissions*: `trackers: "delete"`.
+_required permissions_: `trackers: "delete"`.
 
 | name     | description                                                                                 | type      |
-|:---------|:--------------------------------------------------------------------------------------------|:----------|
+| -------- | ------------------------------------------------------------------------------------------- | --------- |
 | trackers | Tracker ID list. Each of these trackers must be a clone and be accessible for current user. | int array |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/batch_delete_clones' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "trackers": [134537, 458412]}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/batch_delete_clones' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "trackers": [134537, 458412]}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/batch_delete_clones?hash=fa7bf873fab9333144e171372a321b06&trackers=[134537, 458412]
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/batch_delete_clones?hash=fa7bf873fab9333144e171372a321b06&trackers=[134537, 458412]
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
-| name                 | description                                                                              | type             |
-|:---------------------|:-----------------------------------------------------------------------------------------|:-----------------|
-| success              | Action's execution status.                                                               | boolean          |
-| deleted_count        | Number of successfully deleted clones from `trackers`.                                   | int              |
-| not_deleted_count    | Number of not deleted clones.                                                            | int              |
-| not_deleted_trackers | Optional. Description of failed deletion operations. `{"id": integer, "error": string}`. | array of objects |
+| name                   | description                                                                              | type             |
+| ---------------------- | ---------------------------------------------------------------------------------------- | ---------------- |
+| success                | Action's execution status.                                                               | boolean          |
+| deleted\_count         | Number of successfully deleted clones from `trackers`.                                   | int              |
+| not\_deleted\_count    | Number of not deleted clones.                                                            | int              |
+| not\_deleted\_trackers | Optional. Description of failed deletion operations. `{"id": integer, "error": string}`. | array of objects |
 
 Example:
 
@@ -730,36 +777,39 @@ Example:
 
 #### Errors
 
-* [Standard errors](../../user-api/backend-api/getting-started/errors.md#error-codes).
+* [Standard errors](../../user-api/backend-api/errors.md#error-codes).
 
-
-### `delete_clone`
+### delete\_clone
 
 Deletes a clone of the existing tracker.
 
-*required permissions*: `trackers: "delete"`.
+_required permissions_: `trackers: "delete"`.
 
 #### Parameters
 
-| name       | description                                                                    | type |
-|:-----------|:-------------------------------------------------------------------------------|:-----|
-| tracker_id | ID of a tracker. Tracker must belong to authorized dealer and must be a clone. | int  |
+| name        | description                                                                    | type |
+| ----------- | ------------------------------------------------------------------------------ | ---- |
+| tracker\_id | ID of a tracker. Tracker must belong to authorized dealer and must be a clone. | int  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/delete_clone' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/delete_clone' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 134537}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/delete_clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/delete_clone?hash=fa7bf873fab9333144e171372a321b06&tracker_id=134537
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -802,46 +852,48 @@ or
 ```
 
 * `vehicles` - int array. A list of associated vehicle IDs.
-
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-
-### `list`
+### list
 
 Returns list of all trackers belonging to dealer (with optional filtering by `filter` string, `user_id` and/or `tariff_id`).
 
-If `filter` is used, entities will be returned only if filter string contain one of the following fields:
-`id`, `label`, `source.id`, `source.device_id`, `source.model`, `source.phone`, `user_id`.
+If `filter` is used, entities will be returned only if filter string contain one of the following fields:`id`, `label`, `source.id`, `source.device_id`, `source.model`, `source.phone`, `user_id`.
 
-*required permissions*: `trackers: "read"`.
+_required permissions_: `trackers: "read"`.
 
 #### Parameters
 
-| name      | description                                                                                                                        | type    |
-|:----------|:-----------------------------------------------------------------------------------------------------------------------------------|:--------|
-| user_id   | Optional. ID of the user. User must belong to authorized dealer.                                                                   | int     |
-| tariff_id | Optional. ID of the tariff. Tariff must belong to authorized dealer.                                                               | int     |
-| filter    | Optional. Text filter string.                                                                                                      | string  |
-| order_by  | Optional. List ordering. Can be one of "id", "label", "status", "model", "device_id", "phone", "creation_date", "last_connection". | 	string |
-| ascending | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                          | boolean |
-| offset    | Optional. Starting offset, used for pagination. Default is `0`.                                                                    | int     |
-| limit     | Optional. Max number of records to return, used for pagination.                                                                    | int     |
+| name       | description                                                                                                                           | type    |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| user\_id   | Optional. ID of the user. User must belong to authorized dealer.                                                                      | int     |
+| tariff\_id | Optional. ID of the tariff. Tariff must belong to authorized dealer.                                                                  | int     |
+| filter     | Optional. Text filter string.                                                                                                         | string  |
+| order\_by  | Optional. List ordering. Can be one of "id", "label", "status", "model", "device\_id", "phone", "creation\_date", "last\_connection". | string  |
+| ascending  | Optional. If `true`, ordering will be ascending, descending otherwise. Default is `true`.                                             | boolean |
+| offset     | Optional. Starting offset, used for pagination. Default is `0`.                                                                       | int     |
+| limit      | Optional. Max number of records to return, used for pagination.                                                                       | int     |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
-    ```
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06"}'
+```
+{% endtab %}
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/list?hash=fa7bf873fab9333144e171372a321b06
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/list?hash=fa7bf873fab9333144e171372a321b06
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -880,44 +932,49 @@ If `filter` is used, entities will be returned only if filter string contain one
 }
 ```
 
-* `list` - array of objects. Tracker object described [above](#tracker-object).
+* `list` - array of objects. Tracker object described [above](tracker.md#tracker-object).
 * `count` - int. Total number of records ignoring `offset` and `limit`.
 
 #### Errors
 
 * 201 – Not found in the database - if specified `user_id` or `tariff_id` not found.
 
-
-### `move`
+### move
 
 Moves the existing non-clone tracker to another user belonging to the same dealer.
 
 **Tracker will be unbound from any rules associated with it.**
 
-*required permissions*: `trackers: "create", "delete"`.
+_required permissions_: `trackers: "create", "delete"`.
 
 #### Parameters
 
-| name       | description                                                  | type |
-|:-----------|:-------------------------------------------------------------|:-----|
-| tracker_id | ID of the tracker. Tracker must belong to authorized dealer. | int  |
-| user_id    | ID of the user who will become the owner of the tracker.     | int  |
+| name        | description                                                  | type |
+| ----------- | ------------------------------------------------------------ | ---- |
+| tracker\_id | ID of the tracker. Tracker must belong to authorized dealer. | int  |
+| user\_id    | ID of the user who will become the owner of the tracker.     | int  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/move' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "user_id": 214034}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/move' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "user_id": 214034}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/move?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&user_id=214034
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/move?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&user_id=214034
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -935,34 +992,37 @@ Moves the existing non-clone tracker to another user belonging to the same deale
 * 247 - Entity already exists – when destination user already has a clone of this tracker.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-
-### `read`
+### read
 
 Returns the tracker object with the specified ID.
 
-*required permissions*: `trackers: "read"`.
+_required permissions_: `trackers: "read"`.
 
 #### Parameters
 
-| name       | description                                                  | type |
-|:-----------|:-------------------------------------------------------------|:-----|
-| tracker_id | ID of the tracker. Tracker must belong to authorized dealer. | int  |
+| name        | description                                                  | type |
+| ----------- | ------------------------------------------------------------ | ---- |
+| tracker\_id | ID of the tracker. Tracker must belong to authorized dealer. | int  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/read?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/read?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -998,44 +1058,49 @@ Returns the tracker object with the specified ID.
 }
 ```
 
-* `value` - JSON object. Tracker object described [above](#tracker-object).
+* `value` - JSON object. Tracker object described [above](tracker.md#tracker-object).
 
 #### Errors
 
 * 201 - Not found in the database – when tracker not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-
-### `register_retry`
+### register\_retry
 
 Sends tracker registration commands and resets all tracking settings. Can be executed once in 120 seconds for every tracker.
 
 Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not supported.
 
-*required permissions*: `trackers: "update"`.
+_required permissions_: `trackers: "update"`.
 
 #### Parameters
 
-| name                   | description                                                                                                                                                                                | type    |
-|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| tracker_id             | ID of the tracker. Tracker must belong to authorized dealer.                                                                                                                               | int     |
-| send_register_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals `null` will be used the platform settings. Default: `null`. | boolean |
+| name                     | description                                                                                                                                                                                | type    |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+| tracker\_id              | ID of the tracker. Tracker must belong to authorized dealer.                                                                                                                               | int     |
+| send\_register\_commands | Indicates send or not to send activation commands to device (via SMS or GPRS channel). If parameter is not specified or equals `null` will be used the platform settings. Default: `null`. | boolean |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/register_retry' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "send_register_commands": true}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/register_retry' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "send_register_commands": true}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/register_retry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&send_register_commands=true
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/register_retry?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&send_register_commands=true
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -1055,37 +1120,42 @@ Device models `navixymobile*`, `mobile_unknown*`, `iosnavixytracker*` are not su
 * 214 - Requested operation or parameters are not supported by the device – when device does not have GSM module.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-
-### `settings/update`
+### settings/update
 
 Updates tracker settings.
 
-*required permissions*: `trackers: "update"`.
+_required permissions_: `trackers: "update"`.
 
 #### Parameters
 
-| name       | description                                                                                                                                                     | type    |
-|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| tracker_id | ID of the tracker. Tracker must belong to authorized dealer.                                                                                                    | int     |
-| label      | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string  |
-| deleted    | If `true`, tracker will be marked as deleted and will not be shown in user's interface.                                                                         | boolean |
-| comment    | Optional. A comment (description) related to the tracker. Up to 3000 symbols.                                                                                   | string  |
+| name        | description                                                                                                                                                     | type    |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| tracker\_id | ID of the tracker. Tracker must belong to authorized dealer.                                                                                                    | int     |
+| label       | User-defined label for this tracker, e.g. "Courier". Must consist of printable characters and have length between 1 and 60. Cannot contain `<` and `>` symbols. | string  |
+| deleted     | If `true`, tracker will be marked as deleted and will not be shown in user's interface.                                                                         | boolean |
+| comment     | Optional. A comment (description) related to the tracker. Up to 3000 symbols.                                                                                   | string  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/settings/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "label": "Courier", "deleted": false}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/settings/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "label": "Courier", "deleted": false}'
-    ```
-    
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/settings/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&label=Courier&deleted=false
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/settings/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&label=Courier&deleted=false
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -1100,35 +1170,40 @@ Updates tracker settings.
 * 201 - Not found in the database – when tracker not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
-
-### `source/update`
+### source/update
 
 Updates source settings. Can block and unblock a device.
 
-*required permissions*: `trackers: "update"`.
+_required permissions_: `trackers: "update"`.
 
 #### Parameters
 
-| name       | description                                                  | type    |
-|:-----------|:-------------------------------------------------------------|:--------|
-| tracker_id | ID of the tracker. Tracker must belong to authorized dealer. | int     | 
-| blocked    | If `true`, tracker will be marked as blocked.                | boolean | 
+| name        | description                                                  | type    |
+| ----------- | ------------------------------------------------------------ | ------- |
+| tracker\_id | ID of the tracker. Tracker must belong to authorized dealer. | int     |
+| blocked     | If `true`, tracker will be marked as blocked.                | boolean |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/source/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "blocked": false}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/source/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "blocked": false}'
-    ```
-    
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/tracker/source/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&blocked=false
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/source/update?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&blocked=false
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -1143,36 +1218,41 @@ Updates source settings. Can block and unblock a device.
 * 201 - Not found in the database – when tracker not found.
 * 252 - Device already corrupted – when tracker's source corrupted.
 
+### tariff/change
 
-### `tariff/change`
-
-*required permissions*: `[trackers: "update", "transactions": "create", "tariffs": "read"]`.
+_required permissions_: `[trackers: "update", "transactions": "create", "tariffs": "read"]`.
 
 #### Parameters
 
-| name       | description                                               | type    |
-| :--------- | :-------------------------------------------------------- | :------ |
-| tracker_id | ID of tracker. Tracker must belong to authorized dealer.  | int     |
-| tariff_id  | New plan ID.                                              | int     |
-| repay      | Repay remainder of current plan payment.                  | boolean |
-| charge     | Charge payment for new plan. For monthly and daily plans. | boolean |
+| name        | description                                               | type    |
+| ----------- | --------------------------------------------------------- | ------- |
+| tracker\_id | ID of tracker. Tracker must belong to authorized dealer.  | int     |
+| tariff\_id  | New plan ID.                                              | int     |
+| repay       | Repay remainder of current plan payment.                  | boolean |
+| charge      | Charge payment for new plan. For monthly and daily plans. | boolean |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/tariff/change' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "tariff_id": 15843, "repay": false, "charge": true}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/tariff/change' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "tracker_id": 1245678, "tariff_id": 15843, "repay": false, "charge": true}'
-    ```
-    
-=== "HTTP GET"
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/tracker/tariff/change?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&tariff_id=15843&repay=false&charge=true
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
-    ```
-    {{ extra.api_example_url }}/panel/tracker/tariff/change?hash=fa7bf873fab9333144e171372a321b06&tracker_id=1245678&tariff_id=15843&repay=false&charge=true
-    ```
-    
 #### Response
 
 ```json
@@ -1186,7 +1266,7 @@ Updates source settings. Can block and unblock a device.
 * 201 – Not found in the database.
 * 219 – Not allowed for clones of the device.
 * 221 - Device limit exceeded – when new tariff device limit is less than count of user's trackers.
-* 237 – Invalid tariff - if there are no tariff with tracker.tariff_id and belongs to dealer.
+* 237 – Invalid tariff - if there are no tariff with tracker.tariff\_id and belongs to dealer.
 * 238 – Changing tariff not allowed.
 * 239 – New tariff doesn't exist.
 * 250 – Not allowed for deleted devices.
@@ -1197,17 +1277,17 @@ Updates source settings. Can block and unblock a device.
 The current dealer can change tracker tariff from `t1` to `t2`, if:
 
 1. Tracker:
-    * is not removed.
-    * belongs to the dealer's user.
-    * is not a clone.
+   * is not removed.
+   * belongs to the dealer's user.
+   * is not a clone.
 2. `t1.tariff_id != t2.tariff_id`, i.e. it is impossible to change to the same tariff.
 3. `t1.dealer_id = t2.dealer_id = dealer.effectiveDealerId`, i.e. both tariffs belong to the current dealer.
 4. `t2.device = tracker`, i.e. only tracker tariffs are available.
 5. depending on `t2.doc_type`:
-    * doc_type=0 (for all) – without conditions.
-    * doc_type=1 (for physical persons) – user.face=1 (physical person).
-    * doc_type=2 (for legal entities) – user.face=2 (legal entity) or user.face=3 (SP).
-    * doc_type=3 (paas) – without conditions.
+   * doc\_type=0 (for all) – without conditions.
+   * doc\_type=1 (for physical persons) – user.face=1 (physical person).
+   * doc\_type=2 (for legal entities) – user.face=2 (legal entity) or user.face=3 (SP).
+   * doc\_type=3 (paas) – without conditions.
 6. `t2.device_limit >= count` of trackers in user's cabinet.
 
 **Repayment**
@@ -1218,13 +1298,13 @@ Repayment will be carried out if the following conditions met:
 2. A current tariff – monthly: `t1.type = monthly`.
 3. Tariff – paid: tariff.price > 0.
 4. That the current tariff didn't end (`tariff_end != 1`)
-5. The tariff expiration date defined: tariff_end_date != 0 (for monthly tariffs it has to be carried out always).
-6. The free period expired: created_date + free_period <= current date
-where free_period obtained from the hardcodes table or from default_model_settings.
-7. There is still at least one paid day on a tariff: reminder > 0
-The rest of days on a tariff: remainder = the number of whole days before the end of the current tariff.
+5. The tariff expiration date defined: tariff\_end\_date != 0 (for monthly tariffs it has to be carried out always).
+6. The free period expired: created\_date + free\_period <= current date\
+   where free\_period obtained from the hardcodes table or from default\_model\_settings.
+7. There is still at least one paid day on a tariff: reminder > 0\
+   The rest of days on a tariff: remainder = the number of whole days before the end of the current tariff.
 
-amount to be repaid = `ceil(tariff.price * remainder / amt)`,
+amount to be repaid = `ceil(tariff.price * remainder / amt)`,\
 where `amt` – the number of days in the current month, a ceil – the operation of taking the integer part.
 
 **Change**
@@ -1262,8 +1342,7 @@ else (tariff is not active: tariff_end = true)
 
 All dates according to UTC time.
 
-
-### `raw_command/send`
+### raw\_command/send
 
 Sends the GPRS command to the device, processing it in a protocol-dependent manner beforehand.
 
@@ -1271,22 +1350,24 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 
 #### Parameters
 
-| name      | description                                                                                                                                        | type    |
-|:----------|:---------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| device_id | Fixed device ID, e.g. IMEI.                                                                                                                        | string  |
-| command   | Text or hexadecimal representation of the command.                                                                                                 | string  |
-| type      | Optional. Default is `text` . Can be "text" or "hex".                                                                                              | string  |
-| reliable  | Optional. default is `true`. If `false` the command doesn't need to be resent when the device is disconnected or if no acknowledgment is received. | boolean |
+| name       | description                                                                                                                                        | type    |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| device\_id | Fixed device ID, e.g. IMEI.                                                                                                                        | string  |
+| command    | Text or hexadecimal representation of the command.                                                                                                 | string  |
+| type       | Optional. Default is `text` . Can be "text" or "hex".                                                                                              | string  |
+| reliable   | Optional. default is `true`. If `false` the command doesn't need to be resent when the device is disconnected or if no acknowledgment is received. | boolean |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/tracker/raw_command/send' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": "889654248978", "command": "setparam 101:4"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/tracker/raw_command/send' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "device_id": "889654248978", "command": "setparam 101:4"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -1302,7 +1383,7 @@ Sends the GPRS command to the device, processing it in a protocol-dependent mann
 * 201 - Not found in the database – if there is no tracker with such device ID belonging to authorized user.
 * 252 - Device already corrupted – if tracker's source corrupted.
 
-##### Example response with an error:
+**Example response with an error:**
 
 ```json
 {

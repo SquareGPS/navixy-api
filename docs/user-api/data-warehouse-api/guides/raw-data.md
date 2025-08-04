@@ -1,7 +1,10 @@
 ---
 title: Requesting raw data
-description: How to request raw tracker data from Navixy Raw IoT Data API and typical use cases.
+description: >-
+  How to request raw tracker data from Navixy Raw IoT Data API and typical use
+  cases.
 ---
+
 # Requesting Raw IoT Data
 
 Navixy Raw IoT Data API allows telematics solution providers and developers of location-based solutions to access comprehensive, unprocessed data from tracking devices. This enables accurate information retrieval and a deeper understanding of collected data, facilitating issue resolution and integration into other systems for extensive analysis and business use.
@@ -19,17 +22,17 @@ Imagine that you need to retrieve the following data:
 * Date and Time
 * Any other data valuable to your business
 
-Please note that you will not receive human-readable information about fuel drains and refills, excessive consumption, idling, and other analytics—those are available through [backend-API methods](../../backend-api/getting-started/introduction.md). Raw data requests provide unprocessed data received directly from the device, decoded by the Navixy platform, offering instantaneous data readings for a specific period. This data is suitable for further processing and analysis on your end.
+Please note that you will not receive human-readable information about fuel drains and refills, excessive consumption, idling, and other analytics—those are available through [backend-API methods](../../backend-api/). Raw data requests provide unprocessed data received directly from the device, decoded by the Navixy platform, offering instantaneous data readings for a specific period. This data is suitable for further processing and analysis on your end.
 
 ## Requesting Inputs List
 
 Tracking devices from different manufacturers have different specifics of work and send data in various forms. In addition, sensors can be of different types: digital and analog, wired and wireless, built-in and external. Also, there can be several sensors monitoring the same type of readings: for example, two fuel sensors in two tanks, internal and external temperature sensors, etc.
 
-Before requesting raw data, we need to understand what data the device can report to the platform and what the data inputs are named. To do this, we need to use the [`raw_data/get_inputs`](../resources/tracker/raw_data.md#getinputs) request.
+Before requesting raw data, we need to understand what data the device can report to the platform and what the data inputs are named. To do this, we need to use the [`raw_data/get_inputs`](../resources/tracker/raw-data.md#getinputs) request.
 
 Example for a device with ID 123456:
 
-=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -69,7 +72,7 @@ Among the obtained inputs, we see the one of interest to us - `lls_level_4`. Thi
 
 We also see the `hw_mileage`, which will allow us to get the value of the hardware odometer.
 
-!!! note "The presence of some inputs in the received response does not mean that data is certainly available on these inputs. It means that data may come on them, but whether it is actually available or not depends on the configuration of a particular device."
+> The presence of some inputs in the received response does not mean that data is certainly available on these inputs. It means that data may come on them, but whether it is actually available or not depends on the configuration of a particular device.
 
 ## Requesting Raw Data Readings
 
@@ -86,11 +89,11 @@ In addition, we will use names for inputs according to the information obtained 
 * `inputs.lls_level_1`
 * `inputs.hw_mileage`
 
-!!! note "We specify `inputs.lls_level_1` because we know that our device only sends data on this input. If we didn't know the input number, we could have specified all four possible inputs, and then the inputs without data would just get zero values."
+> We specify `inputs.lls_level_1` because we know that our device only sends data on this input. If we didn't know the input number, we could have specified all four possible inputs, and then the inputs without data would just get zero values.
 
-The API request [`raw_data/read`](../resources/tracker/raw_data.md#read) for reading the required raw data in our case should look like this:
+The API request [`raw_data/read`](../resources/tracker/raw-data.md#read) for reading the required raw data in our case should look like this:
 
-=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -114,7 +117,7 @@ curl -X 'POST' \
 
 The response is returned in a CSV table format:
 
-```
+```csv
 "msg_time","lat","lng","speed","inputs.lls_level_1","inputs.hw_mileage"
 "2023-11-29T08:31:10Z",54.2312716,69.5261833,0,3307,24250.798
 "2023-11-29T08:31:12Z",54.1811183,69.5331349,24,3274,24257.16
@@ -136,7 +139,7 @@ The response is returned in a CSV table format:
 
 In the above example, we see the output for one minute of tracking. When querying raw data over a long period of time, the response can reach significant sizes — this must be considered.
 
-!!! note "In one of the lines, we see `\N` instead of fuel level and mileage values. This means that no such information was received in this data packet. The `\N` symbol represents `NULL`."
+In one of the lines, we see instead of fuel level and mileage values. This means that no such information was received in this data packet. The symbol represents `NULL`.
 
 The above example is one of the simplest, but it clearly demonstrates the process of using an API request to read raw data. You can query a lot of data at once and over large periods of time, depending on your objectives.
 
@@ -144,11 +147,11 @@ The above example is one of the simplest, but it clearly demonstrates the proces
 
 When requesting raw data, you must specify the exact period for which you need the data to ensure the platform can accurately process your request and return the necessary information.
 
-Similar to the [Backend API](../../backend-api/getting-started/introduction.md), you can specify the date and time in either the standard `YYYY-MM-DD HH:mm:ss` format with or without a time zone or in ISO 8601 format. 
+Similar to the [Backend API](../../backend-api/), you can specify the date and time in either the standard `YYYY-MM-DD HH:mm:ss` format with or without a time zone or in ISO 8601 format.
 
 The default format for Raw IoT Data API requests is ISO 8601.
 
-The platform allows you to request raw data for any period within the [time frame limits](../getting-started.md#time-frame-limits).
+The platform allows you to request raw data for any period within the [time frame limits](../#time-frame-limits).
 
 All methods for specifying the date and time provided below are equally valid. Choose the one that is most convenient or best matches the format used in your integrations.
 
@@ -189,7 +192,7 @@ Another example. The client account is set to UTC-6 (Mexico) time, and the time 
 
 **API request example:**
 
-=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -205,7 +208,7 @@ curl -X 'POST' \
 }'
 ```
 
-The output for a raw data request will always contain a `msg_time` column that contains timestamps according to the user account time zone. If you need to obtain `msg_time` in any other time zone, please refer to the [Time zone](#time-zone) section below.
+The output for a raw data request will always contain a `msg_time` column that contains timestamps according to the user account time zone. If you need to obtain `msg_time` in any other time zone, please refer to the [Time zone](raw-data.md#time-zone) section below.
 
 ### Regular Date and Time
 
@@ -213,7 +216,7 @@ Another valid option to specify date and time is the usual `YYYY-MM-DD HH:mm:ss`
 
 **API request example:**
 
-=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -240,7 +243,7 @@ In this case, you need to supplement your request with the `time_zone` parameter
 
 **API request example:**
 
-=== "cURL"
+cURL
 
 ```shell
 curl -X 'POST' \
@@ -266,7 +269,7 @@ When requesting raw data, you have an option of specifying the request period in
 
 A common way to indicate the period of data request is to specify two timestamps of start and end. This is done using the `from` and `to` parameters. The values are specified either according to ISO 8601 or in a regular `YYYY-MM-DD HH:mm:ss` form - as described above.
 
-**Examples:** 
+**Examples:**
 
 ```json
 "from": "2023-11-30T17:00:00-06:00",
@@ -280,13 +283,13 @@ or
 "to": "2023-11-30 18:00:00",
 ```
 
-!!! note "The `to` date and time must be after the `from`, otherwise the query will result in an `Invalid parameters` error."
+> The `to` date and time must be after the `from`, otherwise the query will result in an `Invalid parameters` error.
 
 ### Interval
 
 An alternative method of indicating the request period is an interval. Here you specify the start or end date and time of the period appended by the duration of the period.
 
-!!! note "When specifying the `interval` parameter, the `from` and `to` parameters must not be specified. These are mutually exclusive ways of specifying the data request period."
+> When specifying the `interval` parameter, the `from` and `to` parameters must not be specified. These are mutually exclusive ways of specifying the data request period.
 
 The interval can be specified in different forms:
 
@@ -300,7 +303,7 @@ Possible `interval` parameter formats:
 [start date and time]/P[dd]T[hh]H[mm]M[ss]S
 ```
 
-or 
+or
 
 ```
 P[dd]T[hh]H[mm]M[ss]S/[end date and time]
@@ -323,5 +326,3 @@ If you need to request data for several days, you can specify the number of days
 * `"interval": "2023-11-30T17:00:00-0600/PT1H30M10S"` - data will be requested from 17:00:00 to 18:30:10, November 30 (UTC-6).
 * `"interval": "2023-11-30 17:00:00/P2DT2H45M10S"` - data will be requested from November 30, 17:00:00 to December 2, 19:45:10 (according to user account time zone).
 * `"interval": "P2DT2H45M10S/2023-11-30 17:00:00"` - data will be requested from November 28, 14:14:50 to November 30, 17:00:00 (according to user account time zone).
-
-

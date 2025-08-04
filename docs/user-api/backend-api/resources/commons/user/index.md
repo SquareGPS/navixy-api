@@ -1,13 +1,10 @@
 ---
 title: User actions
-description: A user account lets you start working with the platform as well as customize your experience within it. Contains user object structure and API calls to interact with users.
 ---
 
 # User
 
 A user account lets you start working with the platform as well as customize your experience within it. Contains user object structure and API calls to interact with users.
-
-
 
 ## User object structure
 
@@ -85,71 +82,67 @@ A user account lets you start working with the platform as well as customize you
 ```
 
 * `paas_id` - int. Dealer ID.
-* `paas_settings` - object. The same as `settings` in [/dealer/get_ui_config response](../dealer.md#get_ui_config).
+* `paas_settings` - object. The same as `settings` in [/dealer/get\_ui\_config response](../dealer.md#get_ui_config).
 * `user_info` - object. Info about user.
-    * `id` - int. User ID.
-    * `login` - string. User's login (in most cases it's an email address).
-    * `title` - string. User first and last name or organization title.
-    * `phone` - string. User phone (if not empty).
-    * `creation_date` - [date/time](../../../getting-started/introduction.md#data-types). User registration date/time.
-    * `balance` - float. User balance, max. 2 digits after dot. For sub-users, this field should be ignored.
-    * `bonus` - float. User bonus, max. 2 digits after dot. For sub-users, this field should be ignored.
-    * `locale` - [enum](../../../getting-started/introduction.md#data-types). User locale, for example "en_EN".
-    * `demo` - boolean. `true` if this is a demo user, `false` otherwise.
-    * `verified` - boolean. `true` if user email already verified.
-    * `legal_type` - [enum](../../../getting-started/introduction.md#data-types). Can bed "legal_entity", "individual" or "sole_trader".
-    * `default_geocoder` - [enum](../../../getting-started/introduction.md#data-types). User's default geocoder. Can be "google", "yandex",
-     "progorod", "osm", or "locationiq".
-    * `route_provider` - [enum](../../../getting-started/introduction.md#data-types). User's route provider. Can be "progorod", "google" or "osrm".
-    * `time_zone` - [enum](../../../getting-started/introduction.md#data-types). User timezone name.
-    * `measurement_system` - [enum](../../../getting-started/introduction.md#data-types). User's measurement system "metric", "imperial", "us", "metric_gal_us" or "nautical".
-    * `date_format` - Optional [enum](../../../getting-started/introduction.md#data-types). Date representation. Can be "ddMMyyyy_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
-    * `hour_mode` - Optional [enum](../../../getting-started/introduction.md#data-types). Time representation. Can be "TWENTY_FOUR_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
-    * `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
-    * `iec` - optional string. Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities.
-    * `post_country` - string. Country part of user's post address.
-    * `post_index` - string. Post index or ZIP code.
-    * `post_region` - string. Region part of post address (oblast, state, etc.).
-    * `post_city` - string. City from postal address.
-    * `post_street_address` - string. Street address.
-    * `registered_country` - string. Country part of user's registered address.
-    * `registered_index` - string. Index part of user's registered address.
-    * `registered_region` - string. Region part of user's registered address.
-    * `registered_city` - string. City from registered address.
-    * `registered_street_address` - string. User's registered address.
-    * `first_name` - string. User's or contact person first name.
-    * `middle_name` - string. User's or contact person middle name.
-    * `last_name` - string. User's or contact person last name.
-    * `legal_name` - optional string. A juridical name.
-    * `master` - object. Returned only if current user is sub-user. All fields have same meaning as in "user_info", but for 
+  * `id` - int. User ID.
+  * `login` - string. User's login (in most cases it's an email address).
+  * `title` - string. User first and last name or organization title.
+  * `phone` - string. User phone (if not empty).
+  * `creation_date` - [date/time](../../../#data-types). User registration date/time.
+  * `balance` - float. User balance, max. 2 digits after dot. For sub-users, this field should be ignored.
+  * `bonus` - float. User bonus, max. 2 digits after dot. For sub-users, this field should be ignored.
+  * `locale` - [enum](../../../#data-types). User locale, for example "en\_EN".
+  * `demo` - boolean. `true` if this is a demo user, `false` otherwise.
+  * `verified` - boolean. `true` if user email already verified.
+  * `legal_type` - [enum](../../../#data-types). Can bed "legal\_entity", "individual" or "sole\_trader".
+  * `default_geocoder` - [enum](../../../#data-types). User's default geocoder. Can be "google", "yandex",\
+    "progorod", "osm", or "locationiq".
+  * `route_provider` - [enum](../../../#data-types). User's route provider. Can be "progorod", "google" or "osrm".
+  * `time_zone` - [enum](../../../#data-types). User timezone name.
+  * `measurement_system` - [enum](../../../#data-types). User's measurement system "metric", "imperial", "us", "metric\_gal\_us" or "nautical".
+  * `date_format` - Optional [enum](../../../#data-types). Date representation. Can be "ddMMyyyy\_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy\_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy\_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd\_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
+  * `hour_mode` - Optional [enum](../../../#data-types). Time representation. Can be "TWENTY\_FOUR\_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE\_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
+  * `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
+  * `iec` - optional string. Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities.
+  * `post_country` - string. Country part of user's post address.
+  * `post_index` - string. Post index or ZIP code.
+  * `post_region` - string. Region part of post address (oblast, state, etc.).
+  * `post_city` - string. City from postal address.
+  * `post_street_address` - string. Street address.
+  * `registered_country` - string. Country part of user's registered address.
+  * `registered_index` - string. Index part of user's registered address.
+  * `registered_region` - string. Region part of user's registered address.
+  * `registered_city` - string. City from registered address.
+  * `registered_street_address` - string. User's registered address.
+  * `first_name` - string. User's or contact person first name.
+  * `middle_name` - string. User's or contact person middle name.
+  * `last_name` - string. User's or contact person last name.
+  * `legal_name` - optional string. A juridical name.
+  * `master` - object. Returned only if current user is sub-user. All fields have same meaning as in "user\_info", but for\
     master user's account.
-    * `tariff_restrictions` - tariff restrictions object, for more info see [user/get_tariff_restrictions](#get_tariff_restrictions).
-        * `allowed_maps` - string array. List of allowed maps.
-    * `premium_gis` - boolean. `true` if a dealer has premium GIS tariff.
-    * `features` - string array. Set of allowed [Dealer features](../dealer.md#dealer-features).
-    * `privileges` - object only returned for sub-users. Describes effective sub-user privileges. 
-    * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
-* `user_menu` - [User menu](../../../../../panel-api/resources/user/menu/preset.md#menu-preset). Menu structure for the current user.
-    * `account` - [Menu item](../../../../../panel-api/resources/user/menu/preset.md#menu-item) array. Menu items for account management.
-    * `applications` - [Menu item](../../../../../panel-api/resources/user/menu/preset.md#menu-item) array. Menu items for applications.
-
-
+  * `tariff_restrictions` - tariff restrictions object, for more info see [user/get\_tariff\_restrictions](index.md#get_tariff_restrictions).
+    * `allowed_maps` - string array. List of allowed maps.
+  * `premium_gis` - boolean. `true` if a dealer has premium GIS tariff.
+  * `features` - string array. Set of allowed [Dealer features](../dealer.md#dealer-features).
+  * `privileges` - object only returned for sub-users. Describes effective sub-user privileges.
+  * `rights` - string array. A set of rights granted to sub-user. Described in [security group rights](../subuser/security_group.md#security-group-rights).
+* `user_menu` - [User menu](../../../../../panel-api/resources/user/preset.md#menu-preset). Menu structure for the current user.
+  * `account` - [Menu item](../../../../../panel-api/resources/user/preset.md#menu-item) array. Menu items for account management.
+  * `applications` - [Menu item](../../../../../panel-api/resources/user/preset.md#menu-item) array. Menu items for applications.
 
 ## API actions
 
 API path: `/user`.
 
-### `activate`
+### activate
 
-Activates previously registered user with the provided session hash 
-(it is contained in activation link from email sent to user).
+Activates previously registered user with the provided session hash\
+(it is contained in activation link from email sent to user).\
 Available only to master users.
 
-!!! attention 
-    This call will receive only session hash from registration email.
-    Any other hash will result in result error code 4 (User or API key not found or session ended).
-    The only thing that API calls with a user session will work for is creating, 
-    reading, and deleting API keys.
+> This call will receive only session hash from registration email.\
+> Any other hash will result in result error code 4 (User or API key not found or session ended).\
+> The only thing that API calls with a user session will work for is creating, reading, and deleting API keys.
 
 #### Response
 
@@ -159,63 +152,69 @@ Available only to master users.
 }
 ```
 
-### `auth`
+### auth
 
 Tries to authenticate the user and get hash.
 
 It does not need authentication/hash and is available at `UNAUTHORIZED` access level.
 
-!!! note "It is strongly recommended using [API keys](../../../getting-started/authentication.md) instead of user session hash."
+> It is strongly recommended using [API keys](../../../../authentication.md#id-2.-api-keys-recommended-authentication) instead of user session hash.
 
 #### Parameters
 
-| name      | description                                                                                            | type   | restrictions                            |
-|:----------|:-------------------------------------------------------------------------------------------------------|:-------|:----------------------------------------|
-| login     | User email as login (or demo login).                                                                   | string | not null.                               |
-| password  | User password.                                                                                         | string | not null, 1 to 40 printable characters. |
-| dealer_id | If specified, API will check that user belongs to this dealer, and if not, error 102 will be returned. | int    | optional.                               |
+| name       | description                                                                                            | type   | restrictions                            |
+| ---------- | ------------------------------------------------------------------------------------------------------ | ------ | --------------------------------------- |
+| login      | User email as login (or demo login).                                                                   | string | not null.                               |
+| password   | User password.                                                                                         | string | not null, 1 to 40 printable characters. |
+| dealer\_id | If specified, API will check that user belongs to this dealer, and if not, error 102 will be returned. | int    | optional.                               |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/auth' \
-        -H 'Content-Type: application/json' \
-        -d '{"login": "user@email.com", "password": "12@14Y$"}'
-    ```
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/user/auth' \
+    -H 'Content-Type: application/json' \
+    -d '{"login": "user@email.com", "password": "12@14Y$"}'
+```
 
 #### Response
 
-=== "Default"
+{% tabs %}
+{% tab title="Default" %}
+{% code overflow="wrap" %}
+```json
+{
+    "success": true,
+    "type": "authenticated",
+    "hash": "22eac1c27af4be7b9d04da2ce1af111b"
+}
 
-    ```json
-    {
-        "success": true,
-        "type": "authenticated",
-        "hash": "22eac1c27af4be7b9d04da2ce1af111b"
-    }
-    ```
+* `type` - [enum](../../../getting-started/introduction.md#data-types). Always `authenticated`. 
+* `hash` - string. Session hash.
+```
+{% endcode %}
+{% endtab %}
 
-    * `type` - [enum](../../../getting-started/introduction.md#data-types). Always `authenticated`. 
-    * `hash` - string. Session hash.
+{% tab title="With 2FA enabled" %}
+{% code overflow="wrap" %}
+```json
+{
+    "success": true,
+    "type": "second_factor_required",
+    "factor_type": "email",
+    "hash": "22eac1c27af4be7b9d04da2ce1af111b"
+}
 
-=== "With 2FA enabled"
-
-    ```json
-    {
-        "success": true,
-        "type": "second_factor_required",
-        "factor_type": "email",
-        "hash": "22eac1c27af4be7b9d04da2ce1af111b"
-    }
-    ```
-
-    * `type` - [enum](../../../getting-started/introduction.md#data-types). Always `second_factor_required`.
-    * `factor_type` - [enum](../../../getting-started/introduction.md#data-types).
-    Which type of the second factor is used.
-    Only `email` is available at the moment.
-    * `hash` - string. Session hash. Can be used only for [authentication code](./auth/code.md) actions
+* `type` - [enum](../../../getting-started/introduction.md#data-types). Always `second_factor_required`.
+* `factor_type` - [enum](../../../getting-started/introduction.md#data-types).
+Which type of the second factor is used.
+Only `email` is available at the moment.
+* `hash` - string. Session hash. Can be used only for [authentication code](./auth/code.md) actions
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Errors
 
@@ -225,24 +224,24 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 * 104 – Logins limit exceeded, please reuse existing sessions instead (see also user/session/renew).
 * 105 – Login attempts limit exceeded, try again later.
 
-### `get_info`
+### get\_info
 
 Gets user information and some settings.
 
 #### Parameters
 
 | name        | description                                                                            | type   | restrictions |
-|:------------|:---------------------------------------------------------------------------------------|:-------|:-------------|
+| ----------- | -------------------------------------------------------------------------------------- | ------ | ------------ |
 | application | If specified, the response will contain a description of the application's custom menu | string | optional     |
 
 #### Examples
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X GET '{{ extra.api_example_url }}/user/get_info' \
-        -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
-    ```
+```sh
+curl -X GET 'https://api.eu.navixy.com/v2/user/get_info' \
+    -H 'Authorization: NVX 22eac1c27af4be7b9d04da2ce1af111b'
+```
 
 #### Response
 
@@ -310,13 +309,13 @@ Gets user information and some settings.
 }
 ```
 
-* `user_object` - for more info see [user object structure](#user-object-structure).
+* `user_object` - for more info see [user object structure](index.md#user-object-structure).
 
 #### Errors
 
-* [General](../../../getting-started/errors.md#error-codes) types only.
+* [General](../../../errors.md#error-codes) types only.
 
-### `get_tariff_restrictions`
+### get\_tariff\_restrictions
 
 Gets user plan restrictions.
 
@@ -326,19 +325,23 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/user/get_tariff_restrictions' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/get_tariff_restrictions' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-    
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/user/get_tariff_restrictions?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/user/get_tariff_restrictions?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -355,12 +358,11 @@ Only API key `hash`.
 
 #### Errors
 
-* [General](../../../getting-started/errors.md#error-codes) types only.
+* [General](../../../errors.md#error-codes) types only.
 
+### logout
 
-### `logout`
-
-Destroys current user session.
+Destroys current user session.\
 Works only with standard user session (not with API key).
 
 #### Parameters
@@ -369,19 +371,21 @@ Only session `hash`.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/user/logout' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/logout' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-    
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/user/logout?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+```http
+https://api.eu.navixy.com/v2/user/logout?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -393,9 +397,9 @@ Only session `hash`.
 
 #### Errors
 
-* [General](../../../getting-started/errors.md#error-codes) types only.
+* [General](../../../errors.md#error-codes) types only.
 
-### `resend_activation`
+### resend\_activation
 
 Sends a new activation link to user.
 
@@ -404,24 +408,26 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 #### Parameters
 
 | name  | description         | type   | restrictions |
-|:------|:--------------------|:-------|:-------------|
+| ----- | ------------------- | ------ | ------------ |
 | login | User login (email). | string | not null.    |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/user/resend_activation' \
+    -H 'Content-Type: application/json' \
+    -d '{"login": "user@login.com"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/user/resend_activation' \
-        -H 'Content-Type: application/json' \
-        -d '{"login": "user@login.com"}'
-    ```
-    
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/user/resend_activation?login=user@login.com
-    ```
+{% tab title="HTTP GET" %}
+```http
+https://api.eu.navixy.com/v2/user/resend_activation?login=user@login.com
+```
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -435,7 +441,8 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
 
 * 201 - Not found in the database – user with a passed login not found.
 * 209 - Failed sending email – can't send email.
-* 264 - Timeout not reached – previous activation link generated less than 5 minutes ago (or other configured on server timeout).
+*   264 - Timeout not reached – previous activation link generated less than 5 minutes ago (or other configured on server timeout).
+
     ```json
     {
       "success": false,
@@ -447,6 +454,7 @@ It does not need authentication/hash and is available at `UNAUTHORIZED` access l
       "remainder": "PT4M31.575S"
     }
     ```
+
     * `timeout` - string. timeout between sending activation links in ISO 8601 duration format.
     * `remainder` - string. remaining time to next try in ISO 8601 duration format
 * 265 - Already done – user already activated and verified.

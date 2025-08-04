@@ -1,7 +1,9 @@
 # How to Create and Assign Tasks
 
 Tasks in Navixy are a feature used to plan and monitor the activities of field workers. They help in organizing and managing various operations such as service, delivery, transportation, merchandising, and trade. Tasks provide employees with detailed information including date, time, addresses, task descriptions, and contact numbers.
+
 ### How Do Tasks Operate?
+
 1. **Creation**: Tasks are created with specific details such as the location, time, and description. They can be single-point tasks or route tasks with multiple checkpoints.
 2. **Assignment**: Tasks are assigned to employees, typically those equipped with tracking devices. The tasks appear on their X-GPS tracker app, providing all necessary details.
 3. **Execution**: Employees perform the tasks, updating their status and providing real-time information through the app. This can include check-ins, status updates, and form submissions.
@@ -12,7 +14,7 @@ Tasks can be either **single-point** tasks or **route** tasks with multiple chec
 
 ## Single Task
 
-To create a new single task, use the [`task/create`](../../resources/field_service/task/index.md#create) method. You need to provide a JSON object that contains all the necessary information about the task. Optionally, you can create a form for the task by setting the `create_form` parameter to `true`.
+To create a new single task, use the [`task/create`](../../resources/field-service/task/#create) method. You need to provide a JSON object that contains all the necessary information about the task. Optionally, you can create a form for the task by setting the `create_form` parameter to `true`.
 
 ### Example
 
@@ -20,8 +22,9 @@ Let's create a task for George to deliver new devices to an office on March 16th
 
 **API request:**
 
+{% code title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/task/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b",
@@ -42,6 +45,7 @@ curl -X POST '{{ extra.api_example_url }}/task/create' \
         "create_form": false
     }'
 ```
+{% endcode %}
 
 ### Example Response
 
@@ -54,7 +58,7 @@ curl -X POST '{{ extra.api_example_url }}/task/create' \
 
 ## Route Task
 
-To create a new route task, use the [`task/route/create`](../../resources/field_service/task/route/index.md#create) method. You need to provide a JSON object that contains all the necessary information about the route and its checkpoints.
+To create a new route task, use the [`task/route/create`](../../resources/field-service/task/route/index.md#create) method. You need to provide a JSON object that contains all the necessary information about the route and its checkpoints.
 
 ### Example
 
@@ -62,8 +66,9 @@ Let's create a route task for John to deliver products to three customers on Mar
 
 **API request:**
 
+{% code title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/task/route/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/route/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b",
@@ -130,6 +135,7 @@ curl -X POST '{{ extra.api_example_url }}/task/route/create' \
         "create_form": false
     }'
 ```
+{% endcode %}
 
 ### Example Response
 
@@ -161,12 +167,13 @@ curl -X POST '{{ extra.api_example_url }}/task/route/create' \
 
 ## Route Optimization
 
-To optimize a route for minimizing transit time and costs, reorder the checkpoints before creating the route. Use the [`task/route/points/optimize`](../../resources/field_service/task/route/optimize.md) method to perform this optimization.
+To optimize a route for minimizing transit time and costs, reorder the checkpoints before creating the route. Use the [`task/route/points/optimize`](../../resources/field-service/task/route/optimize.md) method to perform this optimization.
 
 ### Example Request
 
+{% code title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
+curl -X POST 'https://api.eu.navixy.com/v2/task/route/points/optimize' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "22eac1c27af4be7b9d04da2ce1af111b",
@@ -203,6 +210,7 @@ curl -X POST '{{ extra.api_example_url }}/task/route/points/optimize' \
         ]
     }'
 ```
+{% endcode %}
 
 ### Example Response
 

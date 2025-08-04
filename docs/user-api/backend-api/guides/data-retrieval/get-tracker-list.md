@@ -1,35 +1,40 @@
 # Getting List of GPS Trackers
 
 This guide explains how to retrieve a list of GPS trackers associated with a user account using the Navixy API. This is essential for managing and monitoring multiple devices within the Navixy platform.
+
 ## Prerequisites
 
-Before you begin, ensure you have an active Navixy account and an [API key for authentication](../../getting-started/authentication.md). 
+Before you begin, ensure you have an active Navixy account and an [API key for authentication](../../../authentication.md#id-2.-api-keys-recommended-authentication).
 
 ## Make the API request
 
-To get the list of trackers, you need to make a POST request to the [`/tracker/list`](../../resources/tracking/tracker/index.md) endpoint. Below are the details and examples of how to do this.  
+To get the list of trackers, you need to make a POST request to the [`/tracker/list`](../../resources/tracking/tracker/#list) endpoint. Below are the details and examples of how to do this.
 
 ### API endpoint
 
-`https://api.navixy.com/v2/tracker/list`
+`https://api.{region}.navixy.com/v2/tracker/list`
 
 ### API request
-##### cURL
 
-```
+**cURL**
+
+{% tabs %}
+{% tab title="cURL" %}
+```sh
 curl -X POST 'https://api.navixy.com/v2/tracker/list' \
 	-H 'Content-Type: application/json' \
 	-d '{"hash": "your_api_key_hash"}'
 ```
+{% endtab %}
 
-##### HTTP GET
-
-```
+{% tab title="HTTP GET" %}
+```http
 https://api.navixy.com/v2/tracker/list?hash=your_api_key_hash
 ```
+{% endtab %}
+{% endtabs %}
 
-
-##### Response
+**Response**
 
 If the request is successful, the response will contain a list of trackers associated with your account.
 
@@ -59,7 +64,7 @@ If the request is successful, the response will contain a list of trackers assoc
     }
   ]
 }
-```  
+```
 
 If an account has a large number of trackers, and you only need specific ones, you can add an optional filter parameter to the request to return only matching records.
 
@@ -73,13 +78,13 @@ This parameter has the following constraints:
 To get a list of trackers with labels matching the filter, use this API call:
 
 ```
-curl -X POST '{{ extra.api_example_url }}/tracker/list' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/list' \
    -H 'Content-Type: application/json' \
    -d '{"hash": "your_api_key_hash", "labels": ["aa", "b"]}'
 ```
 
 **Usage notes**
 
-- Ensure your API key hash is valid and has the necessary permissions.
-- The list may include both online and offline trackers, along with their last known status.
-- Use this method to manage and display multiple tracking devices on your application interface.
+* Ensure your API key hash is valid and has the necessary permissions.
+* The list may include both online and offline trackers, along with their last known status.
+* Use this method to manage and display multiple tracking devices on your application interface.

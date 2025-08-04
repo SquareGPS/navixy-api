@@ -5,23 +5,27 @@ In many scenarios, it becomes essential to retrieve all location points of a tra
 ## Prerequisites
 
 ### Obtain API Key Hash
-First, you need to [obtain the hash of an API key](../../getting-started/authentication.md).
+
+First, you need to [obtain the hash of an API key](../../../authentication.md#id-2.-api-keys-recommended-authentication).
 
 ### Get Tracker ID
-Next, [retrieve your tracker_id](get-tracker-list.md). This ID is essential as the platform needs to know which device's points to return.
+
+Next, [retrieve your tracker\_id](get-tracker-list.md). This ID is essential as the platform needs to know which device's points to return.
 
 ## Retrieve Track Points
 
 With the API key hash and tracker ID in hand, you can now get all points for a specified period using the [`/track/read`](../../resources/tracking/track/index.md#read) API method.
 
 ### Required Parameters
-* `tracker_id` - Obtained from the [`tracker/list`](../../resources/tracking/tracker/index.md#list) call. Only one tracker_id per call. It should be an integer.
-* `from` - A string containing the start [`date/time`](../../getting-started/introduction.md#datetime-formats).
-* `to` - A string containing the end [`date/time`](../../getting-started/introduction.md#datetime-formats).
+
+* `tracker_id` - Obtained from the [`tracker/list`](../../resources/tracking/tracker/#list) call. Only one tracker\_id per call. It should be an integer.
+* `from` - A string containing the start [`date/time`](../../#datetime-formats).
+* `to` - A string containing the end [`date/time`](../../#datetime-formats).
 
 For a full description of the parameters, see the [`/track/read`](../../resources/tracking/track/index.md#read)API method.
 
 ### Example Response
+
 The platform will respond with the following data:
 
 ```json
@@ -47,6 +51,7 @@ The platform will respond with the following data:
 ```
 
 ### Response Fields
+
 * `limit_exceeded` - boolean. `true` if the requested time period exceeds the limit specified in the tracker's tariff.
 * `lat` - float. Latitude.
 * `lng` - float. Longitude.
@@ -66,15 +71,16 @@ You can also [download](../../resources/tracking/track/index.md#download) a KML 
 
 ### Example Request
 
-=== "cURL"
-
+{% code title="cURL" overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/track/download' \
+curl -X POST 'https://api.eu.navixy.com/v2/track/download' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "from": "2020-09-23 03:24:00", "to": "2020-09-23 06:24:00", "format": "kml", "split": false}'
 ```
+{% endcode %}
 
 ### Additional Parameters
+
 All parameters are the same as in `track/read` plus two new optional parameters:
 
 * `format` – string. File format, either "kml" or "kmz". Default is "kml".
