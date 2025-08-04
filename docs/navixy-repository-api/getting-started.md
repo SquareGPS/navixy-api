@@ -8,7 +8,7 @@ Before you begin, ensure you have:
 
 * Valid Navixy Repository API credentials (`client_id` and `client_secret`).
 * A registered Callback URL (Redirect URI): The specific URL in your application where users will be redirected after granting consent.
-* URLs of API and authentication servers ({BASE\_URL} and {AUTH\_BASE\_URL}), determined depending on your geographical location. For more information about {BASE\_URL}, see [API environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
+* URLs of API and authentication servers ({BASE\_URL} and {AUTH\_BASE\_URL}), determined depending on your geographical location and the current version of the API. For more information about {BASE\_URL}, see [API environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
 * A secure method to generate and validate the `state` parameter for Cross-Site Request Forgery (CSRF) protection.
 * A GPS device ready for activation that belongs to the list of [supported devices](https://www.navixy.com/devices/).
 
@@ -67,7 +67,7 @@ curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
 Include the access token in all API requests:
 
 ```bash
-curl -X GET {BASE_URL}/v0/inventory/list \
+curl -X GET {BASE_URL}/inventory/list \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
@@ -88,7 +88,7 @@ For example, to get the specifications for a Teltonika FMC234, use the following
 
 {% code overflow="wrap" %}
 ```bash
-curl -X GET "{BASE_URL}/v0/inventory_item/master/model/list?q=Teltonika%20FMC234" \
+curl -X GET "{BASE_URL}/inventory_item/master/model/list?q=Teltonika%20FMC234" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 {% endcode %}
@@ -135,7 +135,7 @@ From the response, you will need to save the following critical parameters for f
 Next, create an inventory to house your new device. Inventories are logical containers for organizing your items.
 
 ```bash
-curl -X POST {BASE_URL}/v0/inventory/create \
+curl -X POST {BASE_URL}/inventory/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '​{
@@ -161,7 +161,7 @@ Devices that can transmit GPS data independently are called master devices. In N
 Now, create a master device as an item in your inventory. You will need `inventory_id` and the model `code` you've fetched previously, as well as `device_id` , which is typically its IMEI (pattern: `^[0-9a-zA-Z\\-]{1,64}$`).
 
 ```bash
-curl -X POST {BASE_URL}/v0/inventory_item/master/create \
+curl -X POST {BASE_URL}/inventory_item/master/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -187,7 +187,7 @@ Save the returned device `id` for the next and final step.
 Finally, activate the device using its `id` from the previous step along with the `activation_method_id` and `fields` you saved earlier.
 
 ```bash
-curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
+curl -X POST {BASE_URL}/inventory_item/master/activate \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -210,7 +210,7 @@ A successful activation will return a `204 No Content` response.
 Let's confirm everything works by listing your inventory items:
 
 ```bash
-curl -X GET "{BASE_URL}/v0/inventory_item/master/list" \
+curl -X GET "{BASE_URL}/inventory_item/master/list" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 

@@ -14,7 +14,7 @@ Navixy Repository API supports two types of devices:
 ### How to activate a GPS device
 
 {% hint style="warning" %}
-Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
+Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location and the current version of the API. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
 {% endhint %}
 
 #### Prerequisites
@@ -32,8 +32,8 @@ Navixy Repository API supports [a wide variety of GPS devices](https://www.navix
 Of course, you probably already know your model and want to fetch its specific parameters. That can be achieved by adding a query. For example, let's say your GPS device is Teltonika FM4200. Use this request:
 
 {% code overflow="wrap" %}
-```
-curl -X GET "{BASE_URL}/v0/inventory_item/master/model/list?q=Teltonika%20FM4200" \
+```bash
+curl -X GET "{BASE_URL}/inventory_item/master/model/list?q=Teltonika%20FM4200" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 {% endcode %}
@@ -130,8 +130,8 @@ Every inventory item requires an inventory. To create it, send the following req
 
 Use this request body:
 
-```
-curl -X POST {BASE_URL}/v0/inventory/create \
+```bash
+curl -X POST {BASE_URL}/inventory/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -142,7 +142,7 @@ curl -X POST {BASE_URL}/v0/inventory/create \
 
 You will receive the ID of the created inventory:
 
-```
+```json
 {
   "id": 24
 }
@@ -155,7 +155,7 @@ You will receive the ID of the created inventory:
 {% endopenapi-schemas %}
 
 ```bash
-curl -X POST {BASE_URL}/v0/inventory_item/master/create \
+curl -X POST {BASE_URL}/inventory_item/master/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -172,24 +172,24 @@ You have two approaches to create a **master inventory item**:
 **Option A: Create with minimal information.** If you choose Option A, you'll need to update the item with device details before activation.
 
 ```bash
-curl -X POST {BASE_URL}/v0/inventory_item/master/create \
+curl -X POST {BASE_URL}/inventory_item/master/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
-    "label": "Delivery Van 1"
+    "label": "GPS tracker for Delivery Van 1"
   }'
 ```
 
 **Option B:** **Create with full device details**
 
-<pre class="language-bash"><code class="lang-bash"><strong>curl -X POST {BASE_URL}/v0/inventory_item/master/create \
+<pre class="language-bash"><code class="lang-bash"><strong>curl -X POST {BASE_URL}/inventory_item/master/create \
 </strong>  -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
       "inventory_id": 24,
       "model": "telfm4200",
       "device_id": "123456789012345",
-      "label": "Delivery Van 1",
+      "label": "GPS tracker for Delivery Van 1",
 }'
 </code></pre>
 
@@ -215,7 +215,7 @@ Send the following request:
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
-<pre class="language-json"><code class="lang-json">curl -X POST {BASE_URL}/v0/inventory_item/master/activate \
+<pre class="language-json"><code class="lang-json">curl -X POST {BASE_URL}/inventory_item/master/activate \
   -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -249,7 +249,7 @@ A slave device doesn't transmit GPS data unless paired with a master device. Man
 
 To create a slave inventory item, use this request body:
 
-<pre class="language-json"><code class="lang-json">curl -X POST {BASE_URL}/v0/inventory_item/slave/create \
+<pre class="language-bash"><code class="lang-bash">curl -X POST {BASE_URL}/inventory_item/slave/create \
   -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -273,8 +273,8 @@ Now that you've created a slave device, you need to pair it with a master device
 
 Use this request body:
 
-```json
-curl -X POST {BASE_URL}/v0/inventory_item/slave/pair \
+```bash
+curl -X POST {BASE_URL}/inventory_item/slave/pair \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -287,7 +287,7 @@ You will receive an empty response body and a `204 No Content` status.
 
 Alternatively, you can create and pair the slave device with a single request:
 
-<pre class="language-json"><code class="lang-json">curl -X POST {BASE_URL}/v0/inventory_item/slave/create \
+<pre class="language-bash"><code class="lang-bash">curl -X POST {BASE_URL}/inventory_item/slave/create \
   -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -301,7 +301,7 @@ The response will be the same as with an ordinary creation request (the `id` of 
 
 ### How to use the data transmitted by the device
 
-Activating the GPS device registers it with other Navixy systems: [Navixy API](https://www.navixy.com/docs/navixy-api/), a telematics platform without business management features, and [IoT Logic](https://www.navixy.com/docs/iot-logic-api), a low-code data processing and enrichment tool.
+Activating the GPS device registers it with other Navixy systems: [Navixy API](https://www.navixy.com/docs/navixy-api/), a telematics platform without comprehensive business management features, and [IoT Logic](https://www.navixy.com/docs/iot-logic-api), a low-code data processing and enrichment tool.
 
 Activation allows you to work with the device in other APIs:
 

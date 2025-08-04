@@ -9,7 +9,7 @@ In this guide, you will learn how to create and configure a custom asset.
 ### How to create a custom asset
 
 {% hint style="warning" %}
-Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
+Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location and the current version of the API. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
 {% endhint %}
 
 #### Step 1. Create an asset type
@@ -27,7 +27,7 @@ To create a new asset type, send the following request:
 Use this request body:
 
 ```json
-curl -X POST {BASE_URL}/v0/asset_type/create \
+curl -X POST {BASE_URL}/asset_type/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -137,7 +137,7 @@ Before creating an asset, you need to learn the auto-generated internal ID of ea
 In this case, it will be:
 
 ```
-curl -X GET "{BASE_URL}/v0/asset_type/read?id=456" \
+curl -X GET "{BASE_URL}/asset_type/read?id=456" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
@@ -215,7 +215,7 @@ You will receive full information about the asset type, including the `id` of ea
 To create an asset, send the following request using the `id` of each custom field from the previous step, or at least those you marked as `required:`
 
 ```json
-curl -X POST {BASE_URL}/v0/asset/create \
+curl -X POST {BASE_URL}/asset/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -267,7 +267,7 @@ This flexibility allows you to pre-create devices in inventory before assets exi
 If your device is already activated, send the following request (let's assume you have a master-type item called  `Sea Explorer GPS Tracker`):
 
 ```json
-curl -X POST {BASE_URL}/v0/inventory_item/master/update \
+curl -X POST {BASE_URL}/inventory_item/master/update \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -283,7 +283,7 @@ curl -X POST {BASE_URL}/v0/inventory_item/master/update \
 If you haven't created an inventory item yet, you can add the `asset_id` parameter to the creation request. For a master item, send the following request:
 
 ```json
-​curl -X POST {BASE_URL}/v0/inventory_item/master/create \
+​curl -X POST {BASE_URL}/inventory_item/master/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
