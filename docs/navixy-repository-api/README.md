@@ -26,7 +26,7 @@ For CTOs and system architects, it represents a stable API-first data model, whi
 
 **Navixy Repository API** operates using the following resources:
 
-<table><thead><tr><th width="138.5999755859375">Term</th><th>Definition</th></tr></thead><tbody><tr><td><a href="broken-reference"><strong>Asset</strong></a></td><td>An object that represents a real-world business unit: a person, car, boat, bike, piece of equipment, or any other trackable resource.</td></tr><tr><td><a href="broken-reference"><strong>Asset type</strong></a></td><td>Defines the structure of custom property fields and display configuration for assets. Examples: "Boats", "Cargo", "Warehouse Operators". Supports full customization: field groups, fields order, field properties (label, description, required or not).</td></tr><tr><td><a href="broken-reference"><strong>Asset link</strong></a></td><td>Assets grouped in line with the user's business logic, such as "Staff" → "Shift 15/12/2025" or "Truck, 3 trailers, driver 1, driver 2" → "Motorcade 1." This allows for flexible connections while maintaining relationship history between assets.</td></tr><tr><td><a href="broken-reference"><strong>Inventory</strong></a></td><td>Devices (GPS trackers, sensors, etc.) are kept in <strong>inventories</strong> — collections used to efficiently organize and manage equipment. They help structure, track, and operate devices.</td></tr><tr><td><a href="broken-reference"><strong>Inventory item</strong></a></td><td>Devices stored in inventories. They can be activated, paired, and assigned to assets. Note that multiple items can be connected to a single asset.</td></tr></tbody></table>
+<table><thead><tr><th width="138.5999755859375">Term</th><th>Definition</th></tr></thead><tbody><tr><td><a href="endpoint-reference/asset.md"><strong>Asset</strong></a></td><td>An object that represents a real-world business unit: a person, car, boat, bike, piece of equipment, or any other trackable resource.</td></tr><tr><td><a href="endpoint-reference/asset-type.md"><strong>Asset type</strong></a></td><td>Defines the structure of custom property fields and display configuration for assets. Examples: "Boats", "Cargo", "Warehouse Operators". Supports full customization: field groups, fields order, field properties (label, description, required or not).</td></tr><tr><td><a href="endpoint-reference/asset-link.md"><strong>Asset link</strong></a></td><td>Assets grouped in line with the user's business logic, such as "Staff" → "Shift 15/12/2025" or "Truck, 3 trailers, driver 1, driver 2" → "Motorcade 1." This allows for flexible connections while maintaining the relationship history between the assets.</td></tr><tr><td><a href="endpoint-reference/inventory.md"><strong>Inventory</strong></a></td><td>Devices (GPS trackers, sensors, etc.) are kept in <strong>inventories</strong> — collections used to efficiently organize and manage equipment. They help structure, track, and operate devices.</td></tr><tr><td><a href="endpoint-reference/inventory-item.md"><strong>Inventory item</strong></a></td><td>Devices stored in inventories. They can be activated, paired, and assigned to assets. Note that multiple items can be connected to a single asset.</td></tr></tbody></table>
 
 ### Navigation
 
@@ -37,13 +37,13 @@ The **Navixy Repository API documentation** is organized into two complementary 
 These articles provide essential background knowledge and guidelines:
 
 * [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through your first API integration, from authentication to creating your first group of linked assets.
-* [**Authentication**](authentication.md): A comprehensive guide to using OAuth 2.0 authorization protocol.
+* [**Authentication**](authentication.md): A comprehensive guide to using the OAuth 2.0 authorization protocol.
 * [**Technical reference**](technical-reference.md): Implementation details covering server URLs, API versioning, pagination strategies, sorting mechanisms, and advanced filtering options.
 * [**Guides**](guides/): In-depth guides exploring the most common use cases.
 
 #### Endpoint reference
 
-The endpoint reference is organized by resource type, such as [`asset`](broken-reference), [`asset_type`](broken-reference), and [`inventory`](broken-reference), and provides complete technical specifications for each endpoint.
+The endpoint reference is organized by resource type, such as [`asset`](endpoint-reference/asset.md), [`asset_type`](endpoint-reference/asset-type.md), and [`inventory`](endpoint-reference/inventory.md), and provides complete technical specifications for each endpoint.
 
 **For each API call, you'll find:**
 

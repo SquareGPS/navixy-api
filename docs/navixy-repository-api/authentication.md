@@ -1,4 +1,4 @@
-# Authenticationx
+# Authentication
 
 Authentication is required for all API requests and is based on OAuth 2.0.
 
@@ -100,9 +100,9 @@ curl -X GET {BASE_URL}/resource \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-### Refreshing an access token
+### Refreshing the access token
 
-Access tokens have a limited lifespan and typically expire after 900 seconds. In order to maintain access without requiring the user to re-authenticate, use the refresh token provided during the initial token exchange to obtain a new access token.
+Access tokens have a limited lifespan and typically expire after 900 seconds. To maintain access without requiring the user to re-authenticate, use the refresh token provided during the initial token exchange to obtain a new access token.
 
 **Request:**
 
@@ -133,7 +133,7 @@ curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
 * A new `refresh_token` may also be issued. If so, you should update your stored token accordingly.
 * If the `refresh_token` has expired or is invalid, you must re-authenticate using the full authorization code flow.
 
-This mechanism allows long-lived sessions while minimizing user effort and maintaining security best practices.
+This mechanism enables long-lived sessions while minimizing user effort and adhering to security best practices.
 
 ### Revoking tokens
 

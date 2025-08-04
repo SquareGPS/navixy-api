@@ -1,6 +1,6 @@
 # Getting started
 
-This guide will walk you through the basic steps to start using Navixy Repository API. You'll learn how to authenticate, create an inventory and inventory item to store your GPS device, and activate it.
+This guide will walk you through the basic steps to start using Navixy Repository API. You'll learn how to authenticate, create an inventory and an inventory item to store your GPS device, and activate it.
 
 ### Prerequisites
 
@@ -82,14 +82,16 @@ For a more in-depth explanation of activating a GPS device and working with inve
 {% step %}
 #### Fetch device model specification
 
-Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can retrieve the complete profile for any supported model by querying the [**/inventory\_item/master/model/list**](broken-reference) endpoint.
+Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can retrieve the complete profile for any supported model by querying the [**/inventory\_item/master/model/list**](endpoint-reference/inventory-item.md#get-v0-inventory_item-master-model-list) endpoint.
 
 For example, to get the specifications for a Teltonika FMC234, use the following request:
 
-```
+{% code overflow="wrap" %}
+```bash
 curl -X GET "{BASE_URL}/v0/inventory_item/master/model/list?q=Teltonika%20FMC234" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
+{% endcode %}
 
 From the response, you will need to save the following critical parameters for future requests:
 
@@ -204,8 +206,6 @@ A successful activation will return a `204 No Content` response.
 {% endstepper %}
 
 ### Verification and next steps
-
-#### Verify your setup
 
 Let's confirm everything works by listing your inventory items:
 
