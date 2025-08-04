@@ -1,0 +1,17 @@
+# Table of contents
+
+* [Overview](README.md)
+* [Getting started](getting-started.md)
+* [Authentication](authentication.md)
+* [Technical reference](technical-reference.md)
+* [Guides](guides/README.md)
+  * [Activating a GPS device](guides/activating-a-gps-device.md)
+  * [Creating a custom asset](guides/creating-a-custom-asset.md)
+  * [Configuring an asset link](guides/configuring-an-asset-link.md)
+  * [Flexible resource management patterns](guides/flexible-resource-management-patterns.md)
+* [Endpoint reference](endpoint-reference/README.md)
+  * [Inventory](endpoint-reference/inventory.md)
+  * [Inventory item](endpoint-reference/inventory-item.md)
+  * [Asset](endpoint-reference/asset.md)
+  * [Asset type](endpoint-reference/asset-type.md)
+  * [Asset link](endpoint-reference/asset-link.md)
