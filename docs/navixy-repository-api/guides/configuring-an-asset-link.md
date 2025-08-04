@@ -47,7 +47,7 @@ To create a new asset link, prepare an array of assets (or use an empty array) a
 
 Use this request body:
 
-```json
+```bash
 curl -X POST {BASE_URL}/asset_link/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
@@ -77,7 +77,7 @@ To add an asset to an existing link, send the following request:
 
 Use this request body:
 
-```json
+```bash
 curl -X POST {BASE_URL}/asset_link/set \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
@@ -99,7 +99,7 @@ To remove an asset from an existing link, send the following request:
 
 Use this request body:
 
-```json
+```bash
 curl -X POST {BASE_URL}/asset_link/remove \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
