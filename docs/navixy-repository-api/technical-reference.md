@@ -261,18 +261,3 @@ Explore the full structure of Navixy Repository API using the OpenAPI standard.
 * Perfect for documentation readers who want to explore and test endpoints without manual setup if the built-in documentation tools are insufficient for your specific needs
 
 You can view the current version of the OpenAPI specification [here](resources/navixy-repo-api-specification.yaml).
-
-#### Postman
-
-Postman is a powerful API client used for testing and exploring APIs with ease.
-
-* Navixy Repository API comes with a ready-to-use Postman Collection.
-* Just import it, enter your credentials, and start making requests – no setup required.
-* It's great for quickly learning the API and trying different operations in a sandbox environment. Should you encounter limitations with the documentation's sandbox capabilities, we recommend exploring advanced Postman features or dedicated development environments for more complex testing scenarios.
-
-#### Zapier
-
-Zapier is a no-code automation platform that connects Navixy Repository with thousands of third-party apps.
-
-* Set up workflows (called "Zaps"), which contain triggers in Navixy Repository that automatically result in actions in other systems.
-* It's perfect for business users and analysts who need automation without writing code. For example, it allows you to log tracker activity to a spreadsheet or notify your team in Slack when a specific event occurs.
