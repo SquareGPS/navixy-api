@@ -10,6 +10,8 @@ Inventory items are individual devices or components that belong to an inventory
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
+#### Master item endpoints
+
 {% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/list" method="get" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
@@ -43,6 +45,14 @@ Inventory items are individual devices or components that belong to an inventory
 {% endopenapi-operation %}
 
 ### Slave item
+
+#### Slave item object
+
+{% openapi-schemas spec="navixy-repo" schemas="InventorySlaveItem" grouped="true" %}
+[OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
+{% endopenapi-schemas %}
+
+#### Slave item endpoints
 
 {% openapi-operation spec="navixy-repo" path="/v0/inventory_item/slave/list" method="get" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)

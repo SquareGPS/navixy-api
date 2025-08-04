@@ -8,6 +8,8 @@ Inventories are collections of devices used to organize and manage equipment mor
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
+### Inventory endpoints
+
 {% openapi-operation spec="navixy-repo" path="/v0/inventory/list" method="get" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
