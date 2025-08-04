@@ -103,7 +103,7 @@ From the response, you will need to save the following critical parameters for f
 {
     "data": [
         {
-            "code": "telfmu130_fmc130_234",
+            "code": "telfmc234",
             "vendor": "Teltonika Telematics",
             "name": "Teltonika FMC234",
             ...,
@@ -168,7 +168,7 @@ curl -X POST {BASE_URL}/inventory_item/master/create \
     "inventory_id": 12,
     "device_id": "356307042441234",
     "label": "Vessel 001",
-    "model": "telfmu130_fmc130_234"
+    "model": "telfmc234"
   }'
 ```
 
@@ -193,7 +193,7 @@ curl -X POST {BASE_URL}/inventory_item/master/activate \
   -d '{
     "id": 123,
     "device_id": "356307042441234",
-    "model": "telfmu130_fmc130_234",
+    "model": "telfmc234",
     "activation_method_id": 1,
     "fields": {​
       "iccid": "8912345678901234567"

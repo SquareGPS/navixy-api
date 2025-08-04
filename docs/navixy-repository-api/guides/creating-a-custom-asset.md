@@ -147,7 +147,7 @@ You will receive full information about the asset type, including the `id` of ea
 
 ```json
 {
-    "id": 25,
+    "id": 456,
     "label": "Commercial Vessels",
     "category": "business",
     "settings": {
@@ -266,7 +266,7 @@ This flexibility allows you to pre-create devices in inventory before assets exi
 
 **Assign to an existing device**
 
-If your device is already activated, send the following request (let's assume you have a master-type item called  `GPS Tracker 446`):
+If your device is already activated, send the following request (let's assume you have a master-type item called  `GPS Tracker 446` with id of `123` ).
 
 ```json
 curl -X POST {BASE_URL}/inventory_item/master/update \
