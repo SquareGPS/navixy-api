@@ -1,7 +1,10 @@
 openapi: 3.1.0
 info:
   title: Navixy Repository API
-  description: "Navixy Repository API is a powerful asset management system that enables you to create fully customized trackable assets with any properties you need, assign GPS devices to make them location-aware, and establish relationships between assets to model your exact business operations."
+  description: "Navixy Repository API is a powerful asset management system that enables\
+    \ you to create fully customized trackable assets with any properties you need,\
+    \ assign GPS devices to make them location-aware, and establish relationships\
+    \ between assets to model your exact business operations."
   contact:
     name: Navixy support
     url: https://www.navixy.com/contact/
@@ -14,37 +17,36 @@ externalDocs:
   description: Find more info here
   url: https://www.navixy.com/docs/developers/navixy-repository-api
 servers:
-  - url: https://api.navixy.com/repo
-    description: Europe server
-  - url: https://api.us.navixy.com/repo
-    description: Americas server
+- url: https://api.navixy.com/repo/
+  description: Europe server
+- url: https://api.us.navixy.com/repo/
+  description: Americas server
+security:
+- OAuth2_EU: []
+- OAuth2_US: []
 tags:
-  - name: Inventories
-    description:
-      "Inventories are collections of devices used to organize and manage\
-      \ equipment more efficiently. They serve as logical groupings that help structure,\
-      \ track, and operate devices"
-  - name: Assets
-    description:
-      "Assets represent individual real-world objects stored in the system,\
-      \ such as a specific vehicle or person, and geospatial objects, such as a POI\
-      \ or geofence"
-  - name: Inventory Items
-    description:
-      "Inventory Items are individual devices or components that belong to\
-      \ an Inventory. Each item represents a physical unit, such as a tracker or accessory,\
-      \ used to manage and operate an organization's equipment"
-  - name: Asset Links
-    description:
-      "Collections of assets used to organize and manage equipment more efficiently.\
-      \ They serve as logical groupings that help structure, track, and operate assets"
-  - name: Asset Types
-    description: Describes the structure for each asset
+- name: Inventories
+  description: "Inventories are collections of devices used to organize and manage\
+    \ equipment more efficiently. They serve as logical groupings that help structure,\
+    \ track, and operate devices"
+- name: Assets
+  description: "Assets represent individual real-world objects stored in the system,\
+    \ such as a specific vehicle or person, and geospatial objects, such as a POI\
+    \ or geofence"
+- name: Inventory Items
+  description: "Inventory Items are individual devices or components that belong to\
+    \ an Inventory. Each item represents a physical unit, such as a tracker or accessory,\
+    \ used to manage and operate an organization's equipment"
+- name: Asset Links
+  description: "Collections of assets used to organize and manage equipment more efficiently.\
+    \ They serve as logical groupings that help structure, track, and operate assets"
+- name: Asset Types
+  description: Describes the structure for each asset
 paths:
   /v0/inventory_item/slave/update:
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Update an existing slave item
       description: Updates the information of an existing slave item
       operationId: updateSlave
@@ -79,10 +81,9 @@ paths:
   /v0/inventory_item/slave/pair:
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Pair a slave with a master item
-      description:
-        "Pairs a slave device with a master device within the organization's\
+      description: "Pairs a slave device with a master device within the organization's\
         \ inventory system. Used to establish logical associations between devices\
         \ (e.g., sensors with trackers). Both devices belong to the same organization\
         \ but may be located in different inventories."
@@ -118,42 +119,41 @@ paths:
   /v0/inventory_item/slave/list:
     get:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: List slave items
       description: Returns all slave items available to the organization
       operationId: listSlave
       parameters:
-        - name: q
-          in: query
-          description: A search query string
-          required: false
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: "Maximum number of items to return (default: 100, max: 1000)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            exclusiveMinimum: 0
-            maximum: 1000
-        - name: offset
-          in: query
-          description: "The index of the first item to return (default: 0)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            minimum: 0
-        - name: sort
-          in: query
-          description:
-            "Sort expression. Supports one or more fields, optionally prefixed\
-            \ with `-` to indicate descending order. For example, `label,-created_at`"
-          required: false
-          schema:
-            type: string
+      - name: q
+        in: query
+        description: A search query string
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Maximum number of items to return (default: 100, max: 1000)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
+      - name: offset
+        in: query
+        description: "The index of the first item to return (default: 0)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+      - name: sort
+        in: query
+        description: "Sort expression. Supports one or more fields, optionally prefixed\
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           description: List of inventory items
@@ -175,10 +175,9 @@ paths:
                 $ref: "#/components/schemas/ErrorResponse"
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: List slave items with advanced filtering
-      description:
-        Returns all slave items available to the organization with advanced
+      description: Returns all slave items available to the organization with advanced
         filtering options
       operationId: listSlavePost
       requestBody:
@@ -209,7 +208,7 @@ paths:
   /v0/inventory_item/slave/delete:
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Delete a slave item
       description: Deletes the specified slave item by its ID
       operationId: deleteSlave
@@ -244,7 +243,7 @@ paths:
   /v0/inventory_item/slave/create:
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Create a new slave item
       description: Adds a slave item for the organization
       operationId: createSlave
@@ -276,7 +275,7 @@ paths:
   /v0/inventory_item/master/update:
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Update an existing master item
       description: Updates the information of an existing master item
       operationId: updateMaster
@@ -311,42 +310,41 @@ paths:
   /v0/inventory_item/master/list:
     get:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: List master items
       description: Returns all master items available to the organization
       operationId: listMaster
       parameters:
-        - name: q
-          in: query
-          description: A search query string
-          required: false
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: "Maximum number of items to return (default: 100, max: 1000)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            exclusiveMinimum: 0
-            maximum: 1000
-        - name: offset
-          in: query
-          description: "The index of the first item to return (default: 0)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            minimum: 0
-        - name: sort
-          in: query
-          description:
-            "Sort expression. Supports one or more fields, optionally prefixed\
-            \ with `-` to indicate descending order. For example, `label,-created_at`"
-          required: false
-          schema:
-            type: string
+      - name: q
+        in: query
+        description: A search query string
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Maximum number of items to return (default: 100, max: 1000)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
+      - name: offset
+        in: query
+        description: "The index of the first item to return (default: 0)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+      - name: sort
+        in: query
+        description: "Sort expression. Supports one or more fields, optionally prefixed\
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           description: List of inventory items
@@ -368,10 +366,9 @@ paths:
                 $ref: "#/components/schemas/ErrorResponse"
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: List master items with advanced filtering
-      description:
-        Returns all master items available to the organization with advanced
+      description: Returns all master items available to the organization with advanced
         filtering options
       operationId: listMasterPost
       requestBody:
@@ -402,7 +399,7 @@ paths:
   /v0/inventory_item/master/create:
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Create a new master item
       description: Adds a master item for the organization
       operationId: createMaster
@@ -434,10 +431,9 @@ paths:
   /v0/inventory_item/master/archive:
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Archive a master item
-      description:
-        Marks an inventory item as deleted without permanently removing
+      description: Marks an inventory item as deleted without permanently removing
         it from the system. This soft delete approach allows recovery of inventory
         item’s data upon request to support
       operationId: archiveMaster
@@ -472,10 +468,9 @@ paths:
   /v0/inventory_item/master/activate:
     post:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Activate a master item
-      description:
-        "Activates a created master device using a unique identifier. The\
+      description: "Activates a created master device using a unique identifier. The\
         \ device must be preconfigured and may exist either in the organization's\
         \ inventory or in a dealer's inventory. Upon activation, the device is assigned\
         \ to the organization"
@@ -511,7 +506,7 @@ paths:
   /v0/inventory/update:
     post:
       tags:
-        - Inventories
+      - Inventories
       summary: Update an existing inventory
       description: Updates the information of an existing inventory
       operationId: updateInventory
@@ -546,42 +541,41 @@ paths:
   /v0/inventory/list:
     get:
       tags:
-        - Inventories
+      - Inventories
       summary: List inventories
       description: Returns all inventories available to the organization
       operationId: listInventories
       parameters:
-        - name: q
-          in: query
-          description: A search query string
-          required: false
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: "Maximum number of items to return (default: 100, max: 1000)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            exclusiveMinimum: 0
-            maximum: 1000
-        - name: offset
-          in: query
-          description: "The index of the first item to return (default: 0)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            minimum: 0
-        - name: sort
-          in: query
-          description:
-            "Sort expression. Supports one or more fields, optionally prefixed\
-            \ with `-` to indicate descending order. For example, `label,-created_at`"
-          required: false
-          schema:
-            type: string
+      - name: q
+        in: query
+        description: A search query string
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Maximum number of items to return (default: 100, max: 1000)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
+      - name: offset
+        in: query
+        description: "The index of the first item to return (default: 0)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+      - name: sort
+        in: query
+        description: "Sort expression. Supports one or more fields, optionally prefixed\
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           description: List of inventories
@@ -603,10 +597,9 @@ paths:
                 $ref: "#/components/schemas/ErrorResponse"
     post:
       tags:
-        - Inventories
+      - Inventories
       summary: List inventories with advanced filtering
-      description:
-        Returns all inventories available to the organization with advanced
+      description: Returns all inventories available to the organization with advanced
         filtering options
       operationId: listInventoriesPost
       requestBody:
@@ -637,7 +630,7 @@ paths:
   /v0/inventory/delete:
     post:
       tags:
-        - Inventories
+      - Inventories
       summary: Delete an inventory
       description: Deletes the specified inventory by its ID
       operationId: deleteInventory
@@ -672,7 +665,7 @@ paths:
   /v0/inventory/create:
     post:
       tags:
-        - Inventories
+      - Inventories
       summary: Create a new inventory
       description: Adds a new inventory for the organization
       operationId: createInventory
@@ -704,7 +697,7 @@ paths:
   /v0/asset_type/update:
     post:
       tags:
-        - Asset Types
+      - Asset Types
       summary: Update an asset type
       description: Updates the properties and structure of an existing asset type
       operationId: updateAssetType
@@ -739,42 +732,41 @@ paths:
   /v0/asset_type/list:
     get:
       tags:
-        - Asset Types
+      - Asset Types
       summary: List asset types
       description: Returns all asset types from an organization
       operationId: listAssetTypes
       parameters:
-        - name: q
-          in: query
-          description: A search query string
-          required: false
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: "Maximum number of items to return (default: 100, max: 1000)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            exclusiveMinimum: 0
-            maximum: 1000
-        - name: offset
-          in: query
-          description: "The index of the first item to return (default: 0)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            minimum: 0
-        - name: sort
-          in: query
-          description:
-            "Sort expression. Supports one or more fields, optionally prefixed\
-            \ with `-` to indicate descending order. For example, `label,-created_at`"
-          required: false
-          schema:
-            type: string
+      - name: q
+        in: query
+        description: A search query string
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Maximum number of items to return (default: 100, max: 1000)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
+      - name: offset
+        in: query
+        description: "The index of the first item to return (default: 0)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+      - name: sort
+        in: query
+        description: "Sort expression. Supports one or more fields, optionally prefixed\
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           description: List of asset types
@@ -796,10 +788,9 @@ paths:
                 $ref: "#/components/schemas/ErrorResponse"
     post:
       tags:
-        - Asset Types
+      - Asset Types
       summary: List asset types with advanced filtering
-      description:
-        Returns all asset types from an organization with advanced filtering
+      description: Returns all asset types from an organization with advanced filtering
         options
       operationId: listAssetTypesPost
       requestBody:
@@ -830,7 +821,7 @@ paths:
   /v0/asset_type/delete:
     post:
       tags:
-        - Asset Types
+      - Asset Types
       summary: Delete an asset type
       description: Deletes the specified asset type by its ID
       operationId: deleteAssetType
@@ -865,7 +856,7 @@ paths:
   /v0/asset_type/create:
     post:
       tags:
-        - Asset Types
+      - Asset Types
       summary: Create a new asset type
       description: Adds new entity type
       operationId: createAssetType
@@ -897,7 +888,7 @@ paths:
   /v0/asset_link/update:
     post:
       tags:
-        - Asset Links
+      - Asset Links
       summary: Update an existing link
       description: Updates the information of an existing asset link
       operationId: updateAssetLink
@@ -932,7 +923,7 @@ paths:
   /v0/asset_link/set:
     post:
       tags:
-        - Asset Links
+      - Asset Links
       summary: Assign asset to a link
       description: Binds an asset to the specified asset link
       operationId: setAssetLink
@@ -967,7 +958,7 @@ paths:
   /v0/asset_link/remove:
     post:
       tags:
-        - Asset Links
+      - Asset Links
       summary: Unassign asset from a link
       description: Removes an asset from a specified asset link.
       operationId: removeAssetLink
@@ -1002,42 +993,41 @@ paths:
   /v0/asset_link/list:
     get:
       tags:
-        - Asset Links
+      - Asset Links
       summary: List links
       description: Returns all asset links available to the organization
       operationId: listAssetLinks
       parameters:
-        - name: q
-          in: query
-          description: A search query string
-          required: false
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: "Maximum number of items to return (default: 100, max: 1000)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            exclusiveMinimum: 0
-            maximum: 1000
-        - name: offset
-          in: query
-          description: "The index of the first item to return (default: 0)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            minimum: 0
-        - name: sort
-          in: query
-          description:
-            "Sort expression. Supports one or more fields, optionally prefixed\
-            \ with `-` to indicate descending order. For example, `label,-created_at`"
-          required: false
-          schema:
-            type: string
+      - name: q
+        in: query
+        description: A search query string
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Maximum number of items to return (default: 100, max: 1000)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
+      - name: offset
+        in: query
+        description: "The index of the first item to return (default: 0)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+      - name: sort
+        in: query
+        description: "Sort expression. Supports one or more fields, optionally prefixed\
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           description: List of links
@@ -1059,10 +1049,9 @@ paths:
                 $ref: "#/components/schemas/ErrorResponse"
     post:
       tags:
-        - Asset Links
+      - Asset Links
       summary: List links with advanced filtering
-      description:
-        Returns all asset links available to the organization with advanced
+      description: Returns all asset links available to the organization with advanced
         filtering options
       operationId: listAssetLinksPost
       requestBody:
@@ -1093,7 +1082,7 @@ paths:
   /v0/asset_link/delete:
     post:
       tags:
-        - Asset Links
+      - Asset Links
       summary: Delete an link
       description: Deletes the specified asset link by its ID
       operationId: deleteAssetLink
@@ -1128,7 +1117,7 @@ paths:
   /v0/asset_link/create:
     post:
       tags:
-        - Asset Links
+      - Asset Links
       summary: Create a new link
       description: Adds a new asset link for the organization
       operationId: createAssetLink
@@ -1160,7 +1149,7 @@ paths:
   /v0/asset/update:
     post:
       tags:
-        - Assets
+      - Assets
       summary: Update an existing asset
       description: Updates the information of an existing asset
       operationId: updateAsset
@@ -1195,42 +1184,41 @@ paths:
   /v0/asset/list:
     get:
       tags:
-        - Assets
+      - Assets
       summary: List assets
       description: Returns all assets available to the organization
       operationId: listAssets
       parameters:
-        - name: q
-          in: query
-          description: A search query string
-          required: false
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: "Maximum number of items to return (default: 100, max: 1000)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            exclusiveMinimum: 0
-            maximum: 1000
-        - name: offset
-          in: query
-          description: "The index of the first item to return (default: 0)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            minimum: 0
-        - name: sort
-          in: query
-          description:
-            "Sort expression. Supports one or more fields, optionally prefixed\
-            \ with `-` to indicate descending order. For example, `label,-created_at`"
-          required: false
-          schema:
-            type: string
+      - name: q
+        in: query
+        description: A search query string
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Maximum number of items to return (default: 100, max: 1000)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
+      - name: offset
+        in: query
+        description: "The index of the first item to return (default: 0)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+      - name: sort
+        in: query
+        description: "Sort expression. Supports one or more fields, optionally prefixed\
+          \ with `-` to indicate descending order. For example, `label,-created_at`"
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           description: List of assets
@@ -1252,10 +1240,9 @@ paths:
                 $ref: "#/components/schemas/ErrorResponse"
     post:
       tags:
-        - Assets
+      - Assets
       summary: List assets with advanced filtering
-      description:
-        Returns all assets available to the organization with advanced
+      description: Returns all assets available to the organization with advanced
         filtering options
       operationId: listAssetsPost
       requestBody:
@@ -1286,7 +1273,7 @@ paths:
   /v0/asset/delete:
     post:
       tags:
-        - Assets
+      - Assets
       summary: Delete an asset
       description: Deletes the specified asset by its ID
       operationId: deleteAsset
@@ -1321,7 +1308,7 @@ paths:
   /v0/asset/create:
     post:
       tags:
-        - Assets
+      - Assets
       summary: Create a new asset
       description: Adds an asset for the organization
       operationId: createAsset
@@ -1353,18 +1340,18 @@ paths:
   /v0/inventory_item/slave/read:
     get:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Get slave item by ID
       description: Returns a slave item's data by ID
       operationId: readSlave
       parameters:
-        - name: id
-          in: query
-          required: true
-          schema:
-            type: integer
-            format: int64
-            exclusiveMinimum: 0
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Inventory item details
@@ -1393,18 +1380,18 @@ paths:
   /v0/inventory_item/master/read:
     get:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: Get master item by ID
       description: Returns a master item's data by ID
       operationId: readMaster
       parameters:
-        - name: id
-          in: query
-          required: true
-          schema:
-            type: integer
-            format: int64
-            exclusiveMinimum: 0
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Inventory item details
@@ -1433,44 +1420,42 @@ paths:
   /v0/inventory_item/master/model/list:
     get:
       tags:
-        - Inventory Items
+      - Inventory Items
       summary: List master item models
-      description:
-        Returns all master item models with their respective capabilities
+      description: Returns all master item models with their respective capabilities
         and specifications
       operationId: listMasterModels
       parameters:
-        - name: q
-          in: query
-          description: A search query string
-          required: false
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: "Maximum number of items to return (default: 100, max: 1000)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            exclusiveMinimum: 0
-            maximum: 1000
-        - name: offset
-          in: query
-          description: "The index of the first item to return (default: 0)"
-          required: false
-          schema:
-            type: integer
-            format: int32
-            minimum: 0
-        - name: sort
-          in: query
-          description:
-            "Sort expression. Supports one or more fields, optionally prefixed\
-            \ with `-` to indicate descending order. For example, `vendor,-name`"
-          required: false
-          schema:
-            type: string
+      - name: q
+        in: query
+        description: A search query string
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: "Maximum number of items to return (default: 100, max: 1000)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          exclusiveMinimum: 0
+          maximum: 1000
+      - name: offset
+        in: query
+        description: "The index of the first item to return (default: 0)"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+      - name: sort
+        in: query
+        description: "Sort expression. Supports one or more fields, optionally prefixed\
+          \ with `-` to indicate descending order. For example, `vendor,-name`"
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           description: List of master item models
@@ -1493,19 +1478,19 @@ paths:
   /v0/inventory/read:
     get:
       tags:
-        - Inventories
+      - Inventories
       summary: Get inventory by ID
       description: Returns an inventory's data by ID
       operationId: readInventory
       parameters:
-        - name: id
-          in: query
-          description: Unique identifier for the inventory
-          required: true
-          schema:
-            type: integer
-            format: int64
-            exclusiveMinimum: 0
+      - name: id
+        in: query
+        description: Unique identifier for the inventory
+        required: true
+        schema:
+          type: integer
+          format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Inventory details
@@ -1534,19 +1519,19 @@ paths:
   /v0/asset_type/read:
     get:
       tags:
-        - Asset Types
+      - Asset Types
       summary: Get asset type by ID
       description: Returns an entity type by ID
       operationId: readAssetType
       parameters:
-        - name: id
-          in: query
-          description: Unique identifier for the asset type
-          required: true
-          schema:
-            type: integer
-            format: int64
-            exclusiveMinimum: 0
+      - name: id
+        in: query
+        description: Unique identifier for the asset type
+        required: true
+        schema:
+          type: integer
+          format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Asset type details
@@ -1575,19 +1560,19 @@ paths:
   /v0/asset_link/read:
     get:
       tags:
-        - Asset Links
+      - Asset Links
       summary: Get link by ID
       description: Returns an asset link's data by ID
       operationId: readAssetLink
       parameters:
-        - name: id
-          in: query
-          description: Unique identifier for the link
-          required: true
-          schema:
-            type: integer
-            format: int64
-            exclusiveMinimum: 0
+      - name: id
+        in: query
+        description: Unique identifier for the link
+        required: true
+        schema:
+          type: integer
+          format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Link details
@@ -1616,19 +1601,19 @@ paths:
   /v0/asset/read:
     get:
       tags:
-        - Assets
+      - Assets
       summary: Get asset by ID
       description: Returns an asset's data by ID
       operationId: readAsset
       parameters:
-        - name: id
-          in: query
-          description: Unique identifier for the asset
-          required: true
-          schema:
-            type: integer
-            format: int64
-            exclusiveMinimum: 0
+      - name: id
+        in: query
+        description: Unique identifier for the asset
+        required: true
+        schema:
+          type: integer
+          format: int64
+          exclusiveMinimum: 0
       responses:
         "200":
           description: Asset details
@@ -1662,22 +1647,23 @@ components:
           type: string
           description: Error code identifier
           enum:
-            - invalid_request
-            - invalid_parameters
-            - inventory_item_already_active
-            - disabled_in_demo
-            - operation_not_permitted
-            - device_limit_exceeded
-            - asset_not_found
-            - asset_type_not_found
-            - asset_link_not_found
-            - bundle_not_found
-            - inventory_not_found
-            - inventory_item_not_found
-            - resource_already_exists
-            - asset_type_has_assets
-            - inventory_has_items
-            - unexpected_error
+          - invalid_request
+          - invalid_parameters
+          - inventory_item_already_active
+          - disabled_in_demo
+          - operation_not_permitted
+          - device_limit_exceeded
+          - invalid_jwt_token
+          - asset_not_found
+          - asset_type_not_found
+          - asset_link_not_found
+          - bundle_not_found
+          - inventory_not_found
+          - inventory_item_not_found
+          - resource_already_exists
+          - asset_type_has_assets
+          - inventory_has_items
+          - unexpected_error
         message:
           type: string
           description: Human-readable error message
@@ -1690,8 +1676,8 @@ components:
           items:
             $ref: "#/components/schemas/ValidationError"
       required:
-        - code
-        - message
+      - code
+      - message
     ValidationError:
       description: Detailed error information for specific parameters
       properties:
@@ -1702,8 +1688,8 @@ components:
           type: string
           description: Human-readable error message for this parameter
       required:
-        - message
-        - parameter
+      - message
+      - parameter
     SlaveItemUpdateRequest:
       description: Defines the request schema for `/inventory_item/slave/update`
       properties:
@@ -1732,8 +1718,8 @@ components:
           description: Unique identifier for the master item
           example: 123
       required:
-        - id
-        - label
+      - id
+      - label
     SlaveItemPairRequest:
       description: Defines the request schema for `/inventory_item/slave/pair`
       properties:
@@ -1748,59 +1734,56 @@ components:
           description: Unique identifier for the master item
           example: 123
       required:
-        - id
-        - master_id
+      - id
+      - master_id
     AndCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                $ref: "#/components/schemas/Condition"
-      description:
-        Represents a logical AND of multiple conditions. All conditions
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          conditions:
+            type: array
+            items:
+              $ref: "#/components/schemas/Condition"
+      description: Represents a logical AND of multiple conditions. All conditions
         must be true.
       example:
         type: and
         conditions:
-          - type: contains
-            field: description
-            value: active
-          - type: gt
-            field: created_at
-            value: 2025-07-12T17:00:00Z
+        - type: contains
+          field: description
+          value: active
+        - type: gt
+          field: created_at
+          value: 2025-07-12T17:00:00Z
       required:
-        - conditions
+      - conditions
     BetweenCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            field:
-              type: string
-            values:
-              type: array
-              items:
-                type: object
-              maxItems: 2
-              minItems: 2
-      description:
-        Checks if the field's value is between two values (inclusive).
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          values:
+            type: array
+            items:
+              type: object
+            maxItems: 2
+            minItems: 2
+      description: Checks if the field's value is between two values (inclusive).
         Use for numeric or date fields.
       example:
         type: between
         field: created_at
         values:
-          - 2024-01-01
-          - 2024-12-31
+        - 2024-01-01
+        - 2024-12-31
       required:
-        - field
-        - values
+      - field
+      - values
     Condition:
-      description:
-        "Represents an advanced filter condition for search queries. Supports\
+      description: "Represents an advanced filter condition for search queries. Supports\
         \ logical operators (AND, OR, NOT) and field-level comparisons (equality,\
         \ range, set membership, etc.). Conditions can be nested for complex expressions"
       discriminator:
@@ -1810,150 +1793,149 @@ components:
         field: created_at
         value: 2025-07-12T17:00:00Z
       oneOf:
-        - $ref: "#/components/schemas/AndCondition"
-        - $ref: "#/components/schemas/OrCondition"
-        - $ref: "#/components/schemas/NotCondition"
-        - $ref: "#/components/schemas/EqualsCondition"
-        - $ref: "#/components/schemas/NotEqualsCondition"
-        - $ref: "#/components/schemas/LessThanCondition"
-        - $ref: "#/components/schemas/LessThanOrEqualsCondition"
-        - $ref: "#/components/schemas/GreaterThanCondition"
-        - $ref: "#/components/schemas/GreaterThanOrEqualsCondition"
-        - $ref: "#/components/schemas/InCondition"
-        - $ref: "#/components/schemas/ContainsCondition"
-        - $ref: "#/components/schemas/BetweenCondition"
+      - $ref: "#/components/schemas/AndCondition"
+      - $ref: "#/components/schemas/OrCondition"
+      - $ref: "#/components/schemas/NotCondition"
+      - $ref: "#/components/schemas/EqualsCondition"
+      - $ref: "#/components/schemas/NotEqualsCondition"
+      - $ref: "#/components/schemas/LessThanCondition"
+      - $ref: "#/components/schemas/LessThanOrEqualsCondition"
+      - $ref: "#/components/schemas/GreaterThanCondition"
+      - $ref: "#/components/schemas/GreaterThanOrEqualsCondition"
+      - $ref: "#/components/schemas/InCondition"
+      - $ref: "#/components/schemas/ContainsCondition"
+      - $ref: "#/components/schemas/BetweenCondition"
       properties:
         type:
           type: string
       required:
-        - type
+      - type
     ContainsCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            field:
-              type: string
-            value:
-              type: string
-              minLength: 1
-      description:
-        Checks if the field contains the given substring. Useful for string
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: string
+            minLength: 1
+      description: Checks if the field contains the given substring. Useful for string
         fields.
       example:
         type: contains
         field: description
         value: active
       required:
-        - field
-        - value
+      - field
+      - value
     EqualsCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            field:
-              type: string
-            value:
-              type: object
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
       description: Checks if the field is equal to the given value.
       example:
         type: eq
         field: category
         value: business
       required:
-        - field
-        - value
+      - field
+      - value
     GreaterThanCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            field:
-              type: string
-            value:
-              type: object
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
       description: Checks if the field is greater than the given value.
       example:
         type: gt
         field: created_at
         value: 2025-07-12T17:00:00Z
       required:
-        - field
-        - value
+      - field
+      - value
     GreaterThanOrEqualsCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            field:
-              type: string
-            value:
-              type: object
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
       description: Checks if the field is greater than or equal to the given value.
       example:
         type: gte
         field: created_at
         value: 2025-07-12T17:00:00Z
       required:
-        - field
-        - value
+      - field
+      - value
     InCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            field:
-              type: string
-            values:
-              type: array
-              items:
-                type: object
-              minItems: 1
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          values:
+            type: array
+            items:
+              type: object
+            minItems: 1
       description: Checks if the field's value is within the given list of values.
       example:
         type: in
         field: model
         values:
-          - model1
-          - model2
+        - model1
+        - model2
       required:
-        - field
-        - values
+      - field
+      - values
     LessThanCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            field:
-              type: string
-            value:
-              type: object
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
       description: Checks if the field is less than the given value.
       example:
         type: lt
         field: created_at
         value: 2025-07-12T17:00:00Z
       required:
-        - field
-        - value
+      - field
+      - value
     LessThanOrEqualsCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            field:
-              type: string
-            value:
-              type: object
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
       description: Checks if the field is less than or equal to the given value.
       example:
         type: lte
         field: created_at
         value: 2025-07-12T17:00:00Z
       required:
-        - field
-        - value
+      - field
+      - value
     ListRequest:
       properties:
         q:
@@ -1961,8 +1943,7 @@ components:
           description: A search query string
         conditions:
           type: array
-          description:
-            "A list of additional filter conditions to apply to the search.\
+          description: "A list of additional filter conditions to apply to the search.\
             \ Supports various logical and comparison operators such as AND, OR, NOT,\
             \ equality, range, and set membership. Each condition specifies either\
             \ a field-level comparison or a combination of multiple conditions for\
@@ -1988,16 +1969,15 @@ components:
           description: The index of the first item to return
         sort:
           type: string
-          description:
-            "Sort expression. Supports one or more fields, optionally prefixed\
+          description: "Sort expression. Supports one or more fields, optionally prefixed\
             \ with `-` to indicate descending order. For example, `label,-created_at`"
     NotCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            condition:
-              $ref: "#/components/schemas/Condition"
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          condition:
+            $ref: "#/components/schemas/Condition"
       description: Represents a logical NOT of a condition. Negates the given condition.
       example:
         type: not
@@ -2005,51 +1985,50 @@ components:
           type: in
           field: id
           values:
-            - 12
-            - 23
-            - 45
+          - 12
+          - 23
+          - 45
       required:
-        - condition
+      - condition
     NotEqualsCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            field:
-              type: string
-            value:
-              type: object
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          field:
+            type: string
+          value:
+            type: object
       description: Checks if the field is NOT equal to the given value.
       example:
         type: neq
         field: model
         value: model1
       required:
-        - field
-        - value
+      - field
+      - value
     OrCondition:
       allOf:
-        - $ref: "#/components/schemas/Condition"
-        - type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                $ref: "#/components/schemas/Condition"
-      description:
-        Represents a logical OR of multiple conditions. At least one condition
+      - $ref: "#/components/schemas/Condition"
+      - type: object
+        properties:
+          conditions:
+            type: array
+            items:
+              $ref: "#/components/schemas/Condition"
+      description: Represents a logical OR of multiple conditions. At least one condition
         must be true.
       example:
         type: or
         conditions:
-          - type: contains
-            field: description
-            value: active
-          - type: gt
-            field: created_at
-            value: 2025-07-12T17:00:00Z
+        - type: contains
+          field: description
+          value: active
+        - type: gt
+          field: created_at
+          value: 2025-07-12T17:00:00Z
       required:
-        - conditions
+      - conditions
     InventorySlaveItem:
       description: The Inventory slave item
       properties:
@@ -2083,27 +2062,25 @@ components:
           description: Date and time at which the item was created
           example: 2025-06-30T06:46:10Z
       required:
-        - created_at
-        - id
-        - label
+      - created_at
+      - id
+      - label
     ListResponseInventorySlaveItem:
       description: Defines the response schema for `/*/list`
       properties:
         data:
           type: array
-          description:
-            "A list of items returned for the current page, based on the\
+          description: "A list of items returned for the current page, based on the\
             \ provided pagination and filter parameters"
           items:
             $ref: "#/components/schemas/InventorySlaveItem"
         has_more:
           type: boolean
-          description:
-            "Indicates whether more items are available beyond the current\
+          description: "Indicates whether more items are available beyond the current\
             \ page. When false, the current result set is the final one"
       required:
-        - data
-        - has_more
+      - data
+      - has_more
     IdRequest:
       properties:
         id:
@@ -2111,7 +2088,7 @@ components:
           format: int64
           description: Unique identifier for the recourse
       required:
-        - id
+      - id
     SlaveItemCreateRequest:
       description: Defines the request schema for `/inventory_item/slave/create`
       properties:
@@ -2135,7 +2112,7 @@ components:
           description: Unique identifier for the master item
           example: 123
       required:
-        - label
+      - label
     IdResponse:
       description: Response containing the unique identifier of the created resource
       example:
@@ -2146,7 +2123,7 @@ components:
           format: int64
           description: Unique identifier for the created resource
       required:
-        - id
+      - id
     MasterItemUpdateRequest:
       description: Defines the request schema for `/inventory_item/master/update`
       properties:
@@ -2167,8 +2144,7 @@ components:
           pattern: "[-a-z0-9_]{1,255}"
         device_id:
           type: string
-          description:
-            The server uses a unique identifier assigned to the device
+          description: The server uses a unique identifier assigned to the device
             to authenticate and distinguish incoming data from different devices
           example: "123456789012345"
           pattern: "^[0-9a-zA-Z\\-]{1,64}$"
@@ -2182,8 +2158,8 @@ components:
           description: Unique asset identifier for linking
           example: 21
       required:
-        - id
-        - label
+      - id
+      - label
     InventoryMasterItem:
       description: The Inventory master item
       properties:
@@ -2199,8 +2175,7 @@ components:
           example: 12
         device_id:
           type: string
-          description:
-            The server uses a unique identifier assigned to the device
+          description: The server uses a unique identifier assigned to the device
             to authenticate and distinguish incoming data from different devices
           example: "123456789012345"
         label:
@@ -2222,27 +2197,25 @@ components:
           description: Date and time at which the item was created
           example: 2025-06-30T06:46:10Z
       required:
-        - created_at
-        - id
-        - label
+      - created_at
+      - id
+      - label
     ListResponseInventoryMasterItem:
       description: Defines the response schema for `/*/list`
       properties:
         data:
           type: array
-          description:
-            "A list of items returned for the current page, based on the\
+          description: "A list of items returned for the current page, based on the\
             \ provided pagination and filter parameters"
           items:
             $ref: "#/components/schemas/InventoryMasterItem"
         has_more:
           type: boolean
-          description:
-            "Indicates whether more items are available beyond the current\
+          description: "Indicates whether more items are available beyond the current\
             \ page. When false, the current result set is the final one"
       required:
-        - data
-        - has_more
+      - data
+      - has_more
     MasterItemCreateRequest:
       description: Defines the request schema for `/inventory_item/master/create`
       properties:
@@ -2258,8 +2231,7 @@ components:
           pattern: "[-a-z0-9_]{1,255}"
         device_id:
           type: string
-          description:
-            The server uses a unique identifier assigned to the device
+          description: The server uses a unique identifier assigned to the device
             to authenticate and distinguish incoming data from different devices
           example: "123456789012345"
           pattern: "^[0-9a-zA-Z\\-]{1,64}$"
@@ -2273,7 +2245,7 @@ components:
           description: Unique asset identifier for linking
           example: 21
       required:
-        - label
+      - label
     MasterItemActivateRequest:
       description: Defines the request schema for `/inventory_item/master/activate`
       properties:
@@ -2289,16 +2261,14 @@ components:
           pattern: "[-a-z0-9_]{1,255}"
         device_id:
           type: string
-          description:
-            The server uses a unique identifier assigned to the device
+          description: The server uses a unique identifier assigned to the device
             to authenticate and distinguish incoming data from different devices
           example: "123456789012345"
           pattern: "^[0-9a-zA-Z\\-]{1,64}$"
         activation_method_id:
           type: integer
           format: int32
-          description:
-            Unique identifier of one of the authentication methods supported
+          description: Unique identifier of one of the authentication methods supported
             by the model. See `inventory_item/master/model/list`
         fields:
           type: object
@@ -2308,8 +2278,7 @@ components:
               Combined set of field values needed for model activation, including:
               - Model-specific parameters
               - Activation-method-specific parameters
-            example:
-              "{\"iridium_modem_imei\":\"123456789012345\",\"activation_code\"\
+            example: "{\"iridium_modem_imei\":\"123456789012345\",\"activation_code\"\
               :\"123\"}"
           description: |-
             Combined set of field values needed for model activation, including:
@@ -2319,9 +2288,9 @@ components:
             iridium_modem_imei: "123456789012345"
             activation_code: "123"
       required:
-        - activation_method_id
-        - fields
-        - id
+      - activation_method_id
+      - fields
+      - id
     InventoryUpdateRequest:
       properties:
         id:
@@ -2338,9 +2307,9 @@ components:
           description: The detailed inventory description
           example: Dutch branch office
       required:
-        - description
-        - id
-        - label
+      - description
+      - id
+      - label
     Inventory:
       description: The Inventory object
       properties:
@@ -2363,27 +2332,25 @@ components:
           description: Date and time at which the inventory was created
           example: 2025-06-30T06:46:10Z
       required:
-        - created_at
-        - id
-        - label
+      - created_at
+      - id
+      - label
     ListResponseInventory:
       description: Defines the response schema for `/*/list`
       properties:
         data:
           type: array
-          description:
-            "A list of items returned for the current page, based on the\
+          description: "A list of items returned for the current page, based on the\
             \ provided pagination and filter parameters"
           items:
             $ref: "#/components/schemas/Inventory"
         has_more:
           type: boolean
-          description:
-            "Indicates whether more items are available beyond the current\
+          description: "Indicates whether more items are available beyond the current\
             \ page. When false, the current result set is the final one"
       required:
-        - data
-        - has_more
+      - data
+      - has_more
     DeleteRequest:
       properties:
         id:
@@ -2393,12 +2360,11 @@ components:
           example: 42
         force:
           type: boolean
-          description:
-            "If true, forces deletion even if the resource has related\
+          description: "If true, forces deletion even if the resource has related\
             \ objects or dependencies"
       required:
-        - force
-        - id
+      - force
+      - id
     InventoryCreateRequest:
       properties:
         label:
@@ -2410,8 +2376,8 @@ components:
           description: The detailed inventory description
           example: Dutch branch office
       required:
-        - description
-        - label
+      - description
+      - label
     AssetSettings:
       description: Describes the layout of sections and fields for the entity type
       properties:
@@ -2433,33 +2399,31 @@ components:
           type: string
           description: The category of asset type
           enum:
-            - business
-            - geo
+          - business
+          - geo
         settings:
           $ref: "#/components/schemas/AssetSettings"
         fields:
           type: array
-          description:
-            A list of custom fields of the asset type. The 'label' of each
+          description: A list of custom fields of the asset type. The 'label' of each
             field must be unique within the list
           example:
-            - type: text
-              label: Text field
-              required: true
-            - type: decimal
-              label: Number field
-              required: false
+          - type: text
+            label: Text field
+            required: true
+          - type: decimal
+            label: Number field
+            required: false
           items:
             $ref: "#/components/schemas/CustomField"
       required:
-        - category
-        - fields
-        - id
-        - label
-        - settings
+      - category
+      - fields
+      - id
+      - label
+      - settings
     CustomField:
-      description:
-        "Used to add custom information to assets, allowing for enhanced\
+      description: "Used to add custom information to assets, allowing for enhanced\
         \ customization and data management"
       discriminator:
         propertyName: type
@@ -2480,19 +2444,18 @@ components:
         type:
           type: string
           enum:
-            - text
-            - bigtext
-            - decimal
-            - integer
-            - master_item
-            - geojson
+          - text
+          - bigtext
+          - decimal
+          - integer
+          - master_item
+          - geojson
       required:
-        - label
-        - required
-        - type
+      - label
+      - required
+      - type
     Layout:
-      description:
-        "Defines how the asset form is split into logical sections, and\
+      description: "Defines how the asset form is split into logical sections, and\
         \ the order of fields within each section"
       properties:
         sections:
@@ -2502,10 +2465,9 @@ components:
           maxItems: 64
           minItems: 0
       required:
-        - sections
+      - sections
     Section:
-      description:
-        "Describes a logical section in the asset form, including its label\
+      description: "Describes a logical section in the asset form, including its label\
         \ and the list of fields to display in order"
       properties:
         label:
@@ -2514,24 +2476,22 @@ components:
           example: "Section #1"
         fields:
           type: array
-          description:
-            List of field keys to be displayed in the specified order within
+          description: List of field keys to be displayed in the specified order within
             this section
           example:
-            - label
-            - Text field
-            - Number field
+          - label
+          - Text field
+          - Number field
           items:
             type: string
-            description:
-              List of field keys to be displayed in the specified order
+            description: List of field keys to be displayed in the specified order
               within this section
-            example: '["label","Text field","Number field"]'
+            example: "[\"label\",\"Text field\",\"Number field\"]"
           maxItems: 64
           minItems: 0
       required:
-        - fields
-        - label
+      - fields
+      - label
     AssetType:
       description: The Asset type
       properties:
@@ -2548,20 +2508,20 @@ components:
           type: string
           description: The category of asset type
           enum:
-            - business
-            - geo
+          - business
+          - geo
         settings:
           $ref: "#/components/schemas/AssetSettings"
         fields:
           type: array
           description: A list of custom fields of the asset type
           example:
-            - type: text
-              label: Text field
-              required: true
-            - type: decimal
-              label: Number field
-              required: false
+          - type: text
+            label: Text field
+            required: true
+          - type: decimal
+            label: Number field
+            required: false
           items:
             $ref: "#/components/schemas/CustomField"
         created_at:
@@ -2570,29 +2530,27 @@ components:
           description: Date and time at which the asset type was created
           example: 2025-06-30T06:46:10Z
       required:
-        - category
-        - created_at
-        - fields
-        - id
-        - label
+      - category
+      - created_at
+      - fields
+      - id
+      - label
     ListResponseAssetType:
       description: Defines the response schema for `/*/list`
       properties:
         data:
           type: array
-          description:
-            "A list of items returned for the current page, based on the\
+          description: "A list of items returned for the current page, based on the\
             \ provided pagination and filter parameters"
           items:
             $ref: "#/components/schemas/AssetType"
         has_more:
           type: boolean
-          description:
-            "Indicates whether more items are available beyond the current\
+          description: "Indicates whether more items are available beyond the current\
             \ page. When false, the current result set is the final one"
       required:
-        - data
-        - has_more
+      - data
+      - has_more
     AssetTypeCreateRequest:
       description: Defines the request schema for `/asset_type/create`
       properties:
@@ -2604,29 +2562,28 @@ components:
           type: string
           description: The category of asset type
           enum:
-            - business
-            - geo
+          - business
+          - geo
         settings:
           $ref: "#/components/schemas/AssetSettings"
         fields:
           type: array
-          description:
-            A list of custom fields of the asset type. The 'label' of each
+          description: A list of custom fields of the asset type. The 'label' of each
             field must be unique within the list
           example:
-            - type: text
-              label: Text field
-              required: true
-            - type: decimal
-              label: Number field
-              required: false
+          - type: text
+            label: Text field
+            required: true
+          - type: decimal
+            label: Number field
+            required: false
           items:
             $ref: "#/components/schemas/CustomField"
       required:
-        - category
-        - fields
-        - label
-        - settings
+      - category
+      - fields
+      - label
+      - settings
     AssetLinkUpdateRequest:
       description: Defines the request schema for `/asset_link/update`
       properties:
@@ -2647,8 +2604,8 @@ components:
             format: int64
             description: The assets of this link
       required:
-        - id
-        - label
+      - id
+      - label
     AssetLinks2AssetRequest:
       description: Defines the request schema for `/asset_link/set` and `/asset_link/remove`
       properties:
@@ -2663,8 +2620,8 @@ components:
           description: Unique identifier for the asset
           example: 21
       required:
-        - asset_id
-        - link_id
+      - asset_id
+      - link_id
     AssetLink:
       description: The Asset link
       properties:
@@ -2690,28 +2647,26 @@ components:
           description: Date and time at which the asset link was created
           example: 2025-06-30T06:46:10Z
       required:
-        - asset_ids
-        - created_at
-        - id
-        - label
+      - asset_ids
+      - created_at
+      - id
+      - label
     ListResponseAssetLink:
       description: Defines the response schema for `/*/list`
       properties:
         data:
           type: array
-          description:
-            "A list of items returned for the current page, based on the\
+          description: "A list of items returned for the current page, based on the\
             \ provided pagination and filter parameters"
           items:
             $ref: "#/components/schemas/AssetLink"
         has_more:
           type: boolean
-          description:
-            "Indicates whether more items are available beyond the current\
+          description: "Indicates whether more items are available beyond the current\
             \ page. When false, the current result set is the final one"
       required:
-        - data
-        - has_more
+      - data
+      - has_more
     AssetLinkCreateRequest:
       description: Defines the request schema for `/asset_link/create`
       properties:
@@ -2727,8 +2682,8 @@ components:
             format: int64
             description: The assets of this link
       required:
-        - asset_ids
-        - label
+      - asset_ids
+      - label
     AssetUpdateRequest:
       description: Defines the request schema for `/asset/update`
       properties:
@@ -2752,29 +2707,27 @@ components:
               type: text
               value: I love text!
       required:
-        - fields
-        - id
-        - label
+      - fields
+      - id
+      - label
     BigTextFieldValue:
       allOf:
-        - $ref: "#/components/schemas/CustomFieldValue"
-        - type: object
-          properties:
-            value:
-              type: string
-      description:
-        Represents a custom field containing a large text value (for storing
+      - $ref: "#/components/schemas/CustomFieldValue"
+      - type: object
+        properties:
+          value:
+            type: string
+      description: Represents a custom field containing a large text value (for storing
         long user input or multi-line content)
       example:
         type: bigtext
         value: Longer text or content spanning multiple lines...
       required:
-        - type
-        - value
+      - type
+      - value
     CustomFieldValue:
       default: {}
-      description:
-        "Base type for custom field values. Implements different field\
+      description: "Base type for custom field values. Implements different field\
         \ types: text, numeric, master item, GeoJSON. Each object contains a 'type'\
         \ field that defines the specific value format"
       discriminator:
@@ -2783,114 +2736,112 @@ components:
         type: text
         value: Example text
       oneOf:
-        - $ref: "#/components/schemas/TextFieldValue"
-        - $ref: "#/components/schemas/BigTextFieldValue"
-        - $ref: "#/components/schemas/DecimalFieldValue"
-        - $ref: "#/components/schemas/IntegerFieldValue"
-        - $ref: "#/components/schemas/MasterItemFieldValue"
-        - $ref: "#/components/schemas/GeoJsonFieldValue"
+      - $ref: "#/components/schemas/TextFieldValue"
+      - $ref: "#/components/schemas/BigTextFieldValue"
+      - $ref: "#/components/schemas/DecimalFieldValue"
+      - $ref: "#/components/schemas/IntegerFieldValue"
+      - $ref: "#/components/schemas/MasterItemFieldValue"
+      - $ref: "#/components/schemas/GeoJsonFieldValue"
       properties:
         type:
           type: string
           enum:
-            - text
-            - bigtext
-            - decimal
-            - integer
-            - master_item
-            - geojson
+          - text
+          - bigtext
+          - decimal
+          - integer
+          - master_item
+          - geojson
       required:
-        - type
+      - type
     DecimalFieldValue:
       allOf:
-        - $ref: "#/components/schemas/CustomFieldValue"
-        - type: object
-          properties:
-            value:
-              type: number
+      - $ref: "#/components/schemas/CustomFieldValue"
+      - type: object
+        properties:
+          value:
+            type: number
       description: Represents a custom field containing a decimal (fixed-point) value
       example:
         type: decimal
         value: 123.45
       required:
-        - type
-        - value
+      - type
+      - value
     GeoJsonFieldValue:
       allOf:
-        - $ref: "#/components/schemas/CustomFieldValue"
-        - type: object
-          properties:
-            value:
-              $ref: "#/components/schemas/JsonNode"
-      description:
-        "Represents a custom field with a GeoJSON value (geometry, feature\
+      - $ref: "#/components/schemas/CustomFieldValue"
+      - type: object
+        properties:
+          value:
+            $ref: "#/components/schemas/JsonNode"
+      description: "Represents a custom field with a GeoJSON value (geometry, feature\
         \ or feature collection)"
       example:
         type: geojson
         value:
           type: Point
           coordinates:
-            - 30.0
-            - 10.0
+          - 30.0
+          - 10.0
       required:
-        - type
-        - value
+      - type
+      - value
     IntegerFieldValue:
       allOf:
-        - $ref: "#/components/schemas/CustomFieldValue"
-        - type: object
-          properties:
-            value:
-              type: integer
-              format: int64
+      - $ref: "#/components/schemas/CustomFieldValue"
+      - type: object
+        properties:
+          value:
+            type: integer
+            format: int64
       description: Represents a custom field containing an integer value
       example:
         type: integer
         value: 100
       required:
-        - type
-        - value
+      - type
+      - value
     JsonNode:
       description: GeoJSON object
       example:
         type: Point
         coordinates:
-          - 37.7749
-          - -122.4194
+        - 37.7749
+        - -122.4194
       externalDocs:
         description: GeoJSON Specification
         url: https://tools.ietf.org/html/rfc7946
     MasterItemFieldValue:
       allOf:
-        - $ref: "#/components/schemas/CustomFieldValue"
-        - type: object
-          properties:
-            value:
-              type: integer
-              format: int64
-      description:
-        Represents a custom field referencing master item (by its unique
+      - $ref: "#/components/schemas/CustomFieldValue"
+      - type: object
+        properties:
+          value:
+            type: integer
+            format: int64
+      description: Represents a custom field referencing master item (by its unique
         id)
       example:
         type: master_item
         value: 1234
       required:
-        - type
-        - value
+      - type
+      - value
     TextFieldValue:
       allOf:
-        - $ref: "#/components/schemas/CustomFieldValue"
-        - type: object
-          properties:
-            value:
-              type: string
+      - $ref: "#/components/schemas/CustomFieldValue"
+      - type: object
+        properties:
+          value:
+            type: string
       description: Represents a custom field containing a short text value
       example:
         type: text
         value: Example text
       required:
-        - type
-        - value
+      - type
+      - value
     Asset:
       description: The Asset object
       properties:
@@ -2923,29 +2874,27 @@ components:
           description: Date and time at which the asset was created
           example: 2025-06-30T06:46:10Z
       required:
-        - created_at
-        - fields
-        - id
-        - label
-        - type_id
+      - created_at
+      - fields
+      - id
+      - label
+      - type_id
     ListResponseAsset:
       description: Defines the response schema for `/*/list`
       properties:
         data:
           type: array
-          description:
-            "A list of items returned for the current page, based on the\
+          description: "A list of items returned for the current page, based on the\
             \ provided pagination and filter parameters"
           items:
             $ref: "#/components/schemas/Asset"
         has_more:
           type: boolean
-          description:
-            "Indicates whether more items are available beyond the current\
+          description: "Indicates whether more items are available beyond the current\
             \ page. When false, the current result set is the final one"
       required:
-        - data
-        - has_more
+      - data
+      - has_more
     AssetCreateRequest:
       description: Defines the request schema for `/asset/create`
       properties:
@@ -2969,9 +2918,9 @@ components:
               type: text
               value: I love text!
       required:
-        - fields
-        - label
-        - type_id
+      - fields
+      - label
+      - type_id
     ActivationField:
       description: Describes a field required for device activation
       properties:
@@ -2991,10 +2940,10 @@ components:
           description: A regular expression used to validate the field's value
           example: "\\d{15}"
       required:
-        - field
-        - optional
-        - pattern
-        - title
+      - field
+      - optional
+      - pattern
+      - title
     ActivationMethod:
       description: Represents an available method for activating the device
       properties:
@@ -3012,17 +2961,16 @@ components:
           items:
             $ref: "#/components/schemas/ActivationField"
       required:
-        - id
-        - method_fields
-        - title
+      - id
+      - method_fields
+      - title
     Communication:
       description: Represents the communication settings supported by the model
       properties:
         port:
           type: integer
           format: int32
-          description:
-            "The network port used for device communication. Can be null\
+          description: "The network port used for device communication. Can be null\
             \ if the model does not support anything, or if it supports multiple connection\
             \ types, the details will be in the `protocols` field"
           example: 47776
@@ -3036,28 +2984,25 @@ components:
               description: A list of protocol types
           description: A list of protocol types
       required:
-        - protocols
+      - protocols
     ListResponseMasterItemModel:
       description: Defines the response schema for `/*/list`
       properties:
         data:
           type: array
-          description:
-            "A list of items returned for the current page, based on the\
+          description: "A list of items returned for the current page, based on the\
             \ provided pagination and filter parameters"
           items:
             $ref: "#/components/schemas/MasterItemModel"
         has_more:
           type: boolean
-          description:
-            "Indicates whether more items are available beyond the current\
+          description: "Indicates whether more items are available beyond the current\
             \ page. When false, the current result set is the final one"
       required:
-        - data
-        - has_more
+      - data
+      - has_more
     MasterItemModel:
-      description:
-        "Represents a supported device model with supported communication\
+      description: "Represents a supported device model with supported communication\
         \ types, and activation fields and methods"
       properties:
         code:
@@ -3074,8 +3019,7 @@ components:
           example: FMB125
         device_id_pattern:
           type: string
-          description:
-            "A regular expression used to validate the device id. If `device_id_pattern`\
+          description: "A regular expression used to validate the device id. If `device_id_pattern`\
             \ is not set, the `device_id` field is not required"
           example: "\\d{15}"
         communication:
@@ -3087,43 +3031,43 @@ components:
             $ref: "#/components/schemas/ActivationField"
         activation_methods:
           type: array
-          description:
-            List of available activation methods that can be used with
+          description: List of available activation methods that can be used with
             this model
           items:
             $ref: "#/components/schemas/ActivationMethod"
       required:
-        - activation_methods
-        - base_activation_fields
-        - code
-        - communication
-        - name
-        - vendor
+      - activation_methods
+      - base_activation_fields
+      - code
+      - communication
+      - name
+      - vendor
   securitySchemes:
     OAuth2_EU:
       type: oauth2
-      description: "OAuth 2.0 authentication for Europe. Use this for users based in Europe and adjacent regions."
+      description: |-
+        OAuth 2.0 authentication for Europe. Use this for users based in Europe and adjacent regions.
+        Revoke URL: https://keycloak.navixy.com/realms/users/protocol/openid-connect/revoke
       flows:
-        clientCredentials:
-          tokenUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/token
-          scopes: {}
         authorizationCode:
           authorizationUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/auth
           tokenUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/token
           refreshUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/token
-          scopes: {}
+          scopes:
+            openid: OpenID Connect scope
+            profile: Basic user profile
+            email: User e-mail address
     OAuth2_US:
       type: oauth2
-      description: "OAuth 2.0 authentication for Americas region. Use this for users based in North and South America."
+      description: |-
+        OAuth 2.0 authentication for Americas region. Use this for users based in North and South America.
+        Revoke URL: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/revoke
       flows:
-        clientCredentials:
-          tokenUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/token
-          scopes: {}
         authorizationCode:
           authorizationUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/auth
           tokenUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/token
           refreshUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/token
-          scopes: {}
-security:
-  - OAuth2_EU: []
-  - OAuth2_US: []
+          scopes:
+            openid: OpenID Connect scope
+            profile: Basic user profile
+            email: User e-mail address
