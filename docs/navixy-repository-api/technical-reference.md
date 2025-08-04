@@ -6,6 +6,8 @@ Navixy Repository API is available on multiple regional platforms to optimize pe
 
 #### Base URLs
 
+URLs are given with the current API version number. See [Versioning](technical-reference.md#versioning) for more information about the numbering system.
+
 <table><thead><tr><th width="182.60003662109375">Region</th><th width="312.4000244140625">Base URL</th><th>Data Location</th></tr></thead><tbody><tr><td>Europe</td><td><code>https://api.navixy.com/repo/v0</code></td><td>European data centers</td></tr><tr><td>Americas</td><td><code>https://api.us.navixy.com/repo/v0</code></td><td>US-based data centers</td></tr></tbody></table>
 
 #### Environment selection
@@ -49,7 +51,7 @@ The API follows the **OpenAPI** **standard** with full CRUD for each object type
 
 **Example:**
 
-```
+```bash
 GET https://api.navixy.com/repo/v0/inventory/read?id=123
 ```
 
@@ -80,7 +82,7 @@ All API responses follow a consistent JSON format:
 * **Error responses** provide detailed error information in the JSON body
 * **List responses** include pagination metadata when applicable
 
-**Example of a paginated response:**
+**Example schema of a paginated response:**
 
 ```json
 {
@@ -256,7 +258,7 @@ Explore the full structure of Navixy Repository API using the OpenAPI standard.
 * Import the definition into OpenAPI-based API documentation & testing tools.
 * Perfect for documentation readers who want to explore and test endpoints without manual setup if the built-in documentation tools are insufficient for your specific needs
 
-You can view the OpenAPI specification [here](resources/navixy-repo-api-specification.yaml).
+You can view the current version of the OpenAPI specification [here](resources/navixy-repo-api-specification.yaml).
 
 #### Postman
 
