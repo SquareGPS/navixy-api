@@ -23,6 +23,26 @@ All API requests are automatically scoped to your organization. Your access toke
 3. All operations are restricted to your organization's resources.
 4. No manual organization specification is required in API calls.
 
+### OAuth 2.0 Scopes
+
+Navixy Repository API uses standard OpenID Connect scopes for authentication and authorization. When requesting an access token, you can specify one or more of the following scopes:
+
+<table><thead><tr><th width="166.79998779296875">Scope</th><th>Description</th></tr></thead><tbody><tr><td><code>openid</code></td><td><strong>Required for OpenID Connect authentication.</strong> This scope enables the authentication flow and allows the API to verify your identity. Include this scope in all authentication requests.</td></tr><tr><td><code>profile</code></td><td><strong>Access to basic user profile information.</strong> Grants access to standard profile claims such as name, preferred username, and other non-sensitive profile data associated with your account.</td></tr><tr><td><code>email</code></td><td><strong>Access to user email address.</strong> Provides access to the user's verified email address. This scope is useful for account identification and communication purposes.</td></tr></tbody></table>
+
+Example authorization request:
+
+```bash
+curl -X GET "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
+  --data-urlencode 'scope=openid profile email'
+```
+
+Important notes:
+
+* The `openid` scope is mandatory for all authentication flows
+* Multiple scopes should be separated by spaces when passed as URL parameters
+* All API operations are automatically scoped to your organization — no additional API-specific scopes are required
+* Requested scopes will be included in the access token and determine what user information is available through the token introspection
+
 ### Acquiring an access token
 
 Navixy Repository API supports the OAuth2 Authorization Code Flow.
