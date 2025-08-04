@@ -3112,7 +3112,7 @@ components:
       type: oauth2
       description: |-
         OAuth 2.0 authentication for Europe. Use this for users based in Europe and adjacent regions.
-        Revoke URL: https://keycloak.navixy.com/realms/users/protocol/openid-connect/revoke
+      x-revoke-url: https://keycloak.navixy.com/realms/users/protocol/openid-connect/revoke
       flows:
         authorizationCode:
           authorizationUrl: https://keycloak.navixy.com/realms/users/protocol/openid-connect/auth
@@ -3126,7 +3126,7 @@ components:
       type: oauth2
       description: |-
         OAuth 2.0 authentication for Americas region. Use this for users based in North and South America.
-        Revoke URL: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/revoke
+      x-revoke-url: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/revoke
       flows:
         authorizationCode:
           authorizationUrl: https://keycloak.us.navixy.com/realms/users/protocol/openid-connect/auth
