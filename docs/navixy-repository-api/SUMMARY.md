@@ -12,9 +12,9 @@
 
 ## Endpoint reference
 
-* [API Reference](endpoint-reference/api-reference.md)
-* [Inventory](endpoint-reference/inventory.md)
-* [Inventory item](endpoint-reference/inventory-item.md)
-* [Asset](endpoint-reference/asset.md)
-* [Asset type](endpoint-reference/asset-type.md)
-* [Asset link](endpoint-reference/asset-link.md)
+* [API reference](endpoint-reference/api-reference/README.md)
+  * [Inventory](endpoint-reference/api-reference/inventory.md)
+  * [Inventory item](endpoint-reference/api-reference/inventory-item.md)
+  * [Asset](endpoint-reference/api-reference/asset.md)
+  * [Asset type](endpoint-reference/api-reference/asset-type.md)
+  * [Asset link](endpoint-reference/api-reference/asset-link.md)

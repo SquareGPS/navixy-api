@@ -1,6 +1,10 @@
-# API Reference
+# API reference
 
 Navixy Repository API is a powerful asset management system that enables you to create fully customized trackable assets with any properties you need, assign GPS devices to make them location-aware, and establish relationships between assets to model your exact business operations.
+
+### Overview
+
+This document is a reference sheet for Navixy Repository API. It briefly outlines authentication, server URLs, and endpoint names, methods, and parameters. For a detailed description of endpoints, grouped by resource, see their dedicated pages nested inside this article.
 
 ### Authentication
 
@@ -10,7 +14,7 @@ All API requests require OAuth 2.0 Bearer authentication. Include your access to
 Authorization: Bearer <ACCESS_TOKEN>
 ```
 
-For a detailed authentication flow, see [Authentication](../authentication.md).
+For a detailed authentication flow, see [Authentication](../../authentication.md).
 
 ### URLs
 

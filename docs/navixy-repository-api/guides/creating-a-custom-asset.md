@@ -117,7 +117,7 @@ The **`fields`** key is an array of custom field objects used to add user-create
 </details>
 
 {% hint style="danger" %}
-If you remove a custom field from an asset type via [**asset\_type/update**](../endpoint-reference/asset-type.md#post-v0-asset_type-update), all assets based on this type will lose this field. If you add a new field marked as required, you will need to add values for that field to the assets.
+If you remove a custom field from an asset type via [**asset\_type/update**](../endpoint-reference/api-reference/asset-type.md#post-v0-asset_type-update), all assets based on this type will lose this field. If you add a new field marked as required, you will need to add values for that field to the assets.
 {% endhint %}
 
 After sending the request, you will receive a response with the ID of the newly created asset type:
@@ -266,7 +266,7 @@ This flexibility allows you to pre-create devices in inventory before assets exi
 
 **Assign to an existing device**
 
-If your device is already activated, send the following request (let's assume you have a master-type item called  `GPS Tracker 446` with id of `123` ).
+If your device is already activated, send the following request (let's assume you have a master-type item called `GPS Tracker 446` with id of `123` ).
 
 ```json
 curl -X POST {BASE_URL}/inventory_item/master/update \
