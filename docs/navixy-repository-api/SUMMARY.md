@@ -9,9 +9,11 @@
   * [Creating a custom asset](guides/creating-a-custom-asset.md)
   * [Configuring an asset link](guides/configuring-an-asset-link.md)
   * [Flexible resource management patterns](guides/flexible-resource-management-patterns.md)
-* [Endpoint reference](endpoint-reference/README.md)
-  * [Inventory](endpoint-reference/inventory.md)
-  * [Inventory item](endpoint-reference/inventory-item.md)
-  * [Asset](endpoint-reference/asset.md)
-  * [Asset type](endpoint-reference/asset-type.md)
-  * [Asset link](endpoint-reference/asset-link.md)
+
+## Endpoint reference
+
+* [Inventory](endpoint-reference/inventory.md)
+* [Inventory item](endpoint-reference/inventory-item.md)
+* [Asset](endpoint-reference/asset.md)
+* [Asset type](endpoint-reference/asset-type.md)
+* [Asset link](endpoint-reference/asset-link.md)
