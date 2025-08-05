@@ -41,7 +41,7 @@ These articles provide essential background knowledge and guidelines:
 
 #### Endpoint reference
 
-The endpoint reference is organized by resource type, such as [`asset`](endpoint-reference/api-reference/asset.md), [`asset_type`](endpoint-reference/api-reference/asset-type.md), and [`inventory`](endpoint-reference/api-reference/inventory.md), and provides complete technical specifications for each endpoint.
+The endpoint reference contains a cheat sheet outlining the API's structure and a detailed description of its endpoints organized by resource type, such as [`asset`](endpoint-reference/api-reference/asset.md), [`asset_type`](endpoint-reference/api-reference/asset-type.md), and [`inventory`](endpoint-reference/api-reference/inventory.md). It provides complete technical specifications for each endpoint.
 
 **For each API call, you'll find:**
 

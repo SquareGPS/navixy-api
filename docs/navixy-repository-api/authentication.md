@@ -23,7 +23,7 @@ All API requests are automatically scoped to your organization. Your access toke
 3. All operations are restricted to your organization's resources.
 4. No manual organization specification is required in API calls.
 
-### OAuth 2.0 Scopes
+### OAuth 2.0 scopes
 
 Navixy Repository API uses standard OpenID Connect scopes for authentication and authorization. When requesting an access token, you can specify one or more of the following scopes:
 
