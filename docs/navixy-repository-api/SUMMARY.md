@@ -12,6 +12,7 @@
 
 ## Endpoint reference
 
+* [API Reference](endpoint-reference/api-reference.md)
 * [Inventory](endpoint-reference/inventory.md)
 * [Inventory item](endpoint-reference/inventory-item.md)
 * [Asset](endpoint-reference/asset.md)

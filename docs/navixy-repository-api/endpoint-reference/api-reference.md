@@ -1,0 +1,52 @@
+# API Reference
+
+Navixy Repository API is a powerful asset management system that enables you to create fully customized trackable assets with any properties you need, assign GPS devices to make them location-aware, and establish relationships between assets to model your exact business operations.
+
+### Structure
+
+### Authentication
+
+All API requests require OAuth 2.0 Bearer authentication. Include your access token in the Authorization header:
+
+```
+Authorization: Bearer <ACCESS_TOKEN>
+```
+
+For a detailed authentication flow, see [Authentication](../authentication.md).
+
+### URLs
+
+<table><thead><tr><th width="154.48333740234375">Region</th><th>Base URL</th><th>Auth URL</th></tr></thead><tbody><tr><td>Europe</td><td><code>https://api.navixy.com/repo/v0</code></td><td><code>https://keycloak.navixy.com</code></td></tr><tr><td>Americas</td><td><code>https://api.us.navixy.com/repo/v0</code></td><td><code>https://keycloak.us.navixy.com</code></td></tr></tbody></table>
+
+### API specification
+
+Below this page is a complete and interactive API reference generated from an up-to-date OpenAPI specification. It contains full endpoint paths, parameters, object schemas (models), and test API calls right from the documentation.\
+You can view the original OpenAPI specification used to generate our API docs [here](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/public-documentation/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml).
+
+### Endpoints
+
+#### Inventory
+
+<table><thead><tr><th>Endpoint</th><th width="98.6666259765625">Method</th><th>Description</th><th>Key Parameters</th></tr></thead><tbody><tr><td><a href="inventory.md#get-v0-inventory-list"><code>inventory/list</code></a></td><td>GET</td><td>List inventories with basic filtering</td><td><code>q</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><a href="inventory.md#post-v0-inventory-list"><code>inventory/list</code></a></td><td>POST</td><td>List inventories with advanced filtering</td><td><code>q</code>, <code>conditions</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><a href="inventory.md#post-v0-inventory-create"><code>inventory/create</code></a></td><td>POST</td><td>Create a new inventory</td><td><code>label</code>, <code>description</code></td></tr><tr><td><a href="inventory.md#get-v0-inventory-read"><code>inventory/read</code></a></td><td>GET</td><td>Get inventory by ID</td><td><code>id</code></td></tr><tr><td><a href="inventory.md#post-v0-inventory-update"><code>inventory/update</code></a></td><td>POST</td><td>Update an existing inventory</td><td><code>id</code>, <code>label</code>, <code>description</code></td></tr><tr><td><a href="inventory.md#post-v0-inventory-delete"><code>inventory/delete</code></a></td><td>POST</td><td>Delete an inventory</td><td><code>id</code>, <code>force</code></td></tr></tbody></table>
+
+#### Inventory item
+
+**Master**
+
+<table><thead><tr><th>Endpoint</th><th width="97.78338623046875">Method</th><th>Description</th><th>Key Parameters</th></tr></thead><tbody><tr><td><a href="inventory-item.md#get-v0-inventory_item-master-list"><code>inventory_item/master/list</code></a></td><td>GET</td><td>List master items with basic filtering</td><td><code>q</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><a href="inventory-item.md#post-v0-inventory_item-master-list"><code>inventory_item/master/list</code></a></td><td>POST</td><td>List master items with advanced filtering</td><td><code>q</code>, <code>conditions</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><a href="inventory-item.md#post-v0-inventory_item-master-create"><code>inventory_item/master/create</code></a></td><td>POST</td><td>Create a new master item</td><td><code>label</code>, <code>inventory_id</code>, <code>model</code>, <code>device_id</code>, <code>asset_id</code></td></tr><tr><td><a href="inventory-item.md#get-v0-inventory_item-master-read"><code>inventory_item/master/read</code></a></td><td>GET</td><td>Get master item by ID</td><td><code>id</code></td></tr><tr><td><a href="inventory-item.md#post-v0-inventory_item-master-update"><code>inventory_item/master/update</code></a></td><td>POST</td><td>Update an existing master item</td><td><code>id</code>, <code>label</code>, <code>inventory_id</code>, <code>model</code>, <code>device_id</code>, <code>asset_id</code></td></tr><tr><td><a href="inventory-item.md#post-v0-inventory_item-master-activate"><code>inventory_item/master/activate</code></a></td><td>POST</td><td>Activate a master item</td><td><code>id</code>, <code>model</code>, <code>device_id</code>, <code>activation_method_id</code>, <code>fields</code></td></tr><tr><td><a href="inventory-item.md#post-v0-inventory_item-master-archive"><code>inventory_item/master/archive</code></a></td><td>POST</td><td>Archive a master item</td><td><code>id</code></td></tr><tr><td><a href="inventory-item.md#get-v0-inventory_item-master-model-list"><code>inventory_item/master/model/list</code></a></td><td>GET</td><td>List master item models</td><td><code>q</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr></tbody></table>
+
+#### Slave
+
+<table><thead><tr><th>Endpoint</th><th width="98.2332763671875">Method</th><th>Description</th><th>Key Parameters</th></tr></thead><tbody><tr><td><code>inventory_item/slave/list</code></td><td>GET</td><td>List slave items with basic filtering</td><td><code>q</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><code>inventory_item/slave/list</code></td><td>POST</td><td>List slave items with advanced filtering</td><td><code>q</code>, <code>conditions</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><code>inventory_item/slave/create</code></td><td>POST</td><td>Create a new slave item</td><td><code>label</code>, <code>inventory_id</code>, <code>asset_id</code>, <code>master_id</code></td></tr><tr><td><code>inventory_item/slave/read</code></td><td>GET</td><td>Get slave item by ID</td><td><code>id</code></td></tr><tr><td><code>inventory_item/slave/update</code></td><td>POST</td><td>Update an existing slave item</td><td><code>id</code>, <code>label</code>, <code>inventory_id</code>, <code>asset_id</code>, <code>master_id</code></td></tr><tr><td><code>inventory_item/slave/delete</code></td><td>POST</td><td>Delete a slave item</td><td><code>id</code></td></tr><tr><td><code>inventory_item/slave/pair</code></td><td>POST</td><td>Pair a slave with a master item</td><td><code>id</code>, <code>master_id</code></td></tr></tbody></table>
+
+#### Asset
+
+<table><thead><tr><th>Endpoint</th><th width="99.54998779296875">Method</th><th>Description</th><th>Key Parameters</th></tr></thead><tbody><tr><td><code>asset/list</code></td><td>GET</td><td>List assets with basic filtering</td><td><code>q</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><code>asset/list</code></td><td>POST</td><td>List assets with advanced filtering</td><td><code>q</code>, <code>conditions</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><code>asset/create</code></td><td>POST</td><td>Create a new asset</td><td><code>type_id</code>, <code>label</code>, <code>fields</code></td></tr><tr><td><code>asset/read</code></td><td>GET</td><td>Get asset by ID</td><td><code>id</code></td></tr><tr><td><code>asset/update</code></td><td>POST</td><td>Update an existing asset</td><td><code>id</code>, <code>label</code>, <code>fields</code></td></tr><tr><td><code>asset/delete</code></td><td>POST</td><td>Delete an asset</td><td><code>id</code></td></tr></tbody></table>
+
+#### Asset type
+
+<table><thead><tr><th>Endpoint</th><th width="96.89996337890625">Method</th><th>Description</th><th>Key Parameters</th></tr></thead><tbody><tr><td><code>asset_type/list</code></td><td>GET</td><td>List asset types with basic filtering</td><td><code>q</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><code>asset_type/list</code></td><td>POST</td><td>List asset types with advanced filtering</td><td><code>q</code>, <code>conditions</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><code>asset_type/create</code></td><td>POST</td><td>Create a new asset type</td><td><code>label</code>, <code>category</code>, <code>fields</code>, <code>settings</code></td></tr><tr><td><code>asset_type/read</code></td><td>GET</td><td>Get asset type by ID</td><td><code>id</code></td></tr><tr><td><code>asset_type/update</code></td><td>POST</td><td>Update an asset type</td><td><code>id</code>, <code>label</code>, <code>category</code>, <code>fields</code>, <code>settings</code></td></tr><tr><td><code>asset_type/delete</code></td><td>POST</td><td>Delete an asset type</td><td><code>id</code>, <code>force</code></td></tr></tbody></table>
+
+#### Asset link
+
+<table><thead><tr><th>Endpoint</th><th width="97.78326416015625">Method</th><th>Description</th><th>Key Parameters</th></tr></thead><tbody><tr><td><code>asset_link/list</code></td><td>GET</td><td>List asset links with basic filtering</td><td><code>q</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><code>asset_link/list</code></td><td>POST</td><td>List asset links with advanced filtering</td><td><code>q</code>, <code>conditions</code>, <code>limit</code>, <code>offset</code>, <code>sort</code></td></tr><tr><td><code>asset_link/create</code></td><td>POST</td><td>Create a new asset link</td><td><code>label</code>, <code>asset_ids</code></td></tr><tr><td><code>asset_link/read</code></td><td>GET</td><td>Get asset link by ID</td><td><code>id</code></td></tr><tr><td><code>asset_link/update</code></td><td>POST</td><td>Update an existing asset link</td><td><code>id</code>, <code>label</code>, <code>asset_ids</code></td></tr><tr><td><code>asset_link/delete</code></td><td>POST</td><td>Delete an asset link</td><td><code>id</code></td></tr><tr><td><code>asset_link/set</code></td><td>POST</td><td>Assign asset to a link</td><td><code>link_id</code>, <code>asset_id</code></td></tr><tr><td><code>asset_link/remove</code></td><td>POST</td><td>Unassign asset from a link</td><td><code>link_id</code>, <code>asset_id</code></td></tr></tbody></table>
