@@ -22,7 +22,7 @@ For a detailed authentication flow, see [Authentication](../../authentication.md
 
 ### API specification
 
-Below this page is a complete and interactive API reference generated from an up-to-date OpenAPI specification. It contains full endpoint paths, parameters, object schemas (models), and test API calls right from the documentation.\
+Nested inside this page is a complete and interactive API reference generated from an up-to-date OpenAPI specification. It contains full endpoint paths, parameters, object schemas (models), and test API calls right from the documentation.\
 You can view the original OpenAPI specification used to generate our API docs [here](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/public-documentation/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml).
 
 ### Endpoints
