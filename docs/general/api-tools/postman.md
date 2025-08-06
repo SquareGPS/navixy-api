@@ -12,7 +12,7 @@ Navixy streamlines API integration by offering ready-made Postman collections. T
 **Navixy Postman Collections URL:**
 
 ```
-https://www.postman.com/navixy/
+https://www.postman.com/navixyapisandbox
 ```
 
 **Navixy API Sandbox in Postman URL:**
