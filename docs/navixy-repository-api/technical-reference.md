@@ -205,7 +205,7 @@ Control the order of results using the `sort` parameter. Sorting works with both
 
 **Sorting syntax**
 
-* **Ascending order by a single field:** `sort=created_at`&#x20;
+* **Ascending order by a single field:** `sort=created_at`
 * **Descending order by a single field:** `sort=-created_at` (prefix with `-`)
 * **Multiple fields:** `label,-created_at,id` (comma-separated)
 
@@ -260,4 +260,20 @@ Explore the full structure of Navixy Repository API using the OpenAPI standard.
 * Import the definition into OpenAPI-based API documentation & testing tools.
 * Perfect for documentation readers who want to explore and test endpoints without manual setup if the built-in documentation tools are insufficient for your specific needs
 
-You can view the current version of the OpenAPI specification [here](resources/navixy-repo-api-specification.yaml).
+You can view the current version of the OpenAPI specification [here](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/public-documentation/docs/navixy-repository-api/endpoint-reference/api-reference/navixy-repo-api-specification.yaml).
+
+#### Postman
+
+[Postman](https://www.postman.com/) is a powerful API client used for testing and exploring APIs.
+
+Navixy Repository API comes with a [ready-to-use Postman Collection](https://www.postman.com/navixyapisandbox/navixy-api-sandbox/collection/azujreb/navixy-repository-api?action=share\&source=copy-link\&creator=46550248).&#x20;Just import it, enter your credentials, and start making requests — no setup required.&#x20;It's great for quickly learning the API and trying different operations in a sandbox environment.
+
+Should you encounter limitations with the documentation's sandbox capabilities, we recommend exploring advanced Postman features or dedicated development environments for more complex testing scenarios.
+
+#### &#xD;Zapier
+
+[Zapier](https://zapier.com/) is a no-code automation platform that connects Navixy Repository with thousands of third-party apps.
+
+Set up workflows (called "Zaps"), which contain triggers in Navixy Repository that automatically result in actions in other systems.
+
+It's perfect for business users and analysts who need automation without writing code. For example, it allows you to log tracker activity to a spreadsheet or notify your team in Slack when a specific event occurs.
