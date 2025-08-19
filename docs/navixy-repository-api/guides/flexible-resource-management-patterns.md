@@ -13,6 +13,10 @@ Navixy Repository API uses a consistent pattern across all resources that suppor
 
 ### Core pattern: progressive resource development
 
+{% hint style="warning" %}
+Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location and the current version of the API. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
+{% endhint %}
+
 #### 1. Minimal creation
 
 Start with just the required fields (often only a `label`).\
@@ -143,7 +147,7 @@ curl -X POST {BASE_URL}/inventory_item/master/update \
   }'
 ```
 
-Step 3. Activate
+Step 4. Activate
 
 ```bash
 curl -X POST {BASE_URL}/inventory_item/master/activate \
