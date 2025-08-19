@@ -11,19 +11,19 @@ Navixy Repository API uses a consistent pattern across all resources that suppor
 * **Assets**
 * **Asset links**
 
-### Core pattern: Progressive resource development
+### Core pattern: progressive resource development
 
 #### 1. Minimal creation
 
 Start with just the required fields (often only a `label`).\
-Example: Create an empty inventory.
+Example: Create an inventory item.
 
 ```bash
-curl -X POST {BASE_URL}/inventory/create \
+curl -X POST {BASE_URL}/inventory_item/master/create \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
-    "label": "London Warehouse"
+    "label": "Fleet Tracker Unit 001"
   }'
 ```
 
@@ -44,7 +44,6 @@ curl -X POST {BASE_URL}/inventory_item/master/update \
 -H "Content-Type: application/json" \
 -d '{
  "id": 456,
- "label": "Fleet Tracker Unit 001",
  "device_id": "359632104567890",
  "model": "telfmb125",
  "inventory_id": 123
@@ -70,8 +69,7 @@ curl -X POST {BASE_URL}/inventory_item/master/update \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
-    "id": 123,
-    "label": "GPS Tracker 001",
+    "id": 456,
     "asset_id": 789
   }'
 ```
@@ -127,7 +125,6 @@ curl -X POST {BASE_URL}/inventory_item/master/update \
   -H "Content-Type: application/json" \
   -d '{
     "id": 556,
-    "label": "GPS Unit 001",
     "device_id": "123456789",
     "model": "telfmb125",
     "inventory_id": 45
@@ -142,12 +139,11 @@ curl -X POST {BASE_URL}/inventory_item/master/update \
   -H "Content-Type: application/json" \
   -d '{
     "id": 556,
-    "label": "GPS Unit 001",
     "asset_id": 789
   }'
 ```
 
-Stage 4: Activate
+Step 3. Activate
 
 ```bash
 curl -X POST {BASE_URL}/inventory_item/master/activate \
@@ -164,7 +160,7 @@ curl -X POST {BASE_URL}/inventory_item/master/activate \
 
 **Minimal → Configured → Paired**
 
-Stage 1: Create unpaired sensors
+Step 1. Create unpaired sensors
 
 ```bash
 curl -X POST {BASE_URL}/inventory_item/slave/create \
@@ -175,7 +171,7 @@ curl -X POST {BASE_URL}/inventory_item/slave/create \
   }'
 ```
 
-Stage 2: Add details
+Step 2. Add details
 
 ```bash
 curl -X POST {BASE_URL}/inventory_item/slave/update \
@@ -188,7 +184,7 @@ curl -X POST {BASE_URL}/inventory_item/slave/update \
   }'
 ```
 
-Stage 3: Pair when deployed
+Step 3. Pair when deployed
 
 ```bash
 curl -X POST {BASE_URL}/inventory_item/slave/pair \
