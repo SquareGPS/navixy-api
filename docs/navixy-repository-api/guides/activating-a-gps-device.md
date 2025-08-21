@@ -48,6 +48,7 @@ You'll get a response that looks like this:
             "code": "telfm4200",
             "vendor": "Teltonika Telematics",
             "name": "Teltonika FM4200",
+            "device_id_pattern": "[0-9]{15,16}",
             "communication": {
                 "port": 47776,
                 "protocols": {}
@@ -55,14 +56,32 @@ You'll get a response that looks like this:
             "base_activation_fields": [],
             "activation_methods": [
                 {
-                    "id": 1,
-                    "title": "SIM card provided with a device",
+                    "id": 28,
+                    "title": "By tracker phone number",
                     "method_fields": [
                         {
-                            "field": "iccid",
-                            "title": "ICCID number of SIM-card from the package",
+                            "field": "apn_name",
+                            "title": "APN",
+                            "optional": true,
+                            "pattern": "[-a-zA-Z0-9_.@ ]*"
+                        },
+                        {
+                            "field": "apn_user",
+                            "title": "Username",
+                            "optional": true,
+                            "pattern": "[-a-zA-Z0-9_.@ ]*"
+                        },
+                        {
+                            "field": "apn_password",
+                            "title": "Password",
+                            "optional": true,
+                            "pattern": "^[^\\p{Cntrl}\\uD800-\\uDFFF\\uE000-\\uF8FF]+$"
+                        },
+                        {
+                            "field": "phone",
+                            "title": "Phone number",
                             "optional": false,
-                            "pattern": "89[0-9]{17,18}"
+                            "pattern": "^[0-9]{8,20}$"
                         }
                     ]
                 },
@@ -86,7 +105,7 @@ You'll get a response that looks like this:
                             "field": "apn_password",
                             "title": "Password",
                             "optional": true,
-                            "pattern":"^[^\p{Cntrl}\uD800-\uDFFF\uE000-\uF8FF]+$"
+                            "pattern": "^[^\\p{Cntrl}\\uD800-\\uDFFF\\uE000-\\uF8FF]+$"
                         },
                         {
                             "field": "phone",
@@ -196,7 +215,7 @@ curl -X POST {BASE_URL}/inventory_item/master/create \
 **Key parameters:**
 
 * `device_id`: The unique identifier of the device, typically its IMEI.
-* `model`: The code of your device model that you learned in [Step 1](activating-a-gps-device.md#step-1.-learn-your-devices-parameters).
+* `model`: Navixy's internal code of your device model that you learned in [Step 1](activating-a-gps-device.md#step-1.-learn-your-devices-parameters).
 
 You will get the ID of the newly created item:
 
