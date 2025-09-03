@@ -57,6 +57,8 @@ The API follows the **OpenAPI** **standard** with full CRUD for each object type
 GET https://api.navixy.com/repo/v0/inventory/read?id=123
 ```
 
+**POST requests**
+
 Use `POST` requests with a **JSON body** when you need to:
 
 * Create, update, or delete data
@@ -80,7 +82,7 @@ Use `POST` requests with a **JSON body** when you need to:
 All API responses follow a consistent JSON format:
 
 * **HTTP status codes** indicate success or failure
-* **Success responses** include the requested data or confirmation
+* **Success responses** include the requested data or confirmation (for `204 No Content`, the body is empty)
 * **Error responses** provide detailed error information in the JSON body
 * **List responses** include pagination metadata when applicable
 
@@ -112,7 +114,7 @@ When a request fails (typically with a 4xx or 5xx status), the response body con
 
 ```json
 {
-  "code": "invalid_argument",
+  "code": "invalid_parameters",
   "message": "One or more parameters are invalid.",
   "correlation_id": "1a2b3c4d-5678-90ab-cdef-1234567890ab",
   "errors": [
@@ -150,7 +152,7 @@ All list endpoints return results in a paginated format:
 
 #### Query parameters
 
-<table data-header-hidden><thead><tr><th width="78.80001831054688"></th><th width="87.79998779296875"></th><th width="101.20001220703125"></th><th width="106.39996337890625"></th><th></th></tr></thead><tbody><tr><td><strong>Name</strong></td><td><strong>Type</strong></td><td><strong>Nullable</strong></td><td><strong>Required</strong></td><td><strong>Description</strong></td></tr><tr><td>q</td><td>string</td><td>yes</td><td>yes</td><td>A search query string</td></tr><tr><td>limit</td><td>int</td><td>no</td><td>no</td><td>Maximum number of items to return (default: 100, max: 1000).</td></tr><tr><td>offset</td><td>int</td><td>yes</td><td>no</td><td>The index of the first item to return (default: 0).</td></tr><tr><td>sort</td><td>string</td><td>yes</td><td>no</td><td>Sort expression. Supports one or more fields. See <a href="technical-reference.md#sorting">Sorting</a> for more information.</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="78.80001831054688"></th><th width="87.79998779296875"></th><th width="101.20001220703125"></th><th width="106.39996337890625"></th><th></th></tr></thead><tbody><tr><td><strong>Name</strong></td><td><strong>Type</strong></td><td><strong>Nullable</strong></td><td><strong>Required</strong></td><td><strong>Description</strong></td></tr><tr><td>q</td><td>string</td><td>yes</td><td>yes</td><td>A search query string</td></tr><tr><td>conditions</td><td>array of objects</td><td>yes</td><td>no</td><td>Advanced filtering rules. <strong>Used only in POST requests</strong>. See <a href="technical-reference.md#filtering">Filtering</a> for more information.</td></tr><tr><td>limit</td><td>int</td><td>no</td><td>no</td><td>Maximum number of items to return (default: 100, max: 1000).</td></tr><tr><td>offset</td><td>int</td><td>yes</td><td>no</td><td>The index of the first item to return (default: 0).</td></tr><tr><td>sort</td><td>string</td><td>yes</td><td>no</td><td>Sort expression. Supports one or more fields. See <a href="technical-reference.md#sorting">Sorting</a> for more information.</td></tr></tbody></table>
 
 #### Search
 
@@ -207,7 +209,7 @@ Control the order of results using the `sort` parameter. Sorting works with both
 
 * **Ascending order by a single field:** `sort=created_at`
 * **Descending order by a single field:** `sort=-created_at` (prefix with `-`)
-* **Multiple fields:** `label,-created_at,id` (comma-separated)
+* **Multiple fields:** `sort=label,-created_at,id` (comma-separated)
 
 ### Versioning
 
