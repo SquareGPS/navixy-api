@@ -323,29 +323,3 @@ For maintaining reserves:
 2. Keep in "unassigned" state
 3. Quick assignment when needed
 4. Return to the pool when finished
-
-### Best practices
-
-#### 1. Start simple
-
-* Create with minimal required fields
-* Add complexity only when needed
-* Use labels that help identify resources during configuration
-
-#### 2. Use consistent patterns
-
-* Apply the same workflow across resource types
-* Maintain naming conventions
-* Document your organization's patterns
-
-#### 3. Plan for change
-
-* Design for reassignment
-* Keep audit trails through updates
-* Use descriptive labels that survive changes
-
-#### 4. Optimize for your use case
-
-* **High volume**: Use minimal creation for speed
-* **High complexity**: Use full creation for completeness
-* **Dynamic operations**: Use progressive enhancement

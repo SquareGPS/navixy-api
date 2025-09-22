@@ -29,55 +29,57 @@ To create a new asset type, send the following request:
 Use this request body:
 
 ```bash
-curl -X POST {BASE_URL}/asset_type/create \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "label": "Commercial Vessel",
-  "category": "business",
-  "fields": [
-    {
-      "type": "text",
-      "label": "Vessel Name",
-      "required": true
-    },
-    {
-      "type": "text",
-      "label": "Registration Number",
-      "required": true
-    },
-    {
-      "type": "decimal",
-      "label": "Engine Power",
-      "required": false
-    },
-    {
-      "type": "decimal",
-      "label": "Max Passengers",
-      "required": false
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/asset_type/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "label": "Commercial Vessel",
+    "category": "business",
+    "fields": [
+      {
+        "type": "text",
+        "label": "Vessel Name",
+        "required": true
+      },
+      {
+        "type": "text",
+        "label": "Registration Number",
+        "required": true
+      },
+      {
+        "type": "decimal",
+        "label": "Engine Power",
+        "required": false
+      },
+      {
+        "type": "decimal",
+        "label": "Max Passengers",
+        "required": false
+      }
+    ],
+    "settings": {
+      "layout": {
+        "sections": [
+          {
+            "label": "Vessel Information",
+            "fields": [
+              "Vessel Name",
+              "Registration Number"
+            ]
+          },
+          {
+            "label": "Technical Specifications",
+            "fields": [
+              "Engine Power",
+              "Max Passengers"
+            ]
+          }
+        ]
+      }
     }
-  ],
-  "settings": {
-    "layout": {
-      "sections": [
-        {
-          "label": "Vessel Information",
-          "fields": [
-            "Vessel Name",
-            "Registration Number"
-          ]
-        },
-        {
-          "label": "Technical Specifications",
-          "fields": [
-            "Engine Power",
-            "Max Passengers"
-          ]
-        }
-      ]
-    }
-  }
-}'
+  }'
 ```
 
 Aside from the `label` of the asset type, the request body contains the following parameters: `category`, `settings,` and `fields`.
@@ -139,8 +141,10 @@ Before creating an asset, you need to learn the auto-generated internal ID of ea
 In this case, it will be:
 
 ```bash
-curl -X GET "{BASE_URL}/asset_type/read?id=456" \
-  -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -L \
+  --request GET \
+  --url "{BASE_URL}/asset_type/read?id=456" \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 
 You will receive full information about the asset type, including the `id` of each custom field. Save them for later.
@@ -217,31 +221,33 @@ You will receive full information about the asset type, including the `id` of ea
 To create an asset, send the following request using the `id` of each custom field from the previous step, or at least those marked as `required:`
 
 ```bash
-curl -X POST {BASE_URL}/asset/create \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "type_id": 456,
-  "label": "Sea Explorer",
-  "fields": {
-    "55": {
-      "type": "text",
-      "value": "Sea Explorer"
-    },
-    "56": {
-      "type": "text",
-      "value": "BOT-2024-001"
-    },
-    "57": {
-      "type": "decimal",
-      "value": 350.5
-    },
-    "58": {
-      "type": "decimal",
-      "value": 12
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/asset/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "type_id": 456,
+    "label": "Sea Explorer",
+    "fields": {
+      "55": {
+        "type": "text",
+        "value": "Sea Explorer"
+      },
+      "56": {
+        "type": "text",
+        "value": "BOT-2024-001"
+      },
+      "57": {
+        "type": "decimal",
+        "value": 350.5
+      },
+      "58": {
+        "type": "decimal",
+        "value": 12
+      }
     }
-  }
-}'
+  }'
 ```
 
 You will receive the ID of the newly created asset:
@@ -269,15 +275,17 @@ This flexibility allows you to pre-create devices in inventory before assets exi
 If your device is already activated, send the following request (let's assume you have a master-type item called `GPS Tracker 446` with id of `123` ).
 
 ```json
-curl -X POST {BASE_URL}/inventory_item/master/update \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "id": 123,
-  "inventory_id": 12,
-  "label": "GPS Tracker 446",
-  "asset_id": 789
-}'
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory_item/master/update' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "id": 123,
+    "inventory_id": 12,
+    "label": "GPS Tracker 446",
+    "asset_id": 789
+  }'
 ```
 
 **Assign during device creation**
@@ -285,16 +293,18 @@ curl -X POST {BASE_URL}/inventory_item/master/update \
 If you haven't created an inventory item yet, you can add the `asset_id` parameter to the creation request. For a master item, send the following request:
 
 ```json
-​curl -X POST {BASE_URL}/inventory_item/master/create \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory_item/master/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "inventory_id": 12,
     "device_id": "123456789012345",
     "label": "GPS Tracker 446",
     "model": "telfmu130_fmc130_234",
     "asset_id": 789
-}'
+  }'
 ```
 
 {% hint style="success" %}

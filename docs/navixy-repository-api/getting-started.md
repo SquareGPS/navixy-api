@@ -21,7 +21,9 @@ Navixy Repository API supports the OAuth2 Authorization Code Flow. To acquire an
 **Redirect users to the authorization endpoint**
 
 ```bash
-curl -X GET "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
+curl -L \
+  --request GET \
+  --url "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
   --data-urlencode 'client_id=<YOUR_CLIENT_ID>' \
   --data-urlencode 'response_type=code' \
   --data-urlencode 'redirect_uri=https://<YOUR_APP_CALLBACK_URL>' \
@@ -36,9 +38,11 @@ curl -X GET "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
 **Request:**
 
 ```bash
-curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{AUTH_BASE_URL}/realms/users/protocol/openid-connect/token' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "grant_type": "authorization_code",
     "client_id": "<YOUR_CLIENT_ID>",
     "client_secret": "<YOUR_CLIENT_SECRET>",
@@ -67,8 +71,10 @@ curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
 Include the access token in all API requests:
 
 ```bash
-curl -X GET {BASE_URL}/inventory/list \
-  -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -L \
+  --request GET \
+  --url '{BASE_URL}/inventory/list' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 
 For more information about authenticating in Navixy Repository API, see [Authentication](authentication.md).
@@ -88,8 +94,10 @@ For example, to get the specifications for a Teltonika FMC234, use the following
 
 {% code overflow="wrap" %}
 ```bash
-curl -X GET "{BASE_URL}/inventory_item/master/model/list?q=Teltonika%20FMC234" \
-  -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -L \
+  --request GET \
+  --url "{BASE_URL}/inventory_item/master/model/list?q=Teltonika%20FMC234" \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 {% endcode %}
 
@@ -135,13 +143,15 @@ From the response, you will need to save the following critical parameters for f
 Next, create an inventory to house your new device. Inventories are logical containers for organizing your items.
 
 ```bash
-curl -X POST {BASE_URL}/inventory/create \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '​{
-  "label": "Florida",
-  "description": "Florida branch office"​
-​}'
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "label": "Florida",
+    "description": "Florida branch office"
+  }'
 ```
 
 The API will respond with the new inventory's `id`. Save it for the next step.
@@ -161,10 +171,12 @@ Devices that can transmit GPS data independently are called master devices. In N
 Now, create a master device as an item in your inventory. You will need `inventory_id` and the model `code` you've fetched previously, as well as `device_id` , which is typically its IMEI (pattern: `^[0-9a-zA-Z\\-]{1,64}$`).
 
 ```bash
-curl -X POST {BASE_URL}/inventory_item/master/create \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory_item/master/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "inventory_id": 12,
     "device_id": "356307042441234",
     "label": "Vessel 001",
@@ -187,15 +199,17 @@ Save the returned device `id` for the next and final step.
 Finally, activate the device using its `id` from the previous step along with the `activation_method_id` and `fields` you saved earlier.
 
 ```bash
-curl -X POST {BASE_URL}/inventory_item/master/activate \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory_item/master/activate' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "id": 123,
     "device_id": "356307042441234",
     "model": "telfmc234",
     "activation_method_id": 1,
-    "fields": {​
+    "fields": {
       "iccid": "8912345678901234567"
     }
   }'
@@ -210,8 +224,10 @@ A successful activation will return a `204 No Content` response.
 Let's confirm everything works by listing your inventory items:
 
 ```bash
-curl -X GET "{BASE_URL}/inventory_item/master/list" \
-  -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -L \
+  --request GET \
+  --url "{BASE_URL}/inventory_item/master/list" \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 
 You should see your device in the response.

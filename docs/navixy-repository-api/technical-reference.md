@@ -10,7 +10,7 @@ URLs are given with the current API version number. See [Versioning](technical-r
 
 Current URLs:
 
-<table><thead><tr><th width="182.60003662109375">Region</th><th width="312.4000244140625">Base URL</th><th>Data Location</th></tr></thead><tbody><tr><td>Europe</td><td><code>https://api.navixy.com/repo/v0</code></td><td>European data centers</td></tr><tr><td>Americas</td><td><code>https://api.us.navixy.com/repo/v0</code></td><td>US-based data centers</td></tr></tbody></table>
+<table><thead><tr><th width="182.60003662109375">Region</th><th width="312.4000244140625">Base URL</th><th>Data Location</th></tr></thead><tbody><tr><td>Europe</td><td><code>https://api.eu.navixy.com/repo/v0</code></td><td>European data centers</td></tr><tr><td>Americas</td><td><code>https://api.us.navixy.com/repo/v0</code></td><td>US-based data centers</td></tr></tbody></table>
 
 #### Environment selection
 
@@ -54,7 +54,9 @@ The API follows the **OpenAPI** **standard** with full CRUD for each object type
 **Example:**
 
 ```bash
-GET https://api.navixy.com/repo/v0/inventory/read?id=123
+curl -L \
+  --request GET \
+  --url '{BASE_URL}/inventory/read?id=123'
 ```
 
 **POST requests**
@@ -100,6 +102,8 @@ All API responses follow a consistent JSON format:
 }
 ```
 
+See the [Pagination ](technical-reference.md#pagination)section for more information.
+
 ### Errors
 
 Navixy Repository API uses conventional HTTP status codes to indicate the success or failure of a request.
@@ -110,7 +114,7 @@ Navixy Repository API uses conventional HTTP status codes to indicate the succes
 
 #### Error response format
 
-When a request fails (typically with a 4xx or 5xx status), the response body contains a structured error object that helps both users and developers understand and resolve the issue.
+When a request with the `400` status fails with the `invalid_parameters` code, the response body contains a structured error object that helps both users and developers understand and resolve the issue.
 
 ```json
 {
@@ -163,18 +167,22 @@ To perform a basic full-text search (available for `list` endpoints), use the `q
 **GET:**
 
 ```bash
-curl -X GET https://api.navixy.com/repo/v0/inventory/list \
-  -H "Authorization: Bearer <YOUR-TOKEN>" \
+curl -L \
+  --request GET \
+  --url '{BASE_URL}/inventory/list' \
+  --header 'Authorization: Bearer <YOUR-TOKEN>' \
   --data-urlencode 'q=geneva warehouse'
 ```
 
 **POST:**
 
 ```bash
-curl -X POST https://api.navixy.com/repo/v0/inventory/list \
-  -H "Authorization: Bearer <YOUR-TOKEN>" \
-  -H 'Content-Type: application/json' \
-  -d '{"q": "geneva warehouse"}'
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory/list' \
+  --header 'Authorization: Bearer <YOUR-TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{"q": "geneva warehouse"}'
 ```
 
 #### Filtering
@@ -220,13 +228,13 @@ The API follows industry-standard semantic versioning principles to ensure clear
 To make versioning transparent and intuitive, the version is directly included in the request URL:
 
 ```
-https://api.navixy.com/repo/v{major}/{resource}/{operation}
+https://api.us.navixy.com/repo/v{major}/{resource}/{operation}
 ```
 
 For example:
 
 ```
-https://api.navixy.com/repo/v0/inventory/list
+https://api.us.navixy.com/repo/v0/inventory/list
 ```
 
 The **major version number** is incremented only upon the introduction of breaking changes, such as:

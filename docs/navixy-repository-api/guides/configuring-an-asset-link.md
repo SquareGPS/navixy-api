@@ -48,10 +48,12 @@ To create a new asset link, prepare an array of assets (or use an empty array) a
 Use this request body:
 
 ```bash
-curl -X POST {BASE_URL}/asset_link/create \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/asset_link/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "label": "Boston boats",
     "asset_ids": [
       3
@@ -78,12 +80,16 @@ To add an asset to an existing link, send the following request:
 Use this request body:
 
 ```bash
-curl -X POST {BASE_URL}/asset_link/set \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "link_id": 789,
-    "asset_id": 2
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/asset_link/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "label": "Boston boats",
+    "asset_ids": [
+      3
+    ]
   }'
 ```
 
@@ -100,10 +106,12 @@ To remove an asset from an existing link, send the following request:
 Use this request body:
 
 ```bash
-curl -X POST {BASE_URL}/asset_link/remove \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/asset_link/remove' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "link_id": 789,
     "asset_id": 2
   }'

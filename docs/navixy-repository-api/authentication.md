@@ -32,7 +32,9 @@ Navixy Repository API uses standard OpenID Connect scopes for authentication and
 Example authorization request:
 
 ```bash
-curl -X GET "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
+curl -L \
+  --request GET \
+  --url "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
   --data-urlencode 'scope=openid profile email'
 ```
 
@@ -61,7 +63,9 @@ Before you begin, ensure you have:
 **Redirect the user to the authorization endpoint:**
 
 ```bash
-curl -X GET "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
+curl -L \
+  --request GET \
+  --url "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
   --data-urlencode 'client_id=<YOUR_CLIENT_ID>' \
   --data-urlencode 'response_type=code' \
   --data-urlencode 'redirect_uri=https://<YOUR_APP_CALLBACK_URL>' \
@@ -76,9 +80,11 @@ curl -X GET "{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth" \
 **Request:**
 
 ```bash
-curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{AUTH_BASE_URL}/realms/users/protocol/openid-connect/token' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "grant_type": "authorization_code",
     "client_id": "<YOUR_CLIENT_ID>",
     "client_secret": "<YOUR_CLIENT_SECRET>",
@@ -116,8 +122,10 @@ curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
 Use `access_token` to authenticate API requests:
 
 ```bash
-curl -X GET {BASE_URL}/resource \
-  -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -L \
+  --request GET \
+  --url '{BASE_URL}/resource' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 
 ### Refreshing the access token
@@ -127,12 +135,14 @@ Access tokens have a limited lifespan and typically expire after 900 seconds. To
 **Request:**
 
 ```bash
-curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/token \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d 'grant_type=refresh_token' \
-  -d 'client_id=<YOUR_CLIENT_ID>' \
-  -d 'client_secret=<YOUR_CLIENT_SECRET>' \
-  -d 'refresh_token=<YOUR_REFRESH_TOKEN>'
+curl -L \
+  --request POST \
+  --url '{AUTH_BASE_URL}/realms/users/protocol/openid-connect/token' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=refresh_token' \
+  --data 'client_id=<YOUR_CLIENT_ID>' \
+  --data 'client_secret=<YOUR_CLIENT_SECRET>' \
+  --data 'refresh_token=<YOUR_REFRESH_TOKEN>'
 ```
 
 **Response:**
@@ -160,9 +170,11 @@ This mechanism enables long-lived sessions while minimizing user effort and adhe
 If an access token or refresh token needs to be invalidated (for example, when a user logs out or client credentials are rotated), it can be revoked using the OAuth2 token revocation endpoint:
 
 ```bash
-curl -X POST {AUTH_BASE_URL}/realms/users/protocol/openid-connect/revoke \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{AUTH_BASE_URL}/realms/users/protocol/openid-connect/revoke' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "client_id": "<YOUR_CLIENT_ID>",
     "client_secret": "<YOUR_CLIENT_SECRET>",
     "token": "<TOKEN_TO_REVOKE>"

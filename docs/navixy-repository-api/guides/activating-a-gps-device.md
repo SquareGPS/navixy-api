@@ -33,8 +33,10 @@ Of course, you probably already know your model and want to fetch its specific p
 
 {% code overflow="wrap" %}
 ```bash
-curl -X GET "{BASE_URL}/inventory_item/master/model/list?q=Teltonika%20FM4200" \
-  -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -L \
+  --request GET \
+  --url "{BASE_URL}/inventory_item/master/model/list?q=Teltonika%20FM4200" \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 {% endcode %}
 
@@ -150,10 +152,12 @@ Every inventory item requires an inventory. To create it, send the following req
 Use this request body:
 
 ```bash
-curl -X POST {BASE_URL}/inventory/create \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "label": "Paris Depot",
     "description": "Paris Vehicle Depot"
   }'
@@ -173,51 +177,32 @@ You will receive the ID of the created inventory:
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-schemas %}
 
-```bash
-curl -X POST {BASE_URL}/inventory_item/master/create \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "label": "GPS tracker for Delivery Van 1"
-  }'
-```
-
 {% openapi-operation spec="navixy-repo" path="/v0/inventory_item/master/create" method="post" %}
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
-You have two approaches to create a **master inventory item**:
-
-**Option A: Create with minimal information.** If you choose Option A, you'll need to update the item with device details before activation.
+Use this response body:
 
 ```bash
-curl -X POST {BASE_URL}/inventory_item/master/create \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory_item/master/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "inventory_id": 24,
+    "model": "telfm4200",
+    "device_id": "123456789012345",
     "label": "GPS tracker for Delivery Van 1"
   }'
 ```
-
-**Option B:** **Create with full device details**
-
-<pre class="language-bash"><code class="lang-bash"><strong>curl -X POST {BASE_URL}/inventory_item/master/create \
-</strong>  -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-      "inventory_id": 24,
-      "model": "telfm4200",
-      "device_id": "123456789012345",
-      "label": "GPS tracker for Delivery Van 1",
-}'
-</code></pre>
 
 **Key parameters:**
 
 * `device_id`: The unique identifier of the device, typically its IMEI.
 * `model`: Navixy's internal code of your device model that you learned in [Step 1](activating-a-gps-device.md#step-1.-learn-your-devices-parameters).
 
-You will get the ID of the newly created item:
+You will get the internal ID of the newly created item:
 
 <pre class="language-json"><code class="lang-json"><strong>{
 </strong>  "id": 34
@@ -234,20 +219,23 @@ Send the following request:
 [OpenAPI navixy-repo](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/navixy-repo/docs/navixy-repository-api/resources/navixy-repo-api-specification.yaml)
 {% endopenapi-operation %}
 
-<pre class="language-json"><code class="lang-json">curl -X POST {BASE_URL}/inventory_item/master/activate \
-  -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-      "id": 34,
-      "device_id": "123456789012345",
-      "model": "telfm4200",
-      "activation_method_id": 44,
-      "fields": {
-        "phone": "15551234567",
-        "activation_code": "54321"​
-        }
-<strong>    }'
-</strong></code></pre>
+```json
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory_item/master/activate' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "id": 34,
+    "device_id": "123456789012345",
+    "model": "telfm4200",
+    "activation_method_id": 44,
+    "fields": {
+      "phone": "15551234567",
+      "activation_code": "54321"
+    }
+  }'
+```
 
 These are the key parameters you've learned in [Step 1](activating-a-gps-device.md#step-1.-learn-your-devices-parameters):
 
@@ -268,14 +256,17 @@ A slave device doesn't transmit GPS data unless paired with a master device. Man
 
 To create a slave inventory item, use this request body:
 
-<pre class="language-bash"><code class="lang-bash">curl -X POST {BASE_URL}/inventory_item/slave/create \
-  -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "inventory_id": 24,
-  "label": "BT sensor 1"
-<strong>  }'
-</strong></code></pre>
+```bash
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory_item/slave/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "inventory_id": 24,
+    "label": "BT sensor 1"
+  }'
+```
 
 Just like with the master, the response will contain the ID of the created item.
 
@@ -293,10 +284,12 @@ Now that you've created a slave device, you need to pair it with a master device
 Use this request body:
 
 ```bash
-curl -X POST {BASE_URL}/inventory_item/slave/pair \
-  -H "Authorization: Bearer <ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory_item/slave/pair' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "id": 556,
     "master_id": 34
   }'
@@ -306,15 +299,18 @@ You will receive an empty response body and a `204 No Content` status.
 
 Alternatively, you can create and pair the slave device with a single request:
 
-<pre class="language-bash"><code class="lang-bash">curl -X POST {BASE_URL}/inventory_item/slave/create \
-  -H "Authorization: Bearer &#x3C;ACCESS_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "inventory_id": 24,
-  "label": "BT sensor 1",
-  "master_id": 34
-<strong>}'
-</strong></code></pre>
+```bash
+curl -L \
+  --request POST \
+  --url '{BASE_URL}/inventory_item/slave/create' \
+  --header 'Authorization: Bearer <ACCESS_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "inventory_id": 24,
+    "label": "BT sensor 1",
+    "master_id": 34
+  }'
+```
 
 The response will be the same as with an ordinary creation request (the `id` of the created item).
 
