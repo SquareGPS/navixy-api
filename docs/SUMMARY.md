@@ -171,7 +171,6 @@
           * [User settings](user-api/backend-api/resources/commons/user/settings/index.md)
           * [User UI settings](user-api/backend-api/resources/commons/user/settings/ui.md)
         * [User applications](user-api/backend-api/resources/commons/user/applications/README.md)
-          * [User Applications](user-api/backend-api/resources/commons/user/applications/applications-reference-old.md)
           * ```yaml
             props:
               models: true

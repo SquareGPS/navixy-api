@@ -8,7 +8,7 @@ description: Information about embedding custom applications to the UI on user's
 
 The User Applications feature enables you to embed third-party applications into the platform entirely on your own, without requiring assistance from developers or support. You can integrate external services directly into the interface or open them in a new tab, using URL parameters, user authentication, and secure session management for seamless interaction.
 
-With full control over configuration, you can customize your workspace to fit your needs without technical expertise. For instructions on how to configure such applications from the platform's UI, see [User applications section in Navixy's User documentation](https://docs.navixy.com/user-guide/user-applications).
+With full control over configuration, you can customize your workspace to fit your needs without technical expertise. For instructions on how to configure such applications from the platform's UI, see [User applications section in Navixy's User documentation](https://app.gitbook.com/s/446mKak1zDrGv70ahuYZ/guide/account/user-applications).
 
 However, if you need to automate application management and integrate external tools programmatically, you can access User applications functionality through API. It has dedicated endpoints to:
 
@@ -18,7 +18,7 @@ However, if you need to automate application management and integrate external t
 * Delete existing applications
 * Enable/Disable - control application availability
 
-For detailed reference see [User application resources](https://navixy-docs.gitbook.io/navixy-documentation-hub/platform-api/introduction/resources/commons/user/user-applications/user).
+For detailed reference see [User application resources](broken-reference).
 
 ## How to create a new application
 
