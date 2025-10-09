@@ -19,7 +19,3 @@
   * [Asset](endpoint-reference/api-reference/asset.md)
   * [Asset type](endpoint-reference/api-reference/asset-type.md)
   * [Asset link](endpoint-reference/api-reference/asset-link.md)
-
-***
-
-* [Storage](storage.md)
