@@ -18,7 +18,7 @@ However, if you need to automate application management and integrate external t
 * Delete existing applications
 * Enable/Disable - control application availability
 
-For detailed reference see [User application resources](broken-reference).
+For detailed reference see [User application resources](/broken/pages/0581b45ef03198e50e462ac93e42a311efe2b379).
 
 ## How to create a new application
 
@@ -61,3 +61,17 @@ curl -X POST "https://api.navixy.com/v2/user/application/create" \
 ```
 
 This confirms that the application has been successfully created with the ID `12345`.
+
+## How to authenticate custom applications
+
+You can integrate custom applications with Navixy using **Authentication Gateway**. This middleware enables your applications to use Navixy's authentication system, so users can access your tools with their existing Navixy credentials without separate configurations. As a result, your app users won't need to authenticate on their own, it will be handled on the backend.
+
+The **Authentication Gateway** provides your application with:
+
+* Automatic user authentication through Navixy sessions
+* Secure database access credentials for IoT and user data
+* Session management and token-based API authorization
+
+Common examples include custom dashboards, analytics tools, and business system integrations.
+
+For technical implementation details, see [Authentication Gateway](authentication-gateway.md).

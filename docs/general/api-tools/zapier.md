@@ -35,23 +35,23 @@ Example use cases include:
 3. **Access Navixy Triggers and Actions**\
    Open the [invitation link](https://zapier.com/developer/public-invite/150604/58a1e9e9182a0403e11abe7314614505/) to access Navixy triggers and actions. Click "Accept invite & Build a Zap."
 4. **Dashboard Overview**\
-   The dashboard displays all your Zaps. You can create, update, and manage your Zaps here.![Dashboard Zap](../assets/dashboardZap.png)
+   The dashboard displays all your Zaps. You can create, update, and manage your Zaps here.![Dashboard Zap](../../.gitbook/assets/dashboardZap.png)
 
 ### Setting Up a Trigger
 
 1. **Select App**\
    Search for and select the Navixy app.\
-   ![Search for Navixy app](../assets/searchApp.png)
+   ![Search for Navixy app](../../.gitbook/assets/searchApp.png)
 2.  **Configure Trigger**\
     Choose "New Tracker Event" as the trigger. Connect your account by providing a User Session Key or an API key.\
-    ![New account connect](../assets/newAccountConnect.png)
+    ![New account connect](../../.gitbook/assets/newAccountConnect.png)
 
     Obtain a User Session Key from Navixy Admin Panel -> Users -> User -> Get session key. For API keys, refer to [authentication](../../user-api/backend-api/getting-started/authentication.md).
 
     Select the correct server (US for accounts starting with 1000xxxx, otherwise EU).
 3. **Specify Trigger Details**
-   * **Tracker IDs:** Find them in the admin panel or user interface.![Tracker ID admin panel](../assets/trackerIDPanel.png)\
-     ![Tracker ID user interface](../assets/trackerIDUI.png)
+   * **Tracker IDs:** Find them in the admin panel or user interface.![Tracker ID admin panel](../../.gitbook/assets/trackerIDPanel.png)\
+     ![Tracker ID user interface](../../.gitbook/assets/trackerIDUI.png)
    * **Event Types:** Specify one or multiple event types separated by comma from the provided list by click on the parameter name in Zapier or using [history/type/list](../../user-api/backend-api/resources/commons/history/history_type.md#list) API request.
    * **Account's Time Zone:** Specify the time zone (e.g., UTC+3 as 3).
    * **Time Interval:** Set the interval for event checks in minutes (e.g., 15 minutes).
@@ -62,33 +62,33 @@ Choose one of the following actions based on your device and use case.
 
 1.  **Set Output**\
     For devices that change one output at a time.\
-    ![Choose set output](../assets/choose-set-output.png)\
+    ![Choose set output](../../.gitbook/assets/choose-set-output.png)\
     Provide:
 
     * Tracker ID
     * Output number
     * Output state (enable/disable)
 
-    ![Set output settings](../assets/set-output-settings.png)
+    ![Set output settings](../../.gitbook/assets/set-output-settings.png)
 2.  **Set Outputs**
 
-    For devices that change multiple outputs with one command.![Choose set outputs](../assets/choose-set-outputs.png)\
+    For devices that change multiple outputs with one command.![Choose set outputs](../../.gitbook/assets/choose-set-outputs.png)\
     Provide:
 
     * Tracker ID
     * Output states (e.g., true,true,false for outputs 1, 2, and 3)
 
-    ![Set outputs settings](../assets/set-outputs-settings.png)
+    ![Set outputs settings](../../.gitbook/assets/set-outputs-settings.png)
 3.  **Send GPRS Command**
 
-    For sending specific commands to a device, such as switching a digital output.![Choose send GPRS command](../assets/choose-send-gprs-command.png)
+    For sending specific commands to a device, such as switching a digital output.![Choose send GPRS command](../../.gitbook/assets/choose-send-gprs-command.png)
 
     Provide:
 
     * Tracker ID
     * Command (protocol-related command for the device)
 
-    ![Set send GPRS command settings](../assets/set-send-gprs-command-settings.png)
+    ![Set send GPRS command settings](../../.gitbook/assets/set-send-gprs-command-settings.png)
 
 ### Results
 

@@ -47,7 +47,7 @@ The Postman API client simplifies sending API requests and ensures that paramete
 
 1.  **Select a Request Method:**
 
-    ![Select request method in Postman](../assets/postman_select.png)
+    ![Select request method in Postman](../../.gitbook/assets/postman_select.png)
 
     Each API request uses an HTTP method. The most common methods for the Navixy API are GET and POST. GET retrieves data from the API, while POST sends new data.
 2.  **Enter the Base Request URL with the Resource and Sub-resource:**
@@ -57,57 +57,57 @@ The Postman API client simplifies sending API requests and ensures that paramete
     * For EU server - `https://api.eu.navixy.com/v2/`
     * For US server - `https://api.us.navixy.com/v2/`
 
-    ![Enter URL](../assets/enter-url.png)
+    ![Enter URL](../../.gitbook/assets/enter-url.png)
 3.  **Click on the Params Button:**
 
-    ![Enter params](../assets/postman_params.png)
+    ![Enter params](../../.gitbook/assets/postman_params.png)
 
     Fill in the fields - Key (parameter name from documentation) and value. For the `user/auth` request, we have 2 keys that should be transmitted - login and password.
 
     Once you fill out the parameter name, it is automatically added to the request line.
 
-    ![Enter params](../assets/postman_params2.png)
+    ![Enter params](../../.gitbook/assets/postman_params2.png)
 
     Similarly, with values and additional parameters:
 
-    ![Enter params](../assets/postman_params3.png)
+    ![Enter params](../../.gitbook/assets/postman_params3.png)
 
-    ![Enter params](../assets/postman_params4.png)
+    ![Enter params](../../.gitbook/assets/postman_params4.png)
 4.  **Press Send:**
 
     You will see the reply, already split and highlighted for easier reading:
 
-    ![Enter params](../assets/postman_body.png)
+    ![Enter params](../../.gitbook/assets/postman_body.png)
 
     In this case, we have received a hash that should be copied and used for future requests.
 
     Example: [`tracker/list request`](../../user-api/backend-api/resources/tracking/tracker/index.md#list)
 
-    ![Enter params](../assets/postman_tracker_list.png)
+    ![Enter params](../../.gitbook/assets/postman_tracker_list.png)
 
 ### Managing Parameters
 
 If your request has multiple parameters listed, you can easily enable and disable them to prevent errors:
 
-![Enter params](../assets/postman_params5.gif)
+![Enter params](../../.gitbook/assets/postman_params5.gif)
 
 ### Request History
 
 Postman keeps a history of your requests on the left side of the application. You can revisit and re-execute previous requests with a simple double-click, opening them in a new tab:
 
-![Enter params](../assets/postman_response.gif)
+![Enter params](../../.gitbook/assets/postman_response.gif)
 
 ## Examples in Documentation
 
 The Navixy API documentation includes both the structure of requests and examples. You can copy these examples into Postman, where parameters will be automatically parsed for convenient editing:
 
-![Enter params](../assets/postman_apn.png)
+![Enter params](../../.gitbook/assets/postman_apn.png)
 
 ### Importing cURL Examples into Postman
 
 You can also import cURL examples from our documentation into Postman. Copy the cURL example, open the import tab in Postman, choose Raw Text, paste the example, and save it:
 
-![Enter params](../assets/postman_curl_in.png)
+![Enter params](../../.gitbook/assets/postman_curl_in.png)
 
 ## See Also
 

@@ -171,6 +171,7 @@
           * [User settings](user-api/backend-api/resources/commons/user/settings/index.md)
           * [User UI settings](user-api/backend-api/resources/commons/user/settings/ui.md)
         * [User applications](user-api/backend-api/resources/commons/user/applications/README.md)
+          * [Authentication Gateway](user-api/backend-api/resources/commons/user/applications/authentication-gateway.md)
           * ```yaml
             props:
               models: true
