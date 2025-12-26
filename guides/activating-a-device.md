@@ -1,2 +1,3 @@
 # Activating a device
 
+.
