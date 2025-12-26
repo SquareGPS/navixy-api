@@ -12,13 +12,13 @@ Fetch any entity by ID using Node interface. Returns null if not found or no per
 node(id: UUID!): Node
 ```
 
-**Arguments** [Test Link](/broken/pages/87b2de11c9b28a408ba4d23469810d22bffa4482#devicevendor/)
+**Arguments** [Test Link](objects.md#devicevendor/)
 
-| Name | Type                                                                          | Description |
-| ---- | ----------------------------------------------------------------------------- | ----------- |
-| `id` | [UUID!](/broken/pages/87b2de11c9b28a408ba4d23469810d22bffa4482#devicevendor/) |             |
+| Name | Type                              | Description |
+| ---- | --------------------------------- | ----------- |
+| `id` | [UUID!](objects.md#devicevendor/) |             |
 
-**Returns:** [Node](/broken/pages/87b2de11c9b28a408ba4d23469810d22bffa4482#devicevendor/)
+**Returns:** [Node](../guides/api-reference/objects.md#devicevendor/)
 
 ### me
 
@@ -28,9 +28,7 @@ Returns currently authenticated user
 me: User!
 ```
 
-**Returns:** [User!](/broken/pages/85b97473468fdac6e2dd46261330d3b3db6bd8e5#user/)
-
-
+**Returns:** [User!](../guides/objects/#user/)
 
 ## Devices
 
@@ -44,11 +42,11 @@ deviceVendor(id: UUID!): DeviceVendor
 
 **Arguments**
 
-| Name | Type                                                                          | Description |
-| ---- | ----------------------------------------------------------------------------- | ----------- |
-| `id` | [UUID!](/broken/pages/6c264ffed958b282523993a66940ff39bc0f7e0d#devicevendor/) |             |
+| Name | Type                            | Description |
+| ---- | ------------------------------- | ----------- |
+| `id` | [UUID!](objects/#devicevendor/) |             |
 
-**Returns:** [DeviceVendor](/broken/pages/6c264ffed958b282523993a66940ff39bc0f7e0d#devicevendor)
+**Returns:** [DeviceVendor](objects/#devicevendor)
 
 ### deviceVendors
 
@@ -58,7 +56,7 @@ List all device vendors
 deviceVendors: [DeviceVendor!]!
 ```
 
-**Returns:** [\[DeviceVendor!\]!](/broken/pages/6c264ffed958b282523993a66940ff39bc0f7e0d#devicevendor)
+**Returns:** [\[DeviceVendor!\]!](objects/#devicevendor)
 
 ### deviceModel
 
@@ -70,8 +68,8 @@ deviceModel(id: UUID!): DeviceModel
 
 **Arguments**
 
-| Name | Type                                                                 | Description |
-| ---- | -------------------------------------------------------------------- | ----------- |
-| `id` | [UUID!](/broken/pages/477c545e93ca417cba0c4d704eedfe0b8bcb61a0#uuid) |             |
+| Name | Type                           | Description |
+| ---- | ------------------------------ | ----------- |
+| `id` | [UUID!](../guides/types/#uuid) |             |
 
-**Returns:** [DeviceModel](/broken/pages/6c264ffed958b282523993a66940ff39bc0f7e0d#devicemodel)
+**Returns:** [DeviceModel](../guides/api-reference/objects/#devicemodel)
