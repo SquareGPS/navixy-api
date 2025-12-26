@@ -7,6 +7,8 @@ Within a user account, you can activate:
 * Any GPS tracking device listed in the [supported models](https://navixy.com/devices) list
 * X-GPS Mobile Apps
 
+{% include "https://app.gitbook.com/s/446mKak1zDrGv70ahuYZ/~/reusable/nl6xxobcEsdA5WkJrhd8/" %}
+
 Follow these steps to successfully activate your device on the platform:
 
 **Step 1: Verify device model support**

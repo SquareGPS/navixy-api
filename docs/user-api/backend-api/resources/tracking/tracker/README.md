@@ -8,6 +8,8 @@ description: >-
 
 This document contains tracker object structure and API calls to interact with it. Tracker is one of the key entities in our API. It represents tracking device registered in our GPS monitoring system. Lots of API calls created for manipulation of tracker and/or its properties.
 
+{% include "https://app.gitbook.com/s/446mKak1zDrGv70ahuYZ/~/reusable/nl6xxobcEsdA5WkJrhd8/" %}
+
 ## Tracker object structure
 
 ```json
