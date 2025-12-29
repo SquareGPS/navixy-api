@@ -2,9 +2,9 @@
 description: Integrate custom applications with Navixy authentication
 ---
 
-# Authentication Gateway
+# App Connect
 
-The Dashboard Middleware is an authentication gateway that enables you to build custom applications integrating with Navixy without implementing your own user management system. Users authenticate once through their Navixy account, and your application receives secure database access credentials automatically.
+Navixy App Connect is an authentication gateway that enables you to build custom applications integrating with Navixy without implementing your own user management system. Users authenticate once through their Navixy account, and your application receives secure database access credentials automatically.
 
 The middleware acts as an authentication proxy that:
 
@@ -376,7 +376,7 @@ app.get('/api/devices/:deviceId/telemetry', async (req, res) => {
 
 ## Checklist
 
-Before integrating with the Dashboard Middleware, ensure your application:
+Before integrating with App Connect, ensure your application:
 
 * [ ] Implements `POST /api/auth/login` endpoint
 * [ ] Accepts `email`, `iotDbUrl`, `userDbUrl`, and `role` in request body

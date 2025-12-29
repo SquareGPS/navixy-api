@@ -74,4 +74,4 @@ The **Authentication Gateway** provides your application with:
 
 Common examples include custom dashboards, analytics tools, and business system integrations.
 
-For technical implementation details, see [Authentication Gateway](authentication-gateway.md).
+For technical implementation details, see [Authentication Gateway](app-connect.md).
