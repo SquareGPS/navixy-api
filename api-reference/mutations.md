@@ -397,7 +397,7 @@ createGeoObject(input: CreateGeoObjectInput!): GeoObject!
 | `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Organization that will own the geo object |
 | `typeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Geo object type classification |
 | `title` | `String!` | Geo object display name |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Must include 'geojson' field with GeoJSON geometry |
+| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Must include 'geojson' field with [GeoJSON](https://geojson.org/) geometry |
 
 **Returns:** [GeoObject!](/api-reference/objects.md#geoobject/)
 

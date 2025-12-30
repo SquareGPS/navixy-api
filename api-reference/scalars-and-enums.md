@@ -8,19 +8,39 @@ Navixy Repository API defines these custom scalar types in addition to the stand
 
 ### UUID
 
-UUID scalar type following RFC 9562. Format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx UUID v8 (RFC 9562) with custom layout: | Field | Bits | Description | |-----------------|--------|------------------------------------------| | Timestamp | 0-47 | Unix ms | | Version | 48-51 | Fixed: 8 | | Counter | 52-63 | Uniqueness within ms (0-4095) | | Variant | 64-65 | Fixed: 10 (RFC 4122) | | Deployment | 66 | 0=SaaS, 1=On-Premise | | Reserved | 67-74 | Future use (sharding), zeros now | | Region | 75-79 | Data region (0-30), 31=test/default | | Entity Type | 80-111 | 4 ASCII chars (bytes 10-13, visible in hex) | | Random | 112-127| Crypto-random or type-specific data | Entity type codes are visible in the last UUID segment for easy debugging.
+Universally unique identifier following [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562). Entity type codes are embedded in the last segment for easy debugging.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
+| Example | `550e8400-e29b-41d4-a716-446655440000` |
 
 ### DateTime
 
-ISO 8601 datetime with timezone. Format: YYYY-MM-DDTHH:mm:ss.sssZ or YYYY-MM-DDTHH:mm:ss±HH:MM Example: 2025-01-15T14:30:00.000Z
+[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with timezone.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `YYYY-MM-DDTHH:mm:ss.sssZ` |
+| Example | `2025-01-15T14:30:00.000Z` |
 
 ### Date
 
-ISO 8601 date without time component. Format: YYYY-MM-DD Example: 2025-01-15
+[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date without time component.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `YYYY-MM-DD` |
+| Example | `2025-01-15` |
 
 ### JSON
 
 Arbitrary JSON object. Used for custom fields data, extra fields, and flexible configurations.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `Any valid JSON` |
+| Example | `{"key": "value", "count": 42}` |
 
 ## Enums
 
@@ -48,7 +68,7 @@ Data types for custom field definitions. Determines validation, storage, and UI 
 | `BOOLEAN` | True/false flag |
 | `DATE` | Date without time (YYYY-MM-DD) |
 | `DATETIME` | Date with time and timezone |
-| `GEOJSON` | GeoJSON geometry (Point, Polygon, LineString, etc.) |
+| `GEOJSON` | [GeoJSON](https://geojson.org/) geometry (Point, Polygon, LineString, etc.) |
 | `SCHEDULE` | Schedule/calendar data in JSON format |
 | `OPTIONS` | Selection from predefined options list |
 | `DEVICE` | Reference to Device entity |

@@ -159,7 +159,7 @@ Geographic object (geofence, POI, route). Geometry is stored in customFields as 
 | `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
 | `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
 | `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Custom fields including 'geojson' system field. geojson contains GeoJSON geometry (Point, Polygon, etc.) |
+| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Custom fields including 'geojson' system field. geojson contains [GeoJSON](https://geojson.org/) geometry (Point, Polygon, etc.) |
 
 ## Schedules
 
@@ -464,7 +464,7 @@ Parameters for GEOJSON field type
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `allowedTypes` | `[String!]` | Allowed GeoJSON geometry types. Examples: Point, Polygon, LineString, MultiPolygon Null means all types allowed. |
+| `allowedTypes` | `[String!]` | Allowed [GeoJSON](https://geojson.org/) geometry types. Examples: Point, Polygon, LineString, MultiPolygon Null means all types allowed. |
 
 ### FieldParamsSchedule
 
@@ -608,7 +608,8 @@ Pagination info following Relay Cursor Connections specification. Cursors are op
 | `hasPreviousPage` | `Boolean!` | Whether more items exist before current page |
 | `startCursor` | `String` | Cursor pointing to first item in current page |
 | `endCursor` | `String` | Cursor pointing to last item in current page |
-| `totalCount` | `Int` | Total count of items matching filter. May be null if counting is too expensive. For large datasets, consider using approximate count or dedicated count query. |
+| `totalCount` | `Int` | Total count of items matching filter. Null if counting is too expensive. |
+| `totalCountIsApproximate` | `Boolean` | True if totalCount is approximate (e.g., from pg_class.reltuples). Null or false means exact count. |
 
 ### DeviceConnection
 
@@ -1086,7 +1087,7 @@ Tag for labeling entities. Tags can be universal or restricted to specific entit
 
 ### Country
 
-Country reference data. ISO 3166-1 country codes and names.
+Country reference data. [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) country codes and names.
 
 **Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
 
