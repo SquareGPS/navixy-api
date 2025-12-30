@@ -1,6 +1,6 @@
 # Scalars & enums
 
-This page documents scalar types, enumerations, and interfaces used throughout the API.
+This page documents scalars and enumerations used throughout the API.
 
 ### Scalars
 

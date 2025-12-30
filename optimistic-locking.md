@@ -93,7 +93,7 @@ If you receive a conflict error:
 
 ### Subscriptions
 
-When receiving entity updates through subscriptions, the payload includes the current version for use in subsequent mutations:
+When receiving entity updates through [subscriptions](api-reference-old/subscriptions.md), the payload includes the current version for use in subsequent mutations:
 
 ```graphql
 subscription {
