@@ -573,4 +573,4 @@ It will return all operations (queries, mutations, subscriptions) and every type
 Now that you understand the basics:
 
 * [Learn how to set up authentication and make your first request](getting-started.md)
-* [Browse available operations and types](api-reference-old/)
+* [Browse available operations and types](api-reference/)

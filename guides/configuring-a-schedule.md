@@ -1,3 +1,7 @@
+---
+description: old version
+---
+
 # Configuring a schedule
 
 **Schedules** in Navixy Repository API represent RFC 5545-compliant calendar events that support recurrence rules, exceptions, and metadata. This compliance enables integration with industry-standard calendar systems such as Google Calendar, Outlook, and Apple Calendar, allowing you to import and export scheduling data across platforms. You can define events with repeating patterns, specify exceptions for holidays, and enrich them with custom metadata.

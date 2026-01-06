@@ -15,7 +15,6 @@
   * [Configuring a schedule](guides/configuring-a-schedule.md)
   * [Creating a geo object](guides/creating-a-geo-object.md)
   * [Configuring user permissions](guides/configuring-user-permissions.md)
-  * [test](guides/test.md)
 * [API reference\_old](api-reference-old/README.md)
   * [Queries](api-reference-old/queries.md)
   * [Mutations](api-reference-old/mutations.md)

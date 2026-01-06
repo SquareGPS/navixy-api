@@ -1,3 +1,7 @@
+---
+description: old version
+---
+
 # Creating an asset
 
 An asset represents a trackable unit with a clear business purpose. While assets are stored in the system independently, using them involves assigning them activated GPS devices — or, in the API terms, **inventory items**. Multiple items can be assigned to a single asset.
