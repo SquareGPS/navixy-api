@@ -290,7 +290,7 @@ This requests the first 10 devices from a specific organization with a specific 
 
 ### Types
 
-Every field in GraphQL has a type that defines what kind of data it holds. It can be predefined, like string or boolean, or API-specific, like [DeviceIdType](api-reference-old/scalars-and-enums.md#deviceidtype). Understanding types helps you read the API reference and write correct queries.
+Every field in GraphQL has a type that defines what kind of data it holds. It can be predefined, like string or boolean, or API-specific, like [DeviceIdType](/broken/pages/RlJRqjUPpMnEo0YxTy7Z#deviceidtype). Understanding types helps you read the API reference and write correct queries.
 
 #### Scalar types
 

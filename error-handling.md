@@ -148,7 +148,6 @@ Returned when the entity was modified by another request since you last fetched 
       "entityId": "550e8400-e29b-41d4-a716-446655440001",
       "expectedVersion": 5,
       "currentVersion": 6,
-      "currentETag": "device:550e8400-e29b-41d4-a716-446655440001:6",
       "traceId": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
       "timestamp": "2025-01-15T14:30:00.000Z"
     }
@@ -156,43 +155,7 @@ Returned when the entity was modified by another request since you last fetched 
 }
 ```
 
-**How to handle:** Fetch the entity again to get the current data and ETag, merge your changes if needed, and retry with the new `If-Match` header.
-
-### How to handle errors in code
-
-Here's a pattern for handling API errors in the application:
-
-```javascript
-function handleGraphQLError(error) {
-  const ext = error.extensions;
-  
-  // 1. Log traceId for debugging and support requests
-  console.error(`Error [${ext.traceId}]: ${ext.detail}`);
-  
-  // 2. Route to the appropriate handler based on the error code
-  switch (ext.code) {
-    case 'CONFLICT':
-      // Refetch the entity and retry with the new ETag
-      return retryWithNewVersion(ext.currentETag);
-      
-    case 'VALIDATION_ERROR':
-      // Display error message next to the invalid field
-      return showFieldError(ext.field, ext.detail);
-      
-    case 'PERMISSION_DENIED':
-      // Inform the user which action they lack permission for
-      return showPermissionError(ext.requiredAction);
-      
-    case 'NOT_FOUND':
-      // Redirect to a list view or show "not found" message
-      return handleNotFound(ext.entityType, ext.entityId);
-      
-    default:
-      // Display a detailed error message to the user
-      return showError(ext.detail);
-  }
-}
-```
+**How to handle:** Fetch the entity again to get the current version, merge your changes if needed, and retry with the new version in your update input.
 
 ### Best practices
 
