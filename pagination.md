@@ -2,7 +2,7 @@
 
 When querying lists of entities (devices, assets, users, etc.), the API returns paginated results. This prevents overwhelming responses when you have thousands of records.
 
-### The Connection pattern
+## The Connection pattern
 
 Navixy Repository API uses [Relay Cursor Connections](https://relay.dev/graphql/connections.htm), a pagination standard from the GraphQL community. Instead of traditional page numbers, it uses opaque cursors that point to specific positions in the result set.
 
@@ -12,94 +12,128 @@ Using cursors instead of page numbers enables the following:
 * Efficient: The database can resume from exact positions without re-scanning.
 * Flexible: Works well with real-time data that changes frequently.
 
-#### Structure
+### Structure
 
 Every paginated query returns a **Connection** type with this structure:
 
 ```graphql
 type DeviceConnection {
-  edges: [DeviceEdge!]!      # List of results with cursors
-  pageInfo: PageInfo!         # Pagination metadata
+  edges: [DeviceEdge!]!           # List of results with cursors
+  nodes: [Device!]!               # Direct access to entities (shorthand)
+  pageInfo: PageInfo!             # Pagination metadata
+  totalCount: Int                 # Total matching items (may be null)
+  totalCountPrecision: CountPrecision  # Precision of totalCount
 }
 
 type DeviceEdge {
-  node: Device!               # The actual entity
-  cursor: String!             # Position marker for this item
+  node: Device!                   # The actual entity
+  cursor: String!                 # Position marker for this item
 }
 
 type PageInfo {
-  hasNextPage: Boolean!       # More items after this page?
-  hasPreviousPage: Boolean!   # More items before this page?
-  startCursor: String         # Cursor of first item in this page
-  endCursor: String           # Cursor of last item in this page
-  totalCount: Int             # Total matching items (may be null for large datasets)
+  hasNextPage: Boolean!           # More items after this page?
+  hasPreviousPage: Boolean!       # More items before this page?
+  startCursor: String             # Cursor of first item in this page
+  endCursor: String               # Cursor of last item in this page
 }
 ```
 
-#### Reading results
+### Reading results
 
-To get the actual entities from a paginated response, access them through `edges[].node`. Check `pageInfo.hasNextPage` to determine if more data is available.
+You can access entities in two ways:
 
-### Pagination parameters
+* `edges[].node` : includes cursor for each item (useful when you need cursors)
+* `nodes[]` : direct array of entities (simpler when you only need the data)
+
+Check `pageInfo.hasNextPage` to determine if more data is available.
+
+## Pagination parameters
 
 Use `PaginationInput` to control which page of results you receive:
 
-| Parameter | Type   | Description                               |
-| --------- | ------ | ----------------------------------------- |
-| `first`   | Int    | Number of items to fetch from the start   |
-| `after`   | String | Cursor — fetch items after this position  |
-| `last`    | Int    | Number of items to fetch from the end     |
-| `before`  | String | Cursor — fetch items before this position |
+<table><thead><tr><th width="100">Parameter</th><th width="100">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>first</code></td><td>Int</td><td>Number of items to fetch from the start (default: 20, max: 100)</td></tr><tr><td><code>after</code></td><td>String</td><td>Cursor — fetch items after this position</td></tr><tr><td><code>last</code></td><td>Int</td><td>Number of items to fetch from the end</td></tr><tr><td><code>before</code></td><td>String</td><td>Cursor — fetch items before this position</td></tr></tbody></table>
 
 Use `first`/`after` for forward pagination (most common). Use `last`/`before` for backward pagination.
 
-### Forward pagination
+## Sorting
 
-Start by requesting the first page, then use `endCursor` to get subsequent pages.
-
-#### First page
+Use the `orderBy` parameter to control the order of results. Each entity type has its own order input with supported fields:
 
 ```graphql
 query {
   devices(
-    filter: { organizationId: "your-organization-uuid" }
-    pagination: { first: 20 }
+    organizationId: "your-organization-uuid"
+    orderBy: { field: TITLE, direction: ASC }
   ) {
-    edges {
-      node {
-        id
-        title
-        status { code title }
-      }
-      cursor
-    }
-    pageInfo {
-      hasNextPage
-      endCursor
-      totalCount
+    nodes {
+      id
+      title
     }
   }
 }
 ```
 
-#### Next page
+The `direction` can be `ASC` (ascending) or `DESC` (descending).
+
+Some entity types also support sorting by custom fields:
+
+```graphql
+query {
+  devices(
+    organizationId: "your-organization-uuid"
+    orderBy: { customFieldCode: "priority", direction: DESC }
+  ) {
+    nodes {
+      id
+      title
+    }
+  }
+}
+```
+
+## Forward pagination
+
+Start by requesting the first page, then use `endCursor` to get subsequent pages.
+
+### First page
+
+```graphql
+query {
+  devices(
+    organizationId: "your-organization-uuid"
+    pagination: { first: 20 }
+  ) {
+    nodes {
+      id
+      title
+      status { code title }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    totalCount
+    totalCountPrecision
+  }
+}
+```
+
+### Next page
 
 To fetch the next page, pass `endCursor` from the previous response as the `after` parameter:
 
 ```graphql
 query {
   devices(
-    filter: { organizationId: "your-organization-uuid" }
+    organizationId: "your-organization-uuid"
     pagination: { 
       first: 20
       after: "cursor-from-previous-response"
     }
   ) {
-    edges {
-      node {
-        id
-        title
-      }
+    nodes {
+      id
+      title
     }
     pageInfo {
       hasNextPage
@@ -111,21 +145,19 @@ query {
 
 Repeat this pattern — using each response's `endCursor` as the next request's `after` — until `hasNextPage` is `false`.
 
-### Backward pagination
+## Backward pagination
 
 Use `last` and `before` to paginate from the end of the result set. This is useful for showing the most recent items first.
 
 ```graphql
 query {
   auditEvents(
-    filter: { organizationId: "your-organization-uuid" }
+    organizationId: "your-organization-uuid"
     pagination: { last: 20 }
   ) {
-    edges {
-      node {
-        eventType
-        occurredAt
-      }
+    nodes {
+      eventType
+      occurredAt
     }
     pageInfo {
       hasPreviousPage
@@ -140,17 +172,15 @@ To get the previous page, use `startCursor` as the `before` parameter:
 ```graphql
 query {
   auditEvents(
-    filter: { organizationId: "your-organization-uuid" }
+    organizationId: "your-organization-uuid"
     pagination: { 
       last: 20
       before: "cursor-from-previous-response"
     }
   ) {
-    edges {
-      node {
-        eventType
-        occurredAt
-      }
+    nodes {
+      eventType
+      occurredAt
     }
     pageInfo {
       hasPreviousPage
@@ -160,60 +190,44 @@ query {
 }
 ```
 
-### Combining with filters and sorting
+## Understanding totalCount
 
-Pagination works with filters and sorting. The `totalCount` reflects filtered results:
+The `totalCount` field returns the total number of items matching your filter. Because counting can be expensive for large datasets, the API provides a `totalCountPrecision` field that indicates how the count was determined:
+
+<table><thead><tr><th width="159.20001220703125">Precision</th><th>Meaning</th></tr></thead><tbody><tr><td><code>EXACT</code></td><td>Precise count from a full database scan</td></tr><tr><td><code>APPROXIMATE</code></td><td>Estimate from table statistics (faster but less accurate)</td></tr><tr><td><code>AT_LEAST</code></td><td>Counting stopped early; at least this many items exist</td></tr></tbody></table>
 
 ```graphql
 query {
   devices(
-    filter: { 
-      organizationId: "your-organization-uuid"
-      statusId: "active-status-uuid"
-      title: "Truck"
-    }
+    organizationId: "your-organization-uuid"
     pagination: { first: 50 }
-    sort: ["title:ASC", "createdAt:DESC"]
   ) {
-    edges {
-      node {
-        id
-        title
-        createdAt
-      }
+    nodes {
+      id
+      title
     }
-    pageInfo {
-      hasNextPage
-      endCursor
-      totalCount
-    }
+    totalCount           # e.g., 1523
+    totalCountPrecision  # e.g., EXACT or APPROXIMATE
   }
 }
 ```
 
-### Best practices
+For large datasets, the API may return an approximate count or `null` to maintain performance. Design your UI to handle these cases gracefully — for example, display "About 10,000 results" or "1,000+ results" instead of requiring an exact number.
 
-#### Choose an appropriate page size
+## Best practices
+
+### Choose an appropriate page size
 
 * **UI lists**: 20–50 items per page
-* **Background sync**: 100–200 items per page
-* **Maximum**: The API may limit page size; check error responses
+* **Background sync**: Up to 100 items per page
+* **Default**: 20 items if not specified
+* **Maximum**: 100 items per request
 
-#### Use totalCount carefully
+### Keep sort parameters consistent
 
-`totalCount` requires counting all matching records, which can be expensive:
+Cursors encode the sort position, so changing `orderBy` between requests invalidates existing cursors. Always use the same `orderBy` value when paginating through a result set. If you need a different sort order, start pagination from the beginning.
 
-* **< 10K records**: Returns exact count
-* **10K – 100K records**: Returns exact count but may be slow
-* **> 100K records**: May return an approximate value or `null`
-
-Only request `totalCount` when you need to display totals. For large datasets, consider UI patterns that don't require exact counts, such as "Showing 50 of 10,000+" infinite scroll with a "Load more" button, or "More than 1000 results found" without a specific number.
-
-#### Keep sort parameters consistent
-
-Cursors encode the sort position, so changing sort parameters between requests invalidates existing cursors. Always use the same `sort` value when paginating through a result set. If you need a different sort order, start pagination from the beginning.
-
-#### Don't store cursors long-term
+### Don't store cursors long-term
 
 Cursors are meant for immediate pagination within a session. They may become invalid after:
 
@@ -221,35 +235,20 @@ Cursors are meant for immediate pagination within a session. They may become inv
 * Server updates
 * Extended time periods
 
-#### Handle empty results
+### Handle empty results
 
-Always check for empty edge arrays before processing results.
+Always check for empty `nodes` or `edges` arrays before processing results.
 
-#### No random page access
+### No random page access
 
 Cursor-based pagination doesn't support "jump to page 50" — you can only navigate sequentially through results. This is a deliberate trade-off for stability and performance. If you need random access to pages, consider limiting the result set with filters first.
 
-### Paginated queries reference
+## Paginated queries reference
 
 These queries support pagination:
 
-| Query           | Returns                |
-| --------------- | ---------------------- |
-| `devices`       | DeviceConnection       |
-| `assets`        | AssetConnection        |
-| `organizations` | OrganizationConnection |
-| `users`         | UserConnection         |
-| `geoObjects`    | GeoObjectConnection    |
-| `schedules`     | ScheduleConnection     |
-| `auditEvents`   | AuditEventConnection   |
+<table><thead><tr><th width="262.4000244140625">Query</th><th>Returns</th></tr></thead><tbody><tr><td><code>devices</code></td><td><a href="api-reference/objects.md#deviceconnection">DeviceConnection</a></td></tr><tr><td><code>assets</code></td><td><a href="api-reference/objects.md#assetconnection">AssetConnection</a></td></tr><tr><td><code>assetGroups</code></td><td>AssetGroupConnection</td></tr><tr><td><code>organizations</code></td><td>OrganizationConnection</td></tr><tr><td><code>members</code></td><td>MemberConnection</td></tr><tr><td><code>integrations</code></td><td>IntegrationConnection</td></tr><tr><td><code>geoObjects</code></td><td>GeoObjectConnection</td></tr><tr><td><code>schedules</code></td><td>ScheduleConnection</td></tr><tr><td><code>inventories</code></td><td>InventoryConnection</td></tr><tr><td><code>auditEvents</code></td><td>AuditEventConnection</td></tr><tr><td><code>customFieldDefinitions</code></td><td>CustomFieldDefinitionConnection</td></tr></tbody></table>
 
 Nested fields that support pagination:
 
-| Parent type  | Field        | Returns                  |
-| ------------ | ------------ | ------------------------ |
-| Organization | `devices`    | DeviceConnection         |
-| Organization | `assets`     | AssetConnection          |
-| Organization | `geoObjects` | GeoObjectConnection      |
-| Organization | `schedules`  | ScheduleConnection       |
-| AssetGroup   | `history`    | AssetGroupItemConnection |
-| Inventory    | `devices`    | DeviceConnection         |
+<table><thead><tr><th width="168.79998779296875">Parent type</th><th width="148.800048828125">Field</th><th>Returns</th></tr></thead><tbody><tr><td>Organization</td><td><code>devices</code></td><td>DeviceConnection</td></tr><tr><td>Organization</td><td><code>assets</code></td><td>AssetConnection</td></tr><tr><td>Organization</td><td><code>geoObjects</code></td><td>GeoObjectConnection</td></tr><tr><td>Organization</td><td><code>schedules</code></td><td>ScheduleConnection</td></tr><tr><td>AssetGroup</td><td><code>history</code></td><td>AssetGroupItemConnection</td></tr><tr><td>Inventory</td><td><code>devices</code></td><td>DeviceConnection</td></tr></tbody></table>

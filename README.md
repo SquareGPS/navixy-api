@@ -1,14 +1,12 @@
 # Overview
 
-### Introduction
-
 **Navixy Repository API** is a programming interface for managing the organizational structure and business entities of the Navixy platform. It provides a flexible way to define what you track (assets), what tracks them (devices), where things matter (geographic objects), when things happen (schedules), and who can access what (permissions).
 
 **Navixy Repository is based on GraphQL.** Unlike REST APIs where you call multiple endpoints to gather related data, GraphQL allows you to request the exact fields you need in a single query. You describe the shape of the data you want, and the API returns it in that shape.
 
 For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
-### Purpose and capabilities
+## Purpose and capabilities
 
 **Navixy Repository API** enables you to:
 
@@ -22,7 +20,7 @@ For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 * Set up **roles and permissions** to control access at the organization, entity type, or individual record level
 * Subscribe to **real-time events** when entities are created, updated, or deleted
 
-### Key concepts
+## Key concepts
 
 <figure><img src=".gitbook/assets/diagram-logo-final.webp" alt=""><figcaption></figcaption></figure>
 
@@ -30,17 +28,17 @@ The API is organized around these core resources:
 
 <table><thead><tr><th width="138.5999755859375">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>A tenant in the system hierarchy. Organizations own all other resources and can have parent-child relationships.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity.</td></tr><tr><td><strong>Asset type</strong></td><td>Defines the structure of property fields and display configuration for assets. Examples: "Boats", "Cargo", "Warehouse Operators". Supports full customization.</td></tr><tr><td><strong>Asset group</strong></td><td>A custom collection of assets organized by business logic (fleets, departments, shifts). Groups have types that can restrict which asset types they contain.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Inventory</strong></td><td>A logical grouping of devices for stock management (warehouse, vehicle stock, field inventory). Devices are assigned to inventories before being deployed to assets.</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity: geofence, point of interest, or route. Geometry is stored as GeoJSON in the <code>geojson</code> custom field.</td></tr></tbody></table>
 
-### Integration with Navixy APIs
+## Integration with Navixy ecosystem
 
 **Navixy Repository API** works alongside other APIs, including [Navixy API](https://app.gitbook.com/o/YVLWhgAwCZPoU5vlRsCs/s/6dtcPLayxXVB2qaaiuIL/), which handles tracking, GPS device configuration, and reporting, and [IoT Logic API](https://app.gitbook.com/o/YVLWhgAwCZPoU5vlRsCs/s/tx3J5BxnWyPV0nP2xr0z/), a data flow manager that processes and optimizes data flows between IoT devices and destination systems.
 
 \[Integration specifics go here]
 
-### Navigation
+## Navigation
 
 The **Navixy Repository API documentation** is organized into two complementary sections designed to help you understand concepts and implement solutions.
 
-#### Section content
+### Section content
 
 These articles provide essential background knowledge and guidelines:
 
@@ -51,7 +49,7 @@ These articles provide essential background knowledge and guidelines:
 * [**Optimistic locking**](optimistic-locking.md): Description of the optimistic locking feature.
 * [**Guides**](guides/): In-depth guides exploring the most common use cases.
 
-#### API reference
+### API reference
 
 The API reference provides complete technical specifications for GraphQL types and operations:
 
