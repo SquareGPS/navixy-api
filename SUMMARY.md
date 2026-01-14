@@ -22,3 +22,11 @@
   * [Objects](api-reference/objects.md)
   * [Scalars & enums](api-reference/scalars-and-enums.md)
   * [Interfaces](api-reference/interfaces.md)
+* [API reference_old](api-reference_old/README.md)
+  * [Queries](api-reference_old/queries.md)
+  * [Mutations](api-reference_old/mutations.md)
+  * [Subscriptions](api-reference_old/subscriptions.md)
+  * [Objects](api-reference_old/objects.md)
+  * [Scalars & enums](api-reference_old/scalars-and-enums.md)
+  * [Interfaces](api-reference_old/interfaces.md)
+
