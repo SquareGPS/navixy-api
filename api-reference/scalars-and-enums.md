@@ -6,15 +6,6 @@ This page documents scalar and enum types used in Navixy Repository API.
 
 Navixy Repository API defines these custom scalar types in addition to the standard GraphQL scalars. See [GraphQL basics](../graphql-basics.md#scalar-types/) for the description of the predefined scalars (String, Int, Float, Boolean, ID).
 
-### UUID
-
-Universally unique identifier following [RFC 9562](https://datatracker.ietf.org/doc/html/rfc9562). Entity type codes are embedded in the last segment for easy debugging.
-
-| Property | Value |
-| -------- | ----- |
-| Format | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
-| Example | `550e8400-e29b-41d4-a716-446655440000` |
-
 ### DateTime
 
 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with timezone.
@@ -35,113 +26,334 @@ Universally unique identifier following [RFC 9562](https://datatracker.ietf.org/
 
 ### JSON
 
-Arbitrary JSON object. Used for custom fields data, extra fields, and flexible configurations.
+Arbitrary JSON value. Used for custom fields data, extra fields, and flexible configurations.
 
 | Property | Value |
 | -------- | ----- |
 | Format | `Any valid JSON` |
 | Example | `{"key": "value", "count": 42}` |
 
+### GeoJSON
+
+GeoJSON geometry object following [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946).
+
+| Property | Value |
+| -------- | ----- |
+| Format | `{"type": "Point", "coordinates": [lng, lat]}` |
+| Example | `{"type": "Point", "coordinates": [-73.935242, 40.730610]}` |
+
+### Latitude
+
+### Longitude
+
+### Locale
+
+### EmailAddress
+
+### HexColorCode
+
+Hexadecimal color code.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `#RRGGBB or #RGB` |
+| Example | `#FF0000` |
+
+### CountryCode
+
+### Code
+
+Machine-readable identifier code. Case-insensitive, max 64 chars. Allowed: A-Z, 0-9, _, ., -
+
+| Property | Value |
+| -------- | ----- |
+| Format | `String` |
+| Example | `DEVICE_TYPE, status.active` |
+
+### ScheduleData
+
+A schedule data structure containing time intervals and recurrence rules.
+
 ## Enums
 
 Enums represent fixed sets of values. Use the exact value shown when passing as an argument.
 
-### ActorType
+### OrderDirection
 
-Discriminator for actor types in the system. Actors are entities that can perform actions and have permissions.
+The direction for sorting query results.
 
 | Value | Description |
 | ----- | ----------- |
-| `USER` | Human user authenticated via identity provider |
-| `INTEGRATION` | External system integration with API access |
-| `SYSTEM` | Internal system actor for automated operations |
+| `ASC` |  |
+| `DESC` |  |
+
+### CatalogItemOrigin
+
+The origin of a catalog item, indicating how it was created.
+
+| Value | Description |
+| ----- | ----------- |
+| `SYSTEM` | Predefined by platform. Immutable and available to all organizations. |
+| `ORGANIZATION` | Created by the current organization. |
+| `PARENT_ORGANIZATION` | Inherited from a parent organization in the dealer hierarchy. |
+
+### CountPrecision
+
+The precision level of a total count value.
+
+| Value | Description |
+| ----- | ----------- |
+| `EXACT` |  |
+| `APPROXIMATE` | The count is approximate, derived from table statistics. |
+| `AT_LEAST` | At least this many items exist. Counting stopped early for performance reasons. |
+
+### OrganizationFeature
+
+Feature flags that can be enabled for an organization.
+
+| Value | Description |
+| ----- | ----------- |
+| `DEALER` |  |
+| `WHITELABEL` | The organization has custom branding including domain, logo, and color scheme. |
 
 ### FieldType
 
-Data types for custom field definitions. Determines validation, storage, and UI rendering.
+The data type of a custom field, determining validation rules and UI rendering.
 
 | Value | Description |
 | ----- | ----------- |
-| `STRING` | Single-line text, max 255 characters by default |
-| `TEXT` | Multi-line text, unlimited length |
-| `NUMBER` | Numeric value (integer or decimal) |
-| `BOOLEAN` | True/false flag |
-| `DATE` | Date without time (YYYY-MM-DD) |
-| `DATETIME` | Date with time and timezone |
-| `GEOJSON` | [GeoJSON](https://geojson.org/) geometry (Point, Polygon, LineString, etc.) |
-| `SCHEDULE` | Schedule/calendar data in JSON format |
-| `OPTIONS` | Selection from predefined options list |
-| `DEVICE` | Reference to Device entity |
-| `REFERENCE` | Reference to any entity by type |
-| `CATALOG` | Reference to catalog item |
-| `TAG` | Reference to Tag entity |
+| `STRING` | Single-line text input. Maximum 255 characters. |
+| `TEXT` | Multi-line text input. Maximum 65,535 characters. |
+| `NUMBER` | Numeric value, supporting both integers and decimals. |
+| `BOOLEAN` | Boolean true/false value. |
+| `DATE` |  |
+| `DATETIME` | Date and time with timezone information. |
+| `GEOJSON` |  |
+| `SCHEDULE` | Schedule or calendar data with time intervals and recurrence rules. |
+| `OPTIONS` | Selection from a predefined list of options. |
+| `DEVICE` | Reference to a Device entity. |
+| `REFERENCE` | Reference to any entity by its type and ID. |
+| `CATALOG` | Reference to a catalog item. |
+| `TAG` | Reference to a Tag entity. |
 
 ### DeviceIdType
 
-Hardware identifier types for devices. Used to uniquely identify physical devices across different systems.
+The type of hardware identifier used to identify a device.
 
 | Value | Description |
 | ----- | ----------- |
-| `UUID` | System-generated UUID |
-| `IMEI` | International Mobile Equipment Identity (15 digits) |
-| `MEID_HEX` | Mobile Equipment Identifier in hexadecimal format |
-| `MEID_DEC` | Mobile Equipment Identifier in decimal format |
-| `MAC_ADDRESS` | Media Access Control address (network interface) |
-| `SERIAL_NUMBER` | Manufacturer serial number |
-| `CUSTOM` | Custom identifier type defined by organization |
-
-### SortOrder
-
-Sort direction for queries
-
-| Value | Description |
-| ----- | ----------- |
-| `ASC` | Ascending order (A-Z, 0-9, oldest first) |
-| `DESC` | Descending order (Z-A, 9-0, newest first) |
+| `GUID` | A GUID/UUID identifier. |
+| `IMEI` | International Mobile Equipment Identity. A 15-digit number. |
+| `MEID_HEX` | Mobile Equipment Identifier in hexadecimal format. |
+| `MEID_DEC` | Mobile Equipment Identifier in decimal format. |
+| `MAC_ADDRESS` | Media Access Control address of a network interface. |
+| `SERIAL_NUMBER` | Manufacturer-assigned serial number. |
+| `CUSTOM` | A custom identifier type defined by the organization. |
 
 ### ActionPermission
 
-Permission action flags for access control.
+Permission actions that can be granted to actors for entity operations.
 
 | Value | Description |
 | ----- | ----------- |
-| `READ` | View entity and its data |
-| `CREATE` | Create new entities |
-| `UPDATE` | Modify existing entities |
-| `DELETE` | Soft-delete entities |
+| `READ` | Permission to view entities and their data. |
+| `CREATE` | Permission to create new entities. |
+| `UPDATE` | Permission to modify existing entities. |
+| `DELETE` | Permission to delete entities. |
 
 ### SourceType
 
-Source type for audit events. Identifies the origin of the request that triggered the event.
+The source type identifying the origin of an API request.
 
 | Value | Description |
 | ----- | ----------- |
-| `WEB` | Web browser application |
-| `MOBILE` | Mobile application (iOS/Android) |
-| `API` | Direct API call |
-| `INTERNAL` | Internal system process |
-| `INTEGRATION` | External integration |
+| `WEB` | Request originated from a web browser application. |
+| `MOBILE` |  |
+| `API` | Request made directly via the API. |
+| `INTERNAL` | Request generated by an internal system process. |
+| `INTEGRATION` | Request made by an external integration. |
 
 ### AuditEventType
 
-Audit event types for tracking entity lifecycle and access changes.
+The type of event recorded in the audit log.
 
 | Value | Description |
 | ----- | ----------- |
-| `LOGIN` | Successful user login |
-| `LOGOUT` | User logout |
-| `FAILED_LOGIN` | Failed login attempt |
-| `PASSWORD_RESET` | Password reset initiated |
-| `SESSION_EXPIRED` | Session expired due to timeout |
-| `CREATED` | Entity created |
-| `UPDATED` | Entity updated |
-| `DELETED` | Entity soft-deleted |
-| `RESTORED` | Entity restored from soft-delete |
-| `ROLE_ASSIGNED` | Role assigned to actor |
-| `ROLE_REVOKED` | Role revoked from actor |
-| `PERMISSION_GRANTED` | Permission granted to role |
-| `PERMISSION_REVOKED` | Permission revoked from role |
-| `LINKED` | Entities linked together |
-| `UNLINKED` | Entity link removed |
-| `ATTACHED` | Entity attached to group |
-| `DETACHED` | Entity detached from group |
+| `LOGIN` | A user successfully authenticated. |
+| `LOGOUT` | A user ended their session. |
+| `FAILED_LOGIN` | An authentication attempt failed. |
+| `PASSWORD_RESET` | A password reset was initiated. |
+| `SESSION_EXPIRED` | A session was terminated due to inactivity. |
+| `CREATED` | A new entity was created. |
+| `UPDATED` | An existing entity was modified. |
+| `DELETED` | An entity was deleted. |
+| `RESTORED` | A soft-deleted entity was restored. |
+| `ROLE_ASSIGNED` | A role was assigned to an actor. |
+| `ROLE_REVOKED` | A role was removed from an actor. |
+| `PERMISSION_GRANTED` | A permission was granted to a role. |
+| `PERMISSION_REVOKED` | A permission was removed from a role. |
+| `LINKED` | Two entities were linked together. |
+| `UNLINKED` | A link between entities was removed. |
+| `ATTACHED` | An entity was added to a group. |
+| `DETACHED` | An entity was removed from a group. |
+
+### FieldOperator
+
+Comparison operators for filtering by custom field values.
+
+| Value | Description |
+| ----- | ----------- |
+| `EQ` | Value equals the specified value. |
+| `NE` | Value does not equal the specified value. |
+| `GT` | Value is greater than the specified value. |
+| `GTE` | Value is greater than or equal to the specified value. |
+| `LT` | Value is less than the specified value. |
+| `LTE` | Value is less than or equal to the specified value. |
+| `CONTAINS` |  |
+| `IN` | Value is one of the specified values in the array. |
+| `IS_NULL` | Value is null. |
+| `IS_NOT_NULL` | Value is not null. |
+
+### GeoJsonGeometryType
+
+The type of [GeoJSON](https://geojson.org/) geometry.
+
+| Value | Description |
+| ----- | ----------- |
+| `POINT` | A single geographic point. |
+| `MULTI_POINT` | A collection of points. |
+| `LINE_STRING` | A sequence of connected line segments. |
+| `MULTI_LINE_STRING` | A collection of line strings. |
+| `POLYGON` | A closed shape defined by a linear ring. |
+| `MULTI_POLYGON` | A collection of polygons. |
+| `GEOMETRY_COLLECTION` | A heterogeneous collection of geometry objects. |
+
+### CatalogItemOrderField
+
+Fields available for ordering catalog items.
+
+| Value | Description |
+| ----- | ----------- |
+| `ORDER` | Order by display order. |
+| `CODE` | Order by code. |
+| `TITLE` | Order by title. |
+
+### OrganizationOrderField
+
+Fields available for ordering organizations.
+
+| Value | Description |
+| ----- | ----------- |
+| `TITLE` | Order by title. |
+
+### MemberOrderField
+
+Fields available for ordering members.
+
+| Value | Description |
+| ----- | ----------- |
+| `ASSIGNED_AT` | Order by assignment date. |
+
+### IntegrationOrderField
+
+Fields available for ordering integrations.
+
+| Value | Description |
+| ----- | ----------- |
+| `TITLE` | Order by title. |
+
+### DeviceOrderField
+
+Fields available for ordering devices.
+
+| Value | Description |
+| ----- | ----------- |
+| `TITLE` | Order by title. |
+
+### DeviceInventoryRelationOrderField
+
+Fields available for ordering device inventory relations.
+
+| Value | Description |
+| ----- | ----------- |
+| `ASSIGNED_AT` | Order by assignment date. |
+
+### AssetOrderField
+
+Fields available for ordering assets.
+
+| Value | Description |
+| ----- | ----------- |
+| `TITLE` | Order by title. |
+
+### AssetGroupOrderField
+
+Fields available for ordering asset groups.
+
+| Value | Description |
+| ----- | ----------- |
+| `TITLE` | Order by title. |
+
+### AssetGroupItemOrderField
+
+Fields available for ordering asset group items.
+
+| Value | Description |
+| ----- | ----------- |
+| `ATTACHED_AT` | Order by attachment date. |
+
+### InventoryOrderField
+
+Fields available for ordering inventories.
+
+| Value | Description |
+| ----- | ----------- |
+| `TITLE` | Order by title. |
+
+### GeoObjectOrderField
+
+Fields available for ordering geo objects.
+
+| Value | Description |
+| ----- | ----------- |
+| `TITLE` | Order by title. |
+
+### ScheduleOrderField
+
+Fields available for ordering schedules.
+
+| Value | Description |
+| ----- | ----------- |
+| `TITLE` | Order by title. |
+
+### AuditEventOrderField
+
+Fields available for ordering audit events.
+
+| Value | Description |
+| ----- | ----------- |
+| `OCCURRED_AT` | Order by occurrence date. |
+
+### ActorRoleOrderField
+
+Fields available for ordering actor roles.
+
+| Value | Description |
+| ----- | ----------- |
+| `ASSIGNED_AT` | Order by assignment date. |
+
+### RolePermissionOrderField
+
+Fields available for ordering role permissions.
+
+| Value | Description |
+| ----- | ----------- |
+| `GRANTED_AT` | Order by grant date. |
+
+### UserScopeOrderField
+
+Fields available for ordering user scopes.
+
+| Value | Description |
+| ----- | ----------- |
+| `ID` | Order by ID. |

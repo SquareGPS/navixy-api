@@ -6,469 +6,434 @@ Objects are the return types for queries and mutations. They represent the data 
 
 ### Device
 
-Tracking device (GPS tracker, sensor, beacon, etc.). Devices are physical hardware that collect and transmit data.
+A tracking device such as a GPS tracker, sensor, or beacon.
 
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/), [Customizable](/api-reference/interfaces.md#customizable/)
+**Implements:** [Node](/api-reference/interfaces.md#node/), [Titled](/api-reference/interfaces.md#titled/), [Customizable](/api-reference/interfaces.md#customizable/), [Versioned](/api-reference/interfaces.md#versioned/), [InventoryItem](/api-reference/interfaces.md#inventoryitem/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | Organization that owns this device |
-| `type` | [DeviceType!](/api-reference/objects.md#devicetype/) | Device type classification |
-| `model` | [DeviceModel](/api-reference/objects.md#devicemodel/) | Specific device model (optional) |
-| `status` | [DeviceStatus!](/api-reference/objects.md#devicestatus/) | Current operational status |
-| `title` | `String!` | Device display name |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Custom fields data |
-| `identifiers` | [[DeviceIdentifier!]!](/api-reference/objects.md#deviceidentifier/) | Hardware identifiers (IMEI, serial, MAC, etc.) |
-| `inventory` | [Inventory](/api-reference/objects.md#inventory/) | Inventory this device is assigned to |
-| `relationsFrom` | [[DeviceRelation!]!](/api-reference/objects.md#devicerelation/) | Outgoing relationships to other devices |
-| `relationsTo` | [[DeviceRelation!]!](/api-reference/objects.md#devicerelation/) | Incoming relationships from other devices |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this device. |
+| `type` | [DeviceType!](/api-reference/objects.md#devicetype/) | The device type classification. |
+| `model` | [DeviceModel](/api-reference/objects.md#devicemodel/) | The specific device model. |
+| `status` | [DeviceStatus!](/api-reference/objects.md#devicestatus/) | The current operational status. |
+| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
+| `identifiers` | [[DeviceIdentifier!]!](/api-reference/objects.md#deviceidentifier/) |  |
+| `inventory` | [Inventory](/api-reference/objects.md#inventory/) | The inventory this device is currently assigned to. |
+| `relationsFrom` | [[DeviceRelation!]!](/api-reference/objects.md#devicerelation/) | The outgoing relationships from this device to other devices. |
+| `relationsTo` | [[DeviceRelation!]!](/api-reference/objects.md#devicerelation/) | The incoming relationships from other devices to this device. |
+| `inventoryHistory` | [DeviceInventoryRelationConnection!](/api-reference/objects.md#deviceinventoryrelationconnection/) | The history of inventory assignments for this device. |
 
 ### DeviceIdentifier
 
-Device hardware identifier. Devices can have multiple identifiers of different types.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `device` | [Device!](/api-reference/objects.md#device/) | Device this identifier belongs to |
-| `type` | [DeviceIdType!](/api-reference/scalars-and-enums.md#deviceidtype/) | Type of identifier |
-| `value` | `String!` | Identifier value |
-| `namespace` | `String` | Namespace for identifier uniqueness. Allows same identifier value in different contexts. Example: factory_a, factory_b for serial numbers |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-
-### DeviceRelation
-
-Relationship between two devices. Defines how devices are connected or related.
+A hardware identifier for a device.
 
 **Implements:** [Node](/api-reference/interfaces.md#node/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `firstDevice` | [Device!](/api-reference/objects.md#device/) | First device in relationship |
-| `secondDevice` | [Device!](/api-reference/objects.md#device/) | Second device in relationship |
-| `type` | [DeviceRelationType!](/api-reference/objects.md#devicerelationtype/) | Type of relationship |
+| `id` | `ID!` |  |
+| `device` | [Device!](/api-reference/objects.md#device/) | The device this identifier belongs to. |
+| `type` | [DeviceIdType!](/api-reference/scalars-and-enums.md#deviceidtype/) | The type of identifier. |
+| `value` | `String!` | The identifier value. |
+| `namespace` | `String` | The namespace for uniqueness. Null means the identifier is globally unique. |
 
-### DeviceInventoryRelation
+### DeviceRelation
 
-Device assignment to inventory record. Tracks which inventory a device belongs to.
+A relationship between two devices.
 
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/)
+**Implements:** [Node](/api-reference/interfaces.md#node/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `device` | [Device!](/api-reference/objects.md#device/) | Device being assigned |
-| `inventory` | [Inventory!](/api-reference/objects.md#inventory/) | Target inventory |
-| `assignedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | When device was assigned |
-| `assignedBy` | [Actor](/api-reference/objects.md#actor/) | Who assigned the device |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
+| `id` | `ID!` |  |
+| `first` | [Device!](/api-reference/objects.md#device/) | The first device in the relationship. |
+| `second` | [Device!](/api-reference/objects.md#device/) | The second device in the relationship. |
+| `type` | [DeviceRelationType!](/api-reference/objects.md#devicerelationtype/) | The type of relationship. |
+
+### DeviceInventoryRelation
+
+A record of a device's assignment to an inventory.
+
+**Implements:** [Node](/api-reference/interfaces.md#node/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `device` | [Device!](/api-reference/objects.md#device/) | The device that was assigned. |
+| `inventory` | [Inventory!](/api-reference/objects.md#inventory/) | The inventory the device was assigned to. |
+| `assignedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the device was assigned. |
+| `assignedBy` | [Actor](/api-reference/interfaces.md#actor/) | The actor who assigned the device. |
 
 ## Assets
 
 ### AssetGroupTypeConstraint
 
-Constraint for asset types within a group type. Defines which asset types can be added and optional quantity limits.
+A constraint defining which asset types can be included in an asset group type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `assetType` | [AssetType!](/api-reference/objects.md#assettype/) | Allowed asset type |
-| `maxItems` | `Int` | Maximum number of assets of this type in one group. Null means unlimited. |
+| `assetType` | [AssetType!](/api-reference/objects.md#assettype/) | The asset type allowed in the group. |
+| `maxItems` | `Int` | The maximum number of assets of this type allowed in one group. Null means unlimited. |
 
 ### Asset
 
-Physical or logical asset. Assets are things being tracked (vehicles, trailers, people, etc.).
+A physical or logical asset being tracked.
 
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/), [Customizable](/api-reference/interfaces.md#customizable/)
+**Implements:** [Node](/api-reference/interfaces.md#node/), [Titled](/api-reference/interfaces.md#titled/), [Customizable](/api-reference/interfaces.md#customizable/), [Versioned](/api-reference/interfaces.md#versioned/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | Organization that owns this asset |
-| `type` | [AssetType!](/api-reference/objects.md#assettype/) | Asset type classification |
-| `title` | `String!` | Asset display name |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Custom fields data |
-| `groups` | [[AssetGroup!]!](/api-reference/objects.md#assetgroup/) | Groups this asset belongs to |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this asset. |
+| `type` | [AssetType!](/api-reference/objects.md#assettype/) | The asset type classification. |
+| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
+| `device` | [Device](/api-reference/objects.md#device/) | The primary tracking device linked to this asset. This is an alias for the `device` custom field. |
+| `groups` | [AssetGroupConnection!](/api-reference/objects.md#assetgroupconnection/) | The groups this asset belongs to. |
 
 ### AssetGroup
 
-Group of assets. Used to organize assets into logical collections.
+A group of assets.
 
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/)
+**Implements:** [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | Organization that owns this group |
-| `type` | [AssetGroupType!](/api-reference/objects.md#assetgrouptype/) | Group type with constraints |
-| `title` | `String!` | Group display name |
-| `color` | `String` | Color for UI display (hex format) |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `currentAssets` | [[Asset!]!](/api-reference/objects.md#asset/) | Assets currently in this group |
-| `history` | [AssetGroupItemConnection!](/api-reference/objects.md#assetgroupitemconnection/) | Full membership history with pagination |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this group. |
+| `type` | [AssetGroupType!](/api-reference/objects.md#assetgrouptype/) | The group type with membership constraints. |
+| `color` | [HexColorCode](/api-reference/scalars-and-enums.md#hexcolorcode/) | The color for UI display in hexadecimal format. |
+| `currentAssets` | [AssetConnection!](/api-reference/objects.md#assetconnection/) | The assets currently in this group. |
+| `history` | [AssetGroupItemConnection!](/api-reference/objects.md#assetgroupitemconnection/) | The full membership history for this group. |
 
 ### AssetGroupItem
 
-Asset group membership record. Tracks current and historical group membership.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `group` | [AssetGroup!](/api-reference/objects.md#assetgroup/) | Group containing the asset |
-| `asset` | [Asset!](/api-reference/objects.md#asset/) | Asset in the group |
-| `attachedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | When asset was added to group |
-| `detachedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | When asset was removed from group. Null means currently attached. |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-
-## Geo objects
-
-### GeoObject
-
-Geographic object (geofence, POI, route). Geometry is stored in customFields as system field 'geojson'.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/), [Customizable](/api-reference/interfaces.md#customizable/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | Organization that owns this geo object |
-| `type` | [GeoObjectType!](/api-reference/objects.md#geoobjecttype/) | Geo object type classification |
-| `title` | `String!` | Geo object display name |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Custom fields including 'geojson' system field. geojson contains [GeoJSON](https://geojson.org/) geometry (Point, Polygon, etc.) |
-
-## Schedules
-
-### Schedule
-
-Schedule definition. Used for work hours, maintenance windows, holidays, etc. Schedule data is stored in customFields as system field 'schedule_data'.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/), [Customizable](/api-reference/interfaces.md#customizable/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | Organization that owns this schedule |
-| `type` | [ScheduleType!](/api-reference/objects.md#scheduletype/) | Schedule type classification |
-| `title` | `String!` | Schedule display name |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Custom fields including schedule_data system field |
-
-## Inventory
-
-### Inventory
-
-Inventory/warehouse record. Devices can be assigned to inventory for stock management.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | Organization that owns this inventory |
-| `code` | `String!` | Unique inventory code within organization |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `devices` | [DeviceConnection!](/api-reference/objects.md#deviceconnection/) | Devices assigned to this inventory |
-
-## Organizations
-
-### Organization
-
-Organization in the hierarchy. Organizations contain users, devices, assets, and other business entities. Supports multi-tenancy with optional dealer hierarchy.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` | Unique organization code. Format: lowercase alphanumeric with underscores. Example: acme_corp, dealer_moscow |
-| `title` | `String!` | Organization display name |
-| `externalId` | `String` | External system identifier for integration |
-| `isActive` | `Boolean!` | Whether organization is active |
-| `isDealer` | `Boolean!` | Whether organization can create child organizations. Dealer organizations can have sub-organizations. |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `parent` | [Organization](/api-reference/objects.md#organization/) | Parent organization (null for root) |
-| `children` | [[Organization!]!](/api-reference/objects.md#organization/) | Child organizations |
-| `members` | [[Member!]!](/api-reference/objects.md#member/) | Members (users) of this organization |
-| `devices` | [DeviceConnection!](/api-reference/objects.md#deviceconnection/) | Devices owned by this organization |
-| `assets` | [AssetConnection!](/api-reference/objects.md#assetconnection/) | Assets owned by this organization |
-| `geoObjects` | [GeoObjectConnection!](/api-reference/objects.md#geoobjectconnection/) | Geographic objects owned by this organization |
-| `schedules` | [ScheduleConnection!](/api-reference/objects.md#scheduleconnection/) | Schedules owned by this organization |
-
-## Actors
-
-### Actor
-
-Abstract actor entity. Actors are entities that can perform actions and have permissions. Resolved to concrete User or Integration type.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `actorType` | [ActorType!](/api-reference/scalars-and-enums.md#actortype/) | Type discriminator |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `asUser` | [User](/api-reference/objects.md#user/) | Resolve to User if actorType is USER |
-| `asIntegration` | [Integration](/api-reference/objects.md#integration/) | Resolve to Integration if actorType is INTEGRATION |
-
-### User
-
-Human user account. Users authenticate via external identity providers and can be members of organizations.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `actorType` | [ActorType!](/api-reference/scalars-and-enums.md#actortype/) | Always USER |
-| `identityProvider` | `String!` | Identity provider name. Examples: keycloak, auth0, okta, azure_ad |
-| `identityProviderId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | User's unique ID in the identity provider |
-| `fullName` | `String!` | User's display name |
-| `externalId` | `String` | External system identifier for integration |
-| `isActive` | `Boolean!` | Whether user account is active |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-
-### Member
-
-User membership in an organization. Links users to organizations with membership-specific custom fields. A user can be a member of multiple organizations.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/), [Customizable](/api-reference/interfaces.md#customizable/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `user` | [User!](/api-reference/objects.md#user/) | The user |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | Organization the user belongs to |
-| `isActive` | `Boolean!` | Whether membership is active |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `assignedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | When user was assigned to organization |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Membership-specific custom fields. Examples: position, department, employee_id, access_card_number |
-
-### Integration
-
-External system integration. Integrations have API access and permissions like users. Credentials are stored in external secure vault.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `actorType` | [ActorType!](/api-reference/scalars-and-enums.md#actortype/) | Always INTEGRATION |
-| `name` | `String!` | Integration display name |
-| `credentialRef` | `String` | Reference to credentials in secure vault. Actual credentials are never stored in database. Examples: vault:secret/integrations/erp, aws:secretsmanager:prod/api-key |
-| `isActive` | `Boolean!` | Whether integration is active |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-
-## Access control
-
-### ActorRole
-
-Role assignment to an actor. Links actors (users/integrations) to roles with optional expiration.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `actor` | [Actor!](/api-reference/objects.md#actor/) | Actor receiving the role |
-| `role` | [Role!](/api-reference/objects.md#role/) | Role being assigned |
-| `assignedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | When role was assigned |
-| `assignedBy` | [Actor](/api-reference/objects.md#actor/) | Who assigned the role |
-| `expireDate` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Role expiration timestamp. Null means permanent assignment. |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-
-### RolePermission
-
-Permission granted to a role. Defines what actions a role can perform on what entities.
-
-**Implements:** [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `role` | [Role!](/api-reference/objects.md#role/) | Role receiving the permission |
-| `permissionScope` | [PermissionScope!](/api-reference/objects.md#permissionscope/) | Permission scope being granted |
-| `targetEntityId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Specific entity ID this permission applies to. Null means permission applies to all entities of the scope's type. |
-| `actions` | [[ActionPermission!]!](/api-reference/scalars-and-enums.md#actionpermission/) | Actions allowed by this permission |
-| `grantedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | When permission was granted |
-| `grantedBy` | [Actor](/api-reference/objects.md#actor/) | Who granted the permission |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-
-### UserScope
-
-Whitelist filter restricting actor's access to specific entities. When present, acts as an intersection with role permissions. Logic: - If user has NO UserScope entries: role permissions apply fully - If user has UserScope entries: effective_permissions = role_permissions ∩ user_scope
+A record of an asset's membership in a group.
 
 **Implements:** [Node](/api-reference/interfaces.md#node/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `actor` | [Actor!](/api-reference/objects.md#actor/) | Actor being restricted |
-| `permissionScope` | [PermissionScope!](/api-reference/objects.md#permissionscope/) | Permission scope being filtered |
-| `targetEntityId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Specific entity the actor can access |
-| `actions` | [[ActionPermission!]!](/api-reference/scalars-and-enums.md#actionpermission/) | Actions allowed on this specific entity |
+| `id` | `ID!` |  |
+| `group` | [AssetGroup!](/api-reference/objects.md#assetgroup/) | The group containing the asset. |
+| `asset` | [Asset!](/api-reference/objects.md#asset/) | The asset in the group. |
+| `attachedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the asset was added to the group. |
+| `detachedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the asset was removed from the group. Null means the asset is currently attached. |
+
+## Geo objects
+
+### GeoObject
+
+A geographic object such as a geofence, point of interest, or route.
+
+**Implements:** [Node](/api-reference/interfaces.md#node/), [Titled](/api-reference/interfaces.md#titled/), [Customizable](/api-reference/interfaces.md#customizable/), [Versioned](/api-reference/interfaces.md#versioned/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this geo object. |
+| `type` | [GeoObjectType!](/api-reference/objects.md#geoobjecttype/) | The geo object type classification. |
+| `geometry` | [GeoJSON!](/api-reference/scalars-and-enums.md#geojson/) | The geographic shape of this object as [GeoJSON](https://geojson.org/) geometry. This is an alias for the `geojson` custom field. |
+| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
+| `containsPoints` | [[PointContainmentResult!]!](/api-reference/objects.md#pointcontainmentresult/) | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
+
+### PointContainmentResult
+
+The result of checking whether a point is contained within a geometry.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `index` | `Int!` |  |
+| `point` | [GeoPoint!](/api-reference/objects.md#geopoint/) | The point that was checked. |
+| `isContained` | `Boolean!` | Whether the point is inside the geometry. |
+
+## Schedules
+
+### Schedule
+
+A schedule definition for work hours, maintenance windows, or other time-based rules.
+
+**Implements:** [Node](/api-reference/interfaces.md#node/), [Titled](/api-reference/interfaces.md#titled/), [Customizable](/api-reference/interfaces.md#customizable/), [Versioned](/api-reference/interfaces.md#versioned/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this schedule. |
+| `type` | [ScheduleType!](/api-reference/objects.md#scheduletype/) | The schedule type classification. |
+| `scheduleData` | [ScheduleData!](/api-reference/scalars-and-enums.md#scheduledata/) | The calendar and time interval definitions for this schedule. This is an alias for the `schedule_data` custom field. |
+| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
+
+## Inventory
+
+### Inventory
+
+An inventory or warehouse record for device stock management.
+
+**Implements:** [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this inventory. |
+| `devices` | [DeviceConnection!](/api-reference/objects.md#deviceconnection/) | The devices assigned to this inventory. |
+
+## Organizations
+
+### Organization
+
+An organization in the hierarchy that owns entities and users.
+
+**Implements:** [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `externalId` | `String` | An external system identifier for integration purposes. |
+| `isActive` | `Boolean!` | Whether this organization is active. |
+| `features` | [[OrganizationFeature!]!](/api-reference/scalars-and-enums.md#organizationfeature/) | The feature flags enabled for this organization. |
+| `parent` | [Organization](/api-reference/objects.md#organization/) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection!](/api-reference/objects.md#organizationconnection/) | The child organizations. |
+| `members` | [MemberConnection!](/api-reference/objects.md#memberconnection/) | The members of this organization. |
+| `devices` | [DeviceConnection!](/api-reference/objects.md#deviceconnection/) | The devices owned by this organization. |
+| `assets` | [AssetConnection!](/api-reference/objects.md#assetconnection/) | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection!](/api-reference/objects.md#geoobjectconnection/) | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection!](/api-reference/objects.md#scheduleconnection/) | The schedules owned by this organization. |
+
+## Actors
+
+### PersonName
+
+Structured person name components following W3C Personal Names guidance. See: https://www.w3.org/International/questions/qa-personal-names Examples by culture: - US: givenNames="John", familyNames="Smith", middleName="Robert" - Russia: givenNames="Иван", familyNames="Иванов", middleName="Петрович" (patronymic) - Spain: givenNames="Juan Carlos", familyNames="García López" (paternal + maternal) - China: givenNames="明" (Ming), familyNames="王" (Wang) — note: family name first in native order - Iceland: givenNames="Björk", familyNames="Guðmundsdóttir" (patronymic as family name)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `givenNames` | `String!` |  |
+| `familyNames` | `String!` |  |
+| `middleName` | `String` | The middle name, patronymic, or additional name component. |
+| `fullName` | `String!` | The full name formatted according to the user's locale preferences. |
+
+### User
+
+A human user account authenticated via an identity provider.
+
+**Implements:** [Actor](/api-reference/interfaces.md#actor/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` | The display name for the user. This is the user's full name for display purposes. |
+| `name` | [PersonName!](/api-reference/objects.md#personname/) | The structured name components from the identity provider. |
+| `identityProvider` | `String!` |  |
+| `identityProviderId` | `String!` | The user's unique ID in the identity provider. |
+| `email` | [EmailAddress!](/api-reference/scalars-and-enums.md#emailaddress/) | The user's primary email address. |
+| `locale` | [Locale](/api-reference/scalars-and-enums.md#locale/) | The user's preferred locale. |
+| `externalId` | `String` | An external system identifier for integration purposes. |
+| `isActive` | `Boolean!` | Whether this user account is active. |
+| `memberships` | [MemberConnection!](/api-reference/objects.md#memberconnection/) | The organization memberships for this user. |
+
+### Member
+
+A user's membership in an organization.
+
+**Implements:** [Node](/api-reference/interfaces.md#node/), [Customizable](/api-reference/interfaces.md#customizable/), [Versioned](/api-reference/interfaces.md#versioned/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `user` | [User!](/api-reference/objects.md#user/) | The user. |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization the user belongs to. |
+| `isActive` | `Boolean!` | Whether this membership is active. |
+| `assignedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the user was assigned to this organization. |
+| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Membership-specific custom fields such as position and department. |
+
+### Integration
+
+An external system integration with API access.
+
+**Implements:** [Actor](/api-reference/interfaces.md#actor/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization this integration belongs to. |
+| `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
+| `isActive` | `Boolean!` | Whether this integration is active. |
+
+## Access control
+
+### ActorRole
+
+An assignment of a role to an actor.
+
+**Implements:** [Node](/api-reference/interfaces.md#node/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `actor` | [Actor!](/api-reference/interfaces.md#actor/) | The actor receiving the role. |
+| `role` | [Role!](/api-reference/objects.md#role/) | The role being assigned. |
+| `assignedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the role was assigned. |
+| `assignedBy` | [Actor](/api-reference/interfaces.md#actor/) | The actor who assigned the role. |
+| `expireDate` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the role expires. Null means the role is permanent. |
+
+### RolePermission
+
+A permission granted to a role.
+
+**Implements:** [Node](/api-reference/interfaces.md#node/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `role` | [Role!](/api-reference/objects.md#role/) | The role receiving the permission. |
+| `permissionScope` | [PermissionScope!](/api-reference/objects.md#permissionscope/) | The permission scope being granted. |
+| `targetEntityId` | `ID` | The specific entity ID this permission applies to. Null means all entities of the type. |
+| `actions` | [[ActionPermission!]!](/api-reference/scalars-and-enums.md#actionpermission/) | The actions allowed by this permission. |
+| `grantedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the permission was granted. |
+| `grantedBy` | [Actor!](/api-reference/interfaces.md#actor/) | The actor who granted the permission. |
+
+### UserScope
+
+A whitelist filter that restricts an actor's access to specific entities. When present, effective permissions = role permissions ∩ user scope.
+
+**Implements:** [Node](/api-reference/interfaces.md#node/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `actor` | [Actor!](/api-reference/interfaces.md#actor/) | The actor being restricted. |
+| `permissionScope` | [PermissionScope!](/api-reference/objects.md#permissionscope/) | The permission scope being filtered. |
+| `targetEntityId` | `ID!` | The specific entity the actor can access. |
+| `actions` | [[ActionPermission!]!](/api-reference/scalars-and-enums.md#actionpermission/) | The actions allowed on this specific entity. |
 
 ## Custom fields
 
 ### CustomFieldDefinition
 
-Custom field definition (metadata). Defines structure and validation for custom fields on entities. Two-level architecture: 1. System fields - defined on EntityType (e.g., geojson for all geo_objects) 2. Type fields - defined on specific type (e.g., vin for vehicle AssetType)
+A custom field definition that specifies the metadata for a custom field. Note: The `fieldType` property is immutable after creation. To change the field type, delete the definition and create a new one.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/), [SoftDeletable](/api-reference/interfaces.md#softdeletable/)
+**Implements:** [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
-| `title` | `String!` |  |
-| `description` | `String` |  |
-| `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedBy` | [Actor](/api-reference/objects.md#actor/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `organization` | [Organization](/api-reference/objects.md#organization/) | Organization that owns this definition |
-| `owner` | [CatalogItem!](/api-reference/interfaces.md#catalogitem/) | Owner catalog item. Either EntityType (for system fields) or specific type (AssetType, DeviceType, etc.) |
-| `targetEntityType` | [EntityType!](/api-reference/objects.md#entitytype/) | Target entity type this field applies to |
-| `fieldType` | [FieldType!](/api-reference/scalars-and-enums.md#fieldtype/) | Data type determining validation and UI |
-| `params` | [FieldParams!](/api-reference/interfaces.md#fieldparams/) | Type-specific parameters (validation, options, references) |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` | The human-readable display name. |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) | The machine-readable code, unique per owner and organization. |
+| `description` | `String` | A description of the field for UI hints. |
+| `order` | `Int!` | The display order within the owner context. |
+| `organization` | [Organization](/api-reference/objects.md#organization/) | The organization that owns this definition. Null for system-level fields. |
+| `owner` | [CatalogItem!](/api-reference/interfaces.md#catalogitem/) |  |
+| `targetEntityType` | [EntityType!](/api-reference/objects.md#entitytype/) | The target entity type this field applies to. |
+| `fieldType` | [FieldType!](/api-reference/scalars-and-enums.md#fieldtype/) | The data type determining validation rules and UI rendering. This property is immutable and cannot be changed after creation. |
+| `params` | [FieldParams!](/api-reference/interfaces.md#fieldparams/) | The type-specific parameters for validation, defaults, and options. |
 
 ### FieldParamsString
 
-Parameters for STRING field type
+Parameters for STRING field type.
 
 **Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `maxLength` | `Int` | Maximum character length (default: 255) |
-| `defaultValue` | `String` | Default value for new entities |
+| `minLength` | `Int` | The minimum character length. |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean!` | Whether to trim leading and trailing whitespace. |
 
 ### FieldParamsText
 
-Parameters for TEXT field type
+Parameters for TEXT field type.
 
 **Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `maxLength` | `Int` | Maximum character length (null = unlimited) |
-| `defaultValue` | `String` | Default value for new entities |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean!` | Whether to trim leading and trailing whitespace. |
 
 ### FieldParamsNumber
 
-Parameters for NUMBER field type
+Parameters for NUMBER field type.
 
 **Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `min` | `Float` | Minimum allowed value |
-| `max` | `Float` | Maximum allowed value |
-| `precision` | `Int` | Decimal precision (digits after decimal point) |
-| `defaultValue` | `Float` | Default value for new entities |
+| `min` | `Float` | The minimum allowed value. |
+| `max` | `Float` | The maximum allowed value. |
+| `precision` | `Int` | The decimal precision. |
+| `defaultValue` | `Float` | The default value. |
 
 ### FieldParamsBoolean
 
-Parameters for BOOLEAN field type
+Parameters for BOOLEAN field type.
 
 **Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `defaultValue` | `Boolean` | Default value for new entities |
+| `defaultValue` | `Boolean` | The default value. |
 
 ### FieldParamsDate
 
-Parameters for DATE field type
+Parameters for DATE field type.
 
 **Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `defaultValue` | [Date](/api-reference/scalars-and-enums.md#date/) | Default value for new entities |
+| `defaultValue` | [Date](/api-reference/scalars-and-enums.md#date/) | The default value. |
 
 ### FieldParamsDatetime
 
-Parameters for DATETIME field type
+Parameters for DATETIME field type.
 
 **Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `defaultValue` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Default value for new entities |
+| `defaultValue` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | The default value. |
 
 ### FieldParamsGeojson
 
-Parameters for GEOJSON field type
+Parameters for GEOJSON field type.
 
 **Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `allowedTypes` | `[String!]` | Allowed [GeoJSON](https://geojson.org/) geometry types. Examples: Point, Polygon, LineString, MultiPolygon Null means all types allowed. |
+| `allowedTypes` | [[GeoJsonGeometryType!]](/api-reference/scalars-and-enums.md#geojsongeometrytype/) | The allowed geometry types. Null means all types are allowed. |
 
 ### FieldParamsSchedule
 
-Parameters for SCHEDULE field type
+Parameters for SCHEDULE field type.
 
 **Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
 
@@ -478,677 +443,1361 @@ Parameters for SCHEDULE field type
 
 ### FieldParamsOptions
 
-Parameters for OPTIONS field type
+Parameters for OPTIONS field type.
 
-**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
+**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/), [MultiValue](/api-reference/interfaces.md#multivalue/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` | Whether multiple options can be selected |
-| `options` | [[FieldOption!]!](/api-reference/objects.md#fieldoption/) | Available options |
-| `defaultValue` | `String` | Default option code for new entities |
+| `isMulti` | `Boolean!` |  |
+| `options` | [[FieldOption!]!](/api-reference/objects.md#fieldoption/) | The available options to choose from. |
+| `defaultValue` | [Code](/api-reference/scalars-and-enums.md#code/) | The default option code. |
 
 ### FieldOption
 
-Single option in OPTIONS field
+A single option in an OPTIONS field.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | `String!` | Unique option code within field |
-| `label` | `String!` | Display label (localizable) |
-| `isArchived` | `Boolean!` | Whether option is archived (hidden from selection but preserved in data) |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) | The unique code for this option within the field. |
+| `label` | `String!` | The display label. |
+| `description` | `String` | A description of the option. |
+| `isArchived` | `Boolean!` | Whether this option is archived and should not be shown for new selections. |
 
 ### FieldParamsDevice
 
-Parameters for DEVICE field type
+Parameters for DEVICE field type.
 
-**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
+**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/), [MultiValue](/api-reference/interfaces.md#multivalue/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` | Whether multiple devices can be selected |
+| `isMulti` | `Boolean!` |  |
 
 ### FieldParamsReference
 
-Parameters for REFERENCE field type
+Parameters for REFERENCE field type.
 
-**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
+**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/), [MultiValue](/api-reference/interfaces.md#multivalue/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` | Whether multiple references can be selected |
-| `refEntityTypeCode` | `String!` | Entity type code that can be referenced |
+| `isMulti` | `Boolean!` |  |
+| `refEntityTypeCode` | [Code!](/api-reference/scalars-and-enums.md#code/) | The entity type code that can be referenced. |
 
 ### FieldParamsCatalog
 
-Parameters for CATALOG field type
+Parameters for CATALOG field type.
 
-**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
+**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/), [MultiValue](/api-reference/interfaces.md#multivalue/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` | Whether multiple items can be selected |
-| `refCatalogCode` | `String!` | Catalog code that items can be selected from |
+| `isMulti` | `Boolean!` |  |
+| `refCatalogCode` | [Code!](/api-reference/scalars-and-enums.md#code/) | The catalog code that items can be selected from. |
+| `defaultValue` | [Code](/api-reference/scalars-and-enums.md#code/) | The default item code. |
 
 ### FieldParamsTag
 
-Parameters for TAG field type
+Parameters for TAG field type.
 
-**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/)
+**Implements:** [FieldParams](/api-reference/interfaces.md#fieldparams/), [MultiValue](/api-reference/interfaces.md#multivalue/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` | Whether multiple tags can be selected |
+| `isMulti` | `Boolean!` |  |
+| `defaultValue` | [Code](/api-reference/scalars-and-enums.md#code/) | The default tag code. |
 
 ## Audit
 
 ### AuditEvent
 
-Audit log entry. Tracks all significant events in the system.
+An audit log entry recording an event that occurred in the system.
 
 **Implements:** [Node](/api-reference/interfaces.md#node/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `organization` | [Organization](/api-reference/objects.md#organization/) | Organization context (null for system events) |
-| `eventCategory` | `String!` | Event category: auth or domain |
-| `actor` | [Actor](/api-reference/objects.md#actor/) | Actor who triggered the event (null for system events) |
-| `ipAddress` | `String` | Client IP address |
-| `userAgent` | `String` | Client User-Agent string |
-| `sourceType` | [SourceType!](/api-reference/scalars-and-enums.md#sourcetype/) | Source type of the request |
-| `sourceName` | `String` | Source application name |
-| `traceId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Distributed tracing ID. Used to correlate logs across services. |
-| `aggregateType` | `String` | Type of entity affected. Examples: device, asset, user, organization |
-| `aggregateId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | ID of the affected entity |
-| `eventType` | [AuditEventType!](/api-reference/scalars-and-enums.md#auditeventtype/) | Type of event that occurred |
-| `eventData` | [JSON](/api-reference/scalars-and-enums.md#json/) | Event payload with details. For updates, includes changed_fields with old/new values. |
-| `occurredAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | When event occurred |
-
-### DomainEvent
-
-Domain event for real-time updates. Unified format for all entity change notifications.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `aggregateType` | `String!` | Entity type that changed |
-| `aggregateId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | ID of the changed entity |
-| `eventType` | [AuditEventType!](/api-reference/scalars-and-enums.md#auditeventtype/) | Type of change |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Organization context |
-| `payload` | [JSON](/api-reference/scalars-and-enums.md#json/) | Event details (changed fields, new values, etc.) |
-| `occurredAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | When the event occurred |
-
-## Localization
-
-### I18nText
-
-Localized text entry. Stores translations for entity fields.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `entityId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Entity this translation belongs to |
-| `fieldCode` | `String!` | Field being translated (title, description, label, etc.) |
-| `locale` | `String!` | Locale code (en, ru, es, etc.) |
-| `textValue` | `String!` | Translated text value |
+| `id` | `ID!` |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) | The organization context. Null for system events. |
+| `actor` | [Actor](/api-reference/interfaces.md#actor/) | The actor who triggered the event. |
+| `ipAddress` | `String` | The client IP address. |
+| `userAgent` | `String` | The client User-Agent string. |
+| `sourceType` | [SourceType!](/api-reference/scalars-and-enums.md#sourcetype/) | The source type of the request. |
+| `traceId` | `String` |  |
+| `aggregateType` | [Code](/api-reference/scalars-and-enums.md#code/) | The type of entity affected. |
+| `aggregateId` | `ID` | The ID of the affected entity. |
+| `eventType` | [AuditEventType!](/api-reference/scalars-and-enums.md#auditeventtype/) | The type of event that occurred. |
+| `eventData` | [JSON](/api-reference/scalars-and-enums.md#json/) | The event payload with details such as changed fields. |
+| `occurredAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the event occurred. |
 
 ## Pagination
 
 ### PageInfo
 
-Pagination info following Relay Cursor Connections specification. Cursors are opaque strings (Base64-encoded position identifiers).
+Information about the current page in a paginated connection.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `hasNextPage` | `Boolean!` | Whether more items exist after current page |
-| `hasPreviousPage` | `Boolean!` | Whether more items exist before current page |
-| `startCursor` | `String` | Cursor pointing to first item in current page |
-| `endCursor` | `String` | Cursor pointing to last item in current page |
-| `totalCount` | `Int` | Total count of items matching filter. Null if counting is too expensive. |
-| `totalCountIsApproximate` | `Boolean` | True if totalCount is approximate (e.g., from pg_class.reltuples). Null or false means exact count. |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
 
-### DeviceConnection
+### CountInfo
 
-Paginated Device results
+Information about the total count of items in a connection.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceEdge!]!](/api-reference/objects.md#deviceedge/) | List of device edges |
-| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Pagination metadata |
+| `count` | `Int!` | The count of items matching the filter. |
+| `precision` | [CountPrecision!](/api-reference/scalars-and-enums.md#countprecision/) | The precision level of the count value. |
 
-### DeviceEdge
+### CatalogItemConnection
 
-Edge wrapper for Device in connection
+A paginated list of CatalogItem items.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `node` | [Device!](/api-reference/objects.md#device/) | The device entity |
-| `cursor` | `String!` | Cursor for this position |
-
-### AssetConnection
-
-Paginated Asset results
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[AssetEdge!]!](/api-reference/objects.md#assetedge/) | List of asset edges |
-| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Pagination metadata |
+| `edges` | [[CatalogItemEdge!]!](/api-reference/objects.md#catalogitemedge/) | A list of edges. |
+| `nodes` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
-### AssetEdge
+### CatalogItemEdge
 
-Edge wrapper for Asset in connection
+An edge in the CatalogItem connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `node` | [Asset!](/api-reference/objects.md#asset/) | The asset entity |
-| `cursor` | `String!` | Cursor for this position |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [CatalogItem!](/api-reference/interfaces.md#catalogitem/) | The catalog item at the end of the edge. |
+
+### UserCatalogItemConnection
+
+A paginated list of UserCatalogItem items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[UserCatalogItemEdge!]!](/api-reference/objects.md#usercatalogitemedge/) | A list of edges. |
+| `nodes` | [[UserCatalogItem!]!](/api-reference/objects.md#usercatalogitem/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### UserCatalogItemEdge
+
+An edge in the UserCatalogItem connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [UserCatalogItem!](/api-reference/objects.md#usercatalogitem/) | The user catalog item at the end of the edge. |
 
 ### OrganizationConnection
 
-Paginated Organization results
+A paginated list of Organization items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[OrganizationEdge!]!](/api-reference/objects.md#organizationedge/) | List of organization edges |
-| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Pagination metadata |
+| `edges` | [[OrganizationEdge!]!](/api-reference/objects.md#organizationedge/) | A list of edges. |
+| `nodes` | [[Organization!]!](/api-reference/objects.md#organization/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
 ### OrganizationEdge
 
-Edge wrapper for Organization in connection
+An edge in the Organization connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `node` | [Organization!](/api-reference/objects.md#organization/) | The organization entity |
-| `cursor` | `String!` | Cursor for this position |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Organization!](/api-reference/objects.md#organization/) | The organization at the end of the edge. |
 
 ### UserConnection
 
-Paginated User results
+A paginated list of User items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[UserEdge!]!](/api-reference/objects.md#useredge/) | List of user edges |
-| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Pagination metadata |
+| `edges` | [[UserEdge!]!](/api-reference/objects.md#useredge/) | A list of edges. |
+| `nodes` | [[User!]!](/api-reference/objects.md#user/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
 ### UserEdge
 
-Edge wrapper for User in connection
+An edge in the User connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `node` | [User!](/api-reference/objects.md#user/) | The user entity |
-| `cursor` | `String!` | Cursor for this position |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [User!](/api-reference/objects.md#user/) | The user at the end of the edge. |
 
-### GeoObjectConnection
+### MemberConnection
 
-Paginated GeoObject results
+A paginated list of Member items.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `edges` | [[GeoObjectEdge!]!](/api-reference/objects.md#geoobjectedge/) | List of geo object edges |
-| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Pagination metadata |
-
-### GeoObjectEdge
-
-Edge wrapper for GeoObject in connection
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `node` | [GeoObject!](/api-reference/objects.md#geoobject/) | The geo object entity |
-| `cursor` | `String!` | Cursor for this position |
+| `edges` | [[MemberEdge!]!](/api-reference/objects.md#memberedge/) | A list of edges. |
+| `nodes` | [[Member!]!](/api-reference/objects.md#member/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
-### ScheduleConnection
+### MemberEdge
 
-Paginated Schedule results
+An edge in the Member connection.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `edges` | [[ScheduleEdge!]!](/api-reference/objects.md#scheduleedge/) | List of schedule edges |
-| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Pagination metadata |
-
-### ScheduleEdge
-
-Edge wrapper for Schedule in connection
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `node` | [Schedule!](/api-reference/objects.md#schedule/) | The schedule entity |
-| `cursor` | `String!` | Cursor for this position |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Member!](/api-reference/objects.md#member/) | The member at the end of the edge. |
 
-### AuditEventConnection
+### IntegrationConnection
 
-Paginated AuditEvent results
+A paginated list of Integration items.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `edges` | [[AuditEventEdge!]!](/api-reference/objects.md#auditeventedge/) | List of audit event edges |
-| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Pagination metadata |
-
-### AuditEventEdge
-
-Edge wrapper for AuditEvent in connection
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `node` | [AuditEvent!](/api-reference/objects.md#auditevent/) | The audit event entity |
-| `cursor` | `String!` | Cursor for this position |
+| `edges` | [[IntegrationEdge!]!](/api-reference/objects.md#integrationedge/) | A list of edges. |
+| `nodes` | [[Integration!]!](/api-reference/objects.md#integration/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### IntegrationEdge
+
+An edge in the Integration connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Integration!](/api-reference/objects.md#integration/) | The integration at the end of the edge. |
+
+### DeviceConnection
+
+A paginated list of Device items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceEdge!]!](/api-reference/objects.md#deviceedge/) | A list of edges. |
+| `nodes` | [[Device!]!](/api-reference/objects.md#device/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### DeviceEdge
+
+An edge in the Device connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Device!](/api-reference/objects.md#device/) | The device at the end of the edge. |
+
+### AssetConnection
+
+A paginated list of Asset items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[AssetEdge!]!](/api-reference/objects.md#assetedge/) | A list of edges. |
+| `nodes` | [[Asset!]!](/api-reference/objects.md#asset/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### AssetEdge
+
+An edge in the Asset connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Asset!](/api-reference/objects.md#asset/) | The asset at the end of the edge. |
+
+### AssetGroupConnection
+
+A paginated list of AssetGroup items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[AssetGroupEdge!]!](/api-reference/objects.md#assetgroupedge/) | A list of edges. |
+| `nodes` | [[AssetGroup!]!](/api-reference/objects.md#assetgroup/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### AssetGroupEdge
+
+An edge in the AssetGroup connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [AssetGroup!](/api-reference/objects.md#assetgroup/) | The asset group at the end of the edge. |
 
 ### AssetGroupItemConnection
 
-Paginated AssetGroupItem results
+A paginated list of AssetGroupItem items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[AssetGroupItemEdge!]!](/api-reference/objects.md#assetgroupitemedge/) | List of asset group item edges |
-| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Pagination metadata |
+| `edges` | [[AssetGroupItemEdge!]!](/api-reference/objects.md#assetgroupitemedge/) | A list of edges. |
+| `nodes` | [[AssetGroupItem!]!](/api-reference/objects.md#assetgroupitem/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
 ### AssetGroupItemEdge
 
-Edge wrapper for AssetGroupItem in connection
+An edge in the AssetGroupItem connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `node` | [AssetGroupItem!](/api-reference/objects.md#assetgroupitem/) | The asset group item entity |
-| `cursor` | `String!` | Cursor for this position |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [AssetGroupItem!](/api-reference/objects.md#assetgroupitem/) | The asset group item at the end of the edge. |
 
-## Bulk operations
+### InventoryConnection
 
-### BulkDeleteResult
+A paginated list of Inventory items.
 
-Result of bulk delete operation
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deletedCount` | `Int!` | Number of successfully deleted entities |
-| `failedIds` | [[UUID!]!](/api-reference/scalars-and-enums.md#uuid/) | IDs that failed to delete (permission denied, not found, etc.) |
+| `edges` | [[InventoryEdge!]!](/api-reference/objects.md#inventoryedge/) | A list of edges. |
+| `nodes` | [[Inventory!]!](/api-reference/objects.md#inventory/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### InventoryEdge
+
+An edge in the Inventory connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Inventory!](/api-reference/objects.md#inventory/) | The inventory at the end of the edge. |
+
+### GeoObjectConnection
+
+A paginated list of GeoObject items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[GeoObjectEdge!]!](/api-reference/objects.md#geoobjectedge/) | A list of edges. |
+| `nodes` | [[GeoObject!]!](/api-reference/objects.md#geoobject/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### GeoObjectEdge
+
+An edge in the GeoObject connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [GeoObject!](/api-reference/objects.md#geoobject/) | The geo object at the end of the edge. |
+
+### ScheduleConnection
+
+A paginated list of Schedule items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[ScheduleEdge!]!](/api-reference/objects.md#scheduleedge/) | A list of edges. |
+| `nodes` | [[Schedule!]!](/api-reference/objects.md#schedule/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### ScheduleEdge
+
+An edge in the Schedule connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Schedule!](/api-reference/objects.md#schedule/) | The schedule at the end of the edge. |
+
+### AuditEventConnection
+
+A paginated list of AuditEvent items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[AuditEventEdge!]!](/api-reference/objects.md#auditeventedge/) | A list of edges. |
+| `nodes` | [[AuditEvent!]!](/api-reference/objects.md#auditevent/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### AuditEventEdge
+
+An edge in the AuditEvent connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [AuditEvent!](/api-reference/objects.md#auditevent/) | The audit event at the end of the edge. |
+
+### DeviceInventoryRelationConnection
+
+A paginated list of DeviceInventoryRelation items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceInventoryRelationEdge!]!](/api-reference/objects.md#deviceinventoryrelationedge/) | A list of edges. |
+| `nodes` | [[DeviceInventoryRelation!]!](/api-reference/objects.md#deviceinventoryrelation/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### DeviceInventoryRelationEdge
+
+An edge in the DeviceInventoryRelation connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [DeviceInventoryRelation!](/api-reference/objects.md#deviceinventoryrelation/) | The device inventory relation at the end of the edge. |
+
+### CatalogConnection
+
+A paginated list of Catalog items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[CatalogEdge!]!](/api-reference/objects.md#catalogedge/) | A list of edges. |
+| `nodes` | [[Catalog!]!](/api-reference/objects.md#catalog/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### CatalogEdge
+
+An edge in the Catalog connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Catalog!](/api-reference/objects.md#catalog/) | The catalog at the end of the edge. |
+
+### DeviceTypeConnection
+
+A paginated list of DeviceType items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceTypeEdge!]!](/api-reference/objects.md#devicetypeedge/) | A list of edges. |
+| `nodes` | [[DeviceType!]!](/api-reference/objects.md#devicetype/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### DeviceTypeEdge
+
+An edge in the DeviceType connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [DeviceType!](/api-reference/objects.md#devicetype/) | The device type at the end of the edge. |
+
+### DeviceStatusConnection
+
+A paginated list of DeviceStatus items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceStatusEdge!]!](/api-reference/objects.md#devicestatusedge/) | A list of edges. |
+| `nodes` | [[DeviceStatus!]!](/api-reference/objects.md#devicestatus/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### DeviceStatusEdge
+
+An edge in the DeviceStatus connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [DeviceStatus!](/api-reference/objects.md#devicestatus/) | The device status at the end of the edge. |
+
+### DeviceModelConnection
+
+A paginated list of DeviceModel items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[DeviceModelEdge!]!](/api-reference/objects.md#devicemodeledge/) | A list of edges. |
+| `nodes` | [[DeviceModel!]!](/api-reference/objects.md#devicemodel/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### DeviceModelEdge
+
+An edge in the DeviceModel connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [DeviceModel!](/api-reference/objects.md#devicemodel/) | The device model at the end of the edge. |
+
+### AssetTypeConnection
+
+A paginated list of AssetType items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[AssetTypeEdge!]!](/api-reference/objects.md#assettypeedge/) | A list of edges. |
+| `nodes` | [[AssetType!]!](/api-reference/objects.md#assettype/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### AssetTypeEdge
+
+An edge in the AssetType connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [AssetType!](/api-reference/objects.md#assettype/) | The asset type at the end of the edge. |
+
+### AssetGroupTypeConnection
+
+A paginated list of AssetGroupType items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[AssetGroupTypeEdge!]!](/api-reference/objects.md#assetgrouptypeedge/) | A list of edges. |
+| `nodes` | [[AssetGroupType!]!](/api-reference/objects.md#assetgrouptype/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### AssetGroupTypeEdge
+
+An edge in the AssetGroupType connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [AssetGroupType!](/api-reference/objects.md#assetgrouptype/) | The asset group type at the end of the edge. |
+
+### GeoObjectTypeConnection
+
+A paginated list of GeoObjectType items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[GeoObjectTypeEdge!]!](/api-reference/objects.md#geoobjecttypeedge/) | A list of edges. |
+| `nodes` | [[GeoObjectType!]!](/api-reference/objects.md#geoobjecttype/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### GeoObjectTypeEdge
+
+An edge in the GeoObjectType connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [GeoObjectType!](/api-reference/objects.md#geoobjecttype/) | The geo object type at the end of the edge. |
+
+### ScheduleTypeConnection
+
+A paginated list of ScheduleType items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[ScheduleTypeEdge!]!](/api-reference/objects.md#scheduletypeedge/) | A list of edges. |
+| `nodes` | [[ScheduleType!]!](/api-reference/objects.md#scheduletype/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### ScheduleTypeEdge
+
+An edge in the ScheduleType connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [ScheduleType!](/api-reference/objects.md#scheduletype/) | The schedule type at the end of the edge. |
+
+### RoleConnection
+
+A paginated list of Role items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[RoleEdge!]!](/api-reference/objects.md#roleedge/) | A list of edges. |
+| `nodes` | [[Role!]!](/api-reference/objects.md#role/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### RoleEdge
+
+An edge in the Role connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Role!](/api-reference/objects.md#role/) | The role at the end of the edge. |
+
+### TagConnection
+
+A paginated list of Tag items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[TagEdge!]!](/api-reference/objects.md#tagedge/) | A list of edges. |
+| `nodes` | [[Tag!]!](/api-reference/objects.md#tag/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### TagEdge
+
+An edge in the Tag connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [Tag!](/api-reference/objects.md#tag/) | The tag at the end of the edge. |
+
+### ActorRoleConnection
+
+A paginated list of ActorRole items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[ActorRoleEdge!]!](/api-reference/objects.md#actorroleedge/) | A list of edges. |
+| `nodes` | [[ActorRole!]!](/api-reference/objects.md#actorrole/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### ActorRoleEdge
+
+An edge in the ActorRole connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [ActorRole!](/api-reference/objects.md#actorrole/) | The actor role at the end of the edge. |
+
+### RolePermissionConnection
+
+A paginated list of RolePermission items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[RolePermissionEdge!]!](/api-reference/objects.md#rolepermissionedge/) | A list of edges. |
+| `nodes` | [[RolePermission!]!](/api-reference/objects.md#rolepermission/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### RolePermissionEdge
+
+An edge in the RolePermission connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [RolePermission!](/api-reference/objects.md#rolepermission/) | The role permission at the end of the edge. |
+
+### UserScopeConnection
+
+A paginated list of UserScope items.
+
+**Implements:** [Connection](/api-reference/interfaces.md#connection/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[UserScopeEdge!]!](/api-reference/objects.md#userscopeedge/) | A list of edges. |
+| `nodes` | [[UserScope!]!](/api-reference/objects.md#userscope/) |  |
+| `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
+| `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
+
+### UserScopeEdge
+
+An edge in the UserScope connection.
+
+**Implements:** [Edge](/api-reference/interfaces.md#edge/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [UserScope!](/api-reference/objects.md#userscope/) | The user scope at the end of the edge. |
 
 ## Catalog items
 
+### CatalogItemMeta
+
+Metadata about a catalog item.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `description` | `String` | A description of the catalog item. Can be localized. |
+| `origin` | [CatalogItemOrigin!](/api-reference/scalars-and-enums.md#catalogitemorigin/) | The origin indicating how this item was created. |
+| `canBeDeleted` | `Boolean!` | Whether this item can be deleted. Returns `false` if the item has dependencies or is system-managed. |
+| `hidden` | `Boolean!` | Whether this item is hidden from regular UI lists. |
+| `textColor` | [HexColorCode](/api-reference/scalars-and-enums.md#hexcolorcode/) | The text color for UI display. |
+| `backgroundColor` | [HexColorCode](/api-reference/scalars-and-enums.md#hexcolorcode/) | The background color for UI display. |
+| `icon` | `String` | A relative URL to the icon for this item. |
+
 ### Module
 
-System module definition. Modules group related functionality and permission scopes. Examples: fleet_management, maintenance, reports
+A system module that groups related functionality and permission scopes. Examples: repo (core), fleet_management (FSM), iot (devices), reports, billing.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
-| `title` | `String!` |  |
-| `description` | `String` |  |
-| `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-
-### CatalogCategory
-
-Category for grouping catalogs. Used to organize user-defined catalogs in UI. Examples: vehicles, equipment, locations
-
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
 
 ### EntityType
 
-Entity type definition. Defines customizable entity types and their UUID discriminators. Examples: device, asset, geo_object, schedule
+A definition of an entity type in the system.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `uuidDiscriminator` | `String!` | 4-character code embedded in UUIDs for this entity type. Allows determining entity type from UUID alone. Example: 'DEVI' for devices, 'ASST' for assets |
-| `isCustomizable` | `Boolean!` | Whether entities of this type support custom fields |
-| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions for this entity type. Includes both system-level and type-specific fields. |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `uuidDiscriminator` | `String!` | The 4-character code embedded in UUIDs for entities of this type. |
+| `isCustomizable` | `Boolean!` | Whether entities of this type support custom fields. |
+| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions for entities of this type, ordered by display order. |
 
 ### DeviceVendor
 
-Device vendor/manufacturer. Top level of device classification hierarchy. Examples: Teltonika, Queclink, CalAmp
+A device manufacturer or vendor.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `models` | [[DeviceModel!]!](/api-reference/objects.md#devicemodel/) | Device models from this vendor |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `models` | [DeviceModelConnection!](/api-reference/objects.md#devicemodelconnection/) | Device models produced by this vendor. |
 
 ### DeviceModel
 
-Device model. Specific product model from a vendor. Examples: FMB920, GV300, LMU-2630
+A specific device model produced by a vendor.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `vendor` | [DeviceVendor!](/api-reference/objects.md#devicevendor/) | Vendor that manufactures this model |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `vendor` | [DeviceVendor!](/api-reference/objects.md#devicevendor/) | The vendor that manufactures this model. |
 
 ### DeviceType
 
-Device type classification. Logical grouping of devices by function. Examples: gps_tracker, obd_dongle, sensor, beacon
+A classification type for devices.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions specific to this device type |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions specific to this device type, ordered by display order. |
 
 ### DeviceStatus
 
-Device operational status. Lifecycle state of a device. Examples: active, inactive, maintenance, decommissioned
+An operational status for devices.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
 
 ### DeviceRelationType
 
-Device-to-device relationship type. Defines how two devices relate to each other. Examples: master_slave, backup, paired
+A type of relationship between two devices.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
 
 ### AssetType
 
-Asset classification type. Defines categories of trackable assets. Examples: vehicle, trailer, container, employee, pet
+A classification type for assets.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions specific to this asset type |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions specific to this asset type, ordered by display order. |
 
 ### AssetGroupType
 
-Asset group type with membership constraints. Defines rules for what assets can be grouped together. Examples: fleet, department, route, project
+A type for asset groups with membership constraints.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `allowedAssetTypes` | [[AssetGroupTypeConstraint!]!](/api-reference/objects.md#assetgrouptypeconstraint/) | Allowed asset types with optional per-type limits. Empty list means any asset type is allowed (polymorphic group). |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraint!]!](/api-reference/objects.md#assetgrouptypeconstraint/) | The asset types allowed in groups of this type, with optional quantity limits. |
 
 ### GeoObjectType
 
-Geographic object type. Defines categories of geofences and POIs. Examples: geofence, poi, route, zone, parking
+A classification type for geographic objects.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions specific to this geo object type |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions specific to this geo object type, ordered by display order. |
 
 ### ScheduleType
 
-Schedule type classification. Defines categories of schedules. Examples: work_hours, maintenance_window, holiday, shift
+A classification type for schedules.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions specific to this schedule type |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `customFieldDefinitions` | [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/) | Custom field definitions specific to this schedule type, ordered by display order. |
 
 ### Role
 
-User role definition. Roles group permissions and can be assigned to actors. Can be system-wide or organization-specific.
+A role that can be assigned to actors to grant permissions.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `organization` | [Organization](/api-reference/objects.md#organization/) | Organization this role belongs to. Null for system-wide roles available to all organizations. |
-| `permissions` | [[RolePermission!]!](/api-reference/objects.md#rolepermission/) | Permissions assigned to this role |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `permissions` | [RolePermissionConnection!](/api-reference/objects.md#rolepermissionconnection/) | The permissions assigned to this role. |
 
 ### PermissionScope
 
-Permission scope definition. Defines what actions can be controlled for a specific domain area. Examples: device.manage, asset.view, report.generate
+A definition of a permission scope that can be granted to roles.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `module` | [Module!](/api-reference/objects.md#module/) | Module this permission scope belongs to |
-| `entityType` | [EntityType!](/api-reference/objects.md#entitytype/) | Entity type this permission applies to |
-| `category` | `String!` | Permission category for UI grouping. Examples: management, viewing, reporting |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `module` | [Module!](/api-reference/objects.md#module/) | The module this permission scope belongs to. |
+| `entityType` | [EntityType!](/api-reference/objects.md#entitytype/) | The entity type this permission applies to. |
 
 ### Tag
 
-Tag for labeling entities. Tags can be universal or restricted to specific entity types.
+A tag for labeling and categorizing entities.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `entityType` | [EntityType](/api-reference/objects.md#entitytype/) | Entity type this tag can be applied to. Null means tag is universal (applicable to any entity). |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | Organization that owns this tag |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `entityTypes` | [[EntityType!]!](/api-reference/objects.md#entitytype/) | The entity types this tag can be applied to. Empty means the tag is universal. |
 
 ### Country
 
-Country reference data. [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) country codes and names.
+A country reference data item.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `alpha2Code` | [CountryCode!](/api-reference/scalars-and-enums.md#countrycode/) | The [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code. |
 
 ### UserCatalogItem
 
-User-defined catalog item. Custom dictionary entries created by organization users. Supports soft delete and hierarchy.
+A user-defined catalog item that supports hierarchical organization.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [HierarchicalCatalogItem](/api-reference/interfaces.md#hierarchicalcatalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `deletedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Soft delete timestamp |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) | Catalog this item belongs to |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | Organization that owns this item |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `parent` | [UserCatalogItem](/api-reference/objects.md#usercatalogitem/) | The parent item in the hierarchy. Null for root items. |
+| `children` | [UserCatalogItemConnection!](/api-reference/objects.md#usercatalogitemconnection/) | The child items in the hierarchy. |
 
 ### Catalog
 
-Catalog definition (catalog of catalogs). Catalogs are themselves catalog items, enabling unified management.
+A catalog definition that contains catalog items. Catalogs are themselves catalog items.
 
-**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Timestamped](/api-reference/interfaces.md#timestamped/)
+**Implements:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Node](/api-reference/interfaces.md#node/), [Versioned](/api-reference/interfaces.md#versioned/), [Titled](/api-reference/interfaces.md#titled/)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) |  |
-| `code` | `String!` |  |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `description` | `String` |  |
+| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
 | `order` | `Int!` |  |
-| `isSystem` | `Boolean!` |  |
-| `extra` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `createdAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `updatedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) |  |
-| `parent` | [CatalogItem](/api-reference/interfaces.md#catalogitem/) |  |
-| `children` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
-| `organization` | [Organization](/api-reference/objects.md#organization/) | Organization that owns this catalog or null for system catalogs |
-| `module` | [Module!](/api-reference/objects.md#module/) | Module this catalog is associated with |
-| `category` | [CatalogCategory](/api-reference/objects.md#catalogcategory/) | Optional category for grouping catalogs |
-| `fieldsSchema` | [JSON](/api-reference/scalars-and-enums.md#json/) | JSON Schema defining structure of item.extra fields. Used for validation and UI generation. |
-| `items` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) | Items in this catalog |
+| `catalog` | [Catalog!](/api-reference/objects.md#catalog/) | Self-reference for the meta-catalog. |
+| `organization` | [Organization](/api-reference/objects.md#organization/) |  |
+| `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
+| `module` | [Module!](/api-reference/objects.md#module/) | The module this catalog is associated with. |
+| `items` | [CatalogItemConnection!](/api-reference/objects.md#catalogitemconnection/) | The items in this catalog. |
+
+## Other
+
+### SystemActor
+
+The built-in system actor used for automated operations.
+
+**Implements:** [Actor](/api-reference/interfaces.md#actor/), [Node](/api-reference/interfaces.md#node/), [Titled](/api-reference/interfaces.md#titled/)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `title` | `String!` |  |
+
+### GeoPoint
+
+A geographic coordinate point.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `lat` | [Latitude!](/api-reference/scalars-and-enums.md#latitude/) | The latitude coordinate in decimal degrees. |
+| `lng` | [Longitude!](/api-reference/scalars-and-enums.md#longitude/) | The longitude coordinate in decimal degrees. |
+| `altitude` | `Float` | The altitude in meters above sea level. |
+| `accuracy` | `Float` | The horizontal accuracy in meters. |
+
+### DeletePayload
+
+The result of a delete mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deletedId` | `ID!` | The ID of the deleted entity. |
+
+### DevicePayload
+
+The result of a device mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `device` | [Device!](/api-reference/objects.md#device/) | The created or updated device. |
+
+### AssetPayload
+
+The result of an asset mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `asset` | [Asset!](/api-reference/objects.md#asset/) | The created or updated asset. |
+
+### AssetGroupPayload
+
+The result of an asset group mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetGroup` | [AssetGroup!](/api-reference/objects.md#assetgroup/) | The created or updated asset group. |
+
+### GeoObjectPayload
+
+The result of a geo object mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `geoObject` | [GeoObject!](/api-reference/objects.md#geoobject/) | The created or updated geo object. |
+
+### SchedulePayload
+
+The result of a schedule mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `schedule` | [Schedule!](/api-reference/objects.md#schedule/) | The created or updated schedule. |
+
+### InventoryPayload
+
+The result of an inventory mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `inventory` | [Inventory!](/api-reference/objects.md#inventory/) | The created or updated inventory. |
+
+### OrganizationPayload
+
+The result of an organization mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The created or updated organization. |
+
+### UserPayload
+
+The result of a user profile mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `user` | [User!](/api-reference/objects.md#user/) | The updated user. |
+
+### MemberPayload
+
+The result of a membership mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `member` | [Member!](/api-reference/objects.md#member/) | The created or updated membership. |
+
+### IntegrationPayload
+
+The result of an integration mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `integration` | [Integration!](/api-reference/objects.md#integration/) | The created or updated integration. |
+
+### CustomFieldDefinitionPayload
+
+The result of a custom field definition mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `customFieldDefinition` | [CustomFieldDefinition!](/api-reference/objects.md#customfielddefinition/) | The created or updated custom field definition. |
+
+### DeviceIdentifierPayload
+
+The result of a device identifier mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceIdentifier` | [DeviceIdentifier!](/api-reference/objects.md#deviceidentifier/) | The added device identifier. |
+
+### AssetGroupItemPayload
+
+The result of an asset group item mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetGroupItem` | [AssetGroupItem!](/api-reference/objects.md#assetgroupitem/) | The created group membership record. |
+
+### DeviceInventoryRelationPayload
+
+The result of a device inventory link mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceInventoryRelation` | [DeviceInventoryRelation!](/api-reference/objects.md#deviceinventoryrelation/) | The created inventory assignment. |
+
+### DeviceRelationPayload
+
+The result of a device relation mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceRelation` | [DeviceRelation!](/api-reference/objects.md#devicerelation/) | The created device relationship. |
+
+### ActorRolePayload
+
+The result of a role assignment mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `actorRole` | [ActorRole!](/api-reference/objects.md#actorrole/) | The created role assignment. |
+
+### RolePermissionPayload
+
+The result of a permission grant mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `rolePermission` | [RolePermission!](/api-reference/objects.md#rolepermission/) | The created permission. |
+
+### UserScopePayload
+
+The result of a user scope mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `userScope` | [UserScope!](/api-reference/objects.md#userscope/) | The created user scope restriction. |
+
+### DeviceTypePayload
+
+The result of a device type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceType` | [DeviceType!](/api-reference/objects.md#devicetype/) | The created or updated device type. |
+
+### DeviceStatusPayload
+
+The result of a device status mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceStatus` | [DeviceStatus!](/api-reference/objects.md#devicestatus/) | The created or updated device status. |
+
+### AssetTypePayload
+
+The result of an asset type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetType` | [AssetType!](/api-reference/objects.md#assettype/) | The created or updated asset type. |
+
+### AssetGroupTypePayload
+
+The result of an asset group type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetGroupType` | [AssetGroupType!](/api-reference/objects.md#assetgrouptype/) | The created or updated asset group type. |
+
+### GeoObjectTypePayload
+
+The result of a geo object type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `geoObjectType` | [GeoObjectType!](/api-reference/objects.md#geoobjecttype/) | The created or updated geo object type. |
+
+### ScheduleTypePayload
+
+The result of a schedule type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `scheduleType` | [ScheduleType!](/api-reference/objects.md#scheduletype/) | The created or updated schedule type. |
+
+### TagPayload
+
+The result of a tag mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `tag` | [Tag!](/api-reference/objects.md#tag/) | The created or updated tag. |
+
+### RolePayload
+
+The result of a role mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `role` | [Role!](/api-reference/objects.md#role/) | The created or updated role. |
+
+### UserCatalogItemPayload
+
+The result of a user catalog item mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `item` | [UserCatalogItem!](/api-reference/objects.md#usercatalogitem/) | The created or updated user catalog item. |

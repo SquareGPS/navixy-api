@@ -10,179 +10,194 @@ List queries return paginated results using the [Relay Cursor Connections](https
 
 ### node
 
-Fetch any entity by ID using Node interface. Returns null if not found or no permission.
+Retrieves any entity by its globally unique identifier.
 
 ```graphql
-node(id: UUID!): Node
+node("The ID of the entity to retrieve." id: ID!): Node
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the entity to retrieve." id` | `ID!` |  |
 
 **Returns:** [Node](/api-reference/interfaces.md#node/)
 
 ### me
 
-Returns currently authenticated user
+Retrieves the currently authenticated actor.
 
 ```graphql
-me: User!
+me: Actor!
 ```
 
-**Returns:** [User!](/api-reference/objects.md#user/)
+**Returns:** [Actor!](/api-reference/interfaces.md#actor/)
 
 ## Devices
 
-### deviceVendor
-
-Fetch device vendor by ID. Returns null if not found.
-
-```graphql
-deviceVendor(id: UUID!): DeviceVendor
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [DeviceVendor](/api-reference/objects.md#devicevendor/)
-
-### deviceVendors
-
-List all device vendors
-
-```graphql
-deviceVendors: [DeviceVendor!]!
-```
-
-**Returns:** [[DeviceVendor!]!](/api-reference/objects.md#devicevendor/)
-
-### deviceModel
-
-Fetch device model by ID. Returns null if not found.
-
-```graphql
-deviceModel(id: UUID!): DeviceModel
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [DeviceModel](/api-reference/objects.md#devicemodel/)
-
-### deviceModels
-
-List device models. Filter by vendor if provided.
-
-```graphql
-deviceModels(vendorId: UUID): [DeviceModel!]!
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `vendorId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [[DeviceModel!]!](/api-reference/objects.md#devicemodel/)
-
-### deviceType
-
-Fetch device type by ID. Returns null if not found.
-
-```graphql
-deviceType(id: UUID!): DeviceType
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [DeviceType](/api-reference/objects.md#devicetype/)
-
 ### deviceTypes
 
-List device types. Filter by organization for custom types.
+Lists device types for an organization.
 
 ```graphql
-deviceTypes(organizationId: UUID): [DeviceType!]!
+deviceTypes(
+  organizationId: ID!
+  filter: CatalogItemFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+): DeviceTypeConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| `organizationId` | `ID!` | The organization to retrieve device types for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned device types. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned device types. |
 
-**Returns:** [[DeviceType!]!](/api-reference/objects.md#devicetype/)
+**CatalogItemFilter fields**
 
-### deviceStatus
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
+| `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
-Fetch device status by ID. Returns null if not found.
+**CatalogItemOrder fields**
 
-```graphql
-deviceStatus(id: UUID!): DeviceStatus
-```
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
 
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [DeviceStatus](/api-reference/objects.md#devicestatus/)
+**Returns:** [DeviceTypeConnection!](/api-reference/objects.md#devicetypeconnection/)
 
 ### deviceStatuses
 
-List device statuses. Filter by organization for custom statuses.
+Lists device statuses for an organization.
 
 ```graphql
-deviceStatuses(organizationId: UUID): [DeviceStatus!]!
+deviceStatuses(
+  organizationId: ID!
+  filter: CatalogItemFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+): DeviceStatusConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| `organizationId` | `ID!` | The organization to retrieve device statuses for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned device statuses. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned device statuses. |
 
-**Returns:** [[DeviceStatus!]!](/api-reference/objects.md#devicestatus/)
+**CatalogItemFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
+| `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
+
+**CatalogItemOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [DeviceStatusConnection!](/api-reference/objects.md#devicestatusconnection/)
+
+### deviceModels
+
+Lists device models with optional vendor filter.
+
+```graphql
+deviceModels(
+  organizationId: ID!
+  filter: DeviceModelFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: TITLE, direction: ASC }
+): DeviceModelConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization to retrieve device models for. |
+| `filter` | `DeviceModelFilter` | Filtering options for the returned device models. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned device models. |
+
+**DeviceModelFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `vendorIds` | `[ID!]` |  |
+| `title` | `String` |  |
+| `code` | [Code](/api-reference/scalars-and-enums.md#code/) | Exact code match. |
+
+**CatalogItemOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [DeviceModelConnection!](/api-reference/objects.md#devicemodelconnection/)
 
 ### device
 
-Fetch device by ID. Returns null if not found or no permission.
+Retrieves a device by its ID.
 
 ```graphql
-device(id: UUID!): Device
+device("The ID of the device to retrieve." id: ID!): Device
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the device to retrieve." id` | `ID!` |  |
 
 **Returns:** [Device](/api-reference/objects.md#device/)
 
 ### devices
 
-Query devices with filtering, pagination, and sorting. Sort format: ["field:ASC", "field:DESC"] Supports: title, createdAt, updatedAt, status.code, type.code
+Lists devices for an organization.
 
 ```graphql
 devices(
+  organizationId: ID!
   filter: DeviceFilter
-  pagination: PaginationInput
-  sort: [String!]
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: DeviceOrder = { field: TITLE, direction: ASC }
 ): DeviceConnection!
 ```
 
@@ -190,92 +205,112 @@ devices(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `filter` | `DeviceFilter` | See fields below |
-| `pagination` | `PaginationInput` | See fields below |
-| `sort` | `[String!]` | |
+| `organizationId` | `ID!` | The organization to retrieve devices for. |
+| `filter` | `DeviceFilter` | Filtering options for the returned devices. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `DeviceOrder` | The ordering options for the returned devices. |
 
 **DeviceFilter fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `typeId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by device type |
-| `modelId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by device model |
-| `statusId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by status |
-| `title` | `String` | Search in title (case-insensitive contains) |
-| `includeDeleted` | `Boolean` | Include soft-deleted devices |
-| `customFields` | `[CustomFieldFilter!]` | Custom field filters |
+| `typeIds` | `[ID!]` |  |
+| `modelIds` | `[ID!]` |  |
+| `statusIds` | `[ID!]` |  |
+| `vendorIds` | `[ID!]` |  |
+| `identifierValue` | `String` | Search by device identifier value. |
+| `inventoryIds` | `[ID!]` |  |
+| `title` | `String` |  |
+| `customFields` | `[CustomFieldFilter!]` | Filter by custom field values. |
 
-**PaginationInput fields**
+**DeviceOrder fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
-| `before` | `String` | Cursor to end before (backward pagination) |
+| `field` | [DeviceOrderField](/api-reference/scalars-and-enums.md#deviceorderfield/) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `customFieldCode` | [Code](/api-reference/scalars-and-enums.md#code/) | The custom field code to order by. Mutually exclusive with `field`. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
 
 **Returns:** [DeviceConnection!](/api-reference/objects.md#deviceconnection/)
 
 ## Assets
 
-### assetType
-
-Fetch asset type by ID. Returns null if not found.
-
-```graphql
-assetType(id: UUID!): AssetType
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [AssetType](/api-reference/objects.md#assettype/)
-
 ### assetTypes
 
-List asset types. Filter by organization for custom types.
+Lists asset types for an organization.
 
 ```graphql
-assetTypes(organizationId: UUID): [AssetType!]!
+assetTypes(
+  organizationId: ID!
+  filter: CatalogItemFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+): AssetTypeConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| `organizationId` | `ID!` | The organization to retrieve asset types for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned asset types. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned asset types. |
 
-**Returns:** [[AssetType!]!](/api-reference/objects.md#assettype/)
+**CatalogItemFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
+| `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
+
+**CatalogItemOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [AssetTypeConnection!](/api-reference/objects.md#assettypeconnection/)
 
 ### asset
 
-Fetch asset by ID. Returns null if not found or no permission.
+Retrieves an asset by its ID.
 
 ```graphql
-asset(id: UUID!): Asset
+asset("The ID of the asset to retrieve." id: ID!): Asset
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the asset to retrieve." id` | `ID!` |  |
 
 **Returns:** [Asset](/api-reference/objects.md#asset/)
 
 ### assets
 
-Query assets with filtering, pagination, and sorting
+Lists assets for an organization.
 
 ```graphql
 assets(
+  organizationId: ID!
   filter: AssetFilter
-  pagination: PaginationInput
-  sort: [String!]
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: AssetOrder = { field: TITLE, direction: ASC }
 ): AssetConnection!
 ```
 
@@ -283,160 +318,215 @@ assets(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `filter` | `AssetFilter` | See fields below |
-| `pagination` | `PaginationInput` | See fields below |
-| `sort` | `[String!]` | |
+| `organizationId` | `ID!` | The organization to retrieve assets for. |
+| `filter` | `AssetFilter` | Filtering options for the returned assets. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AssetOrder` | The ordering options for the returned assets. |
 
 **AssetFilter fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `typeId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by asset type |
-| `title` | `String` | Search in title (case-insensitive contains) |
-| `includeDeleted` | `Boolean` | Include soft-deleted assets |
-| `customFields` | `[CustomFieldFilter!]` | Custom field filters |
+| `typeIds` | `[ID!]` |  |
+| `title` | `String` |  |
+| `customFields` | `[CustomFieldFilter!]` | Filter by custom field values. |
 
-**PaginationInput fields**
+**AssetOrder fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
-| `before` | `String` | Cursor to end before (backward pagination) |
+| `field` | [AssetOrderField](/api-reference/scalars-and-enums.md#assetorderfield/) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `customFieldCode` | [Code](/api-reference/scalars-and-enums.md#code/) | The custom field code to order by. Mutually exclusive with `field`. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
 
 **Returns:** [AssetConnection!](/api-reference/objects.md#assetconnection/)
 
 ## Asset groups
 
-### assetGroupType
-
-Fetch asset group type by ID. Returns null if not found.
-
-```graphql
-assetGroupType(id: UUID!): AssetGroupType
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [AssetGroupType](/api-reference/objects.md#assetgrouptype/)
-
 ### assetGroupTypes
 
-List asset group types. Filter by organization for custom types.
+Lists asset group types for an organization.
 
 ```graphql
-assetGroupTypes(organizationId: UUID): [AssetGroupType!]!
+assetGroupTypes(
+  organizationId: ID!
+  filter: CatalogItemFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+): AssetGroupTypeConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| `organizationId` | `ID!` | The organization to retrieve asset group types for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned asset group types. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned asset group types. |
 
-**Returns:** [[AssetGroupType!]!](/api-reference/objects.md#assetgrouptype/)
+**CatalogItemFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
+| `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
+
+**CatalogItemOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [AssetGroupTypeConnection!](/api-reference/objects.md#assetgrouptypeconnection/)
 
 ### assetGroup
 
-Fetch asset group by ID. Returns null if not found or no permission.
+Retrieves an asset group by its ID.
 
 ```graphql
-assetGroup(id: UUID!): AssetGroup
+assetGroup(
+  "The ID of the asset group to retrieve." id: ID!
+): AssetGroup
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the asset group to retrieve." id` | `ID!` |  |
 
 **Returns:** [AssetGroup](/api-reference/objects.md#assetgroup/)
 
 ### assetGroups
 
-List asset groups for organization
+Lists asset groups for an organization.
 
 ```graphql
 assetGroups(
-  organizationId: UUID!
-  includeDeleted: Boolean = false
-): [AssetGroup!]!
+  organizationId: ID!
+  filter: AssetGroupFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: AssetGroupOrder = { field: TITLE, direction: ASC }
+): AssetGroupConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `includeDeleted` | `Boolean` | |
+| `organizationId` | `ID!` | The organization to retrieve asset groups for. |
+| `filter` | `AssetGroupFilter` | Filtering options for the returned asset groups. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AssetGroupOrder` | The ordering options for the returned asset groups. |
 
-**Returns:** [[AssetGroup!]!](/api-reference/objects.md#assetgroup/)
+**AssetGroupFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `typeIds` | `[ID!]` |  |
+| `title` | `String` |  |
+
+**AssetGroupOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [AssetGroupOrderField!](/api-reference/scalars-and-enums.md#assetgrouporderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [AssetGroupConnection!](/api-reference/objects.md#assetgroupconnection/)
 
 ## Geo objects
 
-### geoObjectType
-
-Fetch geo object type by ID. Returns null if not found.
-
-```graphql
-geoObjectType(id: UUID!): GeoObjectType
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [GeoObjectType](/api-reference/objects.md#geoobjecttype/)
-
 ### geoObjectTypes
 
-List geo object types. Filter by organization for custom types.
+Lists geo object types for an organization.
 
 ```graphql
-geoObjectTypes(organizationId: UUID): [GeoObjectType!]!
+geoObjectTypes(
+  organizationId: ID!
+  filter: CatalogItemFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+): GeoObjectTypeConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| `organizationId` | `ID!` | The organization to retrieve geo object types for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned geo object types. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned geo object types. |
 
-**Returns:** [[GeoObjectType!]!](/api-reference/objects.md#geoobjecttype/)
+**CatalogItemFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
+| `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
+
+**CatalogItemOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [GeoObjectTypeConnection!](/api-reference/objects.md#geoobjecttypeconnection/)
 
 ### geoObject
 
-Fetch geo object by ID. Returns null if not found or no permission.
+Retrieves a geo object by its ID.
 
 ```graphql
-geoObject(id: UUID!): GeoObject
+geoObject("The ID of the geo object to retrieve." id: ID!): GeoObject
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the geo object to retrieve." id` | `ID!` |  |
 
 **Returns:** [GeoObject](/api-reference/objects.md#geoobject/)
 
 ### geoObjects
 
-Query geo objects with filtering, pagination, and sorting
+Lists geo objects for an organization.
 
 ```graphql
 geoObjects(
+  organizationId: ID!
   filter: GeoObjectFilter
-  pagination: PaginationInput
-  sort: [String!]
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: GeoObjectOrder = { field: TITLE, direction: ASC }
 ): GeoObjectConnection!
 ```
 
@@ -444,90 +534,107 @@ geoObjects(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `filter` | `GeoObjectFilter` | See fields below |
-| `pagination` | `PaginationInput` | See fields below |
-| `sort` | `[String!]` | |
+| `organizationId` | `ID!` | The organization to retrieve geo objects for. |
+| `filter` | `GeoObjectFilter` | Filtering options for the returned geo objects. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `GeoObjectOrder` | The ordering options for the returned geo objects. |
 
 **GeoObjectFilter fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `typeId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by geo object type |
-| `title` | `String` | Search in title (case-insensitive contains) |
-| `includeDeleted` | `Boolean` | Include soft-deleted geo objects |
-| `customFields` | `[CustomFieldFilter!]` | Custom field filters |
+| `typeIds` | `[ID!]` |  |
+| `title` | `String` |  |
+| `customFields` | `[CustomFieldFilter!]` | Filter by custom field values. |
 
-**PaginationInput fields**
+**GeoObjectOrder fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
-| `before` | `String` | Cursor to end before (backward pagination) |
+| `field` | [GeoObjectOrderField](/api-reference/scalars-and-enums.md#geoobjectorderfield/) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `customFieldCode` | [Code](/api-reference/scalars-and-enums.md#code/) | The custom field code to order by. Mutually exclusive with `field`. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
 
 **Returns:** [GeoObjectConnection!](/api-reference/objects.md#geoobjectconnection/)
 
 ## Schedules
 
-### scheduleType
-
-Fetch schedule type by ID. Returns null if not found.
-
-```graphql
-scheduleType(id: UUID!): ScheduleType
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [ScheduleType](/api-reference/objects.md#scheduletype/)
-
 ### scheduleTypes
 
-List schedule types. Filter by organization for custom types.
+Lists schedule types for an organization.
 
 ```graphql
-scheduleTypes(organizationId: UUID): [ScheduleType!]!
+scheduleTypes(
+  organizationId: ID!
+  filter: CatalogItemFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+): ScheduleTypeConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| `organizationId` | `ID!` | The organization to retrieve schedule types for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned schedule types. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned schedule types. |
 
-**Returns:** [[ScheduleType!]!](/api-reference/objects.md#scheduletype/)
+**CatalogItemFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
+| `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
+
+**CatalogItemOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [ScheduleTypeConnection!](/api-reference/objects.md#scheduletypeconnection/)
 
 ### schedule
 
-Fetch schedule by ID. Returns null if not found or no permission.
+Retrieves a schedule by its ID.
 
 ```graphql
-schedule(id: UUID!): Schedule
+schedule("The ID of the schedule to retrieve." id: ID!): Schedule
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the schedule to retrieve." id` | `ID!` |  |
 
 **Returns:** [Schedule](/api-reference/objects.md#schedule/)
 
 ### schedules
 
-Query schedules with filtering, pagination, and sorting
+Lists schedules for an organization.
 
 ```graphql
 schedules(
+  organizationId: ID!
   filter: ScheduleFilter
-  pagination: PaginationInput
-  sort: [String!]
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: ScheduleOrder = { field: TITLE, direction: ASC }
 ): ScheduleConnection!
 ```
 
@@ -535,57 +642,124 @@ schedules(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `filter` | `ScheduleFilter` | See fields below |
-| `pagination` | `PaginationInput` | See fields below |
-| `sort` | `[String!]` | |
+| `organizationId` | `ID!` | The organization to retrieve schedules for. |
+| `filter` | `ScheduleFilter` | Filtering options for the returned schedules. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `ScheduleOrder` | The ordering options for the returned schedules. |
 
 **ScheduleFilter fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `typeId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by schedule type |
-| `title` | `String` | Search in title (case-insensitive contains) |
-| `includeDeleted` | `Boolean` | Include soft-deleted schedules |
-| `customFields` | `[CustomFieldFilter!]` | Custom field filters |
+| `typeIds` | `[ID!]` |  |
+| `title` | `String` |  |
+| `customFields` | `[CustomFieldFilter!]` | Filter by custom field values. |
 
-**PaginationInput fields**
+**ScheduleOrder fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
-| `before` | `String` | Cursor to end before (backward pagination) |
+| `field` | [ScheduleOrderField](/api-reference/scalars-and-enums.md#scheduleorderfield/) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `customFieldCode` | [Code](/api-reference/scalars-and-enums.md#code/) | The custom field code to order by. Mutually exclusive with `field`. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
 
 **Returns:** [ScheduleConnection!](/api-reference/objects.md#scheduleconnection/)
 
 ## Organizations
 
-### organization
+### catalog
 
-Fetch organization by ID. Returns null if not found or no permission.
+Retrieves a catalog by its ID.
 
 ```graphql
-organization(id: UUID!): Organization
+catalog("The ID of the catalog to retrieve." id: ID!): Catalog
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the catalog to retrieve." id` | `ID!` |  |
+
+**Returns:** [Catalog](/api-reference/objects.md#catalog/)
+
+### catalogs
+
+Lists catalogs for an organization.
+
+```graphql
+catalogs(
+  organizationId: ID!
+  filter: CatalogItemFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+): CatalogConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization to retrieve catalogs for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned catalogs. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned catalogs. |
+
+**CatalogItemFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
+| `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
+
+**CatalogItemOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [CatalogConnection!](/api-reference/objects.md#catalogconnection/)
+
+### organization
+
+Retrieves an organization by its ID.
+
+```graphql
+organization(
+  "The ID of the organization to retrieve." id: ID!
+): Organization
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `"The ID of the organization to retrieve." id` | `ID!` |  |
 
 **Returns:** [Organization](/api-reference/objects.md#organization/)
 
 ### organizations
 
-Query organizations with filtering and pagination
+Lists organizations.
 
 ```graphql
 organizations(
   filter: OrganizationFilter
-  pagination: PaginationInput
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: OrganizationOrder = { field: TITLE, direction: ASC }
 ): OrganizationConnection!
 ```
 
@@ -593,342 +767,366 @@ organizations(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `filter` | `OrganizationFilter` | See fields below |
-| `pagination` | `PaginationInput` | See fields below |
+| `filter` | `OrganizationFilter` | Filtering options for the returned organizations. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `OrganizationOrder` | The ordering options for the returned organizations. |
 
 **OrganizationFilter fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `parentId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by parent organization |
-| `isActive` | `Boolean` | Filter by active status |
-| `isDealer` | `Boolean` | Filter by dealer capability |
-| `includeDeleted` | `Boolean` | Include soft-deleted organizations |
+| `parentIds` | `[ID!]` |  |
+| `isActive` | `Boolean` | Filter by active status. |
 
-**PaginationInput fields**
+**OrganizationOrder fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
-| `before` | `String` | Cursor to end before (backward pagination) |
+| `field` | [OrganizationOrderField!](/api-reference/scalars-and-enums.md#organizationorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
 
 **Returns:** [OrganizationConnection!](/api-reference/objects.md#organizationconnection/)
 
-### catalog
-
-Fetch catalog by ID. Returns null if not found.
-
-```graphql
-catalog(id: UUID!): Catalog
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [Catalog](/api-reference/objects.md#catalog/)
-
-### catalogs
-
-List catalogs for organization. Optionally filter by module.
-
-```graphql
-catalogs(
-  organizationId: UUID!
-  moduleId: UUID
-): [Catalog!]!
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `moduleId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [[Catalog!]!](/api-reference/objects.md#catalog/)
-
 ## Actors
-
-### actor
-
-Fetch actor by ID. Returns null if not found or no permission.
-
-```graphql
-actor(id: UUID!): Actor
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [Actor](/api-reference/objects.md#actor/)
-
-### user
-
-Fetch user by ID. Returns null if not found or no permission.
-
-```graphql
-user(id: UUID!): User
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [User](/api-reference/objects.md#user/)
-
-### users
-
-Query users with filtering and pagination
-
-```graphql
-users(
-  filter: UserFilter
-  pagination: PaginationInput
-): UserConnection!
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `filter` | `UserFilter` | See fields below |
-| `pagination` | `PaginationInput` | See fields below |
-
-**UserFilter fields**
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization membership |
-| `isActive` | `Boolean` | Filter by active status |
-| `includeDeleted` | `Boolean` | Include soft-deleted users |
-
-**PaginationInput fields**
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
-| `before` | `String` | Cursor to end before (backward pagination) |
-
-**Returns:** [UserConnection!](/api-reference/objects.md#userconnection/)
 
 ### member
 
-Fetch membership by ID. Returns null if not found or no permission.
+Retrieves a member by its ID.
 
 ```graphql
-member(id: UUID!): Member
+member("The ID of the member to retrieve." id: ID!): Member
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the member to retrieve." id` | `ID!` |  |
 
 **Returns:** [Member](/api-reference/objects.md#member/)
 
 ### members
 
-List memberships. Filter by user and/or organization.
+Lists members of an organization.
 
 ```graphql
 members(
-  userId: UUID
-  organizationId: UUID
-  includeDeleted: Boolean = false
-): [Member!]!
+  organizationId: ID!
+  filter: MemberFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: MemberOrder = { field: ASSIGNED_AT, direction: DESC }
+): MemberConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `userId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-| `includeDeleted` | `Boolean` | |
+| `organizationId` | `ID!` | The organization to retrieve members for. |
+| `filter` | `MemberFilter` | Filtering options for the returned members. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `MemberOrder` | The ordering options for the returned members. |
 
-**Returns:** [[Member!]!](/api-reference/objects.md#member/)
+**MemberFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `userIds` | `[ID!]` |  |
+| `isActive` | `Boolean` | Filter by active status. |
+
+**MemberOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [MemberOrderField!](/api-reference/scalars-and-enums.md#memberorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [MemberConnection!](/api-reference/objects.md#memberconnection/)
 
 ### integration
 
-Fetch integration by ID. Returns null if not found or no permission.
+Retrieves an integration by its ID.
 
 ```graphql
-integration(id: UUID!): Integration
+integration(
+  "The ID of the integration to retrieve." id: ID!
+): Integration
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the integration to retrieve." id` | `ID!` |  |
 
 **Returns:** [Integration](/api-reference/objects.md#integration/)
 
 ### integrations
 
-List integrations. Optionally filter by active status.
+Lists integrations for an organization.
 
 ```graphql
-integrations(isActive: Boolean): [Integration!]!
+integrations(
+  organizationId: ID!
+  filter: IntegrationFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: IntegrationOrder = { field: TITLE, direction: ASC }
+): IntegrationConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `isActive` | `Boolean` | |
+| `organizationId` | `ID!` | The organization to retrieve integrations for. |
+| `filter` | `IntegrationFilter` | Filtering options for the returned integrations. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `IntegrationOrder` | The ordering options for the returned integrations. |
 
-**Returns:** [[Integration!]!](/api-reference/objects.md#integration/)
+**IntegrationFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isActive` | `Boolean` | Filter by active status. |
+
+**IntegrationOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [IntegrationOrderField!](/api-reference/scalars-and-enums.md#integrationorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [IntegrationConnection!](/api-reference/objects.md#integrationconnection/)
+
+### actorRoles
+
+Lists actor role assignments for an organization.
+
+```graphql
+actorRoles(
+  organizationId: ID!
+  filter: ActorRoleFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: ActorRoleOrder = { field: ASSIGNED_AT, direction: DESC }
+): ActorRoleConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization to retrieve actor roles for. |
+| `filter` | `ActorRoleFilter` | Filtering options for the returned actor roles. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `ActorRoleOrder` | The ordering options for the returned actor roles. |
+
+**ActorRoleFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `actorIds` | `[ID!]` |  |
+| `roleIds` | `[ID!]` |  |
+| `includeExpired` | `Boolean` | Include expired role assignments. |
+
+**ActorRoleOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [ActorRoleOrderField!](/api-reference/scalars-and-enums.md#actorroleorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [ActorRoleConnection!](/api-reference/objects.md#actorroleconnection/)
+
+### userScopes
+
+Lists user scope restrictions for an organization.
+
+```graphql
+userScopes(
+  organizationId: ID!
+  filter: UserScopeFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: UserScopeOrder = { field: ID, direction: ASC }
+): UserScopeConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization to retrieve user scopes for. |
+| `filter` | `UserScopeFilter` | Filtering options for the returned user scopes. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `UserScopeOrder` | The ordering options for the returned user scopes. |
+
+**UserScopeFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `actorIds` | `[ID!]` |  |
+| `permissionScopeIds` | `[ID!]` |  |
+| `targetEntityIds` | `[ID!]` |  |
+
+**UserScopeOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [UserScopeOrderField!](/api-reference/scalars-and-enums.md#userscopeorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [UserScopeConnection!](/api-reference/objects.md#userscopeconnection/)
 
 ## Access control
 
-### role
-
-Fetch role by ID. Returns null if not found.
-
-```graphql
-role(id: UUID!): Role
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [Role](/api-reference/objects.md#role/)
-
 ### roles
 
-List roles. Filter by organization. Null returns system roles.
+Lists roles for an organization.
 
 ```graphql
-roles(organizationId: UUID): [Role!]!
+roles(
+  organizationId: ID!
+  filter: CatalogItemFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+): RoleConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| `organizationId` | `ID!` | The organization to retrieve roles for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned roles. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned roles. |
 
-**Returns:** [[Role!]!](/api-reference/objects.md#role/)
+**CatalogItemFilter fields**
 
-### permissionScope
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
+| `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
-Fetch permission scope by ID. Returns null if not found.
+**CatalogItemOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [RoleConnection!](/api-reference/objects.md#roleconnection/)
+
+### rolePermissions
+
+Lists role permissions for an organization.
 
 ```graphql
-permissionScope(id: UUID!): PermissionScope
+rolePermissions(
+  organizationId: ID!
+  filter: RolePermissionFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: RolePermissionOrder = { field: GRANTED_AT, direction: DESC }
+): RolePermissionConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `organizationId` | `ID!` | The organization to retrieve role permissions for. |
+| `filter` | `RolePermissionFilter` | Filtering options for the returned role permissions. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `RolePermissionOrder` | The ordering options for the returned role permissions. |
 
-**Returns:** [PermissionScope](/api-reference/objects.md#permissionscope/)
+**RolePermissionFilter fields**
 
-### permissionScopes
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `roleIds` | `[ID!]` |  |
+| `permissionScopeIds` | `[ID!]` |  |
+| `targetEntityIds` | `[ID!]` |  |
 
-List permission scopes. Filter by module.
+**RolePermissionOrder fields**
 
-```graphql
-permissionScopes(moduleId: UUID): [PermissionScope!]!
-```
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [RolePermissionOrderField!](/api-reference/scalars-and-enums.md#rolepermissionorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
 
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `moduleId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [[PermissionScope!]!](/api-reference/objects.md#permissionscope/)
+**Returns:** [RolePermissionConnection!](/api-reference/objects.md#rolepermissionconnection/)
 
 ## Inventory
 
 ### inventory
 
-Fetch inventory by ID. Returns null if not found or no permission.
+Retrieves an inventory by its ID.
 
 ```graphql
-inventory(id: UUID!): Inventory
+inventory("The ID of the inventory to retrieve." id: ID!): Inventory
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The ID of the inventory to retrieve." id` | `ID!` |  |
 
 **Returns:** [Inventory](/api-reference/objects.md#inventory/)
-
-## Custom fields
-
-### customFieldDefinition
-
-Fetch custom field definition by ID. Returns null if not found.
-
-```graphql
-customFieldDefinition(id: UUID!): CustomFieldDefinition
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [CustomFieldDefinition](/api-reference/objects.md#customfielddefinition/)
-
-### customFieldDefinitions
-
-List custom field definitions with filters
-
-```graphql
-customFieldDefinitions(
-  organizationId: UUID!
-  ownerCatalogItemId: UUID
-  targetEntityTypeCode: String
-  includeDeleted: Boolean = false
-): [CustomFieldDefinition!]!
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `ownerCatalogItemId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-| `targetEntityTypeCode` | `String` | |
-| `includeDeleted` | `Boolean` | |
-
-**Returns:** [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/)
 
 ## Audit
 
 ### auditEvents
 
-Query audit events with filtering and pagination
+Lists audit events for an organization.
 
 ```graphql
 auditEvents(
+  organizationId: ID!
   filter: AuditEventFilter
-  pagination: PaginationInput
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: AuditEventOrder = { field: OCCURRED_AT, direction: DESC }
 ): AuditEventConnection!
 ```
 
@@ -936,215 +1134,187 @@ auditEvents(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `filter` | `AuditEventFilter` | See fields below |
-| `pagination` | `PaginationInput` | See fields below |
+| `organizationId` | `ID!` | The organization to retrieve audit events for. |
+| `filter` | `AuditEventFilter` | Filtering options for the returned audit events. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AuditEventOrder` | The ordering options for the returned audit events. |
 
 **AuditEventFilter fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `actorId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by actor who triggered the event |
-| `aggregateType` | `String` | Filter by entity type |
-| `aggregateId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by specific entity ID |
-| `eventCategory` | `String` | Filter by event category (auth, domain) |
-| `eventType` | [AuditEventType](/api-reference/scalars-and-enums.md#auditeventtype/) | Filter by event type |
-| `sourceType` | [SourceType](/api-reference/scalars-and-enums.md#sourcetype/) | Filter by source type |
-| `traceId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by trace ID for distributed tracing |
-| `from` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Events after this timestamp |
-| `to` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Events before this timestamp |
+| `actorIds` | `[ID!]` |  |
+| `aggregateTypes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) |  |
+| `aggregateIds` | `[ID!]` |  |
+| `eventTypes` | [[AuditEventType!]](/api-reference/scalars-and-enums.md#auditeventtype/) |  |
+| `sourceTypes` | [[SourceType!]](/api-reference/scalars-and-enums.md#sourcetype/) |  |
+| `traceId` | `String` | Filter by trace ID. |
+| `from` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Return events that occurred after this timestamp. |
+| `to` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Return events that occurred before this timestamp. |
 
-**PaginationInput fields**
+**AuditEventOrder fields**
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
-| `before` | `String` | Cursor to end before (backward pagination) |
+| `field` | [AuditEventOrderField!](/api-reference/scalars-and-enums.md#auditeventorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
 
 **Returns:** [AuditEventConnection!](/api-reference/objects.md#auditeventconnection/)
 
-## Localization
-
-### i18nTexts
-
-Get translations for entity. Optionally filter by locale.
-
-```graphql
-i18nTexts(
-  entityId: UUID!
-  locale: String
-): [I18nText!]!
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `entityId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `locale` | `String` | |
-
-**Returns:** [[I18nText!]!](/api-reference/objects.md#i18ntext/)
-
 ## Catalog items
 
-### module
+### nodes
 
-Fetch module by ID. Returns null if not found.
+Retrieves multiple entities by their globally unique identifiers. Returns items in the same order as the input IDs.
 
 ```graphql
-module(id: UUID!): Module
+nodes("The IDs of the entities to retrieve." ids: [ID!]!): [Node]!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| `"The IDs of the entities to retrieve." ids` | `[ID!]!` |  |
 
-**Returns:** [Module](/api-reference/objects.md#module/)
-
-### modules
-
-List all system modules
-
-```graphql
-modules: [Module!]!
-```
-
-**Returns:** [[Module!]!](/api-reference/objects.md#module/)
-
-### entityType
-
-Fetch entity type by ID. Returns null if not found.
-
-```graphql
-entityType(id: UUID!): EntityType
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [EntityType](/api-reference/objects.md#entitytype/)
-
-### entityTypes
-
-List all entity types
-
-```graphql
-entityTypes: [EntityType!]!
-```
-
-**Returns:** [[EntityType!]!](/api-reference/objects.md#entitytype/)
-
-### deviceRelationType
-
-Fetch device relation type by ID. Returns null if not found.
-
-```graphql
-deviceRelationType(id: UUID!): DeviceRelationType
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [DeviceRelationType](/api-reference/objects.md#devicerelationtype/)
-
-### deviceRelationTypes
-
-List all device relation types
-
-```graphql
-deviceRelationTypes: [DeviceRelationType!]!
-```
-
-**Returns:** [[DeviceRelationType!]!](/api-reference/objects.md#devicerelationtype/)
-
-### tag
-
-Fetch tag by ID. Returns null if not found.
-
-```graphql
-tag(id: UUID!): Tag
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [Tag](/api-reference/objects.md#tag/)
+**Returns:** [[Node]!](/api-reference/interfaces.md#node/)
 
 ### tags
 
-List tags. Filter by organization and optionally by entity type.
+Lists tags for an organization.
 
 ```graphql
 tags(
-  organizationId: UUID!
-  entityTypeCode: String
-): [Tag!]!
+  organizationId: ID!
+  filter: TagFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: CatalogItemOrder = { field: TITLE, direction: ASC }
+): TagConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `entityTypeCode` | `String` | |
+| `organizationId` | `ID!` | The organization to retrieve tags for. |
+| `filter` | `TagFilter` | Filtering options for the returned tags. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned tags. |
 
-**Returns:** [[Tag!]!](/api-reference/objects.md#tag/)
+**TagFilter fields**
 
-### country
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
 
-Fetch country by ID. Returns null if not found.
+**CatalogItemOrder fields**
 
-```graphql
-country(id: UUID!): Country
-```
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField!](/api-reference/scalars-and-enums.md#catalogitemorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
 
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-
-**Returns:** [Country](/api-reference/objects.md#country/)
-
-### countries
-
-List all countries
-
-```graphql
-countries: [Country!]!
-```
-
-**Returns:** [[Country!]!](/api-reference/objects.md#country/)
+**Returns:** [TagConnection!](/api-reference/objects.md#tagconnection/)
 
 ### inventories
 
-List inventories for organization
+Lists inventories for an organization.
 
 ```graphql
 inventories(
-  organizationId: UUID!
-  includeDeleted: Boolean = false
-): [Inventory!]!
+  organizationId: ID!
+  filter: InventoryFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: InventoryOrder = { field: TITLE, direction: ASC }
+): InventoryConnection!
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `includeDeleted` | `Boolean` | |
+| `organizationId` | `ID!` | The organization to retrieve inventories for. |
+| `filter` | `InventoryFilter` | Filtering options for the returned inventories. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `InventoryOrder` | The ordering options for the returned inventories. |
 
-**Returns:** [[Inventory!]!](/api-reference/objects.md#inventory/)
+**InventoryFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `title` | `String` |  |
+| `code` | [Code](/api-reference/scalars-and-enums.md#code/) | Exact code match. |
+
+**InventoryOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [InventoryOrderField!](/api-reference/scalars-and-enums.md#inventoryorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [InventoryConnection!](/api-reference/objects.md#inventoryconnection/)
+
+### entityHistory
+
+Retrieves the change history for any entity.
+
+```graphql
+entityHistory(
+  entityId: ID!
+  filter: AuditEventFilter
+  first: Int
+  after: String
+  last: Int
+  before: String
+  orderBy: AuditEventOrder = { field: OCCURRED_AT, direction: DESC }
+): AuditEventConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `entityId` | `ID!` | The ID of the entity to retrieve history for. |
+| `filter` | `AuditEventFilter` | Filtering options for the returned audit events. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AuditEventOrder` | The ordering options for the returned audit events. |
+
+**AuditEventFilter fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `actorIds` | `[ID!]` |  |
+| `aggregateTypes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) |  |
+| `aggregateIds` | `[ID!]` |  |
+| `eventTypes` | [[AuditEventType!]](/api-reference/scalars-and-enums.md#auditeventtype/) |  |
+| `sourceTypes` | [[SourceType!]](/api-reference/scalars-and-enums.md#sourcetype/) |  |
+| `traceId` | `String` | Filter by trace ID. |
+| `from` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Return events that occurred after this timestamp. |
+| `to` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Return events that occurred before this timestamp. |
+
+**AuditEventOrder fields**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [AuditEventOrderField!](/api-reference/scalars-and-enums.md#auditeventorderfield/) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/scalars-and-enums.md#orderdirection/) | The direction to order. |
+
+**Returns:** [AuditEventConnection!](/api-reference/objects.md#auditeventconnection/)
