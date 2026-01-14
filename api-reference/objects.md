@@ -20,7 +20,7 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | `model` | [DeviceModel](/api-reference/objects.md#devicemodel/) | The specific device model. |
 | `status` | [DeviceStatus!](/api-reference/objects.md#devicestatus/) | The current operational status. |
 | `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
-| `identifiers` | [[DeviceIdentifier!]!](/api-reference/objects.md#deviceidentifier/) |  |
+| `identifiers` | [[DeviceIdentifier!]!](/api-reference/objects.md#deviceidentifier/) | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
 | `inventory` | [Inventory](/api-reference/objects.md#inventory/) | The inventory this device is currently assigned to. |
 | `relationsFrom` | [[DeviceRelation!]!](/api-reference/objects.md#devicerelation/) | The outgoing relationships from this device to other devices. |
 | `relationsTo` | [[DeviceRelation!]!](/api-reference/objects.md#devicerelation/) | The incoming relationships from other devices to this device. |
@@ -145,16 +145,6 @@ A geographic object such as a geofence, point of interest, or route.
 | `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
 | `containsPoints` | [[PointContainmentResult!]!](/api-reference/objects.md#pointcontainmentresult/) | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
-### PointContainmentResult
-
-The result of checking whether a point is contained within a geometry.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `index` | `Int!` |  |
-| `point` | [GeoPoint!](/api-reference/objects.md#geopoint/) | The point that was checked. |
-| `isContained` | `Boolean!` | Whether the point is inside the geometry. |
-
 ## Schedules
 
 ### Schedule
@@ -221,8 +211,8 @@ Structured person name components following W3C Personal Names guidance. See: ht
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `givenNames` | `String!` |  |
-| `familyNames` | `String!` |  |
+| `givenNames` | `String!` | The given name(s), also known as first name(s). May contain multiple names separated by spaces. |
+| `familyNames` | `String!` | The family name(s), also known as surname(s) or last name(s). May contain multiple names. |
 | `middleName` | `String` | The middle name, patronymic, or additional name component. |
 | `fullName` | `String!` | The full name formatted according to the user's locale preferences. |
 
@@ -238,7 +228,7 @@ A human user account authenticated via an identity provider.
 | `version` | `Int!` |  |
 | `title` | `String!` | The display name for the user. This is the user's full name for display purposes. |
 | `name` | [PersonName!](/api-reference/objects.md#personname/) | The structured name components from the identity provider. |
-| `identityProvider` | `String!` |  |
+| `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |
 | `identityProviderId` | `String!` | The user's unique ID in the identity provider. |
 | `email` | [EmailAddress!](/api-reference/scalars-and-enums.md#emailaddress/) | The user's primary email address. |
 | `locale` | [Locale](/api-reference/scalars-and-enums.md#locale/) | The user's preferred locale. |
@@ -341,7 +331,7 @@ A custom field definition that specifies the metadata for a custom field. Note: 
 | `description` | `String` | A description of the field for UI hints. |
 | `order` | `Int!` | The display order within the owner context. |
 | `organization` | [Organization](/api-reference/objects.md#organization/) | The organization that owns this definition. Null for system-level fields. |
-| `owner` | [CatalogItem!](/api-reference/interfaces.md#catalogitem/) |  |
+| `owner` | [CatalogItem!](/api-reference/interfaces.md#catalogitem/) | The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields. |
 | `targetEntityType` | [EntityType!](/api-reference/objects.md#entitytype/) | The target entity type this field applies to. |
 | `fieldType` | [FieldType!](/api-reference/scalars-and-enums.md#fieldtype/) | The data type determining validation rules and UI rendering. This property is immutable and cannot be changed after creation. |
 | `params` | [FieldParams!](/api-reference/interfaces.md#fieldparams/) | The type-specific parameters for validation, defaults, and options. |
@@ -529,7 +519,7 @@ An audit log entry recording an event that occurred in the system.
 | `ipAddress` | `String` | The client IP address. |
 | `userAgent` | `String` | The client User-Agent string. |
 | `sourceType` | [SourceType!](/api-reference/scalars-and-enums.md#sourcetype/) | The source type of the request. |
-| `traceId` | `String` |  |
+| `traceId` | `String` | The distributed tracing ID (32 hex characters) for log correlation. |
 | `aggregateType` | [Code](/api-reference/scalars-and-enums.md#code/) | The type of entity affected. |
 | `aggregateId` | `ID` | The ID of the affected entity. |
 | `eventType` | [AuditEventType!](/api-reference/scalars-and-enums.md#auditeventtype/) | The type of event that occurred. |
@@ -567,7 +557,7 @@ A paginated list of CatalogItem items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[CatalogItemEdge!]!](/api-reference/objects.md#catalogitemedge/) | A list of edges. |
-| `nodes` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) |  |
+| `nodes` | [[CatalogItem!]!](/api-reference/interfaces.md#catalogitem/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -591,7 +581,7 @@ A paginated list of UserCatalogItem items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[UserCatalogItemEdge!]!](/api-reference/objects.md#usercatalogitemedge/) | A list of edges. |
-| `nodes` | [[UserCatalogItem!]!](/api-reference/objects.md#usercatalogitem/) |  |
+| `nodes` | [[UserCatalogItem!]!](/api-reference/objects.md#usercatalogitem/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -615,7 +605,7 @@ A paginated list of Organization items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[OrganizationEdge!]!](/api-reference/objects.md#organizationedge/) | A list of edges. |
-| `nodes` | [[Organization!]!](/api-reference/objects.md#organization/) |  |
+| `nodes` | [[Organization!]!](/api-reference/objects.md#organization/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -639,7 +629,7 @@ A paginated list of User items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[UserEdge!]!](/api-reference/objects.md#useredge/) | A list of edges. |
-| `nodes` | [[User!]!](/api-reference/objects.md#user/) |  |
+| `nodes` | [[User!]!](/api-reference/objects.md#user/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -663,7 +653,7 @@ A paginated list of Member items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[MemberEdge!]!](/api-reference/objects.md#memberedge/) | A list of edges. |
-| `nodes` | [[Member!]!](/api-reference/objects.md#member/) |  |
+| `nodes` | [[Member!]!](/api-reference/objects.md#member/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -687,7 +677,7 @@ A paginated list of Integration items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[IntegrationEdge!]!](/api-reference/objects.md#integrationedge/) | A list of edges. |
-| `nodes` | [[Integration!]!](/api-reference/objects.md#integration/) |  |
+| `nodes` | [[Integration!]!](/api-reference/objects.md#integration/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -711,7 +701,7 @@ A paginated list of Device items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[DeviceEdge!]!](/api-reference/objects.md#deviceedge/) | A list of edges. |
-| `nodes` | [[Device!]!](/api-reference/objects.md#device/) |  |
+| `nodes` | [[Device!]!](/api-reference/objects.md#device/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -735,7 +725,7 @@ A paginated list of Asset items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[AssetEdge!]!](/api-reference/objects.md#assetedge/) | A list of edges. |
-| `nodes` | [[Asset!]!](/api-reference/objects.md#asset/) |  |
+| `nodes` | [[Asset!]!](/api-reference/objects.md#asset/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -759,7 +749,7 @@ A paginated list of AssetGroup items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[AssetGroupEdge!]!](/api-reference/objects.md#assetgroupedge/) | A list of edges. |
-| `nodes` | [[AssetGroup!]!](/api-reference/objects.md#assetgroup/) |  |
+| `nodes` | [[AssetGroup!]!](/api-reference/objects.md#assetgroup/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -783,7 +773,7 @@ A paginated list of AssetGroupItem items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[AssetGroupItemEdge!]!](/api-reference/objects.md#assetgroupitemedge/) | A list of edges. |
-| `nodes` | [[AssetGroupItem!]!](/api-reference/objects.md#assetgroupitem/) |  |
+| `nodes` | [[AssetGroupItem!]!](/api-reference/objects.md#assetgroupitem/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -807,7 +797,7 @@ A paginated list of Inventory items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[InventoryEdge!]!](/api-reference/objects.md#inventoryedge/) | A list of edges. |
-| `nodes` | [[Inventory!]!](/api-reference/objects.md#inventory/) |  |
+| `nodes` | [[Inventory!]!](/api-reference/objects.md#inventory/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -831,7 +821,7 @@ A paginated list of GeoObject items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[GeoObjectEdge!]!](/api-reference/objects.md#geoobjectedge/) | A list of edges. |
-| `nodes` | [[GeoObject!]!](/api-reference/objects.md#geoobject/) |  |
+| `nodes` | [[GeoObject!]!](/api-reference/objects.md#geoobject/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -855,7 +845,7 @@ A paginated list of Schedule items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[ScheduleEdge!]!](/api-reference/objects.md#scheduleedge/) | A list of edges. |
-| `nodes` | [[Schedule!]!](/api-reference/objects.md#schedule/) |  |
+| `nodes` | [[Schedule!]!](/api-reference/objects.md#schedule/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -879,7 +869,7 @@ A paginated list of AuditEvent items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[AuditEventEdge!]!](/api-reference/objects.md#auditeventedge/) | A list of edges. |
-| `nodes` | [[AuditEvent!]!](/api-reference/objects.md#auditevent/) |  |
+| `nodes` | [[AuditEvent!]!](/api-reference/objects.md#auditevent/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -903,7 +893,7 @@ A paginated list of DeviceInventoryRelation items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[DeviceInventoryRelationEdge!]!](/api-reference/objects.md#deviceinventoryrelationedge/) | A list of edges. |
-| `nodes` | [[DeviceInventoryRelation!]!](/api-reference/objects.md#deviceinventoryrelation/) |  |
+| `nodes` | [[DeviceInventoryRelation!]!](/api-reference/objects.md#deviceinventoryrelation/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -927,7 +917,7 @@ A paginated list of Catalog items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[CatalogEdge!]!](/api-reference/objects.md#catalogedge/) | A list of edges. |
-| `nodes` | [[Catalog!]!](/api-reference/objects.md#catalog/) |  |
+| `nodes` | [[Catalog!]!](/api-reference/objects.md#catalog/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -951,7 +941,7 @@ A paginated list of DeviceType items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[DeviceTypeEdge!]!](/api-reference/objects.md#devicetypeedge/) | A list of edges. |
-| `nodes` | [[DeviceType!]!](/api-reference/objects.md#devicetype/) |  |
+| `nodes` | [[DeviceType!]!](/api-reference/objects.md#devicetype/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -975,7 +965,7 @@ A paginated list of DeviceStatus items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[DeviceStatusEdge!]!](/api-reference/objects.md#devicestatusedge/) | A list of edges. |
-| `nodes` | [[DeviceStatus!]!](/api-reference/objects.md#devicestatus/) |  |
+| `nodes` | [[DeviceStatus!]!](/api-reference/objects.md#devicestatus/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -999,7 +989,7 @@ A paginated list of DeviceModel items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[DeviceModelEdge!]!](/api-reference/objects.md#devicemodeledge/) | A list of edges. |
-| `nodes` | [[DeviceModel!]!](/api-reference/objects.md#devicemodel/) |  |
+| `nodes` | [[DeviceModel!]!](/api-reference/objects.md#devicemodel/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1023,7 +1013,7 @@ A paginated list of AssetType items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[AssetTypeEdge!]!](/api-reference/objects.md#assettypeedge/) | A list of edges. |
-| `nodes` | [[AssetType!]!](/api-reference/objects.md#assettype/) |  |
+| `nodes` | [[AssetType!]!](/api-reference/objects.md#assettype/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1047,7 +1037,7 @@ A paginated list of AssetGroupType items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[AssetGroupTypeEdge!]!](/api-reference/objects.md#assetgrouptypeedge/) | A list of edges. |
-| `nodes` | [[AssetGroupType!]!](/api-reference/objects.md#assetgrouptype/) |  |
+| `nodes` | [[AssetGroupType!]!](/api-reference/objects.md#assetgrouptype/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1071,7 +1061,7 @@ A paginated list of GeoObjectType items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[GeoObjectTypeEdge!]!](/api-reference/objects.md#geoobjecttypeedge/) | A list of edges. |
-| `nodes` | [[GeoObjectType!]!](/api-reference/objects.md#geoobjecttype/) |  |
+| `nodes` | [[GeoObjectType!]!](/api-reference/objects.md#geoobjecttype/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1095,7 +1085,7 @@ A paginated list of ScheduleType items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[ScheduleTypeEdge!]!](/api-reference/objects.md#scheduletypeedge/) | A list of edges. |
-| `nodes` | [[ScheduleType!]!](/api-reference/objects.md#scheduletype/) |  |
+| `nodes` | [[ScheduleType!]!](/api-reference/objects.md#scheduletype/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1119,7 +1109,7 @@ A paginated list of Role items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[RoleEdge!]!](/api-reference/objects.md#roleedge/) | A list of edges. |
-| `nodes` | [[Role!]!](/api-reference/objects.md#role/) |  |
+| `nodes` | [[Role!]!](/api-reference/objects.md#role/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1143,7 +1133,7 @@ A paginated list of Tag items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[TagEdge!]!](/api-reference/objects.md#tagedge/) | A list of edges. |
-| `nodes` | [[Tag!]!](/api-reference/objects.md#tag/) |  |
+| `nodes` | [[Tag!]!](/api-reference/objects.md#tag/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1167,7 +1157,7 @@ A paginated list of ActorRole items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[ActorRoleEdge!]!](/api-reference/objects.md#actorroleedge/) | A list of edges. |
-| `nodes` | [[ActorRole!]!](/api-reference/objects.md#actorrole/) |  |
+| `nodes` | [[ActorRole!]!](/api-reference/objects.md#actorrole/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1191,7 +1181,7 @@ A paginated list of RolePermission items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[RolePermissionEdge!]!](/api-reference/objects.md#rolepermissionedge/) | A list of edges. |
-| `nodes` | [[RolePermission!]!](/api-reference/objects.md#rolepermission/) |  |
+| `nodes` | [[RolePermission!]!](/api-reference/objects.md#rolepermission/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1215,7 +1205,7 @@ A paginated list of UserScope items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `edges` | [[UserScopeEdge!]!](/api-reference/objects.md#userscopeedge/) | A list of edges. |
-| `nodes` | [[UserScope!]!](/api-reference/objects.md#userscope/) |  |
+| `nodes` | [[UserScope!]!](/api-reference/objects.md#userscope/) | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo!](/api-reference/objects.md#pageinfo/) | Information about the current page. |
 | `total` | [CountInfo](/api-reference/objects.md#countinfo/) | The total count of items matching the filter. |
 
@@ -1229,6 +1219,232 @@ An edge in the UserScope connection.
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
 | `node` | [UserScope!](/api-reference/objects.md#userscope/) | The user scope at the end of the edge. |
+
+## Mutation payloads
+
+### DeletePayload
+
+The result of a delete mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deletedId` | `ID!` | The ID of the deleted entity. |
+
+### DevicePayload
+
+The result of a device mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `device` | [Device!](/api-reference/objects.md#device/) | The created or updated device. |
+
+### AssetPayload
+
+The result of an asset mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `asset` | [Asset!](/api-reference/objects.md#asset/) | The created or updated asset. |
+
+### AssetGroupPayload
+
+The result of an asset group mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetGroup` | [AssetGroup!](/api-reference/objects.md#assetgroup/) | The created or updated asset group. |
+
+### GeoObjectPayload
+
+The result of a geo object mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `geoObject` | [GeoObject!](/api-reference/objects.md#geoobject/) | The created or updated geo object. |
+
+### SchedulePayload
+
+The result of a schedule mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `schedule` | [Schedule!](/api-reference/objects.md#schedule/) | The created or updated schedule. |
+
+### InventoryPayload
+
+The result of an inventory mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `inventory` | [Inventory!](/api-reference/objects.md#inventory/) | The created or updated inventory. |
+
+### OrganizationPayload
+
+The result of an organization mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organization` | [Organization!](/api-reference/objects.md#organization/) | The created or updated organization. |
+
+### UserPayload
+
+The result of a user profile mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `user` | [User!](/api-reference/objects.md#user/) | The updated user. |
+
+### MemberPayload
+
+The result of a membership mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `member` | [Member!](/api-reference/objects.md#member/) | The created or updated membership. |
+
+### IntegrationPayload
+
+The result of an integration mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `integration` | [Integration!](/api-reference/objects.md#integration/) | The created or updated integration. |
+
+### CustomFieldDefinitionPayload
+
+The result of a custom field definition mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `customFieldDefinition` | [CustomFieldDefinition!](/api-reference/objects.md#customfielddefinition/) | The created or updated custom field definition. |
+
+### DeviceIdentifierPayload
+
+The result of a device identifier mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceIdentifier` | [DeviceIdentifier!](/api-reference/objects.md#deviceidentifier/) | The added device identifier. |
+
+### AssetGroupItemPayload
+
+The result of an asset group item mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetGroupItem` | [AssetGroupItem!](/api-reference/objects.md#assetgroupitem/) | The created group membership record. |
+
+### DeviceInventoryRelationPayload
+
+The result of a device inventory link mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceInventoryRelation` | [DeviceInventoryRelation!](/api-reference/objects.md#deviceinventoryrelation/) | The created inventory assignment. |
+
+### DeviceRelationPayload
+
+The result of a device relation mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceRelation` | [DeviceRelation!](/api-reference/objects.md#devicerelation/) | The created device relationship. |
+
+### ActorRolePayload
+
+The result of a role assignment mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `actorRole` | [ActorRole!](/api-reference/objects.md#actorrole/) | The created role assignment. |
+
+### RolePermissionPayload
+
+The result of a permission grant mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `rolePermission` | [RolePermission!](/api-reference/objects.md#rolepermission/) | The created permission. |
+
+### UserScopePayload
+
+The result of a user scope mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `userScope` | [UserScope!](/api-reference/objects.md#userscope/) | The created user scope restriction. |
+
+### DeviceTypePayload
+
+The result of a device type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceType` | [DeviceType!](/api-reference/objects.md#devicetype/) | The created or updated device type. |
+
+### DeviceStatusPayload
+
+The result of a device status mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deviceStatus` | [DeviceStatus!](/api-reference/objects.md#devicestatus/) | The created or updated device status. |
+
+### AssetTypePayload
+
+The result of an asset type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetType` | [AssetType!](/api-reference/objects.md#assettype/) | The created or updated asset type. |
+
+### AssetGroupTypePayload
+
+The result of an asset group type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetGroupType` | [AssetGroupType!](/api-reference/objects.md#assetgrouptype/) | The created or updated asset group type. |
+
+### GeoObjectTypePayload
+
+The result of a geo object type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `geoObjectType` | [GeoObjectType!](/api-reference/objects.md#geoobjecttype/) | The created or updated geo object type. |
+
+### ScheduleTypePayload
+
+The result of a schedule type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `scheduleType` | [ScheduleType!](/api-reference/objects.md#scheduletype/) | The created or updated schedule type. |
+
+### TagPayload
+
+The result of a tag mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `tag` | [Tag!](/api-reference/objects.md#tag/) | The created or updated tag. |
+
+### RolePayload
+
+The result of a role mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `role` | [Role!](/api-reference/objects.md#role/) | The created or updated role. |
+
+### UserCatalogItemPayload
+
+The result of a user catalog item mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `item` | [UserCatalogItem!](/api-reference/objects.md#usercatalogitem/) | The created or updated user catalog item. |
 
 ## Catalog items
 
@@ -1578,226 +1794,12 @@ A geographic coordinate point.
 | `altitude` | `Float` | The altitude in meters above sea level. |
 | `accuracy` | `Float` | The horizontal accuracy in meters. |
 
-### DeletePayload
+### PointContainmentResult
 
-The result of a delete mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deletedId` | `ID!` | The ID of the deleted entity. |
-
-### DevicePayload
-
-The result of a device mutation.
+The result of checking whether a point is contained within a geometry.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `device` | [Device!](/api-reference/objects.md#device/) | The created or updated device. |
-
-### AssetPayload
-
-The result of an asset mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `asset` | [Asset!](/api-reference/objects.md#asset/) | The created or updated asset. |
-
-### AssetGroupPayload
-
-The result of an asset group mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `assetGroup` | [AssetGroup!](/api-reference/objects.md#assetgroup/) | The created or updated asset group. |
-
-### GeoObjectPayload
-
-The result of a geo object mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `geoObject` | [GeoObject!](/api-reference/objects.md#geoobject/) | The created or updated geo object. |
-
-### SchedulePayload
-
-The result of a schedule mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `schedule` | [Schedule!](/api-reference/objects.md#schedule/) | The created or updated schedule. |
-
-### InventoryPayload
-
-The result of an inventory mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `inventory` | [Inventory!](/api-reference/objects.md#inventory/) | The created or updated inventory. |
-
-### OrganizationPayload
-
-The result of an organization mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organization` | [Organization!](/api-reference/objects.md#organization/) | The created or updated organization. |
-
-### UserPayload
-
-The result of a user profile mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `user` | [User!](/api-reference/objects.md#user/) | The updated user. |
-
-### MemberPayload
-
-The result of a membership mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `member` | [Member!](/api-reference/objects.md#member/) | The created or updated membership. |
-
-### IntegrationPayload
-
-The result of an integration mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `integration` | [Integration!](/api-reference/objects.md#integration/) | The created or updated integration. |
-
-### CustomFieldDefinitionPayload
-
-The result of a custom field definition mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `customFieldDefinition` | [CustomFieldDefinition!](/api-reference/objects.md#customfielddefinition/) | The created or updated custom field definition. |
-
-### DeviceIdentifierPayload
-
-The result of a device identifier mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deviceIdentifier` | [DeviceIdentifier!](/api-reference/objects.md#deviceidentifier/) | The added device identifier. |
-
-### AssetGroupItemPayload
-
-The result of an asset group item mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `assetGroupItem` | [AssetGroupItem!](/api-reference/objects.md#assetgroupitem/) | The created group membership record. |
-
-### DeviceInventoryRelationPayload
-
-The result of a device inventory link mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deviceInventoryRelation` | [DeviceInventoryRelation!](/api-reference/objects.md#deviceinventoryrelation/) | The created inventory assignment. |
-
-### DeviceRelationPayload
-
-The result of a device relation mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deviceRelation` | [DeviceRelation!](/api-reference/objects.md#devicerelation/) | The created device relationship. |
-
-### ActorRolePayload
-
-The result of a role assignment mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorRole` | [ActorRole!](/api-reference/objects.md#actorrole/) | The created role assignment. |
-
-### RolePermissionPayload
-
-The result of a permission grant mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `rolePermission` | [RolePermission!](/api-reference/objects.md#rolepermission/) | The created permission. |
-
-### UserScopePayload
-
-The result of a user scope mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `userScope` | [UserScope!](/api-reference/objects.md#userscope/) | The created user scope restriction. |
-
-### DeviceTypePayload
-
-The result of a device type mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deviceType` | [DeviceType!](/api-reference/objects.md#devicetype/) | The created or updated device type. |
-
-### DeviceStatusPayload
-
-The result of a device status mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deviceStatus` | [DeviceStatus!](/api-reference/objects.md#devicestatus/) | The created or updated device status. |
-
-### AssetTypePayload
-
-The result of an asset type mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `assetType` | [AssetType!](/api-reference/objects.md#assettype/) | The created or updated asset type. |
-
-### AssetGroupTypePayload
-
-The result of an asset group type mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `assetGroupType` | [AssetGroupType!](/api-reference/objects.md#assetgrouptype/) | The created or updated asset group type. |
-
-### GeoObjectTypePayload
-
-The result of a geo object type mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `geoObjectType` | [GeoObjectType!](/api-reference/objects.md#geoobjecttype/) | The created or updated geo object type. |
-
-### ScheduleTypePayload
-
-The result of a schedule type mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `scheduleType` | [ScheduleType!](/api-reference/objects.md#scheduletype/) | The created or updated schedule type. |
-
-### TagPayload
-
-The result of a tag mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `tag` | [Tag!](/api-reference/objects.md#tag/) | The created or updated tag. |
-
-### RolePayload
-
-The result of a role mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `role` | [Role!](/api-reference/objects.md#role/) | The created or updated role. |
-
-### UserCatalogItemPayload
-
-The result of a user catalog item mutation.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `item` | [UserCatalogItem!](/api-reference/objects.md#usercatalogitem/) | The created or updated user catalog item. |
+| `index` | `Int!` | The index of the point in the input array (0-based). |
+| `point` | [GeoPoint!](/api-reference/objects.md#geopoint/) | The point that was checked. |
+| `isContained` | `Boolean!` | Whether the point is inside the geometry. |

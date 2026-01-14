@@ -8,7 +8,7 @@ Navixy Repository API defines these custom scalar types in addition to the stand
 
 ### DateTime
 
-[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with timezone.
+[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with timezone ([RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)).
 
 | Property | Value |
 | -------- | ----- |
@@ -17,7 +17,7 @@ Navixy Repository API defines these custom scalar types in addition to the stand
 
 ### Date
 
-[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date without time component.
+[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date without time component ([RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)).
 
 | Property | Value |
 | -------- | ----- |
@@ -26,7 +26,7 @@ Navixy Repository API defines these custom scalar types in addition to the stand
 
 ### JSON
 
-Arbitrary JSON value. Used for custom fields data, extra fields, and flexible configurations.
+Arbitrary JSON object. Used for custom fields data, extra fields, and flexible configurations.
 
 | Property | Value |
 | -------- | ----- |
@@ -35,44 +35,59 @@ Arbitrary JSON value. Used for custom fields data, extra fields, and flexible co
 
 ### GeoJSON
 
-GeoJSON geometry object following [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946).
+[GeoJSON](https://geojson.org/) geometry object (Point, Polygon, LineString, etc.).
 
 | Property | Value |
 | -------- | ----- |
-| Format | `{"type": "Point", "coordinates": [lng, lat]}` |
-| Example | `{"type": "Point", "coordinates": [-73.935242, 40.730610]}` |
+| Format | `GeoJSON geometry object` |
+| Example | `{"type": "Point", "coordinates": [125.6, 10.1]}` |
 
 ### Latitude
 
+A geographic latitude coordinate in decimal degrees. Valid range: -90.0 to 90.0.
+
 ### Longitude
+
+A geographic longitude coordinate in decimal degrees. Valid range: -180.0 to 180.0.
 
 ### Locale
 
+A BCP 47 language tag identifying a user locale. Example: `en-US`, `ru-RU`.
+
 ### EmailAddress
+
+An email address conforming to RFC 5322. Example: `user@example.com`.
 
 ### HexColorCode
 
-Hexadecimal color code.
+CSS hex color code for UI display.
 
 | Property | Value |
 | -------- | ----- |
-| Format | `#RRGGBB or #RGB` |
-| Example | `#FF0000` |
+| Format | `#RRGGBB` |
+| Example | `#FF5733` |
 
 ### CountryCode
 
+An [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code. Example: `US`, `GB`, `ES`.
+
 ### Code
 
-Machine-readable identifier code. Case-insensitive, max 64 chars. Allowed: A-Z, 0-9, _, ., -
+Machine-readable string identifier. Must match pattern `^[a-z][a-z0-9_]*$` (lowercase letters, numbers, underscores, starting with a letter).
 
 | Property | Value |
 | -------- | ----- |
-| Format | `String` |
-| Example | `DEVICE_TYPE, status.active` |
+| Format | `lowercase_snake_case` |
+| Example | `vehicle_type` |
 
 ### ScheduleData
 
-A schedule data structure containing time intervals and recurrence rules.
+Schedule/calendar data with time intervals and recurrence rules following [iCalendar](https://datatracker.ietf.org/doc/html/rfc5545) format.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `iCalendar-compatible JSON` |
+| Example | `{"intervals": [...], "rrule": "FREQ=WEEKLY;BYDAY=MO,WE,FR"}` |
 
 ## Enums
 
@@ -84,8 +99,8 @@ The direction for sorting query results.
 
 | Value | Description |
 | ----- | ----------- |
-| `ASC` |  |
-| `DESC` |  |
+| `ASC` | Sort in ascending order (A→Z, 0→9, oldest→newest). |
+| `DESC` | Sort in descending order (Z→A, 9→0, newest→oldest). |
 
 ### CatalogItemOrigin
 
@@ -103,7 +118,7 @@ The precision level of a total count value.
 
 | Value | Description |
 | ----- | ----------- |
-| `EXACT` |  |
+| `EXACT` | The count is exact, calculated using `COUNT(*)`. |
 | `APPROXIMATE` | The count is approximate, derived from table statistics. |
 | `AT_LEAST` | At least this many items exist. Counting stopped early for performance reasons. |
 
@@ -113,7 +128,7 @@ Feature flags that can be enabled for an organization.
 
 | Value | Description |
 | ----- | ----------- |
-| `DEALER` |  |
+| `DEALER` | The organization can create and manage child organizations (dealer/reseller model). |
 | `WHITELABEL` | The organization has custom branding including domain, logo, and color scheme. |
 
 ### FieldType
@@ -126,9 +141,9 @@ The data type of a custom field, determining validation rules and UI rendering.
 | `TEXT` | Multi-line text input. Maximum 65,535 characters. |
 | `NUMBER` | Numeric value, supporting both integers and decimals. |
 | `BOOLEAN` | Boolean true/false value. |
-| `DATE` |  |
+| `DATE` | Calendar date without time component (YYYY-MM-DD). |
 | `DATETIME` | Date and time with timezone information. |
-| `GEOJSON` |  |
+| `GEOJSON` | [GeoJSON](https://geojson.org/) geometry object (Point, Polygon, LineString, etc.). |
 | `SCHEDULE` | Schedule or calendar data with time intervals and recurrence rules. |
 | `OPTIONS` | Selection from a predefined list of options. |
 | `DEVICE` | Reference to a Device entity. |
@@ -168,7 +183,7 @@ The source type identifying the origin of an API request.
 | Value | Description |
 | ----- | ----------- |
 | `WEB` | Request originated from a web browser application. |
-| `MOBILE` |  |
+| `MOBILE` | Request originated from a mobile application (iOS/Android). |
 | `API` | Request made directly via the API. |
 | `INTERNAL` | Request generated by an internal system process. |
 | `INTEGRATION` | Request made by an external integration. |
@@ -209,7 +224,7 @@ Comparison operators for filtering by custom field values.
 | `GTE` | Value is greater than or equal to the specified value. |
 | `LT` | Value is less than the specified value. |
 | `LTE` | Value is less than or equal to the specified value. |
-| `CONTAINS` |  |
+| `CONTAINS` | String value contains the specified substring (case-insensitive). |
 | `IN` | Value is one of the specified values in the array. |
 | `IS_NULL` | Value is null. |
 | `IS_NOT_NULL` | Value is not null. |

@@ -2,7 +2,7 @@
 
 Interfaces define common fields shared by multiple object types. When a type implements an interface, it guarantees those fields are present.
 
-### Node
+## Node
 
 An object with a globally unique identifier.
 
@@ -12,7 +12,7 @@ An object with a globally unique identifier.
 
 **Implemented by:** [InventoryItem](/api-reference/interfaces.md#inventoryitem/), [Actor](/api-reference/interfaces.md#actor/), [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Module](/api-reference/objects.md#module/), [EntityType](/api-reference/objects.md#entitytype/), [DeviceVendor](/api-reference/objects.md#devicevendor/), [DeviceModel](/api-reference/objects.md#devicemodel/), [DeviceType](/api-reference/objects.md#devicetype/), [DeviceStatus](/api-reference/objects.md#devicestatus/), [DeviceRelationType](/api-reference/objects.md#devicerelationtype/), [AssetType](/api-reference/objects.md#assettype/), [AssetGroupType](/api-reference/objects.md#assetgrouptype/), [GeoObjectType](/api-reference/objects.md#geoobjecttype/), [ScheduleType](/api-reference/objects.md#scheduletype/), [Role](/api-reference/objects.md#role/), [PermissionScope](/api-reference/objects.md#permissionscope/), [Tag](/api-reference/objects.md#tag/), [Country](/api-reference/objects.md#country/), [UserCatalogItem](/api-reference/objects.md#usercatalogitem/), [Catalog](/api-reference/objects.md#catalog/), [Organization](/api-reference/objects.md#organization/), [SystemActor](/api-reference/objects.md#systemactor/), [User](/api-reference/objects.md#user/), [Member](/api-reference/objects.md#member/), [Integration](/api-reference/objects.md#integration/), [ActorRole](/api-reference/objects.md#actorrole/), [RolePermission](/api-reference/objects.md#rolepermission/), [UserScope](/api-reference/objects.md#userscope/), [Device](/api-reference/objects.md#device/), [DeviceIdentifier](/api-reference/objects.md#deviceidentifier/), [DeviceRelation](/api-reference/objects.md#devicerelation/), [DeviceInventoryRelation](/api-reference/objects.md#deviceinventoryrelation/), [Asset](/api-reference/objects.md#asset/), [AssetGroup](/api-reference/objects.md#assetgroup/), [AssetGroupItem](/api-reference/objects.md#assetgroupitem/), [Inventory](/api-reference/objects.md#inventory/), [GeoObject](/api-reference/objects.md#geoobject/), [Schedule](/api-reference/objects.md#schedule/), [CustomFieldDefinition](/api-reference/objects.md#customfielddefinition/), [AuditEvent](/api-reference/objects.md#auditevent/)
 
-### Titled
+## Titled
 
 An object with a human-readable display name.
 
@@ -22,7 +22,7 @@ An object with a human-readable display name.
 
 **Implemented by:** [Actor](/api-reference/interfaces.md#actor/), [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Module](/api-reference/objects.md#module/), [EntityType](/api-reference/objects.md#entitytype/), [DeviceVendor](/api-reference/objects.md#devicevendor/), [DeviceModel](/api-reference/objects.md#devicemodel/), [DeviceType](/api-reference/objects.md#devicetype/), [DeviceStatus](/api-reference/objects.md#devicestatus/), [DeviceRelationType](/api-reference/objects.md#devicerelationtype/), [AssetType](/api-reference/objects.md#assettype/), [AssetGroupType](/api-reference/objects.md#assetgrouptype/), [GeoObjectType](/api-reference/objects.md#geoobjecttype/), [ScheduleType](/api-reference/objects.md#scheduletype/), [Role](/api-reference/objects.md#role/), [PermissionScope](/api-reference/objects.md#permissionscope/), [Tag](/api-reference/objects.md#tag/), [Country](/api-reference/objects.md#country/), [UserCatalogItem](/api-reference/objects.md#usercatalogitem/), [Catalog](/api-reference/objects.md#catalog/), [Organization](/api-reference/objects.md#organization/), [SystemActor](/api-reference/objects.md#systemactor/), [User](/api-reference/objects.md#user/), [Integration](/api-reference/objects.md#integration/), [Device](/api-reference/objects.md#device/), [Asset](/api-reference/objects.md#asset/), [AssetGroup](/api-reference/objects.md#assetgroup/), [Inventory](/api-reference/objects.md#inventory/), [GeoObject](/api-reference/objects.md#geoobject/), [Schedule](/api-reference/objects.md#schedule/), [CustomFieldDefinition](/api-reference/objects.md#customfielddefinition/)
 
-### Customizable
+## Customizable
 
 An object that supports custom field values.
 
@@ -32,7 +32,7 @@ An object that supports custom field values.
 
 **Implemented by:** [Member](/api-reference/objects.md#member/), [Device](/api-reference/objects.md#device/), [Asset](/api-reference/objects.md#asset/), [GeoObject](/api-reference/objects.md#geoobject/), [Schedule](/api-reference/objects.md#schedule/)
 
-### Versioned
+## Versioned
 
 An object that supports optimistic locking for concurrency control.
 
@@ -42,7 +42,7 @@ An object that supports optimistic locking for concurrency control.
 
 **Implemented by:** [CatalogItem](/api-reference/interfaces.md#catalogitem/), [Module](/api-reference/objects.md#module/), [EntityType](/api-reference/objects.md#entitytype/), [DeviceVendor](/api-reference/objects.md#devicevendor/), [DeviceModel](/api-reference/objects.md#devicemodel/), [DeviceType](/api-reference/objects.md#devicetype/), [DeviceStatus](/api-reference/objects.md#devicestatus/), [DeviceRelationType](/api-reference/objects.md#devicerelationtype/), [AssetType](/api-reference/objects.md#assettype/), [AssetGroupType](/api-reference/objects.md#assetgrouptype/), [GeoObjectType](/api-reference/objects.md#geoobjecttype/), [ScheduleType](/api-reference/objects.md#scheduletype/), [Role](/api-reference/objects.md#role/), [PermissionScope](/api-reference/objects.md#permissionscope/), [Tag](/api-reference/objects.md#tag/), [Country](/api-reference/objects.md#country/), [UserCatalogItem](/api-reference/objects.md#usercatalogitem/), [Catalog](/api-reference/objects.md#catalog/), [Organization](/api-reference/objects.md#organization/), [User](/api-reference/objects.md#user/), [Member](/api-reference/objects.md#member/), [Integration](/api-reference/objects.md#integration/), [Device](/api-reference/objects.md#device/), [Asset](/api-reference/objects.md#asset/), [AssetGroup](/api-reference/objects.md#assetgroup/), [Inventory](/api-reference/objects.md#inventory/), [GeoObject](/api-reference/objects.md#geoobject/), [Schedule](/api-reference/objects.md#schedule/), [CustomFieldDefinition](/api-reference/objects.md#customfielddefinition/)
 
-### MultiValue
+## MultiValue
 
 An interface for field parameters that support selecting multiple values.
 
@@ -52,7 +52,7 @@ An interface for field parameters that support selecting multiple values.
 
 **Implemented by:** [FieldParamsOptions](/api-reference/objects.md#fieldparamsoptions/), [FieldParamsDevice](/api-reference/objects.md#fieldparamsdevice/), [FieldParamsReference](/api-reference/objects.md#fieldparamsreference/), [FieldParamsCatalog](/api-reference/objects.md#fieldparamscatalog/), [FieldParamsTag](/api-reference/objects.md#fieldparamstag/)
 
-### InventoryItem
+## InventoryItem
 
 An object that can be assigned to an inventory.
 
@@ -63,7 +63,7 @@ An object that can be assigned to an inventory.
 
 **Implemented by:** [Device](/api-reference/objects.md#device/)
 
-### Edge
+## Edge
 
 An edge in a paginated connection.
 
@@ -73,7 +73,7 @@ An edge in a paginated connection.
 
 **Implemented by:** [CatalogItemEdge](/api-reference/objects.md#catalogitemedge/), [UserCatalogItemEdge](/api-reference/objects.md#usercatalogitemedge/), [OrganizationEdge](/api-reference/objects.md#organizationedge/), [UserEdge](/api-reference/objects.md#useredge/), [MemberEdge](/api-reference/objects.md#memberedge/), [IntegrationEdge](/api-reference/objects.md#integrationedge/), [DeviceEdge](/api-reference/objects.md#deviceedge/), [AssetEdge](/api-reference/objects.md#assetedge/), [AssetGroupEdge](/api-reference/objects.md#assetgroupedge/), [AssetGroupItemEdge](/api-reference/objects.md#assetgroupitemedge/), [InventoryEdge](/api-reference/objects.md#inventoryedge/), [GeoObjectEdge](/api-reference/objects.md#geoobjectedge/), [ScheduleEdge](/api-reference/objects.md#scheduleedge/), [AuditEventEdge](/api-reference/objects.md#auditeventedge/), [DeviceInventoryRelationEdge](/api-reference/objects.md#deviceinventoryrelationedge/), [CatalogEdge](/api-reference/objects.md#catalogedge/), [DeviceTypeEdge](/api-reference/objects.md#devicetypeedge/), [DeviceStatusEdge](/api-reference/objects.md#devicestatusedge/), [DeviceModelEdge](/api-reference/objects.md#devicemodeledge/), [AssetTypeEdge](/api-reference/objects.md#assettypeedge/), [AssetGroupTypeEdge](/api-reference/objects.md#assetgrouptypeedge/), [GeoObjectTypeEdge](/api-reference/objects.md#geoobjecttypeedge/), [ScheduleTypeEdge](/api-reference/objects.md#scheduletypeedge/), [RoleEdge](/api-reference/objects.md#roleedge/), [TagEdge](/api-reference/objects.md#tagedge/), [ActorRoleEdge](/api-reference/objects.md#actorroleedge/), [RolePermissionEdge](/api-reference/objects.md#rolepermissionedge/), [UserScopeEdge](/api-reference/objects.md#userscopeedge/)
 
-### Connection
+## Connection
 
 A paginated connection following the Relay Cursor Connections specification.
 
@@ -84,7 +84,7 @@ A paginated connection following the Relay Cursor Connections specification.
 
 **Implemented by:** [CatalogItemConnection](/api-reference/objects.md#catalogitemconnection/), [UserCatalogItemConnection](/api-reference/objects.md#usercatalogitemconnection/), [OrganizationConnection](/api-reference/objects.md#organizationconnection/), [UserConnection](/api-reference/objects.md#userconnection/), [MemberConnection](/api-reference/objects.md#memberconnection/), [IntegrationConnection](/api-reference/objects.md#integrationconnection/), [DeviceConnection](/api-reference/objects.md#deviceconnection/), [AssetConnection](/api-reference/objects.md#assetconnection/), [AssetGroupConnection](/api-reference/objects.md#assetgroupconnection/), [AssetGroupItemConnection](/api-reference/objects.md#assetgroupitemconnection/), [InventoryConnection](/api-reference/objects.md#inventoryconnection/), [GeoObjectConnection](/api-reference/objects.md#geoobjectconnection/), [ScheduleConnection](/api-reference/objects.md#scheduleconnection/), [AuditEventConnection](/api-reference/objects.md#auditeventconnection/), [DeviceInventoryRelationConnection](/api-reference/objects.md#deviceinventoryrelationconnection/), [CatalogConnection](/api-reference/objects.md#catalogconnection/), [DeviceTypeConnection](/api-reference/objects.md#devicetypeconnection/), [DeviceStatusConnection](/api-reference/objects.md#devicestatusconnection/), [DeviceModelConnection](/api-reference/objects.md#devicemodelconnection/), [AssetTypeConnection](/api-reference/objects.md#assettypeconnection/), [AssetGroupTypeConnection](/api-reference/objects.md#assetgrouptypeconnection/), [GeoObjectTypeConnection](/api-reference/objects.md#geoobjecttypeconnection/), [ScheduleTypeConnection](/api-reference/objects.md#scheduletypeconnection/), [RoleConnection](/api-reference/objects.md#roleconnection/), [TagConnection](/api-reference/objects.md#tagconnection/), [ActorRoleConnection](/api-reference/objects.md#actorroleconnection/), [RolePermissionConnection](/api-reference/objects.md#rolepermissionconnection/), [UserScopeConnection](/api-reference/objects.md#userscopeconnection/)
 
-### Actor
+## Actor
 
 An entity that can perform actions and have permissions assigned.
 
@@ -95,7 +95,7 @@ An entity that can perform actions and have permissions assigned.
 
 **Implemented by:** [SystemActor](/api-reference/objects.md#systemactor/), [User](/api-reference/objects.md#user/), [Integration](/api-reference/objects.md#integration/)
 
-### CatalogItem
+## CatalogItem
 
 A dictionary item that provides reference data for the system.
 
@@ -112,7 +112,7 @@ A dictionary item that provides reference data for the system.
 
 **Implemented by:** [Module](/api-reference/objects.md#module/), [EntityType](/api-reference/objects.md#entitytype/), [DeviceVendor](/api-reference/objects.md#devicevendor/), [DeviceModel](/api-reference/objects.md#devicemodel/), [DeviceType](/api-reference/objects.md#devicetype/), [DeviceStatus](/api-reference/objects.md#devicestatus/), [DeviceRelationType](/api-reference/objects.md#devicerelationtype/), [AssetType](/api-reference/objects.md#assettype/), [AssetGroupType](/api-reference/objects.md#assetgrouptype/), [GeoObjectType](/api-reference/objects.md#geoobjecttype/), [ScheduleType](/api-reference/objects.md#scheduletype/), [Role](/api-reference/objects.md#role/), [PermissionScope](/api-reference/objects.md#permissionscope/), [Tag](/api-reference/objects.md#tag/), [Country](/api-reference/objects.md#country/), [UserCatalogItem](/api-reference/objects.md#usercatalogitem/), [Catalog](/api-reference/objects.md#catalog/)
 
-### HierarchicalCatalogItem
+## HierarchicalCatalogItem
 
 A catalog item that supports parent-child hierarchy.
 
@@ -122,7 +122,7 @@ A catalog item that supports parent-child hierarchy.
 
 **Implemented by:** [UserCatalogItem](/api-reference/objects.md#usercatalogitem/)
 
-### FieldParams
+## FieldParams
 
 The base interface for field parameters.
 

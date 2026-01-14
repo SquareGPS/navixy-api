@@ -13,16 +13,32 @@ List queries return paginated results using the [Relay Cursor Connections](https
 Retrieves any entity by its globally unique identifier.
 
 ```graphql
-node("The ID of the entity to retrieve." id: ID!): Node
+node(id: ID!): Node
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the entity to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the entity to retrieve. |
 
 **Returns:** [Node](/api-reference/interfaces.md#node/)
+
+### nodes
+
+Retrieves multiple entities by their globally unique identifiers. Returns items in the same order as the input IDs.
+
+```graphql
+nodes(ids: [ID!]!): [Node]!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `ids` | `[ID!]!` | The IDs of the entities to retrieve. |
+
+**Returns:** [[Node]!](/api-reference/interfaces.md#node/)
 
 ### me
 
@@ -68,7 +84,7 @@ deviceTypes(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
 **CatalogItemOrder fields**
@@ -112,7 +128,7 @@ deviceStatuses(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
 **CatalogItemOrder fields**
@@ -156,8 +172,8 @@ deviceModels(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `vendorIds` | `[ID!]` |  |
-| `title` | `String` |  |
+| `vendorIds` | `[ID!]` | Filter by vendors (OR within field). |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `code` | [Code](/api-reference/scalars-and-enums.md#code/) | Exact code match. |
 
 **CatalogItemOrder fields**
@@ -174,14 +190,14 @@ deviceModels(
 Retrieves a device by its ID.
 
 ```graphql
-device("The ID of the device to retrieve." id: ID!): Device
+device(id: ID!): Device
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the device to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the device to retrieve. |
 
 **Returns:** [Device](/api-reference/objects.md#device/)
 
@@ -217,13 +233,13 @@ devices(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `typeIds` | `[ID!]` |  |
-| `modelIds` | `[ID!]` |  |
-| `statusIds` | `[ID!]` |  |
-| `vendorIds` | `[ID!]` |  |
+| `typeIds` | `[ID!]` | Filter by device types (OR within field). |
+| `modelIds` | `[ID!]` | Filter by device models (OR within field). |
+| `statusIds` | `[ID!]` | Filter by statuses (OR within field). |
+| `vendorIds` | `[ID!]` | Filter by vendors (OR within field). |
 | `identifierValue` | `String` | Search by device identifier value. |
-| `inventoryIds` | `[ID!]` |  |
-| `title` | `String` |  |
+| `inventoryIds` | `[ID!]` | Filter by inventories (OR within field). |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `customFields` | `[CustomFieldFilter!]` | Filter by custom field values. |
 
 **DeviceOrder fields**
@@ -270,7 +286,7 @@ assetTypes(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
 **CatalogItemOrder fields**
@@ -287,14 +303,14 @@ assetTypes(
 Retrieves an asset by its ID.
 
 ```graphql
-asset("The ID of the asset to retrieve." id: ID!): Asset
+asset(id: ID!): Asset
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the asset to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the asset to retrieve. |
 
 **Returns:** [Asset](/api-reference/objects.md#asset/)
 
@@ -330,8 +346,8 @@ assets(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `typeIds` | `[ID!]` |  |
-| `title` | `String` |  |
+| `typeIds` | `[ID!]` | Filter by asset types (OR within field). |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `customFields` | `[CustomFieldFilter!]` | Filter by custom field values. |
 
 **AssetOrder fields**
@@ -378,7 +394,7 @@ assetGroupTypes(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
 **CatalogItemOrder fields**
@@ -395,16 +411,14 @@ assetGroupTypes(
 Retrieves an asset group by its ID.
 
 ```graphql
-assetGroup(
-  "The ID of the asset group to retrieve." id: ID!
-): AssetGroup
+assetGroup(id: ID!): AssetGroup
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the asset group to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the asset group to retrieve. |
 
 **Returns:** [AssetGroup](/api-reference/objects.md#assetgroup/)
 
@@ -440,8 +454,8 @@ assetGroups(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `typeIds` | `[ID!]` |  |
-| `title` | `String` |  |
+| `typeIds` | `[ID!]` | Filter by group types (OR within field). |
+| `title` | `String` | Search in title (case-insensitive contains). |
 
 **AssetGroupOrder fields**
 
@@ -486,7 +500,7 @@ geoObjectTypes(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
 **CatalogItemOrder fields**
@@ -503,14 +517,14 @@ geoObjectTypes(
 Retrieves a geo object by its ID.
 
 ```graphql
-geoObject("The ID of the geo object to retrieve." id: ID!): GeoObject
+geoObject(id: ID!): GeoObject
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the geo object to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the geo object to retrieve. |
 
 **Returns:** [GeoObject](/api-reference/objects.md#geoobject/)
 
@@ -546,8 +560,8 @@ geoObjects(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `typeIds` | `[ID!]` |  |
-| `title` | `String` |  |
+| `typeIds` | `[ID!]` | Filter by geo object types (OR within field). |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `customFields` | `[CustomFieldFilter!]` | Filter by custom field values. |
 
 **GeoObjectOrder fields**
@@ -594,7 +608,7 @@ scheduleTypes(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
 **CatalogItemOrder fields**
@@ -611,14 +625,14 @@ scheduleTypes(
 Retrieves a schedule by its ID.
 
 ```graphql
-schedule("The ID of the schedule to retrieve." id: ID!): Schedule
+schedule(id: ID!): Schedule
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the schedule to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the schedule to retrieve. |
 
 **Returns:** [Schedule](/api-reference/objects.md#schedule/)
 
@@ -654,8 +668,8 @@ schedules(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `typeIds` | `[ID!]` |  |
-| `title` | `String` |  |
+| `typeIds` | `[ID!]` | Filter by schedule types (OR within field). |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `customFields` | `[CustomFieldFilter!]` | Filter by custom field values. |
 
 **ScheduleOrder fields**
@@ -675,14 +689,14 @@ schedules(
 Retrieves a catalog by its ID.
 
 ```graphql
-catalog("The ID of the catalog to retrieve." id: ID!): Catalog
+catalog(id: ID!): Catalog
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the catalog to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the catalog to retrieve. |
 
 **Returns:** [Catalog](/api-reference/objects.md#catalog/)
 
@@ -718,7 +732,7 @@ catalogs(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
 **CatalogItemOrder fields**
@@ -735,16 +749,14 @@ catalogs(
 Retrieves an organization by its ID.
 
 ```graphql
-organization(
-  "The ID of the organization to retrieve." id: ID!
-): Organization
+organization(id: ID!): Organization
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the organization to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the organization to retrieve. |
 
 **Returns:** [Organization](/api-reference/objects.md#organization/)
 
@@ -778,7 +790,7 @@ organizations(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `parentIds` | `[ID!]` |  |
+| `parentIds` | `[ID!]` | Filter by parent organizations (OR within field). |
 | `isActive` | `Boolean` | Filter by active status. |
 
 **OrganizationOrder fields**
@@ -797,14 +809,14 @@ organizations(
 Retrieves a member by its ID.
 
 ```graphql
-member("The ID of the member to retrieve." id: ID!): Member
+member(id: ID!): Member
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the member to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the member to retrieve. |
 
 **Returns:** [Member](/api-reference/objects.md#member/)
 
@@ -840,7 +852,7 @@ members(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `userIds` | `[ID!]` |  |
+| `userIds` | `[ID!]` | Filter by users (OR within field). |
 | `isActive` | `Boolean` | Filter by active status. |
 
 **MemberOrder fields**
@@ -857,16 +869,14 @@ members(
 Retrieves an integration by its ID.
 
 ```graphql
-integration(
-  "The ID of the integration to retrieve." id: ID!
-): Integration
+integration(id: ID!): Integration
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the integration to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the integration to retrieve. |
 
 **Returns:** [Integration](/api-reference/objects.md#integration/)
 
@@ -945,8 +955,8 @@ actorRoles(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `actorIds` | `[ID!]` |  |
-| `roleIds` | `[ID!]` |  |
+| `actorIds` | `[ID!]` | Filter by actors (OR within field). |
+| `roleIds` | `[ID!]` | Filter by roles (OR within field). |
 | `includeExpired` | `Boolean` | Include expired role assignments. |
 
 **ActorRoleOrder fields**
@@ -990,9 +1000,9 @@ userScopes(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `actorIds` | `[ID!]` |  |
-| `permissionScopeIds` | `[ID!]` |  |
-| `targetEntityIds` | `[ID!]` |  |
+| `actorIds` | `[ID!]` | Filter by actors (OR within field). |
+| `permissionScopeIds` | `[ID!]` | Filter by permission scopes (OR within field). |
+| `targetEntityIds` | `[ID!]` | Filter by target entities (OR within field). |
 
 **UserScopeOrder fields**
 
@@ -1037,7 +1047,7 @@ roles(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `codes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Match any of these codes. |
 
 **CatalogItemOrder fields**
@@ -1081,9 +1091,9 @@ rolePermissions(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `roleIds` | `[ID!]` |  |
-| `permissionScopeIds` | `[ID!]` |  |
-| `targetEntityIds` | `[ID!]` |  |
+| `roleIds` | `[ID!]` | Filter by roles (OR within field). |
+| `permissionScopeIds` | `[ID!]` | Filter by permission scopes (OR within field). |
+| `targetEntityIds` | `[ID!]` | Filter by target entities (OR within field). |
 
 **RolePermissionOrder fields**
 
@@ -1101,14 +1111,14 @@ rolePermissions(
 Retrieves an inventory by its ID.
 
 ```graphql
-inventory("The ID of the inventory to retrieve." id: ID!): Inventory
+inventory(id: ID!): Inventory
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `"The ID of the inventory to retrieve." id` | `ID!` |  |
+| `id` | `ID!` | The ID of the inventory to retrieve. |
 
 **Returns:** [Inventory](/api-reference/objects.md#inventory/)
 
@@ -1146,11 +1156,11 @@ auditEvents(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `actorIds` | `[ID!]` |  |
-| `aggregateTypes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) |  |
-| `aggregateIds` | `[ID!]` |  |
-| `eventTypes` | [[AuditEventType!]](/api-reference/scalars-and-enums.md#auditeventtype/) |  |
-| `sourceTypes` | [[SourceType!]](/api-reference/scalars-and-enums.md#sourcetype/) |  |
+| `actorIds` | `[ID!]` | Filter by actors (OR within field). |
+| `aggregateTypes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Filter by entity types (OR within field). |
+| `aggregateIds` | `[ID!]` | Filter by specific entity IDs (OR within field). |
+| `eventTypes` | [[AuditEventType!]](/api-reference/scalars-and-enums.md#auditeventtype/) | Filter by event types (OR within field). |
+| `sourceTypes` | [[SourceType!]](/api-reference/scalars-and-enums.md#sourcetype/) | Filter by source types (OR within field). |
 | `traceId` | `String` | Filter by trace ID. |
 | `from` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Return events that occurred after this timestamp. |
 | `to` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Return events that occurred before this timestamp. |
@@ -1165,22 +1175,6 @@ auditEvents(
 **Returns:** [AuditEventConnection!](/api-reference/objects.md#auditeventconnection/)
 
 ## Catalog items
-
-### nodes
-
-Retrieves multiple entities by their globally unique identifiers. Returns items in the same order as the input IDs.
-
-```graphql
-nodes("The IDs of the entities to retrieve." ids: [ID!]!): [Node]!
-```
-
-**Arguments**
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `"The IDs of the entities to retrieve." ids` | `[ID!]!` |  |
-
-**Returns:** [[Node]!](/api-reference/interfaces.md#node/)
 
 ### tags
 
@@ -1214,7 +1208,7 @@ tags(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 
 **CatalogItemOrder fields**
 
@@ -1257,7 +1251,7 @@ inventories(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` |  |
+| `title` | `String` | Search in title (case-insensitive contains). |
 | `code` | [Code](/api-reference/scalars-and-enums.md#code/) | Exact code match. |
 
 **InventoryOrder fields**
@@ -1301,11 +1295,11 @@ entityHistory(
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `actorIds` | `[ID!]` |  |
-| `aggregateTypes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) |  |
-| `aggregateIds` | `[ID!]` |  |
-| `eventTypes` | [[AuditEventType!]](/api-reference/scalars-and-enums.md#auditeventtype/) |  |
-| `sourceTypes` | [[SourceType!]](/api-reference/scalars-and-enums.md#sourcetype/) |  |
+| `actorIds` | `[ID!]` | Filter by actors (OR within field). |
+| `aggregateTypes` | [[Code!]](/api-reference/scalars-and-enums.md#code/) | Filter by entity types (OR within field). |
+| `aggregateIds` | `[ID!]` | Filter by specific entity IDs (OR within field). |
+| `eventTypes` | [[AuditEventType!]](/api-reference/scalars-and-enums.md#auditeventtype/) | Filter by event types (OR within field). |
+| `sourceTypes` | [[SourceType!]](/api-reference/scalars-and-enums.md#sourcetype/) | Filter by source types (OR within field). |
 | `traceId` | `String` | Filter by trace ID. |
 | `from` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Return events that occurred after this timestamp. |
 | `to` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Return events that occurred before this timestamp. |
