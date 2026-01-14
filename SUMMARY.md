@@ -19,6 +19,7 @@
   * [Queries](api-reference/queries.md)
   * [Mutations](api-reference/mutations.md)
   * [Objects](api-reference/objects.md)
+  * [Inputs](api-reference/inputs.md)
   * [Enums](api-reference/enums.md)
   * [Scalars](api-reference/scalars.md)
   * [Interfaces](api-reference/interfaces.md)
