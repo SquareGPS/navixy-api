@@ -1,14 +1,8 @@
 # Mutations
 
-Mutations modify data in the Navixy database. Most mutations require authentication and appropriate permissions.
+Mutations modify data in the Navixy database. Most mutations require authentication and appropriate permissions. Update and delete mutations use [optimistic locking](../optimistic-locking.md) via a `version` field in the input.
 
-{% hint style="info" %}
-**Input types:** Mutation arguments use dedicated input types (e.g., `DeviceCreateInput`). For convenience, input type fields are expanded inline below each mutation rather than on a separate page.
-{% endhint %}
-
-{% hint style="warning" %}
-**Optimistic locking:** Update and delete mutations require a `version` field in the input. See [Optimistic Locking](../optimistic-locking.md) for details.
-{% endhint %}
+Argument types link to their definitions on the [Inputs](inputs.md) page. Return types link to [Objects](objects.md).
 
 ## Devices
 
@@ -24,19 +18,7 @@ deviceCreate(input: DeviceCreateInput!): DevicePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceCreateInput!` | The input fields for creating the device. |
-
-**DeviceCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the device. |
-| `typeId` | `ID!` | The device type ID. |
-| `modelId` | `ID!` | The device model ID. |
-| `statusId` | `ID!` | The initial device status ID. |
-| `title` | `String!` | The device display name. |
-| `identifiers` | `[DeviceIdentifierInput!]` | The hardware identifiers. |
-| `customFields` | `CustomFieldsPatchInput` | The custom field values. |
+| `input` | [DeviceCreateInput!](/api-reference/inputs.md#devicecreateinput/) | The input fields for creating the device. |
 
 **Returns:** [DevicePayload](/api-reference/objects.md#devicepayload/)
 
@@ -52,18 +34,7 @@ deviceUpdate(input: DeviceUpdateInput!): DevicePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceUpdateInput!` | The input fields for updating the device. |
-
-**DeviceUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The device ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `modelId` | `ID` | The new device model. |
-| `statusId` | `ID` | The new device status. |
-| `title` | `String` | The new display name. |
-| `customFields` | `CustomFieldsPatchInput` | The custom field changes. |
+| `input` | [DeviceUpdateInput!](/api-reference/inputs.md#deviceupdateinput/) | The input fields for updating the device. |
 
 **Returns:** [DevicePayload](/api-reference/objects.md#devicepayload/)
 
@@ -79,14 +50,7 @@ deviceDelete(input: DeviceDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceDeleteInput!` | The input fields for deleting the device. |
-
-**DeviceDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The device ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [DeviceDeleteInput!](/api-reference/inputs.md#devicedeleteinput/) | The input fields for deleting the device. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -104,14 +68,7 @@ deviceIdentifierAdd(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceIdentifierAddInput!` | The input fields for adding the identifier. |
-
-**DeviceIdentifierAddInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deviceId` | `ID!` | The device ID. |
-| `identifier` | `DeviceIdentifierInput!` | The identifier details. |
+| `input` | [DeviceIdentifierAddInput!](/api-reference/inputs.md#deviceidentifieraddinput/) | The input fields for adding the identifier. |
 
 **Returns:** [DeviceIdentifierPayload](/api-reference/objects.md#deviceidentifierpayload/)
 
@@ -129,13 +86,7 @@ deviceIdentifierRemove(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceIdentifierRemoveInput!` | The input fields for removing the identifier. |
-
-**DeviceIdentifierRemoveInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `identifierId` | `ID!` | The identifier ID to remove. |
+| `input` | [DeviceIdentifierRemoveInput!](/api-reference/inputs.md#deviceidentifierremoveinput/) | The input fields for removing the identifier. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -151,17 +102,7 @@ deviceTypeCreate(input: DeviceTypeCreateInput!): DeviceTypePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceTypeCreateInput!` | The input fields for creating the device type. |
-
-**DeviceTypeCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [DeviceTypeCreateInput!](/api-reference/inputs.md#devicetypecreateinput/) | The input fields for creating the device type. |
 
 **Returns:** [DeviceTypePayload](/api-reference/objects.md#devicetypepayload/)
 
@@ -177,17 +118,7 @@ deviceTypeUpdate(input: DeviceTypeUpdateInput!): DeviceTypePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceTypeUpdateInput!` | The input fields for updating the device type. |
-
-**DeviceTypeUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [DeviceTypeUpdateInput!](/api-reference/inputs.md#devicetypeupdateinput/) | The input fields for updating the device type. |
 
 **Returns:** [DeviceTypePayload](/api-reference/objects.md#devicetypepayload/)
 
@@ -203,14 +134,7 @@ deviceTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the device type. |
-
-**CatalogItemDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the device type. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -228,17 +152,7 @@ deviceStatusCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceStatusCreateInput!` | The input fields for creating the device status. |
-
-**DeviceStatusCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [DeviceStatusCreateInput!](/api-reference/inputs.md#devicestatuscreateinput/) | The input fields for creating the device status. |
 
 **Returns:** [DeviceStatusPayload](/api-reference/objects.md#devicestatuspayload/)
 
@@ -256,17 +170,7 @@ deviceStatusUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceStatusUpdateInput!` | The input fields for updating the device status. |
-
-**DeviceStatusUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [DeviceStatusUpdateInput!](/api-reference/inputs.md#devicestatusupdateinput/) | The input fields for updating the device status. |
 
 **Returns:** [DeviceStatusPayload](/api-reference/objects.md#devicestatuspayload/)
 
@@ -282,14 +186,7 @@ deviceStatusDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the device status. |
-
-**CatalogItemDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the device status. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -307,16 +204,7 @@ assetCreate(input: AssetCreateInput!): AssetPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetCreateInput!` | The input fields for creating the asset. |
-
-**AssetCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the asset. |
-| `typeId` | `ID!` | The asset type ID. |
-| `title` | `String!` | The asset display name. |
-| `customFields` | `CustomFieldsPatchInput` | The custom field values. |
+| `input` | [AssetCreateInput!](/api-reference/inputs.md#assetcreateinput/) | The input fields for creating the asset. |
 
 **Returns:** [AssetPayload](/api-reference/objects.md#assetpayload/)
 
@@ -332,16 +220,7 @@ assetUpdate(input: AssetUpdateInput!): AssetPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetUpdateInput!` | The input fields for updating the asset. |
-
-**AssetUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The asset ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `customFields` | `CustomFieldsPatchInput` | The custom field changes. |
+| `input` | [AssetUpdateInput!](/api-reference/inputs.md#assetupdateinput/) | The input fields for updating the asset. |
 
 **Returns:** [AssetPayload](/api-reference/objects.md#assetpayload/)
 
@@ -357,14 +236,7 @@ assetDelete(input: AssetDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetDeleteInput!` | The input fields for deleting the asset. |
-
-**AssetDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The asset ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [AssetDeleteInput!](/api-reference/inputs.md#assetdeleteinput/) | The input fields for deleting the asset. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -380,17 +252,7 @@ assetTypeCreate(input: AssetTypeCreateInput!): AssetTypePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetTypeCreateInput!` | The input fields for creating the asset type. |
-
-**AssetTypeCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [AssetTypeCreateInput!](/api-reference/inputs.md#assettypecreateinput/) | The input fields for creating the asset type. |
 
 **Returns:** [AssetTypePayload](/api-reference/objects.md#assettypepayload/)
 
@@ -406,17 +268,7 @@ assetTypeUpdate(input: AssetTypeUpdateInput!): AssetTypePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetTypeUpdateInput!` | The input fields for updating the asset type. |
-
-**AssetTypeUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [AssetTypeUpdateInput!](/api-reference/inputs.md#assettypeupdateinput/) | The input fields for updating the asset type. |
 
 **Returns:** [AssetTypePayload](/api-reference/objects.md#assettypepayload/)
 
@@ -432,14 +284,7 @@ assetTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the asset type. |
-
-**CatalogItemDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the asset type. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -457,16 +302,7 @@ assetGroupCreate(input: AssetGroupCreateInput!): AssetGroupPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetGroupCreateInput!` | The input fields for creating the asset group. |
-
-**AssetGroupCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the group. |
-| `typeId` | `ID!` | The group type ID. |
-| `title` | `String!` | The group display name. |
-| `color` | [HexColorCode](/api-reference/scalars.md#hexcolorcode/) | The color for UI display. |
+| `input` | [AssetGroupCreateInput!](/api-reference/inputs.md#assetgroupcreateinput/) | The input fields for creating the asset group. |
 
 **Returns:** [AssetGroupPayload](/api-reference/objects.md#assetgrouppayload/)
 
@@ -482,16 +318,7 @@ assetGroupUpdate(input: AssetGroupUpdateInput!): AssetGroupPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetGroupUpdateInput!` | The input fields for updating the asset group. |
-
-**AssetGroupUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The asset group ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `color` | [HexColorCode](/api-reference/scalars.md#hexcolorcode/) | The new color. |
+| `input` | [AssetGroupUpdateInput!](/api-reference/inputs.md#assetgroupupdateinput/) | The input fields for updating the asset group. |
 
 **Returns:** [AssetGroupPayload](/api-reference/objects.md#assetgrouppayload/)
 
@@ -507,14 +334,7 @@ assetGroupDelete(input: AssetGroupDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetGroupDeleteInput!` | The input fields for deleting the asset group. |
-
-**AssetGroupDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The asset group ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [AssetGroupDeleteInput!](/api-reference/inputs.md#assetgroupdeleteinput/) | The input fields for deleting the asset group. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -532,14 +352,7 @@ assetGroupItemAdd(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetGroupItemAddInput!` | The input fields for adding the asset to the group. |
-
-**AssetGroupItemAddInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `groupId` | `ID!` | The group ID. |
-| `assetId` | `ID!` | The asset ID to add. |
+| `input` | [AssetGroupItemAddInput!](/api-reference/inputs.md#assetgroupitemaddinput/) | The input fields for adding the asset to the group. |
 
 **Returns:** [AssetGroupItemPayload](/api-reference/objects.md#assetgroupitempayload/)
 
@@ -555,14 +368,7 @@ assetGroupItemRemove(input: AssetGroupItemRemoveInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetGroupItemRemoveInput!` | The input fields for removing the asset from the group. |
-
-**AssetGroupItemRemoveInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `groupId` | `ID!` | The group ID. |
-| `assetId` | `ID!` | The asset ID to remove. |
+| `input` | [AssetGroupItemRemoveInput!](/api-reference/inputs.md#assetgroupitemremoveinput/) | The input fields for removing the asset from the group. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -580,18 +386,7 @@ assetGroupTypeCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetGroupTypeCreateInput!` | The input fields for creating the asset group type. |
-
-**AssetGroupTypeCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `allowedAssetTypes` | `[AssetGroupTypeConstraintInput!]` | The allowed asset types with optional limits. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [AssetGroupTypeCreateInput!](/api-reference/inputs.md#assetgrouptypecreateinput/) | The input fields for creating the asset group type. |
 
 **Returns:** [AssetGroupTypePayload](/api-reference/objects.md#assetgrouptypepayload/)
 
@@ -609,18 +404,7 @@ assetGroupTypeUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `AssetGroupTypeUpdateInput!` | The input fields for updating the asset group type. |
-
-**AssetGroupTypeUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `allowedAssetTypes` | `[AssetGroupTypeConstraintInput!]` | Replace allowed asset types. Null means no change. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [AssetGroupTypeUpdateInput!](/api-reference/inputs.md#assetgrouptypeupdateinput/) | The input fields for updating the asset group type. |
 
 **Returns:** [AssetGroupTypePayload](/api-reference/objects.md#assetgrouptypepayload/)
 
@@ -636,14 +420,7 @@ assetGroupTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the asset group type. |
-
-**CatalogItemDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the asset group type. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -661,17 +438,7 @@ geoObjectCreate(input: GeoObjectCreateInput!): GeoObjectPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `GeoObjectCreateInput!` | The input fields for creating the geo object. |
-
-**GeoObjectCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the geo object. |
-| `typeId` | `ID!` | The geo object type ID. |
-| `title` | `String!` | The geo object display name. |
-| `geometry` | [GeoJSON!](/api-reference/scalars.md#geojson/) | The [GeoJSON](https://geojson.org/) geometry. |
-| `customFields` | `CustomFieldsPatchInput` | The custom field values. |
+| `input` | [GeoObjectCreateInput!](/api-reference/inputs.md#geoobjectcreateinput/) | The input fields for creating the geo object. |
 
 **Returns:** [GeoObjectPayload](/api-reference/objects.md#geoobjectpayload/)
 
@@ -687,17 +454,7 @@ geoObjectUpdate(input: GeoObjectUpdateInput!): GeoObjectPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `GeoObjectUpdateInput!` | The input fields for updating the geo object. |
-
-**GeoObjectUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The geo object ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `geometry` | [GeoJSON](/api-reference/scalars.md#geojson/) | The new geometry. |
-| `customFields` | `CustomFieldsPatchInput` | The custom field changes. |
+| `input` | [GeoObjectUpdateInput!](/api-reference/inputs.md#geoobjectupdateinput/) | The input fields for updating the geo object. |
 
 **Returns:** [GeoObjectPayload](/api-reference/objects.md#geoobjectpayload/)
 
@@ -713,14 +470,7 @@ geoObjectDelete(input: GeoObjectDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `GeoObjectDeleteInput!` | The input fields for deleting the geo object. |
-
-**GeoObjectDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The geo object ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [GeoObjectDeleteInput!](/api-reference/inputs.md#geoobjectdeleteinput/) | The input fields for deleting the geo object. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -738,17 +488,7 @@ geoObjectTypeCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `GeoObjectTypeCreateInput!` | The input fields for creating the geo object type. |
-
-**GeoObjectTypeCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [GeoObjectTypeCreateInput!](/api-reference/inputs.md#geoobjecttypecreateinput/) | The input fields for creating the geo object type. |
 
 **Returns:** [GeoObjectTypePayload](/api-reference/objects.md#geoobjecttypepayload/)
 
@@ -766,17 +506,7 @@ geoObjectTypeUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `GeoObjectTypeUpdateInput!` | The input fields for updating the geo object type. |
-
-**GeoObjectTypeUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [GeoObjectTypeUpdateInput!](/api-reference/inputs.md#geoobjecttypeupdateinput/) | The input fields for updating the geo object type. |
 
 **Returns:** [GeoObjectTypePayload](/api-reference/objects.md#geoobjecttypepayload/)
 
@@ -792,14 +522,7 @@ geoObjectTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the geo object type. |
-
-**CatalogItemDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the geo object type. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -817,17 +540,7 @@ scheduleCreate(input: ScheduleCreateInput!): SchedulePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `ScheduleCreateInput!` | The input fields for creating the schedule. |
-
-**ScheduleCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the schedule. |
-| `typeId` | `ID!` | The schedule type ID. |
-| `title` | `String!` | The schedule display name. |
-| `scheduleData` | [ScheduleData!](/api-reference/scalars.md#scheduledata/) | The schedule data. |
-| `customFields` | `CustomFieldsPatchInput` | The custom field values. |
+| `input` | [ScheduleCreateInput!](/api-reference/inputs.md#schedulecreateinput/) | The input fields for creating the schedule. |
 
 **Returns:** [SchedulePayload](/api-reference/objects.md#schedulepayload/)
 
@@ -843,17 +556,7 @@ scheduleUpdate(input: ScheduleUpdateInput!): SchedulePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `ScheduleUpdateInput!` | The input fields for updating the schedule. |
-
-**ScheduleUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The schedule ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `scheduleData` | [ScheduleData](/api-reference/scalars.md#scheduledata/) | The new schedule data. |
-| `customFields` | `CustomFieldsPatchInput` | The custom field changes. |
+| `input` | [ScheduleUpdateInput!](/api-reference/inputs.md#scheduleupdateinput/) | The input fields for updating the schedule. |
 
 **Returns:** [SchedulePayload](/api-reference/objects.md#schedulepayload/)
 
@@ -869,14 +572,7 @@ scheduleDelete(input: ScheduleDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `ScheduleDeleteInput!` | The input fields for deleting the schedule. |
-
-**ScheduleDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The schedule ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [ScheduleDeleteInput!](/api-reference/inputs.md#scheduledeleteinput/) | The input fields for deleting the schedule. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -894,15 +590,7 @@ inventoryCreate(input: InventoryCreateInput!): InventoryPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `InventoryCreateInput!` | The input fields for creating the inventory. |
-
-**InventoryCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the inventory. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The unique code within the organization. |
-| `title` | `String!` | The display name. |
+| `input` | [InventoryCreateInput!](/api-reference/inputs.md#inventorycreateinput/) | The input fields for creating the inventory. |
 
 **Returns:** [InventoryPayload](/api-reference/objects.md#inventorypayload/)
 
@@ -918,15 +606,7 @@ inventoryUpdate(input: InventoryUpdateInput!): InventoryPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `InventoryUpdateInput!` | The input fields for updating the inventory. |
-
-**InventoryUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The inventory ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `input` | [InventoryUpdateInput!](/api-reference/inputs.md#inventoryupdateinput/) | The input fields for updating the inventory. |
 
 **Returns:** [InventoryPayload](/api-reference/objects.md#inventorypayload/)
 
@@ -942,14 +622,7 @@ inventoryDelete(input: InventoryDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `InventoryDeleteInput!` | The input fields for deleting the inventory. |
-
-**InventoryDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The inventory ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [InventoryDeleteInput!](/api-reference/inputs.md#inventorydeleteinput/) | The input fields for deleting the inventory. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -969,17 +642,7 @@ organizationCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `OrganizationCreateInput!` | The input fields for creating the organization. |
-
-**OrganizationCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `parentId` | `ID` | The parent organization ID. Null for root organizations. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The unique organization code. |
-| `title` | `String!` | The display name. |
-| `externalId` | `String` | An external system identifier. |
-| `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature/) | The feature flags to enable. |
+| `input` | [OrganizationCreateInput!](/api-reference/inputs.md#organizationcreateinput/) | The input fields for creating the organization. |
 
 **Returns:** [OrganizationPayload](/api-reference/objects.md#organizationpayload/)
 
@@ -997,18 +660,7 @@ organizationUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `OrganizationUpdateInput!` | The input fields for updating the organization. |
-
-**OrganizationUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The organization ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `externalId` | `String` | The new external identifier. |
-| `isActive` | `Boolean` | The new active status. |
-| `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature/) | The new feature flags. |
+| `input` | [OrganizationUpdateInput!](/api-reference/inputs.md#organizationupdateinput/) | The input fields for updating the organization. |
 
 **Returns:** [OrganizationPayload](/api-reference/objects.md#organizationpayload/)
 
@@ -1024,14 +676,7 @@ organizationDelete(input: OrganizationDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `OrganizationDeleteInput!` | The input fields for deleting the organization. |
-
-**OrganizationDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The organization ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [OrganizationDeleteInput!](/api-reference/inputs.md#organizationdeleteinput/) | The input fields for deleting the organization. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1049,13 +694,7 @@ myProfileUpdate(input: MyProfileUpdateInput!): UserPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `MyProfileUpdateInput!` | The input fields for updating the profile. |
-
-**MyProfileUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `name` | `PersonNameInput!` | The structured name components. |
+| `input` | [MyProfileUpdateInput!](/api-reference/inputs.md#myprofileupdateinput/) | The input fields for updating the profile. |
 
 **Returns:** [UserPayload](/api-reference/objects.md#userpayload/)
 
@@ -1073,15 +712,7 @@ memberCreate(input: MemberCreateInput!): MemberPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `MemberCreateInput!` | The input fields for creating the membership. |
-
-**MemberCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization ID. |
-| `userId` | `ID!` | The user ID to add. |
-| `customFields` | `CustomFieldsPatchInput` | The membership-specific custom fields. |
+| `input` | [MemberCreateInput!](/api-reference/inputs.md#membercreateinput/) | The input fields for creating the membership. |
 
 **Returns:** [MemberPayload](/api-reference/objects.md#memberpayload/)
 
@@ -1097,16 +728,7 @@ memberUpdate(input: MemberUpdateInput!): MemberPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `MemberUpdateInput!` | The input fields for updating the membership. |
-
-**MemberUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The membership ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `isActive` | `Boolean` | The new active status. |
-| `customFields` | `CustomFieldsPatchInput` | The custom field changes. |
+| `input` | [MemberUpdateInput!](/api-reference/inputs.md#memberupdateinput/) | The input fields for updating the membership. |
 
 **Returns:** [MemberPayload](/api-reference/objects.md#memberpayload/)
 
@@ -1122,14 +744,7 @@ memberRemove(input: MemberRemoveInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `MemberRemoveInput!` | The input fields for removing the membership. |
-
-**MemberRemoveInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The membership ID to remove. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [MemberRemoveInput!](/api-reference/inputs.md#memberremoveinput/) | The input fields for removing the membership. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1147,15 +762,7 @@ integrationCreate(input: IntegrationCreateInput!): IntegrationPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `IntegrationCreateInput!` | The input fields for creating the integration. |
-
-**IntegrationCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the integration. |
-| `title` | `String!` | The display name. |
-| `credentialRef` | `String` | A reference to credentials in a secure vault. |
+| `input` | [IntegrationCreateInput!](/api-reference/inputs.md#integrationcreateinput/) | The input fields for creating the integration. |
 
 **Returns:** [IntegrationPayload](/api-reference/objects.md#integrationpayload/)
 
@@ -1171,17 +778,7 @@ integrationUpdate(input: IntegrationUpdateInput!): IntegrationPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `IntegrationUpdateInput!` | The input fields for updating the integration. |
-
-**IntegrationUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The integration ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `credentialRef` | `String` | The new credential reference. |
-| `isActive` | `Boolean` | The new active status. |
+| `input` | [IntegrationUpdateInput!](/api-reference/inputs.md#integrationupdateinput/) | The input fields for updating the integration. |
 
 **Returns:** [IntegrationPayload](/api-reference/objects.md#integrationpayload/)
 
@@ -1197,14 +794,7 @@ integrationDelete(input: IntegrationDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `IntegrationDeleteInput!` | The input fields for deleting the integration. |
-
-**IntegrationDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The integration ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [IntegrationDeleteInput!](/api-reference/inputs.md#integrationdeleteinput/) | The input fields for deleting the integration. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1222,15 +812,7 @@ roleAssign(input: RoleAssignInput!): ActorRolePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `RoleAssignInput!` | The input fields for assigning the role. |
-
-**RoleAssignInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorId` | `ID!` | The actor ID (user or integration). |
-| `roleId` | `ID!` | The role ID to assign. |
-| `expireDate` | [DateTime](/api-reference/scalars.md#datetime/) | The expiration date. Null means the role is permanent. |
+| `input` | [RoleAssignInput!](/api-reference/inputs.md#roleassigninput/) | The input fields for assigning the role. |
 
 **Returns:** [ActorRolePayload](/api-reference/objects.md#actorrolepayload/)
 
@@ -1246,13 +828,7 @@ roleRevoke(input: RoleRevokeInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `RoleRevokeInput!` | The input fields for revoking the role. |
-
-**RoleRevokeInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorRoleId` | `ID!` | The actor role assignment ID to revoke. |
+| `input` | [RoleRevokeInput!](/api-reference/inputs.md#rolerevokeinput/) | The input fields for revoking the role. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1268,16 +844,7 @@ permissionGrant(input: PermissionGrantInput!): RolePermissionPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `PermissionGrantInput!` | The input fields for granting the permission. |
-
-**PermissionGrantInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `roleId` | `ID!` | The role ID. |
-| `permissionScopeId` | `ID!` | The permission scope ID. |
-| `targetEntityId` | `ID` | The specific entity ID. Null means all entities of the type. |
-| `actions` | [[ActionPermission!]!](/api-reference/enums.md#actionpermission/) | The actions to allow. |
+| `input` | [PermissionGrantInput!](/api-reference/inputs.md#permissiongrantinput/) | The input fields for granting the permission. |
 
 **Returns:** [RolePermissionPayload](/api-reference/objects.md#rolepermissionpayload/)
 
@@ -1293,13 +860,7 @@ permissionRevoke(input: PermissionRevokeInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `PermissionRevokeInput!` | The input fields for revoking the permission. |
-
-**PermissionRevokeInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `permissionId` | `ID!` | The role permission ID to revoke. |
+| `input` | [PermissionRevokeInput!](/api-reference/inputs.md#permissionrevokeinput/) | The input fields for revoking the permission. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1315,16 +876,7 @@ userScopeSet(input: UserScopeSetInput!): UserScopePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `UserScopeSetInput!` | The input fields for setting the user scope. |
-
-**UserScopeSetInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorId` | `ID!` | The actor ID to restrict. |
-| `permissionScopeId` | `ID!` | The permission scope ID. |
-| `targetEntityId` | `ID!` | The specific entity ID to allow access to. |
-| `actions` | [[ActionPermission!]!](/api-reference/enums.md#actionpermission/) | The actions to allow. |
+| `input` | [UserScopeSetInput!](/api-reference/inputs.md#userscopesetinput/) | The input fields for setting the user scope. |
 
 **Returns:** [UserScopePayload](/api-reference/objects.md#userscopepayload/)
 
@@ -1340,13 +892,7 @@ userScopeRemove(input: UserScopeRemoveInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `UserScopeRemoveInput!` | The input fields for removing the user scope. |
-
-**UserScopeRemoveInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `userScopeId` | `ID!` | The user scope ID to remove. |
+| `input` | [UserScopeRemoveInput!](/api-reference/inputs.md#userscoperemoveinput/) | The input fields for removing the user scope. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1362,17 +908,7 @@ roleCreate(input: RoleCreateInput!): RolePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `RoleCreateInput!` | The input fields for creating the role. |
-
-**RoleCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [RoleCreateInput!](/api-reference/inputs.md#rolecreateinput/) | The input fields for creating the role. |
 
 **Returns:** [RolePayload](/api-reference/objects.md#rolepayload/)
 
@@ -1388,17 +924,7 @@ roleUpdate(input: RoleUpdateInput!): RolePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `RoleUpdateInput!` | The input fields for updating the role. |
-
-**RoleUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [RoleUpdateInput!](/api-reference/inputs.md#roleupdateinput/) | The input fields for updating the role. |
 
 **Returns:** [RolePayload](/api-reference/objects.md#rolepayload/)
 
@@ -1414,14 +940,7 @@ roleDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the role. |
-
-**CatalogItemDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the role. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1441,14 +960,7 @@ deviceInventoryLink(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceInventoryLinkInput!` | The input fields for linking the device. |
-
-**DeviceInventoryLinkInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deviceId` | `ID!` | The device ID. |
-| `inventoryId` | `ID!` | The inventory ID. |
+| `input` | [DeviceInventoryLinkInput!](/api-reference/inputs.md#deviceinventorylinkinput/) | The input fields for linking the device. |
 
 **Returns:** [DeviceInventoryRelationPayload](/api-reference/objects.md#deviceinventoryrelationpayload/)
 
@@ -1466,13 +978,7 @@ deviceInventoryUnlink(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceInventoryUnlinkInput!` | The input fields for unlinking the device. |
-
-**DeviceInventoryUnlinkInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deviceId` | `ID!` | The device ID to unlink. |
+| `input` | [DeviceInventoryUnlinkInput!](/api-reference/inputs.md#deviceinventoryunlinkinput/) | The input fields for unlinking the device. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1490,15 +996,7 @@ deviceRelationCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceRelationCreateInput!` | The input fields for creating the relationship. |
-
-**DeviceRelationCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `firstId` | `ID!` | The first device ID. |
-| `secondId` | `ID!` | The second device ID. |
-| `typeId` | `ID!` | The relationship type ID. |
+| `input` | [DeviceRelationCreateInput!](/api-reference/inputs.md#devicerelationcreateinput/) | The input fields for creating the relationship. |
 
 **Returns:** [DeviceRelationPayload](/api-reference/objects.md#devicerelationpayload/)
 
@@ -1514,13 +1012,7 @@ deviceRelationRemove(input: DeviceRelationRemoveInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `DeviceRelationRemoveInput!` | The input fields for removing the relationship. |
-
-**DeviceRelationRemoveInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The relationship ID to remove. |
+| `input` | [DeviceRelationRemoveInput!](/api-reference/inputs.md#devicerelationremoveinput/) | The input fields for removing the relationship. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1540,21 +1032,7 @@ customFieldDefinitionCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CustomFieldDefinitionCreateInput!` | The input fields for creating the definition. |
-
-**CustomFieldDefinitionCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization ID. |
-| `ownerCatalogItemId` | `ID!` | The owner catalog item ID (EntityType or a specific type like AssetType). |
-| `targetEntityTypeId` | `ID!` | The target entity type ID. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `description` | `String` | The description. |
-| `fieldType` | [FieldType!](/api-reference/enums.md#fieldtype/) | The data type. Immutable after creation. |
-| `order` | `Int` | The display order. |
-| `params` | `FieldParamsInput!` | The type-specific parameters. Exactly one variant must be provided. |
+| `input` | [CustomFieldDefinitionCreateInput!](/api-reference/inputs.md#customfielddefinitioncreateinput/) | The input fields for creating the definition. |
 
 **Returns:** [CustomFieldDefinitionPayload](/api-reference/objects.md#customfielddefinitionpayload/)
 
@@ -1572,18 +1050,7 @@ customFieldDefinitionUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CustomFieldDefinitionUpdateInput!` | The input fields for updating the definition. |
-
-**CustomFieldDefinitionUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The definition ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `description` | `String` | The new description. |
-| `order` | `Int` | The new display order. |
-| `params` | `FieldParamsInput` | The updated parameters. Only `isRequired` and type-specific fields can be changed. |
+| `input` | [CustomFieldDefinitionUpdateInput!](/api-reference/inputs.md#customfielddefinitionupdateinput/) | The input fields for updating the definition. |
 
 **Returns:** [CustomFieldDefinitionPayload](/api-reference/objects.md#customfielddefinitionpayload/)
 
@@ -1601,14 +1068,7 @@ customFieldDefinitionDelete(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CustomFieldDefinitionDeleteInput!` | The input fields for deleting the definition. |
-
-**CustomFieldDefinitionDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The definition ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CustomFieldDefinitionDeleteInput!](/api-reference/inputs.md#customfielddefinitiondeleteinput/) | The input fields for deleting the definition. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1628,17 +1088,7 @@ scheduleTypeCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `ScheduleTypeCreateInput!` | The input fields for creating the schedule type. |
-
-**ScheduleTypeCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [ScheduleTypeCreateInput!](/api-reference/inputs.md#scheduletypecreateinput/) | The input fields for creating the schedule type. |
 
 **Returns:** [ScheduleTypePayload](/api-reference/objects.md#scheduletypepayload/)
 
@@ -1656,17 +1106,7 @@ scheduleTypeUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `ScheduleTypeUpdateInput!` | The input fields for updating the schedule type. |
-
-**ScheduleTypeUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [ScheduleTypeUpdateInput!](/api-reference/inputs.md#scheduletypeupdateinput/) | The input fields for updating the schedule type. |
 
 **Returns:** [ScheduleTypePayload](/api-reference/objects.md#scheduletypepayload/)
 
@@ -1682,14 +1122,7 @@ scheduleTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the schedule type. |
-
-**CatalogItemDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the schedule type. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1705,18 +1138,7 @@ tagCreate(input: TagCreateInput!): TagPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `TagCreateInput!` | The input fields for creating the tag. |
-
-**TagCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `entityTypeIds` | `[ID!]` | The entity types this tag can be applied to. Empty means universal. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [TagCreateInput!](/api-reference/inputs.md#tagcreateinput/) | The input fields for creating the tag. |
 
 **Returns:** [TagPayload](/api-reference/objects.md#tagpayload/)
 
@@ -1732,18 +1154,7 @@ tagUpdate(input: TagUpdateInput!): TagPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `TagUpdateInput!` | The input fields for updating the tag. |
-
-**TagUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `entityTypeIds` | `[ID!]` | Replace entity types. Null means no change, empty means universal. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [TagUpdateInput!](/api-reference/inputs.md#tagupdateinput/) | The input fields for updating the tag. |
 
 **Returns:** [TagPayload](/api-reference/objects.md#tagpayload/)
 
@@ -1759,14 +1170,7 @@ tagDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the tag. |
-
-**CatalogItemDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the tag. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
 
@@ -1784,19 +1188,7 @@ userCatalogItemCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `UserCatalogItemCreateInput!` | The input fields for creating the item. |
-
-**UserCatalogItemCreateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `catalogId` | `ID!` | The catalog to add the item to. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code, unique within the catalog and organization. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `parentId` | `ID` | The parent item ID for hierarchical catalogs. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [UserCatalogItemCreateInput!](/api-reference/inputs.md#usercatalogitemcreateinput/) | The input fields for creating the item. |
 
 **Returns:** [UserCatalogItemPayload](/api-reference/objects.md#usercatalogitempayload/)
 
@@ -1814,18 +1206,7 @@ userCatalogItemUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `UserCatalogItemUpdateInput!` | The input fields for updating the item. |
-
-**UserCatalogItemUpdateInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `parentId` | `ID` | The new parent ID for hierarchical items. |
-| `meta` | `CatalogItemMetaInput` | The display properties. |
+| `input` | [UserCatalogItemUpdateInput!](/api-reference/inputs.md#usercatalogitemupdateinput/) | The input fields for updating the item. |
 
 **Returns:** [UserCatalogItemPayload](/api-reference/objects.md#usercatalogitempayload/)
 
@@ -1841,13 +1222,6 @@ userCatalogItemDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the item. |
-
-**CatalogItemDeleteInput** (input type)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
-| `version` | `Int!` | The current version for optimistic locking. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the item. |
 
 **Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
