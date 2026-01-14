@@ -1,99 +1,8 @@
-# Scalars & enums
-
-This page documents scalar and enum types used in Navixy Repository API.
-
-## Scalars
-
-Navixy Repository API defines these custom scalar types in addition to the standard GraphQL scalars. See [GraphQL basics](../graphql-basics.md#scalar-types/) for the description of the predefined scalars (String, Int, Float, Boolean, ID).
-
-### DateTime
-
-[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with timezone ([RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)).
-
-| Property | Value |
-| -------- | ----- |
-| Format | `YYYY-MM-DDTHH:mm:ss.sssZ` |
-| Example | `2025-01-15T14:30:00.000Z` |
-
-### Date
-
-[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date without time component ([RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)).
-
-| Property | Value |
-| -------- | ----- |
-| Format | `YYYY-MM-DD` |
-| Example | `2025-01-15` |
-
-### JSON
-
-Arbitrary JSON object. Used for custom fields data, extra fields, and flexible configurations.
-
-| Property | Value |
-| -------- | ----- |
-| Format | `Any valid JSON` |
-| Example | `{"key": "value", "count": 42}` |
-
-### GeoJSON
-
-[GeoJSON](https://geojson.org/) geometry object (Point, Polygon, LineString, etc.).
-
-| Property | Value |
-| -------- | ----- |
-| Format | `GeoJSON geometry object` |
-| Example | `{"type": "Point", "coordinates": [125.6, 10.1]}` |
-
-### Latitude
-
-A geographic latitude coordinate in decimal degrees. Valid range: -90.0 to 90.0.
-
-### Longitude
-
-A geographic longitude coordinate in decimal degrees. Valid range: -180.0 to 180.0.
-
-### Locale
-
-A BCP 47 language tag identifying a user locale. Example: `en-US`, `ru-RU`.
-
-### EmailAddress
-
-An email address conforming to RFC 5322. Example: `user@example.com`.
-
-### HexColorCode
-
-CSS hex color code for UI display.
-
-| Property | Value |
-| -------- | ----- |
-| Format | `#RRGGBB` |
-| Example | `#FF5733` |
-
-### CountryCode
-
-An [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code. Example: `US`, `GB`, `ES`.
-
-### Code
-
-Machine-readable string identifier. Must match pattern `^[a-z][a-z0-9_]*$` (lowercase letters, numbers, underscores, starting with a letter).
-
-| Property | Value |
-| -------- | ----- |
-| Format | `lowercase_snake_case` |
-| Example | `vehicle_type` |
-
-### ScheduleData
-
-Schedule/calendar data with time intervals and recurrence rules following [iCalendar](https://datatracker.ietf.org/doc/html/rfc5545) format.
-
-| Property | Value |
-| -------- | ----- |
-| Format | `iCalendar-compatible JSON` |
-| Example | `{"intervals": [...], "rrule": "FREQ=WEEKLY;BYDAY=MO,WE,FR"}` |
-
-## Enums
+# Enums
 
 Enums represent fixed sets of values. Use the exact value shown when passing as an argument.
 
-### OrderDirection
+## OrderDirection
 
 The direction for sorting query results.
 
@@ -102,7 +11,7 @@ The direction for sorting query results.
 | `ASC` | Sort in ascending order (A→Z, 0→9, oldest→newest). |
 | `DESC` | Sort in descending order (Z→A, 9→0, newest→oldest). |
 
-### CatalogItemOrigin
+## CatalogItemOrigin
 
 The origin of a catalog item, indicating how it was created.
 
@@ -112,7 +21,7 @@ The origin of a catalog item, indicating how it was created.
 | `ORGANIZATION` | Created by the current organization. |
 | `PARENT_ORGANIZATION` | Inherited from a parent organization in the dealer hierarchy. |
 
-### CountPrecision
+## CountPrecision
 
 The precision level of a total count value.
 
@@ -122,7 +31,7 @@ The precision level of a total count value.
 | `APPROXIMATE` | The count is approximate, derived from table statistics. |
 | `AT_LEAST` | At least this many items exist. Counting stopped early for performance reasons. |
 
-### OrganizationFeature
+## OrganizationFeature
 
 Feature flags that can be enabled for an organization.
 
@@ -131,7 +40,7 @@ Feature flags that can be enabled for an organization.
 | `DEALER` | The organization can create and manage child organizations (dealer/reseller model). |
 | `WHITELABEL` | The organization has custom branding including domain, logo, and color scheme. |
 
-### FieldType
+## FieldType
 
 The data type of a custom field, determining validation rules and UI rendering.
 
@@ -151,7 +60,7 @@ The data type of a custom field, determining validation rules and UI rendering.
 | `CATALOG` | Reference to a catalog item. |
 | `TAG` | Reference to a Tag entity. |
 
-### DeviceIdType
+## DeviceIdType
 
 The type of hardware identifier used to identify a device.
 
@@ -165,7 +74,7 @@ The type of hardware identifier used to identify a device.
 | `SERIAL_NUMBER` | Manufacturer-assigned serial number. |
 | `CUSTOM` | A custom identifier type defined by the organization. |
 
-### ActionPermission
+## ActionPermission
 
 Permission actions that can be granted to actors for entity operations.
 
@@ -176,7 +85,7 @@ Permission actions that can be granted to actors for entity operations.
 | `UPDATE` | Permission to modify existing entities. |
 | `DELETE` | Permission to delete entities. |
 
-### SourceType
+## SourceType
 
 The source type identifying the origin of an API request.
 
@@ -188,7 +97,7 @@ The source type identifying the origin of an API request.
 | `INTERNAL` | Request generated by an internal system process. |
 | `INTEGRATION` | Request made by an external integration. |
 
-### AuditEventType
+## AuditEventType
 
 The type of event recorded in the audit log.
 
@@ -212,7 +121,7 @@ The type of event recorded in the audit log.
 | `ATTACHED` | An entity was added to a group. |
 | `DETACHED` | An entity was removed from a group. |
 
-### FieldOperator
+## FieldOperator
 
 Comparison operators for filtering by custom field values.
 
@@ -229,7 +138,7 @@ Comparison operators for filtering by custom field values.
 | `IS_NULL` | Value is null. |
 | `IS_NOT_NULL` | Value is not null. |
 
-### GeoJsonGeometryType
+## GeoJsonGeometryType
 
 The type of [GeoJSON](https://geojson.org/) geometry.
 
@@ -243,7 +152,7 @@ The type of [GeoJSON](https://geojson.org/) geometry.
 | `MULTI_POLYGON` | A collection of polygons. |
 | `GEOMETRY_COLLECTION` | A heterogeneous collection of geometry objects. |
 
-### CatalogItemOrderField
+## CatalogItemOrderField
 
 Fields available for ordering catalog items.
 
@@ -253,7 +162,7 @@ Fields available for ordering catalog items.
 | `CODE` | Order by code. |
 | `TITLE` | Order by title. |
 
-### OrganizationOrderField
+## OrganizationOrderField
 
 Fields available for ordering organizations.
 
@@ -261,7 +170,7 @@ Fields available for ordering organizations.
 | ----- | ----------- |
 | `TITLE` | Order by title. |
 
-### MemberOrderField
+## MemberOrderField
 
 Fields available for ordering members.
 
@@ -269,7 +178,7 @@ Fields available for ordering members.
 | ----- | ----------- |
 | `ASSIGNED_AT` | Order by assignment date. |
 
-### IntegrationOrderField
+## IntegrationOrderField
 
 Fields available for ordering integrations.
 
@@ -277,7 +186,7 @@ Fields available for ordering integrations.
 | ----- | ----------- |
 | `TITLE` | Order by title. |
 
-### DeviceOrderField
+## DeviceOrderField
 
 Fields available for ordering devices.
 
@@ -285,7 +194,7 @@ Fields available for ordering devices.
 | ----- | ----------- |
 | `TITLE` | Order by title. |
 
-### DeviceInventoryRelationOrderField
+## DeviceInventoryRelationOrderField
 
 Fields available for ordering device inventory relations.
 
@@ -293,7 +202,7 @@ Fields available for ordering device inventory relations.
 | ----- | ----------- |
 | `ASSIGNED_AT` | Order by assignment date. |
 
-### AssetOrderField
+## AssetOrderField
 
 Fields available for ordering assets.
 
@@ -301,7 +210,7 @@ Fields available for ordering assets.
 | ----- | ----------- |
 | `TITLE` | Order by title. |
 
-### AssetGroupOrderField
+## AssetGroupOrderField
 
 Fields available for ordering asset groups.
 
@@ -309,7 +218,7 @@ Fields available for ordering asset groups.
 | ----- | ----------- |
 | `TITLE` | Order by title. |
 
-### AssetGroupItemOrderField
+## AssetGroupItemOrderField
 
 Fields available for ordering asset group items.
 
@@ -317,7 +226,7 @@ Fields available for ordering asset group items.
 | ----- | ----------- |
 | `ATTACHED_AT` | Order by attachment date. |
 
-### InventoryOrderField
+## InventoryOrderField
 
 Fields available for ordering inventories.
 
@@ -325,7 +234,7 @@ Fields available for ordering inventories.
 | ----- | ----------- |
 | `TITLE` | Order by title. |
 
-### GeoObjectOrderField
+## GeoObjectOrderField
 
 Fields available for ordering geo objects.
 
@@ -333,7 +242,7 @@ Fields available for ordering geo objects.
 | ----- | ----------- |
 | `TITLE` | Order by title. |
 
-### ScheduleOrderField
+## ScheduleOrderField
 
 Fields available for ordering schedules.
 
@@ -341,7 +250,7 @@ Fields available for ordering schedules.
 | ----- | ----------- |
 | `TITLE` | Order by title. |
 
-### AuditEventOrderField
+## AuditEventOrderField
 
 Fields available for ordering audit events.
 
@@ -349,7 +258,7 @@ Fields available for ordering audit events.
 | ----- | ----------- |
 | `OCCURRED_AT` | Order by occurrence date. |
 
-### ActorRoleOrderField
+## ActorRoleOrderField
 
 Fields available for ordering actor roles.
 
@@ -357,7 +266,7 @@ Fields available for ordering actor roles.
 | ----- | ----------- |
 | `ASSIGNED_AT` | Order by assignment date. |
 
-### RolePermissionOrderField
+## RolePermissionOrderField
 
 Fields available for ordering role permissions.
 
@@ -365,7 +274,7 @@ Fields available for ordering role permissions.
 | ----- | ----------- |
 | `GRANTED_AT` | Order by grant date. |
 
-### UserScopeOrderField
+## UserScopeOrderField
 
 Fields available for ordering user scopes.
 

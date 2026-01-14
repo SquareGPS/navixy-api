@@ -19,7 +19,7 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | `type` | [DeviceType!](/api-reference/objects.md#devicetype/) | The device type classification. |
 | `model` | [DeviceModel](/api-reference/objects.md#devicemodel/) | The specific device model. |
 | `status` | [DeviceStatus!](/api-reference/objects.md#devicestatus/) | The current operational status. |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
+| `customFields` | [JSON!](/api-reference/scalars.md#json/) |  |
 | `identifiers` | [[DeviceIdentifier!]!](/api-reference/objects.md#deviceidentifier/) | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
 | `inventory` | [Inventory](/api-reference/objects.md#inventory/) | The inventory this device is currently assigned to. |
 | `relationsFrom` | [[DeviceRelation!]!](/api-reference/objects.md#devicerelation/) | The outgoing relationships from this device to other devices. |
@@ -36,7 +36,7 @@ A hardware identifier for a device.
 | ----- | ---- | ----------- |
 | `id` | `ID!` |  |
 | `device` | [Device!](/api-reference/objects.md#device/) | The device this identifier belongs to. |
-| `type` | [DeviceIdType!](/api-reference/scalars-and-enums.md#deviceidtype/) | The type of identifier. |
+| `type` | [DeviceIdType!](/api-reference/enums.md#deviceidtype/) | The type of identifier. |
 | `value` | `String!` | The identifier value. |
 | `namespace` | `String` | The namespace for uniqueness. Null means the identifier is globally unique. |
 
@@ -64,7 +64,7 @@ A record of a device's assignment to an inventory.
 | `id` | `ID!` |  |
 | `device` | [Device!](/api-reference/objects.md#device/) | The device that was assigned. |
 | `inventory` | [Inventory!](/api-reference/objects.md#inventory/) | The inventory the device was assigned to. |
-| `assignedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the device was assigned. |
+| `assignedAt` | [DateTime!](/api-reference/scalars.md#datetime/) | The date and time when the device was assigned. |
 | `assignedBy` | [Actor](/api-reference/interfaces.md#actor/) | The actor who assigned the device. |
 
 ## Assets
@@ -91,7 +91,7 @@ A physical or logical asset being tracked.
 | `title` | `String!` |  |
 | `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this asset. |
 | `type` | [AssetType!](/api-reference/objects.md#assettype/) | The asset type classification. |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
+| `customFields` | [JSON!](/api-reference/scalars.md#json/) |  |
 | `device` | [Device](/api-reference/objects.md#device/) | The primary tracking device linked to this asset. This is an alias for the `device` custom field. |
 | `groups` | [AssetGroupConnection!](/api-reference/objects.md#assetgroupconnection/) | The groups this asset belongs to. |
 
@@ -108,7 +108,7 @@ A group of assets.
 | `title` | `String!` |  |
 | `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this group. |
 | `type` | [AssetGroupType!](/api-reference/objects.md#assetgrouptype/) | The group type with membership constraints. |
-| `color` | [HexColorCode](/api-reference/scalars-and-enums.md#hexcolorcode/) | The color for UI display in hexadecimal format. |
+| `color` | [HexColorCode](/api-reference/scalars.md#hexcolorcode/) | The color for UI display in hexadecimal format. |
 | `currentAssets` | [AssetConnection!](/api-reference/objects.md#assetconnection/) | The assets currently in this group. |
 | `history` | [AssetGroupItemConnection!](/api-reference/objects.md#assetgroupitemconnection/) | The full membership history for this group. |
 
@@ -123,8 +123,8 @@ A record of an asset's membership in a group.
 | `id` | `ID!` |  |
 | `group` | [AssetGroup!](/api-reference/objects.md#assetgroup/) | The group containing the asset. |
 | `asset` | [Asset!](/api-reference/objects.md#asset/) | The asset in the group. |
-| `attachedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the asset was added to the group. |
-| `detachedAt` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the asset was removed from the group. Null means the asset is currently attached. |
+| `attachedAt` | [DateTime!](/api-reference/scalars.md#datetime/) | The date and time when the asset was added to the group. |
+| `detachedAt` | [DateTime](/api-reference/scalars.md#datetime/) | The date and time when the asset was removed from the group. Null means the asset is currently attached. |
 
 ## Geo objects
 
@@ -141,8 +141,8 @@ A geographic object such as a geofence, point of interest, or route.
 | `title` | `String!` |  |
 | `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this geo object. |
 | `type` | [GeoObjectType!](/api-reference/objects.md#geoobjecttype/) | The geo object type classification. |
-| `geometry` | [GeoJSON!](/api-reference/scalars-and-enums.md#geojson/) | The geographic shape of this object as [GeoJSON](https://geojson.org/) geometry. This is an alias for the `geojson` custom field. |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
+| `geometry` | [GeoJSON!](/api-reference/scalars.md#geojson/) | The geographic shape of this object as [GeoJSON](https://geojson.org/) geometry. This is an alias for the `geojson` custom field. |
+| `customFields` | [JSON!](/api-reference/scalars.md#json/) |  |
 | `containsPoints` | [[PointContainmentResult!]!](/api-reference/objects.md#pointcontainmentresult/) | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 ## Schedules
@@ -160,8 +160,8 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | `title` | `String!` |  |
 | `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization that owns this schedule. |
 | `type` | [ScheduleType!](/api-reference/objects.md#scheduletype/) | The schedule type classification. |
-| `scheduleData` | [ScheduleData!](/api-reference/scalars-and-enums.md#scheduledata/) | The calendar and time interval definitions for this schedule. This is an alias for the `schedule_data` custom field. |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) |  |
+| `scheduleData` | [ScheduleData!](/api-reference/scalars.md#scheduledata/) | The calendar and time interval definitions for this schedule. This is an alias for the `schedule_data` custom field. |
+| `customFields` | [JSON!](/api-reference/scalars.md#json/) |  |
 
 ## Inventory
 
@@ -194,7 +194,7 @@ An organization in the hierarchy that owns entities and users.
 | `title` | `String!` |  |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature!]!](/api-reference/scalars-and-enums.md#organizationfeature/) | The feature flags enabled for this organization. |
+| `features` | [[OrganizationFeature!]!](/api-reference/enums.md#organizationfeature/) | The feature flags enabled for this organization. |
 | `parent` | [Organization](/api-reference/objects.md#organization/) | The parent organization in the hierarchy. Null for root organizations. |
 | `children` | [OrganizationConnection!](/api-reference/objects.md#organizationconnection/) | The child organizations. |
 | `members` | [MemberConnection!](/api-reference/objects.md#memberconnection/) | The members of this organization. |
@@ -230,8 +230,8 @@ A human user account authenticated via an identity provider.
 | `name` | [PersonName!](/api-reference/objects.md#personname/) | The structured name components from the identity provider. |
 | `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |
 | `identityProviderId` | `String!` | The user's unique ID in the identity provider. |
-| `email` | [EmailAddress!](/api-reference/scalars-and-enums.md#emailaddress/) | The user's primary email address. |
-| `locale` | [Locale](/api-reference/scalars-and-enums.md#locale/) | The user's preferred locale. |
+| `email` | [EmailAddress!](/api-reference/scalars.md#emailaddress/) | The user's primary email address. |
+| `locale` | [Locale](/api-reference/scalars.md#locale/) | The user's preferred locale. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this user account is active. |
 | `memberships` | [MemberConnection!](/api-reference/objects.md#memberconnection/) | The organization memberships for this user. |
@@ -249,8 +249,8 @@ A user's membership in an organization.
 | `user` | [User!](/api-reference/objects.md#user/) | The user. |
 | `organization` | [Organization!](/api-reference/objects.md#organization/) | The organization the user belongs to. |
 | `isActive` | `Boolean!` | Whether this membership is active. |
-| `assignedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the user was assigned to this organization. |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Membership-specific custom fields such as position and department. |
+| `assignedAt` | [DateTime!](/api-reference/scalars.md#datetime/) | The date and time when the user was assigned to this organization. |
+| `customFields` | [JSON!](/api-reference/scalars.md#json/) | Membership-specific custom fields such as position and department. |
 
 ### Integration
 
@@ -280,9 +280,9 @@ An assignment of a role to an actor.
 | `id` | `ID!` |  |
 | `actor` | [Actor!](/api-reference/interfaces.md#actor/) | The actor receiving the role. |
 | `role` | [Role!](/api-reference/objects.md#role/) | The role being assigned. |
-| `assignedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the role was assigned. |
+| `assignedAt` | [DateTime!](/api-reference/scalars.md#datetime/) | The date and time when the role was assigned. |
 | `assignedBy` | [Actor](/api-reference/interfaces.md#actor/) | The actor who assigned the role. |
-| `expireDate` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the role expires. Null means the role is permanent. |
+| `expireDate` | [DateTime](/api-reference/scalars.md#datetime/) | The date and time when the role expires. Null means the role is permanent. |
 
 ### RolePermission
 
@@ -296,8 +296,8 @@ A permission granted to a role.
 | `role` | [Role!](/api-reference/objects.md#role/) | The role receiving the permission. |
 | `permissionScope` | [PermissionScope!](/api-reference/objects.md#permissionscope/) | The permission scope being granted. |
 | `targetEntityId` | `ID` | The specific entity ID this permission applies to. Null means all entities of the type. |
-| `actions` | [[ActionPermission!]!](/api-reference/scalars-and-enums.md#actionpermission/) | The actions allowed by this permission. |
-| `grantedAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the permission was granted. |
+| `actions` | [[ActionPermission!]!](/api-reference/enums.md#actionpermission/) | The actions allowed by this permission. |
+| `grantedAt` | [DateTime!](/api-reference/scalars.md#datetime/) | The date and time when the permission was granted. |
 | `grantedBy` | [Actor!](/api-reference/interfaces.md#actor/) | The actor who granted the permission. |
 
 ### UserScope
@@ -312,7 +312,7 @@ A whitelist filter that restricts an actor's access to specific entities. When p
 | `actor` | [Actor!](/api-reference/interfaces.md#actor/) | The actor being restricted. |
 | `permissionScope` | [PermissionScope!](/api-reference/objects.md#permissionscope/) | The permission scope being filtered. |
 | `targetEntityId` | `ID!` | The specific entity the actor can access. |
-| `actions` | [[ActionPermission!]!](/api-reference/scalars-and-enums.md#actionpermission/) | The actions allowed on this specific entity. |
+| `actions` | [[ActionPermission!]!](/api-reference/enums.md#actionpermission/) | The actions allowed on this specific entity. |
 
 ## Custom fields
 
@@ -327,13 +327,13 @@ A custom field definition that specifies the metadata for a custom field. Note: 
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` | The human-readable display name. |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) | The machine-readable code, unique per owner and organization. |
+| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code, unique per owner and organization. |
 | `description` | `String` | A description of the field for UI hints. |
 | `order` | `Int!` | The display order within the owner context. |
 | `organization` | [Organization](/api-reference/objects.md#organization/) | The organization that owns this definition. Null for system-level fields. |
 | `owner` | [CatalogItem!](/api-reference/interfaces.md#catalogitem/) | The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields. |
 | `targetEntityType` | [EntityType!](/api-reference/objects.md#entitytype/) | The target entity type this field applies to. |
-| `fieldType` | [FieldType!](/api-reference/scalars-and-enums.md#fieldtype/) | The data type determining validation rules and UI rendering. This property is immutable and cannot be changed after creation. |
+| `fieldType` | [FieldType!](/api-reference/enums.md#fieldtype/) | The data type determining validation rules and UI rendering. This property is immutable and cannot be changed after creation. |
 | `params` | [FieldParams!](/api-reference/interfaces.md#fieldparams/) | The type-specific parameters for validation, defaults, and options. |
 
 ### FieldParamsString
@@ -397,7 +397,7 @@ Parameters for DATE field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `defaultValue` | [Date](/api-reference/scalars-and-enums.md#date/) | The default value. |
+| `defaultValue` | [Date](/api-reference/scalars.md#date/) | The default value. |
 
 ### FieldParamsDatetime
 
@@ -408,7 +408,7 @@ Parameters for DATETIME field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `defaultValue` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | The default value. |
+| `defaultValue` | [DateTime](/api-reference/scalars.md#datetime/) | The default value. |
 
 ### FieldParamsGeojson
 
@@ -419,7 +419,7 @@ Parameters for GEOJSON field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
-| `allowedTypes` | [[GeoJsonGeometryType!]](/api-reference/scalars-and-enums.md#geojsongeometrytype/) | The allowed geometry types. Null means all types are allowed. |
+| `allowedTypes` | [[GeoJsonGeometryType!]](/api-reference/enums.md#geojsongeometrytype/) | The allowed geometry types. Null means all types are allowed. |
 
 ### FieldParamsSchedule
 
@@ -442,7 +442,7 @@ Parameters for OPTIONS field type.
 | `isRequired` | `Boolean!` |  |
 | `isMulti` | `Boolean!` |  |
 | `options` | [[FieldOption!]!](/api-reference/objects.md#fieldoption/) | The available options to choose from. |
-| `defaultValue` | [Code](/api-reference/scalars-and-enums.md#code/) | The default option code. |
+| `defaultValue` | [Code](/api-reference/scalars.md#code/) | The default option code. |
 
 ### FieldOption
 
@@ -450,7 +450,7 @@ A single option in an OPTIONS field.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) | The unique code for this option within the field. |
+| `code` | [Code!](/api-reference/scalars.md#code/) | The unique code for this option within the field. |
 | `label` | `String!` | The display label. |
 | `description` | `String` | A description of the option. |
 | `isArchived` | `Boolean!` | Whether this option is archived and should not be shown for new selections. |
@@ -476,7 +476,7 @@ Parameters for REFERENCE field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
 | `isMulti` | `Boolean!` |  |
-| `refEntityTypeCode` | [Code!](/api-reference/scalars-and-enums.md#code/) | The entity type code that can be referenced. |
+| `refEntityTypeCode` | [Code!](/api-reference/scalars.md#code/) | The entity type code that can be referenced. |
 
 ### FieldParamsCatalog
 
@@ -488,8 +488,8 @@ Parameters for CATALOG field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
 | `isMulti` | `Boolean!` |  |
-| `refCatalogCode` | [Code!](/api-reference/scalars-and-enums.md#code/) | The catalog code that items can be selected from. |
-| `defaultValue` | [Code](/api-reference/scalars-and-enums.md#code/) | The default item code. |
+| `refCatalogCode` | [Code!](/api-reference/scalars.md#code/) | The catalog code that items can be selected from. |
+| `defaultValue` | [Code](/api-reference/scalars.md#code/) | The default item code. |
 
 ### FieldParamsTag
 
@@ -501,7 +501,7 @@ Parameters for TAG field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` |  |
 | `isMulti` | `Boolean!` |  |
-| `defaultValue` | [Code](/api-reference/scalars-and-enums.md#code/) | The default tag code. |
+| `defaultValue` | [Code](/api-reference/scalars.md#code/) | The default tag code. |
 
 ## Audit
 
@@ -518,13 +518,13 @@ An audit log entry recording an event that occurred in the system.
 | `actor` | [Actor](/api-reference/interfaces.md#actor/) | The actor who triggered the event. |
 | `ipAddress` | `String` | The client IP address. |
 | `userAgent` | `String` | The client User-Agent string. |
-| `sourceType` | [SourceType!](/api-reference/scalars-and-enums.md#sourcetype/) | The source type of the request. |
+| `sourceType` | [SourceType!](/api-reference/enums.md#sourcetype/) | The source type of the request. |
 | `traceId` | `String` | The distributed tracing ID (32 hex characters) for log correlation. |
-| `aggregateType` | [Code](/api-reference/scalars-and-enums.md#code/) | The type of entity affected. |
+| `aggregateType` | [Code](/api-reference/scalars.md#code/) | The type of entity affected. |
 | `aggregateId` | `ID` | The ID of the affected entity. |
-| `eventType` | [AuditEventType!](/api-reference/scalars-and-enums.md#auditeventtype/) | The type of event that occurred. |
-| `eventData` | [JSON](/api-reference/scalars-and-enums.md#json/) | The event payload with details such as changed fields. |
-| `occurredAt` | [DateTime!](/api-reference/scalars-and-enums.md#datetime/) | The date and time when the event occurred. |
+| `eventType` | [AuditEventType!](/api-reference/enums.md#auditeventtype/) | The type of event that occurred. |
+| `eventData` | [JSON](/api-reference/scalars.md#json/) | The event payload with details such as changed fields. |
+| `occurredAt` | [DateTime!](/api-reference/scalars.md#datetime/) | The date and time when the event occurred. |
 
 ## Pagination
 
@@ -546,7 +546,7 @@ Information about the total count of items in a connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `count` | `Int!` | The count of items matching the filter. |
-| `precision` | [CountPrecision!](/api-reference/scalars-and-enums.md#countprecision/) | The precision level of the count value. |
+| `precision` | [CountPrecision!](/api-reference/enums.md#countprecision/) | The precision level of the count value. |
 
 ### CatalogItemConnection
 
@@ -1455,11 +1455,11 @@ Metadata about a catalog item.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `description` | `String` | A description of the catalog item. Can be localized. |
-| `origin` | [CatalogItemOrigin!](/api-reference/scalars-and-enums.md#catalogitemorigin/) | The origin indicating how this item was created. |
+| `origin` | [CatalogItemOrigin!](/api-reference/enums.md#catalogitemorigin/) | The origin indicating how this item was created. |
 | `canBeDeleted` | `Boolean!` | Whether this item can be deleted. Returns `false` if the item has dependencies or is system-managed. |
 | `hidden` | `Boolean!` | Whether this item is hidden from regular UI lists. |
-| `textColor` | [HexColorCode](/api-reference/scalars-and-enums.md#hexcolorcode/) | The text color for UI display. |
-| `backgroundColor` | [HexColorCode](/api-reference/scalars-and-enums.md#hexcolorcode/) | The background color for UI display. |
+| `textColor` | [HexColorCode](/api-reference/scalars.md#hexcolorcode/) | The text color for UI display. |
+| `backgroundColor` | [HexColorCode](/api-reference/scalars.md#hexcolorcode/) | The background color for UI display. |
 | `icon` | `String` | A relative URL to the icon for this item. |
 
 ### Module
@@ -1473,7 +1473,7 @@ A system module that groups related functionality and permission scopes. Example
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1490,7 +1490,7 @@ A definition of an entity type in the system.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1510,7 +1510,7 @@ A device manufacturer or vendor.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1528,7 +1528,7 @@ A specific device model produced by a vendor.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1546,7 +1546,7 @@ A classification type for devices.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1564,7 +1564,7 @@ An operational status for devices.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1581,7 +1581,7 @@ A type of relationship between two devices.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1598,7 +1598,7 @@ A classification type for assets.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1616,7 +1616,7 @@ A type for asset groups with membership constraints.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1634,7 +1634,7 @@ A classification type for geographic objects.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1652,7 +1652,7 @@ A classification type for schedules.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1670,7 +1670,7 @@ A role that can be assigned to actors to grant permissions.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1688,7 +1688,7 @@ A definition of a permission scope that can be granted to roles.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1707,7 +1707,7 @@ A tag for labeling and categorizing entities.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1725,12 +1725,12 @@ A country reference data item.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
 | `meta` | [CatalogItemMeta!](/api-reference/objects.md#catalogitemmeta/) |  |
-| `alpha2Code` | [CountryCode!](/api-reference/scalars-and-enums.md#countrycode/) | The [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code. |
+| `alpha2Code` | [CountryCode!](/api-reference/scalars.md#countrycode/) | The [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code. |
 
 ### UserCatalogItem
 
@@ -1743,7 +1743,7 @@ A user-defined catalog item that supports hierarchical organization.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) |  |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1762,7 +1762,7 @@ A catalog definition that contains catalog items. Catalogs are themselves catalo
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) |  |
+| `code` | [Code!](/api-reference/scalars.md#code/) |  |
 | `order` | `Int!` |  |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) | Self-reference for the meta-catalog. |
 | `organization` | [Organization](/api-reference/objects.md#organization/) |  |
@@ -1789,8 +1789,8 @@ A geographic coordinate point.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `lat` | [Latitude!](/api-reference/scalars-and-enums.md#latitude/) | The latitude coordinate in decimal degrees. |
-| `lng` | [Longitude!](/api-reference/scalars-and-enums.md#longitude/) | The longitude coordinate in decimal degrees. |
+| `lat` | [Latitude!](/api-reference/scalars.md#latitude/) | The latitude coordinate in decimal degrees. |
+| `lng` | [Longitude!](/api-reference/scalars.md#longitude/) | The longitude coordinate in decimal degrees. |
 | `altitude` | `Float` | The altitude in meters above sea level. |
 | `accuracy` | `Float` | The horizontal accuracy in meters. |
 

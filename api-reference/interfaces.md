@@ -28,7 +28,7 @@ An object that supports custom field values.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `customFields` | [JSON!](/api-reference/scalars.md#json/) | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
 
 **Implemented by:** [Member](/api-reference/objects.md#member/), [Device](/api-reference/objects.md#device/), [Asset](/api-reference/objects.md#asset/), [GeoObject](/api-reference/objects.md#geoobject/), [Schedule](/api-reference/objects.md#schedule/)
 
@@ -104,7 +104,7 @@ A dictionary item that provides reference data for the system.
 | `id` | `ID!` | A globally unique identifier. |
 | `version` | `Int!` | The version number for optimistic locking. |
 | `title` | `String!` | The human-readable display name. Can be localized. |
-| `code` | [Code!](/api-reference/scalars-and-enums.md#code/) | A machine-readable code, unique within the catalog scope. |
+| `code` | [Code!](/api-reference/scalars.md#code/) | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog!](/api-reference/objects.md#catalog/) | The catalog this item belongs to. |
 | `organization` | [Organization](/api-reference/objects.md#organization/) | The organization that owns this item. Null for system items. |

@@ -18,9 +18,9 @@
 * [API reference](api-reference/README.md)
   * [Queries](api-reference/queries.md)
   * [Mutations](api-reference/mutations.md)
-  * [Subscriptions](api-reference/subscriptions.md)
   * [Objects](api-reference/objects.md)
-  * [Scalars & enums](api-reference/scalars-and-enums.md)
+  * [Enums](api-reference/enums.md)
+  * [Scalars](api-reference/scalars.md)
   * [Interfaces](api-reference/interfaces.md)
 * [API reference_old](api-reference_old/README.md)
   * [Queries](api-reference_old/queries.md)
@@ -29,4 +29,3 @@
   * [Objects](api-reference_old/objects.md)
   * [Scalars & enums](api-reference_old/scalars-and-enums.md)
   * [Interfaces](api-reference_old/interfaces.md)
-
