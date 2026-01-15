@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Overview](README.md)
-* [GraphQL basics](graphql-basics/README.md)
+* [GraphQL basics](graphql-basics.md)
   * [GraphQL tips and patterns](graphql-basics/graphql-tips-and-patterns.md)
 * [Getting started](getting-started.md)
 * [Authentication](authentication.md)

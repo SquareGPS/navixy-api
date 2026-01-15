@@ -4,7 +4,7 @@ This article introduces GraphQL for developers who are new to it. If you've work
 
 For detailed information, see [the official GraphQL documentation](https://graphql.org/learn/) and [GraphQL specification](https://spec.graphql.org/).
 
-{% include "../.gitbook/includes/try-it-out-yourself.-use-ou....md" %}
+{% include ".gitbook/includes/try-it-out-yourself.-use-ou....md" %}
 
 ### What is GraphQL?
 
@@ -434,12 +434,7 @@ devices(filter: { title: "Truck" })
 
 Square brackets `[]` indicate a list of values:
 
-| Syntax       | Meaning                                        |
-| ------------ | ---------------------------------------------- |
-| `[String]`   | A list of strings (list and items may be null) |
-| `[String!]`  | A list of non-null strings (list may be null)  |
-| `[String]!`  | A non-null list of strings (items may be null) |
-| `[String!]!` | A non-null list of non-null strings            |
+<table><thead><tr><th width="100">Syntax</th><th>Meaning</th></tr></thead><tbody><tr><td><code>[String]</code></td><td>A list of strings (list and items may be null)</td></tr><tr><td><code>[String!]</code></td><td>A list of non-null strings (list may be null)</td></tr><tr><td><code>[String]!</code></td><td>A non-null list of strings (items may be null)</td></tr><tr><td><code>[String!]!</code></td><td>A non-null list of non-null strings</td></tr></tbody></table>
 
 The most common pattern is `[Type!]!` — a guaranteed list where every item exists:
 
@@ -516,7 +511,7 @@ Navixy Repository API schema _**(add link)**_ is public and available to develop
 
 ### Introspection
 
-GraphQL APIs are self-documenting. You can explore the schema using tools like GraphiQL Playground or by querying the API directly — this is called **introspection**. GraphQL has special built-in fields that start with `__` (double underscore) for this purpose.
+GraphQL APIs are self-described. You can explore the schema using tools like our sandbox _**(add link)**_ or by querying the API directly — this is called **introspection**. GraphQL has special built-in fields that start with `__` (double underscore) for this purpose.
 
 For example, to see all fields available on the `Device` type:
 
@@ -532,12 +527,12 @@ query {
 }
 ```
 
-Learn more about introspection queries in GraphQL tips and patterns.
+Learn more about introspection queries in [GraphQL tips and patterns](graphql-basics/graphql-tips-and-patterns.md).
 
 ### Next steps
 
 Now that you understand the basics:
 
-* [Check out GraphQL tips and patterns: variables, fragments, aliases, and more](graphql-tips-and-patterns.md)
-* [Learn how to set up authentication and make your first request](../getting-started.md)
-* [Browse available operations and types](../api-reference_old/)
+* [Check out GraphQL tips and patterns: variables, fragments, aliases, and more](graphql-basics/graphql-tips-and-patterns.md)
+* [Learn how to set up authentication and make your first request](getting-started.md)
+* [Browse available operations and types](api-reference_old/)

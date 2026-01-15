@@ -4,7 +4,7 @@
 
 **Navixy Repository is based on GraphQL.** Unlike REST APIs where you call multiple endpoints to gather related data, GraphQL allows you to request the exact fields you need in a single query. You describe the shape of the data you want, and the API returns it in that shape.
 
-For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics/).
+For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
 ## Purpose and capabilities
 
@@ -42,7 +42,7 @@ The **Navixy Repository API documentation** is organized into two complementary 
 
 These articles provide essential background knowledge and guidelines:
 
-* [**GraphQL basics**](graphql-basics/): A brief introduction to GraphQL for developers familiar with REST APIs.
+* [**GraphQL basics**](graphql-basics.md): A brief introduction to GraphQL for developers familiar with REST APIs.
 * [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through authentication and your first queries.
 * [**Authentication**](authentication.md): How to obtain and use access tokens.
 * [**Technical reference**](technical-reference.md): Implementation details covering headers, pagination, and error handling.
@@ -62,5 +62,5 @@ The API reference provides complete technical specifications for GraphQL types a
 * **Scalars**: API-specific scalar types
 
 {% hint style="info" %}
-The API supports [GraphQL introspection](graphql-basics/#the-schema) for authenticated users. Tools such as GraphiQL and Apollo Sandbox can discover the schema automatically and provide autocomplete as you write queries.
+The API supports [GraphQL introspection](graphql-basics.md#the-schema) for authenticated users. Tools such as GraphiQL and Apollo Sandbox can discover the schema automatically and provide autocomplete as you write queries.
 {% endhint %}

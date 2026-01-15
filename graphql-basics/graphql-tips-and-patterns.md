@@ -1,6 +1,6 @@
 # GraphQL tips and patterns
 
-This article covers patterns that make your GraphQL code cleaner, more maintainable, and easier to debug. If you're new to GraphQL, start with [GraphQL basics ](./)first.
+This article covers patterns that make your GraphQL code cleaner, more maintainable, and easier to debug. If you're new to GraphQL, start with [GraphQL basics ](../graphql-basics.md)first.
 
 {% include "../.gitbook/includes/try-it-out-yourself.-use-ou....md" %}
 
