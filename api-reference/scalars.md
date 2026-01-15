@@ -40,19 +40,39 @@ Arbitrary JSON object. Used for custom fields data, extra fields, and flexible c
 
 ## Latitude
 
-A geographic latitude coordinate in decimal degrees. Valid range: -90.0 to 90.0.
+A geographic latitude coordinate in decimal degrees.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `-90.0 to 90.0` |
+| Example | `37.7749` |
 
 ## Longitude
 
-A geographic longitude coordinate in decimal degrees. Valid range: -180.0 to 180.0.
+A geographic longitude coordinate in decimal degrees.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `-180.0 to 180.0` |
+| Example | `-122.4194` |
 
 ## Locale
 
-A BCP 47 language tag identifying a user locale. Example: `en-US`, `ru-RU`.
+A [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag identifying a user locale.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `language-REGION` |
+| Example | `en-US` |
 
 ## EmailAddress
 
-An email address conforming to RFC 5322. Example: `user@example.com`.
+An email address conforming to [RFC 5322](https://datatracker.ietf.org/doc/html/rfc5322).
+
+| Property | Value |
+| -------- | ----- |
+| Format | `user@domain` |
+| Example | `user@example.com` |
 
 ## HexColorCode
 
@@ -65,7 +85,12 @@ CSS hex color code for UI display.
 
 ## CountryCode
 
-An [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code. Example: `US`, `GB`, `ES`.
+An [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `Two uppercase letters` |
+| Example | `US` |
 
 ## Code
 
