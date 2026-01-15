@@ -20,23 +20,23 @@ createDevice(input: CreateDeviceInput!): Device!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                 | Description      |
+| ------- | -------------------- | ---------------- |
 | `input` | `CreateDeviceInput!` | See fields below |
 
 **CreateDeviceInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Organization that will own the device |
-| `typeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Device type classification |
-| `modelId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Device model (optional) |
-| `statusId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Initial device status |
-| `title` | `String!` | Device display name |
-| `identifiers` | `[DeviceIdentifierInput!]` | Hardware identifiers |
-| `customFields` | [JSON](/api-reference/scalars-and-enums.md#json/) | Custom field values |
+| Field            | Type                                              | Description                           |
+| ---------------- | ------------------------------------------------- | ------------------------------------- |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Organization that will own the device |
+| `typeId`         | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Device type classification            |
+| `modelId`        | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)  | Device model (optional)               |
+| `statusId`       | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Initial device status                 |
+| `title`          | `String!`                                         | Device display name                   |
+| `identifiers`    | `[DeviceIdentifierInput!]`                        | Hardware identifiers                  |
+| `customFields`   | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | Custom field values                   |
 
-**Returns:** [Device!](/api-reference/objects.md#device/)
+**Returns:** [Device!](../api-reference/objects.md#device/)
 
 ### updateDevice
 
@@ -48,21 +48,21 @@ updateDevice(input: UpdateDeviceInput!): Device!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                 | Description      |
+| ------- | -------------------- | ---------------- |
 | `input` | `UpdateDeviceInput!` | See fields below |
 
 **UpdateDeviceInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Device ID to update |
-| `modelId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | New device model |
-| `statusId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | New device status |
-| `title` | `String` | New display name |
-| `customFields` | [JSON](/api-reference/scalars-and-enums.md#json/) | Updated custom field values |
+| Field          | Type                                              | Description                 |
+| -------------- | ------------------------------------------------- | --------------------------- |
+| `id`           | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Device ID to update         |
+| `modelId`      | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)  | New device model            |
+| `statusId`     | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)  | New device status           |
+| `title`        | `String`                                          | New display name            |
+| `customFields` | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | Updated custom field values |
 
-**Returns:** [Device!](/api-reference/objects.md#device/)
+**Returns:** [Device!](../api-reference/objects.md#device/)
 
 ### deleteDevice
 
@@ -74,9 +74,9 @@ deleteDevice(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -90,11 +90,11 @@ restoreDevice(id: UUID!): Device!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Device!](/api-reference/objects.md#device/)
+**Returns:** [Device!](../api-reference/objects.md#device/)
 
 ### bulkDeleteDevices
 
@@ -106,17 +106,17 @@ bulkDeleteDevices(input: BulkDeleteInput!): BulkDeleteResult!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type               | Description      |
+| ------- | ------------------ | ---------------- |
 | `input` | `BulkDeleteInput!` | See fields below |
 
 **BulkDeleteInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `ids` | [[UUID!]!](/api-reference/scalars-and-enums.md#uuid/) | IDs of entities to delete |
+| Field | Type                                                   | Description               |
+| ----- | ------------------------------------------------------ | ------------------------- |
+| `ids` | [\[UUID!\]!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | IDs of entities to delete |
 
-**Returns:** [BulkDeleteResult!](/api-reference/objects.md#bulkdeleteresult/)
+**Returns:** [BulkDeleteResult!](../api-reference/objects.md#bulkdeleteresult/)
 
 ### addDeviceIdentifier
 
@@ -131,20 +131,20 @@ addDeviceIdentifier(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `deviceId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `input` | `DeviceIdentifierInput!` | See fields below |
+| Name       | Type                                              | Description      |
+| ---------- | ------------------------------------------------- | ---------------- |
+| `deviceId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |                  |
+| `input`    | `DeviceIdentifierInput!`                          | See fields below |
 
 **DeviceIdentifierInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `type` | [DeviceIdType!](/api-reference/scalars-and-enums.md#deviceidtype/) | Type of identifier |
-| `value` | `String!` | Identifier value |
-| `namespace` | `String` | Optional namespace for uniqueness |
+| Field       | Type                                                              | Description                       |
+| ----------- | ----------------------------------------------------------------- | --------------------------------- |
+| `type`      | [DeviceIdType!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#deviceidtype/) | Type of identifier                |
+| `value`     | `String!`                                                         | Identifier value                  |
+| `namespace` | `String`                                                          | Optional namespace for uniqueness |
 
-**Returns:** [DeviceIdentifier!](/api-reference/objects.md#deviceidentifier/)
+**Returns:** [DeviceIdentifier!](../api-reference/objects.md#deviceidentifier/)
 
 ### removeDeviceIdentifier
 
@@ -156,9 +156,9 @@ removeDeviceIdentifier(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -174,20 +174,20 @@ createAsset(input: CreateAssetInput!): Asset!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                | Description      |
+| ------- | ------------------- | ---------------- |
 | `input` | `CreateAssetInput!` | See fields below |
 
 **CreateAssetInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Organization that will own the asset |
-| `typeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Asset type classification |
-| `title` | `String!` | Asset display name |
-| `customFields` | [JSON](/api-reference/scalars-and-enums.md#json/) | Custom field values |
+| Field            | Type                                              | Description                          |
+| ---------------- | ------------------------------------------------- | ------------------------------------ |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Organization that will own the asset |
+| `typeId`         | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Asset type classification            |
+| `title`          | `String!`                                         | Asset display name                   |
+| `customFields`   | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | Custom field values                  |
 
-**Returns:** [Asset!](/api-reference/objects.md#asset/)
+**Returns:** [Asset!](../api-reference/objects.md#asset/)
 
 ### updateAsset
 
@@ -199,19 +199,19 @@ updateAsset(input: UpdateAssetInput!): Asset!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                | Description      |
+| ------- | ------------------- | ---------------- |
 | `input` | `UpdateAssetInput!` | See fields below |
 
 **UpdateAssetInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Asset ID to update |
-| `title` | `String` | New display name |
-| `customFields` | [JSON](/api-reference/scalars-and-enums.md#json/) | Updated custom field values |
+| Field          | Type                                              | Description                 |
+| -------------- | ------------------------------------------------- | --------------------------- |
+| `id`           | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Asset ID to update          |
+| `title`        | `String`                                          | New display name            |
+| `customFields` | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | Updated custom field values |
 
-**Returns:** [Asset!](/api-reference/objects.md#asset/)
+**Returns:** [Asset!](../api-reference/objects.md#asset/)
 
 ### deleteAsset
 
@@ -223,9 +223,9 @@ deleteAsset(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -239,11 +239,11 @@ restoreAsset(id: UUID!): Asset!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Asset!](/api-reference/objects.md#asset/)
+**Returns:** [Asset!](../api-reference/objects.md#asset/)
 
 ### bulkDeleteAssets
 
@@ -255,17 +255,17 @@ bulkDeleteAssets(input: BulkDeleteInput!): BulkDeleteResult!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type               | Description      |
+| ------- | ------------------ | ---------------- |
 | `input` | `BulkDeleteInput!` | See fields below |
 
 **BulkDeleteInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `ids` | [[UUID!]!](/api-reference/scalars-and-enums.md#uuid/) | IDs of entities to delete |
+| Field | Type                                                   | Description               |
+| ----- | ------------------------------------------------------ | ------------------------- |
+| `ids` | [\[UUID!\]!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | IDs of entities to delete |
 
-**Returns:** [BulkDeleteResult!](/api-reference/objects.md#bulkdeleteresult/)
+**Returns:** [BulkDeleteResult!](../api-reference/objects.md#bulkdeleteresult/)
 
 ## Asset groups
 
@@ -284,14 +284,14 @@ createAssetGroup(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `typeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `title` | `String!` | |
-| `color` | `String` | |
+| Name             | Type                                              | Description |
+| ---------------- | ------------------------------------------------- | ----------- |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `typeId`         | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `title`          | `String!`                                         |             |
+| `color`          | `String`                                          |             |
 
-**Returns:** [AssetGroup!](/api-reference/objects.md#assetgroup/)
+**Returns:** [AssetGroup!](../api-reference/objects.md#assetgroup/)
 
 ### updateAssetGroup
 
@@ -307,13 +307,13 @@ updateAssetGroup(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `title` | `String` | |
-| `color` | `String` | |
+| Name    | Type                                              | Description |
+| ------- | ------------------------------------------------- | ----------- |
+| `id`    | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `title` | `String`                                          |             |
+| `color` | `String`                                          |             |
 
-**Returns:** [AssetGroup!](/api-reference/objects.md#assetgroup/)
+**Returns:** [AssetGroup!](../api-reference/objects.md#assetgroup/)
 
 ### deleteAssetGroup
 
@@ -325,9 +325,9 @@ deleteAssetGroup(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -341,18 +341,18 @@ addAssetToGroup(input: AddAssetToGroupInput!): AssetGroupItem!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                    | Description      |
+| ------- | ----------------------- | ---------------- |
 | `input` | `AddAssetToGroupInput!` | See fields below |
 
 **AddAssetToGroupInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `groupId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Target group |
-| `assetId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Asset to add |
+| Field     | Type                                              | Description  |
+| --------- | ------------------------------------------------- | ------------ |
+| `groupId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Target group |
+| `assetId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Asset to add |
 
-**Returns:** [AssetGroupItem!](/api-reference/objects.md#assetgroupitem/)
+**Returns:** [AssetGroupItem!](../api-reference/objects.md#assetgroupitem/)
 
 ### removeAssetFromGroup
 
@@ -367,10 +367,10 @@ removeAssetFromGroup(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `groupId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `assetId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name      | Type                                              | Description |
+| --------- | ------------------------------------------------- | ----------- |
+| `groupId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `assetId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -386,20 +386,20 @@ createGeoObject(input: CreateGeoObjectInput!): GeoObject!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                    | Description      |
+| ------- | ----------------------- | ---------------- |
 | `input` | `CreateGeoObjectInput!` | See fields below |
 
 **CreateGeoObjectInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Organization that will own the geo object |
-| `typeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Geo object type classification |
-| `title` | `String!` | Geo object display name |
-| `customFields` | [JSON!](/api-reference/scalars-and-enums.md#json/) | Must include 'geojson' field with [GeoJSON](https://geojson.org/) geometry |
+| Field            | Type                                              | Description                                                                |
+| ---------------- | ------------------------------------------------- | -------------------------------------------------------------------------- |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Organization that will own the geo object                                  |
+| `typeId`         | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Geo object type classification                                             |
+| `title`          | `String!`                                         | Geo object display name                                                    |
+| `customFields`   | [JSON!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/) | Must include 'geojson' field with [GeoJSON](https://geojson.org/) geometry |
 
-**Returns:** [GeoObject!](/api-reference/objects.md#geoobject/)
+**Returns:** [GeoObject!](../api-reference/objects.md#geoobject/)
 
 ### updateGeoObject
 
@@ -411,19 +411,19 @@ updateGeoObject(input: UpdateGeoObjectInput!): GeoObject!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                    | Description      |
+| ------- | ----------------------- | ---------------- |
 | `input` | `UpdateGeoObjectInput!` | See fields below |
 
 **UpdateGeoObjectInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Geo object ID to update |
-| `title` | `String` | New display name |
-| `customFields` | [JSON](/api-reference/scalars-and-enums.md#json/) | Updated custom field values |
+| Field          | Type                                              | Description                 |
+| -------------- | ------------------------------------------------- | --------------------------- |
+| `id`           | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Geo object ID to update     |
+| `title`        | `String`                                          | New display name            |
+| `customFields` | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | Updated custom field values |
 
-**Returns:** [GeoObject!](/api-reference/objects.md#geoobject/)
+**Returns:** [GeoObject!](../api-reference/objects.md#geoobject/)
 
 ### deleteGeoObject
 
@@ -435,9 +435,9 @@ deleteGeoObject(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -451,11 +451,11 @@ restoreGeoObject(id: UUID!): GeoObject!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [GeoObject!](/api-reference/objects.md#geoobject/)
+**Returns:** [GeoObject!](../api-reference/objects.md#geoobject/)
 
 ### bulkDeleteGeoObjects
 
@@ -467,17 +467,17 @@ bulkDeleteGeoObjects(input: BulkDeleteInput!): BulkDeleteResult!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type               | Description      |
+| ------- | ------------------ | ---------------- |
 | `input` | `BulkDeleteInput!` | See fields below |
 
 **BulkDeleteInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `ids` | [[UUID!]!](/api-reference/scalars-and-enums.md#uuid/) | IDs of entities to delete |
+| Field | Type                                                   | Description               |
+| ----- | ------------------------------------------------------ | ------------------------- |
+| `ids` | [\[UUID!\]!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | IDs of entities to delete |
 
-**Returns:** [BulkDeleteResult!](/api-reference/objects.md#bulkdeleteresult/)
+**Returns:** [BulkDeleteResult!](../api-reference/objects.md#bulkdeleteresult/)
 
 ## Schedules
 
@@ -491,20 +491,20 @@ createSchedule(input: CreateScheduleInput!): Schedule!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                   | Description      |
+| ------- | ---------------------- | ---------------- |
 | `input` | `CreateScheduleInput!` | See fields below |
 
 **CreateScheduleInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Organization that will own the schedule |
-| `typeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Schedule type classification |
-| `title` | `String!` | Schedule display name |
-| `customFields` | [JSON](/api-reference/scalars-and-enums.md#json/) | Custom field values including schedule_data |
+| Field            | Type                                              | Description                                  |
+| ---------------- | ------------------------------------------------- | -------------------------------------------- |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Organization that will own the schedule      |
+| `typeId`         | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Schedule type classification                 |
+| `title`          | `String!`                                         | Schedule display name                        |
+| `customFields`   | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | Custom field values including schedule\_data |
 
-**Returns:** [Schedule!](/api-reference/objects.md#schedule/)
+**Returns:** [Schedule!](../api-reference/objects.md#schedule/)
 
 ### updateSchedule
 
@@ -516,19 +516,19 @@ updateSchedule(input: UpdateScheduleInput!): Schedule!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                   | Description      |
+| ------- | ---------------------- | ---------------- |
 | `input` | `UpdateScheduleInput!` | See fields below |
 
 **UpdateScheduleInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Schedule ID to update |
-| `title` | `String` | New display name |
-| `customFields` | [JSON](/api-reference/scalars-and-enums.md#json/) | Updated custom field values |
+| Field          | Type                                              | Description                 |
+| -------------- | ------------------------------------------------- | --------------------------- |
+| `id`           | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Schedule ID to update       |
+| `title`        | `String`                                          | New display name            |
+| `customFields` | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | Updated custom field values |
 
-**Returns:** [Schedule!](/api-reference/objects.md#schedule/)
+**Returns:** [Schedule!](../api-reference/objects.md#schedule/)
 
 ### deleteSchedule
 
@@ -540,9 +540,9 @@ deleteSchedule(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -556,11 +556,11 @@ restoreSchedule(id: UUID!): Schedule!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Schedule!](/api-reference/objects.md#schedule/)
+**Returns:** [Schedule!](../api-reference/objects.md#schedule/)
 
 ## Organizations
 
@@ -574,21 +574,21 @@ createOrganization(input: CreateOrganizationInput!): Organization!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                       | Description      |
+| ------- | -------------------------- | ---------------- |
 | `input` | `CreateOrganizationInput!` | See fields below |
 
 **CreateOrganizationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `parentId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Parent organization (null for root) |
-| `code` | `String!` | Unique organization code |
-| `title` | `String!` | Organization display name |
-| `externalId` | `String` | External system identifier |
-| `isDealer` | `Boolean` | Whether organization can create sub-organizations |
+| Field        | Type                                             | Description                                       |
+| ------------ | ------------------------------------------------ | ------------------------------------------------- |
+| `parentId`   | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Parent organization (null for root)               |
+| `code`       | `String!`                                        | Unique organization code                          |
+| `title`      | `String!`                                        | Organization display name                         |
+| `externalId` | `String`                                         | External system identifier                        |
+| `isDealer`   | `Boolean`                                        | Whether organization can create sub-organizations |
 
-**Returns:** [Organization!](/api-reference/objects.md#organization/)
+**Returns:** [Organization!](../api-reference/objects.md#organization/)
 
 ### updateOrganization
 
@@ -600,21 +600,21 @@ updateOrganization(input: UpdateOrganizationInput!): Organization!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                       | Description      |
+| ------- | -------------------------- | ---------------- |
 | `input` | `UpdateOrganizationInput!` | See fields below |
 
 **UpdateOrganizationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Organization ID to update |
-| `title` | `String` | New display name |
-| `externalId` | `String` | New external identifier |
-| `isActive` | `Boolean` | New active status |
-| `isDealer` | `Boolean` | New dealer capability |
+| Field        | Type                                              | Description               |
+| ------------ | ------------------------------------------------- | ------------------------- |
+| `id`         | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Organization ID to update |
+| `title`      | `String`                                          | New display name          |
+| `externalId` | `String`                                          | New external identifier   |
+| `isActive`   | `Boolean`                                         | New active status         |
+| `isDealer`   | `Boolean`                                         | New dealer capability     |
 
-**Returns:** [Organization!](/api-reference/objects.md#organization/)
+**Returns:** [Organization!](../api-reference/objects.md#organization/)
 
 ### deleteOrganization
 
@@ -626,9 +626,9 @@ deleteOrganization(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -644,20 +644,20 @@ createUser(input: CreateUserInput!): User!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type               | Description      |
+| ------- | ------------------ | ---------------- |
 | `input` | `CreateUserInput!` | See fields below |
 
 **CreateUserInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `identityProvider` | `String!` | Identity provider name (keycloak, auth0, etc.) |
-| `identityProviderId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | User ID in the identity provider |
-| `fullName` | `String!` | User display name |
-| `externalId` | `String` | External system identifier |
+| Field                | Type                                              | Description                                    |
+| -------------------- | ------------------------------------------------- | ---------------------------------------------- |
+| `identityProvider`   | `String!`                                         | Identity provider name (keycloak, auth0, etc.) |
+| `identityProviderId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | User ID in the identity provider               |
+| `fullName`           | `String!`                                         | User display name                              |
+| `externalId`         | `String`                                          | External system identifier                     |
 
-**Returns:** [User!](/api-reference/objects.md#user/)
+**Returns:** [User!](../api-reference/objects.md#user/)
 
 ### updateUser
 
@@ -669,20 +669,20 @@ updateUser(input: UpdateUserInput!): User!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type               | Description      |
+| ------- | ------------------ | ---------------- |
 | `input` | `UpdateUserInput!` | See fields below |
 
 **UpdateUserInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | User ID to update |
-| `fullName` | `String` | New display name |
-| `externalId` | `String` | New external identifier |
-| `isActive` | `Boolean` | New active status |
+| Field        | Type                                              | Description             |
+| ------------ | ------------------------------------------------- | ----------------------- |
+| `id`         | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | User ID to update       |
+| `fullName`   | `String`                                          | New display name        |
+| `externalId` | `String`                                          | New external identifier |
+| `isActive`   | `Boolean`                                         | New active status       |
 
-**Returns:** [User!](/api-reference/objects.md#user/)
+**Returns:** [User!](../api-reference/objects.md#user/)
 
 ### deleteUser
 
@@ -694,9 +694,9 @@ deleteUser(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -712,19 +712,19 @@ createMember(input: CreateMemberInput!): Member!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                 | Description      |
+| ------- | -------------------- | ---------------- |
 | `input` | `CreateMemberInput!` | See fields below |
 
 **CreateMemberInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `userId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | User to add to organization |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Organization to join |
-| `customFields` | [JSON](/api-reference/scalars-and-enums.md#json/) | Membership-specific custom fields |
+| Field            | Type                                              | Description                       |
+| ---------------- | ------------------------------------------------- | --------------------------------- |
+| `userId`         | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | User to add to organization       |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Organization to join              |
+| `customFields`   | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | Membership-specific custom fields |
 
-**Returns:** [Member!](/api-reference/objects.md#member/)
+**Returns:** [Member!](../api-reference/objects.md#member/)
 
 ### updateMember
 
@@ -736,19 +736,19 @@ updateMember(input: UpdateMemberInput!): Member!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                 | Description      |
+| ------- | -------------------- | ---------------- |
 | `input` | `UpdateMemberInput!` | See fields below |
 
 **UpdateMemberInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Membership ID to update |
-| `isActive` | `Boolean` | New active status |
-| `customFields` | [JSON](/api-reference/scalars-and-enums.md#json/) | Updated custom field values |
+| Field          | Type                                              | Description                 |
+| -------------- | ------------------------------------------------- | --------------------------- |
+| `id`           | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Membership ID to update     |
+| `isActive`     | `Boolean`                                         | New active status           |
+| `customFields` | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | Updated custom field values |
 
-**Returns:** [Member!](/api-reference/objects.md#member/)
+**Returns:** [Member!](../api-reference/objects.md#member/)
 
 ### removeMember
 
@@ -760,9 +760,9 @@ removeMember(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -778,18 +778,18 @@ createIntegration(input: CreateIntegrationInput!): Integration!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                      | Description      |
+| ------- | ------------------------- | ---------------- |
 | `input` | `CreateIntegrationInput!` | See fields below |
 
 **CreateIntegrationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `name` | `String!` | Integration display name |
-| `credentialRef` | `String` | Reference to credentials in secure vault |
+| Field           | Type      | Description                              |
+| --------------- | --------- | ---------------------------------------- |
+| `name`          | `String!` | Integration display name                 |
+| `credentialRef` | `String`  | Reference to credentials in secure vault |
 
-**Returns:** [Integration!](/api-reference/objects.md#integration/)
+**Returns:** [Integration!](../api-reference/objects.md#integration/)
 
 ### updateIntegration
 
@@ -801,20 +801,20 @@ updateIntegration(input: UpdateIntegrationInput!): Integration!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                      | Description      |
+| ------- | ------------------------- | ---------------- |
 | `input` | `UpdateIntegrationInput!` | See fields below |
 
 **UpdateIntegrationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Integration ID to update |
-| `name` | `String` | New display name |
-| `credentialRef` | `String` | New credential reference |
-| `isActive` | `Boolean` | New active status |
+| Field           | Type                                              | Description              |
+| --------------- | ------------------------------------------------- | ------------------------ |
+| `id`            | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Integration ID to update |
+| `name`          | `String`                                          | New display name         |
+| `credentialRef` | `String`                                          | New credential reference |
+| `isActive`      | `Boolean`                                         | New active status        |
 
-**Returns:** [Integration!](/api-reference/objects.md#integration/)
+**Returns:** [Integration!](../api-reference/objects.md#integration/)
 
 ### deleteIntegration
 
@@ -826,9 +826,9 @@ deleteIntegration(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -844,19 +844,19 @@ assignRole(input: AssignRoleInput!): ActorRole!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type               | Description      |
+| ------- | ------------------ | ---------------- |
 | `input` | `AssignRoleInput!` | See fields below |
 
 **AssignRoleInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Actor (user or integration) to assign role to |
-| `roleId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Role to assign |
-| `expireDate` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Optional expiration date for temporary assignment |
+| Field        | Type                                                     | Description                                       |
+| ------------ | -------------------------------------------------------- | ------------------------------------------------- |
+| `actorId`    | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)        | Actor (user or integration) to assign role to     |
+| `roleId`     | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)        | Role to assign                                    |
+| `expireDate` | [DateTime](/broken/pages/TOdGVmQ3HHnniCOoOsfN#datetime/) | Optional expiration date for temporary assignment |
 
-**Returns:** [ActorRole!](/api-reference/objects.md#actorrole/)
+**Returns:** [ActorRole!](../api-reference/objects.md#actorrole/)
 
 ### revokeRole
 
@@ -868,9 +868,9 @@ revokeRole(actorRoleId: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `actorRoleId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name          | Type                                              | Description |
+| ------------- | ------------------------------------------------- | ----------- |
+| `actorRoleId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -884,20 +884,20 @@ grantPermission(input: GrantPermissionInput!): RolePermission!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                    | Description      |
+| ------- | ----------------------- | ---------------- |
 | `input` | `GrantPermissionInput!` | See fields below |
 
 **GrantPermissionInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `roleId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Role to grant permission to |
-| `permissionScopeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Permission scope to grant |
-| `targetEntityId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Null = permission applies to all entities of type |
-| `actions` | [[ActionPermission!]!](/api-reference/scalars-and-enums.md#actionpermission/) | Actions to allow |
+| Field               | Type                                                                           | Description                                       |
+| ------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------- |
+| `roleId`            | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                              | Role to grant permission to                       |
+| `permissionScopeId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                              | Permission scope to grant                         |
+| `targetEntityId`    | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                               | Null = permission applies to all entities of type |
+| `actions`           | [\[ActionPermission!\]!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#actionpermission/) | Actions to allow                                  |
 
-**Returns:** [RolePermission!](/api-reference/objects.md#rolepermission/)
+**Returns:** [RolePermission!](../api-reference/objects.md#rolepermission/)
 
 ### revokePermission
 
@@ -909,9 +909,9 @@ revokePermission(permissionId: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `permissionId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name           | Type                                              | Description |
+| -------------- | ------------------------------------------------- | ----------- |
+| `permissionId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -925,20 +925,20 @@ setUserScope(input: SetUserScopeInput!): UserScope!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                 | Description      |
+| ------- | -------------------- | ---------------- |
 | `input` | `SetUserScopeInput!` | See fields below |
 
 **SetUserScopeInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Actor to restrict |
-| `permissionScopeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Permission scope to filter |
-| `targetEntityId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Specific entity to allow access to |
-| `actions` | [[ActionPermission!]!](/api-reference/scalars-and-enums.md#actionpermission/) | Actions allowed on this entity |
+| Field               | Type                                                                           | Description                        |
+| ------------------- | ------------------------------------------------------------------------------ | ---------------------------------- |
+| `actorId`           | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                              | Actor to restrict                  |
+| `permissionScopeId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                              | Permission scope to filter         |
+| `targetEntityId`    | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                              | Specific entity to allow access to |
+| `actions`           | [\[ActionPermission!\]!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#actionpermission/) | Actions allowed on this entity     |
 
-**Returns:** [UserScope!](/api-reference/objects.md#userscope/)
+**Returns:** [UserScope!](../api-reference/objects.md#userscope/)
 
 ### removeUserScope
 
@@ -950,9 +950,9 @@ removeUserScope(userScopeId: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `userScopeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name          | Type                                              | Description |
+| ------------- | ------------------------------------------------- | ----------- |
+| `userScopeId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -970,18 +970,18 @@ linkDeviceInventory(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                        | Description      |
+| ------- | --------------------------- | ---------------- |
 | `input` | `LinkDeviceInventoryInput!` | See fields below |
 
 **LinkDeviceInventoryInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `deviceId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Device to assign |
-| `inventoryId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Target inventory |
+| Field         | Type                                              | Description      |
+| ------------- | ------------------------------------------------- | ---------------- |
+| `deviceId`    | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Device to assign |
+| `inventoryId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Target inventory |
 
-**Returns:** [DeviceInventoryRelation!](/api-reference/objects.md#deviceinventoryrelation/)
+**Returns:** [DeviceInventoryRelation!](../api-reference/objects.md#deviceinventoryrelation/)
 
 ### unlinkDeviceInventory
 
@@ -993,9 +993,9 @@ unlinkDeviceInventory(deviceId: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `deviceId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name       | Type                                              | Description |
+| ---------- | ------------------------------------------------- | ----------- |
+| `deviceId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -1011,19 +1011,19 @@ createDeviceRelation(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                         | Description      |
+| ------- | ---------------------------- | ---------------- |
 | `input` | `CreateDeviceRelationInput!` | See fields below |
 
 **CreateDeviceRelationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `firstDeviceId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | First device in relationship |
-| `secondDeviceId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Second device in relationship |
-| `typeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Relationship type |
+| Field            | Type                                              | Description                   |
+| ---------------- | ------------------------------------------------- | ----------------------------- |
+| `firstDeviceId`  | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | First device in relationship  |
+| `secondDeviceId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Second device in relationship |
+| `typeId`         | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Relationship type             |
 
-**Returns:** [DeviceRelation!](/api-reference/objects.md#devicerelation/)
+**Returns:** [DeviceRelation!](../api-reference/objects.md#devicerelation/)
 
 ### deleteDeviceRelation
 
@@ -1035,9 +1035,9 @@ deleteDeviceRelation(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -1055,27 +1055,27 @@ createCustomFieldDefinition(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                                | Description      |
+| ------- | ----------------------------------- | ---------------- |
 | `input` | `CreateCustomFieldDefinitionInput!` | See fields below |
 
 **CreateCustomFieldDefinitionInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Organization that will own this definition |
-| `ownerCatalogItemId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Owner catalog item (EntityType or specific type) |
-| `targetEntityTypeId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Target entity type this field applies to |
-| `code` | `String!` | Machine-readable field code |
-| `title` | `String!` | Human-readable field title |
-| `description` | `String` | Optional field description |
-| `fieldType` | [FieldType!](/api-reference/scalars-and-enums.md#fieldtype/) | Data type for the field |
-| `isSystem` | `Boolean` | Whether this is a system-managed field |
-| `order` | `Int` | Display order |
-| `extra` | [JSON](/api-reference/scalars-and-enums.md#json/) | Additional metadata |
-| `params` | `FieldParamsInput!` | Type-specific parameters |
+| Field                | Type                                                        | Description                                      |
+| -------------------- | ----------------------------------------------------------- | ------------------------------------------------ |
+| `organizationId`     | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)           | Organization that will own this definition       |
+| `ownerCatalogItemId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)           | Owner catalog item (EntityType or specific type) |
+| `targetEntityTypeId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)           | Target entity type this field applies to         |
+| `code`               | `String!`                                                   | Machine-readable field code                      |
+| `title`              | `String!`                                                   | Human-readable field title                       |
+| `description`        | `String`                                                    | Optional field description                       |
+| `fieldType`          | [FieldType!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#fieldtype/) | Data type for the field                          |
+| `isSystem`           | `Boolean`                                                   | Whether this is a system-managed field           |
+| `order`              | `Int`                                                       | Display order                                    |
+| `extra`              | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)            | Additional metadata                              |
+| `params`             | `FieldParamsInput!`                                         | Type-specific parameters                         |
 
-**Returns:** [CustomFieldDefinition!](/api-reference/objects.md#customfielddefinition/)
+**Returns:** [CustomFieldDefinition!](../api-reference/objects.md#customfielddefinition/)
 
 ### updateCustomFieldDefinition
 
@@ -1089,22 +1089,22 @@ updateCustomFieldDefinition(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                                | Description      |
+| ------- | ----------------------------------- | ---------------- |
 | `input` | `UpdateCustomFieldDefinitionInput!` | See fields below |
 
 **UpdateCustomFieldDefinitionInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | Definition ID to update |
-| `title` | `String` | New title |
-| `description` | `String` | New description |
-| `order` | `Int` | New display order |
-| `extra` | [JSON](/api-reference/scalars-and-enums.md#json/) | New metadata |
-| `params` | `FieldParamsInput` | Updated parameters |
+| Field         | Type                                              | Description             |
+| ------------- | ------------------------------------------------- | ----------------------- |
+| `id`          | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Definition ID to update |
+| `title`       | `String`                                          | New title               |
+| `description` | `String`                                          | New description         |
+| `order`       | `Int`                                             | New display order       |
+| `extra`       | [JSON](/broken/pages/TOdGVmQ3HHnniCOoOsfN#json/)  | New metadata            |
+| `params`      | `FieldParamsInput`                                | Updated parameters      |
 
-**Returns:** [CustomFieldDefinition!](/api-reference/objects.md#customfielddefinition/)
+**Returns:** [CustomFieldDefinition!](../api-reference/objects.md#customfielddefinition/)
 
 ### deleteCustomFieldDefinition
 
@@ -1116,9 +1116,9 @@ deleteCustomFieldDefinition(id: UUID!): Boolean!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
 **Returns:** `Boolean!`
 
@@ -1139,14 +1139,14 @@ setTranslation(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `entityId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `fieldCode` | `String!` | |
-| `locale` | `String!` | |
-| `textValue` | `String!` | |
+| Name        | Type                                              | Description |
+| ----------- | ------------------------------------------------- | ----------- |
+| `entityId`  | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `fieldCode` | `String!`                                         |             |
+| `locale`    | `String!`                                         |             |
+| `textValue` | `String!`                                         |             |
 
-**Returns:** [I18nText!](/api-reference/objects.md#i18ntext/)
+**Returns:** [I18nText!](../api-reference/objects.md#i18ntext/)
 
 ### deleteTranslation
 
@@ -1162,10 +1162,10 @@ deleteTranslation(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `entityId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `fieldCode` | `String!` | |
-| `locale` | `String!` | |
+| Name        | Type                                              | Description |
+| ----------- | ------------------------------------------------- | ----------- |
+| `entityId`  | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `fieldCode` | `String!`                                         |             |
+| `locale`    | `String!`                                         |             |
 
 **Returns:** `Boolean!`

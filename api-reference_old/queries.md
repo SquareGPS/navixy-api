@@ -18,11 +18,11 @@ node(id: UUID!): Node
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Node](/api-reference/interfaces.md#node/)
+**Returns:** [Node](../api-reference/interfaces.md#node/)
 
 ### me
 
@@ -32,7 +32,7 @@ Returns currently authenticated user
 me: User!
 ```
 
-**Returns:** [User!](/api-reference/objects.md#user/)
+**Returns:** [User!](../api-reference/objects.md#user/)
 
 ## Devices
 
@@ -46,11 +46,11 @@ deviceVendor(id: UUID!): DeviceVendor
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [DeviceVendor](/api-reference/objects.md#devicevendor/)
+**Returns:** [DeviceVendor](../api-reference/objects.md#devicevendor/)
 
 ### deviceVendors
 
@@ -60,7 +60,7 @@ List all device vendors
 deviceVendors: [DeviceVendor!]!
 ```
 
-**Returns:** [[DeviceVendor!]!](/api-reference/objects.md#devicevendor/)
+**Returns:** [\[DeviceVendor!\]!](../api-reference/objects.md#devicevendor/)
 
 ### deviceModel
 
@@ -72,11 +72,11 @@ deviceModel(id: UUID!): DeviceModel
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [DeviceModel](/api-reference/objects.md#devicemodel/)
+**Returns:** [DeviceModel](../api-reference/objects.md#devicemodel/)
 
 ### deviceModels
 
@@ -88,11 +88,11 @@ deviceModels(vendorId: UUID): [DeviceModel!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `vendorId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name       | Type                                             | Description |
+| ---------- | ------------------------------------------------ | ----------- |
+| `vendorId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [[DeviceModel!]!](/api-reference/objects.md#devicemodel/)
+**Returns:** [\[DeviceModel!\]!](../api-reference/objects.md#devicemodel/)
 
 ### deviceType
 
@@ -104,11 +104,11 @@ deviceType(id: UUID!): DeviceType
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [DeviceType](/api-reference/objects.md#devicetype/)
+**Returns:** [DeviceType](../api-reference/objects.md#devicetype/)
 
 ### deviceTypes
 
@@ -120,11 +120,11 @@ deviceTypes(organizationId: UUID): [DeviceType!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name             | Type                                             | Description |
+| ---------------- | ------------------------------------------------ | ----------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [[DeviceType!]!](/api-reference/objects.md#devicetype/)
+**Returns:** [\[DeviceType!\]!](../api-reference/objects.md#devicetype/)
 
 ### deviceStatus
 
@@ -136,11 +136,11 @@ deviceStatus(id: UUID!): DeviceStatus
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [DeviceStatus](/api-reference/objects.md#devicestatus/)
+**Returns:** [DeviceStatus](../api-reference/objects.md#devicestatus/)
 
 ### deviceStatuses
 
@@ -152,11 +152,11 @@ deviceStatuses(organizationId: UUID): [DeviceStatus!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name             | Type                                             | Description |
+| ---------------- | ------------------------------------------------ | ----------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [[DeviceStatus!]!](/api-reference/objects.md#devicestatus/)
+**Returns:** [\[DeviceStatus!\]!](../api-reference/objects.md#devicestatus/)
 
 ### device
 
@@ -168,15 +168,15 @@ device(id: UUID!): Device
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Device](/api-reference/objects.md#device/)
+**Returns:** [Device](../api-reference/objects.md#device/)
 
 ### devices
 
-Query devices with filtering, pagination, and sorting. Sort format: ["field:ASC", "field:DESC"] Supports: title, createdAt, updatedAt, status.code, type.code
+Query devices with filtering, pagination, and sorting. Sort format: \["field:ASC", "field:DESC"] Supports: title, createdAt, updatedAt, status.code, type.code
 
 ```graphql
 devices(
@@ -188,34 +188,34 @@ devices(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `filter` | `DeviceFilter` | See fields below |
+| Name         | Type              | Description      |
+| ------------ | ----------------- | ---------------- |
+| `filter`     | `DeviceFilter`    | See fields below |
 | `pagination` | `PaginationInput` | See fields below |
-| `sort` | `[String!]` | |
+| `sort`       | `[String!]`       |                  |
 
 **DeviceFilter fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `typeId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by device type |
-| `modelId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by device model |
-| `statusId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by status |
-| `title` | `String` | Search in title (case-insensitive contains) |
-| `includeDeleted` | `Boolean` | Include soft-deleted devices |
-| `customFields` | `[CustomFieldFilter!]` | Custom field filters |
+| Field            | Type                                             | Description                                 |
+| ---------------- | ------------------------------------------------ | ------------------------------------------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by organization                      |
+| `typeId`         | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by device type                       |
+| `modelId`        | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by device model                      |
+| `statusId`       | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by status                            |
+| `title`          | `String`                                         | Search in title (case-insensitive contains) |
+| `includeDeleted` | `Boolean`                                        | Include soft-deleted devices                |
+| `customFields`   | `[CustomFieldFilter!]`                           | Custom field filters                        |
 
 **PaginationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
+| Field    | Type     | Description                                |
+| -------- | -------- | ------------------------------------------ |
+| `first`  | `Int`    | Number of items to fetch from start        |
+| `after`  | `String` | Cursor to start after (forward pagination) |
+| `last`   | `Int`    | Number of items to fetch from end          |
 | `before` | `String` | Cursor to end before (backward pagination) |
 
-**Returns:** [DeviceConnection!](/api-reference/objects.md#deviceconnection/)
+**Returns:** [DeviceConnection!](../api-reference/objects.md#deviceconnection/)
 
 ## Assets
 
@@ -229,11 +229,11 @@ assetType(id: UUID!): AssetType
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [AssetType](/api-reference/objects.md#assettype/)
+**Returns:** [AssetType](../api-reference/objects.md#assettype/)
 
 ### assetTypes
 
@@ -245,11 +245,11 @@ assetTypes(organizationId: UUID): [AssetType!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name             | Type                                             | Description |
+| ---------------- | ------------------------------------------------ | ----------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [[AssetType!]!](/api-reference/objects.md#assettype/)
+**Returns:** [\[AssetType!\]!](../api-reference/objects.md#assettype/)
 
 ### asset
 
@@ -261,11 +261,11 @@ asset(id: UUID!): Asset
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Asset](/api-reference/objects.md#asset/)
+**Returns:** [Asset](../api-reference/objects.md#asset/)
 
 ### assets
 
@@ -281,32 +281,32 @@ assets(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `filter` | `AssetFilter` | See fields below |
+| Name         | Type              | Description      |
+| ------------ | ----------------- | ---------------- |
+| `filter`     | `AssetFilter`     | See fields below |
 | `pagination` | `PaginationInput` | See fields below |
-| `sort` | `[String!]` | |
+| `sort`       | `[String!]`       |                  |
 
 **AssetFilter fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `typeId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by asset type |
-| `title` | `String` | Search in title (case-insensitive contains) |
-| `includeDeleted` | `Boolean` | Include soft-deleted assets |
-| `customFields` | `[CustomFieldFilter!]` | Custom field filters |
+| Field            | Type                                             | Description                                 |
+| ---------------- | ------------------------------------------------ | ------------------------------------------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by organization                      |
+| `typeId`         | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by asset type                        |
+| `title`          | `String`                                         | Search in title (case-insensitive contains) |
+| `includeDeleted` | `Boolean`                                        | Include soft-deleted assets                 |
+| `customFields`   | `[CustomFieldFilter!]`                           | Custom field filters                        |
 
 **PaginationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
+| Field    | Type     | Description                                |
+| -------- | -------- | ------------------------------------------ |
+| `first`  | `Int`    | Number of items to fetch from start        |
+| `after`  | `String` | Cursor to start after (forward pagination) |
+| `last`   | `Int`    | Number of items to fetch from end          |
 | `before` | `String` | Cursor to end before (backward pagination) |
 
-**Returns:** [AssetConnection!](/api-reference/objects.md#assetconnection/)
+**Returns:** [AssetConnection!](../api-reference/objects.md#assetconnection/)
 
 ## Asset groups
 
@@ -320,11 +320,11 @@ assetGroupType(id: UUID!): AssetGroupType
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [AssetGroupType](/api-reference/objects.md#assetgrouptype/)
+**Returns:** [AssetGroupType](../api-reference/objects.md#assetgrouptype/)
 
 ### assetGroupTypes
 
@@ -336,11 +336,11 @@ assetGroupTypes(organizationId: UUID): [AssetGroupType!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name             | Type                                             | Description |
+| ---------------- | ------------------------------------------------ | ----------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [[AssetGroupType!]!](/api-reference/objects.md#assetgrouptype/)
+**Returns:** [\[AssetGroupType!\]!](../api-reference/objects.md#assetgrouptype/)
 
 ### assetGroup
 
@@ -352,11 +352,11 @@ assetGroup(id: UUID!): AssetGroup
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [AssetGroup](/api-reference/objects.md#assetgroup/)
+**Returns:** [AssetGroup](../api-reference/objects.md#assetgroup/)
 
 ### assetGroups
 
@@ -371,12 +371,12 @@ assetGroups(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `includeDeleted` | `Boolean` | |
+| Name             | Type                                              | Description |
+| ---------------- | ------------------------------------------------- | ----------- |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `includeDeleted` | `Boolean`                                         |             |
 
-**Returns:** [[AssetGroup!]!](/api-reference/objects.md#assetgroup/)
+**Returns:** [\[AssetGroup!\]!](../api-reference/objects.md#assetgroup/)
 
 ## Geo objects
 
@@ -390,11 +390,11 @@ geoObjectType(id: UUID!): GeoObjectType
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [GeoObjectType](/api-reference/objects.md#geoobjecttype/)
+**Returns:** [GeoObjectType](../api-reference/objects.md#geoobjecttype/)
 
 ### geoObjectTypes
 
@@ -406,11 +406,11 @@ geoObjectTypes(organizationId: UUID): [GeoObjectType!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name             | Type                                             | Description |
+| ---------------- | ------------------------------------------------ | ----------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [[GeoObjectType!]!](/api-reference/objects.md#geoobjecttype/)
+**Returns:** [\[GeoObjectType!\]!](../api-reference/objects.md#geoobjecttype/)
 
 ### geoObject
 
@@ -422,11 +422,11 @@ geoObject(id: UUID!): GeoObject
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [GeoObject](/api-reference/objects.md#geoobject/)
+**Returns:** [GeoObject](../api-reference/objects.md#geoobject/)
 
 ### geoObjects
 
@@ -442,32 +442,32 @@ geoObjects(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `filter` | `GeoObjectFilter` | See fields below |
+| Name         | Type              | Description      |
+| ------------ | ----------------- | ---------------- |
+| `filter`     | `GeoObjectFilter` | See fields below |
 | `pagination` | `PaginationInput` | See fields below |
-| `sort` | `[String!]` | |
+| `sort`       | `[String!]`       |                  |
 
 **GeoObjectFilter fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `typeId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by geo object type |
-| `title` | `String` | Search in title (case-insensitive contains) |
-| `includeDeleted` | `Boolean` | Include soft-deleted geo objects |
-| `customFields` | `[CustomFieldFilter!]` | Custom field filters |
+| Field            | Type                                             | Description                                 |
+| ---------------- | ------------------------------------------------ | ------------------------------------------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by organization                      |
+| `typeId`         | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by geo object type                   |
+| `title`          | `String`                                         | Search in title (case-insensitive contains) |
+| `includeDeleted` | `Boolean`                                        | Include soft-deleted geo objects            |
+| `customFields`   | `[CustomFieldFilter!]`                           | Custom field filters                        |
 
 **PaginationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
+| Field    | Type     | Description                                |
+| -------- | -------- | ------------------------------------------ |
+| `first`  | `Int`    | Number of items to fetch from start        |
+| `after`  | `String` | Cursor to start after (forward pagination) |
+| `last`   | `Int`    | Number of items to fetch from end          |
 | `before` | `String` | Cursor to end before (backward pagination) |
 
-**Returns:** [GeoObjectConnection!](/api-reference/objects.md#geoobjectconnection/)
+**Returns:** [GeoObjectConnection!](../api-reference/objects.md#geoobjectconnection/)
 
 ## Schedules
 
@@ -481,11 +481,11 @@ scheduleType(id: UUID!): ScheduleType
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [ScheduleType](/api-reference/objects.md#scheduletype/)
+**Returns:** [ScheduleType](../api-reference/objects.md#scheduletype/)
 
 ### scheduleTypes
 
@@ -497,11 +497,11 @@ scheduleTypes(organizationId: UUID): [ScheduleType!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name             | Type                                             | Description |
+| ---------------- | ------------------------------------------------ | ----------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [[ScheduleType!]!](/api-reference/objects.md#scheduletype/)
+**Returns:** [\[ScheduleType!\]!](../api-reference/objects.md#scheduletype/)
 
 ### schedule
 
@@ -513,11 +513,11 @@ schedule(id: UUID!): Schedule
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Schedule](/api-reference/objects.md#schedule/)
+**Returns:** [Schedule](../api-reference/objects.md#schedule/)
 
 ### schedules
 
@@ -533,32 +533,32 @@ schedules(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `filter` | `ScheduleFilter` | See fields below |
+| Name         | Type              | Description      |
+| ------------ | ----------------- | ---------------- |
+| `filter`     | `ScheduleFilter`  | See fields below |
 | `pagination` | `PaginationInput` | See fields below |
-| `sort` | `[String!]` | |
+| `sort`       | `[String!]`       |                  |
 
 **ScheduleFilter fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `typeId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by schedule type |
-| `title` | `String` | Search in title (case-insensitive contains) |
-| `includeDeleted` | `Boolean` | Include soft-deleted schedules |
-| `customFields` | `[CustomFieldFilter!]` | Custom field filters |
+| Field            | Type                                             | Description                                 |
+| ---------------- | ------------------------------------------------ | ------------------------------------------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by organization                      |
+| `typeId`         | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by schedule type                     |
+| `title`          | `String`                                         | Search in title (case-insensitive contains) |
+| `includeDeleted` | `Boolean`                                        | Include soft-deleted schedules              |
+| `customFields`   | `[CustomFieldFilter!]`                           | Custom field filters                        |
 
 **PaginationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
+| Field    | Type     | Description                                |
+| -------- | -------- | ------------------------------------------ |
+| `first`  | `Int`    | Number of items to fetch from start        |
+| `after`  | `String` | Cursor to start after (forward pagination) |
+| `last`   | `Int`    | Number of items to fetch from end          |
 | `before` | `String` | Cursor to end before (backward pagination) |
 
-**Returns:** [ScheduleConnection!](/api-reference/objects.md#scheduleconnection/)
+**Returns:** [ScheduleConnection!](../api-reference/objects.md#scheduleconnection/)
 
 ## Organizations
 
@@ -572,11 +572,11 @@ organization(id: UUID!): Organization
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Organization](/api-reference/objects.md#organization/)
+**Returns:** [Organization](../api-reference/objects.md#organization/)
 
 ### organizations
 
@@ -591,30 +591,30 @@ organizations(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `filter` | `OrganizationFilter` | See fields below |
-| `pagination` | `PaginationInput` | See fields below |
+| Name         | Type                 | Description      |
+| ------------ | -------------------- | ---------------- |
+| `filter`     | `OrganizationFilter` | See fields below |
+| `pagination` | `PaginationInput`    | See fields below |
 
 **OrganizationFilter fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `parentId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by parent organization |
-| `isActive` | `Boolean` | Filter by active status |
-| `isDealer` | `Boolean` | Filter by dealer capability |
-| `includeDeleted` | `Boolean` | Include soft-deleted organizations |
+| Field            | Type                                             | Description                        |
+| ---------------- | ------------------------------------------------ | ---------------------------------- |
+| `parentId`       | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by parent organization      |
+| `isActive`       | `Boolean`                                        | Filter by active status            |
+| `isDealer`       | `Boolean`                                        | Filter by dealer capability        |
+| `includeDeleted` | `Boolean`                                        | Include soft-deleted organizations |
 
 **PaginationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
+| Field    | Type     | Description                                |
+| -------- | -------- | ------------------------------------------ |
+| `first`  | `Int`    | Number of items to fetch from start        |
+| `after`  | `String` | Cursor to start after (forward pagination) |
+| `last`   | `Int`    | Number of items to fetch from end          |
 | `before` | `String` | Cursor to end before (backward pagination) |
 
-**Returns:** [OrganizationConnection!](/api-reference/objects.md#organizationconnection/)
+**Returns:** [OrganizationConnection!](../api-reference/objects.md#organizationconnection/)
 
 ### catalog
 
@@ -626,11 +626,11 @@ catalog(id: UUID!): Catalog
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Catalog](/api-reference/objects.md#catalog/)
+**Returns:** [Catalog](../api-reference/objects.md#catalog/)
 
 ### catalogs
 
@@ -645,12 +645,12 @@ catalogs(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `moduleId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name             | Type                                              | Description |
+| ---------------- | ------------------------------------------------- | ----------- |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `moduleId`       | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)  |             |
 
-**Returns:** [[Catalog!]!](/api-reference/objects.md#catalog/)
+**Returns:** [\[Catalog!\]!](../api-reference/objects.md#catalog/)
 
 ## Actors
 
@@ -664,11 +664,11 @@ actor(id: UUID!): Actor
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Actor](/api-reference/objects.md#actor/)
+**Returns:** [Actor](../api-reference/objects.md#actor/)
 
 ### user
 
@@ -680,11 +680,11 @@ user(id: UUID!): User
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [User](/api-reference/objects.md#user/)
+**Returns:** [User](../api-reference/objects.md#user/)
 
 ### users
 
@@ -699,29 +699,29 @@ users(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `filter` | `UserFilter` | See fields below |
+| Name         | Type              | Description      |
+| ------------ | ----------------- | ---------------- |
+| `filter`     | `UserFilter`      | See fields below |
 | `pagination` | `PaginationInput` | See fields below |
 
 **UserFilter fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization membership |
-| `isActive` | `Boolean` | Filter by active status |
-| `includeDeleted` | `Boolean` | Include soft-deleted users |
+| Field            | Type                                             | Description                       |
+| ---------------- | ------------------------------------------------ | --------------------------------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) | Filter by organization membership |
+| `isActive`       | `Boolean`                                        | Filter by active status           |
+| `includeDeleted` | `Boolean`                                        | Include soft-deleted users        |
 
 **PaginationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
+| Field    | Type     | Description                                |
+| -------- | -------- | ------------------------------------------ |
+| `first`  | `Int`    | Number of items to fetch from start        |
+| `after`  | `String` | Cursor to start after (forward pagination) |
+| `last`   | `Int`    | Number of items to fetch from end          |
 | `before` | `String` | Cursor to end before (backward pagination) |
 
-**Returns:** [UserConnection!](/api-reference/objects.md#userconnection/)
+**Returns:** [UserConnection!](../api-reference/objects.md#userconnection/)
 
 ### member
 
@@ -733,11 +733,11 @@ member(id: UUID!): Member
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Member](/api-reference/objects.md#member/)
+**Returns:** [Member](../api-reference/objects.md#member/)
 
 ### members
 
@@ -753,13 +753,13 @@ members(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `userId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-| `includeDeleted` | `Boolean` | |
+| Name             | Type                                             | Description |
+| ---------------- | ------------------------------------------------ | ----------- |
+| `userId`         | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `includeDeleted` | `Boolean`                                        |             |
 
-**Returns:** [[Member!]!](/api-reference/objects.md#member/)
+**Returns:** [\[Member!\]!](../api-reference/objects.md#member/)
 
 ### integration
 
@@ -771,11 +771,11 @@ integration(id: UUID!): Integration
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Integration](/api-reference/objects.md#integration/)
+**Returns:** [Integration](../api-reference/objects.md#integration/)
 
 ### integrations
 
@@ -787,11 +787,11 @@ integrations(isActive: Boolean): [Integration!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `isActive` | `Boolean` | |
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| `isActive` | `Boolean` |             |
 
-**Returns:** [[Integration!]!](/api-reference/objects.md#integration/)
+**Returns:** [\[Integration!\]!](../api-reference/objects.md#integration/)
 
 ## Access control
 
@@ -805,11 +805,11 @@ role(id: UUID!): Role
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Role](/api-reference/objects.md#role/)
+**Returns:** [Role](../api-reference/objects.md#role/)
 
 ### roles
 
@@ -821,11 +821,11 @@ roles(organizationId: UUID): [Role!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name             | Type                                             | Description |
+| ---------------- | ------------------------------------------------ | ----------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [[Role!]!](/api-reference/objects.md#role/)
+**Returns:** [\[Role!\]!](../api-reference/objects.md#role/)
 
 ### permissionScope
 
@@ -837,11 +837,11 @@ permissionScope(id: UUID!): PermissionScope
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [PermissionScope](/api-reference/objects.md#permissionscope/)
+**Returns:** [PermissionScope](../api-reference/objects.md#permissionscope/)
 
 ### permissionScopes
 
@@ -853,11 +853,11 @@ permissionScopes(moduleId: UUID): [PermissionScope!]!
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `moduleId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name       | Type                                             | Description |
+| ---------- | ------------------------------------------------ | ----------- |
+| `moduleId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [[PermissionScope!]!](/api-reference/objects.md#permissionscope/)
+**Returns:** [\[PermissionScope!\]!](../api-reference/objects.md#permissionscope/)
 
 ## Inventory
 
@@ -871,11 +871,11 @@ inventory(id: UUID!): Inventory
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Inventory](/api-reference/objects.md#inventory/)
+**Returns:** [Inventory](../api-reference/objects.md#inventory/)
 
 ## Custom fields
 
@@ -889,11 +889,11 @@ customFieldDefinition(id: UUID!): CustomFieldDefinition
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [CustomFieldDefinition](/api-reference/objects.md#customfielddefinition/)
+**Returns:** [CustomFieldDefinition](../api-reference/objects.md#customfielddefinition/)
 
 ### customFieldDefinitions
 
@@ -910,14 +910,14 @@ customFieldDefinitions(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `ownerCatalogItemId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-| `targetEntityTypeCode` | `String` | |
-| `includeDeleted` | `Boolean` | |
+| Name                   | Type                                              | Description |
+| ---------------------- | ------------------------------------------------- | ----------- |
+| `organizationId`       | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `ownerCatalogItemId`   | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)  |             |
+| `targetEntityTypeCode` | `String`                                          |             |
+| `includeDeleted`       | `Boolean`                                         |             |
 
-**Returns:** [[CustomFieldDefinition!]!](/api-reference/objects.md#customfielddefinition/)
+**Returns:** [\[CustomFieldDefinition!\]!](../api-reference/objects.md#customfielddefinition/)
 
 ## Audit
 
@@ -934,36 +934,36 @@ auditEvents(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `filter` | `AuditEventFilter` | See fields below |
-| `pagination` | `PaginationInput` | See fields below |
+| Name         | Type               | Description      |
+| ------------ | ------------------ | ---------------- |
+| `filter`     | `AuditEventFilter` | See fields below |
+| `pagination` | `PaginationInput`  | See fields below |
 
 **AuditEventFilter fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by organization |
-| `actorId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by actor who triggered the event |
-| `aggregateType` | `String` | Filter by entity type |
-| `aggregateId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by specific entity ID |
-| `eventCategory` | `String` | Filter by event category (auth, domain) |
-| `eventType` | [AuditEventType](/api-reference/scalars-and-enums.md#auditeventtype/) | Filter by event type |
-| `sourceType` | [SourceType](/api-reference/scalars-and-enums.md#sourcetype/) | Filter by source type |
-| `traceId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | Filter by trace ID for distributed tracing |
-| `from` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Events after this timestamp |
-| `to` | [DateTime](/api-reference/scalars-and-enums.md#datetime/) | Events before this timestamp |
+| Field            | Type                                                                 | Description                                |
+| ---------------- | -------------------------------------------------------------------- | ------------------------------------------ |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                     | Filter by organization                     |
+| `actorId`        | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                     | Filter by actor who triggered the event    |
+| `aggregateType`  | `String`                                                             | Filter by entity type                      |
+| `aggregateId`    | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                     | Filter by specific entity ID               |
+| `eventCategory`  | `String`                                                             | Filter by event category (auth, domain)    |
+| `eventType`      | [AuditEventType](/broken/pages/TOdGVmQ3HHnniCOoOsfN#auditeventtype/) | Filter by event type                       |
+| `sourceType`     | [SourceType](/broken/pages/TOdGVmQ3HHnniCOoOsfN#sourcetype/)         | Filter by source type                      |
+| `traceId`        | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                     | Filter by trace ID for distributed tracing |
+| `from`           | [DateTime](/broken/pages/TOdGVmQ3HHnniCOoOsfN#datetime/)             | Events after this timestamp                |
+| `to`             | [DateTime](/broken/pages/TOdGVmQ3HHnniCOoOsfN#datetime/)             | Events before this timestamp               |
 
 **PaginationInput fields**
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `first` | `Int` | Number of items to fetch from start |
-| `after` | `String` | Cursor to start after (forward pagination) |
-| `last` | `Int` | Number of items to fetch from end |
+| Field    | Type     | Description                                |
+| -------- | -------- | ------------------------------------------ |
+| `first`  | `Int`    | Number of items to fetch from start        |
+| `after`  | `String` | Cursor to start after (forward pagination) |
+| `last`   | `Int`    | Number of items to fetch from end          |
 | `before` | `String` | Cursor to end before (backward pagination) |
 
-**Returns:** [AuditEventConnection!](/api-reference/objects.md#auditeventconnection/)
+**Returns:** [AuditEventConnection!](../api-reference/objects.md#auditeventconnection/)
 
 ## Localization
 
@@ -980,12 +980,12 @@ i18nTexts(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `entityId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `locale` | `String` | |
+| Name       | Type                                              | Description |
+| ---------- | ------------------------------------------------- | ----------- |
+| `entityId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `locale`   | `String`                                          |             |
 
-**Returns:** [[I18nText!]!](/api-reference/objects.md#i18ntext/)
+**Returns:** [\[I18nText!\]!](../api-reference/objects.md#i18ntext/)
 
 ## Catalog items
 
@@ -999,11 +999,11 @@ module(id: UUID!): Module
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Module](/api-reference/objects.md#module/)
+**Returns:** [Module](../api-reference/objects.md#module/)
 
 ### modules
 
@@ -1013,7 +1013,7 @@ List all system modules
 modules: [Module!]!
 ```
 
-**Returns:** [[Module!]!](/api-reference/objects.md#module/)
+**Returns:** [\[Module!\]!](../api-reference/objects.md#module/)
 
 ### entityType
 
@@ -1025,11 +1025,11 @@ entityType(id: UUID!): EntityType
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [EntityType](/api-reference/objects.md#entitytype/)
+**Returns:** [EntityType](../api-reference/objects.md#entitytype/)
 
 ### entityTypes
 
@@ -1039,7 +1039,7 @@ List all entity types
 entityTypes: [EntityType!]!
 ```
 
-**Returns:** [[EntityType!]!](/api-reference/objects.md#entitytype/)
+**Returns:** [\[EntityType!\]!](../api-reference/objects.md#entitytype/)
 
 ### deviceRelationType
 
@@ -1051,11 +1051,11 @@ deviceRelationType(id: UUID!): DeviceRelationType
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [DeviceRelationType](/api-reference/objects.md#devicerelationtype/)
+**Returns:** [DeviceRelationType](../api-reference/objects.md#devicerelationtype/)
 
 ### deviceRelationTypes
 
@@ -1065,7 +1065,7 @@ List all device relation types
 deviceRelationTypes: [DeviceRelationType!]!
 ```
 
-**Returns:** [[DeviceRelationType!]!](/api-reference/objects.md#devicerelationtype/)
+**Returns:** [\[DeviceRelationType!\]!](../api-reference/objects.md#devicerelationtype/)
 
 ### tag
 
@@ -1077,11 +1077,11 @@ tag(id: UUID!): Tag
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Tag](/api-reference/objects.md#tag/)
+**Returns:** [Tag](../api-reference/objects.md#tag/)
 
 ### tags
 
@@ -1096,12 +1096,12 @@ tags(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `entityTypeCode` | `String` | |
+| Name             | Type                                              | Description |
+| ---------------- | ------------------------------------------------- | ----------- |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `entityTypeCode` | `String`                                          |             |
 
-**Returns:** [[Tag!]!](/api-reference/objects.md#tag/)
+**Returns:** [\[Tag!\]!](../api-reference/objects.md#tag/)
 
 ### country
 
@@ -1113,11 +1113,11 @@ country(id: UUID!): Country
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
+| Name | Type                                              | Description |
+| ---- | ------------------------------------------------- | ----------- |
+| `id` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
 
-**Returns:** [Country](/api-reference/objects.md#country/)
+**Returns:** [Country](../api-reference/objects.md#country/)
 
 ### countries
 
@@ -1127,7 +1127,7 @@ List all countries
 countries: [Country!]!
 ```
 
-**Returns:** [[Country!]!](/api-reference/objects.md#country/)
+**Returns:** [\[Country!\]!](../api-reference/objects.md#country/)
 
 ### inventories
 
@@ -1142,9 +1142,9 @@ inventories(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID!](/api-reference/scalars-and-enums.md#uuid/) | |
-| `includeDeleted` | `Boolean` | |
+| Name             | Type                                              | Description |
+| ---------------- | ------------------------------------------------- | ----------- |
+| `organizationId` | [UUID!](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `includeDeleted` | `Boolean`                                         |             |
 
-**Returns:** [[Inventory!]!](/api-reference/objects.md#inventory/)
+**Returns:** [\[Inventory!\]!](../api-reference/objects.md#inventory/)

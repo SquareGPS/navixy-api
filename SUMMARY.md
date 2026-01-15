@@ -1,7 +1,8 @@
 # Table of contents
 
 * [Overview](README.md)
-* [GraphQL basics](graphql-basics.md)
+* [GraphQL basics](graphql-basics/README.md)
+  * [GraphQL tips and patterns](graphql-basics/graphql-tips-and-patterns.md)
 * [Getting started](getting-started.md)
 * [Authentication](authentication.md)
 * [Pagination](pagination.md)
@@ -23,7 +24,7 @@
   * [Enums](api-reference/enums.md)
   * [Scalars](api-reference/scalars.md)
   * [Interfaces](api-reference/interfaces.md)
-* [API reference_old](api-reference_old/README.md)
+* [API reference\_old](api-reference_old/README.md)
   * [Queries](api-reference_old/queries.md)
   * [Mutations](api-reference_old/mutations.md)
   * [Subscriptions](api-reference_old/subscriptions.md)

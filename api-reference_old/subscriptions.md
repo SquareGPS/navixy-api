@@ -22,13 +22,13 @@ domainEvent(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-| `aggregateType` | `String` | |
-| `eventType` | [AuditEventType](/api-reference/scalars-and-enums.md#auditeventtype/) | |
+| Name             | Type                                                                 | Description |
+| ---------------- | -------------------------------------------------------------------- | ----------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/)                     |             |
+| `aggregateType`  | `String`                                                             |             |
+| `eventType`      | [AuditEventType](/broken/pages/TOdGVmQ3HHnniCOoOsfN#auditeventtype/) |             |
 
-**Returns:** [DomainEvent!](/api-reference/objects.md#domainevent/)
+**Returns:** [DomainEvent!](../api-reference/objects.md#domainevent/)
 
 ### auditEventOccurred
 
@@ -43,9 +43,9 @@ auditEventOccurred(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | [UUID](/api-reference/scalars-and-enums.md#uuid/) | |
-| `eventCategory` | `String` | |
+| Name             | Type                                             | Description |
+| ---------------- | ------------------------------------------------ | ----------- |
+| `organizationId` | [UUID](/broken/pages/TOdGVmQ3HHnniCOoOsfN#uuid/) |             |
+| `eventCategory`  | `String`                                         |             |
 
-**Returns:** [AuditEvent!](/api-reference/objects.md#auditevent/)
+**Returns:** [AuditEvent!](../api-reference/objects.md#auditevent/)
