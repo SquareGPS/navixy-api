@@ -20,7 +20,7 @@ node(id: ID!): Node
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the entity to retrieve. |
 
-**Returns:** [Node](/api-reference/interfaces.md#node/)
+**Returns:** [Node](/api-reference/interfaces.md#node)
 
 ### nodes
 
@@ -36,7 +36,7 @@ nodes(ids: [ID!]!): [Node]!
 | ---- | ---- | ----------- |
 | `ids` | `[ID!]!` | The IDs of the entities to retrieve. |
 
-**Returns:** [[Node]!](/api-reference/interfaces.md#node/)
+**Returns:** [[Node]!](/api-reference/interfaces.md#node)
 
 ### me
 
@@ -46,7 +46,7 @@ Retrieves the currently authenticated actor.
 me: Actor!
 ```
 
-**Returns:** [Actor!](/api-reference/interfaces.md#actor/)
+**Returns:** [Actor!](/api-reference/interfaces.md#actor)
 
 ## Devices
 
@@ -71,14 +71,14 @@ deviceTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve device types for. |
-| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter/) | Filtering options for the returned device types. |
+| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter) | Filtering options for the returned device types. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned device types. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned device types. |
 
-**Returns:** [DeviceTypeConnection!](/api-reference/objects.md#devicetypeconnection/)
+**Returns:** [DeviceTypeConnection!](/api-reference/objects.md#devicetypeconnection)
 
 ### deviceStatuses
 
@@ -101,14 +101,14 @@ deviceStatuses(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve device statuses for. |
-| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter/) | Filtering options for the returned device statuses. |
+| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter) | Filtering options for the returned device statuses. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned device statuses. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned device statuses. |
 
-**Returns:** [DeviceStatusConnection!](/api-reference/objects.md#devicestatusconnection/)
+**Returns:** [DeviceStatusConnection!](/api-reference/objects.md#devicestatusconnection)
 
 ### deviceModels
 
@@ -131,14 +131,14 @@ deviceModels(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve device models for. |
-| `filter` | [DeviceModelFilter](/api-reference/inputs.md#devicemodelfilter/) | Filtering options for the returned device models. |
+| `filter` | [DeviceModelFilter](/api-reference/inputs.md#devicemodelfilter) | Filtering options for the returned device models. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned device models. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned device models. |
 
-**Returns:** [DeviceModelConnection!](/api-reference/objects.md#devicemodelconnection/)
+**Returns:** [DeviceModelConnection!](/api-reference/objects.md#devicemodelconnection)
 
 ### device
 
@@ -154,7 +154,7 @@ device(id: ID!): Device
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the device to retrieve. |
 
-**Returns:** [Device](/api-reference/objects.md#device/)
+**Returns:** [Device](/api-reference/objects.md#device)
 
 ### devices
 
@@ -177,14 +177,14 @@ devices(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve devices for. |
-| `filter` | [DeviceFilter](/api-reference/inputs.md#devicefilter/) | Filtering options for the returned devices. |
+| `filter` | [DeviceFilter](/api-reference/inputs.md#devicefilter) | Filtering options for the returned devices. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [DeviceOrder](/api-reference/inputs.md#deviceorder/) | The ordering options for the returned devices. |
+| `orderBy` | [DeviceOrder](/api-reference/inputs.md#deviceorder) | The ordering options for the returned devices. |
 
-**Returns:** [DeviceConnection!](/api-reference/objects.md#deviceconnection/)
+**Returns:** [DeviceConnection!](/api-reference/objects.md#deviceconnection)
 
 ## Assets
 
@@ -209,14 +209,14 @@ assetTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve asset types for. |
-| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter/) | Filtering options for the returned asset types. |
+| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter) | Filtering options for the returned asset types. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned asset types. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned asset types. |
 
-**Returns:** [AssetTypeConnection!](/api-reference/objects.md#assettypeconnection/)
+**Returns:** [AssetTypeConnection!](/api-reference/objects.md#assettypeconnection)
 
 ### asset
 
@@ -232,7 +232,7 @@ asset(id: ID!): Asset
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the asset to retrieve. |
 
-**Returns:** [Asset](/api-reference/objects.md#asset/)
+**Returns:** [Asset](/api-reference/objects.md#asset)
 
 ### assets
 
@@ -255,14 +255,14 @@ assets(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve assets for. |
-| `filter` | [AssetFilter](/api-reference/inputs.md#assetfilter/) | Filtering options for the returned assets. |
+| `filter` | [AssetFilter](/api-reference/inputs.md#assetfilter) | Filtering options for the returned assets. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [AssetOrder](/api-reference/inputs.md#assetorder/) | The ordering options for the returned assets. |
+| `orderBy` | [AssetOrder](/api-reference/inputs.md#assetorder) | The ordering options for the returned assets. |
 
-**Returns:** [AssetConnection!](/api-reference/objects.md#assetconnection/)
+**Returns:** [AssetConnection!](/api-reference/objects.md#assetconnection)
 
 ## Asset groups
 
@@ -287,14 +287,14 @@ assetGroupTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve asset group types for. |
-| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter/) | Filtering options for the returned asset group types. |
+| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter) | Filtering options for the returned asset group types. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned asset group types. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned asset group types. |
 
-**Returns:** [AssetGroupTypeConnection!](/api-reference/objects.md#assetgrouptypeconnection/)
+**Returns:** [AssetGroupTypeConnection!](/api-reference/objects.md#assetgrouptypeconnection)
 
 ### assetGroup
 
@@ -310,7 +310,7 @@ assetGroup(id: ID!): AssetGroup
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the asset group to retrieve. |
 
-**Returns:** [AssetGroup](/api-reference/objects.md#assetgroup/)
+**Returns:** [AssetGroup](/api-reference/objects.md#assetgroup)
 
 ### assetGroups
 
@@ -333,14 +333,14 @@ assetGroups(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve asset groups for. |
-| `filter` | [AssetGroupFilter](/api-reference/inputs.md#assetgroupfilter/) | Filtering options for the returned asset groups. |
+| `filter` | [AssetGroupFilter](/api-reference/inputs.md#assetgroupfilter) | Filtering options for the returned asset groups. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [AssetGroupOrder](/api-reference/inputs.md#assetgrouporder/) | The ordering options for the returned asset groups. |
+| `orderBy` | [AssetGroupOrder](/api-reference/inputs.md#assetgrouporder) | The ordering options for the returned asset groups. |
 
-**Returns:** [AssetGroupConnection!](/api-reference/objects.md#assetgroupconnection/)
+**Returns:** [AssetGroupConnection!](/api-reference/objects.md#assetgroupconnection)
 
 ## Geo objects
 
@@ -365,14 +365,14 @@ geoObjectTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve geo object types for. |
-| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter/) | Filtering options for the returned geo object types. |
+| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter) | Filtering options for the returned geo object types. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned geo object types. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned geo object types. |
 
-**Returns:** [GeoObjectTypeConnection!](/api-reference/objects.md#geoobjecttypeconnection/)
+**Returns:** [GeoObjectTypeConnection!](/api-reference/objects.md#geoobjecttypeconnection)
 
 ### geoObject
 
@@ -388,7 +388,7 @@ geoObject(id: ID!): GeoObject
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the geo object to retrieve. |
 
-**Returns:** [GeoObject](/api-reference/objects.md#geoobject/)
+**Returns:** [GeoObject](/api-reference/objects.md#geoobject)
 
 ### geoObjects
 
@@ -411,14 +411,14 @@ geoObjects(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve geo objects for. |
-| `filter` | [GeoObjectFilter](/api-reference/inputs.md#geoobjectfilter/) | Filtering options for the returned geo objects. |
+| `filter` | [GeoObjectFilter](/api-reference/inputs.md#geoobjectfilter) | Filtering options for the returned geo objects. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [GeoObjectOrder](/api-reference/inputs.md#geoobjectorder/) | The ordering options for the returned geo objects. |
+| `orderBy` | [GeoObjectOrder](/api-reference/inputs.md#geoobjectorder) | The ordering options for the returned geo objects. |
 
-**Returns:** [GeoObjectConnection!](/api-reference/objects.md#geoobjectconnection/)
+**Returns:** [GeoObjectConnection!](/api-reference/objects.md#geoobjectconnection)
 
 ## Schedules
 
@@ -443,14 +443,14 @@ scheduleTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve schedule types for. |
-| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter/) | Filtering options for the returned schedule types. |
+| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter) | Filtering options for the returned schedule types. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned schedule types. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned schedule types. |
 
-**Returns:** [ScheduleTypeConnection!](/api-reference/objects.md#scheduletypeconnection/)
+**Returns:** [ScheduleTypeConnection!](/api-reference/objects.md#scheduletypeconnection)
 
 ### schedule
 
@@ -466,7 +466,7 @@ schedule(id: ID!): Schedule
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the schedule to retrieve. |
 
-**Returns:** [Schedule](/api-reference/objects.md#schedule/)
+**Returns:** [Schedule](/api-reference/objects.md#schedule)
 
 ### schedules
 
@@ -489,14 +489,14 @@ schedules(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve schedules for. |
-| `filter` | [ScheduleFilter](/api-reference/inputs.md#schedulefilter/) | Filtering options for the returned schedules. |
+| `filter` | [ScheduleFilter](/api-reference/inputs.md#schedulefilter) | Filtering options for the returned schedules. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [ScheduleOrder](/api-reference/inputs.md#scheduleorder/) | The ordering options for the returned schedules. |
+| `orderBy` | [ScheduleOrder](/api-reference/inputs.md#scheduleorder) | The ordering options for the returned schedules. |
 
-**Returns:** [ScheduleConnection!](/api-reference/objects.md#scheduleconnection/)
+**Returns:** [ScheduleConnection!](/api-reference/objects.md#scheduleconnection)
 
 ## Organizations
 
@@ -514,7 +514,7 @@ catalog(id: ID!): Catalog
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the catalog to retrieve. |
 
-**Returns:** [Catalog](/api-reference/objects.md#catalog/)
+**Returns:** [Catalog](/api-reference/objects.md#catalog)
 
 ### catalogs
 
@@ -537,14 +537,14 @@ catalogs(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve catalogs for. |
-| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter/) | Filtering options for the returned catalogs. |
+| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter) | Filtering options for the returned catalogs. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned catalogs. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned catalogs. |
 
-**Returns:** [CatalogConnection!](/api-reference/objects.md#catalogconnection/)
+**Returns:** [CatalogConnection!](/api-reference/objects.md#catalogconnection)
 
 ### organization
 
@@ -560,7 +560,7 @@ organization(id: ID!): Organization
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the organization to retrieve. |
 
-**Returns:** [Organization](/api-reference/objects.md#organization/)
+**Returns:** [Organization](/api-reference/objects.md#organization)
 
 ### organizations
 
@@ -581,14 +581,14 @@ organizations(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `filter` | [OrganizationFilter](/api-reference/inputs.md#organizationfilter/) | Filtering options for the returned organizations. |
+| `filter` | [OrganizationFilter](/api-reference/inputs.md#organizationfilter) | Filtering options for the returned organizations. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [OrganizationOrder](/api-reference/inputs.md#organizationorder/) | The ordering options for the returned organizations. |
+| `orderBy` | [OrganizationOrder](/api-reference/inputs.md#organizationorder) | The ordering options for the returned organizations. |
 
-**Returns:** [OrganizationConnection!](/api-reference/objects.md#organizationconnection/)
+**Returns:** [OrganizationConnection!](/api-reference/objects.md#organizationconnection)
 
 ## Actors
 
@@ -606,7 +606,7 @@ member(id: ID!): Member
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the member to retrieve. |
 
-**Returns:** [Member](/api-reference/objects.md#member/)
+**Returns:** [Member](/api-reference/objects.md#member)
 
 ### members
 
@@ -629,14 +629,14 @@ members(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve members for. |
-| `filter` | [MemberFilter](/api-reference/inputs.md#memberfilter/) | Filtering options for the returned members. |
+| `filter` | [MemberFilter](/api-reference/inputs.md#memberfilter) | Filtering options for the returned members. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [MemberOrder](/api-reference/inputs.md#memberorder/) | The ordering options for the returned members. |
+| `orderBy` | [MemberOrder](/api-reference/inputs.md#memberorder) | The ordering options for the returned members. |
 
-**Returns:** [MemberConnection!](/api-reference/objects.md#memberconnection/)
+**Returns:** [MemberConnection!](/api-reference/objects.md#memberconnection)
 
 ### integration
 
@@ -652,7 +652,7 @@ integration(id: ID!): Integration
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the integration to retrieve. |
 
-**Returns:** [Integration](/api-reference/objects.md#integration/)
+**Returns:** [Integration](/api-reference/objects.md#integration)
 
 ### integrations
 
@@ -675,14 +675,14 @@ integrations(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve integrations for. |
-| `filter` | [IntegrationFilter](/api-reference/inputs.md#integrationfilter/) | Filtering options for the returned integrations. |
+| `filter` | [IntegrationFilter](/api-reference/inputs.md#integrationfilter) | Filtering options for the returned integrations. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [IntegrationOrder](/api-reference/inputs.md#integrationorder/) | The ordering options for the returned integrations. |
+| `orderBy` | [IntegrationOrder](/api-reference/inputs.md#integrationorder) | The ordering options for the returned integrations. |
 
-**Returns:** [IntegrationConnection!](/api-reference/objects.md#integrationconnection/)
+**Returns:** [IntegrationConnection!](/api-reference/objects.md#integrationconnection)
 
 ### actorRoles
 
@@ -705,14 +705,14 @@ actorRoles(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve actor roles for. |
-| `filter` | [ActorRoleFilter](/api-reference/inputs.md#actorrolefilter/) | Filtering options for the returned actor roles. |
+| `filter` | [ActorRoleFilter](/api-reference/inputs.md#actorrolefilter) | Filtering options for the returned actor roles. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [ActorRoleOrder](/api-reference/inputs.md#actorroleorder/) | The ordering options for the returned actor roles. |
+| `orderBy` | [ActorRoleOrder](/api-reference/inputs.md#actorroleorder) | The ordering options for the returned actor roles. |
 
-**Returns:** [ActorRoleConnection!](/api-reference/objects.md#actorroleconnection/)
+**Returns:** [ActorRoleConnection!](/api-reference/objects.md#actorroleconnection)
 
 ### userScopes
 
@@ -735,14 +735,14 @@ userScopes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve user scopes for. |
-| `filter` | [UserScopeFilter](/api-reference/inputs.md#userscopefilter/) | Filtering options for the returned user scopes. |
+| `filter` | [UserScopeFilter](/api-reference/inputs.md#userscopefilter) | Filtering options for the returned user scopes. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [UserScopeOrder](/api-reference/inputs.md#userscopeorder/) | The ordering options for the returned user scopes. |
+| `orderBy` | [UserScopeOrder](/api-reference/inputs.md#userscopeorder) | The ordering options for the returned user scopes. |
 
-**Returns:** [UserScopeConnection!](/api-reference/objects.md#userscopeconnection/)
+**Returns:** [UserScopeConnection!](/api-reference/objects.md#userscopeconnection)
 
 ## Access control
 
@@ -767,14 +767,14 @@ roles(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve roles for. |
-| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter/) | Filtering options for the returned roles. |
+| `filter` | [CatalogItemFilter](/api-reference/inputs.md#catalogitemfilter) | Filtering options for the returned roles. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned roles. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned roles. |
 
-**Returns:** [RoleConnection!](/api-reference/objects.md#roleconnection/)
+**Returns:** [RoleConnection!](/api-reference/objects.md#roleconnection)
 
 ### rolePermissions
 
@@ -797,14 +797,14 @@ rolePermissions(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve role permissions for. |
-| `filter` | [RolePermissionFilter](/api-reference/inputs.md#rolepermissionfilter/) | Filtering options for the returned role permissions. |
+| `filter` | [RolePermissionFilter](/api-reference/inputs.md#rolepermissionfilter) | Filtering options for the returned role permissions. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [RolePermissionOrder](/api-reference/inputs.md#rolepermissionorder/) | The ordering options for the returned role permissions. |
+| `orderBy` | [RolePermissionOrder](/api-reference/inputs.md#rolepermissionorder) | The ordering options for the returned role permissions. |
 
-**Returns:** [RolePermissionConnection!](/api-reference/objects.md#rolepermissionconnection/)
+**Returns:** [RolePermissionConnection!](/api-reference/objects.md#rolepermissionconnection)
 
 ## Inventory
 
@@ -822,7 +822,7 @@ inventory(id: ID!): Inventory
 | ---- | ---- | ----------- |
 | `id` | `ID!` | The ID of the inventory to retrieve. |
 
-**Returns:** [Inventory](/api-reference/objects.md#inventory/)
+**Returns:** [Inventory](/api-reference/objects.md#inventory)
 
 ## Audit
 
@@ -847,14 +847,14 @@ auditEvents(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve audit events for. |
-| `filter` | [AuditEventFilter](/api-reference/inputs.md#auditeventfilter/) | Filtering options for the returned audit events. |
+| `filter` | [AuditEventFilter](/api-reference/inputs.md#auditeventfilter) | Filtering options for the returned audit events. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [AuditEventOrder](/api-reference/inputs.md#auditeventorder/) | The ordering options for the returned audit events. |
+| `orderBy` | [AuditEventOrder](/api-reference/inputs.md#auditeventorder) | The ordering options for the returned audit events. |
 
-**Returns:** [AuditEventConnection!](/api-reference/objects.md#auditeventconnection/)
+**Returns:** [AuditEventConnection!](/api-reference/objects.md#auditeventconnection)
 
 ## Catalog items
 
@@ -879,14 +879,14 @@ tags(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve tags for. |
-| `filter` | [TagFilter](/api-reference/inputs.md#tagfilter/) | Filtering options for the returned tags. |
+| `filter` | [TagFilter](/api-reference/inputs.md#tagfilter) | Filtering options for the returned tags. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder/) | The ordering options for the returned tags. |
+| `orderBy` | [CatalogItemOrder](/api-reference/inputs.md#catalogitemorder) | The ordering options for the returned tags. |
 
-**Returns:** [TagConnection!](/api-reference/objects.md#tagconnection/)
+**Returns:** [TagConnection!](/api-reference/objects.md#tagconnection)
 
 ### inventories
 
@@ -909,14 +909,14 @@ inventories(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization to retrieve inventories for. |
-| `filter` | [InventoryFilter](/api-reference/inputs.md#inventoryfilter/) | Filtering options for the returned inventories. |
+| `filter` | [InventoryFilter](/api-reference/inputs.md#inventoryfilter) | Filtering options for the returned inventories. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [InventoryOrder](/api-reference/inputs.md#inventoryorder/) | The ordering options for the returned inventories. |
+| `orderBy` | [InventoryOrder](/api-reference/inputs.md#inventoryorder) | The ordering options for the returned inventories. |
 
-**Returns:** [InventoryConnection!](/api-reference/objects.md#inventoryconnection/)
+**Returns:** [InventoryConnection!](/api-reference/objects.md#inventoryconnection)
 
 ### entityHistory
 
@@ -939,11 +939,11 @@ entityHistory(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `entityId` | `ID!` | The ID of the entity to retrieve history for. |
-| `filter` | [AuditEventFilter](/api-reference/inputs.md#auditeventfilter/) | Filtering options for the returned audit events. |
+| `filter` | [AuditEventFilter](/api-reference/inputs.md#auditeventfilter) | Filtering options for the returned audit events. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [AuditEventOrder](/api-reference/inputs.md#auditeventorder/) | The ordering options for the returned audit events. |
+| `orderBy` | [AuditEventOrder](/api-reference/inputs.md#auditeventorder) | The ordering options for the returned audit events. |
 
-**Returns:** [AuditEventConnection!](/api-reference/objects.md#auditeventconnection/)
+**Returns:** [AuditEventConnection!](/api-reference/objects.md#auditeventconnection)

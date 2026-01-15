@@ -17,7 +17,7 @@ Filtering options for devices.
 | `identifierValue` | `String` | Search by device identifier value. |
 | `inventoryIds` | `[ID!]` | Filter by inventories (OR within field). |
 | `title` | `String` | Search in title (case-insensitive contains). |
-| `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter/) | Filter by custom field values. |
+| `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### DeviceOrder
 
@@ -25,9 +25,9 @@ Ordering options for devices.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [DeviceOrderField](/api-reference/enums.md#deviceorderfield/) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | [Code](/api-reference/scalars.md#code/) | The custom field code to order by. Mutually exclusive with `field`. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [DeviceOrderField](/api-reference/enums.md#deviceorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `customFieldCode` | [Code](/api-reference/scalars.md#code) | The custom field code to order by. Mutually exclusive with `field`. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### DeviceModelFilter
 
@@ -37,7 +37,7 @@ Filtering options for device models.
 | ----- | ---- | ----------- |
 | `vendorIds` | `[ID!]` | Filter by vendors (OR within field). |
 | `title` | `String` | Search in title (case-insensitive contains). |
-| `code` | [Code](/api-reference/scalars.md#code/) | Exact code match. |
+| `code` | [Code](/api-reference/scalars.md#code) | Exact code match. |
 
 ### DeviceCreateInput
 
@@ -50,8 +50,8 @@ Input for creating a new device.
 | `modelId` | `ID!` | The device model ID. |
 | `statusId` | `ID!` | The initial device status ID. |
 | `title` | `String!` | The device display name. |
-| `identifiers` | [[DeviceIdentifierInput!]](/api-reference/inputs.md#deviceidentifierinput/) | The hardware identifiers. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The custom field values. |
+| `identifiers` | [[DeviceIdentifierInput!]](/api-reference/inputs.md#deviceidentifierinput) | The hardware identifiers. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field values. |
 
 ### DeviceUpdateInput
 
@@ -64,7 +64,7 @@ Input for updating an existing device.
 | `modelId` | `ID` | The new device model. |
 | `statusId` | `ID` | The new device status. |
 | `title` | `String` | The new display name. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The custom field changes. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field changes. |
 
 ### DeviceDeleteInput
 
@@ -81,7 +81,7 @@ Input for a device identifier.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `type` | [DeviceIdType!](/api-reference/enums.md#deviceidtype/) | The type of identifier. |
+| `type` | [DeviceIdType!](/api-reference/enums.md#deviceidtype) | The type of identifier. |
 | `value` | `String!` | The identifier value. |
 | `namespace` | `String` | The namespace for uniqueness. Null means globally unique. |
 
@@ -92,7 +92,7 @@ Input for adding an identifier to a device.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `deviceId` | `ID!` | The device ID. |
-| `identifier` | [DeviceIdentifierInput!](/api-reference/inputs.md#deviceidentifierinput/) | The identifier details. |
+| `identifier` | [DeviceIdentifierInput!](/api-reference/inputs.md#deviceidentifierinput) | The identifier details. |
 
 ### DeviceIdentifierRemoveInput
 
@@ -118,10 +118,10 @@ Input for creating a device type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### DeviceTypeUpdateInput
 
@@ -133,7 +133,7 @@ Input for updating a device type.
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### DeviceStatusCreateInput
 
@@ -142,10 +142,10 @@ Input for creating a device status.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### DeviceStatusUpdateInput
 
@@ -157,7 +157,7 @@ Input for updating a device status.
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ## Assets
 
@@ -169,7 +169,7 @@ Filtering options for assets.
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by asset types (OR within field). |
 | `title` | `String` | Search in title (case-insensitive contains). |
-| `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter/) | Filter by custom field values. |
+| `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### AssetOrder
 
@@ -177,9 +177,9 @@ Ordering options for assets.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [AssetOrderField](/api-reference/enums.md#assetorderfield/) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | [Code](/api-reference/scalars.md#code/) | The custom field code to order by. Mutually exclusive with `field`. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [AssetOrderField](/api-reference/enums.md#assetorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `customFieldCode` | [Code](/api-reference/scalars.md#code) | The custom field code to order by. Mutually exclusive with `field`. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### AssetCreateInput
 
@@ -190,7 +190,7 @@ Input for creating a new asset.
 | `organizationId` | `ID!` | The organization that will own the asset. |
 | `typeId` | `ID!` | The asset type ID. |
 | `title` | `String!` | The asset display name. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The custom field values. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field values. |
 
 ### AssetUpdateInput
 
@@ -201,7 +201,7 @@ Input for updating an existing asset.
 | `id` | `ID!` | The asset ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The custom field changes. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field changes. |
 
 ### AssetDeleteInput
 
@@ -219,10 +219,10 @@ Input for creating an asset type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### AssetTypeUpdateInput
 
@@ -234,7 +234,7 @@ Input for updating an asset type.
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ## Asset groups
 
@@ -253,8 +253,8 @@ Ordering options for asset groups.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [AssetGroupOrderField!](/api-reference/enums.md#assetgrouporderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [AssetGroupOrderField!](/api-reference/enums.md#assetgrouporderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### AssetGroupItemFilter
 
@@ -270,8 +270,8 @@ Ordering options for asset group items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [AssetGroupItemOrderField!](/api-reference/enums.md#assetgroupitemorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [AssetGroupItemOrderField!](/api-reference/enums.md#assetgroupitemorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### AssetGroupCreateInput
 
@@ -282,7 +282,7 @@ Input for creating a new asset group.
 | `organizationId` | `ID!` | The organization that will own the group. |
 | `typeId` | `ID!` | The group type ID. |
 | `title` | `String!` | The group display name. |
-| `color` | [HexColorCode](/api-reference/scalars.md#hexcolorcode/) | The color for UI display. |
+| `color` | [HexColorCode](/api-reference/scalars.md#hexcolorcode) | The color for UI display. |
 
 ### AssetGroupUpdateInput
 
@@ -293,7 +293,7 @@ Input for updating an existing asset group.
 | `id` | `ID!` | The asset group ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
-| `color` | [HexColorCode](/api-reference/scalars.md#hexcolorcode/) | The new color. |
+| `color` | [HexColorCode](/api-reference/scalars.md#hexcolorcode) | The new color. |
 
 ### AssetGroupDeleteInput
 
@@ -329,11 +329,11 @@ Input for creating an asset group type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. |
-| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput!]](/api-reference/inputs.md#assetgrouptypeconstraintinput/) | The allowed asset types with optional limits. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput!]](/api-reference/inputs.md#assetgrouptypeconstraintinput) | The allowed asset types with optional limits. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### AssetGroupTypeUpdateInput
 
@@ -345,8 +345,8 @@ Input for updating an asset group type.
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput!]](/api-reference/inputs.md#assetgrouptypeconstraintinput/) | Replace allowed asset types. Null means no change. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput!]](/api-reference/inputs.md#assetgrouptypeconstraintinput) | Replace allowed asset types. Null means no change. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### AssetGroupTypeConstraintInput
 
@@ -367,7 +367,7 @@ Filtering options for geo objects.
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by geo object types (OR within field). |
 | `title` | `String` | Search in title (case-insensitive contains). |
-| `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter/) | Filter by custom field values. |
+| `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### GeoObjectOrder
 
@@ -375,9 +375,9 @@ Ordering options for geo objects.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [GeoObjectOrderField](/api-reference/enums.md#geoobjectorderfield/) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | [Code](/api-reference/scalars.md#code/) | The custom field code to order by. Mutually exclusive with `field`. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [GeoObjectOrderField](/api-reference/enums.md#geoobjectorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `customFieldCode` | [Code](/api-reference/scalars.md#code) | The custom field code to order by. Mutually exclusive with `field`. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### GeoObjectCreateInput
 
@@ -388,8 +388,8 @@ Input for creating a new geo object.
 | `organizationId` | `ID!` | The organization that will own the geo object. |
 | `typeId` | `ID!` | The geo object type ID. |
 | `title` | `String!` | The geo object display name. |
-| `geometry` | [GeoJSON!](/api-reference/scalars.md#geojson/) | The [GeoJSON](https://geojson.org/) geometry. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The custom field values. |
+| `geometry` | [GeoJSON!](/api-reference/scalars.md#geojson) | The [GeoJSON](https://geojson.org/) geometry. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field values. |
 
 ### GeoObjectUpdateInput
 
@@ -400,8 +400,8 @@ Input for updating an existing geo object.
 | `id` | `ID!` | The geo object ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
-| `geometry` | [GeoJSON](/api-reference/scalars.md#geojson/) | The new geometry. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The custom field changes. |
+| `geometry` | [GeoJSON](/api-reference/scalars.md#geojson) | The new geometry. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field changes. |
 
 ### GeoObjectDeleteInput
 
@@ -419,10 +419,10 @@ Input for creating a geo object type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### GeoObjectTypeUpdateInput
 
@@ -434,7 +434,7 @@ Input for updating a geo object type.
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ## Schedules
 
@@ -446,7 +446,7 @@ Filtering options for schedules.
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by schedule types (OR within field). |
 | `title` | `String` | Search in title (case-insensitive contains). |
-| `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter/) | Filter by custom field values. |
+| `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### ScheduleOrder
 
@@ -454,9 +454,9 @@ Ordering options for schedules.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [ScheduleOrderField](/api-reference/enums.md#scheduleorderfield/) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | [Code](/api-reference/scalars.md#code/) | The custom field code to order by. Mutually exclusive with `field`. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [ScheduleOrderField](/api-reference/enums.md#scheduleorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `customFieldCode` | [Code](/api-reference/scalars.md#code) | The custom field code to order by. Mutually exclusive with `field`. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### ScheduleCreateInput
 
@@ -467,8 +467,8 @@ Input for creating a new schedule.
 | `organizationId` | `ID!` | The organization that will own the schedule. |
 | `typeId` | `ID!` | The schedule type ID. |
 | `title` | `String!` | The schedule display name. |
-| `scheduleData` | [ScheduleData!](/api-reference/scalars.md#scheduledata/) | The schedule data. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The custom field values. |
+| `scheduleData` | [ScheduleData!](/api-reference/scalars.md#scheduledata) | The schedule data. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field values. |
 
 ### ScheduleUpdateInput
 
@@ -479,8 +479,8 @@ Input for updating an existing schedule.
 | `id` | `ID!` | The schedule ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
-| `scheduleData` | [ScheduleData](/api-reference/scalars.md#scheduledata/) | The new schedule data. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The custom field changes. |
+| `scheduleData` | [ScheduleData](/api-reference/scalars.md#scheduledata) | The new schedule data. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field changes. |
 
 ### ScheduleDeleteInput
 
@@ -498,10 +498,10 @@ Input for creating a schedule type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### ScheduleTypeUpdateInput
 
@@ -513,7 +513,7 @@ Input for updating a schedule type.
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ## Inventory
 
@@ -523,8 +523,8 @@ Ordering options for device inventory relations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [DeviceInventoryRelationOrderField!](/api-reference/enums.md#deviceinventoryrelationorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [DeviceInventoryRelationOrderField!](/api-reference/enums.md#deviceinventoryrelationorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### InventoryFilter
 
@@ -533,7 +533,7 @@ Filtering options for inventories.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `title` | `String` | Search in title (case-insensitive contains). |
-| `code` | [Code](/api-reference/scalars.md#code/) | Exact code match. |
+| `code` | [Code](/api-reference/scalars.md#code) | Exact code match. |
 
 ### InventoryOrder
 
@@ -541,8 +541,8 @@ Ordering options for inventories.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [InventoryOrderField!](/api-reference/enums.md#inventoryorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [InventoryOrderField!](/api-reference/enums.md#inventoryorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### InventoryCreateInput
 
@@ -551,7 +551,7 @@ Input for creating a new inventory.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the inventory. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The unique code within the organization. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The unique code within the organization. |
 | `title` | `String!` | The display name. |
 
 ### InventoryUpdateInput
@@ -616,8 +616,8 @@ Ordering options for organizations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [OrganizationOrderField!](/api-reference/enums.md#organizationorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [OrganizationOrderField!](/api-reference/enums.md#organizationorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### OrganizationCreateInput
 
@@ -626,10 +626,10 @@ Input for creating a new organization.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `parentId` | `ID` | The parent organization ID. Null for root organizations. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The unique organization code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The unique organization code. |
 | `title` | `String!` | The display name. |
 | `externalId` | `String` | An external system identifier. |
-| `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature/) | The feature flags to enable. |
+| `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature) | The feature flags to enable. |
 
 ### OrganizationUpdateInput
 
@@ -642,7 +642,7 @@ Input for updating an existing organization.
 | `title` | `String` | The new display name. |
 | `externalId` | `String` | The new external identifier. |
 | `isActive` | `Boolean` | The new active status. |
-| `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature/) | The new feature flags. |
+| `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature) | The new feature flags. |
 
 ### OrganizationDeleteInput
 
@@ -670,8 +670,8 @@ Ordering options for members.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [MemberOrderField!](/api-reference/enums.md#memberorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [MemberOrderField!](/api-reference/enums.md#memberorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### PersonNameInput
 
@@ -691,7 +691,7 @@ Input for creating a membership.
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization ID. |
 | `userId` | `ID!` | The user ID to add. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The membership-specific custom fields. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The membership-specific custom fields. |
 
 ### MemberUpdateInput
 
@@ -702,7 +702,7 @@ Input for updating a membership.
 | `id` | `ID!` | The membership ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
 | `isActive` | `Boolean` | The new active status. |
-| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput/) | The custom field changes. |
+| `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field changes. |
 
 ### MemberRemoveInput
 
@@ -729,8 +729,8 @@ Ordering options for integrations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [IntegrationOrderField!](/api-reference/enums.md#integrationorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [IntegrationOrderField!](/api-reference/enums.md#integrationorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### IntegrationCreateInput
 
@@ -781,8 +781,8 @@ Ordering options for actor roles.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [ActorRoleOrderField!](/api-reference/enums.md#actorroleorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [ActorRoleOrderField!](/api-reference/enums.md#actorroleorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### RolePermissionFilter
 
@@ -800,8 +800,8 @@ Ordering options for role permissions.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [RolePermissionOrderField!](/api-reference/enums.md#rolepermissionorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [RolePermissionOrderField!](/api-reference/enums.md#rolepermissionorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### UserScopeFilter
 
@@ -819,8 +819,8 @@ Ordering options for user scopes.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [UserScopeOrderField!](/api-reference/enums.md#userscopeorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [UserScopeOrderField!](/api-reference/enums.md#userscopeorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### RoleAssignInput
 
@@ -830,7 +830,7 @@ Input for assigning a role to an actor.
 | ----- | ---- | ----------- |
 | `actorId` | `ID!` | The actor ID (user or integration). |
 | `roleId` | `ID!` | The role ID to assign. |
-| `expireDate` | [DateTime](/api-reference/scalars.md#datetime/) | The expiration date. Null means the role is permanent. |
+| `expireDate` | [DateTime](/api-reference/scalars.md#datetime) | The expiration date. Null means the role is permanent. |
 
 ### RoleRevokeInput
 
@@ -849,7 +849,7 @@ Input for granting a permission to a role.
 | `roleId` | `ID!` | The role ID. |
 | `permissionScopeId` | `ID!` | The permission scope ID. |
 | `targetEntityId` | `ID` | The specific entity ID. Null means all entities of the type. |
-| `actions` | [[ActionPermission!]!](/api-reference/enums.md#actionpermission/) | The actions to allow. |
+| `actions` | [[ActionPermission!]!](/api-reference/enums.md#actionpermission) | The actions to allow. |
 
 ### PermissionRevokeInput
 
@@ -868,7 +868,7 @@ Input for setting a user scope restriction.
 | `actorId` | `ID!` | The actor ID to restrict. |
 | `permissionScopeId` | `ID!` | The permission scope ID. |
 | `targetEntityId` | `ID!` | The specific entity ID to allow access to. |
-| `actions` | [[ActionPermission!]!](/api-reference/enums.md#actionpermission/) | The actions to allow. |
+| `actions` | [[ActionPermission!]!](/api-reference/enums.md#actionpermission) | The actions to allow. |
 
 ### UserScopeRemoveInput
 
@@ -885,10 +885,10 @@ Input for creating a role.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### RoleUpdateInput
 
@@ -900,7 +900,7 @@ Input for updating a role.
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ## Custom fields
 
@@ -910,9 +910,9 @@ A filter condition for a custom field value.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The custom field code to filter by. |
-| `operator` | [FieldOperator!](/api-reference/enums.md#fieldoperator/) | The comparison operator. |
-| `value` | [JSON](/api-reference/scalars.md#json/) | The value to compare against. Null for `IS_NULL` and `IS_NOT_NULL` operators. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The custom field code to filter by. |
+| `operator` | [FieldOperator!](/api-reference/enums.md#fieldoperator) | The comparison operator. |
+| `value` | [JSON](/api-reference/scalars.md#json) | The value to compare against. Null for `IS_NULL` and `IS_NOT_NULL` operators. |
 
 ### CustomFieldsPatchInput
 
@@ -920,8 +920,8 @@ Input for updating custom field values using a patch model.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `set` | [JSON](/api-reference/scalars.md#json/) | Fields to set or update as a key-value map. |
-| `unset` | [[Code!]](/api-reference/scalars.md#code/) | Field codes to remove. |
+| `set` | [JSON](/api-reference/scalars.md#json) | Fields to set or update as a key-value map. |
+| `unset` | [[Code!]](/api-reference/scalars.md#code) | Field codes to remove. |
 
 ### CustomFieldDefinitionCreateInput
 
@@ -932,12 +932,12 @@ Input for creating a custom field definition.
 | `organizationId` | `ID!` | The organization ID. |
 | `ownerCatalogItemId` | `ID!` | The owner catalog item ID (EntityType or a specific type like AssetType). |
 | `targetEntityTypeId` | `ID!` | The target entity type ID. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
 | `title` | `String!` | The display name. |
 | `description` | `String` | The description. |
-| `fieldType` | [FieldType!](/api-reference/enums.md#fieldtype/) | The data type. Immutable after creation. |
+| `fieldType` | [FieldType!](/api-reference/enums.md#fieldtype) | The data type. Immutable after creation. |
 | `order` | `Int` | The display order. |
-| `params` | [FieldParamsInput!](/api-reference/inputs.md#fieldparamsinput/) | The type-specific parameters. Exactly one variant must be provided. |
+| `params` | [FieldParamsInput!](/api-reference/inputs.md#fieldparamsinput) | The type-specific parameters. Exactly one variant must be provided. |
 
 ### CustomFieldDefinitionUpdateInput
 
@@ -950,7 +950,7 @@ Input for updating a custom field definition. Note: `fieldType` cannot be change
 | `title` | `String` | The new display name. |
 | `description` | `String` | The new description. |
 | `order` | `Int` | The new display order. |
-| `params` | [FieldParamsInput](/api-reference/inputs.md#fieldparamsinput/) | The updated parameters. Only `isRequired` and type-specific fields can be changed. |
+| `params` | [FieldParamsInput](/api-reference/inputs.md#fieldparamsinput) | The updated parameters. Only `isRequired` and type-specific fields can be changed. |
 
 ### CustomFieldDefinitionDeleteInput
 
@@ -967,19 +967,19 @@ Field parameters input. Exactly one field must be provided.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `string` | [StringFieldParamsInput](/api-reference/inputs.md#stringfieldparamsinput/) | Parameters for STRING field type. |
-| `text` | [TextFieldParamsInput](/api-reference/inputs.md#textfieldparamsinput/) | Parameters for TEXT field type. |
-| `number` | [NumberFieldParamsInput](/api-reference/inputs.md#numberfieldparamsinput/) | Parameters for NUMBER field type. |
-| `boolean` | [BooleanFieldParamsInput](/api-reference/inputs.md#booleanfieldparamsinput/) | Parameters for BOOLEAN field type. |
-| `date` | [DateFieldParamsInput](/api-reference/inputs.md#datefieldparamsinput/) | Parameters for DATE field type. |
-| `datetime` | [DateTimeFieldParamsInput](/api-reference/inputs.md#datetimefieldparamsinput/) | Parameters for DATETIME field type. |
-| `geojson` | [GeoJsonFieldParamsInput](/api-reference/inputs.md#geojsonfieldparamsinput/) | Parameters for GEOJSON field type. |
-| `schedule` | [ScheduleFieldParamsInput](/api-reference/inputs.md#schedulefieldparamsinput/) | Parameters for SCHEDULE field type. |
-| `options` | [OptionsFieldParamsInput](/api-reference/inputs.md#optionsfieldparamsinput/) | Parameters for OPTIONS field type. |
-| `device` | [DeviceFieldParamsInput](/api-reference/inputs.md#devicefieldparamsinput/) | Parameters for DEVICE field type. |
-| `reference` | [ReferenceFieldParamsInput](/api-reference/inputs.md#referencefieldparamsinput/) | Parameters for REFERENCE field type. |
-| `catalog` | [CatalogFieldParamsInput](/api-reference/inputs.md#catalogfieldparamsinput/) | Parameters for CATALOG field type. |
-| `tag` | [TagFieldParamsInput](/api-reference/inputs.md#tagfieldparamsinput/) | Parameters for TAG field type. |
+| `string` | [StringFieldParamsInput](/api-reference/inputs.md#stringfieldparamsinput) | Parameters for STRING field type. |
+| `text` | [TextFieldParamsInput](/api-reference/inputs.md#textfieldparamsinput) | Parameters for TEXT field type. |
+| `number` | [NumberFieldParamsInput](/api-reference/inputs.md#numberfieldparamsinput) | Parameters for NUMBER field type. |
+| `boolean` | [BooleanFieldParamsInput](/api-reference/inputs.md#booleanfieldparamsinput) | Parameters for BOOLEAN field type. |
+| `date` | [DateFieldParamsInput](/api-reference/inputs.md#datefieldparamsinput) | Parameters for DATE field type. |
+| `datetime` | [DateTimeFieldParamsInput](/api-reference/inputs.md#datetimefieldparamsinput) | Parameters for DATETIME field type. |
+| `geojson` | [GeoJsonFieldParamsInput](/api-reference/inputs.md#geojsonfieldparamsinput) | Parameters for GEOJSON field type. |
+| `schedule` | [ScheduleFieldParamsInput](/api-reference/inputs.md#schedulefieldparamsinput) | Parameters for SCHEDULE field type. |
+| `options` | [OptionsFieldParamsInput](/api-reference/inputs.md#optionsfieldparamsinput) | Parameters for OPTIONS field type. |
+| `device` | [DeviceFieldParamsInput](/api-reference/inputs.md#devicefieldparamsinput) | Parameters for DEVICE field type. |
+| `reference` | [ReferenceFieldParamsInput](/api-reference/inputs.md#referencefieldparamsinput) | Parameters for REFERENCE field type. |
+| `catalog` | [CatalogFieldParamsInput](/api-reference/inputs.md#catalogfieldparamsinput) | Parameters for CATALOG field type. |
+| `tag` | [TagFieldParamsInput](/api-reference/inputs.md#tagfieldparamsinput) | Parameters for TAG field type. |
 
 ### StringFieldParamsInput
 
@@ -1032,7 +1032,7 @@ Parameters for DATE field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | [Date](/api-reference/scalars.md#date/) | The default value. |
+| `defaultValue` | [Date](/api-reference/scalars.md#date) | The default value. |
 
 ### DateTimeFieldParamsInput
 
@@ -1041,7 +1041,7 @@ Parameters for DATETIME field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `defaultValue` | [DateTime](/api-reference/scalars.md#datetime/) | The default value. |
+| `defaultValue` | [DateTime](/api-reference/scalars.md#datetime) | The default value. |
 
 ### GeoJsonFieldParamsInput
 
@@ -1050,7 +1050,7 @@ Parameters for GEOJSON field type.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
-| `allowedTypes` | [[GeoJsonGeometryType!]](/api-reference/enums.md#geojsongeometrytype/) | The allowed geometry types. Null means all types are allowed. |
+| `allowedTypes` | [[GeoJsonGeometryType!]](/api-reference/enums.md#geojsongeometrytype) | The allowed geometry types. Null means all types are allowed. |
 
 ### ScheduleFieldParamsInput
 
@@ -1068,8 +1068,8 @@ Parameters for OPTIONS field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple options can be selected. |
-| `options` | [[FieldOptionInput!]!](/api-reference/inputs.md#fieldoptioninput/) | The available options. |
-| `defaultValue` | [Code](/api-reference/scalars.md#code/) | The default option code. |
+| `options` | [[FieldOptionInput!]!](/api-reference/inputs.md#fieldoptioninput) | The available options. |
+| `defaultValue` | [Code](/api-reference/scalars.md#code) | The default option code. |
 
 ### FieldOptionInput
 
@@ -1077,7 +1077,7 @@ Input for an option definition.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The unique code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The unique code. |
 | `label` | `String!` | The display label. |
 | `description` | `String` | The description. |
 | `isArchived` | `Boolean` | Whether this option is archived. |
@@ -1090,7 +1090,7 @@ Parameters for REFERENCE field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple references can be selected. |
-| `refEntityTypeCode` | [Code!](/api-reference/scalars.md#code/) | The entity type code that can be referenced. |
+| `refEntityTypeCode` | [Code!](/api-reference/scalars.md#code) | The entity type code that can be referenced. |
 
 ### CatalogFieldParamsInput
 
@@ -1100,8 +1100,8 @@ Parameters for CATALOG field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple items can be selected. |
-| `refCatalogCode` | [Code!](/api-reference/scalars.md#code/) | The catalog code that items can be selected from. |
-| `defaultValue` | [Code](/api-reference/scalars.md#code/) | The default item code. |
+| `refCatalogCode` | [Code!](/api-reference/scalars.md#code) | The catalog code that items can be selected from. |
+| `defaultValue` | [Code](/api-reference/scalars.md#code) | The default item code. |
 
 ### TagFieldParamsInput
 
@@ -1111,7 +1111,7 @@ Parameters for TAG field type.
 | ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
 | `isMulti` | `Boolean` | Whether multiple tags can be selected. |
-| `defaultValue` | [Code](/api-reference/scalars.md#code/) | The default tag code. |
+| `defaultValue` | [Code](/api-reference/scalars.md#code) | The default tag code. |
 
 ## Filtering & ordering
 
@@ -1122,7 +1122,7 @@ Filtering options for catalog items.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `title` | `String` | Search in title (case-insensitive contains). |
-| `codes` | [[Code!]](/api-reference/scalars.md#code/) | Match any of these codes. |
+| `codes` | [[Code!]](/api-reference/scalars.md#code) | Match any of these codes. |
 
 ### CatalogItemChildrenFilter
 
@@ -1138,8 +1138,8 @@ Ordering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [CatalogItemOrderField!](/api-reference/enums.md#catalogitemorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [CatalogItemOrderField!](/api-reference/enums.md#catalogitemorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ### TagFilter
 
@@ -1156,13 +1156,13 @@ Filtering options for audit events.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `actorIds` | `[ID!]` | Filter by actors (OR within field). |
-| `aggregateTypes` | [[Code!]](/api-reference/scalars.md#code/) | Filter by entity types (OR within field). |
+| `aggregateTypes` | [[Code!]](/api-reference/scalars.md#code) | Filter by entity types (OR within field). |
 | `aggregateIds` | `[ID!]` | Filter by specific entity IDs (OR within field). |
-| `eventTypes` | [[AuditEventType!]](/api-reference/enums.md#auditeventtype/) | Filter by event types (OR within field). |
-| `sourceTypes` | [[SourceType!]](/api-reference/enums.md#sourcetype/) | Filter by source types (OR within field). |
+| `eventTypes` | [[AuditEventType!]](/api-reference/enums.md#auditeventtype) | Filter by event types (OR within field). |
+| `sourceTypes` | [[SourceType!]](/api-reference/enums.md#sourcetype) | Filter by source types (OR within field). |
 | `traceId` | `String` | Filter by trace ID. |
-| `from` | [DateTime](/api-reference/scalars.md#datetime/) | Return events that occurred after this timestamp. |
-| `to` | [DateTime](/api-reference/scalars.md#datetime/) | Return events that occurred before this timestamp. |
+| `from` | [DateTime](/api-reference/scalars.md#datetime) | Return events that occurred after this timestamp. |
+| `to` | [DateTime](/api-reference/scalars.md#datetime) | Return events that occurred before this timestamp. |
 
 ### AuditEventOrder
 
@@ -1170,8 +1170,8 @@ Ordering options for audit events.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [AuditEventOrderField!](/api-reference/enums.md#auditeventorderfield/) | The field to order by. |
-| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection/) | The direction to order. |
+| `field` | [AuditEventOrderField!](/api-reference/enums.md#auditeventorderfield) | The field to order by. |
+| `direction` | [OrderDirection!](/api-reference/enums.md#orderdirection) | The direction to order. |
 
 ## Catalog items
 
@@ -1183,8 +1183,8 @@ Display properties for catalog items.
 | ----- | ---- | ----------- |
 | `description` | `String` | The description. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | [HexColorCode](/api-reference/scalars.md#hexcolorcode/) | The text color for UI display. |
-| `backgroundColor` | [HexColorCode](/api-reference/scalars.md#hexcolorcode/) | The background color for UI display. |
+| `textColor` | [HexColorCode](/api-reference/scalars.md#hexcolorcode) | The text color for UI display. |
+| `backgroundColor` | [HexColorCode](/api-reference/scalars.md#hexcolorcode) | The background color for UI display. |
 | `icon` | `String` | A relative URL to the icon. |
 
 ### UserCatalogItemCreateInput
@@ -1195,11 +1195,11 @@ Input for creating a user catalog item.
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `catalogId` | `ID!` | The catalog to add the item to. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code, unique within the catalog and organization. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code, unique within the catalog and organization. |
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. |
 | `parentId` | `ID` | The parent item ID for hierarchical catalogs. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### UserCatalogItemUpdateInput
 
@@ -1212,7 +1212,7 @@ Input for updating a user catalog item.
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
 | `parentId` | `ID` | The new parent ID for hierarchical items. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### TagCreateInput
 
@@ -1221,11 +1221,11 @@ Input for creating a tag.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code/) | The machine-readable code. |
+| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
 | `title` | `String!` | The display name. |
 | `order` | `Int` | The display order. |
 | `entityTypeIds` | `[ID!]` | The entity types this tag can be applied to. Empty means universal. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### TagUpdateInput
 
@@ -1238,7 +1238,7 @@ Input for updating a tag.
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
 | `entityTypeIds` | `[ID!]` | Replace entity types. Null means no change, empty means universal. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput/) | The display properties. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
 ### CatalogItemDeleteInput
 
@@ -1257,8 +1257,8 @@ Input for a geographic coordinate point.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `lat` | [Latitude!](/api-reference/scalars.md#latitude/) | The latitude coordinate (-90 to 90 degrees). |
-| `lng` | [Longitude!](/api-reference/scalars.md#longitude/) | The longitude coordinate (-180 to 180 degrees). |
+| `lat` | [Latitude!](/api-reference/scalars.md#latitude) | The latitude coordinate (-90 to 90 degrees). |
+| `lng` | [Longitude!](/api-reference/scalars.md#longitude) | The longitude coordinate (-180 to 180 degrees). |
 | `altitude` | `Float` | The altitude in meters above sea level. |
 | `accuracy` | `Float` | The horizontal accuracy in meters. |
 
@@ -1268,7 +1268,7 @@ Input for updating the current user's profile.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `name` | [PersonNameInput!](/api-reference/inputs.md#personnameinput/) | The structured name components. |
+| `name` | [PersonNameInput!](/api-reference/inputs.md#personnameinput) | The structured name components. |
 
 ### DeviceRelationCreateInput
 

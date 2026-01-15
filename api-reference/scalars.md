@@ -1,6 +1,6 @@
 # Scalars
 
-Navixy Repository API defines these custom scalar types in addition to the standard GraphQL scalars. See [GraphQL basics](../graphql-basics.md#scalar-types/) for the description of the predefined scalars (String, Int, Float, Boolean, ID).
+Navixy Repository API defines these custom scalar types in addition to the standard GraphQL scalars. See [GraphQL basics](../graphql-basics.md#scalar-types) for the description of the predefined scalars (String, Int, Float, Boolean, ID).
 
 ## DateTime
 

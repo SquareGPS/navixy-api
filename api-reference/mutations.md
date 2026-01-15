@@ -18,9 +18,9 @@ deviceCreate(input: DeviceCreateInput!): DevicePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceCreateInput!](/api-reference/inputs.md#devicecreateinput/) | The input fields for creating the device. |
+| `input` | [DeviceCreateInput!](/api-reference/inputs.md#devicecreateinput) | The input fields for creating the device. |
 
-**Returns:** [DevicePayload](/api-reference/objects.md#devicepayload/)
+**Returns:** [DevicePayload](/api-reference/objects.md#devicepayload)
 
 ### deviceUpdate
 
@@ -34,9 +34,9 @@ deviceUpdate(input: DeviceUpdateInput!): DevicePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceUpdateInput!](/api-reference/inputs.md#deviceupdateinput/) | The input fields for updating the device. |
+| `input` | [DeviceUpdateInput!](/api-reference/inputs.md#deviceupdateinput) | The input fields for updating the device. |
 
-**Returns:** [DevicePayload](/api-reference/objects.md#devicepayload/)
+**Returns:** [DevicePayload](/api-reference/objects.md#devicepayload)
 
 ### deviceDelete
 
@@ -50,9 +50,9 @@ deviceDelete(input: DeviceDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceDeleteInput!](/api-reference/inputs.md#devicedeleteinput/) | The input fields for deleting the device. |
+| `input` | [DeviceDeleteInput!](/api-reference/inputs.md#devicedeleteinput) | The input fields for deleting the device. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### deviceIdentifierAdd
 
@@ -68,9 +68,9 @@ deviceIdentifierAdd(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceIdentifierAddInput!](/api-reference/inputs.md#deviceidentifieraddinput/) | The input fields for adding the identifier. |
+| `input` | [DeviceIdentifierAddInput!](/api-reference/inputs.md#deviceidentifieraddinput) | The input fields for adding the identifier. |
 
-**Returns:** [DeviceIdentifierPayload](/api-reference/objects.md#deviceidentifierpayload/)
+**Returns:** [DeviceIdentifierPayload](/api-reference/objects.md#deviceidentifierpayload)
 
 ### deviceIdentifierRemove
 
@@ -86,9 +86,9 @@ deviceIdentifierRemove(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceIdentifierRemoveInput!](/api-reference/inputs.md#deviceidentifierremoveinput/) | The input fields for removing the identifier. |
+| `input` | [DeviceIdentifierRemoveInput!](/api-reference/inputs.md#deviceidentifierremoveinput) | The input fields for removing the identifier. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### deviceTypeCreate
 
@@ -102,9 +102,9 @@ deviceTypeCreate(input: DeviceTypeCreateInput!): DeviceTypePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceTypeCreateInput!](/api-reference/inputs.md#devicetypecreateinput/) | The input fields for creating the device type. |
+| `input` | [DeviceTypeCreateInput!](/api-reference/inputs.md#devicetypecreateinput) | The input fields for creating the device type. |
 
-**Returns:** [DeviceTypePayload](/api-reference/objects.md#devicetypepayload/)
+**Returns:** [DeviceTypePayload](/api-reference/objects.md#devicetypepayload)
 
 ### deviceTypeUpdate
 
@@ -118,9 +118,9 @@ deviceTypeUpdate(input: DeviceTypeUpdateInput!): DeviceTypePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceTypeUpdateInput!](/api-reference/inputs.md#devicetypeupdateinput/) | The input fields for updating the device type. |
+| `input` | [DeviceTypeUpdateInput!](/api-reference/inputs.md#devicetypeupdateinput) | The input fields for updating the device type. |
 
-**Returns:** [DeviceTypePayload](/api-reference/objects.md#devicetypepayload/)
+**Returns:** [DeviceTypePayload](/api-reference/objects.md#devicetypepayload)
 
 ### deviceTypeDelete
 
@@ -134,9 +134,9 @@ deviceTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the device type. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput) | The input fields for deleting the device type. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### deviceStatusCreate
 
@@ -152,9 +152,9 @@ deviceStatusCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceStatusCreateInput!](/api-reference/inputs.md#devicestatuscreateinput/) | The input fields for creating the device status. |
+| `input` | [DeviceStatusCreateInput!](/api-reference/inputs.md#devicestatuscreateinput) | The input fields for creating the device status. |
 
-**Returns:** [DeviceStatusPayload](/api-reference/objects.md#devicestatuspayload/)
+**Returns:** [DeviceStatusPayload](/api-reference/objects.md#devicestatuspayload)
 
 ### deviceStatusUpdate
 
@@ -170,9 +170,9 @@ deviceStatusUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceStatusUpdateInput!](/api-reference/inputs.md#devicestatusupdateinput/) | The input fields for updating the device status. |
+| `input` | [DeviceStatusUpdateInput!](/api-reference/inputs.md#devicestatusupdateinput) | The input fields for updating the device status. |
 
-**Returns:** [DeviceStatusPayload](/api-reference/objects.md#devicestatuspayload/)
+**Returns:** [DeviceStatusPayload](/api-reference/objects.md#devicestatuspayload)
 
 ### deviceStatusDelete
 
@@ -186,9 +186,9 @@ deviceStatusDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the device status. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput) | The input fields for deleting the device status. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Assets
 
@@ -204,9 +204,9 @@ assetCreate(input: AssetCreateInput!): AssetPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetCreateInput!](/api-reference/inputs.md#assetcreateinput/) | The input fields for creating the asset. |
+| `input` | [AssetCreateInput!](/api-reference/inputs.md#assetcreateinput) | The input fields for creating the asset. |
 
-**Returns:** [AssetPayload](/api-reference/objects.md#assetpayload/)
+**Returns:** [AssetPayload](/api-reference/objects.md#assetpayload)
 
 ### assetUpdate
 
@@ -220,9 +220,9 @@ assetUpdate(input: AssetUpdateInput!): AssetPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetUpdateInput!](/api-reference/inputs.md#assetupdateinput/) | The input fields for updating the asset. |
+| `input` | [AssetUpdateInput!](/api-reference/inputs.md#assetupdateinput) | The input fields for updating the asset. |
 
-**Returns:** [AssetPayload](/api-reference/objects.md#assetpayload/)
+**Returns:** [AssetPayload](/api-reference/objects.md#assetpayload)
 
 ### assetDelete
 
@@ -236,9 +236,9 @@ assetDelete(input: AssetDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetDeleteInput!](/api-reference/inputs.md#assetdeleteinput/) | The input fields for deleting the asset. |
+| `input` | [AssetDeleteInput!](/api-reference/inputs.md#assetdeleteinput) | The input fields for deleting the asset. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### assetTypeCreate
 
@@ -252,9 +252,9 @@ assetTypeCreate(input: AssetTypeCreateInput!): AssetTypePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetTypeCreateInput!](/api-reference/inputs.md#assettypecreateinput/) | The input fields for creating the asset type. |
+| `input` | [AssetTypeCreateInput!](/api-reference/inputs.md#assettypecreateinput) | The input fields for creating the asset type. |
 
-**Returns:** [AssetTypePayload](/api-reference/objects.md#assettypepayload/)
+**Returns:** [AssetTypePayload](/api-reference/objects.md#assettypepayload)
 
 ### assetTypeUpdate
 
@@ -268,9 +268,9 @@ assetTypeUpdate(input: AssetTypeUpdateInput!): AssetTypePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetTypeUpdateInput!](/api-reference/inputs.md#assettypeupdateinput/) | The input fields for updating the asset type. |
+| `input` | [AssetTypeUpdateInput!](/api-reference/inputs.md#assettypeupdateinput) | The input fields for updating the asset type. |
 
-**Returns:** [AssetTypePayload](/api-reference/objects.md#assettypepayload/)
+**Returns:** [AssetTypePayload](/api-reference/objects.md#assettypepayload)
 
 ### assetTypeDelete
 
@@ -284,9 +284,9 @@ assetTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the asset type. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput) | The input fields for deleting the asset type. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Asset groups
 
@@ -302,9 +302,9 @@ assetGroupCreate(input: AssetGroupCreateInput!): AssetGroupPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupCreateInput!](/api-reference/inputs.md#assetgroupcreateinput/) | The input fields for creating the asset group. |
+| `input` | [AssetGroupCreateInput!](/api-reference/inputs.md#assetgroupcreateinput) | The input fields for creating the asset group. |
 
-**Returns:** [AssetGroupPayload](/api-reference/objects.md#assetgrouppayload/)
+**Returns:** [AssetGroupPayload](/api-reference/objects.md#assetgrouppayload)
 
 ### assetGroupUpdate
 
@@ -318,9 +318,9 @@ assetGroupUpdate(input: AssetGroupUpdateInput!): AssetGroupPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupUpdateInput!](/api-reference/inputs.md#assetgroupupdateinput/) | The input fields for updating the asset group. |
+| `input` | [AssetGroupUpdateInput!](/api-reference/inputs.md#assetgroupupdateinput) | The input fields for updating the asset group. |
 
-**Returns:** [AssetGroupPayload](/api-reference/objects.md#assetgrouppayload/)
+**Returns:** [AssetGroupPayload](/api-reference/objects.md#assetgrouppayload)
 
 ### assetGroupDelete
 
@@ -334,9 +334,9 @@ assetGroupDelete(input: AssetGroupDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupDeleteInput!](/api-reference/inputs.md#assetgroupdeleteinput/) | The input fields for deleting the asset group. |
+| `input` | [AssetGroupDeleteInput!](/api-reference/inputs.md#assetgroupdeleteinput) | The input fields for deleting the asset group. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### assetGroupItemAdd
 
@@ -352,9 +352,9 @@ assetGroupItemAdd(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupItemAddInput!](/api-reference/inputs.md#assetgroupitemaddinput/) | The input fields for adding the asset to the group. |
+| `input` | [AssetGroupItemAddInput!](/api-reference/inputs.md#assetgroupitemaddinput) | The input fields for adding the asset to the group. |
 
-**Returns:** [AssetGroupItemPayload](/api-reference/objects.md#assetgroupitempayload/)
+**Returns:** [AssetGroupItemPayload](/api-reference/objects.md#assetgroupitempayload)
 
 ### assetGroupItemRemove
 
@@ -368,9 +368,9 @@ assetGroupItemRemove(input: AssetGroupItemRemoveInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupItemRemoveInput!](/api-reference/inputs.md#assetgroupitemremoveinput/) | The input fields for removing the asset from the group. |
+| `input` | [AssetGroupItemRemoveInput!](/api-reference/inputs.md#assetgroupitemremoveinput) | The input fields for removing the asset from the group. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### assetGroupTypeCreate
 
@@ -386,9 +386,9 @@ assetGroupTypeCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupTypeCreateInput!](/api-reference/inputs.md#assetgrouptypecreateinput/) | The input fields for creating the asset group type. |
+| `input` | [AssetGroupTypeCreateInput!](/api-reference/inputs.md#assetgrouptypecreateinput) | The input fields for creating the asset group type. |
 
-**Returns:** [AssetGroupTypePayload](/api-reference/objects.md#assetgrouptypepayload/)
+**Returns:** [AssetGroupTypePayload](/api-reference/objects.md#assetgrouptypepayload)
 
 ### assetGroupTypeUpdate
 
@@ -404,9 +404,9 @@ assetGroupTypeUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupTypeUpdateInput!](/api-reference/inputs.md#assetgrouptypeupdateinput/) | The input fields for updating the asset group type. |
+| `input` | [AssetGroupTypeUpdateInput!](/api-reference/inputs.md#assetgrouptypeupdateinput) | The input fields for updating the asset group type. |
 
-**Returns:** [AssetGroupTypePayload](/api-reference/objects.md#assetgrouptypepayload/)
+**Returns:** [AssetGroupTypePayload](/api-reference/objects.md#assetgrouptypepayload)
 
 ### assetGroupTypeDelete
 
@@ -420,9 +420,9 @@ assetGroupTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the asset group type. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput) | The input fields for deleting the asset group type. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Geo objects
 
@@ -438,9 +438,9 @@ geoObjectCreate(input: GeoObjectCreateInput!): GeoObjectPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectCreateInput!](/api-reference/inputs.md#geoobjectcreateinput/) | The input fields for creating the geo object. |
+| `input` | [GeoObjectCreateInput!](/api-reference/inputs.md#geoobjectcreateinput) | The input fields for creating the geo object. |
 
-**Returns:** [GeoObjectPayload](/api-reference/objects.md#geoobjectpayload/)
+**Returns:** [GeoObjectPayload](/api-reference/objects.md#geoobjectpayload)
 
 ### geoObjectUpdate
 
@@ -454,9 +454,9 @@ geoObjectUpdate(input: GeoObjectUpdateInput!): GeoObjectPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectUpdateInput!](/api-reference/inputs.md#geoobjectupdateinput/) | The input fields for updating the geo object. |
+| `input` | [GeoObjectUpdateInput!](/api-reference/inputs.md#geoobjectupdateinput) | The input fields for updating the geo object. |
 
-**Returns:** [GeoObjectPayload](/api-reference/objects.md#geoobjectpayload/)
+**Returns:** [GeoObjectPayload](/api-reference/objects.md#geoobjectpayload)
 
 ### geoObjectDelete
 
@@ -470,9 +470,9 @@ geoObjectDelete(input: GeoObjectDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectDeleteInput!](/api-reference/inputs.md#geoobjectdeleteinput/) | The input fields for deleting the geo object. |
+| `input` | [GeoObjectDeleteInput!](/api-reference/inputs.md#geoobjectdeleteinput) | The input fields for deleting the geo object. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### geoObjectTypeCreate
 
@@ -488,9 +488,9 @@ geoObjectTypeCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectTypeCreateInput!](/api-reference/inputs.md#geoobjecttypecreateinput/) | The input fields for creating the geo object type. |
+| `input` | [GeoObjectTypeCreateInput!](/api-reference/inputs.md#geoobjecttypecreateinput) | The input fields for creating the geo object type. |
 
-**Returns:** [GeoObjectTypePayload](/api-reference/objects.md#geoobjecttypepayload/)
+**Returns:** [GeoObjectTypePayload](/api-reference/objects.md#geoobjecttypepayload)
 
 ### geoObjectTypeUpdate
 
@@ -506,9 +506,9 @@ geoObjectTypeUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectTypeUpdateInput!](/api-reference/inputs.md#geoobjecttypeupdateinput/) | The input fields for updating the geo object type. |
+| `input` | [GeoObjectTypeUpdateInput!](/api-reference/inputs.md#geoobjecttypeupdateinput) | The input fields for updating the geo object type. |
 
-**Returns:** [GeoObjectTypePayload](/api-reference/objects.md#geoobjecttypepayload/)
+**Returns:** [GeoObjectTypePayload](/api-reference/objects.md#geoobjecttypepayload)
 
 ### geoObjectTypeDelete
 
@@ -522,9 +522,9 @@ geoObjectTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the geo object type. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput) | The input fields for deleting the geo object type. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Schedules
 
@@ -540,9 +540,9 @@ scheduleCreate(input: ScheduleCreateInput!): SchedulePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleCreateInput!](/api-reference/inputs.md#schedulecreateinput/) | The input fields for creating the schedule. |
+| `input` | [ScheduleCreateInput!](/api-reference/inputs.md#schedulecreateinput) | The input fields for creating the schedule. |
 
-**Returns:** [SchedulePayload](/api-reference/objects.md#schedulepayload/)
+**Returns:** [SchedulePayload](/api-reference/objects.md#schedulepayload)
 
 ### scheduleUpdate
 
@@ -556,9 +556,9 @@ scheduleUpdate(input: ScheduleUpdateInput!): SchedulePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleUpdateInput!](/api-reference/inputs.md#scheduleupdateinput/) | The input fields for updating the schedule. |
+| `input` | [ScheduleUpdateInput!](/api-reference/inputs.md#scheduleupdateinput) | The input fields for updating the schedule. |
 
-**Returns:** [SchedulePayload](/api-reference/objects.md#schedulepayload/)
+**Returns:** [SchedulePayload](/api-reference/objects.md#schedulepayload)
 
 ### scheduleDelete
 
@@ -572,9 +572,9 @@ scheduleDelete(input: ScheduleDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleDeleteInput!](/api-reference/inputs.md#scheduledeleteinput/) | The input fields for deleting the schedule. |
+| `input` | [ScheduleDeleteInput!](/api-reference/inputs.md#scheduledeleteinput) | The input fields for deleting the schedule. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Inventory
 
@@ -590,9 +590,9 @@ inventoryCreate(input: InventoryCreateInput!): InventoryPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [InventoryCreateInput!](/api-reference/inputs.md#inventorycreateinput/) | The input fields for creating the inventory. |
+| `input` | [InventoryCreateInput!](/api-reference/inputs.md#inventorycreateinput) | The input fields for creating the inventory. |
 
-**Returns:** [InventoryPayload](/api-reference/objects.md#inventorypayload/)
+**Returns:** [InventoryPayload](/api-reference/objects.md#inventorypayload)
 
 ### inventoryUpdate
 
@@ -606,9 +606,9 @@ inventoryUpdate(input: InventoryUpdateInput!): InventoryPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [InventoryUpdateInput!](/api-reference/inputs.md#inventoryupdateinput/) | The input fields for updating the inventory. |
+| `input` | [InventoryUpdateInput!](/api-reference/inputs.md#inventoryupdateinput) | The input fields for updating the inventory. |
 
-**Returns:** [InventoryPayload](/api-reference/objects.md#inventorypayload/)
+**Returns:** [InventoryPayload](/api-reference/objects.md#inventorypayload)
 
 ### inventoryDelete
 
@@ -622,9 +622,9 @@ inventoryDelete(input: InventoryDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [InventoryDeleteInput!](/api-reference/inputs.md#inventorydeleteinput/) | The input fields for deleting the inventory. |
+| `input` | [InventoryDeleteInput!](/api-reference/inputs.md#inventorydeleteinput) | The input fields for deleting the inventory. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Organizations
 
@@ -642,9 +642,9 @@ organizationCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [OrganizationCreateInput!](/api-reference/inputs.md#organizationcreateinput/) | The input fields for creating the organization. |
+| `input` | [OrganizationCreateInput!](/api-reference/inputs.md#organizationcreateinput) | The input fields for creating the organization. |
 
-**Returns:** [OrganizationPayload](/api-reference/objects.md#organizationpayload/)
+**Returns:** [OrganizationPayload](/api-reference/objects.md#organizationpayload)
 
 ### organizationUpdate
 
@@ -660,9 +660,9 @@ organizationUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [OrganizationUpdateInput!](/api-reference/inputs.md#organizationupdateinput/) | The input fields for updating the organization. |
+| `input` | [OrganizationUpdateInput!](/api-reference/inputs.md#organizationupdateinput) | The input fields for updating the organization. |
 
-**Returns:** [OrganizationPayload](/api-reference/objects.md#organizationpayload/)
+**Returns:** [OrganizationPayload](/api-reference/objects.md#organizationpayload)
 
 ### organizationDelete
 
@@ -676,9 +676,9 @@ organizationDelete(input: OrganizationDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [OrganizationDeleteInput!](/api-reference/inputs.md#organizationdeleteinput/) | The input fields for deleting the organization. |
+| `input` | [OrganizationDeleteInput!](/api-reference/inputs.md#organizationdeleteinput) | The input fields for deleting the organization. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## User profile
 
@@ -694,9 +694,9 @@ myProfileUpdate(input: MyProfileUpdateInput!): UserPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [MyProfileUpdateInput!](/api-reference/inputs.md#myprofileupdateinput/) | The input fields for updating the profile. |
+| `input` | [MyProfileUpdateInput!](/api-reference/inputs.md#myprofileupdateinput) | The input fields for updating the profile. |
 
-**Returns:** [UserPayload](/api-reference/objects.md#userpayload/)
+**Returns:** [UserPayload](/api-reference/objects.md#userpayload)
 
 ## Members
 
@@ -712,9 +712,9 @@ memberCreate(input: MemberCreateInput!): MemberPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [MemberCreateInput!](/api-reference/inputs.md#membercreateinput/) | The input fields for creating the membership. |
+| `input` | [MemberCreateInput!](/api-reference/inputs.md#membercreateinput) | The input fields for creating the membership. |
 
-**Returns:** [MemberPayload](/api-reference/objects.md#memberpayload/)
+**Returns:** [MemberPayload](/api-reference/objects.md#memberpayload)
 
 ### memberUpdate
 
@@ -728,9 +728,9 @@ memberUpdate(input: MemberUpdateInput!): MemberPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [MemberUpdateInput!](/api-reference/inputs.md#memberupdateinput/) | The input fields for updating the membership. |
+| `input` | [MemberUpdateInput!](/api-reference/inputs.md#memberupdateinput) | The input fields for updating the membership. |
 
-**Returns:** [MemberPayload](/api-reference/objects.md#memberpayload/)
+**Returns:** [MemberPayload](/api-reference/objects.md#memberpayload)
 
 ### memberRemove
 
@@ -744,9 +744,9 @@ memberRemove(input: MemberRemoveInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [MemberRemoveInput!](/api-reference/inputs.md#memberremoveinput/) | The input fields for removing the membership. |
+| `input` | [MemberRemoveInput!](/api-reference/inputs.md#memberremoveinput) | The input fields for removing the membership. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Integrations
 
@@ -762,9 +762,9 @@ integrationCreate(input: IntegrationCreateInput!): IntegrationPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [IntegrationCreateInput!](/api-reference/inputs.md#integrationcreateinput/) | The input fields for creating the integration. |
+| `input` | [IntegrationCreateInput!](/api-reference/inputs.md#integrationcreateinput) | The input fields for creating the integration. |
 
-**Returns:** [IntegrationPayload](/api-reference/objects.md#integrationpayload/)
+**Returns:** [IntegrationPayload](/api-reference/objects.md#integrationpayload)
 
 ### integrationUpdate
 
@@ -778,9 +778,9 @@ integrationUpdate(input: IntegrationUpdateInput!): IntegrationPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [IntegrationUpdateInput!](/api-reference/inputs.md#integrationupdateinput/) | The input fields for updating the integration. |
+| `input` | [IntegrationUpdateInput!](/api-reference/inputs.md#integrationupdateinput) | The input fields for updating the integration. |
 
-**Returns:** [IntegrationPayload](/api-reference/objects.md#integrationpayload/)
+**Returns:** [IntegrationPayload](/api-reference/objects.md#integrationpayload)
 
 ### integrationDelete
 
@@ -794,9 +794,9 @@ integrationDelete(input: IntegrationDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [IntegrationDeleteInput!](/api-reference/inputs.md#integrationdeleteinput/) | The input fields for deleting the integration. |
+| `input` | [IntegrationDeleteInput!](/api-reference/inputs.md#integrationdeleteinput) | The input fields for deleting the integration. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Access control
 
@@ -812,9 +812,9 @@ roleAssign(input: RoleAssignInput!): ActorRolePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [RoleAssignInput!](/api-reference/inputs.md#roleassigninput/) | The input fields for assigning the role. |
+| `input` | [RoleAssignInput!](/api-reference/inputs.md#roleassigninput) | The input fields for assigning the role. |
 
-**Returns:** [ActorRolePayload](/api-reference/objects.md#actorrolepayload/)
+**Returns:** [ActorRolePayload](/api-reference/objects.md#actorrolepayload)
 
 ### roleRevoke
 
@@ -828,9 +828,9 @@ roleRevoke(input: RoleRevokeInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [RoleRevokeInput!](/api-reference/inputs.md#rolerevokeinput/) | The input fields for revoking the role. |
+| `input` | [RoleRevokeInput!](/api-reference/inputs.md#rolerevokeinput) | The input fields for revoking the role. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### permissionGrant
 
@@ -844,9 +844,9 @@ permissionGrant(input: PermissionGrantInput!): RolePermissionPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [PermissionGrantInput!](/api-reference/inputs.md#permissiongrantinput/) | The input fields for granting the permission. |
+| `input` | [PermissionGrantInput!](/api-reference/inputs.md#permissiongrantinput) | The input fields for granting the permission. |
 
-**Returns:** [RolePermissionPayload](/api-reference/objects.md#rolepermissionpayload/)
+**Returns:** [RolePermissionPayload](/api-reference/objects.md#rolepermissionpayload)
 
 ### permissionRevoke
 
@@ -860,9 +860,9 @@ permissionRevoke(input: PermissionRevokeInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [PermissionRevokeInput!](/api-reference/inputs.md#permissionrevokeinput/) | The input fields for revoking the permission. |
+| `input` | [PermissionRevokeInput!](/api-reference/inputs.md#permissionrevokeinput) | The input fields for revoking the permission. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### userScopeSet
 
@@ -876,9 +876,9 @@ userScopeSet(input: UserScopeSetInput!): UserScopePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [UserScopeSetInput!](/api-reference/inputs.md#userscopesetinput/) | The input fields for setting the user scope. |
+| `input` | [UserScopeSetInput!](/api-reference/inputs.md#userscopesetinput) | The input fields for setting the user scope. |
 
-**Returns:** [UserScopePayload](/api-reference/objects.md#userscopepayload/)
+**Returns:** [UserScopePayload](/api-reference/objects.md#userscopepayload)
 
 ### userScopeRemove
 
@@ -892,9 +892,9 @@ userScopeRemove(input: UserScopeRemoveInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [UserScopeRemoveInput!](/api-reference/inputs.md#userscoperemoveinput/) | The input fields for removing the user scope. |
+| `input` | [UserScopeRemoveInput!](/api-reference/inputs.md#userscoperemoveinput) | The input fields for removing the user scope. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### roleCreate
 
@@ -908,9 +908,9 @@ roleCreate(input: RoleCreateInput!): RolePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [RoleCreateInput!](/api-reference/inputs.md#rolecreateinput/) | The input fields for creating the role. |
+| `input` | [RoleCreateInput!](/api-reference/inputs.md#rolecreateinput) | The input fields for creating the role. |
 
-**Returns:** [RolePayload](/api-reference/objects.md#rolepayload/)
+**Returns:** [RolePayload](/api-reference/objects.md#rolepayload)
 
 ### roleUpdate
 
@@ -924,9 +924,9 @@ roleUpdate(input: RoleUpdateInput!): RolePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [RoleUpdateInput!](/api-reference/inputs.md#roleupdateinput/) | The input fields for updating the role. |
+| `input` | [RoleUpdateInput!](/api-reference/inputs.md#roleupdateinput) | The input fields for updating the role. |
 
-**Returns:** [RolePayload](/api-reference/objects.md#rolepayload/)
+**Returns:** [RolePayload](/api-reference/objects.md#rolepayload)
 
 ### roleDelete
 
@@ -940,9 +940,9 @@ roleDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the role. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput) | The input fields for deleting the role. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Device relations
 
@@ -960,9 +960,9 @@ deviceInventoryLink(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceInventoryLinkInput!](/api-reference/inputs.md#deviceinventorylinkinput/) | The input fields for linking the device. |
+| `input` | [DeviceInventoryLinkInput!](/api-reference/inputs.md#deviceinventorylinkinput) | The input fields for linking the device. |
 
-**Returns:** [DeviceInventoryRelationPayload](/api-reference/objects.md#deviceinventoryrelationpayload/)
+**Returns:** [DeviceInventoryRelationPayload](/api-reference/objects.md#deviceinventoryrelationpayload)
 
 ### deviceInventoryUnlink
 
@@ -978,9 +978,9 @@ deviceInventoryUnlink(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceInventoryUnlinkInput!](/api-reference/inputs.md#deviceinventoryunlinkinput/) | The input fields for unlinking the device. |
+| `input` | [DeviceInventoryUnlinkInput!](/api-reference/inputs.md#deviceinventoryunlinkinput) | The input fields for unlinking the device. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### deviceRelationCreate
 
@@ -996,9 +996,9 @@ deviceRelationCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceRelationCreateInput!](/api-reference/inputs.md#devicerelationcreateinput/) | The input fields for creating the relationship. |
+| `input` | [DeviceRelationCreateInput!](/api-reference/inputs.md#devicerelationcreateinput) | The input fields for creating the relationship. |
 
-**Returns:** [DeviceRelationPayload](/api-reference/objects.md#devicerelationpayload/)
+**Returns:** [DeviceRelationPayload](/api-reference/objects.md#devicerelationpayload)
 
 ### deviceRelationRemove
 
@@ -1012,9 +1012,9 @@ deviceRelationRemove(input: DeviceRelationRemoveInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceRelationRemoveInput!](/api-reference/inputs.md#devicerelationremoveinput/) | The input fields for removing the relationship. |
+| `input` | [DeviceRelationRemoveInput!](/api-reference/inputs.md#devicerelationremoveinput) | The input fields for removing the relationship. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Custom fields
 
@@ -1032,9 +1032,9 @@ customFieldDefinitionCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CustomFieldDefinitionCreateInput!](/api-reference/inputs.md#customfielddefinitioncreateinput/) | The input fields for creating the definition. |
+| `input` | [CustomFieldDefinitionCreateInput!](/api-reference/inputs.md#customfielddefinitioncreateinput) | The input fields for creating the definition. |
 
-**Returns:** [CustomFieldDefinitionPayload](/api-reference/objects.md#customfielddefinitionpayload/)
+**Returns:** [CustomFieldDefinitionPayload](/api-reference/objects.md#customfielddefinitionpayload)
 
 ### customFieldDefinitionUpdate
 
@@ -1050,9 +1050,9 @@ customFieldDefinitionUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CustomFieldDefinitionUpdateInput!](/api-reference/inputs.md#customfielddefinitionupdateinput/) | The input fields for updating the definition. |
+| `input` | [CustomFieldDefinitionUpdateInput!](/api-reference/inputs.md#customfielddefinitionupdateinput) | The input fields for updating the definition. |
 
-**Returns:** [CustomFieldDefinitionPayload](/api-reference/objects.md#customfielddefinitionpayload/)
+**Returns:** [CustomFieldDefinitionPayload](/api-reference/objects.md#customfielddefinitionpayload)
 
 ### customFieldDefinitionDelete
 
@@ -1068,9 +1068,9 @@ customFieldDefinitionDelete(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CustomFieldDefinitionDeleteInput!](/api-reference/inputs.md#customfielddefinitiondeleteinput/) | The input fields for deleting the definition. |
+| `input` | [CustomFieldDefinitionDeleteInput!](/api-reference/inputs.md#customfielddefinitiondeleteinput) | The input fields for deleting the definition. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ## Catalog items
 
@@ -1088,9 +1088,9 @@ scheduleTypeCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleTypeCreateInput!](/api-reference/inputs.md#scheduletypecreateinput/) | The input fields for creating the schedule type. |
+| `input` | [ScheduleTypeCreateInput!](/api-reference/inputs.md#scheduletypecreateinput) | The input fields for creating the schedule type. |
 
-**Returns:** [ScheduleTypePayload](/api-reference/objects.md#scheduletypepayload/)
+**Returns:** [ScheduleTypePayload](/api-reference/objects.md#scheduletypepayload)
 
 ### scheduleTypeUpdate
 
@@ -1106,9 +1106,9 @@ scheduleTypeUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleTypeUpdateInput!](/api-reference/inputs.md#scheduletypeupdateinput/) | The input fields for updating the schedule type. |
+| `input` | [ScheduleTypeUpdateInput!](/api-reference/inputs.md#scheduletypeupdateinput) | The input fields for updating the schedule type. |
 
-**Returns:** [ScheduleTypePayload](/api-reference/objects.md#scheduletypepayload/)
+**Returns:** [ScheduleTypePayload](/api-reference/objects.md#scheduletypepayload)
 
 ### scheduleTypeDelete
 
@@ -1122,9 +1122,9 @@ scheduleTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the schedule type. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput) | The input fields for deleting the schedule type. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### tagCreate
 
@@ -1138,9 +1138,9 @@ tagCreate(input: TagCreateInput!): TagPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [TagCreateInput!](/api-reference/inputs.md#tagcreateinput/) | The input fields for creating the tag. |
+| `input` | [TagCreateInput!](/api-reference/inputs.md#tagcreateinput) | The input fields for creating the tag. |
 
-**Returns:** [TagPayload](/api-reference/objects.md#tagpayload/)
+**Returns:** [TagPayload](/api-reference/objects.md#tagpayload)
 
 ### tagUpdate
 
@@ -1154,9 +1154,9 @@ tagUpdate(input: TagUpdateInput!): TagPayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [TagUpdateInput!](/api-reference/inputs.md#tagupdateinput/) | The input fields for updating the tag. |
+| `input` | [TagUpdateInput!](/api-reference/inputs.md#tagupdateinput) | The input fields for updating the tag. |
 
-**Returns:** [TagPayload](/api-reference/objects.md#tagpayload/)
+**Returns:** [TagPayload](/api-reference/objects.md#tagpayload)
 
 ### tagDelete
 
@@ -1170,9 +1170,9 @@ tagDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the tag. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput) | The input fields for deleting the tag. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
 
 ### userCatalogItemCreate
 
@@ -1188,9 +1188,9 @@ userCatalogItemCreate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [UserCatalogItemCreateInput!](/api-reference/inputs.md#usercatalogitemcreateinput/) | The input fields for creating the item. |
+| `input` | [UserCatalogItemCreateInput!](/api-reference/inputs.md#usercatalogitemcreateinput) | The input fields for creating the item. |
 
-**Returns:** [UserCatalogItemPayload](/api-reference/objects.md#usercatalogitempayload/)
+**Returns:** [UserCatalogItemPayload](/api-reference/objects.md#usercatalogitempayload)
 
 ### userCatalogItemUpdate
 
@@ -1206,9 +1206,9 @@ userCatalogItemUpdate(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [UserCatalogItemUpdateInput!](/api-reference/inputs.md#usercatalogitemupdateinput/) | The input fields for updating the item. |
+| `input` | [UserCatalogItemUpdateInput!](/api-reference/inputs.md#usercatalogitemupdateinput) | The input fields for updating the item. |
 
-**Returns:** [UserCatalogItemPayload](/api-reference/objects.md#usercatalogitempayload/)
+**Returns:** [UserCatalogItemPayload](/api-reference/objects.md#usercatalogitempayload)
 
 ### userCatalogItemDelete
 
@@ -1222,6 +1222,6 @@ userCatalogItemDelete(input: CatalogItemDeleteInput!): DeletePayload
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput/) | The input fields for deleting the item. |
+| `input` | [CatalogItemDeleteInput!](/api-reference/inputs.md#catalogitemdeleteinput) | The input fields for deleting the item. |
 
-**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload/)
+**Returns:** [DeletePayload](/api-reference/objects.md#deletepayload)
