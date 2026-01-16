@@ -24,6 +24,7 @@
   * [Enums](api-reference/enums.md)
   * [Scalars](api-reference/scalars.md)
   * [Interfaces](api-reference/interfaces.md)
+  * [Directives](api-reference/directives.md)
 * [API reference\_old](api-reference_old/README.md)
   * [Queries](api-reference_old/queries.md)
   * [Mutations](api-reference_old/mutations.md)
