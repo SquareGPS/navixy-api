@@ -240,39 +240,7 @@ Each aliased mutation executes independently. If one fails, others can still suc
 
 ### Directives
 
-Directives modify how fields are executed. GraphQL includes two built-in directives for conditional field inclusion.
-
-#### @include
-
-Include a field only when a condition is true:
-
-```graphql
-query GetDevice($id: ID!, $withDetails: Boolean!) {
-  device(id: $id) {
-    id
-    title
-    customFields @include(if: $withDetails)
-    organization @include(if: $withDetails) { title }
-  }
-}
-```
-
-With `{ "withDetails": false }`, the `customFields` and `organization` fields won't be fetched.
-
-#### @skip
-
-Skip a field when a condition is true (opposite of `@include`):
-
-```graphql
-query GetDevice($id: ID!, $minimal: Boolean!) {
-  device(id: $id) {
-    id
-    title
-    status @skip(if: $minimal) { code title }
-    organization @skip(if: $minimal) { title }
-  }
-}
-```
+Directives modify how fields are executed. GraphQL includes [six built-in directives](../api-reference/directives.md) for conditional field inclusion.
 
 Directives can be used to:
 

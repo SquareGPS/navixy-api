@@ -1,4 +1,8 @@
-# API reference
+---
+hidden: true
+---
+
+# API reference\_old
 
 Navixy Repository API is a powerful asset management system that enables you to create fully customized trackable assets with any properties you need, assign GPS devices to make them location-aware, and establish relationships between assets to model your exact business operations.
 
