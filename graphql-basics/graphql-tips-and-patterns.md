@@ -349,5 +349,5 @@ Instead of writing introspection queries manually, use the [GraphQL Sandbox](htt
 ### Next steps
 
 * [Learn how to set up authentication and make your first request](../getting-started.md)
-* [Browse available operations and types](../api-reference_old/)
+* [Browse available operations and types](/broken/pages/RhtSpHv4wO3lKb3HNIqI)
 * [Understand error responses and codes](../error-handling.md)

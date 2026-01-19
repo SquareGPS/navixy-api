@@ -535,4 +535,4 @@ Now that you understand the basics:
 
 * [Check out GraphQL tips and patterns: variables, fragments, aliases, and more](graphql-basics/graphql-tips-and-patterns.md)
 * [Learn how to set up authentication and make your first request](getting-started.md)
-* [Browse available operations and types](api-reference_old/)
+* [Browse available operations and types](/broken/pages/RhtSpHv4wO3lKb3HNIqI)
