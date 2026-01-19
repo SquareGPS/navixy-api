@@ -6,6 +6,7 @@
 * [Getting started](getting-started.md)
 * [Authentication](authentication.md)
 * [Pagination](pagination.md)
+* [Filtering and sorting](filtering-and-sorting.md)
 * [Error handling](error-handling.md)
 * [Optimistic locking](optimistic-locking.md)
 * [Technical reference](technical-reference.md)
