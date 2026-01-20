@@ -62,7 +62,7 @@ All business logic errors (such as `NOT_FOUND`, `CONFLICT`, or `VALIDATION_ERROR
 
 ### **Validation error (400)**
 
-Returned when the input data doesn't meet requirements.
+Returned when input data fails validation — for example, a required field is missing, a value is out of range, or a string exceeds the maximum length.
 
 ```json
 {
@@ -88,7 +88,7 @@ Returned when the input data doesn't meet requirements.
 
 ### **Permission denied (403)**
 
-Returned when you lack the permission for an operation.
+Returned when you're authenticated but lack the required permission for the requested operation. Navixy Repository API uses role-based access control, so permissions depend on your assigned roles.
 
 ```json
 {
@@ -116,7 +116,7 @@ Returned when you lack the permission for an operation.
 
 ### **Entity not found (404)**
 
-Returned when you request an entity that doesn't exist or has been deleted.
+Returned when the requested entity doesn't exist, has been deleted, or belongs to an organization you don't have access to.
 
 ```json
 {
@@ -143,7 +143,7 @@ Returned when you request an entity that doesn't exist or has been deleted.
 
 ### **Version conflict (409)**
 
-Returned when the entity was modified by another request since you last fetched it. See Optimistic locking for details.
+Returned when the entity was modified by another request since you last fetched it. See [Optimistic locking](optimistic-locking.md) for details.
 
 ```json
 {
@@ -169,6 +169,33 @@ Returned when the entity was modified by another request since you last fetched 
 ```
 
 **How to handle:** Fetch the entity again to get the current version, merge your changes if needed, and retry with the new version in your update input.
+
+### Duplicate (409)
+
+Returned when you try to create or update an entity with a value that must be unique but already exists, such as a device identifier, user email, or catalog item code.
+
+```json
+{
+  "errors": [{
+    "message": "Duplicate device identifier",
+    "path": ["deviceCreate"],
+    "extensions": {
+      "type": "https://api.navixy.com/errors/duplicate",
+      "title": "Duplicate Entry",
+      "status": 409,
+      "detail": "A device with identifier 'IMEI:123456789012345' already exists",
+      "instance": "/graphql",
+      "code": "DUPLICATE",
+      "entityType": "Device",
+      "constraint": "device_identifier_unique",
+      "traceId": "0af7651916cd43dd8448eb211c80319c",
+      "timestamp": "2025-01-15T14:30:00.000Z"
+    }
+  }]
+}
+```
+
+**How to handle:** The `constraint` field indicates which uniqueness rule was violated. Either use a different value or query for the existing entity if you need to update it instead.
 
 ## Best practices
 
