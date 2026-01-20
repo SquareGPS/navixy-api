@@ -204,14 +204,15 @@ Here's a mutation that creates a new asset:
 
 ```graphql
 mutation {
-  createAsset(input: {
+  assetCreate(input: {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
     typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
     title: "Delivery Van 7"
   }) {
-    id
-    title
-    createdAt
+    asset {
+      id
+      title
+    }
   }
 }
 ```
@@ -376,12 +377,14 @@ When using an enum in a query, write the value without quotes:
 
 ```graphql
 mutation {
-  grantPermission(input: {
+  permissionGrant(input: {
     roleId: "..."
     permissionScopeId: "..."
-    actions: [READ, UPDATE]    # Enum values, no quotes
+    actions: [READ, UPDATE]
   }) {
-    id
+    rolePermission {
+      id
+    }
   }
 }
 ```
@@ -394,13 +397,15 @@ In the API reference, you'll see input types like `CreateDeviceInput`, `UpdateAs
 
 ```graphql
 mutation {
-  createAsset(input: {           # CreateAssetInput
+  assetCreate(input: {           # AssetCreateInput
     organizationId: "..."        # Required
     typeId: "..."                # Required
     title: "Delivery Van"        # Required
     customFields: { "vin": "..." }  # Optional
   }) {
-    id
+    asset {
+      id
+    }
   }
 }
 ```
