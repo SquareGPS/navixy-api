@@ -4,7 +4,7 @@ Navixy Repository API defines these custom scalar types in addition to the stand
 
 ## DateTime
 
-[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime with timezone ([RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)).
+An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) datetime string with timezone ([RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)). Example: `2024-01-15T10:30:00Z`.
 
 | Property | Value |
 | -------- | ----- |
@@ -14,7 +14,7 @@ Navixy Repository API defines these custom scalar types in addition to the stand
 
 ## Date
 
-[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date without time component ([RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)).
+An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date string without time component ([RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)). Example: `2024-01-15`.
 
 | Property | Value |
 | -------- | ----- |
@@ -24,7 +24,7 @@ Navixy Repository API defines these custom scalar types in addition to the stand
 
 ## JSON
 
-Arbitrary JSON object. Used for custom fields data, extra fields, and flexible configurations.
+An arbitrary JSON value. Can be an object, array, string, number, boolean, or null.
 
 | Property | Value |
 | -------- | ----- |
@@ -34,7 +34,7 @@ Arbitrary JSON object. Used for custom fields data, extra fields, and flexible c
 
 ## GeoJSON
 
-[GeoJSON](https://geojson.org/) geometry object (Point, Polygon, LineString, etc.).
+A [GeoJSON](https://geojson.org/) geometry object ([RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946)). Supports Point, LineString, Polygon, and other geometry types.
 
 | Property | Value |
 | -------- | ----- |
@@ -44,7 +44,7 @@ Arbitrary JSON object. Used for custom fields data, extra fields, and flexible c
 
 ## Latitude
 
-A geographic latitude coordinate in decimal degrees.
+A geographic latitude coordinate in decimal degrees. Valid range: -90.0 to 90.0.
 
 | Property | Value |
 | -------- | ----- |
@@ -53,7 +53,7 @@ A geographic latitude coordinate in decimal degrees.
 
 ## Longitude
 
-A geographic longitude coordinate in decimal degrees.
+A geographic longitude coordinate in decimal degrees. Valid range: -180.0 to 180.0.
 
 | Property | Value |
 | -------- | ----- |
@@ -62,7 +62,7 @@ A geographic longitude coordinate in decimal degrees.
 
 ## Locale
 
-A [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag identifying a user locale.
+A [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag identifying a user locale. Example: `en-US`, `ru-RU`.
 
 | Property | Value |
 | -------- | ----- |
@@ -72,7 +72,7 @@ A [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag identif
 
 ## EmailAddress
 
-An email address conforming to [RFC 5322](https://datatracker.ietf.org/doc/html/rfc5322).
+An email address conforming to [RFC 5322](https://datatracker.ietf.org/doc/html/rfc5322). Example: `user@example.com`.
 
 | Property | Value |
 | -------- | ----- |
@@ -81,7 +81,7 @@ An email address conforming to [RFC 5322](https://datatracker.ietf.org/doc/html/
 
 ## HexColorCode
 
-CSS hex color code for UI display.
+A hexadecimal color code. Supports 3-digit (`#RGB`) or 6-digit (`#RRGGBB`) format.
 
 | Property | Value |
 | -------- | ----- |
@@ -90,7 +90,7 @@ CSS hex color code for UI display.
 
 ## CountryCode
 
-An [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code.
+An [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code. Example: `US`, `GB`, `ES`.
 
 | Property | Value |
 | -------- | ----- |
@@ -99,7 +99,19 @@ An [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code.
 
 ## Code
 
-Machine-readable string identifier. Must match pattern `^[a-z][a-z0-9_]*$` (lowercase letters, numbers, underscores, starting with a letter).
+A machine-readable identifier code.
+
+Constraints:
+- Allowed characters: ASCII letters (a-z, A-Z), digits (0-9), underscore (_), dot (.), hyphen (-)
+- Must start with a letter or digit
+- Case-insensitive for uniqueness checks
+- Maximum length: 64 characters
+
+Naming conventions:
+- System items: UPPER_SNAKE_CASE (e.g., DEVICE_TYPE, ACTIVE)
+- User items: any valid format (e.g., vehicle_car, sensor-v2)
+
+Examples: DEVICE_TYPE, vehicle_car, status.active, sensor-v2, ABC123
 
 | Property | Value |
 | -------- | ----- |
@@ -109,7 +121,7 @@ Machine-readable string identifier. Must match pattern `^[a-z][a-z0-9_]*$` (lowe
 
 ## ScheduleData
 
-Schedule/calendar data with time intervals and recurrence rules following [iCalendar](https://datatracker.ietf.org/doc/html/rfc5545) format.
+A schedule data structure containing time intervals and recurrence rules.
 
 | Property | Value |
 | -------- | ----- |
