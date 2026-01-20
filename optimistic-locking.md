@@ -83,7 +83,7 @@ mutation {
 
 ### Handling conflicts
 
-If the entity was modified since you fetched it, the API returns a CONFLICT error. The HTTP status code will be 200 because the request was successfully received and processed — the "conflict" is a business logic outcome, not a transport failure. This follows the [GraphQL-over-HTTP specification](https://graphql.github.io/graphql-over-http/), which reserves HTTP error codes (4xx, 5xx) for transport-level problems like authentication failures or malformed requests.
+If the entity was modified since you fetched it, the API returns a CONFLICT error. The HTTP status code will be 200 because the request was successfully received and processed — the "conflict" is a business logic outcome, not a transport failure. This follows the [GraphQL-over-HTTP specification](https://graphql.github.io/graphql-over-http/draft/), which reserves HTTP error codes (4xx, 5xx) for transport-level problems like authentication failures or malformed requests.
 
 The actual error details are in the response body:
 

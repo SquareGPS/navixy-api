@@ -10,7 +10,7 @@ This article covers patterns that make your GraphQL code cleaner, more maintaina
 
 {% include "../.gitbook/includes/try-it-out-yourself.-use-ou....md" %}
 
-### Variables
+## Variables
 
 When you're testing queries, it's easy to write values directly into the query string. But real applications need to pass different values each time: a user might click on another device, select a different filter, or navigates to the next page.
 
@@ -48,7 +48,7 @@ The actual value is passed separately as JSON:
 
 When you send the request, include both the query and the variables. GraphQL tools and client libraries handle this for you — you just provide the variables object.
 
-#### Multiple variables
+### Multiple variables
 
 You can declare as many variables as you need:
 
@@ -83,7 +83,7 @@ Variables in JSON:
 }
 ```
 
-### Operation names
+## Operation names
 
 You can give your operations custom names to make them easier to identify in logs, debugging tools, and network traces.
 
@@ -107,7 +107,7 @@ query GetDevice($id: ID!) {
 
 Common naming conventions use PascalCase with a verb prefix: `GetDevice`, `ListDevices`, `UpdateAsset`, `CreateGeoObject`, `DeleteSchedule`.
 
-### Fragments
+## Fragments
 
 Fragments let you define reusable sets of fields. They're useful when you need the same fields in multiple queries.
 
@@ -144,7 +144,7 @@ query ListDevices($orgId: ID!) {
 
 Both queries now share the same field selection for core device data.
 
-#### Inline fragments for interfaces
+### Inline fragments for interfaces
 
 When working with interfaces like [Node](../api-reference/interfaces.md#node), use inline fragments to request type-specific fields:
 
@@ -170,11 +170,11 @@ query GetNode($id: ID!) {
 
 The `node` query returns any entity by ID. The inline fragments (`... on Type`) tell GraphQL what fields to return based on the actual type.
 
-### Aliases
+## Aliases
 
 Aliases let you rename fields in the response or fetch the same field multiple times with different arguments.
 
-#### Renaming fields
+### Renaming fields
 
 ```graphql
 query GetTwoDevices {
@@ -198,7 +198,7 @@ Response:
 }
 ```
 
-#### Comparing entities
+### Comparing entities
 
 Fetch the same entity at different points or with different parameters:
 
@@ -219,7 +219,7 @@ query CompareOrganizations {
 }
 ```
 
-#### Batch mutations
+### Batch mutations
 
 Aliases enable batch operations in a single request:
 
@@ -244,7 +244,7 @@ mutation BatchUpdateDevices {
 
 Each aliased mutation executes independently. If one fails, others can still succeed (check the `errors` array for partial failures).
 
-### Directives
+## Directives
 
 Directives modify how fields are executed. GraphQL includes [six built-in directives](../api-reference/directives.md) for conditional field inclusion.
 
@@ -273,7 +273,7 @@ query ListDevices(
 }
 ```
 
-### Next steps
+## Next steps
 
 * [Learn how to set up authentication and make your first request](../getting-started.md)
 * [Browse available operations and types](../api-reference/)

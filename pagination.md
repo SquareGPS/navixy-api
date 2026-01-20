@@ -8,7 +8,7 @@ When querying lists of entities (devices, assets, users, etc.), Navixy Repositor
 
 To control which results appear and in what order, see [Filtering and sorting](filtering-and-sorting.md).
 
-### Where pagination applies
+## Where pagination applies
 
 The API has two types of queries for fetching data:
 
@@ -21,7 +21,7 @@ Many nested fields are also paginated — for example, `Organization.devices` or
 
 See the [Queries ](api-reference/queries.md)reference for the complete list of available queries, or use [introspection ](graphql-basics.md#introspection)to explore them in your GraphQL client.
 
-### The Connection pattern
+## The Connection pattern
 
 Navixy Repository API uses [Relay Cursor Connections](https://relay.dev/graphql/connections.htm), a pagination standard from the GraphQL community. Instead of traditional page numbers, it uses opaque cursors that point to specific positions in the result set.
 
@@ -31,7 +31,7 @@ Using cursors instead of page numbers enables the following:
 * Efficient: The database can resume from exact positions without re-scanning.
 * Flexible: Works well with real-time data that changes frequently.
 
-#### Structure
+## Paginated query structure
 
 Every paginated query returns a **Connection** type with this structure:
 
@@ -61,7 +61,7 @@ type CountInfo {
 }
 ```
 
-#### Reading results
+## Reading results
 
 You can access entities in two ways:
 
@@ -70,7 +70,7 @@ You can access entities in two ways:
 
 Check `pageInfo.hasNextPage` to determine if more data is available.
 
-### Pagination parameters
+## Pagination parameters
 
 Pagination arguments are passed directly to the query:
 
@@ -83,7 +83,7 @@ Pagination arguments are passed directly to the query:
 
 Use `first`/`after` for forward pagination (most common). Use `last`/`before` for backward pagination.
 
-### Forward pagination
+## Forward pagination
 
 Start by requesting the first page, then use `endCursor` to get subsequent pages.
 
@@ -112,7 +112,7 @@ query {
 }
 ```
 
-#### Next page
+### Next page
 
 To fetch the next page, pass `endCursor` from the previous response as the `after` argument:
 
@@ -137,7 +137,7 @@ query {
 
 Repeat this pattern — using each response's `endCursor` as the next request's `after` — until `hasNextPage` is `false`.
 
-### Backward pagination
+## Backward pagination
 
 Use `last` and `before` to paginate from the end of the result set. This is useful for showing the most recent items first.
 
@@ -180,7 +180,7 @@ query {
 }
 ```
 
-### Understanding total count
+## Understanding total count
 
 The `total` field returns information about how many items match your query. Because counting can be expensive for large datasets, the API provides a `precision` field that indicates how the count was determined:
 
@@ -210,7 +210,7 @@ query {
 
 For large datasets, the API may return an approximate count or `null` for the entire `total` field to maintain performance. Design your UI to handle these cases gracefully — for example, display "About 10,000 results" or "1,000+ results" instead of requiring an exact number.
 
-### Best practices
+## Best practices
 
 **Choose an appropriate page size.** Use 20–50 items for UI lists, up to 100 for background sync. The default is 20 if not specified, and the maximum is 100 per request.
 

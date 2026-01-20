@@ -10,7 +10,7 @@ in Navixy Repository API, list queries (those returning multiple items, like `de
 
 For navigating through large result sets, see [Pagination](pagination.md).
 
-### Filtering
+## Filtering
 
 Pass a `filter` argument to any list query to narrow down results:
 
@@ -35,7 +35,7 @@ This returns only devices with the specified status.
 
 Each entity type has its own filter input with different available fields. For example, `DeviceFilter` supports filtering by type, model, status, vendor, and inventory, while `OrganizationFilter` only supports filtering by parent and active status. Use [introspection ](api-reference/#introspection-and-schema)or the [API reference ](api-reference/)to see available filter fields for each entity.
 
-#### Filter logic
+### Filtering logic
 
 Filters combine conditions using two types of logic:
 
@@ -61,7 +61,7 @@ This translates to:
 
 The result includes active trucks and active vans, but not inactive trucks or vehicles of other types.
 
-#### Empty values are ignored
+### Empty values are ignored
 
 If a filter field is `null` or an empty array, the API ignores it entirely:
 
@@ -74,7 +74,7 @@ filter: {
 
 This is useful when building dynamic filters — you don't need to conditionally omit empty fields from your query.
 
-#### Text search
+### Text search
 
 Most filters include a `titleContains` field for partial text matching:
 
@@ -98,11 +98,11 @@ This returns devices with "delivery" anywhere in their title, like "Delivery Van
 
 Some filters have additional text search fields. For example, `DeviceFilter` includes `identifierContains` for searching hardware identifiers like IMEI numbers. Unlike `titleContains`, identifier search is case-sensitive.
 
-#### Limitations
+### Limitations
 
 The API does not support complex boolean expressions with nested AND/OR/NOT operators. If you need more complex filtering logic, apply the most restrictive server-side filter you can, then filter the results further in your application.
 
-### Custom field filtering
+## Custom field filtering
 
 Entities that support custom fields (devices, assets, geo objects, schedules) can be filtered by custom field values:
 
@@ -128,7 +128,7 @@ Each condition in the `customFields` array has three parts:
 
 <table><thead><tr><th width="200.39996337890625">Field</th><th>Description</th></tr></thead><tbody><tr><td>code</td><td>The custom field's code, as defined in its CustomFieldDefinition</td></tr><tr><td>operator</td><td>How to compare the value</td></tr><tr><td>value</td><td>The value to compare against, formatted as JSON</td></tr></tbody></table>
 
-#### Operators
+### Operators
 
 | Operator      | Description                             |
 | ------------- | --------------------------------------- |
@@ -143,7 +143,7 @@ Each condition in the `customFields` array has three parts:
 | IS\_NULL      | Field has no value                      |
 | IS\_NOT\_NULL | Field has a value                       |
 
-#### Value formats
+### Value formats
 
 The `value` field accepts JSON. Match the format to your field type:
 
@@ -160,7 +160,7 @@ The `value` field accepts JSON. Match the format to your field type:
 
 For IS\_NULL and IS\_NOT\_NULL operators, omit the `value` field or set it to `null`.
 
-#### Multiple conditions
+### Multiple conditions
 
 Multiple custom field conditions are combined with AND logic:
 
@@ -175,7 +175,7 @@ filter: {
 
 This returns assets where fuel type is diesel AND year is 2020 or later.
 
-#### Multi-value fields
+### Multi-value fields
 
 For custom fields configured to hold multiple values (`isMulti: true`), the filter matches if any stored value satisfies the condition:
 
@@ -189,7 +189,7 @@ filter: {
 # Matches — "red" is one of the values
 ```
 
-#### Combining standard and custom filters
+### Combining standard and custom filters
 
 You can use standard filter fields and custom field conditions together:
 
@@ -216,7 +216,7 @@ query {
 
 This returns trucks that are active or in maintenance, have "north" in their title, and are assigned to the northwest region.
 
-### Sorting
+## Sorting
 
 Use the `orderBy` argument to control the order of results:
 
@@ -238,7 +238,7 @@ The `direction` can be ASC (ascending: A→Z, 0→9, oldest→newest) or DESC (d
 
 Each entity type has its own set of sortable fields. For example, devices can be sorted by TITLE, while audit events can be sorted by OCCURRED\_AT. Use introspection or the API reference to see available sort fields.
 
-#### Sort behavior
+### Sort behavior
 
 Text fields use natural sorting with ICU collation:
 
@@ -248,7 +248,7 @@ Text fields use natural sorting with ICU collation:
 
 NULL values appear last when sorting ASC, and first when sorting DESC.
 
-#### Sorting by custom fields
+### Sorting by custom fields
 
 Some entity types (devices, assets, geo objects, schedules) support sorting by custom field values:
 
@@ -268,6 +268,6 @@ query {
 
 Use either `field` or `customFieldCode` in your orderBy input, not both — they are mutually exclusive.
 
-#### Sorting and pagination
+### Sorting and pagination
 
 Cursors encode the current sort position. If you change `orderBy` between pagination requests, your existing cursors become invalid. Always use the same `orderBy` value when paginating through a result set. If you need a different sort order, start from the beginning.

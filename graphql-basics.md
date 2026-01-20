@@ -12,11 +12,11 @@ For detailed information, see [the official GraphQL documentation](https://graph
 
 {% include ".gitbook/includes/try-it-out-yourself.-use-ou....md" %}
 
-### What is GraphQL?
+## What is GraphQL?
 
 GraphQL is a query language for APIs. The key idea behind it is that **you specify exactly what data you need, and the API returns only that data**. This is different from REST APIs, where each endpoint returns a fixed structure, and you often get more data than you need (or have to make multiple requests to get everything you need).
 
-### How GraphQL differs from REST
+## How GraphQL differs from REST
 
 If you've used REST APIs, you're familiar with this pattern:
 
@@ -33,7 +33,7 @@ GraphQL works differently:
 | Multiple resources | Multiple requests needed                   | One request can fetch related data          |
 | HTTP methods       | GET, POST, PUT, DELETE                     | Always POST (with query or mutation inside) |
 
-#### Sample request
+### Sample request
 
 Imagine you need to display a device's title, its status name, and the organization it belongs to.
 
@@ -81,7 +81,7 @@ The response contains only what you asked for:
 }
 ```
 
-### Single endpoint
+## Single endpoint
 
 Navixy Repository API has one endpoint:
 
@@ -91,7 +91,7 @@ https://api.navixy.com/v4/graphql
 
 Every request — reading data, creating something, or subscribing to updates — goes to this same URL. The request body tells the API what you want to do.
 
-### Operations
+## Operations
 
 GraphQL supports three types of operations:
 
@@ -101,7 +101,7 @@ GraphQL supports three types of operations:
 | Mutation     | Create, update, or delete data | POST, PUT, DELETE    |
 | Subscription | Receive real-time updates      | WebSocket connection |
 
-#### Queries
+### Queries
 
 A **query** retrieves data without changing anything. It's the GraphQL equivalent of a REST GET request.
 
@@ -153,7 +153,7 @@ query {
 
 The `status` field returns an object, so you specify which fields of that object you want (`code` and `title`).
 
-#### Mutations
+### Mutations
 
 A **mutation** modifies data, creating, updating, or deleting something. It combines what REST does with POST, PUT, and DELETE into one operation type.
 
@@ -216,13 +216,13 @@ mutation {
 }
 ```
 
-#### Subscriptions
+### Subscriptions
 
 A **subscription** opens a persistent connection to receive updates as they happen. Instead of polling the API repeatedly, you tell it what events you're interested in, and it pushes data to you.
 
 At the moment, Navixy Repository API doesn't support subscriptions.
 
-### Fields
+## Fields
 
 Fields are the pieces of data you can request from an object. When you write a query, you're selecting which fields to include in the response.
 
@@ -236,7 +236,7 @@ Every object type in the API has a defined set of fields. For example, a `Device
 
 You only get the fields you ask for. If you don't need `customFields`, don't include it in your query, and it won't be in the response.
 
-#### Nested fields
+### Nested fields
 
 Some fields return objects rather than simple values. When a field returns an object, you must specify which fields of that object you want.
 
@@ -258,7 +258,7 @@ query {
 
 Here, `status` and `organization` are objects, so we specify their fields inside curly braces. The `title` and `code` fields return simple values (strings), so they don't need nested fields. The `features` field returns an array of enum values.
 
-### Arguments
+## Arguments
 
 Arguments allow you to filter or configure what data a query returns. You pass them in parentheses after the field name.
 
@@ -293,11 +293,11 @@ query {
 
 This requests the first 10 devices from a specific organization with a specific status. The `organizationId` is a required argument, and `filter` allows additional criteria like filtering by multiple status IDs.
 
-### Types
+## Types
 
 Every field in GraphQL has a type that defines what kind of data it holds. It can be predefined, like string or boolean, or API-specific, like `DeviceIdType`. Understanding types helps you read the API reference and write correct queries.
 
-#### Scalar types
+### Scalar types
 
 Scalars are primitive values — basic building blocks. When calling a GraphQL API, you must specify nested subfields until you return only scalars.
 
@@ -321,7 +321,7 @@ Navixy Repository API adds these custom scalar types:
 | `Code`         | Machine-readable identifier (lowercase alphanumeric with underscores) | `"truck"`, `"device_type"`        |
 | `HexColorCode` | Color in hexadecimal format                                           | `"#FF5733"`                       |
 
-#### Object types
+### Object types
 
 Object types represent the things you can fetch from the API: devices, organizations, assets, users, and so on. Each object type defines a set of fields you can request.
 
@@ -361,7 +361,7 @@ query {
 
 In the API reference, you'll see object types like `Device`, `Organization`, `DeviceStatus`, and many others.
 
-#### Enums
+### Enums
 
 Enums are fixed sets of values. Unlike strings, you can only use the predefined values.
 
@@ -386,7 +386,7 @@ mutation {
 }
 ```
 
-#### Input types
+### Input types
 
 Input types are used for mutation arguments. They look similar to object types but can only be used as inputs, not outputs.
 
@@ -405,7 +405,7 @@ mutation {
 }
 ```
 
-#### Interfaces
+### Interfaces
 
 Interfaces define a set of fields shared by multiple types. If a type implements an interface, it guarantees those fields exist.
 
@@ -413,7 +413,7 @@ For example, the `Node` interface requires the `id` field. Many types implement 
 
 The `Versioned` interface provides the `version` field used for optimistic locking. Types implementing it will always have this field available for concurrency control.
 
-### Type syntax
+## Type syntax
 
 The API reference uses special notation to indicate whether fields are required and whether they return single values or lists.
 
@@ -436,7 +436,7 @@ device(id: "...")
 devices(filter: { title: "Truck" })
 ```
 
-#### Arrays
+### Arrays
 
 Square brackets `[]` indicate a list of values:
 
@@ -455,7 +455,7 @@ devices(pagination: { first: 10 }) {
 }
 ```
 
-#### Reading complex types
+### Reading complex types
 
 When you see a type like `[DeviceEdge!]!` in the API reference:
 
@@ -466,11 +466,11 @@ When you see a type like `[DeviceEdge!]!` in the API reference:
 
 So `[DeviceEdge!]!` means "you'll always get a list, and every item in that list will be a valid DeviceEdge object."
 
-### Understanding responses
+## Understanding responses
 
 GraphQL responses are JSON objects with a consistent structure.
 
-#### Successful responses
+### Successful responses
 
 A successful response has a `data` field containing your requested data:
 
@@ -487,7 +487,7 @@ A successful response has a `data` field containing your requested data:
 
 The structure inside `data` matches your query structure exactly.
 
-#### Error responses
+### Error responses
 
 If something goes wrong, the response includes an `errors` array:
 
@@ -509,13 +509,13 @@ If something goes wrong, the response includes an `errors` array:
 
 The `extensions` object contains machine-readable information for handling the error in your code. See Error handling for more information.
 
-### Schema
+## Schema
 
 A GraphQL API has a **schema** that defines all available types, fields, queries, and mutations. The schema is like a contract: it tells you exactly what you can request and what you'll get back.
 
 Navixy Repository API schema _**(add link)**_ is public and available to developers.
 
-### Introspection
+## Introspection
 
 GraphQL APIs are self-described. You can explore the schema using tools like our sandbox _**(add link)**_ or by querying the API directly — this is called **introspection**. GraphQL has special built-in fields that start with `__` (double underscore) for this purpose.
 
@@ -535,7 +535,7 @@ query {
 
 Learn more about introspection queries in [GraphQL tips and patterns](graphql-basics/graphql-tips-and-patterns.md).
 
-### Next steps
+## Next steps
 
 Now that you understand the basics:
 
