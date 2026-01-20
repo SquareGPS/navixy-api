@@ -2,7 +2,7 @@
 
 When an operation fails, the API returns an error response with details to help you understand what went wrong and how to fix it. All errors follow the [RFC 9457 Problem Details](https://www.rfc-editor.org/rfc/rfc9457.html) format, providing both human-readable messages and machine-readable codes.
 
-## Error response structure
+### Error response structure
 
 Errors are returned in the standard GraphQL format with additional details in the `extensions` field:
 
