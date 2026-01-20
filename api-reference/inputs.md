@@ -14,9 +14,9 @@ Filtering options for devices.
 | `modelIds` | `[ID!]` | Filter by device models (OR within field). |
 | `statusIds` | `[ID!]` | Filter by statuses (OR within field). |
 | `vendorIds` | `[ID!]` | Filter by vendors (OR within field). |
-| `identifierValue` | `String` | Search by device identifier value. |
+| `identifierContains` | `String` | Partial match on device identifier value (case-sensitive contains). |
 | `inventoryIds` | `[ID!]` | Filter by inventories (OR within field). |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 | `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### DeviceOrder
@@ -36,7 +36,7 @@ Filtering options for device models.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `vendorIds` | `[ID!]` | Filter by vendors (OR within field). |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 | `code` | [Code](/api-reference/scalars.md#code) | Exact code match. |
 
 ### DeviceCreateInput
@@ -83,7 +83,7 @@ Input for a device identifier.
 | ----- | ---- | ----------- |
 | `type` | [DeviceIdType!](/api-reference/enums.md#deviceidtype) | The type of identifier. |
 | `value` | `String!` | The identifier value. |
-| `namespace` | `String` | The namespace for uniqueness. Null means globally unique. |
+| `namespace` | [Code](/api-reference/scalars.md#code) | The namespace for uniqueness scope. Null means globally unique. |
 
 ### DeviceIdentifierAddInput
 
@@ -168,7 +168,8 @@ Filtering options for assets.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by asset types (OR within field). |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `deviceIds` | `[ID!]` | Filter by linked devices (OR within field). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 | `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### AssetOrder
@@ -245,7 +246,7 @@ Filtering options for asset groups.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by group types (OR within field). |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 
 ### AssetGroupOrder
 
@@ -366,7 +367,7 @@ Filtering options for geo objects.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by geo object types (OR within field). |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 | `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### GeoObjectOrder
@@ -445,7 +446,7 @@ Filtering options for schedules.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by schedule types (OR within field). |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 | `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### ScheduleOrder
@@ -532,8 +533,7 @@ Filtering options for inventories.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` | Search in title (case-insensitive contains). |
-| `code` | [Code](/api-reference/scalars.md#code) | Exact code match. |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 
 ### InventoryOrder
 
@@ -551,7 +551,6 @@ Input for creating a new inventory.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the inventory. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The unique code within the organization. |
 | `title` | `String!` | The display name. |
 
 ### InventoryUpdateInput
@@ -575,12 +574,12 @@ Input for deleting an inventory.
 
 ### DeviceInventoryLinkInput
 
-Input for linking a device to an inventory.
+Input for linking a device to an inventory. Both device and inventory must belong to the same organization.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `deviceId` | `ID!` | The device ID. |
-| `inventoryId` | `ID!` | The inventory ID. |
+| `inventoryId` | `ID!` | The inventory ID. Must be in the same organization as the device. |
 
 ### DeviceInventoryUnlinkInput
 
@@ -608,7 +607,7 @@ Filtering options for organization children. Excludes parentId as it is implicit
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isActive` | `Boolean` | Filter by active status. |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 
 ### OrganizationOrder
 
@@ -626,7 +625,6 @@ Input for creating a new organization.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `parentId` | `ID` | The parent organization ID. Null for root organizations. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The unique organization code. |
 | `title` | `String!` | The display name. |
 | `externalId` | `String` | An external system identifier. |
 | `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature) | The feature flags to enable. |
@@ -1121,7 +1119,7 @@ Filtering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 | `codes` | [[Code!]](/api-reference/scalars.md#code) | Match any of these codes. |
 
 ### CatalogItemChildrenFilter
@@ -1130,7 +1128,7 @@ Filtering options for catalog item children.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 
 ### CatalogItemOrder
 
@@ -1147,7 +1145,7 @@ Filtering options for tags.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `title` | `String` | Search in title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 
 ### AuditEventFilter
 

@@ -17,7 +17,7 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | `title` | `String!` |  |
 | `organization` | [Organization!](/api-reference/objects.md#organization) | The organization that owns this device. |
 | `type` | [DeviceType!](/api-reference/objects.md#devicetype) | The device type classification. |
-| `model` | [DeviceModel](/api-reference/objects.md#devicemodel) | The specific device model. |
+| `model` | [DeviceModel!](/api-reference/objects.md#devicemodel) | The specific device model. |
 | `status` | [DeviceStatus!](/api-reference/objects.md#devicestatus) | The current operational status. |
 | `customFields` | [JSON!](/api-reference/scalars.md#json) |  |
 | `identifiers` | [[DeviceIdentifier!]!](/api-reference/objects.md#deviceidentifier) | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
@@ -38,7 +38,7 @@ A hardware identifier for a device.
 | `device` | [Device!](/api-reference/objects.md#device) | The device this identifier belongs to. |
 | `type` | [DeviceIdType!](/api-reference/enums.md#deviceidtype) | The type of identifier. |
 | `value` | `String!` | The identifier value. |
-| `namespace` | `String` | The namespace for uniqueness. Null means the identifier is globally unique. |
+| `namespace` | [Code](/api-reference/scalars.md#code) | The namespace for uniqueness scope. Null means the identifier is globally unique. |
 
 ### DeviceRelation
 

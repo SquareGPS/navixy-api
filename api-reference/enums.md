@@ -8,8 +8,8 @@ The direction for sorting query results.
 
 | Value | Description |
 | ----- | ----------- |
-| `ASC` | Sort in ascending order (A→Z, 0→9, oldest→newest). |
-| `DESC` | Sort in descending order (Z→A, 9→0, newest→oldest). |
+| `ASC` | Sort in ascending order (A→Z, 0→9, oldest→newest). NULL values appear last. |
+| `DESC` | Sort in descending order (Z→A, 9→0, newest→oldest). NULL values appear first. |
 
 ## CatalogItemOrigin
 
