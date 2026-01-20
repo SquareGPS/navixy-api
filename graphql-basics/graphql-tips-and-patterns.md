@@ -1,3 +1,9 @@
+---
+description: >-
+  Practical GraphQL patterns for cleaner requests: variables, operation names,
+  fragments, aliases, and directives.
+---
+
 # GraphQL tips and patterns
 
 This article covers patterns that make your GraphQL code cleaner, more maintainable, and easier to debug. If you're new to GraphQL, start with [GraphQL basics ](../graphql-basics.md)first.
@@ -63,7 +69,7 @@ query ListDevices($orgId: ID!, $statusIds: [ID!], $limit: Int = 20) {
 
 In this example:
 
-* `$orgId: ID!`  is required (`!` means it cannot be null)
+* `$orgId: ID!` is required (`!` means it cannot be null)
 * `$statusIds: [ID!]` is an optional array of IDs (no `!` after the brackets)
 * `$limit: Int = 20` is optional with a default value of 20
 

@@ -1,3 +1,9 @@
+---
+description: >-
+  Use filter and orderBy on list queries, including custom-field conditions,
+  text search, and sort rules that affect pagination cursors.
+---
+
 # Filtering and sorting
 
 in Navixy Repository API, list queries (those returning multiple items, like `devices`, `assets`, or `organizations`) accept `filter` and `orderBy` arguments that let you control which results come back and in what order. Instead of fetching all devices and processing them client-side, you can request exactly what you need.

@@ -1,3 +1,9 @@
+---
+description: >-
+  Learn GraphQL fundamentals for Navixy Repository API: how it differs from
+  REST, plus queries, mutations, and core type concepts.
+---
+
 # GraphQL basics
 
 This article introduces GraphQL for developers who are new to it. If you've worked with REST APIs before, you'll find GraphQL takes a different approach to requesting and modifying data.

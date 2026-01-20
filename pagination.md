@@ -1,3 +1,7 @@
+---
+description: Cursor-based pagination in Navixy Repository API
+---
+
 # Pagination
 
 When querying lists of entities (devices, assets, users, etc.), Navixy Repository API returns paginated results. This prevents overwhelming responses when you have thousands of records.
@@ -217,4 +221,3 @@ For large datasets, the API may return an approximate count or `null` for the en
 **Handle empty results.** Always check for empty `nodes` or `edges` arrays before processing results.
 
 **No random page access.** Cursor-based pagination doesn't support "jump to page 50" — you can only navigate sequentially through results. This is a deliberate trade-off for stability and performance. If you need random access to pages, consider limiting the result set with filters first.
-
