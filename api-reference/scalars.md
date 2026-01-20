@@ -10,6 +10,7 @@ Navixy Repository API defines these custom scalar types in addition to the stand
 | -------- | ----- |
 | Format | `YYYY-MM-DDTHH:mm:ss.sssZ` |
 | Example | `2025-01-15T14:30:00.000Z` |
+| Specification | [https://scalars.graphql.org/chillicream/date-time.html](https://scalars.graphql.org/chillicream/date-time.html) |
 
 ## Date
 
@@ -19,6 +20,7 @@ Navixy Repository API defines these custom scalar types in addition to the stand
 | -------- | ----- |
 | Format | `YYYY-MM-DD` |
 | Example | `2025-01-15` |
+| Specification | [https://scalars.graphql.org/chillicream/date.html](https://scalars.graphql.org/chillicream/date.html) |
 
 ## JSON
 
@@ -28,6 +30,7 @@ Arbitrary JSON object. Used for custom fields data, extra fields, and flexible c
 | -------- | ----- |
 | Format | `Any valid JSON` |
 | Example | `{"key": "value", "count": 42}` |
+| Specification | [https://www.rfc-editor.org/rfc/rfc8259](https://www.rfc-editor.org/rfc/rfc8259) |
 
 ## GeoJSON
 
@@ -37,6 +40,7 @@ Arbitrary JSON object. Used for custom fields data, extra fields, and flexible c
 | -------- | ----- |
 | Format | `GeoJSON geometry object` |
 | Example | `{"type": "Point", "coordinates": [125.6, 10.1]}` |
+| Specification | [https://www.rfc-editor.org/rfc/rfc7946](https://www.rfc-editor.org/rfc/rfc7946) |
 
 ## Latitude
 
@@ -64,6 +68,7 @@ A [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag identif
 | -------- | ----- |
 | Format | `language-REGION` |
 | Example | `en-US` |
+| Specification | [https://the-guild.dev/graphql/scalars/docs/scalars/locale](https://the-guild.dev/graphql/scalars/docs/scalars/locale) |
 
 ## EmailAddress
 
@@ -100,6 +105,7 @@ Machine-readable string identifier. Must match pattern `^[a-z][a-z0-9_]*$` (lowe
 | -------- | ----- |
 | Format | `lowercase_snake_case` |
 | Example | `vehicle_type` |
+| Specification | [https://api.navixy.com/spec/scalars/code](https://api.navixy.com/spec/scalars/code) |
 
 ## ScheduleData
 
@@ -109,3 +115,4 @@ Schedule/calendar data with time intervals and recurrence rules following [iCale
 | -------- | ----- |
 | Format | `iCalendar-compatible JSON` |
 | Example | `{"intervals": [...], "rrule": "FREQ=WEEKLY;BYDAY=MO,WE,FR"}` |
+| Specification | [https://api.navixy.com/spec/scalars/schedule-data](https://api.navixy.com/spec/scalars/schedule-data) |

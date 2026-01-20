@@ -16,7 +16,7 @@ Filtering options for devices.
 | `vendorIds` | `[ID!]` | Filter by vendors (OR within field). |
 | `identifierContains` | `String` | Partial match on device identifier value (case-sensitive contains). |
 | `inventoryIds` | `[ID!]` | Filter by inventories (OR within field). |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 | `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### DeviceOrder
@@ -36,7 +36,7 @@ Filtering options for device models.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `vendorIds` | `[ID!]` | Filter by vendors (OR within field). |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 | `code` | [Code](/api-reference/scalars.md#code) | Exact code match. |
 
 ### DeviceCreateInput
@@ -49,7 +49,7 @@ Input for creating a new device.
 | `typeId` | `ID!` | The device type ID. |
 | `modelId` | `ID!` | The device model ID. |
 | `statusId` | `ID!` | The initial device status ID. |
-| `title` | `String!` | The device display name. |
+| `title` | `String!` | The device display name. Auto-trimmed. |
 | `identifiers` | [[DeviceIdentifierInput!]](/api-reference/inputs.md#deviceidentifierinput) | The hardware identifiers. |
 | `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field values. |
 
@@ -63,7 +63,7 @@ Input for updating an existing device.
 | `version` | `Int!` | The current version for optimistic locking. |
 | `modelId` | `ID` | The new device model. |
 | `statusId` | `ID` | The new device status. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field changes. |
 
 ### DeviceDeleteInput
@@ -82,7 +82,7 @@ Input for a device identifier.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `type` | [DeviceIdType!](/api-reference/enums.md#deviceidtype) | The type of identifier. |
-| `value` | `String!` | The identifier value. |
+| `value` | `String!` | The identifier value. Auto-trimmed. |
 | `namespace` | [Code](/api-reference/scalars.md#code) | The namespace for uniqueness scope. Null means globally unique. |
 
 ### DeviceIdentifierAddInput
@@ -106,22 +106,22 @@ Input for removing an identifier from a device.
 
 Parameters for DEVICE field type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple devices can be selected. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `isRequired` | `Boolean!` | — | Whether a value is required. |
+| `isMulti` | `Boolean` | `false` | Whether multiple devices can be selected. |
 
 ### DeviceTypeCreateInput
 
 Input for creating a device type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization that will own the item. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `order` | `Int` | `0` | The display order. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | — | The display properties. |
 
 ### DeviceTypeUpdateInput
 
@@ -131,7 +131,7 @@ Input for updating a device type.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
@@ -139,13 +139,13 @@ Input for updating a device type.
 
 Input for creating a device status.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization that will own the item. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `order` | `Int` | `0` | The display order. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | — | The display properties. |
 
 ### DeviceStatusUpdateInput
 
@@ -155,7 +155,7 @@ Input for updating a device status.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
@@ -169,7 +169,7 @@ Filtering options for assets.
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by asset types (OR within field). |
 | `deviceIds` | `[ID!]` | Filter by linked devices (OR within field). |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 | `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### AssetOrder
@@ -190,7 +190,7 @@ Input for creating a new asset.
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the asset. |
 | `typeId` | `ID!` | The asset type ID. |
-| `title` | `String!` | The asset display name. |
+| `title` | `String!` | The asset display name. Auto-trimmed. |
 | `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field values. |
 
 ### AssetUpdateInput
@@ -201,7 +201,7 @@ Input for updating an existing asset.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The asset ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field changes. |
 
 ### AssetDeleteInput
@@ -217,13 +217,13 @@ Input for deleting an asset.
 
 Input for creating an asset type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization that will own the item. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `order` | `Int` | `0` | The display order. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | — | The display properties. |
 
 ### AssetTypeUpdateInput
 
@@ -233,7 +233,7 @@ Input for updating an asset type.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
@@ -246,7 +246,7 @@ Filtering options for asset groups.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by group types (OR within field). |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 
 ### AssetGroupOrder
 
@@ -282,7 +282,7 @@ Input for creating a new asset group.
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the group. |
 | `typeId` | `ID!` | The group type ID. |
-| `title` | `String!` | The group display name. |
+| `title` | `String!` | The group display name. Auto-trimmed. |
 | `color` | [HexColorCode](/api-reference/scalars.md#hexcolorcode) | The color for UI display. |
 
 ### AssetGroupUpdateInput
@@ -293,7 +293,7 @@ Input for updating an existing asset group.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The asset group ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `color` | [HexColorCode](/api-reference/scalars.md#hexcolorcode) | The new color. |
 
 ### AssetGroupDeleteInput
@@ -327,14 +327,14 @@ Input for removing an asset from a group.
 
 Input for creating an asset group type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput!]](/api-reference/inputs.md#assetgrouptypeconstraintinput) | The allowed asset types with optional limits. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization that will own the item. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `order` | `Int` | `0` | The display order. |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput!]](/api-reference/inputs.md#assetgrouptypeconstraintinput) | — | The allowed asset types with optional limits. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | — | The display properties. |
 
 ### AssetGroupTypeUpdateInput
 
@@ -344,7 +344,7 @@ Input for updating an asset group type.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `allowedAssetTypes` | [[AssetGroupTypeConstraintInput!]](/api-reference/inputs.md#assetgrouptypeconstraintinput) | Replace allowed asset types. Null means no change. |
 | `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
@@ -367,7 +367,7 @@ Filtering options for geo objects.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by geo object types (OR within field). |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 | `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### GeoObjectOrder
@@ -388,7 +388,7 @@ Input for creating a new geo object.
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the geo object. |
 | `typeId` | `ID!` | The geo object type ID. |
-| `title` | `String!` | The geo object display name. |
+| `title` | `String!` | The geo object display name. Auto-trimmed. |
 | `geometry` | [GeoJSON!](/api-reference/scalars.md#geojson) | The [GeoJSON](https://geojson.org/) geometry. |
 | `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field values. |
 
@@ -400,7 +400,7 @@ Input for updating an existing geo object.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The geo object ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `geometry` | [GeoJSON](/api-reference/scalars.md#geojson) | The new geometry. |
 | `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field changes. |
 
@@ -417,13 +417,13 @@ Input for deleting a geo object.
 
 Input for creating a geo object type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization that will own the item. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `order` | `Int` | `0` | The display order. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | — | The display properties. |
 
 ### GeoObjectTypeUpdateInput
 
@@ -433,7 +433,7 @@ Input for updating a geo object type.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
@@ -446,7 +446,7 @@ Filtering options for schedules.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `typeIds` | `[ID!]` | Filter by schedule types (OR within field). |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 | `customFields` | [[CustomFieldFilter!]](/api-reference/inputs.md#customfieldfilter) | Filter by custom field values. |
 
 ### ScheduleOrder
@@ -467,7 +467,7 @@ Input for creating a new schedule.
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the schedule. |
 | `typeId` | `ID!` | The schedule type ID. |
-| `title` | `String!` | The schedule display name. |
+| `title` | `String!` | The schedule display name. Auto-trimmed. |
 | `scheduleData` | [ScheduleData!](/api-reference/scalars.md#scheduledata) | The schedule data. |
 | `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field values. |
 
@@ -479,7 +479,7 @@ Input for updating an existing schedule.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The schedule ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `scheduleData` | [ScheduleData](/api-reference/scalars.md#scheduledata) | The new schedule data. |
 | `customFields` | [CustomFieldsPatchInput](/api-reference/inputs.md#customfieldspatchinput) | The custom field changes. |
 
@@ -496,13 +496,13 @@ Input for deleting a schedule.
 
 Input for creating a schedule type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization that will own the item. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `order` | `Int` | `0` | The display order. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | — | The display properties. |
 
 ### ScheduleTypeUpdateInput
 
@@ -512,7 +512,7 @@ Input for updating a schedule type.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
@@ -533,7 +533,7 @@ Filtering options for inventories.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 
 ### InventoryOrder
 
@@ -551,7 +551,7 @@ Input for creating a new inventory.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the inventory. |
-| `title` | `String!` | The display name. |
+| `title` | `String!` | The display name. Auto-trimmed. |
 
 ### InventoryUpdateInput
 
@@ -561,7 +561,7 @@ Input for updating an existing inventory.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The inventory ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 
 ### InventoryDeleteInput
 
@@ -607,7 +607,7 @@ Filtering options for organization children. Excludes parentId as it is implicit
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `isActive` | `Boolean` | Filter by active status. |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 
 ### OrganizationOrder
 
@@ -622,12 +622,12 @@ Ordering options for organizations.
 
 Input for creating a new organization.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `parentId` | `ID` | The parent organization ID. Null for root organizations. |
-| `title` | `String!` | The display name. |
-| `externalId` | `String` | An external system identifier. |
-| `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature) | The feature flags to enable. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `parentId` | `ID` | — | The parent organization ID. Null for root organizations. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `externalId` | `String` | — | An external system identifier. Auto-trimmed. |
+| `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature) | `[]` | The feature flags to enable. |
 
 ### OrganizationUpdateInput
 
@@ -637,8 +637,8 @@ Input for updating an existing organization.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The organization ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `externalId` | `String` | The new external identifier. |
+| `title` | `String` | The new display name. Auto-trimmed. |
+| `externalId` | `String` | The new external identifier. Auto-trimmed. |
 | `isActive` | `Boolean` | The new active status. |
 | `features` | [[OrganizationFeature!]](/api-reference/enums.md#organizationfeature) | The new feature flags. |
 
@@ -677,9 +677,9 @@ Input for structured person name components.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `givenNames` | `String!` | The given name(s). |
-| `familyNames` | `String!` | The family name(s). |
-| `middleName` | `String` | The middle name or patronymic. |
+| `givenNames` | `String!` | The given name(s). Auto-trimmed. |
+| `familyNames` | `String!` | The family name(s). Auto-trimmed. |
+| `middleName` | `String` | The middle name or patronymic. Auto-trimmed. |
 
 ### MemberCreateInput
 
@@ -737,7 +737,7 @@ Input for creating a new integration.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `organizationId` | `ID!` | The organization that will own the integration. |
-| `title` | `String!` | The display name. |
+| `title` | `String!` | The display name. Auto-trimmed. |
 | `credentialRef` | `String` | A reference to credentials in a secure vault. |
 
 ### IntegrationUpdateInput
@@ -748,7 +748,7 @@ Input for updating an existing integration.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The integration ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `credentialRef` | `String` | The new credential reference. |
 | `isActive` | `Boolean` | The new active status. |
 
@@ -767,11 +767,11 @@ Input for deleting an integration.
 
 Filtering options for actor roles.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorIds` | `[ID!]` | Filter by actors (OR within field). |
-| `roleIds` | `[ID!]` | Filter by roles (OR within field). |
-| `includeExpired` | `Boolean` | Include expired role assignments. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `actorIds` | `[ID!]` | — | Filter by actors (OR within field). |
+| `roleIds` | `[ID!]` | — | Filter by roles (OR within field). |
+| `includeExpired` | `Boolean` | `true` | Include expired role assignments. |
 
 ### ActorRoleOrder
 
@@ -880,13 +880,13 @@ Input for removing a user scope restriction.
 
 Input for creating a role.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization that will own the item. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `order` | `Int` | `0` | The display order. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | — | The display properties. |
 
 ### RoleUpdateInput
 
@@ -896,7 +896,7 @@ Input for updating a role.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
 
@@ -925,17 +925,17 @@ Input for updating custom field values using a patch model.
 
 Input for creating a custom field definition.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization ID. |
-| `ownerCatalogItemId` | `ID!` | The owner catalog item ID (EntityType or a specific type like AssetType). |
-| `targetEntityTypeId` | `ID!` | The target entity type ID. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `description` | `String` | The description. |
-| `fieldType` | [FieldType!](/api-reference/enums.md#fieldtype) | The data type. Immutable after creation. |
-| `order` | `Int` | The display order. |
-| `params` | [FieldParamsInput!](/api-reference/inputs.md#fieldparamsinput) | The type-specific parameters. Exactly one variant must be provided. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization ID. |
+| `ownerCatalogItemId` | `ID!` | — | The owner catalog item ID (EntityType or a specific type like AssetType). |
+| `targetEntityTypeId` | `ID!` | — | The target entity type ID. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `description` | `String` | — | The description. Auto-trimmed. |
+| `fieldType` | [FieldType!](/api-reference/enums.md#fieldtype) | — | The data type. Immutable after creation. |
+| `order` | `Int` | `0` | The display order. |
+| `params` | [FieldParamsInput!](/api-reference/inputs.md#fieldparamsinput) | — | The type-specific parameters. Exactly one variant must be provided. |
 
 ### CustomFieldDefinitionUpdateInput
 
@@ -945,8 +945,8 @@ Input for updating a custom field definition. Note: `fieldType` cannot be change
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The definition ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `description` | `String` | The new description. |
+| `title` | `String` | The new display name. Auto-trimmed. |
+| `description` | `String` | The new description. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `params` | [FieldParamsInput](/api-reference/inputs.md#fieldparamsinput) | The updated parameters. Only `isRequired` and type-specific fields can be changed. |
 
@@ -962,6 +962,8 @@ Input for deleting a custom field definition.
 ### FieldParamsInput
 
 Field parameters input. Exactly one field must be provided.
+
+> ⚠️ **Exactly one field must be provided** (`@oneOf` constraint).
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -983,24 +985,24 @@ Field parameters input. Exactly one field must be provided.
 
 Parameters for STRING field type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` | Whether a value is required. |
-| `minLength` | `Int` | The minimum character length. |
-| `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
-| `trim` | `Boolean` | Whether to trim whitespace. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `isRequired` | `Boolean!` | — | Whether a value is required. |
+| `minLength` | `Int` | — | The minimum character length. |
+| `maxLength` | `Int` | — | The maximum character length. |
+| `defaultValue` | `String` | — | The default value. |
+| `trim` | `Boolean` | `true` | Whether to trim whitespace. |
 
 ### TextFieldParamsInput
 
 Parameters for TEXT field type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` | Whether a value is required. |
-| `maxLength` | `Int` | The maximum character length. |
-| `defaultValue` | `String` | The default value. |
-| `trim` | `Boolean` | Whether to trim whitespace. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `isRequired` | `Boolean!` | — | Whether a value is required. |
+| `maxLength` | `Int` | — | The maximum character length. |
+| `defaultValue` | `String` | — | The default value. |
+| `trim` | `Boolean` | `false` | Whether to trim whitespace. |
 
 ### NumberFieldParamsInput
 
@@ -1062,54 +1064,54 @@ Parameters for SCHEDULE field type.
 
 Parameters for OPTIONS field type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple options can be selected. |
-| `options` | [[FieldOptionInput!]!](/api-reference/inputs.md#fieldoptioninput) | The available options. |
-| `defaultValue` | [Code](/api-reference/scalars.md#code) | The default option code. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `isRequired` | `Boolean!` | — | Whether a value is required. |
+| `isMulti` | `Boolean` | `false` | Whether multiple options can be selected. |
+| `options` | [[FieldOptionInput!]!](/api-reference/inputs.md#fieldoptioninput) | — | The available options. |
+| `defaultValue` | [Code](/api-reference/scalars.md#code) | — | The default option code. |
 
 ### FieldOptionInput
 
 Input for an option definition.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `code` | [Code!](/api-reference/scalars.md#code) | The unique code. |
-| `label` | `String!` | The display label. |
-| `description` | `String` | The description. |
-| `isArchived` | `Boolean` | Whether this option is archived. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The unique code. |
+| `label` | `String!` | — | The display label. |
+| `description` | `String` | — | The description. |
+| `isArchived` | `Boolean` | `false` | Whether this option is archived. |
 
 ### ReferenceFieldParamsInput
 
 Parameters for REFERENCE field type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple references can be selected. |
-| `refEntityTypeCode` | [Code!](/api-reference/scalars.md#code) | The entity type code that can be referenced. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `isRequired` | `Boolean!` | — | Whether a value is required. |
+| `isMulti` | `Boolean` | `false` | Whether multiple references can be selected. |
+| `refEntityTypeCode` | [Code!](/api-reference/scalars.md#code) | — | The entity type code that can be referenced. |
 
 ### CatalogFieldParamsInput
 
 Parameters for CATALOG field type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple items can be selected. |
-| `refCatalogCode` | [Code!](/api-reference/scalars.md#code) | The catalog code that items can be selected from. |
-| `defaultValue` | [Code](/api-reference/scalars.md#code) | The default item code. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `isRequired` | `Boolean!` | — | Whether a value is required. |
+| `isMulti` | `Boolean` | `false` | Whether multiple items can be selected. |
+| `refCatalogCode` | [Code!](/api-reference/scalars.md#code) | — | The catalog code that items can be selected from. |
+| `defaultValue` | [Code](/api-reference/scalars.md#code) | — | The default item code. |
 
 ### TagFieldParamsInput
 
 Parameters for TAG field type.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` | Whether a value is required. |
-| `isMulti` | `Boolean` | Whether multiple tags can be selected. |
-| `defaultValue` | [Code](/api-reference/scalars.md#code) | The default tag code. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `isRequired` | `Boolean!` | — | Whether a value is required. |
+| `isMulti` | `Boolean` | `false` | Whether multiple tags can be selected. |
+| `defaultValue` | [Code](/api-reference/scalars.md#code) | — | The default tag code. |
 
 ## Filtering & ordering
 
@@ -1119,7 +1121,7 @@ Filtering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 | `codes` | [[Code!]](/api-reference/scalars.md#code) | Match any of these codes. |
 
 ### CatalogItemChildrenFilter
@@ -1128,7 +1130,7 @@ Filtering options for catalog item children.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 
 ### CatalogItemOrder
 
@@ -1145,7 +1147,7 @@ Filtering options for tags.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). Auto-trimmed. |
 
 ### AuditEventFilter
 
@@ -1179,7 +1181,7 @@ Display properties for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `description` | `String` | The description. |
+| `description` | `String` | The description. Auto-trimmed. |
 | `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
 | `textColor` | [HexColorCode](/api-reference/scalars.md#hexcolorcode) | The text color for UI display. |
 | `backgroundColor` | [HexColorCode](/api-reference/scalars.md#hexcolorcode) | The background color for UI display. |
@@ -1189,15 +1191,15 @@ Display properties for catalog items.
 
 Input for creating a user catalog item.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `catalogId` | `ID!` | The catalog to add the item to. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code, unique within the catalog and organization. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `parentId` | `ID` | The parent item ID for hierarchical catalogs. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization that will own the item. |
+| `catalogId` | `ID!` | — | The catalog to add the item to. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code, unique within the catalog and organization. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `order` | `Int` | `0` | The display order. |
+| `parentId` | `ID` | — | The parent item ID for hierarchical catalogs. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | — | The display properties. |
 
 ### UserCatalogItemUpdateInput
 
@@ -1207,7 +1209,7 @@ Input for updating a user catalog item.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `parentId` | `ID` | The new parent ID for hierarchical items. |
 | `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
@@ -1216,14 +1218,14 @@ Input for updating a user catalog item.
 
 Input for creating a tag.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code!](/api-reference/scalars.md#code) | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `entityTypeIds` | `[ID!]` | The entity types this tag can be applied to. Empty means universal. |
-| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
+| Field | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| `organizationId` | `ID!` | — | The organization that will own the item. |
+| `code` | [Code!](/api-reference/scalars.md#code) | — | The machine-readable code. |
+| `title` | `String!` | — | The display name. Auto-trimmed. |
+| `order` | `Int` | `0` | The display order. |
+| `entityTypeIds` | `[ID!]` | — | The entity types this tag can be applied to. Empty means universal. |
+| `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | — | The display properties. |
 
 ### TagUpdateInput
 
@@ -1233,7 +1235,7 @@ Input for updating a tag.
 | ----- | ---- | ----------- |
 | `id` | `ID!` | The item ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
+| `title` | `String` | The new display name. Auto-trimmed. |
 | `order` | `Int` | The new display order. |
 | `entityTypeIds` | `[ID!]` | Replace entity types. Null means no change, empty means universal. |
 | `meta` | [CatalogItemMetaInput](/api-reference/inputs.md#catalogitemmetainput) | The display properties. |
