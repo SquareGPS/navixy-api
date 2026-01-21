@@ -1116,7 +1116,7 @@ Gets current states (gps, gsm, outputs, etc.) for several trackers.
 
 | name            | description                                                                                                       | type      | format             |
 |:----------------|:------------------------------------------------------------------------------------------------------------------|:----------|:-------------------|
-| trackers        | ID of trackers (aka "object_id"). Trackers must belong to authorized user and not be blocked.                     | int array | `[999119, 999199]` |
+| trackers        | The ID of trackers (also called "object_id" or "tracker_id"). Trackers must belong to an authorized user and must not be blocked. There is a limit of 2000 trackers per request. If you have more than 2000 devices, please split them into separate requests.                     | int array | `[999119, 999199]` |
 | list_blocked    | Optional. If `true` call returns list of blocked tracker IDs instead of error 208. Default is `false`.            | boolean   | true/false         |
 | allow_not_exist | Optional. If `true` call returns list of nonexistent tracker IDs instead of error 217 or 201. Default is `false`. | boolean   | true/false         |
 
