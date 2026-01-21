@@ -78,6 +78,7 @@ Gets last values for all sensors, state values and counters.
       "update_time": "2023-06-28 06:05:59"
     },
     {
+      "sensor_id": 37645,
       "label": "Hood state",
       "value": "Closed",
       "type": "state",
