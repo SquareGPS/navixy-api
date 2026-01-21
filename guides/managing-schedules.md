@@ -10,11 +10,69 @@ This guide walks you through creating, updating, and deleting schedules with Nav
 
 ## Prerequisites
 
-Before you begin, make sure you have:
+To work with a schedule, you need two IDs:
 
-* A valid access token for authentication
-* Your organization ID
-* A schedule type ID (query the catalog to find the available types)
+* **Organization ID**: the [organization ](../api-reference/objects.md#organization)that owns the schedule
+* **Schedule type ID**: the schedule's [classification type](../api-reference/objects.md#scheduletype)
+
+### Getting your organization ID
+
+If you know which organization you're working with, you can query it directly. To list all organizations you have access to, use this query:
+
+```graphql
+query ListOrganizations {
+  organizations(first: 10) {
+    nodes {
+      id
+      title
+    }
+  }
+}
+```
+
+### Getting schedule type IDs
+
+Schedule types are [catalog items](../api-reference/objects.md#catalog-items) that classify schedules (e.g., "Maintenance", "Work hours", "Restrictions"). Query the types available to your organization:
+
+```graphql
+query ListScheduleTypes {
+  scheduleTypes(
+    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+    first: 20
+  ) {
+    nodes {
+      id
+      code
+      title
+    }
+  }
+}
+```
+
+Example response:
+
+```json
+{
+  "data": {
+    "scheduleTypes": {
+      "nodes": [
+        {
+          "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+          "code": "MAINTENANCE",
+          "title": "Maintenance"
+        },
+        {
+          "id": "b1ffc99-9c0b-4ef8-bb6d-6bb9bd380a22",
+          "code": "WORK_HOURS",
+          "title": "Work hours"
+        }
+      ]
+    }
+  }
+}
+```
+
+If no schedule types exist, you can create one using the [scheduleTypeCreate ](../api-reference/mutations.md#scheduletypecreate)mutation.
 
 ## Understanding schedule data
 
@@ -28,11 +86,11 @@ Each event in the `events` array can include:
 
 ## Creating a schedule
 
-Use the `scheduleCreate` mutation to create a new schedule. At minimum, you need to provide the organization ID, schedule type ID, title, and schedule data.
+Use the [scheduleCreate ](../api-reference/mutations.md#schedulecreate)mutation to create a new schedule. You'll need to provide the organization ID, schedule type ID, title, and schedule data.
 
 ### Basic weekly schedule
 
-This example creates a warehouse work schedule that runs Monday through Friday, 9:00 AM to 6:00 PM (Europe/Moscow timezone):
+This sample operation creates a warehouse work schedule that runs Monday through Friday, 9:00 AM to 6:00 PM (Europe/Moscow timezone):
 
 ```graphql
 mutation CreateWarehouseSchedule {
@@ -190,7 +248,7 @@ mutation CreateRentalSchedule {
 
 ## Configuring recurrence rules
 
-The `rrule` object defines how events repeat. Common patterns include:
+The `rrule` property defines how events repeat. It follows [RFC 5545 RRULE](https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10) conventions. Common patterns include:
 
 ### Daily recurrence
 
@@ -325,7 +383,7 @@ The times in `exdate` should match the `dtstart` time of the recurring event.
 
 ## Updating a schedule
 
-Use the `scheduleUpdate` mutation to modify an existing schedule. Updates require the schedule's current `version` for optimistic locking — this prevents conflicts when multiple users edit the same schedule.
+Use the [scheduleUpdate ](../api-reference/mutations.md#scheduleupdate)mutation to modify an existing schedule. Updates require the schedule's current `version` for [optimistic locking](../optimistic-locking.md) — this prevents conflicts when multiple users edit the same schedule.
 
 ### Updating the title
 
