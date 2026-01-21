@@ -1,4 +1,4 @@
-# Multi-factor authentication settings
+# Multifactor authentication settings
 
 !!! warning "Work in progress"
     This API is a work in progress and may change in future releases.
