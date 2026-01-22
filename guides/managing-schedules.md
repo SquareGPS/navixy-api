@@ -421,9 +421,11 @@ The response includes the incremented version:
 
 ### Updating schedule data
 
-When updating `scheduleData`, you must provide the complete new value — the API replaces the entire field, it doesn't merge with existing data.
+When updating `scheduleData`, provide the complete version of the new value. The API replaces the entire field — it doesn't merge with the existing data.
 
-\{% hint style="warning" %\} Always include all events and their full configuration when updating `scheduleData`. Omitting an event removes it from the schedule. \{% endhint %\}
+{% hint style="danger" %}
+Always include all events and their full configuration when updating `scheduleData`. Omitting an event removes it from the schedule.
+{% endhint %}
 
 ```graphql
 mutation UpdateScheduleData {
@@ -485,7 +487,7 @@ To resolve this:
 
 ## Deleting a schedule
 
-Use the `scheduleDelete` mutation to remove a schedule. Like updates, deletion requires the current version:
+Use the [scheduleDelete ](../api-reference/mutations.md#scheduledelete)mutation to remove a schedule. Like updates, deletion requires the current version:
 
 ```graphql
 mutation DeleteSchedule {

@@ -1,5 +1,6 @@
 ---
 description: old version
+hidden: true
 ---
 
 # Configuring a schedule
