@@ -8,7 +8,7 @@ Schedules in Navixy Repository API represent [RFC 5545](https://www.rfc-editor.o
 
 This guide walks you through creating, updating, and deleting schedules with Navixy Repository API.
 
-## Prerequisites
+## Before you start
 
 To work with a schedule, you need two IDs:
 
@@ -76,7 +76,7 @@ If no schedule types exist, you can create one using the [scheduleTypeCreate ](.
 
 ## Understanding schedule data
 
-A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field. The calendar data follows the RFC 5545 conventions:
+A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../api-reference/scalars.md#scheduledata), a custom scalar containing a JSON value. The JSON structure follows the RFC 5545 conventions:
 
 <table><thead><tr><th width="164.4000244140625">Field</th><th>Description</th></tr></thead><tbody><tr><td><code>timezone</code></td><td>IANA timezone identifier (e.g., <code>Europe/Berlin</code>, <code>America/New_York</code>, <code>UTC</code>)</td></tr><tr><td><code>events</code></td><td>Array of time slots, each with start/end times and optional recurrence rules</td></tr></tbody></table>
 
@@ -84,29 +84,35 @@ Each event in the `events` array can include:
 
 <table><thead><tr><th width="137.79998779296875">Field</th><th width="171.4000244140625">iCalendar equivalent</th><th>Description</th></tr></thead><tbody><tr><td><code>dtstart</code></td><td>DTSTART</td><td>Start time in ISO 8601 UTC format</td></tr><tr><td><code>dtend</code></td><td>DTEND</td><td>End time (mutually exclusive with <code>duration</code>)</td></tr><tr><td><code>duration</code></td><td>DURATION</td><td>Duration in ISO 8601 format, e.g., <code>PT3H</code> (mutually exclusive with <code>dtend</code>)</td></tr><tr><td><code>allDay</code></td><td>VALUE=DATE</td><td>When <code>true</code>, the event spans entire days</td></tr><tr><td><code>rrule</code></td><td>RRULE</td><td>Recurrence rule object defining repeat patterns</td></tr><tr><td><code>exdate</code></td><td>EXDATE</td><td>Array of dates to exclude from recurrence</td></tr><tr><td><code>rdate</code></td><td>RDATE</td><td>Array of additional dates to include</td></tr></tbody></table>
 
-## Creating a schedule
+The `rrule` property supports these fields:
 
-Use the [scheduleCreate ](../api-reference/mutations.md#schedulecreate)mutation to create a new schedule. You'll need to provide the organization ID, schedule type ID, title, and schedule data.
+<table><thead><tr><th width="153">Field</th><th width="153.79998779296875">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>freq</code></td><td>String</td><td><strong>Required.</strong> <code>DAILY</code>, <code>WEEKLY</code>, <code>MONTHLY</code>, or <code>YEARLY</code></td></tr><tr><td><code>interval</code></td><td>Integer</td><td>Repeat every N periods (default: 1)</td></tr><tr><td><code>count</code></td><td>Integer</td><td>Stop after N occurrences</td></tr><tr><td><code>until</code></td><td>DateTime</td><td>Stop after this date (mutually exclusive with <code>count</code>)</td></tr><tr><td><code>byday</code></td><td>String[]</td><td>Days of week: <code>MO</code>, <code>TU</code>, <code>WE</code>, <code>TH</code>, <code>FR</code>, <code>SA</code>, <code>SU</code></td></tr><tr><td><code>bymonthday</code></td><td>Integer[]</td><td>Days of month: 1–31, or -1 for last day</td></tr><tr><td><code>bymonth</code></td><td>Integer[]</td><td>Months: 1–12</td></tr><tr><td><code>byhour</code></td><td>Integer[]</td><td>Hours: 0–23</td></tr><tr><td><code>byminute</code></td><td>Integer[]</td><td>Minutes: 0–59</td></tr><tr><td><code>wkst</code></td><td>String</td><td>Week start day: <code>MO</code> or <code>SU</code> (default: <code>MO</code>)</td></tr></tbody></table>
 
-### Basic weekly schedule
+## Example scenario: Fleet maintenance schedule
 
-This sample operation creates a warehouse work schedule that runs Monday through Friday, 9:00 AM to 6:00 PM (Europe/Moscow timezone):
+A logistics company needs to schedule weekly maintenance for their vehicle fleet. The maintenance provider works every Monday from 6:00 to 10:00 (Europe/Berlin timezone). Over time, requirements will change: holidays need to be excluded, the contract has an end date, and the maintenance window gets split to accommodate a break.
+
+{% stepper %}
+{% step %}
+### Create the schedule
+
+Start with a weekly schedule. The `scheduleData` field accepts a JSON structure with a timezone and an array of events. Each event has a start time, end time (or duration), and an optional recurrence rule.
 
 ```graphql
-mutation CreateWarehouseSchedule {
+mutation CreateMaintenanceSchedule {
   scheduleCreate(input: {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
     typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-    title: "Warehouse work hours"
+    title: "Weekly fleet maintenance"
     scheduleData: {
-      timezone: "Europe/Moscow"
+      timezone: "Europe/Berlin"
       events: [
         {
-          dtstart: "2025-01-06T06:00:00Z"
-          dtend: "2025-01-06T15:00:00Z"
+          dtstart: "2025-01-06T05:00:00Z"
+          dtend: "2025-01-06T09:00:00Z"
           rrule: {
             freq: "WEEKLY"
-            byday: ["MO", "TU", "WE", "TH", "FR"]
+            byday: ["MO"]
           }
         }
       ]
@@ -121,7 +127,13 @@ mutation CreateWarehouseSchedule {
 }
 ```
 
-The response returns the created schedule with its ID and version:
+Note the following:
+
+* Times are in UTC. The `dtstart` of `05:00:00Z` equals 06:00 in Europe/Berlin (UTC+1 in winter). The `timezone` field tells consuming applications how to interpret and display these times.
+* `rrule.freq: "WEEKLY"` with `byday: ["MO"]` means the event repeats every Monday.
+* The `dtstart` date is when the schedule comes into effect. Match it to your recurrence pattern to ensure predictable behavior — in this case, a Monday, since the rule uses `byday: ["MO"]`.
+
+The response confirms creation:
 
 ```json
 {
@@ -130,241 +142,67 @@ The response returns the created schedule with its ID and version:
       "schedule": {
         "id": "019a6b2f-793e-807b-8001-555345529b44",
         "version": 1,
-        "title": "Warehouse work hours"
+        "title": "Weekly fleet maintenance"
       }
     }
   }
 }
 ```
 
-Save the `id` and `version` — you'll need them for updates and deletion.
+Save the `id` and `version` — you'll need them for updating the schedule.
+{% endstep %}
 
-### Schedule with duration instead of end time
+{% step %}
+### Verify the schedule
 
-For maintenance windows or tasks with fixed duration, use `duration` instead of `dtend`. This example creates a monthly maintenance schedule on the 15th of each month, lasting 3 hours:
+Query the schedule to confirm it was created correctly:
 
 ```graphql
-mutation CreateMaintenanceSchedule {
-  scheduleCreate(input: {
-    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-    title: "Monthly maintenance"
-    scheduleData: {
-      timezone: "Europe/Moscow"
-      events: [
-        {
-          dtstart: "2025-01-15T11:00:00Z"
-          duration: "PT3H"
-          rrule: {
-            freq: "MONTHLY"
-            bymonthday: [15]
-          }
-        }
-      ]
-    }
-  }) {
-    schedule {
-      id
-      version
+query GetMaintenanceSchedule {
+  schedule(id: "019a6b2f-793e-807b-8001-555345529b44") {
+    id
+    version
+    title
+    type {
+      code
       title
     }
+    scheduleData
   }
 }
 ```
 
-The duration format follows ISO 8601: `PT3H` means 3 hours, `PT30M` means 30 minutes, `PT1H30M` means 1 hour and 30 minutes.
+The `scheduleData` field returns the full JSON structure you provided, which you can use to verify the configuration or display it in your application.
+{% endstep %}
 
-### Schedule with multiple events
+{% step %}
+### Exclude holidays
 
-A single schedule can contain multiple events. This is useful for scenarios like refrigerator temperature modes or split shifts:
+The maintenance provider doesn't work on public holidays. Several holidays in the year fall on Mondays. Add these as exception dates using `exdate`. This requires updating the schedule with `scheduleUpdate`.
 
-```graphql
-mutation CreateRefrigeratorModes {
-  scheduleCreate(input: {
-    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-    title: "Refrigerator modes"
+{% hint style="danger" %}
+When updating `scheduleData`, you must provide the complete value — the API replaces the entire field. Include all existing configuration plus your changes.
+{% endhint %}
+
+<pre class="language-graphql"><code class="lang-graphql"><strong>mutation AddHolidayExceptions {
+</strong>  scheduleUpdate(input: {
+    id: "019a6b2f-793e-807b-8001-555345529b44"
+    version: 1
     scheduleData: {
-      timezone: "Europe/Moscow"
+      timezone: "Europe/Berlin"
       events: [
         {
-          dtstart: "2025-01-06T19:00:00Z"
-          dtend: "2025-01-07T03:00:00Z"
+          dtstart: "2025-01-06T05:00:00Z"
+          dtend: "2025-01-06T09:00:00Z"
           rrule: {
-            freq: "DAILY"
-          }
-        },
-        {
-          dtstart: "2025-01-06T03:00:00Z"
-          dtend: "2025-01-06T19:00:00Z"
-          rrule: {
-            freq: "DAILY"
-          }
-        }
-      ]
-    }
-  }) {
-    schedule {
-      id
-      version
-      title
-    }
-  }
-}
-```
-
-### Non-recurring schedule (fixed date ranges)
-
-For rental periods or one-time events, omit the `rrule` field entirely:
-
-```graphql
-mutation CreateRentalSchedule {
-  scheduleCreate(input: {
-    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-    title: "Excavator rental"
-    scheduleData: {
-      timezone: "Europe/Moscow"
-      events: [
-        {
-          dtstart: "2025-02-10T06:00:00Z"
-          dtend: "2025-02-15T15:00:00Z"
-        },
-        {
-          dtstart: "2025-03-01T06:00:00Z"
-          dtend: "2025-03-10T15:00:00Z"
-        }
-      ]
-    }
-  }) {
-    schedule {
-      id
-      version
-      title
-    }
-  }
-}
-```
-
-## Configuring recurrence rules
-
-The `rrule` property defines how events repeat. It follows [RFC 5545 RRULE](https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10) conventions. Common patterns include:
-
-### Daily recurrence
-
-Repeat every day:
-
-```json
-{
-  "rrule": {
-    "freq": "DAILY"
-  }
-}
-```
-
-Repeat every 2 days:
-
-```json
-{
-  "rrule": {
-    "freq": "DAILY",
-    "interval": 2
-  }
-}
-```
-
-### Weekly recurrence
-
-Repeat every week on specific days:
-
-```json
-{
-  "rrule": {
-    "freq": "WEEKLY",
-    "byday": ["MO", "WE", "FR"]
-  }
-}
-```
-
-Day codes: `MO`, `TU`, `WE`, `TH`, `FR`, `SA`, `SU`
-
-### Monthly recurrence
-
-Repeat on specific days of the month:
-
-```json
-{
-  "rrule": {
-    "freq": "MONTHLY",
-    "bymonthday": [1, 15]
-  }
-}
-```
-
-Use `-1` for the last day of the month:
-
-```json
-{
-  "rrule": {
-    "freq": "MONTHLY",
-    "bymonthday": [-1]
-  }
-}
-```
-
-### Ending recurrence
-
-By count (stop after N occurrences):
-
-```json
-{
-  "rrule": {
-    "freq": "WEEKLY",
-    "byday": ["MO"],
-    "count": 10
-  }
-}
-```
-
-By date (stop after a specific date):
-
-```json
-{
-  "rrule": {
-    "freq": "WEEKLY",
-    "byday": ["MO"],
-    "until": "2025-12-31T23:59:59Z"
-  }
-}
-```
-
-## Adding exception dates
-
-Use `exdate` to exclude specific dates from a recurring schedule. This is useful for holidays or one-off cancellations.
-
-This example creates a weekly Monday maintenance window but excludes holiday Mondays:
-
-```graphql
-mutation CreateScheduleWithExceptions {
-  scheduleCreate(input: {
-    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-    title: "Weekly maintenance"
-    scheduleData: {
-      timezone: "UTC"
-      events: [
-        {
-          dtstart: "2025-01-06T02:00:00Z"
-          duration: "PT4H"
-          rrule: {
-            freq: "WEEKLY",
+            freq: "WEEKLY"
             byday: ["MO"]
-          },
+          }
           exdate: [
-            "2025-01-20T02:00:00Z",
-            "2025-02-17T02:00:00Z",
-            "2025-05-26T02:00:00Z",
-            "2025-12-22T02:00:00Z"
+            "2025-04-21T05:00:00Z",
+            "2025-05-05T05:00:00Z",
+            "2025-06-09T05:00:00Z",
+            "2025-10-06T05:00:00Z"
           ]
         }
       ]
@@ -373,37 +211,15 @@ mutation CreateScheduleWithExceptions {
     schedule {
       id
       version
-      title
+      scheduleData
     }
   }
 }
-```
+</code></pre>
 
-The times in `exdate` should match the `dtstart` time of the recurring event.
+The `exdate` times must match the event's `dtstart` time (05:00:00Z) for the exclusions to work correctly.
 
-## Updating a schedule
-
-Use the [scheduleUpdate ](../api-reference/mutations.md#scheduleupdate)mutation to modify an existing schedule. Updates require the schedule's current `version` for [optimistic locking](../optimistic-locking.md) — this prevents conflicts when multiple users edit the same schedule.
-
-### Updating the title
-
-```graphql
-mutation UpdateScheduleTitle {
-  scheduleUpdate(input: {
-    id: "019a6b2f-793e-807b-8001-555345529b44"
-    version: 1
-    title: "Warehouse hours (updated)"
-  }) {
-    schedule {
-      id
-      version
-      title
-    }
-  }
-}
-```
-
-The response includes the incremented version:
+The response shows the incremented version:
 
 ```json
 {
@@ -412,38 +228,40 @@ The response includes the incremented version:
       "schedule": {
         "id": "019a6b2f-793e-807b-8001-555345529b44",
         "version": 2,
-        "title": "Warehouse hours (updated)"
+        "scheduleData": { ... }
       }
     }
   }
 }
 ```
+{% endstep %}
 
-### Updating schedule data
+{% step %}
+### Set an end date
 
-When updating `scheduleData`, provide the complete version of the new value. The API replaces the entire field — it doesn't merge with the existing data.
-
-{% hint style="danger" %}
-Always include all events and their full configuration when updating `scheduleData`. Omitting an event removes it from the schedule.
-{% endhint %}
+The maintenance contract runs through December 31, 2025. Add an `until` date to the recurrence rule so the schedule stops repeating after that date.
 
 ```graphql
-mutation UpdateScheduleData {
+mutation SetContractEndDate {
   scheduleUpdate(input: {
     id: "019a6b2f-793e-807b-8001-555345529b44"
     version: 2
     scheduleData: {
-      timezone: "Europe/Moscow"
+      timezone: "Europe/Berlin"
       events: [
         {
-          dtstart: "2025-01-06T06:00:00Z"
-          dtend: "2025-01-06T15:00:00Z"
+          dtstart: "2025-01-06T05:00:00Z"
+          dtend: "2025-01-06T09:00:00Z"
           rrule: {
             freq: "WEEKLY"
-            byday: ["MO", "TU", "WE", "TH", "FR"]
-          },
+            byday: ["MO"]
+            until: "2025-12-31T23:59:59Z"
+          }
           exdate: [
-            "2025-05-01T06:00:00Z"
+            "2025-04-21T05:00:00Z",
+            "2025-05-05T05:00:00Z",
+            "2025-06-09T05:00:00Z",
+            "2025-10-06T05:00:00Z"
           ]
         }
       ]
@@ -452,16 +270,96 @@ mutation UpdateScheduleData {
     schedule {
       id
       version
-      title
-      scheduleData
     }
   }
 }
 ```
 
+The schedule's version is now 3.
+{% endstep %}
+
+{% step %}
+### Split the schedule into two windows
+
+The maintenance team requests a break from 8:00 to 8:30. Instead of one 4-hour window, you now need two windows: 6:00–8:00 and 8:30–10:00.
+
+Replace the single event with two events, each with its own recurrence rule:
+
+```graphql
+mutation SplitMaintenanceWindow {
+  scheduleUpdate(input: {
+    id: "019a6b2f-793e-807b-8001-555345529b44"
+    version: 3
+    scheduleData: {
+      timezone: "Europe/Berlin"
+      events: [
+        {
+          dtstart: "2025-01-06T05:00:00Z"
+          dtend: "2025-01-06T07:00:00Z"
+          rrule: {
+            freq: "WEEKLY"
+            byday: ["MO"]
+            until: "2025-12-31T23:59:59Z"
+          }
+          exdate: [
+            "2025-04-21T05:00:00Z",
+            "2025-05-05T05:00:00Z",
+            "2025-06-09T05:00:00Z",
+            "2025-10-06T05:00:00Z"
+          ]
+        },
+        {
+          dtstart: "2025-01-06T07:30:00Z"
+          dtend: "2025-01-06T09:00:00Z"
+          rrule: {
+            freq: "WEEKLY"
+            byday: ["MO"]
+            until: "2025-12-31T23:59:59Z"
+          }
+          exdate: [
+            "2025-04-21T07:30:00Z",
+            "2025-05-05T07:30:00Z",
+            "2025-06-09T07:30:00Z",
+            "2025-10-06T07:30:00Z"
+          ]
+        }
+      ]
+    }
+  }) {
+    schedule {
+      id
+      version
+    }
+  }
+}
+```
+
+Note that each event has its own `exdate` array with times matching that event's `dtstart`.
+{% endstep %}
+
+{% step %}
+### Delete the schedule
+
+When the contract ends and you no longer need the schedule, delete it:
+
+```graphql
+mutation DeleteMaintenanceSchedule {
+  scheduleDelete(input: {
+    id: "019a6b2f-793e-807b-8001-555345529b44"
+    version: 4
+  }) {
+    deletedId
+  }
+}
+```
+
+The `version` parameter ensures you don't accidentally delete a schedule that someone else has modified. If the version doesn't match, you'll receive a conflict error.
+{% endstep %}
+{% endstepper %}
+
 ### Handling version conflicts
 
-If the schedule has been modified since you fetched it, the API returns a `CONFLICT` error:
+If someone else updates the schedule while you're working on it, your mutation will fail with a conflict error:
 
 ```json
 {
@@ -471,8 +369,8 @@ If the schedule has been modified since you fetched it, the API returns a `CONFL
       "extensions": {
         "code": "CONFLICT",
         "status": 409,
-        "expectedVersion": 2,
-        "currentVersion": 3
+        "expectedVersion": 3,
+        "currentVersion": 4
       }
     }
   ]
@@ -485,87 +383,37 @@ To resolve this:
 2. Merge your changes with the current state
 3. Retry the mutation with the correct version
 
-## Deleting a schedule
+## Common patterns
 
-Use the [scheduleDelete ](../api-reference/mutations.md#scheduledelete)mutation to remove a schedule. Like updates, deletion requires the current version:
-
-```graphql
-mutation DeleteSchedule {
-  scheduleDelete(input: {
-    id: "019a6b2f-793e-807b-8001-555345529b44"
-    version: 3
-  }) {
-    deletedId
-  }
-}
-```
-
-The response confirms the deletion:
+**Every weekday:**
 
 ```json
-{
-  "data": {
-    "scheduleDelete": {
-      "deletedId": "019a6b2f-793e-807b-8001-555345529b44"
-    }
-  }
-}
+{ "freq": "WEEKLY", "byday": ["MO", "TU", "WE", "TH", "FR"] }
 ```
 
-## Querying schedules
+**Every other week on Monday:**
 
-### Get a single schedule
-
-```graphql
-query GetSchedule {
-  node(id: "019a6b2f-793e-807b-8001-555345529b44") {
-    ... on Schedule {
-      id
-      version
-      title
-      organization {
-        id
-        title
-      }
-      type {
-        code
-        title
-      }
-      scheduleData
-    }
-  }
-}
+```json
+{ "freq": "WEEKLY", "interval": 2, "byday": ["MO"] }
 ```
 
-### List schedules for an organization
+**First and fifteenth of each month:**
 
-```graphql
-query ListSchedules {
-  schedules(
-    filter: { organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7" }
-    first: 20
-  ) {
-    edges {
-      node {
-        id
-        title
-        type {
-          code
-        }
-        scheduleData
-      }
-    }
-    pageInfo {
-      hasNextPage
-      endCursor
-    }
-  }
-}
+```json
+{ "freq": "MONTHLY", "bymonthday": [1, 15] }
 ```
 
-## Common use cases
+**Last day of each month:**
 
-<table><thead><tr><th width="207.5999755859375">Use case</th><th>Configuration approach</th></tr></thead><tbody><tr><td>Work hours</td><td>Weekly recurrence with <code>byday</code> for weekdays</td></tr><tr><td>Maintenance windows</td><td>Monthly recurrence with <code>bymonthday</code>, use <code>duration</code> for fixed length</td></tr><tr><td>Driver shifts</td><td>Daily recurrence, multiple events for different shifts</td></tr><tr><td>Equipment rental</td><td>Non-recurring events with explicit date ranges</td></tr><tr><td>Holiday calendar</td><td>Non-recurring events, one per holiday</td></tr><tr><td>Night restrictions</td><td>Daily recurrence with overnight time span</td></tr></tbody></table>
+```json
+{ "freq": "MONTHLY", "bymonthday": [-1] }
+```
+
+**Every day at specific hours:**
+
+```json
+{ "freq": "DAILY", "byhour": [9, 14, 18] }
+```
 
 ## Next steps
 
