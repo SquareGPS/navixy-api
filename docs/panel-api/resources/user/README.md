@@ -131,7 +131,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
 
 {% code title="cURL" %}
 ```sh
-    curl -X POST 'https://api.eu.navixy.com/v2/panel/user/create' \
+    curl -X POST '{{ extra.api_example_url }}/panel/user/create' \
         -H 'Content-Type: application/json' \
         -d '{
               "hash": "22eac1c27af4be7b9d04da2ce1af111b",
@@ -158,7 +158,11 @@ If `user.verified` not passed then it set equal to `user.activated`.
                 "state_reg_num": "12-3456789",
                 "tin": "1131145180",
                 "okpo_code": "93281776",
-                "iec": "773101001"
+                "iec": "773101001",
+                "dealer_mfa_settings": {
+                  "type": "allowed",
+                  "factor_types": [ "email" ]
+                }
               },
               "time_zone": "America/Los_Angeles",
               "locale": "en_US",
@@ -264,12 +268,16 @@ https://api.eu.navixy.com/v2/panel/user/read?hash=fa7bf873fab9333144e171372a321b
     "end_date": "2021-03-01",
     "strategy": "sum_with_progressive"
   },
+  "dealer_mfa_settings": {
+    "type": "disallowed"
+  },
   "default_tariff_id": 123
 }
 ```
 
 * `value` - JSON object. [User object](./#user-object-structure) described above.
 * `discount` - JSON object. [Discount object](./#discount-object-structure) described above.
+* `dealer_mfa_settings` - Multifactor Authentication settings.
 * `default_tariff_id` - integer number, nullable. ID of a tariff plan which will be applied to user's trackers by default.
 
 #### Errors
@@ -328,7 +336,11 @@ curl -X POST 'https://api.eu.navixy.com/v2/panel/user/update' \
             "tin": "1131145180", 
             "okpo_code": "93281776", 
             "iec": "773101001", 
-            "id": 38935
+            "id": 38935,
+            "dealer_mfa_settings": {
+              "type": "allowed",
+              "factor_types": [ "email" ]
+            }
         }, 
         "discount": {
             "value": 5.5, 
@@ -770,7 +782,7 @@ _required permissions_: `[users: "read", transactions: "read"]`.
 
 | name     | description                                                                | type                                                   |
 | -------- | -------------------------------------------------------------------------- | ------------------------------------------------------ |
-| user\_id | An ID of user whom transactions listed. must be owned by a current dealer. | int                                                    |
+| user\_id | An ID of user whom transactions listed. Must be owned by a current dealer. | int                                                    |
 | from     | Start date/time for searching.                                             | [date/time](../../../user-api/backend-api/#data-types) |
 | to       | End date/time for searching. Must be after "from" date.                    | [date/time](../../../user-api/backend-api/#data-types) |
 | limit    | Optional. A maximum number of the returned transactions.                   | int                                                    |
