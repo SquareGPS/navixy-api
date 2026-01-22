@@ -1,46 +1,49 @@
 ---
-title: Chat 
+title: Chat
 description: API calls to work with chat module.
 ---
+
 # Chat
 
-API calls to work with chat module. A chat module allows remote employees and supervisors quickly exchange their 
-ideas and feedback, as well as helps employers to boost team culture. This can prove to be a useful communication tool.
-
+API calls to work with chat module. A chat module allows remote employees and supervisors quickly exchange their ideas and feedback, as well as helps employers to boost team culture. This can prove to be a useful communication tool.
 
 ## API actions
 
 API base path: `/tracker/chat`.
 
-### `list`
+### list
 
 Gets a list of chat messages.
 
 #### Parameters
 
-| name       | description                                                                                     | type                                                                   | format                |
-| :--------- | :---------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- | :-------------------- |
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                                                    | 999199                |
-| from       | Optional. Start date/time of searching. Default value is now minus 7 days.                      | [date/time](../../../getting-started/introduction.md#datetime-formats) | `yyyy-MM-dd HH:mm:ss` |
-| to         | Optional. End date/time for searching. Default value is now.                                    | [date/time](../../../getting-started/introduction.md#datetime-formats)              | `yyyy-MM-dd HH:mm:ss` |
-| limit      | Optional. Limit of messages in list. Default and max limit is 1024.                             | int                                                                    | 1024                  |
-| ascending  | Optional. Ascending order direction from the first message to last. Default value is `true`.    | boolean                                                                | true/false            |
+| name        | description                                                                                      | type                                    | format                |
+| ----------- | ------------------------------------------------------------------------------------------------ | --------------------------------------- | --------------------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                                     | 999199                |
+| from        | Optional. Start date/time of searching. Default value is now minus 7 days.                       | [date/time](../../../#datetime-formats) | `yyyy-MM-dd HH:mm:ss` |
+| to          | Optional. End date/time for searching. Default value is now.                                     | [date/time](../../../#datetime-formats) | `yyyy-MM-dd HH:mm:ss` |
+| limit       | Optional. Limit of messages in list. Default and max limit is 1024.                              | int                                     | 1024                  |
+| ascending   | Optional. Ascending order direction from the first message to last. Default value is `true`.     | boolean                                 | true/false            |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/chat/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/chat/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/chat/list?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/chat/list?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -80,32 +83,35 @@ Where **message** object is:
 * 214 – Requested operation or parameters are not supported by the device.
 * 236 – Feature unavailable due to tariff restrictions (if one of the trackers has tariff without "chat" feature).
 
-
-### `mark_read_all`
+### mark\_read\_all
 
 Marks all incoming chat messages as read for all or for given user trackers.
 
 #### Parameters
 
-| name     | description                                                                                                        | type      | format             |
-|:---------|:-------------------------------------------------------------------------------------------------------------------|:----------|:-------------------|
-| trackers | Optional array of IDs of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
+| name     | description                                                                                                         | type      | format             |
+| -------- | ------------------------------------------------------------------------------------------------------------------- | --------- | ------------------ |
+| trackers | Optional array of IDs of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int array | `[999199, 999919]` |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/chat/mark_read_all' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read_all' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/chat/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/chat/mark_read_all?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -119,35 +125,38 @@ Marks all incoming chat messages as read for all or for given user trackers.
 
 * 201 – Not found in the database.
 
-
-### `mark_read`
+### mark\_read
 
 Marks incoming chat message as read by `message_id` or array of `message_ids`.
 
 #### Parameters
 
-| name        | description               | type      | format      |
-|:------------|:--------------------------|:----------|:------------|
-| message_id  | ID of incoming message.   | int       | 123         |
-| message_ids | IDs of incoming messages. | int array | `[123,213]` |
+| name         | description               | type      | format      |
+| ------------ | ------------------------- | --------- | ----------- |
+| message\_id  | ID of incoming message.   | int       | 123         |
+| message\_ids | IDs of incoming messages. | int array | `[123,213]` |
 
 Use only one parameter.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/chat/mark_read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "message_id": 123}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/chat/mark_read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "message_id": 123}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/chat/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&message_id=123
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/chat/mark_read?hash=a6aa75587e5c59c32d347da438505fc3&message_id=123
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -161,27 +170,28 @@ Use only one parameter.
 
 * 201 – Not found in the database.
 
-
-### `send`
+### send
 
 Sends chat message to a specified tracker.
 
 #### Parameters
 
-| name       | description                                                                                     | type   | format        |
-|:-----------|:------------------------------------------------------------------------------------------------|:-------|:--------------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int    | 123456        |
-| message    | Message text, not null, max size - 20000.                                                       | string | "Hello World" |
+| name        | description                                                                                      | type   | format        |
+| ----------- | ------------------------------------------------------------------------------------------------ | ------ | ------------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int    | 123456        |
+| message     | Message text, not null, max size - 20000.                                                        | string | "Hello World" |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/chat/send' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "message": "Hello World"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/chat/send' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 123456, "message": "Hello World"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -199,29 +209,30 @@ Sends chat message to a specified tracker.
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
-* 236 – Feature unavailable due to tariff restrictions - if one of the trackers has tariff with disabled reports ("has_reports" is `false`).
+* 236 – Feature unavailable due to tariff restrictions - if one of the trackers has tariff with disabled reports ("has\_reports" is `false`).
 
-
-### `broadcast`
+### broadcast
 
 Sends chat message to specified trackers.
 
 #### Parameters
 
-| name     | description                                                                                                               | type      | format             |
-|:---------|:--------------------------------------------------------------------------------------------------------------------------|:----------|:-------------------|
-| trackers | Array of IDs of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
-| message  | Message text, not null, max size - 20000.                                                                                 | string    | "Hello World"      |
+| name     | description                                                                                                                | type      | format             |
+| -------- | -------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------ |
+| trackers | Array of IDs of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
+| message  | Message text, not null, max size - 20000.                                                                                  | string    | "Hello World"      |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/chat/broadcast' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999199, 991999], "message": "Hello World"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/chat/broadcast' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999199, 991999], "message": "Hello World"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -241,26 +252,25 @@ Sends chat message to specified trackers.
 * 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
 
-
-### `updated/list`
+### updated/list
 
 Gets date-times of last messages in chat of trackers.
 
 #### Parameters
 
-| name     | description                                                                                                               | type      | format             |
-|:---------|:--------------------------------------------------------------------------------------------------------------------------|:----------|:-------------------|
-| trackers | Array of IDs of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
+| name     | description                                                                                                                | type      | format             |
+| -------- | -------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------ |
+| trackers | Array of IDs of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. Max size - 300. | int array | `[999199, 999919]` |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/chat/updated/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999199, 991999]}'
-    ```
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/chat/updated/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [999199, 991999]}'
+```
 
 #### Response
 
@@ -278,30 +288,33 @@ Gets date-times of last messages in chat of trackers.
 
 #### Errors
 
-* 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or 
-doesn't have required tariff features.
+* 217 – The list contains non-existent entities – if one of the specified trackers does not exist, is blocked or\
+  doesn't have required tariff features.
 * 221 – Device limit exceeded - if device limit set for the user's dealer has been exceeded.
 
-
-### `unread/count`
+### unread/count
 
 Gets count of user's unread chat messages grouped by tracker ID.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/chat/unread/count' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/chat/unread/count' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/chat/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/chat/unread/count?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

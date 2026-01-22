@@ -1,47 +1,52 @@
 ---
 title: Assigning employee to tracker
-description: API calls for assigning employee ("driver") to a device and reading who is already assigned.
+description: >-
+  API calls for assigning employee ("driver") to a device and reading who is
+  already assigned.
 ---
 
 # Assigning employee to tracker
 
-Allows assigning employee ("driver") to a device. Also, read who is on a vehicle now, hardware key and when, where was
-assigned.
-
+Allows assigning employee ("driver") to a device. Also, read who is on a vehicle now, hardware key and when, where it was assigned.
 
 ## API actions
 
 API base path: `/tracker/employee`.
 
-### `assign`
+### assign
 
 Assigns another employee ("driver") to the tracker.
 
-**required sub-user rights:** `employee_update`.
-**required tariff feature:** `app_fleet`.
+**required sub-user rights:** `employee_update`.**required tariff feature:** `app_fleet`.
 
 #### Parameters
 
-| name            | description                                                                                     | type | format |
-|:----------------|:------------------------------------------------------------------------------------------------|:-----|:-------|
-| tracker_id      | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
-| new_employee_id | ID of the new employee.                                                                         | int  | 12345  |
+| name              | description                                                                                      | type | format |
+| ----------------- | ------------------------------------------------------------------------------------------------ | ---- | ------ |
+| tracker\_id       | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
+| new\_employee\_id | ID of the new employee.                                                                          | int  | 12345  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/employee/assign' \
+    -H 'Content-Type: application/json' \
+    -d '{"tracker_id": 123456, "new_employee_id": 12345, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/employee/assign' \
-        -H 'Content-Type: application/json' \
-        -d '{"tracker_id": 123456, "new_employee_id": 12345, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/employee/assign?tracker_id=123456&new_employee_id=12345&hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/employee/assign?tracker_id=123456&new_employee_id=12345&hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -57,32 +62,35 @@ Assigns another employee ("driver") to the tracker.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 263 – No change needed, old and new values are the same - if new employee matches a currently assigned employee.
 
-
-### `read`
+### read
 
 Requests to read the current employee (driver) assigned to tracker, and when it was assigned.
 
 #### Parameters
 
-| name       | description                                                                                     | type | format |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
+| name        | description                                                                                      | type | format |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ------ |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int  | 123456 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/employee/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/employee/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/employee/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/employee/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -127,15 +135,15 @@ Requests to read the current employee (driver) assigned to tracker, and when it 
 
 * `current` - current employee (driver) info, standard employee object, can be `null`.
 * `last_change` - information about the employee's last assignment, can be `null`.
-    * `old_employee_id` - deprecated. Always `null`.
-    * `new_employee_id` - ID of an employee assigned to the tracker. Can be `null`.
-    * `location` - an address where it was. Can be `null`.
-        * `lat` - latitude.
-        * `lng` - longitude.
-        * `address` - an address where it was. Can be `null`.
-    * `origin` - `supervisor` (if the assignment was made through the [API](#assign)) or `tracker`
-      (if the assignment was made through the hardware/driver key).
-    * `hardware_key` - hardware key used to change employee.
+  * `old_employee_id` - deprecated. Always `null`.
+  * `new_employee_id` - ID of an employee assigned to the tracker. Can be `null`.
+  * `location` - an address where it was. Can be `null`.
+    * `lat` - latitude.
+    * `lng` - longitude.
+    * `address` - an address where it was. Can be `null`.
+  * `origin` - `supervisor` (if the assignment was made through the [API](employee.md#assign)) or `tracker`\
+    (if the assignment was made through the hardware/driver key).
+  * `hardware_key` - hardware key used to change employee.
 
 #### Errors
 

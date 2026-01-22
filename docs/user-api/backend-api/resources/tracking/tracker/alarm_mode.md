@@ -2,40 +2,42 @@
 title: Alarm mode
 description: Contains API calls to read and set alarm mode of device.
 ---
+
 # Alarm mode for tracker
-
-Contains API calls to read and set alarm mode of device.
-
 
 ## API actions
 
 API base path: `/tracker/alarm_mode`.
 
-### `read`
+### read
 
 Gets the state of alarm mode of device.
 
 #### Parameters
 
-| name       | description                                                                                     | type | format |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
+| name        | description                                                                                      | type | format |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ------ |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/alarm_mode/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"tracker_id": 123456, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/alarm_mode/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/alarm_mode/read?tracker_id=123456&hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -54,33 +56,38 @@ Gets the state of alarm mode of device.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device - if device does not support alarm mode.
 
-
-### `set`
+### set
 
 Changes the state of alarm mode of device. The device must be online.
 
 #### Parameters
 
-| name       | description                                                                                     | type    | format     |
-|:-----------|:------------------------------------------------------------------------------------------------|:--------|:-----------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int     | 999199     |
-| enabled    | `true` if alarm mode should be enabled.                                                         | boolean | true/false |
+| name        | description                                                                                      | type    | format     |
+| ----------- | ------------------------------------------------------------------------------------------------ | ------- | ---------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int     | 999199     |
+| enabled     | `true` if alarm mode should be enabled.                                                          | boolean | true/false |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/alarm_mode/set' \
+    -H 'Content-Type: application/json' \
+    -d '{"tracker_id": 123456, "enabled": true, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/alarm_mode/set' \
-        -H 'Content-Type: application/json' \
-        -d '{"tracker_id": 123456, "enabled": true, "hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/alarm_mode/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/alarm_mode/set?tracker_id=123456&enabled=true&hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

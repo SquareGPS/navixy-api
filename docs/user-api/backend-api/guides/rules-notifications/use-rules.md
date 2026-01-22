@@ -20,20 +20,20 @@ Availability of some parameters depends on the rule type used:
 * `primary_text`: A string with the primary text of the rule notification when the condition is `true`.
 * `secondary_text`: An optional string with the secondary text of the rule notification when the condition is `false`. The availability of this parameter depends on the rule type.
 * `param`: An optional integer for common integer conditions. The availability of this parameter depends on the rule type. See [rule types](../../resources/tracking/tracker/rules/rule_types.md).
-* `alerts`: An object with destinations for notifications. Defines who and how notifications will be received. Described in the [rule object](../../resources/tracking/tracker/rules/rule.md).
+* `alerts`: An object with destinations for notifications. Defines who and how notifications will be received. Described in the [rule object](../../resources/tracking/tracker/rules/rule.md#rule-object).
 * `suspended`: A boolean that starts and stops the rule. `true` if the rule is suspended.
-* `schedule`: An optional object that configures the time when the rule works. Described in the [rule object](../../resources/tracking/tracker/rules/rule.md).
+* `schedule`: An optional object that configures the time when the rule works. Described in the [rule object](../../resources/tracking/tracker/rules/rule.md#rule-object).
 * `extended_params`: An optional object specified for a particular rule type. See [rule types](../../resources/tracking/tracker/rules/rule_types.md).
 
 ### API Request
 
-=== "cURL"
-
+{% code title="cURL" overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/create' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"description": "", "type": "work_status_change", "primary_text": "status changed", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": false, "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7,"time": "23:59:59"}, "type": "weekly"}], "zone_ids": []}}'
 ```
+{% endcode %}
 
 The platform will respond with the ID of the created rule.
 
@@ -55,21 +55,27 @@ Once a rule is created, you can bind devices to it using the [`rule/bind`](../..
 
 ### API Requests
 
-=== "Bind"
-
+{% tabs %}
+{% tab title="Bind" %}
+{% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/bind' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/bind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123, "trackers": [265489]}'
 ```
+{% endcode %}
+{% endtab %}
 
-=== "Unbind"
-
+{% tab title="Unbind" %}
+{% code overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/unbind' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/unbind' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule_id": 123, "trackers": [265489]}'
 ```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 ## Updating a Rule
 
@@ -77,19 +83,19 @@ If a rule needs to be updated, such as adding another phone number for SMS notif
 
 ### Required Parameters
 
-The list of necessary parameters is the same as in the [`rule/create`](#creating-a-rule) call, plus the `id` parameter.
+The list of necessary parameters is the same as in the [`rule/create`](use-rules.md#creating-a-rule) call, plus the `id` parameter.
 
 * `id`: An integer with the ID of the rule to be updated. You can get rule IDs using the [`rule/list`](../../resources/tracking/tracker/rules/rule.md#list) call.
 
 ### API Request
 
-=== "cURL"
-
+{% code title="cURL" overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"id": 123, "description": "", "type": "work_status_change", "primary_text": "status changed", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": false, "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7, "time": "23:59:59"}, "type": "weekly"}], "zone_ids": []}}'
 ```
+{% endcode %}
 
 ## Suspending a Rule
 
@@ -97,10 +103,10 @@ To suspend a rule, use the [`rule/update`](../../resources/tracking/tracker/rule
 
 ### API Request
 
-=== "cURL"
-
+{% code title="cURL" overflow="wrap" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/tracker/rule/update' \
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/rule/update' \
     -H 'Content-Type: application/json' \
     -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "rule": {"id": 123, "description": "", "type": "work_status_change", "primary_text": "status changed", "alerts": {"push_enabled": true, "emails": ["example@gmail.com"], "emergency": false, "sms_phones": ["745494878945"], "phones": []}, "suspended": true, "name": "Status changing", "trackers": [123456], "extended_params": {"emergency": false, "zone_limit_inverted": false, "status_ids": [319281,319282,319283]}, "schedule": [{"from": {"weekday": 1, "time": "00:00:00"}, "to": {"weekday": 7, "time": "23:59:59"}, "type": "weekly"}], "zone_ids": []}}'
 ```
+{% endcode %}

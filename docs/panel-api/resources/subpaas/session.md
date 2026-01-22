@@ -5,39 +5,39 @@ description: API call to create a subpaas session.
 
 # Subpaas session key
 
-API call to create a SubPaaS session key.
-
-
 ## API actions
 
 API base path: `panel/subpaas/session`.
 
-### `create`
+### create
 
 Creates a SubPaaS session.
 
 #### Parameters
 
-| name       | description  | type |
-|:-----------|:-------------|:-----|
-| subpaas_id | Subpaas' ID. | int  |
+| name        | description  | type |
+| ----------- | ------------ | ---- |
+| subpaas\_id | Subpaas' ID. | int  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/subpaas/session/create' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 97834}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/subpaas/session/create' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 97834}'
-    ```
-       
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/subpaas/session/create?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
-    ```
-
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/subpaas/session/create?hash=fa7bf873fab9333144e171372a321b06&subpaas_id=97834
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -51,8 +51,7 @@ Creates a SubPaaS session.
 #### Errors
 
 * 13 –
-    * The dealer is not PaaS type.
-    * The dealer has a status other than `NOT_BLOCKED`.
-    * The dealer's tariff does not allow SubPaaS accounts.
-    * The found SubPaaS is not in `NOT_BLOCKED` status.
-
+  * The dealer is not PaaS type.
+  * The dealer has a status other than `NOT_BLOCKED`.
+  * The dealer's tariff does not allow SubPaaS accounts.
+  * The found SubPaaS is not in `NOT_BLOCKED` status.

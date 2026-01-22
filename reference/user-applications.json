@@ -1,0 +1,556 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "User Applications API",
+    "description": "API calls to work with user applications.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "email": "support@navixy.com",
+      "url": "https://www.navixy.com/contact/"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "identifier": "Apache-2.0"
+    }
+  },
+  "externalDocs": {
+    "description": "Find more info here",
+    "url": "https://example.com/docs"
+  },
+  "servers": [
+    {
+      "url": "https://api.eu.navixy.com/v2",
+      "description": "Navixy production server on European platform"
+    },
+    {
+      "url": "https://api.us.navixy.com/v2",
+      "description": "Navixy production server on American platform"
+    }
+  ],
+  "security": [
+    {
+      "Authorization": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "API for user applications"
+    }
+  ],
+  "paths": {
+    "/user/application/list": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Lists all existing user applications",
+        "description": "Lists all existing user applications.",
+        "operationId": "user_applications_list",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationListResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "list": [
+                        {
+                          "id": 221,
+                          "label": "An application",
+                          "url_template": "https://domain.example/{language}",
+                          "enabled": true,
+                          "authorization": {
+                            "type": "user_session"
+                          },
+                          "display_method": "new_tab",
+                          "icon": "extension",
+                          "description": "A description"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/application/create": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Creates a new application",
+        "description": "Creates a new application.",
+        "operationId": "user_applications_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "application": {
+                    "$ref": "#/components/schemas/CreateApplicationRequest"
+                  }
+                },
+                "required": [
+                  "application"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateApplicationResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true,
+                      "id": 779
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/application/update": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Updates an existing application",
+        "description": "Updates an existing application.",
+        "operationId": "user_applications_update",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "application": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                },
+                "required": [
+                  "application"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Application not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 201,
+                        "message": "Application not found"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/application/delete": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Deletes a specified application by its unique identifier",
+        "description": "Deletes a specified application by its unique identifier.",
+        "operationId": "user_applications_delete",
+        "parameters": [
+          {
+            "name": "application_id",
+            "in": "query",
+            "description": "Application's id to delete.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Application not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 201,
+                        "message": "Application not found"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/application/enabled/set": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Toggles application visibility in the side menu",
+        "description": "Toggles application visibility in the side menu.",
+        "operationId": "user_applications_enabled_set",
+        "parameters": [
+          {
+            "name": "application_id",
+            "in": "query",
+            "description": "Application's id to update.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "enabled",
+            "in": "query",
+            "description": "State to set.",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful response",
+                    "value": {
+                      "success": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Application not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "success": false,
+                      "error": {
+                        "code": 201,
+                        "message": "Application not found"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Operation success status",
+            "example": true
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Operation failed status",
+            "example": false
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "description": "Error code",
+                "example": 201
+              },
+              "message": {
+                "type": "string",
+                "description": "Error message",
+                "example": "Application not found"
+              }
+            }
+          }
+        }
+      },
+      "ApiKeyAuthorization": {
+        "type": "object",
+        "required": [
+          "type",
+          "hash"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Authorization type identifier",
+            "enum": [
+              "api_key"
+            ]
+          },
+          "hash": {
+            "type": "string",
+            "description": "An API key hash"
+          }
+        }
+      },
+      "UserSessionAuthorization": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Authorization type identifier",
+            "enum": [
+              "user_session"
+            ]
+          }
+        }
+      },
+      "ApplicationAuthorization": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ApiKeyAuthorization"
+          },
+          {
+            "$ref": "#/components/schemas/UserSessionAuthorization"
+          }
+        ]
+      },
+      "Application": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "url_template"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Application's ID"
+          },
+          "label": {
+            "type": "string",
+            "description": "Application's name"
+          },
+          "url_template": {
+            "type": "string",
+            "description": "URL template (including variables)"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Determines visibility in the users' side menu",
+            "default": true
+          },
+          "authorization": {
+            "$ref": "#/components/schemas/ApplicationAuthorization",
+            "description": "Authorization that will be used while accessing the URL"
+          },
+          "display_method": {
+            "type": "string",
+            "description": "Determines how the application will be opened",
+            "enum": [
+              "new_tab",
+              "embedded"
+            ],
+            "default": "new_tab"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Application's icon identifier",
+            "default": "extension"
+          },
+          "description": {
+            "type": "string",
+            "description": "Longer plain text description is shown to users",
+            "default": ""
+          }
+        }
+      },
+      "CreateApplicationRequest": {
+        "type": "object",
+        "required": [
+          "label",
+          "url_template"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Application's name"
+          },
+          "url_template": {
+            "type": "string",
+            "description": "URL template (including variables)"
+          },
+          "authorization": {
+            "$ref": "#/components/schemas/ApplicationAuthorization",
+            "description": "Authorization that will be used while accessing the URL"
+          },
+          "display_method": {
+            "type": "string",
+            "description": "Determines how the application will be opened",
+            "enum": [
+              "new_tab",
+              "embedded"
+            ],
+            "default": "new_tab"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Application's icon identifier",
+            "default": "extension"
+          },
+          "description": {
+            "type": "string",
+            "description": "Longer plain text description is shown to users",
+            "default": ""
+          }
+        }
+      },
+      "ApplicationListResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Operation success status",
+            "example": true
+          },
+          "list": {
+            "type": "array",
+            "description": "List of applications",
+            "items": {
+              "$ref": "#/components/schemas/Application"
+            }
+          }
+        }
+      },
+      "CreateApplicationResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Operation success status",
+            "example": true
+          },
+          "id": {
+            "type": "integer",
+            "description": "Unique ID of the created application",
+            "example": 779
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Authorization": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "description": "Enter an API key with the \"NVX: \" prefix, e.g. \"NVX 123456abcdefg\""
+      }
+    }
+  }
+}

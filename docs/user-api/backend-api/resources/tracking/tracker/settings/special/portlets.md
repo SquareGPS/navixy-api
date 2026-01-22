@@ -1,8 +1,8 @@
 ---
 title: Specific portlets
-description: Specific portlets that are used for models of three device manufacturers.
 ---
-## Specific portlets
+
+# Specific portlets
 
 Specific portlets that are used for models of three device manufacturers:
 
@@ -10,8 +10,7 @@ Specific portlets that are used for models of three device manufacturers:
 * Guard mode for Yatut.
 * Harsh behavior for Suntech.
 
-
-### engine_control_atrack
+## engine\_control\_atrack
 
 Special settings to set the engine event behavior for ATrack.
 
@@ -24,17 +23,16 @@ Special settings to set the engine event behavior for ATrack.
 }
 ```
 
-* `power_voltage_high_level` - int. Voltage in 0.001 volts for detecting engine ON state. Min=0, max=30000, 
-default=13800 mV.
-* `on_duration_seconds` - int. Duration in seconds that must elapse before the engine state change accepted. 
-Min=0, max=600, default=1 second.
-* `power_voltage_low_level` - int. Voltage in 0.001 volts for detecting engine OFF state. Min=0, max=30000, 
-default=12800 mV.
-* `off_duration_seconds` - duration in seconds that must elapse before the engine state change accepted. 
-Min=0, max=600, default=5 seconds.
+* `power_voltage_high_level` - int. Voltage in 0.001 volts for detecting engine ON state. Min=0, max=30000,\
+  default=13800 mV.
+* `on_duration_seconds` - int. Duration in seconds that must elapse before the engine state change accepted.\
+  Min=0, max=600, default=1 second.
+* `power_voltage_low_level` - int. Voltage in 0.001 volts for detecting engine OFF state. Min=0, max=30000,\
+  default=12800 mV.
+* `off_duration_seconds` - duration in seconds that must elapse before the engine state change accepted.\
+  Min=0, max=600, default=5 seconds.
 
-
-### guard_mode_yatut
+## guard\_mode\_yatut
 
 Guard special settings for "Я ТУТ ПОИСК".
 
@@ -52,20 +50,19 @@ Guard special settings for "Я ТУТ ПОИСК".
 }
 ```
 
-* `motion_sensor_mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "off" | "permanent" | "single_period" | "double_period". Default="off".
-* `motion_sensor_first_period` - string time. Format=`HH:mm-HH:mm`, default="23:00-07:00" Required 
-for `motion_sensor_mode` in single_period/double_period.
-* `motion_sensor_second_period` - string time. Format=`HH:mm-HH:mm`, default="10:00-17:00" Required 
-for `motion_sensor_mode` in double_period.
+* `motion_sensor_mode` - [enum](../../../../../#data-types). Can be "off" | "permanent" | "single\_period" | "double\_period". Default="off".
+* `motion_sensor_first_period` - string time. Format=`HH:mm-HH:mm`, default="23:00-07:00" Required\
+  for `motion_sensor_mode` in single\_period/double\_period.
+* `motion_sensor_second_period` - string time. Format=`HH:mm-HH:mm`, default="10:00-17:00" Required\
+  for `motion_sensor_mode` in double\_period.
 * `motion_sensor_amplitude` - int. Min=1, max=255, default=5 Required for `motion_sensor_mode` != off.
 * `motion_sensor_duration` - int. Min=1, max=255, default=5 seconds. Required for `motion_sensor_mode` != off.
 * `motion_sensor_ignore_time` - int. Min=5, max=99, default=5 minutes. Required for `motion_sensor_mode` != off.
 * `motion_sensor_double_check` - boolean. Default=`false`. Required for `motion_sensor_mode` != off.
-* `perimeter_mode` - [enum](../../../../../getting-started/introduction.md#data-types). Can be "off" | "once_triggering" | "permanent" | "point_displacement". Default="off".
+* `perimeter_mode` - [enum](../../../../../#data-types). Can be "off" | "once\_triggering" | "permanent" | "point\_displacement". Default="off".
 * `perimeter_diameter` - int. Min=1, max=999, default=1 kilometer. Required for `perimeter_mode` != off.
 
-
-### harsh_behavior_suntech
+## harsh\_behavior\_suntech
 
 Harsh driving settings for Suntech.
 

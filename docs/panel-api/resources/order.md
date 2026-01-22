@@ -1,44 +1,45 @@
 ---
 title: Order
-description: Contains API call to read the order by its ID.
+description: API call to read the order by its ID.
 ---
 
 # Order
-
-API call to read the order by its ID.
-
 
 ## API actions
 
 API path: `panel/order`.
 
-### `read`
+### read
 
 Reads order by specified ID.
 
-*required permissions*: `tracker_bundles: "read"`.
+_required permissions_: `tracker_bundles: "read"`.
 
 #### Parameters
 
-| name     | description | type |
-|:---------|:------------|:-----|
-| order_id | Order ID.   | int  |
+| name      | description | type |
+| --------- | ----------- | ---- |
+| order\_id | Order ID.   | int  |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/order/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "order_id": 12341}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/order/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "order_id": 12341}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/order/read?hash=fa7bf873fab9333144e171372a321b06&order_id=12341
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/order/read?hash=fa7bf873fab9333144e171372a321b06&order_id=12341
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

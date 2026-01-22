@@ -1,16 +1,15 @@
 ---
 title: Feedback
-description: Contains feedback object and API call to send a feedback email, ask for help or suggest a new feature.
+description: >-
+  Contains feedback object and API call to send a feedback email, ask for help
+  or suggest a new feature.
 ---
 
 # Feedback
 
-Contains feedback object API call to send a feedback email, ask for help or suggest a new feature.
-
-
 ## Feedback object
 
-```JSON
+```json
 {
   "text": "My feedback",
   "useragent": "Chrome/87.0.4280.88",
@@ -26,32 +25,33 @@ Contains feedback object API call to send a feedback email, ask for help or sugg
 * `screenshots` - optional string array. base64-encoded data:url image, example: data:image/jpeg;base64,`[encoded image]`.
 * `log` - optional log file. Contains log of the browser.
 
-
 ## API actions
 
 API path: `/feedback`.
 
-### `send_email`
+### send\_email
 
-Sends an email with user's feedback, ask for help, or suggestion a new feature. The message will be sent to dealer's 
+Sends an email with user's feedback, ask for help, or suggestion a new feature. The message will be sent to dealer's\
 email address for feedback.
 
 #### Parameters
 
-| name     | description                                                                            | type                                                     |
-|:---------|:---------------------------------------------------------------------------------------|:---------------------------------------------------------|
-| feedback | Message from the user. Screenshot and log will be added to email as attachments.       | JSON object                                              |
-| type     | Optional. One of strings: `support_request` (default), `feature_request` and `review`. | [enum](../../getting-started/introduction.md#data-types) |
+| name     | description                                                                            | type                      |
+| -------- | -------------------------------------------------------------------------------------- | ------------------------- |
+| feedback | Message from the user. Screenshot and log will be added to email as attachments.       | JSON object               |
+| type     | Optional. One of strings: `support_request` (default), `feature_request` and `review`. | [enum](../../#data-types) |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/feedback/send_email' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "feedback": {"text": "I love this platform"}, "type": "review"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/feedback/send_email' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "feedback": {"text": "I love this platform"}, "type": "review"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -63,4 +63,4 @@ email address for feedback.
 
 #### Errors
 
-* [General](../../getting-started/errors.md#error-codes) types only.
+* [General](../../errors.md#error-codes) types only.

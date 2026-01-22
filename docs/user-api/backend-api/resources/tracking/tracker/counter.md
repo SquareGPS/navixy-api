@@ -5,53 +5,55 @@ description: This resource contains counter specific actions
 
 # Counters
 
-This resource contains counter specific actions
-
 Find information on how to get counters data [here](../../../guides/data-retrieval/sensor-data.md).
-
 
 ## Resource specific actions
 
 Actions with counter entities:
 
-* [/tracker/counter/read](#read)
-* [/tracker/counter/update](#update)
+* [/tracker/counter/read](counter.md#read)
+* [/tracker/counter/update](counter.md#update)
 
 Actions with counter values:
 
-* [/tracker/get_counters](#get_counters)
-* [/tracker/counter/value/get](#valueget)
-* [/tracker/counter/value/list](#valuelist)
-* [/tracker/counter/value/set](#valueset)
-* [/tracker/counter/data/read](#dataread)
+* [/tracker/get\_counters](counter.md#get_counters)
+* [/tracker/counter/value/get](counter.md#valueget)
+* [/tracker/counter/value/list](counter.md#valuelist)
+* [/tracker/counter/value/set](counter.md#valueset)
+* [/tracker/counter/data/read](counter.md#dataread)
 
-
-### `read`
+### read
 
 Reads counter of passed `type`.
 
 #### Parameters
 
-| name       | description                                                                                     | type                                           | format     |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 123456     |
-| type       | Counter type. One of `["odometer", "engine_hours"]`.                           | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
+| name        | description                                                                                      | type                         | format     |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---------------------------- | ---------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                          | 123456     |
+| type        | Counter type. One of `["odometer", "engine_hours"]`.                                             | [enum](../../../#data-types) | "odometer" |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/counter/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/counter/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/counter/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -72,8 +74,7 @@ Reads counter of passed `type`.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 
-
-### `update`
+### update
 
 Updates counter of passed `type`.
 
@@ -81,28 +82,34 @@ Updates counter of passed `type`.
 
 #### Parameters
 
-| name       | description                                                                                                                                                                   | type                                           | format     |
-|:-----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.                                                                               | int                                            | 123456     |
-| type       | Counter type. One of `["odometer", "engine_hours"]`.                                                                                                         | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
-| multiplier | A new value of counter multiplier.                                                                                                                                            | float                                          | 1.34       |
-| sensor_id  | ID of the sensor, which must be used as the source of odometer data (in case when parameter "type" equals "odometer"). If "type" is not "odometer", "sensor_id" must be null. | int                                            | 123        |
+| name        | description                                                                                                                                                                    | type                         | format     |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- | ---------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.                                                                               | int                          | 123456     |
+| type        | Counter type. One of `["odometer", "engine_hours"]`.                                                                                                                           | [enum](../../../#data-types) | "odometer" |
+| multiplier  | A new value of counter multiplier.                                                                                                                                             | float                        | 1.34       |
+| sensor\_id  | ID of the sensor, which must be used as the source of odometer data (in case when parameter "type" equals "odometer"). If "type" is not "odometer", "sensor\_id" must be null. | int                          | 123        |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "multiplier": 3.14, "sensor_id": 1234}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/counter/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "multiplier": 3.14, "sensor_id": 1234}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/counter/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer&multiplier=3.14&sensor_id=1234
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/counter/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer&multiplier=3.14&sensor_id=1234
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -119,39 +126,42 @@ Updates counter of passed `type`.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions, or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 * 7 - Invalid parameters –
-    * if type is not "odometer"  and `sensor_id` is not null.
-    * if sensor with specified `sensor_id` is not a metering sensor.
-    * if sensor with specified `sensor_id` belongs to another tracker.
-    * if `sensor_id` is negative.
-    * if sensor with such a `sensor_id` is not exists.
-    * if type value is not one of list above.
+  * if type is not "odometer" and `sensor_id` is not null.
+  * if sensor with specified `sensor_id` is not a metering sensor.
+  * if sensor with specified `sensor_id` belongs to another tracker.
+  * if `sensor_id` is negative.
+  * if sensor with such a `sensor_id` is not exists.
+  * if type value is not one of list above.
 
-
-### `get_counters`
+### get\_counters
 
 Gets last values of the tracker's counters.
 
 #### Parameters
 
-| name       | description                   | type | format |
-|:-----------|:------------------------------|:-----|:-------|
-| tracker_id | Tracker ID (aka "object_id"). | int  | 999119 |
+| name        | description                    | type | format |
+| ----------- | ------------------------------ | ---- | ------ |
+| tracker\_id | Tracker ID (aka "object\_id"). | int  | 999119 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/get_counters' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/get_counters' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/get_counters?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/get_counters?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -171,9 +181,9 @@ Gets last values of the tracker's counters.
 
 * `user_time` - date/time. Current time in user's timezone.
 * `list` - array of counter value objects.
-    * `type` - enum. One of predefined semantic counter types (see below).
-    * `value` - double. Counter value.
-    * `update_time` - date/time. Date and time when the data updated.
+  * `type` - enum. One of predefined semantic counter types (see below).
+  * `value` - double. Counter value.
+  * `update_time` - date/time. Date and time when the data updated.
 
 List of counter types:
 
@@ -185,33 +195,38 @@ List of counter types:
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-
-### `value/get`
+### value/get
 
 Gets actual value of specified `type` of sensor.
 
 #### Parameters
 
-| name       | description                                                                                     | type                                           | format     |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 123456     |
-| type       | Counter type. One of `["odometer", "engine_hours"]`.                           | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
+| name        | description                                                                                      | type                         | format     |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---------------------------- | ---------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                          | 123456     |
+| type        | Counter type. One of `["odometer", "engine_hours"]`.                                             | [enum](../../../#data-types) | "odometer" |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/value/get' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/get' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/counter/value/get?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/counter/value/get?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=123456&type=odometer
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -226,30 +241,32 @@ Gets actual value of specified `type` of sensor.
 
 #### Errors
 
-* 204 - Entity not found – if there is no tracker with such ID belonging to authorized user, counter does not exist or
+* 204 - Entity not found – if there is no tracker with such ID belonging to authorized user, counter does not exist or\
   there are no values yet. use /tracker/counter/set to create new counter (if not exist) and save some value.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-### `value/list`
+### value/list
 
 Get actual values for counters of passed `type` and `trackers`.
 
 #### Parameters
 
-| name     | description                                            | type                                           | format             |
-|:---------|:-------------------------------------------------------|:-----------------------------------------------|:-------------------|
-| trackers | List of the tracker's ID belonging to authorized user. | int array                                      | `[123456, 234567]` |
-| type     | Counter type. One of `["odometer", "engine_hours"]`.   | [enum](../../../getting-started/introduction.md#data-types) | "odometer"         |
+| name     | description                                            | type                         | format             |
+| -------- | ------------------------------------------------------ | ---------------------------- | ------------------ |
+| trackers | List of the tracker's ID belonging to authorized user. | int array                    | `[123456, 234567]` |
+| type     | Counter type. One of `["odometer", "engine_hours"]`.   | [enum](../../../#data-types) | "odometer"         |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456, 234567], "type": "odometer"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/value/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "trackers": [123456, 234567], "type": "odometer"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -266,32 +283,32 @@ Get actual values for counters of passed `type` and `trackers`.
 
 #### Errors
 
-* 204 - Entity not found – if one of the specified counter does not exist or there are no values yet. Use
-  [`/tracker/counter/set`](#valueset) to create new counter (if not exist) and save some value.
+* 204 - Entity not found – if one of the specified counter does not exist or there are no values yet. Use[`/tracker/counter/set`](counter.md#valueset) to create new counter (if not exist) and save some value.
 * 217 - List contains nonexistent entities – if one of the specified trackers does not exist or is blocked.
 
-
-### `value/set`
+### value/set
 
 Creates new counter of passed `type` (if not) and update its `value`.
 
 #### Parameters
 
-| name       | description                                                                                     | type                                           | format     |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------|:-----------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int                                            | 123456     |
-| type       | Counter type. One of `["odometer", "engine_hours"]`.                                            | [enum](../../../getting-started/introduction.md#data-types) | "odometer" |
-| value      | A new value of counter.                                                                         | float                                          | 233.21     |
+| name        | description                                                                                      | type                         | format     |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---------------------------- | ---------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                          | 123456     |
+| type        | Counter type. One of `["odometer", "engine_hours"]`.                                             | [enum](../../../#data-types) | "odometer" |
+| value       | A new value of counter.                                                                          | float                        | 233.21     |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/counter/value/set' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "value": 233.21}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/value/set' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "value": 233.21}'
+```
+{% endcode %}
 
 #### Response
 
@@ -308,29 +325,30 @@ Creates new counter of passed `type` (if not) and update its `value`.
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 219 - Not allowed for clones of the device – if specified tracker is a clone.
 
-
-### `data/read`
+### data/read
 
 Returns counter values for a period.
 
 #### Parameters
 
-| name       | description                                          | type                                           | format                  |
-|:-----------|:-----------------------------------------------------|:-----------------------------------------------|:------------------------|
-| tracker_id | Tracker ID (aka "object_id").                        | int                                            | 123456                  |
-| type       | Counter type. One of `["odometer", "engine_hours"]`. | [enum](../../../getting-started/introduction.md#data-types) | "odometer"              |
-| from       | Requested period start.                              | date/time                                      | `"2021-02-25 12:21:17"` |
-| to         | Requested period end.                                | date/time                                      | `"2021-03-25 12:21:17"` |
+| name        | description                                          | type                         | format                  |
+| ----------- | ---------------------------------------------------- | ---------------------------- | ----------------------- |
+| tracker\_id | Tracker ID (aka "object\_id").                       | int                          | 123456                  |
+| type        | Counter type. One of `["odometer", "engine_hours"]`. | [enum](../../../#data-types) | "odometer"              |
+| from        | Requested period start.                              | date/time                    | `"2021-02-25 12:21:17"` |
+| to          | Requested period end.                                | date/time                    | `"2021-03-25 12:21:17"` |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/counter/data/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "from": "2021-02-01 00:00:00", "to": "2021-02-01 03:00:00"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/counter/data/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "tracker_id": 123456, "type": "odometer", "from": "2021-02-01 00:00:00", "to": "2021-02-01 03:00:00"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -355,6 +373,5 @@ Returns counter values for a period.
 * 211 - Requested time span is too big – if interval between "from" and "to" is too big (maximum value specified in API config)
 * 208 - Device blocked – if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 7 - Invalid parameters –
-    * if `from` is after `to`;
-    * if between `from` and `to` more than 31 days.
-
+  * if `from` is after `to`;
+  * if between `from` and `to` more than 31 days.

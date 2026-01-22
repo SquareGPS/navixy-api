@@ -1,45 +1,49 @@
 ---
 title: Sensor readings
-description: API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel.
+description: >-
+  API call to get last values for all metering sensors and state values.
+  Includes CAN, OBD, and fuel.
 ---
+
 # Sensor readings
 
-API call to get last values for all metering sensors and state values. Includes CAN, OBD, and fuel. 
-
-Described getting data from sensors in our [guides](../../../guides/data-retrieval/sensor-data.md). 
-
+Described getting data from sensors in our [guides](../../../guides/data-retrieval/sensor-data.md).
 
 ## API actions
 
 API base path: `/tracker/readings`.
 
-### `list`
+### list
 
 Gets last values for all sensors, state values and counters.
 
 #### Parameters
 
-| name               | description                                                                                        | type                                                                                                                                                     | format |
-|:-------------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:-------|
-| tracker_id         | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.    | int                                                                                                                                                      | 999199 |
-| sensor_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](sensor/index.md#metering-sensor-type-values) or [virtual sensor type](sensor/index.md#virtual-sensor-type-values) | "fuel" |
-| include_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                  | true   |
+| name                | description                                                                                        | type                                                                                                                                                                            | format |
+| ------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| tracker\_id         | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.   | int                                                                                                                                                                             | 999199 |
+| sensor\_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | <p>string<br><a href="sensor/index.md#metering-sensor-type-values">metering sensor type</a> or <a href="sensor/index.md#virtual-sensor-type-values">virtual sensor type</a></p> | "fuel" |
+| include\_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                                         | true   |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/readings/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/readings/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/readings/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/readings/list?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -96,66 +100,72 @@ Gets last values for all sensors, state values and counters.
 ```
 
 * `inputs` - an array of JSON objects containing information about the tracker sensors readings.
-    * `sensor_id` - int. The ID of the sensor.
-    * `value` - float. The value of the sensor.
-    * `label` - string. The label of the sensor.
-    * `units` - string. The units in which the sensor value is measured.
-    * `name` - string. The name of the sensor.
-    * `type` - [metering sensor type](sensor/index.md#metering-sensor-type-values). The type of the sensor.
-    * `units_type` - string. The type of the units in which the sensor value is measured.
-    * `update_time` - date/time. The time when the sensor value was updated.
-    * `min_value` - optional float. The minimum value of the sensor.
-    * `max_value` - optional float. The maximum value of the sensor.
-    * `converted_units_type` - nullable string. The type of the units in which the sensor value is converted.
-    * `converted_value` - nullable float. The converted value of the sensor reading.
-    * `composite_sensor_ids` - optional array of int. The IDs of the composite sensors that include sensor.
+  * `sensor_id` - int. The ID of the sensor.
+  * `value` - float. The value of the sensor.
+  * `label` - string. The label of the sensor.
+  * `units` - string. The units in which the sensor value is measured.
+  * `name` - string. The name of the sensor.
+  * `type` - [metering sensor type](sensor/index.md#metering-sensor-type-values). The type of the sensor.
+  * `units_type` - string. The type of the units in which the sensor value is measured.
+  * `update_time` - date/time. The time when the sensor value was updated.
+  * `min_value` - optional float. The minimum value of the sensor.
+  * `max_value` - optional float. The maximum value of the sensor.
+  * `converted_units_type` - nullable string. The type of the units in which the sensor value is converted.
+  * `converted_value` - nullable float. The converted value of the sensor reading.
+  * `composite_sensor_ids` - optional array of int. The IDs of the composite sensors that include sensor.
 * `states` - an array of JSON objects containing information about the tracker state readings.
-    * `field` - string. The field name of the state.
-    * `value` - can be string, int, float, boolean, or null. The value of the field.
-    * `update_time` - date/time. The time when the field value was updated.
+  * `field` - string. The field name of the state.
+  * `value` - can be string, int, float, boolean, or null. The value of the field.
+  * `update_time` - date/time. The time when the field value was updated.
 * `virtual_sensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
-    * `sensor_id` - int. The ID of the virtual sensor.
-    * `value` - string. The value of the virtual sensor.
-    * `label` - string. The label of the virtual sensor.
-    * `type` - [virtual sensor type](sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
-    * `update_time` - date/time. The time when the virtual sensor value was updated.
+  * `sensor_id` - int. The ID of the virtual sensor.
+  * `value` - string. The value of the virtual sensor.
+  * `label` - string. The label of the virtual sensor.
+  * `type` - [virtual sensor type](sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
+  * `update_time` - date/time. The time when the virtual sensor value was updated.
 * `counters` - an array of JSON objects containing information about the tracker counter readings.
-    * `type` - string. The type of the counter.
-    * `value` - float. The value of the counter.
-    * `update_time` - date/time. The time when the counter value was updated.
+  * `type` - string. The type of the counter.
+  * `value` - float. The value of the counter.
+  * `update_time` - date/time. The time when the counter value was updated.
 
 #### Errors
 
 * 204 – Entity not found - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 
-### `batch_list`
+### batch\_list
 
 Gets last values for all sensors, state values and counters on multiple trackers.
 
 #### Parameters
 
-| name               | description                                                                                        | type                                                                                                                                                     | format          |
-|:-------------------|:---------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|
-| trackers           | An array of tracker IDs (aka "object_id"). Trackers must belong to authorized user.                | int                                                                                                                                                      | [999199,991999] |
-| sensor_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | string<br/> [metering sensor type](sensor/index.md#metering-sensor-type-values) or [virtual sensor type](sensor/index.md#virtual-sensor-type-values) | "fuel"          |
-| include_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                  | true            |
+| name                | description                                                                                        | type                                                                                                                                                                            | format           |
+| ------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| trackers            | An array of tracker IDs (aka "object\_id"). Trackers must belong to authorized user.               | int                                                                                                                                                                             | \[999199,991999] |
+| sensor\_type        | Optional. If specified, state values and counters will be omitted. Used to filter sensors by type. | <p>string<br><a href="sensor/index.md#metering-sensor-type-values">metering sensor type</a> or <a href="sensor/index.md#virtual-sensor-type-values">virtual sensor type</a></p> | "fuel"           |
+| include\_components | Optional. Default is `true`. If set to `false`, parts of composite sensors will be excluded.       | boolean                                                                                                                                                                         | true             |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/readings/batch_list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [10181215,10038816]}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/readings/batch_list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "trackers": [10181215,10038816]}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/readings/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[10181215,10038816]
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/readings/batch_list?hash=a6aa75587e5c59c32d347da438505fc3&trackers=[10181215,10038816]
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -279,33 +289,33 @@ Gets last values for all sensors, state values and counters on multiple trackers
 ```
 
 * `inputs` - an array of JSON objects containing information about the tracker sensors readings.
-    * `sensor_id` - int. The ID of the sensor.
-    * `value` - float. The value of the sensor.
-    * `label` - string. The label of the sensor.
-    * `units` - string. The units in which the sensor value is measured.
-    * `name` - string. The name of the sensor.
-    * `type` - [metering sensor type](sensor/index.md#metering-sensor-type-values). The type of the sensor.
-    * `units_type` - string. The type of the units in which the sensor value is measured.
-    * `update_time` - date/time. The time when the sensor value was updated.
-    * `min_value` - optional float. The minimum value of the sensor.
-    * `max_value` - optional float. The maximum value of the sensor.
-    * `converted_units_type` - nullable string. The type of the units in which the sensor value is converted.
-    * `converted_value` - nullable float. The converted value of the sensor reading.
-    * `composite_sensor_ids` - optional array of int. The IDs of the composite sensors that include sensor.
+  * `sensor_id` - int. The ID of the sensor.
+  * `value` - float. The value of the sensor.
+  * `label` - string. The label of the sensor.
+  * `units` - string. The units in which the sensor value is measured.
+  * `name` - string. The name of the sensor.
+  * `type` - [metering sensor type](sensor/index.md#metering-sensor-type-values). The type of the sensor.
+  * `units_type` - string. The type of the units in which the sensor value is measured.
+  * `update_time` - date/time. The time when the sensor value was updated.
+  * `min_value` - optional float. The minimum value of the sensor.
+  * `max_value` - optional float. The maximum value of the sensor.
+  * `converted_units_type` - nullable string. The type of the units in which the sensor value is converted.
+  * `converted_value` - nullable float. The converted value of the sensor reading.
+  * `composite_sensor_ids` - optional array of int. The IDs of the composite sensors that include sensor.
 * `states` - an array of JSON objects containing information about the tracker state readings.
-    * `field` - string. The field name of the state.
-    * `value` - can be string, int, float, boolean, or null. The value of the field.
-    * `update_time` - date/time. The time when the field value was updated.
+  * `field` - string. The field name of the state.
+  * `value` - can be string, int, float, boolean, or null. The value of the field.
+  * `update_time` - date/time. The time when the field value was updated.
 * `virtual_sensors` - an array of JSON objects containing information about the tracker virtual sensors readings.
-    * `sensor_id` - int. The ID of the virtual sensor.
-    * `value` - string. The value of the virtual sensor.
-    * `label` - string. The label of the virtual sensor.
-    * `type` - [virtual sensor type](./sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
-    * `update_time` - date/time. The time when the virtual sensor value was updated.
+  * `sensor_id` - int. The ID of the virtual sensor.
+  * `value` - string. The value of the virtual sensor.
+  * `label` - string. The label of the virtual sensor.
+  * `type` - [virtual sensor type](sensor/index.md#virtual-sensor-type-values). The type of the virtual sensor.
+  * `update_time` - date/time. The time when the virtual sensor value was updated.
 * `counters` - an array of JSON objects containing information about the tracker counter readings.
-    * `type` - string. The type of the counter.
-    * `value` - float. The value of the counter.
-    * `update_time` - date/time. The time when the counter value was updated.
+  * `type` - string. The type of the counter.
+  * `value` - float. The value of the counter.
+  * `update_time` - date/time. The time when the counter value was updated.
 
 #### Errors
 
