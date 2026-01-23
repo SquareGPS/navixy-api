@@ -385,6 +385,8 @@ To resolve this:
 
 ## Common patterns
 
+#### Single-parameter patterns
+
 **Every weekday:**
 
 ```json
@@ -409,12 +411,32 @@ To resolve this:
 { "freq": "MONTHLY", "bymonthday": [-1] }
 ```
 
-**Every day at specific hours:**
+#### Multi-parameter patterns
+
+**Weekdays at 8:00 AM:**
 
 ```json
-{ "freq": "DAILY", "byhour": [9, 14, 18] }
+{ "freq": "WEEKLY", "byday": ["MO", "TU", "WE", "TH", "FR"], "byhour": [8] }
 ```
 
-## Next steps
+**Monday, Wednesday, Friday at 7:30 AM:**
+
+```json
+{ "freq": "WEEKLY", "byday": ["MO", "WE", "FR"], "byhour": [7], "byminute": [30] }
+```
+
+**Every Monday in January, April, July, and October:**
+
+```json
+{ "freq": "YEARLY", "bymonth": [1, 4, 7, 10], "byday": ["MO"] }
+```
+
+**Twice daily on weekdays at 9:00 and 17:00:**
+
+```json
+{ "freq": "WEEKLY", "byday": ["MO", "TU", "WE", "TH", "FR"], "byhour": [9, 17] }
+```
+
+### Next steps
 
 * TBD
