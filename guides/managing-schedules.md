@@ -387,25 +387,25 @@ To resolve this:
 
 #### Single-parameter patterns
 
-**Every weekday:**
+**Every weekday (standard work hours):**
 
 ```json
 { "freq": "WEEKLY", "byday": ["MO", "TU", "WE", "TH", "FR"] }
 ```
 
-**Every other week on Monday:**
+**Every other week on Monday (bi-weekly team meetings):**
 
 ```json
 { "freq": "WEEKLY", "interval": 2, "byday": ["MO"] }
 ```
 
-**First and fifteenth of each month:**
+**First and fifteenth of each month (payroll processing):**
 
 ```json
 { "freq": "MONTHLY", "bymonthday": [1, 15] }
 ```
 
-**Last day of each month:**
+**Last day of each month (monthly reports deadline):**
 
 ```json
 { "freq": "MONTHLY", "bymonthday": [-1] }
@@ -413,25 +413,25 @@ To resolve this:
 
 #### Multi-parameter patterns
 
-**Weekdays at 8:00 AM:**
+**Weekdays at 8:00 AM (daily data export):**
 
 ```json
 { "freq": "WEEKLY", "byday": ["MO", "TU", "WE", "TH", "FR"], "byhour": [8] }
 ```
 
-**Monday, Wednesday, Friday at 7:30 AM:**
+**Monday, Wednesday, Friday at 7:30 AM (driver briefings):**
 
 ```json
 { "freq": "WEEKLY", "byday": ["MO", "WE", "FR"], "byhour": [7], "byminute": [30] }
 ```
 
-**Every Monday in January, April, July, and October:**
+**Every Monday in January, April, July, and October (quarterly inspections):**
 
 ```json
 { "freq": "YEARLY", "bymonth": [1, 4, 7, 10], "byday": ["MO"] }
 ```
 
-**Twice daily on weekdays at 9:00 and 17:00:**
+**Twice daily on weekdays at 9:00 and 17:00 (shift change checks):**
 
 ```json
 { "freq": "WEEKLY", "byday": ["MO", "TU", "WE", "TH", "FR"], "byhour": [9, 17] }
