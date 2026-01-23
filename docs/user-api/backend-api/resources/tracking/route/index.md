@@ -7,36 +7,37 @@ description: API call for getting the route to destination point.
 
 API call for getting the route to destination point.
 
-
 ## API actions
 
 API path: `/route`.
 
-### `get`
+### get
 
 Gets route points via specified route provider.
 
 #### Parameters
 
-| name          | description                                                                                                      | type                                           |
-|:--------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|
-| start         | Location JSON object. Start of route.                                                                            | JSON object                                    |
-| end           | Location JSON object. End of route.                                                                              | JSON object                                    |
-| waypoints     | Optional. List of transitional points. `[{locationA},{locationN}]`.                                              | array of JSON objects                          |
-| point_limit   | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int                                            |
-| provider_type | Optional. If not specified, the default user provider is used. One of "progorod", or "google", "osrm".           | [enum](../../../getting-started/introduction.md#data-types) |
+| name           | description                                                                                                      | type                         |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| start          | Location JSON object. Start of route.                                                                            | JSON object                  |
+| end            | Location JSON object. End of route.                                                                              | JSON object                  |
+| waypoints      | Optional. List of transitional points. `[{locationA},{locationN}]`.                                              | array of JSON objects        |
+| point\_limit   | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int                          |
+| provider\_type | Optional. If not specified, the default user provider is used. One of "progorod", or "google", "osrm".           | [enum](../../../#data-types) |
 
-* `location` object described in [data types description section](../../../getting-started/introduction.md#data-types).
+* `location` object described in [data types description section](../../../#data-types).
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/route/get' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start": {"lat": 34.178868, "lng": -118.599672}, "end": {"lat": 31.738386, "lng": -106.453854}}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/route/get' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "start": {"lat": 34.178868, "lng": -118.599672}, "end": {"lat": 31.738386, "lng": -106.453854}}'
+```
+{% endcode %}
 
 #### Response
 
@@ -69,9 +70,9 @@ Gets route points via specified route provider.
 * `time` - int. Duration in seconds.
 * `list` - list of route points. Location objects.
 * `key_points` - list of points corresponding to `start` point, `waypoints` and `end` point (in that sequence).
-    * `id` - int. index in points `list`.
-    * `lat` - float. Latitude.
-    * `lng` - float. Longitude.
+  * `id` - int. index in points `list`.
+  * `lat` - float. Latitude.
+  * `lng` - float. Longitude.
 
 #### Errors
 

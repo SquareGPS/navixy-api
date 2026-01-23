@@ -2,40 +2,44 @@
 title: LED
 description: API calls to get and update LED state of the tracker.
 ---
+
 # LED
 
 API calls to get and update LED state of the tracker. LED switch should be available for the device.
-
 
 ## API actions
 
 API base path: `/tracker/led`.
 
-### `read`
+### read
 
 Gets LED status for the specified tracker.
 
 #### Parameters
 
-| name       | description                                                                                     | type | format |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----|:-------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
+| name        | description                                                                                      | type | format |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ------ |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int  | 999199 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/led/read' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/led/read' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/led/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/led/read?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -54,33 +58,38 @@ Gets LED status for the specified tracker.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
 
-
-### `update`
+### update
 
 Switches LED state for a specified tracker.
 
 #### Parameters
 
-| name       | description                                                                                     | type    | format     |
-|:-----------|:------------------------------------------------------------------------------------------------|:--------|:-----------|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int     | 999199     |
-| value      | The new LED state, `true` – ON, `false` – OFF.                                                  | boolean | true/false |
+| name        | description                                                                                      | type    | format     |
+| ----------- | ------------------------------------------------------------------------------------------------ | ------- | ---------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int     | 999199     |
+| value       | The new LED state, `true` – ON, `false` – OFF.                                                   | boolean | true/false |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/tracker/led/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "value": true}'
+```
+{% endcode %}
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/tracker/led/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "tracker_id": 265489, "value": true}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/tracker/led/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&value=true
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/tracker/led/update?hash=a6aa75587e5c59c32d347da438505fc3&tracker_id=265489&value=true
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -95,4 +104,3 @@ Switches LED state for a specified tracker.
 * 201 – Not found in the database - if there is no tracker with such ID belonging to authorized user.
 * 208 – Device blocked - if tracker exists but was blocked due to tariff restrictions or some other reason.
 * 214 – Requested operation or parameters are not supported by the device.
-

@@ -2,28 +2,26 @@
 title: Datalogger
 description: API call for uploading datalogger information.
 ---
+
 # Datalogger
-
-API call for uploading datalogger information.
-
 
 ## API actions
 
 API base path: `/tracker/datalogger`.
 
-### `upload`
+### upload
 
 Uploads track data for specified tracker. Tracker must be a datalogger.
 
-**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV file upload 
+**MUST** be a POST multipart request (multipart/form-data), with one of the parts being a CSV file upload\
 (with the name "file").
 
 #### Parameters
 
-| name       | description                                                                                     | type |
-|:-----------|:------------------------------------------------------------------------------------------------|:-----|
-| tracker_id | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked. | int  |
-| file       | A CSV file upload containing datalogger track data.                                             | file |
+| name        | description                                                                                      | type |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int  |
+| file        | A CSV file upload containing datalogger track data.                                              | file |
 
 #### Response
 

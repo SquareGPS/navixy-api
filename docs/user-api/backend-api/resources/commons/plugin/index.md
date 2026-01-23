@@ -1,13 +1,11 @@
 ---
 title: Plugin
-description: Contains plugin object description and API calls to interact with it. Plugins are special software modules which modify the behavior of various API calls.
+description: Contains plugin object description and API calls to interact with it.
 ---
 
 # Plugin
 
-Contains plugin object description and API calls to interact with it.<br>
 Plugins are special software modules which modify the behavior of various API calls.
-
 
 ## Plugin object structure
 
@@ -30,9 +28,9 @@ Plugins are special software modules which modify the behavior of various API ca
 * `ui_module` - string. Plugin UI module name.
 * `module` - string. Plugin module name.
 * `filter` - object. A model filter which describes to which device models this plugin is applicable.
-    * `exclusion` - boolean. If `true`, "models" lists models NOT supported by this plugin, if `false`, "models" 
+  * `exclusion` - boolean. If `true`, "models" lists models NOT supported by this plugin, if `false`, "models"\
     contains all supported models.
-    * `values` - string array. List of the regexes for models which are (not) supported by this plugin.
+  * `values` - string array. List of the regexes for models which are (not) supported by this plugin.
 * `parameters` - plugin-specific parameters as JSON object. This field omitted if it's `null` (and it is `null` most of the time).
 
 #### object example
@@ -50,15 +48,13 @@ Plugins are special software modules which modify the behavior of various API ca
 }
 ```
 
-
 ## API actions
 
 API path: `/plugin`.
 
-### `list`
+### list
 
-Get all plugins available to the user. List of available plugins may vary from user to user depending on platform 
-settings and purchased features. Only these plugins can be used to register trackers, generate reports, etc.
+Get all plugins available to the user. List of available plugins may vary from user to user depending on platform settings and purchased features. Only these plugins can be used to register trackers, generate reports, etc.
 
 #### Parameters
 
@@ -66,19 +62,21 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/plugin/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/plugin/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-    
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/plugin/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+```http
+https://api.eu.navixy.com/v2/plugin/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -104,9 +102,9 @@ Only API key `hash`.
 
 #### Errors
 
-* [General](../../../getting-started/errors.md#error-codes) types only.
+* [General](../../../errors.md#error-codes) types only.
 
 #### Standalone-specific:
 
-If no plugins enabled for user and his dealer then available plugins enabled by default 
+If no plugins enabled for user and his dealer then available plugins enabled by default\
 (config options **plugin.tracker.register.defaultIds** and **plugin.tracker.report.defaultIds**).

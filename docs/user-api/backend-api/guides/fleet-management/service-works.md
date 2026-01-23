@@ -12,8 +12,9 @@ To create a vehicle object, specify all relevant information about the vehicle. 
 
 Creating a Ford Transit cargo van vehicle object:
 
+{% code title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/vehicle/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "a6aa75587e5c59c32d347da438505fc3",
@@ -58,6 +59,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/create' \
         }
     }'
 ```
+{% endcode %}
 
 The platform will respond with:
 
@@ -78,8 +80,9 @@ Creating service works for oil change, brakes replacement, and spark plug replac
 
 #### Oil Change
 
+{% code title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "a6aa75587e5c59c32d347da438505fc3",
@@ -105,11 +108,13 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
         }
     }'
 ```
+{% endcode %}
 
 #### Brakes Replacement
 
+{% code title="cURL" %}
 ```shell
-curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
+curl -X POST 'https://api.eu.navixy.com/v2/vehicle/service_task/create' \
     -H 'Content-Type: application/json' \
     -d '{
         "hash": "a6aa75587e5c59c32d347da438505fc3",
@@ -135,6 +140,7 @@ curl -X POST '{{ extra.api_example_url }}/vehicle/service_task/create' \
         }
     }'
 ```
+{% endcode %}
 
 The platform will respond with the ID of the created service work:
 

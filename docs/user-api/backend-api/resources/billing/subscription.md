@@ -5,9 +5,6 @@ description: API calls to interact with payment subscriptions
 
 # Subscription
 
-API calls to interact with payment subscriptions
-
-
 ## API actions
 
 API path: `/subscription`.
@@ -16,8 +13,7 @@ API path: `/subscription`.
 
 Working with [2Checkout](https://www.2checkout.com) (formerly [Avangate](http://www.avangate.com)) subscriptions (renewals).
 
-
-### `cancel`
+### cancel
 
 Unsubscribe from auto-renewal by reference.
 
@@ -25,25 +21,29 @@ Unsubscribe from auto-renewal by reference.
 
 #### Parameters
 
-| name      | description                                                                               | type   |
-|:----------|:------------------------------------------------------------------------------------------|:-------|
-| reference | Internal 2Checkout (formerly Avangate) subscription code. Get it from [list](#list) call. | string |
+| name      | description                                                                                              | type   |
+| --------- | -------------------------------------------------------------------------------------------------------- | ------ |
+| reference | Internal 2Checkout (formerly Avangate) subscription code. Get it from [list](subscription.md#list) call. | string |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/subscription/avangate/cancel' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "reference": "5EAD4B0B2F"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/subscription/avangate/cancel' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "reference": "5EAD4B0B2F"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/subscription/avangate/cancel?hash=a6aa75587e5c59c32d347da438505fc3&reference=5EAD4B0B2F
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/subscription/avangate/cancel?hash=a6aa75587e5c59c32d347da438505fc3&reference=5EAD4B0B2F
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -57,8 +57,7 @@ Unsubscribe from auto-renewal by reference.
 
 * 215 – External service error.
 
-
-### `list`
+### list
 
 List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://www.avangate.com) subscriptions (renewals).
 
@@ -70,19 +69,23 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/subscription/avangate/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/subscription/avangate/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/subscription/avangate/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/subscription/avangate/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -103,7 +106,7 @@ Only API key `hash`.
 * `reference` - string. Internal 2Checkout (formerly Avangate) subscription code. Pass it to /subscription/avangate/cancel.
 * `code` - string. 2Checkout (formerly Avangate) product code.
 * `quantity` - int. Count.
-* `expiration_date` - [date/time](../../getting-started/introduction.md#data-types). Next renew date/time.
+* `expiration_date` - [date/time](../../#data-types). Next renew date/time.
 
 #### Errors
 

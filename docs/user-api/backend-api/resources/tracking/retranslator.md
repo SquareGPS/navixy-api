@@ -5,9 +5,8 @@ description: Retranslator
 
 # Retranslator
 
-Retranslator and retranslator protocol objects and CRUD actions for retranslators. They can be used to redirect the data
+Retranslator and retranslator protocol objects and CRUD actions for retranslators. They can be used to redirect the data\
 that comes from a device to the platform to some third-party application specified by the user.
-
 
 ## Retranslator protocol object
 
@@ -30,7 +29,6 @@ that comes from a device to the platform to some third-party application specifi
 * `fake_device_id_pattern` - optional string. Regex pattern for `fake_device_id` validation.
 * `required_login` - boolean. `true` if for this protocol login required.
 * `required_password` - boolean. `true` if for this protocol password required.
-
 
 ## Retranslator object
 
@@ -56,12 +54,11 @@ that comes from a device to the platform to some third-party application specifi
 * `password` - optional string.
 * `enabled` - boolean. Status.
 
-
 ## API actions
 
 API path: `/retranslator`.
 
-### `create`
+### create
 
 Creates new retranslator.
 
@@ -70,18 +67,20 @@ Creates new retranslator.
 #### Parameters
 
 | name         | description                             | type        |
-|:-------------|:----------------------------------------|:------------|
+| ------------ | --------------------------------------- | ----------- |
 | retranslator | Retranslator object without `id` field. | JSON object |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/retranslator/create' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/create' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
+```
+{% endcode %}
 
 #### Response
 
@@ -100,8 +99,7 @@ Creates new retranslator.
 * 7 - Invalid parameters - if retranslator have required fields (login or password), but was send empty.
 * 268 - Over quota – if the user's quota for retranslators exceeded.
 
-
-### `delete`
+### delete
 
 Deletes user's retranslator with specified `retranslator_id`.
 
@@ -109,25 +107,29 @@ Deletes user's retranslator with specified `retranslator_id`.
 
 #### Parameters
 
-| name            | description                                  | type | format |
-|:----------------|:---------------------------------------------|:-----|:-------|
-| retranslator_id | ID of the retranslator that will be deleted. | int  | 123456 |
+| name             | description                                  | type | format |
+| ---------------- | -------------------------------------------- | ---- | ------ |
+| retranslator\_id | ID of the retranslator that will be deleted. | int  | 123456 |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/delete' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator_id": 123456}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/retranslator/delete' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator_id": 123456}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/retranslator/delete?hash=a6aa75587e5c59c32d347da438505fc3&retranslator_id=123456
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/retranslator/delete?hash=a6aa75587e5c59c32d347da438505fc3&retranslator_id=123456
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -141,27 +143,30 @@ Deletes user's retranslator with specified `retranslator_id`.
 
 * 201 - Not found in the database.
 
-
-### `list`
+### list
 
 Get all users' retranslators.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/retranslator/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/retranslator/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/retranslator/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
-    
 #### Response
 
 ```json
@@ -191,10 +196,9 @@ Get all users' retranslators.
 * `password` - optional string.
 * `enabled` - boolean. Status.
 
+### update
 
-### `update`
-
-Updates retranslator parameters for the specified retranslator. Note that retranslator must exist, and must belong to 
+Updates retranslator parameters for the specified retranslator. Note that retranslator must exist, and must belong to\
 the current user.
 
 **required sub-user rights**: `admin` (available only to master users).
@@ -202,18 +206,20 @@ the current user.
 #### Parameters
 
 | name         | description                             | type        |
-|:-------------|:----------------------------------------|:------------|
+| ------------ | --------------------------------------- | ----------- |
 | retranslator | Retranslator object without `id` field. | JSON object |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/retranslator/update' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/update' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "retranslator": {"name": "Some server", "protocol_id": 123456, "address": "127.0.0.1", "port": 15000, "login": "proto", "password": "qewtyr", "enabled": true}}'
+```
+{% endcode %}
 
 #### Response
 
@@ -228,8 +234,7 @@ the current user.
 * 201 - Not found in the database – if retranslator with the specified ID cannot be found or belongs to another user.
 * 247 - Entity already exists – if retranslator with this address, port and login already exists.
 
-
-### `protocol/list`
+### protocol/list
 
 Returns all available retranslator protocols.
 
@@ -239,19 +244,23 @@ Only API key `hash`.
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/retranslator/protocol/list' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/retranslator/protocol/list' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/retranslator/protocol/list?hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/retranslator/protocol/list?hash=a6aa75587e5c59c32d347da438505fc3
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 

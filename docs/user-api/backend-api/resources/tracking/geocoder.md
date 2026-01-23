@@ -7,7 +7,6 @@ description: API calls to search address and location using geocoder
 
 API calls to search address and location using geocoder.
 
-
 ## Geocoder types
 
 * google.
@@ -16,34 +15,35 @@ API calls to search address and location using geocoder.
 * osm.
 * locationiq.
 
-
 ## API actions
 
 API path: `/geocoder`.
 
-### `search_address`
+### search\_address
 
 Performs a forward geocoding. Returns a list of locations matching the given address. Items in the list sorted by relevance.
 
 #### Parameters
 
-| name         | description                                                                                                                                                                                                                                                                                                  | type                                        | format                                                            |
-|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------|:------------------------------------------------------------------|
-| q            | Address (or place) or coordinates to geocode.                                                                                                                                                                                                                                                                | string/location                             | "750 Avenue E,San Francisco,CA 94130,USA"                         |
-| geocoder     | Optional. Geocoder type that will be preferably used for searching. Google geocoder is always used for users with the premium GIS.                                                                                                                                                                           | [enum](../../getting-started/introduction.md#data-types) | "google"                                                          |
-| bounds       | Optional. JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included. | bounds_object                               | `{"nw":{"lat":37.9,"lng":-122.4},"se":{"lat":37.8,"lng":-122.3}}` |
-| lang         | Optional. Language in which results should be. ISO 639 [language code](../../getting-started/introduction.md#data-types).                                                                                                                                                                                                 | [enum](../../getting-started/introduction.md#data-types) | "en_US"                                                           |
-| with_details | Optional. If `true` then the response will contain details.                                                                                                                                                                                                                                                  | boolean                                     | `true`                                                            |
+| name          | description                                                                                                                                                                                                                                                                                                  | type                      | format                                                            |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- | ----------------------------------------------------------------- |
+| q             | Address (or place) or coordinates to geocode.                                                                                                                                                                                                                                                                | string/location           | "750 Avenue E,San Francisco,CA 94130,USA"                         |
+| geocoder      | Optional. Geocoder type that will be preferably used for searching. Google geocoder is always used for users with the premium GIS.                                                                                                                                                                           | [enum](../../#data-types) | "google"                                                          |
+| bounds        | Optional. JSON object. The bounding box, specified by coordinates of northwest and southeast corners. Geocoder will preferably return results from within these bounds. That is the parameter influences the priority of results, so if more relevant results exist outside of bounds, they may be included. | bounds\_object            | `{"nw":{"lat":37.9,"lng":-122.4},"se":{"lat":37.8,"lng":-122.3}}` |
+| lang          | Optional. Language in which results should be. ISO 639 [language code](../../#data-types).                                                                                                                                                                                                                   | [enum](../../#data-types) | "en\_US"                                                          |
+| with\_details | Optional. If `true` then the response will contain details.                                                                                                                                                                                                                                                  | boolean                   | `true`                                                            |
 
 #### Example
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/geocoder/search_address' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/geocoder/search_address' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "q": "750 Avenue E,San Francisco,CA 94130,USA", "lang": "en", "geocoder": "google"}'
+```
+{% endcode %}
 
 #### Response
 
@@ -82,40 +82,41 @@ Performs a forward geocoding. Returns a list of locations matching the given add
 * `lng` - double. Longitude.
 * `address` - string. Address.
 * `details` - details object.
-    * `country` - optional string.
-    * `province` - optional string.
-    * `locality` - optional string.
-    * `street` - optional string.
-    * `house` - optional string.
-    * `postcode` - optional string.
-    * `bounds` - optional object, the bounding box which can fully contain the returned result.
-        * `nw` - North West corner.
-        * `se` - South East corner.
+  * `country` - optional string.
+  * `province` - optional string.
+  * `locality` - optional string.
+  * `street` - optional string.
+  * `house` - optional string.
+  * `postcode` - optional string.
+  * `bounds` - optional object, the bounding box which can fully contain the returned result.
+    * `nw` - North West corner.
+    * `se` - South East corner.
 
-
-### `search_location`
+### search\_location
 
 Search address by location using geocoder.
 
 #### Parameters
 
-| name         | description                                                                                                                                     | type                                        | format               |
-|:-------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------|:---------------------|
-| location     | Location coordinates (see: [data types description section](../../getting-started/introduction.md#data-types) section).                                      | location                                    | `{"lat": , "lng": }` |
-| geocoder     | Optional. Geocoder type that will be preferably used for searching. Google geocoder is always used for users with the premium GIS.              | [enum](../../getting-started/introduction.md#data-types) | "google"             |
-| lang         | Optional. ISO 639 [language code](../../getting-started/introduction.md#data-types).                                                                         | [enum](../../getting-started/introduction.md#data-types) | "en_US"              |
-| with_details | Optional. If `true` then the response will contain details.                                                                                     | boolean                                     | `true`               |
-| goal         | Helps to choose the target geocoder. Now supported `ui`, `ui_user_action`. Use `ui_user_action` for requests initiated by user, otherwise `ui`. | [enum](../../getting-started/introduction.md#data-types) | "ui"                 | 
+| name          | description                                                                                                                                     | type                      | format               |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | -------------------- |
+| location      | Location coordinates (see: [data types description section](../../#data-types) section).                                                        | location                  | `{"lat": , "lng": }` |
+| geocoder      | Optional. Geocoder type that will be preferably used for searching. Google geocoder is always used for users with the premium GIS.              | [enum](../../#data-types) | "google"             |
+| lang          | Optional. ISO 639 [language code](../../#data-types).                                                                                           | [enum](../../#data-types) | "en\_US"             |
+| with\_details | Optional. If `true` then the response will contain details.                                                                                     | boolean                   | `true`               |
+| goal          | Helps to choose the target geocoder. Now supported `ui`, `ui_user_action`. Use `ui_user_action` for requests initiated by user, otherwise `ui`. | [enum](../../#data-types) | "ui"                 |
 
 #### Examples
 
-=== "cURL"
+cURL
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/geocoder/search_location' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 37.825429, "lng": -122.371982}}'
-    ```
+{% code overflow="wrap" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/geocoder/search_location' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "location": "{"lat": 37.825429, "lng": -122.371982}}'
+```
+{% endcode %}
 
 #### Response
 
@@ -146,12 +147,12 @@ Search address by location using geocoder.
 
 * `value` - string. Address.
 * `details` - optional details object.
-    * `country` - optional string.
-    * `province` - optional string.
-    * `locality` - optional string.
-    * `street` - optional string.
-    * `house` - optional string.
-    * `postcode` - optional string.
-    * `bounds` - optional object, the bounding box which can fully contain the returned result.
-        * `nw` - North West corner.
-        * `se` - South East corner.
+  * `country` - optional string.
+  * `province` - optional string.
+  * `locality` - optional string.
+  * `street` - optional string.
+  * `house` - optional string.
+  * `postcode` - optional string.
+  * `bounds` - optional object, the bounding box which can fully contain the returned result.
+    * `nw` - North West corner.
+    * `se` - South East corner.

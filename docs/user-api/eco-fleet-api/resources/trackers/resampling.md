@@ -3,7 +3,8 @@ title: Fuel data resampling
 ---
 
 # Fuel data resampling
-!!! note "Navixy Eco Fleet Lab has developed a solution for complex fuel data analysis. This method regenerates data sets which will be beneficial for variety of exercises, enabling researchers, developers, and diagnostics experts to leverage the **processed data**."
+
+> Navixy Eco Fleet Lab has developed a solution for complex fuel data analysis. This method regenerates data sets which will be beneficial for variety of exercises, enabling researchers, developers, and diagnostics experts to leverage the **processed data**.
 
 **Diagnostic process** is an important procedure undertaken by numerous partners and investigators. Its primary purpose is to identify the underlying causes, which is essential for efficient fuel management by identifying any abnormalities. For example, they analyze key events - drains and refueling for fraud or look for a reason for the appearance of noise in the fuel data.
 
@@ -13,7 +14,7 @@ Effective data management relies on **accurate and synchronized raw data**. Howe
 
 To tackle the challenges posed by incomplete or inconsistent data, we utilize advanced statistical models. With our API requests, you can easily **access and download processed datasets** from our platform for specific time periods. This API request specifically provides fuel-related data in a convenient CSV format.
 
-!!! note "**Data resampling** refers to the joint process of creating a uniform data structure by organizing existing values and generating new ones (for missing values) in a chronological order, while considering equal time intervals. This approach ensures data integrity and facilitates analysis."
+> **Data resampling** refers to the joint process of creating a uniform data structure by organizing existing values and generating new ones (for missing values) in a chronological order, while considering equal time intervals. This approach ensures data integrity and facilitates analysis.
 
 ## data_resampling
 ### Description
@@ -33,7 +34,7 @@ The API response is presented in a convenient CSV format, incorporating columns 
 Standard list
 
 | name             | description                                                                                      | type             | format                                            |
-|:-----------------|:-------------------------------------------------------------------------------------------------|:-----------------|---------------------------- ----------------------|
+|:-----------------|:-------------------------------------------------------------------------------------------------|:-----------------|---------------------------------------------------|
 | hash             | Hash of an API key is required for API calls to identify user.                                   | string           | "NVX c459c3589336ebf26ff18257a8d93a45"            |
 | tracker_id       | ID of the tracker (aka "object_id"). Tracker must belong to authorized user and not be blocked.  | int              | 123456                                            |
 | interval         | Sensor readings' datetime interval which will be analyzed. Last week by default.                 | interval         | 2023-08-24T08:04:36.306Z/2023-08-26T08:04:36.306Z |
@@ -57,7 +58,7 @@ Additional list of resampling parameters
 * AVERAGE_IN_WINDOW- In this algorithm, the presence of delta is imperative. The median of all the neighboring values in the series within the interval [T-Δ, T+Δ], fixed_value if no values.
 * AVERAGE - To replace missing values in a series, we use the average of the two neighboring values. For any missing values between valid ones, we replace them with the average of the surrounding valid values. If the series begins or ends with missing values, we substitute them with the next or previous valid value accordingly. If delta is not equal to null than algorithm changes: if the interval [T-Δ, T+Δ] contains at least one value, otherwise fixed_value.
 
-!!! note "We recommend utilizing distinct methods for varying data types, as outlined in the table below. However, the choice of which methods to employ ultimately depends on your individual needs and expectations."
+> We recommend utilizing distinct methods for varying data types, as outlined in the table below. However, the choice of which methods to employ ultimately depends on your individual needs and expectations.
 
 | Method     | Data type            | Use case                                                                               |
 |:-----------|:---------------------|:---------------------------------------------------------------------------------------|

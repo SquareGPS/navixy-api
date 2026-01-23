@@ -11,11 +11,11 @@ The Navixy platform can be branded through the Admin Panel by customizing variou
 
 API path: `panel/dealer/settings/image`.
 
-### `upload`
+### upload
 
-Uploads image of specified `type`. 
+Uploads image of specified `type`.
 
-**MUST** be a POST multipart request (multipart/form-data), with one of the parts being an image file upload (with the name "file"). 
+**MUST** be a POST multipart request (multipart/form-data), with one of the parts being an image file upload (with the name "file").
 
 File part **mime** type must be one of:
 
@@ -26,16 +26,15 @@ File part **mime** type must be one of:
 * `image/webp`
 * `image/x-icon` (for favicon type)
 
-*required permissions*: `service_settings: "update"`.
+_required permissions_: `service_settings: "update"`.
 
 #### Parameters
 
-
-| name            | description                                                                                                     | type   |
-|:----------------|:----------------------------------------------------------------------------------------------------------------|:-------|
-| type            | Image type to delete. Can be one of `logo`, `favicon`, `login_wallpaper`, `desktop_wallpaper`, `document_logo`. | string |
-| file            | Image file.                                                                                                     | string |
-| redirect_target | Optional. A URL to redirect.                                                                                    | string | 
+| name             | description                                                                                                     | type   |
+| ---------------- | --------------------------------------------------------------------------------------------------------------- | ------ |
+| type             | Image type to delete. Can be one of `logo`, `favicon`, `login_wallpaper`, `desktop_wallpaper`, `document_logo`. | string |
+| file             | Image file.                                                                                                     | string |
+| redirect\_target | Optional. A URL to redirect.                                                                                    | string |
 
 If `redirect_target` passed a return redirect to `response=<urlencoded response json>`.
 
@@ -45,7 +44,7 @@ If `redirect_target` passed a return redirect to `response=<urlencoded response 
 {
   "success": true
 }
-```    
+```
 
 #### Errors
 
@@ -55,33 +54,37 @@ If `redirect_target` passed a return redirect to `response=<urlencoded response 
 * 236 - Feature unavailable due to tariff restrictions - if branding feature disabled for this dealer.
 * 254 - Cannot save file - on some file system errors.
 
-### `delete` 
+### delete
 
-Deletes an image of specified `type`. 
+Deletes an image of specified `type`.
 
-*required permissions*: `service_settings: "update"`.
+_required permissions_: `service_settings: "update"`.
 
 #### Parameters
 
 | name | description                                                                                                     | type   |
-|:-----|:----------------------------------------------------------------------------------------------------------------|:-------|
+| ---- | --------------------------------------------------------------------------------------------------------------- | ------ |
 | type | Image type to delete. Can be one of `logo`, `favicon`, `login_wallpaper`, `desktop_wallpaper`, `document_logo`. | string |
 
 #### Examples
 
-=== "cURL"
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/panel/dealer/settings/image/delete' \
+    -H 'Content-Type: application/json' \
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "type": "logo"}'
+```
+{% endtab %}
 
-    ```shell
-    curl -X POST '{{ extra.api_example_url }}/panel/dealer/settings/image/delete' \
-        -H 'Content-Type: application/json' \
-        -d '{"hash": "fa7bf873fab9333144e171372a321b06", "type": "logo"}'
-    ```
-
-=== "HTTP GET"
-
-    ```
-    {{ extra.api_example_url }}/panel/dealer/settings/image/delete?hash=fa7bf873fab9333144e171372a321b06&type=logo
-    ```
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/panel/dealer/settings/image/delete?hash=fa7bf873fab9333144e171372a321b06&type=logo
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -90,9 +93,7 @@ Deletes an image of specified `type`.
   "success": true
 }
 ```
-    
+
 #### Errors
 
 * 201 - Not found in the database - when there are no settings for a dealer in the db.
-
-
