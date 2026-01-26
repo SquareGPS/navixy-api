@@ -456,7 +456,7 @@ For more details on version conflicts, see [Optimistic locking](../optimistic-lo
 
 ## Complete examples
 
-#### Warehouse work hours
+### Warehouse work hours
 
 Standard weekday schedule with a lunch break, excluding company holidays:
 
