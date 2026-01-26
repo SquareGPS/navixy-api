@@ -4,30 +4,71 @@ description: Create, update, query, and delete RFC 5545–compatible schedules.
 
 # Managing schedules
 
-Schedules in Navixy Repository API represent [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545) (iCalendar)-compliant calendar events that support recurrence rules, exceptions, and multiple time slots.
+Schedules in Navixy Repository API define time-based rules for your fleet operationsЖ maintenance windows, work hours, restrictions, and more.
 
-This guide walks you through creating, updating, and deleting schedules with Navixy Repository API.
+The schedule data structure is semantically compatible with VEVENT and RRULE from [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545) (iCalendar). This means familiar concepts like recurrence rules, exception dates, and timezones work as expected, though the API uses JSON format rather than the iCalendar text format.
+
+This guide walks you through creating, configuring, updating, and deleting schedules.
 
 ## Before you start
 
-To work with a schedule, you need the ID of your [organization](../api-reference/objects.md#organization). To obtain it, use the [me](../api-reference/queries.md#me) query:
+To work with a schedule, you need your [organization](../api-reference/objects.md#organization)'s ID. Use the [me](../api-reference/queries.md#me) query to find it through your membership:
 
 ```graphql
+query GetMyOrganization {
+  me {
+    memberships {
+      organization {
+        id
+        title
+      }
+    }
+  }
+}
 ```
+
+In most cases, you'll have one organization in the response. Use its `id` for schedule operations.
 
 ## Understanding schedule data
 
-A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../api-reference/scalars.md#scheduledata), a custom scalar containing a JSON value. The JSON structure follows the RFC 5545 conventions:
+A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../api-reference/scalars.md#scheduledata), a custom scalar containing a JSON value.&#x20;
 
-<table><thead><tr><th width="164.4000244140625">Field</th><th>Description</th></tr></thead><tbody><tr><td><code>timezone</code></td><td>IANA timezone identifier (e.g., <code>Europe/Berlin</code>, <code>America/New_York</code>, <code>UTC</code>)</td></tr><tr><td><code>events</code></td><td>Array of time slots, each with start/end times and optional recurrence rules</td></tr></tbody></table>
+{% hint style="info" %}
+The `scheduleData` field is a convenience alias for the `schedule_data` system custom field. You can also access the same data through the `customFields` field if needed. See [Working with custom fields](working-with-custom-fields.md) for details.
+{% endhint %}
+
+The JSON structure follows the RFC 5545 conventions:
+
+<table><thead><tr><th width="115.60003662109375">Field</th><th>Description</th></tr></thead><tbody><tr><td><code>timezone</code></td><td>IANA timezone identifier (e.g., <code>Europe/Berlin</code>, <code>America/New_York</code>, <code>UTC</code>). Defines how the system interprets all datetime values in events.</td></tr><tr><td><code>events</code></td><td>Array of time slots, each with start/end times and optional recurrence rules.</td></tr></tbody></table>
+
+### How timezone works
+
+All datetime values in events (`dtstart`, `dtend`, `exdate`, `rdate`, `until`) are interpreted as **local time** in the specified timezone. Do not include the `Z` suffix — these are not UTC values.
+
+For example, with `"timezone": "Europe/Berlin"`:
+
+* `"dtstart": "2025-01-06T06:00:00"` means 6:00 AM Berlin time
+* The system handles DST transitions automatically
+
+### Event fields
 
 Each event in the `events` array can include:
 
 <table><thead><tr><th width="95.39990234375">Field</th><th width="128.2000732421875">iCalendar equivalent</th><th>Description</th></tr></thead><tbody><tr><td><code>dtstart</code></td><td>DTSTART</td><td><strong>Required.</strong> Start time. Use ISO 8601 UTC format for regular events (<code>2025-01-06T05:00:00Z</code>). For all-day events, use DATE format without time component (<code>2025-01-06</code>).</td></tr><tr><td><code>dtend</code></td><td>DTEND</td><td>End time. Mutually exclusive with <code>duration</code>. Must match <code>dtstart</code> value type: DATE-TIME for regular events, DATE for all-day events.</td></tr><tr><td><code>duration</code></td><td>DURATION</td><td>Duration in ISO 8601 format. Mutually exclusive with <code>dtend</code>. Examples: <code>PT30M</code> (30 minutes), <code>PT3H</code> (3 hours), <code>P1D</code> (1 day). For all-day events, use day or week format only (<code>P1D</code>, <code>P1W</code>).</td></tr><tr><td><code>allDay</code></td><td>VALUE=DATE</td><td>When <code>true</code>, the event spans entire days. Requires <code>dtstart</code>, <code>dtend</code>, and <code>exdate</code> to use DATE format (no time component).</td></tr><tr><td><code>rrule</code></td><td>RRULE</td><td>Recurrence rule defining repeat patterns. See the <code>rrule</code> reference below.</td></tr><tr><td><code>exdate</code></td><td>EXDATE</td><td>Array of dates to exclude from recurrence. Values must exactly match generated occurrences. Use DATE-TIME format for regular events, DATE format for all-day events.</td></tr><tr><td><code>rdate</code></td><td>RDATE</td><td>Array of additional dates to include in recurrence. Must match <code>dtstart</code> value type: DATE-TIME for regular events, DATE for all-day events.</td></tr></tbody></table>
 
+### Recurrence rule fields
+
 The `rrule` property supports these fields:
 
 <table><thead><tr><th width="153">Field</th><th width="153.79998779296875">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>freq</code></td><td>String</td><td><strong>Required.</strong> <code>SECONDLY</code>, <code>MINUTELY</code>, <code>HOURLY</code>, <code>DAILY</code>, <code>WEEKLY</code>, <code>MONTHLY</code>, or <code>YEARLY</code></td></tr><tr><td><code>interval</code></td><td>Integer</td><td>Repeat every N periods (default: 1)</td></tr><tr><td><code>count</code></td><td>Integer</td><td>Stop after N occurrences. Mutually exclusive with <code>until</code>.</td></tr><tr><td><code>until</code></td><td>DateTime</td><td>Stop after this date. Mutually exclusive with <code>count</code>.</td></tr><tr><td><code>byday</code></td><td>String[]</td><td>Days of week: <code>MO</code>, <code>TU</code>, <code>WE</code>, <code>TH</code>, <code>FR</code>, <code>SA</code>, <code>SU</code></td></tr><tr><td><code>bymonthday</code></td><td>Integer[]</td><td>Days of month: 1–31, or -31 to -1 for days from end (-1 = last day)</td></tr><tr><td><code>byyearday</code></td><td>Integer[]</td><td>Days of year: 1–366, or -366 to -1 for days from end (-1 = last day)</td></tr><tr><td><code>byweekno</code></td><td>Integer[]</td><td>Weeks of year: 1–53, or -53 to -1 (-1 = last week)</td></tr><tr><td><code>bymonth</code></td><td>Integer[]</td><td>Months: 1–12</td></tr><tr><td><code>byhour</code></td><td>Integer[]</td><td>Hours: 0–23</td></tr><tr><td><code>byminute</code></td><td>Integer[]</td><td>Minutes: 0–59</td></tr><tr><td><code>bysecond</code></td><td>Integer[]</td><td>Seconds: 0–60</td></tr><tr><td><code>wkst</code></td><td>String</td><td>Week start day: <code>MO</code> or <code>SU</code>. Default: <code>MO</code></td></tr></tbody></table>
+
+### Validation rules
+
+The API validates schedule data and returns a [validation error](../error-handling.md#validation-error-400) if:
+
+* `dtend` is not later than `dtstart`
+* `until` uses a different format than `dtstart` (e.g., DATE vs DATE-TIME)
+* Required fields are missing (`dtstart`, `freq` in rrule)
 
 ## Example scenario: Fleet maintenance schedule
 
@@ -49,8 +90,8 @@ mutation CreateMaintenanceSchedule {
       timezone: "Europe/Berlin"
       events: [
         {
-          dtstart: "2025-01-06T05:00:00Z"
-          dtend: "2025-01-06T09:00:00Z"
+          dtstart: "2025-01-06T06:00:00"
+          dtend: "2025-01-06T10:00:00"
           rrule: {
             freq: "WEEKLY"
             byday: ["MO"]
@@ -70,24 +111,25 @@ mutation CreateMaintenanceSchedule {
 
 Note the following:
 
-* Times are in UTC. The `dtstart` of `05:00:00Z` equals 06:00 in Europe/Berlin (UTC+1 in winter). The `timezone` field tells consuming applications how to interpret and display these times.
+* Times are in the local format without the Z suffix. The `timezone` field (Europe/Berlin) tells the system how to interpret these values — here, 06:00:00 means 6:00 AM Berlin time.
 * `rrule.freq: "WEEKLY"` with `byday: ["MO"]` means the event repeats every Monday.
 * The `dtstart` date is when the schedule comes into effect. Match it to your recurrence pattern to ensure predictable behavior — in this case, a Monday, since the rule uses `byday: ["MO"]`.
 
 The response confirms creation:
 
-<pre class="language-json"><code class="lang-json">{
+```json
+{
   "data": {
     "scheduleCreate": {
       "schedule": {
         "id": "019a6b2f-793e-807b-8001-555345529b44",
-<strong>        "version": 1,
-</strong>        "title": "Weekly fleet maintenance"
+        "version": 1,
+        "title": "Weekly fleet maintenance"
       }
     }
   }
 }
-</code></pre>
+```
 
 Save the `id` and `version` — you'll need them for updating the schedule.
 {% endstep %}
@@ -124,25 +166,26 @@ The maintenance provider doesn't work on public holidays. Several holidays in th
 When updating `scheduleData`, you must provide the complete value — the API replaces the entire field. Include all existing configuration plus your changes.
 {% endhint %}
 
-<pre class="language-graphql"><code class="lang-graphql"><strong>mutation AddHolidayExceptions {
-</strong>  scheduleUpdate(input: {
+```graphql
+mutation AddHolidayExceptions {
+  scheduleUpdate(input: {
     id: "019a6b2f-793e-807b-8001-555345529b44"
     version: 1
     scheduleData: {
       timezone: "Europe/Berlin"
       events: [
         {
-          dtstart: "2025-01-06T05:00:00Z"
-          dtend: "2025-01-06T09:00:00Z"
+          dtstart: "2025-01-06T06:00:00"
+          dtend: "2025-01-06T10:00:00"
           rrule: {
             freq: "WEEKLY"
             byday: ["MO"]
           }
           exdate: [
-            "2025-04-21T05:00:00Z",
-            "2025-05-05T05:00:00Z",
-            "2025-06-09T05:00:00Z",
-            "2025-10-06T05:00:00Z"
+            "2025-04-21T06:00:00",
+            "2025-05-05T06:00:00",
+            "2025-06-09T06:00:00",
+            "2025-10-06T06:00:00"
           ]
         }
       ]
@@ -155,7 +198,7 @@ When updating `scheduleData`, you must provide the complete value — the API re
     }
   }
 }
-</code></pre>
+```
 
 The `exdate` values must exactly match generated occurrences. Since all occurrences inherit the time from `dtstart`, use the same time component (here, `05:00:00Z`) for each excluded date.
 
@@ -194,18 +237,18 @@ mutation SetContractEndDate {
       timezone: "Europe/Berlin"
       events: [
         {
-          dtstart: "2025-01-06T05:00:00Z"
-          dtend: "2025-01-06T09:00:00Z"
+          dtstart: "2025-01-06T06:00:00"
+          dtend: "2025-01-06T10:00:00"
           rrule: {
             freq: "WEEKLY"
             byday: ["MO"]
-            until: "2025-12-31T23:59:59Z"
+            until: "2025-12-31T23:59:59"
           }
           exdate: [
-            "2025-04-21T05:00:00Z",
-            "2025-05-05T05:00:00Z",
-            "2025-06-09T05:00:00Z",
-            "2025-10-06T05:00:00Z"
+            "2025-04-21T06:00:00",
+            "2025-05-05T06:00:00",
+            "2025-06-09T06:00:00",
+            "2025-10-06T06:00:00"
           ]
         }
       ]
@@ -219,7 +262,7 @@ mutation SetContractEndDate {
 }
 ```
 
-The schedule's version is now 3.
+The `until` value is inclusive — the last occurrence can happen on this date. The schedule's version is now 3.
 {% endstep %}
 
 {% step %}
@@ -238,33 +281,33 @@ mutation SplitMaintenanceWindow {
       timezone: "Europe/Berlin"
       events: [
         {
-          dtstart: "2025-01-06T05:00:00Z"
-          dtend: "2025-01-06T07:00:00Z"
+          dtstart: "2025-01-06T06:00:00"
+          dtend: "2025-01-06T08:00:00"
           rrule: {
             freq: "WEEKLY"
             byday: ["MO"]
-            until: "2025-12-31T23:59:59Z"
+            until: "2025-12-31T23:59:59"
           }
           exdate: [
-            "2025-04-21T05:00:00Z",
-            "2025-05-05T05:00:00Z",
-            "2025-06-09T05:00:00Z",
-            "2025-10-06T05:00:00Z"
+            "2025-04-21T06:00:00",
+            "2025-05-05T06:00:00",
+            "2025-06-09T06:00:00",
+            "2025-10-06T06:00:00"
           ]
         },
         {
-          dtstart: "2025-01-06T07:30:00Z"
-          dtend: "2025-01-06T09:00:00Z"
+          dtstart: "2025-01-06T08:30:00"
+          dtend: "2025-01-06T10:00:00"
           rrule: {
             freq: "WEEKLY"
             byday: ["MO"]
-            until: "2025-12-31T23:59:59Z"
+            until: "2025-12-31T23:59:59"
           }
           exdate: [
-            "2025-04-21T07:30:00Z",
-            "2025-05-05T07:30:00Z",
-            "2025-06-09T07:30:00Z",
-            "2025-10-06T07:30:00Z"
+            "2025-04-21T08:30:00",
+            "2025-05-05T08:30:00",
+            "2025-06-09T08:30:00",
+            "2025-10-06T08:30:00"
           ]
         }
       ]
@@ -297,9 +340,37 @@ mutation DeleteMaintenanceSchedule {
 }
 ```
 
-The `version` parameter ensures you don't accidentally delete a schedule that someone else has modified. If the version doesn't match, you'll receive a conflict error.
+The `version` parameter ensures you don't accidentally delete a schedule that someone else has modified. If the version doesn't match, you'll receive a [conflict error](../error-handling.md#version-conflict-409).
 {% endstep %}
 {% endstepper %}
+
+### Listing schedules
+
+To retrieve all schedules for an organization:
+
+```graphql
+query ListSchedules {
+  schedules(
+    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+    first: 20
+  ) {
+    nodes {
+      id
+      title
+      type {
+        title
+      }
+      scheduleData
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```
+
+For details on pagination, see [Pagination](../pagination.md).
 
 ### Handling version conflicts
 
@@ -326,6 +397,8 @@ To resolve this:
 1. Query the schedule to get the current version and data
 2. Merge your changes with the current state
 3. Retry the mutation with the correct version
+
+For more details on version conflicts, see [Optimistic locking](../optimistic-locking.md).
 
 ## Common patterns
 
@@ -381,6 +454,86 @@ To resolve this:
 { "freq": "WEEKLY", "byday": ["MO", "TU", "WE", "TH", "FR"], "byhour": [9, 17] }
 ```
 
-### Next steps
+## Complete examples
+
+#### Warehouse work hours
+
+Standard weekday schedule with a lunch break, excluding company holidays:
+
+```json
+{
+  "timezone": "Europe/Berlin",
+  "events": [
+    {
+      "dtstart": "2025-01-06T08:00:00",
+      "dtend": "2025-01-06T12:00:00",
+      "rrule": {
+        "freq": "WEEKLY",
+        "byday": ["MO", "TU", "WE", "TH", "FR"]
+      },
+      "exdate": ["2025-01-01T08:00:00", "2025-12-25T08:00:00", "2025-12-26T08:00:00"]
+    },
+    {
+      "dtstart": "2025-01-06T13:00:00",
+      "dtend": "2025-01-06T17:00:00",
+      "rrule": {
+        "freq": "WEEKLY",
+        "byday": ["MO", "TU", "WE", "TH", "FR"]
+      },
+      "exdate": ["2025-01-01T13:00:00", "2025-12-25T13:00:00", "2025-12-26T13:00:00"]
+    }
+  ]
+}
+```
+
+### Refrigerated truck temperature monitoring
+
+Different temperature thresholds for day and night operation:
+
+```json
+{
+  "timezone": "Europe/Moscow",
+  "events": [
+    {
+      "dtstart": "2025-01-06T06:00:00",
+      "dtend": "2025-01-06T22:00:00",
+      "rrule": {
+        "freq": "DAILY"
+      }
+    },
+    {
+      "dtstart": "2025-01-06T22:00:00",
+      "dtend": "2025-01-07T06:00:00",
+      "rrule": {
+        "freq": "DAILY"
+      }
+    }
+  ]
+}
+```
+
+### Equipment rental periods
+
+Non-recurring schedule for specific rental dates:
+
+```json
+{
+  "timezone": "America/New_York",
+  "events": [
+    {
+      "dtstart": "2025-02-10",
+      "dtend": "2025-02-15",
+      "allDay": true
+    },
+    {
+      "dtstart": "2025-03-01",
+      "dtend": "2025-03-10",
+      "allDay": true
+    }
+  ]
+}
+```
+
+## Next steps
 
 * TBD
