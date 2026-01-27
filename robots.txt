@@ -1,5 +1,5 @@
 # Point search engines to the sitemap
-Sitemap: https://www.navixy.com/navixy-api-sitemap.xml
+Sitemap: https://www.navixy.com/docs/navixy-api/sitemap-pages.xml
 
 # Allow all crawlers to access the site
 User-agent: *
