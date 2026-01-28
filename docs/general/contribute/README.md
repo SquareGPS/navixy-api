@@ -17,7 +17,7 @@ Join us in enhancing Navixy developer documentation! Your contributions are high
 
 In each case, a GitHub account is required. If you prefer not to register on GitHub, you can [contact us](../contacts.md) with any feedback or suggestions.
 
-#### Quick edits in the browser
+### Quick edits in the browser
 
 For simple, quick edits, you can use the built-in GitHub editor:
 
@@ -46,7 +46,7 @@ Before you start contributing to the Navixy API documentation in Stoplight, ensu
 
 {% stepper %}
 {% step %}
-#### Getting started
+**Getting started**
 
 Fork the [repository](https://github.com/SquareGPS/navixy-api), clone it to your local machine, and create a new branch for your changes. This keeps your contributions organized and makes the review process smoother.
 {% endstep %}
@@ -57,7 +57,7 @@ Fork the [repository](https://github.com/SquareGPS/navixy-api), clone it to your
 The documentation consists primarily of Markdown files with GFM (GitHub Flavored Markdown) extensions:
 
 1. Navigate to the folder containing the documentation you want to edit
-2. Open the relevant `.md` files in your preferred text editor&#x20;
+2. Open the relevant `.md` files in your preferred text editor
 3. Make your changes following the [GitHub Flavored Markdown conventions](https://github.github.com/gfm/)
 {% endstep %}
 
@@ -66,14 +66,14 @@ The documentation consists primarily of Markdown files with GFM (GitHub Flavored
 
 If you're updating API endpoint documentation:
 
-1. Locate the relevant OpenAPI specification files (`.yaml` or `.json`)
-2. Edit them using Stoplight Studio for the best experience, or manually in an IDE of choice
-3. Ensure your changes maintain the correct OpenAPI syntax
+1. Locate the relevant OpenAPI specification files `.yaml` or `.json`(if applicable)
+2. Edit them in an IDE of choice
+3. Ensure your changes maintain the correct OpenAPI syntax or follow Documentation style guidelines
 4. Test your changes for validity if possible (**try out** requests)
 {% endstep %}
 
 {% step %}
-#### Submitting your changes
+**Submitting your changes**
 
 Commit your changes with clear, descriptive messages in English. Push to your fork on GitHub and create a pull request with a detailed description of your changes.
 
@@ -84,12 +84,12 @@ The repository maintainers will review your contribution and may request modific
 {% endstepper %}
 
 {% hint style="info" %}
-The content of the docyumentation reflects the page tree in the repository, no additional actions are needed for Table of Contents.
+When adding new pages to the documentation, you must update the [\`SUMMARY.md](../../SUMMARY.md)\` file in the repository to ensure your changes appear in the published documentation. The table of contents is generated from this file.
 {% endhint %}
 
-### Documentation style guidelines
+## Documentation style guidelines
 
-#### Documentation structure
+### Documentation structure
 
 The documentation includes two types of files:
 
@@ -98,73 +98,130 @@ The documentation includes two types of files:
 
 Documents are divided into semantic parts, starting with an introduction that summarizes the content.
 
-#### API call descriptions
+### API call descriptions
 
-Each API call should include the following sections:
+Each API call documentation should include:
 
-* **Introduction** - General information and purpose of the API call
-* **Object structure** - Describes the object structure used in the calls (optional)
-* **API Actions** - Base API call and associated actions, including:
-  * **Action description** - Purpose of the API action
-  * **Requirements** - Necessary permissions (optional)
-  * **Parameters table** - Lists parameters for the API call with descriptions and data types
-  * **Examples** - API call examples with parameters, including copy functionality
-  * **Response** - Example of a successful server response with field descriptions
-  * **Errors** - Specific errors related to the API action, plus a general error list
+* **Introduction** - Resource overview and purpose
+* **Hint block** - Warnings/limitations (optional, use `{% hint style="warning" %}`)
+* **Object structure** - JSON objects with field descriptions (optional)
+* **API Actions** section with base path, containing:
+  * **Action name** - Method heading
+  * **Description** - What the action does
+  * **Required permissions** - If applicable (optional)
+  * **Parameters** - Table with name, description, type, format
+  * **Examples** - Tabbed cURL and HTTP GET examples (`{% tabs %}`)
+  * **Response** - JSON example with field descriptions
+  * **Errors** - Specific codes plus link to general errors
 
-## Example API documentation format (MD reference)
+### Example API documentation format (MD reference)
 
+{% code overflow="wrap" expandable="true" %}
 ````markdown
 # Resource name
 
-Resource description.
+Brief description of the resource explaining its purpose and main functionality.
 
-## Object name
+{% hint style="warning" %}
+Use for important notices, limitations, or warnings. Optional - remove if not needed.
+{% endhint %}
 
-Object and its description.
+## Object structure
 
-## API actions
+Describe what the object represents and when it's used in the API.
+```json
+{
+  "id": 123456,
+  "label": "object label",
+  "parameter1": "value1",
+  "nested_object": {
+    "field1": "value",
+    "field2": 100
+  }
+}
+```
 
-Path: `/path/to/resource/`.
+List each field with its type and description:
 
-### method_name
+* `id` - int. Unique identifier.
+* `label` - string. Human-readable name.
+* `parameter1` - string. Description of parameter.
+* `nested_object` - object. Description of nested object.
+  * `field1` - string. Description.
+  * `field2` - int. Description.
 
-Method description.
+# API actions
 
-#### Parameters
+API base path: `/path/to/resource`.
 
-  | name   | description  | type    | restrictions         |
-  |:-------|:-------------|:--------|:---------------------|
-  | param1 | description. | int     | `[1..100]`, not null |
-  | param2 | description. | boolean | not null             |
+## method_name
 
-#### Examples
+Explain what this action does, its purpose, and expected outcome.
 
-<!--title: "cURL"-->
-    ```shell
-    curl -X POST 'https://api.navixy.com/v2/resource/sub_resource/action' \
+**required permissions:** `permission_name` (optional - include only if specific permissions needed).
+
+### Parameters
+
+List all parameters with descriptions, marking required vs optional.
+
+| name    | description                                      | type    | format   |
+| ------- | ------------------------------------------------ | ------- | -------- |
+| param1  | Description. Required. Constraints if any.       | int     | 123456   |
+| param2  | Description. Optional. Default value if any.     | boolean | true     |
+
+### Examples
+
+Provide working examples with realistic values in both formats.
+
+{% tabs %}
+{% tab title="cURL" %}
+```sh
+curl -X POST 'https://api.eu.navixy.com/v2/resource/sub_resource/action' \
     -H 'Content-Type: application/json' \
-    -d '{"param1": "value1", "param2": "value2", "hash": "a6aa75587e5c59c32d347da438505fc3"}'
-    ```
+    -d '{"hash": "a6aa75587e5c59c32d347da438505fc3", "param1": 123456}'
+```
 
-<!--title: "HTTP GET"-->
-    ```http
-    https://api.navixy.com/v2/resource/sub_resource/action?param1=value1&param2&hash=a6aa75587e5c59c32d347da438505fc3
-    ```
+{% endtab %}
 
-#### Response
+{% tab title="HTTP GET" %}
+{% code overflow="wrap" %}
+```http
+https://api.eu.navixy.com/v2/resource/sub_resource/action?hash=a6aa75587e5c59c32d347da438505fc3&param1=123456
+```
 
-    ```json
-    {
-      "success": true
-    }
-    ```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
-#### Errors
+### Response
 
-Special error codes.
+Show example of successful response with all possible fields.
+```json
+{
+  "success": true,
+  "value": {
+    "id": 123456,
+    "label": "object label"
+  }
+}
+```
+
+Describe response structure and all returned fields:
+
+* `success` - boolean. Always `true` for successful responses.
+* `value` - object. The returned object. See [structure above](#object-structure).
+
+### Errors
+
+List specific error codes this action can return, then link to general errors.
+
+* 201 - Not found in the database – if resource does not exist.
+* 7 - Invalid parameters – if parameters don't meet validation requirements.
+
+[General error codes](https://www.navixy.com/docs/navixy-api/user-api/backend-api/errors) 
 ````
+{% endcode %}
 
 Ensure your documentation is accurate and all examples work as described.
 
-For actual examples, refer to [user](broken-reference) and [tracker](../../panel-api/resources/tracker.md#list).
+For actual examples, refer to [user](../../user-api/backend-api/resources/commons/user/index.md) and [tracker](../../panel-api/resources/tracker.md#list) sections.
