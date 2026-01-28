@@ -15,7 +15,7 @@ Currently, the [Atmosphere Framework](https://github.com/Atmosphere) used as an 
 
 Let's describe a standard workflow for WebSocket API:
 
-1. Determine [API base URL](broken-reference).
+1. Determine [API base URL](/broken/pages/ZecFmxN0cywjosU1jKcD#api-base-url).
 2. Get the hash of an [API Key](../resources/commons/user-authentication/api-keys.md).
 3. Open WebSocket connection by the path [/event/subscription/](subscription.md) with `Atmosphere` protocol parameters.
 4. Subscribe on events using [subscribe action](subscription.md#subscribe-action).
@@ -26,7 +26,7 @@ Let's describe a standard workflow for WebSocket API:
 > **Notes:**
 >
 > * The [subscription requests](subscription.md) must contain the `hash` of an [API Key](../resources/commons/user-authentication/api-keys.md).
-> * Responses and errors for [subscribe](subscription.md#subscribe-action) and [unsubscribe](subscription.md#unsubscribe-action) actions are similar with common [API](broken-reference) format.
+> * Responses and errors for [subscribe](subscription.md#subscribe-action) and [unsubscribe](subscription.md#unsubscribe-action) actions are similar with common [API](/broken/pages/ZecFmxN0cywjosU1jKcD) format.
 > * All `WebSocket` frames use a `JSON` format. Exceptions are heartbeat frames containing "X".
 
 ## Open connection

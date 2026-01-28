@@ -121,10 +121,10 @@ Retrieves attached form as file.
 
 #### Parameters
 
-| name     | description                                                | type                     |
-| -------- | ---------------------------------------------------------- | ------------------------ |
-| task\_id | An ID of the task.                                         | int                      |
-| format   | Format of the download file. Can be "xls", "csv" or "pdf". | [enum](broken-reference) |
+| name     | description                                                | type                                                  |
+| -------- | ---------------------------------------------------------- | ----------------------------------------------------- |
+| task\_id | An ID of the task.                                         | int                                                   |
+| format   | Format of the download file. Can be "xls", "csv" or "pdf". | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
 #### Examples
 
@@ -387,14 +387,14 @@ curl -X POST '{{ extra.api_example_url }}/task/form/read' \
 * `value` - [form object](form/index.md#form-object), or null if no form attached.
 * `files` - list of files, both submitted and unsubmitted, associated with this form's fields.
   * `id` - int. File ID.
-  * `type` - [enum](broken-reference). Can be "image" or "file".
-  * `created` - [date/time](broken-reference). Date when file created.
-  * `uploaded` - [date/time](broken-reference). Date when file uploaded, can be null if file not yet uploaded.
+  * `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "image" or "file".
+  * `created` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when file created.
+  * `uploaded` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when file uploaded, can be null if file not yet uploaded.
   * `name` - string. Filename.
   * `size` - int. Size in bytes. If file not uploaded, show maximum allowed size for the upload.
   * `metadata` - metadata object.
   * `orientation` - int. Image exif orientation.
-  * `state` - [enum](broken-reference). Can be "created", "in\_progress", "uploaded", "deleted".
+  * `state` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "created", "in\_progress", "uploaded", "deleted".
   * `download_url` - string. Actual URL at which file is available. Can be null if file not yet uploaded.
   * `bindings` - all entities to which this file linked.
   * `previews` - available preview images for the file. Can be null or empty for any file in any state.

@@ -9,7 +9,7 @@ description: >-
 
 The `subscribe` and `unsubscribe` actions used by the client's side to subscribe on server\
 events and unsubscribe from them.\
-These actions are similar with any other [API REST actions](broken-reference)\
+These actions are similar with any other [API REST actions](/broken/pages/ZecFmxN0cywjosU1jKcD)\
 but must be sent inside open `WebSocket` channel and use only JSON format for messages between the client and server.
 
 ## Subscribe Action
@@ -24,14 +24,14 @@ second.
 Request parameters:
 
 * `action` required, text: _"subscribe"_.
-* `hash` – required, string, length=32. Session hash code obtained by [user/auth](broken-reference) action.
+* `hash` – required, string, length=32. Session hash code obtained by [user/auth](/broken/pages/A1uF5IK31kKOG3iQqTd8#auth) action.
 * `requests` – required, object array. See requests' structure below.
 
 > **Deprecated!**\
 > These parameters are deprecated and should not be used, please use `requests` instead:
 >
 > * `trackers` – required, int array, without nulls. List of tracker IDs for the events that require a subscription.
-> * `events` – required, [enum](broken-reference) array, without nulls. List of events to subscribe. An event can only be a `state`.
+> * `events` – required, [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) array, without nulls. List of events to subscribe. An event can only be a `state`.
 
 ### The "state\_batch" event subscription
 
@@ -61,7 +61,7 @@ the server will send a list of changed tracker states in the [event message](eve
 * `type` – required, text: _"state\_batch"_. Event type.
 * `target` – required, [target](subscription.md#Request-targets). Trackers to subscribe.
 * `rate_limit` – optional, string. A timespan for batching.
-* `format` – optional, [enum](broken-reference), one of: "full" (default), "compact".
+* `format` – optional, [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types), one of: "full" (default), "compact".
 
 **Request targets:**
 
@@ -98,7 +98,7 @@ the server will send a new state in the [event message](events.md#state-event).
 
 * `type` – required, text: _"state"_. Event type.
 * `trackers` – required, int array. List of tracker ids.
-* `format` – optional, [enum](broken-reference), one of: "full" (default), "compact".
+* `format` – optional, [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types), one of: "full" (default), "compact".
 
 ### The "readings\_batch" event subscription
 
@@ -180,7 +180,7 @@ Response parameters:
 
 * `type` – required, text: _"response"_.
 * `action` – required, text: _"subscription/subscribe"_.
-* `events` – required, array of [enum](broken-reference), without nulls. List of the subscribed events types ("", "" or "iot\_monitor").
+* `events` – required, array of [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types), without nulls. List of the subscribed events types ("", "" or "iot\_monitor").
 * `data` – required, map \<string, object>. Map with events subscription result. One key per subscribed event.
   * `state` – present if the "state" subscription requested, see sub response below.
   * `state_batch` – present if the "state\_batch" subscription requested, see sub response below.

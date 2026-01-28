@@ -17,9 +17,9 @@ Information about all supported timezones for the specified locale. Does not req
 
 #### parameter
 
-| name   | description     | type                     |
-| ------ | --------------- | ------------------------ |
-| locale | Name of locale. | [enum](broken-reference) |
+| name   | description     | type                                                  |
+| ------ | --------------- | ----------------------------------------------------- |
+| locale | Name of locale. | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
 #### Example
 

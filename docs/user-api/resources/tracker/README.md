@@ -49,8 +49,8 @@ This document contains tracker object structure and API calls to interact with i
   * `blocked` - boolean. `true` if tracker blocked due to tariff end.
   * `tariff_id` - int. An ID of tracker tariff from "main\_tariffs" table.
   * `status_listing_id` - int. An ID of the status listing associated with this tracker, or null.
-  * `creation_date` - [date/time](broken-reference). Date when the tracker registered.
-  * `tariff_end_date` - [date/time](broken-reference). Date of next tariff prolongation, or null.
+  * `creation_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when the tracker registered.
+  * `tariff_end_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of next tariff prolongation, or null.
   * `phone` - string. Phone of the device. Can be null or empty if device has no GSM module or uses bundled SIM which number hidden from the user.
 * `tag_binding` - object. List of attached tags. Appears only for [tracker/list](./#list) call.
   * `tag_id` - int. An ID of tag. Must be unique for a tracker.
@@ -450,21 +450,21 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_diagnostics' \
 }
 ```
 
-* `user_time` - [date/time](broken-reference). Current time in user's timezone.
+* `user_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Current time in user's timezone.
 * `inputs` - list of `sensor value` objects.
   * `label` - string. Sensor's label. E.g. "Sensor #1".
-  * `name` - [enum](broken-reference). Name of sensor's raw input.
-  * `type` - [enum](broken-reference). Type of quantity, measured by a sensor.
+  * `name` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Name of sensor's raw input.
+  * `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Type of quantity, measured by a sensor.
   * `value` - float. Reading's value, measured in units from an eponymous field. E.g. 100.0.
-  * `units_type` - [enum](broken-reference). Unit of measurement of input to the sensor.
+  * `units_type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Unit of measurement of input to the sensor.
   * `units` - string. User label for sensor's units.
-  * `converted_units_type` - [enum](broken-reference). Unit of measurement system preferred by current user\
+  * `converted_units_type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Unit of measurement system preferred by current user\
     (according to user/settings), suitable for this sensor. Can be null, if there is no need in\
     conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
   * `converted_value` - float. Reading's value in units from field `converted_units_type`.\
     Can be null if there is no need in conversion.
 * `states` - map of last state values or null (see below).
-* `update_time` - [date/time](broken-reference). Date and time when the data updated.
+* `update_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time when the data updated.
 
 List of available sensor's input names for the object `sensor value`:
 
@@ -581,7 +581,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_fuel' \
 }
 ```
 
-* `user_time` - [date/time](broken-reference). Current time in user's timezone.
+* `user_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Current time in user's timezone.
 * `inputs` - array of last readings of fuel-related sensors. Items are object listed below.
 
 List of available sensor's input names for the object `sensor value`:
@@ -595,7 +595,7 @@ List of available sensor's input names for the object `sensor value`:
 * **can\_fuel\_2** (fuel level in percents or in unknown units).
 * **can\_fuel\_litres** (fuel level in litres).
 * **can\_fuel\_economy** (fuel economy in km/litres).
-* `update_time` - [date/time](broken-reference). Date and time when the data updated.
+* `update_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time when the data updated.
 
 #### Errors
 
@@ -652,15 +652,15 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_inputs' \
 }
 ```
 
-* `user_time` - [date/time](broken-reference). Current time in user's timezone.
+* `user_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Current time in user's timezone.
 * `inputs` - array (boolean) of states of all digital inputs. `[true, true, false]` means input 1 is on,\
   input 2 is on, input 3 is off.
 * `states` - array of state objects.
-  * `type` - [enum](broken-reference). One of predefined semantic [input types](./#tracker-input-types)
+  * `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). One of predefined semantic [input types](./#tracker-input-types)
   * `name` - string. User-defined name for semantic input, or null if not specified.
   * `status` - boolean. True if input is active, false otherwise.
   * `input_number` - int. Number of the associated discrete input.
-* `update_time` - [date/time](broken-reference). Date and time when the data updated.
+* `update_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time when the data updated.
 
 #### Errors
 
@@ -710,7 +710,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/batch_get_inputs' \
 }
 ```
 
-* `user_time` - [date/time](broken-reference). Current time in user's timezone.
+* `user_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Current time in user's timezone.
 * `data` - object. Input info mapped to tracker ids.
 
 Input info:
@@ -733,11 +733,11 @@ Input info:
 * `inputs` - array (boolean) of states of all digital inputs. `[true, true, false]` means input 1 is on,\
   input 2 is on, input 3 is off.
 * `states` - array of state objects.
-  * `type` - [enum](broken-reference). One of predefined semantic [input types](./#tracker-input-types)
+  * `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). One of predefined semantic [input types](./#tracker-input-types)
   * `name` - string. User-defined name for semantic input, or null if not specified.
   * `status` - boolean. True if input is active, false otherwise.
   * `input_number` - int. Number of the associated discrete input.
-* `update_time` - [date/time](broken-reference). Date and time when the data updated.
+* `update_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time when the data updated.
 
 #### Errors
 
@@ -922,7 +922,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_last_gps_point' \
 ```
 
 * `value` - track point object.
-  * `get_time` - [date/time](broken-reference). GPS timestamp of the point, in user's timezone.
+  * `get_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). GPS timestamp of the point, in user's timezone.
   * `heading` - int. Direction bearing in degrees (0-360).
   * `lat` - float. Latitude.
   * `lng` - float. Longitude.
@@ -991,20 +991,20 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_readings' \
 }
 ```
 
-* `user_time` - [date/time](broken-reference). Current time in user's timezone.
+* `user_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Current time in user's timezone.
 * `inputs` - list of `sensor value` objects. See below.
   * `label` - string. Sensor's label. E.g. "Sensor #1".
-  * `name` - [enum](broken-reference). Name of sensor's raw input.
-  * `type` - [enum](broken-reference). Type of quantity, measured by a sensor.
+  * `name` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Name of sensor's raw input.
+  * `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Type of quantity, measured by a sensor.
   * `value` - float. Reading's value, measured in units from an eponymous field. E.g. 100.0.
-  * `units_type` - [enum](broken-reference). Unit of measurement of input to the sensor.
+  * `units_type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Unit of measurement of input to the sensor.
   * `units` - string. User label for sensor's units.
-  * `converted_units_type` - [enum](broken-reference). Unit of measurement system preferred by current user\
+  * `converted_units_type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Unit of measurement system preferred by current user\
     (according to user/settings), suitable for this sensor. Can be null, if there is no need in\
     conversion (unit of sensor's input (field `units_type`) belongs to user's measurement system).
   * `converted_value` - float. Reading's value in units from field `converted_units_type`.\
     Can be null if there is no need in conversion.
-* `update_time` - [date/time](broken-reference). Date and time when the data updated.
+* `update_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time when the data updated.
 
 List of available sensor's input names for the object `sensor value`:
 
@@ -1101,10 +1101,10 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_state' \
 }
 ```
 
-* `user_time` - [date/time](broken-reference). Current time in user's timezone.
+* `user_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Current time in user's timezone.
 * `source_id` - int. Tracker data source ID (from "sources" table).
 * `gps` - gps object.
-  * `updated` - [date/time](broken-reference). Date of last gps coordinates update in a timezone of the user or null if there are\
+  * `updated` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of last gps coordinates update in a timezone of the user or null if there are\
     no updates.
   * `signal_level` - int. GPS signal level in percent, e.g. 25, or null if device cannot provide such info.
   * `lat` - float. Latitude.
@@ -1114,32 +1114,32 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_state' \
   * `alt` - int. Altitude in meters, e.g. 10.
   * `precision` - int. Optional. Precision in meters.
   * `gsm_lbs` - boolean. Optional. True if location detected by GSM LBS.
-* `connection_status` - [enum](broken-reference). Device connection status, possible values: "signal\_lost",\
+* `connection_status` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Device connection status, possible values: "signal\_lost",\
   "just\_registered", "just\_replaced", "offline", "idle", "active".
-* `movement_status` - [enum](broken-reference). Movement status, possible values: "moving", "stopped", "parked".
-* `movement_status_update` - [date/time](broken-reference). The date and time when the movement status was last changed or null if there are no changes.
+* `movement_status` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Movement status, possible values: "moving", "stopped", "parked".
+* `movement_status_update` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). The date and time when the movement status was last changed or null if there are no changes.
 * `ignition` - boolean. Optional. State of vehicle’s or virtual ignition sensor.
-* `ignition_update` - [date/time](broken-reference). Optional. The date and time when the ignition state was last changed.
+* `ignition_update` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Optional. The date and time when the ignition state was last changed.
 * `gsm` - object. Can be null if device does not support transmission of gsm info.
-  * `updated` - [date/time](broken-reference). Date of last gsm status update in a timezone of the user or null if there are no updates.
+  * `updated` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of last gsm status update in a timezone of the user or null if there are no updates.
   * `signal_level` - int. GSM signal level in percent, e.g. 25, or null if device cannot provide such info.
   * `network_name` - string. GSM network name, e.g. "T-MOBILE", or null if device cannot provide such info.
   * `roaming` - boolean. Roaming state, or null if device cannot provide such info.
-* `last_update` - [date/time](broken-reference). Date of last device state update in a timezone of the user or null if there are no updates.
+* `last_update` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of last device state update in a timezone of the user or null if there are no updates.
 * `battery_level` - int. Battery level in percent, e.g. 25, or null if device cannot provide such info.
-* `battery_update` - [date/time](broken-reference). Date of last battery update in a timezone of the user or null if there are no updates.
+* `battery_update` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of last battery update in a timezone of the user or null if there are no updates.
 * `inputs` - array of boolean. States of all digital inputs. `[true, true, false]` means input 1 is on, input 2 is on,\
   input 3 is off.
-* `inputs_update` - [date/time](broken-reference). Date of last inputs update in a timezone of the user or null if there are no updates.
+* `inputs_update` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of last inputs update in a timezone of the user or null if there are no updates.
 * `outputs` - array of boolean. States of all digital outputs. `[true, true, false]` means output 1 is on,\
   output 2 is on, output 3 is off.
-* `outputs_update` - [date/time](broken-reference). Date of last outputs update in a timezone of the user or null if there are no updates.
+* `outputs_update` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of last outputs update in a timezone of the user or null if there are no updates.
 * `additional` - object. map of additional states, keys depends on tracker model.
   * `hardware_key` - last scanned hardware key object.
     * `value` - int. Hardware key.
-    * `updated` - [date/time](broken-reference). Date of last hardware key update in a timezone of the user or null if\
+    * `updated` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of last hardware key update in a timezone of the user or null if\
       there are no updates.
-* `actual_track_update` - [date/time](broken-reference). When the last track was updated last time, when device last time moved.
+* `actual_track_update` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When the last track was updated last time, when device last time moved.
 
 #### Errors
 
@@ -1237,7 +1237,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/get_states' \
 }
 ```
 
-* `user_time` - [date/time](broken-reference). Current time in user's timezone.
+* `user_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Current time in user's timezone.
 * `states` - object. A map containing state objects for requested trackers, where the key is the tracker ID\
   and the value is the state (see state object description in [tracker/get\_state](./#get_state) response).
 * `blocked` - array of tracker IDs. Returned only if list\_blocked=`true`.
@@ -1387,7 +1387,7 @@ curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
 * `vendor` - string. Vendor name.
 * `code` - string. Model text code
 * `parent_code` - string. Can be null.
-* `type` - [enum](broken-reference). Can be "logger", "portable", "vehicle", or "personal".
+* `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "logger", "portable", "vehicle", or "personal".
 * `name` - string. Model name.
 * `id_type` - string. Identifier type see description below.
 * `has_phone` - boolean. `true` if the tracker has phone.
@@ -1410,13 +1410,13 @@ curl -X POST '{{ extra.api_example_url }}/tracker/list_models' \
 * `digital_inputs` - int. Number of digital inputs.
 * `digital_outputs` - int. Number of digital outputs.
 * `rs232_inputs` - int. Number of RS232 inputs.
-* `output_control` - [enum](broken-reference). Can be "none", "default", "batch", "stateless", "async", "async\_offline" or "batch\_async".
+* `output_control` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "none", "default", "batch", "stateless", "async", "async\_offline" or "batch\_async".
 * `special_control` - string. Additional specific types of tracker control (see [settings/special](settings/special/index.md)). If multiple are separated by commas.
-* `inputs` - array of [enum](broken-reference). All available input types.
-* `state_fields` - array of [enum](broken-reference). All available state fields.
-* `rules` - array of [enum](broken-reference). Supported rules.
-* `special_settings` - array of [enum](broken-reference). Additional specific types of tracker control (see [settings/special](settings/special/index.md)).
-* `sms_control` - array of [enum](broken-reference). Supported SMS control commands.
+* `inputs` - array of [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). All available input types.
+* `state_fields` - array of [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). All available state fields.
+* `rules` - array of [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Supported rules.
+* `special_settings` - array of [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Additional specific types of tracker control (see [settings/special](settings/special/index.md)).
+* `sms_control` - array of [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Supported SMS control commands.
 * `has_led_control` - boolean. `true` if a switching LED supported by this tracker.
 * `has_location_request` - boolean. `true` if the tracker has an opportunity to request a location with a command by SMS.
 * `has_gprs_location_request` - boolean. `true` if the tracker has an opportunity to request a location with a command\
@@ -1499,10 +1499,10 @@ Execute this command to get current position of the device. The device must supp
 
 #### Parameters
 
-| name        | description                                                                                      | type                     | format |
-| ----------- | ------------------------------------------------------------------------------------------------ | ------------------------ | ------ |
-| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                      | 999119 |
-| type        | Optional. Default type `sms`.                                                                    | [enum](broken-reference) | "sms"  |
+| name        | description                                                                                      | type                                                  | format |
+| ----------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ------ |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                                                   | 999119 |
+| type        | Optional. Default type `sms`.                                                                    | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) | "sms"  |
 
 Request types:
 
@@ -2118,7 +2118,7 @@ This command used to seal/unseal electronic lock.
 }
 ```
 
-* `command_code` - [enum](broken-reference). Can be "seal" or "unseal".
+* `command_code` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "seal" or "unseal".
 * `special_settings` - This command is equivalent to API call [tracker/settings/special/update](settings/special/index.md#update).
 
 ```json

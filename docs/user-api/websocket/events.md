@@ -10,8 +10,8 @@ description: >-
 The server sends an `event message` through the WebSocket channel when an event occurs and client has subscription on this.\
 All event messages contain the next fields:
 
-* `type` – [enum](broken-reference). "event".
-* `event` – [enum](broken-reference). Can be "state", "state\_batch", "readings\_batch", "lifecycle", or "logout".
+* `type` – [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). "event".
+* `event` – [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "state", "state\_batch", "readings\_batch", "lifecycle", or "logout".
 * `data` – optional object. Specific event payload.
 
 ## State event

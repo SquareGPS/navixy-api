@@ -26,7 +26,7 @@ Gets route points using Google Directions API.
 | waypoints    | Optional. List of transitional points. `[{locationA},{locationN}]`.                                              | array of JSON objects |
 | point\_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int                   |
 
-Where **location** described in [data types description section](broken-reference).
+Where **location** described in [data types description section](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types).
 
 #### Example
 
@@ -94,7 +94,7 @@ curl -X POST '{{ extra.api_example_url }}/route/google/get' \
 }
 ```
 
-* `errors` - [enum](broken-reference) array. Status.
+* `errors` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) array. Status.
   * `OVER_QUERY_LIMIT` – indicates the service has received too many requests from your application within the\
     allowed time period.
   * `REQUEST_DENIED` – indicates that the service denied use of the directions service by your application.
@@ -114,7 +114,7 @@ curl -X POST '{{ extra.api_example_url }}/route/google/get' \
 }
 ```
 
-* `errors` - [enum](broken-reference) array. Status.
+* `errors` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) array. Status.
   * `NOT_FOUND` – indicates at least one of the locations specified in the request's origin, destination, or\
     waypoints could not be geocoded.
   * `ZERO_RESULTS` – indicates no route could be found between the origin and destination.

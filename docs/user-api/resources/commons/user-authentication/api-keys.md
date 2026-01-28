@@ -6,7 +6,7 @@ description: Working with API keys
 # API Keys
 
 The API key is the main thing that is needed for the integration.\
-This is the same as the hash of the user's session gotten by the [auth call](broken-reference),\
+This is the same as the hash of the user's session gotten by the [auth call](/broken/pages/A1uF5IK31kKOG3iQqTd8#auth),\
 only with an infinite lifetime.
 
 Unlike the user's session:
@@ -51,7 +51,7 @@ API path: `/api/key`.
 Creates a new API key.
 
 This call is available only to the master user and only with a standard session\
-obtained using a login/password via [/user/auth](broken-reference).
+obtained using a login/password via [/user/auth](/broken/pages/A1uF5IK31kKOG3iQqTd8#auth).
 
 #### Parameters
 
@@ -105,7 +105,7 @@ curl -X POST '{{ extra.api_example_url }}/api/key/create' \
 Deletes API key.
 
 This call is available only to the master user and only with a standard session\
-obtained using a login/password via [/user/auth](broken-reference).
+obtained using a login/password via [/user/auth](/broken/pages/A1uF5IK31kKOG3iQqTd8#auth).
 
 #### Parameters
 

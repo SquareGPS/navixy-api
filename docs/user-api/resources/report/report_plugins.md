@@ -380,20 +380,20 @@ default **plugin\_id**: 10.
 
 Plugin-specific parameters:
 
-| name                                  | description                                                                                                                                                                   | type                     |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| show\_seconds                         | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean                  |
-| graph\_type                           | The type of X-axis. Can be "time" or "mileage".                                                                                                                               | [enum](broken-reference) |
-| detailed\_by\_dates                   | If `true`, show final data on fuel traffic for each day in the period.                                                                                                        | boolean                  |
-| include\_summary\_sheet\_only         | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean                  |
-| include\_summary\_sheet               | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                            | boolean                  |
-| use\_ignition\_data\_for\_consumption | Calculate consumption only when the ignition was on if `true`.                                                                                                                | boolean                  |
-| include\_mileage\_plot                | Optional. Used if `graph_type = time`. Show mileage plot if `true`.                                                                                                           | boolean                  |
-| filter                                | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                  |
-| include\_speed\_plot                  | If `true`, show speed plot.                                                                                                                                                   | boolean                  |
-| smoothing                             | Smooth graph if `true`. Smoothing reduces the accuracy of calculating refills or drains.                                                                                      | boolean                  |
-| surge\_filter                         | If `true`, enables surge filter.                                                                                                                                              | boolean                  |
-| surge\_filter\_threshold              | Defines a level of surge filter. Can be 0.01 - 0.99.                                                                                                                          | float                    |
+| name                                  | description                                                                                                                                                                   | type                                                  |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| show\_seconds                         | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean                                               |
+| graph\_type                           | The type of X-axis. Can be "time" or "mileage".                                                                                                                               | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| detailed\_by\_dates                   | If `true`, show final data on fuel traffic for each day in the period.                                                                                                        | boolean                                               |
+| include\_summary\_sheet\_only         | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean                                               |
+| include\_summary\_sheet               | If `true`, report will contain a summary sheet. Default is `true`.                                                                                                            | boolean                                               |
+| use\_ignition\_data\_for\_consumption | Calculate consumption only when the ignition was on if `true`.                                                                                                                | boolean                                               |
+| include\_mileage\_plot                | Optional. Used if `graph_type = time`. Show mileage plot if `true`.                                                                                                           | boolean                                               |
+| filter                                | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                                               |
+| include\_speed\_plot                  | If `true`, show speed plot.                                                                                                                                                   | boolean                                               |
+| smoothing                             | Smooth graph if `true`. Smoothing reduces the accuracy of calculating refills or drains.                                                                                      | boolean                                               |
+| surge\_filter                         | If `true`, enables surge filter.                                                                                                                                              | boolean                                               |
+| surge\_filter\_threshold              | Defines a level of surge filter. Can be 0.01 - 0.99.                                                                                                                          | float                                                 |
 
 #### plugin example
 
@@ -452,14 +452,14 @@ default **plugin\_id**: 22.
 
 Plugin-specific parameters:
 
-| name                       | description                                                          | type                     |
-| -------------------------- | -------------------------------------------------------------------- | ------------------------ |
-| hide\_empty\_tabs          | If `true`, empty tabs will be hidden.                                | boolean                  |
-| details\_interval\_seconds | The interval in seconds. From 30 to 21600.                           | int                      |
-| details\_interval\_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`. | int                      |
-| graph\_type                | The type of X-axis. Can be "time" or "mileage".                      | [enum](broken-reference) |
-| smoothing                  | Smooth data if `true`.                                               | boolean                  |
-| sensors                    | List of objects containing tracker\_id and sensor\_id.               | array of objects         |
+| name                       | description                                                          | type                                                  |
+| -------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------- |
+| hide\_empty\_tabs          | If `true`, empty tabs will be hidden.                                | boolean                                               |
+| details\_interval\_seconds | The interval in seconds. From 30 to 21600.                           | int                                                   |
+| details\_interval\_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`. | int                                                   |
+| graph\_type                | The type of X-axis. Can be "time" or "mileage".                      | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| smoothing                  | Smooth data if `true`.                                               | boolean                                               |
+| sensors                    | List of objects containing tracker\_id and sensor\_id.               | array of objects                                      |
 
 * `sensors` is:
 
@@ -587,16 +587,16 @@ default **plugin\_id**: 9.
 
 Plugin-specific parameters:
 
-| name                       | description                                                                                                                                                                  | type                     |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| hide\_empty\_tabs          | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean                  |
-| details\_interval\_seconds | The interval in seconds. From 30 to 21600.                                                                                                                                   | int                      |
-| details\_interval\_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`.                                                                                                         | int                      |
-| graph\_type                | The type of X-axis. Can be "time" or "mileage".                                                                                                                              | [enum](broken-reference) |
-| smoothing                  | Smooth data if `true`.                                                                                                                                                       | boolean                  |
-| show\_address              | Address of each reading appears in report if `true`.                                                                                                                         | boolean                  |
-| filter                     | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                  |
-| sensors                    | List of objects containing tracker\_id and sensor\_id.                                                                                                                       | array of objects         |
+| name                       | description                                                                                                                                                                  | type                                                  |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| hide\_empty\_tabs          | If `true`, empty tabs will be hidden.                                                                                                                                        | boolean                                               |
+| details\_interval\_seconds | The interval in seconds. From 30 to 21600.                                                                                                                                   | int                                                   |
+| details\_interval\_minutes | Deprecated! The interval in minutes. Can be `[5, 30, 60, 180, 360]`.                                                                                                         | int                                                   |
+| graph\_type                | The type of X-axis. Can be "time" or "mileage".                                                                                                                              | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| smoothing                  | Smooth data if `true`.                                                                                                                                                       | boolean                                               |
+| show\_address              | Address of each reading appears in report if `true`.                                                                                                                         | boolean                                               |
+| filter                     | If `true`,short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                                               |
+| sensors                    | List of objects containing tracker\_id and sensor\_id.                                                                                                                       | array of objects                                      |
 
 * `sensors` is:
 
@@ -824,14 +824,14 @@ default **plugin\_id**: 73.
 
 Plugin-specific parameters:
 
-| name                          | description                                                                                                                                                                   | type                     |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| hide\_empty\_tabs             | If `true`, empty tabs will be hidden.                                                                                                                                         | boolean                  |
-| show\_seconds                 | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean                  |
-| filter                        | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                  |
-| include\_summary\_sheet\_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean                  |
-| include\_summary\_sheet       | If `true`, the report will contain a summary sheet. Default is `true`.                                                                                                        | boolean                  |
-| group\_type                   | A group type. Can be "province" or "country".                                                                                                                                 | [enum](broken-reference) |
+| name                          | description                                                                                                                                                                   | type                                                  |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| hide\_empty\_tabs             | If `true`, empty tabs will be hidden.                                                                                                                                         | boolean                                               |
+| show\_seconds                 | If `true`, timestamps will be with seconds.                                                                                                                                   | boolean                                               |
+| filter                        | If `true`, short trips will not coincide (shorter than 300m/have less than 4 points total and if the device circles around one point (e.g., star pattern from GPS drifting)). | boolean                                               |
+| include\_summary\_sheet\_only | If `true`, report will contain only a summary sheet for all chosen devices.                                                                                                   | boolean                                               |
+| include\_summary\_sheet       | If `true`, the report will contain a summary sheet. Default is `true`.                                                                                                        | boolean                                               |
+| group\_type                   | A group type. Can be "province" or "country".                                                                                                                                 | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
 #### plugin example
 

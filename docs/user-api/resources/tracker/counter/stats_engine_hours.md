@@ -19,11 +19,11 @@ Returns engine hours counted for the specified period.
 
 #### Parameters
 
-| name        | description                                                                                      | type                          | format                |
-| ----------- | ------------------------------------------------------------------------------------------------ | ----------------------------- | --------------------- |
-| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                           | 123456                |
-| from        | From date/time.                                                                                  | [date/time](broken-reference) | "2020-09-24 03:24:00" |
-| to          | To date/time. Specified date must be after "from" date.                                          | [date/time](broken-reference) | "2020-09-24 06:24:00" |
+| name        | description                                                                                      | type                                                             | format                |
+| ----------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- | --------------------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                                                              | 123456                |
+| from        | From date/time.                                                                                  | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats) | "2020-09-24 03:24:00" |
+| to          | To date/time. Specified date must be after "from" date.                                          | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats) | "2020-09-24 06:24:00" |
 
 #### Examples
 

@@ -80,16 +80,16 @@ Described step-by-step about service task APIs in our [guides](../../../guides/f
 * `id` - int. An ID of service work.
 * `repeat` - boolean. If `true` then new task will be created when current task done.
 * `unplanned` - boolean. If `true` service work is unplanned. For information only.
-* `completion_date` - [date/time](broken-reference). Date when a service work completed.
+* `completion_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when a service work completed.
 * `vehicle_id` - int. An ID of associated vehicle.
 * `cost` - float. Cost in the currency of the user. For information only.
 * `start` - object. Consists initial values.
   * `mileage` - int. Initial odometer value for tasks with mileage condition.
-  * `date` - [date/time](broken-reference). Task creation date for tasks with date condition.
+  * `date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Task creation date for tasks with date condition.
   * `engine_hours` - int. Initial engine hours value for tasks with engine hours condition.
 * `completion` - object. Date and counter's values when the task marked as done. Non-editable.
   * `mileage` - int. Odometer value when the task marked as done.
-  * `date` - [date/time](broken-reference). Date when the task marked as done.
+  * `date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when the task marked as done.
   * `engine_hours` - int. Engine hours value when the task marked as done.
 * `conditions` - task end conditions. At least one of fields ("mileage" or "date" or "engine\_hours") must be passed.
   * `mileage` - optional object. Mileage condition.
@@ -97,7 +97,7 @@ Described step-by-step about service task APIs in our [guides](../../../guides/f
     * `notification_interval` - int. Notify about task in specified number of kilometers.
     * `repeat_interval` - int. Interval in kilometers to set `limit` for a new repeatable task when current one is completed. If this parameter is not set, the initial `limit` value will be used.
   * `date` - optional date condition object.
-    * `end` - [date/time](broken-reference). Task end date.
+    * `end` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Task end date.
     * `notification_interval` - int. Notify about task in specified number of days.
     * `repeat_interval` - int. Interval in days to calculate a new end date for repeatable tasks when they are completed. If this parameter is not specified, the interval will be calculated as the difference between the start date and the end date.
   * `engine_hours` - optional engine hours condition object.
@@ -108,18 +108,18 @@ Described step-by-step about service task APIs in our [guides](../../../guides/f
   * `sms_phones` - string array. Phones where sms notifications should be sent. In the international format without `+` sign.
   * `emails` - string array. Email addresses where sms notifications should be sent.
   * `push_enabled` - boolean. If `true` push notifications enabled.
-* `status` - [enum](broken-reference). [Status](./#task-status).
+* `status` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). [Status](./#task-status).
 * `description` - string. Name of a service work. Max 255 characters.
 * `comment` - string. Comment for a task. Max 255 characters.
 * `file_ids` - int array. One file will be specified in many service works. If one of the tasks will be deleted,\
   then file will remain in others. File will be deleted only when the last task with it will be deleted.
 * `vehicle_label` - string. Vehicle label.
 * `prediction` - optional object. Legacy field, is not used anymore. check return\_prediction parameter.
-  * `end_date` - [date/time](broken-reference). Predicted end date.
+  * `end_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Predicted end date.
   * `wear_percentage` - int. Wear percentage.
 * `current_position` - object. Current position values.
   * `mileage` - int. Current mileage.
-  * `date` - [date/time](broken-reference). Current date.
+  * `date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Current date.
   * `engine_hours` - int. Current engine hours.
 
 ## Task status
@@ -196,7 +196,7 @@ A `task` object is:
     * `notification_interval` - int. Notify about task in specified number of kilometers.
     * `repeat_interval` - int. Interval in kilometers to set `limit` for a new repeatable task when current one is completed. If this parameter is not set, the initial `limit` value will be used.
   * `date` - optional date condition object.
-    * `end` - [date/time](broken-reference). Task end date.
+    * `end` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Task end date.
     * `notification_interval` - int. Notify about task in specified number of days.
     * `repeat_interval` - int. Interval in days to calculate a new end date for repeatable tasks when they are completed. If this parameter is not specified, the interval will be calculated as the difference between the start date and the end date.
   * `engine_hours` - optional engine hours condition object.
@@ -298,7 +298,7 @@ A `task` object is:
     * `notification_interval` - int. Notify about task in specified number of kilometers.
     * `repeat_interval` - int. Interval in kilometers to set `limit` for a new repeatable task when current one is completed. If this parameter is not set, the initial `limit` value will be used.
   * `date` - optional date condition object.
-    * `end` - [date/time](broken-reference). Task end date.
+    * `end` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Task end date.
     * `notification_interval` - int. Notify about task in specified number of days.
     * `repeat_interval` - int. Interval in days to calculate a new end date for repeatable tasks when they are completed. If this parameter is not specified, the interval will be calculated as the difference between the start date and the end date.
   * `engine_hours` - optional engine hours condition object.
@@ -397,15 +397,15 @@ Downloads report of service works.
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
 | only\_unplanned       | Optional. Default is `false`. Service works filter. If `true`, only unplanned service works will be included.                                          | boolean                                                       |
 | vehicle\_ids          | Optional. Service works filter. If not empty, service works will be filtered by vehicle ids.                                                           | int array                                                     |
-| statuses              | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired". | [enum](broken-reference)                                      |
+| statuses              | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired". | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)         |
 | conditions            | Optional. [Search conditions](./#condition-fields) to apply to list.                                                                                   | array of [SearchCondition](../../entity/search_conditions.md) |
 | filter                | Optional. Text filter string. If used with conditions, both filter and conditions must match for every returned service task.                          | string                                                        |
 | sort                  | Optional. Set of [sort options](./#sort-fields). Each option is a pair of property name and sorting direction, e.g. `["status=asc", "cost=desc"]`.     | string array                                                  |
 | limit                 | Optional. Maximum number of returned service works.                                                                                                    | int                                                           |
 | offset                | Optional. Offset from start of found service works for pagination.                                                                                     | int                                                           |
 | add\_filename\_header | Optional. Option to include header. Default is `false`. If `true`, Content-Disposition header will be appended to the response.                        | boolean                                                       |
-| format                | Optional. Default is "pdf". Report format. Possible values are "pdf", "xls","xlsx".                                                                    | [enum](broken-reference)                                      |
-| group\_by             | Optional. Group by option. Possible values are "vehicle", "status".                                                                                    | [enum](broken-reference)                                      |
+| format                | Optional. Default is "pdf". Report format. Possible values are "pdf", "xls","xlsx".                                                                    | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)         |
+| group\_by             | Optional. Group by option. Possible values are "vehicle", "status".                                                                                    | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)         |
 
 #### Examples
 
@@ -445,7 +445,7 @@ List all service works of all user vehicles.
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | only\_unplanned       | Optional. Default is `false`. Service works filter. If `true`, only unplanned service works will be included.                                                  | boolean                                                       |
 | vehicle\_ids          | Optional. Service works filter. If not empty, service works will be filtered by vehicle ids.                                                                   | int array                                                     |
-| statuses              | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired".         | [enum](broken-reference)                                      |
+| statuses              | Optional. Service works filter. If not empty, service works will be filtered by statuses. Possible values are "created", "notified","done", "expired".         | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)         |
 | conditions            | Optional. Search conditions to apply to list. Possible fields listed below.                                                                                    | array of [SearchCondition](../../entity/search_conditions.md) |
 | filter                | Optional. Text filter string. If used with conditions, both filter and conditions must match for every returned service task.                                  | string                                                        |
 | sort                  | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["status=asc", "cost=desc"]`. Possible fields listed below. | string array                                                  |
@@ -456,30 +456,30 @@ List all service works of all user vehicles.
 
 **condition fields**
 
-| Name            | Type                          |
-| --------------- | ----------------------------- |
-| vehicle         | string                        |
-| vehicle\_id     | int                           |
-| description     | string                        |
-| comment         | string                        |
-| creation\_date  | [date/time](broken-reference) |
-| status          | string                        |
-| cost            | float                         |
-| predicted\_date | [date/time](broken-reference) |
+| Name            | Type                                                       |
+| --------------- | ---------------------------------------------------------- |
+| vehicle         | string                                                     |
+| vehicle\_id     | int                                                        |
+| description     | string                                                     |
+| comment         | string                                                     |
+| creation\_date  | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| status          | string                                                     |
+| cost            | float                                                      |
+| predicted\_date | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
 **sort fields**
 
-| Name            | Type                          |
-| --------------- | ----------------------------- |
-| id              | int                           |
-| vehicle         | string                        |
-| vehicle\_id     | int                           |
-| description     | string                        |
-| comment         | string                        |
-| creation\_date  | [date/time](broken-reference) |
-| status          | string                        |
-| cost            | float                         |
-| predicted\_date | [date/time](broken-reference) |
+| Name            | Type                                                       |
+| --------------- | ---------------------------------------------------------- |
+| id              | int                                                        |
+| vehicle         | string                                                     |
+| vehicle\_id     | int                                                        |
+| description     | string                                                     |
+| comment         | string                                                     |
+| creation\_date  | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| status          | string                                                     |
+| cost            | float                                                      |
+| predicted\_date | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
 #### Examples
 
@@ -570,10 +570,10 @@ Updates task status, and saved (on `done` **status**) current date and values of
 
 #### Parameters
 
-| name     | description                                            | type                     |
-| -------- | ------------------------------------------------------ | ------------------------ |
-| task\_id | ID of service work.                                    | int                      |
-| status   | A new task status. Only `done` status allowed for now. | [enum](broken-reference) |
+| name     | description                                            | type                                                  |
+| -------- | ------------------------------------------------------ | ----------------------------------------------------- |
+| task\_id | ID of service work.                                    | int                                                   |
+| status   | A new task status. Only `done` status allowed for now. | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
 #### Examples
 
@@ -672,7 +672,7 @@ A `task` object is:
     * `notification_interval` - int. Notify about task in specified number of kilometers.
     * `repeat_interval` - int. Interval in kilometers to set `limit` for a new repeatable task when current one is completed. If this parameter is not set, the initial `limit` value will be used.
   * `date` - optional date condition object.
-    * `end` - [date/time](broken-reference). Task end date.
+    * `end` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Task end date.
     * `notification_interval` - int. Notify about task in specified number of days.
     * `repeat_interval` - int. Interval in days to calculate a new end date for repeatable tasks when they are completed. If this parameter is not specified, the interval will be calculated as the difference between the start date and the end date.
   * `engine_hours` - optional engine hours condition object.

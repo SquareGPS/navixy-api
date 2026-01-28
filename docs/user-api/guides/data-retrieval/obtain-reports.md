@@ -8,11 +8,11 @@ To receive data for processing, you first need to generate the report. This can 
 
 Necessary parameters for this call:
 
-* `from` - A string containing [date/time](broken-reference). Data in the report will be from this moment.
-* `to` - A string containing [date/time](broken-reference). The specified date must be after the `from` date. Data in the report will be up to this moment.
+* `from` - A string containing [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats). Data in the report will be from this moment.
+* `to` - A string containing [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats). The specified date must be after the `from` date. Data in the report will be up to this moment.
 * `title` - Report title. If null, the default title will be used.
 * `trackers` - List of [tracker IDs](../../backend-api/guides/data-retrieval/broken-reference/) to be included in the report (if the report is by trackers).
-* `employees` - List of [employee IDs](broken-reference) to be included in the report (if the report is by employees).
+* `employees` - List of [employee IDs](/broken/pages/S9i1WeKcwF2eXC6DRKOk#list) to be included in the report (if the report is by employees).
 * `time_filter` - An object containing daily time and weekday limits for processed data, e.g., `{"to":"18:00", "from":"12:00", "weekdays":[1,2,3,4,5]}`.
 * `plugin` - A plugin object. See the list of all [report plugins](../../resources/report/report_plugins.md).
 

@@ -53,7 +53,7 @@ Sub-user object is almost identical to usual user.
 * `first_name` - string. Sub-user's or contact person first name.
 * `middle_name` - string. Sub-user's or contact person middle name.
 * `last_name` - string. Sub-user's or contact person last name.
-* `legal_type` - [enum](broken-reference). Can bed "legal\_entity", "individual" or "sole\_trader".
+* `legal_type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can bed "legal\_entity", "individual" or "sole\_trader".
 * `phone` - string. Sub-user's or contact phone (10-15 digits).
 * `post_country` - string. Country part of sub-user's post address.
 * `post_index` - string. Index part of sub-user's post address.
@@ -71,7 +71,7 @@ Sub-user object is almost identical to usual user.
 * `iec` - optional string. Industrial Enterprises Classifier aka "KPP" (used in Russia. For "legal\_entity" only).
 * `security_group_id` - int. An ID of the security group to which sub-user belongs to. Can be null, which means default\
   group with no privileges.
-* `creation_date` - [date/time](broken-reference). Date and time when sub-user was created. This field is read-only, it should not be\
+* `creation_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time when sub-user was created. This field is read-only, it should not be\
   used in subuser/update.
 
 ## API actions

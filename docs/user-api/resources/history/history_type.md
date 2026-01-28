@@ -19,10 +19,10 @@ Returns available history event types with localized descriptions.
 
 #### Parameters
 
-| name                  | description                                                                  | type                     |
-| --------------------- | ---------------------------------------------------------------------------- | ------------------------ |
-| locale                | Locale code to set language of descriptions.                                 | [enum](broken-reference) |
-| only\_tracker\_events | Optional. Default is `true`. Will return only tracker type events if `true`. | boolean                  |
+| name                  | description                                                                  | type                                                  |
+| --------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------- |
+| locale                | Locale code to set language of descriptions.                                 | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| only\_tracker\_events | Optional. Default is `true`. Will return only tracker type events if `true`. | boolean                                               |
 
 #### Example
 

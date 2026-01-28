@@ -248,9 +248,9 @@ Gets all POI IDs and names within which a specified coordinates are located insi
 
 #### Parameters
 
-| name     | description                                                                             | type        |
-| -------- | --------------------------------------------------------------------------------------- | ----------- |
-| location | Location coordinates (see: [data types description section](broken-reference) section). | JSON object |
+| name     | description                                                                                                          | type        |
+| -------- | -------------------------------------------------------------------------------------------------------------------- | ----------- |
+| location | Location coordinates (see: [data types description section](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) section). | JSON object |
 
 #### Example
 

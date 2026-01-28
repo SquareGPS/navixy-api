@@ -3,7 +3,7 @@ title: Working with geofences
 description: This document contains zone object description and CRUD actions for geofences.
 ---
 
-# Zone
+# Geofence
 
 ## Working with geofences
 
@@ -136,13 +136,13 @@ Convert batch of tab-delimited circle geofences and return list of checked geofe
 
 #### Parameters
 
-| name            | description                                                                                             | type                           |
-| --------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| batch           | Batch of tab-delimited places.                                                                          | string                         |
-| file\_id        | ID of file preloaded with [/data/spreadsheet/parse](../../commons/data.md#dataspreadsheetparse) method. | string                         |
-| fields          | Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "tags"]`.      | [enum](broken-reference) array |
-| geocoder        | Optional. Geocoder type.                                                                                | [enum](broken-reference)       |
-| default\_radius | Optional. Radius for point, default is 100.                                                             | int                            |
+| name            | description                                                                                             | type                                                        |
+| --------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| batch           | Batch of tab-delimited places.                                                                          | string                                                      |
+| file\_id        | ID of file preloaded with [/data/spreadsheet/parse](../../commons/data.md#dataspreadsheetparse) method. | string                                                      |
+| fields          | Optional, array of field names, default is `["label", "address", "lat", "lng", "radius", "tags"]`.      | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) array |
+| geocoder        | Optional. Geocoder type.                                                                                | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)       |
+| default\_radius | Optional. Radius for point, default is 100.                                                             | int                                                         |
 
 If 'file\_id' is set – 'batch' parameter will be ignored.
 
@@ -469,9 +469,9 @@ Gets all geofence IDs and names within which a specified coordinates are located
 
 #### Parameters
 
-| name     | description                                                                             | type        |
-| -------- | --------------------------------------------------------------------------------------- | ----------- |
-| location | Location coordinates (see: [data types description section](broken-reference) section). | JSON object |
+| name     | description                                                                                                          | type        |
+| -------- | -------------------------------------------------------------------------------------------------------------------- | ----------- |
+| location | Location coordinates (see: [data types description section](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) section). | JSON object |
 
 #### Example
 
@@ -717,10 +717,10 @@ Download geofences as KML File.
 
 #### Parameters
 
-| name      | description                                                                           | type                     |
-| --------- | ------------------------------------------------------------------------------------- | ------------------------ |
-| format    | Optional. File format, either "kml" or "kmz". Default is "kml".                       | [enum](broken-reference) |
-| zone\_ids | Optional. Array of geofence IDs. If null, all available geofences will be downloaded. | int array                |
+| name      | description                                                                           | type                                                  |
+| --------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| format    | Optional. File format, either "kml" or "kmz". Default is "kml".                       | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| zone\_ids | Optional. Array of geofence IDs. If null, all available geofences will be downloaded. | int array                                             |
 
 #### Example
 

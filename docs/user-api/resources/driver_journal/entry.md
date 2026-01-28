@@ -40,10 +40,10 @@ To get information on how-to work with driver journals refer to our [instruction
 
 * `id` - int. An ID of an entry.
 * `tracker_id` - int. An ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.
-* `start_date` - [date/time](broken-reference). Start date of a journal entry.
-* `end_date` - [date/time](broken-reference). End date of a journal entry.
+* `start_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Start date of a journal entry.
+* `end_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). End date of a journal entry.
 * `employee_id` - nullable int. An ID of employee (driver).
-* `type` - [enum](broken-reference). Type of journal entry. Can be "work", "personal", "other".
+* `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Type of journal entry. Can be "work", "personal", "other".
 * `comment` - nullable string. Comment for entry.
 * `start_location` - location object. Where entry starts.
 * `end_location` - location object. Where entry ends.
@@ -64,14 +64,14 @@ request (`from` and `to` parameters).
 
 #### Parameters
 
-| name        | description                                                                                                                        | type                          |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.                                   | int                           |
-| from        | Include tracks which end after this date, e.g. "2020-10-13 00:00:00".                                                              | [date/time](broken-reference) |
-| to          | Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                              | [date/time](broken-reference) |
-| entry\_ids  | Optional. Array of entry IDs.                                                                                                      | int array                     |
-| types       | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`.                                                 | string array                  |
-| sort        | Optional. Set of sort options. Each option is a pair of column name and sorting direction, e.g. `["start_date=asc", "type=desc"]`. | string array                  |
+| name        | description                                                                                                                        | type                                                       |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.                                   | int                                                        |
+| from        | Include tracks which end after this date, e.g. "2020-10-13 00:00:00".                                                              | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| to          | Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                              | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| entry\_ids  | Optional. Array of entry IDs.                                                                                                      | int array                                                  |
+| types       | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`.                                                 | string array                                               |
+| sort        | Optional. Set of sort options. Each option is a pair of column name and sorting direction, e.g. `["start_date=asc", "type=desc"]`. | string array                                               |
 
 * Possible columns of `sort` parameter:
   * `start_date` - Sort only by date, not considering time part.
@@ -189,7 +189,7 @@ Updates driver journal entry. Only two fields `type` and `comment` are available
 ```
 
 * `id` - int. An ID of the driver journal entry.
-* `type` - [enum](broken-reference). Type of journal entry. Can be "work", "personal", "other".
+* `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Type of journal entry. Can be "work", "personal", "other".
 * `comment` - string. New comment of the driver journal entry.
 
 #### Example
@@ -267,17 +267,17 @@ and `to` parameters).
 
 #### Parameters
 
-| name                  | description                                                                                                                                         | type                          |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| tracker\_id           | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.                                                    | int                           |
-| from                  | Include tracks which end after this date, e.g. "2020-10-13 00:00:00".                                                                               | [date/time](broken-reference) |
-| to                    | Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                                               | [date/time](broken-reference) |
-| entry\_ids            | Optional. Array of entry IDs.                                                                                                                       | int array                     |
-| types                 | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`.                                                                  | string array                  |
-| sort                  | Optional. Set of [sort options](entry.md#list). Each option is a pair of column name and sorting direction, e.g. `["start_date=asc", "type=desc"]`. | string array                  |
-| add\_filename\_header | If `true` then Content-Disposition header will be appended to the response. Default value is `true`.                                                | boolean                       |
-| format                | File format: "pdf", "xls" and "xlsx".                                                                                                               | string                        |
-| group\_by             | Optional. If specified, grouped entries will be in different sections of the table.                                                                 | string                        |
+| name                  | description                                                                                                                                         | type                                                       |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| tracker\_id           | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.                                                    | int                                                        |
+| from                  | Include tracks which end after this date, e.g. "2020-10-13 00:00:00".                                                                               | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| to                    | Include tracks which end after this date, e.g. "2020-10-14 00:00:00".                                                                               | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| entry\_ids            | Optional. Array of entry IDs.                                                                                                                       | int array                                                  |
+| types                 | Optional. Types of the driver journal entry, e.g. `["work", "personal", "other"]`.                                                                  | string array                                               |
+| sort                  | Optional. Set of [sort options](entry.md#list). Each option is a pair of column name and sorting direction, e.g. `["start_date=asc", "type=desc"]`. | string array                                               |
+| add\_filename\_header | If `true` then Content-Disposition header will be appended to the response. Default value is `true`.                                                | boolean                                                    |
+| format                | File format: "pdf", "xls" and "xlsx".                                                                                                               | string                                                     |
+| group\_by             | Optional. If specified, grouped entries will be in different sections of the table.                                                                 | string                                                     |
 
 * Possible values of `group_by` parameter:
   * `type` - group entries by entry type.

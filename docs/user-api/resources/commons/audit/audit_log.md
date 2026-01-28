@@ -39,7 +39,7 @@ audit object and list method to get the audit log.
 * `payload` - Nullable JSON object. Additional information about action.
 * `host` - string. Host from which an action made. IPv4 or IPv6.
 * `user_agent` - string. User agent.
-* `action_date` - [date/time](broken-reference). Date and time of the action.
+* `action_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time of the action.
 
 ## API actions
 
@@ -53,16 +53,16 @@ Gets list of audit records available for current user.
 
 #### Parameters
 
-| name         | description                                                                                                                           | type                          |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| from         | Include audit objects recorded after this date.                                                                                       | [date/time](broken-reference) |
-| to           | Include audits before this date.                                                                                                      | [date/time](broken-reference) |
-| subuser\_ids | Optional. Include audits for specific sub-users.                                                                                      | int array                     |
-| actions      | Optional. Include audits for specific actions only.                                                                                   | string array                  |
-| limit        | Pagination. Maximum number of audit records to return.                                                                                | int                           |
-| offset       | Pagination. Get audits starting from.                                                                                                 | int                           |
-| sort         | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["action_date=asc", "user=desc"]`. | string array                  |
-| grouping     | Optional. Group log by "user", "action\_date", "action" or don't group "default".                                                     | [enum](broken-reference)      |
+| name         | description                                                                                                                           | type                                                       |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| from         | Include audit objects recorded after this date.                                                                                       | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| to           | Include audits before this date.                                                                                                      | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| subuser\_ids | Optional. Include audits for specific sub-users.                                                                                      | int array                                                  |
+| actions      | Optional. Include audits for specific actions only.                                                                                   | string array                                               |
+| limit        | Pagination. Maximum number of audit records to return.                                                                                | int                                                        |
+| offset       | Pagination. Get audits starting from.                                                                                                 | int                                                        |
+| sort         | Optional. Set of sort options. Each option is a pair of property name and sorting direction, e.g. `["action_date=asc", "user=desc"]`. | string array                                               |
+| grouping     | Optional. Group log by "user", "action\_date", "action" or don't group "default".                                                     | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)      |
 
 Properties available for sorting by:
 

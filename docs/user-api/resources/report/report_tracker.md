@@ -68,11 +68,11 @@ Retrieve generated report as a file.
 
 #### Parameters
 
-| name       | description                                                                                       | type                     |
-| ---------- | ------------------------------------------------------------------------------------------------- | ------------------------ |
-| report\_id | ID of a report that should be deleted.                                                            | int                      |
-| format     | A format of report that should be downloaded. Can be "xls", xlsx" or "pdf".                       | [enum](broken-reference) |
-| headless   | Optional parameter. Default=`false`. If need report without title page and TOC, set it to `true`. | boolean                  |
+| name       | description                                                                                       | type                                                  |
+| ---------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| report\_id | ID of a report that should be deleted.                                                            | int                                                   |
+| format     | A format of report that should be downloaded. Can be "xls", xlsx" or "pdf".                       | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| headless   | Optional parameter. Default=`false`. If need report without title page and TOC, set it to `true`. | boolean                                               |
 
 #### Examples
 
@@ -113,8 +113,8 @@ Requests a report generation with the specified parameters.
 
 | name         | description                                                                                                                                                | type        |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| from         | A string containing [date/time](broken-reference).                                                                                                         | string      |
-| to           | A string containing [date/time](broken-reference). Specified date must be after "from" date.                                                               | string      |
+| from         | A string containing [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats).                                                                      | string      |
+| to           | A string containing [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats). Specified date must be after "from" date.                            | string      |
 | title        | Report title. Default title will be used if null.                                                                                                          | string      |
 | geocoder     | Which geocoder to use. See [geocoder/](../map/geocoder.md).                                                                                                | string      |
 | trackers     | List of trackers' IDs to be included in report (if report is by trackers).                                                                                 | int array   |
@@ -277,7 +277,7 @@ curl -X POST '{{ extra.api_example_url }}/report/tracker/list' \
   * `plugins` - array of objects. List of parameters for all plugins which were used to generate report.
   * `locale_info` - object with information about the locale, timezone, and measurement system used for the report.
 * `percent` - int. Report readiness in percent.
-* `type` - [enum](broken-reference). Type of created report.
+* `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Type of created report.
 * `from` - string. "from" parameter from generate.
 * `to` - string. "to" parameter from generate.
 

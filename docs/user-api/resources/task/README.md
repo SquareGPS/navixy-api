@@ -60,16 +60,16 @@ Find more guides on working with tasks [there](../../guides/field-service-manage
 * `location` - location associated with this task. Cannot be null.
   * `address` - string. Address of the location.
   * `radius`- int. Radius of location zone in meters.
-* `creation_date` - [date/time](broken-reference). When task created. _IGNORED_ in create/update.
-* `from` - [date/time](broken-reference). Date AFTER which task zone must be visited.
-* `to` - [date/time](broken-reference). Date BEFORE which task zone must be visited.
+* `creation_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When task created. _IGNORED_ in create/update.
+* `from` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date AFTER which task zone must be visited.
+* `to` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date BEFORE which task zone must be visited.
 * `external_id` - string. Used if task imported from external system. Arbitrary text string. Can be null.
-* `status` - [enum](broken-reference). Task status. _IGNORED_ in create/update. Can have "unassigned" value (unassigned to any executor),\
+* `status` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Task status. _IGNORED_ in create/update. Can have "unassigned" value (unassigned to any executor),\
   "assigned", "done", "failed", "delayed", "arrived" (arrived to geofence but haven't done the task), "faulty" (with problems).
-* `status_change_date` - [date/time](broken-reference). When task status changed. _IGNORED_ in create/update.
+* `status_change_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When task status changed. _IGNORED_ in create/update.
 * `max_delay` - int. Maximum allowed task completion delay in minutes.
 * `min_stay_duration` - int. Minimum duration of stay in task zone for task completion, minutes.
-* `arrival_date` - [date/time](broken-reference). When tracker has arrived to the task zone. _IGNORED_ in create/update.
+* `arrival_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When tracker has arrived to the task zone. _IGNORED_ in create/update.
 * `stay_duration` - int. Duration of stay in the task zone, seconds.
 * `origin` - string. Task origin. _IGNORED_ in create/update.
 * `tags` - int array. List of tag IDs.
@@ -138,18 +138,18 @@ Converts batch of tab-delimited tasks and return list of checked tasks with erro
 
 #### Parameters
 
-| name                         | description                                                                                                   | type                     |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| batch                        | Batch of tab-delimited tasks.                                                                                 | string                   |
-| fields                       | Optional. Array of field names, default is `["label", "from", "to", "address", "lat", "lng", "description"]`. | string array             |
-| geocoder                     | Geocoder type.                                                                                                | [enum](broken-reference) |
-| default\_radius              | Optional. Radius for point, default is 100.                                                                   | int                      |
-| default\_max\_delay          | Optional. Max delay for tasks, default is 0.                                                                  | int                      |
-| default\_duration            | Optional. Duration for task in minutes, default is 60.                                                        | int                      |
-| default\_min\_stay\_duration | Optional. Minimal stay duration for task in minutes, default is 0.                                            | int                      |
-| location\_check\_mode        | Optional. One of "no\_check", "entity\_location", "parent\_location"                                          | [enum](broken-reference) |
-| employee\_ids                | Optional. List of employee IDs to automatic assign                                                            | int array                |
-| vehicle\_ids                 | Optional. List of vehicle IDs to automatic assign                                                             | int array                |
+| name                         | description                                                                                                   | type                                                  |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| batch                        | Batch of tab-delimited tasks.                                                                                 | string                                                |
+| fields                       | Optional. Array of field names, default is `["label", "from", "to", "address", "lat", "lng", "description"]`. | string array                                          |
+| geocoder                     | Geocoder type.                                                                                                | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| default\_radius              | Optional. Radius for point, default is 100.                                                                   | int                                                   |
+| default\_max\_delay          | Optional. Max delay for tasks, default is 0.                                                                  | int                                                   |
+| default\_duration            | Optional. Duration for task in minutes, default is 60.                                                        | int                                                   |
+| default\_min\_stay\_duration | Optional. Minimal stay duration for task in minutes, default is 0.                                            | int                                                   |
+| location\_check\_mode        | Optional. One of "no\_check", "entity\_location", "parent\_location"                                          | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| employee\_ids                | Optional. List of employee IDs to automatic assign                                                            | int array                                             |
+| vehicle\_ids                 | Optional. List of vehicle IDs to automatic assign                                                             | int array                                             |
 
 In case of location\_check\_mode==entity\_location – vehicle\_ids will be ignored.
 
@@ -271,8 +271,8 @@ Minimal JSON object to create a new task must contain:
   * `radius` - int. Radius in meters.
 * `label` - string. Task name, length 1-200 characters.
 * `description` - string. Task description, length 0-1024 characters.
-* `from` - [date/time](broken-reference). Start date of the interval - when the specified location has to be visited (in the user's time zone).
-* `to` - [date/time](broken-reference). End date of the interval - when the specified location has to be visited (in the user's time zone).
+* `from` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Start date of the interval - when the specified location has to be visited (in the user's time zone).
+* `to` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). End date of the interval - when the specified location has to be visited (in the user's time zone).
 
 #### Example
 
@@ -367,8 +367,8 @@ Gets all task belonging to user with optional filtering.
 | external\_id | Optional. External task ID for search.                                                                                                                                  | string                                                     |
 | statuses     | Optional. Default all. List of task statuses, e.g. `["unassigned","failed"]`.                                                                                           | string array                                               |
 | trackers     | Optional. IDs of the trackers to which task assigned.                                                                                                                   | int array                                                  |
-| from         | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00".                                                                                      | [date/time](broken-reference)                              |
-| to           | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                                                     | [date/time](broken-reference)                              |
+| from         | Optional. Show tasks which are actual AFTER this date, e.g. "2020-07-01 00:00:00".                                                                                      | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| to           | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                                                     | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 | conditions   | Optional. Search conditions to apply to list. Array of search conditions.                                                                                               | array of [SearchCondition](../entity/search_conditions.md) |
 | filter       | Optional. Filter for all built-in and custom fields. If used with conditions, both filter and conditions must match for every returned task.                            | string                                                     |
 | filters      | Optional. Filters for task label, description or address.                                                                                                               | string array                                               |
@@ -380,21 +380,21 @@ Gets all task belonging to user with optional filtering.
 
 **condition fields**
 
-| Name                 | Type                          | Comment       |
-| -------------------- | ----------------------------- | ------------- |
-| id                   | int                           |               |
-| employee             | int                           | ID            |
-| status               | string                        |               |
-| label                | string                        |               |
-| location             | string                        | address       |
-| from                 | [date/time](broken-reference) |               |
-| to                   | [date/time](broken-reference) |               |
-| status\_change\_date | [date/time](broken-reference) |               |
-| arrival\_date        | [date/time](broken-reference) |               |
-| stay\_duration       | int                           | seconds       |
-| description          | string                        |               |
-| external\_id         | string                        |               |
-| form                 | int                           | template's ID |
+| Name                 | Type                                                       | Comment       |
+| -------------------- | ---------------------------------------------------------- | ------------- |
+| id                   | int                                                        |               |
+| employee             | int                                                        | ID            |
+| status               | string                                                     |               |
+| label                | string                                                     |               |
+| location             | string                                                     | address       |
+| from                 | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |               |
+| to                   | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |               |
+| status\_change\_date | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |               |
+| arrival\_date        | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |               |
+| stay\_duration       | int                                                        | seconds       |
+| description          | string                                                     |               |
+| external\_id         | string                                                     |               |
+| form                 | int                                                        | template's ID |
 
 If **external\_id**, **trackers**, **filters**, **from**, **to** or **tag\_ids** is not passed or _null_ then appropriate\
 condition not used to filter results.
@@ -407,21 +407,21 @@ set of sort options. Each option is a pair of column name and sorting direction,
 
 **sort fields**
 
-| Name                 | Type                          | Comment                    |
-| -------------------- | ----------------------------- | -------------------------- |
-| id                   | int                           |                            |
-| employee             | string                        | full name or tracker label |
-| status               | string                        |                            |
-| label                | string                        |                            |
-| location             | string                        | address                    |
-| from                 | [date/time](broken-reference) |                            |
-| to                   | [date/time](broken-reference) |                            |
-| status\_change\_date | [date/time](broken-reference) |                            |
-| arrival\_date        | [date/time](broken-reference) |                            |
-| stay\_duration       | int                           | seconds                    |
-| description          | string                        |                            |
-| external\_id         | string                        |                            |
-| form                 | string                        | label                      |
+| Name                 | Type                                                       | Comment                    |
+| -------------------- | ---------------------------------------------------------- | -------------------------- |
+| id                   | int                                                        |                            |
+| employee             | string                                                     | full name or tracker label |
+| status               | string                                                     |                            |
+| label                | string                                                     |                            |
+| location             | string                                                     | address                    |
+| from                 | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |                            |
+| to                   | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |                            |
+| status\_change\_date | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |                            |
+| arrival\_date        | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |                            |
+| stay\_duration       | int                                                        | seconds                    |
+| description          | string                                                     |                            |
+| external\_id         | string                                                     |                            |
+| form                 | string                                                     | label                      |
 
 If **external\_id**, **trackers**, **filters**, **from**, **to** or **tag\_ids** is not passed or _null_ then appropriate condition not used to filter results.
 
@@ -482,19 +482,19 @@ curl -X POST '{{ extra.api_example_url }}/task/list' \
   * `location` - area (circle geofence), entering and leaving of geofence will be controlled.
   * `label` - string. Task name, length 1-200 characters.
   * `description` - string. Task description, length 0-1024 characters.
-  * `creation_date` - [date/time](broken-reference). Date of creation of a task, unchangeable field.
-  * `from` - [date/time](broken-reference). Start date of the interval - when the specified location has to be visited (in the user's time zone).
-  * `to` - [date/time](broken-reference). End date of the interval - when the specified location has to be visited (in the user's time zone).
+  * `creation_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of creation of a task, unchangeable field.
+  * `from` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Start date of the interval - when the specified location has to be visited (in the user's time zone).
+  * `to` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). End date of the interval - when the specified location has to be visited (in the user's time zone).
   * `external_id` - string. Text field for tracking of communication of the task with certain external systems\
     (for example, number of the order). Is for reference only.
-  * `status` - [enum](broken-reference). Current status of a task, can have "unassigned" value (unassigned to any executor),\
+  * `status` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Current status of a task, can have "unassigned" value (unassigned to any executor),\
     "assigned", "done", "failed", "delayed", "arrived" (arrived to geofence but haven't done the task), "faulty" (with problems).
-  * `status_change_date` - [date/time](broken-reference). Date of the last change of the status of a task.
+  * `status_change_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date of the last change of the status of a task.
   * `max_delay` - int. The maximum time delay of the execution of the task, in minutes.
   * `min_stay_duration` - int. The minimum stay time in the area of the task in which the task has to be done, in minutes.
-  * `arrival_date` - [date/time](broken-reference). Date and time of arrival in the area of the task. Can be null. If the executor has not visited it yet.
+  * `arrival_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time of arrival in the area of the task. Can be null. If the executor has not visited it yet.
   * `stay_duration` - int. Number of seconds spent inside task zone.
-  * `origin` - [enum](broken-reference). The way of creation of a task. Can be "manual", "scheduled" or "imported" (from excel).
+  * `origin` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). The way of creation of a task. Can be "manual", "scheduled" or "imported" (from excel).
   * `type` - string. Reserved.
 * `count` - int. count of the all found tasks.
 

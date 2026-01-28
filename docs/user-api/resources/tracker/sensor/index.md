@@ -45,7 +45,7 @@ Contains API calls to interact with sensors.
 * `divider` - double.
 * `accuracy` - double. The minimum=`0.0`, maximum=`100.0` with step `0.25`.
 * `units` - string.
-* `units_type` - [enum](broken-reference). Units type for a sensor.
+* `units_type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Units type for a sensor.
 * `parameters` - optional object with additional parameters.
   * `parent_ids` - optional. int array. Array of `parent_ids` for composite sensor.
   * `volume` - optional. Double. Volume for composite sensor.
@@ -136,7 +136,7 @@ Contains API calls to interact with sensors.
 * `custom_field_name` - optional. Boolean. Default false. The parameter determines whether the `input_name` field is a custom value was entered by user.\
   This makes sense only if the [tracker model](../../../backend-api/resources/tracking/tracker/sensor/broken-reference/) has the feature `has_custom_fields`.
 * `parameters` - optional object with additional parameters.
-  * `calc_method` - [enum](broken-reference). A method of sensor value calculation. One of this: "in\_range", "identity", "bit\_index".
+  * `calc_method` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). A method of sensor value calculation. One of this: "in\_range", "identity", "bit\_index".
   * `range_from` - double. Low bound of range. It is used only with "in\_range" calc method.
   * `range_to` - double. High bound of range. It is used only with "in\_range" calc method.
   * `bit_index` - int, `[1..N]`. A bit index in input field source value. It is used only with "bit\_index" calc method.
@@ -463,13 +463,13 @@ It can't be used with discrete sensor.
 
 #### Parameters
 
-| name        | description                                                                                                                                                                       | type                          | format                |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | --------------------- |
-| tracker\_id | ID of the base tracker (aka "object\_id") from which you want to read sensor's data. Tracker must belong to authorized user and not be blocked.                                   | int                           | 123456                |
-| sensor\_id  | Sensor ID.                                                                                                                                                                        | int                           | 234567                |
-| from        | Start date and time for searching.                                                                                                                                                | [date/time](broken-reference) | "2022-02-28 00:00:00" |
-| to          | End date and time for searching. Must be after `from` date. Maximum period is `maxReportTimeSpan`, default 30 days.                                                               | [date/time](broken-reference) | "2022-03-28 23:59:00" |
-| raw\_data   | If `true` then the response will contain raw data without any calibration and multiplication. Affects only `metering` sensors. Default value is false for backward compatibility. | boolean                       | false                 |
+| name        | description                                                                                                                                                                       | type                                                       | format                |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------- |
+| tracker\_id | ID of the base tracker (aka "object\_id") from which you want to read sensor's data. Tracker must belong to authorized user and not be blocked.                                   | int                                                        | 123456                |
+| sensor\_id  | Sensor ID.                                                                                                                                                                        | int                                                        | 234567                |
+| from        | Start date and time for searching.                                                                                                                                                | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) | "2022-02-28 00:00:00" |
+| to          | End date and time for searching. Must be after `from` date. Maximum period is `maxReportTimeSpan`, default 30 days.                                                               | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) | "2022-03-28 23:59:00" |
+| raw\_data   | If `true` then the response will contain raw data without any calibration and multiplication. Affects only `metering` sensors. Default value is false for backward compatibility. | boolean                                                    | false                 |
 
 #### Example
 

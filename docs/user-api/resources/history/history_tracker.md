@@ -20,14 +20,14 @@ Described this API call usage details in our [guide](../../guides/rules-notifica
 
 #### Parameters
 
-| name      | description                                                                                           | type                                 |
-| --------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| trackers  | List of tracker's IDs.                                                                                | int array                            |
-| from      | Start date/time for searching.                                                                        | string [date/time](broken-reference) |
-| to        | End date/time for searching. Must be after "from" date.                                               | string [date/time](broken-reference) |
-| events    | Optional. Default: all. List of history types.                                                        | string array                         |
-| limit     | Optional. Default: [history.maxLimit](../commons/settings/dealer.md). Max count of entries in result. | int                                  |
-| ascending | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`.      | boolean                              |
+| name      | description                                                                                           | type                                                              |
+| --------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| trackers  | List of tracker's IDs.                                                                                | int array                                                         |
+| from      | Start date/time for searching.                                                                        | string [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| to        | End date/time for searching. Must be after "from" date.                                               | string [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| events    | Optional. Default: all. List of history types.                                                        | string array                                                      |
+| limit     | Optional. Default: [history.maxLimit](../commons/settings/dealer.md). Max count of entries in result. | int                                                               |
+| ascending | Optional. Default: `true`. Sort ascending by time when it is `true` and descending when `false`.      | boolean                                                           |
 
 If `events` (event types) not passed then list all event types.
 

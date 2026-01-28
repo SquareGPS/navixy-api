@@ -19,8 +19,8 @@ With the API key hash and tracker ID in hand, you can now get all points for a s
 ### Required Parameters
 
 * `tracker_id` - Obtained from the [`tracker/list`](../../backend-api/guides/data-retrieval/broken-reference/) call. Only one tracker\_id per call. It should be an integer.
-* `from` - A string containing the start [`date/time`](broken-reference).
-* `to` - A string containing the end [`date/time`](broken-reference).
+* `from` - A string containing the start [`date/time`](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats).
+* `to` - A string containing the end [`date/time`](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats).
 
 For a full description of the parameters, see the [`/track/read`](../../resources/index.md#read)API method.
 

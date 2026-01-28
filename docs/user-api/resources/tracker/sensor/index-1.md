@@ -28,7 +28,7 @@ BLE beacon data is data about radio tags (BLE beacons) visible to a tracker, e.g
 * `tracker_id` - int. An ID of the tracker (aka "object\_id").
 * `hardware_id` - string. An ID of the beacon.
 * `rssi` - int. RSSI stands for received signal strength indicator and represents the power of received signal on a device. According to it, you can understand how far away the beacon is from the tracker.
-* `get_time` - [date/time](broken-reference). When this data received.
+* `get_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When this data received.
 * `latitude` - float. Latitude.
 * `longitude` - float. Longitude.
 * `ext_data` - object. Additional beacon data.
@@ -43,12 +43,12 @@ List of beacon data history between `from` date/time and `to` date/time sorted b
 
 #### Parameters
 
-| name     | description                                                                                              | type                                 |
-| -------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| from     | Start date/time for searching.                                                                           | string [date/time](broken-reference) |
-| to       | End date/time for searching. Must be after "from" date.                                                  | string [date/time](broken-reference) |
-| trackers | Optional. Default: null. List of trackers.                                                               | int array                            |
-| beacons  | Optional. Default: null. List of beacons IDs. All IDs must not be empty and not more than 64 characters. | string array                         |
+| name     | description                                                                                              | type                                                              |
+| -------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| from     | Start date/time for searching.                                                                           | string [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| to       | End date/time for searching. Must be after "from" date.                                                  | string [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| trackers | Optional. Default: null. List of trackers.                                                               | int array                                                         |
+| beacons  | Optional. Default: null. List of beacons IDs. All IDs must not be empty and not more than 64 characters. | string array                                                      |
 
 #### Example
 

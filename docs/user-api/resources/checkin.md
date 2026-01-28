@@ -53,7 +53,7 @@ Check-ins cannot be created using the web API ([create](checkin.md#create) is ne
 ```
 
 * `id` - int. An ID of a check-in.
-* `marker_time` - [date/time](broken-reference). Non-null. The time of check-in creation.
+* `marker_time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Non-null. The time of check-in creation.
 * `user_id` - int. Non-null. An ID of the master user.
 * `tracker_id` - int. Non-null. An ID of the tracker which created this check-in.
 * `employee_id` - optional int. An ID of the employee assigned to the tracker.
@@ -64,14 +64,14 @@ Check-ins cannot be created using the web API ([create](checkin.md#create) is ne
   * `id` - int. File ID.
   * `storage_id` - int. Storage ID.
   * `user_id` - int. An ID of the user.
-  * `type` - [enum](broken-reference). Can be "image" | "file".
-  * `created` - [date/time](broken-reference). Date when file created.
-  * `uploaded` - [date/time](broken-reference). Date when file uploaded, can be null if file not yet uploaded.
+  * `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "image" | "file".
+  * `created` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when file created.
+  * `uploaded` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when file uploaded, can be null if file not yet uploaded.
   * `name` - string. A name of the file.
   * `size` int. File size in bytes. If file not uploaded, show maximum allowed size for an upload.
   * `metadata` - metadata object.
     * `orientation` - int. Image exif orientation.
-  * `state` - [enum](broken-reference). Can be "created" | "in\_progress" | "uploaded" | "deleted".
+  * `state` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "created" | "in\_progress" | "uploaded" | "deleted".
   * `download_url` - string. Actual URL at which file is available. Can be null if file not yet uploaded.
 * `form_id` - int. An ID of the form which was sent along with a check-in, can be null.
 * `form_label` - string. Label of the form which was sent along with a check-in, can be null.
@@ -168,8 +168,8 @@ Gets marker entries on a map for trackers and for the specified time interval.
 | name       | description                                                                                                                                                              | type                                                                               |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
 | trackers   | Optional. Array of tracker IDs. All trackers must not be deleted or blocked (if list\_blocked=false). If not specified, all available trackers will be used as value.    | int array                                                                          |
-| from       | Optional. Start date/time for searching.                                                                                                                                 | [date/time](broken-reference)                                                      |
-| to         | Optional. End date/time for searching. Must be after "from" date.                                                                                                        | [date/time](broken-reference)                                                      |
+| from       | Optional. Start date/time for searching.                                                                                                                                 | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)                         |
+| to         | Optional. End date/time for searching. Must be after "from" date.                                                                                                        | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)                         |
 | conditions | Optional. Search conditions to apply to list. See [Search conditions](entity/search_conditions.md). Allowed fields are `employee`, `location`, `marker_time`, `comment`. | string array                                                                       |
 | sort       | Optional. List of sort expressions. See below.                                                                                                                           | string array                                                                       |
 | location   | Optional, location with radius, inside which check-ins must reside.                                                                                                      | Location JSON. For example, `{ "lat": 53.787154, "lng": 9.757980, "radius": 350 }` |
@@ -293,7 +293,7 @@ Creates a new check-in. Needed for exceptional cases.
 | name             | description                                                                                                                                                                                                     | type        |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | tracker\_id      | ID of the tracker. Tracker must belong to authorized user and not be blocked.                                                                                                                                   | int         |
-| location         | Location coordinates (see: [data types description section](broken-reference) section).                                                                                                                         | JSON object |
+| location         | Location coordinates (see: [data types description section](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) section).                                                                                            | JSON object |
 | comment          | Optional.                                                                                                                                                                                                       | string      |
 | file\_ids        | Optional. IDs of files created by checkin/image/create).                                                                                                                                                        | int array   |
 | form\_submission | Optional, only present when sending form along with check-in. If the form includes optional fields that should be left empty for your check-in, refrain from adding these fields to the form submission object. | JSON object |

@@ -67,7 +67,7 @@ e.g. `{{ extra.api_example_url }}/static/employee/avatars/abcdef123456789.png`.
 
 **required sub-user rights**: `employee_update`.
 
-**avatar\_file\_name** returned in response and will be returned from [/employee/list](broken-reference).
+**avatar\_file\_name** returned in response and will be returned from [/employee/list](/broken/pages/S9i1WeKcwF2eXC6DRKOk#list).
 
 **MUST** be a POST multipart request (multipart/form-data),\
 with one of the parts being an image file upload (with the name `file`).

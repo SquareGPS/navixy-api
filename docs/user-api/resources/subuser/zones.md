@@ -140,14 +140,14 @@ Gets a list of geofences to which this sub-user has access.
 
 #### Parameters
 
-| name        | description                                                                                 | type                     |
-| ----------- | ------------------------------------------------------------------------------------------- | ------------------------ |
-| subuser\_id | ID of a sub-user belonging to current account.                                              | int                      |
-| filter      | Optional. Filter for geofence label.                                                        | string                   |
-| tag\_ids    | Optional. Tag IDs assigned to geofences. Geofences found must include all tags from a list. | int array                |
-| offset      | Optional. Offset from start of found geofences for pagination.                              | int                      |
-| limit       | Optional. Limit of found geofences for pagination.                                          | int                      |
-| order       | Optional. Specify list ordering. Can be any of `id`, `label`. Default order by `id`.        | [enum](broken-reference) |
+| name        | description                                                                                 | type                                                  |
+| ----------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| subuser\_id | ID of a sub-user belonging to current account.                                              | int                                                   |
+| filter      | Optional. Filter for geofence label.                                                        | string                                                |
+| tag\_ids    | Optional. Tag IDs assigned to geofences. Geofences found must include all tags from a list. | int array                                             |
+| offset      | Optional. Offset from start of found geofences for pagination.                              | int                                                   |
+| limit       | Optional. Limit of found geofences for pagination.                                          | int                                                   |
+| order       | Optional. Specify list ordering. Can be any of `id`, `label`. Default order by `id`.        | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
 #### Examples
 

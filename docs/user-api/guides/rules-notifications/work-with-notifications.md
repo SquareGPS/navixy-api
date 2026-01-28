@@ -6,12 +6,12 @@ Notifications are a crucial part of tracking. A [created rule](use-rules.md#crea
 
 ### All Unread Events of a User
 
-Use the [`history/unread/list`](broken-reference) call to get all unread events.
+Use the [`history/unread/list`](/broken/pages/Q21KL6aGdW29YSNj5aOl#list) call to get all unread events.
 
 This call contains only two optional parameters:
 
 * `limit`: An integer specifying the maximum count of entries in the response.
-* `from`: A string containing the start [date/time](broken-reference) for the search. Without this parameter, you will get all unread entries for the last 30 days.
+* `from`: A string containing the start [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) for the search. Without this parameter, you will get all unread entries for the last 30 days.
 
 Example: To obtain no more than 100 entries for the last month (assuming today's date is 2021-01-26), the API request will be:
 
@@ -69,8 +69,8 @@ Use the [`history/tracker/list`](../../resources/history/history_tracker.md#list
 ### Required Parameters
 
 * `trackers`: An array of integers. A [list of tracker IDs](../../backend-api/guides/rules-notifications/broken-reference/) for which events will be searched.
-* `from`: A string containing the start [date/time](broken-reference) for the search.
-* `to`: A string containing the end [date/time](broken-reference) for the search. Must be after the `from` date.
+* `from`: A string containing the start [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) for the search.
+* `to`: A string containing the end [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) for the search. Must be after the `from` date.
 
 ### Optional Parameters
 
@@ -96,8 +96,8 @@ To obtain a list of all tracker events for a user received between the specified
 
 ### Required Parameters
 
-* `from`: A string containing the start [date/time](broken-reference) for the search.
-* `to`: A string containing the end [date/time](broken-reference) for the search. Must be after the `from` date.
+* `from`: A string containing the start [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) for the search.
+* `to`: A string containing the end [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) for the search. Must be after the `from` date.
 
 ### Optional Parameters
 

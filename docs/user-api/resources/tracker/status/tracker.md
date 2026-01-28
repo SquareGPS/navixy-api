@@ -71,8 +71,8 @@ curl -X POST '{{ extra.api_example_url }}/status/tracker/assign' \
   * `lat` - int. Latitude.
   * `lng` - int. Longitude.
   * `address` - string. Address of last change.
-  * `changed` - [date/time](broken-reference). Change date and time.
-  * `origin` - [enum](broken-reference). Origin – who changed the status ("employee" or "supervisor").
+  * `changed` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Change date and time.
+  * `origin` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Origin – who changed the status ("employee" or "supervisor").
 
 #### Errors
 
@@ -157,8 +157,8 @@ curl -X POST '{{ extra.api_example_url }}/status/tracker/list' \
   * `old_status_id` - int. Previous status ID. May be null.
   * `new_status_id` - int. Current status ID. May be null.
   * `location` - Location and address at which status change occurred.
-  * `changed` - [date/time](broken-reference). Date and time of change.
-  * `origin` - [enum](broken-reference). Origin – who changed the status ("employee" or "supervisor").
+  * `changed` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time of change.
+  * `origin` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Origin – who changed the status ("employee" or "supervisor").
 
 #### Errors
 
@@ -227,8 +227,8 @@ curl -X POST '{{ extra.api_example_url }}/status/tracker/read' \
   * `old_status_id` - int. Previous status ID. May be null.
   * `new_status_id` - int. Current status ID. May be null.
   * `location` - Location and address at which status change occurred.
-  * `changed` - [date/time](broken-reference). Date and time of change.
-  * `origin` - [enum](broken-reference). Origin – who changed the status ("employee" or "supervisor").
+  * `changed` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date and time of change.
+  * `origin` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Origin – who changed the status ("employee" or "supervisor").
 
 #### Errors
 

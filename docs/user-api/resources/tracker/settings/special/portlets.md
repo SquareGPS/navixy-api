@@ -51,7 +51,7 @@ Guard special settings for "Я ТУТ ПОИСК".
 }
 ```
 
-* `motion_sensor_mode` - [enum](broken-reference). Can be "off" | "permanent" | "single\_period" | "double\_period". Default="off".
+* `motion_sensor_mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "off" | "permanent" | "single\_period" | "double\_period". Default="off".
 * `motion_sensor_first_period` - string time. Format=`HH:mm-HH:mm`, default="23:00-07:00" Required\
   for `motion_sensor_mode` in single\_period/double\_period.
 * `motion_sensor_second_period` - string time. Format=`HH:mm-HH:mm`, default="10:00-17:00" Required\
@@ -60,7 +60,7 @@ Guard special settings for "Я ТУТ ПОИСК".
 * `motion_sensor_duration` - int. Min=1, max=255, default=5 seconds. Required for `motion_sensor_mode` != off.
 * `motion_sensor_ignore_time` - int. Min=5, max=99, default=5 minutes. Required for `motion_sensor_mode` != off.
 * `motion_sensor_double_check` - boolean. Default=`false`. Required for `motion_sensor_mode` != off.
-* `perimeter_mode` - [enum](broken-reference). Can be "off" | "once\_triggering" | "permanent" | "point\_displacement". Default="off".
+* `perimeter_mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "off" | "once\_triggering" | "permanent" | "point\_displacement". Default="off".
 * `perimeter_diameter` - int. Min=1, max=999, default=1 kilometer. Required for `perimeter_mode` != off.
 
 ## harsh\_behavior\_suntech

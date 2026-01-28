@@ -38,7 +38,7 @@ For example, you can add custom fields to the **places** entity or rearrange exi
 ```
 
 * `id` - int. Entity identifier.
-* `type` - [enum](broken-reference). Currently, only "place" is supported.
+* `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Currently, only "place" is supported.
 * `layout` - object describes layout of fields for entity.
   * `sections` - array of objects. Each section can contain one or more fields. At least one section must exist in a layout.
   * `label` - string. Name of section.

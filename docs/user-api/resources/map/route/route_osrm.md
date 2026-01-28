@@ -24,7 +24,7 @@ Gets route points via OSRM API.
 | waypoints    | Optional. List of transitional points. `[{locationA},{locationN}]`.                                              | array of JSON objects |
 | point\_limit | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int                   |
 
-Where **location** described in [data types description section](broken-reference).
+Where **location** described in [data types description section](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types).
 
 #### Examples
 

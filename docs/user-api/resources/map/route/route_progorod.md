@@ -26,7 +26,7 @@ Gets route points using Progorod router.
 | minsize      | Optional. Default=5. Smoothing parameter in conventional meters. Not recommended to set it less than distance between two neighbouring pixels on current zoom. | double                |
 | use\_traffic | Optional. Default=`false` If it is `false` then use `mode=optimal` and use traffic=0, else `mode=comfort` and use traffic=1.                                   | boolean               |
 
-Where **location** described in [data types description section](broken-reference). Order of\
+Where **location** described in [data types description section](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Order of\
 waypoints may be changed.
 
 #### Response
@@ -86,6 +86,6 @@ waypoints may be changed.
 }
 ```
 
-* `type` - [enum](broken-reference). Type of error. One of: "not\_set", "malformed" and "isolated".
-* `point` - [enum](broken-reference). Error point. One of: "start", "end", "waypoint" and "all".
+* `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Type of error. One of: "not\_set", "malformed" and "isolated".
+* `point` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Error point. One of: "start", "end", "waypoint" and "all".
 * `index` - int. Passed only for a waypoint. Index of bad point in waypoints array.

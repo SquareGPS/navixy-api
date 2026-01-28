@@ -30,9 +30,9 @@ Transaction object description and API call to get list of user's billing transa
 ```
 
 * `description` - string. Transaction description.
-* `type` - [enum](broken-reference). Type of transaction.
-* `subtype` - [enum](broken-reference). Subtype of transaction.
-* `timestamp` - [date/time](broken-reference). When transaction created.
+* `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Type of transaction.
+* `subtype` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Subtype of transaction.
+* `timestamp` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When transaction created.
 * `user_id` - int. ID of a user which made a transaction.
 * `dealer_id` - int. ID of a dealer.
 * `tracker_id` - int. Tracker id. 0 if transaction not associated with tracker.
@@ -55,11 +55,11 @@ Gets list of user's billing transactions for the specified period.
 
 #### Parameters
 
-| name  | description                                             | type                          |
-| ----- | ------------------------------------------------------- | ----------------------------- |
-| from  | Start date/time for searching.                          | [date/time](broken-reference) |
-| to    | End date/time for searching. Must be after `from` date. | [date/time](broken-reference) |
-| limit | Optional. Maximum number of returned transactions.      | int                           |
+| name  | description                                             | type                                                       |
+| ----- | ------------------------------------------------------- | ---------------------------------------------------------- |
+| from  | Start date/time for searching.                          | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| to    | End date/time for searching. Must be after `from` date. | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| limit | Optional. Maximum number of returned transactions.      | int                                                        |
 
 #### Example
 

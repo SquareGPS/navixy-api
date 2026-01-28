@@ -19,11 +19,11 @@ Returns mileage in kilometers in specified period grouped by trackers and day.
 
 #### Parameters
 
-| name     | description                                                                                                                            | type                          |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| trackers | Array of tracker IDs (aka "object\_id"). Trackers must belong to authorized user and not be blocked. Maximum 128 trackers per request. | int array                     |
-| from     | From date/time.                                                                                                                        | [date/time](broken-reference) |
-| to       | To date/time. Specified date must be after "from" date.                                                                                | [date/time](broken-reference) |
+| name     | description                                                                                                                            | type                                                             |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| trackers | Array of tracker IDs (aka "object\_id"). Trackers must belong to authorized user and not be blocked. Maximum 128 trackers per request. | int array                                                        |
+| from     | From date/time.                                                                                                                        | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats) |
+| to       | To date/time. Specified date must be after "from" date.                                                                                | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats) |
 
 #### Examples
 

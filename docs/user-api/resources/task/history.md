@@ -27,8 +27,8 @@ Our platform tracks changes to task fields and state for your convenience. Conta
 * `id` - int. Entry ID.
 * `user_id` - int. User ID.
 * `task_id` - int. An ID of the task with which this entry associated.
-* `event_date` - [date/time](broken-reference). Date when history event happened.
-* `operation` - [enum](broken-reference). Operation which happened. Can be "create", "update", "assign" or "status\_change".
+* `event_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when history event happened.
+* `operation` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Operation which happened. Can be "create", "update", "assign" or "status\_change".
 * `payload` - depends on operation. Typically, contains fields which were changed during operation.
 
 ## API actions

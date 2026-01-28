@@ -48,15 +48,15 @@ Every route consists of checkpoints. Using these actions, you can manipulate che
 * `location` - location associated with this checkpoint. cannot be null.
   * `address` - string. Address of the location.
   * `radius` - int. Radius of location zone in meters.
-* `creation_date` - [date/time](broken-reference). When checkpoint created. _IGNORED_ in checkpoint/create, checkpoint/update.
-* `from` - [date/time](broken-reference). Date AFTER which checkpoint zone must be visited.
-* `to` - [date/time](broken-reference). Date BEFORE which checkpoint zone must be visited.
+* `creation_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When checkpoint created. _IGNORED_ in checkpoint/create, checkpoint/update.
+* `from` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date AFTER which checkpoint zone must be visited.
+* `to` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date BEFORE which checkpoint zone must be visited.
 * `external_id` - int. Used if task imported from external system. Arbitrary text string. Can be null.
-* `status` - [enum](broken-reference). Checkpoint status. _IGNORED_ in checkpoint/create, checkpoint/update.
-* `status_change_date` - [date/time](broken-reference). When checkpoint status changed. _IGNORED_ in checkpoint/create and checkpoint/update.
+* `status` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Checkpoint status. _IGNORED_ in checkpoint/create, checkpoint/update.
+* `status_change_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When checkpoint status changed. _IGNORED_ in checkpoint/create and checkpoint/update.
 * `max_delay` - int. Maximum allowed checkpoint completion delay in minutes.
 * `min_stay_duration` - int. Minimum duration of stay in checkpoint zone for checkpoint completion, minutes.
-* `arrival_date` - [date/time](broken-reference). Wen tracker has arrived to the checkpoint zone. _IGNORED_ in checkpoint/create, checkpoint/update.
+* `arrival_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Wen tracker has arrived to the checkpoint zone. _IGNORED_ in checkpoint/create, checkpoint/update.
 * `stay_duration` - int. Duration of stay in the checkpoint zone, seconds.
 * `origin` - string. Checkpoint origin. _IGNORED_ in checkpoint/create, checkpoint/update.
 * `tags` - int array. List of tag IDs.

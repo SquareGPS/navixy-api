@@ -84,20 +84,20 @@ A user account lets you start working with the platform as well as customize you
   * `login` - string. User's login (in most cases it's an email address).
   * `title` - string. User first and last name or organization title.
   * `phone` - string. User phone (if not empty).
-  * `creation_date` - [date/time](broken-reference). User registration date/time.
+  * `creation_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). User registration date/time.
   * `balance` - float. User balance, max. 2 digits after dot. For sub-users, this field should be ignored.
   * `bonus` - float. User bonus, max. 2 digits after dot. For sub-users, this field should be ignored.
-  * `locale` - [enum](broken-reference). User locale, for example "en\_EN".
+  * `locale` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). User locale, for example "en\_EN".
   * `demo` - boolean. `true` if this is a demo user, `false` otherwise.
   * `verified` - boolean. `true` if user email already verified.
-  * `legal_type` - [enum](broken-reference). Can bed "legal\_entity", "individual" or "sole\_trader".
-  * `default_geocoder` - [enum](broken-reference). User's default geocoder. Can be "google", "yandex",\
+  * `legal_type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can bed "legal\_entity", "individual" or "sole\_trader".
+  * `default_geocoder` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). User's default geocoder. Can be "google", "yandex",\
     "progorod", "osm", or "locationiq".
-  * `route_provider` - [enum](broken-reference). User's route provider. Can be "progorod", "google" or "osrm".
-  * `time_zone` - [enum](broken-reference). User timezone name.
-  * `measurement_system` - [enum](broken-reference). User's measurement system "metric", "imperial", "us", "metric\_gal\_us" or "nautical".
-  * `date_format` - Optional [enum](broken-reference). Date representation. Can be "ddMMyyyy\_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy\_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy\_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd\_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
-  * `hour_mode` - Optional [enum](broken-reference). Time representation. Can be "TWENTY\_FOUR\_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE\_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
+  * `route_provider` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). User's route provider. Can be "progorod", "google" or "osrm".
+  * `time_zone` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). User timezone name.
+  * `measurement_system` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). User's measurement system "metric", "imperial", "us", "metric\_gal\_us" or "nautical".
+  * `date_format` - Optional [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date representation. Can be "ddMMyyyy\_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy\_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy\_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd\_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
+  * `hour_mode` - Optional [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Time representation. Can be "TWENTY\_FOUR\_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE\_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
   * `tin` - string. Taxpayer identification number aka "VATIN" or "INN".
   * `iec` - optional string. Industrial Enterprises Classifier aka "KPP". Used in Russia for legal entities.
   * `post_country` - string. Country part of user's post address.

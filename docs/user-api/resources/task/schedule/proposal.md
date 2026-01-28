@@ -19,13 +19,13 @@ Get all tasks and routes that will be created by schedule.
 
 #### Parameters
 
-| name     | description                                                                                         | type                           |
-| -------- | --------------------------------------------------------------------------------------------------- | ------------------------------ |
-| trackers | Optional. IDs of the trackers to which task is assigned.                                            | int array                      |
-| from     | Show tasks that will be created AFTER this date, e.g. "2014-07-01 00:00:00", should not before now. | [date/time](broken-reference)  |
-| to       | Show tasks will be created BEFORE this date, e.g. "2014-07-01 00:00:00", should not before `from`.  | [date/time](broken-reference)  |
-| filter   | Optional. Filter for task schedule label and description.                                           | string                         |
-| types    | Optional. Tasks or routes. For example: `["task", "route"]`.                                        | [enum](broken-reference) array |
+| name     | description                                                                                         | type                                                        |
+| -------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| trackers | Optional. IDs of the trackers to which task is assigned.                                            | int array                                                   |
+| from     | Show tasks that will be created AFTER this date, e.g. "2014-07-01 00:00:00", should not before now. | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)  |
+| to       | Show tasks will be created BEFORE this date, e.g. "2014-07-01 00:00:00", should not before `from`.  | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)  |
+| filter   | Optional. Filter for task schedule label and description.                                           | string                                                      |
+| types    | Optional. Tasks or routes. For example: `["task", "route"]`.                                        | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) array |
 
 * If `trackers`, `filter`, `from` or `to` is not passed or _null_ then appropriate condition not used to filter results.
 

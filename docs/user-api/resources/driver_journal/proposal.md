@@ -73,8 +73,8 @@ curl -X POST '{{ extra.api_example_url }}/driver/journal/proposal/list' \
 
 * `tracker_id` - int. An ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.
 * `employee_id` - nullable int. An ID of employee (driver).
-* `start_date` - [date/time](broken-reference). Start date of a journal entry.
-* `end_date` - [date/time](broken-reference). End date of a journal entry.
+* `start_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Start date of a journal entry.
+* `end_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). End date of a journal entry.
 * `start_location` - location object. Where entry starts.
 * `end_location` - location object. Where entry ends.
 * `length` - float. Length of the trip km.

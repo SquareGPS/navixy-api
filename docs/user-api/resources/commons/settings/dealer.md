@@ -124,18 +124,18 @@ curl -X POST '{{ extra.api_example_url }}/dealer/get_ui_config' \
 * `settings` - object. Custom settings.
   * `domain` - string. The same as dealer.ui\_domain.
   * `service_title` - string. Title of the service.
-  * `locale` - [enum](broken-reference). Default locale of the dealer.
+  * `locale` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Default locale of the dealer.
   * `demo_login` - string. Dealer's login for demo user or empty string if no demo user available.
   * `demo_password` - string. Dealer's password for demo user or empty string if no demo user available.
   * `maps` - string array. List of available maps,\
     e.g. `["roadmap", "cdcom", "osm", "wikimapia", "yandexpublic", "hybrid", "satellite"]`.
   * `default_map` - object. Default map settings.
-  * `type` - [enum](broken-reference). Default map type.
+  * `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Default map type.
   * `location` - object. Default map center location.
   * `lat` - float. Latitude.
   * `long` - float. Longitude.
   * `zoom` - int. Default map zoom level.
-  * `currency` - [enum](broken-reference). Dealer's currency ISO 4217 code.
+  * `currency` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Dealer's currency ISO 4217 code.
   * `payment_link` - string. PaaS-dependent link that can be used to refill user's account. Can be null or empty.
   * `promo_url` - string. Customizable "About company" url.
   * `google_client_id` - string. Client ID which must be used to work with Google API or null.
@@ -150,12 +150,12 @@ curl -X POST '{{ extra.api_example_url }}/dealer/get_ui_config' \
     special chars escaped using HTML entities.
   * `show_mobile_apps` - boolean. If `true` then mobile applications are available for dealer's users.
   * `show_call_notifications` - boolean. If `true` then call notifications are available for dealer's users.
-  * `geocoder` - [enum](broken-reference). Default geocoder.
-  * `route_provider` - [enum](broken-reference). Default router.
-  * `measurement_system` - [enum](broken-reference). Measurement system.
+  * `geocoder` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Default geocoder.
+  * `route_provider` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Default router.
+  * `measurement_system` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Measurement system.
   * `display_model_features_link` - boolean. When `true` show in model info link to squaregps.com (UI option).
-  * `color_theme` - [enum](broken-reference). Color theme code or empty string (for default theme).
-  * `app_color_theme` - [enum](broken-reference). Mobile app color theme code or empty string (for default theme).
+  * `color_theme` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Color theme code or empty string (for default theme).
+  * `app_color_theme` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Mobile app color theme code or empty string (for default theme).
   * `privacy_policy_link` - string. Nullable, privacy policy link (it may be empty).
   * `tos` - string. Nullable, terms of service text (it may be empty).
   * `tracker_model_filter` - object. A filter which describes tracker models available for registration.
@@ -170,7 +170,7 @@ curl -X POST '{{ extra.api_example_url }}/dealer/get_ui_config' \
 * `premium_gis` - boolean. If `true` dealer has Premium GIS package.
 * `features` - string array. Set of the allowed features for a dealer (all list see below in "Dealer features").
 * `platform` - key-value object. Global platform settings.
-  * `iso_datetime_support` - boolean, if `true` platform supports ISO 8601 [date/time format](broken-reference).
+  * `iso_datetime_support` - boolean, if `true` platform supports ISO 8601 [date/time format](/broken/pages/ZecFmxN0cywjosU1jKcD#datetime-formats).
   * `history.max_limit` - int, max limit for [history](../../history/index.md) list actions.
   * `report.max_time_span` - ISO 8601 duration, max timespan for [reports generation](../../report/report_tracker.md#generate).
   * `stats.max_allowed_trackers` - int, max allowed trackers for [stats actions](../../tracker/counter/stats_mileage.md).

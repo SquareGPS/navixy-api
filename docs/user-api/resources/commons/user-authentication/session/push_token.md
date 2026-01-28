@@ -19,12 +19,12 @@ Binds Push token with a current session.
 
 #### Parameters
 
-| name             | description                                                                                                                              | type                     |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| application      | Application ID, "navixy\_iphone\_viewer" or "navixy\_android\_viewer" or "w3c\_pushapi".                                                 | [enum](broken-reference) |
-| token            | Push token or endpoint from pushSubscription, full URL like https://fcm.googleapis.com/fcm/send/f6kicrBn7S0:APA91b if your app ID is " " | string                   |
-| parameters       | Should be used only with object with "w3c\_pushapi". Contain keys from pushSubscription {"p256dh": "...", "auth":"..."}                  | JSON object              |
-| category\_filter | Optional. Push notifications category filter, default is `*`.                                                                            | string                   |
+| name             | description                                                                                                                              | type                                                  |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| application      | Application ID, "navixy\_iphone\_viewer" or "navixy\_android\_viewer" or "w3c\_pushapi".                                                 | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| token            | Push token or endpoint from pushSubscription, full URL like https://fcm.googleapis.com/fcm/send/f6kicrBn7S0:APA91b if your app ID is " " | string                                                |
+| parameters       | Should be used only with object with "w3c\_pushapi". Contain keys from pushSubscription {"p256dh": "...", "auth":"..."}                  | JSON object                                           |
+| category\_filter | Optional. Push notifications category filter, default is `*`.                                                                            | string                                                |
 
 #### Example
 

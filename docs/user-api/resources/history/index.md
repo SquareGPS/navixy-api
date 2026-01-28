@@ -44,11 +44,11 @@ Find instructions on getting notifications [here](../../guides/rules-notificatio
 ```
 
 * `id` - long. An ID of event.
-* `type` - [enum](broken-reference). Type of device. Can be "socket", "tracker", or "camera".
+* `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Type of device. Can be "socket", "tracker", or "camera".
 * `is_read` - boolean. If `true` the notification seen by user and marked as read.
 * `message` - string. Notification message shortened to 256 characters.
-* `time` - [date/time](broken-reference). When this notification received.
-* `event` - [enum](broken-reference). Type of history event extension. Available event types can be obtained by [/history/type/list](history_type.md#list) action.
+* `time` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When this notification received.
+* `event` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Type of history event extension. Available event types can be obtained by [/history/type/list](history_type.md#list) action.
 * `tracker_id` - int. An ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked.
 * `rule_id` - optional int. An ID of assigned rule.
 * `track_id` - int. An ID of a track on which the event happened or `0` if no track is associated.
@@ -75,7 +75,7 @@ Find instructions on getting notifications [here](../../guides/rules-notificatio
   * `full_message` - optional string. Full event message, included when the `message` was shortened.
   * `precision` - optional int. Precision of the location in meters.
 
-Date/time type described in [data types description section](broken-reference).
+Date/time type described in [data types description section](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types).
 
 ## API actions
 
@@ -159,10 +159,10 @@ List less than or equal to `limit` of the latest user's unread history events. D
 
 #### Parameters
 
-| name  | description                                                                                            | type      |
-| ----- | ------------------------------------------------------------------------------------------------------ | --------- |
-| limit | Optional. Limit of entries in response.                                                                | int       |
-| from  | Optional. Start [date/time](broken-reference) for searching. Default `from` is **now** minus one year. | date/time |
+| name  | description                                                                                                                         | type      |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| limit | Optional. Limit of entries in response.                                                                                             | int       |
+| from  | Optional. Start [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) for searching. Default `from` is **now** minus one year. | date/time |
 
 Default and max limit is [history.maxLimit](../commons/settings/dealer.md).
 
@@ -237,10 +237,10 @@ Get count of user's unread history messages starting `from` date.
 
 #### Parameters
 
-| name | description                                                                                            | type                     |
-| ---- | ------------------------------------------------------------------------------------------------------ | ------------------------ |
-| from | Optional. Start [date/time](broken-reference) for searching. Default `from` is **now** minus one year. | date/time                |
-| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera".               | [enum](broken-reference) |
+| name | description                                                                                                                         | type                                                  |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| from | Optional. Start [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) for searching. Default `from` is **now** minus one year. | date/time                                             |
+| type | Optional. Type of devices that should be count. Can be "socket", "tracker", or "camera".                                            | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
 #### Examples
 

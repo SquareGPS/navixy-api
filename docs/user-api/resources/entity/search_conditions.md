@@ -177,5 +177,5 @@ meaning it includes both the `from` and `to` timestamps.
 
 * `field` - string. The name or ID of the timestamp field to evaluate.
 * `value` - object. Contains the `from` and `to` values defining the period.
-  * `from` - [date/time](broken-reference). The beginning of the period.
-  * `to` - [date/time](broken-reference). The end of the period.
+  * `from` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). The beginning of the period.
+  * `to` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). The end of the period.

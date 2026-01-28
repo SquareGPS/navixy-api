@@ -17,15 +17,15 @@ Gets route points via specified route provider.
 
 #### Parameters
 
-| name           | description                                                                                                      | type                     |
-| -------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| start          | Location JSON object. Start of route.                                                                            | JSON object              |
-| end            | Location JSON object. End of route.                                                                              | JSON object              |
-| waypoints      | Optional. List of transitional points. `[{locationA},{locationN}]`.                                              | array of JSON objects    |
-| point\_limit   | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int                      |
-| provider\_type | Optional. If not specified, the default user provider is used. One of "progorod", or "google", "osrm".           | [enum](broken-reference) |
+| name           | description                                                                                                      | type                                                  |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| start          | Location JSON object. Start of route.                                                                            | JSON object                                           |
+| end            | Location JSON object. End of route.                                                                              | JSON object                                           |
+| waypoints      | Optional. List of transitional points. `[{locationA},{locationN}]`.                                              | array of JSON objects                                 |
+| point\_limit   | Optional. If specified, the returned route will be simplified to contain this number of points (or less). Min=2. | int                                                   |
+| provider\_type | Optional. If not specified, the default user provider is used. One of "progorod", or "google", "osrm".           | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
-* `location` object described in [data types description section](broken-reference).
+* `location` object described in [data types description section](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types).
 
 #### Example
 

@@ -21,9 +21,9 @@ Bill object description and API calls for work with user's bills.
 ```
 
 * `order_id` - int. Unique bill ID.
-* `created` - [date/time](broken-reference). When the bill created.
+* `created` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When the bill created.
 * `sum` - float. A bill sum in default currency of the panel.
-* `status` - [enum](broken-reference). Bill order status. Can be one of:
+* `status` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Bill order status. Can be one of:
   * `created` – but not settled.
   * `settled`.
   * `canceled`.

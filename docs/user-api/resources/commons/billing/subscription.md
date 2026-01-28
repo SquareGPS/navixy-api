@@ -108,7 +108,7 @@ curl -X POST '{{ extra.api_example_url }}/subscription/avangate/list' \
 * `reference` - string. Internal 2Checkout (formerly Avangate) subscription code. Pass it to /subscription/avangate/cancel.
 * `code` - string. 2Checkout (formerly Avangate) product code.
 * `quantity` - int. Count.
-* `expiration_date` - [date/time](broken-reference). Next renew date/time.
+* `expiration_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Next renew date/time.
 
 #### Errors
 

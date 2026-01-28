@@ -22,13 +22,13 @@ CRUD actions for user settings.
 }
 ```
 
-* `time_zone` - [enum](broken-reference). ISO timezone ID.
-* `locale` - [enum](broken-reference). Locale code.
-* `measurement_system` - [enum](broken-reference). Measurement system. Can be "metric", "imperial", "us", "metric\_gal\_us" or "nautical".
-* `date_format` - Optional [enum](broken-reference). Date representation. Can be "ddMMyyyy\_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy\_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy\_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd\_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
-* `hour_mode` - Optional [enum](broken-reference). Time representation. Can be "TWENTY\_FOUR\_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE\_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
-* `geocoder` - [enum](broken-reference). Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq".
-* `route_provider` - [enum](broken-reference). Preferred route finding provider. Can be "google", "progorod" or "osrm".
+* `time_zone` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). ISO timezone ID.
+* `locale` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Locale code.
+* `measurement_system` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Measurement system. Can be "metric", "imperial", "us", "metric\_gal\_us" or "nautical".
+* `date_format` - Optional [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date representation. Can be "ddMMyyyy\_dots"("dd.MM.yyyy", "01.12.2021"), "ddMMyyyy\_slashes"("dd/MM/yyyy", "01/12/2021"), "MMddyyyy\_hyphens"("MM-dd-yyyy", "12-01-2021"), "yyyyMMdd\_hyphens"("yyyy-MM-dd", "2021-12-01"), "dMMMy"("d MMM y", "1 Dec 2021") or "dMMMMy"("d MMMM y", "1 December 2021")
+* `hour_mode` - Optional [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Time representation. Can be "TWENTY\_FOUR\_HOURS" (24-hour clock, "HH:mm" or "HH:mm:ss", "17:45"/"17:45:46") or "TWELVE\_HOURS" (12-hour clock, "h:mm a" or "h:mm:ss a", "5:45 PM"/"5:45:46 PM")
+* `geocoder` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq".
+* `route_provider` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Preferred route finding provider. Can be "google", "progorod" or "osrm".
 * `translit` - boolean. `true` if sms notification should be transliterated, `false` otherwise.
 
 `balance_alert_settings` type is JSON object:
@@ -121,16 +121,16 @@ Update current user's settings.
 
 #### Parameters
 
-| name                     | description                                                                             | type                     |
-| ------------------------ | --------------------------------------------------------------------------------------- | ------------------------ |
-| time\_zone               | ISO timezone ID.                                                                        | [enum](broken-reference) |
-| locale                   | Locale code.                                                                            | [enum](broken-reference) |
-| measurement\_system      | Measurement system. Can be "metric", "imperial", "us", "metric\_gal\_us" or "nautical". | [enum](broken-reference) |
-| geocoder                 | Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq".  | [enum](broken-reference) |
-| route\_provider          | Preferred route finding provider. Can be "google", "progorod" or "osrm".                | [enum](broken-reference) |
-| translit                 | `true` if sms notification should be transliterated, `false` otherwise.                 | boolean                  |
-| balance\_alert\_settings | Object containing array of emails.                                                      | JSON object              |
-| file\_storage\_settings  | Object containing file storage settings.                                                | JSON object              |
+| name                     | description                                                                             | type                                                  |
+| ------------------------ | --------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| time\_zone               | ISO timezone ID.                                                                        | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| locale                   | Locale code.                                                                            | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| measurement\_system      | Measurement system. Can be "metric", "imperial", "us", "metric\_gal\_us" or "nautical". | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| geocoder                 | Preferred geocoder type. Can be "google", "yandex", "progorod", "osm" or "locationiq".  | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| route\_provider          | Preferred route finding provider. Can be "google", "progorod" or "osrm".                | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
+| translit                 | `true` if sms notification should be transliterated, `false` otherwise.                 | boolean                                               |
+| balance\_alert\_settings | Object containing array of emails.                                                      | JSON object                                           |
+| file\_storage\_settings  | Object containing file storage settings.                                                | JSON object                                           |
 
 #### Example
 

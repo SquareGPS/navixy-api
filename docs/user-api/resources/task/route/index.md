@@ -39,12 +39,12 @@ completed with warnings or failed.
 * `id` - int. Primary key used in route/update, _IGNORED_ in route/create.
 * `user_id` - int. User ID. _IGNORED_ in route/create and route/update.
 * `tracker_id` - int. An ID of the tracker to which route assigned. Can be null. _IGNORED_ in route/update.
-* `creation_date` - [date/time](broken-reference). When route created. _IGNORED_ in route/create, route/update.
-* `from` - [date/time](broken-reference). Date AFTER which first checkpoint zone must be visited, depends on first checkpoint `from`, _IGNORED_ in route/create, route/update.
-* `to` - [date/time](broken-reference). Date BEFORE which last checkpoint zone must be visited, depends on last checkpoint `to`, _IGNORED_ in route/create, route/update.
+* `creation_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When route created. _IGNORED_ in route/create, route/update.
+* `from` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date AFTER which first checkpoint zone must be visited, depends on first checkpoint `from`, _IGNORED_ in route/create, route/update.
+* `to` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date BEFORE which last checkpoint zone must be visited, depends on last checkpoint `to`, _IGNORED_ in route/create, route/update.
 * `external_id` - string. Used if route imported from external system. arbitrary text string. Can be null.
 * `status` - string. A route status. _IGNORED_ in route/create, route/update.
-* `status_change_date` - [date/time](broken-reference). When route status changed. _IGNORED_ in route/create, route/update.
+* `status_change_date` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). When route status changed. _IGNORED_ in route/create, route/update.
 * `origin` - string. A route origin. _IGNORED_ in route/create, route/update.
 * `tags` - int array. List of tag IDs.
 * `checkpoint_ids` - int array. List of route checkpoint IDs in order of execution. _IGNORED_ in route/create.
@@ -151,8 +151,8 @@ Also, need checkpoints list in order of execution, checkpoints `from` and `to` m
   * `radius` - int. Radius in meters.
 * `label` - string. Task name, length 1-200 characters.
 * `description` - string. Task description, length 0-1024 characters.
-* `from` - [date/time](broken-reference). Start date of the interval - when the specified location has to be visited (in the user's time zone).
-* `to` - [date/time](broken-reference). End date of the interval - when the specified location has to be visited (in the user's time zone).
+* `from` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Start date of the interval - when the specified location has to be visited (in the user's time zone).
+* `to` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). End date of the interval - when the specified location has to be visited (in the user's time zone).
 
 #### Example
 
@@ -254,13 +254,13 @@ Get all routes belonging to user with optional filtering.
 
 #### Parameters
 
-| name     | description                                                                                                                                                                     | type                           |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| statuses | Optional. List of task statuses, e.g. `["unassigned","failed"]`. Default all.                                                                                                   | [enum](broken-reference) array |
-| trackers | Optional. List of `tracker_id` to which task assigned.                                                                                                                          | int array                      |
-| from     | Optional. Show tasks which are actual AFTER this date, e.g. "2020-06-01 00:00:00".                                                                                              | [date/time](broken-reference)  |
-| to       | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                                                             | [date/time](broken-reference)  |
-| filter   | Optional. Filter for task label and description. If **trackers**, **filter**, **from** or **to** is not passed or _null_ then appropriate condition not used to filter results. | string                         |
+| name     | description                                                                                                                                                                     | type                                                        |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| statuses | Optional. List of task statuses, e.g. `["unassigned","failed"]`. Default all.                                                                                                   | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) array |
+| trackers | Optional. List of `tracker_id` to which task assigned.                                                                                                                          | int array                                                   |
+| from     | Optional. Show tasks which are actual AFTER this date, e.g. "2020-06-01 00:00:00".                                                                                              | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)  |
+| to       | Optional. Show tasks which are actual BEFORE this date, e.g. "2020-07-01 00:00:00".                                                                                             | [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types)  |
+| filter   | Optional. Filter for task label and description. If **trackers**, **filter**, **from** or **to** is not passed or _null_ then appropriate condition not used to filter results. | string                                                      |
 
 #### Examples
 

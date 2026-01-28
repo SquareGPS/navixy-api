@@ -12,7 +12,7 @@ Forms used to provide additional information, such as user's name, phone, delive
 or check-in from iOS/Android mobile tracker app.\
 Forms can be attached to tasks. If form attached to task, this task cannot be completed without form submission.
 
-* Each form must be created from template, read more at [Templates](broken-reference)
+* Each form must be created from template, read more at [Templates](/broken/pages/xYabzqplGfEHPAfqAKUj)
 * For description of `<form_field>` and `<field_value>`, see [Form fields and values](field-types.md)
 * Using web API, it's now possible to only attach/fill forms with tasks (checkin forms are created through\
   Android/iOS tracker applications). See [Task form actions](../index.md) to use forms with tasks.
@@ -58,13 +58,13 @@ Find comprehinsive information on forms usage in our [instructions](../../../../
 * `id` - int. Form unique ID.
 * `label` - string. User-defined form label, from 1 to 100 characters.
 * `fields` - array of multiple [form\_field](field-types.md) objects.
-* `created` - [date/time](broken-reference). Date when this form created (or attached to the task). The read-only field.
+* `created` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when this form created (or attached to the task). The read-only field.
 * `submit_in_zone` - boolean. If `true`, form can be submitted only in task zone.
 * `task_id` - int. An ID of the task to which this form attached.
 * `template_id` - int. An ID of the form template on which this form based. Can be null if template deleted.
 * `values` - a map with field IDs as keys and [field\_value](field-types.md) objects as values. Can be null if form not filled.
   * `key` - string. Key used to link field and its corresponding value.
-* `submitted` - [date/time](broken-reference). Date when form values last submitted.
+* `submitted` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when form values last submitted.
 * `submit_location` - location at which form values last submitted.
 
 ## Form file object
@@ -87,13 +87,13 @@ Find comprehinsive information on forms usage in our [instructions](../../../../
 ```
 
 * `id` - int. File ID.
-* `type` - [enum](broken-reference). Can be "image" or "file".
-* `created` - [date/time](broken-reference). Date when file created.
-* `uploaded` - [date/time](broken-reference). Date when file uploaded. Can be null if file not yet uploaded.
+* `type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "image" or "file".
+* `created` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when file created.
+* `uploaded` - [date/time](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Date when file uploaded. Can be null if file not yet uploaded.
 * `name` - string. A filename.
 * `size` - int. Size in bytes. If file not uploaded, show maximum allowed size for the upload.
 * `metadata` - nullable metadata object.
-* `state` - [enum](broken-reference). Can be "created" | "in\_progress" | "uploaded" | "deleted".
+* `state` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "created" | "in\_progress" | "uploaded" | "deleted".
 * `download_url` - string. Actual URL at which file is available. Can be null if file not yet uploaded.
 
 ## API actions
@@ -198,10 +198,10 @@ Downloads form as a file by an ID.
 
 #### Parameters
 
-| name   | description                          | type                     |
-| ------ | ------------------------------------ | ------------------------ |
-| id     | ID of the form.                      | int                      |
-| format | File format. Can be "pdf" or "xlsx". | [enum](broken-reference) |
+| name   | description                          | type                                                  |
+| ------ | ------------------------------------ | ----------------------------------------------------- |
+| id     | ID of the form.                      | int                                                   |
+| format | File format. Can be "pdf" or "xlsx". | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) |
 
 #### Examples
 

@@ -29,10 +29,10 @@ Gets special settings for the specified tracker.
 
 **Parameters**
 
-| name        | description                                                                                      | type                     | format                       |
-| ----------- | ------------------------------------------------------------------------------------------------ | ------------------------ | ---------------------------- |
-| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                      | 123456                       |
-| type        | Optional. Type of special object.                                                                | [enum](broken-reference) | "electronic\_lock\_password" |
+| name        | description                                                                                      | type                                                  | format                       |
+| ----------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ---------------------------- |
+| tracker\_id | ID of the tracker (aka "object\_id"). Tracker must belong to authorized user and not be blocked. | int                                                   | 123456                       |
+| type        | Optional. Type of special object.                                                                | [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types) | "electronic\_lock\_password" |
 
 **Examples**
 
@@ -153,9 +153,9 @@ If parameter type omitted:
 }
 ```
 
-* `low_battery_mode` - [enum](broken-reference). Can be "enable" | "disable".
-* `ext_input_mode` - [enum](broken-reference). Can be "enable" | "disable".
-* `sos_button_mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `low_battery_mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
+* `ext_input_mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
+* `sos_button_mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 
 **auto\_geofence\_telfm**
 
@@ -168,7 +168,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `activation_timeout` - int. 0-65535 seconds.
 * `radius` - int. 50 - 10000 meters.
 
@@ -181,7 +181,7 @@ If parameter type omitted:
 }
 ```
 
-* `function` - [enum](broken-reference). Can be "slot1" | "slot2" | "vu\_activities" | "vu\_no\_activities"
+* `function` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "slot1" | "slot2" | "vu\_activities" | "vu\_no\_activities"
 
 **call\_button**
 
@@ -301,7 +301,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "on\_need" | "ign\_on\_only" | "ign\_on" | "low\_charge".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "on\_need" | "ign\_on\_only" | "ign\_on" | "low\_charge".
 
 **ddd\_emails**
 
@@ -336,7 +336,7 @@ If parameter type omitted:
 }
 ```
 
-* `fuel_type` - [enum](broken-reference). Can be "gasoline" | "diesel" | "lpg".
+* `fuel_type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "gasoline" | "diesel" | "lpg".
 * `engine_volume` - double. Can be 0.0 - 10.0.
 * `multiplier` - double. Can be 0.0 - 10.0.
 
@@ -361,7 +361,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without\
   triggering harsh acceleration event.Can be 0 - 2.55.
 * `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering\
@@ -381,7 +381,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without\
   triggering harsh acceleration event.Can be 0.1 - 1.0.
 * `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering\
@@ -401,7 +401,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. It is a max allowed acceleration force which can be reached while accelerating without\
   triggering harsh acceleration event. Can be 0.25 - 0.85 g.
 * `max_braking_force` - double. It is a max allowed braking force which can be reached while braking without triggering\
@@ -445,7 +445,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `high_speed` - int. Can be 100 - 400.
 * `high_speed_braking_delta` - int. Can be 0 - 100.
 * `high_speed_acceleration_delta` - int. Can be 0 - 100.
@@ -476,7 +476,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "disable" | "gps\_only" | "motion\_sensor\_only" | "gps\_and\_motion\_sensor".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "disable" | "gps\_only" | "motion\_sensor\_only" | "gps\_and\_motion\_sensor".
 * `high_speed` - int. Can be 100 - 400.
 * `high_speed_braking_delta` - int. Can be 0 - 100.
 * `high_speed_acceleration_delta` - int. Can be 0 - 100.
@@ -535,7 +535,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `max_acceleration_force` - double. Can be 0.1 - 8.
 * `max_braking_force` - double. Can be 0.1 - 8.
 
@@ -564,7 +564,7 @@ If parameter type omitted:
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `x` - double. Can be 0 - 2.55.
 * `y` - double. Can be 0 - 2.55.
 * `z` - double. Can be 0 - 2.55.
@@ -578,7 +578,7 @@ If parameter type omitted:
 }
 ```
 
-* `sensitivity` - [enum](broken-reference). Can be "easy" | "normal" | "hard" | "hardest".
+* `sensitivity` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "easy" | "normal" | "hard" | "hardest".
 
 **ign\_ruptela**
 
@@ -624,7 +624,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "power\_voltage" | "din1" | "movement".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "power\_voltage" | "din1" | "movement".
 * `power_voltage_low_level` - int. Can be 0 - 30000.
 * `power_voltage_high_level` - int. Can be 0 - 30000.
 
@@ -639,7 +639,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "power\_voltage" | "din1" | "movement".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "power\_voltage" | "din1" | "movement".
 * `power_voltage_low_level` - int. Can be 0 - 30000.
 * `power_voltage_high_level` - int. Can be 0 - 30000.
 
@@ -705,7 +705,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 
 **scat\_mayak\_bt\_control**
 
@@ -717,7 +717,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `function` - [enum](broken-reference). Can be "bt\_disable" | "bt\_enable" | "bt\_clear" | "bt\_write".
+* `function` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "bt\_disable" | "bt\_enable" | "bt\_clear" | "bt\_write".
 * `bt_state` - boolean.
 
 **sos\_key**
@@ -730,7 +730,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "report" | "call\_report".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "report" | "call\_report".
 * `phone` - string. SOS phone to call. Phone number in the international format without "+" sign.
 
 **starcom\_impact**
@@ -793,7 +793,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `data_type` - [enum](broken-reference). Can be "overview" | "activities" | "eventsAndFaults" | "detailedSpeed" | "technicalData" |\
+* `data_type` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "overview" | "activities" | "eventsAndFaults" | "detailedSpeed" | "technicalData" |\
   "card1Download" | "card2Download".
 * `activities_start_time` - string date. Format = "YYYY-MM-DD", not null only if data\_type = "activities".
 * `activities_end_time` - string date. Format = "YYYY-MM-DD", not null only if data\_type = "activities".
@@ -837,7 +837,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `engine_off_to_tow` - int. A time parameter to judge whether the device considered towed after the engine off.\
   If the motion sensor doesn't detect stillness within the specified time after the engine off the device is being towed.\
   Can be 0 - 900 seconds.
@@ -867,7 +867,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `engine_off_to_tow` - int. A time parameter to judge whether the device considered towed after the engine off.\
   If the motion sensor doesn't detect stillness within the specified time after the engine off the device is being towed.\
   Can be 0 - 900 seconds.
@@ -893,7 +893,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "enable" | "disable".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "enable" | "disable".
 * `activation_timeout` - int. Can be 0 - 65535 minutes.
 * `threshold` - double. Can be 0.10 - 5.00.
 
@@ -917,7 +917,7 @@ For Ruptela devices. Represents configuration parameters related to ignition det
 }
 ```
 
-* `mode` - [enum](broken-reference). Can be "disabled" | "power\_voltage" | "motion\_sensor".
+* `mode` - [enum](/broken/pages/ZecFmxN0cywjosU1jKcD#data-types). Can be "disabled" | "power\_voltage" | "motion\_sensor".
 * `ign_on_voltage` - int. Can be 250 - 28000.
 * `rest_duration_to_off` – int. A time parameter to make sure the device enters stillness status, i.e. the status of\
   the device will be changed to stillness if the motion sensor detects stillness and maintains for a period of time\
