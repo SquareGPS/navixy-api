@@ -146,7 +146,7 @@ Both queries now share the same field selection for core device data.
 
 ### Inline fragments for interfaces
 
-When working with interfaces like [Node](../api-reference/interfaces.md#node), use inline fragments to request type-specific fields:
+When working with interfaces like [Node](../operations-and-types/interfaces.md#node), use inline fragments to request type-specific fields:
 
 ```graphql
 query GetNode($id: ID!) {
@@ -246,7 +246,7 @@ Each aliased mutation executes independently. If one fails, others can still suc
 
 ## Directives
 
-Directives modify how fields are executed. GraphQL includes [six built-in directives](../api-reference/directives.md) for conditional field inclusion.
+Directives modify how fields are executed. GraphQL includes [six built-in directives](../directives.md) for conditional field inclusion.
 
 Directives can be used to:
 
@@ -276,5 +276,5 @@ query ListDevices(
 ## Next steps
 
 * [Learn how to set up authentication and make your first request](../getting-started.md)
-* [Browse available operations and types](../api-reference/)
+* [Browse available operations and types](../operations-and-types/)
 * [Understand error responses and codes](../error-handling.md)
