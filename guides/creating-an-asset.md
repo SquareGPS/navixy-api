@@ -13,7 +13,7 @@ In this guide, you will learn how to create and configure a custom asset.
 ### How to create a custom asset
 
 {% hint style="warning" %}
-Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location and the current version of the API. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
+Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location and the current version of the API. To learn the specific server URLs, see [API environments](/broken/pages/UpKpxPxvOOMJckvsSJ9N#api-environments).
 {% endhint %}
 
 #### Step 1. Create an asset type

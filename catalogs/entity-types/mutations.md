@@ -1,4 +1,4 @@
-# Entity Types Catalog — Mutations
+# Mutations
 
 ### assetTypeCreate
 
@@ -12,9 +12,9 @@ assetTypeCreate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [AssetTypeCreateInput](./types.md#assettypecreateinput)! | The input fields for creating the asset type. |
+| Name    | Type                                                   | Description                                   |
+| ------- | ------------------------------------------------------ | --------------------------------------------- |
+| `input` | [AssetTypeCreateInput](types.md#assettypecreateinput)! | The input fields for creating the asset type. |
 
 **Input types:**
 
@@ -22,13 +22,13 @@ assetTypeCreate(
 
 <summary><code>AssetTypeCreateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code](../../common.md#code)! | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](../README.md#catalogitemmetainput) | The display properties. |
+| Field            | Type                                                       | Description                              |
+| ---------------- | ---------------------------------------------------------- | ---------------------------------------- |
+| `organizationId` | `ID!`                                                      | The organization that will own the item. |
+| `code`           | [Code](../../core-api-reference/common-resources.md#code)! | The machine-readable code.               |
+| `title`          | `String!`                                                  | The display name.                        |
+| `order`          | `Int`                                                      | The display order.                       |
+| `meta`           | [CatalogItemMetaInput](../#catalogitemmetainput)           | The display properties.                  |
 
 </details>
 
@@ -36,13 +36,13 @@ assetTypeCreate(
 
 <summary><code>CatalogItemMetaInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `description` | `String` | The description. |
-| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | [HexColorCode](../../common.md#hexcolorcode) | The text color for UI display. |
-| `backgroundColor` | [HexColorCode](../../common.md#hexcolorcode) | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
+| Field             | Type                                                                      | Description                                       |
+| ----------------- | ------------------------------------------------------------------------- | ------------------------------------------------- |
+| `description`     | `String`                                                                  | The description.                                  |
+| `hidden`          | `Boolean`                                                                 | Whether the item is hidden from regular UI lists. |
+| `textColor`       | [HexColorCode](../../core-api-reference/common-resources.md#hexcolorcode) | The text color for UI display.                    |
+| `backgroundColor` | [HexColorCode](../../core-api-reference/common-resources.md#hexcolorcode) | The background color for UI display.              |
+| `icon`            | `String`                                                                  | A relative URL to the icon.                       |
 
 </details>
 
@@ -52,9 +52,9 @@ assetTypeCreate(
 
 <summary><code>AssetTypePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `assetType` | [AssetType](./types.md#assettype)! | The created or updated asset type. |
+| Field       | Type                             | Description                        |
+| ----------- | -------------------------------- | ---------------------------------- |
+| `assetType` | [AssetType](types.md#assettype)! | The created or updated asset type. |
 
 </details>
 
@@ -62,17 +62,17 @@ assetTypeCreate(
 
 <summary><code>AssetType (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | [Code](../../common.md#code)! |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../organizations.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../README.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
+| Field                    | Type                                                                       | Description                                                                     |
+| ------------------------ | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `id`                     | `ID!`                                                                      |                                                                                 |
+| `version`                | `Int!`                                                                     |                                                                                 |
+| `title`                  | `String!`                                                                  |                                                                                 |
+| `code`                   | [Code](../../core-api-reference/common-resources.md#code)!                 |                                                                                 |
+| `order`                  | `Int!`                                                                     |                                                                                 |
+| `catalog`                | [Catalog](../../core-api-reference/organizations/#catalog)!                |                                                                                 |
+| `organization`           | [Organization](../../core-api-reference/organizations/#organization)       |                                                                                 |
+| `meta`                   | [CatalogItemMeta](../#catalogitemmeta)!                                    |                                                                                 |
+| `customFieldDefinitions` | \[[CustomFieldDefinition](../../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
 
 </details>
 
@@ -88,9 +88,9 @@ assetTypeUpdate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [AssetTypeUpdateInput](./types.md#assettypeupdateinput)! | The input fields for updating the asset type. |
+| Name    | Type                                                   | Description                                   |
+| ------- | ------------------------------------------------------ | --------------------------------------------- |
+| `input` | [AssetTypeUpdateInput](types.md#assettypeupdateinput)! | The input fields for updating the asset type. |
 
 **Input types:**
 
@@ -98,13 +98,13 @@ assetTypeUpdate(
 
 <summary><code>AssetTypeUpdateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](../README.md#catalogitemmetainput) | The display properties. |
+| Field     | Type                                             | Description                                 |
+| --------- | ------------------------------------------------ | ------------------------------------------- |
+| `id`      | `ID!`                                            | The item ID to update.                      |
+| `version` | `Int!`                                           | The current version for optimistic locking. |
+| `title`   | `String`                                         | The new display name.                       |
+| `order`   | `Int`                                            | The new display order.                      |
+| `meta`    | [CatalogItemMetaInput](../#catalogitemmetainput) | The display properties.                     |
 
 </details>
 
@@ -112,13 +112,13 @@ assetTypeUpdate(
 
 <summary><code>CatalogItemMetaInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `description` | `String` | The description. |
-| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | [HexColorCode](../../common.md#hexcolorcode) | The text color for UI display. |
-| `backgroundColor` | [HexColorCode](../../common.md#hexcolorcode) | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
+| Field             | Type                                                                      | Description                                       |
+| ----------------- | ------------------------------------------------------------------------- | ------------------------------------------------- |
+| `description`     | `String`                                                                  | The description.                                  |
+| `hidden`          | `Boolean`                                                                 | Whether the item is hidden from regular UI lists. |
+| `textColor`       | [HexColorCode](../../core-api-reference/common-resources.md#hexcolorcode) | The text color for UI display.                    |
+| `backgroundColor` | [HexColorCode](../../core-api-reference/common-resources.md#hexcolorcode) | The background color for UI display.              |
+| `icon`            | `String`                                                                  | A relative URL to the icon.                       |
 
 </details>
 
@@ -128,9 +128,9 @@ assetTypeUpdate(
 
 <summary><code>AssetTypePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `assetType` | [AssetType](./types.md#assettype)! | The created or updated asset type. |
+| Field       | Type                             | Description                        |
+| ----------- | -------------------------------- | ---------------------------------- |
+| `assetType` | [AssetType](types.md#assettype)! | The created or updated asset type. |
 
 </details>
 
@@ -138,17 +138,17 @@ assetTypeUpdate(
 
 <summary><code>AssetType (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | [Code](../../common.md#code)! |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../organizations.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../README.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
+| Field                    | Type                                                                       | Description                                                                     |
+| ------------------------ | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `id`                     | `ID!`                                                                      |                                                                                 |
+| `version`                | `Int!`                                                                     |                                                                                 |
+| `title`                  | `String!`                                                                  |                                                                                 |
+| `code`                   | [Code](../../core-api-reference/common-resources.md#code)!                 |                                                                                 |
+| `order`                  | `Int!`                                                                     |                                                                                 |
+| `catalog`                | [Catalog](../../core-api-reference/organizations/#catalog)!                |                                                                                 |
+| `organization`           | [Organization](../../core-api-reference/organizations/#organization)       |                                                                                 |
+| `meta`                   | [CatalogItemMeta](../#catalogitemmeta)!                                    |                                                                                 |
+| `customFieldDefinitions` | \[[CustomFieldDefinition](../../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
 
 </details>
 
@@ -164,9 +164,9 @@ assetTypeDelete(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../README.md#catalogitemdeleteinput)! | The input fields for deleting the asset type. |
+| Name    | Type                                                  | Description                                   |
+| ------- | ----------------------------------------------------- | --------------------------------------------- |
+| `input` | [CatalogItemDeleteInput](../#catalogitemdeleteinput)! | The input fields for deleting the asset type. |
 
 **Input types:**
 
@@ -174,9 +174,9 @@ assetTypeDelete(
 
 <summary><code>CatalogItemDeleteInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
+| Field     | Type   | Description                                 |
+| --------- | ------ | ------------------------------------------- |
+| `id`      | `ID!`  | The catalog item ID to delete.              |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 </details>
@@ -187,8 +187,8 @@ assetTypeDelete(
 
 <summary><code>DeletePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field       | Type  | Description                   |
+| ----------- | ----- | ----------------------------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>
@@ -205,9 +205,9 @@ scheduleTypeCreate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [ScheduleTypeCreateInput](./types.md#scheduletypecreateinput)! | The input fields for creating the schedule type. |
+| Name    | Type                                                         | Description                                      |
+| ------- | ------------------------------------------------------------ | ------------------------------------------------ |
+| `input` | [ScheduleTypeCreateInput](types.md#scheduletypecreateinput)! | The input fields for creating the schedule type. |
 
 **Input types:**
 
@@ -215,13 +215,13 @@ scheduleTypeCreate(
 
 <summary><code>ScheduleTypeCreateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code](../../common.md#code)! | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](../README.md#catalogitemmetainput) | The display properties. |
+| Field            | Type                                                       | Description                              |
+| ---------------- | ---------------------------------------------------------- | ---------------------------------------- |
+| `organizationId` | `ID!`                                                      | The organization that will own the item. |
+| `code`           | [Code](../../core-api-reference/common-resources.md#code)! | The machine-readable code.               |
+| `title`          | `String!`                                                  | The display name.                        |
+| `order`          | `Int`                                                      | The display order.                       |
+| `meta`           | [CatalogItemMetaInput](../#catalogitemmetainput)           | The display properties.                  |
 
 </details>
 
@@ -229,13 +229,13 @@ scheduleTypeCreate(
 
 <summary><code>CatalogItemMetaInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `description` | `String` | The description. |
-| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | [HexColorCode](../../common.md#hexcolorcode) | The text color for UI display. |
-| `backgroundColor` | [HexColorCode](../../common.md#hexcolorcode) | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
+| Field             | Type                                                                      | Description                                       |
+| ----------------- | ------------------------------------------------------------------------- | ------------------------------------------------- |
+| `description`     | `String`                                                                  | The description.                                  |
+| `hidden`          | `Boolean`                                                                 | Whether the item is hidden from regular UI lists. |
+| `textColor`       | [HexColorCode](../../core-api-reference/common-resources.md#hexcolorcode) | The text color for UI display.                    |
+| `backgroundColor` | [HexColorCode](../../core-api-reference/common-resources.md#hexcolorcode) | The background color for UI display.              |
+| `icon`            | `String`                                                                  | A relative URL to the icon.                       |
 
 </details>
 
@@ -245,9 +245,9 @@ scheduleTypeCreate(
 
 <summary><code>ScheduleTypePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `scheduleType` | [ScheduleType](./types.md#scheduletype)! | The created or updated schedule type. |
+| Field          | Type                                   | Description                           |
+| -------------- | -------------------------------------- | ------------------------------------- |
+| `scheduleType` | [ScheduleType](types.md#scheduletype)! | The created or updated schedule type. |
 
 </details>
 
@@ -255,17 +255,17 @@ scheduleTypeCreate(
 
 <summary><code>ScheduleType (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | [Code](../../common.md#code)! |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../organizations.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../README.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this schedule type, ordered by display order. |
+| Field                    | Type                                                                       | Description                                                                        |
+| ------------------------ | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `id`                     | `ID!`                                                                      |                                                                                    |
+| `version`                | `Int!`                                                                     |                                                                                    |
+| `title`                  | `String!`                                                                  |                                                                                    |
+| `code`                   | [Code](../../core-api-reference/common-resources.md#code)!                 |                                                                                    |
+| `order`                  | `Int!`                                                                     |                                                                                    |
+| `catalog`                | [Catalog](../../core-api-reference/organizations/#catalog)!                |                                                                                    |
+| `organization`           | [Organization](../../core-api-reference/organizations/#organization)       |                                                                                    |
+| `meta`                   | [CatalogItemMeta](../#catalogitemmeta)!                                    |                                                                                    |
+| `customFieldDefinitions` | \[[CustomFieldDefinition](../../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this schedule type, ordered by display order. |
 
 </details>
 
@@ -281,9 +281,9 @@ scheduleTypeUpdate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [ScheduleTypeUpdateInput](./types.md#scheduletypeupdateinput)! | The input fields for updating the schedule type. |
+| Name    | Type                                                         | Description                                      |
+| ------- | ------------------------------------------------------------ | ------------------------------------------------ |
+| `input` | [ScheduleTypeUpdateInput](types.md#scheduletypeupdateinput)! | The input fields for updating the schedule type. |
 
 **Input types:**
 
@@ -291,13 +291,13 @@ scheduleTypeUpdate(
 
 <summary><code>ScheduleTypeUpdateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](../README.md#catalogitemmetainput) | The display properties. |
+| Field     | Type                                             | Description                                 |
+| --------- | ------------------------------------------------ | ------------------------------------------- |
+| `id`      | `ID!`                                            | The item ID to update.                      |
+| `version` | `Int!`                                           | The current version for optimistic locking. |
+| `title`   | `String`                                         | The new display name.                       |
+| `order`   | `Int`                                            | The new display order.                      |
+| `meta`    | [CatalogItemMetaInput](../#catalogitemmetainput) | The display properties.                     |
 
 </details>
 
@@ -305,13 +305,13 @@ scheduleTypeUpdate(
 
 <summary><code>CatalogItemMetaInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `description` | `String` | The description. |
-| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | [HexColorCode](../../common.md#hexcolorcode) | The text color for UI display. |
-| `backgroundColor` | [HexColorCode](../../common.md#hexcolorcode) | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
+| Field             | Type                                                                      | Description                                       |
+| ----------------- | ------------------------------------------------------------------------- | ------------------------------------------------- |
+| `description`     | `String`                                                                  | The description.                                  |
+| `hidden`          | `Boolean`                                                                 | Whether the item is hidden from regular UI lists. |
+| `textColor`       | [HexColorCode](../../core-api-reference/common-resources.md#hexcolorcode) | The text color for UI display.                    |
+| `backgroundColor` | [HexColorCode](../../core-api-reference/common-resources.md#hexcolorcode) | The background color for UI display.              |
+| `icon`            | `String`                                                                  | A relative URL to the icon.                       |
 
 </details>
 
@@ -321,9 +321,9 @@ scheduleTypeUpdate(
 
 <summary><code>ScheduleTypePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `scheduleType` | [ScheduleType](./types.md#scheduletype)! | The created or updated schedule type. |
+| Field          | Type                                   | Description                           |
+| -------------- | -------------------------------------- | ------------------------------------- |
+| `scheduleType` | [ScheduleType](types.md#scheduletype)! | The created or updated schedule type. |
 
 </details>
 
@@ -331,17 +331,17 @@ scheduleTypeUpdate(
 
 <summary><code>ScheduleType (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | [Code](../../common.md#code)! |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../organizations.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../README.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this schedule type, ordered by display order. |
+| Field                    | Type                                                                       | Description                                                                        |
+| ------------------------ | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `id`                     | `ID!`                                                                      |                                                                                    |
+| `version`                | `Int!`                                                                     |                                                                                    |
+| `title`                  | `String!`                                                                  |                                                                                    |
+| `code`                   | [Code](../../core-api-reference/common-resources.md#code)!                 |                                                                                    |
+| `order`                  | `Int!`                                                                     |                                                                                    |
+| `catalog`                | [Catalog](../../core-api-reference/organizations/#catalog)!                |                                                                                    |
+| `organization`           | [Organization](../../core-api-reference/organizations/#organization)       |                                                                                    |
+| `meta`                   | [CatalogItemMeta](../#catalogitemmeta)!                                    |                                                                                    |
+| `customFieldDefinitions` | \[[CustomFieldDefinition](../../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this schedule type, ordered by display order. |
 
 </details>
 
@@ -357,9 +357,9 @@ scheduleTypeDelete(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../README.md#catalogitemdeleteinput)! | The input fields for deleting the schedule type. |
+| Name    | Type                                                  | Description                                      |
+| ------- | ----------------------------------------------------- | ------------------------------------------------ |
+| `input` | [CatalogItemDeleteInput](../#catalogitemdeleteinput)! | The input fields for deleting the schedule type. |
 
 **Input types:**
 
@@ -367,9 +367,9 @@ scheduleTypeDelete(
 
 <summary><code>CatalogItemDeleteInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
+| Field     | Type   | Description                                 |
+| --------- | ------ | ------------------------------------------- |
+| `id`      | `ID!`  | The catalog item ID to delete.              |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 </details>
@@ -380,8 +380,8 @@ scheduleTypeDelete(
 
 <summary><code>DeletePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field       | Type  | Description                   |
+| ----------- | ----- | ----------------------------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>

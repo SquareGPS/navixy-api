@@ -33,7 +33,7 @@ query {
 
 This returns only devices with the specified status.
 
-Each entity type has its own filter input with different available fields. For example, `DeviceFilter` supports filtering by type, model, status, vendor, and inventory, while `OrganizationFilter` only supports filtering by parent and active status. Use [introspection ](operations-and-types/#introspection-and-schema)or the [API reference ](operations-and-types/)to see available filter fields for each entity.
+Each entity type has its own filter input with different available fields. For example, `DeviceFilter` supports filtering by type, model, status, vendor, and inventory, while `OrganizationFilter` only supports filtering by parent and active status. Use [introspection ](graphql-reference/all-operations-and-types/#introspection-and-schema)or the [API reference ](graphql-reference/all-operations-and-types/)to see available filter fields for each entity.
 
 ### Filtering logic
 

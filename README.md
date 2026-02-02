@@ -45,7 +45,7 @@ These articles provide essential background knowledge and guidelines:
 * [**GraphQL basics**](graphql-basics.md): A brief introduction to GraphQL for developers familiar with REST APIs.
 * [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through authentication and your first queries.
 * [**Authentication**](authentication.md): How to obtain and use access tokens.
-* [**Technical reference**](technical-reference.md): Implementation details covering headers, pagination, and error handling.
+* [**Technical reference**](/broken/pages/UpKpxPxvOOMJckvsSJ9N): Implementation details covering headers, pagination, and error handling.
 * [**Optimistic locking**](optimistic-locking.md): Description of the optimistic locking feature.
 * [**Guides**](guides/): In-depth guides exploring the most common use cases.
 

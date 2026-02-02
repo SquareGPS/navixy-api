@@ -1,4 +1,4 @@
-# Geo Objects — Mutations
+# Mutations
 
 ### geoObjectCreate
 
@@ -12,9 +12,9 @@ geoObjectCreate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [GeoObjectCreateInput](./types.md#geoobjectcreateinput)! | The input fields for creating the geo object. |
+| Name    | Type                                                   | Description                                   |
+| ------- | ------------------------------------------------------ | --------------------------------------------- |
+| `input` | [GeoObjectCreateInput](types.md#geoobjectcreateinput)! | The input fields for creating the geo object. |
 
 **Input types:**
 
@@ -22,13 +22,13 @@ geoObjectCreate(
 
 <summary><code>GeoObjectCreateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the geo object. |
-| `typeId` | `ID!` | The geo object type ID. |
-| `title` | `String!` | The geo object display name. |
-| `geometry` | [GeoJSON](./types.md#geojson)! | The [GeoJSON](https://geojson.org/) geometry. |
-| `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field values. |
+| Field            | Type                                                                 | Description                                    |
+| ---------------- | -------------------------------------------------------------------- | ---------------------------------------------- |
+| `organizationId` | `ID!`                                                                | The organization that will own the geo object. |
+| `typeId`         | `ID!`                                                                | The geo object type ID.                        |
+| `title`          | `String!`                                                            | The geo object display name.                   |
+| `geometry`       | [GeoJSON](types.md#geojson)!                                         | The [GeoJSON](https://geojson.org/) geometry.  |
+| `customFields`   | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field values.                       |
 
 </details>
 
@@ -36,10 +36,10 @@ geoObjectCreate(
 
 <summary><code>CustomFieldsPatchInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `set` | [JSON](../common.md#json) | Fields to set or update as a key-value map. |
-| `unset` | [[Code](../common.md#code)!] | Field codes to remove. |
+| Field   | Type                                                       | Description                                 |
+| ------- | ---------------------------------------------------------- | ------------------------------------------- |
+| `set`   | [JSON](../core-api-reference/common-resources.md#json)     | Fields to set or update as a key-value map. |
+| `unset` | \[[Code](../core-api-reference/common-resources.md#code)!] | Field codes to remove.                      |
 
 </details>
 
@@ -49,9 +49,9 @@ geoObjectCreate(
 
 <summary><code>GeoObjectPayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `geoObject` | [GeoObject](./types.md#geoobject)! | The created or updated geo object. |
+| Field       | Type                             | Description                        |
+| ----------- | -------------------------------- | ---------------------------------- |
+| `geoObject` | [GeoObject](types.md#geoobject)! | The created or updated geo object. |
 
 </details>
 
@@ -59,16 +59,16 @@ geoObjectCreate(
 
 <summary><code>GeoObject (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
-| `type` | [GeoObjectType](../catalogs/entity-types/types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | [GeoJSON](./types.md#geojson)! |  |
-| `customFields` | [JSON](../common.md#json)! |  |
-| `containsPoints` | [[PointContainmentResult](./types.md#pointcontainmentresult)!]! |  |
+| Field            | Type                                                               | Description                                 |
+| ---------------- | ------------------------------------------------------------------ | ------------------------------------------- |
+| `id`             | `ID!`                                                              |                                             |
+| `version`        | `Int!`                                                             |                                             |
+| `title`          | `String!`                                                          |                                             |
+| `organization`   | [Organization](../core-api-reference/organizations/#organization)! | The organization that owns this geo object. |
+| `type`           | [GeoObjectType](../catalogs/entity-types/types.md#geoobjecttype)!  | The geo object type classification.         |
+| `geometry`       | [GeoJSON](types.md#geojson)!                                       |                                             |
+| `customFields`   | [JSON](../core-api-reference/common-resources.md#json)!            |                                             |
+| `containsPoints` | \[[PointContainmentResult](types.md#pointcontainmentresult)!]!     |                                             |
 
 </details>
 
@@ -84,9 +84,9 @@ geoObjectUpdate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [GeoObjectUpdateInput](./types.md#geoobjectupdateinput)! | The input fields for updating the geo object. |
+| Name    | Type                                                   | Description                                   |
+| ------- | ------------------------------------------------------ | --------------------------------------------- |
+| `input` | [GeoObjectUpdateInput](types.md#geoobjectupdateinput)! | The input fields for updating the geo object. |
 
 **Input types:**
 
@@ -94,13 +94,13 @@ geoObjectUpdate(
 
 <summary><code>GeoObjectUpdateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The geo object ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `geometry` | [GeoJSON](./types.md#geojson) | The new geometry. |
-| `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field changes. |
+| Field          | Type                                                                 | Description                                 |
+| -------------- | -------------------------------------------------------------------- | ------------------------------------------- |
+| `id`           | `ID!`                                                                | The geo object ID to update.                |
+| `version`      | `Int!`                                                               | The current version for optimistic locking. |
+| `title`        | `String`                                                             | The new display name.                       |
+| `geometry`     | [GeoJSON](types.md#geojson)                                          | The new geometry.                           |
+| `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field changes.                   |
 
 </details>
 
@@ -108,10 +108,10 @@ geoObjectUpdate(
 
 <summary><code>CustomFieldsPatchInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `set` | [JSON](../common.md#json) | Fields to set or update as a key-value map. |
-| `unset` | [[Code](../common.md#code)!] | Field codes to remove. |
+| Field   | Type                                                       | Description                                 |
+| ------- | ---------------------------------------------------------- | ------------------------------------------- |
+| `set`   | [JSON](../core-api-reference/common-resources.md#json)     | Fields to set or update as a key-value map. |
+| `unset` | \[[Code](../core-api-reference/common-resources.md#code)!] | Field codes to remove.                      |
 
 </details>
 
@@ -121,9 +121,9 @@ geoObjectUpdate(
 
 <summary><code>GeoObjectPayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `geoObject` | [GeoObject](./types.md#geoobject)! | The created or updated geo object. |
+| Field       | Type                             | Description                        |
+| ----------- | -------------------------------- | ---------------------------------- |
+| `geoObject` | [GeoObject](types.md#geoobject)! | The created or updated geo object. |
 
 </details>
 
@@ -131,16 +131,16 @@ geoObjectUpdate(
 
 <summary><code>GeoObject (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
-| `type` | [GeoObjectType](../catalogs/entity-types/types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | [GeoJSON](./types.md#geojson)! |  |
-| `customFields` | [JSON](../common.md#json)! |  |
-| `containsPoints` | [[PointContainmentResult](./types.md#pointcontainmentresult)!]! |  |
+| Field            | Type                                                               | Description                                 |
+| ---------------- | ------------------------------------------------------------------ | ------------------------------------------- |
+| `id`             | `ID!`                                                              |                                             |
+| `version`        | `Int!`                                                             |                                             |
+| `title`          | `String!`                                                          |                                             |
+| `organization`   | [Organization](../core-api-reference/organizations/#organization)! | The organization that owns this geo object. |
+| `type`           | [GeoObjectType](../catalogs/entity-types/types.md#geoobjecttype)!  | The geo object type classification.         |
+| `geometry`       | [GeoJSON](types.md#geojson)!                                       |                                             |
+| `customFields`   | [JSON](../core-api-reference/common-resources.md#json)!            |                                             |
+| `containsPoints` | \[[PointContainmentResult](types.md#pointcontainmentresult)!]!     |                                             |
 
 </details>
 
@@ -156,9 +156,9 @@ geoObjectDelete(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [GeoObjectDeleteInput](./types.md#geoobjectdeleteinput)! | The input fields for deleting the geo object. |
+| Name    | Type                                                   | Description                                   |
+| ------- | ------------------------------------------------------ | --------------------------------------------- |
+| `input` | [GeoObjectDeleteInput](types.md#geoobjectdeleteinput)! | The input fields for deleting the geo object. |
 
 **Input types:**
 
@@ -166,9 +166,9 @@ geoObjectDelete(
 
 <summary><code>GeoObjectDeleteInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The geo object ID to delete. |
+| Field     | Type   | Description                                 |
+| --------- | ------ | ------------------------------------------- |
+| `id`      | `ID!`  | The geo object ID to delete.                |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 </details>
@@ -179,8 +179,8 @@ geoObjectDelete(
 
 <summary><code>DeletePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field       | Type  | Description                   |
+| ----------- | ----- | ----------------------------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>
@@ -197,8 +197,8 @@ geoObjectTypeCreate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                                                                                    | Description                                        |
+| ------- | --------------------------------------------------------------------------------------- | -------------------------------------------------- |
 | `input` | [GeoObjectTypeCreateInput](../catalogs/entity-types/types.md#geoobjecttypecreateinput)! | The input fields for creating the geo object type. |
 
 **Input types:**
@@ -207,13 +207,13 @@ geoObjectTypeCreate(
 
 <summary><code>GeoObjectTypeCreateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the item. |
-| `code` | [Code](../common.md#code)! | The machine-readable code. |
-| `title` | `String!` | The display name. |
-| `order` | `Int` | The display order. |
-| `meta` | [CatalogItemMetaInput](../catalogs/README.md#catalogitemmetainput) | The display properties. |
+| Field            | Type                                                      | Description                              |
+| ---------------- | --------------------------------------------------------- | ---------------------------------------- |
+| `organizationId` | `ID!`                                                     | The organization that will own the item. |
+| `code`           | [Code](../core-api-reference/common-resources.md#code)!   | The machine-readable code.               |
+| `title`          | `String!`                                                 | The display name.                        |
+| `order`          | `Int`                                                     | The display order.                       |
+| `meta`           | [CatalogItemMetaInput](../catalogs/#catalogitemmetainput) | The display properties.                  |
 
 </details>
 
@@ -221,13 +221,13 @@ geoObjectTypeCreate(
 
 <summary><code>CatalogItemMetaInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `description` | `String` | The description. |
-| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | [HexColorCode](../common.md#hexcolorcode) | The text color for UI display. |
-| `backgroundColor` | [HexColorCode](../common.md#hexcolorcode) | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
+| Field             | Type                                                                   | Description                                       |
+| ----------------- | ---------------------------------------------------------------------- | ------------------------------------------------- |
+| `description`     | `String`                                                               | The description.                                  |
+| `hidden`          | `Boolean`                                                              | Whether the item is hidden from regular UI lists. |
+| `textColor`       | [HexColorCode](../core-api-reference/common-resources.md#hexcolorcode) | The text color for UI display.                    |
+| `backgroundColor` | [HexColorCode](../core-api-reference/common-resources.md#hexcolorcode) | The background color for UI display.              |
+| `icon`            | `String`                                                               | A relative URL to the icon.                       |
 
 </details>
 
@@ -237,8 +237,8 @@ geoObjectTypeCreate(
 
 <summary><code>GeoObjectTypePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field           | Type                                                              | Description                             |
+| --------------- | ----------------------------------------------------------------- | --------------------------------------- |
 | `geoObjectType` | [GeoObjectType](../catalogs/entity-types/types.md#geoobjecttype)! | The created or updated geo object type. |
 
 </details>
@@ -247,17 +247,17 @@ geoObjectTypeCreate(
 
 <summary><code>GeoObjectType (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | [Code](../common.md#code)! |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../organizations.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
+| Field                    | Type                                                                    | Description                                                                          |
+| ------------------------ | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `id`                     | `ID!`                                                                   |                                                                                      |
+| `version`                | `Int!`                                                                  |                                                                                      |
+| `title`                  | `String!`                                                               |                                                                                      |
+| `code`                   | [Code](../core-api-reference/common-resources.md#code)!                 |                                                                                      |
+| `order`                  | `Int!`                                                                  |                                                                                      |
+| `catalog`                | [Catalog](../core-api-reference/organizations/#catalog)!                |                                                                                      |
+| `organization`           | [Organization](../core-api-reference/organizations/#organization)       |                                                                                      |
+| `meta`                   | [CatalogItemMeta](../catalogs/#catalogitemmeta)!                        |                                                                                      |
+| `customFieldDefinitions` | \[[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
 
 </details>
 
@@ -273,8 +273,8 @@ geoObjectTypeUpdate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name    | Type                                                                                    | Description                                        |
+| ------- | --------------------------------------------------------------------------------------- | -------------------------------------------------- |
 | `input` | [GeoObjectTypeUpdateInput](../catalogs/entity-types/types.md#geoobjecttypeupdateinput)! | The input fields for updating the geo object type. |
 
 **Input types:**
@@ -283,13 +283,13 @@ geoObjectTypeUpdate(
 
 <summary><code>GeoObjectTypeUpdateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The item ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `order` | `Int` | The new display order. |
-| `meta` | [CatalogItemMetaInput](../catalogs/README.md#catalogitemmetainput) | The display properties. |
+| Field     | Type                                                      | Description                                 |
+| --------- | --------------------------------------------------------- | ------------------------------------------- |
+| `id`      | `ID!`                                                     | The item ID to update.                      |
+| `version` | `Int!`                                                    | The current version for optimistic locking. |
+| `title`   | `String`                                                  | The new display name.                       |
+| `order`   | `Int`                                                     | The new display order.                      |
+| `meta`    | [CatalogItemMetaInput](../catalogs/#catalogitemmetainput) | The display properties.                     |
 
 </details>
 
@@ -297,13 +297,13 @@ geoObjectTypeUpdate(
 
 <summary><code>CatalogItemMetaInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `description` | `String` | The description. |
-| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
-| `textColor` | [HexColorCode](../common.md#hexcolorcode) | The text color for UI display. |
-| `backgroundColor` | [HexColorCode](../common.md#hexcolorcode) | The background color for UI display. |
-| `icon` | `String` | A relative URL to the icon. |
+| Field             | Type                                                                   | Description                                       |
+| ----------------- | ---------------------------------------------------------------------- | ------------------------------------------------- |
+| `description`     | `String`                                                               | The description.                                  |
+| `hidden`          | `Boolean`                                                              | Whether the item is hidden from regular UI lists. |
+| `textColor`       | [HexColorCode](../core-api-reference/common-resources.md#hexcolorcode) | The text color for UI display.                    |
+| `backgroundColor` | [HexColorCode](../core-api-reference/common-resources.md#hexcolorcode) | The background color for UI display.              |
+| `icon`            | `String`                                                               | A relative URL to the icon.                       |
 
 </details>
 
@@ -313,8 +313,8 @@ geoObjectTypeUpdate(
 
 <summary><code>GeoObjectTypePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field           | Type                                                              | Description                             |
+| --------------- | ----------------------------------------------------------------- | --------------------------------------- |
 | `geoObjectType` | [GeoObjectType](../catalogs/entity-types/types.md#geoobjecttype)! | The created or updated geo object type. |
 
 </details>
@@ -323,17 +323,17 @@ geoObjectTypeUpdate(
 
 <summary><code>GeoObjectType (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | [Code](../common.md#code)! |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../organizations.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
+| Field                    | Type                                                                    | Description                                                                          |
+| ------------------------ | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `id`                     | `ID!`                                                                   |                                                                                      |
+| `version`                | `Int!`                                                                  |                                                                                      |
+| `title`                  | `String!`                                                               |                                                                                      |
+| `code`                   | [Code](../core-api-reference/common-resources.md#code)!                 |                                                                                      |
+| `order`                  | `Int!`                                                                  |                                                                                      |
+| `catalog`                | [Catalog](../core-api-reference/organizations/#catalog)!                |                                                                                      |
+| `organization`           | [Organization](../core-api-reference/organizations/#organization)       |                                                                                      |
+| `meta`                   | [CatalogItemMeta](../catalogs/#catalogitemmeta)!                        |                                                                                      |
+| `customFieldDefinitions` | \[[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
 
 </details>
 
@@ -349,9 +349,9 @@ geoObjectTypeDelete(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalogs/README.md#catalogitemdeleteinput)! | The input fields for deleting the geo object type. |
+| Name    | Type                                                           | Description                                        |
+| ------- | -------------------------------------------------------------- | -------------------------------------------------- |
+| `input` | [CatalogItemDeleteInput](../catalogs/#catalogitemdeleteinput)! | The input fields for deleting the geo object type. |
 
 **Input types:**
 
@@ -359,9 +359,9 @@ geoObjectTypeDelete(
 
 <summary><code>CatalogItemDeleteInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The catalog item ID to delete. |
+| Field     | Type   | Description                                 |
+| --------- | ------ | ------------------------------------------- |
+| `id`      | `ID!`  | The catalog item ID to delete.              |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 </details>
@@ -372,8 +372,8 @@ geoObjectTypeDelete(
 
 <summary><code>DeletePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field       | Type  | Description                   |
+| ----------- | ----- | ----------------------------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>

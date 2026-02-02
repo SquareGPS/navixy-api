@@ -12,7 +12,7 @@ Before you begin, ensure you have:
 
 * Valid Navixy Repository API credentials (`client_id` and `client_secret`).
 * A registered Callback URL (Redirect URI) for the OAuth2 redirect.
-* Your API base URL (`{BASE_URL}`) for REST endpoints. See [API environments](technical-reference.md#api-environments).
+* Your API base URL (`{BASE_URL}`) for REST endpoints. See [API environments](/broken/pages/UpKpxPxvOOMJckvsSJ9N#api-environments).
 * Your authentication base URL (`{AUTH_BASE_URL}`) for OAuth2 endpoints. See [Authentication environments](authentication.md#authentication-urls).
 * A secure method to generate and validate the `state` parameter for Cross-Site Request Forgery (CSRF) protection.
 * A GPS device ready for activation that belongs to the list of [supported devices](https://www.navixy.com/devices/).

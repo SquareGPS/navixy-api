@@ -1,6 +1,6 @@
 # Mutations
 
-Mutations modify data in the Navixy database. Most mutations require authentication and appropriate permissions. Update and delete mutations use [optimistic locking](../optimistic-locking.md) via a `version` field in the input.
+Mutations modify data in the Navixy database. Most mutations require authentication and appropriate permissions. Update and delete mutations use [optimistic locking](../../optimistic-locking.md) via a `version` field in the input.
 
 Argument types link to their definitions on the [Inputs](inputs.md) page. Return types link to [Objects](objects.md).
 

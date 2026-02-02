@@ -146,7 +146,7 @@ Both queries now share the same field selection for core device data.
 
 ### Inline fragments for interfaces
 
-When working with interfaces like [Node](../operations-and-types/interfaces.md#node), use inline fragments to request type-specific fields:
+When working with interfaces like [Node](../graphql-reference/all-operations-and-types/interfaces.md#node), use inline fragments to request type-specific fields:
 
 ```graphql
 query GetNode($id: ID!) {
@@ -276,5 +276,5 @@ query ListDevices(
 ## Next steps
 
 * [Learn how to set up authentication and make your first request](../getting-started.md)
-* [Browse available operations and types](../operations-and-types/)
+* [Browse available operations and types](../graphql-reference/all-operations-and-types/)
 * [Understand error responses and codes](../error-handling.md)

@@ -14,8 +14,8 @@ integration(id: ID!): Integration
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
+| Name | Type  | Description                            |
+| ---- | ----- | -------------------------------------- |
 | `id` | `ID!` | The ID of the integration to retrieve. |
 
 **Output types:**
@@ -24,14 +24,14 @@ integration(id: ID!): Integration
 
 <summary><code>Integration</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `organization` | [Organization](./organizations.md#organization)! | The organization this integration belongs to. |
-| `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
-| `isActive` | `Boolean!` | Whether this integration is active. |
+| Field           | Type                                                            | Description                                          |
+| --------------- | --------------------------------------------------------------- | ---------------------------------------------------- |
+| `id`            | `ID!`                                                           |                                                      |
+| `version`       | `Int!`                                                          |                                                      |
+| `title`         | `String!`                                                       |                                                      |
+| `organization`  | [Organization](core-api-reference/organizations/#organization)! | The organization this integration belongs to.        |
+| `credentialRef` | `String`                                                        | A reference to credentials stored in a secure vault. |
+| `isActive`      | `Boolean!`                                                      | Whether this integration is active.                  |
 
 </details>
 
@@ -53,15 +53,15 @@ integrations(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization to retrieve integrations for. |
-| `filter` | [IntegrationFilter](./integrations.md#integrationfilter) | Filtering options for the returned integrations. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | [IntegrationOrder](./integrations.md#integrationorder) | The ordering options for the returned integrations. |
+| Name             | Type                                                   | Description                                                                                   |
+| ---------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `organizationId` | `ID!`                                                  | The organization to retrieve integrations for.                                                |
+| `filter`         | [IntegrationFilter](integrations.md#integrationfilter) | Filtering options for the returned integrations.                                              |
+| `first`          | `Int`                                                  | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).     |
+| `after`          | `String`                                               | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination).  |
+| `last`           | `Int`                                                  | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).      |
+| `before`         | `String`                                               | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy`        | [IntegrationOrder](integrations.md#integrationorder)   | The ordering options for the returned integrations.                                           |
 
 **Input types:**
 
@@ -69,8 +69,8 @@ integrations(
 
 <summary><code>IntegrationFilter</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field      | Type      | Description              |
+| ---------- | --------- | ------------------------ |
 | `isActive` | `Boolean` | Filter by active status. |
 
 </details>
@@ -79,10 +79,10 @@ integrations(
 
 <summary><code>IntegrationOrder</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `field` | [IntegrationOrderField](./integrations.md#integrationorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](./common.md#orderdirection)! | The direction to order. |
+| Field       | Type                                                                     | Description             |
+| ----------- | ------------------------------------------------------------------------ | ----------------------- |
+| `field`     | [IntegrationOrderField](integrations.md#integrationorderfield)!          | The field to order by.  |
+| `direction` | [OrderDirection](core-api-reference/common-resources.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -92,12 +92,12 @@ integrations(
 
 <summary><code>IntegrationConnection</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `edges` | [[IntegrationEdge](./integrations.md#integrationedge)!]! | A list of edges. |
-| `nodes` | [[Integration](./integrations.md#integration)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](./common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](./common.md#countinfo) | The total count of items matching the filter. |
+| Field      | Type                                                          | Description                                                |
+| ---------- | ------------------------------------------------------------- | ---------------------------------------------------------- |
+| `edges`    | \[[IntegrationEdge](integrations.md#integrationedge)!]!       | A list of edges.                                           |
+| `nodes`    | \[[Integration](integrations.md#integration)!]!               | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](core-api-reference/common-resources.md#pageinfo)!  | Information about the current page.                        |
+| `total`    | [CountInfo](core-api-reference/common-resources.md#countinfo) | The total count of items matching the filter.              |
 
 </details>
 
@@ -105,14 +105,14 @@ integrations(
 
 <summary><code>Integration (node)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `organization` | [Organization](./organizations.md#organization)! | The organization this integration belongs to. |
-| `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
-| `isActive` | `Boolean!` | Whether this integration is active. |
+| Field           | Type                                                            | Description                                          |
+| --------------- | --------------------------------------------------------------- | ---------------------------------------------------- |
+| `id`            | `ID!`                                                           |                                                      |
+| `version`       | `Int!`                                                          |                                                      |
+| `title`         | `String!`                                                       |                                                      |
+| `organization`  | [Organization](core-api-reference/organizations/#organization)! | The organization this integration belongs to.        |
+| `credentialRef` | `String`                                                        | A reference to credentials stored in a secure vault. |
+| `isActive`      | `Boolean!`                                                      | Whether this integration is active.                  |
 
 </details>
 
@@ -130,9 +130,9 @@ integrationCreate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [IntegrationCreateInput](./integrations.md#integrationcreateinput)! | The input fields for creating the integration. |
+| Name    | Type                                                              | Description                                    |
+| ------- | ----------------------------------------------------------------- | ---------------------------------------------- |
+| `input` | [IntegrationCreateInput](integrations.md#integrationcreateinput)! | The input fields for creating the integration. |
 
 **Input types:**
 
@@ -140,11 +140,11 @@ integrationCreate(
 
 <summary><code>IntegrationCreateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the integration. |
-| `title` | `String!` | The display name. |
-| `credentialRef` | `String` | A reference to credentials in a secure vault. |
+| Field            | Type      | Description                                     |
+| ---------------- | --------- | ----------------------------------------------- |
+| `organizationId` | `ID!`     | The organization that will own the integration. |
+| `title`          | `String!` | The display name.                               |
+| `credentialRef`  | `String`  | A reference to credentials in a secure vault.   |
 
 </details>
 
@@ -154,9 +154,9 @@ integrationCreate(
 
 <summary><code>IntegrationPayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `integration` | [Integration](./integrations.md#integration)! | The created or updated integration. |
+| Field         | Type                                        | Description                         |
+| ------------- | ------------------------------------------- | ----------------------------------- |
+| `integration` | [Integration](integrations.md#integration)! | The created or updated integration. |
 
 </details>
 
@@ -164,14 +164,14 @@ integrationCreate(
 
 <summary><code>Integration (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `organization` | [Organization](./organizations.md#organization)! | The organization this integration belongs to. |
-| `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
-| `isActive` | `Boolean!` | Whether this integration is active. |
+| Field           | Type                                                            | Description                                          |
+| --------------- | --------------------------------------------------------------- | ---------------------------------------------------- |
+| `id`            | `ID!`                                                           |                                                      |
+| `version`       | `Int!`                                                          |                                                      |
+| `title`         | `String!`                                                       |                                                      |
+| `organization`  | [Organization](core-api-reference/organizations/#organization)! | The organization this integration belongs to.        |
+| `credentialRef` | `String`                                                        | A reference to credentials stored in a secure vault. |
+| `isActive`      | `Boolean!`                                                      | Whether this integration is active.                  |
 
 </details>
 
@@ -187,9 +187,9 @@ integrationUpdate(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [IntegrationUpdateInput](./integrations.md#integrationupdateinput)! | The input fields for updating the integration. |
+| Name    | Type                                                              | Description                                    |
+| ------- | ----------------------------------------------------------------- | ---------------------------------------------- |
+| `input` | [IntegrationUpdateInput](integrations.md#integrationupdateinput)! | The input fields for updating the integration. |
 
 **Input types:**
 
@@ -197,13 +197,13 @@ integrationUpdate(
 
 <summary><code>IntegrationUpdateInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The integration ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `credentialRef` | `String` | The new credential reference. |
-| `isActive` | `Boolean` | The new active status. |
+| Field           | Type      | Description                                 |
+| --------------- | --------- | ------------------------------------------- |
+| `id`            | `ID!`     | The integration ID to update.               |
+| `version`       | `Int!`    | The current version for optimistic locking. |
+| `title`         | `String`  | The new display name.                       |
+| `credentialRef` | `String`  | The new credential reference.               |
+| `isActive`      | `Boolean` | The new active status.                      |
 
 </details>
 
@@ -213,9 +213,9 @@ integrationUpdate(
 
 <summary><code>IntegrationPayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `integration` | [Integration](./integrations.md#integration)! | The created or updated integration. |
+| Field         | Type                                        | Description                         |
+| ------------- | ------------------------------------------- | ----------------------------------- |
+| `integration` | [Integration](integrations.md#integration)! | The created or updated integration. |
 
 </details>
 
@@ -223,14 +223,14 @@ integrationUpdate(
 
 <summary><code>Integration (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `organization` | [Organization](./organizations.md#organization)! | The organization this integration belongs to. |
-| `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
-| `isActive` | `Boolean!` | Whether this integration is active. |
+| Field           | Type                                                            | Description                                          |
+| --------------- | --------------------------------------------------------------- | ---------------------------------------------------- |
+| `id`            | `ID!`                                                           |                                                      |
+| `version`       | `Int!`                                                          |                                                      |
+| `title`         | `String!`                                                       |                                                      |
+| `organization`  | [Organization](core-api-reference/organizations/#organization)! | The organization this integration belongs to.        |
+| `credentialRef` | `String`                                                        | A reference to credentials stored in a secure vault. |
+| `isActive`      | `Boolean!`                                                      | Whether this integration is active.                  |
 
 </details>
 
@@ -246,9 +246,9 @@ integrationDelete(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [IntegrationDeleteInput](./integrations.md#integrationdeleteinput)! | The input fields for deleting the integration. |
+| Name    | Type                                                              | Description                                    |
+| ------- | ----------------------------------------------------------------- | ---------------------------------------------- |
+| `input` | [IntegrationDeleteInput](integrations.md#integrationdeleteinput)! | The input fields for deleting the integration. |
 
 **Input types:**
 
@@ -256,9 +256,9 @@ integrationDelete(
 
 <summary><code>IntegrationDeleteInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The integration ID to delete. |
+| Field     | Type   | Description                                 |
+| --------- | ------ | ------------------------------------------- |
+| `id`      | `ID!`  | The integration ID to delete.               |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 </details>
@@ -269,8 +269,8 @@ integrationDelete(
 
 <summary><code>DeletePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field       | Type  | Description                   |
+| ----------- | ----- | ----------------------------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>
@@ -281,48 +281,48 @@ integrationDelete(
 
 A paginated list of Integration items.
 
-**Implements:** [`Connection`](./common.md#connection)
+**Implements:** [`Connection`](core-api-reference/common-resources.md#connection)
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `edges` | [[IntegrationEdge](./integrations.md#integrationedge)!]! | A list of edges. |
-| `nodes` | [[Integration](./integrations.md#integration)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](./common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](./common.md#countinfo) | The total count of items matching the filter. |
+| Field      | Type                                                          | Description                                                |
+| ---------- | ------------------------------------------------------------- | ---------------------------------------------------------- |
+| `edges`    | \[[IntegrationEdge](integrations.md#integrationedge)!]!       | A list of edges.                                           |
+| `nodes`    | \[[Integration](integrations.md#integration)!]!               | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](core-api-reference/common-resources.md#pageinfo)!  | Information about the current page.                        |
+| `total`    | [CountInfo](core-api-reference/common-resources.md#countinfo) | The total count of items matching the filter.              |
 
 ### IntegrationEdge
 
 An edge in the Integration connection.
 
-**Implements:** [`Edge`](./common.md#edge)
+**Implements:** [`Edge`](core-api-reference/common-resources.md#edge)
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Integration](./integrations.md#integration)! | The integration at the end of the edge. |
+| Field    | Type                                        | Description                             |
+| -------- | ------------------------------------------- | --------------------------------------- |
+| `cursor` | `String!`                                   | An opaque cursor for this edge.         |
+| `node`   | [Integration](integrations.md#integration)! | The integration at the end of the edge. |
 
 ### Integration
 
 An external system integration with API access.
 
-**Implements:** [`Actor`](./access-control/types.md#actor), [`Node`](./common.md#node), [`Versioned`](./common.md#versioned), [`Titled`](./common.md#titled)
+**Implements:** [`Actor`](access-control/types.md#actor), [`Node`](core-api-reference/common-resources.md#node), [`Versioned`](core-api-reference/common-resources.md#versioned), [`Titled`](core-api-reference/common-resources.md#titled)
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `organization` | [Organization](./organizations.md#organization)! | The organization this integration belongs to. |
-| `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
-| `isActive` | `Boolean!` | Whether this integration is active. |
+| Field           | Type                                                            | Description                                          |
+| --------------- | --------------------------------------------------------------- | ---------------------------------------------------- |
+| `id`            | `ID!`                                                           |                                                      |
+| `version`       | `Int!`                                                          |                                                      |
+| `title`         | `String!`                                                       |                                                      |
+| `organization`  | [Organization](core-api-reference/organizations/#organization)! | The organization this integration belongs to.        |
+| `credentialRef` | `String`                                                        | A reference to credentials stored in a secure vault. |
+| `isActive`      | `Boolean!`                                                      | Whether this integration is active.                  |
 
 ### IntegrationPayload
 
 The result of an integration mutation.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `integration` | [Integration](./integrations.md#integration)! | The created or updated integration. |
+| Field         | Type                                        | Description                         |
+| ------------- | ------------------------------------------- | ----------------------------------- |
+| `integration` | [Integration](integrations.md#integration)! | The created or updated integration. |
 
 ## Inputs
 
@@ -330,48 +330,48 @@ The result of an integration mutation.
 
 Filtering options for integrations.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field      | Type      | Description              |
+| ---------- | --------- | ------------------------ |
 | `isActive` | `Boolean` | Filter by active status. |
 
 ### IntegrationOrder
 
 Ordering options for integrations.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `field` | [IntegrationOrderField](./integrations.md#integrationorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](./common.md#orderdirection)! | The direction to order. |
+| Field       | Type                                                                     | Description             |
+| ----------- | ------------------------------------------------------------------------ | ----------------------- |
+| `field`     | [IntegrationOrderField](integrations.md#integrationorderfield)!          | The field to order by.  |
+| `direction` | [OrderDirection](core-api-reference/common-resources.md#orderdirection)! | The direction to order. |
 
 ### IntegrationCreateInput
 
 Input for creating a new integration.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the integration. |
-| `title` | `String!` | The display name. |
-| `credentialRef` | `String` | A reference to credentials in a secure vault. |
+| Field            | Type      | Description                                     |
+| ---------------- | --------- | ----------------------------------------------- |
+| `organizationId` | `ID!`     | The organization that will own the integration. |
+| `title`          | `String!` | The display name.                               |
+| `credentialRef`  | `String`  | A reference to credentials in a secure vault.   |
 
 ### IntegrationUpdateInput
 
 Input for updating an existing integration.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The integration ID to update. |
-| `version` | `Int!` | The current version for optimistic locking. |
-| `title` | `String` | The new display name. |
-| `credentialRef` | `String` | The new credential reference. |
-| `isActive` | `Boolean` | The new active status. |
+| Field           | Type      | Description                                 |
+| --------------- | --------- | ------------------------------------------- |
+| `id`            | `ID!`     | The integration ID to update.               |
+| `version`       | `Int!`    | The current version for optimistic locking. |
+| `title`         | `String`  | The new display name.                       |
+| `credentialRef` | `String`  | The new credential reference.               |
+| `isActive`      | `Boolean` | The new active status.                      |
 
 ### IntegrationDeleteInput
 
 Input for deleting an integration.
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | The integration ID to delete. |
+| Field     | Type   | Description                                 |
+| --------- | ------ | ------------------------------------------- |
+| `id`      | `ID!`  | The integration ID to delete.               |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 ## Enums
@@ -380,6 +380,6 @@ Input for deleting an integration.
 
 Fields available for ordering integrations.
 
-| Value | Description |
-| ----- | ----------- |
+| Value   | Description     |
+| ------- | --------------- |
 | `TITLE` | Order by title. |

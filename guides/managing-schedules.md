@@ -12,7 +12,7 @@ This guide walks you through creating, configuring, updating, and deleting sched
 
 ## Before you start
 
-To work with a schedule, you need your [organization](../operations-and-types/objects.md#organization)'s ID. Use the [me](../operations-and-types/queries.md#me) query to find it through your membership:
+To work with a schedule, you need your [organization](../graphql-reference/all-operations-and-types/objects.md#organization)'s ID. Use the [me](../graphql-reference/all-operations-and-types/queries.md#me) query to find it through your membership:
 
 ```graphql
 query GetMyOrganization {
@@ -31,7 +31,7 @@ In most cases, you'll have one organization in the response. Use its `id` for sc
 
 ## Understanding schedule data
 
-A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../operations-and-types/scalars.md#scheduledata), a custom scalar containing a JSON value.&#x20;
+A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../graphql-reference/all-operations-and-types/scalars.md#scheduledata), a custom scalar containing a JSON value.&#x20;
 
 {% hint style="info" %}
 The `scheduleData` field is a convenience alias for the `schedule_data` system custom field. You can also access the same data through the `customFields` field if needed. See [Working with custom fields](working-with-custom-fields.md) for details.

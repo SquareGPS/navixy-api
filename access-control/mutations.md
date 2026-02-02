@@ -1,4 +1,4 @@
-# Access Control — Mutations
+# Mutations
 
 ### roleAssign
 
@@ -10,9 +10,9 @@ roleAssign(input: RoleAssignInput!): ActorRolePayload
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [RoleAssignInput](./types.md#roleassigninput)! | The input fields for assigning the role. |
+| Name    | Type                                         | Description                              |
+| ------- | -------------------------------------------- | ---------------------------------------- |
+| `input` | [RoleAssignInput](types.md#roleassigninput)! | The input fields for assigning the role. |
 
 **Input types:**
 
@@ -20,11 +20,11 @@ roleAssign(input: RoleAssignInput!): ActorRolePayload
 
 <summary><code>RoleAssignInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorId` | `ID!` | The actor ID (user or integration). |
-| `roleId` | `ID!` | The role ID to assign. |
-| `expireDate` | [DateTime](../common.md#datetime) | The expiration date. Null means the role is permanent. |
+| Field        | Type                                                           | Description                                            |
+| ------------ | -------------------------------------------------------------- | ------------------------------------------------------ |
+| `actorId`    | `ID!`                                                          | The actor ID (user or integration).                    |
+| `roleId`     | `ID!`                                                          | The role ID to assign.                                 |
+| `expireDate` | [DateTime](../core-api-reference/common-resources.md#datetime) | The expiration date. Null means the role is permanent. |
 
 </details>
 
@@ -34,9 +34,9 @@ roleAssign(input: RoleAssignInput!): ActorRolePayload
 
 <summary><code>ActorRolePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorRole` | [ActorRole](./types.md#actorrole)! | The created role assignment. |
+| Field       | Type                             | Description                  |
+| ----------- | -------------------------------- | ---------------------------- |
+| `actorRole` | [ActorRole](types.md#actorrole)! | The created role assignment. |
 
 </details>
 
@@ -44,14 +44,14 @@ roleAssign(input: RoleAssignInput!): ActorRolePayload
 
 <summary><code>ActorRole (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `actor` | [Actor](./types.md#actor)! | The actor receiving the role. |
-| `role` | [Role](../catalogs/roles.md#role)! | The role being assigned. |
-| `assignedAt` | [DateTime](../common.md#datetime)! | The date and time when the role was assigned. |
-| `assignedBy` | [Actor](./types.md#actor) | The actor who assigned the role. |
-| `expireDate` | [DateTime](../common.md#datetime) | The date and time when the role expires. Null means the role is permanent. |
+| Field        | Type                                                            | Description                                                                |
+| ------------ | --------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `id`         | `ID!`                                                           |                                                                            |
+| `actor`      | [Actor](types.md#actor)!                                        | The actor receiving the role.                                              |
+| `role`       | [Role](../catalogs/roles.md#role)!                              | The role being assigned.                                                   |
+| `assignedAt` | [DateTime](../core-api-reference/common-resources.md#datetime)! | The date and time when the role was assigned.                              |
+| `assignedBy` | [Actor](types.md#actor)                                         | The actor who assigned the role.                                           |
+| `expireDate` | [DateTime](../core-api-reference/common-resources.md#datetime)  | The date and time when the role expires. Null means the role is permanent. |
 
 </details>
 
@@ -65,9 +65,9 @@ roleRevoke(input: RoleRevokeInput!): DeletePayload
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [RoleRevokeInput](./types.md#rolerevokeinput)! | The input fields for revoking the role. |
+| Name    | Type                                         | Description                             |
+| ------- | -------------------------------------------- | --------------------------------------- |
+| `input` | [RoleRevokeInput](types.md#rolerevokeinput)! | The input fields for revoking the role. |
 
 **Input types:**
 
@@ -75,8 +75,8 @@ roleRevoke(input: RoleRevokeInput!): DeletePayload
 
 <summary><code>RoleRevokeInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field         | Type  | Description                             |
+| ------------- | ----- | --------------------------------------- |
 | `actorRoleId` | `ID!` | The actor role assignment ID to revoke. |
 
 </details>
@@ -87,8 +87,8 @@ roleRevoke(input: RoleRevokeInput!): DeletePayload
 
 <summary><code>DeletePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field       | Type  | Description                   |
+| ----------- | ----- | ----------------------------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>
@@ -105,9 +105,9 @@ permissionGrant(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [PermissionGrantInput](./types.md#permissiongrantinput)! | The input fields for granting the permission. |
+| Name    | Type                                                   | Description                                   |
+| ------- | ------------------------------------------------------ | --------------------------------------------- |
+| `input` | [PermissionGrantInput](types.md#permissiongrantinput)! | The input fields for granting the permission. |
 
 **Input types:**
 
@@ -115,12 +115,12 @@ permissionGrant(
 
 <summary><code>PermissionGrantInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `roleId` | `ID!` | The role ID. |
-| `permissionScopeId` | `ID!` | The permission scope ID. |
-| `targetEntityId` | `ID` | The specific entity ID. Null means all entities of the type. |
-| `actions` | [[ActionPermission](./types.md#actionpermission)!]! | The actions to allow. |
+| Field               | Type                                               | Description                                                  |
+| ------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| `roleId`            | `ID!`                                              | The role ID.                                                 |
+| `permissionScopeId` | `ID!`                                              | The permission scope ID.                                     |
+| `targetEntityId`    | `ID`                                               | The specific entity ID. Null means all entities of the type. |
+| `actions`           | \[[ActionPermission](types.md#actionpermission)!]! | The actions to allow.                                        |
 
 </details>
 
@@ -130,9 +130,9 @@ permissionGrant(
 
 <summary><code>RolePermissionPayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `rolePermission` | [RolePermission](./types.md#rolepermission)! | The created permission. |
+| Field            | Type                                       | Description             |
+| ---------------- | ------------------------------------------ | ----------------------- |
+| `rolePermission` | [RolePermission](types.md#rolepermission)! | The created permission. |
 
 </details>
 
@@ -140,15 +140,15 @@ permissionGrant(
 
 <summary><code>RolePermission (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `role` | [Role](../catalogs/roles.md#role)! | The role receiving the permission. |
-| `permissionScope` | [PermissionScope](../catalogs/roles.md#permissionscope)! | The permission scope being granted. |
-| `targetEntityId` | `ID` | The specific entity ID this permission applies to. Null means all entities of the type. |
-| `actions` | [[ActionPermission](./types.md#actionpermission)!]! | The actions allowed by this permission. |
-| `grantedAt` | [DateTime](../common.md#datetime)! | The date and time when the permission was granted. |
-| `grantedBy` | [Actor](./types.md#actor)! | The actor who granted the permission. |
+| Field             | Type                                                            | Description                                                                             |
+| ----------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `id`              | `ID!`                                                           |                                                                                         |
+| `role`            | [Role](../catalogs/roles.md#role)!                              | The role receiving the permission.                                                      |
+| `permissionScope` | [PermissionScope](../catalogs/roles.md#permissionscope)!        | The permission scope being granted.                                                     |
+| `targetEntityId`  | `ID`                                                            | The specific entity ID this permission applies to. Null means all entities of the type. |
+| `actions`         | \[[ActionPermission](types.md#actionpermission)!]!              | The actions allowed by this permission.                                                 |
+| `grantedAt`       | [DateTime](../core-api-reference/common-resources.md#datetime)! | The date and time when the permission was granted.                                      |
+| `grantedBy`       | [Actor](types.md#actor)!                                        | The actor who granted the permission.                                                   |
 
 </details>
 
@@ -164,9 +164,9 @@ permissionRevoke(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [PermissionRevokeInput](./types.md#permissionrevokeinput)! | The input fields for revoking the permission. |
+| Name    | Type                                                     | Description                                   |
+| ------- | -------------------------------------------------------- | --------------------------------------------- |
+| `input` | [PermissionRevokeInput](types.md#permissionrevokeinput)! | The input fields for revoking the permission. |
 
 **Input types:**
 
@@ -174,8 +174,8 @@ permissionRevoke(
 
 <summary><code>PermissionRevokeInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field          | Type  | Description                       |
+| -------------- | ----- | --------------------------------- |
 | `permissionId` | `ID!` | The role permission ID to revoke. |
 
 </details>
@@ -186,8 +186,8 @@ permissionRevoke(
 
 <summary><code>DeletePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field       | Type  | Description                   |
+| ----------- | ----- | ----------------------------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>
@@ -202,9 +202,9 @@ userScopeSet(input: UserScopeSetInput!): UserScopePayload
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [UserScopeSetInput](./types.md#userscopesetinput)! | The input fields for setting the user scope. |
+| Name    | Type                                             | Description                                  |
+| ------- | ------------------------------------------------ | -------------------------------------------- |
+| `input` | [UserScopeSetInput](types.md#userscopesetinput)! | The input fields for setting the user scope. |
 
 **Input types:**
 
@@ -212,12 +212,12 @@ userScopeSet(input: UserScopeSetInput!): UserScopePayload
 
 <summary><code>UserScopeSetInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `actorId` | `ID!` | The actor ID to restrict. |
-| `permissionScopeId` | `ID!` | The permission scope ID. |
-| `targetEntityId` | `ID!` | The specific entity ID to allow access to. |
-| `actions` | [[ActionPermission](./types.md#actionpermission)!]! | The actions to allow. |
+| Field               | Type                                               | Description                                |
+| ------------------- | -------------------------------------------------- | ------------------------------------------ |
+| `actorId`           | `ID!`                                              | The actor ID to restrict.                  |
+| `permissionScopeId` | `ID!`                                              | The permission scope ID.                   |
+| `targetEntityId`    | `ID!`                                              | The specific entity ID to allow access to. |
+| `actions`           | \[[ActionPermission](types.md#actionpermission)!]! | The actions to allow.                      |
 
 </details>
 
@@ -227,9 +227,9 @@ userScopeSet(input: UserScopeSetInput!): UserScopePayload
 
 <summary><code>UserScopePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `userScope` | [UserScope](./types.md#userscope)! | The created user scope restriction. |
+| Field       | Type                             | Description                         |
+| ----------- | -------------------------------- | ----------------------------------- |
+| `userScope` | [UserScope](types.md#userscope)! | The created user scope restriction. |
 
 </details>
 
@@ -237,13 +237,13 @@ userScopeSet(input: UserScopeSetInput!): UserScopePayload
 
 <summary><code>UserScope (entity)</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `actor` | [Actor](./types.md#actor)! | The actor being restricted. |
-| `permissionScope` | [PermissionScope](../catalogs/roles.md#permissionscope)! | The permission scope being filtered. |
-| `targetEntityId` | `ID!` | The specific entity the actor can access. |
-| `actions` | [[ActionPermission](./types.md#actionpermission)!]! | The actions allowed on this specific entity. |
+| Field             | Type                                                     | Description                                  |
+| ----------------- | -------------------------------------------------------- | -------------------------------------------- |
+| `id`              | `ID!`                                                    |                                              |
+| `actor`           | [Actor](types.md#actor)!                                 | The actor being restricted.                  |
+| `permissionScope` | [PermissionScope](../catalogs/roles.md#permissionscope)! | The permission scope being filtered.         |
+| `targetEntityId`  | `ID!`                                                    | The specific entity the actor can access.    |
+| `actions`         | \[[ActionPermission](types.md#actionpermission)!]!       | The actions allowed on this specific entity. |
 
 </details>
 
@@ -259,9 +259,9 @@ userScopeRemove(
 
 **Arguments**
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `input` | [UserScopeRemoveInput](./types.md#userscoperemoveinput)! | The input fields for removing the user scope. |
+| Name    | Type                                                   | Description                                   |
+| ------- | ------------------------------------------------------ | --------------------------------------------- |
+| `input` | [UserScopeRemoveInput](types.md#userscoperemoveinput)! | The input fields for removing the user scope. |
 
 **Input types:**
 
@@ -269,8 +269,8 @@ userScopeRemove(
 
 <summary><code>UserScopeRemoveInput</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field         | Type  | Description                  |
+| ------------- | ----- | ---------------------------- |
 | `userScopeId` | `ID!` | The user scope ID to remove. |
 
 </details>
@@ -281,8 +281,8 @@ userScopeRemove(
 
 <summary><code>DeletePayload</code></summary>
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
+| Field       | Type  | Description                   |
+| ----------- | ----- | ----------------------------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>

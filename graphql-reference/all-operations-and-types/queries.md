@@ -1,6 +1,6 @@
 # Queries
 
-Queries retrieve data from the Navixy database without modifying it. List queries return paginated results using the [Relay Cursor Connections](https://relay.dev/graphql/connections.htm) pattern — see the [Pagination guide](../pagination.md) for details.
+Queries retrieve data from the Navixy database without modifying it. List queries return paginated results using the [Relay Cursor Connections](https://relay.dev/graphql/connections.htm) pattern — see the [Pagination guide](../../pagination.md) for details.
 
 Argument types link to their definitions on the [Inputs](inputs.md) page. Return types link to [Objects](objects.md) or [Interfaces](interfaces.md).
 
