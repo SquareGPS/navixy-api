@@ -46,6 +46,10 @@ The connection between your application and Navixy is managed through the [User 
 
 You do not need to register your application URL, provide callback endpoints, or configure webhook addresses. The middleware handles all communication between Navixy and your application automatically.
 
+Watch this video to get a quick and visual walkthrough of authenticating a 3rd-party app with Navixy session using App Connect:&#x20;
+
+{% embed url="https://youtu.be/y8Wwob-Uw3I?si=IwnECajenm7o7wtC" %}
+
 ## Development and testing workflow
 
 ### Local development
