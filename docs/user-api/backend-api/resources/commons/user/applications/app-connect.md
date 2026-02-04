@@ -29,7 +29,7 @@ Your application must meet these technical requirements to integrate with Navixy
 
 * **API server**: Your application must have a publicly accessible API server that can receive HTTP POST requests from the middleware and respond with JSON authentication responses. The [Authentication endpoint](app-connect.md#authentication-endpoint) section describes the specific endpoint you must implement.\
   For testing, you can use cloud hosting platforms to quickly deploy a publicly accessible test server. Use production-grade hosting for live applications.
-* **JWT token generation**: Your application must be able to generate JWT tokens with required fields (`userId`, `email`, `role`, `iat`, `exp`) using HS256 or RS256 algorithms. The [JWT Token Requirements](app-connect.md#jwt-token-requirements) section describes the token structure and validation rules.
+* **JWT token generation**: Your application must be able to generate JWT tokens with required fields (`userId`, `email`, `role`, `iat`, `exp`) using HS256 or RS256 algorithms. You must also generate a [signing secret](app-connect.md#signing-secret) (a random string of at least 32 characters) to sign these tokens. The [JWT Token Requirements](app-connect.md#jwt-token-requirements) section describes the token structure and validation rules.
 * **Database connectivity**: Your application must include a PostgreSQL client library to connect to Navixy databases using connection strings provided during authentication. The [Using Database Connection Strings](app-connect.md#using-database-connection-strings) section provides connection examples and best practices.
 
 ## How application registration works
@@ -161,6 +161,13 @@ Error Response (4xx/5xx):
 
 ## JWT Token Requirements
 
+JWT (JSON Web Token) is a compact, URL-safe token format that consists of three parts separated by dots:
+
+* [**Payload**](app-connect.md#token-creation)**:** Contains the claims (user data like `userId`, `email`, `role`)
+* [**Header and Signature**](app-connect.md#token-signing)**:** The header specifies the signing algorithm (HS256 or RS256), and the signature ensures the token hasn't been tampered with using your signing secret
+
+Your application generates these tokens during authentication, and they are used to authorize subsequent API requests.
+
 ### Token Creation
 
 Your application must generate a JWT token with the following payload structure:
@@ -192,6 +199,32 @@ The `email` field is critical for session validation. The middleware compares th
 * Use HS256 (HMAC-SHA256) or RS256 (RSA-SHA256) algorithm
 * Recommended expiration: 24 hours (`exp = iat + 86400`)
 * The middleware does **not** verify the token signature; it only decodes and checks expiration
+
+#### **Signing Secret**
+
+Your application must generate and securely store a secret key for signing tokens. This secret is used with the HS256 algorithm (or a private key for RS256).
+
+Generate a random string with at least 32 characters:
+
+{% tabs %}
+{% tab title="Node.js" %}
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+{% endtab %}
+
+{% tab title="OpenSSL" %}
+```bash
+openssl rand -hex 32
+```
+{% endtab %}
+{% endtabs %}
+
+Store this secret as an environment variable in your application (commonly named `JWT_SECRET` as shown in the code examples, but you can use any variable name).
+
+{% hint style="warning" %}
+Keep this secret secure and never expose it in client-side code or version control.
+{% endhint %}
 
 ### Token Validation by Middleware
 
