@@ -23,13 +23,83 @@ The middleware acts as an authentication proxy that:
 [Dashboard Studio](https://marketplace.navixy.com/shop/dashboard-studio/) uses this authentication approach. You can integrate any custom application the same way.
 {% endhint %}
 
-Your application must implement a specific auth endpoint and handle JWT tokens according to this contract.
+## Integration prerequisites
 
-## Required API Endpoint
+Your application must meet these technical requirements to integrate with Navixy App Connect:
+
+* **API server**: Your application must have a publicly accessible API server that can receive HTTP POST requests from the middleware and respond with JSON authentication responses. The [Authentication endpoint](app-connect.md#authentication-endpoint) section describes the specific endpoint you must implement.\
+  For testing, you can use cloud hosting platforms to quickly deploy a publicly accessible test server. Use production-grade hosting for live applications.
+* **JWT token generation**: Your application must be able to generate JWT tokens with required fields (`userId`, `email`, `role`, `iat`, `exp`) using HS256 or RS256 algorithms. You must also generate a [signing secret](app-connect.md#signing-secret) (a random string of at least 32 characters) to sign these tokens. The [JWT Token Requirements](app-connect.md#jwt-token-requirements) section describes the token structure and validation rules.
+* **Database connectivity**: Your application must include a PostgreSQL client library to connect to Navixy databases using connection strings provided during authentication. The [Using Database Connection Strings](app-connect.md#using-database-connection-strings) section provides connection examples and best practices.
+
+## How application registration works
+
+Navixy App Connect does not require separate application registration. Your application integrates directly with existing Navixy user accounts through the authentication middleware layer.
+
+The connection between your application and Navixy is managed through the [User applications](https://app.gitbook.com/s/446mKak1zDrGv70ahuYZ/guide/account/user-applications) functionality. When a user accesses your application:
+
+1. The middleware validates the user's session
+2. The middleware retrieves database credentials for that user
+3. The middleware calls your `/api/auth/login` endpoint with user information and database URLs
+4. Your application responds with a JWT token
+5. The user can now interact with your application
+
+You do not need to register your application URL, provide callback endpoints, or configure webhook addresses. The middleware handles all communication between Navixy and your application automatically.
+
+Watch this video to get a quick and visual walkthrough of authenticating a 3rd-party app with Navixy session using App Connect:&#x20;
+
+{% embed url="https://youtu.be/y8Wwob-Uw3I?si=IwnECajenm7o7wtC" %}
+
+## Development and testing workflow
+
+### Local development
+
+You can develop and test most of your application locally:
+
+1. **Implement the auth endpoint** ([`POST /api/auth/login`](app-connect.md#post-api-auth-login)) on your local server
+2. **Test token generation** by calling your endpoint directly with sample payloads
+3. **Test database connectivity** using connection strings in the format provided by the middleware
+4. **Test API routes** by generating tokens and making authenticated requests
+
+See the [Complete Integration Example](app-connect.md#complete-integration-example) section for step-by-step implementation guidance with working code.
+
+### Testing API connectivity
+
+To test the complete authentication flow including middleware communication, deploy your API server to a publicly accessible endpoint. Hosting services provide free tiers suitable for testing:
+
+1. Deploy your application to the selected platform
+2. Configure your application through User applications functionality
+3. Access your application through Navixy to trigger the authentication flow
+4. Verify the middleware successfully calls your `/api/auth/login` endpoint
+5. Test authenticated API requests with the returned JWT token
+
+Once API connectivity is verified, you can continue development locally while using the deployed endpoint for integration testing.
+
+{% hint style="info" %}
+There is no dedicated test environment or sandbox. Test your integration using your development Navixy account and a test deployment of your application.
+{% endhint %}
+
+#### Configuration
+
+Your application requires the following environment variables:
+
+`JWT_SECRET` (Required)
+
+* Purpose: Secret key for signing and verifying JWT tokens
+* Format: String, minimum 32 characters recommended
+* Example: `your-secret-key-at-least-32-characters-long`
+
+`DASHBOARD_BASIC_AUTH` (Optional)
+
+* Purpose: Credentials for Basic Authentication on static assets. Only needed if your application serves static assets (HTML, CSS, JS)
+* Format: `username:password`
+* Example: `admin:secure_password_here`
+
+## Authentication endpoint
+
+To complete the authentication flow, your application must implement the following endpoint that receives authentication requests from the middleware.
 
 ### POST /api/auth/login
-
-Your application **must** implement this endpoint to receive authentication requests from the middleware.
 
 Request
 
@@ -91,6 +161,13 @@ Error Response (4xx/5xx):
 
 ## JWT Token Requirements
 
+JWT (JSON Web Token) is a compact, URL-safe token format that consists of three parts separated by dots:
+
+* [**Payload**](app-connect.md#token-creation)**:** Contains the claims (user data like `userId`, `email`, `role`)
+* [**Header and Signature**](app-connect.md#token-signing)**:** The header specifies the signing algorithm (HS256 or RS256), and the signature ensures the token hasn't been tampered with using your signing secret
+
+Your application generates these tokens during authentication, and they are used to authorize subsequent API requests.
+
 ### Token Creation
 
 Your application must generate a JWT token with the following payload structure:
@@ -114,7 +191,7 @@ Your application must generate a JWT token with the following payload structure:
 | `exp`    | number | Yes      | Expiration timestamp (Unix seconds)                |
 
 {% hint style="danger" %}
-&#x20;The `email` field is critical for session validation. The middleware compares this email with the email from the user's session to detect if a different user is attempting to reuse a cached token.
+The `email` field is critical for session validation. The middleware compares this email with the email from the user's session to detect if a different user is attempting to reuse a cached token.
 {% endhint %}
 
 ### Token Signing
@@ -122,6 +199,32 @@ Your application must generate a JWT token with the following payload structure:
 * Use HS256 (HMAC-SHA256) or RS256 (RSA-SHA256) algorithm
 * Recommended expiration: 24 hours (`exp = iat + 86400`)
 * The middleware does **not** verify the token signature; it only decodes and checks expiration
+
+#### **Signing Secret**
+
+Your application must generate and securely store a secret key for signing tokens. This secret is used with the HS256 algorithm (or a private key for RS256).
+
+Generate a random string with at least 32 characters:
+
+{% tabs %}
+{% tab title="Node.js" %}
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+{% endtab %}
+
+{% tab title="OpenSSL" %}
+```bash
+openssl rand -hex 32
+```
+{% endtab %}
+{% endtabs %}
+
+Store this secret as an environment variable in your application (commonly named `JWT_SECRET` as shown in the code examples, but you can use any variable name).
+
+{% hint style="warning" %}
+Keep this secret secure and never expose it in client-side code or version control.
+{% endhint %}
 
 ### Token Validation by Middleware
 
@@ -265,7 +368,7 @@ Security Considerations
 
 {% stepper %}
 {% step %}
-### Implement Auth Endpoint
+#### Implement Auth Endpoint
 
 ```javascript
 // /api/auth/login.js (Node.js/Express)
@@ -321,7 +424,7 @@ app.post('/api/auth/login', async (req, res) => {
 {% endstep %}
 
 {% step %}
-### Protect API Routes
+#### Protect API Routes
 
 ```javascript
 // Middleware to verify JWT on API routes
@@ -347,7 +450,7 @@ app.use('/api', (req, res, next) => {
 {% endstep %}
 
 {% step %}
-### Use Database Connections
+#### Use Database Connections
 
 ```javascript
 // API endpoint that queries IoT database

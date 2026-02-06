@@ -522,7 +522,13 @@ https://api.eu.navixy.com/v2/panel/tracker/console/connect?hash=fa7bf873fab93331
 
 Establish WS connection with a URL:
 
-`wss://ws.navixy.com/console?device=<device_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`
+`wss://{{panel_host}}/console?device=<device_id>&key=<key>&timestamp=<timestamp>&dealer_id=<dealer_id>`&#x20;
+
+panel\_host for:
+
+* EU server is `panel.navixy.com`,&#x20;
+* US server is `panel.us.navixy.com`,&#x20;
+* ME server is `panel.me.navixy.com`.
 
 JSON objects come in the next text frames:
 
