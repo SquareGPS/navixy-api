@@ -45,7 +45,8 @@ The User object structure defines the attributes and details of a user account w
   "bonus": 0,
   "creation_date": "2021-03-01 13:00:00",
   "trackers_count": 10,
-  "comment": "about user"
+  "comment": "about user",
+  "menu_preset_id": null
 }
 ```
 
@@ -74,6 +75,7 @@ The User object structure defines the attributes and details of a user account w
 * `okpo_code` - string, optional. Classifier of Enterprises and Organizations, used in some countries for "legal\_entity" or "sole\_trader".
 * `iec` - string, optional. Industrial Enterprises Classifier, used in some countries, for "legal\_entity".
 * `id` - int. User ID.
+* `menu_preset_id` - int, optional. User menu preset ID.
 
 Next fields are read-only and should not be used in `user/update` and `user/create`:
 
