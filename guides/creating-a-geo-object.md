@@ -4,7 +4,7 @@ description: Create geofences, POIs, and routes in different shapes using GeoJSO
 
 # Working with geo objects
 
-Geo objects in Navixy Repository API represent geographic features like geofences, points of interest, and routes. They store location data as GeoJSON geometries, making them useful for defining delivery zones, marking important locations, creating routes, and managing areas where your fleet operates.
+Geo objects in Navixy Repository API represent geographic features like geofences, points of interest, and routes. They store location data in GeoJSON format, making them useful for defining delivery zones, marking important locations, creating routes, and managing areas where your fleet operates.
 
 This guide walks you through creating, updating, and managing geo objects with different geometry types.
 
@@ -45,7 +45,7 @@ query ListGeoObjectTypes {
 }
 ```
 
-This returns system types (like `geofence`, `poi`, `route`) and any custom types your organization has created.
+This returns system types and any custom types your organization has created.
 
 If you don't see a type you need, create one:
 
@@ -90,7 +90,9 @@ GeoJSON format:  [13.404954, 52.520008] (longitude, latitude)
 
 For example, Berlin's Brandenburg Gate is located at latitude 52.516275 and longitude 13.377704. In GeoJSON, this becomes `[13.377704, 52.516275]`.
 
-\{% hint style="warning" %\} Always double-check coordinate order when converting from other formats. Swapped coordinates will place your location in the wrong part of the world. \{% endhint %\}
+{% hint style="danger" %}
+Always double-check coordinate order when converting from other formats. Swapped coordinates will place your location in the wrong part of the world.
+{% endhint %}
 
 For details on geometry structure, winding order for polygons, and coordinate reference systems, see [RFC 7946 Section 3.1](https://www.rfc-editor.org/rfc/rfc7946#section-3.1).
 
@@ -112,7 +114,7 @@ A delivery company needs to define service areas and mark important locations. T
 {% step %}
 ### Create a Point location (warehouse)
 
-Start by marking your main warehouse location with a Point geometry:
+Start by marking your main warehouse location with a `Point` type:
 
 ```graphql
 mutation CreateWarehouseLocation {
@@ -296,7 +298,7 @@ The response shows which points are inside the zone:
 The first two addresses fall within the zone, while the third is outside. This helps you validate which delivery requests you can accept.
 
 {% hint style="warning" %}
-The `containsPoints` method is only available for Polygon and MultiPolygon geometries. It tests whether each point falls inside the polygon boundary.
+The `containsPoints` method is only available for `Polygon` and `MultiPolygon` geometry types. It tests whether each point falls inside the polygon boundary.
 {% endhint %}
 {% endstep %}
 
@@ -402,23 +404,7 @@ The `version` parameter ensures you don't accidentally delete a geo object that 
 }
 ```
 
-### Custom polygon (irregular boundaries)
-
-```json
-{
-  "type": "Polygon",
-  "coordinates": [
-    [
-      [13.377704, 52.516275],
-      [13.404954, 52.520008],
-      [13.388175, 52.519444],
-      [13.377704, 52.516275]
-    ]
-  ]
-}
-```
-
-### Polygon with exclusion zone (donut shape)
+### Polygon with exclusion zone (donut-shaped)
 
 ```json
 {
@@ -472,7 +458,7 @@ The first ring defines the exterior boundary. The second ring creates a hole —
 
 ## Listing geo objects
 
-To retrieve all geo objects for an organization:
+To retrieve all geo objects for an organization, use this query:
 
 ```graphql
 query ListGeoObjects {
