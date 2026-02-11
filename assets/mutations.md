@@ -1,33 +1,32 @@
-# Geo objects — Mutations
+# Assets — Mutations
 
-### geoObjectCreate
+### assetCreate
 
-Creates a new geo object.
+Creates a new asset.
 
 ```graphql
-geoObjectCreate("The input fields for creating the geo object." input: GeoObjectCreateInput!): GeoObjectPayload
+assetCreate("The input fields for creating the asset." input: AssetCreateInput!): AssetPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectCreateInput](types.md#geoobjectcreateinput)! | The input fields for creating the geo object. |
+| `input` | [AssetCreateInput](types.md#assetcreateinput)! | The input fields for creating the asset. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectCreateInput</code></summary>
+<summary><code>AssetCreateInput</code></summary>
 
-Input for creating a new geo object.
+Input for creating a new asset.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the geo object. |
-| `typeId` | `ID!` | The geo object type ID. |
-| `title` | `String!` | The geo object display name. |
-| `geometry` | `GeoJSON!` | The GeoJSON geometry. |
+| `organizationId` | `ID!` | The organization that will own the asset. |
+| `typeId` | `ID!` | The asset type ID. |
+| `title` | `String!` | The asset display name. |
 | `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field values. |
 
 </details>
@@ -49,21 +48,21 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>GeoObjectPayload</code></summary>
+<summary><code>AssetPayload</code></summary>
 
-The result of a geo object mutation.
+The result of an asset mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObject` | [GeoObject](types.md#geoobject)! | The created or updated geo object. |
+| `asset` | [Asset](types.md#asset)! | The created or updated asset. |
 
 </details>
 
 <details>
 
-<summary><code>GeoObject (entity)</code></summary>
+<summary><code>Asset (entity)</code></summary>
 
-A geographic object such as a geofence, point of interest, or route.
+A physical or logical asset being tracked.
 
 **Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
 
@@ -72,45 +71,49 @@ A geographic object such as a geofence, point of interest, or route.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
-| `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
+| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this asset. |
+| `type` | [AssetType](types.md#assettype)! | The asset type classification. |
 | `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
+| `device` | [Device](../devices/types.md#device) | The primary tracking device linked to this asset.
+  This is an alias for the `device` custom field. |
+| `filter` | [AssetGroupFilter](groups/types.md#assetgroupfilter) | Filtering options for the returned groups. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AssetGroupOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned groups. |
 
 </details>
 
 ---
 
-### geoObjectUpdate
+### assetUpdate
 
-Updates an existing geo object.
+Updates an existing asset.
 
 ```graphql
-geoObjectUpdate("The input fields for updating the geo object." input: GeoObjectUpdateInput!): GeoObjectPayload
+assetUpdate("The input fields for updating the asset." input: AssetUpdateInput!): AssetPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectUpdateInput](types.md#geoobjectupdateinput)! | The input fields for updating the geo object. |
+| `input` | [AssetUpdateInput](types.md#assetupdateinput)! | The input fields for updating the asset. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectUpdateInput</code></summary>
+<summary><code>AssetUpdateInput</code></summary>
 
-Input for updating an existing geo object.
+Input for updating an existing asset.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` | The geo object ID to update. |
+| `id` | `ID!` | The asset ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
-| `geometry` | `GeoJSON` | The new geometry. |
 | `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field changes. |
 
 </details>
@@ -132,21 +135,21 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>GeoObjectPayload</code></summary>
+<summary><code>AssetPayload</code></summary>
 
-The result of a geo object mutation.
+The result of an asset mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObject` | [GeoObject](types.md#geoobject)! | The created or updated geo object. |
+| `asset` | [Asset](types.md#asset)! | The created or updated asset. |
 
 </details>
 
 <details>
 
-<summary><code>GeoObject (entity)</code></summary>
+<summary><code>Asset (entity)</code></summary>
 
-A geographic object such as a geofence, point of interest, or route.
+A physical or logical asset being tracked.
 
 **Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
 
@@ -155,42 +158,47 @@ A geographic object such as a geofence, point of interest, or route.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
-| `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
+| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this asset. |
+| `type` | [AssetType](types.md#assettype)! | The asset type classification. |
 | `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
+| `device` | [Device](../devices/types.md#device) | The primary tracking device linked to this asset.
+  This is an alias for the `device` custom field. |
+| `filter` | [AssetGroupFilter](groups/types.md#assetgroupfilter) | Filtering options for the returned groups. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AssetGroupOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned groups. |
 
 </details>
 
 ---
 
-### geoObjectDelete
+### assetDelete
 
-Deletes a geo object.
+Deletes an asset.
 
 ```graphql
-geoObjectDelete("The input fields for deleting the geo object." input: GeoObjectDeleteInput!): DeletePayload
+assetDelete("The input fields for deleting the asset." input: AssetDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectDeleteInput](types.md#geoobjectdeleteinput)! | The input fields for deleting the geo object. |
+| `input` | [AssetDeleteInput](types.md#assetdeleteinput)! | The input fields for deleting the asset. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectDeleteInput</code></summary>
+<summary><code>AssetDeleteInput</code></summary>
 
-Input for deleting a geo object.
+Input for deleting an asset.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` | The geo object ID to delete. |
+| `id` | `ID!` | The asset ID to delete. |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 </details>
@@ -211,27 +219,27 @@ The result of a delete mutation.
 
 ---
 
-### geoObjectTypeCreate
+### assetTypeCreate
 
-Creates a new geo object type.
+Creates a new asset type.
 
 ```graphql
-geoObjectTypeCreate("The input fields for creating the geo object type." input: GeoObjectTypeCreateInput!): GeoObjectTypePayload
+assetTypeCreate("The input fields for creating the asset type." input: AssetTypeCreateInput!): AssetTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectTypeCreateInput](types.md#geoobjecttypecreateinput)! | The input fields for creating the geo object type. |
+| `input` | [AssetTypeCreateInput](types.md#assettypecreateinput)! | The input fields for creating the asset type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectTypeCreateInput</code></summary>
+<summary><code>AssetTypeCreateInput</code></summary>
 
-Input for creating a geo object type.
+Input for creating an asset type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -263,21 +271,21 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>GeoObjectTypePayload</code></summary>
+<summary><code>AssetTypePayload</code></summary>
 
-The result of a geo object type mutation.
+The result of an asset type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObjectType` | [GeoObjectType](types.md#geoobjecttype)! | The created or updated geo object type. |
+| `assetType` | [AssetType](types.md#assettype)! | The created or updated asset type. |
 
 </details>
 
 <details>
 
-<summary><code>GeoObjectType (entity)</code></summary>
+<summary><code>AssetType (entity)</code></summary>
 
-A classification type for geographic objects.
+A classification type for assets.
 
 **Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
@@ -291,33 +299,33 @@ A classification type for geographic objects.
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
 | `organization` | [Organization](../organizations.md#organization) |  |
 | `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
+| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
 
 </details>
 
 ---
 
-### geoObjectTypeUpdate
+### assetTypeUpdate
 
-Updates a geo object type.
+Updates an asset type.
 
 ```graphql
-geoObjectTypeUpdate("The input fields for updating the geo object type." input: GeoObjectTypeUpdateInput!): GeoObjectTypePayload
+assetTypeUpdate("The input fields for updating the asset type." input: AssetTypeUpdateInput!): AssetTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectTypeUpdateInput](types.md#geoobjecttypeupdateinput)! | The input fields for updating the geo object type. |
+| `input` | [AssetTypeUpdateInput](types.md#assettypeupdateinput)! | The input fields for updating the asset type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectTypeUpdateInput</code></summary>
+<summary><code>AssetTypeUpdateInput</code></summary>
 
-Input for updating a geo object type.
+Input for updating an asset type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -349,21 +357,21 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>GeoObjectTypePayload</code></summary>
+<summary><code>AssetTypePayload</code></summary>
 
-The result of a geo object type mutation.
+The result of an asset type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObjectType` | [GeoObjectType](types.md#geoobjecttype)! | The created or updated geo object type. |
+| `assetType` | [AssetType](types.md#assettype)! | The created or updated asset type. |
 
 </details>
 
 <details>
 
-<summary><code>GeoObjectType (entity)</code></summary>
+<summary><code>AssetType (entity)</code></summary>
 
-A classification type for geographic objects.
+A classification type for assets.
 
 **Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
@@ -377,25 +385,25 @@ A classification type for geographic objects.
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
 | `organization` | [Organization](../organizations.md#organization) |  |
 | `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
+| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
 
 </details>
 
 ---
 
-### geoObjectTypeDelete
+### assetTypeDelete
 
-Deletes a geo object type.
+Deletes an asset type.
 
 ```graphql
-geoObjectTypeDelete("The input fields for deleting the geo object type." input: CatalogItemDeleteInput!): DeletePayload
+assetTypeDelete("The input fields for deleting the asset type." input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the geo object type. |
+| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the asset type. |
 
 **Input types:**
 

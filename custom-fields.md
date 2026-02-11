@@ -1,6 +1,6 @@
 # Custom fields
 
-Custom field definitions for extending entity data models.
+Custom field definitions allow extending entities with organization-specific data fields.
 
 ## Mutations
 
@@ -9,16 +9,14 @@ Custom field definitions for extending entity data models.
 Creates a custom field definition.
 
 ```graphql
-customFieldDefinitionCreate(
-  input: CustomFieldDefinitionCreateInput!
-): CustomFieldDefinitionPayload
+customFieldDefinitionCreate("The input fields for creating the definition." input: CustomFieldDefinitionCreateInput!): CustomFieldDefinitionPayload
 ```
 
 **Arguments**
 
-| Name    | Type                                                                                   | Description                                   |
-| ------- | -------------------------------------------------------------------------------------- | --------------------------------------------- |
-| `input` | [CustomFieldDefinitionCreateInput](custom-fields.md#customfielddefinitioncreateinput)! | The input fields for creating the definition. |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | [CustomFieldDefinitionCreateInput](../custom-fields.md#customfielddefinitioncreateinput)! | The input fields for creating the definition. |
 
 **Input types:**
 
@@ -26,17 +24,19 @@ customFieldDefinitionCreate(
 
 <summary><code>CustomFieldDefinitionCreateInput</code></summary>
 
-| Field                | Type                                                   | Description                                                               |
-| -------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
-| `organizationId`     | `ID!`                                                  | The organization ID.                                                      |
-| `ownerCatalogItemId` | `ID!`                                                  | The owner catalog item ID (EntityType or a specific type like AssetType). |
-| `targetEntityTypeId` | `ID!`                                                  | The target entity type ID.                                                |
-| `code`               | [Code](core-api-reference/common-resources.md#code)!   | The machine-readable code.                                                |
-| `title`              | `String!`                                              | The display name.                                                         |
-| `description`        | `String`                                               | The description.                                                          |
-| `fieldType`          | [FieldType](custom-fields.md#fieldtype)!               | The data type. Immutable after creation.                                  |
-| `order`              | `Int`                                                  | The display order.                                                        |
-| `params`             | [FieldParamsInput](custom-fields.md#fieldparamsinput)! | The type-specific parameters. Exactly one variant must be provided.       |
+Input for creating a custom field definition.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization ID. |
+| `ownerCatalogItemId` | `ID!` | The owner catalog item ID (EntityType or a specific type like AssetType). |
+| `targetEntityTypeId` | `ID!` | The target entity type ID. |
+| `code` | `Code!` | The machine-readable code. |
+| `title` | `String!` | The display name. |
+| `description` | `String` | The description. |
+| `fieldType` | [FieldType](../custom-fields.md#fieldtype)! | The data type. Immutable after creation. |
+| `order` | `Int = 0` | The display order. |
+| `params` | [FieldParamsInput](../custom-fields.md#fieldparamsinput)! | The type-specific parameters. Exactly one variant must be provided. |
 
 </details>
 
@@ -44,23 +44,222 @@ customFieldDefinitionCreate(
 
 <summary><code>FieldParamsInput</code></summary>
 
-> Exactly one field must be provided.
+Field parameters input. Exactly one field must be provided.
 
-| Field       | Type                                                                    | Description                          |
-| ----------- | ----------------------------------------------------------------------- | ------------------------------------ |
-| `string`    | [StringFieldParamsInput](custom-fields.md#stringfieldparamsinput)       | Parameters for STRING field type.    |
-| `text`      | [TextFieldParamsInput](custom-fields.md#textfieldparamsinput)           | Parameters for TEXT field type.      |
-| `number`    | [NumberFieldParamsInput](custom-fields.md#numberfieldparamsinput)       | Parameters for NUMBER field type.    |
-| `boolean`   | [BooleanFieldParamsInput](custom-fields.md#booleanfieldparamsinput)     | Parameters for BOOLEAN field type.   |
-| `date`      | [DateFieldParamsInput](custom-fields.md#datefieldparamsinput)           | Parameters for DATE field type.      |
-| `datetime`  | [DateTimeFieldParamsInput](custom-fields.md#datetimefieldparamsinput)   | Parameters for DATETIME field type.  |
-| `geojson`   | [GeoJsonFieldParamsInput](custom-fields.md#geojsonfieldparamsinput)     | Parameters for GEOJSON field type.   |
-| `schedule`  | [ScheduleFieldParamsInput](custom-fields.md#schedulefieldparamsinput)   | Parameters for SCHEDULE field type.  |
-| `options`   | [OptionsFieldParamsInput](custom-fields.md#optionsfieldparamsinput)     | Parameters for OPTIONS field type.   |
-| `device`    | [DeviceFieldParamsInput](custom-fields.md#devicefieldparamsinput)       | Parameters for DEVICE field type.    |
-| `reference` | [ReferenceFieldParamsInput](custom-fields.md#referencefieldparamsinput) | Parameters for REFERENCE field type. |
-| `catalog`   | [CatalogFieldParamsInput](custom-fields.md#catalogfieldparamsinput)     | Parameters for CATALOG field type.   |
-| `tag`       | [TagFieldParamsInput](custom-fields.md#tagfieldparamsinput)             | Parameters for TAG field type.       |
+*This input type uses `@oneOf` - exactly one field must be provided.*
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `string` | [StringFieldParamsInput](../custom-fields.md#stringfieldparamsinput) | Parameters for STRING field type. |
+| `text` | [TextFieldParamsInput](../custom-fields.md#textfieldparamsinput) | Parameters for TEXT field type. |
+| `number` | [NumberFieldParamsInput](../custom-fields.md#numberfieldparamsinput) | Parameters for NUMBER field type. |
+| `boolean` | [BooleanFieldParamsInput](../custom-fields.md#booleanfieldparamsinput) | Parameters for BOOLEAN field type. |
+| `date` | [DateFieldParamsInput](../custom-fields.md#datefieldparamsinput) | Parameters for DATE field type. |
+| `datetime` | [DateTimeFieldParamsInput](../custom-fields.md#datetimefieldparamsinput) | Parameters for DATETIME field type. |
+| `geojson` | [GeoJsonFieldParamsInput](../custom-fields.md#geojsonfieldparamsinput) | Parameters for GEOJSON field type. |
+| `schedule` | [ScheduleFieldParamsInput](../custom-fields.md#schedulefieldparamsinput) | Parameters for SCHEDULE field type. |
+| `options` | [OptionsFieldParamsInput](../custom-fields.md#optionsfieldparamsinput) | Parameters for OPTIONS field type. |
+| `device` | [DeviceFieldParamsInput](../custom-fields.md#devicefieldparamsinput) | Parameters for DEVICE field type. |
+| `reference` | [ReferenceFieldParamsInput](../custom-fields.md#referencefieldparamsinput) | Parameters for REFERENCE field type. |
+| `catalog` | [CatalogFieldParamsInput](../custom-fields.md#catalogfieldparamsinput) | Parameters for CATALOG field type. |
+| `tag` | [TagFieldParamsInput](../custom-fields.md#tagfieldparamsinput) | Parameters for TAG field type. |
+
+</details>
+
+<details>
+
+<summary><code>StringFieldParamsInput</code></summary>
+
+Parameters for STRING field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `minLength` | `Int` | The minimum character length. |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean = true` | Whether to trim whitespace. |
+
+</details>
+
+<details>
+
+<summary><code>TextFieldParamsInput</code></summary>
+
+Parameters for TEXT field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean = false` | Whether to trim whitespace. |
+
+</details>
+
+<details>
+
+<summary><code>NumberFieldParamsInput</code></summary>
+
+Parameters for NUMBER field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `min` | `Float` | The minimum allowed value. |
+| `max` | `Float` | The maximum allowed value. |
+| `precision` | `Int` | The decimal precision. |
+| `defaultValue` | `Float` | The default value. |
+
+</details>
+
+<details>
+
+<summary><code>BooleanFieldParamsInput</code></summary>
+
+Parameters for BOOLEAN field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `defaultValue` | `Boolean` | The default value. |
+
+</details>
+
+<details>
+
+<summary><code>DateFieldParamsInput</code></summary>
+
+Parameters for DATE field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `defaultValue` | `Date` | The default value. |
+
+</details>
+
+<details>
+
+<summary><code>DateTimeFieldParamsInput</code></summary>
+
+Parameters for DATETIME field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `defaultValue` | `DateTime` | The default value. |
+
+</details>
+
+<details>
+
+<summary><code>GeoJsonFieldParamsInput</code></summary>
+
+Parameters for GEOJSON field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `allowedTypes` | [[GeoJsonGeometryType](../geo-objects/types.md#geojsongeometrytype)!] | The allowed geometry types. Null means all types are allowed. |
+
+</details>
+
+<details>
+
+<summary><code>ScheduleFieldParamsInput</code></summary>
+
+Parameters for SCHEDULE field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+
+</details>
+
+<details>
+
+<summary><code>OptionsFieldParamsInput</code></summary>
+
+Parameters for OPTIONS field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple options can be selected. |
+| `options` | [[FieldOptionInput](../custom-fields.md#fieldoptioninput)!]! | The available options. |
+| `defaultValue` | `Code` | The default option code. |
+
+</details>
+
+<details>
+
+<summary><code>FieldOptionInput</code></summary>
+
+Input for an option definition.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `code` | `Code!` | The unique code. |
+| `label` | `String!` | The display label. |
+| `description` | `String` | The description. |
+| `isArchived` | `Boolean = false` | Whether this option is archived. |
+
+</details>
+
+<details>
+
+<summary><code>DeviceFieldParamsInput</code></summary>
+
+Parameters for DEVICE field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple devices can be selected. |
+
+</details>
+
+<details>
+
+<summary><code>ReferenceFieldParamsInput</code></summary>
+
+Parameters for REFERENCE field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple references can be selected. |
+| `refEntityTypeCode` | `Code!` | The entity type code that can be referenced. |
+
+</details>
+
+<details>
+
+<summary><code>CatalogFieldParamsInput</code></summary>
+
+Parameters for CATALOG field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple items can be selected. |
+| `refCatalogCode` | `Code!` | The catalog code that items can be selected from. |
+| `defaultValue` | `Code` | The default item code. |
+
+</details>
+
+<details>
+
+<summary><code>TagFieldParamsInput</code></summary>
+
+Parameters for TAG field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple tags can be selected. |
+| `defaultValue` | `Code` | The default tag code. |
 
 </details>
 
@@ -70,9 +269,11 @@ customFieldDefinitionCreate(
 
 <summary><code>CustomFieldDefinitionPayload</code></summary>
 
-| Field                   | Type                                                             | Description                                     |
-| ----------------------- | ---------------------------------------------------------------- | ----------------------------------------------- |
-| `customFieldDefinition` | [CustomFieldDefinition](custom-fields.md#customfielddefinition)! | The created or updated custom field definition. |
+The result of a custom field definition mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `customFieldDefinition` | [CustomFieldDefinition](../custom-fields.md#customfielddefinition)! | The created or updated custom field definition. |
 
 </details>
 
@@ -80,37 +281,45 @@ customFieldDefinitionCreate(
 
 <summary><code>CustomFieldDefinition (entity)</code></summary>
 
-| Field              | Type                                                           | Description                                                                                                       |
-| ------------------ | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `id`               | `ID!`                                                          |                                                                                                                   |
-| `version`          | `Int!`                                                         |                                                                                                                   |
-| `title`            | `String!`                                                      | The human-readable display name.                                                                                  |
-| `code`             | [Code](core-api-reference/common-resources.md#code)!           | The machine-readable code, unique per owner and organization.                                                     |
-| `description`      | `String`                                                       | A description of the field for UI hints.                                                                          |
-| `order`            | `Int!`                                                         | The display order within the owner context.                                                                       |
-| `organization`     | [Organization](core-api-reference/organizations/#organization) | The organization that owns this definition. Null for system-level fields.                                         |
-| `owner`            | [CatalogItem](catalogs/#catalogitem)!                          | The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields. |
-| `targetEntityType` | [EntityType](catalogs/system.md#entitytype)!                   | The target entity type this field applies to.                                                                     |
-| `fieldType`        | [FieldType](custom-fields.md#fieldtype)!                       |                                                                                                                   |
-| `params`           | [FieldParams](custom-fields.md#fieldparams)!                   | The type-specific parameters for validation, defaults, and options.                                               |
+A custom field definition that specifies the metadata for a custom field.
+
+Note: The `fieldType` property is immutable after creation.
+To change the field type, delete the definition and create a new one.
+
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` | The human-readable display name. |
+| `code` | `Code!` | The machine-readable code, unique per owner and organization. |
+| `description` | `String` | A description of the field for UI hints. |
+| `order` | `Int!` | The display order within the owner context. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this definition. Null for system-level fields. |
+| `owner` | [CatalogItem](../catalogs.md#catalogitem)! | The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields. |
+| `targetEntityType` | [EntityType](../catalogs/system.md#entitytype)! | The target entity type this field applies to. |
+| `fieldType` | [FieldType](../custom-fields.md#fieldtype)! | The data type determining validation rules and UI rendering.
+  This property is immutable and cannot be changed after creation. |
+| `params` | [FieldParams](../custom-fields.md#fieldparams)! | The type-specific parameters for validation, defaults, and options. |
 
 </details>
+
+---
 
 ### customFieldDefinitionUpdate
 
 Updates a custom field definition. Note: `fieldType` cannot be changed.
 
 ```graphql
-customFieldDefinitionUpdate(
-  input: CustomFieldDefinitionUpdateInput!
-): CustomFieldDefinitionPayload
+customFieldDefinitionUpdate("The input fields for updating the definition." input: CustomFieldDefinitionUpdateInput!): CustomFieldDefinitionPayload
 ```
 
 **Arguments**
 
-| Name    | Type                                                                                   | Description                                   |
-| ------- | -------------------------------------------------------------------------------------- | --------------------------------------------- |
-| `input` | [CustomFieldDefinitionUpdateInput](custom-fields.md#customfielddefinitionupdateinput)! | The input fields for updating the definition. |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | [CustomFieldDefinitionUpdateInput](../custom-fields.md#customfielddefinitionupdateinput)! | The input fields for updating the definition. |
 
 **Input types:**
 
@@ -118,14 +327,16 @@ customFieldDefinitionUpdate(
 
 <summary><code>CustomFieldDefinitionUpdateInput</code></summary>
 
-| Field         | Type                                                  | Description                                                                        |
-| ------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `id`          | `ID!`                                                 | The definition ID to update.                                                       |
-| `version`     | `Int!`                                                | The current version for optimistic locking.                                        |
-| `title`       | `String`                                              | The new display name.                                                              |
-| `description` | `String`                                              | The new description.                                                               |
-| `order`       | `Int`                                                 | The new display order.                                                             |
-| `params`      | [FieldParamsInput](custom-fields.md#fieldparamsinput) | The updated parameters. Only `isRequired` and type-specific fields can be changed. |
+Input for updating a custom field definition. Note: `fieldType` cannot be changed.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The definition ID to update. |
+| `version` | `Int!` | The current version for optimistic locking. |
+| `title` | `String` | The new display name. |
+| `description` | `String` | The new description. |
+| `order` | `Int` | The new display order. |
+| `params` | [FieldParamsInput](../custom-fields.md#fieldparamsinput) | The updated parameters. Only `isRequired` and type-specific fields can be changed. |
 
 </details>
 
@@ -133,23 +344,222 @@ customFieldDefinitionUpdate(
 
 <summary><code>FieldParamsInput</code></summary>
 
-> Exactly one field must be provided.
+Field parameters input. Exactly one field must be provided.
 
-| Field       | Type                                                                    | Description                          |
-| ----------- | ----------------------------------------------------------------------- | ------------------------------------ |
-| `string`    | [StringFieldParamsInput](custom-fields.md#stringfieldparamsinput)       | Parameters for STRING field type.    |
-| `text`      | [TextFieldParamsInput](custom-fields.md#textfieldparamsinput)           | Parameters for TEXT field type.      |
-| `number`    | [NumberFieldParamsInput](custom-fields.md#numberfieldparamsinput)       | Parameters for NUMBER field type.    |
-| `boolean`   | [BooleanFieldParamsInput](custom-fields.md#booleanfieldparamsinput)     | Parameters for BOOLEAN field type.   |
-| `date`      | [DateFieldParamsInput](custom-fields.md#datefieldparamsinput)           | Parameters for DATE field type.      |
-| `datetime`  | [DateTimeFieldParamsInput](custom-fields.md#datetimefieldparamsinput)   | Parameters for DATETIME field type.  |
-| `geojson`   | [GeoJsonFieldParamsInput](custom-fields.md#geojsonfieldparamsinput)     | Parameters for GEOJSON field type.   |
-| `schedule`  | [ScheduleFieldParamsInput](custom-fields.md#schedulefieldparamsinput)   | Parameters for SCHEDULE field type.  |
-| `options`   | [OptionsFieldParamsInput](custom-fields.md#optionsfieldparamsinput)     | Parameters for OPTIONS field type.   |
-| `device`    | [DeviceFieldParamsInput](custom-fields.md#devicefieldparamsinput)       | Parameters for DEVICE field type.    |
-| `reference` | [ReferenceFieldParamsInput](custom-fields.md#referencefieldparamsinput) | Parameters for REFERENCE field type. |
-| `catalog`   | [CatalogFieldParamsInput](custom-fields.md#catalogfieldparamsinput)     | Parameters for CATALOG field type.   |
-| `tag`       | [TagFieldParamsInput](custom-fields.md#tagfieldparamsinput)             | Parameters for TAG field type.       |
+*This input type uses `@oneOf` - exactly one field must be provided.*
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `string` | [StringFieldParamsInput](../custom-fields.md#stringfieldparamsinput) | Parameters for STRING field type. |
+| `text` | [TextFieldParamsInput](../custom-fields.md#textfieldparamsinput) | Parameters for TEXT field type. |
+| `number` | [NumberFieldParamsInput](../custom-fields.md#numberfieldparamsinput) | Parameters for NUMBER field type. |
+| `boolean` | [BooleanFieldParamsInput](../custom-fields.md#booleanfieldparamsinput) | Parameters for BOOLEAN field type. |
+| `date` | [DateFieldParamsInput](../custom-fields.md#datefieldparamsinput) | Parameters for DATE field type. |
+| `datetime` | [DateTimeFieldParamsInput](../custom-fields.md#datetimefieldparamsinput) | Parameters for DATETIME field type. |
+| `geojson` | [GeoJsonFieldParamsInput](../custom-fields.md#geojsonfieldparamsinput) | Parameters for GEOJSON field type. |
+| `schedule` | [ScheduleFieldParamsInput](../custom-fields.md#schedulefieldparamsinput) | Parameters for SCHEDULE field type. |
+| `options` | [OptionsFieldParamsInput](../custom-fields.md#optionsfieldparamsinput) | Parameters for OPTIONS field type. |
+| `device` | [DeviceFieldParamsInput](../custom-fields.md#devicefieldparamsinput) | Parameters for DEVICE field type. |
+| `reference` | [ReferenceFieldParamsInput](../custom-fields.md#referencefieldparamsinput) | Parameters for REFERENCE field type. |
+| `catalog` | [CatalogFieldParamsInput](../custom-fields.md#catalogfieldparamsinput) | Parameters for CATALOG field type. |
+| `tag` | [TagFieldParamsInput](../custom-fields.md#tagfieldparamsinput) | Parameters for TAG field type. |
+
+</details>
+
+<details>
+
+<summary><code>StringFieldParamsInput</code></summary>
+
+Parameters for STRING field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `minLength` | `Int` | The minimum character length. |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean = true` | Whether to trim whitespace. |
+
+</details>
+
+<details>
+
+<summary><code>TextFieldParamsInput</code></summary>
+
+Parameters for TEXT field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean = false` | Whether to trim whitespace. |
+
+</details>
+
+<details>
+
+<summary><code>NumberFieldParamsInput</code></summary>
+
+Parameters for NUMBER field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `min` | `Float` | The minimum allowed value. |
+| `max` | `Float` | The maximum allowed value. |
+| `precision` | `Int` | The decimal precision. |
+| `defaultValue` | `Float` | The default value. |
+
+</details>
+
+<details>
+
+<summary><code>BooleanFieldParamsInput</code></summary>
+
+Parameters for BOOLEAN field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `defaultValue` | `Boolean` | The default value. |
+
+</details>
+
+<details>
+
+<summary><code>DateFieldParamsInput</code></summary>
+
+Parameters for DATE field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `defaultValue` | `Date` | The default value. |
+
+</details>
+
+<details>
+
+<summary><code>DateTimeFieldParamsInput</code></summary>
+
+Parameters for DATETIME field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `defaultValue` | `DateTime` | The default value. |
+
+</details>
+
+<details>
+
+<summary><code>GeoJsonFieldParamsInput</code></summary>
+
+Parameters for GEOJSON field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `allowedTypes` | [[GeoJsonGeometryType](../geo-objects/types.md#geojsongeometrytype)!] | The allowed geometry types. Null means all types are allowed. |
+
+</details>
+
+<details>
+
+<summary><code>ScheduleFieldParamsInput</code></summary>
+
+Parameters for SCHEDULE field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+
+</details>
+
+<details>
+
+<summary><code>OptionsFieldParamsInput</code></summary>
+
+Parameters for OPTIONS field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple options can be selected. |
+| `options` | [[FieldOptionInput](../custom-fields.md#fieldoptioninput)!]! | The available options. |
+| `defaultValue` | `Code` | The default option code. |
+
+</details>
+
+<details>
+
+<summary><code>FieldOptionInput</code></summary>
+
+Input for an option definition.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `code` | `Code!` | The unique code. |
+| `label` | `String!` | The display label. |
+| `description` | `String` | The description. |
+| `isArchived` | `Boolean = false` | Whether this option is archived. |
+
+</details>
+
+<details>
+
+<summary><code>DeviceFieldParamsInput</code></summary>
+
+Parameters for DEVICE field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple devices can be selected. |
+
+</details>
+
+<details>
+
+<summary><code>ReferenceFieldParamsInput</code></summary>
+
+Parameters for REFERENCE field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple references can be selected. |
+| `refEntityTypeCode` | `Code!` | The entity type code that can be referenced. |
+
+</details>
+
+<details>
+
+<summary><code>CatalogFieldParamsInput</code></summary>
+
+Parameters for CATALOG field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple items can be selected. |
+| `refCatalogCode` | `Code!` | The catalog code that items can be selected from. |
+| `defaultValue` | `Code` | The default item code. |
+
+</details>
+
+<details>
+
+<summary><code>TagFieldParamsInput</code></summary>
+
+Parameters for TAG field type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple tags can be selected. |
+| `defaultValue` | `Code` | The default tag code. |
 
 </details>
 
@@ -159,9 +569,11 @@ customFieldDefinitionUpdate(
 
 <summary><code>CustomFieldDefinitionPayload</code></summary>
 
-| Field                   | Type                                                             | Description                                     |
-| ----------------------- | ---------------------------------------------------------------- | ----------------------------------------------- |
-| `customFieldDefinition` | [CustomFieldDefinition](custom-fields.md#customfielddefinition)! | The created or updated custom field definition. |
+The result of a custom field definition mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `customFieldDefinition` | [CustomFieldDefinition](../custom-fields.md#customfielddefinition)! | The created or updated custom field definition. |
 
 </details>
 
@@ -169,37 +581,45 @@ customFieldDefinitionUpdate(
 
 <summary><code>CustomFieldDefinition (entity)</code></summary>
 
-| Field              | Type                                                           | Description                                                                                                       |
-| ------------------ | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `id`               | `ID!`                                                          |                                                                                                                   |
-| `version`          | `Int!`                                                         |                                                                                                                   |
-| `title`            | `String!`                                                      | The human-readable display name.                                                                                  |
-| `code`             | [Code](core-api-reference/common-resources.md#code)!           | The machine-readable code, unique per owner and organization.                                                     |
-| `description`      | `String`                                                       | A description of the field for UI hints.                                                                          |
-| `order`            | `Int!`                                                         | The display order within the owner context.                                                                       |
-| `organization`     | [Organization](core-api-reference/organizations/#organization) | The organization that owns this definition. Null for system-level fields.                                         |
-| `owner`            | [CatalogItem](catalogs/#catalogitem)!                          | The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields. |
-| `targetEntityType` | [EntityType](catalogs/system.md#entitytype)!                   | The target entity type this field applies to.                                                                     |
-| `fieldType`        | [FieldType](custom-fields.md#fieldtype)!                       |                                                                                                                   |
-| `params`           | [FieldParams](custom-fields.md#fieldparams)!                   | The type-specific parameters for validation, defaults, and options.                                               |
+A custom field definition that specifies the metadata for a custom field.
+
+Note: The `fieldType` property is immutable after creation.
+To change the field type, delete the definition and create a new one.
+
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` | The human-readable display name. |
+| `code` | `Code!` | The machine-readable code, unique per owner and organization. |
+| `description` | `String` | A description of the field for UI hints. |
+| `order` | `Int!` | The display order within the owner context. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this definition. Null for system-level fields. |
+| `owner` | [CatalogItem](../catalogs.md#catalogitem)! | The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields. |
+| `targetEntityType` | [EntityType](../catalogs/system.md#entitytype)! | The target entity type this field applies to. |
+| `fieldType` | [FieldType](../custom-fields.md#fieldtype)! | The data type determining validation rules and UI rendering.
+  This property is immutable and cannot be changed after creation. |
+| `params` | [FieldParams](../custom-fields.md#fieldparams)! | The type-specific parameters for validation, defaults, and options. |
 
 </details>
+
+---
 
 ### customFieldDefinitionDelete
 
 Deletes a custom field definition.
 
 ```graphql
-customFieldDefinitionDelete(
-  input: CustomFieldDefinitionDeleteInput!
-): DeletePayload
+customFieldDefinitionDelete("The input fields for deleting the definition." input: CustomFieldDefinitionDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
-| Name    | Type                                                                                   | Description                                   |
-| ------- | -------------------------------------------------------------------------------------- | --------------------------------------------- |
-| `input` | [CustomFieldDefinitionDeleteInput](custom-fields.md#customfielddefinitiondeleteinput)! | The input fields for deleting the definition. |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | [CustomFieldDefinitionDeleteInput](../custom-fields.md#customfielddefinitiondeleteinput)! | The input fields for deleting the definition. |
 
 **Input types:**
 
@@ -207,9 +627,11 @@ customFieldDefinitionDelete(
 
 <summary><code>CustomFieldDefinitionDeleteInput</code></summary>
 
-| Field     | Type   | Description                                 |
-| --------- | ------ | ------------------------------------------- |
-| `id`      | `ID!`  | The definition ID to delete.                |
+Input for deleting a custom field definition.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The definition ID to delete. |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 </details>
@@ -220,210 +642,248 @@ customFieldDefinitionDelete(
 
 <summary><code>DeletePayload</code></summary>
 
-| Field       | Type  | Description                   |
-| ----------- | ----- | ----------------------------- |
+The result of a delete mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
 | `deletedId` | `ID!` | The ID of the deleted entity. |
 
 </details>
 
-## Types
+---
+
+## Objects
 
 ### CustomFieldDefinition
 
 A custom field definition that specifies the metadata for a custom field.
 
-Note: The `fieldType` property is immutable after creation. To change the field type, delete the definition and create a new one.
+Note: The `fieldType` property is immutable after creation.
+To change the field type, delete the definition and create a new one.
 
-**Implements:** [`Node`](core-api-reference/common-resources.md#node), [`Versioned`](core-api-reference/common-resources.md#versioned), [`Titled`](core-api-reference/common-resources.md#titled)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
-| Field              | Type                                                           | Description                                                                                                       |
-| ------------------ | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `id`               | `ID!`                                                          |                                                                                                                   |
-| `version`          | `Int!`                                                         |                                                                                                                   |
-| `title`            | `String!`                                                      | The human-readable display name.                                                                                  |
-| `code`             | [Code](core-api-reference/common-resources.md#code)!           | The machine-readable code, unique per owner and organization.                                                     |
-| `description`      | `String`                                                       | A description of the field for UI hints.                                                                          |
-| `order`            | `Int!`                                                         | The display order within the owner context.                                                                       |
-| `organization`     | [Organization](core-api-reference/organizations/#organization) | The organization that owns this definition. Null for system-level fields.                                         |
-| `owner`            | [CatalogItem](catalogs/#catalogitem)!                          | The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields. |
-| `targetEntityType` | [EntityType](catalogs/system.md#entitytype)!                   | The target entity type this field applies to.                                                                     |
-| `fieldType`        | [FieldType](custom-fields.md#fieldtype)!                       |                                                                                                                   |
-| `params`           | [FieldParams](custom-fields.md#fieldparams)!                   | The type-specific parameters for validation, defaults, and options.                                               |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` | The human-readable display name. |
+| `code` | `Code!` | The machine-readable code, unique per owner and organization. |
+| `description` | `String` | A description of the field for UI hints. |
+| `order` | `Int!` | The display order within the owner context. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this definition. Null for system-level fields. |
+| `owner` | [CatalogItem](../catalogs.md#catalogitem)! | The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields. |
+| `targetEntityType` | [EntityType](../catalogs/system.md#entitytype)! | The target entity type this field applies to. |
+| `fieldType` | [FieldType](../custom-fields.md#fieldtype)! | The data type determining validation rules and UI rendering.
+  This property is immutable and cannot be changed after creation. |
+| `params` | [FieldParams](../custom-fields.md#fieldparams)! | The type-specific parameters for validation, defaults, and options. |
+
+---
 
 ### FieldParamsString
 
 Parameters for STRING field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams)
 
-| Field          | Type       | Description                                      |
-| -------------- | ---------- | ------------------------------------------------ |
-| `isRequired`   | `Boolean!` |                                                  |
-| `minLength`    | `Int`      | The minimum character length.                    |
-| `maxLength`    | `Int`      | The maximum character length.                    |
-| `defaultValue` | `String`   | The default value.                               |
-| `trim`         | `Boolean!` | Whether to trim leading and trailing whitespace. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `minLength` | `Int` | The minimum character length. |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean!` | Whether to trim leading and trailing whitespace. |
+
+---
 
 ### FieldParamsText
 
 Parameters for TEXT field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams)
 
-| Field          | Type       | Description                                      |
-| -------------- | ---------- | ------------------------------------------------ |
-| `isRequired`   | `Boolean!` |                                                  |
-| `maxLength`    | `Int`      | The maximum character length.                    |
-| `defaultValue` | `String`   | The default value.                               |
-| `trim`         | `Boolean!` | Whether to trim leading and trailing whitespace. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean!` | Whether to trim leading and trailing whitespace. |
+
+---
 
 ### FieldParamsNumber
 
 Parameters for NUMBER field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams)
 
-| Field          | Type       | Description                |
-| -------------- | ---------- | -------------------------- |
-| `isRequired`   | `Boolean!` |                            |
-| `min`          | `Float`    | The minimum allowed value. |
-| `max`          | `Float`    | The maximum allowed value. |
-| `precision`    | `Int`      | The decimal precision.     |
-| `defaultValue` | `Float`    | The default value.         |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `min` | `Float` | The minimum allowed value. |
+| `max` | `Float` | The maximum allowed value. |
+| `precision` | `Int` | The decimal precision. |
+| `defaultValue` | `Float` | The default value. |
+
+---
 
 ### FieldParamsBoolean
 
 Parameters for BOOLEAN field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams)
 
-| Field          | Type       | Description        |
-| -------------- | ---------- | ------------------ |
-| `isRequired`   | `Boolean!` |                    |
-| `defaultValue` | `Boolean`  | The default value. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `defaultValue` | `Boolean` | The default value. |
+
+---
 
 ### FieldParamsDate
 
 Parameters for DATE field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams)
 
-| Field          | Type                                                | Description        |
-| -------------- | --------------------------------------------------- | ------------------ |
-| `isRequired`   | `Boolean!`                                          |                    |
-| `defaultValue` | [Date](core-api-reference/common-resources.md#date) | The default value. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `defaultValue` | `Date` | The default value. |
+
+---
 
 ### FieldParamsDatetime
 
 Parameters for DATETIME field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams)
 
-| Field          | Type                                                        | Description        |
-| -------------- | ----------------------------------------------------------- | ------------------ |
-| `isRequired`   | `Boolean!`                                                  |                    |
-| `defaultValue` | [DateTime](core-api-reference/common-resources.md#datetime) | The default value. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `defaultValue` | `DateTime` | The default value. |
+
+---
 
 ### FieldParamsGeojson
 
 Parameters for GEOJSON field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams)
 
-| Field          | Type                                                                | Description                                                   |
-| -------------- | ------------------------------------------------------------------- | ------------------------------------------------------------- |
-| `isRequired`   | `Boolean!`                                                          |                                                               |
-| `allowedTypes` | \[[GeoJsonGeometryType](geo-objects/types.md#geojsongeometrytype)!] | The allowed geometry types. Null means all types are allowed. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `allowedTypes` | [[GeoJsonGeometryType](../geo-objects/types.md#geojsongeometrytype)!] | The allowed geometry types. Null means all types are allowed. |
+
+---
 
 ### FieldParamsSchedule
 
 Parameters for SCHEDULE field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams)
 
-| Field        | Type       | Description |
-| ------------ | ---------- | ----------- |
-| `isRequired` | `Boolean!` |             |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+
+---
 
 ### FieldParamsOptions
 
 Parameters for OPTIONS field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams), [`MultiValue`](core-api-reference/common-resources.md#multivalue)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams), [MultiValue](../common.md#multivalue)
 
-| Field          | Type                                                | Description                           |
-| -------------- | --------------------------------------------------- | ------------------------------------- |
-| `isRequired`   | `Boolean!`                                          |                                       |
-| `isMulti`      | `Boolean!`                                          |                                       |
-| `options`      | \[[FieldOption](custom-fields.md#fieldoption)!]!    | The available options to choose from. |
-| `defaultValue` | [Code](core-api-reference/common-resources.md#code) | The default option code.              |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `isMulti` | `Boolean!` |  |
+| `options` | [[FieldOption](../custom-fields.md#fieldoption)!]! | The available options to choose from. |
+| `defaultValue` | `Code` | The default option code. |
+
+---
 
 ### FieldOption
 
 A single option in an OPTIONS field.
 
-| Field         | Type                                                 | Description                                                                 |
-| ------------- | ---------------------------------------------------- | --------------------------------------------------------------------------- |
-| `code`        | [Code](core-api-reference/common-resources.md#code)! | The unique code for this option within the field.                           |
-| `label`       | `String!`                                            | The display label.                                                          |
-| `description` | `String`                                             | A description of the option.                                                |
-| `isArchived`  | `Boolean!`                                           | Whether this option is archived and should not be shown for new selections. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `code` | `Code!` | The unique code for this option within the field. |
+| `label` | `String!` | The display label. |
+| `description` | `String` | A description of the option. |
+| `isArchived` | `Boolean!` | Whether this option is archived and should not be shown for new selections. |
+
+---
 
 ### FieldParamsDevice
 
 Parameters for DEVICE field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams), [`MultiValue`](core-api-reference/common-resources.md#multivalue)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams), [MultiValue](../common.md#multivalue)
 
-| Field        | Type       | Description |
-| ------------ | ---------- | ----------- |
-| `isRequired` | `Boolean!` |             |
-| `isMulti`    | `Boolean!` |             |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `isMulti` | `Boolean!` |  |
+
+---
 
 ### FieldParamsReference
 
 Parameters for REFERENCE field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams), [`MultiValue`](core-api-reference/common-resources.md#multivalue)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams), [MultiValue](../common.md#multivalue)
 
-| Field               | Type                                                 | Description                                  |
-| ------------------- | ---------------------------------------------------- | -------------------------------------------- |
-| `isRequired`        | `Boolean!`                                           |                                              |
-| `isMulti`           | `Boolean!`                                           |                                              |
-| `refEntityTypeCode` | [Code](core-api-reference/common-resources.md#code)! | The entity type code that can be referenced. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `isMulti` | `Boolean!` |  |
+| `refEntityTypeCode` | `Code!` | The entity type code that can be referenced. |
+
+---
 
 ### FieldParamsCatalog
 
 Parameters for CATALOG field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams), [`MultiValue`](core-api-reference/common-resources.md#multivalue)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams), [MultiValue](../common.md#multivalue)
 
-| Field            | Type                                                 | Description                                       |
-| ---------------- | ---------------------------------------------------- | ------------------------------------------------- |
-| `isRequired`     | `Boolean!`                                           |                                                   |
-| `isMulti`        | `Boolean!`                                           |                                                   |
-| `refCatalogCode` | [Code](core-api-reference/common-resources.md#code)! | The catalog code that items can be selected from. |
-| `defaultValue`   | [Code](core-api-reference/common-resources.md#code)  | The default item code.                            |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `isMulti` | `Boolean!` |  |
+| `refCatalogCode` | `Code!` | The catalog code that items can be selected from. |
+| `defaultValue` | `Code` | The default item code. |
+
+---
 
 ### FieldParamsTag
 
 Parameters for TAG field type.
 
-**Implements:** [`FieldParams`](custom-fields.md#fieldparams), [`MultiValue`](core-api-reference/common-resources.md#multivalue)
+**Implements:** [FieldParams](../custom-fields.md#fieldparams), [MultiValue](../common.md#multivalue)
 
-| Field          | Type                                                | Description           |
-| -------------- | --------------------------------------------------- | --------------------- |
-| `isRequired`   | `Boolean!`                                          |                       |
-| `isMulti`      | `Boolean!`                                          |                       |
-| `defaultValue` | [Code](core-api-reference/common-resources.md#code) | The default tag code. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` |  |
+| `isMulti` | `Boolean!` |  |
+| `defaultValue` | `Code` | The default tag code. |
+
+---
 
 ### CustomFieldDefinitionPayload
 
 The result of a custom field definition mutation.
 
-| Field                   | Type                                                             | Description                                     |
-| ----------------------- | ---------------------------------------------------------------- | ----------------------------------------------- |
-| `customFieldDefinition` | [CustomFieldDefinition](custom-fields.md#customfielddefinition)! | The created or updated custom field definition. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `customFieldDefinition` | [CustomFieldDefinition](../custom-fields.md#customfielddefinition)! | The created or updated custom field definition. |
+
+---
 
 ## Inputs
 
@@ -431,221 +891,261 @@ The result of a custom field definition mutation.
 
 A filter condition for a custom field value.
 
-| Field      | Type                                                 | Description                                                                   |
-| ---------- | ---------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `code`     | [Code](core-api-reference/common-resources.md#code)! | The custom field code to filter by.                                           |
-| `operator` | [FieldOperator](custom-fields.md#fieldoperator)!     | The comparison operator.                                                      |
-| `value`    | [JSON](core-api-reference/common-resources.md#json)  | The value to compare against. Null for `IS_NULL` and `IS_NOT_NULL` operators. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `code` | `Code!` | The custom field code to filter by. |
+| `operator` | [FieldOperator](../custom-fields.md#fieldoperator)! | The comparison operator. |
+| `value` | `JSON` | The value to compare against. Null for `IS_NULL` and `IS_NOT_NULL` operators. |
+
+---
 
 ### CustomFieldsPatchInput
 
 Input for updating custom field values using a patch model.
 
-| Field   | Type                                                    | Description                                 |
-| ------- | ------------------------------------------------------- | ------------------------------------------- |
-| `set`   | [JSON](core-api-reference/common-resources.md#json)     | Fields to set or update as a key-value map. |
-| `unset` | \[[Code](core-api-reference/common-resources.md#code)!] | Field codes to remove.                      |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `set` | `JSON` | Fields to set or update as a key-value map. |
+| `unset` | `[Code!]` | Field codes to remove. |
+
+---
 
 ### CustomFieldDefinitionCreateInput
 
 Input for creating a custom field definition.
 
-| Field                | Type                                                   | Description                                                               |
-| -------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
-| `organizationId`     | `ID!`                                                  | The organization ID.                                                      |
-| `ownerCatalogItemId` | `ID!`                                                  | The owner catalog item ID (EntityType or a specific type like AssetType). |
-| `targetEntityTypeId` | `ID!`                                                  | The target entity type ID.                                                |
-| `code`               | [Code](core-api-reference/common-resources.md#code)!   | The machine-readable code.                                                |
-| `title`              | `String!`                                              | The display name.                                                         |
-| `description`        | `String`                                               | The description.                                                          |
-| `fieldType`          | [FieldType](custom-fields.md#fieldtype)!               | The data type. Immutable after creation.                                  |
-| `order`              | `Int`                                                  | The display order.                                                        |
-| `params`             | [FieldParamsInput](custom-fields.md#fieldparamsinput)! | The type-specific parameters. Exactly one variant must be provided.       |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization ID. |
+| `ownerCatalogItemId` | `ID!` | The owner catalog item ID (EntityType or a specific type like AssetType). |
+| `targetEntityTypeId` | `ID!` | The target entity type ID. |
+| `code` | `Code!` | The machine-readable code. |
+| `title` | `String!` | The display name. |
+| `description` | `String` | The description. |
+| `fieldType` | [FieldType](../custom-fields.md#fieldtype)! | The data type. Immutable after creation. |
+| `order` | `Int = 0` | The display order. |
+| `params` | [FieldParamsInput](../custom-fields.md#fieldparamsinput)! | The type-specific parameters. Exactly one variant must be provided. |
+
+---
 
 ### CustomFieldDefinitionUpdateInput
 
 Input for updating a custom field definition. Note: `fieldType` cannot be changed.
 
-| Field         | Type                                                  | Description                                                                        |
-| ------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `id`          | `ID!`                                                 | The definition ID to update.                                                       |
-| `version`     | `Int!`                                                | The current version for optimistic locking.                                        |
-| `title`       | `String`                                              | The new display name.                                                              |
-| `description` | `String`                                              | The new description.                                                               |
-| `order`       | `Int`                                                 | The new display order.                                                             |
-| `params`      | [FieldParamsInput](custom-fields.md#fieldparamsinput) | The updated parameters. Only `isRequired` and type-specific fields can be changed. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The definition ID to update. |
+| `version` | `Int!` | The current version for optimistic locking. |
+| `title` | `String` | The new display name. |
+| `description` | `String` | The new description. |
+| `order` | `Int` | The new display order. |
+| `params` | [FieldParamsInput](../custom-fields.md#fieldparamsinput) | The updated parameters. Only `isRequired` and type-specific fields can be changed. |
+
+---
 
 ### CustomFieldDefinitionDeleteInput
 
 Input for deleting a custom field definition.
 
-| Field     | Type   | Description                                 |
-| --------- | ------ | ------------------------------------------- |
-| `id`      | `ID!`  | The definition ID to delete.                |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The definition ID to delete. |
 | `version` | `Int!` | The current version for optimistic locking. |
+
+---
 
 ### FieldParamsInput
 
 Field parameters input. Exactly one field must be provided.
 
-> Exactly one field must be provided.
+*This input type uses `@oneOf` - exactly one field must be provided.*
 
-| Field       | Type                                                                    | Description                          |
-| ----------- | ----------------------------------------------------------------------- | ------------------------------------ |
-| `string`    | [StringFieldParamsInput](custom-fields.md#stringfieldparamsinput)       | Parameters for STRING field type.    |
-| `text`      | [TextFieldParamsInput](custom-fields.md#textfieldparamsinput)           | Parameters for TEXT field type.      |
-| `number`    | [NumberFieldParamsInput](custom-fields.md#numberfieldparamsinput)       | Parameters for NUMBER field type.    |
-| `boolean`   | [BooleanFieldParamsInput](custom-fields.md#booleanfieldparamsinput)     | Parameters for BOOLEAN field type.   |
-| `date`      | [DateFieldParamsInput](custom-fields.md#datefieldparamsinput)           | Parameters for DATE field type.      |
-| `datetime`  | [DateTimeFieldParamsInput](custom-fields.md#datetimefieldparamsinput)   | Parameters for DATETIME field type.  |
-| `geojson`   | [GeoJsonFieldParamsInput](custom-fields.md#geojsonfieldparamsinput)     | Parameters for GEOJSON field type.   |
-| `schedule`  | [ScheduleFieldParamsInput](custom-fields.md#schedulefieldparamsinput)   | Parameters for SCHEDULE field type.  |
-| `options`   | [OptionsFieldParamsInput](custom-fields.md#optionsfieldparamsinput)     | Parameters for OPTIONS field type.   |
-| `device`    | [DeviceFieldParamsInput](custom-fields.md#devicefieldparamsinput)       | Parameters for DEVICE field type.    |
-| `reference` | [ReferenceFieldParamsInput](custom-fields.md#referencefieldparamsinput) | Parameters for REFERENCE field type. |
-| `catalog`   | [CatalogFieldParamsInput](custom-fields.md#catalogfieldparamsinput)     | Parameters for CATALOG field type.   |
-| `tag`       | [TagFieldParamsInput](custom-fields.md#tagfieldparamsinput)             | Parameters for TAG field type.       |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `string` | [StringFieldParamsInput](../custom-fields.md#stringfieldparamsinput) | Parameters for STRING field type. |
+| `text` | [TextFieldParamsInput](../custom-fields.md#textfieldparamsinput) | Parameters for TEXT field type. |
+| `number` | [NumberFieldParamsInput](../custom-fields.md#numberfieldparamsinput) | Parameters for NUMBER field type. |
+| `boolean` | [BooleanFieldParamsInput](../custom-fields.md#booleanfieldparamsinput) | Parameters for BOOLEAN field type. |
+| `date` | [DateFieldParamsInput](../custom-fields.md#datefieldparamsinput) | Parameters for DATE field type. |
+| `datetime` | [DateTimeFieldParamsInput](../custom-fields.md#datetimefieldparamsinput) | Parameters for DATETIME field type. |
+| `geojson` | [GeoJsonFieldParamsInput](../custom-fields.md#geojsonfieldparamsinput) | Parameters for GEOJSON field type. |
+| `schedule` | [ScheduleFieldParamsInput](../custom-fields.md#schedulefieldparamsinput) | Parameters for SCHEDULE field type. |
+| `options` | [OptionsFieldParamsInput](../custom-fields.md#optionsfieldparamsinput) | Parameters for OPTIONS field type. |
+| `device` | [DeviceFieldParamsInput](../custom-fields.md#devicefieldparamsinput) | Parameters for DEVICE field type. |
+| `reference` | [ReferenceFieldParamsInput](../custom-fields.md#referencefieldparamsinput) | Parameters for REFERENCE field type. |
+| `catalog` | [CatalogFieldParamsInput](../custom-fields.md#catalogfieldparamsinput) | Parameters for CATALOG field type. |
+| `tag` | [TagFieldParamsInput](../custom-fields.md#tagfieldparamsinput) | Parameters for TAG field type. |
+
+---
 
 ### StringFieldParamsInput
 
 Parameters for STRING field type.
 
-| Field          | Type       | Description                   |
-| -------------- | ---------- | ----------------------------- |
-| `isRequired`   | `Boolean!` | Whether a value is required.  |
-| `minLength`    | `Int`      | The minimum character length. |
-| `maxLength`    | `Int`      | The maximum character length. |
-| `defaultValue` | `String`   | The default value.            |
-| `trim`         | `Boolean`  | Whether to trim whitespace.   |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `minLength` | `Int` | The minimum character length. |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean = true` | Whether to trim whitespace. |
+
+---
 
 ### TextFieldParamsInput
 
 Parameters for TEXT field type.
 
-| Field          | Type       | Description                   |
-| -------------- | ---------- | ----------------------------- |
-| `isRequired`   | `Boolean!` | Whether a value is required.  |
-| `maxLength`    | `Int`      | The maximum character length. |
-| `defaultValue` | `String`   | The default value.            |
-| `trim`         | `Boolean`  | Whether to trim whitespace.   |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `maxLength` | `Int` | The maximum character length. |
+| `defaultValue` | `String` | The default value. |
+| `trim` | `Boolean = false` | Whether to trim whitespace. |
+
+---
 
 ### NumberFieldParamsInput
 
 Parameters for NUMBER field type.
 
-| Field          | Type       | Description                  |
-| -------------- | ---------- | ---------------------------- |
-| `isRequired`   | `Boolean!` | Whether a value is required. |
-| `min`          | `Float`    | The minimum allowed value.   |
-| `max`          | `Float`    | The maximum allowed value.   |
-| `precision`    | `Int`      | The decimal precision.       |
-| `defaultValue` | `Float`    | The default value.           |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `min` | `Float` | The minimum allowed value. |
+| `max` | `Float` | The maximum allowed value. |
+| `precision` | `Int` | The decimal precision. |
+| `defaultValue` | `Float` | The default value. |
+
+---
 
 ### BooleanFieldParamsInput
 
 Parameters for BOOLEAN field type.
 
-| Field          | Type       | Description                  |
-| -------------- | ---------- | ---------------------------- |
-| `isRequired`   | `Boolean!` | Whether a value is required. |
-| `defaultValue` | `Boolean`  | The default value.           |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `defaultValue` | `Boolean` | The default value. |
+
+---
 
 ### DateFieldParamsInput
 
 Parameters for DATE field type.
 
-| Field          | Type                                                | Description                  |
-| -------------- | --------------------------------------------------- | ---------------------------- |
-| `isRequired`   | `Boolean!`                                          | Whether a value is required. |
-| `defaultValue` | [Date](core-api-reference/common-resources.md#date) | The default value.           |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `defaultValue` | `Date` | The default value. |
+
+---
 
 ### DateTimeFieldParamsInput
 
 Parameters for DATETIME field type.
 
-| Field          | Type                                                        | Description                  |
-| -------------- | ----------------------------------------------------------- | ---------------------------- |
-| `isRequired`   | `Boolean!`                                                  | Whether a value is required. |
-| `defaultValue` | [DateTime](core-api-reference/common-resources.md#datetime) | The default value.           |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `defaultValue` | `DateTime` | The default value. |
+
+---
 
 ### GeoJsonFieldParamsInput
 
 Parameters for GEOJSON field type.
 
-| Field          | Type                                                                | Description                                                   |
-| -------------- | ------------------------------------------------------------------- | ------------------------------------------------------------- |
-| `isRequired`   | `Boolean!`                                                          | Whether a value is required.                                  |
-| `allowedTypes` | \[[GeoJsonGeometryType](geo-objects/types.md#geojsongeometrytype)!] | The allowed geometry types. Null means all types are allowed. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `allowedTypes` | [[GeoJsonGeometryType](../geo-objects/types.md#geojsongeometrytype)!] | The allowed geometry types. Null means all types are allowed. |
+
+---
 
 ### ScheduleFieldParamsInput
 
 Parameters for SCHEDULE field type.
 
-| Field        | Type       | Description                  |
-| ------------ | ---------- | ---------------------------- |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required. |
+
+---
 
 ### OptionsFieldParamsInput
 
 Parameters for OPTIONS field type.
 
-| Field          | Type                                                       | Description                               |
-| -------------- | ---------------------------------------------------------- | ----------------------------------------- |
-| `isRequired`   | `Boolean!`                                                 | Whether a value is required.              |
-| `isMulti`      | `Boolean`                                                  | Whether multiple options can be selected. |
-| `options`      | \[[FieldOptionInput](custom-fields.md#fieldoptioninput)!]! | The available options.                    |
-| `defaultValue` | [Code](core-api-reference/common-resources.md#code)        | The default option code.                  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple options can be selected. |
+| `options` | [[FieldOptionInput](../custom-fields.md#fieldoptioninput)!]! | The available options. |
+| `defaultValue` | `Code` | The default option code. |
+
+---
 
 ### FieldOptionInput
 
 Input for an option definition.
 
-| Field         | Type                                                 | Description                      |
-| ------------- | ---------------------------------------------------- | -------------------------------- |
-| `code`        | [Code](core-api-reference/common-resources.md#code)! | The unique code.                 |
-| `label`       | `String!`                                            | The display label.               |
-| `description` | `String`                                             | The description.                 |
-| `isArchived`  | `Boolean`                                            | Whether this option is archived. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `code` | `Code!` | The unique code. |
+| `label` | `String!` | The display label. |
+| `description` | `String` | The description. |
+| `isArchived` | `Boolean = false` | Whether this option is archived. |
+
+---
 
 ### DeviceFieldParamsInput
 
 Parameters for DEVICE field type.
 
-| Field        | Type       | Description                               |
-| ------------ | ---------- | ----------------------------------------- |
-| `isRequired` | `Boolean!` | Whether a value is required.              |
-| `isMulti`    | `Boolean`  | Whether multiple devices can be selected. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple devices can be selected. |
+
+---
 
 ### ReferenceFieldParamsInput
 
 Parameters for REFERENCE field type.
 
-| Field               | Type                                                 | Description                                  |
-| ------------------- | ---------------------------------------------------- | -------------------------------------------- |
-| `isRequired`        | `Boolean!`                                           | Whether a value is required.                 |
-| `isMulti`           | `Boolean`                                            | Whether multiple references can be selected. |
-| `refEntityTypeCode` | [Code](core-api-reference/common-resources.md#code)! | The entity type code that can be referenced. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple references can be selected. |
+| `refEntityTypeCode` | `Code!` | The entity type code that can be referenced. |
+
+---
 
 ### CatalogFieldParamsInput
 
 Parameters for CATALOG field type.
 
-| Field            | Type                                                 | Description                                       |
-| ---------------- | ---------------------------------------------------- | ------------------------------------------------- |
-| `isRequired`     | `Boolean!`                                           | Whether a value is required.                      |
-| `isMulti`        | `Boolean`                                            | Whether multiple items can be selected.           |
-| `refCatalogCode` | [Code](core-api-reference/common-resources.md#code)! | The catalog code that items can be selected from. |
-| `defaultValue`   | [Code](core-api-reference/common-resources.md#code)  | The default item code.                            |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple items can be selected. |
+| `refCatalogCode` | `Code!` | The catalog code that items can be selected from. |
+| `defaultValue` | `Code` | The default item code. |
+
+---
 
 ### TagFieldParamsInput
 
 Parameters for TAG field type.
 
-| Field          | Type                                                | Description                            |
-| -------------- | --------------------------------------------------- | -------------------------------------- |
-| `isRequired`   | `Boolean!`                                          | Whether a value is required.           |
-| `isMulti`      | `Boolean`                                           | Whether multiple tags can be selected. |
-| `defaultValue` | [Code](core-api-reference/common-resources.md#code) | The default tag code.                  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `isRequired` | `Boolean!` | Whether a value is required. |
+| `isMulti` | `Boolean = false` | Whether multiple tags can be selected. |
+| `defaultValue` | `Code` | The default tag code. |
+
+---
 
 ## Enums
 
@@ -653,38 +1153,42 @@ Parameters for TAG field type.
 
 The data type of a custom field, determining validation rules and UI rendering.
 
-| Value       | Description                                                                         |
-| ----------- | ----------------------------------------------------------------------------------- |
-| `STRING`    | Single-line text input. Maximum 255 characters.                                     |
-| `TEXT`      | Multi-line text input. Maximum 65,535 characters.                                   |
-| `NUMBER`    | Numeric value, supporting both integers and decimals.                               |
-| `BOOLEAN`   | Boolean true/false value.                                                           |
-| `DATE`      | Calendar date without time component (YYYY-MM-DD).                                  |
-| `DATETIME`  | Date and time with timezone information.                                            |
-| `GEOJSON`   | [GeoJSON](https://geojson.org/) geometry object (Point, Polygon, LineString, etc.). |
-| `SCHEDULE`  | Schedule or calendar data with time intervals and recurrence rules.                 |
-| `OPTIONS`   | Selection from a predefined list of options.                                        |
-| `DEVICE`    | Reference to a Device entity.                                                       |
-| `REFERENCE` | Reference to any entity by its type and ID.                                         |
-| `CATALOG`   | Reference to a catalog item.                                                        |
-| `TAG`       | Reference to a Tag entity.                                                          |
+| Value | Description |
+| ----- | ----------- |
+| `STRING` | Single-line text input. Maximum 255 characters. |
+| `TEXT` | Multi-line text input. Maximum 65,535 characters. |
+| `NUMBER` | Numeric value, supporting both integers and decimals. |
+| `BOOLEAN` | Boolean true/false value. |
+| `DATE` | Calendar date without time component (YYYY-MM-DD). |
+| `DATETIME` | Date and time with timezone information. |
+| `GEOJSON` | GeoJSON geometry object (Point, Polygon, LineString, etc.). |
+| `SCHEDULE` | Schedule or calendar data with time intervals and recurrence rules. |
+| `OPTIONS` | Selection from a predefined list of options. |
+| `DEVICE` | Reference to a Device entity. |
+| `REFERENCE` | Reference to any entity by its type and ID. |
+| `CATALOG` | Reference to a catalog item. |
+| `TAG` | Reference to a Tag entity. |
+
+---
 
 ### FieldOperator
 
 Comparison operators for filtering by custom field values.
 
-| Value         | Description                                                       |
-| ------------- | ----------------------------------------------------------------- |
-| `EQ`          | Value equals the specified value.                                 |
-| `NE`          | Value does not equal the specified value.                         |
-| `GT`          | Value is greater than the specified value.                        |
-| `GTE`         | Value is greater than or equal to the specified value.            |
-| `LT`          | Value is less than the specified value.                           |
-| `LTE`         | Value is less than or equal to the specified value.               |
-| `CONTAINS`    | String value contains the specified substring (case-insensitive). |
-| `IN`          | Value is one of the specified values in the array.                |
-| `IS_NULL`     | Value is null.                                                    |
-| `IS_NOT_NULL` | Value is not null.                                                |
+| Value | Description |
+| ----- | ----------- |
+| `EQ` | Value equals the specified value. |
+| `NE` | Value does not equal the specified value. |
+| `GT` | Value is greater than the specified value. |
+| `GTE` | Value is greater than or equal to the specified value. |
+| `LT` | Value is less than the specified value. |
+| `LTE` | Value is less than or equal to the specified value. |
+| `CONTAINS` | String value contains the specified substring (case-insensitive). |
+| `IN` | Value is one of the specified values in the array. |
+| `IS_NULL` | Value is null. |
+| `IS_NOT_NULL` | Value is not null. |
+
+---
 
 ## Interfaces
 
@@ -692,6 +1196,8 @@ Comparison operators for filtering by custom field values.
 
 The base interface for field parameters.
 
-| Field        | Type       | Description                                 |
-| ------------ | ---------- | ------------------------------------------- |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
 | `isRequired` | `Boolean!` | Whether a value is required for this field. |
+
+---

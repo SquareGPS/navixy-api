@@ -1,0 +1,362 @@
+# Asset groups — Types
+
+## Objects
+
+### AssetGroupType
+
+A type for asset groups with membership constraints.
+
+**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `code` | `Code!` |  |
+| `order` | `Int!` |  |
+| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! |  |
+| `organization` | [Organization](../../organizations.md#organization) |  |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraint](types.md#assetgrouptypeconstraint)!]! | The asset types allowed in groups of this type, with optional quantity limits. |
+
+---
+
+### AssetGroupTypeConstraint
+
+A constraint defining which asset types can be included in an asset group type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetType` | [AssetType](../types.md#assettype)! | The asset type allowed in the group. |
+| `maxItems` | `Int` | The maximum number of assets of this type allowed in one group. Null means unlimited. |
+
+---
+
+### AssetGroup
+
+A group of assets.
+
+**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this group. |
+| `type` | [AssetGroupType](types.md#assetgrouptype)! | The group type with membership constraints. |
+| `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
+| `filter` | [AssetFilter](../types.md#assetfilter) | Filtering options for the returned assets. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
+| `filter` | [AssetGroupItemFilter](types.md#assetgroupitemfilter) | Filtering options for the returned history. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AssetGroupItemOrder = { field: ATTACHED_AT, direction: DESC }` | The ordering options for the returned history. |
+
+---
+
+### AssetGroupItem
+
+A record of an asset's membership in a group.
+
+**Implements:** [Node](../../common.md#node)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `group` | [AssetGroup](types.md#assetgroup)! | The group containing the asset. |
+| `asset` | [Asset](../types.md#asset)! | The asset in the group. |
+| `attachedAt` | `DateTime!` | The date and time when the asset was added to the group. |
+| `detachedAt` | `DateTime` | The date and time when the asset was removed from the group. Null means the asset is currently attached. |
+
+---
+
+### AssetGroupPayload
+
+The result of an asset group mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetGroup` | [AssetGroup](types.md#assetgroup)! | The created or updated asset group. |
+
+---
+
+### AssetGroupItemPayload
+
+The result of an asset group item mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetGroupItem` | [AssetGroupItem](types.md#assetgroupitem)! | The created group membership record. |
+
+---
+
+### AssetGroupTypePayload
+
+The result of an asset group type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetGroupType` | [AssetGroupType](types.md#assetgrouptype)! | The created or updated asset group type. |
+
+---
+
+## Inputs
+
+### AssetGroupFilter
+
+Filtering options for asset groups.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `typeIds` | `[ID!]` | Filter by group types (OR within field). |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+
+---
+
+### AssetGroupOrder
+
+Ordering options for asset groups.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [AssetGroupOrderField](types.md#assetgrouporderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
+
+---
+
+### AssetGroupItemFilter
+
+Filtering options for asset group items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `activeOnly` | `Boolean` | If true, return only currently attached items. |
+
+---
+
+### AssetGroupItemOrder
+
+Ordering options for asset group items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [AssetGroupItemOrderField](types.md#assetgroupitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
+
+---
+
+### AssetGroupCreateInput
+
+Input for creating a new asset group.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization that will own the group. |
+| `typeId` | `ID!` | The group type ID. |
+| `title` | `String!` | The group display name. |
+| `color` | `HexColorCode` | The color for UI display. |
+
+---
+
+### AssetGroupUpdateInput
+
+Input for updating an existing asset group.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The asset group ID to update. |
+| `version` | `Int!` | The current version for optimistic locking. |
+| `title` | `String` | The new display name. |
+| `color` | `HexColorCode` | The new color. |
+
+---
+
+### AssetGroupDeleteInput
+
+Input for deleting an asset group.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The asset group ID to delete. |
+| `version` | `Int!` | The current version for optimistic locking. |
+
+---
+
+### AssetGroupItemAddInput
+
+Input for adding an asset to a group.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `groupId` | `ID!` | The group ID. |
+| `assetId` | `ID!` | The asset ID to add. |
+
+---
+
+### AssetGroupItemRemoveInput
+
+Input for removing an asset from a group.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `groupId` | `ID!` | The group ID. |
+| `assetId` | `ID!` | The asset ID to remove. |
+
+---
+
+### AssetGroupTypeCreateInput
+
+Input for creating an asset group type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization that will own the item. |
+| `code` | `Code!` | The machine-readable code. |
+| `title` | `String!` | The display name. |
+| `order` | `Int = 0` | The display order. |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput](types.md#assetgrouptypeconstraintinput)!] | The allowed asset types with optional limits. |
+| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+
+---
+
+### AssetGroupTypeUpdateInput
+
+Input for updating an asset group type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The item ID to update. |
+| `version` | `Int!` | The current version for optimistic locking. |
+| `title` | `String` | The new display name. |
+| `order` | `Int` | The new display order. |
+| `allowedAssetTypes` | [[AssetGroupTypeConstraintInput](types.md#assetgrouptypeconstraintinput)!] | Replace allowed asset types. Null means no change. |
+| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+
+---
+
+### AssetGroupTypeConstraintInput
+
+Input for a constraint defining allowed asset types in an asset group type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetTypeId` | `ID!` | The asset type ID. |
+| `maxItems` | `Int` | The maximum assets of this type. Null means unlimited. |
+
+---
+
+## Enums
+
+### AssetGroupOrderField
+
+Fields available for ordering asset groups.
+
+| Value | Description |
+| ----- | ----------- |
+| `TITLE` | Order by title. |
+
+---
+
+### AssetGroupItemOrderField
+
+Fields available for ordering asset group items.
+
+| Value | Description |
+| ----- | ----------- |
+| `ATTACHED_AT` | Order by attachment date. |
+
+---
+
+## Pagination types
+
+### AssetGroupConnection
+
+A paginated list of AssetGroup items.
+
+**Implements:** [Connection](../../common.md#connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[AssetGroupEdge](types.md#assetgroupedge)!]! | A list of edges. |
+| `nodes` | [[AssetGroup](types.md#assetgroup)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+
+---
+
+### AssetGroupEdge
+
+An edge in the AssetGroup connection.
+
+**Implements:** [Edge](../../common.md#edge)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [AssetGroup](types.md#assetgroup)! | The asset group at the end of the edge. |
+
+---
+
+### AssetGroupItemConnection
+
+A paginated list of AssetGroupItem items.
+
+**Implements:** [Connection](../../common.md#connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[AssetGroupItemEdge](types.md#assetgroupitemedge)!]! | A list of edges. |
+| `nodes` | [[AssetGroupItem](types.md#assetgroupitem)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+
+---
+
+### AssetGroupItemEdge
+
+An edge in the AssetGroupItem connection.
+
+**Implements:** [Edge](../../common.md#edge)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [AssetGroupItem](types.md#assetgroupitem)! | The asset group item at the end of the edge. |
+
+---
+
+### AssetGroupTypeConnection
+
+A paginated list of AssetGroupType items.
+
+**Implements:** [Connection](../../common.md#connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[AssetGroupTypeEdge](types.md#assetgrouptypeedge)!]! | A list of edges. |
+| `nodes` | [[AssetGroupType](types.md#assetgrouptype)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+
+---
+
+### AssetGroupTypeEdge
+
+An edge in the AssetGroupType connection.
+
+**Implements:** [Edge](../../common.md#edge)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `cursor` | `String!` | An opaque cursor for this edge. |
+| `node` | [AssetGroupType](types.md#assetgrouptype)! | The asset group type at the end of the edge. |
+
+---

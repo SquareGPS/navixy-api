@@ -1,9 +1,9 @@
-# Access Control
+# Access control
 
-Roles, permissions, and access control configuration.
+Role-based access control (RBAC) system for managing permissions, role assignments, and resource scoping.
 
-## Pages
+## Contents
 
-- [Queries](queries.md) — 3 queries
-- [Mutations](mutations.md) — 6 mutations
-- [Types](types.md) — 29 type definitions
+- [Queries](queries.md) — 4 operations
+- [Mutations](mutations.md) — 9 operations
+- [Types](types.md) — 35 types

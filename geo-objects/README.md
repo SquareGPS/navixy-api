@@ -1,9 +1,9 @@
-# Geo Objects
+# Geo objects
 
-Geo objects define geographic areas such as geofences, zones, and points of interest.
+Geo objects define geographic boundaries and points of interest - geofences, routes, and landmarks used for location-based automation.
 
-## Pages
+## Contents
 
-- [Queries](queries.md) — 3 queries
-- [Mutations](mutations.md) — 6 mutations
-- [Types](types.md) — 17 type definitions
+- [Queries](queries.md) — 3 operations
+- [Mutations](mutations.md) — 6 operations
+- [Types](types.md) — 20 types

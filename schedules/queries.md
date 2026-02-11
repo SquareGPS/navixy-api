@@ -1,11 +1,11 @@
-# Geo objects — Queries
+# Schedules — Queries
 
-### geoObjectTypes
+### scheduleTypes
 
-Lists geo object types for an organization.
+Lists schedule types for an organization.
 
 ```graphql
-geoObjectTypes(
+scheduleTypes(
     organizationId: ID!
     filter: CatalogItemFilter
     first: Int
@@ -13,7 +13,7 @@ geoObjectTypes(
     last: Int
     before: String
     orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
-  ): GeoObjectTypeConnection!
+  ): ScheduleTypeConnection!
 ```
 
 **Arguments**
@@ -61,16 +61,16 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>GeoObjectTypeConnection</code></summary>
+<summary><code>ScheduleTypeConnection</code></summary>
 
-A paginated list of GeoObjectType items.
+A paginated list of ScheduleType items.
 
 **Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[GeoObjectTypeEdge](types.md#geoobjecttypeedge)!]! | A list of edges. |
-| `nodes` | [[GeoObjectType](types.md#geoobjecttype)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[ScheduleTypeEdge](types.md#scheduletypeedge)!]! | A list of edges. |
+| `nodes` | [[ScheduleType](types.md#scheduletype)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -93,27 +93,27 @@ Information about the current page in a paginated connection.
 
 ---
 
-### geoObject
+### schedule
 
-Retrieves a geo object by its ID.
+Retrieves a schedule by its ID.
 
 ```graphql
-geoObject("The ID of the geo object to retrieve." id: ID!): GeoObject
+schedule("The ID of the schedule to retrieve." id: ID!): Schedule
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | `ID!` | The ID of the geo object to retrieve. |
+| `id` | `ID!` | The ID of the schedule to retrieve. |
 
 **Output types:**
 
 <details>
 
-<summary><code>GeoObject</code></summary>
+<summary><code>Schedule</code></summary>
 
-A geographic object such as a geofence, point of interest, or route.
+A schedule definition for work hours, maintenance windows, or other time-based rules.
 
 **Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
 
@@ -122,12 +122,11 @@ A geographic object such as a geofence, point of interest, or route.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
-| `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
+| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this schedule. |
+| `type` | [ScheduleType](types.md#scheduletype)! | The schedule type classification. |
+| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule.
+  This is an alias for the `schedule_data` custom field. |
 | `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
 
 </details>
 
@@ -172,13 +171,13 @@ An organization in the hierarchy that owns entities and users.
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
-| `filter` | [GeoObjectFilter](types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
+| `filter` | [GeoObjectFilter](../geo-objects/types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `GeoObjectOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned geo objects. |
-| `filter` | [ScheduleFilter](../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
+| `filter` | [ScheduleFilter](types.md#schedulefilter) | Filtering options for the returned schedules. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
@@ -189,20 +188,20 @@ An organization in the hierarchy that owns entities and users.
 
 ---
 
-### geoObjects
+### schedules
 
-Lists geo objects for an organization.
+Lists schedules for an organization.
 
 ```graphql
-geoObjects(
+schedules(
     organizationId: ID!
-    filter: GeoObjectFilter
+    filter: ScheduleFilter
     first: Int
     after: String
     last: Int
     before: String
-    orderBy: GeoObjectOrder = { field: TITLE, direction: ASC }
-  ): GeoObjectConnection!
+    orderBy: ScheduleOrder = { field: TITLE, direction: ASC }
+  ): ScheduleConnection!
 ```
 
 **Arguments**
@@ -210,25 +209,25 @@ geoObjects(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [GeoObjectFilter](types.md#geoobjectfilter) |  |
+| `filter` | [ScheduleFilter](types.md#schedulefilter) |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [GeoObjectOrder](types.md#geoobjectorder) |  |
+| `orderBy` | [ScheduleOrder](types.md#scheduleorder) |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectFilter</code></summary>
+<summary><code>ScheduleFilter</code></summary>
 
-Filtering options for geo objects.
+Filtering options for schedules.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `typeIds` | `[ID!]` | Filter by geo object types (OR within field). |
+| `typeIds` | `[ID!]` | Filter by schedule types (OR within field). |
 | `titleContains` | `String` | Partial match on title (case-insensitive contains). |
 | `customFields` | [[CustomFieldFilter](../custom-fields.md#customfieldfilter)!] | Filter by custom field values. |
 
@@ -250,13 +249,13 @@ A filter condition for a custom field value.
 
 <details>
 
-<summary><code>GeoObjectOrder</code></summary>
+<summary><code>ScheduleOrder</code></summary>
 
-Ordering options for geo objects.
+Ordering options for schedules.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [GeoObjectOrderField](types.md#geoobjectorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `field` | [ScheduleOrderField](types.md#scheduleorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
 | `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
@@ -266,16 +265,16 @@ Ordering options for geo objects.
 
 <details>
 
-<summary><code>GeoObjectConnection</code></summary>
+<summary><code>ScheduleConnection</code></summary>
 
-A paginated list of GeoObject items.
+A paginated list of Schedule items.
 
 **Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[GeoObjectEdge](types.md#geoobjectedge)!]! | A list of edges. |
-| `nodes` | [[GeoObject](types.md#geoobject)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[ScheduleEdge](types.md#scheduleedge)!]! | A list of edges. |
+| `nodes` | [[Schedule](types.md#schedule)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 

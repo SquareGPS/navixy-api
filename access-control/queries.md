@@ -1,4 +1,97 @@
-# Queries
+# Access control — Queries
+
+### roles
+
+Lists roles for an organization.
+
+```graphql
+roles(
+    organizationId: ID!
+    filter: CatalogItemFilter
+    first: Int
+    after: String
+    last: Int
+    before: String
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): RoleConnection!
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` |  |
+| `filter` | [CatalogItemFilter](../catalogs/catalog-items.md#catalogitemfilter) |  |
+| `first` | `Int` |  |
+| `after` | `String` |  |
+| `last` | `Int` |  |
+| `before` | `String` |  |
+| `orderBy` | [CatalogItemOrder](../catalogs/catalog-items.md#catalogitemorder) |  |
+| `direction` | `ASC }` |  |
+
+**Input types:**
+
+<details>
+
+<summary><code>CatalogItemFilter</code></summary>
+
+Filtering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `titleContains` | `String` | Partial match on title (case-insensitive contains). |
+| `codes` | `[Code!]` | Match any of these codes. |
+
+</details>
+
+<details>
+
+<summary><code>CatalogItemOrder</code></summary>
+
+Ordering options for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary><code>RoleConnection</code></summary>
+
+A paginated list of Role items.
+
+**Implements:** [Connection](../common.md#connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[RoleEdge](types.md#roleedge)!]! | A list of edges. |
+| `nodes` | [[Role](types.md#role)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+
+</details>
+
+<details>
+
+<summary><code>PageInfo (entity)</code></summary>
+
+Information about the current page in a paginated connection.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
+
+</details>
+
+---
 
 ### actorRoles
 
@@ -6,27 +99,28 @@ Lists actor role assignments for an organization.
 
 ```graphql
 actorRoles(
-  organizationId: ID!
-  filter: ActorRoleFilter
-  first: Int
-  after: String
-  last: Int
-  before: String
-  orderBy: ActorRoleOrder = { field: ASSIGNED_AT, direction: DESC }
-): ActorRoleConnection!
+    organizationId: ID!
+    filter: ActorRoleFilter
+    first: Int
+    after: String
+    last: Int
+    before: String
+    orderBy: ActorRoleOrder = { field: ASSIGNED_AT, direction: DESC }
+  ): ActorRoleConnection!
 ```
 
 **Arguments**
 
-| Name             | Type                                        | Description                                                                                   |
-| ---------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `organizationId` | `ID!`                                       | The organization to retrieve actor roles for.                                                 |
-| `filter`         | [ActorRoleFilter](types.md#actorrolefilter) | Filtering options for the returned actor roles.                                               |
-| `first`          | `Int`                                       | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).     |
-| `after`          | `String`                                    | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination).  |
-| `last`           | `Int`                                       | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).      |
-| `before`         | `String`                                    | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy`        | [ActorRoleOrder](types.md#actorroleorder)   | The ordering options for the returned actor roles.                                            |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` |  |
+| `filter` | [ActorRoleFilter](types.md#actorrolefilter) |  |
+| `first` | `Int` |  |
+| `after` | `String` |  |
+| `last` | `Int` |  |
+| `before` | `String` |  |
+| `orderBy` | [ActorRoleOrder](types.md#actorroleorder) |  |
+| `direction` | `DESC }` |  |
 
 **Input types:**
 
@@ -34,11 +128,13 @@ actorRoles(
 
 <summary><code>ActorRoleFilter</code></summary>
 
-| Field            | Type      | Description                         |
-| ---------------- | --------- | ----------------------------------- |
-| `actorIds`       | `[ID!]`   | Filter by actors (OR within field). |
-| `roleIds`        | `[ID!]`   | Filter by roles (OR within field).  |
-| `includeExpired` | `Boolean` | Include expired role assignments.   |
+Filtering options for actor roles.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `actorIds` | `[ID!]` | Filter by actors (OR within field). |
+| `roleIds` | `[ID!]` | Filter by roles (OR within field). |
+| `includeExpired` | `Boolean = true` | Include expired role assignments. |
 
 </details>
 
@@ -46,10 +142,12 @@ actorRoles(
 
 <summary><code>ActorRoleOrder</code></summary>
 
-| Field       | Type                                                                        | Description             |
-| ----------- | --------------------------------------------------------------------------- | ----------------------- |
-| `field`     | [ActorRoleOrderField](types.md#actorroleorderfield)!                        | The field to order by.  |
-| `direction` | [OrderDirection](../core-api-reference/common-resources.md#orderdirection)! | The direction to order. |
+Ordering options for actor roles.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [ActorRoleOrderField](types.md#actorroleorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -59,29 +157,35 @@ actorRoles(
 
 <summary><code>ActorRoleConnection</code></summary>
 
-| Field      | Type                                                             | Description                                                |
-| ---------- | ---------------------------------------------------------------- | ---------------------------------------------------------- |
-| `edges`    | \[[ActorRoleEdge](types.md#actorroleedge)!]!                     | A list of edges.                                           |
-| `nodes`    | \[[ActorRole](types.md#actorrole)!]!                             | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../core-api-reference/common-resources.md#pageinfo)!  | Information about the current page.                        |
-| `total`    | [CountInfo](../core-api-reference/common-resources.md#countinfo) | The total count of items matching the filter.              |
+A paginated list of ActorRole items.
+
+**Implements:** [Connection](../common.md#connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[ActorRoleEdge](types.md#actorroleedge)!]! | A list of edges. |
+| `nodes` | [[ActorRole](types.md#actorrole)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 
 <details>
 
-<summary><code>ActorRole (node)</code></summary>
+<summary><code>PageInfo (entity)</code></summary>
 
-| Field        | Type                                                            | Description                                                                |
-| ------------ | --------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `id`         | `ID!`                                                           |                                                                            |
-| `actor`      | [Actor](types.md#actor)!                                        | The actor receiving the role.                                              |
-| `role`       | [Role](../catalogs/roles.md#role)!                              | The role being assigned.                                                   |
-| `assignedAt` | [DateTime](../core-api-reference/common-resources.md#datetime)! | The date and time when the role was assigned.                              |
-| `assignedBy` | [Actor](types.md#actor)                                         | The actor who assigned the role.                                           |
-| `expireDate` | [DateTime](../core-api-reference/common-resources.md#datetime)  | The date and time when the role expires. Null means the role is permanent. |
+Information about the current page in a paginated connection.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
 
 </details>
+
+---
 
 ### rolePermissions
 
@@ -89,27 +193,28 @@ Lists role permissions for an organization.
 
 ```graphql
 rolePermissions(
-  organizationId: ID!
-  filter: RolePermissionFilter
-  first: Int
-  after: String
-  last: Int
-  before: String
-  orderBy: RolePermissionOrder = { field: GRANTED_AT, direction: DESC }
-): RolePermissionConnection!
+    organizationId: ID!
+    filter: RolePermissionFilter
+    first: Int
+    after: String
+    last: Int
+    before: String
+    orderBy: RolePermissionOrder = { field: GRANTED_AT, direction: DESC }
+  ): RolePermissionConnection!
 ```
 
 **Arguments**
 
-| Name             | Type                                                  | Description                                                                                   |
-| ---------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `organizationId` | `ID!`                                                 | The organization to retrieve role permissions for.                                            |
-| `filter`         | [RolePermissionFilter](types.md#rolepermissionfilter) | Filtering options for the returned role permissions.                                          |
-| `first`          | `Int`                                                 | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).     |
-| `after`          | `String`                                              | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination).  |
-| `last`           | `Int`                                                 | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).      |
-| `before`         | `String`                                              | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy`        | [RolePermissionOrder](types.md#rolepermissionorder)   | The ordering options for the returned role permissions.                                       |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` |  |
+| `filter` | [RolePermissionFilter](types.md#rolepermissionfilter) |  |
+| `first` | `Int` |  |
+| `after` | `String` |  |
+| `last` | `Int` |  |
+| `before` | `String` |  |
+| `orderBy` | [RolePermissionOrder](types.md#rolepermissionorder) |  |
+| `direction` | `DESC }` |  |
 
 **Input types:**
 
@@ -117,11 +222,13 @@ rolePermissions(
 
 <summary><code>RolePermissionFilter</code></summary>
 
-| Field                | Type    | Description                                    |
-| -------------------- | ------- | ---------------------------------------------- |
-| `roleIds`            | `[ID!]` | Filter by roles (OR within field).             |
+Filtering options for role permissions.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `roleIds` | `[ID!]` | Filter by roles (OR within field). |
 | `permissionScopeIds` | `[ID!]` | Filter by permission scopes (OR within field). |
-| `targetEntityIds`    | `[ID!]` | Filter by target entities (OR within field).   |
+| `targetEntityIds` | `[ID!]` | Filter by target entities (OR within field). |
 
 </details>
 
@@ -129,10 +236,12 @@ rolePermissions(
 
 <summary><code>RolePermissionOrder</code></summary>
 
-| Field       | Type                                                                        | Description             |
-| ----------- | --------------------------------------------------------------------------- | ----------------------- |
-| `field`     | [RolePermissionOrderField](types.md#rolepermissionorderfield)!              | The field to order by.  |
-| `direction` | [OrderDirection](../core-api-reference/common-resources.md#orderdirection)! | The direction to order. |
+Ordering options for role permissions.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [RolePermissionOrderField](types.md#rolepermissionorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -142,30 +251,35 @@ rolePermissions(
 
 <summary><code>RolePermissionConnection</code></summary>
 
-| Field      | Type                                                             | Description                                                |
-| ---------- | ---------------------------------------------------------------- | ---------------------------------------------------------- |
-| `edges`    | \[[RolePermissionEdge](types.md#rolepermissionedge)!]!           | A list of edges.                                           |
-| `nodes`    | \[[RolePermission](types.md#rolepermission)!]!                   | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../core-api-reference/common-resources.md#pageinfo)!  | Information about the current page.                        |
-| `total`    | [CountInfo](../core-api-reference/common-resources.md#countinfo) | The total count of items matching the filter.              |
+A paginated list of RolePermission items.
+
+**Implements:** [Connection](../common.md#connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[RolePermissionEdge](types.md#rolepermissionedge)!]! | A list of edges. |
+| `nodes` | [[RolePermission](types.md#rolepermission)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 
 <details>
 
-<summary><code>RolePermission (node)</code></summary>
+<summary><code>PageInfo (entity)</code></summary>
 
-| Field             | Type                                                            | Description                                                                             |
-| ----------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `id`              | `ID!`                                                           |                                                                                         |
-| `role`            | [Role](../catalogs/roles.md#role)!                              | The role receiving the permission.                                                      |
-| `permissionScope` | [PermissionScope](../catalogs/roles.md#permissionscope)!        | The permission scope being granted.                                                     |
-| `targetEntityId`  | `ID`                                                            | The specific entity ID this permission applies to. Null means all entities of the type. |
-| `actions`         | \[[ActionPermission](types.md#actionpermission)!]!              | The actions allowed by this permission.                                                 |
-| `grantedAt`       | [DateTime](../core-api-reference/common-resources.md#datetime)! | The date and time when the permission was granted.                                      |
-| `grantedBy`       | [Actor](types.md#actor)!                                        | The actor who granted the permission.                                                   |
+Information about the current page in a paginated connection.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
 
 </details>
+
+---
 
 ### userScopes
 
@@ -173,27 +287,28 @@ Lists user scope restrictions for an organization.
 
 ```graphql
 userScopes(
-  organizationId: ID!
-  filter: UserScopeFilter
-  first: Int
-  after: String
-  last: Int
-  before: String
-  orderBy: UserScopeOrder = { field: ID, direction: ASC }
-): UserScopeConnection!
+    organizationId: ID!
+    filter: UserScopeFilter
+    first: Int
+    after: String
+    last: Int
+    before: String
+    orderBy: UserScopeOrder = { field: ID, direction: ASC }
+  ): UserScopeConnection!
 ```
 
 **Arguments**
 
-| Name             | Type                                        | Description                                                                                   |
-| ---------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `organizationId` | `ID!`                                       | The organization to retrieve user scopes for.                                                 |
-| `filter`         | [UserScopeFilter](types.md#userscopefilter) | Filtering options for the returned user scopes.                                               |
-| `first`          | `Int`                                       | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).     |
-| `after`          | `String`                                    | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination).  |
-| `last`           | `Int`                                       | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination).      |
-| `before`         | `String`                                    | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy`        | [UserScopeOrder](types.md#userscopeorder)   | The ordering options for the returned user scopes.                                            |
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | `ID!` |  |
+| `filter` | [UserScopeFilter](types.md#userscopefilter) |  |
+| `first` | `Int` |  |
+| `after` | `String` |  |
+| `last` | `Int` |  |
+| `before` | `String` |  |
+| `orderBy` | [UserScopeOrder](types.md#userscopeorder) |  |
+| `direction` | `ASC }` |  |
 
 **Input types:**
 
@@ -201,11 +316,13 @@ userScopes(
 
 <summary><code>UserScopeFilter</code></summary>
 
-| Field                | Type    | Description                                    |
-| -------------------- | ------- | ---------------------------------------------- |
-| `actorIds`           | `[ID!]` | Filter by actors (OR within field).            |
+Filtering options for user scopes.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `actorIds` | `[ID!]` | Filter by actors (OR within field). |
 | `permissionScopeIds` | `[ID!]` | Filter by permission scopes (OR within field). |
-| `targetEntityIds`    | `[ID!]` | Filter by target entities (OR within field).   |
+| `targetEntityIds` | `[ID!]` | Filter by target entities (OR within field). |
 
 </details>
 
@@ -213,10 +330,12 @@ userScopes(
 
 <summary><code>UserScopeOrder</code></summary>
 
-| Field       | Type                                                                        | Description             |
-| ----------- | --------------------------------------------------------------------------- | ----------------------- |
-| `field`     | [UserScopeOrderField](types.md#userscopeorderfield)!                        | The field to order by.  |
-| `direction` | [OrderDirection](../core-api-reference/common-resources.md#orderdirection)! | The direction to order. |
+Ordering options for user scopes.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `field` | [UserScopeOrderField](types.md#userscopeorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -226,25 +345,32 @@ userScopes(
 
 <summary><code>UserScopeConnection</code></summary>
 
-| Field      | Type                                                             | Description                                                |
-| ---------- | ---------------------------------------------------------------- | ---------------------------------------------------------- |
-| `edges`    | \[[UserScopeEdge](types.md#userscopeedge)!]!                     | A list of edges.                                           |
-| `nodes`    | \[[UserScope](types.md#userscope)!]!                             | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../core-api-reference/common-resources.md#pageinfo)!  | Information about the current page.                        |
-| `total`    | [CountInfo](../core-api-reference/common-resources.md#countinfo) | The total count of items matching the filter.              |
+A paginated list of UserScope items.
+
+**Implements:** [Connection](../common.md#connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[UserScopeEdge](types.md#userscopeedge)!]! | A list of edges. |
+| `nodes` | [[UserScope](types.md#userscope)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 
 <details>
 
-<summary><code>UserScope (node)</code></summary>
+<summary><code>PageInfo (entity)</code></summary>
 
-| Field             | Type                                                     | Description                                  |
-| ----------------- | -------------------------------------------------------- | -------------------------------------------- |
-| `id`              | `ID!`                                                    |                                              |
-| `actor`           | [Actor](types.md#actor)!                                 | The actor being restricted.                  |
-| `permissionScope` | [PermissionScope](../catalogs/roles.md#permissionscope)! | The permission scope being filtered.         |
-| `targetEntityId`  | `ID!`                                                    | The specific entity the actor can access.    |
-| `actions`         | \[[ActionPermission](types.md#actionpermission)!]!       | The actions allowed on this specific entity. |
+Information about the current page in a paginated connection.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hasNextPage` | `Boolean!` | Whether more items exist after the current page. |
+| `hasPreviousPage` | `Boolean!` | Whether more items exist before the current page. |
+| `startCursor` | `String` | The cursor pointing to the first item in the current page. |
+| `endCursor` | `String` | The cursor pointing to the last item in the current page. |
 
 </details>
+
+---

@@ -1,33 +1,33 @@
-# Geo objects — Mutations
+# Schedules — Mutations
 
-### geoObjectCreate
+### scheduleCreate
 
-Creates a new geo object.
+Creates a new schedule.
 
 ```graphql
-geoObjectCreate("The input fields for creating the geo object." input: GeoObjectCreateInput!): GeoObjectPayload
+scheduleCreate("The input fields for creating the schedule." input: ScheduleCreateInput!): SchedulePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectCreateInput](types.md#geoobjectcreateinput)! | The input fields for creating the geo object. |
+| `input` | [ScheduleCreateInput](types.md#schedulecreateinput)! | The input fields for creating the schedule. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectCreateInput</code></summary>
+<summary><code>ScheduleCreateInput</code></summary>
 
-Input for creating a new geo object.
+Input for creating a new schedule.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organizationId` | `ID!` | The organization that will own the geo object. |
-| `typeId` | `ID!` | The geo object type ID. |
-| `title` | `String!` | The geo object display name. |
-| `geometry` | `GeoJSON!` | The GeoJSON geometry. |
+| `organizationId` | `ID!` | The organization that will own the schedule. |
+| `typeId` | `ID!` | The schedule type ID. |
+| `title` | `String!` | The schedule display name. |
+| `scheduleData` | `ScheduleData!` | The schedule data. |
 | `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field values. |
 
 </details>
@@ -49,21 +49,21 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>GeoObjectPayload</code></summary>
+<summary><code>SchedulePayload</code></summary>
 
-The result of a geo object mutation.
+The result of a schedule mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObject` | [GeoObject](types.md#geoobject)! | The created or updated geo object. |
+| `schedule` | [Schedule](types.md#schedule)! | The created or updated schedule. |
 
 </details>
 
 <details>
 
-<summary><code>GeoObject (entity)</code></summary>
+<summary><code>Schedule (entity)</code></summary>
 
-A geographic object such as a geofence, point of interest, or route.
+A schedule definition for work hours, maintenance windows, or other time-based rules.
 
 **Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
 
@@ -72,45 +72,44 @@ A geographic object such as a geofence, point of interest, or route.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
-| `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
+| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this schedule. |
+| `type` | [ScheduleType](types.md#scheduletype)! | The schedule type classification. |
+| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule.
+  This is an alias for the `schedule_data` custom field. |
 | `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
 
 </details>
 
 ---
 
-### geoObjectUpdate
+### scheduleUpdate
 
-Updates an existing geo object.
+Updates an existing schedule.
 
 ```graphql
-geoObjectUpdate("The input fields for updating the geo object." input: GeoObjectUpdateInput!): GeoObjectPayload
+scheduleUpdate("The input fields for updating the schedule." input: ScheduleUpdateInput!): SchedulePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectUpdateInput](types.md#geoobjectupdateinput)! | The input fields for updating the geo object. |
+| `input` | [ScheduleUpdateInput](types.md#scheduleupdateinput)! | The input fields for updating the schedule. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectUpdateInput</code></summary>
+<summary><code>ScheduleUpdateInput</code></summary>
 
-Input for updating an existing geo object.
+Input for updating an existing schedule.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` | The geo object ID to update. |
+| `id` | `ID!` | The schedule ID to update. |
 | `version` | `Int!` | The current version for optimistic locking. |
 | `title` | `String` | The new display name. |
-| `geometry` | `GeoJSON` | The new geometry. |
+| `scheduleData` | `ScheduleData` | The new schedule data. |
 | `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field changes. |
 
 </details>
@@ -132,21 +131,21 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>GeoObjectPayload</code></summary>
+<summary><code>SchedulePayload</code></summary>
 
-The result of a geo object mutation.
+The result of a schedule mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObject` | [GeoObject](types.md#geoobject)! | The created or updated geo object. |
+| `schedule` | [Schedule](types.md#schedule)! | The created or updated schedule. |
 
 </details>
 
 <details>
 
-<summary><code>GeoObject (entity)</code></summary>
+<summary><code>Schedule (entity)</code></summary>
 
-A geographic object such as a geofence, point of interest, or route.
+A schedule definition for work hours, maintenance windows, or other time-based rules.
 
 **Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
 
@@ -155,42 +154,41 @@ A geographic object such as a geofence, point of interest, or route.
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
-| `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
+| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this schedule. |
+| `type` | [ScheduleType](types.md#scheduletype)! | The schedule type classification. |
+| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule.
+  This is an alias for the `schedule_data` custom field. |
 | `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
 
 </details>
 
 ---
 
-### geoObjectDelete
+### scheduleDelete
 
-Deletes a geo object.
+Deletes a schedule.
 
 ```graphql
-geoObjectDelete("The input fields for deleting the geo object." input: GeoObjectDeleteInput!): DeletePayload
+scheduleDelete("The input fields for deleting the schedule." input: ScheduleDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectDeleteInput](types.md#geoobjectdeleteinput)! | The input fields for deleting the geo object. |
+| `input` | [ScheduleDeleteInput](types.md#scheduledeleteinput)! | The input fields for deleting the schedule. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectDeleteInput</code></summary>
+<summary><code>ScheduleDeleteInput</code></summary>
 
-Input for deleting a geo object.
+Input for deleting a schedule.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` | The geo object ID to delete. |
+| `id` | `ID!` | The schedule ID to delete. |
 | `version` | `Int!` | The current version for optimistic locking. |
 
 </details>
@@ -211,27 +209,27 @@ The result of a delete mutation.
 
 ---
 
-### geoObjectTypeCreate
+### scheduleTypeCreate
 
-Creates a new geo object type.
+Creates a new schedule type.
 
 ```graphql
-geoObjectTypeCreate("The input fields for creating the geo object type." input: GeoObjectTypeCreateInput!): GeoObjectTypePayload
+scheduleTypeCreate("The input fields for creating the schedule type." input: ScheduleTypeCreateInput!): ScheduleTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectTypeCreateInput](types.md#geoobjecttypecreateinput)! | The input fields for creating the geo object type. |
+| `input` | [ScheduleTypeCreateInput](types.md#scheduletypecreateinput)! | The input fields for creating the schedule type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectTypeCreateInput</code></summary>
+<summary><code>ScheduleTypeCreateInput</code></summary>
 
-Input for creating a geo object type.
+Input for creating a schedule type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -263,21 +261,21 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>GeoObjectTypePayload</code></summary>
+<summary><code>ScheduleTypePayload</code></summary>
 
-The result of a geo object type mutation.
+The result of a schedule type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObjectType` | [GeoObjectType](types.md#geoobjecttype)! | The created or updated geo object type. |
+| `scheduleType` | [ScheduleType](types.md#scheduletype)! | The created or updated schedule type. |
 
 </details>
 
 <details>
 
-<summary><code>GeoObjectType (entity)</code></summary>
+<summary><code>ScheduleType (entity)</code></summary>
 
-A classification type for geographic objects.
+A classification type for schedules.
 
 **Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
@@ -291,33 +289,33 @@ A classification type for geographic objects.
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
 | `organization` | [Organization](../organizations.md#organization) |  |
 | `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
+| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this schedule type, ordered by display order. |
 
 </details>
 
 ---
 
-### geoObjectTypeUpdate
+### scheduleTypeUpdate
 
-Updates a geo object type.
+Updates a schedule type.
 
 ```graphql
-geoObjectTypeUpdate("The input fields for updating the geo object type." input: GeoObjectTypeUpdateInput!): GeoObjectTypePayload
+scheduleTypeUpdate("The input fields for updating the schedule type." input: ScheduleTypeUpdateInput!): ScheduleTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectTypeUpdateInput](types.md#geoobjecttypeupdateinput)! | The input fields for updating the geo object type. |
+| `input` | [ScheduleTypeUpdateInput](types.md#scheduletypeupdateinput)! | The input fields for updating the schedule type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectTypeUpdateInput</code></summary>
+<summary><code>ScheduleTypeUpdateInput</code></summary>
 
-Input for updating a geo object type.
+Input for updating a schedule type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -349,21 +347,21 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>GeoObjectTypePayload</code></summary>
+<summary><code>ScheduleTypePayload</code></summary>
 
-The result of a geo object type mutation.
+The result of a schedule type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObjectType` | [GeoObjectType](types.md#geoobjecttype)! | The created or updated geo object type. |
+| `scheduleType` | [ScheduleType](types.md#scheduletype)! | The created or updated schedule type. |
 
 </details>
 
 <details>
 
-<summary><code>GeoObjectType (entity)</code></summary>
+<summary><code>ScheduleType (entity)</code></summary>
 
-A classification type for geographic objects.
+A classification type for schedules.
 
 **Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
@@ -377,25 +375,25 @@ A classification type for geographic objects.
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
 | `organization` | [Organization](../organizations.md#organization) |  |
 | `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
-| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
+| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this schedule type, ordered by display order. |
 
 </details>
 
 ---
 
-### geoObjectTypeDelete
+### scheduleTypeDelete
 
-Deletes a geo object type.
+Deletes a schedule type.
 
 ```graphql
-geoObjectTypeDelete("The input fields for deleting the geo object type." input: CatalogItemDeleteInput!): DeletePayload
+scheduleTypeDelete("The input fields for deleting the schedule type." input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the geo object type. |
+| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the schedule type. |
 
 **Input types:**
 

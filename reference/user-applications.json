@@ -1,556 +1,131 @@
-{
-  "openapi": "3.1.0",
-  "info": {
-    "title": "User Applications API",
-    "description": "API calls to work with user applications.",
-    "version": "1.0.0",
-    "contact": {
-      "name": "API Support",
-      "email": "support@navixy.com",
-      "url": "https://www.navixy.com/contact/"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "identifier": "Apache-2.0"
-    }
-  },
-  "externalDocs": {
-    "description": "Find more info here",
-    "url": "https://example.com/docs"
-  },
-  "servers": [
-    {
-      "url": "https://api.eu.navixy.com/v2",
-      "description": "Navixy production server on European platform"
-    },
-    {
-      "url": "https://api.us.navixy.com/v2",
-      "description": "Navixy production server on American platform"
-    }
-  ],
-  "security": [
-    {
-      "Authorization": []
-    }
-  ],
-  "tags": [
-    {
-      "name": "user",
-      "description": "API for user applications"
-    }
-  ],
-  "paths": {
-    "/user/application/list": {
-      "get": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Lists all existing user applications",
-        "description": "Lists all existing user applications.",
-        "operationId": "user_applications_list",
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApplicationListResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Successful response",
-                    "value": {
-                      "success": true,
-                      "list": [
-                        {
-                          "id": 221,
-                          "label": "An application",
-                          "url_template": "https://domain.example/{language}",
-                          "enabled": true,
-                          "authorization": {
-                            "type": "user_session"
-                          },
-                          "display_method": "new_tab",
-                          "icon": "extension",
-                          "description": "A description"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/user/application/create": {
-      "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Creates a new application",
-        "description": "Creates a new application.",
-        "operationId": "user_applications_create",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "application": {
-                    "$ref": "#/components/schemas/CreateApplicationRequest"
-                  }
-                },
-                "required": [
-                  "application"
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateApplicationResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Successful response",
-                    "value": {
-                      "success": true,
-                      "id": 779
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/user/application/update": {
-      "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Updates an existing application",
-        "description": "Updates an existing application.",
-        "operationId": "user_applications_update",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "application": {
-                    "$ref": "#/components/schemas/Application"
-                  }
-                },
-                "required": [
-                  "application"
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Successful response",
-                    "value": {
-                      "success": true
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Application not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Error response",
-                    "value": {
-                      "success": false,
-                      "error": {
-                        "code": 201,
-                        "message": "Application not found"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/user/application/delete": {
-      "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Deletes a specified application by its unique identifier",
-        "description": "Deletes a specified application by its unique identifier.",
-        "operationId": "user_applications_delete",
-        "parameters": [
-          {
-            "name": "application_id",
-            "in": "query",
-            "description": "Application's id to delete.",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Successful response",
-                    "value": {
-                      "success": true
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Application not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Error response",
-                    "value": {
-                      "success": false,
-                      "error": {
-                        "code": 201,
-                        "message": "Application not found"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/user/application/enabled/set": {
-      "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Toggles application visibility in the side menu",
-        "description": "Toggles application visibility in the side menu.",
-        "operationId": "user_applications_enabled_set",
-        "parameters": [
-          {
-            "name": "application_id",
-            "in": "query",
-            "description": "Application's id to update.",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "enabled",
-            "in": "query",
-            "description": "State to set.",
-            "required": true,
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SuccessResponse"
-                },
-                "examples": {
-                  "success": {
-                    "summary": "Successful response",
-                    "value": {
-                      "success": true
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Application not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "examples": {
-                  "error": {
-                    "summary": "Error response",
-                    "value": {
-                      "success": false,
-                      "error": {
-                        "code": 201,
-                        "message": "Application not found"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "SuccessResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Operation success status",
-            "example": true
-          }
-        }
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Operation failed status",
-            "example": false
-          },
-          "error": {
-            "type": "object",
-            "properties": {
-              "code": {
-                "type": "integer",
-                "description": "Error code",
-                "example": 201
-              },
-              "message": {
-                "type": "string",
-                "description": "Error message",
-                "example": "Application not found"
-              }
-            }
-          }
-        }
-      },
-      "ApiKeyAuthorization": {
-        "type": "object",
-        "required": [
-          "type",
-          "hash"
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Authorization type identifier",
-            "enum": [
-              "api_key"
-            ]
-          },
-          "hash": {
-            "type": "string",
-            "description": "An API key hash"
-          }
-        }
-      },
-      "UserSessionAuthorization": {
-        "type": "object",
-        "required": [
-          "type"
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Authorization type identifier",
-            "enum": [
-              "user_session"
-            ]
-          }
-        }
-      },
-      "ApplicationAuthorization": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ApiKeyAuthorization"
-          },
-          {
-            "$ref": "#/components/schemas/UserSessionAuthorization"
-          }
-        ]
-      },
-      "Application": {
-        "type": "object",
-        "required": [
-          "id",
-          "label",
-          "url_template"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "Application's ID"
-          },
-          "label": {
-            "type": "string",
-            "description": "Application's name"
-          },
-          "url_template": {
-            "type": "string",
-            "description": "URL template (including variables)"
-          },
-          "enabled": {
-            "type": "boolean",
-            "description": "Determines visibility in the users' side menu",
-            "default": true
-          },
-          "authorization": {
-            "$ref": "#/components/schemas/ApplicationAuthorization",
-            "description": "Authorization that will be used while accessing the URL"
-          },
-          "display_method": {
-            "type": "string",
-            "description": "Determines how the application will be opened",
-            "enum": [
-              "new_tab",
-              "embedded"
-            ],
-            "default": "new_tab"
-          },
-          "icon": {
-            "type": "string",
-            "description": "Application's icon identifier",
-            "default": "extension"
-          },
-          "description": {
-            "type": "string",
-            "description": "Longer plain text description is shown to users",
-            "default": ""
-          }
-        }
-      },
-      "CreateApplicationRequest": {
-        "type": "object",
-        "required": [
-          "label",
-          "url_template"
-        ],
-        "properties": {
-          "label": {
-            "type": "string",
-            "description": "Application's name"
-          },
-          "url_template": {
-            "type": "string",
-            "description": "URL template (including variables)"
-          },
-          "authorization": {
-            "$ref": "#/components/schemas/ApplicationAuthorization",
-            "description": "Authorization that will be used while accessing the URL"
-          },
-          "display_method": {
-            "type": "string",
-            "description": "Determines how the application will be opened",
-            "enum": [
-              "new_tab",
-              "embedded"
-            ],
-            "default": "new_tab"
-          },
-          "icon": {
-            "type": "string",
-            "description": "Application's icon identifier",
-            "default": "extension"
-          },
-          "description": {
-            "type": "string",
-            "description": "Longer plain text description is shown to users",
-            "default": ""
-          }
-        }
-      },
-      "ApplicationListResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Operation success status",
-            "example": true
-          },
-          "list": {
-            "type": "array",
-            "description": "List of applications",
-            "items": {
-              "$ref": "#/components/schemas/Application"
-            }
-          }
-        }
-      },
-      "CreateApplicationResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Operation success status",
-            "example": true
-          },
-          "id": {
-            "type": "integer",
-            "description": "Unique ID of the created application",
-            "example": 779
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "Authorization": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header",
-        "description": "Enter an API key with the \"NVX: \" prefix, e.g. \"NVX 123456abcdefg\""
-      }
-    }
-  }
+# Task: Add `@category` markers to the Navixy GraphQL schema
+
+## Context
+
+We have a documentation generator script (`generate_entity_docs_v3.js`) that reads a GraphQL schema and produces entity-based markdown documentation grouped by category. The generator looks for special comment markers in the schema to determine which category each type and operation belongs to.
+
+The **marker format** is:
+
+```graphql
+# @category: category-name
+```
+
+A marker applies to **everything below it** until the next marker appears. Markers are placed as standalone comment lines directly above the first type or operation of that category.
+
+The attached schema file currently has **no category markers** (or may have outdated `# docs:` markers from v2). We need to add the correct `# @category:` markers throughout the schema so the v3 generator can process it.
+
+## Target category structure
+
+Here is the complete list of categories. Each type and operation in the schema must be assigned to exactly one of these:
+
+| Category key | Display name | Description |
+|---|---|---|
+| `common` | Common Types | Shared types, interfaces, scalars used across the API: pagination, connections, base interfaces, errors, etc. |
+| `actors` | Actors *(parent only — no types directly here)* | Parent category. Types go into child categories below. |
+| `actors/users` | Users | User accounts, authentication, user profiles, user-related operations |
+| `actors/integrations` | Integrations | Third-party integrations, API keys, external system connections |
+| `organizations` | Organizations *(parent only)* | Parent category |
+| `organizations/members` | Members | Organization membership, user-organization relationships, invitations |
+| `assets` | Assets *(parent only)* | Parent category |
+| `assets/groups` | Asset Groups | Asset grouping, group hierarchy, group membership |
+| `devices` | Devices *(parent only)* | Parent category |
+| `devices/inventory` | Inventory | Device inventory, tracker management, device provisioning |
+| `geo-objects` | Geo Objects | Geofences, places, zones, routes, geo-related types |
+| `schedules` | Schedules | Schedules, time windows, recurrence rules |
+| `access-control` | Access Control | Permissions, roles, access policies, authorization |
+| `custom-fields` | Custom Fields | Custom field definitions, values, templates |
+| `audit` | Audit | Audit logs, change tracking, history |
+| `catalogs` | Catalogs *(parent only)* | Parent category |
+| `catalogs/catalog-items` | Catalog Items | CatalogItem type and CRUD operations for catalog entries |
+| `catalogs/catalog-reference` | Catalog Reference | Cross-reference table of catalog items organized by domain |
+| `catalogs/tags` | Tags | Tag definitions for categorizing entities |
+| `catalogs/system` | System Catalogs | System-wide catalog items: modules, entity types, countries |
+
+### Parent categories
+
+Categories marked "parent only" (`actors`, `organizations`, `assets`, `devices`, `catalogs`) are organizational groupings. They don't have types assigned directly to them — all types go into their child categories. The generator creates a `README.md` overview page for each parent automatically.
+
+## Rules for assigning categories
+
+1. **One marker per group.** Place `# @category: <key>` on its own line before the first type/operation of that category. It applies to everything below until the next marker.
+
+2. **Keep related types together.** A type and its closely associated input/output/connection/edge types should share the same category. For example, `User`, `UserConnection`, `UserEdge`, `CreateUserInput`, `UpdateUserInput` all go under `actors/users`.
+
+3. **Queries and mutations** belong to the same category as their primary entity. For example, `user(id: ID!): User` and `createUser(input: CreateUserInput!): User` both go under `actors/users`.
+
+4. **Common types** include:
+   - Base interfaces (e.g., `Node`, `Connection`, `Edge`)
+   - Shared scalars (e.g., `DateTime`, `JSON`, `UUID`)
+   - Generic pagination types not tied to a specific entity
+   - Error types, generic enums, and utility types used across domains
+
+5. **Catalog items** that serve a specific domain should still go under the appropriate `catalogs/*` subcategory, not the domain they serve. For instance, a catalog of "device statuses" goes under `catalogs/system`, not `devices/inventory`.
+
+6. **When in doubt**, look at the type name and its fields to determine the primary domain:
+   - Type name starts with or contains `User` → `actors/users`
+   - Type name contains `Organization` or `Org` → `organizations/members` (or parent if truly org-level)
+   - Type name contains `Asset` → `assets/groups`
+   - Type name contains `Device`, `Tracker` → `devices/inventory`
+   - Type name contains `Geofence`, `Place`, `Zone`, `Route` → `geo-objects`
+   - Type name contains `Schedule` → `schedules`
+   - Type name contains `Permission`, `Role`, `Policy` → `access-control`
+   - Type name contains `CustomField` → `custom-fields`
+   - Type name contains `Audit`, `Log`, `History` → `audit`
+   - Type name contains `Catalog`, `Tag` → appropriate `catalogs/*` subcategory
+
+## What to do
+
+1. **Read the entire schema** to understand all types, inputs, enums, interfaces, scalars, queries, and mutations.
+
+2. **Group them** into the categories listed above.
+
+3. **Insert `# @category:` markers** at the correct positions. The schema should be organized so that all items of one category are contiguous (grouped together), with a single marker at the top of each group.
+
+4. **If the schema items are currently scattered** (same-category items aren't adjacent), you may need to **reorder** type/operation definitions to group them properly. This is fine — GraphQL schemas don't depend on definition order.
+
+5. **Preserve everything else**: all descriptions (`"""`), all field definitions, all directives, all comments that aren't category markers. Only add/replace category markers and reorder as needed.
+
+6. **Output the complete modified schema** with all markers in place.
+
+## Example of expected output format
+
+```graphql
+# @category: common
+
+"""Base interface for all nodes."""
+interface Node {
+  id: ID!
 }
+
+"""DateTime scalar following RFC 3339."""
+scalar DateTime
+
+# @category: actors/users
+
+"""Represents a user account in the system."""
+type User implements Node {
+  id: ID!
+  email: String!
+  name: String
+  # ...
+}
+
+type UserConnection {
+  edges: [UserEdge!]!
+  pageInfo: PageInfo!
+}
+
+# ... queries and mutations for users ...
+
+# @category: devices/inventory
+
+"""A tracked device or vehicle."""
+type Device implements Node {
+  id: ID!
+  # ...
+}
+```
+
+## Schema file
+
+The schema is attached to this message. Please analyze it and add the category markers.

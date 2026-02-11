@@ -1,11 +1,11 @@
-# Geo objects — Queries
+# Asset groups — Queries
 
-### geoObjectTypes
+### assetGroupTypes
 
-Lists geo object types for an organization.
+Lists asset group types for an organization.
 
 ```graphql
-geoObjectTypes(
+assetGroupTypes(
     organizationId: ID!
     filter: CatalogItemFilter
     first: Int
@@ -13,7 +13,7 @@ geoObjectTypes(
     last: Int
     before: String
     orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
-  ): GeoObjectTypeConnection!
+  ): AssetGroupTypeConnection!
 ```
 
 **Arguments**
@@ -21,12 +21,12 @@ geoObjectTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [CatalogItemFilter](../catalogs/catalog-items.md#catalogitemfilter) |  |
+| `filter` | [CatalogItemFilter](../../catalogs/catalog-items.md#catalogitemfilter) |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalogs/catalog-items.md#catalogitemorder) |  |
+| `orderBy` | [CatalogItemOrder](../../catalogs/catalog-items.md#catalogitemorder) |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
@@ -52,8 +52,8 @@ Ordering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [CatalogItemOrderField](../catalogs/catalog-items.md#catalogitemorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [CatalogItemOrderField](../../catalogs/catalog-items.md#catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -61,18 +61,18 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>GeoObjectTypeConnection</code></summary>
+<summary><code>AssetGroupTypeConnection</code></summary>
 
-A paginated list of GeoObjectType items.
+A paginated list of AssetGroupType items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[GeoObjectTypeEdge](types.md#geoobjecttypeedge)!]! | A list of edges. |
-| `nodes` | [[GeoObjectType](types.md#geoobjecttype)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[AssetGroupTypeEdge](types.md#assetgrouptypeedge)!]! | A list of edges. |
+| `nodes` | [[AssetGroupType](types.md#assetgrouptype)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -93,41 +93,50 @@ Information about the current page in a paginated connection.
 
 ---
 
-### geoObject
+### assetGroup
 
-Retrieves a geo object by its ID.
+Retrieves an asset group by its ID.
 
 ```graphql
-geoObject("The ID of the geo object to retrieve." id: ID!): GeoObject
+assetGroup("The ID of the asset group to retrieve." id: ID!): AssetGroup
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `id` | `ID!` | The ID of the geo object to retrieve. |
+| `id` | `ID!` | The ID of the asset group to retrieve. |
 
 **Output types:**
 
 <details>
 
-<summary><code>GeoObject</code></summary>
+<summary><code>AssetGroup</code></summary>
 
-A geographic object such as a geofence, point of interest, or route.
+A group of assets.
 
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
+**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` |  |
 | `version` | `Int!` |  |
 | `title` | `String!` |  |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
-| `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
+| `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this group. |
+| `type` | [AssetGroupType](types.md#assetgrouptype)! | The group type with membership constraints. |
+| `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
+| `filter` | [AssetFilter](../types.md#assetfilter) | Filtering options for the returned assets. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
+| `filter` | [AssetGroupItemFilter](types.md#assetgroupitemfilter) | Filtering options for the returned history. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `AssetGroupItemOrder = { field: ATTACHED_AT, direction: DESC }` | The ordering options for the returned history. |
 
 </details>
 
@@ -137,7 +146,7 @@ A geographic object such as a geofence, point of interest, or route.
 
 An organization in the hierarchy that owns entities and users.
 
-**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -146,39 +155,39 @@ An organization in the hierarchy that owns entities and users.
 | `title` | `String!` |  |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../organizations.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `filter` | [OrganizationChildrenFilter](../organizations.md#organizationchildrenfilter) | Filtering options for the returned children. |
+| `features` | [[OrganizationFeature](../../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](../../organizations.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `filter` | [OrganizationChildrenFilter](../../organizations.md#organizationchildrenfilter) | Filtering options for the returned children. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `OrganizationOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned children. |
-| `filter` | [MemberFilter](../organizations/members.md#memberfilter) | Filtering options for the returned members. |
+| `filter` | [MemberFilter](../../organizations/members.md#memberfilter) | Filtering options for the returned members. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned members. |
-| `filter` | [DeviceFilter](../devices/types.md#devicefilter) | Filtering options for the returned devices. |
+| `filter` | [DeviceFilter](../../devices/types.md#devicefilter) | Filtering options for the returned devices. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
-| `filter` | [AssetFilter](../assets/types.md#assetfilter) | Filtering options for the returned assets. |
+| `filter` | [AssetFilter](../types.md#assetfilter) | Filtering options for the returned assets. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
-| `filter` | [GeoObjectFilter](types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
+| `filter` | [GeoObjectFilter](../../geo-objects/types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `orderBy` | `GeoObjectOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned geo objects. |
-| `filter` | [ScheduleFilter](../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
+| `filter` | [ScheduleFilter](../../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
 | `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
@@ -189,20 +198,20 @@ An organization in the hierarchy that owns entities and users.
 
 ---
 
-### geoObjects
+### assetGroups
 
-Lists geo objects for an organization.
+Lists asset groups for an organization.
 
 ```graphql
-geoObjects(
+assetGroups(
     organizationId: ID!
-    filter: GeoObjectFilter
+    filter: AssetGroupFilter
     first: Int
     after: String
     last: Int
     before: String
-    orderBy: GeoObjectOrder = { field: TITLE, direction: ASC }
-  ): GeoObjectConnection!
+    orderBy: AssetGroupOrder = { field: TITLE, direction: ASC }
+  ): AssetGroupConnection!
 ```
 
 **Arguments**
@@ -210,55 +219,39 @@ geoObjects(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [GeoObjectFilter](types.md#geoobjectfilter) |  |
+| `filter` | [AssetGroupFilter](types.md#assetgroupfilter) |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [GeoObjectOrder](types.md#geoobjectorder) |  |
+| `orderBy` | [AssetGroupOrder](types.md#assetgrouporder) |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectFilter</code></summary>
+<summary><code>AssetGroupFilter</code></summary>
 
-Filtering options for geo objects.
+Filtering options for asset groups.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `typeIds` | `[ID!]` | Filter by geo object types (OR within field). |
+| `typeIds` | `[ID!]` | Filter by group types (OR within field). |
 | `titleContains` | `String` | Partial match on title (case-insensitive contains). |
-| `customFields` | [[CustomFieldFilter](../custom-fields.md#customfieldfilter)!] | Filter by custom field values. |
 
 </details>
 
 <details>
 
-<summary><code>CustomFieldFilter</code></summary>
+<summary><code>AssetGroupOrder</code></summary>
 
-A filter condition for a custom field value.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `code` | `Code!` | The custom field code to filter by. |
-| `operator` | [FieldOperator](../custom-fields.md#fieldoperator)! | The comparison operator. |
-| `value` | `JSON` | The value to compare against. Null for `IS_NULL` and `IS_NOT_NULL` operators. |
-
-</details>
-
-<details>
-
-<summary><code>GeoObjectOrder</code></summary>
-
-Ordering options for geo objects.
+Ordering options for asset groups.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [GeoObjectOrderField](types.md#geoobjectorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
-| `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
-| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
+| `field` | [AssetGroupOrderField](types.md#assetgrouporderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -266,18 +259,18 @@ Ordering options for geo objects.
 
 <details>
 
-<summary><code>GeoObjectConnection</code></summary>
+<summary><code>AssetGroupConnection</code></summary>
 
-A paginated list of GeoObject items.
+A paginated list of AssetGroup items.
 
-**Implements:** [Connection](../common.md#connection)
+**Implements:** [Connection](../../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[GeoObjectEdge](types.md#geoobjectedge)!]! | A list of edges. |
-| `nodes` | [[GeoObject](types.md#geoobject)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[AssetGroupEdge](types.md#assetgroupedge)!]! | A list of edges. |
+| `nodes` | [[AssetGroup](types.md#assetgroup)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 

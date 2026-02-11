@@ -1,60 +1,67 @@
-# System catalog
+# System catalogs
 
-System-wide catalog items and configuration.
+System-defined catalog items that cannot be modified by users.
 
-## Types
+## Objects
 
 ### Module
 
-A system module that groups related functionality and permission scopes. Examples: repo (core), fleet\_management (FSM), iot (devices), reports, billing.
+A system module that groups related functionality and permission scopes.
+Examples: repo (core), fleet_management (FSM), iot (devices), reports, billing.
 
-**Implements:** [`CatalogItem`](./#catalogitem), [`Node`](../core-api-reference/common-resources.md#node), [`Versioned`](../core-api-reference/common-resources.md#versioned), [`Titled`](../core-api-reference/common-resources.md#titled)
+**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
 
-| Field          | Type                                                              | Description |
-| -------------- | ----------------------------------------------------------------- | ----------- |
-| `id`           | `ID!`                                                             |             |
-| `version`      | `Int!`                                                            |             |
-| `title`        | `String!`                                                         |             |
-| `code`         | [Code](../core-api-reference/common-resources.md#code)!           |             |
-| `order`        | `Int!`                                                            |             |
-| `catalog`      | [Catalog](../core-api-reference/organizations/#catalog)!          |             |
-| `organization` | [Organization](../core-api-reference/organizations/#organization) |             |
-| `meta`         | [CatalogItemMeta](./#catalogitemmeta)!                            |             |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `code` | `Code!` |  |
+| `order` | `Int!` |  |
+| `catalog` | [Catalog](../catalog-items.md#catalog)! |  |
+| `organization` | [Organization](../../organizations.md#organization) |  |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+
+---
 
 ### EntityType
 
 A definition of an entity type in the system.
 
-**Implements:** [`CatalogItem`](./#catalogitem), [`Node`](../core-api-reference/common-resources.md#node), [`Versioned`](../core-api-reference/common-resources.md#versioned), [`Titled`](../core-api-reference/common-resources.md#titled)
+**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
 
-| Field                    | Type                                                                    | Description                                                                   |
-| ------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `id`                     | `ID!`                                                                   |                                                                               |
-| `version`                | `Int!`                                                                  |                                                                               |
-| `title`                  | `String!`                                                               |                                                                               |
-| `code`                   | [Code](../core-api-reference/common-resources.md#code)!                 |                                                                               |
-| `order`                  | `Int!`                                                                  |                                                                               |
-| `catalog`                | [Catalog](../core-api-reference/organizations/#catalog)!                |                                                                               |
-| `organization`           | [Organization](../core-api-reference/organizations/#organization)       |                                                                               |
-| `meta`                   | [CatalogItemMeta](./#catalogitemmeta)!                                  |                                                                               |
-| `uuidDiscriminator`      | `String!`                                                               | The 4-character code embedded in UUIDs for entities of this type.             |
-| `isCustomizable`         | `Boolean!`                                                              | Whether entities of this type support custom fields.                          |
-| `customFieldDefinitions` | \[[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions for entities of this type, ordered by display order. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `code` | `Code!` |  |
+| `order` | `Int!` |  |
+| `catalog` | [Catalog](../catalog-items.md#catalog)! |  |
+| `organization` | [Organization](../../organizations.md#organization) |  |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `uuidDiscriminator` | `String!` | The 4-character code embedded in UUIDs for entities of this type. |
+| `isCustomizable` | `Boolean!` | Whether entities of this type support custom fields. |
+| `customFieldDefinitions` | [[CustomFieldDefinition](../../custom-fields.md#customfielddefinition)!]! | Custom field definitions for entities of this type, ordered by display order. |
+
+---
 
 ### Country
 
 A country reference data item.
 
-**Implements:** [`CatalogItem`](./#catalogitem), [`Node`](../core-api-reference/common-resources.md#node), [`Versioned`](../core-api-reference/common-resources.md#versioned), [`Titled`](../core-api-reference/common-resources.md#titled)
+**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
 
-| Field          | Type                                                                  | Description                                                                      |
-| -------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `id`           | `ID!`                                                                 |                                                                                  |
-| `version`      | `Int!`                                                                |                                                                                  |
-| `title`        | `String!`                                                             |                                                                                  |
-| `code`         | [Code](../core-api-reference/common-resources.md#code)!               |                                                                                  |
-| `order`        | `Int!`                                                                |                                                                                  |
-| `catalog`      | [Catalog](../core-api-reference/organizations/#catalog)!              |                                                                                  |
-| `organization` | [Organization](../core-api-reference/organizations/#organization)     |                                                                                  |
-| `meta`         | [CatalogItemMeta](./#catalogitemmeta)!                                |                                                                                  |
-| `alpha2Code`   | [CountryCode](../core-api-reference/common-resources.md#countrycode)! | The [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) alpha-2 country code. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` |  |
+| `version` | `Int!` |  |
+| `title` | `String!` |  |
+| `code` | `Code!` |  |
+| `order` | `Int!` |  |
+| `catalog` | [Catalog](../catalog-items.md#catalog)! |  |
+| `organization` | [Organization](../../organizations.md#organization) |  |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `alpha2Code` | `CountryCode!` | The [ISO 3166](https://www.iso.org/standard/3166.html)-1 alpha-2 country code. |
+
+---
