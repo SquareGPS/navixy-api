@@ -5,20 +5,20 @@
 Assigns a role to an actor.
 
 ```graphql
-roleAssign("The input fields for assigning the role." input: RoleAssignInput!): ActorRolePayload
+roleAssign(input: RoleAssignInput!): ActorRolePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [RoleAssignInput](types.md#roleassigninput)! | The input fields for assigning the role. |
+| `input` | `RoleAssignInput!` | The input fields for assigning the role. |
 
 **Input types:**
 
 <details>
 
-<summary><code>RoleAssignInput</code></summary>
+<summary>RoleAssignInput</summary>
 
 Input for assigning a role to an actor.
 
@@ -34,7 +34,7 @@ Input for assigning a role to an actor.
 
 <details>
 
-<summary><code>ActorRolePayload</code></summary>
+<summary>ActorRolePayload</summary>
 
 The result of a role assignment mutation.
 
@@ -46,7 +46,7 @@ The result of a role assignment mutation.
 
 <details>
 
-<summary><code>ActorRole (entity)</code></summary>
+<summary>ActorRole (entity)</summary>
 
 An assignment of a role to an actor.
 
@@ -54,7 +54,7 @@ An assignment of a role to an actor.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `actor` | [Actor](../actors.md#actor)! | The actor receiving the role. |
 | `role` | [Role](types.md#role)! | The role being assigned. |
 | `assignedAt` | `DateTime!` | The date and time when the role was assigned. |
@@ -70,20 +70,20 @@ An assignment of a role to an actor.
 Revokes a role from an actor.
 
 ```graphql
-roleRevoke("The input fields for revoking the role." input: RoleRevokeInput!): DeletePayload
+roleRevoke(input: RoleRevokeInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [RoleRevokeInput](types.md#rolerevokeinput)! | The input fields for revoking the role. |
+| `input` | `RoleRevokeInput!` | The input fields for revoking the role. |
 
 **Input types:**
 
 <details>
 
-<summary><code>RoleRevokeInput</code></summary>
+<summary>RoleRevokeInput</summary>
 
 Input for revoking a role from an actor.
 
@@ -97,7 +97,7 @@ Input for revoking a role from an actor.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -114,20 +114,20 @@ The result of a delete mutation.
 Grants a permission to a role.
 
 ```graphql
-permissionGrant("The input fields for granting the permission." input: PermissionGrantInput!): RolePermissionPayload
+permissionGrant(input: PermissionGrantInput!): RolePermissionPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [PermissionGrantInput](types.md#permissiongrantinput)! | The input fields for granting the permission. |
+| `input` | `PermissionGrantInput!` | The input fields for granting the permission. |
 
 **Input types:**
 
 <details>
 
-<summary><code>PermissionGrantInput</code></summary>
+<summary>PermissionGrantInput</summary>
 
 Input for granting a permission to a role.
 
@@ -144,7 +144,7 @@ Input for granting a permission to a role.
 
 <details>
 
-<summary><code>RolePermissionPayload</code></summary>
+<summary>RolePermissionPayload</summary>
 
 The result of a permission grant mutation.
 
@@ -156,7 +156,7 @@ The result of a permission grant mutation.
 
 <details>
 
-<summary><code>RolePermission (entity)</code></summary>
+<summary>RolePermission (entity)</summary>
 
 A permission granted to a role.
 
@@ -164,7 +164,7 @@ A permission granted to a role.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `role` | [Role](types.md#role)! | The role receiving the permission. |
 | `permissionScope` | [PermissionScope](types.md#permissionscope)! | The permission scope being granted. |
 | `targetEntityId` | `ID` | The specific entity ID this permission applies to. Null means all entities of the type. |
@@ -181,20 +181,20 @@ A permission granted to a role.
 Revokes a permission from a role.
 
 ```graphql
-permissionRevoke("The input fields for revoking the permission." input: PermissionRevokeInput!): DeletePayload
+permissionRevoke(input: PermissionRevokeInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [PermissionRevokeInput](types.md#permissionrevokeinput)! | The input fields for revoking the permission. |
+| `input` | `PermissionRevokeInput!` | The input fields for revoking the permission. |
 
 **Input types:**
 
 <details>
 
-<summary><code>PermissionRevokeInput</code></summary>
+<summary>PermissionRevokeInput</summary>
 
 Input for revoking a permission from a role.
 
@@ -208,7 +208,7 @@ Input for revoking a permission from a role.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -225,20 +225,20 @@ The result of a delete mutation.
 Sets a user scope restriction.
 
 ```graphql
-userScopeSet("The input fields for setting the user scope." input: UserScopeSetInput!): UserScopePayload
+userScopeSet(input: UserScopeSetInput!): UserScopePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [UserScopeSetInput](types.md#userscopesetinput)! | The input fields for setting the user scope. |
+| `input` | `UserScopeSetInput!` | The input fields for setting the user scope. |
 
 **Input types:**
 
 <details>
 
-<summary><code>UserScopeSetInput</code></summary>
+<summary>UserScopeSetInput</summary>
 
 Input for setting a user scope restriction.
 
@@ -255,7 +255,7 @@ Input for setting a user scope restriction.
 
 <details>
 
-<summary><code>UserScopePayload</code></summary>
+<summary>UserScopePayload</summary>
 
 The result of a user scope mutation.
 
@@ -267,7 +267,7 @@ The result of a user scope mutation.
 
 <details>
 
-<summary><code>UserScope (entity)</code></summary>
+<summary>UserScope (entity)</summary>
 
 A whitelist filter that restricts an actor's access to specific entities.
 When present, effective permissions = role permissions ∩ user scope.
@@ -276,7 +276,7 @@ When present, effective permissions = role permissions ∩ user scope.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `actor` | [Actor](../actors.md#actor)! | The actor being restricted. |
 | `permissionScope` | [PermissionScope](types.md#permissionscope)! | The permission scope being filtered. |
 | `targetEntityId` | `ID!` | The specific entity the actor can access. |
@@ -291,20 +291,20 @@ When present, effective permissions = role permissions ∩ user scope.
 Removes a user scope restriction.
 
 ```graphql
-userScopeRemove("The input fields for removing the user scope." input: UserScopeRemoveInput!): DeletePayload
+userScopeRemove(input: UserScopeRemoveInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [UserScopeRemoveInput](types.md#userscoperemoveinput)! | The input fields for removing the user scope. |
+| `input` | `UserScopeRemoveInput!` | The input fields for removing the user scope. |
 
 **Input types:**
 
 <details>
 
-<summary><code>UserScopeRemoveInput</code></summary>
+<summary>UserScopeRemoveInput</summary>
 
 Input for removing a user scope restriction.
 
@@ -318,7 +318,7 @@ Input for removing a user scope restriction.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -335,20 +335,20 @@ The result of a delete mutation.
 Creates a new role.
 
 ```graphql
-roleCreate("The input fields for creating the role." input: RoleCreateInput!): RolePayload
+roleCreate(input: RoleCreateInput!): RolePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [RoleCreateInput](types.md#rolecreateinput)! | The input fields for creating the role. |
+| `input` | `RoleCreateInput!` | The input fields for creating the role. |
 
 **Input types:**
 
 <details>
 
-<summary><code>RoleCreateInput</code></summary>
+<summary>RoleCreateInput</summary>
 
 Input for creating a role.
 
@@ -364,7 +364,7 @@ Input for creating a role.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -382,7 +382,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>RolePayload</code></summary>
+<summary>RolePayload</summary>
 
 The result of a role mutation.
 
@@ -394,7 +394,7 @@ The result of a role mutation.
 
 <details>
 
-<summary><code>Role (entity)</code></summary>
+<summary>Role (entity)</summary>
 
 A role that can be assigned to actors to grant permissions.
 
@@ -402,14 +402,14 @@ A role that can be assigned to actors to grant permissions.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `filter` | [RolePermissionFilter](types.md#rolepermissionfilter) | Filtering options for the returned permissions. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
@@ -426,20 +426,20 @@ A role that can be assigned to actors to grant permissions.
 Updates a role.
 
 ```graphql
-roleUpdate("The input fields for updating the role." input: RoleUpdateInput!): RolePayload
+roleUpdate(input: RoleUpdateInput!): RolePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [RoleUpdateInput](types.md#roleupdateinput)! | The input fields for updating the role. |
+| `input` | `RoleUpdateInput!` | The input fields for updating the role. |
 
 **Input types:**
 
 <details>
 
-<summary><code>RoleUpdateInput</code></summary>
+<summary>RoleUpdateInput</summary>
 
 Input for updating a role.
 
@@ -455,7 +455,7 @@ Input for updating a role.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -473,7 +473,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>RolePayload</code></summary>
+<summary>RolePayload</summary>
 
 The result of a role mutation.
 
@@ -485,7 +485,7 @@ The result of a role mutation.
 
 <details>
 
-<summary><code>Role (entity)</code></summary>
+<summary>Role (entity)</summary>
 
 A role that can be assigned to actors to grant permissions.
 
@@ -493,14 +493,14 @@ A role that can be assigned to actors to grant permissions.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `filter` | [RolePermissionFilter](types.md#rolepermissionfilter) | Filtering options for the returned permissions. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
@@ -517,20 +517,20 @@ A role that can be assigned to actors to grant permissions.
 Deletes a role.
 
 ```graphql
-roleDelete("The input fields for deleting the role." input: CatalogItemDeleteInput!): DeletePayload
+roleDelete(input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the role. |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the role. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemDeleteInput</code></summary>
+<summary>CatalogItemDeleteInput</summary>
 
 Input for deleting a catalog item.
 
@@ -545,7 +545,7 @@ Input for deleting a catalog item.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 

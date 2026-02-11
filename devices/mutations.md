@@ -5,20 +5,20 @@
 Creates a new device.
 
 ```graphql
-deviceCreate("The input fields for creating the device." input: DeviceCreateInput!): DevicePayload
+deviceCreate(input: DeviceCreateInput!): DevicePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceCreateInput](types.md#devicecreateinput)! | The input fields for creating the device. |
+| `input` | `DeviceCreateInput!` | The input fields for creating the device. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceCreateInput</code></summary>
+<summary>DeviceCreateInput</summary>
 
 Input for creating a new device.
 
@@ -36,7 +36,7 @@ Input for creating a new device.
 
 <details>
 
-<summary><code>DeviceIdentifierInput</code></summary>
+<summary>DeviceIdentifierInput</summary>
 
 Input for a device identifier.
 
@@ -50,7 +50,7 @@ Input for a device identifier.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -65,7 +65,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>DevicePayload</code></summary>
+<summary>DevicePayload</summary>
 
 The result of a device mutation.
 
@@ -77,7 +77,7 @@ The result of a device mutation.
 
 <details>
 
-<summary><code>Device (entity)</code></summary>
+<summary>Device (entity)</summary>
 
 A tracking device such as a GPS tracker, sensor, or beacon.
 
@@ -85,9 +85,10 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this device. |
 | `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
 | `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
@@ -112,20 +113,20 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 Updates an existing device.
 
 ```graphql
-deviceUpdate("The input fields for updating the device." input: DeviceUpdateInput!): DevicePayload
+deviceUpdate(input: DeviceUpdateInput!): DevicePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceUpdateInput](types.md#deviceupdateinput)! | The input fields for updating the device. |
+| `input` | `DeviceUpdateInput!` | The input fields for updating the device. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceUpdateInput</code></summary>
+<summary>DeviceUpdateInput</summary>
 
 Input for updating an existing device.
 
@@ -142,7 +143,7 @@ Input for updating an existing device.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -157,7 +158,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>DevicePayload</code></summary>
+<summary>DevicePayload</summary>
 
 The result of a device mutation.
 
@@ -169,7 +170,7 @@ The result of a device mutation.
 
 <details>
 
-<summary><code>Device (entity)</code></summary>
+<summary>Device (entity)</summary>
 
 A tracking device such as a GPS tracker, sensor, or beacon.
 
@@ -177,9 +178,10 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this device. |
 | `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
 | `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
@@ -204,20 +206,20 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 Deletes a device.
 
 ```graphql
-deviceDelete("The input fields for deleting the device." input: DeviceDeleteInput!): DeletePayload
+deviceDelete(input: DeviceDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceDeleteInput](types.md#devicedeleteinput)! | The input fields for deleting the device. |
+| `input` | `DeviceDeleteInput!` | The input fields for deleting the device. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceDeleteInput</code></summary>
+<summary>DeviceDeleteInput</summary>
 
 Input for deleting a device.
 
@@ -232,7 +234,7 @@ Input for deleting a device.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -249,20 +251,20 @@ The result of a delete mutation.
 Adds an identifier to a device.
 
 ```graphql
-deviceIdentifierAdd("The input fields for adding the identifier." input: DeviceIdentifierAddInput!): DeviceIdentifierPayload
+deviceIdentifierAdd(input: DeviceIdentifierAddInput!): DeviceIdentifierPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceIdentifierAddInput](types.md#deviceidentifieraddinput)! | The input fields for adding the identifier. |
+| `input` | `DeviceIdentifierAddInput!` | The input fields for adding the identifier. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceIdentifierAddInput</code></summary>
+<summary>DeviceIdentifierAddInput</summary>
 
 Input for adding an identifier to a device.
 
@@ -275,7 +277,7 @@ Input for adding an identifier to a device.
 
 <details>
 
-<summary><code>DeviceIdentifierInput</code></summary>
+<summary>DeviceIdentifierInput</summary>
 
 Input for a device identifier.
 
@@ -291,7 +293,7 @@ Input for a device identifier.
 
 <details>
 
-<summary><code>DeviceIdentifierPayload</code></summary>
+<summary>DeviceIdentifierPayload</summary>
 
 The result of a device identifier mutation.
 
@@ -303,7 +305,7 @@ The result of a device identifier mutation.
 
 <details>
 
-<summary><code>DeviceIdentifier (entity)</code></summary>
+<summary>DeviceIdentifier (entity)</summary>
 
 A hardware identifier for a device.
 
@@ -311,7 +313,7 @@ A hardware identifier for a device.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `device` | [Device](types.md#device)! | The device this identifier belongs to. |
 | `type` | [DeviceIdType](types.md#deviceidtype)! | The type of identifier. |
 | `value` | `String!` | The identifier value. |
@@ -326,20 +328,20 @@ A hardware identifier for a device.
 Removes an identifier from a device.
 
 ```graphql
-deviceIdentifierRemove("The input fields for removing the identifier." input: DeviceIdentifierRemoveInput!): DeletePayload
+deviceIdentifierRemove(input: DeviceIdentifierRemoveInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceIdentifierRemoveInput](types.md#deviceidentifierremoveinput)! | The input fields for removing the identifier. |
+| `input` | `DeviceIdentifierRemoveInput!` | The input fields for removing the identifier. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceIdentifierRemoveInput</code></summary>
+<summary>DeviceIdentifierRemoveInput</summary>
 
 Input for removing an identifier from a device.
 
@@ -353,7 +355,7 @@ Input for removing an identifier from a device.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -370,20 +372,20 @@ The result of a delete mutation.
 Creates a relationship between devices.
 
 ```graphql
-deviceRelationCreate("The input fields for creating the relationship." input: DeviceRelationCreateInput!): DeviceRelationPayload
+deviceRelationCreate(input: DeviceRelationCreateInput!): DeviceRelationPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceRelationCreateInput](types.md#devicerelationcreateinput)! | The input fields for creating the relationship. |
+| `input` | `DeviceRelationCreateInput!` | The input fields for creating the relationship. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceRelationCreateInput</code></summary>
+<summary>DeviceRelationCreateInput</summary>
 
 Input for creating a relationship between devices.
 
@@ -399,7 +401,7 @@ Input for creating a relationship between devices.
 
 <details>
 
-<summary><code>DeviceRelationPayload</code></summary>
+<summary>DeviceRelationPayload</summary>
 
 The result of a device relation mutation.
 
@@ -411,7 +413,7 @@ The result of a device relation mutation.
 
 <details>
 
-<summary><code>DeviceRelation (entity)</code></summary>
+<summary>DeviceRelation (entity)</summary>
 
 A relationship between two devices.
 
@@ -419,7 +421,7 @@ A relationship between two devices.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `first` | [Device](types.md#device)! | The first device in the relationship. |
 | `second` | [Device](types.md#device)! | The second device in the relationship. |
 | `type` | [DeviceRelationType](types.md#devicerelationtype)! | The type of relationship. |
@@ -433,20 +435,20 @@ A relationship between two devices.
 Removes a device relationship.
 
 ```graphql
-deviceRelationRemove("The input fields for removing the relationship." input: DeviceRelationRemoveInput!): DeletePayload
+deviceRelationRemove(input: DeviceRelationRemoveInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceRelationRemoveInput](types.md#devicerelationremoveinput)! | The input fields for removing the relationship. |
+| `input` | `DeviceRelationRemoveInput!` | The input fields for removing the relationship. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceRelationRemoveInput</code></summary>
+<summary>DeviceRelationRemoveInput</summary>
 
 Input for removing a device relationship.
 
@@ -460,7 +462,7 @@ Input for removing a device relationship.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -477,20 +479,20 @@ The result of a delete mutation.
 Creates a new device type.
 
 ```graphql
-deviceTypeCreate("The input fields for creating the device type." input: DeviceTypeCreateInput!): DeviceTypePayload
+deviceTypeCreate(input: DeviceTypeCreateInput!): DeviceTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceTypeCreateInput](types.md#devicetypecreateinput)! | The input fields for creating the device type. |
+| `input` | `DeviceTypeCreateInput!` | The input fields for creating the device type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceTypeCreateInput</code></summary>
+<summary>DeviceTypeCreateInput</summary>
 
 Input for creating a device type.
 
@@ -506,7 +508,7 @@ Input for creating a device type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -524,7 +526,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>DeviceTypePayload</code></summary>
+<summary>DeviceTypePayload</summary>
 
 The result of a device type mutation.
 
@@ -536,7 +538,7 @@ The result of a device type mutation.
 
 <details>
 
-<summary><code>DeviceType (entity)</code></summary>
+<summary>DeviceType (entity)</summary>
 
 A classification type for devices.
 
@@ -544,14 +546,14 @@ A classification type for devices.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
 
 </details>
@@ -563,20 +565,20 @@ A classification type for devices.
 Updates a device type.
 
 ```graphql
-deviceTypeUpdate("The input fields for updating the device type." input: DeviceTypeUpdateInput!): DeviceTypePayload
+deviceTypeUpdate(input: DeviceTypeUpdateInput!): DeviceTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceTypeUpdateInput](types.md#devicetypeupdateinput)! | The input fields for updating the device type. |
+| `input` | `DeviceTypeUpdateInput!` | The input fields for updating the device type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceTypeUpdateInput</code></summary>
+<summary>DeviceTypeUpdateInput</summary>
 
 Input for updating a device type.
 
@@ -592,7 +594,7 @@ Input for updating a device type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -610,7 +612,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>DeviceTypePayload</code></summary>
+<summary>DeviceTypePayload</summary>
 
 The result of a device type mutation.
 
@@ -622,7 +624,7 @@ The result of a device type mutation.
 
 <details>
 
-<summary><code>DeviceType (entity)</code></summary>
+<summary>DeviceType (entity)</summary>
 
 A classification type for devices.
 
@@ -630,14 +632,14 @@ A classification type for devices.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
 
 </details>
@@ -649,20 +651,20 @@ A classification type for devices.
 Deletes a device type.
 
 ```graphql
-deviceTypeDelete("The input fields for deleting the device type." input: CatalogItemDeleteInput!): DeletePayload
+deviceTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the device type. |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the device type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemDeleteInput</code></summary>
+<summary>CatalogItemDeleteInput</summary>
 
 Input for deleting a catalog item.
 
@@ -677,7 +679,7 @@ Input for deleting a catalog item.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -694,20 +696,20 @@ The result of a delete mutation.
 Creates a new device status.
 
 ```graphql
-deviceStatusCreate("The input fields for creating the device status." input: DeviceStatusCreateInput!): DeviceStatusPayload
+deviceStatusCreate(input: DeviceStatusCreateInput!): DeviceStatusPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceStatusCreateInput](types.md#devicestatuscreateinput)! | The input fields for creating the device status. |
+| `input` | `DeviceStatusCreateInput!` | The input fields for creating the device status. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceStatusCreateInput</code></summary>
+<summary>DeviceStatusCreateInput</summary>
 
 Input for creating a device status.
 
@@ -723,7 +725,7 @@ Input for creating a device status.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -741,7 +743,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>DeviceStatusPayload</code></summary>
+<summary>DeviceStatusPayload</summary>
 
 The result of a device status mutation.
 
@@ -753,7 +755,7 @@ The result of a device status mutation.
 
 <details>
 
-<summary><code>DeviceStatus (entity)</code></summary>
+<summary>DeviceStatus (entity)</summary>
 
 An operational status for devices.
 
@@ -761,14 +763,14 @@ An operational status for devices.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 
@@ -779,20 +781,20 @@ An operational status for devices.
 Updates a device status.
 
 ```graphql
-deviceStatusUpdate("The input fields for updating the device status." input: DeviceStatusUpdateInput!): DeviceStatusPayload
+deviceStatusUpdate(input: DeviceStatusUpdateInput!): DeviceStatusPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceStatusUpdateInput](types.md#devicestatusupdateinput)! | The input fields for updating the device status. |
+| `input` | `DeviceStatusUpdateInput!` | The input fields for updating the device status. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceStatusUpdateInput</code></summary>
+<summary>DeviceStatusUpdateInput</summary>
 
 Input for updating a device status.
 
@@ -808,7 +810,7 @@ Input for updating a device status.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -826,7 +828,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>DeviceStatusPayload</code></summary>
+<summary>DeviceStatusPayload</summary>
 
 The result of a device status mutation.
 
@@ -838,7 +840,7 @@ The result of a device status mutation.
 
 <details>
 
-<summary><code>DeviceStatus (entity)</code></summary>
+<summary>DeviceStatus (entity)</summary>
 
 An operational status for devices.
 
@@ -846,14 +848,14 @@ An operational status for devices.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 
@@ -864,20 +866,20 @@ An operational status for devices.
 Deletes a device status.
 
 ```graphql
-deviceStatusDelete("The input fields for deleting the device status." input: CatalogItemDeleteInput!): DeletePayload
+deviceStatusDelete(input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the device status. |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the device status. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemDeleteInput</code></summary>
+<summary>CatalogItemDeleteInput</summary>
 
 Input for deleting a catalog item.
 
@@ -892,7 +894,7 @@ Input for deleting a catalog item.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 

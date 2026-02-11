@@ -33,8 +33,8 @@ The built-in system actor used for automated operations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `title` | `String!` | The display name of the actor. |
 
 ---
 

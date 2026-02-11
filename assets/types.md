@@ -10,14 +10,14 @@ A classification type for assets.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
 
 ---
@@ -30,9 +30,10 @@ A physical or logical asset being tracked.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this asset. |
 | `type` | [AssetType](types.md#assettype)! | The asset type classification. |
 | `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |

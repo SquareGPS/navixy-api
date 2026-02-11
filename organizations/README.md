@@ -9,7 +9,7 @@ Organizations form the top-level container for all business data. Each organizat
 Retrieves an organization by its ID.
 
 ```graphql
-organization("The ID of the organization to retrieve." id: ID!): Organization
+organization(id: ID!): Organization
 ```
 
 **Arguments**
@@ -22,7 +22,7 @@ organization("The ID of the organization to retrieve." id: ID!): Organization
 
 <details>
 
-<summary><code>Organization</code></summary>
+<summary>Organization</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -30,9 +30,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -97,19 +98,19 @@ organizations(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `filter` | [OrganizationFilter](../organizations.md#organizationfilter) |  |
+| `filter` | `OrganizationFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [OrganizationOrder](../organizations.md#organizationorder) |  |
+| `orderBy` | `OrganizationOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>OrganizationFilter</code></summary>
+<summary>OrganizationFilter</summary>
 
 Filtering options for organizations.
 
@@ -122,7 +123,7 @@ Filtering options for organizations.
 
 <details>
 
-<summary><code>OrganizationOrder</code></summary>
+<summary>OrganizationOrder</summary>
 
 Ordering options for organizations.
 
@@ -137,7 +138,7 @@ Ordering options for organizations.
 
 <details>
 
-<summary><code>OrganizationConnection</code></summary>
+<summary>OrganizationConnection</summary>
 
 A paginated list of Organization items.
 
@@ -154,7 +155,7 @@ A paginated list of Organization items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -176,20 +177,20 @@ Information about the current page in a paginated connection.
 Creates a new organization.
 
 ```graphql
-organizationCreate("The input fields for creating the organization." input: OrganizationCreateInput!): OrganizationPayload
+organizationCreate(input: OrganizationCreateInput!): OrganizationPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [OrganizationCreateInput](../organizations.md#organizationcreateinput)! | The input fields for creating the organization. |
+| `input` | `OrganizationCreateInput!` | The input fields for creating the organization. |
 
 **Input types:**
 
 <details>
 
-<summary><code>OrganizationCreateInput</code></summary>
+<summary>OrganizationCreateInput</summary>
 
 Input for creating a new organization.
 
@@ -206,7 +207,7 @@ Input for creating a new organization.
 
 <details>
 
-<summary><code>OrganizationPayload</code></summary>
+<summary>OrganizationPayload</summary>
 
 The result of an organization mutation.
 
@@ -218,7 +219,7 @@ The result of an organization mutation.
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -226,9 +227,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -279,20 +281,20 @@ An organization in the hierarchy that owns entities and users.
 Updates an existing organization.
 
 ```graphql
-organizationUpdate("The input fields for updating the organization." input: OrganizationUpdateInput!): OrganizationPayload
+organizationUpdate(input: OrganizationUpdateInput!): OrganizationPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [OrganizationUpdateInput](../organizations.md#organizationupdateinput)! | The input fields for updating the organization. |
+| `input` | `OrganizationUpdateInput!` | The input fields for updating the organization. |
 
 **Input types:**
 
 <details>
 
-<summary><code>OrganizationUpdateInput</code></summary>
+<summary>OrganizationUpdateInput</summary>
 
 Input for updating an existing organization.
 
@@ -311,7 +313,7 @@ Input for updating an existing organization.
 
 <details>
 
-<summary><code>OrganizationPayload</code></summary>
+<summary>OrganizationPayload</summary>
 
 The result of an organization mutation.
 
@@ -323,7 +325,7 @@ The result of an organization mutation.
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -331,9 +333,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -384,20 +387,20 @@ An organization in the hierarchy that owns entities and users.
 Deletes an organization and all its data.
 
 ```graphql
-organizationDelete("The input fields for deleting the organization." input: OrganizationDeleteInput!): DeletePayload
+organizationDelete(input: OrganizationDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [OrganizationDeleteInput](../organizations.md#organizationdeleteinput)! | The input fields for deleting the organization. |
+| `input` | `OrganizationDeleteInput!` | The input fields for deleting the organization. |
 
 **Input types:**
 
 <details>
 
-<summary><code>OrganizationDeleteInput</code></summary>
+<summary>OrganizationDeleteInput</summary>
 
 Input for deleting an organization and all its data.
 
@@ -412,7 +415,7 @@ Input for deleting an organization and all its data.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -434,9 +437,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |

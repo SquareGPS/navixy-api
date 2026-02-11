@@ -10,14 +10,14 @@ A role that can be assigned to actors to grant permissions.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `filter` | [RolePermissionFilter](types.md#rolepermissionfilter) | Filtering options for the returned permissions. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
 | `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
@@ -35,14 +35,14 @@ A definition of a permission scope that can be granted to roles.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `module` | [Module](../catalogs/system.md#module)! | The module this permission scope belongs to. |
 | `entityType` | [EntityType](../catalogs/system.md#entitytype)! | The entity type this permission applies to. |
 
@@ -56,7 +56,7 @@ An assignment of a role to an actor.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `actor` | [Actor](../actors.md#actor)! | The actor receiving the role. |
 | `role` | [Role](types.md#role)! | The role being assigned. |
 | `assignedAt` | `DateTime!` | The date and time when the role was assigned. |
@@ -73,7 +73,7 @@ A permission granted to a role.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `role` | [Role](types.md#role)! | The role receiving the permission. |
 | `permissionScope` | [PermissionScope](types.md#permissionscope)! | The permission scope being granted. |
 | `targetEntityId` | `ID` | The specific entity ID this permission applies to. Null means all entities of the type. |
@@ -92,7 +92,7 @@ When present, effective permissions = role permissions ∩ user scope.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `actor` | [Actor](../actors.md#actor)! | The actor being restricted. |
 | `permissionScope` | [PermissionScope](types.md#permissionscope)! | The permission scope being filtered. |
 | `targetEntityId` | `ID!` | The specific entity the actor can access. |

@@ -5,20 +5,20 @@
 Creates a new asset group.
 
 ```graphql
-assetGroupCreate("The input fields for creating the asset group." input: AssetGroupCreateInput!): AssetGroupPayload
+assetGroupCreate(input: AssetGroupCreateInput!): AssetGroupPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupCreateInput](types.md#assetgroupcreateinput)! | The input fields for creating the asset group. |
+| `input` | `AssetGroupCreateInput!` | The input fields for creating the asset group. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetGroupCreateInput</code></summary>
+<summary>AssetGroupCreateInput</summary>
 
 Input for creating a new asset group.
 
@@ -35,7 +35,7 @@ Input for creating a new asset group.
 
 <details>
 
-<summary><code>AssetGroupPayload</code></summary>
+<summary>AssetGroupPayload</summary>
 
 The result of an asset group mutation.
 
@@ -47,7 +47,7 @@ The result of an asset group mutation.
 
 <details>
 
-<summary><code>AssetGroup (entity)</code></summary>
+<summary>AssetGroup (entity)</summary>
 
 A group of assets.
 
@@ -55,9 +55,10 @@ A group of assets.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this group. |
 | `type` | [AssetGroupType](types.md#assetgrouptype)! | The group type with membership constraints. |
 | `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
@@ -83,20 +84,20 @@ A group of assets.
 Updates an existing asset group.
 
 ```graphql
-assetGroupUpdate("The input fields for updating the asset group." input: AssetGroupUpdateInput!): AssetGroupPayload
+assetGroupUpdate(input: AssetGroupUpdateInput!): AssetGroupPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupUpdateInput](types.md#assetgroupupdateinput)! | The input fields for updating the asset group. |
+| `input` | `AssetGroupUpdateInput!` | The input fields for updating the asset group. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetGroupUpdateInput</code></summary>
+<summary>AssetGroupUpdateInput</summary>
 
 Input for updating an existing asset group.
 
@@ -113,7 +114,7 @@ Input for updating an existing asset group.
 
 <details>
 
-<summary><code>AssetGroupPayload</code></summary>
+<summary>AssetGroupPayload</summary>
 
 The result of an asset group mutation.
 
@@ -125,7 +126,7 @@ The result of an asset group mutation.
 
 <details>
 
-<summary><code>AssetGroup (entity)</code></summary>
+<summary>AssetGroup (entity)</summary>
 
 A group of assets.
 
@@ -133,9 +134,10 @@ A group of assets.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this group. |
 | `type` | [AssetGroupType](types.md#assetgrouptype)! | The group type with membership constraints. |
 | `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
@@ -161,20 +163,20 @@ A group of assets.
 Deletes an asset group.
 
 ```graphql
-assetGroupDelete("The input fields for deleting the asset group." input: AssetGroupDeleteInput!): DeletePayload
+assetGroupDelete(input: AssetGroupDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupDeleteInput](types.md#assetgroupdeleteinput)! | The input fields for deleting the asset group. |
+| `input` | `AssetGroupDeleteInput!` | The input fields for deleting the asset group. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetGroupDeleteInput</code></summary>
+<summary>AssetGroupDeleteInput</summary>
 
 Input for deleting an asset group.
 
@@ -189,7 +191,7 @@ Input for deleting an asset group.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -206,20 +208,20 @@ The result of a delete mutation.
 Adds an asset to a group.
 
 ```graphql
-assetGroupItemAdd("The input fields for adding the asset to the group." input: AssetGroupItemAddInput!): AssetGroupItemPayload
+assetGroupItemAdd(input: AssetGroupItemAddInput!): AssetGroupItemPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupItemAddInput](types.md#assetgroupitemaddinput)! | The input fields for adding the asset to the group. |
+| `input` | `AssetGroupItemAddInput!` | The input fields for adding the asset to the group. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetGroupItemAddInput</code></summary>
+<summary>AssetGroupItemAddInput</summary>
 
 Input for adding an asset to a group.
 
@@ -234,7 +236,7 @@ Input for adding an asset to a group.
 
 <details>
 
-<summary><code>AssetGroupItemPayload</code></summary>
+<summary>AssetGroupItemPayload</summary>
 
 The result of an asset group item mutation.
 
@@ -246,7 +248,7 @@ The result of an asset group item mutation.
 
 <details>
 
-<summary><code>AssetGroupItem (entity)</code></summary>
+<summary>AssetGroupItem (entity)</summary>
 
 A record of an asset's membership in a group.
 
@@ -254,7 +256,7 @@ A record of an asset's membership in a group.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `group` | [AssetGroup](types.md#assetgroup)! | The group containing the asset. |
 | `asset` | [Asset](../types.md#asset)! | The asset in the group. |
 | `attachedAt` | `DateTime!` | The date and time when the asset was added to the group. |
@@ -269,20 +271,20 @@ A record of an asset's membership in a group.
 Removes an asset from a group.
 
 ```graphql
-assetGroupItemRemove("The input fields for removing the asset from the group." input: AssetGroupItemRemoveInput!): DeletePayload
+assetGroupItemRemove(input: AssetGroupItemRemoveInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupItemRemoveInput](types.md#assetgroupitemremoveinput)! | The input fields for removing the asset from the group. |
+| `input` | `AssetGroupItemRemoveInput!` | The input fields for removing the asset from the group. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetGroupItemRemoveInput</code></summary>
+<summary>AssetGroupItemRemoveInput</summary>
 
 Input for removing an asset from a group.
 
@@ -297,7 +299,7 @@ Input for removing an asset from a group.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -314,20 +316,20 @@ The result of a delete mutation.
 Creates a new asset group type.
 
 ```graphql
-assetGroupTypeCreate("The input fields for creating the asset group type." input: AssetGroupTypeCreateInput!): AssetGroupTypePayload
+assetGroupTypeCreate(input: AssetGroupTypeCreateInput!): AssetGroupTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupTypeCreateInput](types.md#assetgrouptypecreateinput)! | The input fields for creating the asset group type. |
+| `input` | `AssetGroupTypeCreateInput!` | The input fields for creating the asset group type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetGroupTypeCreateInput</code></summary>
+<summary>AssetGroupTypeCreateInput</summary>
 
 Input for creating an asset group type.
 
@@ -344,7 +346,7 @@ Input for creating an asset group type.
 
 <details>
 
-<summary><code>AssetGroupTypeConstraintInput</code></summary>
+<summary>AssetGroupTypeConstraintInput</summary>
 
 Input for a constraint defining allowed asset types in an asset group type.
 
@@ -357,7 +359,7 @@ Input for a constraint defining allowed asset types in an asset group type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -375,7 +377,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>AssetGroupTypePayload</code></summary>
+<summary>AssetGroupTypePayload</summary>
 
 The result of an asset group type mutation.
 
@@ -387,7 +389,7 @@ The result of an asset group type mutation.
 
 <details>
 
-<summary><code>AssetGroupType (entity)</code></summary>
+<summary>AssetGroupType (entity)</summary>
 
 A type for asset groups with membership constraints.
 
@@ -395,14 +397,14 @@ A type for asset groups with membership constraints.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `allowedAssetTypes` | [[AssetGroupTypeConstraint](types.md#assetgrouptypeconstraint)!]! | The asset types allowed in groups of this type, with optional quantity limits. |
 
 </details>
@@ -414,20 +416,20 @@ A type for asset groups with membership constraints.
 Updates an asset group type.
 
 ```graphql
-assetGroupTypeUpdate("The input fields for updating the asset group type." input: AssetGroupTypeUpdateInput!): AssetGroupTypePayload
+assetGroupTypeUpdate(input: AssetGroupTypeUpdateInput!): AssetGroupTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetGroupTypeUpdateInput](types.md#assetgrouptypeupdateinput)! | The input fields for updating the asset group type. |
+| `input` | `AssetGroupTypeUpdateInput!` | The input fields for updating the asset group type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetGroupTypeUpdateInput</code></summary>
+<summary>AssetGroupTypeUpdateInput</summary>
 
 Input for updating an asset group type.
 
@@ -444,7 +446,7 @@ Input for updating an asset group type.
 
 <details>
 
-<summary><code>AssetGroupTypeConstraintInput</code></summary>
+<summary>AssetGroupTypeConstraintInput</summary>
 
 Input for a constraint defining allowed asset types in an asset group type.
 
@@ -457,7 +459,7 @@ Input for a constraint defining allowed asset types in an asset group type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -475,7 +477,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>AssetGroupTypePayload</code></summary>
+<summary>AssetGroupTypePayload</summary>
 
 The result of an asset group type mutation.
 
@@ -487,7 +489,7 @@ The result of an asset group type mutation.
 
 <details>
 
-<summary><code>AssetGroupType (entity)</code></summary>
+<summary>AssetGroupType (entity)</summary>
 
 A type for asset groups with membership constraints.
 
@@ -495,14 +497,14 @@ A type for asset groups with membership constraints.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `allowedAssetTypes` | [[AssetGroupTypeConstraint](types.md#assetgrouptypeconstraint)!]! | The asset types allowed in groups of this type, with optional quantity limits. |
 
 </details>
@@ -514,20 +516,20 @@ A type for asset groups with membership constraints.
 Deletes an asset group type.
 
 ```graphql
-assetGroupTypeDelete("The input fields for deleting the asset group type." input: CatalogItemDeleteInput!): DeletePayload
+assetGroupTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the asset group type. |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the asset group type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemDeleteInput</code></summary>
+<summary>CatalogItemDeleteInput</summary>
 
 Input for deleting a catalog item.
 
@@ -542,7 +544,7 @@ Input for deleting a catalog item.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 

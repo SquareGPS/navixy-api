@@ -25,19 +25,19 @@ auditEvents(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [AuditEventFilter](../audit.md#auditeventfilter) |  |
+| `filter` | `AuditEventFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [AuditEventOrder](../audit.md#auditeventorder) |  |
+| `orderBy` | `AuditEventOrder` |  |
 | `direction` | `DESC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>AuditEventFilter</code></summary>
+<summary>AuditEventFilter</summary>
 
 Filtering options for audit events.
 
@@ -56,7 +56,7 @@ Filtering options for audit events.
 
 <details>
 
-<summary><code>AuditEventOrder</code></summary>
+<summary>AuditEventOrder</summary>
 
 Ordering options for audit events.
 
@@ -71,7 +71,7 @@ Ordering options for audit events.
 
 <details>
 
-<summary><code>AuditEventConnection</code></summary>
+<summary>AuditEventConnection</summary>
 
 A paginated list of AuditEvent items.
 
@@ -88,7 +88,7 @@ A paginated list of AuditEvent items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -124,19 +124,19 @@ entityHistory(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `entityId` | `ID!` |  |
-| `filter` | [AuditEventFilter](../audit.md#auditeventfilter) |  |
+| `filter` | `AuditEventFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [AuditEventOrder](../audit.md#auditeventorder) |  |
+| `orderBy` | `AuditEventOrder` |  |
 | `direction` | `DESC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>AuditEventFilter</code></summary>
+<summary>AuditEventFilter</summary>
 
 Filtering options for audit events.
 
@@ -155,7 +155,7 @@ Filtering options for audit events.
 
 <details>
 
-<summary><code>AuditEventOrder</code></summary>
+<summary>AuditEventOrder</summary>
 
 Ordering options for audit events.
 
@@ -170,7 +170,7 @@ Ordering options for audit events.
 
 <details>
 
-<summary><code>AuditEventConnection</code></summary>
+<summary>AuditEventConnection</summary>
 
 A paginated list of AuditEvent items.
 
@@ -187,7 +187,7 @@ A paginated list of AuditEvent items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -212,7 +212,7 @@ An audit log entry recording an event that occurred in the system.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `organization` | [Organization](../organizations.md#organization) | The organization context. Null for system events. |
 | `actor` | [Actor](../actors.md#actor) | The actor who triggered the event. |
 | `ipAddress` | `String` | The client IP address. |

@@ -9,7 +9,7 @@ Foundational types, scalars, and interfaces used throughout the API.
 Retrieves any entity by its globally unique identifier.
 
 ```graphql
-node("The ID of the entity to retrieve." id: ID!): Node
+node(id: ID!): Node
 ```
 
 **Arguments**
@@ -22,7 +22,7 @@ node("The ID of the entity to retrieve." id: ID!): Node
 
 <details>
 
-<summary><code>Node</code></summary>
+<summary>Node</summary>
 
 An object with a globally unique identifier.
 
@@ -39,7 +39,7 @@ An object with a globally unique identifier.
 Retrieves multiple entities by their globally unique identifiers. Returns items in the same order as the input IDs.
 
 ```graphql
-nodes("The IDs of the entities to retrieve." ids: [ID!]!): [Node]!
+nodes(ids: [ID!]!): [Node]!
 ```
 
 **Arguments**
@@ -52,7 +52,7 @@ nodes("The IDs of the entities to retrieve." ids: [ID!]!): [Node]!
 
 <details>
 
-<summary><code>Node</code></summary>
+<summary>Node</summary>
 
 An object with a globally unique identifier.
 

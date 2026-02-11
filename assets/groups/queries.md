@@ -21,19 +21,19 @@ assetGroupTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [CatalogItemFilter](../../catalogs/catalog-items.md#catalogitemfilter) |  |
+| `filter` | `CatalogItemFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../../catalogs/catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemFilter</code></summary>
+<summary>CatalogItemFilter</summary>
 
 Filtering options for catalog items.
 
@@ -46,7 +46,7 @@ Filtering options for catalog items.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -61,7 +61,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>AssetGroupTypeConnection</code></summary>
+<summary>AssetGroupTypeConnection</summary>
 
 A paginated list of AssetGroupType items.
 
@@ -78,7 +78,7 @@ A paginated list of AssetGroupType items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -98,7 +98,7 @@ Information about the current page in a paginated connection.
 Retrieves an asset group by its ID.
 
 ```graphql
-assetGroup("The ID of the asset group to retrieve." id: ID!): AssetGroup
+assetGroup(id: ID!): AssetGroup
 ```
 
 **Arguments**
@@ -111,7 +111,7 @@ assetGroup("The ID of the asset group to retrieve." id: ID!): AssetGroup
 
 <details>
 
-<summary><code>AssetGroup</code></summary>
+<summary>AssetGroup</summary>
 
 A group of assets.
 
@@ -119,9 +119,10 @@ A group of assets.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this group. |
 | `type` | [AssetGroupType](types.md#assetgrouptype)! | The group type with membership constraints. |
 | `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
@@ -142,7 +143,7 @@ A group of assets.
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -150,9 +151,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -219,19 +221,19 @@ assetGroups(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [AssetGroupFilter](types.md#assetgroupfilter) |  |
+| `filter` | `AssetGroupFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [AssetGroupOrder](types.md#assetgrouporder) |  |
+| `orderBy` | `AssetGroupOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetGroupFilter</code></summary>
+<summary>AssetGroupFilter</summary>
 
 Filtering options for asset groups.
 
@@ -244,7 +246,7 @@ Filtering options for asset groups.
 
 <details>
 
-<summary><code>AssetGroupOrder</code></summary>
+<summary>AssetGroupOrder</summary>
 
 Ordering options for asset groups.
 
@@ -259,7 +261,7 @@ Ordering options for asset groups.
 
 <details>
 
-<summary><code>AssetGroupConnection</code></summary>
+<summary>AssetGroupConnection</summary>
 
 A paginated list of AssetGroup items.
 
@@ -276,7 +278,7 @@ A paginated list of AssetGroup items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 

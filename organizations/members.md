@@ -9,7 +9,7 @@ Organization members represent the relationship between users and organizations,
 Retrieves a member by its ID.
 
 ```graphql
-member("The ID of the member to retrieve." id: ID!): Member
+member(id: ID!): Member
 ```
 
 **Arguments**
@@ -22,7 +22,7 @@ member("The ID of the member to retrieve." id: ID!): Member
 
 <details>
 
-<summary><code>Member</code></summary>
+<summary>Member</summary>
 
 A user's membership in an organization.
 
@@ -30,8 +30,9 @@ A user's membership in an organization.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `user` | [User](../../actors/users.md#user)! | The user. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization the user belongs to. |
 | `isActive` | `Boolean!` | Whether this membership is active. |
@@ -42,7 +43,7 @@ A user's membership in an organization.
 
 <details>
 
-<summary><code>User (entity)</code></summary>
+<summary>User (entity)</summary>
 
 A human user account authenticated via an identity provider.
 
@@ -50,8 +51,9 @@ A human user account authenticated via an identity provider.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The display name for the user. This is the user's full name for display purposes. |
 | `name` | [PersonName](../../actors.md#personname)! | The structured name components from the identity provider. |
 | `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |
@@ -92,19 +94,19 @@ members(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [MemberFilter](../members.md#memberfilter) |  |
+| `filter` | `MemberFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [MemberOrder](../members.md#memberorder) |  |
+| `orderBy` | `MemberOrder` |  |
 | `direction` | `DESC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>MemberFilter</code></summary>
+<summary>MemberFilter</summary>
 
 Filtering options for members.
 
@@ -117,7 +119,7 @@ Filtering options for members.
 
 <details>
 
-<summary><code>MemberOrder</code></summary>
+<summary>MemberOrder</summary>
 
 Ordering options for members.
 
@@ -132,7 +134,7 @@ Ordering options for members.
 
 <details>
 
-<summary><code>MemberConnection</code></summary>
+<summary>MemberConnection</summary>
 
 A paginated list of Member items.
 
@@ -149,7 +151,7 @@ A paginated list of Member items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -171,20 +173,20 @@ Information about the current page in a paginated connection.
 Adds a user to an organization as a member.
 
 ```graphql
-memberCreate("The input fields for creating the membership." input: MemberCreateInput!): MemberPayload
+memberCreate(input: MemberCreateInput!): MemberPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [MemberCreateInput](../members.md#membercreateinput)! | The input fields for creating the membership. |
+| `input` | `MemberCreateInput!` | The input fields for creating the membership. |
 
 **Input types:**
 
 <details>
 
-<summary><code>MemberCreateInput</code></summary>
+<summary>MemberCreateInput</summary>
 
 Input for creating a membership.
 
@@ -198,7 +200,7 @@ Input for creating a membership.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -213,7 +215,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>MemberPayload</code></summary>
+<summary>MemberPayload</summary>
 
 The result of a membership mutation.
 
@@ -225,7 +227,7 @@ The result of a membership mutation.
 
 <details>
 
-<summary><code>Member (entity)</code></summary>
+<summary>Member (entity)</summary>
 
 A user's membership in an organization.
 
@@ -233,8 +235,9 @@ A user's membership in an organization.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `user` | [User](../../actors/users.md#user)! | The user. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization the user belongs to. |
 | `isActive` | `Boolean!` | Whether this membership is active. |
@@ -250,20 +253,20 @@ A user's membership in an organization.
 Updates a membership.
 
 ```graphql
-memberUpdate("The input fields for updating the membership." input: MemberUpdateInput!): MemberPayload
+memberUpdate(input: MemberUpdateInput!): MemberPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [MemberUpdateInput](../members.md#memberupdateinput)! | The input fields for updating the membership. |
+| `input` | `MemberUpdateInput!` | The input fields for updating the membership. |
 
 **Input types:**
 
 <details>
 
-<summary><code>MemberUpdateInput</code></summary>
+<summary>MemberUpdateInput</summary>
 
 Input for updating a membership.
 
@@ -278,7 +281,7 @@ Input for updating a membership.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -293,7 +296,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>MemberPayload</code></summary>
+<summary>MemberPayload</summary>
 
 The result of a membership mutation.
 
@@ -305,7 +308,7 @@ The result of a membership mutation.
 
 <details>
 
-<summary><code>Member (entity)</code></summary>
+<summary>Member (entity)</summary>
 
 A user's membership in an organization.
 
@@ -313,8 +316,9 @@ A user's membership in an organization.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `user` | [User](../../actors/users.md#user)! | The user. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization the user belongs to. |
 | `isActive` | `Boolean!` | Whether this membership is active. |
@@ -330,20 +334,20 @@ A user's membership in an organization.
 Removes a user from an organization.
 
 ```graphql
-memberRemove("The input fields for removing the membership." input: MemberRemoveInput!): DeletePayload
+memberRemove(input: MemberRemoveInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [MemberRemoveInput](../members.md#memberremoveinput)! | The input fields for removing the membership. |
+| `input` | `MemberRemoveInput!` | The input fields for removing the membership. |
 
 **Input types:**
 
 <details>
 
-<summary><code>MemberRemoveInput</code></summary>
+<summary>MemberRemoveInput</summary>
 
 Input for removing a membership.
 
@@ -358,7 +362,7 @@ Input for removing a membership.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -380,8 +384,9 @@ A user's membership in an organization.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `user` | [User](../../actors/users.md#user)! | The user. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization the user belongs to. |
 | `isActive` | `Boolean!` | Whether this membership is active. |

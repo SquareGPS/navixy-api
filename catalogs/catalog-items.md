@@ -9,7 +9,7 @@ Operations and types for managing catalog items - the configurable lookup entrie
 Retrieves a catalog by its ID.
 
 ```graphql
-catalog("The ID of the catalog to retrieve." id: ID!): Catalog
+catalog(id: ID!): Catalog
 ```
 
 **Arguments**
@@ -22,7 +22,7 @@ catalog("The ID of the catalog to retrieve." id: ID!): Catalog
 
 <details>
 
-<summary><code>Catalog</code></summary>
+<summary>Catalog</summary>
 
 A catalog definition that contains catalog items. Catalogs are themselves catalog items.
 
@@ -30,14 +30,14 @@ A catalog definition that contains catalog items. Catalogs are themselves catalo
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalog-items.md#catalog)! | Self-reference for the meta-catalog. |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `module` | [Module](../system.md#module)! | The module this catalog is associated with. |
 | `filter` | [CatalogItemFilter](../catalog-items.md#catalogitemfilter) | Filtering options for the returned items. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
@@ -50,7 +50,7 @@ A catalog definition that contains catalog items. Catalogs are themselves catalo
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -58,9 +58,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -127,19 +128,19 @@ catalogs(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [CatalogItemFilter](../catalog-items.md#catalogitemfilter) |  |
+| `filter` | `CatalogItemFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemFilter</code></summary>
+<summary>CatalogItemFilter</summary>
 
 Filtering options for catalog items.
 
@@ -152,7 +153,7 @@ Filtering options for catalog items.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -167,7 +168,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>CatalogConnection</code></summary>
+<summary>CatalogConnection</summary>
 
 A paginated list of Catalog items.
 
@@ -184,7 +185,7 @@ A paginated list of Catalog items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -209,14 +210,14 @@ A catalog definition that contains catalog items. Catalogs are themselves catalo
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalog-items.md#catalog)! | Self-reference for the meta-catalog. |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `module` | [Module](../system.md#module)! | The module this catalog is associated with. |
 | `filter` | [CatalogItemFilter](../catalog-items.md#catalogitemfilter) | Filtering options for the returned items. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |

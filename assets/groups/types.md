@@ -10,14 +10,14 @@ A type for asset groups with membership constraints.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `allowedAssetTypes` | [[AssetGroupTypeConstraint](types.md#assetgrouptypeconstraint)!]! | The asset types allowed in groups of this type, with optional quantity limits. |
 
 ---
@@ -41,9 +41,10 @@ A group of assets.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this group. |
 | `type` | [AssetGroupType](types.md#assetgrouptype)! | The group type with membership constraints. |
 | `color` | `HexColorCode` | The color for UI display in hexadecimal format. |
@@ -70,7 +71,7 @@ A record of an asset's membership in a group.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `group` | [AssetGroup](types.md#assetgroup)! | The group containing the asset. |
 | `asset` | [Asset](../types.md#asset)! | The asset in the group. |
 | `attachedAt` | `DateTime!` | The date and time when the asset was added to the group. |

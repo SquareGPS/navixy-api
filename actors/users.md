@@ -16,7 +16,7 @@ me: Actor!
 
 <details>
 
-<summary><code>Actor</code></summary>
+<summary>Actor</summary>
 
 An entity that can perform actions and have permissions assigned.
 
@@ -38,20 +38,20 @@ An entity that can perform actions and have permissions assigned.
 Updates the current user's profile (name only).
 
 ```graphql
-myProfileUpdate("The input fields for updating the profile." input: MyProfileUpdateInput!): UserPayload
+myProfileUpdate(input: MyProfileUpdateInput!): UserPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [MyProfileUpdateInput](../users.md#myprofileupdateinput)! | The input fields for updating the profile. |
+| `input` | `MyProfileUpdateInput!` | The input fields for updating the profile. |
 
 **Input types:**
 
 <details>
 
-<summary><code>MyProfileUpdateInput</code></summary>
+<summary>MyProfileUpdateInput</summary>
 
 Input for updating the current user's profile.
 
@@ -63,7 +63,7 @@ Input for updating the current user's profile.
 
 <details>
 
-<summary><code>PersonNameInput</code></summary>
+<summary>PersonNameInput</summary>
 
 Input for structured person name components.
 
@@ -79,7 +79,7 @@ Input for structured person name components.
 
 <details>
 
-<summary><code>UserPayload</code></summary>
+<summary>UserPayload</summary>
 
 The result of a user profile mutation.
 
@@ -91,7 +91,7 @@ The result of a user profile mutation.
 
 <details>
 
-<summary><code>User (entity)</code></summary>
+<summary>User (entity)</summary>
 
 A human user account authenticated via an identity provider.
 
@@ -99,8 +99,9 @@ A human user account authenticated via an identity provider.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The display name for the user. This is the user's full name for display purposes. |
 | `name` | [PersonName](../../actors.md#personname)! | The structured name components from the identity provider. |
 | `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |
@@ -125,20 +126,20 @@ A human user account authenticated via an identity provider.
 Creates a new user catalog item.
 
 ```graphql
-userCatalogItemCreate("The input fields for creating the item." input: UserCatalogItemCreateInput!): UserCatalogItemPayload
+userCatalogItemCreate(input: UserCatalogItemCreateInput!): UserCatalogItemPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [UserCatalogItemCreateInput](../users.md#usercatalogitemcreateinput)! | The input fields for creating the item. |
+| `input` | `UserCatalogItemCreateInput!` | The input fields for creating the item. |
 
 **Input types:**
 
 <details>
 
-<summary><code>UserCatalogItemCreateInput</code></summary>
+<summary>UserCatalogItemCreateInput</summary>
 
 Input for creating a user catalog item.
 
@@ -156,7 +157,7 @@ Input for creating a user catalog item.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -174,7 +175,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>UserCatalogItemPayload</code></summary>
+<summary>UserCatalogItemPayload</summary>
 
 The result of a user catalog item mutation.
 
@@ -186,7 +187,7 @@ The result of a user catalog item mutation.
 
 <details>
 
-<summary><code>UserCatalogItem (entity)</code></summary>
+<summary>UserCatalogItem (entity)</summary>
 
 A user-defined catalog item that supports hierarchical organization.
 
@@ -194,14 +195,14 @@ A user-defined catalog item that supports hierarchical organization.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `parent` | [UserCatalogItem](../users.md#usercatalogitem) | The parent item in the hierarchy. Null for root items. |
 | `filter` | [CatalogItemChildrenFilter](../../catalogs/catalog-items.md#catalogitemchildrenfilter) | Filtering options for the returned children. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
@@ -219,20 +220,20 @@ A user-defined catalog item that supports hierarchical organization.
 Updates a user catalog item.
 
 ```graphql
-userCatalogItemUpdate("The input fields for updating the item." input: UserCatalogItemUpdateInput!): UserCatalogItemPayload
+userCatalogItemUpdate(input: UserCatalogItemUpdateInput!): UserCatalogItemPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [UserCatalogItemUpdateInput](../users.md#usercatalogitemupdateinput)! | The input fields for updating the item. |
+| `input` | `UserCatalogItemUpdateInput!` | The input fields for updating the item. |
 
 **Input types:**
 
 <details>
 
-<summary><code>UserCatalogItemUpdateInput</code></summary>
+<summary>UserCatalogItemUpdateInput</summary>
 
 Input for updating a user catalog item.
 
@@ -249,7 +250,7 @@ Input for updating a user catalog item.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -267,7 +268,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>UserCatalogItemPayload</code></summary>
+<summary>UserCatalogItemPayload</summary>
 
 The result of a user catalog item mutation.
 
@@ -279,7 +280,7 @@ The result of a user catalog item mutation.
 
 <details>
 
-<summary><code>UserCatalogItem (entity)</code></summary>
+<summary>UserCatalogItem (entity)</summary>
 
 A user-defined catalog item that supports hierarchical organization.
 
@@ -287,14 +288,14 @@ A user-defined catalog item that supports hierarchical organization.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `parent` | [UserCatalogItem](../users.md#usercatalogitem) | The parent item in the hierarchy. Null for root items. |
 | `filter` | [CatalogItemChildrenFilter](../../catalogs/catalog-items.md#catalogitemchildrenfilter) | Filtering options for the returned children. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
@@ -312,20 +313,20 @@ A user-defined catalog item that supports hierarchical organization.
 Deletes a user catalog item.
 
 ```graphql
-userCatalogItemDelete("The input fields for deleting the item." input: CatalogItemDeleteInput!): DeletePayload
+userCatalogItemDelete(input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the item. |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the item. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemDeleteInput</code></summary>
+<summary>CatalogItemDeleteInput</summary>
 
 Input for deleting a catalog item.
 
@@ -340,7 +341,7 @@ Input for deleting a catalog item.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -362,14 +363,14 @@ A user-defined catalog item that supports hierarchical organization.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `parent` | [UserCatalogItem](../users.md#usercatalogitem) | The parent item in the hierarchy. Null for root items. |
 | `filter` | [CatalogItemChildrenFilter](../../catalogs/catalog-items.md#catalogitemchildrenfilter) | Filtering options for the returned children. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
@@ -388,8 +389,9 @@ A human user account authenticated via an identity provider.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The display name for the user. This is the user's full name for display purposes. |
 | `name` | [PersonName](../../actors.md#personname)! | The structured name components from the identity provider. |
 | `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |

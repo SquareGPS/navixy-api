@@ -5,20 +5,20 @@
 Creates a new schedule.
 
 ```graphql
-scheduleCreate("The input fields for creating the schedule." input: ScheduleCreateInput!): SchedulePayload
+scheduleCreate(input: ScheduleCreateInput!): SchedulePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleCreateInput](types.md#schedulecreateinput)! | The input fields for creating the schedule. |
+| `input` | `ScheduleCreateInput!` | The input fields for creating the schedule. |
 
 **Input types:**
 
 <details>
 
-<summary><code>ScheduleCreateInput</code></summary>
+<summary>ScheduleCreateInput</summary>
 
 Input for creating a new schedule.
 
@@ -34,7 +34,7 @@ Input for creating a new schedule.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -49,7 +49,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>SchedulePayload</code></summary>
+<summary>SchedulePayload</summary>
 
 The result of a schedule mutation.
 
@@ -61,7 +61,7 @@ The result of a schedule mutation.
 
 <details>
 
-<summary><code>Schedule (entity)</code></summary>
+<summary>Schedule (entity)</summary>
 
 A schedule definition for work hours, maintenance windows, or other time-based rules.
 
@@ -69,9 +69,10 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this schedule. |
 | `type` | [ScheduleType](types.md#scheduletype)! | The schedule type classification. |
 | `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule.
@@ -87,20 +88,20 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 Updates an existing schedule.
 
 ```graphql
-scheduleUpdate("The input fields for updating the schedule." input: ScheduleUpdateInput!): SchedulePayload
+scheduleUpdate(input: ScheduleUpdateInput!): SchedulePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleUpdateInput](types.md#scheduleupdateinput)! | The input fields for updating the schedule. |
+| `input` | `ScheduleUpdateInput!` | The input fields for updating the schedule. |
 
 **Input types:**
 
 <details>
 
-<summary><code>ScheduleUpdateInput</code></summary>
+<summary>ScheduleUpdateInput</summary>
 
 Input for updating an existing schedule.
 
@@ -116,7 +117,7 @@ Input for updating an existing schedule.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -131,7 +132,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>SchedulePayload</code></summary>
+<summary>SchedulePayload</summary>
 
 The result of a schedule mutation.
 
@@ -143,7 +144,7 @@ The result of a schedule mutation.
 
 <details>
 
-<summary><code>Schedule (entity)</code></summary>
+<summary>Schedule (entity)</summary>
 
 A schedule definition for work hours, maintenance windows, or other time-based rules.
 
@@ -151,9 +152,10 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this schedule. |
 | `type` | [ScheduleType](types.md#scheduletype)! | The schedule type classification. |
 | `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule.
@@ -169,20 +171,20 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 Deletes a schedule.
 
 ```graphql
-scheduleDelete("The input fields for deleting the schedule." input: ScheduleDeleteInput!): DeletePayload
+scheduleDelete(input: ScheduleDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleDeleteInput](types.md#scheduledeleteinput)! | The input fields for deleting the schedule. |
+| `input` | `ScheduleDeleteInput!` | The input fields for deleting the schedule. |
 
 **Input types:**
 
 <details>
 
-<summary><code>ScheduleDeleteInput</code></summary>
+<summary>ScheduleDeleteInput</summary>
 
 Input for deleting a schedule.
 
@@ -197,7 +199,7 @@ Input for deleting a schedule.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -214,20 +216,20 @@ The result of a delete mutation.
 Creates a new schedule type.
 
 ```graphql
-scheduleTypeCreate("The input fields for creating the schedule type." input: ScheduleTypeCreateInput!): ScheduleTypePayload
+scheduleTypeCreate(input: ScheduleTypeCreateInput!): ScheduleTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleTypeCreateInput](types.md#scheduletypecreateinput)! | The input fields for creating the schedule type. |
+| `input` | `ScheduleTypeCreateInput!` | The input fields for creating the schedule type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>ScheduleTypeCreateInput</code></summary>
+<summary>ScheduleTypeCreateInput</summary>
 
 Input for creating a schedule type.
 
@@ -243,7 +245,7 @@ Input for creating a schedule type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -261,7 +263,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>ScheduleTypePayload</code></summary>
+<summary>ScheduleTypePayload</summary>
 
 The result of a schedule type mutation.
 
@@ -273,7 +275,7 @@ The result of a schedule type mutation.
 
 <details>
 
-<summary><code>ScheduleType (entity)</code></summary>
+<summary>ScheduleType (entity)</summary>
 
 A classification type for schedules.
 
@@ -281,14 +283,14 @@ A classification type for schedules.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this schedule type, ordered by display order. |
 
 </details>
@@ -300,20 +302,20 @@ A classification type for schedules.
 Updates a schedule type.
 
 ```graphql
-scheduleTypeUpdate("The input fields for updating the schedule type." input: ScheduleTypeUpdateInput!): ScheduleTypePayload
+scheduleTypeUpdate(input: ScheduleTypeUpdateInput!): ScheduleTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [ScheduleTypeUpdateInput](types.md#scheduletypeupdateinput)! | The input fields for updating the schedule type. |
+| `input` | `ScheduleTypeUpdateInput!` | The input fields for updating the schedule type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>ScheduleTypeUpdateInput</code></summary>
+<summary>ScheduleTypeUpdateInput</summary>
 
 Input for updating a schedule type.
 
@@ -329,7 +331,7 @@ Input for updating a schedule type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -347,7 +349,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>ScheduleTypePayload</code></summary>
+<summary>ScheduleTypePayload</summary>
 
 The result of a schedule type mutation.
 
@@ -359,7 +361,7 @@ The result of a schedule type mutation.
 
 <details>
 
-<summary><code>ScheduleType (entity)</code></summary>
+<summary>ScheduleType (entity)</summary>
 
 A classification type for schedules.
 
@@ -367,14 +369,14 @@ A classification type for schedules.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this schedule type, ordered by display order. |
 
 </details>
@@ -386,20 +388,20 @@ A classification type for schedules.
 Deletes a schedule type.
 
 ```graphql
-scheduleTypeDelete("The input fields for deleting the schedule type." input: CatalogItemDeleteInput!): DeletePayload
+scheduleTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the schedule type. |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the schedule type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemDeleteInput</code></summary>
+<summary>CatalogItemDeleteInput</summary>
 
 Input for deleting a catalog item.
 
@@ -414,7 +416,7 @@ Input for deleting a catalog item.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 

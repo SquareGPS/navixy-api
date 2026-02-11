@@ -5,20 +5,20 @@
 Creates a new geo object.
 
 ```graphql
-geoObjectCreate("The input fields for creating the geo object." input: GeoObjectCreateInput!): GeoObjectPayload
+geoObjectCreate(input: GeoObjectCreateInput!): GeoObjectPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectCreateInput](types.md#geoobjectcreateinput)! | The input fields for creating the geo object. |
+| `input` | `GeoObjectCreateInput!` | The input fields for creating the geo object. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectCreateInput</code></summary>
+<summary>GeoObjectCreateInput</summary>
 
 Input for creating a new geo object.
 
@@ -34,7 +34,7 @@ Input for creating a new geo object.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -49,7 +49,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>GeoObjectPayload</code></summary>
+<summary>GeoObjectPayload</summary>
 
 The result of a geo object mutation.
 
@@ -61,7 +61,7 @@ The result of a geo object mutation.
 
 <details>
 
-<summary><code>GeoObject (entity)</code></summary>
+<summary>GeoObject (entity)</summary>
 
 A geographic object such as a geofence, point of interest, or route.
 
@@ -69,9 +69,10 @@ A geographic object such as a geofence, point of interest, or route.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
 | `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
@@ -88,20 +89,20 @@ A geographic object such as a geofence, point of interest, or route.
 Updates an existing geo object.
 
 ```graphql
-geoObjectUpdate("The input fields for updating the geo object." input: GeoObjectUpdateInput!): GeoObjectPayload
+geoObjectUpdate(input: GeoObjectUpdateInput!): GeoObjectPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectUpdateInput](types.md#geoobjectupdateinput)! | The input fields for updating the geo object. |
+| `input` | `GeoObjectUpdateInput!` | The input fields for updating the geo object. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectUpdateInput</code></summary>
+<summary>GeoObjectUpdateInput</summary>
 
 Input for updating an existing geo object.
 
@@ -117,7 +118,7 @@ Input for updating an existing geo object.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -132,7 +133,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>GeoObjectPayload</code></summary>
+<summary>GeoObjectPayload</summary>
 
 The result of a geo object mutation.
 
@@ -144,7 +145,7 @@ The result of a geo object mutation.
 
 <details>
 
-<summary><code>GeoObject (entity)</code></summary>
+<summary>GeoObject (entity)</summary>
 
 A geographic object such as a geofence, point of interest, or route.
 
@@ -152,9 +153,10 @@ A geographic object such as a geofence, point of interest, or route.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
 | `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
@@ -171,20 +173,20 @@ A geographic object such as a geofence, point of interest, or route.
 Deletes a geo object.
 
 ```graphql
-geoObjectDelete("The input fields for deleting the geo object." input: GeoObjectDeleteInput!): DeletePayload
+geoObjectDelete(input: GeoObjectDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectDeleteInput](types.md#geoobjectdeleteinput)! | The input fields for deleting the geo object. |
+| `input` | `GeoObjectDeleteInput!` | The input fields for deleting the geo object. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectDeleteInput</code></summary>
+<summary>GeoObjectDeleteInput</summary>
 
 Input for deleting a geo object.
 
@@ -199,7 +201,7 @@ Input for deleting a geo object.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -216,20 +218,20 @@ The result of a delete mutation.
 Creates a new geo object type.
 
 ```graphql
-geoObjectTypeCreate("The input fields for creating the geo object type." input: GeoObjectTypeCreateInput!): GeoObjectTypePayload
+geoObjectTypeCreate(input: GeoObjectTypeCreateInput!): GeoObjectTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectTypeCreateInput](types.md#geoobjecttypecreateinput)! | The input fields for creating the geo object type. |
+| `input` | `GeoObjectTypeCreateInput!` | The input fields for creating the geo object type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectTypeCreateInput</code></summary>
+<summary>GeoObjectTypeCreateInput</summary>
 
 Input for creating a geo object type.
 
@@ -245,7 +247,7 @@ Input for creating a geo object type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -263,7 +265,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>GeoObjectTypePayload</code></summary>
+<summary>GeoObjectTypePayload</summary>
 
 The result of a geo object type mutation.
 
@@ -275,7 +277,7 @@ The result of a geo object type mutation.
 
 <details>
 
-<summary><code>GeoObjectType (entity)</code></summary>
+<summary>GeoObjectType (entity)</summary>
 
 A classification type for geographic objects.
 
@@ -283,14 +285,14 @@ A classification type for geographic objects.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
 
 </details>
@@ -302,20 +304,20 @@ A classification type for geographic objects.
 Updates a geo object type.
 
 ```graphql
-geoObjectTypeUpdate("The input fields for updating the geo object type." input: GeoObjectTypeUpdateInput!): GeoObjectTypePayload
+geoObjectTypeUpdate(input: GeoObjectTypeUpdateInput!): GeoObjectTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [GeoObjectTypeUpdateInput](types.md#geoobjecttypeupdateinput)! | The input fields for updating the geo object type. |
+| `input` | `GeoObjectTypeUpdateInput!` | The input fields for updating the geo object type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectTypeUpdateInput</code></summary>
+<summary>GeoObjectTypeUpdateInput</summary>
 
 Input for updating a geo object type.
 
@@ -331,7 +333,7 @@ Input for updating a geo object type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -349,7 +351,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>GeoObjectTypePayload</code></summary>
+<summary>GeoObjectTypePayload</summary>
 
 The result of a geo object type mutation.
 
@@ -361,7 +363,7 @@ The result of a geo object type mutation.
 
 <details>
 
-<summary><code>GeoObjectType (entity)</code></summary>
+<summary>GeoObjectType (entity)</summary>
 
 A classification type for geographic objects.
 
@@ -369,14 +371,14 @@ A classification type for geographic objects.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
 
 </details>
@@ -388,20 +390,20 @@ A classification type for geographic objects.
 Deletes a geo object type.
 
 ```graphql
-geoObjectTypeDelete("The input fields for deleting the geo object type." input: CatalogItemDeleteInput!): DeletePayload
+geoObjectTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the geo object type. |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the geo object type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemDeleteInput</code></summary>
+<summary>CatalogItemDeleteInput</summary>
 
 Input for deleting a catalog item.
 
@@ -416,7 +418,7 @@ Input for deleting a catalog item.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 

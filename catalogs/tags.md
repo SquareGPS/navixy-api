@@ -25,19 +25,19 @@ tags(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [TagFilter](../tags.md#tagfilter) |  |
+| `filter` | `TagFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>TagFilter</code></summary>
+<summary>TagFilter</summary>
 
 Filtering options for tags.
 
@@ -49,7 +49,7 @@ Filtering options for tags.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -64,7 +64,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>TagConnection</code></summary>
+<summary>TagConnection</summary>
 
 A paginated list of Tag items.
 
@@ -81,7 +81,7 @@ A paginated list of Tag items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -103,20 +103,20 @@ Information about the current page in a paginated connection.
 Creates a new tag.
 
 ```graphql
-tagCreate("The input fields for creating the tag." input: TagCreateInput!): TagPayload
+tagCreate(input: TagCreateInput!): TagPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [TagCreateInput](../tags.md#tagcreateinput)! | The input fields for creating the tag. |
+| `input` | `TagCreateInput!` | The input fields for creating the tag. |
 
 **Input types:**
 
 <details>
 
-<summary><code>TagCreateInput</code></summary>
+<summary>TagCreateInput</summary>
 
 Input for creating a tag.
 
@@ -133,7 +133,7 @@ Input for creating a tag.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -151,7 +151,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>TagPayload</code></summary>
+<summary>TagPayload</summary>
 
 The result of a tag mutation.
 
@@ -163,7 +163,7 @@ The result of a tag mutation.
 
 <details>
 
-<summary><code>Tag (entity)</code></summary>
+<summary>Tag (entity)</summary>
 
 A tag for labeling and categorizing entities.
 
@@ -171,14 +171,14 @@ A tag for labeling and categorizing entities.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `entityTypes` | [[EntityType](../system.md#entitytype)!]! | The entity types this tag can be applied to. Empty means the tag is universal. |
 
 </details>
@@ -190,20 +190,20 @@ A tag for labeling and categorizing entities.
 Updates a tag.
 
 ```graphql
-tagUpdate("The input fields for updating the tag." input: TagUpdateInput!): TagPayload
+tagUpdate(input: TagUpdateInput!): TagPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [TagUpdateInput](../tags.md#tagupdateinput)! | The input fields for updating the tag. |
+| `input` | `TagUpdateInput!` | The input fields for updating the tag. |
 
 **Input types:**
 
 <details>
 
-<summary><code>TagUpdateInput</code></summary>
+<summary>TagUpdateInput</summary>
 
 Input for updating a tag.
 
@@ -220,7 +220,7 @@ Input for updating a tag.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -238,7 +238,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>TagPayload</code></summary>
+<summary>TagPayload</summary>
 
 The result of a tag mutation.
 
@@ -250,7 +250,7 @@ The result of a tag mutation.
 
 <details>
 
-<summary><code>Tag (entity)</code></summary>
+<summary>Tag (entity)</summary>
 
 A tag for labeling and categorizing entities.
 
@@ -258,14 +258,14 @@ A tag for labeling and categorizing entities.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `entityTypes` | [[EntityType](../system.md#entitytype)!]! | The entity types this tag can be applied to. Empty means the tag is universal. |
 
 </details>
@@ -277,20 +277,20 @@ A tag for labeling and categorizing entities.
 Deletes a tag.
 
 ```graphql
-tagDelete("The input fields for deleting the tag." input: CatalogItemDeleteInput!): DeletePayload
+tagDelete(input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the tag. |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the tag. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemDeleteInput</code></summary>
+<summary>CatalogItemDeleteInput</summary>
 
 Input for deleting a catalog item.
 
@@ -305,7 +305,7 @@ Input for deleting a catalog item.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -327,14 +327,14 @@ A tag for labeling and categorizing entities.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `entityTypes` | [[EntityType](../system.md#entitytype)!]! | The entity types this tag can be applied to. Empty means the tag is universal. |
 
 ---

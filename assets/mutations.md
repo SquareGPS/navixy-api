@@ -5,20 +5,20 @@
 Creates a new asset.
 
 ```graphql
-assetCreate("The input fields for creating the asset." input: AssetCreateInput!): AssetPayload
+assetCreate(input: AssetCreateInput!): AssetPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetCreateInput](types.md#assetcreateinput)! | The input fields for creating the asset. |
+| `input` | `AssetCreateInput!` | The input fields for creating the asset. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetCreateInput</code></summary>
+<summary>AssetCreateInput</summary>
 
 Input for creating a new asset.
 
@@ -33,7 +33,7 @@ Input for creating a new asset.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -48,7 +48,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>AssetPayload</code></summary>
+<summary>AssetPayload</summary>
 
 The result of an asset mutation.
 
@@ -60,7 +60,7 @@ The result of an asset mutation.
 
 <details>
 
-<summary><code>Asset (entity)</code></summary>
+<summary>Asset (entity)</summary>
 
 A physical or logical asset being tracked.
 
@@ -68,9 +68,10 @@ A physical or logical asset being tracked.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this asset. |
 | `type` | [AssetType](types.md#assettype)! | The asset type classification. |
 | `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
@@ -92,20 +93,20 @@ A physical or logical asset being tracked.
 Updates an existing asset.
 
 ```graphql
-assetUpdate("The input fields for updating the asset." input: AssetUpdateInput!): AssetPayload
+assetUpdate(input: AssetUpdateInput!): AssetPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetUpdateInput](types.md#assetupdateinput)! | The input fields for updating the asset. |
+| `input` | `AssetUpdateInput!` | The input fields for updating the asset. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetUpdateInput</code></summary>
+<summary>AssetUpdateInput</summary>
 
 Input for updating an existing asset.
 
@@ -120,7 +121,7 @@ Input for updating an existing asset.
 
 <details>
 
-<summary><code>CustomFieldsPatchInput</code></summary>
+<summary>CustomFieldsPatchInput</summary>
 
 Input for updating custom field values using a patch model.
 
@@ -135,7 +136,7 @@ Input for updating custom field values using a patch model.
 
 <details>
 
-<summary><code>AssetPayload</code></summary>
+<summary>AssetPayload</summary>
 
 The result of an asset mutation.
 
@@ -147,7 +148,7 @@ The result of an asset mutation.
 
 <details>
 
-<summary><code>Asset (entity)</code></summary>
+<summary>Asset (entity)</summary>
 
 A physical or logical asset being tracked.
 
@@ -155,9 +156,10 @@ A physical or logical asset being tracked.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this asset. |
 | `type` | [AssetType](types.md#assettype)! | The asset type classification. |
 | `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
@@ -179,20 +181,20 @@ A physical or logical asset being tracked.
 Deletes an asset.
 
 ```graphql
-assetDelete("The input fields for deleting the asset." input: AssetDeleteInput!): DeletePayload
+assetDelete(input: AssetDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetDeleteInput](types.md#assetdeleteinput)! | The input fields for deleting the asset. |
+| `input` | `AssetDeleteInput!` | The input fields for deleting the asset. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetDeleteInput</code></summary>
+<summary>AssetDeleteInput</summary>
 
 Input for deleting an asset.
 
@@ -207,7 +209,7 @@ Input for deleting an asset.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -224,20 +226,20 @@ The result of a delete mutation.
 Creates a new asset type.
 
 ```graphql
-assetTypeCreate("The input fields for creating the asset type." input: AssetTypeCreateInput!): AssetTypePayload
+assetTypeCreate(input: AssetTypeCreateInput!): AssetTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetTypeCreateInput](types.md#assettypecreateinput)! | The input fields for creating the asset type. |
+| `input` | `AssetTypeCreateInput!` | The input fields for creating the asset type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetTypeCreateInput</code></summary>
+<summary>AssetTypeCreateInput</summary>
 
 Input for creating an asset type.
 
@@ -253,7 +255,7 @@ Input for creating an asset type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -271,7 +273,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>AssetTypePayload</code></summary>
+<summary>AssetTypePayload</summary>
 
 The result of an asset type mutation.
 
@@ -283,7 +285,7 @@ The result of an asset type mutation.
 
 <details>
 
-<summary><code>AssetType (entity)</code></summary>
+<summary>AssetType (entity)</summary>
 
 A classification type for assets.
 
@@ -291,14 +293,14 @@ A classification type for assets.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
 
 </details>
@@ -310,20 +312,20 @@ A classification type for assets.
 Updates an asset type.
 
 ```graphql
-assetTypeUpdate("The input fields for updating the asset type." input: AssetTypeUpdateInput!): AssetTypePayload
+assetTypeUpdate(input: AssetTypeUpdateInput!): AssetTypePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [AssetTypeUpdateInput](types.md#assettypeupdateinput)! | The input fields for updating the asset type. |
+| `input` | `AssetTypeUpdateInput!` | The input fields for updating the asset type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetTypeUpdateInput</code></summary>
+<summary>AssetTypeUpdateInput</summary>
 
 Input for updating an asset type.
 
@@ -339,7 +341,7 @@ Input for updating an asset type.
 
 <details>
 
-<summary><code>CatalogItemMetaInput</code></summary>
+<summary>CatalogItemMetaInput</summary>
 
 Display properties for catalog items.
 
@@ -357,7 +359,7 @@ Display properties for catalog items.
 
 <details>
 
-<summary><code>AssetTypePayload</code></summary>
+<summary>AssetTypePayload</summary>
 
 The result of an asset type mutation.
 
@@ -369,7 +371,7 @@ The result of an asset type mutation.
 
 <details>
 
-<summary><code>AssetType (entity)</code></summary>
+<summary>AssetType (entity)</summary>
 
 A classification type for assets.
 
@@ -377,14 +379,14 @@ A classification type for assets.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
-| `code` | `Code!` |  |
-| `order` | `Int!` |  |
-| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! |  |
-| `organization` | [Organization](../organizations.md#organization) |  |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
 
 </details>
@@ -396,20 +398,20 @@ A classification type for assets.
 Deletes an asset type.
 
 ```graphql
-assetTypeDelete("The input fields for deleting the asset type." input: CatalogItemDeleteInput!): DeletePayload
+assetTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CatalogItemDeleteInput](../catalogs/catalog-items.md#catalogitemdeleteinput)! | The input fields for deleting the asset type. |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the asset type. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemDeleteInput</code></summary>
+<summary>CatalogItemDeleteInput</summary>
 
 Input for deleting a catalog item.
 
@@ -424,7 +426,7 @@ Input for deleting a catalog item.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 

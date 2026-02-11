@@ -9,7 +9,7 @@ Inventory management for device stock, including warehouses, assignments, and de
 Retrieves an inventory by its ID.
 
 ```graphql
-inventory("The ID of the inventory to retrieve." id: ID!): Inventory
+inventory(id: ID!): Inventory
 ```
 
 **Arguments**
@@ -22,7 +22,7 @@ inventory("The ID of the inventory to retrieve." id: ID!): Inventory
 
 <details>
 
-<summary><code>Inventory</code></summary>
+<summary>Inventory</summary>
 
 An inventory or warehouse record for device stock management.
 
@@ -30,9 +30,10 @@ An inventory or warehouse record for device stock management.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this inventory. |
 | `filter` | [DeviceFilter](../types.md#devicefilter) | Filtering options for the returned devices. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
@@ -45,7 +46,7 @@ An inventory or warehouse record for device stock management.
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -53,9 +54,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -122,19 +124,19 @@ inventories(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [InventoryFilter](../inventory.md#inventoryfilter) |  |
+| `filter` | `InventoryFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [InventoryOrder](../inventory.md#inventoryorder) |  |
+| `orderBy` | `InventoryOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>InventoryFilter</code></summary>
+<summary>InventoryFilter</summary>
 
 Filtering options for inventories.
 
@@ -146,7 +148,7 @@ Filtering options for inventories.
 
 <details>
 
-<summary><code>InventoryOrder</code></summary>
+<summary>InventoryOrder</summary>
 
 Ordering options for inventories.
 
@@ -161,7 +163,7 @@ Ordering options for inventories.
 
 <details>
 
-<summary><code>InventoryConnection</code></summary>
+<summary>InventoryConnection</summary>
 
 A paginated list of Inventory items.
 
@@ -178,7 +180,7 @@ A paginated list of Inventory items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -200,20 +202,20 @@ Information about the current page in a paginated connection.
 Creates a new inventory.
 
 ```graphql
-inventoryCreate("The input fields for creating the inventory." input: InventoryCreateInput!): InventoryPayload
+inventoryCreate(input: InventoryCreateInput!): InventoryPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [InventoryCreateInput](../inventory.md#inventorycreateinput)! | The input fields for creating the inventory. |
+| `input` | `InventoryCreateInput!` | The input fields for creating the inventory. |
 
 **Input types:**
 
 <details>
 
-<summary><code>InventoryCreateInput</code></summary>
+<summary>InventoryCreateInput</summary>
 
 Input for creating a new inventory.
 
@@ -228,7 +230,7 @@ Input for creating a new inventory.
 
 <details>
 
-<summary><code>InventoryPayload</code></summary>
+<summary>InventoryPayload</summary>
 
 The result of an inventory mutation.
 
@@ -240,7 +242,7 @@ The result of an inventory mutation.
 
 <details>
 
-<summary><code>Inventory (entity)</code></summary>
+<summary>Inventory (entity)</summary>
 
 An inventory or warehouse record for device stock management.
 
@@ -248,9 +250,10 @@ An inventory or warehouse record for device stock management.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this inventory. |
 | `filter` | [DeviceFilter](../types.md#devicefilter) | Filtering options for the returned devices. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
@@ -268,20 +271,20 @@ An inventory or warehouse record for device stock management.
 Updates an existing inventory.
 
 ```graphql
-inventoryUpdate("The input fields for updating the inventory." input: InventoryUpdateInput!): InventoryPayload
+inventoryUpdate(input: InventoryUpdateInput!): InventoryPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [InventoryUpdateInput](../inventory.md#inventoryupdateinput)! | The input fields for updating the inventory. |
+| `input` | `InventoryUpdateInput!` | The input fields for updating the inventory. |
 
 **Input types:**
 
 <details>
 
-<summary><code>InventoryUpdateInput</code></summary>
+<summary>InventoryUpdateInput</summary>
 
 Input for updating an existing inventory.
 
@@ -297,7 +300,7 @@ Input for updating an existing inventory.
 
 <details>
 
-<summary><code>InventoryPayload</code></summary>
+<summary>InventoryPayload</summary>
 
 The result of an inventory mutation.
 
@@ -309,7 +312,7 @@ The result of an inventory mutation.
 
 <details>
 
-<summary><code>Inventory (entity)</code></summary>
+<summary>Inventory (entity)</summary>
 
 An inventory or warehouse record for device stock management.
 
@@ -317,9 +320,10 @@ An inventory or warehouse record for device stock management.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this inventory. |
 | `filter` | [DeviceFilter](../types.md#devicefilter) | Filtering options for the returned devices. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
@@ -337,20 +341,20 @@ An inventory or warehouse record for device stock management.
 Deletes an inventory.
 
 ```graphql
-inventoryDelete("The input fields for deleting the inventory." input: InventoryDeleteInput!): DeletePayload
+inventoryDelete(input: InventoryDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [InventoryDeleteInput](../inventory.md#inventorydeleteinput)! | The input fields for deleting the inventory. |
+| `input` | `InventoryDeleteInput!` | The input fields for deleting the inventory. |
 
 **Input types:**
 
 <details>
 
-<summary><code>InventoryDeleteInput</code></summary>
+<summary>InventoryDeleteInput</summary>
 
 Input for deleting an inventory.
 
@@ -365,7 +369,7 @@ Input for deleting an inventory.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -382,20 +386,20 @@ The result of a delete mutation.
 Links a device to an inventory.
 
 ```graphql
-deviceInventoryLink("The input fields for linking the device." input: DeviceInventoryLinkInput!): DeviceInventoryRelationPayload
+deviceInventoryLink(input: DeviceInventoryLinkInput!): DeviceInventoryRelationPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceInventoryLinkInput](../inventory.md#deviceinventorylinkinput)! | The input fields for linking the device. |
+| `input` | `DeviceInventoryLinkInput!` | The input fields for linking the device. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceInventoryLinkInput</code></summary>
+<summary>DeviceInventoryLinkInput</summary>
 
 Input for linking a device to an inventory. Both device and inventory must belong to the same organization.
 
@@ -410,7 +414,7 @@ Input for linking a device to an inventory. Both device and inventory must belon
 
 <details>
 
-<summary><code>DeviceInventoryRelationPayload</code></summary>
+<summary>DeviceInventoryRelationPayload</summary>
 
 The result of a device inventory link mutation.
 
@@ -422,7 +426,7 @@ The result of a device inventory link mutation.
 
 <details>
 
-<summary><code>DeviceInventoryRelation (entity)</code></summary>
+<summary>DeviceInventoryRelation (entity)</summary>
 
 A record of a device's assignment to an inventory.
 
@@ -430,7 +434,7 @@ A record of a device's assignment to an inventory.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `device` | [Device](../types.md#device)! | The device that was assigned. |
 | `inventory` | [Inventory](../inventory.md#inventory)! | The inventory the device was assigned to. |
 | `assignedAt` | `DateTime!` | The date and time when the device was assigned. |
@@ -445,20 +449,20 @@ A record of a device's assignment to an inventory.
 Unlinks a device from an inventory.
 
 ```graphql
-deviceInventoryUnlink("The input fields for unlinking the device." input: DeviceInventoryUnlinkInput!): DeletePayload
+deviceInventoryUnlink(input: DeviceInventoryUnlinkInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [DeviceInventoryUnlinkInput](../inventory.md#deviceinventoryunlinkinput)! | The input fields for unlinking the device. |
+| `input` | `DeviceInventoryUnlinkInput!` | The input fields for unlinking the device. |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceInventoryUnlinkInput</code></summary>
+<summary>DeviceInventoryUnlinkInput</summary>
 
 Input for unlinking a device from an inventory.
 
@@ -472,7 +476,7 @@ Input for unlinking a device from an inventory.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -494,7 +498,7 @@ A record of a device's assignment to an inventory.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
 | `device` | [Device](../types.md#device)! | The device that was assigned. |
 | `inventory` | [Inventory](../inventory.md#inventory)! | The inventory the device was assigned to. |
 | `assignedAt` | `DateTime!` | The date and time when the device was assigned. |
@@ -510,9 +514,10 @@ An inventory or warehouse record for device stock management.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this inventory. |
 | `filter` | [DeviceFilter](../types.md#devicefilter) | Filtering options for the returned devices. |
 | `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |

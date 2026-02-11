@@ -9,20 +9,20 @@ Custom field definitions allow extending entities with organization-specific dat
 Creates a custom field definition.
 
 ```graphql
-customFieldDefinitionCreate("The input fields for creating the definition." input: CustomFieldDefinitionCreateInput!): CustomFieldDefinitionPayload
+customFieldDefinitionCreate(input: CustomFieldDefinitionCreateInput!): CustomFieldDefinitionPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CustomFieldDefinitionCreateInput](../custom-fields.md#customfielddefinitioncreateinput)! | The input fields for creating the definition. |
+| `input` | `CustomFieldDefinitionCreateInput!` | The input fields for creating the definition. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CustomFieldDefinitionCreateInput</code></summary>
+<summary>CustomFieldDefinitionCreateInput</summary>
 
 Input for creating a custom field definition.
 
@@ -42,7 +42,7 @@ Input for creating a custom field definition.
 
 <details>
 
-<summary><code>FieldParamsInput</code></summary>
+<summary>FieldParamsInput</summary>
 
 Field parameters input. Exactly one field must be provided.
 
@@ -68,7 +68,7 @@ Field parameters input. Exactly one field must be provided.
 
 <details>
 
-<summary><code>StringFieldParamsInput</code></summary>
+<summary>StringFieldParamsInput</summary>
 
 Parameters for STRING field type.
 
@@ -84,7 +84,7 @@ Parameters for STRING field type.
 
 <details>
 
-<summary><code>TextFieldParamsInput</code></summary>
+<summary>TextFieldParamsInput</summary>
 
 Parameters for TEXT field type.
 
@@ -99,7 +99,7 @@ Parameters for TEXT field type.
 
 <details>
 
-<summary><code>NumberFieldParamsInput</code></summary>
+<summary>NumberFieldParamsInput</summary>
 
 Parameters for NUMBER field type.
 
@@ -115,7 +115,7 @@ Parameters for NUMBER field type.
 
 <details>
 
-<summary><code>BooleanFieldParamsInput</code></summary>
+<summary>BooleanFieldParamsInput</summary>
 
 Parameters for BOOLEAN field type.
 
@@ -128,7 +128,7 @@ Parameters for BOOLEAN field type.
 
 <details>
 
-<summary><code>DateFieldParamsInput</code></summary>
+<summary>DateFieldParamsInput</summary>
 
 Parameters for DATE field type.
 
@@ -141,7 +141,7 @@ Parameters for DATE field type.
 
 <details>
 
-<summary><code>DateTimeFieldParamsInput</code></summary>
+<summary>DateTimeFieldParamsInput</summary>
 
 Parameters for DATETIME field type.
 
@@ -154,7 +154,7 @@ Parameters for DATETIME field type.
 
 <details>
 
-<summary><code>GeoJsonFieldParamsInput</code></summary>
+<summary>GeoJsonFieldParamsInput</summary>
 
 Parameters for GEOJSON field type.
 
@@ -167,7 +167,7 @@ Parameters for GEOJSON field type.
 
 <details>
 
-<summary><code>ScheduleFieldParamsInput</code></summary>
+<summary>ScheduleFieldParamsInput</summary>
 
 Parameters for SCHEDULE field type.
 
@@ -179,7 +179,7 @@ Parameters for SCHEDULE field type.
 
 <details>
 
-<summary><code>OptionsFieldParamsInput</code></summary>
+<summary>OptionsFieldParamsInput</summary>
 
 Parameters for OPTIONS field type.
 
@@ -194,7 +194,7 @@ Parameters for OPTIONS field type.
 
 <details>
 
-<summary><code>FieldOptionInput</code></summary>
+<summary>FieldOptionInput</summary>
 
 Input for an option definition.
 
@@ -209,7 +209,7 @@ Input for an option definition.
 
 <details>
 
-<summary><code>DeviceFieldParamsInput</code></summary>
+<summary>DeviceFieldParamsInput</summary>
 
 Parameters for DEVICE field type.
 
@@ -222,7 +222,7 @@ Parameters for DEVICE field type.
 
 <details>
 
-<summary><code>ReferenceFieldParamsInput</code></summary>
+<summary>ReferenceFieldParamsInput</summary>
 
 Parameters for REFERENCE field type.
 
@@ -236,7 +236,7 @@ Parameters for REFERENCE field type.
 
 <details>
 
-<summary><code>CatalogFieldParamsInput</code></summary>
+<summary>CatalogFieldParamsInput</summary>
 
 Parameters for CATALOG field type.
 
@@ -251,7 +251,7 @@ Parameters for CATALOG field type.
 
 <details>
 
-<summary><code>TagFieldParamsInput</code></summary>
+<summary>TagFieldParamsInput</summary>
 
 Parameters for TAG field type.
 
@@ -267,7 +267,7 @@ Parameters for TAG field type.
 
 <details>
 
-<summary><code>CustomFieldDefinitionPayload</code></summary>
+<summary>CustomFieldDefinitionPayload</summary>
 
 The result of a custom field definition mutation.
 
@@ -279,7 +279,7 @@ The result of a custom field definition mutation.
 
 <details>
 
-<summary><code>CustomFieldDefinition (entity)</code></summary>
+<summary>CustomFieldDefinition (entity)</summary>
 
 A custom field definition that specifies the metadata for a custom field.
 
@@ -290,8 +290,9 @@ To change the field type, delete the definition and create a new one.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `code` | `Code!` | The machine-readable code, unique per owner and organization. |
 | `description` | `String` | A description of the field for UI hints. |
@@ -312,20 +313,20 @@ To change the field type, delete the definition and create a new one.
 Updates a custom field definition. Note: `fieldType` cannot be changed.
 
 ```graphql
-customFieldDefinitionUpdate("The input fields for updating the definition." input: CustomFieldDefinitionUpdateInput!): CustomFieldDefinitionPayload
+customFieldDefinitionUpdate(input: CustomFieldDefinitionUpdateInput!): CustomFieldDefinitionPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CustomFieldDefinitionUpdateInput](../custom-fields.md#customfielddefinitionupdateinput)! | The input fields for updating the definition. |
+| `input` | `CustomFieldDefinitionUpdateInput!` | The input fields for updating the definition. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CustomFieldDefinitionUpdateInput</code></summary>
+<summary>CustomFieldDefinitionUpdateInput</summary>
 
 Input for updating a custom field definition. Note: `fieldType` cannot be changed.
 
@@ -342,7 +343,7 @@ Input for updating a custom field definition. Note: `fieldType` cannot be change
 
 <details>
 
-<summary><code>FieldParamsInput</code></summary>
+<summary>FieldParamsInput</summary>
 
 Field parameters input. Exactly one field must be provided.
 
@@ -368,7 +369,7 @@ Field parameters input. Exactly one field must be provided.
 
 <details>
 
-<summary><code>StringFieldParamsInput</code></summary>
+<summary>StringFieldParamsInput</summary>
 
 Parameters for STRING field type.
 
@@ -384,7 +385,7 @@ Parameters for STRING field type.
 
 <details>
 
-<summary><code>TextFieldParamsInput</code></summary>
+<summary>TextFieldParamsInput</summary>
 
 Parameters for TEXT field type.
 
@@ -399,7 +400,7 @@ Parameters for TEXT field type.
 
 <details>
 
-<summary><code>NumberFieldParamsInput</code></summary>
+<summary>NumberFieldParamsInput</summary>
 
 Parameters for NUMBER field type.
 
@@ -415,7 +416,7 @@ Parameters for NUMBER field type.
 
 <details>
 
-<summary><code>BooleanFieldParamsInput</code></summary>
+<summary>BooleanFieldParamsInput</summary>
 
 Parameters for BOOLEAN field type.
 
@@ -428,7 +429,7 @@ Parameters for BOOLEAN field type.
 
 <details>
 
-<summary><code>DateFieldParamsInput</code></summary>
+<summary>DateFieldParamsInput</summary>
 
 Parameters for DATE field type.
 
@@ -441,7 +442,7 @@ Parameters for DATE field type.
 
 <details>
 
-<summary><code>DateTimeFieldParamsInput</code></summary>
+<summary>DateTimeFieldParamsInput</summary>
 
 Parameters for DATETIME field type.
 
@@ -454,7 +455,7 @@ Parameters for DATETIME field type.
 
 <details>
 
-<summary><code>GeoJsonFieldParamsInput</code></summary>
+<summary>GeoJsonFieldParamsInput</summary>
 
 Parameters for GEOJSON field type.
 
@@ -467,7 +468,7 @@ Parameters for GEOJSON field type.
 
 <details>
 
-<summary><code>ScheduleFieldParamsInput</code></summary>
+<summary>ScheduleFieldParamsInput</summary>
 
 Parameters for SCHEDULE field type.
 
@@ -479,7 +480,7 @@ Parameters for SCHEDULE field type.
 
 <details>
 
-<summary><code>OptionsFieldParamsInput</code></summary>
+<summary>OptionsFieldParamsInput</summary>
 
 Parameters for OPTIONS field type.
 
@@ -494,7 +495,7 @@ Parameters for OPTIONS field type.
 
 <details>
 
-<summary><code>FieldOptionInput</code></summary>
+<summary>FieldOptionInput</summary>
 
 Input for an option definition.
 
@@ -509,7 +510,7 @@ Input for an option definition.
 
 <details>
 
-<summary><code>DeviceFieldParamsInput</code></summary>
+<summary>DeviceFieldParamsInput</summary>
 
 Parameters for DEVICE field type.
 
@@ -522,7 +523,7 @@ Parameters for DEVICE field type.
 
 <details>
 
-<summary><code>ReferenceFieldParamsInput</code></summary>
+<summary>ReferenceFieldParamsInput</summary>
 
 Parameters for REFERENCE field type.
 
@@ -536,7 +537,7 @@ Parameters for REFERENCE field type.
 
 <details>
 
-<summary><code>CatalogFieldParamsInput</code></summary>
+<summary>CatalogFieldParamsInput</summary>
 
 Parameters for CATALOG field type.
 
@@ -551,7 +552,7 @@ Parameters for CATALOG field type.
 
 <details>
 
-<summary><code>TagFieldParamsInput</code></summary>
+<summary>TagFieldParamsInput</summary>
 
 Parameters for TAG field type.
 
@@ -567,7 +568,7 @@ Parameters for TAG field type.
 
 <details>
 
-<summary><code>CustomFieldDefinitionPayload</code></summary>
+<summary>CustomFieldDefinitionPayload</summary>
 
 The result of a custom field definition mutation.
 
@@ -579,7 +580,7 @@ The result of a custom field definition mutation.
 
 <details>
 
-<summary><code>CustomFieldDefinition (entity)</code></summary>
+<summary>CustomFieldDefinition (entity)</summary>
 
 A custom field definition that specifies the metadata for a custom field.
 
@@ -590,8 +591,9 @@ To change the field type, delete the definition and create a new one.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `code` | `Code!` | The machine-readable code, unique per owner and organization. |
 | `description` | `String` | A description of the field for UI hints. |
@@ -612,20 +614,20 @@ To change the field type, delete the definition and create a new one.
 Deletes a custom field definition.
 
 ```graphql
-customFieldDefinitionDelete("The input fields for deleting the definition." input: CustomFieldDefinitionDeleteInput!): DeletePayload
+customFieldDefinitionDelete(input: CustomFieldDefinitionDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [CustomFieldDefinitionDeleteInput](../custom-fields.md#customfielddefinitiondeleteinput)! | The input fields for deleting the definition. |
+| `input` | `CustomFieldDefinitionDeleteInput!` | The input fields for deleting the definition. |
 
 **Input types:**
 
 <details>
 
-<summary><code>CustomFieldDefinitionDeleteInput</code></summary>
+<summary>CustomFieldDefinitionDeleteInput</summary>
 
 Input for deleting a custom field definition.
 
@@ -640,7 +642,7 @@ Input for deleting a custom field definition.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -665,8 +667,9 @@ To change the field type, delete the definition and create a new one.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `code` | `Code!` | The machine-readable code, unique per owner and organization. |
 | `description` | `String` | A description of the field for UI hints. |
@@ -688,7 +691,7 @@ Parameters for STRING field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
 | `minLength` | `Int` | The minimum character length. |
 | `maxLength` | `Int` | The maximum character length. |
 | `defaultValue` | `String` | The default value. |
@@ -704,7 +707,7 @@ Parameters for TEXT field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
 | `maxLength` | `Int` | The maximum character length. |
 | `defaultValue` | `String` | The default value. |
 | `trim` | `Boolean!` | Whether to trim leading and trailing whitespace. |
@@ -719,7 +722,7 @@ Parameters for NUMBER field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
 | `min` | `Float` | The minimum allowed value. |
 | `max` | `Float` | The maximum allowed value. |
 | `precision` | `Int` | The decimal precision. |
@@ -735,7 +738,7 @@ Parameters for BOOLEAN field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
 | `defaultValue` | `Boolean` | The default value. |
 
 ---
@@ -748,7 +751,7 @@ Parameters for DATE field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
 | `defaultValue` | `Date` | The default value. |
 
 ---
@@ -761,7 +764,7 @@ Parameters for DATETIME field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
 | `defaultValue` | `DateTime` | The default value. |
 
 ---
@@ -774,7 +777,7 @@ Parameters for GEOJSON field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
 | `allowedTypes` | [[GeoJsonGeometryType](../geo-objects/types.md#geojsongeometrytype)!] | The allowed geometry types. Null means all types are allowed. |
 
 ---
@@ -787,7 +790,7 @@ Parameters for SCHEDULE field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
 
 ---
 
@@ -799,8 +802,8 @@ Parameters for OPTIONS field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
+| `isMulti` | `Boolean!` | Whether multiple values can be selected for this field. |
 | `options` | [[FieldOption](../custom-fields.md#fieldoption)!]! | The available options to choose from. |
 | `defaultValue` | `Code` | The default option code. |
 
@@ -827,8 +830,8 @@ Parameters for DEVICE field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
+| `isMulti` | `Boolean!` | Whether multiple values can be selected for this field. |
 
 ---
 
@@ -840,8 +843,8 @@ Parameters for REFERENCE field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
+| `isMulti` | `Boolean!` | Whether multiple values can be selected for this field. |
 | `refEntityTypeCode` | `Code!` | The entity type code that can be referenced. |
 
 ---
@@ -854,8 +857,8 @@ Parameters for CATALOG field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
+| `isMulti` | `Boolean!` | Whether multiple values can be selected for this field. |
 | `refCatalogCode` | `Code!` | The catalog code that items can be selected from. |
 | `defaultValue` | `Code` | The default item code. |
 
@@ -869,8 +872,8 @@ Parameters for TAG field type.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `isRequired` | `Boolean!` |  |
-| `isMulti` | `Boolean!` |  |
+| `isRequired` | `Boolean!` | Whether a value is required for this field. |
+| `isMulti` | `Boolean!` | Whether multiple values can be selected for this field. |
 | `defaultValue` | `Code` | The default tag code. |
 
 ---

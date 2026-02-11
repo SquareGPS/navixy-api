@@ -21,19 +21,19 @@ geoObjectTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [CatalogItemFilter](../catalogs/catalog-items.md#catalogitemfilter) |  |
+| `filter` | `CatalogItemFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalogs/catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemFilter</code></summary>
+<summary>CatalogItemFilter</summary>
 
 Filtering options for catalog items.
 
@@ -46,7 +46,7 @@ Filtering options for catalog items.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -61,7 +61,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>GeoObjectTypeConnection</code></summary>
+<summary>GeoObjectTypeConnection</summary>
 
 A paginated list of GeoObjectType items.
 
@@ -78,7 +78,7 @@ A paginated list of GeoObjectType items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -98,7 +98,7 @@ Information about the current page in a paginated connection.
 Retrieves a geo object by its ID.
 
 ```graphql
-geoObject("The ID of the geo object to retrieve." id: ID!): GeoObject
+geoObject(id: ID!): GeoObject
 ```
 
 **Arguments**
@@ -111,7 +111,7 @@ geoObject("The ID of the geo object to retrieve." id: ID!): GeoObject
 
 <details>
 
-<summary><code>GeoObject</code></summary>
+<summary>GeoObject</summary>
 
 A geographic object such as a geofence, point of interest, or route.
 
@@ -119,9 +119,10 @@ A geographic object such as a geofence, point of interest, or route.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
 | `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
@@ -133,7 +134,7 @@ A geographic object such as a geofence, point of interest, or route.
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -141,9 +142,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -210,19 +212,19 @@ geoObjects(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [GeoObjectFilter](types.md#geoobjectfilter) |  |
+| `filter` | `GeoObjectFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [GeoObjectOrder](types.md#geoobjectorder) |  |
+| `orderBy` | `GeoObjectOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>GeoObjectFilter</code></summary>
+<summary>GeoObjectFilter</summary>
 
 Filtering options for geo objects.
 
@@ -236,7 +238,7 @@ Filtering options for geo objects.
 
 <details>
 
-<summary><code>CustomFieldFilter</code></summary>
+<summary>CustomFieldFilter</summary>
 
 A filter condition for a custom field value.
 
@@ -250,7 +252,7 @@ A filter condition for a custom field value.
 
 <details>
 
-<summary><code>GeoObjectOrder</code></summary>
+<summary>GeoObjectOrder</summary>
 
 Ordering options for geo objects.
 
@@ -266,7 +268,7 @@ Ordering options for geo objects.
 
 <details>
 
-<summary><code>GeoObjectConnection</code></summary>
+<summary>GeoObjectConnection</summary>
 
 A paginated list of GeoObject items.
 
@@ -283,7 +285,7 @@ A paginated list of GeoObject items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 

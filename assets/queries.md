@@ -21,19 +21,19 @@ assetTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [CatalogItemFilter](../catalogs/catalog-items.md#catalogitemfilter) |  |
+| `filter` | `CatalogItemFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalogs/catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemFilter</code></summary>
+<summary>CatalogItemFilter</summary>
 
 Filtering options for catalog items.
 
@@ -46,7 +46,7 @@ Filtering options for catalog items.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -61,7 +61,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>AssetTypeConnection</code></summary>
+<summary>AssetTypeConnection</summary>
 
 A paginated list of AssetType items.
 
@@ -78,7 +78,7 @@ A paginated list of AssetType items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -98,7 +98,7 @@ Information about the current page in a paginated connection.
 Retrieves an asset by its ID.
 
 ```graphql
-asset("The ID of the asset to retrieve." id: ID!): Asset
+asset(id: ID!): Asset
 ```
 
 **Arguments**
@@ -111,7 +111,7 @@ asset("The ID of the asset to retrieve." id: ID!): Asset
 
 <details>
 
-<summary><code>Asset</code></summary>
+<summary>Asset</summary>
 
 A physical or logical asset being tracked.
 
@@ -119,9 +119,10 @@ A physical or logical asset being tracked.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this asset. |
 | `type` | [AssetType](types.md#assettype)! | The asset type classification. |
 | `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
@@ -138,7 +139,7 @@ A physical or logical asset being tracked.
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -146,9 +147,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -215,19 +217,19 @@ assets(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [AssetFilter](types.md#assetfilter) |  |
+| `filter` | `AssetFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [AssetOrder](types.md#assetorder) |  |
+| `orderBy` | `AssetOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>AssetFilter</code></summary>
+<summary>AssetFilter</summary>
 
 Filtering options for assets.
 
@@ -242,7 +244,7 @@ Filtering options for assets.
 
 <details>
 
-<summary><code>CustomFieldFilter</code></summary>
+<summary>CustomFieldFilter</summary>
 
 A filter condition for a custom field value.
 
@@ -256,7 +258,7 @@ A filter condition for a custom field value.
 
 <details>
 
-<summary><code>AssetOrder</code></summary>
+<summary>AssetOrder</summary>
 
 Ordering options for assets.
 
@@ -272,7 +274,7 @@ Ordering options for assets.
 
 <details>
 
-<summary><code>AssetConnection</code></summary>
+<summary>AssetConnection</summary>
 
 A paginated list of Asset items.
 
@@ -289,7 +291,7 @@ A paginated list of Asset items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 

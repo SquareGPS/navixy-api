@@ -9,7 +9,7 @@ Integration accounts for API clients, automated systems, and third-party service
 Retrieves an integration by its ID.
 
 ```graphql
-integration("The ID of the integration to retrieve." id: ID!): Integration
+integration(id: ID!): Integration
 ```
 
 **Arguments**
@@ -22,7 +22,7 @@ integration("The ID of the integration to retrieve." id: ID!): Integration
 
 <details>
 
-<summary><code>Integration</code></summary>
+<summary>Integration</summary>
 
 An external system integration with API access.
 
@@ -30,9 +30,10 @@ An external system integration with API access.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The display name of the actor. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization this integration belongs to. |
 | `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
 | `isActive` | `Boolean!` | Whether this integration is active. |
@@ -41,7 +42,7 @@ An external system integration with API access.
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -49,9 +50,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -118,19 +120,19 @@ integrations(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [IntegrationFilter](../integrations.md#integrationfilter) |  |
+| `filter` | `IntegrationFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [IntegrationOrder](../integrations.md#integrationorder) |  |
+| `orderBy` | `IntegrationOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>IntegrationFilter</code></summary>
+<summary>IntegrationFilter</summary>
 
 Filtering options for integrations.
 
@@ -142,7 +144,7 @@ Filtering options for integrations.
 
 <details>
 
-<summary><code>IntegrationOrder</code></summary>
+<summary>IntegrationOrder</summary>
 
 Ordering options for integrations.
 
@@ -157,7 +159,7 @@ Ordering options for integrations.
 
 <details>
 
-<summary><code>IntegrationConnection</code></summary>
+<summary>IntegrationConnection</summary>
 
 A paginated list of Integration items.
 
@@ -174,7 +176,7 @@ A paginated list of Integration items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -196,20 +198,20 @@ Information about the current page in a paginated connection.
 Creates a new integration.
 
 ```graphql
-integrationCreate("The input fields for creating the integration." input: IntegrationCreateInput!): IntegrationPayload
+integrationCreate(input: IntegrationCreateInput!): IntegrationPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [IntegrationCreateInput](../integrations.md#integrationcreateinput)! | The input fields for creating the integration. |
+| `input` | `IntegrationCreateInput!` | The input fields for creating the integration. |
 
 **Input types:**
 
 <details>
 
-<summary><code>IntegrationCreateInput</code></summary>
+<summary>IntegrationCreateInput</summary>
 
 Input for creating a new integration.
 
@@ -225,7 +227,7 @@ Input for creating a new integration.
 
 <details>
 
-<summary><code>IntegrationPayload</code></summary>
+<summary>IntegrationPayload</summary>
 
 The result of an integration mutation.
 
@@ -237,7 +239,7 @@ The result of an integration mutation.
 
 <details>
 
-<summary><code>Integration (entity)</code></summary>
+<summary>Integration (entity)</summary>
 
 An external system integration with API access.
 
@@ -245,9 +247,10 @@ An external system integration with API access.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The display name of the actor. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization this integration belongs to. |
 | `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
 | `isActive` | `Boolean!` | Whether this integration is active. |
@@ -261,20 +264,20 @@ An external system integration with API access.
 Updates an existing integration.
 
 ```graphql
-integrationUpdate("The input fields for updating the integration." input: IntegrationUpdateInput!): IntegrationPayload
+integrationUpdate(input: IntegrationUpdateInput!): IntegrationPayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [IntegrationUpdateInput](../integrations.md#integrationupdateinput)! | The input fields for updating the integration. |
+| `input` | `IntegrationUpdateInput!` | The input fields for updating the integration. |
 
 **Input types:**
 
 <details>
 
-<summary><code>IntegrationUpdateInput</code></summary>
+<summary>IntegrationUpdateInput</summary>
 
 Input for updating an existing integration.
 
@@ -292,7 +295,7 @@ Input for updating an existing integration.
 
 <details>
 
-<summary><code>IntegrationPayload</code></summary>
+<summary>IntegrationPayload</summary>
 
 The result of an integration mutation.
 
@@ -304,7 +307,7 @@ The result of an integration mutation.
 
 <details>
 
-<summary><code>Integration (entity)</code></summary>
+<summary>Integration (entity)</summary>
 
 An external system integration with API access.
 
@@ -312,9 +315,10 @@ An external system integration with API access.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The display name of the actor. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization this integration belongs to. |
 | `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
 | `isActive` | `Boolean!` | Whether this integration is active. |
@@ -328,20 +332,20 @@ An external system integration with API access.
 Deletes an integration.
 
 ```graphql
-integrationDelete("The input fields for deleting the integration." input: IntegrationDeleteInput!): DeletePayload
+integrationDelete(input: IntegrationDeleteInput!): DeletePayload
 ```
 
 **Arguments**
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `input` | [IntegrationDeleteInput](../integrations.md#integrationdeleteinput)! | The input fields for deleting the integration. |
+| `input` | `IntegrationDeleteInput!` | The input fields for deleting the integration. |
 
 **Input types:**
 
 <details>
 
-<summary><code>IntegrationDeleteInput</code></summary>
+<summary>IntegrationDeleteInput</summary>
 
 Input for deleting an integration.
 
@@ -356,7 +360,7 @@ Input for deleting an integration.
 
 <details>
 
-<summary><code>DeletePayload</code></summary>
+<summary>DeletePayload</summary>
 
 The result of a delete mutation.
 
@@ -378,9 +382,10 @@ An external system integration with API access.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The display name of the actor. |
 | `organization` | [Organization](../../organizations.md#organization)! | The organization this integration belongs to. |
 | `credentialRef` | `String` | A reference to credentials stored in a secure vault. |
 | `isActive` | `Boolean!` | Whether this integration is active. |

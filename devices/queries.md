@@ -21,19 +21,19 @@ deviceTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [CatalogItemFilter](../catalogs/catalog-items.md#catalogitemfilter) |  |
+| `filter` | `CatalogItemFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalogs/catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemFilter</code></summary>
+<summary>CatalogItemFilter</summary>
 
 Filtering options for catalog items.
 
@@ -46,7 +46,7 @@ Filtering options for catalog items.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -61,7 +61,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>DeviceTypeConnection</code></summary>
+<summary>DeviceTypeConnection</summary>
 
 A paginated list of DeviceType items.
 
@@ -78,7 +78,7 @@ A paginated list of DeviceType items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -114,19 +114,19 @@ deviceStatuses(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [CatalogItemFilter](../catalogs/catalog-items.md#catalogitemfilter) |  |
+| `filter` | `CatalogItemFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalogs/catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemFilter</code></summary>
+<summary>CatalogItemFilter</summary>
 
 Filtering options for catalog items.
 
@@ -139,7 +139,7 @@ Filtering options for catalog items.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -154,7 +154,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>DeviceStatusConnection</code></summary>
+<summary>DeviceStatusConnection</summary>
 
 A paginated list of DeviceStatus items.
 
@@ -171,7 +171,7 @@ A paginated list of DeviceStatus items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -207,19 +207,19 @@ deviceModels(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [DeviceModelFilter](types.md#devicemodelfilter) |  |
+| `filter` | `DeviceModelFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalogs/catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceModelFilter</code></summary>
+<summary>DeviceModelFilter</summary>
 
 Filtering options for device models.
 
@@ -233,7 +233,7 @@ Filtering options for device models.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -248,7 +248,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>DeviceModelConnection</code></summary>
+<summary>DeviceModelConnection</summary>
 
 A paginated list of DeviceModel items.
 
@@ -265,7 +265,7 @@ A paginated list of DeviceModel items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -285,7 +285,7 @@ Information about the current page in a paginated connection.
 Retrieves a device by its ID.
 
 ```graphql
-device("The ID of the device to retrieve." id: ID!): Device
+device(id: ID!): Device
 ```
 
 **Arguments**
@@ -298,7 +298,7 @@ device("The ID of the device to retrieve." id: ID!): Device
 
 <details>
 
-<summary><code>Device</code></summary>
+<summary>Device</summary>
 
 A tracking device such as a GPS tracker, sensor, or beacon.
 
@@ -306,9 +306,10 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this device. |
 | `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
 | `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
@@ -328,7 +329,7 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -336,9 +337,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -405,19 +407,19 @@ devices(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [DeviceFilter](types.md#devicefilter) |  |
+| `filter` | `DeviceFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [DeviceOrder](types.md#deviceorder) |  |
+| `orderBy` | `DeviceOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>DeviceFilter</code></summary>
+<summary>DeviceFilter</summary>
 
 Filtering options for devices.
 
@@ -436,7 +438,7 @@ Filtering options for devices.
 
 <details>
 
-<summary><code>CustomFieldFilter</code></summary>
+<summary>CustomFieldFilter</summary>
 
 A filter condition for a custom field value.
 
@@ -450,7 +452,7 @@ A filter condition for a custom field value.
 
 <details>
 
-<summary><code>DeviceOrder</code></summary>
+<summary>DeviceOrder</summary>
 
 Ordering options for devices.
 
@@ -466,7 +468,7 @@ Ordering options for devices.
 
 <details>
 
-<summary><code>DeviceConnection</code></summary>
+<summary>DeviceConnection</summary>
 
 A paginated list of Device items.
 
@@ -483,7 +485,7 @@ A paginated list of Device items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 

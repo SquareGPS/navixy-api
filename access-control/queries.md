@@ -21,19 +21,19 @@ roles(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [CatalogItemFilter](../catalogs/catalog-items.md#catalogitemfilter) |  |
+| `filter` | `CatalogItemFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalogs/catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemFilter</code></summary>
+<summary>CatalogItemFilter</summary>
 
 Filtering options for catalog items.
 
@@ -46,7 +46,7 @@ Filtering options for catalog items.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -61,7 +61,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>RoleConnection</code></summary>
+<summary>RoleConnection</summary>
 
 A paginated list of Role items.
 
@@ -78,7 +78,7 @@ A paginated list of Role items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -114,19 +114,19 @@ actorRoles(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [ActorRoleFilter](types.md#actorrolefilter) |  |
+| `filter` | `ActorRoleFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [ActorRoleOrder](types.md#actorroleorder) |  |
+| `orderBy` | `ActorRoleOrder` |  |
 | `direction` | `DESC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>ActorRoleFilter</code></summary>
+<summary>ActorRoleFilter</summary>
 
 Filtering options for actor roles.
 
@@ -140,7 +140,7 @@ Filtering options for actor roles.
 
 <details>
 
-<summary><code>ActorRoleOrder</code></summary>
+<summary>ActorRoleOrder</summary>
 
 Ordering options for actor roles.
 
@@ -155,7 +155,7 @@ Ordering options for actor roles.
 
 <details>
 
-<summary><code>ActorRoleConnection</code></summary>
+<summary>ActorRoleConnection</summary>
 
 A paginated list of ActorRole items.
 
@@ -172,7 +172,7 @@ A paginated list of ActorRole items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -208,19 +208,19 @@ rolePermissions(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [RolePermissionFilter](types.md#rolepermissionfilter) |  |
+| `filter` | `RolePermissionFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [RolePermissionOrder](types.md#rolepermissionorder) |  |
+| `orderBy` | `RolePermissionOrder` |  |
 | `direction` | `DESC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>RolePermissionFilter</code></summary>
+<summary>RolePermissionFilter</summary>
 
 Filtering options for role permissions.
 
@@ -234,7 +234,7 @@ Filtering options for role permissions.
 
 <details>
 
-<summary><code>RolePermissionOrder</code></summary>
+<summary>RolePermissionOrder</summary>
 
 Ordering options for role permissions.
 
@@ -249,7 +249,7 @@ Ordering options for role permissions.
 
 <details>
 
-<summary><code>RolePermissionConnection</code></summary>
+<summary>RolePermissionConnection</summary>
 
 A paginated list of RolePermission items.
 
@@ -266,7 +266,7 @@ A paginated list of RolePermission items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -302,19 +302,19 @@ userScopes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [UserScopeFilter](types.md#userscopefilter) |  |
+| `filter` | `UserScopeFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [UserScopeOrder](types.md#userscopeorder) |  |
+| `orderBy` | `UserScopeOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>UserScopeFilter</code></summary>
+<summary>UserScopeFilter</summary>
 
 Filtering options for user scopes.
 
@@ -328,7 +328,7 @@ Filtering options for user scopes.
 
 <details>
 
-<summary><code>UserScopeOrder</code></summary>
+<summary>UserScopeOrder</summary>
 
 Ordering options for user scopes.
 
@@ -343,7 +343,7 @@ Ordering options for user scopes.
 
 <details>
 
-<summary><code>UserScopeConnection</code></summary>
+<summary>UserScopeConnection</summary>
 
 A paginated list of UserScope items.
 
@@ -360,7 +360,7 @@ A paginated list of UserScope items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 

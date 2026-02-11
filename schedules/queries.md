@@ -21,19 +21,19 @@ scheduleTypes(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [CatalogItemFilter](../catalogs/catalog-items.md#catalogitemfilter) |  |
+| `filter` | `CatalogItemFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [CatalogItemOrder](../catalogs/catalog-items.md#catalogitemorder) |  |
+| `orderBy` | `CatalogItemOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>CatalogItemFilter</code></summary>
+<summary>CatalogItemFilter</summary>
 
 Filtering options for catalog items.
 
@@ -46,7 +46,7 @@ Filtering options for catalog items.
 
 <details>
 
-<summary><code>CatalogItemOrder</code></summary>
+<summary>CatalogItemOrder</summary>
 
 Ordering options for catalog items.
 
@@ -61,7 +61,7 @@ Ordering options for catalog items.
 
 <details>
 
-<summary><code>ScheduleTypeConnection</code></summary>
+<summary>ScheduleTypeConnection</summary>
 
 A paginated list of ScheduleType items.
 
@@ -78,7 +78,7 @@ A paginated list of ScheduleType items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
@@ -98,7 +98,7 @@ Information about the current page in a paginated connection.
 Retrieves a schedule by its ID.
 
 ```graphql
-schedule("The ID of the schedule to retrieve." id: ID!): Schedule
+schedule(id: ID!): Schedule
 ```
 
 **Arguments**
@@ -111,7 +111,7 @@ schedule("The ID of the schedule to retrieve." id: ID!): Schedule
 
 <details>
 
-<summary><code>Schedule</code></summary>
+<summary>Schedule</summary>
 
 A schedule definition for work hours, maintenance windows, or other time-based rules.
 
@@ -119,9 +119,10 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `organization` | [Organization](../organizations.md#organization)! | The organization that owns this schedule. |
 | `type` | [ScheduleType](types.md#scheduletype)! | The schedule type classification. |
 | `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule.
@@ -132,7 +133,7 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 
 <details>
 
-<summary><code>Organization (entity)</code></summary>
+<summary>Organization (entity)</summary>
 
 An organization in the hierarchy that owns entities and users.
 
@@ -140,9 +141,10 @@ An organization in the hierarchy that owns entities and users.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `id` | `ID!` |  |
-| `version` | `Int!` |  |
-| `title` | `String!` |  |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
 | `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
@@ -209,19 +211,19 @@ schedules(
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | `ID!` |  |
-| `filter` | [ScheduleFilter](types.md#schedulefilter) |  |
+| `filter` | `ScheduleFilter` |  |
 | `first` | `Int` |  |
 | `after` | `String` |  |
 | `last` | `Int` |  |
 | `before` | `String` |  |
-| `orderBy` | [ScheduleOrder](types.md#scheduleorder) |  |
+| `orderBy` | `ScheduleOrder` |  |
 | `direction` | `ASC }` |  |
 
 **Input types:**
 
 <details>
 
-<summary><code>ScheduleFilter</code></summary>
+<summary>ScheduleFilter</summary>
 
 Filtering options for schedules.
 
@@ -235,7 +237,7 @@ Filtering options for schedules.
 
 <details>
 
-<summary><code>CustomFieldFilter</code></summary>
+<summary>CustomFieldFilter</summary>
 
 A filter condition for a custom field value.
 
@@ -249,7 +251,7 @@ A filter condition for a custom field value.
 
 <details>
 
-<summary><code>ScheduleOrder</code></summary>
+<summary>ScheduleOrder</summary>
 
 Ordering options for schedules.
 
@@ -265,7 +267,7 @@ Ordering options for schedules.
 
 <details>
 
-<summary><code>ScheduleConnection</code></summary>
+<summary>ScheduleConnection</summary>
 
 A paginated list of Schedule items.
 
@@ -282,7 +284,7 @@ A paginated list of Schedule items.
 
 <details>
 
-<summary><code>PageInfo (entity)</code></summary>
+<summary>PageInfo (entity)</summary>
 
 Information about the current page in a paginated connection.
 
