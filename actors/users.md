@@ -20,7 +20,7 @@ me: Actor!
 
 An entity that can perform actions and have permissions assigned.
 
-**Implements:** [Node](../../common.md#node), [Titled](../../common.md#titled)
+**Implements:** [Node](../common.md#node), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -57,7 +57,7 @@ Input for updating the current user's profile.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `name` | [PersonNameInput](../users.md#personnameinput)! | The structured name components. |
+| `name` | [PersonNameInput](#personnameinput)! | The structured name components. |
 
 </details>
 
@@ -85,7 +85,7 @@ The result of a user profile mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `user` | [User](../users.md#user)! | The updated user. |
+| `user` | [User](#user)! | The updated user. |
 
 </details>
 
@@ -95,27 +95,21 @@ The result of a user profile mutation.
 
 A human user account authenticated via an identity provider.
 
-**Implements:** [Actor](../../actors.md#actor), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Actor](README.md#actor), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The display name for the user. This is the user's full name for display purposes. |
-| `name` | [PersonName](../../actors.md#personname)! | The structured name components from the identity provider. |
+| `name` | [PersonName](README.md#personname)! | The structured name components from the identity provider. |
 | `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |
 | `identityProviderId` | `String!` | The user's unique ID in the identity provider. |
 | `email` | `EmailAddress!` | The user's primary email address. |
 | `locale` | `Locale` | The user's preferred locale. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this user account is active. |
-| `filter` | [MemberFilter](../../organizations/members.md#memberfilter) | Filtering options for the returned memberships. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned memberships. |
+| `memberships` | [MemberConnection](../organizations/members.md#memberconnection)! | The organization memberships for this user. |
 
 </details>
 
@@ -149,9 +143,9 @@ Input for creating a user catalog item.
 | `catalogId` | `ID!` | The catalog to add the item to. |
 | `code` | `Code!` | The machine-readable code, unique within the catalog and organization. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `parentId` | `ID` | The parent item ID for hierarchical catalogs. |
-| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -181,7 +175,7 @@ The result of a user catalog item mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `item` | [UserCatalogItem](../users.md#usercatalogitem)! | The created or updated user catalog item. |
+| `item` | [UserCatalogItem](#usercatalogitem)! | The created or updated user catalog item. |
 
 </details>
 
@@ -191,7 +185,7 @@ The result of a user catalog item mutation.
 
 A user-defined catalog item that supports hierarchical organization.
 
-**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [HierarchicalCatalogItem](../../catalogs.md#hierarchicalcatalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [HierarchicalCatalogItem](../catalogs/README.md#hierarchicalcatalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -200,16 +194,11 @@ A user-defined catalog item that supports hierarchical organization.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `parent` | [UserCatalogItem](../users.md#usercatalogitem) | The parent item in the hierarchy. Null for root items. |
-| `filter` | [CatalogItemChildrenFilter](../../catalogs/catalog-items.md#catalogitemchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `CatalogItemOrder = { field: ORDER, direction: ASC }` | The ordering options for the returned children. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `parent` | [UserCatalogItem](#usercatalogitem) | The parent item in the hierarchy. Null for root items. |
+| `children` | [UserCatalogItemConnection](#usercatalogitemconnection)! | The child items in the hierarchy. |
 
 </details>
 
@@ -244,7 +233,7 @@ Input for updating a user catalog item.
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
 | `parentId` | `ID` | The new parent ID for hierarchical items. |
-| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -274,7 +263,7 @@ The result of a user catalog item mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `item` | [UserCatalogItem](../users.md#usercatalogitem)! | The created or updated user catalog item. |
+| `item` | [UserCatalogItem](#usercatalogitem)! | The created or updated user catalog item. |
 
 </details>
 
@@ -284,7 +273,7 @@ The result of a user catalog item mutation.
 
 A user-defined catalog item that supports hierarchical organization.
 
-**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [HierarchicalCatalogItem](../../catalogs.md#hierarchicalcatalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [HierarchicalCatalogItem](../catalogs/README.md#hierarchicalcatalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -293,16 +282,11 @@ A user-defined catalog item that supports hierarchical organization.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `parent` | [UserCatalogItem](../users.md#usercatalogitem) | The parent item in the hierarchy. Null for root items. |
-| `filter` | [CatalogItemChildrenFilter](../../catalogs/catalog-items.md#catalogitemchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `CatalogItemOrder = { field: ORDER, direction: ASC }` | The ordering options for the returned children. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `parent` | [UserCatalogItem](#usercatalogitem) | The parent item in the hierarchy. Null for root items. |
+| `children` | [UserCatalogItemConnection](#usercatalogitemconnection)! | The child items in the hierarchy. |
 
 </details>
 
@@ -359,7 +343,7 @@ The result of a delete mutation.
 
 A user-defined catalog item that supports hierarchical organization.
 
-**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [HierarchicalCatalogItem](../../catalogs.md#hierarchicalcatalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [HierarchicalCatalogItem](../catalogs/README.md#hierarchicalcatalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -368,16 +352,11 @@ A user-defined catalog item that supports hierarchical organization.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `parent` | [UserCatalogItem](../users.md#usercatalogitem) | The parent item in the hierarchy. Null for root items. |
-| `filter` | [CatalogItemChildrenFilter](../../catalogs/catalog-items.md#catalogitemchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `CatalogItemOrder = { field: ORDER, direction: ASC }` | The ordering options for the returned children. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `parent` | [UserCatalogItem](#usercatalogitem) | The parent item in the hierarchy. Null for root items. |
+| `children` | [UserCatalogItemConnection](#usercatalogitemconnection)! | The child items in the hierarchy. |
 
 ---
 
@@ -385,27 +364,21 @@ A user-defined catalog item that supports hierarchical organization.
 
 A human user account authenticated via an identity provider.
 
-**Implements:** [Actor](../../actors.md#actor), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Actor](README.md#actor), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The display name for the user. This is the user's full name for display purposes. |
-| `name` | [PersonName](../../actors.md#personname)! | The structured name components from the identity provider. |
+| `name` | [PersonName](README.md#personname)! | The structured name components from the identity provider. |
 | `identityProvider` | `String!` | The identity provider name (keycloak, auth0, okta, etc.). |
 | `identityProviderId` | `String!` | The user's unique ID in the identity provider. |
 | `email` | `EmailAddress!` | The user's primary email address. |
 | `locale` | `Locale` | The user's preferred locale. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this user account is active. |
-| `filter` | [MemberFilter](../../organizations/members.md#memberfilter) | Filtering options for the returned memberships. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned memberships. |
+| `memberships` | [MemberConnection](../organizations/members.md#memberconnection)! | The organization memberships for this user. |
 
 ---
 
@@ -415,7 +388,7 @@ The result of a user profile mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `user` | [User](../users.md#user)! | The updated user. |
+| `user` | [User](#user)! | The updated user. |
 
 ---
 
@@ -425,7 +398,7 @@ The result of a user catalog item mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `item` | [UserCatalogItem](../users.md#usercatalogitem)! | The created or updated user catalog item. |
+| `item` | [UserCatalogItem](#usercatalogitem)! | The created or updated user catalog item. |
 
 ---
 
@@ -437,7 +410,7 @@ Input for updating the current user's profile.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `name` | [PersonNameInput](../users.md#personnameinput)! | The structured name components. |
+| `name` | [PersonNameInput](#personnameinput)! | The structured name components. |
 
 ---
 
@@ -463,9 +436,9 @@ Input for creating a user catalog item.
 | `catalogId` | `ID!` | The catalog to add the item to. |
 | `code` | `Code!` | The machine-readable code, unique within the catalog and organization. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `parentId` | `ID` | The parent item ID for hierarchical catalogs. |
-| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 ---
 
@@ -480,7 +453,7 @@ Input for updating a user catalog item.
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
 | `parentId` | `ID` | The new parent ID for hierarchical items. |
-| `meta` | [CatalogItemMetaInput](../../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 ---
 
@@ -490,14 +463,14 @@ Input for updating a user catalog item.
 
 A paginated list of UserCatalogItem items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[UserCatalogItemEdge](../users.md#usercatalogitemedge)!]! | A list of edges. |
-| `nodes` | [[UserCatalogItem](../users.md#usercatalogitem)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[UserCatalogItemEdge](#usercatalogitemedge)!]! | A list of edges. |
+| `nodes` | [[UserCatalogItem](#usercatalogitem)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 ---
 
@@ -505,12 +478,12 @@ A paginated list of UserCatalogItem items.
 
 An edge in the UserCatalogItem connection.
 
-**Implements:** [Edge](../../common.md#edge)
+**Implements:** [Edge](../common.md#edge)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [UserCatalogItem](../users.md#usercatalogitem)! | The user catalog item at the end of the edge. |
+| `node` | [UserCatalogItem](#usercatalogitem)! | The user catalog item at the end of the edge. |
 
 ---
 
@@ -518,14 +491,14 @@ An edge in the UserCatalogItem connection.
 
 A paginated list of User items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[UserEdge](../users.md#useredge)!]! | A list of edges. |
-| `nodes` | [[User](../users.md#user)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[UserEdge](#useredge)!]! | A list of edges. |
+| `nodes` | [[User](#user)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 ---
 
@@ -533,11 +506,11 @@ A paginated list of User items.
 
 An edge in the User connection.
 
-**Implements:** [Edge](../../common.md#edge)
+**Implements:** [Edge](../common.md#edge)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [User](../users.md#user)! | The user at the end of the edge. |
+| `node` | [User](#user)! | The user at the end of the edge. |
 
 ---

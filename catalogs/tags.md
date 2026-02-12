@@ -24,14 +24,13 @@ tags(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | `ID!` |  |
-| `filter` | `TagFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `CatalogItemOrder` |  |
-| `direction` | `ASC }` |  |
+| `organizationId` | `ID!` | The organization to retrieve tags for. |
+| `filter` | `TagFilter` | Filtering options for the returned tags. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned tags. |
 
 **Input types:**
 
@@ -55,8 +54,8 @@ Ordering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [CatalogItemOrderField](../catalog-items.md#catalogitemorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
+| `field` | [CatalogItemOrderField](catalog-items.md#catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -68,14 +67,14 @@ Ordering options for catalog items.
 
 A paginated list of Tag items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[TagEdge](../tags.md#tagedge)!]! | A list of edges. |
-| `nodes` | [[Tag](../tags.md#tag)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[TagEdge](#tagedge)!]! | A list of edges. |
+| `nodes` | [[Tag](#tag)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -125,9 +124,9 @@ Input for creating a tag.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `entityTypeIds` | `[ID!]` | The entity types this tag can be applied to. Empty means universal. |
-| `meta` | [CatalogItemMetaInput](../catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](catalog-items.md#catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -157,7 +156,7 @@ The result of a tag mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `tag` | [Tag](../tags.md#tag)! | The created or updated tag. |
+| `tag` | [Tag](#tag)! | The created or updated tag. |
 
 </details>
 
@@ -167,7 +166,7 @@ The result of a tag mutation.
 
 A tag for labeling and categorizing entities.
 
-**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -176,10 +175,10 @@ A tag for labeling and categorizing entities.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `entityTypes` | [[EntityType](../system.md#entitytype)!]! | The entity types this tag can be applied to. Empty means the tag is universal. |
+| `catalog` | [Catalog](catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `entityTypes` | [[EntityType](system.md#entitytype)!]! | The entity types this tag can be applied to. Empty means the tag is universal. |
 
 </details>
 
@@ -214,7 +213,7 @@ Input for updating a tag.
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
 | `entityTypeIds` | `[ID!]` | Replace entity types. Null means no change, empty means universal. |
-| `meta` | [CatalogItemMetaInput](../catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](catalog-items.md#catalogitemmetainput) | The display properties. |
 
 </details>
 
@@ -244,7 +243,7 @@ The result of a tag mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `tag` | [Tag](../tags.md#tag)! | The created or updated tag. |
+| `tag` | [Tag](#tag)! | The created or updated tag. |
 
 </details>
 
@@ -254,7 +253,7 @@ The result of a tag mutation.
 
 A tag for labeling and categorizing entities.
 
-**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -263,10 +262,10 @@ A tag for labeling and categorizing entities.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `entityTypes` | [[EntityType](../system.md#entitytype)!]! | The entity types this tag can be applied to. Empty means the tag is universal. |
+| `catalog` | [Catalog](catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `entityTypes` | [[EntityType](system.md#entitytype)!]! | The entity types this tag can be applied to. Empty means the tag is universal. |
 
 </details>
 
@@ -323,7 +322,7 @@ The result of a delete mutation.
 
 A tag for labeling and categorizing entities.
 
-**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -332,10 +331,10 @@ A tag for labeling and categorizing entities.
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `entityTypes` | [[EntityType](../system.md#entitytype)!]! | The entity types this tag can be applied to. Empty means the tag is universal. |
+| `catalog` | [Catalog](catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `entityTypes` | [[EntityType](system.md#entitytype)!]! | The entity types this tag can be applied to. Empty means the tag is universal. |
 
 ---
 
@@ -345,7 +344,7 @@ The result of a tag mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `tag` | [Tag](../tags.md#tag)! | The created or updated tag. |
+| `tag` | [Tag](#tag)! | The created or updated tag. |
 
 ---
 
@@ -370,9 +369,9 @@ Input for creating a tag.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `entityTypeIds` | `[ID!]` | The entity types this tag can be applied to. Empty means universal. |
-| `meta` | [CatalogItemMetaInput](../catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](catalog-items.md#catalogitemmetainput) | The display properties. |
 
 ---
 
@@ -387,7 +386,7 @@ Input for updating a tag.
 | `title` | `String` | The new display name. |
 | `order` | `Int` | The new display order. |
 | `entityTypeIds` | `[ID!]` | Replace entity types. Null means no change, empty means universal. |
-| `meta` | [CatalogItemMetaInput](../catalog-items.md#catalogitemmetainput) | The display properties. |
+| `meta` | [CatalogItemMetaInput](catalog-items.md#catalogitemmetainput) | The display properties. |
 
 ---
 
@@ -397,14 +396,14 @@ Input for updating a tag.
 
 A paginated list of Tag items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[TagEdge](../tags.md#tagedge)!]! | A list of edges. |
-| `nodes` | [[Tag](../tags.md#tag)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[TagEdge](#tagedge)!]! | A list of edges. |
+| `nodes` | [[Tag](#tag)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 ---
 
@@ -412,11 +411,11 @@ A paginated list of Tag items.
 
 An edge in the Tag connection.
 
-**Implements:** [Edge](../../common.md#edge)
+**Implements:** [Edge](../common.md#edge)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Tag](../tags.md#tag)! | The tag at the end of the edge. |
+| `node` | [Tag](#tag)! | The tag at the end of the edge. |
 
 ---

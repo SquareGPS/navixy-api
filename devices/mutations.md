@@ -86,23 +86,18 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this device. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this device. |
 | `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
 | `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
 | `status` | [DeviceStatus](types.md#devicestatus)! | The current operational status. |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
 | `identifiers` | [[DeviceIdentifier](types.md#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
 | `inventory` | [Inventory](inventory.md#inventory) | The inventory this device is currently assigned to. |
 | `relationsFrom` | [[DeviceRelation](types.md#devicerelation)!]! | The outgoing relationships from this device to other devices. |
 | `relationsTo` | [[DeviceRelation](types.md#devicerelation)!]! | The incoming relationships from other devices to this device. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceInventoryRelationOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned history. |
+| `inventoryHistory` | [DeviceInventoryRelationConnection](inventory.md#deviceinventoryrelationconnection)! | The history of inventory assignments for this device. |
 
 </details>
 
@@ -179,23 +174,18 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this device. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this device. |
 | `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
 | `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
 | `status` | [DeviceStatus](types.md#devicestatus)! | The current operational status. |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
 | `identifiers` | [[DeviceIdentifier](types.md#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
 | `inventory` | [Inventory](inventory.md#inventory) | The inventory this device is currently assigned to. |
 | `relationsFrom` | [[DeviceRelation](types.md#devicerelation)!]! | The outgoing relationships from this device to other devices. |
 | `relationsTo` | [[DeviceRelation](types.md#devicerelation)!]! | The incoming relationships from other devices to this device. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceInventoryRelationOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned history. |
+| `inventoryHistory` | [DeviceInventoryRelationConnection](inventory.md#deviceinventoryrelationconnection)! | The history of inventory assignments for this device. |
 
 </details>
 
@@ -501,7 +491,7 @@ Input for creating a device type.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 </details>
@@ -542,7 +532,7 @@ The result of a device type mutation.
 
 A classification type for devices.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -552,8 +542,8 @@ A classification type for devices.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
 
 </details>
@@ -628,7 +618,7 @@ The result of a device type mutation.
 
 A classification type for devices.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -638,8 +628,8 @@ A classification type for devices.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
 
 </details>
@@ -718,7 +708,7 @@ Input for creating a device status.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 </details>
@@ -759,7 +749,7 @@ The result of a device status mutation.
 
 An operational status for devices.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -769,8 +759,8 @@ An operational status for devices.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 
@@ -844,7 +834,7 @@ The result of a device status mutation.
 
 An operational status for devices.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -854,8 +844,8 @@ An operational status for devices.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 </details>
 

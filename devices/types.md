@@ -6,7 +6,7 @@
 
 A device manufacturer or vendor.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -16,14 +16,9 @@ A device manufacturer or vendor.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `filter` | [CatalogItemFilter](../catalogs/catalog-items.md#catalogitemfilter) | Filtering options for the returned models. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `CatalogItemOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned models. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `models` | [DeviceModelConnection](#devicemodelconnection)! | Device models produced by this vendor. |
 
 ---
 
@@ -31,7 +26,7 @@ A device manufacturer or vendor.
 
 A specific device model produced by a vendor.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -41,9 +36,9 @@ A specific device model produced by a vendor.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `vendor` | [DeviceVendor](types.md#devicevendor)! | The vendor that manufactures this model. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `vendor` | [DeviceVendor](#devicevendor)! | The vendor that manufactures this model. |
 
 ---
 
@@ -51,7 +46,7 @@ A specific device model produced by a vendor.
 
 A classification type for devices.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -61,8 +56,8 @@ A classification type for devices.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this device type, ordered by display order. |
 
 ---
@@ -71,7 +66,7 @@ A classification type for devices.
 
 An operational status for devices.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -81,8 +76,8 @@ An operational status for devices.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 ---
 
@@ -90,7 +85,7 @@ An operational status for devices.
 
 A type of relationship between two devices.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -100,8 +95,8 @@ A type of relationship between two devices.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 ---
 
@@ -114,23 +109,18 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this device. |
-| `type` | [DeviceType](types.md#devicetype)! | The device type classification. |
-| `model` | [DeviceModel](types.md#devicemodel)! | The specific device model. |
-| `status` | [DeviceStatus](types.md#devicestatus)! | The current operational status. |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `identifiers` | [[DeviceIdentifier](types.md#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this device. |
+| `type` | [DeviceType](#devicetype)! | The device type classification. |
+| `model` | [DeviceModel](#devicemodel)! | The specific device model. |
+| `status` | [DeviceStatus](#devicestatus)! | The current operational status. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `identifiers` | [[DeviceIdentifier](#deviceidentifier)!]! | The hardware identifiers for this device (IMEI, serial number, MAC address, etc.). |
 | `inventory` | [Inventory](inventory.md#inventory) | The inventory this device is currently assigned to. |
-| `relationsFrom` | [[DeviceRelation](types.md#devicerelation)!]! | The outgoing relationships from this device to other devices. |
-| `relationsTo` | [[DeviceRelation](types.md#devicerelation)!]! | The incoming relationships from other devices to this device. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceInventoryRelationOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned history. |
+| `relationsFrom` | [[DeviceRelation](#devicerelation)!]! | The outgoing relationships from this device to other devices. |
+| `relationsTo` | [[DeviceRelation](#devicerelation)!]! | The incoming relationships from other devices to this device. |
+| `inventoryHistory` | [DeviceInventoryRelationConnection](inventory.md#deviceinventoryrelationconnection)! | The history of inventory assignments for this device. |
 
 ---
 
@@ -143,8 +133,8 @@ A hardware identifier for a device.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `device` | [Device](types.md#device)! | The device this identifier belongs to. |
-| `type` | [DeviceIdType](types.md#deviceidtype)! | The type of identifier. |
+| `device` | [Device](#device)! | The device this identifier belongs to. |
+| `type` | [DeviceIdType](#deviceidtype)! | The type of identifier. |
 | `value` | `String!` | The identifier value. |
 | `namespace` | `Code` | The namespace for uniqueness scope. Null means the identifier is globally unique. |
 
@@ -159,9 +149,9 @@ A relationship between two devices.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `first` | [Device](types.md#device)! | The first device in the relationship. |
-| `second` | [Device](types.md#device)! | The second device in the relationship. |
-| `type` | [DeviceRelationType](types.md#devicerelationtype)! | The type of relationship. |
+| `first` | [Device](#device)! | The first device in the relationship. |
+| `second` | [Device](#device)! | The second device in the relationship. |
+| `type` | [DeviceRelationType](#devicerelationtype)! | The type of relationship. |
 
 ---
 
@@ -171,7 +161,7 @@ The result of a device mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `device` | [Device](types.md#device)! | The created or updated device. |
+| `device` | [Device](#device)! | The created or updated device. |
 
 ---
 
@@ -181,7 +171,7 @@ The result of a device identifier mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceIdentifier` | [DeviceIdentifier](types.md#deviceidentifier)! | The added device identifier. |
+| `deviceIdentifier` | [DeviceIdentifier](#deviceidentifier)! | The added device identifier. |
 
 ---
 
@@ -191,7 +181,7 @@ The result of a device relation mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceRelation` | [DeviceRelation](types.md#devicerelation)! | The created device relationship. |
+| `deviceRelation` | [DeviceRelation](#devicerelation)! | The created device relationship. |
 
 ---
 
@@ -201,7 +191,7 @@ The result of a device type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceType` | [DeviceType](types.md#devicetype)! | The created or updated device type. |
+| `deviceType` | [DeviceType](#devicetype)! | The created or updated device type. |
 
 ---
 
@@ -211,7 +201,7 @@ The result of a device status mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceStatus` | [DeviceStatus](types.md#devicestatus)! | The created or updated device status. |
+| `deviceStatus` | [DeviceStatus](#devicestatus)! | The created or updated device status. |
 
 ---
 
@@ -240,7 +230,7 @@ Ordering options for devices.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [DeviceOrderField](types.md#deviceorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `field` | [DeviceOrderField](#deviceorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
 | `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
@@ -269,7 +259,7 @@ Input for creating a new device.
 | `modelId` | `ID!` | The device model ID. |
 | `statusId` | `ID!` | The initial device status ID. |
 | `title` | `String!` | The device display name. |
-| `identifiers` | [[DeviceIdentifierInput](types.md#deviceidentifierinput)!] | The hardware identifiers. |
+| `identifiers` | [[DeviceIdentifierInput](#deviceidentifierinput)!] | The hardware identifiers. |
 | `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field values. |
 
 ---
@@ -306,7 +296,7 @@ Input for a device identifier.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `type` | [DeviceIdType](types.md#deviceidtype)! | The type of identifier. |
+| `type` | [DeviceIdType](#deviceidtype)! | The type of identifier. |
 | `value` | `String!` | The identifier value. |
 | `namespace` | `Code` | The namespace for uniqueness scope. Null means globally unique. |
 
@@ -319,7 +309,7 @@ Input for adding an identifier to a device.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `deviceId` | `ID!` | The device ID. |
-| `identifier` | [DeviceIdentifierInput](types.md#deviceidentifierinput)! | The identifier details. |
+| `identifier` | [DeviceIdentifierInput](#deviceidentifierinput)! | The identifier details. |
 
 ---
 
@@ -364,7 +354,7 @@ Input for creating a device type.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 ---
@@ -392,7 +382,7 @@ Input for creating a device status.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 ---
@@ -449,8 +439,8 @@ A paginated list of Device items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceEdge](types.md#deviceedge)!]! | A list of edges. |
-| `nodes` | [[Device](types.md#device)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[DeviceEdge](#deviceedge)!]! | A list of edges. |
+| `nodes` | [[Device](#device)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -465,7 +455,7 @@ An edge in the Device connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Device](types.md#device)! | The device at the end of the edge. |
+| `node` | [Device](#device)! | The device at the end of the edge. |
 
 ---
 
@@ -477,8 +467,8 @@ A paginated list of DeviceType items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceTypeEdge](types.md#devicetypeedge)!]! | A list of edges. |
-| `nodes` | [[DeviceType](types.md#devicetype)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[DeviceTypeEdge](#devicetypeedge)!]! | A list of edges. |
+| `nodes` | [[DeviceType](#devicetype)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -493,7 +483,7 @@ An edge in the DeviceType connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [DeviceType](types.md#devicetype)! | The device type at the end of the edge. |
+| `node` | [DeviceType](#devicetype)! | The device type at the end of the edge. |
 
 ---
 
@@ -505,8 +495,8 @@ A paginated list of DeviceStatus items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceStatusEdge](types.md#devicestatusedge)!]! | A list of edges. |
-| `nodes` | [[DeviceStatus](types.md#devicestatus)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[DeviceStatusEdge](#devicestatusedge)!]! | A list of edges. |
+| `nodes` | [[DeviceStatus](#devicestatus)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -521,7 +511,7 @@ An edge in the DeviceStatus connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [DeviceStatus](types.md#devicestatus)! | The device status at the end of the edge. |
+| `node` | [DeviceStatus](#devicestatus)! | The device status at the end of the edge. |
 
 ---
 
@@ -533,8 +523,8 @@ A paginated list of DeviceModel items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceModelEdge](types.md#devicemodeledge)!]! | A list of edges. |
-| `nodes` | [[DeviceModel](types.md#devicemodel)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[DeviceModelEdge](#devicemodeledge)!]! | A list of edges. |
+| `nodes` | [[DeviceModel](#devicemodel)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -549,6 +539,6 @@ An edge in the DeviceModel connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [DeviceModel](types.md#devicemodel)! | The device model at the end of the edge. |
+| `node` | [DeviceModel](#devicemodel)! | The device model at the end of the edge. |
 
 ---

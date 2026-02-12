@@ -26,7 +26,7 @@ catalog(id: ID!): Catalog
 
 A catalog definition that contains catalog items. Catalogs are themselves catalog items.
 
-**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -35,16 +35,11 @@ A catalog definition that contains catalog items. Catalogs are themselves catalo
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalog-items.md#catalog)! | Self-reference for the meta-catalog. |
-| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `module` | [Module](../system.md#module)! | The module this catalog is associated with. |
-| `filter` | [CatalogItemFilter](../catalog-items.md#catalogitemfilter) | Filtering options for the returned items. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `CatalogItemOrder = { field: ORDER, direction: ASC }` | The ordering options for the returned items. |
+| `catalog` | [Catalog](#catalog)! | Self-reference for the meta-catalog. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `module` | [Module](system.md#module)! | The module this catalog is associated with. |
+| `items` | [CatalogItemConnection](#catalogitemconnection)! | The items in this catalog. |
 
 </details>
 
@@ -54,54 +49,23 @@ A catalog definition that contains catalog items. Catalogs are themselves catalo
 
 An organization in the hierarchy that owns entities and users.
 
-**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../../organizations.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `filter` | [OrganizationChildrenFilter](../../organizations.md#organizationchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `OrganizationOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned children. |
-| `filter` | [MemberFilter](../../organizations/members.md#memberfilter) | Filtering options for the returned members. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned members. |
-| `filter` | [DeviceFilter](../../devices/types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
-| `filter` | [AssetFilter](../../assets/types.md#assetfilter) | Filtering options for the returned assets. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
-| `filter` | [GeoObjectFilter](../../geo-objects/types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `GeoObjectOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned geo objects. |
-| `filter` | [ScheduleFilter](../../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `ScheduleOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned schedules. |
+| `features` | [[OrganizationFeature](../organizations/README.md#organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](../organizations/README.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](../organizations/README.md#organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](../organizations/members.md#memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -127,14 +91,13 @@ catalogs(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | `ID!` |  |
-| `filter` | `CatalogItemFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `CatalogItemOrder` |  |
-| `direction` | `ASC }` |  |
+| `organizationId` | `ID!` | The organization to retrieve catalogs for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned catalogs. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned catalogs. |
 
 **Input types:**
 
@@ -159,8 +122,8 @@ Ordering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [CatalogItemOrderField](../catalog-items.md#catalogitemorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
+| `field` | [CatalogItemOrderField](#catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -172,14 +135,14 @@ Ordering options for catalog items.
 
 A paginated list of Catalog items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[CatalogEdge](../catalog-items.md#catalogedge)!]! | A list of edges. |
-| `nodes` | [[Catalog](../catalog-items.md#catalog)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[CatalogEdge](#catalogedge)!]! | A list of edges. |
+| `nodes` | [[Catalog](#catalog)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -206,7 +169,7 @@ Information about the current page in a paginated connection.
 
 A catalog definition that contains catalog items. Catalogs are themselves catalog items.
 
-**Implements:** [CatalogItem](../../catalogs.md#catalogitem), [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [CatalogItem](README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -215,16 +178,11 @@ A catalog definition that contains catalog items. Catalogs are themselves catalo
 | `title` | `String!` | The human-readable display name. Can be localized. |
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
-| `catalog` | [Catalog](../catalog-items.md#catalog)! | Self-reference for the meta-catalog. |
-| `organization` | [Organization](../../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `module` | [Module](../system.md#module)! | The module this catalog is associated with. |
-| `filter` | [CatalogItemFilter](../catalog-items.md#catalogitemfilter) | Filtering options for the returned items. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `CatalogItemOrder = { field: ORDER, direction: ASC }` | The ordering options for the returned items. |
+| `catalog` | [Catalog](#catalog)! | Self-reference for the meta-catalog. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `module` | [Module](system.md#module)! | The module this catalog is associated with. |
+| `items` | [CatalogItemConnection](#catalogitemconnection)! | The items in this catalog. |
 
 ---
 
@@ -257,8 +215,8 @@ Ordering options for catalog items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [CatalogItemOrderField](../catalog-items.md#catalogitemorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
+| `field` | [CatalogItemOrderField](#catalogitemorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 ---
 
@@ -308,14 +266,14 @@ Fields available for ordering catalog items.
 
 A paginated list of CatalogItem items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[CatalogItemEdge](../catalog-items.md#catalogitemedge)!]! | A list of edges. |
-| `nodes` | [[CatalogItem](../../catalogs.md#catalogitem)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[CatalogItemEdge](#catalogitemedge)!]! | A list of edges. |
+| `nodes` | [[CatalogItem](README.md#catalogitem)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 ---
 
@@ -323,12 +281,12 @@ A paginated list of CatalogItem items.
 
 An edge in the CatalogItem connection.
 
-**Implements:** [Edge](../../common.md#edge)
+**Implements:** [Edge](../common.md#edge)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [CatalogItem](../../catalogs.md#catalogitem)! | The catalog item at the end of the edge. |
+| `node` | [CatalogItem](README.md#catalogitem)! | The catalog item at the end of the edge. |
 
 ---
 
@@ -336,14 +294,14 @@ An edge in the CatalogItem connection.
 
 A paginated list of Catalog items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[CatalogEdge](../catalog-items.md#catalogedge)!]! | A list of edges. |
-| `nodes` | [[Catalog](../catalog-items.md#catalog)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[CatalogEdge](#catalogedge)!]! | A list of edges. |
+| `nodes` | [[Catalog](#catalog)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 ---
 
@@ -351,11 +309,11 @@ A paginated list of Catalog items.
 
 An edge in the Catalog connection.
 
-**Implements:** [Edge](../../common.md#edge)
+**Implements:** [Edge](../common.md#edge)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Catalog](../catalog-items.md#catalog)! | The catalog at the end of the edge. |
+| `node` | [Catalog](#catalog)! | The catalog at the end of the edge. |
 
 ---

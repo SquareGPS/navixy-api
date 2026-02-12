@@ -6,7 +6,7 @@
 
 A classification type for schedules.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -16,8 +16,8 @@ A classification type for schedules.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this schedule type, ordered by display order. |
 
 ---
@@ -31,14 +31,12 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this schedule. |
-| `type` | [ScheduleType](types.md#scheduletype)! | The schedule type classification. |
-| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule.
-  This is an alias for the `schedule_data` custom field. |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this schedule. |
+| `type` | [ScheduleType](#scheduletype)! | The schedule type classification. |
+| `scheduleData` | `ScheduleData!` | The calendar and time interval definitions for this schedule. This is an alias for the `schedule_data` custom field. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
 
 ---
 
@@ -48,7 +46,7 @@ The result of a schedule mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `schedule` | [Schedule](types.md#schedule)! | The created or updated schedule. |
+| `schedule` | [Schedule](#schedule)! | The created or updated schedule. |
 
 ---
 
@@ -58,7 +56,7 @@ The result of a schedule type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `scheduleType` | [ScheduleType](types.md#scheduletype)! | The created or updated schedule type. |
+| `scheduleType` | [ScheduleType](#scheduletype)! | The created or updated schedule type. |
 
 ---
 
@@ -82,7 +80,7 @@ Ordering options for schedules.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [ScheduleOrderField](types.md#scheduleorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `field` | [ScheduleOrderField](#scheduleorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
 | `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
@@ -136,7 +134,7 @@ Input for creating a schedule type.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 ---
@@ -185,8 +183,8 @@ A paginated list of Schedule items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[ScheduleEdge](types.md#scheduleedge)!]! | A list of edges. |
-| `nodes` | [[Schedule](types.md#schedule)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[ScheduleEdge](#scheduleedge)!]! | A list of edges. |
+| `nodes` | [[Schedule](#schedule)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -201,7 +199,7 @@ An edge in the Schedule connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Schedule](types.md#schedule)! | The schedule at the end of the edge. |
+| `node` | [Schedule](#schedule)! | The schedule at the end of the edge. |
 
 ---
 
@@ -213,8 +211,8 @@ A paginated list of ScheduleType items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[ScheduleTypeEdge](types.md#scheduletypeedge)!]! | A list of edges. |
-| `nodes` | [[ScheduleType](types.md#scheduletype)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[ScheduleTypeEdge](#scheduletypeedge)!]! | A list of edges. |
+| `nodes` | [[ScheduleType](#scheduletype)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -229,6 +227,6 @@ An edge in the ScheduleType connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [ScheduleType](types.md#scheduletype)! | The schedule type at the end of the edge. |
+| `node` | [ScheduleType](#scheduletype)! | The schedule type at the end of the edge. |
 
 ---

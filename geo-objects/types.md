@@ -6,7 +6,7 @@
 
 A classification type for geographic objects.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -16,8 +16,8 @@ A classification type for geographic objects.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
 
 ---
@@ -44,15 +44,13 @@ A geographic object such as a geofence, point of interest, or route.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
-| `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this geo object. |
+| `type` | [GeoObjectType](#geoobjecttype)! | The geo object type classification. |
+| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. This is an alias for the `geojson` custom field. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `containsPoints` | [[PointContainmentResult](#pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 ---
 
@@ -63,7 +61,7 @@ The result of checking whether a point is contained within a geometry.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `index` | `Int!` | The index of the point in the input array (0-based). |
-| `point` | [GeoPoint](types.md#geopoint)! | The point that was checked. |
+| `point` | [GeoPoint](#geopoint)! | The point that was checked. |
 | `isContained` | `Boolean!` | Whether the point is inside the geometry. |
 
 ---
@@ -74,7 +72,7 @@ The result of a geo object mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObject` | [GeoObject](types.md#geoobject)! | The created or updated geo object. |
+| `geoObject` | [GeoObject](#geoobject)! | The created or updated geo object. |
 
 ---
 
@@ -84,7 +82,7 @@ The result of a geo object type mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `geoObjectType` | [GeoObjectType](types.md#geoobjecttype)! | The created or updated geo object type. |
+| `geoObjectType` | [GeoObjectType](#geoobjecttype)! | The created or updated geo object type. |
 
 ---
 
@@ -121,7 +119,7 @@ Ordering options for geo objects.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [GeoObjectOrderField](types.md#geoobjectorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
+| `field` | [GeoObjectOrderField](#geoobjectorderfield) | The standard field to order by. Mutually exclusive with `customFieldCode`. |
 | `customFieldCode` | `Code` | The custom field code to order by. Mutually exclusive with `field`. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
@@ -175,7 +173,7 @@ Input for creating a geo object type.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 ---
@@ -232,8 +230,8 @@ A paginated list of GeoObject items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[GeoObjectEdge](types.md#geoobjectedge)!]! | A list of edges. |
-| `nodes` | [[GeoObject](types.md#geoobject)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[GeoObjectEdge](#geoobjectedge)!]! | A list of edges. |
+| `nodes` | [[GeoObject](#geoobject)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -248,7 +246,7 @@ An edge in the GeoObject connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [GeoObject](types.md#geoobject)! | The geo object at the end of the edge. |
+| `node` | [GeoObject](#geoobject)! | The geo object at the end of the edge. |
 
 ---
 
@@ -260,8 +258,8 @@ A paginated list of GeoObjectType items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[GeoObjectTypeEdge](types.md#geoobjecttypeedge)!]! | A list of edges. |
-| `nodes` | [[GeoObjectType](types.md#geoobjecttype)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[GeoObjectTypeEdge](#geoobjecttypeedge)!]! | A list of edges. |
+| `nodes` | [[GeoObjectType](#geoobjecttype)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -276,6 +274,6 @@ An edge in the GeoObjectType connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type at the end of the edge. |
+| `node` | [GeoObjectType](#geoobjecttype)! | The geo object type at the end of the edge. |
 
 ---

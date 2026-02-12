@@ -6,7 +6,7 @@
 
 A role that can be assigned to actors to grant permissions.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -16,14 +16,9 @@ A role that can be assigned to actors to grant permissions.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `filter` | [RolePermissionFilter](types.md#rolepermissionfilter) | Filtering options for the returned permissions. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `RolePermissionOrder = { field: GRANTED_AT, direction: DESC }` | The ordering options for the returned permissions. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `permissions` | [RolePermissionConnection](#rolepermissionconnection)! | The permissions assigned to this role. |
 
 ---
 
@@ -31,7 +26,7 @@ A role that can be assigned to actors to grant permissions.
 
 A definition of a permission scope that can be granted to roles.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -41,8 +36,8 @@ A definition of a permission scope that can be granted to roles.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `module` | [Module](../catalogs/system.md#module)! | The module this permission scope belongs to. |
 | `entityType` | [EntityType](../catalogs/system.md#entitytype)! | The entity type this permission applies to. |
 
@@ -57,10 +52,10 @@ An assignment of a role to an actor.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `actor` | [Actor](../actors.md#actor)! | The actor receiving the role. |
-| `role` | [Role](types.md#role)! | The role being assigned. |
+| `actor` | [Actor](../actors/README.md#actor)! | The actor receiving the role. |
+| `role` | [Role](#role)! | The role being assigned. |
 | `assignedAt` | `DateTime!` | The date and time when the role was assigned. |
-| `assignedBy` | [Actor](../actors.md#actor) | The actor who assigned the role. |
+| `assignedBy` | [Actor](../actors/README.md#actor) | The actor who assigned the role. |
 | `expireDate` | `DateTime` | The date and time when the role expires. Null means the role is permanent. |
 
 ---
@@ -74,12 +69,12 @@ A permission granted to a role.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `role` | [Role](types.md#role)! | The role receiving the permission. |
-| `permissionScope` | [PermissionScope](types.md#permissionscope)! | The permission scope being granted. |
+| `role` | [Role](#role)! | The role receiving the permission. |
+| `permissionScope` | [PermissionScope](#permissionscope)! | The permission scope being granted. |
 | `targetEntityId` | `ID` | The specific entity ID this permission applies to. Null means all entities of the type. |
-| `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions allowed by this permission. |
+| `actions` | [[ActionPermission](#actionpermission)!]! | The actions allowed by this permission. |
 | `grantedAt` | `DateTime!` | The date and time when the permission was granted. |
-| `grantedBy` | [Actor](../actors.md#actor)! | The actor who granted the permission. |
+| `grantedBy` | [Actor](../actors/README.md#actor)! | The actor who granted the permission. |
 
 ---
 
@@ -93,10 +88,10 @@ When present, effective permissions = role permissions ∩ user scope.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `actor` | [Actor](../actors.md#actor)! | The actor being restricted. |
-| `permissionScope` | [PermissionScope](types.md#permissionscope)! | The permission scope being filtered. |
+| `actor` | [Actor](../actors/README.md#actor)! | The actor being restricted. |
+| `permissionScope` | [PermissionScope](#permissionscope)! | The permission scope being filtered. |
 | `targetEntityId` | `ID!` | The specific entity the actor can access. |
-| `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions allowed on this specific entity. |
+| `actions` | [[ActionPermission](#actionpermission)!]! | The actions allowed on this specific entity. |
 
 ---
 
@@ -106,7 +101,7 @@ The result of a role assignment mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `actorRole` | [ActorRole](types.md#actorrole)! | The created role assignment. |
+| `actorRole` | [ActorRole](#actorrole)! | The created role assignment. |
 
 ---
 
@@ -116,7 +111,7 @@ The result of a permission grant mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `rolePermission` | [RolePermission](types.md#rolepermission)! | The created permission. |
+| `rolePermission` | [RolePermission](#rolepermission)! | The created permission. |
 
 ---
 
@@ -126,7 +121,7 @@ The result of a user scope mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `userScope` | [UserScope](types.md#userscope)! | The created user scope restriction. |
+| `userScope` | [UserScope](#userscope)! | The created user scope restriction. |
 
 ---
 
@@ -136,7 +131,7 @@ The result of a role mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `role` | [Role](types.md#role)! | The created or updated role. |
+| `role` | [Role](#role)! | The created or updated role. |
 
 ---
 
@@ -150,7 +145,7 @@ Filtering options for actor roles.
 | ----- | ---- | ----------- |
 | `actorIds` | `[ID!]` | Filter by actors (OR within field). |
 | `roleIds` | `[ID!]` | Filter by roles (OR within field). |
-| `includeExpired` | `Boolean = true` | Include expired role assignments. |
+| `includeExpired` | `Boolean` | Include expired role assignments. |
 
 ---
 
@@ -160,7 +155,7 @@ Ordering options for actor roles.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [ActorRoleOrderField](types.md#actorroleorderfield)! | The field to order by. |
+| `field` | [ActorRoleOrderField](#actorroleorderfield)! | The field to order by. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 ---
@@ -183,7 +178,7 @@ Ordering options for role permissions.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [RolePermissionOrderField](types.md#rolepermissionorderfield)! | The field to order by. |
+| `field` | [RolePermissionOrderField](#rolepermissionorderfield)! | The field to order by. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 ---
@@ -206,7 +201,7 @@ Ordering options for user scopes.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [UserScopeOrderField](types.md#userscopeorderfield)! | The field to order by. |
+| `field` | [UserScopeOrderField](#userscopeorderfield)! | The field to order by. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 ---
@@ -242,7 +237,7 @@ Input for granting a permission to a role.
 | `roleId` | `ID!` | The role ID. |
 | `permissionScopeId` | `ID!` | The permission scope ID. |
 | `targetEntityId` | `ID` | The specific entity ID. Null means all entities of the type. |
-| `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions to allow. |
+| `actions` | [[ActionPermission](#actionpermission)!]! | The actions to allow. |
 
 ---
 
@@ -265,7 +260,7 @@ Input for setting a user scope restriction.
 | `actorId` | `ID!` | The actor ID to restrict. |
 | `permissionScopeId` | `ID!` | The permission scope ID. |
 | `targetEntityId` | `ID!` | The specific entity ID to allow access to. |
-| `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions to allow. |
+| `actions` | [[ActionPermission](#actionpermission)!]! | The actions to allow. |
 
 ---
 
@@ -288,7 +283,7 @@ Input for creating a role.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 ---
@@ -362,8 +357,8 @@ A paginated list of Role items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[RoleEdge](types.md#roleedge)!]! | A list of edges. |
-| `nodes` | [[Role](types.md#role)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[RoleEdge](#roleedge)!]! | A list of edges. |
+| `nodes` | [[Role](#role)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -378,7 +373,7 @@ An edge in the Role connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Role](types.md#role)! | The role at the end of the edge. |
+| `node` | [Role](#role)! | The role at the end of the edge. |
 
 ---
 
@@ -390,8 +385,8 @@ A paginated list of ActorRole items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[ActorRoleEdge](types.md#actorroleedge)!]! | A list of edges. |
-| `nodes` | [[ActorRole](types.md#actorrole)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[ActorRoleEdge](#actorroleedge)!]! | A list of edges. |
+| `nodes` | [[ActorRole](#actorrole)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -406,7 +401,7 @@ An edge in the ActorRole connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [ActorRole](types.md#actorrole)! | The actor role at the end of the edge. |
+| `node` | [ActorRole](#actorrole)! | The actor role at the end of the edge. |
 
 ---
 
@@ -418,8 +413,8 @@ A paginated list of RolePermission items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[RolePermissionEdge](types.md#rolepermissionedge)!]! | A list of edges. |
-| `nodes` | [[RolePermission](types.md#rolepermission)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[RolePermissionEdge](#rolepermissionedge)!]! | A list of edges. |
+| `nodes` | [[RolePermission](#rolepermission)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -434,7 +429,7 @@ An edge in the RolePermission connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [RolePermission](types.md#rolepermission)! | The role permission at the end of the edge. |
+| `node` | [RolePermission](#rolepermission)! | The role permission at the end of the edge. |
 
 ---
 
@@ -446,8 +441,8 @@ A paginated list of UserScope items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[UserScopeEdge](types.md#userscopeedge)!]! | A list of edges. |
-| `nodes` | [[UserScope](types.md#userscope)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[UserScopeEdge](#userscopeedge)!]! | A list of edges. |
+| `nodes` | [[UserScope](#userscope)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -462,6 +457,6 @@ An edge in the UserScope connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [UserScope](types.md#userscope)! | The user scope at the end of the edge. |
+| `node` | [UserScope](#userscope)! | The user scope at the end of the edge. |
 
 ---

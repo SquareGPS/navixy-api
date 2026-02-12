@@ -70,15 +70,13 @@ A geographic object such as a geofence, point of interest, or route.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
+| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. This is an alias for the `geojson` custom field. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `containsPoints` | [[PointContainmentResult](types.md#pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 </details>
 
@@ -154,15 +152,13 @@ A geographic object such as a geofence, point of interest, or route.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
+| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. This is an alias for the `geojson` custom field. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `containsPoints` | [[PointContainmentResult](types.md#pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 </details>
 
@@ -240,7 +236,7 @@ Input for creating a geo object type.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 </details>
@@ -281,7 +277,7 @@ The result of a geo object type mutation.
 
 A classification type for geographic objects.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -291,8 +287,8 @@ A classification type for geographic objects.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
 
 </details>
@@ -367,7 +363,7 @@ The result of a geo object type mutation.
 
 A classification type for geographic objects.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -377,8 +373,8 @@ A classification type for geographic objects.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 | `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this geo object type, ordered by display order. |
 
 </details>

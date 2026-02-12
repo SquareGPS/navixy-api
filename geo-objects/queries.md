@@ -20,14 +20,13 @@ geoObjectTypes(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | `ID!` |  |
-| `filter` | `CatalogItemFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `CatalogItemOrder` |  |
-| `direction` | `ASC }` |  |
+| `organizationId` | `ID!` | The organization to retrieve geo object types for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned geo object types. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned geo object types. |
 
 **Input types:**
 
@@ -120,15 +119,13 @@ A geographic object such as a geofence, point of interest, or route.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../organizations.md#organization)! | The organization that owns this geo object. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this geo object. |
 | `type` | [GeoObjectType](types.md#geoobjecttype)! | The geo object type classification. |
-| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry.
-  This is an alias for the `geojson` custom field. |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
-| `points` | [[GeoPointInput](types.md#geopointinput)!]! | The points to check for containment. |
+| `geometry` | `GeoJSON!` | The geographic shape of this object as GeoJSON geometry. This is an alias for the `geojson` custom field. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `containsPoints` | [[PointContainmentResult](types.md#pointcontainmentresult)!]! | Checks if the given points are contained within this geo object's geometry. Returns the containment status for each point. Only applicable to Polygon and MultiPolygon geometries. |
 
 </details>
 
@@ -143,49 +140,18 @@ An organization in the hierarchy that owns entities and users.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../organizations.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `filter` | [OrganizationChildrenFilter](../organizations.md#organizationchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `OrganizationOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned children. |
-| `filter` | [MemberFilter](../organizations/members.md#memberfilter) | Filtering options for the returned members. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned members. |
-| `filter` | [DeviceFilter](../devices/types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
-| `filter` | [AssetFilter](../assets/types.md#assetfilter) | Filtering options for the returned assets. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
-| `filter` | [GeoObjectFilter](types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `GeoObjectOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned geo objects. |
-| `filter` | [ScheduleFilter](../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `ScheduleOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned schedules. |
+| `features` | [[OrganizationFeature](../organizations/README.md#organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](../organizations/README.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](../organizations/README.md#organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](../organizations/members.md#memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -211,14 +177,13 @@ geoObjects(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | `ID!` |  |
-| `filter` | `GeoObjectFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `GeoObjectOrder` |  |
-| `direction` | `ASC }` |  |
+| `organizationId` | `ID!` | The organization to retrieve geo objects for. |
+| `filter` | `GeoObjectFilter` | Filtering options for the returned geo objects. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `GeoObjectOrder` | The ordering options for the returned geo objects. |
 
 **Input types:**
 

@@ -29,7 +29,7 @@ Examples by culture:
 
 The built-in system actor used for automated operations.
 
-**Implements:** [Actor](../actors.md#actor), [Node](../common.md#node), [Titled](../common.md#titled)
+**Implements:** [Actor](#actor), [Node](../common.md#node), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |

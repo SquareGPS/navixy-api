@@ -20,14 +20,13 @@ roles(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | `ID!` |  |
-| `filter` | `CatalogItemFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `CatalogItemOrder` |  |
-| `direction` | `ASC }` |  |
+| `organizationId` | `ID!` | The organization to retrieve roles for. |
+| `filter` | `CatalogItemFilter` | Filtering options for the returned roles. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `CatalogItemOrder` | The ordering options for the returned roles. |
 
 **Input types:**
 
@@ -113,14 +112,13 @@ actorRoles(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | `ID!` |  |
-| `filter` | `ActorRoleFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `ActorRoleOrder` |  |
-| `direction` | `DESC }` |  |
+| `organizationId` | `ID!` | The organization to retrieve actor roles for. |
+| `filter` | `ActorRoleFilter` | Filtering options for the returned actor roles. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `ActorRoleOrder` | The ordering options for the returned actor roles. |
 
 **Input types:**
 
@@ -134,7 +132,7 @@ Filtering options for actor roles.
 | ----- | ---- | ----------- |
 | `actorIds` | `[ID!]` | Filter by actors (OR within field). |
 | `roleIds` | `[ID!]` | Filter by roles (OR within field). |
-| `includeExpired` | `Boolean = true` | Include expired role assignments. |
+| `includeExpired` | `Boolean` | Include expired role assignments. |
 
 </details>
 
@@ -207,14 +205,13 @@ rolePermissions(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | `ID!` |  |
-| `filter` | `RolePermissionFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `RolePermissionOrder` |  |
-| `direction` | `DESC }` |  |
+| `organizationId` | `ID!` | The organization to retrieve role permissions for. |
+| `filter` | `RolePermissionFilter` | Filtering options for the returned role permissions. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `RolePermissionOrder` | The ordering options for the returned role permissions. |
 
 **Input types:**
 
@@ -301,14 +298,13 @@ userScopes(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | `ID!` |  |
-| `filter` | `UserScopeFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `UserScopeOrder` |  |
-| `direction` | `ASC }` |  |
+| `organizationId` | `ID!` | The organization to retrieve user scopes for. |
+| `filter` | `UserScopeFilter` | Filtering options for the returned user scopes. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `UserScopeOrder` | The ordering options for the returned user scopes. |
 
 **Input types:**
 

@@ -11,7 +11,7 @@ Metadata about a catalog item.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `description` | `String` | A description of the catalog item. Can be localized. |
-| `origin` | [CatalogItemOrigin](../catalogs.md#catalogitemorigin)! | The origin indicating how this item was created. |
+| `origin` | [CatalogItemOrigin](#catalogitemorigin)! | The origin indicating how this item was created. |
 | `canBeDeleted` | `Boolean!` | Whether this item can be deleted. Returns `false` if the item has dependencies or is system-managed. |
 | `hidden` | `Boolean!` | Whether this item is hidden from regular UI lists. |
 | `textColor` | `HexColorCode` | The text color for UI display. |
@@ -50,8 +50,8 @@ A dictionary item that provides reference data for the system.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
 
 ---
 
@@ -61,6 +61,6 @@ A catalog item that supports parent-child hierarchy.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `parent` | [CatalogItem](../catalogs.md#catalogitem) | The parent item in the hierarchy. Null for root items. |
+| `parent` | [CatalogItem](#catalogitem) | The parent item in the hierarchy. Null for root items. |
 
 ---

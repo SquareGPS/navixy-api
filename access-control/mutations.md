@@ -55,10 +55,10 @@ An assignment of a role to an actor.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `actor` | [Actor](../actors.md#actor)! | The actor receiving the role. |
+| `actor` | [Actor](../actors/README.md#actor)! | The actor receiving the role. |
 | `role` | [Role](types.md#role)! | The role being assigned. |
 | `assignedAt` | `DateTime!` | The date and time when the role was assigned. |
-| `assignedBy` | [Actor](../actors.md#actor) | The actor who assigned the role. |
+| `assignedBy` | [Actor](../actors/README.md#actor) | The actor who assigned the role. |
 | `expireDate` | `DateTime` | The date and time when the role expires. Null means the role is permanent. |
 
 </details>
@@ -170,7 +170,7 @@ A permission granted to a role.
 | `targetEntityId` | `ID` | The specific entity ID this permission applies to. Null means all entities of the type. |
 | `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions allowed by this permission. |
 | `grantedAt` | `DateTime!` | The date and time when the permission was granted. |
-| `grantedBy` | [Actor](../actors.md#actor)! | The actor who granted the permission. |
+| `grantedBy` | [Actor](../actors/README.md#actor)! | The actor who granted the permission. |
 
 </details>
 
@@ -277,7 +277,7 @@ When present, effective permissions = role permissions ∩ user scope.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `actor` | [Actor](../actors.md#actor)! | The actor being restricted. |
+| `actor` | [Actor](../actors/README.md#actor)! | The actor being restricted. |
 | `permissionScope` | [PermissionScope](types.md#permissionscope)! | The permission scope being filtered. |
 | `targetEntityId` | `ID!` | The specific entity the actor can access. |
 | `actions` | [[ActionPermission](types.md#actionpermission)!]! | The actions allowed on this specific entity. |
@@ -357,7 +357,7 @@ Input for creating a role.
 | `organizationId` | `ID!` | The organization that will own the item. |
 | `code` | `Code!` | The machine-readable code. |
 | `title` | `String!` | The display name. |
-| `order` | `Int = 0` | The display order. |
+| `order` | `Int` | The display order. |
 | `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
 
 </details>
@@ -398,7 +398,7 @@ The result of a role mutation.
 
 A role that can be assigned to actors to grant permissions.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -408,14 +408,9 @@ A role that can be assigned to actors to grant permissions.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `filter` | [RolePermissionFilter](types.md#rolepermissionfilter) | Filtering options for the returned permissions. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `RolePermissionOrder = { field: GRANTED_AT, direction: DESC }` | The ordering options for the returned permissions. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `permissions` | [RolePermissionConnection](types.md#rolepermissionconnection)! | The permissions assigned to this role. |
 
 </details>
 
@@ -489,7 +484,7 @@ The result of a role mutation.
 
 A role that can be assigned to actors to grant permissions.
 
-**Implements:** [CatalogItem](../catalogs.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -499,14 +494,9 @@ A role that can be assigned to actors to grant permissions.
 | `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
 | `order` | `Int!` | The display order within the same level or category. |
 | `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
-| `organization` | [Organization](../organizations.md#organization) | The organization that owns this item. Null for system items. |
-| `meta` | [CatalogItemMeta](../catalogs.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
-| `filter` | [RolePermissionFilter](types.md#rolepermissionfilter) | Filtering options for the returned permissions. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `RolePermissionOrder = { field: GRANTED_AT, direction: DESC }` | The ordering options for the returned permissions. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `permissions` | [RolePermissionConnection](types.md#rolepermissionconnection)! | The permissions assigned to this role. |
 
 </details>
 

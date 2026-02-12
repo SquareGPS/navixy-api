@@ -31,49 +31,35 @@ An organization in the hierarchy that owns entities and users.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../organizations.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `filter` | [OrganizationChildrenFilter](../organizations.md#organizationchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `OrganizationOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned children. |
-| `filter` | [MemberFilter](members.md#memberfilter) | Filtering options for the returned members. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned members. |
-| `filter` | [DeviceFilter](../devices/types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
-| `filter` | [AssetFilter](../assets/types.md#assetfilter) | Filtering options for the returned assets. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
-| `filter` | [GeoObjectFilter](../geo-objects/types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `GeoObjectOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned geo objects. |
-| `filter` | [ScheduleFilter](../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `ScheduleOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned schedules. |
+| `features` | [[OrganizationFeature](#organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](#organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](#organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](members.md#memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
+
+</details>
+
+<details>
+
+<summary>OrganizationConnection (entity)</summary>
+
+A paginated list of Organization items.
+
+**Implements:** [Connection](../common.md#connection)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `edges` | [[OrganizationEdge](#organizationedge)!]! | A list of edges. |
+| `nodes` | [[Organization](#organization)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -98,13 +84,12 @@ organizations(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `filter` | `OrganizationFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `OrganizationOrder` |  |
-| `direction` | `ASC }` |  |
+| `filter` | `OrganizationFilter` | Filtering options for the returned organizations. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `OrganizationOrder` | The ordering options for the returned organizations. |
 
 **Input types:**
 
@@ -129,7 +114,7 @@ Ordering options for organizations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [OrganizationOrderField](../organizations.md#organizationorderfield)! | The field to order by. |
+| `field` | [OrganizationOrderField](#organizationorderfield)! | The field to order by. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 </details>
@@ -146,8 +131,8 @@ A paginated list of Organization items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[OrganizationEdge](../organizations.md#organizationedge)!]! | A list of edges. |
-| `nodes` | [[Organization](../organizations.md#organization)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[OrganizationEdge](#organizationedge)!]! | A list of edges. |
+| `nodes` | [[Organization](#organization)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -199,7 +184,7 @@ Input for creating a new organization.
 | `parentId` | `ID` | The parent organization ID. Null for root organizations. |
 | `title` | `String!` | The display name. |
 | `externalId` | `String` | An external system identifier. |
-| `features` | `[OrganizationFeature!] = []` | The feature flags to enable. |
+| `features` | [[OrganizationFeature](#organizationfeature)!] | The feature flags to enable. |
 
 </details>
 
@@ -213,7 +198,7 @@ The result of an organization mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organization` | [Organization](../organizations.md#organization)! | The created or updated organization. |
+| `organization` | [Organization](#organization)! | The created or updated organization. |
 
 </details>
 
@@ -228,49 +213,18 @@ An organization in the hierarchy that owns entities and users.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../organizations.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `filter` | [OrganizationChildrenFilter](../organizations.md#organizationchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `OrganizationOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned children. |
-| `filter` | [MemberFilter](members.md#memberfilter) | Filtering options for the returned members. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned members. |
-| `filter` | [DeviceFilter](../devices/types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
-| `filter` | [AssetFilter](../assets/types.md#assetfilter) | Filtering options for the returned assets. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
-| `filter` | [GeoObjectFilter](../geo-objects/types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `GeoObjectOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned geo objects. |
-| `filter` | [ScheduleFilter](../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `ScheduleOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned schedules. |
+| `features` | [[OrganizationFeature](#organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](#organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](#organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](members.md#memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -305,7 +259,7 @@ Input for updating an existing organization.
 | `title` | `String` | The new display name. |
 | `externalId` | `String` | The new external identifier. |
 | `isActive` | `Boolean` | The new active status. |
-| `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!] | The new feature flags. |
+| `features` | [[OrganizationFeature](#organizationfeature)!] | The new feature flags. |
 
 </details>
 
@@ -319,7 +273,7 @@ The result of an organization mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organization` | [Organization](../organizations.md#organization)! | The created or updated organization. |
+| `organization` | [Organization](#organization)! | The created or updated organization. |
 
 </details>
 
@@ -334,49 +288,18 @@ An organization in the hierarchy that owns entities and users.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../organizations.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `filter` | [OrganizationChildrenFilter](../organizations.md#organizationchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `OrganizationOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned children. |
-| `filter` | [MemberFilter](members.md#memberfilter) | Filtering options for the returned members. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned members. |
-| `filter` | [DeviceFilter](../devices/types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
-| `filter` | [AssetFilter](../assets/types.md#assetfilter) | Filtering options for the returned assets. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
-| `filter` | [GeoObjectFilter](../geo-objects/types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `GeoObjectOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned geo objects. |
-| `filter` | [ScheduleFilter](../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `ScheduleOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned schedules. |
+| `features` | [[OrganizationFeature](#organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](#organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](#organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](members.md#memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -438,49 +361,18 @@ An organization in the hierarchy that owns entities and users.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../organizations.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `filter` | [OrganizationChildrenFilter](../organizations.md#organizationchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `OrganizationOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned children. |
-| `filter` | [MemberFilter](members.md#memberfilter) | Filtering options for the returned members. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned members. |
-| `filter` | [DeviceFilter](../devices/types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
-| `filter` | [AssetFilter](../assets/types.md#assetfilter) | Filtering options for the returned assets. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
-| `filter` | [GeoObjectFilter](../geo-objects/types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `GeoObjectOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned geo objects. |
-| `filter` | [ScheduleFilter](../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `ScheduleOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned schedules. |
+| `features` | [[OrganizationFeature](#organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](#organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](#organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](members.md#memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](../devices/types.md#deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
 
 ---
 
@@ -490,7 +382,7 @@ The result of an organization mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `organization` | [Organization](../organizations.md#organization)! | The created or updated organization. |
+| `organization` | [Organization](#organization)! | The created or updated organization. |
 
 ---
 
@@ -524,7 +416,7 @@ Ordering options for organizations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [OrganizationOrderField](../organizations.md#organizationorderfield)! | The field to order by. |
+| `field` | [OrganizationOrderField](#organizationorderfield)! | The field to order by. |
 | `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 ---
@@ -538,7 +430,7 @@ Input for creating a new organization.
 | `parentId` | `ID` | The parent organization ID. Null for root organizations. |
 | `title` | `String!` | The display name. |
 | `externalId` | `String` | An external system identifier. |
-| `features` | `[OrganizationFeature!] = []` | The feature flags to enable. |
+| `features` | [[OrganizationFeature](#organizationfeature)!] | The feature flags to enable. |
 
 ---
 
@@ -553,7 +445,7 @@ Input for updating an existing organization.
 | `title` | `String` | The new display name. |
 | `externalId` | `String` | The new external identifier. |
 | `isActive` | `Boolean` | The new active status. |
-| `features` | [[OrganizationFeature](../organizations.md#organizationfeature)!] | The new feature flags. |
+| `features` | [[OrganizationFeature](#organizationfeature)!] | The new feature flags. |
 
 ---
 
@@ -601,8 +493,8 @@ A paginated list of Organization items.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[OrganizationEdge](../organizations.md#organizationedge)!]! | A list of edges. |
-| `nodes` | [[Organization](../organizations.md#organization)!]! | A list of nodes in the connection (without edge metadata). |
+| `edges` | [[OrganizationEdge](#organizationedge)!]! | A list of edges. |
+| `nodes` | [[Organization](#organization)!]! | A list of nodes in the connection (without edge metadata). |
 | `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
 | `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
@@ -617,6 +509,6 @@ An edge in the Organization connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Organization](../organizations.md#organization)! | The organization at the end of the edge. |
+| `node` | [Organization](#organization)! | The organization at the end of the edge. |
 
 ---

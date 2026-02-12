@@ -26,21 +26,15 @@ inventory(id: ID!): Inventory
 
 An inventory or warehouse record for device stock management.
 
-**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this inventory. |
-| `filter` | [DeviceFilter](../types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this inventory. |
+| `devices` | [DeviceConnection](types.md#deviceconnection)! | The devices assigned to this inventory. |
 
 </details>
 
@@ -50,54 +44,23 @@ An inventory or warehouse record for device stock management.
 
 An organization in the hierarchy that owns entities and users.
 
-**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
 | `externalId` | `String` | An external system identifier for integration purposes. |
 | `isActive` | `Boolean!` | Whether this organization is active. |
-| `features` | [[OrganizationFeature](../../organizations.md#organizationfeature)!]! | The feature flags enabled for this organization. |
-| `parent` | [Organization](../../organizations.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
-| `filter` | [OrganizationChildrenFilter](../../organizations.md#organizationchildrenfilter) | Filtering options for the returned children. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `OrganizationOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned children. |
-| `filter` | [MemberFilter](../../organizations/members.md#memberfilter) | Filtering options for the returned members. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `MemberOrder = { field: ASSIGNED_AT, direction: DESC }` | The ordering options for the returned members. |
-| `filter` | [DeviceFilter](../types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
-| `filter` | [AssetFilter](../../assets/types.md#assetfilter) | Filtering options for the returned assets. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `AssetOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned assets. |
-| `filter` | [GeoObjectFilter](../../geo-objects/types.md#geoobjectfilter) | Filtering options for the returned geo objects. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `GeoObjectOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned geo objects. |
-| `filter` | [ScheduleFilter](../../schedules/types.md#schedulefilter) | Filtering options for the returned schedules. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `ScheduleOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned schedules. |
+| `features` | [[OrganizationFeature](../organizations/README.md#organizationfeature)!]! | The feature flags enabled for this organization. |
+| `parent` | [Organization](../organizations/README.md#organization) | The parent organization in the hierarchy. Null for root organizations. |
+| `children` | [OrganizationConnection](../organizations/README.md#organizationconnection)! | The child organizations. |
+| `members` | [MemberConnection](../organizations/members.md#memberconnection)! | The members of this organization. |
+| `devices` | [DeviceConnection](types.md#deviceconnection)! | The devices owned by this organization. |
+| `assets` | [AssetConnection](../assets/types.md#assetconnection)! | The assets owned by this organization. |
+| `geoObjects` | [GeoObjectConnection](../geo-objects/types.md#geoobjectconnection)! | The geographic objects owned by this organization. |
+| `schedules` | [ScheduleConnection](../schedules/types.md#scheduleconnection)! | The schedules owned by this organization. |
 
 </details>
 
@@ -123,14 +86,13 @@ inventories(
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | `ID!` |  |
-| `filter` | `InventoryFilter` |  |
-| `first` | `Int` |  |
-| `after` | `String` |  |
-| `last` | `Int` |  |
-| `before` | `String` |  |
-| `orderBy` | `InventoryOrder` |  |
-| `direction` | `ASC }` |  |
+| `organizationId` | `ID!` | The organization to retrieve inventories for. |
+| `filter` | `InventoryFilter` | Filtering options for the returned inventories. |
+| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
+| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
+| `orderBy` | `InventoryOrder` | The ordering options for the returned inventories. |
 
 **Input types:**
 
@@ -154,8 +116,8 @@ Ordering options for inventories.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [InventoryOrderField](../inventory.md#inventoryorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
+| `field` | [InventoryOrderField](#inventoryorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 </details>
 
@@ -167,14 +129,14 @@ Ordering options for inventories.
 
 A paginated list of Inventory items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[InventoryEdge](../inventory.md#inventoryedge)!]! | A list of edges. |
-| `nodes` | [[Inventory](../inventory.md#inventory)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[InventoryEdge](#inventoryedge)!]! | A list of edges. |
+| `nodes` | [[Inventory](#inventory)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 </details>
 
@@ -236,7 +198,7 @@ The result of an inventory mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `inventory` | [Inventory](../inventory.md#inventory)! | The created or updated inventory. |
+| `inventory` | [Inventory](#inventory)! | The created or updated inventory. |
 
 </details>
 
@@ -246,21 +208,15 @@ The result of an inventory mutation.
 
 An inventory or warehouse record for device stock management.
 
-**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this inventory. |
-| `filter` | [DeviceFilter](../types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this inventory. |
+| `devices` | [DeviceConnection](types.md#deviceconnection)! | The devices assigned to this inventory. |
 
 </details>
 
@@ -306,7 +262,7 @@ The result of an inventory mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `inventory` | [Inventory](../inventory.md#inventory)! | The created or updated inventory. |
+| `inventory` | [Inventory](#inventory)! | The created or updated inventory. |
 
 </details>
 
@@ -316,21 +272,15 @@ The result of an inventory mutation.
 
 An inventory or warehouse record for device stock management.
 
-**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this inventory. |
-| `filter` | [DeviceFilter](../types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this inventory. |
+| `devices` | [DeviceConnection](types.md#deviceconnection)! | The devices assigned to this inventory. |
 
 </details>
 
@@ -420,7 +370,7 @@ The result of a device inventory link mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceInventoryRelation` | [DeviceInventoryRelation](../inventory.md#deviceinventoryrelation)! | The created inventory assignment. |
+| `deviceInventoryRelation` | [DeviceInventoryRelation](#deviceinventoryrelation)! | The created inventory assignment. |
 
 </details>
 
@@ -430,15 +380,15 @@ The result of a device inventory link mutation.
 
 A record of a device's assignment to an inventory.
 
-**Implements:** [Node](../../common.md#node)
+**Implements:** [Node](../common.md#node)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `device` | [Device](../types.md#device)! | The device that was assigned. |
-| `inventory` | [Inventory](../inventory.md#inventory)! | The inventory the device was assigned to. |
+| `device` | [Device](types.md#device)! | The device that was assigned. |
+| `inventory` | [Inventory](#inventory)! | The inventory the device was assigned to. |
 | `assignedAt` | `DateTime!` | The date and time when the device was assigned. |
-| `assignedBy` | [Actor](../../actors.md#actor) | The actor who assigned the device. |
+| `assignedBy` | [Actor](../actors/README.md#actor) | The actor who assigned the device. |
 
 </details>
 
@@ -494,15 +444,15 @@ The result of a delete mutation.
 
 A record of a device's assignment to an inventory.
 
-**Implements:** [Node](../../common.md#node)
+**Implements:** [Node](../common.md#node)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `device` | [Device](../types.md#device)! | The device that was assigned. |
-| `inventory` | [Inventory](../inventory.md#inventory)! | The inventory the device was assigned to. |
+| `device` | [Device](types.md#device)! | The device that was assigned. |
+| `inventory` | [Inventory](#inventory)! | The inventory the device was assigned to. |
 | `assignedAt` | `DateTime!` | The date and time when the device was assigned. |
-| `assignedBy` | [Actor](../../actors.md#actor) | The actor who assigned the device. |
+| `assignedBy` | [Actor](../actors/README.md#actor) | The actor who assigned the device. |
 
 ---
 
@@ -510,21 +460,15 @@ A record of a device's assignment to an inventory.
 
 An inventory or warehouse record for device stock management.
 
-**Implements:** [Node](../../common.md#node), [Versioned](../../common.md#versioned), [Titled](../../common.md#titled)
+**Implements:** [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 | `title` | `String!` | The human-readable display name. |
-| `organization` | [Organization](../../organizations.md#organization)! | The organization that owns this inventory. |
-| `filter` | [DeviceFilter](../types.md#devicefilter) | Filtering options for the returned devices. |
-| `first` | `Int` | The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `after` | `String` | The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `last` | `Int` | The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination). |
-| `before` | `String` | The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination). |
-| `orderBy` | `DeviceOrder = { field: TITLE, direction: ASC }` | The ordering options for the returned devices. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this inventory. |
+| `devices` | [DeviceConnection](types.md#deviceconnection)! | The devices assigned to this inventory. |
 
 ---
 
@@ -534,7 +478,7 @@ The result of an inventory mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `inventory` | [Inventory](../inventory.md#inventory)! | The created or updated inventory. |
+| `inventory` | [Inventory](#inventory)! | The created or updated inventory. |
 
 ---
 
@@ -544,7 +488,7 @@ The result of a device inventory link mutation.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `deviceInventoryRelation` | [DeviceInventoryRelation](../inventory.md#deviceinventoryrelation)! | The created inventory assignment. |
+| `deviceInventoryRelation` | [DeviceInventoryRelation](#deviceinventoryrelation)! | The created inventory assignment. |
 
 ---
 
@@ -556,8 +500,8 @@ Ordering options for device inventory relations.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [DeviceInventoryRelationOrderField](../inventory.md#deviceinventoryrelationorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
+| `field` | [DeviceInventoryRelationOrderField](#deviceinventoryrelationorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 ---
 
@@ -577,8 +521,8 @@ Ordering options for inventories.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `field` | [InventoryOrderField](../inventory.md#inventoryorderfield)! | The field to order by. |
-| `direction` | [OrderDirection](../../common.md#orderdirection)! | The direction to order. |
+| `field` | [InventoryOrderField](#inventoryorderfield)! | The field to order by. |
+| `direction` | [OrderDirection](../common.md#orderdirection)! | The direction to order. |
 
 ---
 
@@ -665,12 +609,12 @@ Fields available for ordering inventories.
 
 An object that can be assigned to an inventory.
 
-**Implements:** [Node](../../common.md#node)
+**Implements:** [Node](../common.md#node)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `id` | `ID!` | A globally unique identifier. |
-| `inventory` | [Inventory](../inventory.md#inventory) | The inventory this item is currently assigned to. |
+| `inventory` | [Inventory](#inventory) | The inventory this item is currently assigned to. |
 
 ---
 
@@ -680,14 +624,14 @@ An object that can be assigned to an inventory.
 
 A paginated list of Inventory items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[InventoryEdge](../inventory.md#inventoryedge)!]! | A list of edges. |
-| `nodes` | [[Inventory](../inventory.md#inventory)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[InventoryEdge](#inventoryedge)!]! | A list of edges. |
+| `nodes` | [[Inventory](#inventory)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 ---
 
@@ -695,12 +639,12 @@ A paginated list of Inventory items.
 
 An edge in the Inventory connection.
 
-**Implements:** [Edge](../../common.md#edge)
+**Implements:** [Edge](../common.md#edge)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [Inventory](../inventory.md#inventory)! | The inventory at the end of the edge. |
+| `node` | [Inventory](#inventory)! | The inventory at the end of the edge. |
 
 ---
 
@@ -708,14 +652,14 @@ An edge in the Inventory connection.
 
 A paginated list of DeviceInventoryRelation items.
 
-**Implements:** [Connection](../../common.md#connection)
+**Implements:** [Connection](../common.md#connection)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `edges` | [[DeviceInventoryRelationEdge](../inventory.md#deviceinventoryrelationedge)!]! | A list of edges. |
-| `nodes` | [[DeviceInventoryRelation](../inventory.md#deviceinventoryrelation)!]! | A list of nodes in the connection (without edge metadata). |
-| `pageInfo` | [PageInfo](../../common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](../../common.md#countinfo) | The total count of items matching the filter. |
+| `edges` | [[DeviceInventoryRelationEdge](#deviceinventoryrelationedge)!]! | A list of edges. |
+| `nodes` | [[DeviceInventoryRelation](#deviceinventoryrelation)!]! | A list of nodes in the connection (without edge metadata). |
+| `pageInfo` | [PageInfo](../common.md#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](../common.md#countinfo) | The total count of items matching the filter. |
 
 ---
 
@@ -723,11 +667,11 @@ A paginated list of DeviceInventoryRelation items.
 
 An edge in the DeviceInventoryRelation connection.
 
-**Implements:** [Edge](../../common.md#edge)
+**Implements:** [Edge](../common.md#edge)
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `cursor` | `String!` | An opaque cursor for this edge. |
-| `node` | [DeviceInventoryRelation](../inventory.md#deviceinventoryrelation)! | The device inventory relation at the end of the edge. |
+| `node` | [DeviceInventoryRelation](#deviceinventoryrelation)! | The device inventory relation at the end of the edge. |
 
 ---

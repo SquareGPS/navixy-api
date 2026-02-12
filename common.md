@@ -86,7 +86,7 @@ Information about the total count of items in a connection.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `count` | `Int!` | The count of items matching the filter. |
-| `precision` | [CountPrecision](common.md#countprecision)! | The precision level of the count value. |
+| `precision` | [CountPrecision](#countprecision)! | The precision level of the count value. |
 
 ---
 
@@ -151,7 +151,7 @@ An object that supports custom field values.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `codes` | `[Code!]` | Limit returned fields to these codes. Returns all fields if not specified. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
 
 ---
 
@@ -161,8 +161,7 @@ An object that supports optimistic locking for concurrency control.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `version` | `Int!` | The version number for optimistic locking.
-  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
 
 ---
 
@@ -192,8 +191,8 @@ A paginated connection following the Relay Cursor Connections specification.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| `pageInfo` | [PageInfo](common.md#pageinfo)! | Information about the current page. |
-| `total` | [CountInfo](common.md#countinfo) | The total count of items matching the filter. |
+| `pageInfo` | [PageInfo](#pageinfo)! | Information about the current page. |
+| `total` | [CountInfo](#countinfo) | The total count of items matching the filter. |
 
 ---
 
