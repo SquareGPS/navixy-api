@@ -1,24 +1,42 @@
+---
+description: old version
+---
+
 # Getting started
 
-This guide will walk you through the basic steps to start using Navixy Repository API. You'll learn how to authenticate, create an inventory and an inventory item to store your GPS device, and activate it.
+Start using Navixy Repository API with a minimal end-to-end workflow. You’ll authenticate via OAuth 2.0 Authorization Code flow (OpenID Connect). You’ll then create an inventory, add a GPS device as an inventory item, and activate it.
 
 ### Prerequisites
 
 Before you begin, ensure you have:
 
 * Valid Navixy Repository API credentials (`client_id` and `client_secret`).
-* A registered Callback URL (Redirect URI): The specific URL in your application where users will be redirected after granting consent.
-* URLs of API and authentication servers ({BASE\_URL} and {AUTH\_BASE\_URL}), determined depending on your geographical location and the current version of the API. For more information about {BASE\_URL}, see [API environments](technical-reference.md#api-environments). For information about {AUTH\_BASE\_URL}, see [Authentication environments](authentication.md#authentication-urls).
+* A registered Callback URL (Redirect URI) for the OAuth2 redirect.
+* Your API base URL (`{BASE_URL}`) for REST endpoints. See [API environments](/broken/pages/UpKpxPxvOOMJckvsSJ9N#api-environments).
+* Your authentication base URL (`{AUTH_BASE_URL}`) for OAuth2 endpoints. See [Authentication environments](authentication.md#authentication-urls).
 * A secure method to generate and validate the `state` parameter for Cross-Site Request Forgery (CSRF) protection.
 * A GPS device ready for activation that belongs to the list of [supported devices](https://www.navixy.com/devices/).
 
-### Step 1. Authentication
+### API endpoints used in this guide
+
+You’ll call these Navixy Repository API endpoints:
+
+* OAuth2 authorization: `{AUTH_BASE_URL}/realms/users/protocol/openid-connect/auth`
+* OAuth2 token exchange: `{AUTH_BASE_URL}/realms/users/protocol/openid-connect/token`
+* Inventory and device activation:
+  * `{BASE_URL}/inventory/create`
+  * `{BASE_URL}/inventory_item/master/model/list`
+  * `{BASE_URL}/inventory_item/master/create`
+  * `{BASE_URL}/inventory_item/master/activate`
+  * `{BASE_URL}/inventory_item/master/list`
+
+### Step 1. OAuth2 authentication (Authorization Code flow)
 
 Navixy Repository API supports the OAuth2 Authorization Code Flow. To acquire an access token, follow these steps:
 
 {% stepper %}
 {% step %}
-**Redirect users to the authorization endpoint**
+**Redirect users to the OAuth2 authorization endpoint**
 
 ```bash
 curl -L \
@@ -68,7 +86,7 @@ curl -L \
 
 #### How to make authenticated requests
 
-Include the access token in all API requests:
+Include the Bearer access token in every API request:
 
 ```bash
 curl -L \
@@ -79,16 +97,16 @@ curl -L \
 
 For more information about authenticating in Navixy Repository API, see [Authentication](authentication.md).
 
-### Step 2. Activate your GPS device
+### Step 2. Activate a GPS tracking device (inventory item)
 
 GPS devices in Navixy Repository API are called **inventory items** and are organized into **inventories**.\
-For a more in-depth explanation of activating a GPS device and working with inventories, see [Activating a GPS device](guides/activating-a-gps-device.md).
+For a more in-depth explanation of activating a GPS device and working with inventories, see [Activating a GPS device](guides/activating-a-device.md).
 
 {% stepper %}
 {% step %}
 **Fetch device model specification**
 
-Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can retrieve the complete profile for any supported model by querying the [**/inventory\_item/master/model/list**](endpoint-reference/api-reference/inventory-item.md#get-v0-inventory_item-master-model-list) endpoint.
+Navixy Repository API supports [a wide variety of GPS devices](https://www.navixy.com/devices/), each with its own unique set of parameters for activation and communication. To work with any GPS device, you first need its specific parameters. You can retrieve the complete profile for any supported model by querying the [**/inventory\_item/master/model/list**](/broken/pages/DyP1yBfCuntDOIbPhXf1#get-v0-inventory_item-master-model-list) endpoint.
 
 For example, to get the specifications for a Teltonika FMC234, use the following request:
 
@@ -239,15 +257,15 @@ You should see your device in the response.
 * Fetched the specification for your device model
 * Created an inventory for your devices
 * Created an inventory item representing your device
-* Activated the device that can now [transmit location data](guides/activating-a-gps-device.md#how-to-use-the-data-transmitted-by-the-device)
+* Activated the device that can now [transmit location data](guides/activating-a-device.md#how-to-use-the-data-transmitted-by-the-device)
 {% endhint %}
 
 #### Next steps
 
 Now that you have the basics set up, you can:
 
-* [Add and activate more devices by creating additional inventory items](guides/activating-a-gps-device.md)
-* [Create new inventories to store your devices](guides/activating-a-gps-device.md#step-2.-create-an-inventory)
-* [Create custom asset types for different categories of assets](guides/creating-a-custom-asset.md#step-1.-create-an-asset-type)
-* [Create assets (objects representing real-world business units) and assign devices to them](guides/creating-a-custom-asset.md#step-3.-create-an-asset)
-* [Group assets by location, department, or function via asset links](getting-started.md#step-4.-organize-assets-with-asset-links)
+* [Add and activate more devices by creating additional inventory items](guides/activating-a-device.md)
+* Create new inventories to store your devices
+* Create custom asset types for different categories of assets
+* Create assets (objects representing real-world business units) and assign devices to them
+* [Group assets by location, department, or function](guides/organizing-assets-into-groups.md)

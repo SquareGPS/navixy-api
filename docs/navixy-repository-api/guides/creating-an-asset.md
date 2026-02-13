@@ -1,4 +1,8 @@
-# Creating a custom asset
+---
+description: old version
+---
+
+# Creating an asset
 
 An asset represents a trackable unit with a clear business purpose. While assets are stored in the system independently, using them involves assigning them activated GPS devices — or, in the API terms, **inventory items**. Multiple items can be assigned to a single asset.
 
@@ -9,7 +13,7 @@ In this guide, you will learn how to create and configure a custom asset.
 ### How to create a custom asset
 
 {% hint style="warning" %}
-Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location and the current version of the API. To learn the specific server URLs, see [API environments](../technical-reference.md#api-environments).
+Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be using, which depends on your geographical location and the current version of the API. To learn the specific server URLs, see [API environments](/broken/pages/UpKpxPxvOOMJckvsSJ9N#api-environments).
 {% endhint %}
 
 #### Step 1. Create an asset type
@@ -104,22 +108,21 @@ The **`fields`** key is an array of custom field objects used to add user-create
 
 * **Text**: A short text value.\
   `{"value":"Example text"}`
-
-- **Bigtext**: A large text value for storing long user input or multi-line content.\
+* **Bigtext**: A large text value for storing long user input or multi-line content.\
   `{value":"Longer text or content spanning multiple lines..."}`
-- **Integer**: A whole number (not a fraction or decimal).\
+* **Integer**: A whole number (not a fraction or decimal).\
   `{"value":100}`
-- **Decimal**: A decimal (fixed-point) value.\
+* **Decimal**: A decimal (fixed-point) value.\
   `{"value":123.45}`
-- **GeoJSON**: A GeoJSON value (geometry, feature, or feature collection). Typically used for describing geofences.\
+* **GeoJSON**: A GeoJSON value (geometry, feature, or feature collection). Typically used for describing geofences.\
   `{value":{"type":"Point","coordinates":[30,10]}}`
-- **Master item**: A reference to a master inventory item using its unique internal ID.\
+* **Master item**: A reference to a master inventory item using its unique internal ID.\
   `{"value":123}`
 
 </details>
 
 {% hint style="danger" %}
-If you remove a custom field from an asset type via [**asset\_type/update**](../endpoint-reference/api-reference/asset-type.md#post-v0-asset_type-update), all assets based on this type will lose this field. If you add a new field marked as required, you will need to add values for that field to the assets.
+If you remove a custom field from an asset type via [**asset\_type/update**](/broken/pages/1MtcaDtn0CZQCR6D8Xsx#post-v0-asset_type-update), all assets based on this type will lose this field. If you add a new field marked as required, you will need to add values for that field to the assets.
 {% endhint %}
 
 After sending the request, you will receive a response with the ID of the newly created asset type:
@@ -309,5 +312,5 @@ curl -L \
 
 {% hint style="success" %}
 **Congratulations!**\
-You've successfully created a custom asset. Next, you can [add it to an asset link](configuring-an-asset-link.md).
+You've successfully created a custom asset. Next, you can [add it to an asset link](organizing-assets-into-groups.md).
 {% endhint %}

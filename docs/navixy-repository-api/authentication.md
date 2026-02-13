@@ -1,3 +1,7 @@
+---
+description: old version
+---
+
 # Authentication
 
 Authentication is required for all API requests and is based on OAuth 2.0.
