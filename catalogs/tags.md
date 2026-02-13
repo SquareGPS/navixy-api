@@ -102,7 +102,9 @@ Information about the current page in a paginated connection.
 Creates a new tag.
 
 ```graphql
-tagCreate(input: TagCreateInput!): TagPayload
+tagCreate(
+    input: TagCreateInput!
+  ): TagPayload
 ```
 
 **Arguments**
@@ -189,7 +191,9 @@ A tag for labeling and categorizing entities.
 Updates a tag.
 
 ```graphql
-tagUpdate(input: TagUpdateInput!): TagPayload
+tagUpdate(
+    input: TagUpdateInput!
+  ): TagPayload
 ```
 
 **Arguments**
@@ -276,7 +280,9 @@ A tag for labeling and categorizing entities.
 Deletes a tag.
 
 ```graphql
-tagDelete(input: CatalogItemDeleteInput!): DeletePayload
+tagDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

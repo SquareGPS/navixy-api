@@ -5,7 +5,9 @@
 Assigns a role to an actor.
 
 ```graphql
-roleAssign(input: RoleAssignInput!): ActorRolePayload
+roleAssign(
+    input: RoleAssignInput!
+  ): ActorRolePayload
 ```
 
 **Arguments**
@@ -70,7 +72,9 @@ An assignment of a role to an actor.
 Revokes a role from an actor.
 
 ```graphql
-roleRevoke(input: RoleRevokeInput!): DeletePayload
+roleRevoke(
+    input: RoleRevokeInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -114,7 +118,9 @@ The result of a delete mutation.
 Grants a permission to a role.
 
 ```graphql
-permissionGrant(input: PermissionGrantInput!): RolePermissionPayload
+permissionGrant(
+    input: PermissionGrantInput!
+  ): RolePermissionPayload
 ```
 
 **Arguments**
@@ -181,7 +187,9 @@ A permission granted to a role.
 Revokes a permission from a role.
 
 ```graphql
-permissionRevoke(input: PermissionRevokeInput!): DeletePayload
+permissionRevoke(
+    input: PermissionRevokeInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -225,7 +233,9 @@ The result of a delete mutation.
 Sets a user scope restriction.
 
 ```graphql
-userScopeSet(input: UserScopeSetInput!): UserScopePayload
+userScopeSet(
+    input: UserScopeSetInput!
+  ): UserScopePayload
 ```
 
 **Arguments**
@@ -291,7 +301,9 @@ When present, effective permissions = role permissions ∩ user scope.
 Removes a user scope restriction.
 
 ```graphql
-userScopeRemove(input: UserScopeRemoveInput!): DeletePayload
+userScopeRemove(
+    input: UserScopeRemoveInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -335,7 +347,9 @@ The result of a delete mutation.
 Creates a new role.
 
 ```graphql
-roleCreate(input: RoleCreateInput!): RolePayload
+roleCreate(
+    input: RoleCreateInput!
+  ): RolePayload
 ```
 
 **Arguments**
@@ -421,7 +435,9 @@ A role that can be assigned to actors to grant permissions.
 Updates a role.
 
 ```graphql
-roleUpdate(input: RoleUpdateInput!): RolePayload
+roleUpdate(
+    input: RoleUpdateInput!
+  ): RolePayload
 ```
 
 **Arguments**
@@ -507,7 +523,9 @@ A role that can be assigned to actors to grant permissions.
 Deletes a role.
 
 ```graphql
-roleDelete(input: CatalogItemDeleteInput!): DeletePayload
+roleDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

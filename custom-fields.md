@@ -9,7 +9,9 @@ Custom field definitions allow extending entities with organization-specific dat
 Creates a custom field definition.
 
 ```graphql
-customFieldDefinitionCreate(input: CustomFieldDefinitionCreateInput!): CustomFieldDefinitionPayload
+customFieldDefinitionCreate(
+    input: CustomFieldDefinitionCreateInput!
+  ): CustomFieldDefinitionPayload
 ```
 
 **Arguments**
@@ -311,7 +313,9 @@ To change the field type, delete the definition and create a new one.
 Updates a custom field definition. Note: `fieldType` cannot be changed.
 
 ```graphql
-customFieldDefinitionUpdate(input: CustomFieldDefinitionUpdateInput!): CustomFieldDefinitionPayload
+customFieldDefinitionUpdate(
+    input: CustomFieldDefinitionUpdateInput!
+  ): CustomFieldDefinitionPayload
 ```
 
 **Arguments**
@@ -610,7 +614,9 @@ To change the field type, delete the definition and create a new one.
 Deletes a custom field definition.
 
 ```graphql
-customFieldDefinitionDelete(input: CustomFieldDefinitionDeleteInput!): DeletePayload
+customFieldDefinitionDelete(
+    input: CustomFieldDefinitionDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

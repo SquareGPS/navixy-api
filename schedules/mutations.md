@@ -5,7 +5,9 @@
 Creates a new schedule.
 
 ```graphql
-scheduleCreate(input: ScheduleCreateInput!): SchedulePayload
+scheduleCreate(
+    input: ScheduleCreateInput!
+  ): SchedulePayload
 ```
 
 **Arguments**
@@ -86,7 +88,9 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 Updates an existing schedule.
 
 ```graphql
-scheduleUpdate(input: ScheduleUpdateInput!): SchedulePayload
+scheduleUpdate(
+    input: ScheduleUpdateInput!
+  ): SchedulePayload
 ```
 
 **Arguments**
@@ -167,7 +171,9 @@ A schedule definition for work hours, maintenance windows, or other time-based r
 Deletes a schedule.
 
 ```graphql
-scheduleDelete(input: ScheduleDeleteInput!): DeletePayload
+scheduleDelete(
+    input: ScheduleDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -212,7 +218,9 @@ The result of a delete mutation.
 Creates a new schedule type.
 
 ```graphql
-scheduleTypeCreate(input: ScheduleTypeCreateInput!): ScheduleTypePayload
+scheduleTypeCreate(
+    input: ScheduleTypeCreateInput!
+  ): ScheduleTypePayload
 ```
 
 **Arguments**
@@ -298,7 +306,9 @@ A classification type for schedules.
 Updates a schedule type.
 
 ```graphql
-scheduleTypeUpdate(input: ScheduleTypeUpdateInput!): ScheduleTypePayload
+scheduleTypeUpdate(
+    input: ScheduleTypeUpdateInput!
+  ): ScheduleTypePayload
 ```
 
 **Arguments**
@@ -384,7 +394,9 @@ A classification type for schedules.
 Deletes a schedule type.
 
 ```graphql
-scheduleTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
+scheduleTypeDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

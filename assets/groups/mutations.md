@@ -5,7 +5,9 @@
 Creates a new asset group.
 
 ```graphql
-assetGroupCreate(input: AssetGroupCreateInput!): AssetGroupPayload
+assetGroupCreate(
+    input: AssetGroupCreateInput!
+  ): AssetGroupPayload
 ```
 
 **Arguments**
@@ -73,7 +75,9 @@ A group of assets.
 Updates an existing asset group.
 
 ```graphql
-assetGroupUpdate(input: AssetGroupUpdateInput!): AssetGroupPayload
+assetGroupUpdate(
+    input: AssetGroupUpdateInput!
+  ): AssetGroupPayload
 ```
 
 **Arguments**
@@ -141,7 +145,9 @@ A group of assets.
 Deletes an asset group.
 
 ```graphql
-assetGroupDelete(input: AssetGroupDeleteInput!): DeletePayload
+assetGroupDelete(
+    input: AssetGroupDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -186,7 +192,9 @@ The result of a delete mutation.
 Adds an asset to a group.
 
 ```graphql
-assetGroupItemAdd(input: AssetGroupItemAddInput!): AssetGroupItemPayload
+assetGroupItemAdd(
+    input: AssetGroupItemAddInput!
+  ): AssetGroupItemPayload
 ```
 
 **Arguments**
@@ -249,7 +257,9 @@ A record of an asset's membership in a group.
 Removes an asset from a group.
 
 ```graphql
-assetGroupItemRemove(input: AssetGroupItemRemoveInput!): DeletePayload
+assetGroupItemRemove(
+    input: AssetGroupItemRemoveInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -294,7 +304,9 @@ The result of a delete mutation.
 Creates a new asset group type.
 
 ```graphql
-assetGroupTypeCreate(input: AssetGroupTypeCreateInput!): AssetGroupTypePayload
+assetGroupTypeCreate(
+    input: AssetGroupTypeCreateInput!
+  ): AssetGroupTypePayload
 ```
 
 **Arguments**
@@ -394,7 +406,9 @@ A type for asset groups with membership constraints.
 Updates an asset group type.
 
 ```graphql
-assetGroupTypeUpdate(input: AssetGroupTypeUpdateInput!): AssetGroupTypePayload
+assetGroupTypeUpdate(
+    input: AssetGroupTypeUpdateInput!
+  ): AssetGroupTypePayload
 ```
 
 **Arguments**
@@ -494,7 +508,9 @@ A type for asset groups with membership constraints.
 Deletes an asset group type.
 
 ```graphql
-assetGroupTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
+assetGroupTypeDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

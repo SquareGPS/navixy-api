@@ -165,7 +165,9 @@ Information about the current page in a paginated connection.
 Creates a new integration.
 
 ```graphql
-integrationCreate(input: IntegrationCreateInput!): IntegrationPayload
+integrationCreate(
+    input: IntegrationCreateInput!
+  ): IntegrationPayload
 ```
 
 **Arguments**
@@ -230,7 +232,9 @@ An external system integration with API access.
 Updates an existing integration.
 
 ```graphql
-integrationUpdate(input: IntegrationUpdateInput!): IntegrationPayload
+integrationUpdate(
+    input: IntegrationUpdateInput!
+  ): IntegrationPayload
 ```
 
 **Arguments**
@@ -297,7 +301,9 @@ An external system integration with API access.
 Deletes an integration.
 
 ```graphql
-integrationDelete(input: IntegrationDeleteInput!): DeletePayload
+integrationDelete(
+    input: IntegrationDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

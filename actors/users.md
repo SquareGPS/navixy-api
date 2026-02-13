@@ -2,35 +2,6 @@
 
 User accounts representing human operators who access the system through the UI or API.
 
-## Queries
-
-### me
-
-Retrieves the currently authenticated actor.
-
-```graphql
-me: Actor!
-```
-
-**Output types:**
-
-<details>
-
-<summary>Actor</summary>
-
-An entity that can perform actions and have permissions assigned.
-
-**Implements:** [Node](../common.md#node), [Titled](../common.md#titled)
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `id` | `ID!` | A globally unique identifier. |
-| `title` | `String!` | The display name of the actor. |
-
-</details>
-
----
-
 ## Mutations
 
 ### myProfileUpdate
@@ -38,7 +9,9 @@ An entity that can perform actions and have permissions assigned.
 Updates the current user's profile (name only).
 
 ```graphql
-myProfileUpdate(input: MyProfileUpdateInput!): UserPayload
+myProfileUpdate(
+    input: MyProfileUpdateInput!
+  ): UserPayload
 ```
 
 **Arguments**
@@ -120,7 +93,9 @@ A human user account authenticated via an identity provider.
 Creates a new user catalog item.
 
 ```graphql
-userCatalogItemCreate(input: UserCatalogItemCreateInput!): UserCatalogItemPayload
+userCatalogItemCreate(
+    input: UserCatalogItemCreateInput!
+  ): UserCatalogItemPayload
 ```
 
 **Arguments**
@@ -209,7 +184,9 @@ A user-defined catalog item that supports hierarchical organization.
 Updates a user catalog item.
 
 ```graphql
-userCatalogItemUpdate(input: UserCatalogItemUpdateInput!): UserCatalogItemPayload
+userCatalogItemUpdate(
+    input: UserCatalogItemUpdateInput!
+  ): UserCatalogItemPayload
 ```
 
 **Arguments**
@@ -297,7 +274,9 @@ A user-defined catalog item that supports hierarchical organization.
 Deletes a user catalog item.
 
 ```graphql
-userCatalogItemDelete(input: CatalogItemDeleteInput!): DeletePayload
+userCatalogItemDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

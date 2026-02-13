@@ -5,7 +5,9 @@
 Creates a new device.
 
 ```graphql
-deviceCreate(input: DeviceCreateInput!): DevicePayload
+deviceCreate(
+    input: DeviceCreateInput!
+  ): DevicePayload
 ```
 
 **Arguments**
@@ -108,7 +110,9 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 Updates an existing device.
 
 ```graphql
-deviceUpdate(input: DeviceUpdateInput!): DevicePayload
+deviceUpdate(
+    input: DeviceUpdateInput!
+  ): DevicePayload
 ```
 
 **Arguments**
@@ -196,7 +200,9 @@ A tracking device such as a GPS tracker, sensor, or beacon.
 Deletes a device.
 
 ```graphql
-deviceDelete(input: DeviceDeleteInput!): DeletePayload
+deviceDelete(
+    input: DeviceDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -241,7 +247,9 @@ The result of a delete mutation.
 Adds an identifier to a device.
 
 ```graphql
-deviceIdentifierAdd(input: DeviceIdentifierAddInput!): DeviceIdentifierPayload
+deviceIdentifierAdd(
+    input: DeviceIdentifierAddInput!
+  ): DeviceIdentifierPayload
 ```
 
 **Arguments**
@@ -318,7 +326,9 @@ A hardware identifier for a device.
 Removes an identifier from a device.
 
 ```graphql
-deviceIdentifierRemove(input: DeviceIdentifierRemoveInput!): DeletePayload
+deviceIdentifierRemove(
+    input: DeviceIdentifierRemoveInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -362,7 +372,9 @@ The result of a delete mutation.
 Creates a relationship between devices.
 
 ```graphql
-deviceRelationCreate(input: DeviceRelationCreateInput!): DeviceRelationPayload
+deviceRelationCreate(
+    input: DeviceRelationCreateInput!
+  ): DeviceRelationPayload
 ```
 
 **Arguments**
@@ -425,7 +437,9 @@ A relationship between two devices.
 Removes a device relationship.
 
 ```graphql
-deviceRelationRemove(input: DeviceRelationRemoveInput!): DeletePayload
+deviceRelationRemove(
+    input: DeviceRelationRemoveInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -469,7 +483,9 @@ The result of a delete mutation.
 Creates a new device type.
 
 ```graphql
-deviceTypeCreate(input: DeviceTypeCreateInput!): DeviceTypePayload
+deviceTypeCreate(
+    input: DeviceTypeCreateInput!
+  ): DeviceTypePayload
 ```
 
 **Arguments**
@@ -555,7 +571,9 @@ A classification type for devices.
 Updates a device type.
 
 ```graphql
-deviceTypeUpdate(input: DeviceTypeUpdateInput!): DeviceTypePayload
+deviceTypeUpdate(
+    input: DeviceTypeUpdateInput!
+  ): DeviceTypePayload
 ```
 
 **Arguments**
@@ -641,7 +659,9 @@ A classification type for devices.
 Deletes a device type.
 
 ```graphql
-deviceTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
+deviceTypeDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -686,7 +706,9 @@ The result of a delete mutation.
 Creates a new device status.
 
 ```graphql
-deviceStatusCreate(input: DeviceStatusCreateInput!): DeviceStatusPayload
+deviceStatusCreate(
+    input: DeviceStatusCreateInput!
+  ): DeviceStatusPayload
 ```
 
 **Arguments**
@@ -771,7 +793,9 @@ An operational status for devices.
 Updates a device status.
 
 ```graphql
-deviceStatusUpdate(input: DeviceStatusUpdateInput!): DeviceStatusPayload
+deviceStatusUpdate(
+    input: DeviceStatusUpdateInput!
+  ): DeviceStatusPayload
 ```
 
 **Arguments**
@@ -856,7 +880,9 @@ An operational status for devices.
 Deletes a device status.
 
 ```graphql
-deviceStatusDelete(input: CatalogItemDeleteInput!): DeletePayload
+deviceStatusDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

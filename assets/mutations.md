@@ -5,7 +5,9 @@
 Creates a new asset.
 
 ```graphql
-assetCreate(input: AssetCreateInput!): AssetPayload
+assetCreate(
+    input: AssetCreateInput!
+  ): AssetPayload
 ```
 
 **Arguments**
@@ -86,7 +88,9 @@ A physical or logical asset being tracked.
 Updates an existing asset.
 
 ```graphql
-assetUpdate(input: AssetUpdateInput!): AssetPayload
+assetUpdate(
+    input: AssetUpdateInput!
+  ): AssetPayload
 ```
 
 **Arguments**
@@ -167,7 +171,9 @@ A physical or logical asset being tracked.
 Deletes an asset.
 
 ```graphql
-assetDelete(input: AssetDeleteInput!): DeletePayload
+assetDelete(
+    input: AssetDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -212,7 +218,9 @@ The result of a delete mutation.
 Creates a new asset type.
 
 ```graphql
-assetTypeCreate(input: AssetTypeCreateInput!): AssetTypePayload
+assetTypeCreate(
+    input: AssetTypeCreateInput!
+  ): AssetTypePayload
 ```
 
 **Arguments**
@@ -298,7 +306,9 @@ A classification type for assets.
 Updates an asset type.
 
 ```graphql
-assetTypeUpdate(input: AssetTypeUpdateInput!): AssetTypePayload
+assetTypeUpdate(
+    input: AssetTypeUpdateInput!
+  ): AssetTypePayload
 ```
 
 **Arguments**
@@ -384,7 +394,9 @@ A classification type for assets.
 Deletes an asset type.
 
 ```graphql
-assetTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
+assetTypeDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

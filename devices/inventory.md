@@ -164,7 +164,9 @@ Information about the current page in a paginated connection.
 Creates a new inventory.
 
 ```graphql
-inventoryCreate(input: InventoryCreateInput!): InventoryPayload
+inventoryCreate(
+    input: InventoryCreateInput!
+  ): InventoryPayload
 ```
 
 **Arguments**
@@ -227,7 +229,9 @@ An inventory or warehouse record for device stock management.
 Updates an existing inventory.
 
 ```graphql
-inventoryUpdate(input: InventoryUpdateInput!): InventoryPayload
+inventoryUpdate(
+    input: InventoryUpdateInput!
+  ): InventoryPayload
 ```
 
 **Arguments**
@@ -291,7 +295,9 @@ An inventory or warehouse record for device stock management.
 Deletes an inventory.
 
 ```graphql
-inventoryDelete(input: InventoryDeleteInput!): DeletePayload
+inventoryDelete(
+    input: InventoryDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -336,7 +342,9 @@ The result of a delete mutation.
 Links a device to an inventory.
 
 ```graphql
-deviceInventoryLink(input: DeviceInventoryLinkInput!): DeviceInventoryRelationPayload
+deviceInventoryLink(
+    input: DeviceInventoryLinkInput!
+  ): DeviceInventoryRelationPayload
 ```
 
 **Arguments**
@@ -399,7 +407,9 @@ A record of a device's assignment to an inventory.
 Unlinks a device from an inventory.
 
 ```graphql
-deviceInventoryUnlink(input: DeviceInventoryUnlinkInput!): DeletePayload
+deviceInventoryUnlink(
+    input: DeviceInventoryUnlinkInput!
+  ): DeletePayload
 ```
 
 **Arguments**

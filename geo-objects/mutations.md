@@ -5,7 +5,9 @@
 Creates a new geo object.
 
 ```graphql
-geoObjectCreate(input: GeoObjectCreateInput!): GeoObjectPayload
+geoObjectCreate(
+    input: GeoObjectCreateInput!
+  ): GeoObjectPayload
 ```
 
 **Arguments**
@@ -87,7 +89,9 @@ A geographic object such as a geofence, point of interest, or route.
 Updates an existing geo object.
 
 ```graphql
-geoObjectUpdate(input: GeoObjectUpdateInput!): GeoObjectPayload
+geoObjectUpdate(
+    input: GeoObjectUpdateInput!
+  ): GeoObjectPayload
 ```
 
 **Arguments**
@@ -169,7 +173,9 @@ A geographic object such as a geofence, point of interest, or route.
 Deletes a geo object.
 
 ```graphql
-geoObjectDelete(input: GeoObjectDeleteInput!): DeletePayload
+geoObjectDelete(
+    input: GeoObjectDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**
@@ -214,7 +220,9 @@ The result of a delete mutation.
 Creates a new geo object type.
 
 ```graphql
-geoObjectTypeCreate(input: GeoObjectTypeCreateInput!): GeoObjectTypePayload
+geoObjectTypeCreate(
+    input: GeoObjectTypeCreateInput!
+  ): GeoObjectTypePayload
 ```
 
 **Arguments**
@@ -300,7 +308,9 @@ A classification type for geographic objects.
 Updates a geo object type.
 
 ```graphql
-geoObjectTypeUpdate(input: GeoObjectTypeUpdateInput!): GeoObjectTypePayload
+geoObjectTypeUpdate(
+    input: GeoObjectTypeUpdateInput!
+  ): GeoObjectTypePayload
 ```
 
 **Arguments**
@@ -386,7 +396,9 @@ A classification type for geographic objects.
 Deletes a geo object type.
 
 ```graphql
-geoObjectTypeDelete(input: CatalogItemDeleteInput!): DeletePayload
+geoObjectTypeDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

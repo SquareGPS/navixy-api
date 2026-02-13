@@ -162,7 +162,9 @@ Information about the current page in a paginated connection.
 Creates a new organization.
 
 ```graphql
-organizationCreate(input: OrganizationCreateInput!): OrganizationPayload
+organizationCreate(
+    input: OrganizationCreateInput!
+  ): OrganizationPayload
 ```
 
 **Arguments**
@@ -235,7 +237,9 @@ An organization in the hierarchy that owns entities and users.
 Updates an existing organization.
 
 ```graphql
-organizationUpdate(input: OrganizationUpdateInput!): OrganizationPayload
+organizationUpdate(
+    input: OrganizationUpdateInput!
+  ): OrganizationPayload
 ```
 
 **Arguments**
@@ -310,7 +314,9 @@ An organization in the hierarchy that owns entities and users.
 Deletes an organization and all its data.
 
 ```graphql
-organizationDelete(input: OrganizationDeleteInput!): DeletePayload
+organizationDelete(
+    input: OrganizationDeleteInput!
+  ): DeletePayload
 ```
 
 **Arguments**

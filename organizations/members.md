@@ -165,7 +165,9 @@ Information about the current page in a paginated connection.
 Adds a user to an organization as a member.
 
 ```graphql
-memberCreate(input: MemberCreateInput!): MemberPayload
+memberCreate(
+    input: MemberCreateInput!
+  ): MemberPayload
 ```
 
 **Arguments**
@@ -244,7 +246,9 @@ A user's membership in an organization.
 Updates a membership.
 
 ```graphql
-memberUpdate(input: MemberUpdateInput!): MemberPayload
+memberUpdate(
+    input: MemberUpdateInput!
+  ): MemberPayload
 ```
 
 **Arguments**
@@ -324,7 +328,9 @@ A user's membership in an organization.
 Removes a user from an organization.
 
 ```graphql
-memberRemove(input: MemberRemoveInput!): DeletePayload
+memberRemove(
+    input: MemberRemoveInput!
+  ): DeletePayload
 ```
 
 **Arguments**

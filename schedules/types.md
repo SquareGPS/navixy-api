@@ -169,7 +169,13 @@ Fields available for ordering schedules.
 
 ### ScheduleData
 
-**Specification:** [https://api.navixy.com/spec/scalars/schedule-data](https://api.navixy.com/spec/scalars/schedule-data)
+A schedule data structure containing time intervals and recurrence rules.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `iCalendar-compatible JSON` |
+| Example | `{"intervals": [...], "rrule": "FREQ=WEEKLY;BYDAY=MO,WE,FR"}` |
+| Specification | [https://api.navixy.com/spec/scalars/schedule-data](https://api.navixy.com/spec/scalars/schedule-data) |
 
 ---
 

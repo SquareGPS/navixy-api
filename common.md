@@ -104,6 +104,8 @@ The result of a delete mutation.
 
 ### OrderDirection
 
+The direction for sorting query results.
+
 | Value | Description |
 | ----- | ----------- |
 | `ASC` | Sort in ascending order (A→Z, 0→9, oldest→newest). NULL values appear last. |
@@ -202,66 +204,137 @@ A paginated connection following the Relay Cursor Connections specification.
 
 An [ISO 8601](https://www.iso.org/standard/8601.html) datetime string with timezone ([RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.html)). Example: `2024-01-15T10:30:00Z`.
 
-**Specification:** [https://scalars.graphql.org/chillicream/date-time.html](https://scalars.graphql.org/chillicream/date-time.html)
+| Property | Value |
+| -------- | ----- |
+| Format | `YYYY-MM-DDTHH:mm:ss.sssZ` |
+| Example | `2025-01-15T14:30:00.000Z` |
+| Specification | [https://scalars.graphql.org/chillicream/date-time.html](https://scalars.graphql.org/chillicream/date-time.html) |
 
 ---
 
 ### Date
 
-**Specification:** [https://scalars.graphql.org/chillicream/date.html](https://scalars.graphql.org/chillicream/date.html)
+An [ISO 8601](https://www.iso.org/standard/8601.html) date string without time component ([RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.html)). Example: `2024-01-15`.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `YYYY-MM-DD` |
+| Example | `2025-01-15` |
+| Specification | [https://scalars.graphql.org/chillicream/date.html](https://scalars.graphql.org/chillicream/date.html) |
 
 ---
 
 ### JSON
 
-**Specification:** [https://www.rfc-editor.org/rfc/rfc8259](https://www.rfc-editor.org/rfc/rfc8259)
+An arbitrary JSON value. Can be an object, array, string, number, boolean, or null.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `Any valid JSON` |
+| Example | `{"key": "value", "count": 42}` |
+| Specification | [https://www.rfc-editor.org/rfc/rfc8259](https://www.rfc-editor.org/rfc/rfc8259) |
 
 ---
 
 ### GeoJSON
 
-**Specification:** [https://www.rfc-editor.org/rfc/rfc7946](https://www.rfc-editor.org/rfc/rfc7946)
+A GeoJSON geometry object ([RFC 7946](https://www.rfc-editor.org/rfc/rfc7946.html)). Supports Point, LineString, Polygon, and other geometry types.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `GeoJSON geometry object` |
+| Example | `{"type": "Point", "coordinates": [125.6, 10.1]}` |
+| Specification | [https://www.rfc-editor.org/rfc/rfc7946](https://www.rfc-editor.org/rfc/rfc7946) |
 
 ---
 
 ### Latitude
 
-**Specification:** [https://the-guild.dev/graphql/scalars/docs/scalars/latitude](https://the-guild.dev/graphql/scalars/docs/scalars/latitude)
+A geographic latitude coordinate in decimal degrees. Valid range: -90.0 to 90.0.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `-90.0 to 90.0` |
+| Example | `37.7749` |
 
 ---
 
 ### Longitude
 
-**Specification:** [https://the-guild.dev/graphql/scalars/docs/scalars/longitude](https://the-guild.dev/graphql/scalars/docs/scalars/longitude)
+A geographic longitude coordinate in decimal degrees. Valid range: -180.0 to 180.0.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `-180.0 to 180.0` |
+| Example | `-122.4194` |
 
 ---
 
 ### Locale
 
-**Specification:** [https://the-guild.dev/graphql/scalars/docs/scalars/locale](https://the-guild.dev/graphql/scalars/docs/scalars/locale)
+A BCP 47 language tag identifying a user locale. Example: `en-US`, `es-MX`, `fr-CA`.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `language-REGION` |
+| Example | `en-US` |
+| Specification | [https://the-guild.dev/graphql/scalars/docs/scalars/locale](https://the-guild.dev/graphql/scalars/docs/scalars/locale) |
 
 ---
 
 ### EmailAddress
 
-**Specification:** [https://the-guild.dev/graphql/scalars/docs/scalars/email-address](https://the-guild.dev/graphql/scalars/docs/scalars/email-address)
+An email address conforming to [RFC 5322](https://www.rfc-editor.org/rfc/rfc5322.html). Example: `user@example.com`.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `user@domain` |
+| Example | `user@example.com` |
 
 ---
 
 ### HexColorCode
 
-**Specification:** [https://the-guild.dev/graphql/scalars/docs/scalars/hex-color-code](https://the-guild.dev/graphql/scalars/docs/scalars/hex-color-code)
+A hexadecimal color code. Supports 3-digit (`#RGB`) or 6-digit (`#RRGGBB`) format.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `#RRGGBB` |
+| Example | `#FF5733` |
 
 ---
 
 ### CountryCode
 
-**Specification:** [https://the-guild.dev/graphql/scalars/docs/scalars/country-code](https://the-guild.dev/graphql/scalars/docs/scalars/country-code)
+An [ISO 3166](https://www.iso.org/standard/3166.html)-1 alpha-2 country code. Example: `US`, `GB`, `ES`.
+
+| Property | Value |
+| -------- | ----- |
+| Format | `Two uppercase letters` |
+| Example | `US` |
 
 ---
 
 ### Code
 
-**Specification:** [https://api.navixy.com/spec/scalars/code](https://api.navixy.com/spec/scalars/code)
+A machine-readable identifier code.
+
+Constraints:
+- Allowed characters: ASCII letters (a-z, A-Z), digits (0-9), underscore (_), dot (.), hyphen (-)
+- Must start with a letter or digit
+- Case-insensitive for uniqueness checks
+- Maximum length: 64 characters
+
+Naming conventions:
+- System items: UPPER_SNAKE_CASE (e.g., DEVICE_TYPE, ACTIVE)
+- User items: any valid format (e.g., vehicle_car, sensor-v2)
+
+Examples: DEVICE_TYPE, vehicle_car, status.active, sensor-v2, ABC123
+
+| Property | Value |
+| -------- | ----- |
+| Format | `lowercase_snake_case` |
+| Example | `vehicle_type` |
+| Specification | [https://api.navixy.com/spec/scalars/code](https://api.navixy.com/spec/scalars/code) |
 
 ---
