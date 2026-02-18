@@ -246,7 +246,7 @@ Each aliased mutation executes independently. If one fails, others can still suc
 
 ## Directives
 
-Directives modify how fields are executed. GraphQL includes [six built-in directives](../directives.md) for conditional field inclusion.
+Directives modify how fields are executed. GraphQL includes [six built-in directives](../core-api-reference/directives.md) for conditional field inclusion.
 
 Directives can be used to:
 

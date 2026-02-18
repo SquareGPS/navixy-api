@@ -11,7 +11,6 @@ For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 **Navixy Repository API** enables you to:
 
 * Manage **organizations** in a multi-tenant hierarchy (dealers, sub-organizations)
-* Create and configure **asset types** with custom properties (vehicles, equipment, staff)
 * Create **assets** and organize them into **groups**
 * Register **devices** (GPS trackers, sensors) with hardware identifiers and assign them to **inventories**
 * Define **geo objects** (geofences, points of interest, routes) with GeoJSON geometry
@@ -26,13 +25,7 @@ For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
 The API is organized around these core resources:
 
-<table><thead><tr><th width="138.5999755859375">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>A tenant in the system hierarchy. Organizations own all other resources and can have parent-child relationships.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity.</td></tr><tr><td><strong>Asset type</strong></td><td>Defines the structure of property fields and display configuration for assets. Examples: "Boats", "Cargo", "Warehouse Operators". Supports full customization.</td></tr><tr><td><strong>Asset group</strong></td><td>A custom collection of assets organized by business logic (fleets, departments, shifts). Groups have types that can restrict which asset types they contain.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Inventory</strong></td><td>A logical grouping of devices for stock management (warehouse, vehicle stock, field inventory). Devices are assigned to inventories before being deployed to assets.</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity: geofence, point of interest, or route. Geometry is stored as GeoJSON in the <code>geojson</code> custom field.</td></tr></tbody></table>
-
-## Integration with Navixy ecosystem
-
-**Navixy Repository API** works alongside other APIs, including [Navixy API](https://app.gitbook.com/o/YVLWhgAwCZPoU5vlRsCs/s/6dtcPLayxXVB2qaaiuIL/), which handles tracking, GPS device configuration, and reporting, and [IoT Logic API](https://app.gitbook.com/o/YVLWhgAwCZPoU5vlRsCs/s/tx3J5BxnWyPV0nP2xr0z/), a data flow manager that processes and optimizes data flows between IoT devices and destination systems.
-
-\[Integration specifics go here]
+<table><thead><tr><th width="138.5999755859375">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>A tenant in the system hierarchy. Organizations own all other resources and can have parent-child relationships.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity. Assets can be grouped together or assigned one or several GPS devices.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity: geofence, point of interest, or route. Geometry is stored as GeoJSON in the <code>geojson</code> custom field.</td></tr><tr><td><strong>Catalog</strong></td><td>Configurable lookup table for entity types, statuses, and other classification systems.</td></tr></tbody></table>
 
 ## Navigation
 
@@ -43,29 +36,30 @@ The **Navixy Repository API documentation** is organized into two complementary 
 These articles provide essential background knowledge and guidelines:
 
 * [**GraphQL basics**](graphql-basics.md): A brief introduction to GraphQL for developers familiar with REST APIs.
+* [**GraphQL tips and patterns**](graphql-basics/graphql-tips-and-patterns.md): Practical suggestions for improving your GraphQL experience.
 * [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through authentication and your first queries.
 * [**Authentication**](authentication.md): How to obtain and use access tokens.
-* Error handling:
-* Pagination and Filtering and sorting:
-* [**Optimistic locking**](optimistic-locking.md): Description of the optimistic locking feature.
-* Directives:
+* [**Error handling**](error-handling.md)**:** Error structure, codes, and common error scenarios.
+* [**Pagination** ](pagination.md)and [**Filtering and sorting**](filtering-and-sorting.md): Instruments for efficient navigating through pages of data and narrowing down results by criteria and order.
+* [**Optimistic locking**](optimistic-locking.md): How the API handles concurrent updates to prevent conflicting changes from overwriting each other.
 * [**Guides**](guides/): In-depth guides exploring the most common use cases.
 
 ### Core API reference
 
-The API reference provides complete technical specifications for GraphQL types and operations, grouped by categories:
+The API reference provides complete technical specifications for all GraphQL types and operations, grouped by category:
 
-* **Common resources:**
-* **Organizations:**
-* **Actors:**
-* **Devices:**
-* **Assets:**
-* **Geo objects:**
-* **Schedules:**
-* **Access control:**
-* **Custom fields:**
-* **Audit:**
-* **Catalogs:**
+* [**Common resources**](common.md)
+* [**Directives**](core-api-reference/directives.md)
+* [**Organizations**](organizations/)
+* [**Actors**](actors/)
+* [**Devices**](devices/)
+* [**Assets**](assets/)
+* [**Geo objects**](geo-objects/)
+* [**Schedules**](schedules/)
+* [**Access control**](access-control/)
+* [**Custom fields**](custom-fields.md)
+* [**Audit**](audit.md)
+* [**Catalogs**](catalogs/)
 
 {% hint style="warning" %}
 The API supports [GraphQL introspection](graphql-basics.md#the-schema) for authenticated users. You can perform it via [Navixy Repository GraphQL Sandbox](https://api.navixy.dev/v4/graphql/sandbox) (currently in query-only demo mode) or with your own tools.

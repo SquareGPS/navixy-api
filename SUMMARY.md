@@ -9,7 +9,6 @@
 * [Filtering and sorting](filtering-and-sorting.md)
 * [Error handling](error-handling.md)
 * [Optimistic locking](optimistic-locking.md)
-* [Directives](directives.md)
 * [Guides](guides/README.md)
   * [Activating a device](guides/activating-a-device.md)
   * [Creating an asset](guides/creating-an-asset.md)
@@ -22,6 +21,7 @@
 
 ## Core API reference
 
+* [Directives](core-api-reference/directives.md)
 * [Common resources](common.md)
 * [Organizations](organizations/README.md)
   * [Members](organizations/members.md)
