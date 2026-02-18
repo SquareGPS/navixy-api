@@ -112,7 +112,7 @@ A delivery company needs to define service areas and mark important locations. T
 
 {% stepper %}
 {% step %}
-### Create a Point location (warehouse)
+#### Create a Point location (warehouse)
 
 Start by marking your main warehouse location with a `Point` type:
 
@@ -163,7 +163,7 @@ Save the `id` and `version` — you'll need them for updates.
 {% endstep %}
 
 {% step %}
-### Verify the geo object
+#### Verify the geo object
 
 Query the geo object to confirm it was created correctly:
 
@@ -186,7 +186,7 @@ The `geometry` field returns the full GeoJSON structure you provided, which you 
 {% endstep %}
 
 {% step %}
-### Create a polygon-shaped delivery zone
+#### Create a polygon-shaped delivery zone
 
 Create a rectangular delivery zone covering central Berlin:
 
@@ -242,7 +242,7 @@ The response returns:
 {% endstep %}
 
 {% step %}
-### Test point containment
+#### Test point containment
 
 Check if specific delivery addresses fall within your zone using the `containsPoints` method:
 
@@ -303,7 +303,7 @@ The `containsPoints` method is only available for `Polygon` and `MultiPolygon` g
 {% endstep %}
 
 {% step %}
-#### Update the zone boundary
+**Update the zone boundary**
 
 As your delivery business expands, you need to cover a larger area. Update the zone geometry to extend the boundaries:
 
@@ -357,7 +357,7 @@ The response shows the incremented version:
 {% endstep %}
 
 {% step %}
-### Delete the geo object
+#### Delete the geo object
 
 When you restructure your delivery zones and no longer need this geo object, you can delete it:
 
@@ -536,4 +536,3 @@ For more details on version conflicts, see [Optimistic locking](../optimistic-lo
 ### Next steps
 
 * TBD
-

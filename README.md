@@ -22,7 +22,7 @@ For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
 ## Key concepts
 
-<figure><img src=".gitbook/assets/diagram-logo-final.webp" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/diagram-logo-final (1).webp" alt=""><figcaption></figcaption></figure>
 
 The API is organized around these core resources:
 
@@ -45,22 +45,28 @@ These articles provide essential background knowledge and guidelines:
 * [**GraphQL basics**](graphql-basics.md): A brief introduction to GraphQL for developers familiar with REST APIs.
 * [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through authentication and your first queries.
 * [**Authentication**](authentication.md): How to obtain and use access tokens.
-* [**Technical reference**](/broken/pages/UpKpxPxvOOMJckvsSJ9N): Implementation details covering headers, pagination, and error handling.
+* Error handling:
+* Pagination and Filtering and sorting:
 * [**Optimistic locking**](optimistic-locking.md): Description of the optimistic locking feature.
+* Directives:
 * [**Guides**](guides/): In-depth guides exploring the most common use cases.
 
-### API reference
+### Core API reference
 
-The API reference provides complete technical specifications for GraphQL types and operations:
+The API reference provides complete technical specifications for GraphQL types and operations, grouped by categories:
 
-* **Queries**: Read operations for fetching data
-* **Mutations**: Write operations for creating, updating, and deleting
-* **Subscriptions:** Real-time event streams delivered over WebSocket
-* **Objects**: Output structures returned by operations
-* **Inputs**: Input structures for operation arguments
-* **Enums**: Enumeration values
-* **Scalars**: API-specific scalar types
+* **Common resources:**
+* **Organizations:**
+* **Actors:**
+* **Devices:**
+* **Assets:**
+* **Geo objects:**
+* **Schedules:**
+* **Access control:**
+* **Custom fields:**
+* **Audit:**
+* **Catalogs:**
 
-{% hint style="info" %}
-The API supports [GraphQL introspection](graphql-basics.md#the-schema) for authenticated users. Tools such as GraphiQL and Apollo Sandbox can discover the schema automatically and provide autocomplete as you write queries.
+{% hint style="warning" %}
+The API supports [GraphQL introspection](graphql-basics.md#the-schema) for authenticated users. You can perform it via [Navixy Repository GraphQL Sandbox](https://api.navixy.dev/v4/graphql/sandbox) (currently in query-only demo mode) or with your own tools.
 {% endhint %}

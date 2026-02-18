@@ -276,5 +276,5 @@ query ListDevices(
 ## Next steps
 
 * [Learn how to set up authentication and make your first request](../getting-started.md)
-* [Browse available operations and types](../graphql-reference/all-operations-and-types/)
+* [Browse available operations and types by category](https://squaregps.gitbook.io/newdb-demo/test-repository-api/core-api-reference/)
 * [Understand error responses and codes](../error-handling.md)
