@@ -17,10 +17,12 @@ _required permissions_: `password: "update"`.
 
 #### Parameters
 
-| name          | description                                                | type   |
-| ------------- | ---------------------------------------------------------- | ------ |
-| old\_password | Current dealer's password.                                 | string |
-| new\_password | New password for the dealer, 6 to 20 printable characters. | string |
+| name          | description              | type   |
+| ------------- | ------------------------ | ------ |
+| old\_password | Current dealer password. | string |
+| new\_password | New dealer password.     | string |
+
+{% include "../../../.gitbook/includes/password-requirements.md" %}
 
 #### Example
 

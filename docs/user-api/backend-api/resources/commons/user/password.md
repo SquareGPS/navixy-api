@@ -17,9 +17,11 @@ Changes password of user with the provided session hash (it is contained in a pa
 
 #### Parameters
 
-| name     | description                                              | type   |
-| -------- | -------------------------------------------------------- | ------ |
-| password | New password for the user. 6 to 20 printable characters. | string |
+| name     | description                | type   |
+| -------- | -------------------------- | ------ |
+| password | New password for the user. | string |
+
+{% include "../../../../../.gitbook/includes/password-requirements.md" %}
 
 #### Example
 

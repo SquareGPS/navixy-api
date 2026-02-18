@@ -374,10 +374,12 @@ _required permissions_: `users: "update"`.
 
 #### Parameters
 
-| name     | description                                        | type   |
-| -------- | -------------------------------------------------- | ------ |
-| user\_id | ID of a user.                                      | int    |
-| password | User's new password, 6 to 20 printable characters. | string |
+| name     | description          | type   |
+| -------- | -------------------- | ------ |
+| user\_id | ID of a user.        | int    |
+| password | User's new password. | string |
+
+{% include "../../../.gitbook/includes/password-requirements.md" %}
 
 #### Example
 

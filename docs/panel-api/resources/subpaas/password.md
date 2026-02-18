@@ -19,10 +19,12 @@ Changes SubPaaS password.
 
 #### Parameters
 
-| name          | description                                          | type   |
-| ------------- | ---------------------------------------------------- | ------ |
-| subpaas\_id   | Subpaas' ID.                                         | int    |
-| new\_password | New subpaas' password, 6 to 20 printable characters. | string |
+| name          | description           | type   |
+| ------------- | --------------------- | ------ |
+| subpaas\_id   | Subpaas ID.           | int    |
+| new\_password | New subpaas password. | string |
+
+{% include "../../../.gitbook/includes/password-requirements.md" %}
 
 #### Example
 
