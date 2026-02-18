@@ -21,7 +21,7 @@ For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
 ## Key concepts
 
-<figure><img src=".gitbook/assets/Repo API Overview v1-2026-02-18-161902.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 The API is organized around these core resources:
 
