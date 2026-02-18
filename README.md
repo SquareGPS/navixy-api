@@ -10,22 +10,22 @@ For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
 **Navixy Repository API** enables you to:
 
-* Manage **organizations** in a multi-tenant hierarchy (dealers, sub-organizations)
+* Manage **organizations** in a multi-tenant hierarchy
 * Create **assets** and organize them into **groups**
-* Register **devices** (GPS trackers, sensors) with hardware identifiers and assign them to **inventories**
+* Register **devices** (GPS trackers, sensors) with hardware identifiers and add them to **inventories**
 * Define **geo objects** (geofences, points of interest, routes) with GeoJSON geometry
 * Create **schedules** for work hours, maintenance windows, and time-based rules
 * Configure **custom fields** to extend any entity with organization-specific data
-* Set up **roles and permissions** to control access at the organization, entity type, or individual record level
+* Set up **roles and permissions** to control access
 * Subscribe to **real-time events** when entities are created, updated, or deleted
 
 ## Key concepts
 
-<figure><img src=".gitbook/assets/diagram-logo-final (1).webp" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Repo API Overview v1-2026-02-18-161902.png" alt=""><figcaption></figcaption></figure>
 
 The API is organized around these core resources:
 
-<table><thead><tr><th width="138.5999755859375">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>A tenant in the system hierarchy. Organizations own all other resources and can have parent-child relationships.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity. Assets can be grouped together or assigned one or several GPS devices.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity: geofence, point of interest, or route. Geometry is stored as GeoJSON in the <code>geojson</code> custom field.</td></tr><tr><td><strong>Catalog</strong></td><td>Configurable lookup table for entity types, statuses, and other classification systems.</td></tr></tbody></table>
+<table><thead><tr><th width="147.48895263671875">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>A tenant in the system hierarchy. Organizations own all other resources and can have parent-child relationships.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity. Assets can be linked into <strong>asset groups</strong> or assigned one or several GPS devices.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Inventory</strong></td><td>A logical grouping of devices for stock management (warehouse, vehicle stock, field inventory). Devices can be split into inventories.</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity based on the GeoJSON standard: geofence, point of interest, or route.</td></tr><tr><td><strong>Schedule</strong></td><td>iCalendar-compatible time-based rules for your operations.</td></tr><tr><td><strong>Catalog</strong></td><td>A configurable lookup table for entity types, statuses, and other classification systems.</td></tr></tbody></table>
 
 ## Navigation
 
