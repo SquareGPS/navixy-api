@@ -41,7 +41,7 @@ input DeleteDeviceInput {
 
 Optimistic locking applies to:
 
-<table><thead><tr><th width="180">Entity</th><th>Description</th></tr></thead><tbody><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#device">Device</a></td><td>GPS trackers, sensors, beacons</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#asset">Asset</a></td><td>Vehicles, equipment, employees</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#assetgroup">AssetGroup</a></td><td>Asset collections</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#geoobject">GeoObject</a></td><td>Geofences, POIs, routes</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#schedule">Schedule</a></td><td>Work hours, maintenance windows</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#inventory-1">Inventory</a></td><td>Warehouse records</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#organization">Organization</a></td><td>Organization hierarchy nodes</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#user">User</a></td><td>User accounts</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#member">Member</a></td><td>Organization memberships</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#integration">Integration</a></td><td>External system integrations</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/objects.md#customfielddefinition">CustomFieldDefinition</a></td><td>Custom field metadata</td></tr><tr><td><a href="graphql-reference/all-operations-and-types/interfaces.md#catalogitem">CatalogItem</a></td><td>All catalog items (device types, asset types, roles, tags, etc.)</td></tr></tbody></table>
+<table><thead><tr><th width="180">Entity</th><th>Description</th></tr></thead><tbody><tr><td><a href="devices/types.md#device">Device</a></td><td>GPS trackers, sensors, beacons</td></tr><tr><td><a href="assets/types.md#asset">Asset</a></td><td>Vehicles, equipment, employees</td></tr><tr><td><a href="assets/groups/types.md#assetgroup">AssetGroup</a></td><td>Asset collections</td></tr><tr><td><a href="geo-objects/types.md#geoobject">Geo object</a></td><td>Geofences, POIs, routes</td></tr><tr><td><a href="schedules/types.md#schedule">Schedule</a></td><td>Work hours, maintenance windows</td></tr><tr><td><a href="devices/inventory.md#inventory-2">Inventory</a></td><td>Warehouse records</td></tr><tr><td><a href="organizations/#organization-2">Organization</a></td><td>Organization hierarchy nodes</td></tr><tr><td><a href="actors/users.md#user">User</a></td><td>User accounts</td></tr><tr><td><a href="organizations/members.md#member-2">Member</a></td><td>Organization memberships</td></tr><tr><td><a href="actors/integrations.md#integration-2">Integration</a></td><td>External system integrations</td></tr><tr><td><a href="custom-fields.md#customfielddefinition">CustomFieldDefinition</a></td><td>Custom field metadata</td></tr><tr><td><a href="catalogs/catalog-items.md#catalogitem">CatalogItem</a></td><td>All catalog items (device types, asset types, roles, tags, etc.)</td></tr></tbody></table>
 
 ### Operations by type
 
@@ -129,20 +129,20 @@ User A's update succeeds first. User B's update fails because the version change
 
 Mutations that manage relationships and assignments are called **idempotent commands**. They do not require or check the `version` field.
 
-| Mutation                                                                                                 | Purpose                       |
-| -------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| [deviceInventoryLink](graphql-reference/all-operations-and-types/mutations.md#deviceinventorylink)       | Link device to inventory      |
-| [deviceInventoryUnlink](graphql-reference/all-operations-and-types/mutations.md#deviceinventoryunlink)   | Unlink device from inventory  |
-| [deviceIdentifierAdd](graphql-reference/all-operations-and-types/mutations.md#deviceidentifieradd)       | Add identifier to device      |
-| [deviceIdentifierRemove](graphql-reference/all-operations-and-types/mutations.md#deviceidentifierremove) | Remove identifier from device |
-| [assetGroupItemAdd](graphql-reference/all-operations-and-types/mutations.md#assetgroupitemadd)           | Add asset to group            |
-| [assetGroupItemRemove](graphql-reference/all-operations-and-types/mutations.md#assetgroupitemremove)     | Remove asset from group       |
-| [roleAssign](graphql-reference/all-operations-and-types/mutations.md#roleassign)                         | Assign role to actor          |
-| [roleRevoke](graphql-reference/all-operations-and-types/mutations.md#rolerevoke)                         | Revoke role from actor        |
-| [permissionGrant](graphql-reference/all-operations-and-types/mutations.md#permissiongrant)               | Grant permission to role      |
-| [permissionRevoke](graphql-reference/all-operations-and-types/mutations.md#permissionrevoke)             | Revoke permission from role   |
-| [userScopeSet](graphql-reference/all-operations-and-types/mutations.md#userscopeset)                     | Set user scope restriction    |
-| [userScopeRemove](graphql-reference/all-operations-and-types/mutations.md#userscoperemove)               | Remove user scope restriction |
+| Mutation                                                                | Purpose                       |
+| ----------------------------------------------------------------------- | ----------------------------- |
+| [deviceInventoryLink](devices/inventory.md#deviceinventorylink)         | Link device to inventory      |
+| [deviceInventoryUnlink](devices/inventory.md#deviceinventoryunlink)     | Unlink device from inventory  |
+| [deviceIdentifierAdd](devices/mutations.md#deviceidentifieradd)         | Add identifier to device      |
+| [deviceIdentifierRemove](devices/mutations.md#deviceidentifierremove)   | Remove identifier from device |
+| [assetGroupItemAdd](assets/groups/mutations.md#assetgroupitemadd)       | Add asset to group            |
+| [assetGroupItemRemove](assets/groups/mutations.md#assetgroupitemremove) | Remove asset from group       |
+| [roleAssign](access-control/mutations.md#roleassign)                    | Assign role to actor          |
+| [roleRevoke](access-control/mutations.md#rolerevoke)                    | Revoke role from actor        |
+| [permissionGrant](access-control/mutations.md#permissiongrant)          | Grant permission to role      |
+| [permissionRevoke](access-control/mutations.md#permissionrevoke)        | Revoke permission from role   |
+| [userScopeSet](access-control/mutations.md#userscopeset)                | Set user scope restriction    |
+| [userScopeRemove](access-control/mutations.md#userscoperemove)          | Remove user scope restriction |
 
 These operations behave as follows:
 

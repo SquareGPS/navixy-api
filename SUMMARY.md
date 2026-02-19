@@ -17,7 +17,7 @@
   * [Working with geo objects](guides/creating-a-geo-object.md)
   * [Configuring user permissions](guides/configuring-user-permissions.md)
   * [Managing schedules](guides/managing-schedules.md)
-  * [Working with custom fields](guides/working-with-custom-fields.md)
+  * [Implementing custom fields](guides/working-with-custom-fields.md)
 
 ## Core API reference
 

@@ -19,7 +19,7 @@ Pagination applies to all list queries. They return connection types following a
 
 Many nested fields are also paginated — for example, `Organization.devices` or `AssetGroup.items`. You can identify paginated fields by their return type (anything ending in `Connection`) or by the presence of `first`, `after`, `last`, and `before` arguments.
 
-See the [Queries ](graphql-reference/all-operations-and-types/queries.md)reference for the complete list of available queries, or use [introspection ](graphql-basics.md#introspection)to explore them in your GraphQL client.
+Pagination types are described in separate sections of each entity's page — see [Asset pagination types](assets/types.md#pagination-types) as an example. You can also use [introspection ](graphql-basics.md#introspection)to explore them in your GraphQL client.
 
 ## The Connection pattern
 
