@@ -115,15 +115,15 @@ _required permissions_: `[users: "corrupt", "global"]`.
 
 #### Parameters
 
-| name                | description                                                                                            | type                                              |
-| ------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
-| user                | [User object](./#user-object-structure) without the `id`, `dealer_id`, `comment` and read-only fields. | JSON object                                       |
-| time\_zone          | User timezone.                                                                                         | string                                            |
-| locale              | User locale.                                                                                           | string                                            |
-| password            | User password, 6 to 20 printable characters.                                                           | string                                            |
-| discount            | [Discount object](./#discount-object-structure).                                                       | JSON object                                       |
-| default\_tariff\_id | Optional. ID of a default tariff plan for user's trackers                                              | int                                               |
-| `comment`           | Comment                                                                                                | String, max length 255, only printable characters |
+| name                | description                                                                                                                 | type                                              |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| user                | [User object](./#user-object-structure) without the `id`, `dealer_id`, `comment` and read-only fields.                      | JSON object                                       |
+| time\_zone          | User timezone.                                                                                                              | string                                            |
+| locale              | User locale.                                                                                                                | string                                            |
+| password            | User password, 12 to 20 printable characters. Must contain uppercase, lowercase, digits, and special characters (!@#$%^&\*) | string                                            |
+| discount            | [Discount object](./#discount-object-structure).                                                                            | JSON object                                       |
+| default\_tariff\_id | Optional. ID of a default tariff plan for user's trackers                                                                   | int                                               |
+| `comment`           | Comment                                                                                                                     | String, max length 255, only printable characters |
 
 If `user.verified` not passed then it set equal to `user.activated`.
 
@@ -166,7 +166,7 @@ If `user.verified` not passed then it set equal to `user.activated`.
               },
               "time_zone": "America/Los_Angeles",
               "locale": "en_US",
-              "password": "12@14Y$",
+              "password": "Hh6FXTt%E!Rx*%f3",
               "discount": {
                 "value": 5.5,
                 "min_trackers": 10,
@@ -387,7 +387,7 @@ _required permissions_: `users: "update"`.
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/panel/user/change_password' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432, "password": "12@14Y$"}'
+    -d '{"hash": "22eac1c27af4be7b9d04da2ce1af111b", "user_id": 231432, "password": "Hh6FXTt%E!Rx*%f3"}'
 ```
 {% endcode %}
 

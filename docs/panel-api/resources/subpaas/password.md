@@ -34,7 +34,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/panel/subpaas/password/change' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 99874, "new_password": "Fr1d@Y$"}'
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "subpaas_id": 99874, "new_password": "Hh6FXTt%E!Rx*%f3"}'
 ```
 {% endcode %}
 

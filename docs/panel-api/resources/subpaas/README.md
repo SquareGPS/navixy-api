@@ -62,6 +62,8 @@ Creates a subPaaS. After creation, its `dealer_block_type` will be in `INITIAL_B
 | jur\_country     | Subpaas' country      | string |
 | link\_monitoring | Subpaas' domain name. | string |
 
+{% include "../../../.gitbook/includes/password-requirements.md" %}
+
 #### Example
 
 cURL
@@ -70,7 +72,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/panel/subpaas/create' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com"}'
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "D9#YoBaQd@RMjMSb", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com"}'
 ```
 {% endcode %}
 
@@ -240,7 +242,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/panel/subpaas/create' \
     -H 'Content-Type: application/json' \
-    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "B1r7d@Y", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com", "contact_fio": "fio", "contact_post": "CEO", "contact_phone": "79999902190", "block_type": "NOT_BLOCKED"}'
+    -d '{"hash": "fa7bf873fab9333144e171372a321b06", "password": "D9#YoBaQd@RMjMSb", "title": "Company", "email": "email@company.com", "jur_name": "Company", "jur_country": "Finland", "link_monitoring": "company.com", "contact_fio": "fio", "contact_post": "CEO", "contact_phone": "79999902190", "block_type": "NOT_BLOCKED"}'
 ```
 {% endcode %}
 

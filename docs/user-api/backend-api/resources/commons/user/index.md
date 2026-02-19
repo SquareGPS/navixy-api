@@ -175,7 +175,7 @@ cURL
 ```sh
 curl -X POST 'https://api.eu.navixy.com/v2/user/auth' \
     -H 'Content-Type: application/json' \
-    -d '{"login": "user@email.com", "password": "12@14Y$"}'
+    -d '{"login": "user@email.com", "password": "D9#YoBaQd@RMjMSb"}'
 ```
 
 #### Response
