@@ -1,0 +1,596 @@
+{
+  "api_categories": [
+    {
+      "category": "Backend API",
+      "base_path": "/v2",
+      "base_urls": {
+        "eu": "https://api.eu.navixy.com/v2",
+        "us": "https://api.us.navixy.com/v2",
+        "on_premise": "https://api.your_domain"
+      },
+      "authentication": "API Key hash (session hash)",
+      "resources": [
+        {
+          "resource_name": "tracker",
+          "resource_path": "/tracker",
+          "description": "Tracker object structure and API calls to interact with it. Represents tracking device registered in GPS monitoring system.",
+          "file_location": "docs/user-api/backend-api/resources/tracking/tracker/README.md",
+          "actions": [
+            "read",
+            "list",
+            "corrupt",
+            "delete",
+            "change_phone",
+            "get_diagnostics",
+            "get_fuel",
+            "get_inputs",
+            "batch_get_inputs",
+            "get_outputs",
+            "batch_get_outputs",
+            "output/update",
+            "get_last_gps_point",
+            "get_readings",
+            "get_state",
+            "get_states",
+            "list_models",
+            "tags/set",
+            "location_request",
+            "register",
+            "register_retry",
+            "register_quick",
+            "replace",
+            "replace_quick",
+            "replace_retry",
+            "send_command",
+            "raw_command/send"
+          ],
+          "sub_resources": [
+            {
+              "name": "tracker/group",
+              "path": "/tracker/group",
+              "file": "docs/user-api/backend-api/resources/tracking/tracker/group.md",
+              "actions": ["assign", "create", "delete", "list", "update"]
+            },
+            {
+              "name": "tracker/sensor",
+              "path": "/tracker/sensor",
+              "file": "docs/user-api/backend-api/resources/tracking/tracker/sensor/index.md",
+              "sub_resources": [
+                {
+                  "name": "tracker/sensor/input_name",
+                  "path": "/tracker/sensor/input_name",
+                  "actions": ["list"]
+                },
+                {
+                  "name": "tracker/sensor/calibration_data",
+                  "path": "/tracker/sensor/calibration_data",
+                  "actions": ["read", "update", "upload_omnicomm"]
+                }
+              ]
+            },
+            {
+              "name": "tracker/settings",
+              "path": "/tracker/settings",
+              "actions": ["read", "update"],
+              "sub_resources": [
+                {
+                  "name": "tracker/settings/tracking",
+                  "path": "/tracker/settings/tracking",
+                  "actions": ["read", "update"]
+                },
+                {
+                  "name": "tracker/settings/lbs",
+                  "path": "/tracker/settings/lbs",
+                  "actions": ["read", "update"]
+                },
+                {
+                  "name": "tracker/settings/special",
+                  "path": "/tracker/settings/special"
+                }
+              ]
+            },
+            {
+              "name": "tracker/rules",
+              "path": "/tracker/rule",
+              "actions": ["bind", "create", "delete", "list", "unbind", "update"]
+            },
+            {
+              "name": "tracker/stats",
+              "sub_resources": [
+                {
+                  "name": "tracker/stats/mileage",
+                  "path": "/tracker/stats/mileage",
+                  "actions": ["read"]
+                }
+              ]
+            },
+            {
+              "name": "tracker/avatar",
+              "path": "/tracker/avatar",
+              "actions": ["upload"]
+            },
+            {
+              "name": "tracker/output",
+              "path": "/tracker/output",
+              "actions": ["set_all", "set"]
+            },
+            {
+              "name": "tracker/chat",
+              "path": "/tracker/chat",
+              "actions": ["list", "mark_read_all", "mark_read", "send", "broadcast", "updated/list", "unread/count"]
+            },
+            {
+              "name": "tracker/counter",
+              "path": "/tracker/counter",
+              "actions": ["read", "update", "get_counters", "value/get", "value/list", "value/set", "data/read"]
+            }
+          ]
+        },
+        {
+          "resource_name": "zone",
+          "resource_path": "/zone",
+          "description": "Geofence zones for tracking",
+          "actions": [
+            "batch_convert",
+            "create",
+            "delete",
+            "list",
+            "read",
+            "search_location",
+            "update",
+            "upload",
+            "download"
+          ]
+        },
+        {
+          "resource_name": "track",
+          "resource_path": "/track",
+          "description": "Track data retrieval",
+          "sub_resources": [
+            {
+              "name": "track/waybill",
+              "path": "/track/waybill",
+              "actions": ["download"]
+            }
+          ]
+        },
+        {
+          "resource_name": "route",
+          "resource_path": "/route",
+          "description": "Route planning and optimization",
+          "sub_resources": [
+            {
+              "name": "route/google",
+              "path": "/route/google",
+              "actions": ["get"]
+            },
+            {
+              "name": "route/osrm",
+              "path": "/route/osrm",
+              "actions": ["get"]
+            },
+            {
+              "name": "route/progorod",
+              "path": "/route/progorod",
+              "actions": ["get"]
+            }
+          ]
+        },
+        {
+          "resource_name": "status",
+          "resource_path": "/status",
+          "description": "Status management",
+          "actions": ["create", "delete", "list", "update"],
+          "sub_resources": [
+            {
+              "name": "status/listing",
+              "path": "/status/listing",
+              "actions": ["create", "delete", "list", "update"]
+            }
+          ]
+        },
+        {
+          "resource_name": "asset",
+          "resource_path": "/asset/track",
+          "description": "Asset tracking",
+          "sub_resources": [
+            {
+              "name": "asset_group",
+              "path": "/asset_group",
+              "actions": ["create", "list", "set", "remove", "update", "delete"]
+            }
+          ]
+        },
+        {
+          "resource_name": "beacon",
+          "resource_path": "/beacon",
+          "description": "Beacon data"
+        },
+        {
+          "resource_name": "geocoder",
+          "resource_path": "/geocoder",
+          "description": "Geocoding services",
+          "actions": ["search_address", "search_location"]
+        },
+        {
+          "resource_name": "map_layer",
+          "resource_path": "/map_layer",
+          "description": "Map layer management",
+          "actions": ["read", "list", "upload", "update", "delete"]
+        },
+        {
+          "resource_name": "vehicle",
+          "resource_path": "/vehicle",
+          "description": "Vehicle management",
+          "actions": ["create", "delete", "list", "read", "update", "batch_convert"],
+          "sub_resources": [
+            {
+              "name": "vehicle/service_task",
+              "path": "/vehicle/service_task",
+              "actions": ["batch_create", "create", "delete", "download", "list", "read", "set_status", "update"]
+            }
+          ]
+        },
+        {
+          "resource_name": "driver/journal",
+          "resource_path": "/driver/journal",
+          "description": "Driver journal management",
+          "sub_resources": [
+            {
+              "name": "driver/journal/entry",
+              "path": "/driver/journal/entry",
+              "actions": ["list", "create", "update", "delete", "download"]
+            }
+          ]
+        },
+        {
+          "resource_name": "task",
+          "resource_path": "/task",
+          "description": "Field service task management",
+          "actions": ["assign", "batch_convert", "count", "create", "delete", "list", "read", "transmute", "update"],
+          "sub_resources": [
+            {
+              "name": "task/form",
+              "path": "/task/form",
+              "actions": ["read", "download"]
+            },
+            {
+              "name": "task/schedule",
+              "path": "/task/schedule",
+              "actions": ["create", "delete", "list", "read", "update"]
+            }
+          ]
+        },
+        {
+          "resource_name": "employee",
+          "resource_path": "/employee",
+          "description": "Employee management",
+          "actions": ["list", "create", "read", "update", "delete", "batch_convert"]
+        },
+        {
+          "resource_name": "place",
+          "resource_path": "/place",
+          "description": "Place/POI management",
+          "actions": ["read", "list", "create", "search_location", "update", "delete", "batch_convert", "upload"]
+        },
+        {
+          "resource_name": "form",
+          "resource_path": "/form",
+          "description": "Form management",
+          "actions": ["read", "download"],
+          "sub_resources": [
+            {
+              "name": "form/template",
+              "path": "/form/template",
+              "actions": ["list", "create", "read", "update", "delete", "stats/read"]
+            }
+          ]
+        },
+        {
+          "resource_name": "checkin",
+          "resource_path": "/checkin",
+          "description": "Check-in management",
+          "actions": ["read", "list", "delete", "create", "image/create", "form/create", "form/file/create"]
+        },
+        {
+          "resource_name": "user",
+          "resource_path": "/user",
+          "description": "User management",
+          "actions": ["activate", "auth", "get_info", "get_tariff_restrictions", "logout", "resend_activation"],
+          "sub_resources": [
+            {
+              "name": "user/password",
+              "path": "/user/password",
+              "actions": ["change", "set"]
+            },
+            {
+              "name": "user/settings",
+              "path": "/user/settings",
+              "actions": ["read", "update", "file_storage/update"]
+            },
+            {
+              "name": "user/session",
+              "path": "/user/session",
+              "actions": ["renew"],
+              "sub_resources": [
+                {
+                  "name": "user/session/push_token",
+                  "path": "/user/session/push_token",
+                  "actions": ["bind", "delete"]
+                }
+              ]
+            },
+            {
+              "name": "user/audit",
+              "path": "/user/audit",
+              "actions": ["checkin"]
+            }
+          ]
+        },
+        {
+          "resource_name": "subuser",
+          "resource_path": "/subuser",
+          "description": "Sub-user management",
+          "actions": ["delete", "list", "register", "update"],
+          "sub_resources": [
+            {
+              "name": "subuser/zones",
+              "path": "/subuser/zones",
+              "actions": ["bind", "unbind", "list_ids", "list"]
+            },
+            {
+              "name": "subuser/tracker",
+              "path": "/subuser/tracker",
+              "actions": ["bind", "list", "unbind"]
+            }
+          ]
+        },
+        {
+          "resource_name": "tag",
+          "resource_path": "/tag",
+          "description": "Tag management",
+          "actions": ["create", "delete", "list", "search", "update"]
+        },
+        {
+          "resource_name": "entity",
+          "resource_path": "/entity",
+          "description": "Entity customization",
+          "actions": ["list"],
+          "sub_resources": [
+            {
+              "name": "entity/fields",
+              "path": "/entity/fields",
+              "actions": ["read", "update"]
+            }
+          ]
+        },
+        {
+          "resource_name": "history",
+          "resource_path": "/history",
+          "description": "History data",
+          "sub_resources": [
+            {
+              "name": "history/tracker",
+              "path": "/history/tracker",
+              "actions": ["list"]
+            },
+            {
+              "name": "history/unread",
+              "path": "/history/unread",
+              "actions": ["list", "count"]
+            }
+          ]
+        },
+        {
+          "resource_name": "report",
+          "resource_path": "/report",
+          "description": "Report management",
+          "sub_resources": [
+            {
+              "name": "report/schedule",
+              "path": "/report/schedule",
+              "actions": ["create", "delete", "list", "update"]
+            }
+          ]
+        },
+        {
+          "resource_name": "notification",
+          "resource_path": "/notification",
+          "description": "Notification management",
+          "actions": ["list"]
+        },
+        {
+          "resource_name": "plugin",
+          "resource_path": "/plugin",
+          "description": "Registration plugin management",
+          "actions": ["list"]
+        },
+        {
+          "resource_name": "billing",
+          "resource_path": "/billing",
+          "description": "Billing operations",
+          "sub_resources": [
+            {
+              "name": "subscription",
+              "path": "/subscription",
+              "actions": ["cancel", "list"]
+            },
+            {
+              "name": "bill",
+              "path": "/bill",
+              "actions": ["create", "list"]
+            },
+            {
+              "name": "tariff",
+              "path": "/tariff",
+              "actions": ["list"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Panel API",
+      "base_path": "/v2/panel",
+      "authentication": "Panel API Key hash",
+      "resources": [
+        {
+          "resource_name": "account",
+          "resource_path": "panel/account",
+          "description": "Panel account authentication and permissions",
+          "actions": ["auth", "get_permissions", "logout"]
+        },
+        {
+          "resource_name": "dealer",
+          "resource_path": "panel/dealer",
+          "description": "Dealer management",
+          "actions": ["get_info"],
+          "sub_resources": [
+            {
+              "name": "dealer/settings",
+              "path": "panel/dealer/settings",
+              "sub_resources": [
+                {
+                  "name": "dealer/settings/service",
+                  "path": "panel/dealer/settings/service"
+                },
+                {
+                  "name": "dealer/settings/notification",
+                  "path": "panel/dealer/settings/notification"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "resource_name": "user",
+          "resource_path": "panel/user",
+          "description": "User management in admin panel",
+          "actions": ["create", "read", "update", "change_password", "corrupt", "upload", "list", "export", "session/create", "transaction/list", "transaction/change_balance"]
+        },
+        {
+          "resource_name": "subpaas",
+          "resource_path": "panel/subpaas",
+          "description": "Sub-PaaS management",
+          "actions": ["create", "delete", "read", "update"]
+        }
+      ]
+    },
+    {
+      "category": "Eco Fleet API",
+      "base_path": "/eco-fleet/v1",
+      "authentication": "OAuth 2.0 Bearer token",
+      "resources": [
+        {
+          "resource_name": "trackers",
+          "resource_path": "/trackers",
+          "description": "Eco Fleet tracker operations",
+          "sub_resources": [
+            {
+              "name": "trackers/resampling",
+              "path": "/trackers/$tracker_id/resampling"
+            },
+            {
+              "name": "trackers/sensors",
+              "path": "/trackers/sensors",
+              "description": "Sensor data for Eco Fleet",
+              "sub_resources": [
+                {
+                  "name": "trackers/sensors/quality",
+                  "path": "/trackers/sensors/quality",
+                  "actions": ["GET"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Data Warehouse API",
+      "base_path": "/dwh/v1",
+      "authentication": "OAuth 2.0 Bearer token",
+      "resources": [
+        {
+          "resource_name": "tracker",
+          "resource_path": "/tracker",
+          "description": "Data warehouse tracker operations",
+          "sub_resources": [
+            {
+              "name": "tracker/raw_data",
+              "path": "/tracker/raw_data",
+              "description": "Raw IoT data retrieval",
+              "actions": ["get_inputs", "read"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Repository API",
+      "base_path": "/repo/v0",
+      "base_urls": {
+        "eu": "https://api.navixy.com/repo/v0",
+        "us": "https://api.us.navixy.com/repo/v0"
+      },
+      "auth_urls": {
+        "eu": "https://keycloak.navixy.com",
+        "us": "https://keycloak.us.navixy.com"
+      },
+      "authentication": "OAuth 2.0 Bearer token",
+      "resources": [
+        {
+          "resource_name": "asset",
+          "resource_path": "/asset",
+          "description": "Assets represent individual real-world objects stored in the system",
+          "actions": ["list", "create", "read", "update", "delete"]
+        },
+        {
+          "resource_name": "asset_type",
+          "resource_path": "/asset_type",
+          "description": "Model that defines the structure of custom property fields and display configuration for assets",
+          "actions": ["list", "create", "read", "update", "delete"]
+        },
+        {
+          "resource_name": "asset_link",
+          "resource_path": "/asset_link",
+          "description": "Collections of assets used to organize and manage equipment",
+          "actions": ["list", "create", "read", "update", "delete", "set", "remove"]
+        },
+        {
+          "resource_name": "inventory",
+          "resource_path": "/inventory",
+          "description": "Collections of devices used to organize and manage equipment",
+          "actions": ["list", "create", "read", "update", "delete"]
+        },
+        {
+          "resource_name": "inventory_item",
+          "resource_path": "/inventory_item",
+          "description": "Devices stored in inventories",
+          "sub_resources": [
+            {
+              "name": "inventory_item/master",
+              "path": "/inventory_item/master",
+              "actions": ["list", "create", "read", "update", "model/list", "activate", "archive"]
+            },
+            {
+              "name": "inventory_item/slave",
+              "path": "/inventory_item/slave",
+              "actions": ["list", "create", "read", "update", "delete", "pair"]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "generated_date": "2026-02-19",
+    "total_resources": 100,
+    "total_categories": 5,
+    "documentation_base": "docs/",
+    "api_limits": {
+      "backend_api": "50 requests per second per user and per IP address",
+      "note": "Limits are applied based on user session hash and API keys"
+    }
+  }
+}
