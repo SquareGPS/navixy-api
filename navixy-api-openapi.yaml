@@ -1,0 +1,1278 @@
+openapi: 3.0.3
+info:
+  title: Navixy API
+  description: |
+    Comprehensive GPS/Vehicle telematics platform API for integrating third-party solutions with Navixy.
+    
+    This is a pseudo-OpenAPI specification generated from the Navixy API documentation.
+    It provides a structured overview of available endpoints and resources.
+    
+    **Note:** This specification is generated from documentation and may not include all endpoint details.
+    Refer to the official documentation for complete parameter descriptions, examples, and error codes.
+  version: 2.0.0
+  contact:
+    name: Navixy API Support
+    url: https://www.navixy.com/docs/developers/
+  license:
+    name: Proprietary
+    url: https://www.navixy.com/
+
+servers:
+  - url: https://api.eu.navixy.com/v2
+    description: European Navixy platform
+  - url: https://api.us.navixy.com/v2
+    description: North American Navixy platform
+  - url: https://api.your_domain/v2
+    description: Self-hosted (On-Premise) installations
+    variables: {}
+
+tags:
+  - name: Authentication
+    description: User authentication and session management
+  - name: Trackers
+    description: Tracker device management and operations
+  - name: Zones
+    description: Geofence zone management
+  - name: Tracks
+    description: Track data retrieval
+  - name: Routes
+    description: Route planning and optimization
+  - name: Status
+    description: Status management
+  - name: Vehicles
+    description: Vehicle fleet management
+  - name: Tasks
+    description: Field service task management
+  - name: Employees
+    description: Employee management
+  - name: Places
+    description: Place/POI management
+  - name: Users
+    description: User account management
+  - name: Subusers
+    description: Sub-user management
+  - name: Tags
+    description: Tag management
+  - name: History
+    description: History and event data
+  - name: Reports
+    description: Report generation and scheduling
+  - name: Billing
+    description: Billing and subscription management
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /user/auth:
+    post:
+      tags:
+        - Authentication
+      summary: Authenticate user
+      description: Authenticate and obtain a user session hash (API key)
+      operationId: userAuth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - login
+                - password
+              properties:
+                login:
+                  type: string
+                  description: User login/email
+                password:
+                  type: string
+                  format: password
+                  description: User password
+      responses:
+        '200':
+          description: Successful authentication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /tracker/list:
+    post:
+      tags:
+        - Trackers
+      summary: List trackers
+      description: Gets user's trackers with optional filtering by labels
+      operationId: trackerList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                labels:
+                  type: array
+                  items:
+                    type: string
+                  description: Optional list of tracker label filters
+                  minItems: 1
+                  maxItems: 1024
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tracker'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /tracker/read:
+    post:
+      tags:
+        - Trackers
+      summary: Get tracker by ID
+      description: Gets tracker info by ID
+      operationId: trackerRead
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - tracker_id
+              properties:
+                tracker_id:
+                  type: integer
+                  description: ID of the tracker (aka object_id)
+                  example: 123456
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  value:
+                    $ref: '#/components/schemas/Tracker'
+        '201':
+          $ref: '#/components/responses/NotFound'
+
+  /tracker/register:
+    post:
+      tags:
+        - Trackers
+      summary: Register a new tracker
+      description: Registers a new tracker device and links it with current API user's account
+      operationId: trackerRegister
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - label
+                - model
+                - plugin_id
+              properties:
+                label:
+                  type: string
+                  description: User-defined label for this tracker
+                  minLength: 1
+                  maxLength: 60
+                group_id:
+                  type: integer
+                  description: Tracker group ID, 0 if tracker does not belong to any group
+                  default: 0
+                model:
+                  type: string
+                  description: A code of one of the supported models
+                plugin_id:
+                  type: integer
+                  description: An ID of a registration plugin
+                device_id:
+                  type: string
+                  description: Device ID (IMEI, etc.) - required if device model uses fixed device ID
+                phone:
+                  type: string
+                  description: Phone number of the SIM card
+                apn_name:
+                  type: string
+                  description: GPRS APN name
+                apn_user:
+                  type: string
+                  description: GPRS APN user
+                apn_password:
+                  type: string
+                  description: GPRS APN password
+                send_register_commands:
+                  type: boolean
+                  description: Whether to send activation commands to device
+      responses:
+        '200':
+          description: Successful registration
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  value:
+                    $ref: '#/components/schemas/Tracker'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /tracker/get_state:
+    post:
+      tags:
+        - Trackers
+      summary: Get tracker state
+      description: Gets current tracker state (GPS, GSM, outputs, etc.)
+      operationId: trackerGetState
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - tracker_id
+              properties:
+                tracker_id:
+                  type: integer
+                  description: ID of the tracker
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackerState'
+        '201':
+          $ref: '#/components/responses/NotFound'
+        '208':
+          description: Device blocked
+
+  /tracker/get_states:
+    post:
+      tags:
+        - Trackers
+      summary: Get multiple tracker states
+      description: Gets current states for several trackers (batch operation)
+      operationId: trackerGetStates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - trackers
+              properties:
+                trackers:
+                  type: array
+                  items:
+                    type: integer
+                  description: Array of tracker IDs (max 2000)
+                  maxItems: 2000
+                list_blocked:
+                  type: boolean
+                  description: If true, returns list of blocked tracker IDs instead of error
+                  default: false
+                allow_not_exist:
+                  type: boolean
+                  description: If true, returns list of nonexistent tracker IDs instead of error
+                  default: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user_time:
+                    type: string
+                    format: date-time
+                  states:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/TrackerState'
+                  blocked:
+                    type: array
+                    items:
+                      type: integer
+                  not_exist:
+                    type: array
+                    items:
+                      type: integer
+
+  /tracker/list_models:
+    post:
+      tags:
+        - Trackers
+      summary: List tracker models
+      description: Gets all integrated tracker models
+      operationId: trackerListModels
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                compact_view:
+                  type: boolean
+                  default: false
+                codes:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrackerModel'
+
+  /zone/list:
+    post:
+      tags:
+        - Zones
+      summary: List zones
+      description: Gets user's geofence zones
+      operationId: zoneList
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Zone'
+
+  /zone/create:
+    post:
+      tags:
+        - Zones
+      summary: Create zone
+      description: Creates a new geofence zone
+      operationId: zoneCreate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZoneCreate'
+      responses:
+        '200':
+          description: Successful creation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  value:
+                    $ref: '#/components/schemas/Zone'
+
+  /zone/read:
+    post:
+      tags:
+        - Zones
+      summary: Get zone by ID
+      description: Gets zone info by ID
+      operationId: zoneRead
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - zone_id
+              properties:
+                zone_id:
+                  type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  value:
+                    $ref: '#/components/schemas/Zone'
+
+  /track/list:
+    post:
+      tags:
+        - Tracks
+      summary: List tracks
+      description: Gets track lists for a tracker
+      operationId: trackList
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - tracker_id
+              properties:
+                tracker_id:
+                  type: integer
+                from:
+                  type: string
+                  format: date-time
+                to:
+                  type: string
+                  format: date-time
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Track'
+
+  /track/read:
+    post:
+      tags:
+        - Tracks
+      summary: Get track by ID
+      description: Gets track data by track ID
+      operationId: trackRead
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - track_id
+              properties:
+                track_id:
+                  type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  value:
+                    $ref: '#/components/schemas/Track'
+
+  /vehicle/list:
+    post:
+      tags:
+        - Vehicles
+      summary: List vehicles
+      description: Gets user's vehicles
+      operationId: vehicleList
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vehicle'
+
+  /vehicle/create:
+    post:
+      tags:
+        - Vehicles
+      summary: Create vehicle
+      description: Creates a new vehicle
+      operationId: vehicleCreate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleCreate'
+      responses:
+        '200':
+          description: Successful creation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  value:
+                    $ref: '#/components/schemas/Vehicle'
+
+  /task/list:
+    post:
+      tags:
+        - Tasks
+      summary: List tasks
+      description: Gets user's field service tasks
+      operationId: taskList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: string
+                  format: date-time
+                to:
+                  type: string
+                  format: date-time
+                status:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Task'
+
+  /task/create:
+    post:
+      tags:
+        - Tasks
+      summary: Create task
+      description: Creates a new field service task
+      operationId: taskCreate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskCreate'
+      responses:
+        '200':
+          description: Successful creation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  value:
+                    $ref: '#/components/schemas/Task'
+
+  /user/get_info:
+    post:
+      tags:
+        - Users
+      summary: Get user info
+      description: Gets current user information
+      operationId: userGetInfo
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  value:
+                    $ref: '#/components/schemas/User'
+
+  /tag/list:
+    post:
+      tags:
+        - Tags
+      summary: List tags
+      description: Gets user's tags
+      operationId: tagList
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+
+  /tag/create:
+    post:
+      tags:
+        - Tags
+      summary: Create tag
+      description: Creates a new tag
+      operationId: tagCreate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - label
+              properties:
+                label:
+                  type: string
+                color:
+                  type: string
+      responses:
+        '200':
+          description: Successful creation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  value:
+                    $ref: '#/components/schemas/Tag'
+
+  /history/tracker/list:
+    post:
+      tags:
+        - History
+      summary: List tracker history
+      description: Gets history events for trackers
+      operationId: historyTrackerList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tracker_id:
+                  type: integer
+                from:
+                  type: string
+                  format: date-time
+                to:
+                  type: string
+                  format: date-time
+                event_type:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HistoryEvent'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: |
+        API Key hash (session hash) can be passed in three ways:
+        1. As a `hash` parameter in the request body (root-level property for application/json)
+        2. As a `hash` parameter in the HTTP query string
+        3. As a value of the HTTP header `Authorization` in the form: `Authorization: NVX SessionHashValue`
+      x-examples:
+        header: "NVX a6aa75587e5c59c32d347da438505fc3"
+        query: "?hash=a6aa75587e5c59c32d347da438505fc3"
+        body: '{"hash": "a6aa75587e5c59c32d347da438505fc3"}'
+
+  schemas:
+    AuthResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        hash:
+          type: string
+          description: Session hash (API key) for subsequent requests
+        user_id:
+          type: integer
+        expires:
+          type: string
+          format: date-time
+
+    Tracker:
+      type: object
+      description: Tracker object representing a tracking device
+      properties:
+        id:
+          type: integer
+          description: Tracker ID (aka object_id)
+        label:
+          type: string
+          description: Tracker label
+        clone:
+          type: boolean
+          description: true if this tracker is a clone
+        group_id:
+          type: integer
+          description: Tracker group ID, 0 when no group
+        avatar_file_name:
+          type: string
+          nullable: true
+          description: Avatar file name (optional)
+        source:
+          $ref: '#/components/schemas/TrackerSource'
+        tag_bindings:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagBinding'
+
+    TrackerSource:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Source ID
+        device_id:
+          type: string
+          description: Device ID (aka source_imei)
+        model:
+          type: string
+          description: Tracker model name
+        blocked:
+          type: boolean
+          description: true if tracker blocked due to tariff end
+        tariff_id:
+          type: integer
+          description: Tracker tariff ID
+        status_listing_id:
+          type: integer
+          nullable: true
+        creation_date:
+          type: string
+          format: date
+        tariff_end_date:
+          type: string
+          format: date
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+          description: Phone of the device
+
+    TagBinding:
+      type: object
+      properties:
+        tag_id:
+          type: integer
+        ordinal:
+          type: integer
+          maximum: 5
+
+    TrackerState:
+      type: object
+      description: Current tracker state including GPS, GSM, inputs, outputs
+      properties:
+        source_id:
+          type: integer
+        gps:
+          $ref: '#/components/schemas/GPSState'
+        connection_status:
+          type: string
+          enum:
+            - signal_lost
+            - just_registered
+            - just_replaced
+            - offline
+            - idle
+            - active
+        movement_status:
+          type: string
+          enum:
+            - moving
+            - stopped
+            - parked
+        movement_status_update:
+          type: string
+          format: date-time
+          nullable: true
+        ignition:
+          type: boolean
+          nullable: true
+        ignition_update:
+          type: string
+          format: date-time
+          nullable: true
+        gsm:
+          $ref: '#/components/schemas/GSMState'
+          nullable: true
+        last_update:
+          type: string
+          format: date-time
+          nullable: true
+        battery_level:
+          type: integer
+          nullable: true
+          description: Battery level in percent
+        battery_update:
+          type: string
+          format: date-time
+          nullable: true
+        inputs:
+          type: array
+          items:
+            type: boolean
+          description: States of all digital inputs
+        inputs_update:
+          type: string
+          format: date-time
+          nullable: true
+        outputs:
+          type: array
+          items:
+            type: boolean
+          description: States of all digital outputs
+        outputs_update:
+          type: string
+          format: date-time
+          nullable: true
+        additional:
+          type: object
+          description: Additional states (model-dependent)
+        actual_track_update:
+          type: string
+          format: date-time
+          nullable: true
+
+    GPSState:
+      type: object
+      properties:
+        updated:
+          type: string
+          format: date-time
+          nullable: true
+        signal_level:
+          type: integer
+          nullable: true
+          description: GPS signal level in percent
+        location:
+          $ref: '#/components/schemas/Location'
+        heading:
+          type: integer
+          description: Direction bearing in degrees (0-360)
+        speed:
+          type: integer
+          description: Speed in km/h
+        alt:
+          type: integer
+          description: Altitude in meters
+        precision:
+          type: integer
+          nullable: true
+          description: Precision in meters
+        gsm_lbs:
+          type: boolean
+          nullable: true
+          description: true if location detected by GSM LBS
+
+    GSMState:
+      type: object
+      properties:
+        updated:
+          type: string
+          format: date-time
+          nullable: true
+        signal_level:
+          type: integer
+          nullable: true
+          description: GSM signal level in percent
+        network_name:
+          type: string
+          nullable: true
+        roaming:
+          type: boolean
+          nullable: true
+
+    Location:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lng:
+          type: number
+          format: float
+
+    TrackerModel:
+      type: object
+      properties:
+        id:
+          type: integer
+        vendor:
+          type: string
+        code:
+          type: string
+        parent_code:
+          type: string
+          nullable: true
+        type:
+          type: string
+          enum:
+            - logger
+            - portable
+            - vehicle
+            - personal
+        name:
+          type: string
+        id_type:
+          type: string
+        has_phone:
+          type: boolean
+        has_apn_settings:
+          type: boolean
+        register:
+          type: boolean
+        digital_inputs:
+          type: integer
+        digital_outputs:
+          type: integer
+        analog_inputs:
+          type: integer
+        rules:
+          type: array
+          items:
+            type: string
+        inputs:
+          type: array
+          items:
+            type: string
+
+    Zone:
+      type: object
+      description: Geofence zone
+      properties:
+        id:
+          type: integer
+        label:
+          type: string
+        type:
+          type: string
+          enum:
+            - circle
+            - polygon
+            - line
+        color:
+          type: string
+        points:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+
+    ZoneCreate:
+      type: object
+      required:
+        - label
+        - type
+        - points
+      properties:
+        label:
+          type: string
+        type:
+          type: string
+          enum:
+            - circle
+            - polygon
+            - line
+        color:
+          type: string
+        points:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+          minItems: 1
+
+    Track:
+      type: object
+      description: Track data containing GPS points
+      properties:
+        id:
+          type: integer
+        tracker_id:
+          type: integer
+        start_time:
+          type: string
+          format: date-time
+        end_time:
+          type: string
+          format: date-time
+        points:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackPoint'
+
+    TrackPoint:
+      type: object
+      properties:
+        get_time:
+          type: string
+          format: date-time
+        lat:
+          type: number
+          format: float
+        lng:
+          type: number
+          format: float
+        heading:
+          type: integer
+        speed:
+          type: integer
+        satellites:
+          type: integer
+        precision:
+          type: integer
+          nullable: true
+
+    Vehicle:
+      type: object
+      description: Vehicle object
+      properties:
+        id:
+          type: integer
+        label:
+          type: string
+        tracker_id:
+          type: integer
+          nullable: true
+        vin:
+          type: string
+          nullable: true
+        license_plate:
+          type: string
+          nullable: true
+        make:
+          type: string
+          nullable: true
+        model:
+          type: string
+          nullable: true
+        year:
+          type: integer
+          nullable: true
+
+    VehicleCreate:
+      type: object
+      required:
+        - label
+      properties:
+        label:
+          type: string
+        tracker_id:
+          type: integer
+        vin:
+          type: string
+        license_plate:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        year:
+          type: integer
+
+    Task:
+      type: object
+      description: Field service task
+      properties:
+        id:
+          type: integer
+        label:
+          type: string
+        status:
+          type: string
+        employee_id:
+          type: integer
+          nullable: true
+        place_id:
+          type: integer
+          nullable: true
+        tracker_id:
+          type: integer
+          nullable: true
+        created_time:
+          type: string
+          format: date-time
+        start_time:
+          type: string
+          format: date-time
+          nullable: true
+        end_time:
+          type: string
+          format: date-time
+          nullable: true
+
+    TaskCreate:
+      type: object
+      required:
+        - label
+      properties:
+        label:
+          type: string
+        employee_id:
+          type: integer
+        place_id:
+          type: integer
+        tracker_id:
+          type: integer
+        start_time:
+          type: string
+          format: date-time
+        end_time:
+          type: string
+          format: date-time
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        login:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+          nullable: true
+        timezone:
+          type: string
+        locale:
+          type: string
+
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        label:
+          type: string
+        color:
+          type: string
+          nullable: true
+
+    HistoryEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+        tracker_id:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+        time:
+          type: string
+          format: date-time
+        location:
+          $ref: '#/components/schemas/Location'
+          nullable: true
+
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    Unauthorized:
+      description: Unauthorized - invalid or missing authentication
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    NotFound:
+      description: Not found - resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        status:
+          type: object
+          properties:
+            code:
+              type: integer
+            description:
+              type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              parameter:
+                type: string
+              error:
+                type: string
