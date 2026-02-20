@@ -12,23 +12,21 @@ Custom fields are supported for devices, assets, geo objects, and schedules.
 
 ## How custom fields work
 
-There are two separate concepts: **definitions** and **values**.
+A [custom field definition](../custom-fields.md#customfielddefinition) describes the field — its machine-readable code, display title, data type, and validation rules. Think of it as designing a template: you decide what fields it has, what type of data each one accepts, and whether a value is required. You create definitions once, at the entity type level.
 
-A **definition** ([CustomFieldDefinition](../custom-fields.md#customfielddefinition)) describes the shape of a field — its machine-readable code, display title, data type, and validation rules. Think of it as designing a form: you decide what fields it has, what type of data each one accepts, and whether a value is required. You create definitions once, at the entity type level.
-
-A **value** is the actual data stored on an individual record. When you create or update a device, an asset, or any other entity, you supply values through the `customFields` field in the create or update mutation input. The API validates each value against the corresponding definition.
+Each individual record contains a value. When you create or update a device, an asset, or any other entity, you supply values through the `customFields` field in the create or update mutation input. The API validates each value against the corresponding definition.
 
 ### Predefined and custom definitions
 
 Definitions can be predefined or custom.
 
-**Predefined definitions** are created by the platform and apply to all entities of a given entity type. For example, `geojson` is a predefined definition for all geo objects — it stores the geometry. `schedule_data` is a predefined definition for all schedules. You cannot create or modify predefined definitions, but their values appear alongside yours in `customFields` responses.
+**Predefined definitions** are created by the platform and apply to all entities of a given type. For example, `geojson` is a predefined definition for all geo objects — it stores the geometry. `schedule_data` is a predefined definition for all schedules. You cannot create or modify predefined definitions, but their values appear alongside yours in `customFields` responses.
 
-**Custom definitions** are created by you and apply only to entities of a specific type. For example, a `vin` field defined on the `AssetType` "vehicle" appears only on vehicle assets, not on equipment or employee assets. This is what you create and manage through the API, and what this guide covers.
+**Custom definitions** are created by you and apply only to entities of a specific type. For example, a `vin` field defined on the [AssetType](../assets/types.md#assettype) called `vehicle` appears only on vehicle assets, not on equipment or employee assets. This is what you create and manage through the API, and what this guide covers.
 
 ## Scenario: Enriching fleet records with metadata
 
-A logistics company is building an integration with the Navixy Repository API. Their platform already uses devices, assets, and geo objects, but they need to store additional operational data on each entity type to support their internal workflows and reporting.
+A logistics company is building an integration with Navixy Repository API. Their platform already uses devices, assets, and geo objects, but they need to store additional operational data on each entity type to support internal workflows and reporting.
 
 Specifically, they need to track:
 
@@ -36,7 +34,7 @@ Specifically, they need to track:
 * On **GPS devices**: the SIM card number for connectivity troubleshooting and installation notes for field technicians.
 * On **geo objects in the operations area**: the access restriction level for dispatch rules and the date these restrictions come into effect.
 
-The process consists of six steps: choose a field type, create the definitions, set values when creating records, update values on existing records, read those values back, and filter entities by them.
+Implementing this metadata requires the following steps:
 
 {% stepper %}
 {% step %}
@@ -66,7 +64,9 @@ Before creating a definition, decide which `FieldType` best matches your data.
 
 </details>
 
+{% hint style="warning" %}
 `fieldType` is immutable after creation. If you need to change a field's type, delete the definition and create a new one. Values already stored under that code in entity records remain in the JSON but will no longer have a backing definition.
+{% endhint %}
 {% endstep %}
 
 {% step %}
@@ -78,7 +78,7 @@ To create a definition, you need three IDs:
 * `ownerCatalogItemId`: the specific type the field belongs to (e.g., the `AssetType` for "vehicle", the `DeviceType` for "gps\_tracker")
 * `targetEntityTypeId` : the broader entity type category (e.g., the `EntityType` for "asset", "device", or "geo\_object")
 
-#### Learn the existing definitions
+#### Check the existing definitions
 
 Before adding new fields, check what's already defined in a type by querying `customFieldDefinitions` on the type object:
 
@@ -97,11 +97,11 @@ query GetVehicleTypeFields {
 
 This works the same way for `deviceType`, `geoObjectType`, and `scheduleType`.
 
-#### About field codes
+#### How field codes work
 
 The `code` you provide becomes the key used to read and write values in all entity mutations and queries. It must be unique within the owner type and organization. Use lowercase snake\_case — for example, `vin`, `fuel_type`, `next_service_date` — and treat it as stable once records carry values under it.
 
-#### Creating a STRING field (VIN on vehicle assets)
+#### How to create a STRING field (VIN on vehicle assets)
 
 ```graphql
 mutation CreateVinField {
@@ -158,7 +158,7 @@ For `OPTIONS`, provide `params: { options: { ... } }`.&#x20;
 Providing the wrong variant returns a validation error.
 {% endhint %}
 
-#### Creating an OPTIONS field (fuel type on vehicle assets)
+#### How to create an OPTIONS field (fuel type on vehicle assets)
 
 ```graphql
 mutation CreateFuelTypeField {
@@ -191,9 +191,9 @@ mutation CreateFuelTypeField {
 }
 ```
 
-Set `isMulti: true` if an entity can carry more than one option simultaneously. See [multi-value fields and filtering](working-with-custom-fields.md#constraints-and-considerations) for how this affects queries.
+Set `isMulti: true` if an entity can support more than one option. See [multi-value fields and filtering](working-with-custom-fields.md#constraints-and-considerations) for how this affects queries.
 
-#### Creating a DATE field (next service date on vehicle assets)
+#### How to create a DATE field (next service date on vehicle assets)
 
 ```graphql
 mutation CreateServiceDateField {
@@ -219,11 +219,11 @@ mutation CreateServiceDateField {
 }
 ```
 
-#### Creating fields on other entity types
+#### How to create fields for other entity types
 
 The same pattern applies to devices and geo objects — only `ownerCatalogItemId`, `targetEntityTypeId`, and the `params` variant change.
 
-**TEXT field on a GPS tracker device type**:
+**TEXT field for a GPS device type**:
 
 ```graphql
 mutation CreateInstallationNotesField {
@@ -251,7 +251,7 @@ mutation CreateInstallationNotesField {
 }
 ```
 
-**OPTIONS field on a work area geo object type**:
+**OPTIONS field for a geo object type**:
 
 ```graphql
 mutation CreateAccessLevelField {
@@ -395,7 +395,7 @@ query GetVehicleKeyFields {
 
 All entity list queries support filtering by custom field values through [CustomFieldFilter](../custom-fields.md#customfieldfilter). Add one or more conditions to the `customFields` filter array. Multiple conditions are applied as AND.
 
-#### Filter by an OPTIONS value
+#### How to filter by an OPTIONS value
 
 Find all electric vehicle assets:
 
@@ -416,7 +416,7 @@ query FindElectricVehicles {
 }
 ```
 
-#### Filter by a DATE value
+#### How to filter by a DATE value
 
 Find vehicles with a service date before a deadline:
 
@@ -470,7 +470,7 @@ For the full operator list and value formats by field type, see [Filtering and s
 
 ### Updating a definition
 
-You can update the `title`, `description`, `order`, and `params`. The `code` and `fieldType` cannot be changed after creation. Updates use optimistic locking and require the current `version`:
+You can update the `title`, `description`, `order`, and `params`. The `code` and `fieldType` cannot be changed after creation. Updates use [optimistic locking](../optimistic-locking.md) and require the current `version`:
 
 ```graphql
 mutation UpdateVinField {
@@ -517,6 +517,8 @@ params: {
 
 ### Deleting a definition
 
+Use this query:
+
 ```graphql
 mutation DeleteDefinition {
   customFieldDefinitionDelete(input: {
@@ -529,20 +531,18 @@ mutation DeleteDefinition {
 ```
 
 {% hint style="info" %}
-Deleting a definition does not erase values already stored in entity records. The data remains in `customFields` JSON but has no backing definition. If you recreate a field with the same `code`, it will match those stored values again.
+Deleting a definition does not erase values already stored in entity records. The data remains in the `customFields` JSON but has no backing definition. If you recreate a field with the same `code`, it will match those stored values again.
 {% endhint %}
 
 ## Constraints and considerations
 
-**`fieldType` is immutable.** To change a field's type, delete the definition and create a new one. Existing values stored under that code become orphaned but are not erased.
+Keep in mind the following:
 
-**`code` is stable once in use.** It must be unique within the owner type and organization. Because it is the key used to read and write values across all entity mutations and queries, avoid recreating it under a different name once records carry values under it.
-
-**`params` requires exactly one variant.** `FieldParamsInput` uses the `@oneOf` directive — provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `NUMBER` returns a validation error.
-
-**Multi-value fields and filtering.** For fields with `isMulti: true`, a filter matches if _any_ value in the array satisfies the condition. For example, if an asset has `fuel_type: ["diesel", "hybrid"]`, filtering with `EQ: "diesel"` will match it.
-
-**Predefined fields.** Predefined definitions (like `geojson` and `schedule_data`) are platform-managed and appear in `customFields` responses alongside your definitions. Do not use codes that conflict with predefined field codes.
+* **`fieldType` is immutable:** To change a field's type, delete the definition and create a new one. Existing values stored under that code become orphaned but are not erased.
+* **`code` is stable once in use:** It must be unique within the owner type and organization. Because it is the key used to read and write values across all entity mutations and queries, avoid recreating it under a different name once records carry values under it.
+* **`params` requires exactly one variant:** `FieldParamsInput` uses the `@oneOf` directive — provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `NUMBER` returns a validation error.
+* **Multi-value fields and filtering:** For fields with `isMulti: true`, a filter matches if _any_ value in the array satisfies the condition. For example, if an asset has `fuel_type: ["diesel", "hybrid"]`, filtering with `EQ: "diesel"` will match it.
+* **Predefined fields:** Predefined definitions (like `geojson` and `schedule_data`) are platform-managed and appear in `customFields` responses alongside your definitions. Do not use codes that conflict with predefined field codes.
 
 ### See also
 
