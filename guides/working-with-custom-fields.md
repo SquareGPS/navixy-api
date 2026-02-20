@@ -382,7 +382,7 @@ To retrieve only specific fields, pass the `codes` argument. This keeps response
 
 ```graphql
 query GetVehicleKeyFields {
-  asset(id: "YOUR_ASSET_ID") {
+  asset(id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11") {
     title
     customFields(codes: ["vin", "fuel_type"])
   }
@@ -522,7 +522,7 @@ Use this query:
 ```graphql
 mutation DeleteDefinition {
   customFieldDefinitionDelete(input: {
-    id: "YOUR_DEFINITION_ID"
+    id: "019b1c3d-905f-827b-8003-777567741d66"
     version: 2
   }) {
     deletedId
@@ -538,7 +538,7 @@ Deleting a definition removes its key from the `customFields` JSON on all entity
 
 Keep in mind the following:
 
-* **`fieldType` is immutable:** To change a field's type, delete the definition and create a new one. Existing values stored under that code become orphaned but are not erased.
+* **`fieldType` is immutable:** To change a field's type, delete its definition and create a new one. Deleting the definition removes its values from all entity records.
 * **`code` is stable once in use:** `code` must be unique within the owner type and organization. As this is the key used to read and write values across all entity mutations and queries, avoid recreating it under a different name if records contain values paired with it.
 * **`params` requires exactly one variant:** `FieldParamsInput` uses the `@oneOf` directive, so you must provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `NUMBER` returns a validation error.
 * **Multi-value fields and filtering:** For fields with `isMulti: true`, a filter matches if _any_ value in the array satisfies the condition. For example, if an asset has `fuel_type: ["diesel", "hybrid"]`, filtering with `EQ: "diesel"` will match it.
@@ -546,5 +546,5 @@ Keep in mind the following:
 
 ### See also
 
-* [Filtering and sorting](https://claude.ai/chat/filtering-and-sorting.md): full operator reference and value formats for custom field filters
-* [Optimistic locking](https://claude.ai/chat/optimistic-locking.md): how `version` works in update and delete mutations
+* [Filtering and sorting](https://claude.ai/chat/filtering-and-sorting.md): Full operator reference and value formats for custom field filters
+* [Optimistic locking](https://claude.ai/chat/optimistic-locking.md): How `version` works in update and delete mutations
