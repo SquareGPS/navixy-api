@@ -6,23 +6,23 @@ description: Define and use custom fields to attach domain-specific data to enti
 
 Devices, assets, geo objects, and schedules each come with a set of built-in fields such as `title`, `organization`, and `type`. These cover the core data the platform needs to function.
 
-Custom fields let you extend any entity type with additional data that's specific to your operation. A fleet management company might need to track a vehicle's VIN number, fuel type, and next maintenance date on each asset. A logistics operator might want to record a SIM card number on each GPS device, or tag geo objects with access restriction levels. Custom fields make this possible without any schema changes on the platform side.
+Custom fields let you extend any entity type with additional data specific to your operation. A fleet management company might need to track a vehicle's VIN number, fuel type, and next maintenance date on each asset. A logistics operator might want to record a SIM card number on each GPS device, or tag geo objects with access restriction levels. Custom fields make this possible without any schema changes on the platform side.
 
 Custom fields are supported for devices, assets, geo objects, and schedules.
 
 ## How custom fields work
 
-A [custom field definition](../custom-fields.md#customfielddefinition) describes the field — its machine-readable code, display title, data type, and validation rules. Think of it as designing a template: you decide what fields it has, what type of data each one accepts, and whether a value is required. You create definitions once, at the entity type level.
+The [CustomFieldDefinition object](../custom-fields.md#customfielddefinition) describes the field you want to create: its machine-readable code, displayed title, data type, and validation rules. Think of it as designing a template: you decide what fields it has, what type of data each field accepts, and whether a value is required. You create definitions once, at the entity-type level.
 
-Each individual record contains a value. When you create or update a device, an asset, or any other entity, you supply values through the `customFields` field in the create or update mutation input. The API validates each value against the corresponding definition.
+Each individual record contains a value. When you create or update a device, an asset, or any other entity with a custom field, you supply values through the `customFields` field in the create or update mutation input. The API validates each value against the corresponding field's definition.
 
 ### Predefined and custom definitions
 
 Definitions can be predefined or custom.
 
-**Predefined definitions** are created by the platform and apply to all entities of a given type. For example, `geojson` is a predefined definition for all geo objects — it stores the geometry. `schedule_data` is a predefined definition for all schedules. You cannot create or modify predefined definitions, but their values appear alongside yours in `customFields` responses.
+**Predefined definitions** already exist in the platform. The platform has the following predefined custom fields: `geojson`, `schedule_data` , and `device`.
 
-**Custom definitions** are created by you and apply only to entities of a specific type. For example, a `vin` field defined on the [AssetType](../assets/types.md#assettype) called `vehicle` appears only on vehicle assets, not on equipment or employee assets. This is what you create and manage through the API, and what this guide covers.
+**Custom definitions** are created by you and applied only to entities of a specific type. For example, a `vin` field defined on the [AssetType](../assets/types.md#assettype) called `vehicle` appears only on vehicle assets, not on equipment or employee assets. This is what you create and manage through the API, and what this guide covers.
 
 ## Scenario: Enriching fleet records with metadata
 
@@ -32,9 +32,9 @@ Specifically, they need to track:
 
 * On **vehicle assets**: the VIN number for compliance, the fuel type for route planning, and the next scheduled service date for maintenance management.
 * On **GPS devices**: the SIM card number for connectivity troubleshooting and installation notes for field technicians.
-* On **geo objects in the operations area**: the access restriction level for dispatch rules and the date these restrictions come into effect.
+* On **geo objects in the operations area**: access restrictions for dispatch rules and the date these restrictions come into effect.
 
-Implementing this metadata requires the following steps:
+Follow these steps to implement this metadata:
 
 {% stepper %}
 {% step %}
@@ -99,7 +99,7 @@ This works the same way for `deviceType`, `geoObjectType`, and `scheduleType`.
 
 #### How field codes work
 
-The `code` you provide becomes the key used to read and write values in all entity mutations and queries. It must be unique within the owner type and organization. Use lowercase snake\_case — for example, `vin`, `fuel_type`, `next_service_date` — and treat it as stable once records carry values under it.
+The [code](../common.md#code) you provide becomes the key used to read and write values in all entity mutations and queries. A code can contain ASCII letters, digits, underscores, dots, and hyphens, and must start with a letter or digit (max 64 characters). Uniqueness checks are case-insensitive. Predefined system fields use UPPER\_SNAKE\_CASE — user-defined codes can follow any valid format, though lowercase snake\_case is conventional.
 
 #### How to create a STRING field (VIN on vehicle assets)
 
@@ -139,7 +139,7 @@ The response confirms creation and returns the definition's ID:
   "data": {
     "customFieldDefinitionCreate": {
       "customFieldDefinition": {
-        "id": "019b1c3d-...",
+        "id": "019b1c3d-905f-827b-8003-777567741d66",
         "code": "vin",
         "fieldType": "STRING"
       }
@@ -221,7 +221,7 @@ mutation CreateServiceDateField {
 
 #### How to create fields for other entity types
 
-The same pattern applies to devices and geo objects — only `ownerCatalogItemId`, `targetEntityTypeId`, and the `params` variant change.
+The same pattern applies to devices and geo objects: only `ownerCatalogItemId`, `targetEntityTypeId`, and the `params` variant change.
 
 **TEXT field for a GPS device type**:
 
@@ -319,7 +319,7 @@ The same pattern applies to `deviceCreate`, `geoObjectCreate`, and `scheduleCrea
 {% step %}
 ### Update custom field values
 
-Custom field updates use a **patch model** — you only specify what changes. Include a code in `set` to add or overwrite it, include it in `unset` to remove it, and omit it entirely to leave it unchanged.
+Custom field updates use a **patch model** — you only specify what changes. Include a code in `set` to add or overwrite it, include it in `unset` to remove it, or omit it entirely to leave it unchanged.
 
 The following example updates the SIM card number on a device and removes its installation notes:
 
@@ -531,7 +531,7 @@ mutation DeleteDefinition {
 ```
 
 {% hint style="info" %}
-Deleting a definition does not erase values already stored in entity records. The data remains in the `customFields` JSON but has no backing definition. If you recreate a field with the same `code`, it will match those stored values again.
+Deleting a definition removes its key from the `customFields` JSON on all entity records. If you create a new definition with the same `code` later, existing records will not retain any value for it — the data is not preserved.
 {% endhint %}
 
 ## Constraints and considerations
@@ -539,12 +539,12 @@ Deleting a definition does not erase values already stored in entity records. Th
 Keep in mind the following:
 
 * **`fieldType` is immutable:** To change a field's type, delete the definition and create a new one. Existing values stored under that code become orphaned but are not erased.
-* **`code` is stable once in use:** It must be unique within the owner type and organization. Because it is the key used to read and write values across all entity mutations and queries, avoid recreating it under a different name once records carry values under it.
-* **`params` requires exactly one variant:** `FieldParamsInput` uses the `@oneOf` directive — provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `NUMBER` returns a validation error.
+* **`code` is stable once in use:** `code` must be unique within the owner type and organization. As this is the key used to read and write values across all entity mutations and queries, avoid recreating it under a different name if records contain values paired with it.
+* **`params` requires exactly one variant:** `FieldParamsInput` uses the `@oneOf` directive, so you must provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `NUMBER` returns a validation error.
 * **Multi-value fields and filtering:** For fields with `isMulti: true`, a filter matches if _any_ value in the array satisfies the condition. For example, if an asset has `fuel_type: ["diesel", "hybrid"]`, filtering with `EQ: "diesel"` will match it.
 * **Predefined fields:** Predefined definitions (like `geojson` and `schedule_data`) are platform-managed and appear in `customFields` responses alongside your definitions. Do not use codes that conflict with predefined field codes.
 
 ### See also
 
-* [Filtering and sorting](https://claude.ai/chat/filtering-and-sorting.md) — full operator reference and value formats for custom field filters
-* [Optimistic locking](https://claude.ai/chat/optimistic-locking.md) — how `version` works in update and delete mutations
+* [Filtering and sorting](https://claude.ai/chat/filtering-and-sorting.md): full operator reference and value formats for custom field filters
+* [Optimistic locking](https://claude.ai/chat/optimistic-locking.md): how `version` works in update and delete mutations
