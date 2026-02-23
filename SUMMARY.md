@@ -15,7 +15,7 @@
   * [Organizing assets into groups](guides/organizing-assets-into-groups.md)
   * [Implementing custom fields](guides/implementing-custom-fields.md)
   * [Managing schedules](guides/managing-schedules.md)
-  * [Working with geo objects](guides/creating-a-geo-object.md)
+  * [Working with geo objects](guides/working-with-geo-objects.md)
   * [Configuring a schedule](guides/configuring-a-schedule.md)
   * [Configuring user permissions](guides/configuring-user-permissions.md)
 
