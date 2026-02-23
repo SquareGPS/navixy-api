@@ -630,6 +630,6 @@ Keep in mind the following:
 
 ### See also
 
-* [Custom fields types and operations](../custom-fields.md): Complete list of all operations and types related to custom fields
+* [Custom fields types and operations](../custom-fields.md): A complete list of all operations and types related to custom fields
 * [Filtering and sorting](../filtering-and-sorting.md): Full operator reference and value formats for custom field filters
 * [Optimistic locking](https://claude.ai/chat/optimistic-locking.md): How `version` works in update and delete mutations

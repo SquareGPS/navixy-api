@@ -25,6 +25,25 @@ query GetMyOrganization {
 }
 ```
 
+The response returns your organization details:
+
+```json
+{
+  "data": {
+    "me": {
+      "memberships": [
+        {
+          "organization": {
+            "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+            "title": "ACME Logistics"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 In most cases, you'll have one organization in the response. Use its `id` for geo object operations.
 
 ### Check the available geo object types
@@ -45,7 +64,28 @@ query ListGeoObjectTypes {
 }
 ```
 
-This returns system types and any custom types your organization has created.
+The response returns system types and any custom types your organization has created:
+
+```json
+{
+  "data": {
+    "geoObjectTypes": {
+      "nodes": [
+        {
+          "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+          "code": "poi",
+          "title": "Point of Interest"
+        },
+        {
+          "id": "b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22",
+          "code": "geofence",
+          "title": "Geofence"
+        }
+      ]
+    }
+  }
+}
+```
 
 If you don't see a type you need, create one:
 
@@ -60,6 +100,22 @@ mutation CreateGeoObjectType {
       id
       code
       title
+    }
+  }
+}
+```
+
+The response confirms the new type:
+
+```json
+{
+  "data": {
+    "geoObjectTypeCreate": {
+      "geoObjectType": {
+        "id": "c2ggde11-1e2d-6gh0-dd8f-8dd1df602c33",
+        "code": "delivery_zone",
+        "title": "Delivery Zone"
+      }
     }
   }
 }
@@ -90,7 +146,7 @@ GeoJSON format:  [13.404954, 52.520008] (longitude, latitude)
 
 For example, Berlin's Brandenburg Gate is located at latitude 52.516275 and longitude 13.377704. In GeoJSON, this becomes `[13.377704, 52.516275]`.
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 Always double-check coordinate order when converting from other formats. Swapped coordinates will place your location in the wrong part of the world.
 {% endhint %}
 
@@ -104,7 +160,7 @@ Like other entities in the API, geo objects support custom fields. You might add
 * Operational metadata (zone manager contact, capacity limits)
 * Business attributes (pricing tier, priority level)
 
-See [Working with custom fields](https://claude.ai/chat/working-with-custom-fields.md) for details on defining and using custom fields.
+See [Implementing custom fields](implementing-custom-fields.md) for details on defining and using custom fields.
 
 ## Example scenario: Delivery service zones
 
@@ -112,7 +168,7 @@ A delivery company needs to define service areas and mark important locations. T
 
 {% stepper %}
 {% step %}
-#### Create a Point location (warehouse)
+**Create a Point location (warehouse)**
 
 Start by marking your main warehouse location with a `Point` type:
 
@@ -163,7 +219,7 @@ Save the `id` and `version` — you'll need them for updates.
 {% endstep %}
 
 {% step %}
-#### Verify the geo object
+**Verify the geo object**
 
 Query the geo object to confirm it was created correctly:
 
@@ -182,11 +238,33 @@ query GetWarehouseLocation {
 }
 ```
 
-The `geometry` field returns the full GeoJSON structure you provided, which you can use to verify the configuration or display on a map in your application.
+The response returns the full geo object:
+
+```json
+{
+  "data": {
+    "geoObject": {
+      "id": "019a6b2f-793e-807b-8001-555345529b44",
+      "version": 1,
+      "title": "Main Warehouse - Mitte",
+      "type": {
+        "code": "poi",
+        "title": "Point of Interest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [13.404954, 52.520008]
+      }
+    }
+  }
+}
+```
+
+The `geometry` field contains the full GeoJSON structure you provided, which you can use to verify the configuration or display on a map in your application.
 {% endstep %}
 
 {% step %}
-#### Create a polygon-shaped delivery zone
+**Create a polygon-shaped delivery zone**
 
 Create a rectangular delivery zone covering central Berlin:
 
@@ -242,9 +320,9 @@ The response returns:
 {% endstep %}
 
 {% step %}
-#### Test point containment
+**Test point containment**
 
-Check if specific delivery addresses fall within your zone using the `containsPoints` method:
+Check if specific delivery addresses fall within your zone using the `containsPoints` field:
 
 ```graphql
 query CheckDeliveryAddresses {
@@ -357,7 +435,7 @@ The response shows the incremented version:
 {% endstep %}
 
 {% step %}
-#### Delete the geo object
+**Delete the geo object**
 
 When you restructure your delivery zones and no longer need this geo object, you can delete it:
 
@@ -368,6 +446,18 @@ mutation DeleteDeliveryZone {
     version: 2
   }) {
     deletedId
+  }
+}
+```
+
+The response confirms deletion:
+
+```json
+{
+  "data": {
+    "geoObjectDelete": {
+      "deletedId": "019a6b30-8a4f-807b-8001-666456630c55"
+    }
   }
 }
 ```
@@ -483,6 +573,55 @@ query ListGeoObjects {
 }
 ```
 
+The response returns a paginated list:
+
+```json
+{
+  "data": {
+    "geoObjects": {
+      "nodes": [
+        {
+          "id": "019a6b2f-793e-807b-8001-555345529b44",
+          "title": "Main Warehouse - Mitte",
+          "type": {
+            "code": "poi",
+            "title": "Point of Interest"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [13.404954, 52.520008]
+          }
+        },
+        {
+          "id": "019a6b30-8a4f-807b-8001-666456630c55",
+          "title": "Central Berlin Zone",
+          "type": {
+            "code": "geofence",
+            "title": "Geofence"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [13.35, 52.48],
+                [13.45, 52.48],
+                [13.45, 52.56],
+                [13.35, 52.56],
+                [13.35, 52.48]
+              ]
+            ]
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "YXJyYXljb25uZWN0aW9uOjE="
+      }
+    }
+  }
+}
+```
+
 You can filter by type or search by title:
 
 ```graphql
@@ -503,6 +642,23 @@ query ListDeliveryZones {
 }
 ```
 
+The response returns only matching geo objects:
+
+```json
+{
+  "data": {
+    "geoObjects": {
+      "nodes": [
+        {
+          "id": "019a6b30-8a4f-807b-8001-666456630c55",
+          "title": "Central Berlin Zone"
+        }
+      ]
+    }
+  }
+}
+```
+
 For more on filtering and pagination, see [Filtering and sorting](../filtering-and-sorting.md) and [Pagination](../pagination.md).
 
 ## Handling version conflicts
@@ -514,11 +670,18 @@ If someone else updates the geo object while you're working on it, your mutation
   "errors": [
     {
       "message": "Entity has been modified by another request",
+      "path": ["geoObjectUpdate"],
       "extensions": {
-        "code": "CONFLICT",
+        "type": "https://api.navixy.com/errors/conflict",
+        "title": "Conflict",
         "status": 409,
+        "detail": "GeoObject 019a6b30-... was modified. Expected version 2, current version 3.",
+        "code": "CONFLICT",
+        "entityType": "GeoObject",
+        "entityId": "019a6b30-8a4f-807b-8001-666456630c55",
         "expectedVersion": 2,
-        "currentVersion": 3
+        "currentVersion": 3,
+        "traceId": "0af7651916cd43dd8448eb211c80319c"
       }
     }
   ]
@@ -533,6 +696,8 @@ To resolve this:
 
 For more details on version conflicts, see [Optimistic locking](../optimistic-locking.md).
 
-### Next steps
+### See alo
 
-* TBD
+* [Geo objects reference](../geo-objects/): A complete list of all operations and types related to geo objects
+* [Filtering and sorting](../filtering-and-sorting.md): Full operator reference and value formats for custom field filters
+* [Optimistic locking](https://claude.ai/chat/optimistic-locking.md): How `version` works in update and delete mutations
