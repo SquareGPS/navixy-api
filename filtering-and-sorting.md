@@ -126,7 +126,7 @@ query {
 
 Each condition in the `customFields` array has three parts:
 
-<table><thead><tr><th width="200.39996337890625">Field</th><th>Description</th></tr></thead><tbody><tr><td>code</td><td>The custom field's code, as defined in its CustomFieldDefinition</td></tr><tr><td>operator</td><td>How to compare the value</td></tr><tr><td>value</td><td>The value to compare against, formatted as JSON</td></tr></tbody></table>
+<table><thead><tr><th width="200.39996337890625">Field</th><th>Description</th></tr></thead><tbody><tr><td>code</td><td>The custom field's code, as defined in its <a href="custom-fields.md#customfielddefinition">CustomFieldDefinition</a></td></tr><tr><td>operator</td><td>How to compare the value</td></tr><tr><td>value</td><td>The value to compare against, formatted as JSON</td></tr></tbody></table>
 
 ### Operators
 

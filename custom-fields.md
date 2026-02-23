@@ -960,7 +960,9 @@ Input for deleting a custom field definition.
 
 Field parameters input. Exactly one field must be provided.
 
-_This input type uses `@oneOf` - exactly one field must be provided._
+{% hint style="warning" %}
+This input type uses `@oneOf` - exactly one field must be provided.
+{% endhint %}
 
 | Field       | Type                                                                    | Description                          |
 | ----------- | ----------------------------------------------------------------------- | ------------------------------------ |
