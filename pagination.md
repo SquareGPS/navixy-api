@@ -33,7 +33,7 @@ Using cursors instead of page numbers enables the following:
 
 ## Paginated query structure
 
-Every paginated query returns a **Connection** type with this structure:
+Every paginated query returns a **Connection** type with this structure (we're using `device` entity as an example, but the principle is the same):
 
 ```graphql
 type DeviceConnection {

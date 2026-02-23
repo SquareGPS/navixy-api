@@ -79,7 +79,31 @@ query GetVehicleTypeFields {
 }
 ```
 
-This works the same way for `deviceType`, `geoObjectType`, and `scheduleType`.
+Response (if the fields already exist):
+
+```json
+{
+  "data": {
+    "assetType": {
+      "title": "Vehicle",
+      "customFieldDefinitions": [
+        {
+          "code": "vin",
+          "title": "VIN Number",
+          "fieldType": "STRING"
+        },
+        {
+          "code": "fuel_type",
+          "title": "Fuel Type",
+          "fieldType": "OPTIONS"
+        }
+      ]
+    }
+  }
+}
+```
+
+If no custom fields have been created yet, `customFieldDefinitions` is an empty array. The query works the same way for `deviceType`, `geoObjectType`, and `scheduleType`.
 
 #### 2.2 Choose codes for your fields
 
@@ -139,14 +163,10 @@ The response confirms creation and returns the definition's ID:
 {% hint style="warning" %}
 The `params` input uses the [@oneOf directive](../core-api-reference/directives.md#oneof) — you must provide exactly one variant matching your `fieldType`.&#x20;
 
-For `STRING`, use `params: { string: { ... } }`.&#x20;
-
-For `OPTIONS`, use `params: { options: { ... } }`.&#x20;
-
-Providing the wrong variant returns a validation error.
+Each field type has its own named params block that you must use. The mutations in this step demonstrate this: the VIN field uses `params: { string: { ... } }`, the fuel type field uses `params: { options: { ... } }`, and the service date field uses `params: { date: { ... } }`. Providing the wrong variant returns a [validation error](../error-handling.md#validation-error-400).
 {% endhint %}
 
-#### 2.3 Create an OPTIONS field (fuel type)
+#### 2.4 Create an OPTIONS field (fuel type)
 
 Run the following mutation:
 
@@ -181,9 +201,11 @@ mutation CreateFuelTypeField {
 }
 ```
 
+On success, the response returns the new definition's `id` and `code`.
+
 Set `isMulti: true` if an entity can support more than one option. See [multi-value fields and filtering](working-with-custom-fields.md#constraints-and-considerations) for how this affects queries.
 
-#### 2.4 Create a DATE field (next service date)
+#### 2.5 Create a DATE field (next service date)
 
 Run the following mutation:
 
@@ -210,6 +232,8 @@ mutation CreateServiceDateField {
   }
 }
 ```
+
+On success, the response returns the new definition's `id` and `code`.
 
 The same mutation ([customFieldDefinitionCreate](../custom-fields.md#customfielddefinitioncreate)) works for devices, geo objects, and schedules — only `ownerCatalogItemId`, `targetEntityTypeId`, and the `params` variant change.
 {% endstep %}
@@ -242,6 +266,30 @@ mutation CreateVehicleAsset {
 }
 ```
 
+The response returns the created asset's `id`, `version`, and `customFields`:
+
+```json
+{
+  "data": {
+    "assetCreate": {
+      "asset": {
+        "id": "019a6b2f-793e-807b-8001-555345529b44",
+        "version": 1,
+        "customFields": {
+          "vin": "1HGBH41JXMN109186",
+          "fuel_type": "diesel",
+          "next_service_date": "2025-09-01"
+        }
+      }
+    }
+  }
+}
+```
+
+{% hint style="warning" %}
+If any custom field value fails validation, the entire mutation is rejected with a `VALIDATION_ERROR`. Common causes include a value that violates the field's `params` constraints (for example, a VIN shorter than 17 characters), an unrecognized field code, or a value of the wrong type. The error response includes a `field` path and a `detail` message identifying the problem. See Error handling for the full error format.
+{% endhint %}
+
 The same pattern applies to `deviceCreate`, `geoObjectCreate`, and `scheduleCreate` fields.
 {% endstep %}
 
@@ -271,6 +319,24 @@ mutation UpdateTrackerFields {
 }
 ```
 
+The response returns the updated device's `id`, `version`, and `customFields`. Fields that were unset no longer appear in the JSON:
+
+```json
+{
+  "data": {
+    "deviceUpdate": {
+      "device": {
+        "id": "019a6c3f-894e-817b-8002-666456630c55",
+        "version": 4,
+        "customFields": {
+          "sim_card": "8931010000000000001"
+        }
+      }
+    }
+  }
+}
+```
+
 {% hint style="info" %}
 All entity update mutations require the current `version` for [optimistic locking](../optimistic-locking.md). Fetch the entity first if you don't have the latest version.
 {% endhint %}
@@ -279,7 +345,7 @@ All entity update mutations require the current `version` for [optimistic lockin
 {% step %}
 ### Read custom field values
 
-`customFields` on any entity returns a JSON object keyed by field code. By default, all fields are returned.
+`customFields` on any entity returns a JSON object keyed by field code. By default, all fields are returned. Run the following query:
 
 ```graphql
 query GetAssetFields {
@@ -317,6 +383,22 @@ query GetVehicleKeyFields {
   }
 }
 ```
+
+The response contains only the requested fields:
+
+```json
+{
+  "data": {
+    "asset": {
+      "title": "Truck 12",
+      "customFields": {
+        "vin": "1HGBH41JXMN109186",
+        "fuel_type": "diesel"
+      }
+    }
+  }
+}
+```
 {% endstep %}
 
 {% step %}
@@ -347,6 +429,27 @@ query FindElectricVehicles {
 }
 ```
 
+Response:
+
+```json
+{
+  "data": {
+    "assets": {
+      "nodes": [
+        {
+          "id": "019a6b2f-793e-807b-8001-555345529b44",
+          "title": "Truck 12",
+          "customFields": {
+            "fuel_type": "electric",
+            "next_service_date": "2025-09-01"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 #### How to filter by a DATE value
 
 Find vehicles with a service date before a deadline:
@@ -368,6 +471,26 @@ query FindOverdueVehicles {
 }
 ```
 
+Response:
+
+```json
+{
+  "data": {
+    "assets": {
+      "nodes": [
+        {
+          "id": "019a6b2f-793e-807b-8001-555345529b44",
+          "title": "Truck 12",
+          "customFields": {
+            "next_service_date": "2025-06-15"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 #### How to combine multiple conditions
 
 Find devices with a specific SIM card prefix that don't yet have installation notes:
@@ -384,6 +507,23 @@ query FindUndocumentedTrackers {
     nodes {
       id
       title
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "devices": {
+      "nodes": [
+        {
+          "id": "019a6c3f-894e-817b-8002-666456630c55",
+          "title": "Tracker 04"
+        }
+      ]
     }
   }
 }
@@ -426,6 +566,8 @@ mutation UpdateVinField {
 }
 ```
 
+The response returns the updated definition's `id`, incremented `version`, and new `title`.
+
 For OPTIONS fields, you can add new options or archive existing ones. Archiving an option (`isArchived: true`) hides it from new selections without affecting records that already carry it:
 
 ```graphql
@@ -459,6 +601,18 @@ mutation DeleteDefinition {
 }
 ```
 
+The response returns the ID of the deleted definition:
+
+```json
+{
+  "data": {
+    "customFieldDefinitionDelete": {
+      "deletedId": "019b1c3d-905f-827b-8003-777567741d66"
+    }
+  }
+}
+```
+
 {% hint style="info" %}
 Deleting a definition removes its key from the `customFields` JSON on all entity records. If you create a new definition with the same `code` later, existing records will not retain any value for it — the data is not preserved.
 {% endhint %}
@@ -467,6 +621,7 @@ Deleting a definition removes its key from the `customFields` JSON on all entity
 
 Keep in mind the following:
 
+* **Validation errors reject the entire mutation:** Mutations that include invalid custom field values are rejected in full. See [Error handling](../error-handling.md) for the error format.
 * **`fieldType` is immutable:** To change a field's type, delete its definition and create a new one. Deleting the definition removes its values from all entity records.
 * **`code` is stable once in use:** `code` must be unique within the owner type and organization. As this is the key used to read and write values across all entity mutations and queries, avoid recreating it under a different name if records contain values paired with it.
 * **`params` requires exactly one variant:** `FieldParamsInput` uses the `@oneOf` directive, so you must provide exactly the variant that matches your `fieldType`. Providing `string: { ... }` when `fieldType` is `NUMBER` returns a validation error.
