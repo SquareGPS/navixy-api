@@ -4,11 +4,11 @@ description: Define and use custom fields to attach domain-specific data to enti
 
 # Implementing custom fields
 
-Devices, assets, geo objects, and schedules each come with a set of built-in fields such as `title`, `organization`, and `type`. Custom fields let you extend these entities with additional data specific to your operation — a VIN number, a fuel type, an inspection date, an access level — without any changes to the platform schema.
+In Navixy Repository API, devices, assets, geo objects, and schedules each come with a set of built-in fields such as `title`, `organization`, and `type`. Custom fields let you extend these entities with additional data specific to your operation — a VIN number, a fuel type, an inspection date, an access level — without any changes to the platform schema.
 
 ## How custom fields work
 
-Custom fields can be user-defined or predefined. **User-defined** fields are created by you and scoped to a specific entity type — for example, a `vin` field that only appears in vehicles. **Predefined** fields are built into the platform for certain entity types, such as `geojson` in geo objects.&#x20;
+Custom fields can be user-defined or predefined. User-defined fields are created by you and scoped to a specific entity type — for example, a `vin` field that only appears in vehicles. Predefined fields are built into the platform for certain entity types, such as `geojson` in geo objects.&#x20;
 
 {% hint style="warning" %}
 This guide covers user-defined fields; avoid using predefined field codes (`geojson`, `device`, and `schedule_data`) for creating your own fields.
@@ -46,7 +46,7 @@ Adding this metadata requires the following steps:
 {% step %}
 ### Choose a field type
 
-Before creating a definition, pick the `fieldType` that best matches your data. See the [field type reference](working-with-custom-fields.md#field-type-reference) above.
+Before creating a definition, pick the `fieldType` that best matches your data. See the [field type reference](implementing-custom-fields.md#field-type-reference) above.
 
 {% hint style="warning" %}
 `fieldType` is immutable after creation. If you need to change a field's type, delete the definition and create a new one. Values already stored under that code in entity records remain in the JSON but will no longer have a backing definition.
@@ -203,7 +203,7 @@ mutation CreateFuelTypeField {
 
 On success, the response returns the new definition's `id` and `code`.
 
-Set `isMulti: true` if an entity can support more than one option. See [multi-value fields and filtering](working-with-custom-fields.md#constraints-and-considerations) for how this affects queries.
+Set `isMulti: true` if an entity can support more than one option. See [multi-value fields and filtering](implementing-custom-fields.md#constraints-and-considerations) for how this affects queries.
 
 #### 2.5 Create a DATE field (next service date)
 
@@ -631,5 +631,5 @@ Keep in mind the following:
 ### See also
 
 * [Custom fields types and operations](../custom-fields.md): Complete list of all operations and types related to custom fields
-* [Filtering and sorting](https://claude.ai/chat/filtering-and-sorting.md): Full operator reference and value formats for custom field filters
+* [Filtering and sorting](../filtering-and-sorting.md): Full operator reference and value formats for custom field filters
 * [Optimistic locking](https://claude.ai/chat/optimistic-locking.md): How `version` works in update and delete mutations

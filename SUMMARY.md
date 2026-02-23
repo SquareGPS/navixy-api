@@ -13,11 +13,11 @@
   * [Activating a device](guides/activating-a-device.md)
   * [Creating an asset](guides/creating-an-asset.md)
   * [Organizing assets into groups](guides/organizing-assets-into-groups.md)
-  * [Configuring a schedule](guides/configuring-a-schedule.md)
-  * [Working with geo objects](guides/creating-a-geo-object.md)
-  * [Configuring user permissions](guides/configuring-user-permissions.md)
+  * [Implementing custom fields](guides/implementing-custom-fields.md)
   * [Managing schedules](guides/managing-schedules.md)
-  * [Implementing custom fields](guides/working-with-custom-fields.md)
+  * [Working with geo objects](guides/creating-a-geo-object.md)
+  * [Configuring a schedule](guides/configuring-a-schedule.md)
+  * [Configuring user permissions](guides/configuring-user-permissions.md)
 
 ## Core API reference
 

@@ -10,16 +10,22 @@ This guide walks you through creating, updating, and managing geo objects with d
 
 ## Before you start
 
-To work with geo objects, you need your organization's ID. Use the [me](https://claude.ai/operations-and-types/queries.md#me) query to find it through your membership:
+To work with geo objects, you need your organization's ID. Use the [me](../actors/#me) query to find it through your membership:
 
-```graphql
-query GetMyOrganization {
-  me {
-    memberships {
-      organization {
-        id
-        title
-      }
+The response returns your organization's details:
+
+```json
+{
+  "data": {
+    "me": {
+      "memberships": [
+        {
+          "organization": {
+            "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+            "title": "ACME Logistics"
+          }
+        }
+      ]
     }
   }
 }
@@ -45,7 +51,28 @@ query ListGeoObjectTypes {
 }
 ```
 
-This returns system types and any custom types your organization has created.
+The response returns system types and any custom types your organization has created:
+
+```json
+{
+  "data": {
+    "geoObjectTypes": {
+      "nodes": [
+        {
+          "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+          "code": "poi",
+          "title": "Point of Interest"
+        },
+        {
+          "id": "b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22",
+          "code": "geofence",
+          "title": "Geofence"
+        }
+      ]
+    }
+  }
+}
+```
 
 If you don't see a type you need, create one:
 
@@ -60,6 +87,22 @@ mutation CreateGeoObjectType {
       id
       code
       title
+    }
+  }
+}
+```
+
+The response confirms the new type:
+
+```json
+{
+  "data": {
+    "geoObjectTypeCreate": {
+      "geoObjectType": {
+        "id": "c2ggde11-1e2d-6gh0-dd8f-8dd1df602c33",
+        "code": "delivery_zone",
+        "title": "Delivery Zone"
+      }
     }
   }
 }

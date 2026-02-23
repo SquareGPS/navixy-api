@@ -34,7 +34,7 @@ In most cases, you'll have one organization in the response. Use its `id` for sc
 A schedule consists of metadata (title, type, organization) and calendar data stored in the `scheduleData` field, which accepts a value of [ScheduleData](../graphql-reference/all-operations-and-types/scalars.md#scheduledata), a custom scalar containing a JSON value.
 
 {% hint style="info" %}
-The `scheduleData` field is a convenience alias for the `schedule_data` system custom field. You can also access the same data through the `customFields` field if needed. See [Working with custom fields](working-with-custom-fields.md) for details.
+The `scheduleData` field is a convenience alias for the `schedule_data` system custom field. You can also access the same data through the `customFields` field if needed. See [Working with custom fields](implementing-custom-fields.md) for details.
 {% endhint %}
 
 The JSON structure follows the RFC 5545 conventions:
