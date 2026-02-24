@@ -18,23 +18,26 @@ Every custom field has a [FieldType](../custom-fields.md#fieldtype) that determi
 
 ### Field type reference
 
-| Field type  | Use for                              | Key params                                                                                        | Example value                                      |
-| ----------- | ------------------------------------ | ------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `STRING`    | Short text, codes, identifiers       | `isRequired`, `minLength`, `maxLength`, `defaultValue`, `trim`                                    | `"1HGBH41JXMN109186"`                              |
-| `TEXT`      | Long descriptions, notes             | `isRequired`, `maxLength`, `defaultValue`, `trim`                                                 | `"Installed under dashboard, driver side"`         |
-| `NUMBER`    | Quantities, measurements             | `isRequired`, `min`, `max`, `precision`, `defaultValue`                                           | `42`, `3.14`                                       |
-| `BOOLEAN`   | Flags, yes/no attributes             | `isRequired`, `defaultValue`                                                                      | `true`                                             |
-| `DATE`      | Calendar dates                       | `isRequired`, `defaultValue`                                                                      | `"2025-06-01"`                                     |
-| `DATETIME`  | Timestamps                           | `isRequired`, `defaultValue`                                                                      | `"2025-06-01T09:00:00Z"`                           |
-| `OPTIONS`   | Predefined choices (single or multi) | `isRequired`, `isMulti`, `options[]`, `defaultValue`                                              | `"diesel"`                                         |
-| `GEOJSON`   | Geometry data                        | `isRequired`, `allowedTypes` ([GeoJsonGeometryType](../geo-objects/types.md#geojsongeometrytype)) | `{"type":"Point","coordinates":[...]}`             |
-| `SCHEDULE`  | References to schedule definitions   | `isRequired`                                                                                      | [Schedule object](../schedules/types.md#schedule)  |
-| `DEVICE`    | Links to device records              | `isRequired`, `isMulti`                                                                           | `"019a6a3f-..."`                                   |
-| `REFERENCE` | Links to other entity records        | `isRequired`, `isMulti`, `refEntityTypeCode`                                                      | `"019a6a3f-..."`                                   |
-| `CATALOG`   | Links to catalog items               | `isRequired`, `isMulti`, `refCatalogCode`                                                         | `"ITEM_CODE"`                                      |
-| `TAG`       | Tags from a tag catalog              | `isRequired`, `isMulti`                                                                           | `"TAG_CODE"`                                       |
+<table><thead><tr><th width="135.4444580078125">Field type</th><th>Use for</th><th>Key params</th><th>Example value</th></tr></thead><tbody><tr><td><code>STRING</code></td><td>Short text, codes, identifiers</td><td><code>isRequired</code>, <code>minLength</code>, <code>maxLength</code>, <code>defaultValue</code>, <code>trim</code></td><td><code>"1HGBH41JXMN109186"</code></td></tr><tr><td><code>TEXT</code></td><td>Long descriptions, notes</td><td><code>isRequired</code>, <code>maxLength</code>, <code>defaultValue</code>, <code>trim</code></td><td><code>"Installed under dashboard, driver side"</code></td></tr><tr><td><code>NUMBER</code></td><td>Quantities, measurements</td><td><code>isRequired</code>, <code>min</code>, <code>max</code>, <code>precision</code>, <code>defaultValue</code></td><td><code>42</code>, <code>3.14</code></td></tr><tr><td><code>BOOLEAN</code></td><td>Flags, yes/no attributes</td><td><code>isRequired</code>, <code>defaultValue</code></td><td><code>true</code></td></tr><tr><td><code>DATE</code></td><td>Calendar dates</td><td><code>isRequired</code>, <code>defaultValue</code></td><td><code>"2025-06-01"</code></td></tr><tr><td><code>DATETIME</code></td><td>Timestamps</td><td><code>isRequired</code>, <code>defaultValue</code></td><td><code>"2025-06-01T09:00:00Z"</code></td></tr><tr><td><code>OPTIONS</code></td><td>Predefined choices (single or multi)</td><td><code>isRequired</code>, <code>isMulti</code>, <code>options[]</code>, <code>defaultValue</code></td><td><code>"diesel"</code></td></tr><tr><td><code>GEOJSON</code></td><td>Geometry data</td><td><code>isRequired</code>, <code>allowedTypes</code> (<a href="../geo-objects/types.md#geojsongeometrytype">GeoJsonGeometryType</a>)</td><td><code>{"type":"Point","coordinates":[...]}</code></td></tr><tr><td><code>SCHEDULE</code></td><td>References to schedule definitions</td><td><code>isRequired</code></td><td><a href="../schedules/types.md#schedule">Schedule object</a> </td></tr><tr><td><code>DEVICE</code></td><td>Links to device records</td><td><code>isRequired</code>, <code>isMulti</code></td><td><code>"019a6a3f-..."</code></td></tr><tr><td><code>REFERENCE</code></td><td>Links to other entity records</td><td><code>isRequired</code>, <code>isMulti</code>, <code>refEntityTypeCode</code></td><td><code>"019a6a3f-..."</code></td></tr><tr><td><code>CATALOG</code></td><td>Links to catalog items</td><td><code>isRequired</code>, <code>isMulti</code>, <code>refCatalogCode</code></td><td><code>"ITEM_CODE"</code></td></tr><tr><td><code>TAG</code></td><td>Tags from a tag catalog</td><td><code>isRequired</code>, <code>isMulti</code></td><td><code>"TAG_CODE"</code></td></tr></tbody></table>
 
 Each field is described by [CustomFieldDefinition](../custom-fields.md#customfielddefinition) — a metadata record that specifies the field's code, display title, type, and validation rules. When you create or update an entity, you supply field values through the `customFields` field in the mutation input, and the API validates each value against the corresponding definition.
+
+### Writing custom field values
+
+`customFields` in any create or update mutation accepts a [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) with two sub-fields:
+
+<table><thead><tr><th width="169">Field</th><th width="125.44451904296875">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>set</code></td><td><a href="../common.md#json">JSON</a></td><td>Key-value map of fields to create or overwrite.</td></tr><tr><td><code>unset</code></td><td><a href="../common.md#code">[Code!]</a></td><td>List of field codes to remove entirely.</td></tr></tbody></table>
+
+This is the **patch model**: fields you don't mention are left unchanged. You can `set` and `unset` in the same mutation. For example, to update a license plate and remove an assigned driver in one call, add this code:
+
+```graphql
+customFields: {
+  set:   { license_plate: "HH-TL 4421" }
+  unset: ["assigned_driver"]
+}
+```
+
+Omitting `customFields` altogether leaves all existing values untouched.
 
 ## Scenario: Enriching fleet records with metadata
 
@@ -296,7 +299,7 @@ The same pattern applies to `deviceCreate`, `geoObjectCreate`, and `scheduleCrea
 {% step %}
 ### Update custom field values
 
-Custom field updates use a **patch model** — you only specify what changes. Include a code in `set` to add or overwrite it, include it in `unset` to remove it, or omit it entirely to leave it unchanged.
+Use `set` to overwrite specific fields and `unset` to remove them. Fields omitted from both are left unchanged.
 
 The following mutation updates the SIM card number on a device and removes its installation notes:
 

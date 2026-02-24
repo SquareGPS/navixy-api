@@ -27,6 +27,25 @@ query GetMyOrganization {
 }
 ```
 
+You'll receive a response:
+
+```json
+{
+  "data": {
+    "me": {
+      "memberships": [
+        {
+          "organization": {
+            "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+            "title": "TransLog GmbH"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 In most cases, you'll have one organization in the response. Use its `id` for schedule operations.
 
 ## Understanding schedule data
@@ -344,7 +363,7 @@ The `version` parameter ensures you don't accidentally delete a schedule that so
 {% endstep %}
 {% endstepper %}
 
-### Listing schedules
+## Listing schedules
 
 To retrieve all schedules for an organization:
 
@@ -372,7 +391,7 @@ query ListSchedules {
 
 For details on pagination, see [Pagination](../pagination.md).
 
-### Handling version conflicts
+## Handling version conflicts
 
 If someone else updates the schedule while you're working on it, your mutation will fail with a conflict error:
 

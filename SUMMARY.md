@@ -11,7 +11,7 @@
 * [Optimistic locking](optimistic-locking.md)
 * [Guides](guides/README.md)
   * [Activating a device](guides/activating-a-device.md)
-  * [Creating an asset](guides/creating-an-asset.md)
+  * [Working with assets](guides/working-with-assets.md)
   * [Organizing assets into groups](guides/organizing-assets-into-groups.md)
   * [Implementing custom fields](guides/implementing-custom-fields.md)
   * [Managing schedules](guides/managing-schedules.md)

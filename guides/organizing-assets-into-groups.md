@@ -14,6 +14,8 @@ layout:
     visible: true
   metadata:
     visible: true
+  tags:
+    visible: true
 ---
 
 # Organizing assets into groups
@@ -32,7 +34,7 @@ Note that {BASE\_URL} in sample requests is a placeholder for the URL you'll be 
 
 #### Prerequisites
 
-An existing asset. Learn how to create it in [Creating an asset](creating-an-asset.md).
+An existing asset. Learn how to create it in [Creating an asset](working-with-assets.md).
 
 #### Step 1. Create a new asset group
 

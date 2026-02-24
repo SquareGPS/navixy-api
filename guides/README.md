@@ -7,5 +7,5 @@ description: old version
 This section contains detailed step-by-step tutorials for basic scenarios of using Navixy Repository API.
 
 * [Activating a GPS device](activating-a-device.md)
-* [Creating a custom asset](creating-an-asset.md)
+* [Creating a custom asset](working-with-assets.md)
 * [Configuring an asset link](organizing-assets-into-groups.md)
