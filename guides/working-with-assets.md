@@ -96,7 +96,7 @@ An asset type classifies assets and defines which custom fields they have. It is
 Before creating a type, remember that `code` is immutable after creation. Choose it carefully, since it's what integrations and filters will use to reference the type.
 {% endhint %}
 
-Types can originate from three places: predefined by the platform (`SYSTEM`), created by your organization (`ORGANIZATION`), or inherited from a parent organization in the dealer hierarchy (`PARENT_ORGANIZATION`). You can only create, update, and delete types with `ORGANIZATION` origin — system and inherited types are read-only.
+Types can originate from three places: predefined by the platform (`SYSTEM`), created by your organization (`ORGANIZATION`), or inherited from a parent organization in the dealer hierarchy (`PARENT_ORGANIZATION`). The origin is exposed as `meta.origin` on the type. You can only create, update, and delete types with `ORGANIZATION` origin — system and inherited types are read-only.
 
 For the full field reference, see [AssetType](../assets/types.md#assettype).
 
@@ -108,7 +108,7 @@ For the full field reference, see [Asset](../assets/types.md#asset).
 
 ### Custom fields
 
-Assets store their domain-specific attributes in the `customFields` field. When creating or updating an asset, you pass custom field changes using `CustomFieldsPatchInput`, which has two sub-fields:
+Assets store their domain-specific attributes in the `customFields` field. When creating or updating an asset, you pass custom field changes using [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput), which has two sub-fields:
 
 <table><thead><tr><th width="129">Field</th><th width="131.44439697265625">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>set</code></td><td><a href="../common.md#json">JSON</a></td><td>Key-value map of fields to create or overwrite.</td></tr><tr><td><code>unset</code></td><td><a href="../common.md#code">[Code!]</a></td><td>List of field codes to clear.</td></tr></tbody></table>
 
@@ -118,13 +118,23 @@ See [Implementing custom fields](implementing-custom-fields.md) for details on d
 
 ### The device field
 
-The `device` field is a convenience alias for the `device` system custom field. It lets you read the linked GPS device directly from an asset without going through the raw `customFields` JSON. To link a device when creating or updating an asset, pass the device ID via `customFields`:
+The `device` field on an asset is a convenience alias for a system-level custom field that stores a reference to a GPS device. It lets you read the linked device directly from an asset as a resolved [Device object](../devices/types.md#device) without going through the raw `customFields` JSON.
+
+{% hint style="danger" %}
+The exact key name used to link a device via `customFields` and the precise value format are pending confirmation from the development team. The examples in this guide use `device` as the field code — verify this with your team before using it in production code
+{% endhint %}
+
+To link a device when creating or updating an asset, pass the device ID under `set` in `customFields`:
 
 ```graphql
 customFields: { set: { device: "<device-id>" } }
 ```
 
-Confirm the exact key name and value format with your development team before using `device` in `customFields`. The `device` field behavior depends on the system custom field configuration for your organization.
+To unlink a device without touching other fields:
+
+```graphql
+customFields: { unset: ["device"] }
+```
 
 ## Example scenario: Registering a logistics fleet
 
@@ -190,14 +200,17 @@ Create the first truck in the registry. Pass custom field values using the `set`
 
 Run this mutation:
 
-<pre class="language-graphql"><code class="lang-graphql">mutation RegisterTruck {
-<strong>  assetCreate(input: {
-</strong>    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+```graphql
+mutation RegisterTruck {
+  assetCreate(input: {
+    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
     typeId: "b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22"
     title: "Truck B-44 (Hamburg–Berlin)"
     customFields: {
-      license_plate: "HH-TL 4421"
-      device: "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44"
+      set: {
+        license_plate: "HH-TL 4421"
+        device: "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44"
+      }
     }
   }) {
     asset {
@@ -207,7 +220,7 @@ Run this mutation:
     }
   }
 }
-</code></pre>
+```
 
 Response:
 
@@ -227,7 +240,7 @@ Response:
 
 Save the `id` and `version` — you'll need them for updates.
 
-Assets don't require custom fields. To register a forklift with no custom properties, run this mutation:
+Assets don't require custom fields. TransLog also has a forklift type already configured in their organization (with `id: "d4iigf33-3g4f-7ik2-ff0h-0ff3fh824e55"`). To register a forklift with no custom properties:
 
 ```graphql
 mutation RegisterForklift {
@@ -249,7 +262,7 @@ mutation RegisterForklift {
 {% step %}
 ### **Verify the asset**
 
-Query the asset to confirm it was created correctly. Request both `customFields` (raw key-value map) and `device` (resolved object) to see how they relate:
+Query the asset to confirm it was created correctly. Requesting both `customFields` (raw key-value map) and `device` (resolved object) side-by-side illustrates how they relate:
 
 ```graphql
 query GetTruck {
@@ -301,7 +314,12 @@ Response:
 To keep the response lean, you can request only specific custom field codes:
 
 ```graphql
-customFields(codes: ["license_plate"])
+query GetTruckLicensePlate {
+  asset(id: "019a6b2f-793e-807b-8001-555345529b44") {
+    title
+    customFields(codes: ["license_plate"])
+  }
+}
 ```
 {% endstep %}
 
@@ -319,7 +337,9 @@ mutation ReassignTruck {
     version: 1
     title: "Truck B-44 (Berlin–Warsaw)"
     customFields: {
-      device: "e5jjhg44-4h5g-8jl3-gg1i-1gg4gi935f66"
+      set: {
+        device: "e5jjhg44-4h5g-8jl3-gg1i-1gg4gi935f66"
+      }
     }
   }) {
     asset {
@@ -371,7 +391,9 @@ As with linking a device, this assumes the device is stored under the `device` k
 {% endstep %}
 
 {% step %}
-When the truck is decommissioned and you no longer need its record, run a mutation based on [assetDelete](../assets/mutations.md#assetdelete):
+### **Delete the asset**
+
+When the truck is decommissioned and you no longer need its record, run the [assetDelete](../assets/mutations.md#assetdelete) mutation:
 
 ```graphql
 mutation DecommissionTruck {
@@ -402,7 +424,7 @@ The `version` field ensures you don't accidentally delete an asset that someone 
 
 ## Listing assets
 
-To list all assets for an organization:
+To list all assets for an organization, run the following query:
 
 ```graphql
 query ListAssets {
@@ -428,7 +450,7 @@ query ListAssets {
 
 ### Filtering
 
-Use [AssetFilter](../assets/queries.md#assetfilter) to narrow results by type, linked GPS device, title, or custom field values. Conditions across different fields are combined with AND; multiple values within a single field are combined with OR. For the full filter field reference and custom field filter operators, see [Filtering and sorting](../filtering-and-sorting.md#operators).
+Use [AssetFilter](../assets/queries.md#assetfilter) to narrow results by type, linked GPS device, title, or custom field values. Conditions across different fields are combined with AND, while multiple values within a single field are combined with OR. For the full filter field reference and custom field filter operators, see [Filtering and sorting](../filtering-and-sorting.md#operators).
 
 ```graphql
 query ListTrucks {
@@ -497,7 +519,7 @@ query AssetsByLicensePlate {
 
 For details on pagination, see [Pagination](../pagination.md).
 
-### Handling version conflicts
+## Handling version conflicts
 
 If another client updates an asset between when you fetched it and when you submit your mutation, the API returns a conflict error:
 
