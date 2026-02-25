@@ -492,10 +492,6 @@ Response:
 ```
 
 The `version` field ensures you don't accidentally delete an asset that someone else has modified since you last fetched it.&#x20;
-
-{% hint style="danger" %}
-Unlike some other entity types in the API, assets do not support soft delete — `assetDelete` permanently removes the record and cannot be undone.
-{% endhint %}
 {% endstep %}
 {% endstepper %}
 
@@ -647,7 +643,7 @@ If another client updates an asset between when you fetched it and when you subm
 }
 ```
 
-To resolve this: query the asset to get its current version and state, merge your intended changes, and retry the mutation with the updated version.
+To resolve this, query the asset to get its current version and state, merge your intended changes, and retry the mutation with the updated version.
 
 For a full explanation of how versioning works, see [Optimistic locking](../optimistic-locking.md).
 
