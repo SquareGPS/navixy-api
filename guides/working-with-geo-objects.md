@@ -15,10 +15,14 @@ To work with geo objects, you need your organization's ID. Use the [me](https://
 ```graphql
 query GetMyOrganization {
   me {
-    memberships {
-      organization {
-        id
-        title
+    ... on User {
+      memberships {
+        nodes {
+          organization {
+            id
+            title
+          }
+        }
       }
     }
   }
@@ -31,17 +35,17 @@ The response returns your organization details:
 {
   "data": {
     "me": {
-      "memberships": [
-        {
-          "organization": {
-            "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
-            "title": "ACME Logistics"
+      "memberships": {
+        "nodes": [
+          {
+            "organization": {
+              "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+              "title": "TransLog GmbH"
+            }
           }
-        }
-      ]
+        ]
+      }
     }
-  }
-}
 ```
 
 In most cases, you'll have one organization in the response. Use its `id` for geo object operations.

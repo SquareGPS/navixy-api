@@ -17,10 +17,14 @@ You need your organization's ID for all asset operations. Use the `me` query to 
 ```graphql
 query GetMyOrganization {
   me {
-    memberships {
-      organization {
-        id
-        title
+    ... on User {
+      memberships {
+        nodes {
+          organization {
+            id
+            title
+          }
+        }
       }
     }
   }
@@ -33,17 +37,17 @@ You'll receive a response:
 {
   "data": {
     "me": {
-      "memberships": [
-        {
-          "organization": {
-            "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
-            "title": "TransLog GmbH"
+      "memberships": {
+        "nodes": [
+          {
+            "organization": {
+              "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+              "title": "TransLog GmbH"
+            }
           }
-        }
-      ]
+        ]
+      }
     }
-  }
-}
 ```
 
 In most cases, you'll have one organization in the response. Use its `id` for all asset operations.
@@ -94,17 +98,19 @@ An asset type classifies assets and defines which custom fields they have. It is
 
 {% hint style="warning" %}
 Before creating a type, remember that `code` is immutable after creation. Choose it carefully, since it's what integrations and filters will use to reference the type.
+
+Before deleting an asset type, check `meta.canBeDeleted`. The API rejects deletion if the type still has dependent assets or is system-managed. Query `meta { canBeDeleted }` on the type to verify before calling `assetTypeDelete`.
 {% endhint %}
 
-Types can originate from three places: predefined by the platform (`SYSTEM`), created by your organization (`ORGANIZATION`), or inherited from a parent organization in the dealer hierarchy (`PARENT_ORGANIZATION`). The origin is exposed as `meta.origin` on the type. You can only create, update, and delete types with `ORGANIZATION` origin — system and inherited types are read-only.
+Types can originate from three places: predefined by the platform (`SYSTEM`), created by your organization (`ORGANIZATION`), or inherited from a parent organization in the dealer hierarchy (`PARENT_ORGANIZATION`). The origin is exposed as `meta.origin` on the type. You can only create, update, and delete types with `ORGANIZATION` origin — system and inherited types are read-only. The `organization` field on an asset type is `null` for `SYSTEM`-origin types, since they're not owned by any single organization.
 
 For the full field reference, see [AssetType](../assets/types.md#assettype).
 
 ### Asset fields
 
-An asset has a `title`, belongs to an organization, and is classified by an asset type. Its dynamic attributes are listed in `customFields`, and it uses the `device` field as a shortcut to the linked GPS device. Assets also have a `groups` field listing the [asset groups](organizing-assets-into-groups.md) they belong to.
+An asset has a `title`, belongs to an organization, and is classified by an asset type. Its dynamic attributes are listed in `customFields`, and it uses the `device` field as a shortcut to the linked GPS device. Assets also have a `groups` connection field that returns the asset groups they belong to, with optional filtering, ordering, and pagination arguments.
 
-For the full field reference, see [Asset](../assets/types.md#asset).
+For the full field reference, see [Asset object](../assets/types.md#asset).
 
 ### Custom fields
 
@@ -118,11 +124,7 @@ See [Implementing custom fields](implementing-custom-fields.md) for details on d
 
 ### The device field
 
-The `device` field on an asset is a convenience alias for a system-level custom field that stores a reference to a GPS device. It lets you read the linked device directly from an asset as a resolved [Device object](../devices/types.md#device) without going through the raw `customFields` JSON.
-
-{% hint style="danger" %}
-The exact key name used to link a device via `customFields` and the precise value format are pending confirmation from the development team. The examples in this guide use `device` as the field code — verify this with your team before using it in production code
-{% endhint %}
+The `device` field on an asset is a first-class alias for a system-level custom field that stores a reference to a GPS device. The underlying custom field key is `device`, and its value is the device's ID as a plain string. The `device` field resolves that ID into a full [Device object](../devices/types.md#device), so you can query device details directly from the asset without a separate lookup.
 
 To link a device when creating or updating an asset, pass the device ID under `set` in `customFields`:
 
@@ -163,6 +165,7 @@ mutation CreateTruckType {
   }) {
     assetType {
       id
+      version
       code
       title
     }
@@ -178,6 +181,7 @@ Response:
     "assetTypeCreate": {
       "assetType": {
         "id": "b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22",
+        "version": 1,
         "code": "delivery_truck",
         "title": "Delivery Truck"
       }
@@ -186,7 +190,7 @@ Response:
 }
 ```
 
-Save the `id` — you'll need it to create assets of this type.
+Save the `id` and `version` — you'll need the `id` to create assets of this type, and `version` if you later need to update or delete the type.
 
 {% hint style="info" %}
 The `order` field controls how types appear in UI lists. Lower numbers appear first. If display order doesn't matter for your use case, you can omit it — it defaults to `0`.
@@ -514,7 +518,7 @@ query AssetsByLicensePlate {
 ```
 
 {% hint style="warning" %}
-&#x20;`field` and `customFieldCode` are mutually exclusive — use one or the other.
+`field` (an `AssetOrderField` enum) and `customFieldCode` are mutually exclusive — use one or the other. Valid values for `field` are defined in the [AssetOrderField enum](../assets/types.md#assetorderfield).
 {% endhint %}
 
 For details on pagination, see [Pagination](../pagination.md).

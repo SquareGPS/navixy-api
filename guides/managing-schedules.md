@@ -17,10 +17,14 @@ To work with a schedule, you need your organization's ID. Use the [me](../actors
 ```graphql
 query GetMyOrganization {
   me {
-    memberships {
-      organization {
-        id
-        title
+    ... on User {
+      memberships {
+        nodes {
+          organization {
+            id
+            title
+          }
+        }
       }
     }
   }
@@ -33,17 +37,17 @@ You'll receive a response:
 {
   "data": {
     "me": {
-      "memberships": [
-        {
-          "organization": {
-            "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
-            "title": "TransLog GmbH"
+      "memberships": {
+        "nodes": [
+          {
+            "organization": {
+              "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+              "title": "TransLog GmbH"
+            }
           }
-        }
-      ]
+        ]
+      }
     }
-  }
-}
 ```
 
 In most cases, you'll have one organization in the response. Use its `id` for schedule operations.
