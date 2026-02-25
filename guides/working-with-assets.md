@@ -66,7 +66,7 @@ query ListAssetTypes {
 }
 ```
 
-You'll get an array of types:
+You'll get an array of types, if any exist:
 
 ```json
 {
@@ -84,7 +84,7 @@ You'll get an array of types:
 }
 ```
 
-The response includes system-provided types (predefined by the platform) and any types your organization has created. If you need a type that doesn't exist yet, you can create one — it's covered in [the scenario below](working-with-assets.md#example-scenario-registering-a-logistics-fleet).
+If you need a type that doesn't exist yet, you can create one — it's covered in [the scenario below](working-with-assets.md#example-scenario-registering-a-logistics-fleet).
 
 ## Understanding assets
 
