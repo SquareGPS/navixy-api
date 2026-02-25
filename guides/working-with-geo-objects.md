@@ -45,7 +45,9 @@ The response returns your organization details:
           }
         ]
       }
-    }
+    }   
+  }
+}
 ```
 
 In most cases, you'll have one organization in the response. Use its `id` for geo object operations.

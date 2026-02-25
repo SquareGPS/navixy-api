@@ -31,6 +31,10 @@ query GetMyOrganization {
 }
 ```
 
+{% hint style="info" %}
+The `... on User` inline fragment is required because `me` returns the [Actor interface](../actors/#actor-1), which can resolve to either a [User](../actors/users.md#user) or an [Integration](../actors/integrations.md#integration-2). The `memberships` field only exists on `User`, so the fragment ensures the query is valid for both actor types. If you authenticate as an `Integration`, the `memberships` block is omitted from the response.
+{% endhint %}
+
 You'll receive a response:
 
 ```json
@@ -47,7 +51,9 @@ You'll receive a response:
           }
         ]
       }
-    }
+    }   
+  }
+}
 ```
 
 In most cases, you'll have one organization in the response. Use its `id` for all asset operations.
@@ -88,7 +94,68 @@ You'll get an array of types, if any exist:
 }
 ```
 
-If you need a type that doesn't exist yet, you can create one — it's covered in [the scenario below](working-with-assets.md#example-scenario-registering-a-logistics-fleet).
+If you need a type that doesn't exist yet, you can create it as described in [the scenario below](working-with-assets.md#create-an-asset-type).
+
+If you're working with an existing type and need to know which custom fields it has, query [customFieldDefinitions](../custom-fields.md#customfielddefinition) on the type:
+
+```graphql
+query GetTruckTypeFields {
+  assetTypes(
+    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+    filter: { codes: ["delivery_truck"] }
+  ) {
+    nodes {
+      id
+      title
+      customFieldDefinitions {
+        code
+        label
+        fieldType
+        params {
+          isRequired
+        }
+      }
+    }
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "assetTypes": {
+      "nodes": [
+        {
+          "id": "b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22",
+          "title": "Delivery Truck",
+          "customFieldDefinitions": [
+            {
+              "code": "license_plate",
+              "label": "License Plate",
+              "fieldType": "STRING",
+              "params": {
+                "isRequired": true
+              }
+            },
+            {
+              "code": "fuel_capacity_l",
+              "label": "Fuel Capacity (L)",
+              "fieldType": "NUMBER",
+              "params": {
+                "isRequired": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+The `code` values here are exactly what you use as keys in `customFields.set` when creating or updating assets of this type. For type-specific parameters like maximum string length or the list of valid options, see [Implementing custom fields](implementing-custom-fields.md).
 
 ## Understanding assets
 
@@ -98,7 +165,9 @@ An asset type classifies assets and defines which custom fields they have. It is
 
 {% hint style="warning" %}
 Before creating a type, remember that `code` is immutable after creation. Choose it carefully, since it's what integrations and filters will use to reference the type.
+{% endhint %}
 
+{% hint style="info" %}
 Before deleting an asset type, check `meta.canBeDeleted`. The API rejects deletion if the type still has dependent assets or is system-managed. Query `meta { canBeDeleted }` on the type to verify before calling `assetTypeDelete`.
 {% endhint %}
 
@@ -388,14 +457,14 @@ customFields: {
   unset: ["device"]
 }
 ```
-
-{% hint style="info" %}
-As with linking a device, this assumes the device is stored under the `device` key in `customFields`.
-{% endhint %}
 {% endstep %}
 
 {% step %}
 ### **Delete the asset**
+
+{% hint style="danger" %}
+Asset deletion is permanent. Unlike some other entity types in the API, assets don't support soft delete and cannot be restored after deletion. Make sure you no longer need the record before proceeding.
+{% endhint %}
 
 When the truck is decommissioned and you no longer need its record, run the [assetDelete](../assets/mutations.md#assetdelete) mutation:
 
@@ -423,6 +492,10 @@ Response:
 ```
 
 The `version` field ensures you don't accidentally delete an asset that someone else has modified since you last fetched it.&#x20;
+
+{% hint style="danger" %}
+Unlike some other entity types in the API, assets do not support soft delete — `assetDelete` permanently removes the record and cannot be undone.
+{% endhint %}
 {% endstep %}
 {% endstepper %}
 
@@ -496,6 +569,31 @@ query FindAssetByDevice {
   }
 }
 ```
+
+To filter assets by a custom field value, pass conditions to `customFields` in the filter. Each condition specifies a field `code`, a comparison `operator`, and a `value`. The following query finds all delivery trucks with a specific license plate:
+
+```graphql
+query FindTruckByPlate {
+  assets(
+    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+    filter: {
+      typeIds: ["b1ffcd00-0d1c-5fg9-cc7e-7cc0ce491b22"]
+      customFields: [
+        { code: "license_plate", operator: EQ, value: "HH-TL 4421" }
+      ]
+    }
+    first: 5
+  ) {
+    nodes {
+      id
+      title
+      customFields(codes: ["license_plate"])
+    }
+  }
+}
+```
+
+Multiple conditions in the `customFields` array are combined with AND.
 
 ### Ordering
 
