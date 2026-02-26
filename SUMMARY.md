@@ -16,7 +16,6 @@
   * [Implementing custom fields](guides/implementing-custom-fields.md)
   * [Managing schedules](guides/managing-schedules.md)
   * [Working with geo objects](guides/working-with-geo-objects.md)
-  * [Configuring a schedule](guides/configuring-a-schedule.md)
   * [Configuring user permissions](guides/configuring-user-permissions.md)
 
 ## Core API reference
