@@ -380,7 +380,7 @@ To retrieve only specific fields, pass the `codes` argument. This keeps response
 
 ```graphql
 query GetVehicleKeyFields {
-  asset(id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11") {
+  asset(id: "019a6b2f-793e-807b-8001-555345529b44") {
     title
     customFields(codes: ["vin", "fuel_type"])
   }
@@ -417,12 +417,15 @@ Find all electric vehicle assets:
 
 ```graphql
 query FindElectricVehicles {
-  assets(filter: {
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-    customFields: [
-      { code: "fuel_type", operator: EQ, value: "electric" }
-    ]
-  }) {
+  assets(
+    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+    filter: {
+      typeIds: ["a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"]
+      customFields: [
+        { code: "fuel_type", operator: EQ, value: "electric" }
+      ]
+    }
+  ) {
     nodes {
       id
       title
@@ -459,12 +462,15 @@ Find vehicles with a service date before a deadline:
 
 ```graphql
 query FindOverdueVehicles {
-  assets(filter: {
-    typeId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-    customFields: [
-      { code: "next_service_date", operator: LT, value: "2025-07-01" }
-    ]
-  }) {
+  assets(
+    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+    filter: {
+      typeIds: ["a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"]
+      customFields: [
+        { code: "next_service_date", operator: LT, value: "2025-07-01" }
+      ]
+    }
+  ) {
     nodes {
       id
       title
@@ -500,13 +506,16 @@ Find devices with a specific SIM card prefix that don't yet have installation no
 
 ```graphql
 query FindUndocumentedTrackers {
-  devices(filter: {
-    typeId: "c3eebc99-9c0b-4ef8-bb6d-6bb9bd380a44"
-    customFields: [
-      { code: "sim_card",           operator: CONTAINS, value: "8931" }
-      { code: "installation_notes", operator: IS_NULL               }
-    ]
-  }) {
+  devices(
+    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+    filter: {
+      typeIds: ["c3eebc99-9c0b-4ef8-bb6d-6bb9bd380a44"]
+      customFields: [
+        { code: "sim_card",           operator: CONTAINS, value: "8931" }
+        { code: "installation_notes", operator: IS_NULL               }
+      ]
+    }
+  ) {
     nodes {
       id
       title
@@ -591,7 +600,7 @@ params: {
 
 ### How to delete a custom field definition
 
-Use this query:
+Run this mutation:
 
 ```graphql
 mutation DeleteDefinition {
@@ -635,4 +644,4 @@ Keep in mind the following:
 
 * [Custom fields types and operations](../custom-fields.md): A complete list of all operations and types related to custom fields
 * [Filtering and sorting](../filtering-and-sorting.md): Full operator reference and value formats for custom field filters
-* [Optimistic locking](https://claude.ai/chat/optimistic-locking.md): How `version` works in update and delete mutations
+* [Optimistic locking](../optimistic-locking.md): How `version` works in update and delete mutations
