@@ -10,7 +10,7 @@ This guide walks you through creating, updating, and managing geo objects with d
 
 ## Before you start
 
-To work with geo objects, you need your organization's ID. Use the [me](https://claude.ai/operations-and-types/queries.md#me) query to find it through your membership:
+To work with geo objects, you need your organization's ID. Use the [me](../actors/#me) query to find it through your membership:
 
 ```graphql
 query GetMyOrganization {
@@ -99,8 +99,8 @@ If you don't see a type you need, create one:
 mutation CreateGeoObjectType {
   geoObjectTypeCreate(input: {
     organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    code: "delivery_zone_1"
-    title: "Delivery Zone 1"
+    code: "delivery_zone"
+    title: "Delivery Zone"
   }) {
     geoObjectType {
       id

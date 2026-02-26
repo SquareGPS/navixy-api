@@ -101,7 +101,7 @@ A logistics company needs to schedule weekly maintenance for their vehicle fleet
 
 {% stepper %}
 {% step %}
-#### Create the schedule
+### Create the schedule
 
 Start with a weekly schedule. The `scheduleData` field accepts a JSON structure with a timezone and an array of events. Each event has a start time, end time (or duration), and an optional recurrence rule.
 
@@ -160,7 +160,7 @@ Save the `id` and `version` — you'll need them for updating the schedule.
 {% endstep %}
 
 {% step %}
-#### Verify the schedule
+### Verify the schedule
 
 Query the schedule to confirm it was created correctly:
 
@@ -183,7 +183,7 @@ The `scheduleData` field returns the full JSON structure you provided, which you
 {% endstep %}
 
 {% step %}
-#### Exclude holidays
+### Exclude holidays
 
 The maintenance provider doesn't work on public holidays. Several holidays in the year fall on Mondays. Add these as exception dates using `exdate`. This requires updating the schedule with `scheduleUpdate`.
 
@@ -225,7 +225,7 @@ mutation AddHolidayExceptions {
 }
 ```
 
-The `exdate` values must exactly match generated occurrences. Since all occurrences inherit the time from `dtstart`, use the same time component (here, `05:00:00Z`) for each excluded date.
+The `exdate` values must exactly match generated occurrences. Since all occurrences inherit the time from `dtstart`, use the same time component (here, `06:00:00`) for each excluded date
 
 {% hint style="info" %}
 For all-day events (where `allDay: true`), use date-only values in `exdate` (e.g., `"2025-04-21"`) instead of full datetime values.
@@ -249,7 +249,7 @@ The response shows the incremented version:
 {% endstep %}
 
 {% step %}
-#### Set an end date
+### Set an end date
 
 The maintenance contract runs through December 31, 2025. Add an `until` date to the recurrence rule so the schedule stops repeating after that date.
 
@@ -291,7 +291,7 @@ The `until` value is inclusive — the last occurrence can happen on this date. 
 {% endstep %}
 
 {% step %}
-#### Split the schedule into two windows
+### Split the schedule into two windows
 
 The maintenance team requests a break from 8:00 to 8:30. Instead of one 4-hour window, you now need two windows: 6:00–8:00 and 8:30–10:00.
 
@@ -350,7 +350,7 @@ Note that each event has its own `exdate` array with times matching that event's
 {% endstep %}
 
 {% step %}
-#### Delete the schedule
+### Delete the schedule
 
 When the contract ends and you no longer need the schedule, delete it:
 
@@ -361,6 +361,18 @@ mutation DeleteMaintenanceSchedule {
     version: 4
   }) {
     deletedId
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "scheduleDelete": {
+      "deletedId": "019a6b2f-793e-807b-8001-555345529b44"
+    }
   }
 }
 ```
@@ -561,4 +573,4 @@ Non-recurring schedule for specific rental dates:
 
 ## See also
 
-* [Schedules types and operations](../custom-fields.md): A complete list of all operations and types related to schedules
+* [Schedules types and operations](../schedules/): A complete list of all operations and types related to schedules
