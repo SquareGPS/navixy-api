@@ -126,7 +126,7 @@ The key field on a group type is `allowedAssetTypes`: an optional list of constr
 
 Types can originate from three places: predefined by the platform (`SYSTEM`), created by your organization (`ORGANIZATION`), or inherited from a parent organization (`PARENT_ORGANIZATION`), exposed as `meta.origin`. You can only create, update, and delete types with `ORGANIZATION` origin — system and inherited types are read-only.
 
-For the full field reference, see AssetGroupType.
+For the full field reference, see [AssetGroupType](../assets/groups/types.md#assetgrouptype).
 
 ### Asset groups
 
@@ -134,7 +134,7 @@ An asset group is a named collection that belongs to an organization and conform
 
 Groups have an optional `color` for visual identification in UIs, and expose two ways to query their members: `currentAssets` returns only the assets in the group right now, while `history` returns the full membership timeline including past members.
 
-For the full field reference, see AssetGroup.
+For the full field reference, see [AssetGroup](../assets/groups/types.md#assetgroup).
 
 ### Membership records
 
