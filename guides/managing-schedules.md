@@ -52,7 +52,7 @@ You'll receive a response:
 }
 ```
 
-In most cases, you'll have one organization in the response. Use its `id` for schedule operations.
+Use the `id` of the organization you want to work with for all subsequent geo object operations.
 
 ## Understanding schedule data
 

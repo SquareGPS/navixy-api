@@ -26,7 +26,7 @@ Asset groups let you organize assets into named collections — by depot, projec
 
 The grouping system has two layers. An **asset group type** acts as a template: it classifies groups and optionally restricts which kinds of assets can join them. An **asset group** is an instance of that template — a named collection tied to a specific type. You create the type once, then create as many groups of that type as you need.
 
-The API also maintains a full membership **history**: every time an asset joins or leaves a group, the event is recorded with timestamps. This lets you audit past assignments — for example, to find which depot a truck belonged to during a specific period.
+The API also maintains a full membership history: every time an asset joins or leaves a group, the event is recorded with timestamps. This lets you audit past assignments — for example, to find which depot a truck belonged to during a specific period.
 
 If you haven't created assets yet, start with [Working with assets](working-with-assets.md).
 
