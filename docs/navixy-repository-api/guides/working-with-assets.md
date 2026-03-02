@@ -213,7 +213,7 @@ TransLog GmbH is setting up their asset registry. They need to track both their 
 
 {% stepper %}
 {% step %}
-### **Create an asset type**
+#### **Create an asset type**
 
 Start by creating a "Delivery Truck" asset type for your organization. Be careful when choosing the `code` — it's immutable after creation and will be used to reference this type in integrations and filters.
 
@@ -267,7 +267,7 @@ The `order` field controls how types appear in UI lists. Lower numbers appear fi
 {% endstep %}
 
 {% step %}
-### **Create an asset**
+#### **Create an asset**
 
 Create the first truck in the registry. Pass custom field values using the `set` map inside `customFields`. In this example, the "Delivery Truck" type has a `license_plate` field. The truck also gets a GPS device linked via the `device` key — see [The device field](working-with-assets.md#the-device-field) for more information.
 
@@ -333,7 +333,7 @@ mutation RegisterForklift {
 {% endstep %}
 
 {% step %}
-### **Verify the asset**
+#### **Verify the asset**
 
 Query the asset to confirm it was created correctly. Requesting both `customFields` (raw key-value map) and `device` (resolved object) side-by-side illustrates how they relate:
 
@@ -397,7 +397,7 @@ query GetTruckLicensePlate {
 {% endstep %}
 
 {% step %}
-### **Update the asset**
+#### **Update the asset**
 
 The truck has been reassigned to a new route and fitted with a replacement GPS device. Update the title and swap the device. Only the fields listed in `set` change — everything else stays the same.
 
@@ -460,7 +460,7 @@ customFields: {
 {% endstep %}
 
 {% step %}
-### **Delete the asset**
+#### **Delete the asset**
 
 {% hint style="danger" %}
 Asset deletion is permanent. Unlike some other entity types in the API, assets don't support soft delete and cannot be restored after deletion. Make sure you no longer need the record before proceeding.
@@ -491,7 +491,7 @@ Response:
 }
 ```
 
-The `version` field ensures you don't accidentally delete an asset that someone else has modified since you last fetched it.&#x20;
+The `version` field ensures you don't accidentally delete an asset that someone else has modified since you last fetched it.
 {% endstep %}
 {% endstepper %}
 

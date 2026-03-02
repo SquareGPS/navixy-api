@@ -1,5 +1,5 @@
 ---
-description: old version
+description: deprecated
 ---
 
 # Authentication

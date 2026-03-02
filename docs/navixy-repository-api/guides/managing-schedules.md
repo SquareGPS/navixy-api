@@ -101,7 +101,7 @@ A logistics company needs to schedule weekly maintenance for their vehicle fleet
 
 {% stepper %}
 {% step %}
-### Create the schedule
+#### Create the schedule
 
 Start with a weekly schedule. The `scheduleData` field accepts a JSON structure with a timezone and an array of events. Each event has a start time, end time (or duration), and an optional recurrence rule.
 
@@ -160,7 +160,7 @@ Save the `id` and `version` — you'll need them for updating the schedule.
 {% endstep %}
 
 {% step %}
-### Verify the schedule
+#### Verify the schedule
 
 Query the schedule to confirm it was created correctly:
 
@@ -183,7 +183,7 @@ The `scheduleData` field returns the full JSON structure you provided, which you
 {% endstep %}
 
 {% step %}
-### Exclude holidays
+#### Exclude holidays
 
 The maintenance provider doesn't work on public holidays. Several holidays in the year fall on Mondays. Add these as exception dates using `exdate`. This requires updating the schedule with `scheduleUpdate`.
 
@@ -249,7 +249,7 @@ The response shows the incremented version:
 {% endstep %}
 
 {% step %}
-### Set an end date
+#### Set an end date
 
 The maintenance contract runs through December 31, 2025. Add an `until` date to the recurrence rule so the schedule stops repeating after that date.
 
@@ -291,7 +291,7 @@ The `until` value is inclusive — the last occurrence can happen on this date. 
 {% endstep %}
 
 {% step %}
-### Split the schedule into two windows
+#### Split the schedule into two windows
 
 The maintenance team requests a break from 8:00 to 8:30. Instead of one 4-hour window, you now need two windows: 6:00–8:00 and 8:30–10:00.
 
@@ -350,7 +350,7 @@ Note that each event has its own `exdate` array with times matching that event's
 {% endstep %}
 
 {% step %}
-### Delete the schedule
+#### Delete the schedule
 
 When the contract ends and you no longer need the schedule, delete it:
 

@@ -10,8 +10,6 @@ This article introduces GraphQL for developers who are new to it. If you've work
 
 For detailed information, see [the official GraphQL documentation](https://graphql.org/learn/) and [GraphQL specification](https://spec.graphql.org/).
 
-{% include ".gitbook/includes/try-it-out-yourself.-use-ou....md" %}
-
 ## What is GraphQL?
 
 GraphQL is a query language for APIs. The key idea behind it is that **you specify exactly what data you need, and the API returns only that data**. This is different from REST APIs, where each endpoint returns a fixed structure, and you often get more data than you need (or have to make multiple requests to get everything you need).
@@ -522,7 +520,7 @@ Navixy Repository API schema _**(add link)**_ is public and available to develop
 
 ## Introspection
 
-GraphQL APIs are self-described. You can explore the schema using tools like our sandbox _**(add link)**_ or by querying the API directly — this is called **introspection**. GraphQL has special built-in fields that start with `__` (double underscore) for this purpose.
+GraphQL APIs are self-described. You can explore the schema using tools like our [sandbox](https://api.navixy.dev/v4/graphql/sandbox) or by querying the API directly — this is called **introspection**. GraphQL has special built-in fields that start with `__` (double underscore) for this purpose.
 
 For example, to see all fields available on the `Device` type:
 
@@ -537,8 +535,6 @@ query {
   }
 }
 ```
-
-Learn more about introspection queries in [GraphQL tips and patterns](graphql-basics/graphql-tips-and-patterns.md).
 
 ## Next steps
 

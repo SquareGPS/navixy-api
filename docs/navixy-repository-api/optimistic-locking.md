@@ -121,7 +121,7 @@ When you receive a conflict error:
 
 Here's what happens when two users edit the same device:
 
-<figure><img src=".gitbook/assets/{AA1FDEB4-9D8E-4219-8928-610A1D262069}.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/concurrent_editing_diagram_concetpt.png" alt=""><figcaption></figcaption></figure>
 
 User A's update succeeds first. User B's update fails because the version changed. After refetching, User B can successfully update with the current version.
 

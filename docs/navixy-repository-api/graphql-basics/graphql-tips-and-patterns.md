@@ -8,8 +8,6 @@ description: >-
 
 This article covers patterns that make your GraphQL code cleaner, more maintainable, and easier to debug. If you're new to GraphQL, start with [GraphQL basics ](../graphql-basics.md)first.
 
-{% include "../.gitbook/includes/try-it-out-yourself.-use-ou....md" %}
-
 ## Variables
 
 When you're testing queries, it's easy to write values directly into the query string. But real applications need to pass different values each time: a user might click on another device, select a different filter, or navigates to the next page.
