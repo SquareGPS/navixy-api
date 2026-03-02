@@ -1,0 +1,437 @@
+# Assets — Mutations
+
+### assetCreate
+
+Creates a new asset.
+
+```graphql
+assetCreate(
+    input: AssetCreateInput!
+  ): AssetPayload
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | `AssetCreateInput!` | The input fields for creating the asset. |
+
+**Input types:**
+
+<details>
+
+<summary>AssetCreateInput</summary>
+
+Input for creating a new asset.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization that will own the asset. |
+| `typeId` | `ID!` | The asset type ID. |
+| `title` | `String!` | The asset display name. |
+| `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field values. |
+
+</details>
+
+<details>
+
+<summary>CustomFieldsPatchInput</summary>
+
+Input for updating custom field values using a patch model.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `set` | `JSON` | Fields to set or update as a key-value map. |
+| `unset` | `[Code!]` | Field codes to remove. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>AssetPayload</summary>
+
+The result of an asset mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `asset` | [Asset](types.md#asset)! | The created or updated asset. |
+
+</details>
+
+<details>
+
+<summary>Asset (entity)</summary>
+
+A physical or logical asset being tracked.
+
+**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this asset. |
+| `type` | [AssetType](types.md#assettype)! | The asset type classification. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `device` | [Device](../devices/types.md#device) | The primary tracking device linked to this asset. This is an alias for the `device` custom field. |
+| `groups` | [AssetGroupConnection](groups/types.md#assetgroupconnection)! | The groups this asset belongs to. |
+
+</details>
+
+---
+
+### assetUpdate
+
+Updates an existing asset.
+
+```graphql
+assetUpdate(
+    input: AssetUpdateInput!
+  ): AssetPayload
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | `AssetUpdateInput!` | The input fields for updating the asset. |
+
+**Input types:**
+
+<details>
+
+<summary>AssetUpdateInput</summary>
+
+Input for updating an existing asset.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The asset ID to update. |
+| `version` | `Int!` | The current version for optimistic locking. |
+| `title` | `String` | The new display name. |
+| `customFields` | [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput) | The custom field changes. |
+
+</details>
+
+<details>
+
+<summary>CustomFieldsPatchInput</summary>
+
+Input for updating custom field values using a patch model.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `set` | `JSON` | Fields to set or update as a key-value map. |
+| `unset` | `[Code!]` | Field codes to remove. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>AssetPayload</summary>
+
+The result of an asset mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `asset` | [Asset](types.md#asset)! | The created or updated asset. |
+
+</details>
+
+<details>
+
+<summary>Asset (entity)</summary>
+
+A physical or logical asset being tracked.
+
+**Implements:** [Node](../common.md#node), [Titled](../common.md#titled), [Customizable](../common.md#customizable), [Versioned](../common.md#versioned)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. This ID is opaque and should not be parsed by clients. |
+| `version` | `Int!` | The version number for optimistic locking. Incremented on each update. Must be provided in update/delete mutations to prevent lost updates. |
+| `title` | `String!` | The human-readable display name. |
+| `organization` | [Organization](../organizations/README.md#organization)! | The organization that owns this asset. |
+| `type` | [AssetType](types.md#assettype)! | The asset type classification. |
+| `customFields` | `JSON!` | Custom field values as a key-value map. Keys are `CustomFieldDefinition` codes. |
+| `device` | [Device](../devices/types.md#device) | The primary tracking device linked to this asset. This is an alias for the `device` custom field. |
+| `groups` | [AssetGroupConnection](groups/types.md#assetgroupconnection)! | The groups this asset belongs to. |
+
+</details>
+
+---
+
+### assetDelete
+
+Deletes an asset.
+
+```graphql
+assetDelete(
+    input: AssetDeleteInput!
+  ): DeletePayload
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | `AssetDeleteInput!` | The input fields for deleting the asset. |
+
+**Input types:**
+
+<details>
+
+<summary>AssetDeleteInput</summary>
+
+Input for deleting an asset.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The asset ID to delete. |
+| `version` | `Int!` | The current version for optimistic locking. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>DeletePayload</summary>
+
+The result of a delete mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deletedId` | `ID!` | The ID of the deleted entity. |
+
+</details>
+
+---
+
+### assetTypeCreate
+
+Creates a new asset type.
+
+```graphql
+assetTypeCreate(
+    input: AssetTypeCreateInput!
+  ): AssetTypePayload
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | `AssetTypeCreateInput!` | The input fields for creating the asset type. |
+
+**Input types:**
+
+<details>
+
+<summary>AssetTypeCreateInput</summary>
+
+Input for creating an asset type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `organizationId` | `ID!` | The organization that will own the item. |
+| `code` | `Code!` | The machine-readable code. |
+| `title` | `String!` | The display name. |
+| `order` | `Int` | The display order. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+
+</details>
+
+<details>
+
+<summary>CatalogItemMetaInput</summary>
+
+Display properties for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `description` | `String` | The description. |
+| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
+| `textColor` | `HexColorCode` | The text color for UI display. |
+| `backgroundColor` | `HexColorCode` | The background color for UI display. |
+| `icon` | `String` | A relative URL to the icon. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>AssetTypePayload</summary>
+
+The result of an asset type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetType` | [AssetType](types.md#assettype)! | The created or updated asset type. |
+
+</details>
+
+<details>
+
+<summary>AssetType (entity)</summary>
+
+A classification type for assets.
+
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
+
+</details>
+
+---
+
+### assetTypeUpdate
+
+Updates an asset type.
+
+```graphql
+assetTypeUpdate(
+    input: AssetTypeUpdateInput!
+  ): AssetTypePayload
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | `AssetTypeUpdateInput!` | The input fields for updating the asset type. |
+
+**Input types:**
+
+<details>
+
+<summary>AssetTypeUpdateInput</summary>
+
+Input for updating an asset type.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The item ID to update. |
+| `version` | `Int!` | The current version for optimistic locking. |
+| `title` | `String` | The new display name. |
+| `order` | `Int` | The new display order. |
+| `meta` | [CatalogItemMetaInput](../catalogs/catalog-items.md#catalogitemmetainput) | The display properties. |
+
+</details>
+
+<details>
+
+<summary>CatalogItemMetaInput</summary>
+
+Display properties for catalog items.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `description` | `String` | The description. |
+| `hidden` | `Boolean` | Whether the item is hidden from regular UI lists. |
+| `textColor` | `HexColorCode` | The text color for UI display. |
+| `backgroundColor` | `HexColorCode` | The background color for UI display. |
+| `icon` | `String` | A relative URL to the icon. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>AssetTypePayload</summary>
+
+The result of an asset type mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `assetType` | [AssetType](types.md#assettype)! | The created or updated asset type. |
+
+</details>
+
+<details>
+
+<summary>AssetType (entity)</summary>
+
+A classification type for assets.
+
+**Implements:** [CatalogItem](../catalogs/README.md#catalogitem), [Node](../common.md#node), [Versioned](../common.md#versioned), [Titled](../common.md#titled)
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | A globally unique identifier. |
+| `version` | `Int!` | The version number for optimistic locking. |
+| `title` | `String!` | The human-readable display name. Can be localized. |
+| `code` | `Code!` | A machine-readable code, unique within the catalog scope. |
+| `order` | `Int!` | The display order within the same level or category. |
+| `catalog` | [Catalog](../catalogs/catalog-items.md#catalog)! | The catalog this item belongs to. |
+| `organization` | [Organization](../organizations/README.md#organization) | The organization that owns this item. Null for system items. |
+| `meta` | [CatalogItemMeta](../catalogs/README.md#catalogitemmeta)! | Metadata about this item including description, origin, and display properties. |
+| `customFieldDefinitions` | [[CustomFieldDefinition](../custom-fields.md#customfielddefinition)!]! | Custom field definitions specific to this asset type, ordered by display order. |
+
+</details>
+
+---
+
+### assetTypeDelete
+
+Deletes an asset type.
+
+```graphql
+assetTypeDelete(
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+```
+
+**Arguments**
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `input` | `CatalogItemDeleteInput!` | The input fields for deleting the asset type. |
+
+**Input types:**
+
+<details>
+
+<summary>CatalogItemDeleteInput</summary>
+
+Input for deleting a catalog item.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `id` | `ID!` | The catalog item ID to delete. |
+| `version` | `Int!` | The current version for optimistic locking. |
+
+</details>
+
+**Output types:**
+
+<details>
+
+<summary>DeletePayload</summary>
+
+The result of a delete mutation.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `deletedId` | `ID!` | The ID of the deleted entity. |
+
+</details>
+
+---

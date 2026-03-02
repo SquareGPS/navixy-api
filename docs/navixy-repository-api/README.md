@@ -1,53 +1,66 @@
 # Overview
 
-### Introduction
+**Navixy Repository API** is a programming interface for managing the organizational structure and business entities of the Navixy platform. It provides a flexible way to define what you track (assets), what tracks them (devices), where things matter (geographic objects), when things happen (schedules), and who can access what (permissions).
 
-**Navixy Repository API** is a programming interface that enables you to create fully customized trackable assets with any properties you need, assign GPS devices to make them location-aware, and establish relationships between assets to model your exact business operations. Whether you're tracking delivery drivers, managing construction equipment with maintenance schedules, or monitoring livestock with health data, this API lets you define custom asset types, assign multiple tracking devices, and link assets together.
+**Navixy Repository is based on GraphQL.** Unlike REST APIs where you call multiple endpoints to gather related data, GraphQL allows you to request the exact fields you need in a single query. You describe the shape of the data you want, and the API returns it in that shape.
 
-For example, a logistics company can define an asset type called "Refrigerated Container," add properties like "Temperature Range," "Cargo Type," and "Customer," assign GPS trackers and sensors, and link containers to "Transport Route A," which includes associated trucks and drivers.
+For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
-For CTOs and system architects, it represents a stable API-first data model, while system integrators and product teams can use it to cherry-pick asset and device data and embed it into their own solutions.
+## Purpose and capabilities
 
-### Purpose and capabilities
+**Navixy Repository API** enables you to:
 
-**Navixy Repository API** serves as a comprehensive asset management system that allows you to perform the following operations:
+* Manage **organizations** in a multi-tenant hierarchy
+* Create **assets** and organize them into **groups**
+* Register **devices** (GPS trackers, sensors) with hardware identifiers and add them to **inventories**
+* Define **geo objects** (geofences, points of interest, routes) with GeoJSON geometry
+* Create **schedules** for work hours, maintenance windows, and time-based rules
+* Configure **custom fields** to extend any entity with organization-specific data
+* Set up **roles and permissions** to control access
+* Subscribe to **real-time events** when entities are created, updated, or deleted
 
-* Create and update **business assets** (vehicles, staff, livestock, equipment, etc.)
-* Create and configure **asset types** with user-defined properties ("Boats," "Bikes," "Tractors" with custom fields such as "Year of manufacture" or "Water tank capacity")
-* Manage **inventories** — user-defined logical device groups (devices assigned to warehouses)
-* Create and manage **asset links** (driver + car, work crews, etc.)
-* Activate and assign devices (activate a GPS tracker in the system and assign it to a car)
+## Key concepts
 
-### Key concepts
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/diagram-logo-final.webp" alt=""><figcaption></figcaption></figure>
+The API is organized around the following core resources:
 
-**Navixy Repository API** operates using the following resources:
+<table><thead><tr><th width="147.48895263671875">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>A tenant in the system hierarchy. Organizations own all other resources and can have parent-child relationships.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity. Assets can be linked into <strong>asset groups</strong> or assigned one or several GPS devices.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Inventory</strong></td><td>A logical grouping of devices for stock management (warehouse, vehicle stock, field inventory).</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity based on the GeoJSON standard: geofence, point of interest, or route.</td></tr><tr><td><strong>Schedule</strong></td><td>iCalendar-compatible time-based rules for your operations.</td></tr><tr><td><strong>Catalog</strong></td><td>A configurable lookup table for entity types, statuses, and other classification systems.</td></tr><tr><td><strong>Custom field</strong></td><td>An additional property defined per entity type.</td></tr></tbody></table>
 
-<table><thead><tr><th width="138.5999755859375">Term</th><th>Definition</th></tr></thead><tbody><tr><td><a href="endpoint-reference/api-reference/asset.md"><strong>Asset</strong></a></td><td>An object that represents a real-world business unit: a person, car, boat, bike, piece of equipment, or any other trackable resource.</td></tr><tr><td><a href="endpoint-reference/api-reference/asset-type.md"><strong>Asset type</strong></a></td><td>Defines the structure of custom property fields and display configuration for assets. Examples: "Boats", "Cargo", "Warehouse Operators". Supports full customization: field groups, fields order, field properties (label, description, required or not).</td></tr><tr><td><a href="endpoint-reference/api-reference/asset-link.md"><strong>Asset link</strong></a></td><td>Assets grouped in line with the user's business logic, such as "Staff" → "Shift 15/12/2025" or "Truck, 3 trailers, driver 1, driver 2" → "Motorcade 1." This allows for flexible connections while maintaining the relationship history between the assets.</td></tr><tr><td><a href="endpoint-reference/api-reference/inventory.md"><strong>Inventory</strong></a></td><td>Devices (GPS trackers, sensors, etc.) are kept in <strong>inventories</strong> — collections used to efficiently organize and manage equipment. They help structure, track, and operate devices.</td></tr><tr><td><a href="endpoint-reference/api-reference/inventory-item.md"><strong>Inventory item</strong></a></td><td>Devices stored in inventories. They can be activated, paired, and assigned to assets. Note that multiple items can be connected to a single asset.</td></tr></tbody></table>
-
-### Navigation
+## Navigation
 
 The **Navixy Repository API documentation** is organized into two complementary sections designed to help you understand concepts and implement solutions.
 
-#### Section content
+### Section content
 
 These articles provide essential background knowledge and guidelines:
 
-* [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through your first API integration, from authentication to creating your first group of linked assets.
-* [**Authentication**](authentication.md): A comprehensive guide to using the OAuth 2.0 authorization protocol.
-* [**Technical reference**](technical-reference.md): Implementation details covering server URLs, API versioning, pagination strategies, sorting mechanisms, and advanced filtering options.
+* [**GraphQL basics**](graphql-basics.md): A brief introduction to GraphQL for developers familiar with REST APIs.
+* [**GraphQL tips and patterns**](graphql-basics/graphql-tips-and-patterns.md): Practical suggestions for improving your GraphQL experience.
+* [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through authentication and your first queries.
+* [**Authentication**](authentication.md): How to obtain and use access tokens.
+* [**Error handling**](error-handling.md)**:** Error structure, codes, and common error scenarios.
+* [**Pagination** ](pagination.md)and [**Filtering and sorting**](filtering-and-sorting.md): Instruments for efficient navigating through pages of data and narrowing down results by criteria and order.
+* [**Optimistic locking**](optimistic-locking.md): How the API handles concurrent updates to prevent conflicting changes from overwriting each other.
 * [**Guides**](guides/): In-depth guides exploring the most common use cases.
 
-#### Endpoint reference
+### Core API reference
 
-The endpoint reference contains a cheat sheet outlining the API's structure and a detailed description of its endpoints organized by resource type, such as [`asset`](endpoint-reference/api-reference/asset.md), [`asset_type`](endpoint-reference/api-reference/asset-type.md), and [`inventory`](endpoint-reference/api-reference/inventory.md). It provides complete technical specifications for each endpoint.
+The API reference provides complete technical specifications for all GraphQL types and operations, grouped by category:
 
-**For each API call, you'll find:**
+* [**Common resources**](common.md)
+* [**Directives**](core-api-reference/directives.md)
+* [**Organizations**](organizations/)
+* [**Actors**](actors/)
+* [**Devices**](devices/)
+* [**Assets**](assets/)
+* [**Geo objects**](geo-objects/)
+* [**Schedules**](schedules/)
+* [**Access control**](access-control/)
+* [**Custom fields**](custom-fields.md)
+* [**Audit**](audit.md)
+* [**Catalogs**](catalogs/)
 
-* **HTTP method** (`GET` or `POST`) and endpoint URL.
-* **Endpoint description** explaining the operation's purpose (e.g., "Returns all items in the inventory").
-* **Parameter documentation**: Complete schemas for query parameters and request bodies, with detailed descriptions for each field.
-* **Response schemas** organized by HTTP status code, showing exactly what data you'll receive.
-* **Code examples**: Sample requests and responses in multiple formats.
-* **Interactive testing**: Customizable requests that can be sent to mock or live servers for immediate testing.
+{% hint style="warning" %}
+The API supports [GraphQL introspection](graphql-basics.md#the-schema) for authenticated users. You can perform it via [Navixy Repository GraphQL Sandbox](https://api.navixy.dev/v4/graphql/sandbox) (currently in query-only demo mode) or with your own tools.
+{% endhint %}
