@@ -83,13 +83,9 @@ The response contains only what you asked for:
 
 ## Single endpoint
 
-Navixy Repository API has one endpoint:
+Navixy Repository API has one endpoint.
 
-```
-https://api.navixy.com/v4/graphql
-```
-
-Every request — reading data, creating something, or subscribing to updates — goes to this same URL. The request body tells the API what you want to do.
+Every request — reading data, creating something, or subscribing to updates — goes to the same URL. The request body tells the API what you want to do.
 
 ## Operations
 
@@ -538,10 +534,6 @@ query {
 }
 ```
 
-## Next steps
+## See also
 
-Now that you understand the basics:
-
-* [Check out GraphQL tips and patterns: variables, fragments, aliases, and more](graphql-basics/graphql-tips-and-patterns.md)
-* [Learn how to set up authentication and make your first request](getting-started.md)
-* [Browse available operations and types](graphql-reference/all-operations-and-types/)
+* [GraphQL tips and patterns:](graphql-basics/graphql-tips-and-patterns.md) variables, fragments, aliases, and more

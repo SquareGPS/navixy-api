@@ -132,17 +132,17 @@ For the full field reference, see AssetGroupType.
 
 ### Asset groups
 
-An asset group is a named collection that belongs to an organization and conforms to a group type. For example, a "Depot" type (created once) might have three instances: "Hamburg Depot", "Berlin Depot", and "Munich Depot" — each a separate group, all sharing the same membership constraints defined by the type.
+An asset group is a named collection that belongs to an organization and conforms to a group type. For example, a "Depot" type (created once) might have three instances: "Hamburg Depot", "Berlin Depot", and "Munich Depot." Each is a separate group, but all share the same membership constraints defined by the type.
 
-Groups have an optional `color` for visual identification in UIs, and expose two ways to query their members: `currentAssets` returns only the assets in the group right now, while `history` returns the full membership timeline including past members.
+Groups have an optional `color` for visual identification in UIs, and expose two ways to query their members: `currentAssets` returns only the assets in the group right now, while `history` returns the full membership timeline, including past members.
 
-For the full field reference, see AssetGroup.
+For the full field reference, see [AssetGroup](../assets/groups/types.md#assetgroup).
 
 ### Membership records
 
 Every add and remove operation creates or closes an `AssetGroupItem` record. This object tracks when an asset joined (`attachedAt`) and when it left (`detachedAt`). A null `detachedAt` means the asset is currently in the group. The history is preserved even after removal — removal is a soft delete that sets `detachedAt` rather than destroying the record — so you can reconstruct past group composition at any point in time.
 
-For the full field reference, see AssetGroupItem.
+For the full field reference, see [AssetGroupItem](../assets/groups/types.md#assetgroupitem).
 
 ## Example scenario: Setting up a depot fleet structure
 
@@ -150,8 +150,7 @@ TransLog GmbH wants to organize their delivery trucks by regional depot. They'll
 
 {% stepper %}
 {% step %}
-
-#### Create an asset group type
+**Create an asset group type**
 
 Start by creating the "Depot" group type. This type constrains membership to delivery trucks only, with no cap on how many can join a group.
 
@@ -220,12 +219,10 @@ Save the `id` — you'll need it to create groups of this type.
 {% hint style="info" %}
 To create a group type with no asset type restrictions, omit `allowedAssetTypes` or pass an empty array. Groups of that type will then accept any asset regardless of its type.
 {% endhint %}
-
 {% endstep %}
 
 {% step %}
-
-#### Create an asset group
+**Create an asset group**
 
 Create the Hamburg Depot group using the type you just created.
 
@@ -271,12 +268,10 @@ Response:
 ```
 
 Save the group `id` and `version`.
-
 {% endstep %}
 
 {% step %}
-
-#### Add assets to the group
+**Add assets to the group**
 
 Add Truck B-44 to the Hamburg Depot group. The `assetGroupItemAdd` mutation creates a membership record and returns it.
 
@@ -324,16 +319,14 @@ Response:
 **Constraint violations** return a `VALIDATION_ERROR` (400). This applies both when the asset's type isn't permitted by `allowedAssetTypes` and when `maxItems` for the type has already been reached. The `field` property in the error extensions will identify which constraint failed.
 
 {% hint style="warning" %}
-The exact `VALIDATION_ERROR` structure for constraint violations (wrong asset type, `maxItems` exceeded) is pending confirmation from the development team. Verify the `field` and `detail` values before writing constraint-aware error handling.
+The exact `VALIDATION_ERROR` structure for constraint violations (wrong asset type, `maxItems` exceeded) is pending confirmation. Verify the `field` and `detail` values before writing constraint-aware error handling.
 {% endhint %}
 
 **Adding an asset already in the group** returns a `DUPLICATE` (409) error, as the membership record must be unique. The `constraint` field in the error extensions identifies which uniqueness rule was violated.
-
 {% endstep %}
 
 {% step %}
-
-#### Verify membership
+**Verify membership**
 
 You can verify group membership from either side — by querying the group's `currentAssets`, or by querying the asset's `groups` field.
 
@@ -430,12 +423,10 @@ An asset can belong to multiple groups simultaneously — for example, a truck c
 {% hint style="warning" %}
 Whether an asset can belong to multiple groups of the **same type** at once (for example, two depot groups) is pending confirmation from the development team.
 {% endhint %}
-
 {% endstep %}
 
 {% step %}
-
-#### Update the group
+**Update the group**
 
 The Hamburg depot is being rebranded. Update the group's title and color. Note the `version` field — it's required for optimistic locking and must match the current version of the group.
 
@@ -479,12 +470,10 @@ The `version` increments to `2`. Use this version for any further mutations on t
 {% hint style="info" %}
 You can only update a group's `title` and `color`. Its `type` is fixed at creation and cannot be changed.
 {% endhint %}
-
 {% endstep %}
 
 {% step %}
-
-#### Remove an asset from the group
+**Remove an asset from the group**
 
 Truck B-44 has been reassigned to the Berlin depot. Remove it from the Hamburg & Kiel group.
 
@@ -513,13 +502,11 @@ Response:
 
 The membership record is closed: its `detachedAt` is set to the current timestamp, and the truck moves out of `currentAssets`. The record itself is preserved in the group's `history` — the removal is a soft delete.
 
-**Removing an asset that isn't currently in the group** returns a `NOT_FOUND` (404) error.
-
+Removing an asset that isn't currently in the group returns a [NOT\_FOUND](../error-handling.md#entity-not-found-404) error.
 {% endstep %}
 
 {% step %}
-
-#### Query membership history
+**Query membership history**
 
 After a period of reassignments, query the full membership history of the group to see all past and current members:
 
@@ -576,12 +563,10 @@ history(
   first: 20
 )
 ```
-
 {% endstep %}
 
 {% step %}
-
-#### Delete the group
+**Delete the group**
 
 When a depot closes and you no longer need the group, delete it using its current `version`.
 
@@ -611,7 +596,6 @@ Response:
 {% hint style="warning" %}
 Whether the group's membership history records are preserved or removed when a group is deleted is pending confirmation from the development team.
 {% endhint %}
-
 {% endstep %}
 {% endstepper %}
 
@@ -697,7 +681,7 @@ query ListGroupTypes {
 
 Like asset types, group types can originate from the platform (`SYSTEM`), your organization (`ORGANIZATION`), or a parent organization (`PARENT_ORGANIZATION`) — visible as `meta.origin`. You can only create, update, and delete types with `ORGANIZATION` origin; system and inherited types are read-only.
 
-For details on pagination, see Pagination.
+For details on pagination, see [Pagination](../pagination.md).
 
 ### Handling version conflicts
 
@@ -727,11 +711,9 @@ Asset groups use optimistic locking. If another client updates a group between w
 
 To resolve this: re-fetch the group to get its current `version` and state, merge your intended changes, and retry the mutation with the updated version.
 
-For a full explanation of how versioning works, see Optimistic locking.
+For a full explanation of how versioning works, see [Optimistic locking](../optimistic-locking.md).
 
 ### See also
 
-* Asset groups — Queries: Full reference for `assetGroup`, `assetGroups`, and `assetGroupTypes`
-* Asset groups — Mutations: Full reference for all 8 group mutations
-* Working with assets: Create and manage the assets that go into groups
-* Implementing custom fields: Define type-specific attributes for assets
+* [Asset group types and operation](../assets/groups/): Complete reference for all asset group operations and types
+* [Working with assets](working-with-assets.md): Create and manage the assets that go into groups
