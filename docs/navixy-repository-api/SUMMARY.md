@@ -18,6 +18,10 @@
   * [Working with geo objects](guides/working-with-geo-objects.md)
   * [Configuring user permissions](guides/configuring-user-permissions.md)
 
+## GraphQL Schema
+
+* [Public GraphQL schema](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/nvx4-clean/docs/navixy-repository-api/graphql-schema/schema.graphql)
+
 ## Core API reference
 
 * [Directives](core-api-reference/directives.md)

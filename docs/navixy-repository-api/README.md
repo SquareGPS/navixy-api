@@ -39,8 +39,6 @@ These articles provide essential background knowledge and guidelines:
 
 * [**GraphQL basics**](graphql-basics.md): A brief introduction to GraphQL for developers familiar with REST APIs.
 * [**GraphQL tips and patterns**](graphql-basics/graphql-tips-and-patterns.md): Practical suggestions for improving your GraphQL experience.
-* [**Getting started**](getting-started.md): A step-by-step tutorial that walks you through authentication and your first queries.
-* [**Authentication**](authentication.md): How to obtain and use access tokens.
 * [**Error handling**](error-handling.md)**:** Error structure, codes, and common error scenarios.
 * [**Pagination** ](pagination.md)and [**Filtering and sorting**](filtering-and-sorting.md): Instruments for efficient navigating through pages of data and narrowing down results by criteria and order.
 * [**Optimistic locking**](optimistic-locking.md): How the API handles concurrent updates to prevent conflicting changes from overwriting each other.
@@ -64,5 +62,5 @@ The API reference provides complete technical specifications for all GraphQL typ
 * [**Catalogs**](catalogs/)
 
 {% hint style="warning" %}
-The API supports [GraphQL introspection](graphql-basics.md#the-schema) for authenticated users. You can perform it via [Navixy Repository GraphQL Sandbox](https://api.navixy.dev/v4/graphql/sandbox) (currently in query-only demo mode) or with your own tools.
+The API supports [GraphQL introspection](graphql-basics.md#the-schema) for authenticated users. You can perform it via [Navixy Repository GraphQL Sandbox](https://api.navixy.dev/v4/graphql/sandbox) (currently in query-only demo mode) or with your own tools. You can also check the public [GraphQL schema](https://raw.githubusercontent.com/SquareGPS/navixy-api/refs/heads/nvx4-clean/docs/navixy-repository-api/graphql-schema/schema.graphql).
 {% endhint %}
