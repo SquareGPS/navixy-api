@@ -1,5 +1,7 @@
 # Tags
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Tag management for flexible entity classification.
 
 ## Queries

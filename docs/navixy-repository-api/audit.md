@@ -1,5 +1,7 @@
 # Audit
 
+{% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Audit trail for tracking changes and access to system resources.
 
 ## Queries

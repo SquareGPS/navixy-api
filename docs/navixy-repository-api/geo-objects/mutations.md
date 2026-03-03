@@ -1,5 +1,7 @@
 # Geo objects — Mutations
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### geoObjectCreate
 
 Creates a new geo object.

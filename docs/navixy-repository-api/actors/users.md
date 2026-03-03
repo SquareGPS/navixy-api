@@ -1,5 +1,7 @@
 # Users
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 User accounts representing human operators who access the system through the UI or API.
 
 ## Mutations

@@ -1,5 +1,7 @@
 # Devices
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Devices are GPS trackers, sensors, and other hardware that collect and transmit location and telemetry data.
 
 ## Contents

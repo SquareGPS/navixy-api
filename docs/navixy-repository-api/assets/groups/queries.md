@@ -1,5 +1,7 @@
 # Asset groups — Queries
 
+{% include "../../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### assetGroupTypes
 
 Lists asset group types for an organization.

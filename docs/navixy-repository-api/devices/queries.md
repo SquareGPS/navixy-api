@@ -1,5 +1,7 @@
 # Devices — Queries
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### deviceTypes
 
 Lists device types for an organization.

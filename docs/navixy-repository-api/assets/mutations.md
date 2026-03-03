@@ -1,5 +1,7 @@
 # Assets — Mutations
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### assetCreate
 
 Creates a new asset.

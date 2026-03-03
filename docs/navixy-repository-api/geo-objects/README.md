@@ -1,5 +1,7 @@
 # Geo objects
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Geo objects define geographic boundaries and points of interest - geofences, routes, and landmarks used for location-based automation.
 
 ## Contents

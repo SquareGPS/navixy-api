@@ -148,7 +148,8 @@ For the full field reference, see AssetGroupItem.
 
 TransLog GmbH wants to organize their delivery trucks by regional depot. They'll create a "Depot" group type that only accepts delivery trucks, then create a Hamburg Depot group and assign trucks to it.
 
-\{% stepper %\} \{% step %\}
+{% stepper %}
+{% step %}
 
 #### Create an asset group type
 
@@ -216,9 +217,13 @@ Response:
 
 Save the `id` — you'll need it to create groups of this type.
 
-\{% hint style="info" %\} To create a group type with no asset type restrictions, omit `allowedAssetTypes` or pass an empty array. Groups of that type will then accept any asset regardless of its type. \{% endhint %\} \{% endstep %\}
+{% hint style="info" %}
+To create a group type with no asset type restrictions, omit `allowedAssetTypes` or pass an empty array. Groups of that type will then accept any asset regardless of its type.
+{% endhint %}
 
-\{% step %\}
+{% endstep %}
+
+{% step %}
 
 #### Create an asset group
 
@@ -265,9 +270,11 @@ Response:
 }
 ```
 
-Save the group `id` and `version`. \{% endstep %\}
+Save the group `id` and `version`.
 
-\{% step %\}
+{% endstep %}
+
+{% step %}
 
 #### Add assets to the group
 
@@ -316,11 +323,15 @@ Response:
 
 **Constraint violations** return a `VALIDATION_ERROR` (400). This applies both when the asset's type isn't permitted by `allowedAssetTypes` and when `maxItems` for the type has already been reached. The `field` property in the error extensions will identify which constraint failed.
 
-\{% hint style="warning" %\} The exact `VALIDATION_ERROR` structure for constraint violations (wrong asset type, `maxItems` exceeded) is pending confirmation from the development team. Verify the `field` and `detail` values before writing constraint-aware error handling. \{% endhint %\}
+{% hint style="warning" %}
+The exact `VALIDATION_ERROR` structure for constraint violations (wrong asset type, `maxItems` exceeded) is pending confirmation from the development team. Verify the `field` and `detail` values before writing constraint-aware error handling.
+{% endhint %}
 
-**Adding an asset already in the group** returns a `DUPLICATE` (409) error, as the membership record must be unique. The `constraint` field in the error extensions identifies which uniqueness rule was violated. \{% endstep %\}
+**Adding an asset already in the group** returns a `DUPLICATE` (409) error, as the membership record must be unique. The `constraint` field in the error extensions identifies which uniqueness rule was violated.
 
-\{% step %\}
+{% endstep %}
+
+{% step %}
 
 #### Verify membership
 
@@ -416,9 +427,13 @@ Response:
 
 An asset can belong to multiple groups simultaneously — for example, a truck can be in both a regional depot group and a maintenance-status group at the same time. The `groups` field returns all groups the asset is currently assigned to, across all group types.
 
-\{% hint style="warning" %\} Whether an asset can belong to multiple groups of the **same type** at once (for example, two depot groups) is pending confirmation from the development team. \{% endhint %\} \{% endstep %\}
+{% hint style="warning" %}
+Whether an asset can belong to multiple groups of the **same type** at once (for example, two depot groups) is pending confirmation from the development team.
+{% endhint %}
 
-\{% step %\}
+{% endstep %}
+
+{% step %}
 
 #### Update the group
 
@@ -461,9 +476,13 @@ Response:
 
 The `version` increments to `2`. Use this version for any further mutations on this group.
 
-\{% hint style="info" %\} You can only update a group's `title` and `color`. Its `type` is fixed at creation and cannot be changed. \{% endhint %\} \{% endstep %\}
+{% hint style="info" %}
+You can only update a group's `title` and `color`. Its `type` is fixed at creation and cannot be changed.
+{% endhint %}
 
-\{% step %\}
+{% endstep %}
+
+{% step %}
 
 #### Remove an asset from the group
 
@@ -494,9 +513,11 @@ Response:
 
 The membership record is closed: its `detachedAt` is set to the current timestamp, and the truck moves out of `currentAssets`. The record itself is preserved in the group's `history` — the removal is a soft delete.
 
-**Removing an asset that isn't currently in the group** returns a `NOT_FOUND` (404) error. \{% endstep %\}
+**Removing an asset that isn't currently in the group** returns a `NOT_FOUND` (404) error.
 
-\{% step %\}
+{% endstep %}
+
+{% step %}
 
 #### Query membership history
 
@@ -556,9 +577,9 @@ history(
 )
 ```
 
-\{% endstep %\}
+{% endstep %}
 
-\{% step %\}
+{% step %}
 
 #### Delete the group
 
@@ -587,7 +608,12 @@ Response:
 }
 ```
 
-\{% hint style="warning" %\} Whether the group's membership history records are preserved or removed when a group is deleted is pending confirmation from the development team. \{% endhint %\} \{% endstep %\} \{% endstepper %\}
+{% hint style="warning" %}
+Whether the group's membership history records are preserved or removed when a group is deleted is pending confirmation from the development team.
+{% endhint %}
+
+{% endstep %}
+{% endstepper %}
 
 ### Listing asset groups
 

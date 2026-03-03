@@ -1,5 +1,7 @@
 # Catalog reference
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 This page provides a cross-reference of all catalog types organized by their parent entity.
 
 ## Device

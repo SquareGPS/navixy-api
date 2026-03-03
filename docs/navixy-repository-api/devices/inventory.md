@@ -1,5 +1,7 @@
 # Inventory
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Inventory management for device stock, including warehouses, assignments, and device-inventory relationships.
 
 ## Queries

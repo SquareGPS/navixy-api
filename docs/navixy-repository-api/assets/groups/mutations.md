@@ -1,5 +1,7 @@
 # Asset groups — Mutations
 
+{% include "../../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### assetGroupCreate
 
 Creates a new asset group.

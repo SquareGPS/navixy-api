@@ -1,5 +1,7 @@
 # Geo objects — Queries
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### geoObjectTypes
 
 Lists geo object types for an organization.

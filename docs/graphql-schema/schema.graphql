@@ -1,0 +1,5764 @@
+# =============================================================================
+# NAVIXY 4 - GraphQL Schema
+# Version: 0.5
+# =============================================================================
+#
+# TABLE OF CONTENTS
+# -----------------
+# 1. API Overview & Conventions
+# 2. Optimistic Locking
+# 3. Localization
+# 4. Error Handling (RFC 9457)
+# 5. Distributed Tracing & Source Type
+# 6. Directives
+# 7. Scalar Types
+# 8. Enums
+# 9. Interfaces
+# 10. Pagination Types
+# 11. Catalog Item Types
+# 12. Organization
+# 13. Actors
+# 14. Access Control (ACL)
+# 15. Business Entities
+# 16. Custom Fields
+# 17. Audit
+# 18. Filter & Order Inputs
+# 19. Mutation Inputs
+# 20. Query
+# 21. Mutation
+# 22. Subscription (TODO)
+# 23. Bulk Operations (TODO)
+#
+# =============================================================================
+
+# =============================================================================
+# 1. API OVERVIEW & CONVENTIONS
+# =============================================================================
+#
+# ENTITY IDENTIFIERS (ID)
+# -----------------------
+# All entity IDs are opaque strings in UUID format.
+# Example: "019a6a3f-793e-807b-8001-555345529b44"
+#
+# Implementation note: Internally, IDs use UUID v8 (RFC 9562) format with
+# embedded entity type information. This structure is exposed for debugging
+# convenience only — relying on it in production code is at your own risk,
+# as the internal format may change without notice.
+#
+# Clients should treat IDs as opaque strings and not parse them.
+# Use Query.node(id) or Query.nodes(ids) for entity resolution.
+#
+# CATALOG SYSTEM (Dictionaries)
+# ----------------------------
+# Catalogs are dictionaries/reference data used throughout the system.
+# Three types of catalog items by origin:
+#
+#   SYSTEM              - Predefined by Navixy, immutable, available to all
+#   ORGANIZATION        - Created by specific organization
+#   PARENT_ORGANIZATION - Inherited from parent organization (dealer model)
+#
+# Catalog items support:
+#   - Hierarchical structures (parent/children) for some types
+#   - Localization (title, description)
+#   - Custom display properties (icon, colors)
+#   - Soft delete with restore capability
+#
+# HIERARCHICAL CATALOG ITEMS
+# --------------------------
+# Some catalog items support parent-child hierarchy (e.g., UserCatalogItem).
+# These implement HierarchicalCatalogItem interface.
+#
+# ACCESS CONTROL MODEL (ACL)
+# --------------------------
+# RBAC (Role-Based Access Control) with three levels:
+#
+#   Role           - Named set of permissions (e.g., "Fleet Manager")
+#   Permission     - Scope + Actions (e.g., "device.manage: READ, UPDATE")
+#   UserScope      - Optional whitelist filter per actor
+#
+# Effective permissions = Role permissions ∩ UserScope (if present)
+#
+# CONTENT NEGOTIATION
+# -------------------
+# Request:
+#   Content-Type: application/json
+#   Accept: application/graphql-response+json
+#
+# Response:
+#   Content-Type: application/graphql-response+json
+#
+# INTROSPECTION
+# -------------
+# Introspection queries require authentication.
+# Anonymous introspection is disabled for security.
+#
+# RATE LIMITING & QUERY COMPLEXITY
+# --------------------------------
+# API enforces limits on:
+#   - Request rate (per actor, per IP)
+#   - Query depth (max nesting level)
+#   - Query complexity (weighted field cost)
+#
+# Exceeding limits returns RATE_LIMITED error (429).
+# Specific limits documented in API portal.
+#
+# FILTERING & SORTING
+# -------------------
+# Filter semantics:
+#   - Within a field: OR (any value matches)
+#   - Between fields: AND (all conditions must match)
+#   - Empty array / null: ignored (no filtering on this field)
+#
+# Example:
+#   filter: { typeIds: ["a", "b"], statusIds: ["active"] }
+#   → (type IN ['a', 'b']) AND (status = 'active')
+#
+# Sorting:
+#   - Text fields use natural sorting (ICU collation, case-insensitive)
+#   - NULL values: sorted LAST for ASC, FIRST for DESC
+#   - Custom fields can be used for sorting via `customFieldCode` parameter
+#
+# Note: Complex filtering with AND/OR/NOT operators is not currently supported.
+#
+# VERSIONING & DEPRECATION
+# ------------------------
+# This API follows evolutionary versioning without breaking changes.
+#
+# Deprecation process:
+#   1. Field marked with @deprecated(reason: "Use X instead. Removal: YYYY-QN")
+#   2. Deprecation announced in changelog with migration guide
+#   3. Minimum deprecation period: 6 months
+#   4. Field removed only after deprecation period
+#
+# Breaking changes:
+#   Breaking changes are avoided. If unavoidable:
+#   - New field/type introduced alongside old
+#   - Old field deprecated with migration period
+#   - Major version bump in schema version comment
+#
+# =============================================================================
+
+# =============================================================================
+# 2. OPTIMISTIC LOCKING
+# =============================================================================
+#
+# This API uses version fields for optimistic concurrency control.
+# This prevents lost updates when multiple clients modify the same entity.
+#
+# HOW IT WORKS:
+#
+#   # 1. Query returns version
+#   query {
+#     device(id: "...") {
+#       id
+#       version    # -> 5
+#       title
+#     }
+#   }
+#
+#   # 2. Mutation requires version in input
+#   mutation {
+#     deviceUpdate(input: {
+#       id: "..."
+#       version: 5          # <- required for update
+#       title: "New name"
+#     }) {
+#       device {
+#         id
+#         version          # -> 6 (incremented)
+#         title
+#       }
+#     }
+#   }
+#
+# OPERATIONS:
+#
+#   | Operation | version in input | Behavior                        |
+#   |-----------|------------------|---------------------------------|
+#   | Create    | Not required     | Returns version: 1              |
+#   | Update    | Required         | 409 Conflict if mismatch        |
+#   | Delete    | Required         | 409 Conflict if mismatch        |
+#
+# VERSION MISMATCH:
+#   If the entity has been modified since you fetched it:
+#   - HTTP Status: 200 (per GraphQL-over-HTTP spec)
+#   - Error code: CONFLICT
+#   - Error extensions include: status=409, expectedVersion, currentVersion
+#
+# =============================================================================
+#
+# IDEMPOTENT COMMANDS:
+#   Mutations that manage relationships and assignments (link/unlink/assign/revoke)
+#   are idempotent commands. They do NOT require or check `version`.
+#
+#   - Repeated `link` when relationship already exists → success (no-op)
+#   - Repeated `unlink/revoke` when relationship is absent → success (no-op)
+#
+#   Examples: deviceInventoryLink, deviceInventoryUnlink, roleAssign, roleRevoke,
+#   permissionGrant, permissionRevoke, userScopeSet, userScopeRemove,
+#   assetGroupItemAdd, assetGroupItemRemove, deviceIdentifierAdd, deviceIdentifierRemove.
+
+# =============================================================================
+# 3. LOCALIZATION
+# =============================================================================
+#
+# All localizable fields (title, description, label) are automatically
+# resolved based on the locale specified in HTTP headers.
+#
+# REQUEST HEADERS:
+#   Accept-Language: es-419
+#   -- or --
+#   X-Locale: es-419
+#
+# X-Locale takes precedence over Accept-Language if both are present.
+#
+# FALLBACK BEHAVIOR:
+#   If translation for requested locale is not found, English (en) is returned.
+#
+# =============================================================================
+
+# =============================================================================
+# 4. ERROR HANDLING
+# =============================================================================
+#
+# This API follows the GraphQL specification (2024) for error handling and
+# enriches error responses with RFC 9457 "Problem Details for HTTP APIs"
+# in the extensions field.
+#
+# -----------------------------------------------------------------------------
+# GRAPHQL ERROR RESPONSE FORMAT (per specification)
+# -----------------------------------------------------------------------------
+#
+# All errors are returned in the standard `errors` array. Each error object
+# contains the following fields as defined by the GraphQL specification:
+#
+#   {
+#     "errors": [
+#       {
+#         "message": "Human-readable error description",
+#         "locations": [{ "line": 3, "column": 5 }],
+#         "path": ["deviceUpdate", "device", "title"],
+#         "extensions": { ... }
+#       }
+#     ],
+#     "data": { ... } | null
+#   }
+#
+# FIELD DEFINITIONS:
+#
+#   message    - Required. A human-readable description of the error.
+#                Should NOT be parsed programmatically; use extensions.code instead.
+#
+#   locations  - Optional. Array of locations in the GraphQL document where
+#                the error occurred. Each location has:
+#                - line: Line number (1-indexed)
+#                - column: Column number (1-indexed)
+#
+#   path       - Optional. The path to the field that caused the error.
+#                For execution errors, this is the path from root to the
+#                field that raised the error. Array elements use 0-based index.
+#                Example: ["devices", "edges", 0, "node", "customFields"]
+#
+#   extensions - Optional but ALWAYS provided by this API. Contains structured
+#                error details following RFC 9457 format.
+#
+# -----------------------------------------------------------------------------
+# ERROR EXTENSIONS (RFC 9457 Problem Details)
+# -----------------------------------------------------------------------------
+#
+# The extensions object follows RFC 9457 structure with additional context:
+#
+#   {
+#     "extensions": {
+#       // RFC 9457 standard fields
+#       "type": "https://api.navixy.com/errors/not-found",
+#       "title": "Resource Not Found",
+#       "status": 404,
+#       "detail": "Device with ID '019a6a3f-...' does not exist",
+#       "instance": "/graphql",
+#
+#       // API-specific fields
+#       "code": "NOT_FOUND",
+#       "traceId": "0af7651916cd43dd8448eb211c80319c",
+#       "timestamp": "2024-01-15T10:30:00.123Z",
+#
+#       // Context-specific fields (vary by error type)
+#       "field": "email",
+#       "entityType": "Device",
+#       "entityId": "019a6a3f-793e-807b-8001-555345529b44",
+#       "expectedVersion": 5,
+#       "currentVersion": 7,
+#       "constraint": "uq_device_identifier",
+#       "allowedValues": ["ACTIVE", "INACTIVE", "MAINTENANCE"]
+#     }
+#   }
+#
+# EXTENSIONS FIELD REFERENCE:
+#
+#   | Field           | Type     | Description                                    |
+#   |-----------------|----------|------------------------------------------------|
+#   | type            | String!  | RFC 9457 problem type URI (stable identifier)  |
+#   | title           | String!  | Short human-readable title (stable per type)   |
+#   | status          | Int!     | HTTP status code equivalent                    |
+#   | detail          | String   | Specific explanation for this occurrence       |
+#   | instance        | String   | Request path (always "/graphql" for this API)  |
+#   | code            | String!  | Machine-readable error code for client logic   |
+#   | traceId         | String   | W3C Trace ID for distributed tracing (32 hex)  |
+#   | timestamp       | String   | ISO 8601 timestamp when error occurred         |
+#   | field           | String   | Field name for validation errors               |
+#   | entityType      | String   | Entity type code for entity-related errors     |
+#   | entityId        | String   | Entity ID for entity-related errors            |
+#   | expectedVersion | Int      | Expected version for CONFLICT errors           |
+#   | currentVersion  | Int      | Actual version for CONFLICT errors             |
+#   | constraint      | String   | Database constraint name for DUPLICATE errors  |
+#   | allowedValues   | [String] | Valid options for enum validation errors       |
+#
+# -----------------------------------------------------------------------------
+# ERROR CODES REFERENCE
+# -----------------------------------------------------------------------------
+#
+#   | Code                | Type URI                                   | Status | Description                           |
+#   |---------------------|--------------------------------------------|--------|---------------------------------------|
+#   | UNAUTHORIZED        | .../errors/unauthorized                    | 401    | Missing or invalid authentication     |
+#   | PERMISSION_DENIED   | .../errors/forbidden                       | 403    | Insufficient permissions              |
+#   | NOT_FOUND           | .../errors/not-found                       | 404    | Entity does not exist                 |
+#   | VALIDATION_ERROR    | .../errors/validation                      | 400    | Input validation failed               |
+#   | CONFLICT            | .../errors/conflict                        | 409    | Optimistic lock version mismatch      |
+#   | DUPLICATE           | .../errors/duplicate                       | 409    | Unique constraint violation           |
+#   | RATE_LIMITED        | .../errors/rate-limited                    | 429    | Too many requests                     |
+#   | QUERY_TOO_COMPLEX   | .../errors/query-too-complex               | 400    | Query exceeds complexity limit        |
+#   | QUERY_TOO_DEEP      | .../errors/query-too-deep                  | 400    | Query exceeds depth limit             |
+#   | INTERNAL_ERROR      | .../errors/internal                        | 500    | Unexpected server error               |
+#   | SERVICE_UNAVAILABLE | .../errors/service-unavailable             | 503    | Downstream service unavailable        |
+#
+#   Base URI: https://api.navixy.com
+#
+# -----------------------------------------------------------------------------
+# ERROR EXAMPLES
+# -----------------------------------------------------------------------------
+#
+# EXAMPLE 1: Entity not found
+#
+#   Request:
+#     query { device(id: "non-existent-id") { title } }
+#
+#   Response:
+#     {
+#       "errors": [{
+#         "message": "Device not found",
+#         "path": ["device"],
+#         "locations": [{ "line": 1, "column": 9 }],
+#         "extensions": {
+#           "type": "https://api.navixy.com/errors/not-found",
+#           "title": "Resource Not Found",
+#           "status": 404,
+#           "detail": "Device with ID 'non-existent-id' does not exist",
+#           "code": "NOT_FOUND",
+#           "entityType": "Device",
+#           "entityId": "non-existent-id",
+#           "traceId": "0af7651916cd43dd8448eb211c80319c"
+#         }
+#       }],
+#       "data": { "device": null }
+#     }
+#
+# EXAMPLE 2: Validation error
+#
+#   Request:
+#     mutation { deviceCreate(input: { title: "", typeId: "..." }) { device { id } } }
+#
+#   Response:
+#     {
+#       "errors": [{
+#         "message": "Validation failed: title must not be empty",
+#         "path": ["deviceCreate"],
+#         "locations": [{ "line": 1, "column": 12 }],
+#         "extensions": {
+#           "type": "https://api.navixy.com/errors/validation",
+#           "title": "Validation Error",
+#           "status": 400,
+#           "detail": "Field 'title' must not be empty",
+#           "code": "VALIDATION_ERROR",
+#           "field": "input.title",
+#           "traceId": "1bf7651916cd43dd8448eb211c80319d"
+#         }
+#       }],
+#       "data": null
+#     }
+#
+# EXAMPLE 3: Optimistic locking conflict
+#
+#   Request:
+#     mutation { deviceUpdate(input: { id: "...", version: 5, title: "New" }) { ... } }
+#
+#   Response:
+#     {
+#       "errors": [{
+#         "message": "Conflict: entity was modified by another request",
+#         "path": ["deviceUpdate"],
+#         "locations": [{ "line": 1, "column": 12 }],
+#         "extensions": {
+#           "type": "https://api.navixy.com/errors/conflict",
+#           "title": "Optimistic Lock Conflict",
+#           "status": 409,
+#           "detail": "Device was modified. Expected version 5, current version 7",
+#           "code": "CONFLICT",
+#           "entityType": "Device",
+#           "entityId": "019a6a3f-793e-807b-8001-555345529b44",
+#           "expectedVersion": 5,
+#           "currentVersion": 7,
+#           "traceId": "2cf7651916cd43dd8448eb211c80319e"
+#         }
+#       }],
+#       "data": null
+#     }
+#
+# EXAMPLE 4: Duplicate constraint violation
+#
+#   Request:
+#     mutation { deviceIdentifierAdd(input: { deviceId: "...", identifier: { type: IMEI, value: "123456789012345" } }) { ... } }
+#
+#   Response:
+#     {
+#       "errors": [{
+#         "message": "Duplicate: IMEI '123456789012345' already exists",
+#         "path": ["deviceIdentifierAdd"],
+#         "locations": [{ "line": 1, "column": 12 }],
+#         "extensions": {
+#           "type": "https://api.navixy.com/errors/duplicate",
+#           "title": "Duplicate Entry",
+#           "status": 409,
+#           "detail": "Device identifier with type 'IMEI' and value '123456789012345' already exists",
+#           "code": "DUPLICATE",
+#           "constraint": "uq_device_identifier_global",
+#           "field": "input.identifier.value",
+#           "traceId": "3df7651916cd43dd8448eb211c80319f"
+#         }
+#       }],
+#       "data": null
+#     }
+#
+# EXAMPLE 5: Multiple errors (batch mutation via aliases)
+#
+#   Request:
+#     mutation {
+#       d1: deviceUpdate(input: { id: "id1", version: 1, title: "A" }) { device { id } }
+#       d2: deviceUpdate(input: { id: "id2", version: 3, title: "B" }) { device { id } }
+#     }
+#
+#   Response (partial success):
+#     {
+#       "errors": [{
+#         "message": "Device not found",
+#         "path": ["d2"],
+#         "extensions": {
+#           "code": "NOT_FOUND",
+#           "entityType": "Device",
+#           "entityId": "id2",
+#           ...
+#         }
+#       }],
+#       "data": {
+#         "d1": { "device": { "id": "id1" } },
+#         "d2": null
+#       }
+#     }
+#
+# -----------------------------------------------------------------------------
+# PARTIAL SUCCESS AND NULL HANDLING
+# -----------------------------------------------------------------------------
+#
+# GraphQL allows partial success: some fields may resolve successfully while
+# others fail. The `data` field structure mirrors the query structure.
+#
+# RULES:
+#
+#   1. If a non-nullable field fails, error bubbles up to nearest nullable parent
+#   2. The `path` in error points to the exact field that failed
+#   3. Nullable mutation payloads allow batch operations with partial success
+#   4. Client should check both `errors` and `data` in every response
+#
+# NULL PROPAGATION:
+#
+#   Query: { device(id: "...") { title organization { name } } }
+#
+#   If organization resolver fails:
+#   - organization field becomes null
+#   - device field becomes null (because organization is non-nullable in type)
+#   - path: ["device", "organization"]
+#
+# -----------------------------------------------------------------------------
+# HTTP STATUS CODES
+# -----------------------------------------------------------------------------
+#
+# This API follows GraphQL-over-HTTP specification for HTTP status codes.
+# HTTP status indicates transport-level result, NOT domain-level errors.
+#
+# TRANSPORT-LEVEL (HTTP status):
+#   | HTTP Status | Meaning                                           |
+#   |-------------|---------------------------------------------------|
+#   | 200         | Request processed (check `errors` for failures)   |
+#   | 400         | Invalid HTTP/GraphQL request (parse/validation)   |
+#   | 401         | Authentication required or invalid                |
+#   | 403         | Authorization failed (forbidden)                  |
+#   | 429         | Rate limit exceeded                               |
+#   | 5xx         | Infrastructure/system error                       |
+#
+# DOMAIN-LEVEL (extensions.status):
+#   All business logic errors (NOT_FOUND, CONFLICT, VALIDATION_ERROR, etc.)
+#   are returned with HTTP 200. The semantic status code is in extensions.status.
+#
+#   Example: Entity not found returns HTTP 200 with extensions.status = 404.
+#
+# Rule: Use `extensions.code` for programmatic handling, NOT HTTP status.
+#
+# -----------------------------------------------------------------------------
+# CLIENT ERROR HANDLING RECOMMENDATIONS
+# -----------------------------------------------------------------------------
+#
+# 1. Always check for `errors` array presence
+# 2. Use `extensions.code` for programmatic error handling, not `message`
+# 3. Display `message` or `extensions.detail` to users
+# 4. Log `extensions.traceId` for support requests
+# 5. Handle partial success: check each field in `data`
+# 6. For CONFLICT errors: refetch entity and retry or prompt user
+# 7. For RATE_LIMITED: implement exponential backoff
+#
+# =============================================================================
+
+# =============================================================================
+# 5. DISTRIBUTED TRACING & SOURCE TYPE
+# =============================================================================
+#
+# TRACE CONTEXT
+#
+# HTTP REQUESTS:
+#   Header: traceparent (W3C Trace Context format)
+#   Format: 00-{trace-id}-{parent-id}-{flags}
+#   Example: traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01
+#
+#   The trace-id (32 hex characters) is extracted and stored in audit events.
+#
+# WEBSOCKET / GRAPHQL EXTENSIONS:
+#   For WebSocket connections or when headers are not available,
+#   trace context can be passed in GraphQL request extensions:
+#
+#   {
+#     "query": "mutation { ... }",
+#     "extensions": {
+#       "traceId": "0af7651916cd43dd8448eb211c80319c"
+#     }
+#   }
+#
+# SOURCE TYPE:
+#   The sourceType field in audit events is determined from JWT claims
+#   during authentication. It identifies the origin of the request:
+#   WEB, MOBILE, API, INTERNAL, or INTEGRATION.
+#
+# TRACE ID PRIORITY:
+#   When trace context is provided in multiple places:
+#   1. `traceparent` HTTP header takes precedence (W3C Trace Context)
+#   2. `extensions.traceId` is used as fallback if header is absent
+#   3. If both present and conflict: header wins, extensions ignored (logged)
+#
+#   Conflicting trace IDs do NOT cause an error to avoid breaking
+#   requests when proxies/gateways inject their own trace context.
+#
+# =============================================================================
+
+# =============================================================================
+# 6. DIRECTIVES
+# =============================================================================
+
+"Automatically trims leading and trailing whitespace from string input values."
+directive @trim on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
+
+# =============================================================================
+# 7. SCALAR TYPES
+# =============================================================================
+
+# Note: The built-in ID scalar is used for entity identifiers.
+# ID values are opaque strings in UUID v8 format.
+# Format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+# Example: "019a6a3f-793e-807b-8001-555345529b44"
+#
+# UUID v8 (RFC 9562) bit layout (for debugging reference only):
+# | Field           | Bits   | Description                              |
+# |-----------------|--------|------------------------------------------|
+# | Timestamp       | 0-47   | Unix milliseconds                        |
+# | Version         | 48-51  | Fixed: 8                                 |
+# | Counter         | 52-63  | Uniqueness within ms (0-4095)            |
+# | Variant         | 64-65  | Fixed: 10 (RFC 4122)                     |
+# | Deployment      | 66     | 0=SaaS, 1=On-Premise                     |
+# | Reserved        | 67-74  | Future use (sharding)                    |
+# | Region          | 75-79  | Data region (0-30), 31=test/default      |
+# | Entity Type     | 80-111 | 4 ASCII chars (visible in hex)           |
+# | Random          | 112-127| Crypto-random                            |
+
+# @category: common
+"An ISO 8601 datetime string with timezone (RFC 3339). Example: `2024-01-15T10:30:00Z`."
+scalar DateTime
+  @specifiedBy(url: "https://scalars.graphql.org/chillicream/date-time.html")
+
+# @category: common
+"An ISO 8601 date string without time component (RFC 3339). Example: `2024-01-15`."
+scalar Date
+  @specifiedBy(url: "https://scalars.graphql.org/chillicream/date.html")
+
+# @category: common
+"An arbitrary JSON value. Can be an object, array, string, number, boolean, or null."
+scalar JSON @specifiedBy(url: "https://www.rfc-editor.org/rfc/rfc8259")
+
+# @category: common
+"A GeoJSON geometry object (RFC 7946). Supports Point, LineString, Polygon, and other geometry types."
+scalar GeoJSON @specifiedBy(url: "https://www.rfc-editor.org/rfc/rfc7946")
+
+# @category: common
+"A geographic latitude coordinate in decimal degrees. Valid range: -90.0 to 90.0."
+scalar Latitude
+  @specifiedBy(
+    url: "https://the-guild.dev/graphql/scalars/docs/scalars/latitude"
+  )
+
+# @category: common
+"A geographic longitude coordinate in decimal degrees. Valid range: -180.0 to 180.0."
+scalar Longitude
+  @specifiedBy(
+    url: "https://the-guild.dev/graphql/scalars/docs/scalars/longitude"
+  )
+
+# @category: common
+"A BCP 47 language tag identifying a user locale. Example: `en-US`, `es-MX`, `fr-CA`."
+scalar Locale
+  @specifiedBy(url: "https://the-guild.dev/graphql/scalars/docs/scalars/locale")
+
+# @category: common
+"An email address conforming to RFC 5322. Example: `user@example.com`."
+scalar EmailAddress
+  @specifiedBy(
+    url: "https://the-guild.dev/graphql/scalars/docs/scalars/email-address"
+  )
+
+# @category: common
+"A hexadecimal color code. Supports 3-digit (`#RGB`) or 6-digit (`#RRGGBB`) format."
+scalar HexColorCode
+  @specifiedBy(
+    url: "https://the-guild.dev/graphql/scalars/docs/scalars/hex-color-code"
+  )
+
+# @category: common
+"An ISO 3166-1 alpha-2 country code. Example: `US`, `GB`, `ES`."
+scalar CountryCode
+  @specifiedBy(
+    url: "https://the-guild.dev/graphql/scalars/docs/scalars/country-code"
+  )
+
+# @category: common
+"""
+A machine-readable identifier code.
+
+Constraints:
+- Allowed characters: ASCII letters (a-z, A-Z), digits (0-9), underscore (_), dot (.), hyphen (-)
+- Must start with a letter or digit
+- Case-insensitive for uniqueness checks
+- Maximum length: 64 characters
+
+Naming conventions:
+- System items: UPPER_SNAKE_CASE (e.g., DEVICE_TYPE, ACTIVE)
+- User items: any valid format (e.g., vehicle_car, sensor-v2)
+
+Examples: DEVICE_TYPE, vehicle_car, status.active, sensor-v2, ABC123
+"""
+scalar Code @specifiedBy(url: "https://api.navixy.com/spec/scalars/code")
+
+# @category: schedules
+"A schedule data structure containing time intervals and recurrence rules."
+scalar ScheduleData
+  @specifiedBy(url: "https://api.navixy.com/spec/scalars/schedule-data")
+
+# =============================================================================
+# 8. ENUMS
+# =============================================================================
+
+# @category: common
+"The direction for sorting query results."
+enum OrderDirection {
+  "Sort in ascending order (A→Z, 0→9, oldest→newest). NULL values appear last."
+  ASC
+  "Sort in descending order (Z→A, 9→0, newest→oldest). NULL values appear first."
+  DESC
+}
+
+# @category: catalogs/catalog-items
+"The origin of a catalog item, indicating how it was created."
+enum CatalogItemOrigin {
+  "Predefined by platform. Immutable and available to all organizations."
+  SYSTEM
+  "Created by the current organization."
+  ORGANIZATION
+  "Inherited from a parent organization in the dealer hierarchy."
+  PARENT_ORGANIZATION
+}
+
+# @category: common
+"The precision level of a total count value."
+enum CountPrecision {
+  "The count is exact, calculated using `COUNT(*)`."
+  EXACT
+  "The count is approximate, derived from table statistics."
+  APPROXIMATE
+  "At least this many items exist. Counting stopped early for performance reasons."
+  AT_LEAST
+}
+
+# @category: organizations
+"Feature flags that can be enabled for an organization."
+enum OrganizationFeature {
+  "The organization can create and manage child organizations (dealer/reseller model)."
+  DEALER
+  "The organization has custom branding including domain, logo, and color scheme."
+  WHITELABEL
+}
+
+# @category: custom-fields
+"The data type of a custom field, determining validation rules and UI rendering."
+enum FieldType {
+  "Single-line text input. Maximum 255 characters."
+  STRING
+  "Multi-line text input. Maximum 65,535 characters."
+  TEXT
+  "Numeric value, supporting both integers and decimals."
+  NUMBER
+  "Boolean true/false value."
+  BOOLEAN
+  "Calendar date without time component (YYYY-MM-DD)."
+  DATE
+  "Date and time with timezone information."
+  DATETIME
+  "GeoJSON geometry object (Point, Polygon, LineString, etc.)."
+  GEOJSON
+  "Schedule or calendar data with time intervals and recurrence rules."
+  SCHEDULE
+  "Selection from a predefined list of options."
+  OPTIONS
+  "Reference to a Device entity."
+  DEVICE
+  "Reference to any entity by its type and ID."
+  REFERENCE
+  "Reference to a catalog item."
+  CATALOG
+  "Reference to a Tag entity."
+  TAG
+}
+
+# @category: devices
+"The type of hardware identifier used to identify a device."
+enum DeviceIdType {
+  "A GUID/UUID identifier."
+  GUID
+  "International Mobile Equipment Identity. A 15-digit number."
+  IMEI
+  "Mobile Equipment Identifier in hexadecimal format."
+  MEID_HEX
+  "Mobile Equipment Identifier in decimal format."
+  MEID_DEC
+  "Media Access Control address of a network interface."
+  MAC_ADDRESS
+  "Manufacturer-assigned serial number."
+  SERIAL_NUMBER
+  "A custom identifier type defined by the organization."
+  CUSTOM
+}
+
+# @category: access-control
+"Permission actions that can be granted to actors for entity operations."
+enum ActionPermission {
+  "Permission to view entities and their data."
+  READ
+  "Permission to create new entities."
+  CREATE
+  "Permission to modify existing entities."
+  UPDATE
+  "Permission to delete entities."
+  DELETE
+}
+
+# @category: audit
+"The source type identifying the origin of an API request."
+enum SourceType {
+  "Request originated from a web browser application."
+  WEB
+  "Request originated from a mobile application (iOS/Android)."
+  MOBILE
+  "Request made directly via the API."
+  API
+  "Request generated by an internal system process."
+  INTERNAL
+  "Request made by an external integration."
+  INTEGRATION
+}
+
+# @category: audit
+"The type of event recorded in the audit log."
+enum AuditEventType {
+  # Authentication events
+  "A user successfully authenticated."
+  LOGIN
+  "A user ended their session."
+  LOGOUT
+  "An authentication attempt failed."
+  FAILED_LOGIN
+  "A password reset was initiated."
+  PASSWORD_RESET
+  "A session was terminated due to inactivity."
+  SESSION_EXPIRED
+
+  # Entity lifecycle events
+  "A new entity was created."
+  CREATED
+  "An existing entity was modified."
+  UPDATED
+  "An entity was deleted."
+  DELETED
+  "A soft-deleted entity was restored."
+  RESTORED
+
+  # Access control events
+  "A role was assigned to an actor."
+  ROLE_ASSIGNED
+  "A role was removed from an actor."
+  ROLE_REVOKED
+  "A permission was granted to a role."
+  PERMISSION_GRANTED
+  "A permission was removed from a role."
+  PERMISSION_REVOKED
+
+  # Relationship events
+  "Two entities were linked together."
+  LINKED
+  "A link between entities was removed."
+  UNLINKED
+  "An entity was added to a group."
+  ATTACHED
+  "An entity was removed from a group."
+  DETACHED
+}
+
+# @category: custom-fields
+"Comparison operators for filtering by custom field values."
+enum FieldOperator {
+  "Value equals the specified value."
+  EQ
+  "Value does not equal the specified value."
+  NE
+  "Value is greater than the specified value."
+  GT
+  "Value is greater than or equal to the specified value."
+  GTE
+  "Value is less than the specified value."
+  LT
+  "Value is less than or equal to the specified value."
+  LTE
+  "String value contains the specified substring (case-insensitive)."
+  CONTAINS
+  "Value is one of the specified values in the array."
+  IN
+  "Value is null."
+  IS_NULL
+  "Value is not null."
+  IS_NOT_NULL
+}
+
+# @category: geo-objects
+"The type of GeoJSON geometry."
+enum GeoJsonGeometryType {
+  "A single geographic point."
+  POINT
+  "A collection of points."
+  MULTI_POINT
+  "A sequence of connected line segments."
+  LINE_STRING
+  "A collection of line strings."
+  MULTI_LINE_STRING
+  "A closed shape defined by a linear ring."
+  POLYGON
+  "A collection of polygons."
+  MULTI_POLYGON
+  "A heterogeneous collection of geometry objects."
+  GEOMETRY_COLLECTION
+}
+# =============================================================================
+# 9. INTERFACES
+# =============================================================================
+
+# @category: common
+"An object with a globally unique identifier."
+interface Node {
+  "A globally unique identifier. This ID is opaque and should not be parsed by clients."
+  id: ID!
+}
+
+# @category: common
+"An object with a human-readable display name."
+interface Titled {
+  "The human-readable display name."
+  title: String!
+}
+
+# @category: common
+"An object that supports custom field values."
+interface Customizable {
+  """
+  Custom field values as a key-value map.
+  Keys are `CustomFieldDefinition` codes.
+  """
+  customFields(
+    "Limit returned fields to these codes. Returns all fields if not specified."
+    codes: [Code!]
+  ): JSON!
+}
+
+# @category: common
+"An object that supports optimistic locking for concurrency control."
+interface Versioned {
+  """
+  The version number for optimistic locking.
+  Incremented on each update. Must be provided in update/delete mutations to prevent lost updates.
+  """
+  version: Int!
+}
+
+# @category: common
+"An interface for field parameters that support selecting multiple values."
+interface MultiValue {
+  "Whether multiple values can be selected for this field."
+  isMulti: Boolean!
+}
+
+# @category: devices/inventory
+"An object that can be assigned to an inventory."
+interface InventoryItem implements Node {
+  "A globally unique identifier."
+  id: ID!
+  "The inventory this item is currently assigned to."
+  inventory: Inventory
+}
+
+# @category: common
+"An edge in a paginated connection."
+interface Edge {
+  "An opaque cursor for this edge, used for pagination."
+  cursor: String!
+}
+
+# @category: common
+"A paginated connection following the Relay Cursor Connections specification."
+interface Connection {
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: actors
+"An entity that can perform actions and have permissions assigned."
+interface Actor implements Node & Titled {
+  "A globally unique identifier."
+  id: ID!
+  "The display name of the actor."
+  title: String!
+}
+
+# @category: catalogs/catalog-items
+"A dictionary item that provides reference data for the system."
+interface CatalogItem implements Node & Versioned & Titled {
+  "A globally unique identifier."
+  id: ID!
+  "The version number for optimistic locking."
+  version: Int!
+  "The human-readable display name. Can be localized."
+  title: String!
+  "A machine-readable code, unique within the catalog scope."
+  code: Code!
+  "The display order within the same level or category."
+  order: Int!
+  "The catalog this item belongs to."
+  catalog: Catalog!
+  "The organization that owns this item. Null for system items."
+  organization: Organization
+  "Metadata about this item including description, origin, and display properties."
+  meta: CatalogItemMeta!
+}
+
+# @category: catalogs/catalog-items
+"Metadata about a catalog item."
+type CatalogItemMeta {
+  "A description of the catalog item. Can be localized."
+  description: String
+  "The origin indicating how this item was created."
+  origin: CatalogItemOrigin!
+  "Whether this item can be deleted. Returns `false` if the item has dependencies or is system-managed."
+  canBeDeleted: Boolean!
+  "Whether this item is hidden from regular UI lists."
+  hidden: Boolean!
+  "The text color for UI display."
+  textColor: HexColorCode
+  "The background color for UI display."
+  backgroundColor: HexColorCode
+  "A relative URL to the icon for this item."
+  icon: String
+}
+
+# @category: catalogs/catalog-items
+"A catalog item that supports parent-child hierarchy."
+interface HierarchicalCatalogItem {
+  "The parent item in the hierarchy. Null for root items."
+  parent: CatalogItem
+}
+
+# =============================================================================
+# 10. PAGINATION TYPES
+# =============================================================================
+
+# @category: common
+"Information about the current page in a paginated connection."
+type PageInfo {
+  "Whether more items exist after the current page."
+  hasNextPage: Boolean!
+  "Whether more items exist before the current page."
+  hasPreviousPage: Boolean!
+  "The cursor pointing to the first item in the current page."
+  startCursor: String
+  "The cursor pointing to the last item in the current page."
+  endCursor: String
+}
+
+# Pagination follows Relay Cursor Connections specification.
+# Arguments are provided directly on connection fields:
+#   first: Int     - Number of items to fetch from start (default: 20, max: 100)
+#   after: String  - Cursor to start after (forward pagination)
+#   last: Int      - Number of items to fetch from end
+#   before: String - Cursor to end before (backward pagination)
+#
+# If neither `first` nor `last` is specified, the server defaults to first: 20.
+
+# @category: common
+"Information about the total count of items in a connection."
+type CountInfo {
+  "The count of items matching the filter."
+  count: Int!
+  "The precision level of the count value."
+  precision: CountPrecision!
+}
+
+# --- CatalogItem Connection ---
+
+# @category: catalogs/catalog-items
+"A paginated list of CatalogItem items."
+type CatalogItemConnection implements Connection {
+  "A list of edges."
+  edges: [CatalogItemEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [CatalogItem!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: catalogs/catalog-items
+"An edge in the CatalogItem connection."
+type CatalogItemEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The catalog item at the end of the edge."
+  node: CatalogItem!
+}
+
+# --- UserCatalogItem Connection ---
+
+# @category: actors/users
+"A paginated list of UserCatalogItem items."
+type UserCatalogItemConnection implements Connection {
+  "A list of edges."
+  edges: [UserCatalogItemEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [UserCatalogItem!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: actors/users
+"An edge in the UserCatalogItem connection."
+type UserCatalogItemEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The user catalog item at the end of the edge."
+  node: UserCatalogItem!
+}
+
+# --- Organization Connection ---
+
+# @category: organizations
+"A paginated list of Organization items."
+type OrganizationConnection implements Connection {
+  "A list of edges."
+  edges: [OrganizationEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Organization!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: organizations
+"An edge in the Organization connection."
+type OrganizationEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The organization at the end of the edge."
+  node: Organization!
+}
+
+# --- User Connection ---
+
+# @category: actors/users
+"A paginated list of User items."
+type UserConnection implements Connection {
+  "A list of edges."
+  edges: [UserEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [User!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: actors/users
+"An edge in the User connection."
+type UserEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The user at the end of the edge."
+  node: User!
+}
+
+# --- Member Connection ---
+
+# @category: organizations/members
+"A paginated list of Member items."
+type MemberConnection implements Connection {
+  "A list of edges."
+  edges: [MemberEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Member!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: organizations/members
+"An edge in the Member connection."
+type MemberEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The member at the end of the edge."
+  node: Member!
+}
+
+# --- Integration Connection ---
+
+# @category: actors/integrations
+"A paginated list of Integration items."
+type IntegrationConnection implements Connection {
+  "A list of edges."
+  edges: [IntegrationEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Integration!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: actors/integrations
+"An edge in the Integration connection."
+type IntegrationEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The integration at the end of the edge."
+  node: Integration!
+}
+
+# --- Device Connection ---
+
+# @category: devices
+"A paginated list of Device items."
+type DeviceConnection implements Connection {
+  "A list of edges."
+  edges: [DeviceEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Device!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices
+"An edge in the Device connection."
+type DeviceEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The device at the end of the edge."
+  node: Device!
+}
+
+# --- Asset Connection ---
+
+# @category: assets
+"A paginated list of Asset items."
+type AssetConnection implements Connection {
+  "A list of edges."
+  edges: [AssetEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Asset!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: assets
+"An edge in the Asset connection."
+type AssetEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The asset at the end of the edge."
+  node: Asset!
+}
+
+# --- AssetGroup Connection ---
+
+# @category: assets/groups
+"A paginated list of AssetGroup items."
+type AssetGroupConnection implements Connection {
+  "A list of edges."
+  edges: [AssetGroupEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [AssetGroup!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: assets/groups
+"An edge in the AssetGroup connection."
+type AssetGroupEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The asset group at the end of the edge."
+  node: AssetGroup!
+}
+
+# --- AssetGroupItem Connection ---
+
+# @category: assets/groups
+"A paginated list of AssetGroupItem items."
+type AssetGroupItemConnection implements Connection {
+  "A list of edges."
+  edges: [AssetGroupItemEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [AssetGroupItem!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: assets/groups
+"An edge in the AssetGroupItem connection."
+type AssetGroupItemEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The asset group item at the end of the edge."
+  node: AssetGroupItem!
+}
+
+# --- Inventory Connection ---
+
+# @category: devices/inventory
+"A paginated list of Inventory items."
+type InventoryConnection implements Connection {
+  "A list of edges."
+  edges: [InventoryEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Inventory!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices/inventory
+"An edge in the Inventory connection."
+type InventoryEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The inventory at the end of the edge."
+  node: Inventory!
+}
+
+# --- GeoObject Connection ---
+
+# @category: geo-objects
+"A paginated list of GeoObject items."
+type GeoObjectConnection implements Connection {
+  "A list of edges."
+  edges: [GeoObjectEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [GeoObject!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: geo-objects
+"An edge in the GeoObject connection."
+type GeoObjectEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The geo object at the end of the edge."
+  node: GeoObject!
+}
+
+# --- Schedule Connection ---
+
+# @category: schedules
+"A paginated list of Schedule items."
+type ScheduleConnection implements Connection {
+  "A list of edges."
+  edges: [ScheduleEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Schedule!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: schedules
+"An edge in the Schedule connection."
+type ScheduleEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The schedule at the end of the edge."
+  node: Schedule!
+}
+
+# --- AuditEvent Connection ---
+
+# @category: audit
+"A paginated list of AuditEvent items."
+type AuditEventConnection implements Connection {
+  "A list of edges."
+  edges: [AuditEventEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [AuditEvent!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: audit
+"An edge in the AuditEvent connection."
+type AuditEventEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The audit event at the end of the edge."
+  node: AuditEvent!
+}
+
+# --- DeviceInventoryRelation Connection ---
+
+# @category: devices/inventory
+"A paginated list of DeviceInventoryRelation items."
+type DeviceInventoryRelationConnection implements Connection {
+  "A list of edges."
+  edges: [DeviceInventoryRelationEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [DeviceInventoryRelation!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices/inventory
+"An edge in the DeviceInventoryRelation connection."
+type DeviceInventoryRelationEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The device inventory relation at the end of the edge."
+  node: DeviceInventoryRelation!
+}
+
+# --- Catalog-specific type connections ---
+
+# @category: catalogs/catalog-items
+"A paginated list of Catalog items."
+type CatalogConnection implements Connection {
+  "A list of edges."
+  edges: [CatalogEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Catalog!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: catalogs/catalog-items
+"An edge in the Catalog connection."
+type CatalogEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The catalog at the end of the edge."
+  node: Catalog!
+}
+
+# @category: devices
+"A paginated list of DeviceType items."
+type DeviceTypeConnection implements Connection {
+  "A list of edges."
+  edges: [DeviceTypeEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [DeviceType!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices
+"An edge in the DeviceType connection."
+type DeviceTypeEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The device type at the end of the edge."
+  node: DeviceType!
+}
+
+# @category: devices
+"A paginated list of DeviceStatus items."
+type DeviceStatusConnection implements Connection {
+  "A list of edges."
+  edges: [DeviceStatusEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [DeviceStatus!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices
+"An edge in the DeviceStatus connection."
+type DeviceStatusEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The device status at the end of the edge."
+  node: DeviceStatus!
+}
+
+# @category: devices
+"A paginated list of DeviceModel items."
+type DeviceModelConnection implements Connection {
+  "A list of edges."
+  edges: [DeviceModelEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [DeviceModel!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: devices
+"An edge in the DeviceModel connection."
+type DeviceModelEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The device model at the end of the edge."
+  node: DeviceModel!
+}
+
+# @category: assets
+"A paginated list of AssetType items."
+type AssetTypeConnection implements Connection {
+  "A list of edges."
+  edges: [AssetTypeEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [AssetType!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: assets
+"An edge in the AssetType connection."
+type AssetTypeEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The asset type at the end of the edge."
+  node: AssetType!
+}
+
+# @category: assets/groups
+"A paginated list of AssetGroupType items."
+type AssetGroupTypeConnection implements Connection {
+  "A list of edges."
+  edges: [AssetGroupTypeEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [AssetGroupType!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: assets/groups
+"An edge in the AssetGroupType connection."
+type AssetGroupTypeEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The asset group type at the end of the edge."
+  node: AssetGroupType!
+}
+
+# @category: geo-objects
+"A paginated list of GeoObjectType items."
+type GeoObjectTypeConnection implements Connection {
+  "A list of edges."
+  edges: [GeoObjectTypeEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [GeoObjectType!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: geo-objects
+"An edge in the GeoObjectType connection."
+type GeoObjectTypeEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The geo object type at the end of the edge."
+  node: GeoObjectType!
+}
+
+# @category: schedules
+"A paginated list of ScheduleType items."
+type ScheduleTypeConnection implements Connection {
+  "A list of edges."
+  edges: [ScheduleTypeEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [ScheduleType!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: schedules
+"An edge in the ScheduleType connection."
+type ScheduleTypeEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The schedule type at the end of the edge."
+  node: ScheduleType!
+}
+
+# @category: access-control
+"A paginated list of Role items."
+type RoleConnection implements Connection {
+  "A list of edges."
+  edges: [RoleEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Role!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: access-control
+"An edge in the Role connection."
+type RoleEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The role at the end of the edge."
+  node: Role!
+}
+
+# @category: catalogs/tags
+"A paginated list of Tag items."
+type TagConnection implements Connection {
+  "A list of edges."
+  edges: [TagEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [Tag!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: catalogs/tags
+"An edge in the Tag connection."
+type TagEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The tag at the end of the edge."
+  node: Tag!
+}
+
+# --- ACL Connections ---
+
+# @category: access-control
+"A paginated list of ActorRole items."
+type ActorRoleConnection implements Connection {
+  "A list of edges."
+  edges: [ActorRoleEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [ActorRole!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: access-control
+"An edge in the ActorRole connection."
+type ActorRoleEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The actor role at the end of the edge."
+  node: ActorRole!
+}
+
+# @category: access-control
+"A paginated list of RolePermission items."
+type RolePermissionConnection implements Connection {
+  "A list of edges."
+  edges: [RolePermissionEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [RolePermission!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: access-control
+"An edge in the RolePermission connection."
+type RolePermissionEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The role permission at the end of the edge."
+  node: RolePermission!
+}
+
+# @category: access-control
+"A paginated list of UserScope items."
+type UserScopeConnection implements Connection {
+  "A list of edges."
+  edges: [UserScopeEdge!]!
+  "A list of nodes in the connection (without edge metadata)."
+  nodes: [UserScope!]!
+  "Information about the current page."
+  pageInfo: PageInfo!
+  "The total count of items matching the filter."
+  total: CountInfo
+}
+
+# @category: access-control
+"An edge in the UserScope connection."
+type UserScopeEdge implements Edge {
+  "An opaque cursor for this edge."
+  cursor: String!
+  "The user scope at the end of the edge."
+  node: UserScope!
+}
+# =============================================================================
+# 11. CATALOG ITEM TYPES
+# =============================================================================
+
+# @category: catalogs/system
+"""
+A system module that groups related functionality and permission scopes.
+Examples: repo (core), fleet_management (FSM), iot (devices), reports, billing.
+"""
+type Module implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+}
+
+# @category: catalogs/system
+"A definition of an entity type in the system."
+type EntityType implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "The 4-character code embedded in UUIDs for entities of this type."
+  uuidDiscriminator: String!
+  "Whether entities of this type support custom fields."
+  isCustomizable: Boolean!
+  "Custom field definitions for entities of this type, ordered by display order."
+  customFieldDefinitions: [CustomFieldDefinition!]!
+}
+
+# @category: devices
+"A device manufacturer or vendor."
+type DeviceVendor implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "Device models produced by this vendor."
+  models(
+    "Filtering options for the returned models."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned models."
+    orderBy: CatalogItemOrder = { field: TITLE, direction: ASC }
+  ): DeviceModelConnection!
+}
+
+# @category: devices
+"A specific device model produced by a vendor."
+type DeviceModel implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "The vendor that manufactures this model."
+  vendor: DeviceVendor!
+}
+
+# @category: devices
+"A classification type for devices."
+type DeviceType implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "Custom field definitions specific to this device type, ordered by display order."
+  customFieldDefinitions: [CustomFieldDefinition!]!
+}
+
+# @category: devices
+"An operational status for devices."
+type DeviceStatus implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+}
+
+# @category: devices
+"A type of relationship between two devices."
+type DeviceRelationType implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+}
+
+# @category: assets
+"A classification type for assets."
+type AssetType implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "Custom field definitions specific to this asset type, ordered by display order."
+  customFieldDefinitions: [CustomFieldDefinition!]!
+}
+
+# @category: assets/groups
+"A type for asset groups with membership constraints."
+type AssetGroupType implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "The asset types allowed in groups of this type, with optional quantity limits."
+  allowedAssetTypes: [AssetGroupTypeConstraint!]!
+}
+
+# @category: assets/groups
+"A constraint defining which asset types can be included in an asset group type."
+type AssetGroupTypeConstraint {
+  "The asset type allowed in the group."
+  assetType: AssetType!
+  "The maximum number of assets of this type allowed in one group. Null means unlimited."
+  maxItems: Int
+}
+
+# @category: geo-objects
+"A classification type for geographic objects."
+type GeoObjectType implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "Custom field definitions specific to this geo object type, ordered by display order."
+  customFieldDefinitions: [CustomFieldDefinition!]!
+}
+
+# @category: schedules
+"A classification type for schedules."
+type ScheduleType implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "Custom field definitions specific to this schedule type, ordered by display order."
+  customFieldDefinitions: [CustomFieldDefinition!]!
+}
+
+# @category: access-control
+"A role that can be assigned to actors to grant permissions."
+type Role implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "The permissions assigned to this role."
+  permissions(
+    "Filtering options for the returned permissions."
+    filter: RolePermissionFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned permissions."
+    orderBy: RolePermissionOrder = { field: GRANTED_AT, direction: DESC }
+  ): RolePermissionConnection!
+}
+
+# @category: access-control
+"A definition of a permission scope that can be granted to roles."
+type PermissionScope implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "The module this permission scope belongs to."
+  module: Module!
+  "The entity type this permission applies to."
+  entityType: EntityType!
+}
+
+# @category: catalogs/tags
+"A tag for labeling and categorizing entities."
+type Tag implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "The entity types this tag can be applied to. Empty means the tag is universal."
+  entityTypes: [EntityType!]!
+}
+
+# @category: catalogs/system
+"A country reference data item."
+type Country implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "The ISO 3166-1 alpha-2 country code."
+  alpha2Code: CountryCode!
+}
+
+# @category: actors/users
+"A user-defined catalog item that supports hierarchical organization."
+type UserCatalogItem implements CatalogItem & HierarchicalCatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "The parent item in the hierarchy. Null for root items."
+  parent: UserCatalogItem
+  "The child items in the hierarchy."
+  children(
+    "Filtering options for the returned children."
+    filter: CatalogItemChildrenFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned children."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): UserCatalogItemConnection!
+}
+
+# @category: catalogs/catalog-items
+"A catalog definition that contains catalog items. Catalogs are themselves catalog items."
+type Catalog implements CatalogItem & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  code: Code!
+  order: Int!
+  "Self-reference for the meta-catalog."
+  catalog: Catalog!
+  organization: Organization
+  meta: CatalogItemMeta!
+  "The module this catalog is associated with."
+  module: Module!
+  "The items in this catalog."
+  items(
+    "Filtering options for the returned items."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned items."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): CatalogItemConnection!
+}
+
+# =============================================================================
+# 12. ORGANIZATION
+# =============================================================================
+
+# @category: organizations
+"An organization in the hierarchy that owns entities and users."
+type Organization implements Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  "An external system identifier for integration purposes."
+  externalId: String
+  "Whether this organization is active."
+  isActive: Boolean!
+  "The feature flags enabled for this organization."
+  features: [OrganizationFeature!]!
+  "The parent organization in the hierarchy. Null for root organizations."
+  parent: Organization
+  "The child organizations."
+  children(
+    "Filtering options for the returned children."
+    filter: OrganizationChildrenFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned children."
+    orderBy: OrganizationOrder = { field: TITLE, direction: ASC }
+  ): OrganizationConnection!
+  "The members of this organization."
+  members(
+    "Filtering options for the returned members."
+    filter: MemberFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned members."
+    orderBy: MemberOrder = { field: ASSIGNED_AT, direction: DESC }
+  ): MemberConnection!
+  "The devices owned by this organization."
+  devices(
+    "Filtering options for the returned devices."
+    filter: DeviceFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned devices."
+    orderBy: DeviceOrder = { field: TITLE, direction: ASC }
+  ): DeviceConnection!
+  "The assets owned by this organization."
+  assets(
+    "Filtering options for the returned assets."
+    filter: AssetFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned assets."
+    orderBy: AssetOrder = { field: TITLE, direction: ASC }
+  ): AssetConnection!
+  "The geographic objects owned by this organization."
+  geoObjects(
+    "Filtering options for the returned geo objects."
+    filter: GeoObjectFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned geo objects."
+    orderBy: GeoObjectOrder = { field: TITLE, direction: ASC }
+  ): GeoObjectConnection!
+  "The schedules owned by this organization."
+  schedules(
+    "Filtering options for the returned schedules."
+    filter: ScheduleFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned schedules."
+    orderBy: ScheduleOrder = { field: TITLE, direction: ASC }
+  ): ScheduleConnection!
+}
+# =============================================================================
+# 13. ACTORS
+# =============================================================================
+
+# @category: actors
+"""
+Structured person name components following W3C Personal Names guidance.
+See: https://www.w3.org/International/questions/qa-personal-names
+
+Examples by culture:
+- US: givenNames="John", familyNames="Smith", middleName="Robert"
+- Russia: givenNames="Иван", familyNames="Иванов", middleName="Петрович" (patronymic)
+- Spain: givenNames="Juan Carlos", familyNames="García López" (paternal + maternal)
+- China: givenNames="明" (Ming), familyNames="王" (Wang) — note: family name first in native order
+- Iceland: givenNames="Björk", familyNames="Guðmundsdóttir" (patronymic as family name)
+"""
+type PersonName {
+  "The given name(s), also known as first name(s). May contain multiple names separated by spaces."
+  givenNames: String!
+  "The family name(s), also known as surname(s) or last name(s). May contain multiple names."
+  familyNames: String!
+  "The middle name, patronymic, or additional name component."
+  middleName: String
+  "The full name formatted according to the user's locale preferences."
+  fullName: String!
+}
+
+# @category: actors
+"The built-in system actor used for automated operations."
+type SystemActor implements Actor & Node & Titled {
+  id: ID!
+  title: String!
+}
+
+# @category: actors/users
+"A human user account authenticated via an identity provider."
+type User implements Actor & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  "The display name for the user. This is the user's full name for display purposes."
+  title: String!
+  "The structured name components from the identity provider."
+  name: PersonName!
+  "The identity provider name (keycloak, auth0, okta, etc.)."
+  identityProvider: String!
+  "The user's unique ID in the identity provider."
+  identityProviderId: String!
+  "The user's primary email address."
+  email: EmailAddress!
+  "The user's preferred locale."
+  locale: Locale
+  "An external system identifier for integration purposes."
+  externalId: String
+  "Whether this user account is active."
+  isActive: Boolean!
+  "The organization memberships for this user."
+  memberships(
+    "Filtering options for the returned memberships."
+    filter: MemberFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned memberships."
+    orderBy: MemberOrder = { field: ASSIGNED_AT, direction: DESC }
+  ): MemberConnection!
+}
+
+# @category: organizations/members
+"A user's membership in an organization."
+type Member implements Node & Customizable & Versioned {
+  id: ID!
+  version: Int!
+  "The user."
+  user: User!
+  "The organization the user belongs to."
+  organization: Organization!
+  "Whether this membership is active."
+  isActive: Boolean!
+  "The date and time when the user was assigned to this organization."
+  assignedAt: DateTime!
+  "Membership-specific custom fields such as position and department."
+  customFields(
+    "Limit returned fields to these codes. Returns all fields if not specified."
+    codes: [Code!]
+  ): JSON!
+}
+
+# @category: actors/integrations
+"An external system integration with API access."
+type Integration implements Actor & Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  "The organization this integration belongs to."
+  organization: Organization!
+  "A reference to credentials stored in a secure vault."
+  credentialRef: String
+  "Whether this integration is active."
+  isActive: Boolean!
+}
+
+# =============================================================================
+# 14. ACCESS CONTROL (ACL)
+# =============================================================================
+
+# @category: access-control
+"An assignment of a role to an actor."
+type ActorRole implements Node {
+  id: ID!
+  "The actor receiving the role."
+  actor: Actor!
+  "The role being assigned."
+  role: Role!
+  "The date and time when the role was assigned."
+  assignedAt: DateTime!
+  "The actor who assigned the role."
+  assignedBy: Actor
+  "The date and time when the role expires. Null means the role is permanent."
+  expireDate: DateTime
+}
+
+# @category: access-control
+"A permission granted to a role."
+type RolePermission implements Node {
+  id: ID!
+  "The role receiving the permission."
+  role: Role!
+  "The permission scope being granted."
+  permissionScope: PermissionScope!
+  "The specific entity ID this permission applies to. Null means all entities of the type."
+  targetEntityId: ID
+  "The actions allowed by this permission."
+  actions: [ActionPermission!]!
+  "The date and time when the permission was granted."
+  grantedAt: DateTime!
+  "The actor who granted the permission."
+  grantedBy: Actor!
+}
+
+# @category: access-control
+"""
+A whitelist filter that restricts an actor's access to specific entities.
+When present, effective permissions = role permissions ∩ user scope.
+"""
+type UserScope implements Node {
+  id: ID!
+  "The actor being restricted."
+  actor: Actor!
+  "The permission scope being filtered."
+  permissionScope: PermissionScope!
+  "The specific entity the actor can access."
+  targetEntityId: ID!
+  "The actions allowed on this specific entity."
+  actions: [ActionPermission!]!
+}
+
+# =============================================================================
+# 15. BUSINESS ENTITIES
+# =============================================================================
+
+# @category: geo-objects
+"A geographic coordinate point."
+type GeoPoint {
+  "The latitude coordinate in decimal degrees."
+  lat: Latitude!
+  "The longitude coordinate in decimal degrees."
+  lng: Longitude!
+  "The altitude in meters above sea level."
+  altitude: Float
+  "The horizontal accuracy in meters."
+  accuracy: Float
+}
+
+# @category: geo-objects
+"Input for a geographic coordinate point."
+input GeoPointInput {
+  "The latitude coordinate (-90 to 90 degrees)."
+  lat: Latitude!
+  "The longitude coordinate (-180 to 180 degrees)."
+  lng: Longitude!
+  "The altitude in meters above sea level."
+  altitude: Float
+  "The horizontal accuracy in meters."
+  accuracy: Float
+}
+
+# @category: devices
+"A tracking device such as a GPS tracker, sensor, or beacon."
+type Device implements Node & Titled & Customizable & Versioned & InventoryItem {
+  id: ID!
+  version: Int!
+  title: String!
+  "The organization that owns this device."
+  organization: Organization!
+  "The device type classification."
+  type: DeviceType!
+  "The specific device model."
+  model: DeviceModel!
+  "The current operational status."
+  status: DeviceStatus!
+  customFields(
+    "Limit returned fields to these codes. Returns all fields if not specified."
+    codes: [Code!]
+  ): JSON!
+  "The hardware identifiers for this device (IMEI, serial number, MAC address, etc.)."
+  identifiers: [DeviceIdentifier!]!
+  "The inventory this device is currently assigned to."
+  inventory: Inventory
+  "The outgoing relationships from this device to other devices."
+  relationsFrom: [DeviceRelation!]!
+  "The incoming relationships from other devices to this device."
+  relationsTo: [DeviceRelation!]!
+  "The history of inventory assignments for this device."
+  inventoryHistory(
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned history."
+    orderBy: DeviceInventoryRelationOrder = {
+      field: ASSIGNED_AT
+      direction: DESC
+    }
+  ): DeviceInventoryRelationConnection!
+}
+
+# @category: devices
+"A hardware identifier for a device."
+type DeviceIdentifier implements Node {
+  id: ID!
+  "The device this identifier belongs to."
+  device: Device!
+  "The type of identifier."
+  type: DeviceIdType!
+  "The identifier value."
+  value: String!
+  "The namespace for uniqueness scope. Null means the identifier is globally unique."
+  namespace: Code
+}
+
+# @category: devices
+"A relationship between two devices."
+type DeviceRelation implements Node {
+  id: ID!
+  "The first device in the relationship."
+  first: Device!
+  "The second device in the relationship."
+  second: Device!
+  "The type of relationship."
+  type: DeviceRelationType!
+}
+
+# @category: devices/inventory
+"A record of a device's assignment to an inventory."
+type DeviceInventoryRelation implements Node {
+  id: ID!
+  "The device that was assigned."
+  device: Device!
+  "The inventory the device was assigned to."
+  inventory: Inventory!
+  "The date and time when the device was assigned."
+  assignedAt: DateTime!
+  "The actor who assigned the device."
+  assignedBy: Actor
+}
+
+# @category: assets
+"A physical or logical asset being tracked."
+type Asset implements Node & Titled & Customizable & Versioned {
+  id: ID!
+  version: Int!
+  title: String!
+  "The organization that owns this asset."
+  organization: Organization!
+  "The asset type classification."
+  type: AssetType!
+  customFields(
+    "Limit returned fields to these codes. Returns all fields if not specified."
+    codes: [Code!]
+  ): JSON!
+  """
+  The primary tracking device linked to this asset.
+  This is an alias for the `device` custom field.
+  """
+  device: Device
+  "The groups this asset belongs to."
+  groups(
+    "Filtering options for the returned groups."
+    filter: AssetGroupFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned groups."
+    orderBy: AssetGroupOrder = { field: TITLE, direction: ASC }
+  ): AssetGroupConnection!
+}
+
+# @category: assets/groups
+"A group of assets."
+type AssetGroup implements Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  "The organization that owns this group."
+  organization: Organization!
+  "The group type with membership constraints."
+  type: AssetGroupType!
+  "The color for UI display in hexadecimal format."
+  color: HexColorCode
+  "The assets currently in this group."
+  currentAssets(
+    "Filtering options for the returned assets."
+    filter: AssetFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned assets."
+    orderBy: AssetOrder = { field: TITLE, direction: ASC }
+  ): AssetConnection!
+  "The full membership history for this group."
+  history(
+    "Filtering options for the returned history."
+    filter: AssetGroupItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned history."
+    orderBy: AssetGroupItemOrder = { field: ATTACHED_AT, direction: DESC }
+  ): AssetGroupItemConnection!
+}
+
+# @category: assets/groups
+"A record of an asset's membership in a group."
+type AssetGroupItem implements Node {
+  id: ID!
+  "The group containing the asset."
+  group: AssetGroup!
+  "The asset in the group."
+  asset: Asset!
+  "The date and time when the asset was added to the group."
+  attachedAt: DateTime!
+  "The date and time when the asset was removed from the group. Null means the asset is currently attached."
+  detachedAt: DateTime
+}
+
+# @category: devices/inventory
+"An inventory or warehouse record for device stock management."
+type Inventory implements Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  title: String!
+  "The organization that owns this inventory."
+  organization: Organization!
+  "The devices assigned to this inventory."
+  devices(
+    "Filtering options for the returned devices."
+    filter: DeviceFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned devices."
+    orderBy: DeviceOrder = { field: TITLE, direction: ASC }
+  ): DeviceConnection!
+}
+
+# @category: geo-objects
+"A geographic object such as a geofence, point of interest, or route."
+type GeoObject implements Node & Titled & Customizable & Versioned {
+  id: ID!
+  version: Int!
+  title: String!
+  "The organization that owns this geo object."
+  organization: Organization!
+  "The geo object type classification."
+  type: GeoObjectType!
+  """
+  The geographic shape of this object as GeoJSON geometry.
+  This is an alias for the `geojson` custom field.
+  """
+  geometry: GeoJSON!
+  customFields(
+    "Limit returned fields to these codes. Returns all fields if not specified."
+    codes: [Code!]
+  ): JSON!
+  """
+  Checks if the given points are contained within this geo object's geometry.
+  Returns the containment status for each point.
+  Only applicable to Polygon and MultiPolygon geometries.
+  """
+  containsPoints(
+    "The points to check for containment."
+    points: [GeoPointInput!]!
+  ): [PointContainmentResult!]!
+}
+
+# @category: geo-objects
+"The result of checking whether a point is contained within a geometry."
+type PointContainmentResult {
+  "The index of the point in the input array (0-based)."
+  index: Int!
+  "The point that was checked."
+  point: GeoPoint!
+  "Whether the point is inside the geometry."
+  isContained: Boolean!
+}
+
+# @category: schedules
+"A schedule definition for work hours, maintenance windows, or other time-based rules."
+type Schedule implements Node & Titled & Customizable & Versioned {
+  id: ID!
+  version: Int!
+  title: String!
+  "The organization that owns this schedule."
+  organization: Organization!
+  "The schedule type classification."
+  type: ScheduleType!
+  """
+  The calendar and time interval definitions for this schedule.
+  This is an alias for the `schedule_data` custom field.
+  """
+  scheduleData: ScheduleData!
+  customFields(
+    "Limit returned fields to these codes. Returns all fields if not specified."
+    codes: [Code!]
+  ): JSON!
+}
+# =============================================================================
+# 16. CUSTOM FIELDS
+# =============================================================================
+
+# @category: custom-fields
+"""
+A custom field definition that specifies the metadata for a custom field.
+
+Note: The `fieldType` property is immutable after creation.
+To change the field type, delete the definition and create a new one.
+"""
+type CustomFieldDefinition implements Node & Versioned & Titled {
+  id: ID!
+  version: Int!
+  "The human-readable display name."
+  title: String!
+  "The machine-readable code, unique per owner and organization."
+  code: Code!
+  "A description of the field for UI hints."
+  description: String
+  "The display order within the owner context."
+  order: Int!
+  "The organization that owns this definition. Null for system-level fields."
+  organization: Organization
+  "The owner catalog item: EntityType for system fields, or a specific type like AssetType for type-specific fields."
+  owner: CatalogItem!
+  "The target entity type this field applies to."
+  targetEntityType: EntityType!
+  """
+  The data type determining validation rules and UI rendering.
+  This property is immutable and cannot be changed after creation.
+  """
+  fieldType: FieldType!
+  "The type-specific parameters for validation, defaults, and options."
+  params: FieldParams!
+}
+
+# @category: custom-fields
+"The base interface for field parameters."
+interface FieldParams {
+  "Whether a value is required for this field."
+  isRequired: Boolean!
+}
+
+# @category: custom-fields
+"Parameters for STRING field type."
+type FieldParamsString implements FieldParams {
+  isRequired: Boolean!
+  "The minimum character length."
+  minLength: Int
+  "The maximum character length."
+  maxLength: Int
+  "The default value."
+  defaultValue: String
+  "Whether to trim leading and trailing whitespace."
+  trim: Boolean!
+}
+
+# @category: custom-fields
+"Parameters for TEXT field type."
+type FieldParamsText implements FieldParams {
+  isRequired: Boolean!
+  "The maximum character length."
+  maxLength: Int
+  "The default value."
+  defaultValue: String
+  "Whether to trim leading and trailing whitespace."
+  trim: Boolean!
+}
+
+# @category: custom-fields
+"Parameters for NUMBER field type."
+type FieldParamsNumber implements FieldParams {
+  isRequired: Boolean!
+  "The minimum allowed value."
+  min: Float
+  "The maximum allowed value."
+  max: Float
+  "The decimal precision."
+  precision: Int
+  "The default value."
+  defaultValue: Float
+}
+
+# @category: custom-fields
+"Parameters for BOOLEAN field type."
+type FieldParamsBoolean implements FieldParams {
+  isRequired: Boolean!
+  "The default value."
+  defaultValue: Boolean
+}
+
+# @category: custom-fields
+"Parameters for DATE field type."
+type FieldParamsDate implements FieldParams {
+  isRequired: Boolean!
+  "The default value."
+  defaultValue: Date
+}
+
+# @category: custom-fields
+"Parameters for DATETIME field type."
+type FieldParamsDatetime implements FieldParams {
+  isRequired: Boolean!
+  "The default value."
+  defaultValue: DateTime
+}
+
+# @category: custom-fields
+"Parameters for GEOJSON field type."
+type FieldParamsGeojson implements FieldParams {
+  isRequired: Boolean!
+  "The allowed geometry types. Null means all types are allowed."
+  allowedTypes: [GeoJsonGeometryType!]
+}
+
+# @category: custom-fields
+"Parameters for SCHEDULE field type."
+type FieldParamsSchedule implements FieldParams {
+  isRequired: Boolean!
+}
+
+# @category: custom-fields
+"Parameters for OPTIONS field type."
+type FieldParamsOptions implements FieldParams & MultiValue {
+  isRequired: Boolean!
+  isMulti: Boolean!
+  "The available options to choose from."
+  options: [FieldOption!]!
+  "The default option code."
+  defaultValue: Code
+}
+
+# @category: custom-fields
+"A single option in an OPTIONS field."
+type FieldOption {
+  "The unique code for this option within the field."
+  code: Code!
+  "The display label."
+  label: String!
+  "A description of the option."
+  description: String
+  "Whether this option is archived and should not be shown for new selections."
+  isArchived: Boolean!
+}
+
+# @category: custom-fields
+"Parameters for DEVICE field type."
+type FieldParamsDevice implements FieldParams & MultiValue {
+  isRequired: Boolean!
+  isMulti: Boolean!
+}
+
+# @category: custom-fields
+"Parameters for REFERENCE field type."
+type FieldParamsReference implements FieldParams & MultiValue {
+  isRequired: Boolean!
+  isMulti: Boolean!
+  "The entity type code that can be referenced."
+  refEntityTypeCode: Code!
+}
+
+# @category: custom-fields
+"Parameters for CATALOG field type."
+type FieldParamsCatalog implements FieldParams & MultiValue {
+  isRequired: Boolean!
+  isMulti: Boolean!
+  "The catalog code that items can be selected from."
+  refCatalogCode: Code!
+  "The default item code."
+  defaultValue: Code
+}
+
+# @category: custom-fields
+"Parameters for TAG field type."
+type FieldParamsTag implements FieldParams & MultiValue {
+  isRequired: Boolean!
+  isMulti: Boolean!
+  "The default tag code."
+  defaultValue: Code
+}
+
+# =============================================================================
+# 17. AUDIT
+# =============================================================================
+
+# @category: audit
+"An audit log entry recording an event that occurred in the system."
+type AuditEvent implements Node {
+  id: ID!
+  "The organization context. Null for system events."
+  organization: Organization
+  "The actor who triggered the event."
+  actor: Actor
+  "The client IP address."
+  ipAddress: String
+  "The client User-Agent string."
+  userAgent: String
+  "The source type of the request."
+  sourceType: SourceType!
+  "The distributed tracing ID (32 hex characters) for log correlation."
+  traceId: String
+  "The type of entity affected."
+  aggregateType: Code
+  "The ID of the affected entity."
+  aggregateId: ID
+  "The type of event that occurred."
+  eventType: AuditEventType!
+  "The event payload with details such as changed fields."
+  eventData: JSON
+  "The date and time when the event occurred."
+  occurredAt: DateTime!
+}
+
+# =============================================================================
+# 18. FILTER & ORDER INPUTS
+# =============================================================================
+#
+# FILTER SEMANTICS
+# ----------------
+# Array-based filters use OR logic within a field and AND logic between fields.
+#
+# Example:
+#   filter: {
+#     typeIds: ["type1", "type2"]    # type1 OR type2
+#     statusIds: ["active"]          # AND status = active
+#   }
+#
+# This returns items where:
+#   (type = type1 OR type = type2) AND (status = active)
+#
+# Empty arrays are ignored (treated as "no filter on this field").
+# Null values are also ignored.
+#
+# =============================================================================
+
+# --- Catalog Item ---
+
+# @category: catalogs/catalog-items
+"Filtering options for catalog items."
+input CatalogItemFilter {
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+  "Match any of these codes."
+  codes: [Code!]
+}
+
+# @category: catalogs/catalog-items
+"Filtering options for catalog item children."
+input CatalogItemChildrenFilter {
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+}
+
+# @category: catalogs/catalog-items
+"Ordering options for catalog items."
+input CatalogItemOrder {
+  "The field to order by."
+  field: CatalogItemOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: catalogs/catalog-items
+"Fields available for ordering catalog items."
+enum CatalogItemOrderField {
+  "Order by display order."
+  ORDER
+  "Order by code."
+  CODE
+  "Order by title."
+  TITLE
+  "Order by creation date and time."
+  CREATED_AT
+}
+
+# --- Organization ---
+
+# @category: organizations
+"Filtering options for organizations."
+input OrganizationFilter {
+  "Filter by parent organizations (OR within field)."
+  parentIds: [ID!]
+  "Filter by active status."
+  isActive: Boolean
+}
+
+# @category: organizations
+"Filtering options for organization children. Excludes parentId as it is implicit."
+input OrganizationChildrenFilter {
+  "Filter by active status."
+  isActive: Boolean
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+}
+
+# @category: organizations
+"Ordering options for organizations."
+input OrganizationOrder {
+  "The field to order by."
+  field: OrganizationOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: organizations
+"Fields available for ordering organizations."
+enum OrganizationOrderField {
+  "Order by title."
+  TITLE
+}
+
+# --- Member ---
+
+# @category: organizations/members
+"Filtering options for members."
+input MemberFilter {
+  "Filter by users (OR within field)."
+  userIds: [ID!]
+  "Filter by active status."
+  isActive: Boolean
+}
+
+# @category: organizations/members
+"Ordering options for members."
+input MemberOrder {
+  "The field to order by."
+  field: MemberOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: organizations/members
+"Fields available for ordering members."
+enum MemberOrderField {
+  "Order by assignment date."
+  ASSIGNED_AT
+}
+
+# --- Integration ---
+
+# @category: actors/integrations
+"Filtering options for integrations."
+input IntegrationFilter {
+  "Filter by active status."
+  isActive: Boolean
+}
+
+# @category: actors/integrations
+"Ordering options for integrations."
+input IntegrationOrder {
+  "The field to order by."
+  field: IntegrationOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: actors/integrations
+"Fields available for ordering integrations."
+enum IntegrationOrderField {
+  "Order by title."
+  TITLE
+}
+
+# --- Device ---
+
+# @category: devices
+"Filtering options for devices."
+input DeviceFilter {
+  "Filter by device types (OR within field)."
+  typeIds: [ID!]
+  "Filter by device models (OR within field)."
+  modelIds: [ID!]
+  "Filter by statuses (OR within field)."
+  statusIds: [ID!]
+  "Filter by vendors (OR within field)."
+  vendorIds: [ID!]
+  "Partial match on device identifier value (case-sensitive contains)."
+  identifierContains: String
+  "Filter by inventories (OR within field)."
+  inventoryIds: [ID!]
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+  "Filter by custom field values."
+  customFields: [CustomFieldFilter!]
+}
+
+# @category: devices
+"Ordering options for devices."
+input DeviceOrder {
+  "The standard field to order by. Mutually exclusive with `customFieldCode`."
+  field: DeviceOrderField
+  "The custom field code to order by. Mutually exclusive with `field`."
+  customFieldCode: Code
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: devices
+"Fields available for ordering devices."
+enum DeviceOrderField {
+  "Order by title."
+  TITLE
+}
+
+# --- DeviceInventoryRelation ---
+
+# @category: devices/inventory
+"Ordering options for device inventory relations."
+input DeviceInventoryRelationOrder {
+  "The field to order by."
+  field: DeviceInventoryRelationOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: devices/inventory
+"Fields available for ordering device inventory relations."
+enum DeviceInventoryRelationOrderField {
+  "Order by assignment date."
+  ASSIGNED_AT
+}
+
+# --- Asset ---
+
+# @category: assets
+"Filtering options for assets."
+input AssetFilter {
+  "Filter by asset types (OR within field)."
+  typeIds: [ID!]
+  "Filter by linked devices (OR within field)."
+  deviceIds: [ID!]
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+  "Filter by custom field values."
+  customFields: [CustomFieldFilter!]
+}
+
+# @category: assets
+"Ordering options for assets."
+input AssetOrder {
+  "The standard field to order by. Mutually exclusive with `customFieldCode`."
+  field: AssetOrderField
+  "The custom field code to order by. Mutually exclusive with `field`."
+  customFieldCode: Code
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: assets
+"Fields available for ordering assets."
+enum AssetOrderField {
+  "Order by title."
+  TITLE
+}
+
+# --- AssetGroup ---
+
+# @category: assets/groups
+"Filtering options for asset groups."
+input AssetGroupFilter {
+  "Filter by group types (OR within field)."
+  typeIds: [ID!]
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+}
+
+# @category: assets/groups
+"Ordering options for asset groups."
+input AssetGroupOrder {
+  "The field to order by."
+  field: AssetGroupOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: assets/groups
+"Fields available for ordering asset groups."
+enum AssetGroupOrderField {
+  "Order by title."
+  TITLE
+}
+
+# --- AssetGroupItem ---
+
+# @category: assets/groups
+"Filtering options for asset group items."
+input AssetGroupItemFilter {
+  "If true, return only currently attached items."
+  activeOnly: Boolean
+}
+
+# @category: assets/groups
+"Ordering options for asset group items."
+input AssetGroupItemOrder {
+  "The field to order by."
+  field: AssetGroupItemOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: assets/groups
+"Fields available for ordering asset group items."
+enum AssetGroupItemOrderField {
+  "Order by attachment date."
+  ATTACHED_AT
+}
+
+# --- Inventory ---
+
+# @category: devices/inventory
+"Filtering options for inventories."
+input InventoryFilter {
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+}
+
+# @category: devices/inventory
+"Ordering options for inventories."
+input InventoryOrder {
+  "The field to order by."
+  field: InventoryOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: devices/inventory
+"Fields available for ordering inventories."
+enum InventoryOrderField {
+  "Order by title."
+  TITLE
+}
+
+# --- GeoObject ---
+
+# @category: geo-objects
+"Filtering options for geo objects."
+input GeoObjectFilter {
+  "Filter by geo object types (OR within field)."
+  typeIds: [ID!]
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+  "Filter by custom field values."
+  customFields: [CustomFieldFilter!]
+}
+
+# @category: geo-objects
+"Ordering options for geo objects."
+input GeoObjectOrder {
+  "The standard field to order by. Mutually exclusive with `customFieldCode`."
+  field: GeoObjectOrderField
+  "The custom field code to order by. Mutually exclusive with `field`."
+  customFieldCode: Code
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: geo-objects
+"Fields available for ordering geo objects."
+enum GeoObjectOrderField {
+  "Order by title."
+  TITLE
+}
+
+# --- Schedule ---
+
+# @category: schedules
+"Filtering options for schedules."
+input ScheduleFilter {
+  "Filter by schedule types (OR within field)."
+  typeIds: [ID!]
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+  "Filter by custom field values."
+  customFields: [CustomFieldFilter!]
+}
+
+# @category: schedules
+"Ordering options for schedules."
+input ScheduleOrder {
+  "The standard field to order by. Mutually exclusive with `customFieldCode`."
+  field: ScheduleOrderField
+  "The custom field code to order by. Mutually exclusive with `field`."
+  customFieldCode: Code
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: schedules
+"Fields available for ordering schedules."
+enum ScheduleOrderField {
+  "Order by title."
+  TITLE
+}
+
+# --- DeviceModel ---
+
+# @category: devices
+"Filtering options for device models."
+input DeviceModelFilter {
+  "Filter by vendors (OR within field)."
+  vendorIds: [ID!]
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+  "Exact code match."
+  code: Code
+}
+
+# --- Tag ---
+
+# @category: catalogs/tags
+"Filtering options for tags."
+input TagFilter {
+  "Partial match on title (case-insensitive contains)."
+  titleContains: String @trim
+}
+
+# --- AuditEvent ---
+
+# @category: audit
+"Filtering options for audit events."
+input AuditEventFilter {
+  "Filter by actors (OR within field)."
+  actorIds: [ID!]
+  "Filter by entity types (OR within field)."
+  aggregateTypes: [Code!]
+  "Filter by specific entity IDs (OR within field)."
+  aggregateIds: [ID!]
+  "Filter by event types (OR within field)."
+  eventTypes: [AuditEventType!]
+  "Filter by source types (OR within field)."
+  sourceTypes: [SourceType!]
+  "Filter by trace ID."
+  traceId: String
+  "Return events that occurred after this timestamp."
+  from: DateTime
+  "Return events that occurred before this timestamp."
+  to: DateTime
+}
+
+# @category: audit
+"Ordering options for audit events."
+input AuditEventOrder {
+  "The field to order by."
+  field: AuditEventOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: audit
+"Fields available for ordering audit events."
+enum AuditEventOrderField {
+  "Order by occurrence date."
+  OCCURRED_AT
+}
+
+# --- ACL ---
+
+# @category: access-control
+"Filtering options for actor roles."
+input ActorRoleFilter {
+  "Filter by actors (OR within field)."
+  actorIds: [ID!]
+  "Filter by roles (OR within field)."
+  roleIds: [ID!]
+  "Include expired role assignments."
+  includeExpired: Boolean = true
+}
+
+# @category: access-control
+"Ordering options for actor roles."
+input ActorRoleOrder {
+  "The field to order by."
+  field: ActorRoleOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: access-control
+"Fields available for ordering actor roles."
+enum ActorRoleOrderField {
+  "Order by assignment date."
+  ASSIGNED_AT
+}
+
+# @category: access-control
+"Filtering options for role permissions."
+input RolePermissionFilter {
+  "Filter by roles (OR within field)."
+  roleIds: [ID!]
+  "Filter by permission scopes (OR within field)."
+  permissionScopeIds: [ID!]
+  "Filter by target entities (OR within field)."
+  targetEntityIds: [ID!]
+}
+
+# @category: access-control
+"Ordering options for role permissions."
+input RolePermissionOrder {
+  "The field to order by."
+  field: RolePermissionOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: access-control
+"Fields available for ordering role permissions."
+enum RolePermissionOrderField {
+  "Order by grant date."
+  GRANTED_AT
+}
+
+# @category: access-control
+"Filtering options for user scopes."
+input UserScopeFilter {
+  "Filter by actors (OR within field)."
+  actorIds: [ID!]
+  "Filter by permission scopes (OR within field)."
+  permissionScopeIds: [ID!]
+  "Filter by target entities (OR within field)."
+  targetEntityIds: [ID!]
+}
+
+# @category: access-control
+"Ordering options for user scopes."
+input UserScopeOrder {
+  "The field to order by."
+  field: UserScopeOrderField!
+  "The direction to order."
+  direction: OrderDirection!
+}
+
+# @category: access-control
+"Fields available for ordering user scopes."
+enum UserScopeOrderField {
+  "Order by ID."
+  ID
+}
+
+# --- Custom Field Filter ---
+
+# @category: custom-fields
+"A filter condition for a custom field value."
+input CustomFieldFilter {
+  "The custom field code to filter by."
+  code: Code!
+  "The comparison operator."
+  operator: FieldOperator!
+  "The value to compare against. Null for `IS_NULL` and `IS_NOT_NULL` operators."
+  value: JSON
+}
+
+#
+# CUSTOM FIELD FILTER VALUE FORMAT
+# --------------------------------
+# The `value` field must match the field's data type:
+#
+#   | FieldType | JSON value type          | Example                        |
+#   |-----------|--------------------------|--------------------------------|
+#   | STRING    | string                   | "hello"                        |
+#   | TEXT      | string                   | "long text..."                 |
+#   | NUMBER    | number                   | 42, 3.14                       |
+#   | BOOLEAN   | boolean                  | true, false                    |
+#   | DATE      | string (YYYY-MM-DD)      | "2024-01-15"                   |
+#   | DATETIME  | string (RFC 3339)        | "2024-01-15T10:30:00Z"         |
+#   | GEOJSON   | object (GeoJSON)         | {"type":"Point","coordinates"} |
+#   | SCHEDULE  | object                   | {...}                          |
+#   | OPTIONS   | string (option code)     | "option_a"                     |
+#   | DEVICE    | string (device ID)       | "019a6a3f-..."                 |
+#   | REFERENCE | string (entity ID)       | "019a6a3f-..."                 |
+#   | CATALOG   | string (item code)       | "ITEM_CODE"                    |
+#   | TAG       | string (tag code)        | "TAG_CODE"                     |
+#
+# OPERATOR RULES:
+#   - IS_NULL / IS_NOT_NULL: `value` must be null or omitted
+#   - IN: `value` must be an array
+#   - All other operators: `value` is a single value (scalar)
+#
+# MULTI-VALUE FIELDS (isMulti=true):
+#   Filter matches if ANY value in the array satisfies the condition.
+#   Example: field=["red","blue"], filter={operator:EQ, value:"red"} → match
+#
+# Invalid `value` format returns VALIDATION_ERROR with status 400.
+#
+
+# =============================================================================
+# 19. MUTATION INPUTS
+# =============================================================================
+
+# @category: custom-fields
+"Input for updating custom field values using a patch model."
+input CustomFieldsPatchInput {
+  "Fields to set or update as a key-value map."
+  set: JSON
+  "Field codes to remove."
+  unset: [Code!]
+}
+
+# --- Device ---
+
+# @category: devices
+"Input for creating a new device."
+input DeviceCreateInput {
+  "The organization that will own the device."
+  organizationId: ID!
+  "The device type ID."
+  typeId: ID!
+  "The device model ID."
+  modelId: ID!
+  "The initial device status ID."
+  statusId: ID!
+  "The device display name."
+  title: String! @trim
+  "The hardware identifiers."
+  identifiers: [DeviceIdentifierInput!]
+  "The custom field values."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: devices
+"Input for updating an existing device."
+input DeviceUpdateInput {
+  "The device ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new device model."
+  modelId: ID
+  "The new device status."
+  statusId: ID
+  "The new display name."
+  title: String @trim
+  "The custom field changes."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: devices
+"Input for deleting a device."
+input DeviceDeleteInput {
+  "The device ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# @category: devices
+"Input for a device identifier."
+input DeviceIdentifierInput {
+  "The type of identifier."
+  type: DeviceIdType!
+  "The identifier value."
+  value: String! @trim
+  "The namespace for uniqueness scope. Null means globally unique."
+  namespace: Code
+}
+
+# @category: devices
+"Input for adding an identifier to a device."
+input DeviceIdentifierAddInput {
+  "The device ID."
+  deviceId: ID!
+  "The identifier details."
+  identifier: DeviceIdentifierInput!
+}
+
+# @category: devices
+"Input for removing an identifier from a device."
+input DeviceIdentifierRemoveInput {
+  "The identifier ID to remove."
+  identifierId: ID!
+}
+
+# --- Asset ---
+
+# @category: assets
+"Input for creating a new asset."
+input AssetCreateInput {
+  "The organization that will own the asset."
+  organizationId: ID!
+  "The asset type ID."
+  typeId: ID!
+  "The asset display name."
+  title: String! @trim
+  "The custom field values."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: assets
+"Input for updating an existing asset."
+input AssetUpdateInput {
+  "The asset ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The custom field changes."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: assets
+"Input for deleting an asset."
+input AssetDeleteInput {
+  "The asset ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# --- AssetGroup ---
+
+# @category: assets/groups
+"Input for creating a new asset group."
+input AssetGroupCreateInput {
+  "The organization that will own the group."
+  organizationId: ID!
+  "The group type ID."
+  typeId: ID!
+  "The group display name."
+  title: String! @trim
+  "The color for UI display."
+  color: HexColorCode
+}
+
+# @category: assets/groups
+"Input for updating an existing asset group."
+input AssetGroupUpdateInput {
+  "The asset group ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new color."
+  color: HexColorCode
+}
+
+# @category: assets/groups
+"Input for deleting an asset group."
+input AssetGroupDeleteInput {
+  "The asset group ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# @category: assets/groups
+"Input for adding an asset to a group."
+input AssetGroupItemAddInput {
+  "The group ID."
+  groupId: ID!
+  "The asset ID to add."
+  assetId: ID!
+}
+
+# @category: assets/groups
+"Input for removing an asset from a group."
+input AssetGroupItemRemoveInput {
+  "The group ID."
+  groupId: ID!
+  "The asset ID to remove."
+  assetId: ID!
+}
+
+# --- GeoObject ---
+
+# @category: geo-objects
+"Input for creating a new geo object."
+input GeoObjectCreateInput {
+  "The organization that will own the geo object."
+  organizationId: ID!
+  "The geo object type ID."
+  typeId: ID!
+  "The geo object display name."
+  title: String! @trim
+  "The GeoJSON geometry."
+  geometry: GeoJSON!
+  "The custom field values."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: geo-objects
+"Input for updating an existing geo object."
+input GeoObjectUpdateInput {
+  "The geo object ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new geometry."
+  geometry: GeoJSON
+  "The custom field changes."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: geo-objects
+"Input for deleting a geo object."
+input GeoObjectDeleteInput {
+  "The geo object ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# --- Schedule ---
+
+# @category: schedules
+"Input for creating a new schedule."
+input ScheduleCreateInput {
+  "The organization that will own the schedule."
+  organizationId: ID!
+  "The schedule type ID."
+  typeId: ID!
+  "The schedule display name."
+  title: String! @trim
+  "The schedule data."
+  scheduleData: ScheduleData!
+  "The custom field values."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: schedules
+"Input for updating an existing schedule."
+input ScheduleUpdateInput {
+  "The schedule ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new schedule data."
+  scheduleData: ScheduleData
+  "The custom field changes."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: schedules
+"Input for deleting a schedule."
+input ScheduleDeleteInput {
+  "The schedule ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# --- Inventory ---
+
+# @category: devices/inventory
+"Input for creating a new inventory."
+input InventoryCreateInput {
+  "The organization that will own the inventory."
+  organizationId: ID!
+  "The display name."
+  title: String! @trim
+}
+
+# @category: devices/inventory
+"Input for updating an existing inventory."
+input InventoryUpdateInput {
+  "The inventory ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+}
+
+# @category: devices/inventory
+"Input for deleting an inventory."
+input InventoryDeleteInput {
+  "The inventory ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# --- Organization ---
+
+# @category: organizations
+"Input for creating a new organization."
+input OrganizationCreateInput {
+  "The parent organization ID. Null for root organizations."
+  parentId: ID
+  "The display name."
+  title: String! @trim
+  "An external system identifier."
+  externalId: String @trim
+  "The feature flags to enable."
+  features: [OrganizationFeature!] = []
+}
+
+# @category: organizations
+"Input for updating an existing organization."
+input OrganizationUpdateInput {
+  "The organization ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new external identifier."
+  externalId: String @trim
+  "The new active status."
+  isActive: Boolean
+  "The new feature flags."
+  features: [OrganizationFeature!]
+}
+
+# @category: organizations
+"Input for deleting an organization and all its data."
+input OrganizationDeleteInput {
+  "The organization ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# --- User Profile ---
+
+# @category: actors/users
+"Input for updating the current user's profile."
+input MyProfileUpdateInput {
+  "The structured name components."
+  name: PersonNameInput!
+}
+
+# @category: actors/users
+"Input for structured person name components."
+input PersonNameInput {
+  "The given name(s)."
+  givenNames: String! @trim
+  "The family name(s)."
+  familyNames: String! @trim
+  "The middle name or patronymic."
+  middleName: String @trim
+}
+
+# --- Member ---
+
+# @category: organizations/members
+"Input for creating a membership."
+input MemberCreateInput {
+  "The organization ID."
+  organizationId: ID!
+  "The user ID to add."
+  userId: ID!
+  "The membership-specific custom fields."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: organizations/members
+"Input for updating a membership."
+input MemberUpdateInput {
+  "The membership ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new active status."
+  isActive: Boolean
+  "The custom field changes."
+  customFields: CustomFieldsPatchInput
+}
+
+# @category: organizations/members
+"Input for removing a membership."
+input MemberRemoveInput {
+  "The membership ID to remove."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# --- Integration ---
+
+# @category: actors/integrations
+"Input for creating a new integration."
+input IntegrationCreateInput {
+  "The organization that will own the integration."
+  organizationId: ID!
+  "The display name."
+  title: String! @trim
+  "A reference to credentials in a secure vault."
+  credentialRef: String
+}
+
+# @category: actors/integrations
+"Input for updating an existing integration."
+input IntegrationUpdateInput {
+  "The integration ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new credential reference."
+  credentialRef: String
+  "The new active status."
+  isActive: Boolean
+}
+
+# @category: actors/integrations
+"Input for deleting an integration."
+input IntegrationDeleteInput {
+  "The integration ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# --- ACL ---
+
+# @category: access-control
+"Input for assigning a role to an actor."
+input RoleAssignInput {
+  "The actor ID (user or integration)."
+  actorId: ID!
+  "The role ID to assign."
+  roleId: ID!
+  "The expiration date. Null means the role is permanent."
+  expireDate: DateTime
+}
+
+# @category: access-control
+"Input for revoking a role from an actor."
+input RoleRevokeInput {
+  "The actor role assignment ID to revoke."
+  actorRoleId: ID!
+}
+
+# @category: access-control
+"Input for granting a permission to a role."
+input PermissionGrantInput {
+  "The role ID."
+  roleId: ID!
+  "The permission scope ID."
+  permissionScopeId: ID!
+  "The specific entity ID. Null means all entities of the type."
+  targetEntityId: ID
+  "The actions to allow."
+  actions: [ActionPermission!]!
+}
+
+# @category: access-control
+"Input for revoking a permission from a role."
+input PermissionRevokeInput {
+  "The role permission ID to revoke."
+  permissionId: ID!
+}
+
+# @category: access-control
+"Input for setting a user scope restriction."
+input UserScopeSetInput {
+  "The actor ID to restrict."
+  actorId: ID!
+  "The permission scope ID."
+  permissionScopeId: ID!
+  "The specific entity ID to allow access to."
+  targetEntityId: ID!
+  "The actions to allow."
+  actions: [ActionPermission!]!
+}
+
+# @category: access-control
+"Input for removing a user scope restriction."
+input UserScopeRemoveInput {
+  "The user scope ID to remove."
+  userScopeId: ID!
+}
+
+# --- Device Relations ---
+
+# @category: devices/inventory
+"Input for linking a device to an inventory. Both device and inventory must belong to the same organization."
+input DeviceInventoryLinkInput {
+  "The device ID."
+  deviceId: ID!
+  "The inventory ID. Must be in the same organization as the device."
+  inventoryId: ID!
+}
+
+# @category: devices/inventory
+"Input for unlinking a device from an inventory."
+input DeviceInventoryUnlinkInput {
+  "The device ID to unlink."
+  deviceId: ID!
+}
+
+# @category: devices
+"Input for creating a relationship between devices."
+input DeviceRelationCreateInput {
+  "The first device ID."
+  firstId: ID!
+  "The second device ID."
+  secondId: ID!
+  "The relationship type ID."
+  typeId: ID!
+}
+
+# @category: devices
+"Input for removing a device relationship."
+input DeviceRelationRemoveInput {
+  "The relationship ID to remove."
+  id: ID!
+}
+
+# --- CustomFieldDefinition ---
+
+# @category: custom-fields
+"Input for creating a custom field definition."
+input CustomFieldDefinitionCreateInput {
+  "The organization ID."
+  organizationId: ID!
+  "The owner catalog item ID (EntityType or a specific type like AssetType)."
+  ownerCatalogItemId: ID!
+  "The target entity type ID."
+  targetEntityTypeId: ID!
+  "The machine-readable code."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The description."
+  description: String @trim
+  "The data type. Immutable after creation."
+  fieldType: FieldType!
+  "The display order."
+  order: Int = 0
+  "The type-specific parameters. Exactly one variant must be provided."
+  params: FieldParamsInput!
+}
+
+# @category: custom-fields
+"Input for updating a custom field definition. Note: `fieldType` cannot be changed."
+input CustomFieldDefinitionUpdateInput {
+  "The definition ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new description."
+  description: String @trim
+  "The new display order."
+  order: Int
+  "The updated parameters. Only `isRequired` and type-specific fields can be changed."
+  params: FieldParamsInput
+}
+
+# @category: custom-fields
+"Input for deleting a custom field definition."
+input CustomFieldDefinitionDeleteInput {
+  "The definition ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+
+# @category: custom-fields
+"Field parameters input. Exactly one field must be provided."
+input FieldParamsInput @oneOf {
+  "Parameters for STRING field type."
+  string: StringFieldParamsInput
+  "Parameters for TEXT field type."
+  text: TextFieldParamsInput
+  "Parameters for NUMBER field type."
+  number: NumberFieldParamsInput
+  "Parameters for BOOLEAN field type."
+  boolean: BooleanFieldParamsInput
+  "Parameters for DATE field type."
+  date: DateFieldParamsInput
+  "Parameters for DATETIME field type."
+  datetime: DateTimeFieldParamsInput
+  "Parameters for GEOJSON field type."
+  geojson: GeoJsonFieldParamsInput
+  "Parameters for SCHEDULE field type."
+  schedule: ScheduleFieldParamsInput
+  "Parameters for OPTIONS field type."
+  options: OptionsFieldParamsInput
+  "Parameters for DEVICE field type."
+  device: DeviceFieldParamsInput
+  "Parameters for REFERENCE field type."
+  reference: ReferenceFieldParamsInput
+  "Parameters for CATALOG field type."
+  catalog: CatalogFieldParamsInput
+  "Parameters for TAG field type."
+  tag: TagFieldParamsInput
+}
+
+# @category: custom-fields
+"Parameters for STRING field type."
+input StringFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "The minimum character length."
+  minLength: Int
+  "The maximum character length."
+  maxLength: Int
+  "The default value."
+  defaultValue: String
+  "Whether to trim whitespace."
+  trim: Boolean = true
+}
+
+# @category: custom-fields
+"Parameters for TEXT field type."
+input TextFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "The maximum character length."
+  maxLength: Int
+  "The default value."
+  defaultValue: String
+  "Whether to trim whitespace."
+  trim: Boolean = false
+}
+
+# @category: custom-fields
+"Parameters for NUMBER field type."
+input NumberFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "The minimum allowed value."
+  min: Float
+  "The maximum allowed value."
+  max: Float
+  "The decimal precision."
+  precision: Int
+  "The default value."
+  defaultValue: Float
+}
+
+# @category: custom-fields
+"Parameters for BOOLEAN field type."
+input BooleanFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "The default value."
+  defaultValue: Boolean
+}
+
+# @category: custom-fields
+"Parameters for DATE field type."
+input DateFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "The default value."
+  defaultValue: Date
+}
+
+# @category: custom-fields
+"Parameters for DATETIME field type."
+input DateTimeFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "The default value."
+  defaultValue: DateTime
+}
+
+# @category: custom-fields
+"Parameters for GEOJSON field type."
+input GeoJsonFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "The allowed geometry types. Null means all types are allowed."
+  allowedTypes: [GeoJsonGeometryType!]
+}
+
+# @category: custom-fields
+"Parameters for SCHEDULE field type."
+input ScheduleFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+}
+
+# @category: custom-fields
+"Parameters for OPTIONS field type."
+input OptionsFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "Whether multiple options can be selected."
+  isMulti: Boolean = false
+  "The available options."
+  options: [FieldOptionInput!]!
+  "The default option code."
+  defaultValue: Code
+}
+
+# @category: custom-fields
+"Input for an option definition."
+input FieldOptionInput {
+  "The unique code."
+  code: Code!
+  "The display label."
+  label: String!
+  "The description."
+  description: String
+  "Whether this option is archived."
+  isArchived: Boolean = false
+}
+
+# @category: custom-fields
+"Parameters for DEVICE field type."
+input DeviceFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "Whether multiple devices can be selected."
+  isMulti: Boolean = false
+}
+
+# @category: custom-fields
+"Parameters for REFERENCE field type."
+input ReferenceFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "Whether multiple references can be selected."
+  isMulti: Boolean = false
+  "The entity type code that can be referenced."
+  refEntityTypeCode: Code!
+}
+
+# @category: custom-fields
+"Parameters for CATALOG field type."
+input CatalogFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "Whether multiple items can be selected."
+  isMulti: Boolean = false
+  "The catalog code that items can be selected from."
+  refCatalogCode: Code!
+  "The default item code."
+  defaultValue: Code
+}
+
+# @category: custom-fields
+"Parameters for TAG field type."
+input TagFieldParamsInput {
+  "Whether a value is required."
+  isRequired: Boolean!
+  "Whether multiple tags can be selected."
+  isMulti: Boolean = false
+  "The default tag code."
+  defaultValue: Code
+}
+
+# --- Catalog Item CRUD Inputs ---
+
+# @category: catalogs/catalog-items
+"Display properties for catalog items."
+input CatalogItemMetaInput {
+  "The description."
+  description: String @trim
+  "Whether the item is hidden from regular UI lists."
+  hidden: Boolean
+  "The text color for UI display."
+  textColor: HexColorCode
+  "The background color for UI display."
+  backgroundColor: HexColorCode
+  "A relative URL to the icon."
+  icon: String
+}
+
+# @category: actors/users
+"Input for creating a user catalog item."
+input UserCatalogItemCreateInput {
+  "The organization that will own the item."
+  organizationId: ID!
+  "The catalog to add the item to."
+  catalogId: ID!
+  "The machine-readable code, unique within the catalog and organization."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The display order."
+  order: Int = 0
+  "The parent item ID for hierarchical catalogs."
+  parentId: ID
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: actors/users
+"Input for updating a user catalog item."
+input UserCatalogItemUpdateInput {
+  "The item ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "The new parent ID for hierarchical items."
+  parentId: ID
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: devices
+"Input for creating a device type."
+input DeviceTypeCreateInput {
+  "The organization that will own the item."
+  organizationId: ID!
+  "The machine-readable code."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The display order."
+  order: Int = 0
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: devices
+"Input for updating a device type."
+input DeviceTypeUpdateInput {
+  "The item ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: devices
+"Input for creating a device status."
+input DeviceStatusCreateInput {
+  "The organization that will own the item."
+  organizationId: ID!
+  "The machine-readable code."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The display order."
+  order: Int = 0
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: devices
+"Input for updating a device status."
+input DeviceStatusUpdateInput {
+  "The item ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: assets
+"Input for creating an asset type."
+input AssetTypeCreateInput {
+  "The organization that will own the item."
+  organizationId: ID!
+  "The machine-readable code."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The display order."
+  order: Int = 0
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: assets
+"Input for updating an asset type."
+input AssetTypeUpdateInput {
+  "The item ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: assets/groups
+"Input for creating an asset group type."
+input AssetGroupTypeCreateInput {
+  "The organization that will own the item."
+  organizationId: ID!
+  "The machine-readable code."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The display order."
+  order: Int = 0
+  "The allowed asset types with optional limits."
+  allowedAssetTypes: [AssetGroupTypeConstraintInput!]
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: assets/groups
+"Input for updating an asset group type."
+input AssetGroupTypeUpdateInput {
+  "The item ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "Replace allowed asset types. Null means no change."
+  allowedAssetTypes: [AssetGroupTypeConstraintInput!]
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: assets/groups
+"Input for a constraint defining allowed asset types in an asset group type."
+input AssetGroupTypeConstraintInput {
+  "The asset type ID."
+  assetTypeId: ID!
+  "The maximum assets of this type. Null means unlimited."
+  maxItems: Int
+}
+
+# @category: geo-objects
+"Input for creating a geo object type."
+input GeoObjectTypeCreateInput {
+  "The organization that will own the item."
+  organizationId: ID!
+  "The machine-readable code."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The display order."
+  order: Int = 0
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: geo-objects
+"Input for updating a geo object type."
+input GeoObjectTypeUpdateInput {
+  "The item ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: schedules
+"Input for creating a schedule type."
+input ScheduleTypeCreateInput {
+  "The organization that will own the item."
+  organizationId: ID!
+  "The machine-readable code."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The display order."
+  order: Int = 0
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: schedules
+"Input for updating a schedule type."
+input ScheduleTypeUpdateInput {
+  "The item ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: catalogs/tags
+"Input for creating a tag."
+input TagCreateInput {
+  "The organization that will own the item."
+  organizationId: ID!
+  "The machine-readable code."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The display order."
+  order: Int = 0
+  "The entity types this tag can be applied to. Empty means universal."
+  entityTypeIds: [ID!]
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: catalogs/tags
+"Input for updating a tag."
+input TagUpdateInput {
+  "The item ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "Replace entity types. Null means no change, empty means universal."
+  entityTypeIds: [ID!]
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: access-control
+"Input for creating a role."
+input RoleCreateInput {
+  "The organization that will own the item."
+  organizationId: ID!
+  "The machine-readable code."
+  code: Code!
+  "The display name."
+  title: String! @trim
+  "The display order."
+  order: Int = 0
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: access-control
+"Input for updating a role."
+input RoleUpdateInput {
+  "The item ID to update."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+  "The new display name."
+  title: String @trim
+  "The new display order."
+  order: Int
+  "The display properties."
+  meta: CatalogItemMetaInput
+}
+
+# @category: catalogs/catalog-items
+"Input for deleting a catalog item."
+input CatalogItemDeleteInput {
+  "The catalog item ID to delete."
+  id: ID!
+  "The current version for optimistic locking."
+  version: Int!
+}
+# =============================================================================
+# 20. QUERY
+# =============================================================================
+
+"The root query type."
+type Query {
+  # @category: common
+  "Retrieves any entity by its globally unique identifier."
+  node("The ID of the entity to retrieve." id: ID!): Node
+
+  # @category: common
+  "Retrieves multiple entities by their globally unique identifiers. Returns items in the same order as the input IDs."
+  nodes("The IDs of the entities to retrieve." ids: [ID!]!): [Node]!
+
+  # --- Catalogs ---
+
+  # @category: catalogs/catalog-items
+  "Retrieves a catalog by its ID."
+  catalog("The ID of the catalog to retrieve." id: ID!): Catalog
+
+  # @category: catalogs/catalog-items
+  "Lists catalogs for an organization."
+  catalogs(
+    "The organization to retrieve catalogs for."
+    organizationId: ID!
+    "Filtering options for the returned catalogs."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned catalogs."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): CatalogConnection!
+
+  # --- Org-scoped Catalog Items ---
+
+  # @category: devices
+  "Lists device types for an organization."
+  deviceTypes(
+    "The organization to retrieve device types for."
+    organizationId: ID!
+    "Filtering options for the returned device types."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned device types."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceTypeConnection!
+
+  # @category: devices
+  "Lists device statuses for an organization."
+  deviceStatuses(
+    "The organization to retrieve device statuses for."
+    organizationId: ID!
+    "Filtering options for the returned device statuses."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned device statuses."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): DeviceStatusConnection!
+
+  # @category: devices
+  "Lists device models with optional vendor filter."
+  deviceModels(
+    "The organization to retrieve device models for."
+    organizationId: ID!
+    "Filtering options for the returned device models."
+    filter: DeviceModelFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned device models."
+    orderBy: CatalogItemOrder = { field: TITLE, direction: ASC }
+  ): DeviceModelConnection!
+
+  # @category: assets
+  "Lists asset types for an organization."
+  assetTypes(
+    "The organization to retrieve asset types for."
+    organizationId: ID!
+    "Filtering options for the returned asset types."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned asset types."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): AssetTypeConnection!
+
+  # @category: assets/groups
+  "Lists asset group types for an organization."
+  assetGroupTypes(
+    "The organization to retrieve asset group types for."
+    organizationId: ID!
+    "Filtering options for the returned asset group types."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned asset group types."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): AssetGroupTypeConnection!
+
+  # @category: geo-objects
+  "Lists geo object types for an organization."
+  geoObjectTypes(
+    "The organization to retrieve geo object types for."
+    organizationId: ID!
+    "Filtering options for the returned geo object types."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned geo object types."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): GeoObjectTypeConnection!
+
+  # @category: schedules
+  "Lists schedule types for an organization."
+  scheduleTypes(
+    "The organization to retrieve schedule types for."
+    organizationId: ID!
+    "Filtering options for the returned schedule types."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned schedule types."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): ScheduleTypeConnection!
+
+  # @category: access-control
+  "Lists roles for an organization."
+  roles(
+    "The organization to retrieve roles for."
+    organizationId: ID!
+    "Filtering options for the returned roles."
+    filter: CatalogItemFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned roles."
+    orderBy: CatalogItemOrder = { field: ORDER, direction: ASC }
+  ): RoleConnection!
+
+  # @category: catalogs/tags
+  "Lists tags for an organization."
+  tags(
+    "The organization to retrieve tags for."
+    organizationId: ID!
+    "Filtering options for the returned tags."
+    filter: TagFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned tags."
+    orderBy: CatalogItemOrder = { field: TITLE, direction: ASC }
+  ): TagConnection!
+
+  # --- Organizations ---
+
+  # @category: organizations
+  "Retrieves an organization by its ID."
+  organization("The ID of the organization to retrieve." id: ID!): Organization
+
+  # @category: organizations
+  "Lists organizations."
+  organizations(
+    "Filtering options for the returned organizations."
+    filter: OrganizationFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned organizations."
+    orderBy: OrganizationOrder = { field: TITLE, direction: ASC }
+  ): OrganizationConnection!
+
+  # --- Actors ---
+
+  # @category: actors
+  "Retrieves the currently authenticated actor."
+  me: Actor!
+
+  # @category: organizations/members
+  "Retrieves a member by its ID."
+  member("The ID of the member to retrieve." id: ID!): Member
+
+  # @category: organizations/members
+  "Lists members of an organization."
+  members(
+    "The organization to retrieve members for."
+    organizationId: ID!
+    "Filtering options for the returned members."
+    filter: MemberFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned members."
+    orderBy: MemberOrder = { field: ASSIGNED_AT, direction: DESC }
+  ): MemberConnection!
+
+  # @category: actors/integrations
+  "Retrieves an integration by its ID."
+  integration("The ID of the integration to retrieve." id: ID!): Integration
+
+  # @category: actors/integrations
+  "Lists integrations for an organization."
+  integrations(
+    "The organization to retrieve integrations for."
+    organizationId: ID!
+    "Filtering options for the returned integrations."
+    filter: IntegrationFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned integrations."
+    orderBy: IntegrationOrder = { field: TITLE, direction: ASC }
+  ): IntegrationConnection!
+
+  # --- Business Entities ---
+
+  # @category: devices
+  "Retrieves a device by its ID."
+  device("The ID of the device to retrieve." id: ID!): Device
+
+  # @category: devices
+  "Lists devices for an organization."
+  devices(
+    "The organization to retrieve devices for."
+    organizationId: ID!
+    "Filtering options for the returned devices."
+    filter: DeviceFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned devices."
+    orderBy: DeviceOrder = { field: TITLE, direction: ASC }
+  ): DeviceConnection!
+
+  # @category: assets
+  "Retrieves an asset by its ID."
+  asset("The ID of the asset to retrieve." id: ID!): Asset
+
+  # @category: assets
+  "Lists assets for an organization."
+  assets(
+    "The organization to retrieve assets for."
+    organizationId: ID!
+    "Filtering options for the returned assets."
+    filter: AssetFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned assets."
+    orderBy: AssetOrder = { field: TITLE, direction: ASC }
+  ): AssetConnection!
+
+  # @category: assets/groups
+  "Retrieves an asset group by its ID."
+  assetGroup("The ID of the asset group to retrieve." id: ID!): AssetGroup
+
+  # @category: assets/groups
+  "Lists asset groups for an organization."
+  assetGroups(
+    "The organization to retrieve asset groups for."
+    organizationId: ID!
+    "Filtering options for the returned asset groups."
+    filter: AssetGroupFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned asset groups."
+    orderBy: AssetGroupOrder = { field: TITLE, direction: ASC }
+  ): AssetGroupConnection!
+
+  # @category: devices/inventory
+  "Retrieves an inventory by its ID."
+  inventory("The ID of the inventory to retrieve." id: ID!): Inventory
+
+  # @category: devices/inventory
+  "Lists inventories for an organization."
+  inventories(
+    "The organization to retrieve inventories for."
+    organizationId: ID!
+    "Filtering options for the returned inventories."
+    filter: InventoryFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned inventories."
+    orderBy: InventoryOrder = { field: TITLE, direction: ASC }
+  ): InventoryConnection!
+
+  # @category: geo-objects
+  "Retrieves a geo object by its ID."
+  geoObject("The ID of the geo object to retrieve." id: ID!): GeoObject
+
+  # @category: geo-objects
+  "Lists geo objects for an organization."
+  geoObjects(
+    "The organization to retrieve geo objects for."
+    organizationId: ID!
+    "Filtering options for the returned geo objects."
+    filter: GeoObjectFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned geo objects."
+    orderBy: GeoObjectOrder = { field: TITLE, direction: ASC }
+  ): GeoObjectConnection!
+
+  # @category: schedules
+  "Retrieves a schedule by its ID."
+  schedule("The ID of the schedule to retrieve." id: ID!): Schedule
+
+  # @category: schedules
+  "Lists schedules for an organization."
+  schedules(
+    "The organization to retrieve schedules for."
+    organizationId: ID!
+    "Filtering options for the returned schedules."
+    filter: ScheduleFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned schedules."
+    orderBy: ScheduleOrder = { field: TITLE, direction: ASC }
+  ): ScheduleConnection!
+
+  # --- Audit ---
+
+  # @category: audit
+  "Lists audit events for an organization."
+  auditEvents(
+    "The organization to retrieve audit events for."
+    organizationId: ID!
+    "Filtering options for the returned audit events."
+    filter: AuditEventFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned audit events."
+    orderBy: AuditEventOrder = { field: OCCURRED_AT, direction: DESC }
+  ): AuditEventConnection!
+
+  # @category: audit
+  "Retrieves the change history for any entity."
+  entityHistory(
+    "The ID of the entity to retrieve history for."
+    entityId: ID!
+    "Filtering options for the returned audit events."
+    filter: AuditEventFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned audit events."
+    orderBy: AuditEventOrder = { field: OCCURRED_AT, direction: DESC }
+  ): AuditEventConnection!
+
+  # --- Access Control ---
+
+  # @category: access-control
+  "Lists actor role assignments for an organization."
+  actorRoles(
+    "The organization to retrieve actor roles for."
+    organizationId: ID!
+    "Filtering options for the returned actor roles."
+    filter: ActorRoleFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned actor roles."
+    orderBy: ActorRoleOrder = { field: ASSIGNED_AT, direction: DESC }
+  ): ActorRoleConnection!
+
+  # @category: access-control
+  "Lists role permissions for an organization."
+  rolePermissions(
+    "The organization to retrieve role permissions for."
+    organizationId: ID!
+    "Filtering options for the returned role permissions."
+    filter: RolePermissionFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned role permissions."
+    orderBy: RolePermissionOrder = { field: GRANTED_AT, direction: DESC }
+  ): RolePermissionConnection!
+
+  # @category: access-control
+  "Lists user scope restrictions for an organization."
+  userScopes(
+    "The organization to retrieve user scopes for."
+    organizationId: ID!
+    "Filtering options for the returned user scopes."
+    filter: UserScopeFilter
+    "The first `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    first: Int
+    "The elements that come after the specified [cursor](https://docs.navixy.com/api/pagination)."
+    after: String
+    "The last `n` elements from the [paginated list](https://docs.navixy.com/api/pagination)."
+    last: Int
+    "The elements that come before the specified [cursor](https://docs.navixy.com/api/pagination)."
+    before: String
+    "The ordering options for the returned user scopes."
+    orderBy: UserScopeOrder = { field: ID, direction: ASC }
+  ): UserScopeConnection!
+}
+# =============================================================================
+# 21. MUTATION
+# =============================================================================
+
+# --- Payloads ---
+
+# @category: common
+"The result of a delete mutation."
+type DeletePayload {
+  "The ID of the deleted entity."
+  deletedId: ID!
+}
+
+# @category: devices
+"The result of a device mutation."
+type DevicePayload {
+  "The created or updated device."
+  device: Device!
+}
+
+# @category: assets
+"The result of an asset mutation."
+type AssetPayload {
+  "The created or updated asset."
+  asset: Asset!
+}
+
+# @category: assets/groups
+"The result of an asset group mutation."
+type AssetGroupPayload {
+  "The created or updated asset group."
+  assetGroup: AssetGroup!
+}
+
+# @category: geo-objects
+"The result of a geo object mutation."
+type GeoObjectPayload {
+  "The created or updated geo object."
+  geoObject: GeoObject!
+}
+
+# @category: schedules
+"The result of a schedule mutation."
+type SchedulePayload {
+  "The created or updated schedule."
+  schedule: Schedule!
+}
+
+# @category: devices/inventory
+"The result of an inventory mutation."
+type InventoryPayload {
+  "The created or updated inventory."
+  inventory: Inventory!
+}
+
+# @category: organizations
+"The result of an organization mutation."
+type OrganizationPayload {
+  "The created or updated organization."
+  organization: Organization!
+}
+
+# @category: actors/users
+"The result of a user profile mutation."
+type UserPayload {
+  "The updated user."
+  user: User!
+}
+
+# @category: organizations/members
+"The result of a membership mutation."
+type MemberPayload {
+  "The created or updated membership."
+  member: Member!
+}
+
+# @category: actors/integrations
+"The result of an integration mutation."
+type IntegrationPayload {
+  "The created or updated integration."
+  integration: Integration!
+}
+
+# @category: custom-fields
+"The result of a custom field definition mutation."
+type CustomFieldDefinitionPayload {
+  "The created or updated custom field definition."
+  customFieldDefinition: CustomFieldDefinition!
+}
+
+# @category: devices
+"The result of a device identifier mutation."
+type DeviceIdentifierPayload {
+  "The added device identifier."
+  deviceIdentifier: DeviceIdentifier!
+}
+
+# @category: assets/groups
+"The result of an asset group item mutation."
+type AssetGroupItemPayload {
+  "The created group membership record."
+  assetGroupItem: AssetGroupItem!
+}
+
+# @category: devices/inventory
+"The result of a device inventory link mutation."
+type DeviceInventoryRelationPayload {
+  "The created inventory assignment."
+  deviceInventoryRelation: DeviceInventoryRelation!
+}
+
+# @category: devices
+"The result of a device relation mutation."
+type DeviceRelationPayload {
+  "The created device relationship."
+  deviceRelation: DeviceRelation!
+}
+
+# @category: access-control
+"The result of a role assignment mutation."
+type ActorRolePayload {
+  "The created role assignment."
+  actorRole: ActorRole!
+}
+
+# @category: access-control
+"The result of a permission grant mutation."
+type RolePermissionPayload {
+  "The created permission."
+  rolePermission: RolePermission!
+}
+
+# @category: access-control
+"The result of a user scope mutation."
+type UserScopePayload {
+  "The created user scope restriction."
+  userScope: UserScope!
+}
+
+# --- Catalog Item Payloads ---
+
+# @category: devices
+"The result of a device type mutation."
+type DeviceTypePayload {
+  "The created or updated device type."
+  deviceType: DeviceType!
+}
+
+# @category: devices
+"The result of a device status mutation."
+type DeviceStatusPayload {
+  "The created or updated device status."
+  deviceStatus: DeviceStatus!
+}
+
+# @category: assets
+"The result of an asset type mutation."
+type AssetTypePayload {
+  "The created or updated asset type."
+  assetType: AssetType!
+}
+
+# @category: assets/groups
+"The result of an asset group type mutation."
+type AssetGroupTypePayload {
+  "The created or updated asset group type."
+  assetGroupType: AssetGroupType!
+}
+
+# @category: geo-objects
+"The result of a geo object type mutation."
+type GeoObjectTypePayload {
+  "The created or updated geo object type."
+  geoObjectType: GeoObjectType!
+}
+
+# @category: schedules
+"The result of a schedule type mutation."
+type ScheduleTypePayload {
+  "The created or updated schedule type."
+  scheduleType: ScheduleType!
+}
+
+# @category: catalogs/tags
+"The result of a tag mutation."
+type TagPayload {
+  "The created or updated tag."
+  tag: Tag!
+}
+
+# @category: access-control
+"The result of a role mutation."
+type RolePayload {
+  "The created or updated role."
+  role: Role!
+}
+
+# @category: actors/users
+"The result of a user catalog item mutation."
+type UserCatalogItemPayload {
+  "The created or updated user catalog item."
+  item: UserCatalogItem!
+}
+
+# --- Mutations ---
+
+"The root mutation type."
+type Mutation {
+  # --- Devices ---
+
+  # @category: devices
+  "Creates a new device."
+  deviceCreate(
+    "The input fields for creating the device."
+    input: DeviceCreateInput!
+  ): DevicePayload
+
+  # @category: devices
+  "Updates an existing device."
+  deviceUpdate(
+    "The input fields for updating the device."
+    input: DeviceUpdateInput!
+  ): DevicePayload
+
+  # @category: devices
+  "Deletes a device."
+  deviceDelete(
+    "The input fields for deleting the device."
+    input: DeviceDeleteInput!
+  ): DeletePayload
+
+  # @category: devices
+  "Adds an identifier to a device."
+  deviceIdentifierAdd(
+    "The input fields for adding the identifier."
+    input: DeviceIdentifierAddInput!
+  ): DeviceIdentifierPayload
+
+  # @category: devices
+  "Removes an identifier from a device."
+  deviceIdentifierRemove(
+    "The input fields for removing the identifier."
+    input: DeviceIdentifierRemoveInput!
+  ): DeletePayload
+
+  # --- Assets ---
+
+  # @category: assets
+  "Creates a new asset."
+  assetCreate(
+    "The input fields for creating the asset."
+    input: AssetCreateInput!
+  ): AssetPayload
+
+  # @category: assets
+  "Updates an existing asset."
+  assetUpdate(
+    "The input fields for updating the asset."
+    input: AssetUpdateInput!
+  ): AssetPayload
+
+  # @category: assets
+  "Deletes an asset."
+  assetDelete(
+    "The input fields for deleting the asset."
+    input: AssetDeleteInput!
+  ): DeletePayload
+
+  # --- Asset Groups ---
+
+  # @category: assets/groups
+  "Creates a new asset group."
+  assetGroupCreate(
+    "The input fields for creating the asset group."
+    input: AssetGroupCreateInput!
+  ): AssetGroupPayload
+
+  # @category: assets/groups
+  "Updates an existing asset group."
+  assetGroupUpdate(
+    "The input fields for updating the asset group."
+    input: AssetGroupUpdateInput!
+  ): AssetGroupPayload
+
+  # @category: assets/groups
+  "Deletes an asset group."
+  assetGroupDelete(
+    "The input fields for deleting the asset group."
+    input: AssetGroupDeleteInput!
+  ): DeletePayload
+
+  # @category: assets/groups
+  "Adds an asset to a group."
+  assetGroupItemAdd(
+    "The input fields for adding the asset to the group."
+    input: AssetGroupItemAddInput!
+  ): AssetGroupItemPayload
+
+  # @category: assets/groups
+  "Removes an asset from a group."
+  assetGroupItemRemove(
+    "The input fields for removing the asset from the group."
+    input: AssetGroupItemRemoveInput!
+  ): DeletePayload
+
+  # --- GeoObjects ---
+
+  # @category: geo-objects
+  "Creates a new geo object."
+  geoObjectCreate(
+    "The input fields for creating the geo object."
+    input: GeoObjectCreateInput!
+  ): GeoObjectPayload
+
+  # @category: geo-objects
+  "Updates an existing geo object."
+  geoObjectUpdate(
+    "The input fields for updating the geo object."
+    input: GeoObjectUpdateInput!
+  ): GeoObjectPayload
+
+  # @category: geo-objects
+  "Deletes a geo object."
+  geoObjectDelete(
+    "The input fields for deleting the geo object."
+    input: GeoObjectDeleteInput!
+  ): DeletePayload
+
+  # --- Schedules ---
+
+  # @category: schedules
+  "Creates a new schedule."
+  scheduleCreate(
+    "The input fields for creating the schedule."
+    input: ScheduleCreateInput!
+  ): SchedulePayload
+
+  # @category: schedules
+  "Updates an existing schedule."
+  scheduleUpdate(
+    "The input fields for updating the schedule."
+    input: ScheduleUpdateInput!
+  ): SchedulePayload
+
+  # @category: schedules
+  "Deletes a schedule."
+  scheduleDelete(
+    "The input fields for deleting the schedule."
+    input: ScheduleDeleteInput!
+  ): DeletePayload
+
+  # --- Inventories ---
+
+  # @category: devices/inventory
+  "Creates a new inventory."
+  inventoryCreate(
+    "The input fields for creating the inventory."
+    input: InventoryCreateInput!
+  ): InventoryPayload
+
+  # @category: devices/inventory
+  "Updates an existing inventory."
+  inventoryUpdate(
+    "The input fields for updating the inventory."
+    input: InventoryUpdateInput!
+  ): InventoryPayload
+
+  # @category: devices/inventory
+  "Deletes an inventory."
+  inventoryDelete(
+    "The input fields for deleting the inventory."
+    input: InventoryDeleteInput!
+  ): DeletePayload
+
+  # --- Organizations ---
+
+  # @category: organizations
+  "Creates a new organization."
+  organizationCreate(
+    "The input fields for creating the organization."
+    input: OrganizationCreateInput!
+  ): OrganizationPayload
+
+  # @category: organizations
+  "Updates an existing organization."
+  organizationUpdate(
+    "The input fields for updating the organization."
+    input: OrganizationUpdateInput!
+  ): OrganizationPayload
+
+  # @category: organizations
+  "Deletes an organization and all its data."
+  organizationDelete(
+    "The input fields for deleting the organization."
+    input: OrganizationDeleteInput!
+  ): DeletePayload
+
+  # --- User Profile ---
+
+  # @category: actors/users
+  "Updates the current user's profile (name only)."
+  myProfileUpdate(
+    "The input fields for updating the profile."
+    input: MyProfileUpdateInput!
+  ): UserPayload
+
+  # --- Members ---
+
+  # @category: organizations/members
+  "Adds a user to an organization as a member."
+  memberCreate(
+    "The input fields for creating the membership."
+    input: MemberCreateInput!
+  ): MemberPayload
+
+  # @category: organizations/members
+  "Updates a membership."
+  memberUpdate(
+    "The input fields for updating the membership."
+    input: MemberUpdateInput!
+  ): MemberPayload
+
+  # @category: organizations/members
+  "Removes a user from an organization."
+  memberRemove(
+    "The input fields for removing the membership."
+    input: MemberRemoveInput!
+  ): DeletePayload
+
+  # --- Integrations ---
+
+  # @category: actors/integrations
+  "Creates a new integration."
+  integrationCreate(
+    "The input fields for creating the integration."
+    input: IntegrationCreateInput!
+  ): IntegrationPayload
+
+  # @category: actors/integrations
+  "Updates an existing integration."
+  integrationUpdate(
+    "The input fields for updating the integration."
+    input: IntegrationUpdateInput!
+  ): IntegrationPayload
+
+  # @category: actors/integrations
+  "Deletes an integration."
+  integrationDelete(
+    "The input fields for deleting the integration."
+    input: IntegrationDeleteInput!
+  ): DeletePayload
+
+  # --- Access Control ---
+
+  # @category: access-control
+  "Assigns a role to an actor."
+  roleAssign(
+    "The input fields for assigning the role."
+    input: RoleAssignInput!
+  ): ActorRolePayload
+
+  # @category: access-control
+  "Revokes a role from an actor."
+  roleRevoke(
+    "The input fields for revoking the role."
+    input: RoleRevokeInput!
+  ): DeletePayload
+
+  # @category: access-control
+  "Grants a permission to a role."
+  permissionGrant(
+    "The input fields for granting the permission."
+    input: PermissionGrantInput!
+  ): RolePermissionPayload
+
+  # @category: access-control
+  "Revokes a permission from a role."
+  permissionRevoke(
+    "The input fields for revoking the permission."
+    input: PermissionRevokeInput!
+  ): DeletePayload
+
+  # @category: access-control
+  "Sets a user scope restriction."
+  userScopeSet(
+    "The input fields for setting the user scope."
+    input: UserScopeSetInput!
+  ): UserScopePayload
+
+  # @category: access-control
+  "Removes a user scope restriction."
+  userScopeRemove(
+    "The input fields for removing the user scope."
+    input: UserScopeRemoveInput!
+  ): DeletePayload
+
+  # --- Device Relations ---
+
+  # @category: devices/inventory
+  "Links a device to an inventory."
+  deviceInventoryLink(
+    "The input fields for linking the device."
+    input: DeviceInventoryLinkInput!
+  ): DeviceInventoryRelationPayload
+
+  # @category: devices/inventory
+  "Unlinks a device from an inventory."
+  deviceInventoryUnlink(
+    "The input fields for unlinking the device."
+    input: DeviceInventoryUnlinkInput!
+  ): DeletePayload
+
+  # @category: devices
+  "Creates a relationship between devices."
+  deviceRelationCreate(
+    "The input fields for creating the relationship."
+    input: DeviceRelationCreateInput!
+  ): DeviceRelationPayload
+
+  # @category: devices
+  "Removes a device relationship."
+  deviceRelationRemove(
+    "The input fields for removing the relationship."
+    input: DeviceRelationRemoveInput!
+  ): DeletePayload
+
+  # --- Custom Fields ---
+
+  # @category: custom-fields
+  "Creates a custom field definition."
+  customFieldDefinitionCreate(
+    "The input fields for creating the definition."
+    input: CustomFieldDefinitionCreateInput!
+  ): CustomFieldDefinitionPayload
+
+  # @category: custom-fields
+  "Updates a custom field definition. Note: `fieldType` cannot be changed."
+  customFieldDefinitionUpdate(
+    "The input fields for updating the definition."
+    input: CustomFieldDefinitionUpdateInput!
+  ): CustomFieldDefinitionPayload
+
+  # @category: custom-fields
+  "Deletes a custom field definition."
+  customFieldDefinitionDelete(
+    "The input fields for deleting the definition."
+    input: CustomFieldDefinitionDeleteInput!
+  ): DeletePayload
+
+  # --- Catalog Item CRUD ---
+
+  # @category: devices
+  "Creates a new device type."
+  deviceTypeCreate(
+    "The input fields for creating the device type."
+    input: DeviceTypeCreateInput!
+  ): DeviceTypePayload
+
+  # @category: devices
+  "Updates a device type."
+  deviceTypeUpdate(
+    "The input fields for updating the device type."
+    input: DeviceTypeUpdateInput!
+  ): DeviceTypePayload
+
+  # @category: devices
+  "Deletes a device type."
+  deviceTypeDelete(
+    "The input fields for deleting the device type."
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: devices
+  "Creates a new device status."
+  deviceStatusCreate(
+    "The input fields for creating the device status."
+    input: DeviceStatusCreateInput!
+  ): DeviceStatusPayload
+
+  # @category: devices
+  "Updates a device status."
+  deviceStatusUpdate(
+    "The input fields for updating the device status."
+    input: DeviceStatusUpdateInput!
+  ): DeviceStatusPayload
+
+  # @category: devices
+  "Deletes a device status."
+  deviceStatusDelete(
+    "The input fields for deleting the device status."
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: assets
+  "Creates a new asset type."
+  assetTypeCreate(
+    "The input fields for creating the asset type."
+    input: AssetTypeCreateInput!
+  ): AssetTypePayload
+
+  # @category: assets
+  "Updates an asset type."
+  assetTypeUpdate(
+    "The input fields for updating the asset type."
+    input: AssetTypeUpdateInput!
+  ): AssetTypePayload
+
+  # @category: assets
+  "Deletes an asset type."
+  assetTypeDelete(
+    "The input fields for deleting the asset type."
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: assets/groups
+  "Creates a new asset group type."
+  assetGroupTypeCreate(
+    "The input fields for creating the asset group type."
+    input: AssetGroupTypeCreateInput!
+  ): AssetGroupTypePayload
+
+  # @category: assets/groups
+  "Updates an asset group type."
+  assetGroupTypeUpdate(
+    "The input fields for updating the asset group type."
+    input: AssetGroupTypeUpdateInput!
+  ): AssetGroupTypePayload
+
+  # @category: assets/groups
+  "Deletes an asset group type."
+  assetGroupTypeDelete(
+    "The input fields for deleting the asset group type."
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: geo-objects
+  "Creates a new geo object type."
+  geoObjectTypeCreate(
+    "The input fields for creating the geo object type."
+    input: GeoObjectTypeCreateInput!
+  ): GeoObjectTypePayload
+
+  # @category: geo-objects
+  "Updates a geo object type."
+  geoObjectTypeUpdate(
+    "The input fields for updating the geo object type."
+    input: GeoObjectTypeUpdateInput!
+  ): GeoObjectTypePayload
+
+  # @category: geo-objects
+  "Deletes a geo object type."
+  geoObjectTypeDelete(
+    "The input fields for deleting the geo object type."
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: schedules
+  "Creates a new schedule type."
+  scheduleTypeCreate(
+    "The input fields for creating the schedule type."
+    input: ScheduleTypeCreateInput!
+  ): ScheduleTypePayload
+
+  # @category: schedules
+  "Updates a schedule type."
+  scheduleTypeUpdate(
+    "The input fields for updating the schedule type."
+    input: ScheduleTypeUpdateInput!
+  ): ScheduleTypePayload
+
+  # @category: schedules
+  "Deletes a schedule type."
+  scheduleTypeDelete(
+    "The input fields for deleting the schedule type."
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: catalogs/tags
+  "Creates a new tag."
+  tagCreate(
+    "The input fields for creating the tag."
+    input: TagCreateInput!
+  ): TagPayload
+
+  # @category: catalogs/tags
+  "Updates a tag."
+  tagUpdate(
+    "The input fields for updating the tag."
+    input: TagUpdateInput!
+  ): TagPayload
+
+  # @category: catalogs/tags
+  "Deletes a tag."
+  tagDelete(
+    "The input fields for deleting the tag."
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: access-control
+  "Creates a new role."
+  roleCreate(
+    "The input fields for creating the role."
+    input: RoleCreateInput!
+  ): RolePayload
+
+  # @category: access-control
+  "Updates a role."
+  roleUpdate(
+    "The input fields for updating the role."
+    input: RoleUpdateInput!
+  ): RolePayload
+
+  # @category: access-control
+  "Deletes a role."
+  roleDelete(
+    "The input fields for deleting the role."
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+
+  # @category: actors/users
+  "Creates a new user catalog item."
+  userCatalogItemCreate(
+    "The input fields for creating the item."
+    input: UserCatalogItemCreateInput!
+  ): UserCatalogItemPayload
+
+  # @category: actors/users
+  "Updates a user catalog item."
+  userCatalogItemUpdate(
+    "The input fields for updating the item."
+    input: UserCatalogItemUpdateInput!
+  ): UserCatalogItemPayload
+
+  # @category: actors/users
+  "Deletes a user catalog item."
+  userCatalogItemDelete(
+    "The input fields for deleting the item."
+    input: CatalogItemDeleteInput!
+  ): DeletePayload
+}
+
+# =============================================================================
+# 22. SUBSCRIPTION (TODO)
+# =============================================================================
+#
+# Real-time subscriptions planned for future versions.
+#
+# Planned subscriptions:
+# - domainEvent(organizationId, aggregateType, eventType): DomainEvent
+# - auditEventOccurred(organizationId): AuditEvent
+#
+# DomainEvent structure:
+#   aggregateType: Code!
+#   aggregateId: ID!
+#   eventType: AuditEventType!
+#   organizationId: ID
+#   payload: JSON
+#   occurredAt: DateTime!
+#
+# =============================================================================
+
+# =============================================================================
+# 23. BULK OPERATIONS (TODO)
+# =============================================================================
+#
+# Bulk operations (mass update/delete) planned as asynchronous jobs.
+#
+# Planned approach:
+# - bulkUpdateDevices(input: BulkUpdateDevicesInput!): BulkJob!
+# - bulkDeleteDevices(input: BulkDeleteDevicesInput!): BulkJob!
+# - bulkJob(id: ID!): BulkJob
+#
+# BulkJob will include:
+# - status: PENDING | RUNNING | COMPLETED | FAILED
+# - progress: Int (0-100)
+# - result: JSON (success/failure counts)
+#
+# Behavior control (in input):
+# - stopOnError: Boolean (stop at first error vs continue)
+# - skipInvalid: Boolean (skip invalid items vs fail all)
+#
+# =============================================================================

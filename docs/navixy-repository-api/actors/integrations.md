@@ -1,5 +1,7 @@
 # Integrations
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Integration accounts for API clients, automated systems, and third-party service connections.
 
 ## Queries

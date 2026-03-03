@@ -1,5 +1,7 @@
 # Access control — Types
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ## Objects
 
 ### Role

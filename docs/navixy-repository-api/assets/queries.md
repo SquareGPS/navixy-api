@@ -1,5 +1,7 @@
 # Assets — Queries
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### assetTypes
 
 Lists asset types for an organization.

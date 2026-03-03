@@ -1,5 +1,7 @@
 # Catalog items
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Operations and types for managing catalog items - the configurable lookup entries.
 
 ## Queries

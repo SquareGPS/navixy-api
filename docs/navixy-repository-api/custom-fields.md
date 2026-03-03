@@ -1,5 +1,7 @@
 # Custom fields
 
+{% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Custom field definitions allow extending entities with organization-specific data fields.
 
 ## Mutations

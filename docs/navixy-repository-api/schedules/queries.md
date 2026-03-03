@@ -1,5 +1,7 @@
 # Schedules — Queries
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### scheduleTypes
 
 Lists schedule types for an organization.

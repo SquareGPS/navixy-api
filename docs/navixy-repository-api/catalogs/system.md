@@ -1,5 +1,7 @@
 # System catalogs
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 System-defined catalog items that cannot be modified by users.
 
 ## Objects

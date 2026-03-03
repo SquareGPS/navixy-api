@@ -1,5 +1,7 @@
 # Schedules — Mutations
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### scheduleCreate
 
 Creates a new schedule.

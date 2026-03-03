@@ -1,5 +1,7 @@
 # Assets
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Assets represent any trackable business object - vehicles, equipment, personnel, or any other entity you need to monitor and manage.
 
 ## Contents

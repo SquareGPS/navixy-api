@@ -1,5 +1,7 @@
 # Devices — Mutations
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 ### deviceCreate
 
 Creates a new device.
