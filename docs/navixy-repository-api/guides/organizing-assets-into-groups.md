@@ -22,6 +22,8 @@ layout:
 
 # Organizing assets into groups
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Asset groups let you organize assets into named collections — by depot, project, customer, vehicle class, or any other category that makes sense for your operations. A "Hamburg Depot" group, for example, might contain all trucks assigned to that location.
 
 The grouping system has two layers. An **asset group type** acts as a template: it classifies groups and optionally restricts which kinds of assets can join them. An **asset group** is an instance of that template — a named collection tied to a specific type. You create the type once, then create as many groups of that type as you need.

@@ -4,6 +4,8 @@ description: Create geofences, POIs, and routes in different shapes using GeoJSO
 
 # Working with geo objects
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Geo objects in Navixy Repository API represent geographic features like geofences, points of interest, and routes. They store location data in GeoJSON format, making them useful for defining delivery zones, marking important locations, creating routes, and managing areas where your fleet operates.
 
 This guide walks you through creating, updating, and managing geo objects with different geometry types.

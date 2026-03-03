@@ -4,6 +4,8 @@ description: Cursor-based pagination in Navixy Repository API
 
 # Pagination
 
+{% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 When querying lists of entities (devices, assets, users, etc.), Navixy Repository API returns paginated results. This prevents overwhelming responses when you have thousands of records.
 
 To control which results appear and in what order, see [Filtering and sorting](filtering-and-sorting.md).

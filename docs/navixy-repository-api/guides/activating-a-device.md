@@ -4,5 +4,6 @@ hidden: true
 
 # Activating a device
 
-TBD
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
 
+TBD

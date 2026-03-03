@@ -6,6 +6,8 @@ description: >-
 
 # GraphQL basics
 
+{% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 This article introduces GraphQL for developers who are new to it. If you've worked with REST APIs before, you'll find GraphQL takes a different approach to requesting and modifying data.
 
 For detailed information, see [the official GraphQL documentation](https://graphql.org/learn/) and [GraphQL specification](https://spec.graphql.org/).

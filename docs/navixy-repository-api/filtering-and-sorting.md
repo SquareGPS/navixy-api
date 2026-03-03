@@ -6,7 +6,9 @@ description: >-
 
 # Filtering and sorting
 
-in Navixy Repository API, list queries (those returning multiple items, like `devices`, `assets`, or `organizations`) accept `filter` and `orderBy` arguments that let you control which results come back and in what order. Instead of fetching all devices and processing them client-side, you can request exactly what you need.
+{% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
+
+In Navixy Repository API, list queries (those returning multiple items, like `devices`, `assets`, or `organizations`) accept `filter` and `orderBy` arguments that let you control which results come back and in what order. Instead of fetching all devices and processing them client-side, you can request exactly what you need.
 
 For navigating through large result sets, see [Pagination](pagination.md).
 

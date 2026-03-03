@@ -4,6 +4,8 @@ description: Create, update, query, and delete RFC 5545–compatible schedules.
 
 # Managing schedules
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Schedules in Navixy Repository API define time-based rules for your fleet operations, maintenance windows, work hours, restrictions, and more.
 
 The schedule data structure is semantically compatible with VEVENT and RRULE from [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545) (iCalendar). This means familiar concepts like recurrence rules, exception dates, and timezones work as expected, though the API uses JSON format rather than the iCalendar text format.

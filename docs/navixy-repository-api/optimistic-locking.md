@@ -4,6 +4,8 @@ description: Preventing lost updates with version-based concurrency control
 
 # Optimistic locking
 
+{% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Navixy Repository API uses a `version` field for optimistic concurrency control, preventing lost updates when multiple clients simultaneously edit the same entity.
 
 ### How optimistic locking works

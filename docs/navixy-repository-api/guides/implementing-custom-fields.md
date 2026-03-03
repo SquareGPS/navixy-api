@@ -4,6 +4,8 @@ description: Define and use custom fields to attach domain-specific data to enti
 
 # Implementing custom fields
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 In Navixy Repository API, devices, assets, geo objects, and schedules each come with a set of built-in fields such as `title`, `organization`, and `type`. Custom fields let you extend these entities with additional data specific to your operation — a VIN number, a fuel type, an inspection date, an access level — without any changes to the platform schema.
 
 ## How custom fields work

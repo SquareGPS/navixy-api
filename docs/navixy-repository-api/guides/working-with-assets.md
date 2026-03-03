@@ -4,6 +4,8 @@ description: Create and manage assets — vehicles, equipment, and other tracked
 
 # Working with assets
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Assets in Navixy Repository API represent the physical or logical objects your organization tracks and manages. The most common example is a vehicle, but assets can be anything you need to monitor: construction equipment, forklifts, generators, shipping containers, leased machinery, or fixed infrastructure. If your organization has a reason to record it, assign attributes to it, or link a GPS device to it, it's a good candidate for an asset.
 
 Each asset is defined by the **asset type**, which acts as a template: it classifies the asset and determines which custom fields are available for it. For example, a "Delivery Truck" type might have fields for license plate, fuel capacity, and assigned driver, while a "Generator" type might have fields for power output, last service date, and installation site.

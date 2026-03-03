@@ -6,6 +6,8 @@ description: >-
 
 # GraphQL tips and patterns
 
+{% include "../.gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 This article covers patterns that make your GraphQL code cleaner, more maintainable, and easier to debug. If you're new to GraphQL, start with [GraphQL basics ](../graphql-basics.md)first.
 
 ## Variables

@@ -1,5 +1,7 @@
 # Common resources
 
+{% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
+
 Foundational types, scalars, and interfaces used throughout the API.
 
 ## Queries
@@ -217,8 +219,6 @@ An [ISO 8601](https://www.iso.org/standard/8601.html) datetime string with timez
 An [ISO 8601](https://www.iso.org/standard/8601.html) date string without time component ([RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.html)).
 
 <table><thead><tr><th width="340.22216796875">Property</th><th>Value</th></tr></thead><tbody><tr><td>Format</td><td><code>YYYY-MM-DD</code></td></tr><tr><td>Example</td><td><code>2025-01-15</code></td></tr><tr><td>Specification</td><td><a href="https://scalars.graphql.org/chillicream/date.htm">https://scalars.graphql.org/chillicream/date.htm</a></td></tr></tbody></table>
-
-
 
 ***
 
