@@ -17,8 +17,6 @@ For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 * Define **geo objects** (geofences, points of interest, routes) with GeoJSON geometry
 * Create **schedules** for work hours, maintenance windows, and time-based rules
 * Configure **custom fields** to extend certain entities with organization-specific data
-* Manage **organizations** in a multi-tenant hierarchy
-* Set up **roles and permissions** to control access
 
 ## Key concepts
 
@@ -26,7 +24,7 @@ For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
 The API is organized around the following core resources:
 
-<table><thead><tr><th width="147.48895263671875">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>The main tenant in the system hierarchy. Organizations own all other resources.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity. Assets can be linked into <strong>asset groups</strong> or assigned one or multiple GPS devices.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Inventory</strong></td><td>A logical grouping of devices for stock management (warehouse, vehicle stock, field inventory).</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity based on the GeoJSON standard: geofence, point of interest, or route.</td></tr><tr><td><strong>Schedule</strong></td><td>iCalendar-compatible time-based schedules for your operations (working hours, maintenance cycles, shifts).</td></tr></tbody></table>
+<table><thead><tr><th width="147.48895263671875">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>The main tenant in the system hierarchy. Organizations own all other resources.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity. Assets can be linked into <strong>asset groups</strong> or assigned one or multiple GPS devices.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Inventory</strong></td><td>A logical grouping of devices for stock management (warehouse, vehicle stock, field inventory).</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity based on the GeoJSON standard: geofence, point of interest, or route.</td></tr><tr><td><strong>Schedule</strong></td><td>iCalendar-compatible time-based schedules for your operations (maintenance cycles, time shifts).</td></tr></tbody></table>
 
 ## Navigation
 
