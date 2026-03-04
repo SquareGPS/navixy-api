@@ -2,7 +2,7 @@
 
 {% include ".gitbook/includes/navixy-repository-api-is-a-....md" %}
 
-**Navixy Repository API** is a programming interface for managing the organizational structure and business entities of the Navixy platform. It provides a flexible way to define what you track (assets), what tracks them (devices), where things matter (geographic objects), when things happen (schedules), and who can access what (permissions).
+**Navixy Repository API** is a programming interface for managing the organizational structure and business entities of the Navixy platform. It provides a flexible way to define what you track (assets), how data is collected (devices), where important points are located (geo objects), when things happen (schedules), and who can access what (permissions).
 
 **Navixy Repository is based on GraphQL.** Unlike REST APIs where you call multiple endpoints to gather related data, GraphQL allows you to request the exact fields you need in a single query. You describe the shape of the data you want, and the API returns it in that shape.
 
@@ -12,22 +12,21 @@ For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
 **Navixy Repository API** enables you to:
 
-* Manage **organizations** in a multi-tenant hierarchy
 * Create **assets** and organize them into **groups**
 * Register **devices** (GPS trackers, sensors) with hardware identifiers and add them to **inventories**
 * Define **geo objects** (geofences, points of interest, routes) with GeoJSON geometry
 * Create **schedules** for work hours, maintenance windows, and time-based rules
 * Configure **custom fields** to extend certain entities with organization-specific data
+* Manage **organizations** in a multi-tenant hierarchy
 * Set up **roles and permissions** to control access
-* Subscribe to **real-time events** when entities are created, updated, or deleted
 
 ## Key concepts
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 The API is organized around the following core resources:
 
-<table><thead><tr><th width="147.48895263671875">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>A tenant in the system hierarchy. Organizations own all other resources and can have parent-child relationships.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity. Assets can be linked into <strong>asset groups</strong> or assigned one or several GPS devices.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Inventory</strong></td><td>A logical grouping of devices for stock management (warehouse, vehicle stock, field inventory).</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity based on the GeoJSON standard: geofence, point of interest, or route.</td></tr><tr><td><strong>Schedule</strong></td><td>iCalendar-compatible time-based rules for your operations.</td></tr><tr><td><strong>Catalog</strong></td><td>A configurable reference table for entity types, statuses, and other classification systems.</td></tr><tr><td><strong>Custom field</strong></td><td>An additional property defined per entity type.</td></tr></tbody></table>
+<table><thead><tr><th width="147.48895263671875">Term</th><th>Definition</th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td>The main tenant in the system hierarchy. Organizations own all other resources.</td></tr><tr><td><strong>Asset</strong></td><td>A business object you're tracking: a vehicle, piece of equipment, employee, or any other entity. Assets can be linked into <strong>asset groups</strong> or assigned one or multiple GPS devices.</td></tr><tr><td><strong>Device</strong></td><td>Physical tracking hardware (GPS tracker, sensor, beacon). Devices have types, models, statuses, and hardware identifiers (IMEI, serial number).</td></tr><tr><td><strong>Inventory</strong></td><td>A logical grouping of devices for stock management (warehouse, vehicle stock, field inventory).</td></tr><tr><td><strong>Geo object</strong></td><td>A location-based entity based on the GeoJSON standard: geofence, point of interest, or route.</td></tr><tr><td><strong>Schedule</strong></td><td>iCalendar-compatible time-based schedules for your operations (working hours, maintenance cycles, shifts).</td></tr></tbody></table>
 
 ## Navigation
 
