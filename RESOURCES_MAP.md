@@ -2,7 +2,8 @@
 
 This document provides a comprehensive map of all API resources available in the Navixy API documentation repository.
 
-**Generated:** 2026-02-19
+**Generated:** 2026-02-19  
+**Verified:** 2026-03-02 — cross-checked against Navixy docs (MCP) and `navixy-backend-api-openapi.json`; Backend API section includes all documented resources and endpoints.
 
 ## Overview
 
@@ -55,6 +56,7 @@ The Navixy API is organized into 5 main categories:
 
 #### `/track`
 - **Description:** Track data retrieval
+- **Actions:** list, read
 - **Sub-resources:**
   - `/track/waybill` - download
 
@@ -78,7 +80,8 @@ The Navixy API is organized into 5 main categories:
 
 #### `/beacon`
 - **Description:** Beacon data
-
+- **Sub-resources:**
+  - `/beacon/data` - read, last_values
 #### `/geocoder`
 - **Description:** Geocoding services
 - **Actions:** search_address, search_location
@@ -133,6 +136,8 @@ The Navixy API is organized into 5 main categories:
 - **Description:** User management
 - **Actions:** activate, auth, get_info, get_tariff_restrictions, logout, resend_activation
 - **Sub-resources:**
+  - `/user/application` - list (GET), create, update, delete, enabled/set — *OpenAPI: reference/user-applications.json (paths merged into main spec)*
+  - `/user/api_key` - list, create, delete
   - `/user/password` - change, set
   - `/user/settings` - read, update, file_storage/update
   - `/user/session` - renew
@@ -160,6 +165,7 @@ The Navixy API is organized into 5 main categories:
 - **Description:** History data
 - **Sub-resources:**
   - `/history/tracker` - list
+  - `/history/type` - list
   - `/history/unread` - list, count
 
 #### `/report`
