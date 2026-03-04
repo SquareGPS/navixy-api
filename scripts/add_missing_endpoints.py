@@ -55,26 +55,12 @@ def make_operation(path):
                 "required": True,
                 "content": {
                     "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "required": ["hash"],
-                            "properties": {
-                                "hash": {"type": "string", "description": "Session hash (API key) for authentication"}
-                            },
-                            "additionalProperties": True
-                        }
+                        "schema": {"$ref": "#/components/schemas/RequestBodyBase"}
                     }
                 }
             },
             "responses": {
-                "200": {
-                    "description": "Successful response",
-                    "content": {
-                        "application/json": {
-                            "schema": {"$ref": "#/components/schemas/SuccessResponseWithValue"}
-                        }
-                    }
-                },
+                "200": {"$ref": "#/components/responses/OkValue"},
                 "400": {"$ref": "#/components/responses/BadRequest"},
                 "404": {"$ref": "#/components/responses/NotFound"},
                 "500": {"$ref": "#/components/responses/ServerError"}
