@@ -187,7 +187,7 @@ For the full field reference, see [Asset object](../assets/types.md#asset).
 
 Assets store their domain-specific attributes in the `customFields` field. When creating or updating an asset, you pass custom field changes using [CustomFieldsPatchInput](../custom-fields.md#customfieldspatchinput), which has two sub-fields:
 
-<table><thead><tr><th width="129">Field</th><th width="131.44439697265625">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>set</code></td><td><a href="../common.md#json">JSON</a></td><td>Key-value map of fields to create or overwrite.</td></tr><tr><td><code>unset</code></td><td><a href="../common.md#code">[Code!]</a></td><td>List of field codes to clear.</td></tr></tbody></table>
+<table><thead><tr><th width="129">Field</th><th width="131.44439697265625">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>set</code></td><td><a href="../common.md#json">JSON</a></td><td>Key-value map of fields to create or overwrite.</td></tr><tr><td><code>unset</code></td><td>[<a href="../common.md#code">Code</a>!]</td><td>List of field codes to clear.</td></tr></tbody></table>
 
 `customFields` is always a patch operation: fields you don't mention are left unchanged. To update one field without touching others, include only that field in `set`. To remove a value entirely, list its code in `unset`.
 
@@ -215,7 +215,7 @@ TransLog GmbH is setting up their asset registry. They need to track both their 
 
 {% stepper %}
 {% step %}
-#### **Create an asset type**
+### **Create an asset type**
 
 Start by creating a "Delivery Truck" asset type for your organization. Be careful when choosing the `code` — it's immutable after creation and will be used to reference this type in integrations and filters.
 
@@ -269,9 +269,9 @@ The `order` field controls how types appear in UI lists. Lower numbers appear fi
 {% endstep %}
 
 {% step %}
-#### **Create an asset**
+### **Create an asset**
 
-Create the first truck in the registry. Pass custom field values using the `set` map inside `customFields`. In this example, the "Delivery Truck" type has a `license_plate` field. The truck also gets a GPS device linked via the `device` key — see [The device field](working-with-assets.md#the-device-field) for more information.
+Create the first truck in the registry. Pass custom field values using the `set` map inside `customFields`. In this example, the "Delivery Truck" type has a `license_plate` field.
 
 Run this mutation:
 
@@ -284,7 +284,6 @@ mutation RegisterTruck {
     customFields: {
       set: {
         license_plate: "HH-TL 4421"
-        device: "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44"
       }
     }
   }) {
@@ -314,30 +313,12 @@ Response:
 ```
 
 Save the `id` and `version` — you'll need them for updates.
-
-Assets don't require custom fields. TransLog also has a forklift type already configured in their organization (with `id: "d4iigf33-3g4f-7ik2-ff0h-0ff3fh824e55"`). To register a forklift with no custom properties:
-
-```graphql
-mutation RegisterForklift {
-  assetCreate(input: {
-    organizationId: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
-    typeId: "d4iigf33-3g4f-7ik2-ff0h-0ff3fh824e55"
-    title: "Forklift WH-3 (Warehouse A)"
-  }) {
-    asset {
-      id
-      version
-      title
-    }
-  }
-}
-```
 {% endstep %}
 
 {% step %}
-#### **Verify the asset**
+### **Verify the asset**
 
-Query the asset to confirm it was created correctly. Requesting both `customFields` (raw key-value map) and `device` (resolved object) side-by-side illustrates how they relate:
+Query the asset to confirm it was created correctly:
 
 ```graphql
 query GetTruck {
@@ -372,19 +353,15 @@ Response:
         "title": "Delivery Truck"
       },
       "customFields": {
-        "license_plate": "HH-TL 4421",
-        "device": "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44"
+        "license_plate": "HH-TL 4421"
       },
-      "device": {
-        "id": "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44",
-        "title": "GPS Unit #117"
-      }
+      "device": null
     }
   }
 }
 ```
 
-`customFields` returns a raw JSON — here, `device` appears as the UUID string that was stored. The `device` field resolves that same ID into a full [Device](../devices/types.md#device) object, so you can query related device details without a separate lookup.
+`device` is `null` because no GPS unit has been assigned yet. `customFields` returns a raw JSON object keyed by field code — the same keys you use in `set` and `unset`.
 
 To keep the response lean, you can request only specific custom field codes:
 
@@ -399,28 +376,26 @@ query GetTruckLicensePlate {
 {% endstep %}
 
 {% step %}
-#### **Update the asset**
+### Assign a device
 
-The truck has been reassigned to a new route and fitted with a replacement GPS device. Update the title and swap the device. Only the fields listed in `set` change — everything else stays the same.
+A GPS unit has been installed in the truck. Assign it using [assetUpdate](../assets/mutations.md#assetupdate) with the device ID in `customFields.set`. The operation is identical whether you're making an initial assignment or replacing an existing one.
 
 Run this mutation:
 
 ```graphql
-mutation ReassignTruck {
+mutation AssignTruckDevice {
   assetUpdate(input: {
     id: "019a6b2f-793e-807b-8001-555345529b44"
     version: 1
-    title: "Truck B-44 (Berlin–Warsaw)"
     customFields: {
       set: {
-        device: "e5jjhg44-4h5g-8jl3-gg1i-1gg4gi935f66"
+        device: "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44"
       }
     }
   }) {
     asset {
       id
       version
-      title
       device {
         id
         title
@@ -439,10 +414,9 @@ Response:
       "asset": {
         "id": "019a6b2f-793e-807b-8001-555345529b44",
         "version": 2,
-        "title": "Truck B-44 (Berlin–Warsaw)",
         "device": {
-          "id": "e5jjhg44-4h5g-8jl3-gg1i-1gg4gi935f66",
-          "title": "GPS Unit #203"
+          "id": "c3hhef22-2f3e-6hj1-ee9g-9ee2eg713d44",
+          "title": "GPS Unit #117"
         }
       }
     }
@@ -450,19 +424,35 @@ Response:
 }
 ```
 
-The version increments to `2` after a successful update. Use this new version for any further mutations.
+Note that version increments to `2` after a successful update. Use this new version for any further mutations.
 
-To unlink the GPS device without touching other fields, use `unset` instead:
+To unassign the device (e.g., if the unit is removed for maintenance), use `unset`:
 
 ```graphql
-customFields: {
-  unset: ["device"]
+mutation UnlinkForkliftDevice {
+  assetUpdate(input: {
+    id: "029b7c40-804f-918c-9112-666456630d55"
+    version: 2
+    customFields: {
+      unset: ["device"]
+    }
+  }) {
+    asset {
+      id
+      version
+      device {
+        id
+      }
+    }
+  }
 }
 ```
+
+After unlinking, `device` returns `null`.
 {% endstep %}
 
 {% step %}
-#### **Delete the asset**
+### **Delete the asset**
 
 {% hint style="danger" %}
 Asset deletion is permanent. Unlike some other entity types in the API, assets don't support soft delete and cannot be restored after deletion. Make sure you no longer need the record before proceeding.

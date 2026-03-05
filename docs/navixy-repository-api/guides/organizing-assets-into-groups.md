@@ -150,7 +150,7 @@ TransLog GmbH wants to organize their delivery trucks by regional depot. They'll
 
 {% stepper %}
 {% step %}
-**Create an asset group type**
+### **Create an asset group type**
 
 Start by creating the "Depot" group type. This type constrains membership to delivery trucks only, with no cap on how many can join a group.
 
@@ -222,7 +222,7 @@ To create a group type with no asset type restrictions, omit `allowedAssetTypes`
 {% endstep %}
 
 {% step %}
-**Create an asset group**
+### **Create an asset group**
 
 Create the Hamburg Depot group using the type you just created.
 
@@ -271,7 +271,7 @@ Save the group `id` and `version`.
 {% endstep %}
 
 {% step %}
-**Add assets to the group**
+### **Add assets to the group**
 
 Add Truck B-44 to the Hamburg Depot group. The `assetGroupItemAdd` mutation creates a membership record and returns it.
 
@@ -326,7 +326,7 @@ The exact `VALIDATION_ERROR` structure for constraint violations (wrong asset ty
 {% endstep %}
 
 {% step %}
-**Verify membership**
+### **Verify membership**
 
 You can verify group membership from either side — by querying the group's `currentAssets`, or by querying the asset's `groups` field.
 
@@ -426,7 +426,7 @@ Whether an asset can belong to multiple groups of the **same type** at once (for
 {% endstep %}
 
 {% step %}
-**Update the group**
+### **Update the group**
 
 The Hamburg depot is being rebranded. Update the group's title and color. Note the `version` field — it's required for optimistic locking and must match the current version of the group.
 
@@ -473,7 +473,7 @@ You can only update a group's `title` and `color`. Its `type` is fixed at creati
 {% endstep %}
 
 {% step %}
-**Remove an asset from the group**
+### **Remove an asset from the group**
 
 Truck B-44 has been reassigned to the Berlin depot. Remove it from the Hamburg & Kiel group.
 
@@ -506,7 +506,7 @@ Removing an asset that isn't currently in the group returns a [NOT\_FOUND](../er
 {% endstep %}
 
 {% step %}
-**Query membership history**
+### **Query membership history**
 
 After a period of reassignments, query the full membership history of the group to see all past and current members:
 
@@ -566,7 +566,7 @@ history(
 {% endstep %}
 
 {% step %}
-**Delete the group**
+### **Delete the group**
 
 When a depot closes and you no longer need the group, delete it using its current `version`.
 
