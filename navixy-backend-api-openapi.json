@@ -139,21 +139,28 @@
           "Tracking"
         ],
         "summary": "tracker_read",
-        "description": "Backend API endpoint: POST /tracker/read",
+        "description": "Gets tracker info by ID.",
         "operationId": "tracker_read",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RequestBodyBase"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/RequestBodyBase"
+                  },
+                  {
+                    "$ref": "#/components/schemas/TrackerReadRequest"
+                  }
+                ]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkTrackerValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -173,7 +180,7 @@
           "Tracking"
         ],
         "summary": "tracker_list",
-        "description": "Backend API endpoint: POST /tracker/list",
+        "description": "Gets user's trackers with optional filtering by labels.",
         "operationId": "tracker_list",
         "requestBody": {
           "required": true,
@@ -187,7 +194,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkTrackerList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -207,7 +214,7 @@
           "Tracking"
         ],
         "summary": "tracker_corrupt",
-        "description": "Backend API endpoint: POST /tracker/corrupt",
+        "description": "Marks tracker as deleted and corrupt its source, device_id and phone.",
         "operationId": "tracker_corrupt",
         "requestBody": {
           "required": true,
@@ -241,7 +248,7 @@
           "Tracking"
         ],
         "summary": "tracker_delete",
-        "description": "Backend API endpoint: POST /tracker/delete",
+        "description": "Deletes a tracker if it is a clone. Will not work if specified ID is the original tracker.",
         "operationId": "tracker_delete",
         "requestBody": {
           "required": true,
@@ -275,7 +282,7 @@
           "Tracking"
         ],
         "summary": "tracker_change_phone",
-        "description": "Backend API endpoint: POST /tracker/change_phone",
+        "description": "Changes tracker's phone and sets up new APN.",
         "operationId": "tracker_change_phone",
         "requestBody": {
           "required": true,
@@ -309,7 +316,7 @@
           "Tracking"
         ],
         "summary": "tracker_get_diagnostics",
-        "description": "Backend API endpoint: POST /tracker/get_diagnostics",
+        "description": "Gets last CAN and OBD sensors and states values received from the device.",
         "operationId": "tracker_get_diagnostics",
         "requestBody": {
           "required": true,
@@ -343,7 +350,7 @@
           "Tracking"
         ],
         "summary": "tracker_get_fuel",
-        "description": "Backend API endpoint: POST /tracker/get_fuel",
+        "description": "Gets current fuel level (in liters) of tracker's fuel tanks.",
         "operationId": "tracker_get_fuel",
         "requestBody": {
           "required": true,
@@ -377,7 +384,7 @@
           "Tracking"
         ],
         "summary": "tracker_get_inputs",
-        "description": "Backend API endpoint: POST /tracker/get_inputs",
+        "description": "Gets current state of tracker's digital inputs and semantic inputs (ignition, buttons, car alarms, etc.).",
         "operationId": "tracker_get_inputs",
         "requestBody": {
           "required": true,
@@ -411,7 +418,7 @@
           "Tracking"
         ],
         "summary": "tracker_batch_get_inputs",
-        "description": "Backend API endpoint: POST /tracker/batch_get_inputs",
+        "description": "Gets current state of trackers' digital inputs and semantic inputs for multiple trackers.",
         "operationId": "tracker_batch_get_inputs",
         "requestBody": {
           "required": true,
@@ -445,7 +452,7 @@
           "Tracking"
         ],
         "summary": "tracker_get_outputs",
-        "description": "Backend API endpoint: POST /tracker/get_outputs",
+        "description": "Gets tracker's outputs info.",
         "operationId": "tracker_get_outputs",
         "requestBody": {
           "required": true,
@@ -479,7 +486,7 @@
           "Tracking"
         ],
         "summary": "tracker_batch_get_outputs",
-        "description": "Backend API endpoint: POST /tracker/batch_get_outputs",
+        "description": "Gets trackers' outputs info for multiple trackers.",
         "operationId": "tracker_batch_get_outputs",
         "requestBody": {
           "required": true,
@@ -513,7 +520,7 @@
           "Tracking"
         ],
         "summary": "tracker_output_update",
-        "description": "Backend API endpoint: POST /tracker/output/update",
+        "description": "Updates tracker's outputs info.",
         "operationId": "tracker_output_update",
         "requestBody": {
           "required": true,
@@ -547,7 +554,7 @@
           "Tracking"
         ],
         "summary": "tracker_get_last_gps_point",
-        "description": "Backend API endpoint: POST /tracker/get_last_gps_point",
+        "description": "Gets last GPS point of the tracker. Points located by GSM LBS are excluded.",
         "operationId": "tracker_get_last_gps_point",
         "requestBody": {
           "required": true,
@@ -581,7 +588,7 @@
           "Tracking"
         ],
         "summary": "tracker_get_readings",
-        "description": "Backend API endpoint: POST /tracker/get_readings",
+        "description": "Gets last sensor values for sensors that are configured for the tracker.",
         "operationId": "tracker_get_readings",
         "requestBody": {
           "required": true,
@@ -615,7 +622,7 @@
           "Tracking"
         ],
         "summary": "tracker_get_state",
-        "description": "Backend API endpoint: POST /tracker/get_state",
+        "description": "Gets current tracker state (GPS, GSM, outputs, etc.).",
         "operationId": "tracker_get_state",
         "requestBody": {
           "required": true,
@@ -649,7 +656,7 @@
           "Tracking"
         ],
         "summary": "tracker_get_states",
-        "description": "Backend API endpoint: POST /tracker/get_states",
+        "description": "Gets current states (GPS, GSM, outputs, etc.) for several trackers.",
         "operationId": "tracker_get_states",
         "requestBody": {
           "required": true,
@@ -683,7 +690,7 @@
           "Tracking"
         ],
         "summary": "tracker_list_models",
-        "description": "Backend API endpoint: POST /tracker/list_models",
+        "description": "Gets all integrated tracker models from the models table.",
         "operationId": "tracker_list_models",
         "requestBody": {
           "required": true,
@@ -717,7 +724,7 @@
           "Tracking"
         ],
         "summary": "tracker_tags_set",
-        "description": "Backend API endpoint: POST /tracker/tags/set",
+        "description": "Sets tags for a tracker. Tags must already be created.",
         "operationId": "tracker_tags_set",
         "requestBody": {
           "required": true,
@@ -751,7 +758,7 @@
           "Tracking"
         ],
         "summary": "tracker_location_request",
-        "description": "Backend API endpoint: POST /tracker/location_request",
+        "description": "Requests current position from the device. The device must support the requesting function.",
         "operationId": "tracker_location_request",
         "requestBody": {
           "required": true,
@@ -785,7 +792,7 @@
           "Tracking"
         ],
         "summary": "tracker_register",
-        "description": "Backend API endpoint: POST /tracker/register",
+        "description": "Registers a new tracker device and links it with the current API user account.",
         "operationId": "tracker_register",
         "requestBody": {
           "required": true,
@@ -819,7 +826,7 @@
           "Tracking"
         ],
         "summary": "tracker_register_retry",
-        "description": "Backend API endpoint: POST /tracker/register_retry",
+        "description": "Resends registration commands to the device. Requires SMS gateway.",
         "operationId": "tracker_register_retry",
         "requestBody": {
           "required": true,
@@ -853,7 +860,7 @@
           "Tracking"
         ],
         "summary": "tracker_register_quick",
-        "description": "Backend API endpoint: POST /tracker/register_quick",
+        "description": "Registers a new tracker using only IMEI. No automatic SMS commands are sent.",
         "operationId": "tracker_register_quick",
         "requestBody": {
           "required": true,
@@ -887,7 +894,7 @@
           "Tracking"
         ],
         "summary": "tracker_replace",
-        "description": "Backend API endpoint: POST /tracker/replace",
+        "description": "Replaces the device without losing its history and some settings.",
         "operationId": "tracker_replace",
         "requestBody": {
           "required": true,
@@ -921,7 +928,7 @@
           "Tracking"
         ],
         "summary": "tracker_replace_quick",
-        "description": "Backend API endpoint: POST /tracker/replace_quick",
+        "description": "Replaces a device using only IMEI. No automatic SMS commands are sent.",
         "operationId": "tracker_replace_quick",
         "requestBody": {
           "required": true,
@@ -955,7 +962,7 @@
           "Tracking"
         ],
         "summary": "tracker_replace_retry",
-        "description": "Backend API endpoint: POST /tracker/replace_retry",
+        "description": "Resends registration commands to the new device. Requires SMS gateway.",
         "operationId": "tracker_replace_retry",
         "requestBody": {
           "required": true,
@@ -989,7 +996,7 @@
           "Tracking"
         ],
         "summary": "tracker_send_command",
-        "description": "Backend API endpoint: POST /tracker/send_command",
+        "description": "Sends a command to the tracker for special control (determined by tracker model).",
         "operationId": "tracker_send_command",
         "requestBody": {
           "required": true,
@@ -1023,7 +1030,7 @@
           "Tracking"
         ],
         "summary": "tracker_raw_command_send",
-        "description": "Backend API endpoint: POST /tracker/raw_command/send",
+        "description": "Sends a GPRS command to the device, processed in a protocol-dependent manner.",
         "operationId": "tracker_raw_command_send",
         "requestBody": {
           "required": true,
@@ -1173,7 +1180,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkGroupList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -1683,7 +1690,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkRuleList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -2383,7 +2390,7 @@
           "Zones"
         ],
         "summary": "zone_batch_convert",
-        "description": "Backend API endpoint: POST /zone/batch_convert",
+        "description": "Convert batch of tab-delimited circle geofences and return list of checked geofences with errors.",
         "operationId": "zone_batch_convert",
         "requestBody": {
           "required": true,
@@ -2417,7 +2424,7 @@
           "Zones"
         ],
         "summary": "zone_create",
-        "description": "Backend API endpoint: POST /zone/create",
+        "description": "Creates a new geofence.",
         "operationId": "zone_create",
         "requestBody": {
           "required": true,
@@ -2451,7 +2458,7 @@
           "Zones"
         ],
         "summary": "zone_delete",
-        "description": "Backend API endpoint: POST /zone/delete",
+        "description": "Deletes user's geofence by zone_id or array of zone_ids.",
         "operationId": "zone_delete",
         "requestBody": {
           "required": true,
@@ -2485,7 +2492,7 @@
           "Zones"
         ],
         "summary": "zone_list",
-        "description": "Backend API endpoint: POST /zone/list",
+        "description": "Gets user's geofences (zones).",
         "operationId": "zone_list",
         "requestBody": {
           "required": true,
@@ -2499,7 +2506,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkZoneList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -2519,21 +2526,28 @@
           "Zones"
         ],
         "summary": "zone_read",
-        "description": "Backend API endpoint: POST /zone/read",
+        "description": "Gets geofence (zone) by ID.",
         "operationId": "zone_read",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RequestBodyBase"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/RequestBodyBase"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ZoneReadRequest"
+                  }
+                ]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkZoneValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -2553,7 +2567,7 @@
           "Zones"
         ],
         "summary": "zone_search_location",
-        "description": "Backend API endpoint: POST /zone/search_location",
+        "description": "Gets all geofence IDs and names that contain the specified coordinates.",
         "operationId": "zone_search_location",
         "requestBody": {
           "required": true,
@@ -2587,7 +2601,7 @@
           "Zones"
         ],
         "summary": "zone_update",
-        "description": "Backend API endpoint: POST /zone/update",
+        "description": "Updates geofence parameters for the specified geofence.",
         "operationId": "zone_update",
         "requestBody": {
           "required": true,
@@ -2621,7 +2635,7 @@
           "Zones"
         ],
         "summary": "zone_upload",
-        "description": "Backend API endpoint: POST /zone/upload",
+        "description": "Imports geofences from a KML file.",
         "operationId": "zone_upload",
         "requestBody": {
           "required": true,
@@ -2655,7 +2669,7 @@
           "Zones"
         ],
         "summary": "zone_download",
-        "description": "Backend API endpoint: POST /zone/download",
+        "description": "Downloads geofences as a KML file.",
         "operationId": "zone_download",
         "requestBody": {
           "required": true,
@@ -2975,7 +2989,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkStatusList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -3213,7 +3227,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkAssetGroupEntryList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -3519,7 +3533,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkMapLayerValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -3553,7 +3567,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkMapLayerList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -3757,7 +3771,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkVehicleList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -3791,7 +3805,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkVehicleValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -4029,7 +4043,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkServiceTaskList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -4063,7 +4077,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkServiceTaskValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -4165,7 +4179,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkDriverJournalEntryList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -4505,7 +4519,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkTaskList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -4539,7 +4553,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkTaskValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -4777,7 +4791,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkTaskScheduleEntryList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -4811,7 +4825,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkTaskScheduleEntryValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -4879,7 +4893,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkEmployeeList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -4947,7 +4961,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkEmployeeValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -5083,7 +5097,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkPlaceValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -5117,7 +5131,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkPlaceList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -5355,7 +5369,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkFormValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -5423,7 +5437,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkFormTemplateList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -5491,7 +5505,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkFormTemplateValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -5627,7 +5641,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkCheckinValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -5661,7 +5675,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkCheckinList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -6239,7 +6253,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkUserSettingsValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -6511,7 +6525,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkSubuserList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -6919,7 +6933,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkTagList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -7021,7 +7035,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkEntityList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -7361,7 +7375,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkReportScheduleEntryList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -7429,7 +7443,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkNotificationEntryList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -7463,7 +7477,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkPluginList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -7599,7 +7613,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkBillList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -7633,7 +7647,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkTariffPlanList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -7735,7 +7749,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkApiKeyList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -8041,7 +8055,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkDepartmentList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -8177,7 +8191,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkEntityValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -8381,7 +8395,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkGarageList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -8585,7 +8599,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkPaymentSystemSettingsList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -8925,7 +8939,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkRetranslatorList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -8959,7 +8973,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkRetranslatorProtocolList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -9503,7 +9517,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkSecurityGroupList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -9775,7 +9789,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkCheckpointList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -9809,7 +9823,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkCheckpointValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -10183,7 +10197,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkRouteList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -11849,7 +11863,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkTransactionList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -12682,6 +12696,428 @@
           }
         }
       },
+      "LatLng": {
+        "type": "object",
+        "description": "Latitude/longitude point",
+        "required": [
+          "lat",
+          "lng"
+        ],
+        "properties": {
+          "lat": {
+            "type": "number",
+            "description": "Latitude",
+            "example": 48.20094
+          },
+          "lng": {
+            "type": "number",
+            "description": "Longitude",
+            "example": 16.369856
+          }
+        }
+      },
+      "ZoneBounds": {
+        "type": "object",
+        "description": "North-west and south-east coordinates of the axis-aligned minimum bounding box",
+        "properties": {
+          "nw": {
+            "$ref": "#/components/schemas/LatLng"
+          },
+          "se": {
+            "$ref": "#/components/schemas/LatLng"
+          }
+        }
+      },
+      "ZonePoint": {
+        "type": "object",
+        "description": "Geofence point (latitude, longitude, optional route node flag)",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "description": "Point latitude"
+          },
+          "lng": {
+            "type": "number",
+            "description": "Point longitude"
+          },
+          "node": {
+            "type": "boolean",
+            "description": "True if this point is a route node"
+          }
+        }
+      },
+      "TrackerSource": {
+        "type": "object",
+        "description": "Tracker source (device) info",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Source ID"
+          },
+          "device_id": {
+            "type": "string",
+            "description": "Device ID aka source_imei"
+          },
+          "model": {
+            "type": "string",
+            "description": "Tracker model name from models table"
+          },
+          "blocked": {
+            "type": "boolean",
+            "description": "True if tracker blocked due to tariff end"
+          },
+          "tariff_id": {
+            "type": "integer",
+            "description": "ID of tracker tariff from main_tariffs table"
+          },
+          "status_listing_id": {
+            "type": "integer",
+            "nullable": true,
+            "description": "ID of the status listing associated with this tracker, or null"
+          },
+          "creation_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date when the tracker registered"
+          },
+          "tariff_end_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "Date of next tariff prolongation, or null"
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true,
+            "description": "Phone of the device. Can be null or empty if device has no GSM module"
+          }
+        }
+      },
+      "TrackerTagBinding": {
+        "type": "object",
+        "description": "Attached tag (appears in tracker/list)",
+        "properties": {
+          "tag_id": {
+            "type": "integer",
+            "description": "ID of tag. Must be unique for a tracker"
+          },
+          "ordinal": {
+            "type": "integer",
+            "description": "Ordinal or kind of tag. Must be unique for a tracker. Max value is 5"
+          }
+        }
+      },
+      "Tracker": {
+        "type": "object",
+        "description": "Tracker (tracking device) object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Tracker ID aka object_id"
+          },
+          "label": {
+            "type": "string",
+            "description": "Tracker label"
+          },
+          "clone": {
+            "type": "boolean",
+            "description": "True if this tracker is a clone"
+          },
+          "group_id": {
+            "type": "integer",
+            "description": "Tracker group ID, 0 when no group"
+          },
+          "avatar_file_name": {
+            "type": "string",
+            "description": "Avatar file name. Omitted if not present"
+          },
+          "source": {
+            "$ref": "#/components/schemas/TrackerSource"
+          },
+          "tag_bindings": {
+            "type": "array",
+            "description": "List of attached tags. Appears only for tracker/list",
+            "items": {
+              "$ref": "#/components/schemas/TrackerTagBinding"
+            }
+          }
+        }
+      },
+      "TrackerOutputInfo": {
+        "type": "object",
+        "description": "Tracker output number and user-defined name",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "description": "Output number"
+          },
+          "title": {
+            "type": "string",
+            "description": "User-defined output name"
+          }
+        }
+      },
+      "ZoneCircle": {
+        "type": "object",
+        "description": "Circle geofence",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Geofence ID"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "circle"
+            ],
+            "description": "Zone type"
+          },
+          "label": {
+            "type": "string",
+            "description": "Geofence label"
+          },
+          "address": {
+            "type": "string",
+            "description": "Geofence address"
+          },
+          "color": {
+            "type": "string",
+            "description": "Geofence color in 3-byte RGB hex format"
+          },
+          "radius": {
+            "type": "integer",
+            "description": "Circle radius in meters"
+          },
+          "center": {
+            "$ref": "#/components/schemas/LatLng"
+          },
+          "bounds": {
+            "$ref": "#/components/schemas/ZoneBounds"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Array of tag IDs"
+          }
+        }
+      },
+      "ZonePolygon": {
+        "type": "object",
+        "description": "Polygon geofence",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Geofence ID"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "polygon"
+            ],
+            "description": "Zone type"
+          },
+          "label": {
+            "type": "string",
+            "description": "Geofence label"
+          },
+          "address": {
+            "type": "string",
+            "description": "Geofence address"
+          },
+          "color": {
+            "type": "string",
+            "description": "Geofence color in 3-byte RGB hex format"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ZonePoint"
+            },
+            "description": "Geofence points"
+          },
+          "bounds": {
+            "$ref": "#/components/schemas/ZoneBounds"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Array of tag IDs"
+          }
+        }
+      },
+      "ZoneSausage": {
+        "type": "object",
+        "description": "Sausage geofence (points within radius of a polyline)",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Geofence ID"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "sausage"
+            ],
+            "description": "Zone type"
+          },
+          "label": {
+            "type": "string",
+            "description": "Geofence label"
+          },
+          "address": {
+            "type": "string",
+            "description": "Geofence address"
+          },
+          "color": {
+            "type": "string",
+            "description": "Geofence color in 3-byte RGB hex format"
+          },
+          "radius": {
+            "type": "integer",
+            "description": "Polyline radius in meters"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ZonePoint"
+            },
+            "description": "Geofence points"
+          },
+          "bounds": {
+            "$ref": "#/components/schemas/ZoneBounds"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Array of tag IDs"
+          }
+        }
+      },
+      "Zone": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ZoneCircle"
+          },
+          {
+            "$ref": "#/components/schemas/ZonePolygon"
+          },
+          {
+            "$ref": "#/components/schemas/ZoneSausage"
+          }
+        ],
+        "description": "Geofence zone (circle, polygon, or sausage)"
+      },
+      "TrackerValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Tracker"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single tracker"
+      },
+      "TrackerListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tracker"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of trackers"
+      },
+      "ZoneValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Zone"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single zone (circle, polygon, or sausage)"
+      },
+      "ZoneListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Zone"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of zones"
+      },
+      "TrackerReadRequest": {
+        "type": "object",
+        "description": "Request body for tracker/read",
+        "required": [
+          "tracker_id"
+        ],
+        "properties": {
+          "tracker_id": {
+            "type": "integer",
+            "description": "ID of the tracker (aka object_id)"
+          }
+        }
+      },
+      "ZoneReadRequest": {
+        "type": "object",
+        "description": "Request body for zone/read",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Geofence ID"
+          }
+        }
+      },
       "RequestBodyBase": {
         "type": "object",
         "required": [
@@ -12694,6 +13130,1965 @@
           }
         },
         "additionalProperties": true
+      },
+      "PluginFilter": {
+        "type": "object",
+        "description": "Model filter for plugin applicability",
+        "properties": {
+          "exclusion": {
+            "type": "boolean",
+            "description": "If true, values lists models NOT supported"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Regexes for models"
+          }
+        }
+      },
+      "Bill": {
+        "type": "object",
+        "description": "Bill (order) object",
+        "properties": {
+          "order_id": {
+            "type": "integer",
+            "description": "Unique bill ID"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the bill was created"
+          },
+          "sum": {
+            "type": "number",
+            "description": "Bill sum in default currency of the panel"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "created",
+              "settled",
+              "canceled"
+            ],
+            "description": "Bill order status"
+          },
+          "positions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of position names"
+          },
+          "link": {
+            "type": "string",
+            "description": "URL to order"
+          }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "description": "Billing transaction object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of transaction"
+          },
+          "subtype": {
+            "type": "string",
+            "description": "Subtype of transaction"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "user_id": {
+            "type": "integer"
+          },
+          "dealer_id": {
+            "type": "integer"
+          },
+          "tracker_id": {
+            "type": "integer",
+            "description": "0 if not associated with tracker"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "new_balance": {
+            "type": "number"
+          },
+          "old_balance": {
+            "type": "number"
+          },
+          "bonus_amount": {
+            "type": "number"
+          },
+          "new_bonus": {
+            "type": "number"
+          },
+          "old_bonus": {
+            "type": "number"
+          }
+        }
+      },
+      "ApiKey": {
+        "type": "object",
+        "description": "API key object",
+        "properties": {
+          "hash": {
+            "type": "string",
+            "description": "Hash of the API key (32 chars)"
+          },
+          "create_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Key creation date"
+          },
+          "title": {
+            "type": "string",
+            "description": "Key title"
+          }
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "description": "Tag object for quick searches",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Tag ID"
+          },
+          "avatar_file_name": {
+            "type": "string",
+            "description": "Avatar file name"
+          },
+          "name": {
+            "type": "string",
+            "description": "Tag name"
+          },
+          "color": {
+            "type": "string",
+            "description": "Tag color in 3-byte RGB hex format"
+          }
+        }
+      },
+      "Plugin": {
+        "type": "object",
+        "description": "Plugin object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          },
+          "ui_module": {
+            "type": "string"
+          },
+          "module": {
+            "type": "string"
+          },
+          "filter": {
+            "$ref": "#/components/schemas/PluginFilter"
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Plugin-specific parameters"
+          }
+        }
+      },
+      "ReportScheduleEntry": {
+        "type": "object",
+        "description": "Report schedule entry",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Schedule parameters (period, report, emails, etc.)"
+          },
+          "fire_time": {
+            "type": "string",
+            "description": "Last schedule fire time"
+          },
+          "last_result": {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean"
+              },
+              "id": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "Status": {
+        "type": "object",
+        "description": "Working status object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier of the working status"
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable label"
+          },
+          "color": {
+            "type": "string",
+            "description": "Hex RGB color for display"
+          }
+        }
+      },
+      "StatusListing": {
+        "type": "object",
+        "description": "Status listing object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "statuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Status"
+            }
+          }
+        }
+      },
+      "MapLayer": {
+        "type": "object",
+        "description": "Map layer metadata",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Map layer entity ID"
+          },
+          "label": {
+            "type": "string",
+            "description": "Map layer name"
+          }
+        }
+      },
+      "Group": {
+        "type": "object",
+        "description": "Tracker group object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Group ID"
+          },
+          "title": {
+            "type": "string",
+            "description": "Group title"
+          },
+          "color": {
+            "type": "string",
+            "description": "Group color in web format (without #)"
+          }
+        }
+      },
+      "Subuser": {
+        "type": "object",
+        "description": "Sub-user object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "activated": {
+            "type": "boolean"
+          },
+          "login": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "middle_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "legal_type": {
+            "type": "string",
+            "enum": [
+              "legal_entity",
+              "individual",
+              "sole_trader"
+            ]
+          },
+          "phone": {
+            "type": "string"
+          },
+          "post_country": {
+            "type": "string"
+          },
+          "post_index": {
+            "type": "string"
+          },
+          "post_region": {
+            "type": "string"
+          },
+          "post_city": {
+            "type": "string"
+          },
+          "post_street_address": {
+            "type": "string"
+          },
+          "registered_country": {
+            "type": "string"
+          },
+          "registered_index": {
+            "type": "string"
+          },
+          "registered_region": {
+            "type": "string"
+          },
+          "registered_city": {
+            "type": "string"
+          },
+          "registered_street_address": {
+            "type": "string"
+          },
+          "state_reg_num": {
+            "type": "string"
+          },
+          "tin": {
+            "type": "string"
+          },
+          "legal_name": {
+            "type": "string"
+          },
+          "iec": {
+            "type": "string"
+          },
+          "security_group_id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "creation_date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "SecurityGroup": {
+        "type": "object",
+        "description": "Security group object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "rights": {
+            "type": "object",
+            "description": "Rights configuration"
+          }
+        }
+      },
+      "NotificationEntry": {
+        "type": "object",
+        "description": "Notification list item",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Notification ID"
+          },
+          "message": {
+            "type": "string",
+            "description": "Notification message"
+          },
+          "show_till": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date until notification should be shown"
+          }
+        }
+      },
+      "HistoryTypeEntry": {
+        "type": "object",
+        "description": "History event type entry",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "History event type"
+          },
+          "description": {
+            "type": "string",
+            "description": "Localized description"
+          }
+        }
+      },
+      "BeaconDataEntry": {
+        "type": "object",
+        "description": "BLE beacon data entry",
+        "properties": {
+          "tracker_id": {
+            "type": "integer"
+          },
+          "hardware_id": {
+            "type": "string"
+          },
+          "rssi": {
+            "type": "integer",
+            "description": "Received signal strength indicator"
+          },
+          "get_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "ext_data": {
+            "type": "object",
+            "description": "Additional beacon data"
+          }
+        }
+      },
+      "CounterValue": {
+        "type": "object",
+        "description": "Counter value (e.g. odometer, engine hours)",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "odometer",
+              "engine_hours"
+            ]
+          },
+          "multiplier": {
+            "type": "number"
+          }
+        }
+      },
+      "Feedback": {
+        "type": "object",
+        "description": "Feedback object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Entity": {
+        "type": "object",
+        "description": "Entity (customizable object) definition",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "description": "Entity field definitions"
+          }
+        }
+      },
+      "EntityField": {
+        "type": "object",
+        "description": "Entity field object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SearchConditions": {
+        "type": "object",
+        "description": "Entity search conditions",
+        "properties": {}
+      },
+      "User": {
+        "type": "object",
+        "description": "User object (simplified; full structure in docs)",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "login": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "activated": {
+            "type": "boolean"
+          },
+          "creation_date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "UserSettings": {
+        "type": "object",
+        "description": "User settings object",
+        "properties": {
+          "locale": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "unit_system": {
+            "type": "string"
+          }
+        }
+      },
+      "AuditLogEntry": {
+        "type": "object",
+        "description": "Audit log entry",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
+          },
+          "action": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "details": {
+            "type": "object"
+          }
+        }
+      },
+      "Vehicle": {
+        "type": "object",
+        "description": "Vehicle object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "tracker_id": {
+            "type": "integer"
+          },
+          "tracker_label": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "max_speed": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "truck",
+              "car",
+              "bus",
+              "special"
+            ]
+          },
+          "subtype": {
+            "type": "string"
+          },
+          "garage_id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "reg_number": {
+            "type": "string"
+          },
+          "vin": {
+            "type": "string"
+          },
+          "manufacture_year": {
+            "type": "integer"
+          },
+          "color": {
+            "type": "string"
+          },
+          "avatar_file_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "VehicleStatusListing": {
+        "type": "object",
+        "description": "Vehicle status listing object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "statuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Status"
+            }
+          }
+        }
+      },
+      "Garage": {
+        "type": "object",
+        "description": "Garage object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "organization_name": {
+            "type": "string"
+          }
+        }
+      },
+      "ServiceTask": {
+        "type": "object",
+        "description": "Vehicle service task object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "tracker_id": {
+            "type": "integer"
+          },
+          "vehicle_id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "due_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "DriverJournalEntry": {
+        "type": "object",
+        "description": "Driver journal entry",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "tracker_id": {
+            "type": "integer"
+          },
+          "driver_id": {
+            "type": "integer"
+          },
+          "start_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "Place": {
+        "type": "object",
+        "description": "Place/POI object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "lat": {
+            "type": "number"
+          },
+          "lng": {
+            "type": "number"
+          },
+          "radius": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "description": "Field service task object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "tracker_id": {
+            "type": "integer"
+          },
+          "employee_id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "place_id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "creation_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "Checkpoint": {
+        "type": "object",
+        "description": "Task checkpoint object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "task_id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer"
+          },
+          "lat": {
+            "type": "number"
+          },
+          "lng": {
+            "type": "number"
+          }
+        }
+      },
+      "Route": {
+        "type": "object",
+        "description": "Task route object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "task_id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "tracker_id": {
+            "type": "integer"
+          },
+          "checkpoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Checkpoint"
+            }
+          }
+        }
+      },
+      "TaskScheduleEntry": {
+        "type": "object",
+        "description": "Task schedule entry",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "task_id": {
+            "type": "integer"
+          },
+          "tracker_id": {
+            "type": "integer"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Employee": {
+        "type": "object",
+        "description": "Employee object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "tracker_id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "Department": {
+        "type": "object",
+        "description": "Department object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "parent_id": {
+            "type": "integer",
+            "nullable": true
+          }
+        }
+      },
+      "Checkin": {
+        "type": "object",
+        "description": "Check-in object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "tracker_id": {
+            "type": "integer"
+          },
+          "template_id": {
+            "type": "integer"
+          },
+          "creation_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "form_data": {
+            "type": "object"
+          }
+        }
+      },
+      "Form": {
+        "type": "object",
+        "description": "Form object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "template_id": {
+            "type": "integer"
+          },
+          "task_id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "fields": {
+            "type": "array"
+          }
+        }
+      },
+      "FormFile": {
+        "type": "object",
+        "description": "Form file object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "form_id": {
+            "type": "integer"
+          },
+          "field_id": {
+            "type": "string"
+          },
+          "file_name": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          }
+        }
+      },
+      "FormTemplate": {
+        "type": "object",
+        "description": "Form template object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array"
+          }
+        }
+      },
+      "Rule": {
+        "type": "object",
+        "description": "Tracker rule object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "tracker_id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "template_id": {
+            "type": "integer"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "conditions": {
+            "type": "object"
+          },
+          "actions": {
+            "type": "object"
+          }
+        }
+      },
+      "Readings": {
+        "type": "object",
+        "description": "Readings batch object",
+        "properties": {
+          "tracker_id": {
+            "type": "integer"
+          },
+          "sensors": {
+            "type": "array",
+            "description": "Sensor readings"
+          }
+        }
+      },
+      "RetranslatorProtocol": {
+        "type": "object",
+        "description": "Retranslator protocol object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      },
+      "Retranslator": {
+        "type": "object",
+        "description": "Retranslator object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "tracker_id": {
+            "type": "integer"
+          },
+          "protocol_id": {
+            "type": "integer"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TrackerRetranslatorBinding": {
+        "type": "object",
+        "description": "Tracker retranslator binding",
+        "properties": {
+          "tracker_id": {
+            "type": "integer"
+          },
+          "retranslator_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "AssetGroupEntry": {
+        "type": "object",
+        "description": "Asset group object entry",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "trackers": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "ZoneBatchConvertErrors": {
+        "type": "object",
+        "description": "Zone batch convert response with errors",
+        "properties": {
+          "errors": {
+            "type": "object",
+            "description": "Parameter errors if present"
+          },
+          "limit_exceeded": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PaymentSystemSettings": {
+        "type": "object",
+        "description": "Payment system settings",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TariffPlan": {
+        "type": "object",
+        "description": "Tariff plan object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "tracker_limit": {
+            "type": "integer"
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Value": {
+        "type": "object",
+        "description": "Form field value (field-type-specific; type and value or type-specific fields)",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "value": {}
+        }
+      },
+      "TagListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of tags"
+      },
+      "VehicleValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Vehicle"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single vehicle"
+      },
+      "VehicleListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Vehicle"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of vehicles"
+      },
+      "TaskValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Task"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single task"
+      },
+      "TaskListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of tasks"
+      },
+      "EmployeeValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single employee"
+      },
+      "EmployeeListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Employee"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of employees"
+      },
+      "PlaceValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Place"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single place"
+      },
+      "PlaceListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Place"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of places"
+      },
+      "FormValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Form"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single form"
+      },
+      "CheckinValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Checkin"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single checkin"
+      },
+      "CheckinListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Checkin"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of checkins"
+      },
+      "SubuserListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Subuser"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of subusers"
+      },
+      "EntityValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Entity"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single entity"
+      },
+      "EntityListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Entity"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of entitys"
+      },
+      "NotificationEntryListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NotificationEntry"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of notificationentrys"
+      },
+      "PluginListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Plugin"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of plugins"
+      },
+      "BillListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Bill"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of bills"
+      },
+      "TariffPlanListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TariffPlan"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of tariffplans"
+      },
+      "DepartmentListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Department"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of departments"
+      },
+      "GarageListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Garage"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of garages"
+      },
+      "PaymentSystemSettingsListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PaymentSystemSettings"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of paymentsystemsettingss"
+      },
+      "RetranslatorListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Retranslator"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of retranslators"
+      },
+      "TransactionListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of transactions"
+      },
+      "MapLayerValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/MapLayer"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single maplayer"
+      },
+      "MapLayerListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MapLayer"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of maplayers"
+      },
+      "StatusListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of statuss"
+      },
+      "AssetGroupEntryListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AssetGroupEntry"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of assetgroupentrys"
+      },
+      "ApiKeyListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ApiKey"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of apikeys"
+      },
+      "FormTemplateValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/FormTemplate"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single formtemplate"
+      },
+      "FormTemplateListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FormTemplate"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of formtemplates"
+      },
+      "ReportScheduleEntryListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ReportScheduleEntry"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of reportscheduleentrys"
+      },
+      "RetranslatorProtocolListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RetranslatorProtocol"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of retranslatorprotocols"
+      },
+      "GroupListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Group"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of groups"
+      },
+      "RuleListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Rule"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of rules"
+      },
+      "CheckpointValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/Checkpoint"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single checkpoint"
+      },
+      "CheckpointListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Checkpoint"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of checkpoints"
+      },
+      "RouteListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Route"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of routes"
+      },
+      "TaskScheduleEntryValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/TaskScheduleEntry"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single taskscheduleentry"
+      },
+      "TaskScheduleEntryListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TaskScheduleEntry"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of taskscheduleentrys"
+      },
+      "DriverJournalEntryListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DriverJournalEntry"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of driverjournalentrys"
+      },
+      "ServiceTaskValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/ServiceTask"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single servicetask"
+      },
+      "ServiceTaskListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ServiceTask"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of servicetasks"
+      },
+      "UserSettingsValueResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "$ref": "#/components/schemas/UserSettings"
+              }
+            }
+          }
+        ],
+        "description": "Success response with a single usersettings"
+      },
+      "SecurityGroupListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccessResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SecurityGroup"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Success response with list of securitygroups"
       }
     },
     "responses": {
@@ -12784,6 +15179,496 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/SuccessResponse"
+            }
+          }
+        }
+      },
+      "OkTrackerValue": {
+        "description": "Successful response with a single tracker",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/TrackerValueResponse"
+            }
+          }
+        }
+      },
+      "OkTrackerList": {
+        "description": "Successful response with list of trackers",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/TrackerListResponse"
+            }
+          }
+        }
+      },
+      "OkZoneValue": {
+        "description": "Successful response with a single zone",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ZoneValueResponse"
+            }
+          }
+        }
+      },
+      "OkZoneList": {
+        "description": "Successful response with list of zones",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ZoneListResponse"
+            }
+          }
+        }
+      },
+      "OkTagList": {
+        "description": "Successful response with list of tags",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/TagListResponse"
+            }
+          }
+        }
+      },
+      "OkVehicleValue": {
+        "description": "Successful response with a single vehicle",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VehicleValueResponse"
+            }
+          }
+        }
+      },
+      "OkVehicleList": {
+        "description": "Successful response with list of vehicles",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VehicleListResponse"
+            }
+          }
+        }
+      },
+      "OkTaskValue": {
+        "description": "Successful response with a single task",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/TaskValueResponse"
+            }
+          }
+        }
+      },
+      "OkTaskList": {
+        "description": "Successful response with list of tasks",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/TaskListResponse"
+            }
+          }
+        }
+      },
+      "OkEmployeeValue": {
+        "description": "Successful response with a single employee",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EmployeeValueResponse"
+            }
+          }
+        }
+      },
+      "OkEmployeeList": {
+        "description": "Successful response with list of employees",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EmployeeListResponse"
+            }
+          }
+        }
+      },
+      "OkPlaceValue": {
+        "description": "Successful response with a single place",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlaceValueResponse"
+            }
+          }
+        }
+      },
+      "OkPlaceList": {
+        "description": "Successful response with list of places",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlaceListResponse"
+            }
+          }
+        }
+      },
+      "OkFormValue": {
+        "description": "Successful response with a single form",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/FormValueResponse"
+            }
+          }
+        }
+      },
+      "OkCheckinValue": {
+        "description": "Successful response with a single checkin",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CheckinValueResponse"
+            }
+          }
+        }
+      },
+      "OkCheckinList": {
+        "description": "Successful response with list of checkins",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CheckinListResponse"
+            }
+          }
+        }
+      },
+      "OkSubuserList": {
+        "description": "Successful response with list of subusers",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SubuserListResponse"
+            }
+          }
+        }
+      },
+      "OkEntityValue": {
+        "description": "Successful response with a single entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EntityValueResponse"
+            }
+          }
+        }
+      },
+      "OkEntityList": {
+        "description": "Successful response with list of entitys",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EntityListResponse"
+            }
+          }
+        }
+      },
+      "OkNotificationEntryList": {
+        "description": "Successful response with list of notificationentrys",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/NotificationEntryListResponse"
+            }
+          }
+        }
+      },
+      "OkPluginList": {
+        "description": "Successful response with list of plugins",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PluginListResponse"
+            }
+          }
+        }
+      },
+      "OkBillList": {
+        "description": "Successful response with list of bills",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/BillListResponse"
+            }
+          }
+        }
+      },
+      "OkTariffPlanList": {
+        "description": "Successful response with list of tariffplans",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/TariffPlanListResponse"
+            }
+          }
+        }
+      },
+      "OkDepartmentList": {
+        "description": "Successful response with list of departments",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DepartmentListResponse"
+            }
+          }
+        }
+      },
+      "OkGarageList": {
+        "description": "Successful response with list of garages",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GarageListResponse"
+            }
+          }
+        }
+      },
+      "OkPaymentSystemSettingsList": {
+        "description": "Successful response with list of paymentsystemsettingss",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PaymentSystemSettingsListResponse"
+            }
+          }
+        }
+      },
+      "OkRetranslatorList": {
+        "description": "Successful response with list of retranslators",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RetranslatorListResponse"
+            }
+          }
+        }
+      },
+      "OkTransactionList": {
+        "description": "Successful response with list of transactions",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/TransactionListResponse"
+            }
+          }
+        }
+      },
+      "OkMapLayerValue": {
+        "description": "Successful response with a single maplayer",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/MapLayerValueResponse"
+            }
+          }
+        }
+      },
+      "OkMapLayerList": {
+        "description": "Successful response with list of maplayers",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/MapLayerListResponse"
+            }
+          }
+        }
+      },
+      "OkStatusList": {
+        "description": "Successful response with list of statuss",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/StatusListResponse"
+            }
+          }
+        }
+      },
+      "OkAssetGroupEntryList": {
+        "description": "Successful response with list of assetgroupentrys",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AssetGroupEntryListResponse"
+            }
+          }
+        }
+      },
+      "OkApiKeyList": {
+        "description": "Successful response with list of apikeys",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ApiKeyListResponse"
+            }
+          }
+        }
+      },
+      "OkFormTemplateValue": {
+        "description": "Successful response with a single formtemplate",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/FormTemplateValueResponse"
+            }
+          }
+        }
+      },
+      "OkFormTemplateList": {
+        "description": "Successful response with list of formtemplates",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/FormTemplateListResponse"
+            }
+          }
+        }
+      },
+      "OkReportScheduleEntryList": {
+        "description": "Successful response with list of reportscheduleentrys",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ReportScheduleEntryListResponse"
+            }
+          }
+        }
+      },
+      "OkRetranslatorProtocolList": {
+        "description": "Successful response with list of retranslatorprotocols",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RetranslatorProtocolListResponse"
+            }
+          }
+        }
+      },
+      "OkGroupList": {
+        "description": "Successful response with list of groups",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GroupListResponse"
+            }
+          }
+        }
+      },
+      "OkRuleList": {
+        "description": "Successful response with list of rules",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RuleListResponse"
+            }
+          }
+        }
+      },
+      "OkCheckpointValue": {
+        "description": "Successful response with a single checkpoint",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CheckpointValueResponse"
+            }
+          }
+        }
+      },
+      "OkCheckpointList": {
+        "description": "Successful response with list of checkpoints",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CheckpointListResponse"
+            }
+          }
+        }
+      },
+      "OkRouteList": {
+        "description": "Successful response with list of routes",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RouteListResponse"
+            }
+          }
+        }
+      },
+      "OkTaskScheduleEntryValue": {
+        "description": "Successful response with a single taskscheduleentry",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/TaskScheduleEntryValueResponse"
+            }
+          }
+        }
+      },
+      "OkTaskScheduleEntryList": {
+        "description": "Successful response with list of taskscheduleentrys",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/TaskScheduleEntryListResponse"
+            }
+          }
+        }
+      },
+      "OkDriverJournalEntryList": {
+        "description": "Successful response with list of driverjournalentrys",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DriverJournalEntryListResponse"
+            }
+          }
+        }
+      },
+      "OkServiceTaskValue": {
+        "description": "Successful response with a single servicetask",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ServiceTaskValueResponse"
+            }
+          }
+        }
+      },
+      "OkServiceTaskList": {
+        "description": "Successful response with list of servicetasks",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ServiceTaskListResponse"
+            }
+          }
+        }
+      },
+      "OkUserSettingsValue": {
+        "description": "Successful response with a single usersettings",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/UserSettingsValueResponse"
+            }
+          }
+        }
+      },
+      "OkSecurityGroupList": {
+        "description": "Successful response with list of securitygroups",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SecurityGroupListResponse"
             }
           }
         }
