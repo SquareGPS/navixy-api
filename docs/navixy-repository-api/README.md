@@ -6,7 +6,7 @@
 
 **Navixy Repository is based on GraphQL.** Unlike REST APIs where you call multiple endpoints to gather related data, GraphQL allows you to request the exact fields you need in a single query. You describe the shape of the data you want, and the API returns it in that shape.
 
-For a quick primer on GraphQL concepts, see [GraphQL basics](graphql-basics.md).
+For a quick description of GraphQL concepts, see [GraphQL basics](graphql-basics.md).
 
 ## Purpose and capabilities
 
