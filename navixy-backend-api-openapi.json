@@ -11073,7 +11073,8 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/LocationLinkDeleteRequest" }
+              "schema": { "$ref": "#/components/schemas/LocationLinkDeleteRequest" },
+              "example": { "id": 103 }
             }
           }
         },
@@ -11105,13 +11106,14 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/LocationLinkListRequest" }
+              "schema": { "$ref": "#/components/schemas/LocationLinkListRequest" },
+              "example": { "offset": 0, "limit": 1000 }
             }
           }
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkLocationLinkList"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -11137,13 +11139,14 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/LocationLinkReadRequest" }
+              "schema": { "$ref": "#/components/schemas/LocationLinkReadRequest" },
+              "example": { "id": 103 }
             }
           }
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/OkValue"
+            "$ref": "#/components/responses/OkLocationLinkValue"
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -11169,7 +11172,8 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/LocationLinkStatusChangeRequest" }
+              "schema": { "$ref": "#/components/schemas/LocationLinkStatusChangeRequest" },
+              "example": { "id": 104, "is_active": false }
             }
           }
         },
@@ -12800,7 +12804,18 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/LocationLinkCreateRequest" }
+              "schema": { "$ref": "#/components/schemas/LocationLinkCreateRequest" },
+              "example": {
+                "lifetime": { "from": "2024-01-29 01:00:00", "to": "2024-01-30 01:00:00" },
+                "description": "One tracker link",
+                "trackers": [{ "alias": "John Doe", "tracker_id": 14, "params": { "object_data": ["speed", "address"] } }],
+                "params": {
+                  "bounding_zone_ids": [123, 234],
+                  "bounding_mode": "inside",
+                  "place_ids": [987, 654],
+                  "display_options": { "map": "roadmap", "autoscale": false, "show_icons": false, "show_driver_info": false, "show_vehicle_info": false, "trace_duration": 30 }
+                }
+              }
             }
           }
         },
@@ -12832,7 +12847,20 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/LocationLinkUpdateRequest" }
+              "schema": { "$ref": "#/components/schemas/LocationLinkUpdateRequest" },
+              "example": {
+                "id": 104,
+                "lifetime": { "from": "2024-01-29 01:00:00", "to": "2024-01-30 01:00:00" },
+                "description": "One tracker link",
+                "trackers": [{ "alias": "John Doe", "tracker_id": 14, "params": { "object_data": ["speed", "address"] } }],
+                "params": {
+                  "bounding_zone_ids": [123, 456],
+                  "bounding_mode": "inside",
+                  "place_ids": [987, 654],
+                  "shorten_url": false,
+                  "display_options": { "map": "roadmap", "autoscale": false, "show_icons": false, "show_driver_info": false, "show_vehicle_info": false, "trace_duration": 30 }
+                }
+              }
             }
           }
         },
@@ -13516,7 +13544,7 @@
       },
       "LocationLinkLifetime": {
         "type": "object",
-        "description": "Start and end of the Geo Link session.",
+        "description": "Optional. Start and end of the session.",
         "properties": {
           "from": { "type": "string", "description": "Start date/time.", "example": "2024-01-29 01:00:00" },
           "to": { "type": "string", "description": "End date/time.", "example": "2024-01-30 01:00:00" }
@@ -13574,11 +13602,11 @@
         "description": "Request body for creating a Geo Link.",
         "properties": {
           "lifetime": { "$ref": "#/components/schemas/LocationLinkLifetime" },
-          "description": { "type": "string", "description": "Link description. Printable characters, max length 255.", "maxLength": 255 },
+          "description": { "type": "string", "description": "Link's description. Only printable characters. Max length: 255.", "maxLength": 255 },
           "trackers": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/LocationLinkTrackerEntry" },
-            "description": "List of tracker IDs with parameters. Length 1 to 100.",
+            "description": "List of tracker IDs with parameters for each tracker. Allowed length 1 to 100.",
             "minItems": 1,
             "maxItems": 100
           },
@@ -13593,7 +13621,7 @@
         "properties": {
           "id": { "type": "integer", "description": "Session ID." },
           "lifetime": { "$ref": "#/components/schemas/LocationLinkLifetime" },
-          "description": { "type": "string", "description": "Link description. Printable characters, max length 255.", "maxLength": 255 },
+          "description": { "type": "string", "description": "Link's description. Only printable characters. Max length: 255.", "maxLength": 255 },
           "trackers": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/LocationLinkTrackerEntry" },
@@ -13617,13 +13645,13 @@
       },
       "LocationLinkListRequest": {
         "type": "object",
-        "description": "Request body for listing Geo Links. Optional filter, conditions, offset, limit, sort.",
+        "description": "Request body for listing Geo Links.",
         "properties": {
-          "filter": { "type": "string", "description": "Optional filter for all fields. If used with conditions, both must match." },
-          "conditions": { "type": "array", "items": { "type": "object" }, "description": "Search conditions. See Search conditions in Backend API docs. Fields: trackers, aliases, creator, description." },
-          "offset": { "type": "integer", "description": "Offset. Default 0." },
-          "limit": { "type": "integer", "description": "Limit. Default 10000." },
-          "sort": { "type": "array", "items": { "type": "string" }, "description": "Sort options, e.g. [\"creator=asc\", \"id=desc\"]. Fields: id, create_date, expire_date, trackers, aliases, status, creator, description." }
+          "filter": { "type": "string", "description": "Optional. Filter for all fields. If used with conditions, both filter and conditions must match for every returned link." },
+          "conditions": { "type": "array", "items": { "type": "object" }, "description": "Optional. Search conditions array. See Search conditions in Backend API docs. Condition fields: trackers, aliases, creator, description." },
+          "offset": { "type": "integer", "description": "Optional. Offset, default is 0." },
+          "limit": { "type": "integer", "description": "Optional. Limit, default is 10,000." },
+          "sort": { "type": "array", "items": { "type": "string" }, "description": "Optional. Pairs of field name and direction, e.g. [\"creator=asc\", \"id=desc\"]. Sort fields: id, create_date, expire_date, trackers, aliases, status, creator, description. Default: id=asc." }
         },
         "additionalProperties": false
       },
@@ -13645,6 +13673,38 @@
         },
         "required": ["id", "is_active"],
         "additionalProperties": false
+      },
+      "LocationLink": {
+        "type": "object",
+        "description": "Geo Link (location-sharing session) as returned by read/list.",
+        "properties": {
+          "id": { "type": "integer", "description": "Session ID." },
+          "hash": { "type": "string", "description": "Link hash for sharing." },
+          "create_date": { "type": "string", "description": "Creation date/time." },
+          "creator_id": { "type": "integer", "description": "Creator user ID." },
+          "description": { "type": "string", "description": "Link description." },
+          "enabled": { "type": "boolean", "description": "Whether the link is active." },
+          "lifetime": { "$ref": "#/components/schemas/LocationLinkLifetime" },
+          "params": { "$ref": "#/components/schemas/LocationLinkParams" },
+          "trackers": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/LocationLinkTrackerEntry" },
+            "description": "Trackers in this link with alias and object_data."
+          }
+        },
+        "additionalProperties": false
+      },
+      "LocationLinkValueResponse": {
+        "allOf": [
+          { "$ref": "#/components/schemas/SuccessResponse" },
+          { "type": "object", "properties": { "value": { "$ref": "#/components/schemas/LocationLink" } }, "description": "Success response with a single Geo Link." }
+        ]
+      },
+      "LocationLinkListResponse": {
+        "allOf": [
+          { "$ref": "#/components/schemas/SuccessResponse" },
+          { "type": "object", "properties": { "list": { "type": "array", "items": { "$ref": "#/components/schemas/LocationLink" } } }, "description": "Success response with list of Geo Links." }
+        ]
       },
       "RequestBodyBase": {
         "type": "object",
@@ -15740,6 +15800,52 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/ZoneListResponse"
+            }
+          }
+        }
+      },
+      "OkLocationLinkValue": {
+        "description": "Successful response with a single Geo Link",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/LocationLinkValueResponse" },
+            "example": {
+              "success": true,
+              "value": {
+                "id": 103,
+                "hash": "700d4a5400000000600d4a5400000103",
+                "create_date": "2024-01-29 03:00:00",
+                "creator_id": 3,
+                "description": "Another one tracker",
+                "enabled": true,
+                "lifetime": { "from": "2024-01-30 00:00:00", "to": "2024-01-30 03:00:00" },
+                "params": { "bounding_mode": "outside", "bounding_zone_ids": [51], "place_ids": null, "display_options": { "map": "osm", "autoscale": false, "show_icons": false, "show_driver_info": false, "show_vehicle_info": false, "trace_duration": 0 } },
+                "trackers": [{ "alias": "Jane Doe", "tracker_id": 15, "params": { "object_data": [] } }]
+              }
+            }
+          }
+        }
+      },
+      "OkLocationLinkList": {
+        "description": "Successful response with list of Geo Links",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/LocationLinkListResponse" },
+            "example": {
+              "success": true,
+              "list": [
+                {
+                  "id": 103,
+                  "hash": "700d4a5400000000600d4a5400000103",
+                  "create_date": "2024-01-29 03:00:00",
+                  "creator_id": 3,
+                  "description": "Another one tracker",
+                  "enabled": true,
+                  "lifetime": { "from": "2024-01-30 00:00:00", "to": "2024-01-30 03:00:00" },
+                  "params": { "bounding_mode": "outside", "bounding_zone_ids": [51], "place_ids": null, "display_options": { "map": "osm", "autoscale": false, "show_icons": false, "show_driver_info": false, "show_vehicle_info": false, "trace_duration": 0 } },
+                  "trackers": [{ "alias": "Jane Doe", "tracker_id": 15, "params": { "object_data": [] } }]
+                }
+              ]
             }
           }
         }

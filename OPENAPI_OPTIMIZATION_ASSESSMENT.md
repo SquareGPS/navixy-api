@@ -285,3 +285,11 @@ For base path `/tracker/location/link`, the following approach was applied and c
 
 **Request schemas added:** `LocationLinkLifetime`, `LocationLinkDisplayOptions`, `LocationLinkParams`, `LocationLinkTrackerEntry`, `LocationLinkCreateRequest`, `LocationLinkUpdateRequest`, `LocationLinkReadRequest`, `LocationLinkListRequest`, `LocationLinkDeleteRequest`, `LocationLinkStatusChangeRequest`.  
 **Paths updated:** `/tracker/location/link/create`, `/update`, `/read`, `/list`, `/delete`, `/status/change`.
+
+5. **Incorporate docs: response schemas, examples, parameter text**  
+   - **Response object schema:** Added `LocationLink` (and `LocationLinkValueResponse` / `LocationLinkListResponse`) so `read` and `list` have a typed response body matching the doc’s Response JSON.  
+   - **Request examples:** Each geo link operation has an `example` in `requestBody.content['application/json']` taken from the doc (e.g. create/update body without hash; read/list/delete/status/change with id, offset/limit, or is_active).  
+   - **Response examples:** `OkLocationLinkValue` and `OkLocationLinkList` include an `example` with the same shape as in the doc (success + value object, or success + list of link objects).  
+   - **Parameter descriptions:** Aligned with the doc’s Parameters tables (e.g. “Link’s description. Only printable characters. Max length: 255.”, “Optional. Offset, default is 0.”, “Optional. Limit, default is 10,000.”).  
+
+Repeating this for other endpoint groups (tracker, zone, vehicle, etc.): define response schemas from the doc’s Response JSON, add request/response examples from the doc’s examples, and copy parameter/restriction text from the Parameters tables into the spec.
