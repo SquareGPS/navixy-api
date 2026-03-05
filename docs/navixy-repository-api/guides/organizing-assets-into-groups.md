@@ -128,7 +128,7 @@ The key field on a group type is `allowedAssetTypes`: an optional list of constr
 
 Types can originate from three places: predefined by the platform (`SYSTEM`), created by your organization (`ORGANIZATION`), or inherited from a parent organization (`PARENT_ORGANIZATION`), exposed as `meta.origin`. You can only create, update, and delete types with `ORGANIZATION` origin — system and inherited types are read-only.
 
-For the full field reference, see AssetGroupType.
+For the full field reference, see [AssetGroupType](../assets/groups/types.md).
 
 ### Asset groups
 

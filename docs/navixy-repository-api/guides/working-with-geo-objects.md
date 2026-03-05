@@ -704,8 +704,8 @@ To resolve this:
 
 For more details on version conflicts, see [Optimistic locking](../optimistic-locking.md).
 
-### See alo
+### See also
 
 * [Geo objects reference](../geo-objects/): A complete list of all operations and types related to geo objects
 * [Filtering and sorting](../filtering-and-sorting.md): Full operator reference and value formats for custom field filters
-* [Optimistic locking](https://claude.ai/chat/optimistic-locking.md): How `version` works in update and delete mutations
+* [Optimistic locking](../optimistic-locking.md): How `version` works in update and delete mutations
