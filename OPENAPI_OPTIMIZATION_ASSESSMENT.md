@@ -263,3 +263,25 @@ If you want, the quick wins (1–2) can be applied directly to `navixy-backend-a
 - **57** object/structure entries; all have a corresponding schema in the spec (Status = Done).
 - **Spec** has 119 component schemas (57 inventory + response wrappers, request schemas, primitives, and supporting schemas such as `PluginFilter`, `TrackerTagBinding`, `Zone`, etc.).
 - Nothing from the inventory was missed.
+
+---
+
+## 8. Geo Links pilot: endpoint-specific body and descriptions
+
+For base path `/tracker/location/link`, the following approach was applied and can be reused for other endpoint groups:
+
+1. **Short body description**  
+   - `RequestBodyBase` description was shortened to one line: *"Endpoint-specific parameters. See operation schema and Backend API docs per path."* No auth text in the body.
+
+2. **No “other properties”**  
+   - Each geo link operation uses a **dedicated request schema** (e.g. `LocationLinkCreateRequest`, `LocationLinkReadRequest`) with only the parameters documented in the Backend API docs. Each of these schemas has **`additionalProperties: false`**, so there is no generic “other properties” parameter.
+
+3. **Richer descriptions**  
+   - Operation descriptions were taken from the docs and expanded with: what the call does, required sub-user rights where relevant, and error codes (e.g. 201, 204, 217, 236, 268) with short explanations.  
+   - Request schema properties use the same wording as the docs (e.g. “Session ID”, “Link description. Printable characters, max length 255.”).
+
+4. **Nested request types**  
+   - Shared structures (e.g. `LocationLinkLifetime`, `LocationLinkDisplayOptions`, `LocationLinkParams`, `LocationLinkTrackerEntry`) are defined as separate schemas and referenced so the request body is fully typed and documented.
+
+**Request schemas added:** `LocationLinkLifetime`, `LocationLinkDisplayOptions`, `LocationLinkParams`, `LocationLinkTrackerEntry`, `LocationLinkCreateRequest`, `LocationLinkUpdateRequest`, `LocationLinkReadRequest`, `LocationLinkListRequest`, `LocationLinkDeleteRequest`, `LocationLinkStatusChangeRequest`.  
+**Paths updated:** `/tracker/location/link/create`, `/update`, `/read`, `/list`, `/delete`, `/status/change`.

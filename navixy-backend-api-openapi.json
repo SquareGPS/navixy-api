@@ -11067,15 +11067,13 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_delete",
-        "description": "Deletes a link with a specified ID.",
+        "description": "Deletes a Geo Link with the specified ID. Error 201 if the link does not exist or does not belong to the current user.",
         "operationId": "tracker_location_link_delete",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestBodyBase"
-              }
+              "schema": { "$ref": "#/components/schemas/LocationLinkDeleteRequest" }
             }
           }
         },
@@ -11101,15 +11099,13 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_list",
-        "description": "Returns a list of a user's links.",
+        "description": "Returns a list of the user's Geo Links. Optional filter (string), conditions (search conditions array), offset (default 0), limit (default 10000), sort (e.g. [\"creator=asc\", \"id=desc\"]). Condition fields: trackers, aliases, creator, description. Sort fields: id, create_date, expire_date, trackers, aliases, status, creator, description. Default sort: id=asc.",
         "operationId": "tracker_location_link_list",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestBodyBase"
-              }
+              "schema": { "$ref": "#/components/schemas/LocationLinkListRequest" }
             }
           }
         },
@@ -11135,15 +11131,13 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_read",
-        "description": "Returns a link with a specified ID.",
+        "description": "Returns a Geo Link with the specified ID. Error 201 if not found or not owned by the current user.",
         "operationId": "tracker_location_link_read",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestBodyBase"
-              }
+              "schema": { "$ref": "#/components/schemas/LocationLinkReadRequest" }
             }
           }
         },
@@ -11169,15 +11163,13 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_status_change",
-        "description": "Lets to activate and deactivate a link.",
+        "description": "Activates or deactivates a Geo Link. Set is_active to false to deactivate. Error 201 if the link does not exist or does not belong to the current user.",
         "operationId": "tracker_location_link_status_change",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestBodyBase"
-              }
+              "schema": { "$ref": "#/components/schemas/LocationLinkStatusChangeRequest" }
             }
           }
         },
@@ -12802,15 +12794,13 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_create",
-        "description": "Backend API endpoint: POST /tracker/location/link/create",
+        "description": "Creates a new Geo Link. Up to 10000 geo-links per user account. Required sub-user rights: weblocator_session_create. Errors: 13 (insufficient rights), 204 (zone/place not found), 217 (nonexistent tracker), 236 (tariff: weblocator unavailable), 268 (quota exceeded).",
         "operationId": "tracker_location_link_create",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestBodyBase"
-              }
+              "schema": { "$ref": "#/components/schemas/LocationLinkCreateRequest" }
             }
           }
         },
@@ -12836,15 +12826,13 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_update",
-        "description": "Backend API endpoint: POST /tracker/location/link/update",
+        "description": "Updates an existing Geo Link. Required sub-user rights: weblocator_session_create. Errors: 13 (insufficient rights), 201 (link not found), 204 (zone/place not found), 217 (nonexistent tracker), 236 (tariff: weblocator unavailable).",
         "operationId": "tracker_location_link_update",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestBodyBase"
-              }
+              "schema": { "$ref": "#/components/schemas/LocationLinkUpdateRequest" }
             }
           }
         },
@@ -13526,9 +13514,141 @@
           }
         }
       },
+      "LocationLinkLifetime": {
+        "type": "object",
+        "description": "Start and end of the Geo Link session.",
+        "properties": {
+          "from": { "type": "string", "description": "Start date/time.", "example": "2024-01-29 01:00:00" },
+          "to": { "type": "string", "description": "End date/time.", "example": "2024-01-30 01:00:00" }
+        },
+        "additionalProperties": false
+      },
+      "LocationLinkDisplayOptions": {
+        "type": "object",
+        "description": "Display options for the Geo Link map.",
+        "properties": {
+          "map": { "type": "string", "description": "Map type: roadmap, satellite, hybrid, or other.", "example": "roadmap" },
+          "autoscale": { "type": "boolean", "description": "Autoscale map. Default true." },
+          "show_icons": { "type": "boolean", "description": "Show icons. Default false." },
+          "show_driver_info": { "type": "boolean", "description": "Show driver info. Default false." },
+          "show_vehicle_info": { "type": "boolean", "description": "Show vehicle info. Default false." },
+          "trace_duration": { "type": "integer", "description": "Trace duration in seconds. Default 5." }
+        },
+        "additionalProperties": false
+      },
+      "LocationLinkParams": {
+        "type": "object",
+        "description": "Link parameters: bounding zones, places, display options.",
+        "properties": {
+          "bounding_zone_ids": { "type": "array", "items": { "type": "integer" }, "description": "0..100 zone IDs.", "maxItems": 100 },
+          "bounding_mode": { "type": "string", "enum": ["inside", "outside"], "description": "Bounding mode; optional when no bounding zones." },
+          "place_ids": { "type": "array", "items": { "type": "integer" }, "description": "0..100 place IDs.", "maxItems": 100 },
+          "shorten_url": { "type": "boolean", "description": "Shorten URL. Default false." },
+          "display_options": { "$ref": "#/components/schemas/LocationLinkDisplayOptions" }
+        },
+        "additionalProperties": false
+      },
+      "LocationLinkTrackerEntry": {
+        "type": "object",
+        "description": "Tracker entry in a Geo Link: alias and object_data to show.",
+        "properties": {
+          "alias": { "type": "string", "description": "Optional display alias." },
+          "tracker_id": { "type": "integer", "description": "Tracker ID." },
+          "params": {
+            "type": "object",
+            "properties": {
+              "object_data": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Fields to show: speed, address, movement_status, connection_status, driver_name, driver_phone, vehicle_label, vehicle_reg_number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": ["tracker_id"],
+        "additionalProperties": false
+      },
+      "LocationLinkCreateRequest": {
+        "type": "object",
+        "description": "Request body for creating a Geo Link.",
+        "properties": {
+          "lifetime": { "$ref": "#/components/schemas/LocationLinkLifetime" },
+          "description": { "type": "string", "description": "Link description. Printable characters, max length 255.", "maxLength": 255 },
+          "trackers": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/LocationLinkTrackerEntry" },
+            "description": "List of tracker IDs with parameters. Length 1 to 100.",
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "params": { "$ref": "#/components/schemas/LocationLinkParams" }
+        },
+        "required": ["trackers"],
+        "additionalProperties": false
+      },
+      "LocationLinkUpdateRequest": {
+        "type": "object",
+        "description": "Request body for updating a Geo Link.",
+        "properties": {
+          "id": { "type": "integer", "description": "Session ID." },
+          "lifetime": { "$ref": "#/components/schemas/LocationLinkLifetime" },
+          "description": { "type": "string", "description": "Link description. Printable characters, max length 255.", "maxLength": 255 },
+          "trackers": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/LocationLinkTrackerEntry" },
+            "description": "List of tracker IDs with parameters. Length 1 to 100.",
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "params": { "$ref": "#/components/schemas/LocationLinkParams" }
+        },
+        "required": ["id"],
+        "additionalProperties": false
+      },
+      "LocationLinkReadRequest": {
+        "type": "object",
+        "description": "Request body for reading a Geo Link by ID.",
+        "properties": {
+          "id": { "type": "integer", "description": "Session ID." }
+        },
+        "required": ["id"],
+        "additionalProperties": false
+      },
+      "LocationLinkListRequest": {
+        "type": "object",
+        "description": "Request body for listing Geo Links. Optional filter, conditions, offset, limit, sort.",
+        "properties": {
+          "filter": { "type": "string", "description": "Optional filter for all fields. If used with conditions, both must match." },
+          "conditions": { "type": "array", "items": { "type": "object" }, "description": "Search conditions. See Search conditions in Backend API docs. Fields: trackers, aliases, creator, description." },
+          "offset": { "type": "integer", "description": "Offset. Default 0." },
+          "limit": { "type": "integer", "description": "Limit. Default 10000." },
+          "sort": { "type": "array", "items": { "type": "string" }, "description": "Sort options, e.g. [\"creator=asc\", \"id=desc\"]. Fields: id, create_date, expire_date, trackers, aliases, status, creator, description." }
+        },
+        "additionalProperties": false
+      },
+      "LocationLinkDeleteRequest": {
+        "type": "object",
+        "description": "Request body for deleting a Geo Link.",
+        "properties": {
+          "id": { "type": "integer", "description": "Session ID." }
+        },
+        "required": ["id"],
+        "additionalProperties": false
+      },
+      "LocationLinkStatusChangeRequest": {
+        "type": "object",
+        "description": "Request body for activating or deactivating a Geo Link.",
+        "properties": {
+          "id": { "type": "integer", "description": "Session ID." },
+          "is_active": { "type": "boolean", "description": "If false, the link is deactivated." }
+        },
+        "required": ["id", "is_active"],
+        "additionalProperties": false
+      },
       "RequestBodyBase": {
         "type": "object",
-        "description": "Request body contains only endpoint-specific parameters. Authentication is via the session hash in the request header (see Security); do not send hash in the body. The set of allowed parameters depends on the endpoint: see each operation description or the Backend API documentation for the list of parameters for a given path. Additional properties may be sent for endpoint-specific parameters not listed here.",
+        "description": "Endpoint-specific parameters. See operation schema and Backend API docs per path.",
         "properties": {},
         "additionalProperties": true
       },

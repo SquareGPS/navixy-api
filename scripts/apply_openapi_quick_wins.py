@@ -7,7 +7,7 @@ OPENAPI_PATH = Path(__file__).resolve().parent.parent / "navixy-backend-api-open
 
 REQUEST_BODY_BASE = {
     "type": "object",
-    "description": "Request body contains only endpoint-specific parameters. Authentication is via the session hash in the request header (see Security); do not send hash in the body. The set of allowed parameters depends on the endpoint: see each operation description or the Backend API documentation for the list of parameters for a given path. Additional properties may be sent for endpoint-specific parameters not listed here.",
+    "description": "Endpoint-specific parameters. See operation schema and Backend API docs per path.",
     "properties": {},
     "additionalProperties": True,
 }
