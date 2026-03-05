@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Navixy Backend API",
-    "description": "OpenAPI specification for the Navixy Backend API. Covers all resources and endpoints from the Backend API (base path /v2). Authentication via session hash (API key). Rate limit: 50 req/s per user and per IP. Responses: success with value/list/result or error with status code and description.",
+    "description": "OpenAPI specification for the Navixy Backend API. Covers all resources and endpoints from the Backend API (base path /v2). Authentication is via session hash (API key) in the request header only; do not send hash in the body. Rate limit: 50 req/s per user and per IP. Responses: success with value/list/result or error with status code and description.",
     "version": "2.0.0",
     "contact": {
       "name": "Navixy API Support"
@@ -1268,7 +1268,7 @@
           "Tracking"
         ],
         "summary": "tracker_sensor_calibration_data_read",
-        "description": "Backend API endpoint: POST /tracker/sensor/calibration_data/read",
+        "description": "Gets calibration data for sensor.",
         "operationId": "tracker_sensor_calibration_data_read",
         "requestBody": {
           "required": true,
@@ -1302,7 +1302,7 @@
           "Tracking"
         ],
         "summary": "tracker_sensor_calibration_data_update",
-        "description": "Backend API endpoint: POST /tracker/sensor/calibration_data/update",
+        "description": "Replaces the calibration data for a sensor.",
         "operationId": "tracker_sensor_calibration_data_update",
         "requestBody": {
           "required": true,
@@ -1336,7 +1336,7 @@
           "Tracking"
         ],
         "summary": "tracker_sensor_calibration_data_upload_omnicomm",
-        "description": "Backend API endpoint: POST /tracker/sensor/calibration_data/upload_omnicomm",
+        "description": "Replaces the calibration data for a sensor from Omnicomm LLS monitor's XML configuration file. If XML file contains information about multiple sensors, user must specify which sensor number to use.",
         "operationId": "tracker_sensor_calibration_data_upload_omnicomm",
         "requestBody": {
           "required": true,
@@ -2703,7 +2703,7 @@
           "Routes"
         ],
         "summary": "track_list",
-        "description": "Backend API endpoint: POST /track/list",
+        "description": "This method retrieves a list of tracks for a given tracker within a specified time period.",
         "operationId": "track_list",
         "requestBody": {
           "required": true,
@@ -2737,7 +2737,7 @@
           "Routes"
         ],
         "summary": "track_read",
-        "description": "Backend API endpoint: POST /track/read",
+        "description": "This method fetches all track points that a GPS tracker has recorded and sent to the platform within a specified time\\ frame. The timestamp for each point corresponds to when the tracker recorded the point, adjusted to the user's time zone.",
         "operationId": "track_read",
         "requestBody": {
           "required": true,
@@ -2771,7 +2771,7 @@
           "Routes"
         ],
         "summary": "track_waybill_download",
-        "description": "Backend API endpoint: POST /track/waybill/download",
+        "description": "Downloads a waybill report DOCX file for tracks of the specified tracker and time period.",
         "operationId": "track_waybill_download",
         "requestBody": {
           "required": true,
@@ -2805,7 +2805,7 @@
           "Routes"
         ],
         "summary": "route_google_get",
-        "description": "Backend API endpoint: POST /route/google/get",
+        "description": "Gets route points using Google Directions API.",
         "operationId": "route_google_get",
         "requestBody": {
           "required": true,
@@ -2839,7 +2839,7 @@
           "Routes"
         ],
         "summary": "route_osrm_get",
-        "description": "Backend API endpoint: POST /route/osrm/get",
+        "description": "Gets route points via OSRM API.",
         "operationId": "route_osrm_get",
         "requestBody": {
           "required": true,
@@ -2873,7 +2873,7 @@
           "Routes"
         ],
         "summary": "route_progorod_get",
-        "description": "Backend API endpoint: POST /route/progorod/get",
+        "description": "Gets route points using Progorod router.",
         "operationId": "route_progorod_get",
         "requestBody": {
           "required": true,
@@ -3179,7 +3179,7 @@
           "Assets"
         ],
         "summary": "asset_group_create",
-        "description": "Backend API endpoint: POST /asset_group/create",
+        "description": "Create new asset group.",
         "operationId": "asset_group_create",
         "requestBody": {
           "required": true,
@@ -3213,7 +3213,7 @@
           "Assets"
         ],
         "summary": "asset_group_list",
-        "description": "Backend API endpoint: POST /asset_group/list",
+        "description": "List asset groups by ids or asset.",
         "operationId": "asset_group_list",
         "requestBody": {
           "required": true,
@@ -3247,7 +3247,7 @@
           "Assets"
         ],
         "summary": "asset_group_set",
-        "description": "Backend API endpoint: POST /asset_group/set",
+        "description": "Set assets to existing group.",
         "operationId": "asset_group_set",
         "requestBody": {
           "required": true,
@@ -3281,7 +3281,7 @@
           "Assets"
         ],
         "summary": "asset_group_remove",
-        "description": "Backend API endpoint: POST /asset_group/remove",
+        "description": "Remove assets from group.",
         "operationId": "asset_group_remove",
         "requestBody": {
           "required": true,
@@ -3315,7 +3315,7 @@
           "Assets"
         ],
         "summary": "asset_group_update",
-        "description": "Backend API endpoint: POST /asset_group/update",
+        "description": "Update asset group name.",
         "operationId": "asset_group_update",
         "requestBody": {
           "required": true,
@@ -3349,7 +3349,7 @@
           "Assets"
         ],
         "summary": "asset_group_delete",
-        "description": "Backend API endpoint: POST /asset_group/delete",
+        "description": "Delete asset group.",
         "operationId": "asset_group_delete",
         "requestBody": {
           "required": true,
@@ -3383,7 +3383,7 @@
           "Beacons"
         ],
         "summary": "beacon_data_read",
-        "description": "Backend API endpoint: POST /beacon/data/read",
+        "description": "List of beacon data history between `from` date/time and `to` date/time sorted by **get\\_time** field.",
         "operationId": "beacon_data_read",
         "requestBody": {
           "required": true,
@@ -3451,7 +3451,7 @@
           "Geocoding"
         ],
         "summary": "geocoder_search_address",
-        "description": "Backend API endpoint: POST /geocoder/search_address",
+        "description": "Performs a forward geocoding. Returns a list of locations matching the given address. Items in the list sorted by relevance.",
         "operationId": "geocoder_search_address",
         "requestBody": {
           "required": true,
@@ -3485,7 +3485,7 @@
           "Geocoding"
         ],
         "summary": "geocoder_search_location",
-        "description": "Backend API endpoint: POST /geocoder/search_location",
+        "description": "Search address by location using geocoder.",
         "operationId": "geocoder_search_location",
         "requestBody": {
           "required": true,
@@ -3519,7 +3519,7 @@
           "Maps"
         ],
         "summary": "map_layer_read",
-        "description": "Backend API endpoint: POST /map_layer/read",
+        "description": "Reads the body of the specified layer.",
         "operationId": "map_layer_read",
         "requestBody": {
           "required": true,
@@ -3553,7 +3553,7 @@
           "Maps"
         ],
         "summary": "map_layer_list",
-        "description": "Backend API endpoint: POST /map_layer/list",
+        "description": "Returns metadata for all map layers for the user.",
         "operationId": "map_layer_list",
         "requestBody": {
           "required": true,
@@ -3587,7 +3587,7 @@
           "Maps"
         ],
         "summary": "map_layer_upload",
-        "description": "Backend API endpoint: POST /map_layer/upload",
+        "description": "Uploads new map layer.",
         "operationId": "map_layer_upload",
         "requestBody": {
           "required": true,
@@ -3621,7 +3621,7 @@
           "Maps"
         ],
         "summary": "map_layer_update",
-        "description": "Backend API endpoint: POST /map_layer/update",
+        "description": "Updates metadata for the specified map layer.",
         "operationId": "map_layer_update",
         "requestBody": {
           "required": true,
@@ -3655,7 +3655,7 @@
           "Maps"
         ],
         "summary": "map_layer_delete",
-        "description": "Backend API endpoint: POST /map_layer/delete",
+        "description": "Deletes specified layer.",
         "operationId": "map_layer_delete",
         "requestBody": {
           "required": true,
@@ -3689,7 +3689,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_create",
-        "description": "Backend API endpoint: POST /vehicle/create",
+        "description": "Creates a new vehicle.",
         "operationId": "vehicle_create",
         "requestBody": {
           "required": true,
@@ -3723,7 +3723,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_delete",
-        "description": "Backend API endpoint: POST /vehicle/delete",
+        "description": "Deletes a vehicles with the specified IDs. Only one of the following parameters must be specified.",
         "operationId": "vehicle_delete",
         "requestBody": {
           "required": true,
@@ -3757,7 +3757,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_list",
-        "description": "Backend API endpoint: POST /vehicle/list",
+        "description": "Gets all vehicles belonging to user.",
         "operationId": "vehicle_list",
         "requestBody": {
           "required": true,
@@ -3791,7 +3791,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_read",
-        "description": "Backend API endpoint: POST /vehicle/read",
+        "description": "Gets vehicle by specified ID.",
         "operationId": "vehicle_read",
         "requestBody": {
           "required": true,
@@ -3825,7 +3825,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_update",
-        "description": "Backend API endpoint: POST /vehicle/update",
+        "description": "Updates existing vehicle.",
         "operationId": "vehicle_update",
         "requestBody": {
           "required": true,
@@ -3859,7 +3859,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_batch_convert",
-        "description": "Backend API endpoint: POST /vehicle/batch_convert",
+        "description": "Convert batch of tab-delimited vehicles and return list of checked vehicles with errors.",
         "operationId": "vehicle_batch_convert",
         "requestBody": {
           "required": true,
@@ -3893,7 +3893,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_service_task_batch_create",
-        "description": "Backend API endpoint: POST /vehicle/service_task/batch_create",
+        "description": "Creates multiple service works.",
         "operationId": "vehicle_service_task_batch_create",
         "requestBody": {
           "required": true,
@@ -3927,7 +3927,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_service_task_create",
-        "description": "Backend API endpoint: POST /vehicle/service_task/create",
+        "description": "Creates a new vehicle service work. For vehicles with associated tracker only.",
         "operationId": "vehicle_service_task_create",
         "requestBody": {
           "required": true,
@@ -3961,7 +3961,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_service_task_delete",
-        "description": "Backend API endpoint: POST /vehicle/service_task/delete",
+        "description": "Deletes a vehicle service work.",
         "operationId": "vehicle_service_task_delete",
         "requestBody": {
           "required": true,
@@ -3995,7 +3995,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_service_task_download",
-        "description": "Backend API endpoint: POST /vehicle/service_task/download",
+        "description": "Downloads report of service works.",
         "operationId": "vehicle_service_task_download",
         "requestBody": {
           "required": true,
@@ -4029,7 +4029,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_service_task_list",
-        "description": "Backend API endpoint: POST /vehicle/service_task/list",
+        "description": "List all service works of all user vehicles.",
         "operationId": "vehicle_service_task_list",
         "requestBody": {
           "required": true,
@@ -4063,7 +4063,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_service_task_read",
-        "description": "Backend API endpoint: POST /vehicle/service_task/read",
+        "description": "Gets service work info by its id.",
         "operationId": "vehicle_service_task_read",
         "requestBody": {
           "required": true,
@@ -4097,7 +4097,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_service_task_set_status",
-        "description": "Backend API endpoint: POST /vehicle/service_task/set_status",
+        "description": "Updates task status, and saved (on `done` **status**) current date and values of used (in condition) counters for \"freeze\" wearing percent.",
         "operationId": "vehicle_service_task_set_status",
         "requestBody": {
           "required": true,
@@ -4131,7 +4131,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_service_task_update",
-        "description": "Backend API endpoint: POST /vehicle/service_task/update",
+        "description": "Updates information fields and notification settings of vehicle service work.",
         "operationId": "vehicle_service_task_update",
         "requestBody": {
           "required": true,
@@ -4165,7 +4165,7 @@
           "Drivers"
         ],
         "summary": "driver_journal_entry_list",
-        "description": "Backend API endpoint: POST /driver/journal/entry/list",
+        "description": "Gets driver journal entries.\\ There are two ways to get entries: by their IDs or by specifying date range.\\ If there are no `entry_ids` in request, entries will be selected by intersecting their date range with date range from request (`from` and `to` parameters).",
         "operationId": "driver_journal_entry_list",
         "requestBody": {
           "required": true,
@@ -4199,7 +4199,7 @@
           "Drivers"
         ],
         "summary": "driver_journal_entry_create",
-        "description": "Backend API endpoint: POST /driver/journal/entry/create",
+        "description": "Creates driver journal entries.",
         "operationId": "driver_journal_entry_create",
         "requestBody": {
           "required": true,
@@ -4233,7 +4233,7 @@
           "Drivers"
         ],
         "summary": "driver_journal_entry_update",
-        "description": "Backend API endpoint: POST /driver/journal/entry/update",
+        "description": "Updates driver journal entry. Only two fields `type` and `comment` are available to update.",
         "operationId": "driver_journal_entry_update",
         "requestBody": {
           "required": true,
@@ -4267,7 +4267,7 @@
           "Drivers"
         ],
         "summary": "driver_journal_entry_delete",
-        "description": "Backend API endpoint: POST /driver/journal/entry/delete",
+        "description": "Deletes driver journal entries.",
         "operationId": "driver_journal_entry_delete",
         "requestBody": {
           "required": true,
@@ -4301,7 +4301,7 @@
           "Drivers"
         ],
         "summary": "driver_journal_entry_download",
-        "description": "Backend API endpoint: POST /driver/journal/entry/download",
+        "description": "Gets driver journal entries. Entries selected by intersecting their date range with date range from request (`from` and `to` parameters).",
         "operationId": "driver_journal_entry_download",
         "requestBody": {
           "required": true,
@@ -4641,7 +4641,7 @@
           "Tasks"
         ],
         "summary": "task_form_read",
-        "description": "Backend API endpoint: POST /task/form/read",
+        "description": "Gets form associated with the specified task.",
         "operationId": "task_form_read",
         "requestBody": {
           "required": true,
@@ -4675,7 +4675,7 @@
           "Tasks"
         ],
         "summary": "task_form_download",
-        "description": "Backend API endpoint: POST /task/form/download",
+        "description": "Retrieves attached form as file.",
         "operationId": "task_form_download",
         "requestBody": {
           "required": true,
@@ -5083,7 +5083,7 @@
           "Places"
         ],
         "summary": "place_read",
-        "description": "Backend API endpoint: POST /place/read",
+        "description": "Gets POI by ID.",
         "operationId": "place_read",
         "requestBody": {
           "required": true,
@@ -5117,7 +5117,7 @@
           "Places"
         ],
         "summary": "place_list",
-        "description": "Backend API endpoint: POST /place/list",
+        "description": "Get POIs belonging to user.",
         "operationId": "place_list",
         "requestBody": {
           "required": true,
@@ -5151,7 +5151,7 @@
           "Places"
         ],
         "summary": "place_create",
-        "description": "Backend API endpoint: POST /place/create",
+        "description": "Creates a new POI.",
         "operationId": "place_create",
         "requestBody": {
           "required": true,
@@ -5185,7 +5185,7 @@
           "Places"
         ],
         "summary": "place_search_location",
-        "description": "Backend API endpoint: POST /place/search_location",
+        "description": "Gets all POI IDs and names within which a specified coordinates are located inside.",
         "operationId": "place_search_location",
         "requestBody": {
           "required": true,
@@ -5219,7 +5219,7 @@
           "Places"
         ],
         "summary": "place_update",
-        "description": "Backend API endpoint: POST /place/update",
+        "description": "Updates existing POI.",
         "operationId": "place_update",
         "requestBody": {
           "required": true,
@@ -5253,7 +5253,7 @@
           "Places"
         ],
         "summary": "place_delete",
-        "description": "Backend API endpoint: POST /place/delete",
+        "description": "Deletes POI with the specified ID.",
         "operationId": "place_delete",
         "requestBody": {
           "required": true,
@@ -5287,7 +5287,7 @@
           "Places"
         ],
         "summary": "place_batch_convert",
-        "description": "Backend API endpoint: POST /place/batch_convert",
+        "description": "Converts batch of tab-delimited POIs and return list of checked POIs with errors.",
         "operationId": "place_batch_convert",
         "requestBody": {
           "required": true,
@@ -5321,7 +5321,7 @@
           "Places"
         ],
         "summary": "place_upload",
-        "description": "Backend API endpoint: POST /place/upload",
+        "description": "Upload POIs.",
         "operationId": "place_upload",
         "requestBody": {
           "required": true,
@@ -5355,7 +5355,7 @@
           "Forms"
         ],
         "summary": "form_read",
-        "description": "Backend API endpoint: POST /form/read",
+        "description": "Gets form by an ID.",
         "operationId": "form_read",
         "requestBody": {
           "required": true,
@@ -5389,7 +5389,7 @@
           "Forms"
         ],
         "summary": "form_download",
-        "description": "Backend API endpoint: POST /form/download",
+        "description": "Downloads form as a file by an ID.",
         "operationId": "form_download",
         "requestBody": {
           "required": true,
@@ -5423,7 +5423,7 @@
           "Forms"
         ],
         "summary": "form_template_list",
-        "description": "Backend API endpoint: POST /form/template/list",
+        "description": "Gets all form templates belonging to current master user.",
         "operationId": "form_template_list",
         "requestBody": {
           "required": true,
@@ -5457,7 +5457,7 @@
           "Forms"
         ],
         "summary": "form_template_create",
-        "description": "Backend API endpoint: POST /form/template/create",
+        "description": "Creates new form template.",
         "operationId": "form_template_create",
         "requestBody": {
           "required": true,
@@ -5491,7 +5491,7 @@
           "Forms"
         ],
         "summary": "form_template_read",
-        "description": "Backend API endpoint: POST /form/template/read",
+        "description": "Gets form template belonging to current master user by specified ID.",
         "operationId": "form_template_read",
         "requestBody": {
           "required": true,
@@ -5525,7 +5525,7 @@
           "Forms"
         ],
         "summary": "form_template_update",
-        "description": "Backend API endpoint: POST /form/template/update",
+        "description": "Updates existing form template.",
         "operationId": "form_template_update",
         "requestBody": {
           "required": true,
@@ -5559,7 +5559,7 @@
           "Forms"
         ],
         "summary": "form_template_delete",
-        "description": "Backend API endpoint: POST /form/template/delete",
+        "description": "Deletes form template.",
         "operationId": "form_template_delete",
         "requestBody": {
           "required": true,
@@ -5593,7 +5593,7 @@
           "Forms"
         ],
         "summary": "form_template_stats_read",
-        "description": "Backend API endpoint: POST /form/template/stats/read",
+        "description": "Returns template usage statistics.",
         "operationId": "form_template_stats_read",
         "requestBody": {
           "required": true,
@@ -5627,7 +5627,7 @@
           "Check-ins"
         ],
         "summary": "checkin_read",
-        "description": "Backend API endpoint: POST /checkin/read",
+        "description": "Get check-in which ID is equal to `checkin_id`.",
         "operationId": "checkin_read",
         "requestBody": {
           "required": true,
@@ -5661,7 +5661,7 @@
           "Check-ins"
         ],
         "summary": "checkin_list",
-        "description": "Backend API endpoint: POST /checkin/list",
+        "description": "Gets marker entries on a map for trackers and for the specified time interval.",
         "operationId": "checkin_list",
         "requestBody": {
           "required": true,
@@ -5695,7 +5695,7 @@
           "Check-ins"
         ],
         "summary": "checkin_delete",
-        "description": "Backend API endpoint: POST /checkin/delete",
+        "description": "Deletes check-ins with the specified IDs.",
         "operationId": "checkin_delete",
         "requestBody": {
           "required": true,
@@ -5729,7 +5729,7 @@
           "Check-ins"
         ],
         "summary": "checkin_create",
-        "description": "Backend API endpoint: POST /checkin/create",
+        "description": "Creates a new check-in. Needed for exceptional cases.",
         "operationId": "checkin_create",
         "requestBody": {
           "required": true,
@@ -5763,7 +5763,7 @@
           "Check-ins"
         ],
         "summary": "checkin_image_create",
-        "description": "Backend API endpoint: POST /checkin/image/create",
+        "description": "Creates an image for check-in. If you have multiple files to upload, be sure to add a brief delay between uploading each one to ensure a smooth process.",
         "operationId": "checkin_image_create",
         "requestBody": {
           "required": true,
@@ -5797,7 +5797,7 @@
           "Check-ins"
         ],
         "summary": "checkin_form_create",
-        "description": "Backend API endpoint: POST /checkin/form/create",
+        "description": "Creates a new form that can be attached to a check-in. Form always created on the basis of form template.",
         "operationId": "checkin_form_create",
         "requestBody": {
           "required": true,
@@ -5831,7 +5831,7 @@
           "Check-ins"
         ],
         "summary": "checkin_form_file_create",
-        "description": "Backend API endpoint: POST /checkin/form/file/create",
+        "description": "Creates a new file entry associated with form's field. If you have multiple files to upload, be sure to add a brief delay between uploading each one to ensure a smooth process.",
         "operationId": "checkin_form_file_create",
         "requestBody": {
           "required": true,
@@ -5865,7 +5865,7 @@
           "Users"
         ],
         "summary": "user_activate",
-        "description": "Backend API endpoint: POST /user/activate",
+        "description": "Activates previously registered user with the provided session hash\\ (it is contained in activation link from email sent to user).\\ Available only to master users.",
         "operationId": "user_activate",
         "requestBody": {
           "required": true,
@@ -5899,7 +5899,7 @@
           "Users"
         ],
         "summary": "user_auth",
-        "description": "Backend API endpoint: POST /user/auth",
+        "description": "Tries to authenticate the user and get hash.",
         "operationId": "user_auth",
         "requestBody": {
           "required": true,
@@ -5933,7 +5933,7 @@
           "Users"
         ],
         "summary": "user_get_info",
-        "description": "Backend API endpoint: POST /user/get_info",
+        "description": "Gets user information and some settings.",
         "operationId": "user_get_info",
         "requestBody": {
           "required": true,
@@ -5967,7 +5967,7 @@
           "Users"
         ],
         "summary": "user_get_tariff_restrictions",
-        "description": "Backend API endpoint: POST /user/get_tariff_restrictions",
+        "description": "Gets user plan restrictions.",
         "operationId": "user_get_tariff_restrictions",
         "requestBody": {
           "required": true,
@@ -6001,7 +6001,7 @@
           "Users"
         ],
         "summary": "user_logout",
-        "description": "Backend API endpoint: POST /user/logout",
+        "description": "Destroys current user session.\\ Works only with standard user session (not with API key).",
         "operationId": "user_logout",
         "requestBody": {
           "required": true,
@@ -6035,7 +6035,7 @@
           "Users"
         ],
         "summary": "user_resend_activation",
-        "description": "Backend API endpoint: POST /user/resend_activation",
+        "description": "Sends a new activation link to user.",
         "operationId": "user_resend_activation",
         "requestBody": {
           "required": true,
@@ -6171,7 +6171,7 @@
           "Users"
         ],
         "summary": "user_password_change",
-        "description": "Backend API endpoint: POST /user/password/change",
+        "description": "Changes password of user with the provided session hash (it is contained in a password restore link from email sent to user by user/restore\\_password).",
         "operationId": "user_password_change",
         "requestBody": {
           "required": true,
@@ -6205,7 +6205,7 @@
           "Users"
         ],
         "summary": "user_password_set",
-        "description": "Backend API endpoint: POST /user/password/set",
+        "description": "Changes password for login user.\\ Works only with standard user session (not with API key).",
         "operationId": "user_password_set",
         "requestBody": {
           "required": true,
@@ -6239,7 +6239,7 @@
           "Users"
         ],
         "summary": "user_settings_read",
-        "description": "Backend API endpoint: POST /user/settings/read",
+        "description": "Reads current user's settings.",
         "operationId": "user_settings_read",
         "requestBody": {
           "required": true,
@@ -6273,7 +6273,7 @@
           "Users"
         ],
         "summary": "user_settings_update",
-        "description": "Backend API endpoint: POST /user/settings/update",
+        "description": "Update current user's settings.",
         "operationId": "user_settings_update",
         "requestBody": {
           "required": true,
@@ -6307,7 +6307,7 @@
           "Users"
         ],
         "summary": "user_settings_file_storage_update",
-        "description": "Backend API endpoint: POST /user/settings/file_storage/update",
+        "description": "Updates current user's file storage settings.",
         "operationId": "user_settings_file_storage_update",
         "requestBody": {
           "required": true,
@@ -6341,7 +6341,7 @@
           "Users"
         ],
         "summary": "user_session_renew",
-        "description": "Backend API endpoint: POST /user/session/renew",
+        "description": "Prolongs current user session.\\ Works only with standard user session (not with API key).",
         "operationId": "user_session_renew",
         "requestBody": {
           "required": true,
@@ -6375,7 +6375,7 @@
           "Users"
         ],
         "summary": "user_session_push_token_bind",
-        "description": "Backend API endpoint: POST /user/session/push_token/bind",
+        "description": "Binds Push token with a current session.",
         "operationId": "user_session_push_token_bind",
         "requestBody": {
           "required": true,
@@ -6409,7 +6409,7 @@
           "Users"
         ],
         "summary": "user_session_push_token_delete",
-        "description": "Backend API endpoint: POST /user/session/push_token/delete",
+        "description": "Deletes push token bound with the session.",
         "operationId": "user_session_push_token_delete",
         "requestBody": {
           "required": true,
@@ -6443,7 +6443,7 @@
           "Users"
         ],
         "summary": "user_audit_checkin",
-        "description": "Backend API endpoint: POST /user/audit/checkin",
+        "description": "This action occurs when a customer opens the UI or activates the UI tab in the browser after it hasn't been used for more than 2 hours.\\ Works only with standard user session (not with API key).\\ This action type may be in the [user audit log](audit_log.md#list).",
         "operationId": "user_audit_checkin",
         "requestBody": {
           "required": true,
@@ -6477,7 +6477,7 @@
           "Sub-users"
         ],
         "summary": "subuser_delete",
-        "description": "Backend API endpoint: POST /subuser/delete",
+        "description": "Deletes sub-user. This operation cannot be reversed.",
         "operationId": "subuser_delete",
         "requestBody": {
           "required": true,
@@ -6511,7 +6511,7 @@
           "Sub-users"
         ],
         "summary": "subuser_list",
-        "description": "Backend API endpoint: POST /subuser/list",
+        "description": "List all sub-users belonging to current user.",
         "operationId": "subuser_list",
         "requestBody": {
           "required": true,
@@ -6545,7 +6545,7 @@
           "Sub-users"
         ],
         "summary": "subuser_register",
-        "description": "Backend API endpoint: POST /subuser/register",
+        "description": "Allows you to create sub-users associated to your master account.",
         "operationId": "subuser_register",
         "requestBody": {
           "required": true,
@@ -6579,7 +6579,7 @@
           "Sub-users"
         ],
         "summary": "subuser_update",
-        "description": "Backend API endpoint: POST /subuser/update",
+        "description": "Updates sub-user data.",
         "operationId": "subuser_update",
         "requestBody": {
           "required": true,
@@ -6613,7 +6613,7 @@
           "Sub-users"
         ],
         "summary": "subuser_zones_bind",
-        "description": "Backend API endpoint: POST /subuser/zones/bind",
+        "description": "Gives access for sub-user to specified geofences.",
         "operationId": "subuser_zones_bind",
         "requestBody": {
           "required": true,
@@ -6647,7 +6647,7 @@
           "Sub-users"
         ],
         "summary": "subuser_zones_unbind",
-        "description": "Backend API endpoint: POST /subuser/zones/unbind",
+        "description": "Disables access for sub-user to specified geofences.",
         "operationId": "subuser_zones_unbind",
         "requestBody": {
           "required": true,
@@ -6681,7 +6681,7 @@
           "Sub-users"
         ],
         "summary": "subuser_zones_list_ids",
-        "description": "Backend API endpoint: POST /subuser/zones/list_ids",
+        "description": "Gets a list of geofence IDs to which this sub-user has access.",
         "operationId": "subuser_zones_list_ids",
         "requestBody": {
           "required": true,
@@ -6715,7 +6715,7 @@
           "Sub-users"
         ],
         "summary": "subuser_zones_list",
-        "description": "Backend API endpoint: POST /subuser/zones/list",
+        "description": "Gets a list of geofences to which this sub-user has access.",
         "operationId": "subuser_zones_list",
         "requestBody": {
           "required": true,
@@ -6749,7 +6749,7 @@
           "Sub-users"
         ],
         "summary": "subuser_tracker_bind",
-        "description": "Backend API endpoint: POST /subuser/tracker/bind",
+        "description": "Gives access for sub-user to the specified trackers.",
         "operationId": "subuser_tracker_bind",
         "requestBody": {
           "required": true,
@@ -6783,7 +6783,7 @@
           "Sub-users"
         ],
         "summary": "subuser_tracker_list",
-        "description": "Backend API endpoint: POST /subuser/tracker/list",
+        "description": "Gets a list of tracker IDs to which this sub-user has access.",
         "operationId": "subuser_tracker_list",
         "requestBody": {
           "required": true,
@@ -6817,7 +6817,7 @@
           "Sub-users"
         ],
         "summary": "subuser_tracker_unbind",
-        "description": "Backend API endpoint: POST /subuser/tracker/unbind",
+        "description": "Disables access for sub-user to the specified trackers.",
         "operationId": "subuser_tracker_unbind",
         "requestBody": {
           "required": true,
@@ -6851,7 +6851,7 @@
           "Tags"
         ],
         "summary": "tag_create",
-        "description": "Backend API endpoint: POST /tag/create",
+        "description": "Creates a new tag.",
         "operationId": "tag_create",
         "requestBody": {
           "required": true,
@@ -6885,7 +6885,7 @@
           "Tags"
         ],
         "summary": "tag_delete",
-        "description": "Backend API endpoint: POST /tag/delete",
+        "description": "Deletes tag with the specified ID.",
         "operationId": "tag_delete",
         "requestBody": {
           "required": true,
@@ -6919,7 +6919,7 @@
           "Tags"
         ],
         "summary": "tag_list",
-        "description": "Backend API endpoint: POST /tag/list",
+        "description": "Gets all tags belonging to user with optional filtering.",
         "operationId": "tag_list",
         "requestBody": {
           "required": true,
@@ -6953,7 +6953,7 @@
           "Tags"
         ],
         "summary": "tag_search",
-        "description": "Backend API endpoint: POST /tag/search",
+        "description": "Search entities that bound with all of specified tags.",
         "operationId": "tag_search",
         "requestBody": {
           "required": true,
@@ -6987,7 +6987,7 @@
           "Tags"
         ],
         "summary": "tag_update",
-        "description": "Backend API endpoint: POST /tag/update",
+        "description": "Updates existing tag.",
         "operationId": "tag_update",
         "requestBody": {
           "required": true,
@@ -7021,7 +7021,7 @@
           "Entities"
         ],
         "summary": "entity_list",
-        "description": "Backend API endpoint: POST /entity/list",
+        "description": "Get list of entities which are available for customization.",
         "operationId": "entity_list",
         "requestBody": {
           "required": true,
@@ -7055,7 +7055,7 @@
           "Entities"
         ],
         "summary": "entity_fields_read",
-        "description": "Backend API endpoint: POST /entity/fields/read",
+        "description": "Gets a set of custom fields associated with the specified entity. Note that you must know the entity ID, which can be obtained from [entity/list](index.md#list).",
         "operationId": "entity_fields_read",
         "requestBody": {
           "required": true,
@@ -7089,7 +7089,7 @@
           "Entities"
         ],
         "summary": "entity_fields_update",
-        "description": "Backend API endpoint: POST /entity/fields/update",
+        "description": "Updates a set of custom fields associated with the specified entity.",
         "operationId": "entity_fields_update",
         "requestBody": {
           "required": true,
@@ -7123,7 +7123,7 @@
           "History"
         ],
         "summary": "history_tracker_list",
-        "description": "Backend API endpoint: POST /history/tracker/list",
+        "description": "Lists less than or equal to `limit` of tracker events filtered by event types (`events`) between `from` date/time and `to` date/time sorted by **time** field.",
         "operationId": "history_tracker_list",
         "requestBody": {
           "required": true,
@@ -7191,7 +7191,7 @@
           "History"
         ],
         "summary": "history_type_list",
-        "description": "Backend API endpoint: POST /history/type/list",
+        "description": "Returns available history event types with localized descriptions.",
         "operationId": "history_type_list",
         "requestBody": {
           "required": true,
@@ -7225,7 +7225,7 @@
           "History"
         ],
         "summary": "history_unread_list",
-        "description": "Backend API endpoint: POST /history/unread/list",
+        "description": "List less than or equal to `limit` of the latest user's unread history events. Described how it works in our [guide](../../../guides/rules-notifications/work-with-notifications.md#all-unread-events-of-a-user).",
         "operationId": "history_unread_list",
         "requestBody": {
           "required": true,
@@ -7259,7 +7259,7 @@
           "History"
         ],
         "summary": "history_unread_count",
-        "description": "Backend API endpoint: POST /history/unread/count",
+        "description": "Get count of user's unread history messages starting `from` date.",
         "operationId": "history_unread_count",
         "requestBody": {
           "required": true,
@@ -7293,7 +7293,7 @@
           "Reports"
         ],
         "summary": "report_schedule_create",
-        "description": "Backend API endpoint: POST /report/schedule/create",
+        "description": "Creates a new report schedule entry.",
         "operationId": "report_schedule_create",
         "requestBody": {
           "required": true,
@@ -7327,7 +7327,7 @@
           "Reports"
         ],
         "summary": "report_schedule_delete",
-        "description": "Backend API endpoint: POST /report/schedule/delete",
+        "description": "Deletes report schedule with the specified ID.",
         "operationId": "report_schedule_delete",
         "requestBody": {
           "required": true,
@@ -7361,7 +7361,7 @@
           "Reports"
         ],
         "summary": "report_schedule_list",
-        "description": "Backend API endpoint: POST /report/schedule/list",
+        "description": "Get all report schedules belonging to user.",
         "operationId": "report_schedule_list",
         "requestBody": {
           "required": true,
@@ -7395,7 +7395,7 @@
           "Reports"
         ],
         "summary": "report_schedule_update",
-        "description": "Backend API endpoint: POST /report/schedule/update",
+        "description": "Update existing report schedule.",
         "operationId": "report_schedule_update",
         "requestBody": {
           "required": true,
@@ -7429,7 +7429,7 @@
           "Notifications"
         ],
         "summary": "notification_list",
-        "description": "Backend API endpoint: POST /notification/list",
+        "description": "Lists user notifications.",
         "operationId": "notification_list",
         "requestBody": {
           "required": true,
@@ -7463,7 +7463,7 @@
           "Plugins"
         ],
         "summary": "plugin_list",
-        "description": "Backend API endpoint: POST /plugin/list",
+        "description": "Get all plugins available to the user. List of available plugins may vary from user to user depending on platform settings and purchased features. Only these plugins can be used to register trackers, generate reports, etc.",
         "operationId": "plugin_list",
         "requestBody": {
           "required": true,
@@ -7497,7 +7497,7 @@
           "Billing"
         ],
         "summary": "subscription_cancel",
-        "description": "Backend API endpoint: POST /subscription/cancel",
+        "description": "Unsubscribe from auto-renewal by reference.",
         "operationId": "subscription_cancel",
         "requestBody": {
           "required": true,
@@ -7531,7 +7531,7 @@
           "Billing"
         ],
         "summary": "subscription_list",
-        "description": "Backend API endpoint: POST /subscription/list",
+        "description": "List active [2Checkout](https://www.2checkout.com) [formerly Avangate](http://www.avangate.com) subscriptions (renewals).",
         "operationId": "subscription_list",
         "requestBody": {
           "required": true,
@@ -7565,7 +7565,7 @@
           "Billing"
         ],
         "summary": "bill_create",
-        "description": "Backend API endpoint: POST /bill/create",
+        "description": "Creates a new bill for the user.",
         "operationId": "bill_create",
         "requestBody": {
           "required": true,
@@ -7599,7 +7599,7 @@
           "Billing"
         ],
         "summary": "bill_list",
-        "description": "Backend API endpoint: POST /bill/list",
+        "description": "Shows list of bills with their parameters in array.",
         "operationId": "bill_list",
         "requestBody": {
           "required": true,
@@ -7633,7 +7633,7 @@
           "Billing"
         ],
         "summary": "tariff_list",
-        "description": "Backend API endpoint: POST /tariff/list",
+        "description": "Gets list of device's plans available to user. If user's dealer is **default dealer** or **paas** then listed tariffs of that dealer, else listed plans of parent dealer.\\ Listed only plans available for user's legal type.",
         "operationId": "tariff_list",
         "requestBody": {
           "required": true,
@@ -7667,7 +7667,7 @@
           "Users"
         ],
         "summary": "api_key_create",
-        "description": "Backend API endpoint: POST /api/key/create",
+        "description": "Creates a new API key.",
         "operationId": "api_key_create",
         "requestBody": {
           "required": true,
@@ -7701,7 +7701,7 @@
           "Users"
         ],
         "summary": "api_key_delete",
-        "description": "Backend API endpoint: POST /api/key/delete",
+        "description": "Deletes API key.",
         "operationId": "api_key_delete",
         "requestBody": {
           "required": true,
@@ -7735,7 +7735,7 @@
           "Users"
         ],
         "summary": "api_key_list",
-        "description": "Backend API endpoint: POST /api/key/list",
+        "description": "Gets all of API keys for an account.",
         "operationId": "api_key_list",
         "requestBody": {
           "required": true,
@@ -7803,7 +7803,7 @@
           "Commons"
         ],
         "summary": "base_nothing",
-        "description": "Backend API endpoint: POST /base/nothing",
+        "description": "The report for health-check. It will do nothing.",
         "operationId": "base_nothing",
         "requestBody": {
           "required": true,
@@ -7837,7 +7837,7 @@
           "Commons"
         ],
         "summary": "base_send_email",
-        "description": "Backend API endpoint: POST /base/send_email",
+        "description": "Sends email from the platform to any email address with specified title and text. Needs ROOT access level.",
         "operationId": "base_send_email",
         "requestBody": {
           "required": true,
@@ -7871,7 +7871,7 @@
           "Commons"
         ],
         "summary": "dealer_get_ui_config",
-        "description": "Backend API endpoint: POST /dealer/get_ui_config",
+        "description": "Gets dealer info and dealer-specific UI settings by a domain or hash.",
         "operationId": "dealer_get_ui_config",
         "requestBody": {
           "required": true,
@@ -8109,7 +8109,7 @@
           "Drivers"
         ],
         "summary": "driver_journal_proposal_list",
-        "description": "Backend API endpoint: POST /driver/journal/proposal/list",
+        "description": "Gets proposal trips that could be used for driver journal entry creation.\\ Proposal objects created by a track's division by driver changes.\\ If there was no driver change on the track, then the track will be returned entirely.\\ Tracks selected by intersecting their date range with date range from request (`from` and `to` parameters).",
         "operationId": "driver_journal_proposal_list",
         "requestBody": {
           "required": true,
@@ -8143,7 +8143,7 @@
           "Employees"
         ],
         "summary": "employee_avatar_assign",
-        "description": "Backend API endpoint: POST /employee/avatar/assign",
+        "description": "Assign `icon_id` (from standard icon set) to this employee/driver.\\ The `icon_id` can be `null` – this means that uploaded avatar should be used instead of icon.",
         "operationId": "employee_avatar_assign",
         "requestBody": {
           "required": true,
@@ -8177,7 +8177,7 @@
           "Entities"
         ],
         "summary": "entity_read",
-        "description": "Backend API endpoint: POST /entity/read",
+        "description": "Gets entity by the ID or by type.",
         "operationId": "entity_read",
         "requestBody": {
           "required": true,
@@ -8211,7 +8211,7 @@
           "Entities"
         ],
         "summary": "entity_update",
-        "description": "Backend API endpoint: POST /entity/update",
+        "description": "Updates settings of customizable entity. Entity must have a valid ID.",
         "operationId": "entity_update",
         "requestBody": {
           "required": true,
@@ -8245,7 +8245,7 @@
           "Commons"
         ],
         "summary": "feedback_send_email",
-        "description": "Backend API endpoint: POST /feedback/send_email",
+        "description": "Sends an email with user's feedback, ask for help, or suggestion a new feature. The message will be sent to dealer's\\ email address for feedback.",
         "operationId": "feedback_send_email",
         "requestBody": {
           "required": true,
@@ -8279,7 +8279,7 @@
           "Commons"
         ],
         "summary": "file_stats_read",
-        "description": "Backend API endpoint: POST /file/stats/read",
+        "description": "Gets user's files statistic.",
         "operationId": "file_stats_read",
         "requestBody": {
           "required": true,
@@ -8313,7 +8313,7 @@
           "Vehicles"
         ],
         "summary": "garage_create",
-        "description": "Backend API endpoint: POST /garage/create",
+        "description": "Creates a new depot.",
         "operationId": "garage_create",
         "requestBody": {
           "required": true,
@@ -8347,7 +8347,7 @@
           "Vehicles"
         ],
         "summary": "garage_delete",
-        "description": "Backend API endpoint: POST /garage/delete",
+        "description": "Deletes a depot with the specified ID.",
         "operationId": "garage_delete",
         "requestBody": {
           "required": true,
@@ -8381,7 +8381,7 @@
           "Vehicles"
         ],
         "summary": "garage_list",
-        "description": "Backend API endpoint: POST /garage/list",
+        "description": "Gets all depots belonging to user.",
         "operationId": "garage_list",
         "requestBody": {
           "required": true,
@@ -8415,7 +8415,7 @@
           "Vehicles"
         ],
         "summary": "garage_update",
-        "description": "Backend API endpoint: POST /garage/update",
+        "description": "Updates existing depot with the specified ID.",
         "operationId": "garage_update",
         "requestBody": {
           "required": true,
@@ -8449,7 +8449,7 @@
           "History"
         ],
         "summary": "history_mark_read",
-        "description": "Backend API endpoint: POST /history/mark_read",
+        "description": "Marks history entry as read by `id` (see: [Tracker history entry](index.md#tracker-history-entry)).",
         "operationId": "history_mark_read",
         "requestBody": {
           "required": true,
@@ -8483,7 +8483,7 @@
           "History"
         ],
         "summary": "history_mark_read_all",
-        "description": "Backend API endpoint: POST /history/mark_read_all",
+        "description": "Marks all the user's history entries read.",
         "operationId": "history_mark_read_all",
         "requestBody": {
           "required": true,
@@ -8517,7 +8517,7 @@
           "History"
         ],
         "summary": "history_read",
-        "description": "Backend API endpoint: POST /history/read",
+        "description": "Returns history entry with the specified ID.",
         "operationId": "history_read",
         "requestBody": {
           "required": true,
@@ -8551,7 +8551,7 @@
           "Billing"
         ],
         "summary": "payment_system_estimate_get",
-        "description": "Backend API endpoint: POST /payment_system/estimate/get",
+        "description": "Returns the estimate of the monthly payment amount",
         "operationId": "payment_system_estimate_get",
         "requestBody": {
           "required": true,
@@ -8585,7 +8585,7 @@
           "Billing"
         ],
         "summary": "payment_system_list",
-        "description": "Backend API endpoint: POST /payment_system/list",
+        "description": "Returns list of payment systems available for specified user.",
         "operationId": "payment_system_list",
         "requestBody": {
           "required": true,
@@ -8653,7 +8653,7 @@
           "Reports"
         ],
         "summary": "report_tracker_delete",
-        "description": "Backend API endpoint: POST /report/tracker/delete",
+        "description": "Deletes a report from the database.",
         "operationId": "report_tracker_delete",
         "requestBody": {
           "required": true,
@@ -8687,7 +8687,7 @@
           "Reports"
         ],
         "summary": "report_tracker_download",
-        "description": "Backend API endpoint: POST /report/tracker/download",
+        "description": "Retrieve generated report as a file.",
         "operationId": "report_tracker_download",
         "requestBody": {
           "required": true,
@@ -8721,7 +8721,7 @@
           "Reports"
         ],
         "summary": "report_tracker_generate",
-        "description": "Backend API endpoint: POST /report/tracker/generate",
+        "description": "Requests a report generation with the specified parameters.",
         "operationId": "report_tracker_generate",
         "requestBody": {
           "required": true,
@@ -8755,7 +8755,7 @@
           "Reports"
         ],
         "summary": "report_tracker_list",
-        "description": "Backend API endpoint: POST /report/tracker/list",
+        "description": "Returns info about all available generated or in-progress reports.",
         "operationId": "report_tracker_list",
         "requestBody": {
           "required": true,
@@ -8789,7 +8789,7 @@
           "Reports"
         ],
         "summary": "report_tracker_retrieve",
-        "description": "Backend API endpoint: POST /report/tracker/retrieve",
+        "description": "Retrieves a generated report as JSON.",
         "operationId": "report_tracker_retrieve",
         "requestBody": {
           "required": true,
@@ -8823,7 +8823,7 @@
           "Reports"
         ],
         "summary": "report_tracker_status",
-        "description": "Backend API endpoint: POST /report/tracker/status",
+        "description": "Returns a report generation status for the specified report id.",
         "operationId": "report_tracker_status",
         "requestBody": {
           "required": true,
@@ -8857,7 +8857,7 @@
           "Tracking"
         ],
         "summary": "retranslator_create",
-        "description": "Backend API endpoint: POST /retranslator/create",
+        "description": "Creates new retranslator.",
         "operationId": "retranslator_create",
         "requestBody": {
           "required": true,
@@ -8891,7 +8891,7 @@
           "Tracking"
         ],
         "summary": "retranslator_delete",
-        "description": "Backend API endpoint: POST /retranslator/delete",
+        "description": "Deletes user's retranslator with specified `retranslator_id`.",
         "operationId": "retranslator_delete",
         "requestBody": {
           "required": true,
@@ -8925,7 +8925,7 @@
           "Tracking"
         ],
         "summary": "retranslator_list",
-        "description": "Backend API endpoint: POST /retranslator/list",
+        "description": "Get all users' retranslators.",
         "operationId": "retranslator_list",
         "requestBody": {
           "required": true,
@@ -8959,7 +8959,7 @@
           "Tracking"
         ],
         "summary": "retranslator_protocol_list",
-        "description": "Backend API endpoint: POST /retranslator/protocol/list",
+        "description": "Returns all available retranslator protocols.",
         "operationId": "retranslator_protocol_list",
         "requestBody": {
           "required": true,
@@ -8993,7 +8993,7 @@
           "Tracking"
         ],
         "summary": "retranslator_update",
-        "description": "Backend API endpoint: POST /retranslator/update",
+        "description": "Updates retranslator parameters for the specified retranslator. Note that retranslator must exist, and must belong to\\ the current user.",
         "operationId": "retranslator_update",
         "requestBody": {
           "required": true,
@@ -9027,7 +9027,7 @@
           "Routes"
         ],
         "summary": "route_get",
-        "description": "Backend API endpoint: POST /route/get",
+        "description": "Gets route points via specified route provider.",
         "operationId": "route_get",
         "requestBody": {
           "required": true,
@@ -9265,7 +9265,7 @@
           "Sub-users"
         ],
         "summary": "subuser_places_bind",
-        "description": "Backend API endpoint: POST /subuser/places/bind",
+        "description": "Gives access for sub-user to specified places.",
         "operationId": "subuser_places_bind",
         "requestBody": {
           "required": true,
@@ -9299,7 +9299,7 @@
           "Sub-users"
         ],
         "summary": "subuser_places_list",
-        "description": "Backend API endpoint: POST /subuser/places/list",
+        "description": "Gets a list of places to which this sub-user has access.",
         "operationId": "subuser_places_list",
         "requestBody": {
           "required": true,
@@ -9333,7 +9333,7 @@
           "Sub-users"
         ],
         "summary": "subuser_places_list_ids",
-        "description": "Backend API endpoint: POST /subuser/places/list_ids",
+        "description": "Gets a list of place IDs to which this sub-user has access.",
         "operationId": "subuser_places_list_ids",
         "requestBody": {
           "required": true,
@@ -9367,7 +9367,7 @@
           "Sub-users"
         ],
         "summary": "subuser_places_unbind",
-        "description": "Backend API endpoint: POST /subuser/places/unbind",
+        "description": "Disables access for a sub-user to specified places.",
         "operationId": "subuser_places_unbind",
         "requestBody": {
           "required": true,
@@ -9401,7 +9401,7 @@
           "Sub-users"
         ],
         "summary": "subuser_security_group_assign",
-        "description": "Backend API endpoint: POST /subuser/security_group/assign",
+        "description": "Assigns (removes) a security group to sub-users.",
         "operationId": "subuser_security_group_assign",
         "requestBody": {
           "required": true,
@@ -9435,7 +9435,7 @@
           "Sub-users"
         ],
         "summary": "subuser_security_group_create",
-        "description": "Backend API endpoint: POST /subuser/security_group/create",
+        "description": "Creates new security group.",
         "operationId": "subuser_security_group_create",
         "requestBody": {
           "required": true,
@@ -9469,7 +9469,7 @@
           "Sub-users"
         ],
         "summary": "subuser_security_group_delete",
-        "description": "Backend API endpoint: POST /subuser/security_group/delete",
+        "description": "Deletes existing security group.\\ All sub-users belonging to this group will be assigned to default (null) security group.",
         "operationId": "subuser_security_group_delete",
         "requestBody": {
           "required": true,
@@ -9503,7 +9503,7 @@
           "Sub-users"
         ],
         "summary": "subuser_security_group_list",
-        "description": "Backend API endpoint: POST /subuser/security_group/list",
+        "description": "List all security groups belonging to current user.",
         "operationId": "subuser_security_group_list",
         "requestBody": {
           "required": true,
@@ -9537,7 +9537,7 @@
           "Sub-users"
         ],
         "summary": "subuser_security_group_update",
-        "description": "Backend API endpoint: POST /subuser/security_group/update",
+        "description": "Updates existing security group.",
         "operationId": "subuser_security_group_update",
         "requestBody": {
           "required": true,
@@ -9571,7 +9571,7 @@
           "Sub-users"
         ],
         "summary": "subuser_session_create",
-        "description": "Backend API endpoint: POST /subuser/session/create",
+        "description": "Creates a new session for the specified sub-user and obtain its hash. Can be used to log in to sub-user's accounts.",
         "operationId": "subuser_session_create",
         "requestBody": {
           "required": true,
@@ -9605,7 +9605,7 @@
           "Tags"
         ],
         "summary": "tag_avatar_assign",
-        "description": "Backend API endpoint: POST /tag/avatar/assign",
+        "description": "Assigns icon\\_id (from standard icon set) to specified tag.",
         "operationId": "tag_avatar_assign",
         "requestBody": {
           "required": true,
@@ -9639,7 +9639,7 @@
           "Billing"
         ],
         "summary": "tariff_tracker_change",
-        "description": "Backend API endpoint: POST /tariff/tracker/change",
+        "description": "Changes plan of tracker (with `tracker_id`) to new plan (with `tariff_id`).",
         "operationId": "tariff_tracker_change",
         "requestBody": {
           "required": true,
@@ -9673,7 +9673,7 @@
           "Billing"
         ],
         "summary": "tariff_tracker_list",
-        "description": "Backend API endpoint: POST /tariff/tracker/list",
+        "description": "List plans on which user can switch the passed tracker (even when tariff last changed less or equal than **tariff.freeze.period** time ago).",
         "operationId": "tariff_tracker_list",
         "requestBody": {
           "required": true,
@@ -9911,7 +9911,7 @@
           "Tasks"
         ],
         "summary": "task_form_create",
-        "description": "Backend API endpoint: POST /task/form/create",
+        "description": "Attaches new form to the existing task or checkpoint. Form always created on the basis of form template.",
         "operationId": "task_form_create",
         "requestBody": {
           "required": true,
@@ -9945,7 +9945,7 @@
           "Tasks"
         ],
         "summary": "task_form_delete",
-        "description": "Backend API endpoint: POST /task/form/delete",
+        "description": "Deletes a form (detach it from the task).",
         "operationId": "task_form_delete",
         "requestBody": {
           "required": true,
@@ -10013,7 +10013,7 @@
           "Tasks"
         ],
         "summary": "task_form_list",
-        "description": "Backend API endpoint: POST /task/form/list",
+        "description": "Returns descriptions of forms, created on the basis of specified form template. In addition to the data on the forms, the list contains data on the objects related to each form – tracker / vehicle / employee, task.",
         "operationId": "task_form_list",
         "requestBody": {
           "required": true,
@@ -10047,7 +10047,7 @@
           "Tasks"
         ],
         "summary": "task_form_values_update",
-        "description": "Backend API endpoint: POST /task/form/values/update",
+        "description": "Updates existing form values of given task.",
         "operationId": "task_form_values_update",
         "requestBody": {
           "required": true,
@@ -10217,7 +10217,7 @@
           "Tasks"
         ],
         "summary": "task_route_points_optimize",
-        "description": "Backend API endpoint: POST /task/route/points/optimize",
+        "description": "The suggested order for the given route points will correspond to the time windows (from and to) of each point. Points with earlier time windows will have lower ordinal numbers. If time windows overlap, the order of such points may vary to maximize the overall efficiency of the route. The maximum distance per route optimization is 5000 kilometers. When using APIs, the maximum number of points...",
         "operationId": "task_route_points_optimize",
         "requestBody": {
           "required": true,
@@ -10285,7 +10285,7 @@
           "Tasks"
         ],
         "summary": "task_schedule_checkpoint_delete",
-        "description": "Backend API endpoint: POST /task/schedule/checkpoint/delete",
+        "description": "Deletes a checkpoint from route and reorder others.\\ If route has two checkpoints then use transmute on the other checkpoint, because route must have\\ at least two checkpoints.",
         "operationId": "task_schedule_checkpoint_delete",
         "requestBody": {
           "required": true,
@@ -10319,7 +10319,7 @@
           "Tasks"
         ],
         "summary": "task_schedule_checkpoint_transmute",
-        "description": "Backend API endpoint: POST /task/schedule/checkpoint/transmute",
+        "description": "Transmutes a checkpoint to task and delete its route and other checkpoints in the route.",
         "operationId": "task_schedule_checkpoint_transmute",
         "requestBody": {
           "required": true,
@@ -10489,7 +10489,7 @@
           "Commons"
         ],
         "summary": "timezone_list",
-        "description": "Backend API endpoint: POST /timezone/list",
+        "description": "Information about all supported timezones for the specified locale. Does not require user authorization.",
         "operationId": "timezone_list",
         "requestBody": {
           "required": true,
@@ -10523,7 +10523,7 @@
           "Routes"
         ],
         "summary": "track_download",
-        "description": "Backend API endpoint: POST /track/download",
+        "description": "This method allows you to download track points as a KML/KMZ file which can be used in other apps to show tracks.",
         "operationId": "track_download",
         "requestBody": {
           "required": true,
@@ -10557,7 +10557,7 @@
           "Routes"
         ],
         "summary": "track_visit_list",
-        "description": "Backend API endpoint: POST /track/visit/list",
+        "description": "This method fetches IDs of zones and places that contain at least one track point.",
         "operationId": "track_visit_list",
         "requestBody": {
           "required": true,
@@ -10727,7 +10727,7 @@
           "Tracking"
         ],
         "summary": "tracker_command_unconfirmed_count",
-        "description": "Backend API endpoint: POST /tracker/command/unconfirmed/count",
+        "description": "Gets number of commands in queue for the specified tracker.",
         "operationId": "tracker_command_unconfirmed_count",
         "requestBody": {
           "required": true,
@@ -10761,7 +10761,7 @@
           "Tracking"
         ],
         "summary": "tracker_command_unconfirmed_reset",
-        "description": "Backend API endpoint: POST /tracker/command/unconfirmed/reset",
+        "description": "Removes all pending SMS commands from the queue for the specified tracker.",
         "operationId": "tracker_command_unconfirmed_reset",
         "requestBody": {
           "required": true,
@@ -11067,7 +11067,7 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_delete",
-        "description": "Backend API endpoint: POST /tracker/location/link/delete",
+        "description": "Deletes a link with a specified ID.",
         "operationId": "tracker_location_link_delete",
         "requestBody": {
           "required": true,
@@ -11101,7 +11101,7 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_list",
-        "description": "Backend API endpoint: POST /tracker/location/link/list",
+        "description": "Returns a list of a user's links.",
         "operationId": "tracker_location_link_list",
         "requestBody": {
           "required": true,
@@ -11135,7 +11135,7 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_read",
-        "description": "Backend API endpoint: POST /tracker/location/link/read",
+        "description": "Returns a link with a specified ID.",
         "operationId": "tracker_location_link_read",
         "requestBody": {
           "required": true,
@@ -11169,7 +11169,7 @@
           "Tracking"
         ],
         "summary": "tracker_location_link_status_change",
-        "description": "Backend API endpoint: POST /tracker/location/link/status/change",
+        "description": "Lets to activate and deactivate a link.",
         "operationId": "tracker_location_link_status_change",
         "requestBody": {
           "required": true,
@@ -11849,7 +11849,7 @@
           "Commons"
         ],
         "summary": "transaction_list",
-        "description": "Backend API endpoint: POST /transaction/list",
+        "description": "Gets list of user's billing transactions for the specified period.",
         "operationId": "transaction_list",
         "requestBody": {
           "required": true,
@@ -11883,7 +11883,7 @@
           "Users"
         ],
         "summary": "user_audit_log_list",
-        "description": "Backend API endpoint: POST /user/audit/log/list",
+        "description": "Gets list of audit records available for current user.",
         "operationId": "user_audit_log_list",
         "requestBody": {
           "required": true,
@@ -11917,7 +11917,7 @@
           "Users"
         ],
         "summary": "user_auth_code_resend",
-        "description": "Backend API endpoint: POST /user/auth/code/resend",
+        "description": "Resends an authentication code for multi-factor authentication to the email specified at the registration.\\ This action has a special rate-limit in 5 minutes to avoid abuse.",
         "operationId": "user_auth_code_resend",
         "requestBody": {
           "required": true,
@@ -11951,7 +11951,7 @@
           "Users"
         ],
         "summary": "user_auth_code_verify",
-        "description": "Backend API endpoint: POST /user/auth/code/verify",
+        "description": "Verifies given authentication code as a part in multi-factor authentication.\\ On successful verification, you'll receive a normal session hash.",
         "operationId": "user_auth_code_verify",
         "requestBody": {
           "required": true,
@@ -11985,7 +11985,7 @@
           "Users"
         ],
         "summary": "user_personal_info_update",
-        "description": "Backend API endpoint: POST /user/personal_info/update",
+        "description": "Updates user personal info.",
         "operationId": "user_personal_info_update",
         "requestBody": {
           "required": true,
@@ -12019,7 +12019,7 @@
           "Users"
         ],
         "summary": "user_session_delivery_create",
-        "description": "Backend API endpoint: POST /user/session/delivery/create",
+        "description": "Creates new user delivery session.\\ In demo session allowed to create a new session only if it not already exists.",
         "operationId": "user_session_delivery_create",
         "requestBody": {
           "required": true,
@@ -12053,7 +12053,7 @@
           "Users"
         ],
         "summary": "user_session_delivery_read",
-        "description": "Backend API endpoint: POST /user/session/delivery/read",
+        "description": "Returns current user delivery session key.",
         "operationId": "user_session_delivery_read",
         "requestBody": {
           "required": true,
@@ -12087,7 +12087,7 @@
           "Users"
         ],
         "summary": "user_settings_ui_read",
-        "description": "Backend API endpoint: POST /user/settings/ui/read",
+        "description": "Reads setting value by key.",
         "operationId": "user_settings_ui_read",
         "requestBody": {
           "required": true,
@@ -12121,7 +12121,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_avatar_assign",
-        "description": "Backend API endpoint: POST /vehicle/avatar/assign",
+        "description": "Assigns `icon_id` (from standard icon set) to specified vehicle.",
         "operationId": "vehicle_avatar_assign",
         "requestBody": {
           "required": true,
@@ -12189,7 +12189,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_status_listing_read",
-        "description": "Backend API endpoint: POST /vehicle/status/listing/read",
+        "description": "Gets all of user's vehicle statuses.",
         "operationId": "vehicle_status_listing_read",
         "requestBody": {
           "required": true,
@@ -12223,7 +12223,7 @@
           "Vehicles"
         ],
         "summary": "vehicle_status_listing_update",
-        "description": "Backend API endpoint: POST /vehicle/status/listing/update",
+        "description": "Updates user's vehicle statuses.",
         "operationId": "vehicle_status_listing_update",
         "requestBody": {
           "required": true,
@@ -12257,7 +12257,7 @@
           "Zones"
         ],
         "summary": "zone_point_list",
-        "description": "Backend API endpoint: POST /zone/point/list",
+        "description": "Get points of user's geofence by zone_id.",
         "operationId": "zone_point_list",
         "requestBody": {
           "required": true,
@@ -12291,7 +12291,7 @@
           "Zones"
         ],
         "summary": "zone_point_update",
-        "description": "Backend API endpoint: POST /zone/point/update",
+        "description": "Update points for user's geofence by zone_id.",
         "operationId": "zone_point_update",
         "requestBody": {
           "required": true,
@@ -12325,7 +12325,7 @@
           "History"
         ],
         "summary": "history_asset_count",
-        "description": "Backend API endpoint: POST /history/asset/count",
+        "description": "Count the total and unread number of asset events.",
         "operationId": "history_asset_count",
         "requestBody": {
           "required": true,
@@ -12359,7 +12359,7 @@
           "History"
         ],
         "summary": "history_asset_list",
-        "description": "Backend API endpoint: POST /history/asset/list",
+        "description": "Lists less than or equal to `limit` of assets' events sorted by the `time` field.",
         "operationId": "history_asset_list",
         "requestBody": {
           "required": true,
@@ -12591,6 +12591,414 @@
           }
         }
       }
+    },
+    "/data/import/list": {
+      "post": {
+        "tags": [
+          "Backend"
+        ],
+        "summary": "data_import_list",
+        "description": "Backend API endpoint: POST /data/import/list",
+        "operationId": "data_import_list",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/data/import/read": {
+      "post": {
+        "tags": [
+          "Backend"
+        ],
+        "summary": "data_import_read",
+        "description": "Backend API endpoint: POST /data/import/read",
+        "operationId": "data_import_read",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/employee/import/download_failed": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "employee_import_download_failed",
+        "description": "Backend API endpoint: POST /employee/import/download_failed",
+        "operationId": "employee_import_download_failed",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/employee/import/list": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "employee_import_list",
+        "description": "Backend API endpoint: POST /employee/import/list",
+        "operationId": "employee_import_list",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/employee/import/read": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "employee_import_read",
+        "description": "Backend API endpoint: POST /employee/import/read",
+        "operationId": "employee_import_read",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/employee/import/start": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "employee_import_start",
+        "description": "Backend API endpoint: POST /employee/import/start",
+        "operationId": "employee_import_start",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/tracker/location/link/create": {
+      "post": {
+        "tags": [
+          "Tracking"
+        ],
+        "summary": "tracker_location_link_create",
+        "description": "Backend API endpoint: POST /tracker/location/link/create",
+        "operationId": "tracker_location_link_create",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/tracker/location/link/update": {
+      "post": {
+        "tags": [
+          "Tracking"
+        ],
+        "summary": "tracker_location_link_update",
+        "description": "Backend API endpoint: POST /tracker/location/link/update",
+        "operationId": "tracker_location_link_update",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/vehicle/import/download_failed": {
+      "post": {
+        "tags": [
+          "Vehicles"
+        ],
+        "summary": "vehicle_import_download_failed",
+        "description": "Backend API endpoint: POST /vehicle/import/download_failed",
+        "operationId": "vehicle_import_download_failed",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/vehicle/import/list": {
+      "post": {
+        "tags": [
+          "Vehicles"
+        ],
+        "summary": "vehicle_import_list",
+        "description": "Backend API endpoint: POST /vehicle/import/list",
+        "operationId": "vehicle_import_list",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/vehicle/import/read": {
+      "post": {
+        "tags": [
+          "Vehicles"
+        ],
+        "summary": "vehicle_import_read",
+        "description": "Backend API endpoint: POST /vehicle/import/read",
+        "operationId": "vehicle_import_read",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/vehicle/import/start": {
+      "post": {
+        "tags": [
+          "Vehicles"
+        ],
+        "summary": "vehicle_import_start",
+        "description": "Backend API endpoint: POST /vehicle/import/start",
+        "operationId": "vehicle_import_start",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBodyBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/OkValue"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -12599,7 +13007,7 @@
         "type": "apiKey",
         "in": "header",
         "name": "Authorization",
-        "description": "Session hash. Use header: Authorization: NVX {hash}, or pass hash in request body."
+        "description": "Session hash (API key). Send in the request header only: Authorization: NVX {hash}. Do not send hash in the request body."
       }
     },
     "schemas": {
@@ -13120,15 +13528,8 @@
       },
       "RequestBodyBase": {
         "type": "object",
-        "required": [
-          "hash"
-        ],
-        "properties": {
-          "hash": {
-            "type": "string",
-            "description": "Session hash (API key) for authentication"
-          }
-        },
+        "description": "Request body contains only endpoint-specific parameters. Authentication is via the session hash in the request header (see Security); do not send hash in the body. The set of allowed parameters depends on the endpoint: see each operation description or the Backend API documentation for the list of parameters for a given path. Additional properties may be sent for endpoint-specific parameters not listed here.",
+        "properties": {},
         "additionalProperties": true
       },
       "PluginFilter": {

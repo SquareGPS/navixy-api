@@ -7,36 +7,28 @@ OPENAPI_PATH = Path(__file__).resolve().parent.parent / "navixy-backend-api-open
 
 REQUEST_BODY_BASE = {
     "type": "object",
-    "required": ["hash"],
-    "properties": {
-        "hash": {
-            "type": "string",
-            "description": "Session hash (API key) for authentication",
-        }
-    },
+    "description": "Request body contains only endpoint-specific parameters. Authentication is via the session hash in the request header (see Security); do not send hash in the body. The set of allowed parameters depends on the endpoint: see each operation description or the Backend API documentation for the list of parameters for a given path. Additional properties may be sent for endpoint-specific parameters not listed here.",
+    "properties": {},
     "additionalProperties": True,
 }
 
 
 def is_request_body_base(schema):
-    """True if schema is the standard hash-only request body."""
+    """True if schema is the standard request body (no hash in body; endpoint params only)."""
     if not isinstance(schema, dict):
         return False
     if schema.get("$ref"):
         return False
     if schema.get("type") != "object":
         return False
-    req = schema.get("required")
-    if req != ["hash"]:
-        return False
+    # Old shape: required ["hash"], properties.hash; or new shape: no required hash, optional description
+    req = schema.get("required") or []
     props = schema.get("properties") or {}
-    if "hash" not in props or not isinstance(props["hash"], dict):
-        return False
-    if props["hash"].get("type") != "string":
-        return False
-    if schema.get("additionalProperties") is not True:
-        return False
-    return True
+    if req == ["hash"] and "hash" in props and props.get("hash", {}).get("type") == "string":
+        return True
+    if not req and not props and schema.get("additionalProperties") is True:
+        return True
+    return False
 
 
 def get_200_schema_ref(operation):

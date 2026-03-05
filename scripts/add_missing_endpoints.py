@@ -6,7 +6,7 @@ from pathlib import Path
 
 DOCS_DIR = Path(__file__).resolve().parent.parent / "docs" / "user-api" / "backend-api" / "resources"
 OPENAPI_PATH = Path(__file__).resolve().parent.parent / "navixy-backend-api-openapi.json"
-PATTERN = re.compile(r"https?://[^/]+/v2/([a-z_/]+)'")
+PATTERN = re.compile(r"https?://[^/]+/v2/([a-z0-9_/]+)[\"']")
 
 def tag_for_path(p):
     if p.startswith("/tracker"): return "Tracking"

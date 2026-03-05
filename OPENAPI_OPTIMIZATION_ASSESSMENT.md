@@ -1,10 +1,10 @@
 # OpenAPI Spec Assessment & Optimization Guide
 
 **File:** `navixy-backend-api-openapi.json`  
-**Size:** ~18,700 lines | **Paths:** **366** (all POST)  
+**Size:** ~18,700 lines | **Paths:** **378** (all POST)  
 **Date:** 2026-03-04
 
-**Path count:** The spec contains **366 paths**, not 100. (An initial count had undercounted due to regex/formatting.) Paths are synced from `docs/user-api/backend-api/resources` via `scripts/add_missing_endpoints.py`. Docs (URL regex) yield 336 paths; 30 paths are in the spec but not matched by the current doc regex (e.g. different URL style in docs).
+**Path count:** The spec contains **378 paths**. Paths are synced from `docs/user-api/backend-api/resources` via `scripts/add_missing_endpoints.py`. The script matches both single- and double-quoted example URLs; a double-check added **12 missing paths** (e.g. `/data/import/list`, `/data/import/read`, `/employee/import/start`, `/employee/import/read`, `/employee/import/list`, `/employee/import/download_failed`).
 
 ---
 
@@ -215,6 +215,8 @@ If you want, the quick wins (1–2) can be applied directly to `navixy-backend-a
 
 ### 6.3 Work stream B: Add and fix descriptions
 
+**Status:** In progress. A script **`scripts/apply_work_stream_b_descriptions.py`** parses docs for "API path:" and "### action" sections, extracts the first paragraph as the operation description, and updates the spec. **266 operations** now have real descriptions (pilot tracker/zone + bulk update); **100** still use boilerplate where the doc path or structure doesn’t match.
+
 1. **Operation-level descriptions**
    - For each path + method, set `summary` and `description` from the docs action heading and first paragraph (e.g. "Gets tracker info by ID" for `tracker/read`).
    - Optionally add a second paragraph for constraints, permissions, or links to full docs.
@@ -245,3 +247,19 @@ If you want, the quick wins (1–2) can be applied directly to `navixy-backend-a
 2. **Pilot:** Add `Tracker` and `TrackerSource` (and Zone variants) to `components.schemas`; add operation descriptions for all `tracker/*` and `zone/*`; set `value`/`list` to `$ref` where appropriate. Mark the corresponding rows in **OBJECTS_INVENTORY.md** as `Done`.
 3. **Request schemas:** For operations that require more than `hash`, introduce small request schemas (e.g. `TrackerReadRequest`: `tracker_id`) and use `allOf` with `RequestBodyBase`.
 4. **Iterate:** Work through **OBJECTS_INVENTORY.md** until every row has Status `Done`; then add automation if desired.
+
+---
+
+## 7. Double-check: Paths & models
+
+**Script:** `scripts/check_paths_and_models.py` — compares spec paths/schemas to docs and OBJECTS_INVENTORY.
+
+**Paths:**
+- **Spec:** 378 paths (after adding 12 previously missing: `add_missing_endpoints.py` was updated to match double-quoted example URLs; added e.g. `/data/import/list`, `/data/import/read`, `/employee/import/*`).
+- **Docs:** Many "API path" lines are base paths (e.g. `/zone`); full paths come from example URLs. Any path that appears in a doc example URL is now matched (single or double quote).
+- **In spec but not in doc URLs:** ~29 paths (e.g. `/user/api_key/list`, `/zone/upload`) — may use different URL style in docs or be documented elsewhere.
+
+**Models (OBJECTS_INVENTORY):**
+- **57** object/structure entries; all have a corresponding schema in the spec (Status = Done).
+- **Spec** has 119 component schemas (57 inventory + response wrappers, request schemas, primitives, and supporting schemas such as `PluginFilter`, `TrackerTagBinding`, `Zone`, etc.).
+- Nothing from the inventory was missed.
